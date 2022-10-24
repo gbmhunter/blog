@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Components", "Transistors" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Components, Transistors ]
 date: 2015-08-10
-description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
+description: Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs).
 draft: false
-lastmod: 2022-08-18
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance", "Widlar", "Widlar current mirror", "current mirrors", "Micronta", "Radio Shack" , "transistor testers" ]
-title: "Bipolar Junction Transistors (BJTs)"
-type: "page"
+lastmod: 2022-10-24
+tags: [ electronics, components, transistors, bipolar junction transistors, BJTs, base, collector, emitter, reverse active mode, amplifiers, common-emitter, CE, common-collector, CC, common-base, CB, grounded base, Miller capacitance, Widlar, Widlar current mirror, current mirrors, Micronta, Radio Shack , transistor testers ]
+title: Bipolar Junction Transistors (BJTs)
+type: page
 ---
 
 ## Overview
@@ -358,14 +358,25 @@ Go to the [Capacitance Multipliers](/electronics/components/capacitors#_capacita
 
 ## Common BJTs
 
+### 2N2222
+
+The `2N2222` was first introduced by Motorola at the 1962 IRE convention (using a novel new STAR technology)[^bib-haenichen-interview]. Since then the 2N2222 has been made by a number of different manufacturers. Complementary pair to the PNP 2N2907.
+
+### BC547/548/549
+
 The `BC` range of BJTs, including the `BC547` and `BC548` are very common, low-cost general purpose BJT transistors that you will encounter in hobbyist and professional electronics designs alike. They originated with the `BC108` family of metal-cased transistors.
 
-* `2N2222`: First introduced by Motorola at the 1962 IRE convention (using a novel new STAR technology)[^bib-haenichen-interview]. Since then the 2N2222 has been made by a number of different manufacturers. Complementary pair to the PNP 2N2907.
-* `BC547`: Same as the BC548, but with a higher breakdown voltage.
+* `BC547`: Same as the BC548 (NPN), but with a higher breakdown voltage.
 * `BC548`: Common NPN transistor, used for switching and amplification purposes. Suitable replacement for the `2N2222` as long as max. voltage/current rating are not exceeded.
 * `BC549`: Low noise version of the BC548.
 
-{{% figure src="bc548-transistor-to92-photo.png" width="400px" caption="A photo of the ubiquitous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html." %}}
+{{% figure src="bc548-transistor-to92-photo.png" width="300px" caption="A photo of the ubiquitous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html." %}}
+
+### S8050/S8550
+
+The `S8050` is a popular NPN BJT made by a number of manufacturers. Most versions generally have `\(I_C\)` of `\(700mA\)` and a `\(V_{CE}\)` of `\(20V\)`[^bib-unisonic-s8050-ds]. `\(h_{FE}\)` can vary from approx. `\(120\)` to around `\(300\)` depending on the suffix code. The `S8050` is normally found in the [TO-92-3 case](/pcb-design/component-packages/to-92-component-package/).
+
+The `S8550` is the complementary PNP transistor[^bib-el-component-s8050-bjt].
 
 ## Multiple-Collector And Multiple-Emitter BJTs
 
@@ -456,3 +467,5 @@ The you are looking for a slice of history and some informative transistor infor
 [^bib-learn-about-elec-bjts-current-gain]: Learnabout Electronics (2020, Dec 29). _Learnabout Electronics - Bipolar Junction Transistors (BJTs)_. Retrieved 2022-08-15, from https://learnabout-electronics.org/Semiconductors/bjt_05.php.
 [^bib-onsemi-bc546-ds]: onsemi (formally Fairchild) (2002). _BC546 / BC547 / BC548 / BC549 / BC550: NPN Epitaxial Silicon Transistor (datasheet)_. Retrieved 2022-10-10, from https://nz.mouser.com/datasheet/2/308/BC550_D-1802078.pdf. 
 [^bib-jedec-iceo]: JEDEC. _Dictionary: collector cutoff current, base open (ICEO)_. Retrieved 2022-10-10, from https://www.jedec.org/standards-documents/dictionary/terms/collector-cutoff-current-base-open-iceo.
+[^bib-unisonic-s8050-ds]: Unisonic. _S8050 NPN Silicon Transistor: Low Voltage High Current Small Signal NPN Transistor_. Retrieved 2022-10-24, from http://www.unisonic.com.tw/datasheet/S8050.pdf.
+[^bib-el-component-s8050-bjt]: El-Component. _S8050 Bipolar Transistor_. Retrieved 2022-10-24, from https://www.el-component.com/bipolar-transistors/s8050.

@@ -1,14 +1,14 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Posts", "Updates" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Posts, Updates ]
 date: 2022-10-31
-description: "Blog updates during October 2022."
+description: Blog updates during October 2022.
 draft: false
 images: [ ]
 lastmod: 2022-10-31
 tags: []
-title: "October 2022 Updates"
-type: "post"
+title: October 2022 Updates
+type: post
 ---
 
 ## Updates This Month
@@ -34,3 +34,5 @@ type: "post"
 * Added info on Wolfram Alpha's ability to analyze transfer functions.
 
 * Added more info to the [What Are Transfer Functions, Poles, And Zeroes?](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) page.
+
+* Added info on the popular S8050 NPN BJT to the [Bipolar Junction Transistors (BJT) page](/electronics/components/transistors/bipolar-junction-transistors-bjts/#s8050).
