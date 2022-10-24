@@ -13,7 +13,9 @@ type: page
 
 ## Overview
 
-_Transfer functions_ are a way of describing the frequency response of a system. The system can be anything with a measurable input and output, e.g. mechanical spring/mass/dampers, electronic RLC circuits, e.t.c. This page will put an emphasis on electrical transfer functions.
+_Transfer functions_ are a way of describing the frequency and phase response of a LTI (linear time invariant) system. The system can be anything with a measurable input and output, e.g. mechanical spring/mass/dampers, electronic RLC circuits, e.t.c. This page will put an emphasis on **electrical transfer functions in the continuous-time domain**.
+
+## The Laplace Domain
 
 Transfer functions are usually written in the Laplace domain using the variable `\(s\)`, where `\(s\)` is the complex angular frequency, as shown in `\(Eq.\ \ref{eq:s-eq-j-w}\)`.
 
@@ -32,14 +34,20 @@ where:<br/>
 Angular frequency `\(\omega\)` is used here rather than Hertz `\(f\)` just to keep the equations tidier, but it is trivial to convert from one to the other!
 {{% /note %}}
 
-Transfer functions describe the relationship between output and input (typically of voltage, but it doesn't have to be). `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` shows this relationship. We will use the symbol `\(H(s)\)` is represent the transfer function.
+Transfer functions describe the relationship between output and input (typically of voltage, but it doesn't have to be). `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` shows this relationship. We will use the symbol `\(H(s)\)` is represent the transfer function (we are referring to a continuous-time system here, you might see `\(H(z)\)` used for a discrete-time system).
 
 <p>\begin{align}
 \label{eq:xfer-fn-vout-vin}
 H(s) = \frac{v_{out}(s)}{v_{in}(s)}
 \end{align}</p>
 
-Note that because we are using `\(s\)`, `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` encodes both magnitude and phase relationships between the output and input. On it's own, it's complex in nature and not really useful for deducing anything. But, using two clever tricks, you can separately extract the magnitude and phase response equations from `\(H(s)\)`. The magnitude response is found by taking the magnitude of `\(H(s)\)`, which is `\(|H(s)|\)` as shown in `\(Eq.\ \ref{eq:xfer-fn-magnitude}\)`.
+## Magnitude and Phase
+
+Note that because we are using `\(s\)`, `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` encodes both magnitude and phase relationships between the output and input. On it's own, it's complex in nature and not really useful for deducing anything. But, using two clever tricks, you can separately extract the magnitude and phase response equations from `\(H(s)\)`. The below diagram shows the value of `\(H(s)\)` at a single frequency `\(\omega\)`, and how the magnitude and phase information is encoded in this (more on this below).
+
+{{% figure src="diagram-of-hs-in-complex-plane.png" width="600px" caption="Graphical representation of H(s) on the complex plane and how the magnitude and phase are encoded into this." %}}
+
+Bear in mind that the above plot shows `\(H(s)\)` at a single frequency. This point will move around as the frequency changes. The magnitude response is found by taking the magnitude of `\(H(s)\)`, which is `\(|H(s)|\)` as shown in `\(Eq.\ \ref{eq:xfer-fn-magnitude}\)`.
 
 <p>\begin{align}
 \label{eq:xfer-fn-magnitude}
@@ -67,7 +75,7 @@ Sometimes you'll see the equation for calculating the magnitude of an complex nu
 
 <p>\begin{align}
 |a + jb| = \sqrt{(a + jb)(a - jb)}
-<p>\end{align}
+\end{align}</p>
 
 This is equivalent to `\(| a + jb | = \sqrt{a^2 + b^2}\)`, but in my opinion it takes more simplifying, so I prefer the simple square-root-of-squares approach (which is also intuitive to remember). Remember that the magnitude is the distance of the complex number from the origin when drawn on the complex plane, so you can use Pythagoras' theorem.
 {{% /tip %}}
@@ -90,9 +98,10 @@ where:<br/>
 This rule of finding the phase response can sometimes be wrong, as the `\(\arctan\)` function throws away information about sign. You have to be aware of what quadrant of the Argand diagram you are in and compensate appropriately.
 {{% /warning %}}
 
-## Zeroes And Poles
 
-**A value of `\(s\)` that causes the a transfer function to be 0 is called a _zero_, and a value of `\(s\)` that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as `\(s \rightarrow \infty\)`), poles generally occur when a factor in the denominator is 0. Poles that have an imaginary component always come in pairs (conjugate pairs).
+## Poles and Zeroes
+
+**A value of `\(s\)` that causes the a transfer function to be 0 is called a _zero_, and a value of `\(s\)` that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur as `\(s \rightarrow \infty\)`, if the denominator is of higher order than the numerator), poles generally occur when a factor in the denominator is 0. Poles that have an imaginary component always come in pairs (conjugate pairs).
 
 Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency. A poles is a frequency where the system has infinite response (at least mathematically). You might begin to wonder here why your system would be ok with any poles at all -- surely any frequency in where the gain of the system went to infinity would be a bad thing? Well yes, at any real frequency it would be. The key idea here is that **poles are ok to have as long as their real component is negative, i.e. at a frequency that cannot exist in real life**. On the Argand diagram this means no poles on the right-hand side of the graph.
 
@@ -102,7 +111,7 @@ A notable exception to the rule off "all poles must have a negative real frequen
 
 The zeroes are the roots of the numerator polynomial, and the poles are the roots of the denominator polynomial. For this reason they are also referred to generally as _roots_.
 
-The poles and zeros of a system can tell you much about how the system performs -- it can tell you if the system is stable, how fast it responds.
+The poles and zeros of a system can tell you much about how the system performs -- it can tell you if the system is stable, and how fast it responds. In fact, the poles and zeroes completely characterize the filter, except for the overall gain constant `\(K\)`[^bib-mit-understanding-poles-and-zeroes].
 
 For example, the transfer function in `\(Eq. \ref{eq:xfer-fn-1-over-s}\)` has a pole at the origin and a zero at infinity. This simple transfer function represents an integrator. A constant voltage applied to it will result in an output climbs without any limit. However, at high frequencies, the output is essentially zero as the positive and negative parts of the waveform are averaged out over time.
 
@@ -201,3 +210,4 @@ The OKAWA Electric Design website has a [Transfer Function Analysis and Design t
 
 [^bib-wolfram-alpha-transfer-function-2nd-order-bessel]: Wolfram Alpha. _Results from providing the input text "transfer function (3)/(s^2+3s+3)"_. Retrieved 2022-10-22, from https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29.
 [^bib-okawa-transfer-function-analysis]: OKAWA Electric Design. _Transfer Function Analysis and Design Tool_. Retrieved 2022-10-23, from http://sim.okawa-denshi.jp/en/dtool.php.
+[^bib-mit-understanding-poles-and-zeroes]: MIT: Department of Mechanical Engineering. _2.14 Analysis and Design of Feedback Control Systems: Understanding Poles and Zeros_. Retrieved 2022-10-24, from https://web.mit.edu/2.14/www/Handouts/PoleZero.pdf.
