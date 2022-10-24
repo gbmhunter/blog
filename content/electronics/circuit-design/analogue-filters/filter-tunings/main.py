@@ -1,5 +1,6 @@
 import math
 from pathlib import Path
+from shutil import which
 from typing import List
 
 from bs4 import BeautifulSoup
@@ -20,7 +21,8 @@ def main():
     # chebyshev_poly()
     # create_chebyshev_poly_graph()
 
-    create_bessel_poly_table()
+    # create_bessel_poly_table()
+    create_bessel_bode_plots()
 
 #==========================================================
 # Butterworth
@@ -269,10 +271,39 @@ def create_bessel_poly_table() -> None:
         html_row.append(td)
 
         soup.table.tbody.append(html_row)
-    print(soup)
+    
     table_file_path = SCRIPT_DIR / 'bessel-polynomial-coeffs-table.html'
     with table_file_path.open('w') as file:
         file.write(soup.prettify())
+
+def create_bessel_bode_plots():
+    # H(s) = 3 / (s^2 + 3s + 3)
+    # | H(w) | = 3 / sqrt(w^4 + 3w^2 + 9)
+    omega = np.logspace(-1, 1, num=500)
+    gain = 3 / np.sqrt(omega**4 + 3*omega**2 + 9)
+    gain_dB = 20*np.log(gain)
+    # angle(H(w)) = Arg(0/3) - Arg(3w/(3-w^2))
+    phase_rad = np.arctan2(0, 3) - np.arctan2(3*omega, 3 - omega**2)
+    phase_deg = np.rad2deg(phase_rad)
+
+    fig, axes = plt.subplots(ncols=1, nrows=2, figsize=(7, 7))
+    ax = axes[0]
+    ax.plot(omega, gain_dB)
+    ax.set_xscale('log')
+    ax.set_xlabel('$\omega$ [$rads^{-1}$]')
+    ax.set_ylabel('Gain [$dB$]')
+    ax.grid(which='both')
+
+    ax = axes[1]
+    ax.plot(omega, phase_deg)
+    ax.set_xscale('log')
+    ax.set_xlabel('$\omega$ [$rads^{-1}$]')
+    ax.set_ylabel('Phase [$^{\circ}$]')
+    ax.set_yticks([-180, -135, -90, -45, 0])
+    ax.grid(which='both')
+
+    fig.tight_layout()
+    fig.savefig(SCRIPT_DIR / 'bessel-2nd-order-bode-plot.png')
 
 if __name__ == '__main__':
     main()

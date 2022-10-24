@@ -283,7 +283,32 @@ H(s) &= \frac{\theta_n(0)}{\theta_n(s/\omega_0)} \nonumber \\
 
 To find the magnitude response of this we substitute `\(s = j\omega\)`.
 
-TODO: Finish this.
+<p>\begin{align}
+|H(\omega)| &= \left|\frac{3}{(j\omega)^2 + 3(j\omega) + 3}\right| \nonumber \\
+            &= \frac{3}{|-\omega^2 + 3j\omega + 3|} \nonumber \\
+            &= \frac{3}{| (3-\omega^2) + j(3\omega) |} \nonumber \\
+            &= \frac{3}{\sqrt{\omega^4 - 6\omega^2 + 9 + 9\omega^2}} \nonumber \\
+            &= \frac{3}{\sqrt{\omega^4 + 3\omega^2 + 9}} \nonumber \\
+\end{align}</p>
+
+And finding the phase response:
+
+<p>\begin{align}
+\angle H(\omega) &= Arg{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} \nonumber \\
+                 &= Arg{\frac{\Im (num)}{\Re (num)}} - Arg{\frac{\Im (den)}{\Re (den)}} \nonumber \\
+                 &= Arg{\frac{0}{3}} - Arg{\frac{3\omega}{3 - \omega^2}} \nonumber \\
+\end{align}</p>
+
+`\(Arg\)` can be implemented with `atan2()` in most programming languages, i.e.:
+
+<p>\begin{align}
+\angle H(\omega) &= Arg{\frac{0}{3}} - Arg{\frac{3\omega}{3 - \omega^2}} \nonumber \\
+                 &= atan2(0,\ 3) - atan2(3\omega,\ 3 - \omega^2) \nonumber \\
+\end{align}</p>
+
+We now use these equations for magnitude and phase and create bode plots!
+
+{{% figure src="bessel-2nd-order-bode-plot.png" width="600px" caption="Bode plots for the 2nd-order Bessel low-pass filter." %}}
 
 </div>
 

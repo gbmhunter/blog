@@ -110,9 +110,14 @@ where:<br/>
 </p>
 
 {{% warning %}}
-This rule of finding the phase response can sometimes be wrong, as the `\(\arctan\)` function throws away information about sign. You have to be aware of what quadrant of the Argand diagram you are in and compensate appropriately.
+Using `\(tan^{-1}\)` (`\(\arctan\)`) to calculate the angle can sometimes be wrong, as this function throws away information about sign. You have to be aware of what quadrant of the Argand diagram you are in and compensate appropriately. Or stick to using an `atan2(y, x)` function if your calculator/programming language supports it, as this does all the hard work for you.
 {{% /warning %}}
 
+Rather than finding the imaginary and real parts of the entire transfer function to calculate the phase, it can be easier to work out the real/imaginary parts for the numerator/denominator separately:
+
+<p>\begin{align}
+\angle H(s) = \angle (numerator) - \angle (denominator)
+\end{align}</p>
 
 ## Poles and Zeroes
 
