@@ -123,10 +123,10 @@ Rather than finding the imaginary and real parts of the entire transfer function
 
 **A value of `\(s\)` that causes the a transfer function to be 0 is called a _zero_, and a value of `\(s\)` that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur as `\(s \rightarrow \infty\)`, if the denominator is of higher order than the numerator), poles generally occur when a factor in the denominator is 0. Poles that have an imaginary component always come in pairs (conjugate pairs).
 
-Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency. A poles is a frequency where the system has infinite response (at least mathematically). You might begin to wonder here why your system would be ok with any poles at all -- surely any frequency in where the gain of the system went to infinity would be a bad thing? Well yes, at any real frequency it would be. The key idea here is that **poles are ok to have as long as their real component is negative, i.e. at a frequency that cannot exist in real life**. On the Argand diagram this means no poles on the right-hand side of the graph.
+Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency (as the numerator goes to 0, so does the entire function). A poles is a frequency where the system has infinite response (at least mathematically, as the denominator goes to 0, the function goes to infinity). **Poles in the right-half of the Argand diagram (which have a positive real component) cause the system to diverge towards infinity, and your system will be unstable**.
 
 {{% tip %}}
-A notable exception to the rule off "all poles must have a negative real frequency component" is for oscillators. You want them to have some positive feedback, that's what makes them oscillate by themselves!
+A notable exception to the rule off "all poles must have a negative real component" is for oscillators. You want them to have some positive feedback, that's what makes them oscillate by themselves!
 {{% /tip %}}
 
 The zeroes are the roots of the numerator polynomial, and the poles are the roots of the denominator polynomial. For this reason they are also referred to generally as _roots_.
