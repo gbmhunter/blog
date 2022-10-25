@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2021-09-04
 draft: false
-lastmod: 2022-10-22
-tags: [ electronics, poles, zeroes, transfer functions, bode plots, Laplace, control systems, complex numbers, angular frequency, Argand diagram, frequency response, filters, Wolfram Alpha ]
+lastmod: 2022-10-26
+tags: [ electronics, poles, zeroes, transfer functions, bode plots, Laplace, control systems, complex numbers, angular frequency, Argand diagram, frequency response, filters, Wolfram Alpha, group delay, Python, scipy ]
 title: What Are Transfer Functions, Poles, And Zeroes?
 type: page
 ---
@@ -140,6 +140,31 @@ For example, the transfer function in `\(Eq. \ref{eq:xfer-fn-1-over-s}\)` has a 
 H(s) = \frac{1}{s}
 \end{align}</p>
 
+### Pole Zero Plots (Argand Diagrams)
+
+Poles and zeroes are plotted in a _Argand diagram_ in what is called a _pole-zero plot_ to give the reader an understanding on how the circuit responds.
+
+* Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
+* Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.
+
+Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are building an oscillator, poles in the right-hand half of the plane (having a positive real component) are a bad thing, as they represent an instability.
+
+{{% figure src="poles-graph.png" width="900px" caption="Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses)." %}}
+
+## Group Delay
+
+The _group delay_ `\(D(\omega)\)` is defined as negative of the slope of the phase vs. frequency plot. This can be written mathematically as:
+
+<p>\begin{align}
+D(\omega) \triangleq -\frac{d}{d\omega} \theta(\omega)
+\end{align}</p>
+
+Intuitively, you can think of group delay as the time delay in second that a signal takes to pass through a filter, as a function of frequency. Group delay has units of seconds.
+
+The Bessel filter tuning aims to have maximally flat group delay across the pass-band of the signal.
+
+Group delay can be calculated in Python with `scipy`. `scipy` provides the `scipy.signal.group_delay()` function which takes as input the numerator and denominator coefficients of the transfer function and returns the calculated group delay.
+
 ## The Transfer Function Of A Low-Pass RC Filter
 
 A first-order low-pass RC filter has the transfer function shown in `\(Eq.\ \ref{eq:rc-xfer-fn}\)`.
@@ -196,17 +221,6 @@ We can safely reduce `\(Arg\)` to `\(arctan\)` because we know that `\(1 + j\ome
 {{% /tip %}}
 
 {{% figure src="low-pass-rc-filter-phase.png" width="600px" caption="The phase response of the the low-pass RC filter, found by plotting `\(Eq.\ \ref{eq:phase-response-lp-rc-filter}\)`" %}}
-
-## Pole Zero Plots (Argand Diagrams)
-
-Poles and zeroes are plotted in a _Argand diagram_ in what is called a _pole-zero plot_ to give the reader an understanding on how the circuit responds.
-
-* Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
-* Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.
-
-Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are building an oscillator, poles in the right-hand half of the plane (having a positive real component) are a bad thing, as they represent an instability.
-
-{{% figure src="poles-graph.png" width="900px" caption="Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses)." %}}
 
 ## Transfer Function Design Tools
 

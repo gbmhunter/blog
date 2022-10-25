@@ -238,7 +238,7 @@ def chebyshev_poly_coeffs(n: int) -> List[float]:
 
 ## Bessel Tunings
 
-A _Bessel_ tuned filter is one which has a maximally linear phase response. This corresponds to a maximally flat group/phase delay (the time it takes for a signal to pass through as a function of frequency). This behaviour preserves the shapes of filtered signals in the passband, which is a desirable property for audio signals. It is also sometimes called _Bessel-Thomson_ tuned filters because W. E. Thomson who worked out how to apply Bessel functions to electronic filters in 1949[^bib-thomson-delay-networks-maximally-flat-freq].
+A _Bessel_ tuned filter is one which has a **maximally linear phase response**. This corresponds to a **maximally flat group/phase delay** (the time it takes for a signal to pass through as a function of frequency). This behaviour preserves the shapes of filtered signals in the passband, which is a desirable property for audio signals. It is also sometimes called _Bessel-Thomson_ tuned filters because W. E. Thomson who worked out how to apply Bessel functions to electronic filters in 1949[^bib-thomson-delay-networks-maximally-flat-freq].
 
 The transfer function of a low-pass Bessel tuned filter is[^bib-wikipedia-bessel-filter]:
 
@@ -269,6 +269,10 @@ However, by this definition of the reverse Bessel polynomials, `\(\theta_n(0)\)`
 The above equations were used to generate the table below, which lists the reverse Bessel polynomials of degree 0 to 8. 
 
 {{% file src="bessel-polynomial-coeffs-table.html" %}}
+
+The visually demonstrate the flat group delay of the Bessel tuned filter, we can plot the group delay of the Bessel-tuned 4th-order low-pass filter vs. a number of other popular tunings. The below plot shows the group delay for Bessel, Butterworth, Chebyshev and Elliptic tuned filter. The critical frequency was set to `\(10kHz\)` for all filter tunings. All filters are 4th-order. As you can see, the Bessel tuned filter has the flattest group delay.
+
+{{% figure src="tuning-comparison-group-delay.png" width="700px" caption="The group delay for various 4th-order filter tunings. The Bessel-tuned filter has the flattest group delay in the passband." %}}
 
 <div class="worked-example">
 
