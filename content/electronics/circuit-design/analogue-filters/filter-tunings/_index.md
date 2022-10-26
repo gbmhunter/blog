@@ -264,6 +264,10 @@ The visually demonstrate the flat group delay of the Bessel tuned filter, we can
 
 {{% figure src="tuning-comparison-group-delay.png" width="700px" caption="The group delay for various 4th-order filter tunings. The Bessel-tuned filter has the flattest group delay in the passband." %}}
 
+This also means that a Bessel-tuned filter has the **least ringing due to a step response**, as shown in the plot below (more on this in the [Comparisons Between Filter Tunings section](#comparisons-between-filter-tunings)).
+
+{{% figure src="tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings. The Bessel-tuned filter has the least ringing." %}}
+
 <div class="worked-example">
 
 **Find the transfer function for a 2nd-order Bessel low-pass filter with `\(\omega_0 = 1\)`. Then find the equations for magnitude/phase and create bode plots.**
@@ -362,6 +366,12 @@ Now we can look at the phase response.
 A comparison of group delay for the various filter tunings is shown below. You can clearly shows the flat group delay of the Bessel filter, and the horrible response of the Chebyshev/Elliptic filter tunings.
 
 {{% figure src="tuning-comparison-group-delay.png" width="600px" caption="Group delay comparison of different filter tunings." %}}
+
+The step response is also interesting to look at. The input step was from `\(0V\)` to `\(1V\)` and the output of each filter is shown below:
+
+{{% figure src="tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings." %}}
+
+The Bessel-tuned filter shows the least amount of ringing. This is what we would expect, as the Bessel-filter is optimized to have the flattest group delay. All frequencies get delayed by roughly the same amount, and so the output is not "distorted". Ringing is a result of different frequencies being delayed by different amounts of time (remember that an input step response essentially has frequency components at all frequencies, hence why it is a good testcase for a filter).
 
 ## References
 

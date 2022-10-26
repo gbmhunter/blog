@@ -459,5 +459,31 @@ def create_comparison_plots() -> None:
     fig.tight_layout()
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-group-delay.png')
 
+    #======================
+    # STEP RESPONSE
+    #======================
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    # From inspection, t=0 to t=600us seems interesting
+    time_s = np.linspace(0, 0.6e-3, 1000)
+    for filter_tuning in filter_tunings:
+        # Calculate value of transfer function h at various w
+        b = filter_tuning['b']
+        a = filter_tuning['a']
+        _, amplitude = scipy.signal.step((filter_tuning['b'], filter_tuning['a']), T=time_s)
+        
+        ax.plot(time_s*1e6, amplitude, label=filter_tuning['name'])
+
+    # Draw vertical marker at w_c
+    # ax.axvline(x=critical_freq_Hz, ls='--', color='grey')
+    # ax.set_xscale('log')
+    ax.set_xlabel('Time $t$ [$us$]')
+    ax.set_ylabel('Amplitude [$V$]')
+    # ax.set_ylim(0, 0.15)
+    ax.grid(which='both')
+    fig.legend()
+    fig.tight_layout()
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-step-response.png')
+
 if __name__ == '__main__':
     main()
