@@ -24,7 +24,7 @@ def main():
     # create_bessel_poly_table()
     # create_bessel_bode_plots()
 
-    create_group_delay_comparison_plot()
+    create_comparison_plots()
 
 #==========================================================
 # Butterworth
@@ -311,8 +311,10 @@ def create_bessel_bode_plots():
 # Comparisons (all filter tunings)
 #==========================================================
 
-def create_group_delay_comparison_plot():
-
+def create_comparison_plots() -> None:
+    """
+    Creates a number of plots to compare gain, phase, group delay e.t.c for various filter tunings.
+    """
     filter_tunings = []
 
     order = 4
@@ -328,7 +330,7 @@ def create_group_delay_comparison_plot():
 
     b, a = scipy.signal.cheby1(N=order, rp=3, Wn=critical_freq_radps, btype='lowpass', analog=True)
     filter_tunings.append({
-        'name': 'Chebyshev_3dB',
+        'name': 'Chebyshev_TypeI_3dB',
         'b': b,
         'a': a,
     })
@@ -353,7 +355,34 @@ def create_group_delay_comparison_plot():
     w = 2*np.pi*f
 
     #======================
-    # Gain
+    # Gain (linear axes)
+    #======================
+
+    f_linear_Hz = np.linspace(0, critical_freq_Hz*2, 500)
+    w_linear_radps = 2*np.pi*f_linear_Hz
+    fig, ax = plt.subplots(figsize=(7, 5))
+    for filter_tuning in filter_tunings:
+        # Calculate value of transfer function h at various w
+        b = filter_tuning['b']
+        a = filter_tuning['a']
+        _, h = scipy.signal.freqs(b, a, worN=w_linear_radps)
+
+        # Calculate the group delay
+        gain = np.abs(h)
+        
+        ax.plot(f_linear_Hz, gain, label=filter_tuning['name'])
+
+    # Draw vertical marker at w_c
+    ax.axvline(x=critical_freq_Hz, ls='--', color='grey')    
+    ax.set_xlabel('Frequency $f$ [$Hz$]')
+    ax.set_ylabel('Gain $|H(f)|$ [$V/V$]')
+    ax.grid(which='both')
+    fig.legend()
+    fig.tight_layout()
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-gain-linear.png')
+
+    #======================
+    # Gain (db)
     #======================
 
     fig, ax = plt.subplots(figsize=(7, 5))
@@ -372,11 +401,36 @@ def create_group_delay_comparison_plot():
     ax.axvline(x=critical_freq_Hz, ls='--', color='grey')
     ax.set_xscale('log')
     ax.set_xlabel('Frequency $f$ [$Hz$]')
-    ax.set_ylabel('Gain |H($f$)| [$dB$]')
+    ax.set_ylabel('Gain $|H(f)|$ [$dB$]')
     ax.grid(which='both')
     fig.legend()
     fig.tight_layout()
-    fig.savefig(SCRIPT_DIR / 'tuning-comparison-gain.png')
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-gain-db.png')
+
+    #======================
+    # PHASE
+    #======================
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    for filter_tuning in filter_tunings:
+        # Calculate value of transfer function h at various w
+        b = filter_tuning['b']
+        a = filter_tuning['a']
+        _, h = scipy.signal.freqs(b, a, worN=w)
+        
+        phase_deg = np.rad2deg(np.unwrap(np.angle(h)))
+        ax.plot(f, phase_deg, label=filter_tuning['name'])
+
+    # Draw vertical marker at w_c
+    ax.axvline(x=critical_freq_Hz, ls='--', color='grey')
+    ax.set_xscale('log')
+    ax.set_xlabel('Frequency $f$ [$Hz$]')
+    ax.set_ylabel(r'Phase ($\theta$) [$deg$]')
+    ax.set_yticks([-360, -315, -270, -225, -180, -135, -90, -45, 0])
+    ax.grid(which='both')
+    fig.legend()
+    fig.tight_layout()
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-phase.png')
 
     #======================
     # GROUP DELAY

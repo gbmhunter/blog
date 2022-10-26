@@ -21,24 +21,14 @@ _Filter tunings_ are specific tunings of filters to maximise a particular charac
 * **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
 * **Elliptic:** Designed to have the fastest transition from the passband to the stopband, at the expense of ripple in both of these bands (Chebyshev optimization only produces ripple in one of the bands but is not as fast in the transition). Also called _Cauer_ filters or _Rational Chebyshev_ filters.
 
-The graphs below show the differences in response (bode plots, gain and phase) for these various filter tunings:
-
-{{% figure src="low-pass-filter-optimization-comparison-gain-db.png" width="700px" caption="A comparison of different filter optimizations. Gain shown in dB." %}}
-
-Sometimes the differences can been visualized better by display the gain as `\(V/V\)`:
-
-{{% figure src="low-pass-filter-optimization-comparison-gain-vv.png" width="700px" caption="A comparison of different filter optimizations. Gain shown in V/V." %}}
-
-The linear phase delay of the Bessel filter is best visualized in the below plot where the phase in plotted on a linear scale rather than a logarithmic:
-
-{{% figure src="low-pass-filter-optimization-comparison-phase-linear.png" width="700px" caption="Phase delay of different filter optimizations, with the frequency plotted on a linear axis rather than a logarithmic axis. This is the best way to visualize the linear phase delay of the Bessel optimization." %}}
+These filters are explained in more detail below. If you are interested in visual comparisons, you can skip straight to the [Comparisons Between Filter Tunings section](#comparisons-between-filter-tunings).
 
 ## Butterworth Tunings
 
 Tuning a filter for a Butterworth response gives a filter which is **maximally flat in the passband**, and rolls off towards zero in the stopband. The price you pay for this is slower roll-off into the stop-band, compared with Chebyshev or Elliptic tunings.
 
 {{% tip %}}
-It may sounds dumb, but I've always remembered Butterworth as a flat passband which "slides like butter".
+It may sound dumb, but I've always remembered Butterworth as a flat passband which "slides like butter".
 {{% /tip %}}
 
 Butterworth tunings are defined as a filter whose magnitude is[^bib-wikipedia-butterworth-filter]:
@@ -320,6 +310,22 @@ We now use these equations for magnitude and phase and create bode plots!
 
 Elliptic-tuned filters (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter].
 
+Whereas most tunings are defined with a transfer function, the Elliptic filter is a special case where it is defined by it's gain. The gain for a lowpass Elliptic tuned filter is[^bib-wikipedia-elliptic-filter]:
+
+<p>\begin{align}
+G_n(\omega) &= \frac{1}{\sqrt{1 + \epsilon^2 R_n^2 (\xi, \omega/\omega_c)}} \nonumber \\
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(\epsilon\) is the ripple factor<br/>
+\(R_n(\xi, \omega)\) is the nth-order elliptic rational function<br/>
+\(\xi\) is the selectivity factor (\(\xi \geq 1\))<br/>
+\(\omega_c\) is the characteristic frequency, in radians per second \(rads^{-1}\)<br/>
+</p>
+
+**The big problem is that the elliptic ration function `\(R_n\)` cannot be easily expressed algebraically![^bib-recording-blogs-elliptic-filter]** It's general definition involves a Jacobi elliptic cosine function and the elliptic integral. Diving into this would be a headache, so we're just going to take the easy option and use the Python `scipy.signal.ellip()` function to provide us with the transfer function coefficients.
+
 You can generate an Elliptical filter in Python using the scipy package:
 
 ```python
@@ -328,60 +334,34 @@ import scipy.signal
 scipy.signal.ellip(N, rp, rs, Wn, btype='low', analog=False, output='ba', fs=None)
 ```
 
-## Filter Coefficient Tables
+## Comparisons Between Filter Tunings
 
-* `\(n\)` is the filter order
-* `\(i\)` is the partial filter order
-* `\(a_i\)` and `\(b_i\)` are the filter coefficients
-* `\(k_i\)` is the ratio between the corner frequency of the partial filter `\(f_{ci}\)` and the corner frequency of the overall filter `\(f_c\)`. In equation form:
-    <p>\begin{align}k_i = \frac{f_{ci}}{f_c} \end{align}</p>
-* `\(Q_i\)` is the quality factor of the partial filter
+The following parameters were used for the filters:
 
-All values have been normalized by setting `\(\omega_c = 1\)`.
+* All filters are 4th-order filters.
+* Characteristic frequency `\(f_c\)` of `\(10kHz\)`. For Butterworth and Bessel tunings the characteristic frequency is defined as the `\(-3dB\)` point. For Chebyshev and Elliptic filter tunings the characteristic frequency is defined as the point where the ripple leaves the allowable amount in the passband.
+* A rather arbitrary `\(3dB\)` of passband ripple was allowed for both the Chebyshev and Elliptic filters.
+* Being even more arbitrary, the Elliptic filter was allowed to rise back up to `\(-40dB\)` in the stopband.
 
-#### Butterworth Coefficients
+With the above specified, **the transfer function of each filter is fully defined**.
 
-<table>
-  <thead>
-    <tr><th>n</th>  <th>\(i\)</th>  <th>\(a_i\)</th>  <th>\(b_i\)</th>  <th>\(k_i\)</th>  <th>\(Q_i\)</th>  <th style="width: 200px;">Polynomial Factors</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td>  <td>\(s + 1\)</td></tr>
-    <tr><td>2</td>      <td>1</td>      <td>1.4142</td>   <td>1.0000</td>   <td>1.000</td>    <td>0.71</td> <td>\(s^2 + 1.4142s + 1\)</td></tr>
-    <tr><td>3</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td>  <td rowspan="2">\((s + 1)(s^2 + s + 1)\)</td></tr>
-    <tr><td></td>       <td>2</td>      <td>1.0000</td>   <td>1.0000</td>   <td>1.272</td>    <td>1.00</td></tr>
-  </tbody>
-</table>
+Now we can finally look at some comparisons. The below plot compare the gain response of each filter tuning. Both axis are logarithmic. You can clearly see the Elliptic-tuned filter winning the race.
 
+{{% figure src="tuning-comparison-gain-db.png" width="600px" caption="Gain comparison of different filter tunings." %}}
 
+I think the difference is gain response can be better viewed with linear x and y axes So we'll drop the `\(dB\)` in favour of `\(V/V\)` and get rid of the logarithmic x-axis:
 
-### Chebyshev Coefficients For 3dB Passband Ripple
+{{% figure src="tuning-comparison-gain-linear.png" width="600px" caption="Gain comparison of different filter tunings, now with linear x and y axes." %}}
 
-<table>
-  <thead>
-    <tr><th>n</th>  <th>\(i\)</th>  <th>\(a_i\)</th>  <th>\(b_i\)</th>  <th>\(k_i\)</th>  <th>\(Q_i\)</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td></tr>
-    <tr><td>2</td>      <td>1</td>      <td>1.0650</td>   <td>1.9305</td>   <td>1.000</td>    <td>1.30</td></tr>
-    <tr><td>3</td>      <td>1</td>      <td>2.7994</td>   <td>0.0000</td>   <td>0.357</td>    <td>n/a</td></tr>
-    <tr><td></td>       <td>2</td>      <td>0.4300</td>   <td>1.2036</td>   <td>1.378</td>    <td>2.55</td></tr>
-  </tbody>
-</table>
+The linear axes helps to highlight the spread in behaviour between the different tunings. Look at that ripple in the passband with the Chebyshev and Elliptic filter tunings!
 
-### Bessel Coefficients
+Now we can look at the phase response.
 
-<table>
-  <thead>
-    <tr><th>n</th>  <th>\(i\)</th>  <th>\(a_i\)</th>  <th>\(b_i\)</th>  <th>\(k_i\)</th>  <th>\(Q_i\)</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td></tr>
-    <tr><td>2</td>      <td>1</td>      <td>1.3617</td>   <td>0.6180</td>   <td>1.000</td>    <td>0.58</td></tr>
-    <tr><td>3</td>      <td>1</td>      <td>0.7560</td>   <td>0.0000</td>   <td>1.323</td>    <td>n/a</td></tr>
-    <tr><td></td>       <td>2</td>      <td>0.9996</td>   <td>0.4772</td>   <td>1.414</td>    <td>0.69</td></tr>
-  </tbody>
-</table>
+{{% figure src="tuning-comparison-phase.png" width="600px" caption="Phase comparison of different filter tunings." %}}
+
+A comparison of group delay for the various filter tunings is shown below. You can clearly shows the flat group delay of the Bessel filter, and the horrible response of the Chebyshev/Elliptic filter tunings.
+
+{{% figure src="tuning-comparison-group-delay.png" width="600px" caption="Group delay comparison of different filter tunings." %}}
 
 ## References
 
@@ -393,3 +373,4 @@ All values have been normalized by setting `\(\omega_c = 1\)`.
 [^bib-wikipedia-chebyshev-polynomials]: Wikipedia (2022, Oct 16). _Chebyshev polynomials_. Retrieved 2022-10-16, from https://en.wikipedia.org/wiki/Chebyshev_polynomials.
 [^bib-thomson-delay-networks-maximally-flat-freq]: W. E. Thomson (1949, Nov). _Delay networks having maximally flat frequency characteristics_. 621.392.5: Paper No. 872 - Radio section.
 [^bib-wikipedia-bessel-filter]: Wikipedia (2022, Oct 16). _Bessel filter_. Retrieved 2022-10-20, from https://en.wikipedia.org/wiki/Bessel_filter.
+[^bib-recording-blogs-elliptic-filter]: Recording Blogs. _Elliptic filter_. Retrieved 2022-10-26, from https://www.recordingblogs.com/wiki/elliptic-filter.

@@ -240,6 +240,10 @@ It will spit back at you things like the unit step response, state space represe
 
 The OKAWA Electric Design website has a [Transfer Function Analysis and Design tool](http://sim.okawa-denshi.jp/en/dtool.php) which can calculate many of the same things the Wolfram Alpha tool can[^bib-okawa-transfer-function-analysis].
 
+## Further Reading
+
+See the [Filter Tunings page](/electronics/circuit-design/analogue-filters/filter-tunings/) for info Butterworth, Chebyshev, Bessel and Elliptic analogue filter tunings and how to create their transfer functions from specific polynomials.
+
 ## References
 
 [^bib-wolfram-alpha-transfer-function-2nd-order-bessel]: Wolfram Alpha. _Results from providing the input text "transfer function (3)/(s^2+3s+3)"_. Retrieved 2022-10-22, from https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29.
