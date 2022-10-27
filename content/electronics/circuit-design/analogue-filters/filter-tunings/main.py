@@ -412,7 +412,7 @@ def create_comparison_plots() -> None:
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-gain-db.png')
 
     #======================
-    # PHASE
+    # PHASE (log x)
     #======================
 
     fig, ax = plt.subplots(figsize=(7, 5))
@@ -435,7 +435,32 @@ def create_comparison_plots() -> None:
     fig.legend()
     fig.tight_layout()
     util.add_watermark_to_fig(fig)
-    fig.savefig(SCRIPT_DIR / 'tuning-comparison-phase.png')
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-phase-log.png')
+
+    #======================
+    # PHASE (linear x)
+    #======================
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    for filter_tuning in filter_tunings:
+        # Calculate value of transfer function h at various w
+        b = filter_tuning['b']
+        a = filter_tuning['a']
+        _, h = scipy.signal.freqs(b, a, worN=w_linear_radps)
+        
+        phase_deg = np.rad2deg(np.unwrap(np.angle(h)))
+        ax.plot(f_linear_Hz, phase_deg, label=filter_tuning['name'])
+
+    # Draw vertical marker at w_c
+    ax.axvline(x=critical_freq_Hz, ls='--', color='grey')
+    ax.set_xlabel('Frequency $f$ [$Hz$]')
+    ax.set_ylabel(r'Phase ($\theta$) [$deg$]')
+    ax.set_yticks([-360, -315, -270, -225, -180, -135, -90, -45, 0])
+    ax.grid(which='both')
+    fig.legend()
+    fig.tight_layout()
+    util.add_watermark_to_fig(fig)
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-phase-linear.png')
 
     #======================
     # GROUP DELAY

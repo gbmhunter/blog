@@ -312,7 +312,7 @@ We now use these equations for magnitude and phase and create bode plots!
 
 ## Elliptic Tunings
 
-Elliptic-tuned filters (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter].
+Elliptic-tuned filters (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes], but not to be confused with the Cauer/ladder filter topology) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. The ripple has constant magnitude in the passband, and the same applies in the stopband (equal ripple)[^bib-wikipedia-elliptic-filter]. This does not however mean that the amount of ripple in the passband is the same as what is in the stopband!
 
 Whereas most tunings are defined with a transfer function, the Elliptic filter is a special case where it is defined by it's gain. The gain for a lowpass Elliptic tuned filter is[^bib-wikipedia-elliptic-filter]:
 
@@ -385,9 +385,13 @@ I think the difference is gain response can be better viewed with linear x and y
 
 The linear axes helps to highlight the spread in behaviour between the different tunings. Look at that ripple in the passband with the Chebyshev and Elliptic filter tunings!
 
-Now we can look at the phase response.
+Now we can look at the phase response:
 
-{{% figure src="tuning-comparison-phase.png" width="600px" caption="Phase comparison of different filter tunings." %}}
+{{% figure src="tuning-comparison-phase-log.png" width="600px" caption="Phase comparison of different filter tunings." %}}
+
+What you can't easily pick out with logarithmic frequency axis is how linear the phase response is. So let's replot the above but with a linear x-axis (frequency). We'll stop plotting at twice the characteristic frequency.
+
+{{% figure src="tuning-comparison-phase-linear.png" width="600px" caption="Phase comparison of different filter tunings, with a linear x-axis (frequency) which makes it easy to see how linear the phase response is." %}}
 
 A comparison of group delay for the various filter tunings is shown below. You can clearly shows the flat group delay of the Bessel filter, and the horrible response of the Chebyshev/Elliptic filter tunings.
 

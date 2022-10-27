@@ -1,14 +1,22 @@
 from logging import log
+from pathlib import Path
+
 import numpy as np
 from scipy.integrate import odeint
+import scipy.signal
 from matplotlib import pyplot as plt
+
+import util
+
+SCRIPT_DIR = Path(__file__).parent
 
 def main():
     # plot_dampened_osc(0.6, 'osc-decreasing.png')
     # plot_dampened_osc(-0.6, 'osc-increasing.png')
     # plot_exponential(2, 'exp-increasing.png')
     # plot_exponential(0.5, 'exp-decreasing.png')
-    create_low_pass_rc_filter_graphs()
+    # create_low_pass_rc_filter_graphs()
+    create_group_delay_comparison_graph()
 
 def plot_dampened_osc(cviscous: float, filename):
     """
@@ -91,6 +99,69 @@ def create_low_pass_rc_filter_graphs():
     ax.set_yticks([ -90, -45, 0 ])
     ax.grid(which='both')
     plt.savefig('low-pass-rc-filter-phase.png')
+
+def create_group_delay_comparison_graph():
+    filter_tunings = []
+
+    order = 4
+    critical_freq_Hz = 10e3
+    critical_freq_radps = 2*np.pi*critical_freq_Hz
+
+    b, a = scipy.signal.butter(N=order, Wn=critical_freq_radps, btype='lowpass', analog=True)
+    filter_tunings.append({
+        'name': 'Butterworth',
+        'b': b,
+        'a': a,
+    })
+
+    b, a = scipy.signal.cheby1(N=order, rp=3, Wn=critical_freq_radps, btype='lowpass', analog=True)
+    filter_tunings.append({
+        'name': 'Chebyshev_TypeI_3dB',
+        'b': b,
+        'a': a,
+    })
+
+    b, a = scipy.signal.bessel(N=order, Wn=critical_freq_radps, btype='lowpass', analog=True)
+    filter_tunings.append({
+        'name': 'Bessel',
+        'b': b,
+        'a': a,
+    })
+
+    # Warning! A rs=3 causes the filter to blow up
+    b, a = scipy.signal.ellip(N=order, rp=3, rs=40, Wn=critical_freq_radps, btype='lowpass', analog=True)
+    filter_tunings.append({
+        'name': 'Elliptic_3dB_40dB',
+        'b': b,
+        'a': a,
+    })
+
+    # Approximately center around critical_freq, 10^4
+    f = np.logspace(3, 5, num=500)
+    w = 2*np.pi*f
+    fig, ax = plt.subplots(figsize=(7, 5))
+    for filter_tuning in filter_tunings:
+        # Calculate value of transfer function h at various w
+        b = filter_tuning['b']
+        a = filter_tuning['a']
+        _, h = scipy.signal.freqs(b, a, worN=w)
+
+        # Calculate the group delay
+        gd = -np.diff(np.unwrap(np.angle(h)))/np.diff(w)
+        
+        ax.plot(f[1:], gd*1e3, label=filter_tuning['name'])
+
+    # Draw vertical marker at w_c
+    ax.axvline(x=critical_freq_Hz, ls='--', color='grey')
+    ax.set_xscale('log')
+    ax.set_xlabel('Frequency $f$ [$Hz$]')
+    ax.set_ylabel('Group delay D($f$) [$ms$]')
+    ax.set_ylim(0, 0.15)
+    ax.grid(which='both')
+    fig.legend()
+    fig.tight_layout()
+    util.add_watermark_to_fig(fig)
+    fig.savefig(SCRIPT_DIR / 'tuning-comparison-group-delay.png')
 
 
 if __name__ == '__main__':

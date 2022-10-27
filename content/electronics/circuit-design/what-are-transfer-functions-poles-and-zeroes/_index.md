@@ -9,8 +9,6 @@ title: What Are Transfer Functions, Poles, And Zeroes?
 type: page
 ---
 
-{{% warning-is-notes %}}
-
 ## Overview
 
 _Transfer functions_ are a way of describing the frequency and phase response of a LTI (linear time invariant) system. The system can be anything with a measurable input and output, e.g. mechanical spring/mass/dampers, electronic RLC circuits, e.t.c. This page will put an emphasis on **electrical transfer functions in the continuous-time domain**.
@@ -153,15 +151,17 @@ Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are 
 
 ## Group Delay
 
-The _group delay_ `\(D(\omega)\)` is defined as negative of the slope of the phase vs. frequency plot. This can be written mathematically as:
+The _group delay_ `\(D(\omega)\)` is defined as **the negative of the slope of the phase vs. frequency plot**. This can be written mathematically as:
 
 <p>\begin{align}
 D(\omega) \triangleq -\frac{d}{d\omega} \theta(\omega)
 \end{align}</p>
 
-Intuitively, you can think of group delay as the time delay in second that a signal takes to pass through a filter, as a function of frequency. Group delay has units of seconds.
+Intuitively, you can **think of group delay as the time delay in seconds that a signal takes to pass through a filter as a function of frequency**. Group delay has units of seconds. All casual filters (e.g. analogue filters) will have a non-zero, positive group delay. "Flatish" group delay plots in the passband are generally desirable as this means all frequencies will take the same time to pass through the filter, and thus the signal at the output will have minimal distortion (distortion is a result of different frequencies being delayed for different amounts of time).
 
-The Bessel filter tuning aims to have maximally flat group delay across the pass-band of the signal.
+Group delay for a number of 4-order filter tunings is shown below. The Bessel filter tuning aims to have maximally flat group delay across the pass-band of the signal (at the expense of other metrics we don't talk about here). You can see this in the plot with the straight green line.
+
+{{% figure src="tuning-comparison-group-delay.png" width="600px" caption="Group delay plotted for a number of different 4-order filter tunings." %}}
 
 Group delay can be calculated in Python with `scipy`. `scipy` provides the `scipy.signal.group_delay()` function which takes as input the numerator and denominator coefficients of the transfer function and returns the calculated group delay.
 
@@ -243,6 +243,8 @@ The OKAWA Electric Design website has a [Transfer Function Analysis and Design t
 ## Further Reading
 
 See the [Filter Tunings page](/electronics/circuit-design/analogue-filters/filter-tunings/) for info Butterworth, Chebyshev, Bessel and Elliptic analogue filter tunings and how to create their transfer functions from specific polynomials.
+
+If you are interested in digital filters, you can check out the [Windowed Moving Average Filters page](/programming/signal-processing/digital-filters/windowed-moving-average-filters/) and the [Exponential Moving Average (EMA) Filters page](https://blog.mbedded.ninja/programming/signal-processing/digital-filters/exponential-moving-average-ema-filter/).
 
 ## References
 
