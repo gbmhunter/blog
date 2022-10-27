@@ -4,7 +4,7 @@ categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
 description: Butterworth, Chebyshev, Bessel, elliptic, transfer functions, polynomials, equations, graphs and more information on analogue filter tunings. 
 draft: false
-lastmod: 2022-10-20
+lastmod: 2022-10-27
 tags: [ electronics, circuit design, filters, tunings, Butterworth, Chebyshev, Bessel, Bessel-Thomson, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband ]
 title: Filter Tunings
 type: page
@@ -328,15 +328,41 @@ where:<br/>
 \(\omega_c\) is the characteristic frequency, in radians per second \(rads^{-1}\)<br/>
 </p>
 
-**The big problem is that the elliptic ration function `\(R_n\)` cannot be easily expressed algebraically![^bib-recording-blogs-elliptic-filter]** It's general definition involves a Jacobi elliptic cosine function and the elliptic integral. Diving into this would be a headache, so we're just going to take the easy option and use the Python `scipy.signal.ellip()` function to provide us with the transfer function coefficients.
+**The big problem is that the elliptic ration function `\(R_n\)` cannot be easily expressed algebraically![^bib-recording-blogs-elliptic-filter]** It's general definition involves a Jacobi elliptic cosine function and the elliptic integral[^bib-rutgers-elliptic-lecture-notes]. Diving into this would be a headache, so we're just going to take the easy option and use the Python `scipy.signal.ellip()` function to provide us with the transfer function coefficients.
 
 You can generate an Elliptical filter in Python using the scipy package:
 
 ```python
 import scipy.signal
 
-scipy.signal.ellip(N, rp, rs, Wn, btype='low', analog=False, output='ba', fs=None)
+b, a = scipy.signal.ellip(N, rp, rs, Wn, btype='lowpass', analog=True)
 ```
+
+where `N` is the order of the filter, `rp` is the maximum ripple allowed below unity in the passband, `rs` is the minimum attenuation required in the stopband, and `Wn` is the critical (characteristic) frequency. The returned `b` and `a` are arrays of the transfer function numerator and denominator coefficients.
+
+<div class="worked-example">
+
+**Use the Python scipy package and find the transfer function for a 2nd-order lowpass Elliptic-tuned filter with a characteristic frequency of `\(10kHz\)`, passband ripple of `\(3dB\)`, and a minimum attenuation of \(40dB\) in the stopband.**
+
+```python
+import numpy as np
+import scipy.signal
+b, a = scipy.signal.ellip(N=2, rp=3, rs=40, Wn=2*np.pi*10e3, btype='lowpass', analog=True)
+print(f'b={b}, a={a}')
+# b=[1.00098303e-02 0.00000000e+00 1.99828046e+09], a=[1.00000000e+00 4.02295857e+04 2.82264617e+09]
+```
+
+This gives the below transfer function, which considering the coefficients of the other filter tuning types, are pretty strange!
+
+<p>\begin{align}
+H(s) &= \frac{1.00098303\times10^{-2}s^2 + 1.99828046\times10^{9}}{s^2 + 4.02295857\times10^4s + 2.82264617\times10^9} \nonumber \\
+\end{align}</p>
+
+</div>
+
+{{% warning %}}
+You can run into stability issues when representing transfer functions in the `b, a` form with high-order Elliptic-tuned filters.
+{{% /warning %}}
 
 ## Comparisons Between Filter Tunings
 
@@ -349,7 +375,7 @@ The following parameters were used for the filters:
 
 With the above specified, **the transfer function of each filter is fully defined**.
 
-Now we can finally look at some comparisons. The below plot compare the gain response of each filter tuning. Both axis are logarithmic. You can clearly see the Elliptic-tuned filter winning the race.
+Now we can finally look at some comparisons. The below plot compares the gain response of each filter tuning. Both axis are logarithmic. You can clearly see the Elliptic-tuned filter winning the race.
 
 {{% figure src="tuning-comparison-gain-db.png" width="600px" caption="Gain comparison of different filter tunings." %}}
 
@@ -372,6 +398,12 @@ The step response is also interesting to look at. The input step was from `\(0V\
 {{% figure src="tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings." %}}
 
 The Bessel-tuned filter shows the least amount of ringing. This is what we would expect, as the Bessel-filter is optimized to have the flattest group delay. All frequencies get delayed by roughly the same amount, and so the output is not "distorted". Ringing is a result of different frequencies being delayed by different amounts of time (remember that an input step response essentially has frequency components at all frequencies, hence why it is a good testcase for a filter).
+
+## Further Reading
+
+If you want to learn more about transfer functions, the Laplace transform, gain/phase plots and group delay, check out the [What Are Transfer Functions, Poles, And Zeroes? page](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/).
+
+If you are interested in actually building a filter with these filter tunings, you'll have to learn how to apply a specific filter tuning to a particular filter topology. For general filter topologies, see the [Analog Filters](/electronics/circuit-design/analogue-filters/) page. For info specific to the popular 2nd-order Sallen-Key filter, see the [Sallen-Key Filters page](/electronics/circuit-design/analogue-filters/sallen-key-filters/).
 
 ## References
 

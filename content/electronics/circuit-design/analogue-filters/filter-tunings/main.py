@@ -11,6 +11,8 @@ import scipy.signal
 from sympy import *
 from tabulate import tabulate
 
+import util
+
 SCRIPT_DIR = Path(__file__).parent
 
 def main():
@@ -373,12 +375,13 @@ def create_comparison_plots() -> None:
         ax.plot(f_linear_Hz, gain, label=filter_tuning['name'])
 
     # Draw vertical marker at w_c
-    ax.axvline(x=critical_freq_Hz, ls='--', color='grey')    
+    ax.axvline(x=critical_freq_Hz, ls='--', color='grey')
     ax.set_xlabel('Frequency $f$ [$Hz$]')
     ax.set_ylabel('Gain $|H(f)|$ [$V/V$]')
     ax.grid(which='both')
     fig.legend()
     fig.tight_layout()
+    util.add_watermark_to_fig(fig)
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-gain-linear.png')
 
     #======================
@@ -405,6 +408,7 @@ def create_comparison_plots() -> None:
     ax.grid(which='both')
     fig.legend()
     fig.tight_layout()
+    util.add_watermark_to_fig(fig)
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-gain-db.png')
 
     #======================
@@ -430,6 +434,7 @@ def create_comparison_plots() -> None:
     ax.grid(which='both')
     fig.legend()
     fig.tight_layout()
+    util.add_watermark_to_fig(fig)
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-phase.png')
 
     #======================
@@ -457,6 +462,7 @@ def create_comparison_plots() -> None:
     ax.grid(which='both')
     fig.legend()
     fig.tight_layout()
+    util.add_watermark_to_fig(fig)
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-group-delay.png')
 
     #======================
@@ -483,6 +489,7 @@ def create_comparison_plots() -> None:
     ax.grid(which='both')
     fig.legend()
     fig.tight_layout()
+    util.add_watermark_to_fig(fig)
     fig.savefig(SCRIPT_DIR / 'tuning-comparison-step-response.png')
 
 if __name__ == '__main__':

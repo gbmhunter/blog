@@ -14,9 +14,9 @@ def main():
     create_freq_response_plot()
 
 def create_freq_response_plot():
-    micro_cap_output_path = SCRIPT_DIR / 'simulation.ANO'    
+    micro_cap_output_path = SCRIPT_DIR / 'simulation.ANO'
 
-    df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])    
+    df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])
 
     fig, axes = plt.subplots(ncols=1, nrows=2, figsize=(8, 8))
 
