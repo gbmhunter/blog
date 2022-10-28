@@ -56,7 +56,7 @@ This is much more useful! It tells use everything we need to know about the elec
 
 ## Magnitude and Phase
 
-Note that because we are using `\(s\)`, `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` encodes both magnitude and phase relationships between the output and input. On it's own, it's complex in nature and not really useful for deducing anything. But, using two clever tricks, you can separately extract the magnitude and phase response equations from `\(H(s)\)`. The below diagram shows the value of `\(H(s)\)` at a single frequency `\(\omega\)`, and how the magnitude and phase information is encoded in this (more on this below).
+Note that because we are using the complex variable `\(s\)`, the transfer function `\(H(s)\)` encodes both magnitude and phase relationships between the output and input. On it's own, it's complex in nature and not really useful for deducing anything "measurable". But, using two clever tricks, you can separately extract the magnitude and phase response equations from `\(H(s)\)`. The below diagram shows the value of `\(H(s)\)` at a single frequency `\(\omega\)`, and how the magnitude and phase information is encoded in this (more on this below).
 
 {{% figure src="diagram-of-hs-in-complex-plane.png" width="600px" caption="Graphical representation of H(s) on the complex plane and how the magnitude and phase are encoded into this." %}}
 

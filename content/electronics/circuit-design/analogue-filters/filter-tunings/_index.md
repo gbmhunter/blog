@@ -4,7 +4,8 @@ categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
 description: Butterworth, Chebyshev, Bessel, elliptic, transfer functions, polynomials, equations, graphs and more information on analogue filter tunings. 
 draft: false
-lastmod: 2022-10-27
+images: [ /electronics/circuit-design/analogue-filters/filter-tunings/cover-photo.png ]
+lastmod: 2022-10-29
 tags: [ electronics, circuit design, filters, tunings, Butterworth, Chebyshev, Bessel, Bessel-Thomson, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband ]
 title: Filter Tunings
 type: page
@@ -14,8 +15,10 @@ type: page
 
 _Filter tunings_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter tuning directly specifies what the filters polynomials must be in it's transfer function (see [What Are Transfer Functions, Poles and Zeroes](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) for more info).
 
+{{% figure src="cover-photo.png" width="800px" %}}
+
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
-* **Chebyshev**: Designed to have a steep transition between the pass and stop-band, at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
+* **Chebyshev**: Designed to have a steep transition between the pass and stop-band (but not the steepest, Elliptic tuning claims that award), at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
     * **Type 1:** _Type 1 Chebyshev filters_ (a.k.a. just a _Chebyshev filter_) have ripple in the passband, but no ripple in the stopband.
     * **Type 2:** _Type 2 Chebyshev filters_ (a.k.a. an _inverse Chebyshev filter_) have ripple in the stopband, but no ripple in the passband.
 * **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
@@ -203,7 +206,7 @@ T_5(x) &= 16x^5 - 20x^3 + 5x \nonumber \\
 
 These are special polynomials in which the leading coefficient (coefficient in front of the highest power of `\(x\)`) is the largest value it can be whilst the polynomial is bounded between `\([-1, 1]\)` on the interval `\(x\ \epsilon\ [-1, 1]\)`[^bib-wikipedia-chebyshev-polynomials]. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials `\(T_0\)` through to `\(T_5\)`. Note that `\(T_0 = 1\)`, and is somewhat hidden by the horizontal bounding line.
 
-{{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from `\(T_1\)` to `\(T_6\)`." %}}
+{{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from `\(T_0\)` to `\(T_5\)`." %}}
 
 The below Python function can be used to calculate the Chebyshev polynomial coefficients of the first kind, for a given order `\(n\)`. Although we could build up a recursive function and use sympy to find them based of the recursive equation above, it's easier just to use the `numpy.polynomial` module which provides a function to calculate them.
 
