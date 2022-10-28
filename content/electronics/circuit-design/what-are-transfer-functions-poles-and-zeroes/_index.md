@@ -97,7 +97,7 @@ The phase response `\(\angle H(s)\)` is found by finding the angle of the comple
 
 <p>\begin{align}
 \label{eq:xfer-fn-phase}
-\angle H(s) = Arg{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} 
+\angle H(s) &= Arg{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} 
 \end{align}</p>
 
 <p class="centered">
@@ -116,6 +116,8 @@ Rather than finding the imaginary and real parts of the entire transfer function
 <p>\begin{align}
 \angle H(s) = \angle (numerator) - \angle (denominator)
 \end{align}</p>
+
+`\(\angle H(s)\)` is sometimes written as `\(\theta(\omega)\)`. When calculating the phase response it removes the imaginary components of the complex numbers and you're left with an angle that is a function of just `\(\omega\)`.
 
 ## Poles and Zeroes
 
@@ -156,6 +158,11 @@ The _group delay_ `\(D(\omega)\)` is defined as **the negative of the slope of t
 <p>\begin{align}
 D(\omega) \triangleq -\frac{d}{d\omega} \theta(\omega)
 \end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(\theta(\omega)\) is the phase response of the filter, also written as \(\angle H(s)\)<br/>
+</p>
 
 Intuitively, you can **think of group delay as the time delay in seconds that a signal takes to pass through a filter as a function of frequency**. Group delay has units of seconds. All casual filters (e.g. analogue filters) will have a non-zero, positive group delay. "Flatish" group delay plots in the passband are generally desirable as this means all frequencies will take the same time to pass through the filter, and thus the signal at the output will have minimal distortion (distortion is a result of different frequencies being delayed for different amounts of time).
 
