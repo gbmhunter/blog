@@ -2,6 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 date: 2013-03-18
 draft: false
+lastmod: 2022-10-30
 title: Structures
 type: page
 ---
@@ -33,32 +34,42 @@ demoStruct_t struct1 =
 
 Unfortunately, **you cannot define default variables for a structure when you declare it**, only when you create an instance of that structure type. If this is annoying you, you might want to consider switching to C++, which allows you to do such a thing by using the class and constructor mechanisms.
 
-## Manipulating Structures
+## Copying Structures
 
-Because structure can contain more than one data type, you can't use the standard procedure for manipulating other 'variables'. For example you can't use `struct 1 = struct 2` to copy one structure to another or use `struct1 = 0` to set all values to `0`. Instead, you have to use memory operations.
+You can easily copy a `struct` in C with the assignment operator (`=`). Although not the recommended method, you can also use `memcpy()` to do the same thing.
 
-However, you can still copy individual variables that belong to a structure just like usual.
+```c
+#include <memory.h>
+#include <stdint.h>
+#include <stdio.h>
 
-```c    
 typedef struct {
-    uint16_t value1;
-    uint16_t value2;
+  uint16_t value1;
+  uint16_t value2;
 } demoStruct_t;
 
-demoStruct_t demoStruct1;
-demoStruct_t demoStruct2;
-// Clear all of the variables in a structure (set to 0)
-memset(&struct1, 0x00, sizeof(struct1));
+int main(void) {
+  demoStruct_t struct1;
+  demoStruct_t struct2;
 
-// Copy the contents of struct1 into struct 2 (of the same type)
-// Note that the size of the destination variable is used rather
-// than the source, this is a safer method as it prevents
-// memory overruns.
-memcpy(&struct2, &struct1, sizeof(struct2));
+  // Copy using assignment (recommended way)
+  struct2 = struct1;
 
-// You can still use the standard methods when copying individual variables that belong to a structure
-struct1.value1 = struct2.value2;
+  // Copy using memcpy()
+  memcpy(&struct2, &struct1, sizeof(struct2));
+  
+  return 0;
+}
 ```
+
+{{% warning %}}
+Be careful, as passing in a `struct` to a function will copy the entire structure, which is some cases might NOT be what you were expecting as:
+
+1. For a large struct, this could result in a lot of memory on the stack being used up.
+1. Any changes the function makes to the struct will not be seen from the calling function.
+
+In these cases you what to pass in a pointer to the `struct` instead.
+{{% /warning %}}
 
 ## Self-referencing Structures
 

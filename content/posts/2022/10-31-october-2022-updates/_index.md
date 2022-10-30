@@ -36,3 +36,5 @@ type: post
 * Added more info to the [What Are Transfer Functions, Poles, And Zeroes?](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) page.
 
 * Added info on the popular S8050 NPN BJT to the [Bipolar Junction Transistors (BJT) page](/electronics/components/transistors/bipolar-junction-transistors-bjts/#s8050).
+
+* Added a new page on the differences between using struct and typedef struct in the C programming language.
