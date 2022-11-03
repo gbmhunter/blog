@@ -13,3 +13,4 @@ type: post
 
 ## Updates This Month
 
+* Added real world EMC measurements.
