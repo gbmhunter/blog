@@ -67,11 +67,27 @@ Person my_person;
 
 Note that I have used the same word `Person` as the typedef `alias` as I did for the `struct` tag. This is fine, there will be no naming collisions, and I could still create variables using `struct Person` if I wanted to.
 
-You can also leave of the last `Person` when defining a struct using `typedef`, but there is not much point in this!
+You can also leave out the last `Person` when defining a struct using `typedef`, but there is not much point in this!
 
 ```c
 typedef struct Person {
   uint8_t age;
   char name[50];
 } Person;
+```
+
+What you will see often though is people using `typedef struct` and then skipping the tag, and only providing an alias at the end:
+
+```c
+typedef struct {
+  uint8_t age;
+  char name[50];
+} Person;
+```
+
+Which then allows you to use the word `Person` as a type, but not `struct Person` (which is generally acceptable):
+
+```c
+Person my_person; // This works
+struct Person my_person; // This won't (but this is normally fine!)
 ```
