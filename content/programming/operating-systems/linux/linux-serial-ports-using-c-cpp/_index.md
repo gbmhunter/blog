@@ -5,8 +5,8 @@ date: 2017-06-24
 description: A walk-through on how to configure serial ports correctly in Linux.
 draft: false
 images: [ /programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png ]
-lastmod: 2022-10-03
-tags: [ Linux, serial ports, termios, files, unix, tty, devices, configurations, C, C++, examples, getty, Arduino, code, USB, serial, data ]
+lastmod: 2022-11-12
+tags: [ Linux, serial ports, termios, files, unix, tty, devices, configurations, C, C++, examples, getty, Arduino, code, USB, serial, data, flow control ]
 title: Linux Serial Ports Using C/C++
 type: page
 ---
@@ -142,14 +142,16 @@ tty.c_cflag |= CS7; // 7 bits per byte
 tty.c_cflag |= CS8; // 8 bits per byte (most common)
 ```
 
-### Flow Control (CRTSCTS)
+### Hardware Flow Control (CRTSCTS)
 
-If the `CRTSCTS` field is set, hardware RTS/CTS flow control is enabled. The most common setting here is to disable it. Enabling this when it should be disabled can result in your serial port receiving no data, as the sender will buffer it indefinitely, waiting for you to be "ready".
+If the `CRTSCTS` field is set, hardware RTS/CTS flow control is enabled. This is when there are two extra wires between the end points, used to signal when data is ready to be sent/received. The most common setting here is to disable it. Enabling this when it should be disabled can result in your serial port receiving no data, as the sender will buffer it indefinitely, waiting for you to be "ready".
 
 ```c
 tty.c_cflag &= ~CRTSCTS; // Disable RTS/CTS hardware flow control (most common)
 tty.c_cflag |= CRTSCTS;  // Enable RTS/CTS hardware flow control
 ```
+
+See the [Software Flow Control section](#software-flow-control-ixoff-ixon-ixany) below on other settings relating to flow control.
 
 ### CREAD and CLOCAL
 
