@@ -16,3 +16,5 @@ type: post
 * Added real world EMC measurements.
 
 * Added a new page on the [HU3PAK Component Package](/pcb-design/component-packages/hu3pak-component-package/).
+
+* Added the new page [Running Rust on Microcontrollers]().
