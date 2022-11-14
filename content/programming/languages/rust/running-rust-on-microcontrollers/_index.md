@@ -4,8 +4,8 @@ categories: [ Programming, Programming Languages ]
 date: 2022-11-12
 description: An exploration into programming with Rust on microcontrollers.
 draft: false
-lastmod: 2022-11-13
-tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, ARM, cargo, cargo flash, svd2rust ]
+lastmod: 2022-11-14
+tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling ]
 title: Running Rust on Microcontrollers
 type: page
 ---
@@ -14,7 +14,7 @@ type: page
 
 ## Overview
 
-Rust is a fairly new programming language, but is showing great potential for developing embedded firmware. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. And it's aim to improve on some of C/C++'s biggest shortcomings by implementing a robust ownership model (which removes entire classes of errors from occurring) is also very much applicable to firmware.
+Rust is a fairly new programming language (born in 2010), but is showing great potential for developing embedded firmware. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. And it's aim to improve on some of C/C++'s biggest shortcomings by implementing a robust ownership model (which removes entire classes of errors from occurring) is also very much applicable to firmware.
 
 As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
 
@@ -119,25 +119,47 @@ This adds the sub-command `cargo flash` to `cargo`. Then you can type the follow
 $ cargo flash --chip STM32F042C4Tx
 ```
 
-## Manufacturer Support
 
-When considering Rust for an embedded project, you'll be wondering "Is the xxx microcontroller supported in Rust". As there are so many manufacturers and MCU families out there, it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular MCU families below.
+## Architecture Support
 
-The ARM Cortex CPU architecture is well supported by Rust, so many of the MCU families that use the Cortex naturally have good support too.
+When considering Rust for an embedded project, you'll be wondering "Is the microcontroller I used supported in Rust?". As there are so many manufacturers and MCU families out there (and a few different architectures), it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular architectures and MCU families below.
+
+Support for a particular architecture is usually added by running `rustup` (by default `rustup` only installs the standard library for your host platform[^bib-the-rustup-book-cross-compilation]):
+
+```bash
+$ rustup target add <architecture>
+```
+
+This sets up the build environment for cross-compiling to your chosen architecture.
+
+## Cortex-M (ARM)
+
+The ARM Cortex-M CPU architecture is well supported by Rust, so many of the MCU families that use the Cortex-M naturally have good support too. The [rust-embedded/cortex-m](https://github.com/rust-embedded/cortex-m) repo provides the minimal start-up code and runtime (including semihosting) for the Cortex-M family.
 
 * ARM Cortex-M0+ -- ARMv6-M -- thumbv6m-none-eabi
 
-### ST Microelectronics STM32
+## Xtensa
+
+The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll cover that below.
+
+## MCU Family Support
+
+So we've covered the CPU architecture (which defines the instruction set), but what about support for all the peripherals that surround it and make up a MCU? Let's cover the amount of Rust support of some popular manufacturers and their MCU families. 
+### STM32 (ST Microelectronics)
 
 The STM32 family of microcontrollers has some of the richest Rust support out of any microcontroller.
 
 ### Atmel SAM
 
-### TI MSP430
+### MSP430 (Texas Instruments)
 
-### Espressif ESP
+### ESP32 (Espressif Systems)
 
-I'm not sure how I feel about their approach of forking the entire Rust repository ([esp-rs/rust](https://github.com/esp-rs/rust)) and adding in support for Xtensa that way. Hopefully it will get upstreamed sometime in the future?
+I'm not sure how I feel about their approach of forking the entire Rust repository ([esp-rs/rust](https://github.com/esp-rs/rust)) and adding in support for the Xtensa instruction set that way. Hopefully it will get upstreamed sometime in the future?
+
+### Nordic nRF
+
+The [nrf-rs/nrf-hal](https://github.com/nrf-rs/nrf-hal) repo provides a Rust HAL for the nRF51, nRF52 and nRF91 families of microcontrollers[^bib-nrf-rs-nrf-hal].
 
 ## IDEs
 
@@ -146,6 +168,9 @@ VSCode has very good support for Rust.
 
 One must have for embedded development is a smooth write code -> build -> program -> debug workflow. What 
 
+[Knurling](https://github.com/knurling-rs/) is a collection of projects by Ferrous Systems (two of their popular tools include `probe-run` and `defmt`).
+
+semihosting (slow debug print statements via the attached debugger) is provided for Cortex-M MCUs via the `cortex-m` crate.
 ## RTOSes
 
 No language can claim to be suitable for embedded programming without a selection of RTOSes to choose from. Luckily, Rust has some, from Rust wrappers of existing C/C++ RTOSes such FreeRTOS to RTOSes built from scratch to run on Rust. Lets review some of the popular options.
@@ -169,3 +194,5 @@ Be sure to check out the [Matrix "Rust Embedded" chat room](https://app.element.
 [^bib-rust-embedded-working-group-repo]: Rust Embedded. _Embedded Devices Working Group (repository)_. GitHub. Retrieved 2022-11-12, from https://github.com/rust-embedded/wg.
 [^bib-the-embedded-rust-book]: Rust Embedded. _The Embedded Rust Book_. Retrieved 2022-11-14, from https://docs.rust-embedded.org/book/. 
 [^bib-svd2rust-docs]: svd2rust. _Crate svd2rust (documentation)_. Retrieved 2022-11-14, from https://docs.rs/svd2rust/latest/svd2rust/.
+[^bib-nrf-rs-nrf-hal]: nrf-rs. _nrf-hal (Git repository)_. Retrieved 2022-11-14, from https://github.com/nrf-rs/nrf-hal.
+[^bib-the-rustup-book-cross-compilation]: rust-lang. _The rustup book: Cross-compilation_. Retrieved 2022-11-14, from https://rust-lang.github.io/rustup/cross-compilation.html.
