@@ -332,6 +332,7 @@
         "goutputstream",
         "gperf",
         "GPIB",
+        "GPIO",
         "gpios",
         "gprs",
         "gpu",
@@ -1103,5 +1104,5 @@
     "python.analysis.extraPaths": [
         "${workspaceFolder}\\scripts\\util"
     ],
-    "markdown.validate.enabled": true,
+    "markdown.validate.enabled": false,
 }
