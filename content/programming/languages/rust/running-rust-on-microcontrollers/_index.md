@@ -79,6 +79,28 @@ Another thing Rust can do is provide compile-time checks that hardware has been 
 > 
 > One can also statically check that operations, like setting a pin low, can only be performed on correctly configured peripherals. For example, trying to change the output state of a pin configured in floating input mode would raise a compile error. -- The Embedded Rust Book - Static Guarantees[^bib-the-embedded-rust-book]
 
+Lets explain this with an example. We'll follow the Embedded Rust Book guide as use a GPIO pin (a very basic form of MCU peripheral) as an example, with `into_...()` named functions to convert between the different types.
+
+```rust
+let pin = get_gpio();
+
+// We can't do much with a disabled GPIO pin, let's convert it
+// into an input pin
+let input_pin = pin.into_enabled_input_pin();
+
+// We can now read the state of the pin
+let pin_state = input_pin.is_set();
+
+input_pin.set(); // We can't set an input error, this produces a compile time error!
+
+// We've changed our minds, we now want it to be an output! This
+// is easy to do
+let output_pin = input_pin.into_enabled_output_pin();
+
+// Set output pin high
+output_pin.set(true);
+```
+
 `svd2rust` is a command-line tool that ingests SVD files and creates Rust crates that expose the peripherals in a type-safe Rust API[^bib-svd2rust-docs]. It currently supports the Cortex-M, MSP430, RISCV and Xtensa LX6 microcontrollers[^bib-svd2rust-docs].
 
 ### cargo
