@@ -136,7 +136,18 @@ This sets up the build environment for cross-compiling to your chosen architectu
 
 The ARM Cortex-M CPU architecture is well supported by Rust, so many of the MCU families that use the Cortex-M naturally have good support too. The [rust-embedded/cortex-m](https://github.com/rust-embedded/cortex-m) repo provides the minimal start-up code and runtime (including semihosting) for the Cortex-M family.
 
-* ARM Cortex-M0+ -- ARMv6-M -- thumbv6m-none-eabi
+<table>
+  <caption>https://docs.rust-embedded.org/cortex-m-quickstart/cortex_m_quickstart/</caption>
+  <thead>
+    <tr><th>Common Name</th>                                          <th>Instruction Set</th> <th>rustup Target</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cortex-M0, Cortex-M0+</td>                                <td>ARMv6-M</td>      <td>thumbv6m-none-eabi</td></tr>
+    <tr><td>Cortex-M3</td>                                           <td></td>      <td>thumbv7m-none-eabi</td></tr>
+    <tr><td>Cortex-M4, Cortex-M7 (no floating-point-support)</td>     <td></td>             <td>thumbv7em-none-eabi</td></tr>
+    <tr><td>Cortex-M4F, Cortex-M7F (floating-point-support)</td>      <td></td>             <td>thumbv7em-none-eabihf</td></tr>
+  </tbody>
+</table>
 
 ## Xtensa
 
