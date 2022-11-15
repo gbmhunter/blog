@@ -39,7 +39,7 @@ markup:
     lineNumbersInTable: true
     noClasses: true
     noHl: false
-    style: rainbow_dash # monokai
+    style: monokai # rainbow_dash
     tabWidth: 4
   asciidocext:
     backend: html5

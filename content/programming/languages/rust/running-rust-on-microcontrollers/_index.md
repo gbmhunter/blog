@@ -4,8 +4,8 @@ categories: [ Programming, Programming Languages ]
 date: 2022-11-12
 description: An exploration into programming with Rust on microcontrollers.
 draft: false
-lastmod: 2022-11-14
-tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling ]
+lastmod: 2022-11-15
+tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling, peripheral access crates, PACs, hardware abstraction layers, HALs, board support packages, BSPs ]
 title: Running Rust on Microcontrollers
 type: page
 ---
@@ -91,10 +91,10 @@ let input_pin = pin.into_enabled_input_pin();
 // We can now read the state of the pin
 let pin_state = input_pin.is_set();
 
-input_pin.set(); // We can't set an input error, this produces a compile time error!
+input_pin.set(); // We can't set an input, this produces a compile time error!
 
 // We've changed our minds, we now want it to be an output! This
-// is easy to do
+// is easy to do, again it "consumes" the input_pin object
 let output_pin = input_pin.into_enabled_output_pin();
 
 // Set output pin high
@@ -119,7 +119,6 @@ This adds the sub-command `cargo flash` to `cargo`. Then you can type the follow
 $ cargo flash --chip STM32F042C4Tx
 ```
 
-
 ## Architecture Support
 
 When considering Rust for an embedded project, you'll be wondering "Is the microcontroller I used supported in Rust?". As there are so many manufacturers and MCU families out there (and a few different architectures), it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular architectures and MCU families below.
@@ -130,26 +129,48 @@ Support for a particular architecture is usually added by running `rustup` (by d
 $ rustup target add <architecture>
 ```
 
-This sets up the build environment for cross-compiling to your chosen architecture.
+This sets up the build environment for cross-compiling to your chosen architecture. For a complete list of supported platforms see [The rustc Book: Platform Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html).
 
-## Cortex-M (ARM)
+### Cortex-M (ARM)
 
 The ARM Cortex-M CPU architecture is well supported by Rust, so many of the MCU families that use the Cortex-M naturally have good support too. The [rust-embedded/cortex-m](https://github.com/rust-embedded/cortex-m) repo provides the minimal start-up code and runtime (including semihosting) for the Cortex-M family.
 
 <table>
-  <caption>https://docs.rust-embedded.org/cortex-m-quickstart/cortex_m_quickstart/</caption>
-  <thead>
-    <tr><th>Common Name</th>                                          <th>Instruction Set</th> <th>rustup Target</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Cortex-M0, Cortex-M0+</td>                                <td>ARMv6-M</td>      <td>thumbv6m-none-eabi</td></tr>
-    <tr><td>Cortex-M3</td>                                           <td></td>      <td>thumbv7m-none-eabi</td></tr>
-    <tr><td>Cortex-M4, Cortex-M7 (no floating-point-support)</td>     <td></td>             <td>thumbv7em-none-eabi</td></tr>
-    <tr><td>Cortex-M4F, Cortex-M7F (floating-point-support)</td>      <td></td>             <td>thumbv7em-none-eabihf</td></tr>
-  </tbody>
+<caption>
+
+Table of the supported ARM Cortex-Mx compilation targets for Rust[^bib-the-rustc-book-platform-support] [^bib-arm-processors-cortex-m3] [^bib-arm-processors-cortex-m4].
+</caption>
+<thead>
+<tr><th>ISA</th>                                                    <th>rustup Target</th></tr>
+</thead>
+<tbody>
+<tr><td>ARMv6-M (Cortex-M0, M0+, M1)</td>                           <td><code>thumbv6m-none-eabi</code></td></tr>
+<tr><td>Armv7-M (Cortex-M3)</td>                                    <td><code>thumbv7m-none-eabi</code></td></tr>
+<tr><td>Armv7E-M (Cortex-M4, M7 -- no floating-point-support)</td>  <td><code>thumbv7em-none-eabi</code></td></tr>
+<tr><td>Armv7E-M (Cortex-M4F, M7F -- floating-point-support)</td>   <td><code>thumbv7em-none-eabihf</code></td></tr>
+</tbody>
 </table>
 
-## Xtensa
+### RISC-V
+
+<table>
+<caption>
+
+Table of the supported RISC-V compilation targets for Rust[^bib-the-rustc-book-platform-support].
+</caption>
+<thead>
+<tr><th>ISA</th>                    <th>rustup Target</th></tr>
+</thead>
+<tbody>
+<tr><td>RV32I ISA</td>              <td><code>riscv32i-unknown-none-elf</code></td></tr>
+<tr><td>RV32IMAC ISA</td>           <td><code>riscv32imac-unknown-none-elf</code></td></tr>
+<tr><td>RV32IMC ISA</td>            <td><code>riscv32imc-unknown-none-elf</code></td></tr>
+<tr><td>RV64IMAFDC ISA</td>         <td><code>riscv64gc-unknown-none-elf</code></td></tr>
+<tr><td>RV64IMAC ISA</td>           <td><code>riscv64imac-unknown-none-elf</code></td></tr>
+</tbody>
+</table>
+
+### Xtensa
 
 The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll cover that below.
 
@@ -171,6 +192,10 @@ I'm not sure how I feel about their approach of forking the entire Rust reposito
 ### Nordic nRF
 
 The [nrf-rs/nrf-hal](https://github.com/nrf-rs/nrf-hal) repo provides a Rust HAL for the nRF51, nRF52 and nRF91 families of microcontrollers[^bib-nrf-rs-nrf-hal].
+
+### SiFive
+
+The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile for the Freedom E310 (e.g. the HiFive1).
 
 ## IDEs
 
@@ -196,9 +221,15 @@ Interesting approach to an RTOS.
 
 Supports co-operative multitasking (it is not pre-emptive).
 
+### Tock
+
+https://github.com/tock/tock
+
 ## Further Reading
 
 Be sure to check out the [Matrix "Rust Embedded" chat room](https://app.element.io/#/room/#rust-embedded:matrix.org).
+
+The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust) is a huge list of embedded Rust resources maintained by the Rust Resources team. It includes tools, RTOSes, peripheral access crates (PACs), hardware abstraction layers (HALs), board support crates (BSPs), blogs, books and other training materials.
 
 ## References
 
@@ -207,3 +238,6 @@ Be sure to check out the [Matrix "Rust Embedded" chat room](https://app.element.
 [^bib-svd2rust-docs]: svd2rust. _Crate svd2rust (documentation)_. Retrieved 2022-11-14, from https://docs.rs/svd2rust/latest/svd2rust/.
 [^bib-nrf-rs-nrf-hal]: nrf-rs. _nrf-hal (Git repository)_. Retrieved 2022-11-14, from https://github.com/nrf-rs/nrf-hal.
 [^bib-the-rustup-book-cross-compilation]: rust-lang. _The rustup book: Cross-compilation_. Retrieved 2022-11-14, from https://rust-lang.github.io/rustup/cross-compilation.html.
+[^bib-the-rustc-book-platform-support]: rust-lang. _The rustc book: Platform Support_. Retrieved 2022-11-15, from https://doc.rust-lang.org/nightly/rustc/platform-support.html.
+[^bib-arm-processors-cortex-m3]: ARM Developer. _Processors: Cortex-M3_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M3. 
+[^bib-arm-processors-cortex-m4]: ARM Developer. _Processors: Cortex-M4_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M4. 

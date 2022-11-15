@@ -17,4 +17,6 @@ type: post
 
 * Added a new page on the [HU3PAK Component Package](/pcb-design/component-packages/hu3pak-component-package/).
 
-* Added the new page [Running Rust on Microcontrollers]().
+* Added the new page [Running Rust on Microcontrollers](/programming/languages/rust/running-rust-on-microcontrollers/).
+
+* Changed the code block theme from `rainbow_dash` (light theme) to `monokai` (dark theme) as I feel as it's easier to read.
