@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 date: 2012-12-12
 description: Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol.
 categories: [ Electronics, Communication Protocols ]
-lastmod: 2022-10-25
-tags: [ CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes ]
+lastmod: 2022-11-16
+tags: [ CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD ]
 title: CAN Protocol
 type: page
 ---
@@ -18,6 +18,8 @@ type: page
 It was initially developed for use in the automotive industry. It provides priority-based message arbitration by utilizing dominant (driven by transmitter) and recessive (pulled together through bus termination resistors) bit levels.
 
 {{% figure src="oh-look-its-a-can-bus.png" width="500px" caption="Oh look, it's a CAN bus!" %}}
+
+The page begins by discussing the classic CAN2.0 protocol. Further on we introduce the newer CAN-FD (CAN with Flexible Data-rate) protocol.
 
 ## CAN Bus Voltages
 
@@ -422,7 +424,8 @@ CAN bus transceivers only do the work of converting the CAN bus differential sig
 
 ### STM32
 
-TODO: Add info here.
+bxCAN: Basic Extended CAN
+FDCAN: Flexible Data-rate CAN. Available on the STM32G0, STM32G4, STM32H7, STM32L5, STM32MP1[^bib-st-micro-an5348-fdcan-peripheral].
 
 ### ESP32
 
@@ -483,6 +486,10 @@ One of the most popular CAN dongles is the PEAK PCAN-USB "CAN Interface for USB"
 
 {{% figure src="peak-pcan-usb-photo.jpg" width="400px" caption="Product photo of the PEAK PCAN-USB USB to CAN bus dongle[^bib-peak-pcan-usb]." %}}
 
+## CAN-FD
+
+CAN-FD stands for _CAN with flexible data-rate_. CAN-FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^bib-cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^bib-st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
+
 ## Further Reading
 
 If you are looking for help interfacing with SocketCAN from the Linux command-line, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/).
@@ -509,3 +516,5 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^bib-can-connected-bus-off-state]: CAN connected (2018, Aug 21). _CAN Bus-Off condition/state_. Retrieved 2022-04-07, from http://www.can-wiki.info/doku.php?id=can_faq:can_bus_off.
 [^bib-peak-pcan-usb]: PEAK. _PCAN-USB: CAN Interface for USB (product page)_. Retrieved 2022-04-07, from https://www.peak-system.com/PCAN-USB.199.0.html.
 [^bib-espressif-esp32-twai]: Espressif. _ESP32 - API Reference - Two-Wire Automotive Interface (TWAI)_. Retrieved 2022-11-16, from https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html.
+[^bib-st-micro-an5348-fdcan-peripheral]: ST Microelectronics (2019, Oct). _AN5348 - Application Note - FDCAN peripheral on STM32 devices_. Retrieved 2022-11-16, from https://www.st.com/resource/en/application_note/an5348-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf.
+[^bib-cia-can-fd-basic-idea]: CiA. _CAN Knowledge > CAN FD - The basic idea_. Retrieved 2022-11-16, from https://www.can-cia.org/can-knowledge/can/can-fd/.

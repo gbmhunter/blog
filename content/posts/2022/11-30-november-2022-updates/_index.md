@@ -20,3 +20,5 @@ type: post
 * Added the new page [Running Rust on Microcontrollers](/programming/languages/rust/running-rust-on-microcontrollers/).
 
 * Changed the code block theme from `rainbow_dash` (light theme) to `monokai` (dark theme) as I feel as it's easier to read.
+
+* Added info on the [CAN-FD (CAN with flexible data-rate) standard](/electronics/communication-protocols/can-protocol/#can-fd).
