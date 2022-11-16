@@ -21,7 +21,7 @@ It was initially developed for use in the automotive industry. It provides prior
 
 ## CAN Bus Voltages
 
-The CAN bus transmits 1 and 0's across a differential pair of wires. A recessive logic 1 is when the driver is not "driving" the bus, and therefore there should be almost no voltage differential across `CAN_H` and `CAN_L`. A dominant logic 0 bit is when the transmitting node drives `CAN_H` high and `CAN_L` low.
+The CAN bus transmits 1 and 0's across a differential pair of wires. A recessive logic 1 is when the driver is not "driving" the bus, and therefore there should be almost no voltage differential across `CAN_H` and `CAN_L`. A dominant logic 0 bit is when the transmitting node drives `CAN_H` high and `CAN_L` low, generally resulting in a few volts of difference between `CAN_H` and `CAN_L`.
 
 ## Bit Rate And Transmission Distances
 
@@ -375,23 +375,6 @@ There are [TVS diode components](/electronics/components/diodes) specifically de
 
 {{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
 
-## CAN Controller Mailboxes
-
-Many microcontroller CAN peripherals contain CAN _mailboxes_. A mailbox is a storage place in hardware for a CAN frame (message) which is either being sent or received. Microcontrollers typically have 4-16 mailboxes, with them being a mixture of fixed transmit or receive mailboxes, or having the ability of configure each mailbox as either for transmit or receive.. The concept of a _mailbox_ significantly reduces the CPU load on the microcontroller when transmitting and receiving CAN frames of interest. To send CAN frames, you will need to use at least one mailbox, but you can have multiple if needed. Multiple transmit mailboxes can be useful if you want to schedule multiple frames for transmission on the bus, and also provide a  priority (higher priority frames will be sent first).
-
-Receive mailboxes are configured with a receive mask that filter incoming frames. Only incoming frames which pass the filter are stored in the mailbox. The typical process is as follows:
-
-. The frame ID is ANDed with the mask from the first receive mailbox.
-. The masked frame ID is then compared with the filter value for the first receive mailbox.
-. If the filter matches, the frame is accepted and the logic terminates here.
-. If the filter does not match, steps 1-3 are tried with the next receive mailbox.
-. If no matches occur, the frame is discarded.
-
-### Real Mailbox Examples
-
-* CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes[^bib-design-reuse-embedded-can-bus-controller].
-* STM32F microcontrollers with CAN peripherals have a number and transmit/receive mailboxes.
-
 ## NoCAN
 
 NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
@@ -432,6 +415,35 @@ The TN92527 (a.k.a just the _82527_) is a older CAN transceiver made by Intel[^b
 * Price: [$2.88](https://www.digikey.com/en/products/detail/texas-instruments/ISO1044BD/13237251)
 * Package: SOIC-8
 * [Datasheet](https://www.ti.com/lit/ds/symlink/iso1044.pdf)
+
+## CAN Bus Microcontroller Peripherals
+
+CAN bus transceivers only do the work of converting the CAN bus differential signal into two single-ended signals (one for transmit, one for receive). To use the CAN bus, you also need a CAN bus controller, which is typically implemented as a CAN bus peripheral within a microcontroller (although you can get dedicated CAN bus controllers which can be controlled via a different communication bus).
+
+### STM32
+
+TODO: Add info here.
+
+### ESP32
+
+Espressif calls their ESP32 CAN bus peripheral the _Two-Wire Automotive Interface (TWAI)_, presumably to avoid [Bosch licensing fees](https://en.m.wikipedia.org/wiki/CAN_bus#Licensing). There is quite a lot of [Errata for their TWAI peripheral](https://www.espressif.com/sites/default/files/documentation/esp32_errata_en.pdf), be sure to read that if you are writing a CAN bus driver on the ESP32.
+
+### CAN Controller Mailboxes
+
+Many microcontroller CAN peripherals contain CAN _mailboxes_. A mailbox is a storage place in hardware for a CAN frame (message) which is either being sent or received. Microcontrollers typically have 4-16 mailboxes, with them being a mixture of fixed transmit or receive mailboxes, or having the ability of configure each mailbox as either for transmit or receive.. The concept of a _mailbox_ significantly reduces the CPU load on the microcontroller when transmitting and receiving CAN frames of interest. To send CAN frames, you will need to use at least one mailbox, but you can have multiple if needed. Multiple transmit mailboxes can be useful if you want to schedule multiple frames for transmission on the bus, and also provide a  priority (higher priority frames will be sent first).
+
+Receive mailboxes are configured with a receive mask that filter incoming frames. Only incoming frames which pass the filter are stored in the mailbox. The typical process is as follows:
+
+. The frame ID is ANDed with the mask from the first receive mailbox.
+. The masked frame ID is then compared with the filter value for the first receive mailbox.
+. If the filter matches, the frame is accepted and the logic terminates here.
+. If the filter does not match, steps 1-3 are tried with the next receive mailbox.
+. If no matches occur, the frame is discarded.
+
+**Real Mailbox Examples**
+
+* CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes[^bib-design-reuse-embedded-can-bus-controller].
+* STM32F microcontrollers with CAN peripherals have a number and transmit/receive mailboxes.
 
 ## CAN Bus Repeaters
 
@@ -496,3 +508,4 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^bib-port-can-faq-errors]: port (2021, Feb 8). _CanFaqErrors_. Retrieved 2022-04-07, from http://www.port.de/cgi-bin/CAN/CanFaqErrors.
 [^bib-can-connected-bus-off-state]: CAN connected (2018, Aug 21). _CAN Bus-Off condition/state_. Retrieved 2022-04-07, from http://www.can-wiki.info/doku.php?id=can_faq:can_bus_off.
 [^bib-peak-pcan-usb]: PEAK. _PCAN-USB: CAN Interface for USB (product page)_. Retrieved 2022-04-07, from https://www.peak-system.com/PCAN-USB.199.0.html.
+[^bib-espressif-esp32-twai]: Espressif. _ESP32 - API Reference - Two-Wire Automotive Interface (TWAI)_. Retrieved 2022-11-16, from https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html.
