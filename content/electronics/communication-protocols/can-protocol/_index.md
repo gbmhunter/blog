@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 date: 2012-12-12
 description: Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol.
 categories: [ Electronics, Communication Protocols ]
-lastmod: 2022-11-16
-tags: [ CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD ]
+lastmod: 2022-11-17
+tags: [ CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD, NXP, Secure CAN ]
 title: CAN Protocol
 type: page
 ---
@@ -19,7 +19,11 @@ It was initially developed for use in the automotive industry. It provides prior
 
 {{% figure src="oh-look-its-a-can-bus.png" width="500px" caption="Oh look, it's a CAN bus!" %}}
 
-The page begins by discussing the classic CAN2.0 protocol. Further on we introduce the newer CAN-FD (CAN with Flexible Data-rate) protocol.
+## Protocol Versions
+
+* **CAN2.0A (ISO 11898):** Standardized as ISO 11898 in 1993. Supports standard frames (11-bit identifiers).
+* **CAN2.0B:** Released in 1995. Supports both standard and extended frames (11-bit and 29-bit identifiers). CAN 2.0B is backwards compatible with CAN 2.0A, with the exception that the CAN 2.0A controllers have to be updated to be aware of CAN 2.0B and have the _passive_ feature. If they don't, CAN 2.0A controllers will flag CAN 2.0B extended frame messages as errors.
+* **CAN-FD:** The "CAN with Flexible Data-rate" protocol. Protocol updated to change the meaning of different bits in the arbitration sequence, as well as the ability for the bit rate to be changed during the data part of the packet (generally increased to increase bit rate).
 
 ## CAN Bus Voltages
 
@@ -188,13 +192,16 @@ Any sequential sequence of 5 bits of the same type requires the transmitter to i
 
 This bit stuffing prevents serious clock drift when there a long sequences of either 0's or 1's transmitted on the bus. There is no separate clock signal (which is why the CAN bus can be called an _asynchronous protocol_), so the clock is recovered from the data.
 
-## Frame Types
+## Frames
+
+### Frame Types
 
 * **Data Frames**: Used to transmit a data payload of up to 8 bytes. Very similar frame structure to a remote frame.
-* **Remote Frames**: Used to request data. Contains no data payload itself. Very similar frame structure to a data frame.
-* **Error Frames**: Transmitted when a node encounters an error during communication. An error frame contains only an error flag and an error delimiter.
+* **Remote Frames**: Used to request data and possibly implement a request-response system (the CAN standard does not prescribe what they should be used for). Contains no data payload itself, and very similar frame structure to a data frame. In practise, remote frames are used very little in industry.
+* **Error Frames**: Transmitted when a node encounters an error during communication. An error frame contains only an error flag and an error delimiter. Error counters on numerous nodes are generally incremented when they detect error frames on the bus.
+* **Overload Frames:** If a CAN node receives messages faster than it can process them, then the CAN node can generate Overload Frames to delay the next data/remote frame. An overload frame contains two fields, an overload flag consisting of 6 dominant bits (hence it wins arbitration and prevents another data/remote frame), and then an overload delimiter of eight recessive bits. Error counters are not incremented when overload frames are detected[^bib-eecs-461-can]. 
 
-## Frame Structure
+### Frame Structure
 
 Dominant bits are logic level 0, while recessive bits are logic level 1.
 
@@ -403,9 +410,15 @@ DeviceNet cable typically consists of two shielded, twisted pairs. One pair has 
 
 ### TN82527
 
-The TN92527 (a.k.a just the _82527_) is a older CAN transceiver made by Intel[^bib-intel-82527]. It was Intel's first CAN controller that supported CAN Specification 2.0.
+The TN92527 (a.k.a just the _82527_) is an older CAN transceiver made by Intel[^bib-intel-82527]. It was Intel's first CAN controller that supported CAN Specification 2.0.
 
-### NXP TJA1052i
+### NXP 
+
+NXP makes a whole suite of CAN transceivers all starting with the part number `TJA1`. You can view their portfolio at https://www.nxp.com/products/interfaces/can-transceivers:MC_53485. A common transceiver for “low-speed CAN” is the TJA1054. NXP also make "Secure CAN" transceivers such as the `TJA115x` (these don't use cryptography but rather hardware ID validation with passlists/blocklists)[^bib-nxp-tja115x-secure-can].
+
+{{% figure src="nxp-tja115x-secure-can-application-principle.png" width="500px" caption="The basic principle of the TJA115x Secure CAN range of CAN transceivers from NXP[^bib-nxp-tja115x-secure-can]." %}}
+
+**TJA1052i**
 
 * Speed: 5Mbps
 * Package: SOIC-16W
@@ -429,7 +442,11 @@ FDCAN: Flexible Data-rate CAN. Available on the STM32G0, STM32G4, STM32H7, STM32
 
 ### ESP32
 
-Espressif calls their ESP32 CAN bus peripheral the _Two-Wire Automotive Interface (TWAI)_, presumably to avoid [Bosch licensing fees](https://en.m.wikipedia.org/wiki/CAN_bus#Licensing). There is quite a lot of [Errata for their TWAI peripheral](https://www.espressif.com/sites/default/files/documentation/esp32_errata_en.pdf), be sure to read that if you are writing a CAN bus driver on the ESP32.
+Espressif calls their ESP32 CAN bus peripheral the _Two-Wire Automotive Interface (TWAI)_, presumably to avoid [Bosch licensing fees](https://en.m.wikipedia.org/wiki/CAN_bus#Licensing). There is quite a lot of [Errata for their TWAI peripheral](https://www.espressif.com/sites/default/files/documentation/esp32_errata_en.pdf), and some of the bugs seem serious. Be sure to read that if you're deciding whether or not to use the ESP32 TWAI peripheral!
+
+### Freescale MPC 5xx
+
+In the Freescale MPC 5xx series of microcontrollers the CAN hardware is called the _TouCAN_ peripheral.
 
 ### CAN Controller Mailboxes
 
@@ -488,7 +505,7 @@ One of the most popular CAN dongles is the PEAK PCAN-USB "CAN Interface for USB"
 
 ## CAN-FD
 
-CAN-FD stands for _CAN with flexible data-rate_. CAN-FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^bib-cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^bib-st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
+CAN-FD stands for _CAN with flexible data-rate_. CAN-FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. The physical layer is kept the same (voltage levels and signalling), but the packet structure is changed. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^bib-cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^bib-st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
 
 ## Further Reading
 
@@ -518,3 +535,5 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^bib-espressif-esp32-twai]: Espressif. _ESP32 - API Reference - Two-Wire Automotive Interface (TWAI)_. Retrieved 2022-11-16, from https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html.
 [^bib-st-micro-an5348-fdcan-peripheral]: ST Microelectronics (2019, Oct). _AN5348 - Application Note - FDCAN peripheral on STM32 devices_. Retrieved 2022-11-16, from https://www.st.com/resource/en/application_note/an5348-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf.
 [^bib-cia-can-fd-basic-idea]: CiA. _CAN Knowledge > CAN FD - The basic idea_. Retrieved 2022-11-16, from https://www.can-cia.org/can-knowledge/can/can-fd/.
+[^bib-eecs-461-can]: J. A. Cook, J. S. Freudenberg. _EECS 461 - Controller Area Network (CAN)_. University of Michigan. Retrieved 2022-11-17, from https://www.eecs.umich.edu/courses/eecs461/doc/CAN_notes.pdf.
+[^bib-nxp-tja115x-secure-can]: NXP. _SECURCANTRLFUS REV 3 - NXP TJA115x Secure CAN Transceiver Family_. Retrieved 2022-11-17, from https://www.nxp.com/docs/en/fact-sheet/SECURCANTRLFUS.pdf.
