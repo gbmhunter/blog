@@ -991,7 +991,7 @@ code:not(.has-jax) {
     -moz-border-radius: 5px; 
     -webkit-border-radius: 5px; 
     border: 1px solid #BCBEC0;
-    padding: 2px;     
+    padding: 2px;
 }
 
 pre code:not(.has-jax) {
@@ -1006,6 +1006,10 @@ pre code:not(.has-jax) {
     pre code:not(.has-jax) {
         font-size: .876rem;
     }
+}
+
+div.highlight {
+    margin-bottom: 1rem; // Add whitespace below code blocks before next element
 }
 
 // For some reason, when adding line numbers to code blocks, the first row's line number would

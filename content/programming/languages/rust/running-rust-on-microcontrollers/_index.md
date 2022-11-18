@@ -14,7 +14,7 @@ type: page
 
 ## Overview
 
-Rust is a fairly new programming language (born in 2010), but is showing great potential for developing embedded firmware. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. And it's aim to improve on some of C/C++'s biggest shortcomings by implementing a robust ownership model (which removes entire classes of errors from occurring) is also very much applicable to firmware.
+Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but is showing great potential for developing embedded firmware**. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. It's aim to improve on some of C/C++'s biggest shortcomings by implementing a **robust ownership model** (which removes entire classes of errors from occurring) is also very much applicable to firmware.
 
 As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
 
@@ -23,16 +23,32 @@ As of 2022, the C and C++ programming languages still remain the de-facto standa
 This page aims to be an exploration into running Rust on microcontrollers, covering things such as:
 
 1. Language Features
-1. Vendor Support
+1. Architecture Support
+1. MCU Family Support
 1. IDEs
-1. Programming
+1. The Programming and Debugging Experience
 1. RTOSes
 
 Lets jump straight in!
 
 ## Language Features
 
-You are only allowed to:
+### Ownership
+
+One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, e.t.c.). These benefits that Rust provides are just as applicable to embedded firmware as they are to software.
+
+For anything but basic primitive data types that live on the stack (primitive data types include `u32`, `bool`, `f64`, e.t.c), Rust will move data when the assignment operator is used, rather than perform a copy. The following example shows how the compiler enforces that only one variable may own a piece of data at once.
+
+```rust
+let s1 = String::from("hello"); // Create complex data type which involves the use of the heap
+let s2 = s1; // This "moves" the data from s1 to s2 (s2 owns the data), s1 is no longer valid
+
+println!("{}", s1); // The compiler will throw an error here, s1 is no longer valid!
+```
+
+If you did actually want to perform a copy, `s2 = s1.clone()` is the correct way to do it. These ownership rules also apply to passing variables into functions. A comprehensive walk-through can be found in [The Rust Programming Language - Ch. 04 - Understanding Ownership](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html).
+
+Rather than transfer ownership, Rust also lets you "borrow" data via references. You are only allowed to:
 
 * Borrow as many immutable references and no mutable references, OR
 * Borrow one mutable reference and no immutable references.
@@ -103,6 +119,12 @@ output_pin.set(true);
 
 `svd2rust` is a command-line tool that ingests SVD files and creates Rust crates that expose the peripherals in a type-safe Rust API[^bib-svd2rust-docs]. It currently supports the Cortex-M, MSP430, RISCV and Xtensa LX6 microcontrollers[^bib-svd2rust-docs].
 
+### Traits
+
+Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The embedded-hal project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL.
+
+{{% figure src="embedded-hal-firmware-layers.png" width="500px" caption="The different layers of a Rust firmware project using the embedded-hal project. Image from the Embedded Rust Book - Portability[^bib-embedded-rust-book-portability]." %}}
+
 ### cargo
 
 One sorely lacking feature with C/C++ is a standardized package manager for managing your dependencies and build process. Luckily (like most common languages) Rust comes with the `cargo` package manager. `cargo` translates well to embedded development, you can use it to easily include 3rd party libraries (what they call _crates_) -- or create your own libraries to make your code more modular and re-usable.
@@ -118,6 +140,7 @@ This adds the sub-command `cargo flash` to `cargo`. Then you can type the follow
 ```bash
 $ cargo flash --chip STM32F042C4Tx
 ```
+
 
 ## Architecture Support
 
@@ -150,6 +173,15 @@ Table of the supported ARM Cortex-Mx compilation targets for Rust[^bib-the-rustc
 <tr><td>Armv7E-M (Cortex-M4F, M7F -- floating-point-support)</td>   <td><code>thumbv7em-none-eabihf</code></td></tr>
 </tbody>
 </table>
+
+You can quickly start a new project for a Cortex-M CPU with the command:
+
+```bash
+cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
+```
+
+
+{{% figure src="cargo-cortex-m-quickstart-project-files.png" width="800px" caption="The resulting Cortex-M quickstart project creating by running the above cargo command." %}}
 
 ### RISC-V
 
@@ -200,7 +232,7 @@ The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile f
 ## IDEs
 
 VSCode has very good support for Rust.
-## Programming and Debugging
+## The Programming and Debugging Experience
 
 One must have for embedded development is a smooth write code -> build -> program -> debug workflow. What 
 
@@ -241,3 +273,5 @@ The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-em
 [^bib-the-rustc-book-platform-support]: rust-lang. _The rustc book: Platform Support_. Retrieved 2022-11-15, from https://doc.rust-lang.org/nightly/rustc/platform-support.html.
 [^bib-arm-processors-cortex-m3]: ARM Developer. _Processors: Cortex-M3_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M3. 
 [^bib-arm-processors-cortex-m4]: ARM Developer. _Processors: Cortex-M4_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M4. 
+[^wikipedia-rust]: Wikipedia (2022, Nov 11). _Rust (programming language)_. Retrieved 2022-11-19, from https://en.wikipedia.org/wiki/Rust_(programming_language).
+[^bib-embedded-rust-book-portability]: Rust Embedded. _The Embedded Rust Book - Portability_. Retrieved 2022-11-19, from https://docs.rust-embedded.org/book/portability/.
