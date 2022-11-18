@@ -192,7 +192,7 @@ One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MO
 
 MOSFETs can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/power-management/load-switches). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
-{{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.svg" width="500" caption="Schematic example of load switching with a P-channel MOSFET (Q2). See the [Load Switches page](/electronics/circuit-design/power-management/load-switches) for more info." %}}
+{{% figure src="/electronics/circuit-design/load-switches/bjt-current-source-to-turn-p-channel-on.svg" width="500" caption="Schematic example of load switching with a P-channel MOSFET (Q2). See the [Load Switches page](/electronics/circuit-design/load-switches) for more info." %}}
 
 Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown in [^dmn61d8l-7-mosfet-internal-schematic], this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
 
