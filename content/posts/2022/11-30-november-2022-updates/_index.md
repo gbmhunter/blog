@@ -22,3 +22,7 @@ type: post
 * Changed the code block theme from `rainbow_dash` (light theme) to `monokai` (dark theme) as I feel as it's easier to read.
 
 * Added info on the [CAN-FD (CAN with flexible data-rate) standard](/electronics/communication-protocols/can-protocol/#can-fd).
+
+* Converted the Capacitors page from Asciidoc to Markdown format.
+
+* Added new image with various capacitor schematic symbols, and added the Japanese-style symbol to it.

@@ -125,7 +125,13 @@ Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic
 
 {{% figure src="embedded-hal-firmware-layers.png" width="500px" caption="The different layers of a Rust firmware project using the embedded-hal project. Image from the Embedded Rust Book - Portability[^bib-embedded-rust-book-portability]." %}}
 
-### cargo
+### Concurrency
+
+Concurrency is something you have to concern yourself about in embedded firmware when it comes to interrupts and multiple threads/cores (e.g. running a RTOS). One of the first times you'll encounter concurrency concerns is when updating variables from within an interrupt. In C/C++, the use of `volatile` and critical sections is generally the way the problem is solved. When using multiple threads, RTOS primitives such as mutexes/queues/e.t.c are used to prevent data corruption.
+
+In Rust, you can also use critical sections to prevent data races in interrupts.
+
+### cargo and Package Structure
 
 One sorely lacking feature with C/C++ is a standardized package manager for managing your dependencies and build process. Luckily (like most common languages) Rust comes with the `cargo` package manager. `cargo` translates well to embedded development, you can use it to easily include 3rd party libraries (what they call _crates_) -- or create your own libraries to make your code more modular and re-usable.
 
@@ -141,6 +147,9 @@ This adds the sub-command `cargo flash` to `cargo`. Then you can type the follow
 $ cargo flash --chip STM32F042C4Tx
 ```
 
+Another nice thing about cargo and embedded is that the community seems to have settled onto a structured way of organizing various firmware-related libraries.
+
+TODO: Add image.
 
 ## Architecture Support
 

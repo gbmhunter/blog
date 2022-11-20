@@ -284,6 +284,7 @@
         "filt",
         "FIONREAD",
         "fixup",
+        "FLEXITERM",
         "flexsearch",
         "Fluxgate",
         "Flyback",
@@ -1129,4 +1130,5 @@
         "${workspaceFolder}\\scripts\\util"
     ],
     "markdown.validate.enabled": false,
+    "terminal.integrated.scrollback": 100000,
 }
