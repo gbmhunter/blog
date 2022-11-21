@@ -224,6 +224,14 @@ The STM32 family of microcontrollers has some of the richest Rust support out of
 
 ### Atmel SAM
 
+The [atsamd-rs/atsamd](https://github.com/atsamd-rs/atsamd) GitHub repo provides various crates for working with Atmel `samd11`, `samd21`, `samd51` and `same5x` based devices using Rust[^bib-github-atsamd-rs-atsamd]. This repo provides PACs (Peripheral Access Crates) and higher level HALs (Hardware Abstraction Layers). The HALs implement traits specified by the embedded-hal project.
+
+Also included in this repo are BSPs (Board Support Packages) for a number of development boards. They distinguish between _Tier 1_ and _Tier 2_ BSPs, the Tier 1 BSPs are those that are kept up-to-date with the latest version of `atsamd-hal`, whilst the Tier 2 BSPs don't (they might be locked to some past version).
+
+{{% figure src="atsamd-rs-atsamd-repo-screenshot.png" width="600px" caption="Screenshot of the README of the atsamd-rs/atsamd repository." %}}
+
+The repo looks to be active, with 705 commits and 421 stars as of November 2022.
+
 ### MSP430 (Texas Instruments)
 
 ### ESP32 (Espressif Systems)
@@ -284,3 +292,4 @@ The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-em
 [^bib-arm-processors-cortex-m4]: ARM Developer. _Processors: Cortex-M4_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M4. 
 [^wikipedia-rust]: Wikipedia (2022, Nov 11). _Rust (programming language)_. Retrieved 2022-11-19, from https://en.wikipedia.org/wiki/Rust_(programming_language).
 [^bib-embedded-rust-book-portability]: Rust Embedded. _The Embedded Rust Book - Portability_. Retrieved 2022-11-19, from https://docs.rust-embedded.org/book/portability/.
+[^bib-github-atsamd-rs-atsamd]: atsamd-rs. _atsamd & atsame support for Rust (Git repository)_. Retrieved 2022-11-21, from https://github.com/atsamd-rs/atsamd.

@@ -282,23 +282,23 @@ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|})
 
 ## The Substrate (Body) Connection
 
-Standard MOSFETs actually have four, not three, electrical connection points. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead, is normally connected internally to the source (as mentioned above in the _The Body Effect_ section), so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
+**The basic design of a MOSFET provides four (not three!) electrical connection points**. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead is normally connected internally to the source (as mentioned above in the _The Body Effect_ section), so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
+
+{{% figure src="mosfet-silicon-structure.png" width="1000px" caption="Diagram showing the internal silicon structure of a MOSFET. The MOSFET on the right does not have the source connected to the substrate, and has two parasitic body diodes (commonly done within ICs). The MOSFET on the left shows the source connected to the substrate (almost all discrete MOSFETs do this), which shorts out (removes) one the body diodes." %}}
+
+Some discrete MOSFETs do provide you with a separate substrate pin, for example the 3N163 as shown below.
+
+{{% figure src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
 
 {{% note %}}
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 {{% /note %}}
 
-{{% figure src="mosfet-four-terminal-internal-diagram.gif" width="350" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/." %}}
-
-Another interesting note is that without the connection of the substrate to the source, the MOSFET source and drain connections would be identical, and there would be no need to separately identify them
+Another interesting note is that without the connection of the substrate to the source, the **MOSFET source and drain connections would be identical**, and there would be no need to separately identify them. As soon as the substrate is connected to the source, the MOSFETs internals become **asymmetrical** and you cannot freely swap around the drain and the source (if you do swap them, you'll normally get the body diode **conducting** when you don't want it to!).
 
 **Q. Why is the substrate normally connected to the source?**
 
-A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
-
-The 3N163 is an example of a MOSFET which provides you with a fourth pin for the substrate connection.
-
-{{% figure src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
+A. Because when it isn't, **a MOSFET becomes much harder to use**. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to the source internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
 
 You may also note that some IC designs do not connect the substrate to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground. I'm not entirely sure why, but it might have something to do with the devices ability to block reverse current. Normally this is achieved with back-to-back MOSFETs, but this diagram almost suggests that they pull it off using only the one MOSFET.
 
