@@ -53,11 +53,11 @@ $ hugo
 
 # Directory Structure
 
-```
+```text
 |--.vscode/
 |  |--settings.json -> Contains the word dictionary for VS Code (under "cSpell.words")
 |--assets
-|  |--main.scss -> Main stylesheet. This requires hugo-extended to compile.
+|  |--main.scss -> Main stylesheet. This requires `hugo-extended` to compile.
 |--content/ -> Markdown files which contain the content which creates the sites pages and posts.
 |--layouts/
 |  |--shortcodes -> Hugo shortcodes.
@@ -65,16 +65,18 @@ $ hugo
 |--old/ -> Deprecated content which is kept around just in case I need it again.
 |--requirements/ -> Contains a requirements.txt used to create a Python virtual environment for running the various Python scripts in this repo.
 |--scripts/ -> Useful Python scripts to automate some laborious tasks.
+|--templates/ -> Contains Affinity Designer diagram template, various Python script templates and a Markdown page template.
+|--skip_file.txt -> Used with filiph/linkcheck (see below).
 ```
 
-# Broken Link Checking
+## Broken Link Checking
 
-I use the great LinkChecker.
+Use https://github.com/filiph/linkcheck.
 
-You can install this with `pipenv` using:
+Run:
 
-```bash
-$ pipenv install --two LinkChecker
+```
+linkcheck.bat localhost:1313 --skip-file skip_file.txt
 ```
 
 # Recommended VS Code Plugins

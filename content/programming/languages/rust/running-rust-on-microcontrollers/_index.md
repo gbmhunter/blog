@@ -222,6 +222,22 @@ So we've covered the CPU architecture (which defines the instruction set), but w
 
 The STM32 family of microcontrollers has some of the richest Rust support out of any microcontroller.
 
+### Atmel AVR
+
+[https://github.com/Rahix/avr-hal](Rahix/avr-hal) is a popular 3rd party Rust HAL layer for the ATmega AVRs (incl. Arduino, ATmega, ATtiny).
+
+`ravedude` is a useful cargo application which adds support to `cargo run` to program the Arduino boards, and then connect up a serial to display any print messages.
+
+```bash
+cargo +stable install ravedude
+```
+
+{{% figure src="using-cargo-generate-for-arduino-uno.png" width="700px" caption="cargo generate with the Rahix/avr-hal-template GitHub repo provides a really quick way of setting up a Rust project for an Arduino board." %}}
+
+There is a great tutorial on getting Rust working on the Arduino Uno at https://blog.logrocket.com/complete-guide-running-rust-arduino/. I was able to get a blinky Rust project built and programming within 5 minutes using that tutorial when developing in the WSL (passing through the Arduino USB device with `usbip`).
+
+{{% figure src="screenshot-of-basic-arduino-app-in-rust.png" width="700px" caption="Screenshot of a bare-bones Arduino app written in Rust (flashing an LED and printing \"Hello\" to the console." %}}
+
 ### Atmel SAM
 
 The [atsamd-rs/atsamd](https://github.com/atsamd-rs/atsamd) GitHub repo provides various crates for working with Atmel `samd11`, `samd21`, `samd51` and `same5x` based devices using Rust[^bib-github-atsamd-rs-atsamd]. This repo provides PACs (Peripheral Access Crates) and higher level HALs (Hardware Abstraction Layers). The HALs implement traits specified by the embedded-hal project.
