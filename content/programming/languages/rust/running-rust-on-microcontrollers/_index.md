@@ -35,7 +35,7 @@ Lets jump straight in!
 
 ### Ownership
 
-One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, e.t.c.). These benefits that Rust provides are just as applicable to embedded firmware as they are to software.
+One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, e.t.c.). **These benefits that Rust provides are just as applicable to embedded firmware as they are to software.**
 
 For anything but basic primitive data types that live on the stack (primitive data types include `u32`, `bool`, `f64`, e.t.c), Rust will move data when the assignment operator is used, rather than perform a copy. The following example shows how the compiler enforces that only one variable may own a piece of data at once.
 
@@ -89,6 +89,8 @@ fn main() {
 
 (runnable code at https://replit.com/@gbmhunter/rust-playground#examples/peripherals.rs)
 
+A pattern similar to this is followed by most PACs and HALs provided for microcontrollers. You'll be calling `take()` on peripheral objects to claim ownership of them, giving you the ability to use them in your application.
+
 Another thing Rust can do is provide compile-time checks that hardware has been configured properly based on how the code uses it. The Embedded Rust Book has this to say:
 
 > When applied to embedded programs these static checks can be used, for example, to enforce that configuration of I/O interfaces is done properly. For instance, one can design an API where it is only possible to initialize a serial interface by first configuring the pins that will be used by the interface.
@@ -117,7 +119,7 @@ let output_pin = input_pin.into_enabled_output_pin();
 output_pin.set(true);
 ```
 
-`svd2rust` is a command-line tool that ingests SVD files and creates Rust crates that expose the peripherals in a type-safe Rust API[^bib-svd2rust-docs]. It currently supports the Cortex-M, MSP430, RISCV and Xtensa LX6 microcontrollers[^bib-svd2rust-docs].
+`svd2rust` is a command-line tool that ingests SVD files (a.k.a. `CMSIS-SVD` -- they are files that define register names, addresses and uses, you can think of them as a computer-readable version of the microcontrollers datasheet) and creates Rust PAC crates that expose the peripherals in a type-safe Rust API[^bib-svd2rust-docs]. It currently supports the Cortex-M, MSP430, RISCV and Xtensa LX6 microcontrollers[^bib-svd2rust-docs]. 
 
 ### Traits
 
@@ -130,6 +132,8 @@ Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic
 Concurrency is something you have to concern yourself about in embedded firmware when it comes to interrupts and multiple threads/cores (e.g. running a RTOS). One of the first times you'll encounter concurrency concerns is when updating variables from within an interrupt. In C/C++, the use of `volatile` and critical sections is generally the way the problem is solved. When using multiple threads, RTOS primitives such as mutexes/queues/e.t.c are used to prevent data corruption.
 
 In Rust, you can also use critical sections to prevent data races in interrupts.
+
+The `nb` crate (it's docs are [here](https://docs.rs/nb/latest/nb/index.html)) takes an interesting approach to solving the problem of deciding whether or not an API call should block or not (or how to block!). It allows people writing APIs to write the core functionality, and then let the caller decide on the blocking behaviour. The API has return a type of `nb::Result<T, Error>` where `T` is the standard return type for the function. If the caller does want to block waiting for the function to complete, they can wrap the call in the `block!` macro. This `nb` crate has some potential to be used with HAL peripherals such as UART `read/write()` functions (which typically block until data is sent/received).
 
 ### cargo and Package Structure
 
@@ -234,7 +238,7 @@ cargo +stable install ravedude
 
 {{% figure src="using-cargo-generate-for-arduino-uno.png" width="700px" caption="cargo generate with the Rahix/avr-hal-template GitHub repo provides a really quick way of setting up a Rust project for an Arduino board." %}}
 
-There is a great tutorial on getting Rust working on the Arduino Uno at https://blog.logrocket.com/complete-guide-running-rust-arduino/. I was able to get a blinky Rust project built and programming within 5 minutes using that tutorial when developing in the WSL (passing through the Arduino USB device with `usbip`).
+There is a great tutorial on getting Rust working on the Arduino Uno (which uses the ATmega328P microcontroller) at https://blog.logrocket.com/complete-guide-running-rust-arduino/. Getting a blinky Rust project built and programming takes about 5 minutes using that tutorial when developing in the WSL (passing through the Arduino USB device with `usbip`).
 
 {{% figure src="screenshot-of-basic-arduino-app-in-rust.png" width="700px" caption="Screenshot of a bare-bones Arduino app written in Rust (flashing an LED and printing \"Hello\" to the console." %}}
 
