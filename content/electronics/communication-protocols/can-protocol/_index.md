@@ -431,6 +431,55 @@ NXP makes a whole suite of CAN transceivers all starting with the part number `T
 * Package: SOIC-8
 * [Datasheet](https://www.ti.com/lit/ds/symlink/iso1044.pdf)
 
+## CAN Bus Controllers
+
+A CAN bus _Controller_ is an IC which contains all the logic and data processing ability to send and receive CAN bus messages. They typically do not have `CAN_H` and `CAN_L` outputs, but rather just logic-level `TX` and `RX` pins that need to be connected to a separate CAN transceiver (there are a few which do feature an integrated transceiver, such as the Texas Instruments `TCAN4550`). 
+
+### PCA82C200
+
+| Parameter              | Value
+|------------------------|----------------
+| Manufacturer           | Phillips (now NXP)
+| Part Number            | PCA82C200
+| Protocols              | CAN2.0A
+| Interface              | Parallel
+| Integrated Transceiver | No
+| Package                | DIP-28
+
+The _PCA82C200_ is "the" classic original CAN controller. It used a parallel interface (8 address lines + control lines). The [Phillips datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html) I found for this part dated back to October 1990[^bib-philips-pca82c200-ds].
+
+{{% figure src="pca82c200-can-controller-block-diagram.png" width="800px" caption="Block diagram of the PCA82C200 CAN controller IC[^bib-philips-pca82c200-ds]." %}}
+
+### SJA1000
+
+The SJA1000 is pin compatible with the PCA82C200 (it comes in either a DIP-28 (`SJA1000`) or SOIC-28 (`SJA1000T`) package). It has PeliCAN mode extensions.
+
+### MCP2510
+
+| Parameter              | Value
+|------------------------|----------------
+| Manufacturer           | Microchip
+| Part Number            | MCP2510
+| Protocols              | CAN2.0A, CAN2.0B
+| Interface              | SPI
+| Integrated Transceiver | No
+| Package                | SOIC-18, TSSOP-20
+
+[Significant errata](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/Errata/80059d.pdf) for this part.
+
+### TCAN4550
+
+| Parameter              | Value
+|------------------------|----------------
+| Manufacturer           | Texas Instruments
+| Part Number            | TCAN4550
+| Protocols              | CAN2.0B, CAN FD
+| Interface              | SPI
+| Integrated Transceiver | Yes
+| Package                | QFN-20
+
+The `TCAN4550` has an integrated transceiver, so you don't have to use a separate IC.
+
 ## CAN Bus Microcontroller Peripherals
 
 CAN bus transceivers only do the work of converting the CAN bus differential signal into two single-ended signals (one for transmit, one for receive). To use the CAN bus, you also need a CAN bus controller, which is typically implemented as a CAN bus peripheral within a microcontroller (although you can get dedicated CAN bus controllers which can be controlled via a different communication bus).
@@ -537,3 +586,4 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^bib-cia-can-fd-basic-idea]: CiA. _CAN Knowledge > CAN FD - The basic idea_. Retrieved 2022-11-16, from https://www.can-cia.org/can-knowledge/can/can-fd/.
 [^bib-eecs-461-can]: J. A. Cook, J. S. Freudenberg. _EECS 461 - Controller Area Network (CAN)_. University of Michigan. Retrieved 2022-11-17, from https://www.eecs.umich.edu/courses/eecs461/doc/CAN_notes.pdf.
 [^bib-nxp-tja115x-secure-can]: NXP. _SECURCANTRLFUS REV 3 - NXP TJA115x Secure CAN Transceiver Family_. Retrieved 2022-11-17, from https://www.nxp.com/docs/en/fact-sheet/SECURCANTRLFUS.pdf.
+[^bib-philips-pca82c200-ds]: Philips (now NXP). _PCA82C200 - Stand-alone CAN-controller (datasheet)_. Retrieved 2022-11-23, from https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html.
