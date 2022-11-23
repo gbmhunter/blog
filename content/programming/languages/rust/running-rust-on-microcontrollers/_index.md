@@ -4,8 +4,8 @@ categories: [ Programming, Programming Languages ]
 date: 2022-11-12
 description: An exploration into programming with Rust on microcontrollers.
 draft: false
-lastmod: 2022-11-15
-tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling, peripheral access crates, PACs, hardware abstraction layers, HALs, board support packages, BSPs ]
+lastmod: 2022-11-23
+tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling, peripheral access crates, PACs, hardware abstraction layers, HALs, board support packages, BSPs, Tock ]
 title: Running Rust on Microcontrollers
 type: page
 ---
@@ -33,6 +33,7 @@ Lets jump straight in!
 
 ## Language Features
 
+Let's explore some of Rust's language features and how they are applicable to embedded firmware.
 ### Ownership
 
 One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, e.t.c.). **These benefits that Rust provides are just as applicable to embedded firmware as they are to software.**
@@ -292,8 +293,13 @@ Supports co-operative multitasking (it is not pre-emptive).
 
 ### Tock
 
-https://github.com/tock/tock
+{{% figure src="tock-os-logo.png" width="700px" caption="The Tock logo. Image from the Tock GitHub organization page." %}}
 
+> Tock is an embedded operating system designed for running multiple concurrent, mutually distrustful applications on Cortex-M and RISC-V based embedded platforms -- GitHub README.
+
+{{% figure src="tock-architecture-diagram.png" width="700px" caption="Architecture block diagram for the Tock RTOS. Image from the Tock documentation[^bib-tock-tock-design]." %}}
+
+Some of Tock is not completely baked into Rust, for example you have to break out of the Rust ecosystem and call `make` to program the kernel onto your board. Once the kernel is programmed onto your board, you can then use their own `tockloader` program to flash the application code.
 ## Further Reading
 
 Be sure to check out the [Matrix "Rust Embedded" chat room](https://app.element.io/#/room/#rust-embedded:matrix.org).
@@ -313,3 +319,4 @@ The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-em
 [^wikipedia-rust]: Wikipedia (2022, Nov 11). _Rust (programming language)_. Retrieved 2022-11-19, from https://en.wikipedia.org/wiki/Rust_(programming_language).
 [^bib-embedded-rust-book-portability]: Rust Embedded. _The Embedded Rust Book - Portability_. Retrieved 2022-11-19, from https://docs.rust-embedded.org/book/portability/.
 [^bib-github-atsamd-rs-atsamd]: atsamd-rs. _atsamd & atsame support for Rust (Git repository)_. Retrieved 2022-11-21, from https://github.com/atsamd-rs/atsamd.
+[^bib-tock-tock-design]: Tock (2022, Jul 27). _Tock Design (Markdown documentation)_. Retrieved 2022-11-23, from https://github.com/tock/tock/blob/master/doc/Design.md.

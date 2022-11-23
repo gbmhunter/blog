@@ -987,6 +987,7 @@
         "tlsv",
         "tmax",
         "tmux",
+        "tockloader",
         "toclevels",
         "tombstoning",
         "toml",
