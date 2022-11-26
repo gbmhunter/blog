@@ -25,13 +25,12 @@ This page aims to be an exploration into running Rust on microcontrollers, cover
 1. Language Features
 1. Architecture Support
 1. MCU Family Support
-1. IDEs
-1. The Programming and Debugging Experience
+1. IDEs, Programming and the Debugging Experience
 1. RTOSes
 
 Lets jump straight in!
 
-## Language Features
+## Rust Language Features
 
 Let's explore some of Rust's language features and how they are applicable to embedded firmware.
 ### Ownership
@@ -156,7 +155,7 @@ Another nice thing about cargo and embedded is that the community seems to have 
 
 TODO: Add image.
 
-## Architecture Support
+## Rust Architecture Support
 
 When considering Rust for an embedded project, you'll be wondering "Is the microcontroller I used supported in Rust?". As there are so many manufacturers and MCU families out there (and a few different architectures), it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular architectures and MCU families below.
 
@@ -220,7 +219,7 @@ Table of the supported RISC-V compilation targets for Rust[^bib-the-rustc-book-p
 
 The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll cover that below.
 
-## MCU Family Support
+## Rust MCU Family Support
 
 So we've covered the CPU architecture (which defines the instruction set), but what about support for all the peripherals that surround it and make up a MCU? Let's cover the amount of Rust support of some popular manufacturers and their MCU families. 
 ### STM32 (ST Microelectronics)
@@ -255,6 +254,8 @@ The repo looks to be active, with 705 commits and 421 stars as of November 2022.
 
 ### MSP430 (Texas Instruments)
 
+There is a not well maintained version of RTFM (Real-Time For the Masses, the old name for RTIC) available for the MSP430 MCUs at the GitHub repo [japaric/msp430-rtfm](https://github.com/japaric/msp430-rtfm).
+
 ### ESP32 (Espressif Systems)
 
 I'm not sure how I feel about their approach of forking the entire Rust repository ([esp-rs/rust](https://github.com/esp-rs/rust)) and adding in support for the Xtensa instruction set that way. Hopefully it will get upstreamed sometime in the future?
@@ -263,23 +264,34 @@ I'm not sure how I feel about their approach of forking the entire Rust reposito
 
 The [nrf-rs/nrf-hal](https://github.com/nrf-rs/nrf-hal) repo provides a Rust HAL for the nRF51, nRF52 and nRF91 families of microcontrollers[^bib-nrf-rs-nrf-hal].
 
+The default Embedded Rust tutorial now uses the micro:bit v2 (it used to use the STM32F303 Discovery Kit), which happens to have an nRF52 MCU onboard.
+
 ### SiFive
 
-The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile for the Freedom E310 (e.g. the HiFive1).
+The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile for the Freedom E310 (e.g. the HiFive1). I couldn't find any support for the HiFive1 Rev B bootloader, so a dedicated programmer was required to program the board.
 
-## IDEs
+### Others
 
-VSCode has very good support for Rust.
-## The Programming and Debugging Experience
+* PSoC: The [psoc-rs GutHub organization](https://github.com/psoc-rs) has a PAC and HAL repo for the PSoC 6 but they don't look well maintained or used.
+* PIC: The GitHub repo [kiffie/pic32-rs](https://github.com/kiffie/pic32-rs) contains a HAL for the PIC32. It looks somewhat maintained.
 
-One must have for embedded development is a smooth write code -> build -> program -> debug workflow. What 
+## Rust IDEs, Programming and the Debugging Experience
+
+One must have for embedded development is a smooth `write code -> build -> program -> debug workflow`. Ideally this is without vendor lock-in (i.e. being forced to use the vendors specific IDE) and with step-by-step debugging in your code editor rather than just on the command-line. Luckily Rust can provide all this! I focused on using VS Code since it is the most popular non-vendor-specific IDE these days. VS Code has very good support for Rust and embedded development. `Cortex-Debug` and `rust-analyzer` are two VS Code extensions that you are definitely going to want to install.
+
+I had access to a STM32F303 Discovery Kit (development board with a STM32F303 MCU on it), so I did a bit of searching and found the repo [rubberduck203/stm32f3-discovery](https://github.com/rubberduck203/stm32f3-discovery). This contained pre-made VS Code launch configurations so I should be able to debug the Rust code straight from within VS Code. With a few tweaks (including adding `"cortex-debug.gdbPath": "gdb-multiarch"` to `settings.json`) I was able to get thus workflow up and running! 
+
+All I needed to do is hit `F5` -- this built the code, flashed it to the STM32F303 dev. kit and then jumped into a debug session. Below is an image from when I was stepping through the "Blinky" example. I was using VS Code connected to Ubuntu via the WSL (using `usbip` to pass-through the STM32F303 USB device).
+
+{{% figure src="stm32-discovery-blinky-debugging-in-vs-code.png" width="800px" caption="Step-by-step debugging a STM32F303 Discovery Kit blinky Rust application in VS Code. I started with the repo at https://github.com/rubberduck203/stm32f3-discovery, and after a few tweaks, this was up and running!" %}}
 
 [Knurling](https://github.com/knurling-rs/) is a collection of projects by Ferrous Systems (two of their popular tools include `probe-run` and `defmt`).
 
 semihosting (slow debug print statements via the attached debugger) is provided for Cortex-M MCUs via the `cortex-m` crate.
-## RTOSes
 
-No language can claim to be suitable for embedded programming without a selection of RTOSes to choose from. Luckily, Rust has some, from Rust wrappers of existing C/C++ RTOSes such FreeRTOS to RTOSes built from scratch to run on Rust. Lets review some of the popular options.
+## Rust RTOSes
+
+No language can claim to be suitable for embedded programming without a selection of RTOSes to choose from. Luckily, Rust has some, from Rust wrappers of existing C/C++ RTOSes (such FreeRTOS and RIOT) to RTOSes built from scratch to run on Rust (such as RTIC, Embassy and Tock). Lets review some of the popular options available to Rust developers.
 
 ### FreeRTOS Wrappers
 
@@ -297,9 +309,27 @@ Supports co-operative multitasking (it is not pre-emptive).
 
 > Tock is an embedded operating system designed for running multiple concurrent, mutually distrustful applications on Cortex-M and RISC-V based embedded platforms -- GitHub README.
 
+| Property           | Value
+|--------------------|------------------
+| Scheduling         | 
+| Num. Repo Stars    | 4k
+| Num. Repo Commits  | 11k
+
 {{% figure src="tock-architecture-diagram.png" width="700px" caption="Architecture block diagram for the Tock RTOS. Image from the Tock documentation[^bib-tock-tock-design]." %}}
 
 Some of Tock is not completely baked into Rust, for example you have to break out of the Rust ecosystem and call `make` to program the kernel onto your board. Once the kernel is programmed onto your board, you can then use their own `tockloader` program to flash the application code.
+
+### Drone
+
+[Drone](https://www.drone-os.com/) is a interrupt-based pre-emptive RTOS built in Rust for embedded devices. 
+
+| Property           | Value
+|--------------------|------------------
+| Scheduling         | Interrupt-based pre-emptive with priority
+| Num. Repo Stars    | 361 (drone-core)
+| Num. Repo Commits  | 251 (drone-core)
+
+
 ## Further Reading
 
 Be sure to check out the [Matrix "Rust Embedded" chat room](https://app.element.io/#/room/#rust-embedded:matrix.org).
