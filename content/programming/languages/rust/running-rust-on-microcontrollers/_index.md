@@ -4,7 +4,8 @@ categories: [ Programming, Programming Languages ]
 date: 2022-11-12
 description: An exploration into programming with Rust on microcontrollers.
 draft: false
-lastmod: 2022-11-23
+images: [ /programming/languages/rust/running-rust-on-microcontrollers/ewg-logo-blue-white-on-transparent.png ]
+lastmod: 2022-11-28
 tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling, peripheral access crates, PACs, hardware abstraction layers, HALs, board support packages, BSPs, Tock ]
 title: Running Rust on Microcontrollers
 type: page
@@ -16,7 +17,7 @@ type: page
 
 Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but is showing great potential for developing embedded firmware**. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. It's aim to improve on some of C/C++'s biggest shortcomings by implementing a **robust ownership model** (which removes entire classes of errors from occurring) is also very much applicable to firmware.
 
-As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
+**As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware**. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
 
 {{% figure src="ewg-logo-blue-white-on-transparent.png" width="200px" caption="The logo of Rust's Embedded Devices Working Group[^bib-rust-embedded-working-group-repo]." %}}
 
@@ -123,9 +124,7 @@ output_pin.set(true);
 
 ### Traits
 
-Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The embedded-hal project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL.
-
-{{% figure src="embedded-hal-firmware-layers.png" width="500px" caption="The different layers of a Rust firmware project using the embedded-hal project. Image from the Embedded Rust Book - Portability[^bib-embedded-rust-book-portability]." %}}
+Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The [embedded-hal](https://github.com/rust-embedded/embedded-hal) project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL. More on this in the [cargo and Package Structure section](#cargo-and-package-structure).
 
 ### Concurrency
 
@@ -157,8 +156,8 @@ Another nice thing about cargo and embedded is that the community seems to have 
 * **Architecture Support Crate:** Contains APIs to control the CPU and peripherals that are shared across a CPU architecture (e.g. API for controlling interrupts, system ticks).
 * **Hardware Abstraction Layers (HALs):** Wraps up the PAC registers into easy-to-use peripheral APIs such as `uart.init()`, `uart.write_byte()`, `adc.read_value()`, e.t.c. Although not unique to Rust, we might expect better standardization of the HALs in Rust because of `embedded-hal`'s effort to keep it consistent across MCU families. In C/C++, the API of the HAL is usually unique to either the MCU family (STM32, SAMD, e.t.c) or the framework (Arduino, mbed, e.t.c).
 * **Board Support Crate:** This crate is built for a specific PCB project that contains the microcontroller. The Board Support Crate uses the HAL and creates appropriately named instances of HAL objects according to how the MCU is connected to the physical world. It's an optional extra crate that is a good idea if you are designing a board to be used by many people for many different proposes. For a single-use project, the extra overhead of creating a board support crate might not be worth it, and instead you can bundle this code inside the Application.
-* **Real-time Operating System (RTOS):**
-* **Application:** 
+* **Real-time Operating System (RTOS):** Just like in C/C++ firmware development, you can also get RTOSes for Rust. Some of these are ports/wrappers of C/C++ RTOSes like FreeRTOS, and others a developed-from-scratch RTOSes for Rust. Using a RTOS is completely optional, and usually makes sense for larger, complex firmware applications.
+* **Application:** The final layer of any firmware project, this contains the high-level business logic. The application layer generally reaches down and makes calls to the RTOS (if present) and HAL layer.
 
 This structure is shown in the image below:
 
@@ -226,7 +225,7 @@ Table of the supported RISC-V compilation targets for Rust[^bib-the-rustc-book-p
 
 ### Xtensa
 
-The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll cover that below.
+The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll cover that below in the [ESP32 (Espressif Systems) section](#esp32-espressif-systems).
 
 ## Rust MCU Family Support
 
@@ -269,6 +268,8 @@ There is a not well maintained version of RTFM (Real-Time For the Masses, the ol
 
 I'm not sure how I feel about their approach of forking the entire Rust repository ([esp-rs/rust](https://github.com/esp-rs/rust)) and adding in support for the Xtensa instruction set that way. Hopefully it will get upstreamed sometime in the future?
 
+{{% figure src="esp32-rust-readme-screenshot-with-scream-emoji.png" width="1000px" caption="A screenshot from the front page of the esp-rs/rust repo shows how diverged the ESP32 Rust fork is compared to the official one (as of Nov. 2022, 11.4k commits behind!). I'm not sure what to feel about this." %}}
+
 ### Nordic nRF
 
 The [nrf-rs/nrf-hal](https://github.com/nrf-rs/nrf-hal) repo provides a Rust HAL for the nRF51, nRF52 and nRF91 families of microcontrollers[^bib-nrf-rs-nrf-hal].
@@ -278,6 +279,12 @@ The default Embedded Rust tutorial now uses the micro:bit v2 (it used to use the
 ### SiFive
 
 The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile for the Freedom E310 (e.g. the HiFive1). I couldn't find any support for the HiFive1 Rev B bootloader, so a dedicated programmer was required to program the board.
+
+### RP2040
+
+The RP2040 is just a single chip rather than a "family", but there are a number of boards you can buy based of this IC. There is a good quality RP2040 provided by the [rp-rs/rp-hal](https://github.com/rp-rs/rp-hal) repo. This repo is organized as a Cargo Workspace which also includes a number of Board Support Crates for development boards that use this chip, including the Raspberry Pi Pico, Adafruit Feather RP2040, Adafruit ItsyBitsy RP2040, Pimoroni Pico Explorer, SolderParty RP2040 Stamp, Sparkfun Pro Micro RP2040, Sparkfun Thing Plus RP2040, and Seeeduino XIAO RP2040[^bib-github-rp-rs-rp-hal].
+
+{{% figure src="rp-hal-rust-support-for-the-rp2040-readme-screenshot.png" width="400px" caption="Screenshot of the rp-rs/rp-hal repo README." %}}
 
 ### Others
 
@@ -341,7 +348,7 @@ Some of Tock is not completely baked into Rust, for example you have to break ou
 
 ## Further Reading
 
-Be sure to check out the [Matrix "Rust Embedded" chat room](https://app.element.io/#/room/#rust-embedded:matrix.org).
+Be sure to check out the [Matrix 'Rust Embedded' chat room](https://app.element.io/#/room/#rust-embedded:matrix.org).
 
 The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust) is a huge list of embedded Rust resources maintained by the Rust Resources team. It includes tools, RTOSes, peripheral access crates (PACs), hardware abstraction layers (HALs), board support crates (BSPs), blogs, books and other training materials.
 
@@ -359,3 +366,4 @@ The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-em
 [^bib-embedded-rust-book-portability]: Rust Embedded. _The Embedded Rust Book - Portability_. Retrieved 2022-11-19, from https://docs.rust-embedded.org/book/portability/.
 [^bib-github-atsamd-rs-atsamd]: atsamd-rs. _atsamd & atsame support for Rust (Git repository)_. Retrieved 2022-11-21, from https://github.com/atsamd-rs/atsamd.
 [^bib-tock-tock-design]: Tock (2022, Jul 27). _Tock Design (Markdown documentation)_. Retrieved 2022-11-23, from https://github.com/tock/tock/blob/master/doc/Design.md.
+[^bib-github-rp-rs-rp-hal]: rp-rs GitHub Organization. _Rust support for the "Raspberry Silicon" family of microcontrollers_. Retrieved 2022-11-28, from https://github.com/rp-rs/rp-hal.
