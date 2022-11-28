@@ -151,9 +151,18 @@ This adds the sub-command `cargo flash` to `cargo`. Then you can type the follow
 $ cargo flash --chip STM32F042C4Tx
 ```
 
-Another nice thing about cargo and embedded is that the community seems to have settled onto a structured way of organizing various firmware-related libraries.
+Another nice thing about cargo and embedded is that the community seems to have settled onto a structured way of organizing various firmware-related libraries. This includes:
 
-TODO: Add image.
+* **Peripheral Access Crates (PACs):** Contains the minimal naming of memory-mapped registers that control microcontroller peripherals.
+* **Architecture Support Crate:** Contains APIs to control the CPU and peripherals that are shared across a CPU architecture (e.g. API for controlling interrupts, system ticks).
+* **Hardware Abstraction Layers (HALs):** Wraps up the PAC registers into easy-to-use peripheral APIs such as `uart.init()`, `uart.write_byte()`, `adc.read_value()`, e.t.c. Although not unique to Rust, we might expect better standardization of the HALs in Rust because of `embedded-hal`'s effort to keep it consistent across MCU families. In C/C++, the API of the HAL is usually unique to either the MCU family (STM32, SAMD, e.t.c) or the framework (Arduino, mbed, e.t.c).
+* **Board Support Crate:** This crate is built for a specific PCB project that contains the microcontroller. The Board Support Crate uses the HAL and creates appropriately named instances of HAL objects according to how the MCU is connected to the physical world. It's an optional extra crate that is a good idea if you are designing a board to be used by many people for many different proposes. For a single-use project, the extra overhead of creating a board support crate might not be worth it, and instead you can bundle this code inside the Application.
+* **Real-time Operating System (RTOS):**
+* **Application:** 
+
+This structure is shown in the image below:
+
+{{% figure src="crate-structure-for-embedded-rust.png" width="1000px" caption="The hierarchical crate structure for an embedded Rust firmware project." %}}
 
 ## Rust Architecture Support
 
