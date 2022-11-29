@@ -187,6 +187,18 @@ By default all features are disabled, unless a `default` feature is specified in
 
 Another use of the C/C++ preprocessor is for performance reasons. It may be desirable to avoid function calls by creating preprocessor macros which perform direct text substitution. This is less of an issue in modern C/C++ as the compilers have gotten very good at knowing when to automatically inline functions anyway. But nevertheless, you can still perform similar tricks in Rust using Rust's macro system. It many respects it is much more powerful and smarter than the C/C++ preprocessor (which does basic text substitution). There are however tricks you can do with the C/C++ preprocessor that you can't do in Rust, such as partial variable name replacement. This is very unlikely to be a deal breaker though!
 
+One common pattern in embedded C/C++ firmware is to use the preprocessor to make a `assert()` macro that not only checks the provided expression is true, but also grabs the current file, line number and provided expressions as strings. e.g.:
+
+```c++
+#define assert( exp ) \
+    ( (exp) ? (void)0 : assert_fn( __LINE__, __FILE__, #exp))
+#endif
+```
+
+This is made possible by the special `__LINE__`, `__FILE__` and `#exp` (where the `#` stringifies the `exp`), and the fact that the macro contents gets plonked in the source code everywhere `assert()` is called. Luckily, you can do the same thing in Rust by utilizing the `line!()`, `file!()` and `stringify!()` macros (which are compiler built-ins)[^bib-rust-lang-docs-macro-std-line].
+
+{{% figure src="file-macro-in-rust-compiler-built-in.png" width="600px" caption="Screenshot of the file! macro source code inside the Rust standard library." %}}
+
 ### Volatile Access
 
 Most embedded developers will be familiar with the `volatile` keyword in C/C++. It tells the compiler that the value of this variable may change at anytime, which is true for pointers to memory-mapped peripheral registers that are updated in hardware. This is important so that the compiler does not perform incorrect optimizations (for more info on the C/C++ volatile keyword, see the [Embedded Systems And The Volatile Keyword](https://blog.mbedded.ninja/programming/languages/c/embedded-systems-and-the-volatile-keyword/) page).
@@ -204,6 +216,8 @@ $ rustup target add <architecture>
 ```
 
 This sets up the build environment for cross-compiling to your chosen architecture. For a complete list of supported platforms see [The rustc Book: Platform Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html).
+
+Let's go into more detail about the Rust support of major architectures used in the embedded space today. 
 
 ### Cortex-M (ARM)
 
@@ -382,6 +396,8 @@ Be sure to check out the [Matrix 'Rust Embedded' chat room](https://app.element.
 
 The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust) is a huge list of embedded Rust resources maintained by the Rust Resources team. It includes tools, RTOSes, peripheral access crates (PACs), hardware abstraction layers (HALs), board support crates (BSPs), blogs, books and other training materials.
 
+You can have a play around with Rust using an online editor/compiler such as [Replit](https://replit.com/new/rust). Or if you prefer running something locally, install `cargo` and then initialize a new project with `cargo new hello_world --bin` (this will be for running on your computer, not on a microcontroller).
+
 ## References
 
 [^bib-rust-embedded-working-group-repo]: Rust Embedded. _Embedded Devices Working Group (repository)_. GitHub. Retrieved 2022-11-12, from https://github.com/rust-embedded/wg.
@@ -397,3 +413,4 @@ The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-em
 [^bib-github-atsamd-rs-atsamd]: atsamd-rs. _atsamd & atsame support for Rust (Git repository)_. Retrieved 2022-11-21, from https://github.com/atsamd-rs/atsamd.
 [^bib-tock-tock-design]: Tock (2022, Jul 27). _Tock Design (Markdown documentation)_. Retrieved 2022-11-23, from https://github.com/tock/tock/blob/master/doc/Design.md.
 [^bib-github-rp-rs-rp-hal]: rp-rs GitHub Organization. _Rust support for the "Raspberry Silicon" family of microcontrollers_. Retrieved 2022-11-28, from https://github.com/rp-rs/rp-hal.
+[^bib-rust-lang-docs-macro-std-line]: Rust Language Docs. _Macro std::line_. Retrieved 2022-11-29, from https://doc.rust-lang.org/std/macro.line.html.
