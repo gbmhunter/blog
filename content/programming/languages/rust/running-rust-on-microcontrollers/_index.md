@@ -163,6 +163,36 @@ This structure is shown in the image below:
 
 {{% figure src="crate-structure-for-embedded-rust.png" width="1000px" caption="The hierarchical crate structure for an embedded Rust firmware project." %}}
 
+### cargo Features
+
+It is common in embedded firmware to want to be able to include/exclude blocks of code based on conditionals (e.g. `DEBUG` vs. `PRODUCTION`, or `ENABLE_LARGE_LUT_ARRAY`) for reasons such as freeing up memory usage by removing debug strings in production builds or including architecture specific code depending on the compile target (so you can target more than one microcontroller with the same code base). In C/C++ land, this is commonly implemented using preprocessor directives (`#ifdef`, e.t.c). However, there in no preprocessor in Rust. The idiomatic way to solve this problem in Rust is to use [Cargo features](https://doc.rust-lang.org/cargo/reference/features.html#the-features-section).
+
+All Cargo features have to defined under `[features]` in the `Cargo.toml`. For example:
+
+```toml
+[features]
+DEBUG
+```
+
+Then, inside a `.rs` source code file you can conditionally include code blocks:
+
+```rust
+#[cfg(feature = "DEBUG")]
+<debug code goes here>
+```
+
+By default all features are disabled, unless a `default` feature is specified in the `Cargo.toml`.
+
+### Rust Macros
+
+Another use of the C/C++ preprocessor is for performance reasons. It may be desirable to avoid function calls by creating preprocessor macros which perform direct text substitution. This is less of an issue in modern C/C++ as the compilers have gotten very good at knowing when to automatically inline functions anyway. But nevertheless, you can still perform similar tricks in Rust using Rust's macro system. It many respects it is much more powerful and smarter than the C/C++ preprocessor (which does basic text substitution). There are however tricks you can do with the C/C++ preprocessor that you can't do in Rust, such as partial variable name replacement. This is very unlikely to be a deal breaker though!
+
+### Volatile Access
+
+Most embedded developers will be familiar with the `volatile` keyword in C/C++. It tells the compiler that the value of this variable may change at anytime, which is true for pointers to memory-mapped peripheral registers that are updated in hardware. This is important so that the compiler does not perform incorrect optimizations (for more info on the C/C++ volatile keyword, see the [Embedded Systems And The Volatile Keyword](https://blog.mbedded.ninja/programming/languages/c/embedded-systems-and-the-volatile-keyword/) page).
+
+Rust provides two methods, `core::ptr::write_volatile()` and `core::ptr::read_volatile()`, to tell the compiler the same thing. `write_volatile()` takes a variable of type `*mut T` and `read_volatile()` takes a variable of type `*const T`.
+
 ## Rust Architecture Support
 
 When considering Rust for an embedded project, you'll be wondering "Is the microcontroller I used supported in Rust?". As there are so many manufacturers and MCU families out there (and a few different architectures), it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular architectures and MCU families below.
