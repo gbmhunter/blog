@@ -37,7 +37,7 @@ Let's explore some of Rust's language features and how they are applicable to em
 
 ### no_std
 
-One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which does not contain any APIs which require the use of an operating system. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
+One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which **does not contain any APIs which assume/require the use of an operating system**. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
 
 Another thing you don't get with `no_std` is the initialization which sets up stack overflow protection and spawns a thread to call `main()`. So in embedded `no_std` development you define which function you want as your "main". 
 
@@ -143,6 +143,43 @@ In Rust, you can also use critical sections to prevent data races in interrupts.
 
 The `nb` crate (it's docs are [here](https://docs.rs/nb/latest/nb/index.html)) takes an interesting approach to solving the problem of deciding whether or not an API call should block or not (or how to block!). It allows people writing APIs to write the core functionality, and then let the caller decide on the blocking behaviour. The API has return a type of `nb::Result<T, Error>` where `T` is the standard return type for the function. If the caller does want to block waiting for the function to complete, they can wrap the call in the `block!` macro. This `nb` crate has some potential to be used with HAL peripherals such as UART `read/write()` functions (which typically block until data is sent/received).
 
+### Error Handling
+
+In most languages, there are two common ways of handling errors. Either:
+
+1. Return an error code
+1. Throw an exception
+
+In embedded firmware, sometimes exceptions are banned from use due to either the unpredictable time of execution (although contrary to popular belief, exceptions can actually improve runtime in the non-exceptional case) or the fact it's another complexity that every developer has to be aware of. **Returning error codes is the de-facto error handling method for many embedded projects, but you have to remember to check for errors and propagate them up the call stack appropriately.** Rust can vastly improve the error handling experience due to it's `Result` type.
+
+For example, lets invent a pretend `uart_write_bytes()` function which writes an array of bytes over a UART. Our UART has some peculiar behaviour and can't write more than 10 bytes at a time. If the user provides more than 10 bytes, we want to return an error condition. If they provide 10 bytes or less, we want to write them out the UART and then return the number of bytes written. So let's write this function:
+
+```rust
+fn uart_write_bytes(bytes: &[u8]) -> Result<usize, &'static str> {
+    if bytes.len() > 10 {
+        return Err("Can only write 10 bytes or less!");
+    }
+    // Write bytes here
+    // ....
+
+    // Writing completed successfully, return number of bytes written
+    Ok(bytes.len())
+}
+```
+
+Rust will produce warnings if we try and use this function and forget to check the returned result, e.g. if we write:
+
+```rust
+let data = [32, 38, 24, 34];
+uart_write_bytes(&data); // Oh oh, we've forgotten to check for an error
+```
+
+Rust will spit out:
+
+{{% figure src="compiler-warning-about-unused-result.png" width="700px" caption="The Rust compiler warning when compiling the above code." %}}
+
+Rust also introduces the question mark operator `?` which is shorthand for propagating the error condition up the stack.
+
 ### cargo and Package Structure
 
 One sorely lacking feature with C/C++ is a standardized package manager for managing your dependencies and build process. Luckily (like most common languages) Rust comes with the `cargo` package manager. `cargo` translates well to embedded development, you can use it to easily include 3rd party libraries (what they call _crates_) -- or create your own libraries to make your code more modular and re-usable.
@@ -213,8 +250,6 @@ This is made possible by the special `__LINE__`, `__FILE__` and `#exp` (where th
 Most embedded developers will be familiar with the `volatile` keyword in C/C++. It tells the compiler that the value of this variable may change at anytime, which is true for pointers to memory-mapped peripheral registers that are updated in hardware. This is important so that the compiler does not perform incorrect optimizations (for more info on the C/C++ volatile keyword, see the [Embedded Systems And The Volatile Keyword](https://blog.mbedded.ninja/programming/languages/c/embedded-systems-and-the-volatile-keyword/) page).
 
 Rust provides two methods, `core::ptr::write_volatile()` and `core::ptr::read_volatile()`, to tell the compiler the same thing. `write_volatile()` takes a variable of type `*mut T` and `read_volatile()` takes a variable of type `*const T`.
-
-
 
 ## Rust Architecture Support
 
