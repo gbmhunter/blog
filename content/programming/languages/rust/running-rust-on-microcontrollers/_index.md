@@ -21,7 +21,7 @@ Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but
 
 {{% figure src="ewg-logo-blue-white-on-transparent.png" width="200px" caption="The logo of Rust's Embedded Devices Working Group[^bib-rust-embedded-working-group-repo]." %}}
 
-This page aims to be an exploration into running Rust on microcontrollers, covering things such as:
+This page aims to be an exploration into running Rust on microcontrollers (what you would consider to be low-level embedded firmware, and not running on a hosted environment such as Linux), covering things such as:
 
 1. Language Features
 1. Architecture Support
@@ -34,6 +34,15 @@ Lets jump straight in!
 ## Rust Language Features
 
 Let's explore some of Rust's language features and how they are applicable to embedded firmware.
+
+### no_std
+
+One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which does not contain any APIs which require the use of an operating system. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
+
+Another thing you don't get with `no_std` is the initialization which sets up stack overflow protection and spawns a thread to call `main()`. So in embedded `no_std` development you define which function you want as your "main". 
+
+`no_std` also means that by default, you don't get any way to dynamically allocate memory on the heap. This might seem strange at first, because in embedded C development you typically have `malloc()/free()` and friends, and in C++ you have `new/delete`. No dynamic memory allocations means that you can't use any objects that rely on it (dynamic arrays or strings), and it Rust these are called collections (`Vec`, `Box`, `BTreeMap`, e.t.c). In some cases having no dynamic memory allocation in firmware is fine (and in-fact preferable or required...e.g. MISRA). However there are some good use cases for dynamic memory allocation (my general rule for non life-threatening applications is to allow it, but only during initialization). Luckily you can enable it as long as their is a suitable allocator for your microcontroller architecture. For example, the [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) crate provides a custom allocator for the Cortex-M architecture. You can then also use the standard Rust collections (but be careful with them!).
+
 ### Ownership
 
 One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, e.t.c.). **These benefits that Rust provides are just as applicable to embedded firmware as they are to software.**
@@ -205,6 +214,8 @@ Most embedded developers will be familiar with the `volatile` keyword in C/C++. 
 
 Rust provides two methods, `core::ptr::write_volatile()` and `core::ptr::read_volatile()`, to tell the compiler the same thing. `write_volatile()` takes a variable of type `*mut T` and `read_volatile()` takes a variable of type `*const T`.
 
+
+
 ## Rust Architecture Support
 
 When considering Rust for an embedded project, you'll be wondering "Is the microcontroller I used supported in Rust?". As there are so many manufacturers and MCU families out there (and a few different architectures), it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular architectures and MCU families below.
@@ -245,8 +256,52 @@ You can quickly start a new project for a Cortex-M CPU with the command:
 cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
 ```
 
-
 {{% figure src="cargo-cortex-m-quickstart-project-files.png" width="800px" caption="The resulting Cortex-M quickstart project creating by running the above cargo command." %}}
+
+The crate [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) provides a heap allocator for Cortex-M based microcontrollers. The below code example shows how this allocator can be setup as the global allocator (so that standard collections such as `Vec` work) and used within a firmware application[^bib-github-rust-embedded-alloc-cortex-m]:
+
+```rust
+#![no_std]
+#![no_main]
+#![feature(alloc_error_handler)]
+
+extern crate alloc;
+
+use alloc::vec::Vec;
+use alloc_cortex_m::CortexMHeap;
+use core::alloc::Layout;
+use core::panic::PanicInfo;
+use cortex_m_rt::entry;
+
+#[global_allocator]
+static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
+
+#[entry]
+fn main() -> ! {
+    // Initialize the allocator BEFORE you use it
+    {
+        use core::mem::MaybeUninit;
+        const HEAP_SIZE: usize = 1024;
+        static mut HEAP: [MaybeUninit<u8>; HEAP_SIZE] = [MaybeUninit::uninit(); HEAP_SIZE];
+        unsafe { ALLOCATOR.init(HEAP.as_ptr() as usize, HEAP_SIZE) }
+    }
+
+    let mut xs = Vec::new();
+    xs.push(1);
+
+    loop { /* .. */ }
+}
+
+#[alloc_error_handler]
+fn oom(_: Layout) -> ! {
+    loop {}
+}
+
+#[panic_handler]
+fn panic(_: &PanicInfo) -> ! {
+    loop {}
+}
+```
 
 ### RISC-V
 
@@ -414,3 +469,4 @@ You can have a play around with Rust using an online editor/compiler such as [Re
 [^bib-tock-tock-design]: Tock (2022, Jul 27). _Tock Design (Markdown documentation)_. Retrieved 2022-11-23, from https://github.com/tock/tock/blob/master/doc/Design.md.
 [^bib-github-rp-rs-rp-hal]: rp-rs GitHub Organization. _Rust support for the "Raspberry Silicon" family of microcontrollers_. Retrieved 2022-11-28, from https://github.com/rp-rs/rp-hal.
 [^bib-rust-lang-docs-macro-std-line]: Rust Language Docs. _Macro std::line_. Retrieved 2022-11-29, from https://doc.rust-lang.org/std/macro.line.html.
+[^bib-github-rust-embedded-alloc-cortex-m]: Rust Embedded. _alloc-cortex-m - A heap allocator for Cortex-M processors (repository)_. Retrieved 2022-11-30, from https://github.com/rust-embedded/alloc-cortex-m.
