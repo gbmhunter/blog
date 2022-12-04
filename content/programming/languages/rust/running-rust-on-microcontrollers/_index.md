@@ -126,9 +126,59 @@ output_pin.set(true);
 
 Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The [embedded-hal](https://github.com/rust-embedded/embedded-hal) project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL. More on this in the [cargo and Package Structure section](#cargo-and-package-structure).
 
+For example, the `serial::Read` and `Write` traits are defined as[^bib-embedded-hal-serial-traits]:
+
+```rust
+pub trait Read<Word> {
+    type Error;
+    fn read(&mut self) -> Result<Word, Self::Error>;
+}
+
+pub trait Write<Word> {
+    type Error;
+    fn write(&mut self, word: Word) -> Result<(), Self::Error>;
+    fn flush(&mut self) -> Result<(), Self::Error>;
+}
+```
+
 ### Safer Array Use
 
-In Rust, if you index into an array, it is automatically bounds checked. This can prevent a ton of subtle "undefined behaviour bugs" that you get when you try the same thing in C/C++ (and security concerns!). Of course, bounds checking does incur a small amount of runtime overhead (which is likely to be negligible in 99% of use cases). You can get **rid of this overhead however by using an array iterator instead of indexing**. This is in fact the recommended way of accessing an array unless you really have to use an index (some situations do still need to randomly access the array).
+In Rust, if you index into an array, it is automatically bounds checked. This can prevent a ton of subtle "undefined behaviour bugs" that you get when you try the same thing in C/C++ (and security concerns!). Of course, bounds checking does incur a small amount of runtime overhead (which is likely to be negligible in 99% of use cases).
+
+```rust
+fn main() {
+    let arr: [i8; 3] = [1, 2, 3];
+    // Rust will throw a compiler error on the next line, since it can work out a compile time that this
+    // index is out of bounds
+    let _ = arr[3];
+}
+```
+
+If an array reference is passed into a function, then Rust can't work out at compile time if the indexing is out-of-bounds. In this case it will do bounds checking at runtime and panic:
+
+```rust
+fn main() {
+    let arr: [i8; 3] = [1, 2, 3];
+    out_of_bounds(&arr);
+}
+
+fn out_of_bounds(arr: &[i8]) {
+    println!("{:?}", arr);
+    let _ = arr[3]; // Rust will do a runtime bounds check and panic here
+}
+```
+
+If the runtime overhead of bounds checking is a concern for your application, you can get **rid of this overhead however by using an array iterator instead of indexing**. This is in fact the recommended way of accessing an array unless you really have to use an index (some situations do still need to randomly access the array).
+
+You might have also noticed that arrays don't decay to pointers (i.e. loses the dimension information -- `sizeof` now gives you the size of the pointer) as easily as they do in C/C++ (especially when passing into functions). **In Rust you can pass in references to any-sized arrays into a function while still being find it's length by calling `.len()`**, something you cannot do in C/C++ (you can pass arrays in C/C++ without the variable decaying to a pointer, but you have to hardcode the function to a specific array size, this is because the size information is not saved in the array memory layout).
+
+```rust
+fn no_decaying_to_pointer(arr: &[i8]) {
+    // Yay! Arrays don't decay to pointers, I still
+    // have length information!
+    println!("{:?}", arr.len());
+}
+```
 
 ### Concurrency
 
@@ -414,6 +464,8 @@ fn panic(_: &PanicInfo) -> ! {
 
 ### RISC-V
 
+RISC-V architecture support in Rust is quite good. Below are the support architectures:
+
 <table>
 <caption>
 
@@ -431,6 +483,10 @@ Table of the supported RISC-V compilation targets for Rust[^bib-the-rustc-book-p
 </tbody>
 </table>
 
+The [riscv_rt crate](https://docs.rs/riscv-rt/latest/riscv_rt/) provides the basic start-up/runtime for RISC-V CPUs.
+
+{{% figure src="riscv-rt-crate-docs-screenshot.png" width="700px" caption="Screenshot of the docs for the riscv_rt (RISC-V runtime) crate." %}}
+
 ### Xtensa
 
 The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll cover that below in the [ESP32 (Espressif Systems) section](#esp32-espressif-systems).
@@ -440,7 +496,9 @@ The Xtensa architecture is only predominant in the ESP32 range of MCUs, so we'll
 So we've covered the CPU architecture (which defines the instruction set), but what about support for all the peripherals that surround it and make up a MCU? Let's cover the amount of Rust support of some popular manufacturers and their MCU families. 
 ### STM32 (ST Microelectronics)
 
-The STM32 family of microcontrollers has some of the richest Rust support out of any microcontroller.
+The STM32 family of microcontrollers has some of the richest Rust support out of any microcontroller. The stm32-rs/stm32-rs repo contains Rust PAC crates for a large variety of STM32 microcontrollers. As of Nov 2022 it is actively maintained and has 824 stars.
+
+{{% figure src="stm32-rs-repo-readme-screenshot.png" width="600px" caption="A screenshot of the stm32-rs repo's README." %}}
 
 ### Atmel AVR
 
@@ -511,7 +569,7 @@ All I needed to do is hit `F5` -- this built the code, flashed it to the STM32F3
 
 [Knurling](https://github.com/knurling-rs/) is a collection of projects by Ferrous Systems (two of their popular tools include `probe-run` and `defmt`).
 
-semihosting (slow debug print statements via the attached debugger) is provided for Cortex-M MCUs via the `cortex-m` crate.
+[semihosting](https://docs.rust-embedded.org/book/start/semihosting.html) is provided for Cortex-M MCUs via the `cortex-m` crate. semihosting allows you to log debug messages to the host via the attached debugger with no extra cables (e.g. USB-to-UART devices). The disadvantage is that it's slow. A single message can take many many milliseconds depending on the attached debugger you re using. The `panic-semihosting` crate can be also used to provide useful panic messages on the host. ITM is a faster option than semihosting but is only available on Cortex-M3's and higher. RTT could be a even better option (being available on most targets/programmers like semihosting, but being fast like ITM)[^bib-github-issues-rust-embedded-book-discourage-semihosting]. It is mostly platform agnostic and just depends on the debug probe supporting background target memory access. Once enabled you can use the `rprintln!()` macro. I have not used this yet though so can't comment much!
 
 ## Rust RTOSes
 
@@ -519,13 +577,30 @@ No language can claim to be suitable for embedded programming without a selectio
 
 ### FreeRTOS Wrappers
 
+* [hashmismatch/freertos.rs](https://github.com/hashmismatch/freertos.rs): Unfortunately this one repo does not look like it has had any active development for a number of years.
+* [lobaro/FreeRTOS-rust](https://github.com/lobaro/FreeRTOS-rust): Actively seeks to improve on `hashmismatch/freertos.rs` and simplify the usage of FreeRTOS from Rust.
+
 ### RTIC
 
-Interesting approach to an RTOS.
+RTIC (_Real-Time Interrupt-driven Concurrency_) is an interesting approach to an RTOS that seems to have a decent amount of actively development and community support. All tasks share a single call stack, and deadlock-free execution is guaranteed at compile time.
+
+| Property           | Value
+|--------------------|------------------
+| Scheduling         | Interrupt-based preemptive with priority
+| Num. Repo Stars    | 1k
+| Num. Repo Commits  | 1.1k
+
+{{% figure src="rtic-documentation-screenshot.png" width="400px" caption="A screenshot of the homepage for RTIC's documentation." %}}
 
 ### Embassy
 
-Supports co-operative multitasking (it is not pre-emptive).
+_Embassy_ primarily supports co-operative multitasking over preemptive scheduling. However, it does let you create multiple executors with different priorities, so you can get preemption if you need it. It leverages the use of Rust's [async/await](https://rust-lang.github.io/async-book/). The scheduler runs all tasks on a single stack. It also provides a suite of libraries such as embassy-net for IP networking, embassy-lora for LoRa networking, embassy-usb for USB devices and embassy-boot for a bootloader.
+
+| Property           | Value
+|--------------------|------------------
+| Scheduling         | Co-operative
+| Num. Repo Stars    | 1.2k
+| Num. Repo Commits  | 3.4k
 
 ### Tock
 
@@ -535,7 +610,7 @@ Supports co-operative multitasking (it is not pre-emptive).
 
 | Property           | Value
 |--------------------|------------------
-| Scheduling         | 
+| Scheduling         | Preemptive
 | Num. Repo Stars    | 4k
 | Num. Repo Commits  | 11k
 
@@ -588,3 +663,5 @@ You can have a play around with Rust using an online editor/compiler such as [Re
 [^bib-github-rp-rs-rp-hal]: rp-rs GitHub Organization. _Rust support for the "Raspberry Silicon" family of microcontrollers_. Retrieved 2022-11-28, from https://github.com/rp-rs/rp-hal.
 [^bib-rust-lang-docs-macro-std-line]: Rust Language Docs. _Macro std::line_. Retrieved 2022-11-29, from https://doc.rust-lang.org/std/macro.line.html.
 [^bib-github-rust-embedded-alloc-cortex-m]: Rust Embedded. _alloc-cortex-m - A heap allocator for Cortex-M processors (repository)_. Retrieved 2022-11-30, from https://github.com/rust-embedded/alloc-cortex-m.
+[^bib-embedded-hal-serial-traits]: Embedded HAL. _Module embedded_hal::serial (documentation)_. Retrieved 2022-12-05, from https://docs.rs/embedded-hal/latest/embedded_hal/serial/.
+[^bib-github-issues-rust-embedded-book-discourage-semihosting]: rust-embedded/book. _Discourage use of semihosting and mention viable alternatives #257 (GitHub issue)_. Retrieved 2022-12-05, from https://github.com/rust-embedded/book/issues/257.
