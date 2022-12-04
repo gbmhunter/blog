@@ -11,8 +11,6 @@ title: Running Rust on Microcontrollers
 type: page
 ---
 
-{{% warning-is-notes %}}
-
 ## Overview
 
 Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but is showing great potential for developing embedded firmware**. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. It's aim to improve on some of C/C++'s biggest shortcomings by implementing a **robust ownership model** (which removes entire classes of errors from occurring) is also very much applicable to firmware.
@@ -28,20 +26,13 @@ This page aims to be an exploration into running Rust on microcontrollers (what 
 1. MCU Family Support
 1. IDEs, Programming and the Debugging Experience
 1. RTOSes
+1. Rust Disadvantages
 
 Lets jump straight in!
 
 ## Rust Language Features
 
 Let's explore some of Rust's language features and how they are applicable to embedded firmware.
-
-### no_std
-
-One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which **does not contain any APIs which assume/require the use of an operating system**. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
-
-Another thing you don't get with `no_std` is the initialization which sets up stack overflow protection and spawns a thread to call `main()`. So in embedded `no_std` development you define which function you want as your "main". 
-
-`no_std` also means that by default, you don't get any way to dynamically allocate memory on the heap. This might seem strange at first, because in embedded C development you typically have `malloc()/free()` and friends, and in C++ you have `new/delete`. No dynamic memory allocations means that you can't use any objects that rely on it (dynamic arrays or strings), and it Rust these are called collections (`Vec`, `Box`, `BTreeMap`, e.t.c). In some cases having no dynamic memory allocation in firmware is fine (and in-fact preferable or required...e.g. MISRA). However there are some good use cases for dynamic memory allocation (my general rule for non life-threatening applications is to allow it, but only during initialization). Luckily you can enable it as long as their is a suitable allocator for your microcontroller architecture. For example, the [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) crate provides a custom allocator for the Cortex-M architecture. You can then also use the standard Rust collections (but be careful with them!).
 
 ### Ownership
 
@@ -178,7 +169,72 @@ Rust will spit out:
 
 {{% figure src="compiler-warning-about-unused-result.png" width="700px" caption="The Rust compiler warning when compiling the above code." %}}
 
-Rust also introduces the question mark operator `?` which is shorthand for propagating the error condition up the stack.
+How to deal with this returned `Result` object properly? One way is to call `unwrap()`. `unwrap()` returns the value if it didn't error, and panics if there was an error. You would use `unwrap()` in cases in where the error is non-recoverable, and in embedded situations you get to define what panic does (think of it to the same as a C/C++ assert).
+
+```rust
+// Using unwrap() we can unpack the returned `Result` type, we either get the number of bytes if write was successful or panic if `Err` was returned
+let num_bytes = uart_write_bytes(&data).unwrap(); 
+```
+
+There is also `expect()` which like `.unwrap()` except it also allows you to provide a custom error message:
+
+```rust
+let num_bytes = uart_write_bytes(&data).expect("Writing bytes to UART failed."); 
+```
+
+If the error is recoverable and/or expected, you can use a `match` statement on the `Result` object to handle the error condition appropriately.
+
+```rust
+fn main() {
+    // We used the ? operator in perform_comms(), which propagates the error
+    // back to here.
+    perform_comms().unwrap();
+}
+
+fn perform_comms() -> Result<(), &'static str> {
+    let data = [32, 38, 24, 34];
+    let num_bytes = match uart_write_bytes(&data) {
+        Ok(num_bytes) => num_bytes,
+        Err(e) => // Handle error condition here -- maybe retry?
+    };
+
+    return Ok(());
+}
+
+fn uart_write_bytes(bytes: &[u8]) -> Result<usize, &'static str> {
+    if bytes.len() > 10 {
+        return Err("Can only write 10 bytes or less!");
+    }
+    // Write bytes here
+    // ....
+
+    // Writing completed successfully, return number of bytes written
+    Ok(bytes.len())
+}
+```
+
+Another option is to use the question mark operator `?` -- this is shorthand doing a match statement and returning early if there is an `Err`, essentially propagating the error condition up the stack. This design style is common practise (it's very similar to how an exception works) and so it makes sense that Rust has introduced a shorthand for it. The following example shows this, with an extra function added to show the error propagation.
+
+```rust
+let num_bytes = uart_write_bytes(&data)?;
+```
+
+which is equivalent to:
+
+```rust
+let num_bytes = match uart_write_bytes(&data) {
+    Ok(num_bytes) => num_bytes,
+    Err(e) => return Err(e),
+};
+```
+
+### no_std
+
+One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which **does not contain any APIs which assume/require the use of an operating system**. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
+
+Another thing you don't get with `no_std` is the initialization which sets up stack overflow protection and spawns a thread to call `main()`. So in embedded `no_std` development you define which function you want as your "main". 
+
+`no_std` also means that by default, you don't get any way to dynamically allocate memory on the heap. This might seem strange at first, because in embedded C development you typically have `malloc()/free()` and friends, and in C++ you have `new/delete`. No dynamic memory allocations means that you can't use any objects that rely on it (dynamic arrays or strings), and it Rust these are called collections (`Vec`, `Box`, `BTreeMap`, e.t.c). In some cases having no dynamic memory allocation in firmware is fine (and in-fact preferable or required...e.g. MISRA). However there are some good use cases for dynamic memory allocation (my general rule for non life-threatening applications is to allow it, but only during initialization). Luckily you can enable it as long as their is a suitable allocator for your microcontroller architecture. For example, the [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) crate provides a custom allocator for the Cortex-M architecture. You can then also use the standard Rust collections (but be careful with them!).
 
 ### cargo and Package Structure
 
@@ -479,6 +535,15 @@ Some of Tock is not completely baked into Rust, for example you have to break ou
 | Num. Repo Stars    | 361 (drone-core)
 | Num. Repo Commits  | 251 (drone-core)
 
+## The Disadvantages of Using Rust
+
+No review would be fair without mentioning the negatives. What are the disadvantages of using Rust for embedded firmware?
+
+1. **Not as well supported as C/C++:** C/C++ is definitely better supported by the many microcontroller vendors and IDEs, and there are far more embedded libraries for C/C++ than there are for Rust (library maturity). But as shown above, Rust support for many of the top tier microcontroller families is quite good, and hopefully will continue to get better as the language matures.
+
+1. **Rust has a steep learning curve:** If you're familiar with compiled languages such as C/C++ and some interpreted, high-level languages such as Javascript and Python, you'd probably find picking up new languages pretty easy. However, Rust has some significant core differences to the way it does things (it's borrow checker/ownership concept is novel compared to most other popular languages), and therefore can still be quite difficult to learn. There is the well-known saying that when learning Rust you will "wrestle with the borrow checker".
+
+1. **It's going to be harder finding Rust developers:** Again, because of Rust's relatively immature nature compared to other languages it's generally going to be harder to find competent developers if you are running big teams.
 
 ## Further Reading
 

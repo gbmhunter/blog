@@ -11,8 +11,6 @@ title: November 2022 Updates
 type: post
 ---
 
-## Updates This Month
-
 * Added [real world EMC measurements to the Electromagnetic Compatibility (EMC) page](/electronics/electromagnetic-compatibility-emc/#interesting-real-world-emc-measurements).
     {{% figure src="real-world-emc-screenshot.png" width="500px" %}}
 
