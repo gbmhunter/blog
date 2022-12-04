@@ -126,6 +126,10 @@ output_pin.set(true);
 
 Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The [embedded-hal](https://github.com/rust-embedded/embedded-hal) project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL. More on this in the [cargo and Package Structure section](#cargo-and-package-structure).
 
+### Safer Array Use
+
+In Rust, if you index into an array, it is automatically bounds checked. This can prevent a ton of subtle "undefined behaviour bugs" that you get when you try the same thing in C/C++ (and security concerns!). Of course, bounds checking does incur a small amount of runtime overhead (which is likely to be negligible in 99% of use cases). You can get **rid of this overhead however by using an array iterator instead of indexing**. This is in fact the recommended way of accessing an array unless you really have to use an index (some situations do still need to randomly access the array).
+
 ### Concurrency
 
 Concurrency is something you have to concern yourself about in embedded firmware when it comes to interrupts and multiple threads/cores (e.g. running a RTOS). One of the first times you'll encounter concurrency concerns is when updating variables from within an interrupt. In C/C++, the use of `volatile` and critical sections is generally the way the problem is solved. When using multiple threads, RTOS primitives such as mutexes/queues/e.t.c are used to prevent data corruption.
@@ -235,6 +239,20 @@ One of the reasons Rust feels like it has first-tier embedded support is the sta
 Another thing you don't get with `no_std` is the initialization which sets up stack overflow protection and spawns a thread to call `main()`. So in embedded `no_std` development you define which function you want as your "main". 
 
 `no_std` also means that by default, you don't get any way to dynamically allocate memory on the heap. This might seem strange at first, because in embedded C development you typically have `malloc()/free()` and friends, and in C++ you have `new/delete`. No dynamic memory allocations means that you can't use any objects that rely on it (dynamic arrays or strings), and it Rust these are called collections (`Vec`, `Box`, `BTreeMap`, e.t.c). In some cases having no dynamic memory allocation in firmware is fine (and in-fact preferable or required...e.g. MISRA). However there are some good use cases for dynamic memory allocation (my general rule for non life-threatening applications is to allow it, but only during initialization). Luckily you can enable it as long as their is a suitable allocator for your microcontroller architecture. For example, the [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) crate provides a custom allocator for the Cortex-M architecture. You can then also use the standard Rust collections (but be careful with them!).
+
+`no_std` also means you have to define what `panic` does. In embedded development, you are not allowed to return from the panic function, as it is forced to have the signature `fn(&PanicInfo) -> !`. There are a few 3rd party crates you can include which useful for panicking in embedded firmware:
+
+1. panic-halt: Causes the current thread to halt by entering an infinite loop.
+1. panic-itm: The panicking message is logged to the host over ITM, a Cortex-M specific debugging peripheral (faster than semihosting).
+1. panic-semihosting: The panicking message is logged to the host over semihosting.
+
+Once you have added one of these crates as a dependency, all you need to do is tell the Rust compiler you want to link against it, as you won't be calling anything from it directly. To do this, use:
+
+```rust
+use panic_halt as _;
+```
+
+The `_` is important as it tells the compiler you want to link to it but not call anything from it. If you didn't have this the compiler would issue you an unused import warning.
 
 ### cargo and Package Structure
 
