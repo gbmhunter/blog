@@ -11,5 +11,4 @@ title: December 2022 Updates
 type: post
 ---
 
-
-
+* Updates to the Running Rust on Microcontrollers page.

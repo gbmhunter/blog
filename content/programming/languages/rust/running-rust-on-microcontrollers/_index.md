@@ -5,7 +5,7 @@ date: 2022-11-12
 description: An exploration into programming with Rust on microcontrollers.
 draft: false
 images: [ /programming/languages/rust/running-rust-on-microcontrollers/ewg-logo-blue-white-on-transparent.png ]
-lastmod: 2022-11-28
+lastmod: 2022-12-04
 tags: [ Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling, peripheral access crates, PACs, hardware abstraction layers, HALs, board support packages, BSPs, Tock ]
 title: Running Rust on Microcontrollers
 type: page
