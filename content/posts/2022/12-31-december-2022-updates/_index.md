@@ -12,3 +12,5 @@ type: post
 ---
 
 * Updates to the Running Rust on Microcontrollers page.
+
+* Added a new page with info on the [SOT-23F component package](/pcb-design/component-packages/sot-23f-component-package/).

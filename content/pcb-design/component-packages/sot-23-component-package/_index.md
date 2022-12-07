@@ -144,6 +144,8 @@ The 3, 5, and 6 pin SOT-23 variants have the same pitch of 0.95mm, and all are c
 
 JEDEC formalized the dimensions of the SOT-23 package (and all it's variants) in the MO-178 document (with package designator `R-PDSO-G`). After registering, you can download this document for free from (https://www.jedec.org/standards-documents/docs/mo-178-c)[https://www.jedec.org/standards-documents/docs/mo-178-c].
 
+The [SOT-23F package](../sot-23f-component-package/) is closely related to the `SOT-23` put has flat leads instead of gull-wing leads.
+
 ## What Is The Difference Between TO-236AA And TO-236AB?
 
 Both `TO-236AA` and `TO-236AB` are official JEDEC names for the SOT-23-3 package. An image comment on Wikipedia[^wikipedia-inductiveload] states that the `TO-236AB` package is approximately 0.1mm higher. However it is hard to verify this claim by comparing manufacturer package dimensions, as 0.1mm is well with the manufacturing tolerances.
@@ -188,6 +190,8 @@ The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23
 {{% /warning %}}
 
 {{% figure src="sot-23-8-component-package-recommended-footprint-diodes-incorporated.png" width="1000px" caption="A recommended footprint for the SOT-23-8 component package. Image from http://www.diodes.com/."  %}}
+
+## References
 
 [^jedec-mo-178-c]: [https://www.jedec.org/standards-documents/docs/mo-178-c](https://www.jedec.org/standards-documents/docs/mo-178-c)
 [^wikipedia-inductiveload]: [https://commons.wikimedia.org/wiki/File:TO-236AA_Front_Top.svg](https://commons.wikimedia.org/wiki/File:TO-236AA_Front_Top.svg) 

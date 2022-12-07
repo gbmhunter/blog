@@ -532,9 +532,11 @@ There is a not well maintained version of RTFM (Real-Time For the Masses, the ol
 
 ### ESP32 (Espressif Systems)
 
-I'm not sure how I feel about their approach of forking the entire Rust repository ([esp-rs/rust](https://github.com/esp-rs/rust)) and adding in support for the Xtensa instruction set that way. Hopefully it will get upstreamed sometime in the future?
+There is a fork of the Rust compiler called ([esp-rs/rust](https://github.com/esp-rs/rust)) which adds in support for the Xtensa instruction set (e.g. the ESP32S3). If Xtensa upstreams support for their architecture into LLVM this fork may not be needed in the future. The same `esp-rs` organization also provides a `no_std` HAL on GitHub at [esp-rs/esp-hal](https://github.com/esp-rs/esp-hal), and one with `std` support at [esp-rs/esp-idf-hal](https://github.com/esp-rs/esp-idf-hal).
 
-{{% figure src="esp32-rust-readme-screenshot-with-scream-emoji.png" width="1000px" caption="A screenshot from the front page of the esp-rs/rust repo shows how diverged the ESP32 Rust fork is compared to the official one (as of Nov. 2022, 11.4k commits behind!). I'm not sure what to feel about this." %}}
+[esp-rs/esp-idf-svc] provides Rust wrappers for various ESP-IDF services such as WiFi, networking, and logging. This defines implementations of the traits defined in [esp-rs/embedded-svc](https://github.com/esp-rs/embedded-svc) (think of this as an extension to the basic embedded-hal traits).
+
+The `esp-rs` organization also provides their own installer, [espup](https://github.com/esp-rs/espup) which is "rustup for esp-rs". It's a tool (alternative to `rustup`) for installing and maintaining the toolchain(s) required for developing with Rust on Espressif devices.
 
 ### Nordic nRF
 
