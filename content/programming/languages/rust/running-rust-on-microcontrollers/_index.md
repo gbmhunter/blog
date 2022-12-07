@@ -56,41 +56,30 @@ Rather than transfer ownership, Rust also lets you "borrow" data via references.
 
 ### Peripheral Access
 
-A big part of writing firmware is interacting with peripherals (GPIO, UART, USB, DMA, e.t.c.). Most peripherals are memory mapped -- i.e. you read/write to "magic" memory addresses to control the peripheral. What does peripheral access look like in Rust?
+A big part of writing firmware is interacting with peripherals (GPIO, UART, USB, DMA, e.t.c.). Most peripherals are memory mapped -- i.e. you read/write to "magic" memory addresses to control the peripheral. The standard way of accessing peripherals in Rust is to use a Peripheral Access Crate or PAC. More likely than not, there will already be a PAC for the particular microcontroller you are using.
 
-The singleton pattern in Rust can be implemented with the `Option<T>` enumeration, e.g. `Option<SerialPort>`. The peripheral can then be requested by "taking" the `SerialPort` from the option (replacing it with `None`). Thus further requests to take the `SerialPort` will result in an error. All of this can be wrapped into a static `PERIPHERALS` instance. `unsafe` has to be used once to take the peripheral, but from then on it's safe.
+For example, the `cortex_m` crate provides access to the peripherals that are shared across all Cortex-M devices (e.g. the NVIC interrupts, SysTick). You can "claim" the peripherals by calling `take().unwrap()`:
 
 ```rust
-struct SerialPort {}
+use cortex_m::interrupt;
+use cortex_m::peripheral::Peripherals;
+use stm32f30x::Interrupt;
 
-// Define our peripheral structure to contain all our various peripherals
-struct Peripherals {
-    serial_port: Option<SerialPort>,
-}
+let cp = cortex_m::Peripherals::take().unwrap(); // This will work only once!
 
-impl Peripherals {
-    fn take_serial_port(&mut self) -> SerialPort {
-        return self.serial_port.take().unwrap();
-    }
-}
-
-// Now lets create our single instance
-static mut PERIPHERALS: Peripherals = Peripherals {
-    serial_port: Some(SerialPort {}),
-};
-
-fn main() {
-    // This works
-    let serial_port_1 = unsafe { PERIPHERALS.take_serial_port() };
-
-    // This will panic
-    let serial_port_2 = unsafe { PERIPHERALS.take_serial_port() };
-}
+// Let's enable an interrupt
+let mut nvic = cp.NVIC;
+nvic.enable(Interrupt::TIM2);
 ```
 
-(runnable code at https://replit.com/@gbmhunter/rust-playground#examples/peripherals.rs)
+Note that a singleton pattern is employed -- you can only call `take()` once and have it return `Some<T>`. The next time it will return `None` and then calling `unwrap()` will cause a panic. You would typically `take()` at the start of your high-level `main()` or `App` class.
 
-A pattern similar to this is followed by most PACs and HALs provided for microcontrollers. You'll be calling `take()` on peripheral objects to claim ownership of them, giving you the ability to use them in your application.
+The other peripherals that aren't part of the Cortex-M architecture (such as UARTs, timers, PWMs, e.t.c.) are normally found in a different crate for your particular microcontroller. For example, if I was using a STM32F30x microcontroller, I would add the appropriate PAC crate and then be able to write: 
+
+```rust
+let mut peripherals = stm32f30x::Peripherals::take().unwrap(); // Again, will work only once!
+peripherals.GPIOA.odr.write(|w| w.bits(1));
+```
 
 Another thing Rust can do is provide compile-time checks that hardware has been configured properly based on how the code uses it. The Embedded Rust Book has this to say:
 
