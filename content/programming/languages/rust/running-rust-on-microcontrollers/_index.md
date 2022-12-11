@@ -56,7 +56,7 @@ Rather than transfer ownership, Rust also lets you "borrow" data via references.
 
 ### Peripheral Access
 
-A big part of writing firmware is interacting with peripherals (GPIO, UART, USB, DMA, e.t.c.). Most peripherals are memory mapped -- i.e. you read/write to "magic" memory addresses to control the peripheral. The standard way of accessing peripherals in Rust is to use a Peripheral Access Crate or PAC. More likely than not, there will already be a PAC for the particular microcontroller you are using.
+**A big part of writing firmware is interacting with peripherals (GPIO, UART, USB, DMA, e.t.c.).** Most peripherals are memory mapped -- i.e. you read/write to "magic" memory addresses to control the peripheral. The standard way of accessing peripherals in Rust is to use a Peripheral Access Crate or PAC. More likely than not, there will already be a PAC for the particular microcontroller you are using.
 
 For example, the `cortex_m` crate provides access to the peripherals that are shared across all Cortex-M devices (e.g. the NVIC interrupts, SysTick). You can "claim" the peripherals by calling `take().unwrap()`:
 
@@ -157,7 +157,7 @@ fn out_of_bounds(arr: &[i8]) {
 }
 ```
 
-If the runtime overhead of bounds checking is a concern for your application, you can get **rid of this overhead however by using an array iterator instead of indexing**. This is in fact the recommended way of accessing an array unless you really have to use an index (some situations do still need to randomly access the array).
+If the runtime overhead of bounds checking is a concern for your application, you can get **rid of this overhead however by using an array iterator instead of indexing** (or using `get_unchecked()`). This is in fact the recommended way of accessing an array unless you really have to use an index (some situations do still need to randomly access the array).
 
 You might have also noticed that arrays don't decay to pointers (i.e. loses the dimension information -- `sizeof` now gives you the size of the pointer) as easily as they do in C/C++ (especially when passing into functions). **In Rust you can pass in references to any-sized arrays into a function while still being find it's length by calling `.len()`**, something you cannot do in C/C++ (you can pass arrays in C/C++ without the variable decaying to a pointer, but you have to hardcode the function to a specific array size, this is because the size information is not saved in the array memory layout).
 
@@ -271,7 +271,9 @@ let num_bytes = match uart_write_bytes(&data) {
 };
 ```
 
+{{% note %}}
 **After reading all of this you may be wondering how Rust implements these return types which can seemingly contain different "types" of data.** The key idea behind this is that Rust's enum is implemented behind-the-scenes as a tagged union of all the things it can be. There is also _null pointer optimization_ which means that Rust can optimize the space of the union when there are two possible return types: 1 which doesn't contain any data (e.g. `None`) and another which contains data but can't possible be `0` -- in that case Rust will collapse the two things into one variable and use `0` to indicate `None`. This is how `Option<&T>` works.
+{{% /note %}}
 
 ### no_std
 
@@ -636,6 +638,8 @@ As mentioned above, Rust automatically does bounds checking when accessing array
 2. We have another Rust compiler to choose from (which is normally a good thing!) 
 
 > As this is a front-end project, the compiler will gain full access to all of GCC’s internal middle-end optimization passes which are distinct from LLVM. -- GCC Front-End For Rust[^bib-rust-gcc-homepage].
+
+There are some interesting benchmarks of Rust against C++ at https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust-gpp.html. Rust is clearly faster in 4 of the benchmarks, C++ is clearly faster in 3 of them, and for the remaining 3 they are basically identical.
 
 ## The Disadvantages of Using Rust
 
