@@ -282,6 +282,8 @@ let num_bytes = match uart_write_bytes(&data) {
 };
 ```
 
+**After reading all of this you may be wondering how Rust implements these return types which can seemingly contain different "types" of data.** The key idea behind this is that Rust's enum is implemented behind-the-scenes as a tagged union of all the things it can be. There is also _null pointer optimization_ which means that Rust can optimize the space of the union when there are two possible return types: 1 which doesn't contain any data (e.g. `None`) and another which contains data but can't possible be `0` -- in that case Rust will collapse the two things into one variable and use `0` to indicate `None`. This is how `Option<&T>` works.
+
 ### no_std
 
 One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which **does not contain any APIs which assume/require the use of an operating system**. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
@@ -630,6 +632,22 @@ Some of Tock is not completely baked into Rust, for example you have to break ou
 | Num. Repo Stars    | 361 (drone-core)
 | Num. Repo Commits  | 251 (drone-core)
 
+## Rust Speed and Memory Usage
+
+**How does the speed and memory usage of Rust-built applications compare to C/C++?** First off it's worth saying that most of Rust's unique ownership/borrow checking is purely a compile-time construct, and incurs zero runtime overhead, both in terms of speed and memory usage.
+
+As mentioned above, Rust automatically does bounds checking when accessing arrays. It will do it's best to do this at compile time, but there are some cases in where this cannot be done (e.g. passing in a reference to array to a function), and it has to resort to doing this at runtime. The overhead is minimal and likely to be well-worth the effort in 99% of use cases. If you do want to avoid bounds checking you can either:
+
+1. Use iterators (if applicable)
+1. Use `get_unchecked()`
+
+[gccrs](https://rust-gcc.github.io/) is a project to incorporate a Rust "front-end" into GCC. As of December 2022 this is still WIP (work-in-progress). This end goal is to make GCC able to compile Rust code. The main benefits of this are:
+
+1. We can then benefit from GCC's really good optimization (which is distinct from LLVM)
+2. We have another Rust compiler to choose from (which is normally a good thing!) 
+
+> As this is a front-end project, the compiler will gain full access to all of GCC’s internal middle-end optimization passes which are distinct from LLVM. -- GCC Front-End For Rust[^bib-rust-gcc-homepage].
+
 ## The Disadvantages of Using Rust
 
 No review would be fair without mentioning the negatives. What are the disadvantages of using Rust for embedded firmware?
@@ -639,6 +657,8 @@ No review would be fair without mentioning the negatives. What are the disadvant
 1. **Rust has a steep learning curve:** If you're familiar with compiled languages such as C/C++ and some interpreted, high-level languages such as Javascript and Python, you'd probably find picking up new languages pretty easy. However, Rust has some significant core differences to the way it does things (it's borrow checker/ownership concept is novel compared to most other popular languages), and therefore can still be quite difficult to learn. There is the well-known saying that when learning Rust you will "wrestle with the borrow checker".
 
 1. **It's going to be harder finding Rust developers:** Again, because of Rust's relatively immature nature compared to other languages it's generally going to be harder to find competent developers if you are running big teams.
+
+1. **Not as well optimized as C/C++ code:** Nevertheless, compiled Rust code is going to be fast and likely fast enough in 99% of use cases. C/C++ code will likely beat Rust in some specific use cases. Rust speed will likely getter better over time, and projects like the [GCC Front-End For Rust]() will help this process. 
 
 ## Further Reading
 
@@ -667,3 +687,4 @@ You can have a play around with Rust using an online editor/compiler such as [Re
 [^bib-github-rust-embedded-alloc-cortex-m]: Rust Embedded. _alloc-cortex-m - A heap allocator for Cortex-M processors (repository)_. Retrieved 2022-11-30, from https://github.com/rust-embedded/alloc-cortex-m.
 [^bib-embedded-hal-serial-traits]: Embedded HAL. _Module embedded_hal::serial (documentation)_. Retrieved 2022-12-05, from https://docs.rs/embedded-hal/latest/embedded_hal/serial/.
 [^bib-github-issues-rust-embedded-book-discourage-semihosting]: rust-embedded/book. _Discourage use of semihosting and mention viable alternatives #257 (GitHub issue)_. Retrieved 2022-12-05, from https://github.com/rust-embedded/book/issues/257.
+[^bib-rust-gcc-homepage]: rust-gcc. _GCC Front-End For Rust - Homepage_. Retrieved 2022-12-11, from https://rust-gcc.github.io/.
