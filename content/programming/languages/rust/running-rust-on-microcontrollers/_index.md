@@ -627,10 +627,22 @@ Some of Tock is not completely baked into Rust, for example you have to break ou
 
 **How does the speed and memory usage of Rust-built applications compare to C/C++?** First off it's worth saying that most of Rust's unique ownership/borrow checking is purely a compile-time construct, and incurs zero runtime overhead, both in terms of speed and memory usage.
 
-As mentioned above, Rust automatically does bounds checking when accessing arrays. It will do it's best to do this at compile time, but there are some cases in where this cannot be done (e.g. passing in a reference to array to a function), and it has to resort to doing this at runtime. The overhead is minimal and likely to be well-worth the effort in 99% of use cases. If you do want to avoid bounds checking you can either:
+As mentioned in the [Rust Language Features section](#rust-language-features), Rust automatically does bounds checking when accessing arrays. It will do it's best to do this at compile time, but there are some cases in where this cannot be done (e.g. passing in a reference to array to a function), and it has to resort to doing this at runtime. The overhead is minimal and likely to be well-worth the effort in 99% of use cases. If you do want to avoid bounds checking you can either:
 
 1. Use iterators (if applicable)
 1. Use `get_unchecked()`
+
+When compiled without the `--release` option, **Rust will also perform overflow checking when doing mathematical operations such as add and multiply.** We can see this if we use the Godbolt Compiler Explorer and compare the assembly output of a simple `square()` function in both C++ and Rust:
+
+{{% figure src="comparison-of-the-square-function-in-cpp-and-rust.png" width="1000px" caption="Screenshot of the Compiler Explorer showing the difference in square() assembly output for C++ and Rust." %}}
+
+You can see in the Rust pane that it has a few extra instructions, including `seto` to read the overflow flag, and then a `test` and jump `jne` to a `panic!` in the case an overflow occurred. This will slow down mathematical operations, but in most cases this is a worthwhile trade-off to catch overflow bugs. And remember -- the overhead disappears if you built with the `--release` option.
+
+{{% tip %}}
+If you wanted overflow checking even in a `--release` build, you can use the `checked_xxx` functions such as `checked_add()` which return an `Option<T>` that is `None` if the value overflowed.
+{{% /tip %}}
+
+**As bad as overflow can be, in many use cases (especially in embedded programming) you want (and even rely) on overflow wrapping.** A classic example is getting the current system tick value and subtracting saved previous system tick values to calculate durations. Your system tick might be stored in a 32-bit unsigned integer and count the number of milliseconds since start-up. This would wrap back to `0` in a little over `1193 hours` of continuous operation. However, due to the nature of how integer mathematics are implemented, durations relying on subtraction will still work fine when the current system tick wraps back to 0, as long as no one duration spans more than half the total system tick period (approx. `597 hours`). In Rust, you can safely do overflowing equations with `wrapping_xxx` functions such as `wrapping_add()`.
 
 [gccrs](https://rust-gcc.github.io/) is a project to incorporate a Rust "front-end" into GCC. As of December 2022 this is still WIP (work-in-progress). This end goal is to make GCC able to compile Rust code. The main benefits of this are:
 
