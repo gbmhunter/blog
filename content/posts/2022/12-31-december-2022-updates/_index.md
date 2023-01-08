@@ -11,6 +11,6 @@ title: December 2022 Updates
 type: post
 ---
 
-* Updates to the Running Rust on Microcontrollers page.
+* Updates to the [Running Rust on Microcontrollers page](/programming/languages/rust/running-rust-on-microcontrollers/).
 
 * Added a new page with info on the [SOT-23F component package](/pcb-design/component-packages/sot-23f-component-package/).
