@@ -12,5 +12,7 @@ type: post
 ---
 
 * Updates to the [Running Rust on Microcontrollers page](/programming/languages/rust/running-rust-on-microcontrollers/).
+    {{% figure src="running-rust-on-micros-screenshot.png" width="500px" %}}
 
 * Added a new page with info on the [SOT-23F component package](/pcb-design/component-packages/sot-23f-component-package/).
+    {{% figure src="sot-23f-component-package-screenshot.png" width="500px" %}}
