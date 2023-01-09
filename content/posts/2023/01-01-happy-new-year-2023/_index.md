@@ -37,6 +37,6 @@ In 2022 I added a [Ko-fi](https://ko-fi.com/gbmhunter) donation button. I wasn't
 
 ## Plans For The 2023 Year
 
-* **More content**: This is never not a goal!
+* **More content, and improving existing content**: As always!
 * **Phase out Asciidoc pages**: Although Asciidoc gives me some nice features such as figure and table numbering, I'm worried enough about the future portability of the format to stick with ubiquitous markdown for now.
 * **Add a dark mode**: It's easy on the eyes when the background is dark! I hope to follow the somewhat industry standard and add a dark mode toggle this year to the site.
