@@ -24,10 +24,10 @@ The static site generator Hugo is used to build the website from the files in th
     bundle install
     ```
 
-1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`). Since this is a large site, we'll also use `--renderToDisk` otherwise it can take up 6GB of memory!!!:
+1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`). Since this is a large site, we'll also use `--renderToDisk` otherwise it can take up 6GB of memory!!! Also add in `--navigateToChanged` so that when you save a source file, the server will automatically redirect the browser to the changed page:
 
     ```sh
-    $ hugo server -wDF --renderToDisk
+    $ hugo server -wDF --renderToDisk --navigateToChanged
     ```
 
 1. Development server should now be live at `localhost:1313`.
