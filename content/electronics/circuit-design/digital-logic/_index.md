@@ -4,6 +4,7 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2012-08-06
 draft: false
 lastmod: 2023-04-04
+tags: [ electronics, circuit design, digital logic ]
 title: "Digital Logic"
 type: "page"
 ---

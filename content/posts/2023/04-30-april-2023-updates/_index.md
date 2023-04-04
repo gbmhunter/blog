@@ -12,3 +12,5 @@ type: post
 ---
 
 * Converted the Digital Logic page from Asciidoc to Markdown.
+
+* Added a new page on the [Master Slave JK Flip Flop]().
