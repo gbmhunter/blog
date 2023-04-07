@@ -15,4 +15,4 @@ The _master-slave JK flip-flop_ is a circuit made by connecting two gated JK fli
 
 The first JK flip-flop acts as a "master" circuit which triggers on the rising edge of the clock pulse, and the second flip-flop acts as a "slave" circuit which triggers on the falling edge of the clock pulse.
 
-The 74LS73 IC contains two JK flip-flops and can be used to make a master-slave JK flip-flop.
+The `74LS73` IC contains two JK flip-flops and can be used to make a master-slave JK flip-flop.

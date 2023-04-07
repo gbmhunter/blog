@@ -516,100 +516,6 @@ A company specific prefix may be added to the above part numbers depending on th
     </tbody>
 </table>
 
-## Flip-Flops
-
-A flip-flop (a.k.a. _latch_, or _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). Flip-flops form the basic storage element in sequential logic.
-
-Flip-flops can be either level-triggered (asynchronous, transparent, opaque) or edge-triggered (synchronous, clocked). Sometimes the word _latch_is exclusively used to refer to level-triggered flip-flops whilst flip-flop is reserved for edge-triggered ones only[^bib-eforu-flipflops].
-
-### SR Latches
-
-SR (**S**et-**R**eset) latches are the most basic form of flip-flop. It is level triggered.
-
-{{% figure src="sr-latch-from-nor-gates.svg" width="500px" caption="An SR latch made from NOR gates." %}}
-
-Below is the characteristic table for a SR latch built from NOR gates:
-
-<table>
-  <thead>
-    <tr><th>S</th>  <th>R</th> <th>\(Q_{next}\)</th>  <th>Action</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>0</td>  <td>0</td>  <td>Q</td>            <td>Hold</td></tr>
-    <tr><td>0</td>  <td>1</td>  <td>0</td>            <td>Reset</td></tr>
-    <tr><td>1</td>  <td>0</td>  <td>1</td>            <td>Set</td></tr>
-    <tr><td>1</td>  <td>1</td>  <td>X</td>            <td>Not allowed</td></tr>
-  </tbody>
-</table>
-
-Driving both set and reset high is a forbidden state. A JK latch is just an extension of the SR latch where the circuit is modified to remove the forbidden state `\(S = R = 1\)` and instead cause the output to toggle.
-
-`SN74LS279` is a quad SR latch component by Texas Instruments. Two of the four latches have two set inputs, allowing for either to be active to set the latch (equivalent to an OR gate placed before a normal single set input SR latch).
-
-SR latches can be used to make a switch debounce circuit.
-
-#### How Does An SR Latch Work?
-
-. **`\(R\)` is `HIGH` and `\(S\)` is `LOW`:** Since `\(R\)` is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with `\(S\)` which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if `\(R\)` is then brought LOW. This gives the SR latch it's memory.
-. **`\(R\)` is `LOW` and `\(S\)` is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. `\(Q\)` is `HIGH` and `\(\bar{Q}\)` is `LOW`. Again, if `\(S\)` goes low, the SR latch "remembers" and keeps it's outputs in the same state.
-
-{{% figure src="sr-latch-from-nor-gates-states-red-black.svg" width="800px" caption="(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical \"1\", black logical \"0\"." %}}
-
-### D Flip-Flops
-
-A D flip-flop (where the D either stands for **D**elay or **D**ata) is a flip-flop which does not propagate the input to the output until a specific state or change in the clock signal. Below is the basic symbol for a D-type flip-flop with no preset or clear.
-
-{{% figure src="d-flipflop-symbol.svg" width="300px" caption="The schematic symbol for a D-type flipflop." %}}
-
-And the internals of a flip-flop:
-
-{{% figure src="d-flipflop-internals.svg" width="800px" caption="How a D flipflop is made from discrete NAND gates. The inverting gate can be replaced by a NAND with both inputs connected to form an all-NAND implementation." %}}
-
-You can actually eliminate the need the inverting/NAND gate altogether by connecting the output of the top NAND to the input of the bottom NAND as shown in the below image, saving one gate (lower cost/size).
-
-{{% figure src="d-flipflop-internals-no-inv-gate.svg" width="800px" caption="A D-type flip-flop with the inverting/NAND gate removed by connecting the output of the top NAND to the input of the bottom NAND." %}}
-
-You may have noticed that the output stage of the D-type flip-flop looks familiar -- that's because it's just an SR latch! The below image highlights the SR latch section of a D-type flip-flop.
-
-{{% figure src="d-flipflop-internals-highlighting-sr-latch.svg" width="800px" caption="A D flip-flop is just a SR latch with some extra circuitry added on the front end to add in the delay functionality." %}}
-
-D-type flip-flops are used for counters, shift-registers and input synchronization.
-
-#### Triggering
-
-Edge-triggered D flip-flops can be either positive or negative edge triggered. Edge-triggered flip-flops are shown by a triangle at the clock input, and negative edge-triggered ones have an additional bubble. However, positive-edge triggered is much more common, and standard practice is to make a negative edge triggered flip-flop by adding your own inverting gate on the clock signal.
-
-NOTE: Adding a inverting gate to the clock signal increasing the propagation delay for that clock input, and will have a significant impact on the operation in high-speed designs.
-
-#### Flip-flop MTBF
-
-<p>\begin{align}
-{\rm MTBF}(t_r) = \frac{e^{ \frac{t_r}{\tau} } } {T_O fa}
-\end{align}</p>
-
-<p class="centered">
-where:<br/>
-\(t_r\) = resolution time (time since clock edge), \(s\)<br/>
-\(f\) = sampling clock frequency, \(Hz\)<br/>
-\(a\) = asynchronous event frequency, \(Hz\)<br/>
-\(\tau\) = flip-flop time constant (this is a function of it's transconductance), \(s\)<br/>
-\(T_o\) = <br/>
-</p>
-
-Typical values for a flip-flop inside an ASIC could be:
-
-* `\(t_r = 2.3ns\)`
-* `\(\tau = 0.31ns\)`
-* `\(T_O = 9.6as\)`
-* `\(f = 100MHz\)`
-* `\(a = 1MHz\)`
-
-Which gives `\(\rm MTBF = 20.1days\)`.
-
-### JK Flip-flop
-
-
-
 ## Karnaugh Maps
 
 Karnaugh maps are a way of simplifying combinational logic, often used before realising a combination equation into a number of gates to reduce the complexity.
@@ -686,7 +592,6 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 
 ## References
 
-[^bib-eforu-flipflops]:  ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
 [^bib-ti-74hc4051-multi]:  Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
 [^bib-maxim-xor-definition]:  Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
 [^bib-spin-num-logic-gates]:  McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
