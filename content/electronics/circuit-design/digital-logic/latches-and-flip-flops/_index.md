@@ -87,6 +87,32 @@ You might wonder what the purpose of `\(\bar{Q}\)` is, given it's always the opp
 
 {{% figure src="sr-latch-from-nor-gates-states-red-black.svg" width="800px" caption="(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical \"1\", black logical \"0\"." %}}
 
+### D Latch
+
+A _D Latch_ is like a SR latch except extra circuitry is added so that instead of and set and reset input, you obtain a single input to set or reset (`\(D\)`), and an enable line `(\(E\))`. This is generally a more practical type of latch as it can store the arbitrary state of a single line when told to do so by the enable input.
+
+As the below diagram shows, a D latch is essentially a SR latch but with extra NAND gates and a inverter added to the front. The NAND gates "gate" the data line by anding it with the enable, such as that when the enable line is 0, no signal gets through. The inverter acts to remove the need to separate "set" and "reset" lines of a traditional SR latch by providing the two signals from one input.
+
+{{% figure src="d-latch-from-nand-gates.png" width="700px" caption="A D latch made from NAND gates and an inverter." %}}
+
+You can see from the below truth table that when `\(E = 0\)`, the latch remembers it's last state. When `\(E = 1\)`, the signal on `\(D\)` is passed onto the output:
+
+<table>
+  <thead>
+    <tr><th style="width: 50px;">E</th>
+    <th style="width: 50px;">D</th>
+    <th style="width: 80px;">\(Q\)</th>
+    <th style="width: 80px;">\(\bar{Q}\)</th>
+    <th style="width: 200px;">Action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>Hold</td></tr>
+    <tr><td>0</td>  <td>1</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>Hold</td></tr>
+    <tr><td>1</td>  <td>0</td>  <td>0</td>      <td>1</td>                      <td>Reset</td></tr>
+    <tr><td>1</td>  <td>1</td>  <td>1</td>      <td>0</td>                      <td>Set</td></tr>
+  </tbody>
+</table>
+
 ### JK Latch
 
 A JK latch is just an extension of the SR latch where the circuit is modified to remove the forbidden state `\(S = R = 1\)` and instead cause the output to toggle.
@@ -97,13 +123,15 @@ _Flip-flops_ are like latches, except the input is only propagated to the output
 
 ### D Flip-Flops
 
-A D flip-flop (where the D either stands for **D**elay or **D**ata) is a flip-flop which **does not propagate the input to the output until a specific state or change in the clock signal**. Below is the basic symbol for a D-type flip-flop with no preset or clear.
+A D flip-flop (where the D either stands for **D**elay or **D**ata) is a flip-flop which is based off the D latch, with additional circuitry to make it edge-triggered instead of level triggered. Below is the basic symbol for a D-type flip-flop with no preset or clear:
 
-{{% figure src="d-flipflop-symbol.svg" width="300px" caption="The schematic symbol for a D-type flipflop." %}}
+{{% figure src="d-flipflop-symbol-level.png" width="300px" caption="The schematic symbol for a D-type flipflop." %}}
 
-And the internals of a flip-flop:
+But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` line of a D latch (as shown above) to make a D flip-flop:
 
-{{% figure src="d-flipflop-internals.svg" width="800px" caption="How a D flipflop is made from discrete NAND gates. The inverting gate can be replaced by a NAND with both inputs connected to form an all-NAND implementation." %}}
+{{% figure src="d-flipflop-with-time-delay-trigger.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit." %}}
+
+We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-triggered rather than level-triggered.
 
 You can actually eliminate the need the inverting/NAND gate altogether by connecting the output of the top NAND to the input of the bottom NAND as shown in the below image, saving one gate (lower cost/size).
 
