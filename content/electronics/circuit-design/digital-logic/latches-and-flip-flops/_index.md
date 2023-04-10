@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2012-08-06
 draft: false
-lastmod: 2023-04-05
-tags: [ electronics, circuit design, digital logic ]
+lastmod: 2023-04-10
+tags: [ electronics, circuit design, digital logic, latches, flip-flops, SR latch, D latch, JK latch, D flip-flop, propagation delay, inverters, and gates, edge detection, circuit, mtbf ]
 title: "Latches And Flip-Flops"
 type: "page"
 ---
@@ -132,6 +132,14 @@ But how is a D flip-flop actually made? Basically, you could add the edge-trigge
 {{% figure src="d-flipflop-with-time-delay-trigger.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit." %}}
 
 We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-triggered rather than level-triggered.
+
+How does the front-end edge-detecting circuit work? It is a very simple circuit made from an inverter and an AND gate, and exploits the non-zero propagation delay time through the inverter. The timing diagram for the circuit is shown below:
+
+{{% figure src="time-delay-trigger-using-and-inverter-timing-diagram.png" width="500px" caption="Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter." %}}
+
+{{% note %}}
+Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
+{{% /note %}}
 
 You can actually eliminate the need the inverting/NAND gate altogether by connecting the output of the top NAND to the input of the bottom NAND as shown in the below image, saving one gate (lower cost/size).
 
