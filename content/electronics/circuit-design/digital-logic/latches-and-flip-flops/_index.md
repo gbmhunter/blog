@@ -42,9 +42,9 @@ Driving either S or R high allows you to set the latch into the 1 or 0 state res
   </thead>
   <tbody>
     <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>  <td>Hold</td></tr>
-    <tr><td>0</td>  <td>1</td>  <td>0</td>  <td>1</td>            <td>Reset</td></tr>
-    <tr><td>1</td>  <td>0</td>  <td>1</td>  <td>0</td>            <td>Set</td></tr>
-    <tr><td>1</td>  <td>1</td>  <td>0</td>  <td>0</td>            <td>Not allowed</td></tr>
+    <tr><td>0</td>  <td>1</td>  <td>0</td>      <td>1</td>            <td>Reset</td></tr>
+    <tr><td>1</td>  <td>0</td>  <td>1</td>      <td>0</td>            <td>Set</td></tr>
+    <tr><td>1</td>  <td>1</td>  <td>0</td>      <td>0</td>            <td>Not allowed</td></tr>
   </tbody>
 </table>
 
@@ -123,11 +123,15 @@ _Flip-flops_ are like latches, except the input is only propagated to the output
 
 ### Edge Detection
 
-How does the front-end edge-detecting circuit work? It is a very simple circuit made from an inverter and an AND gate, and exploits the non-zero propagation delay time through the inverter. When the input changes from a 0 to a 1, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output 1. This enables the latch for a very brief amount of time during the positive edge transition.
+The key feature about a flip-flop is edge-triggered nature of them vs. latched. So how do you design a flip-flop to only do something on the edges of the clock signal? **One very simple way is a circuit made from an inverter and an AND gate**, and exploits the non-zero propagation delay time through the inverter. When the input changes from a 0 to a 1, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output 1. This enables the latch for a very brief amount of time during the positive edge transition.
 
-The timing diagram for the circuit is shown below:
+The is the basic schematic:
 
-{{% figure src="edge-detection-using-and-inverter-timing-diagram.png" width="500px" caption="Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter." %}}
+{{% figure src="edge-detection-using-and-inverter.png" width="500px" caption="Simple edge detection circuit made with an inverter and AND gate." %}}
+
+And this is what the timing looks like:
+
+{{% figure src="edge-detection-using-and-inverter-timing-diagram.png" width="700px" caption="Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter." %}}
 
 {{% note %}}
 Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
@@ -141,9 +145,9 @@ A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depend
 
 {{% figure src="d-flipflop-symbol-level.png" width="300px" caption="The schematic symbol for a D-type flipflop." %}}
 
-The wedge symbol drawn against the `CLD 
+The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input.
 
-But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` line of a D latch (as shown above) to make a D flip-flop:
+But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` (enable) line of a D latch (as shown above) to make a D flip-flop:
 
 {{% figure src="d-flipflop-with-time-delay-trigger.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit." %}}
 
@@ -153,15 +157,11 @@ You can actually eliminate the need the inverting/NAND gate altogether by connec
 
 {{% figure src="d-flipflop-internals-no-inv-gate.svg" width="800px" caption="A D-type flip-flop with the inverting/NAND gate removed by connecting the output of the top NAND to the input of the bottom NAND." %}}
 
-You may have noticed that the output stage of the D-type flip-flop looks familiar -- that's because it's just an SR latch! The below image highlights the SR latch section of a D-type flip-flop.
-
-{{% figure src="d-flipflop-internals-highlighting-sr-latch.svg" width="800px" caption="A D flip-flop is just a SR latch with some extra circuitry added on the front end to add in the delay functionality." %}}
-
 D-type flip-flops are used for counters, shift-registers and input synchronization.
 
 #### Real-World D-Type Flip-Flops
 
-In reality, the actual D-type flip-flops you can buy can be much more complicated than what we have just discussed!
+In reality, the actual D-type flip-flops you can buy can be much more complicated than what we have just discussed! This is the logic diagram for the Nexperia `74HC74` dual D-type flip-flop IC[^bib-nexperia-74hc74-ds]:
 
 {{% figure src="nexperia-74hc74-d-flip-flop-logic-diagram.png" width="700px" caption="Logic diagram for 1 of the positive-edge triggered D-type flip-flops in the Nexperia 74HC74 IC. Note the complexity![^bib-nexperia-74hc74-ds]" %}}
 
