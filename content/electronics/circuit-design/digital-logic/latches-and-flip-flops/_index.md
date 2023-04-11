@@ -121,6 +121,20 @@ A JK latch is just an extension of the SR latch where the circuit is modified to
 
 _Flip-flops_ are like latches, except the input is only propagated to the output (i.e. transparent) for a very brief period during the transition of the clock pulse (the clock edge). Flip-flops can be built from two back-to-back latches, with the clock signal inverted to one of them.
 
+### Edge Detection
+
+How does the front-end edge-detecting circuit work? It is a very simple circuit made from an inverter and an AND gate, and exploits the non-zero propagation delay time through the inverter. When the input changes from a 0 to a 1, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output 1. This enables the latch for a very brief amount of time during the positive edge transition.
+
+The timing diagram for the circuit is shown below:
+
+{{% figure src="edge-detection-using-and-inverter-timing-diagram.png" width="500px" caption="Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter." %}}
+
+{{% note %}}
+Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
+{{% /note %}}
+
+The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There is a better way to do it.
+
 ### D Flip-Flops
 
 A D flip-flop (where the D either stands for **D**elay or **D**ata) is a flip-flop which is based off the D latch, with additional circuitry to make it edge-triggered instead of level triggered. Below is the basic symbol for a D-type flip-flop with no preset or clear:
@@ -132,14 +146,6 @@ But how is a D flip-flop actually made? Basically, you could add the edge-trigge
 {{% figure src="d-flipflop-with-time-delay-trigger.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit." %}}
 
 We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-triggered rather than level-triggered.
-
-How does the front-end edge-detecting circuit work? It is a very simple circuit made from an inverter and an AND gate, and exploits the non-zero propagation delay time through the inverter. The timing diagram for the circuit is shown below:
-
-{{% figure src="time-delay-trigger-using-and-inverter-timing-diagram.png" width="500px" caption="Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter." %}}
-
-{{% note %}}
-Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
-{{% /note %}}
 
 You can actually eliminate the need the inverting/NAND gate altogether by connecting the output of the top NAND to the input of the bottom NAND as shown in the below image, saving one gate (lower cost/size).
 
@@ -186,4 +192,5 @@ Which gives `\(\rm MTBF = 20.1days\)`.
 
 ## References
 
-[^bib-eforu-flipflops]:  ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
+[^bib-eforu-flipflops]: ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
+[^bib-libretexts-edge-triggered-flip-flop]: Charles W. Kann (2021, May 28). _Book: Digital Circuit Projects - An Overview of Digital Circuits Through Implementing Integrated Circuits (Kahn). 9.4: Edge Triggered Flip-Flop_. LibreTexts: Engineering. https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Digital_Circuit_Projects_-_An_Overview_of_Digital_Circuits_Through_Implementing_Integrated_Circuits_(Kahn)/09%3A_Memory_Basics_-_Flip-Flops_and_Latches/9.04%3A_Edge_Triggered_Flip-Flop#:~:text=It%20is%20said%20to%20trigger,will%20be%20positive%20edge%20trigger.
