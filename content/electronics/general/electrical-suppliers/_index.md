@@ -175,7 +175,7 @@ If your favourite Microchip part is not available via common suppliers, you migh
 
 {{% warning %}}
 The displayed available stock of a part on Microchip Direct does not drop as orders are made, and nor is the shown lead time that accurate. Instead, a manual review process is done in the 24-48 hours after an order is made, and someone decides if they can full-fill your order. At that point you a sent another email with a confirmed dispatch date. It feels like a poor way to do business!
-{{% warning %}}
+{{% /warning %}}
 
 ## Hobby Electronics Suppliers
 

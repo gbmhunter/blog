@@ -137,6 +137,23 @@ And this is what the timing looks like:
 Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
 {{% /note %}}
 
+<div class="worked-example">
+To test this idea, we can simulate the circuit in Micro-Cap. The schematic looks like this:
+
+{{% figure src="edge-detection-using-and-inverter-sim/schematic.png" width="700px" %}}
+
+This simulation used logic gates which had a nominal delay time of `0.3ns` (both low to high and high to low). This is the `D_ABC` timing model in Micro-Cap. The 1-bit Digital Stimulus was setup to go high at `t=5ns` and go low again at `t=10ns` as follows:
+
+{{% figure src="edge-detection-using-and-inverter-sim/1-bit-digital-stimulus-config.png" width="500px" %}}
+
+The resulting transient analysis is:
+
+{{% figure src="edge-detection-using-and-inverter-sim/transient-analysis.png" width="900px" %}}
+
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](edge-detection-using-and-inverter-sim/circuit.cir).
+
+</div>
+
 The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There is a better way to do it.
 
 ### D-Type Flip-Flops

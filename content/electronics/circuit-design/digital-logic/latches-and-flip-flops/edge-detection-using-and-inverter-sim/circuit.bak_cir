@@ -228,7 +228,7 @@ V=1
 
 [Attr]
 ON=-10,-36,COMMAND
-V=U5
+V=U3
 
 [Attr]
 ON=-10,-50,I/O MODEL
@@ -574,7 +574,7 @@ Scale 1=1
 Scale 2=1
 SB 3=233,109
 Scale 3=0.5
-Px=407,293
+Px=355,416
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -623,7 +623,7 @@ Type=Text
 Print=False
 Enable=True
 Name=Text
-SB 0=0,9
+SB 0=7,4
 Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
 Comment Color=#008000
 WinBackGround Color=#FFFFFF
@@ -667,11 +667,6 @@ Section=0
 Page=1
 Text=
 Text=.define U3
-Text=+0ns 0
-Text=+5ns 1
-Text=+10ns 0
-Text=
-Text=.define U5
 Text=+0ns 0
 Text=+5ns 1
 Text=+10ns 0

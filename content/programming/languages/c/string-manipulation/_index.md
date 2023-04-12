@@ -252,9 +252,9 @@ Memory manipulation functions are also useful for string manipulation. Some of t
   </thead>
   <tbody>
     <tr>
-      <td>{{% code %}}`memset(char* stringBuff, int value, size_t num);`{{% code %}}</td>
+      <td>{{% code %}}`memset(char* stringBuff, int value, size_t num);`{{% /code %}}</td>
       <td>Writes a constant value to a set number of elements in memory.</td>
-      <td>Used to clear a string at run-time (e.g. {{% code %}}`memset(buff1, '\0', sizeof(buff1));`{{% code %}}). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!</td>
+      <td>Used to clear a string at run-time (e.g. `memset(buff1, '\0', sizeof(buff1));`). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!</td>
     </tr>
   </tbody>
 </table>

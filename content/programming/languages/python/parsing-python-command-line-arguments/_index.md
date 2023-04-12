@@ -32,7 +32,7 @@ If you find yourself starting to add options that are only applicable when certa
 
 {{% note %}}
 Passing in `dest='command'` to `add_subparsers()` allows us to query the sub-command invoked through `args.command`.
-{{% note %}}
+{{% /note %}}
 
 ```python
 #!/usr/bin/env python3

@@ -3,8 +3,9 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2015-01-13
 draft: false
+lastmod: 2023-04-12
 tags: [ "electronics", "circuit design", "inrush current", "power supplies" ]
-title: "Inrush Current"
+title: Inrush Current
 type: "page"
 ---
 
@@ -36,7 +37,7 @@ The total energy $ E $ provided by the inrush current is given by:
 
 {{% note %}}
 You may be initially confused, thinking, wait, this is the equation for the energy stored in the capacitor, not the energy dissipated by the thermistor. The cool thing is, in this circuit, the energy stored in the capacitor and the energy dissipated by the thermistor (or any resistor) is exactly the same!
-{{% note %}}
+{{% /note %}}
 
 The minimum resistance (provided by the NTC thermistor), `\(R_{min}\)`, is given by:
 
@@ -51,7 +52,7 @@ This assumes that the other resistances in the path of the inrush current (e.g. 
 
 The steady-state current must not be larger than the maximum steady-state current rating of the NTC thermistor
 
-The steady-state current rating of the NTC thermistor must be derated if the ambient temperature is too high.
+The steady-state current rating of the NTC thermistor must be de-rated if the ambient temperature is too high.
 
 If steady-state power dissipation or voltage drop is a big issue, the NTC thermistor can bypassed with a timed relay during steady-state operation.
 

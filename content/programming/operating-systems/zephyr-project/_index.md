@@ -36,7 +36,7 @@ The easiest way to install Zephyr on Windows is to use the chocolatey package ma
 
 {{% warning %}}
 Make sure to use a command-prompt and not PowerShell, as PowerShell does not play nice with the `set` method of defining environment variables.
-{{% \warning %}}
+{{% /warning %}}
 
 1. Enable global confirmation so that you don't have to manually confirm the installation of individual programs:
 

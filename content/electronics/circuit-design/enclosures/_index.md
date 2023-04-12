@@ -3,6 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2012-09-03
 draft: false
+lastmod: 2023-04-12
 tags: [ "enclosures", "aluminium", "connectors", "heatsink" ]
 title: Enclosures
 type: page
@@ -16,7 +17,7 @@ Extruded aluminium enclosures consist of one piece of box-section aluminium for 
 
 {{% note %}}
 Connectors/indicators typically have to come out from either end. Right-angled PCB mount connectors are the easy to use with this configuration (panel mount can also be used).
-{{% note %}}
+{{% /note %}}
 
 Hammond is a large manufacturer of this type of enclosure. See their page, [Extruded Aluminium Enclosures (Metal End Panels) (1455 Series)](http://www.hammondmfg.com/1455.htm).
 

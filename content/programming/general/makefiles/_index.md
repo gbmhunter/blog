@@ -1,7 +1,8 @@
 ---
 authors: [ "Geoffrey Hunter" ]
-date: 2013-05-28 01:51:22+00:00
+date: 2013-05-28
 draft: false
+lastmod: 2023-04-12
 title: Makefiles
 type: page
 ---
@@ -33,7 +34,7 @@ The primary three things a Makefile consists of are **targets**, **prerequisites
 
 {{% warning %}}
 There is a tab infront of the recipe gcc .... . This is important! **All recipes must be proceeded by a tab.**
-{{% warning %}}
+{{% /warning %}}
 
 If no parameters are passed in when you call make, the first rule in the makefile will be run.
 
@@ -95,14 +96,13 @@ You assign a value to a variable in the following ways:
         </tr>
     </tbody>
 </table>
-    
 
 There are common names that most people use for variables, which are shown below.
 
 ```text
 CC
 CFLAGS
-```text
+```
 
 Using wildcards in variable assignment requires special syntax, see the Wildcards section.
 
@@ -115,7 +115,7 @@ One of the most common uses for a wildcard is with the "clean" rule, which is us
 ```text
 clean : 
 rm -f *.o
-```text
+```
 
 The `*.o` string is called a [glob](http://en.wikipedia.org/wiki/Glob_(programming)). It will match any file names which end in `.o`. This will delete all object files in the current directory.
 
@@ -124,7 +124,7 @@ The `*.o` string is called a [glob](http://en.wikipedia.org/wiki/Glob_(programmi
 
 ```text
 objects := $(wildcard *.o)
-```text
+```
 
 This will replace `$(wildcard *.o)` with a space-separated list of all object files in the current directory, e.g. `objects := objectfile1.o objectfile2.o`.
 
@@ -135,7 +135,7 @@ objects := $(patsubst %.c,%.o,$(wildcard *.c))
 
 foo : $(objects)
 cc -o foo $(objects)
-```text
+```
 
 ## Automatic Variables
 
@@ -152,7 +152,6 @@ Here is a table some of the most useful automatic variables:
     </thead>
 <tbody>
 <tr>
-            
 <td >$@</td>
 <td >The file name of the target of the rule.</td>
 </tr>
@@ -165,7 +164,6 @@ Here is a table some of the most useful automatic variables:
 <td >The name of the first prerequisite.</td>
         </tr>
         <tr >
-            
 <td >$?
 </td>
             
@@ -173,7 +171,6 @@ Here is a table some of the most useful automatic variables:
 </td>
         </tr>
         <tr >
-            
 <td >$^
 </td>
             
@@ -181,10 +178,8 @@ Here is a table some of the most useful automatic variables:
 </td>
         </tr>
         <tr >
-            
 <td >$|
 </td>
-            
 <td >The names of all of the order-only prerequisites, with spaces between them.
 </td>
         </tr>
@@ -210,7 +205,7 @@ The recommended to run another makefile is to write:
 ```text
 # Run another makefile from this makefile
 $(MAKE) -C ./path/to/makefile/ all
-```text
+```
 
 where all can be substituted for any other parameter you wish to pass to the secondary makefile. Note that this method is preferred over manually changing directory and calling make yourself, which can be done in the following manner:
 
