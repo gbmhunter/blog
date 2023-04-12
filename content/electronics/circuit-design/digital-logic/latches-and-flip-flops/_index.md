@@ -164,6 +164,8 @@ A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depend
 
 The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input.
 
+#### D-Type Flip-Flops with Inverters
+
 But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` (enable) line of a D latch (as shown above) to make a D flip-flop:
 
 {{% figure src="d-flipflop-with-time-delay-trigger.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit." %}}
@@ -176,13 +178,19 @@ You can actually eliminate the need the inverting/NAND gate altogether by connec
 
 D-type flip-flops are used for counters, shift-registers and input synchronization.
 
-#### Real-World D-Type Flip-Flops
+#### D-Type Flip-Flops with More NANDs
+
+The above D-type flip-flop style using the propagation delay through an inverter to create the edge-triggering is not used commonly in industry. What is actually used is either a design with more NAND gates or transmission gates. Let's look at the NAND gate design first.
+
+A common example of this style is the Texas Instruments [SN7474](https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf) "Dual D-Type Positive-Edge Triggered Flip-flops with Reset and Clear"[^bib-ti-sn7474-ds]. 
+
+#### D-Type Flip-Flops with Transmission Gates
 
 In reality, the actual D-type flip-flops you can buy can be much more complicated than what we have just discussed! This is the logic diagram for the Nexperia `74HC74` dual D-type flip-flop IC[^bib-nexperia-74hc74-ds]:
 
 {{% figure src="nexperia-74hc74-d-flip-flop-logic-diagram.png" width="700px" caption="Logic diagram for 1 of the positive-edge triggered D-type flip-flops in the Nexperia 74HC74 IC. Note the complexity![^bib-nexperia-74hc74-ds]" %}}
 
-The four triangles pointing towards each other are transmission gates (TGs), normally made from one N-channel and one P-channel MOSFET connecting in parallel (with the substrate not connected to the body, to avoid conduction through it's internal diodes). Some of the circuitry that seems to serve no purpose (like the two inverters in series on the `D` input) has been presumably added to balance propagation times. 
+The four triangles pointing towards each other are transmission gates (TGs), normally made from one N-channel and one P-channel MOSFET connected in parallel (with the substrate not connected to the body, to avoid conduction through it's internal diodes). Some of the circuitry that seems to serve no purpose (like the two inverters in series on the `D` input) has been presumably added to balance propagation times.
 
 #### Examples
 
@@ -233,3 +241,4 @@ Which gives `\(\rm MTBF = 20.1days\)`.
 [^bib-libretexts-edge-triggered-flip-flop]: Charles W. Kann (2021, May 28). _Book: Digital Circuit Projects - An Overview of Digital Circuits Through Implementing Integrated Circuits (Kahn). 9.4: Edge Triggered Flip-Flop_. LibreTexts: Engineering. Retrieved 2023-04-11 from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Digital_Circuit_Projects_-_An_Overview_of_Digital_Circuits_Through_Implementing_Integrated_Circuits_(Kahn)/09%3A_Memory_Basics_-_Flip-Flops_and_Latches/9.04%3A_Edge_Triggered_Flip-Flop#:~:text=It%20is%20said%20to%20trigger,will%20be%20positive%20edge%20trigger.
 [^bib-nexperia-74hc74-ds]: Nexperia (2023, Feb 9). _74HC74; 74HCT74 - Dual D-type flip-flop with set and reset; positive edge-trigger_. Retrieved 2023-04-11 from https://assets.nexperia.com/documents/data-sheet/74HC_HCT74.pdf.
 [^bib-ti-ls374-ds]: Texas Instruments (2002, Aug). _SN54LS373, SN54LS374, SN54S373, SN54S374, SN74LS373, SN74LS374, SN74S373, SN74S374 Octal D-type Transparent Latches and Edge-triggered Flip-flops_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls373-sp.pdf.
+[^bib-ti-sn7474-ds]: Texas Instruments (1988, March). _SN5474, SN54LS74A, SN54S74, SN7474, SN74LS74A, SN74S74 - Dual D-Type Positive-Edge Triggered Flip-Flops With Preset And Clear_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf. 
