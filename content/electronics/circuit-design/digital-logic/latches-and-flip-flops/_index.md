@@ -188,6 +188,10 @@ The four triangles pointing towards each other are transmission gates (TGs), nor
 
 The partial part number `74HC74` is a dual D-type CMOS positive-edge triggered flip-flop with set and reset. It has balanced propagation delays. Orderable variants include the Nexperia [74HC74D](https://assets.nexperia.com/documents/data-sheet/74HC_HCT74.pdf) and Toshiba [74HC74D](https://toshiba.semicon-storage.com/info/74HC74D_datasheet_en_20201117.pdf?did=37138&prodName=74HC74D).
 
+The partial part number `LS734` is used for an 8-channel (octal) edge-triggered D-type flip-flop IC. The Texas Instruments [74LS373](https://www.ti.com/lit/ds/symlink/sn54ls373-sp.pdf) is one such example.
+
+{{% figure src="ti-ls374-octal-edge-triggered-d-flip-flop-ic-logic-diagram.png" width="300px" caption="Logic diagram of the Texas Instruments 74LS373 Edge-Triggered D-type Flip-flop IC[^bib-ti-ls374-ds]." %}}
+
 #### Triggering
 
 Edge-triggered D flip-flops can be either positive or negative edge triggered. Edge-triggered flip-flops are shown by a triangle at the clock input, and negative edge-triggered ones have an additional bubble. However, positive-edge triggered is much more common, and standard practice is to make a negative edge triggered flip-flop by adding your own inverting gate on the clock signal.
@@ -228,3 +232,4 @@ Which gives `\(\rm MTBF = 20.1days\)`.
 [^bib-eforu-flipflops]: ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
 [^bib-libretexts-edge-triggered-flip-flop]: Charles W. Kann (2021, May 28). _Book: Digital Circuit Projects - An Overview of Digital Circuits Through Implementing Integrated Circuits (Kahn). 9.4: Edge Triggered Flip-Flop_. LibreTexts: Engineering. Retrieved 2023-04-11 from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Digital_Circuit_Projects_-_An_Overview_of_Digital_Circuits_Through_Implementing_Integrated_Circuits_(Kahn)/09%3A_Memory_Basics_-_Flip-Flops_and_Latches/9.04%3A_Edge_Triggered_Flip-Flop#:~:text=It%20is%20said%20to%20trigger,will%20be%20positive%20edge%20trigger.
 [^bib-nexperia-74hc74-ds]: Nexperia (2023, Feb 9). _74HC74; 74HCT74 - Dual D-type flip-flop with set and reset; positive edge-trigger_. Retrieved 2023-04-11 from https://assets.nexperia.com/documents/data-sheet/74HC_HCT74.pdf.
+[^bib-ti-ls374-ds]: Texas Instruments (2002, Aug). _SN54LS373, SN54LS374, SN54S373, SN54S374, SN74LS373, SN74LS374, SN74S373, SN74S374 Octal D-type Transparent Latches and Edge-triggered Flip-flops_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls373-sp.pdf.
