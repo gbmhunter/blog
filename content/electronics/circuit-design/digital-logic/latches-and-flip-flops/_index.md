@@ -17,9 +17,15 @@ The typical distinction between a latch and a flip-flops is[^bib-eforu-flipflops
 * Latches are level-triggered (a.k.a. _asynchronous_)
 * Flip-flops are edge-triggered (a.k.a. _synchronous_, _clocked_).
 
+There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
+
+{{% tip %}}
+Latches and flip-flops can store information, but they are not typically used when one generally thinks of computer "memory", i.e. hard drives, solid-state drives or RAM. They use entirely different ways of storing information. Hard drives use magnetism to store non-volatile information, while solid-state drives and RAM use "floating gate" MOSFETs to store information.
+{{% /tip %}}
+
 ## Latches
 
-Latches are level-triggered circuits which can retain memory. When a latch passes the input through to the output, we say it is _transparent_. When the input is blocked from passing through to the output (i.e. in input has no effect) we say the latch is _opaque_.
+**Latches are level-triggered circuits which can retain memory.** When a latch passes the input through to the output, we say it is _transparent_. When the input is blocked from passing through to the output (i.e. in input has no effect) we say the latch is _opaque_.
 
 Most latches are built from two identical cross-coupled inverting logic gates, e.g. two NOR gates or two NAND gates. 
 
