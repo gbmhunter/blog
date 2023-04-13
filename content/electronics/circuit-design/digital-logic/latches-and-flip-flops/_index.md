@@ -158,31 +158,90 @@ The problem with the above edge-detection circuit is that it cannot guarantee th
 
 ### D-Type Flip-Flops
 
-A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depending on who you ask) is a flip-flop which is based off the D latch, with additional circuitry to make it edge-triggered instead of level triggered. Below is the basic symbol for a D-type flip-flop with no preset or clear:
+A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depending on who you ask) is a flip-flop which is **based off the D latch, with additional circuitry to make it edge-triggered instead of level triggered**. Below are the basic symbols for a D-type flip-flop:
 
-{{% figure src="d-flipflop-symbol-level.png" width="300px" caption="The schematic symbol for a D-type flipflop." %}}
+{{% figure src="d-flipflop-symbol.png" width="700px" caption="The schematic symbols for a D-type flipflop. On the left is one WITH NO asynchronous set or reset, and the right is one WITH asynchronous set or reset." %}}
 
-The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input.
+{{% tip %}}
+The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input. Typically the set and reset are inverse logic, i.e. `1` to do nothing and `0` to either set or reset. The reset pin can also be called _preset_[^bib-ti-sn7474-ds].
+{{% /tip %}}
 
 #### D-Type Flip-Flops with Inverters
 
 But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` (enable) line of a D latch (as shown above) to make a D flip-flop:
 
-{{% figure src="d-flipflop-with-time-delay-trigger.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit." %}}
+{{% figure src="d-flipflop-with-and-inverter.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit made with an AND gate and inverter." %}}
 
 We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-triggered rather than level-triggered.
-
-You can actually eliminate the need the inverting/NAND gate altogether by connecting the output of the top NAND to the input of the bottom NAND as shown in the below image, saving one gate (lower cost/size).
-
-{{% figure src="d-flipflop-internals-no-inv-gate.svg" width="800px" caption="A D-type flip-flop with the inverting/NAND gate removed by connecting the output of the top NAND to the input of the bottom NAND." %}}
 
 D-type flip-flops are used for counters, shift-registers and input synchronization.
 
 #### D-Type Flip-Flops with More NANDs
 
-The above D-type flip-flop style using the propagation delay through an inverter to create the edge-triggering is not used commonly in industry. What is actually used is either a design with more NAND gates or transmission gates. Let's look at the NAND gate design first.
+The above D-type flip-flop style using the propagation delay through an inverter to create the edge-triggering is not used commonly in industry. What is actually used is either a design with more NAND gates or transmission gates. Let's look at the NAND gate design first. In reality, it is quite a complicated arrangement of gates! The logic diagram is:
 
-A common example of this style is the Texas Instruments [SN7474](https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf) "Dual D-Type Positive-Edge Triggered Flip-flops with Reset and Clear"[^bib-ti-sn7474-ds]. 
+{{% figure src="d-flipflop-with-more-nand-gates.png" width="600px" caption="A D-type flip-flop made solely from NAND gates. This version has no asynchronous set and clear inputs." %}}
+
+Roughly speaking, the above circuit is made from three SR latches, the output latch (center right), the input reset latch (upper left) and input set latch (lower left). Note that one of the input NAND gates is has three inputs rather than two.
+
+Let's try and understand how this circuit works! To do so, we'll assume you know how the output SR latch works (if you don't, read the first part of this page!). This removes `U5` and `U6` from the analysis, we can just treat their inputs as the standard `R` and `S` (as annotated on the diagram). Now let's walk through two scenarios, the first when the `CLK` transitions from `0` to `1` while `D=0`, and then second scenario the same clock transition when `D=1`. We'll see what happens to the circuit if further changes to `D` are made once the transition finishes (HINT: nothing happens!).
+
+{{% tip %}}
+Common terminology for gates inputs/outputs are used where inputs are labelled `UxA`, `UxB`, ... in order, and the output is `UxY`.
+{{% /tip %}}
+
+**What if `D=0` when CLK transitions from `0` to `1`?**
+
+1. Before the transition, `D=1` and `CLK=0`. Then at least 1 input to U2 and U3 is `0`. This means than `U2Y` and `U3Y` must both be `1`.
+1. Since `D=0` and `U3Y=1`, then `U4Y=1`. 
+1. Since `U4Y=1` and `U2Y=1`, then `U1Y=0`. This gives the following state for all inputs/outputs:
+    | Gate | A | B | C | Y
+    |------|---|---|---|---
+    | U1   | 1 | 1 |   | 0
+    | U2   | 0 | 0 |   | 1
+    | U3   | 1 | 0 | 1 | 1
+    | U4   | 1 | 0 |   | 1
+1. Now, `CLK` transitions to `1`. `U2B` and `U3B` immediately go high.
+1. Within 1 propagation period, `U2` and `U3` respond. `U2` doesn't do anything because `U2` still has at least 1 of it's inputs as `0` (`U2A`). `U3` however now has all three of it's inputs high, and so `U3Y=0`. This gives the following state for all inputs/outputs:
+    | Gate | A | B | C | Y
+    |------|---|---|---|---
+    | U1   | 1 | 1 |   | 0
+    | U2   | 0 | 1 |   | 1
+    | U3   | 1 | 1 | 1 | 0
+    | U4   | 0 | 0 |   | 1
+1. If `D` now changes from `0` to `1` while the `CLK` is high, it will have no effect as it's blocked at `U4` by the fact `U4A` is now `0`.
+
+**What if `D=1` when CLK transitions from `0` to `1`?**
+
+1. If `D=1`, `CLK=0` then at least 1 input to U2 and U3 is `0`. This means than `U2Y` and `U3Y` must both be `1`.
+1. Since `D=1` and `U3Y = 1`, then `U4Y=0`.
+1. Since `U4Y=0` and `U2Y=1`, then `U1Y=1`.
+1. The reset of the gate inputs/outputs are easy to deduce.
+1. This gives the following state for all inputs/outputs:
+    | Gate | A | B | C | Y
+    |------|---|---|---|---
+    | U1   | 0 | 1 |   | 1
+    | U2   | 1 | 0 |   | 1
+    | U3   | 1 | 0 | 0 | 1
+    | U4   | 1 | 1 |   | 0
+1. Thus, `R=1` and `S=1`, and so the output latch is in a hold state. 
+1. Now `CLK` immediately transitions to `1`. Within 1 propagation delay, U2 and U3 respond. `U2` already had `U2A=1`, and now `CLK=1` makes `U2B=1`. This causes the gate to change state and `U2Y` goes from `1` to `0`. `U3` doesn't do anything however, as while `U3B` goes to `1`, `U3C` is still `0`, as so "blocks" `U3` from changing.  This gives the following state for all inputs/outputs:
+    | Gate | A | B | C | Y
+    |------|---|---|---|---
+    | U1   | 0 | 0 |   | 1
+    | U2   | 1 | 1 |   | 0
+    | U3   | 0 | 1 | 0 | 1
+    | U4   | 1 | 1 |   | 0
+1. Thus `R=0` and `S=1`, and the output latch gets "set".
+1. If `D` changes back from `1` to `0` it will effect the output of `U4Y` which will go from `0` to `1`. However, this output will not effect gates `U1` and `U3` as they are both now "blocked" from changing because `U2Y=0`, meaning they both have at least one `0` input. 
+
+**In Summary**
+
+When the `CLK` transitions from `0` to `1`, the output latch gets set if `D=1` and gets reset if `D=0`. Within 1 NAND gate propagation delay, further changes to `D` do not affect the output as `D` is now blocked by other `0`'s and the inputs to the NAND gates (either immediately by `U4` or by `U2` and `U3`). This is the exact behaviour we wanted!
+
+A common example of this style is the Texas Instruments [SN7474](https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf) "Dual D-Type Positive-Edge Triggered Flip-flops with Reset and Clear"[^bib-ti-sn7474-ds].
+
+This circuit gets even more complicated when you add asynchronous set and clear inputs!
 
 #### D-Type Flip-Flops with Transmission Gates
 
