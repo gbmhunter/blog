@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ Electronics, Circuit Design ]
 date: 2012-08-06
 draft: false
-lastmod: 2023-04-10
-tags: [ electronics, circuit design, digital logic, latches, flip-flops, SR latch, D latch, JK latch, D flip-flop, propagation delay, inverters, and gates, edge detection, circuit, mtbf ]
+lastmod: 2023-04-13
+tags: [ electronics, circuit design, digital logic, latches, flip-flops, SR latch, D latch, JK latch, D flip-flop, propagation delay, inverters, and gates, edge detection, circuit, mtbf, asynchronous, reset, NAND, NOR, AND ]
 title: "Latches and Flip-Flops"
 type: "page"
 ---
@@ -71,6 +71,31 @@ When making the SR latch from NAND gates the invalid state is now `\(S = R = 0\)
     <tr><td>1</td>  <td>1</td>  <td>\(Q\)</td> <td>\(\bar{Q}\)</td>            <td>Hold</td></tr>
   </tbody>
 </table>
+
+<div class="worked-example">
+Let's simulate a NAND-based SR latch in Micro-Cap. Here is the schematic:
+
+{{% figure src="sr-latch-nand-sim/schematic.png" width="500px" caption="" %}}
+
+The digital stimulus `U1` drives `R` and `U2` drives `S`. With the following sequence:
+
+1. Both were set to start as both `1`'s, which should put the latch in an indeterminate state (start-up).
+1. After 10ns, we test the set functionality by driving `R` low while keeping `S` high, which should set the latch.
+1. After 20ns, `R` is driven back high which should make the latch hold the previous state (set).
+1. After 30ns, we test the reset by driving `S` low while keeping `R` high, which should reset the latch.
+1. After 40ns, `S` is driven back high, which should make the latch hold the previous state (reset).
+
+And here is the transient analysis, which agrees with the expected behaviour:
+
+{{% figure src="sr-latch-nand-sim/transient-analysis.png" width="900px" caption="" %}}
+
+{{% tip %}}
+Quite nicely, Micro-Cap shows the indeterminate state between 0 and 10ns with lines at both the `0` and `1` level.
+{{% /tip %}}
+
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](sr-latch-nand-sim/circuit.cir).
+
+</div>
 
 `SN74LS279` is a quad SR latch component by Texas Instruments. Two of the four latches have two set inputs, allowing for either to be active to set the latch (equivalent to an OR gate placed before a normal single set input SR latch).
 
@@ -241,7 +266,29 @@ When the `CLK` transitions from `0` to `1`, the output latch gets set if `D=1` a
 
 A common example of this style is the Texas Instruments [SN7474](https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf) "Dual D-Type Positive-Edge Triggered Flip-flops with Reset and Clear"[^bib-ti-sn7474-ds].
 
-This circuit gets even more complicated when you add asynchronous set and clear inputs!
+This circuit gets even more complicated when you add asynchronous set and reset inputs! Rather than just the 1 three-input NAND gate, all NAND gates need to be three-input.
+
+<div class="worked-example">
+
+Let's simulate a NAND-based edge-triggered D-type flip-flop with asynchronous set and reset inputs. The schematic is:
+
+{{% figure src="d-flipflop-nand-with-set-reset-sim/schematic.png" width="600px" caption="The Micro-Cap schematic for simulating a edge-triggered D-type flip-flop with async. set and reset." %}}
+
+The resulting transient analysis looks as expected! (explanation below graph):
+
+{{% figure src="d-flipflop-nand-with-set-reset-sim/transient-analysis.png" width="900px" caption="The transient analysis of the above circuit." %}}
+
+Explanation of behaviour:
+
+1. The flip-flop first starts up in an undefined state. We don't use the `nSET` or `nRESET` pins to fix this, we'll test those later. So the flip-flop output first transitions into a valid state on the transition of the first positive-going clock pulse at `0.5us`. Because `D=0`, `Q` gets set to `0`.
+1. `D` is then "wiggled" back and forth between `0` and `1` and there is no change in the output.
+1. The next output transition happens at `t=1.5us`, when there is another positive clock edge while `D=1`. Thus `Q` gets set correctly to `1`. Again, no amount of changing `D` after the edge affects the output.
+1. Then we have a play around with the asynchronous reset and set inputs. At `t=3.1us`, we drive `nSET` low, which correctly sets `Q` high, regardless of the clock. Then at `t=3.3us` we drive `nRESET` low and it correctly sets `Q` back to `0`, again, asynchronous to the clock.
+1. Everything looks like it is working correctly!
+
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](d-flipflop-nand-with-set-reset-sim/circuit.cir).
+
+</div>
 
 #### D-Type Flip-Flops with Transmission Gates
 
