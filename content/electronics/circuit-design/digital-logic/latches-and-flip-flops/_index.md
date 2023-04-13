@@ -144,6 +144,8 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
   </tbody>
 </table>
 
+TODO: Add simplified version of D-latch: https://www.researchgate.net/profile/Sameh-Rehan/publication/249643186/figure/fig2/AS:719576593620993@1548571837599/a-shows-the-logic-symbol-used-to-identify-the-D-latch-The-operation-of-the-D-latch-is.ppm
+
 ### JK Latch
 
 A JK latch is just an extension of the SR latch where the circuit is modified to remove the forbidden state `\(S = R = 1\)` and instead cause the output to toggle.
