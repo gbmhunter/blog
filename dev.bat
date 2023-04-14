@@ -1,1 +1,1 @@
-hugo server -wDF --renderToDisk --navigateToChanged
+hugo server -wDF --navigateToChanged

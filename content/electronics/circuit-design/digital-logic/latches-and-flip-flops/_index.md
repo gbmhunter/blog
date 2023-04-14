@@ -13,9 +13,10 @@ type: "page"
 
 A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**.
 
-The typical distinction between a latch and a flip-flops is[^bib-eforu-flipflops]:
-* Latches are level-triggered (a.k.a. _asynchronous_)
-* Flip-flops are edge-triggered (a.k.a. _synchronous_, _clocked_).
+The typical distinction between latch and a flip-flop is:
+
+* Latches are not generally level-triggered or edge-triggered (a.k.a. _asynchronous_)
+* Flip-flops are generally level-triggered edge-triggered (a.k.a. _synchronous_, _clocked_).
 
 There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
 
@@ -146,13 +147,12 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
 
 TODO: Add simplified version of D-latch: https://www.researchgate.net/profile/Sameh-Rehan/publication/249643186/figure/fig2/AS:719576593620993@1548571837599/a-shows-the-logic-symbol-used-to-identify-the-D-latch-The-operation-of-the-D-latch-is.ppm
 
-### JK Latch
-
-A JK latch is just an extension of the SR latch where the circuit is modified to remove the forbidden state `\(S = R = 1\)` and instead cause the output to toggle.
-
 ## Flip-Flops
 
-_Flip-flops_ are like latches, except the input is only propagated to the output (i.e. transparent) for a very brief period during the transition of the clock pulse (the clock edge). Flip-flops can be built from two back-to-back latches, with the clock signal inverted to one of them.
+_Flip-flops_ are like latches, except their inputs are gated by an enable or clock signal which only allows transitions during particular states. You can further separate flip-flops into two categories:
+
+* Level-triggered flip-flops allow state transitions when the enable or clock signal is in a particular state (e.g. when it is `1`).
+* Edge-triggered flip-flops only allow state transitions for a very brief period during the transition of the clock pulse (the clock edge).
 
 ### Edge Detection
 
@@ -349,10 +349,20 @@ Which gives `\(\rm MTBF = 20.1days\)`.
 
 ### JK Flip-flop
 
+A JK flip-flop is also known as the gated or clocked SR latch[^bib-byju-sr-flip-flop]. It is a level-triggered device, even though many online tutorials suggest it is edge-triggered. The schematic symbol is:
+
+{{% figure src="jk-flipflop-symbol.png" width="400px" caption="The schematic symbol for a JK flip-flop." %}}
+
+The letters J and K were chosen by the inventor of the JK flip-flop, Jack Kilby[^electronics-tutorials-jk-flip-flop].
+
+TODO: Add simulation.
+
 ## References
 
 [^bib-eforu-flipflops]: ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
 [^bib-libretexts-edge-triggered-flip-flop]: Charles W. Kann (2021, May 28). _Book: Digital Circuit Projects - An Overview of Digital Circuits Through Implementing Integrated Circuits (Kahn). 9.4: Edge Triggered Flip-Flop_. LibreTexts: Engineering. Retrieved 2023-04-11 from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Digital_Circuit_Projects_-_An_Overview_of_Digital_Circuits_Through_Implementing_Integrated_Circuits_(Kahn)/09%3A_Memory_Basics_-_Flip-Flops_and_Latches/9.04%3A_Edge_Triggered_Flip-Flop#:~:text=It%20is%20said%20to%20trigger,will%20be%20positive%20edge%20trigger.
 [^bib-nexperia-74hc74-ds]: Nexperia (2023, Feb 9). _74HC74; 74HCT74 - Dual D-type flip-flop with set and reset; positive edge-trigger_. Retrieved 2023-04-11 from https://assets.nexperia.com/documents/data-sheet/74HC_HCT74.pdf.
 [^bib-ti-ls374-ds]: Texas Instruments (2002, Aug). _SN54LS373, SN54LS374, SN54S373, SN54S374, SN74LS373, SN74LS374, SN74S373, SN74S374 Octal D-type Transparent Latches and Edge-triggered Flip-flops_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls373-sp.pdf.
-[^bib-ti-sn7474-ds]: Texas Instruments (1988, March). _SN5474, SN54LS74A, SN54S74, SN7474, SN74LS74A, SN74S74 - Dual D-Type Positive-Edge Triggered Flip-Flops With Preset And Clear_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf. 
+[^bib-ti-sn7474-ds]: Texas Instruments (1988, March). _SN5474, SN54LS74A, SN54S74, SN7474, SN74LS74A, SN74S74 - Dual D-Type Positive-Edge Triggered Flip-Flops With Preset And Clear_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf.
+[^bib-byju-sr-flip-flop]: Priyanshu Vaish (2022, Aug 26). _SR Flip-Flop: What is SR Flip-Flop Truth Table?_. Byju's Exam Prep. Retrieved 2023-04-14, from https://byjusexamprep.com/sr-flip-flop-truth-table-i.
+[^electronics-tutorials-jk-flip-flop]: Electronics Tutorials. _The JK Flip Flop_. Retrieved 2023-04-14, from https://www.electronics-tutorials.ws/sequential/seq_2.html.
