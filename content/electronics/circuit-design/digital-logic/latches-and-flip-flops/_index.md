@@ -353,9 +353,43 @@ A JK flip-flop is also known as the gated or clocked SR latch[^bib-byju-sr-flip-
 
 {{% figure src="jk-flipflop-symbol.png" width="400px" caption="The schematic symbol for a JK flip-flop." %}}
 
-The letters J and K were chosen by the inventor of the JK flip-flop, Jack Kilby[^electronics-tutorials-jk-flip-flop].
+TODO: Should the `CLK` input really have a wedge since it's level-triggered?
 
-TODO: Add simulation.
+The letters J and K were chosen by the inventor of the JK flip-flop, Jack Kilby[^electronics-tutorials-jk-flip-flop]. A JK flip-flop can be built with NAND gates with the following circuit:
+
+{{% figure src="jk-flipflop-from-nand-gates.png" width="700px" caption="Circuit showing how to build a JK flip-flop from NAND gates." %}}
+
+<div class="worked-example">
+
+Let's simulate a NAND-based JK flip-flop in Micro-Cap. The schematic is:
+
+{{% figure src="jk-flipflop-nand-sim/schematic.png" width="600px" caption="The simulation schematic for the JK flip-flop." %}}
+
+We have to set up some rather complicated digital stimulus to put the JK flip-flop through it's paces. The simulation text determining these waveforms is:
+
+{{% figure src="jk-flipflop-nand-sim/schematic-sim-text.png" width="300px" caption="The supported simulation \"text\" that goes with the schematic. This defines the waveforms of the 3x digital stimulus and the initial conditions." %}}
+
+Notice also the definition of initial conditions at the bottom (`.IC`). If this was not provided, the states of `Q` and `nQ` would be forever stuck as indeterminate (in Micro-Cap this is represented by an `X` in text or double-lines at `0` and `1` in the waveform views), as the only way for the simulator to determine their state without using themselves (because of feedback) would be if `nR` or `nS` were 0 (because then the indeterminate state of `Q` and `nQ` doesn't matter in determining `Q` and `nQ`, they would just be `1`). However with a `JK` flip-flop we can't set `nR` or `nS` to `0` via the inputs `J` and `K` without also considering the feedback from `Q` and `nQ` in the triple input NAND gates. Hence the circuit gets stuck! In real life, the circuit would settle on either `Q=1` or `Q=0` at start-up due to real-world noise and manufacturing differences in the start-up times of the NAND gates.
+
+Below is the simulated waveforms of the circuit:
+
+{{% figure src="jk-flipflop-nand-sim/transient-analysis.png" width="1000px" caption="Annotated transient analysis of the JK flip-flop." %}}
+
+Explanation of behaviour:
+
+1. To test setting the JK flip-flop`J` is driven high, `K` is driven low whilst `CLK` is low (i.e. not enabled).
+2. `CLK` goes high.
+3. `Q` goes high due to `J` being high whilst `CLK` being high. Flip-flop has been set.
+4. To test resetting the JK flip-flop, `J` is driven low and `J` driven high whilst `CLK` is low (not enabled).
+5. `CLK` goes high.
+6. `Q` gets reset as expected.
+7. Let's set the JK flip-flop again, but this time show how it is not edge-triggered, the state can still be changed whilst the `CLK` is high.
+8. We now bring `J` low and drive `K` high.
+9. The output gets reset half-way through the `CLK` being high.
+10. Lets demonstrate the oscillatory nature than can be caused if both `J` and `K` are high when the `CLK` is high.
+11. The outputs oscillate at a speed determined by the propagation delay of the NAND gates!
+
+</div>
 
 ## References
 
