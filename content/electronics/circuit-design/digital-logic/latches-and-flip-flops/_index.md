@@ -145,7 +145,9 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
   </tbody>
 </table>
 
-TODO: Add simplified version of D-latch: https://www.researchgate.net/profile/Sameh-Rehan/publication/249643186/figure/fig2/AS:719576593620993@1548571837599/a-shows-the-logic-symbol-used-to-identify-the-D-latch-The-operation-of-the-D-latch-is.ppm
+**You can actually simplify the above circuit and remove the need for an inverter altogether.** Just realise the output of the top left NAND gate is always the inverse of `D` as long as `E` is high, so you can actually take the output of this as the inverted `D` and feed it into the bottom left NAND gate as shown:
+
+{{% figure src="d-latch-from-nand-gates-simplified.png" width="700px" caption="A simplified D latch without an inverter." %}}
 
 ## Flip-Flops
 
