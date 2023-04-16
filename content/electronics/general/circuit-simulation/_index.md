@@ -21,6 +21,8 @@ Circuit simulation is a useful tool for prototyping and testing circuit designs.
 
 There are a few circuit simulation languages, **but SPICE (and it's variants), seems to be the most well-known and well used**. Many manufacturers release free SPICE models of their components so you can quickly and easily use them in your simulation. If a specific simulation model for the component does not exist, you can either write you own (SPICE is a simple language that can easily be written in a text editor), or fall back to using a generic SPICE model for the particular type of component you are using. Note that although SPICE is powerful, it cannot do PCB circuit analysis, that is, it cannot simulate the effect of having the circuit routed onto a PCB (which brings into play noise issues, stray inductances/capacitances e.t.c). This requires very powerful software, and I have personally never done this before.
 
+See the [How To Use Micro-Cap page](/electronics/general/circuit-simulation/how-to-use-micro-cap/) for a tutorial on one of my favourite SPICE simulation programs!
+
 ## A Comparison of Popular Circuit Simulation Software
 
 ### Altium

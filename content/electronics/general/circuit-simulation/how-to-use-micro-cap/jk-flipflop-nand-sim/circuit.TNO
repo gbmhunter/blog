@@ -1,0 +1,94 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                      Transient Analysis of circuit                       ***
+***                          16/04/2023 7:38:20 pm                           ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           6u
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Digital States
+=================================
+Node     State Node     State Node     State Node     State Node     State
+J        0     NQ       X     NR       1     Q        X     NS       1    
+CLK      0     K        0    
+
+Interpolated Waveform Values
+============================
+           T d(J) d(K) d(CLK) d(nR) d(nS) d(Q) d(nQ)
+      (Secs)                                        
+   0.000E+00    0    0      0     1     1    X     X
+   1.200E-07    0    0      0     1     1    X     X
+   2.400E-07    0    0      0     1     1    X     X
+   3.600E-07    0    0      0     1     1    X     X
+   4.800E-07    0    0      0     1     1    X     X
+   6.000E-07    0    0      1     1     1    X     X
+   7.200E-07    0    0      1     1     1    X     X
+   8.400E-07    0    0      1     1     1    X     X
+   9.600E-07    0    0      1     1     1    X     X
+   1.080E-06    0    0      0     1     1    X     X
+   1.200E-06    0    0      0     1     1    X     X
+   1.320E-06    0    0      0     1     1    X     X
+   1.440E-06    1    0      0     1     1    X     X
+   1.560E-06    1    0      1     X     1    X     X
+   1.680E-06    0    0      1     1     1    X     X
+   1.800E-06    0    0      1     1     1    X     X
+   1.920E-06    0    0      1     1     1    X     X
+   2.040E-06    0    0      0     1     1    X     X
+   2.160E-06    0    0      0     1     1    X     X
+   2.280E-06    0    0      0     1     1    X     X
+   2.400E-06    0    1      0     1     1    X     X
+   2.520E-06    0    1      1     1     X    X     X
+   2.640E-06    0    0      1     1     1    X     X
+   2.760E-06    0    0      1     1     1    X     X
+   2.880E-06    0    0      1     1     1    X     X
+   3.000E-06    0    0      0     1     1    X     X
+   3.120E-06    0    0      0     1     1    X     X
+   3.240E-06    0    0      0     1     1    X     X
+   3.360E-06    0    0      0     1     1    X     X
+   3.480E-06    1    0      0     1     1    X     X
+   3.600E-06    0    0      1     X     1    X     X
+   3.720E-06    0    1      1     1     X    X     X
+   3.840E-06    0    0      1     1     1    X     X
+   3.960E-06    0    0      1     1     1    X     X
+   4.080E-06    0    0      0     1     1    X     X
+   4.200E-06    0    0      0     1     1    X     X
+   4.320E-06    0    0      0     1     1    X     X
+   4.440E-06    1    1      0     1     1    X     X
+   4.560E-06    1    1      1     X     X    X     X
+   4.680E-06    1    1      1     X     X    X     X
+   4.800E-06    1    1      1     X     X    X     X
+   4.920E-06    1    1      1     X     X    X     X
+   5.040E-06    1    1      0     1     1    X     X
+   5.160E-06    0    0      0     1     1    X     X
+   5.280E-06    0    0      0     1     1    X     X
+   5.400E-06    0    0      0     1     1    X     X
+   5.520E-06    0    0      1     1     1    X     X
+   5.640E-06    0    0      1     1     1    X     X
+   5.760E-06    0    0      1     1     1    X     X
+   5.880E-06    0    0      1     1     1    X     X
+   6.000E-06    0    0      0     1     1    X     X
+

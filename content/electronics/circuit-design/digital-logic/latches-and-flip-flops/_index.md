@@ -15,10 +15,12 @@ A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit 
 
 The typical distinction between latch and a flip-flop is:
 
-* Latches are not generally level-triggered or edge-triggered (a.k.a. _asynchronous_)
-* Flip-flops are generally level-triggered edge-triggered (a.k.a. _synchronous_, _clocked_).
+* Latches are not provided a clock-signal, and they act immediately when their inputs change. Latches are said to be _asynchronous_.
+* Flip-flops are fed a clock-signal, and they store information when either the clock is at a particular level (level-triggered) or on the transition of the clock signal between states (edge-triggered). Flip-flops are said to be _synchronous_ or _clocked_.
 
 There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
+
+Another thing not helping the confusion is that a "D latch" has an enable input (`E`). This could be easily fed from a clock signal and become a level-triggered flip-flop. So it all depends on who you ask. I'll try to stick to the commonly used term (either latch or flip-flop), when describing the below circuits.
 
 {{% tip %}}
 Latches and flip-flops can store information, but they are not typically used when one generally thinks of computer "memory", i.e. hard drives, solid-state drives or RAM. They use entirely different ways of storing information. Hard drives use magnetism to store non-volatile information, while solid-state drives and RAM use "floating gate" MOSFETs to store information.
@@ -26,9 +28,9 @@ Latches and flip-flops can store information, but they are not typically used wh
 
 ## Latches
 
-**Latches are level-triggered circuits which can retain memory.** When a latch passes the input through to the output, we say it is _transparent_. When the input is blocked from passing through to the output (i.e. in input has no effect) we say the latch is _opaque_.
+**Latches are asynchronous (no clock) circuits which can retain memory.** Latches can have an enable input, which blurs the line between what is a latch and what is a flip-flop (if the enable line was driven from a clock, it would become a level-triggered flip-flop). For latches that have an enable input, when a latch passes the input through to the output, we say it is _transparent_. When the input is blocked from passing through to the output (i.e. in input has no effect) we say the latch is _opaque_.
 
-Most latches are built from two identical cross-coupled inverting logic gates, e.g. two NOR gates or two NAND gates. 
+Most latches are built from **two identical cross-coupled inverting logic gates**, e.g. two NOR gates or two NAND gates. 
 
 ### SR Latches
 
@@ -114,8 +116,8 @@ You might wonder what the purpose of `\(\bar{Q}\)` is, given it's always the opp
 
 #### How Does An SR Latch Work?
 
-. **`\(R\)` is `HIGH` and `\(S\)` is `LOW`:** Since `\(R\)` is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with `\(S\)` which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if `\(R\)` is then brought LOW. This gives the SR latch it's memory.
-. **`\(R\)` is `LOW` and `\(S\)` is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. `\(Q\)` is `HIGH` and `\(\bar{Q}\)` is `LOW`. Again, if `\(S\)` goes low, the SR latch "remembers" and keeps it's outputs in the same state.
+1. **`\(R\)` is `HIGH` and `\(S\)` is `LOW`:** Since `\(R\)` is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with `\(S\)` which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if `\(R\)` is then brought LOW. This gives the SR latch it's memory.
+1. **`\(R\)` is `LOW` and `\(S\)` is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. `\(Q\)` is `HIGH` and `\(\bar{Q}\)` is `LOW`. Again, if `\(S\)` goes low, the SR latch "remembers" and keeps it's outputs in the same state.
 
 {{% figure src="sr-latch-from-nor-gates-states-red-black.svg" width="800px" caption="(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical \"1\", black logical \"0\"." %}}
 
