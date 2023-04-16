@@ -21,9 +21,9 @@ As of April 2023, the SpectrumSoft website is down. You can still find the downl
 
 ### Micro-Cap 12 Locally-Cached Downloads
 
-In case the download links disappear elsewhere, I have saved the Micro-Cap v12.2.5 files locally for download. All files are in English. The links are below:
+In case the download links disappear elsewhere, I have saved the Micro-Cap v12.2.5 installer files locally for download. All files are in English. The links are below:
 
-* Version: 12.2.0.5
+* Version: `12.2.0.5`
 * Full CD: [mc12cd.zip (58MB)](micro-cap-12-installer/mc12cd.zip)
 * Executable only: [mc12.zip (16MB)](micro-cap-12-installer/mc12.zip)
 * Date: 2021-06-17
