@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**.
+A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**. This page assumes a working knowledge of digital gates such as AND gates, OR gates, e.t.c. See the [Gates page](/electronics/circuit-design/digital-logic/gates/) if you want to get up to speed on those first!
 
 The typical distinction between latch and a flip-flop is:
 
@@ -125,7 +125,7 @@ You might wonder what the purpose of `\(\bar{Q}\)` is, given it's always the opp
 
 A _D Latch_ is like a SR latch except extra circuitry is added so that instead of and set and reset input, you obtain a single input to set or reset (`\(D\)`), and an enable line `(\(E\))`. This is generally a more practical type of latch as it can store the arbitrary state of a single line when told to do so by the enable input.
 
-As the below diagram shows, a D latch is essentially a SR latch but with extra NAND gates and a inverter added to the front. The NAND gates "gate" the data line by anding it with the enable, such as that when the enable line is 0, no signal gets through. The inverter acts to remove the need to separate "set" and "reset" lines of a traditional SR latch by providing the two signals from one input.
+As the below diagram shows, a D latch is essentially a SR latch but with extra NAND gates and a inverter added to the front. The NAND gates "gate" the data line by anding it with the enable, such as that when the enable line is `0`, no signal gets through. The inverter acts to remove the need to separate "set" and "reset" lines of a traditional SR latch by providing the two signals from one input.
 
 {{% figure src="d-latch-from-nand-gates.png" width="700px" caption="A D latch made from NAND gates and an inverter." %}}
 
@@ -153,16 +153,16 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
 
 ## Flip-Flops
 
-_Flip-flops_ are like latches, except their inputs are gated by an enable or clock signal which only allows transitions during particular states. You can further separate flip-flops into two categories:
+_Flip-flops_ are like latches, except their inputs are designed to accompanied with a clock signal, and they only allows transitions during particular clock states. You can further separate flip-flops into two categories:
 
-* Level-triggered flip-flops allow state transitions when the enable or clock signal is in a particular state (e.g. when it is `1`).
-* Edge-triggered flip-flops only allow state transitions for a very brief period during the transition of the clock pulse (the clock edge).
+* **Level-triggered flip-flops** allow state transitions when the enable or clock signal is in a particular state (e.g. when it is `1`).
+* **Edge-triggered flip-flops** only allow state transitions for a very brief period during the transition of the clock pulse (the clock edge).
 
 ### Edge Detection
 
-The key feature about a flip-flop is edge-triggered nature of them vs. latched. So how do you design a flip-flop to only do something on the edges of the clock signal? **One very simple way is a circuit made from an inverter and an AND gate**, and exploits the non-zero propagation delay time through the inverter. When the input changes from a 0 to a 1, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output 1. This enables the latch for a very brief amount of time during the positive edge transition.
+The key feature about some flip-flops is that they are edge-triggered rather than level-triggered. So how do you design a flip-flop to only do something on the edges of the clock signal? **One very simple way is a circuit made from an inverter and an AND gate**, and exploits the non-zero propagation delay time through the inverter. When the input changes from a `0` to a `1`, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output `1`. This enables the latch for a very brief amount of time during the positive edge transition.
 
-The is the basic schematic:
+This is the basic schematic:
 
 {{% figure src="edge-detection-using-and-inverter.png" width="500px" caption="Simple edge detection circuit made with an inverter and AND gate." %}}
 
@@ -188,10 +188,9 @@ The resulting transient analysis is:
 {{% figure src="edge-detection-using-and-inverter-sim/transient-analysis.png" width="900px" %}}
 
 The Micro-Cap circuit file used to perform this simulation can be downloaded [here](edge-detection-using-and-inverter-sim/circuit.cir).
-
 </div>
 
-The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There is a better way to do it.
+The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There is a better way to do it, which will do when we introduce the D-type flip-flop with more NAND gates.
 
 ### D-Type Flip-Flops
 
