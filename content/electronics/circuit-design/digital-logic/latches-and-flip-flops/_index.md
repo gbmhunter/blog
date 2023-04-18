@@ -394,6 +394,16 @@ Explanation of behaviour:
 
 </div>
 
+## Circuits Built From Flip-Flops
+
+### Toggle Flip-Flop
+
+A toggle flip-flop can be made from an edge-triggered D-type flip-flop with it's `nQ` connected to it's `D`. The input signal is fed to the `CLK`.
+
+{{% figure src="toggle-flipflop-made-from-edge-triggered-d-type.png" width="800px" caption="A toggle flip-flop made from an edge-triggered D-type flip-flop with it's nQ output connected to it's D input. The input signal is fed to it's CLK." %}}
+
+As you can see from the above timing diagram, the output toggles between high and low on every positive clock edge. This also can be considered a _divide-by-two_ device (i.e. the output signal is half the frequency of the input), and is the basis for many digital counters[^bib-learnaboutelectronics-d-type-flip-flops].
+
 ## References
 
 [^bib-eforu-flipflops]: ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
@@ -403,3 +413,4 @@ Explanation of behaviour:
 [^bib-ti-sn7474-ds]: Texas Instruments (1988, March). _SN5474, SN54LS74A, SN54S74, SN7474, SN74LS74A, SN74S74 - Dual D-Type Positive-Edge Triggered Flip-Flops With Preset And Clear_. Retrieved 2023-04-12 from https://www.ti.com/lit/ds/symlink/sn54ls74a-sp.pdf.
 [^bib-byju-sr-flip-flop]: Priyanshu Vaish (2022, Aug 26). _SR Flip-Flop: What is SR Flip-Flop Truth Table?_. Byju's Exam Prep. Retrieved 2023-04-14, from https://byjusexamprep.com/sr-flip-flop-truth-table-i.
 [^electronics-tutorials-jk-flip-flop]: Electronics Tutorials. _The JK Flip Flop_. Retrieved 2023-04-14, from https://www.electronics-tutorials.ws/sequential/seq_2.html.
+[^bib-learnaboutelectronics-d-type-flip-flops]: Eric Coates (2020, 29th Dec). _Module 5.3: D Type Flip-flops_. Learn about electronics. Retrieved 2023-04-18, from https://learnabout-electronics.org/Digital/dig53.php.
