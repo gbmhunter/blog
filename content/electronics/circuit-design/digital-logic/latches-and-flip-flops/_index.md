@@ -313,9 +313,12 @@ The four triangles pointing towards each other are transmission gates (TGs), nor
 
 The partial part number `74HC74` is a dual D-type CMOS positive-edge triggered flip-flop with set and reset. It has balanced propagation delays. Orderable variants include the Nexperia [74HC74D](https://assets.nexperia.com/documents/data-sheet/74HC_HCT74.pdf) and Toshiba [74HC74D](https://toshiba.semicon-storage.com/info/74HC74D_datasheet_en_20201117.pdf?did=37138&prodName=74HC74D).
 
+Going from the `74` above to the `174` gives you an Hex (6 units) D-type flip-flop IC with reset. It has a shared `CLK` and reset line. One such example is the [Texas Instruments CD74HC174](https://www.ti.com/lit/ds/symlink/cd74hc174.pdf).
+
 The partial part number `LS734` is used for an 8-channel (octal) edge-triggered D-type flip-flop IC. The Texas Instruments [74LS373](https://www.ti.com/lit/ds/symlink/sn54ls373-sp.pdf) is one such example.
 
 {{% figure src="ti-ls374-octal-edge-triggered-d-flip-flop-ic-logic-diagram.png" width="300px" caption="Logic diagram of the Texas Instruments 74LS373 Edge-Triggered D-type Flip-flop IC[^bib-ti-ls374-ds]." %}}
+
 
 #### Triggering
 
@@ -402,7 +405,7 @@ A toggle flip-flop can be made from an edge-triggered D-type flip-flop with it's
 
 {{% figure src="toggle-flipflop-made-from-edge-triggered-d-type.png" width="800px" caption="A toggle flip-flop made from an edge-triggered D-type flip-flop with it's nQ output connected to it's D input. The input signal is fed to it's CLK." %}}
 
-As you can see from the above timing diagram, the output toggles between high and low on every positive clock edge. This also can be considered a _divide-by-two_ device (i.e. the output signal is half the frequency of the input), and is the basis for many digital counters[^bib-learnaboutelectronics-d-type-flip-flops].
+As you can see from the above timing diagram, the output toggles between high and low on every positive clock edge. This also can be considered a _divide-by-two_ device (i.e. the output signal is half the frequency of the input), and is the basis for many digital counters[^bib-learnaboutelectronics-d-type-flip-flops]. Many of these could be connected in series, with the output of the first (`Q`) being connected to the input of the second (`CLK`). This would form a simple n-bit digital counter where n is the number of flip-flops in series.
 
 ## References
 
