@@ -1,0 +1,81 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
+date: 2015-03-25
+draft: false
+lastmod: 2023-04-21
+tags: [ analogue, analog, switches, crosstalk, power consumption, CMOS, MOSFETs, ADC, resistance, substrate, transmission gates, TGs, flip-flops, latches, I2C ]
+title: Analogue Switches (Transmission Gates)
+type: page
+---
+
+## Overview
+
+Analogue switches are electrical circuits which connect and disconnect analogue signals. When used in digital circuits (e.g. [flip-flops](/electronics/circuit-design/digital-logic/latches-and-flip-flops/)) the same circuit made below from MOSFETs is normally called a _transmission gate_.
+
+They are also useful for certain digital signals which have analogue characteristics. An example would be the [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/). Although driven low (with sharp edges), the I2C bus lines are pulled high, causing the voltage to rise in a exponential fashion. Digital switches would turn this into a sharp rise, once the voltage reached a certain threshold. Analogue switches will let the waveform through unchanged, resulting in proper I2C operation.
+
+When one analogue signal can be routed to many different locations, it is called an analogue multiplexor. These are discussed on the [Multiplexers And Demultiplexers page](/electronics/components/multiplexers-and-demultiplexers/).
+
+## How Do Analogue Switches Work?
+
+CMOS ([MOSFETs](/electronics/components/transistors/mosfets/)) is the most popular IC process to make analogue switches from, however [JFETs](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/) are used for special applications such as video switching due to the high bandwidth and signal quality requirements of the signal[^bib-ad-analog-switch-multiplexers-basics].
+
+{{% figure src="analog-switch-circuit-two-mosfets.svg" width="600px" caption="Circuit diagram of a basic CMOS analogue switch, using one P-channel MOSFET (`\(Q1\)`) and one N-channel MOSFET (`\(Q2\)`)." %}}
+
+{{% warning %}}
+The substrates of the two MOSFETS in the diagram above are not connected to the source pin, as they typically are for all discrete MOSFETs. Instead they are connected to `\(V_{SS}\)` (e.g. `\(GND\)`) and `\(V_{DD}\)` respectively. They have to be for this circuit to work correctly, otherwise the inherent body diode would forward conduct and the switch would never be able to turn off. For this reason, you cannot make an analogue switch as shown from typical discrete MOSFETs. See the [MOSFETs page](/electronics/components/transistors/mosfets/#_the_substrate_body_connection) for more info.
+{{% /warning %}}
+
+When the analogue switch is turned on, the resistance of each MOSFET depends on the analogue switch voltage. At low voltages, the N-channel MOSFETs resistance is very low and conducts most of the current. As the voltage rises, the P-channel MOSFETs resistance decreases whilst the N-channel increases, at the P-channel conducts most of the current. The graph below shows the resistance of each individual MOSFET, as well as the combined resistance seen by an external circuit. The combined resistance is the parallel resistance of both the N-channel and P-channel MOSFET.
+
+{{% figure src="analogue-switch-resistance-graph.png" width="600px" caption="Graph of the individual MOSFETs on resistance versus the switch voltage, and the combined on resistance seen by the external circuit (which is both resistances in parallel)." %}}
+
+Notice how the resistance is not relatively constant, but not perfectly linear! This non-linearity can cause signal degradation depending on the input and output impedances of the circuity connected to it. Generally speaking, the on resistance of the analogue switch is not an issue if driven from a suitable "stiff" source, and passed through to a high-impedance input such as an ADC (assuming you allow for enough settling time, the input capacitance of the ADC will form a low-pass RC circuit with the switch resistance). 
+
+## Transmission Gates
+
+A _transmission gate_ (which can be abbreviated to just _TG_) is used to describe the **same MOSFET-in-parallel circuit** as the analog switch above, but when **used in a digital context**. It is commonly used in the design of [latches and flip-flops](/electronics/circuit-design/digital-logic/latches-and-flip-flops/).
+
+When showing a transmission gate on a schematic, it is almost **never drawn showing discrete MOSFETs**. It is usually simplified in the form of a "single bow tie" or "double bow tie" symbol, as shown below. Sometimes, simplified MOSFET symbols are shown, in where no arrows are used to indicate NMOS from PMOS, but rather a "inverting bubble" is added to the gate of the PMOS MOSFET. 
+
+{{% figure src="transmission-gate-symbols.png" width="900px" caption="Various schematic symbols used for transmission gates (the same thing as an analogue switch but used for digital signals)." %}}
+
+`\(CLK\)` is the gate of the N-channel MOSFET, `\(\overline{CLK}\)` the gate of the P-channel. `\(A\)` and `\(B\)` are the two sides of the transmission gate.
+
+Notice how the clock signal `\(CLK\)` and it's inverse `\(\overline{CLK}\)` are provided to the gates. This will enable the transmission gate when the clock is HIGH, and disable it when LOW. If you swap `\(CLK\)` and `\(\overline{CLK}\)` you will invert the logic and instead enable the transmission gate when the clock is LOW. The clock signal is the most common signal provided to turn the transmission gate on and off. 
+
+To show a real-world use case for a transmission gate, this is the logic diagram for the Nexperia `74HC74` dual D-type flip-flop IC[^bib-nexperia-74hc74-ds]:
+
+{{% figure src="nexperia-74hc74-d-flip-flop-logic-diagram.png" width="700px" caption="Logic diagram for 1 of the positive-edge triggered D-type flip-flops in the Nexperia 74HC74 IC. Note the complexity![^bib-nexperia-74hc74-ds]" %}}
+
+## Crosstalk
+
+For analog switch ICs with more than one switch, the amount of channel-to-channel crosstalk becomes an important metric.
+
+## Switching Speeds
+
+For switches with more than one pole, the IC manufacturers usually make sure there is a specified "break-before-make" period.
+
+## Power Consumption
+
+The following values are considered a low-power switch:
+
+* Iq = 25nA (typ), 40nA (max)
+* Ileakage = 5nA (typ), 90nA (max)
+
+## Examples
+
+### Intersil ISL43L410
+
+The Intersil ISL43L410 is a low on-resistance, low-voltage single-supply, DPDT analogue switch. One of its main selling points is it's low power consumption with an `\(I_q = 25nA\)` (typ) and `\(40nA\)` (max). Leakage current is `\(I_{leakage} = 5nA\)` (typ), `\(90nA\)` (max).
+
+{{% figure src="intersil-isl43l410-analogue-switch-functional-diagram.png" width="250px" caption="Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." %}}
+
+This IC has the nice feature that the common net can be disconnected from both NC and NO at the same time. However, both switches cannot be switched from NC to NO independently, which might be a deal-breaker for some designs.
+
+## References
+
+[^bib-ad-analog-switch-multiplexers-basics]: Analog Devices (2008, Oct.). _MT-088: Analog Switches and Multiplexers Basics_. Retrieved 2021-09-01, from https://www.analog.com/media/en/training-seminars/tutorials/MT-088.pdf.
+[^bib-wikipedia-transmission-gate]: Wikipedia (2022, July 9). _Transmission gate_. Retrieved 2023-04-21, from https://en.wikipedia.org/wiki/Transmission_gate.
+[^bib-nexperia-74hc74-ds]: Nexperia (2023, Feb 9). _74HC74; 74HCT74 - Dual D-type flip-flop with set and reset; positive edge-trigger_. Retrieved 2023-04-11 from https://assets.nexperia.com/documents/data-sheet/74HC_HCT74.pdf.

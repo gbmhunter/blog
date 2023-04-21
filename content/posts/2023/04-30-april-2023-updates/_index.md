@@ -13,4 +13,6 @@ type: post
 
 * Converted the Digital Logic page from Asciidoc to Markdown.
 
-* Added more info on latches and flip-flops, including.
+* Added more info on [latches and flip-flops](/electronics/circuit-design/digital-logic/latches-and-flip-flops/), including more schematics, info on D-type and JK flip-flops and Micro-Cap simulations.
+
+* Added info on [transmission gates](/electronics/components/analogue-switches-transmission-gates/#transmission-gates).
