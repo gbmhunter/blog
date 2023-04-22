@@ -151,6 +151,12 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
 
 {{% figure src="d-latch-from-nand-gates-simplified.png" width="700px" caption="A simplified D latch without an inverter." %}}
 
+You can also make a D latch with inverters and [transmission gates](/electronics/components/analogue-switches-transmission-gates/). This may result in a lower total transistor count than implements it with NAND gates as above. The below schematic shows one way of doing it:
+
+{{% figure src="d-latch-from-transmission-gates.png" width="500px" caption="A D latch made from transmission gates." %}}
+
+When `\(E\)` is `HIGH`, the lower transmission gate is `ON` and the input `\(D\)` is passed through to the output `\(Q\)` via two inverters. When `\(E\)` is `LOW`, the higher transmission gate is `ON` and the output is fed back to itself via two inverter (hence performing the latching action). The [Texas Instruments CD4042B](https://www.ti.com/lit/ds/symlink/cd4042b.pdf) uses a similar technique to implement it's D latches[^bib-ti-cd4042b-ds].
+
 ## Flip-Flops
 
 _Flip-flops_ are like latches, except their inputs are designed to accompanied with a clock signal, and they only allows transitions during particular clock states. You can further separate flip-flops into two categories:
@@ -397,7 +403,11 @@ Explanation of behaviour:
 
 </div>
 
-## Circuits Built From Flip-Flops
+## Metastability
+
+TODO: Add info.
+
+## Circuits Built From Latches And Flip-Flops
 
 ### Toggle Flip-Flop
 
@@ -417,3 +427,4 @@ As you can see from the above timing diagram, the output toggles between high an
 [^bib-byju-sr-flip-flop]: Priyanshu Vaish (2022, Aug 26). _SR Flip-Flop: What is SR Flip-Flop Truth Table?_. Byju's Exam Prep. Retrieved 2023-04-14, from https://byjusexamprep.com/sr-flip-flop-truth-table-i.
 [^electronics-tutorials-jk-flip-flop]: Electronics Tutorials. _The JK Flip Flop_. Retrieved 2023-04-14, from https://www.electronics-tutorials.ws/sequential/seq_2.html.
 [^bib-learnaboutelectronics-d-type-flip-flops]: Eric Coates (2020, 29th Dec). _Module 5.3: D Type Flip-flops_. Learn about electronics. Retrieved 2023-04-18, from https://learnabout-electronics.org/Digital/dig53.php.
+[^bib-ti-cd4042b-ds]: Texas Instruments (2003, Oct). _CD4042B Types: CMOS Quad Clocked "D" Latch_. Retrieved 2023-04-22, from https://www.ti.com/lit/ds/symlink/cd4042b.pdf. 
