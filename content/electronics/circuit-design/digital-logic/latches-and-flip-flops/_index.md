@@ -405,6 +405,8 @@ Explanation of behaviour:
 
 ## Timing Requirements
 
+### Setup and Hold Times
+
 Synchronous flip-flops have timing requirements that must be obeyed. The two main requirements are:
 
 * **Setup time `\(t_S\)`:** This is the time that the data line must be stable for BEFORE the edge of the clock signal.
@@ -420,6 +422,20 @@ What do violating signals look like? Violating signals is when the data signal c
 
 {{% figure src="setup-and-hold-time-diagram-with-violation-examples.png" width="800px" caption="Diagram illustrating the concept of setup and hold times, and showing 3 different data signals, one which is just ok, one which violates the setup time requirement and one which violates the hold time requirement." %}}
 
+### Recovery and Removal Times
+
+A similar but different concept to setup and hold times are _recovery_ and _removal_ times. Recovery and removal times are terms used to describe the **timing requirements for edge-triggered logic for when asynchronous inputs (like set and reset) are de-asserted and the next clock edge**[^bib-vlsi-universe-recovery-and-removal-checks].
+
+When set or reset are ASSERTED, there are no timing requirements since the action is asynchronous. The output of the flip-flop will get set or reset independent of the clock. However, when the set or reset is DE-ASSERTED, it's **not until the next clock edge that the flip-flop removes itself from the effects of set/reset and it's output `\(Q\)` begins to follow `\(D\)` again**. This is where the recovery and removal time requirements come into play:
+
+* **Recovery time:** The amount of time that the set/clear must stay de-asserted for BEFORE the clock edge.
+* **Removal time:** The amount of time that the set/clear must stay de-asserted for AFTER the clock edge.
+
+If both of these requirements are met, the flip-flop is guaranteed to come out of set or reset on that clock edge. If not, the flip-flop may encounter metastability.
+
+{{% tip %}}
+Recovery and removal time have very similar definitions to setup and hold times, but are applied to the de-assertion of signals to asynchronous inputs like set and reset.
+{{% /tip %}}
 
 
 ## Metastability
@@ -463,3 +479,4 @@ As you can see from the above timing diagram, the output toggles between high an
 [^bib-ti-cd4042b-ds]: Texas Instruments (2003, Oct). _CD4042B Types: CMOS Quad Clocked "D" Latch_. Retrieved 2023-04-22, from https://www.ti.com/lit/ds/symlink/cd4042b.pdf. 
 [^bib-wikipedia-metastability]: Wikipedia (2022, Nov 2). _Metastability (electronics)_. Retrieved 2023-04-23, from https://en.wikipedia.org/wiki/Metastability_(electronics).
 [^bib-ran-ginosar-metastability-and-synchronizers]: Ran Ginosar (2011, Oct). _Metastability and Synchronizers: A Tutorial_. IEEE CS/CASS. Retrieved 2023-04-23, from https://webee.technion.ac.il/~ran/papers/Metastability-and-Synchronizers.IEEEDToct2011.pdf.
+[^bib-vlsi-universe-recovery-and-removal-checks]: VLSI Universe. _Recovery and removal checks_. Retrieved 2023-04-24, from https://vlsiuniverse.blogspot.com/2017/04/recovery-and-removal-checks.html.
