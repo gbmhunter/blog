@@ -403,9 +403,27 @@ Explanation of behaviour:
 
 </div>
 
-## Metastability
+## Timing Conditions
 
 TODO: Add info.
+
+## Metastability
+
+_Metastability_ is the problem when digital logic persists for some unbounded amount of time in an invalid state. Metastability can cause glitches, the entirely wrong state, or invalid logic levels to propagate through digital logic systems.
+
+> Metastability can arise whenever a signal is sampled close to a transition, leading to indecision as to its correct value. -- Montek Singh (UNC Chapel Hill) and Luciano Lavagno (Politecnico di Torino)[^bib-ran-ginosar-metastability-and-synchronizers].
+
+Metastability can occur under the following conditions:
+
+* Digital circuits like edge-triggered D-type flip-flops require the input to be stable for some period before the clock edge (setup time) and some time after the clock edge (hold time) before it is allowed to change. If the input violates these timing conditions the flip-flop may encounter metastability.
+* Asynchronous inputs arriving into a synchronous system. In this situation, you cannot totally eliminate the chance of metastability. The best you can do is to add synchronizers to the inputs to make the probability of metastability acceptably small[^bib-wikipedia-metastability].
+* When transferring data between two or more different clock domains (groups of circuitry running off different clocks).
+
+{{% tip %}}
+One way to think about the flip-flop setup and hold times is that the flip-flop always has to decide what changed first, the input or the clock signal. The setup and hold makes it obvious to the flip-flop that the input changed before the clock signal. However, if you violate these rules, and the input and clock changes get closer and closer together, it get's harder and harder for the flip-flop to determine what happened first. This makes it more and more likely that the flip-flop will have trouble determining the output and metastability will likely occur.
+{{% /tip %}}
+
+Another key principle is that metastability occurs for an unbounded amount of time. That's another way of saying there is no known upper limit to how long the metastability will take to resolve itself. You might think that this is very bad for any type of circuit. The good news is that the probability of the metastability occurring for longer and longer period falls with an exponential decay.
 
 ## Circuits Built From Latches And Flip-Flops
 
@@ -428,3 +446,5 @@ As you can see from the above timing diagram, the output toggles between high an
 [^electronics-tutorials-jk-flip-flop]: Electronics Tutorials. _The JK Flip Flop_. Retrieved 2023-04-14, from https://www.electronics-tutorials.ws/sequential/seq_2.html.
 [^bib-learnaboutelectronics-d-type-flip-flops]: Eric Coates (2020, 29th Dec). _Module 5.3: D Type Flip-flops_. Learn about electronics. Retrieved 2023-04-18, from https://learnabout-electronics.org/Digital/dig53.php.
 [^bib-ti-cd4042b-ds]: Texas Instruments (2003, Oct). _CD4042B Types: CMOS Quad Clocked "D" Latch_. Retrieved 2023-04-22, from https://www.ti.com/lit/ds/symlink/cd4042b.pdf. 
+[^bib-wikipedia-metastability]: Wikipedia (2022, Nov 2). _Metastability (electronics)_. Retrieved 2023-04-23, from https://en.wikipedia.org/wiki/Metastability_(electronics).
+[^bib-ran-ginosar-metastability-and-synchronizers]: Ran Ginosar (2011, Oct). _Metastability and Synchronizers: A Tutorial_. IEEE CS/CASS. Retrieved 2023-04-23, from https://webee.technion.ac.il/~ran/papers/Metastability-and-Synchronizers.IEEEDToct2011.pdf.
