@@ -410,9 +410,17 @@ Synchronous flip-flops have timing requirements that must be obeyed. The two mai
 * **Setup time `\(t_S\)`:** This is the time that the data line must be stable for BEFORE the edge of the clock signal.
 * **Hold time `\(t_H\)`:** This is the time that the data line must be stable for AFTER the edge of the clock signal.
 
-{{% figure src="setup-and-hold-time-diagram.png" width="800px" caption="Diagram illustrating the concept of setup and hold times, and showing 3 different data signals, one which is just ok, one which violates the setup time requirement and one which violates the hold time requirement." %}}
+The below diagram shows this concept, assuming the logic is triggered on the positive-edge of the clock signal.
+
+{{% figure src="setup-and-hold-time-diagram.png" width="500px" caption="Diagram showing how the setup and hold time are defined." %}}
 
 The edges of the signals have been drawn at a diagonal to illustrate that the signals do not instantly change state, and that the setup and hold times are defined from when the signal voltage passes through the half-way point between `LOW` and `HIGH`. In reality, the edges may not be straight lines but feature somewhat of an exponential curve due to capacitance.
+
+What do violating signals look like? Violating signals is when the data signal changes state in the setup or hold period, as illustrated in the diagram below.
+
+{{% figure src="setup-and-hold-time-diagram-with-violation-examples.png" width="800px" caption="Diagram illustrating the concept of setup and hold times, and showing 3 different data signals, one which is just ok, one which violates the setup time requirement and one which violates the hold time requirement." %}}
+
+
 
 ## Metastability
 
