@@ -267,6 +267,13 @@ The inputs of TTL logic are the emitters of BJTs.
 
 Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivalents. The `T` in the logic subfamily name signifies the parts have TTL-compatible inputs.
 
+#### CMOS Inverter with Tri-state
+
+A useful building block for digital logic is a CMOS inverter whose output can also be tri-stated. The obvious way to do this would be connect the output of a regular inverter to a transmission gate, as shown in `(a)` in the figure below. But these MOSFETs can be recombined to make a single "totem-pole" stack which provides the same functionality, as shown in `(b)`[^bib-utah-digital-vlsi-lab-ass-3]. In `(b)`, the N-channel MOSFET of the transmission gate it connected in series with the N-channel MOSFET of the inverter on the lower leg. Likewise for the P-channel MOSFETs. This circuit is sometimes simplified to the symbol shown in `(c)`.
+
+{{% figure src="tristate-inverter.png" width="900px" caption="Diagram showing how a tri-state converter can be made by combining the MOSFETs from a inverter and transmission gate into a single \"totem pole\" arrangement." %}}
+
+
 ### Comparison
 
 <table>
@@ -592,3 +599,4 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 [^bib-maxim-xor-definition]:  Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
 [^bib-spin-num-logic-gates]:  McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
 [^bib-wp-list-logic-sym]:  Wikipedia (2005, Aug 20). _List of logic symbols_. Retrieved 2021-10-25, from https://en.wikipedia.org/wiki/List_of_logic_symbols.
+[^bib-utah-digital-vlsi-lab-ass-3]: University of Utah: John and Marcia Price College of Engineering. _ECE/CS 5710/6710 – Digital VLSI Design: Lab Assignment #3_. Retrieved 2023-04-24, from https://my.eng.utah.edu/~kstevens/5710/lab3.pdf.

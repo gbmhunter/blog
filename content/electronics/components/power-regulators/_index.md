@@ -1,16 +1,20 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2012-08-20
 draft: false
-lastmod: 2019-02-28
-tags: [ "power", "regulator", "linear", "buck", "boost", "DC/DC", "converter", "topology", "SEPIC", "current sharing" ]
-title: "Power Regulators"
+lastmod: 2023-04-24
+tags: [ power, regulator, linear, buck, boost, DC/DC, converter, topology, SEPIC, current sharing ]
+title: Power Regulators
 type: page
 ---
 
 ## Overview
 
-Power regulators aim to convert an input DC voltage into a DC output voltage. There are many different ways of doing this, an each design has its benefits and advantages. The important parameters of DC/DC converters are efficiency, output ripple, complexity, and maximum output current.
+Power regulators aim to **convert input voltages and currents into different output voltages and currents**. There are many different ways of doing this, an each design has its benefits and advantages. The important parameters of all types of power regulators are efficiency, power levels, versatility, accuracy, noise, size and complexity.
+
+If you want to drop low-to-medium voltage DC (3-60V) down to a lower DC voltage, and you don't require large currents (<1A), can dissipate a large amount of heat easily or want low-noise voltage rails, look at the [Linear Regulators page](linear-regulators/). If you want to do the same thing but do want large currents and/or want it to be efficient, or are wanting to increase the voltage, have a look at the [Switch-Mode Power Supplies (SMPS) page](switch-mode-power-supplies-smps/). If you also need isolation, have a look at the [Isolated Switch-Mode Power Supplies page](isolated-switch-mode-power-supplies/).
+
+If you want to increase the voltage and have really low current requirements, [Charge Pumps](charge-pumps/) might be what you're after. If you want to convert 110-240VAC mains straight down to 3-24V low-voltage DC, have a look at the [Off-line Switchers page](off-line-switchers/).
 
 ## Terminology
 
@@ -209,14 +213,6 @@ The efficiency of DC/DC converters can be as high as 96-98%!  You will see a fig
 ### Burst Mode
 
 DC/DC converters can extend their efficient operating current range by enabling the converter to operate in what is called a "burst" mode at low currents. When a converter is in this mode, it provides a burst of pulses to power the output until the output voltage climbs over a set threshold, turns off, and doesn't turn back on again until the load voltage drops below a certain threshold. This turns out to be more efficient than continuous mode at low currents, but also **increases the total noise** radiated from the DC/DC converter. Most converters that employ this technique have a way of forcing the converter to stay in fixed frequency mode to reduce noise, which is useful for when powering devices such as GPS ICs.
-
-## AC/DC Converters
-
-Although strictly not a DC/DC converter, you can purchase ready-to-go PCB-mounted AC/DC converter modules that are designed to plug straight into the AC mains (90-270VAC(rms)), and output a DC voltage typically between 3.3 and 24V. Power ratings are typically 1-10W. The one shown below is made by MeanWell.
-
-{{% figure src="meanwell-pm-15-12-acdc-converter-size-comparison-photo.jpg" caption="Size comparison of a Meanwell 15W, 12V AC/DC converter."  width="500px" %}}
-
-The types which are designed to be plugged straight into the wall are called wall-warts. They usually have two-core wire going to a DC jack connector. The wire with the white stripes on it is usually positive.
 
 ## Current Sharing
 

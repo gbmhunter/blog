@@ -403,6 +403,8 @@ Explanation of behaviour:
 
 </div>
 
+### Master-Slave Flip-Flops
+
 ## Timing Requirements
 
 ### Setup and Hold Times
