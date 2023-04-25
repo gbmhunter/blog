@@ -13,14 +13,12 @@ type: "page"
 
 A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. They are are key component in _sequential logic_ (logic which depends not only on the present state on the inputs, but also past information). It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**. This page assumes a working knowledge of digital gates such as AND gates, OR gates, e.t.c. See the [Gates page](/electronics/circuit-design/digital-logic/gates/) if you want to get up to speed on those first!
 
-The typical distinction between latch and a flip-flop is:
+There is a lot of debate on what constitutes a latch vs. a flip-flop. We will adhere to the following definition:
 
-* Latches are not provided a clock-signal, and they act immediately when their inputs change. Latches are said to be _asynchronous_.
-* Flip-flops are fed a clock-signal, and they store information when either the clock is at a particular level (level-triggered) or on the transition of the clock signal between states (edge-triggered). Flip-flops are said to be _synchronous_ or _clocked_.
+* Latches are either completely  _asynchronous_ and they act immediately when their inputs change, or they are _synchronous_ and provided a control signal which gates the latch so that it only acts when the control signal is a certain level (level-triggered) (the control signal called be called a clock). They are never edge-triggered.
+* Flip-flops are fed a clock-signal, and only act the transition of the clock signal between states (edge-triggered). Just like some latches, flip-flops are _synchronous_.
 
 There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
-
-Another thing not helping the confusion is that a "D latch" has an enable input (`E`). This could be easily fed from a clock signal and become a level-triggered flip-flop. So it all depends on who you ask. I'll try to stick to the commonly used term (either latch or flip-flop), when describing the below circuits.
 
 {{% tip %}}
 Latches and flip-flops can store information, but they are not typically used when one generally thinks of computer "memory", i.e. hard drives, solid-state drives or RAM. They use entirely different ways of storing information. Hard drives use magnetism to store non-volatile information, while solid-state drives and RAM use "floating gate" MOSFETs to store information.
@@ -28,7 +26,7 @@ Latches and flip-flops can store information, but they are not typically used wh
 
 ## Latches
 
-**Latches are asynchronous (no clock) circuits which can retain memory.** Latches can have an enable input, which blurs the line between what is a latch and what is a flip-flop (if the enable line was driven from a clock, it would become a level-triggered flip-flop). For latches that have an enable input, when a latch passes the input through to the output, we say it is _transparent_. When the input is blocked from passing through to the output (i.e. in input has no effect) we say the latch is _opaque_.
+**Latches are asynchronous or level-triggered synchronous circuits which can retain memory.** For latches that have an enable input, when a latch passes the input through to the output, we say it is _transparent_. When the input is blocked from passing through to the output (i.e. in input has no effect) we say the latch is _opaque_.
 
 Most latches are built from **two identical cross-coupled inverting logic gates**, e.g. two NOR gates or two NAND gates. 
 
@@ -157,16 +155,61 @@ You can also make a D latch with inverters and [transmission gates](/electronics
 
 When `\(E\)` is `HIGH`, the lower transmission gate is `ON` and the input `\(D\)` is passed through to the output `\(Q\)` via two inverters. When `\(E\)` is `LOW`, the higher transmission gate is `ON` and the output is fed back to itself via two inverter (hence performing the latching action). The [Texas Instruments CD4042B](https://www.ti.com/lit/ds/symlink/cd4042b.pdf) uses a similar technique to implement it's D latches[^bib-ti-cd4042b-ds].
 
+### JK Latch
+
+A JK latch is also known as the gated or clocked SR latch[^bib-byju-sr-flip-flop]. It is a level-triggered device, even though many online tutorials suggest it is edge-triggered. Along with this, many references call this a _JK flip-flop_. Based on the rules we decided on above (latches for asynchronous or level-triggered devices, flip-flops for edge-triggered devices), we are calling this a latch. The schematic symbol is:
+
+{{% figure src="jk-flipflop-symbol.png" width="400px" caption="The schematic symbol for a JK latch." %}}
+
+{{% warning %}}
+The `CLK` input to a JK latch is traditionally drawn with a wedge symbol. The wedge symbol is normally associated with edge-triggered inputs, but the `CLK` input for a JK latch is level-triggered.
+{{% /warning %}}
+
+The letters J and K were chosen by the inventor of the JK latch, Jack Kilby[^electronics-tutorials-jk-flip-flop]. A JK latch can be built with NAND gates with the following circuit:
+
+{{% figure src="jk-flipflop-from-nand-gates.png" width="700px" caption="Circuit showing how to build a JK latch from NAND gates." %}}
+
+<div class="worked-example">
+
+Let's simulate a NAND-based JK latch in Micro-Cap. The schematic is:
+
+{{% figure src="jk-flipflop-nand-sim/schematic.png" width="600px" caption="The simulation schematic for the JK latch." %}}
+
+We have to set up some rather complicated digital stimulus to put the JK flip-flop through it's paces. The simulation text determining these waveforms is:
+
+{{% figure src="jk-flipflop-nand-sim/schematic-sim-text.png" width="300px" caption="The supported simulation \"text\" that goes with the schematic. This defines the waveforms of the 3x digital stimulus and the initial conditions." %}}
+
+Notice also the definition of initial conditions at the bottom (`.IC`). If this was not provided, the states of `Q` and `nQ` would be forever stuck as indeterminate (in Micro-Cap this is represented by an `X` in text or double-lines at `0` and `1` in the waveform views), as the only way for the simulator to determine their state without using themselves (because of feedback) would be if `nR` or `nS` were 0 (because then the indeterminate state of `Q` and `nQ` doesn't matter in determining `Q` and `nQ`, they would just be `1`). However with a `JK` flip-flop we can't set `nR` or `nS` to `0` via the inputs `J` and `K` without also considering the feedback from `Q` and `nQ` in the triple input NAND gates. Hence the circuit gets stuck! In real life, the circuit would settle on either `Q=1` or `Q=0` at start-up due to real-world noise and manufacturing differences in the start-up times of the NAND gates.
+
+Below is the simulated waveforms of the circuit:
+
+{{% figure src="jk-flipflop-nand-sim/transient-analysis.png" width="1000px" caption="Annotated transient analysis of the JK flip-flop." %}}
+
+Explanation of behaviour:
+
+1. To test setting the JK latch `J` is driven high, `K` is driven low whilst `CLK` is low (i.e. not enabled).
+2. `CLK` goes high.
+3. `Q` goes high due to `J` being high whilst `CLK` being high. Flip-flop has been set.
+4. To test resetting the JK flip-flop, `J` is driven low and `J` driven high whilst `CLK` is low (not enabled).
+5. `CLK` goes high.
+6. `Q` gets reset as expected.
+7. Let's set the JK latch again, but this time show how it is not edge-triggered, the state can still be changed whilst the `CLK` is high.
+8. We now bring `J` low and drive `K` high.
+9. The output gets reset half-way through the `CLK` being high.
+10. Lets demonstrate the oscillatory nature than can be caused if both `J` and `K` are high when the `CLK` is high.
+11. The outputs oscillate at a speed determined by the propagation delay of the NAND gates!
+
+</div>
+
 ## Flip-Flops
 
-_Flip-flops_ are like latches, except their inputs are designed to accompanied with a clock signal, and they only allows transitions during particular clock states. You can further separate flip-flops into two categories:
+_Flip-flops_ are like latches, except their inputs are designed to accompanied with a clock signal, and they only change their outputs at clock edges (according to our naming rules we decided upon). Flip-flops typically require more circuitry to achieve the edge-triggered behaviour, but offer more versatility.
 
-* **Level-triggered flip-flops** allow state transitions when the enable or clock signal is in a particular state (e.g. when it is `1`).
-* **Edge-triggered flip-flops** only allow state transitions for a very brief period during the transition of the clock pulse (the clock edge).
+In popular literature, some level-triggered devices are commonly called flip-flops, especially the "JK flip-flop".
 
 ### Edge Detection
 
-The key feature about some flip-flops is that they are edge-triggered rather than level-triggered. So how do you design a flip-flop to only do something on the edges of the clock signal? **One very simple way is a circuit made from an inverter and an AND gate**, and exploits the non-zero propagation delay time through the inverter. When the input changes from a `0` to a `1`, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output `1`. This enables the latch for a very brief amount of time during the positive edge transition.
+The key feature about flip-flops is that they are edge-triggered rather than level-triggered. So how do you design a flip-flop to only do something on the edges of the clock signal? **One very simple way is a circuit made from an inverter and an AND gate**, and exploits the non-zero propagation delay time through the inverter. When the input changes from a `0` to a `1`, the delay through the inverter causes both of the inputs to go high for a brief amount of time, which makes the output `1`. This enables the latch for a very brief amount of time during the positive edge transition.
 
 This is the basic schematic:
 
@@ -218,9 +261,25 @@ We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-trigge
 
 D-type flip-flops are used for counters, shift-registers and input synchronization.
 
+#### Master-Slave D Flip-Flop
+
+Master-slave flip-flops are a **another way of creating edge-triggered flip-flops from either level-triggered latches or flip-flops**. Master-slave flip-flops are normally made from either two D flip-flops in series or two JK latches in series. The master is feed the raw clock signal (so is active while the clock is `HIGH`) whilst the slave is fed an inverted clock signal (and is active when the clock is `LOW`). Thus the master latch responds to the input while the clock is `HIGH`, and the slave is opaque. At the falling-edge of the clock, the master becomes opaque and slave becomes transparent, the master's output is passed through the slave and onto the final output. This forms a negative edge-triggered flip-flop. The clock signal can be easily inverted to make a positive edge-triggered device.
+
+A _master-slave D flip-flop_ is made from connecting two D latches (edge-triggered) in series.
+
+{{% figure src="master-slave-d-flip-flop-logic-diagram.png" width="800px" caption="How a master-slave D flip-flop can be built from two D latches and a bit of additional logic." %}}
+
+{{% tip %}}
+Because we have the output and it's inverse from the master latch, we don't need the inverter at the input of the second latch, and can just wire to two connections straight through to the slave latch.
+{{% /tip %}}
+
+Below is an interactive simulation of negative edge-triggered master-slave D flip-flop. Click on the `H` (just below the `D`) to toggle the level of the data line, and watch the output change on the negative edge of the clock!
+
+{{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQgBZsVxDaUePlSq8kCNhxDdemMYJByoi5RIDu0nos5UZihISgsNesBkOnivSMYoKUOu0KU2NCe48vXb7oWH5O4FZGbgpgwXoOIpIQPFRgnJyavAlJotQS7LFoinhCkXnKYhS2ccIgZS6lOUpl2O5GWUEpAYJ+AeniMc2KGLKFLiq01fH2hWAKrrl+Y+3RGm29-UK4abaLqxU5m1PhKeY9eyE9KAYnjlOLUdNLx1eOR0eX48GL-vM3j68X3XjxiYcAelhk0-p9XoVOiUAJIgMH1Xh1BoiaBdACygXeFGCWNEqJYGN8twQrz6RXxAA8KGA-NhsBRsIYwIzpNoQABFFhU9xUHgQBDYFYOECGYWcqnsekYYiKIhw3hJYUAWwAhgBnAAudAATlyKqQ4VwEEg8ElFUk1QAbFUANzotjBWPhkDWGmdSXhyJYsM4M3yzjJKK6Jj9cNGQimvtuYKqABlpKGo8RDPEQAAzFWWtV0ag2KnYGWEMSGQhIc0gAAiLAASmGKg0owjwCoJnikChUcoYBIAPYVISENLSMCQYoweCQMilotIdKCiqVlh9zAioecEdj2DwKcGU7KCCcvuOQfKdej3NbuA7mdFaS8kAAY0tAGsWEA" %}}
+
 #### D-Type Flip-Flops with More NANDs
 
-The above D-type flip-flop style using the propagation delay through an inverter to create the edge-triggering is not used commonly in industry. What is actually used is either a design with more NAND gates or transmission gates. Let's look at the NAND gate design first. In reality, it is quite a complicated arrangement of gates! The logic diagram is:
+The above D-type master-slave flip-flop topology gives us reliable clock edge-triggered behaviour, but uses quite a few components (8 NAND gates + 2 inverters)! We can actually produce a functionality equivalent design with less components, with a clever arrangement of 6 NAND gates (of which 1 is 3-input, the rest 2-input). The logic diagram is:
 
 {{% figure src="d-flipflop-with-more-nand-gates.png" width="600px" caption="A D-type flip-flop made solely from NAND gates. This version has no asynchronous set and clear inputs." %}}
 
@@ -307,6 +366,10 @@ The Micro-Cap circuit file used to perform this simulation can be downloaded [he
 
 </div>
 
+You can play around with the interactive D flip-flop simulation below. Toggle the level of the data line by clicking on the `H`, and watch the output only change on the positive edge of the clock!
+
+{{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQmzRExRABYuPDHyqiKbDiC5Uw-fgKFyFY6ghYB3RX2XbwGQlE16wB6dxT8qkY4L689l67aFPzssza0z9hn2EJnbwsrdx4EQxt2CADZeWEdeNVaSRjAgTwEjKgeNVTwdIcikRzsPOiCqmxCTIdqzOSJLViQQgUWvCDKkE6s5lFjFrAUTKHho2b0-qzerxmxEv4GwcK8UfTcFRWqyAU66oms7AO6msOW7AQdDYO5i5OSzcOHYcz-EeeSkbeLNc+dMwtNx3DY6D5CO4ffgBLLQyLbLLEQwOOZI7pDdIgqp4BRo7A4owAGRAeIJQnxKnAIAAZgBDAA2AGc6NQbAAlEnIx72EoQHRwHjQJAoIU5GDqACyJni-DRujEQpYUrssLRKMF6i0cvSapKWPChiBoTmL3iL08xlOtUWMMhmTh4HBAy0L3GLw+Jt5H1NWxdX399j+nsD1r4TxsAHtpFQ2jloZA+EgYPBIGRCBEUEncrhpCAACIsKNCWNUeOJqCweBpjNZiAARUL0ggJYEYATrMrcGrhEzOTDnBAAGN6QBrFhAA" %}}
+
 #### D-Type Flip-Flops with Transmission Gates
 
 In reality, the actual D-type flip-flops you can buy can be much more complicated than what we have just discussed! This is the logic diagram for the Nexperia `74HC74` dual D-type flip-flop IC[^bib-nexperia-74hc74-ds]:
@@ -334,100 +397,12 @@ Edge-triggered D flip-flops can be either positive or negative edge triggered. E
 Adding an inverting gate to the clock signal increases the propagation delay for that clock input, and will have a significant impact on the operation in high-speed designs.
 {{% /note %}}
 
-#### Flip-flop MTBF
-
-<p>\begin{align}
-{\rm MTBF}(t_r) = \frac{e^{ \frac{t_r}{\tau} } } {T_O fa}
-\end{align}</p>
-
-<p class="centered">
-where:<br/>
-\(t_r\) = resolution time (time since clock edge), \(s\)<br/>
-\(f\) = sampling clock frequency, \(Hz\)<br/>
-\(a\) = asynchronous event frequency, \(Hz\)<br/>
-\(\tau\) = flip-flop time constant (this is a function of it's transconductance), \(s\)<br/>
-\(T_o\) = <br/>
-</p>
-
-Typical values for a flip-flop inside an ASIC could be:
-
-* `\(t_r = 2.3ns\)`
-* `\(\tau = 0.31ns\)`
-* `\(T_O = 9.6as\)`
-* `\(f = 100MHz\)`
-* `\(a = 1MHz\)`
-
-Which gives `\(\rm MTBF = 20.1days\)`.
-
-### JK Flip-flop
-
-A JK flip-flop is also known as the gated or clocked SR latch[^bib-byju-sr-flip-flop]. It is a level-triggered device, even though many online tutorials suggest it is edge-triggered. The schematic symbol is:
-
-{{% figure src="jk-flipflop-symbol.png" width="400px" caption="The schematic symbol for a JK flip-flop." %}}
-
-{{% warning %}}
-The `CLK` input to a JK flip-flop is traditionally drawn with a wedge symbol. The wedge symbol is normally associated with edge-triggered inputs, but the `CLK` input for a JK flip-flop is level-triggered.
-{{% /warning %}}
-
-The letters J and K were chosen by the inventor of the JK flip-flop, Jack Kilby[^electronics-tutorials-jk-flip-flop]. A JK flip-flop can be built with NAND gates with the following circuit:
-
-{{% figure src="jk-flipflop-from-nand-gates.png" width="700px" caption="Circuit showing how to build a JK flip-flop from NAND gates." %}}
-
-<div class="worked-example">
-
-Let's simulate a NAND-based JK flip-flop in Micro-Cap. The schematic is:
-
-{{% figure src="jk-flipflop-nand-sim/schematic.png" width="600px" caption="The simulation schematic for the JK flip-flop." %}}
-
-We have to set up some rather complicated digital stimulus to put the JK flip-flop through it's paces. The simulation text determining these waveforms is:
-
-{{% figure src="jk-flipflop-nand-sim/schematic-sim-text.png" width="300px" caption="The supported simulation \"text\" that goes with the schematic. This defines the waveforms of the 3x digital stimulus and the initial conditions." %}}
-
-Notice also the definition of initial conditions at the bottom (`.IC`). If this was not provided, the states of `Q` and `nQ` would be forever stuck as indeterminate (in Micro-Cap this is represented by an `X` in text or double-lines at `0` and `1` in the waveform views), as the only way for the simulator to determine their state without using themselves (because of feedback) would be if `nR` or `nS` were 0 (because then the indeterminate state of `Q` and `nQ` doesn't matter in determining `Q` and `nQ`, they would just be `1`). However with a `JK` flip-flop we can't set `nR` or `nS` to `0` via the inputs `J` and `K` without also considering the feedback from `Q` and `nQ` in the triple input NAND gates. Hence the circuit gets stuck! In real life, the circuit would settle on either `Q=1` or `Q=0` at start-up due to real-world noise and manufacturing differences in the start-up times of the NAND gates.
-
-Below is the simulated waveforms of the circuit:
-
-{{% figure src="jk-flipflop-nand-sim/transient-analysis.png" width="1000px" caption="Annotated transient analysis of the JK flip-flop." %}}
-
-Explanation of behaviour:
-
-1. To test setting the JK flip-flop`J` is driven high, `K` is driven low whilst `CLK` is low (i.e. not enabled).
-2. `CLK` goes high.
-3. `Q` goes high due to `J` being high whilst `CLK` being high. Flip-flop has been set.
-4. To test resetting the JK flip-flop, `J` is driven low and `J` driven high whilst `CLK` is low (not enabled).
-5. `CLK` goes high.
-6. `Q` gets reset as expected.
-7. Let's set the JK flip-flop again, but this time show how it is not edge-triggered, the state can still be changed whilst the `CLK` is high.
-8. We now bring `J` low and drive `K` high.
-9. The output gets reset half-way through the `CLK` being high.
-10. Lets demonstrate the oscillatory nature than can be caused if both `J` and `K` are high when the `CLK` is high.
-11. The outputs oscillate at a speed determined by the propagation delay of the NAND gates!
-
-</div>
-
-## Master-Slave Flip-Flops
-
-Master-slave flip-flops are a **another way of creating edge-triggered flip-flops from either level-triggered latches or flip-flops**. Master-slave flip-flops are normally made from either two D flip-flops in series or two JK latches in series. The master is feed the raw clock signal (so is active while the clock is `HIGH`) whilst the slave is fed an inverted clock signal (and is active when the clock is `LOW`). Thus the master latch responds to the input while the clock is `HIGH`, and the slave is opaque. At the falling-edge of the clock, the master becomes opaque and slave becomes transparent, the master's output is passed through the slave and onto the final output. This forms a negative edge-triggered flip-flop. The clock signal can be easily inverted to make a positive edge-triggered device.
-
-### Master-Slave D Flip-Flop
-
-A _master-slave D flip-flop_ is made from connecting two D latches (edge-triggered) in series.
-
-{{% figure src="master-slave-d-flip-flop-logic-diagram.png" width="800px" caption="How a master-slave D flip-flop can be built from two D latches and a bit of additional logic." %}}
-
-{{% tip %}}
-Because we have the output and it's inverse from the master latch, we don't need the inverter at the input of the second latch, and can just wire to two connections straight through to the slave latch.
-{{% /tip %}}
-
-Below is an interactive simulation of negative edge-triggered master-slave D flip-flop. Click on the `H` (just below the `D`) to toggle the level of the data line, and watch the output change on the negative edge of the clock!
-
-{{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQgBZsVxDaUePlSq8kCNhxDdemMYJByoi5RIDu0nos5UZihISgsNesBkOnivSMYoKUOu0KU2NCe48vXb7oWH5O4FZGbgpgwXoOIpIQPFRgnJyavAlJotQS7LFoinhCkXnKYhS2ccIgZS6lOUpl2O5GWUEpAYJ+AeniMc2KGLKFLiq01fH2hWAKrrl+Y+3RGm29-UK4abaLqxU5m1PhKeY9eyE9KAYnjlOLUdNLx1eOR0eX48GL-vM3j68X3XjxiYcAelhk0-p9XoVOiUAJIgMH1Xh1BoiaBdACygXeFGCWNEqJYGN8twQrz6RXxAA8KGA-NhsBRsIYwIzpNoQABFFhU9xUHgQBDYFYOECGYWcqnsekYYiKIhw3hJYUAWwAhgBnAAudAATlyKqQ4VwEEg8ElFUk1QAbFUANzotjBWPhkDWGmdSXhyJYsM4M3yzjJKK6Jj9cNGQimvtuYKqABlpKGo8RDPEQAAzFWWtV0ag2KnYGWEMSGQhIc0gAAiLAASmGKg0owjwCoJnikChUcoYBIAPYVISENLSMCQYoweCQMilotIdKCiqVlh9zAioecEdj2DwKcGU7KCCcvuOQfKdej3NbuA7mdFaS8kAAY0tAGsWEA" %}}
-
 ### Master-Slave JK Flip-Flop
 
 In a similar manner to the master-slave D flip-flop above, a master-slave JK flip-flop is made from connecting two JK latches in series.
 
 {{% figure src="jk-master-slave-flipflop-logic-diagram.png" width="900px" caption="The construction of a master-slave JK flip-flop." %}}
+
 ## Timing Requirements
 
 ### Setup and Hold Times
