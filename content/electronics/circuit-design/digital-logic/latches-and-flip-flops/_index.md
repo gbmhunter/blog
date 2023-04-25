@@ -503,3 +503,7 @@ As you can see from the above timing diagram, the output toggles between high an
 [^bib-wikipedia-metastability]: Wikipedia (2022, Nov 2). _Metastability (electronics)_. Retrieved 2023-04-23, from https://en.wikipedia.org/wiki/Metastability_(electronics).
 [^bib-ran-ginosar-metastability-and-synchronizers]: Ran Ginosar (2011, Oct). _Metastability and Synchronizers: A Tutorial_. IEEE CS/CASS. Retrieved 2023-04-23, from https://webee.technion.ac.il/~ran/papers/Metastability-and-Synchronizers.IEEEDToct2011.pdf.
 [^bib-vlsi-universe-recovery-and-removal-checks]: VLSI Universe. _Recovery and removal checks_. Retrieved 2023-04-24, from https://vlsiuniverse.blogspot.com/2017/04/recovery-and-removal-checks.html.
+[^bib-ti-cd4042b-ds]: Texas Instruments (2003, Oct). _CD4042B Types: CMOS Quad Clocked "D" Latch_. Retrieved 2023-04-22, from https://www.ti.com/lit/ds/symlink/cd4042b.pdf. 
+[^bib-wikipedia-metastability]: Wikipedia (2022, Nov 2). _Metastability (electronics)_. Retrieved 2023-04-23, from https://en.wikipedia.org/wiki/Metastability_(electronics).
+[^bib-ran-ginosar-metastability-and-synchronizers]: Ran Ginosar (2011, Oct). _Metastability and Synchronizers: A Tutorial_. IEEE CS/CASS. Retrieved 2023-04-23, from https://webee.technion.ac.il/~ran/papers/Metastability-and-Synchronizers.IEEEDToct2011.pdf.
+[^bib-vlsi-universe-recovery-and-removal-checks]: VLSI Universe. _Recovery and removal checks_. Retrieved 2023-04-24, from https://vlsiuniverse.blogspot.com/2017/04/recovery-and-removal-checks.html.
