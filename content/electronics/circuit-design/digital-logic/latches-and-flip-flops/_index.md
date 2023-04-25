@@ -399,9 +399,15 @@ Adding an inverting gate to the clock signal increases the propagation delay for
 
 ### Master-Slave JK Flip-Flop
 
-In a similar manner to the master-slave D flip-flop above, a master-slave JK flip-flop is made from connecting two JK latches in series.
+In a similar manner to the master-slave D flip-flop above, a master-slave JK flip-flop is made from connecting two JK latches in series. Sometimes the "master-slave" part of it's name is dropped and this circuit is just called the _JK flip-flop_.
 
 {{% figure src="jk-master-slave-flipflop-logic-diagram.png" width="900px" caption="The construction of a master-slave JK flip-flop." %}}
+
+It behaves in the same manner as a JK latch, but only acts on the negative clock-edge.
+
+You can play around with the interactive simulation below.
+
+{{% circuitjs data="CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFICkVVNCApgLRhgBQYCEGaW4GGKlmL9BNPkgQcuIHnywIUQkQqXioVNgHdZvEFiyC5+jDUjbdfMjWNhcaiwmH7Dy-YqiPnBo3rsOdJxEwATd-T0DncOMfT04IXhowZ1tndUlpBKxxXD4Y3I0JTR1E0RBS1Qjy7PclUrQ0B3jwQitQ4WDQ9XpMlvkPDtrC2ikSmtZ5YmDkqsGJ-Smy8x1BytXF5YWVRYqNizBW8BQkw-DNg-lTPpcxC1XXVY9N+8EL8HtZxfC5rruvj7esXMzWISSipzS5RGbAAkiAUIIGnUakiNDAMgBZMKhBCnLr6aBSLFBIa4-pqAlSAAeVDA01wVEa4BqglcAEU2DSnDQ0JBJGgRLyREp2RY-DNQeAZuYabzZAzsHRZCYQAApNgAJXhiKZelRECsNSwhMpaMJvUlWAKgIKPI0o0sRxsegRVWMrslrs2nsEkuSInMABlqkM9EDwCAAGYAQwANgBnBi0GUqg5oWQnJSswQAaQsrtRrsqmyLHktTwsftCrpCtx0NerrIrYy2IeLYsmIktex0MSuxkaAYsA5QXZ5o6qksHIEttrYwfFfD0kqSUbjieTnJALEgEGaSQQRmZapzAB0AI5wABcp-jADkAPa3gDCAAtowA7ADmDC3O73KCENuip2Hkx6qme55gJAN7xgAygwAAuf7QXuxAMkwWBAQcNjgZBu6wRqDCJshNL-vofLbjgFEiK8fAQRerCwQAKg+X5frGv4PrIwpiLI0FFDA8CQIQ9iKAowwYIKapsNxaAMl6-GQIJsDwKJ5AoBJ6jyVCebcdRikYAJyaqXA6niUgq4cnJfCGcZlmmSJYmaZZ+ghumADGsYANZsEAA" %}}
 
 ## Timing Requirements
 
