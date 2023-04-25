@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ Electronics, Circuit Design ]
 date: 2012-08-06
 draft: false
-lastmod: 2023-04-13
+lastmod: 2023-04-25
 tags: [ electronics, circuit design, digital logic, latches, flip-flops, SR latch, D latch, JK latch, D flip-flop, propagation delay, inverters, and gates, edge detection, circuit, mtbf, asynchronous, reset, NAND, NOR, AND ]
 title: "Latches and Flip-Flops"
 type: "page"
@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**. This page assumes a working knowledge of digital gates such as AND gates, OR gates, e.t.c. See the [Gates page](/electronics/circuit-design/digital-logic/gates/) if you want to get up to speed on those first!
+A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. They are are key component in _sequential logic_ (logic which depends not only on the present state on the inputs, but also past information). It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**. This page assumes a working knowledge of digital gates such as AND gates, OR gates, e.t.c. See the [Gates page](/electronics/circuit-design/digital-logic/gates/) if you want to get up to speed on those first!
 
 The typical distinction between latch and a flip-flop is:
 
@@ -150,6 +150,12 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
 **You can actually simplify the above circuit and remove the need for an inverter altogether.** Just realise the output of the top left NAND gate is always the inverse of `D` as long as `E` is high, so you can actually take the output of this as the inverted `D` and feed it into the bottom left NAND gate as shown:
 
 {{% figure src="d-latch-from-nand-gates-simplified.png" width="700px" caption="A simplified D latch without an inverter." %}}
+
+You can also make a D latch with inverters and [transmission gates](/electronics/components/analogue-switches-transmission-gates/). This may result in a lower total transistor count than implements it with NAND gates as above. The below schematic shows one way of doing it:
+
+{{% figure src="d-latch-from-transmission-gates.png" width="500px" caption="A D latch made from transmission gates." %}}
+
+When `\(E\)` is `HIGH`, the lower transmission gate is `ON` and the input `\(D\)` is passed through to the output `\(Q\)` via two inverters. When `\(E\)` is `LOW`, the higher transmission gate is `ON` and the output is fed back to itself via two inverter (hence performing the latching action). The [Texas Instruments CD4042B](https://www.ti.com/lit/ds/symlink/cd4042b.pdf) uses a similar technique to implement it's D latches[^bib-ti-cd4042b-ds].
 
 ## Flip-Flops
 
@@ -307,7 +313,7 @@ In reality, the actual D-type flip-flops you can buy can be much more complicate
 
 {{% figure src="nexperia-74hc74-d-flip-flop-logic-diagram.png" width="700px" caption="Logic diagram for 1 of the positive-edge triggered D-type flip-flops in the Nexperia 74HC74 IC. Note the complexity![^bib-nexperia-74hc74-ds]" %}}
 
-The four triangles pointing towards each other are transmission gates (TGs), normally made from one N-channel and one P-channel MOSFET connected in parallel (with the substrate not connected to the body, to avoid conduction through it's internal diodes). Some of the circuitry that seems to serve no purpose (like the two inverters in series on the `D` input) has been presumably added to balance propagation times.
+The four triangles pointing towards each other are [transmission gates (TGs)](/electronics/components/analogue-switches-transmission-gates/), normally made from one N-channel and one P-channel MOSFET connected in parallel (with the substrate not connected to the body, to avoid conduction through it's internal diodes). Some of the circuitry that seems to serve no purpose (like the two inverters in series on the `D` input) has been presumably added to balance propagation times.
 
 #### Examples
 
@@ -359,7 +365,9 @@ A JK flip-flop is also known as the gated or clocked SR latch[^bib-byju-sr-flip-
 
 {{% figure src="jk-flipflop-symbol.png" width="400px" caption="The schematic symbol for a JK flip-flop." %}}
 
-TODO: Should the `CLK` input really have a wedge since it's level-triggered?
+{{% warning %}}
+The `CLK` input to a JK flip-flop is traditionally drawn with a wedge symbol. The wedge symbol is normally associated with edge-triggered inputs, but the `CLK` input for a JK flip-flop is level-triggered.
+{{% /warning %}}
 
 The letters J and K were chosen by the inventor of the JK flip-flop, Jack Kilby[^electronics-tutorials-jk-flip-flop]. A JK flip-flop can be built with NAND gates with the following circuit:
 
@@ -397,7 +405,81 @@ Explanation of behaviour:
 
 </div>
 
-## Circuits Built From Flip-Flops
+## Master-Slave Flip-Flops
+
+Master-slave flip-flops are a **another way of creating edge-triggered flip-flops from either level-triggered latches or flip-flops**. Master-slave flip-flops are normally made from either two D flip-flops in series or two JK latches in series. The master is feed the raw clock signal (so is active while the clock is `HIGH`) whilst the slave is fed an inverted clock signal (and is active when the clock is `LOW`). Thus the master latch responds to the input while the clock is `HIGH`, and the slave is opaque. At the falling-edge of the clock, the master becomes opaque and slave becomes transparent, the master's output is passed through the slave and onto the final output. This forms a negative edge-triggered flip-flop. The clock signal can be easily inverted to make a positive edge-triggered device.
+
+### Master-Slave D Flip-Flop
+
+A _master-slave D flip-flop_ is made from connecting two D latches (edge-triggered) in series.
+
+{{% figure src="master-slave-d-flip-flop-logic-diagram.png" width="800px" caption="How a master-slave D flip-flop can be built from two D latches and a bit of additional logic." %}}
+
+{{% tip %}}
+Because we have the output and it's inverse from the master latch, we don't need the inverter at the input of the second latch, and can just wire to two connections straight through to the slave latch.
+{{% /tip %}}
+
+Below is an interactive simulation of negative edge-triggered master-slave D flip-flop. Click on the `H` (just below the `D`) to toggle the level of the data line, and watch the output change on the negative edge of the clock!
+
+{{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQgBZsVxDaUePlSq8kCNhxDdemMYJByoi5RIDu0nos5UZihISgsNesBkOnivSMYoKUOu0KU2NCe48vXb7oWH5O4FZGbgpgwXoOIpIQPFRgnJyavAlJotQS7LFoinhCkXnKYhS2ccIgZS6lOUpl2O5GWUEpAYJ+AeniMc2KGLKFLiq01fH2hWAKrrl+Y+3RGm29-UK4abaLqxU5m1PhKeY9eyE9KAYnjlOLUdNLx1eOR0eX48GL-vM3j68X3XjxiYcAelhk0-p9XoVOiUAJIgMH1Xh1BoiaBdACygXeFGCWNEqJYGN8twQrz6RXxAA8KGA-NhsBRsIYwIzpNoQABFFhU9xUHgQBDYFYOECGYWcqnsekYYiKIhw3hJYUAWwAhgBnAAudAATlyKqQ4VwEEg8ElFUk1QAbFUANzotjBWPhkDWGmdSXhyJYsM4M3yzjJKK6Jj9cNGQimvtuYKqABlpKGo8RDPEQAAzFWWtV0ag2KnYGWEMSGQhIc0gAAiLAASmGKg0owjwCoJnikChUcoYBIAPYVISENLSMCQYoweCQMilotIdKCiqVlh9zAioecEdj2DwKcGU7KCCcvuOQfKdej3NbuA7mdFaS8kAAY0tAGsWEA" %}}
+
+### Master-Slave JK Flip-Flop
+
+A master-slave JK flip-flop is made from connecting two JK flip-flops in series.
+## Timing Requirements
+
+### Setup and Hold Times
+
+Synchronous flip-flops have timing requirements that must be obeyed. The two main requirements are:
+
+* **Setup time `\(t_S\)`:** This is the time that the data line must be stable for BEFORE the edge of the clock signal.
+* **Hold time `\(t_H\)`:** This is the time that the data line must be stable for AFTER the edge of the clock signal.
+
+The below diagram shows this concept, assuming the logic is triggered on the positive-edge of the clock signal.
+
+{{% figure src="setup-and-hold-time-diagram.png" width="500px" caption="Diagram showing how the setup and hold time are defined." %}}
+
+The edges of the signals have been drawn at a diagonal to illustrate that the signals do not instantly change state, and that the setup and hold times are defined from when the signal voltage passes through the half-way point between `LOW` and `HIGH`. In reality, the edges may not be straight lines but feature somewhat of an exponential curve due to capacitance.
+
+What do violating signals look like? Violating signals is when the data signal changes state in the setup or hold period, as illustrated in the diagram below.
+
+{{% figure src="setup-and-hold-time-diagram-with-violation-examples.png" width="800px" caption="Diagram illustrating the concept of setup and hold times, and showing 3 different data signals, one which is just ok, one which violates the setup time requirement and one which violates the hold time requirement." %}}
+
+### Recovery and Removal Times
+
+A similar but different concept to setup and hold times are _recovery_ and _removal_ times. Recovery and removal times are terms used to describe the **timing requirements for edge-triggered logic for when asynchronous inputs (like set and reset) are de-asserted and the next clock edge**[^bib-vlsi-universe-recovery-and-removal-checks].
+
+When set or reset are ASSERTED, there are no timing requirements since the action is asynchronous. The output of the flip-flop will get set or reset independent of the clock. However, when the set or reset is DE-ASSERTED, it's **not until the next clock edge that the flip-flop removes itself from the effects of set/reset and it's output `\(Q\)` begins to follow `\(D\)` again**. This is where the recovery and removal time requirements come into play:
+
+* **Recovery time:** The amount of time that the set/clear must stay de-asserted for BEFORE the clock edge.
+* **Removal time:** The amount of time that the set/clear must stay de-asserted for AFTER the clock edge.
+
+If both of these requirements are met, the flip-flop is guaranteed to come out of set or reset on that clock edge. If not, the flip-flop may encounter metastability.
+
+{{% tip %}}
+Recovery and removal time have very similar definitions to setup and hold times, but are applied to the de-assertion of signals to asynchronous inputs like set and reset.
+{{% /tip %}}
+
+
+## Metastability
+
+_Metastability_ is the problem when digital logic persists for some unbounded amount of time in an invalid state. Metastability can cause glitches, the entirely wrong state, or invalid logic levels to propagate through digital logic systems.
+
+> Metastability can arise whenever a signal is sampled close to a transition, leading to indecision as to its correct value. -- Montek Singh (UNC Chapel Hill) and Luciano Lavagno (Politecnico di Torino)[^bib-ran-ginosar-metastability-and-synchronizers].
+
+Metastability can occur under the following conditions:
+
+* Digital circuits like edge-triggered D-type flip-flops require the input to be stable for some period before the clock edge (setup time) and some time after the clock edge (hold time) before it is allowed to change. If the input violates these timing conditions the flip-flop may encounter metastability.
+* Asynchronous inputs arriving into a synchronous system. In this situation, you cannot totally eliminate the chance of metastability. The best you can do is to add synchronizers to the inputs to make the probability of metastability acceptably small[^bib-wikipedia-metastability].
+* When transferring data between two or more different clock domains (groups of circuitry running off different clocks).
+
+{{% tip %}}
+One way to think about the flip-flop setup and hold times is that the flip-flop always has to decide what changed first, the input or the clock signal. The setup and hold makes it obvious to the flip-flop that the input changed before the clock signal. However, if you violate these rules, and the input and clock changes get closer and closer together, it get's harder and harder for the flip-flop to determine what happened first. This makes it more and more likely that the flip-flop will have trouble determining the output and metastability will likely occur.
+{{% /tip %}}
+
+Another key principle is that metastability occurs for an unbounded amount of time. That's another way of saying there is no known upper limit to how long the metastability will take to resolve itself. You might think that this is very bad for any type of circuit. The good news is that the probability of the metastability occurring for longer and longer period falls with an exponential decay[^bib-wikipedia-metastability].
+
+## Circuits Built From Latches And Flip-Flops
 
 ### Toggle Flip-Flop
 
@@ -417,3 +499,7 @@ As you can see from the above timing diagram, the output toggles between high an
 [^bib-byju-sr-flip-flop]: Priyanshu Vaish (2022, Aug 26). _SR Flip-Flop: What is SR Flip-Flop Truth Table?_. Byju's Exam Prep. Retrieved 2023-04-14, from https://byjusexamprep.com/sr-flip-flop-truth-table-i.
 [^electronics-tutorials-jk-flip-flop]: Electronics Tutorials. _The JK Flip Flop_. Retrieved 2023-04-14, from https://www.electronics-tutorials.ws/sequential/seq_2.html.
 [^bib-learnaboutelectronics-d-type-flip-flops]: Eric Coates (2020, 29th Dec). _Module 5.3: D Type Flip-flops_. Learn about electronics. Retrieved 2023-04-18, from https://learnabout-electronics.org/Digital/dig53.php.
+[^bib-ti-cd4042b-ds]: Texas Instruments (2003, Oct). _CD4042B Types: CMOS Quad Clocked "D" Latch_. Retrieved 2023-04-22, from https://www.ti.com/lit/ds/symlink/cd4042b.pdf. 
+[^bib-wikipedia-metastability]: Wikipedia (2022, Nov 2). _Metastability (electronics)_. Retrieved 2023-04-23, from https://en.wikipedia.org/wiki/Metastability_(electronics).
+[^bib-ran-ginosar-metastability-and-synchronizers]: Ran Ginosar (2011, Oct). _Metastability and Synchronizers: A Tutorial_. IEEE CS/CASS. Retrieved 2023-04-23, from https://webee.technion.ac.il/~ran/papers/Metastability-and-Synchronizers.IEEEDToct2011.pdf.
+[^bib-vlsi-universe-recovery-and-removal-checks]: VLSI Universe. _Recovery and removal checks_. Retrieved 2023-04-24, from https://vlsiuniverse.blogspot.com/2017/04/recovery-and-removal-checks.html.

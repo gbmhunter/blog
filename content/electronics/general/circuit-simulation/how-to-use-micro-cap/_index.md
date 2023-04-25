@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Simulation" ]
 date: 2023-04-15
 draft: false
-lastmod: 2023-04-15
+lastmod: 2023-04-25
 tags: [ "electronics", "circuit simulation", "SPICE" ]
 title: "How To Use Micro-Cap"
 type: "page"
@@ -36,7 +36,26 @@ In case the download links disappear elsewhere, I have saved the Micro-Cap v12.2
 
 ### Digital Stimulus
 
-You can't use normal voltage or current sources to power and control digital circuits (I learnt this the hard way). Instead, you need to use _Digital Stimulus_.
+You can't use normal voltage or current sources to power and control digital circuits (I learnt this the hard way). Instead, you need to use _Digital Stimulus_. They can be found in the Components Browser under _Digital Primitives -> Stimulus Generators_.
+
+Once you have placed a Digital Stimulus on your circuit, you configure it by double-clicking it and then enter in logic level transitions in the large text box. Example syntax is shown in the image below:
+
+{{% figure src="1-bit-digital-stimulus-config.png" width="800px" caption="Screenshot showing how to configure a 1-bit digital stimulus." %}}
+
+The above settings gives the following waveform if we perform a transient analysis:
+
+{{% figure src="1-bit-digital-stimulus-sim/transient-analysis.png" width="900px" caption="Transient analysis for the 1-bit digital stimulus." %}}
+
+There are four preset timings you can choose from to help you get started. These are `1MHzClk`, `Clear`, `Set` and `Train`. The "1MHzClk" preset inserts the following text:
+
+```text
+.define _1MHzClk 
+ +0ns 0 
+ +label=start 
+ +500n 1 
+ +1u 0 
+ +1.5u goto start -1 times
+```
 
 ### Initial Conditions
 
@@ -69,3 +88,7 @@ Now the outputs start in a determinate state, and the simulation works as expect
 {{% figure src="jk-flipflop-nand-sim/transient-analysis-with-initial-conditions.png" width="900px" caption="Simulation with initial conditions." %}}
 
 </div>
+
+### More Examples
+
+For more examples of digital simulation in Micro-Cap, see the [Latches and Flip-flops page](/electronics/circuit-design/digital-logic/latches-and-flip-flops/).
