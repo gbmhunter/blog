@@ -425,7 +425,9 @@ Below is an interactive simulation of negative edge-triggered master-slave D fli
 
 ### Master-Slave JK Flip-Flop
 
-A master-slave JK flip-flop is made from connecting two JK flip-flops in series.
+In a similar manner to the master-slave D flip-flop above, a master-slave JK flip-flop is made from connecting two JK latches in series.
+
+{{% figure src="jk-master-slave-flipflop-logic-diagram.png" width="900px" caption="The construction of a master-slave JK flip-flop." %}}
 ## Timing Requirements
 
 ### Setup and Hold Times
