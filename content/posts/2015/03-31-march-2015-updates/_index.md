@@ -33,7 +33,7 @@ tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSF
 
   	{{% figure src="high-side-mosfet-load-switch-schematic.png" width="608px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  %}}
 
-* New page on {{% link text="Analogue Switches" src="/electronics/components/analogue-switches" %}}.
+* New page on [Analogue Switches](/electronics/components/analogue-switches).
 
 * Information added about ESD Diodes On CMOS I/O to the ESD Protection page.
 

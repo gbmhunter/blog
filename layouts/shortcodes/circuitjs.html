@@ -2,10 +2,15 @@
   Args:
     data: Encoded circuit data as provided by circuitjs when you click the File->Export As URL menu. Data is after the ctz= in the URL.
   */}}
-{{ $data := .Get "data"}}
-{{/* Build a full URL to circuitjs from the provided encoded data. We need to make sure to htmlUnescape and safeHTML this later on */}}
+{{ $data := .Get "data" }}
+{{ $width := default 500 (.Get "width") }}
+{{ $height := default 500 (.Get "height") }}
+
+{{/* Build a URL to circuitjs from the provided encoded data. We need to make sure to htmlUnescape and safeHTML this later on */}}
 {{ $url := "&hideMenu=true&hideSidebar=true" | printf "%s%s" $data | printf "%s%s" "https://www.falstad.com/circuit/circuitjs.html?ctz=" | printf "%s" }}
+{{/* Full page URL is similar but without the hidden menu and sidebar */}}
+{{ $fullPageUrl := printf "%s%s" $data | printf "%s%s" "https://www.falstad.com/circuit/circuitjs.html?ctz=" | printf "%s" }}
 <div class="circuitjs-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-  <iframe src="{{ $url | htmlUnescape | safeHTML }}" width=500 height=500></iframe>
-  <div>(<a href="https://www.falstad.com/circuit/circuitjs.html?ctz={{ .Get "data" | htmlUnescape | safeHTML }}">full page version</a>)</div>
+  <iframe src="{{ $url | htmlUnescape | safeHTML }}" width={{ $width }} height={{ $height }}></iframe>
+  <div>(<a href="{{ $fullPageUrl }}" target="_blank">full page version</a>)</div>
 </div>
