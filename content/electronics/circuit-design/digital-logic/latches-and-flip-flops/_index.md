@@ -44,11 +44,11 @@ Driving either S or R high allows you to set the latch into the 1 or 0 state res
       <th style="width: 50px;">S</th> 
       <th style="width: 50px;">R</th>
       <th style="width: 80px;">\(Q\)</th>
-      <th style="width: 80px;">\(\bar{Q}\)</th>
+      <th style="width: 80px;">\(\overline{Q}\)</th>
       <th style="width: 200px;">Action</th></tr>
   </thead>
   <tbody>
-    <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>  <td>Hold</td></tr>
+    <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>  <td>No change</td></tr>
     <tr><td>0</td>  <td>1</td>  <td>0</td>      <td>1</td>            <td>Reset</td></tr>
     <tr><td>1</td>  <td>0</td>  <td>1</td>      <td>0</td>            <td>Set</td></tr>
     <tr><td>1</td>  <td>1</td>  <td>0</td>      <td>0</td>            <td>Not allowed</td></tr>
@@ -75,9 +75,13 @@ When making the SR latch from NAND gates the invalid state is now `\(S = R = 0\)
     <tr><td>0</td>  <td>0</td>  <td>1</td> <td>1</td>            <td>Not allowed</td></tr>
     <tr><td>0</td>  <td>1</td>  <td>0</td> <td>1</td>            <td>Reset</td></tr>
     <tr><td>1</td>  <td>0</td>  <td>1</td> <td>0</td>            <td>Set</td></tr>
-    <tr><td>1</td>  <td>1</td>  <td>\(Q\)</td> <td>\(\bar{Q}\)</td>            <td>Hold</td></tr>
+    <tr><td>1</td>  <td>1</td>  <td>\(Q\)</td> <td>\(\bar{Q}\)</td>            <td>No change</td></tr>
   </tbody>
 </table>
+
+You can play with the interactive NAND-gate based SR latch below:
+
+{{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQkIBYrs0QchEHypUUUCmw4huVLlzwDsQ+YrHUELAO4yew5bt6E12wyC58zXMEMinZ5m1bhR7enlUIZxH1zq8+LhiQXMLGfmbKigFhJv7esQIh5i52OsGhvoIpoqbZWQaqERmJ2VHFBuVl-HYAMpHJCMTiuKFUEABmAIYANgDOdNR1VtwUzeaj7SDd-YNIdgCySkIiAnihq2LQmkv5CmuZ+1uaAB4UKIpcGBAI8uYYmSAooQDKLGcIRMJgtBbf2OYnqEAErvEAEYjCL7rch8SGhZ4gACKYLw2HIXAQQjwCCQmMhQkRKKAA" %}}
 
 <div class="worked-example">
 Let's simulate a NAND-based SR latch in Micro-Cap. Here is the schematic:
@@ -138,8 +142,8 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
     <th style="width: 200px;">Action</th></tr>
   </thead>
   <tbody>
-    <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>Hold</td></tr>
-    <tr><td>0</td>  <td>1</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>Hold</td></tr>
+    <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>No change</td></tr>
+    <tr><td>0</td>  <td>1</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>No change</td></tr>
     <tr><td>1</td>  <td>0</td>  <td>0</td>      <td>1</td>                      <td>Reset</td></tr>
     <tr><td>1</td>  <td>1</td>  <td>1</td>      <td>0</td>                      <td>Set</td></tr>
   </tbody>
@@ -239,7 +243,7 @@ The resulting transient analysis is:
 The Micro-Cap circuit file used to perform this simulation can be downloaded [here](edge-detection-using-and-inverter-sim/circuit.cir).
 </div>
 
-The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There is a better way to do it, which will do when we introduce the D-type flip-flop with more NAND gates.
+The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There are better ways to create edge-triggered flip-flops, which we will show when we introduce the master-slave D-type flip-flop below.
 
 ### D-Type Flip-Flops
 
@@ -251,6 +255,8 @@ A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depend
 The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input. Typically the set and reset are inverse logic, i.e. `1` to do nothing and `0` to either set or reset. The reset pin can also be called _preset_[^bib-ti-sn7474-ds].
 {{% /tip %}}
 
+D-type flip-flops are used for counters, shift-registers and input synchronization.
+
 #### D-Type Flip-Flops with Inverters
 
 But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` (enable) line of a D latch (as shown above) to make a D flip-flop:
@@ -258,8 +264,6 @@ But how is a D flip-flop actually made? Basically, you could add the edge-trigge
 {{% figure src="d-flipflop-with-and-inverter.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit made with an AND gate and inverter." %}}
 
 We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-triggered rather than level-triggered.
-
-D-type flip-flops are used for counters, shift-registers and input synchronization.
 
 #### Master-Slave D Flip-Flop
 
@@ -403,9 +407,34 @@ In a similar manner to the master-slave D flip-flop above, a master-slave JK fli
 
 {{% figure src="jk-master-slave-flipflop-logic-diagram.png" width="900px" caption="The construction of a master-slave JK flip-flop." %}}
 
-It behaves in the same manner as a JK latch, but only acts on the negative clock-edge.
+It behaves in the same manner as a JK latch, but only acts on the negative clock-edge. Here is the truth table for this NAND-gate based master-slave JK flipflop:
 
-You can play around with the interactive simulation below.
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Inputs</th>
+      <th colspan="2">Outputs</th>
+      <th rowspan="2">Action</th>
+    </tr>
+    <tr>
+      <th>CLK</th>
+      <th>J</th>
+      <th>K</th>
+      <th style="width: 50px;">\(Q_{n+1}\)</th>
+      <th style="width: 50px;">\(\overline{Q_{n+1}}\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>↓</td>    <td>0</td>   <td>0</td>  <td>\(Q\)</td>             <td>\(\overline{Q}\)</td>     <td>No change</td></tr>
+    <tr><td>↓</td>    <td>0</td>   <td>1</td>  <td>0</td>                 <td>1</td>                    <td>Reset</td></tr>
+    <tr><td>↓</td>    <td>1</td>   <td>0</td>  <td>1</td>                 <td>0</td>                    <td>Set</td></tr>
+    <tr><td>↓</td>    <td>1</td>   <td>1</td>  <td>\(\overline{Q}\)</td>  <td>\(Q\)</td>                <td>Toggle</td></tr>
+  </tbody>
+</table>
+
+↓ represents the falling edge of the clock. All states for the clock except for the negative-edge (i.e. rising edge, high level, low level) do not cause any change.
+
+You can play around with the interactive simulation below:
 
 {{% circuitjs width="700" data="CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFICkVVNCApgLRhgBQYCEGaW4GGKlmL9BNPkgQcuIHnywIUQkQqXioVNgHdZvEFiyC5+jDUjbdfMjWNhcaiwmH7Dy-YqiPnBo3rsOdJxEwATd-T0DncOMfT04IXhowZ1tndUlpBKxxXD4Y3I0JTR1E0RBS1Qjy7PclUrQ0B3jwQitQ4WDQ9XpMlvkPDtrC2ikSmtZ5YmDkqsGJ-Smy8x1BytXF5YWVRYqNizBW8BQkw-DNg-lTPpcxC1XXVY9N+8EL8HtZxfC5rruvj7esXMzWISSipzS5RGbAAkiAUIIGnUakiNDAMgBZMKhBCnLr6aBSLFBIa4-pqAlSAAeVDA01wVEa4BqglcAEU2DSnDQ0JBJGgRLyREp2RY-DNQeAZuYabzZAzsHRZCYQAApNgAJXhiKZelRECsNSwhMpaMJvUlWAKgIKPI0o0sRxsegRVWMrslrs2nsEkuSInMABlqkM9EDwCAAGYAQwANgBnBi0GUqg5oWQnJSswQAaQsrtRrsqmyLHktTwsftCrpCtx0NerrIrYy2IeLYsmIktex0MSuxkaAYsA5QXZ5o6qksHIEttrYwfFfD0kqSUbjieTnJALEgEGaSQQRmZapzAB0AI5wABcp-jADkAPa3gDCAAtowA7ADmDC3O73KCENuip2Hkx6qme55gJAN7xgAygwAAuf7QXuxAMkwWBAQcNjgZBu6wRqDCJshNL-vofLbjgFEiK8fAQRerCwQAKg+X5frGv4PrIwpiLI0FFDA8CQIQ9iKAowwYIKapsNxaAMl6-GQIJsDwKJ5AoBJ6jyVCebcdRikYAJyaqXA6niUgq4cnJfCGcZlmmSJYmaZZ+ghumADGsYANZsEAA" %}}
 
