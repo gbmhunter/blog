@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design, Digital Logic ]
 date: 2012-08-06
 draft: false
-lastmod: 2023-04-11
-tags: [ electronics, circuit design, digital logic, gates, diode logic, DL, RTL, DTL, TTL, CMOS, binary counter, Karnaugh maps ]
+lastmod: 2023-04-29
+tags: [ electronics, circuit design, digital logic, gates, diode logic, DL, RTL, DTL, TTL, CMOS, binary counter, Karnaugh maps, NAND, NOR ]
 title: Gates
 type: page
 ---
@@ -263,9 +263,75 @@ TODO: Add info here.
 
 The inputs of TTL logic are the emitters of BJTs.
 
-### CMOS
+### N-type Metal-oxide Semiconductor (NMOS) Logic
+
+N-type Metal-oxide Semiconductor (NMOS) logic is a way of building logic functions from N-channel MOSFETs. In the early days of digital logic (1970s), it was much faster and easier to manufacture than CMOS, however since the 1980s CMOS took over and has become the dominant way of implementing logic gates[^bib-wikipedia-nmos]. NMOS is built from an arrangement of N-channel MOSFETs on the low-side (depending on the function) and a pull-up resistor on the high side. 
+
+#### NMOS Inverter Gate
+
+A NMOS inverter is simply made from a N-channel MOSFET and a resistor, as shown below: 
+
+<div style="display: flex;">
+{{% figure src="nmos-inverter-gate.png" width="200px" caption="The simple inverter made using NMOS technology." %}}
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHchYovkWCwJQZFYBzVX24rhg7kV7UtAJT1gwRa5DNQ+dJ+cmsAMpWWjBCW76uIOwAhgA2AM70NFoKRuAaetzIdloAskJYaolYDgmaIGjucVn51olaAB6UyBBo+MgguI31vLxovAByaQDyAMoAOhEAkgB2AG70AE4ALtNDAOIhc-LeKvx+PIFVlAhI3GgQCFiNB3btvACCrNVEWLxghEIk1I-7hbwAmqxT1gHxthU1FQcFYQA" %}}
+</div>
+
+When the input `\(A\)` is `LOW`, the N-channel MOSFET is turned OFF, and so the output `\(Y\)` is pulled `HIGH` by `\(R1\)`. When `\(A\)` is `HIGH`, the N-channel MOSFET gets turned on. It's equivalent drain-source resistance drops to a value much lower than `\(R1\)`, and so therefore the output is effectively driven `LOW`, completing the inverter functionality.
+
+{{% tip %}}
+You can see the static current flow (and therefore power consumption) in the above NMOS circuit simulation when you toggle the input to `HIGH`.
+{{% /tip %}}
+
+#### NMOS NOR Gate
+
+The NMOS NOR gate uses two N-channel MOSFETs connected in parallel to drive the output `LOW` if either input is `HIGH`. If neither input is `LOW`, then no MOSFET will be on and the output will be pulled `HIGH` by the resistor.
+
+<div style="display: flex;">
+{{% figure src="nmos-nor-gate.png" width="300px" caption="A NOR gate made using NMOS technology." %}}
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHMhI7t3yLB3Ir2qRWAJSFZBeXkUMhsg7XzpRbMBKwAylIqv6CEYIqMu32AQwAbAGd6Gh0AdzVwEkFhdWRvHQBZEENVL1UsImpM2zRJVijTI1josDKdAA8XEnMEJCwEOrQEN3NeADlkgHkAZQAdYM6e3SGAcX8AF3oilzcRNt53KFYahqRuNAgETT5iPhReAEE1tIOwXbTL8GbD5F4ATVYAJwMjSBMzMC9bVDgOEI9issJ8fOBBBIpLBZM5dm58KpPN4VKorAEQmEpHN4XxEUDlvjIgS8aoiMCRMTQbwKoJqXxEqtit9XO8YpY5iVwKz0ty0Zzvgg4iz+cyjL8uZcOWL2WkwbTVgp6cosmCNFpVusrtwcC5NvhqLwHiAAEKsIA" %}}
+</div>
+
+### Complementary Metal-oxide Semiconductor (CMOS) Logic
+
+_Complementary metal-oxide-semiconductor_ (CMOS) is a way of building logic functions from complementary pairs of N-channel and P-channel MOSFETs. Today, it is by far the most popular way of constructing digital integrated circuits (ICs)[^bib-wikipedia-cmos]. CMOS circuits typically have negligible static power dissipation and only consume power during transitions. It advances from NMOS technology by replacing the upper resistor with P-channel MOSFETs, which both eliminates static power dissipation and speeds up the low-to-high transition.
 
 Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivalents. The `T` in the logic subfamily name signifies the parts have TTL-compatible inputs.
+
+#### CMOS Inverter Gate
+
+The inverter is the easiest CMOS logic gate to make! It just consists of one P-channel and one N-channel MOSFET in a "totem-pole" configuration: 
+
+{{% figure src="cmos-inverter-gate.png" width="200px" caption="A CMOS inverter gate." %}}
+
+{{% tip %}}
+These diagrams use the simplified MOSFET symbols in where the P-channel as a bubble next to it's gate and the N-channel doesn't. No indication of drain or source are shown either, although this may be a moot point if in an integrated circuit with the substrate not connected to the source. If you are unfamiliar with this MOSFET symbol style, see the [MOSFETs page](/electronics/components/transistors/mosfets/) for more info.
+{{% /tip %}}
+
+When the input `\(A\)` is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is `\(+V_{DD}\)` and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is `\(0V\)` and therefore OFF. Hence the output gets driven `LOW`. When `\(A\)` is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to `\(0V\)` and the P-channel's gate-source voltage goes to `\(-V_{DD}\)`, turning it ON and driving the output `HIGH`. 
+
+{{% circuitjs width="400" height="400" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4CaIImAFh+4CMmhIYkNBy69uwwcqUiBk6bDkB3FSKL594EgMisA5se7cjQgdyK9q5gErGwYIh8jOoIbjp-FylWABlKQxMBBC9o4JB2AEMAGwBnehpzPQQeeNzeUTNWPXt4su5kb3MAWUFbcvxqMFN-NFDShpaBMu6oVgAPSmQINHxkEFwJscUQNF4AYRqAeQBlAB00gEkAOwA3egAnABcjzYBxJNOShQDlAvjsyKM+h77zIYQuwkjC-CRePMQABBQaCKjgH5EaGQgFzXgATVYQA" %}}
+
+#### CMOS NAND Gate
+
+After the inverter, the two easiest CMOS gates to build are the NAND and NOR gates. The NAND gate can be built from two P-channel and two N-channel MOSFETs as shown below.
+
+{{% figure src="cmos-nand-gate.png" width="400px" caption="A CMOS NAND gate, built from two P-channel and two N-channel MOSFETs." %}}
+
+Two N-channels are connected in series on the bottom side, and two P-channels are connected in parallel on the top side. Both inputs (`\(A\)` and `\(B\)`) have to be `HIGH` to turn on both the lower side N-channel MOSFETs and drive the output (`\(Y\)`) `LOW`. If either inputs are `LOW`, at least one of the high-side P-channel MOSFETs will be turned on, driving the output `HIGH`. This completes the NAND logic.
+
+You can play around with the interactive CMOS NAND gate below:
+
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGK4QAsiBHNR3MUsAgLMdymhaq8BA9DINbsFwMMMmBhj9xJSYtEISiNMUKdjqRZMZCmRCWcyaVS9ucRsp7qNWAAPShoNSQCCOCgYYqKXgAYQRAHkAMoAHWmADkAIK6gAiOoA4uMAC70VhAA" %}}
+
+#### CMOS NOR Gate
+
+A CMOS NOR gate is built in a similar fashion to a NAND gate, except you swap the serial and parallel connections of the P-Ch and N-Ch MOSFETs around.
+
+{{% figure src="cmos-nor-gate.png" width="400px" caption="A CMOS NOR gate." %}}
+
+Play around with toggling the inputs on the interactive simulation: 
+
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYhEAs1YJaLvj4Dwg5NCQxIaDpVEZ8XMIMXgIEqbFmcEREYP0GxKSVG1yECrIZUhsgsBrPTZAcy68Q3NN0-VuL2pIVgAlZXEsIgiUQKh4ryl4mARWABlKDHsCb3wlNWCQdgBDABsAZ3oaEIyELIdc-JtkorLK6tYAdxi0Xx69KFYAWRAsZEdx0biwSeo0SS6Y5FEiO2QowYAPTKVxpTHdme97PwBhIYB5AGUAHXKAOQvQu4BxYoAXekWjbxyfnz8IW6-z6PACfSBQnBfiIwl+SkhYO8oLhAMG3Tqc2aeiagkhOPAkD8BLAdXRlFh4DJRGQ0VJeO+tKphiZ-AZwNZKy8bPJmOySgQYGiBUWBIaVlUzXxQv58lUOWlwsSMp5ivAoj0xkRdhmtkcMsRcHAGx+Tmihr4MtW+vN3x1VrhZvJsMt0RdxttwJ1k2t9jyzu9gjGE3ZlBlvjo4YVospeGJlIaIW2VA0JGiCGWKDIxz6AEFWMnIBBiIIMyR7EQkH4+gAhAujFiEiA2Ch4aLVvwATVYQA" %}}
 
 #### Tristate CMOS Inverter
 
@@ -595,8 +661,10 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 
 ## References
 
-[^bib-ti-74hc4051-multi]:  Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
-[^bib-maxim-xor-definition]:  Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
-[^bib-spin-num-logic-gates]:  McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
-[^bib-wp-list-logic-sym]:  Wikipedia (2005, Aug 20). _List of logic symbols_. Retrieved 2021-10-25, from https://en.wikipedia.org/wiki/List_of_logic_symbols.
+[^bib-ti-74hc4051-multi]: Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
+[^bib-maxim-xor-definition]: Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
+[^bib-spin-num-logic-gates]: McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
+[^bib-wp-list-logic-sym]: Wikipedia (2005, Aug 20). _List of logic symbols_. Retrieved 2021-10-25, from https://en.wikipedia.org/wiki/List_of_logic_symbols.
 [^bib-utah-digital-vlsi-lab-ass-3]: University of Utah: John and Marcia Price College of Engineering. _ECE/CS 5710/6710 – Digital VLSI Design: Lab Assignment #3_. Retrieved 2023-04-24, from https://my.eng.utah.edu/~kstevens/5710/lab3.pdf.
+[^bib-wikipedia-cmos]: Wikipedia (2023, Feb 17). _CMOS_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/CMOS.
+[^bib-wikipedia-nmos]: Wikipedia (2023, March 12). _NMOS Logic_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/NMOS_logic.

@@ -18,3 +18,7 @@ type: post
 * Added info on [transmission gates](/electronics/components/analogue-switches-transmission-gates/#transmission-gates).
 
 * Added info on [tristate inverters](/electronics/circuit-design/digital-logic/gates/#tristate-cmos-inverter).
+
+* Added [info, schematics and interactive simulations on digital logic gates built from NMOS technology](/electronics/circuit-design/digital-logic/gates/#n-type-metal-oxide-semiconductor-nmos-logic).
+
+* Added more [info, schematics and interactive simulations on logic gates built from CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-cmos-logic).
