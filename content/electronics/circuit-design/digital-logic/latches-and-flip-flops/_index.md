@@ -2,7 +2,7 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2012-08-06
-description: All you need to know about latches and flip-flops, including SR, D and JK latches/flip-flops, how they work, schematics, simulations, timing requirements and more.
+description: SR, D and JK latches and flip-flops, how they work, schematics, simulations, timing requirements and more.
 draft: false
 images: [ /electronics/circuit-design/digital-logic/latches-and-flip-flops/cover-image.png ]
 lastmod: 2023-04-30
@@ -22,7 +22,7 @@ There is a lot of debate on what constitutes a latch vs. a flip-flop. We will ad
 * Latches are either completely  _asynchronous_ and they act immediately when their inputs change, or they are _synchronous_ and provided a control signal which gates the latch so that it only acts when the control signal is a certain level (level-triggered) (the control signal called be called a clock). They are never edge-triggered.
 * Flip-flops are fed a clock-signal, and only act the transition of the clock signal between states (edge-triggered). Just like some latches, flip-flops are _synchronous_.
 
-{{% figure src="what-type-of-flipflop.png" width="700px" caption="No, this is not really part of the confusion. If you're not following along, don't worry, this is a New Zealand thing :-D." %}}
+{{% figure src="what-type-of-flipflop.png" width="700px" caption="We're talking about the flip-flops on the right, not the left. If you're not following along, don't worry, this is a New Zealand thing :-D." %}}
 
 There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
 
