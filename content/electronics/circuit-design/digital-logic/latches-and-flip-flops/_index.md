@@ -1,15 +1,19 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2012-08-06
+description: All you need to know about latches and flip-flops, including SR, D and JK latches/flip-flops, how they work, schematics, simulations, timing requirements and more.
 draft: false
-lastmod: 2023-04-25
+images: [ /electronics/circuit-design/digital-logic/latches-and-flip-flops/cover-image.png ]
+lastmod: 2023-04-30
 tags: [ electronics, circuit design, digital logic, latches, flip-flops, SR latch, D latch, JK latch, D flip-flop, propagation delay, inverters, and gates, edge detection, circuit, mtbf, asynchronous, reset, NAND, NOR, AND ]
-title: "Latches and Flip-Flops"
-type: "page"
+title: Latches and Flip-Flops
+type: page
 ---
 
 ## Overview
+
+{{% figure src="cover-image.png" width="400px" float="right" %}}
 
 A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. They are are key component in _sequential logic_ (logic which depends not only on the present state on the inputs, but also past information). It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**. This page assumes a working knowledge of digital gates such as AND gates, OR gates, e.t.c. See the [Gates page](/electronics/circuit-design/digital-logic/gates/) if you want to get up to speed on those first!
 
