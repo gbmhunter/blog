@@ -19,8 +19,6 @@ A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit 
 
 There is a lot of debate on what constitutes a latch vs. a flip-flop. We will adhere to the following definition:
 
-
-
 * Latches are either completely  _asynchronous_ and they act immediately when their inputs change, or they are _synchronous_ and provided a control signal which gates the latch so that it only acts when the control signal is a certain level (level-triggered) (the control signal called be called a clock). They are never edge-triggered.
 * Flip-flops are fed a clock-signal, and only act the transition of the clock signal between states (edge-triggered). Just like some latches, flip-flops are _synchronous_.
 
