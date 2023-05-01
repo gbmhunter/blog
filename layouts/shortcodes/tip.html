@@ -3,6 +3,7 @@
     <img src="/assets/icons/tip.svg" alt="Tip">
   </div>
   <div class="content">
-    {{- .Inner | markdownify -}}
+    <!-- Using {{ .Inner }} and not {{- .Inner | markdownify -}} allows footnotes to work correctly. -->
+    {{ .Inner }}
   </div>
 </div>

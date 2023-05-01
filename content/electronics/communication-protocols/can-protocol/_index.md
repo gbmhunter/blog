@@ -3,7 +3,7 @@ authors: [ Geoffrey Hunter ]
 date: 2012-12-12
 description: Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol.
 categories: [ Electronics, Communication Protocols ]
-lastmod: 2022-11-17
+lastmod: 2023-05-01
 tags: [ CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD, NXP, Secure CAN ]
 title: CAN Protocol
 type: page
@@ -117,6 +117,10 @@ _Wired AND_ is a good way to allow physical arbitration to take place when multi
 * The node transmitting the 1 will detect the bus as 0, indicating that it has lost control (remember a 1 is recessive, and get's "overwritten" by a 1 due to the open-drain drive). This node will back-off, stop transmitting, and try again later.
 
 After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
+
+{{% tip %}}
+Car thieves have been cleverly using a special transmitter that also drives to the recessive level to override other messages on a vehicles CAN bus network, which has allowed them to break in and steal cars by accessing the CAN bus from the front headlights[^bib-ken-tindell-keyless-car-theft]. See [CAN Injection: Keyless Car Theft](https://kentindell.github.io/2023/04/03/can-injection/) for more info.
+{{% /tip %}}
 
 The below image shows arbitration happening with a real-world scope capture, by showing the changing dominant bus voltage as driving transceivers lose arbitration and "drop" off the bus. 
 
@@ -587,3 +591,4 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^bib-eecs-461-can]: J. A. Cook, J. S. Freudenberg. _EECS 461 - Controller Area Network (CAN)_. University of Michigan. Retrieved 2022-11-17, from https://www.eecs.umich.edu/courses/eecs461/doc/CAN_notes.pdf.
 [^bib-nxp-tja115x-secure-can]: NXP. _SECURCANTRLFUS REV 3 - NXP TJA115x Secure CAN Transceiver Family_. Retrieved 2022-11-17, from https://www.nxp.com/docs/en/fact-sheet/SECURCANTRLFUS.pdf.
 [^bib-philips-pca82c200-ds]: Philips (now NXP). _PCA82C200 - Stand-alone CAN-controller (datasheet)_. Retrieved 2022-11-23, from https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html.
+[^bib-ken-tindell-keyless-car-theft]: Ken Tindell (2023, Apr 3). _CAN Injection: keyless car theft_. CANIS CTO Blog. Retrieved 2023-05-01, from https://kentindell.github.io/2023/04/03/can-injection/.
