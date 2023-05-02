@@ -4,7 +4,7 @@ categories: [ Programming ]
 date: 2023-05-02
 draft: false
 lastmod: 2023-05-02
-tags: [ Python ]
+tags: [ Python, package, setuptools ]
 title: How To Create A Python Package
 type: page
 ---
@@ -23,7 +23,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "my_package"
 authors = [
-    {name = "Josiah Carberry", email = "josiah_carberry@brown.edu"},
+    {name = "My name", email = "my_email@abc.com"},
 ]
 description = "My package description"
 readme = "README.rst"
