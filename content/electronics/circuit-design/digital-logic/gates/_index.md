@@ -41,7 +41,7 @@ And this gives rise to the simple equation for NOT logic:
 Y = \overline{A}
 \end{align}</p>
 
-### AND/NAND
+### AND
 
 An AND gate outputs `TRUE` only if all it's inputs are `TRUE`. AND is also called logical conjunction[^bib-wp-list-logic-sym].
 
@@ -75,6 +75,8 @@ An AND gate can be made using basic diode logic as shown below:
 
 {{% figure src="and-gate-from-diodes-and-resistors.svg" width="300px" caption="An AND gate made from basic diode logic." %}}
 
+### NAND
+
 A NAND gate is just an AND gate but with the output inverted. This is shown below with the bubble at the output of the AND symbol:
 
 {{% figure src="nand-gate-symbol.svg" width="800px" caption="The symbol for an NAND gate." %}}
@@ -94,7 +96,7 @@ Truth table for an NAND gate:
   </tbody>
 </table>
 
-### OR/NOR
+### OR
 
 A OR gate is `TRUE` if at least one input is `TRUE`. This means it is also outputs `TRUE` if all it's inputs are `TRUE`. OR is also called logical disjunction[^bib-wp-list-logic-sym].
 
@@ -123,6 +125,12 @@ Y &= A \vee B \\
 Y &= A || B \\
 \end{align}</p>
 
+The OR gate be drawn using three equal diameter circles placed on a grid as shown in the below image. Segments of the circles perimeters are taken along with the addition of two horizontal line sections to form the classic OR gate shape[^bib-spin-num-logic-gates].
+
+{{% figure src="how-to-draw-the-or-gate.png" width="600px" caption="Diagram showing how to draw an OR gate from the segments of three equal diameter circles placed on a grid[^bib-spin-num-logic-gates]." %}}
+
+### NOR
+
 A NOR gate is just a OR gate but with the output inverted (i.e. what you would get if you connected the output of an OR gate to an inverter). Just like the NAND gate, the NOR is gate is shown in the below image -- and is just an OR gate symbol with a bubble on the output.
 
 {{% figure src="nor-gate-symbol.svg" width="800px" caption="The symbols for a NOR gate." %}}
@@ -147,10 +155,6 @@ The equation for an NOR gate:
 <p>\begin{align}
 Y = \overline{A + B}
 \end{align}</p>
-
-The OR gate be drawn using three equal diameter circles placed on a grid as shown in the below image. Segments of the circles perimeters are taken along with the addition of two horizontal line sections to form the classic OR gate shape[^bib-spin-num-logic-gates].
-
-{{% figure src="how-to-draw-the-or-gate.png" width="600px" caption="Diagram showing how to draw an OR gate from the segments of three equal diameter circles placed on a grid[^bib-spin-num-logic-gates]." %}}
 
 ### XOR
 
@@ -185,7 +189,16 @@ Y &= (A + B) \cdot (\bar{A} + \bar{B}) \\
 Y &= A \bigoplus B \\
 \end{align}</p>
 
+There are many ways to build XOR gates from the more basic NAND, NOR, AND and OR gates. The most intuitive approach to me is to represent the XOR gate as `\(Y = (A \cdot \overline{B}) + (\overline{A} \cdot B)\)`. The following circuit shows this structure:
+
+{{% figure src="xor-gate-made-from-ands-and-or.png" width="500px" caption="A XOR gate made from AND and OR gates, with some of the inputs inverted into the front-end of the AND gates." %}}
+
+The following circuit shows a XOR gate made from a AND, NAND and OR gate. This circuit implements the equation `\(Y = (\overline{AB}) \cdot (A + B)\)`. Toggle the inputs in the right-hand side interactive simulation to see the XOR gate in action!
+
+<div style="display: flex;">
 {{% figure src="xor-gate-made-from-and-nand-or.svg" width="500px" caption="A XOR gate made from 1 AND, NAND and OR gate." %}}
+{{% circuitjs width="400" height="300" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADKVZHhg8IAWAbx7VqAMwCGAGwDO9GpFYBZEFiHgi+Nd03bqaaAlYAPEETjhIJNanDI0IYWmEANAPIAlADqyA4pIALvSmlEQQYNhcjmB4TijCAIKh6jEIPFgIyOAINsLIwgCaHFw8ApaCwuViUCBScgpISmbpwmD4Ngi44CSO+cIAQqzIVOb42nza6m1aKCCOdMNZ5gTgGkREbRrZjkjGI44WE73mmz2OO7XGAO6nW8JaExpKt4+a1G9gz6yvZ2AnnxOLzGx0O43AumBR3A+GECFhMOEwPhbQRKJEUB+KwmCEOljAuMxr3xhIs1GqRNKGPRsVEWJpfGxGORugpZKclihljZqwpSiAA" %}}
+</div>
 
 The below image shows a XOR gate made exclusively from NAND gates:
 
@@ -195,7 +208,7 @@ You can also make a XOR gate exclusively from NOR gates, as shown in the below i
 
 {{% figure src="xor-gate-made-from-nors.svg" width="600px" caption="A XOR gate made exclusively from NOR gates." %}}
 
-Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, e.t.c? So in general, a XOR gate with more than 2 inputs is ill-defined. However, there are a few other names used for logic that performs some of these functions:
+Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, e.t.c? **So in general, a XOR gate with more than 2 inputs is ill-defined.** However, there are a few other names used for logic that performs some of these functions:
 
 1. *Output TRUE only if 1 and only 1 input is TRUE*. This is called a _one-hot detector_. However, this is rarely seen in practise.
 1. *Output TRUE only if an odd number of inputs are TRUE*. This is called a _parity generator_ or _modulo-2 adder_.
