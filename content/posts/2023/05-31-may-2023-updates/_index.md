@@ -12,3 +12,5 @@ type: post
 ---
 
 * Created a new page [How To Create A Python Package](/programming/languages/python/how-to-create-a-python-package/).
+
+* Added info and schematics of a 3-input CMOS NAND gate, CMOS AND and CMOS OR gates.

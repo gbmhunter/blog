@@ -154,7 +154,7 @@ The OR gate be drawn using three equal diameter circles placed on a grid as show
 
 ### XOR
 
-A 2-input _XOR gate_ (_exclusive OR_) only outputs `TRUE` if *one and only one* of it's inputs is also `TRUE`. 
+A 2-input _XOR gate_ (_exclusive OR_) only outputs `TRUE` if *one and only one* of it's inputs is also `TRUE`. For many gate construction technologies, the XOR gate is the most complex primitive gate to build.
 
 {{% figure src="xor-gate-symbol.svg" width="800px" caption="The symbols for a 2-input XOR (exclusive-or) gate." %}}
 
@@ -195,10 +195,10 @@ You can also make a XOR gate exclusively from NOR gates, as shown in the below i
 
 {{% figure src="xor-gate-made-from-nors.svg" width="600px" caption="A XOR gate made exclusively from NOR gates." %}}
 
-Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, e.t.c?
+Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, e.t.c? So in general, a XOR gate with more than 2 inputs is ill-defined. However, there are a few other names used for logic that performs some of these functions:
 
 1. *Output TRUE only if 1 and only 1 input is TRUE*. This is called a _one-hot detector_. However, this is rarely seen in practise.
-1. *Output TRUE only if an odd number of inputs are TRUE*. This is called a _parity generator_ or _modulo-2 adder_. This is more commonly implemented behaviour for a XOR gate with more than 2 inputs.
+1. *Output TRUE only if an odd number of inputs are TRUE*. This is called a _parity generator_ or _modulo-2 adder_.
 
 XOR gates are used for:
 
@@ -206,11 +206,13 @@ XOR gates are used for:
 * *Correlation/sequence detection*: XOR gates output `FALSE` if both inputs are the same. This behaviour can be utilized to perform correlation between two bit streams.
 * Cryptographic circuits.
 
-XNOR is an XOR gate but with the output inverted.
+### XNOR
+
+The XNOR gate is an XOR gate but with the output inverted. The symbol is:
 
 {{% figure src="xnor-gate-symbol.svg" width="800px" caption="The symbols for a XNOR gate." %}}
 
-Truth table for an XNOR gate:
+The truth table for an XNOR gate is:
 
 <table>
   <thead>
@@ -299,9 +301,12 @@ Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivale
 
 #### CMOS Inverter Gate
 
-The inverter is the easiest CMOS logic gate to make! It just consists of one P-channel and one N-channel MOSFET in a "totem-pole" configuration: 
+The inverter is the easiest CMOS logic gate to make! It just consists of one P-channel and one N-channel MOSFET in a "totem-pole" configuration, as shown below. On the right-hand side is an interactive simulation.
 
+<div style="display: flex;">
 {{% figure src="cmos-inverter-gate.png" width="200px" caption="A CMOS inverter gate." %}}
+{{% circuitjs width="400" height="400" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4CaIImAFh+4CMmhIYkNBy69uwwcqUiBk6bDkB3FSKL594EgMisA5se7cjQgdyK9q5gErGwYIh8jOoIbjp-FylWABlKQxMBBC9o4JB2AEMAGwBnehpzPQQeeNzeUTNWPXt4su5kb3MAWUFbcvxqMFN-NFDShpaBMu6oVgAPSmQINHxkEFwJscUQNF4AYRqAeQBlAB00gEkAOwA3egAnABcjzYBxJNOShQDlAvjsyKM+h77zIYQuwkoECjB8EheMheABBQaCKjgH5EBAkaFAlC8ACarCAA" %}}
+</div>
 
 {{% tip %}}
 These diagrams use the simplified MOSFET symbols in where the P-channel as a bubble next to it's gate and the N-channel doesn't. No indication of drain or source are shown either, although this may be a moot point if in an integrated circuit with the substrate not connected to the source. If you are unfamiliar with this MOSFET symbol style, see the [MOSFETs page](/electronics/components/transistors/mosfets/) for more info.
@@ -309,29 +314,51 @@ These diagrams use the simplified MOSFET symbols in where the P-channel as a bub
 
 When the input `\(A\)` is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is `\(+V_{DD}\)` and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is `\(0V\)` and therefore OFF. Hence the output gets driven `LOW`. When `\(A\)` is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to `\(0V\)` and the P-channel's gate-source voltage goes to `\(-V_{DD}\)`, turning it ON and driving the output `HIGH`. 
 
-{{% circuitjs width="400" height="400" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4CaIImAFh+4CMmhIYkNBy69uwwcqUiBk6bDkB3FSKL594EgMisA5se7cjQgdyK9q5gErGwYIh8jOoIbjp-FylWABlKQxMBBC9o4JB2AEMAGwBnehpzPQQeeNzeUTNWPXt4su5kb3MAWUFbcvxqMFN-NFDShpaBMu6oVgAPSmQINHxkEFwJscUQNF4AYRqAeQBlAB00gEkAOwA3egAnABcjzYBxJNOShQDlAvjsyKM+h77zIYQuwkjC-CRePMQABBQaCKjgH5EaGQgFzXgATVYQA" %}}
-
 #### CMOS NAND Gate
 
-After the inverter, the two easiest CMOS gates to build are the NAND and NOR gates. The NAND gate can be built from two P-channel and two N-channel MOSFETs as shown below.
+After the inverter, the two easiest CMOS gates to build are the NAND and NOR gates. A 2-input NAND gate can be built from two P-channel and two N-channel MOSFETs as shown below. On the right-hand is an interactive simulation.
 
-{{% figure src="cmos-nand-gate.png" width="400px" caption="A CMOS NAND gate, built from two P-channel and two N-channel MOSFETs." %}}
+<div style="display: flex;">
+{{% figure src="cmos-nand-gate.png" width="400px" caption="A 2-input CMOS NAND gate, built from two P-channel and two N-channel MOSFETs." %}}
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGK4QAsiBHNR3MUsAgLMdymhaq8BA9DINbsFwMMMmBhj9xJSYtEISiNMUKdjqRZMZCmRCWcyaVS9ucRsp7qNWAAPShoNSQCCOCgYYqKXgAYQRAHkAMoAHWmADkAIK6gAiOoA4uMAC70cWSijHZCUbHHAYoXj6m2YxVoJAIMBIbjPXjIXgAIRtjjEeGRYDt7iMrpAAE1WEA" %}}
+</div>
 
 Two N-channels are connected in series on the bottom side, and two P-channels are connected in parallel on the top side. Both inputs (`\(A\)` and `\(B\)`) have to be `HIGH` to turn on both the lower side N-channel MOSFETs and drive the output (`\(Y\)`) `LOW`. If either inputs are `LOW`, at least one of the high-side P-channel MOSFETs will be turned on, driving the output `HIGH`. This completes the NAND logic.
 
-You can play around with the interactive CMOS NAND gate below:
+The number of inputs can be easily increased from 2 by adding the appropriate number of extra MOSFETs in series and in parallel. For example, a 3-input CMOS NAND gate's schematic would look like this:
 
-{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGK4QAsiBHNR3MUsAgLMdymhaq8BA9DINbsFwMMMmBhj9xJSYtEISiNMUKdjqRZMZCmRCWcyaVS9ucRsp7qNWAAPShoNSQCCOCgYYqKXgAYQRAHkAMoAHWmADkAIK6gAiOoA4uMAC70VhAA" %}}
+{{% figure src="cmos-nand-gate-3-input.png" width="500px" caption="A schematic for a 3-input CMOS NAND gate." %}}
 
 #### CMOS NOR Gate
 
-A CMOS NOR gate is built in a similar fashion to a NAND gate, except you swap the serial and parallel connections of the P-Ch and N-Ch MOSFETs around.
+A CMOS NOR gate is built in a similar fashion to a NAND gate, except you swap the serial and parallel connections of the P-channel and N-channel MOSFETs around. On the right-hand side is an interactive simulation. 
 
+<div style="display: flex;">
 {{% figure src="cmos-nor-gate.png" width="400px" caption="A CMOS NOR gate." %}}
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYhEAs1YJaLvj4Dwg5NCQxIaDpVEZ8XMIMXgIEqbFmcEREYP0GxKSVG1yECrIZUhsgsBrPTZAcy68Q3NN0-VuL2pIVgAlZXEsIgiUQKh4ryl4mARWABlKDHsCb3wlNWCQdgBDABsAZ3oaEIyELIdc-JtkorLK6tYAdxi0Xx69KFYAWRAsZEdx0biwSeo0SS6Y5FEiO2QowYAPTKVxpTHdme97PwBhIYB5AGUAHXKAOQvQu4BxYoAXekWjbxyfnz8IW6-z6PACfSBQnBfiIwl+SkhYO8oLhAMG3Tqc2aeiagkhOPAkD8BLAdXRlFh4DJRGQ0VJeO+tKphiZ-AZwNZKy8bPJmOySgQYGiBUWBIaVlUzXxQv58lUOWlwsSMp5ivAoj0xkRdhmtkcMsRcHAGx+Tmihr4MtW+vN3x1VrhZvJsMt0RdxttwJ1k2t9jyzu9gjGE3ZlBlvjo4YVospeGJlIaIW2VA0JGiCEmyxIx2QfgAgqxk5AIMRBBnVEQkH5cyAAEKF0YsQkQGx8SDRat+ACarCAA" %}}
+</div>
 
-Play around with toggling the inputs on the interactive simulation: 
+#### CMOS AND Gate
 
-{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYhEAs1YJaLvj4Dwg5NCQxIaDpVEZ8XMIMXgIEqbFmcEREYP0GxKSVG1yECrIZUhsgsBrPTZAcy68Q3NN0-VuL2pIVgAlZXEsIgiUQKh4ryl4mARWABlKDHsCb3wlNWCQdgBDABsAZ3oaEIyELIdc-JtkorLK6tYAdxi0Xx69KFYAWRAsZEdx0biwSeo0SS6Y5FEiO2QowYAPTKVxpTHdme97PwBhIYB5AGUAHXKAOQvQu4BxYoAXekWjbxyfnz8IW6-z6PACfSBQnBfiIwl+SkhYO8oLhAMG3Tqc2aeiagkhOPAkD8BLAdXRlFh4DJRGQ0VJeO+tKphiZ-AZwNZKy8bPJmOySgQYGiBUWBIaVlUzXxQv58lUOWlwsSMp5ivAoj0xkRdhmtkcMsRcHAGx+Tmihr4MtW+vN3x1VrhZvJsMt0RdxttwJ1k2t9jyzu9gjGE3ZlBlvjo4YVospeGJlIaIW2VA0JGiCGWKDIxz6AEFWMnIBBiIIMyR7EQkH4+gAhAujFiEiA2Ch4aLVvwATVYQA" %}}
+Funnily enough, the easiest way to build a CMOS AND gate to to build a NAND gate and then add an inverter on it's output. Thus it's schematic looks like what is shown in the below-left picture.
+
+<div style="display: flex;">
+{{% figure src="cmos-and-gate.png" width="400px" caption="The schematic for building a 2-input CMOS AND gate. Notice how it's just a NAND gate with an inverter attached to the output." %}}
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGKt0eI2UhkGCP8YGGGQxYT2WMxLmxEKxCCc4nc8NxZOOkPAwwRywe91GrAAHncSK5IBQsAgKGhUEZXLwAMIAWQA8gBlAA60wAggA5AAisoA4uMAC70VmUbB8ZCUanHAYoXhynUk4rcNBIBBgJDWgS8ZC8ABCOpwT2KWHwFGEHOdvAAmriSMVySAsMMI7coxYsN7o9TYwmNN7fmmEqLI6mI-g-snXLVfAnqBHS3wcns45ma2gwwl8hW4tRm9wbhUOtVaskK2B-BXKh3YxnCX3k3Ia2BU33cyIrDoZJPhvX09RVxoJNYl5EGxGsROgA" %}}
+</div>
+
+#### CMOS OR Gate
+
+In a similar fashion to the CMOS AND gate, the simplist way to build a CMOS OR gate is to build a NOR gate and then add an inverter on it's output.
+
+<div style="display: flex;">
+{{% figure src="cmos-or-gate.png" width="400px" caption="The schematic for building a 2-input CMOS OR gate. Notice how it's just a NOR gate with an inverter attached to the output." %}}
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYhEAs1YJaLvj4Dwg5NCQxIaDpVEZ8XMIMXgIEqbFmcEREYP0GxKSVG1yECrIZUhsgsBrPTZAcy68Q3NN0-VuL2pIVgAlZXEsIgiUQKh4ryl4mARWABlKDHsCb3wlNWCQdgBDABsAZ3oaEIyELIdc-JtkorLK6tYAdxi0Xx69KC6Y5FEiO2QowYAPSiIkZDBkEFwlBb8-PoBhAFkAeQBlAB1y3dDjgHFigBd6IaNvHPufPxDup76eAL7XoS+-ImEDyUP0+3g+gOeg26dWoDT0TUEP3h4EgfmRYDqUNmSgxhmQ0VxWKI+PAmOJBNEIJJ-EMXhpWJh2SUCDA0QKQ2RcOsiI5rKZ8lUOSRfN8dD59OFFMEemMILsi1sjj5ILg4Em9yc0RVfD5YyVWru8t1gM1RJNxr4kzljmQivseQZIsSIqFHIBKLR7oaIRmVA0JGiCFtKDI3liIAAgqxfZAIMRpcHiEg-Mg-AAhaMgYSOGRZlgo5PhgCahptglwBODPwrpPL4qrQ2EfGDWHwfgVg22WdVHfw8qr9kkQ1b7ZbbfUBu6NY7Ne9YWW47QAxH9m+CToLRSrA8K9ZSl34+Cw8XDt3Dc408xu8x4xcFgvIuaK4aTlMWhkrCAA" %}}
+</div>
+
+#### CMOS XOR Gate
+
+The CMOS XOR gate is the hardest CMOS gate primitive to build!
 
 #### Tristate CMOS Inverter
 
