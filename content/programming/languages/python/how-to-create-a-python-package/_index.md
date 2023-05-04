@@ -1,10 +1,10 @@
 ---
 authors: [ Geoffrey Hunter ]
-categories: [ Programming ]
+categories: [ Programming, Languages, Python ]
 date: 2023-05-02
 draft: false
-lastmod: 2023-05-02
-tags: [ Python, packages, setuptools, pyproject, TOML, build, build tools ]
+lastmod: 2023-05-03
+tags: [ Python, packages, setuptools, pyproject, TOML, build, build tools, dependencies, Setuptools, Flit, Poetry, packaging, modules ]
 title: How To Create A Python Package
 type: page
 ---
@@ -49,6 +49,27 @@ $ pip install /path/to/package/
 ```
 
 where `/path/to/package/` is the path to the directory in where the `pyproject.toml` resides.
+
+## Optional Dependencies
+
+You can add optional dependencies under a `[project.optional-dependencies]` table in the `pyproject.toml` file. One common use case is when you have a set of dependencies that are only required to run unit tests, but not when deploying the application to others.
+
+Here is an example which adds three optional "test" dependencies:
+
+```toml
+[project.optional-dependencies]
+test = [
+    "mypy==0.910",
+    "pytest==6.2.5",
+    "pytest-cov==3.0.0",
+]
+```
+
+These optional dependencies can be installed (along with the required dependencies) with:
+
+```bash
+$ pip install .[test]
+```
 
 ## References
 
