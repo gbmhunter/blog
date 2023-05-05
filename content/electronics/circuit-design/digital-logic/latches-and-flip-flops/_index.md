@@ -507,6 +507,22 @@ A toggle flip-flop can be made from an edge-triggered D-type flip-flop with it's
 
 As you can see from the above timing diagram, the output toggles between high and low on every positive clock edge. This also can be considered a _divide-by-two_ device (i.e. the output signal is half the frequency of the input), and is the basis for many digital counters[^bib-learnaboutelectronics-d-type-flip-flops]. Many of these could be connected in series, with the output of the first (`Q`) being connected to the input of the second (`CLK`). This would form a simple n-bit digital counter where n is the number of flip-flops in series.
 
+### Quadrature Detection Circuit
+
+This quadrature detection circuit is built entirely in hardware, and only uses one flip-flop. It is useful for detecting the direction that an encoder that outputs quadrature signals is spinning in. Potential applications include [BLDC motor control](/electronics/circuit-design/bldc-motor-control). This circuit can be built entirely in [reconfigurable PSoC on-chip logic](/programming/microcontrollers/psoc).
+
+When the encoder is spinning in one direction, the output will be logic high (1), when it is spinning in the opposite direction, it will be logic low (0).
+
+{{% figure src="quadrature-phase-detection-circuit.png" width="600px" caption="A simple quadrature phase detection circuit using a D flip-flop." %}}
+
+### Delay Circuit
+
+A simple delay circuit can be made just by chaining DQ flip-flops together in series (the output of one feeds the input of another). For every flip-flop, the signal will be delayed by one clock-cycle (assuming they all share the same clock source).
+
+{{% figure src="four-clock-cycle-delay-element-from-flipflops.png" width="800px" caption="A simple four clock-cycle delay element made from four DQ flip-flops. This can be used as a simple timer." %}}
+
+This can be used to make a simple timer. Obviously, a limitation is that a flip-flop is needed for every clock cycle of delay needed (try that with a 1000 clock cycle delay!). More advanced timers use binary encoding with the flip-flops to achieve a greater number of states for a lower number of flip-flops.
+
 ## References
 
 [^bib-eforu-flipflops]: ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.

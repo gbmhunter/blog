@@ -385,6 +385,11 @@ A useful building block for digital logic is a CMOS inverter whose output can al
 
 {{% figure src="tristate-inverter.png" width="900px" caption="Diagram showing how a tri-state converter can be made by combining the MOSFETs from a inverter and transmission gate into a single \"totem pole\" arrangement." %}}
 
+### Pass Transistor Logic (PTL)
+
+Pass transistor logic (PTL) is a form of logic design in where transistors are used to connect the input directly to the output -- to reduce the number of transistor required to implement the logic. CMOS logic always uses the input to switch the output to either the positive rail or ground. PTL on the other hand eliminates some of the transistors that would be required in CMOS logic by allowing the transistors to connect the input directly to the output (instead of connecting the output to the rails). The disadvantage of doing this is that the output voltage reduces through each stage[^bib-wikipedia-ptl].
+
+[Transmission gates](/electronics/components/analogue-switches-transmission-gates/#transmission-gates) are used frequently in the design of PTL logic as a way of switching the input to the output.
 
 ### Comparison
 
@@ -689,22 +694,6 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 
 {{% figure src="digital-logic-counter-three-bit-grey-encoded-binary.png" width="700px" caption="Schematic of a three-bit Grey encoded binary counter." %}}
 
-### Quadrature Detection Circuit
-
-This quadrature detection circuit is built entirely in hardware, and only uses one flip-flop. It is useful for detecting the direction that an encoder that outputs quadrature signals is spinning in. Potential applications include [BLDC motor control](/electronics/circuit-design/bldc-motor-control). This circuit can be built entirely in [reconfigurable PSoC on-chip logic](/programming/microcontrollers/psoc).
-
-When the encoder is spinning in one direction, the output will be logic high (1), when it is spinning in the opposite direction, it will be logic low (0).
-
-{{% figure src="quadrature-phase-detection-circuit.png" width="600px" caption="A simple quadrature phase detection circuit using a D flip-flop." %}}
-
-### Delay Circuit
-
-A simple delay circuit can be made just by chaining DQ flip-flops together in series (the output of one feeds the input of another). For every flip-flop, the signal will be delayed by one clock-cycle (assuming they all share the same clock source).
-
-{{% figure src="four-clock-cycle-delay-element-from-flipflops.png" width="800px" caption="A simple four clock-cycle delay element made from four DQ flip-flops. This can be used as a simple timer." %}}
-
-This can be used to make a simple timer. Obviously, a limitation is that a flip-flop is needed for every clock cycle of delay needed (try that with a 1000 clock cycle delay!). More advanced timers use binary encoding with the flip-flops to achieve a greater number of states for a lower number of flip-flops.
-
 ## References
 
 [^bib-ti-74hc4051-multi]: Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
@@ -715,3 +704,4 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 [^bib-wikipedia-cmos]: Wikipedia (2023, Feb 17). _CMOS_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/CMOS.
 [^bib-wikipedia-nmos]: Wikipedia (2023, Mar 12). _NMOS Logic_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/NMOS_logic.
 [^bib-wikipedia-xor]: Wikipedia (2023, Mar 20). _XOR gate_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/XOR_gate.
+[^bib-wikipedia-ptl]: Wikipedia (2022, Nov 22). _Pass transistor logic_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/Pass_transistor_logic.
