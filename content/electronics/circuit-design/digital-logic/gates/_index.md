@@ -371,7 +371,13 @@ In a similar fashion to the CMOS AND gate, the simplist way to build a CMOS OR g
 
 #### CMOS XOR Gate
 
-The CMOS XOR gate is the hardest CMOS gate primitive to build!
+The CMOS XOR gate is the hardest CMOS gate primitive to build! It can be built with the circuit shown below, which uses a total of 12 MOSFETs, 3 times as many as the basic NAND and NOR gates![^bib-wikipedia-xor]
+
+{{% figure src="cmos-xor-gate.png" width="600px" caption="A XOR gate built from CMOS logic." %}}
+
+Have a play around with the interactive XOR gate simulation below:
+
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYgAsJRI2aSmD4Dwg5NCQxIaDt14ouXIX2RLwECVNizOPPmGEqNB8ZKg65+-gWMZ8GlOemyA5seEOERsPmXVIVgAlYxZBbz58AKhuOhiAyVYAGXBIZWQEQVEMwWj2AEMAGwBnehpAgHdQojojZBJc1iqIlDQvOuRGgA9uNCQ0ZBAiNX5lZTRlAGEAWQB5AGUAHWKADVmg5YBxfIAXeibU9MyxahyoA7AMFAaTlGPK8D87wU9n86rXs8+sPgfL0+O-xQnXOIVeCleRH8MS4cWiMAQrHcr3s4CIDjQE3iF3RrQcn3uciB9ReuJJYic2hkRKuYTRDjphkpFmpGAoviOgi4yFUxyQADsAIKsNngH7cBzcvhcLwgYUfNJvPBjBx-RUysXS1UXRV9AzivXvQ5o6jK-gIX4iyDsg0W7g8818JAAISt7KewmoUpNNH5rs4QMDuMDmmclgDV1hptxUYpWhZsg+wZ8wZq52RMYdry4l2xYODipRWFyMLh8USHyuntuQL+qej+Kefw9ade1b+kbgNbTauU1aDAWSxuronbMQKJTKUgOLTa7VMg+aPj5Ke1ousajGds33BAQrd8hEti4dtRyld64UohPImLu+Fl4MRhvJl3F+tQ1shidyele-fFA1Bid4WsBXJ7g+H5ATYXi4me-4HtBO6gYoYxygcUL4scmH0kaOFzkMGq1hhGqdA4OF0g8FFphRNyBCEFEgjhUTxLE5Tloi7g4ZCRFNucnDQai+FfqGVK6J++JGNxPhmGJchIeoFHqEy8YuPJtiiPhd65qplhLiIsKERihlURqEzUOi1DmXhZmGfhdqmcZFlmViDyzoZs6uTORjWbODmISx1nFlZhnKAAmqwQA" %}}
 
 #### Tristate CMOS Inverter
 
@@ -707,4 +713,5 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 [^bib-wp-list-logic-sym]: Wikipedia (2005, Aug 20). _List of logic symbols_. Retrieved 2021-10-25, from https://en.wikipedia.org/wiki/List_of_logic_symbols.
 [^bib-utah-digital-vlsi-lab-ass-3]: University of Utah: John and Marcia Price College of Engineering. _ECE/CS 5710/6710 – Digital VLSI Design: Lab Assignment #3_. Retrieved 2023-04-24, from https://my.eng.utah.edu/~kstevens/5710/lab3.pdf.
 [^bib-wikipedia-cmos]: Wikipedia (2023, Feb 17). _CMOS_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/CMOS.
-[^bib-wikipedia-nmos]: Wikipedia (2023, March 12). _NMOS Logic_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/NMOS_logic.
+[^bib-wikipedia-nmos]: Wikipedia (2023, Mar 12). _NMOS Logic_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/NMOS_logic.
+[^bib-wikipedia-xor]: Wikipedia (2023, Mar 20). _XOR gate_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/XOR_gate.
