@@ -16,3 +16,5 @@ type: post
 * Added info and schematics of a 3-input CMOS NAND gate, CMOS AND and CMOS OR gates.
 
 * Added more info on XOR gates.
+
+* Updated the Piezoelectric Speakers page with improved schematic symbols, spelling error fixes and more info.

@@ -1,17 +1,17 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
-description: "The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, homemade crystals and more info about Piezos."
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
+description: The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, homemade crystals and more info about piezoelectric speakers.
 date: 2012-05-02
-lastmod: 2018-12-29
-tags: [ "pizeo", "schematic symbols", "schematic", "frequency response", "driver circuit", "crystal" ]
-title: "Piezos"
-type: "page"
+lastmod: 2023-05-06
+tags: [ piezo, schematic symbols, schematic, frequency response, driver circuit, crystal ]
+title: Piezoelectric Speakers
+type: page
 ---
 
 ## Overview
 
-Piezos (in the electrical component sense), are small speakers that feature a piezo-electric crystal. When you apply a voltage, the crystal distorts, vibrating a plate and producing noise. They are very loud for their relatively small size and price, and typically achieve over 90dB of sound pressure from an object the size of a few coins. The annoying beeps you hear from the insides of computer on boot-up or when you do something wrong (like mash the keyboard) are typically made with a piezo.
+_Piezoelectric speakers_ are small speakers that generate sound waves from electricity using the piezoelectric effect. When you apply a voltage to a piezoelectric crystal, the crystal distorts, vibrating a plate and producing noise. **They are very loud for their relatively small size and price**, and typically achieve over 90dB of sound pressure from an object the size of a few coins. Their disadvantage compared to traditional magnetic speakers is that they have a narrow bandwidth (typically only a few kilohertz, depending on how you specify the limits) and a very non-flat frequency response. So they are good for making beeps/chirps, but not so good as reproducing music or voice. The annoying beeps you hear from the insides of computer on boot-up or when you do something wrong (like mash the keyboard) are typically made with a piezo, as are the alarm noises from most smoke alarms.
 
 {{% figure src="piezo-photo.jpg" caption="Photo of an externally driven piezo. They tend to be smaller than their internally driven cousins."  width="400px" %}}
 
@@ -24,9 +24,9 @@ Important Parameters:
 
 ## The Piezo Schematic Symbol
 
-The schematic symbol for a piezo is shown below. Some piezos have internal oscillating circuity already built into them, and only require a DC voltage to run (typically 9-12V). These are called internal drive piezo's (or buzzers), while the ones without circuitry are called external drive piezos (or just piezos). Externally driven piezo's are not polarized, while internally driven ones usually are. Some have a third leg, which is called the feedback pin, and can be used as an input to the driving circuitry to drive the piezo at it's resonant frequency.
+The schematic symbol for a 2-pin piezoelectric speaker is shown below. Some piezoelectric speakers have internal oscillating circuity already built into them, and only require a DC voltage to run (typically 9-12V). These are called internal drive piezos (or buzzers), while the ones without circuitry are called external drive piezos (or just piezos). Externally driven piezos are not polarized, while internally driven ones usually are. Some have a third leg, which is called the feedback pin, and can be used as an input to the driving circuitry to drive the piezo at it's resonant frequency.
 
-{{% figure src="piezo-schematic-symbol.jpg" caption="The schematic symbol for a piezo speaker."  width="320px" %}}
+{{% figure src="piezoelectric-speaker-schematic-symbol.png" caption="The schematic symbol for a 2-pin piezoelectric speaker."  width="400px" %}}
 
 ## A Piezo's Frequency Response
 
@@ -36,17 +36,17 @@ A piezo does not have near anything like an ideal flat frequency response over t
 
 ## How To Drive A Piezo
 
-An easy and loud way to drive a piezo speaker using an inductor in parallel with the piezo and a NPN BJT.
+An easy and loud way to drive a 2-pin piezoelectric speaker is with an inductor in parallel with the piezo and a NPN BJT acting as a switch.
 
 When the NPN BJT is switched on, the current builds up through the inductor and energy is stored in it's magnetic field. When the transistor is switched off, the inductor creates a large voltage spike which excites the piezo speaker. The piezo can be driven to around 40-60V with a 5V supply. Make sure the BJT has a collector-emitter breakdown voltage high enough to withstand this!
 
-The frequency of the PWM controls the pitch of the sound, the duty cycle controls the volume. Duty cycle should be varied from 0-50%. The inductance does not matter to much, something in the range of 10-50mH seems to give the best results with most piezo's.
+**The frequency of the PWM controls the pitch of the sound, the duty cycle controls the volume.** Duty cycle should be varied from 0-50%. The inductance does not matter to much, something in the range of 10-50mH seems to give the best results with most piezos.
 
 {{% figure src="piezo-drive-circuit-parallel-inductor.jpg" caption="An easy and loud way to drive a piezo speaker using an inductor in parallel with the piezo and a NPN BJT."  width="500px" %}}
 
-A non-standard and slightly convoluted method for driving a piezo speaker using a half-bridge driver IC.
+A non-standard and slightly convoluted method for driving a piezo speaker using a half-bridge driver IC:
 
-{{% figure src="piezo-drive-circuit-half-bridge-ic.jpg" caption="A non-standard and slightly convulated method for driving a Piezo speaker using a half-bridge driver IC."  width="500px" %}}
+{{% figure src="piezo-drive-circuit-half-bridge-ic.jpg" caption="A non-standard and slightly convoluted method for driving a Piezo speaker using a half-bridge driver IC."  width="500px" %}}
 
 ## How To Drive A Buzzer
 
@@ -69,9 +69,9 @@ The volume changes drastically from 0-1% duty cycle because of the logarithmic n
 
 ## Piezo Benders
 
-{{% figure src="piezoelectric-bender.jpg" caption="A piezoelectric bender. Image from http://www.kineticceramics.com/."  width="250px" %}}
-
 Piezo benders are essentially un-mounted piezos, the insides of the standard black cased piezo that you commonly see. They are used in more spaced-constrained situations.
+
+{{% figure src="piezoelectric-speaker-in-aura-br-au-109b-smoke-alarm.png" caption="A piezoelectric \"bender\" style speaker mounted in a Aura BR-AU-109B smoke alarm." width="800px" %}}
 
 These un-mounted piezos have to be mounted on something, and consideration about the vibrational aspects of the piezo have to be taken into account. Obviously, if you glue the entire piezo to the mounting surface, it won't be able to vibrate, and you'll get no sound. There are two standard ways of mounting a piezo, and they are called either edge-mounting or nodal-mounting.
 
@@ -79,17 +79,17 @@ Edge mounting is pretty self-explanatory, it is when you mount the piezo by hold
 
 ## Multi-layer Piezo Speakers
 
-Mutli-layer piezo speakers contain more than one vibrating piezo element. The vibrating elements are designed to have different resonant frequency's, and when combined, give a speaker which has a flatter frequency response over the audible range than traditional piezo speakers.
+Multi-layer piezo speakers contain more than one vibrating piezo element. The vibrating elements are designed to have different resonant frequency's, and when combined, give a speaker which has a flatter frequency response over the audible range than traditional piezo speakers.
 
 The bandwidth of multi-layer piezos is usually between 200-500Hz and 20kHz. Because of this, they are able to reproduce music and voice much better than a traditional piezos whose frequency response if usually limited to a few hundred hertz either side of a resonant frequency in the 3-4kHz region.
 
 [PUI Audio](http://www.puiaudio.com/) makes some good quality multi-layer speakers, which can be found on DigiKey.
 
-## Homemade Piezo Crystals
+## Home-made Piezo Crystals
 
 You can easily make crystals with a few common household ingredients. See the [Piezo Crystal Formation Project](/electronics/projects/piezo-crystal-formation) for more information.
 
-{{% figure src="2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal."  width="600px" %}}
+{{% figure src="home-made-piezo-crystal.jpg" caption="A large home-made piezo crystal. Photo from 2012."  width="600px" %}}
 
 ## Examples
 
