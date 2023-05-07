@@ -37,7 +37,7 @@ Notice how the resistance is not relatively constant, but not perfectly linear! 
 
 ## Transmission Gates
 
-A _transmission gate_ (which can be abbreviated to just _TG_[^bib-electronics-tutorials-transmission-gate]) is used to describe the **same MOSFET-in-parallel circuit** as the analog switch above, but when **used in a digital context**. It is commonly used in the design of [latches and flip-flops](/electronics/circuit-design/digital-logic/latches-and-flip-flops/).
+A _transmission gate_ (which can be abbreviated to just _TG_[^bib-electronics-tutorials-transmission-gate]) is used to describe the **same MOSFET-in-parallel circuit** as the analog switch above, but when **used in a digital context**. It is commonly used in the design of [latches and flip-flops](/electronics/circuit-design/digital-logic/latches-and-flip-flops/), and is an integral part of [pass transistor logic (PTL)](/electronics/circuit-design/digital-logic/gates/#pass-transistor-logic-ptl).
 
 When showing a transmission gate on a schematic, it is almost **never drawn showing discrete MOSFETs**. It is usually simplified in the form of a "single bow tie" or "double bow tie" symbol, as shown below. Sometimes, simplified MOSFET symbols are shown, in where no arrows are used to indicate NMOS from PMOS, but rather a "inverting bubble" is added to the gate of the PMOS MOSFET. 
 

@@ -159,9 +159,13 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
 
 {{% figure src="d-latch-from-nand-gates-simplified.png" width="700px" caption="A simplified D latch without an inverter." %}}
 
-You can also make a D latch with inverters and [transmission gates](/electronics/components/analogue-switches-transmission-gates/). This may result in a lower total transistor count than implements it with NAND gates as above. The below schematic shows one way of doing it:
+The above design, when built using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-cmos-logic) would require 16 MOSFETs (4 for each NAND gate).
+
+You can also make a D latch with inverters and [transmission gates](/electronics/components/analogue-switches-transmission-gates/). This will result in a lower total transistor count to implement than the NAND gate style D latch above. The below schematic shows one way of doing it:
 
 {{% figure src="d-latch-from-transmission-gates.png" width="500px" caption="A D latch made from transmission gates." %}}
+
+The NAND gate implementation required 16 MOSFETs, but the above circuit only requires 12 (2 for each inverter, 2 for each transmission gate, and 2 to invert the enable signal to drive the transmission gates).
 
 When `\(E\)` is `HIGH`, the lower transmission gate is `ON` and the input `\(D\)` is passed through to the output `\(Q\)` via two inverters. When `\(E\)` is `LOW`, the higher transmission gate is `ON` and the output is fed back to itself via two inverter (hence performing the latching action). The [Texas Instruments CD4042B](https://www.ti.com/lit/ds/symlink/cd4042b.pdf) uses a similar technique to implement it's D latches[^bib-ti-cd4042b-ds].
 

@@ -1,10 +1,10 @@
 ---
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Electronic Components ]
-description: The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, homemade crystals and more info about piezoelectric speakers.
+description: The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, mounting considerations, home-made crystals and more info about piezoelectric speakers.
 date: 2012-05-02
 lastmod: 2023-05-06
-tags: [ piezo, schematic symbols, schematic, frequency response, driver circuit, crystal ]
+tags: [ piezo, schematic symbols, schematic, frequency response, driver circuit, crystal, nodal mounting, silicone, benders ]
 title: Piezoelectric Speakers
 type: page
 ---
@@ -76,6 +76,8 @@ Piezo benders are essentially un-mounted piezos, the insides of the standard bla
 These un-mounted piezos have to be mounted on something, and consideration about the vibrational aspects of the piezo have to be taken into account. Obviously, if you glue the entire piezo to the mounting surface, it won't be able to vibrate, and you'll get no sound. There are two standard ways of mounting a piezo, and they are called either edge-mounting or nodal-mounting.
 
 Edge mounting is pretty self-explanatory, it is when you mount the piezo by holding onto its edge. A thin ring of double-sided adhesive tape can achieve this. Nodal mounting is where the piezo is fixed around it's nodal points. A nodal point is a place on the piezo surface that does not move while it is vibrating. As a general rule of thumb, there are nodal points on a piezo at 0.65 of the radius from the centre of the piezo, in all directions. Again, this can be done with a ring of double-sided adhesive tape, whose diameter is 0.65 that of the edge mounting tape ring.
+
+{{% figure src="pieoelectric-speaker-with-nodal-mounting.jpg" width="800px" caption="The piezoelectric speaker in the Aura BR-AU-109B smoke alarm appears to be nodally mounted, as you can see the silicone and mounting point radius is about 0.65 times the piezoelectric speaker radius." %}}
 
 ## Multi-layer Piezo Speakers
 
