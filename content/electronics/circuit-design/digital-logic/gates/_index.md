@@ -21,6 +21,8 @@ There are a few different standards used to draw logic gates on schematics:
 
 This page uses the convention of `TRUE` or `1` to represent the logic state true, and `FALSE` or `0` to represent the logic state false.
 
+## Types of Gates
+
 ### NOT
 
 Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inverter) always outputs the opposite (complement) of the input. If the input is `TRUE`, the output is `FALSE`. If the input is `FALSE`, the output is `TRUE`.
@@ -240,7 +242,7 @@ The truth table for an XNOR gate is:
   </tbody>
 </table>
 
-## What Are Logic Gates Built From?
+## Logic Families
 
 ### Diode Logic (DL)
 
@@ -278,7 +280,7 @@ TODO: Add info here.
 
 The inputs of TTL logic are the emitters of BJTs.
 
-### N-type Metal-oxide Semiconductor (NMOS) Logic
+### N-type Metal-oxide Semiconductor Logic (NMOS)
 
 N-type Metal-oxide Semiconductor (NMOS) logic is a way of building logic functions from N-channel MOSFETs. In the early days of digital logic (1970s), it was much faster and easier to manufacture than CMOS, however since the 1980s CMOS took over and has become the dominant way of implementing logic gates[^bib-wikipedia-nmos]. NMOS is built from an arrangement of N-channel MOSFETs on the low-side (depending on the function) and a pull-up resistor on the high side. 
 
@@ -306,7 +308,7 @@ The NMOS NOR gate uses two N-channel MOSFETs connected in parallel to drive the 
 {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHMhI7t3yLB3Ir2qRWAJSFZBeXkUMhsg7XzpRbMBKwAylIqv6CEYIqMu32AQwAbAGd6Gh0AdzVwEkFhdWRvHQBZEENVL1UsImpM2zRJVijTI1josDKdAA8XEnMEJCwEOrQEN3NeADlkgHkAZQAdYM6e3SGAcX8AF3oilzcRNt53KFYahqRuNAgETT5iPhReAEE1tIOwXbTL8GbD5F4ATVYAJwMjSBMzMC9bVDgOEI9issJ8fOBBBIpLBZM5dm58KpPN4VKorAEQmEpHN4XxEUDlvjIgS8aoiMCRMTQbwKoJqXxEqtit9XO8YpY5iVwKz0ty0Zzvgg4iz+cyjL8uZcOWL2WkwbTVgp6cosmCNFpVusrtwcC5NvhqLwHiAAEKsIA" %}}
 </div>
 
-### Complementary Metal-oxide Semiconductor (CMOS) Logic
+### Complementary Metal-oxide Semiconductor Logic (CMOS)
 
 _Complementary metal-oxide-semiconductor_ (CMOS) is a way of building logic functions from complementary pairs of N-channel and P-channel MOSFETs. Today, it is by far the most popular way of constructing digital integrated circuits (ICs)[^bib-wikipedia-cmos]. CMOS circuits typically have negligible static power dissipation and only consume power during transitions. It advances from NMOS technology by replacing the upper resistor with P-channel MOSFETs, which both eliminates static power dissipation and speeds up the low-to-high transition.
 
@@ -395,7 +397,21 @@ Pass transistor logic (PTL) is a form of logic design in where transistors are u
 
 #### PTL AND Gate
 
-TODO: Add info.
+An AND gate can be made from PTL logic using a total of 5 transistors, one less than the 6 required in CMOS logic.
+
+{{% figure src="ptl-and-gate.png" width="500px" caption="An AND gate made from PTL logic." %}}
+
+The circuit on the left is just an inverter to provide `\(\overline{B}\)` which is needed for the PTL logic on the right. The TG on the right connects `\(A\)` to the output only if `\(B = 1\)`. Thus:
+
+* `\(B = 1\)` and `\(A = 0\)`, then `\(Y = 0\)`
+* `\(B = 1\)` and `\(A = 1\)`, then `\(Y = 1\)`
+
+If `\(B = 0\)`, then the TG is off but the bottom-right N-channel MOSFET is turned on, connecting the output to `\(GND\)` (we don't care what `\(A\)` is). Thus:
+
+* `\(B = 0\)` and `\(A = 0\)`, then `\(Y = 0\)`
+* `\(B = 0\)` and `\(A = 1\)`, then `\(Y = 0\)`
+
+It should now be pretty clear that this works as an AND gate.
 
 #### 8 Transistor PTL XOR Gate
 
