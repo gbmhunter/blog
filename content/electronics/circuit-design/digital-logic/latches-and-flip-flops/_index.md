@@ -49,9 +49,10 @@ Driving either S or R high allows you to set the latch into the 1 or 0 state res
     <tr>
       <th style="width: 50px;">S</th> 
       <th style="width: 50px;">R</th>
-      <th style="width: 80px;">\(Q\)</th>
-      <th style="width: 80px;">\(\overline{Q}\)</th>
-      <th style="width: 200px;">Action</th></tr>
+      <th style="width: 80px;">\(Q_{n+1}\)</th>
+      <th style="width: 80px;">\(\overline{Q_{n+1}}\)</th>
+      <th style="width: 200px;">Action</th>
+    </tr>
   </thead>
   <tbody>
     <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>  <td>No change</td></tr>
@@ -67,15 +68,17 @@ A SR latch can also be made with two NAND gates instead of two NOR gates:
 
 {{% figure src="sr-latch-from-nand-gates.png" width="500px" caption="A SR latch made from two NAND gates." %}}
 
-When making the SR latch from NAND gates the invalid state is now `\(S = R = 0\)` and the hold state is `\(S = R = 1\)`, they switch positions compared to the SR latch built from NOR gates. Below is the full truth table:
+When making the SR latch from NAND gates the invalid state is now `\(\overline{S} = \overline{R} = 0\)` and the hold state is `\(\overline{S} = \overline{R} = 1\)`, they switch positions compared to the SR latch built from NOR gates. This is also the reason why `\(S\)` and `\(R\)` have been renamed to `\(\overline{S}\)` and `\(\overline{R}\)`. Below is the full truth table:
 
 <table>
   <thead>
-    <tr><th style="width: 50px;">S</th>
-    <th style="width: 50px;">R</th>
-    <th style="width: 80px;">\(Q\)</th>
-    <th style="width: 80px;">\(\bar{Q}\)</th>
-    <th style="width: 200px;">Action</th></tr>
+    <tr>
+      <th style="width: 50px;">\(\overline{S}\)</th>
+      <th style="width: 50px;">\(\overline{R}\)</th>
+      <th style="width: 80px;">\(Q_{n+1}\)</th>
+      <th style="width: 80px;">\(\overline{Q_{n+1}}\)</th>
+      <th style="width: 200px;">Action</th>
+    </tr>
   </thead>
   <tbody>
     <tr><td>0</td>  <td>0</td>  <td>1</td> <td>1</td>            <td>Not allowed</td></tr>
@@ -141,11 +144,13 @@ You can see from the below truth table that when `\(E = 0\)`, the latch remember
 
 <table>
   <thead>
-    <tr><th style="width: 50px;">E</th>
-    <th style="width: 50px;">D</th>
-    <th style="width: 80px;">\(Q\)</th>
-    <th style="width: 80px;">\(\bar{Q}\)</th>
-    <th style="width: 200px;">Action</th></tr>
+    <tr>
+      <th style="width: 50px;">E</th>
+      <th style="width: 50px;">D</th>
+      <th style="width: 80px;">\(Q_{n+1}\)</th>
+      <th style="width: 80px;">\(\overline{Q_{n+1}}\)</th>
+      <th style="width: 200px;">Action</th>
+    </tr>
   </thead>
   <tbody>
     <tr><td>0</td>  <td>0</td>  <td>\(Q\)</td>  <td>\(\bar{Q}\)</td>            <td>No change</td></tr>
@@ -384,7 +389,7 @@ You can play around with the interactive D flip-flop simulation below. Toggle th
 
 {{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQmzRExRABYuPDHyqiKbDiC5Uw-fgKFyFY6ghYB3RX2XbwGQlE16wB6dxT8qkY4L689l67aFPzssza0z9hn2EJnbwsrdx4EQxt2CADZeWEdeNVaSRjAgTwEjKgeNVTwdIcikRzsPOiCqmxCTIdqzOSJLViQQgUWvCDKkE6s5lFjFrAUTKHho2b0-qzerxmxEv4GwcK8UfTcFRWqyAU66oms7AO6msOW7AQdDYO5i5OSzcOHYcz-EeeSkbeLNc+dMwtNx3DY6D5CO4ffgBLLQyLbLLEQwOOZI7pDdIgqp4BRo7A4owAGRAeIJQnxKnAIAAZgBDAA2AGc6NQbAAlEnIx72EoQHRwHjQJAoIU5GDqACyJni-DRujEQpYUrssLRKMF6i0cvSapKWPChiBoTmL3iL08xlOtUWMMhmTh4HBAy0L3GLw+Jt5H1NWxdX399j+nsD1r4TxsAHtpFQ2jloZA+EgYPBIGRCBEUEncrhpCAACIsKNCWNUeOJqCweBpjNZiAARUL0ggJYEYATrMrcGrhEzOTDnBAAGN6QBrFhAA" %}}
 
-{{% figure src="cmos-d-flipflop-on-breadboard.jpg" width="900px" caption="A D-type flip-flop made from 6 NAND gates (1 being a 3-input NAND gate), with each NAND gate being made from discrete P and N-channel MOSFETs (i.e. CMOS technology) in the TO-92 package. Everything was powered from a +5V rail. This goes to show you how many transistors are needed even for simple things such as a D flip-flop!" %}}
+{{% figure src="cmos-d-flipflop-on-breadboard.jpg" width="900px" caption="A D-type flip-flop made from 6 NAND gates (1 being a 3-input NAND gate), with each NAND gate being made from discrete P (Microchip VP2106N3-G) and N-channel (onsemi 2N7000-D75Z) MOSFETs (i.e. CMOS technology) in the TO-92 package. Everything was powered from a +5V rail. This goes to show you how many transistors are needed even for simple things such as a D flip-flop!" %}}
 
 #### D-Type Flip-Flops with Transmission Gates
 

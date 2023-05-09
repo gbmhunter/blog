@@ -325,7 +325,9 @@ The inverter is the easiest CMOS logic gate to make! It just consists of one P-c
 These diagrams use the simplified MOSFET symbols in where the P-channel as a bubble next to it's gate and the N-channel doesn't. No indication of drain or source are shown either, although this may be a moot point if in an integrated circuit with the substrate not connected to the source. If you are unfamiliar with this MOSFET symbol style, see the [MOSFETs page](/electronics/components/transistors/mosfets/) for more info.
 {{% /tip %}}
 
-When the input `\(A\)` is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is `\(+V_{DD}\)` and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is `\(0V\)` and therefore OFF. Hence the output gets driven `LOW`. When `\(A\)` is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to `\(0V\)` and the P-channel's gate-source voltage goes to `\(-V_{DD}\)`, turning it ON and driving the output `HIGH`. 
+When the input `\(A\)` is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is `\(+V_{DD}\)` and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is `\(0V\)` and therefore OFF. Hence the output gets driven `LOW`. When `\(A\)` is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to `\(0V\)` and the P-channel's gate-source voltage goes to `\(-V_{DD}\)`, turning it ON and driving the output `HIGH`.
+
+{{% figure src="cmos-inverter-from-discrete-mosfets-animation.gif" width="400px" caption="Video of a basic CMOS inverter made from a discrete P-channel and N-channel MOSFET. The inverter is fed a 0.5Hz clock signal into it's input from a function generator. 1 LED is connected to the inverters input, the other connected to it's output." %}}
 
 #### CMOS NAND Gate
 
@@ -390,6 +392,41 @@ A useful building block for digital logic is a CMOS inverter whose output can al
 Pass transistor logic (PTL) is a form of logic design in where transistors are used to connect the input directly to the output -- to reduce the number of transistor required to implement the logic. CMOS logic always uses the input to switch the output to either the positive rail or ground. PTL on the other hand eliminates some of the transistors that would be required in CMOS logic by allowing the transistors to connect the input directly to the output (instead of connecting the output to the rails). The disadvantage of doing this is that the output voltage reduces through each stage[^bib-wikipedia-ptl].
 
 [Transmission gates](/electronics/components/analogue-switches-transmission-gates/#transmission-gates) are used frequently in the design of PTL logic as a way of switching the input to the output.
+
+#### PTL AND Gate
+
+TODO: Add info.
+
+#### 8 Transistor PTL XOR Gate
+
+Above we showed how complex a XOR gate is to build in CMOS logic (12 transistors!). PTL logic can significantly reduce the transistor count for a XOR gate. One such implementaton is[^bib-all-about-circuits-digital-design-ptl]:
+
+{{% figure src="ptl-xor-gate-8-tran.png" width="400px" caption="A XOR gate made from PTL logic. This XOR circuit uses a total of 8 transistors, less than the CMOS implementation that uses 12. But we can still do better!" %}}
+
+To see how this works, ignore the simple CMOS inverters on the left and focus on the PTL logic on the right. Input `\(B\)` controls which transmission gate is on and which is off. If `\(B\)` is `LOW`, the bottom transmission gate is on and the top is off, passing `\(A\)` to the output. Thus:
+
+* If `\(B = 0\)` and `\(A = 0\)`, then `\(Y=0\)`
+* If `\(B = 0\)` and `\(A = 1\)`, then `\(Y=1\)`
+
+If `\(B\)` is `HIGH` the opposite happens, the top tranmission gate is on and the bottom is off, passing `\(\overline{A}\)` to the output. Thus:
+
+* If `\(B = 1\)` and `\(A = 0\)`, then `\(Y=1\)`
+* If `\(B = 1\)` and `\(A = 1\)`, then `\(Y=0\)`
+
+Now it should be pretty easy now to see that this gives you a XOR gate!
+
+#### 6 Transistor PTL XOR Gate
+
+However, we can reduce the transistor count even further! This following clever circuit implements a XOR gate in PTL logic using a **total of only 6 transistors**[^bib-uni-waterloo-ptl].
+
+{{% figure src="ptl-xor-gate-6-tran.png" width="600px" caption="A XOR gate made in PTL logic with only 6 transistors[^bib-uni-waterloo-ptl]." %}}
+
+The left-side of the circuit is an "inverter" (but with the MOSFET source leads connected to `\(A\)` rather than the rails), and the right-hand side is a transmission gate.
+
+* When `\(A = 0\)`, both MOSFETs in the inverter will always be `OFF` because the gate-source voltage of the N-channel MOSFET can never be more positive than 0V and the gate-source voltage of the P-channel can never be more negative than 0V. The right-hand side transmission gate will be ON, and so the output will equal `\(B\)`.
+* When `\(A = 1\)`, the transmission gate will be `OFF`, and the inverter will become active, passing through the inverse of `\(B\)` to the output.
+
+This makes a XOR gate!
 
 ### Comparison
 
@@ -705,3 +742,5 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 [^bib-wikipedia-nmos]: Wikipedia (2023, Mar 12). _NMOS Logic_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/NMOS_logic.
 [^bib-wikipedia-xor]: Wikipedia (2023, Mar 20). _XOR gate_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/XOR_gate.
 [^bib-wikipedia-ptl]: Wikipedia (2022, Nov 22). _Pass transistor logic_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/Pass_transistor_logic.
+[^bib-all-about-circuits-digital-design-ptl]: Robert Keim (2018, Dec 26). _Digital Design with Pass-Transistor Logic_. All About Circuits. Retrieved 2023-05-09, from https://www.allaboutcircuits.com/technical-articles/digital-design-with-pass-transistor-logic/.
+[^bib-uni-waterloo-ptl]: University of Waterloo - ECE. _ECE 637 - Lecture 11 - Pass-Transistor Logic_. Retrieved 2023-05-09, from https://ece.uwaterloo.ca/~mhanis/ece637/lecture11.pdf.

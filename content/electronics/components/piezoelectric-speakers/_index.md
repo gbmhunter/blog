@@ -11,7 +11,7 @@ type: page
 
 ## Overview
 
-_Piezoelectric speakers_ are small speakers that generate sound waves from electricity using the piezoelectric effect. When you apply a voltage to a piezoelectric crystal, the crystal distorts, vibrating a plate and producing noise. **They are very loud for their relatively small size and price**, and typically achieve over 90dB of sound pressure from an object the size of a few coins. Their disadvantage compared to traditional magnetic speakers is that they have a narrow bandwidth (typically only a few kilohertz, depending on how you specify the limits) and a very non-flat frequency response. So they are good for making beeps/chirps, but not so good as reproducing music or voice. The annoying beeps you hear from the insides of computer on boot-up or when you do something wrong (like mash the keyboard) are typically made with a piezo, as are the alarm noises from most smoke alarms.
+**_Piezoelectric speakers_ are speakers that generate sound waves from electricity using the piezoelectric effect.** When you apply a voltage to a piezoelectric crystal, the crystal distorts, vibrating a plate and producing noise. **They are very loud for their relatively small size and price**, and typically achieve over 90dB of sound pressure from an object the size of a few coins. Their disadvantage compared to traditional magnetic speakers is that they have a narrow bandwidth (typically only a few kilohertz, depending on how you specify the limits) and a very non-flat frequency response. So they are good for making beeps/chirps, but not so good as reproducing music or voice. The annoying beeps you hear from the insides of computer on boot-up or when you do something wrong (like mash the keyboard) are typically made with a piezo, as are the alarm noises from most smoke alarms.
 
 {{% figure src="piezo-photo.jpg" caption="Photo of an externally driven piezo. They tend to be smaller than their internally driven cousins."  width="400px" %}}
 
@@ -34,9 +34,11 @@ A piezo does not have near anything like an ideal flat frequency response over t
 
 {{% figure src="piezo-4khz-resonant-frequency-response.jpg" caption="The frequency response of a piezo speaker with a resonant frequency of 4kHz."  width="500px" %}}
 
-## How To Drive A Piezo
+Most piezoelectric speakers have a resonant frequency in the range of 2-4kHz, one of the reasons being this is the range is which audio is most easily heard by humans[^bib-murata-piezoelectric-sound-components].
 
-An easy and loud way to drive a 2-pin piezoelectric speaker is with an inductor in parallel with the piezo and a NPN BJT acting as a switch.
+## How To Drive A 2-lead Piezo
+
+An easy and loud way to drive a 2-lead (or pin) piezoelectric speaker is with an inductor in parallel with the piezo and a NPN BJT acting as a switch.
 
 When the NPN BJT is switched on, the current builds up through the inductor and energy is stored in it's magnetic field. When the transistor is switched off, the inductor creates a large voltage spike which excites the piezo speaker. The piezo can be driven to around 40-60V with a 5V supply. Make sure the BJT has a collector-emitter breakdown voltage high enough to withstand this!
 
@@ -47,6 +49,10 @@ When the NPN BJT is switched on, the current builds up through the inductor and 
 A non-standard and slightly convoluted method for driving a piezo speaker using a half-bridge driver IC:
 
 {{% figure src="piezo-drive-circuit-half-bridge-ic.jpg" caption="A non-standard and slightly convoluted method for driving a Piezo speaker using a half-bridge driver IC."  width="500px" %}}
+
+## How To Drive Piezos With Feedback (3-lead)
+
+Some piezos have a third lead, also called the feedback electrode[^bib-murata-piezoelectric-sound-components]. They are sometimes called "self-driven" piezos and are designed to be connected to a "self-drive circuit". The benefit of self-driven piezos is that they are naturally driven at their resonant frequency, at where you get the highest SPL (volume).
 
 ## How To Drive A Buzzer
 
@@ -71,7 +77,7 @@ The volume changes drastically from 0-1% duty cycle because of the logarithmic n
 
 Piezo benders are essentially un-mounted piezos, the insides of the standard black cased piezo that you commonly see. They are used in more spaced-constrained situations.
 
-{{% figure src="piezoelectric-speaker-in-aura-br-au-109b-smoke-alarm.png" caption="A piezoelectric \"bender\" style speaker mounted in a Aura BR-AU-109B smoke alarm." width="800px" %}}
+{{% figure src="piezoelectric-speaker-in-aura-br-au-109b-smoke-alarm.png" caption="A piezoelectric \"bender\" style speaker mounted in a Aura BR-AU-109B smoke alarm. You can also see the third feedback lead (yellow wire connecting to \"broom\" shape on piezo)." width="800px" %}}
 
 These un-mounted piezos have to be mounted on something, and consideration about the vibrational aspects of the piezo have to be taken into account. Obviously, if you glue the entire piezo to the mounting surface, it won't be able to vibrate, and you'll get no sound. There are two standard ways of mounting a piezo, and they are called either edge-mounting or nodal-mounting.
 
@@ -96,3 +102,7 @@ You can easily make crystals with a few common household ingredients. See the [P
 ## Examples
 
 If you want a loud buzzer, then the ABI-D23-RC (Element14 Num: [102-2400](http://nz.element14.com/pro-signal/abi-023-rc/piezo-buzzer-12vdc-leads/dp/1022400)) is a good choice. It runs of 12VDC and has a SPL of 96dBm.
+
+## References
+
+[^bib-murata-piezoelectric-sound-components]: Murata (2012, Oct 26). _Piezoelectric Sound Components: Application Manual_. Retrieved 2023-05-09, from https://www.murata.com/~/media/webrenewal/support/library/catalog/products/sound/p15e.ashx.

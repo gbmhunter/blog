@@ -3,7 +3,7 @@ authors: [ Geoffrey Hunter ]
 categories: [ Programming, Languages, Python ]
 date: 2023-05-02
 draft: false
-lastmod: 2023-05-03
+lastmod: 2023-05-09
 tags: [ Python, packages, setuptools, pyproject, TOML, build, build tools, dependencies, Setuptools, Flit, Poetry, packaging, modules ]
 title: How To Create A Python Package
 type: page
@@ -17,7 +17,15 @@ The three main build systems that are supported as of 2023 are Setuptools, Flit 
 
 ## Use With setuptools
 
-A basic example of a `pyproject.toml` that tells pip to use `setuptools` to build the package:
+You can specify you want to use Setuptools in the `pyproject.toml` by specifying the following under the `[build-system]` table:
+
+```toml
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+```
+
+A full, basic example of a `pyproject.toml` that tells pip to use `setuptools` to build the package:
 
 ```toml
 [build-system]
@@ -50,6 +58,8 @@ $ pip install /path/to/package/
 
 where `/path/to/package/` is the path to the directory in where the `pyproject.toml` resides.
 
+For more information on using Setuptools with `pyproject.toml`, see the great documentation [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html) on the Setuptools website[^bib-setuptools-config-pyproject-toml].
+
 ## Optional Dependencies
 
 You can add optional dependencies under a `[project.optional-dependencies]` table in the `pyproject.toml` file. One common use case is when you have a set of dependencies that are only required to run unit tests, but not when deploying the application to others.
@@ -75,3 +85,4 @@ $ pip install .[test]
 
 [^bib-python-pep-631]: Python (2022, Jun 14). _PEP 631 – Dependency specification in pyproject.toml based on PEP 508_. Retrieved 2023-05-02, from https://peps.python.org/pep-0631/.
 [^bib-python-pep-621]: Python (2022, Oct 7). _PEP 621 – Storing project metadata in pyproject.toml_. Retrieved 2023-05-02, from https://peps.python.org/pep-0621/.
+[^bib-setuptools-config-pyproject-toml]: Python Packaging Authority. _Configuring setuptools using pyproject.toml files_. Setuptools. Retrieved 2023-05-09, from https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html.

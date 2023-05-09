@@ -11,10 +11,10 @@ title: May 2023 Updates
 type: post
 ---
 
-* Created a new page [How To Create A Python Package](/programming/languages/python/how-to-create-a-python-package/).
+* Created a new page [How To Create A Python Package](/programming/languages/python/packaging/).
 
 * Added info and schematics of a 3-input CMOS NAND gate, CMOS AND and CMOS OR gates.
 
-* Added more info on XOR gates.
+* Added more info on [XOR gates](/electronics/circuit-design/digital-logic/gates/#xor).
 
-* Updated the Piezoelectric Speakers page with improved schematic symbols, spelling error fixes and more info.
+* Updated the [Piezoelectric Speakers page](/electronics/components/piezoelectric-speakers/) with improved schematic symbols, spelling error fixes and more info.
