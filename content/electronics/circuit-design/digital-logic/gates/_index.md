@@ -250,7 +250,7 @@ _Diode logic_ (DL) is digital logic circuitry *made from just diodes and resisto
 
 {{% figure src="and-gate-from-diodes-and-resistors.svg" width="300px" caption="An AND gate made from basic diode logic." %}}
 
-Before long you'll be struck with the solemn realization you can't create a NOT gate (inverter) from pure diode logic (or any gates that require inverting capabilities, such as NAND or NOR gates). *This limits you to being only able to make AND or OR gates*, and hence it's usefulness is severely limited. NOT gates are constructable as soon as you add switching elements, such as transistors. [^_resistor_transistor_logic_rtl, Resistor-transistor logic] is the extension of diode logic but the addition of transistors.
+Before long you'll be struck with the solemn realization you can't create a NOT gate (inverter) from pure diode logic (or any gates that require inverting capabilities, such as NAND or NOR gates). *This limits you to being only able to make AND or OR gates*, and hence it's usefulness is severely limited. NOT gates are constructable as soon as you add switching elements, such as transistors. [Resistor-transistor logic](#resistor-transistor-logic-rtl) is the extension of diode logic but the addition of transistors.
 
 ### Resistor-Transistor Logic (RTL)
 
@@ -279,6 +279,10 @@ TODO: Add info here.
 ### Transistor-Transistor Logic (TTL)
 
 The inputs of TTL logic are the emitters of BJTs.
+
+#### TTL NAND Gate
+
+TTL NAND gates can use special multiple-emitter BJTs to reduce the transistor count. Each input of the NAND gate is connected to one of the emitters. In the case of a NPN BJT, is any 1 or more of the base-emitter junctions is forward biased, then the transistor turns on[^bib-wikipedia-ttl].
 
 ### N-type Metal-oxide Semiconductor Logic (NMOS)
 
@@ -411,7 +415,9 @@ If `\(B = 0\)`, then the TG is off but the bottom-right N-channel MOSFET is turn
 * `\(B = 0\)` and `\(A = 0\)`, then `\(Y = 0\)`
 * `\(B = 0\)` and `\(A = 1\)`, then `\(Y = 0\)`
 
-It should now be pretty clear that this works as an AND gate.
+It should now be pretty clear that this works as an AND gate. Play around with the interactive simulation below:
+
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADIjZophFcAWasj5QxAMwCGAGwDO9GpFYAPEEIgCkCIhvxrBIAAoAVdgB1ZAQQByAEQsBxSQBd6rAO7giwhDzBZ+ZF8oD3AAlBI-cKCeJU8BIRRggTQBJNjQlLSYtVSUcLiwwOD-QOQMgCVctJJ+LJAiNOpqRKRmqGgEVgBzaq4CPrQ85sy88r16nKVxIoieScjKHmROjsg0VhnSlHK+lh4ECBW22A2MCgSfeaxl4KQAOwAhVnOuG95+PGzRJEsXyAojT0OSI+Cu+gAmptKPg0hg9AhYShQQ1hKsYOtoYiavxsR8GsgUOjTqFtMCfsERPxCghKSiyci9IVvMIUURkIEUcyOfiWfiaZSKbcMp5acLKHSmaF2YFRDL0iFPPKQTyOVLRaIcmKFUpXnjajC0u8Hs89Uj4YauGADiBTQC3ssUV9GTRnpxuC7UqymRIZPJFP8KHxwdbgXdbYGHVweV7o3UQFCALJRtA852p6lcTpY834BHmgQI5bEzG9Xx6VJFiuNMQ0tAVwuUFGVkJmuF5y1gXYm6VwQR6HQ8FvM639hqjqbS1XBQc66UTmeNyd6zV3SDZcN-IA" %}}
 
 #### 8 Transistor PTL XOR Gate
 
@@ -442,56 +448,9 @@ The left-side of the circuit is an "inverter" (but with the MOSFET source leads 
 * When `\(A = 0\)`, both MOSFETs in the inverter will always be `OFF` because the gate-source voltage of the N-channel MOSFET can never be more positive than 0V and the gate-source voltage of the P-channel can never be more negative than 0V. The right-hand side transmission gate will be ON, and so the output will equal `\(B\)`.
 * When `\(A = 1\)`, the transmission gate will be `OFF`, and the inverter will become active, passing through the inverse of `\(B\)` to the output.
 
-This makes a XOR gate!
+This makes a XOR gate! Have a play around with the interactive simulation of it below:
 
-### Comparison
-
-<table>
-    <thead>
-        <tr>
-            <th>Logic Subfamily</th>
-            <th>Description</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>AC</td>
-            <td>CMOS.</td>
-            <td>|</td>
-        </tr>
-        <tr>
-            <td>CVSL</td>
-            <td>Cascode voltage switch logic.</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>HC</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>HCT</td>
-            <td>High-speed CMOS with TTL-compatible inputs.</td>
-            <td>Only works with a +5V power supply. Interestingly, still slower than original TTL.</td>
-        </tr>
-        <tr>
-            <td>IIL</td>
-            <td>Integrated injection logic.</td>
-            <td>|</td>
-        </tr>
-        <tr>
-            <td>LS</td>
-            <td>Low-power Schottky.</td>
-            <td>|</td>
-        </tr>
-        <tr>
-            <td>PTL</td>
-            <td>Pass transistor logic.</td>
-            <td>|</td>
-        </tr>
-    </tbody>
-</table>
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADIjZophFcAWasj5QxAMwCGAGwDO9GpFYAPcAIgDkIImHwgBA-YO2MAKgCdJAO1kBLWQBcA9uYA6sgAqn27gBoB5ACV3AHFJB3pWAHdwImEEHjAsfmQEqGjwZJQSRKzUniUYg3ieATRDfPSi8pQ0soqswsyUtKSU5ALWQP0akn567UNqaiFFMRgEVgBzHsMMPQG0GuGMgY6FmsqlcWbs0s2cyh5kaCQYSDRWHbaUDtnbngQIE7PYS4wKYtrSrGO0pCsAEFWB8uL9ePw8BVREhgaCiMgWjwESkMEYAJogyAUBD4OYESh4wR0EBAq6UUQsR5EqkUlCnKBvclPFKHXEVQ5ol6Mi4ZdkoNB6flbPmU-6Uu5NYX-GmNDIo76EippKWUtlizqg-l9JWDGhw7EUpG0ZWPEAAIXJRHBaER2nBiKFxwZ50uO2tPHweg9ELp3Nd8oQKVERFGIn4TVDwiI3qDKBjVW0XvjeiwkAqCaaaeh-BjenDiajvqLIpiJbSJczGWzvprpZAdbSdarZbtlXLmsNPuTPrjsKxFB9ttzNoEQtJBoojZ4uGNSEtoO4KfA6eX844YOOCfK0b0wxAUjkCjOA9iJXAgsV-cXNrtO64dsMmIAspuH5DV8OxGhTqwgA" %}}
 
 ## Logic Gate Part Numbers
 
@@ -760,3 +719,4 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 [^bib-wikipedia-ptl]: Wikipedia (2022, Nov 22). _Pass transistor logic_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/Pass_transistor_logic.
 [^bib-all-about-circuits-digital-design-ptl]: Robert Keim (2018, Dec 26). _Digital Design with Pass-Transistor Logic_. All About Circuits. Retrieved 2023-05-09, from https://www.allaboutcircuits.com/technical-articles/digital-design-with-pass-transistor-logic/.
 [^bib-uni-waterloo-ptl]: University of Waterloo - ECE. _ECE 637 - Lecture 11 - Pass-Transistor Logic_. Retrieved 2023-05-09, from https://ece.uwaterloo.ca/~mhanis/ece637/lecture11.pdf.
+[^bib-wikipedia-ttl]: Wikipedia (2023, Apr 22). _Transistor–transistor logic_. Retrieved 2023-05-10, from https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic.
