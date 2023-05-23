@@ -1,0 +1,313 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
+date: 2012-11-21
+description: Insulation materials, cable types, standards, mutual capacitance and more info on cables.
+draft: false
+lastmod: 2023-05-23
+tags: [ cable, computer cable, material, insulation, ETFE, mPPE, PDVF, NEC, UNITRONIC, PROFIBUS, mutual capacitance, capacitance, screens, screening, shielding, shields, Faraday cage ]
+title: Cables
+type: page
+---
+
+## Overview
+
+Cables are an important design consideration for most electrical designs and installations. They typically provide power and data (although wireless transmission is becoming more common for data transmission) to and between electronic
+
+## Insulation Materials And Their Properties
+
+<table>
+  <colgroup>
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+  </colgroup>
+<thead>
+<tr>
+<th>Common Name</th>
+<th>Material</th>
+<th>Temperature Range</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>ETFE</p></td>
+<td><p>Ethylene tetraflouroethylene</p></td>
+<td><p>-70 to +150°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Used in wire-wrap applications.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>MG</p></td>
+<td><p>Mica glass</p></td>
+<td><p>450°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Used in high-temperature applications</p>
+</li>
+<li>
+<p>Excellent thermal stability</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>mPPE</p></td>
+<td><p>Modified polyphenylene ether\</p></td>
+<td><p>-40 to +105°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Excellent recyclability</p>
+</li>
+<li>
+<p>Excellent abrasion and cut-through resistance</p>
+</li>
+<li>
+<p>Superior dielectric properties to PVC, allows wires to be 45% smaller in diameter and 40% lighter in weight</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>PDVF</p></td>
+<td><p>Polyvinylidene fluoride</p></td>
+<td><p>-40 to +125°C</p></td>
+<td><p>Used in wire-wrap applications.</p></td>
+</tr>
+<tr>
+<td><p>PTFE</p></td>
+<td><p>Polytetrafluoroethylene</p></td>
+<td><p>-55 to +200°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>High temperature range</p>
+</li>
+<li>
+<p>Excellent chemical and solvent resistance</p>
+</li>
+<li>
+<p>Excellent electrical properties</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>PVC</p></td>
+<td><p>Polyvinyl chloride</p></td>
+<td><p>-40 to +90°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Very common, price competitive insulating material for cables.</p>
+</li>
+<li>
+<p>Does not have a large temperature range.</p>
+</li>
+<li>
+<p>See XL-PVC (cross-linked PVC) for PVC with a higher temperature resistance.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>Silicone</p></td>
+<td><p>Silicone</p></td>
+<td><p>-40 to +150°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>High-voltage capability.</p>
+</li>
+<li>
+<p>Excellent flexibility.</p>
+</li>
+<li>
+<p>Excellent dielectric strength.</p>
+</li>
+<li>
+<p>Chemical resistance to radiation, corona and ozone.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>TGGT</p></td>
+<td><p>Teflon-glass-glass-Teflon</p></td>
+<td><p>+250°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Suitable for high-temperature applications</p>
+</li>
+<li>
+<p>Excellent chemical and solvent resistance</p>
+</li>
+<li>
+<p>Moisture resistant</p>
+</li>
+<li>
+<p>Handles repeated flexing</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>XL-PVC</p></td>
+<td><p>Cross-linked PVC</p></td>
+<td><p>-55 to 105°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Better abrasion and cut-through resistance than standard PVC</p>
+</li>
+<li>
+<p>Improved temperature resistance over standard PVC</p>
+</li>
+<li>
+<p>Used in high-density wiring</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td><p>XLPE</p></td>
+<td><p>Cross-linked polyethylene</p></td>
+<td><p>-55 to 125°C</p></td>
+<td><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Higher temperature rating than PVC</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+
+## Standards
+
+### NEC
+
+The _National Electrical Code_ (NEC) is an American standards body which defines a set of standards for certain types of cabling and how they should be installed and used.
+
+NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fibre optic) and a suffix indicating the type of flame test it has passed and where it can be installed.
+
+{{% figure src="nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790px" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/." %}}
+
+## Computer Cable
+
+Computer cable can also be called "Security" or "Alarm" cable.
+
+### AWM
+
+Underwriters Laboratories categorises some computer cable as _appliance wiring material_ (AWM). It has become an industry standard. There are 5 different style numbers.
+
+AWM cable is designed for the internal wiring of factory-assembled, "listed" appliances such as computers, white-wear, and industrial equipment.
+
+### UL2464
+
+UL2464 is a loose standard defining some of the properties of computer cable, maintained by Underwriters Laboratories.
+
+Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2.
+
+* Stranded, bare or tinned copper conductor
+* Colour-coded SR-PVC insulation
+* Cores cabled under aluminum mylar shield
+* Tinned or bare copper stranded drain wire
+* Tinned or bare copper wire braid shield up to 95% coverage
+* Lead free PVC jacket
+* Passes UL VW-1SC & CSA FT1 vertical flame test
+
+Features Specifications: UL2464 Double Shielded Computer Cables
+
+* Rated temperature: 80°C
+* Rated voltage: 300V
+
+Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2
+
+* Stranded, bare or tinned copper conductor
+* Colour-coded SR-PVC insulation
+* Cores cabled under aluminum mylar shield
+* Tinned or bare copper stranded drain wire
+* Tinned or bare copper wire braid shield up to 95% coverage
+* Lead free PVC jacket
+* Passes UL VW-1SC & CSA FT1 vertical flame test
+
+Common Colours In UL2464 Cable:
+
+* Black
+* Brown
+* Red
+* Orange
+* Yellow
+* Green
+* Blue
+* Purple
+* Gray
+* White
+* Pink
+* Light Green
+* Black-White
+
+Common Colours For 12 Core Cable:
+
+* Black
+* Yellow
+* Red
+* Blue
+* Green
+* Yellow
+* White
+* Brown
+* Violet
+* Orange
+* Pink
+* Light Green
+* Grey
+
+## Combined Power/Data Cable
+
+Combined power/data cable refers to cable which makes special provision for carrying both moderate/large amounts of power and data through the same cable. All cables can carry "power" and data, but this category refers to two specific cases:
+
+* The cable contains cores of different gauges, with the large gauge for carrying moderate to large amounts of power, and the smaller gauge for data.
+* The cable contains both shielded, twisted pairs and non-shielded, non-twisted power cores.
+
+Some examples of combined power/data cables include:
+
+* Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm2 power cores and 1x2x0.64mm2 twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.
+
+## Mutual Capacitance
+
+For cables with screening, typically a conductor-to-conductor and conductor-to-screen capacitance is given. The conductor-to-conductor capacitance is typically 80-140nF and the conductor-to-screen capacitance is typically 100-180nF (slightly higher than the conductor-to-conductor capacitance). 
+
+## Screens
+
+Cables (or specific cores within a cable) may be _screened_ (a.k.a. _shielded_) to prevent electromagnetic radiation from both entering and exiting the cores within the cable. There are two primary ways to screen a cable:
+
+* **Copper braid**: Braided strands of copper (or other conductive material, such as Aluminium) form the Faraday cage.
+* **Copper foil**: A continuous flexible, thin sheet of copper of other conductive material is wrapped around the cables to form the Faraday cage.
+
+The shield must be grounded (with respect to the signals/EMI) to be effective.
+
+## Cable Glands
+
+Cable glands are strain-relief and weather-proofing glands which allow cables to be passed through enclosure walls.
+
+{{% figure src="cable-glands-three-sizes.jpg" width="500px" caption="Three sizes of cable gland." %}}
+
+{{% figure src="cable-gland-multi-cable-edited.jpg" width="300px" caption="A single large cable gland which contains a grommet which allows 8 cables to pass through." %}}
+
+{{% figure src="metal-cable-gland.jpg" width="200px" caption="Metal cable glands are available if you need stronger support. Note however metal is not strictly better...plastic is better for chemical/corrosion resistance!" %}}
+
+## References
+
