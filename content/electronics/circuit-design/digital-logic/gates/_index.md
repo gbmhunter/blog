@@ -21,6 +21,8 @@ There are a few different standards used to draw logic gates on schematics:
 
 This page uses the convention of `TRUE` or `1` to represent the logic state true, and `FALSE` or `0` to represent the logic state false.
 
+## Types of Gates
+
 ### NOT
 
 Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inverter) always outputs the opposite (complement) of the input. If the input is `TRUE`, the output is `FALSE`. If the input is `FALSE`, the output is `TRUE`.
@@ -240,7 +242,7 @@ The truth table for an XNOR gate is:
   </tbody>
 </table>
 
-## What Are Logic Gates Built From?
+## Logic Families
 
 ### Diode Logic (DL)
 
@@ -248,7 +250,7 @@ _Diode logic_ (DL) is digital logic circuitry *made from just diodes and resisto
 
 {{% figure src="and-gate-from-diodes-and-resistors.svg" width="300px" caption="An AND gate made from basic diode logic." %}}
 
-Before long you'll be struck with the solemn realization you can't create a NOT gate (inverter) from pure diode logic (or any gates that require inverting capabilities, such as NAND or NOR gates). *This limits you to being only able to make AND or OR gates*, and hence it's usefulness is severely limited. NOT gates are constructable as soon as you add switching elements, such as transistors. [^_resistor_transistor_logic_rtl, Resistor-transistor logic] is the extension of diode logic but the addition of transistors.
+Before long you'll be struck with the solemn realization you can't create a NOT gate (inverter) from pure diode logic (or any gates that require inverting capabilities, such as NAND or NOR gates). *This limits you to being only able to make AND or OR gates*, and hence it's usefulness is severely limited. NOT gates are constructable as soon as you add switching elements, such as transistors. [Resistor-transistor logic](#resistor-transistor-logic-rtl) is the extension of diode logic but the addition of transistors.
 
 ### Resistor-Transistor Logic (RTL)
 
@@ -278,7 +280,11 @@ TODO: Add info here.
 
 The inputs of TTL logic are the emitters of BJTs.
 
-### N-type Metal-oxide Semiconductor (NMOS) Logic
+#### TTL NAND Gate
+
+TTL NAND gates can use special multiple-emitter BJTs to reduce the transistor count. Each input of the NAND gate is connected to one of the emitters. In the case of a NPN BJT, is any 1 or more of the base-emitter junctions is forward biased, then the transistor turns on[^bib-wikipedia-ttl].
+
+### N-type Metal-oxide Semiconductor Logic (NMOS)
 
 N-type Metal-oxide Semiconductor (NMOS) logic is a way of building logic functions from N-channel MOSFETs. In the early days of digital logic (1970s), it was much faster and easier to manufacture than CMOS, however since the 1980s CMOS took over and has become the dominant way of implementing logic gates[^bib-wikipedia-nmos]. NMOS is built from an arrangement of N-channel MOSFETs on the low-side (depending on the function) and a pull-up resistor on the high side. 
 
@@ -306,7 +312,7 @@ The NMOS NOR gate uses two N-channel MOSFETs connected in parallel to drive the 
 {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHMhI7t3yLB3Ir2qRWAJSFZBeXkUMhsg7XzpRbMBKwAylIqv6CEYIqMu32AQwAbAGd6Gh0AdzVwEkFhdWRvHQBZEENVL1UsImpM2zRJVijTI1josDKdAA8XEnMEJCwEOrQEN3NeADlkgHkAZQAdYM6e3SGAcX8AF3oilzcRNt53KFYahqRuNAgETT5iPhReAEE1tIOwXbTL8GbD5F4ATVYAJwMjSBMzMC9bVDgOEI9issJ8fOBBBIpLBZM5dm58KpPN4VKorAEQmEpHN4XxEUDlvjIgS8aoiMCRMTQbwKoJqXxEqtit9XO8YpY5iVwKz0ty0Zzvgg4iz+cyjL8uZcOWL2WkwbTVgp6cosmCNFpVusrtwcC5NvhqLwHiAAEKsIA" %}}
 </div>
 
-### Complementary Metal-oxide Semiconductor (CMOS) Logic
+### Complementary Metal-oxide Semiconductor Logic (CMOS)
 
 _Complementary metal-oxide-semiconductor_ (CMOS) is a way of building logic functions from complementary pairs of N-channel and P-channel MOSFETs. Today, it is by far the most popular way of constructing digital integrated circuits (ICs)[^bib-wikipedia-cmos]. CMOS circuits typically have negligible static power dissipation and only consume power during transitions. It advances from NMOS technology by replacing the upper resistor with P-channel MOSFETs, which both eliminates static power dissipation and speeds up the low-to-high transition.
 
@@ -395,14 +401,23 @@ Pass transistor logic (PTL) is a form of logic design in where transistors are u
 
 #### PTL AND Gate
 
-Above we showed a CMOS AND gate built from a total of 6 MOSFETs. A PTL AND gate reduces the transistor count and only uses 4 MOSFETs. The circuit is shown below[^bib-bar-ilan-ptl]:
+An AND gate can be made from PTL logic using a total of 5 transistors, one less than the 6 required in CMOS logic.
 
-{{% figure src="ptl-and-gate-4-tran.png" width="500px" caption="A PTL AND gate made from 4 MOSFETs." %}}
+{{% figure src="ptl-and-gate.png" width="500px" caption="An AND gate made from PTL logic." %}}
 
-This circuit can be analysed as such:
+The circuit on the left is just an inverter to provide `\(\overline{B}\)` which is needed for the PTL logic on the right. The TG on the right connects `\(A\)` to the output only if `\(B = 1\)`. Thus:
 
-1. If `\(B\)` is `1`, then `\(A\)` is passed through to the output, thus `\(Y\)` is `1` if `\(A\)` is also `1`.
-1. If `\(B\)` is `0`, then we don't care about `\(A\)`, and the output `\(Y\)` is always driven to `0`.
+* `\(B = 1\)` and `\(A = 0\)`, then `\(Y = 0\)`
+* `\(B = 1\)` and `\(A = 1\)`, then `\(Y = 1\)`
+
+If `\(B = 0\)`, then the TG is off but the bottom-right N-channel MOSFET is turned on, connecting the output to `\(GND\)` (we don't care what `\(A\)` is). Thus:
+
+* `\(B = 0\)` and `\(A = 0\)`, then `\(Y = 0\)`
+* `\(B = 0\)` and `\(A = 1\)`, then `\(Y = 0\)`
+
+It should now be pretty clear that this works as an AND gate. Play around with the interactive simulation below:
+
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADIjZophFcAWasj5QxAMwCGAGwDO9GpFYAPEEIgCkCIhvxrBIAAoAVdgB1ZAQQByAEQsBxSQBd6rAO7giwhDzBZ+ZF8oD3AAlBI-cKCeJU8BIRRggTQBJNjQlLSYtVSUcLiwwOD-QOQMgCVctJJ+LJAiNOpqRKRmqGgEVgBzaq4CPrQ85sy88r16nKVxIoieScjKHmROjsg0VhnSlHK+lh4ECBW22A2MCgSfeaxl4KQAOwAhVnOuG95+PGzRJEsXyAojT0OSI+Cu+gAmptKPg0hg9AhYShQQ1hKsYOtoYiavxsR8GsgUOjTqFtMCfsERPxCghKSiyci9IVvMIUURkIEUcyOfiWfiaZSKbcMp5acLKHSmaF2YFRDL0iFPPKQTyOVLRaIcmKFUpXnjajC0u8Hs89Uj4YauGADiBTQC3ssUV9GTRnpxuC7UqymRIZPJFP8KHxwdbgXdbYGHVweV7o3UQFCALJRtA852p6lcTpY834BHmgQI5bEzG9Xx6VJFiuNMQ0tAVwuUFGVkJmuF5y1gXYm6VwQR6HQ8FvM639hqjqbS1XBQc66UTmeNyd6zV3SDZcN-IA" %}}
 
 #### 8 Transistor PTL XOR Gate
 
@@ -433,56 +448,9 @@ The left-side of the circuit is an "inverter" (but with the MOSFET source leads 
 * When `\(A = 0\)`, both MOSFETs in the inverter will always be `OFF` because the gate-source voltage of the N-channel MOSFET can never be more positive than 0V and the gate-source voltage of the P-channel can never be more negative than 0V. The right-hand side transmission gate will be ON, and so the output will equal `\(B\)`.
 * When `\(A = 1\)`, the transmission gate will be `OFF`, and the inverter will become active, passing through the inverse of `\(B\)` to the output.
 
-This makes a XOR gate!
+This makes a XOR gate! Have a play around with the interactive simulation of it below:
 
-### Comparison
-
-<table>
-    <thead>
-        <tr>
-            <th>Logic Subfamily</th>
-            <th>Description</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>AC</td>
-            <td>CMOS.</td>
-            <td>|</td>
-        </tr>
-        <tr>
-            <td>CVSL</td>
-            <td>Cascode voltage switch logic.</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>HC</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>HCT</td>
-            <td>High-speed CMOS with TTL-compatible inputs.</td>
-            <td>Only works with a +5V power supply. Interestingly, still slower than original TTL.</td>
-        </tr>
-        <tr>
-            <td>IIL</td>
-            <td>Integrated injection logic.</td>
-            <td>|</td>
-        </tr>
-        <tr>
-            <td>LS</td>
-            <td>Low-power Schottky.</td>
-            <td>|</td>
-        </tr>
-        <tr>
-            <td>PTL</td>
-            <td>Pass transistor logic.</td>
-            <td>|</td>
-        </tr>
-    </tbody>
-</table>
+{{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADIjZophFcAWasj5QxAMwCGAGwDO9GpFYAPcAIgDkIImHwgBA-YO2MAKgCdJAO1kBLWQBcA9uYA6sgAqn27gBoB5ACV3AHFJB3pWAHdwImEEHjAsfmQEqGjwZJQSRKzUniUYg3ieATRDfPSi8pQ0soqswsyUtKSU5ALWQP0akn567UNqaiFFMRgEVgBzHsMMPQG0GuGMgY6FmsqlcWbs0s2cyh5kaCQYSDRWHbaUDtnbngQIE7PYS4wKYtrSrGO0pCsAEFWB8uL9ePw8BVREhgaCiMgWjwESkMEYAJogyAUBD4OYESh4wR0EBAq6UUQsR5EqkUlCnKBvclPFKHXEVQ5ol6Mi4ZdkoNB6flbPmU-6Uu5NYX-GmNDIo76EippKWUtlizqg-l9JWDGhw7EUpG0ZWPEAAIXJRHBaER2nBiKFxwZ50uO2tPHweg9ELp3Nd8oQKVERFGIn4TVDwiI3qDKBjVW0XvjeiwkAqCaaaeh-BjenDiajvqLIpiJbSJczGWzvprpZAdbSdarZbtlXLmsNPuTPrjsKxFB9ttzNoEQtJBoojZ4uGNSEtoO4KfA6eX844YOOCfK0b0wxAUjkCjOA9iJXAgsV-cXNrtO64dsMmIAspuH5DV8OxGhTqwgA" %}}
 
 ## Logic Gate Part Numbers
 
@@ -751,4 +719,8 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 [^bib-wikipedia-ptl]: Wikipedia (2022, Nov 22). _Pass transistor logic_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/Pass_transistor_logic.
 [^bib-all-about-circuits-digital-design-ptl]: Robert Keim (2018, Dec 26). _Digital Design with Pass-Transistor Logic_. All About Circuits. Retrieved 2023-05-09, from https://www.allaboutcircuits.com/technical-articles/digital-design-with-pass-transistor-logic/.
 [^bib-uni-waterloo-ptl]: University of Waterloo - ECE. _ECE 637 - Lecture 11 - Pass-Transistor Logic_. Retrieved 2023-05-09, from https://ece.uwaterloo.ca/~mhanis/ece637/lecture11.pdf.
+<<<<<<< HEAD
 [^bib-bar-ilan-ptl]: Bar Ilan's Faculty of Electrical and Computer Engineering. _Digital Microelectronic Circuits - Lecture 9 - Pass Transistor Logic_. Retrieved 2023-05-24, from https://www.eng.biu.ac.il/temanad/files/2018/02/09-PTL-annotated.pdf.
+=======
+[^bib-wikipedia-ttl]: Wikipedia (2023, Apr 22). _Transistor–transistor logic_. Retrieved 2023-05-10, from https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic.
+>>>>>>> 44a8f70a8a0bcd9a926690bd8bf94daa9aa1de22
