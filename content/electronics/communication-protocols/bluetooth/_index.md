@@ -12,19 +12,21 @@ type: page
 
 ## Overview
 
+{{% figure src="bluetooth-4-0-icon.jpg" width="300px" float="right" caption="The Bluetooth icon/logo." %}}
+
 Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards[^bib-wikipedia-bluetooth-sig]. The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
 {{% tip %}}
 Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link[^bib-sig-origin-of-name].
 {{% /tip %}}
 
-Personal area network (PAN) was called a piconet. 1 central device and up to 7 peripherals.
+## Piconet And Scatternets
 
-## Logo
+A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in a inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state[^bib-wikipedia-piconet].
 
-The bluetooth logo is shown below:
+Both active and parked slaves in a Piconet are time-synchronized to the master so that RF contention does not occur (they implement a Time Division Multiple Access (TDMA) network).
 
-{{% figure src="bluetooth-4-0-icon.jpg" width="300px" caption="The Bluetooth icon/logo." %}}
+A _Scatternet_ is two or more independent Piconets which are connected together by one node in one Piconet (either the master or a slave) also acting as a slave in the second Piconet[^bib-garg-bluetooth].
 
 ## Advanced Audio Distribution Profile (A2DP)
 
@@ -79,3 +81,5 @@ Two types of encryption keys:
 [^bib-silicon-labs-bluetooth-mesh-performance]: Silicon Labs. _AN1137: Bluetooth Mesh Network Performance_. Retrieved 2023-05-24, from https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf.
 [^bib-wikipedia-bluetooth-sig]: Wikipedia (2023, Apr 27). _Bluetooth Special Interest Group_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Bluetooth_Special_Interest_Group.
 [^bib-sig-origin-of-name]: Bluetooth SIG. _About Us - Origin of the Bluetooth Name_. Retrieved 2023-05-24, from https://www.bluetooth.com/about-us/bluetooth-origin/.
+[^bib-wikipedia-piconet]: Wikipedia (2021, May 16). _Piconet_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Piconet.
+[^bib-garg-bluetooth]: Vijay K. Garg (2007). _Wireless Personal Area Network — Bluetooth_. Wireless Communications & Networking. Retrieved 2023-05-24, from https://www.sciencedirect.com/book/9780123735805/wireless-communications-and-networking. 
