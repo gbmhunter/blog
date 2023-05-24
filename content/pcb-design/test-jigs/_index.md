@@ -10,9 +10,7 @@ title: "Test Jigs"
 type: "page"
 ---
 
-:imagesdir: {{< permalink >}}
-
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+{{% warning-is-notes %}}
 
 ## Overview
 

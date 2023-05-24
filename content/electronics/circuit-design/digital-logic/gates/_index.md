@@ -395,7 +395,14 @@ Pass transistor logic (PTL) is a form of logic design in where transistors are u
 
 #### PTL AND Gate
 
-TODO: Add info.
+Above we showed a CMOS AND gate built from a total of 6 MOSFETs. A PTL AND gate reduces the transistor count and only uses 4 MOSFETs. The circuit is shown below[^bib-bar-ilan-ptl]:
+
+{{% figure src="ptl-and-gate-4-tran.png" width="500px" caption="A PTL AND gate made from 4 MOSFETs." %}}
+
+This circuit can be analysed as such:
+
+1. If `\(B\)` is `1`, then `\(A\)` is passed through to the output, thus `\(Y\)` is `1` if `\(A\)` is also `1`.
+1. If `\(B\)` is `0`, then we don't care about `\(A\)`, and the output `\(Y\)` is always driven to `0`.
 
 #### 8 Transistor PTL XOR Gate
 
@@ -744,3 +751,4 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 [^bib-wikipedia-ptl]: Wikipedia (2022, Nov 22). _Pass transistor logic_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/Pass_transistor_logic.
 [^bib-all-about-circuits-digital-design-ptl]: Robert Keim (2018, Dec 26). _Digital Design with Pass-Transistor Logic_. All About Circuits. Retrieved 2023-05-09, from https://www.allaboutcircuits.com/technical-articles/digital-design-with-pass-transistor-logic/.
 [^bib-uni-waterloo-ptl]: University of Waterloo - ECE. _ECE 637 - Lecture 11 - Pass-Transistor Logic_. Retrieved 2023-05-09, from https://ece.uwaterloo.ca/~mhanis/ece637/lecture11.pdf.
+[^bib-bar-ilan-ptl]: Bar Ilan's Faculty of Electrical and Computer Engineering. _Digital Microelectronic Circuits - Lecture 9 - Pass Transistor Logic_. Retrieved 2023-05-24, from https://www.eng.biu.ac.il/temanad/files/2018/02/09-PTL-annotated.pdf.
