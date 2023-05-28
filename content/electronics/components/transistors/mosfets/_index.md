@@ -4,7 +4,7 @@ categories: [ Electronics, Components ]
 date: 2011-09-03
 description: Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs.
 draft: false
-lastmod: 2022-07-04
+lastmod: 2023-05-28
 tags: [ MOSFETs, transistors, field-effect transistors, metal oxide semiconductors, schematics, electronics, switches, inverters, H-bridges, half-bridges, switch-mode, substrate bias effect, floating-gate MOSFETs, FGMOS, EEPROM, flash memory, drain, source, gate, split-gate, SOA diagram ,safe operating area, thermal limits, Spirito effect, common-source amplifier, HEMT ]
 title: MOSFETs
 type: page
@@ -73,9 +73,11 @@ MOSFETs inside ICs do not normally have the substrate connected to the source, a
 
 ICs such as [voltage-level translators](/electronics/components/voltage-level-translation/) and [analogue switches](/electronics/components/analogue-switches/) use this substrate connection to their advantage (especially the part about blocking current in both directions).
 
+For more information on this, see the [The Body Effect And Connecting The Substrate To The Source section below](#the-body-effect-and-connecting-the-substrate-to-the-source). 
+
 ## Important Parameters
 
-Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\( V_{DS(max)} \)`), the voltage is measured with respect to the second pin (e.g. source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
+Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\( V_{DS(max)} \)`), the voltage is measured from the first pin to the second pin (e.g. from the drain to the source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
 
 Sorted by alphabetical order, including subscripts.
 
@@ -260,33 +262,13 @@ Aside from the two naturally occurring diodes, MOSFETs also contain a BJT. The s
 
 CMOS devices have PNPN structures. This forms a parasitic thyristor, which can cause latch-up.
 
-## The Body Effect (aka The Substrate Bias Effect)
+## The Body Effect And Connecting The Substrate To The Source
 
-The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
-
-Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
-
-Do you want the huge equation that tells you how the threshold voltage changes? Here you go:
-
-<p>\begin{align}
-V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|})
-\end{align}</p>
-
-<p class="centered">
-  where:<br/>
-  \(V_{TN}\) = the threshold voltage with substrate bias present [Volts]</br>
-  \(V_{TO}\) = the threshold voltage for zero substrate bias [Volts]</br>
-  \(\gamma\) = the body effect parameter</br>
-  \(V_{SB}\) = the source to body (substrate) voltage [Volts]</br>
-</p>
-
-## The Substrate (Body) Connection
-
-**The basic design of a MOSFET provides four (not three!) electrical connection points**. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead is normally connected internally to the source (as mentioned above in the _The Body Effect_ section), so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
+**The basic design of a MOSFET provides four (not three!) electrical connection points**. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead is normally connected internally to the source, so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
 
 {{% figure src="mosfet-silicon-structure.png" width="1000px" caption="Diagram showing the internal silicon structure of a MOSFET. The MOSFET on the right does not have the source connected to the substrate, and has two parasitic body diodes (commonly done within ICs). The MOSFET on the left shows the source connected to the substrate (almost all discrete MOSFETs do this), which shorts out (removes) one the body diodes." %}}
 
-Some discrete MOSFETs do provide you with a separate substrate pin, for example the 3N163 as shown below.
+Some discrete MOSFETs do provide you with a separate substrate pin, for example the 3N163 as shown below:
 
 {{% figure src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
 
@@ -294,17 +276,44 @@ Some discrete MOSFETs do provide you with a separate substrate pin, for example 
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 {{% /note %}}
 
+The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_. For a N-channel MOSFET, as the substrate becomes more negative than the source, the threshold voltage of the MOSFET is increased.
+
+Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
+
+For a N-channel MOSFET, the threshold voltage is affected by the body effect as governed by the following equation[^bib-wikipedia-threshold-voltage]:
+
+<p>\begin{align}
+V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|})
+\end{align}</p>
+
+<p class="centered">
+  where:<br/>
+  \(V_{TN}\) is the threshold voltage with substrate bias present [Volts]</br>
+  \(V_{TO}\) is the threshold voltage for zero substrate bias [Volts]</br>
+  \(\gamma\) is the body effect parameter</br>
+  \(V_{SB}\) is the source to body (substrate) voltage [Volts]</br>
+  \(\phi_F\) is substrate Fermi potential<br/>
+</p>
+
+The body effect parameter `\(\gamma\)` is:
+
+<p>\begin{align}
+\gamma = \dfrac{\sqrt{2qN_A\epsilon_S}}{C_{ox}}
+\end{align}</p>
+
 Another interesting note is that without the connection of the substrate to the source, the **MOSFET source and drain connections would be identical**, and there would be no need to separately identify them. As soon as the substrate is connected to the source, the MOSFETs internals become **asymmetrical** and you cannot freely swap around the drain and the source (if you do swap them, you'll normally get the body diode **conducting** when you don't want it to!).
 
-**Q. Why is the substrate normally connected to the source?**
+For a N-channel MOSFET, when the substrate is not connected to the source, whatever N-doped implant is most negative in voltage will be the source. The important gate-source voltage to turn the MOSFET on will then be measured between the gate and this implant. 
 
-A. Because when it isn't, **a MOSFET becomes much harder to use**. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to the source internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
+**Why is the substrate normally connected to the source?**
 
-You may also note that some IC designs do not connect the substrate to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground. I'm not entirely sure why, but it might have something to do with the devices ability to block reverse current. Normally this is achieved with back-to-back MOSFETs, but this diagram almost suggests that they pull it off using only the one MOSFET.
+The substrate is normally connected to the source in most discrete MOSFETs because it makes the **MOSFET easier to use**. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to the source internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
+
+When doing IC design, the substrate is often NOT connected to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground.
 
 {{% figure src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="600" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." %}}
 
-Interestingly, the block diagram for the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF) may shed more light on this matter. Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output.
+Another example is the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF). Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output:
 
 {{% figure src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="700" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." %}}
 
@@ -405,3 +414,4 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^bib-ti-gan-ics]: Texas Instruments. _Power management > Gallium nitride (GaN) ICs (product page)_. Retrieved 2022-05-17, from https://www.ti.com/power-management/gallium-nitride/overview.html.
 [^infineon-gan-hemt]: Infineon (2022). _GaN HEMT – Gallium Nitride Transistor (product page)_. Retrieved 2022-05-17, from https://www.infineon.com/cms/en/product/power/gan-hemt-gallium-nitride-transistor/.
 [^ti-lmg352xr030-q1-ds]: Texas Instruments (2021, Jun). _LMG352xR030-Q1 650-V 30-mΩ GaN FET with Integrated Driver, Protection, and Temperature Reporting (datasheet)_. Retrieved 2022-05-17, from https://www.ti.com/lit/ds/symlink/lmg3525r030-q1.pdf.
+[^bib-wikipedia-threshold-voltage]: Wikipedia (2023, May 18). _Threshold voltage_. Retrieved 2023-05-28, from https://en.wikipedia.org/wiki/Threshold_voltage.
