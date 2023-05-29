@@ -11,11 +11,11 @@ type: post
 
 It's been a buuuussssyyyyyy month around here. A list of the updates for this month:
 
-* link:candy-calc firmware project[https://github.com/gbmhunter/candy-calc] started on GitHub. I am hoping to eventually convert all calculators on this site to use this framework.  
+* [candy-calc firmware project](https://github.com/gbmhunter/candy-calc) has been started on GitHub. I am hoping to eventually convert all calculators on this site to use this framework.  
 
   	{{% figure src="candy-calc-readme-screenshot.jpg" width="500px" caption="A screenshot of the candy-calc repo on GitHub." %}}
 
-* LT3745 Design Guide page (**as of Dec 2017, URL not available**) and calculator using the link:candy-calc[https://github.com/gbmhunter/candy-calc] framework  
+* LT3745 Design Guide page (**as of Dec 2017, URL not available**) and calculator using the [candy-calc](https://github.com/gbmhunter/candy-calc) framework  
 
   	{{% figure src="lt3745-calculator-screenshot.jpg" width="500px" caption="A screenshot of the calculator on the LT3745 Design Guide page." %}}
 
@@ -23,24 +23,24 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * Installed the [SEO Smart Links plugin](http://wordpress.org/plugins/seo-automatic-links/), which links pages to others based on scanned text
 
-* New link:/electronics/components/sensors/temperature-sensors/digital-temperature-sensors[Digital Temperature Sensors page].
+* New [Digital Temperature Sensors page](/electronics/components/sensors/temperature-sensors/digital-temperature-sensors).
 
 * {{% link text="rsync" src="/programming/operating-systems/linux/programs/rsync" %}} and {{% link text="ddclient" src="/programming/operating-systems/linux/programs/ddclient" %}} pages in the {{% link text="Linux page" src="/programming/operating-systems/linux" %}}
 
-* Info on link:/electronics/components/diodes/#lens-shapes[LED lens types].
-+
-image::led-lens-shapes-screenshot.jpg[width=400px]
+* Info on [LED lens types](/electronics/components/diodes/#lens-shapes).
 
-* More info added to the {{% link text="Windows" src="/programming/operating-systems/windows" %}} and {{% link text="Batch" src="/programming/languages/batch" %}} pages
+    {{% figure src="led-lens-shapes-screenshot.jpg" width="400px" caption="A screenshot of the calculator on the LT3745 Design Guide page." %}}
 
-* Added a new pass:[<s>Impedance Controlled Routing page</s>] (update 2022-01: now link:[Transmission Lines page]).
+* More info added to the [Windows](/programming/operating-systems/windows) and [Batch](/programming/languages/batch) pages
 
-* New info on the {{% link text="Cellular Modem page" src="/electronics/components/cellular-modems" %}}, and a {{% link text="Telit HE910 Design Notes page" src="/electronics/components/cellular-modems/he910-design-notes" %}}
+* Added a new pass:[<s>Impedance Controlled Routing page</s>] (update 2022-01: now Transmission Lines page).
 
-* New page on {{% link text="Antenna Design" src="/electronics/circuit-design/antenna-design" %}}, incorporating the use of [Google Charts](https://developers.google.com/chart/)
+* New info on the [Cellular Modem page](/electronics/components/cellular-modems), and a [Telit HE910 Design Notes page](/electronics/components/cellular-modems/he910-design-notes).
+
+* New page on [Antenna Design](/electronics/circuit-design/antenna-design), incorporating the use of [Google Charts](https://developers.google.com/chart/)
 
   	{{% figure src="antenna-page-screenshot.jpg" width="500px" caption="A screenshot of the Antenna page." %}}
 
-* New page on the {{% link text="TI C2000 MCU architecture" src="/programming/cpu-architectures/c2000" %}}
+* New page on the [TI C2000 MCU architecture](/programming/cpu-architectures/c2000).
 
 As always, enjoy!
