@@ -239,7 +239,11 @@ The common size codes and sizes of SMD Electrolytic capacitors, see the [SMD Ele
 
 #### Electrolyte Leakage
 
-Electrolytic capacitors are somewhat infamous for electrolyte leakage and dry-up over long periods of time.
+Electrolytic capacitors are somewhat infamous for electrolyte leakage and/or vaporization over long periods of time. The leakage or vaporization rate is increased drastically with increased operating temperatures, and typically results in the capacitance of the capacitor decreasing and the ESR increasing[^bib-cadence-causes-of-elec-cap-degradation]. Electrolyte that leaks onto the PCB can cause significant corrosion to neighbouring components. This is due to increased oxidation and by allowing the conduction between traces and other conductive parts at different voltage potentials, which causes chemical etching to occur. 
+
+The _capacitor plague_ was a period between 1999 and 2007 when **electrolytic capacitors experienced higher than expected failure rates** due to faulty design. The back story is one of intrigue, with the issue starting in 1999 with scientist working for Rubycon Corporation in Japan stealing a mis-copied formula for a capacitor electrolyte a giving it to his former employer, Luminous Town Electric company in China. The faulty formula was further stolen abroad to Taiwan, and many faulty capacitors were produced as a result. Bulging and bursting electrolytic capacitors in things such as PC motherboards begun making headlines in 2002[^bib-passive-component-industry-electrolytic-failures].
+
+{{% note %}}
 
 My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up. After 20-40mins after turn-on, a crackling noise would begin to get louder and louder in the speakers and soon make the system unusable. After opening the main unit up, I discovered the classic signs of electrolytic capacitor leakage, as shown in the image below. The electrolyte had leaked out of the capacitor, and also corroded right through the lead of a neighbouring resistor, making the resistor go open circuit (the capacitor was probably functioning poorly also). After replacing both components, the noise went away!
 
@@ -248,6 +252,9 @@ My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up.
 Below is a close-up of the faulty electrolytic capacitor. You can't see the corroded resistor as it is hidden above the orange disk-style capacitor and inductor-looking component. 
 
 {{% figure src="pcb-with-electrolyte-leakage-zoomed-in.jpg" width="800px" caption="A close-up of the faulty electrolytic capacitor." %}}
+
+{{% /note %}}
+
 
 ### Tantalum
 
@@ -277,11 +284,19 @@ Below is a close-up of the faulty electrolytic capacitor. You can't see the corr
   </tbody>
 </table>
 
-Tantalum capacitors are actually special type of electrolytic capacitor. But they deserve their own category because of their special properties and wide-spread use. The have lower ESR, lower leakage and higher temperature ranges (up to 125°C) than their electrolytic counterparts.
+Tantalum capacitors are a special type of electrolytic capacitor. But they are categorized distinctly from general electrolytic capacitors because of their special properties and wide-spread use. The have lower ESR, lower leakage and higher temperature ranges (up to 125°C) than their general electrolytic counterparts.
 
 {{% figure src="container-of-th-tantalum-caps.jpg" width="700px" caption="Through-hole tantalum capacitors." %}}
 
-Most tantalum capacitors are made with a solid electrolyte, and therefore are not prone to the electrolyte evaporation/drying up problems normal electrolytics have. This makes them able to retain their rated capacitance for years, if not decades.
+There are two basic types of tantalum capacitors, older _solid_ tantalum capacitors and newer _wet_ tantalum capacitors.
+
+#### Solid Tantalum Capacitors
+
+As their name suggests, _solid_ tantalum capacitors contain a solid electrolyte. Not prone to the electrolyte evaporation/drying up problems normal electrolytics have. This makes them able to retain their rated capacitance for years, if not decades.
+
+#### Wet Tantalum Capacitors
+
+_Wet_ tantalum capacitors are a newer from of tantalum capacitor, with a better energy density than solid types. Higher price than solid tantalum capacitors. Wet tantalum capacitors have the interesting property of being able to **self-heal** and stop leakage current due to breakdown[^bib-nasa-self-healing-tantalum]. The wet electrolyte is able to deliver oxygen and reform the oxide layer in locations where it is compromised[^bib-wikipedia-tantalum-capacitor].
 
 #### Construction
 
@@ -301,7 +316,7 @@ Tantalum capacitors tend to be more expensive than any other commonly used capac
 
 The SILLIEST THING about tantalum capacitors is that the polarity indicator is a stripe, next to the POSITIVE end. It goes against pretty much all other stripy-polarity-mark thingies, which all indicate which end is the negative end (think electrolytics, diodes, e.t.c). So, be very careful and vigilant when using these, for it is so easy for forget this rule!
 
-Tantalum capacitors are more susceptible to reverse and over-voltage than their electrolytic counterparts. At a high enough voltage, the dielectric breaks down and the capacitor begins to conduct. The current can generate plenty of heat, and here's the best part, it can start of a **mini-thermite** reaction between tantalum and manganese dioxide. Some slightly better news to offset this is that at low-energy breakdowns, tantalum capacitors can actually **self-heal** and stop the leakage current.
+Tantalum capacitors are more susceptible to reverse and over-voltage than their electrolytic counterparts. At a high enough voltage, the dielectric breaks down and the capacitor begins to conduct. The current can generate plenty of heat, and here's the best part, it can start of a **mini-thermite** reaction between tantalum and manganese dioxide.
 
 Because of their large operating temperature range, stability, and high price, they are often found in medical and space equipment.
 
@@ -1347,3 +1362,7 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [^bib-tdk-singing-capacitors]: https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf.
 [^bib-qs-study-capacitance-spherical]: QS Study. _Capacitance of a Spherical Conductor_. Retrieved 2021-09-17, from https://qsstudy.com/physics/capacitance-spherical-conductor.
 [^bib-avx-auto-mlcc]: AVX. _Automotive MLCC (datasheet)_. Retrieved 2022-02-01, from https://datasheets.avx.com/AutoMLCC.pdf.
+[^bib-cadence-causes-of-elec-cap-degradation]: Cadence. _The Causes of Electrolytic Capacitor Degradation_. Retrieved 2023-06-05, from https://resources.pcb.cadence.com/blog/2022-the-causes-of-electrolytic-capacitor-degradation.
+[^bib-nasa-self-healing-tantalum]: Alexander Teverovsky. _Breakdown and Self-healing in Tantalum Capacitors_. Jacobs Technology Inc. Retrieved 2023-06-05, from https://ntrs.nasa.gov/api/citations/20205008339/downloads/Breakdown%20and%20Self-healing%20DEI%20rev%20A1.pdf.
+[^bib-wikipedia-tantalum-capacitor]: Wikipedia (2023, Apr 11). _Tantalum capacitor_. Retrieved 2023-06-05, from https://en.wikipedia.org/wiki/Tantalum_capacitor. 
+[^bib-passive-component-industry-electrolytic-failures]: Passive Component Industry (2002, Sep). _Low-ESR Aluminum Electrolytic Failures Linked to Taiwanese Raw Material Problems_. Retrieved 2023-06-05, from https://web.archive.org/web/20160303234525/http://old.passivecomponentmagazine.com/files/archives/2002/PCI_02_05Sept-Oct.pdf.

@@ -14,3 +14,5 @@ type: post
 * Added information about electrolyte leakage in electrolytic capacitors.
 
 * Fixed bug which resulting in the embedded circuitjs iframe's from being displayed correctly (unsure of what was caused the problem to occur in the first place).
+
+* Added info on differences between "solid" and "wet" tantalum capacitors.
