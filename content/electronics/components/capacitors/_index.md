@@ -243,7 +243,7 @@ Electrolytic capacitors are somewhat infamous for electrolyte leakage and/or vap
 
 The _capacitor plague_ was a period between 1999 and 2007 when **electrolytic capacitors experienced higher than expected failure rates** due to faulty design. The back story is one of intrigue, with the issue starting in 1999 with scientist working for Rubycon Corporation in Japan stealing a mis-copied formula for a capacitor electrolyte a giving it to his former employer, Luminous Town Electric company in China. The faulty formula was further stolen abroad to Taiwan, and many faulty capacitors were produced as a result. Bulging and bursting electrolytic capacitors in things such as PC motherboards begun making headlines in 2002[^bib-passive-component-industry-electrolytic-failures].
 
-{{% note %}}
+{{% admonition type="info" %}}
 
 My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up. After 20-40mins after turn-on, a crackling noise would begin to get louder and louder in the speakers and soon make the system unusable. After opening the main unit up, I discovered the classic signs of electrolytic capacitor leakage, as shown in the image below. The electrolyte had leaked out of the capacitor, and also corroded right through the lead of a neighbouring resistor, making the resistor go open circuit (the capacitor was probably functioning poorly also). After replacing both components, the noise went away!
 
@@ -253,7 +253,7 @@ Below is a close-up of the faulty electrolytic capacitor. You can't see the corr
 
 {{% figure src="pcb-with-electrolyte-leakage-zoomed-in.jpg" width="800px" caption="A close-up of the faulty electrolytic capacitor." %}}
 
-{{% /note %}}
+{{% /admonition %}}
 
 
 ### Tantalum
@@ -1153,9 +1153,9 @@ The cut-off frequency for the capacitance multiplier is:
 f_c = \frac{1}{2\pi R1 C1}
 \end{align}</p>
 
-{{% warning %}}
+{{% admonition type="warning" %}}
 Even though this circuit is called a capacitance multiplier, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! For this I consider this circuit's name somewhat misleading, as the corner frequency is just the same as a regular old RC low-pass filter. What does change is the current capability of the filter, as now most of the current is going through `\(Q1\)`, rather than `\(R1\)`. Perhaps the name _buffered RC filter_ would be better than _capacitance multiplier_?
-{{% /warning %}}
+{{% /admonition %}}
 
 The steady-state output voltage at no load is:
 

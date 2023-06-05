@@ -16,3 +16,5 @@ type: post
 * Fixed bug which resulting in the embedded circuitjs iframe's from being displayed correctly (unsure of what was caused the problem to occur in the first place).
 
 * Added info on differences between "solid" and "wet" tantalum capacitors.
+
+* Added a new admonition shortcode and changed the styling of the admonitions so that the title and icon are a top-bar rather than a side-bar (looks better when there is longer content in the admonition).

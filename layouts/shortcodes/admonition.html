@@ -1,0 +1,13 @@
+{{- $type := .Get "type" -}}
+
+<div class="admonitionblock-md {{ $type }}">
+  <div class="top-bar">
+    <div class="icon">
+      <img src="/assets/icons/{{ $type }}.svg">
+    </div>
+    <span>{{- upper $type -}}</span>
+  </div>
+  <div class="content">
+    {{- .Inner | markdownify -}}
+  </div>
+</div>

@@ -6,6 +6,7 @@
     --caption-font-color: rgb(100, 100, 100);
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
+
 }
 
 /* 800px is the cut-off point */
@@ -1279,12 +1280,19 @@ do this for us */
     margin-top: 1em;
     margin-bottom: 1em;
     display: flex;
-    outline: 1px solid silver;
+    flex-direction: column;
+    
+
+    .top-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
 
     .icon {
         width: 65px;
         padding: 10px;
-        outline: 1px solid silver;
+        // outline: 1px solid silver;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1298,15 +1306,27 @@ do this for us */
     }
 
     &.tip {
-        background-color: rgb(230, 255, 230);
+        $base-color: rgb(21, 193, 193);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+    }
+
+    &.info {
+        $base-color: rgb(21, 193, 193);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
     }
 
     &.note {
-        background-color: rgb(252, 252, 237);
+        $base-color: rgb(21, 193, 193);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
     }
 
     &.warning {
-        background-color: rgb(255, 230, 230);
+        $base-color: rgb(255, 0, 0);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
     }
 }
 
