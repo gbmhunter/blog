@@ -237,6 +237,18 @@ In over-voltage conditions, holes can be punched through the dielectric layer an
 
 The common size codes and sizes of SMD Electrolytic capacitors, see the [SMD Electrolytic Capacitor Packages page](/pcb-design/component-packages/smd-electrolytic-capacitor-packages).
 
+#### Electrolyte Leakage
+
+Electrolytic capacitors are somewhat infamous for electrolyte leakage and dry-up over long periods of time.
+
+My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up. After 20-40mins after turn-on, a crackling noise would begin to get louder and louder in the speakers and soon make the system unusable. After opening the main unit up, I discovered the classic signs of electrolytic capacitor leakage, as shown in the image below. The electrolyte had leaked out of the capacitor, and also corroded right through the lead of a neighbouring resistor, making the resistor go open circuit (the capacitor was probably functioning poorly also). After replacing both components, the noise went away!
+
+{{% figure src="pcb-with-electrolyte-leakage-zoomed-out.jpg" width="1000px" caption="Photo of a PCB in a Dell sound system. Highlighted is leaking electrolytic capacitor, which also corroded right through the lead of a neighbouring resistor." %}}
+
+Below is a close-up of the faulty electrolytic capacitor. You can't see the corroded resistor as it is hidden above the orange disk-style capacitor and inductor-looking component. 
+
+{{% figure src="pcb-with-electrolyte-leakage-zoomed-in.jpg" width="800px" caption="A close-up of the faulty electrolytic capacitor." %}}
+
 ### Tantalum
 
 <table>
