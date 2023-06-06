@@ -138,19 +138,56 @@ Link to an image which is not a page resource:
 
 {{% figure src="/images/logo/cartoon-ninja.jpg" width="300px" caption="Caption for non-page resource image." %}}
 
-## Admonitions
+## Asides
 
-{{% note %}}
-This is a note. I should be yellow.
-{{% /note %}}
+{{% aside type="example" %}}
+This is an example.
+{{% /aside %}}
 
-{{% warning %}}
-This is a warning. I should be red.
-{{% /warning %}}
+{{% aside type="note" %}}
+This is a note.
+{{% /aside %}}
 
-{{% tip %}}
-This is a tip. I should be green and have a bulb icon on my left.
-{{% /tip %}}
+{{% aside type="tip" %}}
+This is a tip.
+{{% /aside %}}
+
+{{% aside type="warning" %}}
+This is a warning.
+{{% /aside %}}
+
+{{% aside type="note" %}}
+This has code inside the aside:
+
+```python
+print('Hello, world!')
+```
+{{% /aside %}}
+
+Below should be a worked example. It should be an aside with info inside it. There should be numbered steps, and there should be equations in some of the steps.
+
+{{% aside type="example" %}}
+
+**Design Procedure:**
+
+1. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
+
+1. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
+    <p>\begin{align}
+    V_{R1}  &= 12V - 0.7V \nonumber \\
+            &= 11.3V
+    \end{align}</p>
+
+1. Set the resistance of `\(R_1\)` using Ohm's Law:
+    <p>\begin{align}
+    R_1 &= \frac{V_{R1}}{I_P} \nonumber \\
+        &= \frac{11.3V}{1mA} \nonumber \\
+        &= 11.3k\Omega
+    \end{align}</p>
+
+1. All done!
+
+{{% /aside %}}
 
 ## Code
 
@@ -204,33 +241,6 @@ This is another footnote[^foot-2].
 {{% link src="/test-page" text="Absolute link." %}}
 
 {{% link src="relative-page" text="Relative link." %}}
-
-## Worked Example
-
-Below should be a worked example. It should have a light red background. There should be numbered steps, and there should be equations in some of the steps.
-
-<div class="worked-example">
-
-**Design Procedure:**
-
-1. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
-
-1. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
-    <p>\begin{align}
-    V_{R1}  &= 12V - 0.7V \nonumber \\
-            &= 11.3V
-    \end{align}</p>
-
-1. Set the resistance of `\(R_1\)` using Ohm's Law:
-    <p>\begin{align}
-    R_1 &= \frac{V_{R1}}{I_P} \nonumber \\
-        &= \frac{11.3V}{1mA} \nonumber \\
-        &= 11.3k\Omega
-    \end{align}</p>
-
-1. All done!
-
-</div>
 
 ## Other
 

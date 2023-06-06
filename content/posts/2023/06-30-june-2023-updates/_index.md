@@ -17,4 +17,6 @@ type: post
 
 * Added info on differences between "solid" and "wet" tantalum capacitors.
 
-* Added a new admonition shortcode and changed the styling of the admonitions so that the title and icon are a top-bar rather than a side-bar (looks better when there is longer content in the admonition).
+* Added a new aside shortcode for Markdown and changed the styling of the asides (called admonitions in AsciiDoc) so that the title and icon are a top-bar rather than a side-bar (looks better when there is longer content in the aside).
+
+* Added info on the TO-220-7 and TO-220-7C variants of the TO-220 component package family.

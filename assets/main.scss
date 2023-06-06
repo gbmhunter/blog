@@ -1274,7 +1274,7 @@ do this for us */
 }
 
 // Admonition blocks for markdown
-.admonitionblock-md {
+div.admonitionblock-md {
 
     // Add gaps between admonition blocks and other content
     margin-top: 1em;
@@ -1287,15 +1287,21 @@ do this for us */
         width: 100%;
         display: flex;
         align-items: center;
-    }
 
-    .icon {
-        width: 65px;
-        padding: 10px;
-        // outline: 1px solid silver;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        .icon {
+            svg {
+                width: 1em;
+                height: 1em;
+            }
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            font-weight: 700;
+        }
     }
 
     .content {
@@ -1305,28 +1311,59 @@ do this for us */
         align-items: center;
     }
 
-    &.tip {
-        $base-color: rgb(21, 193, 193);
-        background-color: rgba($base-color, 0.1);
-        border-inline-start: 4px solid rgba($base-color, 1);
-    }
-
     &.info {
         $base-color: rgb(21, 193, 193);
         background-color: rgba($base-color, 0.1);
         border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
+    }
+
+    &.example {
+        $base-color: rgb(255, 191, 0);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
     }
 
     &.note {
+        $base-color: rgb(135, 45, 230);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
+    }
+
+    &.tip {
         $base-color: rgb(21, 193, 193);
         background-color: rgba($base-color, 0.1);
         border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
     }
 
     &.warning {
         $base-color: rgb(255, 0, 0);
         background-color: rgba($base-color, 0.1);
         border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
     }
 }
 
