@@ -29,6 +29,10 @@ Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inv
 
 {{% figure src="not-gate-symbol.svg" width="800px" caption="The symbols for a NOT gate (inverter)." %}}
 
+{{% tip %}}
+Although almost never shown on basic diagrams (but always shown somewhere on proper circuit schematics), aside from the inputs and outputs, all gates also need power pins to provide power for the internal logic.
+{{% /tip %}}
+
 The truth table for an NOT gate is:
 
 | Inputs | Output |

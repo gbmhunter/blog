@@ -5,18 +5,18 @@ date: 2011-09-05
 description: Info about diodes.
 draft: false
 lastmod: 2022-04-28
-tags: [ electronics, diodes, components, schematic symbols, TVS, ESD ]
+tags: [ electronics, diodes, components, schematic symbols, TVS, ESD, snapback, Semtech ]
 title: TVS Diodes
 type: page
 ---
 
 ## Overview
 
-TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They are designed to be operated in the reverse direction and work by shunting currents when the reverse voltage exceeds the **avalanche breakdown potential**. They are basically **high-power Zener diodes**, and are a specialized form of an _avalanche diode_.
+TVS (transient voltage suppressor) diodes are used to protect circuit board traces from high voltage spikes. They are designed to be operated in the reverse direction and work by shunting currents when the reverse voltage exceeds the **avalanche breakdown potential**. They are basically **high-power [Zener diodes](/electronics/components/diodes/zener-diodes/)**, and are a specialized form of an _avalanche diode_.
 
 They are part of a family of components used for ESD (electro-static discharge) protection, which also includes Zener diodes (however, ESD is not the only thing Zeners are used for). TVS diodes can handle large amounts of peak power (hundred's or thousands of Watts), but Zeners have a tighter voltage tolerance. TVS diodes have more capacitance than Zeners, which could be detrimental in some circumstances (e.g. when protecting the gate signal on a MOSFET).
 
-They come in either uni-directional or bi-directional flavours. Uni-directional TVS diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
+They come in either _uni-directional_ or _bi-directional_ flavours. Uni-directional TVS diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
 
 ## Schematic Symbol
 
@@ -46,10 +46,12 @@ The maximum power the TVS diode can dissipate, for a specified time period. Typi
 
 ### Standoff Voltage
 
-* Symbol: `\(V_{standoff}\)`
+* Symbol: `\(V_{standoff}\)`, `\(V_{WM}\)`
 * Units: `\(V\)`
 
 This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
+
+Vishay uses the symbol `\(V_{WM}\)` to denote the standoff voltage[^vishay-xld5a24ca-ds].
 
 ### Leakage Current
 
@@ -79,6 +81,14 @@ This low capacitance is achieved by adding a forward-biased general purpose diod
 
 The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
 
+## Snapback Type TVS Diodes
+
+Snapback TVS diodes are a type of TVS diode in which the clamping voltage right after triggering is less than the trigger voltage (a form of foldback). This is to provider a harder "turn-on" characteristic and results in the voltage not creeping as far above the reverse standoff voltage than with a conventional TVS. Snapback can either be _shallow_ or _deep_, depending on the application. Shallow snapback can be achieved with a standard TVS diode connected in parallel with a BJT. Deep snapback can be achieved with a self-triggering thyristor circuit[^semtech-tvs-just-a-diode-part-2].
+
+{{% figure src="vishay-snapback-tvs-typical-vi-curve-vs-standard-tvs.png" width="900px" caption="Excerpt from Vishay document showing the V/I curve of a snapback TVS vs. a conventional TVS[^vishay-did-you-know-snapback]." %}}
+
+The [Vishay XLD5A24CA](https://www.vishay.com/docs/87199/xld5a24ca.pdf) is an example of a snapback TVS from Vishay's XClampR series. Is had a standoff voltage `\(V_{WM} = 24V\)` and a clamping voltage `\(V_C = 18{-}26V\)` at `\(I_{PPM}=120A\)` (`\(10/10,000us\)` waveform)[^vishay-xld5a24ca-ds]. Note the clamping voltage is much closer to the standoff voltage than a conventional TVS!
+
 ## Special-Purpose TVS Diodes
 
 ### RS-485 TVS Diodes
@@ -90,3 +100,7 @@ TVS diodes built specifically for protecting RS-485 communication protocol bus l
 More information on these diodes can be found in the [Specialised TVS Diodes section on the RS-485 Protocol page](/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes).
 
 ## References
+
+[^semtech-tvs-just-a-diode-part-2]: Bill Russell (2020, Mar 18). _TVS? It’s Just a Diode, Right? Part Two_. Semtech. Retrieved 2023-05-30, from https://blog.semtech.com/tvs-its-just-a-diode-right-part-two.
+[^vishay-did-you-know-snapback]: Vishay (2022). _Did you know? - Industry-first Snapback Type XClampR™ TVS_. Retrieved 2023-05-30, from https://www.vishay.com/docs/48799/ms26900578_did_you_know-xclampr_tvs.pdf.
+[^vishay-xld5a24ca-ds]: Vishay (2022, Dec 1). _XLD5A24CA - Surface Mount XClampRTM Transient Voltage Suppressors (datasheet)_. Retrieved 2023-05-30, from https://www.vishay.com/docs/87199/xld5a24ca.pdf.

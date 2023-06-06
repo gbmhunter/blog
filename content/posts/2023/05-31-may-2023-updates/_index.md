@@ -22,3 +22,5 @@ type: post
 * Converted a number of pages from AsciiDoc format to Markdown.
 
 * Added more info on [Piconets and Scatternets to the Bluetooth page](/electronics/communication-protocols/bluetooth/#piconet-and-scatternets).
+
+* Added info on [snapback-type TVS diodes](/electronics/components/diodes/tvs-diodes/#snapback-type-tvs-diodes).
