@@ -918,7 +918,8 @@ h2 {
     margin-bottom: 1.5em;
 
     // Add a bottom horizontal "line" for all major page headings
-    border-bottom: 4px solid var(--main-color);
+    // 2023-06-06: Disabled the underline
+    // border-bottom: 4px solid var(--main-color);
 
     // 2021-12-22: Commented float: left out as it was hiding images/code blocks if they directly after an h2 heading
     // float: left;
