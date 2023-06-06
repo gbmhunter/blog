@@ -6,6 +6,7 @@
     --caption-font-color: rgb(100, 100, 100);
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
+
 }
 
 /* 800px is the cut-off point */
@@ -1273,21 +1274,34 @@ do this for us */
 }
 
 // Admonition blocks for markdown
-.admonitionblock-md {
+div.admonitionblock-md {
 
     // Add gaps between admonition blocks and other content
     margin-top: 1em;
     margin-bottom: 1em;
     display: flex;
-    outline: 1px solid silver;
+    flex-direction: column;
+    
 
-    .icon {
-        width: 65px;
-        padding: 10px;
-        outline: 1px solid silver;
+    .top-bar {
+        width: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
+
+        .icon {
+            svg {
+                width: 1em;
+                height: 1em;
+            }
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            font-weight: 700;
+        }
     }
 
     .content {
@@ -1297,16 +1311,59 @@ do this for us */
         align-items: center;
     }
 
-    &.tip {
-        background-color: rgb(230, 255, 230);
+    &.info {
+        $base-color: rgb(21, 193, 193);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
+    }
+
+    &.example {
+        $base-color: rgb(255, 191, 0);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
     }
 
     &.note {
-        background-color: rgb(252, 252, 237);
+        $base-color: rgb(135, 45, 230);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
+    }
+
+    &.tip {
+        $base-color: rgb(21, 193, 193);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
     }
 
     &.warning {
-        background-color: rgb(255, 230, 230);
+        $base-color: rgb(255, 0, 0);
+        background-color: rgba($base-color, 0.1);
+        border-inline-start: 4px solid rgba($base-color, 1);
+        .top-bar {
+            $title-bar-color: darken($base-color, 20);
+            color: $title-bar-color;
+            fill: $title-bar-color;
+        }
     }
 }
 

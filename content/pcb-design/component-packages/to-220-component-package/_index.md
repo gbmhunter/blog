@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, PCB Design, Component Packages ]
 date: 2015-04-06
-description: "Dimensions, land patterns and more info for TO-220 package variants such as TO-220AB and TO-220AC."
+description: Dimensions, land patterns and more info for TO-220 package variants such as TO-220AB, TO-220AC and TO-220-7.
 draft: false
-lastmod: 2019-04-29
-tags: [ "component packages", "PCB design", "transistor", "TO-220", "TO-220AB", "TO-220-3", "TO-220NIS", "JEDEC" ]
-title: "TO-220 Component Package"
-type: "page"
+lastmod: 2023-06-06
+tags: [ component packages, PCB design, transistors, transistor outline, TO-220, TO-220AB, TO-220-3, TO-220NIS, JEDEC, TO-220-7, TO-220-7C, Power Integrations ]
+title: TO-220 Component Package
+type: page
 ---
 
 ## Overview
@@ -27,6 +27,10 @@ type: "page"
       <td>
         <ul>
           <li>{{% link text="TO-220-5 (SOT-263B)" src="#to-220-5-sot-263b" %}}</li>
+          <li>
+
+[TO-220-7](#to-220-7)
+          </li>
           <li>{{% link text="TO-220AB (TO-220-3)" src="#to-220ab-to-220-3" %}}</li>
           <li>{{% link text="TO-220AC (TO-220-2)" src="#to-220ac-to-220-2" %}}</li>
           <li>{{% link text="TO-220F (TO-220FP, SOT-186A)" src="#to-220f-to-220fp-sot-186a" %}}</li>
@@ -69,7 +73,10 @@ type: "page"
         </ul>
         <p>TO-220F</p>
         <ul style="width: 300px;">
-          <li>\(T_{JC} = 4.2^{\circ}{\rm C}/W\) {{% bib id="cs306am" %}}</li>
+          <li>
+
+`\(T_{JC} = 4.2^{\circ}{\rm C}/W\)` [^bib-cs306am]
+</li>
         </ul>
       </td>
     </tr>
@@ -94,11 +101,28 @@ type: "page"
 
 ## TO-220-5 (SOT-263B)
 
-The TO-220-5 (also known as SOT-263B{{% bib id="bib-to-220-5" %}}) is a 5 leg variant of the TO-220 package.
+The TO-220-5 (also known as SOT-263B[^bib-to-220-5]) is a 5 leg variant of the TO-220 package.
 
 {{% figure src="to-220-5-component-package-3d-model.jpg" width="300px" caption="3D model of the TO-220-5 (SOT-263B) component package. Image from https://assets.nexperia.com/documents/outline-drawing/SOT263B.pdf." %}}
 
 {{% figure src="to-220-5-component-package-dimensions.png" width="700px" caption="Dimensions of the TO-220-5 (SOT-263B) component package. Image from https://assets.nexperia.com/documents/outline-drawing/SOT263B.pdf." %}}
+
+## TO-220-7
+
+The `TO-220-7` is a name used for a 7-pin variant of the `TO-220` family. It comes with formed leads (every second lead is bent).
+
+Synonyms:
+
+* `T7` (Analog Devices)[^bib-analog-devices-to-220-7]
+* `NDZ` (Texas Instruments)[^bib-ti-lm2673-ds]
+
+{{% figure src="to-220-7-analog-devices-t7-package-dimensions.png" width="700px" caption="Dimensions of the TO-220-7 (T7) package from Analog Devices[^bib-analog-devices-to-220-7]." %}}
+
+## TO-220-7C
+
+The `TO-220-7C` is a variant of the `TO-220` family that is used by Power Integrations[^bib-power-int-top254-258-ds]. Interestingly, it is missing the 6th lead and the leads are formed (bent) into 3 rows rather than just 2 as with the `TO-220-7`.
+
+{{% figure src="power-integrations-to-220-7c-package-dimensions.png" width="700px" caption="Dimensions of the TO-220-7C package from Power Integrations[^bib-power-int-top254-258-ds]." %}}
 
 ## TO-220AA
 
@@ -116,13 +140,13 @@ The tab is commonly connected electrically to one of the legs, and sometimes iso
 
 ### Dimensions
 
-{{% figure src="component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" %}}
+{{% figure src="component-package-to-220ab-dimensions.png"  width="500px" caption="The dimensions of the TO-220AB component package." %}}
 
 ### Photos
 
-{{% figure src="component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package."  width="300px" %}}
+{{% figure src="component-package-to-220ab-photo.jpg" width="300px" caption="A photo of the TO-220AB component package." %}}
 
-{{% figure src="component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink."  width="300px" %}}
+{{% figure src="component-package-to-220ab-mounted-on-heatsink.jpg" width="300px" caption="A photo of the TO-220AB component package, mounted on a heatsink." %}}
 
 ## TO-220AC (TO-220-2)
 
@@ -162,7 +186,8 @@ The TO-220FM is a variant of the TO-220 package which is identical to the {{% li
 
 ## References
 
-<ul id="bib-list">
-  <li id="cs306am"><a href="https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf">https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf</a></li>
-  <li id="bib-to-220-5">https://www.nexperia.com/packages/SOT263B.html</li>
-</ul>
+[^bib-cs306am]: Retrieved 2019-04-30, from https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf.
+[^bib-to-220-5]: Retrieved 2019-04-30, from https://www.nexperia.com/packages/SOT263B.html.
+[^bib-analog-devices-to-220-7]: Analog Devices. _T7 Package - 7-Lead Plastic TO-220 (Standard) - (Reference LTC DWG # 05-08-1422)_. Retrieved 2023-06-06, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_7_05-08-1422.pdf.
+[^bib-ti-lm2673-ds]: Texas Instruments (2000, Apr). _LM2673 SIMPLE SWITCHER® 3-A Step-Down Voltage Regulator With Adjustable Current Limit (datasheet)_. Retrieved 2023-06-06, from https://www.ti.com/lit/ds/symlink/lm2673.pdf.
+[^bib-power-int-top254-258-ds]: Power Integrations (2007, Sep). _TOP254-258 - TOPSwitch-HX Family (datasheet)_. Retrieved 2023-06-06, from https://www.farnell.com/datasheets/5793.pdf.
