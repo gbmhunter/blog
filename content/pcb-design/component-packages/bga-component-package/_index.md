@@ -37,7 +37,10 @@ type: "page"
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link src="../wlcsp-component-package" text="WLCSP" %}}</td>
+  <td>
+  
+[WLCSP](../wlcsp-component-package)
+  </td>
 </tr>
 <tr>
   <td>Mounting</td>

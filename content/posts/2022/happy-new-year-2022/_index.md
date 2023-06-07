@@ -18,10 +18,9 @@ First of, happy new year!
 
 This year I decided to present the stats a little differently and made the infographic below.
 
-.Blog statistics infographic for 2021. 
-image::/posts/2022/happy-new-year-2022/blog-eoy-2021-infographic.png[width=700px,link="/posts/2022/happy-new-year-2022/blog-eoy-2021-infographic.png"]
+{{% figure src="/posts/2022/happy-new-year-2022/blog-eoy-2021-infographic.png" width="700px" caption="Blog statistics infographic for 2021. " %}}
 
-The infographic image was made in "Canva" (an online diagram/image editing app). You can view the source image link:https://www.canva.com/design/DAExcXpjIzI/9u5e1myIuzQCf1Aw_PAmSQ/view?utm_content=DAExcXpjIzI&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton[here].
+The infographic image was made in "Canva" (an online diagram/image editing app). You can view the source image [here](https://www.canva.com/design/DAExcXpjIzI/9u5e1myIuzQCf1Aw_PAmSQ/view?utm_content=DAExcXpjIzI&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton).
 
 ## Updates
 
