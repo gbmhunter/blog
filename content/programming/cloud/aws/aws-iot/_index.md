@@ -10,13 +10,13 @@ title: "AWS IoT"
 type: "page"
 ---
 
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+{{% warning-is-notes %}}
 
-== What Is A Device Shadow?
+## What Is A Device Shadow?
 
 AWS introduces the concept of a _device shadow_ A device shadow is a virtual, persistent copy of a embedded devices state which is stored in the cloud. The device shadow can be interacted with from IoT Core whether or not the actual device is connected or not. The devices shadow is represented as a JSON document. You can think of the device shadow as a cache of the device state which prevents the disruption of missed communications when the actual device goes temporarily offline, usually due to unstable internet connectivity (other services can still read/write to the shadowed device state). The actual device, when online, can get/update/delete it's latest state as well as receive notifications when the state changes.
 
-== AWS Jobs
+## AWS Jobs
 
 Jobs can be sent to devices using any of the following three protocols:
 
@@ -24,7 +24,7 @@ Jobs can be sent to devices using any of the following three protocols:
 * HTTP
 * HTTP TLS
 
-== AWS IoT Device SDK For Embedded C (C-SDK)
+## AWS IoT Device SDK For Embedded C (C-SDK)
 
 The AWS IoT Device SDK For Embedded C (commonly shortened to C-SDK) that you can use/run on embedded devices to turn them into AWS IoT nodes that can connect to the AWS IoT Core. It is written in standard C and contains the following components:
 
@@ -44,10 +44,8 @@ Most of these components have no dependencies other than the standard C library.
 
 Link: https://github.com/aws/aws-iot-device-sdk-embedded-c
 
-X-CUBE-AWS is a port of the AWS IoT Device SDK to the STM32L4, STM32H7 and STM32WB series of microcontrollers<<bib-stm-aws-iot>>.
+X-CUBE-AWS is a port of the AWS IoT Device SDK to the STM32L4, STM32H7 and STM32WB series of microcontrollers[^bib-stm-aws-iot].
 
-[bibliography]
-== References
+## References
 
-* [[[bib-stm-aws-iot, 1]]] STMicroelectronics. _AWS IoT software expansion for STM32Cube (UM2178)_. Retrieved 2021-08-30, from https://www.st.com/en/embedded-software/x-cube-aws.html
-
+[^bib-stm-aws-iot]:  STMicroelectronics. _AWS IoT software expansion for STM32Cube (UM2178)_. Retrieved 2021-08-30, from https://www.st.com/en/embedded-software/x-cube-aws.html

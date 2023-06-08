@@ -22,8 +22,8 @@ def main():
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'^(=+?) (.*?)$', replace=heading_replace_fn, multiline=True)
         
         # Convert hyperlinks
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'link:.*?\[.*?\]', replace=link_replace_fn, multiline=True)        
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'\..*?\nimage::.*?\[.*?\]', replace=image_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'link:.*?\[.*?\]', replace=link_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'(\..*?\n)?image::.*?\[.*?\]', replace=image_replace_fn, multiline=False)
         
         # Convert inline and block maths
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'stem:\[(.*?)\]', replace=inline_eq_replace_fn, multiline=False)
@@ -72,15 +72,17 @@ def image_replace_fn(found_text, file_path):
     print(file_path)
     print(f'found_text = {found_text}')
 
-    # Extract src
-    match = re.search(r'\.(.*?)\nimage::(.*?)\[(.*?)\]', found_text)
-    caption = match.group(1)
+    # Extract src and optional caption
+    match = re.search(r'(\.(.*?)\n)?image::(.*?)\[(.*?)\]', found_text)
+    caption = match.group(2)
+    if caption is None:
+        caption = ''
     print(f'caption={caption}')
-    src = match.group(2)
+    src = match.group(3)
     print(f'src={src}')
 
     # Params will need further extraction, this contains the width
-    params = match.group(3)
+    params = match.group(4)
     print(f'params={params}')
     # "px" could be missing
     regex = re.compile(r'width=([0-9]+)')

@@ -12,22 +12,21 @@ type: "page"
 
 PCB stencils help you apply solder paste and a quick and even manner to a PCB during the reflow soldering process. They are usually made from either a sheet of stainless steel (for large manufacturing runs) or a plastic/wax paper (for cheap one off prototypes).
 
-.An example of a stainless steel soldermask stencil. Image from http://www.soldermask.com/.
-image::soldermask-example-stainless-steel-soldermask-dot-com.jpg[width=300px]
+{{% figure src="soldermask-example-stainless-steel-soldermask-dot-com.jpg" width="300px" caption="An example of a stainless steel soldermask stencil. Image from http://www.soldermask.com/." %}}
 
 The sheet has apertures cut out of it in all places on the PCB in where you want solder paste to be applied. The stencil is placed on the surface of the PCB and solderpaste applied. The thickness of the stencil determines the paste density (how much paste will be applied for a given area).
 
-PCB stencils are usually created from the same design files that are used to manufacture the PCB. If using the link:/pcb-design/pcb-data-formats#gerber-files[Gerber format], the Top Paste (.GTP) and Bottom Paste (.GBP) files will be used.
+PCB stencils are usually created from the same design files that are used to manufacture the PCB. If using the [Gerber format](/pcb-design/pcb-data-formats#gerber-files), the Top Paste (.GTP) and Bottom Paste (.GBP) files will be used.
 
-== Etching Processes
+## Etching Processes
 
-=== Chemical
+### Chemical
 
 Chemically etched stencils are usually produced from an etchable grade of stainless steel. They are cheaper to manufacture than laser cut stencils (when both are made from stainless steel). Since etching is carried out from both sides of the stencil, the process can create a waist within the aperture. This can be removed somewhat by polishing.
 
 The resist openings are made smaller than the final desired aperture size because the chemical **undercuts** the sides of the aperture to some degree. This produces rounded corners which is a characteristic of chemically-etched stencils.
 
-=== Laser Cut
+### Laser Cut
 
 Both stainless steel and wax-paper stencils can be laser cut. A tougher grade of stainless steel can be used than with chemical etching.
 
@@ -41,12 +40,9 @@ Typical thickness include 0.12mm and 0.15mm. 0.10mm thick stainless steel can be
 
 The aspect ratio of a particular aperture is the ratio between the width of an aperture and the thickness of the stencil.
 
-[stem]
-++++
-\begin{align}
+<p>\begin{align}
 R = \frac{W}{T}
-\end{align}
-++++
+\end{align}</p>
 
 For a particular stencil, this ratio should never be smaller than a particular number. This is commonly 1 or 1.5.
 
@@ -54,17 +50,13 @@ For a particular stencil, this ratio should never be smaller than a particular n
 
 The rule:
 
-[stem]
-++++
-\begin{align}
+<p>\begin{align}
 R = \frac{LW}{2(L+W)T}
-\end{align}
-++++
+\end{align}</p>
 
 This ratio should always be greater or equal to 0.66.
 
-.Diagram explaining the aspect and area ratios of PCB stencils. Image from http://www.ti.com/lit/an/slua271a/slua271a.pdf.
-image::pcb-stencil-aspect-and-area-ratio-illustration.png[width=800px]
+{{% figure src="pcb-stencil-aspect-and-area-ratio-illustration.png" width="800px" caption="Diagram explaining the aspect and area ratios of PCB stencils. Image from http://www.ti.com/lit/an/slua271a/slua271a.pdf." %}}
 
 ## Prices
 
@@ -76,4 +68,4 @@ Sometimes different paste densities are required for different components. Stenc
 
 ## Art?
 
-What to do with a stencil once you have finished making PCBs with it? Do stencils have the potential to be art pieces? I did attach a back light and diffuser to one and made a wall-mountable piece of art, see the link:/electronics/projects/backlit-pcb-stencil[Backlit PCB Stencil project] for more information.
+What to do with a stencil once you have finished making PCBs with it? Do stencils have the potential to be art pieces? I did attach a back light and diffuser to one and made a wall-mountable piece of art, see the [Backlit PCB Stencil project](/electronics/projects/backlit-pcb-stencil) for more information.
