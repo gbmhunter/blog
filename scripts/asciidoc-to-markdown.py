@@ -84,8 +84,8 @@ def image_replace_fn(found_text, file_path):
     # Params will need further extraction, this contains the width
     params = match.group(4)
     print(f'params={params}')
-    # "px" could be missing
-    regex = re.compile(r'width=([0-9]+)')
+    # "px" could be missing, so could quotes
+    regex = re.compile(r'width="?([0-9]+)(px)?"?')
     match = regex.search(params)
 
     width_px = match.group(1)
