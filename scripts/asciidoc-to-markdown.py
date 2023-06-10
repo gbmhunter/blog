@@ -27,7 +27,7 @@ def main():
         
         # Convert inline and block maths
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'stem:\[(.*?)\]', replace=inline_eq_replace_fn, multiline=False)
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[stem\]\n\+\+\+\+(\n.*?\n)\+\+\+\+', replace=block_eq_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[stem\]\n\+\+\+\+(\n(.|\n)*?\n)\+\+\+\+', replace=block_eq_replace_fn, multiline=False)
 
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'<<.*?>>', replace=bib_reference_replace_fn, multiline=False)
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[bibliography\]\n## References\n\n\*(.*\n?)*', replace=bibliography_replace_fn, multiline=False)
@@ -114,7 +114,7 @@ def block_eq_replace_fn(found_text, file_path):
     print(f'block_eq_replace_fn() called. found_text = {found_text}')
 
     # Extract latex from inside Asciidoc block
-    match = re.search(r'\[stem\]\n\+\+\+\+(\n.*?\n)\+\+\+\+', found_text)
+    match = re.search(r'\[stem\]\n\+\+\+\+(\n(.|\n)*?\n)\+\+\+\+', found_text)
     content = match.group(1)
     print(f'content={content}')
 

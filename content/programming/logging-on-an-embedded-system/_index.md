@@ -10,9 +10,7 @@ title: "Logging On An Embedded System"
 type: "page"
 ---
 
-:imagesdir: {{< permalink >}}
-
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+{{% warning-is-notes %}}
 
 ## Overview
 
@@ -30,10 +28,7 @@ The general idea with _deferred logging_ is to **do the minimal amount of work c
 
 Deferred logging in Zephyr: https://docs.zephyrproject.org/latest/reference/logging/index.html
 
-[quote, Logging (Zephyr Project Documentation)]
-____
-Logger’s default frontend is designed to be thread safe and minimizes time needed to log the message. Time consuming operations like string formatting or access to the transport are not performed by default when logging API is called.
-____
+> Logger’s default frontend is designed to be thread safe and minimizes time needed to log the message. Time consuming operations like string formatting or access to the transport are not performed by default when logging API is called. --- Logging (Zephyr Project Documentation)
 
 Zephyr provides four logging severity levels:
 
@@ -48,7 +43,6 @@ QSpy logging.
 
 TRICE: https://interrupt.memfault.com/blog/trice
 
-[bibliography]
 ## References
 
-* [[[bib-zephyr-logging, 1]]] Zephyr (2022, Feb 27). _Logging -- Zephyr Project Documentation_. Retrieved 2022-03-07, from https://docs.zephyrproject.org/latest/reference/logging/index.html.
+[^bib-zephyr-logging]:  Zephyr (2022, Feb 27). _Logging -- Zephyr Project Documentation_. Retrieved 2022-03-07, from https://docs.zephyrproject.org/latest/reference/logging/index.html.

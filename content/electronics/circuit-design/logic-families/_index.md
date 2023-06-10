@@ -24,19 +24,17 @@ Logic families are sorted in alphabetical order. Take note that there may be a l
 
 ### Overview
 
-CMOS (_complementary metal-oxide semiconductor_) is the most widespread logic family in use today. CMOS logic is built from P-channel (PMOS) and N-channel (NMOS) link:/electronics/components/transistors/mosfets[MOSFETs].
+CMOS (_complementary metal-oxide semiconductor_) is the most widespread logic family in use today. CMOS logic is built from P-channel (PMOS) and N-channel (NMOS) [MOSFETs](/electronics/components/transistors/mosfets).
 
-.A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/.
-image::logic-family-cmos-technologies-voltage-vs-speed.png[width=762px]
+{{% figure src="logic-family-cmos-technologies-voltage-vs-speed.png" width="762px" caption="A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/." %}}
 
 ### Latch-up
 
 CMOS logic suffers from a phenomenon known as _latch-up_. This is when a **short occurs between a power-rail and ground** in an CMOS-based IC, usually causing serious operation problems if not destruction of the IC. Once latch-up is triggered, it cannot be removed until the circuit is power-cycled.
 
-Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching elements form parasitic link:/electronics/components/transistors/silicon-controlled-rectifiers-scrs[PNPN thyristors (SCRs)]**[^ti-latch-up-white-paper]. A latch-up has to be initially triggered by an over-voltage/current condition which causes the voltage on a pin to go at least one diode drop above the rail voltage, or one voltage drop below the ground.
+Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching elements form parasitic [PNPN thyristors (SCRs)](/electronics/components/transistors/silicon-controlled-rectifiers-scrs)**[^ti-latch-up-white-paper]. A latch-up has to be initially triggered by an over-voltage/current condition which causes the voltage on a pin to go at least one diode drop above the rail voltage, or one voltage drop below the ground.
 
-.Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR).
-image::cmos-latch-up-semiconductor-diagram.svg[width=800px]
+{{% figure src="cmos-latch-up-semiconductor-diagram.svg" width="800px" caption="Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR)." %}}
 
 Hot-plugging can cause latch-up issues.
 
@@ -45,19 +43,17 @@ ICs are sometimes tested against the EIA/JESD 78A IC latch-up standard and the I
 * Applying a supply overvoltage condition to the ICs power pins
 * A current injection to the ICs I/O pins
 
-.A snippet of the STM32F070xx microcontrollers datasheet showing the latch-up tests which were performed on the IC.
-image::static-latchup-tests-snippet-stm32f070xx.png[width=500px]
+{{% figure src="static-latchup-tests-snippet-stm32f070xx.png" width="500px" caption="A snippet of the STM32F070xx microcontrollers datasheet showing the latch-up tests which were performed on the IC." %}}
 
 ### Powered Off Protection
 
-By default, most CMOS based devices contain diodes from the I/O pins to the voltage rails and ground (this is an inherent part of the fabrication of a MOSFET and the intrinsic body diodes). Additional ESD protection diodes may be also added in parallel. Whilst normally a good thing, these diodes can cause problems, notably a problem called _backfeeding_. If the local power rail collapses, but signals are still present on the I/O pins (from other parts of the circuitry which are still powered), the diode from the I/O pin to stem:[V_{CC}] will conduct and keep the power rail "propped up".
+By default, most CMOS based devices contain diodes from the I/O pins to the voltage rails and ground (this is an inherent part of the fabrication of a MOSFET and the intrinsic body diodes). Additional ESD protection diodes may be also added in parallel. Whilst normally a good thing, these diodes can cause problems, notably a problem called _backfeeding_. If the local power rail collapses, but signals are still present on the I/O pins (from other parts of the circuitry which are still powered), the diode from the I/O pin to `\(V_{CC}\)` will conduct and keep the power rail "propped up".
 
-Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at stem:[0V]. Texas Instruments calls this stem:[I_{OFF}] protection<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>. The figure below shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
+Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at `\(0V\)`. Texas Instruments calls this `\(I_{OFF}\)` protection[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]. The figure below shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
 
-.Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to stem:[V_{CC}] in the case that the power rail is at stem:[0V]<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>.
-image::cmos-powered-off-protection-circuit-ioff-ti.png[width=700px,link="{{< permalink >}}/cmos-powered-off-protection-circuit-ioff-ti.png"]
+{{% figure src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700px" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to `\(V_{CC}\)` in the case that the power rail is at `\(0V\)`[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
 
-Some examples of ICs with "powered-off protection" include the link:https://www.ti.com/lit/ds/symlink/sn74lvc1g125.pdf[SN74LVC1G125: Single Bus Buffer Gate With 3-State Output], the link:https://www.ti.com/product/SN74CB3Q3125[SN74CB3Q3125: 3.3-V, 2:1 (SPDT), 4-channel FET bus switch] and the link:https://www.analog.com/en/products/adg5248f.html#product-overview[ADG5248F: 8:1 Analog Multiplexers].
+Some examples of ICs with "powered-off protection" include the [SN74LVC1G125: Single Bus Buffer Gate With 3-State Output](https://www.ti.com/lit/ds/symlink/sn74lvc1g125.pdf), the [SN74CB3Q3125: 3.3-V, 2:1 (SPDT), 4-channel FET bus switch](https://www.ti.com/product/SN74CB3Q3125) and the [ADG5248F: 8:1 Analog Multiplexers](https://www.analog.com/en/products/adg5248f.html#product-overview).
 
 ### AUC
 
@@ -67,11 +63,10 @@ Advanced ultra-low CMOS (AUC) is a CMOS logic family. It is optimised for 1.8V o
 
 Voltage specifications:
 
-++++
 <table>
   <thead>
     <tr>
-      <th>Parameter</th>
+      <th width="100px">Parameter</th>
       <th>Minimum</th>
       <th>Typical</th>
       <th>Maximum</th>
@@ -79,62 +74,61 @@ Voltage specifications:
   </thead>
   <tbody>
     <tr>
-      <td>stem:[ V_{CCO} ]</td>
+      <td>\( V_{CCO} \)</td>
       <td>2.3V</td>
       <td>2.5V</td>
       <td>2.7V</td>
     </tr>
     <tr>
-      <td>stem:[ V_{REF} ]</td>
+      <td>\( V_{REF} \)</td>
       <td>-</td>
       <td>-</td>
       <td>-</td>
     </tr>
     <tr>
-      <td>stem:[ V_{TT} ]</td>
+      <td>\( V_{TT} \)</td>
       <td>-</td>
       <td>-</td>
       <td>-</td>
     </tr>
     <tr>
-      <td>stem:[ V_{IH} ]</td>
+      <td>\( V_{IH} \)</td>
       <td>1.7V</td>
       <td>-</td>
       <td>3.6V</td>
     </tr>
     <tr>
-      <td>stem:[ V_{IL} ]</td>
+      <td>\( V_{IL} \)</td>
       <td>-0.5V</td>
       <td>-</td>
       <td>0.7V</td>
     </tr>
     <tr>
-      <td>stem:[ V_{OH} ]</td>
+      <td>\( V_{OH} \)</td>
       <td>1.9V</td>
       <td>-</td>
       <td>-</td>
     </tr>
     <tr>
-      <td>stem:[ V_{OL} ]</td>
+      <td>\( V_{OL} \)</td>
       <td>-</td>
       <td>-</td>
       <td>0.4V</td>
     </tr>
     <tr>
-      <td>stem:[ I_{OH} @ V_{OH} ]</td>
+      <td>\( I_{OH} @ V_{OH} \)</td>
       <td>-12mA</td>
       <td>-</td>
       <td>-</td>
     </tr>
     <tr>
-      <td>stem:[ I_{OL} @ V_{OL} ]</td>
+      <td>\( I_{OL} @ V_{OL} \)</td>
       <td>12mA</td>
       <td>-</td>
       <td>-</td>
     </tr>
   </tbody>
 </table>
-++++
 
 ## CSEF
 
@@ -166,10 +160,10 @@ TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
 
 Mode                                    | Differential
 ----------------------------------------|------------------------
-Logic High (stem:[V_{OH}])               | 1.55mV (+3.5mA through 100Ω)
-Logic Out Low (stem:[V_{OL}])            | 0.95mV (-3.5mA through 100Ω)
-Common-mode Voltage (stem:[V_{CMO}])     | 1.20V
-Power (stem:[P])                         | 8.75mW (@ stem:[V_{CC}=2.5V])
+Logic High (`\(V_{OH}\)`)               | 1.55mV (+3.5mA through 100Ω)
+Logic Out Low (`\(V_{OL}\)`)            | 0.95mV (-3.5mA through 100Ω)
+Common-mode Voltage (`\(V_{CMO}\)`)     | 1.20V
+Power (`\(P\)`)                         | 8.75mW (@ `\(V_{CC}=2.5V\)`)
 
 Because the current is kept constant (3.5mA), it doesn't put as much pressure on the decoupling capacitors to provide the energy during switching states. The low common-mode voltage (1.20V), allows this signalling standard to be used with a wide variety of ICs with power supplies down to 2.5V or lower.
 
@@ -211,10 +205,9 @@ High: 2-5.0V
 Power dissipation: 10mW per gate[^ni-differences-between-cmos-ttl]
 Propagation delay: 10ns when driving a 15pF/400Ohm load[^ni-differences-between-cmos-ttl]
 
-[bibliography]
 ## References
 
-* [[[bib-ni-differences-between-cmos-ttl, 1]]] https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z000000P9yaSAC.
-* [[[bib-ti-latch-up-white-paper, 2]]] Retrieved 2020-07-03, from https://www.ti.com/lit/wp/scaa124/scaa124.pdf.
-* [[[bib-ti-powered-off-protection, 3]]] Shreyas Rao (2016, Nov 2). _Logic gates and switches with Ioff or powered-off protection: empowering you to power down (blog post)_. Texas Instruments. Retrieved 2022-03-13, from https://e2e.ti.com/blogs_/b/analogwire/posts/logic-gates-and-switches-with-ioff-empowering-you-to-power-down.
-* [[[bib-ti-logic-in-live-insertion-apps, 4]]] Jose M. Soltero and Ernest Cox (2002, Jan). _SCEA025: Logic in Live-Insertion Applications With a Focus on GTLP (Application Report)_. Texas Instruments. Retrieved 2022-03-13, from https://www.ti.com/lit/an/scea026/scea026.pdf. 
+[^bib-ni-differences-between-cmos-ttl]:  https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z000000P9yaSAC.
+[^bib-ti-latch-up-white-paper]:  Retrieved 2020-07-03, from https://www.ti.com/lit/wp/scaa124/scaa124.pdf.
+[^bib-ti-powered-off-protection]:  Shreyas Rao (2016, Nov 2). _Logic gates and switches with Ioff or powered-off protection: empowering you to power down (blog post)_. Texas Instruments. Retrieved 2022-03-13, from https://e2e.ti.com/blogs_/b/analogwire/posts/logic-gates-and-switches-with-ioff-empowering-you-to-power-down.
+[^bib-ti-logic-in-live-insertion-apps]:  Jose M. Soltero and Ernest Cox (2002, Jan). _SCEA025: Logic in Live-Insertion Applications With a Focus on GTLP (Application Report)_. Texas Instruments. Retrieved 2022-03-13, from https://www.ti.com/lit/an/scea026/scea026.pdf. 
