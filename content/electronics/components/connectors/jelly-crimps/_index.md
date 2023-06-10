@@ -9,14 +9,14 @@ title: "Jelly Crimps"
 type: "page"
 ---
 
+{{% warning-is-notes %}}
+
 ## Overview
 
 _Jelly crimps_ (a.k.a. _gel crimps_, _gel connectors_) are splice-based connectors (a.k.a. wire-insulation displacement connectors, IDC) that are used to easily join together single-core wires in a water-proof fashion. Also known as telephone crimp connectors.
 
-.Photo of a 3M Scotchlok UY2 gel connector<<bib-3m-scotchlok-uy2>>.
-image::3m-scotchlok-uy2-gel-connector-photo.png[width=350px]
+{{% figure src="3m-scotchlok-uy2-gel-connector-photo.png" width="350px" caption="Photo of a 3M Scotchlok UY2 gel connector[^bib-3m-scotchlok-uy2]." %}}
 
-[bibliography]
 ## References
 
-* [[[bib-3m-scotchlok-uy2, 1]]] 3M. _3M™ Scotchlok™ UY2 IDC Connectors_. Retrieved 2022-02-08, from https://www.3mnz.co.nz/3M/en_NZ/p/d/b5005063012/.
+[^bib-3m-scotchlok-uy2]:  3M. _3M™ Scotchlok™ UY2 IDC Connectors_. Retrieved 2022-02-08, from https://www.3mnz.co.nz/3M/en_NZ/p/d/b5005063012/.

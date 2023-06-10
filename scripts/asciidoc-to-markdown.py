@@ -114,11 +114,11 @@ def block_eq_replace_fn(found_text, file_path):
     print(f'block_eq_replace_fn() called. found_text = {found_text}')
 
     # Extract latex from inside Asciidoc block
-    match = re.search(r'\[stem\]\n\+\+\+\+(\n(.|\n)*?\n)\+\+\+\+', found_text)
-    content = match.group(1)
+    match = re.search(r'\[stem\]\n\+\+\+\+\n(\\begin{align}\n)?((.|\n)*?)\n(\\end{align}\n)?\+\+\+\+', found_text)
+    content = match.group(2)
     print(f'content={content}')
 
-    markdown_eq = f'<p>\\begin{{align}}\n{content}\\end{{align}}</p>'
+    markdown_eq = f'<p>\\begin{{align}}\n{content}\n\\end{{align}}</p>'
 
     print(f'markdown_eq={markdown_eq}')
     return markdown_eq

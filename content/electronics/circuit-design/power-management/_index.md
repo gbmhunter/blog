@@ -37,8 +37,7 @@ In low-power, battery operated devices, when the battery is running flat, you ne
 
 For it to work, you need to have a single device downstream of the battery which has a shutdown function. Linear regulators are great for this. The image below shows the suicide switch logic to disconnect the load from the battery, until the USB is plugged in.
 
-.A circuit schematic of a 'suicide switch' powered from a USB port.
-image::circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png[width=700px,link="{{< permalink >}}/circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png"]
+{{% figure src="circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png" width="700px" caption="A circuit schematic of a 'suicide switch' powered from a USB port." %}}
 
 The microcontroller disconnects the load (which includes itself) by pulling the `SHUTDOWN` pin low until the RC circuit discharges (about 4s). The only load on the battery is the shutdown current on the linear regulator, which is very low. As soon as the USB is plugged in, SHUTDOWN once again goes high, which enables the load, turns the microcontroller on, which takes over control of pulling the line high until such a time to disconnect again.
 
@@ -52,8 +51,7 @@ UVLO pins are popular on DC/DC converter ICs. UVLO pins are sometimes named LBI 
 
 The below scope trace shows a power management IC with UVLO switching on the output +48V (yellow) when the input +48V (green) exceeds the rising UVLO threshold set to approximately +42V. The blue trace is a +3.3V rail powered from the output +48V.
 
-.A scope trace of a power management IC switching on the output once the UVLO threshold is exceeded.
-image::power-mgmt-ic-switching-on-48v-scope-trace.png[width=700px,link="{{< permalink >}}/power-mgmt-ic-switching-on-48v-scope-trace.png"]
+{{% figure src="power-mgmt-ic-switching-on-48v-scope-trace.png" width="700px" caption="A scope trace of a power management IC switching on the output once the UVLO threshold is exceeded." %}}
 
 TIP: As the output +48V turns on, you can see it drag the input +48V down (green) by a volt or two. This will be due to the combination of wiring inductance and the response time of the DC power supply. This drop can cause instabilities if the UVLO hysteresis is not set correctly (more on this below).
 
@@ -61,33 +59,27 @@ TIP: As the output +48V turns on, you can see it drag the input +48V down (green
 
 One issue with UVLO pins is that they introduce instabilities when there is any kind of impedance between the power supply and the IC. This includes wiring inductance, the step change response of the upstream PSU, and/or internal resistance of PSU/battery. As the input voltage exceed the rising UVLO threshold, the load turns on. Because of upstream impedance, this can cause the input voltage to drop. If the drop is significant enough, it will fall below the falling UVLO threshold, and the output will turn off. This cycle will repeat and the output will quickly oscillate between the on and off states.
 
-The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between stem:[ V_{OUT} ] and the UVLO pin.
+The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
 
 The two equations are:
 
-[stem]
-++++
-\begin{align}
+<p>\begin{align}
 \frac{V_{BAT} - V_{UVLO}}{R1} + \frac{V_{OUT} - V_{UVLO}}{R3} = \frac{V_{UVLO}}{R_2}
-\end{align}
-++++
+\end{align}</p>
 
-[stem]
-++++
-\begin{align}
+<p>\begin{align}
 \frac{V_{BAT} - V_{UVLO}}{R1} = \frac{V_{UVLO}}{R_2} + \frac{V_{UVLO}}{R_3}
-\end{align}
-++++
+\end{align}</p>
 
-[.text-center]
-where: +
-stem:[ R1] = top resistance divider resistor +
-stem:[ R2 ] = bottom resistance divider resistor +
-stem:[ R3 ] = resistor between stem:[ V_{OUT} ] and the UVLO pin +
+<p class="centered">
+where:</br>
+\( R1\) is the top resistance divider resistor</br>
+\( R2 \) is the bottom resistance divider resistor</br>
+\( R3 \) is the resistor between \( V_{OUT} \) and the UVLO pin</br>
+</p>
 
 ## Voltage/Current/Power Monitoring
 
-The link:http://www.ti.com/product/ina226[Texas Instruments INA226] is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
+The [Texas Instruments INA226](http://www.ti.com/product/ina226) is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
 
-.The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/.
-image::ina226-power-monitor-ic-internal-diagram-with-external-filtering.png[width=878px]
+{{% figure src="ina226-power-monitor-ic-internal-diagram-with-external-filtering.png" width="878px" caption="The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/." %}}
