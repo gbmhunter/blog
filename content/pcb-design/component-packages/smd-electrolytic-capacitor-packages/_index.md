@@ -14,22 +14,18 @@ type: "page"
 
 The following image shows the package sizes for Panasonic's electrolytic SMD capacitors. These Panasonic cap ranges (there are quite a few series) are commonly used when requiring SMD electrolytics.
 
-.A photo of a SMD electrolytic capacitor package.
-image::smd-electrolytic-capacitor-package-photo.jpg[width=250px]
+{{% figure src="smd-electrolytic-capacitor-package-photo.jpg" width="250px" caption="A photo of a SMD electrolytic capacitor package." %}}
 
-.Dimensions for the various Panasonic electrolytic SMD capacitor packages.
-image::panasonic-electrolytic-smd-cap-land-patterns.png[width=600px]
+{{% figure src="panasonic-electrolytic-smd-cap-land-patterns.png" width="600px" caption="Dimensions for the various Panasonic electrolytic SMD capacitor packages." %}}
 
 The following image shows the recommend land pattern for each of the sizes mentioned above.
 
-.Recommended panasonic electrolytic SMD capacitor land patterns. Image from 'Panasonic SMT Aluminium Electrolytic Capacitors: Application Guidelines' (http://www.panasonic.com/industrial/components/pdf/aluminum_app_dne.pdf).
-image::panasonic-electrolytic-smd-cap-land-patterns.png[width=500px]
+{{% figure src="panasonic-electrolytic-smd-cap-land-patterns.png" width="500px" caption="Recommended panasonic electrolytic SMD capacitor land patterns. Image from 'Panasonic SMT Aluminium Electrolytic Capacitors: Application Guidelines' (http://www.panasonic.com/industrial/components/pdf/aluminum_app_dne.pdf)." %}}
 
 The following table shows the relationship between Panasonic standard cap packages (not vibration proof capacitances) and Chemi-Con cap packages.
 
-|===
 | Panasonic Code | Chemi-Con Code | Diameter (mm) | Height(mm)
-
+|----------------|----------------|---------------|----------
 | A              | B              |               |
 | B              | D, D61         | 4.0mm         | 5.8mm
 | C              | E, E61         | 5.0mm         | 5.8mm
@@ -42,7 +38,6 @@ The following table shows the relationship between Panasonic standard cap packag
 | H              | n/a
 | J              | L 
 | K              | M
-|===
 
 Panasonic has a family of vibration-proof SMD electrolytic capacitors which share the some of the same size codes as their standard range. You have to be careful because the dimensions are not the same between the two product lines. The diameter is always the same (which means you can use a standard footprint for a vibration-proof capacitor, but it's not recommended as the vibration-proof capacitor has a larger "plus" symbol land pattern to better anchor itself to the PCB), but the height of the capacitor is slightly larger in the vibration-proof family (e.g. a standard size `D` has a length of 5.8mm while a vibration-proof size `D` has a length of 6.1mm).
 

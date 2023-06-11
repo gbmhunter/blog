@@ -1,0 +1,60 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2021-09-07
+description: "Dimensions, codes, recommended land patterns and more info on SMD crystal component packages."
+draft: false
+lastmod: 2021-09-07
+tags: [ "component packages", "PCB design", "SMD", "crystal", "oscillator", "package", "dimensions", "component" ]
+title: "Crystal Packages"
+type: "page"
+---
+
+{{% warning-is-notes %}}
+
+Unfortunately, most surface-mount crystals do not come in named packages. A notable exception is the [HC-49US package](/pcb-design/component-packages/hc-49us-component-package/). This page contains info on the unnamed SMD crystal packages, which are usually identified by their width*length. There are a variety of popular width*length combinations used.
+
+## SMD Crystal Packages
+
+Table of common SMD 2 pad crystal package dimensions:
+
+| Dimensions (width x length)
+|--------------------------------
+| 1.20x1.00mm
+| 1.60x1.00mm
+| 2.00x1.20mm
+| 2.05x1.20mm
+| 3.20x1.50mm
+| 4.10x1.50mm
+
+### 1.5x0.8n
+
+Dimensions: 1.5x0.8mm
+Num. terminals: 4
+Connection type: BGA
+
+{{% figure src="sit1532ai-j4-dcc-32.768e-1.5x0.8mm-4-bga-package-3d-render.png" width="300px" caption="3D render of the SiTIME SIT1532AI-J4-DCC-32.768E in the 1.5x0.8mm CSP BGA package. Image from https://nz.element14.com/sitime/sit1532ai-j4-dcc-32-768e/osc-32-7khz-1-5-x-0-8mm-lvcmos/dp/2850210." %}}
+
+### 3.2x2.5mm
+
+Dimensions: 3.2x2.5mm
+Num. terminals: 4
+Connection type: Pads
+
+{{% figure src="abm3b-8.000mhz-10-1-u-t-crystal-3.2x2.5mm-package-render.png" width="300px" caption="3D render of the Abracon ABM3B-8.000MHZ-10-1-U-T in the 3.2x2.5mm SMD crystal package. Image retrieved 2021-09-07, from https://nz.element14.com/abracon/abm3b-8-000mhz-10-1-u-t/crystal-8mhz-10pf-5-x-3-2mm/dp/2467817." %}}
+
+A very common package size for a 4 pad SMD crystal. There is also a 6 pad crystal package with the same length and width of 3.2x2.5mm.
+
+### 3.2x2.5mm
+
+Dimensions: 3.2x2.5mm
+Num. terminals: 6
+Connection type: Pads
+ 
+{{% figure src="abracon-ax3dbf1-125.0000t-crystal-package-dimensions.png" width="600px" caption="Package dimensions of the Abracon AX3DBF1-125.0000T SMD crystal, in a 3.2x2.5x1.0mm form factor. Image retrieved 2021-09-07, from https://nz.mouser.com/datasheet/2/3/AX3-1578477.pdf." %}} 
+
+## Through-Hole Crystal Packages
+
+Radial 6.2x2.1mm
+
+{{% figure src="raltron-r26-32.768-6-crystal-package-6.2x2.1mm-photo.png" width="300px" caption="Photo of a Raltron R26-32.768-6 32.678kHz crystal in a 6.2x2.1mm radial package. Image retrieved 2021-09-11, from https://nz.element14.com/raltron/r26-32-768-6/crystal-32-768khz-6pf-6-2-x-2/dp/2982324." %}}

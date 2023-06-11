@@ -12,4 +12,4 @@ type: "page"
 
 ## Overview
 
-`SON` is a synonym for the `DFN` component package. See the link:../dfn-component-package[DFN Component Package page] for more information.
+`SON` is a synonym for the `DFN` component package. See the [DFN Component Package page](../dfn-component-package) for more information.
