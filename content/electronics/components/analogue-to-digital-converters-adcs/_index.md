@@ -14,8 +14,7 @@ type: "page"
 
 An _analogue-to-digital converter_ (ADC) is a device which converts an input analogue voltage level into a representative digital value. They are commonly used in embedded electronics to measure the value of an analogue sensor. They are very popular and many microcontrollers have one or more built in ADCs, as well as stand-alone ADC ICs which normally offer greater precision and resolutions.
 
-.A symbol representing a analogue-to-digital converter (ADC).
-image::adc-symbol-analogue-to-digital.png[width=350px,link="adc-symbol-analogue-to-digital.png"]
+{{% figure src="adc-symbol-analogue-to-digital.png" width="350px" caption="A symbol representing a analogue-to-digital converter (ADC)." %}}
 
 ## Microcontroller ADCs
 
@@ -33,34 +32,36 @@ Delta-Sigma ADCs also take longer to switch between input signals (if measuring 
 
 ## Medical Uses
 
-ADCs are commonly used in medical devices for biopotential measurements. One common application is for the analogue front-end in EEG devices. The link:http://www.ti.com/product/ads1299[Texas Instruments ADS1299] is one example of an ADC IC designed for EEG applications.
+ADCs are commonly used in medical devices for biopotential measurements. One common application is for the analogue front-end in EEG devices. The [Texas Instruments ADS1299](http://www.ti.com/product/ads1299) is one example of an ADC IC designed for EEG applications.
 
 ## 4-20mA Current Loops
 
 ADCs can be used to read the value from a 4-20mA current loop signal with the help of a current-to-voltage converting resistors (what all resistors do, right?).
 
-See the link:/electronics/communication-protocols/4-20ma-current-loops[4-20mA Current Loops page] for more info.
+See the [4-20mA Current Loops page](/electronics/communication-protocols/4-20ma-current-loops) for more info.
 
 ## Examples
 
 ### Texas Instruments ADS8866IDRCR
 
-|===
+| |
+|-------------------|----------------
 | Manf.             | Texas Instruments
-| Manf. Part Num    | link:https://www.ti.com/lit/ds/symlink/ads8866.pdf[ADS8866IDRCR]
+| Manf. Part Num    | [ADS8866IDRCR](https://www.ti.com/lit/ds/symlink/ads8866.pdf)
 | Topology          | SAR
 | Resolution        | 16-bit
 | Speed             | 100ksps
 | Digital Interface | SPI
 | Package           | DFN-10-3x3-TP
-|===
 
 Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the analogue supply voltage ranges are incompatible!
 
 ### Microchip MCP33131-05-E/MN
 
+| |
+|-------------------|------------
 | Manf.             | Microchip
-| Manf. Part Num    | link:https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf[MCP33131-05-E/MN]
+| Manf. Part Num    | [MCP33131-05-E/MN](https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf)
 | Topology          | SAR
 | Resolution        | 16-bit
 | Speed             | 500ksps
@@ -69,4 +70,4 @@ Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the ana
 
 ## Suppliers
 
-* link:https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700[DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section] (US)
+* [DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section](https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700) (US)

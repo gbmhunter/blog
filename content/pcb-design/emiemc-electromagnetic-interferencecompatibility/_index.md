@@ -27,6 +27,6 @@ For example, the output impedance of a SMPS may be a few `\(m\Omega\)`, which th
 
 These reflections can be minimised by adding the appropriate termination resistors, e.g. a `\(50\Omega\)` resistor in series with the SMPS (as close to the SMPS output as you can), and then another `\(50\Omega\)` resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements
 
-== Mu-metal
+## Mu-metal
 
 Mu-metal is a nickel-iron alloy with a very high permeability, making it suitable for shielding sensitive equipment against magnetic interference.

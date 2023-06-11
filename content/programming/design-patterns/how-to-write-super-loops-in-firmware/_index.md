@@ -9,13 +9,13 @@ title: "How To Write Super Loops In Firmware"
 type: page
 ---
 
-== Overview
+## Overview
 
 A _super loop_ (a.k.a. _mega loop_, _main loop_ or _infinite loop_) is a popular way to architect firmware code for simple firmware applications. It involves looping through your code which loosely follows the following three steps:
 
-. Read inputs.
-. Process inputs/data.
-. Set outputs.
+1. Read inputs.
+1. Process inputs/data.
+1. Set outputs.
 
 A super loop does not run on "operating system" (e.g. RTOS), and therefore there is **no scheduling or asynchronous code execution, everything is just run in a simple synchronous loop**. The idea is to keep the average loop time short (in the microseconds to 10's of milliseconds range) so that the system remains responsive to changes in inputs.
 
@@ -29,12 +29,13 @@ The disadvantages to a super loop include:
 * Not as modular as an application running on an OS, and sometimes you run into complexity issues when using a super loop for large firmware projects.
 * No ability to prioritize certain tasks (except for using interrupts). This can lead to responsivity issues for large or complex projects.
 
-TIP: The basic idea of a super loop could still be used for a single thread running on an RTOS, so it that sense, it **could** run on an operating system.  
+{{% aside type="tip" %}}
+The basic idea of a super loop could still be used for a single thread running on an RTOS, so it that sense, it **could** run on an operating system.  
+{{% /aside %}}
 
-== Basic Top-Level Code
+## Basic Top-Level Code
 
-[source,c]
-----
+```c
 int main(void) {
     init();
     while(1) { // You might see for(;;) used here also
@@ -43,12 +44,11 @@ int main(void) {
         set_outputs();
     }
 }
-----
+```
 
 For larger firmware projects using the super loop architecture, you will want to break the code into modular .c/.h file combinations which have a specific purpose, for example one module for handling an IMU sensor, one module for controlling a motor and one module for printing serial debug data:
 
-[source,c]
-----
+```c
 int main(void) {
     init();
     while(1) { // You might see for(;;) used here also
@@ -57,41 +57,38 @@ int main(void) {
         serial_loop();
     }
 }
-----
+```
 
 ## The System Tick
 
 The idea is to call a function to get the system tick (which represents the current time, usually measured as an integer number of microseconds or milliseconds since the microcontroller started) once per iteration of your super loop.
 
-[source,c]
-----
+```c
 uint32_t curr_tick_us = get_system_tick_us();
-----
+```
 
 It is important to note that you should only read the system tick once per iteration of the loop. This value should be used for all calculations involving the current time for the rest of the loop, even if the current time has changed. This prevents a whole range of tricky-to-debug issues when things start happening in a different order than what was expected.
 
 ### Dealing With Tick Roll-over (Overflow)
 
-It is important to make your firmware immune to the effect of the system tick overflowing (rolling over) and going back to 0 (just ask the link:https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html[Boeing 787 Dreamliner] about this<<bib-engadget-787-overflow>>).
+It is important to make your firmware immune to the effect of the system tick overflowing (rolling over) and going back to 0 (just ask the [Boeing 787 Dreamliner](https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html) about this[^bib-engadget-787-overflow]).
 
 The great news is, if you are using an unsigned integer data type to store this number, thanks to the maths, much of the code you write that is based on the difference between the current time and the last time an event happened will automatically run correctly even when the tick overflows!
 
 Let's pretend we need to print something every 100ms, and we're using the ridiculously small storage of a `uint8_t` (to exaggerate the problem) to store the current time and the last time we printed something. Our code to detect when we need to print is:
 
-[source,c]
-----
+```c
 if ((uint8_t)(cur_tick_ms - last_print_time_ms) >= 100) {
     printf("Print time! curr_tick_ms = %i\n", cur_tick_ms);
     last_print_time_ms = cur_tick_ms;
 }
-----
+```
 
 `last_print_time_ms` and `cur_tick_ms` start at `0`. `cur_tick_ms` starts increasing everytime when iterate around our super loop. When `cur_time_ms` gets to `100`, the `if` statement becomes true and we print. `last_print_time_ms` is updated to `100`. The same thing happens when `cur_tick_ms` gets to `200`. However, since `cur_tick_ms` is a `uint8_t`, it overflows after `255` and wraps back around to `0`. What's great is the math still works out. Because the difference `cur_tick_ms - last_print_time_ms` is also a `uint8_t`, The duration `0 - 200` is not `-200` but `56`. `cur_tick_ms` continues to increment until is reaches `44`, in where `44-200` gives us `100`, and we print again! And the cycle continues.
 
 Full working example showing this phenomenon is below. Run it online at https://replit.com/@gbmhunter/sys-tick-overflow.
 
-[source,c]
-----
+```c
 #include <stdio.h>
 #include <stdint.h>
 
@@ -125,12 +122,11 @@ int main(void) {
   }
   return 0;
 }
-----
+```
 
 Running the above code, we get the following output:
 
-[source]
-----
+```c
 Firmware starting...
 Print time! curr_tick_ms = 100
 Print time! curr_tick_ms = 200
@@ -142,7 +138,7 @@ Print time! curr_tick_ms = 188
 Print time! curr_tick_ms = 32
 Print time! curr_tick_ms = 132
 Print time! curr_tick_ms = 232
-----
+```
 
 ## Keeping Track Of Loop Time
 
@@ -150,17 +146,15 @@ A really useful metric to keep track of in a super loop architecture is the _loo
 
 It's easy to compute the loop time from the "tick" from the last iteration of the loop, and the "tick" from the current iteration. Check that this does not exceed a reasonable number (reasonable will entirely depend on your exact application, printing out the loop time might clue you into a suitable limit), and handle the "error" as appropriate (in the example below, a warning is printed to the default debug port).
 
-[source,c]
-----
+```c
 uint32_t prev_tick_ms = cur_tick_ms;
 uint32_t cur_tick_ms = get_system_tick_ms();
 uint32_t loop_time_ms = cur_tick_ms - prev_tick_ms;
 if (loop_time_ms > 20) {
   printf("WARNING: Loop time greater than 20ms!");
 }
-----
+```
 
-[bibliography]
-== References
+## References
 
-* [[[bib-engadget-787-overflow, 1]]] E. Alvarez (2015, May 1). _To keep a Boeing Dreamliner flying, reboot once every 248 days_. Engadget. Retrieved 2021-12-06, from https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html.
+[^bib-engadget-787-overflow]:  E. Alvarez (2015, May 1). _To keep a Boeing Dreamliner flying, reboot once every 248 days_. Engadget. Retrieved 2021-12-06, from https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html.
