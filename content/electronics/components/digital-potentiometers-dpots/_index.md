@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A DPOT is a device which has a **variable resistance which can be controlled digitally** through some kind of communication protocol (such as link:/electronics/communication-protocols/i2c-communication-protocol[I2C] or link:/electronics/communication-protocols/spi-communication-protocol[SPI]). They essentially behave like a potentiometer that can be controlled with a microcontroller rather than requiring human input.
+A DPOT is a device which has a **variable resistance which can be controlled digitally** through some kind of communication protocol (such as [I2C](/electronics/communication-protocols/i2c-communication-protocol) or [SPI](/electronics/communication-protocols/spi-communication-protocol)). They essentially behave like a potentiometer that can be controlled with a microcontroller rather than requiring human input.
 
 ## Internal Design
 
@@ -44,7 +44,7 @@ Most DPOT's use either the SPI or I²C communication protocol to control the wip
 
 Whilst standard potentiometers can handle any voltage on their terminals (within power dissipation and arcing limits), DPOT terminals are limited between GND and VDD, since digital switching elements are used to connect the wiper to the internal resistor string.
 
-Digital potentiometers usually have a poor total resistance tolerance, usually around stem:[\pm 20%]! However, the accuracy of the wiper as a percentage from 0 to full-scale is much more accurate, typically stem:[0.1-2%], so it is preferred to use them for ratiometric purposes (i.e. resistive divider, or configured as a potentiometer rather than a rheostat).
+Digital potentiometers usually have a poor total resistance tolerance, usually around `\(\pm 20%\)`! However, the accuracy of the wiper as a percentage from 0 to full-scale is much more accurate, typically `\(0.1-2%\)`, so it is preferred to use them for ratiometric purposes (i.e. resistive divider, or configured as a potentiometer rather than a rheostat).
 
 ## Manufacturer Part Numbers
 

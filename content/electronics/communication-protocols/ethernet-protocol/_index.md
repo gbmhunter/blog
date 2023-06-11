@@ -8,21 +8,21 @@ title: "Ethernet Protocol"
 type: "page"
 ---
 
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+{{% warning-is-notes %}}
 
-== Overview
+## Overview
 
-== History
+## History
 
 Originally, ethernet used a single coax cable (10base2).
 
-== Components
+## Components
 
-=== Connector
+### Connector
 
 RJ45 jack. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
 
-=== Magnetics
+### Magnetics
 
 Magnetics are part of the Ethernet specification for all xBASE-T networks (which includes pretty much every Ethernet PHY standard except for the first StarLAN-1, StarLAN-10 and LattisNet).
 
@@ -31,31 +31,31 @@ There are two options for magnetics, either:
 . Buy a ethernet magnetics component for your PCB.
 . Buy a jack (connector) which already has the magnetics integrated into it. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
 
-=== Physical Layer (PHY)
+### Physical Layer (PHY)
 
 The _PHY_ is the circuitry which drives the magnetics.
 
-=== MAC
+### MAC
 
-== Standards
+## Standards
 
-=== 10BASE-T
+### 10BASE-T
 
 Used Cat 3 cable.
 
-=== 10BASE-T1L
+### 10BASE-T1L
 
 Designed for automotive and IoT applications.
 
-=== 10BASE-T1S
+### 10BASE-T1S
 
 Designed for automotive and IoT applications. Allows for a multidrop architecture.
 
-== Ethernet Jacks
+## Ethernet Jacks
 
 Some ethernet jacks come with the magnetics already in-built, saving you the trouble of including them yourself on the mounted-to PCB
 
-== Power Over Ethernet (PoE)
+## Power Over Ethernet (PoE)
 
 _Power over Ethernet_ (PoE) is the term used to describe ethernet cables/systems that also provide a power source over the same cable as the data. Typically 44-57VDC (48V is a common choice) is passed over one or more of the twisted pairs in most ethernet cables. Data and power can be transmitted along the same twisted pairs as long as proper transformer-based extraction (center-tapped isolation transformers) of the AC data signal and DC power is used. The early PoE standards could provide around 10W of power, but the newer standards allow up to approx. 75W.
 
@@ -65,23 +65,65 @@ A _PoE injector_ is a stand-alone device used to add ("inject") DC power into an
 
 The _assured power_ is the amount of power available to the powered device at the end of cable. This is less than the power outputted by the PSE due to the energy lost in the impedance of the cabling.
 
-|===
-| Name          | IEEE standard         | Year | Power to PD | Max. power per port | Energized pairs| Supported devices
-
-| PoE           | IEEE 802.3af (Type 1) | 2003 | 12.95 W     | 15.4 W              | 2-pair	     | VoIP phones, WAP
-| PoE+          | IEEE 802.3at (Type 2) | 2009 | 25.5 W      | 30 W                | 2-pair	     | 
-| PoE++ (UPoE)	| IEEE 802.3bt (Type 3)	|      | 51 W        | 60 W                | 4-pair	     | 
-| PoE++	        | IEEE 802.3bt (Type 4)	|      | 71.3 W      | 100 W               | 4-pair	     | Tilt/pan/zoom (PTZ) security cameras.
-|===
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>IEEE standard</th>
+            <th>Year</th>
+            <th>Power to PD</th>
+            <th>Max. power per port</th>
+            <th>Energized pairs</th>
+            <th>Supported devices</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>PoE</td>
+            <td>IEEE 802.3af (Type 1)</td>
+            <td>2003</td>
+            <td>12.95 W</td>
+            <td>15.4 W</td>
+            <td>2-pair</td>
+            <td>VoIP phones, WAP</td>
+        </tr>
+        <tr>
+            <td>PoE+</td>
+            <td>IEEE 802.3at (Type 2)</td>
+            <td>2009</td>
+            <td>25.5 W</td>
+            <td>30 W</td>
+            <td>2-pair</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>PoE++ (UPoE)</td>
+            <td>IEEE 802.3bt (Type 3)</td>
+            <td></td>
+            <td>51 W</td>
+            <td>60 W</td>
+            <td>4-pair</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>PoE++</td>
+            <td>IEEE 802.3bt (Type 4)</td>
+            <td></td>
+            <td>71.3 W</td>
+            <td>100 W</td>
+            <td>4-pair</td>
+            <td>Tilt/pan/zoom (PTZ) security cameras.</td>
+        </tr>
+    </tbody>
+</table>
 
 PoE++ is also known as 4PPoE. UPoE is an acronym for _Ultra Power over Ethernet_.
 
-.Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf.
-image::ltc4267-poe-regulator-typical-application.png[width=600px]
+{{% figure src="ltc4267-poe-regulator-typical-application.png" width="600px" caption="Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf." %}}
 
 Signature resistance of 25kR.
 
-== EtherCAT
+## EtherCAT
 
 EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
 
@@ -92,19 +134,17 @@ EtherCAT is a communication protocol with it's physical layer following the Ethe
 
 The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC is used. However, whilst the slave node use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
 
-== Popular Chips
+## Popular Chips
 
-=== WIZnet W5xxx Family
+### WIZnet W5xxx Family
 
 The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker community. This family of ICs is used by the Arduino Ethernet board are Arduino Ethernet Shield.
 
-* W5200: This chip implements the PHY, the TCP/IP stack (fully hardwired), and the 10/100 MAC Ethernet MAC, in a QFN-48 package. It uses the link:/electronics/communication-protocols/spi-communication-protocol/[SPI Protocol] to talk to a microcontroller. It's power save features include power-down mode and WOL (wake on LAN). It runs of 3.3V but has 5V I/O tolerance.
+* W5200: This chip implements the PHY, the TCP/IP stack (fully hardwired), and the 10/100 MAC Ethernet MAC, in a QFN-48 package. It uses the [SPI Protocol](/electronics/communication-protocols/spi-communication-protocol/) to talk to a microcontroller. It's power save features include power-down mode and WOL (wake on LAN). It runs of 3.3V but has 5V I/O tolerance.
 
-* link:https://www.wiznet.io/product-item/w5500/[W5500]: Supports up to 8 independent sockets (i.e. 8 different connections to different ports). Contains a 10BaseT/100BaseTX PHY. Like the W5200 is runs of 3.3V but has 5V I/O tolerance.
-+
-.Image of the WIZnet W5500 serial-to-ethernet IC. Image from https://www.wiznet.io/product-item/w5500/.
-image::wiznet-w5500-ic-photo.jpg[width=200px]
+* [W5500](https://www.wiznet.io/product-item/w5500/): Supports up to 8 independent sockets (i.e. 8 different connections to different ports). Contains a 10BaseT/100BaseTX PHY. Like the W5200 is runs of 3.3V but has 5V I/O tolerance.
+    {{% figure src="wiznet-w5500-ic-photo.jpg" width="200px" caption="Image of the WIZnet W5500 serial-to-ethernet IC. Image from https://www.wiznet.io/product-item/w5500/." %}}
 
-=== Microchip LAN867x Family
+### Microchip LAN867x Family
 
-Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use <<10BASE-T1S, 10BASE-T1S>>, allowing a multidrop architecture of "at least 8 nodes and a minimum 25m of length".
+Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-T1S, 10BASE-T1S], allowing a multidrop architecture of "at least 8 nodes and a minimum 25m of length".

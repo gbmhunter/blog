@@ -9,17 +9,17 @@ title: "SPICE Simulation"
 type: "page"
 ---
 
-See the link:/electronics/general/kicad/kicad-tips-and-tricks#simulation[Simulation section on the KiCad Tips And Tricks page] for info specifically involving KiCad and ngspice.
+See the [Simulation section on the KiCad Tips And Tricks page](/electronics/general/kicad/kicad-tips-and-tricks#simulation) for info specifically involving KiCad and ngspice.
 
-== Elementary SPICE Components
+## Elementary SPICE Components
 
 Note: The `XXXXXXX` syntax in the general form describing elementary SPICE components is to dominate a user chosen alpha-numeric identifier (e.g. `RXXXXXXX` could stand for `R1`, `RC1` or `RMYNAME`).
 
-== Voltage And Current Sources
+## Voltage And Current Sources
 
 The current direction convention for voltage sources is that a positive current is when the current is flowing into the positive pin of the voltage source.
 
-== Voltage And Current Controlled Switches
+## Voltage And Current Controlled Switches
 
 Two types of switches in SPICE, voltage and current controlled. They are not ideal switches, and are modelled with a finite on and off resistance, as well as finite turn on and off times. However, you can usually set these to the extremes so that they act almost like an ideal switch, in relation to everything else in your circuit.
 
@@ -29,25 +29,22 @@ SPICE prefix for switches is S.
 
 The general form for a switch is:
 
-.Creating a switch in SPICE
-[source,text]
-----
+```text
 SXXXXXXX N+ N- NC+ NC- MODEL <ON><OFF>
 WYYYYYYY N+ N- VNAM MODEL <ON><OFF>
-----
+```
 
 The most basic syntax to create a voltage-controlled switch is:
 
-[source,text]
-----
+```text
 .model VSW SW()
-----
+```
 
-== Smoke Analysis
+## Smoke Analysis
 
 _Smoke analysis_ is when the SPICE software performs a simulation and checks that all the components are not exceeding maximum voltages, currents or power dissipation levels (among other things). Only a small number of the available SPICE software packages support smoke analysis, including PSPICE (commercial) and Micro-Cap (now free).
 
-For example, the Micro-Cap implementation checks the following parameters<<bib-micro-cap-reference-man-v12>>:
+For example, the Micro-Cap implementation checks the following parameters[^bib-micro-cap-reference-man-v12]:
 
 • Maximum voltage
 • Maximum current
@@ -55,26 +52,23 @@ For example, the Micro-Cap implementation checks the following parameters<<bib-m
 • Breakdowns
 • Junction temperatures
 
-== ngspice
+## ngspice
 
-.Screenshot of the main window of ngspice v34.0 when running on Windows.
-image::ngspice-main-window-windows-screenshot.png[width=600]
+{{% figure src="ngspice-main-window-windows-screenshot.png" width="600px" caption="Screenshot of the main window of ngspice v34.0 when running on Windows." %}}
 
 Type `display` to print a list of all currently defined vectors.
 
 Use `source` to load a netlist file. This is called the _input file_:
 
-[source,text]
-----
+```text
 source my-netlist-file.net
-----
+```
 
 Type `run` to run the simulation --- this will run any control lines specified in the input file. Control lines are commands such as `.dc`, `.ac`, `.tran` and `.op`:
 
-[source,bash]
-----
+```bash
 run
-----
+```
 
 Use `let` to create new variables.
 
@@ -82,20 +76,19 @@ AC analysis creates complex vectors.
 
 Use `.control` to create a control block which can contain executable statements such as `run` and `plot` within a circuit netlist file.
 
-== Micro-Cap
+## Micro-Cap
 
-As of 2019-04-07, Spectrum Software closed and released Micro-Cap for free (at version 12)<<bib-micro-cap-download-page>>. You can download it at http://www.spectrum-soft.com/download/download.shtm.
+As of 2019-04-07, Spectrum Software closed and released Micro-Cap for free (at version 12)[^bib-micro-cap-download-page]. You can download it at http://www.spectrum-soft.com/download/download.shtm.
 
 One of the only free SPICE simulation packages that supports _smoke analysis_.
 
-== The Best SPICE Resources Out There
+## The Best SPICE Resources Out There
 
-. ECircuitCenter ([http://www.ecircuitcenter.com](http://www.ecircuitcenter.com/)) - Top-notch and free resource of SPICE thoery and circuits.
-. National Instruments SPICE Simulation Fundamentals ([http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3](http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3)) - Helpful, professional resources covering most aspects of SPICE simulation
-. [Intusoft: Solving SPICE Convergence Problems](http://www.intusoft.com/articles/converg.pdf): Explains the common reasons for no convergence and the many ways to try and fix this.
+1. ECircuitCenter ([http://www.ecircuitcenter.com](http://www.ecircuitcenter.com/)) - Top-notch and free resource of SPICE thoery and circuits.
+1. National Instruments SPICE Simulation Fundamentals ([http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3](http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3)) - Helpful, professional resources covering most aspects of SPICE simulation
+1. [Intusoft: Solving SPICE Convergence Problems](http://www.intusoft.com/articles/converg.pdf): Explains the common reasons for no convergence and the many ways to try and fix this.
 
-[bibliography]
-== References
+## References
 
-* [[[bib-micro-cap-download-page]]] http://www.spectrum-soft.com/download/download.shtm, accessed 2021-06-20.
-* [[[bib-micro-cap-reference-man-v12]]]: http://www.spectrum-soft.com/download/rm12.pdf, accessed 2021-06-20.
+[^bib-micro-cap-download-page]: http://www.spectrum-soft.com/download/download.shtm, accessed 2021-06-20.
+[^bib-micro-cap-reference-man-v12]: http://www.spectrum-soft.com/download/rm12.pdf, accessed 2021-06-20.

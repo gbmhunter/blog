@@ -1,0 +1,94 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Components" ]
+date: 2020-09-07
+description: "History, modes of operation, schematics and more info on the timers and multivibrators."
+draft: false
+lastmod: 2021-08-22
+tags: [ "electronics", "circuit design", "555", "timers", "ICs", "monostable", "astable", "PWM", "duty cycle", "multivibrators", "BJT" ]
+title: "Timers And Multivibrators"
+type: "page"
+---
+
+## Overview
+
+_Multivibrators_ are 2-state electronic circuits used to make simple waveforms, oscillators and timers.
+
+There are three main types of multivibrator:
+
+* **Astable multivibrator**: A circuit which is not stable (hence _astable_) in any state, in continuously switches from one state to the other.
+* **Monostable multivibrator**: One state is stable, while the other is not. A trigger input puts this circuit into the unstable state, and at some time after this, the circuit will automatically switch back to the stable state. This is also called a _one shot_.
+* **Bistable multivibrator**: The circuit is stable in both states. A trigger input is needed to switch from one state to the other. This circuit is much more commonly known as a _flip-flop_.
+
+## History
+
+The first recorded multivibrator was the Abraham-Bloch multivibrator oscillator in 1919. It functioned as a astable multivibrator oscillator. The circuit was called a multivibrator because the square wave output contained a large proportion of harmonics[^abraham-bloch-1919-paper]. Instead of being unwanted, these harmonics were actually useful in the calibration of RF devices.
+
+## Basic BJT Astable Multivibrator
+
+A basic astable multivibrator can be made from two [BJT NPN transistors](/electronics/components/transistors/bipolar-junction-transistors-bjts) and a handful of passive components, as shown below:
+
+{{% figure src="classic-bjt-astable-multivibrator.svg" width="600px" caption="A basic (and somewhat of a classic) BJT astable multivibrator." %}}
+
+{{% aside type="note" %}}
+The capacitors do not need to be polarized, they are just shown as polarized as traditional for this circuit, and it helps you understand how the circuit works by showing the voltage polarity across each.
+{{% /aside %}}
+
+As a throw back to the past, Dick Smith's Fun Way Into Electronics (first printed in 1979) contains a "flasher" which is exactly this circuit. This book is arguably what sparked my interest in Electronics!
+
+{{% figure src="flasher-schematics-dick-smiths-funway-into-electronics.png" width="600px" caption="'The flasher' circuit here is a BJT astable multivibrator. Diode and 390R resistor are just for protection in-case the 9V battery gets hooked up the wrong way. Image from Dick Smith's Fun Way Into Electronics, Eighth Printing, page 24." %}}
+
+### How It Works
+
+TODO: Add content here.
+
+## The 555 Timer IC
+
+Due to it's popularity, the 555 timer is sometimes referred to as the "IC Time Machine"[^bib-microsemi-v-i-mode].
+
+### Internal Workings
+
+{{% figure src="555-timer-simplified-internal-schematic-ti.png" width="600px" caption="A simplified internal schematic of a 555 timer IC. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe." %}}
+
+### Modes Of Operation
+
+#### Monostable Mode (Time Delay Mode)
+
+_Monostable mode_ is when the 555 timer is configured to output a single pulse after a fixed amount of time. It only outputs one pulse and then stops until it is externally reset. This mode is used for creating a time delay.
+
+{{% figure src="555-timer-schematic-for-monostable-operation-ti.png" width="600px" caption="Schematic for putting the 555 timer into monostable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe." %}}
+
+#### Astable Mode
+
+Astable mode is when the 555 timer is configured to output a continuous waveform with a fixed frequency and duty cycle. It is similar to monostable mode, except that it continually resets itself after every pulse.
+
+Astable mode is also called running the 555 timer as a _multi-vibrator_. **The duty cycle of the output waveform cannot be reduced below 50%**. If you want a duty cycle lower than that, you have to use an inverter on the output.
+
+{{% figure src="555-timer-schematic-for-astable-operation-ti.png" width="600px" caption="Schematic for putting the 555 timer into astable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe." %}}
+
+Equations:
+
+<p>\begin{align}
+t_H = 0.693 \cdot (R_1 + R_2) \cdot C
+\end{align}</p>
+
+<p>\begin{align}
+t_L = 0.693 \cdot R_2 \cdot C
+\end{align}</p>
+
+<p>\begin{align}
+T = 0.693 \cdot (R_1 + 2R_2) \cdot C
+\end{align}</p>
+
+<p>\begin{align}
+f = \frac{1}{T}
+\end{align}</p>
+
+### Astable 555 Timer Calculator
+
+{{% calculator id="electronics/ics/555-timer-astable-rt-rb-c" style="width: 800px; height: 400px;" %}}
+
+## References
+
+[^abraham-bloch-1919-paper]: : Abraham, H.; E. Bloch (1919). _Mesure en valeur absolue des périodes des oscillations électriques de haute fréquence_. DOI: <https://doi.org/10.1051/anphys/191909120237>
+[^bib-microsemi-v-i-mode]:  Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control

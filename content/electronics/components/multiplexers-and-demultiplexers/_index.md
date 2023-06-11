@@ -10,7 +10,7 @@ title: "Multiplexers And Demultiplexers"
 type: "page"
 ---
 
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+{{% warning-is-notes %}}
 
 ## Overview
 
@@ -20,21 +20,20 @@ _Multiplexers_ (a.k.a. a MUX or _data selector_) are integrated circuits which c
 
 Analogue multiplexers pass an analogue signals from one of many inputs to a single output. Whilst a digital multiplexer buffers and amplifies the output, an analogue multiplexer does not, you can simply view it as a simple switched connection between input and output (albeit with a larger resistance than a mechanical switch). For this reason, **analogue multiplexers are bidirectional** (signals can pass from input to output, as well as pass from output to input), whilst **digital multiplexers are single direction only** (from input to output).
 
-.The functional diagram of the CD4051B 8:1 analogue multiplexer by Texas Instruments. Image retrieved from https://www.ti.com/lit/ds/symlink/cd4052b.pdf on 2021-01-30.
-image::cd4051b-functional-diagram-ti.png[width=400px]
+{{% figure src="cd4051b-functional-diagram-ti.png" width="400px" caption="The functional diagram of the CD4051B 8:1 analogue multiplexer by Texas Instruments. Image retrieved from https://www.ti.com/lit/ds/symlink/cd4052b.pdf on 2021-01-30." %}}
 
-It's important to note that most analogue multiplexers have a much higher resistance than a traditional mechanical switch or even transistor, with most specifying an _on-state resistance (max)_ between stem:[30] and stem:[150\Omega].
+It's important to note that most analogue multiplexers have a much higher resistance than a traditional mechanical switch or even transistor, with most specifying an _on-state resistance (max)_ between `\(30\)` and `\(150\Omega\)`.
 
 ### Deviations From An Ideal Switch
 
 * The on-state resistance of a analogue multiplexer is much higher than a mechanical switch.
-* The voltage on the input and output cannot exceed stem:[V_{DD}] and stem:[V_{EE}] by more than a diodes forward voltage drop (stem:[\approx 0.6V], any higher than this and conduction from your signal to the rails occurs, distorting your signal).
+* The voltage on the input and output cannot exceed `\(V_{DD}\)` and `\(V_{EE}\)` by more than a diodes forward voltage drop (`\(\approx 0.6V\)`, any higher than this and conduction from your signal to the rails occurs, distorting your signal).
 
 ### Datasheet Parameters
  
 #### On-State Resistance
 
-The resistance between the input and output when the input is switched to the output. Typically specified as a maximum, with nominal values being between stem:[30] and stem:[150\Omega].
+The resistance between the input and output when the input is switched to the output. Typically specified as a maximum, with nominal values being between `\(30\)` and `\(150\Omega\)`.
 
 ### Switching Procedure
 
@@ -47,18 +46,16 @@ The resistance between the input and output when the input is switched to the ou
 * **CD4051**: Family of "4051 style" analogue multiplexers by Texas Instruments.
 * **CD74HC**: Popular range of analogue multiplexers by Texas Instruments.
 
-=== DIN Mounted Analog Multiplexors
+### DIN Mounted Analog Multiplexors
 
 DIN-mounted analog multiplexors are designed to multiplex many incoming analog input signals before being fed into a PLCC with a limited number of analog inputs (perhaps just one!).
 
-.16-channel analog input multiplexer by Intech.
-image::intech-2100-m-analogue-input-multiplexer.png[width=400px]
+{{% figure src="intech-2100-m-analogue-input-multiplexer.png" width="400px" caption="16-channel analog input multiplexer by Intech." %}}
 
 ### Suppliers
 
 * [DigiKey link to the Analog Switches, Multiplexers, Demultiplexers section](https://www.digikey.com/en/products/filter/integrated-circuits-ics/747)
 
-[bibliography]
-== References
+## References
 
-* [[[bib-intech-2100-m, 1]]] Intech. 
+[^bib-intech-2100-m]:  Intech. 

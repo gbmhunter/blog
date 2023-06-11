@@ -1,0 +1,149 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Electronic Components", "Diodes" ]
+date: 2022-03-04
+description: "Info about general-purpose diodes."
+draft: false
+lastmod: 2022-03-04
+tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "general purpose diodes" ]
+title: "General Purpose Diodes"
+type: "page"
+---
+
+## Overview
+
+General purpose diodes are just what they say they are -- simple diodes with no special functionality, used for a wide range of rectification purposes.
+
+{{% figure src="1n4007-diode-photo-nte-electronics.png" width="250px" caption="Photo of a 1N4007 general-purpose diode from NTE Electronics in the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/)[^bib-digikey-nte-11n4007]. Image (C) NTE Electronics. " %}}
+
+## Schematic Symbol And Designator
+
+On schematics, general purpose diodes use the schematic symbol `D` (as do all most all types of diodes) and use the following symbol (most other types of diodes DO NOT use this symbol, they use slightly adjusted versions).
+
+{{% figure src="general-purpose-diode-schematic-symbol.svg" width="300px" caption="The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Current can only flow from anode to cathode, but not the other way around. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety." %}}
+
+{{% aside type="tip" %}}
+A handy mnemonic for remembering the polarity of a diode is to remember that the triangle in the symbol points in the direction of "forward" current (current when the diode is forward conducting).
+{{% /aside %}}
+
+Some believe that the diode symbol originated from the drawing of a point contact crystal diode, an early form of diode made from crystal and metal, used in things such as "crystal radio" sets[^bib-wikipedia-crystal-detector].
+
+## Parameters
+
+### Maximum Continuous Forward Current
+
+* Symbol: `\(I_{f(cont)}\)` or `\(I_{f(max)}\)`
+
+The maximum continuous current the diode can withstand, usually limited by overheating.
+
+### Average Rectified Forward Current
+
+The _average rectified forward current_ is the maximum average current the diode can sustain when it only conducting during the positive half-cycle of a sine wave (i.e. working as a half-wave rectifier). It is related to the maximum current that the diode conducts at during the top of the positive cycle of the sine wave by `\(I_{av} = \frac{I_{max}}{\pi}\)`. This equation is obtained by integrating the current over the positive half-cycle of a sine wave and then dividing it by the total time for one cycle:
+
+<p>\begin{align}
+I_{av} &= \frac{1}{2\pi} \int_0^{\pi} I_{max} \sin (t) dt \nonumber \\
+       &= \frac{1}{2\pi} I_{max} -[\cos (t)] \big|_{0}^{\pi} \nonumber \\
+       &= \frac{1}{2\pi} I_{max} -[-1 - 1] \nonumber \\
+       &= \frac{1}{2\pi} 2I_{max} \nonumber \\
+       &= \frac{I_{max}}{\pi}
+\end{align}</p>
+
+This ignores the fact the diode doesn't conduct until the forward voltage gets to about `\(0.7V\)`, which is fine to ignore is most cases as this part of the cycle will be tiny in comparison to everything else.[^avg-rectified-forward-current-plot] shows graphically when the diode is conducting from a sinusoidal supply and the relationship between average rectified forward current and maximum (peak) current for a complete sine wave cycle. `\(I_{max}\)` was chosen to be `\(5A\)`, and the waveform has a period of `\(2\pi\)` seconds for simplicity (although relationship is independent of period/frequency).
+
+{{% figure src="avg-rectified-forward-current-plot.png" width="500px" caption="Plot showing the relationship between average rectified forward current and max. current for a diode rectifying a sine wave (e.g. mains supply)." %}}
+
+{{% aside type="tip" %}}
+The integration limits are set to `\(0\)` and `\(\pi\)` (and not `\(2\pi\)`) because we only want integrate over the first-half of the sine wave cycle when the diode is conducting.
+{{% /aside %}}
+
+### Peak-surge forward current
+
+* Symbol: `\(I_{FSM}\)`
+
+The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.
+
+### Forward Voltage
+
+* Symbol: `\(V_f\)`
+
+The forward voltage drop, usually rated at maximum continuous current (`\(I_f\)`). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
+
+### Reverse-leakage Current
+
+* Symbol: `\(I_R\)`
+
+The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
+
+### Peak Reverse Voltage
+
+* Symbol: `\(V_{R(max)}\)` or `\(V_{RRM}\)`[^bib-vishay-1n400x-datasheet]
+
+The maximum reverse voltage the diode can sustain without reverse breakdown occurring and possible damage. Sometimes called PIV (Peak Inverse Voltage)
+
+### Other Properties
+
+Some other important properties of diodes are their ability to prevent conduction until a certain, configurable breakdown voltage, and a conduction current that is related to the square of the voltage across it.
+
+### Polarity
+
+Most diodes have their polarity marked with a single line near the cathode (the "more negative" end when conducting current). They will let current flow from anode to cathode but not in the other direction.
+
+{{% aside type="note" %}}
+Some diodes, such as bi-directional TVS diodes, do not have a polarity.
+{{% /aside %}}
+
+Diodes come in many [component packages](/pcb-design/component-packages), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
+
+{{% figure src="silkscreen-polarity-marks-on-0603-diode-footprint.png" width="500px" caption="Polarity marks have been added to the silkscreen layer for these 0603 diodes." %}}
+
+### Can Diodes Share Current?
+
+The short answer: No!
+
+The slightly longer answer...
+
+Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg (called a ballast). They should be identical in resistance and have to drop at least `\(0.3-0.4V\)` (when the diode has a nominal voltage drop of around `\(0.7V\)`) to be effective.
+
+### Bridge Rectifiers
+
+_Bridge rectifiers_ are 4 diodes connected in such a way that they **rectify** an AC voltage waveform into a DC one. The below schematic shows how a bridge rectifier is made from four diodes, and where the input AC and output DC signals are connected. 
+
+{{% figure src="bridge-rectifier-schematic.svg" width="500px" caption="Basic circuit diagram showing the construction of a bridge rectifier from four general purpose diodes." %}}
+
+{{% aside type="warning" %}}
+Whilst the output of a bridge rectifier is technically DC, the voltage is still changing by a decent amount! The output begins to look like regular, stable DC once you start adding capacitance (and at `\(50-60Hz\)` power line frequencies, a lot of it!).
+{{% /aside %}}
+
+The image below shows a bridge rectifier being used after a transformer to convert `\(12VAC\)` (rms) into `\(12VDC\)`. Note that the frequency of the ripple will be twice the AC input frequency (`\(2\cdot 50Hz = 100Hz\)`).
+
+{{% figure src="transformer-bridge-recitifier-cap-240vac-to-12vdc.png" width="800px" caption="A schematic of an AC-DC power-supply that uses a bridge rectifier." %}}
+
+Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a `\(47pF\)` capacitor in series with a `\(2k\Omega\)` resistor.
+
+### Ideal Diodes
+
+One of the main departures that any physical diode has from the concept of an ideal diode is it's non-zero forward voltage drop. You can however compensate for this by making an _ideal diode_ circuit from an op-amp and a diode. See [Op-Amps § Ideal Diodes](/electronics/components/op-amps/#_ideal_diodes) for more information.
+
+### Popular General Purpose Diode Part Numbers
+
+#### 1N400x Family
+
+The `1N400x` family of general purpose diodes have a forward current of 1A and reverse voltage ratings of 50-1000V. They come in the through-hole axial [DO-41 package](/pcb-design/component-packages/do-41-component-package/).
+
+Specifications of the various diodes in the `1N400x` family[^bib-vishay-1n400x-datasheet]:
+
+| Part Num.            | 1N4001 | 1N4002 | 1N4003 | 1N4004 | 1N4005 | 1N4006 | 1N4007
+|----------------------|--------|--------|--------|--------|--------|--------|--------
+| Forward Current      | 1A     | 1A     | 1A     | 1A     | 1A     | 1A     | 1A
+| Max. Reverse Voltage | 50V    | 100V   | 200V   | 400V   | 600V   | 800V   | 1000V
+
+### Supplier Links
+
+* DigiKey: [Diodes - Rectifiers - Single](https://www.digikey.com/en/products/filter/diodes-rectifiers-single/280)
+* Mouser: [Diodes - General Purpose, Power, Switching](https://www.mouser.com/c/semiconductors/discrete-semiconductors/diodes-rectifiers/diodes-general-purpose-power-switching/)
+
+## References
+
+[^bib-vishay-1n400x-datasheet]: Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
+[^bib-wikipedia-crystal-detector]: Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
+[^bib-digikey-nte-11n4007]: DigiKey. _NTE Electronics, Inc 1N4007_. Retrieved 2021-11-25, from https://www.digikey.com/en/products/detail/nte-electronics-inc/1N4007/11645794.
