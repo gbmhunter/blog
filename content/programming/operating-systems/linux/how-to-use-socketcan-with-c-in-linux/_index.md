@@ -13,9 +13,9 @@ type: "page"
 
 The Linux C/C++ API allows you to control a SocketCAN interface via a C/C++ application.
 
-If you are looking for help interfacing with SocketCAN from the Linux command-line, see the link:/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/[How To Use SocketCAN With The Command-Line In Linux page].
+If you are looking for help interfacing with SocketCAN from the Linux command-line, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/).
 
-If you are looking for more information about the CAN bus protocol itself, see the link:/electronics/communication-protocols/can-protocol/[CAN Protocol page].
+If you are looking for more information about the CAN bus protocol itself, see the [CAN Protocol page](/electronics/communication-protocols/can-protocol/).
 
 SocketCAN supports _standard frame format_ (SFF), _extended frame format_ (EFF) and _CAN FD_ frames.
 
@@ -23,8 +23,7 @@ SocketCAN supports _standard frame format_ (SFF), _extended frame format_ (EFF) 
 
 The data for reading and writing to the CAN bus is communicated through the `can_frame` struct which is declared and defined in `<linux/can.h>`.
 
-[source,c]
-----
+```c
 struct can_frame {
     canid_t can_id;  // 32-bit CAN_ID + EFF/RTR/ERR flags
     __u8    can_dlc; // Number of bytes used in data (0..8)
@@ -33,7 +32,7 @@ struct can_frame {
     __u8    __res1;  // Reserved/padding
     __u8    data[8] __attribute__((aligned(8))); // Data
 };
-----
+```
 
 The 32-bit `can_id` value has the following structure:
 
@@ -52,8 +51,7 @@ Note that the `can_id` structure does not map directly to the bits present in th
 
 There is also an extended frame struct, called `canfd_frame`.
 
-[source,c]
-----
+```c
 struct canfd_frame {
     canid_t can_id;  /* 32 bit CAN_ID + EFF/RTR/ERR flags */
     __u8    len;     /* frame payload length in byte (0 .. 64) */
@@ -62,7 +60,7 @@ struct canfd_frame {
     __u8    __res1;  /* reserved / padding */
     __u8    data[64] __attribute__((aligned(8)));
 };
-----
+```
 
 The `canfd_frame` struct does not have a `can_dlc` member to indicate the number of bytes, but rather a len member.
 
@@ -74,26 +72,24 @@ Data is buffered internally, which means for virtual interfaces, you can do a wr
 
 _libsocketcan_ is a Linux library that provides some userspace functionality to control a SocketCAN interface. It provides functions such as `can_set_bitrate()`, `can_do_start()` and `can_do_stop()`.
 
-WARNING: Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. `can0`), **I have had issues when using it with a virtual CAN interface** (e.g. `vcan0`). Specifically, functions such as `can_get_state()` do not seem to work correctly.
+{{% aside type="warning" %}}
+Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. `can0`), **I have had issues when using it with a virtual CAN interface** (e.g. `vcan0`). Specifically, functions such as `can_get_state()` do not seem to work correctly.
+{{% /aside %}}
 
 You can install `libsocketcan` on your Linux machine by following the below steps:
 
 1. Clone the `libsocketcan` git repository:
-+
-[source,bash]
-----
-~$ git clone https://git.pengutronix.de/git/tools/libsocketcan
-----
+    ```bash
+    ~$ git clone https://git.pengutronix.de/git/tools/libsocketcan
+    ```
 
 2. Build/install (libsocketcan uses the _autotools_ build system):
-+
-[source,bash]
----- 
-~$ cd libsocketcan
-~/libsocketcan$ ./autogen.sh
-~/libsocketcan$ ./configure
-~/libsocketcan$ make
-----
+    ```bash
+    ~$ cd libsocketcan
+    ~/libsocketcan$ ./autogen.sh
+    ~/libsocketcan$ ./configure
+    ~/libsocketcan$ make
+    ```
 
 You should now have `libsocketcan.a` installed to `/usr/local/lib` and the header file `libsocketcan.h` installed to `/usr/local/include`.
 

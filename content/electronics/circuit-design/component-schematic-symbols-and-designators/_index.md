@@ -10,7 +10,7 @@ title: "Component Schematic Symbols and Designators"
 type: "page"
 ---
 
-== Overview
+## Overview
 
 Component designators and schematic symbols are used to quickly identify components both on schematics and PCBs. They usually consist of a short acronym representing the type of component, followed by unique number to distinguish it from other components of the same type (e.g. `R3`, `R4`, `C3`).
 
@@ -22,11 +22,11 @@ Over the years, many standards have been released that specify particular design
 
 However, many schematic and PCB silkscreen designs do not strictly follow any standard (although the similarities are usually quite high). The following list shows non-standard specific, commonly used acronyms and the type of component they represent.
 
-== List of Common Component Designators And Symbols
+## List of Common Component Designators And Symbols
 
 Sorted by alphabetic order.
 
-=== Antennas (ANT)
+### Antennas (ANT)
 
 There are a number of different schematic symbols for an antenna, but they all look similar and should be easily recognizable. The designator `E` is also used, however `ANT` is my personal preference.
 
@@ -37,14 +37,10 @@ Designator(s):
 
 Recommended schematic symbols(s):
 
-[.imagerow]
---
-.A schematic symbol for an antenna with an open top.
-image::antenna-symbol-open-top.svg[width=100px]
-
-.A schematic symbol for an antenna with an closed top.
-image::antenna-symbol-closed-top.svg[width=100px]
---
+<div style="display: flex;">
+{{% figure src="antenna-symbol-open-top.svg" width="100px" caption="A schematic symbol for an antenna with an open top." %}}
+{{% figure src="antenna-symbol-closed-top.svg" width="100px" caption="A schematic symbol for an antenna with an closed top." %}}
+</div>
 
 ### Assemblies (A)
 
@@ -64,8 +60,7 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-.The schematic symbol for a battery.
-image::battery-symbol.svg[width=200px]
+{{% figure src="battery-symbol.svg" width="200px" caption="The schematic symbol for a battery." %}}
 
 ### Capacitors \(C)
 
@@ -77,17 +72,11 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-[.imagerow]
---
-.The schematic symbol for a non-polarised capacitor.
-image::capacitor-symbol-unpolarized.svg[width=200px]
-
-.The schematic symbol for a polarised capacitor.
-image::capacitor-symbol-polarized.svg[width=200px]
-
-.The schematic symbol for a variable capacitor.
-image::capacitor-symbol-variable.svg[width=200px]
---
+<div style="display: flex;">
+{{% figure src="capacitor-symbol-unpolarized.svg" width="200px" caption="The schematic symbol for a non-polarised capacitor." %}}
+{{% figure src="capacitor-symbol-polarized.svg" width="200px" caption="The schematic symbol for a polarised capacitor." %}}
+{{% figure src="capacitor-symbol-variable.svg" width="200px" caption="The schematic symbol for a variable capacitor." %}}
+</div>
 
 Recommended parameters to show on the schematics:
 
@@ -96,7 +85,7 @@ Recommended parameters to show on the schematics:
 
 For special high tolerance (e.g. 1% or less) capacitors it can be useful to show the tolerance also.
 
-=== Diodes (D)
+### Diodes (D)
 
 The designator `D` can be used for most diodes. Sometimes `Z` is used for a Zener diode, and `LED` for a light-emitting diode, however TVS, Schottky and general purpose diodes are still just `D`.
 
@@ -106,22 +95,14 @@ Recommended designator(s):
 
 Recommended symbol(s):
 
-[.imagerow]
---
-.The recommended schematic symbol for an general purpose diode.
-image::diode-symbol-general-purpose.svg[width=200px, height=200px]
+<div style="display: flex;">
+{{% figure src="diode-symbol-general-purpose.svg" width="200px" caption="The recommended schematic symbol for an general purpose diode." %}}
+{{% figure src="diode-symbol-zener.svg" width="200px" caption="The recommended schematic symbol for an zener diode." %}}
+{{% figure src="diode-symbol-tvs-avalanche.svg" width="200px" caption="The recommended schematic symbol for a unidirectional avalanche diode (including TVS diodes). Note the second bar distinguishing it from a Zener diode." %}}
+{{% figure src="diode-symbol-led.svg" width="200px" caption="The recommended schematic symbol for an LED." %}}
+</div>
 
-.The recommended schematic symbol for an zener diode.
-image::diode-symbol-zener.svg[width=200px, height=200px]
-
-.The recommended schematic symbol for a unidirectional avalanche diode (including TVS diodes). Note the second bar distinguishing it from a Zener diode.
-image::diode-symbol-tvs-avalanche.svg[width=200px, height=200px]
-
-.The recommended schematic symbol for an LED.
-image::diode-symbol-led.svg[width=200px, height=200px]
---
-
-=== Fuse/Fuse Holders (F, XF)
+### Fuse/Fuse Holders (F, XF)
 
 `F` is the designator used for fuses (wired, electrical, e.t.c). `XF` is commonly used for a fuse holder.
 
@@ -132,8 +113,7 @@ Recommended designator(s):
 
 Recommended symbol(s):
 
-.Schematic symbol for a fuse.
-image::fuse-symbol.svg[width=200px]
+{{% figure src="fuse-symbol.svg" width="200px" caption="Schematic symbol for a fuse." %}}
 
 ### Ferrite Beads (FB, FEB)
 
@@ -144,15 +124,14 @@ Designator(s):
 
 Schematic symbol(s):
 
-.The schematic symbol for a ferrite bead.
-image::ferrite-bead-symbol.svg[width=200px]
+{{% figure src="ferrite-bead-symbol.svg" width="200px" caption="The schematic symbol for a ferrite bead." %}}
 
 Recommended parameters to display on the schematic:
 
 * Impedance (typically rated @ 100MHz)
 * Max. current
 
-Read more about ferrite beads link:/electronics/components/ferrite-beads[here].
+Read more about ferrite beads [here](/electronics/components/ferrite-beads).
 
 ### Fiducials (FID)
 
@@ -162,10 +141,9 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-.The schematic symbol for a fiducial.
-image::fiducial-symbol.svg[width=200px]
+{{% figure src="fiducial-symbol.svg" width="200px" caption="The schematic symbol for a fiducial." %}}
 
-=== Gas Discharge Tubes (GDT)
+### Gas Discharge Tubes (GDT)
 
 Recommended designator:
 
@@ -173,18 +151,14 @@ Recommended designator:
 
 Recommended schematic symbols(s):
 
-[.imagerow]
---
-.Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). 
-image::gdt-schematic-symbol-2-electrode.svg[width=250px, height=200px]
+<div style="display: flex;">
+{{% figure src="gdt-schematic-symbol-2-electrode.svg" width="250px" caption="Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). " %}}
+{{% figure src="gdt-schematic-symbol-3-electrode.svg" width="250px" caption="Schematic symbol and designator for a 3-electrode gas discharge tube (GDT). " %}}
+</div>
 
-.Schematic symbol and designator for a 3-electrode gas discharge tube (GDT). 
-image::gdt-schematic-symbol-3-electrode.svg[width=250px, height=200px]
---
+Read more about GDTs [here](/electronics/components/gas-discharge-tubes-gdts/).
 
-Read more about GDTs link:/electronics/components/gas-discharge-tubes-gdts/[here].
-
-=== Ground (GND, AGND, DGND)
+### Ground (GND, AGND, DGND)
 
 Sometimes `GND` is used for all ground points, and sometimes grounds are split based on noise boundaries such as `AGND` and `DGND` (this is common in high-frequency circuits).
 
@@ -194,27 +168,23 @@ Designator(s):
 * `AGND`: Specialised analogue ground.
 * `DGND`: Specialised digital ground.
 
-TIP: Ground designators are not usually shown on schematics next to the symbols, as they are obvious from the symbol alone and are not included in the BoM.
+{{% aside type="tip" %}}
+Ground designators are not usually shown on schematics next to the symbols, as they are obvious from the symbol alone and are not included in the BoM.
+{{% /aside %}}
 
 Schematic symbol(s):
 
-[.imagerow]
---
-.The schematic symbol for a signal (general) ground. 
-image::ground-symbol-signal.svg[width=250px, height=200px]
+<div style="display: flex;">
+{{% figure src="ground-symbol-signal.svg" width="250px" caption="The schematic symbol for a signal (general) ground. " %}}
+{{% figure src="ground-symbol-earth.svg" width="250px" caption="The schematic symbol for a earth ground. " %}}
+{{% figure src="ground-symbol-chassis.svg" width="250px" caption="The schematic symbol for a chassis ground. " %}}
+</div>
 
-.The schematic symbol for a earth ground. 
-image::ground-symbol-earth.svg[width=250px, height=200px]
-
-.The schematic symbol for a chassis ground. 
-image::ground-symbol-chassis.svg[width=250px, height=200px]
---
-
-=== Integrated Circuits (U)
+### Integrated Circuits (U)
 
 `U` is the designator for integrated circuits. ICs include microcontrollers, liner voltage regulators, op-amps, e.t.c.
 
-Why `U`? One theory is that `U` was the the designator for anything "Unspecified". It makes sense that when ICs first came into use that they would of been labelled as such. The name stuck, and now `U` is used for ICs (and no longer for anything "unspecified"). Another theory is that `U` stood for "Unrepairable"<<bib-ics>>.
+Why `U`? One theory is that `U` was the the designator for anything "Unspecified". It makes sense that when ICs first came into use that they would of been labelled as such. The name stuck, and now `U` is used for ICs (and no longer for anything "unspecified"). Another theory is that `U` stood for "Unrepairable"[^bib-ics].
 
 In older schematics you may also see `IC` or `Z` used for integrated circuits.
 
@@ -224,8 +194,7 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-.Recommended schematic symbol for an integrated circuit (IC).
-image::integrated-circuit-schematic-symbol-u1.png[width=200px]
+{{% figure src="integrated-circuit-schematic-symbol-u1.png" width="200px" caption="Recommended schematic symbol for an integrated circuit (IC)." %}}
 
 ### Jack (J)
 
@@ -283,7 +252,7 @@ Recommended designator(s):
 
 ### Resistors (R, VR)
 
-Sometimes you will see `LDR` for light-dependent resistors. For more info see the {{< link text="Resistors page" src="/electronics/components/resistors" >}}
+Sometimes you will see `LDR` for light-dependent resistors. For more info see the [Resistors page](/electronics/components/resistors).
 
 Recommended designator(s):
 
@@ -293,14 +262,10 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-[.imagerow]
---
-.The schematic symbol for a standard resistor.
-image::resistor-schematic-symbol-r1.png[width=250px, height=200px]
-
-.The schematic symbol for a variable resistor (potentiometer).
-image::variable-resistor-potentiometer-schematic-symbol.png[width=250px, height=200px]
---
+<div style="display: flex;">
+{{% figure src="resistor-schematic-symbol-r1.png" width="250px" caption="The schematic symbol for a standard resistor." %}}
+{{% figure src="variable-resistor-potentiometer-schematic-symbol.png" width="250px" caption="The schematic symbol for a variable resistor (potentiometer)." %}}
+</div>
 
 ### Switches (S, SW)
 
@@ -318,15 +283,14 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-.A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed.
-image::spark-gap-schematic-symbol-triangular-200um-no-bom.png[width=200px]
+{{% figure src="spark-gap-schematic-symbol-triangular-200um-no-bom.png" width="200px" caption="A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed." %}}
 
 ### Transformer (T)
 
 Designator(s):
 
 * `T` (recommended)
-* `TF` (<<bib-an-component-designators>>)
+* `TF` ([^bib-an-component-designators])
 
 ### Transistors (Q)
 
@@ -338,8 +302,7 @@ Designator(s):
 
 Recommended schematic symbol(s):
 
-.Schematic symbols for a variety of different transistor types. Showing the circle around the BJT or the body diode of the MOSFET is personal choice, however I do recommend showing the MOSFET body diode so you don't forget it's there when designing a circuit!
-image::transistor-symbols.svg[width=700px]
+{{% figure src="transistor-symbols.svg" width="700px" caption="Schematic symbols for a variety of different transistor types. Showing the circle around the BJT or the body diode of the MOSFET is personal choice, however I do recommend showing the MOSFET body diode so you don't forget it's there when designing a circuit!" %}}
 
 ### Test Point (TP)
 
@@ -367,10 +330,9 @@ Recommended designator(s):
 
 Recommended schematic symbols:
 
-.The schematic symbol for a crystal.
-image::crystal-schematic-symbol.png[width=200px]
+{{% figure src="crystal-schematic-symbol.png" width="200px" caption="The schematic symbol for a crystal." %}}
 
-=== Varistors (RV)
+### Varistors (RV)
 
 Designator(s):
 
@@ -378,8 +340,7 @@ Designator(s):
 
 Schematic symbols:
 
-.Schematic symbol for a varistor (e.g. MOV) (recommended).
-image::varistor-symbol-mov.svg[width=200px]
+{{% figure src="varistor-symbol-mov.svg" width="200px" caption="Schematic symbol for a varistor (e.g. MOV) (recommended)." %}}
 
 ## Regex
 
@@ -389,10 +350,9 @@ The regex pattern to match any valid component designator, which is one or more 
 ^[A-Z][A-Z]*[0-9][0-9]*$
 ```
 
-The above pattern also contains the start and end-of-line anchors `^` and `$`, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the link:/electronics/general/altium/altium-scripting-and-using-the-api[Altium Scripting page].
+The above pattern also contains the start and end-of-line anchors `^` and `$`, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api).
 
-[bibliography]
-== References
+## References
 
-* [[[bib-an-component-designators, 1]]]: RF Cafe (<publish date unknown>). _AN (Army / Navy) Component Designators & Designations_. RF Cafe. Retrieved 2021-07-06, from https://www.rfcafe.com/references/electrical/an-component-designators.htm
-* [[[bib-ics, 2]]]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.
+[^bib-an-component-designators]: RF Cafe. _AN (Army / Navy) Component Designators & Designations_. RF Cafe. Retrieved 2021-07-06, from https://www.rfcafe.com/references/electrical/an-component-designators.htm
+[^bib-ics]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.

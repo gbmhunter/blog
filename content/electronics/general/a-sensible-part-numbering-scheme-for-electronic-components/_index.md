@@ -27,8 +27,7 @@ Rules:
 
 Resistors use the following part number format:
 
-[source]
-----
+```text
 R0603-12K0-01P-01
 ||    |    |   |
 ||    |    |   Sequential number
@@ -48,7 +47,7 @@ R0603-12K0-01P-01
 |  e.g. 0603, 0805
 |
 Resistor
-----
+```
 
 WARNING: Resistors frequently come in milli-ohm and mega-ohms ranges, both of which start with m. We don't have the luxury of using lower-case m for milli and upper-case M for mega, as we want to keep the entire part number in upper case. Instead, use M as usual for mega-ohm resistors, and for milli-ohm resistors always add the M at the start of this section of the part number. This means we can't represent fractions of a milli-ohm, but that should be fine for 99.9% of use cases!
 
@@ -56,8 +55,7 @@ WARNING: Resistors frequently come in milli-ohm and mega-ohms ranges, both of wh
 
 Capacitors use the following part number format:
 
-[source]
-----
+```text
 CC0603-100N-050V-01
 |||    |    |    |
 |||    |    |    Sequential number
@@ -74,22 +72,20 @@ CC0603-100N-050V-01
 |  E: Electrolytic
 |  T: Tantalum
 Capacitor
-----
+```
 
 Some examples:
 
-[source]
-----
+```text
 CC0603-100N-050V-01: Cap, Ceramic, 0603, 100nF, 50F
 CT1206-010U-016V-01: Cap, Tantalum, 1206, 10uF, 16V
-----
+```
 
 ###  Inductors
 
 Inductors usually have two very similar current parameters, _rated current_ and _saturation current_. Unfortunately they do not come is the same standarized SMD packages that resistors and capacitors do, so we omit a package section from the part number. So we have the following part number format:
 
-[source]
-----
+```text
 L120U-002A-01
 ||    |    |
 ||    |    Sequential number
@@ -99,11 +95,10 @@ L120U-002A-01
 |Inductance
 |  120N: 120nF
 Inductor (L being commonly used as the designator prefix for an inductor)
-----
+```
 
 Some examples:
 
-[source]
-----
+```text
 L
-----
+```

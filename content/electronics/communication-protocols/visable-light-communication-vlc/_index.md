@@ -9,17 +9,19 @@ title: "Visible Light Communication (VLC)"
 type: "page"
 ---
 
-== Overview
+{{% warning-is-notes %}}
+
+## Overview
 
 _Visible light communication_ (VLC) is a family of communication protocols which use visible light (electromagnetic radiation between 400-800THz, or 375-780nm) to transfer information. Light sources such as LEDs are used to send information, and receivers such as photodiodes, phototransistors and arrays of such (eg. cameras) are used as receivers.
 
-== Modulation
+## Modulation
 
 * Amplitude Switch Keying (ASK)
 * Phase Switch Keying (PSK)
 * Frequency Switch Keying (FSK)
 * On-Off Keying
 
-== Li-Fi
+## Li-Fi
 
 Li-Fi is a VLC communication protocol which uses the ultraviolet, visible and infrared spectrum to transmit data at high speeds.
