@@ -9,4 +9,4 @@ title: "SC-76 Component Package"
 type: "page"
 ---
 
-SC-76 is a synonym for the link:../sod-323-component-package[SOD-323 component package].
+SC-76 is a synonym for the [SOD-323 component package](../sod-323-component-package).

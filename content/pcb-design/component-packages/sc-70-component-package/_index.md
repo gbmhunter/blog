@@ -9,4 +9,4 @@ title: "SC-70 Component Package"
 type: "page"
 ---
 
-SC-70 is a synonym for the SOT-323-3 variant of the link:../sot-323-component-package[SOT-323 component package].
+SC-70 is a synonym for the SOT-323-3 variant of the [SOT-323 component package](../sot-323-component-package).
