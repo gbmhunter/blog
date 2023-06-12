@@ -20,3 +20,7 @@ type: post
 * Added a new aside shortcode for Markdown and changed the styling of the asides (called admonitions in AsciiDoc) so that the title and icon are a top-bar rather than a side-bar (looks better when there is longer content in the aside).
 
 * Added info on the TO-220-7 and TO-220-7C variants of the TO-220 component package family.
+
+* Added a new page on the [TO-206 component package family](/pcb-design/component-packages/to-206-component-package/).
+
+* Fixed error where the `SOT-490` was incorrectly labelled as `SOD-490`.

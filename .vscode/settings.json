@@ -709,6 +709,7 @@
         "passlists",
         "PATHEXT",
         "pathlib",
+        "PBFREE",
         "pbss",
         "PCAN",
         "pcbcart",
