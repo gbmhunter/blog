@@ -10,7 +10,6 @@ type: page
 
 ## Overview
 
-++++
 <table >
 <tbody >
 <tr >
@@ -101,11 +100,9 @@ type: page
 </tr>
 </tbody>
 </table>
-++++
 
 ## Comments
 
 This a very common package for small-signal low-power through-hole diodes such as the 1N4148 and Zener diodes.
 
-.A photo of the DO-35 (DO-204AH) component package.
-image::do-35-do-204ah-component-package-photo.jpg[width=350px]
+{{% figure src="do-35-do-204ah-component-package-photo.jpg" width="350px" caption="A photo of the DO-35 (DO-204AH) component package." %}}

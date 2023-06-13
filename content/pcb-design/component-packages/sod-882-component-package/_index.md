@@ -1,0 +1,56 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2022-04-01
+draft: false
+lastmod: 2022-04-02
+tags: [ "component packages", "PCB design", "SOD-882", "DFN1006-2", "Nexperia", "NXP" ]
+title: "SOD-882 Component Package"
+type: "page"
+---
+
+## Overview
+
+`SOD-882` (Small-outline Diode 882) is a 2-lead SMD component package.
+
+{{% figure src="sod-882-component-package-photo-nexperia.png" width="300px" caption="" %}}
+
+Synonyms:
+
+* DFN1006-2 (NXP[^bib-nexperia-sod-882])
+
+Similar To:
+
+* [DFN](/pcb-design/component-packages/dfn-component-package/)
+* [SOT-883](/pcb-design/component-packages/sot-883-component-package/) (3 pins in the same sized package, used for transistors)
+
+Pitch: 0.65mm[^bib-nexperia-sod-882]
+
+Solderability: Reflow is most suitable.
+
+Thermal Resistance:
+
+* 500K/W (standard footprint)[^bib-nexperia-pzuxbl-ds]
+* 250K/W (standard footprint, but with 1cm2 pad for cathode)[^bib-nexperia-pzuxbl-ds]
+* 55K/W (thermal resistance from junction to solder point)[^bib-nexperia-pzuxbl-ds]
+
+Package Dimensions:
+
+* Length: 1.02mm (max)[^bib-nexperia-sod-882]
+* Width: 0.62mm (max)[^bib-nexperia-sod-882]
+* Height: 0.50mm (max)[^bib-nexperia-sod-882]
+
+Typical PCB Land Area: `\(1.17mm^2\)` (1.30x0.90mm)[^bib-nexperia-sod-882]
+
+Common Uses:
+
+* Zener diodes[^bib-nexperia-pzuxbl-ds]
+
+The `SOD-882` component package is quite different from many other SOD packages (such as `SOD-323`, `SOD-523`) in that it's pads are on the underside of the package rather than gull-wing or flat leads (when the `F` suffix is used). This makes the `SOD-882` very similar to a standard DFN package.
+
+It is also very similar to the [SOT-883 component package](/pcb-design/component-packages/sot-883-component-package/) (note: that's SOT, not SOD!). It has the same outside dimensions as the `SOT-883`, except with only 2 pads instead of 3. This presumably explains the transition from `SOD` to `SOT` -- the two pin package is used for diodes, whilst this three pin package is used for transistors.
+
+## References
+
+[^bib-nexperia-sod-882]:  Nexperia (2020, Jun 12). _SOD882: plastic, leadless ultra small package; 2 terminals; 0,65 mm pitch; 1 mm x 0.6 mm x 0.48 mm body (package information)_. Retrieved 2022-04-02, from https://assets.nexperia.com/documents/package-information/SOD882.pdf.
+[^bib-nexperia-pzuxbl-ds]:  Nexperia (2019, Nov 11). _PZUxBL series: Single Zener diodes in a SOD882 package (datasheet)_. Retrieved 2022-04-02, from https://assets.nexperia.com/documents/data-sheet/PZUXBL_SER.pdf.

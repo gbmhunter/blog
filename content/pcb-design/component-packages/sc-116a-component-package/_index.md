@@ -8,4 +8,4 @@ title: "SC-116A Component Package"
 type: "page"
 ---
 
-SC-116A is a synonym (JEITA) for the link:../sod-923-component-package[SOD-923 component package].
+_SC-116A_ is a synonym (JEITA) for the [SOD-923 component package](../sod-923-component-package).

@@ -11,4 +11,4 @@ type: "page"
 
 ## Overview
 
-The `SOT-162-1` package is a NXP synonym for the `SOIC-16W` (wide SOIC with 16-pins) package. See the link:../soic-component-package[SOIC Component Package page] for more information.
+The `SOT-162-1` package is a NXP synonym for the `SOIC-16W` (wide SOIC with 16-pins) package. See the [SOIC Component Package page](../soic-component-package) for more information.

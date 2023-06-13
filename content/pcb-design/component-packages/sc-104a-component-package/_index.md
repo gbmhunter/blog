@@ -9,4 +9,4 @@ title: "SC-104A Component Package"
 type: "page"
 ---
 
-`SC-104A` is a synonym (JEITA) for the link:../sod-723-component-package[SOD-723 component package].
+_SC-104A_ is a synonym (JEITA) for the [SOD-723 component package](../sod-723-component-package).

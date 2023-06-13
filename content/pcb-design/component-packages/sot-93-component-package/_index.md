@@ -11,4 +11,4 @@ type: "page"
 
 ## Overview
 
-The `SOT-93` package is a synonym for the `TO-218-3` (3 pin variant of the TO-218 package) package. See the link:../to-218-component-package[TO-218 Component Package page] for more information.
+The `SOT-93` package is a synonym for the `TO-218-3` (3 pin variant of the TO-218 package) package. See the [TO-218 Component Package page](../to-218-component-package) for more information.

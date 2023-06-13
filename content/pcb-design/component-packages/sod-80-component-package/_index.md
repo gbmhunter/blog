@@ -11,4 +11,4 @@ type: "page"
 
 ## Overview
 
-The `SOD-80` component package is a synonym for the MiniMELF package. See the link:../mini-melf-sod-80-do-213aa-component-package[MiniMELF Component Package page] for more info.
+The `SOD-80` component package is a synonym for the MiniMELF package. See the [MiniMELF Component Package page](../mini-melf-sod-80-do-213aa-component-package) for more info.

@@ -9,4 +9,4 @@ title: "MicroSiP Component Package"
 type: "page"
 ---
 
-MicroSiP is a synonym for the link:../usip-component-package[uSiP component package].
+MicroSiP is a synonym for the [uSiP component package](../usip-component-package).
