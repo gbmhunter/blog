@@ -41,27 +41,6 @@ markup:
     noHl: false
     style: monokai # rainbow_dash
     tabWidth: 4
-  asciidocext:
-    backend: html5
-    workingfoldercurrent: false
-    trace: true
-    verbose: true
-    attributes:
-      includedir: include
-      icons: image
-      icontype: svg
-      iconsdir: /assets/icons
-      experimental: true
-      source-highlighter: rouge
-      rouge-css: style
-      rouge-style: github
-      # The TOC and the number of levels for AsciiDoc pages is determined below
-      # rather than with the markup->tableOfContents section above.
-      toc: true
-      toclevels: 4
-      xrefstyle: short
-      stem: latexmath
-      sectnums: true
 related:
   threshold: 80
   includeNewer: true
@@ -87,7 +66,6 @@ security:
     - ^go$
     - ^npx$
     - ^postcss$
-    - ^asciidoctor$ # Added by gbmhunter to allow asciidoctor. Not included by default!
     osEnv:
     - (?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM|GEM_PATH)$
   funcs:
