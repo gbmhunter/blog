@@ -4,6 +4,7 @@ categories: [ Electronics, Circuit Design, Digital Logic ]
 date: 2012-08-06
 draft: false
 lastmod: 2023-04-29
+images: [ /electronics/circuit-design/digital-logic/gates/cmos-nand-gate-screenshot.png ]
 tags: [ electronics, circuit design, digital logic, gates, diode logic, DL, RTL, DTL, TTL, CMOS, binary counter, Karnaugh maps, NAND, NOR ]
 title: Gates
 type: page
