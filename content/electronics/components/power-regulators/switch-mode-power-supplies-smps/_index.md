@@ -5,7 +5,7 @@ date: 2015-03-24
 description: "Topologies (buck, boost, buck-boost, SEPIC, Ćuk), control methods, component selection, equations, operation modes, schematics, examples and more info on switch-mode power supplies."
 draft: false
 images: [ "/electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png" ]
-lastmod: 2021-08-19
+lastmod: 2023-06-18
 tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode", "SEPIC", "Cuk", "Ćuk" ]
 title: "Switch Mode Power Supplies (SMPS)"
 type: "page"
@@ -13,14 +13,18 @@ type: "page"
 
 ## Overview
 
-_Switch-mode power supplies_ (SMPS) are power conversion circuits that **efficiently convert input voltages/currents (power) into different output voltages/currents**. This page only looks at non-isolated SMPSs, i.e. topologies that don't use a transformer. For info on isolated SMPS regulator designs, see the [Isolated Switch Mode Power Supplies page](/electronics/components/power-regulators/isolated-switch-mode-power-supplies/). SMPS can either:
+_Switch-mode power supplies_ (SMPS) are power conversion circuits that efficiently convert input voltages/currents (power) into different output voltages/currents by **switching currents through inductors and capacitors**.
 
-* Decrease the voltage ([Buck Converters](buck-converters/))
-* Increase the voltage ([Boost Converters](boost-converters/))
-* Increase or decrease the voltage (buck-boost, [floating buck-boost](floating-buck-boost-converters/), [SEPIC](sepics/), Ćuk Converters)
-* Increase or decrease AND invert the voltage ([^Inverting Buck-Boost Converters, inverting buck-boost converter])
+There are many child pages covering the various SMPS topologies. If you want to:
+
+* Decrease the voltage, see the [Buck Converters page](buck-converters/)
+* Increase the voltage, see the [Boost Converters page](boost-converters/)
+* Increase or decrease the voltage, see the [Floating Buck-Boost page](floating-buck-boost-converters/), or [SEPIC page](sepics/)
+* Increase or decrease AND invert the voltage, see the [Inverting Buck-Boost Converters page](inverting-buck-boost-converters/)
 
 Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, **SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor** (and are not limited to just producing lower output voltages, they can produce higher output voltages also).
+
+If you want to learn about the different SMPS control methodologies, e.g. voltage mode control or current mode control, see the [SMPS Control Methodologies page](control-methodologies/)
 
 ## SMPS Modes Of Operation
 
