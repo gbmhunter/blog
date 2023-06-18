@@ -1,0 +1,47 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components, Power Regulators ]
+date: 2023-06-18
+description: 
+draft: false
+images: [ ]
+lastmod: 2023-06-18
+tags: [ electronics, components, power regulators, SMPS, voltage mode control, current mode control, peak current mode control, buck converter, feedback, poles, zeroes ]
+title: Switching Control Methodologies
+type: page
+---
+
+## Overview
+
+Switching power supplies (PSUs) generally have to have some sort of feedback-based control loop to regulate the output to the desired voltage (or current). This is called the _control methodology_. There are a few important types of control methodologies that we will cover on this page.
+
+## Voltage Mode Control
+
+_Voltage mode control_ uses a scaled version of the output voltage (e.g. resistor divider) as the feedback.
+
+One big disadvantage of voltage mode control is that the SMPS can only respond to changes once it senses a error in the output voltage and propagates through the entire feedback path. This can lead an unacceptably slow response in systems with fast transients[^ti-sboa187e-current-mode-control].
+
+Another problem with voltage mode control is that the feedback compensation is relatively complex, there are two poles that need addressing. The feedback compensation is also dependent on the input voltage[^ti-sboa187e-current-mode-control].
+
+## Current Mode Control
+
+_Current mode control_ attempts to improve on some of voltage mode controls shortcomings by adding a second, "inner" and fast feedback loop by monitoring the inductor current. The outer feedback loop monitoring the output voltage (like in voltage mode control) is still present (we still need to know what our target is), but rather than this controlling the switch, the output voltage feedback is passed to the current feedback, and the output of the current feedback is what controls the switch.
+
+### Peak Current Mode Control
+
+_Peak Current Mode Control_ (PCMC) is a subset of current mode control which senses the peak current flowing through the inductor.
+
+The following diagram shows the basic components of peak current mode control for a buck converter:
+
+{{% figure src="peak-current-mode-control-diagram.webp" width="900px" caption="Block diagram showing the basics of peak current mode control for a buck converter." %}}
+
+Many off-the-shelf ICs will contain both the switch and the current-sensing directly in the IC, removing the need for a separate `\(R_{SENSE}\)` and associated differential amplifier to measure the current.
+
+## Further Reading
+
+The YouTube video [Introduction to Peak Current Mode Control by the University of Colorado Bolder](https://www.youtube.com/watch?v=3tTSMDEyVKc) is a great visual explanation of how current-mode control works in SMPS[^university-of-colorado-bolder-intro-to-peak-current-mode-control].
+
+## References
+
+[^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Application Brief - Current Mode Control in Switching Power Supplies_. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.
+[^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control (video)_. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.

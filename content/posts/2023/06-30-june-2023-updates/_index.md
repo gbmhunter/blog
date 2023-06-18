@@ -24,3 +24,5 @@ type: post
 * Added a new page on the [TO-206 component package family](/pcb-design/component-packages/to-206-component-package/).
 
 * Fixed error where the `SOT-490` was incorrectly labelled as `SOD-490`.
+
+* Added a new page on [Switching PSU Control Methodologies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/control-methodologies/).

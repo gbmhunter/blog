@@ -242,6 +242,14 @@ This is another footnote[^foot-2].
 
 {{% link src="relative-page" text="Relative link." %}}
 
+## Lists
+
+* Here
+
+* is a list
+
+* of a few elements.
+
 ## Other
 
 References, authors, related content and tags sections should be below (in that order).

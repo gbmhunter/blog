@@ -121,7 +121,8 @@ span.error {
         li {
             // Add some top and bottom padding to list elements in content so they don't
             // look too crammed together
-            padding: 0.3em 0px;
+            // 2023-06-18: Got rid of padding, was making lists take up too much screen space
+            // padding: 0.3em 0px;
         }
     }
     @media (min-width: 800px) {
