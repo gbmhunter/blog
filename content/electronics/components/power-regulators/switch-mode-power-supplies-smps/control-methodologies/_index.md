@@ -33,7 +33,10 @@ Another problem with voltage mode control is that the feedback compensation is r
 
 _Current mode control_ attempts to improve on some of voltage mode controls shortcomings by adding a second, "inner" and fast feedback loop by monitoring the inductor current. The outer feedback loop monitoring the output voltage (like in voltage mode control) is still present (we still need to know what our target is), but rather than this controlling the switch, the output voltage feedback is passed to the current feedback, and the output of the current feedback is what controls the switch.
 
-Because current mode control measures the current by using a small-valued current-sense resistor (and therefore also a small voltage signal, this is to keep power dissipation low), it high susceptibility to noise and voltage transients[^ti-sboa187e-current-mode-control].
+These two feedback systems make up an _inner_ and _outer_ feedback loop:
+
+* Inner loop: Sets the ON time of the switching cycle based on the sensed inductor/switch current.
+* Outer loop: Sets the control input of the inner loop based on the output voltage.
 
 ### Peak Current Mode Control
 
@@ -51,6 +54,8 @@ The following diagram shows the basic components of peak current mode control fo
 It's important to notice that the left-hand "op-amp" symbol is an analogue amplifier (output is equal to the difference in the inputs, multiplied by a gain) but the right-hand "op-amp" symbol is a comparator (comparator output is either high or low depending on the sign of the difference in the inputs).
 {{% /aside %}}
 
+One benefit from controlling the peak current is that we can easily limit the maximum current through the inductor by limiting the maximum value that the control signal `\(i_C(t)\)` can ever be. We might want to do this to make sure the inductor current never exceeds it's maximum rating (usually the minimum of it's [saturation current](/electronics/components/inductors/#saturation-current) or [rated current](/electronics/components/inductors/#rated-current)).
+
 **How Does This Circuit Work?**
 
 1. The feedback voltage from the output resistor divider is compared to `\(V_{REF}\)`. The difference is amplified by the voltage feedback op-amp and fed into the comparator. This is compared with a voltage proportional to the inductor current.
@@ -63,6 +68,14 @@ Bootstrap/MOSFET drive circuitry is usually needed between the SR latch and the 
 1. If a N-channel MOSFET is used, a charge-pump is needed to provided a voltage rail above `\(V_{IN}\)` to drive the gate when turning it on.
 
 Many off-the-shelf ICs will contain both the switch and the current-sensing directly in the IC, removing the need for a separate `\(R_{SENSE}\)` and associated differential amplifier to measure the current.
+
+#### Noise Issues and Blanking Intervals
+
+Because the switching action causes noise, and the current-measuring voltage signal is usually low (because low-valued resistors are used to keep power dissipation down), current mode control has a high susceptibility to noise and voltage transients[^ti-sboa187e-current-mode-control] [^university-of-colorado-bolder-intro-to-peak-current-mode-control]. The switching action can cause ringing in the voltage measurement of the current at the point of turn on. This ringing can cause the measured signal to go over the control threshold and prematurely turn the switch OFF, as shown in the below diagram:
+
+{{% figure src="peak-current-mode-control-noise.webp" width="500px" caption="Diagram showing how switching noise can prematurely turn the switch OFF, and how a blanking interval can be used to improve the noise immunity." %}}
+
+One way to compensate for this is to add in a _blanking interval_. This is a short interval that begins at switch turn-on in which the output of the current feedback comparator is ignored[^university-of-colorado-bolder-intro-to-peak-current-mode-control]. This improves the current mode controls noise immunity.
 
 ## Further Reading
 
