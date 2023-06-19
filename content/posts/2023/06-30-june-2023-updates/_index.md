@@ -26,3 +26,5 @@ type: post
 * Fixed error where the `SOT-490` was incorrectly labelled as `SOD-490`.
 
 * Added a new page on [Switching PSU Control Methodologies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/control-methodologies/).
+
+* Added a new page on [Mid-Chip Solder Balls](/pcb-design/mid-chip-solder-balls/).

@@ -1,9 +1,11 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "PCB Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ PCB Design ]
 date: 2015-11-29
+description: Info on "mouse bites" which are used when panellizing PCBs. 
 draft: false
-tags: [ "PCB design", "mouse bites", "drill", "holes", "schematic symbols" ]
+lastmod: 2023-06-19
+tags: [ PCB design, mouse bites, drill, holes, schematic symbols ]
 title: Mouse Bites
 type: page
 ---
