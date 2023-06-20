@@ -15,15 +15,32 @@ type: page
 
 ## Overview
 
-Switching power supplies (PSUs) generally have to have some sort of feedback-based control loop to regulate the output to the desired voltage (or current). This is called the _control methodology_. There are a few important types of control methodologies that we will cover on this page.
+[Switch-mode power supplies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (SMPS) generally have to have some sort of feedback-based control loop to regulate the output to the desired voltage (or current). This is called the _control methodology_. There are a few important types of control methodologies that we will cover on this page.
 
 {{% aside type="info" %}}
-Although most of the examples on this page use a buck converter, the control methodologies are similarly applicable to other topologies such as boost converters.
+This page assumes a working knowledge of a few basic switch-mode power supplies such as [buck converters](/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/) and [boost converters](/electronics/components/power-regulators/switch-mode-power-supplies-smps/boost-converters/). If you feel a little lost, please read the linked pages first.
 {{% /aside %}}
 
 ## Voltage Mode Control
 
-_Voltage mode control_ (a.k.a. duty-cycle control[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]) uses a scaled version of the output voltage (e.g. resistor divider) as the feedback.
+_Voltage mode control_ (a.k.a. duty-cycle control[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]) uses the difference between the actual and desired output voltage to control the average voltage applied across the inductor (done by modifying the duty cycle). Due to it's simplicity, it was the first methodology used to control SMPSs[^microchip-classic-analog-smps-control-techniques].
+
+{{% figure src="voltage-mode-control-diagram.webp" width="700px" caption="Diagram showing the basic (simplified) feedback circuitry that makes up voltage mode control. No gain resistors or compensation shown." %}}
+
+{{% aside type="info" %}}
+Although most of the examples on this page use a [buck converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/), the control methodologies are similarly applicable to other topologies such as [boost converters](/electronics/components/power-regulators/switch-mode-power-supplies-smps/boost-converters/).
+{{% /aside %}}
+
+**Advantages of voltage mode control:**
+
+* Simple feedback componentry.
+* Resistant to noise.
+
+**Disadvantages of voltage mode control:**
+
+* Slow to respond to load changes.
+* Slow to respond to input voltage changes.
+* No built-in current limiting.
 
 One big disadvantage of voltage mode control is that the SMPS can only respond to changes once it senses a error in the output voltage and propagates through the entire feedback path. This can lead an unacceptably slow response in systems with fast transients[^ti-sboa187e-current-mode-control].
 
@@ -31,16 +48,24 @@ Another problem with voltage mode control is that the feedback compensation is r
 
 ## Current Mode Control
 
-_Current mode control_ (a.k.a. _current-programmed mode_, _current-injected control_[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]) was introduced to the power electronics community in the early 1980s[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter] and attempts to improve on some of voltage mode controls shortcomings by adding a second, "inner" and fast feedback loop by monitoring the inductor current. The outer feedback loop monitoring the output voltage (like in voltage mode control) is still present (we still need to know what our target is), but rather than this controlling the switch, the output voltage feedback is passed to the current feedback, and the output of the current feedback is what controls the switch.
+_Current mode control_ (a.k.a. _current-programmed mode_, _current-injected control_[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]) uses the difference between the actual and desired output voltage to control the current through the inductor, usually the peak current (called _peak current mode control_).
 
-These two feedback systems make up an _inner_ and _outer_ feedback loop:
+Current mode control was introduced to the power electronics community in the early 1980s[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter] and attempts to improve on some of voltage mode controls shortcomings by adding a second, "inner" and fast feedback loop by monitoring the inductor current. The outer feedback loop monitoring the output voltage (like in voltage mode control) is still present (we still need to know what our target is), but rather than this controlling the switch, the output voltage feedback is passed to the current feedback, and the output of the current feedback is what controls the switch.
 
-* Inner loop: Sets the ON time of the switching cycle based on the sensed inductor/switch current.
-* Outer loop: Sets the control input of the inner loop based on the output voltage.
+**Advantages of current mode control:**
+
+* Fast response time due to having a single pole (voltage mode control has two poles).
+* Responds immediately to input voltage changes.
+* Built-in cycle-by-cycle current limiting.
+
+**Disadvantages of current mode control:**
+
+* More complex feedback circuitry.
+* More sensitive to noise.
 
 ### Peak Current Mode Control
 
-_Peak Current Mode Control_ (PCMC) is a specific type of current mode control which **senses the peak current flowing through the inductor**. The peak current through the inductor (and consequentially, the switch) is limited by a control signal `\(i_C (t)\)` which in turn is generated by amplifying the difference between the output voltage feedback and the reference voltage `\(V_{REF}\)`.
+_Peak Current Mode Control_ (PCMC) is a specific type of current mode control which **senses the peak current flowing through the inductor**. The peak current through the inductor (and consequentially, the switch) is limited by a control signal `\(v_C (t)\)` which in turn is generated by amplifying the difference between the output voltage feedback and the reference voltage `\(V_{REF}\)`.
 
 The below diagram shows what this looks like during continuous conduction:
 
@@ -69,11 +94,11 @@ Bootstrap/MOSFET drive circuitry is usually needed between the SR latch and the 
 
 Many off-the-shelf ICs will contain both the switch and the current-sensing directly in the IC, removing the need for a separate `\(R_{SENSE}\)` and associated differential amplifier to measure the current.
 
-Peak current-mode control can experience subharmonic oscillation. Ramp compensation is usually added to address this issue[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter].
+Peak current-mode control can experience subharmonic (a.k.a. sub-cycle[^microchip-classic-analog-smps-control-techniques]) oscillation when the duty cycle increases over 50%. Slope compensation (ramp compensation) is usually added to address this issue[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]. Slope compensation decreases the peak current limit as the duty cycle increases, with the aim of maintaining the same average current with increasing duty cycles[^microchip-classic-analog-smps-control-techniques].
 
 #### Noise Issues and Blanking Intervals
 
-Because the switching action causes noise, and the current-measuring voltage signal is usually low (because low-valued resistors are used to keep power dissipation down), current mode control has a high susceptibility to noise and voltage transients[^ti-sboa187e-current-mode-control] [^university-of-colorado-bolder-intro-to-peak-current-mode-control]. The switching action can cause ringing in the voltage measurement of the current at the point of turn on. This ringing can cause the measured signal to go over the control threshold and prematurely turn the switch OFF, as shown in the below diagram:
+Because the switching action causes noise, and the current-measuring voltage signal is usually low (because low-valued resistors (`\(10{-}200m\Omega\)`) are used to keep power dissipation down), current mode control has a high susceptibility to noise and voltage transients[^ti-sboa187e-current-mode-control] [^university-of-colorado-bolder-intro-to-peak-current-mode-control]. The switching action can cause ringing in the voltage measurement of the current at the point of turn on. This ringing can cause the measured signal to go over the control threshold and prematurely turn the switch OFF, as shown in the below diagram:
 
 {{% figure src="peak-current-mode-control-noise.webp" width="500px" caption="Diagram showing how switching noise can prematurely turn the switch OFF, and how a blanking interval can be used to improve the noise immunity." %}}
 
@@ -87,9 +112,15 @@ The YouTube video [Introduction to Peak Current Mode Control by the University o
 
 If you want to get right into the control theory of current-mode control, the [Texas Instruments Understanding and Applying Current-Mode Control Theory](https://www.ti.com/lit/an/snva555/snva555.pdf) is a recommended read[^ti-snva555-current-mode-control-theory].
 
+Average current mode control (as opposed to the more common peak mode control) is explained in depth in [Unitrode's Application Note "Average Current Mode Control of Switching Power Supplies" by Lloyd Dixon](https://www.ti.com/lit/an/slua079/slua079.pdf)[^unitrode-average-current-mode-control-of-smps].
+
+{{% figure src="average-current-mode-control-screenshot.png" width="500px" caption="Screenshot from Unitrode's Application Note \"Average Current Mode Control of Switching Power Supplies\" by Lloyd Dixon[^unitrode-average-current-mode-control-of-smps]." %}}
+
 ## References
 
-[^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Application Brief - Current Mode Control in Switching Power Supplies_. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.
-[^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control (video)_. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.
+[^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Current Mode Control in Switching Power Supplies_ [Application Brief]. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.
+[^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control_ [Video]. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.
 [^ti-snva555-current-mode-control-theory]: Texas Instruments (2007, Oct 31). _Understanding and Applying Current-Mode Control Theory_. Retrieved 2023-06-18, from https://www.ti.com/lit/an/snva555/snva555.pdf.
-[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]: SW Lee (2014, Mar). _SLVA636 - Application Report - Practical Feedback Loop Analysis for Current-Mode Boost Converter_. Texas Instruments. Retrieved 2023-06-19, from https://www.ti.com/lit/an/slva636/slva636.pdf.
+[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]: SW Lee (2014, Mar). _SLVA636 - Practical Feedback Loop Analysis for Current-Mode Boost Converter_ [Application Report]. Texas Instruments. Retrieved 2023-06-19, from https://www.ti.com/lit/an/slva636/slva636.pdf.
+[^microchip-classic-analog-smps-control-techniques]: Mirochip. _Introduction to SMPS Control Techniques_ [Webinar as PDF]. Retrieved 2023-06-20, from https://www.microchip.com/stellent/groups/sitecomm_sg/documents/training_tutorials/en527885.pdf.
+[^unitrode-average-current-mode-control-of-smps]: Lloyd Dixon. _Average Current Mode Control of Switching Power Supplies_ [Application Note]. Retrieved 2023-06-20, from https://www.ti.com/lit/an/slua079/slua079.pdf.

@@ -254,4 +254,10 @@ This is another footnote[^foot-2].
 
 References, authors, related content and tags sections should be below (in that order).
 
+* Application note[^ti-sboa187e-current-mode-control].
+* Video reference[^university-of-colorado-bolder-intro-to-peak-current-mode-control].
+
 ## References
+
+[^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control_ [Video]. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.
+[^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Current Mode Control in Switching Power Supplies_ [Application Note]. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.
