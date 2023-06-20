@@ -13,7 +13,7 @@ type: page
 
 ## Overview
 
-Buck converters use a switching element, inductor and capacitor to convert an input voltage into a **lower** output voltage. It is a type of _switch-mode power supply_ (SMPS).
+_Buck converters_ are a particular topology of [switch-mode power supply](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (SMPSs) that use a switching element, diode (or second switch), inductor and capacitor to convert an input voltage into a **lower** output voltage.
 
 {{% figure src="buck-converter-basic-schematic.svg" width="600" caption="The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
 
@@ -41,12 +41,12 @@ where:</br>
 </p>
 
 {{% note %}}
-The simple equation showing `\(V_{OUT}\)` is only dependent on `\(V_{IN}\)` and `\(D\)` is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor). In the real world this is never true, however this equation is still a good first approximation.
+The simple equation showing `\(V_{OUT}\)` is only dependent on `\(V_{IN}\)` and `\(D\)` is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor) AND the inductor is in continuous conduction (i.e. current never drops to 0). In the real world there are always parasitics, however this equation is still a good first approximation to help understand how it works.
 {{% /note %}}
 
 The following steps show a way to **intuitively understand how a buck converter produces a lower output voltage** (and derive Eq `\(\ref{eq:vout-d-vin}\)`):
 
-1. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because `\(V = L \frac{di}{dt}\)` (the basic equation for an inductor), **the current in the inductor would increase without bound**. 
+1. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because `\(V = L \frac{di}{dt}\)` (the basic equation for an inductor), **the current in the inductor would increase or decrease without bound (i.e. go to infinity)**. 
 1. When the switch is closed (`\(t_{on}\)`), the voltage across `\(L1\)` is `\(V_{IN} - V_{OUT}\)` during this phase.
 1. When the switch is open (`\(t_{off}\)`), `\(D1\)` is forward biased, and if we assume it's a perfect diode (no forward voltage drop), the voltage across `\(L1\)` is `\(-V_{OUT}\)` during this phase.
 1. The average (or integral) over the entire switching cycle has to be 0, so:
@@ -74,9 +74,13 @@ When the switch opens, the input is disconnected. Because the inductor doesn't l
 
 ## Control Methods
 
-99% of the time, you want a fixed (regulated) and stable output voltage, which does not depend on the input voltage and one which does not start to sag as you draw more current. To achieve this, it is insufficient to drive the switch at a fixed duty cycle. More complex control mechanisms with feedback are required. The most popular two are _voltage-mode control_ and _current-mode control_, which are explained in the following sections.
+99% of the time, you want a fixed (regulated) and stable output voltage, which does not depend on the input voltage and one which does not start to sag as you draw more current. To achieve this, it is insufficient to drive the switch at a fixed duty cycle. More complex control mechanisms with feedback are required. The most popular two are _voltage-mode control_ and _current-mode control_, which are explained in the following section.
 
-### Voltage-Mode Control (Constant Frequency)
+{{% aside type="tip" %}}
+See the [SMPS Control Methodologies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/control-methodologies/) for general information on these control methods that is not specific to buck converters.
+{{% /aside %}}
+
+### Voltage Mode Control
 
 _Voltage-mode (VM) control_ is the simplest control method, originating in approx. the 1970's[^bib-microsemi-v-i-mode]. It works by taking a proportion of the output voltage and comparing it with a fixed reference voltage. The difference between these two is called the error voltage and is amplified by an _error amplifier_. This error voltage is then fed into a comparator, with the other input being a sawtooth signal (triangular waveform). The switch is turned on at the start of the sawtooth period, and turned off when the sawtooth exceeds the error voltage. An SR latch is normally used to prevent multiple triggers per cycle due to noise. Voltage-mode control is named as such because the duty cycle is proportional to the control voltage.
 
@@ -112,20 +116,24 @@ There are two ways on controlling the switch:
 
 Hysteretic control has the benefit of being extremely fast to respond to transient current changes, since it is directly monitoring the output voltage and there is no error amplifier. It also does not need any compensation. These advantages make it suitable for powering the rapidly changing current demands of high power CPUs and FPGAs.  
 
-## Inductor Selection
+## Calculating Buck Converter Component Values
 
-You can use the following equations to select the main inductor for a buck converter.
+### Inductor Selection
 
-First, calculate the maximum average inductor current using:
+You can use the following equations to select the inductor for a buck converter.
+
+Since the inductor is in series with the input, the average inductor current is also equal to the average input current. So we can use the conversation of energy (energy in = energy out) to find the average inductor current using:
 
 <p>\begin{align}
-I_L = I_{OUT} \frac{V_{OUT}}{0.8 V_{IN}}
+I_L = I_{OUT} \frac{V_{OUT}}{\eta V_{IN}}
 \end{align}</p>
 
 <p class="centered">
-where: <br/>
-\(V_{IN}\) = the input voltage to the buck regulator</br>
-\(V_{OUT}\) = the output voltage of the buck regulator</br>
+where:<br/>
+\(V_{IN}\) is the input voltage to the buck regulator<br/>
+\(V_{OUT}\) is the output voltage of the buck regulator<br/>
+\(I_{OUT}\) is the output current of the buck regulator (pick your maximum)<br/>
+\(\eta\) is the efficiency, typically \(0.9\) (i.e. 90%)[^ti-slva477b-basic-calc-buck-power-stage]<br/>
 </p>
 
 Then, calculate the value of inductance required with:
@@ -140,6 +148,16 @@ where:</br>
 `\(f\)` = the switching frequency</br>
 and everything else as mentioned previously</br>
 </p>
+
+The ripple current is typically chosen to be 20-40% of the average current[^ti-slva477b-basic-calc-buck-power-stage]. If we choose 30%, then we can calculate `\(\Delta I_L\)` with:
+
+<p>\begin{align}
+\Delta I_L = 0.3I_L
+\end{align}</p>
+
+{{% aside type="warning" %}}
+Aside from making sure the inductor you pick has at least the inductance calculated above, you also want to make sure that the peak inductor current is less than the inductor's _saturation current_ (otherwise it will stop storing energy in it's magnetic field and stop behaving like an inductor), and the average current is less than the inductor's _rated current_ (otherwise it will overheat).
+{{% /aside %}}
 
 ## Capacitor Selection
 
@@ -199,3 +217,8 @@ Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter
 Notice how most of the volume on the module is taken up the chip inductor (the big brown thing that dominates most of the image). The dimensions of the package are shown in the diagram below.
 
 {{% figure src="microsip-component-package-dimensions.png" width="500" caption="The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf." %}}
+
+## References
+
+[^bib-microsemi-v-i-mode]: Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control.
+[^ti-slva477b-basic-calc-buck-power-stage]: Brigitte Hauke (2015, Aug). _Basic Calculation of a Buck Converter's Power Stage_ [Application Report]. Texas Instruments. Retrieved 2023-06-20, from https://www.ti.com/lit/an/slva477b/slva477b.pdf.
