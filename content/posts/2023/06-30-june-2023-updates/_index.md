@@ -28,3 +28,5 @@ type: post
 * Added a new page on [Switching PSU Control Methodologies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/control-methodologies/).
 
 * Added a new page on [Mid-Chip Solder Balls](/pcb-design/mid-chip-solder-balls/).
+
+* Added info on feedforward to the [PID Control page](/programming/general/pid-control/).
