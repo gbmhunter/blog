@@ -4,50 +4,83 @@ categories: [ Programming ]
 date: 2012-10-01
 description: A tutorial on PID control including equations, examples and simulations.
 draft: false
-lastmod: 2023-06-22
-tags: [ programming, control theory, PID, systems, controllers, setpoints, integral windup, simulation, NinjaCalc, derivative kick, PV, CV, SP, process value, control value, feedforward ]
+lastmod: 2023-06-23
+tags: [ programming, control theory, PID, systems, controllers, setpoints, integral windup, simulation, NinjaCalc, derivative kick, PV, CV, SP, process value, control value, feedforward, parallel form, standard form, ISA ]
 title: PID Control
 type: page
 ---
 
 ## Overview
 
-_PID control_ (a.k.a. three-term control[^wikipedia-pid]) is a control technique using feedback that is very common in industrial applications. It is a good technique to use when you have a desired set-point for a system to be in, and are able to control this with one variable. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to decide on a output to the control system.
+_PID control_ (a.k.a. three-term control[^wikipedia-pid]) is a control technique using feedback that is very common in industrial applications. It is a good technique to use when you have a desired set-point for a process (system) to be in, and are able to control this with one variable. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to calculate the output needed to control the process.
 
-## How PID Works
+There are a few different PID topologies, including:
 
-PID is a industry-standard way of controlling a system, given a single process variable `PV` that you want controlled (e.g. temperature of the heater) and a single variable you can adjust called the control variable `CV` (e.g. duty cycle of heater).
+* **Parallel form:** Also known as ideal form or non-interacting. Easiest to understand, common in academia.
+* **Standard form:** Coefficients have better intuitive meaning attached to them (and hence easier to tune), topology is common in industry.
 
-A PID controller compares a set-point (`SP`) (decided on by the user, e.g. this may the temperature you want the room to be at). The `SP` has the same units as the `PV`. It then compares this with the measured system variable (the actual temperature of the room). The difference between the set-point and the measured variable is called the _error_. 
+These topologies are described in more detail in the following sections.
 
-This error is fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks of the PID controller. These blocks act on the error in different ways, and their output is summed together to generate the `CV`. The way these P, I and D blocks work is explained below.
+## Common Terminology
 
-{{% figure src="pid-controller-diagram-process-error-setpoint-measured-value.webp" width="900px" caption="A block diagram of a PID controller." %}}
+No matter the topology, the goal of a PID controller is to control a process, given a single, measured process value (`\(y(t)\)` or `PV`) that you want controlled (e.g. temperature of the heater) and a single variable you can adjust called the control value (`\(u(t)\)` or `CV`) (e.g. voltage you can apply to the heaters coils).
 
-## The Maths
+The state you want to get the process to is called the set-point (`\(r(t)\)` or `SP`). The set-point has the same units as the process value. The units of the control value is whatever is used to control the process.
 
-The standard PID equation is:
-
-<p>\begin{align}
-output = K_{p}e(t) + K_{i}\int e(t) \mathrm{d} x + K_{d}\frac{d}{dt}e(t)
-\end{align}</p>
-
-The error is always defined as the `setpoint value - process value` `\(SP - PV\)`, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
+The error (`\(e(t)\)`) is always defined as the set-point minus the process value, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
 
 <p>\begin{align}
-e(t) = SP - PV
+e(t) = r(t) - y(t)
 \end{align}</p>
 
 <p class="centered">
 	where:<br>
-	\(e(t)\) = error<br>
-	\(SP\) = setpoint value<br>
-	\(PV\) = process value<br>
+  \(e(t)\) is the error<br/>
+  \(r(t)\) is the set-point (SP)<br/>
+	\(y(t)\) is the process value (PV)<br/>
+  and everything else as previously mentioned<br/>
 </p>
 
-This PID equation is in the continuous time domain. However, most PID control loops are implemented digitally. The discrete equation is written:
+{{% aside type="example" %}}
+Imagine a simple process in where you want to control the temperature of a room of your house by using an electric heater. You can vary the voltage to the heaters coils to vary the amount of thermal energy added to the room. You also have a thermometer to read the current room temperature. You want to keep the temperature of the room at a comfortable `\(22^{\circ}C\)`. The process variable `\(y(t)\)` is the measured temperature of the room from the thermometer. The set point `\(r(t)\)` is the desired `\(22^{\circ}C\)`. The control value `\(u\)` is the voltage applied to the heating coils.
 
-<p>$$output = K_{p}e_{k} + K_{i}T\sum\limits_{i=0}^k e_{k} + K_{d}\frac{(e_{k} - e_{k-1})}{T}$$</p>
+The error is `\(22^{\circ}C\)` minus whatever the current measured temperature of the room is.
+{{% /aside %}}
+
+## PID in Parallel Form
+
+Inside a PID controller in _parallel form_ (a.k.a. _ideal form_, _non-interacting_[^wikipedia-pid]), the error is separately fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks of the PID controller. These blocks act on the error in different ways, and their output is summed together to generate the control value. The way these P, I and D blocks work is explained below.
+
+This is called the _parallel form_ because if you draw it as a block diagram, the proportional, integral and derivative terms all act in parallel to one another. The parallel form is easy to understand, but not so intuitive to tune[^opticontrols-pid-controller-algorithms]. Many academic related material will only mention this parallel form.
+
+{{% figure src="pid-controller-diagram-process-error-setpoint-measured-value.webp" width="900px" caption="A block diagram of a PID controller." %}}
+
+The governing equation of a PID controller in _parallel form_ is[^wikipedia-pid] [^opticontrols-pid-controller-algorithms]:
+
+<p>\begin{align}
+u(t) = K_{p}e(t) + K_{i}\int e(\tau) d\tau + K_{d}\frac{d}{dt}e(t)
+\end{align}</p>
+
+<p class="centered">
+	where:<br>
+  \(u(t)\) is the calculated control value (CV)<br/>
+	\(e(t)\) is the error<br/>
+  \(t\) is the current time<br/>
+  \(\tau\) is the variable of integration (takes on values from time=0 to time=t)<br/>
+	\(K_p\) is the proportional gain<br/>
+	\(K_i\) is the integral gain<br/>
+	\(K_d\) is the derivative gain<br/>
+</p>
+
+{{% aside type="tip" %}}
+Notice that standard `\(t\)` is used for the current time, and `\(\tau\)` (tau) is used for the integration.
+{{% /aside %}}
+
+This PID equation is in the continuous time domain. However, nowadays most PID control loops are implemented digitally. The discrete equation is written:
+
+<p>\begin{align}
+u(t) = K_{p}e_{k} + K_{i}T\sum\limits_{i=0}^k e_{k} + K_{d}\frac{(e_{k} - e_{k-1})}{T}
+\end{align}</p>
 
 <p class="centered">
 	where:<br>
@@ -55,6 +88,37 @@ This PID equation is in the continuous time domain. However, most PID control lo
 </p>
 
 This equation is suitable for implementing in code. There also exists the Z transformation of the equation, but this obscures the physical meaning of the parameters used in the controller.
+
+## PID in Standard Form
+
+A PID controller in _standard form_ (a.k.a. _ISA standard form_[^control-global-pid-form-trick-or-treat-tips] [^control-engineering-understanding-pid-control-and-loop-tuning]) is more common in industry than in parallel form[^wilderness-labs-standard-pid-algorithm]. The factor `\(K_p\)` is not just applied to the proportional term but instead brought out and applied at the end to all three factors (so it can be thought of as a scaling factor). **Also, the factors that influence the integral and derivative terms now have better intuitive meaning**.
+
+The governing equation of a PID controller in standard form is[^wikipedia-pid]:
+
+<p>\begin{align}
+u(t) = K_{p} \left( e(t) + \frac{1}{T_i}\int e(\tau) d\tau + T_d \frac{d}{dt}e(t) \right)
+\end{align}</p>
+
+<p class="centered">
+	where:<br/>
+	\(T_i\) is the integral time<br/>
+	\(T_d\) is the derivative time<br/>
+</p>
+
+The _integral time_ `\(T_i\)` refers to a scenario in where the error starts at 0, and then jumps to some fixed value. The proportional term will provide an immediate and fixed response, whilst the integral term will begin at 0 and slowly accumulate. **The integral time is the amount of time it takes for the integral term to equal the proportional term.**
+
+The _derivative time_ `\(T_d\)` refers to a scenario where the error begins increasing at a fixed rate. The proportional term will start at 0 and begin to increase, whilst the derivative term will provide a fixed response. **The derivative time is the amount of time for the proportional term to equal the derivative term.**
+
+{{% aside type="warning" %}}
+Pay close attention to the fact that the integral term is multiplied by `\(\frac{1}{T_i}\)` and not `\(T_i\)`. Unlike all other coefficients seen so far, this means that increasing `\(T_i\)` does not strengthen the integral action, but weakens it.
+{{% /aside %}}
+
+The parameters `\(K_i\)` and `\(K_d\)` in parallel form are related to the parameters `\(T_i\)` and `\(T_d\)` in standard form by:
+
+<p>\begin{align}
+K_i &= \frac{K_p}{T_i} \\
+K_d &= K_p T_d \\
+\end{align}</p>
 
 ## Gain vs. Bands
 
@@ -227,3 +291,7 @@ A really cool open-source hardware project is the [osPID Kit](http://www.rockets
 
 [^wikipedia-pid]: Wikipedia (2022, Mar 30). _PID controller_. Retrieved 2022-05-07, from https://en.wikipedia.org/wiki/PID_controller.
 [^incatools-feedforward-pid-controllers]: Pramit Patodi (2020, Jul 14). _Benefits in feedforward in PID controllers_ [Blog Post]. IncaTools. Retrieved 2023-06-22, from http://blog.incatools.com/benefits-feedforward-pid-controllers.
+[^opticontrols-pid-controller-algorithms]: Jacques Smuts (2010, Mar 30). _PID Controller Algorithms_ [Blog Post]. Retrieved 2023-06-23, from https://blog.opticontrols.com/archives/124.
+[^control-global-pid-form-trick-or-treat-tips]: Control (2014, Oct 27). _PID Form Trick or Treat Tips_ [Blog Post]. Retrieved 2023-06-23, from https://www.controlglobal.com/home/blog/11328993/pid-form-trick-or-treat-tips.
+[^wilderness-labs-standard-pid-algorithm]: Wilderness Labs. _Standard PID Algorithm - Understanding the real-world PID algorithm_ [Web Page]. Retrieved 2023-06-23, from http://developer.wildernesslabs.co/Hardware/Reference/Algorithms/Proportional_Integral_Derivative/Standard_PID_Algorithm/.
+[^control-engineering-understanding-pid-control-and-loop-tuning]: Vance Vandoren (2016, Jul 26). _Understanding PID control and loop tuning fundamentals_ [Web Page]. Control Engineering. Retrieved 2023-06-23, from https://www.controleng.com/articles/understanding-pid-control-and-loop-tuning-fundamentals/.
