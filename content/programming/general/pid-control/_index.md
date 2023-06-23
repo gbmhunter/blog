@@ -93,6 +93,8 @@ This equation is suitable for implementing in code. There also exists the Z tran
 
 A PID controller in _standard form_ (a.k.a. _ISA standard form_[^control-global-pid-form-trick-or-treat-tips] [^control-engineering-understanding-pid-control-and-loop-tuning]) is more common in industry than in parallel form[^wilderness-labs-standard-pid-algorithm]. The factor `\(K_p\)` is not just applied to the proportional term but instead brought out and applied at the end to all three factors (so it can be thought of as a scaling factor). **Also, the factors that influence the integral and derivative terms now have better intuitive meaning**.
 
+{{% figure src="standard-form-pid-controller-diagram.webp" width="800px" caption="Diagram of a PID controller in standard form." %}}
+
 The governing equation of a PID controller in standard form is[^wikipedia-pid]:
 
 <p>\begin{align}
@@ -214,11 +216,13 @@ A PID controller with feedforward might improve on this by realizing that we can
 
 Feedforward control can be difficult to implement when the **process behaviour is not well understood**, or it's **hard to measure the variables which disturb** the process. In many cases, when basic PID control alone is sufficient, adding feedforward is not worth the extra complexity.
 
-## Worked Example
+## Worked Example Using The Parallel Form
 
-Lets assume a mass/spring/damper process (aka plant or system) which consists of a mass attached to a fixed wall by spring and damper. We want to control the position of the mass, relative to it's resting point (which will be when the spring exerts no force).
+Lets assume a mass/spring/damper process (aka plant or system) which consists of a mass attached to a fixed wall by spring and damper. We want to control the position of the mass, relative to it's resting point (which will be when the spring exerts no force). We can control the mass by applying an external force to the mass, `\(F_{ext}\)`.
 
 {{% figure src="mass-spring-damper-system-diagram-pid.png" width="600px" caption="A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning." %}}
+
+### The Physics
 
 The mass `\(m\)` is `\(2kg\)`. The spring has a spring constant, `\(k\)`, which is `\(5Nm^{-1}\)`. The damping coefficient `\(c\)` is `\(3 Nsm^{-1}\)`.
 
@@ -243,23 +247,25 @@ Substituting in the equations for the spring and damper give:
 
 We can simulate this system in code by discretizing the system into small time steps, and assume linear values for the acceleration and velocity over these small time steps.
 
-**The way the simulation works:**
+### How The Simulation Works
 
 1. Assume starting conditions of displacement, velocity and acceleration are 0. `\(F_{ext}\)` is the control variable (set by the PID controller).
 
-2. Determine a suitably small time step, `\( \Delta{T} \)`. Then for each time step:
+1. Determine a suitably small time step, `\( \Delta{T} \)`. Then for each time step:
 
-3. Calculate the force exerted by the spring and damper.  
+1. Calculate the force exerted by the spring and damper.
 
 	<p>$$ F_{spring} = kx $$</p>
 
  	<p>$$ F_{damper} = c\dot{x} $$</p>
 
-4. Calculate the acceleration for this time step:  
+1. Determine the output of the PID controller `\(F_{ext}\)`, providing it the setpoint and "measured" displacement (which starts at 0, and then gets re-calculated at each time step as below).
+
+1. Calculate the acceleration for this time step:
 
 	<p>$$ \ddot{x} = \frac{F_{ext} - F_{spring} - F_{damper}}{m} $$</p>
 
-5. Calculate the change in velocity and displacement for this time step:  
+1. Calculate the change in velocity and displacement for this time step:  
 
 	<p>$$ \Delta{\dot{x}} = \ddot{x} \Delta{T} $$</p>
 
@@ -267,11 +273,39 @@ We can simulate this system in code by discretizing the system into small time s
    
 	**Note that these are changes in velocity and displacement, so to calculate the current velocity and displacement you add this change to the stored velocity/displacement state.**
 
-6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. `\(F_{spring}\)` and `\(F_{damper}\)` will calculated for the next time step using these updated velocity and displacement values.
+1. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. `\(F_{spring}\)` and `\(F_{damper}\)` will calculated for the next time step using these updated velocity and displacement values.
 
-### Response Plots
+### Running The Simulation
 
-{{% figure src="msd-response-plots.png" width="500px" %}}
+We'll apply a step change at `\(t=1s\)`, changing the setpoint to `\(r(t) = 1m\)`. We'll use a time step of `\( \Delta{T}=10ms \)`. We'll use the parallel form of PID controller:
+
+<p>\begin{align}
+u(t) = K_{p}e(t) + K_{i}\int e(\tau) d\tau + K_{d}\frac{d}{dt}e(t)
+\end{align}</p>
+
+Let's begin by just adding some proportional gain. Let's set `\(K_p=10, K_i=0, K_d=0\)`:
+
+{{% figure src="msd-simulation/msd-response-plot-p10-i0-d0.png" width="800px" caption="The response of the mass-spring-damper system with just proportional gain." %}}
+
+You can clearly see that this PID controller does not work very well. It only moves the block to about `\(0.3m\)` and then stops. Let's bump up the proportional gain to see if we can reduce the error further:
+
+{{% figure src="msd-simulation/msd-response-plot-p300-i0-d0.png" width="800px" caption="The response of the mass-spring-damper system with more proportional gain." %}}
+
+It's better, but we still have significant steady-state error, and we've now got overshoot. Steady-state error is almost unavoidable with only pure proportional control. Integral control is perfect at fixing steady-state error, so let's add some. We'll fix the overshoot later:
+
+{{% figure src="msd-simulation/msd-response-plot-p300-i300-d0.png" width="800px" caption="The response of the mass-spring-damper system with more proportional gain." %}}
+
+Getting better! You can see the effect of adding the integral control, the steady state error is now eventually removed. Now let's see if we can get rid of the overshoot by adding some derivative control:
+
+{{% figure src="msd-simulation/msd-response-plot-p300-i300-d20.png" width="800px" caption="The response of the mass-spring-damper system with derivative control added." %}}
+
+Now we are looking pretty good! We've completely removed the oscillations at the process reaches the setpoint pretty quickly. Note though that the derivative terms introduces a huge "kick" when the step change happens (this makes sense, because at that point there is a huge change in error!). This may saturate the actual thing connected to the control output (e.g. a linear motor which provides the external force), and control value limiting may need to be added to the PID controller.
+
+{{% aside type="tip" %}}
+I'm not claiming to have just stumbled across coefficients that seemed to work well, to get to these values I spent a bit of time experimenting with the numbers. I didn't follow any specific tuning method.
+{{% /aside %}}
+
+If you are interested in the Python code that was used to perform this simulation, see [here](/programming/general/pid-control/msd-simulation/main.py).
 
 ## Firmware Modules
 

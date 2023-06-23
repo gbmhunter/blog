@@ -230,15 +230,27 @@ def main():
         },
         {
             'p': 10,
-            'i': 30,
-            'd': 0,
-            'plot_filename': 'msd-response-plot-p50-i300-d0.png',
-        },
-        {
-            'p': 10,
             'i': 0,
             'd': 0,
-            'plot_filename': 'msd-response-plot-just-p.png',
+            'plot_filename': 'msd-response-plot-p10-i0-d0.png',
+        },
+        {
+            'p': 300,
+            'i': 0,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-p300-i0-d0.png',
+        },
+        {
+            'p': 300,
+            'i': 300,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-p300-i300-d0.png',
+        },
+        {
+            'p': 300,
+            'i': 300,
+            'd': 20,
+            'plot_filename': 'msd-response-plot-p300-i300-d20.png',
         },
     ]
 
@@ -292,11 +304,11 @@ def run_simulation(p, i, d, plot_filename):
         
         curr_time_s += time_step_s
 
-    fig, axes = plt.subplots(ncols=1, nrows=2, figsize=(5, 10))
+    fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(10, 5))
     ax = axes[0]
     ax.plot(times_s, set_points_m, label='Set point')
     ax.plot(times_s, displacements_m, label='Measured displacement')
-    ax.text(0.95, 0.5, f'K_P={p}, K_I={i}, K_D={d}',
+    ax.text(0.95, 0.5, f'$K_P={p}, K_I={i}, K_D={d}$',
         verticalalignment='bottom', horizontalalignment='right',
         transform=ax.transAxes, fontsize=12)
     ax.set_xlabel('Time [s]')
