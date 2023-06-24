@@ -27,6 +27,10 @@ No matter the topology, the goal of a PID controller is to control a process, gi
 
 The state you want to get the process to is called the set-point (`\(r(t)\)` or `SP`). The set-point has the same units as the process value. The units of the control value is whatever is used to control the process.
 
+{{% aside type="tip" %}}
+I chose to use the variables `\( r(t), e(t), u(t), y(t)\)` as used by [Introduction: PID Controller Design](https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID) [^uni-of-michigan-intro-pid-controller-design].
+{{% /aside %}}
+
 The error (`\(e(t)\)`) is always defined as the set-point minus the process value, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
 
 <p>\begin{align}
@@ -129,6 +133,16 @@ K_i &= \frac{K_p}{T_i} \\
 K_d &= K_p T_d \\
 \end{align}</p>
 
+## PID In Series Form
+
+The governing equation of a PID controller in series form is[^instrumentation-tools-pid-controllers]:
+
+<p>\begin{align}
+u(t) = K_{p} \left[ \left(\frac{T_d}{T_i} + 1\right) e(t) + \frac{1}{T_i}\int e(\tau) d\tau + T_d \frac{de(t)}{dt} \right]
+\end{align}</p>
+
+The proportional gain `\(K_d\)` effects P, I and D actions just as with standard form, however the new difference is that with `\( \left(\frac{T_d}{T_i} + 1\right) e(t) \)` the integral and derivative constants also affect the P action. This form is an artifact from the days of simpler, analogue and mechanical based PID controllers, in where the physical design of the controller was made easier if the equation was structured this way[^instrumentation-tools-pid-controllers]. I have never seen this implemented on a new design with current digital technologies (e.g. microcontrollers and PLCs).
+
 ## Gain vs. Bands
 
 Some PID controllers work on absolute inputs and outputs (e.g. temperature in °C for the `PV` and `SP`, and power output to heater in Watts as the `CV`), whilst other PID controllers use inputs/outputs that represent the percentage of total range (i.e. their units are percent). One benefit of using percentages is that the PID loops can require less tuning adjustment when transferring to a different system, as the percentage-based inputs/outputs scale proportionally with the changing ranges of the system.
@@ -144,6 +158,8 @@ PB = \frac{100}{G}
 For example, if the proportional band (PB) is 20%, then the proportional gain (G) is 5.
 
 ## Tuning Methods
+
+TODO: Add more tuning methods.
 
 ### Manual Tuning
 
@@ -355,3 +371,5 @@ A really cool open-source hardware project is the [osPID Kit](http://www.rockets
 [^wilderness-labs-standard-pid-algorithm]: Wilderness Labs. _Standard PID Algorithm - Understanding the real-world PID algorithm_ [Web Page]. Retrieved 2023-06-23, from http://developer.wildernesslabs.co/Hardware/Reference/Algorithms/Proportional_Integral_Derivative/Standard_PID_Algorithm/.
 [^control-engineering-understanding-pid-control-and-loop-tuning]: Vance Vandoren (2016, Jul 26). _Understanding PID control and loop tuning fundamentals_ [Web Page]. Control Engineering. Retrieved 2023-06-23, from https://www.controleng.com/articles/understanding-pid-control-and-loop-tuning-fundamentals/.
 [^stack-exchange-good-strategies-for-tuning-pid-loops]: hauptmech (2012, Oct 27). _What are good strategies for tuning PID loops?_ [Forum Post]. Stack Exchange - Robotics. Retrieved 2023-06-24, from https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops. 
+[^uni-of-michigan-intro-pid-controller-design]: University of Michigan - Control Tutorials For MATLAB and SIMULINK. _Introduction: PID Controller Design_. Retrieved 2023-06-24, from https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID.
+[^instrumentation-tools-pid-controllers]: Tony R. Kuphaldt. _PID Controllers : Parallel, Ideal & Series_ [Web Page]. Instrumentation Tools. Retrieved 2023-06-24, from https://instrumentationtools.com/pid-controllers/.

@@ -29,4 +29,4 @@ type: post
 
 * Added a new page on [Mid-Chip Solder Balls](/pcb-design/mid-chip-solder-balls/).
 
-* Added info on feedforward to the [PID Control page](/programming/general/pid-control/).
+* Added info on feedforward, standard form, series form, and diagrams to the [PID Control page](/programming/general/pid-control/).
