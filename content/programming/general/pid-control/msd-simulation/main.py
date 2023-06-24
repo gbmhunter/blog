@@ -184,7 +184,7 @@ class SpringMassDamper:
         self.velocity_mPs = 0.0
 
     def update(self, controlVariable, timeStep_s):
-        print(f'update() called with controlVariable(external force)={controlVariable}, timeStep_s={timeStep_s}.')        
+        print(f'update() called with controlVariable(external force)={controlVariable}, timeStep_s={timeStep_s}.')
 
         #     # Equation for mass-spring-damper process
         #     # Fext - kx - c*(d/dx) = m*(d^2/dx^2)
@@ -220,7 +220,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def main():
+    # create_msd_response_plots()
+    create_manual_tuning_plots()
 
+def create_msd_response_plots():
     configs = [
         {
             'p': 350,
@@ -252,12 +255,79 @@ def main():
             'd': 20,
             'plot_filename': 'msd-response-plot-p300-i300-d20.png',
         },
+        {
+            'p': 0,
+            'i': 0,
+            'd': 0,
+            'plot_filename': 'manual-tuning-p0-i0-d0.png',
+        },
     ]
 
     for config in configs:
-        run_simulation(config['p'], config['i'], config['d'], config['plot_filename'])
+        results = run_simulation(config['p'], config['i'], config['d'])
+        create_response_and_pid_terms_plots(config, results)
 
-def run_simulation(p, i, d, plot_filename):
+def create_manual_tuning_plots():
+    configs = [
+        {
+            'p': 0,
+            'i': 0,
+            'd': 0,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d']))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-p0-i0-d0.png')
+
+    configs = [
+        {
+            'p': 10,
+            'i': 0,
+            'd': 0,
+        },
+        {
+            'p': 100,
+            'i': 0,
+            'd': 0,
+        },
+        {
+            'p': 50000,
+            'i': 0,
+            'd': 0,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d']))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-increasing-kp.png')
+
+def create_manual_tuning_plot(configs, results, plot_filename):
+    fig, axes = plt.subplots(ncols=len(configs), nrows=1, figsize=(10, 5), squeeze=False)
+
+    idx = 0
+    for row in axes:
+        for ax in row:
+            config = configs[idx]
+            result = results[idx]
+            ax.plot(result['times_s'], result['set_points_m'], label='Set point')
+            ax.plot(result['times_s'], result['displacements_m'], label='Measured displacement')
+            ax.text(0.95, 0.5, f'$K_P={config["p"]}, K_I={config["i"]}, K_D={config["d"]}$',
+                verticalalignment='bottom', horizontalalignment='right',
+                transform=ax.transAxes, fontsize=12)
+            ax.set_xlabel('Time [s]')
+            ax.set_ylabel('Displacement [m]')
+            ax.set_title('Response of System')
+            ax.legend()
+            idx += 1
+
+    fig.set_tight_layout(True)
+    plt.savefig(SCRIPT_DIR / plot_filename)
+
+def run_simulation(p, i, d):
+    """
+    Returns:
+    """
 
     pid = Pid(p, i, d)
     pid.setOutputLimits(True, -1000, 1000)
@@ -278,37 +348,43 @@ def run_simulation(p, i, d, plot_filename):
     control_variable_N = 0
     displacement_m = 0
 
-    times_s = []
-    set_points_m = []
-    displacements_m = []
+    return_vals = {
+        'times_s': [],
+        'set_points_m': [],
+        'displacements_m': [],
 
-    p_term_vals = []
-    i_term_vals = []
-    d_term_vals = []
-    output = []
+        'p_term_vals': [],
+        'i_term_vals': [],
+        'd_term_vals': [],
+        'output': [],
+    }
+
     while curr_time_s <= end_time_s:
         if curr_time_s >= impulse_time_s:
             pid.setSetPoint(impulse_displacement_m)
-        set_points_m.append(pid.setPoint)
+        return_vals['set_points_m'].append(pid.setPoint)
         control_variable_N = pid.run(displacement_m, time_step_s)
 
         last_pid_terms = pid.getLastTerms()
-        p_term_vals.append(last_pid_terms['p'])
-        i_term_vals.append(last_pid_terms['i'])
-        d_term_vals.append(last_pid_terms['d'])
-        output.append(last_pid_terms['output'])
+        return_vals['p_term_vals'].append(last_pid_terms['p'])
+        return_vals['i_term_vals'].append(last_pid_terms['i'])
+        return_vals['d_term_vals'].append(last_pid_terms['d'])
+        return_vals['output'].append(last_pid_terms['output'])
         
         displacement_m = smd.update(control_variable_N, time_step_s)
-        times_s.append(curr_time_s)
-        displacements_m.append(displacement_m)
+        return_vals['times_s'].append(curr_time_s)
+        return_vals['displacements_m'].append(displacement_m)
         
         curr_time_s += time_step_s
 
+    return return_vals
+
+def create_response_and_pid_terms_plots(config, results):
     fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(10, 5))
     ax = axes[0]
-    ax.plot(times_s, set_points_m, label='Set point')
-    ax.plot(times_s, displacements_m, label='Measured displacement')
-    ax.text(0.95, 0.5, f'$K_P={p}, K_I={i}, K_D={d}$',
+    ax.plot(results['times_s'], results['set_points_m'], label='Set point')
+    ax.plot(results['times_s'], results['displacements_m'], label='Measured displacement')
+    ax.text(0.95, 0.5, f'$K_P={config["p"]}, K_I={config["i"]}, K_D={config["d"]}$',
         verticalalignment='bottom', horizontalalignment='right',
         transform=ax.transAxes, fontsize=12)
     ax.set_xlabel('Time [s]')
@@ -318,17 +394,17 @@ def run_simulation(p, i, d, plot_filename):
 
     # Plot P, I, D terms on second axes (lower)
     ax = axes[1]
-    ax.plot(times_s, p_term_vals, label='P Term')
-    ax.plot(times_s, i_term_vals, label='I Term')
-    ax.plot(times_s, d_term_vals, label='D Term')
-    ax.plot(times_s, output, label='Output')
+    ax.plot(results['times_s'], results['p_term_vals'], label='P Term')
+    ax.plot(results['times_s'], results['i_term_vals'], label='I Term')
+    ax.plot(results['times_s'], results['d_term_vals'], label='D Term')
+    ax.plot(results['times_s'], results['output'], label='Output')
     ax.set_xlabel('Time [s]')
     ax.set_ylabel('Force [N] (CV)')
     ax.set_title('Values of PID Terms and Output (CV)')
     ax.legend()
 
     fig.set_tight_layout(True)
-    plt.savefig(SCRIPT_DIR / plot_filename)
+    plt.savefig(SCRIPT_DIR / config['plot_filename'])
 
 
 if __name__ == '__main__':

@@ -23,7 +23,7 @@ These topologies are described in more detail in the following sections.
 
 ## Common Terminology
 
-No matter the topology, the goal of a PID controller is to control a process, given a single, measured process value (`\(y(t)\)` or `PV`) that you want controlled (e.g. temperature of the heater) and a single variable you can adjust called the control value (`\(u(t)\)` or `CV`) (e.g. voltage you can apply to the heaters coils).
+No matter the topology, the goal of a PID controller is to control a process, given a single, measured process value (`\(y(t)\)` or `PV`) that you want controlled (e.g. temperature of the heater) and a single variable you can adjust called the control value (`\(u(t)\)` or `CV`) (e.g. voltage you can apply to the heaters coils). The output of the PID controller (which is the control value) is sometimes called `\(G(t)\)`.
 
 The state you want to get the process to is called the set-point (`\(r(t)\)` or `SP`). The set-point has the same units as the process value. The units of the control value is whatever is used to control the process.
 
@@ -75,6 +75,13 @@ u(t) = K_{p}e(t) + K_{i}\int e(\tau) d\tau + K_{d}\frac{d}{dt}e(t)
 {{% aside type="tip" %}}
 Notice that standard `\(t\)` is used for the current time, and `\(\tau\)` (tau) is used for the integration.
 {{% /aside %}}
+
+This can also be written in the Laplace domain as a transfer function[^wikipedia-pid]:
+
+<p>\begin{align}
+G(s) &= K_p + \frac{K_i}{s} + K_{d}s \\
+     &= \frac{K_ds^2 + K_ps + K_i}{s} \\
+\end{align}</p>
 
 This PID equation is in the continuous time domain. However, nowadays most PID control loops are implemented digitally. The discrete equation is written:
 
@@ -138,7 +145,25 @@ For example, if the proportional band (PB) is 20%, then the proportional gain (G
 
 ## Tuning Methods
 
-Coming soon...
+### Manual Tuning
+
+One method to perform manual tuning is[^stack-exchange-good-strategies-for-tuning-pid-loops]:
+
+1. Set the system to toggle slowly between two set points (with ample time between the changes to settle).
+
+1. Set all gains to `\(0\)`.
+
+1. Increase `\(K_p\)` until the process continually oscillates in response to a disturbance.
+
+1. Reduce `\(K_p\)` by a factor of 2-4.
+
+1. Increase `\(K_d\)` until the oscillations go away.
+
+1. Repeat steps 3-5 until increasing `\(K_d\)` does not make the oscillations go away.
+
+1. Set `\(K_p\)` and `\(K_d\)` to the last known stable values.
+
+1. Increase `\(K_i\)` until it removes 
 
 ## Integral Windup
 
@@ -329,3 +354,4 @@ A really cool open-source hardware project is the [osPID Kit](http://www.rockets
 [^control-global-pid-form-trick-or-treat-tips]: Control (2014, Oct 27). _PID Form Trick or Treat Tips_ [Blog Post]. Retrieved 2023-06-23, from https://www.controlglobal.com/home/blog/11328993/pid-form-trick-or-treat-tips.
 [^wilderness-labs-standard-pid-algorithm]: Wilderness Labs. _Standard PID Algorithm - Understanding the real-world PID algorithm_ [Web Page]. Retrieved 2023-06-23, from http://developer.wildernesslabs.co/Hardware/Reference/Algorithms/Proportional_Integral_Derivative/Standard_PID_Algorithm/.
 [^control-engineering-understanding-pid-control-and-loop-tuning]: Vance Vandoren (2016, Jul 26). _Understanding PID control and loop tuning fundamentals_ [Web Page]. Control Engineering. Retrieved 2023-06-23, from https://www.controleng.com/articles/understanding-pid-control-and-loop-tuning-fundamentals/.
+[^stack-exchange-good-strategies-for-tuning-pid-loops]: hauptmech (2012, Oct 27). _What are good strategies for tuning PID loops?_ [Forum Post]. Stack Exchange - Robotics. Retrieved 2023-06-24, from https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops. 
