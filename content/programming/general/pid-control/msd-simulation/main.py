@@ -5,7 +5,138 @@ from distutils.command.config import config
 from enum import Enum
 from pathlib import Path
 
+import matplotlib.pyplot as plt
+import numpy as np
+
 SCRIPT_DIR = Path(__file__).resolve().parent
+
+def main():
+    # create_msd_response_plots()
+    create_manual_tuning_plots()
+
+def create_msd_response_plots():
+    configs = [
+        {
+            'p': 350,
+            'i': 300,
+            'd': 50,
+            'plot_filename': 'msd-response-plot-underdamped.png',
+        },
+        {
+            'p': 10,
+            'i': 0,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-p10-i0-d0.png',
+        },
+        {
+            'p': 300,
+            'i': 0,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-p300-i0-d0.png',
+        },
+        {
+            'p': 300,
+            'i': 300,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-p300-i300-d0.png',
+        },
+        {
+            'p': 300,
+            'i': 300,
+            'd': 20,
+            'plot_filename': 'msd-response-plot-p300-i300-d20.png',
+        },
+        {
+            'p': 0,
+            'i': 0,
+            'd': 0,
+            'plot_filename': 'manual-tuning-p0-i0-d0.png',
+        },
+    ]
+
+    for config in configs:
+        results = run_simulation(config['p'], config['i'], config['d'])
+        create_response_and_pid_terms_plots(config, results)
+
+def create_manual_tuning_plots():
+    configs = [
+        {
+            'p': 0,
+            'i': 0,
+            'd': 0,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d']))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-p0-i0-d0.png')
+
+    configs = [
+        {
+            'p': 10,
+            'i': 0,
+            'd': 0,
+        },
+        {
+            'p': 50,
+            'i': 0,
+            'd': 0,
+        },
+        {
+            'p': 100,
+            'i': 0,
+            'd': 0,
+        },
+        {
+            'p': 110,
+            'i': 0,
+            'd': 0,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d'], num_steps_delay=10))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-increasing-kp.png')
+
+    # Increase K_d until oscillations go away 
+    configs = [
+        {
+            'p': 110,
+            'i': 0,
+            'd': 10,
+        },
+        {
+            'p': 110,
+            'i': 0,
+            'd': 20,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d'], num_steps_delay=10))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-increasing-kd.png')
+
+def create_manual_tuning_plot(configs, results, plot_filename):
+    fig, axes = plt.subplots(ncols=len(configs), nrows=1, figsize=(15, 5), squeeze=False)
+
+    idx = 0
+    for row in axes:
+        for ax in row:
+            config = configs[idx]
+            result = results[idx]
+            ax.plot(result['times_s'], result['set_points_m'], label='Set point')
+            ax.plot(result['times_s'], result['displacements_m'], label='Measured displacement')
+            # ax.text(0.95, 0.5, f'$K_P={config["p"]}, K_I={config["i"]}, K_D={config["d"]}$',
+            #     verticalalignment='bottom', horizontalalignment='right',
+            #     transform=ax.transAxes, fontsize=12)
+            ax.set_xlabel('Time [s]')
+            ax.set_ylabel('Displacement [m]')
+            ax.set_title(f'Response of System\n$K_P={config["p"]}, K_I={config["i"]}, K_D={config["d"]}$')
+            ax.legend()
+            idx += 1
+
+    fig.set_tight_layout(True)
+    plt.savefig(SCRIPT_DIR / plot_filename)
 
 class IntegralLimitModes(Enum):
     NONE = 'None'
@@ -15,7 +146,7 @@ class IntegralLimitModes(Enum):
 class DerivativeKickReduction(Enum):
     pass
 
-class Pid:
+class PidParallelForm:
     def __init__(self, pConstant, iConstant, dConstant):
         self.pConstant = pConstant
         self.iConstant = iConstant
@@ -70,13 +201,16 @@ class Pid:
         self.integralLimitSettings = options
 
     def run(self, currentValue, deltaTime_s):
+        """
+        Perform one iteration of the PID control.
+        """
         # console.log('Pid.run() called. currentValue = ' + currentValue + ', deltaTime_s = ' + deltaTime_s)
 
         # Error positive if we need to "go forward"
         error = self.setPoint - currentValue
         # console.log('error = ' + error)
 
-        # Porportional control
+        # Proportional control
         pValue = error * self.pConstant
         # console.log('pValue = ' + pValue)
 
@@ -92,7 +226,7 @@ class Pid:
             if self.iValue > self.integralLimitSettings.max:
                 self.iValue = self.integralLimitSettings.max
             elif self.iValue < self.integralLimitSettings.min:
-                self.iValue = self.integralLimitSettings.min                    
+                self.iValue = self.integralLimitSettings.min
 
         # console.log('iValue (after limiting) = ' + self.iValue)
 
@@ -216,120 +350,12 @@ class SpringMassDamper:
 
         return self.displacement_m
 
-import matplotlib.pyplot as plt
-import numpy as np
-
-def main():
-    # create_msd_response_plots()
-    create_manual_tuning_plots()
-
-def create_msd_response_plots():
-    configs = [
-        {
-            'p': 350,
-            'i': 300,
-            'd': 50,
-            'plot_filename': 'msd-response-plot-underdamped.png',
-        },
-        {
-            'p': 10,
-            'i': 0,
-            'd': 0,
-            'plot_filename': 'msd-response-plot-p10-i0-d0.png',
-        },
-        {
-            'p': 300,
-            'i': 0,
-            'd': 0,
-            'plot_filename': 'msd-response-plot-p300-i0-d0.png',
-        },
-        {
-            'p': 300,
-            'i': 300,
-            'd': 0,
-            'plot_filename': 'msd-response-plot-p300-i300-d0.png',
-        },
-        {
-            'p': 300,
-            'i': 300,
-            'd': 20,
-            'plot_filename': 'msd-response-plot-p300-i300-d20.png',
-        },
-        {
-            'p': 0,
-            'i': 0,
-            'd': 0,
-            'plot_filename': 'manual-tuning-p0-i0-d0.png',
-        },
-    ]
-
-    for config in configs:
-        results = run_simulation(config['p'], config['i'], config['d'])
-        create_response_and_pid_terms_plots(config, results)
-
-def create_manual_tuning_plots():
-    configs = [
-        {
-            'p': 0,
-            'i': 0,
-            'd': 0,
-        },
-    ]
-    results = []
-    for config in configs:
-        results.append(run_simulation(config['p'], config['i'], config['d']))
-    create_manual_tuning_plot(configs, results, 'manual-tuning-p0-i0-d0.png')
-
-    configs = [
-        {
-            'p': 10,
-            'i': 0,
-            'd': 0,
-        },
-        {
-            'p': 100,
-            'i': 0,
-            'd': 0,
-        },
-        {
-            'p': 50000,
-            'i': 0,
-            'd': 0,
-        },
-    ]
-    results = []
-    for config in configs:
-        results.append(run_simulation(config['p'], config['i'], config['d']))
-    create_manual_tuning_plot(configs, results, 'manual-tuning-increasing-kp.png')
-
-def create_manual_tuning_plot(configs, results, plot_filename):
-    fig, axes = plt.subplots(ncols=len(configs), nrows=1, figsize=(10, 5), squeeze=False)
-
-    idx = 0
-    for row in axes:
-        for ax in row:
-            config = configs[idx]
-            result = results[idx]
-            ax.plot(result['times_s'], result['set_points_m'], label='Set point')
-            ax.plot(result['times_s'], result['displacements_m'], label='Measured displacement')
-            ax.text(0.95, 0.5, f'$K_P={config["p"]}, K_I={config["i"]}, K_D={config["d"]}$',
-                verticalalignment='bottom', horizontalalignment='right',
-                transform=ax.transAxes, fontsize=12)
-            ax.set_xlabel('Time [s]')
-            ax.set_ylabel('Displacement [m]')
-            ax.set_title('Response of System')
-            ax.legend()
-            idx += 1
-
-    fig.set_tight_layout(True)
-    plt.savefig(SCRIPT_DIR / plot_filename)
-
-def run_simulation(p, i, d):
+def run_simulation(p, i, d, num_steps_delay=0):
     """
     Returns:
     """
 
-    pid = Pid(p, i, d)
+    pid = PidParallelForm(p, i, d)
     pid.setOutputLimits(True, -1000, 1000)
 
     smd = SpringMassDamper()
@@ -343,9 +369,12 @@ def run_simulation(p, i, d):
 
     curr_time_s = start_time_s
 
+    if num_steps_delay > 0:
+        delayed_control_values_N = [0]*num_steps_delay
+
     # Start with a set point = 0m
     pid.setSetPoint(0)
-    control_variable_N = 0
+    control_value_N = 0
     displacement_m = 0
 
     return_vals = {
@@ -363,7 +392,11 @@ def run_simulation(p, i, d):
         if curr_time_s >= impulse_time_s:
             pid.setSetPoint(impulse_displacement_m)
         return_vals['set_points_m'].append(pid.setPoint)
-        control_variable_N = pid.run(displacement_m, time_step_s)
+
+        # Calculate the external force by running the PID block
+        control_value_N = pid.run(displacement_m, time_step_s)
+        if num_steps_delay > 0:
+            delayed_control_values_N.insert(0, control_value_N)
 
         last_pid_terms = pid.getLastTerms()
         return_vals['p_term_vals'].append(last_pid_terms['p'])
@@ -371,7 +404,10 @@ def run_simulation(p, i, d):
         return_vals['d_term_vals'].append(last_pid_terms['d'])
         return_vals['output'].append(last_pid_terms['output'])
         
-        displacement_m = smd.update(control_variable_N, time_step_s)
+        if num_steps_delay > 0:
+            displacement_m = smd.update(delayed_control_values_N.pop(), time_step_s)
+        else:
+            displacement_m = smd.update(control_value_N, time_step_s)
         return_vals['times_s'].append(curr_time_s)
         return_vals['displacements_m'].append(displacement_m)
         

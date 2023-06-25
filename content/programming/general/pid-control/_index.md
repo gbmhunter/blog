@@ -123,7 +123,7 @@ The _integral time_ `\(T_i\)` refers to a scenario in where the error starts at 
 The _derivative time_ `\(T_d\)` refers to a scenario where the error begins increasing at a fixed rate. The proportional term will start at 0 and begin to increase, whilst the derivative term will provide a fixed response. **The derivative time is the amount of time for the proportional term to equal the derivative term.**
 
 {{% aside type="warning" %}}
-Pay close attention to the fact that the integral term is multiplied by `\(\frac{1}{T_i}\)` and not `\(T_i\)`. Unlike all other coefficients seen so far, this means that increasing `\(T_i\)` does not strengthen the integral action, but weakens it.
+Pay close attention to the fact that the integral term is multiplied by `\(\frac{1}{T_i}\)` and not `\(T_i\)`. Unlike all other coefficients seen so far, this means that increasing `\(T_i\)` does not strengthen the integral action, but weakens it. Also, you can never completely get rid of integral action when expressed this way, as for this `\(T_i\)` would need to be `\(\infty\)`.
 {{% /aside %}}
 
 The parameters `\(K_i\)` and `\(K_d\)` in parallel form are related to the parameters `\(T_i\)` and `\(T_d\)` in standard form by:
@@ -163,7 +163,7 @@ TODO: Add more tuning methods.
 
 ### Manual Tuning
 
-One method to perform manual tuning is[^stack-exchange-good-strategies-for-tuning-pid-loops]:
+One method to perform manual tuning with a PID controller in parallel form is[^stack-exchange-good-strategies-for-tuning-pid-loops]:
 
 1. Set the system to toggle slowly between two set points (with ample time between the changes to settle).
 
@@ -171,15 +171,13 @@ One method to perform manual tuning is[^stack-exchange-good-strategies-for-tunin
 
 1. Increase `\(K_p\)` until the process continually oscillates in response to a disturbance.
 
-1. Reduce `\(K_p\)` by a factor of 2-4.
-
 1. Increase `\(K_d\)` until the oscillations go away.
 
-1. Repeat steps 3-5 until increasing `\(K_d\)` does not make the oscillations go away.
+1. Repeat steps 3-4 until increasing `\(K_d\)` does not make the oscillations go away.
 
 1. Set `\(K_p\)` and `\(K_d\)` to the last known stable values.
 
-1. Increase `\(K_i\)` until it removes 
+1. Increase `\(K_i\)` until it removes the steady-state error in an appropriate amount of time.
 
 ## Integral Windup
 
@@ -280,11 +278,11 @@ Substituting in the equations for the spring and damper give:
 <p>$$ F_{ext} - kx - c\dot{x} = m\ddot{x} $$</p>
 
 <p class="centered">
-	where:<br>
-	\(x\) is the displacement<br>
-	\(\dot{x}\) is the first derivative of \(x\) (i.e. velocity)<br>
-	\(\ddot{x}\) is the second derivative of \(x\) (i.e. acceleration)<br>
- </p>
+where:<br>
+\(x\) is the displacement<br>
+\(\dot{x}\) is the first derivative of \(x\) (i.e. velocity)<br>
+\(\ddot{x}\) is the second derivative of \(x\) (i.e. acceleration)<br>
+</p>
 
 We can simulate this system in code by discretizing the system into small time steps, and assume linear values for the acceleration and velocity over these small time steps.
 
