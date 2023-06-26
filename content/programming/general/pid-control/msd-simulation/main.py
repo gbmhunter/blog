@@ -11,8 +11,9 @@ import numpy as np
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 def main():
-    # create_msd_response_plots()
-    create_manual_tuning_plots()
+    create_msd_response_plots()
+    # Didn't get the manual tuning working
+    # create_manual_tuning_plots()
 
 def create_msd_response_plots():
     configs = [
@@ -59,6 +60,13 @@ def create_msd_response_plots():
         create_response_and_pid_terms_plots(config, results)
 
 def create_manual_tuning_plots():
+
+    time_step_s = 1e-4
+    num_steps_delay = 3
+    mass_kg = 1.0
+    springConstantK_Npm = 20.0
+    dampingCoefficientC_NsPm = 1.0
+
     configs = [
         {
             'p': 0,
@@ -68,53 +76,150 @@ def create_manual_tuning_plots():
     ]
     results = []
     for config in configs:
-        results.append(run_simulation(config['p'], config['i'], config['d']))
-    create_manual_tuning_plot(configs, results, 'manual-tuning-p0-i0-d0.png')
+        results.append(run_simulation(config['p'], config['i'], config['d'],
+                                      time_step_s=time_step_s,
+                                      num_steps_delay=num_steps_delay, 
+                                      mass_kg=mass_kg, springConstantK_Npm=springConstantK_Npm, dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-01-p0-i0-d0.png')
+
+    #########################################################
+    # Kp/Kd ROUND 1
+    #########################################################
 
     configs = [
+        {
+            'p': 00,
+            'i': 0,
+            'd': 0,
+        },
         {
             'p': 10,
             'i': 0,
             'd': 0,
         },
         {
-            'p': 50,
+            'p': 20,
             'i': 0,
             'd': 0,
         },
         {
-            'p': 100,
+            'p': 23,
             'i': 0,
             'd': 0,
         },
         {
-            'p': 110,
+            'p': 25,
             'i': 0,
             'd': 0,
         },
     ]
     results = []
     for config in configs:
-        results.append(run_simulation(config['p'], config['i'], config['d'], num_steps_delay=10))
-    create_manual_tuning_plot(configs, results, 'manual-tuning-increasing-kp.png')
+        results.append(run_simulation(config['p'], config['i'], config['d'],
+                                      time_step_s=time_step_s,
+                                      num_steps_delay=num_steps_delay,
+                                      mass_kg=mass_kg,
+                                      springConstantK_Npm=springConstantK_Npm,
+                                      dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-02-increasing-kp-round-1.png')
 
     # Increase K_d until oscillations go away 
+    kp_value = 6
     configs = [
         {
-            'p': 110,
+            'p': kp_value,
+            'i': 0,
+            'd': 0,
+        },
+        {
+            'p': kp_value,
+            'i': 0,
+            'd': 5,
+        },
+        {
+            'p': kp_value,
             'i': 0,
             'd': 10,
         },
         {
-            'p': 110,
+            'p': kp_value,
+            'i': 0,
+            'd': 30,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d'],
+                                      time_step_s=time_step_s,
+                                      num_steps_delay=num_steps_delay,
+                                      mass_kg=mass_kg,
+                                      springConstantK_Npm=springConstantK_Npm,
+                                      dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-03-increasing-kd-round-1.png')
+
+    #########################################################
+    # Kp/Kd ROUND 2
+    #########################################################
+
+    configs = [
+        {
+            'p': 100,
+            'i': 0,
+            'd': 20,
+        },
+        {
+            'p': 1000,
+            'i': 0,
+            'd': 20,
+        },
+        {
+            'p': 1500,
+            'i': 0,
+            'd': 20,
+        },
+        {
+            'p': 1800,
             'i': 0,
             'd': 20,
         },
     ]
     results = []
     for config in configs:
-        results.append(run_simulation(config['p'], config['i'], config['d'], num_steps_delay=10))
-    create_manual_tuning_plot(configs, results, 'manual-tuning-increasing-kd.png')
+        results.append(run_simulation(config['p'], config['i'], config['d'],
+                                      time_step_s=time_step_s,
+                                      num_steps_delay=num_steps_delay,
+                                      mass_kg=mass_kg,
+                                      springConstantK_Npm=springConstantK_Npm,
+                                      dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-04-increasing-kp-round-2.png')
+
+    # Increase K_d until oscillations go away 
+    configs = [
+        {
+            'p': 1800,
+            'i': 0,
+            'd': 20,
+        },
+        {
+            'p': 1800,
+            'i': 0,
+            'd': 50,
+        },
+        {
+            'p': 1800,
+            'i': 0,
+            'd': 100,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d'],
+                                      time_step_s=time_step_s,
+                                      num_steps_delay=num_steps_delay,
+                                      mass_kg=mass_kg,
+                                      springConstantK_Npm=springConstantK_Npm,
+                                      dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-05-increasing-kd-round-2.png')
 
 def create_manual_tuning_plot(configs, results, plot_filename):
     fig, axes = plt.subplots(ncols=len(configs), nrows=1, figsize=(15, 5), squeeze=False)
@@ -309,16 +414,16 @@ class PidParallelForm:
     
 class SpringMassDamper:
 
-    def __init__(self):
-        self.mass_kg = 1.0
-        self.springConstantK_NPm = 20.0
-        self.dampingCoefficientC_NsPm = 10.0
+    def __init__(self, mass_kg=1.0, springConstantK_Npm=20.0, dampingCoefficientC_NsPm=10.0):
+        self.mass_kg = mass_kg
+        self.springConstantK_NPm = springConstantK_Npm
+        self.dampingCoefficientC_NsPm = dampingCoefficientC_NsPm
 
         self.displacement_m = 0.0
         self.velocity_mPs = 0.0
 
     def update(self, controlVariable, timeStep_s):
-        print(f'update() called with controlVariable(external force)={controlVariable}, timeStep_s={timeStep_s}.')
+        # print(f'update() called with controlVariable(external force)={controlVariable}, timeStep_s={timeStep_s}.')
 
         #     # Equation for mass-spring-damper process
         #     # Fext - kx - c*(d/dx) = m*(d^2/dx^2)
@@ -350,7 +455,7 @@ class SpringMassDamper:
 
         return self.displacement_m
 
-def run_simulation(p, i, d, num_steps_delay=0):
+def run_simulation(p, i, d, time_step_s=10e-3, num_steps_delay=0,  mass_kg=1.0, springConstantK_Npm=20.0, dampingCoefficientC_NsPm=10.0):
     """
     Returns:
     """
@@ -358,7 +463,7 @@ def run_simulation(p, i, d, num_steps_delay=0):
     pid = PidParallelForm(p, i, d)
     pid.setOutputLimits(True, -1000, 1000)
 
-    smd = SpringMassDamper()
+    smd = SpringMassDamper(mass_kg=mass_kg, springConstantK_Npm=springConstantK_Npm, dampingCoefficientC_NsPm=dampingCoefficientC_NsPm)
 
     start_time_s = 0.0
     end_time_s = 4.0
@@ -369,8 +474,8 @@ def run_simulation(p, i, d, num_steps_delay=0):
 
     curr_time_s = start_time_s
 
-    if num_steps_delay > 0:
-        delayed_control_values_N = [0]*num_steps_delay
+    # We need 1 element even if we want no delay. Additional elements create delays.
+    delayed_control_values_N = [0]*(num_steps_delay + 1)
 
     # Start with a set point = 0m
     pid.setSetPoint(0)
@@ -395,8 +500,9 @@ def run_simulation(p, i, d, num_steps_delay=0):
 
         # Calculate the external force by running the PID block
         control_value_N = pid.run(displacement_m, time_step_s)
-        if num_steps_delay > 0:
-            delayed_control_values_N.insert(0, control_value_N)
+
+        # Insert value onto start of delay list
+        delayed_control_values_N.insert(0, control_value_N)
 
         last_pid_terms = pid.getLastTerms()
         return_vals['p_term_vals'].append(last_pid_terms['p'])
@@ -404,10 +510,9 @@ def run_simulation(p, i, d, num_steps_delay=0):
         return_vals['d_term_vals'].append(last_pid_terms['d'])
         return_vals['output'].append(last_pid_terms['output'])
         
-        if num_steps_delay > 0:
-            displacement_m = smd.update(delayed_control_values_N.pop(), time_step_s)
-        else:
-            displacement_m = smd.update(control_value_N, time_step_s)
+        # Pop value at end of delay list
+        displacement_m = smd.update(delayed_control_values_N.pop(), time_step_s)
+        
         return_vals['times_s'].append(curr_time_s)
         return_vals['displacements_m'].append(displacement_m)
         
