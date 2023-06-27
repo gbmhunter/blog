@@ -141,7 +141,7 @@ Link to an image which is not a page resource:
 ## Asides
 
 {{% aside type="example" %}}
-This is an example.
+This is an example. There should be a reference at the end here[^ti-sboa187e-current-mode-control].
 {{% /aside %}}
 
 {{% aside type="note" %}}
