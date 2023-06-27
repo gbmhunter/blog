@@ -30,3 +30,9 @@ type: post
 * Added a new page on [Mid-Chip Solder Balls](/pcb-design/mid-chip-solder-balls/).
 
 * Added info on feedforward, standard form, series form, and diagrams to the [PID Control page](/programming/general/pid-control/).
+
+* Added info on manual tuning to the [PID Control page](/programming/general/pid-control/), including a worked example.
+
+* Added more info on [SMD crystal packages](/pcb-design/component-packages/crystal-packages/), including the 7x5mm package.
+
+* Added a new page on [Resonant LLC Converters](/electronics/components/power-regulators/switch-mode-power-supplies-smps/resonant-llc-converters/), a form of SMPS (switch-mode power supply).
