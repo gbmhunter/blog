@@ -179,6 +179,57 @@ One method to perform manual tuning with a PID controller in parallel form is[^s
 
 1. Increase `\(K_i\)` until it removes the steady-state error in an appropriate amount of time.
 
+{{% aside type="example" %}}
+
+Let's go through an example manual tuning step with a mass-spring-damper (MSD) simulation. The MSD system has the following properties:
+
+* `\(m=1kg\)` (mass)
+* `\(k=20Nm^{-1}\)` (spring constant)
+* `\(c=1Nsm^{-1}\)` (damping constant)
+
+The simulator time step is `\(1ms\)`. At `\(t=1s\)`, we change the set point from `\(0m\)` to `\(1m\)`.
+
+Let's start of by setting all the gains to 0. As expected, we get no response:
+
+{{% figure src="msd-simulation/manual-tuning-01-p0-i0-d0.png" width="600px" caption="1st step of tuning, set all gains to 0." %}}
+
+Now let's increase `\(K_p\)` until the system starts to oscillate continuously (increasing `\(K_p\)` from left to right in the figure):
+
+{{% figure src="msd-simulation/manual-tuning-02-increasing-kp-round-1.png" width="900px" caption="2st step of tuning, increasing `\(K_p\)` until system continuously oscillates." %}}
+
+At `\(K_p=100\)`, we get continuous oscillation. Now increase `\(K_d\)` until the oscillations are critically dampened:
+
+{{% figure src="msd-simulation/manual-tuning-03-increasing-kd-round-1.png" width="900px" caption="3rd step of tuning, increasing `\(K_d\)` until oscillations are dampened." %}}
+
+When `\(K_d=19\)`, the oscillations get critically dampened.
+
+Repeat this process to see if we can still dampen the system. Let's increase `\(K_p\)` again until we get continuous oscillation:
+
+{{% figure src="msd-simulation/manual-tuning-04-increasing-kp-round-2.png" width="900px" caption="4th step of tuning, increasing `\(K_p\)` again." %}}
+
+At around `\(K_p=1800\)` we start to get continuous oscillation. Can we dampen this by increasing `\(K_d\)` again?
+
+{{% figure src="msd-simulation/manual-tuning-05-increasing-kd-round-2.png" width="900px" caption="5th step of tuning, increasing `\(K_d\)` to see if we can critically dampen the oscillations." %}}
+
+No we can't! Somewhere between `\(K_d = 60{-}80\)`, rather than dampening the system further, we make the system unstable (see the right-most plot). Our loops of increasing `\(K_p\)`, `\(K_d\)` are finished, and we go back to the last stable combination, which was `\(K_p=100\)`, `\(K_d=19\)`.
+
+**NOTE: We might be able to increase `\(K_p\)` from `\(100\)` to somewhere below `\(1800\)` which can still be dampened, but for the purposes of this example we are going to say this is good enough and stop here.**
+
+Now the final step, increase `\(K_i\)` until the steady-state error is eliminated in a suitable amount of time:
+
+{{% figure src="msd-simulation/manual-tuning-06-increasing-ki.png" width="900px" caption="6th step of tuning, increasing `\(K_i\)` until steady-state error is eliminated in a suitable amount of time." %}}
+
+At `\(K_i=200\)`, the system settles in about `\(1s\)` with almost no steady-state error. So our final tuning parameters are:
+
+* `\(K_p=100\)`
+* `\(K_i=200\)`
+* `\(K_d=19\)`
+
+We get a little bit of overshoot, but this is fine for our application.
+
+{{% /aside %}}
+
+
 ## Integral Windup
 
 Integral windup is a common problem with PID controllers. It is when a sudden change in the set-point or large disturbance on the output (really anything that causes a large error between where you are and where you want to be), causes the integral term to build up (remember that the integral term accumulates errors). Once you have reached where you want to be, the integral term has to "unwind", and will drive the output past the setpoint until the error-time product is unwound.
@@ -350,15 +401,17 @@ If you are interested in the Python code that was used to perform this simulatio
 
 If you are looking for PID code for an embedded system, check out my [Pid project on GitHub (CP3id)](https://github.com/gbmhunter/CP3id). It is written in C++ and designed to be portable enough to run on many embedded systems, as well as Linux.
 
-## External Links
-
-A really cool open-source hardware project is the [osPID Kit](http://www.rocketscream.com/shop/ospid-kit) which is sold at [RocketScream](http://www.rocketscream.com). It looks really swank in it's acrylic blue enclosure.
+## More Resources
 
 [Improving The Beginners PID: Introduction](http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/) is a great set of articles explaining PID control loops and use Arduino code examples to supplement the explanations.
 
 [Practical Process Control: Proven Methods And Best Practices For Automated Process Control](http://controlguru.com/) has lots of useful information on PID.
 
 [Implementing PID Controllers with Python Yield Statement](https://jckantor.github.io/CBE30338/04.01-Implementing_PID_Control_with_Python_Yield_Statement.html) has some interesting examples on using the `yield` statement in Python to help create a PID controller.
+
+[pidtuner.com](https://pidtuner.com/) is a free, open-source PID tuning web application. It works by allowing you to import measured output/input data, then select a single step change within the data, apply a mathematical model to the system, and then play around with P, I and D coefficients and see how the system responds[^pid-tuner-dot-com-homepage].
+
+{{% figure src="pid-tuner-screenshot.png" width="900px" caption="Screenshot of the PID tuning app at pidtuner.com[^pid-tuner-dot-com-homepage]." %}}
 
 ## References
 
@@ -371,3 +424,4 @@ A really cool open-source hardware project is the [osPID Kit](http://www.rockets
 [^stack-exchange-good-strategies-for-tuning-pid-loops]: hauptmech (2012, Oct 27). _What are good strategies for tuning PID loops?_ [Forum Post]. Stack Exchange - Robotics. Retrieved 2023-06-24, from https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops. 
 [^uni-of-michigan-intro-pid-controller-design]: University of Michigan - Control Tutorials For MATLAB and SIMULINK. _Introduction: PID Controller Design_. Retrieved 2023-06-24, from https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID.
 [^instrumentation-tools-pid-controllers]: Tony R. Kuphaldt. _PID Controllers : Parallel, Ideal & Series_ [Web Page]. Instrumentation Tools. Retrieved 2023-06-24, from https://instrumentationtools.com/pid-controllers/.
+[^pid-tuner-dot-com-homepage]: pidtuner.com. _Tune your PID - It has never been easier_ [Web Page]. Retrieved 2023-06-27, from https://pidtuner.com/#/.

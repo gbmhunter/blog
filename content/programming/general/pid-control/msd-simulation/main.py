@@ -11,9 +11,9 @@ import numpy as np
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 def main():
-    create_msd_response_plots()
+    # create_msd_response_plots()
     # Didn't get the manual tuning working
-    # create_manual_tuning_plots()
+    create_manual_tuning_plots()
 
 def create_msd_response_plots():
     configs = [
@@ -47,12 +47,6 @@ def create_msd_response_plots():
             'd': 20,
             'plot_filename': 'msd-response-plot-p300-i300-d20.png',
         },
-        {
-            'p': 0,
-            'i': 0,
-            'd': 0,
-            'plot_filename': 'manual-tuning-p0-i0-d0.png',
-        },
     ]
 
     for config in configs:
@@ -61,8 +55,8 @@ def create_msd_response_plots():
 
 def create_manual_tuning_plots():
 
-    time_step_s = 1e-4
-    num_steps_delay = 3
+    time_step_s = 1e-3
+    num_steps_delay = 0
     mass_kg = 1.0
     springConstantK_Npm = 20.0
     dampingCoefficientC_NsPm = 1.0
@@ -98,17 +92,17 @@ def create_manual_tuning_plots():
             'd': 0,
         },
         {
-            'p': 20,
+            'p': 70,
             'i': 0,
             'd': 0,
         },
         {
-            'p': 23,
+            'p': 90,
             'i': 0,
             'd': 0,
         },
         {
-            'p': 25,
+            'p': 100,
             'i': 0,
             'd': 0,
         },
@@ -124,7 +118,7 @@ def create_manual_tuning_plots():
     create_manual_tuning_plot(configs, results, 'manual-tuning-02-increasing-kp-round-1.png')
 
     # Increase K_d until oscillations go away 
-    kp_value = 6
+    kp_value = 100
     configs = [
         {
             'p': kp_value,
@@ -144,7 +138,12 @@ def create_manual_tuning_plots():
         {
             'p': kp_value,
             'i': 0,
-            'd': 30,
+            'd': 15,
+        },
+        {
+            'p': kp_value,
+            'i': 0,
+            'd': 19,
         },
     ]
     results = []
@@ -161,26 +160,27 @@ def create_manual_tuning_plots():
     # Kp/Kd ROUND 2
     #########################################################
 
+    kd_value = 19
     configs = [
         {
             'p': 100,
             'i': 0,
-            'd': 20,
+            'd': kd_value,
         },
         {
-            'p': 1000,
+            'p': 500,
             'i': 0,
-            'd': 20,
+            'd': kd_value,
         },
         {
             'p': 1500,
             'i': 0,
-            'd': 20,
+            'd': kd_value,
         },
         {
             'p': 1800,
             'i': 0,
-            'd': 20,
+            'd': kd_value,
         },
     ]
     results = []
@@ -193,22 +193,29 @@ def create_manual_tuning_plots():
                                       dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
     create_manual_tuning_plot(configs, results, 'manual-tuning-04-increasing-kp-round-2.png')
 
-    # Increase K_d until oscillations go away 
+    # Increase K_d until oscillations go away
+    kp_value = 1800
     configs = [
         {
-            'p': 1800,
+            'p': kp_value,
             'i': 0,
-            'd': 20,
+            'd': 19,
         },
         {
-            'p': 1800,
+            'p': kp_value,
             'i': 0,
-            'd': 50,
+            'd': 30,
         },
         {
-            'p': 1800,
+            'p': kp_value,
             'i': 0,
-            'd': 100,
+            'd': 60,
+        },
+        # Starts oscillating at this point, rather than successfully damping, so we have found the limit!
+        {
+            'p': kp_value,
+            'i': 0,
+            'd': 80,
         },
     ]
     results = []
@@ -220,6 +227,49 @@ def create_manual_tuning_plots():
                                       springConstantK_Npm=springConstantK_Npm,
                                       dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
     create_manual_tuning_plot(configs, results, 'manual-tuning-05-increasing-kd-round-2.png')
+
+    #########################################################
+    # Ki
+    #########################################################
+
+    kp_value = 100
+    kd_value = 19
+    configs = [
+        {
+            'p': kp_value,
+            'i': 0,
+            'd': kd_value,
+        },
+        {
+            'p': kp_value,
+            'i': 50,
+            'd': kd_value,
+        },
+        {
+            'p': kp_value,
+            'i': 100,
+            'd': kd_value,
+        },
+        {
+            'p': kp_value,
+            'i': 150,
+            'd': kd_value,
+        },
+        {
+            'p': kp_value,
+            'i': 200,
+            'd': kd_value,
+        },
+    ]
+    results = []
+    for config in configs:
+        results.append(run_simulation(config['p'], config['i'], config['d'],
+                                      time_step_s=time_step_s,
+                                      num_steps_delay=num_steps_delay,
+                                      mass_kg=mass_kg,
+                                      springConstantK_Npm=springConstantK_Npm,
+                                      dampingCoefficientC_NsPm=dampingCoefficientC_NsPm))
+    create_manual_tuning_plot(configs, results, 'manual-tuning-06-increasing-ki.png')
 
 def create_manual_tuning_plot(configs, results, plot_filename):
     fig, axes = plt.subplots(ncols=len(configs), nrows=1, figsize=(15, 5), squeeze=False)
