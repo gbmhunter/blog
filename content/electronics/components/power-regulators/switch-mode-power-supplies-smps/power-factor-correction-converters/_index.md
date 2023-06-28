@@ -21,8 +21,16 @@ Many PFC modules utilize the boost topology and accept a AC input from 90-264VAC
 The 264VAC comes from most countries at most having a 240VAC (nominal) single phase voltage specification. Then 10% variation is added as typically allowed in grid specifications, i.e. `\(240V \times 1.1 = 264V\)`[^stack-exchange-where-does-264vac-come-from].
 {{% /aside %}}
 
+Boost topology operating in critical conduction mode (CrCM) is a popular choice because it offers provides a very good power factor. In critical conduction mode the on time `\(t_{ON}\)` is held constant over an entire line cycle. The off time is adjusted 
+
+The power factor is defined as[^all-about-circuits-calculating-power-factor]:
+
+<p>\begin{align}
+\text{Power factor} = \frac{\text{True power (W)}}{\text{Apparent power (VA)}}
+\end{align}</p>
 
 ## References
 
 [^eeweb-power-factor-correction-modules]: EEWeb (2013, Dec 29). _Power Factor Correction (PFC) Modules_ [Web Page]. Retrieved 2023-06-28, from https://www.eeweb.com/power-factor-correction-pfc-modules/.
-[^stack-exchange-where-does-264vac-come-from]: helloworld922 (2014, Jul 4). _Where does 264Vac come from?_ [Forum Post]. Stack Exchange - Electronics. Retrieved 2023-06-28, from https://electronics.stackexchange.com/questions/117729/where-does-264vac-come-from. 
+[^stack-exchange-where-does-264vac-come-from]: helloworld922 (2014, Jul 4). _Where does 264Vac come from?_ [Forum Post]. Stack Exchange - Electronics. Retrieved 2023-06-28, from https://electronics.stackexchange.com/questions/117729/where-does-264vac-come-from.
+[^all-about-circuits-calculating-power-factor]: Tony R. Kuphaldt. _Calculating Power Factor_ [Web Page]. All About Circuits. Retrieved 2023-06-28, from https://www.allaboutcircuits.com/textbook/alternating-current/chpt-11/calculating-power-factor/.
