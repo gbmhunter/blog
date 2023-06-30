@@ -11,6 +11,8 @@ title: Resonant LLC Converters
 type: page
 ---
 
+{{% warning-is-notes %}}
+
 ## Overview
 
 _Resonant LLC converters_ are a topology of switch-mode power supply (SMPS) that use two inductors (LL) and one capacitor in a resonant circuit (along with switches, transformers, a controller and more) to transform voltage and current. Compared to other SMPS topologies, they offer high efficiency (93-95% is common) due to ZCS (zero current switching) and ZVS (zero voltage switching) capabilities which reduce the switching losses.

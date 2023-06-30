@@ -5,7 +5,7 @@ date: 2011-09-05
 description: A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations.
 draft: false
 images: [ /electronics/components/capacitors/container-of-th-tantalum-caps.jpg ]
-lastmod: 2022-11-20
+lastmod: 2023-07-01
 tags: [ capacitor, cap, components, schematic symbols, circuit, ceramic, electrolytics, tantalums, packages, film, feedthrough, decoupling, MFC, X5R, X7R, C0G, NP0, singing capacitors, piezoelectric, Class I, Class II, Class III, audible noise, dielectrics, bending flex, FT-CAP, capacitance multipliers ]
 title: Capacitors
 type: page
@@ -255,7 +255,6 @@ Below is a close-up of the faulty electrolytic capacitor. You can't see the corr
 
 {{% /aside %}}
 
-
 ### Tantalum
 
 <table>
@@ -323,50 +322,50 @@ Because of their large operating temperature range, stability, and high price, t
 ### Film Capacitors
 
 <table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Synonyms/Subfamilies</td>
-<td>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Synonyms/Subfamilies</td>
+      <td>
 
 * MKT
 * MFCs (metallized film capacitors)
 * MPFCs (metallized polyester film capacitors)
 * Power (film) capacitor
-</td>
-</tr>
-<tr>
-<td>Range</td>
-<td>1nF - 10uF</td>
-</tr>
-<tr>
-<td>Polarized</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Dielectric</td>
-<td>Polyester, Polycarbonate</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>
+      </td>
+    </tr>
+    <tr>
+      <td>Range</td>
+      <td>1nF - 10uF</td>
+    </tr>
+    <tr>
+      <td>Polarized</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Dielectric</td>
+      <td>Polyester, Polycarbonate</td>
+    </tr>
+    <tr>
+      <td>Typical Marking</td>
+      <td>
 
 Because of their large size, the capacitance is usually either in `<number><number><multiplier><tolerance>` picofarad form (e.g. `105K` equals `10e^5pF` equals `1uF`), or because of their large size printed in it's absolute form (e.g. `0.1uF`) on the block somewhere.
-</td>
-<tr>
-<td>Uses</td>
-<td>
+      </td>
+    <tr>
+      <td>Uses</td>
+      <td>
 
 * Power supplies
 * Audio circuits
-</td>
-</tr>
-</tbody>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^bib-wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be **left as is** or **metallized**, which makes it a metallized film capacitor[^bib-capacitorguide.com].
