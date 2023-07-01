@@ -4,7 +4,7 @@ categories: [ Posts, Updates ]
 date: 2023-06-30
 description: Blog updates during June 2023.
 draft: false
-images: [ posts/2023/06-30-june-2023-updates/smps-control-modes-screenshot.png ]
+images: [ posts/2023/06-30-june-2023-updates/smps-control-modes-screenshot.png, posts/2023/06-30-june-2023-updates/mid-chip-solder-balls-screenshot.png, /posts/2023/06-30-june-2023-updates/pid-parallel-form-screenshot.png ]
 lastmod: 2023-06-30
 tags: []
 title: June 2023 Updates
