@@ -11,4 +11,4 @@ title: July 2023 Updates
 type: post
 ---
 
-* Updated the info on the Debouncing page.
+* Updated the info on the [Debouncing page](/electronics/circuit-design/debouncing/).

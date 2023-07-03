@@ -17,6 +17,10 @@ _Debouncing_ is the technique of detecting and removing multiple state changes f
 
 {{% figure src="example-switch-waveform-needs-debouncing.webp" width="600px" caption="An example output from a button press, which needs debouncing." %}}
 
+TODO: Finish below diagram.
+
+{{% figure src="rc-debouncing-waveforms.webp" width="600px" %}}
+
 You might have encountered a cheap electronic device before which didn't perform debouncing, and noticed when pressing buttons the device would behave erratically. Sometimes pressing down once will scroll through multiple items, or pressing "back" will jump through multiple menus (Puhui T-962 Reflow Oven, I'm looking at you).
 
 Debouncing has also been adopted as a software term to describe functions which are only called once even though the user may click the button multiple times (or to delay a function after user input[^free-code-camp-debounce-how-to-delay-a-javascript-function]). A classic example is a "Pay Now" button when buying something online.
@@ -25,7 +29,7 @@ The amount the time it takes for a switch to stabilize is highly dependent on th
 
 ## Hardware Debouncing
 
-TODO: Add RC circuit.
+{{% figure src="rc-debouncing-circuit.webp" width="600px" caption="A simple RC debouncing circuit." %}}
 
 A schmitt trigger can be used to avoid "grey areas" of digital logic.
 
