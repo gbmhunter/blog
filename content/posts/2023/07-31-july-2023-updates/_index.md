@@ -12,3 +12,5 @@ type: post
 ---
 
 * Updated the info on the [Debouncing page](/electronics/circuit-design/debouncing/).
+
+* Added info/gif on [Ultrasonic Humidifiers](/electronics/components/sensors/ultrasonic-sensors/#ultrasonic-humidifiers) to the Ultrasonic Sensors page.

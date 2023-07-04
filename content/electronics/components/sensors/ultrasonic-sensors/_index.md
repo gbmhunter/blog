@@ -428,7 +428,15 @@ Detected objects can be classified as follows:
 
 CMUTs use a change in capacitance to perform energy transduction. They are micromachined (i.e. small), and therefore easier to assemble into 2D and 3D arrays than traditional piezo transducers. They have a large frequency bandwidth.
 
-## External Resources
+## Ultrasonic Humidifiers
+
+_Ultrasonic humidifiers_ vibrates a diaphragm immersed in water at higher-than-hearing frequencies (much higher that hearing --- 1.7MHz can be used[^rotasystem-ultrasonic-humidification]). The vibrations "push" tiny droplets of water into the air to create water vapour and a humid environment. They are used as a more energy efficient and quieter alternative to evaporative humidifiers[^sylvane-how-do-ultrasonic-humidifiers-work].
+
+{{% figure src="ultrasonic-humidifier-toy-kettle.gif" width="250px" caption="A toy kettle which uses an ultrasonic humidifier to create water vapour and give the impression of steam." %}}
+
+The exact mechanism of creating water vapour from ultrasound seems to be a mixture of cavitation and capillary wave action which creates the water vapour. Cavitation due the amplitude of the ultrasonic sound waves creates small vacuum bubbles. This creates crossed capillary waves, where small droplets are released from the waves crest on the surface of the water[^rotasystem-ultrasonic-humidification].
+
+## Further Reading
 
 The [Olympus Ultrasonic Transducers Technical Notes](http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf) is a great document explaining some of the basics of ultrasonic transducers and related equations. If the link is dead, you can use the [local download](/docs/olympus-ultrasonic-transducers-technical-notes.pdf).
 
@@ -439,3 +447,8 @@ For information on how to tune circuits with piezo transducers in them, see http
 A good journal article on ultrasound losses in air is at [http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf](http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf) [Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems](http://www.cypress.com/?docID=42341) is a good document describing an ultrasonic system built from a transducer and a PSoC 1 microcontroller. You can also use the [local download](/docs/Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems.pdf).
 
 _Maxim - Proximity Detector Features In Ultrasonic Transducers_ shows a good circuit when using a separate transmitter and receiver. You can also use the [local download link](/docs/Maxim - Proximity Detector Features Ultrasonic Transducers.pdf).
+
+## References
+
+[^sylvane-how-do-ultrasonic-humidifiers-work]: Sylvane (2021, Nov 18). _How Do Ultrasonic Humidifiers Work?_ [Web Page]. Retrieved 2023-07-04, from https://www.sylvane.com/blog/how-do-ultrasonic-humidifiers-work-html. 
+[^rotasystem-ultrasonic-humidification]: Rotasystem. _Ultrasonic Humidification_. Retrieved 2023-07-04, from https://www.rotasystem-english.com/air-humidification/ultrasonic-humidification/.
