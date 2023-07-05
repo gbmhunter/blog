@@ -31,6 +31,8 @@ One simple way is to use a RC circuit with a Schmitt inverter:
 
 {{% figure src="rc-debouncing-circuit.webp" width="600px" caption="A simple RC debouncing circuit." %}}
 
+Schmitt behaviour is needed on the inverter otherwise the bouncing which causes the RC charging/discharging waveform to wobble could cause the inverter output to toggle back and forth, rendering the circuit useless.
+
 The following diagram shows how this RC debouncing circuit works:
 
 {{% figure src="rc-debouncing-waveforms.webp" width="900px" %}}
