@@ -2,8 +2,9 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Communication Protocols, USB ]
 date: 2023-07-07
+description: Data and power roles, standards, communication protocols, schematics and more info about USB power delivery (PD).
 draft: false
-lastmod: 2023-07-07
+lastmod: 2023-07-08
 tags: [ USB, power delivery, PD, sinks, sources, e-marker, Type-C ]
 title: USB Power Delivery
 type: page
@@ -28,7 +29,6 @@ A summary of USB specifications and maximum voltages, currents and powers is sho
 {{% aside type="info" %}}
 According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (5A) must contain e-marker chips, which identify the cable and it's current handling capabilities[^wikipedia-usb-c].
 {{% /aside %}}
-
 
 ## Data and Power Roles
 
@@ -61,6 +61,8 @@ USB PD uses the two CC lines provided in the Type-C connector to perform negotia
 ### USB 2.0 Without PD
 
 Before we dive into PD, let's cover what happens without PD. The most basic powering scenario with Type-C connectors is simple pull-down of the CC lines, leading to 5V being provided on VBUS at either 1.5A or 3A.
+
+{{% figure src="usb2.0-without-pd.webp" width="800px" caption="Basic connection scheme for USB 2.0 without PD over a Type-C connector." %}}
 
 The value of `\(R_p\)` is how the DFP advertises it's current capability. The UFP always has a fixed value for `\(R_d\)`. When connected together, they form a voltage-divider. The UFP can measure the voltage at the center point and determine the current capability of the DFP. 
 
