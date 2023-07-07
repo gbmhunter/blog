@@ -1,11 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Communication Protocols" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Communication Protocols ]
 date: 2011-09-05
 draft: false
-tags: [ "electronics", "communication protocols", "USB", "master", "slave", "encoding", "bus", "OTG", "TPL" ]
-title: "USB Protocol"
-type: "page"
+lastmod: 2023-07-07
+tags: [ electronics, communication protocols, USB, master, slave, encoding, bus, OTG, TPL ]
+title: USB Protocol
+type: page
 ---
 
 ## Overview
