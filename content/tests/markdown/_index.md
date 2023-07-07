@@ -250,6 +250,42 @@ This is another footnote[^foot-2].
 
 * of a few elements.
 
+## Numbering
+
+
+Some text.<br />
+And here goes link to <a href="#some_table" class="table-link"></a>. And another text.<br />
+
+Some text.<br />
+And here goes link to <a href="#some_table2" class="table-link"></a>. And another text.<br />
+
+Some text.<br />
+And here goes link to <a href="#some_table3" class="table-link"></a>. And another text.<br />
+
+Some text.<br />
+
+This table below should say "Table 1":
+
+<table data-referenced="some_table" title="Table of Foo">
+<tr><td>+------+</td></tr>
+<tr><td>| cell |</td></tr>
+<tr><td>+------+</td></tr>
+</table>
+
+Some text.
+
+<table data-referenced="some_table2" title="Table of Bar">
+<tr><td>+------+</td></tr>
+<tr><td>| cell |</td></tr>
+<tr><td>+------+</td></tr>
+</table>
+Some text.<br />
+<table data-referenced="some_table3" title="Table of Baz">
+<tr><td>+------+</td></tr>
+<tr><td>| cell |</td></tr>
+<tr><td>+------+</td></tr>
+</table>
+
 ## Other
 
 References, authors, related content and tags sections should be below (in that order).
