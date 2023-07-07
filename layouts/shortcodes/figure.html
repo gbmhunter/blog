@@ -40,22 +40,26 @@ If it is a page resource, resample to match the specified width */}}
 <!-- The min-width of 200px makes sure than the caption text doesn't get too squashed when the width of the image is small (e.g. 100px). The user provided width gets set to max-width, which allows the actual width to scale smaller as the page
 width decreases -->
 <div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" style="{{ with $width_without_px }}max-width:{{.}}px;{{end}} min-width: 200px; {{ with .Get "float" }} float:{{.}};{{end}}">
-  <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    {{- /* The vbox here centers the image in the middle of the div */ -}}
-    <div class="img vbox" style="width: 100%;" {{ with .Get "size" }} data-size="{{.}}"{{ end }}>
-      {{- /* We must use an absolute permalink (which is just Permalink) and not RelPermalink for the image source otherwise the image will not be displayed when the URL is not the page/posts URL (e.g. it won't be displayed on the main page if the page/post happens to be recently updated) */ -}}
-      <img itemprop="thumbnail" src="{{ $link }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }} style="max-width: {{ $width_without_px }}px;"/><!-- <img> hidden if in .gallery -->
-    </div>
-    {{- with .Get "link" | default (.Get "src") -}}
-      <a href="{{ $link }}" itemprop="contentUrl"></a>
-    {{- end -}}
-    {{- if (.Get "caption") -}}
-    <figcaption>
-      <p>
+<figure {{ with .Get "ref" }}ref="{{.}}"{{ end }} {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+{{- if .Get "ref" -}}
+<a name="{{ .Get "ref" }}"></a>
+{{- end -}}
+{{- /* The vbox here centers the image in the middle of the div */ -}}
+<div class="img vbox" style="width: 100%;" {{ with .Get "size" }} data-size="{{.}}"{{ end }}>
+{{- /* We must use an absolute permalink (which is just Permalink) and not RelPermalink for the image source otherwise the image will not be displayed when the URL is not the page/posts URL (e.g. it won't be displayed on the main page if the page/post happens to be recently updated) */ -}}
+<img itemprop="thumbnail" src="{{ $link }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }} style="max-width: {{ $width_without_px }}px;"/><!-- <img> hidden if in .gallery -->
+</div>
+{{- with .Get "link" | default (.Get "src") -}}
+<a href="{{ $link }}" itemprop="contentUrl"></a>
+{{- end -}}
+{{- if (.Get "caption") -}}
+<figcaption>
+
 <!-- Caption may have markdown in it. Markdown inside HTML must be separated from the processing HTML by a blank line, and don't have any spaces as these can be rendered as a code block -->
 {{ .Get "caption" | htmlUnescape | safeHTML }}
-      </p>
-    </figcaption>
-    {{- end -}}
-  </figure>
+
+</figcaption>
+{{- end -}}
+</figure>
+</a>
 </div>

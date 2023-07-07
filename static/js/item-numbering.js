@@ -1,39 +1,73 @@
 $(function() {
-    var tables = {};
+  var figures = {}
+  var tables = {}
 
-    const attrName = 'ref'
+  const attrName = 'ref'
 
-    $('table[data-referenced]').each(function() {
-            var table = $(this);
-            var tableRef = table.attr("data-referenced");
+  // Autoincrement/reference figures
+  $('figure[' + attrName + ']').each(function() {
+    var figure = $(this);
+    var figureRef = figure.attr(attrName);
 
-            var number = mapIndex(tables, tableRef);
+    var number = mapIndex(figures, figureRef);
 
-            if (number < 0) { // this table is first met
-                    number = mapIndices(tables) + 1;
+    if (number < 0) { // this table is first met
+      number = mapIndices(figures) + 1
 
-                    var annotation = table.attr("title");
+      // var annotation = table.attr("title")
 
-                    tables[tableRef] = table;
+      figures[figureRef] = figure;
 
-                    var wrapper = $('<div class="referenced-table"><a name="' + tableRef + '"></a></div>');
-                    wrapper.insertAfter(table);
-                    wrapper.append(table);
-                    wrapper.append($('<div class="annotation">Table ' + number + '. ' + annotation + '</div>'));
-            }
+      figure.find('figcaption').find('p').prepend('Figure '+ number + ': ')
 
-            // Find each reference to this table in the document and insert the now-assigned number
-            $('a[href="#' + tableRef + '"]').each(function () {
-                var link = $(this);
-                link.text('Table ' + number)
-                var linkWrapper = $('<span></span>');
-                linkWrapper.insertAfter(link);
-                linkWrapper.append(link);
-                linkWrapper.append($('<sup>[<a href="#' + tableRef + '">' + number  + '</a>]</sup>'));
-            });
+      // var wrapper = $('<div class="referenced-table"><a name="' + tableRef + '"></a></div>');
+      // wrapper.insertAfter(table);
+      // wrapper.append(table);
+      // wrapper.append($('<div class="annotation">Table ' + number + '. ' + annotation + '</div>'));
+    }
+
+    // Find each reference to this table in the document and insert the now-assigned number
+    $('a[href="#' + figureRef + '"]').each(function () {
+      var link = $(this)
+      link.text('Figure ' + number)
+      // var linkWrapper = $('<span></span>');
+      // linkWrapper.insertAfter(link);
+      // linkWrapper.append(link);
+      // linkWrapper.append($('<sup>[<a href="#' + tableRef + '">' + number  + '</a>]</sup>'));
     });
+  });
 
-    // can do some other stuff with tables map here
+  $('table[' + attrName + ']').each(function() {
+    var table = $(this);
+    var tableRef = table.attr(attrName);
+
+    var number = mapIndex(tables, tableRef);
+
+    if (number < 0) { // this table is first met
+      number = mapIndices(tables) + 1;
+
+      var annotation = table.attr("title");
+
+      tables[tableRef] = table;
+
+      var wrapper = $('<div class="referenced-table"><a name="' + tableRef + '"></a></div>');
+      wrapper.insertAfter(table);
+      wrapper.append(table);
+      wrapper.append($('<div class="annotation">Table ' + number + '. ' + annotation + '</div>'));
+    }
+
+    // Find each reference to this table in the document and insert the now-assigned number
+    $('a[href="#' + tableRef + '"]').each(function () {
+      var link = $(this);
+      link.text('Table ' + number)
+      // var linkWrapper = $('<span></span>');
+      // linkWrapper.insertAfter(link);
+      // linkWrapper.append(link);
+      // linkWrapper.append($('<sup>[<a href="#' + tableRef + '">' + number  + '</a>]</sup>'));
+    });
+  });
+
+  // can do some other stuff with tables map here
 });
 function mapIndex(map, key) {
     var index = 0;

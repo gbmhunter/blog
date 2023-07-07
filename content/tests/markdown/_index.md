@@ -132,7 +132,9 @@ A wide HTML table (we should be able to scroll horizontally):
 
 ## Images
 
-{{% figure src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. **Bold text**. An equation: `\(x^2\)`. Always use '%' and not '<' in the hugo shortcode delimiters to render equations and footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
+The logo is shown in <a href="#fig-cartoon-ninja" class="table-link"></a>
+
+{{% figure ref="fig-cartoon-ninja" src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. **Bold text**. An equation: `\(x^2\)`. Always use '%' and not '<' in the hugo shortcode delimiters to render equations and footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
 
 Link to an image which is not a page resource:
 
@@ -266,7 +268,7 @@ Some text.<br />
 
 This table below should say "Table 1":
 
-<table data-referenced="some_table" title="Table of Foo">
+<table ref="some_table" title="Table of Foo">
 <tr><td>+------+</td></tr>
 <tr><td>| cell |</td></tr>
 <tr><td>+------+</td></tr>
@@ -274,13 +276,13 @@ This table below should say "Table 1":
 
 Some text.
 
-<table data-referenced="some_table2" title="Table of Bar">
+<table ref="some_table2" title="Table of Bar">
 <tr><td>+------+</td></tr>
 <tr><td>| cell |</td></tr>
 <tr><td>+------+</td></tr>
 </table>
 Some text.<br />
-<table data-referenced="some_table3" title="Table of Baz">
+<table ref="some_table3" title="Table of Baz">
 <tr><td>+------+</td></tr>
 <tr><td>| cell |</td></tr>
 <tr><td>+------+</td></tr>
