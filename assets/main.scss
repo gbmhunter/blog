@@ -74,8 +74,9 @@ p, li, div {
     }
 }
 
-figcaption p {
-    font-size: 80%;
+// Style for both figure captions and table captions
+figcaption p, table caption {
+    font-size: 100%;
     font-style: italic;
     color: gray;
     text-align: center;
@@ -1504,21 +1505,4 @@ span.con {
     background-color: var(--main-color-light);
     padding: 1em; // Padding based on em, not px, so is responsive?
     margin-bottom: 1em; // Add space at the bottom so the next heading/paragraph e.t.c does not collide with it
-}
-
-/* ========================================================================= */
-/* ITEM NUMBERING                                                            */
-/* ========================================================================= */
-
-.referenced-table {
-    width: 30%;
-    margin: 10px 5px 15px 5px;
-    text-align: center;
-}
-.referenced-table table {
-    width: 100%;
-    font-family: monospace;
-}
-.referenced-table .annotation {
-    text-align: center;
 }

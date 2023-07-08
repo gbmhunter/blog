@@ -109,6 +109,18 @@ Heading 1   | Heading 2
 abc         | def
 ghi         | jkl
 
+Here should be a reference to the below table: {{% ref "table-doesnt-mean-anything" %}}
+
+<table ref="table-doesnt-mean-anything">
+<caption>Data that doesn't mean anything. This caption should be prefixed with "Table 1: ".</caption>
+<tbody>
+<tr>
+  <td>abcdefghi</td>
+  <td>jklmnopqr</td>
+</tr>
+</tbody>
+</table>
+
 A wide HTML table (we should be able to scroll horizontally):
 
 <div class="table-wrapper">
@@ -251,42 +263,6 @@ This is another footnote[^foot-2].
 * is a list
 
 * of a few elements.
-
-## Numbering
-
-
-Some text.<br />
-And here goes link to <a href="#some_table" class="table-link"></a>. And another text.<br />
-
-Some text.<br />
-And here goes link to <a href="#some_table2" class="table-link"></a>. And another text.<br />
-
-Some text.<br />
-And here goes link to <a href="#some_table3" class="table-link"></a>. And another text.<br />
-
-Some text.<br />
-
-This table below should say "Table 1":
-
-<table ref="some_table" title="Table of Foo">
-<tr><td>+------+</td></tr>
-<tr><td>| cell |</td></tr>
-<tr><td>+------+</td></tr>
-</table>
-
-Some text.
-
-<table ref="some_table2" title="Table of Bar">
-<tr><td>+------+</td></tr>
-<tr><td>| cell |</td></tr>
-<tr><td>+------+</td></tr>
-</table>
-Some text.<br />
-<table ref="some_table3" title="Table of Baz">
-<tr><td>+------+</td></tr>
-<tr><td>| cell |</td></tr>
-<tr><td>+------+</td></tr>
-</table>
 
 ## Other
 
