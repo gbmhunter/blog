@@ -41,9 +41,8 @@ If it is a page resource, resample to match the specified width */}}
 width decreases -->
 <div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" style="{{ with $width_without_px }}max-width:{{.}}px;{{end}} min-width: 200px; {{ with .Get "float" }} float:{{.}};{{end}}">
 <figure {{ with .Get "ref" }}ref="{{.}}"{{ end }} {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-{{- if .Get "ref" -}}
-<a name="{{ .Get "ref" }}"></a>
-{{- end -}}
+<!-- Anchor so use can click "Figure 1" and it jumps to figure -->
+{{ with .Get "ref" }}<a name="{{.}}"></a>{{ end }}
 {{- /* The vbox here centers the image in the middle of the div */ -}}
 <div class="img vbox" style="width: 100%;" {{ with .Get "size" }} data-size="{{.}}"{{ end }}>
 {{- /* We must use an absolute permalink (which is just Permalink) and not RelPermalink for the image source otherwise the image will not be displayed when the URL is not the page/posts URL (e.g. it won't be displayed on the main page if the page/post happens to be recently updated) */ -}}

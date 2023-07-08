@@ -3,11 +3,12 @@ $(function() {
   var tables = {}
 
   const attrName = 'ref'
-
+  console.log('Numbering figures/tables...')
   // Autoincrement/reference figures
   $('figure[' + attrName + ']').each(function() {
     var figure = $(this);
-    var figureRef = figure.attr(attrName);
+    var figureRef = figure.attr(attrName)
+    console.log('figureRef=', figureRef)
 
     var number = mapIndex(figures, figureRef);
 
