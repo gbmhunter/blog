@@ -16,15 +16,53 @@ type: page
 
 USB _power delivery_ (PD) is a **communication protocol and power transfer service designed to work with the USB Type-C connector**. Without PD, USB Type-C connectors can provide 5V at 3A (15W). PD allows a power source and sink to communicate with each other and negotiate a **higher voltage and/or current, up to maximum of 20V at 5A (240W)**[^usb-org-usb-pd].
 
-A summary of USB specifications and maximum voltages, currents and powers is shown in the table below[^ti-primer-on-usb-pd]:
+{{% ref "table-summary-usb-specs" %}} shows a summary of USB specifications and maximum voltages, currents and powers.
 
-| Specification | Max. Voltage | Max. Current | Max. Power
-|---------------|--------------|--------------|------------
-| USB 2.0       | 5V           | 500mA        | 2.5W
-| USB 3.0/3.1   | 5V           | 900mA        | 4.5W
-| USB BC 1.2    | 5V           | 1.5A         | 7.5W
-| USB Type-C 1.2| 5V           | 3A           | 15W
-| USB PD 3.0    | 20V          | 5A           | 150W
+<table ref="table-summary-usb-specs">
+<caption>
+
+Summary of USB maximum voltages, currents and powers for each standard[^ti-primer-on-usb-pd].</caption>
+<thead>
+<tr>
+<th>Specification</th>
+<th>Max. Voltage</th>
+<th>Max. Current</th>
+<th>Max. Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB 2.0</td>
+<td>5V</td>
+<td>500mA</td>
+<td>2.5W</td>
+</tr>
+<tr>
+<td>USB 3.0/3.1</td>
+<td>5V</td>
+<td>900mA</td>
+<td>4.5W</td>
+</tr>
+<tr>
+<td>USB BC 1.2</td>
+<td>5V</td>
+<td>1.5A</td>
+<td>7.5W</td>
+</tr>
+<tr>
+<td>USB Type-C 1.2</td>
+<td>5V</td>
+<td>3A</td>
+<td>15W</td>
+</tr>
+<tr>
+<td>USB PD 3.0</td>
+<td>20V</td>
+<td>5A</td>
+<td>150W</td>
+</tr>
+</tbody>
+</table>
 
 {{% aside type="info" %}}
 According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (5A) must contain e-marker chips, which identify the cable and it's current handling capabilities[^wikipedia-usb-c].
@@ -62,7 +100,9 @@ USB PD uses the two CC lines provided in the Type-C connector to perform negotia
 
 Before we dive into PD, let's cover what happens without PD. The most basic powering scenario with Type-C connectors is simple pull-down of the CC lines, leading to 5V being provided on VBUS at either 1.5A or 3A.
 
-{{% figure src="usb2.0-without-pd.webp" width="800px" caption="Basic connection scheme for USB 2.0 without PD over a Type-C connector." %}}
+{{% ref "usb2.0-without-pd" %}} shows the basic connections on the CC lines when using USB 2.0 over a Type-C connector.
+
+{{% figure ref="usb2.0-without-pd" src="usb2.0-without-pd.webp" width="800px" caption="Basic connection scheme for USB 2.0 without PD over a Type-C connector." %}}
 
 The value of `\(R_p\)` is how the DFP advertises it's current capability. The UFP always has a fixed value for `\(R_d\)`. When connected together, they form a voltage-divider. The UFP can measure the voltage at the center point and determine the current capability of the DFP. 
 

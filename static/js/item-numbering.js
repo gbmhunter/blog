@@ -43,9 +43,16 @@ $(function() {
       tables[tableRef] = table
 
       // Prefix the caption with "Table 1: "
-      table.find('caption').prepend('Table ' + number + ': ')
-
-      // Add wrapper so we can have an anchor
+      const caption = table.find('caption')
+      // The caption may contain a paragraph with the text in it, or it may be directly in the caption element
+      // itself. Work out which case it is:
+      const paragraph = caption.find('p')
+      if (paragraph.length > 0) {
+        paragraph.prepend('Table ' + number + ': ')
+      } else {
+        caption.prepend('Table ' + number + ': ')
+      }
+      // Add wrapper so we can have an anchorz
       var wrapper = $('<div class="referenced-table"><a name="' + tableRef + '"></a></div>')
       wrapper.insertAfter(table)
       wrapper.append(table)
