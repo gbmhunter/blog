@@ -1084,6 +1084,14 @@ div.content {
             padding-inline-start: 8px; 
         }
     }
+
+    // Get rid of the bottom margin of paragraphs inside table captions,
+    // as these add too much white space below the table
+    caption {
+        p {
+            margin-bottom: 0px;
+        }
+    }
 }
 
 div.content tr:nth-of-type(even) {

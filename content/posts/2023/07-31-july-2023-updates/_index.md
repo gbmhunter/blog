@@ -16,3 +16,5 @@ type: post
 * Added info/gif on [Ultrasonic Humidifiers](/electronics/components/sensors/ultrasonic-sensors/#ultrasonic-humidifiers) to the Ultrasonic Sensors page.
 
 * Added a new page on [USB Power Delivery (PD)](/electronics/communication-protocols/usb-protocol/usb-power-delivery/).
+
+* Added figure and table numbering funcionality, along with the ability to reference the figures and tables from other parts of the content.

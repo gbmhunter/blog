@@ -104,7 +104,51 @@ Before we dive into PD, let's cover what happens without PD. The most basic powe
 
 {{% figure ref="usb2.0-without-pd" src="usb2.0-without-pd.webp" width="800px" caption="Basic connection scheme for USB 2.0 without PD over a Type-C connector." %}}
 
-The value of `\(R_p\)` is how the DFP advertises it's current capability. The UFP always has a fixed value for `\(R_d\)`. When connected together, they form a voltage-divider. The UFP can measure the voltage at the center point and determine the current capability of the DFP. 
+The value of `\(R_p\)` is how the DFP advertises it's current capability. The UFP always has a fixed value for `\(R_d\)` of `\(5.1k\Omega\)`. When connected together, they form a voltage-divider. The UFP can measure the voltage at the center point and determine the current capability of the DFP. {{% ref "rp-requirements" %}} shows the requirements for `\(R_p\)`.
+
+<table ref="rp-requirements">
+  <caption>
+  
+The requirements for `\(R_p\)` on the source side of the cable.[^st-overview-usb-type-c-pd]</caption>
+  <thead>
+    <tr>
+      <th>Source Current Capability</th>
+      <th>Current Source to 1.7-5.5V</th>
+      <th>\(R_p\) pull-up to 3.3V ±5%</th>
+      <th>\(R_p\) pull-up to 4.75-5.5V</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Default USB power</td>
+      <td>80µA ±20%</td>
+      <td>36kΩ ±20%</td>
+      <td>56kΩ ±20%</td>
+    </tr>
+    <tr>
+      <td>1.5A @5V</td>
+      <td>180µA ±8%</td>
+      <td>12kΩ ±5%</td>
+      <td>22kΩ ±5%</td>
+    </tr>
+    <tr>
+      <td>3.0A @5V</td>
+      <td>330µA ±8%</td>
+      <td>4.7kΩ ±5%</td>
+      <td>10kΩ ±5%</td>
+    </tr>
+  </tbody>
+</table>
+
+The Type-C cable needs to provide a pull-down resistor `\(R_a\)` on it's `VCONN` pin to signal to the source that it needs power. `\(R_a\)` must be between `\(0.8{-}1.2k\Omega\)`[^infineon-termination-resistors-for-type-c]. With this resistance, the source can easily tell the difference between which CC pin is connected to the sink and which is the `VCONN`. 
+
+## Emarkers
+
+_Emarkers_ are chips embedded in fancier USB Type-C cables which can inform the source or sink about their capabilities. They are typically embedded in one or both of the ends of the cable. They are required for cables that are designed to go over the standard 3A and provide up to 5A of current.
+
+The Emarker requires power, at it uses one of the CC lines to do so. One of the CC lines is used for communication (which one depends on which way around the Type-C connector is plugged in), and the other is called `\(VCONN\)` and is used to power the Emarker.
+
+It's a manufacturing choice about whether a cable is provided with just one Emarker at one of the cable or one at both ends. In the case of just one at one end, a separate `VCONN` wire must be run the entire length of the cable to bring power to the E-marker from the other end of the cable.
 
 ## References
 
@@ -112,3 +156,5 @@ The value of `\(R_p\)` is how the DFP advertises it's current capability. The UF
 [^wikipedia-usb-c]: Wikipedia (2023, Jun 29). _USB-C_ [Web Page]. Retrieved 2023-07-07, from https://en.wikipedia.org/wiki/USB-C.
 [^usb-org-usb-pd]: usb.org. _USB Charger (USB Power Delivery)_ [Web Page]. Retrieved 2023-07-07, from https://www.usb.org/usb-charger-pd.
 [^usb-promoter-group-pd-rev-3.1]: USB Promoter Group. _USB Promoter Group Announces USB Power Delivery Specification Revision 3.1 - Specification defines delivering up to 240W of power over USB Type-C_ [PDF]. Retrieved 2023-07-07, from https://www.usb.org/sites/default/files/2021-05/USB%20PG%20USB%20PD%203.1%20DevUpdate%20Announcement_FINAL.pdf. 
+[^st-overview-usb-type-c-pd]: STMicroelectronics. _TA0357 - Overview of USB Type-C and Power Delivery technologies_. Retrieved 2023-07-08, from https://www.st.com/resource/en/technical_article/ta0357-overview-of-usb-typec-and-power-delivery-technologies-stmicroelectronics.pdf.
+[^infineon-termination-resistors-for-type-c]: Infineon (2015, Apr 17). _Termination Resistors Required for the USB Type-C Connector – KBA97180_ [Forum Post]. Retrieved 2023-07-08, from https://community.infineon.com/t5/Knowledge-Base-Articles/Termination-Resistors-Required-for-the-USB-Type-C-Connector-KBA97180/ta-p/253544.
