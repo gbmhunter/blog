@@ -5,7 +5,7 @@ date: 2023-07-07
 description: Data and power roles, standards, communication protocols, schematics and more info about USB power delivery (PD).
 draft: false
 lastmod: 2023-07-08
-tags: [ USB, power delivery, PD, sinks, sources, e-marker, Type-C ]
+tags: [ USB, power delivery, PD, sinks, sources, e-marker, Type-C, USB-IF, batteries, charging ]
 title: USB Charging and Power Delivery
 type: page
 ---
@@ -14,9 +14,9 @@ type: page
 
 ## Overview
 
-As more and more devices communicate over USB, the same devices are also being designed to be powered/charged over USB (removing the need for a second cable!). It started of with low power devices drawing power from the bus voltage, and has progressed to specific standards being implement to address the issue of charging power hungry devices (e.g. laptops) over the same USB cables. Many companies have implemented "quick charge" capabilitieis over USB cables, but the USB Implementators Forum hopes to standardize charging with the more recent USB Power Delivery standard.
+As more and more devices communicate over USB, the same devices are also being designed to be powered/charged over USB (removing the need for a second cable!). It started of with low power devices drawing power from the bus voltage, and has progressed to specific standards being implement to address the issue of charging power hungry devices (e.g. laptops) over the same USB cables. Many companies have implemented "quick charge" capabilitieis over USB cables, but the USB Implementators Forum (USB-IF) hopes to standardize charging with the more recent USB Power Delivery standard.
 
-USB _power delivery_ (PD) is a **communication protocol and power transfer service designed to work with the USB Type-C connector**. Without PD, USB Type-C connectors can provide 5V at 3A (15W). PD allows a power source and sink to communicate with each other and negotiate a **higher voltage and/or current, up to maximum of 20V at 5A (240W)**[^usb-org-usb-pd]. Using Type-C cables to power things is becoming increasingly popular, and the EU has mandated that from 2024 most personal electronic equipment must come with a Type-C charging port[^consumer-org-eus-charging-port-rules].
+USB _power delivery_ (PD) is a **communication protocol and power transfer service designed to work with the USB Type-C connector**. Without PD, USB Type-C connectors can provide 5V at 3A (15W). PD allows a power source and sink to communicate with each other and negotiate a **higher voltage and/or current, up to maximum of 20V at 5A (240W)**[^usb-org-usb-pd]. Using Type-C cables to power things is becoming increasingly popular, and the EU has mandated that from 2024 most personal electronic equipment must come with a Type-C charging port[^consumer-org-eus-charging-port-rules]. And 2 years after that in 2026, laptops must also be chargable from USB Type-C connectors.
 
 {{% ref "table-summary-usb-specs" %}} shows a summary of USB specifications and maximum voltages, currents and powers.
 
@@ -90,7 +90,7 @@ Simlarly, there are also three _power_ roles:
 
 ### USB Power Delivery 1.0
 
-_USB Power Delivery 1.0_ was released in July 2012[^renesas-usb-power-delivery] which offered 5 fixed power profiles. {{% ref "usb-pd-1.0" %}} shows the voltages, currents and powers that each profile provides.
+_USB Power Delivery 1.0_ was released by the USB-IF in July 2012[^renesas-usb-power-delivery] which offered 5 fixed power profiles. {{% ref "usb-pd-1.0" %}} shows the voltages, currents and powers that each profile provides.
 
 <table ref="usb-pd-1.0">
   <caption>
@@ -138,9 +138,15 @@ The 5 power profiles offered by USB PD 1.0[^manhatten-usb-c-power-delivery].</ca
   </tbody>
 </table>
 
+### USB Power Delivery 2.0
+
+### USB Power Delivery 3.0
+
+_USB Power Delivery 3.0_ made no changes to the maximum power compared to PD 2.0/1.0 (still 100W), but did improve by adding more charging information exchange between the two ports. Information about battery charging status, failures, overvoltages, battery temperatures can be exchanged[^the-phone-talks-usb-pd-2.0-3.0-3.1].
+
 ### USB Power Delivery 3.1 
 
-_USB PD Revision 3.1_ was released in May 2021[^usb-promoter-group-pd-rev-3.1]. It increased the max. power from 100W to 240W. Added new fixed voltages of 28V (140W), 36V (180W) and 48V (240W), as well as an adjustable voltage mode that allows the device being powered to request intermediate voltages (with a 100mV resolution[^usb-promoter-group-pd-rev-3.1]) between 15V and the max. supported voltage of the charger[^usb-org-usb-pd]. The power direction was made flexible, allowing hosts and peripherals to both be sources and sinks[^usb-org-usb-pd].
+_USB PD Revision 3.1_ was released by the USB-IF in May 2021[^usb-promoter-group-pd-rev-3.1]. It increased the **max. power available from a USB port from 100W to 240W**. It keeps the original spec as per PD 3.0 as part of it's _Standard Power Range_ (SPR). Added was the _Extended Power Range_ (EPR) with new fixed voltages of 28V (140W), 36V (180W) and 48V (240W). Also added is an adjustable voltage mode that allows the device being powered to request intermediate voltages (with a 100mV resolution[^usb-promoter-group-pd-rev-3.1]) between 15V and the max. supported voltage of the charger[^usb-org-usb-pd]. The power direction was made flexible, allowing hosts and peripherals to both be sources and sinks[^usb-org-usb-pd].
 
 ## Communication Protocol
 
@@ -231,3 +237,4 @@ Quick charge is designed to work with a number of different connectors, includin
 [^renesas-usb-power-delivery]: Renesas. _USB Power Delivery: Enhanced Convenience in USB Charging_ [Web Page]. Retrieved 2023-07-09, from https://www.renesas.com/us/en/support/engineer-school/usb-power-delivery-01-usb-type-c.
 [^manhatten-usb-c-power-delivery]: manhatten. _USB-C Power Delivery_ [Web Page]. Retrieved 2023-07-09, from https://manhattanproducts.eu/pages/usb-c-pd-charging-everything-you-need-to-know.
 [^qualcomm-quick-charge-faq]: Qualcomm. _Qualcomm Quick Charge FAQs_ [Web Page]. Retrieved 2023-07-09, from https://www.qualcomm.com/products/features/quick-charge/faq.
+[^the-phone-talks-usb-pd-2.0-3.0-3.1]: The Phone Talks. _USB PD 2.0 vs 3.0 vs 3.1 Comparison - How Far Have We Come?_ [Web Page]. Retrieved 2023-07-09, from https://www.thephonetalks.com/usb-pd-2-0-vs-3-0-vs-3-1/.
