@@ -6,13 +6,15 @@ description: Data and power roles, standards, communication protocols, schematic
 draft: false
 lastmod: 2023-07-08
 tags: [ USB, power delivery, PD, sinks, sources, e-marker, Type-C ]
-title: USB Power Delivery
+title: USB Charging and Power Delivery
 type: page
 ---
 
 {{% warning-is-notes %}}
 
 ## Overview
+
+As more and more devices communicate over USB, the same devices are also being designed to be powered/charged over USB (removing the need for a second cable!). It started of with low power devices drawing power from the bus voltage, and has progressed to specific standards being implement to address the issue of charging power hungry devices (e.g. laptops) over the same USB cables. Many companies have implemented "quick charge" capabilitieis over USB cables, but the USB Implementators Forum hopes to standardize charging with the more recent USB Power Delivery standard.
 
 USB _power delivery_ (PD) is a **communication protocol and power transfer service designed to work with the USB Type-C connector**. Without PD, USB Type-C connectors can provide 5V at 3A (15W). PD allows a power source and sink to communicate with each other and negotiate a **higher voltage and/or current, up to maximum of 20V at 5A (240W)**[^usb-org-usb-pd]. Using Type-C cables to power things is becoming increasingly popular, and the EU has mandated that from 2024 most personal electronic equipment must come with a Type-C charging port[^consumer-org-eus-charging-port-rules].
 
@@ -208,6 +210,15 @@ It's a manufacturing choice about whether a cable is provided with just one Emar
 
 ## Non-standard Implementations
 
+### Qualcomm Quick Charge
+
+Quick charge is designed to work with a number of different connectors, including[^qualcomm-quick-charge-faq]:
+
+* USB Type-A
+* USB Micro
+* USB Type-C
+* Proprietary connectors
+
 ## References
 
 [^ti-primer-on-usb-pd]: Nate Enos, Brian Gosselin. _A Primer on USB Type-C® and USB Power Delivery Applications and Requirements_ [PDF]. Texas Instruments. Retrieved 2023-07-07, from https://www.ti.com/lit/wp/slyy109b/slyy109b.pdf.
@@ -219,3 +230,4 @@ It's a manufacturing choice about whether a cable is provided with just one Emar
 [^consumer-org-eus-charging-port-rules]: Nick Gelling (2022, Jun). _Europe's new universal charging port rules: how will they affect us?_ [News Article]. consumer. Retrieved 2023-07-09, from https://www.consumer.org.nz/articles/europes-new-universal-charging-port-rules-how-will-they-affect-us. 
 [^renesas-usb-power-delivery]: Renesas. _USB Power Delivery: Enhanced Convenience in USB Charging_ [Web Page]. Retrieved 2023-07-09, from https://www.renesas.com/us/en/support/engineer-school/usb-power-delivery-01-usb-type-c.
 [^manhatten-usb-c-power-delivery]: manhatten. _USB-C Power Delivery_ [Web Page]. Retrieved 2023-07-09, from https://manhattanproducts.eu/pages/usb-c-pd-charging-everything-you-need-to-know.
+[^qualcomm-quick-charge-faq]: Qualcomm. _Qualcomm Quick Charge FAQs_ [Web Page]. Retrieved 2023-07-09, from https://www.qualcomm.com/products/features/quick-charge/faq.
