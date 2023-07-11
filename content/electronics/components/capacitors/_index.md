@@ -5,7 +5,7 @@ date: 2011-09-05
 description: A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations.
 draft: false
 images: [ /electronics/components/capacitors/container-of-th-tantalum-caps.jpg ]
-lastmod: 2023-07-01
+lastmod: 2023-07-11
 tags: [ capacitor, cap, components, schematic symbols, circuit, ceramic, electrolytics, tantalums, packages, film, feedthrough, decoupling, MFC, X5R, X7R, C0G, NP0, singing capacitors, piezoelectric, Class I, Class II, Class III, audible noise, dielectrics, bending flex, FT-CAP, capacitance multipliers ]
 title: Capacitors
 type: page
@@ -45,9 +45,9 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and 
 * Polarized: No
 * Typical Markings: For large ceramics, the value in pF with multiplier (similar to resistors). No markings on small ceramic chip capacitors.
 * Uses:
-** General purpose (they are cheap)
-** RF circuits
-** Filter circuits
+  * General purpose (they are cheap)
+  * RF circuits
+  * Filter circuits
 
 Ceramic capacitors are named after the tiny disc of ceramic material they use for their dielectric. Values above 1nF are usually made from stacked ceramic plates and are called 'multilayer monolithics'.
 
@@ -852,17 +852,19 @@ Leakage current becomes an important parameter to consider when designing long-l
 
 Because of the small currents/total energy involved, you can't really measure the leakage current of a capacitor with standard multimeter. One way is to use a dedicated high-resistance meter, commonly called a megaohm meter or insulation resistance tester.
 
-## Capacitor Voltage Dependence
+## DC Bias Characteristic
 
-Some types of capacitors have a capacitance which changes depending on the applied voltage (well, technically, all do, but I'm talking about a significant/useful change).
+The _DC Bias Characteristic_ is how a measure of how a capacitors **capacitance changes with applied DC voltage**. Some types of capacitors (such as [MLCC capacitors](#ceramic)) have a capacitance which significantly reduces as it's DC voltage increases.
 
 The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCOs), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifying the voltage on the capacitor, hence changing the capacitance. [Diodes](/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
 
-The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](/pcb-design/component-packages/) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's [Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527). The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
+The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. The **drop in capacitance can upset op-amp gains, frequency cut-off points of filters, the time constant of RC oscillators, and the noise removal of decoupling caps**. This can actually be a very significant problems, especially with small [package](/pcb-design/component-packages/) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's [Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527). {{% ref "graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" %}} is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
-{{% figure src="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="800px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527." %}}
+{{% figure ref="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" src="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="800px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527." %}}
 
-This can upset op-amp gains, frequency cut-off points of filters, and the time constant of RC oscillators.
+It's important to note that the **DC bias problem gets worse with smaller ceramic chip capacitor packages**. {{% ref dc-bias-capacitance-derating-graph-from-murata %}} shows the difference in capacitance change for 4 caps which are almost identical except for the package they are in.
+
+{{% figure ref="dc-bias-capacitance-derating-graph-from-murata" src="dc-bias-capacitance-derating-graph-from-murata.webp" width="600px" caption="Graph showing how the package size changes the DC bias behaviour. All 4 capacitors have are from the same manufacturer, and have the same ratings (capacitance, voltage, dielectric) except for package size. Graph was generated by Murata's SimSurfing tool[^murata-sim-surfing-tool-mlcc]." %}}
 
 ## Decoupling
 
@@ -1356,7 +1358,7 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 ## References
 
 [^bib-capacitorguide.com]: http://www.capacitorguide.com/film-capacitor/.
-[^bib-wikipedia-film-capacitor]: https://en.wikipedia.org/wiki/Film_capacitor.
+[^bib-wikipedia-film-capacitor]: Wikipedia (2023, Jun 19). _Film capacitor_ [Web Page]. Retrieved 2023-07-11, from https://en.wikipedia.org/wiki/Film_capacitor.
 [^bib-ceramic-dielectric-types]: https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php.
 [^bib-tdk-singing-capacitors]: https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf.
 [^bib-qs-study-capacitance-spherical]: QS Study. _Capacitance of a Spherical Conductor_. Retrieved 2021-09-17, from https://qsstudy.com/physics/capacitance-spherical-conductor.
@@ -1365,3 +1367,4 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [^bib-nasa-self-healing-tantalum]: Alexander Teverovsky. _Breakdown and Self-healing in Tantalum Capacitors_. Jacobs Technology Inc. Retrieved 2023-06-05, from https://ntrs.nasa.gov/api/citations/20205008339/downloads/Breakdown%20and%20Self-healing%20DEI%20rev%20A1.pdf.
 [^bib-wikipedia-tantalum-capacitor]: Wikipedia (2023, Apr 11). _Tantalum capacitor_. Retrieved 2023-06-05, from https://en.wikipedia.org/wiki/Tantalum_capacitor. 
 [^bib-passive-component-industry-electrolytic-failures]: Passive Component Industry (2002, Sep). _Low-ESR Aluminum Electrolytic Failures Linked to Taiwanese Raw Material Problems_. Retrieved 2023-06-05, from https://web.archive.org/web/20160303234525/http://old.passivecomponentmagazine.com/files/archives/2002/PCI_02_05Sept-Oct.pdf.
+[^murata-sim-surfing-tool-mlcc]: Murata. _SimSurfing_ [Online Design Support Software]. Retrieved 2023-07-11, from https://ds.murata.co.jp/simsurfing/mlcc.html?lcid=en-us.

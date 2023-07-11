@@ -18,3 +18,5 @@ type: post
 * Added a new page on [USB Power Delivery (PD)](/electronics/communication-protocols/usb-protocol/usb-power-delivery/).
 
 * Added figure and table numbering funcionality, along with the ability to reference the figures and tables from other parts of the content.
+
+* Added more info on the DC Bias Characteristic of multilayer chip capacitors (MLCCs).
