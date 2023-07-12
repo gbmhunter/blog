@@ -250,78 +250,11 @@ html {
     height: 100%;
 }
 
-/*body {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(241, 241, 241);
+/* Not sure if this is the right thing to do, but override the default max. container width
+from 1320px to slightly larger to make room for the right-hand side toc */
+div.container-xxl {
+    max-width: 1600px;
 }
-@media (min-width: 800px) {
-    body {
-        height: 100%;        
-        flex-direction: row;        
-    }
-}*/
-
-/* .left-column-outer {
-    width: 100%;
-    margin: auto;
-    display: flex;     
-    flex-direction: column;
-    align-items: center; 
-    
-}
-@media (min-width: 800px) {
-    .left-column-outer {
-        width: 30%;
-        max-width: 450px;
-    }
-}
-
-.left-column {
-    width: 90%;
-    margin-top: 1em;
-} */
-
-
-/* Left column contains logo and menu */
-
-/* @media (max-width: 800px) {
-    .left-column {
-        min-height: 100%;
-        display: flex;
-        flex-flow: row;
-        align-items: center;
-        justify-content: space-around;
-
-        background-color: white;
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
-    }
-
-    .header-section-2 {
-        margin: 1.0em;
-        flex-grow: 2;
-    }
-
-    .header-section-3 {
-        display: none;
-    }
-}
-
-@media (min-width: 800px) {
-    .left-column {
-        min-height: 100%;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: flex-start;
-
-        background-color: white;
-
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
-    }
-} */
-
-
 
 /* ========================================================================= */
 /* RECENT UPDATES                                                            */
@@ -864,6 +797,9 @@ p, li, div, td, th, input, code.has-jax {
 }
 
 #toc {
+
+    border-left: 2px solid #efefef;
+
     margin-top: 50px;
     margin-bottom: 15px;
 
@@ -878,6 +814,19 @@ p, li, div, td, th, input, code.has-jax {
     li {
         line-height: 1.5;
     }
+}
+
+#toc li.active > a {
+    color: var(--main-color);
+    font-weight: 600;
+  }
+
+#toc a {
+    text-decoration: none;
+    display: block;
+    padding: .125rem 0;
+    color: #777; // Make TOC text lighter than content text
+    transition: all 50ms ease-in-out; 
 }
 
 /* ========================================================================= */

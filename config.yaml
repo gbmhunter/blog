@@ -24,7 +24,7 @@ markup:
   tableOfContents:
     ordered: false
     startLevel: 2
-    endLevel: 5 # Used to be 2 to keep the TOC short, but now we added separate scrolling for the right-hand column for the TOC
+    endLevel: 4 # Used to be 2 to keep the TOC short, but now we added separate scrolling for the right-hand column for the TOC
   goldmark:
     renderer:
       unsafe: true
