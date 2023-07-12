@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.add('active');
             }
         });
-    });		
+    });
     document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]').forEach((section) => {
         observerForTableOfContentActiveState.observe(section);
     });
