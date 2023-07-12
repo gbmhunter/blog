@@ -5,7 +5,7 @@ date: 2011-09-05
 description: A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations.
 draft: false
 images: [ /electronics/components/capacitors/container-of-th-tantalum-caps.jpg ]
-lastmod: 2023-07-11
+lastmod: 2023-07-13
 tags: [ capacitor, cap, components, schematic symbols, circuit, ceramic, electrolytics, tantalums, packages, film, feedthrough, decoupling, MFC, X5R, X7R, C0G, NP0, singing capacitors, piezoelectric, Class I, Class II, Class III, audible noise, dielectrics, bending flex, FT-CAP, capacitance multipliers ]
 title: Capacitors
 type: page
@@ -51,27 +51,25 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and 
 
 Ceramic capacitors are named after the tiny disc of ceramic material they use for their dielectric. Values above 1nF are usually made from stacked ceramic plates and are called 'multilayer monolithics'.
 
-Ceramic capacitors can generate audible noise when operated at certain frequencies. This is due to the electrostrictive (not piezo-electric, as many people suggest) effect of the internal dielectric materials in a monolithic ceramic capacitor. This causes the capacitor to mechanically vibrate (the movement is in the order of 1pm-1nm), which creates acoustic noise. This noise can commonly be heard in switch-mode power supplies and other high-frequency switching devices. Tantalum and electrolytic capacitors do not exhibit this effect, and can be used as a replacement when this noise is undesirable.
-
-{{% figure src="murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="450px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html." %}}
-
-**Ceramic Di-electrics**
+#### Ceramic Dielectrics
 
 Ceramic capacitors are made from two broad categories of dielectric, _Class 1_ ceramic capacitors have high stability and low losses, suitable for resonant circuit applications. _Class 2_ ceramic capacitors have high volumetric efficiency (more capacitance for the same size!) and are suitable for buffer, by-pass and coupling applications in where the exact capacitance value is usually not so critical.
 
 When talking about the high stability of _Class 1_ ceramic capacitors, we are usually referring to the stability of the capacitance over:
 
 * The operating temperature
-* DC operating voltage range (remember, the capacitance changes as the DC voltage across the capacitor changes!)
+* DC operating voltage range (the capacitance changes as the DC bias voltage across the capacitor changes!)
 * The life of the capacitor
 
-The following table lists the common ceramic dielectric codes. 
+**Class 1:**
 
-Class 1:
+{{% ref "class-1-cap-eia-dielectric-codes" %}} shows the EIA dielectric codes for Class 1 ceramic capacitors.
 
-Class 1 capacitors are specified by the following EIA dielectric codes[^bib-ceramic-dielectric-types]:
+<table ref="class-1-cap-eia-dielectric-codes" class="small">
+  <caption>
 
-<table class="small">
+Class 1 capacitor EIA dielectric codes[^bib-ceramic-dielectric-types].
+  </caption>
   <thead>
     <tr>
       <th colspan=2>1ST CHARACTER</th>
@@ -104,15 +102,19 @@ Class 1 capacitors are specified by the following EIA dielectric codes[^bib-cera
 
 _Significant Figures_ refers to the significant figure of the change in capacitance with temperature, in `ppm/°C`. The multiplier digit `5` is intentionally excluded (although I don't know why!).
 
-`NP0` is used to refer to the same material as `C0G`, and so they are the same thing. Some manufacturers use them interchangeably to refer to them together as `C0G/NP0`. `NP0` stands for "negative positive 0" and refers to the capacitance not have a positive or negative change with respect to temperature.
+`NP0` is used to refer to the same material as `C0G`, and so they are the same thing. As {{% ref "c0g-np0-capacitor-temp-coeff-grouping-digikey" %}} shows, some manufacturers and suppliers refer to them together as `C0G/NP0`. `NP0` stands for "negative positive 0" and refers to the capacitance not having a positive nor negative change in capacitance with respect to temperature.
 
-{{% figure src="c0g-np0-capacitor-temp-coeff-grouping-digikey.png" width="500px" caption="DigiKey, like many other suppliers, groups together C0G and NP0 as one temperature coefficient. Screenshot from https://www.digikey.com/product-detail/en/tdk-corporation/CGA4C2C0G1H392J060AA/445-6942-1-ND/2672960." %}}
+{{% figure ref="c0g-np0-capacitor-temp-coeff-grouping-digikey" src="c0g-np0-capacitor-temp-coeff-grouping-digikey.png" width="500px" caption="DigiKey, like many other suppliers, groups together C0G and NP0 as one temperature coefficient. Screenshot from https://www.digikey.com/product-detail/en/tdk-corporation/CGA4C2C0G1H392J060AA/445-6942-1-ND/2672960." %}}
 
-Class 2:
+**Class 2:**
 
-The following are based on the EIA RS-198 standard.
+{{% ref "class-2-cap-dielectric-codes" %}} shows the Class 2 dielectric codes, based on the EIA RS-198 standard.
 
-<table class="small">
+<table ref="class-2-cap-dielectric-codes" class="small">
+  <caption>
+
+Class 2 capacitor EIA dielectric codes[^bib-ceramic-dielectric-types].
+  </caption>
   <thead>
     <tr>
       <th>First Character (lower temperature letter)</th>
@@ -156,21 +158,31 @@ The following are based on the EIA RS-198 standard.
 
 The most common codes from the above table are `X5R`, `X7R`, `Y5V` and `Z5U`.
 
-The following table lists the class 2 codes defined by the JIS standard.
+{{% ref "jis-dielectric-codes" %}} lists codes from the JIS standard. They are not commonly seen in industry, the EIA codes above are far more popular.
 
-<table>
+<table ref="jis-dielectric-codes">
+  <caption>
+
+The two main JIS codes for capacitors[^tdk-temp-characteristics-mlcc].
+  </caption>
   <thead>
     <tr>
-      <th>Standard</th>
       <th>Symbol</th>
+      <th>Class</th>
       <th>Temperature Range</th>
       <th>Capacitance Tolerance</th>
     </tr>
     </thead>
   <tbody>
     <tr>
-      <td>JIS</td>
+      <td>CH</td>
+      <td>Class 1</td>
+      <td>-25°C to +85°C</td>
+      <td>±60ppm/°C</td>
+    </tr>
+    <tr>
       <td>JB</td>
+      <td>Class 2</td>
       <td>-25°C to +85°C</td>
       <td>±10%</td>
     </tr>
@@ -190,46 +202,27 @@ IR requirements for commercial MLCCs are about two times less.
 
 #### Singing Capacitors (Audible Noise)
 
-Sometimes you will hear ceramic capacitors make audible noise! This audible noise is caused due the piezoelectric effect which physically vibrates the capacitor, and can occur in ceramic capacitors which are ferroelectric. Both _Class II_ and _Class III_ ceramic capacitors are ferroelectric, and are susceptible to this problem. However, _Class I_ (e.g. `C0G/NP0`) capacitors are immune[^bib-tdk-singing-capacitors].
+**Ceramic capacitors can generate audible noise when operated at certain frequencies.** This is due to a combination of piezoelectric and electrostrictive forces exhibited by the internal dielectric material Barium Titanate `\(BaTiO_3\)` in a monolithic ceramic capacitor when subjected to an electric field[^covaci-singing-mlccs-and-mitigation]. This causes the capacitor to mechanically vibrate (the movement is in the order of 1pm-1nm), which creates acoustic noise. This noise can commonly be heard in switch-mode power supplies and other high-frequency switching devices. Tantalum and electrolytic capacitors do not exhibit this effect, and can be used as a replacement when this noise is undesirable.
 
-_Class II_ and _Class III_ capacitors are most likely to "sing" when the capacitor is subject to large current/voltage ripple.
+{{% figure ref="murata-deformation-of-pcb-by-electrostrictive-phenomenon" src="murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="450px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html." %}}
 
 #### Flexibility
 
 Ceramic capacitors are sometimes tested and rated to be able to withstand a maximum _bending flex_. One example is the [Kemet VW80808 (FT-CAP)](https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf) range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termination caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
 
-AVX has coined the term _FLEXITERM_ for their range of ceramic chip capacitors that can withstand higher bending flex. [^avx-flexiterm-test-for-ceramic-chip-caps] shows a diagram of the test setup for measuring the maximum bending flex[^bib-avx-auto-mlcc].
+AVX has coined the term _FLEXITERM_ for their range of ceramic chip capacitors that can withstand higher bending flex. {{% ref "avx-flexiterm-test-for-ceramic-chip-caps" %}} shows a diagram of the test setup for measuring the maximum bending flex.
 
-{{% figure src="avx-flexiterm-test-for-ceramic-chip-caps.png" width="500px" caption="Diagram showing the test setup for measuring the maximum bending flex for AVX chip capacitors with \"FLEXITERM\" terminals[^bib-avx-auto-mlcc]." %}}
+{{% figure ref="avx-flexiterm-test-for-ceramic-chip-caps" src="avx-flexiterm-test-for-ceramic-chip-caps.png" width="500px" caption="Diagram showing the test setup for measuring the maximum bending flex for AVX chip capacitors with \"FLEXITERM\" terminals[^bib-avx-auto-mlcc]." %}}
 
 ### Electrolytic
 
-<table>
-  <tbody>
-    <tr>
-      <td>Range</td>
-      <td>100nF - 5000uF</td>
-    </tr>
-    <tr>
-      <td>Polarized</td>
-      <td>Yes (but some special ones aren't)</td>
-    </tr>
-    <tr>
-      <td>Typical Marking</td>
-      <td>Because of their large size, the capacitance is usually printed in it's absolute form on the cylinder.</td>
-    </tr>
-    <tr>
-      <td>Uses</td>
-      <td>
-        <ul>
-          <li>Power supply bulk decoupling</li>
-          <li>Filtering</li>
-          <li>Audio bypass capacitors</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+* Range: 100nF - 5000uF
+* Polarized: Yes (but some special ones aren't)
+* Typical Marking: Because of their large size, the capacitance is usually printed in it's absolute form on the cylinder.
+* Uses:
+  * Power supply bulk decoupling
+  * Filtering<
+  * Audio bypass capacitors
 
 Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
@@ -257,35 +250,16 @@ Below is a close-up of the faulty electrolytic capacitor. You can't see the corr
 
 ### Tantalum
 
-<table>
-  <tbody>
-    <tr>
-      <td>Range</td>
-      <td>100nF-2mF (from 47nF to 10mF on DigiKey as of Jan 2014)</td>
-    </tr>
-    <tr>
-      <td>Polarized</td>
-      <td>Yes (mark indicates POSITIVE side)</td>
-    </tr>
-    <tr>
-      <td>Typical Marking</td>
-      <td>Capacitance is usually printed directly onto capacitor</td>
-    </tr>
-    <tr>
-      <td>Uses</td>
-      <td>
-        <ul>
-          <li>Power supply filtering on small PCBs</li>
-          <li>Medical and space equipment</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+* Range: 100nF-2mF (from 47nF to 10mF on DigiKey as of Jan 2014)
+* Polarized: Yes (mark indicates POSITIVE side)<
+* Typical Marking: Capacitance is usually printed directly onto capacitor
+* Uses
+  * Power supply filtering on small PCBs
+  * Medical and space equipment
 
-Tantalum capacitors are a special type of electrolytic capacitor. But they are categorized distinctly from general electrolytic capacitors because of their special properties and wide-spread use. The have lower ESR, lower leakage and higher temperature ranges (up to 125°C) than their general electrolytic counterparts.
+Tantalum capacitors are a special type of electrolytic capacitor. But they are categorized distinctly from general electrolytic capacitors because of their special properties and wide-spread use. The have lower ESR, lower leakage and higher temperature ranges (up to 125°C) than their general electrolytic counterparts. {{% ref "container-of-th-tantalum-caps" %}} shows an example of through-hole tantalum capacitors.
 
-{{% figure src="container-of-th-tantalum-caps.jpg" width="700px" caption="Through-hole tantalum capacitors." %}}
+{{% figure ref="container-of-th-tantalum-caps" src="container-of-th-tantalum-caps.jpg" width="700px" caption="Through-hole tantalum capacitors." %}}
 
 There are two basic types of tantalum capacitors, older _solid_ tantalum capacitors and newer _wet_ tantalum capacitors.
 
@@ -321,65 +295,31 @@ Because of their large operating temperature range, stability, and high price, t
 
 ### Film Capacitors
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Synonyms/Subfamilies</td>
-      <td>
-
-* MKT
-* MFCs (metallized film capacitors)
-* MPFCs (metallized polyester film capacitors)
-* Power (film) capacitor
-      </td>
-    </tr>
-    <tr>
-      <td>Range</td>
-      <td>1nF - 10uF</td>
-    </tr>
-    <tr>
-      <td>Polarized</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>Dielectric</td>
-      <td>Polyester, Polycarbonate</td>
-    </tr>
-    <tr>
-      <td>Typical Marking</td>
-      <td>
-
-Because of their large size, the capacitance is usually either in `<number><number><multiplier><tolerance>` picofarad form (e.g. `105K` equals `10e^5pF` equals `1uF`), or because of their large size printed in it's absolute form (e.g. `0.1uF`) on the block somewhere.
-      </td>
-    <tr>
-      <td>Uses</td>
-      <td>
-
-* Power supplies
-* Audio circuits
-      </td>
-    </tr>
-  </tbody>
-</table>
+* Synonyms/Subfamilies:
+  * MKT
+  * MFCs (metallized film capacitors)
+  * MPFCs (metallized polyester film capacitors)
+  * Power (film) capacitor
+* Range: 1nF - 10uF
+* Polarized: No
+* Dielectric: Polyester, Polycarbonate
+* Typical Marking: Because of their large size, the capacitance is usually either in `<number><number><multiplier><tolerance>` picofarad form (e.g. `105K` equals `10e^5pF` equals `1uF`), or because of their large size printed in it's absolute form (e.g. `0.1uF`) on the block somewhere.
+* Uses:
+  * Power supplies
+  * Audio circuits
 
 Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^bib-wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be **left as is** or **metallized**, which makes it a metallized film capacitor[^bib-capacitorguide.com].
 
 How do you identify film capacitors? Film capacitors usually come in the following forms:
 
-**A potted rectangular block with the two leads typically coming out of the same side (radial). Typical colors are yellow, blue, or white.**
+A potted rectangular block with the two leads typically coming out of the same side (radial). Typical colors are yellow, blue, or white.
 
 <div style="display: flex;">
 {{% figure src="yellow-potted-film-capacitor-alibaba.png" width="200px" caption="A yellow potted film capacitor. Image from alibaba.com." %}}
 {{% figure src="blue-potted-film-capacitor-hitano.png" width="200px" caption="A blue potted film capacitor from Hitano." %}}
 </div>
 
-**A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side.**
+A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side:
 
 {{% figure src="red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey.png" width="300px" caption="A red radial film capacitor (Panasonic ECQ-P1H822GZ3). Image from digikey.com." %}}
 
@@ -387,69 +327,31 @@ How do you identify film capacitors? Film capacitors usually come in the followi
 
 _Metallized polyester film capacitors_ (MFCs) are used when long-term stability is required at a relatively low cost. They are usually recognized by their appearance of a bright yellow, rectangular block.
 
-Metallized film capacitors have a self-healing effect when an over-voltage even occurs, while others such as ceramic capacitors do not. This makes them safer to use in high-power applications.
+Metallized film capacitors have a self-healing effect when an over-voltage even occurs, while others such as ceramic capacitors do not. This makes them safer to use in high-power applications. {{% ref "20191227-capacitor-blown-in-circuit" %}} shows a blown 1uF 250VAC metallized polyester film capacitor.
 
-{{% figure src="20191227-capacitor-blown-in-circuit.jpg" width="800px" caption="A broken 1uF (marking 105K) 250VAC metallized film capacitor (red bulge with cracks in it) I found inside my mum's paper shredder." %}}
+{{% figure ref="20191227-capacitor-blown-in-circuit" src="20191227-capacitor-blown-in-circuit.jpg" width="800px" caption="A broken 1uF (marking 105K) 250VAC metallized film capacitor (red bulge with cracks in it) I found inside my mum's paper shredder." %}}
 
 ### Polyester (Green Cap)
 
-<table>
-<tbody >
-<tr>
-<td>Range</td>
-<td>1nF - 10uF</td>
-</tr>
-<tr>
-<td>Polarized</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Dielectric</td>
-<td>Polyester, Polycarbonate</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>Value in pF with multiplier (similar to resistors)</td>
-</tr>
-<tr>
-<td>Uses</td>
-<td>General circuits</td>
-</tr>
-</tbody>
-</table>
+* Range: 1nF - 10uF
+* Polarized: No
+* Dielectric: Polyester, Polycarbonate
+* Typical Marking: Value in pF with multiplier (similar to resistors)
+* Uses
+  * General circuits
 
 Polyester capacitors use polyester plastic film for their dielectric. They have similar properties to disc ceramic capacitors. They are sometimes called green caps because they have a green outer plastic coating to protect them. The problem with that is that not all polyesters are green! Quite a few are brown, among other colours.
 
 ### Supercapacitors
 
-<table>
-<tbody>
-<tr>
-<td>Range</td>
-<td>10mF-1000F
-</td>
-</tr>
-<tr>
-<td>Polarized</td>
-<td>Yes (mark indicates negative side)</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>Capacitance is usually printed directly onto capacitor</td>
-</tr>
-<tr>
-<td>Uses</td>
-<td>
-<ul>
-    <li>Filtering of low frequency voltage ripple, usually due to large and low-frequency pulse currents.</li>
-    <li>As an energy storage alternative to a battery</li>
-    <li>To be hooked up in parallel with batteries to provide good pulse-current capabilities to battery chemistries which typically lack in that regard (i.e. those which have a large internal resistance,). This is a common practice with lithium thionyl chloride batteries.</li>
-    <li>To provide extra support for bass in audio systems (essentially providing a low-source impedance energy source for when the bass goes boom)</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+* Range: 10mF-1000F
+* Polarized: Yes (mark indicates negative side)
+* Typical Marking: Capacitance is usually printed directly onto capacitor
+* Uses
+  * Filtering of low frequency voltage ripple, usually due to large and low-frequency pulse currents.
+  * As an energy storage alternative to a battery,
+  * To be hooked up in parallel with batteries to provide good pulse-current capabilities to battery chemistries which typically lack in that regard (i.e. those which have a large internal resistance,). This is a common practice with lithium thionyl chloride batteries.
+  * To provide extra support for bass in audio systems (essentially providing a low-source impedance energy source for when the bass goes boom)</li>
 
 Supercapacitors are actually a special type of electrolytic capacitor.
 
@@ -461,22 +363,25 @@ Through-hole and SMD super capacitor packages exist.
 
 ### Door Knob Capacitors
 
-Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz.
+Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz. {{% ref "door-knob-capacitors" %}} shows some exampes of high-voltage door knob capacitors.
 
-{{% figure src="door-knob-capacitors.jpg" width="600px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz." %}}
+{{% figure ref="door-knob-capacitors" src="door-knob-capacitors.jpg" width="600px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz." %}}
 
 ## Dielectric Constants Of Common Materials
 
-Sorted by alphabetic order.
+_Dielectrics_ are insulators or very poorly conducting materials but efficient supporters of electric fields[^britannica-dielectric]. When dielectrics are placed in an electric field, practically no current flows in them because they do not allow electrons to move (unlike metals). However, they become _polarized_ due to positive and negative charges within the material being displaced by tiny amounts. The polarization creates an internal electric field which reduces the overall field in the dielectric (the sum of the external field and it's internal field)[^wikipedia-dielectric]. In terms of capacitors, a dielectric placed between the two plates of a capacitor increases the capacitance compared to that in a vacuum. 
 
-<table>
-    <thead>
-        <tr>
-            <th>Material</th>
-            <th>Dielectic Constant (value or range, no unit)</th>
-            <th>Notes</th>
-        </tr>
-    </thead>
+The amount of polarization that any material allows is measured by it's dielectric constant. {{% ref "dielectric-constants-of-common-materials" %}} shows the dielectric constant of common materials, sorted by alphabetic order.
+
+<table ref="dielectric-constants-of-common-materials">
+  <caption>The dielectric constants of common materials.</caption>
+  <thead>
+    <tr>
+      <th style="width: 150px;">Material</th>
+      <th style="width: 150px;">Dielectic Constant (value or range, no unit)</th>
+      <th style="width: 400px;">Notes</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
 <td >Air</td>
@@ -866,6 +771,8 @@ It's important to note that the **DC bias problem gets worse with smaller cerami
 
 {{% figure ref="dc-bias-capacitance-derating-graph-from-murata" src="dc-bias-capacitance-derating-graph-from-murata.webp" width="600px" caption="Graph showing how the package size changes the DC bias behaviour. All 4 capacitors have are from the same manufacturer, and have the same ratings (capacitance, voltage, dielectric) except for package size. Graph was generated by Murata's SimSurfing tool[^murata-sim-surfing-tool-mlcc]." %}}
 
+One possible explanation for why smaller packages suffer from more DC bias problems is that the electric field across the dielectric is stronger in smaller packages (same voltage across a smaller distance between the plates = larger electric field), leading to more undesirable side effects[^eevblog-is-ceramic-capacitor-package-relevant].
+
 ## Decoupling
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
@@ -935,170 +842,6 @@ However, if you really want to optimise the charge pump capacitor, this rule doe
 The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
 {{% figure src="charge-pump-based-negative-voltage-gen-schematic.png" width="800px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal." %}}
-
-## Capacitor Packages
-
-Through-hole capacitors can usually be used in a surface mount fashion by lying the caps down on the board, bending the legs 90 degrees, and soldering them onto pads on the PCB.
-
-Ceramic chip capacitors usually have a three letter code which describes the max cap temp, min cap temp, and change over temperature. The following table shows what the three letter code means for "Class II" and "Class III" ceramics. This basically covers all ceramic caps except the NP0/COG capacitors which belong to Class I.
-
-<table>
-    <thead>
-        <tr>
-            <th>1st Character</th>
-            <th>Low Temp</th>
-            <th>2nd Character</th>
-            <th>High Temp</th>
-            <th>3rd Character</th>
-            <th>Change Over Temp (max)</th>
-        </tr>
-        <tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr>
-<tbody >
-<tr>
-<td>Z
-</td>
-<td>+10
-</td>
-<td>2
-</td>
-<td>+45
-</td>
-<td>A
-</td>
-<td>±1.0
-</td></tr><tr >
-<td>Y
-</td>
-<td>-30
-</td>
-<td>4
-</td>
-<td>+65
-</td>
-<td>B
-</td>
-<td>±1.5
-</td></tr><tr >
-<td>X
-</td>
-<td>-55
-</td>
-<td>5
-</td>
-<td>+85
-</td>
-<td>C
-</td>
-<td>±2.2
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>6
-</td>
-<td>+105
-</td>
-<td>D
-</td>
-<td>±3.3
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>7
-</td>
-<td>+125
-</td>
-<td>E
-</td>
-<td>±4.7
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>8
-</td>
-<td>+150
-</td>
-<td>F
-</td>
-<td>±7.5
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>9
-</td>
-<td>+200
-</td>
-<td>P
-</td>
-<td>±10
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>R
-</td>
-<td>±15
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>S
-</td>
-<td>±22
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>T
-</td>
-<td>+22, -33
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>U
-</td>
-<td>+22, -56
-</td></tr><tr >
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>-
-</td>
-<td>V
-</td>
-<td>+22, -82
-</td></tr></tbody></table>
 
 ## Feedthrough Capacitors
 
@@ -1186,7 +929,7 @@ f_c &= \frac{1}{2\pi (R1 || R2) C1} \nonumber \\
 
 The "effective capacitance" is exactly the same as in the single-resistor version in Eq. \ref{eq:eff-cap} (but remember, you don't use this for the cutoff frequency calculations).
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 Let's go through the design process for a capacitance multiplier circuit, and then simulate it using KiCad/ngspice to see what it's frequency response is.
 
@@ -1269,7 +1012,7 @@ Watch out for the transistors power dissipation! In our example, `\(100mA\)` was
 
 Capacitance multipliers don't have to built from BJT transistors, they can also use MOSFETs or op-amps as their active component. BJTs are used in a majority of cases though because of their cost, power dissipation capability, and simplicity.
 
-</div>
+{{% /aside %}}
 
 ## Repairing Electrolytic Capacitors
 
@@ -1360,7 +1103,6 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [^bib-capacitorguide.com]: http://www.capacitorguide.com/film-capacitor/.
 [^bib-wikipedia-film-capacitor]: Wikipedia (2023, Jun 19). _Film capacitor_ [Web Page]. Retrieved 2023-07-11, from https://en.wikipedia.org/wiki/Film_capacitor.
 [^bib-ceramic-dielectric-types]: https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php.
-[^bib-tdk-singing-capacitors]: https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf.
 [^bib-qs-study-capacitance-spherical]: QS Study. _Capacitance of a Spherical Conductor_. Retrieved 2021-09-17, from https://qsstudy.com/physics/capacitance-spherical-conductor.
 [^bib-avx-auto-mlcc]: AVX. _Automotive MLCC (datasheet)_. Retrieved 2022-02-01, from https://datasheets.avx.com/AutoMLCC.pdf.
 [^bib-cadence-causes-of-elec-cap-degradation]: Cadence. _The Causes of Electrolytic Capacitor Degradation_. Retrieved 2023-06-05, from https://resources.pcb.cadence.com/blog/2022-the-causes-of-electrolytic-capacitor-degradation.
@@ -1368,3 +1110,8 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [^bib-wikipedia-tantalum-capacitor]: Wikipedia (2023, Apr 11). _Tantalum capacitor_. Retrieved 2023-06-05, from https://en.wikipedia.org/wiki/Tantalum_capacitor. 
 [^bib-passive-component-industry-electrolytic-failures]: Passive Component Industry (2002, Sep). _Low-ESR Aluminum Electrolytic Failures Linked to Taiwanese Raw Material Problems_. Retrieved 2023-06-05, from https://web.archive.org/web/20160303234525/http://old.passivecomponentmagazine.com/files/archives/2002/PCI_02_05Sept-Oct.pdf.
 [^murata-sim-surfing-tool-mlcc]: Murata. _SimSurfing_ [Online Design Support Software]. Retrieved 2023-07-11, from https://ds.murata.co.jp/simsurfing/mlcc.html?lcid=en-us.
+[^covaci-singing-mlccs-and-mitigation]: Covaci C, Gontean A (2022, May 19). _"Singing" Multilayer Ceramic Capacitors and Mitigation Methods - A Review_. Sensors (Basel). 22(10):3869. doi: 10.3390/s22103869. PMID: 35632278; PMCID: PMC9147252. Retrireved 2023-07-12, from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9147252/.
+[^britannica-dielectric]: Britannica (2023, Jun 13). _Dielectric_ [Encyclopedia Entry]. Retrieved 2023-07-12, from https://www.britannica.com/science/dielectric. 
+[^wikipedia-dielectric]: Wikipedia (2023, Jun 9). _Dielectric_ [Encyclopedia Entry]. Retrieved 2023-07-12, https://en.wikipedia.org/wiki/Dielectric.
+[^eevblog-is-ceramic-capacitor-package-relevant]: EEVblog. _Is ceramic capacitor package relevant?_ [Forum Thread]. Retrieved 2023-07-12, from https://www.eevblog.com/forum/projects/is-ceramic-capacitor-package-relevant/.
+[^tdk-temp-characteristics-mlcc]: Trevor Crow (2014, Jan). _Temperature Characteristics of Multilayer Ceramic Capacitors_ [PDF]. TDK. Retrieved 2023-07-12, from https://file.elecfans.com/web1/M00/20/AD/oYYBAFmkxDGAAYIpAAb6nD4zLi0492.pdf.
