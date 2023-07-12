@@ -19,7 +19,9 @@ Capacitors are a passive electronic component that stores charge between two con
 
 ## Schematic Symbols
 
-{{% figure src="capacitor-symbols.png" width="500px" caption="Schematic symbols used for various types of capacitors." %}}
+{{% ref "capacitor-symbols" %}} shows the common schematics symbols used for various types of capacitors.
+
+{{% figure ref="capacitor-symbols" src="capacitor-symbols.png" width="500px" caption="Schematic symbols used for various types of capacitors." %}}
 
 These symbols only cover the main types you will see in schematics. There are other symbols for speciality capacitors such as [feedthrough capacitors](#feedthrough-capacitors) and trimming capacitors.
 
@@ -51,9 +53,9 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and 
 
 Ceramic capacitors are named after the tiny disc of ceramic material they use for their dielectric. Values above 1nF are usually made from stacked ceramic plates and are called 'multilayer monolithics'.
 
-#### Ceramic Dielectrics
+#### Ceramic Temperature Codes and Dielectrics
 
-Ceramic capacitors are made from two broad categories of dielectric, _Class 1_ ceramic capacitors have high stability and low losses, suitable for resonant circuit applications. _Class 2_ ceramic capacitors have high volumetric efficiency (more capacitance for the same size!) and are suitable for buffer, by-pass and coupling applications in where the exact capacitance value is usually not so critical.
+Ceramic capacitors are made from two broad categories of dielectric, which influences the temperature stability of the capacitor. _Class 1_ ceramic capacitors have high stability and low losses, suitable for resonant circuit applications. _Class 2_ ceramic capacitors have high volumetric efficiency (more capacitance for the same size!) and are suitable for buffer, by-pass and coupling applications in where the exact capacitance value is usually not so critical.
 
 When talking about the high stability of _Class 1_ ceramic capacitors, we are usually referring to the stability of the capacitance over:
 
@@ -63,12 +65,12 @@ When talking about the high stability of _Class 1_ ceramic capacitors, we are us
 
 **Class 1:**
 
-{{% ref "class-1-cap-eia-dielectric-codes" %}} shows the EIA dielectric codes for Class 1 ceramic capacitors.
+{{% ref "class-1-cap-eia-dielectric-codes" %}} shows the EIA temperature codes for Class 1 ceramic capacitors.
 
 <table ref="class-1-cap-eia-dielectric-codes" class="small">
   <caption>
 
-Class 1 capacitor EIA dielectric codes[^bib-ceramic-dielectric-types].
+Class 1 capacitor EIA temperature codes[^bib-ceramic-dielectric-types].
   </caption>
   <thead>
     <tr>
@@ -108,12 +110,12 @@ _Significant Figures_ refers to the significant figure of the change in capacita
 
 **Class 2:**
 
-{{% ref "class-2-cap-dielectric-codes" %}} shows the Class 2 dielectric codes, based on the EIA RS-198 standard.
+{{% ref "class-2-cap-dielectric-codes" %}} shows the Class 2 temperature codes, based on the EIA RS-198 standard.
 
 <table ref="class-2-cap-dielectric-codes" class="small">
   <caption>
 
-Class 2 capacitor EIA dielectric codes[^bib-ceramic-dielectric-types].
+Class 2 capacitor EIA temperature codes[^bib-ceramic-dielectric-types].
   </caption>
   <thead>
     <tr>
@@ -163,7 +165,7 @@ The most common codes from the above table are `X5R`, `X7R`, `Y5V` and `Z5U`.
 <table ref="jis-dielectric-codes">
   <caption>
 
-The two main JIS codes for capacitors[^tdk-temp-characteristics-mlcc].
+The two main JIS temperature codes for capacitors[^tdk-temp-characteristics-mlcc].
   </caption>
   <thead>
     <tr>
@@ -319,9 +321,9 @@ A potted rectangular block with the two leads typically coming out of the same s
 {{% figure src="blue-potted-film-capacitor-hitano.png" width="200px" caption="A blue potted film capacitor from Hitano." %}}
 </div>
 
-A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side:
+{{% ref "red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey" %}} shows a film capacitor that has a rounded, red case that's been coasted in a epoxy lacquer, with the leads coming out of the same side.
 
-{{% figure src="red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey.png" width="300px" caption="A red radial film capacitor (Panasonic ECQ-P1H822GZ3). Image from digikey.com." %}}
+{{% figure ref="red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey" src="red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey.png" width="300px" caption="A red radial film capacitor (Panasonic ECQ-P1H822GZ3). Image from digikey.com." %}}
 
 **Metallized Polyester Film Capacitors**
 
@@ -511,9 +513,9 @@ Capacitors in parallel can be treated as one capacitor with the equivalent capac
 C_{total} = C1 + C2
 \end{align}</p>
 
-That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in the below diagram.
+That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in {{% ref "capacitors-in-parallel" %}}.
 
-{{% figure src="capacitors-in-parallel.svg" width="600px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." %}}
+{{% figure ref="capacitors-in-parallel" src="capacitors-in-parallel.svg" width="600px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." %}}
 
 *Connecting capacitors in parallel increases the capacitance.* Parallel-connected capacitors occurs everywhere in circuit design. A classic example is bulk decoupling for a switch-mode power supply, which will typically have more than one large capacitor connected in parallel on the input.
 
@@ -541,7 +543,7 @@ It is usually easier to remember this equation as:
 
 This is shown in the following diagram.
 
-{{% figure src="capacitors-in-series.svg" width="600px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." %}}
+{{% figure ref="capacitors-in-series" src="capacitors-in-series.svg" width="600px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." %}}
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*. **Capacitors in series behave in the same way as resistors in parallel.**
 
@@ -604,9 +606,9 @@ where:<br/>
 
 ### Single Disc Capacitance
 
-{{% figure src="diagram-for-disc-capacitance-equation.svg" width="320px" caption="Diagram for the disc-to-infinity capacitance equation." %}}
+{{% figure ref="diagram-for-disc-capacitance-equation" src="diagram-for-disc-capacitance-equation.svg" width="320px" caption="Diagram for the disc-to-infinity capacitance equation." %}}
 
-The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
+The capacitance of a single thin plate as shown in {{% ref "diagram-for-disc-capacitance-equation" %}}, with  a ground at 'infinity' (or more practically, just very far away) is:
 
 <p>\begin{align}
 C = 35.4 \times 10^{-12} \epsilon_r d
@@ -621,9 +623,9 @@ where:<br/>
 
 ### Sphere Capacitance
 
-{{% figure src="diagram-for-sphere-capacitance-equation.svg" width="320px" caption="Diagram for the sphere-to-infinity capacitance equation." %}}
+{{% figure ref="diagram-for-sphere-capacitance-equation" src="diagram-for-sphere-capacitance-equation.svg" width="320px" caption="Diagram for the sphere-to-infinity capacitance equation." %}}
 
-The capacitance of a single sphere, again, with a ground at infinity is[^bib-qs-study-capacitance-spherical]:
+The capacitance of a single sphere as shown in {{% ref "diagram-for-sphere-capacitance-equation" %}}, again with a ground at infinity is[^bib-qs-study-capacitance-spherical]:
 
 <p>\begin{align}
 C = 4\pi \epsilon_0 \epsilon_r r
@@ -655,12 +657,12 @@ where:<br/>
 
 ### Concentric Cylinder Capacitance
 
-{{% figure src="diagram-for-coaxial-cylinders-capacitance-equation.png" width="320px" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." %}}
+{{% figure ref="diagram-for-coaxial-cylinders-capacitance-equation" src="diagram-for-coaxial-cylinders-capacitance-equation.png" width="320px" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." %}}
 
-The capacitance of two concentric cylinders as shown in the diagram above is:
+The capacitance of two concentric cylinders as shown in {{% ref "diagram-for-coaxial-cylinders-capacitance-equation" %}} is:
 
 <p>\begin{align}
-\frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L
+C = \frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L
 \end{align}</p>
 
 <p class="centered">
@@ -771,7 +773,7 @@ It's important to note that the **DC bias problem gets worse with smaller cerami
 
 {{% figure ref="dc-bias-capacitance-derating-graph-from-murata" src="dc-bias-capacitance-derating-graph-from-murata.webp" width="600px" caption="Graph showing how the package size changes the DC bias behaviour. All 4 capacitors have are from the same manufacturer, and have the same ratings (capacitance, voltage, dielectric) except for package size. Graph was generated by Murata's SimSurfing tool[^murata-sim-surfing-tool-mlcc]." %}}
 
-One possible explanation for why smaller packages suffer from more DC bias problems is that the electric field across the dielectric is stronger in smaller packages (same voltage across a smaller distance between the plates = larger electric field), leading to more undesirable side effects[^eevblog-is-ceramic-capacitor-package-relevant].
+One possible explanation for why smaller packages suffer from more DC bias problems is that the electric field across the dielectric is stronger in smaller packages (same voltage across a smaller distance between the plates = larger electric field), leading to more non-linearities occuring in the permittivity of the dielectric[^eevblog-is-ceramic-capacitor-package-relevant].
 
 ## Decoupling
 
