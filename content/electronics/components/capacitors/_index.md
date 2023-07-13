@@ -53,17 +53,21 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and 
 
 Ceramic capacitors are named after the tiny disc of ceramic material they use for their dielectric. Values above 1nF are usually made from stacked ceramic plates and are called 'multilayer monolithics'.
 
-#### Ceramic Temperature Codes and Dielectrics
+#### Classes And Ceramic Temperature Codes
 
-Ceramic capacitors are made from two broad categories of dielectric, which influences the temperature stability of the capacitor. _Class 1_ ceramic capacitors have high stability and low losses, suitable for resonant circuit applications. _Class 2_ ceramic capacitors have high volumetric efficiency (more capacitance for the same size!) and are suitable for buffer, by-pass and coupling applications in where the exact capacitance value is usually not so critical.
+Ceramic capacitors are made from two broad categories of dielectric types, which influences the temperature stability of the capacitor. _Class 1_ ceramic capacitors have high stability and low losses, suitable for resonant circuit applications. _Class 2_ ceramic capacitors have high volumetric efficiency (more capacitance for the same size!) and are suitable for buffer, by-pass and coupling applications in where the exact capacitance value is usually not so critical. However they suffer from significant DC bias effects.
 
+{{% aside type="note" %}}
 When talking about the high stability of _Class 1_ ceramic capacitors, we are usually referring to the stability of the capacitance over:
 
 * The operating temperature
 * DC operating voltage range (the capacitance changes as the DC bias voltage across the capacitor changes!)
 * The life of the capacitor
+{{% /aside %}}
 
 **Class 1:**
+
+Class 1 capacitors primarily use calcium zirconate as their dielectric[^kemet-heres-what-makes-mlcc-dielectrics-different], which has a very stable permittivity across both temperature and DC bias. However, it's permittivity (and hence dielectric constant) is much less than the dielectrics used for Class 2 MLCCs, and so the capacitances are much smaller (typically pF to nF).
 
 {{% ref "class-1-cap-eia-dielectric-codes" %}} shows the EIA temperature codes for Class 1 ceramic capacitors.
 
@@ -96,7 +100,7 @@ Class 1 capacitor EIA temperature codes[^bib-ceramic-dielectric-types].
     <tr>  <td>P</td>  <td>1.5</td>    <td>6</td>  <td>+10</td>    <td>M</td>  <td>±1000</td>  </tr>
     <tr>  <td>R</td>  <td>2.2</td>    <td>7</td>  <td>+100</td>   <td>N</td>  <td>±2500</td>  </tr>
     <tr>  <td>S</td>  <td>3.3</td>    <td>8</td>  <td>+1000</td>  <td></td>   <td></td>       </tr>
-    <tr>  <td>T</td>  <td>4.7</td>    <td></td>   <td></td>       <td></td>   <td></td>       </tr>
+    <tr>  <td>T</td>  <td>4.7</td>    <td>9</td>  <td>+10000</td> <td></td>   <td></td>       </tr>
     <tr>  <td>V</td>  <td>5.6</td>    <td></td>   <td></td>       <td></td>   <td></td>       </tr>
     <tr>  <td>U</td>  <td>7.5</td>    <td></td>   <td></td>       <td></td>   <td></td>       </tr>
   </tbody>
@@ -216,6 +220,10 @@ AVX has coined the term _FLEXITERM_ for their range of ceramic chip capacitors t
 
 {{% figure ref="avx-flexiterm-test-for-ceramic-chip-caps" src="avx-flexiterm-test-for-ceramic-chip-caps.png" width="500px" caption="Diagram showing the test setup for measuring the maximum bending flex for AVX chip capacitors with \"FLEXITERM\" terminals[^bib-avx-auto-mlcc]." %}}
 
+#### DC Bias Characteristic
+
+Ceramic MLCC capacitors suffer from significant DC Bias effects (reduction in capacitance with applied voltage). See the [DC Bias Characteristic section](#dc-bias-characteristic) for more info.
+
 ### Electrolytic
 
 * Range: 100nF - 5000uF
@@ -240,9 +248,9 @@ The _capacitor plague_ was a period between 1999 and 2007 when **electrolytic ca
 
 {{% aside type="info" %}}
 
-My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up. After 20-40mins after turn-on, a crackling noise would begin to get louder and louder in the speakers and soon make the system unusable. After opening the main unit up, I discovered the classic signs of electrolytic capacitor leakage, as shown in the image below. The electrolyte had leaked out of the capacitor, and also corroded right through the lead of a neighbouring resistor, making the resistor go open circuit (the capacitor was probably functioning poorly also). After replacing both components, the noise went away!
+My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up. After 20-40mins after turn-on, a crackling noise would begin to get louder and louder in the speakers and soon make the system unusable. After opening the main unit up, I discovered the classic signs of electrolytic capacitor leakage, as shown in {{% ref "fig-pcb-with-electrolyte-leakage-zoomed-out" %}}. The electrolyte had leaked out of the capacitor, and also corroded right through the lead of a neighbouring resistor, making the resistor go open circuit (the capacitor was probably functioning poorly also). After replacing both components, the noise went away!
 
-{{% figure src="pcb-with-electrolyte-leakage-zoomed-out.jpg" width="1000px" caption="Photo of a PCB in a Dell sound system. Highlighted is leaking electrolytic capacitor, which also corroded right through the lead of a neighbouring resistor." %}}
+{{% figure ref="fig-pcb-with-electrolyte-leakage-zoomed-out" src="pcb-with-electrolyte-leakage-zoomed-out.jpg" width="1000px" caption="Photo of a PCB in a Dell sound system. Highlighted is leaking electrolytic capacitor, which also corroded right through the lead of a neighbouring resistor." %}}
 
 Below is a close-up of the faulty electrolytic capacitor. You can't see the corroded resistor as it is hidden above the orange disk-style capacitor and inductor-looking component. 
 
@@ -275,9 +283,9 @@ _Wet_ tantalum capacitors are a newer from of tantalum capacitor, with a better 
 
 #### Construction
 
-At the heart of a tantalum capacitor is a pellet of tantalum (`\(Ta_2 O_5\)`).
+At the heart of a tantalum capacitor is a pellet of tantalum (`\(Ta_2 O_5\)`), as shown in {{% ref "fig-cross-section-of-tantalum-capacitor" %}}.
 
-{{% figure src="cross-section-of-tantalum-capacitor.png" width="500px" caption="Cross-section of a SMD tantalum capacitor." %}}
+{{% figure ref="fig-cross-section-of-tantalum-capacitor" src="cross-section-of-tantalum-capacitor.png" width="500px" caption="Cross-section of a SMD tantalum capacitor." %}}
 
 #### Packaging
 
@@ -365,55 +373,44 @@ Through-hole and SMD super capacitor packages exist.
 
 ### Door Knob Capacitors
 
-Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz. {{% ref "door-knob-capacitors" %}} shows some exampes of high-voltage door knob capacitors.
+Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz. {{% ref "fig-door-knob-capacitors" %}} shows some exampes of high-voltage door knob capacitors.
 
-{{% figure ref="door-knob-capacitors" src="door-knob-capacitors.jpg" width="600px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz." %}}
+{{% figure ref="fig-door-knob-capacitors" src="door-knob-capacitors.jpg" width="600px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz." %}}
 
-## Dielectric Constants Of Common Materials
+## Relative Permittivity Of Common Materials
 
-_Dielectrics_ are insulators or very poorly conducting materials but efficient supporters of electric fields[^britannica-dielectric]. When dielectrics are placed in an electric field, practically no current flows in them because they do not allow electrons to move (unlike metals). However, they become _polarized_ due to positive and negative charges within the material being displaced by tiny amounts. The polarization creates an internal electric field which reduces the overall field in the dielectric (the sum of the external field and it's internal field)[^wikipedia-dielectric]. In terms of capacitors, a dielectric placed between the two plates of a capacitor increases the capacitance compared to that in a vacuum. 
+_Dielectrics_ are insulators or very poorly conducting materials but efficient supporters of electric fields[^britannica-dielectric]. When dielectrics are placed in an electric field, practically no current flows in them because they do not allow electrons to move (unlike metals). However, they become _polarized_ due to positive and negative charges within the material being displaced by tiny amounts. The polarization creates an internal electric field which reduces the overall electric field in the dielectric (the sum of the external field and it's internal field)[^wikipedia-dielectric]. In terms of capacitors, a dielectric placed between the two plates of a capacitor increases the capacitance compared to that in a vacuum. 
 
-The amount of polarization that any material allows is measured by it's dielectric constant. {{% ref "dielectric-constants-of-common-materials" %}} shows the dielectric constant of common materials, sorted by alphabetic order.
+The amount of polarization that any material allows is called it's permittivity and is normally characterized by a number called it's _relative permittivity_. The relative permittivity is the ratio of the permittivity of the material compared to that of a vacuum[^tutorials-point-difference-between-dielectric-constant-and-permittivity]. It is also called the _dielectric constant_, although this term is considered out-dated and deprecated by standards organizations in engineering[^wikipedia-relative-permittivity]. {{% ref "tbl-dielectric-constants-of-common-materials" %}} shows the dielectric constant of common materials, sorted by alphabetic order.
 
-<table ref="dielectric-constants-of-common-materials">
-  <caption>The dielectric constants of common materials.</caption>
+<table ref="tbl-dielectric-constants-of-common-materials">
+  <caption>The relative permittivity of common materials.</caption>
   <thead>
     <tr>
       <th style="width: 150px;">Material</th>
-      <th style="width: 150px;">Dielectic Constant (value or range, no unit)</th>
+      <th style="width: 150px;">Relative Permittivity (no units)</th>
       <th style="width: 400px;">Notes</th>
     </tr>
   </thead>
-<tbody >
-<tr >
-<td >Air</td>
-<td >1</td>
-<td >See below for data on how temperature, humidity, and pressure influences the dielectric of air.</td>
+<tbody>
+<tr><td>Vacuum</td>   <td>1</td>          <td>1 by definition.</td></tr>
+<tr><td>Air</td>      <td>1.000590</td>   <td>Depends on temperature, pressure and humidity.</td></tr>
+<tr><td>Bakelite</td> <td>4.4-5.4</td>    <td></td></tr>
+<tr><td>Ethanol</td>  <td>24</td>         <td></td></tr>
+<tr>
+<td>Formica</td>
+<td>4.6-4.9</td>
+<td> </td>
 </tr>
-<tr >
-<td >Bakelite</td>
-<td >4.4-5.4</td>
-<td ></td>
+<tr>
+<td>Glass</td>
+<td>7.6-8.0</td>
+<td>This is common window glass</td>
 </tr>
-<tr >
-<td >Ethanol</td>
-<td >24</td>
-<td ></td>
-</tr>
-<tr >
-<td >Formica</td>
-<td >4.6-4.9</td>
-<td > </td>
-</tr>
-<tr >
-<td >Glass</td>
-<td >7.6-8.0</td>
-<td >This is common window glass</td>
-</tr>
-<tr >
-<td >Mica</td>
-<td >5.4</td>
-<td ></td>
+<tr>
+<td>Mica</td>
+<td>5.4</td>
+<td></td>
 </tr>
 <tr >
 <td >Mylar</td>
@@ -483,23 +480,7 @@ The amount of polarization that any material allows is measured by it's dielectr
 </tbody>
 </table>
 
-## The Dielectric Of Air
-
-The dielectric of air changes with humidity, pressure and temperature.
-
-<table><tbody ><tr >
-<td >Temperature
-</td>
-<td >5ppm/C
-</td></tr><tr >
-<td >Relative Humidity
-</td>
-<td >1.4ppm/%RH
-</td></tr><tr >
-<td >Pressure
-</td>
-<td >100ppm/atm
-</td></tr></tbody></table>
+The relative permittivity of air changes with humidity, pressure and temperature.  
 
 ## Capacitors In Series And In Parallel
 
@@ -513,9 +494,9 @@ Capacitors in parallel can be treated as one capacitor with the equivalent capac
 C_{total} = C1 + C2
 \end{align}</p>
 
-That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in {{% ref "capacitors-in-parallel" %}}.
+That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in {{% ref "fig-capacitors-in-parallel" %}}.
 
-{{% figure ref="capacitors-in-parallel" src="capacitors-in-parallel.svg" width="600px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." %}}
+{{% figure ref="fig-capacitors-in-parallel" src="capacitors-in-parallel.svg" width="600px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." %}}
 
 *Connecting capacitors in parallel increases the capacitance.* Parallel-connected capacitors occurs everywhere in circuit design. A classic example is bulk decoupling for a switch-mode power supply, which will typically have more than one large capacitor connected in parallel on the input.
 
@@ -541,9 +522,9 @@ It is usually easier to remember this equation as:
 \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2}
 \end{align}</p>
 
-This is shown in the following diagram.
+This is ilustrated in {{% ref "fig-capacitors-in-series" %}}.
 
-{{% figure ref="capacitors-in-series" src="capacitors-in-series.svg" width="600px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." %}}
+{{% figure ref="fig-capacitors-in-series" src="capacitors-in-series.svg" width="600px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." %}}
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*. **Capacitors in series behave in the same way as resistors in parallel.**
 
@@ -617,7 +598,7 @@ C = 35.4 \times 10^{-12} \epsilon_r d
 <p class="centered">
 where:<br/>
 \(C\) = capacitance (Farads)<br/>
-\(\epsilon_r\) = relative dielectric constant (1 for a vacuum)<br/>
+\(\epsilon_r\) = relative permittivity (1 for a vacuum)<br/>
 \(d\) = diameter of the thin plate (meters)<br/>
 </p>
 
@@ -633,10 +614,10 @@ C = 4\pi \epsilon_0 \epsilon_r r
 
 <p class="centered">
 where:<br/>
-\(C\) = capacitance, in \(F\)<br/>
+\(C\) = capacitance [\(F\)]<br/>
 \(\epsilon_0\) is the permittivity of free space, approx. \(8.85 \times 10^{-12}Fm^{-1}\)<br/>
-\(\epsilon_r\) = relative dielectric constant (\(1\) for a vacuum)<br/>
-\(r\) = radius of sphere, in \(m\)<br/>
+\(\epsilon_r\) is the relative permittivity (\(1\) for a vacuum)<br/>
+\(r\) is the radius of sphere [\(m\)]<br/>
 </p>
 
 ### Parallel Plate Capacitance
@@ -649,10 +630,10 @@ C = \epsilon_r \epsilon_o\frac{A}{d}
 
 <p class="centered">
 where:<br/>
-\(\epsilon_o\) = electric constant (\(8.854 \times 10^{-12}Fm^{-1}\))<br/>
-\(\epsilon_r\) = dielectric constant of the material between the plates (no unit)<br/>
-\(A\) = overlapping surface area of the parallel plates (meters squared)<br/>
-\(d\) = distance between the plates (meters)<br/>
+\(\epsilon_o\) is the electric constant (\(8.854 \times 10^{-12}Fm^{-1}\))<br/>
+\(\epsilon_r\) is the relative permittivity of the material between the plates [no units]<br/>
+\(A\) is the overlapping surface area of the parallel plates \([m^2]\)<br/>
+\(d\) is the distance between the plates \([m]\)<br/>
 </p>
 
 ### Concentric Cylinder Capacitance
@@ -667,9 +648,9 @@ C = \frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L
 
 <p class="centered">
 where:<br/>
-\(a\) = radius of inner cylinder (meters)<br/>
-\(b\) = radius of outer cylinder (meters)<br/>
-\(L\) = length of both cylinders (meters)<br/>
+\(a\) = radius of inner cylinder \([m]\)<br/>
+\(b\) = radius of outer cylinder \([m]\)<br/>
+\(L\) = length of both cylinders \([m]\)<br/>
 and all other variables as previously mentioned<br/>
 </p>
 
@@ -677,22 +658,7 @@ and all other variables as previously mentioned<br/>
 
 Ceramic SMD capacitors have very low ESRs. In fact, in certain applications, this can be a bad thing (such as the input/output stabilization capacitors for linear regulators and DC/DC converters), and either tantalums are used or resistance has to be added in series with the capacitor. Since usually only milli-Ohms is required, this can be done with an appropriately sized PCB track which is usually snaked to the capacitor terminal.
 
-Electrolytic capacitors typically have a large ESR (there are special low-ESR types, but they still don't compare to ceramic caps).
-
-<table>
-    <thead>
-        <tr>
-            <th>Capacitor Type</th>
-            <th>Typical ESR (at 1kHz)</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-<td >Super-cap (1-100F)</td>
-<td >4-0.1Ω</td>
-</tr>
-</tbody>
-</table>
+Electrolytic capacitors typically have a large ESR of 0.1-5Ω (there are special low-ESR types, but they still don't compare to ceramic caps).
 
 Since the ESR is proportional to the capacitor's plate area, for a similar capacitor designs, the ESR decreases with increasing capacitance.
 
@@ -710,9 +676,9 @@ Desorption currents (depolarization) flow when the voltage on a capacitor is dec
 
 Capacitors that have had a relatively constant voltage across them for a decent amount of time typically exhibit far less absorption current than one which has not been charged in the short-term past. This is due to a phenomenon called ‘self-healing’, in where a charged capacitor will heal defects in the electrolyte. Uncharged electrolytic capacitors may have weakened electrolyte due to ‘dissolution’, the destruction of the dielectric when no charge is present.
 
-The leakage current through a capacitor can be modelled with a resistor in parallel with the actual capacitance, as shown below.
+The leakage current through a capacitor can be modelled with a resistor in parallel with the actual capacitance, as shown in {{% ref "fig-capacitor-with-parasitic-series-resistance-leakage-current" %}}.
 
-{{% figure src="capacitor-with-parasitic-series-resistance-leakage-current.png" width="300px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current." %}}
+{{% figure ref="fig-capacitor-with-parasitic-series-resistance-leakage-current" src="capacitor-with-parasitic-series-resistance-leakage-current.png" width="300px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current." %}}
 
 ### How Leakage Current Is Specified
 
@@ -769,6 +735,8 @@ The bad news is that this also adversely affects the capacitance in situations w
 
 {{% figure ref="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" src="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="800px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527." %}}
 
+Just to illustrate the change, a 22uF 6.3V X5R 0603 capacitor from Murata (GRT188R60J226ME13) has 22uF at 0V. This drops to only 3.6uF at 6.3V, a reduction of 84%[^murata-sim-surfing-tool-mlcc]!
+
 It's important to note that the **DC bias problem gets worse with smaller ceramic chip capacitor packages**. {{% ref dc-bias-capacitance-derating-graph-from-murata %}} shows the difference in capacitance change for 4 caps which are almost identical except for the package they are in.
 
 {{% figure ref="dc-bias-capacitance-derating-graph-from-murata" src="dc-bias-capacitance-derating-graph-from-murata.webp" width="600px" caption="Graph showing how the package size changes the DC bias behaviour. All 4 capacitors have are from the same manufacturer, and have the same ratings (capacitance, voltage, dielectric) except for package size. Graph was generated by Murata's SimSurfing tool[^murata-sim-surfing-tool-mlcc]." %}}
@@ -777,9 +745,9 @@ One possible explanation for why smaller packages suffer from more DC bias probl
 
 ## Decoupling
 
-Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
+Capacitors are commonly used for decoupling, as shown in the schematic in {{% ref "fig-decoupling-caps-schematic-example-on-r-pi-pcb" %}}.
 
-{{% figure src="decoupling-caps-schematic-example-on-r-pi-pcb.png" width="400px" caption="Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf." %}}
+{{% figure ref="fig-decoupling-caps-schematic-example-on-r-pi-pcb" src="decoupling-caps-schematic-example-on-r-pi-pcb.png" width="400px" caption="Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf." %}}
 
 ## Mains Line Filters
 
@@ -841,15 +809,17 @@ where:<br/>
 
 However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, [Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
 
-The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
+{{% ref "fig-charge-pump-based-negative-voltage-gen-schematic" %}} shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
-{{% figure src="charge-pump-based-negative-voltage-gen-schematic.png" width="800px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal." %}}
+{{% figure ref="fig-charge-pump-based-negative-voltage-gen-schematic" src="charge-pump-based-negative-voltage-gen-schematic.png" width="800px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal." %}}
+
+For more infomation, see the [Electronics->Components->Power Regulators->Charge Pumps page](/electronics/components/power-regulators/charge-pumps/).
 
 ## Feedthrough Capacitors
 
-Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor._
+Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor_. {{% ref "fig-feedthrough-capacitor-3d-render-0603-1608-3-connections" %}} is a render of a 3-terminal 0603 feedthrough capacitor.
 
-{{% figure src="feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="350px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com." %}}
+{{% figure ref="fig-feedthrough-capacitor-3d-render-0603-1608-3-connections" src="feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="350px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com." %}}
 
 Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
 
@@ -1117,3 +1087,6 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [^wikipedia-dielectric]: Wikipedia (2023, Jun 9). _Dielectric_ [Encyclopedia Entry]. Retrieved 2023-07-12, https://en.wikipedia.org/wiki/Dielectric.
 [^eevblog-is-ceramic-capacitor-package-relevant]: EEVblog. _Is ceramic capacitor package relevant?_ [Forum Thread]. Retrieved 2023-07-12, from https://www.eevblog.com/forum/projects/is-ceramic-capacitor-package-relevant/.
 [^tdk-temp-characteristics-mlcc]: Trevor Crow (2014, Jan). _Temperature Characteristics of Multilayer Ceramic Capacitors_ [PDF]. TDK. Retrieved 2023-07-12, from https://file.elecfans.com/web1/M00/20/AD/oYYBAFmkxDGAAYIpAAb6nD4zLi0492.pdf.
+[^kemet-heres-what-makes-mlcc-dielectrics-different]: (2019, April 4). _Here’s What Makes MLCC Dielectrics Different_ [Article]. Retrieved 2023-07-13, from https://www.kemet.com/en/us/technical-resources/heres-what-makes-mlcc-dielectrics-different.html.
+[^tutorials-point-difference-between-dielectric-constant-and-permittivity]: Vineet Nanda (2023-04-18). _Difference Between Dielectric Constant and Permittivity_ [Article]. TutorialsPoint. Retrieved 2023-07-13, from https://www.tutorialspoint.com/difference-between-dielectric-constant-and-permittivity.
+[^wikipedia-relative-permittivity]: Wikipedia (2023, April 19). _Relative permittivity_ [Encylopedia Entry]. Retrieved 2023-07-13, from https://en.wikipedia.org/wiki/Relative_permittivity.

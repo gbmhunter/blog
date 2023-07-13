@@ -1,10 +1,10 @@
+// This script makes the TOC indicate the currently read section by adding the "active" class
+// to the section which is in view.
 // Code adapted from https://iamsorush.com/posts/table-of-content-blog/
 window.addEventListener('DOMContentLoaded', () => {
     const observerForTableOfContentActiveState = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             const id = entry.target.getAttribute('id');
-            console.log('hello, id=', id)
-
             if (entry.intersectionRatio > 0) {					
                 clearActiveStatesInTableOfContents();				
                 document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.add('active');
