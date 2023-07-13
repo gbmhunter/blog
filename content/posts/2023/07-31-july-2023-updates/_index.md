@@ -19,4 +19,8 @@ type: post
 
 * Added figure and table numbering funcionality, along with the ability to reference the figures and tables from other parts of the content.
 
-* Added more info on the [DC Bias Characteristic of multilayer chip capacitors (MLCCs)]().
+* Added more info on the [DC Bias Characteristic of multilayer chip capacitors (MLCCs)](/electronics/components/capacitors/#dc-bias-characteristic-1).
+
+* Changed the references to _dielectric constant_ to _relative permitivitty_, as the former term has been deprecated. 
+
+* Added a "sticky" table of contents (TOC) to the right-hand side of content pages, with automatic highlighting of the section currently in the browsers viewport.
