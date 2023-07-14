@@ -13,12 +13,18 @@ $(function() {
   $('figure[' + attrName + ']').each(function() {
     var figure = $(this);
     var figureRef = figure.attr(attrName)
-    var number = mapIndex(figures, figureRef);
+    var number = mapIndex(figures, figureRef)
+    console.log('figureRef=', figureRef)
 
-    if (number < 0) { // this table is first met
+    if (number < 0) { // this figure is first met
       number = mapIndices(figures) + 1
-      figures[figureRef] = figure;
-      figure.find('figcaption').find('p').prepend('Figure '+ number + ': ')
+      figures[figureRef] = figure
+      const figCaption = figure.find('figcaption')
+      if (figCaption.length == 0){
+        console.error('Found no caption for figure "' + figureRef + '"')
+      } else {
+        figCaption.find('p').prepend('Figure '+ number + ': ')
+      }
     }
 
     // Find each reference to this table in the document and insert the now-assigned number

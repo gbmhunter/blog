@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Components ]
 date: 2015-05-08
 draft: false
 lastmod: 2022-03-17
-tags: [ "electronics", "components", "voltage-level translators", "voltage domains", "level shifters" ]
-title: "Voltage-Level Translators"
-type: "page"
+tags: [ electronics, components, voltage-level translators, voltage domains, level shifters ]
+title: Voltage-Level Translators
+type: page
 ---
 
 {{% warning-is-notes %}}

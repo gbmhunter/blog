@@ -5,9 +5,9 @@
 <!-- In total, this file contains HTML elements that use up 9 of the 12 bootstrap columns (leaving 3 for the site logo and menu)-->
 {{ $section := .Site.GetPage "section" .Section }}
 
-<!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right
-    Make sure this has the same column classes as baseof.html -->
+<!-- Make sure this syncs up with the columns in baseof.html -->
 <article class="col-md-9 col-xl-7">
+
   <header>
     {{ partial "breadcrumbs.html" . }}
     <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
@@ -119,9 +119,13 @@
 
 </article>
 
+
 <!-- This takes up 3 columns on xl screens and bigger, but not visible on smaller devices -->
 <div id="right-hand-column" class="col-xl-3" data-simplebar>
+  <!-- Only show TOC for pages, not posts -->
+  {{- if eq .Type "page" -}}
   <nav id="toc">
     {{ .TableOfContents }}
   </nav>
+  {{- end -}}
 </div>

@@ -758,12 +758,12 @@ Capacitors rated with an X are deemed suitable for connecting between two main v
 They are also given a number to represent there impulse test rating, as shown in the table below.
 
 <table>
-    <thead>
-        <tr>
-            <th>Classification</th>
-            <th>Impulse Voltage (V)</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Classification</th>
+      <th>Impulse Voltage (V)</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
 <td >X1</td>
