@@ -1,15 +1,27 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "PCB Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics ]
 date: 2016-05-03
 draft: false
-title: EMI/EMC (Electromagnetic Interference/Compatibility)
+lastmod: 2023-07-14
+tags: [ electronics, emc, design, guidelines, inductors ]
+title: EMC Design Guidelines
 type: page
 ---
 
 ## Overview
 
-> It is very difficult to reduce EM emissions by more than 20dB without serious design changes - Anon
+## Inductor Polarity
+
+Inductors don't have a polarity right? Most of the time, they don't. But certain inductors do feature polarity marks for EMC purposes.
+
+When inductors are used in switch-mode power supplies, one side of the inductor is normally connected to what is called the _switching node_. In a buck converter, the switching node is the side of the inductor that gets switched from `\(V_{IN}\)` to `\(GND\)`. In a boost converter, the switching node is the side of the inductor which gets switched from `\(V_{OUT}\)` to `\(GND\)`.
+
+This switching node has a high `\(\frac{dV}{dt}\)` -- it's voltage changes rapidly between two values. The copper on the switching node can act as an antenna and radiate energy, contributing to generated EMC noise. One way to mitigate this is to minimize the amount of copper on the switching node, by placing the components close together and make sure it is shielded with a ground plane.
+
+Some inductors include polarity marks to indicate which side of the inductor has the shortest copper path to the leads. One example is the Coilcraft XAL Family of inductors, including the `XAL7050-223MEC`. shows the top view of the inductor, highlighting the polarity indicator and a note about how to reduce EMI.
+
+{{% figure src="coilcraft-xal7050-showing-polarity-indicator-and-emi-note.png" width="500px" %}}
 
 ## Contact vs. Non-Contact Probes
 
