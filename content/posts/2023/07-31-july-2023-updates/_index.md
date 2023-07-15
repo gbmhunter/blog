@@ -30,3 +30,5 @@ type: post
 * Added a new page on [Voltage Supervisors](/electronics/components/voltage-supervisors/).
 
 * Added info on how [inductor orientation can have an effect on EMI](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/#inductor-polarity) to the EMC Design Guidelines page.
+
+* Added info on how [return current in a reference plane follows the trace at high frequencies](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/) to the EMC Design Guidelines page. 

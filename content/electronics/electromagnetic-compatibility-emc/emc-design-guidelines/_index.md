@@ -53,6 +53,16 @@ Connecting the side of the inductor with the bar to the high `\(\frac{dV}{dt}\)`
 
 {{% figure ref="fig-inductor-polarity-radiated-emissions-improvement-analog-devices" src="inductor-polarity-radiated-emissions-improvement-analog-devices.png" width="600px" caption="Graphs from Analog Devices showing the improvement in radiated emissions when the shortest inductor lead is connected to the switching node[^analog-devices-assembly-orientation-inductor-affect-emissions]. Orientation 1 is with the short lead connected to the switching node, orientation 2 is the opposite." %}}
 
+## Make Sure Currents Can Return Directly Under Traces
+
+At high frequencies, the current through a signal trace on a PCB wants to return directly underneath the trace. The best way to achieve this is to ensure there is a reference plane (typically GND) directly below the trace, and there are no gaps or splits in the plane.
+
+{{% ref "fig-current-following-trace-at-high-frequencies" %}} shows a example PCB with an upper layer that has a trace on it, and a reference plane on the layer beneath it. A signal source on the bottom left (simulated as a current source here) generates a signal that travels along the trace on the top layer, and returns through the reference plane on the second layer. At DC or low frequencies, the return current takes the shortest path straight through the copper plane back to the source. However, at high frequencies, the current travels back underneath the trace.
+
+{{% figure ref="fig-current-following-trace-at-high-frequencies" src="current-following-trace-at-high-frequencies.webp" width="1000px" caption="Diagram illustrating how current in the reference plane follows directly underneath the trace at high frequencies, rather than taking the shortest path back to the source." %}}
+
+At all frequencies, the return current is taking the path of least impedance (well, distributing itself among all paths, proportional to the inverse of impedance). At low frequencies, this happens to be the shortest path, as the impedance is dominated by the resistance of the copper. At high frequencies, the impedance is dominated by the inductance, and the path of lowest inductance happens to be directly underneath the trace.
+
 ## Contact vs. Non-Contact Probes
 
 Non-contact probes have the advantage of being easy to use. They do not require you to make and break electrical connections to test the circuit. They don't require you to ground the probe using a very short and obtrusive ground lead. They don't run the risk of shorting out parts of the circuit if your hand slips (non-contact probes are almost always insulated).
