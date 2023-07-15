@@ -5,7 +5,7 @@ date: 2015-03-24
 description: Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters.
 draft: false
 images: [ /electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png ]
-lastmod: 2022-07-12
+lastmod: 2023-07-15
 tags: [ electronics, components, power regulators, SMPS, buck converter, power electronics, inductor, capacitor, regulation, control methods, constant frequency, current-mode, SNVA555, PCM, peak current mode, CCM, constant current mode ]
 title: Buck Converters
 type: page
@@ -17,7 +17,7 @@ _Buck converters_ are a particular topology of [switch-mode power supply](/elect
 
 {{% figure src="buck-converter-basic-schematic.svg" width="600" caption="The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
 
-To learn more about EMI/EMC considerations regarding buck converters, see the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
+To learn more about EMI/EMC considerations regarding buck converters, see the [EMC Design Guidelines page](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/).
 
 ## How A Buck Converter Works
 
@@ -202,9 +202,7 @@ When using a P-channel MOSFET for synchronous rectification, it's body diode is 
 
 ## EMC
 
-The input current "hot loop" of a buck converter is the most important part to worry about when it comes to EMC. See the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/) for more information.
-
-{{% figure src="/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/buck-converter-hot-loop.png" width="500px" caption="The hot loop in a buck converter is on the output side." %}}
+The input current "hot loop" of a buck converter is the most important part to worry about when it comes to EMC. See the [EMC Design Guidelines page](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/) for more information.
 
 ## Examples
 

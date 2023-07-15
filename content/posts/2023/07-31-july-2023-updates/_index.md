@@ -28,3 +28,5 @@ type: post
 * Added a new page on the [SOT-353 Component Package](/pcb-design/component-packages/sod-353-component-package/) (which has the common synonyms SC-88A and SC-70-5).
 
 * Added a new page on [Voltage Supervisors](/electronics/components/voltage-supervisors/).
+
+* Added info on how [inductor orientation can have an effect on EMI](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/#inductor-polarity) to the EMC Design Guidelines page.

@@ -5,7 +5,7 @@ date: 2015-03-24
 description: Control methods, component selection, equations, operation modes, schematics, examples and more info on boost converters.
 draft: false
 images: [ /electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png ]
-lastmod: 2022-07-05
+lastmod: 2023-07-15
 tags: [ electronics, components, power regulators, SMPS, boost converter, power electronics, inductor, capacitor, regulation, control methods, constant frequency, current-mode, SNVA555, PCM, peak current mode, CCM, constant current mode ]
 title: Boost Converters
 type: page
@@ -119,6 +119,4 @@ Typically, boost ICs with an internal switch (a converter) can support lower inp
 
 ## EMC
 
-The output current loop "hot loop" of a boost converter is the most important part to worry about when it comes to EMC. See the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/) for more information.
-
-{{% figure src="/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/boost-converter-hot-loop.png" width="500px" caption="The hot loop in a boost converter is on the output side." %}}
+The output current loop "hot loop" of a boost converter is the most important part to worry about when it comes to EMC. See the [EMC Design Guidelines page](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/) for more information.

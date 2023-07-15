@@ -31,7 +31,7 @@ EMC testing involves spectrometers, antennas, radio frequency cabling/connectors
 
 Reduce these levels requires careful circuit design, in both the components used, the layout, the number of layers, and shielding.
 
-For information specifically relating to EMS and switch-mode power supply design, see the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
+For information specifically relating to EMS and switch-mode power supply design, see the [EMC Design Guidelines page](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/).
 
 ## Standards
 

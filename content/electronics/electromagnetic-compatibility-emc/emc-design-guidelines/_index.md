@@ -11,17 +11,47 @@ type: page
 
 ## Overview
 
-## Inductor Polarity
+## SMPS EMC Guidelines
 
-Inductors don't have a polarity right? Most of the time, they don't. But certain inductors do feature polarity marks for EMC purposes.
+Switch-mode power supplies (SMPS) can be a **large source of EMI in a circuit**, which can cause your PCB to fail EMC tests. Most of the noise is emitted at the switching frequency and it's harmonics. Many manufacturers will provide recommended layouts for their SMPS ICs and surrounding components, and it's generally a good idea to follow these as closely as possible in your design. This includes things such as:
 
-When inductors are used in switch-mode power supplies, one side of the inductor is normally connected to what is called the _switching node_. In a buck converter, the switching node is the side of the inductor that gets switched from `\(V_{IN}\)` to `\(GND\)`. In a boost converter, the switching node is the side of the inductor which gets switched from `\(V_{OUT}\)` to `\(GND\)`.
+* Input and output capacitors as close as possible to the SMPS IC.
+* Keeping the current loops involving the capacitors, inductor(s) and switching node(s) as small as possible (w.r.t. to their area).
+* Making sure there is a continuous ground plane close to all other nets (this also relates to keeping current loops small).
 
-This switching node has a high `\(\frac{dV}{dt}\)` -- it's voltage changes rapidly between two values. The copper on the switching node can act as an antenna and radiate energy, contributing to generated EMC noise. One way to mitigate this is to minimize the amount of copper on the switching node, by placing the components close together and make sure it is shielded with a ground plane.
+### Hot Loops
 
-Some inductors include polarity marks to indicate which side of the inductor has the shortest copper path to the leads. One example is the Coilcraft XAL Family of inductors, including the `XAL7050-223MEC`. shows the top view of the inductor, highlighting the polarity indicator and a note about how to reduce EMI.
+_Hot loops_ are the current loops in SMPS designs which generally generate/radiate the most EMI and are of greatest concern when it comes to EMC.
 
-{{% figure src="coilcraft-xal7050-showing-polarity-indicator-and-emi-note.png" width="500px" %}}
+The following image shows a basic buck converter circuit (with the switch representing a MOSFET and using a flyback diode rather than active rectification). The light blue rectangle shows the current path when the switch is closed. The green rectangle shows the current path when the switch is open. The red rectangle shows the "hot loop", the current path which has the highest di/dt and is generally the loop you want to minimize and pay particular care to when routing the tracks. 
+
+{{% figure src="buck-converter-hot-loop.png" width="700px" caption="Schematic showing the \"Hot Loop\" of a standard buck converter." %}}
+
+The loop involving the inductor and output capacitor are not so important because they experience a relatively smooth trapezoidal shaped current profile (at least when in continuous conduction). The input capacitor and switch however experience a much larger di/dt -- when the switch is closed it goes from 0A and jumps up to the current through the inductor. It then follows the inductor current on the upwards rise until the switch is opened, at which point the current rapidly falls back to 0A. The diode is in a similar position, except it conducts when the input cap and switch are not (it takes the falling edge of the inductor current). Thus the "hot loop" creating the most EMI is the loop involving the input capacitor, switch and diode[^bib-analog-devices-hot-loops].
+
+The hot loop for a boost converter is on the output side rather than the input:
+
+{{% figure src="boost-converter-hot-loop.png" width="700px" caption="Schematic showing the \"Hot Loop\" of a boost converter." %}}
+
+{{% tip %}}
+Because the current cannot change instantaneously through an inductor, the inductor is never part of the hot loop, no matter what topology of SMPS you are using. However, this rule does not apply to transformers (they can be part of hot loops, e.g. the flyback topology), as they do not behave like an inductor.
+{{% /tip %}}
+
+### Inductor Polarity
+
+Inductors don't have a polarity right? Most of the time, they don't. **But certain inductors do feature polarity marks for EMC purposes.**
+
+When inductors are used in switch-mode power supplies, one side of the inductor is normally connected to what is called the _switching node_. In a buck converter, the switching node is the side of the inductor that gets switched from `\(V_{IN}\)` to `\(\text{GND}\)`. In a boost converter, the switching node is the side of the inductor which gets switched from `\(V_{OUT}\)` to `\(\text{GND}\)`.
+
+This switching node has a high `\(\frac{dV}{dt}\)` --- it's voltage changes rapidly between two values. The copper on the switching node can act as an antenna and radiate energy, contributing to generated EMC noise. One way to mitigate this is to minimize the amount of copper on the switching node, by placing the components close together and make sure it is shielded with a ground plane.
+
+Some inductors include polarity marks to indicate which side of the inductor has the shortest copper path to the leads. One example is the Coilcraft XAL Family of inductors, including the `XAL7050-223MEC`. {{% ref "fig-coilcraft-xal7050-showing-polarity-indicator-and-emi-note" %}} shows the top view of the inductor, highlighting the polarity indicator and a note about how to reduce EMI.
+
+{{% figure ref="fig-coilcraft-xal7050-showing-polarity-indicator-and-emi-note" src="coilcraft-xal7050-showing-polarity-indicator-and-emi-note.png" width="500px" caption="Top view of the Coilcraft XAL7050 inductor, showing the polarity mark." %}}
+
+Connecting the side of the inductor with the bar to the high `\(\frac{dV}{dt}\)` switching node gives the lowest EMI. {{% ref "fig-inductor-polarity-radiated-emissions-improvement-analog-devices" %}} shows the improvement in radiated emissions when connecting the shortest inductor lead to the switching node.
+
+{{% figure ref="fig-inductor-polarity-radiated-emissions-improvement-analog-devices" src="inductor-polarity-radiated-emissions-improvement-analog-devices.png" width="600px" caption="Graphs from Analog Devices showing the improvement in radiated emissions when the shortest inductor lead is connected to the switching node[^analog-devices-assembly-orientation-inductor-affect-emissions]. Orientation 1 is with the short lead connected to the switching node, orientation 2 is the opposite." %}}
 
 ## Contact vs. Non-Contact Probes
 
@@ -42,3 +72,8 @@ These reflections can be minimised by adding the appropriate termination resisto
 ## Mu-metal
 
 Mu-metal is a nickel-iron alloy with a very high permeability, making it suitable for shielding sensitive equipment against magnetic interference.
+
+## References
+
+[^analog-devices-assembly-orientation-inductor-affect-emissions]: Keith Szolusha, Gengyao Li, and Frank Wang (2021, Jun). _Does the Assembly Orientation of an SMPS Inductor Affect Emissions?_ [Article]. Analog Devices. Retrieved 2023-07-15, from https://www.analog.com/en/analog-dialogue/articles/does-the-assembly-orientation-of-an-smps-inductor-affect-emissions.html.
+[^bib-analog-devices-hot-loops]: Christian Kueck. _Layout for Power Designs #1: Hot Loops_. Analog Devices. Retrieved 2022-07-13, from https://www.analog.com/en/technical-articles/layout-for-power-designs-1-hot-loops.html.

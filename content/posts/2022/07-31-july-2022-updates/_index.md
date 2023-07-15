@@ -21,7 +21,7 @@ type: "post"
 * Updated info on [the saturated current of an inductor](/electronics/components/inductors/#saturation-current-1).
     {{% figure src="saturation-current-screenshot.png" width="500px" %}}
 
-* Started a page on [SMPS EMC and hot loops](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
+* Started a page on ~~SMPS EMC and hot loops~~.
     {{% figure src="buck-converter-hot-loop-screenshot.png" width="500px" %}}
 
 * Added [FCC Part 15 conductive limits and CISPR 11 info to the EMC page](/electronics/electromagnetic-compatibility-emc/).
