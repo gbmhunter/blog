@@ -1,11 +1,11 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Components ]
 date: 2013-05-29
-lastmod: 2021-04-20
-tags: [ "heatsinks", "circuit design", "components", "overheating", "thermal", "temperature", "packages", "pads", "interfaces", "thermal interfaces" ]
-title: "Heatsinks And Thermal Interfaces"
-type: "page"
+lastmod: 2023-07-18
+tags: [ heatsinks, circuit design, components, overheating, thermal, temperature, packages, pads, interfaces, thermal interfaces ]
+title: Heatsinks And Thermal Interfaces
+type: page
 ---
 
 ## Heatsinks
@@ -14,7 +14,7 @@ Heatsinks are used in circuit design to conduct heat away from a component faste
 
 {{% figure src="typical-to-220-heatsink-with-fins.jpg" width="411px" caption="A typical TO-220 heatsink with fins. Image from www.digikey.com."  %}}
 
-Typical components that require heatsinking are high current {{% link text="linear regulators" src="/electronics/components/power-regulators" %}}, MOSFETs on {{% link text="H-bridges" src="/electronics/circuit-design/h-bridges" %}}, power amplifier BJTs and {{% link text="MOSFETs" src="/electronics/components/transistors/mosfets" %}}, and power limiting resistors. Most heatsinks are made from black anodized aluminium.
+Typical components that require heatsinking are high current {{% link text="linear regulators" src="/electronics/components/power-regulators" %}}, MOSFETs on [H-bridges](/electronics/circuit-design/h-bridges), power amplifier BJTs and {{% link text="MOSFETs" src="/electronics/components/transistors/mosfets" %}}, and power limiting resistors. Most heatsinks are made from black anodized aluminium.
 
 Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include {{% link text="TO-220" src="/pcb-design/component-packages/to-220-component-package" %}}, {{% link text="SOT-223" src="/pcb-design/component-packages/sot-23-component-package" %}}.
 
