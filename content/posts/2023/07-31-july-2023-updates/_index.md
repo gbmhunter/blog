@@ -32,3 +32,7 @@ type: post
 * Added info on how [inductor orientation can have an effect on EMI](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/#inductor-polarity) to the EMC Design Guidelines page.
 
 * Added info on how [return current in a reference plane follows the trace at high frequencies](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/#solid-reference-planes-under-traces) to the EMC Design Guidelines page. 
+
+* Updated the [TO-252 Component Package page](/pcb-design/component-packages/to-252-component-package/) with more info.
+
+* Added more information on H-bridges and motor driver ICs to the [H-bridges page](/electronics/components/h-bridges/).
