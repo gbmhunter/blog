@@ -1,0 +1,12 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, PCB Design, Component Packages ]
+date: 2015-04-06
+draft: false
+lastmod: 2023-07-19
+tags: [ component packages, PCB design, transistor, SC-63, TO-252, DPACK ]
+title: SC-63 Component Package
+type: page
+---
+
+`SC-63` is the JEITA/EIAJ name for the `TO-252-3` component package (3-lead variant of the `TO-252` family). See the [TO-252 Component Package page](/pcb-design/component-packages/to-252-component-package/) for more info.

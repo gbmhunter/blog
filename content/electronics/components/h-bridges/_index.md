@@ -7,33 +7,47 @@ description: Schematics, circuits, half-bridges, transistor-based design, motors
 draft: false
 lastmod: 2018-12-31
 tags: [ electronics, circuit design, H-bridges, half-bridges, circuits, transistors, MOSFETs, motors, LEDs ]
-title: H-Bridges and Other Motor Drivers
+title: H-Bridges
 type: page
 ---
 
 ## Overview
 
-A _motor driver_ is a circuit which drives some type of motor. A _H-bridge_ is a two-leg/four-switch power inverter which converts DC current into a form of AC current. It is also known as a full-bridge. A half-bridge is only one leg of the full-bridge.
+A _H-bridge_ is a two-leg/four-switch power inverter which converts DC current into a form of AC current. It is also known as a full-bridge. A half-bridge is only one leg of the full-bridge.
 
 {{% aside type="tip" %}}
 Try **not get confused** with thinking H-bridge stands for half-bridge, the H is for the shape a full-bridge makes, it does not shorthand for _half_.
 {{% /aside %}}
 
-## Circuit
+Adding a third-leg creates an _inverter_, which is commonly used to convert DC to AC for high-power applications. With three legs, it has the benefit of reduced harmonics compared to a full-bridge.
 
-{{% figure src="lm5104-example-circuit.jpg" width="800px" caption="Example half-bridge circuit for the LM5104 half-bridge controller."  %}}
+## Basic H-Bridge Circuit
 
-## A Basic Switch/Relay H-Bridge
+{{% ref "fig-basic-h-bridge-circuit" %}} shows the basic concept behind an H-bridge. Four switches (typically implemented as BJTs or MOSFETs) are arranged in two legs, with each side of the motor connected in the middle of each leg. By turning on various switches, you can apply voltage/current of either polarity to the motor, as well as make the motor open-circuit or short-circuit (which are useful for coasting and braking purposes).
 
-**A double-pole, double-throw switch or relay can act as an basic H-bridge.** This may be suitable for manually-switched loads, or loads which do not require switching often.
+{{% figure ref="fig-basic-h-bridge-circuit" src="basic-h-bridge-circuit.webp" width="300px" caption="Circuit showing the basic concept behind an H-bridge." %}}
 
-The disadvantages are high-drive power (if using relays), mechanical wear of the switching elements, and slow switching speeds (PWM control is pretty much impossible with a switch or relay).
+{{% aside type="tip" %}}
+You might wonder why transistors are normally used and not mechanical switches such as relays -- whilst mechanical relays are used for simple, infrequent switching H-bridges (heating/cooling elements), most applications require fast switching that would either wear the relay contacts out too quickly or are simply faster that what a relay can switch at. Also, transistors such are MOSFETs of the equivalent current rating to a relay are physically much smaller! 
+{{% /aside %}}
 
-They are suitable for things like heating/cooling elements which use on/off control (with suitable hysteresis) with large thermal masses (i.e. slow switching speeds).
+{{% ref "fig-basic-h-bridge-circuit-showing-modes-of-operation" %}} shows the four basic modes of operation you can achieve by turning on and off various switches in the H-bridge. With SW1 and SW4 closed, the supply voltage is applied across the motor in the positive direction and it spins "forwards" (forwards being an arbitrary direction depending on the motor windings). With SW2 and SW3 closed, the supply voltage is reversed across the motor, and it spins in the "backwards" direction. With all switches open (or any one switch closed) the motor is open-circuit and will "coast", only slowing down due to friction and the load it's connected to. With SW2 and SW4 closed, the motor short-circuited and will brake, coming to a stop quickly.
 
-## A Transistor H-Bridge
+{{% figure ref="fig-basic-h-bridge-circuit-showing-modes-of-operation" src="basic-h-bridge-circuit-showing-modes-of-operation.webp" width="600px" caption="Circuits showing the four basic modes of operation for an H-bridge." %}}
 
-Almost all serious half or full-bridges use [MOSFETs](/electronics/components/transistors/mosfets/) as the switches. This is because MOSFETs have very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFETs are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
+{{% aside type="tip" %}}
+If you have a small brushed DC motor lying around, spin the axle with the wires open-circuit. You should feel that the axle spins freely, coming to a stop due to fiction. Now short the motor wires together, and should feel that the axle is much harder to turn (braking).
+{{% /aside %}}
+
+There is another form of braking which is even faster than shorting the motor out, and that is applying the supply voltage of the reverse polarity to the motor (i.e. trying to drive the motor backwards while it is going forwards).
+
+## H-Bridge Built With Transistors
+
+Almost all serious half or full-bridges use [MOSFETs](/electronics/components/transistors/mosfets/) as the switches. This is because MOSFETs have a very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFETs are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
+
+For the same price and physical size, N-channel MOSFETs generally have lower on resistances than P-channel MOSFETs. For this reason in many H-bridges the top two P-channel MOSFETs are replaced with N-channel MOSFETs, with the one disadvantage that charge pump circuitry is required to drive the gates higher than the supply voltage when turning them on.
+
+TODO: Add MOSFET H-bridge circuit.
 
 ## Discrete Component H-Bridge With Only Two Control Lines
 
@@ -51,13 +65,21 @@ There are heaps of H-bridge related ICs! Some are just a controller that takes i
 
 For the same price and or physical size, N-channel MOSFETs have a lower `\(R_{DS(on)}\)` than P-channels. Because of this, many H-bridge circuits use N-channel MOSFETs for the top-side switches as well as the bottom-side. Top-side N-channel switches require a voltage greater than `\( V_{CC} \)` at the gate to turn them on. Most H-bridge drivers have an internal charge pump which takes care of this for you.
 
+There are a few commonly used control methods:
+
+* **PWM IN1/IN2:** Two PWM signals, one for each leg of the H-bridge.
+* **PH/EN:** Provides a phase and enable signal, allowing for a speed and direction style interface. This interface only needs one PWM signal from the controlling MCU, vs. two for the PWM IN1/IN2 interface. The PH signal can be a standard MCU GPIO output, and the EN is connected to the PWM output.
+* **Half-bridge:** Allows for independent control of each half-bridge.
+
 ### L298/L298N
 
-The `L298` is an older, fully integrated motor driver IC that uses BJTs rather than MOSFETs for the H-bridges. It contains 2 independent H-bridges. It uses AND gates to implement simple control logic based two input lines and 1 enable line per H-bridge.
+The `L298` is an older (and now mostly obsolete), fully integrated motor driver IC that uses BJTs rather than MOSFETs for the H-bridges. It contains 2 independent H-bridges. It uses AND gates to implement simple control logic based two input lines and 1 enable line per H-bridge.
 
-### DRV82x
+{{% figure src="l298-motor-driver-ic-photo.jpg" width="400px" caption="Photo of the L298 motor IC. Smial (FAL or GFDL 1.2 <http://www.gnu.org/licenses/old-licenses/fdl-1.2.html>), via Wikimedia Commons[^wikipedia-h-bridge]." %}}
 
-The `DRV821x` is a family of fully integrated (control and power electronics) brushed DC motor controllers from Texas Instruments. 
+### DRV8xxx
+
+The `DRV8xxx` is a family of fully integrated (control and power electronics) brushed DC motor controllers from Texas Instruments. A `P` is added after the `DRVxxxx` (e.g. `DRV8212P`) to indicate it supports only the PWM IN1/IN2 interface and not PH/EM nor half-bridge mode.
 
 {{% aside type="tip" %}}
 Texas Instruments uses the prefix `DRV` for all of their brushed, brushless and stepper motor driver ICs[^ti-motor-drivers-overview].
@@ -66,6 +88,32 @@ Texas Instruments uses the prefix `DRV` for all of their brushed, brushless and 
 {{% ref "fig-drv8212p-motor-driver-ic-functional-block-diagram" %}} shows the functional block diagram for the `DRV8212P` motor driver IC. It has internal charge pumps for the gate drives to power the high-side N-Channel MOSFETs, and basic over-current, under-voltage and over-temperature protection. There are two separate power supplies can be provided. `\(V_{CC}\)` is for the logic and can range from 1.65-5.5V. `\(V_M\)` is purely for powering the motor and can range from 0-11V[^ti-drv8212p-motor-driver-ic-ds].
 
 {{% figure ref="fig-drv8212p-motor-driver-ic-functional-block-diagram" src="drv8212p-motor-driver-ic-functional-block-diagram.png" width="600px" caption="The functional block diagram for the DRV8212P motor driver IC[^ti-drv8212p-motor-driver-ic-ds]." %}}
+
+{{% ref "tbl-drv-part-info" %}} summarizes various parts in the DRV8xxx family.
+
+<table ref="tbl-drv-part-info">
+  <caption>Key parameters for a number of parts in the DRV8xxx family.</caption>
+  <thead>
+  <colgroup>
+    <col style="width: 110px;"> <!-- Part Number -->
+    <col style="width: 100px;"> <!-- V_cc -->
+    <col style="width: 100px;"> <!-- V_m -->
+    <col style="width: 150px;"> <!-- R_ds(on) -->
+    <col style="width: 100px;"> <!-- I -->
+    <col style="width: 100px;"> <!-- Interface -->
+    <col style="width: 100px;"> <!-- Sleep -->
+    <col style="width: 100px;"> <!-- Package -->
+    <col style="width: 300px;"> <!-- Comment -->
+  </colgroup>
+    <tr><th>Part Number</th> <th>\(V_{CC}\)</th> <th>\(V_M\)</th> <th>\(R_{DS(on)}\) (HS+LS)</th> <th>I</th>     <th>Interface</th>                   <th>Sleep</th>      <th>Package</th> <th>Comment</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>DRV8210P</td>    <td>1.65-5.5V</td>  <td>0-11V</td>   <td>\(950{-}1050m\Omega\)</td>  <td>1.76A</td> <td>IN1/IN2</td>                     <td>nSLEEP pin</td> <td>WSON-8</td>  <td></td></tr>
+    <tr><td>DRV8212</td>     <td>1.65-5.5V</td>  <td>0-11V</td>   <td>\(250m\Omega\)</td>         <td>4A</td>    <td>IN1/IN2, PH/EN, Half-bridge</td> <td></td>           <td></td>        <td>Only the DSG package allows for the 3 different interfaces.</td></tr>
+    <tr><td>DRV8837</td>     <td>1.8-7V</td>     <td>0-11V</td>   <td>\(280m\Omega\)</td>         <td>1.8A</td>  <td>IN1/IN2</td>                     <td>nSLEEP pin</td> <td>WSON-8</td>  <td></td></tr>
+    <tr><td>DRV8838</td>     <td>1.8-7V</td>     <td>0-11V</td>   <td>\(280m\Omega\)</td>         <td>1.8A</td>  <td>PH/EN</td>                       <td>nSLEEP pin</td> <td>WSON-8</td>  <td>Same as the DRV8837 except it has PH/EN interface.</td></tr>
+  </tbody>
+</table>
 
 ## Bi-Colour LED's
 
@@ -91,3 +139,4 @@ The solution is to filter the switching H-bridge output, so the load sees a cons
 
 [^ti-drv8212p-motor-driver-ic-ds]: Texas Instruments (2021, Jul). _DRV8212P - 11-V H-Bridge Motor Driver with PWM Interface and Low-Power Sleep Mode_ [Datasheet]. Retrieved 2023-07-18, from https://www.ti.com/lit/ds/symlink/drv8212p.pdf.
 [^ti-motor-drivers-overview]: Texas Instruments. _Motor drivers_ [Product Family Page]. Retrieved 2023-07-18, from https://www.ti.com/motor-drivers/overview.html.
+[^wikipedia-h-bridge]: Wikipedia (2023, May 15). _H-bridge_ [Article]. Retrieved 2023-07-19, from https://en.wikipedia.org/wiki/H-bridge.
