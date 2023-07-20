@@ -36,3 +36,5 @@ type: post
 * Updated the [TO-252 Component Package page](/pcb-design/component-packages/to-252-component-package/) with more info.
 
 * Added more information on H-bridges and motor driver ICs to the [H-bridges page](/electronics/components/h-bridges/).
+
+* Added a new page on the [SOT-416 family of component packages](/pcb-design/component-packages/sot-416-component-package/).
