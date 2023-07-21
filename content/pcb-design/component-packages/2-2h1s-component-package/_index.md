@@ -1,0 +1,14 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, PCB Design, Component Packages ]
+date: 2023-07-21
+draft: false
+lastmod: 2023-07-21
+tags: [ component packages, PCB design, 2-2H1S, SOT-416FL, Toshiba ]
+title: 2-2H1S Component Package
+type: page
+---
+
+## Overview
+
+`2-2H1S` is Toshiba's package code for the JEDEC `SOT-416FL` component package. See the [SOT-416 Component Package](/pcb-design/component-packages/sot-416-component-package/) for more info. 
