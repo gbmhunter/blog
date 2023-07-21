@@ -60,6 +60,10 @@ Examples of component packages that use leadframes:
 * QFN
 * QFP
 
+## Standards
+
+The [JEITA EIAJ ED-7500A standard](https://home.jeita.or.jp/tsc/std-pdf/ED-7500A-2.pdf) ([local copy](eiaj-ed-7500a-standard.pdf)) has dimensions for `TC-1` thru `TB30`, `SC-1` thru `SC-88A`.
+
 ## External References
 
 If there is one other site I would direct you to for PCB information, it would be [Tom Hausherr's blog](http://blogs.mentor.com/tom-hausherr/) on the Mentor Graphics website.

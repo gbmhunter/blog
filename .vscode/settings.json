@@ -1231,4 +1231,5 @@
     ],
     "markdown.validate.enabled": false,
     "terminal.integrated.scrollback": 100000,
+    "editor.autoClosingQuotes": "never",
 }
