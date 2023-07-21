@@ -19,7 +19,7 @@ type: page
 
 ## Synonyms
 
-* `DRL-6`, or `DRL0006A`: Texas Instrument's package code[ti-sn74lvc1g97-configurable-gate-ds].
+* `DRL|6`, or `DRL0006A`: Texas Instrument's package code[^ti-sn74lvc1g97-configurable-gate-ds].
 * `SC-89-6`: JEITA package code.
 
 ## Dimensions
@@ -36,4 +36,4 @@ The body is 1.6mm long (sides with the leads) and 1.2mm wide. The width includin
 
 ## References
 
-[ti-sn74lvc1g97-configurable-gate-ds]: Texas Instruments (2017, Jan). _SN74LVC1G97 - Configurable Multiple-Function Gate_ [Datasheet]. Retrieved 2023-07-21, https://www.ti.com/lit/ds/symlink/sn74lvc1g97.pdf.
+[^ti-sn74lvc1g97-configurable-gate-ds]: Texas Instruments (2017, Jan). _SN74LVC1G97 - Configurable Multiple-Function Gate_ [Datasheet]. Retrieved 2023-07-21, https://www.ti.com/lit/ds/symlink/sn74lvc1g97.pdf.
