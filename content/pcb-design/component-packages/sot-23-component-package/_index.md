@@ -41,16 +41,16 @@ Easy to hand-solder if you have had a bit of practise with surface mount devices
 ### Synonyms
 
 * `2-3AB1A`: Toshiba package code[^toshiba-sot-23].
-* `Micro3`: Infineon, International Rectifier
-* `MPAK`: NXP Semiconductors
+* `Micro3`: International Rectifier package code[^international-rectifier-irlml6401pbf-mosfet].
+* `MPAK`: NXP Semiconductors package code. Note that this references the SOT-346, which might actually be slightly different from the SOT-23-3[^nxp-sot-346-smt-3-mpak].
 * `RT-3`: Analog Devices package code[^analog-devices-sot-23-3-rt-3-package-info].
 * `S3`: Analog Devices package code, seems like it a legacy code from when Linear Technology existed[^analog-devices-s3-package]
 * `SC-59`: JEITA EIAJ code
 * `SC-59A`: JEITA EIAJ code (more specific)
-* `SMT3`: NXP Semiconductors, Rohm Semiconductor
+* `SMT3`: NXP Semiconductors' package code[^nxp-sot-346-smt-3-mpak]. Rohm Semiconductor.
 * `SOT-23`: Informal JEDEC name. If no additional number is provided, assume `SOT-23` has 3 pins
 * `SOT-23-3`: Informal JEDEC name.
-* `SOT-346`:
+* `SOT-346`: Is this the same?
 * `SSOT3`: Fairchild Semiconductor
 * `TO-236AA`: Formal JEDEC code (see note below)
 * `TO-236AB`: Formal JEDEC code (see note below)[^toshiba-sot-23]
@@ -58,6 +58,10 @@ Easy to hand-solder if you have had a bit of practise with surface mount devices
 Both `TO-236AA` and `TO-236AB` are official JEDEC names for the `SOT-23-3` package. An image comment on Wikipedia[^wikipedia-inductiveload] states that the `TO-236AB` package is approximately 0.1mm higher. However it is hard to verify this claim by comparing manufacturer package dimensions, as 0.1mm is well with the manufacturing tolerances.
 
 ### Dimensions
+
+* Pitch: 1.9mm
+* Body: 1.3mm wide, 2.9mm long, 1.0mm high
+* Body + Leads: 2.5mm wide, 2.9mm long
 
 {{% ref "fig-package-dimensions-sot23-3" %}} shows the dimensions of the `SOT-23-3` package.
 
@@ -168,3 +172,5 @@ The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23
 [^nxp-sot-23-package-info]: NXP (2017, Jan 9). _SOT-23 - plastic, surface-mounted package; 3 terminals; 1.9 mm pitch; 2.9 mm x 1.3 mm x 1 mm body_ [Package Information]. Retrieved 2023-07-22, from https://www.nxp.com/docs/en/package-information/SOT23.pdf.
 [^bourns-sot23-5-package-info]: Bourns (2008, Jun). _SOT23-5_ [Package Information]. Retrieved 2023-07-22, from https://www.bourns.com/docs/Product-Datasheets/sot23-5.pdf.
 [^direnc-tps70950dbvr]: Direnc. _TPS70950DBVR - SOT23-5 5V 150m Linear Voltage Regulator_ [Product Page]. Retrieved 2023-07-22, from https://www.direnc.net/tps70950dbvr-sot23-5-5v-150m-lineer-voltaj-regulator-en.
+[^international-rectifier-irlml6401pbf-mosfet]: International Rectifier (2014, Apr 28). _IRLML6401PbF - HEXFET Power MOSFET_ [Datasheet]. Retrieved 2023-07-22, from https://www.infineon.com/dgdl/Infineon-IRLML6401-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a401535668b96d2634. 
+[^nxp-sot-346-smt-3-mpak]: NXP. _SOT346: SMT3; MPAK_ [Package Information]. Retrieved 2023-07-22, from https://www.nxp.com/packages/SOT346.
