@@ -4,7 +4,7 @@ categories: [ Electronics, PCB Design, Component Packages ]
 date: 2015-04-06
 description: Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the SOT-23 component package.
 draft: false
-lastmod: 2020-01-15
+lastmod: 2023-07-23
 tags: [ component packages, PCB design, RJ-3, RJ-5, RJ-6, RJ-8, SOT-23, SOT-23-3, SOT-23-5, SOT-23-6, SOT-23-6, Micro3, SC-59, SC-59A, SOT-346, SSOT3, SOT-753, SOT-457, SC-74A, TO-236AA, TO-236AB, JEDEC, JEITA, EIAJ, SMT3, SOT-26, SM8, Analog Devices ]
 title: SOT-23 Component Package
 type: page
@@ -40,20 +40,22 @@ Easy to hand-solder if you have had a bit of practise with surface mount devices
 
 ### Synonyms
 
+* `1-3G1G`: Toshiba's package code[^toshiba-1ss398-diode].
 * `2-3AB1A`: Toshiba package code[^toshiba-sot-23].
+* `318D-04`: onsemi package code[^onsemi-m1ma151kt1-diode].
 * `Micro3`: International Rectifier package code[^international-rectifier-irlml6401pbf-mosfet].
-* `MPAK`: NXP Semiconductors package code. Note that this references the SOT-346, which might actually be slightly different from the SOT-23-3[^nxp-sot-346-smt-3-mpak].
+* `MPAK`: NXP Semiconductors' package code[^nxp-sot-346-smt-3-mpak].
 * `RT-3`: Analog Devices package code[^analog-devices-sot-23-3-rt-3-package-info].
 * `S3`: Analog Devices package code, seems like it a legacy code from when Linear Technology existed[^analog-devices-s3-package]
-* `SC-59`: JEITA EIAJ code
-* `SC-59A`: JEITA EIAJ code (more specific)
-* `SMT3`: NXP Semiconductors' package code[^nxp-sot-346-smt-3-mpak]. Rohm Semiconductor.
+* `SC-59`: JEITA EIAJ code[^rohm-2sb1590k-bjt].
+* `SMT3`: Rohm Semiconductor code[^rohm-2sb1590k-bjt], NXP Semiconductors' package code[^nxp-sot-346-smt-3-mpak].
 * `SOT-23`: Informal JEDEC name. If no additional number is provided, assume `SOT-23` has 3 pins
 * `SOT-23-3`: Informal JEDEC name.
-* `SOT-346`: Is this the same?
+* `SOT-346`: Some manufacturers consider the `SOT-23-3` and `SOT-346` to be different packages, and others conflate the two. I've decided to bundle them together, because after sifting through dimensions on many datasheet they generally have overlapping and very similar numbers, making them equivalent for most use cases. But I must stress, always check the datasheet!
 * `SSOT3`: Fairchild Semiconductor
 * `TO-236AA`: Formal JEDEC code (see note below)
 * `TO-236AB`: Formal JEDEC code (see note below)[^toshiba-sot-23]
+* `TO-236MOD`: JEDEC code according to Toshiba[^toshiba-1ss398-diode].
 
 Both `TO-236AA` and `TO-236AB` are official JEDEC names for the `SOT-23-3` package. An image comment on Wikipedia[^wikipedia-inductiveload] states that the `TO-236AB` package is approximately 0.1mm higher. However it is hard to verify this claim by comparing manufacturer package dimensions, as 0.1mm is well with the manufacturing tolerances.
 
@@ -111,6 +113,10 @@ Because of the 3 leads, `SOT-23-3` is used for a large number of low-power 2-3 l
 
 * Op-amps
 * Linear voltage regulators
+
+### Similar To
+
+The `SOT-23-3` package is very similar to the [SOT-346 package](/pcb-design/component-packages/sot-346-component-package/), with many manufacturer's dimensions for the two packages coinciding, and in many cases the same PCB land pattern will work with both packages.
 
 ## SOT-23-6
 
@@ -173,4 +179,7 @@ The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23
 [^bourns-sot23-5-package-info]: Bourns (2008, Jun). _SOT23-5_ [Package Information]. Retrieved 2023-07-22, from https://www.bourns.com/docs/Product-Datasheets/sot23-5.pdf.
 [^direnc-tps70950dbvr]: Direnc. _TPS70950DBVR - SOT23-5 5V 150m Linear Voltage Regulator_ [Product Page]. Retrieved 2023-07-22, from https://www.direnc.net/tps70950dbvr-sot23-5-5v-150m-lineer-voltaj-regulator-en.
 [^international-rectifier-irlml6401pbf-mosfet]: International Rectifier (2014, Apr 28). _IRLML6401PbF - HEXFET Power MOSFET_ [Datasheet]. Retrieved 2023-07-22, from https://www.infineon.com/dgdl/Infineon-IRLML6401-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a401535668b96d2634. 
+[^rohm-2sb1590k-bjt]: Rohm Semiconductor. _2SB1590K - Low frequency amplifier_ [Datasheet]. Retrieved 2023-07-23, from https://fscdn.rohm.com/en/products/databook/datasheet/discrete/transistor/bipolar/2sb1590kt146q-e.pdf.
+[^toshiba-1ss398-diode]: Toshiba (2001, Jun 7). _1SS398 - Silicon Epitaxial Planar Diode_ [Datasheet]. Retrieved 2023-07-23, from https://docs.rs-online.com/d0bb/0900766b80849698.pdf.
 [^nxp-sot-346-smt-3-mpak]: NXP. _SOT346: SMT3; MPAK_ [Package Information]. Retrieved 2023-07-22, from https://www.nxp.com/packages/SOT346.
+[^onsemi-m1ma151kt1-diode]: onsemi (2012, Jul). _M1MA151KT1, M1MA152KT1 - Single Silicon Switching Diodes_ [Datasheet]. Retrieved 2023-07-23, from https://www.onsemi.com/pdf/datasheet/m1ma151kt1-d.pdf.
