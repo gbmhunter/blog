@@ -1,4 +1,4 @@
-{{ $related := .Site.RegularPages.RelatedIndices . "tags" | first 5 }}
+{{ $related := .Site.RegularPages.Related . | first 5 }}
 {{ with $related }}
 <h2>Related Content:</h2>
 <ul>

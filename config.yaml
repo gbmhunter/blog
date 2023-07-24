@@ -46,10 +46,11 @@ related:
   includeNewer: true
   toLower: false
   indices:
-    - name: keywords
-      weight: 100
+    # - name: keywords
+    #   weight: 100
     - name: tags
       weight: 100
+      cardinalityThreshold: 20 # Removes tags that are used in more than XX % of the pages
 taxonomies:
   category: categories
   tag: tags
