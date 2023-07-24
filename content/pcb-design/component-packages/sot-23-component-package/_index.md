@@ -43,18 +43,20 @@ Easy to hand-solder if you have had a bit of practise with surface mount devices
 * `1-3G1G`: Toshiba's package code[^toshiba-1ss398-diode].
 * `2-3AB1A`: Toshiba package code[^toshiba-sot-23].
 * `318D-04`: onsemi package code[^onsemi-m1ma151kt1-diode].
+* `526AG`: Fairchild Semiconductor's package code[^fairchild-semi-fdn304p-mosfet].
 * `Micro3`: International Rectifier package code[^international-rectifier-irlml6401pbf-mosfet].
 * `MPAK`: NXP Semiconductors' package code[^nxp-sot-346-smt-3-mpak].
 * `RT-3`: Analog Devices package code[^analog-devices-sot-23-3-rt-3-package-info].
 * `S3`: Analog Devices package code, seems like it a legacy code from when Linear Technology existed[^analog-devices-s3-package]
 * `SC-59`: JEITA EIAJ code[^rohm-2sb1590k-bjt].
 * `SMT3`: Rohm Semiconductor code[^rohm-2sb1590k-bjt], NXP Semiconductors' package code[^nxp-sot-346-smt-3-mpak].
-* `SOT-23`: Informal JEDEC name. If no additional number is provided, assume `SOT-23` has 3 pins
+* `SOT-23`: Informal JEDEC name. If no additional number is provided, assume `SOT-23` has 3 pins.
 * `SOT-23-3`: Informal JEDEC name.
 * `SOT-346`: Some manufacturers consider the `SOT-23-3` and `SOT-346` to be different packages, and others conflate the two. I've decided to bundle them together, because after sifting through dimensions on many datasheet they generally have overlapping and very similar numbers, making them equivalent for most use cases. But I must stress, always check the datasheet!
-* `SSOT3`: Fairchild Semiconductor
-* `TO-236AA`: Formal JEDEC code (see note below)
-* `TO-236AB`: Formal JEDEC code (see note below)[^toshiba-sot-23]
+* `SSOT3`: The name used by Mouser for Fairchild Semiconductor parts (presumably an abbreviation of `SuperSOT-3`)[^mouser-fdn5632n-f085-mosfet].
+* `SuperSOT-3`: Fairchild Semiconductor's brand name[^fairchild-semi-fdn304p-mosfet].
+* `TO-236AA`: Formal JEDEC code (see note below).
+* `TO-236AB`: Formal JEDEC code (see note below)[^toshiba-sot-23].
 * `TO-236MOD`: JEDEC code according to Toshiba[^toshiba-1ss398-diode].
 
 Both `TO-236AA` and `TO-236AB` are official JEDEC names for the `SOT-23-3` package. An image comment on Wikipedia[^wikipedia-inductiveload] states that the `TO-236AB` package is approximately 0.1mm higher. However it is hard to verify this claim by comparing manufacturer package dimensions, as 0.1mm is well with the manufacturing tolerances.
@@ -183,3 +185,5 @@ The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23
 [^toshiba-1ss398-diode]: Toshiba (2001, Jun 7). _1SS398 - Silicon Epitaxial Planar Diode_ [Datasheet]. Retrieved 2023-07-23, from https://docs.rs-online.com/d0bb/0900766b80849698.pdf.
 [^nxp-sot-346-smt-3-mpak]: NXP. _SOT346: SMT3; MPAK_ [Package Information]. Retrieved 2023-07-22, from https://www.nxp.com/packages/SOT346.
 [^onsemi-m1ma151kt1-diode]: onsemi (2012, Jul). _M1MA151KT1, M1MA152KT1 - Single Silicon Switching Diodes_ [Datasheet]. Retrieved 2023-07-23, from https://www.onsemi.com/pdf/datasheet/m1ma151kt1-d.pdf.
+[^fairchild-semi-fdn304p-mosfet]: Fairchild Semiconductor (2000, Jun). _FDN304P - P-Channel 1.8V Specified PowerTrench MOSFET_ [Datasheet]. Retrieved 2023-07-24, from https://pdf.dzsc.com/FDN/FDN304P.pdf. 
+[^mouser-fdn5632n-f085-mosfet]: Mouser. _FDN5632N-F085_ [Product Page]. Retrieved 2023-07-24, from https://www.mouser.com/ProductDetail/onsemi-Fairchild/FDN5632N-F085?qs=THZS4U49PK5JFq8XNv2RZA%3D%3D.
