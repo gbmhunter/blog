@@ -1,103 +1,50 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, PCB Design, Component Packages ]
 date: 2015-03-08
-lastmod: 2015-03-08
-tags: [ "component packages", "PCB design", "BGA", "MO-207", "DSBGA" ]
-title: "BGA Component Package"
-type: "page"
+lastmod: 2023-07-25
+tags: [ component packages, PCB design, BGA, MO-207, DSBGA ]
+title: BGA Component Package
+type: page
 ---
 
 ## Overview
 
-<table>
-<tbody>
-<tr>
-  <td>Name</td>
-  <td>BGA (Ball-Grid Array)</td>
-</tr>
-<tr>
-  <td>Synonyms</td>
-  <td >n/a</td>
-</tr>
-<tr>
-  <td>Variants</td>
-  <td>
-    <ul>
-      <li>CABGA</li>
-      <li>CTBGA</li>
-      <li>DSBGA (Die-Size BGA). Used by Texas Instruments. JEDEC standard MO-207</li>
-      <li>FBGA</li>
-      <li>FCBGA (Texas Instruments, used by mmWave ICs. Plastic case.)</li>
-      <li>FGG484 (Xilinx)</li>
-      <li>X-DSBGA (Very thin die-size BGA). JEDEC standard MO-211-C.</li>
-      <li>xDSB (Square and rectangular die-size BGA). JEDEC standard MO-207N.</li>
-    </ul>
-  </td>
-</tr>
-<tr>
-  <td>Similar To</td>
-  <td>
-  
-[WLCSP](../wlcsp-component-package)
-  </td>
-</tr>
-<tr>
-  <td>Mounting</td>
-  <td>SMD</td>
-</tr>
-<tr>
-  <td>Pin Count</td>
-  <td>4-1700+</td>
-</tr>
-<tr>
-<td>Pitch</td>
-<td>0.5mm, 0.8mm, 1.0mm</td>
-</tr>
-<tr>
-<td>Solderability</td>
-<td>BGA usually requires reflow oven or infrared heater. Expert-level solderers can use the "dead-bug" prototyping method and attach super-thin wires to each ball when the package is upside down, but do not consider this a reliable or fast method!</td>
-</tr>
-<tr>
-  <td>Thermal Resistance</td>
-  <td>n/a</td>
-</tr>
-<tr>
-  <td>Dimensions</td>
-  <td>n/a</td>
-</tr>
-<tr>
-<td>3D Models</td>
-<td>
-  <ul>
-    <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=215083">Various Config 1mm Pitch</a></li>
-    <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=363398">324pins 18x18mm 1mm Pitch</a></li>
-  </ul>
-</td>
-</tr>
-<tr>
-<td>Common Uses</td>
-<td>
-  <ul>
-    <li>Microcontrollers</li>
-    <li>FPGAs</li>
-    <li>High-density SMD ICs</li>
-    <li>CPUs</li>
-    <li>GPUs</li>
-    <li>Memory</li>
-  </ul>
-</td>
-</tr>
-</tbody>
-</table>
+`BGA` (Ball-Grid Array) is a high-density SMD component package which can have from 4 to 1700+ pins. Common pitches are 0.5mm, 0.8mm, and 1.0mm. BGA packages are used to either make components very small or to encompass a large number of leads. Some modern FPGAs have more than 1700 leads!
 
-## Comments
+{{% ref "fig-bga-144-component-package-3d-render" %}} shows a 3D render of the `BGA-144` component package.
 
-The package with the densest pin density out there, BGAs are used to either make components very small or to encompass a large number of leads. Some modern FPGAs have more than 1700 leads! Requires an x-ray machine to discover if the balls have correctly soldered onto the pads.
+{{% figure ref="fig-bga-144-component-package-3d-render" src="bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  %}}
 
-A 3D render of the BGA-144 component package.
+BGA usually requires reflow oven or infrared heater. Expert-level solderers can use the "dead-bug" prototyping method and attach super-thin wires to each ball when the package is upside down, but do not consider this a reliable or fast method! BGA packages require an x-ray machine to discover if the balls have correctly soldered onto the pads.
 
-{{% figure src="bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  %}}
+Common uses include:
+
+* Microcontrollers
+* FPGAs
+* High-density SMD ICs
+* CPUs
+* GPUs
+* Memory
+
+## Synonyms
+
+n/a
+
+## Variants:
+
+* CABGA
+* CTBGA
+* DSBGA (Die-Size BGA):. Used by Texas Instruments. JEDEC standard MO-207
+* FBGA
+* FCBGA (Texas Instruments, used by mmWave ICs. Plastic case.)
+* FGG484 (Xilinx)
+* X-DSBGA (Very thin die-size BGA). JEDEC standard MO-211-C.
+* xDSB (Square and rectangular die-size BGA). JEDEC standard MO-207N.
+
+## Similar To
+
+* [WLCSP](../wlcsp-component-package)
 
 ## Ball Layout
 
