@@ -3,7 +3,7 @@
 <html lang="{{ $.Site.LanguageCode | default "en" }}">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">        
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
   <!-- TITLE AND DESCRIPTION (SEO)
     NOTE: the Site's title, and if there is a page title, that is set too -->
@@ -44,10 +44,9 @@
           {{ range .Site.Params.custom_css }}
           <link rel="stylesheet" href="{{ relURL ($.Site.BaseURL) }}{{ . }}">
           {{ end }}
-          
-          {{ block "favicon" . }}
-          {{ partial "site-favicon.html" . }}
-          {{ end }}
+
+          <!-- Add icon to display in browser tab -->
+          <link rel="icon" href="/images/logo/favicon.ico" type="image/x-icon">
           
           {{ range .AlternativeOutputFormats -}}
           {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
