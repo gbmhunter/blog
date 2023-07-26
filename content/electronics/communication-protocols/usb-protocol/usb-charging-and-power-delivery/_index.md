@@ -4,8 +4,8 @@ categories: [ Electronics, Communication Protocols, USB ]
 date: 2023-07-07
 description: Data and power roles, standards, communication protocols, schematics and more info about USB power delivery (PD).
 draft: false
-lastmod: 2023-07-08
-tags: [ USB, power delivery, PD, sinks, sources, e-marker, Type-C, USB-IF, batteries, charging ]
+lastmod: 2023-07-26
+tags: [ USB, power delivery, PD, sinks, sources, e-marker, Type-C, USB-IF, batteries, charging, STMicroelectronics, Analog Devices ]
 title: USB Charging and Power Delivery
 type: page
 ---
@@ -14,9 +14,9 @@ type: page
 
 ## Overview
 
-As more and more devices communicate over USB, the same devices are also being designed to be powered/charged over USB (removing the need for a second cable!). It started of with low power devices drawing power from the bus voltage, and has progressed to specific standards being implement to address the issue of charging power hungry devices (e.g. laptops) over the same USB cables. Many companies have implemented "quick charge" capabilitieis over USB cables, but the USB Implementators Forum (USB-IF) hopes to standardize charging with the more recent USB Power Delivery standard.
+As more and more devices communicate over USB, the same devices are also being designed to be powered/charged over USB (removing the need for a second cable!). It started of with low power devices drawing power from the bus voltage, and has progressed to specific standards being implement to address the issue of charging power hungry devices (e.g. laptops) over the same USB cables. Many companies have implemented "quick charge" capabilities over USB cables, but the USB Implementers Forum (USB-IF) hopes to standardize charging with the more recent USB Power Delivery standard.
 
-USB _power delivery_ (PD) is a **communication protocol and power transfer service designed to work with the USB Type-C connector**. Without PD, USB Type-C connectors can provide 5V at 3A (15W). PD allows a power source and sink to communicate with each other and negotiate a **higher voltage and/or current, up to maximum of 20V at 5A (240W)**[^usb-org-usb-pd]. Using Type-C cables to power things is becoming increasingly popular, and the EU has mandated that from 2024 most personal electronic equipment must come with a Type-C charging port[^consumer-org-eus-charging-port-rules]. And 2 years after that in 2026, laptops must also be chargable from USB Type-C connectors.
+USB _power delivery_ (PD) is a **communication protocol and power transfer service designed to work with the USB Type-C connector**. Without PD, USB Type-C connectors can provide 5V at 3A (15W). PD allows a power source and sink to communicate with each other and negotiate a **higher voltage and/or current, up to maximum of 20V at 5A (240W)**[^usb-org-usb-pd]. Using Type-C cables to power things is becoming increasingly popular, and the EU has mandated that from 2024 most personal electronic equipment must come with a Type-C charging port[^consumer-org-eus-charging-port-rules]. And 2 years after that in 2026, laptops must also be chargeable from USB Type-C connectors.
 
 {{% ref "table-summary-usb-specs" %}} shows a summary of USB specifications and maximum voltages, currents and powers.
 
@@ -67,7 +67,7 @@ Summary of USB maximum voltages, currents and powers for each standard[^ti-prime
 </table>
 
 {{% aside type="info" %}}
-According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (5A) must contain e-marker chips, which identify the cable and it's current handling capabilities[^wikipedia-usb-c].
+According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (i.e. up to 5A) must contain e-marker chips, which identify the cable and it's current handling capabilities[^wikipedia-usb-c].
 {{% /aside %}}
 
 ## Data and Power Roles
@@ -80,13 +80,21 @@ There are three _data_ roles:
 1. **Up-steam facing port (UFP)**: Sends data upstream, e.g. a USB mouse, keyboard or camera. UFPs typically acts a power _sinks_.
 1. **Dual-role data (DRD) port**: Can act as either a DFP or UFP. 
 
-Simlarly, there are also three _power_ roles:
+Colloquially, there are a few more terms that are commonly used:
+
+1. **DFC**: A downstream facing charger.
+
+Similarly, there are also three _power_ roles:
 
 1. **Source**: A device capable of providing power onto VBUS, e.g. a USB hub or the host controller that provides the USB ports on your computer.
 1. **Sink**: A device which consumes power from VBUS, e.g. a USB mouse or fan.
 1. **Dual-role power**: A device that can act as either a source or a sink. A common example is a computers USB C port. When you plug a mouse into it, it powers the mouse, acting as a sink. However, many laptops support charing themselves over the same port. If you plug in a USB C charger, the computer acts as a sink.
 
 ## Standards
+
+### USB Battery Charger Rev 1.2
+
+TODO: Add info here.
 
 ### USB Power Delivery 1.0
 
@@ -142,7 +150,7 @@ The 5 power profiles offered by USB PD 1.0[^manhatten-usb-c-power-delivery].</ca
 
 ### USB Power Delivery 3.0
 
-_USB Power Delivery 3.0_ made no changes to the maximum power compared to PD 2.0/1.0 (still 100W), but did improve by adding more charging information exchange between the two ports. Information about battery charging status, failures, overvoltages, battery temperatures can be exchanged[^the-phone-talks-usb-pd-2.0-3.0-3.1].
+_USB Power Delivery 3.0_ made no changes to the maximum power compared to PD 2.0/1.0 (still 100W), but did improve by adding more charging information exchange between the two ports. Information about battery charging status, failures, over-voltages, battery temperatures can be exchanged[^the-phone-talks-usb-pd-2.0-3.0-3.1].
 
 ### USB Power Delivery 3.1 
 
@@ -225,6 +233,34 @@ Quick charge is designed to work with a number of different connectors, includin
 * USB Type-C
 * Proprietary connectors
 
+## Example Circuits
+
+### Getting Power From a USB Type-C Connector Without Complicated Circuitry
+
+A typical use case when designing an electronic device is that you want it to be powered from a USB Type-C connector, acting as an UFP and power sink. You may not want the cost or complexity of adding a USB PD IC to your circuit design. What options do you have?
+
+The simplest thing to do is to just connect `\(5.1k\Omega\)` resistors from each CC line to GND. This will allow you to draw 500mA from VBUS without any extra work. In the case where a USB Type A to Type C cable is plugged in, and the DFP is a simple USB 1.0/2.0 device, VBUS will be powered automatically and you should be able to draw 500mA without any issues. If a Type C to Type C cable is plugged in, the CC resistors will indicate to the connected DFP to power the VBUS. You can again take 500mA without any issues.
+
+Even though USB 3.0 allows more than 500mA, with just two resistors you can't tell what is connected at the other end of the cable, and so have to design for the limiting case of the DFP being a USB1.0/2.0 device capable of only 500mA.
+
+## Example ICs
+
+### Analog Devices MAX14747 - USB Detection with Smart Power Selector Li+ Chargers
+
+The Analog Devices MAX14747 is a IC which can detect a number of different USB charger types and charge a battery from the USB power source. It supports USB Battery Charger Detection Rev 1.2 but not USB PD. `\(V_{BAT}\)` can range from 0-5.5V so single Li-Po cells are supported. It can be controlled from a MCU via I2C lines.
+
+{{% figure ref="fig-max14747-typical-application-circuit" src="max14747-typical-application-circuit.png" width="800px" caption="Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic]." %}}
+
+### STMicroelectronics STUSB4500 - Standalone USB PD Sink Controller
+
+The STMicroelectronics STUSB4500 is a USB PD standalone sink controller. Standalone refers to the fact that it has non-volatile programmable memory that is used to configure the device, meaning the STUSB4500 can run by itself without the need for a MCU to be connected to it. {{% ref "fig-stmicroelectronics-stusb4500-3d-render-wlcsp-25" %}} shows a 3D render of it in the WLCSP-25 package.
+
+{{% figure ref="fig-stmicroelectronics-stusb4500-3d-render-wlcsp-25" src="stmicroelectronics-stusb4500-3d-render-wlcsp-25.png" width="200px" caption="The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink]." %}}
+
+{{% ref "fig-stmicroelectronics-stusb4500-minimal-application-schematic" %}} shows a minimal application schematic using the IC act as a USB PD power sink without any connected MCU.
+
+{{% figure ref="fig-stmicroelectronics-stusb4500-minimal-application-schematic" src="stmicroelectronics-stusb4500-minimal-application-schematic.png" width="900px" caption="Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink]." %}}
+
 ## References
 
 [^ti-primer-on-usb-pd]: Nate Enos, Brian Gosselin. _A Primer on USB Type-C® and USB Power Delivery Applications and Requirements_ [PDF]. Texas Instruments. Retrieved 2023-07-07, from https://www.ti.com/lit/wp/slyy109b/slyy109b.pdf.
@@ -238,3 +274,5 @@ Quick charge is designed to work with a number of different connectors, includin
 [^manhatten-usb-c-power-delivery]: manhatten. _USB-C Power Delivery_ [Web Page]. Retrieved 2023-07-09, from https://manhattanproducts.eu/pages/usb-c-pd-charging-everything-you-need-to-know.
 [^qualcomm-quick-charge-faq]: Qualcomm. _Qualcomm Quick Charge FAQs_ [Web Page]. Retrieved 2023-07-09, from https://www.qualcomm.com/products/features/quick-charge/faq.
 [^the-phone-talks-usb-pd-2.0-3.0-3.1]: The Phone Talks. _USB PD 2.0 vs 3.0 vs 3.1 Comparison - How Far Have We Come?_ [Web Page]. Retrieved 2023-07-09, from https://www.thephonetalks.com/usb-pd-2-0-vs-3-0-vs-3-1/.
+[^analog-devices-max14747-usb-charging-ic]: Maxim (now Analog Devices) (2017, Nov). _MAX14746/MAX14747 - USB Detection with Smart Power Selector Li+ Chargers_ [Datasheet]. Retrieved 2023-07-26, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX14746-MAX14747.pdf. 
+[^st-microelectronics-stusb4500-standalone-pd-sink]: STMicroelectronics (2022, Nov). _STUSB4500 - Standalone USB PD sink controller with short-to-VBUS protections_ [Datasheet]. Retrieved 2023-07-26, from https://www.st.com/resource/en/datasheet/stusb4500.pdf. 
