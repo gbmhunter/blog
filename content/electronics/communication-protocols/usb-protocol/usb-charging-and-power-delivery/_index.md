@@ -261,6 +261,12 @@ The STMicroelectronics STUSB4500 is a USB PD standalone sink controller. Standal
 
 {{% figure ref="fig-stmicroelectronics-stusb4500-minimal-application-schematic" src="stmicroelectronics-stusb4500-minimal-application-schematic.png" width="900px" caption="Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink]." %}}
 
+### USB Charger Adapter Using The MAX14630
+
+The Analog Devices MAX14630 
+
+TODO: Finish this off.
+
 ## References
 
 [^ti-primer-on-usb-pd]: Nate Enos, Brian Gosselin. _A Primer on USB Type-C® and USB Power Delivery Applications and Requirements_ [PDF]. Texas Instruments. Retrieved 2023-07-07, from https://www.ti.com/lit/wp/slyy109b/slyy109b.pdf.

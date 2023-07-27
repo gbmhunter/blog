@@ -1,28 +1,28 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, PCB Design, Component Packages ]
 date: 2014-12-04
-description: "Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package."
+description: Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package.
 draft: false
-lastmod: 2021-10-27
-tags: [ "component packages", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solder paste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC", "package stress" ]
-title: "QFN Component Package"
-type: "page"
+lastmod: 2023-07-27
+tags: [ component packages, PCB design, QFN, LFCSP, MLF, DO-214AC, solder paste, soldermask, singulation, voiding, lead styles, JEDEC, package stress ]
+title: QFN Component Package
+type: page
 ---
 
 ## Overview
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>SC-89-3</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Synonyms</td>
-            <td>
+`QFN` is a family of SMD component packages with typically 12-108 leads. The QFN package is commonly used today for higher lead count ICs such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side).
+
+QFN packages offer benefits over other packages for high-speed circuits, as well as high heat dissipation capabilities. QFN packages are lacking gull-wing leads (like that present on the QFP package), which create noise in high-speed applications. However because the package is sitting right on the surface of the PCB (or very close to it), they suffer more from mechanical/thermal stress than other SMD packages with larger stand-offs, such as the QFP package. 
+
+Texas Instruments recommends rounded pads on the QFN package to prevent solder bridging. Also, stencil windows are recommended for the solder paste on the thermal pad so that a limited amount of solder is added. Too much solder can cause the QFN package to "float" around during the soldering process.
+
+A QFN-like package with pins on only two of the fours sides is a SON package (DFN).
+
+Confusingly, NXP names it's range of QFN packages with SOT... (e.g, SOT-662-1), a name which is commonly reserved for transitory packages such as the popular SOT-23.
+
+## Synonyms
 
 * 2077-02 (Freescale QFN-16 Pins-5x3 Body-3x3mm)
 * CP-32-2 (Analog Devices QFN-32 Pins-8x8 Pitch-0.50mm Body-5x5mm)
@@ -39,60 +39,27 @@ type: "page"
 * TMB (Microchip VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP)[^bib-microchip-sam-d21-ds]
 * ZLG (Atmel VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP)[^bib-microchip-sam-d21-ds]
 * ZST (Atmel VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP)[^bib-microchip-sam-d21-ds]
-</td>
-        </tr>
-        <tr>
-            <td>Variants</td>
-            <td>
+
+## Variants
 
 * The following acronyms are used to describe a QFN package with a different package height:
-** UQFN
-** VQFN
+    * UQFN
+    * VQFN
 * QFN packages come in different pitches (0.40, 0.45, 0.50, 0.65mm).
 * QFN packages may or may not have a central exposed pad on the underside.
-</td>
-        </tr>
-        <tr>
-            <td>Similar To</td>
-            <td>
 
-* [SON (DFN)](../son-component-package)
-</td>
-        </tr>
-        <tr>
-            <td>Mounting</td>
-            <td>SMD</td>
-        </tr>
-        <tr>
-            <td>Pin Count</td>
-            <td>12-108</td>
-        </tr>
-        <tr>
-            <td>Pitch</td>
-            <td>
+## Dimensions
 
-0.40mm
-0.45mm
-0.50mm
-0.65mm
+Common pitches:
 
+* 0.40mm
+* 0.45mm
+* 0.50mm
+* 0.65mm
 
-</td>
-        </tr>
-        <tr>
-            <td>Solderability</td>
-            <td>Surprisingly easy to solder by hand, as long as the pads extend around to the sides of the IC, and you drill a hole to solder the centre pad from the reverse. QFN packages can also be soldered easily with a infrared rework station or the &#39;frying pan&#39; technique.</td>
-        </tr>
-        <tr>
-            <td>Thermal Resistance</td>
-        </tr>
-        <tr>
-            <td>Package LxWxH</td>
-            <td>
 Note that the max. height for almost any QFN package is 1mm (including stand-off). Some have a smaller height (e.g. the UT/ultra-thin QFN packages).
 
-
-0.40mm pitch QFN packages:
+0.40mm pitch QFN package dimensions (LxWxH):
 
 QFN-UT-20: 3x3x0.6mm (LA: 9mm2)
 QFN-56: 7x7x1mm (LA: 49mm2)
@@ -101,10 +68,7 @@ QFN-72: 9x9x1mm (LA: 81mm2)
 QFN-88: 10x10x1mm (LA: 100mm2)
 QFN-108: 12x12x1mm (LA: 144mm2)
 
-
-
-
-0.50mm pitch QFN packages:
+0.50mm pitch QFN package dimensions (LxWxH):
 
 QFN-16: 3x3x1mm (LA: 9mm2)
 QFN-20: 3x3x1mm (LA: 9mm2)
@@ -116,56 +80,19 @@ QFN-56: 8x8x1mm (LA: 64mm2)
 QFN-64: 9x9x1mm (LA: 81mm2)
 QFN-68: 10x10x1mm (LA: 100mm2)
 
-0.65mm pitch QFN packages:
+0.65mm pitch QFN package dimensions (LxWxH):
 
 QFN-16: 4x4x1mm (LA: 16mm2)
 QFN-20: 4x4x1mm (LA: 16mm2)
 QFN-32: 7x7x1mm (LA: 49mm2)
 
+## Solderability
 
-</td>
-        </tr>
-        <tr>
-            <td>Typical PCB Land Area</td>
-            <td>See above.</td>
-        </tr>
-        <tr>
-            <td>3D Models</td>
-            <td>
+Surprisingly easy to solder by hand, as long as the pads extend around to the sides of the IC, and you drill a hole to solder the centre pad from the reverse. QFN packages can also be soldered easily with a infrared rework station or the "frying pan" technique.
 
-*0.50mm Pitch:*
+## Similar To
 
-* [QFN-20 3x3mm](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=173415)
-* [QFN-36 6x6mm](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=201710)
-* [QFN-56 8x8mm](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=214813)
-
-*0.65mm Pitch:*
-
-* [QFN-32 7x7mm](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=167937)
-* [QFN-44 8x8mm](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=413189)
-            </td>
-        </tr>
-        <tr>
-            <td>Common Uses</td>
-            <td>
-
-Microcontrollers
-High-pin count, low footprint area ICs
-
-</td>
-        </tr>
-    </tbody>
-</table>
-
-The QFN component package is commonly used today for higher pin-count ICs such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side).
-
-QFN packages offer benefits over other packages for high-speed circuits, as well as high heat dissipation capabilities. QFN packages are lacking gull-wing leads (like that present on the QFP package), which create noise in high-speed applications. However because the package is sitting right on the surface of the PCB (or very close to it), they suffer more from mechanical/thermal stress than other SMD packages with larger stand-offs, such as the QFP package. 
-
-Texas Instruments recommends rounded pads on the QFN package to prevent solder bridging. Also, stencil windows are recommended for the solder paste on the thermal pad so that a limited amount of solder is added. Too much solder can cause the QFN package to "float" around during the soldering process.
-
-A QFN-like package with pins on only two of the fours sides is a SON package (DFN).
-
-Confusingly, NXP names it's range of QFN packages with SOT... (e.g, SOT-662-1), a name which is commonly reserved for transitory packages such as the popular SOT-23.
+* [SON (DFN)](../son-component-package)
 
 ## Solder Mask
 
