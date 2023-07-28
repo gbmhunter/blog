@@ -80,10 +80,6 @@ There are three _data_ roles:
 1. **Up-steam facing port (UFP)**: Sends data upstream, e.g. a USB mouse, keyboard or camera. UFPs typically acts a power _sinks_.
 1. **Dual-role data (DRD) port**: Can act as either a DFP or UFP. 
 
-Colloquially, there are a few more terms that are commonly used:
-
-1. **DFC**: A downstream facing charger.
-
 Similarly, there are also three _power_ roles:
 
 1. **Source**: A device capable of providing power onto VBUS, e.g. a USB hub or the host controller that provides the USB ports on your computer.
@@ -94,7 +90,13 @@ Similarly, there are also three _power_ roles:
 
 ### USB Battery Charger Rev 1.2
 
-TODO: Add info here.
+The _USB Battery Charger Rev 1.2_ (BC 1.2) allows devices to draw up to 1.5A on a fixed 5V (7.5W)[^eaton-usb-charging-and-power-delivery]. It was developed to satisfy the need for higher currents than the default 100mA/500mA provided by USB 1.0 and 2.0. It is largely superseded by USB PD.
+
+There are some standard definitions in the battery charger spec:
+
+* **Standard Downstream Port (SDP)**: The same port as what is defined in USB 2.0. Maximum sourced current is 2.5mA when suspended, 100mA when connected, and 500mA when negotiated.
+* **Dedicated Charging Port (DCP)**: A port that does not communicate any data, but is solely for providing power for charing (and/or operating). It can provide (source) 1.5A at 5V. The DCP shorts out the D+ and D- lines, which the device at the other end of the cable can detect.
+* **Charing Downstream Port (CDP)**: A mixture of the above two, it both can communicate and provide power at the same levels (1.5A at 5V) as a DCP. 
 
 ### USB Power Delivery 1.0
 
@@ -243,17 +245,15 @@ The simplest thing to do is to just connect `\(5.1k\Omega\)` resistors from each
 
 Even though USB 3.0 allows more than 500mA, with just two resistors you can't tell what is connected at the other end of the cable, and so have to design for the limiting case of the DFP being a USB1.0/2.0 device capable of only 500mA.
 
-## Example ICs
-
-### Analog Devices MAX14747 - USB Detection with Smart Power Selector Li+ Chargers
+### USB Powered Battery Charger with the MAX14747
 
 The Analog Devices MAX14747 is a IC which can detect a number of different USB charger types and charge a battery from the USB power source. It supports USB Battery Charger Detection Rev 1.2 but not USB PD. `\(V_{BAT}\)` can range from 0-5.5V so single Li-Po cells are supported. It can be controlled from a MCU via I2C lines.
 
 {{% figure ref="fig-max14747-typical-application-circuit" src="max14747-typical-application-circuit.png" width="800px" caption="Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic]." %}}
 
-### STMicroelectronics STUSB4500 - Standalone USB PD Sink Controller
+### Standalone USB PD Sink Controller with the STUSB4500
 
-The STMicroelectronics STUSB4500 is a USB PD standalone sink controller. Standalone refers to the fact that it has non-volatile programmable memory that is used to configure the device, meaning the STUSB4500 can run by itself without the need for a MCU to be connected to it. {{% ref "fig-stmicroelectronics-stusb4500-3d-render-wlcsp-25" %}} shows a 3D render of it in the WLCSP-25 package.
+The _STMicroelectronics STUSB4500_ is a USB PD standalone sink controller. Standalone refers to the fact that it has non-volatile programmable memory that is used to configure the device, meaning the STUSB4500 can run by itself without the need for a MCU to be connected to it. {{% ref "fig-stmicroelectronics-stusb4500-3d-render-wlcsp-25" %}} shows a 3D render of it in the WLCSP-25 package.
 
 {{% figure ref="fig-stmicroelectronics-stusb4500-3d-render-wlcsp-25" src="stmicroelectronics-stusb4500-3d-render-wlcsp-25.png" width="200px" caption="The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink]." %}}
 
@@ -282,3 +282,4 @@ TODO: Finish this off.
 [^the-phone-talks-usb-pd-2.0-3.0-3.1]: The Phone Talks. _USB PD 2.0 vs 3.0 vs 3.1 Comparison - How Far Have We Come?_ [Web Page]. Retrieved 2023-07-09, from https://www.thephonetalks.com/usb-pd-2-0-vs-3-0-vs-3-1/.
 [^analog-devices-max14747-usb-charging-ic]: Maxim (now Analog Devices) (2017, Nov). _MAX14746/MAX14747 - USB Detection with Smart Power Selector Li+ Chargers_ [Datasheet]. Retrieved 2023-07-26, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX14746-MAX14747.pdf. 
 [^st-microelectronics-stusb4500-standalone-pd-sink]: STMicroelectronics (2022, Nov). _STUSB4500 - Standalone USB PD sink controller with short-to-VBUS protections_ [Datasheet]. Retrieved 2023-07-26, from https://www.st.com/resource/en/datasheet/stusb4500.pdf. 
+[^eaton-usb-charging-and-power-delivery]: Eaton (2023). _USB Charing and Power Delivery_. Retrieved 2023-07-28, from https://tripplite.eaton.com/products/usb-charging.
