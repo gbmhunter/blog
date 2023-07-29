@@ -97,7 +97,7 @@ There are some standard definitions in the battery charger spec:
 * **Portable Device (PD)**: The USB device that is generally portable and is going to receive (sink) current from the USB hub or host.
 * **Standard Downstream Port (SDP)**: Complies with the definition of a hub or host as defined in USB 2.0[^usb-org-battery-charging-v1.2-spec]. Maximum sourced current is 2.5mA when suspended, 100mA when connected, and 500mA when negotiated.
 * **Dedicated Charging Port (DCP)**: A port that does not communicate any data, but is solely for providing power for charing (and/or operating). It has provide between 0.5 and 5A[^usb-org-battery-charging-v1.2-spec]. The DCP shorts out the D+ and D- lines, which the device at the other end of the cable can detect.
-* **Charing Downstream Port (CDP)**: A mixture of the above two, it both can communicate and provide power at the same levels (1.5A at 5V) as a DCP. Has to provide between 1.5 and 5A[^usb-org-battery-charging-v1.2-spec].
+* **Charging Downstream Port (CDP)**: A mixture of the above two, it both can communicate and provide power at the same levels (1.5A at 5V) as a DCP. Has to provide between 1.5 and 5A[^usb-org-battery-charging-v1.2-spec].
 
 {{% ref "fig-battery-charging-spec-rev-1.2-different-types-of-ports" %}} show the basic electrical wiring for the SDP, DCP and CDP ports defined by the BC 1.2 specification.
 
@@ -111,6 +111,9 @@ It's also important to distinguish between the following terms:
 
 The PD needs to determine how much current it can draw from the upstream USB port.
 
+{{% ref "fig-battery-charging-spec-rev-1.2-charging-downstream-port" %}} shows the internal circuitry in a Charging Downstream Port (CDP).
+
+{{% figure ref="fig-battery-charging-spec-rev-1.2-charging-downstream-port" src="battery-charging-spec-rev-1.2-charging-downstream-port.webp" width="800px" caption="The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP)." %}}
 
 ### USB Power Delivery 1.0
 
