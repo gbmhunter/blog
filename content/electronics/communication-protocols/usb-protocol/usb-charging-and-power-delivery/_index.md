@@ -90,13 +90,27 @@ Similarly, there are also three _power_ roles:
 
 ### USB Battery Charger Rev 1.2
 
-The _USB Battery Charger Rev 1.2_ (BC 1.2) allows devices to draw up to 1.5A on a fixed 5V (7.5W)[^eaton-usb-charging-and-power-delivery]. It was developed to satisfy the need for higher currents than the default 100mA/500mA provided by USB 1.0 and 2.0. It is largely superseded by USB PD.
+The _USB Battery Charger Rev 1.2_ (BC 1.2) was a major upgrade to the specifications in revision 1.0 and 1.1[^usb-org-battery-charging-v1.2-spec]. It allows devices to draw up to 1.5A on a fixed 5V (7.5W)[^eaton-usb-charging-and-power-delivery]. It was developed to satisfy the need for higher currents than the default 100mA/500mA provided by USB 1.0 and 2.0. Today, it is largely superseded by USB PD (which I would recommend using instead of BC 1.2) for new designs.
 
 There are some standard definitions in the battery charger spec:
 
-* **Standard Downstream Port (SDP)**: The same port as what is defined in USB 2.0. Maximum sourced current is 2.5mA when suspended, 100mA when connected, and 500mA when negotiated.
-* **Dedicated Charging Port (DCP)**: A port that does not communicate any data, but is solely for providing power for charing (and/or operating). It can provide (source) 1.5A at 5V. The DCP shorts out the D+ and D- lines, which the device at the other end of the cable can detect.
-* **Charing Downstream Port (CDP)**: A mixture of the above two, it both can communicate and provide power at the same levels (1.5A at 5V) as a DCP. 
+* **Portable Device (PD)**: The USB device that is generally portable and is going to receive (sink) current from the USB hub or host.
+* **Standard Downstream Port (SDP)**: Complies with the definition of a hub or host as defined in USB 2.0[^usb-org-battery-charging-v1.2-spec]. Maximum sourced current is 2.5mA when suspended, 100mA when connected, and 500mA when negotiated.
+* **Dedicated Charging Port (DCP)**: A port that does not communicate any data, but is solely for providing power for charing (and/or operating). It has provide between 0.5 and 5A[^usb-org-battery-charging-v1.2-spec]. The DCP shorts out the D+ and D- lines, which the device at the other end of the cable can detect.
+* **Charing Downstream Port (CDP)**: A mixture of the above two, it both can communicate and provide power at the same levels (1.5A at 5V) as a DCP. Has to provide between 1.5 and 5A[^usb-org-battery-charging-v1.2-spec].
+
+{{% ref "fig-battery-charging-spec-rev-1.2-different-types-of-ports" %}} show the basic electrical wiring for the SDP, DCP and CDP ports defined by the BC 1.2 specification.
+
+{{% figure ref="fig-battery-charging-spec-rev-1.2-different-types-of-ports" src="battery-charging-spec-rev-1.2-different-types-of-ports.webp" width="800px" caption="Diagram showing the basic electrical wiring for the various ports specified by BC 1.2." %}}
+
+It's also important to distinguish between the following terms:
+
+* **Attach**: The physical process of plugging in a USB cable between two ports.
+* **Connect**: When the PD connects a `\(1.5k\Omega\)` pull-up resistor to either the D+ or D- line.
+* **Enumerate**: The initial data exchange between the two ports across the data lines.
+
+The PD needs to determine how much current it can draw from the upstream USB port.
+
 
 ### USB Power Delivery 1.0
 
@@ -283,3 +297,4 @@ TODO: Finish this off.
 [^analog-devices-max14747-usb-charging-ic]: Maxim (now Analog Devices) (2017, Nov). _MAX14746/MAX14747 - USB Detection with Smart Power Selector Li+ Chargers_ [Datasheet]. Retrieved 2023-07-26, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX14746-MAX14747.pdf. 
 [^st-microelectronics-stusb4500-standalone-pd-sink]: STMicroelectronics (2022, Nov). _STUSB4500 - Standalone USB PD sink controller with short-to-VBUS protections_ [Datasheet]. Retrieved 2023-07-26, from https://www.st.com/resource/en/datasheet/stusb4500.pdf. 
 [^eaton-usb-charging-and-power-delivery]: Eaton (2023). _USB Charing and Power Delivery_. Retrieved 2023-07-28, from https://tripplite.eaton.com/products/usb-charging.
+[^usb-org-battery-charging-v1.2-spec]: usb.org (2012, Mar 15). _Battery Charging Specification (Including errata and ECNs through March 15, 2012) - Revision 1.2_. Retrieved 2023-07-29, from https://www.usb.org/document-library/battery-charging-v12-spec-and-adopters-agreement.
