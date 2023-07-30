@@ -16,6 +16,8 @@ Standardizing components sizes and shapes makes it easier for the component manu
 
 ## Component Package Database
 
+{{% figure src="confused-man-holding-ic-in-hand.webp" width="250px" float="right" %}}
+
 Packages are listed alphabetically under the "Child Pages" heading at the top of this page. Click on any package to see more information.
 
 All land-area (occupied PCB space) calculations are based around the minimum-sized square that encloses the entire package. This does not take into account the size of the pads required on the PCB, which would increase the calculation by a small amount. Nominal package dimensions used for calculation.
