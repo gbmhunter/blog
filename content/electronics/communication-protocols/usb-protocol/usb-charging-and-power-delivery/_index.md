@@ -113,7 +113,7 @@ The PD needs to determine how much current it can draw from the upstream USB por
 
 {{% ref "fig-battery-charging-spec-rev-1.2-charging-downstream-port" %}} shows the internal circuitry in a Charging Downstream Port (CDP).
 
-{{% figure ref="fig-battery-charging-spec-rev-1.2-charging-downstream-port" src="battery-charging-spec-rev-1.2-charging-downstream-port.webp" width="800px" caption="The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP)." %}}
+{{% figure ref="fig-battery-charging-spec-rev-1.2-charging-downstream-port" src="battery-charging-spec-rev-1.2-charging-downstream-port.webp" width="800px" caption="The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP). Numerical values are nominal values, the USB standard instead specifies ranges[^usb-org-battery-charging-v1.2-spec]." %}}
 
 ### USB Power Delivery 1.0
 
