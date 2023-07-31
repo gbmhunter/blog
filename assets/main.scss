@@ -1032,6 +1032,13 @@ div.content {
             // much of the total page width
             padding-inline-start: 8px; 
         }
+
+        p {
+            // Remove paragraph margin if paragraph is inside table cell. This is because we need to add empty lines
+            // before cell content if we want bibliographic references inside cells, but this also adds a paragraph
+            // to the contents due to the markdown processor. Margins make the paragraphs non-centered in the cells.
+            margin: 0;
+        }
     }
 
     // Get rid of the bottom margin of paragraphs inside table captions,

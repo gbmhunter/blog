@@ -109,9 +109,9 @@ Heading 1   | Heading 2
 abc         | def
 ghi         | jkl
 
-Here should be a reference to the below table: {{% ref "table-doesnt-mean-anything" %}}
+Here should be a reference to the below table: {{% ref "tbl-doesnt-mean-anything" %}}
 
-<table ref="table-doesnt-mean-anything">
+<table ref="tbl-doesnt-mean-anything">
 <caption>Data that doesn't mean anything. This caption should be prefixed with "Table 1: ".</caption>
 <tbody>
 <tr>
