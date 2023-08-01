@@ -1,20 +1,27 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
 date: 2014-06-24
 draft: false
-tags: [ "comparators", "op-amp", "voltage reference", "hysteresis", "PCBs", "surface leakage", "non-inverting", "inverting" ]
+lastmod: 2023-08-01
+tags: [ comparators, op-amp, voltage reference, hysteresis, PCBs, surface leakage, non-inverting, inverting ]
 title: Comparators
 type: page
 ---
 
 ## Overview
 
-Comparators are closely related to op-amps. A comparator is basically an op-amp which is operated in it's open-loop mode (no feedback except for when hystersis is added).
+A _comparator_ is an electronic circuit which takes two inputs, and outputs a signal which depends on which input has a higher voltage. One input is called the non-inverting input and the other input the inverting input. The output is `1` (`HIGH`) if the non-inverting input voltage is higher than the inverting input, the output is `0` (`LOW`) is the opposite is true.
+
+{{% aside type="tip" %}}
+Comparators are closely related to op-amps. A comparator is basically an op-amp which is operated in it's open-loop mode (no feedback). Be careful interchanging the two as there are other subtleties, such that comparators are generally higher speed. Op-amps can generally work well as slow comparators, but comparators don't work so well as op-amps.
+{{% /aside %}}
 
 This is the schematic symbol for a comparator, which is the same as the op-amp.
 
-{{% figure src="basic-op-amp-schematic-symbol.png" width="353px" caption="The basic schematic symbol for a comparator (it is the same for an op-amp)."  %}}
+{{% figure src="basic-op-amp-schematic-symbol.png" width="350px" caption="The basic schematic symbol for a comparator (it is the same for an op-amp)."  %}}
+
+Comparators are commonly used as building-blocks in larger circuits. Comparators are a core component in [voltage supervisor ICs](/electronics/components/voltage-supervisors/).
 
 ## Comparators vs. Op-Amps
 
@@ -42,38 +49,6 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 
 {{% figure src="comparator-hystersis-graph.png" width="334px" caption="A graph showing how comparator hystersis works."  %}}
 
-## Terms
-
-<table>
-    <thead>
-        <tr>
-            <th>Term</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-<td >\(R_{FB}\)
-</td>
-<td >Feedback resistor required when adding external hystersis to both inverting and non-inverting comparator configurations.
-</td></tr><tr >
-<td >\(R_{I}\)
-</td>
-<td >Input resistor required when adding external hystersis to a non-inverting comparator configuration.
-</td></tr><tr >
-<td >\(V_{HYST}\)
-</td>
-<td >The change in voltage on the input to cause the comparator to toggle states (i.e. hystersis).
-</td></tr><tr >
-<td >\(V_{OH}\)
-</td>
-<td >Comparator output voltage when the comaprator is triggered high. This is usually equal to the comparators supply voltage, \(V_{CC}\).
-</td></tr><tr >
-<td >\(V_{OL}\)
-</td>
-<td >Comparator output voltage when the comaprator is triggered low. In single-ended comparator designs, this is usually equal to 0V (GND).
-</td></tr></tbody></table>
-
 ## Push-Pull Output Comparators
 
 ## Non-Inverting Configuration
@@ -94,7 +69,7 @@ Nothing here yet...
 
 ## Open-Drain Output Comparators
 
-Open-drian output comparators require an extra pull-up resistor on the output (when compared to push-pull output comparators) to enable hystersis. This resistor, along with the feedback resistor, will create a voltage divider and introduce some error when the output is high. To keep this error small, it is recommended that `\( R_{FB} > 100 \times R_{pullup} \)`.
+Open-drain output comparators require an extra pull-up resistor on the output (when compared to push-pull output comparators) to enable hystersis. This resistor, along with the feedback resistor, will create a voltage divider and introduce some error when the output is high. To keep this error small, it is recommended that `\( R_{FB} > 100 \times R_{pullup} \)`.
 
 ## PCB Surface Leakage
 

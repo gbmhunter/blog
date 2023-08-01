@@ -15,6 +15,16 @@ type: page
 
 _Voltage supervisors_ (a.k.a. reset ICs[^ti-voltage-supervisors-and-reset-ics]) are ICs that monitor a voltage and output a digital logic level which changes state if the voltage is above or below a threshold. They are typically used for monitoring supply rails and turning ON devices once the voltage reaches an operating level (or looking at it another way, turning OFF devices when the voltage falls below a safe level).
 
+{{% ref "fig-apx803l-voltage-supervisor-functional-block-diagram" %}} shows the functional block diagram for a typical simple voltage supervisor.
+
+{{% figure ref="fig-apx803l-voltage-supervisor-functional-block-diagram" src="apx803l-voltage-supervisor-functional-block-diagram.png" width="600px" caption="The functional block diagram for the Diodes Inc. APX803L voltage supervisor IC[^diodes-inc-apx803l-voltage-supervisor-ds]." %}}
+
+Simple voltage supervisors are very similar to [comparators](/electronics/components/comparators/), except for a few key differences:
+
+1. Voltage supervisors are usually **designed to operated from very low voltages**, such that when the voltage drops, they remain on and keep the microcontroller in reset when the voltage is not high enough to keep the microcontroller operating correctly.
+1. Voltage supervisors usually have **built-in delays that keeps the MCU in reset** for a minimum amount of time even if the voltage only drops below what is considered valid for a much shorter period of time.
+1. Voltage supervisors usually have **built-in voltage references**. Whilst a traditional comparator does not, many comparator ICs also come with internal voltage references.
+
 ## How They Work
 
 Internally, voltage supervisors have a few core components. One is a stable voltage reference to generate a fixed and known voltage. This is fed into a comparator. The measured analogue voltage is fed to the other input of the comparator.
@@ -22,3 +32,4 @@ Internally, voltage supervisors have a few core components. One is a stable volt
 ## References
 
 [^ti-voltage-supervisors-and-reset-ics]: Cory Tran, Abhinav Sharma (2019). _Voltage Supervisor and Reset ICs: Tips, Tricks and Basics_ [Application Note]. Texas Instruments. Retrieved 2023-07-14, from https://www.ti.com/lit/eb/slyy167/slyy167.pdf.
+[^diodes-inc-apx803l-voltage-supervisor-ds]: Diodes Inc. _APX803L - Micro Power Voltage Detector_ [Datasheet]. Retrieved 2023-08-01, from https://www.diodes.com/assets/Datasheets/APX803L.pdf.
