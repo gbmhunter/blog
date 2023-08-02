@@ -15,3 +15,7 @@ type: post
     {{% figure src="" width="600px" %}}
 
 * Added info about [USB Type-C connectors with dummy leads](/electronics/communication-protocols/usb-protocol/usb-charging-and-power-delivery/#connectors).
+    {{% figure src="" width="600px" %}}
+
+* Added more QFN synonyms and a 3D render to the [QFN Component Package page](/pcb-design/component-packages/qfn-component-package/).
+    {{% figure src="" width="600px" %}}

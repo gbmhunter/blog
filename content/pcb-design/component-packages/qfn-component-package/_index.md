@@ -4,7 +4,7 @@ categories: [ Electronics, PCB Design, Component Packages ]
 date: 2014-12-04
 description: Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package.
 draft: false
-lastmod: 2023-07-27
+lastmod: 2023-08-02
 tags: [ component packages, PCB design, QFN, LFCSP, MLF, DO-214AC, solder paste, soldermask, singulation, voiding, lead styles, JEDEC, package stress ]
 title: QFN Component Package
 type: page
@@ -12,7 +12,9 @@ type: page
 
 ## Overview
 
-`QFN` is a family of SMD component packages with typically 12-108 leads. The QFN package is commonly used today for higher lead count ICs such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side).
+`QFN` is a family of SMD component packages with typically 12-108 leads. The QFN package is commonly used today for higher lead count ICs such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side). {{% ref "fig-qfn-16-with-ep-3d-model" %}} shows a typical QFN package with an equal number of leads on all sides and an exposed pad.
+
+{{% figure ref="fig-qfn-16-with-ep-3d-model" src="qfn-16-with-ep-3d-model.png" width="300px" caption="A 3D render of a typical QFN-16 package with an exposed pad on the bottom center[^digikey-renesas-isl84467irtz-t-ic-switch]." %}}
 
 QFN packages offer benefits over other packages for high-speed circuits, as well as high heat dissipation capabilities. QFN packages are lacking gull-wing leads (like that present on the QFP package), which create noise in high-speed applications. However because the package is sitting right on the surface of the PCB (or very close to it), they suffer more from mechanical/thermal stress than other SMD packages with larger stand-offs, such as the QFP package. 
 
@@ -24,21 +26,22 @@ Confusingly, NXP names it's range of QFN packages with SOT... (e.g, SOT-662-1), 
 
 ## Synonyms
 
-* 2077-02 (Freescale QFN-16 Pins-5x3 Body-3x3mm)
-* CP-32-2 (Analog Devices QFN-32 Pins-8x8 Pitch-0.50mm Body-5x5mm)
-* DO-214AC
-* HVQFN (NXP's name for a QFN with wettable flanks)
-* LFCSP (Analog Devices)
-* MLF (Micro-leadframe)
-* MLP (Fairchild Semiconductor[^bib-fairchild-an-5067-mpl-packages])
-* QFN-UT (Ultra-thin QFN packages by Samtech)
-* RQZ (QFN-48, 7x7mm, 050mm pitch by Texas Instruments)
-* RSB (QFN-40 by Texas Instruments)
-* SOT.... (NXP's name for it's QFN range of packages, not this does not include packages such as the SOT-23, which are NOT QFN packages)
-* T3B (Microchip VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP)[^bib-microchip-sam-d21-ds]
-* TMB (Microchip VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP)[^bib-microchip-sam-d21-ds]
-* ZLG (Atmel VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP)[^bib-microchip-sam-d21-ds]
-* ZST (Atmel VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP)[^bib-microchip-sam-d21-ds]
+* `2077-02`: Freescale's package code for a QFN-16, 5x3, 3x3mm body package.
+* `CP-32-2`: Analog Devices package code for a QFN-32, 8x8mm, 0.50mm pitch, 5x5mm body package.
+* `HVQFN`: NXP's name for a QFN with wettable flanks.
+* `LFCSP`: Analog Devices.
+* `MLF`: Micro-leadframe.
+* `MLP`: Fairchild Semiconductor[^bib-fairchild-an-5067-mpl-packages].
+* `QFN-UT`: Samtech's name for ultra-thin QFN packages by Samtech.
+* `RSB`: Texas Instrument's drawing code for a QFN-40 package.
+* `RSN`: Texas Instrument's drawing code for a QFN-32, 8x8 pins, 4.15x4.15x0.80mm body, 0.40mm pitch package[^ti-bq25703a-battery-buck-boost-charger-ds].
+* `RQZ`: Texas Instrument's drawing code for a QFN-48, 7x7mm, 0.50mm pitch package.
+* `SOT....`: NXP's name for it's QFN range of packages, not this does not include packages such as the SOT-23, which are NOT QFN packages.
+* `T3B`: Microchip's code for a VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP package[^bib-microchip-sam-d21-ds].
+* `TMB`: Microchip's code for a VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP package[^bib-microchip-sam-d21-ds].
+* `UFD`: Linear Technology's (now Analog Devices) code for a QFN-28, 5x4mm, 0.5mm pitch, 3.65x2.65mm EP[^linear-tech-lt3922-1].
+* `ZLG`: Atmel's code for a VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP package[^bib-microchip-sam-d21-ds].
+* `ZST`: Atmel's code for a VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP package[^bib-microchip-sam-d21-ds].
 
 ## Variants
 
@@ -203,6 +206,9 @@ The tin plating of the flank prevents the traditionally exposed copper (a by-pro
 [^bib-ti-wettable-flanks]: David Snook (2018, Jan 23). _Make automatic optical inspection easy thanks to packages with wettable flanks_. Texas Instruments. Retrieved 2021-10-27, from https://e2e.ti.com/blogs_/b/behind_the_wheel/posts/make-automatic-optical-inspection-easy-thanks-to-packages-with-wettable-flanks.
 [^bib-allegro-wettable-flanks]: Bradley Smith (2017). _Wettable Flank Plated PQFN_. Allegro Microsystems. Retrieved 2021-10-27, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/semiconductor-packaging-publications/wettable-flank-plated-pqfn.
 [^bib-nxp-sot618-13dd]: NXP (2018). _SOT618-13(DD) HVQFN40, plastic thermal enhanced very thin quad flat package; no leads, wettable flanks; 40 terminals; 0.5 mm pitch, 6 mm x 6 mm x 0.85 mm body_. Retrieved 2021-10-28, from https://www.nxp.com/docs/en/package-information/SOT618-13(DD).pdf.
-[^bib-microchip-sam-d21-ds]: Microchip (2021). _SAM D21/DA1 Family Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-03-02, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
+[^bib-microchip-sam-d21-ds]: Microchip (2021). _SAM D21/DA1 Family Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM_ [Datasheet]. Retrieved 2022-03-02, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
 [^bib-fairchild-an-5067-mpl-packages]: Fairchild Semiconductor (2005, Sep). _PCB Land Pattern Design and Surface Mount Guidelines for MLP Packages_. Retrieved 2022-03-09, from http://educypedia.karadimov.info/library/AN-5067.pdf.
-[^bib-st-pwd13f60-ds]: ST Microelectronics (2017, Dec). _PWD13F60: High-density power driver - high voltage full bridge with integrated gate driver (datasheet)_. Retrieved 2022-04-19, from https://www.st.com/resource/en/datasheet/pwd13f60.pdf.
+[^bib-st-pwd13f60-ds]: ST Microelectronics (2017, Dec). _PWD13F60: High-density power driver - high voltage full bridge with integrated gate driver_ [Datasheet]. Retrieved 2022-04-19, from https://www.st.com/resource/en/datasheet/pwd13f60.pdf.
+[^linear-tech-lt3922-1]: Linear Technology (now Analog Devices). _LT3922-1 - 36V, 2.3A Synchronous Step-Up LED Driver with 25,000:1 PWM Dimming_ [Datasheet]. Retrieved 2023-08-02, from https://nz.mouser.com/datasheet/2/609/lt3922_1-3123537.pdf.
+[^ti-bq25703a-battery-buck-boost-charger-ds]: Texas Instruments (2018, May). _bq25703A - I2C Multi-Chemistry Battery Buck-Boost Charge Controller With System Power Monitor and Processor Hot Monitor_ [Datasheet]. Retrieved 2023-08-02, from https://www.ti.com/lit/ds/symlink/bq25703a.pdf.
+[^digikey-renesas-isl84467irtz-t-ic-switch]: DigiKey. _ISL84467IRTZ-T - 4 Circuit IC Switch 2:1 400mOhm (Typ) 16-TQFN (3x3)_ [Product Page]. Retrieved 2023-08-02, from https://www.digikey.com/en/products/detail/renesas-electronics-america-inc/ISL84467IRTZ-T/1978117.
