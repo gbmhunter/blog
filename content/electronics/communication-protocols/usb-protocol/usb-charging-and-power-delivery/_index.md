@@ -284,6 +284,23 @@ The Analog Devices MAX14630
 
 TODO: Finish this off.
 
+## Connectors
+
+Some USB Type-C connectors do not have all 24 pins available, but just enough to perform charging (basic or PD).
+
+One example is the Molex 2171750001, as shown in {{% ref "fig-molex-2171750001-type-c-6-lead-connector-photo-and-diagram" %}}.
+
+{{% figure ref="fig-molex-2171750001-type-c-6-lead-connector-photo-and-diagram" src="molex-2171750001-type-c-6-lead-connector-photo-and-diagram.webp" width="600px" caption="Photo and diagram of the Molex 2171750001 USB Type-C (6+18 Dummy) connector[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds]." %}}
+
+It has a description in [DigiKey](https://www.digikey.com/en/products/detail/molex/2171750001/13913745) of: "USB-C (USB TYPE-C) USB 2.0 Receptacle Connector 24 (6+18 Dummy) Position Surface Mount, Right Angle; Through Hole". The "6+18 Dummy" means only 6 of the 24 contacts are actually provided as SMD leads to the PCB. These are:
+
+* `A9`, `B9`: VBUS
+* `A5`: CC1
+* `B5`: CC2
+* `A12`, `B12`: GND
+
+Having VBUS, the CC lines and GND gives you all the leads you need to perform either basic power draw or negotiate higher voltages/currents via the CC lines.
+
 ## References
 
 [^ti-primer-on-usb-pd]: Nate Enos, Brian Gosselin. _A Primer on USB Type-C® and USB Power Delivery Applications and Requirements_ [PDF]. Texas Instruments. Retrieved 2023-07-07, from https://www.ti.com/lit/wp/slyy109b/slyy109b.pdf.
@@ -301,3 +318,4 @@ TODO: Finish this off.
 [^st-microelectronics-stusb4500-standalone-pd-sink]: STMicroelectronics (2022, Nov). _STUSB4500 - Standalone USB PD sink controller with short-to-VBUS protections_ [Datasheet]. Retrieved 2023-07-26, from https://www.st.com/resource/en/datasheet/stusb4500.pdf. 
 [^eaton-usb-charging-and-power-delivery]: Eaton (2023). _USB Charing and Power Delivery_. Retrieved 2023-07-28, from https://tripplite.eaton.com/products/usb-charging.
 [^usb-org-battery-charging-v1.2-spec]: usb.org (2012, Mar 15). _Battery Charging Specification (Including errata and ECNs through March 15, 2012) - Revision 1.2_. Retrieved 2023-07-29, from https://www.usb.org/document-library/battery-charging-v12-spec-and-adopters-agreement.
+[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds]: Molex. _TYPE C 6 PIN TOP MOUNT SMT - Product Customer Drawing_ [Mechanical Drawing]. Retrieved 2023-08-02, from https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/217/217175/2171750001_sd.pdf.

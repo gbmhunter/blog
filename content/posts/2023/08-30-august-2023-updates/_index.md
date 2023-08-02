@@ -13,3 +13,5 @@ type: post
 
 * Added more info on [Voltage Supervisors](/electronics/components/voltage-supervisors/).
     {{% figure src="" width="600px" %}}
+
+* Added info about [USB Type-C connectors with dummy leads](/electronics/communication-protocols/usb-protocol/usb-charging-and-power-delivery/#connectors).
