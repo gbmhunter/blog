@@ -28,6 +28,14 @@ Component packages with many names (synonyms) are listed by the most common, or 
 
 Some items such as the [PP3 9V battery case](pp3-component-package), and [SIM card sizes](sim-card-sizes/), may not be strictly component packages, but are included here for completeness.
 
+## Component Size Reference Chart
+
+{{% ref "fig-package-size-comparison-chart" %}} is a printable component package comparison chart. It shows a number of popular SMD (and a few through-hole) packages which are drawn to scale (when printed on A4 paper, it will print with a 1:1 scale). Hopefully this gives you a visual guide to the different sizes of various things you may be considering adding to your PCB.
+
+{{% figure ref="fig-package-size-comparison-chart" src="package-size-comparison-chart.svg" width="900px" caption="A package size comparison chart. When printed on A4 paper is has a 1:1 scale." %}}
+
+It is also available as a [printable PDF](./package-size-comparison-chart.pdf). If you print to A4 paper it will print with a 1:1 scale (make sure to deselect "fit to size"). 
+
 ## Break-out Boards
 
 {{% figure src="sparkfun-break-out-board.jpg" width="160px" caption="A SOIC-8 to DIP break-out board made by SparkFun." %}}
