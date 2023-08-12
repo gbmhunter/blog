@@ -19,3 +19,5 @@ type: post
 
 * Added more QFN synonyms and a 3D render to the [QFN Component Package page](/pcb-design/component-packages/qfn-component-package/).
     {{% figure src="" width="600px" %}}
+
+* Added a component package size comparison chart.
