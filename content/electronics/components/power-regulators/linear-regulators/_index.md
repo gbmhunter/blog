@@ -132,6 +132,16 @@ Adding capacitance here helps improve the AC characteristics of the linear regul
 
 A typical value of a bypass capacitor is `\(10nF\)`.
 
+## Power Supply Rejection Ratio (PSRR)
+
+The _power supply rejection ratio_ (PSRR) (a.k.a _power supply ripple rejection_, but the acronym stays the same) **measures a linear regulators ability to block noise on the input from reaching the output**. It is expressed as a logarithmic ratio in dB of the noise that appears on the output when noise is presented on the input.
+
+### Basic Equation
+
+<p>\begin{align}
+PSRR = 20log \frac{V_{ripple,input}}{V_{ripple,output}}
+\end{align}
+
 ## DDR Termination Regulators
 
 DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec. (incl. suspend to RAM, suspend to disk states).
