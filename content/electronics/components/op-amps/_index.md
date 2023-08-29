@@ -4,7 +4,7 @@ categories: [ Electronics, Electronic Components ]
 date: 2011-09-05
 description: Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps).
 draft: false
-lastmod: 2022-10-10
+lastmod: 2023-08-29
 tags: [ op-amps, schematic symbols, analogue, analog, operational amplifiers, inverting, buffers, non-inverting, components, gain, voltage followers, offset nulling, input offset voltages, instrumentation amplifiers, capacitive loading, current sources, quiescent currents, GBW, slew rates, negative impedance converters, NICs, summing amplifiers, level shifting ]
 title: Op-Amps
 type: page
@@ -131,23 +131,31 @@ And below are the simulation results for the above schematic:
 
 </div>
 
-### Differential Amplifiers
+### Difference Amplifiers
 
-A differential amplifier amplifies the difference between two electrical signals, but does not amplify any signal that is common to both inputs. The schematic is shown below.
+A difference (a.k.a _differential_ or _subtractive_) amplifier is an op-amp circuit which amplifies the voltage difference between two electrical signals. It is the mathematical equivalent of subtraction with some additional gain. The schematic is shown in {{% ref "fig-differential-amplifier-schematic" %}}.
 
-{{% figure src="differential-amplifier-schematic.svg" width="500px" caption="An op-amp configured as a differential amplifier." %}}
+{{% figure ref="fig-differential-amplifier-schematic" src="differential-amplifier-schematic.svg" width="700px" caption="An op-amp configured as a differential amplifier." %}}
 
-The output voltage is given by the equation:
+The output voltage is given by the equation[^electronics-tutorials-ws-the-differential-amplifier]:
 
 <p>\begin{align}
-v_{out} = \frac{R_2}{R_1 + R_2}\left(1 + \frac{R_4}{R_3}\right)v_1 - \frac{R_4}{R_3}v_2
+v_{out} = \left(\frac{R_2}{R_1 + R_2}\right)\left(\frac{R_3 + R_4}{R_3}\right)v_1 - \frac{R_4}{R_3}v_2
 \end{align}</p>
 
-{{% tip %}}
+{{% aside type="warning" %}}
 It's easy to confuse a differential amplifier (what we are discussing here) with a _differentiator amplifier_, which performs the mathematical function of differentiation (opposite of integration).
-{{% /tip %}}
+{{% /aside %}}
 
-<div class="worked-example">
+To make a standard difference amplifier, `\(R_1\)` is picked to equal `\(R_3\)` and `\(R_2\)` is picked to equal `\(R_4\)`. In this case, the above equation easily simplifies to:
+
+<p>\begin{align}
+v_{out} = \left(\frac{R_2}{R_1}\right)(v_1 - v_2)
+\end{align}</p>
+
+Now you can clearly see how it behaves as a subtractor (`\(v_1 - v_2\)`) followed by some gain (`\(\frac{R_2}{R_1}\)`). 
+
+{{% aside type="example" %}}
 
 **Simulation example for a differential amplifier.**
 
@@ -159,7 +167,7 @@ This schematic produces the following results:
 
 {{% figure src="differential-op-amp-simulation-graph-vin1-vin2-vout.png" width="700px" caption="A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier." %}}
 
-</div>
+{{% /aside %}}
 
 ### Integration Amplifiers
 
@@ -872,3 +880,4 @@ For 8-pin packages:
 [^bib-ti-lm324-datasheet]: Texas Instruments (2014). _LM321 Low Power Single Operational Amplifier_. Retrieved 2021-10-02, from https://www.ti.com/lit/ds/symlink/lm321.pdf.
 [^bib-analog-devices-precision-photodiode]: Luis Orozco (2014). _MS-2624: Optimizing Precision Photodiode Sensor Circuit Design_. Analog Devices. Retrieved 2022-02-24, from https://www.analog.com/en/technical-articles/optimizing-precision-photodiode-sensor-circuit-design.html.
 [^bib-ti-opa396-datasheet]: Texas Instruments (formally Burr-Brown) (2021, Jul). _OPA396 Precision, Low IQ, Low Input Bias Current Op Amp (datasheet)_. Retrieved 2022-10-10, from https://www.ti.com/lit/ds/symlink/opa396.pdf.
+[^electronics-tutorials-ws-the-differential-amplifier]: Electronics Tutorials. _Operational Amplifiers - The Differential Amplifier_. Retrieved 2023-08-29, from https://www.electronics-tutorials.ws/opamp/opamp_5.html.

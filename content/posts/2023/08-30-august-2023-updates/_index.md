@@ -21,3 +21,10 @@ type: post
     {{% figure src="" width="600px" %}}
 
 * Added a component package size comparison chart.
+    {{% figure src="" width="600px" %}}
+
+* Fixed error in the equation for a Difference Amplifier on the [Op-Amps page](/electronics/components/op-amps/#difference-amplifiers).
+    {{% figure src="" width="600px" %}}
+
+* Added a new page on the [PG-SCT595 component package](/pcb-design/component-packages/pg-sct595-component-package/).
+    {{% figure src="" width="600px" %}}
