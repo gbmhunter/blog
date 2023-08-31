@@ -1,30 +1,30 @@
 ---
 authors: [ Geoffrey Hunter ]
 categories: [ Posts, Updates ]
-date: 2023-08-30
+date: 2023-08-31
 description: Blog updates during August 2023.
 draft: false
 images: [ ]
-lastmod: 2023-08-30
+lastmod: 2023-08-31
 tags: []
 title: August 2023 Updates
 type: post
 ---
 
 * Added more info on [Voltage Supervisors](/electronics/components/voltage-supervisors/).
-    {{% figure src="" width="600px" %}}
+    {{% figure src="voltage-supervisors-screenshot.png" width="600px" %}}
 
 * Added info about [USB Type-C connectors with dummy leads](/electronics/communication-protocols/usb-protocol/usb-charging-and-power-delivery/#connectors).
-    {{% figure src="" width="600px" %}}
+    {{% figure src="usb-power-only-connector-screenshot.png" width="600px" %}}
 
 * Added more QFN synonyms and a 3D render to the [QFN Component Package page](/pcb-design/component-packages/qfn-component-package/).
-    {{% figure src="" width="600px" %}}
+    {{% figure src="qfn-screenshot.png" width="600px" %}}
 
 * Added a component package size comparison chart.
-    {{% figure src="" width="600px" %}}
+    {{% figure src="component-size-comparison-screenshot.png" width="600px" %}}
 
 * Fixed error in the equation for a Difference Amplifier on the [Op-Amps page](/electronics/components/op-amps/#difference-amplifiers).
-    {{% figure src="" width="600px" %}}
+    {{% figure src="difference-amplifier-equation-screenshot.png" width="600px" %}}
 
 * Added a new page on the [PG-SCT595 component package](/pcb-design/component-packages/pg-sct595-component-package/).
-    {{% figure src="" width="600px" %}}
+    {{% figure src="pg-sct595-package-screenshot.png" width="600px" %}}
