@@ -29,5 +29,5 @@ type: post
 * Added a new page on the [PG-SCT595 component package](/pcb-design/component-packages/pg-sct595-component-package/).
     {{% figure src="pg-sct595-package-screenshot.png" width="600px" %}}
 
-* NinjaTerm has had a major version update to [v3.0.0](https://github.com/gbmhunter/NinjaTerm/releases/tag/v3.1.0)! The build issues have been fixed, and it is now using recent released of Electron and React.
+* NinjaTerm has had a major version update to [v3.0.0](https://github.com/gbmhunter/NinjaTerm/releases/tag/v3.1.0)! The build issues have been fixed, and it is now using recently released versions of Electron, React and Material UI. With the new version of MUI comes the dark mode also.
     {{% figure src="ninjaterm-v3.0.0-screenshot.png" width="600px" %}}
