@@ -8,6 +8,8 @@ title: "Designing A Great Debug Serial Console"
 type: "page"
 ---
 
+{{% warning-is-notes %}}
+
 ## Overview
 
 Debug serial consoles using UART are the mainstay of embedded programming. Along with step-by-step debugging, they form the two essential tools you need when developing embedded firmware. But what makes a good serial console?
