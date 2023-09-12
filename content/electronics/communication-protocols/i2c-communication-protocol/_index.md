@@ -155,7 +155,29 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 
 I2C is used within the VGA, DVI and HDMI protocols[^bib-ken-shirriff-vga-i2c] to share additional information between the connected devices (it is not used for the visual signal). They call this signal which uses I2C the DDC (_Display Data Channel_) signal. The protocol is implemented in such a way that on the monitor side, all you need to do is hook up a standard I2C EEPROM memory chip[^bib-elec-se-hdmi-and-i2c].
 
-## Addressing
+## Protocol Format
+
+### Start Condition
+
+The _start condition_ is a HIGH to LOW transition on the SDA line while SCL is HIGH. The master issues this at the start of all message frames. It is a unique transition, as all other SDA transitions that transmit data occur when SCL is low.
+
+### Address Byte
+
+The address byte comes after the start condition. This is a sequence of 8 bits that identifies to which device on the I2C bus the master wishes to communicate with. The first 7 bits are the _address_ of the slave device, and the last bit determines whether a read or write operation will be performed. The SDA line is always driven by the master.
+
+### Data Bytes
+
+The data bytes follow the address byte. These bytes represent the actual information being transferred between the master and slave devices. The number of data bytes that can be transferred within one message frame is determined by the specific requirements of the device and the master controller. If the master indicated a write operation in the address byte, the master drives the SDA line during the data bytes. If the master specified a READ operation, the addressed slave drives the SDA line.
+
+The meaning and context of the data bytes is not defined in the I2C standard. This is left to the higher level layers in the "stack", i.e. the microcontroller and slave device IC manufacturers.
+
+However, there is a common protocol that is widely used, where the first data byte sent or received after the address byte during a WRITE operation is frequently a register address inside the slave device. Following data byte is then used to write new data to that register in memory. Subsequent data bytes write to next highest register address and so on (i.e. the register pointer automatically increments by 1 on each write). Conversely, during a READ operation, a WRITE phase is first undertaken to set the register address, followed by a repeated START condition (without a STOP), and then a READ operation to retrieve the data at the selected register address. This process allows for easy access and manipulation of slave devices, including changing their settings, reading out status, and controlling them.
+
+### Stop Condition
+
+The _stop condition is a LOW to HIGH transition on the SDA line while SCL is HIGH. It is similar to the start byte except it's a positive going edge rather than a negative one.
+
+## Complex Addresses
 
 All I2C slave devices must have an address. This address is used by the master to select which device to talk with. Standard addresses are 7 bits long, with a 10-bit extension being rather uncommon. In the case of a 7-bit address, it is left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
 
@@ -210,7 +232,7 @@ Bit `0` of the first address byte is the read/not-write (RnW) bit. **Note that w
 
 The 10-bit addressing scheme has been to designed so that it can work on a bus alongside the 7-bit addressing scheme.
 
-## Transmission Distances And Buffer's
+## Transmission Distances And Buffers
 
 {{% figure src="i2c-buffer-ic-example.jpg" width="800px" caption="An example from a NXP application note showing how their P82B96 I2C-bus buffering IC can utilise buffering and twisted pairs to increase the I2C communication distance." %}}
 
@@ -262,17 +284,38 @@ I2C is typically used to configure and talk to digital sensor IC's in an embedde
 
 {{% figure src="typical-i2c-waveform.jpg" width="483px" caption="A typical I2C waveform. The top waveform is the clock (SCK), and the bottom waveform is the data (SDA). This shows a master trying to communicate with the slave, but the slave does not acknowledge (the ninth bit is high)." %}}
 
-Typically, the IC has a 7-bit address which if right-shifted with the read/write bit being the LSB. If the IC detects its address, it issues an acknowledge. The second word (which may or may not be a byte, this depends on the size of the registers on the chip, typically 1 or 2bytes) sent by the master over I2C writes to an address pointer, this determines what register is going to be read to/written from. This is always a write operation.
+Typically, the IC has a 7-bit address which is right-shifted by 1 and the read/write bit is the LSB. If the IC detects its address, it issues an acknowledge. The second word (which may or may not be a byte, this depends on the size of the registers on the chip, typically 1 or 2bytes) sent by the master over I2C writes to an address pointer, this determines what register is going to be read to/written from. This is always a write operation.
 
-At this point, if the master is performing a write, the master's third word will write to the register pointed to by the address pointer (which was sent as the second word). The address pointer is automatically incremented by one a this point, allowing the master to write consecutive registers all at once without having to do separate I2C transmissions.
+At this point, **if the master is performing a write**, the master's third word will write to the register pointed to by the address pointer (which was sent as the second word). The address pointer is automatically incremented by one a this point, allowing the master to write consecutive registers all at once without having to do separate I2C transmissions.
 
 {{% figure src="i2c-waveform-example-saleae-logic-analyser.png" width="800px" caption="i2c-waveform-example-saleae-logic-analyser" %}}
 
-But if instead the master is performing a read, a repeated start is normally issued after writing to the address pointer. Then the master issues a read command (the IC's 7-bit address and the read/write bit set correctly). The master then provides clock pulses while the slave 'reads' out register contents beginning at the register set in the address pointer in the previous write cycle. Just as with a write, the address pointer is incremented automatically, allowing multiple registers to be read at once.
+But if instead the **master is performing a read**, a repeated start is normally issued after writing to the address pointer. Then the master issues a read command (the IC's 7-bit address and the read/write bit set correctly). The master then provides clock pulses while the slave 'reads' out register contents beginning at the register set in the address pointer in the previous write cycle. Just as with a write, the address pointer is incremented automatically, allowing multiple registers to be read at once.
 
 The following image shows an I2C slave that is not responding. Notice the absence of an "ACK" on the SDA line on the 9th clock pulse. The slave should of pulled this low.
 
 {{% figure src="i2c-waveform-with-nak-saleae-logic-analyser.png" width="800px" caption="An I2C slave that doesn't respond, no ACK on the 9th clock pulse." %}}
+
+## Stuck I2C Buses
+
+It is possible for I2C communications between a microcontroller and slave device to become unsynchronized and cause the bus to hang. If the microcontroller gets reset (or noise corrupts the lines) during a read phase whilst the slave device was driving SDA low, the slave will continue driving SDA low indefinitely and will prevent the master from emitting any start controls. The easiest way to fix this is to reset the slave if there is an external way of resetting it (e.g. a separate reset line or killing it's power supply). 
+
+If this is not possible, another way to recover the bus is to perform the following actions, as mentioned by Phillips Semiconductor in the _I2C Manual_[^phillips-semiconductors-an10216-i2c-manual]:
+
+1. Take manual control of the SCL and SDA lines by switching them to GPIO.
+1. Send 9 clock pulses on the SCL line. This will make the slave continue to shift out data that it thinks is part of the botched read operation.
+1. Wait for the slave to release control of the SDA line.
+1. Do not drive SDA low with the main microcontroller. This will mean the microcontroller will NAK the byte.
+1. The slave will then go into the IDLE state.
+1. Master then sends a STOP command to initialize the I2C bus.
+
+These steps should be performed on every reset of the microcontroller, before the I2C bus peripheral is initialized.
+
+The Nordic TWI/TWIM peripheral driver contains a macro called `TWI_DEFAULT_CONFIG_CLR_BUS_INIT` which enables a "bus clearing" procedure during initialization[^nordic-semi-twi-twim-peripheral-driver-config].
+
+Matthew Ford from Forward Computing and Control Pty. Ltd. has written an `I2C_ClearBus()` method for Arduino projects which makes sure the I2C bus is in the idle state at start-up[^forward-computing-and-control-i2c-clear-bus]. It can be downloaded from https://www.forward.com.au/pfod/ArduinoProgramming/I2C_ClearBus/index.html.
+
+A hung I2C bus is discussed in length at https://github.com/esp8266/Arduino/issues/1025.
 
 ## Prototyping
 
@@ -307,3 +350,6 @@ A popular alternative to I2C which is also used for intra-board communication is
 [^bib-i2c-bus-ufm]: I2C BUS. _Ultra Fast Mode UFm_. Retrieved 2021-11-24, from https://www.i2c-bus.org/ultra-fast-mode-ufm/.
 [^bib-ti-ads1100-adc]: Texas Instruments (formally Burr-Brown) (2003). _ADS1100: Self-Calibrating, 16-Bit Analog-to-Digital Converter (datasheet)_. Retrieved 2022-01-07, from https://www.ti.com/symlink/ads1100.pdf.
 [^bib-ti-ina226-power-mon]:  Texas Instruments (2011, Jun). _INA226 High-Side or Low-Side Measurement, Bi-Directional Current and Power Monitor with I2C Compatible Interface (datasheet)_. Retrieved 2022-01-07, from https://www.ti.com/lit/ds/symlink/ina226.pdf.
+[^nordic-semi-twi-twim-peripheral-driver-config]: Nordic Semiconductor. _TWI/TWIM peripheral driver - legacy layer configuration_ [Documentation]. Retrieved 2023-09-12, from https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.0.0%2Fgroup__nrf__drv__twi__config.html.
+[^forward-computing-and-control-i2c-clear-bus]: Matthew Ford (2022, Nov 12). _Reliable Startup for I2C Battery Backed RTC. Why theArduino Wire library is not enough._ [Article]. Forward Computing and Control Pty. Ltd. Retrieved 2023-09-12, from https://www.forward.com.au/pfod/ArduinoProgramming/I2C_ClearBus/index.html.
+[^phillips-semiconductors-an10216-i2c-manual]: Phillips Semiconductors (now NXP). _AN10216-01 - I2C Manual_. Retrieved 2023-09-12, from https://www.nxp.com/docs/en/application-note/AN10216.pdf.

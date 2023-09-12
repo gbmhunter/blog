@@ -11,5 +11,7 @@ title: September 2023 Updates
 type: post
 ---
 
-* Example
+* Added info on stuck (hung) I2C buses and how to recover from them.
     {{% figure src="" width="600px" %}}
+
+* Added info on I2C start conditions, address bytes, data bytes and stop conditions.
