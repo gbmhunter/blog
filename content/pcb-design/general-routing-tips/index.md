@@ -3,6 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2015-07-14
 draft: false
+lastmod: 2023-09-13
 title: "General Routing Tips"
 type: page
 ---
@@ -30,3 +31,13 @@ Antennas can also be used for stress relief during soldering for stress-sensitiv
 ## Undesired Antennas
 
 Any PCB antenna that isn't for radio transmission or stress relief is probably a **bad** thing. These are cause by tracks end in the middle of nowhere, and are often created un-intentionally when routing the PCB.
+
+## Provide Clearance For Mechanical Screws
+
+Make sure to provide copper (and component) clearance around mechanical screw holes for the screw head. If copper tracks (or planes) are run underneath the screw head, the screw head can bite through the soldermask and do the following:
+
+1. Electrically connect itself and whatever the screw is connected to (e.g. a metal enclosure) to a particular net on the PCB.
+1. Short out two tracks running underneath the screw head.
+1. Rip tracks of the PCB and make the nets go open circuit.
+
+{{% figure src="pcb-damaged-by-screw-head.jpg" width="500px" caption="Ouch. This is what can happen if you don't provide clearance on a PCB for screw heads." %}}

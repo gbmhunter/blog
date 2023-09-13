@@ -15,3 +15,5 @@ type: post
     {{% figure src="" width="600px" %}}
 
 * Added info on I2C start conditions, address bytes, data bytes and stop conditions.
+
+* Added info on providing clearance on PCBs for screw heads.
