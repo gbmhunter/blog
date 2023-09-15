@@ -19,3 +19,5 @@ type: post
 * Added info on providing clearance on PCBs for screw heads.
 
 * Added more info to the [Current Sensing page](/electronics/circuit-design/current-sensing/). 
+
+* Added new page on [hall effect sensors](/electronics/components/hall-effect-sensors/).
