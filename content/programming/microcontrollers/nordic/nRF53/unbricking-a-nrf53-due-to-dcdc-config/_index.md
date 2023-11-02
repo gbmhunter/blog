@@ -20,6 +20,15 @@ Unfortunately, you can quite easily "brick" a Nordic nRF53 series microcontrolle
 
 In this scenario, if you forget to explicitly disable the SMPS in the Zephyr `prj.conf` file, then the SMPS will be enabled (yes -- they are enabled by default). But you don't have the required inductors, the SMPS will not work, and the internal voltage rails required by the MCU will not do anything but stay at 0V. **This unfortunately "bricks" the MCU. You can't re-program the device** with a fixed firmware binary because the MCU requires these internal voltage rails for programming.
 
+```text
+# Disable all three internal SMPSs.
+# WARNING: Do NOT remove these lines, doing so will brick the MCU,
+# as it expects the inductors to be fitted
+CONFIG_BOARD_ENABLE_DCDC_APP=n
+CONFIG_BOARD_ENABLE_DCDC_NET=n
+CONFIG_BOARD_ENABLE_DCDC_HV=n
+```
+
 {{% aside type="note" %}}
 Until this moment, the last time I ever bricked a MCU was about 15 years ago with an Atmel ATmega microcontroller. I accidentally programmed the "FUSE" bits which told the MCU to use the external crystal as it's main clock source rather than the internal RC oscillator. Unfortunately the PCB had no external crystal attached...
 {{% /aside %}}
