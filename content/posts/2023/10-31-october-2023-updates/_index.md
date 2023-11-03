@@ -11,7 +11,7 @@ title: October 2023 Updates
 type: post
 ---
 
-* This month I was solely focused on NinjaTerm development. We went from `v4.3.0` through to `v4.7.0` in the month of October. Updates to NinjaTerm are highlighted below.
+* This month I was solely focused on [NinjaTerm](https://github.com/gbmhunter/NinjaTerm) development. We went from `v4.3.0` through to `v4.7.0` in the month of October. Updates to NinjaTerm are highlighted below.
 
 * Terminals are now focusable by the user, with the cursor changing appearance and a background glow shown when focused.
 
