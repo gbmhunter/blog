@@ -1,12 +1,29 @@
 :root {
+    --background-color: #fff;
     // main-color is the main 'theme' red of the site
     --main-color: #dc3545;
     --main-color-light: #fff3f3;
-    --text-color: rgb(85, 85, 85);
+    --text-color-primary: #000000;
+    --text-color-secondary: #202020;
     --caption-font-color: rgb(100, 100, 100);
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
 
+}
+
+html[data-theme='light'] {
+    --background-color: #fff;
+    --text-color-primary: #000000;
+    --text-color-secondary: #202020;
+    --link-color: #543fd7;
+}
+
+html[data-theme='dark'] {
+    --background-color: #181818;
+    --text-color-primary: #e3e3e3;
+    /* In dark mode secondary text colour is same as primary */
+    --text-color-secondary: #e3e3e3;
+    --link-color: #828fff;
 }
 
 /* 800px is the cut-off point */
@@ -14,6 +31,220 @@
 * {
     /* Don't set font family for everything, as it messes with code blocks */
     /* font-family: 'avenir next' ,'avenir', sans-serif */
+}
+
+/* ========================================================================= */
+/* BODY
+/* ========================================================================= */
+
+body {
+    background: var(--background-color);
+    color: var(--text-color-primary);
+}
+
+/* ========================================================================= */
+/* TOP NAVBAR
+/* ========================================================================= */
+
+.top-navbar {
+    height: 60px;
+    padding: 8px 16px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 200; /* Make sure navbar is on top of everything else */
+}
+
+[data-theme='light'] .top-navbar {
+    background-color: #ffffff;
+}
+
+[data-theme='dark'] .top-navbar {
+    background-color: #222222;
+}
+
+/* Shows the moon icon when light, sun icon when dark */
+[data-theme='light'] .d-block-light,
+[data-theme='dark'] .d-block-dark {
+    display: block !important;
+}
+
+.d-block-light {
+    color: var(--text-color-primary);
+}
+
+.d-block-dark {
+    color: var(--text-color-primary);
+}
+
+/* ========================================================================= */
+/* WRAPPER BELOW NAVBAR
+/* ========================================================================= */
+
+.wrapper-below-top-navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+/* ========================================================================= */
+/* LEFT-HAND NAVBAR
+/* ========================================================================= */
+
+.left-navbar {
+    min-width: 300px;
+    max-width: 300px;
+    border-right: 1px solid;
+    margin-top: -60px;
+}
+
+[data-theme='light'] .left-navbar {
+    border-color: #bbbbbb;
+}
+
+[data-theme='dark'] .left-navbar {
+    border-color: #333333;
+}
+
+/*
+Padding provides offset so it doesn't collide with top navbar
+*/
+.left-navbar-padding {
+    padding: 60px;
+    position: sticky;
+    top: 0;
+}
+
+.menu-nav {
+    display: block !important;
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    overflow-y: auto;
+
+    margin-top: 10px;
+
+    ul ul {
+        margin-left: 5px; // Apply some indentation to the lists so you can see the hierarchy
+    }
+
+    a {
+        padding: .375rem .75rem;
+        margin-top: .125rem;
+        margin-left: 0.1rem;
+        font-size: 1.2em;
+        text-decoration: none;
+        color: var(--text-color-secondary);
+        
+    }
+    @media (min-width: 768px) {
+        a {
+            font-size: 0.9em;
+        }
+    }
+}
+
+.menu-list {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 20px; // This indents the first menu
+    .menu-list {
+        padding-left: 5px; // This indents each submenu to give the user a view of the hierarchy
+    }
+}
+
+.menu-chevron-link-wrapper {
+    display: flex;
+}
+
+.menu-chevron {
+    display: inline;
+    // This is a little SVG chevron (angled bracket)
+    content:
+        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+    transition: transform 0.35s ease;
+    cursor: pointer; // Make it look clickable
+
+    &.show {
+        transform: rotate(90deg);
+    }
+
+    &.hidden {
+        visibility: hidden;
+    }
+}
+
+/* ========================================================================= */
+/* MAIN CONTENT (center and right TOC column)
+/* ========================================================================= */
+
+.page-wrapper {
+    padding-top: 20px;
+    // padding-left: 10px;
+
+    display: flex;
+
+    address {
+        display: inline;
+    }
+}
+
+.page-left-column {
+    max-width: 75%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.home-page-content {
+    padding-top: 40px; // Applicable for homepage
+}
+
+/* ========================================================================= */
+/* PAGE RIGHT-HAND COLUMN (TOC)
+/* ========================================================================= */
+
+@media (min-width: 768px) {
+    #right-hand-column {
+        height: 100vh;
+        max-width: 25%;
+        flex-basis: 25%;
+        // overflow-y: scroll; // Don't enable scroll here! We use simplebar instead
+        position: sticky;
+        top: calc(60px + 20px); // 60px is the height of the top navbar, 20px is the padding-top of the page-wrapper
+    }
+}
+
+#toc {
+
+    border-left: 2px solid #efefef;
+
+    margin-top: 50px;
+    margin-bottom: 15px;
+
+    a {
+        text-decoration: none;
+        font-size: 0.8em;
+    }
+    ul {
+        list-style-type: none;
+        padding-inline-start: 20px;
+    }
+    li {
+        line-height: 1.5;
+    }
+}
+
+#toc li.active > a {
+    color: var(--main-color);
+    font-weight: 600;
+  }
+
+#toc a {
+    text-decoration: none;
+    display: block;
+    padding: .125rem 0;
+    color: var(--text-color-secondary); // Make TOC text lighter than content text
+    transition: all 50ms ease-in-out; 
 }
 
 /* ===================================== */
@@ -458,12 +689,6 @@ aside.note .title .icon {
 }
 
 /* ========================================================================= */
-/* MENU STYLING                                                         */
-/* ========================================================================= */
-
-
-
-/* ========================================================================= */
 /* FOOTER                                                                    */
 /* ========================================================================= */
 
@@ -698,71 +923,7 @@ p, li, div, td, th, input, code.has-jax {
     }
 }
 
-/* ========================================================================= */
-/* MENU                                                                      */
-/* ========================================================================= */
 
-.menu-nav {
-    // position: -webkit-sticky;
-    // position: sticky;
-    // top: 5rem;
-    display: block !important;
-    // height: calc(100vh - 7rem);
-    padding-left: .25rem;
-    margin-left: -.25rem;
-    overflow-y: auto;
-
-    margin-top: 10px;
-
-    ul ul {
-        margin-left: 5px; // Apply some indentation to the lists so you can see the hierarchy
-    }
-
-    a {
-        padding: .375rem .75rem;
-        margin-top: .125rem;
-        margin-left: 0.1rem;
-        color: rgb(60, 60, 60);
-        font-size: 1.2em;
-        text-decoration: none;
-        
-    }
-    @media (min-width: 768px) {
-        a {
-            font-size: 0.9em;
-        }
-    }
-}
-
-.menu-list {
-    list-style-type: none;
-    margin-left: 0px;
-    padding-left: 20px; // This indents the first menu
-    .menu-list {
-        padding-left: 5px; // This indents each submenu to give the user a view of the hierarchy
-    }
-}
-
-.menu-chevron-link-wrapper {
-    display: flex;
-}
-
-.menu-chevron {
-    display: inline;
-    // This is a little SVG chevron (angled bracket)
-    content:
-        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-    transition: transform 0.35s ease;
-    cursor: pointer; // Make it look clickable
-
-    &.show {
-        transform: rotate(90deg);
-    }
-
-    &.hidden {
-        visibility: hidden;
-    }
-}
 
 /* ========================================================================= */
 /* HOMEPAGE CONTENT                                                          */
@@ -781,68 +942,6 @@ p, li, div, td, th, input, code.has-jax {
         font-size: 1.5em;
         margin-bottom: 20px;
     }
-}
-
-/* ========================================================================= */
-/* TOC                                                                       */
-/* ========================================================================= */
-
-@media (min-width: 768px) {
-    #right-hand-column {
-        height: 100vh;
-        // overflow-y: scroll; // Don't enable scroll here! We use simplebar instead
-        position: sticky;
-        top: 0;
-    }
-}
-
-#toc {
-
-    border-left: 2px solid #efefef;
-
-    margin-top: 50px;
-    margin-bottom: 15px;
-
-    a {
-        text-decoration: none;
-        font-size: 0.8em;        
-    }
-    ul {
-        list-style-type: none;
-        padding-inline-start: 20px;
-    }
-    li {
-        line-height: 1.5;
-    }
-}
-
-#toc li.active > a {
-    color: var(--main-color);
-    font-weight: 600;
-  }
-
-#toc a {
-    text-decoration: none;
-    display: block;
-    padding: .125rem 0;
-    color: #777; // Make TOC text lighter than content text
-    transition: all 50ms ease-in-out; 
-}
-
-/* ========================================================================= */
-/* MAIN CONTENT (center column)                                              */
-/* ========================================================================= */
-
-article {
-    padding-top: 20px;
-
-    address {
-        display: inline;
-    }
-}
-
-.home-page-content {
-    padding-top: 40px; // Applicable for homepage
 }
 
 /* ========================================================================= */

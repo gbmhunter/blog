@@ -111,36 +111,41 @@
           
   </head>
         
-        <body>
-          <!-- Set this below div to container-fluid if you want it to take up the entire page width on large
-            screens, rather than stopping at 1354px wide. -->
-          <div class="container-xxl">
-            <div class="row">
-              <!-- LEFT-HAND SIDEBAR (logo + menu) -->
-              <!-- Add data-simplebar to make the scrollbar special!
-                col-md makes the columns stack on mobile devices -->
-              <aside class="bd-sidebar col-md-3 col-xl-2" data-simplebar>
-                
-                <!--- These two sections are stacked in a column when on desktop, side-by-side when on mobile -->
-                <div class="header-section-1">
-                  <div class="logo-img"><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a></div>
-                  <div class="site-title "><a href="/">mbedded.ninja</a></div>
-                  <div class="site-description">The embedded engineering website that's got your back.</div>
-                </div>
+  <body>
+    <!-- TOP NAVBAR, 100% VIEWPORT WIDTH -->
+    <!-- ================================================================================================ -->
+    <nav class="top-navbar">
+      <div class="stuff-at-start" style="display: flex; align-items: center; gap: 10px;">
+        <div><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} height="40px" /></a></div>
+        <div>mbedded.ninja</div>
+      </div>
+      <div class="stuff-at-end">
+        <button id="theme-toggle" class="btn btn-link btn-sm ms-2 small d-flex" type="button">
+          <span class="d-block-light d-none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="d-block-dark d-none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Set this below div to container-fluid if you want it to take up the entire page width on large
+      screens, rather than stopping at 1354px wide. -->
+    <div class="wrapper-below-top-navbar">
+        
+        <aside class="left-navbar">
+          <div class="left-navbar-padding">
+            {{ partial "menu.html" . }}
+          </div>
+        </aside>
+        {{ block "main" . }}{{ end }}
+    </div>
+    {{ partial "mathjax-markdown-solution.html" . }}
+  </body>
+  <!-- 'Back to Top' button -->
+  <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->
+  <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
 
-                {{ partial "menu.html" . }}
-                
-              </aside>
-                {{ block "main" . }}{{ end }}
-              </div> <!-- class="row" -->
-            </div>
-            {{ partial "mathjax-markdown-solution.html" . }}
-          </body>
-          <!-- 'Back to Top' button -->
-          <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->
-          <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>          
+  <!-- Load our custom Javascript. -->
+  <script src="/js/main.js"></script>
 
-          <!-- Load our custom Javascript. All code bundled in the one file for fast loading -->
-          <script src="/js/main.js"></script>
-          </html>
-          
+  <!-- Load light/dark mode toggle script -->
+  <script src="/js/light-dark-mode-toggle.js"></script>
+</html>
