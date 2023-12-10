@@ -106,7 +106,8 @@ body {
 Padding provides offset so it doesn't collide with top navbar
 */
 .left-navbar-padding {
-    padding: 60px;
+    padding-top: 60px;
+    padding-right: 10px;
     position: sticky;
     top: 0;
 }
@@ -152,16 +153,24 @@ Padding provides offset so it doesn't collide with top navbar
     display: flex;
 }
 
+.menu-link {
+    flex-grow: 1; // Make the link part grow as much as possible, pushing the chevron to the far right
+}
+
 .menu-chevron {
     display: inline;
-    // This is a little SVG chevron (angled bracket)
-    content:
-        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-    transition: transform 0.35s ease;
     cursor: pointer; // Make it look clickable
+    
+    svg {
+        transition: transform 0.35s ease;
+        transform-box: fill-box;
+        transform-origin: center;
+    }
 
     &.show {
-        transform: rotate(90deg);
+        svg {
+            transform: rotate(90deg);
+        }
     }
 
     &.hidden {
@@ -240,6 +249,14 @@ Padding provides offset so it doesn't collide with top navbar
     padding: .125rem 0;
     color: var(--text-color-secondary); // Make TOC text lighter than content text
     transition: all 50ms ease-in-out; 
+}
+
+/* ========================================================================= */
+/* FOOTER
+/* ========================================================================= */
+
+.footer {
+    background-color: #303030;
 }
 
 /* ===================================== */
