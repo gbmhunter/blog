@@ -9,7 +9,7 @@ title: "Mathematics"
 type: "page"
 ---
 
-<h2>Mathematical Syntax</h2>
+## Mathematical Syntax
 
 <p>Below is the mathematical typography that is used on this site.</p>
 

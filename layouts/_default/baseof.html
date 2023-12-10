@@ -122,7 +122,7 @@
     <nav class="top-navbar">
       <div class="stuff-at-start" style="display: flex; align-items: center; gap: 10px;">
         <div><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} height="40px" /></a></div>
-        <div class="site-name">mbedded.ninja</div>
+        <div class="site-title"><a href="/">mbedded.ninja</a></div>
       </div>
       <div class="stuff-at-end">
         <button id="theme-toggle" class="btn btn-link btn-sm ms-2 small d-flex" type="button">
@@ -140,7 +140,9 @@
             {{ partial "menu.html" . }}
           </div>
         </aside>
-        {{ block "main" . }}{{ end }}
+        <div class="main-content-outer-wrapper">
+          {{ block "main" . }}{{ end }}
+        </div>
     </div>
 
     <footer class="footer">

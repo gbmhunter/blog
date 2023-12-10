@@ -70,8 +70,19 @@ body {
     background-color: var(--background-color-secondary);
 }
 
-.site-name {
+.site-title {
     color: var(--main-color);
+}
+@media (min-width: 768px) {
+    .site-title {
+        font-size: 24px;
+    }
+}
+
+// Disable any link styling for the site title
+.site-title a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Shows the moon icon when light, sun icon when dark */
@@ -219,10 +230,18 @@ Padding provides offset so it doesn't collide with top navbar
 /* MAIN CONTENT (center and right TOC column)
 /* ========================================================================= */
 
+.main-content-outer-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
 .page-wrapper {
     padding-top: 20px;
-    // padding-left: 10px;
 
+    max-width: 100%;
     display: flex;
 
     address {
@@ -238,6 +257,17 @@ Padding provides offset so it doesn't collide with top navbar
 
 .home-page-content {
     padding-top: 40px; // Applicable for homepage
+    // max-width: 1200px;
+
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-page-content-inner {
+    max-width: 1000px;
 }
 
 /* ========================================================================= */
@@ -259,7 +289,7 @@ Padding provides offset so it doesn't collide with top navbar
 
     border-left: 1px solid var(--border-color);
 
-    margin-top: 50px;
+    // margin-top: 50px;
     margin-bottom: 15px;
 
     a {
@@ -297,15 +327,6 @@ Padding provides offset so it doesn't collide with top navbar
     width: 100%;
     display: flex;
     justify-content: center;
-}
-
-/* ===================================== */
-/* DEFAULT STYLING FOR LINKS
-/* ===================================== */
-
-a {
-    // Make them red to match the theme
-    color: var(--main-color);
 }
 
 /* ===================================== */
@@ -529,10 +550,10 @@ ul.pagination li {
     color: inherit;
 }
 
-article {
-    /* This forces content to stay within the bounds of the article element and wrap if needed */
-    width: 100%;
-}
+// article {
+//     /* This forces content to stay within the bounds of the article element and wrap if needed */
+//     width: 100%;
+// }
 
 /* ========================================================================= */
 /* MAIN PAGE STYLING                                                         */
@@ -895,12 +916,6 @@ del {
   top: 5px;
 }
 
-body {
-    // Add padding to top and bottom of body so stuff is smashed against the top/bottom of the viewport
-    // padding-top: 1em;
-    // padding-bottom: 1em;
-}
-
 // Bootstrap breakpoint sizes
 // md: 768px
 
@@ -935,27 +950,6 @@ p, li, div, td, th, input, code.has-jax {
 
 .logo-img img {
     width: 100%;
-}
-
-.site-title {
-    color: rgb(51, 51, 51);
-    font-size: 5vw;
-    font-weight: 700;
-    
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-@media (min-width: 768px) {
-    .site-title {
-        font-size: 24px;
-    }
-}
-
-// Disable any link styling for the site title
-.site-title a {
-    text-decoration: none;
-    color: inherit;
 }
 
 .site-description {
@@ -998,22 +992,26 @@ p, li, div, td, th, input, code.has-jax {
 /* HEADING AND PARAGRAPH STYLING                                             */
 /* ========================================================================= */
 
-p, h1, h2, h3, ul, li, a, div, td, th, input {    
+p, h1, h2, h3, ul, li, a, div, td, th, input {
     font-family: 'avenir next' ,'avenir', sans-serif;
     word-break: break-word; // Makes sure long URLs in image captions do not exceed page width
+}
+
+h1, h2, h3, h4 {
+    color: var(--main-color);
 }
 
 // Styling for page titles
 h1 { 
     font-size: 2.5em;
     // margin: 0.1em;
-    font-weight: bold;    
+    // font-weight: bold;
 }
 
 // Heading used for top-level sections on a page
 h2 { 
     font-size: 1.5em;
-    font-weight: bold;
+    // font-weight: bold;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 
@@ -1029,13 +1027,13 @@ h2 {
 
 h3 {
     font-size: 1.2em;
-    font-weight: bold;
+    // font-weight: bold;
     margin-bottom: 1.0em;
 }
 
 h4 {
     font-size: 1em;
-    font-weight: bold;
+    // font-weight: bold;
 }
 
 .flex-right {
