@@ -1,3 +1,7 @@
+// Can't use pure CSS variables for media queries, so we fall back to a SCSS variable
+// for this instead
+$mobile-to-desktop-breakpoint: 980px;
+
 :root {
     --background-color: #fff;
     --background-color-secondary: #222222;
@@ -30,8 +34,6 @@ html[data-theme='dark'] {
     --link-color: #828fff;
     --border-color: #333333;
 }
-
-/* 800px is the cut-off point */
 
 * {
     /* Don't set font family for everything, as it messes with code blocks */
@@ -73,11 +75,6 @@ body {
 .site-title {
     color: var(--main-color);
 }
-@media (min-width: 768px) {
-    .site-title {
-        font-size: 24px;
-    }
-}
 
 // Disable any link styling for the site title
 .site-title a {
@@ -111,6 +108,15 @@ body {
 /* ========================================================================= */
 /* LEFT-HAND NAVBAR
 /* ========================================================================= */
+
+.left-navbar {
+  display: none;
+}
+@media (min-width: $mobile-to-desktop-breakpoint) {
+  .left-navbar {
+    display: block;
+  }
+}
 
 .left-navbar {
     min-width: 300px;
@@ -250,7 +256,9 @@ Padding provides offset so it doesn't collide with top navbar
 }
 
 .page-left-column {
-    max-width: 75%;
+    flex-grow: 1;
+    flex-basis: 75%;
+    // max-width: 75%;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -274,8 +282,13 @@ Padding provides offset so it doesn't collide with top navbar
 /* PAGE RIGHT-HAND COLUMN (TOC)
 /* ========================================================================= */
 
-@media (min-width: 768px) {
+#right-hand-column {
+  display: none;
+}
+
+@media (min-width: $mobile-to-desktop-breakpoint) {
     #right-hand-column {
+        display: block;
         height: 100vh;
         max-width: 25%;
         flex-basis: 25%;
@@ -1003,17 +1016,17 @@ h1, h2, h3, h4 {
 
 // Styling for page titles
 h1 { 
-    font-size: 2.5em;
+    font-size: 3.0em;
     // margin: 0.1em;
     // font-weight: bold;
 }
 
 // Heading used for top-level sections on a page
 h2 { 
-    font-size: 1.5em;
+    font-size: 2.5em;
     // font-weight: bold;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    // margin-top: 1.5em;
+    margin-bottom: 0.5em;
 
     // Add a bottom horizontal "line" for all major page headings
     // 2023-06-06: Disabled the underline
@@ -1026,7 +1039,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     // font-weight: bold;
     margin-bottom: 1.0em;
 }
