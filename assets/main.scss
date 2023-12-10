@@ -1,5 +1,6 @@
 :root {
     --background-color: #fff;
+    --background-color-secondary: #222222;
     // main-color is the main 'theme' red of the site
     --main-color: #dc3545;
     --main-color-light: #fff3f3;
@@ -12,7 +13,8 @@
 }
 
 html[data-theme='light'] {
-    --background-color: #fff;
+    --background-color: #ffffff;
+    --background-color-secondary: #f8f8f8;
     --text-color-primary: #000000;
     --text-color-secondary: #202020;
     --link-color: #543fd7;
@@ -21,6 +23,7 @@ html[data-theme='light'] {
 
 html[data-theme='dark'] {
     --background-color: #181818;
+    --background-color-secondary: #222222;
     --text-color-primary: #e3e3e3;
     /* In dark mode secondary text colour is same as primary */
     --text-color-secondary: #e3e3e3;
@@ -60,11 +63,15 @@ body {
 }
 
 [data-theme='light'] .top-navbar {
-    background-color: #ffffff;
+    background-color: var(--background-color-secondary);
 }
 
 [data-theme='dark'] .top-navbar {
-    background-color: #222222;
+    background-color: var(--background-color-secondary);
+}
+
+.site-name {
+    color: var(--main-color);
 }
 
 /* Shows the moon icon when light, sun icon when dark */
@@ -151,6 +158,16 @@ Padding provides offset so it doesn't collide with top navbar
 
 .menu-chevron-link-wrapper {
     display: flex;
+    align-items: center;
+    border-radius: 10px;
+
+    [data-theme='light'] &:hover {
+        background-color: #f0f0f0;
+    }
+
+    [data-theme='dark'] &:hover {
+        background-color: #222222;
+    }
 }
 
 .menu-link {
@@ -158,8 +175,18 @@ Padding provides offset so it doesn't collide with top navbar
 }
 
 .menu-chevron {
-    display: inline;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer; // Make it look clickable
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
     
     svg {
         transition: transform 0.35s ease;
@@ -175,6 +202,16 @@ Padding provides offset so it doesn't collide with top navbar
 
     &.hidden {
         visibility: hidden;
+    }
+
+    [data-theme='light'] &:hover {
+        // Make the chevron container look clickable to the user
+        background-color: #c0c0c0;
+    }
+
+    [data-theme='dark'] &:hover {
+        // Make the chevron container look clickable to the user
+        background-color: #303030;
     }
 }
 
@@ -257,6 +294,18 @@ Padding provides offset so it doesn't collide with top navbar
 
 .footer {
     background-color: #303030;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===================================== */
+/* DEFAULT STYLING FOR LINKS
+/* ===================================== */
+
+a {
+    // Make them red to match the theme
+    color: var(--main-color);
 }
 
 /* ===================================== */
@@ -699,17 +748,6 @@ aside.note .title .icon {
 .disqus-divider {
     height: 30px;
 }
-
-/* ========================================================================= */
-/* FOOTER                                                                    */
-/* ========================================================================= */
-
-/* Footer contains copyright and "Powered by Hugo" */
-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-} 
 
 /* ========================================================================= */
 /* MATRIX (using a table)                                                    */

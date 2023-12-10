@@ -105,6 +105,11 @@
     <!-- Load TOC script. -->
     <script src="/js/toc.js"></script>
 
+    <!-- Load light/dark mode toggle script -->
+    <!-- To avoid flashes of white on reload if in dark mode, make sure this script is
+    loaded in the head and not the body -->
+    <script src="/js/light-dark-mode-toggle.js"></script>
+
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7022311785369773"
      crossorigin="anonymous"></script>
@@ -117,7 +122,7 @@
     <nav class="top-navbar">
       <div class="stuff-at-start" style="display: flex; align-items: center; gap: 10px;">
         <div><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} height="40px" /></a></div>
-        <div>mbedded.ninja</div>
+        <div class="site-name">mbedded.ninja</div>
       </div>
       <div class="stuff-at-end">
         <button id="theme-toggle" class="btn btn-link btn-sm ms-2 small d-flex" type="button">
@@ -149,7 +154,4 @@
 
   <!-- Load our custom Javascript. -->
   <script src="/js/main.js"></script>
-
-  <!-- Load light/dark mode toggle script -->
-  <script src="/js/light-dark-mode-toggle.js"></script>
 </html>
