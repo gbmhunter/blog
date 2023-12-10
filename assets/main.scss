@@ -8,7 +8,7 @@
     --caption-font-color: rgb(100, 100, 100);
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
-
+    --border-color: #bbbbbb;
 }
 
 html[data-theme='light'] {
@@ -16,6 +16,7 @@ html[data-theme='light'] {
     --text-color-primary: #000000;
     --text-color-secondary: #202020;
     --link-color: #543fd7;
+    --border-color: #bbbbbb;
 }
 
 html[data-theme='dark'] {
@@ -24,6 +25,7 @@ html[data-theme='dark'] {
     /* In dark mode secondary text colour is same as primary */
     --text-color-secondary: #e3e3e3;
     --link-color: #828fff;
+    --border-color: #333333;
 }
 
 /* 800px is the cut-off point */
@@ -97,14 +99,7 @@ body {
     max-width: 300px;
     border-right: 1px solid;
     margin-top: -60px;
-}
-
-[data-theme='light'] .left-navbar {
-    border-color: #bbbbbb;
-}
-
-[data-theme='dark'] .left-navbar {
-    border-color: #333333;
+    border-color: var(--border-color);
 }
 
 /*
@@ -216,7 +211,7 @@ Padding provides offset so it doesn't collide with top navbar
 
 #toc {
 
-    border-left: 2px solid #efefef;
+    border-left: 1px solid var(--border-color);
 
     margin-top: 50px;
     margin-bottom: 15px;
