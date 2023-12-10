@@ -7,15 +7,17 @@
         
         <!-- The data bs target doesn't like forward slashes, replace all with hyphens instead -->
         <div class="menu-chevron-link-wrapper">
+          <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
+            {{ .Title }}
+          </a>
           {{ if or (.Sections) (.Pages) }}
-          <div class="menu-chevron"></div>
+          <div class="menu-chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
+          </div>
           {{ else }}
           <!-- This page does not contain any children, so don't render a button and call the recursive menu again, just render a link-->
           <div class="menu-chevron hidden"></div>
           {{ end }}
-          <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
-            {{ .Title }}
-          </a>
         </div>
         {{ if or (.Sections) (.Pages) }}
         {{ partial "menu_recursive.html" . }}

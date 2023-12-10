@@ -11,7 +11,6 @@
               </a>
               <div class="menu-chevron">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
-
               </div>
             </div>
             <!-- Using partialCached here offers significant build time speedup, as this recursive menu would otherwise be rebuilt for
@@ -24,30 +23,36 @@
     {{ with .Site.GetPage "/posts" }}
     <li class="menu-list-item">
       <div class="menu-chevron-link-wrapper">
-        <div class="menu-chevron hidden"></div>
         <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
           {{ .Title }}
         </a>
+        <div class="menu-chevron">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
+        </div>
       </div>
     </li>
     {{ end }}
     {{ with .Site.GetPage "/categories" }}
     <li class="menu-list-item">
       <div class="menu-chevron-link-wrapper">
-        <div class="menu-chevron hidden"></div>
         <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
           {{ .Title }}
         </a>
+        <div class="menu-chevron">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
+        </div>
       </div>
     </li>
     {{ end }}
     {{ with .Site.GetPage "/tags" }}
-    <li class="menu-list-item">          
+    <li class="menu-list-item">
       <div class="menu-chevron-link-wrapper">
-        <div class="menu-chevron hidden"></div>
         <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
           {{ .Title }}
         </a>
+        <div class="menu-chevron">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
+        </div>
       </div>
     </li>
     {{ end }}
