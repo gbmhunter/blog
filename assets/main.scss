@@ -152,17 +152,19 @@ Padding provides offset so it doesn't collide with top navbar
         margin-left: 5px; // Apply some indentation to the lists so you can see the hierarchy
     }
 
-    a {
+    // Make sure to select a and the visited/active/hover states
+    // otherwise we get blue/purple links which don't look good
+    // with the red background
+    a, a:hover, a:visited, a:active {
         padding: .375rem .75rem;
         margin-top: .125rem;
         margin-left: 0.1rem;
         font-size: 1.2em;
         text-decoration: none;
         color: var(--text-color-secondary);
-        
     }
-    @media (min-width: 768px) {
-        a {
+    @media (min-width: $mobile-to-desktop-breakpoint) {
+        a, a:hover, a:visited, a:active {
             font-size: 0.9em;
         }
     }
