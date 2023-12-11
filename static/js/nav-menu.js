@@ -1,7 +1,7 @@
 
 
 // Only run this when DOM has loaded, otherwise it will not find the element
-window.addEventListener("DOMContentLoaded", function() {
+// window.addEventListener("DOMContentLoaded", function() {
   // Main menu chevron sliding visibility toggle functionality
   $('.menu-chevron').click(function() {
     let chevronEl = $(this)
@@ -27,14 +27,17 @@ window.addEventListener("DOMContentLoaded", function() {
     const menuListItemHref = $(menuListItem).find('a:first').attr('href');
     // console.log(menuListItemHref);
 
+    // See active on the current link wrapper
+    
     if (currentPage === menuListItemHref) {
       console.log('Found current menu item!');
       console.log(menuListItem);
+      $(menuListItem).find('.menu-chevron-link-wrapper').first().addClass('active');
       // Expand all parent submenus of the active menu item
       $(menuListItem).parents('.submenu').slideToggle();
       $(menuListItem).parents('.menu-list-item').each(function() {
         console.log(this);
-        $(this).children('.menu-chevron-link-wrapper').toggleClass('active');
+        $(this).children('.menu-chevron-link-wrapper').addClass('active');
         $(this).children('.menu-chevron-link-wrapper').find('.menu-chevron').addClass('show');
       });
     }
@@ -45,4 +48,4 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
 
-}, false);
+// }, false);

@@ -14,6 +14,8 @@ $mobile-to-desktop-breakpoint: 980px;
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
     --border-color: #bbbbbb;
+
+    --menu-item-height: 35px;
 }
 
 html[data-theme='light'] {
@@ -177,7 +179,8 @@ Padding provides offset so it doesn't collide with top navbar
     display: flex;
     align-items: center;
     border-radius: 10px;
-    margin: 10px;
+    margin: 5px;
+    min-height: var(--menu-item-height);
 
     [data-theme='light'] &:hover {
         background-color: #f0f0f0;
@@ -188,11 +191,12 @@ Padding provides offset so it doesn't collide with top navbar
     }
 
     [data-theme='light'] &.active {
-        background-color: color-mix(in srgb, var(--main-color) 50%, white);;
+        background-color: color-mix(in srgb, var(--main-color) 50%, white);
     }
 
     [data-theme='dark'] &.active {
-        background-color: color-mix(in srgb, var(--main-color) 50%, black);;
+        // background-color: color-mix(in srgb, var(--main-color) 50%, black);;
+        background-color: var(--main-color);
     }
 }
 
@@ -209,8 +213,8 @@ Padding provides offset so it doesn't collide with top navbar
     align-items: center;
     cursor: pointer; // Make it look clickable
 
-    width: 40px;
-    height: 40px;
+    width: var(--menu-item-height);
+    height: var(--menu-item-height);
 
     border-radius: 10px;
     
@@ -232,12 +236,12 @@ Padding provides offset so it doesn't collide with top navbar
 
     [data-theme='light'] &:hover {
         // Make the chevron container look clickable to the user
-        background-color: #c0c0c0;
+        background-color: color-mix(in srgb, var(--main-color) 70%, white);
     }
 
     [data-theme='dark'] &:hover {
         // Make the chevron container look clickable to the user
-        background-color: #303030;
+        background-color: color-mix(in srgb, var(--main-color) 80%, black);
     }
 }
 
