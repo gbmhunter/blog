@@ -177,6 +177,7 @@ Padding provides offset so it doesn't collide with top navbar
     display: flex;
     align-items: center;
     border-radius: 10px;
+    margin: 10px;
 
     [data-theme='light'] &:hover {
         background-color: #f0f0f0;
@@ -184,6 +185,14 @@ Padding provides offset so it doesn't collide with top navbar
 
     [data-theme='dark'] &:hover {
         background-color: #222222;
+    }
+
+    [data-theme='light'] &.active {
+        background-color: color-mix(in srgb, var(--main-color) 50%, white);;
+    }
+
+    [data-theme='dark'] &.active {
+        background-color: color-mix(in srgb, var(--main-color) 50%, black);;
     }
 }
 
