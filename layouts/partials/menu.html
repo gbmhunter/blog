@@ -3,7 +3,7 @@
     {{ with .Site.GetPage "/" }}
       {{ range .Sections.ByTitle }}
         {{/* We don't want a menu item for specific pages listed here */}}
-        {{ if (and (ne .Title "Posts") (ne .Title "Tests") (ne .Title "Authors")) }}
+        {{ if (and (ne .Title "Posts") (ne .Title "Tests") (ne .Title "Authors") (ne .Title "Site Info") (ne .Title "Pyrotechnics")) }}
           <li class="menu-list-item">
             <div class="menu-chevron-link-wrapper">
               <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
@@ -26,19 +26,7 @@
         <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
           {{ .Title }}
         </a>
-        <div class="menu-chevron">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
-        </div>
-      </div>
-    </li>
-    {{ end }}
-    {{ with .Site.GetPage "/categories" }}
-    <li class="menu-list-item">
-      <div class="menu-chevron-link-wrapper">
-        <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
-          {{ .Title }}
-        </a>
-        <div class="menu-chevron">
+        <div class="menu-chevron hidden">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
         </div>
       </div>
@@ -50,7 +38,7 @@
         <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
           {{ .Title }}
         </a>
-        <div class="menu-chevron">
+        <div class="menu-chevron hidden">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6-6-6-6"></path></svg>
         </div>
       </div>

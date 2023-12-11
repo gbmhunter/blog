@@ -124,7 +124,7 @@ body {
     min-width: 300px;
     max-width: 300px;
     border-right: 1px solid;
-    margin-top: -60px;
+    // margin-top: -60px;
     border-color: var(--border-color);
 }
 
@@ -132,9 +132,11 @@ body {
 Padding provides offset so it doesn't collide with top navbar
 */
 .left-navbar-padding {
-    padding-top: 60px;
+    // padding-top: 60px;
     padding-right: 10px;
-    position: sticky;
+    // Sticky works well if the total menu height is small enough that it doesn't need
+    // to be scrollable. However this is not the case with this site!
+    // position: sticky;
     top: 0;
 }
 
