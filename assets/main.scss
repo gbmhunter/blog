@@ -1,6 +1,6 @@
 // Can't use pure CSS variables for media queries, so we fall back to a SCSS variable
 // for this instead
-$mobile-to-desktop-breakpoint: 980px;
+$mobile-to-desktop-breakpoint: 1200px;
 
 :root {
     --background-color: #fff;
@@ -15,6 +15,7 @@ $mobile-to-desktop-breakpoint: 980px;
     --example-bg-color: #ffe3e3;
     --border-color: #bbbbbb;
 
+    --top-navbar-height: 60px;
     --menu-item-height: 35px;
 }
 
@@ -56,7 +57,7 @@ body {
 /* ========================================================================= */
 
 .top-navbar {
-    height: 60px;
+    height: var(--top-navbar-height);
     padding: 8px 16px;
     position: sticky;
     top: 0;
@@ -258,7 +259,10 @@ Padding provides offset so it doesn't collide with top navbar
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
+
+    // Hiding the x overflow messed up the sticky behaviour of the
+    // right-hand TOC column
+    // overflow-x: hidden;
 }
 
 .page-wrapper {
@@ -299,20 +303,27 @@ Padding provides offset so it doesn't collide with top navbar
 /* PAGE RIGHT-HAND COLUMN (TOC)
 /* ========================================================================= */
 
+// Hide this on small width screens
 #right-hand-column {
   display: none;
 }
-
 @media (min-width: $mobile-to-desktop-breakpoint) {
     #right-hand-column {
         display: block;
-        height: 100vh;
         max-width: 25%;
         flex-basis: 25%;
         // overflow-y: scroll; // Don't enable scroll here! We use simplebar instead
-        position: sticky;
-        top: calc(60px + 20px); // 60px is the height of the top navbar, 20px is the padding-top of the page-wrapper
+        // position: sticky;
+        top: calc(--top-navbar-height); // 60px is the height of the top navbar, 20px is the padding-top of the page-wrapper
+        // bottom: 100%;
     }
+}
+
+.right-hand-column-inner {
+    position: sticky;
+    top: calc(var(--top-navbar-height) + 20px);
+    height: calc(100vh - var(--top-navbar-height) - 20px);
+    overflow-y: scroll;
 }
 
 #toc {
