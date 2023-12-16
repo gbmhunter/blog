@@ -2,8 +2,10 @@
 var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 if (storedTheme) {
   document.documentElement.setAttribute('data-theme', storedTheme);
+  document.documentElement.style['color-scheme'] = storedTheme;
 } else {
   document.documentElement.setAttribute('data-theme', 'light');
+  document.documentElement.style['color-scheme'] = storedTheme;
 }
 
 // Only run this when DOM has loaded, otherwise it will not find the element
@@ -18,6 +20,7 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 
     document.documentElement.setAttribute('data-theme', targetTheme)
+    document.documentElement.style['color-scheme'] = targetTheme;
     localStorage.setItem('theme', targetTheme);
   };
 }, false);

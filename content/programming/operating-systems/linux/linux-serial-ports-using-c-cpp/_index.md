@@ -5,8 +5,8 @@ date: 2017-06-24
 description: A walk-through on how to configure serial ports correctly in Linux.
 draft: false
 images: [ /programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png ]
-lastmod: 2022-11-12
-tags: [ Linux, serial ports, termios, files, unix, tty, devices, configurations, C, C++, examples, getty, Arduino, code, USB, serial, data, flow control ]
+lastmod: 2023-12-16
+tags: [ Linux, serial ports, termios, files, unix, tty, devices, configurations, C, C++, examples, getty, Arduino, code, USB, serial, data, flow control, VMIN, VTIME ]
 title: Linux Serial Ports Using C/C++
 type: page
 ---
@@ -228,23 +228,23 @@ Both `OXTABS` and `ONOEOT` are not defined in Linux. Linux however does have the
 
 ## VMIN and VTIME (c_cc)
 
-`VMIN` and `VTIME` are a **source of confusion** for many programmers when trying to configure a serial port in Linux.
+`VMIN` and `VTIME` are a **source of confusion** for many programmers when trying to configure a serial port in Linux. They are designed to offer flexibility into how often the system call `read()` returns with received bytes, in the interests of reducing system call overhead and doing multi-byte reads. If `read()` returned one byte at a time this would have significant performance issues for fast data streams.
 
-An important point to note is that `VTIME` means slightly different things depending on what `VMIN` is. When `VMIN` is 0, `VTIME` specifies a **time-out from the start of the read() call**. But when `VMIN` is > 0, `VTIME` specifies the **time-out from the start of the first received character**.
+Both `VMIN` and `VTIME` can be 0 or a positive number. Let's explore the different combinations:
 
-Let's explore the different combinations:
+**VMIN = 0, VTIME = 0**: `read()` does not block, and will return immediately with what data is available. `read()` could return no bytes, or 1 or more bytes of data depending what was waiting in the buffer. This is a "polling" approach, and is useful if you want to check for data, but carry on doing something else if there is none. It is not recommended to repeatedly call `read()` in a loop in this mode, as this will burn through CPU cycles. If your application needs to do other things but also wait for serial data, you might want to look into one of the below blocking read approaches along with multiple threads.
 
-**VMIN = 0, VTIME = 0**: No blocking, return immediately with what is available  
+**VMIN > 0, VTIME = 0**: This will make `read()` always wait for `VMIN` bytes before returning. `read()` could block indefinitely if not enough bytes are received.
 
-**VMIN > 0, VTIME = 0**: This will make `read()` always wait for bytes (exactly how many is determined by `VMIN`), so `read()` could block indefinitely.  
+**VMIN = 0, VTIME > 0**: This is a blocking read of any number of chars with a maximum timeout (given by `VTIME`). `read()` will block until either any amount of data is available, or the timeout occurs. If when the first byte is available, there are also more bytes available in the input buffer, these will be returned at the same time as well. This happens to be my favourite mode (and the one I use the most).  
 
-**VMIN = 0, VTIME > 0**: This is a blocking read of any number of chars with a maximum timeout (given by `VTIME`). `read()` will block until either any amount of data is available, or the timeout occurs. This happens to be my favourite mode (and the one I use the most).  
-
-**VMIN > 0, VTIME > 0**: Block until either `VMIN` characters have been received, or `VTIME` after first character has elapsed. Note that the timeout for `VTIME` does not begin until the first character is received.
+**VMIN > 0, VTIME > 0**: In this mode, `read()` will block until either `VMIN` characters have been received, or `VTIME` has elapsed between characters. `VTIME` is called an "inter-character" timer in this mode. Note that the timeout for `VTIME` does not begin until the first character is received, and is reset every time a successive character is received[^sco-group-non-canonical-mode-input-processing].
 
 `VMIN` and `VTIME` are both defined as the type `cc_t`, which I have always seen be an alias for unsigned char (1 byte). This puts an upper limit on the number of `VMIN` characters to be 255 and the maximum timeout of 25.5 seconds (255 deciseconds).
 
+{{% aside type="note" %}}
 "Returning as soon as any data is received" does not mean you will only get 1 byte at a time. Depending on the OS latency, serial port speed, hardware buffers and many other things you have no direct control over, **you may receive any number of bytes**.
+{{% /aside %}}
 
 For example, if we wanted to wait for up to 1s, returning as soon as any data was received, we could use:
 
@@ -252,6 +252,8 @@ For example, if we wanted to wait for up to 1s, returning as soon as any data wa
 tty.c_cc[VTIME] = 10;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
 tty.c_cc[VMIN] = 0;
 ```
+
+It's also worth pointing out that `read()` will never return more than the number of bytes requested (`size_t count`, the third parameter passed into `read()`[^man7-org-read2-linux-manual-page]). So in any of the above modes, as soon as it has `count` bytes, `read()` will return, even if `VMIN` is set to a higher number or the time specified by `VTIME` has not yet expired.
 
 ## Baud Rate
 
@@ -564,3 +566,5 @@ See [http://www.gnu.org/software/libc/manual/html_node/Terminal-Modes.html](http
 
 [^gnu-terminal-mode-functions]: <http://www.gnu.org/software/libc/manual/html_node/Mode-Functions.html>
 [^sweet-serial-posix]: Michael R. Sweet (1999). _Serial Programming Guide for POSIX Operating Systems_. Retrieved 2022-02-12, from https://www.cmrr.umn.edu/~strupp/serial.html.
+[^sco-group-non-canonical-mode-input-processing]: The SCO Group Inc (2005). _Non-canonical mode input processing_. Retrieved 2023-12-16, from http://osr600doc.sco.com/en/SDK_sysprog/TDC_Non-CanonicalModeInProc.html.
+[^man7-org-read2-linux-manual-page]: Michael Kerrisk (2023, Jun 24). _read(2) — Linux manual page_. Retrieved 2023-12-16, from https://man7.org/linux/man-pages/man2/read.2.html. 
