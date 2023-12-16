@@ -117,35 +117,24 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7022311785369773"
      crossorigin="anonymous"></script>
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
-          
   </head>
         
   <body>
     <!-- ================================================================================================ -->
-    <!-- TOP NAVBAR, 100% VIEWPORT WIDTH -->
+    <!-- TOP BANNER, 100% VIEWPORT WIDTH -->
     <!-- ================================================================================================ -->
-    <nav class="top-navbar">
-
-
-
-      <header role="banner" class="drawer drawer--left">
-        <button type="button" class="drawer-toggle drawer-hamburger">
-          <span class="sr-only">toggle navigation</span>
-          <span class="drawer-hamburger-icon"></span>
-        </button>
-        <nav class="drawer-nav" role="navigation">
-          <ul class="drawer-menu">
-            <li><a class="drawer-brand" href="#">Brand</a></li>
-            <li><a class="drawer-menu-item" href="#">Nav1</a></li>
-            <li><a class="drawer-menu-item" href="#">Nav2</a></li>
-          </ul>
-        </nav>
-      </header>
-
-
+    <header role="banner" class="top-navbar">
       <div class="stuff-at-start" style="display: flex; align-items: center; gap: 10px;">
-        <div class="hamburger-button"><i class="fas fa-bars"></i></div>
+        <!-- <div class="hamburger-button"><i class="fas fa-bars"></i></div> -->
+
+        <button type="button" class="hamburger-button">
+          <!-- <span class="sr-only">toggle navigation</span> -->
+          <!-- <span class="drawer-hamburger-icon"></span> -->
+          <i class="fas fa-bars"></i>
+        </button>
+        
+
+        <div class="hamburger-button-spacer"></div>
         <div><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} height="40px" /></a></div>
         <div class="site-title"><a href="/">mbedded.ninja</a></div>
       </div>
@@ -161,9 +150,10 @@
             </span>
         </button>
       </div>
-    </nav>
+    </header>
+    
     <!-- ================================================================================================ -->
-    <!-- EVERYTHING EXCEPT TOP NAVBAR -->
+    <!-- WRAPPER BELOW TOP BANNER -->
     <!-- ================================================================================================ -->
     <div class="wrapper-below-top-navbar">
         
@@ -184,8 +174,6 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
-<!-- drawer.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
   </body>
   <!-- 'Back to Top' button -->
   <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->
@@ -194,4 +182,23 @@
       <i class="fas fa-chevron-up"></i>
     </div>
   </a>
+
+  <!-- ================================================================================================ -->
+  <!-- DRAWER (not in document flow) -->
+  <!-- ================================================================================================ -->
+  <!-- This drawer is not in the document flow -->
+  <nav class="drawer" role="navigation">
+    <div class="drawer-top-row-with-close-button">
+      <button class="drawer-close-button">
+        &times;
+        <!-- <i class="fas fa-times fa-2x"></i> -->
+      </button>
+    </div>
+    {{ partial "menu.html" . }}
+  </nav>
+
+    <!-- Handles the collapsing/expanding of sub-menus on click
+    Load it directly after the menu HTML is created, and not on document ready, otherwise you'll
+    get "glitches" on load -->
+  <script src="/js/nav-menu.js"></script>
 </html>

@@ -92,10 +92,11 @@ body {
     align-items: center;
 
     border-radius: 5px;
+    border-width: 0px;
 
     &:hover {
         cursor: pointer;
-        background-color: #404040;
+        background-color: #949494;
     }
 }
 @media (min-width: $mobile-to-desktop-breakpoint) {
@@ -126,6 +127,57 @@ body {
 
 .d-block-dark {
     color: var(--text-color-primary);
+}
+
+/* ========================================================================= */
+/* DRAWER STYLING
+/* ========================================================================= */
+
+.drawer {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 0; // Width will be changed by JS
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 500;
+
+    background-color: var(--background-color);
+
+    div {
+        line-height: 1.0;
+    }
+
+    .menu-nav a, .menu-nav a:hover, .menu-nav a:visited, .menu-nav a:active {
+        font-size: 0.8em;
+    }
+}
+
+.drawer-top-row-with-close-button {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    height: 40px;
+
+    padding: 10px 10px 0px 0px;
+}
+
+.drawer-close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 35px;
+    height: 35px;
+
+    font-size: 35px;
+
+    border-width: 0;
+    border-radius: 5px;
 }
 
 /* ========================================================================= */
@@ -169,6 +221,10 @@ Padding provides offset so it doesn't collide with top navbar
     // position: sticky;
     top: 0;
 }
+
+/* ========================================================================= */
+/* MENU STYLING IN LEFT-HAND NAVBAR
+/* ========================================================================= */
 
 .menu-nav {
     display: block !important;

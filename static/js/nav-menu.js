@@ -8,31 +8,39 @@ $('.menu-chevron').click(function() {
   chevronEl.toggleClass('show')
 });
 
-// Highlight the current page in the nav menu
-// Get the current page URL
-let currentPage = window.location.href
-console.log(currentPage)
-// Get the nav menu links
-let menuListItems = $('.menu-list-item')
-// Loop through the links
-for (let i = 0; i < menuListItems.length; i++) {
-  const menuListItem = menuListItems[i];
-  const menuListItemHref = $(menuListItem).find('a:first').attr('href');
+function showActivePage() {
+  // Highlight the current page in the nav menu
+  // Get the current page URL
+  let currentPage = window.location.href
+  console.log(currentPage)
+  // Get the nav menu links
+  let menuListItems = $('.menu-list-item')
+  // Loop through the links
+  for (let i = 0; i < menuListItems.length; i++) {
+    const menuListItem = menuListItems[i];
+    const menuListItemHref = $(menuListItem).find('a:first').attr('href');
 
-  if (currentPage === menuListItemHref) {
-    // See active on the current link wrapper
-    $(menuListItem).find('.menu-chevron-link-wrapper').first().addClass('active');
-    // Expand all parent submenus of the active menu item and set active on the wrapper
-    $(menuListItem).parents('.submenu').slideToggle();
-    $(menuListItem).parents('.menu-list-item').each(function() {
-      $(this).children('.menu-chevron-link-wrapper').addClass('active');
-      $(this).children('.menu-chevron-link-wrapper').find('.menu-chevron').addClass('show');
-    });
+    if (currentPage === menuListItemHref) {
+      // See active on the current link wrapper
+      $(menuListItem).find('.menu-chevron-link-wrapper').first().addClass('active');
+      // Expand all parent submenus of the active menu item and set active on the wrapper
+      $(menuListItem).parents('.submenu').slideToggle();
+      $(menuListItem).parents('.menu-list-item').each(function() {
+        $(this).children('.menu-chevron-link-wrapper').addClass('active');
+        $(this).children('.menu-chevron-link-wrapper').find('.menu-chevron').addClass('show');
+      });
+    }
   }
 }
+showActivePage();
 
-console.log('abc');
 $(document).ready(function() {
-  console.log('gege');
-  $('.drawer').drawer();
+  $('.hamburger-button').click(() => {
+    console.log('click() called.');
+    $('.drawer').width('400');
+  });
+
+  $('.drawer-close-button').click(() => {
+    $('.drawer').width('0');
+  });
 });
