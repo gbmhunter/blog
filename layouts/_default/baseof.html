@@ -116,26 +116,55 @@
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7022311785369773"
      crossorigin="anonymous"></script>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
           
   </head>
         
   <body>
+    <!-- ================================================================================================ -->
     <!-- TOP NAVBAR, 100% VIEWPORT WIDTH -->
     <!-- ================================================================================================ -->
     <nav class="top-navbar">
+
+
+
+      <header role="banner" class="drawer drawer--left">
+        <button type="button" class="drawer-toggle drawer-hamburger">
+          <span class="sr-only">toggle navigation</span>
+          <span class="drawer-hamburger-icon"></span>
+        </button>
+        <nav class="drawer-nav" role="navigation">
+          <ul class="drawer-menu">
+            <li><a class="drawer-brand" href="#">Brand</a></li>
+            <li><a class="drawer-menu-item" href="#">Nav1</a></li>
+            <li><a class="drawer-menu-item" href="#">Nav2</a></li>
+          </ul>
+        </nav>
+      </header>
+
+
       <div class="stuff-at-start" style="display: flex; align-items: center; gap: 10px;">
+        <div class="hamburger-button"><i class="fas fa-bars"></i></div>
         <div><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} height="40px" /></a></div>
         <div class="site-title"><a href="/">mbedded.ninja</a></div>
       </div>
       <div class="stuff-at-end">
         <button id="theme-toggle" class="btn btn-link btn-sm ms-2 small d-flex" type="button">
-          <span class="d-block-light d-none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-          <span class="d-block-dark d-none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="d-block-light d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+          <span class="d-block-dark d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
         </button>
       </div>
     </nav>
-    <!-- Set this below div to container-fluid if you want it to take up the entire page width on large
-      screens, rather than stopping at 1354px wide. -->
+    <!-- ================================================================================================ -->
+    <!-- EVERYTHING EXCEPT TOP NAVBAR -->
+    <!-- ================================================================================================ -->
     <div class="wrapper-below-top-navbar">
         
         <aside class="left-navbar">
@@ -152,6 +181,11 @@
       Copyright © 2023 mbedded.ninja. Built with Hugo.
     </footer>
     {{ partial "mathjax-markdown-solution.html" . }}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<!-- drawer.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
   </body>
   <!-- 'Back to Top' button -->
   <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->

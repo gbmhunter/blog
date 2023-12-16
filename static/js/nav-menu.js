@@ -30,3 +30,9 @@ for (let i = 0; i < menuListItems.length; i++) {
     });
   }
 }
+
+console.log('abc');
+$(document).ready(function() {
+  console.log('gege');
+  $('.drawer').drawer();
+});

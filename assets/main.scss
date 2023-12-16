@@ -83,6 +83,27 @@ body {
     }
 }
 
+.hamburger-button {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #404040;
+    }
+}
+@media (min-width: $mobile-to-desktop-breakpoint) {
+    .hamburger-button {
+        display: none; // Hide the hamburger button on wide screens, we show the left-hand navbar instead
+    }
+  }
+
 .site-title {
     color: var(--main-color);
 }
