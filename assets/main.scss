@@ -401,8 +401,11 @@ Padding provides offset so it doesn't collide with top navbar
 
 .page-left-column {
     flex-grow: 1;
-    // flex-basis: 75%;
-    max-width: 75%;
+
+    // Using flex-basis here instead of max-width allows the page to expand to
+    // full width if the screen width is small enough that the TOC column
+    // disappears
+    flex-basis: 75%;
     padding-left: 20px;
     padding-right: 20px;
 
