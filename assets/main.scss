@@ -19,7 +19,11 @@ $mobile-to-desktop-breakpoint: 1200px;
     --border-color: #bbbbbb;
 
     --top-navbar-height: 60px;
-    --menu-item-height: 35px;
+
+    // Height if menu item text does not wrap
+    // Keep this quite small so the menu doesn't become too big vertically
+    // when submenus are expanded
+    --menu-item-height: 25px;
 }
 
 html[data-theme='light'] {
@@ -94,6 +98,16 @@ body {
     border-radius: 5px;
     border-width: 0px;
 
+    // background-color: #00b300;
+
+    [data-theme='light'] & {
+        background-color: #f0f0f0;
+    }
+
+    [data-theme='dark'] & {
+        background-color: var(--background-color);
+    }
+
     &:hover {
         cursor: pointer;
         background-color: #949494;
@@ -133,6 +147,19 @@ body {
 /* DRAWER STYLING
 /* ========================================================================= */
 
+.drawer-modal{
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 400;
+}
+
 .drawer {
 
     position: fixed;
@@ -141,9 +168,12 @@ body {
     bottom: 0;
 
     width: 0; // Width will be changed by JS
+    max-width: 100%; // Make sure it never exceeds the width of the screen on small screens
     overflow-x: hidden;
     transition: 0.5s;
     z-index: 500;
+
+    // padding-right: 10px;
 
     background-color: var(--background-color);
 
@@ -154,6 +184,10 @@ body {
     .menu-nav a, .menu-nav a:hover, .menu-nav a:visited, .menu-nav a:active {
         font-size: 0.8em;
     }
+}
+
+.drawer-inner {
+    padding-right: 10px;
 }
 
 .drawer-top-row-with-close-button {
@@ -178,6 +212,10 @@ body {
 
     border-width: 0;
     border-radius: 5px;
+
+    [data-theme='dark'] & {
+        background-color: var(--background-color-secondary);
+    }
 }
 
 /* ========================================================================= */
@@ -242,7 +280,7 @@ Padding provides offset so it doesn't collide with top navbar
     // otherwise we get blue/purple links which don't look good
     // with the red background
     a, a:hover, a:visited, a:active {
-        padding: .375rem .75rem;
+        padding: .1rem .75rem;
         margin-top: .125rem;
         margin-left: 0.1rem;
         font-size: 1.2em;

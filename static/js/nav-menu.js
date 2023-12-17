@@ -37,10 +37,18 @@ showActivePage();
 $(document).ready(function() {
   $('.hamburger-button').click(() => {
     console.log('click() called.');
-    $('.drawer').width('400');
+    $('.drawer-modal').css('display', 'block');
+    $('.drawer').width('350px');
   });
 
   $('.drawer-close-button').click(() => {
+    $('.drawer-modal').css('display', 'none');
+    $('.drawer').width('0');
+  });
+
+  // Close the drawer when the user clicks outside of it
+  $('.drawer-modal').click(() => {
+    $('.drawer-modal').css('display', 'none');
     $('.drawer').width('0');
   });
 });

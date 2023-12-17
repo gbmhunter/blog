@@ -188,14 +188,17 @@
   <!-- ================================================================================================ -->
   <!-- This drawer is not in the document flow -->
   <nav class="drawer" role="navigation">
-    <div class="drawer-top-row-with-close-button">
-      <button class="drawer-close-button">
-        &times;
-        <!-- <i class="fas fa-times fa-2x"></i> -->
-      </button>
+    <div class="drawer-inner">
+      <div class="drawer-top-row-with-close-button">
+        <button class="drawer-close-button">
+          &times;
+        </button>
+      </div>
+      {{ partial "menu.html" . }}
     </div>
-    {{ partial "menu.html" . }}
   </nav>
+  <!-- This div is used to dim the entire page when the drawer is open -->
+  <div class="drawer-modal"></div>
 
     <!-- Handles the collapsing/expanding of sub-menus on click
     Load it directly after the menu HTML is created, and not on document ready, otherwise you'll
