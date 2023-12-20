@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2020-04-19
-description: "Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation."
+description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
-categories: [ "Programming", "Operating Systems" ]
-lastmod: 2021-02-23
-tags: [ "programming", "operating systems", "OSes", "RTOS", "Zephyr", "Zephyr SDK", "west", "Python", "CMake", "HAL" ]
-title: "Zephyr Project"
-type: "page"
+categories: [ Programming, Operating Systems ]
+lastmod: 2023-12-20
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason ]
+title: Zephyr Project
+type: page
 ---
 
 {{% warning-is-notes %}}
@@ -357,7 +357,80 @@ Example device tree (for the STM32F070RB development board):
 
 ## Peripheral APIs
 
+Not only does Zephyr provide you with an RTOS, but it also gives you a collection of well defined APIs for interacting with microcontroller peripherals.
+
 The latest documentation for peripheral (UART, SPI, PWM, PIN, e.t.c.) APIs can be found at <https://docs.zephyrproject.org/latest/reference/peripherals/index.html>.
+
+### Hardware Info
+
+The Zephyr Hardware Info API can be used to access the device ID and reset cause of a microcontroller. The reset cause comes from a list of standardised reasons that apply to most microcontrollers such as reset pin, a software reset, a watchdog timer reset, brownout reset, debug event, e.t.c (not all reset causes may be applicable to a particular microcontroller).
+
+`hwinfo_get_reset_cause()` sets a uint32_t with each bit representing a different reason for reset (a bit field). More than 1 bit can be set. Below is a C function which decodes the reset cause bit field returned from `hwinfo_get_reset_cause()` and creates a human-readable string of the reset reason(s) (great for logging).
+
+```c
+#include <stdint.h>
+
+#include <zephyr/drivers/hwinfo.h>
+#include <zephyr/logging/log.h>
+
+typedef struct {
+    uint32_t flag;
+    char name[20]; // Make sure this is as large as the largest name
+} resetCauseFlag_t;
+
+/**
+ * @brief This function logs the reset cause in a human-readable manner, obtained via hwinfo_get_reset_cause().
+ */
+void LogResetCause()
+{
+    uint32_t resetCause;
+    int resetCauseRc = hwinfo_get_reset_cause(&resetCause);
+    __ASSERT_NO_MSG(resetCauseRc == 0);
+
+    resetCauseFlag_t resetCauseFlags[] = {
+        { RESET_PIN, "RESET_PIN" },
+        { RESET_SOFTWARE, "RESET_SOFTWARE" },
+        { RESET_BROWNOUT, "RESET_BROWNOUT" },
+        { RESET_POR, "RESET_POR" },
+        { RESET_WATCHDOG, "RESET_WATCHDOG" },
+        { RESET_DEBUG, "RESET_DEBUG" },
+        { RESET_SECURITY, "RESET_SECURITY" },
+        { RESET_LOW_POWER_WAKE, "RESET_LOW_POWER_WAKE" },
+        { RESET_CPU_LOCKUP, "RESET_CPU_LOCKUP" },
+        { RESET_PARITY, "RESET_PARITY" },
+        { RESET_PLL, "RESET_PLL" },
+        { RESET_CLOCK, "RESET_CLOCK" },
+        { RESET_HARDWARE, "RESET_HARDWARE" },
+        { RESET_USER, "RESET_USER" },
+        { RESET_TEMPERATURE, "RESET_TEMPERATURE" },
+    };
+
+    const uint32_t buffSize = 100;
+    char resetReasonBuffer[buffSize];
+    resetReasonBuffer[0] = '\0'; // Set the initial byte to 0 so that strncat will work correctly
+    uint32_t currLength = 0;
+
+    for(int i = 0; i < sizeof(resetCauseFlags) / sizeof(resetCauseFlag_t); i++)
+    {
+        if(resetCause & resetCauseFlags[i].flag) 
+        {
+            // Append reset cause string to message
+            strncat(resetReasonBuffer, resetCauseFlags[i].name, buffSize - currLength);
+            currLength = strlen(resetReasonBuffer);
+
+            // Add ", " between reasons
+            strncat(resetReasonBuffer, ", ", buffSize - currLength);
+            currLength = strlen(resetReasonBuffer);
+        } 
+    }
+
+    LOG_INF("Reset reason as a bit field: 0x%04X. This means the following flags were set: %s", resetCause, resetReasonBuffer);
+
+    // Clear the reset cause
+    resetCauseRc = hwinfo_clear_reset_cause();
+    __ASSERT_NO_MSG(resetCauseRc == 0);
+}
+```
 
 ## What Does A Basic Zephyr Firmware Application Look Like?
 

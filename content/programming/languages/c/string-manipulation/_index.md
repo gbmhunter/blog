@@ -353,3 +353,129 @@ snprintf(txBuffer, sizeof(txBuffer), "Float to 2dp: %.2f", float1);
 uint8 eightBitNum = 23;
 sprintf(txBuffer, "This is an 8-bit number: %bu", eightBitNum);
 ```
+
+## Converting a Version String to Numbers
+
+Sometimes you might want to convert a version string in the form `v1.2.3` into the individual major, minor and patch numbers.
+
+The following C code shows a function `VersionStringToNumbers()` which can do this, along with an example `main()` which runs some tests against the function to make sure it can handle valid and invalid input correctly.
+
+`strtol()` was used instead of `atoi()` because `atoi()` cannot distinguish between invalid input and `"0"` (i.e. it can't tell the difference between `"0"` and `"poop"`!). Also, the returned `end` pointer is used to increment through the string, check that a `.` follows immediately after the last number, and then to work out where to begin processing the next integer.
+
+```c
+#include <assert.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+ * @brief Converts a version string in the form "1.2.3" into numbers.
+ *
+ * @param[in] version A null-terminated string of the form "1.2.3". The
+ *    major number must be in the range [0, 255]. The patch number must
+ *    be in the range [0, 65536]. There must not be a "v" at the start.
+ * @param[out] major The converted major version number.
+ * @param[out] minor The converted minor version number.
+ * @param[out] patch The converted patch version number.
+ * @return Returns 0 on success, or -1 on failure.
+ */
+int8_t VersionStringToNumbers(char const *const versionString,
+                                                            uint8_t *const major, uint8_t *const minor,
+                                                            uint16_t *const patch) {
+
+    char const *offset = versionString;
+    char *end;
+
+    // MAJOR NUMBER
+    // Don't use atoi(), can't detect difference between "0" and "poop"!
+    int majorLocal = strtol(offset, &end, 10);
+    if (end == offset) {
+        return -1;
+    }
+    if (majorLocal < 0 || majorLocal > 255) {
+        return -1;
+    }
+    offset = end;
+    // Make sure a "." is immediately after the major version number
+    if (*offset != '.') {
+        return -1;
+    }
+
+    // MINOR NUMBER
+    offset += 1; // Increment offset to point to first char after found "."
+    int minorLocal = strtol(offset, &end, 10);
+    if (end == offset) {
+        return -1;
+    }
+    if (minorLocal < 0 || minorLocal > 255) {
+        return -1;
+    }
+    offset = end;
+    if (*offset != '.') {
+        return -1;
+    }
+
+    // BUILD NUMBER
+    offset += 1; // Increment offset to point to first char after found "."
+    long patchLocal = strtol(offset, &end, 10);
+    if (end == offset) {
+        return -1;
+    }
+    if (patchLocal < 0 || patchLocal > 65535) {
+        return -1;
+    }
+    offset = end;
+    // Make sure the string ends after the build number
+    if (*offset != '\0') {
+        return -1;
+    }
+
+    // Save to outputs, we can safely cast because we performed range checks above
+    *major = (uint8_t)majorLocal;
+    *minor = (uint8_t)minorLocal;
+    *patch = (uint16_t)patchLocal;
+
+    return 0;
+}
+
+int main(void) {
+    uint8_t major, minor;
+    uint16_t patch;
+
+    printf("Running VersionStringToNumbers() tests...\n");
+    int8_t rc = VersionStringToNumbers("1.2.3", &major, &minor, &patch);
+    assert(rc == 0);
+    assert(major == 1);
+    assert(minor == 2);
+    assert(patch == 3);
+
+    rc = VersionStringToNumbers("56.234.9876", &major, &minor, &patch);
+    assert(rc == 0);
+    assert(major == 56);
+    assert(minor == 234);
+    assert(patch == 9876);
+
+    rc = VersionStringToNumbers("256.1.2", &major, &minor, &patch);
+    assert(rc != 0);
+
+    rc = VersionStringToNumbers("", &major, &minor, &patch);
+    assert(rc != 0);
+
+    rc = VersionStringToNumbers("1.2.", &major, &minor, &patch);
+    assert(rc != 0);
+
+    rc = VersionStringToNumbers("1a.2.3", &major, &minor, &patch);
+    assert(rc != 0);
+
+    rc = VersionStringToNumbers("1.2.3a", &major, &minor, &patch);
+    assert(rc != 0);
+
+    rc = VersionStringToNumbers("..", &major, &minor, &patch);
+    assert(rc != 0);
+
+    printf("Tests complete.\n");
+    return 0;
+}
+```
+
+You can test this code live at https://replit.com/@gbmhunter/c-version-string-to-numbers.

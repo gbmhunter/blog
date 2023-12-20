@@ -16,3 +16,7 @@ type: post
 * The page structure got modified. I wanted to improve the main left navigation menu. So I created a top navbar for the site logo, name and light/dark mode toggle. And then the left column is dedicated purely to the navigation menu. The on hover styling has been improved, with a clear indication you can click the chevron to expand/collapse a sub-menu. The chevrons are now all aligned on the right of the menu rather than on the left.
 
 * Updated the VMIN and VTIME information on [Linux Serial Ports Using C/C++](/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/).
+
+* Added info on converting a version string into numbers to the [C String Manipulation page](/programming/languages/c/string-manipulation/#converting-a-version-string-to-numbers).
+
+* Added info on the [Hardware Info Interface (including reset causes) to the Zephyr page](/programming/operating-systems/zephyr-project/#hardware-info).
