@@ -5,7 +5,7 @@ description: Installation and usage info on the Zephyr project, an open-source e
 draft: false
 categories: [ Programming, Operating Systems ]
 lastmod: 2023-12-20
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason ]
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module ]
 title: Zephyr Project
 type: page
 ---
@@ -494,13 +494,19 @@ void main(void)
 
 Zephyr supports the targets `qemu_x86` and `qemu_cortex_m3` for running Zephyr applications on desktop computers. This is great for development, testing and CICD purposes.
 
-## Un-supported C++ Features
+## Zephyr and C++
 
 There are a number of C++ features that Zephyr does not support which removes C++ as a 1st tier language for writing Zephyr applications. This includes:
 
 - No dynamic memory allocation support via `new` or `delete`. Dynamic memory allocation in the embedded land is a contentious subject, but it's nice to be able to use it if it's a suitable choice for your application.
 - No RTTI (run-time type information)
 - No support for exceptions. Again, another contentious embedded subject, but nice to have the option of using them if you want.
+
+## The Zephyr Shell
+
+[Zephyr features a "shell"](https://docs.zephyrproject.org/latest/services/shell/index.html) (one of it's modules) that it can provide over a serial transport such as a UART, USB or Segger RTT. The shell provides to the user things such as Linux command-line style commands, logging, auto-complete, command history and more. In  It is great for implementing a debug interface to control your microcontroller from a terminal application such as [NinjaTerm](https://ninjaterm.mbedded.ninja/) (shameless plug, I developed this app).
+
+Zephyr provides an API that the firmware can use to define the commands available to the user over the shell.
 
 ## Common Errors
 

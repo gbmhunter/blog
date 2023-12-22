@@ -223,7 +223,7 @@ if (y == 4) {
 Some block code that **should** have an x-axis scroll bar:
 
 ```c
-a long line of text a long line of text a long line of text a long line of text a long line of text a long line of text 
+a long line of text a long line of text a long line of text a long line of text a long line of text a long line of text lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum
 int y = x;
 ```
 

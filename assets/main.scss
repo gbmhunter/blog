@@ -409,7 +409,10 @@ Padding provides offset so it doesn't collide with top navbar
     padding-left: 20px;
     padding-right: 20px;
 
-    overflow-x: scroll;
+    // This used to be scroll for some reason, but that makes the content scrollable
+    // which we don't want. Changing back to hidden, but I've got a feeling
+    // this causes some other issue.
+    overflow-x: hidden;
 }
 
 .home-page-content {
@@ -1254,18 +1257,24 @@ pre {
     margin-bottom: 0px; // reboot added 1em margin-bottom, get rid of this!
 }
 
-/* Styling for inline code (no pre element). Make sure not to select code elements
-which have the class `has-jax`, as this is used for inline math and MathJAX
-rendering.
-*/
-code:not(.has-jax) {
-    border-radius: 5px; 
-    -moz-border-radius: 5px; 
-    -webkit-border-radius: 5px; 
-    border: 1px solid #BCBEC0;
-    padding: 2px;
+// Styling for inline code (no pre element). Make sure not to select code elements
+// which have the class `has-jax`, as this is used for inline math and MathJAX
+// rendering.
+// Also make sure to include the p, otherwise it also styles code blocks
+p code:not(.has-jax) {
+    [data-theme='light'] & {
+        background-color: #e6e6e6;
+        color: #b300b3;
+    }
+
+    [data-theme='dark'] & {
+        background-color: #222222;
+        color: rgb(21, 193, 193);
+    }
+
 }
 
+// Block code
 pre code:not(.has-jax) {
     display: block;
     padding: 1.5em 1.5em;
@@ -1282,6 +1291,10 @@ pre code:not(.has-jax) {
 
 div.highlight {
     margin-bottom: 1rem; // Add whitespace below code blocks before next element
+}
+
+div.highlight div {
+    overflow-x: auto; // Makes it so extra wide code has scroll bars attached to the code block
 }
 
 // For some reason, when adding line numbers to code blocks, the first row's line number would
