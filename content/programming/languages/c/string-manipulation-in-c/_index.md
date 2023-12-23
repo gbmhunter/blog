@@ -1,13 +1,143 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "Programming Languages", "C" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Programming, Programming Languages, C ]
 date: 2013-03-18
 draft: false
-lastmod: 2014-03-18
-tags: [ "programming", "programming languages", "C", "strings", "ASCII", "char", "special characters", "itoa()", "sprintf()", "snprintf()" ]
-title: "String Manipulation"
-type: "page"
+lastmod: 2023-12-22
+tags: [ programming, programming languages, C, strings, ASCII, char, special characters, itoa(), sprintf(), snprintf(), atoi() ]
+title: String Manipulation in C
+type: page
 ---
+
+## Overview
+
+The page teaches you how to work with strings in the C programming language. If you are used to higher level languages such as Python or Javascript, you'll quickly discover that C does not have some of the "nice" string manipulation features such as string concatenation with `+` (e.g. `str1 + str2`), no easy `.length()` property (although there is a function for that, `strlen()`) nor things like a built in regex engine. It doesn't really even have the concept of a string type, just "pointer to char" (`char*`) (some would argue that for all intents and purposes that is a string type).
+
+## What Are Strings In C?
+
+Strings in C are represented by either a pointer to char `char* myStr` or array of char `char myStr[10]`. What is laid out in memory is a series of byte sized ASCII encoded characters, terminated by the null character (`'\0'` or `0x00`).
+
+Say we wanted to store the string "Hello". We could write `char* myStr = "Hello";`. If the compiler decided to plonk this at memory address `0x01` (I avoided `0x00` since that invalid -- it's the null pointer) then the memory would look like this:
+
+```text
+Memory address | Value | ASCII
+0x00           |       |
+0x01           | 0x48  | H
+0x02           | 0x65  | e
+0x03           | 0x6C  | l
+0x04           | 0x6C  | l
+0x05           | 0x6F  | o
+0x06           | 0x00  | \0
+0x07           |       |
+```
+
+But this is not all, the memory above is used just to create the literal `"Hello"`. What also is created is the variable `myStr`, which points to the first character in this string. Let's assume the compile decides to plonk this at memory address `0x08`, then your memory will look like this.
+
+```text
+Memory address | Value | ASCII
+0x00           |       |
+0x01           | 0x48  | H
+0x02           | 0x65  | e
+0x03           | 0x6C  | l
+0x04           | 0x6C  | l
+0x05           | 0x6F  | o
+0x06           | 0x00  | \0
+0x07           |       |
+0x08           | 0x01  |      // This is myStr
+```
+
+Whenever you pass your string variable `myStr` to functions, this `0x01` value is what is passed in. String functions, aware of the type (it's a pointer to char), know to increment through memory until they hit the null char when they want to do operations on the string.
+
+One thing C does differently to a lot of other languages is it's choice of using null to determine the end of the string, rather than reserving some bytes at the start of the character array for holding it's length. To find the length of the string you have to iterate through the bytes until you find `0x00`, which is what `strlen()` does (more on this below).
+
+## Different Ways Of Creating Strings
+
+Whenever you write anything in double quotes in C (e.g. `"abc"`), you are creating what is called a string literal.
+
+```c
+char* myStr = "abc"; // This is a string literal
+```
+
+You can also declare strings using array notation.
+
+```c
+char* myStr1 = "abc"; // Creating a string literal and assigning it to a pointer
+char myStr2[] = "abc"; // Creating a string literal and assigning it to any array
+                       // (the size is inferred from the right-hand side of the equation)
+```
+
+These two ways are mostly equivalent, BUT you must remember that `myStr2` is an array with a known size (at compile time), whilst `myStr1` is just a pointer to a char. Thus, `sizeof()` is going to behave differently.
+
+When compiled for a 64-bit architecture, `sizeof(myStr1)` returns 8, the number of bytes required for the pointer `myStr1` which points to the memory address of the `a` in `"abc"`; However, `sizeof(myStr2)` returns 4, the number of bytes in the array `myStr2` which consists of `['a', 'b', 'c', '\0']`. This difference is bound to trip you up at some point, so be aware of this difference.
+
+{{% aside type="tip" %}}
+Most of the time you will be passing strings into functions, and if you use the `char myStr[]` style syntax, the compiler will have no idea what size the array of chars is (you could call it with with a `char str[10]` from one function and a `char str[20]` from another). The array will "decay" to the same thing as `char* myStr`, and sizeof will return the size of a pointer (unless the function is designed to only ever taking a string of a certain size, e.g. `char myStr[10]`, but that is a very odd use case).
+
+Thus you can't use `sizeof()` to work out how big your string is. You have two options. Ever use `strlen()` to get the number of characters in the string, or if you are interested in just how many valid characters there are in the string but how big the array is, **you'll have to pass the size into the function also**. Passing the size of the string array is very common practise in C applications (as with any array, not just for strings), and after a while it will become second nature.
+{{% /aside %}}
+
+
+You can also create an empty string of a certain size:
+
+```c
+char myEmptyString[50];
+```
+
+{{% aside type="warning" %}}
+`char myEmptyString[50];` inside a function will not initialize any of the bytes (it will however if it's outside of a function and on the heap). This means it will not be a well-defined string, and may or may not have a null character in it depending on what the memory happens to be. For example:
+
+```c
+int main() {
+    char myEmptyString[50];
+    printf("%s", myEmptyString); // BAD! Undefined behaviour. Could get lucky and print nothing, could print garbage, 
+                                 // or could get really unlucky and print from memory until it reaches the end of memory
+                                 // (it will keep printing until it finds a 0x00 in memory).
+}
+```
+
+What you must do is initialize the string. The easiest way to do this is to use `= {0}`:
+
+```c
+int main() {
+    char myEmptyString[50] = {0};
+    printf("%s", myEmptyString); // Better! Will print nothing, but at least you have defined behaviour.
+}
+```
+
+Another option is to just set the first byte to the null character, which is all you really need to do for it to be a valid string. However, I still don't like using this method as it's harder to diagnose issues (if you initialize EVERYTHING to 0, you can be sure that if you get a weird value in your string, it's because you have a bug somewhere in your code).
+
+```c
+int main() {
+    char myEmptyString[50];
+    myEmptyString[0] = '\0'; // All you really need to set is the first byte to 0x00
+    printf("%s", myEmptyString); // Also good!
+}
+```
+
+{{% /aside %}}
+
+## A Char vs. A String
+
+In C, `'a'` and `"A"` are completely different types (as opposed to say, Javascript, in where you can swap `"` for `'` and it doesn't change anything). `'a'` is a single character, whilst `"A"` is a string literal (which is an array of characters). You can't do this:
+
+```c
+char myChar = "A"; // This is wrong!
+char* myString = 'A'; // This is also wrong!
+```
+
+You have to do this:
+
+```c
+char myChar = 'A'; // This is correct!
+char* myString = "A"; // This is also correct!
+```
+
+It then makes sense that to set an individual character in a string, you can use the `'` notation:
+
+```c
+char* myString = "Hello";
+myString[0] = 'h'; // Sets the first character to 'h', now it's "hello"
+```
 
 ## ASCII Characters
 
@@ -19,7 +149,7 @@ The null character (represented by `'\0'` , `0x00` , or a constant defined as `N
 
 These two characters are used to being a new line of text. The carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days. The carriage return is inserted into code using `\r`, and a new line using `\n`. The standard order is to write the carriage return first, and then the new line `\r\n`.
 
-```c    
+```c
 stringBuff[100];
 // Nicely formatted text
 snprintf(stringBuff, sizeof(stringBuff), "This is a line of text.\r\n");
@@ -40,17 +170,6 @@ printf("A" ^ " ");
 
 printf("a" ^ " ");
 // stdout: A
-```
-
-## Strings
-
-Strings in C are arrays where each element of the array holds an ascii character. When they are defined using double quotes, they are called a string literal. Normally these are 8-bit elements representing the standard ascii format (click for ascii table). The arrays can be defined first, and then ascii characters assigned to them, of the ascii values can be assigned easily when the array is defined as follows:
-
-This will define a 7 byte string, 6 bytes to hold "abc123" and then the 7th to terminate the string with `\0` (`0x00`). Here are two ways of writing this.
-
-```c    
-char* myString = "abc123";
-char myString[] = "abc123";
 ```
 
 ## Special Characters

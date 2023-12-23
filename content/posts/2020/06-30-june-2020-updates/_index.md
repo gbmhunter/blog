@@ -24,7 +24,7 @@ type: "post"
 
 * Added the new {{% link text="How To Write Python Scripts For KiCAD page" src="/electronics/general/kicad/how-to-write-python-scripts-for-kicad" %}}.
 
-* Added information on {{% link text="number-to-string functions in the C programming language to the String Manipulation page" src="/programming/languages/c/string-manipulation" %}}.
+* Added information on [number-to-string functions in the C programming language to the String Manipulation page](/programming/languages/c/string-manipulation-in-c/).
 
     {{% figure src="c-string-manipulation-itoa-section-screenshot.png" width="500px" %}}
 
