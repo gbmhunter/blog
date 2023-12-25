@@ -139,6 +139,8 @@ char* myString = "Hello";
 myString[0] = 'h'; // Sets the first character to 'h', now it's "hello"
 ```
 
+A `char` literal does not get a null character appended to the end of it, it is just a single byte.
+
 ## ASCII Characters
 
 ### Null Character
@@ -147,18 +149,15 @@ The null character (represented by `'\0'` , `0x00` , or a constant defined as `N
 
 ### Carriage Return And New Line
 
-These two characters are used to being a new line of text. The carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days. The carriage return is inserted into code using `\r`, and a new line using `\n`. The standard order is to write the carriage return first, and then the new line `\r\n`.
+These two characters are used to being a new line of text. If you take the names literally, the carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days.
 
-```c
-stringBuff[100];
-// Nicely formatted text
-snprintf(stringBuff, sizeof(stringBuff), "This is a line of text.\r\n");
-snprintf(stringBuff, sizeof(stringBuff), "This is a second line of text.\r\n");
+In Linux style systems, only the new line character is used to begin a new line of text. In Windows, both the carriage return and new line characters are used. For embedded systems, I've seen either preference used (probably depending on what development OS the writer was using!). Most terminal programs support both approaches. The carriage return is inserted into code using `\r`, and a new line using `\n`. In Windows, the standard order is to write the carriage return first, and then the new line `\r\n`.
 
-// Muddled text
-snprintf(stringBuff, sizeof(stringBuff), "This is a line of text.");
-snprintf(stringBuff, sizeof(stringBuff), "This text will be muddled with the first because there is no carriage return or new line.\r\n");
-```
+{{% aside type="tip" %}}
+The Windows style `\r\n` will generally work on most Linux style systems as long as the `\r` is just ignored.
+{{% /aside %}}
+
+In many other programming languages, you do not need to add the line endings manually as the `print` style function will automatically do that for you (by default -- you can still usually disable it if you don't want that behaviour). C++ is half-way between the two with the standard way of using `std::endl`.
 
 ### Case Switching
 
@@ -259,19 +258,22 @@ Unlike many higher level languages, you cannot just concatenate C "strings" toge
 
 ```
 
-## C Number To String Functions
 
-### printf (And It's Variants)
+## printf (and variants)
 
-`printf()` can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
+`printf()` and it's variants such as `sprintf()` are some of the most common "something to string" functions. They can be used to convert signed integers, unsigned integers, floats, doubles and other types to strings. They can also be used to print already formatted strings, and/or concatenate existing strings together. They also support formatting options, which allow you to control how the numbers are displayed (e.g. number of decimal places, padding, display number as hex, e.t.c).
 
-**printf()**
+{{% aside type="note" %}}
+`printf` stands for "print formatted"[^wikipedia-printf].
+{{% /aside %}}
+
+### printf()
 
 `printf()` is the most commonly used string output function. It is a variadic function (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
 
-On Linux, this will print the string to the calling terminal window. Most embedded systems do not support `printf()` as their is no "standard output" (although this can be re-wired to say, a UART). Instead, in embedded applications, `printf` variants like `sprintf()` are more common.
+On most mainstream operating systems such as Linux, MacOS and Windows, calling `printf()` will send the formatted string to the terminal (if the application was invoked from a terminal). On an embedded system there is no "standard output", but increasingly on more modern embedded systems `printf()` is routed to a default debug serial port.
 
-If you want to print an already-formulated string using `printf` (with no additional arguments to be inserted), do not use the syntax `printf(msg)`. Instead, use the format `printf(%s, msg)`.
+If you want to print an already-formulated string using `printf()` (with no additional arguments to be inserted), do not use the syntax `printf(msg)`. Instead, use the format `printf("%s", msg)`.
 
 ```c    
 char* msg = "Example message";
@@ -283,7 +285,7 @@ printf(msg);
 
 // The correct way of printing an already-formulated
 // string
-printf(%s, msg);
+printf("%s", msg);
 ```
 
 The `printf()` function takes format specifiers which tell the function how you want the numbers displayed.
@@ -291,98 +293,11 @@ The `printf()` function takes format specifiers which tell the function how you 
 
 Most C compiler installations include standard C libraries for manipulating strings. A common one is `stdio.h`, usually included into a C file using the syntax `#include <stdio.h>`. This library contains string copy, concatenate, string build and many others. Most of them rely on null-terminated strings to function properly. Some of the most widely used ones are shown below.
 
+{{% aside type="warning" %}}
+`printf()` and friends can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
 
-### itoa()
-
-**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header. It is typically defined as:
-
-```c
-char * itoa(int value, char * str, int base);
-```
-
-Usage:
-
-```c
-#include <stdlib.h>
-int main() {
-  int number = 436;
-  char buffer[10];
-  itoa(number, buffer, 10);
-  printf(buffer);
-}
-```
-
-`itoa()` can cause undefined behaviour if the buffer is not large enough to hold the string-representation of the passed in integer. If you have a restricted range of integer that are provided to `itoa()`, you can quite easily determine how big the buffer should be. If it could be any integer, you need a buffer that can handle `INT_MIN` (and a trailing `NULL`). A safer alternative (that is also portable) to `itoa()` is to use `snprintf("%d", ...)`.
-
-Another good reason to abandon `itoa()` is that it is not supported in C++.
-
-
-## C String To Number Functions
-
-### atof()
-
-`atof()` is a historic way of converting a string to a double-precision float (yes, even though the function has `f` in it's name, it actually returns a `double`).
-
-The biggest let-down with `atof()` is that you cannot distinguish between the text input `"0.0"` and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
-
-```c    
-// Result is the same (0.0) in both of these cases).
-double result;
-result = atof("0.0");
-result = atof("blah blah");
-```
-
-There is a better alternative `strtod()`, which allows you to test for this condition, **if your system supports it**.
-
-### strtod()
-
-This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number. Newer versions of C/C++ also provide `strtof()` which performs the same function but returns a `float` rather than a `double`.
-
-```c    
-double ConvertStringToDouble(char* input) {
-    char* input = "34.56";
-    char* numEnd;
-
-    // Do the conversion
-    double output = strtod(input, &numEnd);
-
-    // Bounds checking
-    if(numEnd == input)
-    {
-        printf("Error: Input to strtod was not a valid number.\r\n");
-        return false;	
-    }
-}
-```
-
-### strtol()
-
-`strtol()` behaves very similarly to `strtod()` except parses the string into a `long int` rather than a `double`.
-
-Memory manipulation functions are also useful for string manipulation. Some of the useful functions are shown below.
-
-<table>
-  <thead>
-    <tr>
-      <th>Function</th>
-      <th>Description</th>
-      <th>Comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{% code %}}`memset(char* stringBuff, int value, size_t num);`{{% /code %}}</td>
-      <td>Writes a constant value to a set number of elements in memory.</td>
-      <td>Used to clear a string at run-time (e.g. `memset(buff1, '\0', sizeof(buff1));`). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!</td>
-    </tr>
-  </tbody>
-</table>
-
-## Decoding/Encoding Strings
-
-`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
-
-`getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/docs/getopt.zip) (taken from GCC gLibC v2.17).
+For example, the RTOS/framework [Zephyr](/programming/operating-systems/zephyr-project/) uses deferred logging by default, in which the format strings and variables are saved and passed to a low priority logging thread for processing.
+{{% /aside %}}
 
 ### Conversion Specifiers
 
@@ -457,6 +372,115 @@ printf("Size of int = %zi.\r\n", sizeof(int));
 ```
 
 This was introduced in ISO C99. `Z` (upper-case `z`) was a GNU extension predating this standard addition and should not be used in new code.
+
+### sprintf()/snprintf()
+
+```c
+char stringBuff[100] = {0}; // Init. to 0 is not strictly needed here
+// Nicely formatted text
+snprintf(stringBuff, sizeof(stringBuff), "This is a line of text with Windows style line endings.\r\n");
+snprintf(stringBuff, sizeof(stringBuff), "This is a second line of text.\r\n");
+
+// Muddled text
+snprintf(stringBuff, sizeof(stringBuff), "This is a line of text. Oppps line endings have been forgotten.");
+snprintf(stringBuff, sizeof(stringBuff), "This text will be muddled with the line above.\r\n");
+```
+
+## itoa()
+
+**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header[^wikibooks-itoa]. It is typically defined as:
+
+```c
+char* itoa(int value, char* str, int base);
+```
+
+The radix is generally limited to octal (8), decimal (10) or hexadecimal (16)[^ibm-zos-docs-itoa].
+
+Usage:
+
+```c
+#include <stdlib.h>
+int main() {
+    int number = 436;
+    char buffer[10];
+    itoa(number, buffer, 10);
+    printf(buffer); // Prints 436
+}
+```
+
+`itoa()` can cause undefined behaviour if the buffer is not large enough to hold the string-representation of the passed in integer. If you have a restricted range of integers that are provided to `itoa()` you can quite easily determine how big the buffer should be. If it could be any integer, you need a buffer that can handle `INT_MIN` (and a trailing `NULL`). A safer alternative (that is also portable) to `itoa()` is to use `snprintf("%d", ...)`.
+
+Another good reason to abandon `itoa()` is that it is not supported in C++.
+
+
+## C String To Number Functions
+
+### atof()
+
+`atof()` is a historic way of converting a string to a double-precision float (yes, even though the function has `f` in it's name, it actually returns a `double`).
+
+The biggest let-down with `atof()` is that you cannot distinguish between the text input `"0.0"` and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
+
+```c    
+// Result is the same (0.0) in both of these cases).
+double result;
+result = atof("0.0");
+result = atof("blah blah");
+```
+
+There is a better alternative `strtod()`, which allows you to test for this condition, **if your system supports it**.
+
+### strtod()
+
+This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number. Newer versions of C/C++ also provide `strtof()` which performs the same function but returns a `float` rather than a `double`.
+
+```c    
+double ConvertStringToDouble(char* input) {
+    char* input = "34.56";
+    char* numEnd;
+
+    // Do the conversion
+    double output = strtod(input, &numEnd);
+
+    // Bounds checking
+    if(numEnd == input)
+    {
+        printf("Error: Input to strtod was not a valid number.\r\n");
+        return false;	
+    }
+}
+```
+
+### strtol()
+
+`strtol()` behaves very similarly to `strtod()` except parses the string into a `long int` rather than a `double`.
+
+Memory manipulation functions are also useful for string manipulation. Some of the useful functions are shown below.
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{% code %}}`memset(char* stringBuff, int value, size_t num);`{{% /code %}}</td>
+      <td>Writes a constant value to a set number of elements in memory.</td>
+      <td>Used to clear a string at run-time (e.g. `memset(buff1, '\0', sizeof(buff1));`). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!</td>
+    </tr>
+  </tbody>
+</table>
+
+## Decoding/Encoding Strings
+
+`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
+
+`getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/docs/getopt.zip) (taken from GCC gLibC v2.17).
+
+
 
 ### snprintf()
 
@@ -598,3 +622,9 @@ int main(void) {
 ```
 
 You can test this code live at https://replit.com/@gbmhunter/c-version-string-to-numbers.
+
+## References
+
+[^wikipedia-printf]: Wikipedia (2023, Aug 23). _printf_. Retrieved 2023-12-25, from https://en.wikipedia.org/wiki/Printf.
+[^wikibooks-itoa]: Wikibooks (2020, Apr 16). _C Programming/stdlib.h/itoa_. Retrieved 2023-12-26, from https://en.wikibooks.org/wiki/C_Programming/stdlib.h/itoa.
+[^ibm-zos-docs-itoa]: IBM (2021). _z/OS Docs - itoa() - Convert int into a string_. Retrieved 2023-12-26, from https://www.ibm.com/docs/en/zos/2.1.0?topic=functions-itoa-convert-int-into-string.
