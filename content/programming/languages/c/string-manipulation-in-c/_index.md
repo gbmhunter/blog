@@ -116,7 +116,7 @@ int main() {
 
 {{% /aside %}}
 
-## A Char vs. A String
+## Char vs. String
 
 In C, `'a'` and `"A"` are completely different types (as opposed to say, Javascript, in where you can swap `"` for `'` and it doesn't change anything). `'a'` is a single character, whilst `"A"` is a string literal (which is an array of characters). You can't do this:
 
@@ -161,14 +161,14 @@ In many other programming languages, you do not need to add the line endings man
 
 ### Case Switching
 
-The case of ASCII characters can be switched in code by inverting the 5th bit. It can also be done by exclusive ORing with the space character.
+The case of ASCII characters can be easily switched in code by inverting the 5th bit. This can be done by exclusive ORing with the space character, as shown below:
 
 ```c    
-printf("A" ^ " ");
-// stdout: a
+printf("%c", 'A' ^ ' ');
+// a
 
-printf("a" ^ " ");
-// stdout: A
+printf("%c", 'a' ^ ' ');
+// A
 ```
 
 ## Special Characters
@@ -375,20 +375,37 @@ This was introduced in ISO C99. `Z` (upper-case `z`) was a GNU extension predati
 
 ### sprintf()/snprintf()
 
-```c
-char stringBuff[100] = {0}; // Init. to 0 is not strictly needed here
-// Nicely formatted text
-snprintf(stringBuff, sizeof(stringBuff), "This is a line of text with Windows style line endings.\r\n");
-snprintf(stringBuff, sizeof(stringBuff), "This is a second line of text.\r\n");
+`sprintf()` is a variant of `printf()` which writes the formatted string to a buffer (which you provide a pointer to) rather than to the standard output. It is useful for building strings which you don't want to go to standard output, or want to send to standard output at a later date.
 
-// Muddled text
-snprintf(stringBuff, sizeof(stringBuff), "This is a line of text. Oppps line endings have been forgotten.");
-snprintf(stringBuff, sizeof(stringBuff), "This text will be muddled with the line above.\r\n");
+`snprintf()` is a safer version of `sprintf()` (I recommend always using the safer "n" style `printf()` functions) which takes an additional argument which specifies the size of the buffer. This prevents buffer overflows. If the buffer is not large enough to hold the formatted string, the string will be truncated to fit the buffer.
+
+An example of `snprintf()` (notice the use of `sizeof()` to pass the size of the buffer into the function, this prevents overruns if the formatted string is larger than the bugger):
+
+```c
+char stringBuff[100] = {0}; // Create buffer for snprintf() to write to. Init. to 0 is not strictly needed here.
+
+snprintf(stringBuff, sizeof(stringBuff), "Hello %s", "World"); // Write formatted string to buffer
+// stringBuff now contains "Hello World\0" at the start of it
+```
+
+#### Keil C51 Compiler
+
+In the Keil C51 compiler, the `b` or `B` length specifier is used to tell `sprintf` that the number is 8-bit. If you don't use this, 8-bit numbers stored in `uint8_t` or `char` data types will not print properly. You do not have to use the `b/B` specifier when using GCC.
+
+```c
+// Print a float to 2 decimal places
+snprintf(txBuffer, sizeof(txBuffer), "Float to 2dp: %.2f", float1);
+
+// Print a 8-bit number in the Keil C51 compiler, using the length specifier 'b' ('B' can be used also)
+uint8 eightBitNum = 23;
+sprintf(txBuffer, "This is an 8-bit number: %bu", eightBitNum);
 ```
 
 ## itoa()
 
-**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header[^wikibooks-itoa]. It is typically defined as:
+**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header[^wikibooks-itoa]. It is not part of the C++ standard either[^cplusplus-itoa].
+
+`iota()` is typically defined as:
 
 ```c
 char* itoa(int value, char* str, int base);
@@ -408,33 +425,33 @@ int main() {
 }
 ```
 
-`itoa()` can cause undefined behaviour if the buffer is not large enough to hold the string-representation of the passed in integer. If you have a restricted range of integers that are provided to `itoa()` you can quite easily determine how big the buffer should be. If it could be any integer, you need a buffer that can handle `INT_MIN` (and a trailing `NULL`). A safer alternative (that is also portable) to `itoa()` is to use `snprintf("%d", ...)`.
+`itoa()` can cause undefined behaviour if the buffer is not large enough to hold the string-representation of the passed in integer. If you have a restricted range of integers that are provided to `itoa()` you can quite easily determine how big the buffer should be. If it could be any integer, you need a buffer that can handle `INT_MIN` (and a trailing `NULL`). A safer alternative (that is also portable) to `itoa()` is to use `snprintf()`.
 
-Another good reason to abandon `itoa()` is that it is not supported in C++.
+## String to Number Functions
 
-
-## C String To Number Functions
+`printf()` and friends convert things to strings. But what about the other way around? The C standard library provides a number of different functions for converting strings to numbers. The most common ones are shown below.
 
 ### atof()
 
 `atof()` is a historic way of converting a string to a double-precision float (yes, even though the function has `f` in it's name, it actually returns a `double`).
 
-The biggest let-down with `atof()` is that you cannot distinguish between the text input `"0.0"` and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
+A significant disadvantage with `atof()` is that you cannot distinguish between the text input `"0.0"` and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example, it can't tell the difference between `"0.0"` and `"poos"`:
 
-```c    
-// Result is the same (0.0) in both of these cases).
+```c
 double result;
-result = atof("0.0");
-result = atof("blah blah");
+result = atof("0.0"); // result = 0.0
+result = atof("poos"); // result = 0.0
 ```
 
-There is a better alternative `strtod()`, which allows you to test for this condition, **if your system supports it**.
+Another issue is that `atof()` does not allow you check if the input string was just a valid number, and did not contain garbage after the number. This is because it iterates through the characters in the string, and stops processing as soon as it finds an invalid character.
+
+There is a better alternative `strtod()`, which fixes both of the problems described above.
 
 ### strtod()
 
 This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number. Newer versions of C/C++ also provide `strtof()` which performs the same function but returns a `float` rather than a `double`.
 
-```c    
+```c
 double ConvertStringToDouble(char* input) {
     char* input = "34.56";
     char* numEnd;
@@ -446,7 +463,7 @@ double ConvertStringToDouble(char* input) {
     if(numEnd == input)
     {
         printf("Error: Input to strtod was not a valid number.\r\n");
-        return false;	
+        return false;
     }
 }
 ```
@@ -455,47 +472,11 @@ double ConvertStringToDouble(char* input) {
 
 `strtol()` behaves very similarly to `strtod()` except parses the string into a `long int` rather than a `double`.
 
-Memory manipulation functions are also useful for string manipulation. Some of the useful functions are shown below.
-
-<table>
-  <thead>
-    <tr>
-      <th>Function</th>
-      <th>Description</th>
-      <th>Comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{% code %}}`memset(char* stringBuff, int value, size_t num);`{{% /code %}}</td>
-      <td>Writes a constant value to a set number of elements in memory.</td>
-      <td>Used to clear a string at run-time (e.g. `memset(buff1, '\0', sizeof(buff1));`). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!</td>
-    </tr>
-  </tbody>
-</table>
-
 ## Decoding/Encoding Strings
 
 `strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
-`getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/docs/getopt.zip) (taken from GCC gLibC v2.17).
-
-
-
-### snprintf()
-
-`sprintf()` has plenty of special characters you can add to format the output number exactly how you want it.
-
-The length parameter specifies the length of the variable (for example, you can have 8-bit, 16-bit, 32-bit, e.t.c integers). In the Keil C51 compiler, the `b` or `B` length specifier is used to tell `sprintf` that the number is 8-bit. If you don't use this, 8-bit numbers stored in `uint8_t` or `char` data types will not print properly. You do not have to use the `b/B` specifier when using GCC.
-
-```c    
-// Print a float to 2 decimal places
-snprintf(txBuffer, sizeof(txBuffer), "Float to 2dp: %.2f", float1);
-
-// Print a 8-bit number in the Keil C51 compiler, using the length specifier 'b' ('B' can be used also)
-uint8 eightBitNum = 23;
-sprintf(txBuffer, "This is an 8-bit number: %bu", eightBitNum);
-```
+`getopt()` is a standard function for finding command-line arguments passed into `main()` as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/docs/getopt.zip) (taken from GCC gLibC v2.17).
 
 ## Converting a Version String to Numbers
 
@@ -628,3 +609,4 @@ You can test this code live at https://replit.com/@gbmhunter/c-version-string-to
 [^wikipedia-printf]: Wikipedia (2023, Aug 23). _printf_. Retrieved 2023-12-25, from https://en.wikipedia.org/wiki/Printf.
 [^wikibooks-itoa]: Wikibooks (2020, Apr 16). _C Programming/stdlib.h/itoa_. Retrieved 2023-12-26, from https://en.wikibooks.org/wiki/C_Programming/stdlib.h/itoa.
 [^ibm-zos-docs-itoa]: IBM (2021). _z/OS Docs - itoa() - Convert int into a string_. Retrieved 2023-12-26, from https://www.ibm.com/docs/en/zos/2.1.0?topic=functions-itoa-convert-int-into-string.
+[^cplusplus-itoa]: cplusplus.com (2023). _function - itoa_. Retrieved 2023-12-26, from https://cplusplus.com/reference/cstdlib/itoa/.
