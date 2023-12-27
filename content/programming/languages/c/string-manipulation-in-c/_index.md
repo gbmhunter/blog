@@ -307,51 +307,146 @@ Although the basic behaviour is defined in the ANSI standard, the exact implemen
 <table>
   <thead>
     <tr>
-      <th>Specifier</th>
+      <th style="width: 100px;">Specifier</th>
       <th>Description</th>
-      <th>Example</th>
+      <th style="width: 400px;">Example</th>
     </tr>
   </thead>
 <tbody>
+
+<!-- ================================== -->
+<!-- %c -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%c`{{% /md %}}</td>
-<td>Prints a single ASCII character, given a 8-bit number</td>
-<td>{{% md %}}`printf("%c", 103);  // Prints "g"`{{% /md %}}</td>
+<td>
+
+`%c`
+</td>
+<td>Prints a single ASCII character.</td>
+<td>
+
+```c
+printf("%c", 'g');  // Prints "g"
+printf("%c", 103);  // Also prints "g"
+```
+</td>
 </tr>
+
+<!-- ================================== -->
+<!-- %d/%i -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%i`{{% /md %}}</td>
-<td>Prints a signed integer (whose exact width is implementation-specific, usually 16 or 32-bit).</td>
-<td>{{% md %}}`printf("%i", -34); // Prints "-34"`{{% /md %}}</td>
+<td>
+
+`%d`/`%i`
+</td>
+<td>
+
+Prints a signed integer (whose exact width is implementation-specific, usually 16 or 32-bit). There is no difference between `%d` and `%i` when used for output, but when used for input with `scanf()`, `%i` will interpret a number as octal is preceded with a `0`, and hexadecimal if preceded with a `0x`.
+</td>
+<td>
+
+```c
+printf("%i", -34); // Prints "-34"`
+```
+</td>
 </tr>
+
+<!-- ================================== -->
+<!-- %u -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%u`{{% /md %}}</td>
-<td>Prints an un-signed integer (whose exact width is implementation-specific, usually 16 or 32-bit).</td>
-<td>{{% md %}}`printf("%u", 456); // Prints "456"`{{% /md %}}</td>
+<td>
+
+`%u`
+</td>
+<td>Prints an unsigned integer (whose exact width is implementation-specific, usually 16 or 32-bit).</td>
+<td>
+
+```c
+printf("%u", 456); // Prints "456"`
+```
 </tr>
+
+<!-- ================================== -->
+<!-- %s -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%s`{{% /md %}}</td>
+<td>
+
+`%s`
+</td>
 <td>Prints a null-delimited string of ASCII characters (of arbitrary length).</td>
-<td>{{% md %}}`printf("%s", "This is a string"); // Prints "This is a string"`{{% /md %}}</td>
+<td>
+
+```c
+`printf("%s", "This is a string"); // Prints "This is a string"`
+```
 </tr>
+
+<!-- ================================== -->
+<!-- %x/%X -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%x`{{% /md %}}</td>
-<td>Prints a hexidecimal number</td>
-<td>{{% md %}}`printf("%x", 10); // Prints "a"`{{% /md %}}</td>
+<td>
+
+`%x`/`%X`
+</td>
+<td>
+
+Prints a hexadecimal number. `%x` prints lower-case letters, whilst `%X` prints upper-case letters.
+</td>
+<td>
+
+```c
+printf("%x", 10); // Prints "a"
+printf("%X", 10); // Prints "A"
+printf("0x%X", 10); // Prints "0xA", have to add the 0x your self with %x/%X
+```
 </tr>
+
+<!-- ================================== -->
+<!-- %f/%F -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%X`{{% /md %}}</td>
-<td>Same as %x, except it prints all in upper-case.</td>
-<td>{{% md %}}`printf("%X", 10); // Prints "A"`{{% /md %}}</td>
+<td>
+
+`%f`/`%F`
+</td>
+<td>
+
+Prints a float (or double). All floats are converted to doubles anyway via default argument promotions. `%f` prints infinite as NaN as `inf`, `infinity` and `nan`, whilst `%F` prints them as `INF`, `INFINITY` and `NAN`.
+</td>
+<td>
+
+```c
+printf("%f", 2.345); // Prints "2.345"
+```
+</td>
 </tr>
+
+<!-- ================================== -->
+<!-- %% -->
+<!-- ================================== -->
 <tr>
-<td>{{% md %}}`%f`{{% /md %}}</td>
-<td>Prints a float (or double). All floats are converted to doubles anyway via default argument promotions.</td>
-<td>{{% md %}}`printf("%f", 2.345); // Prints "2.345"`{{% /md %}}</td>
+<td>
+
+`%%`
+</td>
+<td>
+
+Use two `%` symbols together to print a literal `%` character.
+</td>
+<td>
+
+```c
+printf("%u%%", 2); // Prints "2%"
+```
+</td>
 </tr>
+
 </tbody>
 </table>
-
-If you actually wanted to print the % character rather than use it to specify a conversion, use two of them (`printf("%%"); // prints "%"`).
 
 ### Format Specifiers
 
