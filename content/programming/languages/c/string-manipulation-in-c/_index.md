@@ -52,16 +52,15 @@ One thing C does differently to a lot of other languages is it's choice of using
 
 ## Different Ways Of Creating Strings
 
-Whenever you write anything in double quotes in C (e.g. `"abc"`), you are creating what is called a string literal.
+Whenever you write anything in double quotes in C (e.g. `"abc"`), you are creating what is called a string literal. You can assign a string literal to a pointer to char, like so:
 
 ```c
 char* myStr = "abc"; // This is a string literal
 ```
 
-You can also declare strings using array notation.
+You can also assign a string literal to an array of char, like so:
 
 ```c
-char* myStr1 = "abc"; // Creating a string literal and assigning it to a pointer
 char myStr2[] = "abc"; // Creating a string literal and assigning it to any array
                        // (the size is inferred from the right-hand side of the equation)
 ```
