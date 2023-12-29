@@ -17,6 +17,6 @@ type: post
 
 * Updated the VMIN and VTIME information on [Linux Serial Ports Using C/C++](/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/).
 
-* Added info on converting a version string into numbers to the [C String Manipulation page](/programming/languages/c/string-manipulation/#converting-a-version-string-to-numbers).
+* Added info on converting a version string into numbers to the [C String Manipulation page](/programming/languages/c/string-manipulation/#converting-a-version-string-to-numbers). This page was also restructured to read better.
 
 * Added info on the [Hardware Info Interface (including reset causes) to the Zephyr page](/programming/operating-systems/zephyr-project/#hardware-info).

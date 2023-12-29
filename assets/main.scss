@@ -874,7 +874,7 @@ aside.prompt {
     box-sizing: border-box;
 }
 
-aside.prompt .title {    
+aside.prompt .title {
     font-weight: 700;
     padding-left: 1em;
 }
@@ -1544,43 +1544,18 @@ do this for us */
     content: none;
 }
 
-// AsciiDoc admonitions (e.g. TIP:, WARNING:, ...)
-.admonitionblock {
+/* ========================================================================= */
+/* ASIDES
+/* ========================================================================= */
 
-    // Add gaps between admonition blocks and other content
-    margin-top: 1em;
-    margin-bottom: 1em;
-
-    &.tip {
-        background-color: rgb(230, 255, 230);
-    }
-
-    &.note {
-        background-color: rgb(252, 252, 237);
-    }
-
-    &.warning {
-        background-color: rgb(255, 230, 230);
-    }
-
-    table tbody tr {
-        background-color: transparent !important;
-    }
-
-    td {
-        line-height: 1.7 !important;
-    }
-}
-
-// Admonition blocks for markdown
-div.admonitionblock-md {
+// Aside blocks for markdown
+div.aside {
 
     // Add gaps between admonition blocks and other content
     margin-top: 1em;
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
-    
 
     .top-bar {
         width: 100%;
@@ -1654,28 +1629,26 @@ div.admonitionblock-md {
         }
     }
 
-    &.warning {
-        $base-color: rgb(255, 0, 0);
-        background-color: rgba($base-color, 0.1);
-        border-inline-start: 4px solid rgba($base-color, 1);
+    [data-theme='light'] &.warning {
+        background-color: rgb(253, 226, 226);
+        border-inline-start: 4px solid rgb(255, 0, 0);
         .top-bar {
-            $title-bar-color: darken($base-color, 20);
-            color: $title-bar-color;
-            fill: $title-bar-color;
+            color: rgb(255, 0, 0);
+            svg path {
+                fill: rgb(255, 0, 0);
+            }
         }
     }
-}
 
-// text-center is added by AsciiDoc when [.text-center] is added before a paragraph
-.text-center {
-    text-align: center;
-}
-
-// [.eq-vars] block attributes are used for explaining the variables of above equations
-.eq-vars {
-    p {
-        text-align: center;
-        font-size: 0.9rem;
+    [data-theme='dark'] &.warning {
+        background-color: rgb(255, 64, 64);
+        border-inline-start: 4px solid rgb(158, 0, 0);
+        .top-bar {
+            color: rgb(255, 255, 255);
+            svg path {
+                fill: rgb(255, 255, 255);
+            }
+        }
     }
 }
 
@@ -1696,22 +1669,6 @@ div.admonitionblock-md {
         // Colour the default code text black
         color: rgb(0, 0, 0);
     }
-}
-
-/* ========================================================================= */
-/* EXAMPLE BLOCKS                                                            */
-/* ========================================================================= */
-.exampleblock {
-    .title {
-        color: var(--caption-font-color);
-        font-size: 1.0em;
-        font-style: italic;
-        font-weight: var(--caption-font-weight);
-
-    }
-    background-color: var(--example-bg-color);
-    padding: 10px;
-    margin-bottom: 20px; // Space before the next element on the page
 }
 
 /* ========================================================================= */

@@ -15,6 +15,32 @@ type: "page"
 
 Descriptions, usages, pictures and more info of various tools used by embedded engineers.
 
+## Benchtop Power Supplies
+
+Benchtop power supplies (PSUs) (plural, you almost always need more than one!) are a essential part of any electronics workshop/lab.
+
+### Wanptek 30-160V 10-3A 300-360W PSUs
+
+If you are looking for a good but cheap bench-top DC power supply, the Wanptek range is pretty good. They come in a number of different max. voltage/max. current configurations including:
+
+* 30V, 5A (150W)
+* 30V, 10A (300W)
+* 60V, 5A (300W)
+* 120V, 3A (360W)
+* 160V, 2A (320W) 
+
+Be careful with the 120V and 160V versions, they are high enough to give you a decent electrical shock! 120V is right on the limit of what is considered "extra low voltage" here in New Zealand. You can set both voltage and current limits to essentially operate in CV and CC modes. There are some slightly cheaper variants with the three memory settings (and a slightly different UI).
+
+The are available on AliExpress from https://www.aliexpress.com/item/1005003151034729.html.
+
+{{% figure src="wanptek-wps3010h-benchtop-psu-30v-10a.png" width="200px" caption="A photo of the Wanptek 30V 10A PSU.[^aliexpress-wanptek-30v-10a-psu]" %}}
+
+{{% aside type="warning" %}}
+
+Be wary of PSUs which have "coarse" and "fine" knobs for adjusting voltage and current. It's a pain to have to modify two knobs to adjust the voltage or current, and you typically run into the limits of the fine, having to switch back to the coarse before going back to the fine knob again. Not worth it (IMO)!
+
+{{% /aside %}}
+
 ## Oscilloscopes
 
 An _oscilloscope_ (or just _scope_) is to an electrical engineer what a hammer is to a builder. It is a general purpose tool which lets you view voltages (and currents) in a circuit over time. It's cheaper counterpart is a digital multimeter, however they can typically only display the voltage with an update rate of a few Hertz, and only display a discrete value, not the waveform over time. Oscilloscopes can also measure much faster signals and much faster rates and trigger (take a snapshot) on specific conditions. They typically also have multiple input channels (at least two) so you can compare two voltage waveforms side-by-side.
@@ -530,3 +556,4 @@ It is generally not a good thing to inhale these fumes on a long term basis. Fum
 [^bib-cispr-25]: IEC (2016). _Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers_. Retrieved 2021-07-02, from https://webstore.iec.ch/publication/26122.
 [^bib-digilent-adp3450-ref-manual]: Digilent. _Analog Discovery Pro (ADP3450/ADP3250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-3x50/reference-manual.
 [^bib-digilent-adp5250-ref-manual]: Digilent. _Analog Discovery Pro (ADP5250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-5250/reference-manual.
+[^aliexpress-wanptek-30v-10a-psu]: Wanptek. _Wanptek Programmable DC Power Supply WPS3010H Laboratory Maintenance Workbench 30V 10A Voltage Current Regulator AC 220V 110V_. AliExpress. Retrieved 2023-12-29, from https://www.aliexpress.com/item/1005003151034729.html.
