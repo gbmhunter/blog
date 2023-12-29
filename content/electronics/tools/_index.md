@@ -21,7 +21,7 @@ Benchtop power supplies (PSUs) (plural, you almost always need more than one!) a
 
 ### Wanptek 30-160V 10-3A 300-360W PSUs
 
-If you are looking for a good but cheap bench-top DC power supply, the Wanptek range is pretty good. They come in a number of different max. voltage/max. current configurations including:
+If you are looking for a good but cheap bench-top DC power supply, the Wanptek range is pretty good. They cost approx. US$50-$80 depending on the variant, as of Dec 2023. They come in a number of different max. voltage/max. current configurations including:
 
 * 30V, 5A (150W)
 * 30V, 10A (300W)
@@ -29,9 +29,9 @@ If you are looking for a good but cheap bench-top DC power supply, the Wanptek r
 * 120V, 3A (360W)
 * 160V, 2A (320W) 
 
-Be careful with the 120V and 160V versions, they are high enough to give you a decent electrical shock! 120V is right on the limit of what is considered "extra low voltage" here in New Zealand. You can set both voltage and current limits to essentially operate in CV and CC modes. There are some slightly cheaper variants with the three memory settings (and a slightly different UI).
+Be careful with the 120V and 160V versions, they are high enough to give you a decent electrical shock! 120V is right on the limit of what is considered "extra low voltage" by the IEC, UK IET and AS/NZS 3000[^wikipedia-extra-low-voltage]. You can set both voltage and current limits to essentially operate in both CV and CC modes. There are some two different UI variants, one which is slightly more expensive and contains three memory buttons (and a slightly different UI).
 
-The are available on AliExpress from https://www.aliexpress.com/item/1005003151034729.html.
+They are available on AliExpress from https://www.aliexpress.com/item/1005003151034729.html.
 
 {{% figure src="wanptek-wps3010h-benchtop-psu-30v-10a.png" width="200px" caption="A photo of the Wanptek 30V 10A PSU.[^aliexpress-wanptek-30v-10a-psu]" %}}
 
@@ -40,6 +40,14 @@ The are available on AliExpress from https://www.aliexpress.com/item/10050031510
 Be wary of PSUs which have "coarse" and "fine" knobs for adjusting voltage and current. It's a pain to have to modify two knobs to adjust the voltage or current, and you typically run into the limits of the fine, having to switch back to the coarse before going back to the fine knob again. Not worth it (IMO)!
 
 {{% /aside %}}
+
+### Tenma PSUs
+
+Tenma PSUs are more generally more expensive than AliExpress PSUs but are still cheap compared to the more expensive brands. They are available from Newark/Element14.
+
+The TENMA 72-2925 is a adjustable 0-30V, 0-10A benchtop power supply. As of Dec 2023 it costs approx. US$230.
+
+{{% figure src="tenma-72-2925-30v-10a-benchtop-psu.png" width="200px" caption="A photo of the TENMA 72-2925 benchtop PSU[^element14-tenma-72-2925]." %}}
 
 ## Oscilloscopes
 
@@ -557,3 +565,5 @@ It is generally not a good thing to inhale these fumes on a long term basis. Fum
 [^bib-digilent-adp3450-ref-manual]: Digilent. _Analog Discovery Pro (ADP3450/ADP3250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-3x50/reference-manual.
 [^bib-digilent-adp5250-ref-manual]: Digilent. _Analog Discovery Pro (ADP5250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-5250/reference-manual.
 [^aliexpress-wanptek-30v-10a-psu]: Wanptek. _Wanptek Programmable DC Power Supply WPS3010H Laboratory Maintenance Workbench 30V 10A Voltage Current Regulator AC 220V 110V_. AliExpress. Retrieved 2023-12-29, from https://www.aliexpress.com/item/1005003151034729.html.
+[^wikipedia-extra-low-voltage]: Wikipedia (2023, Dec 12). _Extra-low voltage_. Retrieved 2023-12-29, from https://en.wikipedia.org/wiki/Extra-low_voltage.
+[^element14-tenma-72-2925]: Element14. _TENMA 72-2925 - Bench Power Supply, Digital Control , Adjustable, 1 Output, 0V, 30V, 0A, 10A_ [Product Page]. Retrieved 2023-12-29, from https://nz.element14.com/tenma/72-2925/dc-power-supply-1-ch-30v-10a-prog/dp/254306301.
