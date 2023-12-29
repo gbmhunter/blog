@@ -20,3 +20,5 @@ type: post
 * Added info on converting a version string into numbers to the [C String Manipulation page](/programming/languages/c/string-manipulation/#converting-a-version-string-to-numbers). This page was also restructured to read better.
 
 * Added info on the [Hardware Info Interface (including reset causes) to the Zephyr page](/programming/operating-systems/zephyr-project/#hardware-info).
+
+* Added more info on Benchtop PSUs to the [Electronics Tools page](/electronics/tools/).
