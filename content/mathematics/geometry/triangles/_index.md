@@ -59,13 +59,17 @@ a &= \sin{A}\frac{b}{\sin{B}} \nonumber \\
 
 ### Watch Out For Ambiguity
 
-In certain circumstances, there is more than one possible answer when calculating values using the Law of Sines. This occurs in a specific situation, which is detailed below[^libretexts-maths-the-law-of-sines]:
+In certain circumstances, there is more than one possible answer when calculating values using the Law of Sines. This occurs in a specific situation, when[^libretexts-maths-the-law-of-sines]:
 
 * You know the length of two sides of the triangle (`\(a\)` and `\(b\)`) and one opposite angle `\(A\)` (and thus are trying to calculate the other opposite angle `\(B\)`).
 * Angle `\(A\)` is in the range `\(0^{\circ} < A < 90^{\circ}\)` (i.e. is acute).
 * Length `\(a\)` is greater than `\(h\)` but less than `\(b\)`, where `\(h\)` is the "vertical" height as shown in {{% ref "fig-law-of-sines-ambiguous-case-diagram" %}}.
 
 {{% figure ref="fig-law-of-sines-ambiguous-case-diagram" src="_assets/law-of-sines-ambiguous-case-diagram.webp" width="1000px" caption="Diagram showing the situations when you know two sides of the triangle and 1 opposite angle. c) is the ambiguous cases which has two possible solutions." %}}
+
+Mathematically this occurs because `\(\sin^{-1}\)` can give two answers in the range of `\([0, 180]\)` (a valid angle of a triangle has to be within this range). For example, `\(\sin^{-1}(0.8)\)`.
+
+{{% figure ref="fig-sine-law-sine-wave-graph" src="_assets/sine-law-sine-wave-graph.png" width="600px" caption="Graph showing how inverse sine can result in two values between `\([0, 180]\)`." %}}
 
 **If you find yourself in a position with two possible answers, what can you do?** If you don't have any other information about the triangle, then you are out of luck. However, if you know the length of the remaining side of the triangle, you can use the Cosine Law to completely solve for all angles and sides of the triangle. If you know one other angle of the triangle, then you can use the simple fact that all the internal angles sum to `\(180^{\circ}\)` to solve for the angle you were interested in.
 
