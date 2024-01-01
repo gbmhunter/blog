@@ -29,6 +29,7 @@
   </div>
   <div class="content">
 <!-- Need empty line here for references inside aside to work correctly -->
-{{ .Inner | markdownify }}
+<!-- Do not call markdownify on .Inner, this causes Latex to break if here is a single paragraph in .Inner -->
+{{ .Inner }}
   </div>
 </div>

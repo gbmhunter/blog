@@ -179,6 +179,10 @@ print('Hello, world!')
 ```
 {{% /aside %}}
 
+{{% aside type="note" %}}
+There should be an equation here: `\(y = x^2\)`
+{{% /aside %}}
+
 Below should be a worked example. It should be an aside with info inside it. There should be numbered steps, and there should be equations in some of the steps.
 
 {{% aside type="example" %}}

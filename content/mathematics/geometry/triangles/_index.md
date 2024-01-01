@@ -13,9 +13,9 @@ type: page
 
 The _Law of Sines_ is a useful equation for determining unknown lengths and angles of any triangle (not just right-angled triangles) if you know some of the other lengths and angles. Together with the Law of Cosines you can find the lengths and angles of any triangle as long as you know enough values already to fully-constrain it.
 
-{{% figure src="_assets/law-of-sines-diagram.webp" width="400px" caption="Diagram illustrating the variables used in the Law of Sines." %}}
+{{% figure ref="fig-law-of-sines-diagram" src="_assets/law-of-sines-diagram.webp" width="400px" caption="Diagram illustrating the variables used in the Law of Sines." %}}
 
-If a triangle has lengths of `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles of `\(A\)`, `\(B\)`, and `\(C\)` respectively (as shown in the above diagram), then the Law of Sines is:
+If a triangle has lengths of `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles of `\(A\)`, `\(B\)`, and `\(C\)` respectively (as shown in {{% ref "fig-law-of-sines-diagram" %}}), then the Law of Sines is:
 
 <p>\begin{align}
 \frac{\sin{A}}{a} = \frac{\sin{B}}{b} = \frac{\sin{C}}{c}
@@ -23,11 +23,17 @@ If a triangle has lengths of `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles o
 
 This means that the sine of the angle divided by the opposite length is the same value for all three angle/side pairs.
 
+{{% aside type="tip" %}}
+
+The lengths `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles of `\(A\)`, `\(B\)`, and `\(C\)` may be moved around the triangle, the letters do not have a particular "side" they belong to. What is important is that `\(A\)` is always the angle opposite side `\(a\)` and so on.
+
+{{% /aside %}}
+
 {{% aside type="example" %}}
 
-Given the triangle shown in the below diagram, calculate the length of side `\(x\)`.
+Given the triangle shown in {{% ref "fig-law-of-sines-example-1-diagram" %}}, calculate the length of side `\(x\)`.
 
-{{% figure src="_assets/law-of-sines-example-1-diagram.webp" width="400px" caption="Diagram for Example 1." %}}
+{{% figure ref="fig-law-of-sines-example-1-diagram" src="_assets/law-of-sines-example-1-diagram.webp" width="400px" caption="Diagram for Example 1." %}}
 
 We'll flip the Law of Sines equation and just use one equality:
 

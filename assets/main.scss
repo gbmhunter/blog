@@ -1640,6 +1640,28 @@ div.aside {
         }
     }
 
+    [data-theme='light'] &.tip {
+        background-color: rgb(218, 250, 222);
+        border-inline-start: 4px solid rgb(0, 209, 10);
+        .top-bar {
+            color: rgb(0, 104, 5);
+            svg path {
+                fill: rgb(0, 104, 5);
+            }
+        }
+    }
+
+    [data-theme='dark'] &.tip {
+        background-color: rgb(9, 78, 0);
+        border-inline-start: 4px solid rgb(71, 255, 71);
+        .top-bar {
+            color: rgb(71, 255, 71);
+            svg path {
+                fill: rgb(71, 255, 71);
+            }
+        }
+    }
+
     [data-theme='light'] &.warning {
         background-color: rgb(253, 226, 226);
         border-inline-start: 4px solid rgb(255, 0, 0);
