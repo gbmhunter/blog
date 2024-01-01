@@ -33,3 +33,6 @@ sym-lib-table
 *.sch-bak
 *.pro
 _autosave-*.sch
+
+# Affinity files
+**/*.*~lock~

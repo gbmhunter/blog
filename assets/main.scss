@@ -1596,14 +1596,25 @@ div.aside {
         }
     }
 
-    &.example {
-        $base-color: rgb(255, 191, 0);
-        background-color: rgba($base-color, 0.1);
-        border-inline-start: 4px solid rgba($base-color, 1);
+    [data-theme='light'] &.example {
+        background-color: rgb(255, 240, 195);
+        border-inline-start: 4px solid rgb(202, 152, 0);
         .top-bar {
-            $title-bar-color: darken($base-color, 20);
-            color: $title-bar-color;
-            fill: $title-bar-color;
+            color: rgb(202, 152, 0);
+            svg path {
+                fill: rgb(202, 152, 0);
+            }
+        }
+    }
+
+    [data-theme='dark'] &.example {
+        background-color: rgb(85, 64, 0);
+        border-inline-start: 4px solid rgb(202, 152, 0);
+        .top-bar {
+            color: rgb(202, 152, 0);
+            svg path {
+                fill: rgb(202, 152, 0);
+            }
         }
     }
 
