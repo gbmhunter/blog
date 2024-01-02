@@ -391,7 +391,11 @@ Padding provides offset so it doesn't collide with top navbar
 .page-wrapper {
     padding-top: 20px;
 
-    max-width: 100%;
+    // Limit the max width to something other than 100%. This is so that
+    // on wide screens, the content doesn't become too wide and hard to read
+    // (long lines of text confuse the eyes!)
+    // max-width: 100%;
+    max-width: 1300px;
     display: flex;
 
     address {
