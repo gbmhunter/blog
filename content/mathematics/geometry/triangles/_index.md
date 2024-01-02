@@ -31,7 +31,7 @@ The lengths `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles of `\(A\)`, `\(B\)
 
 {{% aside type="example" %}}
 
-Given the triangle shown in {{% ref "fig-law-of-sines-example-1-diagram" %}}, calculate the length of side `\(x\)`.
+Given the triangle shown in {{% ref "fig-law-of-sines-example-1-diagram" %}}, calculate the length of side `\(a\)`.
 
 {{% figure ref="fig-law-of-sines-example-1-diagram" src="_assets/law-of-sines-example-1-diagram.webp" width="400px" caption="Diagram for Example 1." %}}
 
@@ -67,11 +67,60 @@ In certain circumstances, there is more than one possible answer when calculatin
 
 {{% figure ref="fig-law-of-sines-ambiguous-case-diagram" src="_assets/law-of-sines-ambiguous-case-diagram.webp" width="1000px" caption="Diagram showing the situations when you know two sides of the triangle and 1 opposite angle. c) is the ambiguous cases which has two possible solutions." %}}
 
-Mathematically this occurs because `\(\sin^{-1}\)` can give two answers in the range of `\([0, 180]\)` (a valid angle of a triangle has to be within this range). For example, `\(\sin^{-1}(0.8)\)`.
+Mathematically this occurs because `\(\sin^{-1}\)` can give two answers in the range of `\([0, 180]\)` (a valid angle of a triangle has to be within this range). For example, `\(\sin^{-1}(0.6)\)` gives the following values:
+
+<p>\begin{align}
+\sin^{-1}(0.6) &= 36.9^{\circ} && \text{This is what the calculator will give you} \\
+\sin^{-1}(0.6) &= 180.0^{\circ} - 36.9^{\circ} \\
+               &= 143.1^{\circ} \\
+\end{align}</p>
+
+Calculators always give you the angle in the range of `\([-90, 90]\)` when using `\(\sin^{-1}\)` (also called `\(asin\)` or `\(arcsin\)`). To get the other answer you have to subtract the calculator answer from `\(180^{\circ}\)`. {{% ref "fig-sine-law-sine-wave-graph" %}} explains the situation in visual manner.
 
 {{% figure ref="fig-sine-law-sine-wave-graph" src="_assets/sine-law-sine-wave-graph.png" width="600px" caption="Graph showing how inverse sine can result in two values between `\([0, 180]\)`." %}}
 
 **If you find yourself in a position with two possible answers, what can you do?** If you don't have any other information about the triangle, then you are out of luck. However, if you know the length of the remaining side of the triangle, you can use the Cosine Law to completely solve for all angles and sides of the triangle. If you know one other angle of the triangle, then you can use the simple fact that all the internal angles sum to `\(180^{\circ}\)` to solve for the angle you were interested in.
+
+{{% aside type="example" %}}
+
+Given the triangle shown in {{% ref "fig-law-of-sines-ambiguous-example-diagram" %}}, calculate the angle of `\(B\)`. This triangle has been designed to be ambiguous (two possible answers).
+
+{{% figure ref="fig-law-of-sines-ambiguous-example-diagram" src="_assets/law-of-sines-ambiguous-example-diagram.webp" width="600px" caption="Diagram for the ambiguous Law of Sines worked example." %}}
+
+Let's start with the Law of Sines equation:
+
+<p>\begin{align}
+\frac{\sin{A}}{a} = \frac{\sin{B}}{b}
+\end{align}</p>
+
+Re-arrange to solve for `\(B\)`:
+
+<p>\begin{align}
+B = \sin^{-1}\left(\frac{b\sin{A}}{a}\right)
+\end{align}</p>
+
+Plugging in the values:
+
+<p>\begin{align}
+B &= \sin^{-1}\left(\frac{44\text{mm} \cdot \sin{37.5^{\circ}}}{28\text{mm}}\right) \\
+  &= \sin^{-1}(0.957)
+\end{align}</p>
+
+The calculator will give us (this is the answer using the **solid** blue line in {{% ref "fig-law-of-sines-ambiguous-example-diagram" %}}):
+
+<p>\begin{align}
+B &= \sin^{-1}(0.957) \\
+  &= 73.1^{\circ}
+\end{align}</p>
+
+And the other solution is `\(180\)` minus this (this is the answer using the **dotted** blue line in {{% ref "fig-law-of-sines-ambiguous-example-diagram" %}}):
+
+<p>\begin{align}
+B &= 180^{\circ} - \sin^{-1}(0.957) \\
+  &= 107^{\circ}
+\end{align}</p>
+
+{{% /aside %}}
 
 ## References
 
