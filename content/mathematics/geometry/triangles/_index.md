@@ -23,6 +23,10 @@ If a triangle has lengths of `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles o
 
 This means that the sine of the angle divided by the opposite length is the same value for all three angle/side pairs.
 
+### What Are Opposite Angles?
+
+The opposite angle for any side of a triangle is the angle which does not "touch" the side in question. For example, if `\(a\)` was a side of a triangle, then it's opposite angle `\(A\)` would be the angle enclosed by sides `\(b\)` and `\(c\)`. The angle is directly "opposite" the side.
+
 {{% aside type="tip" %}}
 
 The lengths `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles of `\(A\)`, `\(B\)`, and `\(C\)` may be moved around the triangle, the letters do not have a particular "side" they belong to. What is important is that `\(A\)` is always the angle opposite side `\(a\)` and so on.
@@ -38,21 +42,21 @@ Given the triangle shown in {{% ref "fig-law-of-sines-example-1-diagram" %}}, ca
 We'll flip the Law of Sines equation and just use one equality:
 
 <p>\begin{align}
-\frac{a}{\sin{A}} = \frac{b}{\sin{B}} \nonumber
+\frac{a}{\sin{A}} = \frac{b}{\sin{B}}
 \end{align}</p>
 
 Re-arranging for `\(a\)`:
 
 <p>\begin{align}
-a = \sin{A}\frac{b}{\sin{B}} \nonumber
+a = \sin{A}\frac{b}{\sin{B}}
 \end{align}</p>
 
 Plugging in the numbers:
 
 <p>\begin{align}
-a &= \sin{A}\frac{b}{\sin{B}} \nonumber \\
-  &= \sin{(72^{\circ})}\frac{31\text{mm}}{\sin{(45^{\circ})}} \nonumber \\
-  &= 47.1\text{mm} \nonumber \\
+a &= \sin{A}\frac{b}{\sin{B}} \\
+  &= \sin{(72^{\circ})}\frac{31\text{mm}}{\sin{(45^{\circ})}} \\
+  &= 47.1\text{mm} \\
 \end{align}</p>
 
 {{% /aside %}}
@@ -78,6 +82,10 @@ Mathematically this occurs because `\(\sin^{-1}\)` can give two answers in the r
 Calculators always give you the angle in the range of `\([-90, 90]\)` when using `\(\sin^{-1}\)` (also called `\(asin\)` or `\(arcsin\)`). To get the other answer you have to subtract the calculator answer from `\(180^{\circ}\)`. {{% ref "fig-sine-law-sine-wave-graph" %}} explains the situation in visual manner.
 
 {{% figure ref="fig-sine-law-sine-wave-graph" src="_assets/sine-law-sine-wave-graph.png" width="600px" caption="Graph showing how inverse sine can result in two values between `\([0, 180]\)`." %}}
+
+Ambiguity is not a problem if A is in the range `\(90^{\circ} \leq A < 180^{\circ}\)` (i.e. `\(A\)` is **not** acute). In this scenario, There can either be no solution or just 1 solution, but never 2. {{% ref "fig-law-of-sines-ambiguous-case-a-not-acute-diagram" %}} illustrates this.
+
+{{% figure ref="fig-law-of-sines-ambiguous-case-a-not-acute-diagram" src="_assets/law-of-sines-ambiguous-case-a-not-acute-diagram.webp" width="600px" caption="Diagram showing that when A is not acute, there is no ambiguous case for the Law of Sines." %}}
 
 **If you find yourself in a position with two possible answers, what can you do?** If you don't have any other information about the triangle, then you are out of luck. However, if you know the length of the remaining side of the triangle, you can use the Cosine Law to completely solve for all angles and sides of the triangle. If you know one other angle of the triangle, then you can use the simple fact that all the internal angles sum to `\(180^{\circ}\)` to solve for the angle you were interested in.
 
