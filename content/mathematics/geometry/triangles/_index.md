@@ -3,13 +3,21 @@ authors: [ Geoffrey Hunter ]
 categories: [ Mathematics, Geometry ]
 date: 2023-12-29
 draft: false
-lastmod: 2023-12-29
+lastmod: 2024-01-02
 tags: [ law of sines, law of cosines, triangles, angles, lengths, equations ]
 title: Triangles
 type: page
 ---
 
+## Overview
+
+Triangle geometry pops up time and time again in engineering, in all sorts of things such as robotics, motors, linkages, maps, and sensing (e.g. GPS or ultrasound). It's helpful to know how to work with triangles and solve for things like unknown side lengths and angles, areas, e.t.c.
+
+This page will teach you how! If you have a right-angles triangle and what to calculate unknown edge lengths or angles, use the basic trigonometric ratios (SOH CAH TOA). If you have a non-right angled triangle but want to also want to solve for lengths and/or angles, use the [Law of Sines](#law-of-sines) and/or [Law of Cosines](#law-of-cosines). 
+
 ## Law of Sines
+
+### The Equation
 
 The _Law of Sines_ is a useful equation for determining unknown lengths and angles of any triangle (not just right-angled triangles) if you know some of the other lengths and angles. Together with the Law of Cosines you can find the lengths and angles of any triangle as long as you know enough values already to fully-constrain it.
 
@@ -129,6 +137,10 @@ B &= 180^{\circ} - \sin^{-1}(0.957) \\
 \end{align}</p>
 
 {{% /aside %}}
+
+## Law of Cosines
+
+TODO: Add info.
 
 ## References
 
