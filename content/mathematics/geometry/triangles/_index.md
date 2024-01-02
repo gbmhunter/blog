@@ -33,7 +33,7 @@ The lengths `\(a\)`, `\(b\)`, and `\(c\)` and opposite angles of `\(A\)`, `\(B\)
 
 {{% /aside %}}
 
-{{% aside type="example" %}}
+{{% aside type="example" title="Basic Law of Sines Calculation" %}}
 
 Given the triangle shown in {{% ref "fig-law-of-sines-example-1-diagram" %}}, calculate the length of side `\(a\)`.
 
@@ -89,7 +89,7 @@ Ambiguity is not a problem if A is in the range `\(90^{\circ} \leq A < 180^{\cir
 
 **If you find yourself in a position with two possible answers, what can you do?** If you don't have any other information about the triangle, then you are out of luck. However, if you know the length of the remaining side of the triangle, you can use the Cosine Law to completely solve for all angles and sides of the triangle. If you know one other angle of the triangle, then you can use the simple fact that all the internal angles sum to `\(180^{\circ}\)` to solve for the angle you were interested in.
 
-{{% aside type="example" %}}
+{{% aside type="example" title="Ambiguous Law of Sines" %}}
 
 Given the triangle shown in {{% ref "fig-law-of-sines-ambiguous-example-diagram" %}}, calculate the angle of `\(B\)`. This triangle has been designed to be ambiguous (two possible answers).
 

@@ -159,8 +159,8 @@ Link to an image which is not a page resource is shown in {{% ref "fig-cartoon-n
 This is an example. There should be a reference at the end here[^ti-sboa187e-current-mode-control].
 {{% /aside %}}
 
-{{% aside type="note" %}}
-This is a note.
+{{% aside type="note" title="This Has a Custom Title!" %}}
+This is a note. It should also have a custom title.
 {{% /aside %}}
 
 {{% aside type="tip" %}}

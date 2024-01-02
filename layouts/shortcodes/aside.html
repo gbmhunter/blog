@@ -1,3 +1,9 @@
+<!--
+  Basic usage:
+    {% aside type="example" title="Optional Title" %}
+      This is an example.
+    {% /aside %}
+-->
 {{- $type := .Get "type" -}}
 <div class="aside {{ $type }}">
   <div class="top-bar">
@@ -25,7 +31,11 @@
 			</svg>
       {{- end -}}
     </div>
+    {{- if .Get "title" -}}
+    <span class="title">{{- upper $type -}}: {{ .Get "title" }}</span>
+    {{- else -}}
     <span class="title">{{- upper $type -}}</span>
+    {{- end -}}
   </div>
   <div class="content">
 <!-- Need empty line here for references inside aside to work correctly -->
