@@ -11,4 +11,4 @@ title: January 2024 Updates
 type: post
 ---
 
-* 
+* Added info on the [Law of Cosines]().

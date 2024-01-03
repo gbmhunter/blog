@@ -3,7 +3,7 @@ authors: [ Geoffrey Hunter ]
 categories: [ Mathematics, Geometry ]
 date: 2023-12-29
 draft: false
-lastmod: 2024-01-02
+lastmod: 2024-01-03
 tags: [ law of sines, law of cosines, triangles, angles, lengths, equations ]
 title: Triangles
 type: page
@@ -140,10 +140,40 @@ B &= 180^{\circ} - \sin^{-1}(0.957) \\
 
 ## Law of Cosines
 
-TODO: Add info.
+The Law of Cosines (also known as the cosine formula or cosine rule[^wikipedia-law-of-cosines]) is an equation similar to the [Law of Sines](#law-of-sines) which lets you calculate unknown sides and opposite angles if you know some of the others.
+
+### Equation
+
+The Law of Cosines equation is:
+
+<p>\begin{align}
+c^2 &= a^2 + b^2 - 2ab\cos{C} \\
+\end{align}</p>
+
+<p class="centered">
+where:<br />
+\(a\), \(b\) and \(c\) are side lengths of the triangle<br />
+\(C\) is the opposite angle of side \(c\)<br />
+</p>
+
+{{% ref "fig-law-of-cosines-diagram" %}} shows the side and angles involved in the Law of Cosines equation. Knowing all but one of these values, you can calculate the last one by re-arranging the equation.
+
+{{% figure ref="fig-law-of-cosines-diagram" src="_assets/law-of-cosines-diagram.webp" width="400px" caption="Diagram showing the sides and angles involved in the Law of Cosines." %}}
+
+**The law of cosines is useful for solving the sides and angles of a triangle when all three sides are known, or two sides and their included angle are known.** If you know two angles and a side, or two sides and an angle other than the included angle, use the [law of sines](#law-of-sines) instead.
+
+{{% aside type="note" %}}
+While the Law of Sines has a [potential to be ambiguous](#watch-out-for-ambiguity), the same problem does not exist for the Law of Cosines.
+{{% /aside %}}
+
+### Calculators
+
+Google has a handy Law of Cosines calculator that pops up when you search ["law of cosines"](https://www.google.com/search?q=law+of+cosines). {{% ref "fig-law-of-cosines-google-calculator" %}} shows a screenshot of it.
+
+{{% figure ref="fig-law-of-cosines-google-calculator" src="_assets/law-of-cosines-google-calculator.png" width="600px" caption="Screenshot of the Law of Cosines calculator Google provides when you search \"law of cosines\"[^google-law-of-cosines-calc]." %}}
 
 ## References
 
 [^libretexts-maths-the-law-of-sines]: Libretexts: Mathematics. _2.1: The Law of Sines_. Retrieved 2023-12-31, from https://math.libretexts.org/Bookshelves/Precalculus/Elementary_Trigonometry_(Corral)/02%3A_General_Triangles/2.01%3A_The_Law_of_Sines
-
-
+[^google-law-of-cosines-calc]: Google. _Law of Cosines_ [Search Results]. Retrieved 2024-01-03, from https://www.google.com/search?q=law+of+cosines.
+[^wikipedia-law-of-cosines]: Wikipedia (2023, Dec 27). _Law of cosines_. Retrieved 2024-01-03, from https://en.wikipedia.org/wiki/Law_of_cosines.
