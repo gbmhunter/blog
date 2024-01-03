@@ -162,9 +162,16 @@ where:<br />
 
 **The law of cosines is useful for solving the sides and angles of a triangle when all three sides are known, or two sides and their included angle are known.** If you know two angles and a side, or two sides and an angle other than the included angle, use the [law of sines](#law-of-sines) instead.
 
-{{% aside type="note" %}}
-While the Law of Sines has a [potential to be ambiguous](#watch-out-for-ambiguity), the same problem does not exist for the Law of Cosines.
-{{% /aside %}}
+Here is the Law of Cosines equation rearranged for all sides and angles:
+
+<p>\begin{align}
+a &= b\cos C \pm \sqrt{c^2 - b^2 \sin^2 C} \\
+b &= a\cos C \pm \sqrt{c^2 - a^2 \sin^2 C} \\
+c &= \sqrt{a^2 + b^2 - 2ab\cos{C}} \\
+C &= \cos^{-1}\left( \frac{a^2 + b^2 - c^2}{2ab} \right) \\
+\end{align}</p>
+
+Because the side and opposite angle pairs can be assigned freely around the triangle, the equation for `\(b\)` is essentially the same as for `\(a\)`. Note that for both of these sides, there may be 0, 1 or 2 solutions.
 
 ### Calculators
 
