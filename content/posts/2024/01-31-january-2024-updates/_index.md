@@ -11,4 +11,6 @@ title: January 2024 Updates
 type: post
 ---
 
-* Added info on the [Law of Cosines]().
+* Added info on the [Law of Cosines](/mathematics/geometry/triangles/#law-of-cosines).
+
+* Added info on the [Trigonometric Ratios](/mathematics/geometry/triangles/#trigonometric-ratios).

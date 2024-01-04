@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 categories: [ Mathematics, Geometry ]
 date: 2023-12-29
 draft: false
-lastmod: 2024-01-03
-tags: [ law of sines, law of cosines, triangles, angles, lengths, equations ]
+lastmod: 2024-01-04
+tags: [ law of sines, law of cosines, triangles, angles, lengths, equations, trigonometric ]
 title: Triangles
 type: page
 ---
@@ -13,13 +13,109 @@ type: page
 
 Triangle geometry pops up time and time again in engineering, in all sorts of things such as robotics, motors, linkages, maps, and sensing (e.g. GPS or ultrasound). It's helpful to know how to work with triangles and solve for things like unknown side lengths and angles, areas, e.t.c.
 
-This page will teach you how! If you have a right-angles triangle and what to calculate unknown edge lengths or angles, use the basic trigonometric ratios (SOH CAH TOA). If you have a non-right angled triangle but want to also want to solve for lengths and/or angles, use the [Law of Sines](#law-of-sines) and/or [Law of Cosines](#law-of-cosines). 
+This page will teach you how! If you have a right-angles triangle and what to calculate unknown edge lengths or angles, use the basic [trigonometric ratios](#trigonometric-ratios) (SOH CAH TOA). If you have a non-right angled triangle (an _oblique_ triangle) but want to also want to solve for lengths and/or angles, use the [Law of Sines](#law-of-sines) and/or [Law of Cosines](#law-of-cosines). 
+
+## Trigonometric Ratios
+
+Trigonometric ratios are the three ratios `\(\sin\)`, `\(\cos\)`, and `\(\tan\)` which are defined using properties of a right-angled triangle (a triangle in which one of the internal angles is `\(90^{\circ}\)`). They are useful for solving for unknown side lengths and angles of right-angled triangles, but they also crop up many other situations such as Fourier Series, AC voltage/current, complex numbers (e.g. Euler's formula) and oscillators.
+
+### The Equation
+
+Given you have a triangle with a right-angle in it, and another angle `\(A\)`, then {{% ref "fig-sin-cos-tan-diagram" %}} shows the naming of the triangle's sides when using trigonometric ratios.
+
+{{% figure ref="fig-sin-cos-tan-diagram" src="_assets/sin-cos-tan-diagram.webp" width="400px" caption="Diagram illustrating the naming of the triangles sides w.r.t. to angle A when using trigonometric ratios." %}}
+
+It might be obvious from the figure, but the names are because:
+
+* The _hypotenuse_ is the longest side of the right-angled triangle (it is always opposite the right-angle).
+* The _opposite_ side is the side opposite angle `\(A\)`.
+* The _adjacent_ side if the side next to angle `\(A\)` (but not the hypotenuse).
+
+Using these names, then the trigonometric ratios `\(\sin\)`, `\(\cos\)`, and `\(\tan\)` are defined as:
+
+<p>\begin{align}
+\sin A &= \frac{\text{opposite}}{\text{hypotenuse}} \\
+\cos A &= \frac{\text{adjacent}}{\text{hypotenuse}} \\
+\tan A &= \frac{\text{opposite}}{\text{adjacent}} \\
+\end{align}</p>
+
+There are normally just shortened to:
+
+<p>\begin{align}
+\sin A &= \frac{O}{H} \\
+\cos A &= \frac{A}{H} \\
+\tan A &= \frac{O}{A} \\
+\end{align}</p>
+
+{{% aside type="example" title="Using The sin Ratio" %}}
+
+Given the triangle in {{% ref "fig-sin-example" %}}, calculate the value of angle `\(A\)`.
+
+{{% figure ref="fig-sin-example" src="_assets/sin-example.webp" width="400px" caption="Diagram for the worked example using sin()." %}}
+
+Relative to angle `\(A\)`, we know the value of the opposite side and the hypotenuse. Thus we need to use the `\(\sin()\)` ratio:
+
+<p>\begin{align}
+\sin A &= \frac{O}{H} \\
+\end{align}</p>
+
+Re-arrange to solve for `\(A\)`:
+
+<p>\begin{align}
+A &= \sin^{-1}\left(\frac{O}{H}\right) \\
+\end{align}</p>
+
+Plug in the values and solve:
+
+<p>\begin{align}
+A &= \sin^{-1}\left(\frac{O}{H}\right) \\
+  &= \sin^{-1}\left(\frac{22\text{mm}}{48\text{mm}}\right) \\
+  &= 27.3^{\circ} \\
+\end{align}</p>
+
+{{% aside type="tip" %}}
+`\(\sin^{-1}()\)` is not `\( \frac{1}{\sin()} \)`, but rather the inverse of the `\(\sin\)` function. If `\(\sin(x) = y\)`, then `\(\sin^{-1}(y) = x\)`. This is also called `\(asin()\)` or `\(arcsin()\)` in calculators and programming languages.
+{{% /aside %}}
+
+{{% /aside %}}
+
+{{% aside type="example" title="Using The tan Ratio" %}}
+
+Given the triangle in {{% ref "fig-tan-example" %}}, calculate the length of side `\(x\)`.
+
+{{% figure ref="fig-tan-example" src="_assets/tan-example.webp" width="400px" caption="Diagram for the worked example using tan()." %}}
+
+Relative to the known angle, we know the value of the opposite side and want to know the length of the adjacent side. {{% ref "fig-tan-example-labelled" %}} shows the values labelled accordingly.
+
+{{% figure ref="fig-tan-example-labelled" src="_assets/tan-example-labelled.webp" width="400px" caption="Triangle now has labelled edges and angles." %}}
+
+The `\(\tan()\)` ratio allows us to use the 2 knowns to solve for the unknown adjacent side length:
+
+<p>\begin{align}
+\tan \theta &= \frac{O}{A} \\
+\end{align}</p>
+
+Re-arrange to solve for `\(A\)`:
+
+<p>\begin{align}
+A &= \frac{O}{\tan \theta} \\
+\end{align}</p>
+
+Plug in the values and solve:
+
+<p>\begin{align}
+A &= \frac{O}{\tan \theta} \\
+  &= \frac{35\text{mm}}{\tan 63^{\circ}} \\
+  &= 17.8\text{mm} \\
+\end{align}</p>
+
+{{% /aside %}}
 
 ## Law of Sines
 
 ### The Equation
 
-The _Law of Sines_ is a useful equation for determining unknown lengths and angles of any triangle (not just right-angled triangles) if you know some of the other lengths and angles. Together with the Law of Cosines you can find the lengths and angles of any triangle as long as you know enough values already to fully-constrain it.
+The _Law of Sines_ is a useful equation for determining unknown lengths and angles of any triangle (not just right-angled triangles) if you know some of the other lengths and angles. Together with the [Law of Cosines](#law-of-cosines) you can find the lengths and angles of any triangle as long as you know enough values already to fully-constrain it.
 
 {{% figure ref="fig-law-of-sines-diagram" src="_assets/law-of-sines-diagram.webp" width="400px" caption="Diagram illustrating the variables used in the Law of Sines." %}}
 
@@ -140,9 +236,9 @@ B &= 180^{\circ} - \sin^{-1}(0.957) \\
 
 ## Law of Cosines
 
-The Law of Cosines (also known as the cosine formula or cosine rule[^wikipedia-law-of-cosines]) is an equation similar to the [Law of Sines](#law-of-sines) which lets you calculate unknown sides and opposite angles if you know some of the others.
+The Law of Cosines (also known as the cosine formula or cosine rule[^wikipedia-law-of-cosines]) is an equation similar to the [Law of Sines](#law-of-sines) which lets you calculate unknown sides and opposite angles of any triangle (not just right-angled triangles) if you know some of the others.
 
-### Equation
+### The Equation
 
 The Law of Cosines equation is:
 
@@ -172,6 +268,56 @@ C &= \cos^{-1}\left( \frac{a^2 + b^2 - c^2}{2ab} \right) \\
 \end{align}</p>
 
 Because the side and opposite angle pairs can be assigned freely around the triangle, the equation for `\(b\)` is essentially the same as for `\(a\)`. Note that for both of these sides, there may be 0, 1 or 2 solutions.
+
+The Law of Cosines can be thought of as a generalization of Pythagorean Theorem (the Pythagorean Theorem is the equation `\(c^2 = a^2 + b^2\)` that applies to right-angled triangles).
+
+If we start with the Law of Cosines equation and then make the angle `\(C = 90^{\circ}\)` it reduces down to the Pythagorean equation:
+
+<p>\begin{align}
+c^2 &= a^2 + b^2 - 2ab\cos{C} \nonumber \\
+c^2 &= a^2 + b^2 - 2ab\cos{90^{\circ}} \nonumber \\
+c^2 &= a^2 + b^2 - 2ab\cdot 0 \nonumber \\
+c^2 &= a^2 + b^2 \\
+\end{align}</p>
+
+{{% aside type="example" title="2 Sides and Their Included Angle Known" %}}
+
+Given the triangle and known dimensions as shown in {{% ref "fig-law-of-cosines-two-sides-and-included-angle-known-example-diagram" %}}, calculate all unknown sides and angles.
+
+{{% figure ref="fig-law-of-cosines-two-sides-and-included-angle-known-example-diagram" src="_assets/law-of-cosines-two-sides-and-included-angle-known-example-diagram.webp" width="400px" caption="Diagram for the worked example using the Law of Cosines on a triangle with 2 sides and their included angle known." %}}
+
+Given we know the values of two of the sides and their included angle, the Law of Cosines can help us solve for the remaining dimensions. Let's assign letters to each of the sides and angles (we assign `\(C\)` to the known angle, just so we can use the Law of Cosine equation verbatim without any swapping of the variable names for the first equation):
+
+{{% figure ref="fig-law-of-cosines-two-sides-and-included-angle-known-example-diagram-letters-added" src="_assets/law-of-cosines-two-sides-and-included-angle-known-example-diagram-letters-added.webp" width="400px" caption="Variable names have been added." %}}
+
+We can now use the Law of Cosines to solve for side `\(c\)`:
+
+<p>\begin{align}
+c &= \sqrt{a^2 + b^2 - 2ab\cos{C}} \nonumber \\
+  &= \sqrt{(43\text{mm})^2 + (59\text{mm})^2 - 2\cdot 43\text{mm} \cdot 59\text{mm} \cdot \cos{27^{\circ}}} \nonumber \\
+  &= 28.4\text{mm} \\
+\end{align}</p>
+
+Now we can use the Law of Cosines again to solve for angle `\(A\)` or `\(B\)`. It doesn't matter which one we pick, so lets go with `\(A\)`. We'll pretend `\(A\)` is the `\(C\)` in {{% ref "fig-law-of-cosines-diagram" %}}, as we know the length of both sides included in this angle, as well as the length of the opposite side. Swapping the variable names around happens often, just make sure to keep the opposite angles in sync also!
+
+<p>\begin{align}
+A &= \cos^{-1}\left( \frac{b^2 + c^2 - a^2}{2bc} \right) \nonumber \\
+  &= \cos^{-1}\left( \frac{(59\text{mm})^2 + (28.4\text{mm})^2 - (43\text{mm})^2}{2\cdot 59\text{mm} \cdot 28.4\text{mm}} \right) \nonumber \\
+  &= \cos^{-1}0.728 \nonumber \\
+  &= 43.3^{\circ} \\
+\end{align}</p>
+
+We could use the Law of Cosines again to find the last unknown, angle `\(B\)`, but it's far easier just to use the rule that all the internal angles of a triangle must sum to `\(180^{\circ}\)`.
+
+<p>\begin{align}
+B &= 180^{\circ} - A - C \nonumber \\
+  &= 180^{\circ} - 43.3^{\circ} - 27^{\circ} \nonumber \\
+  &= 110^{\circ} \\
+\end{align}</p>
+
+All done!
+
+{{% /aside %}}
 
 ### Calculators
 
