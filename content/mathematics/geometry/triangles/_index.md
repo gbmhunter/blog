@@ -19,7 +19,7 @@ This page will teach you how! If you have a right-angles triangle and what to ca
 
 Trigonometric ratios are the three ratios `\(\sin\)`, `\(\cos\)`, and `\(\tan\)` which are defined using properties of a right-angled triangle (a triangle in which one of the internal angles is `\(90^{\circ}\)`). They are useful for solving for unknown side lengths and angles of right-angled triangles, but they also crop up many other situations such as Fourier Series, AC voltage/current, complex numbers (e.g. Euler's formula) and oscillators.
 
-### The Equation
+### The Equations
 
 Given you have a triangle with a right-angle in it, and another angle `\(A\)`, then {{% ref "fig-sin-cos-tan-diagram" %}} shows the naming of the triangle's sides when using trigonometric ratios.
 
@@ -165,7 +165,7 @@ a &= \sin{A}\frac{b}{\sin{B}} \\
 
 {{% /aside %}}
 
-### Watch Out For Ambiguity
+### Multiple Solutions (Ambiguity)
 
 In certain circumstances, there is more than one possible answer when calculating values using the Law of Sines. This occurs in a specific situation, when[^libretexts-maths-the-law-of-sines]:
 
@@ -258,10 +258,11 @@ where:<br />
 
 **The law of cosines is useful for solving the sides and angles of a triangle when all three sides are known, or two sides and their included angle are known.** If you know two angles and a side, or two sides and an angle other than the included angle, use the [law of sines](#law-of-sines) instead.
 
-Here is the Law of Cosines equation rearranged for all sides and angles:
+Here is the Law of Cosines equation rearranged for all sides and angles[^wikipedia-law-of-cosines]:
 
 <p>\begin{align}
 a &= b\cos C \pm \sqrt{c^2 - b^2 \sin^2 C} \\
+\label{law-of-cosines-solve-for-b}
 b &= a\cos C \pm \sqrt{c^2 - a^2 \sin^2 C} \\
 c &= \sqrt{a^2 + b^2 - 2ab\cos{C}} \\
 C &= \cos^{-1}\left( \frac{a^2 + b^2 - c^2}{2ab} \right) \\
@@ -319,14 +320,46 @@ All done!
 
 {{% /aside %}}
 
-### Calculators
+### Multiple Solutions (Ambiguity)
 
-Google has a handy Law of Cosines calculator that pops up when you search ["law of cosines"](https://www.google.com/search?q=law+of+cosines). {{% ref "fig-law-of-cosines-google-calculator" %}} shows a screenshot of it.
+Just like the Law of Sines, the Law of Cosines can also have multiple solutions. And just like with the Law of Sines, multiple solutions can only occur if you know the length of two sides and one opposite angle. 
+
+{{% aside type="example" title="Multiple Solutions with the Law of Cosines" %}}
+
+Given the triangle in {{% ref "fig-law-of-cosines-multiple-solutions-example" %}}, calculate the length of side `\(b\)`.
+
+{{% figure ref="fig-law-of-cosines-multiple-solutions-example" src="_assets/law-of-cosines-multiple-solutions-example.webp" width="600px" caption="Diagram for the worked example for the Law of Cosines that has multiple solutions." %}}
+
+We'll need to re-arrange the Law of Cosines equation to solve for `\(b\)`, which has already be done for us above in `\(Eq.\ \ref{law-of-cosines-solve-for-b}\)`.
+
+<p>\begin{align}
+b &= a\cos C \pm \sqrt{c^2 - a^2 \sin^2 C} \\
+\end{align}</p>
+
+Plugging in the values:
+
+<p>\begin{align}
+b &= 43\text{mm}\cos{29^{\circ}} \pm \sqrt{(27\text{mm})^2 - (43\text{mm})^2 \sin^2 {29^{\circ}}} \nonumber \\
+  &= 37.6\text{mm} \pm 17.2\text{mm} \nonumber \\
+  &= 20.4\text{mm}, 54.8\text{mm} \\
+\end{align}</p>
+
+
+{{% /aside %}}
+
+## Calculators
+
+Google has handy Law of Sines/Cosines calculators that pops up when you search ["law of sines"](https://www.google.com/search?q=law+of+sines)/["law of cosines"](https://www.google.com/search?q=law+of+cosines). {{% ref "fig-law-of-cosines-google-calculator" %}} shows a screenshot of the Law of Cosines calculator.
 
 {{% figure ref="fig-law-of-cosines-google-calculator" src="_assets/law-of-cosines-google-calculator.png" width="600px" caption="Screenshot of the Law of Cosines calculator Google provides when you search \"law of cosines\"[^google-law-of-cosines-calc]." %}}
+
+The [eMathHelp Law of Cosines calculator](https://www.emathhelp.net/en/calculators/geometry/law-of-cosines-calculator/) as shown in {{% ref "fig-emathhelp-law-of-cosines-calculator-screenshot" %}} is different from most and shows you the working to solve the triangle. They also has a Law of Sines calculator.
+
+{{% figure ref="fig-emathhelp-law-of-cosines-calculator-screenshot" src="_assets/emathhelp-law-of-cosines-calculator-screenshot.png" width="600px" caption="Screenshot of the [Law of Cosines calculator from eMathHelp](https://www.emathhelp.net/en/calculators/geometry/law-of-cosines-calculator/) that shows the step-by-step working to the solution[^emathhelp-law-of-cosines-calc]." %}}
 
 ## References
 
 [^libretexts-maths-the-law-of-sines]: Libretexts: Mathematics. _2.1: The Law of Sines_. Retrieved 2023-12-31, from https://math.libretexts.org/Bookshelves/Precalculus/Elementary_Trigonometry_(Corral)/02%3A_General_Triangles/2.01%3A_The_Law_of_Sines
 [^google-law-of-cosines-calc]: Google. _Law of Cosines_ [Search Results]. Retrieved 2024-01-03, from https://www.google.com/search?q=law+of+cosines.
 [^wikipedia-law-of-cosines]: Wikipedia (2023, Dec 27). _Law of cosines_. Retrieved 2024-01-03, from https://en.wikipedia.org/wiki/Law_of_cosines.
+[^emathhelp-law-of-cosines-calc]: eMathHelp (2024). _Law of Cosines Calculator - Solve triangles using the law of cosines_. Retrieved 2023-01-06, from https://www.emathhelp.net/en/calculators/geometry/law-of-cosines-calculator/.
