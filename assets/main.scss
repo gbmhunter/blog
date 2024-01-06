@@ -143,6 +143,10 @@ body {
     color: var(--text-color-primary);
 }
 
+.stuff-at-end {
+    display: flex;
+}
+
 /* ========================================================================= */
 /* DRAWER STYLING
 /* ========================================================================= */
@@ -1804,4 +1808,42 @@ span.con {
 .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
     // Make the scrollbar color the main color, this works well in light and dark themes
     background-color: var(--main-color);
+}
+
+/* ========================================================================= */
+/* SEARCH STYLING
+/* ========================================================================= */
+
+.search-modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 400;
+}
+
+.search-modal-inner {
+
+    background-color: var(--background-color);
+    width: 1000px;
+    height: 500px;
+
+    padding: 10px;
+}
+
+.search-modal-top-row {
+    display: flex;
+    flex-direction: row;
+
+    .spacer {
+        flex-grow: 1;
+    }
 }

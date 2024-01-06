@@ -5,9 +5,12 @@
 <!-- In total, this file contains HTML elements that use up 9 of the 12 bootstrap columns (leaving 3 for the site logo and menu)-->
 {{ $section := .Site.GetPage "section" .Section }}
 
-<!-- Make sure this syncs up with the columns in baseof.html -->
+<!-- Only add data-pagefine-body (for including in search) to pages, we don't want to include posts -->
+{{- if (eq .Type "page") -}}
+<article class="page-wrapper" data-pagefind-body>
+{{- else -}}
 <article class="page-wrapper">
-
+{{- end -}}
   <div class="page-left-column">
     <header>
       {{ partial "breadcrumbs.html" . }}
