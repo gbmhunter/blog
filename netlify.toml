@@ -1,6 +1,9 @@
 [build]
 publish = "public"
-command = "hugo --minify"
+# We run the hugo build first, and then pagefind on hugo's output
+# to generate the search data/javascript (this will also be added
+# to the public directory)
+command = "hugo --minify && npx -y pagefind@v1.0.4 --site public"
 
 [context.production.environment]
 HUGO_VERSION = "0.113.0"
