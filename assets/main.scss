@@ -1113,11 +1113,11 @@ del {
 
 p, li, div, td, th, input, code.has-jax {
     line-height: 1.7;
-    color: var(--text-color)
+    // color: var(--text-color-primary)
 }
 
 // header-section-1 contains logo, site name and site description
-.header-section-1 {    
+.header-section-1 {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -1814,6 +1814,29 @@ span.con {
 /* SEARCH STYLING
 /* ========================================================================= */
 
+.search-input-div {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    // The search icon
+    .fa-search {
+        position: absolute;
+        // top: 10px;
+        left: 10px;
+    }
+
+    input {
+        border: 1px solid #555;
+        display: block;
+        padding: 1px 4px 1px 40px;
+    }
+}
+
+input.nav-bar-search-input {
+    width: 200px;
+}
+
 .search-modal {
     display: none;
     flex-direction: column;
@@ -1828,22 +1851,110 @@ span.con {
 
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 400;
+
+    div {
+        line-height: 1.3;
+    }
 }
 
 .search-modal-inner {
 
     background-color: var(--background-color);
+    // The max width/heights maxes sure nothing is clipped on smaller screens
     width: 1000px;
-    height: 500px;
+    max-width: 100%;
+    height: 800px;
+    max-height: 100%;
 
     padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto; // So the search results can be scrollable if needed
 }
 
 .search-modal-top-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    
+    margin-bottom: 20px;
 
-    .spacer {
+    .search-input-div {
         flex-grow: 1;
     }
+
+    input {
+        width: 100%;
+        padding: 9px 4px 9px 40px;
+    }
+
+    // .spacer {
+    //     flex-grow: 1;
+    // }
+}
+
+.search-modal-input {
+    width: 500px;
+}
+
+.search-modal-close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 35px;
+    height: 35px;
+
+    font-size: 35px;
+
+    border-width: 0;
+    border-radius: 5px;
+
+    [data-theme='dark'] & {
+        background-color: var(--background-color-secondary);
+    }
+}
+
+.search-result {
+    margin-bottom: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    mark {
+        background-color: inherit;
+        color: var(--main-color);
+    }
+
+}
+
+.search-subresults {
+
+    padding-left: 20px;
+
+    a {
+        // font-size: 0.6em;
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+// Container around each subresult, including the main one
+.search-subresult {
+    font-size: 0.8em;
+}
+
+.search-result-title, .search-subresult {
+    [data-theme='light'] &:hover {
+        background-color: #f0f0f0;
+    }
+    
+    [data-theme='dark'] &:hover {
+        background-color: #222222;
+    }
+}
+
+.search-subresult-anchor-text {
+    font-weight: bold;
 }

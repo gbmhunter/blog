@@ -142,8 +142,9 @@
       <div class="stuff-at-end">
         <!-- <link href="/pagefind/pagefind-ui.css" rel="stylesheet"> -->
         <!-- SEARCH -->
-        <div class="search">
-          <input class="search-input" />
+        <div class="nav-bar search-input-div">
+          <span class="fa fa-search"></span>
+          <input class="nav-bar-search-input" type="search" placeholder="Search..." />
         </div>
         <script src="/js/search.js" type="module"></script>
         <button id="theme-toggle" class="btn btn-link btn-sm ms-2 small d-flex" type="button">
@@ -210,13 +211,15 @@
   <div class="search-modal">
     <div class="search-modal-inner">
       <div class="search-modal-top-row">
-        Search:&nbsp;<input class="search-modal-input" />
-        <div class="spacer"></div>
+        <div class="search-input-div">
+          <span class="fa fa-search"></span>
+          <input class="search-modal-input" type="search" placeholder="Search..." />
+        </div> 
         <button class="search-modal-close-button">
           &times;
         </button>
       </div>
-      <div class="search-modal-results">
+      <div class="search-results">
         
       </div>
   </div>
