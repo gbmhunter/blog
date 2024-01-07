@@ -3,7 +3,8 @@ authors: [ Geoffrey Hunter ]
 categories: [ Mathematics, Geometry ]
 date: 2023-12-29
 draft: false
-lastmod: 2024-01-04
+images: [ /mathematics/geometry/triangles/_assets/law-of-sines-ambiguous-case-diagram.webp ]
+lastmod: 2024-01-07
 tags: [ law of sines, law of cosines, triangles, angles, lengths, equations, trigonometric ]
 title: Triangles
 type: page
