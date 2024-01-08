@@ -4,7 +4,7 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2023-12-20
+lastmod: 2024-01-08
 tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module ]
 title: Zephyr Project
 type: page
@@ -16,7 +16,7 @@ type: page
 
 The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is a real-time operating system designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
-{{% figure src="zephyr-project-logo.png" width="500px" %}}
+{{% figure src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
 
 The [main repo can be found on GitHub](https://github.com/zephyrproject-rtos/zephyr).
 
@@ -521,7 +521,7 @@ CMake Error at C:/Users/Geoffrey Hunter/temp/zephyrproject/zephyr/cmake/kconfig.
 
 It is due to there being one or more spaces in the path to your Zephyr project directory. This isn't a bug that is going to be fixed anytime soon, Zephyr is very clear on the matter in their documentation:
 
-{{% figure src="spaces-in-path-not-supported-zephyr-documentation-warning.png" width="900px" caption="" %}}
+{{% figure src="_assets/spaces-in-path-not-supported-zephyr-documentation-warning.png" width="900px" caption="" %}}
 
 I found this out the hard way and went through all the trouble of [renaming my user directory](https://superuser.com/questions/890812/how-to-rename-the-user-folder-in-windows-10) to fix the issue.
 
@@ -542,3 +542,17 @@ You typically get the error `No module named 'elftools'` if you haven't installe
 ```cmd
 > pip3 install -r scripts/requirements.txt
 ```
+
+### '__device_dts_ord_DT_N_NODELABEL_xxx_ORD' undeclared
+
+Zephyr can produce some really obscure error messages when there are errors relating to the device tree, for example:
+
+```text
+C:/project/zephyr/include/zephyr/device.h:83:41: error: '__device_dts_ord_DT_N_NODELABEL_hs_0_ORD' undeclared (first use in this function)
+   83 | #define DEVICE_NAME_GET(dev_id) _CONCAT(__device_, dev_id)
+      |                                         ^~~~~~~~~
+```
+
+If you are using the VS Code and the nRF Connect extension, sometimes this can be fixed by making when you setup the build configuration you set the Configuration to "Use build system default" as shown in {{% ref "selecting-use-build-system-default-in-nrf-connect" %}}.
+
+{{% figure ref="selecting-use-build-system-default-in-nrf-connect" src="selecting-use-build-system-default-in-nrf-connect.png" width="900px" caption="" %}}
