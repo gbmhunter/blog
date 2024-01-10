@@ -4,8 +4,8 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2024-01-08
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module ]
+lastmod: 2024-01-10
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS ]
 title: Zephyr Project
 type: page
 ---
@@ -14,9 +14,13 @@ type: page
 
 ## Overview
 
-The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is a real-time operating system designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
+The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
 {{% figure src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
+
+Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`. 
+
+Zephyr can be considered complex, as it adds another layer of configurability with the use of Kconfig. Firmware behaviour can now be controlled via a combination of Kconfig settings, preprocessor macros and API calls at runtime. The Kconfig is layered in a hierarchical manner and dependencies and overrides can make it difficult to determine how your MCU is being configured.
 
 The [main repo can be found on GitHub](https://github.com/zephyrproject-rtos/zephyr).
 
@@ -34,9 +38,9 @@ Zephyr is also a platform supported by the {{% link text="PlatformIO" src="/prog
 
 The easiest way to install Zephyr on Windows is to use the chocolatey package manager. Once that is installed, run the following steps from an elevated command prompt:
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Make sure to use a command-prompt and not PowerShell, as PowerShell does not play nice with the `set` method of defining environment variables.
-{{% /warning %}}
+{{% /aside %}}
 
 1. Enable global confirmation so that you don't have to manually confirm the installation of individual programs:
 
@@ -355,6 +359,40 @@ Example device tree (for the STM32F070RB development board):
 };
 ```
 
+## System/OS Features
+
+### Workqueues
+
+A Zephyr _workqueue_ is like a thread but a few extra features included, the main one being a "queue" in which you can add work to for the thread to complete.
+
+What you submit to a workqueue is a function pointer. This function will be run when the thread processes the item from the queue. This is very similar to the way you would typically create a thread, except that usually thread functions in embedded systems are designed to never return (i.e. they are designed to be created when the firmware starts-up and run continuously).
+
+The following C code shows a basic work object being statically defined using the `K_WORK_DEFINE()` macro, and then work submitted in `main()` using `k_work_submit()`. The program will log the "Hello" message when the workqueue processes the work in the workqueue thread. Note that `k_work_submit()` submits work to the special system workqueue (explained below).
+
+```c
+static void myWorkQueueHandler(struct k_work * work)
+{
+    LOG_INF("Hello from the work thread!");
+}
+
+K_WORK_DEFINE(my_work_queue, &myWorkQueueHandler);
+
+int main()
+{
+    int rc = k_work_submit(&my_work_queue); // Submits work to the system workqueue, myWorkQueueHandler() will get called soon from a different thread...
+    // Allow any of the positive return codes but don't allow errors
+    __ASSERT_NO_MSG(rc >= 0);
+
+    return 0;
+}
+```
+
+#### System Workqueue
+
+The Kernel defines a standardized "system workqueue" that you can use. It is recommended that you use this workqueue by default, and only create additional ones only if you need multiple work queue jobs to run in parallel (e.g. in one job may block or otherwise take a long time to complete). The reason for this is that every new workqueue requires a stack, and a typical stack size could be 2kB or more. Having many workqueues will quickly eat into your remaining available RAM[^zephyr-docs-workqueue].
+
+Work can be submitted to the system workqueue by using the function `k_work_submit()`. Use the more generic `k_work_submit_to_queue()` if you want to submit work to a queue that you created (in this case, you also have to pass in a pointer to the queue).
+
 ## Peripheral APIs
 
 Not only does Zephyr provide you with an RTOS, but it also gives you a collection of well defined APIs for interacting with microcontroller peripherals.
@@ -432,6 +470,18 @@ void LogResetCause()
 }
 ```
 
+### Non-Volatile Storage
+
+Zephyr provides an API for storing things in non-volatile storage (flash memory). The NVS API is provided by `#include <zephyr/fs/nvs.h>`.
+
+{{% aside type="note" %}}
+Although different, Zephyr provides a similar service called the _Retention System_ for storing data whilst the device is powered on (i.e. it will persist across resets, but it will NOT persist across power cycles).
+{{% /aside %}}
+
+Typically a partition called `storage_partition` is setup in the main flash for the NVS system to use. This can be defined in the board files.
+
+An official code example of the NVS can be found at https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c[^github-zephyr-nvs-code-example].
+
 ## What Does A Basic Zephyr Firmware Application Look Like?
 
 The following example shows `main.c` (the only `.c` file) for the `Blinky` sample project:
@@ -487,6 +537,41 @@ void main(void)
 		led_is_on = !led_is_on;
 		k_msleep(SLEEP_TIME_MS);
 	}
+}
+```
+
+### Logging
+
+Zephyr has very powerful logging features (compared to what you typically expect for embedded devices) provided via it's logging API.
+
+The code below shows how you can change the logging levels at runtime:
+
+```c
+#include <zephyr/logging/log.h>
+#include <zephyr/logging/log_ctrl.h>
+
+int main() {
+  // ...
+
+  // Change all log levels at runtime
+  // NOTE: If you do this for a particular event, you may want to save all
+  // the previous levels and restore them after the event is finished
+  uint32_t sourceId = 0;
+  const char * sourceName;
+  uint32_t logLevel = LOG_LEVEL_INF;
+  while(1) {
+      sourceName = log_source_name_get(0, sourceId);
+      if (sourceName == NULL) {
+          // Found the last source ID, let's bail
+          break;
+      } else {
+          LOG_WRN("Settings %s log level to: %d", sourceName, logLevel);
+          log_filter_set(NULL, 0, sourceId, logLevel);
+          sourceId += 1;
+      }
+  }
+
+  // ...
 }
 ```
 
@@ -556,3 +641,8 @@ C:/project/zephyr/include/zephyr/device.h:83:41: error: '__device_dts_ord_DT_N_N
 If you are using the VS Code and the nRF Connect extension, sometimes this can be fixed by making when you setup the build configuration you set the Configuration to "Use build system default" as shown in {{% ref "selecting-use-build-system-default-in-nrf-connect" %}}.
 
 {{% figure ref="selecting-use-build-system-default-in-nrf-connect" src="selecting-use-build-system-default-in-nrf-connect.png" width="900px" caption="" %}}
+
+## References
+
+[^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
+[^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
