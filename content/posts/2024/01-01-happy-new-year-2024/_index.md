@@ -42,10 +42,10 @@ I received NZD$59 worth of donations through [my Ko-Fi page](https://ko-fi.com/g
 ## Achievements in 2023
 
 * Asciidoc pages have been fully phased out.
-* NinjaTerm was fixed up and turned into a PWA.
+* [NinjaTerm](https://ninjaterm.mbedded.ninja/) was fixed up and turned into a PWA.
 * Finally, the end of the year saw the blog get a dark mode!
 
 ## Plans For The 2024 Year
 
 * **More content, and improving existing content**: As always!
-* **Add the ability to do a site wide search**: I'm thinking I'll write a frontend along with using [pagefind](https://pagefind.app/) for this. I feel like this is a better approach than using [Agolia](https://www.algolia.com/), which is a paid for (although they do give out open-source licenses if you contact them) third party search service. Mostly because I will not depend on the 3rd party, the search index can be built at compile time and then the searching done by the client browser.
+* **Add the ability to do a site wide search**: I'm thinking I'll write a frontend along with using [pagefind](https://pagefind.app/) for this. I feel like this is a better approach than using [Algolia](https://www.algolia.com/), which is a paid for (although they do give out open-source licenses if you contact them) third party search service. Mostly because I will not depend on the 3rd party, the search index can be built at compile time and then the searching done by the client browser.
