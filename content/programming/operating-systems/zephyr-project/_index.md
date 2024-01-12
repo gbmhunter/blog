@@ -4,8 +4,8 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2024-01-10
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS ]
+lastmod: 2024-01-12
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux ]
 title: Zephyr Project
 type: page
 ---
@@ -20,7 +20,7 @@ The _Zephyr Project_ (also just called _Zephyr_, which will be used for the rema
 
 Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`. 
 
-Zephyr can be considered complex, as it adds another layer of configurability with the use of Kconfig. Firmware behaviour can now be controlled via a combination of Kconfig settings, preprocessor macros and API calls at runtime. The Kconfig is layered in a hierarchical manner and dependencies and overrides can make it difficult to determine how your MCU is being configured.
+Some criticism arises from Zephyr's complexity. Once such example is that Zephyr adds another layer of configurability with the use of Kconfig (a configuration language that was originally designed to configure the Linux kernel[^kernel-org-kconfig-language]). Firmware behaviour can now be controlled via a combination of Kconfig settings, preprocessor macros and API calls at runtime. The Kconfig is layered in a hierarchical manner and dependencies and overrides can make it difficult to determine how your MCU is being configured.
 
 The [main repo can be found on GitHub](https://github.com/zephyrproject-rtos/zephyr).
 
@@ -33,6 +33,8 @@ Zephyr is cross-platform (i.e. you can build projects and flash embedded devices
 Zephyr is also a platform supported by the {{% link text="PlatformIO" src="/programming/integrated-development-environments-ides/platform-io" %}} build system and IDE.
 
 ## Installation
+
+Below are some basic Zephyr installation guides for various OSes. Another good read is the official [Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
 
 ### Windows
 
@@ -167,9 +169,11 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
     TypeError: expected str, bytes or os.PathLike object, not NoneType
     ```
 
-### Ubuntu
+### Ubuntu/WSL
 
-1. Install system dependencies:
+Follow these instructions to setup/install Zephyr on UNIX like systems, including Ubuntu and WSL. Use of `apt` assumes you are running a Debian like system.
+
+1. Firstly, install system dependencies:
 
     ```sh
     sudo apt install --no-install-recommends git cmake ninja-build gperf \
@@ -178,21 +182,29 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
       make gcc gcc-multilib g++-multilib libsdl2-dev
     ```
 
-1. Install `west`:
+1. Create a new directory for the Zephyr project and a Python virtual environment in a `.venv` sub-directory:
 
     ```sh
-    pip3 install --user -U west
-    echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc
-    source ~/.bashrc
+    mkdir ~/zephyr-project
+    cd ~/zephyr-project
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+
+1. Install `west` in the new virtual environment (`west` is a Python package):
+
+    ```sh
+    pip install west
     ```
 
 1. Get the Zephyr source code:
 
     ```sh
-    west init ~/zephyrproject
-    cd ~/zephyrproject
+    west init .
     west update
-    ``
+    ```
+
+    `west update` downloads a lot of Git submodules that are present in the project under `./modules/`.
 
 1. Export a Zephyr CMake package:
 
@@ -200,57 +212,51 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
     west zephyr-export
     ```
 
-1. Download the Zephyr SDK:
+    This adds `Zephyr` to the user package registry at `~/.cmake/packages/Zephyr` (which is outside of the project root directory).
+
+1. Install additional Python dependencies:
+
+    ```sh
+    pip install -r ./zephyr/scripts/requirements.txt
+    ```
+
+1. Next, download the _Zephyr SDK_. The SDK contains toolchains (compilers, linkers, assemblers and other tools such as QEMU and OpenOCD) for all of Zephyr's supported architectures (e.g. `ARM`, `RISCV64`, `x86_64`, `Xtensa`, `aarch64`). Find the release you want from https://github.com/zephyrproject-rtos/sdk-ng/tags (use the latest if you don't otherwise care). The example below uses `v0.16.4`.
+
+    This is downloaded and installed outside of the Zephyr project directory. You only need one copy of this for many Zephyr projects.
 
     ```sh
     cd ~
-    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.12.3/zephyr-sdk-0.12.3-x86_64-linux-setup.run
+    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.4/zephyr-sdk-0.16.4_linux-x86_64.tar.xz
     ```
 
-1. Install the Zephyr SDK:
+    This file is over 1GB in size, so make sure you have space! There is also a _minimal release_ which doesn't come with all the toolchains, but instead let's you select and download the ones you needed.
+
+1. Extract the downloaded SDK:
 
     ```sh
-    $ chmod +x zephyr-sdk-0.12.3-x86_64-linux-setup.run
-    $ sudo ./zephyr-sdk-0.12.3-x86_64-linux-setup.run -- -d /opt/zephyr-sdk-0.12.3
-    Verifying archive integrity...  100%   All good.
-    Uncompressing SDK for Zephyr  100%  
-    Installing SDK to /opt/zephyr-sdk-0.12.3
-    Creating directory /opt/zephyr-sdk-0.12.3
-    Success
-    [*] Installing arm tools... 
-    [*] Installing arm64 tools... 
-    [*] Installing arc tools... 
-    [*] Installing nios2 tools... 
-    [*] Installing riscv64 tools... 
-    [*] Installing sparc tools... 
-    [*] Installing mips tools... 
-    [*] Installing x86_64 tools... 
-    [*] Installing xtensa_sample_controller tools... 
-    [*] Installing xtensa_intel_apl_adsp tools... 
-    [*] Installing xtensa_intel_s1000 tools... 
-    [*] Installing xtensa_intel_bdw_adsp tools... 
-    [*] Installing xtensa_intel_byt_adsp tools... 
-    [*] Installing xtensa_nxp_imx_adsp tools... 
-    [*] Installing xtensa_nxp_imx8m_adsp tools... 
-    [*] Installing CMake files... 
-    [*] Installing additional host tools... 
-    Success installing SDK.
-    SDK is ready to be used.
+    tar xvf zephyr-sdk-0.16.4_linux-x86_64.tar.xz
     ```
 
-    You don't have to install into `/opt/` if you don't want to. Installing into your home directory is also valid.
+    This will extract the SDK to `~/zephyr-sdk-0.16.4`. You can choose to move it somewhere else if you want. Other common choices include `/opt/` and `/usr/local/`.
 
-1. Install `udev` rules:
+1. Run the Zephyr SDK setup script:
 
     ```sh
-    sudo cp /opt/zephyr-sdk-0.12.3/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
+    cd zephyr-sdk-0.16.4
+    ./setup.sh
+    ```
+
+1. Install `udev` rules, which let's you program most boards as a regular user (serial port permissions):
+
+    ```sh
+    sudo cp ~/zephyr-sdk-0.16.4/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
     sudo udevadm control --reload
     ```
 
 1. `cd` into the `zephyr` directory (a sub-directory of the project directory) and build the Blinky sample:
 
     ```sh
-    cd ~/zephyrproject/zephyr
+    cd ~/zephyr-project/zephyr
     west build -p auto -b nucleo_f070rb samples/basic/blinky
     ```
 
@@ -259,6 +265,30 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
     ```sh
     west flash
     ````
+
+{{% aside type="note" %}}
+Both `west init` and `west update` can take some time to run (2-5mins each).
+{{% /aside %}}
+
+If you don't have a dev. board, you could always test out Zephyr by building it for Linux.
+
+```sh
+west build -p auto -b native_sim samples/basic/blinky
+```
+
+The build executable is at `./zephyr/build/zephyr/zephyr.exe` (even though the extension is `.exe`, it is compiled for Linux not Windows). Of course, there is no basic LED we can blink when running on Linux, but it is mocked for us and instead prints to `stdout`:
+
+```sh
+~/zephyr-project/zephyr/build/zephyr$ ./zephyr.exe 
+*** Booting Zephyr OS build zephyr-v3.5.0-4014-g0d7d39d44172 ***
+LED state: OFF
+LED state: ON
+LED state: OFF
+LED state: ON
+LED state: OFF
+LED state: ON
+...
+```
 
 ## Hardware Abstraction Layers
 
@@ -277,6 +307,20 @@ The _Zephyr SDK_ contains toolchains to compile, assemble, link and program/debu
 ## Supported Boards
 
 See <https://docs.zephyrproject.org/latest/boards/index.html#boards> for a comprehensive list of all the development boards supported by the Zephyr platform.
+
+### Native Simulator (native_sim)
+
+`native_sim` allows you to build a Zephyr application to run on POSIX-like OSes, e.g. Linux. 
+
+{{% aside type="note" %}}
+`native_sim` is a successor to the legacy `native_posix` Zephyr board. Use `native_sim` instead wherever possible.
+{{% /aside %}}
+
+To build for POSIX, provide `native_sim` as the build target to west:
+
+```bash
+$ west build -b native_sim samples/hello_world
+```
 
 ## Device Trees
 
@@ -392,6 +436,39 @@ int main()
 The Kernel defines a standardized "system workqueue" that you can use. It is recommended that you use this workqueue by default, and only create additional ones only if you need multiple work queue jobs to run in parallel (e.g. in one job may block or otherwise take a long time to complete). The reason for this is that every new workqueue requires a stack, and a typical stack size could be 2kB or more. Having many workqueues will quickly eat into your remaining available RAM[^zephyr-docs-workqueue].
 
 Work can be submitted to the system workqueue by using the function `k_work_submit()`. Use the more generic `k_work_submit_to_queue()` if you want to submit work to a queue that you created (in this case, you also have to pass in a pointer to the queue).
+
+#### Creating Your Own Workqueue
+
+If you can't just use the system workqueue and want to create your own workqueues, you can use the functions `k_work_queue_init()` and `k_work_queue_start()` to do so. You first have to create a stack object before creating the workqueue, passing the stack object into it.
+
+The following code example shows how to do this:
+
+```c
+#define STACK_SIZE 512 // Stack size of work queue
+#define PRIORITY 5 // Priority of work queue
+
+K_THREAD_STACK_DEFINE(myStackArea, STACK_SIZE);
+
+struct k_work_q myWorkQueue;
+
+k_work_queue_init(&myWorkQueue);
+
+k_work_queue_start(&myWorkQueue,
+                   myStackArea,
+                   K_THREAD_STACK_SIZEOF(myStackArea),
+                   PRIORITY,
+                   NULL);
+```
+
+### Asserts
+
+Zephyr provides support for standard C library `assert()` function as well as providing more powerful assert macros if you wish you use them.
+
+`ASSERT_NO_MSG()` can be used if you don't want to have to provide a message. I end up using this a lot as adding a message to every assert becomes tiresome (a typical project ends up with hundreds of assert calls, checking things like passed-in pointers are non-null, integers are within range, e.t.c).
+
+```c
+ASSERT_NO_MSG();
+```
 
 ## Peripheral APIs
 
@@ -646,3 +723,4 @@ If you are using the VS Code and the nRF Connect extension, sometimes this can b
 
 [^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
 [^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
+[^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
