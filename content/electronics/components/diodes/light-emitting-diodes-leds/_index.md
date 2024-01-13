@@ -4,8 +4,8 @@ categories: [ Electronics, Electronic Components, Diodes ]
 date: 2011-09-05
 description: Schematic symbols, equations, types, forward voltages, design hints and more info about light-emitting diodes (LEDs).
 draft: false
-lastmod: 2022-06-19
-tags: [ LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle ]
+lastmod: 2024-01-13
+tags: [ LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB ]
 title: Light-emitting Diodes (LEDs)
 type: page
 ---
@@ -14,17 +14,17 @@ type: page
 
 _Light-emitting diodes_ (LEDs) are electrical components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet). 
 
-{{% figure src="red-led-5mm-th-diffused.jpg" width="250" caption="A diffused-lens, red, 5mm through-hole LED." %}}
+{{% figure ref="fig-red-led-5mm-th-diffused" src="_assets/red-led-5mm-th-diffused.jpg" width="250px" caption="A diffused-lens, red, 5mm through-hole LED." %}}
 
 ## Schematic Symbol
 
-The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives of light. The schematic symbol for a LED is shown below. As with a normal diode, the anode is on the left, and the cathode on the right.
+The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives of light. The schematic symbol for a LED is shown in {{% ref "fig-led-diode-schematic-symbol" %}}. As with a normal diode, the anode is on the left, and the cathode on the right.
 
-{{% figure src="led-diode-schematic-symbol.svg" width="300" caption="Schematic symbol for an LED (light emitting diode)." %}}
+{{% figure ref="fig-led-diode-schematic-symbol" src="_assets/led-diode-schematic-symbol.webp" width="300" caption="Schematic symbol for an LED (light emitting diode)." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 It's worth pointing out that the LED's schematic symbol looks very similar to a [photodiodes](/electronics/components/diodes/photodiodes/), except the "light arrows" on a photodiode's symbol point inwards.
-{{% /warning %}}
+{{% /aside %}}
 
 A more positive voltage is needed on the anode w.r.t to the cathode for current to flow through the LED and it emit light.
 
@@ -37,11 +37,11 @@ _Parameters are sorted alphabetically._
 * Symbol: `\(\lambda_{dom}\)`
 * Units (typical): `\(nm\)`
 
-This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the [peak wavelength](#peak-wavelength). Normally measured in nanometers (`\(nm\)`).
+This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the [peak wavelength](#peak-wavelength). Normally measured in nanometres (`\(nm\)`).
 
 ### Flux
 
-This will be used as a shorthand for either _radiometric flux_, _spectral flux_ or rarely, _photon flux_. You will have to deduce which based on the context.
+This will be used as a shorthand for either _radiometric flux_, _spectral flux_ or rarely, [photon flux](#photon-flux). You will have to deduce which based on the context.
 
 ### Forward Current
 
@@ -83,7 +83,7 @@ Blue LEDs are GaN based.
 * Symbol: `\(E\)`
 * Units (typical): `\(mW/m^2\)`
 
-Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.
+Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol `\(E\)` as `\(I\)` is already used for radiant intensity. It is a radiometric quantity.
 
 ### Peak Wavelength
 
@@ -204,15 +204,21 @@ The photocurrent of an LED is about 10-100 times smaller that that of a purpose-
 
 ## RGB LEDs
 
-RGB LEDs are LED's which have three diodes inside them, one red, one green, and one blue. Whats cool with these is, when controlled correctly, they can produce almost any visible colour (remember primary colours in science class?).
+RGB LEDs are LED's which have three diodes inside them, one red, one green, and one blue. Whats neat with these is, when controlled correctly they can produce almost any visible colour (remember primary colours in science class?).
 
 RGBs usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
 
 You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](/electronics/communication-protocols/spi-communication-protocol)), or sometimes a custom protocol).
 
-One popular example, the WS8211, uses it's own custom communications protocol running at 800kHz.
+One popular example, the Worldsemi WS8211, uses it's own custom communications protocol running at 800kHz.
 
-{{% figure src="ws2811-rgb-led-front-and-back-photo.png" width="500" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller." %}}
+{{% figure ref="fig-ws2811-rgb-led-front-and-back-photo" src="ws2811-rgb-led-front-and-back-photo.png" width="500" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller." %}}
+
+Overview of Worldsemi's RGB LED product offering:
+
+* WS8211: LED driver IC, no-built in LEDs.
+* WS2812: Combined RGB LED and driver IC.
+* WS2812b: Upgraded version of the WS2812. This includes added reverse polarity protection, higher brightness and colour uniformity, better pinout, better heat dissipation (lower junction to case thermal resistance)[^worldsemi-ws2812-vs-ws2812b].
 
 ## UV LEDs
 
@@ -366,3 +372,4 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 [^bib-wp-planck-relation]:  Wikipedia (2022, Jan 15). _Planck relation_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_relation.
 [^bib-wp-planck-constant]:  Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
 [^bib-street-co-viewing-angle]: Street Co. _How Is Viewing Angle An Important Asset Of LED Displays_. Retrieved 2022-06-19, from https://streetcommunication.com/how-is-viewing-angle-an-important-asset-of-led-displays/.
+[^worldsemi-ws2812-vs-ws2812b]: Worldsemi. _WS2812 vs. WS2812B_. Retrieved 2024-01-13, from https://cdn.sparkfun.com/assets/learn_tutorials/1/0/5/WS2812B_VS_WS2812.pdf.
