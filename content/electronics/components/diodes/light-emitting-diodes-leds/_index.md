@@ -210,7 +210,7 @@ RGBs usually have at least four pins, one each for one side of the red, green, a
 
 You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](/electronics/communication-protocols/spi-communication-protocol)), or sometimes a custom protocol).
 
-One popular example, the Worldsemi WS8211, uses it's own custom communications protocol running at 800kHz.
+One popular example, the Worldsemi WS2811, uses it's own custom communications protocol running at 800kHz.
 
 {{% figure ref="fig-ws2811-rgb-led-front-and-back-photo" src="ws2811-rgb-led-front-and-back-photo.png" width="500" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller." %}}
 
@@ -218,7 +218,11 @@ Overview of Worldsemi's RGB LED product offering:
 
 * WS8211: LED driver IC, no-built in LEDs.
 * WS2812: Combined RGB LED and driver IC.
-* WS2812b: Upgraded version of the WS2812. This includes added reverse polarity protection, higher brightness and colour uniformity, better pinout, better heat dissipation (lower junction to case thermal resistance)[^worldsemi-ws2812-vs-ws2812b].
+* WS2812b: Upgraded version of the WS2812. This includes added reverse polarity protection, higher brightness and colour uniformity, better pinout (a drop from six pins in the WS2812 to only four pins in the WS2812b), better heat dissipation (lower junction to case thermal resistance)[^worldsemi-ws2812-vs-ws2812b].
+
+The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for communication. {{% ref "fig-ws2812b-typical-application-schematic" %}} shows an example application schematic showing how they can daisy-chained together. Microcontroller SPI peripherals running at 16x the WS28xx bit rate can be used to generate the data stream.
+
+{{% figure ref="fig-ws2812b-typical-application-schematic" src="_assets/ws2812b-typical-application-schematic.webp" width="900px" caption="Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together." %}}
 
 ## UV LEDs
 
