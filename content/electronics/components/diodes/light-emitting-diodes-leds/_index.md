@@ -224,6 +224,8 @@ The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for co
 
 {{% figure ref="fig-ws2812b-typical-application-schematic" src="_assets/ws2812b-typical-application-schematic.webp" width="900px" caption="Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together." %}}
 
+For information on how a MCU SPI peripheral can be used to send data to a WS2812 LED, see the [SPI Communication Protocol page](/electronics/communication-protocols/spi-communication-protocol/#ws2812-rgb-leds).
+
 ## UV LEDs
 
 UV LEDs are used for applications such as:

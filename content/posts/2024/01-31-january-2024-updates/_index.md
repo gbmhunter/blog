@@ -21,4 +21,7 @@ type: post
     {{% figure src="_assets/search-screenshot.png" width="700px" %}}
 
 * Added more info on [Zephyr](/programming/operating-systems/zephyr-project/).
+
+* Noticed that the inline equation text colour was different to standard text (thanks to a Bootstrap CSS file), so I added SCSS rules to style it correctly.
  
+* Added info on the non-standard use of MCU SPI peripherals to send data to WS8212 RGB LEDs.

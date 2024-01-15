@@ -617,7 +617,7 @@ void main(void)
 }
 ```
 
-### Logging
+## Logging
 
 Zephyr has very powerful logging features (compared to what you typically expect for embedded devices) provided via it's logging API.
 
@@ -669,6 +669,14 @@ There are a number of C++ features that Zephyr does not support which removes C+
 [Zephyr features a "shell"](https://docs.zephyrproject.org/latest/services/shell/index.html) (one of it's modules) that it can provide over a serial transport such as a UART, USB or Segger RTT. The shell provides to the user things such as Linux command-line style commands, logging, auto-complete, command history and more. In  It is great for implementing a debug interface to control your microcontroller from a terminal application such as [NinjaTerm](https://ninjaterm.mbedded.ninja/) (shameless plug, I developed this app).
 
 Zephyr provides an API that the firmware can use to define the commands available to the user over the shell.
+
+## Reducing Flash and RAM Usage in Zephyr
+
+Zephyr-based applications can get large, in part due to the powerful features it provides out-of-the-box. Just things like using logging throughout your code can increase flash usage significantly, due to every call saving the log message (before substitution takes place at runtime) as a string literal in ROM. This can easily use up many "kB" of space. If you weren't using float printing before hand, this call also bring in float formatting functionality. Similarly, all `ASSERT()` style macros save the file name and line number of the assert as a string literal in ROM. However these are quite useful, even in production, so think carefully before disabling them.
+
+`CONFIG_SIZE_OPTIMIZATIONS=y` can be set in `prj.conf` to reduce the flash size. One thing this does is set the compiler flag `-Os` which tells the compiler to optimize for size, not speed or debug ability.
+
+On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prf.conf` resulted in a flash size reduction from 421kB to 330kB.
 
 ## Common Errors
 

@@ -656,6 +656,18 @@ span.error {
 /* MATHJAX                                                                   */
 /* ========================================================================= */
 
+// Equation text color
+code.has-jax {
+    [data-theme='light'] & {
+        color: #000000;
+    }
+
+    [data-theme='dark'] & {
+        color: #FFFFFF;
+    }
+    
+}
+
 /* This fixes an issue where the tops of some symbols in an equation where clipped */
 code.has-jax span {
     clip: unset !important;
@@ -676,7 +688,7 @@ blockquote {
     margin-bottom: 10px;
     margin-left: 1em;
     padding-left: 1em;
-    border-left: 3px solid #ccc;    
+    border-left: 3px solid #ccc;
 }
 @media (min-width: 800px) {
     blockquote {    
