@@ -217,7 +217,9 @@ Microcontroller SPI peripherals are commonly used to generate the data to talk t
 
 {{% figure ref="fig-ws2812b-comms-protocol-info" src="_assets/ws2812b-comms-protocol-info.webp" width="900px" caption="Data showing how the WS2812 RGB LED communication protocol relies of the timings of HIGH and LOW parts of a bit to determine a 0 or 1[^worldsemi-ws2812b-rgb-led-ds]." %}}
 
-Depending on the MCU, generating these timings by "bit-banging" could be difficult because of the fast baud rate and HIGH/LOW timing requirements. However, an SPI peripheral running at a faster bit rate can be used to generate the data relatively easily. One option is to set the SPI speed so there are three SPI bits for every WS2812 bit. The SPI bit period can be set to `0.4us`, so that three bits takes `1.2us`. Then you can send the SPI bit pattern `100` for a WS2812 `0` and a `110` for a WS2812 `1`[^controllers-tech-ws2812-leds-using-spi].
+Depending on the MCU, generating these timings by "bit-banging" could be difficult because of the fast baud rate and HIGH/LOW timing requirements. However, an SPI peripheral running at a faster bit rate can be used to generate the data relatively easily. One option is to set the SPI speed so there are three SPI bits for every WS2812 bit. The SPI bit period can be set to `0.4us`, so that three bits takes `1.2us`. Then you can send the SPI bit pattern `100` for a WS2812 `0` and a `110` for a WS2812 `1`[^controllers-tech-ws2812-leds-using-spi]. Using 8 SPI bits per WS2812 bit is another approach[^hackster-neopixel-ws2812b-driver].
+
+In all of these cases, only the MOSI output on the SPI peripheral is used. SCLK and MISO are not used.
 
 ## Similar Protocols
 
@@ -246,3 +248,4 @@ The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologi
 [^bib-microchip-samd21-datasheet]: Microchip (2021). _SAM D21/DA1 Family: Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-10-10, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
 [^worldsemi-ws2812b-rgb-led-ds]: Worldsemi. _WS2812B - Intelligent control LED integrated light source_ [datasheet]. Adafruit. Retrieved 2024-01-15, from https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf.
 [^controllers-tech-ws2812-leds-using-spi]: Controllerstech. _WS2812 LEDs using SPI_. Retrieved 2024-01-15, from https://controllerstech.com/ws2812-leds-using-spi/.
+[^hackster-neopixel-ws2812b-driver]: Rudra Lad. _NeoPixel WS2812b SPI driver with Ada on STM32F4 Discovery_. Hackster. Retrieved 2024-01-16, from https://www.hackster.io/RVLAD/neopixel-ws2812b-spi-driver-with-ada-on-stm32f4-discovery-d330ea.
