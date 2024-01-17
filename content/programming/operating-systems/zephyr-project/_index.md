@@ -290,6 +290,16 @@ LED state: ON
 ...
 ```
 
+## Creating An Application
+
+Once you've followed the installation instructions, you should be able to build and flash _repository_ applications that are contained with the Zephyr repo (e.g. blinky). But what if you want to develop your own application? This is were is pays to understand the three different application types:
+
+* **Repository Application:** An application contained with the Zephyr repository itself (inside the `zephyr/` directory in the workspace you created above). Typically these are example projects like "Hello, world!" and "blinky".
+* **Workspace Application:** An application that is within the west workspace, but not within the zephyr repository (`zephyr/`). This is the way I recommended you create an application if you're learning!
+* **Freestanding Application:** An application that is not within the west workspace, i.e. stored somewhere else entirely on your disk.
+
+### Creating a Workspace Application
+
 ## Hardware Abstraction Layers
 
 Examples of some of the HALs (which are installed under `<project root dir>/modules/hal/`) supported by Zephyr:
@@ -469,6 +479,31 @@ Zephyr provides support for standard C library `assert()` function as well as pr
 ```c
 ASSERT_NO_MSG();
 ```
+
+### Watchdog
+
+Zephyr provides a software/hardware based watchdog API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via it's software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
+
+You can "install" a new timeout with the software watchdog by using `int task_wdt_add(uint32_t reload_period, task_wdt_callback_t callback, void *user_data)`.
+
+```c
+void my_thread_fn() {
+    // When your thread starts, install a new watchdog timeout for this thread
+    // Passing NULL as second param means system reset handler will be called
+    // if watchdog timer expires
+    int wdtChannelId = task_wdt_add(5000, NULL, NULL);
+    __ASSERT_NO_MSG(wdtChannelId == 0);
+
+    while(1) {
+        int rc = task_wdt_feed(wdtChannelId); // Regularly feed the watchdog to prevent system reset
+        __ASSERT_NO_MSG(rc == 0);
+        // Sleep for a second before feeding again
+        k_sleep(K_MSEC(1000));
+    }
+}
+```
+
+Make sure you have enough available channels to be able to install timeouts. You can change this in `prf.conf` with `CONFIG_TASK_WDT_CHANNELS`. By default is set to `5`, but can be changed to anything in the range `[2, 100]`[^zephyr-docs-kconfig-search-wdt-channels].
 
 ## Peripheral APIs
 
@@ -732,3 +767,4 @@ If you are using the VS Code and the nRF Connect extension, sometimes this can b
 [^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
 [^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
 [^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
+[^zephyr-docs-kconfig-search-wdt-channels]. Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
