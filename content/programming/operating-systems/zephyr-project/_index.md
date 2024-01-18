@@ -4,8 +4,8 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2024-01-12
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux ]
+lastmod: 2024-01-18
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application ]
 title: Zephyr Project
 type: page
 ---
@@ -16,7 +16,7 @@ type: page
 
 The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
-{{% figure src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
+{{% figure ref="fig-zephyr-project-logo.png" src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
 
 Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`. 
 
@@ -299,6 +299,78 @@ Once you've followed the installation instructions, you should be able to build 
 * **Freestanding Application:** An application that is not within the west workspace, i.e. stored somewhere else entirely on your disk.
 
 ### Creating a Workspace Application
+
+If you are learning, I'd recommend you start by creating a bare bones workspace application to learn what the core files are for. Create a directory called `app` in the workspace:
+
+```bash
+cd ~/zephyr-project
+mkdir app
+```
+
+Now create a file called `CMakeLists.txt` with the follow context:
+
+```cmake
+cmake_minimum_required(VERSION 3.20.0)
+
+find_package(Zephyr)
+project(my_zephyr_app)
+
+target_sources(app PRIVATE src/main.c)
+```
+
+Create an empty `prj.conf`. It needs to exist, but you don't need anything in it for now.
+
+The last thing you need to create a directory called `src` to store all the source code, and then create a file in it called `main.c` with the following contents.
+
+```c
+#include <stdio.h>
+#include <zephyr/kernel.h>
+
+int main(void) {
+    while (1) {
+        printf("Hello, world!\n");
+        k_msleep(1000);
+    }
+    return 0;
+}
+```
+
+Your basic app is done! Your file structure should look like this:
+
+```text
+<home>/
+├─── zephyr-project/
+│     ├── .west/
+│     ├── app/
+│     │    ├── CMakeLists.txt
+│     │    ├── prj.conf
+│     │    └── src/
+│     │        └── main.c
+│     ├── zephyr/
+│     ├── bootloader/
+│     ├── modules/
+│     └── ...
+```
+
+To build and run, first `cd` back into the west workspace at `~/zephyr-project/`. The run this at the command-line:
+
+```bash
+west build -b native_sim ./app
+west build -t run
+```
+
+The first command performs a build, telling west to use the `native_sim` board (runs on Linux) and to build the app located at `./app`. The second command tells west to run it, and you should get output similar to this:
+
+```bash
+(.venv) geoff@my-computer:~/zephyr-project$ west build -t run
+-- west build: running target run
+[1/2] cd /home/geoff/zephyr-project/build && /home/geoff/zephyr-project/build/zephyr/zephyr.exe
+*** Booting Zephyr OS build zephyr-v3.5.0-4014-g0d7d39d44172 ***
+Hello, world!
+Hello, world!
+Hello, world!
+...
+```
 
 ## Hardware Abstraction Layers
 
