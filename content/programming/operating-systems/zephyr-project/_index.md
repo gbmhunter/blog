@@ -197,10 +197,17 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     pip install west
     ```
 
-1. Get the Zephyr source code:
+1. Initialize the west workspace:
 
     ```sh
     west init .
+    ```
+
+    This creates a directory called `.west` inside the current working directory. Inside `.west` another directory called `manifest-tmp`.
+
+1. Update:
+
+    ```
     west update
     ```
 
@@ -294,9 +301,53 @@ LED state: ON
 
 Once you've followed the installation instructions, you should be able to build and flash _repository_ applications that are contained with the Zephyr repo (e.g. blinky). But what if you want to develop your own application? This is were is pays to understand the three different application types:
 
-* **Repository Application:** An application contained with the Zephyr repository itself (inside the `zephyr/` directory in the workspace you created above). Typically these are example projects like "Hello, world!" and "blinky".
-* **Workspace Application:** An application that is within the west workspace, but not within the zephyr repository (`zephyr/`). This is the way I recommended you create an application if you're learning!
-* **Freestanding Application:** An application that is not within the west workspace, i.e. stored somewhere else entirely on your disk.
+* **Repository Application:** An application contained with the Zephyr repository itself (inside the `zephyr/` directory in the workspace you created above). Typically these are example projects under `samples/` like "Hello, world!" and "blinky". In the directory structure below, `hello_world` is a repository application.
+    ```text
+    zephyr-project/
+    ├─── .west/
+    │    └─── config
+    └─── zephyr/
+        ├── arch/
+        ├── boards/
+        ├── cmake/
+        ├── samples/
+        │    ├── hello_world/
+        │    └── ...
+        ├── tests/
+        └── ...
+    ```
+* **Workspace Application:** An application that is within the west workspace, but not within the zephyr repository (`zephyr/`). This is the way I recommended you create an application if you're learning! In the directory structure below, `app` is a workspace application:
+    ```text
+    <home>/
+    ├─── zephyr-project/
+    │     ├── .west/
+    │     ├── app/
+    │     │    ├── CMakeLists.txt
+    │     │    ├── prj.conf
+    │     │    └── src/
+    │     │        └── main.c
+    │     ├── zephyr/
+    │     ├── bootloader/
+    │     ├── modules/
+    │     └── ...
+    ```
+* **Freestanding Application:** An application that is not within the west workspace, i.e. stored somewhere else entirely on your disk. In the directory structure below, `app` is a freestanding application:
+    ```text
+    <home>/
+    ├─── zephyr-project/
+    │     ├─── .west/
+    │     │    └─── config
+    │     ├── zephyr/
+    │     ├── bootloader/
+    │     ├── modules/
+    │     └── ...
+    │
+    └─── app/
+        ├── CMakeLists.txt
+        ├── prj.conf
+        └── src/
+            └── main.c
+    ```
 
 ### Creating a Workspace Application
 
@@ -371,6 +422,10 @@ Hello, world!
 Hello, world!
 ...
 ```
+
+## Moving a West Workspace
+
+I haven't had much luck moving a West workspace on Linux. After moving, the `west` executable could not be found (making sure the Python virtual environment was activated).
 
 ## Hardware Abstraction Layers
 
@@ -556,6 +611,21 @@ ASSERT_NO_MSG();
 
 Zephyr provides a software/hardware based watchdog API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via it's software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
 
+To use the watchdog, first add the following to your `prf.conf`:
+
+```text
+CONFIG_TASK_WDT=y
+```
+
+You then need to enable the watchdog task with `task_wdt_init()`:
+
+```c
+int wdRc = task_wdt_init(NULL);
+__ASSERT_NO_MSG(wdRc == 0);
+```
+
+Passing in `NULL` as the only parameter says you don't want to connect the software watchdog task up with a hardware watchdog.
+
 You can "install" a new timeout with the software watchdog by using `int task_wdt_add(uint32_t reload_period, task_wdt_callback_t callback, void *user_data)`.
 
 ```c
@@ -576,6 +646,49 @@ void my_thread_fn() {
 ```
 
 Make sure you have enough available channels to be able to install timeouts. You can change this in `prf.conf` with `CONFIG_TASK_WDT_CHANNELS`. By default is set to `5`, but can be changed to anything in the range `[2, 100]`[^zephyr-docs-kconfig-search-wdt-channels].
+
+The following code is a complete example showing watchdog task functionality that can be built for the native board. It sets the watchdog up with a 3s timeout. It feeds the watchdog once a second for 5 seconds, and then pretends there is a bug which locks up the code. The software watchdog successfully resets the device 3 seconds later.
+
+```c
+#include <stdio.h>
+
+#include <zephyr/kernel.h>
+#include <zephyr/task_wdt/task_wdt.h>
+
+int main(void) {
+    // Initialize, passing NULL so we are not using a hardware watchdog
+    // also
+    int wdRc = task_wdt_init(NULL);
+    __ASSERT_NO_MSG(wdRc == 0);
+
+    // Install a new WDT channel
+    int wdtChannelId = task_wdt_add(3000, NULL, NULL);
+    __ASSERT_NO_MSG(wdtChannelId == 0);
+
+    uint32_t cycleCount = 0;
+
+    while(1) {
+        printf("Feeding watchdog.\n");
+        int rc = task_wdt_feed(wdtChannelId); // Regularly feed the watchdog to prevent system reset
+        __ASSERT_NO_MSG(rc == 0);
+       
+        if (cycleCount == 5) {
+            printf("Oh oh, bug has got this thread stuck!\n");
+            while(1) {
+                // Do nothing, just hang here
+                k_msleep(1000);
+            }
+        }
+
+        cycleCount += 1;
+        // Sleep for a second before cycling around again
+        k_msleep(1000);
+    }
+    return 0;
+}
+```
+
+{{% figure ref="fig-watchdog-example" src="_assets/watchdog-example.png" width="800px" caption="Running the watchdog example code and seeing it timeout." %}}
 
 ## Peripheral APIs
 
@@ -820,19 +933,84 @@ You typically get the error `No module named 'elftools'` if you haven't installe
 > pip3 install -r scripts/requirements.txt
 ```
 
-### '__device_dts_ord_DT_N_NODELABEL_xxx_ORD' undeclared
+### "__device_dts_ord_DT_N_NODELABEL_xxx_ORD" undeclared
 
 Zephyr can produce some really obscure error messages when there are errors relating to the device tree, for example:
 
 ```text
-C:/project/zephyr/include/zephyr/device.h:83:41: error: '__device_dts_ord_DT_N_NODELABEL_hs_0_ORD' undeclared (first use in this function)
+C:/project/zephyr/include/zephyr/device.h:83:41: error: '__device_dts_ord_DT_N_NODELABEL_hs_0_ORD' 
+       undeclared (first use in this function)
    83 | #define DEVICE_NAME_GET(dev_id) _CONCAT(__device_, dev_id)
       |                                         ^~~~~~~~~
 ```
 
 If you are using the VS Code and the nRF Connect extension, sometimes this can be fixed by making when you setup the build configuration you set the Configuration to "Use build system default" as shown in {{% ref "selecting-use-build-system-default-in-nrf-connect" %}}.
 
-{{% figure ref="selecting-use-build-system-default-in-nrf-connect" src="selecting-use-build-system-default-in-nrf-connect.png" width="900px" caption="" %}}
+{{% figure ref="selecting-use-build-system-default-in-nrf-connect" src="_assets/selecting-use-build-system-default-in-nrf-connect.png" width="600px" caption="Selecting \"Use build system default\" can sometimes fix device tree errors." %}}
+
+### "ERROR: Build directory xxx is for application yyy, but source directory zzz was specified"
+
+The error:
+
+```text
+ERROR: Build directory xxx is for application yyy, but source directory zzz was specified;
+  please clean it, use --pristine, or use --build-dir to set another build directory
+```
+
+typically occurs when you try to build a second project for the first time. By default, `west` creates build directories outside of the application you are currently building, in a directory called `build` directly under the west workspace directory (e.g. `zephyr-project/build/`).
+
+When you tell `west` to build a different project (say, you tested out a sample like `samples/hello_world` but now want to build your own workspace application), `west` will try and re-use `build`. Except that it notices that the remnants from the last build do not belong to the same project, and gives you this error. Because build artifacts can be reproduced by rebuilding, it is generally save to provide the `--pristine` option and override the contents (this would be equivalent to you deleting the `build` directory and re-running `west`). If you want to have multiple builds on-the-go at the same time (perhaps because builds can take a long time to rebuild from scratch!), you can specify a different build directory with the `--build-dir` option.
+
+### "By not providing "FindZephyr.cmake" in CMAKE_MODULE_PATH ..."
+
+If you get the following warning (which then results in an error further down in the build process):
+
+```text
+(.venv) geoff@geoffs-laptop:~/zephyr-project$ west build -b native_sim ./apps/hello-world/
+-- west build: generating a build system
+CMake Warning at CMakeLists.txt:3 (find_package):
+  By not providing "FindZephyr.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "Zephyr", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "Zephyr" with any
+  of the following names:
+
+    ZephyrConfig.cmake
+    zephyr-config.cmake
+
+  Add the installation prefix of "Zephyr" to CMAKE_PREFIX_PATH or set
+  "Zephyr_DIR" to a directory containing one of the above files.  If "Zephyr"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+```
+
+{{% figure ref="fig-by-not-providing-find-zephyr-cmake" src="_assets/by-not-providing-find-zephyr-cmake.png" width="700px" caption="Screenshot of the error \"By not providing \"FindZephyr.cmake\" in CMAKE_MODULE_PATH ...\"." %}}
+
+It usually can be due to forgetting to export Zephyr to the CMake user package registry. Run the following command from the west workspace directory:
+
+```bash
+west zephyr-export
+```
+
+### ModuleNotFoundError: No module named 'elftools'
+
+The error:
+
+```text
+Traceback (most recent call last):
+  File "/home/geoff/zephyr-project/zephyr/scripts/build/gen_kobject_list.py", line 62, in <module>
+    import elftools
+ModuleNotFoundError: No module named 'elftools'
+```
+
+{{% figure ref="fig-error-no-module-named-elftools" src="_assets/error-no-module-named-elftools.png" width="700px" caption="Screenshot of the error \"No module named 'elftools'\"." %}}
+
+can occur if you have forgotten to install the additional Zephyr dependencies into your Python environment (which can happen if you delete the existing virtual environment and recreate it). This can be fixed by running the following command, assuming you have activated the Python virtual environment if relevant:
+
+```shell
+pip install -r ./zephyr/scripts/requirements.txt
+```
 
 ## References
 
