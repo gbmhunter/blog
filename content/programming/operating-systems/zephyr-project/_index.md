@@ -447,17 +447,29 @@ See <https://docs.zephyrproject.org/latest/boards/index.html#boards> for a compr
 
 ### Native Simulator (native_sim)
 
-`native_sim` allows you to build a Zephyr application to run on POSIX-like OSes, e.g. Linux. 
+`native_sim` allows you to build a Zephyr application to run on POSIX-like OSes, e.g. Linux.
 
 {{% aside type="note" %}}
 `native_sim` is a successor to the legacy `native_posix` Zephyr board. Use `native_sim` instead wherever possible.
 {{% /aside %}}
 
-To build for POSIX, provide `native_sim` as the build target to west:
+To build for POSIX, provide `native_sim` as the build target to west with the `-b` option, e.g.:
 
 ```bash
-$ west build -b native_sim samples/hello_world
+west build -b native_sim samples/hello_world
 ```
+
+You can then run the built application with:
+
+```bash
+west build -t run
+```
+
+The `native_sim` board supports the following APIs:
+
+* GPIO (mocked)
+* Watchdog
+* Timers
 
 ## Device Trees
 
@@ -542,6 +554,47 @@ Example device tree (for the STM32F070RB development board):
 
 ## System/OS Features
 
+### Timers
+
+Zephyr _Timers_ are an OS primitive that you can start and then have timeout after a certain duration. If you provide a callback, you can to run things after a fixed duration in the future in either a one-off (one-shot) or continuous manner. If you don't provide a callback, you can still inspect the state of the timer from your application.
+
+You do not have to add anything to `prj.conf` to use timers. First you'll need to include the following header file which defines the timer API:
+
+```c
+#include <zephyr/kernel.h>
+```
+
+You create a timer with `void k_timer_init(struct k_timer * timer, k_timer_expiry_t expiryFn, k_timer_stop_t stopFn)`. You can then start a timer with `void k_timer_start(struct k_timer * timer, k_timeout_t duration, k_timeout_t period)`.
+
+Note that the function you pass in as `expiryFn` gets executed in the system interrupt context. Thus you have to be careful not to block in the expiry function or take too much time processing.
+
+Here is a basic example:
+
+```c
+#include <stdio.h>
+#include <zephyr/kernel.h>
+
+extern void MyExpiryFn(struct k_timer * timerId) {
+    printf("Timer expired!\n");
+}
+
+int main(void) {
+    struct k_timer myTimer;
+    printf("Creating timer to expire every 1s...\n");
+    k_timer_init(&myTimer, MyExpiryFn, NULL);
+    k_timer_start(&myTimer, K_MSEC(1000), K_MSEC(1000));
+
+    while (1) {
+        k_msleep(1000);
+    }
+    return 0;
+}
+```
+
+{{% figure ref="fig-timers-basic-example-output" src="_assets/timers-basic-example-output.png" width="400px" caption="Running the timer example code above and observing the expiry function run every second." %}}
+
+You can read the official Zephyr documentation for Timers [here](https://docs.zephyrproject.org/latest/kernel/services/timing/timers.html).
+
 ### Workqueues
 
 A Zephyr _workqueue_ is like a thread but a few extra features included, the main one being a "queue" in which you can add work to for the thread to complete.
@@ -611,22 +664,32 @@ ASSERT_NO_MSG();
 
 Zephyr provides a software/hardware based watchdog API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via it's software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
 
+{{% aside type="note" %}}
+Why not just use the hardware watchdog? The useful thing about the software watchdog thread is that is provides the ability to independently monitor multiple threads, with different timeouts associated with each thread. It provides a more granularly and control about what you watch and how often you expect each thread to "check in". 
+{{% /aside %}}
+
 To use the watchdog, first add the following to your `prf.conf`:
 
 ```text
 CONFIG_TASK_WDT=y
 ```
 
-You then need to enable the watchdog task with `task_wdt_init()`:
+You'll then need to include the header file that provides the API:
+
+```c
+#include <zephyr/task_wdt/task_wdt.h>
+```
+
+You then need to enable the watchdog task with `int task_wdt_init (const struct device * hw_wdt)`:
 
 ```c
 int wdRc = task_wdt_init(NULL);
 __ASSERT_NO_MSG(wdRc == 0);
 ```
 
-Passing in `NULL` as the only parameter says you don't want to connect the software watchdog task up with a hardware watchdog.
+Passing in `NULL` for `hw_wdt` says you don't want to connect the software watchdog task up with a hardware watchdog. In most real life applications you do want to provide a hardware watchdog, **as the probability of the software watchdog failing is too high to rely solely on it** (whereas a hardware watchdog is very reliable).
 
-You can "install" a new timeout with the software watchdog by using `int task_wdt_add(uint32_t reload_period, task_wdt_callback_t callback, void *user_data)`.
+You can "install" a new channel with the software watchdog by using `int task_wdt_add(uint32_t reload_period, task_wdt_callback_t callback, void *user_data)`. You then need to regularly feed the channel with `int task_wdt_feed (int channel_id)`, as shown in the below code snippet:
 
 ```c
 void my_thread_fn() {
@@ -647,7 +710,9 @@ void my_thread_fn() {
 
 Make sure you have enough available channels to be able to install timeouts. You can change this in `prf.conf` with `CONFIG_TASK_WDT_CHANNELS`. By default is set to `5`, but can be changed to anything in the range `[2, 100]`[^zephyr-docs-kconfig-search-wdt-channels].
 
-The following code is a complete example showing watchdog task functionality that can be built for the native board. It sets the watchdog up with a 3s timeout. It feeds the watchdog once a second for 5 seconds, and then pretends there is a bug which locks up the code. The software watchdog successfully resets the device 3 seconds later.
+The following code is a complete example showing watchdog task functionality that can be built for the `native_sim` board (Linux). It sets the watchdog up with a 3s timeout. It feeds the watchdog once a second for 5 seconds, and then pretends there is a bug which locks up the code. The software watchdog successfully resets the device 3 seconds later.
+
+It does not use multiple threads (as a real world application typically would), but just shows watchdog working in the main thread.
 
 ```c
 #include <stdio.h>
@@ -657,7 +722,7 @@ The following code is a complete example showing watchdog task functionality tha
 
 int main(void) {
     // Initialize, passing NULL so we are not using a hardware watchdog
-    // also
+    // (for real applications you normally want a hardware watchdog backing the software one!)
     int wdRc = task_wdt_init(NULL);
     __ASSERT_NO_MSG(wdRc == 0);
 
