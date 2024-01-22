@@ -473,6 +473,8 @@ The `native_sim` board supports the following APIs:
 
 ## Device Trees
 
+Zephyr borrows the concept of device trees popularized by Linux to describe the hardware that the firmware is running on.
+
 Example device tree (for the STM32F070RB development board):
 
 ```text
@@ -564,9 +566,16 @@ You do not have to add anything to `prj.conf` to use timers. First you'll need t
 #include <zephyr/kernel.h>
 ```
 
-You create a timer with `void k_timer_init(struct k_timer * timer, k_timer_expiry_t expiryFn, k_timer_stop_t stopFn)`. You can then start a timer with `void k_timer_start(struct k_timer * timer, k_timeout_t duration, k_timeout_t period)`.
+You create a timer object with `struct k_timer myTimer;` and initialize it with `void k_timer_init(struct k_timer * timer, k_timer_expiry_t expiryFn, k_timer_stop_t stopFn)`. `expiryFn` and `stopFn` are both optional and can be `NULL` if you don't want anything to be called when the timer expires or stops.
 
-Note that the function you pass in as `expiryFn` gets executed in the system interrupt context. Thus you have to be careful not to block in the expiry function or take too much time processing.
+{{% aside type="warning" %}}
+Note that the function you pass in as `expiryFn` gets executed in the system interrupt context. Thus you have to be careful not to block in the expiry function, take too much time processing or call things that are not ISR safe.
+
+`stopFn` gets called in the context of the thread which stopped the timer. Thus, if you stop the timer in a ISR, you need to make sure the stop function is ISR safe.
+{{% /aside %}}
+
+You can then start a timer with `void k_timer_start(struct k_timer * timer, k_timeout_t duration, k_timeout_t period)`. `duration` is the time before the timer expires for the first time. `period` is the time between expires after the first one. `period` can be set to `K_NO_WAIT` or `K_FOREVER` to make the timer only expire once (one-shot).
+
 
 Here is a basic example:
 
@@ -592,6 +601,7 @@ int main(void) {
 ```
 
 {{% figure ref="fig-timers-basic-example-output" src="_assets/timers-basic-example-output.png" width="400px" caption="Running the timer example code above and observing the expiry function run every second." %}}
+
 
 You can read the official Zephyr documentation for Timers [here](https://docs.zephyrproject.org/latest/kernel/services/timing/timers.html).
 
@@ -962,6 +972,84 @@ Zephyr-based applications can get large, in part due to the powerful features it
 `CONFIG_SIZE_OPTIMIZATIONS=y` can be set in `prj.conf` to reduce the flash size. One thing this does is set the compiler flag `-Os` which tells the compiler to optimize for size, not speed or debug ability.
 
 On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prf.conf` resulted in a flash size reduction from 421kB to 330kB.
+
+## Tests
+
+There is a template test project located at `zephyr/samples/subsys/testsuite/integration`.
+
+Twister is Zephyrs test runner tool. It is a command-line tool that collects tests, builds the test application and runs it. The best way to access it is via a subcommand of `west`, i.e. `west twister`.
+
+Twister dumps it's build output into directories called `twister-out`, `twister-out1`, `twister-out2`, e.t.c.
+
+### Adding Native Unit Tests To Your Application
+
+Let's assume you have a workspace application at `~/zephyr-project/app/` and want to add unit tests to it using Zephyr and ztest. We'll run the tests on the `native_sim` board so that we can
+
+Let's create a directory called `tests` under `app`, and then copy all of the files from `~/zephyr-project/zephyr/samples/subsys/testsuite/integration` into this new `tests` directory.
+
+`tests` will be an entire Zephyr application in it's own right. The directory structure for your project should look like this:
+
+```text
+<home>/
+├─── zephyr-project/
+│     ├── .west/
+│     ├── app/
+│     │    ├── CMakeLists.txt
+│     │    ├── prj.conf
+│     │    ├── src/
+│     │    |    ├── main.c
+|     |    |    ├── RgbLed.c
+|     |    |    └── RgbLed.h
+|     |    └── tests/
+|     |         ├── src/
+|     |         |    ├── main.c
+|     |         |    ├── SomeUnitTests.c
+|     |         |    └── SomeOtherUnitTests.c
+|     |         ├── CMakeLists.txt
+|     |         ├── prj.conf
+|     |         └── testcase.yaml
+│     ├── zephyr/
+│     ├── bootloader/
+│     ├── modules/
+│     └── ...
+```
+
+{{% aside type="warning" %}}
+When including sources from `app/src/` into your test application, make sure NOT to include the apps `main.c` (or wherever your `int main()` function is defined). The test application defines it's own `main()` which runs the unit test functions (which makes sense, you don't want to RUN your app normally, you want a new entry point which runs the unit test functions). If you include the apps `main()` you'll get a `multiple definition of main` compile error.
+{{% /aside %}}
+
+Assuming you are currently in the root of the west workspace, you can run your tests with the following command. You do not need to pass in the `tests` directory, `west twister` can work that out so you just need to pass in the directory to your app.
+
+```bash
+west twister -T app/
+```
+
+This should build the example tests included in the template. But what we really want to test is code in the `app/src/` directory. To do this, we need to do two things:
+
+1. Include the source code in `app/src` when building the test application.
+1. Add the `app/src` directory as a include path when building the test application.
+
+To do this, we can modify the file `tests/CMakeLists.txt` to the following:
+
+```cmake
+cmake_minimum_required(VERSION 3.20.0)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(integration)
+
+# Include all source files in the main application
+# except main.c, which we will filter out
+FILE(GLOB appSources ../src/*.c)
+list(FILTER appSources EXCLUDE REGEX ".*main\\.c$")
+
+# Include all source files in the test application
+FILE(GLOB testAppSources src/*.c)
+target_sources(app PRIVATE ${testAppSources} ${appSources})
+
+# Add the main application directory to the include path
+target_include_directories(app PRIVATE "../src/")
+```
+
+Now in our tests `.c` files (`tests/src/*.c`), we can include header files from `app/src/` and test the code.
 
 ## Common Errors
 

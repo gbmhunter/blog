@@ -1283,12 +1283,14 @@ pre {
 // Also make sure to include the p, otherwise it also styles code blocks
 p code:not(.has-jax) {
     [data-theme='light'] & {
-        background-color: #e6e6e6;
+        // Background color doesn't work so well for asides
+        // background-color: #e6e6e6;
         color: #b300b3;
     }
 
     [data-theme='dark'] & {
-        background-color: #222222;
+        // Background color doesn't work so well for asides
+        // background-color: #222222;
         color: rgb(21, 193, 193);
     }
 
@@ -1694,8 +1696,8 @@ div.aside {
     }
 
     [data-theme='dark'] &.warning {
-        background-color: rgb(255, 64, 64);
-        border-inline-start: 4px solid rgb(158, 0, 0);
+        background-color: rgb(119, 0, 0);
+        border-inline-start: 4px solid rgb(58, 0, 0);
         .top-bar {
             color: rgb(255, 255, 255);
             svg path {
