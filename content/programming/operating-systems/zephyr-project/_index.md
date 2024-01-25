@@ -473,7 +473,43 @@ The `native_sim` board supports the following APIs:
 
 ## Device Trees
 
-Zephyr borrows the concept of device trees popularized by Linux to describe the hardware that the firmware is running on.
+Zephyr borrows the concept of device trees popularized by Linux to describe the hardware that the firmware is running on. Device trees are computer-readable text files that have a hierarchical structure.
+
+### Terminology
+
+```dts
+/dts-v1/;
+
+/ {
+    a-node {
+        a-subnode-node-label: a-sub-node {
+            a-property = <3>;
+        };
+    };
+};
+```
+
+`a-node` is a node. It is freely chosen identifier for a container. `a-sub-node` is a subnode. It is also a freely chosen identifier. 
+
+### Basic Example
+
+```dts
+/dts-v1/;
+
+/ {
+    soc {
+        uart0: serial@12340000 {
+            ...
+        };
+    };
+};
+```
+
+### Compiled Full Device Tree
+
+When you perform a build, a final, merged device tree gets generated at `build/zephyr/zephyr.dts`. This file is useful for debugging device tree issues.
+
+### Full Example
 
 Example device tree (for the STM32F070RB development board):
 

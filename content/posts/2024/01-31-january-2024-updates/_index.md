@@ -25,3 +25,5 @@ type: post
 * Noticed that the inline equation text colour was different to standard text (thanks to a Bootstrap CSS file), so I added SCSS rules to style it correctly.
  
 * Added info on the non-standard use of MCU SPI peripherals to send data to WS8212 RGB LEDs.
+
+* Added a new page with info on [real-time clock (RTC) ICs](/electronics/components/real-time-clock-ics/).
