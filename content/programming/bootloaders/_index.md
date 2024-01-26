@@ -1,12 +1,15 @@
 ---
 authors: [ "Geoffrey Hunter" ]
-date: 2015-01-09 02:18:15+00:00
+date: 2015-01-09
 draft: false
+lastmod: 2024-01-26
 title: Bootloaders
 type: page
 ---
 
 ## Overview
+
+_Bootloaders_
 
 Bootloaders are typically loaded by the devices ROM or BIOS.
 
