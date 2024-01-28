@@ -24,15 +24,45 @@ Bootloaders are typically the first thing that is run whenever the microcontroll
 
 {{% figure ref="basic-bootloader-memory-map" src="_assets/basic-bootloader-memory-map.webp" width="700px" caption="A basic example showing the layout of a microcontrollers memory when a bootloader is used." %}}
 
+## Erase Cycles
+
+[Flash memory](/electronics/components/memory/#flash) has a limited number of erase cycles, and you have to be careful you do not exceed this number during the lifetime of the device.
+
 ## Multiple Application Images
 
 Relocation can be problematic for memory. When your firmware application undergoes the linking step during compilation, then linker assigns memory addresses for all the functions and static variables in your code. It needs to know where the executable is being placed in memory to do this. But what if you have two different images, which require different offsets?
 
 One solution is a swap algorithm.
 
+### Swap-Scratch Algorithm
+
+The _Swap-Scratch_ algorithm is a way of swapping two firmware images in flash memory.
+
+The scratch area must be large enough to hold the largest sector that is going to be swapped.
+
+
+
+### Swap-Move Algorithm
+
+{{% figure ref="fig-swap-move-algorithm-mcuboot" src="_assets/swap-move-algorithm-mcuboot.webp" width="900px" caption="Illustration of the swap-move algorithm to swap two firmware images using just a single extra erase sector in slot 0." %}}
+
+* **a):** All of the segments in slot 0 are moved one segment up, starting by copying segment 3 into the empty sector, then segment 2 into where segment 3 used to be, e.t.c. This moves the empty segment to the start of slot 0.
+* **b)**: The first segment of slot 1 is moved down to the empty segment.
+* **c)**: The first segment of slot 0 is moved up to where the first segment of slot 1 used to be.
+* **d)**: The process repeats (b) and c)) now with the second segments of each slot.
+* **e)**: This continues until...
+* **f)**: All segments have been swapped over and the empty segment is back at the end of slot 0. Job done! Note that the contents of each slot have been swapped. I've get the old names for each slot to highlight the fact they have moved. Technically speaking though, slot 0 is still in the same place, it just now has the contents of what used to be in slot 1.
+
+{{% aside type="note" %}}
+To illustrate examples clearly, we only show a small number of segments. In reality, each firmware image will consume a much larger number of segments.
+{{% /aside %}}
+
+Each segment in slot 0 is erased/written to twice and each segment in slot 1 is erased/written to once. This is a significant improvement over the Swap-Scratch algorithm which performs as many erase/write cycles as there are segments.
+
+
 ## Security
 
-
+TODO: Add info here.
 
 ## Golden Image
 
@@ -44,12 +74,14 @@ A golden image is a firmware application with minimal support for firmware updat
 
 MCUboot is a popular, open-source, secure bootloader for 32-bit microcontrollers. As of Jan 2024 it has 1.1k star on GitHub, 2,201 commits and active development month over month. It is designed to be run from flash memory[^mcuboot-doc].
 
+{{% figure ref="fig-mcuboot-homepage-screenshot" src="_assets/mcuboot-homepage-screenshot.png" width="700px" caption="A screenshot of MCUboot's homepage as of Jan 2024." %}}
+
 It currently supports the following frameworks/OSes:
 
 * [Zephyr](/programming/operating-systems/zephyr-project/)
 * [Apache Mynewt](https://mynewt.apache.org/)
 * [Apache NuttX](https://nuttx.apache.org/)
-* RIOT
+* [RIOT](https://www.riot-os.org/)
 * Mbed OS
 * Espressif
 * Cypress/Infineon
