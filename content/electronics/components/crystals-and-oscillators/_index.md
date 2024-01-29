@@ -21,13 +21,13 @@ The page also includes discrete oscillator elements such are crystals.
 
 {{% ref "fig-crystal-schematic" %}} shows the schematic symbol commonly used for a crystal.
 
-{{% figure ref="fig-crystal-schematic" src="crystal-schematic.png" width="400px" caption="A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value)." %}}
+{{% figure ref="fig-crystal-schematic" src="_assets/crystal-schematic.png" width="400px" caption="A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value)." %}}
 
 ### Equivalent Circuit
 
 A piezoelectric crystal resonator can be modelled as a series LCR circuit in parallel with a capacitor, as shown in {{% ref "fig-crystal-equivalent-circuit" %}}.
 
-{{% figure ref="fig-crystal-equivalent-circuit" src="crystal-equivalent-circuit.svg" width="800px" caption="The equivalent circuit for a two-lead piezoelectric crystal resonator." %}}
+{{% figure ref="fig-crystal-equivalent-circuit" src="_assets/crystal-equivalent-circuit.svg" width="800px" caption="The equivalent circuit for a two-lead piezoelectric crystal resonator." %}}
 
 The series components `\(C_1\)`, `\(L_1\)`, and `\(R_1\)` model the physical properties of the piezoelectric crystal, and are called the motional arm[^bib-atmel-avr4100]. They are not real physical electronic components inside the crystal. The parallel component `\(C_0\)` is the lead capacitance[^bib-cts-app-note-crystal-basics].
 
@@ -57,7 +57,15 @@ f_P = \frac{1}{2\pi \sqrt{L_1 C_1}} \cdot \sqrt{1 + \frac{C_1}{C_0}}
 
 The series and parallel resonant frequencies are usually very close together. Crystals below 30MHz are operated at a frequency somewhere between the series and parallel resonant frequencies[^bib-atmel-avr4100].
 
-### Quality Factor
+### Important Parameters
+
+#### Frequency Tolerance
+
+The _frequency tolerance_ of a crystal is the accuracy of the frequency as guaranteed by the manufacturer. It is one of the most important parameters and is typically expressed in parts per million (ppm). Values between `\(\pm20ppm\)` and `\(\pm50ppm\)` are common for standard crystals (high precision crystals can have a lower ppm). Because frequency can vary significantly with temperature, the frequency tolerance is specified at a fixed temperature, usually `\(25^{\circ}C\)`. A separate parameter, the _temperature coefficient_, describes how the crystal's frequency changes with temperature.
+
+#### Temperature Coefficient
+
+#### Quality Factor
 
 The quality factor for crystal oscillators is extremely large, typically 10,000 or greater. This is due to the very low series resistance (typically around `\(5\Omega\)`.
 

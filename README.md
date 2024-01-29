@@ -1,4 +1,4 @@
-# Overview
+## Overview
 
 This repo contains the code which is used to build my blog at <blog.mbedded.ninja>.
 
@@ -6,7 +6,7 @@ The static site generator Hugo is used to build the website from the files in th
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3983d7b2-7481-4caa-9874-1ce1a3e82369/deploy-status)](https://app.netlify.com/sites/blog-mbedded-ninja/deploys)
 
-# Development
+## Development
 
 1. The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -43,7 +43,7 @@ There are test pages filled with different shortcode and style tests.
 * Markdown: `/posts/tests/markdown`
 * AsciiDoc: `/posts/tests/asciidoc`
 
-# To Build
+## To Build
 
 To build site and place files in `public` directory:
 
@@ -51,7 +51,7 @@ To build site and place files in `public` directory:
 $ hugo
 ```
 
-# Directory Structure
+## Directory Structure
 
 ```text
 |--.vscode/
@@ -66,31 +66,18 @@ $ hugo
 |--requirements/ -> Contains a requirements.txt used to create a Python virtual environment for running the various Python scripts in this repo.
 |--scripts/ -> Useful Python scripts to automate some laborious tasks.
 |--templates/ -> Contains Affinity Designer diagram template, various Python script templates and a Markdown page template.
-|--skip_file.txt -> Used with filiph/linkcheck (see below).
 ```
 
-## Broken Link Checking
-
-Use https://github.com/filiph/linkcheck.
-
-Run:
-
-```
-linkcheck.bat localhost:1313 --skip-file skip_file.txt
-```
-
-# Recommended VS Code Plugins
+## Recommended VS Code Plugins
 
 * `Code Spell Checker`: Prevents spelling mistakes. Additional dictionary definitions are included in `.vscode/settings.json` under `"cSpell.words"`. Make sure to add new words to the "workspace directory" so they get added to this file.
 * `Vim`: If you're a vim fan!
 * `EditorConfig for VS Code`: Promotes consistent coding styles, incl. indentation rules. Reads rules from `.editorconfig` in this repo's root directory.
 * `AsciiDoc`: For syntax highlighting of AsciiDoc pages (with the `.adoc` extension). Don't rely on it for rendering, use the browser with `hugo` and live file watching for that.
 
-# Markdown Extensions
+## Markdown Extensions
 
 The syntax `<www.google.com>` can be used (instead of `[www.google.com](www.google.com)`) to include a link in where the displayed text is the same as the href.
-
-# Images
 
 ## Diagrams
 
@@ -102,6 +89,14 @@ Diagrams used to be drawn in _LibreOffice Draw_ and then exported to `.svg` to d
 
 Photos are edited in Affinity Photo. 
 
-# Statistics
+## Statistics
 
 The code to generate blog statistics (e.g. number of visitors, increases since last year) is all contained in the separate repo <https://github.com/gbmhunter/blog-stats> (it needs to be separate because when it runs, it checks out specific commits of this repo).
+
+## Link Checking
+
+[lychee](https://github.com/lycheeverse/lychee) can be used to make sure links are valid:
+
+```text
+lychee --config .\lychee.toml .\content\
+```
