@@ -14,7 +14,7 @@ type: page
 
 ## Overview
 
-_Zephyr_ is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. It is part of the Linux Foundation.
+The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
 {{% figure ref="fig-zephyr-project-logo.png" src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
 

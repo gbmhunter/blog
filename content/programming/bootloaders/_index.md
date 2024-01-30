@@ -78,7 +78,7 @@ MCUboot is a popular, open-source, secure bootloader for 32-bit microcontrollers
 
 It currently supports the following frameworks/OSes:
 
-* [Zephyr](/programming/operating-systems/zephyr-project/)
+* [Zephyr](/programming/operating-systems/zephyr/)
 * [Apache Mynewt](https://mynewt.apache.org/)
 * [Apache NuttX](https://nuttx.apache.org/)
 * [RIOT](https://www.riot-os.org/)
@@ -88,6 +88,8 @@ It currently supports the following frameworks/OSes:
 * Simulator (primarily for testing the upgrade code and badly timed resets - written in Rust[^mcuboot-sim-readme])
 
 The MCUboot implementation for Zephyr supports Bluetooth bootloading. The Nordic nRF app can be used to bootload during development.
+
+{{% figure ref="fig-zephyr-mcuboot-shell-output-during-swap" src="_assets/zephyr-mcuboot-shell-output-during-swap.png" width="700px" caption="The output to the Zephyr shell just after a new image has been downloaded, the MCU reboots and MCUboot performs a swap of the images." %}}
 
 ## References
 

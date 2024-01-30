@@ -10,11 +10,11 @@ title: "January 2021 Updates"
 type: "post"
 ---
 
-* Merged the Oscillators and Crystal pages (which were grouped under a section called _Timing_) into the single [Oscillators page](/electronics/components/oscillators).
+* Merged the Oscillators and Crystal pages (which were grouped under a section called _Timing_) into the single Oscillators page.
 
-* Added information on MEMS Oscillators to the [Oscillators page](/electronics/components/oscillators) and [Chip Package](/pcb-design/component-packages/chip-eia-component-packages) pages.
+* Added information on [MEMS Oscillators](/electronics/components/crystals-and-oscillators/#mems-oscillators) and [Chip Package](/pcb-design/component-packages/chip-eia-component-packages) pages.
 
-* Added a [Components That Don't Like Ultrasonic Baths section to the Ultrasonic Cleaners page](/electronics/tools/ultrasonic-cleaners#components-that-dont-like-ultrasonic-baths).
+* Added info on [components that don't like ultrasonic baths](/electronics/tools/#ultrasonic-cleaners).
 
 * Added a new page on [Common-mode Chokes](/electronics/components/common-mode-chokes).
     {{% figure src="common-mode-choke-screenshot.png" width="600px" %}}

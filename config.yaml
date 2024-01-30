@@ -10,6 +10,7 @@ preserveTaxonomyNames: 'true'
 enableGitInfo: false
 timeout: 60000 # Used be to 30,000 but this would timeout on netlify
 assetDir: assets
+enableRobotsTXT: true # Makes Hugo spit out a robots.txt file with the contents: User-agent: *
 params:
   author: Geoffrey Hunter
   description: An embedded engineering site that's got your back.

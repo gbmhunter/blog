@@ -95,7 +95,7 @@ Surprisingly easy to solder by hand, as long as the pads extend around to the si
 
 ## Similar To
 
-* [SON (DFN)](../son-component-package)
+* [SON (DFN)](/pcb-design/component-packages/son-component-package/)
 
 ## Solder Mask
 

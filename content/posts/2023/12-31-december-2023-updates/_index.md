@@ -23,7 +23,7 @@ type: post
 * Added info on converting a version string into numbers to the [C String Manipulation page](/programming/languages/c/string-manipulation-in-c/#converting-a-version-string-to-numbers). This page was also restructured to read better.
     {{% figure src="_assets/converting-version-string-to-numbers-screenshot.png" width="700px" %}}
 
-* Added info on the [Hardware Info Interface (including reset causes) to the Zephyr page](/programming/operating-systems/zephyr-project/#hardware-info).
+* Added info on the [Zephyr Hardware Info Interface (including reset causes)](/programming/operating-systems/zephyr/#hardware-info).
     {{% figure src="_assets/zephyr-reset-causes-screenshot.png" width="700px" %}}
 
 * Added more info on Benchtop PSUs to the [Electronics Tools page](/electronics/tools/).

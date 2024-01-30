@@ -95,8 +95,12 @@ The code to generate blog statistics (e.g. number of visitors, increases since l
 
 ## Link Checking
 
-[lychee](https://github.com/lycheeverse/lychee) can be used to make sure links are valid:
+[lychee](https://github.com/lycheeverse/lychee) did not work so well since it's not that reliable to check the markdown file links, and it doesn't support recursive checking over HTML.
+
+[broken-link-checker](https://github.com/stevenvachon/broken-link-checker) works ok.
 
 ```text
-lychee --config .\lychee.toml .\content\
+blc -rofe http://localhost:1313/ --requests 10
 ```
+
+[linkcheck](https://github.com/filiph/linkcheck) runs out of memory.
