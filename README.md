@@ -95,12 +95,25 @@ The code to generate blog statistics (e.g. number of visitors, increases since l
 
 ## Link Checking
 
+Make sure to run hugo without `--renderToDisk`, because this causes links to get corrupted.
+
+### lychee
+
 [lychee](https://github.com/lycheeverse/lychee) did not work so well since it's not that reliable to check the markdown file links, and it doesn't support recursive checking over HTML.
+
+### Broken Link Checker (blc)
 
 [broken-link-checker](https://github.com/stevenvachon/broken-link-checker) works ok.
 
-```text
+```bash
 blc -rofe http://localhost:1313/ --requests 10
+
+# Exclude tags can categories pages
+blc -rofe http://localhost:1313/ --requests 10 --exclude */tags/* --exclude */categories/*
 ```
+
+WARNING: Increasing the concurrency from 10 to 50 actually slows it down, because it overloads the development server.
+
+### linkcheck
 
 [linkcheck](https://github.com/filiph/linkcheck) runs out of memory.

@@ -20,10 +20,11 @@ type: post
 * Added the ability to do a site-wide search with the help of the pagefind library. At compile time, after hugo builds the site, pagefind is then run and creates a search dictionary that is downloaded to the client when they want to perform a search. All the searching happens client-side, no server is needed.
     {{% figure src="_assets/search-screenshot.png" width="700px" %}}
 
-* Added more info on [Zephyr](/programming/operating-systems/zephyr-project/).
+* Added more info on [Zephyr](/programming/operating-systems/zephyr/), including semaphores, the polling API, workqueues, watchdogs and commons errors.
 
 * Noticed that the inline equation text colour was different to standard text (thanks to a Bootstrap CSS file), so I added SCSS rules to style it correctly.
  
-* Added info on the non-standard use of MCU SPI peripherals to send data to WS8212 RGB LEDs.
+* Added info on the [non-standard use of MCU SPI peripherals to send data to WS8212 RGB LEDs](/electronics/communication-protocols/spi-communication-protocol/#ws2812-rgb-leds).
+    {{% figure src="_assets/ws2812-non-standard-spi-usage.png" width="700px" %}}
 
 * Added a new page with info on [real-time clock (RTC) ICs](/electronics/components/real-time-clock-ics/).
