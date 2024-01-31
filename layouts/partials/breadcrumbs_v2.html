@@ -1,0 +1,27 @@
+{{- /* Used https://discourse.gohugo.io/t/generating-breadcrumbs-for-hugo/42059 as a starting point */ -}}
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+  {{- /* declare a 'variable' to store the each link position */}}
+  {{- $data := newScratch }}
+
+  {{- range $index, $value := .Ancestors.Reverse }}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          {{- /* read the index from loop and add 'one', because it starts counting from zero */}}
+          {{- $data.Set "counter" $index }}
+          {{- $data.Add "counter" 1 }}
+          <a itemprop="item" href="{{.Permalink}}">
+              <span itemprop="name">{{.Title}}</span>
+          </a><span>&nbsp;/&nbsp;</span>
+          {{- /* pass the counter value into schema attribute */}}
+          <meta itemprop="position" content='{{ $data.Get "counter"}}' />
+      </li>
+  {{- end }}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          {{- /* add 'one' one more time for the last link position */}}
+          {{- $data.Add "counter" 1 }}
+          <a itemprop="item" href="{{ .Permalink }}">
+              <span itemprop="name">{{.Title}}</span>
+          </a>
+          {{- /* pass the counter value into schema attribute */}}
+          <meta itemprop="position" content='{{ $data.Get "counter"}}' />
+      </li>
+</ol>

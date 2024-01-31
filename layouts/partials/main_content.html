@@ -13,7 +13,7 @@
 {{- end -}}
   <div class="page-left-column">
     <header>
-      {{ partial "breadcrumbs.html" . }}
+      {{ partial "breadcrumbs_v2.html" . }}
       <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
       <h1>
         <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
