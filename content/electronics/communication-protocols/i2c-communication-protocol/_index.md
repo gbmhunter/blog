@@ -335,11 +335,11 @@ An example of a microcontroller that provides both analog and digital filters is
 
 ### SCL Spike Filters
 
-The I2C specification requires that I2C devices ignore any high signal on the SCL wire that lasts less than 50ns. This specification is not universally implemented, typically because in most cases it does not effect operation. However, the [I3C communication protocol](i3c-communication-protocol) uses this feature for some of it's _high data rate_ (HDR) modes which allow I2C slaves with spike filters to co-exist on the bus while the HDR transmission takes places between two I3C devices.
+The I2C specification requires that I2C devices ignore any high signal on the SCL wire that lasts less than 50ns. This specification is not universally implemented, typically because in most cases it does not effect operation. However, the [I3C communication protocol](../i3c-communication-protocol) uses this feature for some of it's _high data rate_ (HDR) modes which allow I2C slaves with spike filters to co-exist on the bus while the HDR transmission takes places between two I3C devices.
 
 ## Alternatives To I2C
 
-A popular alternative to I2C which is also used for intra-board communication is the [SPI bus](spi-communication-protocol). [I3C](i3c-communication-protocol) is less widely used but "improvement" on I2C in terms of baud rate, features and power usage.
+A popular alternative to I2C which is also used for intra-board communication is the [SPI bus](../spi-communication-protocol). [I3C](../i3c-communication-protocol) is less widely used but "improvement" on I2C in terms of baud rate, features and power usage.
 
 ## References
 

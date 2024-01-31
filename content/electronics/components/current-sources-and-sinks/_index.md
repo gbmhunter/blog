@@ -4,7 +4,7 @@ categories: [ Electronics, Electronic Components ]
 date: 2022-01-09
 description: Schematics, advantages/disadvantages, and uses of various current source/sink circuits.
 draft: false
-lastmod: 2022-08-04
+lastmod: 2024-01-31
 tags: [ electronics, components, current sources, current sinks, bjts, transistors, op-amps, current mirrors ]
 title: Current Sources And Sinks
 type: page
@@ -122,7 +122,7 @@ R_S &= \frac{V_{GS}}{I_D} \nonumber \\
 
 Done!
 
-The resistor `\(R_S\)` can be replaced with a [potentiometer](/electronics/components/potentiometers/) to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
+The resistor `\(R_S\)` can be replaced with a [potentiometer](/electronics/components/potentiometers-and-rheostats/) to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
 
 An important parameter determining the accuracy/stability of a constant-current diode is the [output conductance](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/#_output_conductance) `\(g_{oss}\)` of the JFET. This is the ratio of change in `\(I_D\)` to change in `\(V_{DS}\)`. This is a measure of how stable the constant-current source will be to changes in the voltage across it, which occur if either the supply voltage or load resistance changes. The lower the `\(g_{oss}\)` the better (an ideal current source would have `\(g_{oss} = 0\)`, which is the equivalent to a resistance of `\(\infty\)`).
 

@@ -1,11 +1,11 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2016-03-10
-description: "Topologies, standards, schematics, popular ICs, microcontroller interfaces, HART, filtering/buffering and more info about 4-20mA current loops."
+description: Topologies, standards, schematics, popular ICs, microcontroller interfaces, HART, filtering/buffering and more info about 4-20mA current loops.
 draft: false
-lastmod: 2021-08-30
-tags: [ "4-20mA", "current loop", "analogue", "transmitter", "receiver", "over-voltage", "HART", "communication protocol", "out-of-band signalling", "noise", "filtering", "buffering", "microcontroller", "ISA S50.1", "NAMUR NE43", "2-Wire", "3-Wire", "XTR115", "XTR116" ]
-title: "4-20mA Current Loops"
+lastmod: 2024-01-31
+tags: [ 4-20mA, current loop, analogue, transmitter, receiver, over-voltage, HART, communication protocol, out-of-band signalling, noise, filtering, buffering, microcontroller, ISA S50.1, NAMUR NE43, 2-Wire, 3-Wire, XTR115, XTR116 ]
+title: 4-20mA Current Loops
 type: page
 ---
 
@@ -57,7 +57,7 @@ NAMUR, an international association of process instrumentation companies, made a
 
 The "standard" defines any current below 3.6mA or above 21mA as a sensor fault. This signal needs to be present for at least 4 seconds before it is considered a fault.
 
-{{% figure src="namur-ne-43-current-looop-current-ranges-diagram.png" width="560px" caption="The current ranges allowed by the NAMUR NE 43 current-loop standard." %}}
+{{% figure src="namur-ne-43-current-loop-current-ranges-diagram.png" width="560px" caption="The current ranges allowed by the NAMUR NE 43 current-loop standard." %}}
 
 The standard also extends the normal operation 4-20mA current range to 3.8-20.5mA, allowing more measurement information to be communicated.
 
@@ -75,11 +75,11 @@ The 4-20mA current-loop communication protocol is used by many **industrial sens
 
 ## Interfacing To A Microcontroller
 
-A 4-20mA current loop signal can be easily interfaced to a microcontroller which has an [ADC](/electronics/circuit-design/adcs).
+A 4-20mA current loop signal can be easily interfaced to a microcontroller which has an [ADC](/electronics/components/analogue-to-digital-converters-adcs/).
 
 ## A Simple Interface
 
-The schematic below shows probably the simplest 4-20mA interface you could build to an ADC on a microcontroller. It uses just a single, precision \(100\Omega\) resistor to convert the 4-20mA signal into a 400-2000mV voltage.
+The schematic below shows probably the simplest 4-20mA interface you could build to an ADC on a microcontroller. It uses just a single, precision `\(100\Omega\)` resistor to convert the 4-20mA signal into a 400-2000mV voltage.
 
 {{% figure src="simple-4-20ma-current-loop-interface-to-micro-adc.png" width="800px" caption="Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling." %}}
 

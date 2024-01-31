@@ -79,7 +79,7 @@ Many microcontrollers have pins which you can connect a 32.678kHz crystal to, wi
 
 As shown in {{% ref "fig-tuning-fork-32.678khz-crystal-shape" %}}, 32.678kHz crystals are also called _tuning fork crystals_, as the crystal is usually cut into the shape of a tuning fork[^bib-atmel-avr4100] (it vibrates in a similar manner to a large metal one used for tuning musical instruments).
 
-{{% figure ref="fig-tuning-fork-32.678khz-crystal-shape" src="tuning-fork-32.678khz-crystal-shape.svg" width="700px" caption="Basic shape of a 32.678kHz \"tuning fork\" crystal." %}}
+{{% figure ref="fig-tuning-fork-32.678khz-crystal-shape" src="_assets/tuning-fork-32.678khz-crystal-shape.svg" width="700px" caption="Basic shape of a 32.678kHz \"tuning fork\" crystal." %}}
 
 ### Important Parameters
 

@@ -1,22 +1,23 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-date: 2011-09-03 02:21:55+00:00
+authors: [ Geoffrey Hunter ]
+date: 2011-09-03
 draft: false
-title: "IR Devices"
+lastmod: 2024-01-31
+title: IR Devices
 type: page
 ---
 
 ## Overview
 
-Infrared devices are used commonly used in electronics for communication, object detection, electrical isolation and illumination. The vague and broad category of 'infrared devices' includes infrared emitting diodes (IED's), phototransistors, and photodiodes. Phototransistors and photodiodes can actually also be used for visible light, but only their infrared use will be discussed here.
+Infrared devices are used commonly used in electronics for communication, object detection, electrical isolation and illumination. The vague and broad category of 'infrared devices' includes infrared emitting diodes (IEDs), phototransistors, and photodiodes. Phototransistors and photodiodes can actually also be used for visible light, but only their infrared use will be discussed here.
 
-Diodes which emit visible light are discussed on the [LEDs page](/electronics/components/diodes/leds).
+Diodes which emit visible light are discussed on the [LEDs page](/electronics/components/diodes/light-emitting-diodes-leds/).
 
 Diodes which don't emit light at all are discussed on the [Diodes page](/electronics/components/diodes).
 
 ## Infrared Emitting Diodes
 
-## Important parameters
+### Important parameters
 
 1. Peak wavelength
 2. Peak current
@@ -24,11 +25,11 @@ Diodes which don't emit light at all are discussed on the [Diodes page](/electro
 4. Package size
 5. Half-angle
 
-## Application Circuits
+### Application Circuits
 
-Infrared diodes are normally driven continously for IR illumination or pulsed for object detection, communication or isolation.
+Infrared diodes are normally driven continuously for IR illumination or pulsed for object detection, communication or isolation.
 
-## Examples
+### Examples
 
 **SFH4056 - High Power Infrared Emitter (850nm)**
 
@@ -46,21 +47,21 @@ Notes: Small SMD infrared emitter with a little light blocker around the sides o
 
 Photodiodes receive incoming light and convert it into electrical energy, which can be detected as either a current or voltage, depending on the way the surrounding circuit is configured. They are an alternative to phototransistors to infrared light detection, and offer faster response and the cost of decreased senstivity. Saying that, I have seem to get better object detection range with photodiodes than phototransistors! They also consume less power than the phototransistor (infact they generate power!). Photodiodes can detect light from the visible and infrared spectrum, however some come with specialised filters optimised for the infrared region (generally allowing through 850-950nm light). It should be noted that although they can detect a wide range of light, their peak sensitivty is normally in the infrared spectrum.
 
-## Important parameters
+### Important parameters
 
 1. Peak wavelength
 2. Optical filter/no filter
 3. Photocurrent vs light input
 4. Amount of dark current (useful to know when operating in photo-conductive mode)
 
-## Design Considerations
+### Design Considerations
 
-* Less suseptible to voltage supply noise than phototransistors as they produce their own current/voltage and do not need to be connected to the supply (on the input of an op-amp)
+* Less susceptible to voltage supply noise than phototransistors as they produce their own current/voltage and do not need to be connected to the supply (on the input of an op-amp)
 * Less sensitive than phototransistors
 * Faster response time than phototransistors
 * When operating in photovoltaic mode, the built up charge can take a long time to dissapte, making it unsuitable for pulsed operation. Use in photoconductive mode instead.
 
-## Application Circuits
+### Application Circuits
 
 Photodiodes are normally interfaced to a op-amp to produce a voltage output that is related to the incident light level. Essentially, a photodiode can be modelled as a current source is parallel with a high resistance and capacitance. There are essentially two 'modes' of operation, the photo-voltaic and photo-conductive mode.
 
@@ -68,7 +69,7 @@ Photovoltaic mode is when the photo diode is not reverse biased. Incident light 
 
 You want to apply as much gain as possible in the first stages of amplification to keep the SNR down. If you are using a current-to-voltage amplifier and the diode in photovoltaic mode, doubling the gain increases the SNR by 3dB.
 
-## Examples
+### Examples
 
 **BPW34FS - Silicon PIN Photodiode with Daylight Filter**
 
@@ -86,17 +87,17 @@ Manufacturer: OSRAM MAnufacturer Code: SFH4200xx Element 14 Code: 122-6452 Eleme
 
 Phototransistors use the base-emitter junction of a transistor as a photodiode and exposes it to the environment. This causes the transistor to turn on when light hits the junction. They offer better sensitvity than photodiodes, but have a slower response and consumer more power.
 
-## Important Parameters
+### Important Parameters
 
 1. Peak wavelength
 2. Optical filter/no filter (usually an infrared-pass filter)
 3. Forward current vs light input
 
-## Thermopiles
+### Thermopiles
 
-Thermopiles are infrared sensors that convert thermal energy into electrical energy. Their output is **driectly proportional** to incident radiation (as opposed to pyroelectric devices whose output is porportional to the rate of change of incident radiation).
+Thermopiles are infrared sensors that convert thermal energy into electrical energy. Their output is **driectly proportional** to incident radiation (as opposed to pyroelectric devices whose output is proportional to the rate of change of incident radiation).
 
-They are built by connecting a number of thermocouples together in series (a thermocouple being a junction of disimilar metals). Because thermocouples themselves can only measure a difference in temperature, so only can a thermopile. Some devices using thermocouples also have an absolute temperature sensor to use as a reference point, so they can give back a temperature reading.
+They are built by connecting a number of thermocouples together in series (a thermocouple being a junction of dissimilar metals). Because thermocouples themselves can only measure a difference in temperature, so only can a thermopile. Some devices using thermocouples also have an absolute temperature sensor to use as a reference point, so they can give back a temperature reading.
 
 Compared to pyroelectrics, thermopiles have a **low impedance**.
 
@@ -112,9 +113,9 @@ PIR sensors are pyroelectric infrared devices. They may not detect motion coming
 
 Popular brands include Zmotion, Parallax, Panasonic.
 
-## Emissivties
+## Emissivities
 
-The emissivity of a material is it's relative ability of it's surface to emit enegy as radiation. Bulky, dull materials usually have high emissivity (0.98), while shiny object have low emissivity (0.02).
+The emissivity of a material is it's relative ability of it's surface to emit energy as radiation. Bulky, dull materials usually have high emissivity (0.98), while shiny object have low emissivity (0.02).
 
 The following table lists emissivities of common materials (source of this data was a manual for an IR range thermometer, 700-EN-00):
 
