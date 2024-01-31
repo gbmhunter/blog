@@ -1016,6 +1016,40 @@ void LogResetCause()
 }
 ```
 
+### PWM
+
+For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for "pwm" we find:
+
+```dts
+/ {
+    soc {
+        pwm0: pwm@4001c000 {
+            compatible = "nordic,nrf-pwm";
+            reg = <0x4001c000 0x1000>;
+            interrupts = <28 NRF_DEFAULT_IRQ_PRIORITY>;
+            status = "disabled";
+            #pwm-cells = <3>;
+        };
+        pwm1: pwm@40021000 {
+            compatible = "nordic,nrf-pwm";
+            reg = <0x40021000 0x1000>;
+            interrupts = <33 NRF_DEFAULT_IRQ_PRIORITY>;
+            status = "disabled";
+            #pwm-cells = <3>;
+        };
+        pwm2: pwm@40022000 {
+            compatible = "nordic,nrf-pwm";
+            reg = <0x40022000 0x1000>;
+            interrupts = <34 NRF_DEFAULT_IRQ_PRIORITY>;
+            status = "disabled";
+            #pwm-cells = <3>;
+        };
+    }
+}
+```
+
+This defines 3 PWM peripherals.
+
 ### Non-Volatile Storage
 
 Zephyr provides an API for storing things in non-volatile storage (flash memory). The NVS API is provided by `#include <zephyr/fs/nvs.h>`.
