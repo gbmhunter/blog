@@ -4,6 +4,7 @@ categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-03-19
 description: "Brief overview of the variety of components available in PSoc 3/4/5 MCUs."
 draft: false
+lastmod: 2024-01-31
 tags: [ "PSoC", "microcontroller", "Cortex-M3", "components", "UART", "I2C", "interrupts", "pins" ]
 title: Components
 type: page
@@ -44,15 +45,15 @@ Delta-Sigma ADC components are high precision voltage measuring devices. The tra
 
 A _successive-approximation register analogue-to-digital converter_ (SAR ADC) is the common way of measuring a PCB voltage with a microcontroller.
 
-The PSoC ADC component supports many different sources for the voltage reference, `\(V_{ref}\)`. One of the most common choices is the internally generated 1.024V, which allows you to measure a voltage between 0-2.048V. For ratiometric measurements (e.g. measuring the voltage of a [thermistor temperature sensor](/electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors) connected in a resistor divider configuration), you can set `\(V_{ref}\)` to be `VDDA/2`. Please note that you cannot change the voltage reference for the ADC at run-time (i.e. it may only be adjusted at compile time).
+The PSoC ADC component supports many different sources for the voltage reference, `\(V_{ref}\)`. One of the most common choices is the internally generated 1.024V, which allows you to measure a voltage between 0-2.048V. For ratiometric measurements (e.g. measuring the voltage of a [thermistor temperature sensor](/electronics/components/sensors/temperature-sensors/#ntc-thermistors) connected in a resistor divider configuration), you can set `\(V_{ref}\)` to be `VDDA/2`. Please note that you cannot change the voltage reference for the ADC at run-time (i.e. it may only be adjusted at compile time).
 
 Some of the higher-end PSoC microcontrollers contain 2 SAR ADCs. Remember that with an analogue multiplexor, you can use one ADC to take successive measurements of large numbers of analogue channels. And if you need precisely consecutive measurements, you still only need one ADC if you add 'sample and hold' components to the analogue inputs.
 
 The higher-end PSoC microcontrollers also have Delta-Sigma ADCs, which are more accurate than the SAR ADCs (albeit with a slower conversion time).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Calling `AdcCp_StartConvert()` disables the SOC pin indefinitely if triggered mode is enabled (this always gets me).
-{{% /warning %}}
+{{% /aside %}}
 
 ## Analogue Multiplexer
 

@@ -4,7 +4,7 @@ categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
 description: "Simple moving averages, exponential moving averages, Savizky-Golay filters, frequency responses, source code and more info on digital filtering (a form of signal processing)."
 draft: false
-lastmod: 2021-05-29
+lastmod: 2024-01-31
 tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing", "Savitzky–Golay fFilters" ]
 title: "Digital Filters"
 type: "page"
@@ -20,7 +20,7 @@ type: "page"
 For information on the popular moving average (windowed) filters (all with a finite impulse response, FIR), including frequency responses and performance implications, see the [Windowed Moving Average Filters page](/programming/signal-processing/digital-filters/windowed-moving-average-filters/).
 </p>
 <div style="width: 20px"></div>
-<a href="/programming/signal-processing/digital-filters/moving-average-filters/"><img src="moving-average-filters-screenshot.png" width="200px" /></a>
+<a href="/programming/signal-processing/digital-filters/windowed-moving-average-filters/"><img src="moving-average-filters-screenshot.png" width="200px" /></a>
 </div>
 
 For info on the exponential moving average IIR filter (non-windowed), including the impulse response, see the [Exponential Moving Average (EMA) Filter page](/programming/signal-processing/digital-filters/exponential-moving-average-ema-filter/).

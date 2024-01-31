@@ -495,7 +495,7 @@ The STM32 family of microcontrollers has some of the richest Rust support out of
 
 ### Atmel AVR
 
-[https://github.com/Rahix/avr-hal](Rahix/avr-hal) is a popular 3rd party Rust HAL layer for the ATmega AVRs (incl. Arduino, ATmega, ATtiny).
+[Rahix/avr-hal](https://github.com/Rahix/avr-hal) is a popular 3rd party Rust HAL layer for the ATmega AVRs (incl. Arduino, ATmega, ATtiny).
 
 `ravedude` is a useful cargo application which adds support to `cargo run` to program the Arduino boards, and then connect up a serial to display any print messages.
 

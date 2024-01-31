@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2023-07-14
 draft: false
-lastmod: 2023-07-14
+lastmod: 2024-01-31
 tags: [ "component packages", "PCB design", "SOD-353" ]
 title: "SOD-353 Component Package"
 type: "page"
@@ -36,7 +36,7 @@ Similar To:
 
 {{% ref "fig-sot-353-package-dimensions-diodes-com" %}} shows the mechanical outline and dimensions for the SOT-353 package from Diodes Incorporated. 
 
-{{% figure ref="fig-sot-353-package-dimensions-diodes-com" src="sot-3535-package-dimensions-diodes-com.png" width="700px" caption="Mechanical outline and dimensions for the SOT-353 package[^diodes-incorp-sot-353-package-info]." %}}
+{{% figure ref="fig-sot-353-package-dimensions-diodes-com" src="sot-353-package-dimensions-diodes-com.png" width="700px" caption="Mechanical outline and dimensions for the SOT-353 package[^diodes-incorp-sot-353-package-info]." %}}
 
 ## Recommended Land Pattern
 

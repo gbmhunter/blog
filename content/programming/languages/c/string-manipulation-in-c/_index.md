@@ -3,7 +3,7 @@ authors: [ Geoffrey Hunter ]
 categories: [ Programming, Programming Languages, C ]
 date: 2013-03-18
 draft: false
-lastmod: 2023-12-22
+lastmod: 2024-01-31
 tags: [ programming, programming languages, C, strings, ASCII, char, special characters, itoa(), sprintf(), snprintf(), atoi() ]
 title: String Manipulation in C
 type: page
@@ -295,7 +295,7 @@ Most C compiler installations include standard C libraries for manipulating stri
 {{% aside type="warning" %}}
 `printf()` and friends can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
 
-For example, the RTOS/framework [Zephyr](/programming/operating-systems/zephyr-project/) uses deferred logging by default, in which the format strings and variables are saved and passed to a low priority logging thread for processing.
+For example, the RTOS/framework [Zephyr](/programming/operating-systems/zephyr/) uses deferred logging by default, in which the format strings and variables are saved and passed to a low priority logging thread for processing.
 {{% /aside %}}
 
 ### Conversion Specifiers

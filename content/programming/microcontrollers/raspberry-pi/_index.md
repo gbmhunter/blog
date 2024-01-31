@@ -17,7 +17,7 @@ The RaspberryPi is a family of cheap, fully-functional micro-computers.
 
 ## Quick Setup
 
-[www.raspberrypi.com](www.raspberrypi.com) has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
+[www.raspberrypi.com](https://www.raspberrypi.com) has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
 
 At the bare minimum, you'll also need a USB keyboard, mouse (hard-outs may be able to forgo this) and either an HDMI or composite screen.
 
