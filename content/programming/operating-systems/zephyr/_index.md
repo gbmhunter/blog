@@ -505,6 +505,36 @@ Zephyr borrows the concept of device trees popularized by Linux to describe the 
 };
 ```
 
+### Getting Nodes
+
+In C, to grab a node from the device tree you can use:
+
+**By path**
+
+Use `DT_PATH()` to get the node from a fully quality path from the root node. e.g `DT_PATH(soc, serial_12340000)`. Note that non alphanumeric characters in the devicetree are converted to `_`, including hyphens and at symbols.
+
+Do not use camel case when naming nodes, as `DT_PATH()` cannot work with these.
+
+```dts
+/ {
+    mySoc { // Bad! DT_PATH() won't like this
+        serial@12340000 {
+            ...
+        };
+    };
+
+    mysoc { // Good!
+        serial@12340000 {
+            ...
+        };
+    };
+};
+```
+
+**By node label**
+
+Use `DT_NODELABEL()`, e.g. `DT_NODELABEL(uart0)`.
+
 ### Compiled Full Device Tree
 
 When you perform a build, a final, merged device tree gets generated at `build/zephyr/zephyr.dts`. This file is useful for debugging device tree issues.
@@ -1371,6 +1401,14 @@ can occur if you have forgotten to install the additional Zephyr dependencies in
 
 ```shell
 pip install -r ./zephyr/scripts/requirements.txt
+```
+
+### Printing Floats Results in *float*
+
+If tring to print a float using `%f` in any printf style functions (or log macros) results in the output `*float*`, it's likely you need to enable floating-point print support with `CONFIG_FPU=y` in `prj.conf`:
+
+```text
+CONFIG_FPU=y # Required for printing floating point numbers
 ```
 
 ## References
