@@ -4,7 +4,7 @@ categories: [ Electronics, Components ]
 date: 2011-09-03
 description: Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs.
 draft: false
-lastmod: 2023-05-28
+lastmod: 2024-02-01
 tags: [ MOSFETs, transistors, field-effect transistors, metal oxide semiconductors, schematics, electronics, switches, inverters, H-bridges, half-bridges, switch-mode, substrate bias effect, floating-gate MOSFETs, FGMOS, EEPROM, flash memory, drain, source, gate, split-gate, SOA diagram ,safe operating area, thermal limits, Spirito effect, common-source amplifier, HEMT ]
 title: MOSFETs
 type: page
@@ -29,13 +29,13 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 ### Enhancement-Mode
 
-Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. The below image shows the commonly used schematic symbols for enhancement-mode MOSFETs, with both the N-channel and P-channel variant.
+Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. {{% ref "fig-mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch" %}} shows the commonly used schematic symbols for enhancement-mode MOSFETs, with both the N-channel and P-channel variant.
 
-{{% figure src="mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg" width="700" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." %}}
+{{% figure ref="fig-mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch" src="_assets/mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.webp" width="700" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 You will normally encounter P-channel MOSFET symbols with the source at the top (unlike above, where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to `\(V_{DD}\)`).
-{{% /warning %}}
+{{% /aside %}}
 
 The arrow in the symbol has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Sometimes an **outer circle is added to the above symbols**, since a MOSFET is a transistor and by convention transistors are drawn with circles (e.g. think about a BJT symbol). However this has been omitted from the above symbols as it does contribute somewhat to the "noisyness", I find the circle-less symbol much cleaner. Totally a personal preference though.
 
