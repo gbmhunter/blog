@@ -4,7 +4,7 @@ categories: [ Electronics, Components ]
 date: 2011-09-03
 description: Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs.
 draft: false
-lastmod: 2024-02-01
+lastmod: 2024-02-08
 tags: [ MOSFETs, transistors, field-effect transistors, metal oxide semiconductors, schematics, electronics, switches, inverters, H-bridges, half-bridges, switch-mode, substrate bias effect, floating-gate MOSFETs, FGMOS, EEPROM, flash memory, drain, source, gate, split-gate, SOA diagram ,safe operating area, thermal limits, Spirito effect, common-source amplifier, HEMT ]
 title: MOSFETs
 type: page
@@ -190,8 +190,8 @@ _Gallium Nitride_ (GaN) MOSFETs switch much faster than traditional silicon MOSF
 One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MOSFET with an integrated driver, protection and error reporting. The driver supports switching speeds of up to 150V/ns[^ti-lmg352xr030-q1-ds].
 
 <div style="display: flex;">
-{{% figure src="lmg3525r030-q1-ti-gan-fet-3d-render.png" width="200px" caption="3D render of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
-{{% figure src="lmg3525r030-q1-ti-gan-fet-block-diagram.png" width="200px" caption="Block diagram of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
+{{% figure src="_assets/lmg3525r030-q1-ti-gan-fet-3d-render.png" width="200px" caption="3D render of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
+{{% figure src="_assets/lmg3525r030-q1-ti-gan-fet-block-diagram.png" width="200px" caption="Block diagram of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
 </div>
 
 ## MOSFET Applications
@@ -270,13 +270,13 @@ CMOS devices have PNPN structures. This forms a parasitic thyristor, which can c
 
 ## The Body Effect And Connecting The Substrate To The Source
 
-**The basic design of a MOSFET provides four (not three!) electrical connection points**. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead is normally connected internally to the source, so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
+**The basic design of a MOSFET provides four (not three!) electrical connection points**. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead is normally connected internally to the source, so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_). {{% ref "fig-mosfet-silicon-structure" %}} shows the internal silicon structure of a MOSFET.
 
-{{% figure src="mosfet-silicon-structure.png" width="1000px" caption="Diagram showing the internal silicon structure of a MOSFET. The MOSFET on the right does not have the source connected to the substrate, and has two parasitic body diodes (commonly done within ICs). The MOSFET on the left shows the source connected to the substrate (almost all discrete MOSFETs do this), which shorts out (removes) one the body diodes." %}}
+{{% figure ref="fig-mosfet-silicon-structure" src="_assets/mosfet-silicon-structure.png" width="1000px" caption="Diagram showing the internal silicon structure of a MOSFET. The MOSFET on the right does not have the source connected to the substrate, and has two parasitic body diodes (commonly done within ICs). The MOSFET on the left shows the source connected to the substrate (almost all discrete MOSFETs do this), which shorts out (removes) one the body diodes." %}}
 
-Some discrete MOSFETs do provide you with a separate substrate pin, for example the 3N163 as shown below:
+Some discrete MOSFETs do provide you with a separate substrate pin, for example the 3N163 as shown in {{% ref "fig-3n163-mosfet-drawing-with-substrate-connection" %}}.
 
-{{% figure src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
+{{% figure ref="fig-3n163-mosfet-drawing-with-substrate-connection" src="_assets/3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
 
 {{% aside type="note" %}}
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
@@ -315,13 +315,13 @@ For a N-channel MOSFET, when the substrate is not connected to the source, whate
 
 The substrate is normally connected to the source in most discrete MOSFETs because it makes the **MOSFET easier to use**. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to the source internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
 
-When doing IC design, the substrate is often NOT connected to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground.
+When doing IC design, the substrate is often NOT connected to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in {{% ref "fig-tps2020-functional-diagram-with-mosfet-body-grounded-annotated" %}} that the substrate pin of the MOSFET at the top of the image is connected to ground.
 
-{{% figure src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="600" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." %}}
+{{% figure ref="fig-tps2020-functional-diagram-with-mosfet-body-grounded-annotated" src="_assets/tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="600" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." %}}
 
-Another example is the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF). Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output:
+Another example is the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF). Notice how in {{% ref "fig-ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection" %}} the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output.
 
-{{% figure src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="700" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." %}}
+{{% figure ref="fig-ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection" src="_assets/ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="700" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." %}}
 
 ## The Transconductance Of A MOSFET
 
@@ -391,9 +391,11 @@ _Spirito effect_: Named after electronic engineer and professor [Paolo Spirito](
 
 The Spirito effect is observed at high Vds voltages and low Id currents. High Vds voltages because this results in a greater change in cell power as the cell current changes. Low Id because this gives the cells more time to thermally runaway -- at higher currents the individual cells do not get a chance to thermally runaway since the entire package quickly hits it's thermal limit.
 
-For a really good read on the Spirito effect, see [NASA's publication: Power MOSFET Thermal Instability Operation Characterization Support](/electronics/components/transistors/mosfets/nasa-tm-2010-216684-power-mosfet-thermal-instability-operation.pdf)
+For a really good read on the Spirito effect, see [NASA's publication: Power MOSFET Thermal Instability Operation Characterization Support](/electronics/components/transistors/mosfets/_assets/nasa-tm-2010-216684-power-mosfet-thermal-instability-operation.pdf)
 
-{{% figure src="mosfet-soa-diagram-with-annotations.png" width="700" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
+{{% ref "fig-mosfet-soa-diagram-with-annotations" %}} shows a MOSFETs SOA diagram.
+
+{{% figure ref="fig-mosfet-soa-diagram-with-annotations" src="_assets/mosfet-soa-diagram-with-annotations.png" width="700" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
 
 1. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
 1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
@@ -412,7 +414,7 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^bib-science-direct-split-gate-mosfet]: Yu-Chin Lee, Jyh-Ling Lin (2020). _Structural optimization and miniaturization for Split-Gate Trench MOSFETs with 60 V breakdown voltage_. KeAi. Retrieved 2020-10-13, from https://www.sciencedirect.com/science/article/pii/S2589208820300041.
 [^bib-infineon-mosfet-safe-operating-diagram]: Schoiswohl, J. (2017, May). _Linear Mode Operation and Safe Operating Diagram of Power-MOSFETs_. Infineon. Retrieved 2020-10-13, from https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200.
 [^bib-electronic-design-the-spirito-effect]: Schimel, Paul (2011, Oct 20). _The Spirito Effect Improved My Design—And I Didn’t Even Know It_. ElectronicDesign. Retrieved 2020-10-14, from https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it.
-[^bib-semantic-scholar-dmos]: Y. Tarui, Y. Hayashi, T. Sekigawa (1969). _Diffusion Selfaligned MOST; A New Approach for High Speed Device_. Retrieved 2021-02-18, from https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
+[^bib-semantic-scholar-dmos]: Y. Tarui, Y. Hayashi, T. Sekigawa (1969). _Diffusion Self-aligned MOST; A New Approach for High Speed Device_. Retrieved 2021-02-18, from https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
 [^bib-wikipedia-hemt]: Wikipedia (2004, Jul 19). _High-electron-mobility transistor_. Retrieved 2021-02-18, from https://en.wikipedia.org/wiki/High-electron-mobility_transistor.
 [^bib-dinc-dmn61d8l-ds]: Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
 [^bib-infineon-bsp149-ds]: Infineon (2012, Nov 28). _BSP149: SIPMOS Small-Signal-Transistor_. Retrieved 2022-01-07, from https://www.infineon.com/dgdl/Infineon-BSP149-DS-v02_01-en.pdf?fileId=db3a30433c1a8752013c1fcbb815397c.
