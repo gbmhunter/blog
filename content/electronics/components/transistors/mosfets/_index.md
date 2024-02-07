@@ -12,9 +12,9 @@ type: page
 
 ## Overview
 
-A _MOSFET_ (big breath now...it stands for..._Metal-Oxide-Semiconductor Field-Effect-Transformer_) is a **three-pin active semi-conductor device**, used frequently in electronics design. In the most basic sense, they can be thought of as a **voltage controlled switch** that can turn things on and off (or partially on!).
+A _MOSFET_ (big breath now...it stands for..._Metal-Oxide-Semiconductor Field-Effect-Transformer_) is a **three-pin active semi-conductor device**, used frequently in electronics design. In the most basic sense, they can be thought of as a **voltage controlled switch** that can turn things on and off (or partially on, when used as an amplifier!).
 
-MOSFETs should not be confused with similar but different semiconductor devices such as _MODFETs_ (modulation-doped FETs) or _MESFETs_ (metal-semiconductor FETs). Depletion-mode MOSFETs are closely related to their sibling JFETs.
+MOSFETs should not be confused with similar but different semiconductor devices such as _MODFETs_ (modulation-doped FETs) or _MESFETs_ (metal-semiconductor FETs). Depletion-mode MOSFETs are closely related to [JFETs](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/).
 
 ## Uses
 
@@ -41,13 +41,13 @@ The arrow in the symbol has it's origins from a simple diode, in which the arrow
 
 ### Depletion-Mode
 
-Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are a very important MOSFET type. They are typically distinguished on schematics from enhancement-mode types by drawing a solid line rather than a dashed line for the channel, as shown in the below figure:
+Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are a very important MOSFET type. They are typically distinguished on schematics from enhancement-mode types by drawing a solid line rather than a dashed line for the channel, as shown in {{% ref "fig-mosfet-schematic-symbols-depletion-mode-n-ch-p-ch" %}}.
 
-{{% figure src="mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg" width="700px" caption="Schematic symbols for depletion-mode MOSFETs." %}}
+{{% figure ref="fig-mosfet-schematic-symbols-depletion-mode-n-ch-p-ch" src="_assets/mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.webp" width="700px" caption="Schematic symbols for depletion-mode MOSFETs." %}}
 
-The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown in below.
+The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown in {{% ref "vgs-vs-id-enhancement-and-depletion-mode" %}}.
 
-{{% figure src="vgs-vs-id-enhancement-and-depletion-mode.svg" width="700" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
+{{% figure ref="vgs-vs-id-enhancement-and-depletion-mode" src="_assets/vgs-vs-id-enhancement-and-depletion-mode.svg" width="700" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
 
 The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when `\(V_{GS}\)` is around `\(-4V\)` and is well and truly on when `\(V_{GS}\)` gets to `\(0V\)`. In comparison, the enhancement-mode MOSFET is fully off when `\(V_{GS} = 0V\)`, and takes around `\(+3V\)` before it starts conducting. 
 
@@ -57,15 +57,19 @@ Depletion-mode MOSFETs are used for:
 * Current sinks/sources
 * Attaching onto the input of a linear regulator to allow it to run of high voltages (or protect it from ESD)[^bib-ixys-dep-mode-mosfet-applications].
 
-### Alternate Style #1
+### Alternate Style #1: Arrows
 
-Sometimes the body connection, body diode and enhancement/depletion mode indicators are removed altogether from the schematic symbol, and a simplified set of symbols as below are used:
+Sometimes the body connection, body diode and enhancement/depletion mode indicators are removed altogether from the schematic symbol, and a simplified set of symbols is used as shown in {{% ref "fig-mosfet-schematic-symbols-simplified-style-n-ch-p-ch" %}}.
 
-{{% figure src="mosfet-schematic-symbols-simplified-style-n-ch-p-ch.svg" width="800" caption="An simplified/alternate style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
+{{% figure ref="fig-mosfet-schematic-symbols-simplified-style-arrows" src="_assets/mosfet-schematic-symbols-simplified-style-arrows.webp" width="600px" caption="An simplified/alternate style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
 
-### Alternate Style #2
+### Alternate Style #2: Polarity Dot
 
-The difference between N-channel and P-channel MOSFETs may be instead distinguished by adding a inverting-style circle on the gate pin, this symbolises that, in a way, a P-channel is the inverse of the more typical/standard N-channel.
+The difference between N-channel and P-channel MOSFETs may be instead distinguished by adding a inverting-style circle on the gate pin as shown in {{% ref "fig-mosfet-schematic-symbols-simplified-style-polarity-dot" %}}. This symbolises that a P-channel is the inverse of the more typical/standard N-channel (in a sense).
+
+{{% figure ref="fig-mosfet-schematic-symbols-simplified-style-polarity-dot" src="_assets/mosfet-schematic-symbols-simplified-style-polarity-dot.webp" width="500px" caption="An alternative style for a MOSFET symbol using a basic symbol for the N-Channel, and then adding a dot on the gate for the P-Channel." %}}
+
+This style is commonly used when drawing MOSFETs as part of logic gates and other integrated circuitry, due to it's simple and small symbol size which does not clutter the page when illustrating complex logic that might use 10's or 100's of these devices. Also, due to the substrates being connected to the rail voltage and ground, the drain/source are symmetric and there is no need to distinguish between the two.
 
 ### CMOS 4-pin MOSFETS
 
@@ -107,11 +111,13 @@ P-channels work in a similar manner to N-channels, the difference being that a n
 
 **In any case, do not leave the MOSFET gate floating**. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
 
-The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on.
+The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on. {{% ref "fig-mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions" %}} illustrates a MOSFETs behaviour.
 
-image::mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions.svg[width=500px]
+{{% figure ref="fig-mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions" src="_assets/mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions.webp" width="500px" caption="Graph showing the linear and saturation regions for a MOSFET at different gate voltages." %}}
 
-WARNING: The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and can **completely switch (ha, switch...get it?) meaning depending on the literature you're reading**! At strong gate drives and low `\(V_{DS}\)`, the MOSFET is operating in the _ohmic_ or _linear_ region, where `\( V_{DS} \propto I_D \)`. With weaker gate drive and high `\(V_{DS}\)`, the MOSFET's current `\(I_D\)` is roughly constant with varying `\(V_{DS}\)`, and is in the _saturation_ region (the current is saturated). For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses "test1").
+{{% aside type="warning" %}}
+The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and can **completely switch (ha, switch...get it?) meaning depending on the literature you're reading**! At strong gate drives and low `\(V_{DS}\)`, the MOSFET is operating in the _ohmic_ or _linear_ region, where `\( V_{DS} \propto I_D \)`. With weaker gate drive and high `\(V_{DS}\)`, the MOSFET's current `\(I_D\)` is roughly constant with varying `\(V_{DS}\)`, and is in the _saturation_ region (the current is saturated). For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses "test1").
+{{% /aside %}}
 
 ## Leakage Current
 
@@ -129,7 +135,7 @@ There are three ways in which a MOSFET can generally fail:
 
 To prevent over-voltage failure's, TVS diodes, Zener diodes, or snubber circuits can be used to protect the pins. TVS and Zener diodes are the most common ways to do this, and are used to clamp the voltages to a safe level.
 
-Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the [Electric Skateboard project](/electronics/projects/electric-skateboard)).
+Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the [Electric Skateboard project](/electronics/projects/electric-skateboard).
 
 ## Thermal Stability
 
@@ -157,7 +163,7 @@ The DMOS (_Double-Diffused MOSFET_) was first developed in 1969[^bib-semantic-sc
 
 FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small sizes (such as 22nm).
 
-{{% figure src="3d-model-of-the-structure-of-a-multi-fin-finfet.png" width="600" caption="The 3D structure of a multi-fin MOSFET (FinFET)." %}}
+{{% figure ref="fig-mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions" src="_assets/3d-model-of-the-structure-of-a-multi-fin-finfet.png" width="600" caption="The 3D structure of a multi-fin MOSFET (FinFET)." %}}
 
 ### FRFET
 
@@ -194,11 +200,11 @@ One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MO
 
 MOSFETs can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/power-management/load-switches). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
-{{% figure src="/electronics/circuit-design/load-switches/bjt-current-source-to-turn-p-channel-on.svg" width="500" caption="Schematic example of load switching with a P-channel MOSFET (Q2). See the [Load Switches page](/electronics/circuit-design/load-switches) for more info." %}}
+{{% figure src="/electronics/circuit-design/load-switches/_assets/bjt-current-source-to-turn-p-channel-on.webp" width="800" caption="Schematic example of load switching with a P-channel MOSFET (Q2). See the [Load Switches page](/electronics/circuit-design/load-switches) for more info." %}}
 
-Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown in [^dmn61d8l-7-mosfet-internal-schematic], this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
+Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown in {{% ref "fig-dmn61d8l-7-mosfet-internal-schematic" %}}, this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
 
-{{% figure src="dmn61d8l-7-mosfet-internal-schematic.png" width="600" caption="Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated[^bib-dinc-dmn61d8l-ds]." %}}
+{{% figure ref="fig-dmn61d8l-7-mosfet-internal-schematic" src="_assets/dmn61d8l-7-mosfet-internal-schematic.png" width="600" caption="Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated[^bib-dinc-dmn61d8l-ds]." %}}
 
 ### Isolated Gate Drives
 
@@ -217,22 +223,22 @@ In these cases, the gate drive has to be **isolated**.
 
 A _common-source enhancement-mode MOSFET amplifier_ is a basic MOSFET-based amplifier. The most popular variant is based of an N-channel enhancement-mode MOSFET (although you can make common-source amplifiers with P-channels too!), in which the source is grounded. It is **called a "common-source" amplifier because the source is a shared (common) terminal between the input and output**. It is closely related to the BJT common-emitter amplifier. Like the common-emitter amplifier, it is an inverting amplifier.
 
-{{% figure src="common-source-amplifier.svg" width="500" caption="Schematic of a basic common-mode N-channel MOSFET amplifier." %}}
+{{% figure ref="common-source-amplifier" src="_assets/common-source-amplifier.webp" width="500" caption="Schematic of a basic common-mode N-channel MOSFET amplifier." %}}
 
 The huge problem with the above circuit is the non-linearity.
 
 ### Bi-directional Current Limiter
 
-An interesting use for [^#_depletion_mode, depletion-mode MOSFETs] is a **simple bi-directional current limiter circuit**. [^depletion-mode-mosfet-current-limiter] shows the schematic, which uses two depletion-mode MOSFETs connected back-to-back with a resistor in-between.
+An interesting use for [depletion-mode MOSFETs](#depletion-mode) is a **simple bi-directional current limiter circuit**. {{% ref "fig-depletion-mode-mosfet-current-limiter" %}} shows the schematic, which uses two depletion-mode MOSFETs connected back-to-back with a resistor in-between.
 
-{{% figure src="depletion-mode-mosfet-current-limiter.svg" width="600" caption="Schematic of a bi-directional current limiter made from two depletion mode MOSFETs and a resistor." %}}
+{{% figure ref="fig-depletion-mode-mosfet-current-limiter" src="_assets/depletion-mode-mosfet-current-limiter.webp" width="600" caption="Schematic of a bi-directional current limiter made from two depletion mode MOSFETs and a resistor." %}}
 
 The circuit above utilizes the **depletion-mode MOSFETs unique feature of being on when the gate-source voltage is 0V**. The circuit works like this:
 
-. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs `\(V_{GS}\)` is 0V. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value `\(R_S\)`.
-. As current begins to flow from left-to-right, a voltage drop begins to appear across `\(R_S\)`. This creates a negative `\(V_{GS}\)` for `\(Q1\)` and a positive `\(V_{GS}\)` for `\(Q2\)`. We can ignore the positive `\(V_{GS}\)` as this only serves to turn `\(Q2\)` a little more (note that even if `\(Q2\)` wasn't on, it's internal body diode would conduct anyway). However the negative `\(V_{GS}\)` on `\(Q1\)` is important!
-. As the current reaches a certain value, `\(V_{GS}\)` across `\(Q1\)` will become negative enough to reach it's `\(V_{GS(th)}\)` (which is between -2.1V and -1V for the BSP149[^bib-infineon-bsp149-ds]). At this point it will begin turning `\(Q1\)` off, `\(Q1\)` will begin to drop voltage across it and hence limit the current of the circuit.
-. Because of the symmetry this circuit works in exactly the same way if current is flowing in the other direction (right-to-left), but with the roles of `\(Q1\)` and `\(Q2\)` reversed.
+1. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs `\(V_{GS}\)` is 0V. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value `\(R_S\)`.
+1. As current begins to flow from left-to-right, a voltage drop begins to appear across `\(R_S\)`. This creates a negative `\(V_{GS}\)` for `\(Q1\)` and a positive `\(V_{GS}\)` for `\(Q2\)`. We can ignore the positive `\(V_{GS}\)` as this only serves to turn `\(Q2\)` a little more (note that even if `\(Q2\)` wasn't on, it's internal body diode would conduct anyway). However the negative `\(V_{GS}\)` on `\(Q1\)` is important!
+1. As the current reaches a certain value, `\(V_{GS}\)` across `\(Q1\)` will become negative enough to reach it's `\(V_{GS(th)}\)` (which is between -2.1V and -1V for the BSP149[^bib-infineon-bsp149-ds]). At this point it will begin turning `\(Q1\)` off, `\(Q1\)` will begin to drop voltage across it and hence limit the current of the circuit.
+1. Because of the symmetry this circuit works in exactly the same way if current is flowing in the other direction (right-to-left), but with the roles of `\(Q1\)` and `\(Q2\)` reversed.
 
 #### Worked Example of the Bi-directional Current Limiter
 
@@ -245,7 +251,7 @@ This means that the circuit should limit the current to approximately:
 <p>\begin{align}
 I_{LIM} &= \frac{\left| V_{GS(th)} \right|}{R_S} \\
         &= \frac{\left| -1.5V\right| }{1k\Omega} \\
-        &= 1.5mA
+        &= 1.5mA \\
 \end{align}</p>
 
 Because you can get depletion-mode MOSFETs with a maximum `\(V_{DS}\)` rating of 200-1000V, this circuit is an excellent candidate for protecting the input of something that could expect either a high positive or negative voltage.
@@ -272,9 +278,9 @@ Some discrete MOSFETs do provide you with a separate substrate pin, for example 
 
 {{% figure src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
-{{% /note %}}
+{{% /aside %}}
 
 The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_. For a N-channel MOSFET, as the substrate becomes more negative than the source, the threshold voltage of the MOSFET is increased.
 

@@ -17,4 +17,10 @@ The nRF53 series expands on the nRF52 series of MCUs by added dual-cores. One co
 
 The nRF5340-DK (nRF5340 Develop Kit) is the de facto development kit for the nRF53 series. 
 
-{{% figure src="nrf5340-dk-annotated-photo.png" width="900px" caption="An annotated photo of the nRF5340 Development Kit." %}}
+{{% figure src="_assets/nrf5340-dk-annotated-photo.png" width="900px" caption="An annotated photo of the nRF5340 Development Kit." %}}
+
+## Programming
+
+nRF53 MCUs can be programmed with the Nordic _Programmer_ software (part of _Nordic Connect for Desktop_) along with a physical programmer such as a the nRF9160-DK development board.
+
+{{% figure src="_assets/screenshot-of-nordic-programmer-software-programming-nrf5340-with-nrf9160-dk.png" width="900px" caption="A screenshot of the Nordic \"Programmer\" software being used to program a nRF5340 MCU with a nRF9160-DK board being used as the physical programmer." %}}
