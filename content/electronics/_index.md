@@ -1,8 +1,9 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2011-09-02
 draft: false
 lastmod: 2011-09-02
-title: "Electronics"
-type: "page"
+tags: [ electronics ]
+title: Electronics
+type: page
 ---

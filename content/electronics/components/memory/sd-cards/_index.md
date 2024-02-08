@@ -29,7 +29,7 @@ The `TRIM` command is an ATA command which can be sent to an SSD controller by t
 
 There are two types of wear-levelling, _static_ and _global_.
 
-A local cached copy of [SanDisk Whitepaper: SanDisk Flash Memory Cards Wear Leveling, October 2003](/electronics/components/memory/sandisk-white-paper-flash-memory-cards-wear-leveling.pdf).
+A local cached copy of [SanDisk Whitepaper: SanDisk Flash Memory Cards Wear Leveling, October 2003](_assets/sandisk-white-paper-flash-memory-cards-wear-leveling.pdf).
 
 ## Speed Classes
 
