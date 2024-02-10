@@ -588,6 +588,19 @@ div.box {
     margin: auto;
 }
 
+// Styling for bold text "**text**"
+// Increase weight and set colours depending on light/dark mode
+strong {
+    font-weight: 900;
+
+    [data-theme='light'] & {
+        color: rgb(255, 153, 0);
+    }
+
+    [data-theme='dark'] & {
+        color: rgb(255, 176, 57);
+    }
+}
 
 /* ========================================================================= */
 /* OK, WARNING, ERROR SPANS                                                  */

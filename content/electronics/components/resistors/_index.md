@@ -99,9 +99,9 @@ V_{OUT} &= \frac{R2}{R1\ +\ R2} V_{IN} \\
 
 The input voltage "divides" itself across the resistors proportionally based on relative resistances. The more resistance of any one resistor, the greater amount of voltage that will drop across it. You can easily reach the above equation by applying Ohm's law to the circuit.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 The above equation on holds true when the input voltage source is of sufficiently low low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
-{{% /tip %}}
+{{% /aside %}}
 
 During circuit design, you will encounter times when you have three knowns from `\(Eq.\ \ref{eq:vout-eq-r2-r1-vin}\)` but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with `\(V_{IN}\)` and `\(R1\)` being able to be simplified slightly):
 
@@ -203,7 +203,7 @@ The E192 series is also used for 0.25% and 0.1% error resistors.
 
 Below are all the actual values for the common E series. They are written as initialised arrays in the [C programming language](/programming/languages/c), so that you can copy them and use them in code easily (some modifications may be required for other programming languages).
 
-```
+```text
 E6[6] = {10, 15, 22, 33, 47, 68};
 
 E12[12] = {10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82};
