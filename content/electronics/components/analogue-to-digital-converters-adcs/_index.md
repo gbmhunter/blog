@@ -1,20 +1,20 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
 date: 2011-09-03
-description: "A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more."
+description: A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more.
 draft: false
-lastmod: 2022-03-31
-tags: [ "ADCs", "microcontrollers", "accuracy", "resolution", "current loop", "analog-to-digital converter", "digital", "analogue", "analog" ]
-title: "Analogue-to-Digital Converters (ADCs)"
-type: "page"
+lastmod: 2024-02-11
+tags: [ ADCs, microcontrollers, accuracy, resolution, current loop, analog-to-digital converter, digital, analogue, analog, switched capacitor ]
+title: Analogue-to-Digital Converters (ADCs)
+type: page
 ---
 
 ## Overview
 
-An _analogue-to-digital converter_ (ADC) is a device which converts an input analogue voltage level into a representative digital value. They are commonly used in embedded electronics to measure the value of an analogue sensor. They are very popular and many microcontrollers have one or more built in ADCs, as well as stand-alone ADC ICs which normally offer greater precision and resolutions.
+An _analogue-to-digital converter_ (ADC) is a device which **converts an input analogue voltage level into a representative digital value**. They are commonly used in embedded electronics to measure things such as values from an analogue sensor or voltage rails (typically fed through resistor dividers). They are very popular and many microcontrollers have one or more built in ADCs, with each ADC has multiple inputs (5 to 12 is common) shared with GPIO. You can also get stand-alone ADC ICs which normally offer greater precision and resolutions.
 
-{{% figure src="adc-symbol-analogue-to-digital.png" width="350px" caption="A symbol representing a analogue-to-digital converter (ADC)." %}}
+{{% figure ref="fig-adc-symbol-analogue-to-digital" src="_assets/adc-symbol-analogue-to-digital.png" width="350px" caption="A symbol representing a analogue-to-digital converter (ADC)." %}}
 
 ## Microcontroller ADCs
 
@@ -29,6 +29,13 @@ The resolution of an ADC normally depends on the number of bit's it supports. AD
 There are many ways to convert a analogue signal into a digital one. The two most popular ADC methodologies are _successive approximation register_ (SAR) and _Delta-Sigma_. **SAR ADCs are usually faster but have a lower resolution (typically 8 to 12-bit) while Delta Sigma's are slower but offer greater accuracy (typically up to 20-bit)**. SAR ADCs typically have a sampling rate of 100kHz-1MHz while Sigma-Delta ADCs have a sampling rate of 1-20Hz.
 
 Delta-Sigma ADCs also take longer to switch between input signals (if measuring multiple signals with just one ADC) because they incorporate a filter which needs to be reset and stabilised before the measurements become accurate (essentially the filter's response time).
+
+## Switched Capacitor Array
+
+Many SAR ADCs use the _switched capacitor array_ architecture[^ti-switched-capacitor-adc-app-report]. Internally, they have a multiplexor to select from one of many input signals (separate pins on a dedicated ADC IC, or shared with GPIO on a MCU). One input is selected and is connected to the sample-and-hold capacitor `\(C_{SH}\)`.
+
+{{% figure ref="fig-multiplexed-sample-and-hold-capacitor-adc" src="_assets/multiplexed-sample-and-hold-capacitor-adc.webp" width="400px" caption="Block diagram of the switched capacitor array architecture, used by many SAR ADCs." %}}
+
 
 ## Medical Uses
 
@@ -71,3 +78,7 @@ Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the ana
 ## Suppliers
 
 * [DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section](https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700) (US)
+
+## References
+
+[^ti-switched-capacitor-adc-app-report]: Tom Kugelstadt (1998, Sep). _Switched-Capacitor ADC Analog Input Calculations Application Report_. Texas Instruments. Retrieved 2024-02-11, from https://www.ti.com/lit/an/slaa036/slaa036.pdf.

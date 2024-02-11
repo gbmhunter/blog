@@ -23,6 +23,9 @@ You'll need to up these resistors values, keeping the ratio the same. Generally 
 1. **Increased noise on the ADC input.** Since the ADC input is being driven through a much high resistance, it's more susceptible to noise. If noise becomes a problem, either adding a capacitor on the resistor divider output (more on this below) or averaging the readings in firmware can help!
 1. **The input capacitance of the ADC can cause the voltage to sag during measurement.** At the start of an ADC measurement, the ADC switches to the selected input (a single ADC peripheral can usually switch between a large number of pins). The ADC has some parasitic capacitance on it's input. When this capacitance is connected, it can cause voltage to sag as it charges up the capacitor[^nordic-measuring-lithium-batt-voltage-with-nrf52]
 . One solution is to add your own capacitor on the output of the resistor divider, which has a capacitance much larger than the internal capacitance (e.g. `\(\times 10\)`).
+
+You could aim to add enough capacitance so that when the internal capacitor is connected up, the voltage disturbance is at maximum 1 LSB of the ADC reading.
+
 1. **The ADC input takes a long time to settle if the battery voltage changes quickly.** This is most apparent if you have just connected the battery to the device, and the MCU powers up and measures the battery voltage. The MCU boot time is likely to be very fast compared to the RC time constant with `\(2.2M\Omega\)` resistors. Your MCU firmware might think the battery is flat, but in reality the ADC input capacitance is still charing up! You will have to add a delay in to only measure the battery after a delay on startup.
 
 {{% figure ref="fig-battery-voltage-measurement-with-resistor-divider-caps-and-adc" src="_assets/battery-voltage-measurement-with-resistor-divider-caps-and-adc.webp" width="800px" caption="." %}}
