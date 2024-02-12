@@ -28,3 +28,7 @@ type: post
     {{% figure src="_assets/ws2812-non-standard-spi-usage.png" width="700px" %}}
 
 * Added a new page with info on [real-time clock (RTC) ICs](/electronics/components/real-time-clock-ics/).
+    {{% figure src="_assets/rtc-screenshot.png" width="700px" %}}
+
+* Added more info on various [Zephyr peripheral APIs](/programming/operating-systems/zephyr/).
+    {{% figure src="_assets/hardware-info-screenshot.png" width="700px" %}}

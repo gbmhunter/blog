@@ -1046,6 +1046,10 @@ void LogResetCause()
 }
 ```
 
+### GPIO
+
+If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
+
 ### PWM
 
 For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for "pwm" we find:
@@ -1078,7 +1082,49 @@ For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for 
 }
 ```
 
+In your .dts file:
+
+```c
+my-pwm-group {
+    compatible = "pwm-leds";
+    status = "okay";
+    my-pwm-pin-1 {
+        // Use pwm peripheral 0 and channel 0 
+        pwms = <&pwm0 0 PWM_MSEC(5) PWM_POLARITY_NORMAL>;
+    };
+    my-pwm-pin-2 {
+        // Use pwm peripheral 0 and channel 1
+        pwms = <&pwm0 1 PWM_MSEC(5) PWM_POLARITY_NORMAL>;
+    };
+};
+```
+
 This defines 3 PWM peripherals.
+
+PWM can be set up with:
+
+```c
+const struct pwm_dt_spec myPwmSpec = PWM_DT_SPEC_GET(DT_PATH(my_pwm_group, my_pwm_pin_1));
+
+boolRc = pwm_is_ready_dt(&myPwmSpec);
+__ASSERT_NO_MSG(boolRc);
+```
+
+And then enabled with:
+
+```c 
+// This will enable the PWM with a period of 1000us and a pulse width of 500us (i.e. 50% duty cycle)
+int intRc = pwm_set_dt(&myPwmSpec, PWM_USEC(1000), PWM_USEC(500));
+__ASSERT_NO_MSG(intRc == 0);
+```
+
+### ADCs
+
+There is a working example in the Zephyr repo at `samples/drivers/adc/`.
+
+```c
+#include <zephyr/drivers/adc.h>
+```
 
 ### Non-Volatile Storage
 

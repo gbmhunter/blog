@@ -4,7 +4,7 @@ categories: [ Electronics, Circuit Design ]
 date: 2011-09-03
 description: A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more.
 draft: false
-lastmod: 2024-02-11
+lastmod: 2024-02-12
 tags: [ ADCs, microcontrollers, accuracy, resolution, current loop, analog-to-digital converter, digital, analogue, analog, switched capacitor ]
 title: Analogue-to-Digital Converters (ADCs)
 type: page
@@ -12,13 +12,17 @@ type: page
 
 ## Overview
 
-An _analogue-to-digital converter_ (ADC) is a device which **converts an input analogue voltage level into a representative digital value**. They are commonly used in embedded electronics to measure things such as values from an analogue sensor or voltage rails (typically fed through resistor dividers). They are very popular and many microcontrollers have one or more built in ADCs, with each ADC has multiple inputs (5 to 12 is common) shared with GPIO. You can also get stand-alone ADC ICs which normally offer greater precision and resolutions.
+An _analogue-to-digital converter_ (ADC) is a device which **converts an input analogue voltage level into a representative digital value**. They are commonly used in embedded electronics to measure things such as values from an analogue sensor or voltage rails (typically fed through [resistor dividers]()). They are very popular and many microcontrollers have one or more built in ADCs, with each ADC has multiple inputs (5 to 12 is common) shared with GPIO. You can also get stand-alone ADC ICs which normally offer greater precision and resolutions.
 
 {{% figure ref="fig-adc-symbol-analogue-to-digital" src="_assets/adc-symbol-analogue-to-digital.png" width="350px" caption="A symbol representing a analogue-to-digital converter (ADC)." %}}
 
 ## Microcontroller ADCs
 
 Microcontroller ADCs usually have a 8-12bit resolutions (with some going up to 20-bit). A typical microcontroller has only one ADC unit, but offers an input multiplexor to be able to select an analogue input from a number of pins. The ADC is controlled via registers, usually with voltage reference selectable from an external pin or an internal reference. Voltage dividers can be used to scale a larger voltage into the range acceptable to the microcontroller. Since the input to the ADC is usually of a very high impedance, the voltage at the ADC pin will the related to the ratio of the resistances in the resistor divider. A pull-down resistor is usually connected to an ADC input to prevent it from floating (and giving erroneous results when nothing is connected).
+
+On the left-hand side of {{% ref "fig-adc-pins-highlighted-on-mcu" %}} is a schematic diagram on the of a Nordic nRF52 MCU with the ADC pins highlighted. There are 8 ADC channels, `AIN0` through `AIN7` (4 to 7 are called `ANx` not `AINx` for some reason). Firmware can connect any one of these channels to the internal ADC peripheral which can then measure the voltage at that pin. The right-hand side shows the same ADC peripheral in the MCUs block diagram.
+
+{{% figure ref="fig-adc-pins-highlighted-on-mcu" src="_assets/adc-pins-highlighted-on-mcu.webp" width="300px" caption="On the left is a schematic diagram of a Nordic nRF52 MCU with the ADC pins highlighted. There is a single ADC peripheral inside the MCU with 7 channels. Channels can be connected 1-by-1 to the ADC via firmware and measured. On the right is the same ADC peripheral shown in the MCUs block diagram." %}}
 
 ## Accuracy And Resolution
 
@@ -36,6 +40,9 @@ Many SAR ADCs use the _switched capacitor array_ architecture[^ti-switched-capac
 
 {{% figure ref="fig-multiplexed-sample-and-hold-capacitor-adc" src="_assets/multiplexed-sample-and-hold-capacitor-adc.webp" width="400px" caption="Block diagram of the switched capacitor array architecture, used by many SAR ADCs." %}}
 
+The internal capacitance is also called `\(C_{ADC}\)`[^st-stm32g491ke-mcu-ds]. The capacitance is small and normally in the range of `\(2pF - 10pF\)`. The STM32G491KE value is 5pF[^st-stm32g491ke-mcu-ds].
+
+The sample-and-hold capacitor is not normally discharged between successive measurements[^st-community-stm32g4-adc-sampling-and-hold-capacitor-value]. This means that when the sample period begins for a measurement, the capacitor will start of at the voltage of finished the previous sample at. This contributes to **cross-talk**, measurement error which is introduced by the previous measurement (or measurements!).
 
 ## Medical Uses
 
@@ -82,3 +89,5 @@ Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the ana
 ## References
 
 [^ti-switched-capacitor-adc-app-report]: Tom Kugelstadt (1998, Sep). _Switched-Capacitor ADC Analog Input Calculations Application Report_. Texas Instruments. Retrieved 2024-02-11, from https://www.ti.com/lit/an/slaa036/slaa036.pdf.
+[^st-stm32g491ke-mcu-ds]: STMicroelectronics (2021, Sep). _STM32G491xC/STM32G491xE - Arm® Cortex®-M4 32-bit MCU+FPU, 170 MHz / 213 DMIPS, up to 512 KB Flash, 112 KB SRAM, rich analog, math accelerator_ [datasheet]. Retrieved 2024-02-12, from https://www.st.com/resource/en/datasheet/stm32g491ke.pdf.
+[^st-community-stm32g4-adc-sampling-and-hold-capacitor-value]: STMicroelectronics. _STM32G4: ADC sampling and hold capacitor value_ [forum post]. Retrieved 2024-02-12, from https://community.st.com/t5/stm32-mcus-products/stm32g4-adc-sampling-and-hold-capacitor-value/td-p/145004.
