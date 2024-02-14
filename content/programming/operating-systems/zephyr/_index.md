@@ -4,8 +4,8 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2024-01-30
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API ]
+lastmod: 2024-02-14
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C ]
 title: Zephyr
 type: page
 ---
@@ -726,6 +726,61 @@ k_work_queue_start(&myWorkQueue,
                    NULL);
 ```
 
+### Mutexes
+
+A Zephyr mutex is a kernel primitive that **allows multiple threads to safely access a shared resource by ensuring mutually exclusive access**. It is provides the same functionality as mutexes in most other operating systems.
+
+First you need to define and initialize the mutex:
+
+```c
+struct k_mutex myMutex;
+
+int rc = k_mutex_init(&myMutex);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+If you want to declare a mutex statically with file-level scope, rather than the above you can just use `K_MUTEX_DEFINE(myMutex);`. Presumably it declares the struct and sets up the init function to be run at startup.
+
+You can then lock the mutex with:
+
+```c
+int rc = k_mutex_lock(&myMutex, K_FOREVER);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+This is a **blocking call which will sleep the current thread until the mutex is unlocked** and available to be locked by this thread. `K_FOREVER` states to wait indefinitely for the mutex to be unlocked. Generally, I would not recommend using `K_FOREVER`, but specifying a timeout with a sensible time limit such that if it expires, something has gone really wrong. Then log an error! This is useful for debugging purposes, as forgetting to unlock mutexes is a common mistake (especially in functions which have many exit points). Without a timeout, your application will hang if you forget to unlock the mutex, and you'll get no helpful debug info. With a timeout, you can get a helpful log message stating which mutex failed to lock and where.
+
+```c
+int rc = k_mutex_lock(&myMutex, K_MSEC(1000));
+if (rc != 0)
+{
+    LOG_ERR("Failed to lock myMutex.");
+    // ...  do appropriate action here
+    // If not being able to lock should be considered a fatal error in your firmware, you 
+    // could replace this if() with an assert: __ASSERT_NO_MSG(rc == 0)
+}
+```
+
+Sometimes you will want to use the timeout to do something useful after a period of time, or give up and try something else. That is entirely application specific!
+
+You then unlock a mutex with:
+
+```c
+k_mutex_unlock(&myMutex);
+```
+
+{{% aside type="warning" %}}
+You must not unlock a mutex that has not been locked, and you must remember to unlock just as many times as you locked before any other thread can lock the mutex again. Be careful with unlocking in functions that have many exit points. A useful feature in [C++](/programming/languages/c-plus-plus/) (and many other languages) is the ability to turn a mutex into an object, and it's destructor is guaranteed to be called on function exit no matter how it exits (you don't need to unlock yourself!). Unfortunately C does not have this functionality.
+{{% /aside %}}
+
+Zephyr **mutexes support _reentrant locking_[^zephyr-docs-mutexes]**. This means that a thread is allowed to lock a mutex more than once. This is a useful feature that allows **a thread to lock the mutex more than once**. The same thread must unlock the mutex just as many times before it can be used by another thread. A common use of this pattern is if you have a shared resource that can be accessed via an API. You can lock the mutex inside the API functions themselves so that they are individually guaranteed to be exclusive, but also allow the caller access to the mutex so they can lock it if they want to chain together multiple API calls in one single "atomic" operation. 
+
+{{% aside type="warning" %}}
+Mutex objects should not be used from within ISRs[^zephyr-docs-mutexes]. Neither locking or unlocking from ISRs is supported. If you want to perform cross-thread communication from an ISR, use a semaphore instead.
+{{% /aside %}}
+
+Zephyr mutexes also support _priority inheritance_. The Zephyr kernel will elevate the priority of a thread that has currently locked the mutex if a thread of a higher priority begins waiting on the mutex. This works well if there is only ever one mutex locked at once by a thread. If multiple mutexes are locked, then less-than-ideal behaviour occurs if the mutex is not unlocked in the reverse order to which the owning thread's priority was originally raised. It is recommended that only one mutex is locked at a time when multiple mutexes are used between multiple threads of different priorities.
+
 ### Asserts
 
 Zephyr provides support for standard C library `assert()` function as well as providing more powerful assert macros if you wish you use them.
@@ -1200,6 +1255,53 @@ void main(void)
 
 Zephyr has very powerful logging features (compared to what you typically expect for embedded devices) provided via it's logging API.
 
+First you have to enable logging in your `prj.conf` with:
+
+```python
+CONFIG_LOG=y
+```
+
+You can also set a default compiled log level with:
+
+```python
+# The default compile time log level. Recommended to leave this as verbose as
+# possible given memory constraints and then set the runtime log level as needed.
+# 0 = LOG_LEVEL_OFF
+# 1 = LOG_LEVEL_ERR
+# 2 = LOG_LEVEL_WRN
+# 3 = LOG_LEVEL_INFO
+# 4 = LOG_LEVEL_DBG
+CONFIG_LOG_DEFAULT_LEVEL=4
+```
+
+If you want to add logs to a .c file, first you have to register the source file as a "module":
+
+```c
+// Uses the compiled log level set in prj.conf with CONFIG_LOG_DEFAULT_LEVEL
+LOG_MODULE_REGISTER(MyModule);
+
+// OR:
+
+// Optionally override the compiled log level with a custom level as a second
+// parameter to the macro.
+LOG_MODULE_REGISTER(MyModule, LOG_LEVEL_INF);
+```
+
+Now you can use log statements in your code:
+
+```c
+void MyFunction() {
+    LOG_DBG("Here is a debug level log!");   // Prints: [00:10:04.267,242] <dbg> MyModule: MyFunction: Here is a debug level log!
+    LOG_INF("Here is a info level log!");    // Prints: [00:00:01.024,291] <inf> MyModule: Here is a info level log!
+    LOG_WRN("Here is a warning level log!"); // Prints: [00:00:01.024,291] <wrn> MyModule: Here is a warning level log!
+    LOG_ERR("Here is a error level log!");   // Prints: [00:00:01.024,291] <err> MyModule: Here is a error level log!
+}
+```
+
+Note that the debug level log prints additional information -- it also prints the function name (in the above example this is `MyFunction`) that the log message was printed from. For outputs that support ANSI escape codes, the warning log is printed in yellow (except for the timestamp), and similarly the error log is printed in red.
+
+It's important to make the distinction between compile-time log levels and runtime levels. Providing `CONFIG_LOG_DEFAULT_LEVEL` or a second parameter to `LOG_MODULE_REGISTER` sets a compile-time log level. All log levels higher than this (both in number and verbosity) are not included in the compiled firmware binary, meaning you cannot change the level to high levels at runtime. Runtime log levels are set via `log_filter_set()` or with the shell command `log enable <log_level>` (e.g. `log enable dbg`). My recommendation is to leave the compile time log level to `LOG_LEVEL_DBG` if you have enough flash to allow that, and then set the log level at runtime. This will give you the ability to dynamically change the levels as needed without having to re-compile firmware. It would be a pain to have to recompile and re-flash firmware on a buggy device just to get the "debug" logs you need to diagnose the problem. And you may not want to re-flash as you have just caught an intermittent bug that is hard to reproduce!
+
 The code below shows how you can change the logging levels at runtime:
 
 ```c
@@ -1212,19 +1314,13 @@ int main() {
   // Change all log levels at runtime
   // NOTE: If you do this for a particular event, you may want to save all
   // the previous levels and restore them after the event is finished
-  uint32_t sourceId = 0;
-  const char * sourceName;
   uint32_t logLevel = LOG_LEVEL_INF;
-  while(1) {
-      sourceName = log_source_name_get(0, sourceId);
-      if (sourceName == NULL) {
-          // Found the last source ID, let's bail
-          break;
-      } else {
-          LOG_WRN("Settings %s log level to: %d", sourceName, logLevel);
-          log_filter_set(NULL, 0, sourceId, logLevel);
-          sourceId += 1;
-      }
+  uint32_t numLogSources = log_src_cnt_get(0);
+  for (uint32_t sourceId = 0; sourceId < numLogSources; sourceId++)
+  {
+      char * sourceName = (char *)log_source_name_get(0, sourceId);
+      __ASSERT_NO_MSG(sourceName); // Should not be null
+      log_filter_set(NULL, 0, sourceId, level);
   }
 
   // ...
@@ -1462,4 +1558,5 @@ CONFIG_FPU=y # Required for printing floating point numbers
 [^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
 [^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
 [^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
-[^zephyr-docs-kconfig-search-wdt-channels]. Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
+[^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
+[^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.

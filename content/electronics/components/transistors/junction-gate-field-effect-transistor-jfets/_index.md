@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Components ]
 date: 2011-04-29
-description: "Schematic symbols, important parameters, and more info about junction-gate field-effect transistors (JFETs)."
+description: Schematic symbols, important parameters, and more info about junction-gate field-effect transistors (JFETs).
 draft: false
-lastmod: 2022-01-11
-tags: [ "electronics", "components", "junction-gate", "field-effect", "transistors", "JFETs", "current-source" ]
-title: "Junction-Gate Field-Effect Transistors (JFETs)"
-type: "page"
+lastmod: 2024-02-13
+tags: [ electronics, components, junction-gate, field-effect, transistors, JFETs, current-source ]
+title: Junction-Gate Field-Effect Transistors (JFETs)
+type: page
 ---
 
 {{% warning-is-notes %}}
@@ -20,9 +20,9 @@ The **main differences between a MOSFET and a JFET** is that the JFET has more g
 
 ## Schematic Symbols
 
-The below diagram shows the commonly used schematic symbols for JFETs. As with MOSFETs, there is an arrow pointing in towards the body for the N-channel, and an arrow pointing outwards for the P-channel.
+{{% ref "fig-jfet-schematic-symbols" %}} shows the commonly used schematic symbols for JFETs. As with MOSFETs, there is an arrow pointing in towards the body for the N-channel, and an arrow pointing outwards for the P-channel.
 
-{{% figure src="jfet-schematic-symbols.png" width="700px" caption="Schematic symbols of asymmetric and symmetric JFETs, both having N-channel and P-channel variants." %}}
+{{% figure ref="fig-jfet-schematic-symbols" src="_assets/jfet-schematic-symbols.png" width="700px" caption="Schematic symbols of asymmetric and symmetric JFETs, both having N-channel and P-channel variants." %}}
 
 Interestingly, when you learn about the basic construction of a JFET, you would assume that the **drain and source pins are interchangeable** due to the symmetric nature of it's design. That leads you to being able to use a schematic symbol with the gate pin in the middle of the gate. However, **not all JFET pins are symmetric**, and in that case it's better to use the symbols shown which move the gate pin closer to the source (similar to how a MOSFET symbol is drawn).
 
@@ -58,9 +58,9 @@ The transconductance `\(g_m\)` (also called small-signal transconductance, _forw
 g_m = |Y_{fs}| = \frac{\Delta I_D}{\Delta V_{GS}}
 \end{align}</p>
 
-The transconductance is maximum at `\(V_{GS} = 0V\)`, which is called `\(g_{mo}\)` and is typically specified in the JFET's datasheet[^bib-elec4u-jfet-params].
+The transconductance is maximum at `\(V_{GS} = 0V\)`, which is called `\(g_{mo}\)` and is typically specified in the JFET's datasheet[^bib-elec4u-jfet-params]. {{% ref "fig-vgs-vs-id-showing-gradient-2n5457-jfet" %}} shows the curve of `\(V_{GS}\)` vs. `\(I_{D}\)` for the 2N5457 JFET.
 
-{{% figure src="vgs-vs-id-showing-gradient-2n5457-jfet.png" width="500px" caption="The transconductance is the gradient of the `\(I_D\)` vs. `\(V_{GS}\)` graph at the DC operating point. DC operating point shown by dotted blue lines. This is the source transfer characteristics of the 2N5456 N-channel JFET[^bib-onsemi-2n5457-ds]." %}}
+{{% figure ref="fig-vgs-vs-id-showing-gradient-2n5457-jfet" src="_assets/vgs-vs-id-showing-gradient-2n5457-jfet.png" width="500px" caption="The transconductance is the gradient of the `\(I_D\)` vs. `\(V_{GS}\)` graph at the DC operating point. DC operating point shown by dotted blue lines. This is the source transfer characteristics of the 2N5456 N-channel JFET[^bib-onsemi-2n5457-ds]." %}}
 
 The transconductance for most JFETs ranges from `\(1-100mS\)`. They are typically specified at the bias point `\(V_{GS} = 0V.\)`
 

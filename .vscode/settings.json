@@ -892,6 +892,7 @@
         "rcount",
         "rdwr",
         "realloc",
+        "reentrant",
         "reflog",
         "reflow",
         "Reichelt",
