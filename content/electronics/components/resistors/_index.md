@@ -84,11 +84,11 @@ This is shown in the diagram below:
 
 ## Resistor Dividers
 
-Resistor dividers are two or more resistors in a series configuration such that at some junction in the string, the voltage is a fixed proportion of the total voltage applied to the end's of the string. In this way, they **"divide"** the input voltage into a smaller output voltage.
+**Resistor dividers are two or more resistors in a series configuration** such that at some junction in the string, the voltage is a fixed proportion of the total voltage applied to the end's of the string. In this way, they **divide** the input voltage (applied across the entire string) into a smaller output voltage (measured across only part of the string).
 
-The simplest voltage divider consists of just two resistors in series.
+The simplest voltage divider consists of just two resistors in series, shown in {{% ref "fig-resistor-divider-schematic" %}}.
 
-{{% figure src="resistor-divider-schematic.png" width="350" caption="A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!" %}}
+{{% figure ref="fig-resistor-divider-schematic" src="_assets/resistor-divider-schematic.webp" width="350" caption="A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!" %}}
 
 The equation for `\(V_{OUT}\)` is:
 
@@ -100,7 +100,7 @@ V_{OUT} &= \frac{R2}{R1\ +\ R2} V_{IN} \\
 The input voltage "divides" itself across the resistors proportionally based on relative resistances. The more resistance of any one resistor, the greater amount of voltage that will drop across it. You can easily reach the above equation by applying Ohm's law to the circuit.
 
 {{% aside type="tip" %}}
-The above equation on holds true when the input voltage source is of sufficiently low low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
+The above equation **only holds true** when the input voltage source is of sufficiently low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
 {{% /aside %}}
 
 During circuit design, you will encounter times when you have three knowns from `\(Eq.\ \ref{eq:vout-eq-r2-r1-vin}\)` but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with `\(V_{IN}\)` and `\(R1\)` being able to be simplified slightly):
@@ -113,39 +113,89 @@ R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \nonumber \\
 R2 &= \frac{V_{OUT}}{V_{IN} - V_{OUT}} R1 \\
 \end{align}</p>
 
-### Output Impedance
+### Thevenin Equivalent Circuit
 
-The output impedance of a resistor divider is equivalent the `\(R1\)` in parallel with `\(R2\)`:
+The Thevenin equivalent circuit for a resistor divider is shown in {{% ref "fig-resistor-divider-thevenin-equivalent-diagram" %}}. This is the equivalent circuit as looking from `\(V_{OUT}\)` into the resistor divider.
+
+{{% figure ref="fig-resistor-divider-thevenin-equivalent-diagram" src="_assets/resistor-divider-thevenin-equivalent-diagram.webp" width="800" caption="The Thevenin equivalent circuit for a resistor divider." %}}
+
+Where the Thevenin voltage `\(V_{TH}\)` is equal to the open-circuit output voltage:
 
 <p>\begin{align}
-\b{Z_O} &= R1 || R2 \nonumber \\
-    &= \frac{R1 \cdot R2}{R1 + R2} \\
+V_{TH} &= \frac{R2}{R1 + R2} V_{IN} \\
 \end{align}</p>
 
-This output impedance is relevant for both small signals and large signals. See the [Analysis Of A Resistor Divider section on the Small-Signal Analysis page](/electronics/circuit-design/small-signal-analysis#analysis-of-a-resistor-divider) for more information.
+and the Thevenin resistance `\(R_{TH}\)` is equal to the open-circuit output voltage divided by the short-circuit current:
+
+<p>\begin{align}
+R_{TH} &= R1 || R2 \\
+       &= \frac{R1 \cdot R2}{R1 + R2} \\
+\end{align}</p>
+
+The Thevenin resistance is sometimes called the output resistance or impedance `\(\b{Z_O}\)`. The Thevenin equivalent circuit is useful for calculating how long a capacitor attached to the output will take to charge to a certain level. It allows you to have a single resistance that you can then plug into the time constant equation `\(\tau = RC\)`.
+
+{{% aside type="example" %}}
+Calculate how long the capacitor in {{% ref "fig-resistor-divider-charging-a-capacitor-example-1" %}} will take to charge to 90% it's final voltage.
+
+{{% figure ref="fig-resistor-divider-charging-a-capacitor-example-1" src="_assets/resistor-divider-charging-a-capacitor-example-1.webp" width="400" caption="Schematic of a capacitor being charged through a resistor divider. How long will it take to charge?" %}}
+
+Convert the circuit into it's Thevenin equivalent.
+
+<p>\begin{align}
+V_{TH} &= \frac{R2}{R1 + R2} V_{IN} \nonumber \\
+       &= \frac{10k\Omega}{22k\Omega + 10k\Omega} 5.0V \nonumber \\
+       &= 1.56V \nonumber \\
+\end{align}</p>
+
+<p>\begin{align}
+R_{TH} &= R1 || R2 \nonumber \\
+       &= \frac{R1 \cdot R2}{R1 + R2} \nonumber \\
+       &= \frac{22k\Omega \cdot 10k\Omega}{22k\Omega + 10k\Omega} \nonumber \\
+       &= 6.88k\Omega \nonumber \\
+\end{align}</p>
+
+Now we have the equivalent circuit shown in {{% ref "fig-resistor-divider-charging-a-capacitor-example-2" %}}.
+
+{{% figure ref="fig-resistor-divider-charging-a-capacitor-example-2" src="_assets/resistor-divider-charging-a-capacitor-example-2.webp" width="400" caption="The Thevenin equivalent circuit." %}}
+
+Now we use calculate a time constant and use:
+
+<p>\begin{align}
+V_C &= V_S (1 - e^{\frac{-t}{RC}}) \nonumber \\
+\frac{V_C}{V_S} = (1 - e^{\frac{-t}{RC}}) \nonumber \\
+0.9 = (1 - e^{\frac{-t}{RC}}) \nonumber \\
+e^{\frac{-t}{RC}} = 0.1 \nonumber \\
+\frac{-t}{RC} = ln(0.1) \nonumber \\
+t &= -RC\cdot ln(0.1) \nonumber \\
+  &= -6.88k\Omega \cdot 10nF \cdot ln(0.10) \nonumber \\
+  &= 158us
+\end{align}</p>
+
+{{% /aside %}}
 
 Note that the output impedance of a resistor divider is normally quite high, compared to other "standard" voltage sources. For this reason, **you cannot normally use a resistor divider to drop the voltage and provide power to a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
 
 The exception to the above rule is when the two following conditions are met:
 
-* The device will draw a small enough current that the voltage sag due to the extra current through R1 is acceptable (and the current is not too variable).
-* The extra current going through R1 will not cause it to overheat.
+* The device will draw a small enough current that the voltage sag due to the extra current through `\(R1\)` is acceptable.
+* Voltage fluctuations when the load changes are acceptable (i.e. this is not active regulation...there is no feedback).
+* The current going through `\(R1\)` will not cause it to overheat.
 
 ### Applications
 
-Resistors dividers are used everywhere in circuit design! They are commonly used for:
+Resistor dividers are used everywhere in circuit design! They are commonly used for:
 
 * Scaling down a higher voltage (e.g. a 0-12V voltage rail) down to something that can be measured by an [ADC](/electronics/components/analogue-to-digital-converters-adcs/) (e.g. 0-2.5V).
 * Biasing [transistors](/electronics/components/transistors/).
 * Providing the correct voltages to the inputs of [op-amps](/electronics/components/op-amps/).
 
-An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew `\(uA\)` so met the two above conditions.
+An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew `\(uA\)` so met the above criteria for using a resistor divider as a power supply.
 
 ### Online Calculators
 
 The [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
-{{% figure src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." %}}
+{{% figure ref="fig-screenshot-of-ninjacalc-resistor-divider-calculator" src="_assets/screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." %}}
 
 ## Tolerances
 
@@ -186,9 +236,9 @@ Practically all resistors follow an _E series_, a **scale of predefined resistan
 
 Simply, this means that each series guarantees you will be able to find a resistor that equals the resistance you need within a **fixed maximum percentage error**.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
-{{% /tip %}}
+{{% /aside %}}
 
 | Series | Maximum Percentage Error
 |--------|--------------------------
@@ -225,11 +275,11 @@ where:</br>
 
 For any E-series range, this pattern is applied for every decade of resistance, e.g. between `\(1-10\Omega\)`, `\(10-100\Omega\)`, `\(100-1k\Omega\)` and so on. standard families of resistors will start at about `\(1\Omega\)` and continue up to `\(10-20M\Omega\)`. For values outside of this range you generally have to find specialist products (e.g. precision current measuring resistors) and pay a little more for them.
 
-{{% figure src="yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png" width="900px" caption="Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page]." %}}
+{{% figure ref="fig-yageo-rc-series-thick-film-general-purpose-resistors-summary-table" src="_assets/yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png" width="900px" caption="Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page]." %}}
 
 [The NinjaCalc Standard Resistance Finder calculator](https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
 
-{{% figure src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="550" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
+{{% figure ref="fig-screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324" src="_assets/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="550" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
 
 See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number) for more information on these series.
 
@@ -239,11 +289,11 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses, with ratings up into the 100's of Watts.
 
-{{% figure src="wire-wound-resistor-diagram-bourns.png" width="300" caption="Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors." %}}
+{{% figure ref="fig-wire-wound-resistor-diagram-bourns" src="_assets/wire-wound-resistor-diagram-bourns.png" width="300" caption="Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors." %}}
 
 Given they are normally a coil of wire, they can have a significant parasitic inductance and be give off/be susceptible to magnetic fields.
 
-{{% figure src="tt-electronics-w22-2kji-2kr-wirewound-resistor.png" width="500" caption="Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor[^bib-tt-electronics-w20-series-ds]." %}}
+{{% figure ref="fig-tt-electronics-w22-2kji-2kr-wirewound-resistor" src="_assets/tt-electronics-w22-2kji-2kr-wirewound-resistor.png" width="500" caption="Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor[^bib-tt-electronics-w20-series-ds]." %}}
 
 ### Metal Film
 
@@ -269,17 +319,17 @@ Carbon film resistors are formed by forming a conductive carbon film on a cerami
 
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
 
-{{% figure src="bunch-of-ceramic-power-resistors.jpg" width="600" caption="A bunch of ceramic power resistors rated from 5 to 25W of power dissipation." %}}
+{{% figure ref="fig-bunch-of-ceramic-power-resistors" src="_assets/bunch-of-ceramic-power-resistors.jpg" width="600" caption="A bunch of ceramic power resistors rated from 5 to 25W of power dissipation." %}}
 
-They can be used to intentionally heat things, as the picture below shows. This image below is a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
+Power resistors can be used to intentionally heat things. {{% ref "fig-using-a-power-resistor-to-heat-oil" %}} shows a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
-{{% figure src="using-a-power-resistor-to-heat-oil.jpg" width="800" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature." %}}
+{{% figure ref="fig-using-a-power-resistor-to-heat-oil" src="_assets/using-a-power-resistor-to-heat-oil.jpg" width="800" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature." %}}
 
 ## Current-Sense Resistors
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
-{{% figure src="current-sensing-resistor-large-four-lead.jpg" width="500" caption="A large four-lead current sensing resistor." %}}
+{{% figure ref="fig-current-sensing-resistor-large-four-lead" src="_assets/current-sensing-resistor-large-four-lead.jpg" width="500" caption="A large four-lead current sensing resistor." %}}
 
 More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](/electronics/circuit-design/current-sensing).
 
@@ -297,13 +347,13 @@ Volume resistance (also known as just resistivity, electrical resistivity, or bu
 
 ## Parasitic Elements
 
-For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a extra inductor and capacitor, although the is no standard way of wiring them (depends on what literature you are reading). One popular configuration is shown below:
+For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a extra inductor and capacitor, although the is no standard way of wiring them (depends on what literature you are reading). One popular configuration is shown in {{% ref "fig-parasitic-model-of-resistor-series-rl-parallel-c" %}}.
 
-{{% figure src="parasitic-model-of-resistor-series-rl-parallel-c.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor." %}}
+{{% figure ref="fig-parasitic-model-of-resistor-series-rl-parallel-c" src="_assets/parasitic-model-of-resistor-series-rl-parallel-c.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor." %}}
 
-Below shows another model which is popular as it models the resistance in parallel with the end cap capacitance and this in series with the lead inductance[^bib-edn-resistors-arent-resistors].
+{{% ref "fig-parasitic-model-of-resistor-parallel-rc-series-l" %}} shows another model which is popular as it models the resistance in parallel with the end cap capacitance and this in series with the lead inductance[^bib-edn-resistors-arent-resistors].
 
-{{% figure src="parasitic-model-of-resistor-parallel-rc-series-l.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance." %}}
+{{% figure ref="fig-parasitic-model-of-resistor-parallel-rc-series-l" src="_assets/parasitic-model-of-resistor-parallel-rc-series-l.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance." %}}
 
 The below table shows resistor types and the ranges of their parasitic inductance[^bib-eepower-res-ind]:
 
@@ -326,21 +376,21 @@ Resistor come in many packages, from large, wire-wound power resistors that come
 
 Through-hole resistors use the older color code scheme (the current international standard as of 2013 is IEC 60062). Newer surface-mount resistors usually have the value printed directly on them (a three-digit number is most common, with the third digit being the multiplier).
 
-{{% figure src="500-0603-smd-resistors-on-tape.jpg" width="530" caption="SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors." %}}
+{{% figure ref="fig-500-0603-smd-resistors-on-tape" src="_assets/500-0603-smd-resistors-on-tape.jpg" width="530" caption="SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors." %}}
 
 Once taken out of the tape, they don't look like much!
 
-{{% figure src="500-0603-smd-resistors-next-to-a-pin.jpg" width="517" caption="500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller)." %}}
+{{% figure ref="fig-500-0603-smd-resistors-next-to-a-pin" src="_assets/500-0603-smd-resistors-next-to-a-pin.jpg" width="517" caption="500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller)." %}}
 
-This was me trying to be arty-farty with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.
+{{% ref "fig-reel-0603-resistor-leftovers-best" %}} was me trying to be arty-farty with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.
 
-{{% figure src="reel-0603-resistor-leftovers-best.jpg" width="900" caption="This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with." %}}
+{{% figure ref="fig-reel-0603-resistor-leftovers-best" src="assets/reel-0603-resistor-leftovers-best.jpg" width="900" caption="This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with." %}}
 
 ## Resistor Optimizer Tool
 
 There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([download it here](http://jahonen.kapsi.fi/Electronics/ResOptimizer/)) which finds optimal values for resistor dividers and optimal values for series/parallel resistor combinations to achieve the desired total resistance. It runs on Windows (Win32 application)[^bib-jahonen-kapsi-resistor-optimizer].
 
-{{% figure src="resistor-optimizer-janne-ahonen-screenshot.png" width="700px" caption="Screenshot of the Resistor Optimizer tool[^bib-jahonen-kapsi-resistor-optimizer]." %}}
+{{% figure ref="fig-resistor-optimizer-janne-ahonen-screenshot" src="_assets/resistor-optimizer-janne-ahonen-screenshot.png" width="700px" caption="Screenshot of the Resistor Optimizer tool[^bib-jahonen-kapsi-resistor-optimizer]." %}}
 
 ## References
 

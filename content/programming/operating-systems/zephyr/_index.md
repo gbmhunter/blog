@@ -632,7 +632,21 @@ You do not have to add anything to `prj.conf` to use timers. First you'll need t
 #include <zephyr/kernel.h>
 ```
 
-You create a timer object with `struct k_timer myTimer;` and initialize it with `void k_timer_init(struct k_timer * timer, k_timer_expiry_t expiryFn, k_timer_stop_t stopFn)`. `expiryFn` and `stopFn` are both optional and can be `NULL` if you don't want anything to be called when the timer expires or stops.
+You create a timer object and initialize it with:
+
+```c
+struct k_timer myTimer;
+
+void MyHandlerFn(struct k_timer * timer)
+{
+    LOG_DBG("Hello!");
+}
+
+// Initialize it with an expiry function, but no stop function
+void k_timer_init(&myTimer, &MyHandlerFn, NULL);
+```
+
+`expiryFn` and `stopFn` are both optional and can be `NULL` if you don't want anything to be called when the timer expires or stops.
 
 {{% aside type="warning" %}}
 Note that the function you pass in as `expiryFn` gets executed in the system interrupt context. Thus you have to be careful not to block in the expiry function, take too much time processing or call things that are not ISR safe.
@@ -640,8 +654,15 @@ Note that the function you pass in as `expiryFn` gets executed in the system int
 `stopFn` gets called in the context of the thread which stopped the timer. Thus, if you stop the timer in a ISR, you need to make sure the stop function is ISR safe.
 {{% /aside %}}
 
-You can then start a timer with `void k_timer_start(struct k_timer * timer, k_timeout_t duration, k_timeout_t period)`. `duration` is the time before the timer expires for the first time. `period` is the time between expires after the first one. `period` can be set to `K_NO_WAIT` or `K_FOREVER` to make the timer only expire once (one-shot).
+You can then start a timer with `void k_timer_start(struct k_timer * timer, k_timeout_t duration, k_timeout_t period)`.
 
+```c
+// Start the timer 
+k_timer_start(struct k_timer * myTimer, K_MSEC(1000), K_NO_WAIT);
+```
+
+
+`duration` is the time before the timer expires for the first time. `period` is the time between expires after the first one. `period` can be set to `K_NO_WAIT` or `K_FOREVER` to make the timer only expire once (one-shot).
 
 Here is a basic example:
 
