@@ -4,7 +4,7 @@ categories: [ Electronics, Electronic Components ]
 date: 2012-05-14
 description: Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors.
 draft: false
-lastmod: 2022-10-05
+lastmod: 2024-02-16
 tags: [ resistors, resistors, components, electronics, schematic symbols, tolerances, E series, packages, thick film, thin film, wirewound, potentiometers, rheostats, variable resistors, Ayrton-Perry winding, resistor optimizer, resistor divider, E96, E24, E12 ]
 title: Resistors
 type: page
@@ -22,7 +22,7 @@ _Resistors_ are a passive electronic component that restricts the flow of curren
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-{{% figure src="ti-it-looks-like-weve-encountered-some-resistance.png" width="600" caption="One should always appreciate a good pun. Texas Instruments 404 page as of October 2020." %}}
+{{% figure ref="fig-ti-it-looks-like-weve-encountered-some-resistance" src="_assets/ti-it-looks-like-weve-encountered-some-resistance.png" width="600" caption="One should always appreciate a good pun. Texas Instruments 404 page as of October 2020." %}}
 
 Resistors are used for a huge number of purposes, including:
 
@@ -38,7 +38,7 @@ Resistors are used for a huge number of purposes, including:
 
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European purely because there are already many "box-like" schematic symbols used for other components (e.g. fuses, ICs), and so the squiggle makes a resistor more distinguishable (given my distaste for the American imperial system, I never thought I would ever say that!). The American style is used through-out the rest of this website.
 
-{{% figure src="schematic-symbols-amer-euro-resistors.png" width="500" caption="The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols." %}}
+{{% figure ref="fig-schematic-symbols-amer-euro-resistors" src="_assets/schematic-symbols-amer-euro-resistors.png" width="500" caption="The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols." %}}
 
 See the [Potentiometers And Rheostats (Variable Resistors) section](#potentiometers-and-rheostats-variable-resistors) for more schematic symbols.
 
@@ -68,7 +68,7 @@ R_{total} &= \frac{R1R2}{R1 + R2}
 
 The following diagram shows this:
 
-{{% figure src="resistors-in-parallel-equivalence-with-equation.png" width="723" caption="Two resistors in parallel can be treated as one resistor using the shown equation." %}}
+{{% figure ref="fig-resistors-in-parallel-equivalence-with-equation" src="_assets/resistors-in-parallel-equivalence-with-equation.png" width="723" caption="Two resistors in parallel can be treated as one resistor using the shown equation." %}}
 
 ### Resistors In Series
 
@@ -80,7 +80,7 @@ R_{total} = R1 + R2
 
 This is shown in the diagram below:
 
-{{% figure src="two-resistors-in-series-equivalent-single-resistance.png" width="669" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image." %}}
+{{% figure ref="fig-two-resistors-in-series-equivalent-single-resistance" src="_assets/two-resistors-in-series-equivalent-single-resistance.png" width="669" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image." %}}
 
 ## Resistor Dividers
 

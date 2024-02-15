@@ -1,13 +1,13 @@
 ---
-aliases: [ "pwm" ]
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+aliases: [ pwm ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
 date: 2012-10-04
 draft: false
 lastmod: 2012-10-04
-tags: [ "electronics", "circuit design", "pulse width modulation", "PWM" ]
-title: "Pulse Width Modulation (PWM)"
-type: "page"
+tags: [ electronics, circuit design, pulse width modulation, PWM ]
+title: Pulse Width Modulation (PWM)
+type: page
 ---
 
 ## Operating Modes

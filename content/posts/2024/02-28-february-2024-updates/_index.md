@@ -14,3 +14,5 @@ type: post
 * Added info on [MCU ADCs and switched-capacitor array architecture](/electronics/components/analogue-to-digital-converters-adcs/).
 
 * Started a new page on [low power design](/electronics/low-power-design/).
+
+* Added info on the [Thevenin equivalent circuit for a resistor divider](/electronics/components/resistors/#thevenin-equivalent-circuit).
