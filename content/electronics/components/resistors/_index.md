@@ -132,7 +132,7 @@ R_{TH} &= R1 || R2 \\
        &= \frac{R1 \cdot R2}{R1 + R2} \\
 \end{align}</p>
 
-The Thevenin resistance is sometimes called the output resistance or impedance `\(\b{Z_O}\)`. The Thevenin equivalent circuit is useful for calculating how long a capacitor attached to the output will take to charge to a certain level. It allows you to have a single resistance that you can then plug into the time constant equation `\(\tau = RC\)`.
+The Thevenin resistance is sometimes called the output resistance or impedance `\(\b{Z_O}\)`. The Thevenin equivalent circuit is useful for calculating how long a capacitor attached to the output will take to charge to a certain level. It allows you to have a single resistance that you can then plug into the time constant equation `\(\tau = RC\)`. For more info on this, see the [RC Charging Circuits page](/electronics/circuit-design/rc-charging-circuits/). It is also useful when looking at it's frequency response. For more info on this, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
 
 {{% aside type="example" %}}
 Calculate how long the capacitor in {{% ref "fig-resistor-divider-charging-a-capacitor-example-1" %}} will take to charge to 90% it's final voltage.
@@ -158,14 +158,14 @@ Now we have the equivalent circuit shown in {{% ref "fig-resistor-divider-chargi
 
 {{% figure ref="fig-resistor-divider-charging-a-capacitor-example-2" src="_assets/resistor-divider-charging-a-capacitor-example-2.webp" width="400" caption="The Thevenin equivalent circuit." %}}
 
-Now we use calculate a time constant and use:
+Now we use calculate a time constant and use the formula for a RC charging circuit[^mbedded-ninja-rc-charging-circuits]:
 
 <p>\begin{align}
 V_C &= V_S (1 - e^{\frac{-t}{RC}}) \nonumber \\
-\frac{V_C}{V_S} = (1 - e^{\frac{-t}{RC}}) \nonumber \\
-0.9 = (1 - e^{\frac{-t}{RC}}) \nonumber \\
-e^{\frac{-t}{RC}} = 0.1 \nonumber \\
-\frac{-t}{RC} = ln(0.1) \nonumber \\
+\frac{V_C}{V_S} &= (1 - e^{\frac{-t}{RC}}) \nonumber \\
+0.9 &= (1 - e^{\frac{-t}{RC}}) \nonumber \\
+e^{\frac{-t}{RC}} &= 0.1 \nonumber \\
+\frac{-t}{RC} &= ln(0.1) \nonumber \\
 t &= -RC\cdot ln(0.1) \nonumber \\
   &= -6.88k\Omega \cdot 10nF \cdot ln(0.10) \nonumber \\
   &= 158us
@@ -399,3 +399,4 @@ There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([downlo
 [^bib-tt-electronics-w20-series-ds]: TT Electronics (2020, Jun). _Vitreous Enamelled Wirewound Resistors: W20 Series (datasheet)_. Retrieved 2022-04-21, from https://www.mouser.com/datasheet/2/414/TTRB_S_A0010754439_1-2565592.pdf.
 [^bib-jahonen-kapsi-resistor-optimizer]: Janne Ahonen (2018, Jun 17). _Resistor optimizer (product page)_. Retrieved 2022-08-26, from http://jahonen.kapsi.fi/Electronics/ResOptimizer/.
 [^bib-yageo-rc-family-product-page]: Yageo. _Thick Film General Purpose (product page)_. Retrieved 2022-10-05, from https://www.yageo.com/en/Product/Index/rchip/thick_film_general_purpose.
+[^mbedded-ninja-rc-charging-circuits]: Geoffrey Hunter (2024, Feb 16). _RC Charging Circuits_. mbedded.ninja. Retrieved 2024-02-16, from https://blog.mbedded.ninja/electronics/circuit-design/rc-charging-circuits/.

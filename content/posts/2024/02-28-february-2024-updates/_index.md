@@ -16,3 +16,6 @@ type: post
 * Started a new page on [low power design](/electronics/low-power-design/).
 
 * Added info on the [Thevenin equivalent circuit for a resistor divider](/electronics/components/resistors/#thevenin-equivalent-circuit).
+
+* Started a new page on [RC Charging Circuits](/electronics/circuit-design/rc-charging-circuits/).
+\
