@@ -40,13 +40,15 @@ Many SAR ADCs use the _switched capacitor array_ architecture[^ti-switched-capac
 
 {{% figure ref="fig-multiplexed-sample-and-hold-capacitor-adc" src="_assets/multiplexed-sample-and-hold-capacitor-adc.webp" width="400px" caption="Block diagram of the switched capacitor array architecture, used by many SAR ADCs." %}}
 
-The internal capacitance is also called `\(C_{ADC}\)`[^st-stm32g491ke-mcu-ds]. The capacitance is small and normally in the range of `\(2pF - 10pF\)`. The STM32G491KE value is 5pF[^st-stm32g491ke-mcu-ds].
+The internal capacitance is also called `\(C_{ADC}\)`[^st-stm32g491ke-mcu-ds]. The capacitance is small and normally in the range of `\(2pF - 10pF\)`. For example, the `\(C_{ADC}\)` for the STM32G491KE MCU is 5pF[^st-stm32g491ke-mcu-ds].
 
 The sample-and-hold capacitor **is not normally discharged between successive measurements[^st-community-stm32g4-adc-sampling-and-hold-capacitor-value]**. This means that when the sample period begins for a measurement, the capacitor will start of at the voltage of finished the previous sample at. This contributes to **cross-talk**, measurement error which is introduced by the previous measurement (or measurements!).
 
+{{% figure ref="fig-switched-capacitor-adc-with-source-and-adc-input-resistance-modelled" src="_assets/switched-capacitor-adc-with-source-and-adc-input-resistance-modelled.webp" width="600px" caption="Model of a analogue input with source resistance \(R_S\) connected to a ADC input with input resistance." %}}
+
+[Texas Instruments: Switched-Capacitor ADC Analog Input Calculations](https://www.ti.com/lit/an/slaa036/slaa036.pdf) is a great walk through of how to calculate the maximum permissible source resistance `\(R_S\)` given a desired accuracy in LSB for an ADC.
+
 You may need to add an external capacitor to ADC inputs to compensate for the voltage drop caused when the sample-and-hold capacitor is connected.
-
-
 
 ## Medical Uses
 
