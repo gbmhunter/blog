@@ -81,7 +81,7 @@ So you know that at `\(1\tau\)`, your capacitor has charged to 63% of the supply
 
 <table ref="table-tau-and-voltage-levels">
   <thead>
-    <tr><td>Time Constant</td>    <td>Voltage as Percentage of Supply</td></tr>
+    <tr><th>Time Constant</th>    <th>Voltage as Percentage of Supply</th></tr>
   </thead>
   <tbody>
     <tr><td>1\(\tau\)</td>        <td>63.2%</td></tr>

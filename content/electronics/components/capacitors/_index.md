@@ -252,9 +252,9 @@ My dad had an older Dell WL6000 "Wireless Speaker System" that began playing up.
 
 {{% figure ref="fig-pcb-with-electrolyte-leakage-zoomed-out" src="_assets/pcb-with-electrolyte-leakage-zoomed-out.jpg" width="1000px" caption="Photo of a PCB in a Dell sound system. Highlighted is leaking electrolytic capacitor, which also corroded right through the lead of a neighbouring resistor." %}}
 
-Below is a close-up of the faulty electrolytic capacitor. You can't see the corroded resistor as it is hidden above the orange disk-style capacitor and inductor-looking component. 
+{{% ref "fig-pcb-with-electrolyte-leakage-zoomed-in" %}} shows a close-up of the faulty electrolytic capacitor. You can't see the corroded resistor as it is hidden above the orange disk-style capacitor and inductor-looking component. 
 
-{{% figure src="_assets/pcb-with-electrolyte-leakage-zoomed-in.jpg" width="800px" caption="A close-up of the faulty electrolytic capacitor." %}}
+{{% figure ref="fig-pcb-with-electrolyte-leakage-zoomed-in" src="_assets/pcb-with-electrolyte-leakage-zoomed-in.jpg" width="800px" caption="A close-up of the faulty electrolytic capacitor." %}}
 
 {{% /aside %}}
 
@@ -496,7 +496,7 @@ C_{total} = C1 + C2
 
 That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in {{% ref "fig-capacitors-in-parallel" %}}.
 
-{{% figure ref="fig-capacitors-in-parallel" src="_assets/capacitors-in-parallel.svg" width="600px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." %}}
+{{% figure ref="fig-capacitors-in-parallel" src="_assets/capacitors-in-parallel.webp" width="600px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." %}}
 
 *Connecting capacitors in parallel increases the capacitance.* Parallel-connected capacitors occurs everywhere in circuit design. A classic example is bulk decoupling for a switch-mode power supply, which will typically have more than one large capacitor connected in parallel on the input.
 
@@ -522,9 +522,9 @@ It is usually easier to remember this equation as:
 \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2}
 \end{align}</p>
 
-This is ilustrated in {{% ref "fig-capacitors-in-series" %}}.
+This is illustrated in {{% ref "fig-capacitors-in-series" %}}.
 
-{{% figure ref="fig-capacitors-in-series" src="_assets/capacitors-in-series.svg" width="600px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." %}}
+{{% figure ref="fig-capacitors-in-series" src="_assets/capacitors-in-series.webp" width="800px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." %}}
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*. **Capacitors in series behave in the same way as resistors in parallel.**
 
@@ -587,9 +587,9 @@ where:<br/>
 
 ### Single Disc Capacitance
 
-{{% figure ref="diagram-for-disc-capacitance-equation" src="_assets/diagram-for-disc-capacitance-equation.svg" width="320px" caption="Diagram for the disc-to-infinity capacitance equation." %}}
+{{% figure ref="fig-diagram-for-disc-capacitance-equation" src="_assets/diagram-for-disc-capacitance-equation.svg" width="320px" caption="Diagram for the disc-to-infinity capacitance equation." %}}
 
-The capacitance of a single thin plate as shown in {{% ref "diagram-for-disc-capacitance-equation" %}}, with  a ground at 'infinity' (or more practically, just very far away) is:
+The capacitance of a single thin plate as shown in {{% ref "fig-diagram-for-disc-capacitance-equation" %}}, with  a ground at 'infinity' (or more practically, just very far away) is:
 
 <p>\begin{align}
 C = 35.4 \times 10^{-12} \epsilon_r d
@@ -604,9 +604,9 @@ where:<br/>
 
 ### Sphere Capacitance
 
-{{% figure ref="diagram-for-sphere-capacitance-equation" src="_assets/diagram-for-sphere-capacitance-equation.svg" width="320px" caption="Diagram for the sphere-to-infinity capacitance equation." %}}
+{{% figure ref="fig-diagram-for-sphere-capacitance-equation" src="_assets/diagram-for-sphere-capacitance-equation.svg" width="320px" caption="Diagram for the sphere-to-infinity capacitance equation." %}}
 
-The capacitance of a single sphere as shown in {{% ref "diagram-for-sphere-capacitance-equation" %}}, again with a ground at infinity is[^bib-qs-study-capacitance-spherical]:
+The capacitance of a single sphere as shown in {{% ref "fig-diagram-for-sphere-capacitance-equation" %}}, again with a ground at infinity is[^bib-qs-study-capacitance-spherical]:
 
 <p>\begin{align}
 C = 4\pi \epsilon_0 \epsilon_r r
@@ -638,9 +638,9 @@ where:<br/>
 
 ### Concentric Cylinder Capacitance
 
-{{% figure ref="diagram-for-coaxial-cylinders-capacitance-equation" src="_assets/diagram-for-coaxial-cylinders-capacitance-equation.png" width="320px" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." %}}
+{{% figure ref="fig-diagram-for-coaxial-cylinders-capacitance-equation" src="_assets/diagram-for-coaxial-cylinders-capacitance-equation.png" width="320px" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." %}}
 
-The capacitance of two concentric cylinders as shown in {{% ref "diagram-for-coaxial-cylinders-capacitance-equation" %}} is:
+The capacitance of two concentric cylinders as shown in {{% ref "fig-diagram-for-coaxial-cylinders-capacitance-equation" %}} is:
 
 <p>\begin{align}
 C = \frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L
@@ -695,9 +695,9 @@ where:<br/>
 \( C \) = the capacitance of the capacitor, and again, choice of units is up to the manufacturer<br/>
 </p>
 
-{{% tip %}}
+{{% aside type="tip" %}}
 When specified this way, the current is *completely independent on voltage*. The leakage current for electrolytic super-caps in the range of 1 to 100F is typically 0.5C (mA), where C is the rated capacitance in Farads.
-{{% /tip %}}
+{{% /aside %}}
 
 The leakage current for MLCC capacitors is specified by an **insulation resistance**. To work out the leakage current, you just use Ohm's law as follows:
 
@@ -711,9 +711,9 @@ where:<br/>
 \( R_{insulation} \) = the insulation resistance as specified on the capacitors datasheet<br/>
 </p>
 
-{{% tip %}}
+{{% aside type="tip" %}}
 When leakage current is specified this way, *it is dependent on the voltage*.
-{{% /tip %}}
+{{% /aside %}}
 
 Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. `\(500M\Omega\)`) and then a lower minimum resistance rated over its entire life time (e.g. `\(50M\Omega\)`).
 
@@ -731,9 +731,9 @@ The _DC Bias Characteristic_ is how a measure of how a capacitors **capacitance 
 
 The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCOs), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifying the voltage on the capacitor, hence changing the capacitance. [Diodes](/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
 
-The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. The **drop in capacitance can upset op-amp gains, frequency cut-off points of filters, the time constant of RC oscillators, and the noise removal of decoupling caps**. This can actually be a very significant problems, especially with small [package](/pcb-design/component-packages/) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's [Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527). {{% ref "graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" %}} is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
+The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. The **drop in capacitance can upset op-amp gains, frequency cut-off points of filters, the time constant of RC oscillators, and the noise removal of decoupling caps**. This can actually be a very significant problems, especially with small [package](/pcb-design/component-packages/) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's [Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527). {{% ref "fig-graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" %}} is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
-{{% figure ref="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" src="_assets/graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="800px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527." %}}
+{{% figure ref="fig-graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors" src="_assets/graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="800px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527." %}}
 
 Just to illustrate the change, a 22uF 6.3V X5R 0603 capacitor from Murata (GRT188R60J226ME13) has 22uF at 0V. This drops to only 3.6uF at 6.3V, a reduction of 84%[^murata-sim-surfing-tool-mlcc]!
 
@@ -741,7 +741,7 @@ It's important to note that the **DC bias problem gets worse with smaller cerami
 
 {{% figure ref="dc-bias-capacitance-derating-graph-from-murata" src="_assets/dc-bias-capacitance-derating-graph-from-murata.webp" width="600px" caption="Graph showing how the package size changes the DC bias behaviour. All 4 capacitors have are from the same manufacturer, and have the same ratings (capacitance, voltage, dielectric) except for package size. Graph was generated by Murata's SimSurfing tool[^murata-sim-surfing-tool-mlcc]." %}}
 
-One possible explanation for why smaller packages suffer from more DC bias problems is that the electric field across the dielectric is stronger in smaller packages (same voltage across a smaller distance between the plates = larger electric field), leading to more non-linearities occuring in the permittivity of the dielectric[^eevblog-is-ceramic-capacitor-package-relevant].
+One possible explanation for why smaller packages suffer from more DC bias problems is that the electric field across the dielectric is stronger in smaller packages (same voltage across a smaller distance between the plates = larger electric field), leading to more non-linearities occurring in the permittivity of the dielectric[^eevblog-is-ceramic-capacitor-package-relevant].
 
 ## Decoupling
 
@@ -765,21 +765,21 @@ They are also given a number to represent there impulse test rating, as shown in
     </tr>
   </thead>
 <tbody >
-<tr >
-<td >X1</td>
-<td >4,000</td>
+<tr>
+<td>X1</td>
+<td>4,000</td>
 </tr>
-<tr >
-<td >X2</td>
-<td >2,500</td>
+<tr>
+<td>X2</td>
+<td>2,500</td>
 </tr>
-<tr >
-<td >Y1</td>
-<td >8,000</td>
+<tr>
+<td>Y1</td>
+<td>8,000</td>
 </tr>
-<tr >
-<td >Y2</td>
-<td >5,000</td>
+<tr>
+<td>Y2</td>
+<td>5,000</td>
 </tr>
 </tbody>
 </table>
@@ -825,7 +825,7 @@ Their advantage over a standard decoupling capacitor to ground is **lower parasi
 
 ### Schematic Symbol
 
-{{% figure src="_assets/feedthrough-capacitor-schematic-symbol-3-connection.png" width="400px" caption="The schematic symbol for a 3-terminal feedthrough capacitor." %}}
+{{% figure ref="fig-feedthrough-capacitor-schematic-symbol-3-connection" src="_assets/feedthrough-capacitor-schematic-symbol-3-connection.png" width="400px" caption="The schematic symbol for a 3-terminal feedthrough capacitor." %}}
 
 ### Component Package
 
@@ -847,7 +847,7 @@ What they are not good for is propping up the voltage rail when the load itself 
 
 The below schematic shows a simple capacitance multiplier made from 1 resistor, 1 capacitor and 1 NPN BJT transistor:
 
-{{% figure src="_assets/capacitance-multiplier-simple.svg" width="500px" caption="A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor." %}}
+{{% figure ref="fig-capacitance-multiplier-simple" src="_assets/capacitance-multiplier-simple.svg" width="500px" caption="A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor." %}}
 
 The BJT is configured as a emitter-follower (common collector). The output voltage will always be `\(0.7V\)` less than the voltage across the capacitor. When the load draws current at `\(V_{OUT}\)`, rather than all of that current loading the RC filter, only the proportion `\(\frac{1}{\beta + 1}\)` gets drawn through the base from the RC filter, the rest of it gets delivered directly from `\(V_{IN}\)` via the collector. The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain `\(\beta + 1\)` of the transistor:
 
@@ -881,7 +881,7 @@ V_{OUT} = V_{IN} - 0.7V
 
 We can improve on the above design by changing the resistor into a resistor divider.
 
-{{% figure src="_assets/capacitance-multiplier-resistor-divider.svg" width="500px" caption="An capacitance multiplier which has improved filtering performance compared to the [^img-capacitance-multiplier-single,single resistor version above]." %}}
+{{% figure ref="fig-capacitance-multiplier-resistor-divider" src="_assets/capacitance-multiplier-resistor-divider.svg" width="500px" caption="A capacitance multiplier which has improved filtering performance compared to the single resistor version." %}}
 
 Adding in `\(R2\)` lowers the base voltage applied to the transistor, which then lowers the output voltage. Because more voltage is now dropped across the transistor, the circuit is able to provide better filtering than before when the input voltage droops.
 
@@ -937,9 +937,9 @@ I_{R1} &= \frac{1}{\beta + 1} I_{load} \nonumber \\
        &= 498uA
 \end{align}</p>
 
-{{% tip %}}
+{{% aside type="tip" %}}
 `\(I_{R1}\)` will actually be larger than this due to the current through it drawn down to ground via `\(R2\)`. But this number is fine for calculation purposes.
-{{% /tip %}}
+{{% /aside %}}
 
 We can now find what value of `\(R1\)` will produce no more than `\(100mV\)` drop:
 
@@ -978,9 +978,9 @@ Looking at the "DC" gain, it is a value of `\(-1.75dB\)`. At an input voltage of
 
 Our cut-off frequency should then be `\(-3dB\)` ontop of that, i.e. at `\(-1.75dB - 3dB = -4.75dB\)`. Plotting across and then down does indeed give us a cut-off frequency of approx. `\(10Hz\)`. The roll-off in the stop band is the same as a standard RC low-pass filter at `\(-20dB/decade\)`.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Watch out for the transistors power dissipation! In our example, `\(100mA\)` was going through the 2N2222 which was dropping `\(2.1V\)`. This gives `\(210mW\)`, which should be o.k. for the 2N2222 (when in the old style TO-18 can package). But capacitance multipliers are typically used in high-current situations (many amps and more), in where careful attention has to be given to the power dissipation in the transistor. Large transistors and/or heat-sinking may be required. The voltage drop can also be reduced, but this also gives to a poorer filtering capability (i.e. less headroom).
-{{% /warning %}}
+{{% /aside %}}
 
 Capacitance multipliers don't have to built from BJT transistors, they can also use MOSFETs or op-amps as their active component. BJTs are used in a majority of cases though because of their cost, power dissipation capability, and simplicity.
 
@@ -990,11 +990,11 @@ Capacitance multipliers don't have to built from BJT transistors, they can also 
 
 When electrolytic capacitors get old, they can dry out and stop working properly (for example, their capacitance can reduce and/or maximum dielectric voltage drop). There are many sources quoting that electrolytic capacitors can be repaired by ramping the voltage slowly up to its full rated voltage. It is meant to repair the aluminium oxide dielectric layer.
 
-{{% figure src="_assets/circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor.png" width="300px" caption="Schematic showing how to repair/reform an old electrolytic capacitor. The voltage on the capacitor should slowly rise to the rated voltage." %}}
+{{% figure ref="fig-circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor" src="_assets/circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor.png" width="300px" caption="Schematic showing how to repair/reform an old electrolytic capacitor. The voltage on the capacitor should slowly rise to the rated voltage." %}}
 
 This can be done with power supply set the rated voltage and a high-power (e.g. 5W) 30kΩ resistor in series with the capacitor, as shown in the image above. Connect the circuit and measure the voltage across the capacitor. It should start at 0V and increase as an inverse exponential as the current through the capacitor decreases. Wait until the voltage across the capacitor gets above 90% of the rated voltage before disconnecting the circuit, as shown in the image below. If the voltage stabilises below 90% of the full-rated voltage, the capacitor is stuffed and can be thrown out.
 
-{{% figure src="_assets/capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png" width="400px" caption="Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm." %}}
+{{% figure ref="fig-capacitor-voltage-graph-while-charging-through-resistor-for-reforming" src="_assets/capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png" width="400px" caption="Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm." %}}
 
 ## Energy Loss While Charging A Capacitor
 
