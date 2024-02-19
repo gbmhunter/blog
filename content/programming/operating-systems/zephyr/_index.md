@@ -1321,6 +1321,8 @@ void MyFunction() {
 
 Note that the debug level log prints additional information -- it also prints the function name (in the above example this is `MyFunction`) that the log message was printed from. For outputs that support ANSI escape codes, the warning log is printed in yellow (except for the timestamp), and similarly the error log is printed in red.
 
+### Compile Time vs. Runtime Log Levels
+
 It's important to make the distinction between compile-time log levels and runtime levels. Providing `CONFIG_LOG_DEFAULT_LEVEL` or a second parameter to `LOG_MODULE_REGISTER` sets a compile-time log level. All log levels higher than this (both in number and verbosity) are not included in the compiled firmware binary, meaning you cannot change the level to high levels at runtime. Runtime log levels are set via `log_filter_set()` or with the shell command `log enable <log_level>` (e.g. `log enable dbg`). My recommendation is to leave the compile time log level to `LOG_LEVEL_DBG` if you have enough flash to allow that, and then set the log level at runtime. This will give you the ability to dynamically change the levels as needed without having to re-compile firmware. It would be a pain to have to recompile and re-flash firmware on a buggy device just to get the "debug" logs you need to diagnose the problem. And you may not want to re-flash as you have just caught an intermittent bug that is hard to reproduce!
 
 The code below shows how you can change the logging levels at runtime:
@@ -1348,6 +1350,21 @@ int main() {
 }
 ```
 
+### X Messages Dropped Errors
+
+Zephyr implements a character based circular buffer for storing messages to be processed (remember -- Zephyr logging is typically done asynchronously). If other threads create logs too quickly for the log thread to process, at some point Zephyr will drop logs. You will typically see a log error generated when this happens stating `--- x messages dropped ---` (as shown in {{% ref "fig-zephyr-shell-x-messages-dropped-screenshot" %}}).
+
+{{% figure ref="fig-zephyr-shell-x-messages-dropped-screenshot" src="_assets/zephyr-shell-x-messages-dropped-screenshot.png" width="700px" caption="A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging." %}}
+
+If you have extra RAM space, one way to reduce the probability of this error is to bump up the circular buffer Zephyr uses to write messages into in your `prj.conf`:
+
+```python
+# Increased from 1024 to reduce probability of --- x messages dropped --- errors 
+CONFIG_LOG_BUFFER_SIZE=2048
+```
+
+`CONFIG_LOG_BUFFER_SIZE` sets the number of bytes assigned to the circular packet buffer[^zephyr-docs-logging].
+
 ## Emulation
 
 Zephyr supports the targets `qemu_x86` and `qemu_cortex_m3` for running Zephyr applications on desktop computers. This is great for development, testing and CICD purposes.
@@ -1373,6 +1390,14 @@ Zephyr-based applications can get large, in part due to the powerful features it
 `CONFIG_SIZE_OPTIMIZATIONS=y` can be set in `prj.conf` to reduce the flash size. One thing this does is set the compiler flag `-Os` which tells the compiler to optimize for size, not speed or debug ability.
 
 On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prf.conf` resulted in a flash size reduction from 421kB to 330kB.
+
+You can execute the `west` command with `-t ram_report` to make Zephyr generate and print a table of RAM usage to the terminal.
+
+{{% figure ref="fig-zephyr-ram-report-output-screenshot" src="_assets/zephyr-ram-report-output-screenshot.png" width="500px" caption="A screenshot of the output produce by the `west build -t ram_report` command." %}}
+
+If you get the error `ninja: error: unknown target 'puncover'` (as shown in {{% ref "fig-puncover-build-error" %}}) when trying to run puncover, it might be because you have not done a clean rebuild. You must do a clean rebuild after installing puncover. This is needed because CMake looks for the puncover executable during the build process. If it can't find it, no target is made for it.
+
+{{% figure ref="fig-puncover-build-error" src="_assets/puncover-build-error.png" width="500px" caption="A screenshot of the build error you can get if you don't clean build after installing puncover." %}}
 
 ## Tests
 
@@ -1581,3 +1606,4 @@ CONFIG_FPU=y # Required for printing floating point numbers
 [^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
 [^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
 [^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.
+[^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.

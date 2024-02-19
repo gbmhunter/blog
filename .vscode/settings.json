@@ -867,6 +867,7 @@
         "PUBREC",
         "PUBREL",
         "PUHUI",
+        "puncover",
         "pushf",
         "PVSON",
         "PWMs",
