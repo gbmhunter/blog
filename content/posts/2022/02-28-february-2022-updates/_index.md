@@ -1,14 +1,14 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Posts", "Updates" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Posts, Updates ]
 date: 2022-02-28
-description: "Blog updates during February 2022."
+description: Blog updates during February 2022.
 draft: false
 images: [ ]
 lastmod: 2022-02-28
 tags: []
-title: "February 2022 Updates"
-type: "post"
+title: February 2022 Updates
+type: post
 ---
 
 * Added more information on [CAN arbitration, incl. waveforms](/electronics/communication-protocols/can-protocol/#_arbitration).
@@ -27,7 +27,7 @@ type: "post"
     * Added `Available()` method to return number of bytes ready to be read from the receive buffer (thanks lotricekCZ).
     * Added CMake option for shared library (thanks lotricekCZ).
 
-* Published a [new release of NinjaCalc](https://ninja-calc.mbedded.ninja/) with various version bumps of dependencies to fix security vulnerabilities, and a colour scheme update (to match the red used on this blog).
+* Published a [new release of NinjaCalc](https://ninjacalc.mbedded.ninja/calculators/electronics/cabling/wire-gauge-calculator) with various version bumps of dependencies to fix security vulnerabilities, and a colour scheme update (to match the red used on this blog).
     {{% figure src="ninjacalc-screenshot.png" width="500px" caption="" %}}
 
 * Added a new page on [photodiodes](/electronics/components/diodes/photodiodes/).

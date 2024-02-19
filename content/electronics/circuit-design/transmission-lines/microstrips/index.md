@@ -1,9 +1,9 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "PCB Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ PCB Design ]
 date: 2015-12-01
 draft: false
-tags: [ "PCB design", "impedance", "routing", "dielectrics", "characteristic impedance", "waveguides", "microstrips", "striplines" ]
+tags: [ PCB design, impedance, routing, dielectrics, characteristic impedance, waveguides, microstrips, striplines ]
 title: Microstrips
 type: page
 ---
@@ -12,7 +12,7 @@ type: page
 
 Microstrips are impedance controlled transmission lines on the top or bottom layers of a PCB, where there is free space above the track, and a copper pour on the layer below the track. This is opposed to striplines, which are embedded in a middle layer of a PCB, and have a copper pour above and below them.
 
-{{% figure src="single-ended-basic-microstrip-diagram-annotated.png" width="760px" caption="A diagram of a single-ended microstrip, with standard names for the various dimensions added."  %}}
+{{% figure ref="fig-single-ended-basic-microstrip-diagram-annotated" src="_assets/single-ended-basic-microstrip-diagram-annotated.png" width="760px" caption="A diagram of a single-ended microstrip, with standard names for the various dimensions added."  %}}
 
 ## RFcafe Equations
 
@@ -47,7 +47,7 @@ If `\( \frac{W}{H} \geq 1 \)`:
 
 Equations are from [http://www.rfcafe.com/references/electrical/microstrip-eq.htm](http://www.rfcafe.com/references/electrical/microstrip-eq.htm).
 
-Go to [http://ninja-calc.mbedded.ninja/calc/microstrip-impedance-calculator](http://ninja-calc.mbedded.ninja/calc/microstrip-impedance-calculator) to use an online calculator which uses these above equations (part of NinjaCalc).
+Go to https://ninjacalc.mbedded.ninja/calculators/electronics/pcb-design/microstrip-impedance to use an online calculator which uses these above equations (part of NinjaCalc).
 
 {{% figure src="screenshot-microstrip-impedance-calculator-ninjacalc.png" width="945px" caption="A screenshot of the 'Microstrip Impedance' calculator in the NinjaCalc web app."  %}}
 
@@ -76,7 +76,7 @@ w = ((5.98*h1)/exp(Z/(60/sqrt(Er*(1-exp(-1.55*(0.00002+h1)/h1)))))-h2)/0.8
 
 The primary and desired mode of signal propagation in a microstrip is transverse electric and magnetic (TEM). Other modes are undesirable and increase the degradation of the signal, such as what occurs with microstrip dispersion (see below).
 
-## Microstrip Dispersion
+### Microstrip Dispersion
 
 With wide microstrips that are far away from the ground plane, strange modes of propagation appear. Significant energy can now bounce between the microstrip and ground plane. Parts of the waveform that bounce between the microstrip and ground plane take longer to travel down the microstrip, distorting the waveform. This is called **microstrip dispersion**. Microstrip dispersion compounds quadratically with trace-to-ground height.
 

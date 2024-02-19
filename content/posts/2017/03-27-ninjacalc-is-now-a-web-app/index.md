@@ -22,9 +22,9 @@ tags:
 - website
 ---
 
-NinjaCalc, a "collection of embedded engineering related calculators", is now a web app (go to [http://ninja-calc.mbedded.ninja/](http://ninja-calc.mbedded.ninja/) to try it out)!
+NinjaCalc, a "collection of embedded engineering related calculators", is now a web app (go to https://ninjacalc.mbedded.ninja/ to try it out)!
 
-{{< figure src="/images/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png" width="1920px" caption="NinjaCalc is now a web app! A screenshot while selecting a calculator using the new web app at http://ninja-calc.mbedded.ninja/."  >}}
+{{< figure src="/images/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png" width="1920px" caption="NinjaCalc is now a web app! A screenshot while selecting a calculator using the new web app at https://ninjacalc.mbedded.ninja/calculators/electronics/cabling/wire-gauge-calculator."  >}}
 
 Up until now NinjaCalc has been a desktop app written in Java (as [NinjaTerm](http://gbmhunter.github.io/NinjaTerm/) still is). However, the functionality that NinjaCalc provided had no need to be a installable desktop app, and I had long desired to move it to the easily accessible web.
 
@@ -38,4 +38,4 @@ Existing users of NinjaCalc may appreciate the similarity between the Java app a
 
 GitHub Repo: [https://github.com/gbmhunter/NinjaCalc](https://github.com/gbmhunter/NinjaCalc)  
 GitHub Project Page: [http://gbmhunter.github.io/NinjaCalc/](http://gbmhunter.github.io/NinjaCalc/)  
-NinjaCalc Web-app: [http://ninja-calc.mbedded.ninja/](http://ninja-calc.mbedded.ninja/)
+NinjaCalc Web-app: https://ninjacalc.mbedded.ninja/

@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Posts", "Updates" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Posts, Updates ]
 date: 2020-09-30
-description: "Blog updates during September 2020."
+description: Blog updates during September 2020.
 draft: false
 lastmod: 2020-09-30
 tags: []
-title: "September 2020 Updates"
-type: "post"
+title: September 2020 Updates
+type: post
 ---
 
 * Added info about {{% link text="board packages to the Arduino page" src="/programming/microcontrollers/arduino" %}}.
@@ -26,7 +26,7 @@ type: "post"
 
 * Added more online simulation tools to the {{% link text="Circuit Simulation page" src="/electronics/general/circuit-simulation" %}}.
 
-* Added a new page on ~~555 Timer Circuits~~. Added a [555 timer calculator to NinjaCalc](https://ninja-calc.mbedded.ninja/calculators/electronics/ics/555-timer-astable-rt-rb-c) (which is also embedded on the 555 Timer Circuits page).
+* Added a new page on ~~555 Timer Circuits~~. Added a [555 timer calculator to NinjaCalc](https://ninjacalc.mbedded.ninja/calculators/electronics/ics/555-timer-astable-rt-rb-c) (which is also embedded on the 555 Timer Circuits page).
 
     {{% figure src="/electronics/components/timers-and-multivibrators/555-timer-schematic-for-astable-operation-ti.png" width="400px" %}}
     
@@ -36,8 +36,8 @@ type: "post"
 
 * Added a page on the {{% link text="EasyScale communication protocol" src="/electronics/communication-protocols/easyscale-protocol" %}}.
 
-* Migrated [NinjaCalc](https://ninja-calc.mbedded.ninja/) from a [Vue.js](https://vuejs.org/) based app to [Next.js/React](https://nextjs.org/) based app. This took quite a long time to migrate, I'm estimating about 32 hours to migrate all functionality except for two calculators to Next.js. Deployments are now automatically done by [Vercel](https://vercel.com/) (I'm using the "Hobby" tier which is free forever). Unit/functional CICD testing has also been added with [GitHub Actions](https://github.com/features/actions). Commit <https://github.com/gbmhunter/NinjaCalc/commit/458137fb79237562acb8a3f3d09a13d30438bb49> was the beginning of the migration.
+* Migrated [NinjaCalc](https://ninjacalc.mbedded.ninja/calculators/electronics/ics/555-timer-astable-rt-rb-c) from a [Vue.js](https://vuejs.org/) based app to [Next.js/React](https://nextjs.org/) based app. This took quite a long time to migrate, I'm estimating about 32 hours to migrate all functionality except for two calculators to Next.js. Deployments are now automatically done by [Vercel](https://vercel.com/) (I'm using the "Hobby" tier which is free forever). Unit/functional CICD testing has also been added with [GitHub Actions](https://github.com/features/actions). Commit <https://github.com/gbmhunter/NinjaCalc/commit/458137fb79237562acb8a3f3d09a13d30438bb49> was the beginning of the migration.
 
 * Updated the {{% link text="Cables page" src="/electronics/components/cables" %}} with more information on cable insulation materials and combined power/data cables.
 
-* Added a [Cable Gauge Calculator to the NinjaCalc app](https://ninja-calc.mbedded.ninja/calculators/electronics/cabling/wire-gauge-calculator).
+* Added a [Cable Gauge Calculator to the NinjaCalc app](https://ninjacalc.mbedded.ninja/calculators/electronics/cabling/wire-gauge-calculator).

@@ -192,9 +192,9 @@ These equations assume a constant load. Load transients (fluctuations in the loa
 
 ## Buck Converter Calculator
 
-You can find a buck converter calculator as part of [mbedded.ninja&lsquo;s NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
+NinjaCalc has an online [buck converter calculator](https://ninjacalc.mbedded.ninja/calculators/electronics/smps/buck-converter). 
 
-{{% figure src="ninja-calc-buck-converter-calculator-screenshot.png" width="956" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." %}}
+{{% figure src="ninja-calc-buck-converter-calculator-screenshot.png" width="950" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." %}}
 
 ## Synchronous Rectification
 

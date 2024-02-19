@@ -1,6 +1,6 @@
 ---
 authors: [ "Geoffrey Hunter" ]
-date: 2018-02-26 18:27:01+00:00
+date: 2018-02-26
 draft: false
 title: Geodesic Calculator Added To NinjaCalc
 type: post
@@ -23,7 +23,7 @@ tags:
 - world
 ---
 
-[NinjaCalc has a new calculator, a "Two Coordinate Geodesics" calculator](http://ninja-calc.mbedded.ninja/calc/distance-between-two-coordinates) that can help you analyse properties of two coordinates/points on the earth's surface (defined by latitude/longitude).
+NinjaCalc has a new calculator, a "Two Coordinate Geodesics" calculator (UPDATE 2024-02: URL now unavailable) that can help you analyse properties of two coordinates/points on the earth's surface (defined by latitude/longitude).
 
 Given two points in latitude/longitude form (both degrees and radians supported), the calculator can give you the great circle (shortest) distance between the two points, and the initial/final bearings. This calculator can also find an intermediate coordinate/point between the two coordinates, given a fractional amount (such as 0.5). All of these properties are calculated using the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
@@ -31,4 +31,4 @@ Given two points in latitude/longitude form (both degrees and radians supported)
 
 All these properties are shown on a interactive model of the earth in 3D (the sphere can be rotated).
 
-This calculator can be found in the NinjaCalc web app at [http://ninja-calc.mbedded.ninja/](http://ninja-calc.mbedded.ninja/).
+This calculator can be found in the NinjaCalc web app at ... (UPDATE 2024-02: URL now unavailable).

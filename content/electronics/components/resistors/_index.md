@@ -12,13 +12,7 @@ type: page
 
 ## Overview
 
-_Resistors_ are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the normally most commonly used electronic component in any circuit design.
-
-**Related Pages**
-
-* For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor).
-* For info on mechanically variable resistors, see the [Potentiometers and Rheostats page](/electronics/components/potentiometers-and-rheostats/).
-* For info on digital controlled variable resistors, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
+_Resistors_ are a passive electronic components that **restrict the flow of current when a voltage is applied across them**. They dissipate the energy lost as heat. Given their simplicity, usefulness and low price of manufacture, they are typically the most commonly used electronic component in any circuit design.
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
@@ -26,7 +20,7 @@ _Resistors_ are a passive electronic component that restricts the flow of curren
 
 Resistors are used for a huge number of purposes, including:
 
-* **Potential dividers**: To produce an output voltage that is a fixed percentage of the input voltage.
+* **Resistor dividers**: To produce an output voltage that is a fixed percentage of the input voltage.
 * **Voltage/current biasing**: e.g. transistor amplifiers
 * **Current limiting**: Power an LED from a fixed voltage rail.
 * **Op-amp gain/feedback configuration**: Resistors (along with the occasional capacitor) are used to set the gain/feedback of op-amps. 
@@ -66,9 +60,9 @@ or as (and this is my favourite):
 R_{total} &= \frac{R1R2}{R1 + R2}
 \end{align}</p>
 
-The following diagram shows this:
+This relationship is shown in {{% ref "fig-resistors-in-parallel-equivalence-with-equation" %}}.
 
-{{% figure ref="fig-resistors-in-parallel-equivalence-with-equation" src="_assets/resistors-in-parallel-equivalence-with-equation.png" width="723" caption="Two resistors in parallel can be treated as one resistor using the shown equation." %}}
+{{% figure ref="fig-resistors-in-parallel-equivalence-with-equation" src="_assets/resistors-in-parallel-equivalence-with-equation.webp" width="700px" caption="Two resistors in parallel can be treated as one resistor using the shown equation." %}}
 
 ### Resistors In Series
 
@@ -78,9 +72,9 @@ When two resistors are connected in series, the total equivalent resistance is e
 R_{total} = R1 + R2
 \end{align}</p>
 
-This is shown in the diagram below:
+This is shown in {{% ref "fig-resistors-in-series-equivalence-with-equation" %}}.
 
-{{% figure ref="fig-two-resistors-in-series-equivalent-single-resistance" src="_assets/two-resistors-in-series-equivalent-single-resistance.png" width="669" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image." %}}
+{{% figure ref="fig-resistors-in-series-equivalence-with-equation" src="_assets/resistors-in-series-equivalence-with-equation.webp" width="700px" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image." %}}
 
 ## Resistor Dividers
 
@@ -193,7 +187,7 @@ An interesting example I have seen of a resistor divider powering a circuit was 
 
 ### Online Calculators
 
-The [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
+[NinjaCalc](https://ninjacalc.mbedded.ninja/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
 {{% figure ref="fig-screenshot-of-ninjacalc-resistor-divider-calculator" src="_assets/screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." %}}
 
@@ -277,7 +271,7 @@ For any E-series range, this pattern is applied for every decade of resistance, 
 
 {{% figure ref="fig-yageo-rc-series-thick-film-general-purpose-resistors-summary-table" src="_assets/yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png" width="900px" caption="Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page]." %}}
 
-[The NinjaCalc Standard Resistance Finder calculator](https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
+[The NinjaCalc Standard Resistance Finder calculator](https://ninjacalc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
 
 {{% figure ref="fig-screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324" src="_assets/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="550" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
 
@@ -327,7 +321,7 @@ Power resistors can be used to intentionally heat things. {{% ref "fig-using-a-p
 
 ## Current-Sense Resistors
 
-Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
+Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), other times they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
 {{% figure ref="fig-current-sensing-resistor-large-four-lead" src="_assets/current-sensing-resistor-large-four-lead.jpg" width="500" caption="A large four-lead current sensing resistor." %}}
 
@@ -391,6 +385,12 @@ Once taken out of the tape, they don't look like much!
 There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([download it here](http://jahonen.kapsi.fi/Electronics/ResOptimizer/)) which finds optimal values for resistor dividers and optimal values for series/parallel resistor combinations to achieve the desired total resistance. It runs on Windows (Win32 application)[^bib-jahonen-kapsi-resistor-optimizer].
 
 {{% figure ref="fig-resistor-optimizer-janne-ahonen-screenshot" src="_assets/resistor-optimizer-janne-ahonen-screenshot.png" width="700px" caption="Screenshot of the Resistor Optimizer tool[^bib-jahonen-kapsi-resistor-optimizer]." %}}
+
+## Further Reading
+
+* For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor).
+* For info on mechanically variable resistors, see the [Potentiometers and Rheostats page](/electronics/components/potentiometers-and-rheostats/).
+* For info on digital controlled variable resistors, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
 
 ## References
 

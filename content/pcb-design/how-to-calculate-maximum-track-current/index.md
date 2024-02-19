@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "PCB Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ PCB Design ]
 date: 2016-04-11
 draft: false
 lastmod: 2020-01-22
-tags: [ "PCB design", "track current", "traces", "PCBs", "routing", "overheating", "thermal", "IPC-2221A", "IPC-2152" ]
-title: "How To Calculate Maximum Track Current"
-type: "page"
+tags: [ PCB design, track current, traces, PCBs, routing, overheating, thermal, IPC-2221A, IPC-2152 ]
+title: How To Calculate Maximum Track Current
+type: page
 ---
 
 ## Overview
@@ -82,11 +82,11 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
 ### That's Hard Work, Can It Be Any Easier?
 
-Glad you asked! mbedded.ninja has developed a desktop application called [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/), which includes IPC-2221A and IPC-2152 track current calculators (remember, use IPC-2152 wherever possible!).
+Glad you asked! NinjaCalc includes IPC-2221A and IPC-2152 track current calculators (remember, use IPC-2152 wherever possible!).
 
-You can get to the IPC-2221A calculator directly by going to [http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2221a-calculator](http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2221a-calculator).
+You can get to the IPC-2221A calculator directly by going to https://ninjacalc.mbedded.ninja/calculators/electronics/pcb-design/track-current-ipc2221a.
 
-You can get to the IPC-2152 calculator directly by going to [http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2152-calculator](http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2152-calculator).
+You can get to the IPC-2152 calculator directly by going to https://ninjacalc.mbedded.ninja/calculators/electronics/pcb-design/track-current-ipc2152.
 
 ## External Resources
 
