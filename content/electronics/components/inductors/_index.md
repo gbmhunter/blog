@@ -1,20 +1,20 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
 date: 2013-05-06
-description: "Important parameters, schematic symbols, series/parallel connections, core materials, construction methods, saturation currents, packages, uses/applications and more info on inductors."
+description: Important parameters, schematic symbols, series/parallel connections, core materials, construction methods, saturation currents, packages, uses/applications and more info on inductors.
 draft: false
 lastmod: 2022-07-08
-tags: [ "inductor", "inductors", "inductance", "permeability", "parallel", "series", "parasitic model", "saturation current", "packages", "flat coil", "powdered iron", "ferrite", "toroidal" ]
-title: "Inductors"
-type: "page"
+tags: [ inductor, inductors, inductance, permeability, parallel, series, parasitic model, saturation current, packages, flat coil, powdered iron, ferrite, toroidal ]
+title: Inductors
+type: page
 ---
 
 ## Overview
 
-Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are well used but not as common as [resistors](/electronics/components/resistors) and {{% link text="capacitors" src="/electronics/components/capacitors" %}} in electronic circuits.
+Inductors are passive, 2 pin electronic components which **store energy as a magnetic field**. They are made by coiling wire around a material (be it air, or something else). They are well used but due to their bulk, cost and usefulness, are not as common as [resistors](/electronics/components/resistors) or [capacitors](/electronics/components/capacitors) in electronic circuits.
 
-{{% figure src="3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." width="400px" %}}
+{{% figure src="_assets/3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." width="400px" %}}
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
@@ -43,13 +43,17 @@ The defining equation relating the voltage, inductance and change in current is:
     \(\frac{di}{dt}\) is the instantaneous change in current through the inductor<br>
 </p>
 
-For example: If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit or your inductor will start to heat up and smoke.
+{{% aside type="example" %}}
+
+If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit, your inductors magnetic core would saturate, or your inductor will start to overheat.
+
+{{% /aside %}}
 
 ## Schematic Symbols and Designator
 
 There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The figure below shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
 
-{{% figure src="schematic-symbols-of-inductors.png" width="500px" caption="Schematic symbols for a range of the basic inductor sub-families." %}}
+{{% figure src="_assets/schematic-symbols-of-inductors.png" width="500px" caption="Schematic symbols for a range of the basic inductor sub-families." %}}
 
 ## Important Parameters
 
@@ -82,7 +86,7 @@ The _saturation current_ is the maximum current the inductor can take before it 
 
 For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The following graph shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
 
-{{% figure src="inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png" width="500px" caption="Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds]." %}}
+{{% figure src="_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png" width="500px" caption="Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds]." %}}
 
 Typical saturation currents range from 10-100mA's for small inductors, up to 1-10A for larger PCB mount inductors.
 
@@ -102,7 +106,7 @@ The _self-resonant frequency_ of an inductor is the frequency at which the paras
 
 The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance `\(L\)` spikes at about 75MHz:
 
-{{% figure src="self-resonant-frequency.png" width="600px" caption="Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF)." %}}
+{{% figure src="_assets/self-resonant-frequency.png" width="600px" caption="Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF)." %}}
 
 The equation for the SRF is[^bib-coilcraft-measuring-srf]:
 
@@ -135,7 +139,7 @@ Flat coil inductors have a very low profile (height from the surface of the PCB)
 
 Metal composite inductors (also called _moulded power inductors_) are made with metal powders moulded around copper windings at high pressure.
 
-{{% figure src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
+{{% figure src="_assets/metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
 
 ### Air-cored Inductors
 
@@ -193,7 +197,7 @@ It is usually easier to remember this equation as:
 
 The following diagram shows this:
 
-{{% figure src="inductors-in-parallel-with-equation.png" width="608px" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image."  %}}
+{{% figure src="_assets/inductors-in-parallel-with-equation.png" width="608px" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image."  %}}
 
 ### Inductors In Series
 
@@ -203,7 +207,7 @@ The equivalent inductance of two inductors connected in series is the sum of the
 
 This is shown in the diagram below:
 
-{{% figure src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." %}}
+{{% figure src="_assets/inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." %}}
 
 ## The Energy Stored In An Inductor
 
@@ -313,7 +317,7 @@ Inductors only behave like inductors over a **limited current range**. As the cu
 
 The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
-{{% figure src="inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502px" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A."  %}}
+{{% figure src="_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502px" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A."  %}}
 
 As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
 
@@ -345,13 +349,13 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
-    {{% figure src="inductor-measurement-with-sig-gen-and-oscilloscope-01.png" width="500px" %}}
+    {{% figure src="_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png" width="500px" %}}
 
     {{< note >}}If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.{{< /note >}}
 
 1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like this:
 
-    {{% figure src="inductor-measurement-with-sig-gen-and-oscilloscope-02.png" width="600px" %}}
+    {{% figure src="_assets/inductor-measurement-with-sig-gen-and-oscilloscope-02.png" width="600px" %}}
 
 1. Adjust the frequency of the signal generator until the peak-to-peak voltage across the inductor is half the measured open-circuit peak-to-peak voltage.
 
@@ -430,7 +434,7 @@ L   &= \sqrt{\frac{1}{3}} \frac{R}{2\pi f}
 
 Unfortunately for the PCB designer, almost all SMD inductor packages are non-standard and unique to the manufacturer and series.
 
-{{% figure src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." %}}
+{{% figure src="_assets/ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." %}}
 
 ## References
 
