@@ -4,8 +4,8 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2024-02-14
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C ]
+lastmod: 2024-02-20
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS ]
 title: Zephyr
 type: page
 ---
@@ -14,7 +14,7 @@ type: page
 
 ## Overview
 
-The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
+_Zephyr_ is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
 {{% figure ref="fig-zephyr-project-logo.png" src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
 
@@ -1123,6 +1123,38 @@ void LogResetCause()
 ```
 
 ### GPIO
+
+To setup a single GPIO pin your device tree, you can add the following to your `.dts` file:
+
+```python
+my_gpio {
+    # Pin 7 in GPIO controller bank 0
+    gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
+};
+```
+
+You can then get access to this GPIO from your C code with:
+
+```c
+const struct gpio_dt_spec myGpio = GPIO_DT_SPEC_GET(DT_PATH(my_gpio), gpios);
+
+bool boolRc = gpio_is_ready_dt(&myGpio);
+__ASSERT_NO_MSG(boolRc);
+int intRc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_INACTIVE);
+__ASSERT_NO_MSG(intRc == 0);
+```
+
+The above code gets the device tree spec based of it's path, checks that the GPIO is ready for use (I'm not sure why it wouldn't me, but good practice!) and then configures it as an output. To then set the pin high or low, you use `gpio_pin_set_dt()`:
+
+```c
+int rc = gpio_pin_set_dt(&myGpio, 0); // Set it low
+__ASSERT_NO_MSG(rc == 0);
+
+rc = gpio_pin_set_dt(&myGpio, 1); // Set it high
+__ASSERT_NO_MSG(rc == 0);
+```
+
+`GPIO_OUTPUT_LOW` and `GPIO_OUTPUT_HIGH` both set the physical state of the pin, and do not care if the pin is active high or active low. `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` take into account whether the pin is active high or active low. In the case the pin is active high, setting the pin to a logical level of `INACTIVE` results in a physical `LOW`, and `ACTIVE` is `HIGH`. In the case it is active low, `INACTIVE`
 
 If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
 
