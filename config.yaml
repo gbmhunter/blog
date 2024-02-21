@@ -21,6 +21,7 @@ params:
   rssTypes:
   - page
   - post
+  math: true
 markup:
   tableOfContents:
     ordered: false
@@ -29,6 +30,18 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
+        enable: true
   highlight:
     anchorLineNos: false
     codeFences: true

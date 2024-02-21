@@ -87,6 +87,65 @@ This should be bold: `\( \b{x} \)`
 
 This should be bold and have a hat: `\( \bhat{x} \)`
 
+## Hugo Math
+
+Some display math with a reference:
+
+$$ f(x) = \frac{2}{3}$$
+
+Some inline math. \(f(x) = \frac{2}{3}\). More normal text.
+
+An equation with `\begin{equation}`, which should be automatically numbered:
+
+$$\begin{equation}
+  \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
+  \label{eq:sample-hugo}
+\end{equation}$$
+
+And a reference to the above equation: In \(Eq.\ \eqref{eq:sample-hugo}\), we find the value of an
+interesting integral.
+
+To align equations we can use:
+
+$$\begin{align}
+A &= B\\
+  &= C\\
+  &= D
+\end{align}$$
+
+These should be `\small` and `\tiny` equations:
+
+$$\begin{align}
+\small y=x \\
+\tiny y=x
+\end{align}$$
+
+Should have some descriptive text:
+
+$$\begin{align}
+y &= x && \text{Because \(y=x\), duh.} \\
+  &= z && \text{Replacing \(x\) with \(z\).}
+\end{align}$$
+
+First equation should not be numbered, second one should:
+
+$$\begin{align}
+y &= x \nonumber \\
+  &= z
+\end{align}$$
+
+None of the equations should be numbered (but still should be aligned):
+
+<p>\begin{align*}
+y &= x \\
+  &= z
+\end{align*}</p>
+
+Custom Latex macros:
+
+* This should be bold: \( \b{x} \)
+* This should be bold and have a hat: \( \bhat{x} \)
+
 
 ## Dividers
 
