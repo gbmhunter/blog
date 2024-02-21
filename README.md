@@ -38,7 +38,9 @@ There are test pages filled with different shortcode and style tests.
 npx -y pagefind@v1.0.4 --site public
 ```
 
-This command takes some time to run. You generally do not need to re-run it the next time you set up a dev server, unless you want content you've added since the last time you ran it to appear in the search.
+This command takes some time to run (a few mins on my laptop). You generally do not need to re-run it the next time you set up a dev server, unless you want content you've added since the last time you ran it to appear in the search.
+
+Running pagefind locally relied on the hugo dev server being started in `--renderToDisk` mode (which is recommended) because it can't scan files in memory!
 
 ## To Build
 
@@ -129,3 +131,11 @@ WARNING: Increasing the concurrency from 10 to 50 actually slows it down, becaus
 ### linkcheck
 
 [linkcheck](https://github.com/filiph/linkcheck) runs out of memory.
+
+## Page Sizes
+
+The below image shows a screenshot of Chrome dev tools analysing the Resistors page size as of Feb 2024.
+
+<img src="/images/readme/resistors-page-size-feb-2024-filtered-by-domain.png" width="128"/>
+
+As highlighted, `3.9MB` of data was transferred from the domain `blog.mbedded.ninja` (a filter is set up to exclude third-party downloads). Netlify reports that blog.mbedded.ninja is using approx. 50GB of it's 100GB limit per month.

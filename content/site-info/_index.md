@@ -104,14 +104,6 @@ A full post with more information on this migration can be found [here](/posts/2
 
 Arial font is used for image watermarks.
 
-## Page Size
-
-{{% ref "fig-resistors-page-size-feb-2024-filtered-by-domain" %}} shows a screenshot of Chrome dev tools analysing the Resistors page size as of Feb 2024.
-
-{{% figure ref="fig-resistors-page-size-feb-2024-filtered-by-domain" src="_assets/resistors-page-size-feb-2024-filtered-by-domain.png" width="800px" caption="The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration." %}}
-
-As highlighted, `3.9MB` of data was transferred from the domain `blog.mbedded.ninja` (a filter is set up to exclude third-party downloads). Netlify reports that blog.mbedded.ninja is using approx. 50GB of it's 100GB limit per month.
-
 ## Colors
 
 Blue: `#3465a4`

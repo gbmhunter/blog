@@ -1639,7 +1639,7 @@ Nordic chose to move from their nRF5 platform to Zephyr as the officially suppor
 
 ## Other Resources
 
-Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772017664/),
+Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772017664/).
 
 ## References
 
