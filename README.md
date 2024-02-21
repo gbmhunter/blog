@@ -136,6 +136,6 @@ WARNING: Increasing the concurrency from 10 to 50 actually slows it down, becaus
 
 The below image shows a screenshot of Chrome dev tools analysing the Resistors page size as of Feb 2024.
 
-<img src="/images/readme/resistors-page-size-feb-2024-filtered-by-domain.png" width="128"/>
+<img src="static/images/readme/resistors-page-size-feb-2024-filtered-by-domain.png" width="128"/>
 
 As highlighted, `3.9MB` of data was transferred from the domain `blog.mbedded.ninja` (a filter is set up to exclude third-party downloads). Netlify reports that blog.mbedded.ninja is using approx. 50GB of it's 100GB limit per month.
