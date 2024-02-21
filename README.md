@@ -12,18 +12,6 @@ The static site generator Hugo is used to build the website from the files in th
 
 1. Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows). **Make sure to install the extended version, as we need to compile `.scss` files into `.css`**.
 
-1. Install ruby. This is needed to render the AsciiDoc pages.
-
-    ```powershell
-    choco install ruby
-    ```
-
-1. Then `asciidoctor` and `rouge` (for syntax highlighting) can be installed by using `bundle`, which uses the `Gemfile` in the root directory of this repo (Linux, MacOS, Windows):
-
-    ```sh
-    bundle install
-    ```
-
 1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`). Since this is a large site, we'll also use `--renderToDisk` otherwise it can take up 6GB of memory!!! Also add in `--navigateToChanged` so that when you save a source file, the server will automatically redirect the browser to the changed page:
 
     ```sh
@@ -41,7 +29,16 @@ $ hugo server -wDF --disableFastRender --renderToDisk
 There are test pages filled with different shortcode and style tests.
 
 * Markdown: `/posts/tests/markdown`
-* AsciiDoc: `/posts/tests/asciidoc`
+
+### pagefind
+
+[pagefind](https://pagefind.app/) is used to create a static search for the blog. This is run AFTER the hugo build step on Netlify during the deployment process. If developing locally, this is not run by default. If you want the search to work when running locally, make sure you have `npx` installed (as of Feb 2024 it is bundled with [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)) and then run:
+
+```shell
+npx -y pagefind@v1.0.4 --site public
+```
+
+This command takes some time to run. You generally do not need to re-run it the next time you set up a dev server, unless you want content you've added since the last time you ran it to appear in the search.
 
 ## To Build
 
@@ -51,22 +48,37 @@ To build site and place files in `public` directory:
 $ hugo
 ```
 
+This is not normally run on a development machine, but rather only run as part of the deployment process on Netlify.
+
 ## Directory Structure
 
+Below is an explanation of the directory structure used for this site:
+
 ```text
-|--.vscode/
+|-- .vscode/
 |  |--settings.json -> Contains the word dictionary for VS Code (under "cSpell.words")
-|--assets
-|  |--main.scss -> Main stylesheet. This requires `hugo-extended` to compile.
-|--content/ -> Markdown files which contain the content which creates the sites pages and posts.
-|--layouts/
-|  |--shortcodes -> Hugo shortcodes.
-|  |--calculators -> Contains the HTML/CSS/jQuery based interactive calculators which are embedded into certain pages (deprecated, these are now part of NinjaCalc)
-|--old/ -> Deprecated content which is kept around just in case I need it again.
-|--requirements/ -> Contains a requirements.txt used to create a Python virtual environment for running the various Python scripts in this repo.
-|--scripts/ -> Useful Python scripts to automate some laborious tasks.
-|--templates/ -> Contains Affinity Designer diagram template, various Python script templates and a Markdown page template.
+|-- assets/
+|  |-- main.scss -> Main stylesheet. This requires `hugo-extended` to compile.
+|-- content/ -> Markdown files which contain the content which creates the sites pages and posts.
+|  |-- example-page-1/
+|     |-- _assets/ -> All images, Python scripts used to generate images, Affinity Designer/Photo files 
+|     |               used to generate images and any other files used to create content for the page go in this `_assets/`
+|     |               directory.
+|     |-- example-nested-page-1/ -> Content pages can be nested to arbitrary depths depending on the
+|     |                             desired hierarchy. This folder contains the same info as `example-page-1/`. 
+|     |-- _index.md -> The markdown file containing the textual content for the page.
+|-- layouts/
+|  |-- shortcodes -> Hugo shortcodes.
+|  |-- calculators -> Contains the HTML/CSS/jQuery based interactive calculators 
+|                     which are embedded into certain pages (deprecated, these are now part of NinjaCalc)
+|-- old/ -> Deprecated content which is kept around just in case I need it again.
+|-- requirements/ -> Contains a requirements.txt used to create a Python virtual environment
+|                    for running the various Python scripts in this repo.
+|-- scripts/ -> Useful Python scripts to automate some laborious tasks.
+|-- templates/ -> Contains Affinity Designer diagram template, various Python script templates and a Markdown page template.
 ```
+
+NOTE: Placing all the 
 
 ## Recommended VS Code Plugins
 
@@ -95,7 +107,7 @@ The code to generate blog statistics (e.g. number of visitors, increases since l
 
 ## Link Checking
 
-Make sure to run hugo without `--renderToDisk`, because this causes links to get corrupted.
+I have found Broken Link Checker to be the best tool to check links. See the Broken Link Checker section below.
 
 ### lychee
 
@@ -103,7 +115,7 @@ Make sure to run hugo without `--renderToDisk`, because this causes links to get
 
 ### Broken Link Checker (blc)
 
-[broken-link-checker](https://github.com/stevenvachon/broken-link-checker) works ok.
+[broken-link-checker](https://github.com/stevenvachon/broken-link-checker) is the recommended way. Run this locally once you have a hugo develop server up and running:
 
 ```bash
 blc -rofe http://localhost:1313/ --requests 10

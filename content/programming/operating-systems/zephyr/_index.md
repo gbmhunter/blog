@@ -14,7 +14,7 @@ type: page
 
 ## Overview
 
-_Zephyr_ is the combination of a **real-time operating system, peripheral API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
+_Zephyr_ is the combination of a **real-time operating system, peripheral/system API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
 {{% figure ref="fig-zephyr-project-logo.png" src="_assets/zephyr-project-logo.png" width="500px" caption="The Zephyr Project logo." %}}
 
@@ -1631,6 +1631,16 @@ If tring to print a float using `%f` in any printf style functions (or log macro
 CONFIG_FPU=y # Required for printing floating point numbers
 ```
 
+## History
+
+In February 2016, Wind River (the same company the makes VxWorks, one of the leading commercial RTOSes for safety critical systems) donated the Rocket OS kernel to the Linux Foundation and Zephyr was born[^wikipedia-zephyr-operating-system] [^scalar-zephyr-operating-system]. Rocket still existed in parallel as a commercial version of Zephyr.
+
+Nordic chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, nRF53 and nRF92 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020[^nordic-semi-nrf52-zephyr-support-added].
+
+## Other Resources
+
+Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772017664/),
+
 ## References
 
 [^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
@@ -1639,3 +1649,6 @@ CONFIG_FPU=y # Required for printing floating point numbers
 [^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
 [^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.
 [^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.
+[^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-1, from https://www.scaler.com/topics/zephyr-operating-system/.
+[^wikipedia-zephyr-operating-system]: Wikipedia (2023, Oct 20). _Zephyr (operating system)_. Retrieved 2024-02-21, from https://en.wikipedia.org/wiki/Zephyr_(operating_system).
+[^nordic-semi-nrf52-zephyr-support-added]: Nordic Semiconductor (2020, Apr 2). _Nordic Semiconductor now offering broad product line support for its short-range and cellular IoT devices on nRF Connect platform including a suite of development tools and open source nRF Connect SDK_ [blog post]. Retrieved 2024-02-21, from https://www.nordicsemi.com/Nordic-news/2020/04/nordic-now-offering-support-for-its-shortrange-and-cellular-iot-devices-on-nrf-connect-platform.
