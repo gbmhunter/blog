@@ -24,7 +24,10 @@ type: page
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link text="PP3" src="../pp3-component-package" %}}
+<td>
+
+[PP3](../pp3-component-package)
+
 </td>
 </tr>
 <tr>

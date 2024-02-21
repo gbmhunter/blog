@@ -9,4 +9,4 @@ title: "SC-101 Component Package"
 type: "page"
 ---
 
-SC-101 is a synonym (JEITA) for the {{% link text="SOT-883 component package" src="../sot-883-component-package" %}}.
+SC-101 is a synonym (JEITA) for the [SOT-883 component package](../sot-883-component-package).

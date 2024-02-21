@@ -1,6 +1,6 @@
 ## Overview
 
-This repo contains the code which is used to build my blog at <blog.mbedded.ninja>.
+This repo contains the source code which is used to build the blog at https://blog.mbedded.ninja.
 
 The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
@@ -41,6 +41,16 @@ npx -y pagefind@v1.0.4 --site public
 This command takes some time to run (a few mins on my laptop). You generally do not need to re-run it the next time you set up a dev server, unless you want content you've added since the last time you ran it to appear in the search.
 
 Running pagefind locally relied on the hugo dev server being started in `--renderToDisk` mode (which is recommended) because it can't scan files in memory!
+
+### Python Environment
+
+Python is used to run scripts inside of the `scripts/` directory. They are primarily used for doing bulk edits of content that would take too long to do manually.
+
+```shell
+python -m venv .venv
+./.venv/scripts/activate # Windows
+pip install -r scripts/requirements.txt
+```
 
 ## To Build
 

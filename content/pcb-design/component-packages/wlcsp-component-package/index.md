@@ -33,9 +33,13 @@ type: page
 <tr >
 <td >Similar To</td>
 <td>
-	<ul>
-		<li>{{% link text="BGA" src="../bga-component-package" %}}</li>
-	</ul>
+<ul>
+<li>
+    
+[BGA](../bga-component-package)
+
+</li>
+</ul>
 </td>
 </tr>
 <tr >
