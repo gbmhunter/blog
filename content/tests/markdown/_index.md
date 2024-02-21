@@ -136,10 +136,10 @@ y &= x \nonumber \\
 
 None of the equations should be numbered (but still should be aligned):
 
-<p>\begin{align*}
+$$\begin{align*}
 y &= x \\
   &= z
-\end{align*}</p>
+\end{align*}$$
 
 Custom Latex macros:
 
