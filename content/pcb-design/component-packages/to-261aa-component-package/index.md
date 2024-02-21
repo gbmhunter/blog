@@ -8,4 +8,4 @@ title: TO-261AA Component Package
 type: page
 ---
 
-TO-261AA is a synonym for the {{% link text="SOT-223 component package" src="../sot-223-component-package" %}}.
+TO-261AA is a synonym for the [SOT-223 component package](../sot-223-component-package).

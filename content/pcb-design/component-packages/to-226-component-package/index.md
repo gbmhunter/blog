@@ -8,4 +8,4 @@ title: TO-226 Component Package
 type: page
 ---
 
-TO-226 is a synonym for the {{% link text="TO-92 component package" src="../to-92-component-package" %}}.
+TO-226 is a synonym for the [TO-92 component package](../to-92-component-package).

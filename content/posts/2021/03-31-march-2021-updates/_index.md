@@ -56,7 +56,7 @@ type: "post"
 
     {{% figure src="/electronics/components/op-amps/negative-impedance-converter-nic.svg" width="500px" %}}
 
-* Merged the Passive Filters and Active Filters pages into a single new {{% link text="Analogue Filters page" src="/electronics/circuit-design/analogue-filters/" %}} and re-organized the entire page.
+* Merged the Passive Filters and Active Filters pages into a single new [Analogue Filters page](/electronics/circuit-design/analogue-filters/) and re-organized the entire page.
 
 * Added info on the {{% link text="Sallen-Key filter topology" src="/electronics/circuit-design/analogue-filters#sallen-key-filters" %}}.
 

@@ -9,4 +9,4 @@ title: SC-74A Component Package
 type: page
 ---
 
-`SC-74A` is a JEITA designator for a variant of the `SOT-23` package. See the {{% link text="SOT-23 Component Package page" src="../sot-23-component-package" %}} for more information.
+`SC-74A` is a JEITA designator for a variant of the `SOT-23` package. See the [SOT-23 Component Package page](../sot-23-component-package) for more information.

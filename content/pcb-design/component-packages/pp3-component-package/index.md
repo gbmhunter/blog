@@ -27,7 +27,7 @@ type: "page"
     </tr>
     <tr>
       <td>Similar To</td>
-      <td>{{% link text="PP9" src="../pp9-component-package" %}}</td>
+      <td>[PP9](../pp9-component-package)</td>
     </tr>
     <tr>
       <td>Mounting</td>

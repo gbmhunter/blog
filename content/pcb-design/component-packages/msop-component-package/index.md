@@ -39,9 +39,9 @@ type: "page"
       <td>Similar To</td>
       <td>
         <ul>
-          <li>{{% link text="MSOP" src="../msop-component-package" %}}</li>
+          <li>[MSOP](../msop-component-package)</li>
           <li>SSOP</li>
-          <li>{{% link text="TSSOP" src="../tssop-component-package" %}}</li>
+          <li>[TSSOP](../tssop-component-package)</li>
         </ul>
       </td>      
     </tr>

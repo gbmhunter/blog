@@ -42,7 +42,7 @@ type: page
       <td>Similar To</td>
       <td>
         <ul>
-          <li>{{% link text="TO-273AA (Super TO-220)" src="../to-273aa-component-package" %}}</li>
+          <li>[TO-273AA (Super TO-220)](../to-273aa-component-package)</li>
         </ul>
       </td>
     </tr>

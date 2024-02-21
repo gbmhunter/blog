@@ -11,4 +11,4 @@ type: page
 
 ## Overview
 
-`DDPAK` is a synonym for the `TO-263` component package. See the {{% link text="TO-263 Component Package page" src="../to-263-component-package" %}} for more information.
+`DDPAK` is a synonym for the `TO-263` component package. See the [TO-263 Component Package page](../to-263-component-package) for more information.

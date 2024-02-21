@@ -12,4 +12,4 @@ type: page
 
 ## Overview
 
-The `TO-204 AE` component package is a variant of the `TO-3` component package (a `TO-3-2L` with 1.5mm pins). See the {{% link text="TO-3 Component Package page" src="../to-3-component-package" %}} for more information.
+The `TO-204 AE` component package is a variant of the `TO-3` component package (a `TO-3-2L` with 1.5mm pins). See the [TO-3 Component Package page](../to-3-component-package) for more information.

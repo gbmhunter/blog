@@ -1,27 +1,21 @@
+"""
+This script replaces link shortcodes in the form {{% link ... %}} with standard markdown links in the form [text](src).
+"""
+from pathlib import Path
 import re
 
 from power_edit import PowerEdit
 
+SCRIPT_DIR = Path(__file__).parent.resolve()
+
 def main():
     power_edit = PowerEdit()
-    power_edit.sim_run = True
+    power_edit.sim_run = False
 
-    files = power_edit.find_files('../content/pcb-design/component-packages/**/_index.md', recursive=True)
-    # print(files)
+    globPattern = str(SCRIPT_DIR) + '/../content/pcb-design/component-packages/**/index.md'
+    files = power_edit.find_files(globPattern, recursive=True)
 
     def replace_fn(found_text, file_path, match):
-        # print(f'Found text: {found_text}, file path: {file_path}, match: {match}.')
-        # start_pos = match.start(1) - match.start(0)
-        # end_pos = match.end(1) - match.start(0)
-
-        # src = match.group(1)
-        # src = src[3:]
-        # replace = found_text[0:start_pos] + src + found_text[end_pos:]
-        
-        # Get the src attribute
-        # Create regex to match src="xxx"
-
-        # regex = 
         match = re.search(r'src="(.*?)"', found_text)
         print(match)
         src = match.group(1)

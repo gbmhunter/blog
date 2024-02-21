@@ -8,4 +8,4 @@ title: "LFCSP Component Package"
 type: "page"
 ---
 
-LFCSP is a synonym for the {{% link text="QFN component package" src="../qfn-component-package" %}}.
+LFCSP is a synonym for the [QFN component package](../qfn-component-package).

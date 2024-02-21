@@ -40,7 +40,7 @@ type: "page"
     </tr>
     <tr>
       <td>Similar To</td>
-      <td>{{% link text="SOT-363" src="../sot-363-sc-88-component-package" %}}</td>
+      <td>[SOT-363](../sot-363-sc-88-component-package)</td>
     </tr>
     <tr>
       <td>Mounting</td>

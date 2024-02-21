@@ -34,8 +34,8 @@ type: page
 <td>Similar To</td>
 <td>
   <ul>
-    <li>{{% link text="SOT-23" src="../sot-23-component-package" %}}</li>
-    <li>{{% link text="SOT-523F" src="../sot-523f-component-package" %}}</a></li>
+    <li>[SOT-23](../sot-23-component-package)</li>
+    <li>[SOT-523F](../sot-523f-component-package)</a></li>
   </ul>
 </td>
 </tr>

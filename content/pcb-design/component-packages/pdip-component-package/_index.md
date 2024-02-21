@@ -10,4 +10,4 @@ title: "PDIP Component Package"
 type: "page"
 ---
 
-_Plastic Dual Inline Package_ (`PDIP`) is a variant of the `DIP` package which uses plastic for the enclosure. See the {{% link text="DIP Component Package page" src="../dip-component-package" %}} for more information.
+_Plastic Dual Inline Package_ (`PDIP`) is a variant of the `DIP` package which uses plastic for the enclosure. See the [DIP Component Package page](../dip-component-package) for more information.

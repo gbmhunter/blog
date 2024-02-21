@@ -32,8 +32,8 @@ type: page
 <td >Similar To</td>
 <td >
   <ul>
-    <li>{{% link text="DIP" src="../dip-component-package" %}}</li>
-    <li>{{% link text="SIP" src="../sip-component-package" %}}</li>
+    <li>[DIP](../dip-component-package)</li>
+    <li>[SIP](../sip-component-package)</li>
   </ul>
 </td>
 </tr>

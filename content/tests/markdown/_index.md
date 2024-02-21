@@ -2,6 +2,7 @@
 aliases: [ "test-alias" ]
 authors: [ "Geoffrey Hunter" ]
 date: 2004-09-13
+description: A test page to demonstrate all the features of a content page.
 draft: false
 lastmod: 2021-06-20
 tags: [ "test page" ]
@@ -257,9 +258,7 @@ This is another footnote[^foot-2].
 
 ## Links
 
-{{% link src="/test-page" text="Absolute link." %}}
-
-{{% link src="relative-page" text="Relative link." %}}
+[External link](www.google.com)
 
 ## Lists
 

@@ -28,8 +28,8 @@ type: page
 <td >Similar To</td>
 <td >
   <ul>
-    <li>{{% link src="../do-214aa-component-package" text="DO-214AB" %}}</li>
-    <li>{{% link src="../do-214ac-component-package" text="DO-214AC" %}}</li>
+    <li>[DO-214AB](../do-214aa-component-package)</li>
+    <li>[DO-214AC](../do-214ac-component-package)</li>
     <li>DO-214AC</li>
   </ul>
 </td>

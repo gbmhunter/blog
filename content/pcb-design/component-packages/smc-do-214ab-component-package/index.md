@@ -27,8 +27,8 @@ type: page
 </td>
 <td>
   <ul>
-    <li>{{% link text="SMA (DO-214AC)" src="../sma-do-214ac-component-package" %}}</li>
-    <li>{{% link text="SMB (DO-214AA)" src="../smb-do-214aa-component-package" %}}</li>
+    <li>[SMA (DO-214AC)](../sma-do-214ac-component-package)</li>
+    <li>[SMB (DO-214AA)](../smb-do-214aa-component-package)</li>
   </ul>
 </td>
 </tr>

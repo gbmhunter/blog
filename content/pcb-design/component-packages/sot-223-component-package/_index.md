@@ -45,7 +45,7 @@ type: "page"
   <td>Similar To</td>
   <td>
     <ul>
-      <li>{{% link src="../sot-23-component-package" text="SOT-23" %}}</li>
+      <li>[SOT-23](../sot-23-component-package)</li>
     </ul>
   </td>
 </tr>

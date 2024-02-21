@@ -32,7 +32,7 @@ type: "page"
     </tr>
     <tr>
       <td>Similar To</td>
-      <td>{{% link text="WSON" src="../wson-component-package" %}}</td>
+      <td>[WSON](../wson-component-package)</td>
     </tr>
     <tr>
       <td>Mounting</td>

@@ -8,4 +8,4 @@ title: uSOP Component Package
 type: page
 ---
 
-uSOP is a synonym for the {{% link text="MSOP component package" src="../msop-component-package" %}}.
+uSOP is a synonym for the [MSOP component package](../msop-component-package).
