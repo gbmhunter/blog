@@ -9,9 +9,9 @@ title: "GCC Profiling"
 type: page
 ---
 
-{{% note %}}
+{{% aside type="note" %}}
 This article assumes you are using a Debian-based Linux machine (e.g. Ubuntu).
-{{% /note %}}
+{{% /aside %}}
 
 ## Overview
 
@@ -58,9 +58,9 @@ $ gcc -pg profiling_test.c -o profiling_test
 
 This creates what is called an instrumented executable. It contains additional code which records the time spent in each function.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 If gprof does not appear to produce any output, it may be because of a bug in GCC versions 5 and 6. As a workout, provide the additional flag -no-pie to compilation and linking. Make sure there is only one hyphen at the start of the argument (NOT --no-pie).
-{{% /warning %}}
+{{% /aside %}}
 
 When run, the program will produce a file `gmon.out` in the same directory as it is run. You can pass your program to gprof to display the profiling results:
 
@@ -119,9 +119,9 @@ int main() {
 }
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 You must compile and link with the `-ldl` option for `dlsym` to be found.
-{{% /note %}}
+{{% /aside %}}
 
 ## gprof2dot
 

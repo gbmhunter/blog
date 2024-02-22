@@ -37,9 +37,9 @@ Install your required packages:
 $ conda install -n <your environment name> <package>
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 If you don't specify an environment to install to (as above), Anaconda will install to the currently active environment. To install to any environment which is not currently active, add the option `-n <your environment name>` to the above command.
-{{% /note %}}
+{{% /aside %}}
 
 Now you can run your python code!
 

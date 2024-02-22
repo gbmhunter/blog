@@ -62,14 +62,14 @@ int main(void) {
 }
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Be careful, as passing in a `struct` to a function will copy the entire structure, which is some cases might NOT be what you were expecting as:
 
 1. For a large struct, this could result in a lot of memory on the stack being used up.
 1. Any changes the function makes to the struct will not be seen from the calling function.
 
 In these cases you what to pass in a pointer to the `struct` instead.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Self-referencing Structures
 

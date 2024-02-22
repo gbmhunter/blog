@@ -111,9 +111,9 @@ int main() {
 
 Run the above example online at [https://wandbox.org/permlink/KSpr5KgvSIDimNb5](https://wandbox.org/permlink/KSpr5KgvSIDimNb5).
 
-{{% note %}}
+{{% aside type="note" %}}
 To use `std::chrono::duration` without having to specify the units requires C++17, as _template argument deduction_ feature is required. If you are using C++11 or C++14, you would have to change the above to:
-{{% /note %}}
+{{% /aside %}}
 
 ```c++    
 // C++14

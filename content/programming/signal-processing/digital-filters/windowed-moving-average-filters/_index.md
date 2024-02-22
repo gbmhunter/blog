@@ -14,9 +14,9 @@ type: page
 
 _Windowed moving average filters_ are a family of filters which have a finite impulse response (FIR). They all use a finite-length window of data points to calculate the averaged output. The easiest moving average filter to understand is the _Simple Moving Average_ (SMA) filter (also called a **box-car filter**), which uses a window in where all the inputs values are weighted equally (coefficients are equal). Other moving average filters include the _Windowed Exponential Moving Average_ (EMA) filter, with exponentially-weighted coefficients.
 
-{{% note %}}
+{{% aside type="note" %}}
 "Exponential Moving Average" can also refer to a non-windowed IIR filter, so we are explicit can call this the "Windowed Exponential Moving Average" filter.
-{{% /note %}}
+{{% /aside %}}
 
 ## Terminology
 
@@ -67,9 +67,9 @@ The following plot shows the effect of a SMA filter. The data used is New Zealan
 
 {{% figure src="nz-nat-yearly-temp-plot.png" width="600px" caption="The effect of SMAs on data. New Zealand's national average yearly temperatures, overlaid with a 5-wide and 20-wide left-handed SMA." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 Sometimes SMAs don't start at the same point as the data due to them not being considered "valid" until the window is full of data (like above). Other times you may want to reduce the effective window size as you approach the ends to get an output at every input.
-{{% /note %}}
+{{% /aside %}}
 
 The below plot shows a noisy 1kHz sine wave (with random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which does a commendable job at recovering the original signal:
 
@@ -260,9 +260,9 @@ y[9] = y[8] + \frac{1}{5}(x[9] - x[4])
 
 This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large. Whilst this dependence on previous output (\(y[9]\) depends on \(y[8]\)) makes it look like an IIR filter, this recursion trick does not change the SMAs behaviour, and it still an FIR filter (once the input flies "past" the end of the window, it has no bearing on the output).
 
-{{% note %}}
+{{% aside type="note" %}}
 The simple moving average filter is the only such window-based filter which can be speed up with this recursion trick. Other forms like exponential, Gaussian and Blackman moving averages have to use computationally expensive convolution.
-{{% /note %}}
+{{% /aside %}}
 
 **One thing to watch out for is accumulated error if using floating point numbers**. Because you are now calculating the next output value from the previous output calculation (rather than fresh input data, as you would for the non-recursive algorithm), floating point precision errors will accumulate slowly in the output. 
 
@@ -276,9 +276,9 @@ $$\begin{align}
 e \propto \sqrt{N}
 \end{align}$$
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Watch out when using floating point numbers with the recursive algorithm!
-{{% /warning %}}
+{{% /aside %}}
 
 **Integer based data does not have this accumulation error problem with the recursive SMA**. If you did need to use floats, and you don't have the CPU brute to use the non-recursive method, one solution may be to periodically clear the previous output value and recompute the output using the non-recursive equation. This will reset your error back to 0, preventing it from growing without bound.
 

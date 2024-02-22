@@ -13,9 +13,9 @@ type: page
 
 It could be seen as a more powerful version of [sed](/programming/operating-systems/linux/programs/sed), with a fuller programming language and better support for variables.
 
-{{% note %}}
+{{% aside type="note" %}}
 If you just want to search for text, and have no desire to edit it, it might be better (and safer!) to just use grep instead.
-{{% /note %}}
+{{% /aside %}}
 
 ## Basic Syntax
 

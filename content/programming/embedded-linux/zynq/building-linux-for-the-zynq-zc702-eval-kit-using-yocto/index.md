@@ -192,9 +192,9 @@ We now will extract the root filesystem onto the second partition:
 $ sudo tar x -C /mnt/sdX2/ -f core-image-minimal-zc702-zynq7.tar.gz
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 If you now insert this SD into windows, you should be able to see the files on the first (boot) partition, but not those on the second partition.
-{{% /note %}}
+{{% /aside %}}
 
 `uEnv.txt` should contain information similar to the following:
 

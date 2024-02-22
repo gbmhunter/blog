@@ -24,9 +24,9 @@ Bit rates vary between 1-20kBit/s. The top speed is limited primarily for EMC re
 
 6 bits is allocated for the header ID, giving a total of 64 different header IDs. However, the IDs 60-63 are reserved for special functions, giving a useable range 0-59.
 
-{{% note %}}
+{{% aside type="note" %}}
 These "header IDs" do not necessarily mean node addresses. The header IDs purely describe what the data is, meaning that a single packet sent from the master can be interpreted and used by more than one slave node.
-{{% /note %}}
+{{% /aside %}}
 
 ## Standards
 

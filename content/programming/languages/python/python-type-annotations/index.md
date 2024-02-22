@@ -60,9 +60,9 @@ my_dict: Dict[str, int] = {
 my_tuple: Tuple[str, int, int] = ('foo', 1, 2)
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Although you can also specify the type of collection types with `my_dict: dict`, this is NOT recommended as you lose the ability to specify the type of the keys or values. Use the `Dict` and equivalent types from the `typing` module instead.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Optional
 
@@ -138,9 +138,9 @@ You can tell mypy to ignore specific lines of code with `# type: ignore`:
 my_weird_thing # type: ignore
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 This syntax is part of the PEP 484 specification, and not just one of mypy's inventions.
-{{% /note %}}
+{{% /aside %}}
 
 ### The mypy.ini File
 

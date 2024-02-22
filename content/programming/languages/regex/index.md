@@ -116,9 +116,9 @@ Find: `(?<!Uart)CommsSend`
     
 Replace: `UartCommsSend`
 
-{{% warning %}}
+{{% aside type="warning" %}}
 I have had issues using greedy operators (such as `*` and `+`) inside a lookahead. Upon adding such operators to character regions (e.g. `[a=z]*`), the lookbehind fails to match anything. The error message was "Lookbehind requires fixed-width pattern".
-{{% /warning %}}
+{{% /aside %}}
 
 ## Finding C/C++ Function Definitions
 

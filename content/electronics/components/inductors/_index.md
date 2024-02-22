@@ -239,9 +239,9 @@ $$Z_L = 2\pi fL$$
     \( L \) = inductance of inductor, in Henries (\( H \))<br>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 Sometimes \(X_L\) is used instead of \(Z_L\). \(X\) represents reactance (purely imaginary), whilst \(Z\) is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. \(X_L = Z_L\).
-{{% /note %}}
+{{% /aside %}}
 
 This shows that the impedance goes up as the frequency goes up. At DC levels, the inductor has no impedance and acts like a short-circuit, while at high frequencies the inductor approaches an open-circuit.
 
@@ -254,9 +254,9 @@ $$Z_L = \omega L$$
     \( \omega \) = radian frequency (rad/s) (which is equal to \( 2\pi f \))<br>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 Impedance, although measured in Ohms, is **not the same as resistance**. A resistance converts the energy into heat, the impedance of the inductor however cause the energy to be stored in it's magnetic field, which is returned to the circuit when the current falls.
-{{% /note %}}
+{{% /aside %}}
 
 For a more accurate but complex model, see the Parasitic Model section.
 
@@ -372,9 +372,9 @@ One way to measure the inductance of an inductor is with a signal generator and 
     \(L\) is the calculated inductance, in Henries<br/>
     </p>
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The above method only works well for inductors which have a low series resistance[^bib-dos4ever-meas-unknown-inductors].
-{{% /warning %}}
+{{% /aside %}}
 
 **How It Works**
 

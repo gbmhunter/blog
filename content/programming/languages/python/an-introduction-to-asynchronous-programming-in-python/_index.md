@@ -74,9 +74,9 @@ if __name__ == '__main__':
   main()
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 `asyncio.run()` is only available is Python v3.7 or higher.
-{{% /note %}}
+{{% /aside %}}
 
 If you forget to await all coroutines, Python will print the warning:
 

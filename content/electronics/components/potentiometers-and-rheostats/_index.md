@@ -58,9 +58,9 @@ The below plot gives you an idea on the shapes of these tapers. For the equation
 
 {{% figure src="plot-of-tapers.png" width="500px" caption="Plot of the approximation of three common potentiometer tapers, the linear, log and antilog taper." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Log and antilog tapers are usually never very precise (unless you pay big money), and in cases are just two piece-wise linear tapers of different gradients. The plot above just shows the **approximate shape**.
-{{% /warning %}}
+{{% /aside %}}
 
 _Taper codes_ exist to inform the user of a potentiometers taper. Confusingly, there are many different taper code naming schemes in use, however the Asian version seems to be most common these days[^bib-eepower-potentiometer-taper].
 
@@ -76,9 +76,9 @@ If you can't get log or antilog potentiometers, you can approximate the behaviou
 
 {{% figure src="resistor-taper-circuits.png" width="800px" caption="Schematic showing how to modify the response of a linear potentiometer (to make it approximate log, antilog and log-antilog behaviour) using tapering resistors." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 The tapering resistor trick works for log and antilog tapers are using the potentiometer as a voltage divider. If you are just connecting to one end terminal and the middle (i.e. rheostat style), you can only achieve an antilog taper.
-{{% /note %}}
+{{% /aside %}}
 
 How do we choose the value of \(R_{taper}\)? A good rule-of-thumb is to pick a value which is about 10-20% of the potentiometers total resistance. For example, for a \(10k\Omega\) linear potentiometer, you would choose a tapering resistance of \(1{-}2k\Omega\). The below graph shows the response of potentiometers with tapering resistors. The tapering resistor's resistance is 10% of the potentiometers (e.g. if it was a \(10k\Omega\) pot, the tapering resistor would be \(1k\Omega\)). In the case of the log-antilog circuit, both tapering resistors have a resistance of 10% \(R_{POT}\). In the case of the log and antilog circuits, the responses are also compared to the "ideal" responses (see [The Ideal Logarithmic Taper Equation Section](#the-ideal-logarithmic-taper-equation) for more on how this is calculated):
 
@@ -224,9 +224,9 @@ b &= \left( \frac{1}{y_m} - 1 \right)^2 \\
 
 The below graph shows the shape of the potentiometers response for different values of \(y_m\), starting at \(0.1\) and ending with \(0.9\).
 
-{{% note %}}
+{{% aside type="note" %}}
 At \(y_m = 0.5\) the resistance factor goes to \(\infty\), so \(y_m = 0.5\) is not plotted.
-{{% /note %}}
+{{% /aside %}}
 
 {{% figure src="plot-of-parametric-log-law.png" width="600px" caption="Plot of the ideal potentiometer log taper equation for various values of \(y_m\)." %}}
 

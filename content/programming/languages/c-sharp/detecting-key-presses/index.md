@@ -10,9 +10,9 @@ type: page
 
 Use the following code to detect a key press when focus is on a particular object.
 
-{{% note %}}
+{{% aside type="note" %}}
 There is different syntax for WPF.
-{{% /note %}}
+{{% /aside %}}
 
 ```c#    
 TextBox tb = new TextBox();
@@ -40,9 +40,9 @@ private void tb_KeyDown(object sender, KeyEventArgs e) {
 
 Use the following code to detect a key press when focus is on a particular object.
 
-{{% note %}}
+{{% aside type="note" %}}
 There is different syntax for WinForms.
-{{% /note %}}
+{{% /aside %}}
 
 ```c#    
 TextBox tb = new TextBox();

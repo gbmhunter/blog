@@ -97,9 +97,9 @@ When using the `pillow` writer, the GIF will not loop. When using the `imagemagi
 
 ## Using The Basemap
 
-{{% warning %}}
+{{% aside type="warning" %}}
 As of 2016, `Basemap` has been deprecated. However, it is still a viable choice for plotting maps in Python/Jupyter.
-{{% /warning %}}
+{{% /aside %}}
 
 ```py
 from mpl_toolkits.basemap import Basemap

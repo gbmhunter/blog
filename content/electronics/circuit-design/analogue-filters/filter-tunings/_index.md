@@ -30,9 +30,9 @@ These filters are explained in more detail below. If you are interested in visua
 
 Tuning a filter for a Butterworth response gives a filter which is **maximally flat in the passband**, and rolls off towards zero in the stopband. The price you pay for this is slower roll-off into the stop-band, compared with Chebyshev or Elliptic tunings.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 It may sound dumb, but I've always remembered Butterworth as a flat passband which "slides like butter".
-{{% /tip %}}
+{{% /aside %}}
 
 Butterworth tunings are defined as a filter whose magnitude is[^bib-wikipedia-butterworth-filter]:
 
@@ -58,9 +58,9 @@ B_n(s) =
 \end{cases}
 \end{align}$$
 
-{{% tip %}}
+{{% aside type="tip" %}}
 If you've never seen it before, the uppercase Pi symbol \(\prod\) in the above equation represents the product of a series of things, such like the uppercase Sigma symbol \(\Sigma\) represents the sum of a series of things. For example, \(\prod_{k=1}^{3}k = 1\times 2 \times 3\).
-{{% /tip %}}
+{{% /aside %}}
 
 Below is a table of the normalized factored Butterworth polynomials for order \(n\). The polynomial is useful in this form as each product forms either a first or second-order partial filter which can be directly implemented by a standard filter topology (e.g. RC filter for a first-order section, Sallen-Key for a second-order section). These polynomials were generated with \(Eq.\ \ref{eq:butterworth-polynomial}\). The polynomials are normalized by setting \(\omega_c = 1\) (the characteristic frequency).
 
@@ -74,9 +74,9 @@ $$\begin{align}
 H_n(s) = \frac{1}{B_n}
 \end{align}$$
 
-{{% note %}}
+{{% aside type="note" %}}
 This equation is different from \(Eq.\ \ref{eq:butterworth-magnitude}\) which defined the magnitude of a Butterworth filter, because this equation lacks the magnitude \(|\) symbols around \(H_n(s)\). This equation is the full-and-proper transfer function, which contains both the magnitude and phase information.
-{{% /note %}}
+{{% /aside %}}
 
 This transfer function gives the following bode plots (by taking the magnitude and arg of the transfer function):
 
@@ -165,9 +165,9 @@ where:<br/>
 \(T_n(\omega / \omega_0)\) is a Chebyshev polynomial of the first kind with order \(n\) </br>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 The are actually two different kinds of "Chebyshev polynomials". In analogue filter design, we always use the first kind (for both Type I and Type II Chebyshev filters), commonly denoted \(T_n\). Chebyshev polynomials of the second kind are usually denoted \(U_n\).
-{{% /note %}}
+{{% /aside %}}
 
 The ripple in the passband may have multiple maxima and minima. However, the peaks of each maxima/minima have the same amplitude (i.e. they are bounded by a fixed value). This is known as equiripple behaviour, and stems from the core definition of a Type I Chebyshev polynomial.
 
@@ -177,13 +177,13 @@ $$\begin{align}
 T_n(\cos{\theta}) &= \cos(n\theta) \\
 \end{align}$$
 
-{{% tip %}}
+{{% aside type="tip" %}}
 It's a little unusual in the way it's normally defined with it being a function of \(\cos(\theta)\) rather than just \(x\). If you let \(x = \cos \theta\), then you can substitute \(\theta = \arccos x\) are arrive at: 
 
 $$\begin{align}
 T_n(x) &= \cos(n\arccos(x)) \text{ for }|x| \leq 1 \\
 \end{align}$$
-{{% /tip %}}
+{{% /aside %}}
 
 You can calculate the Chebyshev polynomials of the first kind with the recursive definition[^bib-wikipedia-chebyshev-polynomials]:
 
@@ -271,7 +271,7 @@ This also means that a Bessel-tuned filter has the **least ringing due to a step
 
 {{% figure src="tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings. The Bessel-tuned filter has the least ringing." %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Find the transfer function for a 2nd-order Bessel low-pass filter with \(\omega_0 = 1\). Then find the equations for magnitude/phase and create bode plots.**
 
@@ -311,7 +311,7 @@ We now use these equations for magnitude and phase and create bode plots!
 
 {{% figure src="bessel-2nd-order-bode-plot.png" width="600px" caption="Bode plots for the 2nd-order Bessel low-pass filter." %}}
 
-</div>
+{{% /aside %}}
 
 ## Elliptic Tunings
 
@@ -343,7 +343,7 @@ b, a = scipy.signal.ellip(N, rp, rs, Wn, btype='lowpass', analog=True)
 
 where `N` is the order of the filter, `rp` is the maximum ripple allowed below unity in the passband, `rs` is the minimum attenuation required in the stopband, and `Wn` is the critical (characteristic) frequency. The returned `b` and `a` are arrays of the transfer function numerator and denominator coefficients.
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Use the Python scipy package and find the transfer function for a 2nd-order lowpass Elliptic-tuned filter with a characteristic frequency of \(10kHz\), passband ripple of \(3dB\), and a minimum attenuation of \(40dB\) in the stopband.**
 
@@ -361,11 +361,11 @@ $$\begin{align}
 H(s) &= \frac{1.00098303\times10^{-2}s^2 + 1.99828046\times10^{9}}{s^2 + 4.02295857\times10^4s + 2.82264617\times10^9} \nonumber \\
 \end{align}$$
 
-</div>
+{{% /aside %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 You can run into stability issues when representing transfer functions in the `b, a` form with high-order Elliptic-tuned filters.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Comparisons Between Filter Tunings
 

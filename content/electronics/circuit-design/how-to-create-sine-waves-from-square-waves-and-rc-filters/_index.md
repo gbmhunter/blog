@@ -42,9 +42,9 @@ where:</br>
 \(C\) is the capacitance in Farads [\(F\)]</br>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 **You don't have to make the cut-off frequency of each stage equal to the input/output frequency**. It's a trade-off between the amplitude of the output sine wave and the amount of distortion the sine wave will have. If you lower the cut-off frequency, the RC filters will attenuate more of the fundamental frequency and reduce the amplitude of your sine wave, but will also attenuate more of the harmonics, meaning less distortion. In reverse, if you raise the cut-off frequency, you will get a larger amplitude sine wave but with more distortion.
-{{% /note %}}
+{{% /aside %}}
 
 This means the resistor in each RC stage has to be:
 
@@ -54,9 +54,9 @@ R &= \frac{1}{2\pi f_c C} \nonumber \\
   &= 1.592k\Omega \\
 \end{align}$$
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Setting the cut-off frequency for each stage to 10kHz does not mean the entire filter will attenuate the input signal by only \(-3dB\). It will attenuate the signal by much more than that!
-{{% /warning %}}
+{{% /aside %}}
 
 Remember, all the \(R\) and \(C\) values should be the same. This gives us the following schematic:
 
@@ -78,9 +78,9 @@ The bode plots (frequency response) of this circuit is shown below. Each success
 
 {{% figure src="sim-four-stage-rc-filter-bode-plot.png" width="700px" caption="Bode plots for the four-stage RC filter based sine wave generator circuit." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 As shown in the bode plots above, the phase of the output is also shifted. Our output 10kHz sine wave is shifted by \(166^{\circ}\), which is almost "inverting" the input. Make sure to take this into consideration.
-{{% /note %}}
+{{% /aside %}}
 
 ## Distortion
 

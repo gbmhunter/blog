@@ -35,9 +35,9 @@ The total energy $ E $ provided by the inrush current is given by:
     \(V_{in}\) = the input voltage, in Volts<br>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 You may be initially confused, thinking, wait, this is the equation for the energy stored in the capacitor, not the energy dissipated by the thermistor. The cool thing is, in this circuit, the energy stored in the capacitor and the energy dissipated by the thermistor (or any resistor) is exactly the same!
-{{% /note %}}
+{{% /aside %}}
 
 The minimum resistance (provided by the NTC thermistor), \(R_{min}\), is given by:
 

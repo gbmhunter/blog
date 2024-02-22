@@ -33,9 +33,9 @@ The hot loop for a boost converter is on the output side rather than the input:
 
 {{% figure src="boost-converter-hot-loop.png" width="700px" caption="Schematic showing the \"Hot Loop\" of a boost converter." %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Because the current cannot change instantaneously through an inductor, the inductor is never part of the hot loop, no matter what topology of SMPS you are using. However, this rule does not apply to transformers (they can be part of hot loops, e.g. the flyback topology), as they do not behave like an inductor.
-{{% /tip %}}
+{{% /aside %}}
 
 ### Inductor Polarity
 

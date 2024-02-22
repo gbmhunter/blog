@@ -228,9 +228,9 @@ Maximum current draw is 1.8A, in battery charging mode. This is achieved by shor
 
 Although it is not recommended to break the USB protocol and use the USB connector for non-standard purposes, sometimes this way makes the most sense. I have used a micro USB cable to both provide power and program a PSoC microcontroller. The PCB could be plugged into a computer with a standard USB cable and it would charge the battery, or you could plug a custom cable between the PCB and the MiniProg3 programmer to both provide power and program the PSoC.
 
-{{% note %}}
+{{% aside type="note" %}}
 If you want to use all 5 connections (+ shield, so actually 6!) on USB connections, you have to make your own USB cable up, as in standard USB cables the ID pin (pin 4), is always terminated in the connector and there is no wire for it. Although they are not common, you can buy USB plugs (the male connector) from electronic component suppliers, such as the USB micro type B plug shown below (from [Element14, part number 1355758](http://nz.element14.com/molex/47014-0008/mini-usb-type-b-plug-assembly/dp/1355758)).
-{{% /note %}}
+{{% /aside %}}
 
 {{% figure src="molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="A photo of the Molex mini USB type B plug. Image from http://nz.element14.com/molex/47014-0008/mini-usb-type-b-plug-assembly/dp/1355758."  width="320px" %}}
 

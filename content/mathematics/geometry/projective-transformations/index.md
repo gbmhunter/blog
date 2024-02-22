@@ -46,9 +46,9 @@ The above projection algorithm can be used to perform "quad-to-quad" projection 
 
 **Quadrilateral restrictions: No three of the four points in the quadrilateral can be collinear (i.e. lie on the same line).** That is the same as saying that the quadrilateral must have four distinct edges.
 
-{{% note %}}
+{{% aside type="note" %}}
 If you learn better from example, see the Worked Example section below.
-{{% /note %}}
+{{% /aside %}}
 
 The order in which you define the four vertices is not important. However, I define them in counter-clockwise order as this seem to be a common convention in industry.
 

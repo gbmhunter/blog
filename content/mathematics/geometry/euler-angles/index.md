@@ -12,9 +12,9 @@ type: page
 
 Euler angles is a way of describing the rotation in 3D space using three separate rotations around an axes.
 
-{{% note %}}
+{{% aside type="note" %}}
 Euler's theorem states that the rotation of a rigid body can be described by a single rotation about a single axis.
-{{% /note %}}
+{{% /aside %}}
 
 
 ## Syntax

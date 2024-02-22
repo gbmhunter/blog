@@ -271,9 +271,9 @@ Here is a photo of the completed daughter board:
 
 ## The Software
 
-{{% note %}}
+{{% aside type="note" %}}
 All software for the Columbus radio project can be found on GitHub at [https://github.com/gbmhunter/ColumbusRadio](https://github.com/gbmhunter/ColumbusRadio).
-{{% /note %}}
+{{% /aside %}}
 
 [Volumio](http://volumio.org/) was easy to install. The Volumio v1.51 (the most recent as of 2014-12-29) image was downloaded and then written to a SD card. When the RaspberryPi is booted with this SD card and plugged into a router with an ethernet cable, you should be able to visit the Volumio WebUI by navigating to volumio.local/ on your computer's web browser. At this point I changed the name of the 
 

@@ -201,9 +201,9 @@ The receiver is always enabled (RE* pin connected to ground) so that the bus sta
 
 The modification to RS-485 essentially allows you to operate a multi-master (multi-point) configuration. 
 
-{{% note %}}
+{{% aside type="note" %}}
 This configuration means you will no longer be RS-485 compliant.
-{{% /note %}}
+{{% /aside %}}
 
 ## References
 

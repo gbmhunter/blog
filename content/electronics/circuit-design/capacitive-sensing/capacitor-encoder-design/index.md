@@ -14,9 +14,9 @@ This page describes how to design a capacitor encoder with just two PCBs with cl
 
 ## Terminology
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This is my terminology, and may not be consistent with other designs (as far as I'm aware, there is no industry standard).
-{{% /warning %}}
+{{% /aside %}}
 
 * Encoders: A encoder is a complete system which can be used to measure a position. It may have one (relative) or more (two for absolute) **tracks**.
 * Tracks: A sequence of capacitance pads and tracks used for measuring the position of an object. One or more of these make up a complete **encoder**. A track contains many **channels**.
@@ -131,9 +131,9 @@ Correlation is used to determine the position of the passive PCB relative to the
 
 The exact correlation used is called Pearson's linear correlation. The code below shows how the correlation coefficient is calculated between two arrays of the same size. 
 
-{{% note %}}
+{{% aside type="note" %}}
 Note that the following example uses doubles and math operations such as `pow()` and `sqrt()`, which on some embedded systems (especially 8-bit ones) may slow down the processor too much. These doubles can be converted to integers with careful consideration about scaling and overflow.
-{{% /note %}}
+{{% /aside %}}
 
 ```c
 //! @brief   Calculates the correlation coefficient

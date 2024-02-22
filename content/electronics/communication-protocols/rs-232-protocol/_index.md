@@ -60,9 +60,9 @@ The following tables lists all of the flow control signals (as well as the data 
 | Common Ground (GND) | n/a | The common ground for all signals. | 7 | 5 |
 | Protective Ground (PG) | n/a | The protective ground. This is usually just connected up to the common ground on the PCB. | 1 | n/a |
 
-{{% warning %}}
+{{% aside type="warning" %}}
 WARNING: There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
-{{% /warning %}}
+{{% /aside %}}
 
 > Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
 

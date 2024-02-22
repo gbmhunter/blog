@@ -33,9 +33,9 @@ An example sinusoidal where \( f(t) = 2\sin(2t + \frac{\pi}{4}) \) is shown belo
 
 {{% figure src="examples-of-basic-sinusoidal-signals.png" width="700px" %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 \(\sin()\) in the above equation may be replaced by \(\cos()\), which just shifts everything by \(\frac{\pi}{2}\) (\( \cos(x) = \sin(x + \frac{\pi}{2})  \)). It is still called a sinusoidal signal.
-{{% /note %}}
+{{% /aside %}}
 
 \(A\) controls the amplitude of the signal. A negative number will invert the signal. A value of \(A = 1\) will give an amplitude of \(1\). 
 

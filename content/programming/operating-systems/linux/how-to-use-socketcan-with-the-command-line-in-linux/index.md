@@ -44,9 +44,9 @@ First off, you want to print all the available ip interfaces and see if you have
 
 The last interface listed is `can0`. This is a SocketCAN interface!
 
-{{% note %}}
+{{% aside type="note" %}}
 The above command was run on Ubuntu 17.04 64-bit, running on VMware Workstation with a PCAN-USB dongle connected.
-{{% /note %}}
+{{% /aside %}}
 
 ## Print SocketCAN Info
 
@@ -85,9 +85,9 @@ Before we can enable the SocketCAN interface, we need to configure it:
 ~$ sudo ip link set can0 type can bitrate 500000
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The above command only works for interfaces that already exist (such as a physical `can0` that has been created when a CAN-to-USB dongle was connected). For virtual CAN interfaces, you must create the interface with a slightly different command:
-{{% /warning %}}
+{{% /aside %}}
 
 ```sh    
 ~$ sudo modprobe vcan

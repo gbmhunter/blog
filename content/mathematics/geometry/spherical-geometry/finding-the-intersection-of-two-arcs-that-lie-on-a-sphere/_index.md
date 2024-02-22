@@ -109,7 +109,7 @@ This test has to be repeated between potential intersecting point 1 and arc 2. I
 The same process has to be applied to potential intersecting point 2 (remember, normalizing the line of intersection between the two planes gives us TWO potential points of intersection).
 
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 Let's define two arcs \(a1\) and \(a2\) using two points each in geodetic (lat/lon) form (latitude and longitude are in degrees):
 
@@ -130,9 +130,9 @@ $$\begin{align}
            &= \pAOneStart \\
 \end{align}$$
 
-{{% note %}}
+{{% aside type="note" %}}
 For simplicity, we are working on a unit sphere. If we were not (e.g. working on the Earth's surface, when converting to spherical coordinates we'd have to multiply each x, y and z component by the radius). This of course pretending the Earth is a sphere, which isn't perfect -- but better than thinking it's flat. The other option is to keep working on the unit sphere and scale the intersection point at the end.
-{{% /note %}}
+{{% /aside %}}
 
 And do the same for the other three points:
 
@@ -223,7 +223,7 @@ $$\begin{align}
 
 **This equality also holds true**, \( \b{I_2} \) also lies on the second arc! Therefore we know that the point \( \b{I_2} = \iTwo \) is a valid intersection point between the two arcs. Problem solved!
 
-</div>
+{{% /aside %}}
 
 ## External Resources
 

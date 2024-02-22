@@ -75,9 +75,9 @@ SET_BITS(aRegister, 0, 3, 0b011);
 // aRegister = 0b00101011;
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 The above `BIT_MASK` and `SET_BITS` macros only work for variables up to `MAX_BIT_FIELD_WIDTH_BITS` wide!
-{{% /note %}}
+{{% /aside %}}
 
 ## Use In The Industry
 

@@ -97,9 +97,9 @@ Long Option: n/a
 
 Compress data while doing transfer. Some files cannot be compressed, which includes the following extensions: `gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg`. 
 
-{{% warning %}}
+{{% aside type="warning" %}}
 When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweighs the slightly faster transfer time.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Popular Use Cases
 

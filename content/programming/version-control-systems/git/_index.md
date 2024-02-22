@@ -41,9 +41,9 @@ If you don't want to modify the commit message, pass the `--no-edit` flag:
 $ git commit --amend --no-edit
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Amending a commit modifies the git history. You should amend commits on private (local) branches, and never on public branches. Amending commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
-{{% /warning %}}
+{{% /aside %}}
 
 If you are pushing a branch with an amended commit, you may have to use the `-f` (force) flag if the remote already has a copy of the commit you modified.
 
@@ -65,9 +65,9 @@ $ git commit --fixup a4b5f
 
 When using `--fixup`, you do not specify a commit message. **The commit message is created for you**, and will start with `!fixup`, followed by a space and then the message of the commit the fixup points to.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Just like `--amend`, `--fixup` will also **modifies the git history** (once you rebase). You should `fixup` commits on private (local) branches, and never on public branches. Fixing up commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
-{{% /warning %}}
+{{% /aside %}}
 
 `--fixup` behaves slightly different to `--amend`, one of the main differences is that you can rewrite any commit in the current history, not just the last one as you can with `--amend`. `--fixup` is a great tool for keeping your git history clean when making small bug fixes and improvements to already committed features on a development branch. This is best shown with an example:
 
@@ -114,9 +114,9 @@ git log --stat
 
 `git reflog`, although sounding much like `git log`, behaves very differently. The **`reflog` is actually a very special branch that records the position of `HEAD` (i.e. auto-commits every time `HEAD` changes) for the last 30 days (by default)**. It is a local branch that is not shared with remotes, so cloning will not preserve a `reflog`.
 
-{{% note %}}
+{{% aside type="note" %}}
 Think of `git reflog` as the undo history of your repo.
-{{% /note %}}
+{{% /aside %}}
 
 The purpose of `git reflog` is to provide a fail-safe incase you do a `git` operation that would otherwise wipe your data. `git reflog` allows you to:
 

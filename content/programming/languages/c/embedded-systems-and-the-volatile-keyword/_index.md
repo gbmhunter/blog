@@ -35,9 +35,9 @@ volatile uint8_t * ptr_to_register;
 * Variables which are read/written to from interrupts and also accessed outside the interrupt. If you forgot the `volatile` the compiler cannot set the code path that calls the interrupt (because interrupts are called asynchronously) and thus may assume nothing else touches the variable and cache the value in a register (or optimize out the read/write completely).
 * Memory addresses which point to hardware registers in microcontrollers (memory mapped registers). These hardware registers are liable to be changed at any time by the hardware (e.g. a bit in a UART peripheral register which indicates when there are received bytes available for reading), so the compiler cannot assume it's only changed when the code writes to it.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Any time a variable may be changed outside the flow of control of a piece of code accessing it, the variable should be declared `volatile`.
-{{% /tip %}}
+{{% /aside %}}
 
 What `volatile` **should not be** used for:
 
@@ -105,9 +105,9 @@ void memcpy_to_volatile(volatile char * dest, char * src, uint32_t num_bytes) {
 
 ## Casting Away volatile
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Casting away `volatile` on a variable can cause undefined behaviour.
-{{% /warning %}}
+{{% /aside %}}
 
 In C++, you can use `const_cast` to cast away `volatile` (confusingly, it's called `const_cast`, but it actually casts away both `const` and `volatile`).
 

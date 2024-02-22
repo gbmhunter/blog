@@ -17,9 +17,9 @@ The following schematic shows the four common resistor network arrangements. Not
 
 {{% figure src="delta-wye-pi-t-networks.png" width="800px" caption="Schematic showing the four common resistor network arrangements: Wye, Delta, Pi and Tee." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 The Delta and Pi network is the same configuration, just drawn differently (as shown in the above diagram)! Same goes to the Wye and Tee.
-{{% /note %}}
+{{% /aside %}}
 
 With a few equations, you can transform a Delta network into a Wye network, and vise versa. These transformed networks are equivalent, i.e. from an outside observer who can only touch and measure the terminals \(A\), \(B\) and \(C\), they wouldn't be able to tell the difference. These transformations are useful for a number of reasons.
 

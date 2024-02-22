@@ -28,9 +28,9 @@ where:<br/>
 \(\omega\) is the angular frequency, in units \(rads^{-1}\). Remember that \(\omega = 2{\pi}f\)<br/>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 Angular frequency \(\omega\) \([rads^{-1}]\) is used rather than standard frequency \(f\) \([Hz]\) just to keep the equations tidier, but it is trivial to convert from one to the other!
-{{% /note %}}
+{{% /aside %}}
 
 Because we normally only care about what happens to steady-state sinusoidal signals (i.e. transients have all died away), **we can simplify the equation by setting \(\sigma = 0\), as \(\sigma\) encodes the exponentially increasing/decaying components**. This is essentially simplifying the general Laplace transform to the simpler Fourier transform, and thus \(s\) becomes:
 
@@ -83,7 +83,7 @@ To calculate the magnitude of the numerator and denominator, you generally:
 1. Now that we've grouped the real and imaginary components, we can use the rule \(| a + jb | = \sqrt{a^2 + b^2}\). This removes the imaginary component from the equation.
 1. Simplify as needed.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Sometimes you'll see the equation for calculating the magnitude of an complex number as:
 
 $$\begin{align}
@@ -91,7 +91,7 @@ $$\begin{align}
 \end{align}$$
 
 This is equivalent to \(| a + jb | = \sqrt{a^2 + b^2}\), but in my opinion it takes more simplifying, so I prefer the simple square-root-of-squares approach (which is also intuitive to remember). Remember that the magnitude is the distance of the complex number from the origin when drawn on the complex plane, so you can use Pythagoras' theorem.
-{{% /tip %}}
+{{% /aside %}}
 
 The phase response \(\angle H(s)\) is found by finding the angle of the complex number from the positive x-axis, as shown in \(Eq.\ \ref{eq:xfer-fn-phase}\).
 
@@ -107,9 +107,9 @@ where:<br/>
 \(\Re\{H(s)\}\) is the real part of \(H(s)\)<br/>
 </p>
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Using \(tan^{-1}\) (\(\arctan\)) to calculate the angle can sometimes be wrong, as this function throws away information about sign. You have to be aware of what quadrant of the Argand diagram you are in and compensate appropriately. Or stick to using an `atan2(y, x)` function if your calculator/programming language supports it, as this does all the hard work for you.
-{{% /warning %}}
+{{% /aside %}}
 
 Rather than finding the imaginary and real parts of the entire transfer function to calculate the phase, it can be easier to work out the real/imaginary parts for the numerator/denominator separately:
 
@@ -125,9 +125,9 @@ $$\begin{align}
 
 Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency (as the numerator goes to 0, so does the entire function). A poles is a frequency where the system has infinite response (at least mathematically, as the denominator goes to 0, the function goes to infinity). **Poles in the right-half of the Argand diagram (which have a positive real component) cause the system to diverge towards infinity, and your system will be unstable**.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 A notable exception to the rule off "all poles must have a negative real component" is for oscillators. You want them to have some positive feedback, that's what makes them oscillate by themselves!
-{{% /tip %}}
+{{% /aside %}}
 
 The zeroes are the roots of the numerator polynomial, and the poles are the roots of the denominator polynomial. For this reason they are also referred to generally as _roots_.
 
@@ -223,9 +223,9 @@ $$\begin{align}
                   &= -arctan\left(j\omega RC\right) \\
 \end{align}$$
 
-{{% tip %}}
+{{% aside type="tip" %}}
 We can safely reduce \(Arg\) to \(arctan\) because we know that \(1 + j\omega RC\) will be in the 1st quadrant of the Argand diagram for all positive real values of \(\omega\).
-{{% /tip %}}
+{{% /aside %}}
 
 {{% figure src="low-pass-rc-filter-phase.png" width="600px" caption="The phase response of the the low-pass RC filter, found by plotting \(Eq.\ \ref{eq:phase-response-lp-rc-filter}\)" %}}
 

@@ -9,9 +9,9 @@ title: "Standard Deviation"
 type: "page"
 ---
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This page is a work-in-progress.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Overview
 

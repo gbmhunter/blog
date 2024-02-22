@@ -39,6 +39,6 @@ $ find . -maxdepth 1 -name "*.jpg" -delete
 
 `-maxdepth 1` is required to prevent `find` from recursively going into subdirectories and deleting files from in there.
 
-{{% note %}}
+{{% aside type="note" %}}
 Instead of using the `delete` option, you could use `find` in combination with piping and `xargs`. However, this is likely to be less performant than `-delete` as you are passing data between multiple processes. It is also more to type!
-{{% /note %}}
+{{% /aside %}}

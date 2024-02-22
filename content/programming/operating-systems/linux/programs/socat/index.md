@@ -33,9 +33,9 @@ A little explanation: The `-d -d` instructs socat to print fatal, error and warn
 
 Once you type this and press enter, socat will report back with the COM ports it decided to use. The program will not return (the terminal will hang) until you wish to cancel the link (press `Ctrl-C`).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 These virtual serial ports do not fully emulate a hardware serial port. Things like baud rate, hardware flow signals e.t.c are not taken into account.
-{{% /warning %}}
+{{% /aside %}}
 
 If you get a `bash: /dev/pts/x: Permission denied error`, run the following command:
 

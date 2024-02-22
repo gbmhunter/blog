@@ -50,9 +50,9 @@ Then the larger complexity class becomes dominant and we drop the lower class. F
 
 The following complexity classes are described from best to worst.
 
-{{% note %}}
+{{% aside type="note" %}}
 All Big-O complexities examples below are assumed to be average-case, unless specified otherwise. 
-{{% /note %}}
+{{% /aside %}}
 
 ### Constant Time
 
@@ -80,9 +80,9 @@ print('hello')
 * Push/pop of a stack.
 * Inserting a value at the end of an array (note, this is _amortized_ \(\mathcal{O}(1)\) complexity)
 
-{{% note %}}
+{{% aside type="note" %}}
 Even if an algorithm takes a long time to calculate something, e.g. computing a hash, as long as this operation takes the same amount of time, no matter if there are 3 elements or 9000, it is still considered \( \mathcal{O}(1) \).
-{{% /note %}}
+{{% /aside %}}
 
 ### log(n) Time
 
@@ -229,6 +229,6 @@ In formal terms:
 
 For example, take the example of adding a value to an array. The array starts of being able to hold one value, and it's size is doubled every time we run out of space. When we add a value, it normally doesn't need resizing, which is \(\mathcal{O}(1)\). But when adding the 1st, 2nd, 4th, 8th, 16th, e.t.c value, we need to resize the array. This takes \(\mathcal{O}(n)\). The probability of having to resize the array is \( \frac{1}{n} \). This gives an amortized complexity of \( \frac{\mathcal{O}(n)}{n} = \mathcal{O}(1) \).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Amortized complexity is not the same thing as average complexity.
-{{% /warning %}}
+{{% /aside %}}

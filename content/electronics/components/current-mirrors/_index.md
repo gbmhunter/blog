@@ -26,9 +26,9 @@ You can make a basic current mirror from nothing but two [bi-polar transistors (
 
 Both \(Q_1\) and \(Q_2\) should be identical transistors at the same temperature. The clever trick in this circuit is the base of \(Q_1\) which is connected to its collector. The BJT will adjust it's base-emitter voltage \(V_{BE}\) to pass the input current. This  \(V_{BE}\) is then applied to the base of \(Q_2\). Because it is the same type of transistor as \(Q_2\), this \(V_{BE}\) should cause the same base current, and the same \(\beta\) will produce the same collector current through \(Q_2\).  
 
-{{% note %}}
+{{% aside type="note" %}}
 \(R_{IN}\) is not strictly needed (it is not part of the current mirror), but added here so you can visualize connecting a voltage source to the input.
-{{% /note %}}
+{{% /aside %}}
 
 Below is a circuit simulation of this basic BJT current mirror. 4.37mA is provided to the input leg of the current mirror, and the current mirror sinks 4.28mA from the output. Close enough for many applications!
 

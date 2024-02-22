@@ -59,9 +59,9 @@ Altium allows close integration between the mechanical and electrical design wit
 
 These conform to the default layers that Altium's IPC Footprint Wizard automatically uses for certain parts of a component. Some of the layers are paired, so that Altium automatically switches the objects on these layers when the component is changed from top layer to bottom layer and vise versa.
 
-{{% note %}}
+{{% aside type="note" %}}
 Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanical 11/12 (the dimension layers) are not chosen by Altium , but rather just personal preferences.
-{{% /note %}}
+{{% /aside %}}
 
 <table>
   <thead>
@@ -168,9 +168,9 @@ e.g.
 Resistor, 0402, 2.70k, 1%, 63mW
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 The Omega symbol (aka the Ohm symbol) is not supported in the PCB editor as part of the component description. You can use the symbol `R` instead.
-{{% /note %}}
+{{% /aside %}}
 
 ## Quickly Adding Vias To Nets
 
@@ -274,9 +274,9 @@ Save and exit the Rules dialogue, and rebuild your polygons. Done! You should no
 
 If all the pads that you are wanting to direct connect are located in the same area, you may want to use a PCB "room" object to envelop all the pads instead of adding each pad to a pad class. Another disadvantage of the pad class trick is that this direct connection information will be **lost if you change the designator** (or worse still, will be assigned to completely wrong pads who just happen to have the same name as the old ones).
 
-{{% note %}}
+{{% aside type="note" %}}
 Direct connect rules can also be added to specific pins on the schematic, through the pin editor menu for a selected component. However, as of Altium v15.1, this feature seems buggy, and causes basic (as vital) features like _Compile_ and _Update Changes To PCB_ to crash from that point on.
-{{% /note %}}
+{{% /aside %}}
 
 ## Opening Internet Links In External Web Browser
 

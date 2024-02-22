@@ -178,9 +178,9 @@ r_{\pi} &= \left. \frac{v_b}{i_{be}}\right|_{v_{ce}=0} \nonumber \\
         &= \frac{V_T}{I_B} \\
 \end{align}$$
 
-{{% note %}}
+{{% aside type="note" %}}
 Why do we specify "as looking into the base" when specifying the resistance between base and emitter? Surely it's the same "as looking into the emitter"? For a two terminal component such as a basic resistor, this would be true. But for a three terminal component such as a BJT, the current going into the base is not the same as the current coming out of the emitter. So when calculating the apparent resistance, even though the voltage between base-and-emitter is the same, the current depends on whether you are "looking into" the base or the emitter.
-{{% /note %}}
+{{% /aside %}}
 
 By using \(h_{fe} = \frac{I_C}{I_B}\) and \(Eq. \ref{eq:gm-ic-vt}\) we can substitute into \(Eq. \ref{eq:rpi-vt-ib}\) to re-write \(r_{\pi}\):
 
@@ -296,7 +296,7 @@ A resistor divider can simple way to drive the base of an NPN current-sink if yo
 
 {{% figure src="current-source-npn-voltage-divider-base.png" width="500px" caption="A NPN BJT current-sink using a resistor divider to drive the base." %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Design Procedure:**
 
@@ -319,7 +319,7 @@ A resistor divider can simple way to drive the base of an NPN current-sink if yo
     \end{align}$$
     The above equation holds true so this design should work as a good current sink ✅
 
-</div>
+{{% /aside %}}
 
 ### Current Mirrors
 
@@ -327,7 +327,7 @@ A _current mirror_ is a current-copying circuit in where one the current in one 
 
 {{% figure src="current-mirror-pnp.png" width="400px" caption="A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current." %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Design Procedure:**
 
@@ -348,7 +348,7 @@ A _current mirror_ is a current-copying circuit in where one the current in one 
 
 1. All done!
 
-</div>
+{{% /aside %}}
 
 For more info, see the [Current Mirrors page](/electronics/components/current-mirrors/).
 

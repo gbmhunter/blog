@@ -162,9 +162,9 @@ The SOT-23-8 has a different pitch to the other packages in the family of 0.65mm
 
 ### Recommended Land Pattern
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23-5`, and `SOT-23-6` which all have a pitch of 0.95mm. This is to fit the 4 pins on each side, the original `SOT-23` design (which is a synonym for `SOT-23-3`) only had room for a maximum of 3 pins per side.
-{{% /warning %}}
+{{% /aside %}}
 
 {{% figure src="sot-23-8-component-package-recommended-footprint-diodes-incorporated.png" width="1000px" caption="A recommended footprint for the SOT-23-8 component package. Image from http://www.diodes.com/."  %}}
 

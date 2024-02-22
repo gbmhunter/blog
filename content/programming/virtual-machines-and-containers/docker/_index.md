@@ -142,9 +142,9 @@ The `-v` flag is used in conjunction with `docker run` to start a new container 
 docker run -v /host/directory:/container/directory <image_name> <cmd>
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 The path to the host directory must be absolute, `docker run` does not allow you to specify a relative path.
-{{% /note %}}
+{{% /aside %}}
 
 ### To Start A New Bash Session Within A Running Container
 
@@ -154,9 +154,9 @@ Enter this on the a shell session running in the host computer to enter a shell 
 $ docker exec -it <container_id> bash
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 This assumes you already have a container running!
-{{% /note %}}
+{{% /aside %}}
 
 ### To Exit A Container Without Stopping It
 

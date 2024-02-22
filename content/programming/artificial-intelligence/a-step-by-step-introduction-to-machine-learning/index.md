@@ -95,11 +95,11 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(iris_dataset['data'], iris_dataset['target'], test_size=0.2)
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 It is important to note the difference between the training and test set created here, and the training and test sets created as part of the `StratifiedKFold`. The test set created here will not be used again until we have a trained model, while as part of training, we further split the training set here into more training and tests sets.
 
 This dual purpose for a `test` set can be quite confusing for a newcomer.
-{{% /note %}}
+{{% /aside %}}
 
 
 ## Select A Model

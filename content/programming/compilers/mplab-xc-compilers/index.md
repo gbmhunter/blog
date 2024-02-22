@@ -30,9 +30,9 @@ Delays are provided by the compiler/library through the `__delay_us()` and `__de
 
 {{% figure src="built-in-pic-microcontroller-delay-functions.png" width="719px" caption="A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h."  %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 You have to manually define the macro `_XTAL_FREQ` correctly before you can use these delays.
-{{% /note %}}
+{{% /aside %}}
 
 ## Variadic Macros
 

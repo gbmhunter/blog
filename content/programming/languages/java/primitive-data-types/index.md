@@ -12,9 +12,9 @@ Java has 8 primitive data types. It does not support unsigned primitive types (a
 
 You cannot use the new keyword with primitive data types as they are not considered objects.
 
-{{% note %}}
+{{% aside type="note" %}}
 The `String` class, although it has special support by the language, is not a primitive data type.
-{{% /note %}}
+{{% /aside %}}
 
 ## byte
 

@@ -48,9 +48,9 @@ Another popular way of protecting an IO line from ESD is to connect a [TVS diode
 
 The above schematic is a unidirectional TVS diode, which will clamp a positive ESD event as the voltage starts to rise above \(+3.3V\), and will clamp a negative-going ESD event when the voltage gets to around \({-}0.7V\) and forward biases the diode.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 TVS diodes do not have a sharp turn-on point, and the voltage can rise significantly above the standoff voltage.
-{{% /warning %}}
+{{% /aside %}}
 
 Advantages:
 
@@ -93,9 +93,9 @@ Some ESD diode arrays incorporate steering diodes and a TVS diode to do just thi
 {{% figure src="littelfuse-sp3012-06utg-esd-array-usb30-application-example.png" width="300px" caption="Using the Littelfuse SP3012-06UTG to protect data lines on USB3.0[^bib-littelfuse-sp3012-ds]." %}}
 </div>
 
-{{% note %}}
+{{% aside type="note" %}}
 The SP3012-06UTG has a Zener diode instead of a TVS diode, but the principle is still the same. "Zeners" typically offer lower max. power dissipation levels than diodes labelled as "TVS diodes".
-{{% /note %}}
+{{% /aside %}}
 
 Another example is the Littelfuse `SRDA3.3` steering diode array IC. It is designed to protect +3.3V IO lines and is rated to \(\pm 30kV\) contact, \(\pm 30kV\) air via IEC61000-4-2[^bib-littelfuse-srda33-ds]. It's functional block diagram is:
 

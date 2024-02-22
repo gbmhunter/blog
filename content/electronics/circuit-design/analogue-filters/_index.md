@@ -279,9 +279,9 @@ where:<br/>
 \(f_c\) = -3dB cut-off frequency, in \(Hz\)<br/>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 Mentioned is total capacitance or total inductance, as in the case of the π-filter each capacitor is C/2, and in the case of the t-filter, each inductor is L/2.
-{{% /note %}}
+{{% /aside %}}
 
 The typical value to use for the characteristic impedance is \( z_o = 50 \Omega \). Use this if you are unsure on what to set it to. This value is only important if your are matching two RF circuits.
 

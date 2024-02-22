@@ -85,9 +85,9 @@ $ vim --version | grep clipboard
 
 The `-clipboard` indicates that this feature was not includes. What you want to see is `+clipboard`!
 
-{{% note %}}
+{{% aside type="note" %}}
 Most VIM extensions for IDEs (including the one for IntelliJ and VS Code) support copying to the system clipboard.
-{{% /note %}}
+{{% /aside %}}
 
 ## Movement
 

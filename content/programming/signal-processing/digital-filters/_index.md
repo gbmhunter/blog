@@ -87,9 +87,9 @@ H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
      &= \frac{b_0 + b_1 z^{-1} + b_2 z^{-2} + ... + b_m z^{-m}} {a_0 + a_1 z^{-1} + a_2 z^{-2} + ... + a_n z^{-n}} \\
 \end{align}$$
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The order of these coefficients to `freqz()` is the reverse of what is standard in most places.
-{{% /warning %}}
+{{% /aside %}}
 
 ## References
 

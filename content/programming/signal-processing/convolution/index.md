@@ -28,9 +28,9 @@ $$ (f \ast g)(t) \triangleq \int_{-\infty}^{\infty} f(\tau)\ g(t - \tau) d \tau 
   \(\ast\) is used to denote the convolution of signals \(f(t)\) and \(g(t)\).
 </p>
 
-{{% warning %}}
+{{% aside type="warning" %}}
 It is important to notice the distinction between \(t\) (standard letter t) and \(\tau\) (lower-case tau). t is a constant (i.e. we are going to produce an equation which evaluates the convolution at time \(t\), while \(\tau\) is the variable which you are integrating with (it is introduced by the definition of convolution). \(\tau\) will disappear from the convolution function when the limits are substituted into the integrated function (a _definite integral_), while \(t\) will remain, allowing us to calculate the value of the convolution at any time \(t\).
-{{% /warning %}}
+{{% /aside %}}
 
 The result will be another function which varies with time.
 

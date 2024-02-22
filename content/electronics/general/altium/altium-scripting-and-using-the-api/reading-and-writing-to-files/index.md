@@ -27,9 +27,9 @@ myIniFile = TIniFile.Create(fileName)
 
 where `fileName` is an absolute path string to the file you wish to create (e.g. `C:\Users\MyUser\test.ini`).
 
-{{% note %}}
+{{% aside type="note" %}}
 "Create" is a little misleading. If the file already exists, this function performs more like "open for editing". It **does not** delete any information already present in the INI file.
-{{% /note %}}
+{{% /aside %}}
 
 ## Reading And Writing To INI Files
 

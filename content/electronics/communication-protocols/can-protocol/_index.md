@@ -107,9 +107,9 @@ This pin layout is also used for other CAN standards such as CANopen.
 
 The drivers to the CAN line(s) are open-drain. This means that if a node writes a 0 (dominant), it will over-write a 1 (recessive). This is also called a _wired AND_ configuration.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 _Wired AND_ is a good way to allow physical arbitration to take place when multiple nodes to attempt to communicate at the same time. The [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/) is another protocol that uses this technique.
-{{% /tip %}}
+{{% /aside %}}
 
 * Both nodes starts to transmit, but each message has a different message ID. Both nodes also monitor the state of the bus.
 * At some point in time, because of the different message IDs, one node will try to transmit a 0 (dominant) while the other will try to transmit a 1 (recessive).
@@ -118,9 +118,9 @@ _Wired AND_ is a good way to allow physical arbitration to take place when multi
 
 After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Car thieves have been cleverly using a special transmitter that also drives to the recessive level to override other messages on a vehicles CAN bus network, which has allowed them to break in and steal cars by accessing the CAN bus from the front headlights[^bib-ken-tindell-keyless-car-theft]. See [CAN Injection: Keyless Car Theft](https://kentindell.github.io/2023/04/03/can-injection/) for more info.
-{{% /tip %}}
+{{% /aside %}}
 
 The below image shows arbitration happening with a real-world scope capture, by showing the changing dominant bus voltage as driving transceivers lose arbitration and "drop" off the bus. 
 

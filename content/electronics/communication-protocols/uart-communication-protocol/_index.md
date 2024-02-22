@@ -119,9 +119,9 @@ You may notice when sending lots of characters across a UART that some appear to
 
 Synchronization problems can arise if data is sent continuously (i.e. with no idle time between blocks of data) from a UART transmitter and the receiver boots up in the middle of the transmission (or otherwise gets reset or loses where it thinks it was). In this case, the receiver may not be able to correctly distinguish the start bit from any of the other bits, as the start and end bits have the same bit width as the data. The receiver may produce incorrect data or signal framing errors until there is enough idle time to "reset" it's internal state and correctly wait for the next start bit.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Because of these synchronization issues, it's advisable to add occasional pauses (idle time) between blocks of data if they do not happen naturally. 
-{{% /warning %}}
+{{% /aside %}}
 
 ## Break Signal
 
@@ -137,9 +137,9 @@ Do you need a higher-level communication protocol that works over a UART connect
 
 When using UARTs on microcontrollers, be careful about _backfeeding_ (a.k.a _backpowering_) devices through the `TX` line! If a microcontroller loses it's power rails during normal operation, the `TX` line connected to the microcontrollers `RX` can keep it's `VCC` afloat by conducting through the internal ESD diodes (remember that in the idle state, the TX line is driven high).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 A common scenario for this to occur is debug UARTs, in where an FTDI cable or similar is connected to a UART port on a microcontroller for debugging. During debugging you disconnect power from the microcontroller in an attempt to reset it, only to discover it's being kept alive by the backfeeding through the FTDI's TX pin.
-{{% /warning %}}
+{{% /aside %}}
 
 [Voltage-level translator ICs](/electronics/components/voltage-level-translation/) are one way to fix this problem. You have make sure they are of the type which make the I/O pins \(A\) and \(B\) high-impedance when there is \(0V\) on one or more of the \(V_{CC}\) pins. The below image shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART:
 
@@ -153,9 +153,9 @@ Spurious garbage can be sent along along a microcontrollers UART TX line when th
 
 {{% figure src="pull-up-on-uart-tx-line.png" width="500" caption="A 10kΩ pull-up resistor added to the UART TX line (TX w.r.t to the MCU) from a MCU to prevent spurious data being sent when the MCU resets or otherwise disables the UART peripheral via firmware." %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Of course, you might have to apply this to the RX line also, as this is a TX line from the perspective of the driver on the other end of the bus. It all depends on whether or not the driver is expected to reset under normal operation and whether or not you can tolerate the occasional bad byte!
-{{% /tip %}}
+{{% /aside %}}
 
 ## Terminal Programs
 

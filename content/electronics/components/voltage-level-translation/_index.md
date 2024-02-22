@@ -17,9 +17,9 @@ Voltage-level translators (and hence, voltage-level translation) refers to the c
 
 Voltage-level translators can also be used to prevent _backfeeding_ (whether or not the two sides of the circuitry are at different voltage levels).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Do not confuse voltage-level translation with [voltage converters (e.g. linear regulators or SMPS)](/electronics/components/power-regulators/) which are designed to provide power.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Topologies
 

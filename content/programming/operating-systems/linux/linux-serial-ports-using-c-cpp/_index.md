@@ -33,9 +33,9 @@ Common names are:
 
 ## Basic Setup In C
 
-{{% note %}}
+{{% aside type="note" %}}
 This code is also applicable to C++.
-{{% /note %}}
+{{% /aside %}}
 
 First we want to include a few things:
 
@@ -346,9 +346,9 @@ ioctl(serial_port, TCSETS2, &tty);
 
 Please read the comment above about `BOTHER`. Perhaps on your system this method will work!
 
-{{% note %}}
+{{% aside type="note" %}}
 Not all hardware will support all baud rates, so it is best to stick with one of the standard `BXXX` rates above if you have the option to do so. If you have no idea what the baud rate is and you are trying to communicate with a 3rd party system, try `B9600`, then `B57600` and then `B115200` as they are the most common rates.
-{{% /note %}}
+{{% /aside %}}
 
 ## Saving termios
 

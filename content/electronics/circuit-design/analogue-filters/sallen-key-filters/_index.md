@@ -40,9 +40,9 @@ The schematic for the unity-gain low-pass Sallen-Key filter is shown below (whic
 
 {{% figure src="low-pass-unity-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
-{{% /warning %}}
+{{% /aside %}}
 
 The generalized transfer function for a 2nd-order low-pass filter is[^bib-analog-devices-ch8-analog-filters] [^bib-gary-tuttle-second-order-filters]:
 
@@ -59,9 +59,9 @@ where:<br/>
 \(s = j\omega\)<br/>
 </p>
 
-{{% tip %}}
+{{% aside type="tip" %}}
 For any general 2nd-order filter, the characteristic frequency \(\omega_0\) is not necessarily equal to the cut-off frequency. Also, \(\frac{1}{Q}\) is sometimes written as \(\alpha\).
-{{% /tip %}}
+{{% /aside %}}
 
 Written in the same form as the general equation above, the transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
 
@@ -130,7 +130,7 @@ R &= \frac{1}{2\pi f_c C\sqrt{mn}} \\
 
 The process can be simplified even more, by setting \(n = 1\). This makes both capacitors equal.
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Design Example: Low-Pass K=5, Q=1 Sallen-Key Filter Using mn Ratios**
 
@@ -201,7 +201,7 @@ The simulated frequency and phase response for this circuit is shown below.
 
 We chose a \(Q\) above 0.707, so we expect some peaking in the gain response around cut-off.
 
-</div>
+{{% /aside %}}
 
 ### Tuning Based Design
 
@@ -223,13 +223,13 @@ $$\begin{align}
 C_1 \geq C_2 \frac{4b_1}{a_1^2}
 \end{align}$$
 
-{{% note %}}
+{{% aside type="note" %}}
 The choice of resistances affects the cut-off frequency, but the choice of capacitors does not.
-{{% /note %}}
+{{% /aside %}}
 
 These equations give you enough info to calculate all the resistances and capacitors for a Sallen-Key filter. See the design example below to show how you would go about it.
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Design Example: 2nd-Order Low-Pass Unity-Gain 3dB-Chebyshev Sallen-Key Filter**
 
@@ -284,7 +284,7 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
     {{% figure src="low-pass-sallen-key-chebyshev-3db/response.png" width="700px" caption="Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
 
-</div>
+{{% /aside %}}
 
 ### Frequency Limitations of the Low-Pass Sallen-Key Filter
 
@@ -383,9 +383,9 @@ $$\begin{align}
 k = 2\pi f_c C_1 \\
 \end{align}$$
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Make sure not to confuse this intermediary variable \(k\) with the gain \(K\).
-{{% /warning %}}
+{{% /aside %}}
 
 Find \(\alpha\), which by definition is the inverse of the quality factor:
 
@@ -401,7 +401,7 @@ R_2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \\
 \end{align}$$
 
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Design Example: High-Pass Sallen-Key Filter With fc=2kHz, Q=0.8, K=4**
 
@@ -452,7 +452,7 @@ Inputs:
     And the simulated bode plot:
     {{% figure src="high-pass-sallen-key-fc2khz-q1.5-k4/bode-plot.png" width="700px" caption="The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter." %}}
 
-</div>
+{{% /aside %}}
 
 ### Frequency Limitations of the High-Pass Sallen-Key Filter
 
@@ -462,9 +462,9 @@ At frequencies much higher than the cut-off \(f_c\), we can assume the two capac
 
 {{% figure src="high-pass-variable-gain-sallen-key-filter-freq-limit.png" width="500px" caption="Equivalent circuit for high frequency signals through the high-pass Sallen-Key filter. Both capacitors are considered shorts." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 Recognize this schematic? It's essentially a basic [non-inverting amplifier](/electronics/components/op-amps/#_non_inverting_amplifiers)! You can somewhat ignore \(R_1\) and \(R_2\) as they don't change the basic behaviour of the circuit.
-{{% /note %}}
+{{% /aside %}}
 
 If we assume a non-infinite open-loop gain \(A\) of the op-amp, the transfer function of this above circuit is:
 

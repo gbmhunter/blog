@@ -10,7 +10,7 @@ SCRIPT_DIR = Path(__file__).parent.resolve()
 
 def main():
     power_edit = PowerEdit()
-    power_edit.sim_run = True
+    power_edit.sim_run = False
 
     globPattern = str(SCRIPT_DIR) + '/../content/**/*index.md'
     files = power_edit.find_files(globPattern, recursive=True)
@@ -63,7 +63,7 @@ def main():
     for file in files:
         power_edit.find_replace_regex(file, r'{{% tip %}}(.*?){{% /tip %}}', replaceFnTip, multiline=True)
         power_edit.find_replace_regex(file, r'{{% note %}}(.*?){{% /note %}}', replaceFnNote, multiline=True)
-        power_edit.find_replace_regex(file, r'{{% warning %}}(.*?){{% /warning %}}', replaceFnNote, multiline=True)
+        power_edit.find_replace_regex(file, r'{{% warning %}}(.*?){{% /warning %}}', replaceFnWarning, multiline=True)
 
 if __name__ == '__main__':
     main()

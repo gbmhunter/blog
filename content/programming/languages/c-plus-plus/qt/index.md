@@ -167,9 +167,9 @@ int main() {
 
 GUI layout in Qt is done with both `QWidget` and `QLayout` objects. The GUI is based upon a hierarchy of `QWidget` objects. `Qwidget` objects can have multiple `QWidget`'s as children elements. You can create and assign a `QLayout` object to a `QWidget` object (using `my_widget->setLayout()`), and then the `QLayout` object will control the layout of the `QWidget`'s children.
 
-{{% note %}}
+{{% aside type="note" %}}
 `QLayout` objects cannot be assigned as children of a `QWidget` object. The `QWidget` objects are the only objects allowed in the GUI hierarchy tree, each `QLayout` must be assigned to a `QWidget`.
-{{% /note %}}
+{{% /aside %}}
 
 ### Layout Options
 

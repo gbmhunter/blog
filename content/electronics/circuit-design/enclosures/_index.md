@@ -15,9 +15,9 @@ Extruded aluminium enclosures consist of one piece of box-section aluminium for 
 
 {{% figure src="extruded-aluminium-enclosures-eurocard-pcb.jpg" width="300px" caption="Examples of extruded aluminium enclosures by Vero Technologies."  %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 Connectors/indicators typically have to come out from either end. Right-angled PCB mount connectors are the easy to use with this configuration (panel mount can also be used).
-{{% /note %}}
+{{% /aside %}}
 
 Hammond is a large manufacturer of this type of enclosure. See their page, [Extruded Aluminium Enclosures (Metal End Panels) (1455 Series)](http://www.hammondmfg.com/1455.htm).
 

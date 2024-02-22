@@ -54,6 +54,6 @@ which for the current user would just be:
 
 Note that this depends on the `username` and `dialout` group already existing (which is normally the case).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This new permission will not come into effect until the user has logged out and back in again.
-{{% /warning %}}
+{{% /aside %}}

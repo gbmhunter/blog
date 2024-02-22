@@ -22,9 +22,9 @@ Callbacks are functions which are passed to other functions (or modules, librari
 
 C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (it's a mixed bag, some embedded C++ environments I've used do support `<functional>`, others do not).
 
-{{% note %}}
+{{% aside type="note" %}}
 I have written an open-source C++ callback library called slotmachine-cpp, which you can download from [GitHub here](https://github.com/gbmhunter/slotmachine-cpp).
-{{% /note %}}
+{{% /aside %}}
 
 ## Terminology
 

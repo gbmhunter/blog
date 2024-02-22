@@ -110,9 +110,9 @@ flags:
 
 As shown above, it also supports automatic help! Although the shebang in the above example is `#!/bin/sh`, this can be changed to `#!/usr/bin/env bash` without any issues. 
 
-{{% warning %}}
+{{% aside type="warning" %}}
 If using bash, make sure that `set -e` is not active when `shflags` is sourced, otherwise your script will crash when sourcing, with no helpful error message displayed.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Refreshing The Current Working Directory After It Was Deleted And Recreated
 

@@ -43,9 +43,9 @@ $ sudo apt install scons
 
 * scons is installed on your system
 
-{{% note %}}
+{{% aside type="note" %}}
 The console commands assume a UNIX-style terminal, although the example should be easily doable on any OS supported by scons.
-{{% /note %}}
+{{% /aside %}}
 
 **Steps**
 

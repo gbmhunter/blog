@@ -10,9 +10,9 @@ type: page
 
 A Yocto build normally generated a confusing amount of files in the output build directory. This section aims to help you work out what all these files do!
 
-{{% note %}}
+{{% aside type="note" %}}
 Only important files are listed here, and some may be symlinks to the actual file (the symlink is listed below instead of the destination file because it's file name is easier to read and understand).
-{{% /note %}}
+{{% /aside %}}
 
 Example files are colored as they would appear with the `ls` command under Ubuntu. Normal files are in **white**. Symlinks are in **light blue**. Listed in alphabetical order.
 

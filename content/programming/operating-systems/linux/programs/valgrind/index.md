@@ -80,9 +80,9 @@ To run callgrind, use the following command:
 
 The order of the optional parameters to valgrind is important! Make sure `--tool=callgrind` comes BEFORE the path to your executable.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's `gprof` which in my experience, causes much less of a performance drop.
-{{% /warning %}}
+{{% /aside %}}
 
 This will generate a profile data file called `callgrind.out.<pid>` in the same folder as the exectuable. To display the results of the profiling:
 

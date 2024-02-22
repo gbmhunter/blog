@@ -26,9 +26,9 @@ There is a lot of debate on what constitutes a latch vs. a flip-flop. We will ad
 
 There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Latches and flip-flops can store information, but they are not typically used when one generally thinks of computer "memory", i.e. hard drives, solid-state drives or RAM. They use entirely different ways of storing information. Hard drives use magnetism to store non-volatile information, while solid-state drives and RAM use "floating gate" MOSFETs to store information.
-{{% /tip %}}
+{{% /aside %}}
 
 ## Latches
 
@@ -92,7 +92,7 @@ You can play with the interactive NAND-gate based SR latch below:
 
 {{% circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQkIBYrs0QchEHypUUUCmw4huVLlzwDsQ+YrHUELAO4yew5bt6E12wyC58zXMEMinZ5m1bhR7enlUIZxH1zq8+LhiQXMLGfmbKigFhJv7esQIh5i52OsGhvoIpoqbZWQaqERmJ2VHFBuVl-HYAMpHJCMTiuKFUEABmAIYANgDOdNR1VtwUzeaj7SDd-YNIdgCySkIiAnihq2LQmkv5CmuZ+1uaAB4UKIpcGBAI8uYYmSAooQDKLGcIRMJgtBbf2OYnqEAErvEAEYjCL7rch8SGhZ4gACKYLw2HIXAQQjwCCQmMhQkRKKAA" %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
 Let's simulate a NAND-based SR latch in Micro-Cap. Here is the schematic:
 
 {{% figure src="sr-latch-nand-sim/schematic.png" width="500px" caption="" %}}
@@ -109,13 +109,13 @@ And here is the transient analysis, which agrees with the expected behaviour:
 
 {{% figure src="sr-latch-nand-sim/transient-analysis.png" width="900px" caption="" %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Quite nicely, Micro-Cap shows the indeterminate state between 0 and 10ns with lines at both the `0` and `1` level.
-{{% /tip %}}
+{{% /aside %}}
 
 The Micro-Cap circuit file used to perform this simulation can be downloaded [here](sr-latch-nand-sim/circuit.cir).
 
-</div>
+{{% /aside %}}
 
 `SN74LS279` is a quad SR latch component by Texas Instruments. Two of the four latches have two set inputs, allowing for either to be active to set the latch (equivalent to an OR gate placed before a normal single set input SR latch).
 
@@ -180,15 +180,15 @@ A JK latch is also known as the gated or clocked SR latch[^bib-byju-sr-flip-flop
 
 {{% figure src="jk-flipflop-symbol.png" width="400px" caption="The schematic symbol for a JK latch." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The `CLK` input to a JK latch is traditionally drawn with a wedge symbol. The wedge symbol is normally associated with edge-triggered inputs, but the `CLK` input for a JK latch is level-triggered.
-{{% /warning %}}
+{{% /aside %}}
 
 The letters J and K were chosen by the inventor of the JK latch, Jack Kilby[^electronics-tutorials-jk-flip-flop]. A JK latch can be built with NAND gates with the following circuit:
 
 {{% figure src="jk-flipflop-from-nand-gates.png" width="700px" caption="Circuit showing how to build a JK latch from NAND gates." %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 Let's simulate a NAND-based JK latch in Micro-Cap. The schematic is:
 
@@ -218,7 +218,7 @@ Explanation of behaviour:
 10. Lets demonstrate the oscillatory nature than can be caused if both `J` and `K` are high when the `CLK` is high.
 11. The outputs oscillate at a speed determined by the propagation delay of the NAND gates!
 
-</div>
+{{% /aside %}}
 
 ## Flip-Flops
 
@@ -238,11 +238,12 @@ And this is what the timing looks like:
 
 {{% figure src="edge-detection-using-and-inverter-timing-diagram.png" width="700px" caption="Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
-{{% /note %}}
+{{% /aside %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
+
 To test this idea, we can simulate the circuit in Micro-Cap. The schematic looks like this:
 
 {{% figure src="edge-detection-using-and-inverter-sim/schematic.png" width="700px" %}}
@@ -256,7 +257,8 @@ The resulting transient analysis is:
 {{% figure src="edge-detection-using-and-inverter-sim/transient-analysis.png" width="900px" %}}
 
 The Micro-Cap circuit file used to perform this simulation can be downloaded [here](edge-detection-using-and-inverter-sim/circuit.cir).
-</div>
+
+{{% /aside %}}
 
 The problem with the above edge-detection circuit is that it cannot guarantee that the created pulse is long enough for the latch logic to obtain the correct state[^bib-libretexts-edge-triggered-flip-flop]. There are better ways to create edge-triggered flip-flops, which we will show when we introduce the master-slave D-type flip-flop below.
 
@@ -266,9 +268,9 @@ A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depend
 
 {{% figure src="d-flipflop-symbol.png" width="700px" caption="The schematic symbols for a D-type flipflop. On the left is one WITH NO asynchronous set or reset, and the right is one WITH asynchronous set or reset." %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input. Typically the set and reset are inverse logic, i.e. `1` to do nothing and `0` to either set or reset. The reset pin can also be called _preset_[^bib-ti-sn7474-ds].
-{{% /tip %}}
+{{% /aside %}}
 
 D-type flip-flops are used for counters, shift-registers and input synchronization.
 
@@ -288,9 +290,9 @@ A _master-slave D flip-flop_ is made from connecting two D latches (edge-trigger
 
 {{% figure src="master-slave-d-flip-flop-logic-diagram.png" width="800px" caption="How a master-slave D flip-flop can be built from two D latches and a bit of additional logic." %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Because we have the output and it's inverse from the master latch, we don't need the inverter at the input of the second latch, and can just wire to two connections straight through to the slave latch.
-{{% /tip %}}
+{{% /aside %}}
 
 Below is an interactive simulation of negative edge-triggered master-slave D flip-flop. Click on the `H` (just below the `D`) to toggle the level of the data line, and watch the output change on the negative edge of the clock!
 
@@ -306,9 +308,9 @@ Roughly speaking, the above circuit is made from three SR latches, the output la
 
 Let's try and understand how this circuit works! To do so, we'll assume you know how the output SR latch works (if you don't, read the first part of this page!). This removes `U5` and `U6` from the analysis, we can just treat their inputs as the standard `R` and `S` (as annotated on the diagram). Now let's walk through two scenarios, the first when the `CLK` transitions from `0` to `1` while `D=0`, and then second scenario the same clock transition when `D=1`. We'll see what happens to the circuit if further changes to `D` are made once the transition finishes (HINT: nothing happens!).
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Common terminology for gates inputs/outputs are used where inputs are labelled `UxA`, `UxB`, ... in order, and the output is `UxY`.
-{{% /tip %}}
+{{% /aside %}}
 
 **What if `D=0` when CLK transitions from `0` to `1`?**
 
@@ -363,7 +365,7 @@ A common example of this style is the Texas Instruments [SN7474](https://www.ti.
 
 This circuit gets even more complicated when you add asynchronous set and reset inputs! Rather than just the 1 three-input NAND gate, all NAND gates need to be three-input.
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 Let's simulate a NAND-based edge-triggered D-type flip-flop with asynchronous set and reset inputs. The schematic is:
 
@@ -383,7 +385,7 @@ Explanation of behaviour:
 
 The Micro-Cap circuit file used to perform this simulation can be downloaded [here](d-flipflop-nand-with-set-reset-sim/circuit.cir).
 
-</div>
+{{% /aside %}}
 
 You can play around with the interactive D flip-flop simulation below. Toggle the level of the data line by clicking on the `H`, and watch the output only change on the positive edge of the clock!
 
@@ -414,9 +416,9 @@ The partial part number `LS734` is used for an 8-channel (octal) edge-triggered 
 
 Edge-triggered D flip-flops can be either positive or negative edge triggered. Edge-triggered flip-flops are shown by a triangle at the clock input, and negative edge-triggered ones have an additional bubble. However, positive-edge triggered is much more common, and standard practice is to make a negative edge triggered flip-flop by adding your own inverting gate on the clock signal.
 
-{{% note %}}
+{{% aside type="note" %}}
 Adding an inverting gate to the clock signal increases the propagation delay for that clock input, and will have a significant impact on the operation in high-speed designs.
-{{% /note %}}
+{{% /aside %}}
 
 ### Master-Slave JK Flip-Flop
 
@@ -485,9 +487,9 @@ When set or reset are ASSERTED, there are no timing requirements since the actio
 
 If both of these requirements are met, the flip-flop is guaranteed to come out of set or reset on that clock edge. If not, the flip-flop may encounter metastability.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Recovery and removal time have very similar definitions to setup and hold times, but are applied to the de-assertion of signals to asynchronous inputs like set and reset.
-{{% /tip %}}
+{{% /aside %}}
 
 
 ## Metastability
@@ -502,9 +504,9 @@ Metastability can occur under the following conditions:
 * Asynchronous inputs arriving into a synchronous system. In this situation, you cannot totally eliminate the chance of metastability. The best you can do is to add synchronizers to the inputs to make the probability of metastability acceptably small[^bib-wikipedia-metastability].
 * When transferring data between two or more different clock domains (groups of circuitry running off different clocks).
 
-{{% tip %}}
+{{% aside type="tip" %}}
 One way to think about the flip-flop setup and hold times is that the flip-flop always has to decide what changed first, the input or the clock signal. The setup and hold makes it obvious to the flip-flop that the input changed before the clock signal. However, if you violate these rules, and the input and clock changes get closer and closer together, it get's harder and harder for the flip-flop to determine what happened first. This makes it more and more likely that the flip-flop will have trouble determining the output and metastability will likely occur.
-{{% /tip %}}
+{{% /aside %}}
 
 Another key principle is that metastability occurs for an unbounded amount of time. That's another way of saying there is no known upper limit to how long the metastability will take to resolve itself. You might think that this is very bad for any type of circuit. The good news is that the probability of the metastability occurring for longer and longer period falls with an exponential decay[^bib-wikipedia-metastability].
 

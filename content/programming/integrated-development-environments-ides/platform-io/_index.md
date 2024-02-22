@@ -205,6 +205,6 @@ platform = ...
 test_build_project_src = true
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This is not the recommended way to solving the problem. The recommended way is to move the code you want to test into the `lib/` directory.
-{{% /warning %}}
+{{% /aside %}}

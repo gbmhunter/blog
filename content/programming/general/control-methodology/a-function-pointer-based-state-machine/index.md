@@ -118,9 +118,9 @@ static stateFunctionRow_t stateFunctionA[] = {
 };
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This array has to stay in sync with the `state_t` enumeration. That is, there must be the same number of rows in `stateFunctionA` as there are states in `state_t`, and they must be in the same order.
-{{% /warning %}}
+{{% /aside %}}
 
 This could be mitigated by saving the state enumeration in the array also, and iterating over each element until you have found the state you are looking for. However, this will incur a performance penalty (which may be insignificant).
 

@@ -61,9 +61,9 @@ $ nasm -f elf64 test.asm
 
 <p>This will produce an object file called <code>myfile.o</code>.
 
-{{% note %}}
+{{% aside type="note" %}}
 Not all assembly instructions are supported for both 32-bits and 64-bits.
-{{% /note %}}
+{{% /aside %}}
 
 <p>You then have two options for linking:</p>
 

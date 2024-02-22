@@ -30,9 +30,9 @@ If you find yourself starting to add options that are only applicable when certa
 
 `argparse` has sub-command support through the use of `add_subparsers()`. The following working example shows a Python program which has two sub-commands, `add` and `print`.
 
-{{% note %}}
+{{% aside type="note" %}}
 Passing in `dest='command'` to `add_subparsers()` allows us to query the sub-command invoked through `args.command`.
-{{% /note %}}
+{{% /aside %}}
 
 ```python
 #!/usr/bin/env python3

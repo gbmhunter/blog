@@ -27,9 +27,9 @@ Below is the common schematic symbol used for a photodiode:
 
 {{% figure src="photodiode-schematic-symbol.png" width="300" caption="Schematic symbol for a photodiode." %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 The photodiode schematic symbol is very similar to one for an [LED (light-emitting diode)](/electronics/components/diodes/light-emitting-diodes-leds/), but the "light arrows" on an LED point away from the diode.
-{{% /tip %}}
+{{% /aside %}}
 
 ## Types of Photodiodes
 
@@ -57,9 +57,9 @@ The typical relationship between the photodiodes voltage and current is shown be
 
 {{% figure src="photodiode-voltage-vs-current.png" width="700" caption="Graph showing the typical relationship between photodiode voltage and current, for three different levels of incident light power. The top-most curve is with no incident light, curves then shift downwards very linearly with increasing light power. " %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Except for \(V=0V\) (right on the vertical axis), almost no photodiode is operated in the right-half of the graph.
-{{% /tip %}}
+{{% /aside %}}
 
 The top-most curve is when there is no incident light (\(P_{IN} = 0W\)). You will notice this curve goes through \((0,0)\). As the incident light power increases, the curve shifts downwards, in a mostly linear fashion (this is why you can make accurate light sensors with photodiodes).
 
@@ -114,9 +114,9 @@ $$\begin{align}
 V_{OUT} &= I_D R_f
 \end{align}$$
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).
-{{% /tip %}}
+{{% /aside %}}
 
 **It's important to pay attention to the input bias current \(I_B\) when choosing the op-amp for this circuit**. This is because the photodiode sources a very small current (e.g. in the \(pA{-}nA\)). Any input bias current is either going to add or subtract from this photodiode current before being amplified by the feedback resistor. Jellybean op-amps have \(I_B\) in the range of \(1{-}10nA\). You normally want to pick an op-amp which has an input bias current that is at least an order of magnitude smaller than the photodiode current you are trying to measure. Luckily, you can get op-amps that are specifically designed to have small input bias currents. For example, the [Texas Instruments OPA396](https://www.ti.com/lit/ds/symlink/opa396.pdf) has a typ. \(I_B = \pm 10fA\) at \(25^{\circ}C\)! This increases to approx. \(\pm 4pF\) across it's entire temperature range (typical)[^bib-ti-opa396-datasheet].
 

@@ -53,9 +53,9 @@ L_2 = \frac{(1 - d_{min}) V_{OUT}^2}{2f_s P_{OUT(min)}}
 
 The above equations determines the minimum inductance required for CCM operation at maximum input voltage and minimum load (the worst-case scenario for a SEPIC).
 
-{{% note %}}
+{{% aside type="note" %}}
 Even though the equations above show this, it is still worth pointing out that in an decoupled design, the inductances **do not have to be the same value**. This is a common misconception, this rule only applies to the coupled SEPIC design.
-{{% /note %}}
+{{% /aside %}}
 
 ### Capacitor
 

@@ -105,9 +105,9 @@ type: "page"
 
 ## Conflicting Naming Conventions
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Some manufacturers use the term SOT-223-3 to refer to the 3-pin, 1-tab package, while others count the tab as a "pin", and so name it SOT-223-4. However this conflicts with the first lot of manufacturers who use the term SOT-223-4 to refer to the package with 4 pins and 1 tab. In summary, BE CAREFUL.
-{{% /warning %}}
+{{% /aside %}}
 
 This page associates the x in SOT-223-x to stand for the **number of pins excluding the tab**. This is the most popular convention.
 

@@ -152,9 +152,9 @@ You can normally diagnose this by noting the the "unpowered" rail will be one di
 
 {{% figure src="basic-esd-protection-with-tvs-diode.svg" width="800" caption="A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 A TVS as shown above also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about \(-0.7V\). Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See <<tvs-on-12v-input-and-fuse>> for an example using both a TVS diode and fuse.
-{{% /note %}}
+{{% /aside %}}
 
 {{% figure src="basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg" width="800" caption="Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1)." %}}
 ## Disabling The ESD Diodes

@@ -336,9 +336,9 @@ End If
 
 The Altium scripting language lets you design graphical user interfaces (GUIs) for your scripts. Each script file has the option of having an associated form which can be displayed from a function call.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The script engine will automatically remove empty event handler functions (e.g. a function that is called when the user clicks the button) on file save. It also will prompt you to delete event handler function calls that point to functions that no longer exist.
-{{% /warning %}}
+{{% /aside %}}
 
 ## TForm
 

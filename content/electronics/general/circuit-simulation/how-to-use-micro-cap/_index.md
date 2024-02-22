@@ -63,7 +63,7 @@ _Initial conditions_ let you specify starting values for various simulation para
 
 `.IC`
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 One such example when initial conditions are needed is to construct and simulate a NAND-based JK flip-flop. The schematic looks like this:
 
@@ -87,7 +87,7 @@ Now the outputs start in a determinate state, and the simulation works as expect
 
 {{% figure src="jk-flipflop-nand-sim/transient-analysis-with-initial-conditions.png" width="900px" caption="Simulation with initial conditions." %}}
 
-</div>
+{{% /aside %}}
 
 ### More Examples
 

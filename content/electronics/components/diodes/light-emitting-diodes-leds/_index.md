@@ -351,9 +351,9 @@ $$\begin{align}
 PAR_{[umols/s/m2]} &= 8.36e^{-5}\cdot {Irr}_{[uW/cm2]} \cdot \lambda_{peak[nm]} \\
 \end{align}$$
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Remember that PAR is defined as radiation between 400 and 700nm, so this equation only applicable to wavelengths within this band (although if you drop the "photo-synthetic" bit, this conversion could be useful for other purposes). Also don't forget that using the peak wavelength rather than looking at the spectrum could introduce significant errors. 
-{{% /warning %}}
+{{% /aside %}}
 
 If you use the equation before we compensated for the different popular units of \(cm^2\) for irradiance and \(m^2\) for PAR, you can use also use this equation for radiance (e.g. output light power from an LED or collection of LEDs).
 

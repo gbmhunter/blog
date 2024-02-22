@@ -99,9 +99,9 @@ if __name__ == '__main__':
     main(sys.argv)
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 The code in class `MyThread1` can be copied to create as many threads as you want (for example, to create `MyThread2`).
-{{% /note %}}
+{{% /aside %}}
 
 ## Examples
 

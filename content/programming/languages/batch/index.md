@@ -55,9 +55,9 @@ set myVar=3
 set myVar=
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 When setting a variable, anything after the equals sign, including white-space, is part of the variable, up-to the last non-white character. You have to be careful you don't accidentally add space to strings when assigning to them:
-{{% /warning %}}
+{{% /aside %}}
 
 ```text
 set myVar = This is a string

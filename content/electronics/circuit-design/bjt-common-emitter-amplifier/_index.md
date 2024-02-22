@@ -30,9 +30,9 @@ The [MOSFET](/electronics/components/transistors/mosfets/) analogue to the BJT c
   </tbody>
 </table>
 
-{{% note %}}
+{{% aside type="note" %}}
 Lower case letters used below represent changes in quantities, e.g. \(V_C\) is the voltage at the collector, whilst \(v_c\) is the change in voltage at the collector, \(\Delta V_C\).
-{{% /note %}}
+{{% /aside %}}
 
 ## How A Common Emitter Amplifier Works
 
@@ -89,9 +89,9 @@ A_V &= -\frac{R_C}{r_e} \nonumber \\
     &= -\frac{I_E R_C}{25mV} \\
 \end{align}$$
 
-{{% note %}}
+{{% aside type="note" %}}
 The voltage gain of the common emitter amplifier **is not dependent on the current gain \(\beta\) of the BJT**. This is good news, as this property cannot be tightly controlled during manufacture and usually varies between "identical" transistors by a few \(100%\) or more!
-{{% /note %}}
+{{% /aside %}}
 
 ## Common Emitter Amplifier Design Process
 
@@ -232,17 +232,17 @@ Given the large gain of \(46.5dB\), I didn't want to saturate the output so I ch
 
 {{% figure src="common-emitter-amplifier-simulation-vin-vout-plot.png" width="600px" caption="Simulation results showing \(V_{OUT}\) vs. \(V_{IN}\)." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 You can clearly see the \(180^{\circ}\) phase shift between the input and output in the plots above. Also, the output decoupling capacitor is doing a good job at removing the DC component and centers around signal around \(0V\).
-{{% /note %}}
+{{% /aside %}}
 
 The simulated frequency response shown below is close to what we expect. The simulated gain of around \(42dB\) is close enough to our calculated gain of \(46.5dB\) considering all the approximations we made! The phase shift is \(180^{\circ}\) for most of our signal bandwidth.
 
 {{% figure src="common-emitter-amplifier-simulation-freq-response-plot.png" width="600px" caption="The simulated frequency response of our common emitter amplifier." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The gain of the circuit would drop significantly if the load resistance was decreased, due to the medium amount of output impedance (ideally this would be \(0\Omega\)). When designing a common emitter amplifier, make sure you are not loading it too much. You can decrease the output impedance of a common emitter amplifier by increase the amount of collector quiescent current \(I_C\). 
-{{% /warning %}}
+{{% /aside %}}
 
 ## References
 

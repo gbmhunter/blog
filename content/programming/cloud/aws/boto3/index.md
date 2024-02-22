@@ -41,9 +41,9 @@ for bucket in s3.buckets.all():
     print(bucket.name)
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 This will print out the names of all buckets in the region specified by the credentials/config file.
-{{% /note %}}
+{{% /aside %}}
 
 ## Copying Between Two Buckets
 

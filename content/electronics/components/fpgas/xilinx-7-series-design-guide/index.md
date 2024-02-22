@@ -37,9 +37,9 @@ Xilinx gives strict recommendations on the parameters of the capacitors used for
 
 {{% figure src="xilinx-7-series-decoupling-capacitor-parameter-value-recommendations.png" width="447px" caption="The parameter value recommendations for decoupling caps used for a Xilinx 7 Series FPGA." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 There is a range specified for the ESR, it is also bad to have too-little series resistance.
-{{% /note %}}
+{{% /aside %}}
 
 The Kintex and Virtex-7 devices has some in-built decoupling capacitors for the larger package sizes (you still need to add external decoupling caps, just not as many).
 

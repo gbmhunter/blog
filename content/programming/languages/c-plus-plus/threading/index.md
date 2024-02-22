@@ -56,9 +56,9 @@ Notification received.
 
 On entry, the `wait()` method simultaneously unlocks the mutex and waits for the condition. On exit, the `wait()` method relocks the mutex.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Note the use of the boolean variable called wakeup_. This has to be used to protect against _spurious wakeups_. This is where the thread that is waiting on a condition variable gets woken up, even though it has not been notified. The code checks the boolean, and if still false, goes back to sleep by calling `wait()` again.
-{{% /warning %}}
+{{% /aside %}}
 
 **How To Improve A Condition Variable (a.k.a let's create a semaphore!)**
 
@@ -278,9 +278,9 @@ void SetPriority(std::thread& thread, int policy, int priority) {
 }
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This is not platform independent code!**
-{{% /warning %}}
+{{% /aside %}}
 
 **Common Errors**
 

@@ -8,9 +8,9 @@ title: EMC Standards and Test Procedures
 type: page
 ---
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This page is in notes format, and may not be of the same quality as other pages on this site.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Overview
 
@@ -72,7 +72,7 @@ For Class A unintentional radiators the voltage that is conducted back onto the 
   </tbody>
 </table>
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Reminder: To convert from dBuV to uV, use the equation:
 
 $$\begin{align}
@@ -81,7 +81,7 @@ uV = 10^{\frac{dBuV}{20}} \cdot 1uV
 \end{align}$$
 
 For example, \(79dBuV = 8913uV = 8.9mV\).
-{{% /tip %}}
+{{% /aside %}}
 
 For everything but Class A devices (i.e. Class B, it's the only other class), the following conductive limits apply:
 
@@ -157,9 +157,9 @@ FCC Part 15 imposes the following radiative limits on Class A and Class B uninte
   </tbody>
 </table>
 
-{{% note %}}
+{{% aside type="note" %}}
 The field strength for Class B (residential) is measured at 3m whilst Class A (industrial/commercial) is measured at 10m, so whilst the uV/m can be similar, the shorter Class B distance is more restrictive.
-{{% /note %}}
+{{% /aside %}}
 
 The bandwidth (frequency range) you have to measure depends on complicated set of rules specified in [§ 15.33 Frequency range of radiated measurements](https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-A/section-15.33). In general, expect to measure from 9kHz up to the 2-5th harmonic of your highest operating frequency (including digital clock signals).
 
@@ -297,9 +297,9 @@ The results are shown below, and as you can see, there was a massive improvement
 
 {{% figure src="_assets/real-world-measurements/result-plot.png" width="900px" %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 These were all pre-compliance EMC tests, and not done by an approved testing agency. They served as only as a rough indication of whether we had a chance of passing, and hopefully saved us costly (both in time and money) re-runs with an approved testing agency.
-{{% /tip %}}
+{{% /aside %}}
 
 ## Peak, Quasi-Peak And Averages
 

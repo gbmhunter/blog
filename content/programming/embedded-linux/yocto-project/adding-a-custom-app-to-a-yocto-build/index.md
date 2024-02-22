@@ -132,9 +132,9 @@ Notice in the `Makefile.am` file that we add `helloworld` to the `bin_PROGRAMS` 
 
 Commit all these files into a git repository. If you want the Yocto layer to download the files automatically, this repository needs to be placed on a server, so I used GitHub.
 
-{{% note %}}
+{{% aside type="note" %}}
 During development, you may not want to have to commit everytime you wish to build your code. See the bottom of this page on how achieve this.
-{{% /note %}}
+{{% /aside %}}
 
 The code for this example app is located at [https://github.com/gbmhunter/YoctoHelloWorldApp](https://github.com/gbmhunter/YoctoHelloWorldApp).
 

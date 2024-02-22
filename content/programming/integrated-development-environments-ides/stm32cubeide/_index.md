@@ -74,9 +74,9 @@ The linker is called correctly regardless of the extension of `main` --- `arm-no
 
 However, when you change the peripheral configurations using the `.ioc` file and re-generate code, it will also recreate the `main.c`.
 
-{{% note %}}
+{{% aside type="note" %}}
 UPDATE 2022-06-06: Apparently you can get STM32CubeIDE to create a `main.cpp` when regenerating code with the `.ioc` file.
-{{% /note %}}
+{{% /aside %}}
 
 ## STM32CubeMonitor
 

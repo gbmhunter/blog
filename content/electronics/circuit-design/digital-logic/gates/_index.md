@@ -30,9 +30,9 @@ Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inv
 
 {{% figure src="not-gate-symbol.svg" width="800px" caption="The symbols for a NOT gate (inverter)." %}}
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Although almost never shown on basic diagrams (but always shown somewhere on proper circuit schematics), aside from the inputs and outputs, all gates also need power pins to provide power for the internal logic.
-{{% /tip %}}
+{{% /aside %}}
 
 The truth table for an NOT gate is:
 
@@ -184,9 +184,9 @@ Truth table for a 2-input XOR gate:
   </tbody>
 </table>
 
-{{% note %}}
+{{% aside type="note" %}}
 The only difference in behaviour between an OR and XOR is when both inputs are `TRUE`. An OR gate outputs a `TRUE` in this case, whilst and XOR outputs a `FALSE`.
-{{% /note %}}
+{{% /aside %}}
 
 The symbol \(\bigoplus\) is used to represent XOR, as hence XOR can be written in the following ways:
 
@@ -304,9 +304,9 @@ A NMOS inverter is simply made from a N-channel MOSFET and a resistor, as shown 
 
 When the input \(A\) is `LOW`, the N-channel MOSFET is turned OFF, and so the output \(Y\) is pulled `HIGH` by \(R1\). When \(A\) is `HIGH`, the N-channel MOSFET gets turned on. It's equivalent drain-source resistance drops to a value much lower than \(R1\), and so therefore the output is effectively driven `LOW`, completing the inverter functionality.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 You can see the static current flow (and therefore power consumption) in the above NMOS circuit simulation when you toggle the input to `HIGH`.
-{{% /tip %}}
+{{% /aside %}}
 
 #### NMOS NOR Gate
 
@@ -332,9 +332,9 @@ The inverter is the easiest CMOS logic gate to make! It just consists of one P-c
 {{% circuitjs width="400" height="400" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4CaIImAFh+4CMmhIYkNBy69uwwcqUiBk6bDkB3FSKL594EgMisA5se7cjQgdyK9q5gErGwYIh8jOoIbjp-FylWABlKQxMBBC9o4JB2AEMAGwBnehpzPQQeeNzeUTNWPXt4su5kb3MAWUFbcvxqMFN-NFDShpaBMu6oVgAPSmQINHxkEFwJscUQNF4AYRqAeQBlAB00gEkAOwA3egAnABcjzYBxJNOShQDlAvjsyKM+h77zIYQuwkoECjB8EheMheABBQaCKjgH5EBAkaFAlC8ACarCAA" %}}
 </div>
 
-{{% tip %}}
+{{% aside type="tip" %}}
 These diagrams use the simplified MOSFET symbols in where the P-channel as a bubble next to it's gate and the N-channel doesn't. No indication of drain or source are shown either, although this may be a moot point if in an integrated circuit with the substrate not connected to the source. If you are unfamiliar with this MOSFET symbol style, see the [MOSFETs page](/electronics/components/transistors/mosfets/) for more info.
-{{% /tip %}}
+{{% /aside %}}
 
 When the input \(A\) is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is \(+V_{DD}\) and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is \(0V\) and therefore OFF. Hence the output gets driven `LOW`. When \(A\) is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to \(0V\) and the P-channel's gate-source voltage goes to \(-V_{DD}\), turning it ON and driving the output `HIGH`.
 

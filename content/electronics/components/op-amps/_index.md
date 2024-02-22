@@ -24,9 +24,9 @@ An op-amp is commonly drawn on schematics as:
 
 You may see this symbol with or without the voltage supply pins \( +V_{S} \) and \( -V_{S} \). If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Always take note of the position of the inverting (-) and non-inverting (+) input terminals. **Sometimes they can be drawn swapped around relative to the symbol shown above**.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Uses
 
@@ -53,7 +53,7 @@ v_{out} &= v_{in}
 
 As shown in Eq \(\ref{eq:buffer-vout-eq-vin}\), the output voltage is the same as the input voltage. Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 A simulation schematic for a voltage-follower op-amp is shown below.
 
@@ -63,7 +63,7 @@ The results of the simulation:
 
 {{% figure src="output-voltage-vs-input-voltage-op-amp-voltage-follower.png" width="600px" caption="The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly." %}}
 
-</div>
+{{% /aside %}}
 
 ### Non-Inverting Amplifiers
 
@@ -79,11 +79,11 @@ v_{out} = \left(1 + \frac{R_f}{R_i}\right) v_{in}
 
 Notice the \(1\) in the gain equation? This means that no matter what you set the resistors \(R_f\) and \(R_i\) to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 There is no one common convention for labelling these feedback resistors. Sometimes they are called \(R_i\) and \(R_f\), other times \(R_1\) and \(R_2\) (with either resistor being \(R_1\))
-{{% /warning %}}
+{{% /aside %}}
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Simulation example for a non-inverting amplifier.**
 
@@ -101,7 +101,7 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 {{% figure src="vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="700px" caption="A graph of \(v_{out}\) vs. \(v_{in}\) for a non-inverting op-amp amplifier circuit." %}}
 
-</div>
+{{% /aside %}}
 
 ### Inverting Amplifiers
 
@@ -117,7 +117,7 @@ v_{out} = - \frac{R_f}{R_i} v_{in}
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Simulation example for a an inverting amplifier.**
 
@@ -129,7 +129,7 @@ And below are the simulation results for the above schematic:
 
 {{% figure src="vout-vs-vin-inverting-op-amp-gain-neg-1.png" width="700px" caption="\(v_{out}\) vs. \(v_{in}\) for an inverting op-amp with a gain of -1." %}}
 
-</div>
+{{% /aside %}}
 
 ### Difference Amplifiers
 
@@ -340,7 +340,7 @@ WARNING: Unused inputs into a inverting summing amplifier can be left floating. 
 
 Op-amps can be used to perform _level-shifting_. The concept of level-shifting is very similar to what is achieved by [^_summing_amplifiers, summing amplifiers].
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Simulation example for an op-amp based level shifter.**
 
@@ -350,7 +350,7 @@ The below schematic shows a op-amp based level shifter which converts a \(\pm 5.
 
 {{% figure src="level-shifter-sim/out.png" width="700px" caption="Simulation results of the level-shifting circuit shown in [^level-shifter-sim-schematic]. You can clearly see that the \(\pm 5.0V\) signal has been level-shifted to the range \(0-3.3V\). Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted)." %}}
 
-</div>
+{{% /aside %}}
 
 ### Ideal Diodes/Rectifiers
 
@@ -448,9 +448,9 @@ The amount and behaviour of input bias current depends on the op-amp transistor 
 
 **Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amps inputs**. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors. Finding an op-amp with a low input bias current can be important for a high sensitivity transimpedance amplifier, such as one connected to a photodiode.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Do not confuse the input bias current with the input offset current (although they are related). The _input offset current_ \(I_{OS}\) is the difference between the input bias current at the `+` pin and the `-` pin.
-{{% /warning %}}
+{{% /aside %}}
 
 ### Input Impedance
 
@@ -525,7 +525,7 @@ $$\begin{align}
 SR = 2\pi f_{max} V_P
 \end{align}$$
 
-<div class="worked-example">
+{{% aside type="example" %}}
 
 **Finding the max. frequency of the LM324 due to slew rate limitations.**
 
@@ -537,7 +537,7 @@ f_{max} &= \frac{SR}{2\pi V_P} \nonumber \\
         &= 6.37kHz \\
 \end{align}$$
 
-</div>
+{{% /aside %}}
 
 #### Slew Rate Effects On Sine Waves
 
@@ -604,9 +604,9 @@ General purpose op-amps typically have parameters in the following ranges:
 
 A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the one or more  of the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** (\(V_{OL}\)) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 "_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
-{{% /warning %}}
+{{% /aside %}}
 
 This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
@@ -748,9 +748,9 @@ Some op-amps which are designed to have very low input offset voltages also come
 
 {{% figure src="op07-op-amp-offset-nulling-circuit.png" width="500px" caption="Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 If not using the trim pins, leave them not connected (open circuit). Do NOT connect them to ground.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Negative Impedance Converters (NICs)
 
@@ -782,9 +782,9 @@ TODO: Add explanation of what happens when capacitor is added.
 
 ### NIC Input Impedance Proof
 
-{{% note %}}
+{{% aside type="note" %}}
 Skip this section if you are not interested in the maths.
-{{% /note %}}
+{{% /aside %}}
 
 To prove \(Z_{IN} = -Z\), we need to find the input current at inverting terminal, and then use \(Z_{IN} = \frac{V}{I_{IN}}\). The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance \(Z\) is going to be:
 

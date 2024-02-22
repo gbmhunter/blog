@@ -10,9 +10,9 @@ type: page
 
 Smart pointers in C++ are pointer objects which have added functionality over the concept of a _raw pointer_, in where these advanced pointer objects can automatically delete the memory once there are no more references to it, preventing the user from having to remember to call delete/delete[]. It **could be seen as some form of basic garbage collection**, except it is still deterministic (i.e. you can know exactly when the memory will be freed).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Although smart pointers may seem like the magic bullet and that you never should use raw pointers or references again, please note, it's VERY EASY TO ABUSE SMART POINTERS. Boring standard pointers and references still have very valid use cases. Smart pointers should only be used when dealing with object ownership (more on this below).
-{{% /warning %}}
+{{% /aside %}}
 
 **Problems With Raw Pointers**
 
@@ -153,6 +153,6 @@ He also goes on to say:
 
 > "an essential best practice for any reference-counted smart pointer type is to avoid copying it unless you really mean to add a new reference"
 
-{{% note %}}
+{{% aside type="note" %}}
 By in passing by copy, a new shared pointer is made, and the reference count is incremented (and decremented again when the function returns). This procedure does not have to occur when passing by reference.
-{{% /note %}}
+{{% /aside %}}

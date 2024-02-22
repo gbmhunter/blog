@@ -29,9 +29,9 @@ You normally start minicom with the `-s` flag, so that you can set the configura
 $ minicom -s
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Most serial devices will not used hardware flow control, but this is enabled by default in minicom. Sometimes, if this is left enabled and the hardware does not use it, you will receive no serial data from the device.
-{{% /warning %}}
+{{% /aside %}}
 
 However, you can configure some of the most-used settings directly from the command line. Use `-D` to set the device name:
 

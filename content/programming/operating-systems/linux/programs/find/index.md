@@ -28,9 +28,9 @@ $ find . -name '*.cpp'
 
 You have to provide the `*` at the start because find matches against the whole path (it doesn't allow partial matches).
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Always make sure to make the search path **the first argument** to `find`, as `find` is sensitive to the argument order (even with optional arguments!).
-{{% /warning %}}
+{{% /aside %}}
 
 ## Multiple Patterns
 

@@ -29,9 +29,9 @@ ClkCpTimer_Start();
 
 {{% figure src="custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files." %}}
 
-{{% note %}}
+{{% aside type="note" %}}
 This is not an exhaustive list, for a list of all components, download [PSoC Creator](http://www.cypress.com/?id=2494) and browse through the included library.
-{{% /note %}}
+{{% /aside %}}
 
 ## A Note On Sleeping
 
@@ -286,9 +286,9 @@ The Pulse Converter component is useful to convert variable width input pulses i
 
 {{% figure src="psoc-component-pulse-converter-trigger-in-out.png" width="388px" caption="The PSoC Pulse Converter component, being used here to output constant-width pulses."  %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 With this component, there can (and likely will be) a delay between the rising edge of the input pulse and the rising edge of the output pulse, depending on the phase difference between the two clocks.
-{{% /warning %}}
+{{% /aside %}}
 
 ## Quadrature Decoder
 

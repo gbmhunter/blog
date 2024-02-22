@@ -271,9 +271,9 @@ let num_bytes = match uart_write_bytes(&data) {
 };
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 **After reading all of this you may be wondering how Rust implements these return types which can seemingly contain different "types" of data.** The key idea behind this is that Rust's enum is implemented behind-the-scenes as a tagged union of all the things it can be. There is also _null pointer optimization_ which means that Rust can optimize the space of the union when there are two possible return types: 1 which doesn't contain any data (e.g. `None`) and another which contains data but can't possible be `0` -- in that case Rust will collapse the two things into one variable and use `0` to indicate `None`. This is how `Option<&T>` works.
-{{% /note %}}
+{{% /aside %}}
 
 ### no_std
 
@@ -638,9 +638,9 @@ When compiled without the `--release` option, **Rust will also perform overflow 
 
 You can see in the Rust pane that it has a few extra instructions, including `seto` to read the overflow flag, and then a `test` and jump `jne` to a `panic!` in the case an overflow occurred. This will slow down mathematical operations, but in most cases this is a worthwhile trade-off to catch overflow bugs. And remember -- the overhead disappears if you built with the `--release` option.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 If you wanted overflow checking even in a `--release` build, you can use the `checked_xxx` functions such as `checked_add()` which return an `Option<T>` that is `None` if the value overflowed.
-{{% /tip %}}
+{{% /aside %}}
 
 **As bad as overflow can be, in many use cases (especially in embedded programming) you want (and even rely) on overflow wrapping.** A classic example is getting the current system tick value and subtracting saved previous system tick values to calculate durations. Your system tick might be stored in a 32-bit unsigned integer and count the number of milliseconds since start-up. This would wrap back to `0` in a little over `1193 hours` of continuous operation. However, due to the nature of how integer mathematics are implemented, durations relying on subtraction will still work fine when the current system tick wraps back to 0, as long as no one duration spans more than half the total system tick period (approx. `597 hours`). In Rust, you can safely do overflowing equations with `wrapping_xxx` functions such as `wrapping_add()`.
 

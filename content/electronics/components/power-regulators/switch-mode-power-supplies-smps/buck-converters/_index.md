@@ -40,9 +40,9 @@ where:</br>
 \(T\) is the switching frequency, in seconds (\(t_{on} + t_{off}\))</br>
 </p>
 
-{{% note %}}
+{{% aside type="note" %}}
 The simple equation showing \(V_{OUT}\) is only dependent on \(V_{IN}\) and \(D\) is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor) AND the inductor is in continuous conduction (i.e. current never drops to 0). In the real world there are always parasitics, however this equation is still a good first approximation to help understand how it works.
-{{% /note %}}
+{{% /aside %}}
 
 The following steps show a way to **intuitively understand how a buck converter produces a lower output voltage** (and derive Eq \(\ref{eq:vout-d-vin}\)):
 
@@ -58,9 +58,9 @@ The following steps show a way to **intuitively understand how a buck converter 
             &= D V_{IN} \nonumber 
     \end{align}$$
 
-{{% tip %}}
+{{% aside type="tip" %}}
 This analysis method of realizing the average voltage across the inductor must be 0 over an entire switching cycle also works for other switching topologies. 
-{{% /tip %}}
+{{% /aside %}}
 
 When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
@@ -186,9 +186,9 @@ where:</br>
 
 The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. 
 
-{{% note %}}
+{{% aside type="note" %}}
 These equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
-{{% /note %}}
+{{% /aside %}}
 
 ## Buck Converter Calculator
 

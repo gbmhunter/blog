@@ -25,6 +25,6 @@ A 2.54mm pitched (w.r.t to the pins) IDC connector has two rows of pins, this re
 
 Some IDC connectors come with built-in strain relief. This is usually in the form of a clip which sits ontop of the connector. The cable is brought out of the insulation displacement part and then curled back around to be clamped by the clip. Strain relief is more common on the 2.54mm pitch IDC connectors, and not so much on the 1.27mm pitch IDC connectors. This can be a problem for longevity of these smaller 1.27mm IDC connectors, which are commonly used for 10-pin ARM SWD programming headers.
 
-{{% note %}}
+{{% aside type="note" %}}
 A production line programming step I was involved with used a 10pin 1.27mm pitch IDC cable to connect the programming dongle to the PCB. We were concerned about the reliability when inserting and then pulling out the IDC connector many times over. Sure enough, after about 300 programming cycles the cable failed.
-{{% /note %}}
+{{% /aside %}}

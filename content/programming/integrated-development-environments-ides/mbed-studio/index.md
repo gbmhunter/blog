@@ -116,9 +116,9 @@ int main() {
 
 The timer API can be used from within interrupts.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The `Timer` should not be used to keep track of clock-time for long periods (e.g. hours/days). This is because the standard system clocks which drive these timers typically have a fair amount of drift and error which makes them unsuitable for accurate time keeping over long periods. Use a RTC clock and the `RTC` API instead.
-{{% /warning %}}
+{{% /aside %}}
 
 ### Serial
 

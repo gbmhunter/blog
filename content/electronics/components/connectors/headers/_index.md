@@ -21,9 +21,9 @@ The figure below shows the commonly used schematic symbol for a header-style con
 
 {{% figure src="header-schematic-symbol.svg" width="200" caption="The commonly-used schematic symbol for a header. This shows a 1x2 (1 row of 2 pins) male header." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 This schematic symbol is very generic and also commonly used for a range of over connector styles, so don't just assume it represents a header!
-{{% /warning %}}
+{{% /aside %}}
 
 ### Types
 

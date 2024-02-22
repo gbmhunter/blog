@@ -32,9 +32,9 @@ If in Linux, opening a terminal, typing make and pressing enter while in the sam
 
 The primary three things a Makefile consists of are **targets**, **prerequisites**, and **recipes**. The above code contains two of these, `main.o`, which is the target, and `gcc -o main.o main.c`, which is the recipe. Make interprets this code as saying "You make main.o by running the command gcc -o main.o main.c in the terminal.". Note that all recipes are run in the terminal, and each new recipe (which is on a new line), is **run in a different instance of the terminal**.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 There is a tab infront of the recipe gcc .... . This is important! **All recipes must be proceeded by a tab.**
-{{% /warning %}}
+{{% /aside %}}
 
 If no parameters are passed in when you call make, the first rule in the makefile will be run.
 

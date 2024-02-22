@@ -74,9 +74,9 @@ int main() {
 }
 ```
 
-{{% tip %}}
+{{% aside type="tip" %}}
 While `enum class` won't let you implicitly cast to an integer, it's still sometimes useful to be able to do so. You can still do it, but you have to explicitly cast the variable in your code. I recommend using `static_cast<uint8_t>(myEnum)` to do so.
-{{% /tip %}}
+{{% /aside %}}
 
 The below example shows how C-style enums can cause scoping/naming issues.
 
@@ -179,9 +179,9 @@ int main() {
 
 You want to check in the constructor if the caller has provided a valid I2C address (one with the range 0-127). There are a few ways you can signal this fault back to the caller, and we'll discuss these now.
 
-{{% note %}}
+{{% aside type="note" %}}
 Runnable code for all this examples can be found at https://replit.com/@gbmhunter/cpp-handling-constructor-errors.
-{{% /note %}}
+{{% /aside %}}
 
 ### Move All Non-Trivial Code To Init()
 
@@ -218,9 +218,9 @@ int main() {
 }
 ```
 
-{{% tip %}}
+{{% aside type="tip" %}}
 You might want to make sure the caller does not forget to call the `Init()` function before calling any other functions. This can be done by adding a `bool m_isInitialized` variable to the class which then gets checked upon entry to all other member functions.
-{{% /tip %}}
+{{% /aside %}}
 
 Using an `Init()` function also **opens up the possibility of the caller being able to re-initialize the class without having to delete this object and construct a new one**. This may or may not be beneficial for a particular application!
 
@@ -325,9 +325,9 @@ int main(void) {
 }
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 C++ performs name mangling so it can support function overloading (functions with the same name, but supporting a different number and/or type of input and output variables).
-{{% /note %}}
+{{% /aside %}}
 
 ### ISRs Calling Class Functions
 

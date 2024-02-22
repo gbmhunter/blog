@@ -45,9 +45,9 @@ Note that a class by itself doesn't create an objects you can use (the exception
 
 ## Member Functions
 
-{{% note %}}
+{{% aside type="note" %}}
 All C++ member functions are implicitly named `inline`. Thus there is no need to use the word `inline`, as it is already "present". Thus the two member functions below are identical.
-{{% /note %}}
+{{% /aside %}}
     
 ```c++
 // Identical to Point2

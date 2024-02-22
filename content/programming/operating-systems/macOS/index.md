@@ -59,9 +59,9 @@ Once the tmux session has been started inside iTerm2, you can then also use stan
 * `Cmd-d`: Split vertically
 * `Cmd-Shift-d`: Split horizontally
 
-{{% note %}}
+{{% aside type="note" %}}
 Note that an iTerm2 tmux session and a standard iTerm2 non-tmux session can not share the same tab, i.e. the tmux session has to be either a completely new tab or a new window.
-{{% /note %}}
+{{% /aside %}}
 
 ## Showing Hidden Files
 

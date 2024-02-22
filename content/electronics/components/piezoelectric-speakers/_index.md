@@ -69,9 +69,9 @@ The volume can be controlled with a simple RC low pass filter and PWM signal as 
 
 This circuit uses a RC low-pass filter and PWM to change the DC voltage that the buzzer sees across it's terminal, thus controlling the volume.
 
-{{% note %}}
+{{% aside type="note" %}}
 The volume changes drastically from 0-1% duty cycle because of the logarithmic nature of sound, so a 12-bit or higher PWM is normally needed for smooth control. 12-bits will give you increments of approximately 0.025%. When I built one of these circuits, at 1% duty cycle the piezo was at approximately 90% apparent volume.
-{{% /note %}}
+{{% /aside %}}
 
 ## Piezo Benders
 

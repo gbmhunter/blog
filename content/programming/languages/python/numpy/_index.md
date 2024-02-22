@@ -94,9 +94,9 @@ array([[0, 1, 2],
 array([ 4. ,  5.5,  7. ,  8.5, 10. ])
 ```
 
-{{% warning %}}
+{{% aside type="warning" %}}
 The difference between `np.arange()` and `np.linspace()` is subtle but important to understand. `arange()` lets you specify the step size, and will create equally spaced points from the start up to (but not necessarily including) the end point. Whether the end point is included or not depends if the step size fits an integer number of times into the interval. `linspace()` lets you specify the number of steps in the interval, and will always include the start and end points.
-{{% /warning %}}
+{{% /aside %}}
 
 ### Indexing And Reading/Writing
 

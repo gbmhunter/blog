@@ -237,7 +237,7 @@ int main() {
 
 ```
 
-{{% note %}}
+{{% aside type="note" %}}
 Did you know: The following short piece of code...
 
 ```c    
@@ -245,7 +245,7 @@ while (*p++ = *q++);
 ```
 
 is the equivalent to the standard library function `strcpy(p, q)`!
-{{% /note %}}
+{{% /aside %}}
 
 
 

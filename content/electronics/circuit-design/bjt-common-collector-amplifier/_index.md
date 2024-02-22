@@ -30,9 +30,9 @@ The [MOSFET](/electronics/components/transistors/mosfets/) analogue to the BJT c
   </tbody>
 </table>
 
-{{% note %}}
+{{% aside type="note" %}}
 Lower case letters used below represent changes in quantities, e.g. \(V_C\) is the voltage at the collector, whilst \(v_c\) is the change in voltage at the collector, \(\Delta V_C\).
-{{% /note %}}
+{{% /aside %}}
 
 ## Basic Common Collector Amplifier
 

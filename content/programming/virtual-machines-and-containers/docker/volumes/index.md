@@ -22,9 +22,9 @@ type: page
 $ docker run -it -v my-volume:/root container
 {{< /highlight >}}
 
-{{% note %}}
+{{% aside type="note" %}}
 Any existing files in <code>/root/</code> will be shadowed by this mount. This means that you cannot expose pre-existing files that reside in the container to the root system using this method.
-{{% /note %}}
+{{% /aside %}}
 
 ## Using A Dockerfile
 

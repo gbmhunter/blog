@@ -34,9 +34,9 @@ aws s3 sync ~/my-dir/ s3://my-bucket/my-dir/
 
 Note that `aws s3 sync` will not re-sync a changed file if it has the exact same filesize as before, even though the timestamps are different. This could happen quite easily if for example you changed a single character in a text file and re-saved it. The `sync` command does not use checksums to verify the content is the same. This default behaviour is not what you would expect from a `sync` command, and deviates from the behaviour of other sync tools such as `rsync`. You can force `sync` to also look at the timestamps by adding the command-line option `--exact-timestamps`. 
 
-{{% warning %}}
+{{% aside type="warning" %}}
 Most of the time, you probably want to add the option `--exact-timestamps` so that `aws s3 sync` behaves as you would expect. 
-{{% /warning %}}
+{{% /aside %}}
 
 ## Data Consistency
 

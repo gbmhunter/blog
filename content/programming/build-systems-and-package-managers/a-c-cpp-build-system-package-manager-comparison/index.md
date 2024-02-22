@@ -13,9 +13,9 @@ This article is a *opinionated* comparison of popular, open-source build systems
 
 The build systems are listed in alphabetical order.
 
-{{% warning %}}
+{{% aside type="warning" %}}
 DISCLAIMER: I have had much experience with CMake and Makefiles, and moderate experience with autotools. For some of the other build systems, upon researching/testing for this comparison was the first time I had ever used or sometimes even heard of them.
-{{% /warning %}}
+{{% /aside %}}
 
 The [GitHub repository mbedded-ninja/CppBuildSystemReview](https://github.com/gbmhunter/CppBuildSystemReview) contains a example/demo project for each build/packaging system mentioned below (one per folder). In each folder, there is a `build.sh` bash script which should automatically run the build on a Linux system, provided you have the build system installed.
 

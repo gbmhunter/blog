@@ -166,9 +166,9 @@ The below graph shows the V/I response of a linear regulator with foldback curre
 
 {{% figure src="foldback-current-limiting-graph.svg" width="400px" caption="V/I response of a linear regulator with foldback current limiting. Arrow shows direction of decreasing load resistance, all the way to a direct short." %}}
 
-{{% warning %}}
+{{% aside type="warning" %}}
 When using a foldback current limiter, non-ohmic loads such as incandescent bulbs or inductive motors can get "stuck" at start-up.
-{{% /warning %}}
+{{% /aside %}}
 
 ### How Foldback Current Limiting Works
 

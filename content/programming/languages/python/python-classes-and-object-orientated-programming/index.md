@@ -23,9 +23,9 @@ class MyClass:
         pass
 {{< /highlight >}}
 
-{{% note %}}
+{{% aside type="note" %}}
 You have to make sure to specify `@staticmethod` before `@abstractmethod` or it will not work.
-{{% /note %}}
+{{% /aside %}}
 
 <h2>Checking If A Class Is A Subclass Of Another</h2>
 

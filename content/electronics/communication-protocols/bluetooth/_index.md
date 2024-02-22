@@ -16,9 +16,9 @@ type: page
 
 Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards[^bib-wikipedia-bluetooth-sig]. The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
-{{% tip %}}
+{{% aside type="tip" %}}
 Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link[^bib-sig-origin-of-name].
-{{% /tip %}}
+{{% /aside %}}
 
 ## Piconet And Scatternets
 
