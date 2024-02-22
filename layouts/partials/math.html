@@ -1,59 +1,48 @@
 <!-- NOTE: This equation config has to come BEFORE the script tag that loads MathJAX (which is directly below) -->
 <!--       See http://docs.mathjax.org/en/latest/tex.html for more info -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
-  </script>
-  
-  <!-- Make sure to use the CommonHTML renderer rather than the HTML-CSS renderer, as the latter
-  causes slight rendering issues including padding problems with surrounding text -->
-  <script id="MathJax-script" type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-      MathJax.Hub.Config({
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        TeX: {
-          Macros: {
-            // Define macros here that can be used site-wise
-            bhat: ["{\\hat{\\mathbf{#1}}}", 1],
-            b: ["{\\mathbf{#1}}", 1],
-          }
-        },
-        tex2jax: {
-          displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
-          inlineMath: [['\\(', '\\)']],                  // inline
-          processEscapes: true,
-          processEnvironments: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-          TeX: {
-            extensions: [
-              "AMSmath.js",
-              "AMSsymbols.js"
-            ],
-          },
-        },
-        // Enable line-breaks, which makes MathJAX wrap long display equations
-        // This only occurs on the initial render, so if the page width is changed by user,
-        // the equation may still overflow the page.
-        CommonHTML: { 
-          linebreaks: { 
-            automatic: true
-          },
-          scale: 95, // 100 looks a little too large relative to surrounding text, 95 looks great!
-        },
-        // "HTML-CSS": { linebreaks: { automatic: true } },
-        // SVG: { linebreaks: { automatic: true } }
-      });
-  
-      MathJax.Hub.Queue(function() {
-        // Fix <code> tags after MathJax finishes running. This is a
-        // hack to overcome a shortcoming of Markdown. Discussion at
-        // https://github.com/mojombo/jekyll/issues/199
-        // Not important for AsciiDoc pages
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i = 0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+<!-- Make sure to use the CommonHTML renderer rather than the HTML-CSS renderer, as the latter
+causes slight rendering issues including padding problems with surrounding text -->
+<script id="MathJax-script" type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      TeX: {
+        Macros: {
+          // Define macros here that can be used site-wise
+          bhat: ["{\\hat{\\mathbf{#1}}}", 1],
+          b: ["{\\mathbf{#1}}", 1],
         }
-      });
-  </script>
+      },
+      tex2jax: {
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
+        inlineMath: [['\\(', '\\)']],                  // inline
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: {
+          extensions: [
+            "AMSmath.js",
+            "AMSsymbols.js"
+          ],
+        },
+      },
+      // Enable line-breaks, which makes MathJAX wrap long display equations
+      // This only occurs on the initial render, so if the page width is changed by user,
+      // the equation may still overflow the page.
+      CommonHTML: { 
+        linebreaks: { 
+          automatic: true
+        },
+        scale: 95, // 100 looks a little too large relative to surrounding text, 95 looks great!
+      },
+      // "HTML-CSS": { linebreaks: { automatic: true } },
+      // SVG: { linebreaks: { automatic: true } }
+    });
+</script>
