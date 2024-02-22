@@ -350,7 +350,7 @@ $$</p>
 
 We are fortunate that when using a star-connected BLDC motor (most are!), `\(I_c\)` is 0, so that we can simplify the equation to:
 
-<p>$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix}$$ </p>
+<p>$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix}$$</p>
 
 {{% figure src="clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." %}}
 
@@ -417,7 +417,7 @@ R = \text{statoric resistance}
 |V_{abc}| = \begin{bmatrix}v_a & v_b & v_c \end{bmatrix}^T = \text{statoric voltages,} \\ \\  
 |I_{abc}| = \begin{bmatrix} i_a & i_b & i_c \end{bmatrix}^T = \text{statoric currents,} \\ \\  
 |\Phi_{abc}| = \begin{bmatrix} \Phi_a & \Phi_b & \Phi_c \end{bmatrix} = \text{global fields} \\ \\  
- $$</p>
+$$</p>
 
 ## PWM Frequency
 
