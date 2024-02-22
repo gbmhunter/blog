@@ -130,24 +130,20 @@
     <!-- TOP BANNER, 100% VIEWPORT WIDTH -->
     <!-- ================================================================================================ -->
     <header role="banner" class="top-navbar">
-      <div class="stuff-at-start" style="display: flex; align-items: center; gap: 10px;">
-        <!-- <div class="hamburger-button"><i class="fas fa-bars"></i></div> -->
-
+      <div class="stuff-at-start">
         <button type="button" class="hamburger-button">
-          <!-- <span class="sr-only">toggle navigation</span> -->
-          <!-- <span class="drawer-hamburger-icon"></span> -->
           <i class="fas fa-bars"></i>
         </button>
         
-
         <div class="hamburger-button-spacer"></div>
         <div><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} height="40px" /></a></div>
         <div class="site-title"><a href="/">mbedded.ninja</a></div>
       </div>
       <div class="stuff-at-end">
-        <!-- <link href="/pagefind/pagefind-ui.css" rel="stylesheet"> -->
         <!-- SEARCH -->
-        <div class="nav-bar search-input-div">
+        <div
+          class="nav-bar search-input-div"
+        >
           <span class="fa fa-search"></span>
           <input class="nav-bar-search-input" type="search" placeholder="Search..." />
         </div>

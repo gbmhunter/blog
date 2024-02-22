@@ -87,6 +87,15 @@ body {
     }
 }
 
+.stuff-at-start {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+// HAMBURGER BUTTON (for menu)
+//==============================================================================
+
 .hamburger-button {
     width: 40px;
     height: 40px;
@@ -119,14 +128,48 @@ body {
     }
   }
 
+// SITE TITLE
+//==============================================================================
+
 .site-title {
     color: var(--main-color);
+    margin-right: 0.5em; // A little space between the end of the title and the search input
 }
 
 // Disable any link styling for the site title
 .site-title a {
     text-decoration: none;
     color: inherit;
+    word-break: keep-all; // Prevent the site title from wrapping onto a new line when the screen width is small
+}
+
+.stuff-at-end {
+    flex-shrink: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+// SEARCH INPUT
+// The search modal is elsewhere in this document
+.search-input-div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    // The search icon
+    .fa-search {
+        position: absolute;
+        // top: 10px;
+        left: 10px;
+    }
+
+    input {
+        border: 1px solid #555;
+        display: block;
+        padding: 1px 4px 1px 40px;
+        width: 100%;
+    }
 }
 
 /* Shows the moon icon when light, sun icon when dark */
@@ -141,10 +184,6 @@ body {
 
 .d-block-dark {
     color: var(--text-color-primary);
-}
-
-.stuff-at-end {
-    display: flex;
 }
 
 /* ========================================================================= */
@@ -1844,28 +1883,7 @@ span.con {
 /* SEARCH STYLING
 /* ========================================================================= */
 
-.search-input-div {
-    position: relative;
-    display: flex;
-    align-items: center;
 
-    // The search icon
-    .fa-search {
-        position: absolute;
-        // top: 10px;
-        left: 10px;
-    }
-
-    input {
-        border: 1px solid #555;
-        display: block;
-        padding: 1px 4px 1px 40px;
-    }
-}
-
-input.nav-bar-search-input {
-    width: 200px;
-}
 
 .search-modal {
     display: none;
