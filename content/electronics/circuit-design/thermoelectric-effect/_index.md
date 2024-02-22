@@ -32,9 +32,9 @@ The Seebeck Effect is primarily used to make thermocouple based temperature sens
 
 The Seebeck coefficient is calculated from the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 S = -\frac{\Delta V}{\Delta T}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -43,15 +43,15 @@ where:<br/>
 \(\Delta T\) is the change in temperature, in \(K\) (although \(^{\circ}C\) would also work)
 </p>
 
-Because of the negative sign in the above equation, a positive Seebeck coefficient will result in the higher temperature region having a lower voltage. Most Seebeck coefficients are small relative to `\(1VK^{-1}\)` are written in units of `\(uVK^{-1}\)`.
+Because of the negative sign in the above equation, a positive Seebeck coefficient will result in the higher temperature region having a lower voltage. Most Seebeck coefficients are small relative to \(1VK^{-1}\) are written in units of \(uVK^{-1}\).
 
-Semiconductors also have Seebeck coefficients. In general, P-doped semiconductors have positive Seebeck coefficients and N-doped semiconductors have negative Seebeck coefficients. Most semiconductor Seebeck coefficients are much larger than those of metals. Intrinsic semiconductors have a Seebeck coefficient of `\(0\)`.
+Semiconductors also have Seebeck coefficients. In general, P-doped semiconductors have positive Seebeck coefficients and N-doped semiconductors have negative Seebeck coefficients. Most semiconductor Seebeck coefficients are much larger than those of metals. Intrinsic semiconductors have a Seebeck coefficient of \(0\).
 
 The Seebeck coefficient of some common metals and semiconductors, relative to Platinum, are shown in the below tables[^electronics-cooling-the-seebeck-coefficient]:
 
 **Metals**
 
-Material      | Seebeck Coefficient (`\(uVK^{-1}\)`)
+Material      | Seebeck Coefficient (\(uVK^{-1}\))
 --------------|----------------------
 Copper        | 6.5
 Gold          | 6.5
@@ -67,14 +67,14 @@ Bismuth       | -72
 
 Notice how the coefficients are typically much higher than metals!
 
-Material                    | Seebeck Coefficient (`\(uVK^{-1}\)`)
+Material                    | Seebeck Coefficient (\(uVK^{-1}\))
 ----------------------------|----------------------
 Se                          | 900
 Te                          | 500
 Si                          | 440
 Ge                          | 300
 PbTe                        | -180
-`\(Pb_{15}Ge_{37}Se_{58}\)` | -1990
+\(Pb_{15}Ge_{37}Se_{58}\) | -1990
 
 
 ## References

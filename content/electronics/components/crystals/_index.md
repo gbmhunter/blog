@@ -25,31 +25,31 @@ A piezoelectric crystal resonator can be modelled as a series LCR circuit in par
 
 {{% figure ref="fig-crystal-equivalent-circuit" src="_assets/crystal-equivalent-circuit.svg" width="800px" caption="The equivalent circuit for a two-lead piezoelectric crystal resonator." %}}
 
-The series components `\(C_1\)`, `\(L_1\)`, and `\(R_1\)` model the physical properties of the piezoelectric crystal, and are called the motional arm[^bib-atmel-avr4100]. They are not real physical electronic components inside the crystal. The parallel component `\(C_0\)` is the lead capacitance[^bib-cts-app-note-crystal-basics].
+The series components \(C_1\), \(L_1\), and \(R_1\) model the physical properties of the piezoelectric crystal, and are called the motional arm[^bib-atmel-avr4100]. They are not real physical electronic components inside the crystal. The parallel component \(C_0\) is the lead capacitance[^bib-cts-app-note-crystal-basics].
 
-`\(L_1\)`: This models the mechanical mass of the quartz in motion. Lower frequency crystals have a value of `\(1-2H\)` (yes, that's whole Henries, much larger than micro/milli-Henries of most real inductors!). This value can drop down to `\(1-100mH\)` for the higher frequency crystals, which are smaller and therefore less mass.
+\(L_1\): This models the mechanical mass of the quartz in motion. Lower frequency crystals have a value of \(1-2H\) (yes, that's whole Henries, much larger than micro/milli-Henries of most real inductors!). This value can drop down to \(1-100mH\) for the higher frequency crystals, which are smaller and therefore less mass.
 
-`\(C_1\)`: This models a number of mechanical properties of the quartz crystal: the stiffness, the area of the electrodes, and the thickness/shape of the wafer. The value for fundamental mode crystals ranges between `\(0.005pF\)` and `\(0.030pF\)`.
+\(C_1\): This models a number of mechanical properties of the quartz crystal: the stiffness, the area of the electrodes, and the thickness/shape of the wafer. The value for fundamental mode crystals ranges between \(0.005pF\) and \(0.030pF\).
 
-`\(R_1\)`: This models the impedance of the crystal when it is oscillating at it's series resonant frequency. When a series LC circuit is at resonant frequency, it's impedance is `\(0\Omega\)`, therefore the impedance (and therefore current) is purely determined by this `\(R_1\)`. `\(R_1\)` is inversely proportional to the active area of the crystal, therefore smaller crystals have a larger `\(R_1\)`.
+\(R_1\): This models the impedance of the crystal when it is oscillating at it's series resonant frequency. When a series LC circuit is at resonant frequency, it's impedance is \(0\Omega\), therefore the impedance (and therefore current) is purely determined by this \(R_1\). \(R_1\) is inversely proportional to the active area of the crystal, therefore smaller crystals have a larger \(R_1\).
 
-`\(C_0\)`: This models the parallel capacitance (a.k.a. _shunt capacitance_) between the two leads of a crystal. It is the measured capacitance between the two leads when the crystal is not excited (i.e. not vibrating). `\(C_0\)` typically ranges from `\(1-7pF\)`.
+\(C_0\): This models the parallel capacitance (a.k.a. _shunt capacitance_) between the two leads of a crystal. It is the measured capacitance between the two leads when the crystal is not excited (i.e. not vibrating). \(C_0\) typically ranges from \(1-7pF\).
 
 ## Series And Parallel Resonant Frequencies
 
-The series resonant frequency `\(f_S\)` only depends on the motional arm (physical properties of the crystal) as shown in `\(Eq.\ \ref{eq:series-res-freq}\)`[^bib-atmel-avr4100].
+The series resonant frequency \(f_S\) only depends on the motional arm (physical properties of the crystal) as shown in \(Eq.\ \ref{eq:series-res-freq}\)[^bib-atmel-avr4100].
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:series-res-freq}
 f_S = \frac{1}{2\pi \sqrt{L_1 C_1}}
-\end{align}</p>
+\end{align}$$
 
-The parallel resonant frequency `\(f_P\)` also depends on the parallel parasitic capacitance `\(C_0\)`, as shown in `\(Eq.\ \ref{eq:parallel-res-freq}\)`[^bib-atmel-avr4100].
+The parallel resonant frequency \(f_P\) also depends on the parallel parasitic capacitance \(C_0\), as shown in \(Eq.\ \ref{eq:parallel-res-freq}\)[^bib-atmel-avr4100].
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:parallel-res-freq}
 f_P = \frac{1}{2\pi \sqrt{L_1 C_1}} \cdot \sqrt{1 + \frac{C_1}{C_0}}
-\end{align}</p>
+\end{align}$$
 
 The series and parallel resonant frequencies are usually very close together. Crystals below 30MHz are operated at a frequency somewhere between the series and parallel resonant frequencies[^bib-atmel-avr4100].
 
@@ -57,14 +57,14 @@ The series and parallel resonant frequencies are usually very close together. Cr
 
 ### Quality Factor
 
-The quality factor for crystal oscillators is extremely large, typically 10,000 or greater. This is due to the very low series resistance (typically around `\(5\Omega\)`.
+The quality factor for crystal oscillators is extremely large, typically 10,000 or greater. This is due to the very low series resistance (typically around \(5\Omega\).
 
 The quality factor is determined by the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 Q &= \frac{X_L}{R} \\
   &= \frac{2\pi f L}{R} \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -73,7 +73,7 @@ where:<br/>
 
 ## 32.678kHz Crystals
 
-32.678kHz is a popular frequency for crystals (also just shortened to _32kHz crystals_) because it is exactly equal to `\(2^{15}\)` cycles per second. This means you can use one with a 15-bit binary counter to get a precise 1-second (1Hz) clock or "tick". It is also a good trade-off in terms of power consumption (lower frequency = lower power consumption, great for battery powered devices) and size (higher frequency means smaller crystal package). 32.678kHz crystal are very common in any embedded circuit design which needs a _real time clock_ (RTC). This includes RTC peripheral built into microcontrollers as well as discrete [RTC ICs](/electronics/components/real-time-clock-ics/). As such, they are also "dirt cheap"!
+32.678kHz is a popular frequency for crystals (also just shortened to _32kHz crystals_) because it is exactly equal to \(2^{15}\) cycles per second. This means you can use one with a 15-bit binary counter to get a precise 1-second (1Hz) clock or "tick". It is also a good trade-off in terms of power consumption (lower frequency = lower power consumption, great for battery powered devices) and size (higher frequency means smaller crystal package). 32.678kHz crystal are very common in any embedded circuit design which needs a _real time clock_ (RTC). This includes RTC peripheral built into microcontrollers as well as discrete [RTC ICs](/electronics/components/real-time-clock-ics/). As such, they are also "dirt cheap"!
 
 Many microcontrollers have pins which you can connect a 32.678kHz crystal to, with pin names such as `XTAL32`, `32K_XP/32K_XN` (ESP32). Sometimes the `32` is added to distinguish it from the "main" higher frequency oscillator pins, which typically support crystals in the frequency range from 1-48MHz. The microcontroller has an internal oscillator for driving the crystal. A _Pierce oscillator_ is a popular oscillator topology used in microcontrollers to drive these crystals. For example, all of the 32.678kHz oscillators in the MSP430 range of microcontrollers use Pierce oscillators[^bib-ti-msp430-32khz].
 
@@ -85,24 +85,24 @@ As shown in {{% ref "fig-tuning-fork-32.678khz-crystal-shape" %}}, 32.678kHz cry
 
 #### Frequency Tolerance
 
-The _frequency tolerance_ of a crystal is the accuracy of the frequency as guaranteed by the manufacturer. It is one of the most important parameters and is typically expressed in parts per million (ppm). Values between `\(\pm20ppm\)` and `\(\pm50ppm\)` are common for standard crystals (high precision crystals can have a lower ppm). Because frequency can vary significantly with temperature, the frequency tolerance is specified at a fixed temperature, usually `\(25^{\circ}C\)`. A separate parameter, the _temperature coefficient_, describes how the crystal's frequency changes with temperature.
+The _frequency tolerance_ of a crystal is the accuracy of the frequency as guaranteed by the manufacturer. It is one of the most important parameters and is typically expressed in parts per million (ppm). Values between \(\pm20ppm\) and \(\pm50ppm\) are common for standard crystals (high precision crystals can have a lower ppm). Because frequency can vary significantly with temperature, the frequency tolerance is specified at a fixed temperature, usually \(25^{\circ}C\). A separate parameter, the _temperature coefficient_, describes how the crystal's frequency changes with temperature.
 
 {{% figure ref="fig-abracon-abs05-32-678khz-crystal-with-freq-tolerance-params-highlighted" src="_assets/abracon-abs05-32-678khz-crystal-with-freq-tolerance-params-highlighted.png" width="700px" caption="A screenshot from the Abracon ABS05 32.768kHz crystal datasheet highlighting the frequency tolerance parameters." %}}
 
 #### Temperature Coefficient and Turnover Temperature
 
-**_Turnover temperature_ (`\(T_O\)`) is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency**. 32.768kHz crystals have a negative parabolic frequency response to temperature (**frequency drops proportionally to the square of the temperature change**) at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature `\(T_O\)` between 20 and 30°C and `\(\alpha\)` of approx. `\(-0.034ppm^{\circ}C^2\)`[^bib-st-32khz-temp-comp]. Presumably the crystal was designed to have a turnover temperature close to nominal operating conditions to minimize the frequency change due to temperature fluctuations around operating conditions (it matters because the drift is proportional to the **square** of the temperature difference...it would not matter where the turnover temperature was if it was linear).
+**_Turnover temperature_ (\(T_O\)) is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency**. 32.768kHz crystals have a negative parabolic frequency response to temperature (**frequency drops proportionally to the square of the temperature change**) at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature \(T_O\) between 20 and 30°C and \(\alpha\) of approx. \(-0.034ppm^{\circ}C^2\)[^bib-st-32khz-temp-comp]. Presumably the crystal was designed to have a turnover temperature close to nominal operating conditions to minimize the frequency change due to temperature fluctuations around operating conditions (it matters because the drift is proportional to the **square** of the temperature difference...it would not matter where the turnover temperature was if it was linear).
 
-{{% figure ref="fig-32768khz-crystal-drift" src="_assets/32768khz-crystal-drift.png" width="500px" caption="The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. In this model, `\(T_O=25^{\circ}C,\ \alpha = -0.034ppm^{\circ}C^2\)`." %}}
+{{% figure ref="fig-32768khz-crystal-drift" src="_assets/32768khz-crystal-drift.png" width="500px" caption="The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. In this model, \(T_O=25^{\circ}C,\ \alpha = -0.034ppm^{\circ}C^2\)." %}}
 
 The _temperature coefficient_ describes how the frequency drops as the temperature moves away from the turnover temperature.
 
-`\(Eq.\ \ref{eq:32khz-drift}\)` shows how to calculate the drift from the current operating temperature of the crystal.
+\(Eq.\ \ref{eq:32khz-drift}\) shows how to calculate the drift from the current operating temperature of the crystal.
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:32khz-drift}
 ppm = \alpha \cdot (T - T_O)^2
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -114,12 +114,12 @@ where:<br/>
 
 The total drift is the frequency tolerance plus this change due to the ambient temperature.
 
-Rather than using `\(ppm\)`, `\(Eq.\ \ref{eq:32khz-drift-as-ratio}\)` shows how you can instead write is a ratio of `\(\frac{f}{f_O}\)`.
+Rather than using \(ppm\), \(Eq.\ \ref{eq:32khz-drift-as-ratio}\) shows how you can instead write is a ratio of \(\frac{f}{f_O}\).
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:32khz-drift-as-ratio}
 \frac{f}{f_O} = \frac{\alpha}{1e^6} \cdot (T - T_O)^2
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -133,32 +133,32 @@ Common rated load capacitances for 32.678kHz crystals includes 6pF, 7pF, 9pF and
 
 ### Time Drift
 
-A 32.768kHz crystal being used in an RTC will cause the time to drift slowly over, well, time :-). By how much? Let's take the most basic approach and assume it's only inaccuracy is it's tolerance. Let's assume the crystal you have chosen has a tolerance of `\(\pm 20ppm\)` and work out by how much it might drift over the course of a year.
+A 32.768kHz crystal being used in an RTC will cause the time to drift slowly over, well, time :-). By how much? Let's take the most basic approach and assume it's only inaccuracy is it's tolerance. Let's assume the crystal you have chosen has a tolerance of \(\pm 20ppm\) and work out by how much it might drift over the course of a year.
 
 The number of seconds in a year is:
 
-<p>\begin{align}
+$$\begin{align}
 t = 60*60*24*365 = 31536000s
-\end{align}</p>
+\end{align}$$
 
-`\(\pm 20ppm\)` of this many seconds is:
+\(\pm 20ppm\) of this many seconds is:
 
-<p>\begin{align}
+$$\begin{align}
 \Delta t &= \frac{20ppm}{1e6} \cdot 31536000s \nonumber \\
          &= 630.7s \nonumber \\
          &= 10.5\text{mins} \\
-\end{align}</p>
+\end{align}$$
 
-So a 32.768kHz crystal with a tolerance of `\(\pm 20ppm\)` could drift by `\(\pm 10.5\text{mins}\)` each year. This is ignoring any other inaccuracies such as temperature dependence.
+So a 32.768kHz crystal with a tolerance of \(\pm 20ppm\) could drift by \(\pm 10.5\text{mins}\) each year. This is ignoring any other inaccuracies such as temperature dependence.
 
 
 ### 32.768kHz Crystal Start-Up Issues
 
 An interesting 32.767kHz crystal start-up issue is discussed in STM's STM32F10xx4 STM32F10xx6 Errata sheet[^bib-st-stm32f10xx4-errata]. Start-up issues with the LSE (low speed external) 32.678kHz crystal have been observed when there is some small amount of leakage current from the `OSC32_IN` and `OSC32_OUT` pins. This is especially true in "harsh conditions", i.e. humid environments.
 
-{{% figure ref="fig-32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata" src="_assets/32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata.png" width="700px" caption="Schematic showing an additional parallel _feedback resistor_ (shown in green) between `\(16M\Omega\)` and `\(22M\Omega\)` to prevent 32.678kHz crystal start-up issues when there is significant leakage from the crystal traces.[^bib-st-stm32f10xx4-errata]." %}}
+{{% figure ref="fig-32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata" src="_assets/32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata.png" width="700px" caption="Schematic showing an additional parallel _feedback resistor_ (shown in green) between \(16M\Omega\) and \(22M\Omega\) to prevent 32.678kHz crystal start-up issues when there is significant leakage from the crystal traces.[^bib-st-stm32f10xx4-errata]." %}}
 
-As shown in {{% ref "fig-32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata" %}}, the solution is to place and additional `\(16{-}22M\Omega\)` parallel feedback resistor between the crystals pins (the `OSC32_IN` and `OSC32_OUT` tracks).
+As shown in {{% ref "fig-32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata" %}}, the solution is to place and additional \(16{-}22M\Omega\) parallel feedback resistor between the crystals pins (the `OSC32_IN` and `OSC32_OUT` tracks).
 
 ### The Negative Resistance Test
 
@@ -182,7 +182,7 @@ Newer crystals come in small, custom SMD packages, with typically either 2 or 4 
 
 ### Simulation
 
-Crystal oscillators can be difficult to simulate accurately in most SPICE-based programs[^bib-fast-crystal-oscillator-simulation-methodology]. Most SPICE programs use the Newton-Raphson algorithm for converging to a solution. Unfortunately, the Newton-Raphson algorithm is not suitable for very high Q circuits, of which a crystal resonator is definitely one (Q values of `\(10,000\)` or more!). The time step has to be set so small for accurate simulation of crystal resonator circuits that it can take days of simulation to "start-up" the ceramic resonator (i.e. reach steady-state oscillation from power-on).
+Crystal oscillators can be difficult to simulate accurately in most SPICE-based programs[^bib-fast-crystal-oscillator-simulation-methodology]. Most SPICE programs use the Newton-Raphson algorithm for converging to a solution. Unfortunately, the Newton-Raphson algorithm is not suitable for very high Q circuits, of which a crystal resonator is definitely one (Q values of \(10,000\) or more!). The time step has to be set so small for accurate simulation of crystal resonator circuits that it can take days of simulation to "start-up" the ceramic resonator (i.e. reach steady-state oscillation from power-on).
 
 ### Crystal Component Packages
 

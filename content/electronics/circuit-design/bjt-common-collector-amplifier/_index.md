@@ -31,7 +31,7 @@ The [MOSFET](/electronics/components/transistors/mosfets/) analogue to the BJT c
 </table>
 
 {{% note %}}
-Lower case letters used below represent changes in quantities, e.g. `\(V_C\)` is the voltage at the collector, whilst `\(v_c\)` is the change in voltage at the collector, `\(\Delta V_C\)`.
+Lower case letters used below represent changes in quantities, e.g. \(V_C\) is the voltage at the collector, whilst \(v_c\) is the change in voltage at the collector, \(\Delta V_C\).
 {{% /note %}}
 
 ## Basic Common Collector Amplifier
@@ -40,15 +40,15 @@ A schematic of a basic common-collector BJT amplifier is shown below:
 
 {{% figure src="common-collector-bjt-amplifier-basic-schematic.png" width="400px" caption="The basic schematic of a common-collector BJT amplifier." %}}
 
-The output voltage is almost equal to the input voltage, except for an approximately `\(0.7V\)` diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
+The output voltage is almost equal to the input voltage, except for an approximately \(0.7V\) diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or \(0dB\).
 
-<p>\begin{align}
+$$\begin{align}
 v_{out} = v_{in} - 0.7V \\
-\end{align}</p>
+\end{align}$$
 
-Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit, with `\(R1=1k\Omega\)`:
+Here is a graph of \(v_{in}\) vs. \(v_{out}\) for the above circuit, with \(R1=1k\Omega\):
 
-{{% figure src="basic-common-collector-amplifier/plot-annotated.png" width="800px" caption="`\(V_{out}\)` vs. `\(V_{in}\)` for a basic common-collector BJT amplifier." %}}
+{{% figure src="basic-common-collector-amplifier/plot-annotated.png" width="800px" caption="\(V_{out}\) vs. \(V_{in}\) for a basic common-collector BJT amplifier." %}}
 
 (Micro-Cap simulation file: [circuit.cir](basic-common-collector-amplifier/circuit.cir))
 
@@ -66,37 +66,37 @@ The small-signal AC model for this circuit is shown below. DC voltage rails and 
 
 {{% figure src="common-collector-bjt-amplifier-ac-coupled-ac-equivalent-schematic.png" width="600px" caption="Small-signal AC model for the AC-coupled common-collector BJT amplifier." %}}
 
-`\(r_e\)` is the small-signal emitter resistance which is internal to the BJT.
+\(r_e\) is the small-signal emitter resistance which is internal to the BJT.
 
 ### Unloaded Voltage Gain
 
-The unloaded small-signal voltage gain of a common-collector amplifier is found by ignoring `\(R_L\)` in the small-signal AC model of the common-collector circuit. By definition the gain is:
+The unloaded small-signal voltage gain of a common-collector amplifier is found by ignoring \(R_L\) in the small-signal AC model of the common-collector circuit. By definition the gain is:
 
-<p>\begin{align}
+$$\begin{align}
 A_V = \frac{v_{out}}{v_{in}} \\
-\end{align}</p>
+\end{align}$$
 
-Remember that `\(v_{in}\)` and `\(v_{out}\)` are lower case and represent changes in the signal (i.e. deltas, and ignore their DC levels). So a change in `\(v_{out}\)` is just a change of emitter voltage, and a change in `\(v_{in}\)` is just a change in base voltage. We can also apply Ohm's law to get:
+Remember that \(v_{in}\) and \(v_{out}\) are lower case and represent changes in the signal (i.e. deltas, and ignore their DC levels). So a change in \(v_{out}\) is just a change of emitter voltage, and a change in \(v_{in}\) is just a change in base voltage. We can also apply Ohm's law to get:
 
-<p>\begin{align}
+$$\begin{align}
 A_V &= \frac{v_e}{v_b} \nonumber \\
     &= \frac{i_c R_E}{i_c(r_e + R_E)} \nonumber \\
     &= \frac{R_E}{r_e + R_E} \\
-\end{align}</p>
+\end{align}$$
 
 ### Input Impedance
 
 The input impedance looking into the base of the transistor is:
 
-<p>\begin{align}
+$$\begin{align}
 Z_{in(base)} &= \beta (r_e + R_E) \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 Then the total input impedance is the base input impedance in parallel with both base resistors:
 
-<p>\begin{align}
+$$\begin{align}
 Z_{in} &= Z_{in(base)} || R_{B1} || R_{B2} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 ## Further Reading
 

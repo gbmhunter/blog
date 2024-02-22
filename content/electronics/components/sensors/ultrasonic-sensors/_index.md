@@ -321,7 +321,7 @@ The sound pressure level (SPL) is a measure of the magnitude of the sound waves 
 * Attenuation due friction as the medium's particles vibrate
 * The spreading loss due to the expanding surface area of the radiating beam as it travels outwards from the transmitter
 
-The sound pressure decreases proportionally as the distance between the source and receiver increases, i.e. `\(\rho \propto \frac{1}{r}\)`. The SPL at a distance R from the transmitter is given by:
+The sound pressure decreases proportionally as the distance between the source and receiver increases, i.e. \(\rho \propto \frac{1}{r}\). The SPL at a distance R from the transmitter is given by:
 
 <div>$$ SPL(R) = SPL(R_0) - 20 log(\frac{R}{R_0}) - \alpha_f R $$</div>
 
@@ -332,11 +332,11 @@ The sound pressure decreases proportionally as the distance between the source a
     \(\alpha(f)\) = attenuation coefficient in \(dB/unit distance\) at frequency \(f\)<br>
 </p>
 
-It is interesting to note that the SPL threshold of pain for a human is somewhere between `\(120-140dB\)`.
+It is interesting to note that the SPL threshold of pain for a human is somewhere between \(120-140dB\).
 
 ## Acoustic Impedance
 
-Acoustic impedance is the measure of opposition to deflection of a mediums particles due to sound. It has the SI units `\(N \cdot s \cdot m^{-3}\)` or `\(Pa\cdot s \cdot m^{-1}\)`.
+Acoustic impedance is the measure of opposition to deflection of a mediums particles due to sound. It has the SI units \(N \cdot s \cdot m^{-3}\) or \(Pa\cdot s \cdot m^{-1}\).
 
 <div>$$ Z = \rho c $$</div>
 

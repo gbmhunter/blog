@@ -141,15 +141,15 @@ When using UARTs on microcontrollers, be careful about _backfeeding_ (a.k.a _bac
 A common scenario for this to occur is debug UARTs, in where an FTDI cable or similar is connected to a UART port on a microcontroller for debugging. During debugging you disconnect power from the microcontroller in an attempt to reset it, only to discover it's being kept alive by the backfeeding through the FTDI's TX pin.
 {{% /warning %}}
 
-[Voltage-level translator ICs](/electronics/components/voltage-level-translation/) are one way to fix this problem. You have make sure they are of the type which make the I/O pins `\(A\)` and `\(B\)` high-impedance when there is `\(0V\)` on one or more of the `\(V_{CC}\)` pins. The below image shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART:
+[Voltage-level translator ICs](/electronics/components/voltage-level-translation/) are one way to fix this problem. You have make sure they are of the type which make the I/O pins \(A\) and \(B\) high-impedance when there is \(0V\) on one or more of the \(V_{CC}\) pins. The below image shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART:
 
 {{% figure src="voltage-translator-to-prevent-uart-backfeeding.png" width="800" caption="Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed." %}}
 
-Rather than a voltage-level translating IC, a buffer IC with `\(I_{OFF}\)` functionality (this is what Texas Instruments calls a logic IC which won't backfeed current from the I/O pins into the `\(V_{CC}\)` pins when the VCC pins are at `\(0V\)`) will also work -- for example, the SN74LVC1G125 ("Single Bus Buffer Gate With 3-State Output").
+Rather than a voltage-level translating IC, a buffer IC with \(I_{OFF}\) functionality (this is what Texas Instruments calls a logic IC which won't backfeed current from the I/O pins into the \(V_{CC}\) pins when the VCC pins are at \(0V\)) will also work -- for example, the SN74LVC1G125 ("Single Bus Buffer Gate With 3-State Output").
 
 ## Pull-up Resistors On TX Lines
 
-Spurious garbage can be sent along along a microcontrollers UART TX line when the microcontroller resets. When microcontrollers reset, all of their GPIO pins typically default back to high-impedance inputs. This will cause the voltage on the TX line, typically idling HIGH, to collapse and signal `LOW`. The UART receiver on the other end of the bus could interpret this as data and give to nonsensical garbage. As shown in the below image, a solution to this is to add a pull-up resistor to `\(V_{CC}\)`, which keeps the TX line HIGH when the microcontroller resets.
+Spurious garbage can be sent along along a microcontrollers UART TX line when the microcontroller resets. When microcontrollers reset, all of their GPIO pins typically default back to high-impedance inputs. This will cause the voltage on the TX line, typically idling HIGH, to collapse and signal `LOW`. The UART receiver on the other end of the bus could interpret this as data and give to nonsensical garbage. As shown in the below image, a solution to this is to add a pull-up resistor to \(V_{CC}\), which keeps the TX line HIGH when the microcontroller resets.
 
 {{% figure src="pull-up-on-uart-tx-line.png" width="500" caption="A 10kΩ pull-up resistor added to the UART TX line (TX w.r.t to the MCU) from a MCU to prevent spurious data being sent when the MCU resets or otherwise disables the UART peripheral via firmware." %}}
 

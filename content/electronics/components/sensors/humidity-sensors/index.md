@@ -26,7 +26,7 @@ Relative humidity is defined as the ratio of the water vapour pressure to the sa
 
 It is ratio of the actual amount of water in the air to the total amount it could when saturated.
 
-<p>$$ RH = \frac{P_W}{P_{WS}}\cdot 100% $$</p>
+$$ RH = \frac{P_W}{P_{WS}}\cdot 100% $$
 
 ## Dew Point
 
@@ -36,7 +36,7 @@ The _dew point_ is the point at which the atmosphere has to be **cooled down** t
 
 The Magnus equation is an approximation to calculate the dew point from the actual air temperature and relative humidity. It is a useful equation to use when you have a sensor IC which measures both temperature and relative humidity.
 
-First we find an intermediary value called gamma (`\(\gamma\)`):
+First we find an intermediary value called gamma (\(\gamma\)):
 
 <div>$$ \gamma(T, RH) = ln(\frac{RH}{100}) + \frac{bT}{c + T} $$</div>
 
@@ -48,15 +48,15 @@ First we find an intermediary value called gamma (`\(\gamma\)`):
     \(c\) = constant<br>
 </p>
 
-`\(\gamma\)` can then be substituted into the following equation to calculate the dew point temperature `\(T_{dp}\)` (in degrees Celsius):
+\(\gamma\) can then be substituted into the following equation to calculate the dew point temperature \(T_{dp}\) (in degrees Celsius):
 
 <div>$$ T_{dp} = \frac{c\gamma(T, RH)}{b - \gamma(T, RH)} $$</div>
 
-The values of the constants `\(a\)`, `\(b\)` and `\(c\)` can vary depending on the data set and method used to calculate them (this is an empirical formula). Common values for them are:
+The values of the constants \(a\), \(b\) and \(c\) can vary depending on the data set and method used to calculate them (this is an empirical formula). Common values for them are:
 
-`\(a = 6.112millibar\)`
-`\(b = 17.67\)`
-`\(c = 243.5^{\circ}C\)`
+\(a = 6.112millibar\)
+\(b = 17.67\)
+\(c = 243.5^{\circ}C\)
 
 The following is a code example in C showing a function which converts temperature and relative humidity into a dew point, using the simple Magnus equation.
 

@@ -75,7 +75,7 @@ type: page
         <ul style="width: 300px;">
           <li>
 
-`\(T_{JC} = 4.2^{\circ}{\rm C}/W\)` [^bib-cs306am]
+\(T_{JC} = 4.2^{\circ}{\rm C}/W\) [^bib-cs306am]
 </li>
         </ul>
       </td>

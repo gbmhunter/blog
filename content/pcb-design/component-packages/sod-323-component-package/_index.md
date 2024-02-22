@@ -54,11 +54,11 @@ Synonyms:
 
 Thermal Resistance:
 
-* `\(R_{\theta(ja)} = 450K/W\)` (FR4 PCB, single-sided copper, standard footprint)[^bib-nexperia-pmeg2020aea]
-* `\(R_{\theta(ja)} = 210K/W\)` (FR4 PCB, single-sided copper, standard footprint but with `\(1cm^2\)` mounting pad for cathode)[^bib-nexperia-pmeg2020aea]
-* `\(R_{\theta(jc)} = 90K/W\)` (from junction to solder point)[^bib-nexperia-pmeg2020aea]
+* \(R_{\theta(ja)} = 450K/W\) (FR4 PCB, single-sided copper, standard footprint)[^bib-nexperia-pmeg2020aea]
+* \(R_{\theta(ja)} = 210K/W\) (FR4 PCB, single-sided copper, standard footprint but with \(1cm^2\) mounting pad for cathode)[^bib-nexperia-pmeg2020aea]
+* \(R_{\theta(jc)} = 90K/W\) (from junction to solder point)[^bib-nexperia-pmeg2020aea]
 
-Typical PCB Land Area: `\(13.75mm^2\)` (5x2.75mm)[^bib-nxp-sod323-ds]
+Typical PCB Land Area: \(13.75mm^2\) (5x2.75mm)[^bib-nxp-sod323-ds]
 
 ## SOD-323F (Flat Lead Variant)
 

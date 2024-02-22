@@ -38,25 +38,25 @@ Most Peltiers consist of many small semiconductor junctions, joined together in 
 
 ## Max. Heat Transfer (Qmax)
 
-The maximum heat transfer (also known as `\(Q_{max}\)`, or maximum work), is the **maximum amount of energy per second** that the Peltier device can **move** from the cold side to the hot side. It is measured in Watts (`\(W\)`).
+The maximum heat transfer (also known as \(Q_{max}\), or maximum work), is the **maximum amount of energy per second** that the Peltier device can **move** from the cold side to the hot side. It is measured in Watts (\(W\)).
 
 This always occurs when the **temperature differential** between the hot and cold sides is 0°C. (i.e. at the same temperature). Obviously, for any real-life operating Peltier, this is impossible. The larger the temperature differential, the less heat can be moved across the plates.
 
-`\(Q_{max}\)` is also dependent on the **absolute temperature** of the plates. As the absolute temperature rises, `\(Q_{max}\)` also increases. The absolute temperature that `\(Q_{max}\)` is measured at is usually specified on the Peltier's datasheet. The absolute temperature of the hot side is usually given (`\(T_H\)`. Since `\(Q_{max}\)` is given for when both sides are at the same temperature, this is also equal to the temperature of the cold side.
+\(Q_{max}\) is also dependent on the **absolute temperature** of the plates. As the absolute temperature rises, \(Q_{max}\) also increases. The absolute temperature that \(Q_{max}\) is measured at is usually specified on the Peltier's datasheet. The absolute temperature of the hot side is usually given (\(T_H\). Since \(Q_{max}\) is given for when both sides are at the same temperature, this is also equal to the temperature of the cold side.
 
-It is important to NOT confuse the heat transfer `\(Q\)` with the input power `\(P\)`.
+It is important to NOT confuse the heat transfer \(Q\) with the input power \(P\).
 
 ## Max. Temp Differential
 
-The maximum temperature differential (`\(\Delta T_{max}\)`) is the maximum temperature difference that the Peltier can produce between the hot and cold sides. It happens to be the point at which `\(Q_{max} = 0\)` (remember that the maximum heat transfer decreases with increasing temp. differential). It also occurs when the Peltier is being driven at maximum voltage and current.
+The maximum temperature differential (\(\Delta T_{max}\)) is the maximum temperature difference that the Peltier can produce between the hot and cold sides. It happens to be the point at which \(Q_{max} = 0\) (remember that the maximum heat transfer decreases with increasing temp. differential). It also occurs when the Peltier is being driven at maximum voltage and current.
 
-For all practical designs `\(\Delta T_{max}\)` is a theoretical upper limit, you will never be able to achieve this temperature differential.
+For all practical designs \(\Delta T_{max}\) is a theoretical upper limit, you will never be able to achieve this temperature differential.
 
 ## Max. Operating Temp
 
-The maximum operating temperature (`\(T_{max}\)`) is the maximum temperature any part of the Peltier is allowed to reach. Naturally this is the maximum temperature of the hot side.
+The maximum operating temperature (\(T_{max}\)) is the maximum temperature any part of the Peltier is allowed to reach. Naturally this is the maximum temperature of the hot side.
 
-Do NOT confuse this with the maximum temperature differential, `\(\Delta T_{max}\)`.
+Do NOT confuse this with the maximum temperature differential, \(\Delta T_{max}\).
 
 Be very careful not to exceed the maximum. operating temperature! Among other things, you could cause the solder connecting the thermoelectric pairs inside the Peltier module to melt, destroying the device (and potentially causing short-circuits). This solder usually melts around 120-160°C.
 

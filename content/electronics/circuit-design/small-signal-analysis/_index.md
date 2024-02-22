@@ -20,9 +20,9 @@ Small-signal analysis can be used to find the input/output impedances of various
 
 1. **Find the quiescent point (DC operating point) of the circuit**. Remove all signal sources, leaving the DC supplies, and find the DC voltages and currents at each node in the circuit.
 
-1. **Linearize the non-linear circuit components at the DC operating point**. The most basic example of this is a diode, whose current is approximately proportional to the square of the voltage across it. But as long as the signal is small (hence the name, small-signal analysis!) compared to the DC operating point of the diode, you can approximate this to a linear relationship, i.e. `\( \Delta V = \Delta I R\)`. This resistance is called the _dynamic resistance_.
+1. **Linearize the non-linear circuit components at the DC operating point**. The most basic example of this is a diode, whose current is approximately proportional to the square of the voltage across it. But as long as the signal is small (hence the name, small-signal analysis!) compared to the DC operating point of the diode, you can approximate this to a linear relationship, i.e. \( \Delta V = \Delta I R\). This resistance is called the _dynamic resistance_.
 
-1. **Find the small-signal solution**: Now the DC sources are removed. Voltage sources are replaced with `\(0\Omega\)` resistors (short circuit), current sources are replaced with `\(\infty \Omega\)` resistors (open circuit). The signal sources are re-introduced and then finally node voltages and currents are solved using easy linear equations.
+1. **Find the small-signal solution**: Now the DC sources are removed. Voltage sources are replaced with \(0\Omega\) resistors (short circuit), current sources are replaced with \(\infty \Omega\) resistors (open circuit). The signal sources are re-introduced and then finally node voltages and currents are solved using easy linear equations.
 
 Taking it a step further: The complete solution is just the sum of the DC operating point + the small-signal solution.
 
@@ -40,7 +40,7 @@ These two resistors are now in parallel, we can re-arrange the circuit as below 
 
 {{% figure src="resistor-divider-03-rearranged.png" width="500px" caption="Circuit re-arranged to highlight both resistors in parallel." %}}
 
-The two resistors in parallel can be replaced with a single equivalent resistor (remembering `\( R_{parallel
-} = \frac{R_1 R_2}{R_1 + R_2} \)`):
+The two resistors in parallel can be replaced with a single equivalent resistor (remembering \( R_{parallel
+} = \frac{R_1 R_2}{R_1 + R_2} \)):
 
 {{% figure src="resistor-divider-04-equivalent-output-resistance.png" width="500px" caption="Equivalent resistance of the two resistors in parallel." %}}

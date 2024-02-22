@@ -114,9 +114,9 @@ Large DIP packages are unsuitable for high speed devices because of the long len
 
 The general land area formula for DIP packages is:
 
-<p>\begin{align}
+$$\begin{align}
 A = (\frac{n}{2})*2.54) * (width + 1.65mm)
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>

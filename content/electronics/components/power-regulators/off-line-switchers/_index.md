@@ -29,7 +29,7 @@ And here is an example of a non-isolated version:
 
 ### InnoSwitch3-Pro Family
 
-The _InnoSwitch3-Pro family_ of off-line converters from Power Integrations features secondary side synchronous rectification (SR), constant voltage (CV) or constant current (CC) control, integrated primary-side switch, integrated 3.6V "`\(uVCC\)`" power output to directly powering a microcontroller, cable drop voltage compensation, and an [I2C port](/electronics/communication-protocols/i2c-communication-protocol/)[^bib-innoswitchpro-3-ds].
+The _InnoSwitch3-Pro family_ of off-line converters from Power Integrations features secondary side synchronous rectification (SR), constant voltage (CV) or constant current (CC) control, integrated primary-side switch, integrated 3.6V "\(uVCC\)" power output to directly powering a microcontroller, cable drop voltage compensation, and an [I2C port](/electronics/communication-protocols/i2c-communication-protocol/)[^bib-innoswitchpro-3-ds].
 
 {{% figure src="innoswitch3-pro-insop-24d-package-3d-render.png" width="300px" caption="3D render of the InnoSwitch3-Pro off-line regulator in a InSOP-24D package[^bib-innoswitchpro-3-ds]." %}}
 

@@ -71,7 +71,7 @@ type: "page"
     <tr>
       <td>Typical PCB Land Area</td>
       <td>
-`\(7.29mm^2\ (2.7\times 2.7mm)\)`[^bib-infineon-pg-sot143-4-4]
+\(7.29mm^2\ (2.7\times 2.7mm)\)[^bib-infineon-pg-sot143-4-4]
       </td>
     </tr>
     <tr>

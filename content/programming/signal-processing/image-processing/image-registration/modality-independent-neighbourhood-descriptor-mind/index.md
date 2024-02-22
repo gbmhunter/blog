@@ -20,23 +20,23 @@ The concept is based on the idea that each pixel in an image can be assigned a _
 
 Each value in the MIND descriptor for a pixel is described by the following equation[^mind]:
 
-<p>$$ \text{MIND}({\bf I}, \vec{x}, \vec{r}) = \frac{1}{n} \, \exp\left(-\frac{D_p(\mathbf{I}, \vec{x}, \vec{x} + \vec{r})}{V(\mathbf{I}, \vec{x})}\right) \quad \vec{r} \in \mathbb{R} \tag{1} $$</p>
+$$ \text{MIND}({\bf I}, \vec{x}, \vec{r}) = \frac{1}{n} \, \exp\left(-\frac{D_p(\mathbf{I}, \vec{x}, \vec{x} + \vec{r})}{V(\mathbf{I}, \vec{x})}\right) \quad \vec{r} \in \mathbb{R} \tag{1} $$
 
 where:
 
-* `\({\bf I}\)` is the 2D greyscale image, as a 2D matrix of real values
-* `\(\vec{x}\)` is the pixel location you are currently calculating the MIND descriptor for (e.g. `\(\vec{x} = (2, 5)\)` would be the pixel at the 3rd column and 6th row)
-* `\(\vec{r}\)` is an element from the search space `\(\mathbb{R}\)` (e.g. `\(\vec{r} = (0,1)\)`)
-* `\(\mathbb{R}\)` is the set of all pixels (defined by relative shifts from `\(\vec{x}\)`) involved in the search space, e.g. for a 4-neighbourhood search space in a 2D image, `\(\mathbb{R} = ((-1, 0), (1, 0), (0, -1), (0, 1))\)`
-* `\(n\)` is a normalizing constant
-* `\(D_p({\bf I}, \vec{x}, \vec{x} + \vec{r})\)` is the patch distance between the descriptor pixel and search space pixel (more on this later)
-* `\(V({\bf I}, \vec{x})\)` is an estimate on the variance for the descriptor pixel (more on this later)
+* \({\bf I}\) is the 2D greyscale image, as a 2D matrix of real values
+* \(\vec{x}\) is the pixel location you are currently calculating the MIND descriptor for (e.g. \(\vec{x} = (2, 5)\) would be the pixel at the 3rd column and 6th row)
+* \(\vec{r}\) is an element from the search space \(\mathbb{R}\) (e.g. \(\vec{r} = (0,1)\))
+* \(\mathbb{R}\) is the set of all pixels (defined by relative shifts from \(\vec{x}\)) involved in the search space, e.g. for a 4-neighbourhood search space in a 2D image, \(\mathbb{R} = ((-1, 0), (1, 0), (0, -1), (0, 1))\)
+* \(n\) is a normalizing constant
+* \(D_p({\bf I}, \vec{x}, \vec{x} + \vec{r})\) is the patch distance between the descriptor pixel and search space pixel (more on this later)
+* \(V({\bf I}, \vec{x})\) is an estimate on the variance for the descriptor pixel (more on this later)
 
 Note that I have changed the syntax slightly from that listed in the publication as to fit the {{% link text="mathematical style guide" src="/mathematics" %}} for this blog.
 
 Given two images that need registering, you can calculate MIND descriptors for each pixel in both images. Then a simple and easily optimizable sum-of-squared differences is calculated between the MIND descriptors in each image. By transforming the compare image relative to the reference image, this value will vary. When this value is minimized, this represents the transformation which best registers the compare image ontop of the reference image. This forms the objective function for which you wish to minimize, and can be easily solved with traditional optimization algorithms such as Nelder-Mead or gradient descent.
 
-The number of elements in this vector depends on the choice of _search space_ `\(\mathbb{R}\)`. The search space involves a number of pixels in the area around the pixel that you are calculating the descriptor for. One of the most basic search spaces for a 2D image would be the _four-neighbourhood_, involving the pixel above, below, to the left and to the right of the pixel. For every pixel in the search space, a square _patch_ (for example, a 3x3 patch) of pixels is found. This is compared to the similar-sized square patch centered on the pixel you are calculating the MIND descriptor for. For each pair of patches, the sum of squared differences is calculated. This value is assigned to the pixel in the search space.
+The number of elements in this vector depends on the choice of _search space_ \(\mathbb{R}\). The search space involves a number of pixels in the area around the pixel that you are calculating the descriptor for. One of the most basic search spaces for a 2D image would be the _four-neighbourhood_, involving the pixel above, below, to the left and to the right of the pixel. For every pixel in the search space, a square _patch_ (for example, a 3x3 patch) of pixels is found. This is compared to the similar-sized square patch centered on the pixel you are calculating the MIND descriptor for. For each pair of patches, the sum of squared differences is calculated. This value is assigned to the pixel in the search space.
 
 
 An example image registration algorithm written in Matlab and using MIND/Gauss-Newton optimization can be found at: [http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software](http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software).
@@ -49,34 +49,34 @@ If using the MIND descriptor to coregister two images, you should find that norm
 
 ## Worked Example
 
-We will demonstrate how MIND works with a very basic 2D 5x5 (25 pixel) greyscale image. For simplicity, the pixels intensities have been assigned the values 1 to 25 as shown in the below diagram (typically they will range from 0 to 255 or similar `\(2^n -1 \)` bit number).
+We will demonstrate how MIND works with a very basic 2D 5x5 (25 pixel) greyscale image. For simplicity, the pixels intensities have been assigned the values 1 to 25 as shown in the below diagram (typically they will range from 0 to 255 or similar \(2^n -1 \) bit number).
 
-Pixel `\((0, 0)\)` is in the upper left corner. Pixels are indexed in `\((row, column)\)` order (which could also be thought of as `\((y, x)\)`). This matches the row-major indexing of Numpy and the C programming language.
+Pixel \((0, 0)\) is in the upper left corner. Pixels are indexed in \((row, column)\) order (which could also be thought of as \((y, x)\)). This matches the row-major indexing of Numpy and the C programming language.
 
-We will work through the process of calculating the MIND descriptor for pixel `\((1,2)\)`, which has an intensity of 8 and is shown in dark blue in the below image. We will using the following MIND parameters:
+We will work through the process of calculating the MIND descriptor for pixel \((1,2)\), which has an intensity of 8 and is shown in dark blue in the below image. We will using the following MIND parameters:
 
 * A search space of 4-neighbourhood (i.e. the pixels directly touching the pixel of interest), shown in light blue. The pixel we are calculating the MIND descriptor for is not in the search space.
 * A patch size of 3 (more on this later).
 
 {{% figure src="mind_descriptor_search_space.svg" width="500px" %}}
 
-For our search space `\(\mathbb{R}\)` 4-neighbourhood, we use the following pixels (coordinates are relative to the pixel we are calculating the MIND descriptor for).
+For our search space \(\mathbb{R}\) 4-neighbourhood, we use the following pixels (coordinates are relative to the pixel we are calculating the MIND descriptor for).
 
-<p>$$ \mathbb{R} = \left(\quad (0,1), (0,-1), (1,0), (-1,0)\quad \right) $$</p>
+$$ \mathbb{R} = \left(\quad (0,1), (0,-1), (1,0), (-1,0)\quad \right) $$
 
-Remember, these correspond to `\((row, column)\)` or `\((y, x)\)`.
+Remember, these correspond to \((row, column)\) or \((y, x)\).
 
-For each one of the pixels in the search space `\(\mathbb{R}\)`, a 3x3 pixel _patch_ is formed, with the pixel in the center (and this time, the pixel IS included in the patch). We chose a patch with a width/height of 3 for simplicity, but this is a parameter which can be adjusted. In the below image on the left, the patch for the `\((1, 1)\)` pixel is shown. A patch centered on the MIND descriptor pixel is also formed.
+For each one of the pixels in the search space \(\mathbb{R}\), a 3x3 pixel _patch_ is formed, with the pixel in the center (and this time, the pixel IS included in the patch). We chose a patch with a width/height of 3 for simplicity, but this is a parameter which can be adjusted. In the below image on the left, the patch for the \((1, 1)\) pixel is shown. A patch centered on the MIND descriptor pixel is also formed.
 
 {{% figure src="mind_descriptor_patch_comparison.svg" width="700px" %}}
 
 With these two patches, a _patch distance_ is calculated. Each patch element can has a different weighting (common weightings are a 2D gaussian or a constant value). This is an element-wise sum-of-squared differences calculation.
 
-For simplicity, we will use a constant patch weighting of `\(\frac{1}{9}\)` to normalize the 3x3 patch. For the above patches, this would be:
+For simplicity, we will use a constant patch weighting of \(\frac{1}{9}\) to normalize the 3x3 patch. For the above patches, this would be:
 
-<p>$$ \begin{align} SOS &=(\frac{1}{3}(20-10))^2 + (\frac{1}{3}(10-17))^2 + (\frac{1}{3}(17-2))^2 \\ &+ (\frac{1}{3}(16-11))^2 + (\frac{1}{3}(11-4))^2 + (\frac{1}{3}(4-21))^2 \\ &+ (\frac{1}{3}(3-12))^2 + (\frac{1}{3}(12-1))^2 + (\frac{1}{3}(1-24))^2 \\ &= 163.11 \end{align}$$</p>
+$$ \begin{align} SOS &=(\frac{1}{3}(20-10))^2 + (\frac{1}{3}(10-17))^2 + (\frac{1}{3}(17-2))^2 \\ &+ (\frac{1}{3}(16-11))^2 + (\frac{1}{3}(11-4))^2 + (\frac{1}{3}(4-21))^2 \\ &+ (\frac{1}{3}(3-12))^2 + (\frac{1}{3}(12-1))^2 + (\frac{1}{3}(1-24))^2 \\ &= 163.11 \end{align}$$
 
-This value of `\(163.11\)` is attached to the `\((1, 1)\)` pixel in the search space. The same patch distance calculation is repeated for all pixels in the search space, which would give the results as shown in the below diagram:
+This value of \(163.11\) is attached to the \((1, 1)\) pixel in the search space. The same patch distance calculation is repeated for all pixels in the search space, which would give the results as shown in the below diagram:
 
 {{% figure src="mind_descriptor_patch_distances.svg" width="500px" %}}
 
@@ -84,9 +84,9 @@ Next, we have to calculate a variance for each pixel. For every pixel, we estima
 
 For our chosen pixel, this would be:
 
-<p>$$ var = \frac{163.11 + 128.78 + 152.00 + 61.11}{4} = 126.25 $$</p>
+$$ var = \frac{163.11 + 128.78 + 152.00 + 61.11}{4} = 126.25 $$
 
-If we do this for every pixel, this results in the following array (you can see the value we just calculated at entry `\((1, 2)\)`):
+If we do this for every pixel, this results in the following array (you can see the value we just calculated at entry \((1, 2)\)):
 
 ```python
 array([[ 15.33,  41.97,  68.19,  87.61,  60.97],
@@ -98,22 +98,22 @@ array([[ 15.33,  41.97,  68.19,  87.61,  60.97],
 
 We have now ready to perform the final calculation and find the MIND descriptors for each pixel, using the equation from [^mind].
 
-<p>$$ MIND(I, \vec{x}, \vec{r}) = \frac{1}{n}exp(-\frac{D_P(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}) \quad \vec{r} \in \mathbb{R} $$</p>
+$$ MIND(I, \vec{x}, \vec{r}) = \frac{1}{n}exp(-\frac{D_P(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}) \quad \vec{r} \in \mathbb{R} $$
 
-Because we have four pixels in the search space `\(R\)` for each pixel we are calculating the MIND descriptor for, the MIND descriptor will also contain four values (dimensions).
+Because we have four pixels in the search space \(R\) for each pixel we are calculating the MIND descriptor for, the MIND descriptor will also contain four values (dimensions).
 
-For our pixel `\(1, 2\)`, these four values will be:
+For our pixel \(1, 2\), these four values will be:
 
-<p>$$
+$$
 M(I, (1,2), (0,1)) = exp(-\frac{152.00}{126.25}) = 0.300 \\
 M(I, (1,2), (0,-1)) = exp(-\frac{163.11}{126.25}) = 0.275 \\
 M(I, (1,2), (1,0)) = exp(-\frac{128.78}{126.25}) = 0.361 \\
 M(I, (1,2), (-1,0)) = exp(-\frac{61.11}{126.25}) = 0.616 \\
-$$</p>
+$$
 
 Giving the MIND descriptor:
 
-<p>$$ MIND(I, (1,2)) = [ 0.300, 0.275, 0.361, 0.616 ] $$</p>
+$$ MIND(I, (1,2)) = [ 0.300, 0.275, 0.361, 0.616 ] $$
 
 This calculation is performed for all pixels, giving the following array of MIND descriptors (first axis is pixel columns, second axis is pixel rows, third axis contains the four values that make up the MIND descriptor for that pixel):
 

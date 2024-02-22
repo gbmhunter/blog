@@ -70,7 +70,7 @@ For example, an excerpt of parameters from the Bourns 2036-xx-SM datasheet, from
 
 ### Impulse Discharge Current
 
-The _impulse discharge current_ is the amount of current the GDT can withstand for a short amount of time under a fault condition. GDTs typically have the highest impulse discharge current rating out of all transient voltage suppressor components (which includes TVS diodes, Zener diodes, e.t.c). Typically rated as per the 8/20us specification. A GDT will normally have a impulse discharge current between `\(1-50kA\)`.
+The _impulse discharge current_ is the amount of current the GDT can withstand for a short amount of time under a fault condition. GDTs typically have the highest impulse discharge current rating out of all transient voltage suppressor components (which includes TVS diodes, Zener diodes, e.t.c). Typically rated as per the 8/20us specification. A GDT will normally have a impulse discharge current between \(1-50kA\).
 
 ### Number of Electrodes
 

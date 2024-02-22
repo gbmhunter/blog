@@ -34,7 +34,7 @@ When current is flowing through an inductor, some electrical energy is converted
 
 The defining equation relating the voltage, inductance and change in current is:
 
-<p>$$v = L \frac{di}{dt}$$</p>
+$$v = L \frac{di}{dt}$$
 
 <p class="centered">
     where:<br>
@@ -59,8 +59,8 @@ There are a few common schematic symbols for an inductor. `L` is almost always u
 
 ### Inductance
 
-* Symbol: `\(L\)`
-* Units: Henries (or Henrys)[^bib-wiktionary-henry] (`\(H\)`)
+* Symbol: \(L\)
+* Units: Henries (or Henrys)[^bib-wiktionary-henry] (\(H\))
 
 The main thing you care about! The _inductance_ determines the relationship between the rate of change in current through the inductor and the inductors voltage. It determines the voltage the inductor will generate in response to a specific rate of current change. This parameter is used to calculate it's impedance, for a given frequency.
 
@@ -70,17 +70,17 @@ The _K-factor_ (a.k.a.) _coupling coefficient_ is a fractional value of the amou
 
 ### DC resistance
 
-* Symbol: `\(DCR\)`
-* Units: Ohms (`\(\Omega\)`)
+* Symbol: \(DCR\)
+* Units: Ohms (\(\Omega\))
 
 The _DC resistance_ is the resistance of the inductor's coil of wire, measured at DC. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter. For a fixed volume, a larger valued inductor usually has a higher DCR as it has a larger number of thinner guage turns.
 
-Typical DC resistances range from `\(10m\Omega\)` to `\(10\Omega\)`. 
+Typical DC resistances range from \(10m\Omega\) to \(10\Omega\). 
 
 ### Saturation Current
 
-* Symbol: `\(I_{sat}\)`
-* Units: Amps (`\(A\)`)
+* Symbol: \(I_{sat}\)
+* Units: Amps (\(A\))
 
 The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor (it's not a sudden point, but rather defined as when the inductance drops to a fixed percentage of it's nominal value). Above this point, the magnetic field does not increase proportionally with the current (the core is "saturated"), and the apparent inductance of the inductor is decreasing. This also means that above the saturation current the current will rise/fall much faster, which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
 
@@ -92,27 +92,27 @@ Typical saturation currents range from 10-100mA's for small inductors, up to 1-1
 
 ### Rated current
 
-* Symbol: `\(I_{rated}\)`
-* Units: Amps (`\(A\)`)
+* Symbol: \(I_{rated}\)
+* Units: Amps (\(A\))
 
 The _rated current_ is typically given as the amount of average current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C. Inductors can usually handle current peaks above the _rated current_ as long as the average is still less.
 
 ### Self-resonant Frequency
 
-* Symbol: `\(SRF\)`
-* Units: Megahertz (`\(MHz\)`)
+* Symbol: \(SRF\)
+* Units: Megahertz (\(MHz\))
 
 The _self-resonant frequency_ of an inductor is the frequency at which the parasitic capacitance of the inductor resonates with the inductance, resulting in a very high impedance (e.g. open circuit)[^bib-everythingrf-self-resonant-frequency]. The inductor stops behaving like a inductor above the self-resonant frequency.
 
-The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance `\(L\)` spikes at about 75MHz:
+The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance \(L\) spikes at about 75MHz:
 
 {{% figure src="_assets/self-resonant-frequency.png" width="600px" caption="Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF)." %}}
 
 The equation for the SRF is[^bib-coilcraft-measuring-srf]:
 
-<p>\begin{align}
+$$\begin{align}
 SRF = \frac{1}{2\pi \sqrt{LC}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -189,11 +189,11 @@ The behaviour of inductors when connected together in series and in parallel is 
 
 When two inductors are connected in parallel, the equivalent total inductance follows the inverse law, as long as there is no **mutual coupling** of their magnetic fields:
 
-<p>$$ L_{total} = \dfrac{1}{\dfrac{1}{L1} + \dfrac{1}{L2}} $$</p>
+$$ L_{total} = \dfrac{1}{\dfrac{1}{L1} + \dfrac{1}{L2}} $$
 
 It is usually easier to remember this equation as:
 
-<p>$$ \dfrac{1}{L_{total}} = \dfrac{1}{L1} + \dfrac{1}{L2} $$</p>
+$$ \dfrac{1}{L_{total}} = \dfrac{1}{L1} + \dfrac{1}{L2} $$
 
 The following diagram shows this:
 
@@ -203,7 +203,7 @@ The following diagram shows this:
 
 The equivalent inductance of two inductors connected in series is the sum of the individual inductances, as long as there is no **mutual coupling** of their magnetic fields.
 
-<p>$$ L_{total} = L1 + L2 $$</p>
+$$ L_{total} = L1 + L2 $$
 
 This is shown in the diagram below:
 
@@ -213,7 +213,7 @@ This is shown in the diagram below:
 
 The energy stored in a inductor is given by:
 
-<p>$$E = \frac{1}{2}LI^2$$</p>
+$$E = \frac{1}{2}LI^2$$
 
 <p class="centered">
     where:<br>
@@ -228,9 +228,9 @@ This equation is only valid when the inductor is operating in it's linear region
 
 ### Simple Model
 
-An ideal inductor (no parasitic elements) has an impedance `\(Z_L\)` given by:
+An ideal inductor (no parasitic elements) has an impedance \(Z_L\) given by:
 
-<p>$$Z_L = 2\pi fL$$</p>
+$$Z_L = 2\pi fL$$
 
 <p class="centered">
     where:<br>
@@ -240,14 +240,14 @@ An ideal inductor (no parasitic elements) has an impedance `\(Z_L\)` given by:
 </p>
 
 {{% note %}}
-Sometimes `\(X_L\)` is used instead of `\(Z_L\)`. `\(X\)` represents reactance (purely imaginary), whilst `\(Z\)` is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. `\(X_L = Z_L\)`.
+Sometimes \(X_L\) is used instead of \(Z_L\). \(X\) represents reactance (purely imaginary), whilst \(Z\) is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. \(X_L = Z_L\).
 {{% /note %}}
 
 This shows that the impedance goes up as the frequency goes up. At DC levels, the inductor has no impedance and acts like a short-circuit, while at high frequencies the inductor approaches an open-circuit.
 
 You may also see this written as:
 
-<p>$$Z_L = \omega L$$</p>
+$$Z_L = \omega L$$
 
 <p class="centered">
     where:<br>
@@ -264,7 +264,7 @@ For a more accurate but complex model, see the Parasitic Model section.
 
 An inductor with parasitic components may be modelled by:
 
-<p>$$Z_L = \frac{1}{ \frac{1}{R_P} + \frac{1}{j \omega L + R_S} + j \omega C_P }$$</p>
+$$Z_L = \frac{1}{ \frac{1}{R_P} + \frac{1}{j \omega L + R_S} + j \omega C_P }$$
 
 <p class="centered">
     where:<br>
@@ -276,16 +276,16 @@ An inductor with parasitic components may be modelled by:
     \( C_P \) = parasitic parallel capacitance (\( F \))<br>
 </p>
 
-The main parasitic components are the series resistance (`\( R_S \)`) and the parallel capacitance (`\( C_P \)`). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
+The main parasitic components are the series resistance (\( R_S \)) and the parallel capacitance (\( C_P \)). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
 
 This model is a pretty good representation for most simulation purposes, and gives that characteristic decrease in performance (non-inductor-like behaviour) at high-frequencies.
 
 Typical values might be:
 
-* `\( R_P = 0\Omega \)`
-* `\( L = 1uH \)`
-* `\( R_S = 10m\Omega \)`
-* `\( C_P = 10pF \)`.
+* \( R_P = 0\Omega \)
+* \( L = 1uH \)
+* \( R_S = 10m\Omega \)
+* \( C_P = 10pF \).
 
 ## Inductor Networks
 
@@ -293,13 +293,13 @@ Typical values might be:
 
 Inductors in parallel behave just like resistors in parallel.
 
-<p>$$ \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N} $$</p>
+$$ \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N} $$
 
 ### Inductors In Series
 
 Inductors in series behave just like resistors in series.
 
-<p>$$ L_{eq} = L_1 + L_2 + \ldots + L_n $$</p>
+$$ L_{eq} = L_1 + L_2 + \ldots + L_n $$
 
 ## Inductor Kickback
 
@@ -325,7 +325,7 @@ Reaching saturation is not always a bad thing. Saturation is desirable in self-s
 
 ## Rated Current
 
-The rated current of an inductor is the maximum DC current allowed before the inductor gets"too hot". "Too hot" is usually defined as a certain temperature rise above ambient (e.g. `\( 40^{\circ}C \)`) when the inductor is mounted using a standard footprint on a standard PCB; again, both defined by the manufacturer. 
+The rated current of an inductor is the maximum DC current allowed before the inductor gets"too hot". "Too hot" is usually defined as a certain temperature rise above ambient (e.g. \( 40^{\circ}C \)) when the inductor is mounted using a standard footprint on a standard PCB; again, both defined by the manufacturer. 
 
 ## Saturation Current vs. Rated Current
 
@@ -361,9 +361,9 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Calculate the inductance! It is equal to:
 
-    <p>\begin{align}
+    $$\begin{align}
     L = \sqrt{\frac{1}{3}} \cdot \frac{50\Omega}{2\pi f}
-    \end{align}</p>
+    \end{align}$$
 
     <p class="centered">
     where:</br>
@@ -378,52 +378,52 @@ The above method only works well for inductors which have a low series resistanc
 
 **How It Works**
 
-The internal resistance of the signal generator `\(50\Omega\)` and the inductance form a voltage divider. The impedance of the resistor stays constant at `\(50\Omega\)` no matter the frequency, but the impedance of the inductor does change with frequency (`\(Z_L = X_L = \omega L\)`). You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
+The internal resistance of the signal generator \(50\Omega\) and the inductance form a voltage divider. The impedance of the resistor stays constant at \(50\Omega\) no matter the frequency, but the impedance of the inductor does change with frequency (\(Z_L = X_L = \omega L\)). You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
 
 We arrive at the equation for the inductance by using the voltage-divider rule for a complex circuit:
 
-<p>\begin{align}
+$$\begin{align}
 \left| \frac{V_{SCOPE}}{V_{SIG}} \right| = \left| \frac{j\omega L}{R + j\omega L} \right|
-\end{align}</p>
+\end{align}$$
 
 Simplifying:
 
-<p>\begin{align}
+$$\begin{align}
 \left| \frac{V_{SCOPE}}{V_{SIG}} \right| &= \left| \frac{j\omega L}{R + j\omega L} \cdot \frac{R - j\omega L}{R - j\omega L} \right| \nonumber \\
                                          &= \left| \frac{j\omega RL + \omega^2 L^2}{R^2 + \omega^2 L^2} \right|
-\end{align}</p>
+\end{align}$$
 
 Now let's separate the equation into a real and imaginary part:
 
-<p>\begin{align}
+$$\begin{align}
 \left| \frac{V_{SCOPE}}{V_{SIG}} \right| &= \left| \frac{\omega^2 L^2}{R^2 + \omega^2 L^2} + j\frac{\omega RL}{R^2 + \omega^2 L^2} \right| \\
-\end{align}</p>
+\end{align}$$
 
 Now we can take the magnitude of this and simplify:
 
-<p>\begin{align}
+$$\begin{align}
 \left| \frac{V_{SCOPE}}{V_{SIG}} \right| &= \sqrt{ \frac{\omega^4 L^4}{(R^2 + \omega^2 L^2)^2} + \frac{\omega^2 R^2L^2}{(R^2 + \omega^2 L^2)^2} } \nonumber \\
                                          &= \frac{\sqrt{\omega^4 L^4 + \omega^2R^2L^2}}{R^2 + \omega^2L^2} \nonumber \\
                                          &= \frac{\sqrt{\omega^2 L^2(R^2 + \omega^2L^2)}}{R^2 + \omega^2L^2} \nonumber \\
                                          &= \frac{\omega L}{\sqrt{R^2 + \omega^2L^2}} \\
-\end{align}</p>
+\end{align}$$
 
-We've got it to a point where it is as about as simple as you can write it! Next up, let's substitute `\(\left| \frac{V_{SCOPE}}{V_{SIG}} \right|\)` with `\(\frac{1}{2}\)`), as this was the condition we were tweaking the frequency for (peak-to-peak voltage measured across inductor by the oscilloscope was half the peak-to-peak voltage generated by the signal generator).
+We've got it to a point where it is as about as simple as you can write it! Next up, let's substitute \(\left| \frac{V_{SCOPE}}{V_{SIG}} \right|\) with \(\frac{1}{2}\)), as this was the condition we were tweaking the frequency for (peak-to-peak voltage measured across inductor by the oscilloscope was half the peak-to-peak voltage generated by the signal generator).
 
-<p>\begin{align}
+$$\begin{align}
 \frac{1}{2} &= \frac{\omega L}{\sqrt{R^2 + \omega^2L^2}} \nonumber \\
 \frac{1}{4} &= \frac{\omega^2 L^2}{R^2 + \omega^2L^2} \nonumber \\
 R^2 + \omega^2 L^2 &= 4\omega^2 L^2 \nonumber \\
 R^2 &= 3 \omega^2 L^2 \nonumber \\
 L^2 &= \frac{1}{3} \frac{R^2}{\omega^2} \nonumber \\
 L   &= \sqrt{\frac{1}{3}} \frac{R}{\omega}
-\end{align}</p>
+\end{align}$$
 
-Now we just sub in `\(2\pi f = \omega\)` to get the final equation:
+Now we just sub in \(2\pi f = \omega\) to get the final equation:
 
-<p>\begin{align}
+$$\begin{align}
 L   &= \sqrt{\frac{1}{3}} \frac{R}{2\pi f}
-\end{align}</p>
+\end{align}$$
 
 ## Manufacturer Part Numbers
 

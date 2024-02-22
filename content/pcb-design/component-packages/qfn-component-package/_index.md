@@ -195,11 +195,11 @@ The tin plating of the flank prevents the traditionally exposed copper (a by-pro
 
 ### LFCSP-16
 
-<p>\begin{align}
+$$\begin{align}
 \theta_{JA} = 33.2^{\enspace \circ}C/W \\
 \theta_{JB} = 12.4^{\enspace \circ}C/W \\
 \theta_{JC} = 2.4^{\enspace \circ}C/W \\
-\end{align}</p>
+\end{align}$$
 
 ## References
 

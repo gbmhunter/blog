@@ -44,9 +44,9 @@ The junction-to-ambient thermal resistance for the `TO-263-3` component package 
 
 {{% figure src="d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png" width="680px" caption="Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com." %}}
 
-* `\(T_{JA} = 18.0^{\circ}{\rm C}/W\)` (1 square inch of copper surrounding pads, connected to ground)
-* `\(T_{JA} = 33.6^{\circ}{\rm C}/W\)` (copper filling package land-area)
-* `\(T_{JA} = 36.7^{\circ}{\rm C}/W\)` (pads only, no copper fill)
+* \(T_{JA} = 18.0^{\circ}{\rm C}/W\) (1 square inch of copper surrounding pads, connected to ground)
+* \(T_{JA} = 33.6^{\circ}{\rm C}/W\) (copper filling package land-area)
+* \(T_{JA} = 36.7^{\circ}{\rm C}/W\) (pads only, no copper fill)
 
 3D models:
 
@@ -65,7 +65,7 @@ The `TO-263-5` is the 5-pin variant of the `TO-263`.
 
 Thermal resistance of the TO-263-5L THIN:
 
-`\(T_{JA} = 22.0^{\circ}{\rm C}/W\)` (no air flow, on JEDEC 4-layer test board)
+\(T_{JA} = 22.0^{\circ}{\rm C}/W\) (no air flow, on JEDEC 4-layer test board)
 
 3D models:
 

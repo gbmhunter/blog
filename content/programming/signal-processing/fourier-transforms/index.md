@@ -29,25 +29,25 @@ There are four common Fourier transformations, which are described below:
 
 The Continuous-Time Fourier Transform (CTFT) is also commonly known just as _the_ Fourier Transform. There is a definition of the equation which converts a signal in time to a signal in frequency, which is called the _forward transform_, and one which goes from the frequency domain back to the time domain (it undoes the forward transform) called the _inverse transform_.
 
-Note that the variable `\(t\)` (the _independent variable_) does no have to necessarily represent time. However, when it does (e.g. units in seconds), then the _transform variable_ `\(f\)` represents frequency (e.g. Hertz). All of the equations below will use `t` and `f` since time and frequency are the most common units used with the Fourier transform.
+Note that the variable \(t\) (the _independent variable_) does no have to necessarily represent time. However, when it does (e.g. units in seconds), then the _transform variable_ \(f\) represents frequency (e.g. Hertz). All of the equations below will use `t` and `f` since time and frequency are the most common units used with the Fourier transform.
 
 Forward:
 
-<p>$$ F(f) = \int_{-\infty}^{\infty} f(t) e^{-j2\pi ft} dt $$</p>
+$$ F(f) = \int_{-\infty}^{\infty} f(t) e^{-j2\pi ft} dt $$
 
 Inverse:
 
-<p>$$ f(t) = \int_{-\infty}^{\infty} F(f)e^{i2\pi ft} df $$</p>
+$$ f(t) = \int_{-\infty}^{\infty} F(f)e^{i2\pi ft} df $$
 
 ### Continuous-Time Fourier Series (CTFS)
 
 Forward:
 
-<p>$$ F_n = \frac{1}{T_0} \int_{-\frac{T_0}{2}}^{\frac{T_0}{2}} f(t) e^{\frac{-j2\pi nt}{T_0}}dt $$</p>
+$$ F_n = \frac{1}{T_0} \int_{-\frac{T_0}{2}}^{\frac{T_0}{2}} f(t) e^{\frac{-j2\pi nt}{T_0}}dt $$
 
 Inverse:
 
-<p>$$ x(t) = \sum_{n=-\infty}^{\infty} F_n e^{\frac{j 2\pi nt}{T_0}} $$</p>
+$$ x(t) = \sum_{n=-\infty}^{\infty} F_n e^{\frac{j 2\pi nt}{T_0}} $$
 
 ### Discrete-time Fourier Transform (DTFT)
 
@@ -55,25 +55,25 @@ The DTFT of a discrete time serious produces a frequency signal that is continuo
 
 Forward:
 
-<p>$$ F(e^{j\omega}) = \sum_{n=-\infty}^{\infty} f(nT)e^{-j2\pi fnT} $$</p>
+$$ F(e^{j\omega}) = \sum_{n=-\infty}^{\infty} f(nT)e^{-j2\pi fnT} $$
 
 Inverse:
 
-<p>$$ f(nT) = \int_{-\frac{1}{2T}}^{\frac{1}{2T}} F(e^{j\omega})e^{j2\pi fnT} df $$</p>
+$$ f(nT) = \int_{-\frac{1}{2T}}^{\frac{1}{2T}} F(e^{j\omega})e^{j2\pi fnT} df $$
 
 ### Discrete Fourier Transform (DFT)
 
 Forward:
 
-<p>$$ F(\frac{k}{NT}) = \sum_{n=0}^{N-1} f(nT)e^{\frac{-j2\pi nk}{N}} $$</p>
+$$ F(\frac{k}{NT}) = \sum_{n=0}^{N-1} f(nT)e^{\frac{-j2\pi nk}{N}} $$
 
 Inverse:
 
-<p>$$ f(nT) = \frac{1}{N} \sum_{k=0}^{N-1}F\frac{k}{NT}e^{\frac{i2\pi nk}{N}} $$</p>
+$$ f(nT) = \frac{1}{N} \sum_{k=0}^{N-1}F\frac{k}{NT}e^{\frac{i2\pi nk}{N}} $$
 
 ## The Fast Fourier Transform (FFT)
 
-A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from `\( \mathcal{O}(n^2) \)` to `\( \mathcal{O}(n\log{n}) \)`. This speed increase means that the FFT is very popular in signal processing applications.
+A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from \( \mathcal{O}(n^2) \) to \( \mathcal{O}(n\log{n}) \). This speed increase means that the FFT is very popular in signal processing applications.
 
 ### Bin Size
 
@@ -87,7 +87,7 @@ The width of each bin (in Hertz) is equal to:
     \( N_{bins} \) is the number of bins<br>
 </p>
 
-The bins of interest are those from `\( 0 \)` to `\( \frac{N_{bins}}{2} \)`.
+The bins of interest are those from \( 0 \) to \( \frac{N_{bins}}{2} \).
 
 ### Sampling Rate
 
@@ -119,25 +119,25 @@ The number of frequencies in the image is equal to the number of pixels in the i
 
 The definition of the 2D Fourier transform (continuous):
 
-<p>$$ \mathcal{F}(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) e^{-j2\pi(ux + vy)} dx\,dy $$</p>
+$$ \mathcal{F}(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) e^{-j2\pi(ux + vy)} dx\,dy $$
 
 Converted into a 2D discrete Fourier transform, the equation becomes:
 
-<p>$$ \mathcal{F}(k, l) = \sum_{i=0}^{N-1} \sum_{i=0}^{N-1} f(i,j) e^{-i2\pi (\frac{ki}{M} + \frac{lj}{N})} $$</p>
+$$ \mathcal{F}(k, l) = \sum_{i=0}^{N-1} \sum_{i=0}^{N-1} f(i,j) e^{-i2\pi (\frac{ki}{M} + \frac{lj}{N})} $$
 
 <p class="centered">
   where:<br>
   \( f(i, j) \) is the image in the spatial domain
 </p>
 
-The basis functions are sine and cosine waves with increasing frequencies. `\(\mathcal{F}(0, 0)\)` represents the DC component in the image (the average brightness), all the way up to `\(\mathcal{F}(N-1, N-1)\)` which represents the highest frequency in the image. Note that `\(\mathcal{F}(0, 0)\)` is usually shifted to be in the center of the frequency domain image.
+The basis functions are sine and cosine waves with increasing frequencies. \(\mathcal{F}(0, 0)\) represents the DC component in the image (the average brightness), all the way up to \(\mathcal{F}(N-1, N-1)\) which represents the highest frequency in the image. Note that \(\mathcal{F}(0, 0)\) is usually shifted to be in the center of the frequency domain image.
 
 The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) produces a complex-valued image in the frequency domain. Obviously, we can't view an image made of complex numbers. What we can do is display the frequency domain image as two images, either:
 
  * 1 image contains the real part of the complex number, the other image displays the imaginary part
  * 1 image displays the magnitude, the other image displays the phase (the _argument_ of the complex number)
 
- Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as `\(|F(u,v)|\)`, the phase as `\(\phi F(u,v) \)`
+ Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as \(|F(u,v)|\), the phase as \(\phi F(u,v) \)
 
  {{% figure src="sinusoidal.gif" width="850px" caption="A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
 

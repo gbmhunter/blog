@@ -8,7 +8,7 @@ type: page
 
 ## Overview
 
-Perspective projection is a particular type of projection where all the rays of the projection pass through a single point. This puts constrains on the form of the matrix `\( \mathbf{P} \)`.
+Perspective projection is a particular type of projection where all the rays of the projection pass through a single point. This puts constrains on the form of the matrix \( \mathbf{P} \).
 
 A perspective projection has the form:
 
@@ -36,7 +36,7 @@ This gives two linear equations with 8 unknowns:
 
 <div>$$ Dp_1 + Ep_2 + F - Gp_1q_2 - Hp_2q_2 = q_2 $$</div>
 
-Four pairs of points `\( \hat{p} = (p_x, p_y), \hat{q} = (q_x, q_y) \)` (four points from each image which are paired together) give eight linear equations and then `\( A, B, ..., H \)` can be solved. One condition is that no three of the four points can be collinear (i.e. lie on the same line).
+Four pairs of points \( \hat{p} = (p_x, p_y), \hat{q} = (q_x, q_y) \) (four points from each image which are paired together) give eight linear equations and then \( A, B, ..., H \) can be solved. One condition is that no three of the four points can be collinear (i.e. lie on the same line).
 
 ## Quad-To-Quad Projection
 
@@ -52,17 +52,17 @@ If you learn better from example, see the Worked Example section below.
 
 The order in which you define the four vertices is not important. However, I define them in counter-clockwise order as this seem to be a common convention in industry.
 
-We want to find the matrix `\(\mathbf{T}\)` that projects an input point `\(\hat{p}\)` to an output point `\(\hat{q}\)`, such that:
+We want to find the matrix \(\mathbf{T}\) that projects an input point \(\hat{p}\) to an output point \(\hat{q}\), such that:
 
 <div>$$ \hat{q} = \mathbf{T}\hat{p} $$</div>
 
-We can find the individual numbers `\(A, B, ... , H\)` that make up `\(\mathbf{T}\)` by forming some linear equations. For each point `\( \hat{p} = (p_x, p_y) \)` that maps to point `\( \hat{q} = (q_x, q_y) \)` we can form two linear equations:
+We can find the individual numbers \(A, B, ... , H\) that make up \(\mathbf{T}\) by forming some linear equations. For each point \( \hat{p} = (p_x, p_y) \) that maps to point \( \hat{q} = (q_x, q_y) \) we can form two linear equations:
 
 <div>$$ Ap_x + Bp_y + C - Gp_xq_x - Hp_yq_x = q_x $$</div>
 
 <div>$$ Dp_x + Ep_y + F - Gp_xq_y - Hp_yq_y = q_y $$</div>
 
-The four corners of the input quad map to the four corners of the output quad, so this gives us **8 equations with 8 unknowns.** To solve these linear equations, we can use matrices. If we pull all of the coefficients of `\(A, B, ..., H\)` into a matrix `\(\mathbf{A}\)`, we can write the equation in the form `\(\mathbf{A}\hat{x} = \mathbf{B}\)`:
+The four corners of the input quad map to the four corners of the output quad, so this gives us **8 equations with 8 unknowns.** To solve these linear equations, we can use matrices. If we pull all of the coefficients of \(A, B, ..., H\) into a matrix \(\mathbf{A}\), we can write the equation in the form \(\mathbf{A}\hat{x} = \mathbf{B}\):
 
 <div>
 $$ \small{\begin{bmatrix}  
@@ -77,11 +77,11 @@ $$ \small{\begin{bmatrix}
  \end{bmatrix} \begin{bmatrix} A\\B\\C\\D\\E\\F\\G\\H \end{bmatrix} = \begin{bmatrix} q_{1,x}\\q_{1,y}\\q_{2,x}\\q_{2,y}\\q_{3,x}\\q_{3,y}\\q_{4,x}\\q_{4,y}\end{bmatrix}} $$
 </div>
 
-This can then be re-arranged to solve for `\(\hat{x}\)` (which is our vector of coefficients `\(A, B, ... H\)` which we will eventually put back into the transformation matrix `\(\mathbf{T}\)`).
+This can then be re-arranged to solve for \(\hat{x}\) (which is our vector of coefficients \(A, B, ... H\) which we will eventually put back into the transformation matrix \(\mathbf{T}\)).
 
 <div>$$ \hat{x} = A^{-1}B $$</div>
 
-Once `\(\hat{x}\)` has been found, `\(\mathbf{T}\)` can be made from the values in `\(\hat{x}\)`. You can then convert points from your input coordinate space to the output coordinate space using:
+Once \(\hat{x}\) has been found, \(\mathbf{T}\) can be made from the values in \(\hat{x}\). You can then convert points from your input coordinate space to the output coordinate space using:
 
 <div>$$ \hat{q} = \mathbf{T}\hat{p} $$</div>
 
@@ -89,11 +89,11 @@ Once `\(\hat{x}\)` has been found, `\(\mathbf{T}\)` can be made from the values 
 
 **Worked Example**
 
-For example, take the square (which is a simple quadrilateral) defined by (0, 0), (1, 0), (1, 1), (0, 1) (the blue square below) and a second quadrilateral defined by (1, 2), (1, 4), (3, 4), (3, 2) (the red square below). _Find the transformation matrix `\(T\)` which maps points from `\(P\)` to `\(Q\)`._
+For example, take the square (which is a simple quadrilateral) defined by (0, 0), (1, 0), (1, 1), (0, 1) (the blue square below) and a second quadrilateral defined by (1, 2), (1, 4), (3, 4), (3, 2) (the red square below). _Find the transformation matrix \(T\) which maps points from \(P\) to \(Q\)._
 
 {{% figure src="quad-to-quad-transformation-simple-square.png" width="455px" caption="A simple quad-to-quad transformation of the square P to the square Q."  %}}
 
-We can then pair the points together, i.e. `\(p1 = (0, 0)\)` maps to `\(q1 = (1, 2)\)`.
+We can then pair the points together, i.e. \(p1 = (0, 0)\) maps to \(q1 = (1, 2)\).
 
 <div>
 $$ \small{\begin{bmatrix}  
@@ -108,21 +108,21 @@ $$ \small{\begin{bmatrix}
  \end{bmatrix} \begin{bmatrix} A\\B\\C\\D\\E\\F\\G\\H \end{bmatrix} = \begin{bmatrix} 1\\2\\1\\4\\3\\4\\3\\2 \end{bmatrix}} $$
 </div>
 
-Solving for vector `\(\hat{x}\)` gives:
+Solving for vector \(\hat{x}\) gives:
 
 <div>$$ \hat{x} = \begin{bmatrix} 2\\0\\1\\0\\2\\2\\0\\0 \end{bmatrix} $$</div>
 
-These are our values `\(A, B, ..., H\)` that we need to build the transformation matrix `\(\mathbf{T}\)`!
+These are our values \(A, B, ..., H\) that we need to build the transformation matrix \(\mathbf{T}\)!
 
 <div>$$ \mathbf{T} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} $$</div>
 
-Note that the last element in `\(\mathbf{T}\)` is always 1! We can now transform any point from out input space to our output space using:
+Note that the last element in \(\mathbf{T}\) is always 1! We can now transform any point from out input space to our output space using:
 
 <div>$$ \hat{q} = \mathbf{T}\hat{p} $$</div>
 
 <div>$$ \begin{bmatrix}q_x\\q_y\\1\end{bmatrix} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} \begin{bmatrix}p_x\\p_y\\1\end{bmatrix} $$</div>
 
-Let's select point `\(\hat{p} = (0.5, 0.5)\)`. This is in the middle of our input polygon, so we should expect it to be transformed to the middle of our output polygon, at `\(\hat{q} = (2, 3)\)`.
+Let's select point \(\hat{p} = (0.5, 0.5)\). This is in the middle of our input polygon, so we should expect it to be transformed to the middle of our output polygon, at \(\hat{q} = (2, 3)\).
 
 <div>$$ \begin{bmatrix}q_x\\q_y\\1\end{bmatrix} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} \begin{bmatrix}0.5\\0.5\\1\end{bmatrix} $$</div>
 

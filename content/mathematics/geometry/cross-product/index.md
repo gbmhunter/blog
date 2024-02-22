@@ -17,13 +17,13 @@ type: page
 
 <p>The cross product of vectors \(\vec{a}\) and \(\vec{b}\) is written as:</p>
 
-<p>$$ \vec{a} \times \vec{b} $$</p>
+$$ \vec{a} \times \vec{b} $$
 
 <h2>Defining Equation</h2>
 
 <p>The cross product is defined by the formula:</p>
 
-<p>$$ \vec{a} \times \vec{b} = ||\vec{a}|| ||\vec{b}|| \, sin (\theta) \, \vec{n} $$</p>
+$$ \vec{a} \times \vec{b} = ||\vec{a}|| ||\vec{b}|| \, sin (\theta) \, \vec{n} $$
 
 <p class="centered">
     where:<br />

@@ -191,6 +191,6 @@ Note also how the order is not preserved when you print the elements! **DO NOT**
 
 ## Implementation Details
 
-CPython implements a set very similar to how it implements a dictionary --- with the use of a hash table. The keys are the elements of the set, and the values are "ignored". Several optimizations can be made due to the lack of values. This hash table implementation allows `\( O(1) \)` average case membership checking (i.e. is `my_element` in `my_set`?).
+CPython implements a set very similar to how it implements a dictionary --- with the use of a hash table. The keys are the elements of the set, and the values are "ignored". Several optimizations can be made due to the lack of values. This hash table implementation allows \( O(1) \) average case membership checking (i.e. is `my_element` in `my_set`?).
 
 You can view the source code [here](https://github.com/python/cpython/blob/master/Objects/setobject.c).

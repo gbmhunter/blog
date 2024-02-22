@@ -42,11 +42,11 @@ The I2C bus uses open-drain (or open-collector if BJTs are used rather than MOSF
 
 {{% figure src="i2c-pull-up-resistors.png" width="488px" caption="I2C pull-up resistors." %}}
 
-**The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than `\(V_{OL} = 0.4V\)` while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
+**The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than \(V_{OL} = 0.4V\) while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
 
-<p>\begin{align}
+$$\begin{align}
 R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -57,15 +57,15 @@ where:<br/>
 
 Given the fixed known values, this can be simplified to:
 
-<p>\begin{align}
+$$\begin{align}
 R_{P, min} = \frac{V_{CC} - 0.4V}{3mA}
-\end{align}</p>
+\end{align}$$
 
-Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance `\( C_{BUS} \)`, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above `\( V_{IH} = 0.7V_{CC} \)` must be considered logic high by all devices.
+Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance \( C_{BUS} \), creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above \( V_{IH} = 0.7V_{CC} \) must be considered logic high by all devices.
 
-<p>\begin{align}
+$$\begin{align}
 R_{P, max} = \frac{T_R}{0.847298C_{BUS}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -73,14 +73,14 @@ where:<br/>
 \( C_{BUS} \) is the total bus capacitance, in Farads<br/>
 </p>
 
-The maximum rise time `\( T_R \)` is specified by the I2C standard for each I2C mode as shown in the table below:
+The maximum rise time \( T_R \) is specified by the I2C standard for each I2C mode as shown in the table below:
 
-| I2C Mode | Maximum Rise Time `\(T_R\)`
+| I2C Mode | Maximum Rise Time \(T_R\)
 |----------|-----------------
 | Standard | 1000ns
 | Fast Mode | 300ns
 
-Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, `\( I_{IH} \)` also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
+Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, \( I_{IH} \) also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
 
 Typical pull-up resistor values are 10kΩ for up to a 100kHz bud rate, and 1kΩ for up to a 400kHz baud rate. External pull-up resistors should be used as normally, the internal pull-up of microcontroller ports and other I2C compliant devices have too high a resistance (100kΩ-1MΩ).
 
@@ -183,9 +183,9 @@ All I2C slave devices must have an address. This address is used by the master t
 
 ### Multiple ICs, Same Address?
 
-Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is severely reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A typical device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of `\(V_{CC}\)` and GND.
+Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is severely reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A typical device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of \(V_{CC}\) and GND.
 
-Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either `\(V_{CC}\)`, GND, SCL or SDA, gives a total of 16 different I2C addresses (`\(n = 4^2\)`).
+Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either \(V_{CC}\), GND, SCL or SDA, gives a total of 16 different I2C addresses (\(n = 4^2\)).
 
 {{% figure src="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="800px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses[^bib-ti-ina226-power-mon]." %}}
 
@@ -197,26 +197,26 @@ The I2C specification reserves some addresses for special purposes. Because of t
 
 | Reserved Address | Description
 |------------------|-------------------------------------
-| `\(0000000 0\)` | General call.
-| `\(0000000 1\)` | Start byte.
-| `\(0000001 x\)` | CBUS addresses.
-| `\(0000010 x\)` | Reserved for different bus formats.
-| `\(0000011 x\)` | Reserved for future purposes.
-| `\(00001xx x\)` | High-speed master code.
-| `\(11110xx x\)` | 10-bit slave addressing.
-| `\(11111xx x\)` | Reserved for future purposes.
+| \(0000000 0\) | General call.
+| \(0000000 1\) | Start byte.
+| \(0000001 x\) | CBUS addresses.
+| \(0000010 x\) | Reserved for different bus formats.
+| \(0000011 x\) | Reserved for future purposes.
+| \(00001xx x\) | High-speed master code.
+| \(11110xx x\) | 10-bit slave addressing.
+| \(11111xx x\) | Reserved for future purposes.
 
 ### General Call
 
-`\(0000000(0)\)` is the I2C address for a general call. It is used by the **master to address all the slaves on an I2C bus at once**. The second byte contains the command the master wishes to send all the slaves. These commands, as they are generic, are also specified as part of the I2C protocol.
+\(0000000(0)\) is the I2C address for a general call. It is used by the **master to address all the slaves on an I2C bus at once**. The second byte contains the command the master wishes to send all the slaves. These commands, as they are generic, are also specified as part of the I2C protocol.
 
 ### Start Byte
 
-`\(000000(1)\)` is the I2C address for a **start byte**. The start byte was added to the I2C specification to allow microcontrollers without dedicated I2C peripherals to use the I2C bus without consuming too much power when having to poll the I2C lines at a high speed to detect the start of a transmission (a technique referred to as bit banging). Instead, the microcontroller only has to detect one of the seven 0's in the start byte at a slower polling speed, and then switch to a high rate for the rest of the transmission. The master transmits a start condition, the start byte, a **dummy acknowledge pulse**, a repeated start condition, and then the actual transmission.
+\(000000(1)\) is the I2C address for a **start byte**. The start byte was added to the I2C specification to allow microcontrollers without dedicated I2C peripherals to use the I2C bus without consuming too much power when having to poll the I2C lines at a high speed to detect the start of a transmission (a technique referred to as bit banging). Instead, the microcontroller only has to detect one of the seven 0's in the start byte at a slower polling speed, and then switch to a high rate for the rest of the transmission. The master transmits a start condition, the start byte, a **dummy acknowledge pulse**, a repeated start condition, and then the actual transmission.
 
 ### CBUS
 
-`\(0000001(x)\)` is the I2C address reserved for CBUS addresses. CBUS is a three-wire bus with a different transmission format to I2C, and is used in home automation products. This reserved address allows CBUS receivers to be connected to I2C buses. I2C devices should ignore any messages sent to this address.
+\(0000001(x)\) is the I2C address reserved for CBUS addresses. CBUS is a three-wire bus with a different transmission format to I2C, and is used in home automation products. This reserved address allows CBUS receivers to be connected to I2C buses. I2C devices should ignore any messages sent to this address.
 
 CBUS addressing over I2C is very uncommon.
 

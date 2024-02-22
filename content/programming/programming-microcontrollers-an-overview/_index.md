@@ -123,7 +123,7 @@ Whilst officially just a 2-wire interface, it is commonly bundled with 1-2 other
   </tbody>
 </table>
 
-`SWCLK`, `SWDIO` and `SWO` should be pulled high by approx. `\(10k\Omega\)` so that they remain in a stable state when not driven[^bib-arm-dstream-swd-conn].
+`SWCLK`, `SWDIO` and `SWO` should be pulled high by approx. \(10k\Omega\) so that they remain in a stable state when not driven[^bib-arm-dstream-swd-conn].
 
 SWD uses a bus called _DAP_ (Debug Access Port). On this bus there is one master, the DP (Debug Port, typically a USB dongle when programming microcontrollers), and one or more slaves called APs (Access Ports). There are three different Debug Ports[^bib-kudelski-swd]:
 

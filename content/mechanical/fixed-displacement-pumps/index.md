@@ -26,4 +26,4 @@ $${\rm Flow} = [k_{min} + (\frac{\omega_{curr} - \omega_{k_{min}}}{\omega_{k_{ma
 	\( \omega_{curr} \) = the current speed of the motor, \( cycles/s \)<br>
 </p>
 
-This requires you to do two calibration points, one at a minimum speed, and one at a maximum speed. At each calibration point you need to calculate `\( k \)`, which is the volume per speed (or cycle). This can be measured by timing how long it takes for a fixed amount of fluid to go through the pump, while also measuring the number of cycles.
+This requires you to do two calibration points, one at a minimum speed, and one at a maximum speed. At each calibration point you need to calculate \( k \), which is the volume per speed (or cycle). This can be measured by timing how long it takes for a fixed amount of fluid to go through the pump, while also measuring the number of cycles.

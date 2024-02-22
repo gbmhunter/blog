@@ -207,4 +207,4 @@ Below is a graph showing the thermal resistance of the SOT-223-5 package with va
 
 {{% figure src="sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png" width="1059px" caption="Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
 
-As you can see, as the copper area increases, the thermal resistance decreases asymptotically to around `\(55^{\circ}{\rm C}/W\)`.
+As you can see, as the copper area increases, the thermal resistance decreases asymptotically to around \(55^{\circ}{\rm C}/W\).

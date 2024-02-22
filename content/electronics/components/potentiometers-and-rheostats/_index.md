@@ -16,7 +16,7 @@ This page is about mechanically adjustable resistors called potentiometers and r
 _Potentiometers_ are 3 terminal resistors whose resistance can be varied by means of a mechanical wiper or similar actuating device. They consist of two outer terminals which provide connections to a fixed resistance made from a conductive track, and a middle pin which connects to the wiper. The potentiometer can be turned so that the wiper slides from one end of the track to the other, changing the resistance between it and the two outer pins. A rheostat (which is also called a _variable resistor_) is simply a potentiometer but with one of the outside pins missing. They typically come in values of 5, 10, 20, 50 and 100kΩ.
 
 
-{{% figure src="potentiometer-10k-edited.jpg" width="300px" caption="A photo of a panel-mount, through-hole potentiometer from BI Technologies/TT Electronics (part number P160KNP-0EC15B10K). The outer pins have a fixed resistance across them of `\(10k\Omega\)`. The middle pin is connected to the wiper, and it's resistance varies between the outer pins (linearly in this case, but other tapers exist such as logarithmic) as the knob is turned." %}}
+{{% figure src="potentiometer-10k-edited.jpg" width="300px" caption="A photo of a panel-mount, through-hole potentiometer from BI Technologies/TT Electronics (part number P160KNP-0EC15B10K). The outer pins have a fixed resistance across them of \(10k\Omega\). The middle pin is connected to the wiper, and it's resistance varies between the outer pins (linearly in this case, but other tapers exist such as logarithmic) as the knob is turned." %}}
 
 Potentiometers are commonly used for user interfaces (e.g. volume control on an audio amplifier), once-off manufacturing calibration, and cheap mechanical rotation to digital converters.
 
@@ -80,7 +80,7 @@ If you can't get log or antilog potentiometers, you can approximate the behaviou
 The tapering resistor trick works for log and antilog tapers are using the potentiometer as a voltage divider. If you are just connecting to one end terminal and the middle (i.e. rheostat style), you can only achieve an antilog taper.
 {{% /note %}}
 
-How do we choose the value of `\(R_{taper}\)`? A good rule-of-thumb is to pick a value which is about 10-20% of the potentiometers total resistance. For example, for a `\(10k\Omega\)` linear potentiometer, you would choose a tapering resistance of `\(1{-}2k\Omega\)`. The below graph shows the response of potentiometers with tapering resistors. The tapering resistor's resistance is 10% of the potentiometers (e.g. if it was a `\(10k\Omega\)` pot, the tapering resistor would be `\(1k\Omega\)`). In the case of the log-antilog circuit, both tapering resistors have a resistance of 10% `\(R_{POT}\)`. In the case of the log and antilog circuits, the responses are also compared to the "ideal" responses (see [The Ideal Logarithmic Taper Equation Section](#the-ideal-logarithmic-taper-equation) for more on how this is calculated):
+How do we choose the value of \(R_{taper}\)? A good rule-of-thumb is to pick a value which is about 10-20% of the potentiometers total resistance. For example, for a \(10k\Omega\) linear potentiometer, you would choose a tapering resistance of \(1{-}2k\Omega\). The below graph shows the response of potentiometers with tapering resistors. The tapering resistor's resistance is 10% of the potentiometers (e.g. if it was a \(10k\Omega\) pot, the tapering resistor would be \(1k\Omega\)). In the case of the log-antilog circuit, both tapering resistors have a resistance of 10% \(R_{POT}\). In the case of the log and antilog circuits, the responses are also compared to the "ideal" responses (see [The Ideal Logarithmic Taper Equation Section](#the-ideal-logarithmic-taper-equation) for more on how this is calculated):
 
 {{% figure src="tapering-resistor-plots.png" width="800px" caption="Plot showing the response of a tapering resistor (approx. log) vs. an ideal log pot (with y_m = 0.1). Whilst it doesn't match that closely, this level of precision is good enough for many applications!" %}}
 
@@ -94,7 +94,7 @@ Precision potentiometers typically focus achieving was is called good _independe
 
 {{% figure src="bourns-potentiometer-independent-linearity-plot.png" width="700px" caption="A plot from the Bourns Potentiometer Linearity Tech Note showing how independent linearity is specified[^bib-bourns-pot-linearity-tech-note]." %}}
 
-For example, the Bourns 3590S-2-103L 10-turn precision rotary potentiometer has a specified independent linearity of `\(\pm 0.25\%\)`[^bib-bourns-3590s-2-103l-ds].
+For example, the Bourns 3590S-2-103L 10-turn precision rotary potentiometer has a specified independent linearity of \(\pm 0.25\%\)[^bib-bourns-3590s-2-103l-ds].
 
 ## Labelling
 
@@ -122,11 +122,11 @@ Multi-turn potentiometers are used when more resolution is required, or the "thi
 
 ## Common Uses And Example Circuits
 
-The most common use for a potentiometer to provide a variable output voltage based on how the far the potentiometer has been turned. This voltage then can be used to control any number of things, such as the volume of music as the user turns the volume dial. The two ends of the potentiometer are connected across a constant voltage source, in the example below, this is `\( 5V \)`. The wiper then forms the variable mid-point of a voltage divider. As you turn the potentiometer, one of the "resistors" increases while the other decreases, and thus the wiper varies in voltage from one end point to the other. In the example below the wiper voltage varies from `\( 0V \)` to `\( 5V \)`:
+The most common use for a potentiometer to provide a variable output voltage based on how the far the potentiometer has been turned. This voltage then can be used to control any number of things, such as the volume of music as the user turns the volume dial. The two ends of the potentiometer are connected across a constant voltage source, in the example below, this is \( 5V \). The wiper then forms the variable mid-point of a voltage divider. As you turn the potentiometer, one of the "resistors" increases while the other decreases, and thus the wiper varies in voltage from one end point to the other. In the example below the wiper voltage varies from \( 0V \) to \( 5V \):
 
 {{% figure src="potentiometer-common-resistor-divider-circuit.png" width="600px" caption="A very common way to use a potentiometer in a circuit to provide a variable output voltage." %}}
 
-A word of caution...Make sure you do not draw too much current from the wiper. Ignoring the wiper resistance, the output impedance of the potentiometer changes depending on the wiper position. When the wiper is at either end, the output impedance is `\( 0 \Omega \)` (great you may say). But the output impedance increases to the worst case when the wiper is exactly half-way between the two ends, in which case it is `\( \frac{R_{pot}}{4} \, \Omega \)` (two resistors in parallel, each resistor being `\( \frac{R_{pot}}{2} \, \Omega \)`).
+A word of caution...Make sure you do not draw too much current from the wiper. Ignoring the wiper resistance, the output impedance of the potentiometer changes depending on the wiper position. When the wiper is at either end, the output impedance is \( 0 \Omega \) (great you may say). But the output impedance increases to the worst case when the wiper is exactly half-way between the two ends, in which case it is \( \frac{R_{pot}}{4} \, \Omega \) (two resistors in parallel, each resistor being \( \frac{R_{pot}}{2} \, \Omega \)).
 
 If we assume the worst-case, **the output impedance of a potentiometer is**:
 
@@ -152,9 +152,9 @@ y = ab^x + c
 \end{align}
 </p>
 
-Let `\(x\)` be the percentage of total potentiometer rotation in where `\(0 \le x \le 1\)`, and `\(y\)` be the percentage of total resistance, again varying from `\(0 \le y \le 1\)`. `\(a\)`, `\(b\)` and `\(c\)` are free parameters to fit the desired curve (they are constrained below).
+Let \(x\) be the percentage of total potentiometer rotation in where \(0 \le x \le 1\), and \(y\) be the percentage of total resistance, again varying from \(0 \le y \le 1\). \(a\), \(b\) and \(c\) are free parameters to fit the desired curve (they are constrained below).
 
-For an ideal potentiometer, we want the resistance to be `\(0\)` when the rotation is `\(0\)`, e.g. `\(y = 0\)` when `\(x = 0\)`. Therefore:
+For an ideal potentiometer, we want the resistance to be \(0\) when the rotation is \(0\), e.g. \(y = 0\) when \(x = 0\). Therefore:
 
 <p>
 \begin{align}
@@ -163,7 +163,7 @@ c = -a \\
 \end{align}
 </p>
 
-This allows us to remove `\(c\)` from the equation, giving:
+This allows us to remove \(c\) from the equation, giving:
 
 <p>
 \begin{align}
@@ -171,7 +171,7 @@ y = ab^x - a
 \end{align}
 </p>
 
-Also, we want to have maximum resistance when the potentiometer is rotated to maximum. So `\(y = 1\)` when `\(x = 1\)`.
+Also, we want to have maximum resistance when the potentiometer is rotated to maximum. So \(y = 1\) when \(x = 1\).
 
 <p>
 \begin{align}
@@ -179,7 +179,7 @@ Also, we want to have maximum resistance when the potentiometer is rotated to ma
 \end{align}
 </p>
 
-Let's solve for `\(a\)` in terms of `\(b\)`:
+Let's solve for \(a\) in terms of \(b\):
 
 <p>
 \begin{align}
@@ -189,7 +189,7 @@ a = \frac{1}{b - 1} \\
 \end{align}
 </p>
 
-Substituting `\(a\)` into our equation now gives:
+Substituting \(a\) into our equation now gives:
 
 <p>
 \begin{align}
@@ -199,7 +199,7 @@ y &= \frac{1}{b - 1}b^x - \frac{1}{b - 1} \nonumber \\
 \end{align}
 </p>
 
-We are almost there, except we still have one degree of freedom! How do we choose the value of `\(b\)`? One way is to define the value of `\(y\)` when the potentiometer is rotated half-way to max, i.e. at `\(x = 0.5\)`. We'll call this resistance `\(y_m\)` (y at midpoint).
+We are almost there, except we still have one degree of freedom! How do we choose the value of \(b\)? One way is to define the value of \(y\) when the potentiometer is rotated half-way to max, i.e. at \(x = 0.5\). We'll call this resistance \(y_m\) (y at midpoint).
 
 <p>
 \begin{align}
@@ -210,7 +210,7 @@ y_m &= \frac{b^{0.5} - 1}{b - 1} \nonumber \\
 \end{align}
 </p>
 
-Let's solve for `\(b\)`:
+Let's solve for \(b\):
 
 <p>
 \begin{align}
@@ -222,15 +222,15 @@ b &= \left( \frac{1}{y_m} - 1 \right)^2 \\
 \end{align}
 </p>
 
-The below graph shows the shape of the potentiometers response for different values of `\(y_m\)`, starting at `\(0.1\)` and ending with `\(0.9\)`.
+The below graph shows the shape of the potentiometers response for different values of \(y_m\), starting at \(0.1\) and ending with \(0.9\).
 
 {{% note %}}
-At `\(y_m = 0.5\)` the resistance factor goes to `\(\infty\)`, so `\(y_m = 0.5\)` is not plotted.
+At \(y_m = 0.5\) the resistance factor goes to \(\infty\), so \(y_m = 0.5\) is not plotted.
 {{% /note %}}
 
-{{% figure src="plot-of-parametric-log-law.png" width="600px" caption="Plot of the ideal potentiometer log taper equation for various values of `\(y_m\)`." %}}
+{{% figure src="plot-of-parametric-log-law.png" width="600px" caption="Plot of the ideal potentiometer log taper equation for various values of \(y_m\)." %}}
 
-In reality, potentiometers with a "log taper" can be roughly approximated with `\(y_m = 0.1\)`, whilst those with an "antilog taper" with `\(y_m = 0.9\)`.
+In reality, potentiometers with a "log taper" can be roughly approximated with \(y_m = 0.1\), whilst those with an "antilog taper" with \(y_m = 0.9\).
 
 ## Further Reading
 

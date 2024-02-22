@@ -26,9 +26,9 @@ There should be a TOC either above (narrow screens) or in the right sidebar (wid
 
 Some display math with a reference:
 
-<p>$$ f(x) = \frac{2}{3}$$</p>
+$$ f(x) = \frac{2}{3}$$
 
-Some inline math. `\(f(x) = \frac{2}{3}\)`. More normal text.
+Some inline math. \(f(x) = \frac{2}{3}\). More normal text.
 
 An equation with `\begin{equation}`, which should be automatically numbered:
 
@@ -39,7 +39,7 @@ An equation with `\begin{equation}`, which should be automatically numbered:
 \end{equation}
 </p>
 
-And a reference to the above equation: In equation `\(\eqref{eq:sample}\)`, we find the value of an
+And a reference to the above equation: In equation \(\eqref{eq:sample}\), we find the value of an
 interesting integral.
 
 To align equations we can use:
@@ -54,24 +54,24 @@ A &= B\\
 
 These should be `\small` and `\tiny` equations:
 
-<p>\begin{align}
+$$\begin{align}
 \small y=x \\
 \tiny y=x
-\end{align}</p>
+\end{align}$$
 
 Should have some descriptive text:
 
-<p>\begin{align}
+$$\begin{align}
 y &= x && \text{Because \(y=x\), duh.} \\
   &= z && \text{Replacing \(x\) with \(z\).}
-\end{align}</p>
+\end{align}$$
 
 First equation should not be numbered, second one should:
 
-<p>\begin{align}
+$$\begin{align}
 y &= x \nonumber \\
   &= z
-\end{align}</p>
+\end{align}$$
 
 None of the equations should be numbered (but still should be aligned):
 
@@ -83,9 +83,9 @@ y &= x \\
 
 Custom Latex macros:
 
-This should be bold: `\( \b{x} \)`
+This should be bold: \( \b{x} \)
 
-This should be bold and have a hat: `\( \bhat{x} \)`
+This should be bold and have a hat: \( \bhat{x} \)
 
 ## Hugo Math
 
@@ -207,7 +207,7 @@ A wide HTML table (we should be able to scroll horizontally):
 
 The logo is shown in {{% ref "fig-cartoon-ninja" %}}.
 
-{{% figure ref="fig-cartoon-ninja" src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. **Bold text**. An equation: `\(x^2\)`. Always use '%' and not '<' in the hugo shortcode delimiters to render equations and footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
+{{% figure ref="fig-cartoon-ninja" src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. **Bold text**. An equation: \(x^2\). Always use '%' and not '<' in the hugo shortcode delimiters to render equations and footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
 
 Link to an image which is not a page resource is shown in {{% ref "fig-cartoon-ninja-2" %}}
 
@@ -240,7 +240,7 @@ print('Hello, world!')
 {{% /aside %}}
 
 {{% aside type="note" %}}
-There should be an equation here: `\(y = x^2\)`
+There should be an equation here: \(y = x^2\)
 {{% /aside %}}
 
 Below should be a worked example. It should be an aside with info inside it. There should be numbered steps, and there should be equations in some of the steps.
@@ -249,20 +249,20 @@ Below should be a worked example. It should be an aside with info inside it. The
 
 **Design Procedure:**
 
-1. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
+1. Decide on the program current, \(I_P\). This will also be the current through the load. We'll use this value later! For this example we'll choose \(1mA\).
 
-1. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
-    <p>\begin{align}
+1. Find the voltage across \(R_1\), nothing that \(Q_1\) has a diode voltage drop of \(0.7V\) from emitter to base (with the emitter tied to \(V_{CC}\)), at that the base and collector of \(Q_1\) are tied together and hence at the same voltage:
+    $$\begin{align}
     V_{R1}  &= 12V - 0.7V \nonumber \\
             &= 11.3V
-    \end{align}</p>
+    \end{align}$$
 
-1. Set the resistance of `\(R_1\)` using Ohm's Law:
-    <p>\begin{align}
+1. Set the resistance of \(R_1\) using Ohm's Law:
+    $$\begin{align}
     R_1 &= \frac{V_{R1}}{I_P} \nonumber \\
         &= \frac{11.3V}{1mA} \nonumber \\
         &= 11.3k\Omega
-    \end{align}</p>
+    \end{align}$$
 
 1. All done!
 

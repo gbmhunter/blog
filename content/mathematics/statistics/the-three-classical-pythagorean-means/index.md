@@ -16,38 +16,38 @@ In mathematics, there are many different types of "mean". The most common type o
 
 ## Arithmetic Mean (AM)
 
-For a set of positive, real numbers `\( x = ( x_1, x_2, ..., x_n ) \)`, the arithmetic mean is defined by[^a-proof-mean-inequalities]:
+For a set of positive, real numbers \( x = ( x_1, x_2, ..., x_n ) \), the arithmetic mean is defined by[^a-proof-mean-inequalities]:
 
-<p>$$ AM(x) = \frac{1}{n} \sum_{i=1}^{n} x_i $$</p>
+$$ AM(x) = \frac{1}{n} \sum_{i=1}^{n} x_i $$
 
-For example, the arithmetic mean of the numbers `\( x = (2, 5, 6) \)` is:
+For example, the arithmetic mean of the numbers \( x = (2, 5, 6) \) is:
 
-<p>\begin{align}
+$$\begin{align}
 AM &= \frac{1}{3} (2 + 5 + 6) \\
    &= \frac{1}{3} (13) \\
    &= 4.33
-\end{align}</p>
+\end{align}$$
 
 The arithmetic mean is the most commonly used form of mean, and is typically just referred to as the "mean" of a set of numbers.
 
 ## Geometric Mean (GM)
 
-For a set of positive, real numbers `\( x = ( x_1, x_2, ..., x_n ) \)`, the geometric mean is defined by[^a-proof-mean-inequalities]:
+For a set of positive, real numbers \( x = ( x_1, x_2, ..., x_n ) \), the geometric mean is defined by[^a-proof-mean-inequalities]:
 
-<p>$$ GM(x) = \large{ \sqrt[n]{ \Pi_{i=1}^n x_i } } $$</p>
+$$ GM(x) = \large{ \sqrt[n]{ \Pi_{i=1}^n x_i } } $$
 
 <p class="centered">
   where:<br>
   \( \Pi \) is the product of the terms
 </p>
 
-For example, the geometric mean of the numbers `\( x = (2, 5, 6) \)` is:
+For example, the geometric mean of the numbers \( x = (2, 5, 6) \) is:
 
-<p>\begin{align}
+$$\begin{align}
 GM &= \sqrt[3]{(2 * 5 * 6)} \\
    &= \sqrt[3]{13} \\
    &= 3.91
-\end{align}</p>
+\end{align}$$
 
 The geometric mean is named so because it happens to be the middle number in a geometric progression. A geometric progression
 
@@ -70,36 +70,36 @@ The geometric mean is really useful when we want to compare things, where each "
 
 If we calculate the geometric mean of the mileage and rating for each car:
 
-* Car 1: `\( \sqrt{25*6}\,= 12.2 \)`
-* Car 2: `\( \sqrt{20*9}\,= 13.4 \)`
+* Car 1: \( \sqrt{25*6}\,= 12.2 \)
+* Car 2: \( \sqrt{20*9}\,= 13.4 \)
 
-The geometric mean suggests that Car 2 may be better! The geometric mean does now skew the results like the arithmetic mean would due to the larger values for the mileage compared with the user rating. The arithmetic mean would of given `\(15.5\)` for Car 1 and a lower `\(14.5\)` for Car 2. Instead it is influenced by the proportional change of each feature, such that the larger percentage increase in the user rating for Car 2 was weighted better than the smaller percentage decrease in mileage.
+The geometric mean suggests that Car 2 may be better! The geometric mean does now skew the results like the arithmetic mean would due to the larger values for the mileage compared with the user rating. The arithmetic mean would of given \(15.5\) for Car 1 and a lower \(14.5\) for Car 2. Instead it is influenced by the proportional change of each feature, such that the larger percentage increase in the user rating for Car 2 was weighted better than the smaller percentage decrease in mileage.
 
 The geometric mean is also useful in **calculating compound interest**. Let's pretend you have $100. You made $3 of interest in the first year and $5 in the second year. If you calculated your average amount of return using the arithmetic mean, you would get $4. However, if you used the geometric mean you would get $3.87, which would be the true rate of return assuming you re-invested the $3 you made at the end of the first year (so that you had $103 earning interest for the second year).
 
 ## Harmonic Mean (HM)
 
-For a set of positive, real numbers `\( x = (x_1, x_2, ..., x_n) \)`, the harmonic mean is defined by[^wikipedia-harmonic-mean][^a-proof-mean-inequalities]:
+For a set of positive, real numbers \( x = (x_1, x_2, ..., x_n) \), the harmonic mean is defined by[^wikipedia-harmonic-mean][^a-proof-mean-inequalities]:
 
-<p>$$ HM(x) = \frac{n}{ \sum_{i=0}^n x_i } $$</p>
+$$ HM(x) = \frac{n}{ \sum_{i=0}^n x_i } $$
 
-For example, the harmonic mean of the numbers `\( 2, 5, 6 \)` is:
+For example, the harmonic mean of the numbers \( 2, 5, 6 \) is:
 
-<p>\begin{align}
+$$\begin{align}
 HM &= \frac{3}{ \frac{1}{2} + \frac{1}{5} + \frac{1}{6} } \\
   &= \frac{3}{0.87} \\
   &= 3.46 
-\end{align}</p>
+\end{align}$$
 
 For all positive data sets containing at least one pair of non-equal values, the harmonic mean is always the least of the three means[^a-proof-mean-inequalities].
 
 The harmonic and arithmetic means are **reciprocal duals of each other**, when all of the values in the set are positive:
 
-<p>$$ HM(\frac{1}{x_1} + \frac{1}{x_2} + ... + \frac{1}{x_n}) = \frac{1}{ GM(x_1, x_2, ..., x_n) } $$</p>
+$$ HM(\frac{1}{x_1} + \frac{1}{x_2} + ... + \frac{1}{x_n}) = \frac{1}{ GM(x_1, x_2, ..., x_n) } $$
 
 ### Uses
 
-The harmonic mean is used to calculate the `\( F_1 score \)` when performing classification. This is useful in classification algorithms such as {{% link text="logistic regression" src="/programming/artificial-intelligence/understanding-logistic-regression" %}}.
+The harmonic mean is used to calculate the \( F_1 score \) when performing classification. This is useful in classification algorithms such as {{% link text="logistic regression" src="/programming/artificial-intelligence/understanding-logistic-regression" %}}.
 
 [^wikipedia-harmonic-mean]: https://en.wikipedia.org/wiki/Harmonic_mean
 [^a-proof-mean-inequalities]: http://ajmaa.org/RGMIA/papers/v2n1/v2n1-10.pdf

@@ -21,7 +21,7 @@ _Filter tunings_ are specific tunings of filters to maximise a particular charac
 * **Chebyshev**: Designed to have a steep transition between the pass and stop-band (but not the steepest, Elliptic tuning claims that award), at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
     * **Type 1:** _Type 1 Chebyshev filters_ (a.k.a. just a _Chebyshev filter_) have ripple in the passband, but no ripple in the stopband.
     * **Type 2:** _Type 2 Chebyshev filters_ (a.k.a. an _inverse Chebyshev filter_) have ripple in the stopband, but no ripple in the passband.
-* **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
+* **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency \(f_c\), at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
 * **Elliptic:** Designed to have the fastest transition from the passband to the stopband, at the expense of ripple in both of these bands (Chebyshev optimization only produces ripple in one of the bands but is not as fast in the transition). Also called _Cauer_ filters or _Rational Chebyshev_ filters.
 
 These filters are explained in more detail below. If you are interested in visual comparisons, you can skip straight to the [Comparisons Between Filter Tunings section](#comparisons-between-filter-tunings).
@@ -36,10 +36,10 @@ It may sound dumb, but I've always remembered Butterworth as a flat passband whi
 
 Butterworth tunings are defined as a filter whose magnitude is[^bib-wikipedia-butterworth-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:butterworth-magnitude}
 | H_n(s) | \triangleq \frac{1}{\sqrt{1 + \omega^{2n}}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -47,46 +47,46 @@ where:<br/>
 \(n\) is the order of the filter<br/>
 </p>
 
-The normalized Butterworth polynomial of degree `\(n\)` is given by[^bib-pieter-p-butterworth-filters]:
+The normalized Butterworth polynomial of degree \(n\) is given by[^bib-pieter-p-butterworth-filters]:
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:butterworth-polynomial}
 B_n(s) =
 \begin{cases}
   \prod_{k=0}^{\frac{n}{2} - 1}(s^2 -2\cos{(2\pi\frac{2k + n + 1}{4n})s + 1}) & \text{even }n \\
   (s + 1)\prod_{k=0}^{\frac{n - 1}{2} - 1}(s^2 -2\cos{(2\pi\frac{2k + n + 1}{4n})s + 1}) & \text{odd }n \\
 \end{cases}
-\end{align}</p>
+\end{align}$$
 
 {{% tip %}}
-If you've never seen it before, the uppercase Pi symbol `\(\prod\)` in the above equation represents the product of a series of things, such like the uppercase Sigma symbol `\(\Sigma\)` represents the sum of a series of things. For example, `\(\prod_{k=1}^{3}k = 1\times 2 \times 3\)`.
+If you've never seen it before, the uppercase Pi symbol \(\prod\) in the above equation represents the product of a series of things, such like the uppercase Sigma symbol \(\Sigma\) represents the sum of a series of things. For example, \(\prod_{k=1}^{3}k = 1\times 2 \times 3\).
 {{% /tip %}}
 
-Below is a table of the normalized factored Butterworth polynomials for order `\(n\)`. The polynomial is useful in this form as each product forms either a first or second-order partial filter which can be directly implemented by a standard filter topology (e.g. RC filter for a first-order section, Sallen-Key for a second-order section). These polynomials were generated with `\(Eq.\ \ref{eq:butterworth-polynomial}\)`. The polynomials are normalized by setting `\(\omega_c = 1\)` (the characteristic frequency).
+Below is a table of the normalized factored Butterworth polynomials for order \(n\). The polynomial is useful in this form as each product forms either a first or second-order partial filter which can be directly implemented by a standard filter topology (e.g. RC filter for a first-order section, Sallen-Key for a second-order section). These polynomials were generated with \(Eq.\ \ref{eq:butterworth-polynomial}\). The polynomials are normalized by setting \(\omega_c = 1\) (the characteristic frequency).
 
 _All numbers are rounded to 3 decimal places_.
 
 {{% file src="butterworth-factored-polynomial-table.html" %}}
 
-Using these polynomials `\(B_n\)`, we can write the transfer function of a Butterworth filter as[^bib-pieter-p-butterworth-filters]:
+Using these polynomials \(B_n\), we can write the transfer function of a Butterworth filter as[^bib-pieter-p-butterworth-filters]:
 
-<p>\begin{align}
+$$\begin{align}
 H_n(s) = \frac{1}{B_n}
-\end{align}</p>
+\end{align}$$
 
 {{% note %}}
-This equation is different from `\(Eq.\ \ref{eq:butterworth-magnitude}\)` which defined the magnitude of a Butterworth filter, because this equation lacks the magnitude `\(|\)` symbols around `\(H_n(s)\)`. This equation is the full-and-proper transfer function, which contains both the magnitude and phase information.
+This equation is different from \(Eq.\ \ref{eq:butterworth-magnitude}\) which defined the magnitude of a Butterworth filter, because this equation lacks the magnitude \(|\) symbols around \(H_n(s)\). This equation is the full-and-proper transfer function, which contains both the magnitude and phase information.
 {{% /note %}}
 
 This transfer function gives the following bode plots (by taking the magnitude and arg of the transfer function):
 
 {{% figure src="butterworth-bode-plot-for-various-n.png" width="900px" caption="Magnitude and phase bode plots for normalized Butterworth filters of orders 1, 2, 4 and 8." %}}
 
-The Butterworth polynomial coefficients `\(a_0, a_1, ..., a_n\)` for an `\(n\)`-order filter can be calculated with this product-based equation[^bib-wikipedia-butterworth-filter]:
+The Butterworth polynomial coefficients \(a_0, a_1, ..., a_n\) for an \(n\)-order filter can be calculated with this product-based equation[^bib-wikipedia-butterworth-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -94,19 +94,19 @@ where:<br/>
 \(\gamma = \dfrac{\pi}{2n}\)<br/>
 </p>
 
-There is also a recursive formula to calculate the coefficients, but we'll just use the product based one. The below table shows the Butterworth polynomial coefficients calculated with this equation, up to `\(n=8\)` (8th order filter).
+There is also a recursive formula to calculate the coefficients, but we'll just use the product based one. The below table shows the Butterworth polynomial coefficients calculated with this equation, up to \(n=8\) (8th order filter).
 
 {{% file src="butterworth-polynomial-coeffs-table.html" %}}
 
-For example, the above table tells you for order `\(n=3\)` the Butterworth polynomial is `\(s^3 + 2s^2 + 2s + 1\)`. If expand the factorized version we should arrive at the same polynomial:
+For example, the above table tells you for order \(n=3\) the Butterworth polynomial is \(s^3 + 2s^2 + 2s + 1\). If expand the factorized version we should arrive at the same polynomial:
 
-<p>\begin{align}
+$$\begin{align}
 B_3 &= (s + 1)(s^2 + s + 1) \nonumber \\
     &= s^3 + s^2 + s + s^2 + s + 1 \nonumber \\
     &= s^3 + 2s^2 + 2s + 1 \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-Yay, they are the same! If you are ever wanting to generate the Butterworth polynomial coefficients yourself, here is a Python function that returns you the Butterworth coefficients for any order `\(n\)`:
+Yay, they are the same! If you are ever wanting to generate the Butterworth polynomial coefficients yourself, here is a Python function that returns you the Butterworth coefficients for any order \(n\):
 
 ```python
 from typings import List
@@ -150,13 +150,13 @@ Chebyshev-tuned filters can be further broken down into two _types_:
 * **Type I:** Ripple in the pass-band, no ripple in the stop-band. This is the most common type of Chebyshev-tuned filter, as it has faster roll-off. Sometimes referred to just as a _Chebyshev filter_ (with no mention that it's Type I).
 * **Type II:** No-ripple in the pass-band, ripple in the stop-band. Also known as an _inverse Chebyshev-tuned filter_. This is not as popular as Type I as it's roll-off is not as steep.
 
-Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency is usually defined in a completely different way to all other filter optimizations**. Rather than specifying `\(f_c\)` as the -3dB point, the `\(f_c\)` for Chebyshev filters is defined at the point at which the gain leaves the allowed ripple region (i.e. > 0.5dB for a 0.5dB Chebyshev filter, > 3dB for a 3dB Chebyshev filter).
+Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency is usually defined in a completely different way to all other filter optimizations**. Rather than specifying \(f_c\) as the -3dB point, the \(f_c\) for Chebyshev filters is defined at the point at which the gain leaves the allowed ripple region (i.e. > 0.5dB for a 0.5dB Chebyshev filter, > 3dB for a 3dB Chebyshev filter).
 
-A Type I Chebyshev tuned filter of order `\(n\)` has a gain response of[^bib-wikipedia-chebyshev-filter]:
+A Type I Chebyshev tuned filter of order \(n\) has a gain response of[^bib-wikipedia-chebyshev-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 | H_n(s) | = \frac{1}{\sqrt{1 + \varepsilon^2 T_n(\omega / \omega_0)^2}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -166,49 +166,49 @@ where:<br/>
 </p>
 
 {{% note %}}
-The are actually two different kinds of "Chebyshev polynomials". In analogue filter design, we always use the first kind (for both Type I and Type II Chebyshev filters), commonly denoted `\(T_n\)`. Chebyshev polynomials of the second kind are usually denoted `\(U_n\)`.
+The are actually two different kinds of "Chebyshev polynomials". In analogue filter design, we always use the first kind (for both Type I and Type II Chebyshev filters), commonly denoted \(T_n\). Chebyshev polynomials of the second kind are usually denoted \(U_n\).
 {{% /note %}}
 
 The ripple in the passband may have multiple maxima and minima. However, the peaks of each maxima/minima have the same amplitude (i.e. they are bounded by a fixed value). This is known as equiripple behaviour, and stems from the core definition of a Type I Chebyshev polynomial.
 
 The driving factor behind the Chebyshev tunings is the Chebyshev polynomials of the first kind. They are defined by[^bib-wikipedia-chebyshev-polynomials]:
 
-<p>\begin{align}
+$$\begin{align}
 T_n(\cos{\theta}) &= \cos(n\theta) \\
-\end{align}</p>
+\end{align}$$
 
 {{% tip %}}
-It's a little unusual in the way it's normally defined with it being a function of `\(\cos(\theta)\)` rather than just `\(x\)`. If you let `\(x = \cos \theta\)`, then you can substitute `\(\theta = \arccos x\)` are arrive at: 
+It's a little unusual in the way it's normally defined with it being a function of \(\cos(\theta)\) rather than just \(x\). If you let \(x = \cos \theta\), then you can substitute \(\theta = \arccos x\) are arrive at: 
 
-<p>\begin{align}
+$$\begin{align}
 T_n(x) &= \cos(n\arccos(x)) \text{ for }|x| \leq 1 \\
-\end{align}</p>
+\end{align}$$
 {{% /tip %}}
 
 You can calculate the Chebyshev polynomials of the first kind with the recursive definition[^bib-wikipedia-chebyshev-polynomials]:
 
-<p>\begin{align}
+$$\begin{align}
 T_0(x)     &= 1 \nonumber \\
 T_1(x)     &= x \nonumber \\
 T_{n+1}(x) &= 2xT_n(x) - T_{n-1}(x) \\
-\end{align}</p>
+\end{align}$$
 
 The first 6 Chebyshev polynomials are shown below:
 
-<p>\begin{align}
+$$\begin{align}
 T_0(x) &= 1 \nonumber \\
 T_1(x) &= x \nonumber \\
 T_2(x) &= 2x^2 - 1 \nonumber \\
 T_3(x) &= 4x^3 - 3x \nonumber \\
 T_4(x) &= 8x^4 - 8x^2 + 1 \nonumber \\
 T_5(x) &= 16x^5 - 20x^3 + 5x \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-These are special polynomials in which the leading coefficient (coefficient in front of the highest power of `\(x\)`) is the largest value it can be whilst the polynomial is bounded between `\([-1, 1]\)` on the interval `\(x\ \epsilon\ [-1, 1]\)`[^bib-wikipedia-chebyshev-polynomials]. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials `\(T_0\)` through to `\(T_5\)`. Note that `\(T_0 = 1\)`, and is somewhat hidden by the horizontal bounding line.
+These are special polynomials in which the leading coefficient (coefficient in front of the highest power of \(x\)) is the largest value it can be whilst the polynomial is bounded between \([-1, 1]\) on the interval \(x\ \epsilon\ [-1, 1]\)[^bib-wikipedia-chebyshev-polynomials]. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials \(T_0\) through to \(T_5\). Note that \(T_0 = 1\), and is somewhat hidden by the horizontal bounding line.
 
-{{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from `\(T_0\)` to `\(T_5\)`." %}}
+{{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from \(T_0\) to \(T_5\)." %}}
 
-The below Python function can be used to calculate the Chebyshev polynomial coefficients of the first kind, for a given order `\(n\)`. Although we could build up a recursive function and use sympy to find them based of the recursive equation above, it's easier just to use the `numpy.polynomial` module which provides a function to calculate them.
+The below Python function can be used to calculate the Chebyshev polynomial coefficients of the first kind, for a given order \(n\). Although we could build up a recursive function and use sympy to find them based of the recursive equation above, it's easier just to use the `numpy.polynomial` module which provides a function to calculate them.
 
 ```python
 import numpy.polynomial
@@ -235,35 +235,35 @@ A _Bessel_ tuned filter is one which has a **maximally linear phase response**. 
 
 The transfer function of a low-pass Bessel tuned filter is[^bib-wikipedia-bessel-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 H(s) &= \frac{\theta_n(0)}{\theta_n(s/\omega_0)}
-\end{align}</p>
+\end{align}$$
 
-where `\(\theta_n(s)\)` is a reverse Bessel polynomial (more on this below), `\(\omega_0\)` is the characteristic frequency and `\(s=k\omega\)`.
+where \(\theta_n(s)\) is a reverse Bessel polynomial (more on this below), \(\omega_0\) is the characteristic frequency and \(s=k\omega\).
 
 The reverse Bessel polynomials are given by[^bib-wikipedia-bessel-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 \theta_n(s) &= \sum_{k=0}^n a_k s^k
-\end{align}</p>
+\end{align}$$
 
-where `\(a_k\)` is a coefficient given by:
+where \(a_k\) is a coefficient given by:
 
-<p>\begin{align}
+$$\begin{align}
 a_k &= \frac{(2n - k)!}{2^{n-k}k!(n - k)!}
-\end{align}</p>
+\end{align}$$
 
-However, by this definition of the reverse Bessel polynomials, `\(\theta_n(0)\)` is indeterminate. So instead, `\(\theta_n(0)\)` is defined as:
+However, by this definition of the reverse Bessel polynomials, \(\theta_n(0)\) is indeterminate. So instead, \(\theta_n(0)\) is defined as:
 
-<p>\begin{align}
+$$\begin{align}
 \theta_n(0) &= \lim_{x \to 0} \theta_n(x)
-\end{align}</p>
+\end{align}$$
 
 The above equations were used to generate the table below, which lists the reverse Bessel polynomials of degree 0 to 8. 
 
 {{% file src="bessel-polynomial-coeffs-table.html" %}}
 
-The visually demonstrate the flat group delay of the Bessel tuned filter, we can plot the group delay of the Bessel-tuned 4th-order low-pass filter vs. a number of other popular tunings. The below plot shows the group delay for Bessel, Butterworth, Chebyshev and Elliptic tuned filter. The critical frequency was set to `\(10kHz\)` for all filter tunings. All filters are 4th-order. As you can see, the Bessel tuned filter has the flattest group delay.
+The visually demonstrate the flat group delay of the Bessel tuned filter, we can plot the group delay of the Bessel-tuned 4th-order low-pass filter vs. a number of other popular tunings. The below plot shows the group delay for Bessel, Butterworth, Chebyshev and Elliptic tuned filter. The critical frequency was set to \(10kHz\) for all filter tunings. All filters are 4th-order. As you can see, the Bessel tuned filter has the flattest group delay.
 
 {{% figure src="tuning-comparison-group-delay.png" width="700px" caption="The group delay for various 4th-order filter tunings. The Bessel-tuned filter has the flattest group delay in the passband." %}}
 
@@ -273,39 +273,39 @@ This also means that a Bessel-tuned filter has the **least ringing due to a step
 
 <div class="worked-example">
 
-**Find the transfer function for a 2nd-order Bessel low-pass filter with `\(\omega_0 = 1\)`. Then find the equations for magnitude/phase and create bode plots.**
+**Find the transfer function for a 2nd-order Bessel low-pass filter with \(\omega_0 = 1\). Then find the equations for magnitude/phase and create bode plots.**
 
-Using the equations or table above, the 2nd-order reverse Bessel polynomial `\(\theta_2(s/1) = s^2 + 3s + 3\)`. The limit of this function as `\(s \to 0\)` is `\(3\)`. So:
+Using the equations or table above, the 2nd-order reverse Bessel polynomial \(\theta_2(s/1) = s^2 + 3s + 3\). The limit of this function as \(s \to 0\) is \(3\). So:
 
-<p>\begin{align}
+$$\begin{align}
 H(s) &= \frac{\theta_n(0)}{\theta_n(s/\omega_0)} \nonumber \\
      &= \frac{3}{s^2 + 3s + 3} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-To find the magnitude response of this we substitute `\(s = j\omega\)`.
+To find the magnitude response of this we substitute \(s = j\omega\).
 
-<p>\begin{align}
+$$\begin{align}
 |H(\omega)| &= \left|\frac{3}{(j\omega)^2 + 3(j\omega) + 3}\right| \nonumber \\
             &= \frac{3}{|-\omega^2 + 3j\omega + 3|} \nonumber \\
             &= \frac{3}{| (3-\omega^2) + j(3\omega) |} \nonumber \\
             &= \frac{3}{\sqrt{\omega^4 - 6\omega^2 + 9 + 9\omega^2}} \nonumber \\
             &= \frac{3}{\sqrt{\omega^4 + 3\omega^2 + 9}} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 And finding the phase response:
 
-<p>\begin{align}
+$$\begin{align}
 \angle H(\omega) &= Arg{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} \nonumber \\
                  &= Arg{\frac{\Im (num)}{\Re (num)}} - Arg{\frac{\Im (den)}{\Re (den)}} \nonumber \\
                  &= Arg{\frac{0}{3}} - Arg{\frac{3\omega}{3 - \omega^2}} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-`\(Arg\)` can be implemented with `atan2()` in most programming languages, i.e.:
+\(Arg\) can be implemented with `atan2()` in most programming languages, i.e.:
 
-<p>\begin{align}
+$$\begin{align}
 \angle H(\omega) &= Arg{\frac{0}{3}} - Arg{\frac{3\omega}{3 - \omega^2}} \nonumber \\
                  &= atan2(0,\ 3) - atan2(3\omega,\ 3 - \omega^2) \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 We now use these equations for magnitude and phase and create bode plots!
 
@@ -319,9 +319,9 @@ Elliptic-tuned filters (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic
 
 Whereas most tunings are defined with a transfer function, the Elliptic filter is a special case where it is defined by it's gain. The gain for a lowpass Elliptic tuned filter is[^bib-wikipedia-elliptic-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 G_n(\omega) &= \frac{1}{\sqrt{1 + \epsilon^2 R_n^2 (\xi, \omega/\omega_c)}} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -331,7 +331,7 @@ where:<br/>
 \(\omega_c\) is the characteristic frequency, in radians per second \(rads^{-1}\)<br/>
 </p>
 
-**The big problem is that the elliptic ration function `\(R_n\)` cannot be easily expressed algebraically![^bib-recording-blogs-elliptic-filter]** It's general definition involves a Jacobi elliptic cosine function and the elliptic integral[^bib-rutgers-elliptic-lecture-notes]. Diving into this would be a headache, so we're just going to take the easy option and use the Python `scipy.signal.ellip()` function to provide us with the transfer function coefficients.
+**The big problem is that the elliptic ration function \(R_n\) cannot be easily expressed algebraically![^bib-recording-blogs-elliptic-filter]** It's general definition involves a Jacobi elliptic cosine function and the elliptic integral[^bib-rutgers-elliptic-lecture-notes]. Diving into this would be a headache, so we're just going to take the easy option and use the Python `scipy.signal.ellip()` function to provide us with the transfer function coefficients.
 
 You can generate an Elliptical filter in Python using the scipy package:
 
@@ -345,7 +345,7 @@ where `N` is the order of the filter, `rp` is the maximum ripple allowed below u
 
 <div class="worked-example">
 
-**Use the Python scipy package and find the transfer function for a 2nd-order lowpass Elliptic-tuned filter with a characteristic frequency of `\(10kHz\)`, passband ripple of `\(3dB\)`, and a minimum attenuation of \(40dB\) in the stopband.**
+**Use the Python scipy package and find the transfer function for a 2nd-order lowpass Elliptic-tuned filter with a characteristic frequency of \(10kHz\), passband ripple of \(3dB\), and a minimum attenuation of \(40dB\) in the stopband.**
 
 ```python
 import numpy as np
@@ -357,9 +357,9 @@ print(f'b={b}, a={a}')
 
 This gives the below transfer function, which considering the coefficients of the other filter tuning types, are pretty strange!
 
-<p>\begin{align}
+$$\begin{align}
 H(s) &= \frac{1.00098303\times10^{-2}s^2 + 1.99828046\times10^{9}}{s^2 + 4.02295857\times10^4s + 2.82264617\times10^9} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 </div>
 
@@ -372,9 +372,9 @@ You can run into stability issues when representing transfer functions in the `b
 The following parameters were used for the filters:
 
 * All filters are 4th-order filters.
-* Characteristic frequency `\(f_c\)` of `\(10kHz\)`. For Butterworth and Bessel tunings the characteristic frequency is defined as the `\(-3dB\)` point. For Chebyshev and Elliptic filter tunings the characteristic frequency is defined as the point where the ripple leaves the allowable amount in the passband.
-* A rather arbitrary `\(3dB\)` of passband ripple was allowed for both the Chebyshev and Elliptic filters.
-* Being even more arbitrary, the Elliptic filter was allowed to rise back up to `\(-40dB\)` in the stopband.
+* Characteristic frequency \(f_c\) of \(10kHz\). For Butterworth and Bessel tunings the characteristic frequency is defined as the \(-3dB\) point. For Chebyshev and Elliptic filter tunings the characteristic frequency is defined as the point where the ripple leaves the allowable amount in the passband.
+* A rather arbitrary \(3dB\) of passband ripple was allowed for both the Chebyshev and Elliptic filters.
+* Being even more arbitrary, the Elliptic filter was allowed to rise back up to \(-40dB\) in the stopband.
 
 With the above specified, **the transfer function of each filter is fully defined**.
 
@@ -382,7 +382,7 @@ Now we can finally look at some comparisons. The below plot compares the gain re
 
 {{% figure src="tuning-comparison-gain-db.png" width="600px" caption="Gain comparison of different filter tunings." %}}
 
-I think the difference is gain response can be better viewed with linear x and y axes So we'll drop the `\(dB\)` in favour of `\(V/V\)` and get rid of the logarithmic x-axis:
+I think the difference is gain response can be better viewed with linear x and y axes So we'll drop the \(dB\) in favour of \(V/V\) and get rid of the logarithmic x-axis:
 
 {{% figure src="tuning-comparison-gain-linear.png" width="600px" caption="Gain comparison of different filter tunings, now with linear x and y axes." %}}
 
@@ -400,7 +400,7 @@ A comparison of group delay for the various filter tunings is shown below. You c
 
 {{% figure src="tuning-comparison-group-delay.png" width="600px" caption="Group delay comparison of different filter tunings." %}}
 
-The step response is also interesting to look at. The input step was from `\(0V\)` to `\(1V\)` and the output of each filter is shown below:
+The step response is also interesting to look at. The input step was from \(0V\) to \(1V\) and the output of each filter is shown below:
 
 {{% figure src="tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings." %}}
 

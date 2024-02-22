@@ -14,7 +14,7 @@ type: "page"
 
 ## Overview
 
-_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line `\(Z_C\)` is usually `\(50-150\Omega\)`, but drivers are usually low impedance (`\(<20\Omega\)`), and receivers high-impedance (`\(>1k\Omega\)`). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance equal to the characteristic impedance.
+_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line \(Z_C\) is usually \(50-150\Omega\), but drivers are usually low impedance (\(<20\Omega\)), and receivers high-impedance (\(>1k\Omega\)). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance equal to the characteristic impedance.
 
 Types of termination:
 
@@ -29,7 +29,7 @@ Most of these termination methods are discussed in the context of digital signal
 
 _Series termination_ (a.k.a. _back termination_ or _source termination_) is a termination method in where a resistor is added in series at the start of the transmission line, and no termination is added at the end of the termination line. Even though the start of the transmission line receives half the voltage from the driver, **the receiver sees a perfect transition to the full voltage due to a purposeful reflection back to the driver**. 
 
-{{% figure src="series-termination-schematic.png" width="800px" caption="How to do series termination. Resistor `\(R_S\)` is placed at the output of the driver before the transmission line. `\(R_S\)` is equal to the characteristic impedance of the transmission line. " %}}
+{{% figure src="series-termination-schematic.png" width="800px" caption="How to do series termination. Resistor \(R_S\) is placed at the output of the driver before the transmission line. \(R_S\) is equal to the characteristic impedance of the transmission line. " %}}
 
 Advantages:
 
@@ -39,38 +39,38 @@ Advantages:
 
 {{% aside type="example" %}}
 
-How does a `\(0-5V\)` waveform propagates on a `\(50\Omega\)` series terminated transmission line?
+How does a \(0-5V\) waveform propagates on a \(50\Omega\) series terminated transmission line?
 
-1. Driver drives line from `\(0V\)` (low) to `\(+5.0V\)` (high). Waveform looks like a step (fast rise time).
-1. Waveform sees `\(50\Omega\)` series termination resistor, and then the `\(50\Omega\)` characteristic impedance of the transmission line to ground. Thus half the voltage is dropped across the series termination, and `\(+2.5V\)` is applied to the start of the transmission line.
-1. This waveform travels down the transmission line, still looking like a `\(+2.5V\)` step.
-1. Waveform reaches the end of the transmission line. This is open circuit, and so a reflected wave of `\(+2.5V\)` is generated. These two add together to cause the end to jump straight from `\(0V\)` to `\(+5.0V\)`.
-1. The reflected wave travels back down the transmission line, which looks like a step jump from `\(+2.5V\)` to `\(+5.0V\)`.
-1. The reflected wave reaches the start and performs the same step jump from `\(+2.5V\)` to `\(+5.0V\)`. Because this is properly terminated, no further reflections occur, and the voltage stays steady at `\(+5.0V\)`.
+1. Driver drives line from \(0V\) (low) to \(+5.0V\) (high). Waveform looks like a step (fast rise time).
+1. Waveform sees \(50\Omega\) series termination resistor, and then the \(50\Omega\) characteristic impedance of the transmission line to ground. Thus half the voltage is dropped across the series termination, and \(+2.5V\) is applied to the start of the transmission line.
+1. This waveform travels down the transmission line, still looking like a \(+2.5V\) step.
+1. Waveform reaches the end of the transmission line. This is open circuit, and so a reflected wave of \(+2.5V\) is generated. These two add together to cause the end to jump straight from \(0V\) to \(+5.0V\).
+1. The reflected wave travels back down the transmission line, which looks like a step jump from \(+2.5V\) to \(+5.0V\).
+1. The reflected wave reaches the start and performs the same step jump from \(+2.5V\) to \(+5.0V\). Because this is properly terminated, no further reflections occur, and the voltage stays steady at \(+5.0V\).
 1. The line has now reached steady state, and to the driver looks like an open-circuit (high-impedance), requiring no further drive current (this can be a big bonus for series termination).
 
 {{% /aside %}}
 
 ### Taking The Driver Output Impedance Into Account
 
-So far we have been assuming a perfect driver, i.e. one with no output resistance. Obviously in reality this is not the case, with the output impedance of most drive circuits being somewhere between `\(1-30\Omega\)`. **Luckily, as long as the output resistance of driver is less than the characteristic impedance of the transmission line, you can still use series termination**. The idea is simple, just use the output impedance of the driver as part of the total series termination resistance.
+So far we have been assuming a perfect driver, i.e. one with no output resistance. Obviously in reality this is not the case, with the output impedance of most drive circuits being somewhere between \(1-30\Omega\). **Luckily, as long as the output resistance of driver is less than the characteristic impedance of the transmission line, you can still use series termination**. The idea is simple, just use the output impedance of the driver as part of the total series termination resistance.
 
-<p>\begin{align}
+$$\begin{align}
 Z_S = Z_{C} - Z_{driver}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
-`\(Z_S\)` is the impedance, in `\(\Omega\)`<br/>
-`\(Z_{C}\)` is the characteristic impedance of the transmission line, in `\(\Omega\)`<br/>
-`\(Z_{driver}\)` is the output impedance of the driver, in `\(\Omega\)`<br/>
+\(Z_S\) is the impedance, in \(\Omega\)<br/>
+\(Z_{C}\) is the characteristic impedance of the transmission line, in \(\Omega\)<br/>
+\(Z_{driver}\) is the output impedance of the driver, in \(\Omega\)<br/>
 </p>
 
 {{% aside type="tip" %}}
 The above impedances should have no imaginary component, so they are just resistances.
 {{% /aside %}}
 
-The below diagram shows a real-world example where the driver has an output impedance of `\(20\Omega\)`, driving a `\(50\Omega\)` transmission line. A `\(30\Omega\)` series termination resistor is added to make the total series resistance equal to the transmission line's characteristic impedance.
+The below diagram shows a real-world example where the driver has an output impedance of \(20\Omega\), driving a \(50\Omega\) transmission line. A \(30\Omega\) series termination resistor is added to make the total series resistance equal to the transmission line's characteristic impedance.
 
 {{% figure src="series-termination-with-non-zero-driver-output-impedance.png" width="800px" caption="Real-world series termination, in where the driver has non-zero output impedance. Reduce the series termination resistance so that the total resistance is still equal to the characteristic impedance of the transmission line." %}}
 
@@ -82,27 +82,27 @@ The below diagram shows a real-world example where the driver has an output impe
 
 ## Parallel Termination
 
-_Parallel termination_ is a termination method in where a resistor `\(R_P\)` is added to the receiver end of the transmission line, and is connected across the line and either GND or `\(V_{CC}\)` (hence in parallel).
+_Parallel termination_ is a termination method in where a resistor \(R_P\) is added to the receiver end of the transmission line, and is connected across the line and either GND or \(V_{CC}\) (hence in parallel).
 
-{{% figure src="parallel-termination-schematic.png" width="800px" caption="Schematic showing basic parallel termination. A resistor `\(R_P\)` is added at the receiver end to either GND or `\(V_{CC}\)`." %}}
+{{% figure src="parallel-termination-schematic.png" width="800px" caption="Schematic showing basic parallel termination. A resistor \(R_P\) is added at the receiver end to either GND or \(V_{CC}\)." %}}
 
 The waveform exiting the transmission line needs to see the same impedance as the transmission line itself.
 
-<p>\begin{align}
+$$\begin{align}
 Z_{IN} || Z_P = Z_{C}
-\end{align}</p>
+\end{align}$$
 
-Typically, the input impedance of the receiver will be relatively high (`\(>1k\Omega\)`) in comparison to the impedance you're aiming for:
+Typically, the input impedance of the receiver will be relatively high (\(>1k\Omega\)) in comparison to the impedance you're aiming for:
 
-<p>\begin{align}
+$$\begin{align}
 Z_{IN} >> Z_{C}
-\end{align}</p>
+\end{align}$$
 
 And in which case the equation simplifies to:
 
-<p>\begin{align}
+$$\begin{align}
 Z_P = Z_{C}
-\end{align}</p>
+\end{align}$$
 
 **Parallel Termination Summery**
 
@@ -114,17 +114,17 @@ Z_P = Z_{C}
 
 ## Thevenin Termination
 
-_Thevenin termination_ is a form of termination in where two resistors (usually identical) are connected to the receiving end of the transmission line, one to `\(V_{CC}\)` and the other to `\(GND\)`. 
+_Thevenin termination_ is a form of termination in where two resistors (usually identical) are connected to the receiving end of the transmission line, one to \(V_{CC}\) and the other to \(GND\). 
 
-{{% figure src="thevenin-termination-schematic.png" width="800px" caption="Schematic showing Thevenin termination. Two usually identical resistors `\(R_{P1}\)` and `\(R_{P2}\)` are connected to the receiver." %}}
+{{% figure src="thevenin-termination-schematic.png" width="800px" caption="Schematic showing Thevenin termination. Two usually identical resistors \(R_{P1}\) and \(R_{P2}\) are connected to the receiver." %}}
 
-Assuming the receiver is relatively high impedance, the parallel combination of `\(R_{P1}\)` and `\(R_{P2}\)` must equal the impedance of the transmission line.
+Assuming the receiver is relatively high impedance, the parallel combination of \(R_{P1}\) and \(R_{P2}\) must equal the impedance of the transmission line.
 
-<p>\begin{align}
+$$\begin{align}
 R_{P1} || R_{P2} &= Z_{C} \nonumber \\
 \nonumber \\
 \frac{R_{P1} \cdot R_{P2}}{R_{P1} + R_{P2}} &= Z_{C} \\
-\end{align}</p>
+\end{align}$$
 
 **Thevenin Termination Summary**
 

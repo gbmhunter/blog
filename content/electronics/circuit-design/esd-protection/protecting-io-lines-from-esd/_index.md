@@ -11,7 +11,7 @@ type: page
 
 ## Overview
 
-This page explains some of the ways you can go about protecting IO lines on a PCB from ESD events. This page assumes a basic scenario, you are wanting to protect an IO line that comes from an external connector and then connects to a GPIO pin on a MCU. The MCU is running from a +3.3V rail voltage (`\(V_{CC}\)`). However, the examples also apply to pretty much any IO line that connects to some sort of sensitive IC circuitry, e.g. enable pins on PSU ICs, communication lines, e.t.c.
+This page explains some of the ways you can go about protecting IO lines on a PCB from ESD events. This page assumes a basic scenario, you are wanting to protect an IO line that comes from an external connector and then connects to a GPIO pin on a MCU. The MCU is running from a +3.3V rail voltage (\(V_{CC}\)). However, the examples also apply to pretty much any IO line that connects to some sort of sensitive IC circuitry, e.g. enable pins on PSU ICs, communication lines, e.t.c.
 
 ## A Simple Resistor
 
@@ -19,7 +19,7 @@ One of the simplest ways of protecting an I/O line from ESD is to add a series r
 
 {{% figure src="io-protection-with-resistor.png" width="600px" caption="Simple IO protection with a series resistor." %}}
 
-One thing to be aware of is that this will limit the maximum frequency that can be used through this IO line (more so that other ESD techniques, such as steering diodes as discussed below). The series resistor will form a low-pass RC filter with the parasitic capacitance on the line after the resistor. For short PCB traces, most of this parasitic capacitance will be from the input capacitance of the GPIO pin on the MCU. Something in the region of `\(10pF\)` can be expected, which with a `\(1k\Omega\)` resistor will form a low-pass filter with a cut-off frequency of `\(16MHz\)`.
+One thing to be aware of is that this will limit the maximum frequency that can be used through this IO line (more so that other ESD techniques, such as steering diodes as discussed below). The series resistor will form a low-pass RC filter with the parasitic capacitance on the line after the resistor. For short PCB traces, most of this parasitic capacitance will be from the input capacitance of the GPIO pin on the MCU. Something in the region of \(10pF\) can be expected, which with a \(1k\Omega\) resistor will form a low-pass filter with a cut-off frequency of \(16MHz\).
 
 * Simple.
 * Not terribly effective.
@@ -46,7 +46,7 @@ Another popular way of protecting an IO line from ESD is to connect a [TVS diode
 
 {{% figure src="io-protection-with-tvs-diode.png" width="600px" caption="ESD protection with a TVS diode. The standoff voltage is normally set to the maximum working voltage (i.e. +3.3V in this case) and will begin to conduct significantly as the voltage rises above this level." %}}
 
-The above schematic is a unidirectional TVS diode, which will clamp a positive ESD event as the voltage starts to rise above `\(+3.3V\)`, and will clamp a negative-going ESD event when the voltage gets to around `\({-}0.7V\)` and forward biases the diode.
+The above schematic is a unidirectional TVS diode, which will clamp a positive ESD event as the voltage starts to rise above \(+3.3V\), and will clamp a negative-going ESD event when the voltage gets to around \({-}0.7V\) and forward biases the diode.
 
 {{% warning %}}
 TVS diodes do not have a sharp turn-on point, and the voltage can rise significantly above the standoff voltage.
@@ -64,7 +64,7 @@ Disadvantages:
 
 ## Steering Diodes
 
-Steering diodes are connected between the I/O line and two voltage rails, typically `\(V_{CC}\)` and `\(GND\)`. You normally want to use Schottky diodes, as they have a lower forward voltage drop of around 0.3V compared to the standard PN junction diode forward voltage drop of 0.7V. This means your more robust external steering diodes will conduct and shunt more of the ESD energy away before the internal ESD protection diodes connected to the GPIO port in the MCU port do.
+Steering diodes are connected between the I/O line and two voltage rails, typically \(V_{CC}\) and \(GND\). You normally want to use Schottky diodes, as they have a lower forward voltage drop of around 0.3V compared to the standard PN junction diode forward voltage drop of 0.7V. This means your more robust external steering diodes will conduct and shunt more of the ESD energy away before the internal ESD protection diodes connected to the GPIO port in the MCU port do.
 
 * Sharper turn on than a TVS diode.
 * Dump energy into rails, which may be a bad thing.
@@ -97,7 +97,7 @@ Some ESD diode arrays incorporate steering diodes and a TVS diode to do just thi
 The SP3012-06UTG has a Zener diode instead of a TVS diode, but the principle is still the same. "Zeners" typically offer lower max. power dissipation levels than diodes labelled as "TVS diodes".
 {{% /note %}}
 
-Another example is the Littelfuse `SRDA3.3` steering diode array IC. It is designed to protect +3.3V IO lines and is rated to `\(\pm 30kV\)` contact, `\(\pm 30kV\)` air via IEC61000-4-2[^bib-littelfuse-srda33-ds]. It's functional block diagram is:
+Another example is the Littelfuse `SRDA3.3` steering diode array IC. It is designed to protect +3.3V IO lines and is rated to \(\pm 30kV\) contact, \(\pm 30kV\) air via IEC61000-4-2[^bib-littelfuse-srda33-ds]. It's functional block diagram is:
 
 {{% figure src="littelfuse-srda33-functional-block-diagram.png" width="300px" caption="The functional block diagram of the Littelfuse SRDA3.3 steering diode array[^bib-littelfuse-srda33-ds]." %}}
 

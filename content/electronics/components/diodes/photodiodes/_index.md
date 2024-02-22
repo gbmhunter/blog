@@ -58,19 +58,19 @@ The typical relationship between the photodiodes voltage and current is shown be
 {{% figure src="photodiode-voltage-vs-current.png" width="700" caption="Graph showing the typical relationship between photodiode voltage and current, for three different levels of incident light power. The top-most curve is with no incident light, curves then shift downwards very linearly with increasing light power. " %}}
 
 {{% tip %}}
-Except for `\(V=0V\)` (right on the vertical axis), almost no photodiode is operated in the right-half of the graph.
+Except for \(V=0V\) (right on the vertical axis), almost no photodiode is operated in the right-half of the graph.
 {{% /tip %}}
 
-The top-most curve is when there is no incident light (`\(P_{IN} = 0W\)`). You will notice this curve goes through `\((0,0)\)`. As the incident light power increases, the curve shifts downwards, in a mostly linear fashion (this is why you can make accurate light sensors with photodiodes).
+The top-most curve is when there is no incident light (\(P_{IN} = 0W\)). You will notice this curve goes through \((0,0)\). As the incident light power increases, the curve shifts downwards, in a mostly linear fashion (this is why you can make accurate light sensors with photodiodes).
 
-The right-half of the graph is not terribly interesting, as the photodiode just acts as a normal diodes in this area, with a sharp increase in the current around the typical "turn-on" voltage of `\(0.7V\)`. In the left-hand side of the graph, as the reverse-bias voltage increases, the diodes dark current increases (the line with `\(P_{IN} = 0W\)`).
+The right-half of the graph is not terribly interesting, as the photodiode just acts as a normal diodes in this area, with a sharp increase in the current around the typical "turn-on" voltage of \(0.7V\). In the left-hand side of the graph, as the reverse-bias voltage increases, the diodes dark current increases (the line with \(P_{IN} = 0W\)).
 
 ## Important Parameters
 
 ### Responsivity
 
-* Units: `\(AW^{-1}\)`
-* Typical range: `\(0.1{-}1AW^{-1}\)`
+* Units: \(AW^{-1}\)
+* Typical range: \(0.1{-}1AW^{-1}\)
 
 ### Linearity
 
@@ -80,13 +80,13 @@ The right-half of the graph is not terribly interesting, as the photodiode just 
 
 ### Spectral Range
 
-* Units: `\(nm\)`
-* Typical range: `\(400-1100nm\)`
+* Units: \(nm\)
+* Typical range: \(400-1100nm\)
 
 ### Sensitive Area
 
-* Units: `\(mm^2\)`
-* Typical range: `\(1-10mm^2\)`
+* Units: \(mm^2\)
+* Typical range: \(1-10mm^2\)
 
 The _sensitive area_ is the area of the PN junction that is exposed and responds to light. A larger sensitive area will result in a photodiode being able detect lower levels of light, and provide more bits of resolution.
 
@@ -94,39 +94,39 @@ The _sensitive area_ is the area of the PN junction that is exposed and responds
 
 ### Dark Current
 
-The dark current for a silicon photodiode approximately doubles for every `\(10^{\circ}C\)` in temperature rise[^bib-nthu-optical-detectors], giving rise to the following equation:
+The dark current for a silicon photodiode approximately doubles for every \(10^{\circ}C\) in temperature rise[^bib-nthu-optical-detectors], giving rise to the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 I_{dark}(T_2) = I_{dark}(T_1) \cdot 2^{\frac{T_2 - T_1}{6}} 
-\end{align}</p>
+\end{align}$$
 
-The dark current at `\(25^{\circ}C\)` is usually specified in the photodiode's datasheet. Using this equation, you can then find the dark current for any other temperature.
+The dark current at \(25^{\circ}C\) is usually specified in the photodiode's datasheet. Using this equation, you can then find the dark current for any other temperature.
 
 ## Basic Photodiode-based Transimpedance Amplifier Circuit
 
-Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current (typically `\(pA\)`), which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an [op-amp](/electronics/components/op-amps/), as shown below. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
+Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current (typically \(pA\)), which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an [op-amp](/electronics/components/op-amps/), as shown below. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
 
 {{% figure src="simple-transimpedance-photodiode-circuit.png" width="700" caption="A basic transimpedance amplifier circuit to convert the photodiodes light-dependent current into a measurable voltage. The output can be used to control other analog circuitry are can be connected to an [ADC](/electronics/components/analogue-to-digital-converters-adcs/)." %}}
 
-Because the op-amps non-inverting is tied to ground, the inverting input is a "virtual ground" (it also stays at 0V). Because the diode current `\(I_D\)` has no-where to go but through the resistor `\(R_f\)`, this gives the simple equation:
+Because the op-amps non-inverting is tied to ground, the inverting input is a "virtual ground" (it also stays at 0V). Because the diode current \(I_D\) has no-where to go but through the resistor \(R_f\), this gives the simple equation:
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} &= I_D R_f
-\end{align}</p>
+\end{align}$$
 
 {{% tip %}}
 Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).
 {{% /tip %}}
 
-**It's important to pay attention to the input bias current `\(I_B\)` when choosing the op-amp for this circuit**. This is because the photodiode sources a very small current (e.g. in the `\(pA{-}nA\)`). Any input bias current is either going to add or subtract from this photodiode current before being amplified by the feedback resistor. Jellybean op-amps have `\(I_B\)` in the range of `\(1{-}10nA\)`. You normally want to pick an op-amp which has an input bias current that is at least an order of magnitude smaller than the photodiode current you are trying to measure. Luckily, you can get op-amps that are specifically designed to have small input bias currents. For example, the [Texas Instruments OPA396](https://www.ti.com/lit/ds/symlink/opa396.pdf) has a typ. `\(I_B = \pm 10fA\)` at `\(25^{\circ}C\)`! This increases to approx. `\(\pm 4pF\)` across it's entire temperature range (typical)[^bib-ti-opa396-datasheet].
+**It's important to pay attention to the input bias current \(I_B\) when choosing the op-amp for this circuit**. This is because the photodiode sources a very small current (e.g. in the \(pA{-}nA\)). Any input bias current is either going to add or subtract from this photodiode current before being amplified by the feedback resistor. Jellybean op-amps have \(I_B\) in the range of \(1{-}10nA\). You normally want to pick an op-amp which has an input bias current that is at least an order of magnitude smaller than the photodiode current you are trying to measure. Luckily, you can get op-amps that are specifically designed to have small input bias currents. For example, the [Texas Instruments OPA396](https://www.ti.com/lit/ds/symlink/opa396.pdf) has a typ. \(I_B = \pm 10fA\) at \(25^{\circ}C\)! This increases to approx. \(\pm 4pF\) across it's entire temperature range (typical)[^bib-ti-opa396-datasheet].
 
 An alternative to using a transimpedance amplifier to convert current to voltage is to use an op-amp and a capacitor to act as an integrator. You can by special [switched capacitor ICs](/electronics/components/switched-integrator-ics/) that package the op-amp, switches and precision capacitor in a single semiconductor IC. They offer good SNR, but with relatively low bandwidth. However, this method is not as popular as the transimpedance amplifier, and the dedicated ICs are expensive and hard to source.
 
 The current noise density of the circuit is[^bib-osi-photodiode-chars-and-apps]:
 
-<p>\begin{align}
+$$\begin{align}
 I_N = \sqrt{\frac{4kT}{R_f}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -137,17 +137,17 @@ where:</br>
 
 ### Gain Peaking Capacitor
 
-A capacitor `\(C_f\)` can be added in parallel with `\(R_f\)` to prevent _gain peaking_.
+A capacitor \(C_f\) can be added in parallel with \(R_f\) to prevent _gain peaking_.
 
 ### Biasing
 
-When connected to a transimpedance amplifier, the photodiode can either be used with `\(0V\)` potential across it (_photovoltaic mode_) or with a reverse bias (_photoconductive mode_)[^bib-osi-photodiode-chars-and-apps].
+When connected to a transimpedance amplifier, the photodiode can either be used with \(0V\) potential across it (_photovoltaic mode_) or with a reverse bias (_photoconductive mode_)[^bib-osi-photodiode-chars-and-apps].
 
 #### Photovoltaic Mode
 
-_Photovoltaic mode_ is when the photodiode is not operated with any DC bias across it (i.e. there is `\(0V\)` across it). This is usually achieved by tying one side of the photodiode to ground, whilst the other side is held at "virtual ground" by an op-amp.
+_Photovoltaic mode_ is when the photodiode is not operated with any DC bias across it (i.e. there is \(0V\) across it). This is usually achieved by tying one side of the photodiode to ground, whilst the other side is held at "virtual ground" by an op-amp.
 
-The photovoltaic mode of operation is recommended for low speed `\(<350kHz\)` and low-light level applications[^bib-osi-photodiode-chars-and-apps]. It also appears to be more linear, due to the less variations in response due to changes in temperature[^bib-osi-photodiode-chars-and-apps].
+The photovoltaic mode of operation is recommended for low speed \(<350kHz\) and low-light level applications[^bib-osi-photodiode-chars-and-apps]. It also appears to be more linear, due to the less variations in response due to changes in temperature[^bib-osi-photodiode-chars-and-apps].
 
 #### Photoconductive Mode
 
@@ -162,9 +162,9 @@ Below shows an equivalent circuit for a photodiode:
 
 {{% figure src="photodiode-equivalent-circuit.png" width="700" caption="An equivalent circuit for a photodiode. Based of the circuit in _Photodiode Characteristics and Applications_ by OSI Optoelectronics[^bib-osi-photodiode-chars-and-apps]." %}}
 
-`\(R_{sh}\)` represents the resistance in parallel with the current source, and is called the _shunt resistance_. You want this shunt resistance to be as high as possible, as this means more of the current is delivered to the load. Germanium photodiodes can have lower shunt resistance in the `\(1-100k\Omega\)` range[^bib-aac-photodiode-equiv-circuit].
+\(R_{sh}\) represents the resistance in parallel with the current source, and is called the _shunt resistance_. You want this shunt resistance to be as high as possible, as this means more of the current is delivered to the load. Germanium photodiodes can have lower shunt resistance in the \(1-100k\Omega\) range[^bib-aac-photodiode-equiv-circuit].
 
-`\(C_j\)` represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of `\(C_j\)` is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
+\(C_j\) represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of \(C_j\) is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
 
 {{% figure src="bpw34-diode-capacitance-vs-reverse-voltage.png" width="400" caption="A graph showing the junction capacitance vs. reverse voltage for the Vishay BPW34 photodiode[^bib-vishay-bpw34-ds]. You can clearly see the reduction of capacitance with increased reverse bias!" %}}
 
@@ -174,7 +174,7 @@ Below shows an equivalent circuit for a photodiode:
 
 Opto Diode manufacture a range of silcon photodiodes in through-hole TO-5, TO-8 and TO-18 packages.
 
-{{% figure src="odd-5wisol-photodiode-photo-to-5.png" width="200" caption="Close-up photo of the ODD-5WISOL photodiode from Opto Diode in a TO-5 package[^bib-opto-diode-odd-5wisol-ds]. This photodiode has an active area of approx. `\(5mm^2\)` and responsivity of `\(0.4A/W\)` at 632nm (red)." %}}
+{{% figure src="odd-5wisol-photodiode-photo-to-5.png" width="200" caption="Close-up photo of the ODD-5WISOL photodiode from Opto Diode in a TO-5 package[^bib-opto-diode-odd-5wisol-ds]. This photodiode has an active area of approx. \(5mm^2\) and responsivity of \(0.4A/W\) at 632nm (red)." %}}
 
 ## Popular Parts
 

@@ -201,14 +201,14 @@ There is also the two codes JB (which is similar to `X5R`) and CH (which is simi
 
 The [insulation resistance](#leakage-currents) limits for military MLCCs are:
 
-* IR > `\( 10^{11}\Omega \)` or `\( 10^3 M\Omega \cdot uF \)`, whichever is less, at `\( +25^{\circ}C \)`.
-* IR > `\( 10^{10}\Omega \)` or `\( 10^2 M\Omega \cdot uF \)`, whichever is less, at `\( +125^{\circ}C \)`.
+* IR > \( 10^{11}\Omega \) or \( 10^3 M\Omega \cdot uF \), whichever is less, at \( +25^{\circ}C \).
+* IR > \( 10^{10}\Omega \) or \( 10^2 M\Omega \cdot uF \), whichever is less, at \( +125^{\circ}C \).
 
 IR requirements for commercial MLCCs are about two times less.
 
 #### Singing Capacitors (Audible Noise)
 
-**Ceramic capacitors can generate audible noise when operated at certain frequencies.** This is due to a combination of piezoelectric and electrostrictive forces exhibited by the internal dielectric material Barium Titanate `\(BaTiO_3\)` in a monolithic ceramic capacitor when subjected to an electric field[^covaci-singing-mlccs-and-mitigation]. This causes the capacitor to mechanically vibrate (the movement is in the order of 1pm-1nm), which creates acoustic noise. This noise can commonly be heard in switch-mode power supplies and other high-frequency switching devices. Tantalum and electrolytic capacitors do not exhibit this effect, and can be used as a replacement when this noise is undesirable.
+**Ceramic capacitors can generate audible noise when operated at certain frequencies.** This is due to a combination of piezoelectric and electrostrictive forces exhibited by the internal dielectric material Barium Titanate \(BaTiO_3\) in a monolithic ceramic capacitor when subjected to an electric field[^covaci-singing-mlccs-and-mitigation]. This causes the capacitor to mechanically vibrate (the movement is in the order of 1pm-1nm), which creates acoustic noise. This noise can commonly be heard in switch-mode power supplies and other high-frequency switching devices. Tantalum and electrolytic capacitors do not exhibit this effect, and can be used as a replacement when this noise is undesirable.
 
 {{% figure ref="murata-deformation-of-pcb-by-electrostrictive-phenomenon" src="_assets/murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="450px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html." %}}
 
@@ -234,7 +234,7 @@ Ceramic MLCC capacitors suffer from significant DC Bias effects (reduction in ca
   * Filtering<
   * Audio bypass capacitors
 
-Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
+Electrolytic capacitors uses a very thin electrically deposited metal oxide film (\(Al_2 O_3\)) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
 In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
 
@@ -283,7 +283,7 @@ _Wet_ tantalum capacitors are a newer from of tantalum capacitor, with a better 
 
 #### Construction
 
-At the heart of a tantalum capacitor is a pellet of tantalum (`\(Ta_2 O_5\)`), as shown in {{% ref "fig-cross-section-of-tantalum-capacitor" %}}.
+At the heart of a tantalum capacitor is a pellet of tantalum (\(Ta_2 O_5\)), as shown in {{% ref "fig-cross-section-of-tantalum-capacitor" %}}.
 
 {{% figure ref="fig-cross-section-of-tantalum-capacitor" src="_assets/cross-section-of-tantalum-capacitor.png" width="500px" caption="Cross-section of a SMD tantalum capacitor." %}}
 
@@ -490,9 +490,9 @@ The behaviour of capacitors when connected together in series and in parallel is
 
 Capacitors in parallel can be treated as one capacitor with the equivalent capacitance of:
 
-<p>\begin{align}
+$$\begin{align}
 C_{total} = C1 + C2
-\end{align}</p>
+\end{align}$$
 
 That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in {{% ref "fig-capacitors-in-parallel" %}}.
 
@@ -506,21 +506,21 @@ One of the benefits of connecting many capacitors in parallel rather than using 
 
 Capacitors in series with each other can be treated as one capacitor with a capacitance:
 
-<p>\begin{align}
+$$\begin{align}
 C_{total} = \frac{1}{\frac{1}{C1} + \frac{1}{C2}}
-\end{align}</p>
+\end{align}$$
 
 or:
 
-<p>\begin{align}
+$$\begin{align}
 C_{total} = \frac{C1C2}{C1 + C2}
-\end{align}</p>
+\end{align}$$
 
 It is usually easier to remember this equation as:
 
-<p>\begin{align}
+$$\begin{align}
 \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2}
-\end{align}</p>
+\end{align}$$
 
 This is illustrated in {{% ref "fig-capacitors-in-series" %}}.
 
@@ -528,7 +528,7 @@ This is illustrated in {{% ref "fig-capacitors-in-series" %}}.
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*. **Capacitors in series behave in the same way as resistors in parallel.**
 
-One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a *charge imbalance*, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. `\(1M\Omega\)`) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
+One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a *charge imbalance*, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. \(1M\Omega\)) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
 
 ## Formulas
 
@@ -536,9 +536,9 @@ One of the benefits of connecting capacitors in series is that each capacitor on
 
 The charge stored on the plates of a capacitor is related to the voltage and capacitance by:
 
-<p>\begin{align}
+$$\begin{align}
 Q = CV
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -553,9 +553,9 @@ If using this formula, see the Capacitor Charge Calculator.
 
 The energy stored in a capacitor is:
 
-<p>\begin{align}
+$$\begin{align}
 E = \frac{1}{2}CV^2
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -572,9 +572,9 @@ If using this formula, see the Capacitor Energy Calculator.
 
 The force exerted on the two parallel plates of a capacitor is:
 
-<p>\begin{align}
+$$\begin{align}
 F = \frac{\epsilon_0 AV^2}{2d^2}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -591,9 +591,9 @@ where:<br/>
 
 The capacitance of a single thin plate as shown in {{% ref "fig-diagram-for-disc-capacitance-equation" %}}, with  a ground at 'infinity' (or more practically, just very far away) is:
 
-<p>\begin{align}
+$$\begin{align}
 C = 35.4 \times 10^{-12} \epsilon_r d
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -608,9 +608,9 @@ where:<br/>
 
 The capacitance of a single sphere as shown in {{% ref "fig-diagram-for-sphere-capacitance-equation" %}}, again with a ground at infinity is[^bib-qs-study-capacitance-spherical]:
 
-<p>\begin{align}
+$$\begin{align}
 C = 4\pi \epsilon_0 \epsilon_r r
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -624,9 +624,9 @@ where:<br/>
 
 The capacitance of two parallel plates is approximately
 
-<p>\begin{align}
+$$\begin{align}
 C = \epsilon_r \epsilon_o\frac{A}{d}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -642,9 +642,9 @@ where:<br/>
 
 The capacitance of two concentric cylinders as shown in {{% ref "fig-diagram-for-coaxial-cylinders-capacitance-equation" %}} is:
 
-<p>\begin{align}
+$$\begin{align}
 C = \frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -664,13 +664,13 @@ Since the ESR is proportional to the capacitor's plate area, for a similar capac
 
 ## Leakage Currents
 
-Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current `\(I_{abs}\)`, and the intrinsic leakage current `\(I_{il}\)`.
+Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current \(I_{abs}\), and the intrinsic leakage current \(I_{il}\).
 
-<p>\begin{align}
+$$\begin{align}
 I_{leakage} = I_{abs} + I_{il}
-\end{align}</p>
+\end{align}$$
 
-Absorption currents are due to quantum tunnelling of electrons at the metal/ceramic barrier! Absorption currents, `\(I_{abs}\)` reduce with time and have weak temperature dependence, while intrinsic leakage currents `\(I_{il}\)` remain constant with time but exponentially increase with temperature.
+Absorption currents are due to quantum tunnelling of electrons at the metal/ceramic barrier! Absorption currents, \(I_{abs}\) reduce with time and have weak temperature dependence, while intrinsic leakage currents \(I_{il}\) remain constant with time but exponentially increase with temperature.
 
 Desorption currents (depolarization) flow when the voltage on a capacitor is decreased (e.g. when it is shorted). These currents can actually recharge a previously discharged capacitor, sometimes up to dangerous voltages (people experimenting with coil/rail guns can have this problem)!
 
@@ -684,9 +684,9 @@ The leakage current through a capacitor can be modelled with a resistor in paral
 
 For electrolytics, the maximum leakage current is usually specified in terms of the capacitance.
 
-<p>\begin{align}
+$$\begin{align}
 I_{leakage} = xC
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -701,9 +701,9 @@ When specified this way, the current is *completely independent on voltage*. The
 
 The leakage current for MLCC capacitors is specified by an **insulation resistance**. To work out the leakage current, you just use Ohm's law as follows:
 
-<p>\begin{align}
+$$\begin{align}
 I_{leakage} = \frac{V}{R_{insulation}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -715,7 +715,7 @@ where:<br/>
 When leakage current is specified this way, *it is dependent on the voltage*.
 {{% /aside %}}
 
-Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. `\(500M\Omega\)`) and then a lower minimum resistance rated over its entire life time (e.g. `\(50M\Omega\)`).
+Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. \(500M\Omega\)) and then a lower minimum resistance rated over its entire life time (e.g. \(50M\Omega\)).
 
 ### Why Leakage Currents Are Important
 
@@ -796,9 +796,9 @@ A charge pump (also commonly called **bootstrapping**), is a way of using capaci
 
 It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFETs are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFETs datasheet. The charge stored in a capacitor can be calculated using the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 Q = CV
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -849,55 +849,55 @@ The below schematic shows a simple capacitance multiplier made from 1 resistor, 
 
 {{% figure ref="fig-capacitance-multiplier-simple" src="_assets/capacitance-multiplier-simple.svg" width="500px" caption="A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor." %}}
 
-The BJT is configured as a emitter-follower (common collector). The output voltage will always be `\(0.7V\)` less than the voltage across the capacitor. When the load draws current at `\(V_{OUT}\)`, rather than all of that current loading the RC filter, only the proportion `\(\frac{1}{\beta + 1}\)` gets drawn through the base from the RC filter, the rest of it gets delivered directly from `\(V_{IN}\)` via the collector. The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain `\(\beta + 1\)` of the transistor:
+The BJT is configured as a emitter-follower (common collector). The output voltage will always be \(0.7V\) less than the voltage across the capacitor. When the load draws current at \(V_{OUT}\), rather than all of that current loading the RC filter, only the proportion \(\frac{1}{\beta + 1}\) gets drawn through the base from the RC filter, the rest of it gets delivered directly from \(V_{IN}\) via the collector. The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain \(\beta + 1\) of the transistor:
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:eff-cap}
 C_{eff} = (\beta + 1)\ C1
-\end{align}</p>
+\end{align}$$
 
-Normally `\(\beta >> 1\)` such that it's simplified to:
+Normally \(\beta >> 1\) such that it's simplified to:
 
-<p>\begin{align}
+$$\begin{align}
 C_{eff} = \beta\ C1
-\end{align}</p>
+\end{align}$$
 
 The cut-off frequency for the capacitance multiplier is:
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:cap-mult-rc-cutoff}
 f_c = \frac{1}{2\pi R1 C1}
-\end{align}</p>
+\end{align}$$
 
 {{% aside type="warning" %}}
-Even though this circuit is called a capacitance multiplier, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! For this I consider this circuit's name somewhat misleading, as the corner frequency is just the same as a regular old RC low-pass filter. What does change is the current capability of the filter, as now most of the current is going through `\(Q1\)`, rather than `\(R1\)`. Perhaps the name _buffered RC filter_ would be better than _capacitance multiplier_?
+Even though this circuit is called a capacitance multiplier, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! For this I consider this circuit's name somewhat misleading, as the corner frequency is just the same as a regular old RC low-pass filter. What does change is the current capability of the filter, as now most of the current is going through \(Q1\), rather than \(R1\). Perhaps the name _buffered RC filter_ would be better than _capacitance multiplier_?
 {{% /aside %}}
 
 The steady-state output voltage at no load is:
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} = V_{IN} - 0.7V
-\end{align}</p>
+\end{align}$$
 
 We can improve on the above design by changing the resistor into a resistor divider.
 
 {{% figure ref="fig-capacitance-multiplier-resistor-divider" src="_assets/capacitance-multiplier-resistor-divider.svg" width="500px" caption="A capacitance multiplier which has improved filtering performance compared to the single resistor version." %}}
 
-Adding in `\(R2\)` lowers the base voltage applied to the transistor, which then lowers the output voltage. Because more voltage is now dropped across the transistor, the circuit is able to provide better filtering than before when the input voltage droops.
+Adding in \(R2\) lowers the base voltage applied to the transistor, which then lowers the output voltage. Because more voltage is now dropped across the transistor, the circuit is able to provide better filtering than before when the input voltage droops.
 
 The steady-state output voltage (at no load) is:
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} = \frac{R2}{R1 + R2} V_{IN} - 0.7V
-\end{align}</p>
+\end{align}$$
 
-The cut-off frequency for the 2 resistor capacitance multiplier is the same equation as Eq. \ref{eq:cap-mult-rc-cutoff} but with the equivalent resistance being `\(R1\)` and `\(R2\)` in parallel:
+The cut-off frequency for the 2 resistor capacitance multiplier is the same equation as Eq. \ref{eq:cap-mult-rc-cutoff} but with the equivalent resistance being \(R1\) and \(R2\) in parallel:
 
-<p>\begin{align}
+$$\begin{align}
 f_c &= \frac{1}{2\pi (R1 || R2) C1} \nonumber \\
 \label{eq:cm-resistor-divider-cutoff}
     &= \frac{R1 + R2}{2\pi R1 R2 C1}
-\end{align}</p>
+\end{align}$$
 
 The "effective capacitance" is exactly the same as in the single-resistor version in Eq. \ref{eq:eff-cap} (but remember, you don't use this for the cutoff frequency calculations).
 
@@ -910,61 +910,61 @@ Design criteria:
 * 12VDC in
 * Assume power supply is very noisy, with the voltage fluctuating at most 1Vp2p with frequency components from 50Hz (mains ripple) to 100kHz.
 * Cut-off frequency of 10Hz (which is quite low)
-* A relatively low load resistance of `\(100\Omega\)` (you can go even lower, but smaller resistors/bigger caps are needed)
+* A relatively low load resistance of \(100\Omega\) (you can go even lower, but smaller resistors/bigger caps are needed)
 
-Given the noise fluctuations can be up to `\(1V_{p2p}\)`, we want the *BJT transistor to be dropping more than `\(1V_{p2p}\)` so that in input voltage is always larger than our output voltage*, even with the ripple present on the input. Let's aim for nominal `\(10V\)` output at no load.
+Given the noise fluctuations can be up to \(1V_{p2p}\), we want the *BJT transistor to be dropping more than \(1V_{p2p}\) so that in input voltage is always larger than our output voltage*, even with the ripple present on the input. Let's aim for nominal \(10V\) output at no load.
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} = 10V
-\end{align}</p>
+\end{align}$$
 
-This constrains the ratio of `\(R1\)` and `\(R2\)` as (basic resistor divider equation):
+This constrains the ratio of \(R1\) and \(R2\) as (basic resistor divider equation):
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:cm-r1-r2-vin-vout}
 \frac{R1}{R2} = \frac{V_{IN} - V_{OUT}}{V_{OUT}}
-\end{align}</p>
+\end{align}$$
 
-We'll use the time-honoured 2N2222 NPN transistor, just because, well, I had a simulation model for it (power consumption shouldn't be to high that we'd need something beefier, but more on that below). The forward current gain (`\(\beta\)`) of the 2N2222 is simulated at `\(200\)`.
+We'll use the time-honoured 2N2222 NPN transistor, just because, well, I had a simulation model for it (power consumption shouldn't be to high that we'd need something beefier, but more on that below). The forward current gain (\(\beta\)) of the 2N2222 is simulated at \(200\).
 
-Our load resistance is `\(100\Omega\)`. At `\(10V\)`, this will be a current of `\(100mA\)`. We need to make sure this current will not cause a significant extra voltage drop across `\(R1\)`, which would cause the output voltage to droop. Let's allow for `\(100mV\)` of drop (i.e. `\(V_{OUT} = 9.9V\)`) at `\(100mA\)`.
+Our load resistance is \(100\Omega\). At \(10V\), this will be a current of \(100mA\). We need to make sure this current will not cause a significant extra voltage drop across \(R1\), which would cause the output voltage to droop. Let's allow for \(100mV\) of drop (i.e. \(V_{OUT} = 9.9V\)) at \(100mA\).
 
-`\(100mA\)` through the load will cause a current to be drawn through `\(R1\)` that will be `\(\beta + 1\)` times smaller:
+\(100mA\) through the load will cause a current to be drawn through \(R1\) that will be \(\beta + 1\) times smaller:
 
-<p>\begin{align}
+$$\begin{align}
 I_{R1} &= \frac{1}{\beta + 1} I_{load} \nonumber \\
        &= \frac{1}{200 + 1} * 100mA \nonumber \\
        &= 498uA
-\end{align}</p>
+\end{align}$$
 
 {{% aside type="tip" %}}
-`\(I_{R1}\)` will actually be larger than this due to the current through it drawn down to ground via `\(R2\)`. But this number is fine for calculation purposes.
+\(I_{R1}\) will actually be larger than this due to the current through it drawn down to ground via \(R2\). But this number is fine for calculation purposes.
 {{% /aside %}}
 
-We can now find what value of `\(R1\)` will produce no more than `\(100mV\)` drop:
+We can now find what value of \(R1\) will produce no more than \(100mV\) drop:
 
-<p>\begin{align}
+$$\begin{align}
 R1 &= \frac{V_{R1}}{I_{R1}} \nonumber \\
    &= \frac{100mV}{498uA} \nonumber \\
    &= 200\Omega
-\end{align}</p>
+\end{align}$$
 
-Then using Eq. \ref{eq:cm-r1-r2-vin-vout}, that means `\(R2\)` must be:
+Then using Eq. \ref{eq:cm-r1-r2-vin-vout}, that means \(R2\) must be:
 
-<p>\begin{align}
+$$\begin{align}
 R2 &= R1 \frac{V_{OUT}}{V_{IN} - V_{OUT}} \nonumber \\
    &= 200\Omega \frac{10V}{12V - 10V} \nonumber \\
    &= 1k\Omega
-\end{align}</p>
+\end{align}$$
 
-Now we have found `\(R1\)` and `\(R2\)`, `\(C1\)` is determined for us by the cut-off equation (Eq. \ref{eq:cm-resistor-divider-cutoff}):
+Now we have found \(R1\) and \(R2\), \(C1\) is determined for us by the cut-off equation (Eq. \ref{eq:cm-resistor-divider-cutoff}):
 
-<p>\begin{align}
+$$\begin{align}
 C1 &= \frac{R1 + R2}{2\pi R1 R2 f_c} \nonumber \\
    &= \frac{200\Omega + 1k\Omega}{2\pi*200\Omega*1k\Omega*10Hz} \nonumber  \\
    &= 95uF \nonumber \\
    &= 100uF\ \text{(E12 series)}
-\end{align}</p>
+\end{align}$$
 
 We can now draw the finished schematic:
 
@@ -974,12 +974,12 @@ Running AC analysis using ngspice gives us the following frequency response (bod
 
 {{% figure src="_assets/capacitance-multiplier-sim/out.png" width="800px" caption="The simulated frequency response of the capacitance multiplier circuit above. " %}}
 
-Looking at the "DC" gain, it is a value of `\(-1.75dB\)`. At an input voltage of `\(12V\)` this corresponds to an output voltage of `\(12V \cdot 10^{\frac{-1.75}{20}} = 9.8V\)`, close to the `\(9.9V\)` we were aiming for.
+Looking at the "DC" gain, it is a value of \(-1.75dB\). At an input voltage of \(12V\) this corresponds to an output voltage of \(12V \cdot 10^{\frac{-1.75}{20}} = 9.8V\), close to the \(9.9V\) we were aiming for.
 
-Our cut-off frequency should then be `\(-3dB\)` ontop of that, i.e. at `\(-1.75dB - 3dB = -4.75dB\)`. Plotting across and then down does indeed give us a cut-off frequency of approx. `\(10Hz\)`. The roll-off in the stop band is the same as a standard RC low-pass filter at `\(-20dB/decade\)`.
+Our cut-off frequency should then be \(-3dB\) ontop of that, i.e. at \(-1.75dB - 3dB = -4.75dB\). Plotting across and then down does indeed give us a cut-off frequency of approx. \(10Hz\). The roll-off in the stop band is the same as a standard RC low-pass filter at \(-20dB/decade\).
 
 {{% aside type="warning" %}}
-Watch out for the transistors power dissipation! In our example, `\(100mA\)` was going through the 2N2222 which was dropping `\(2.1V\)`. This gives `\(210mW\)`, which should be o.k. for the 2N2222 (when in the old style TO-18 can package). But capacitance multipliers are typically used in high-current situations (many amps and more), in where careful attention has to be given to the power dissipation in the transistor. Large transistors and/or heat-sinking may be required. The voltage drop can also be reduced, but this also gives to a poorer filtering capability (i.e. less headroom).
+Watch out for the transistors power dissipation! In our example, \(100mA\) was going through the 2N2222 which was dropping \(2.1V\). This gives \(210mW\), which should be o.k. for the 2N2222 (when in the old style TO-18 can package). But capacitance multipliers are typically used in high-current situations (many amps and more), in where careful attention has to be given to the power dissipation in the transistor. Large transistors and/or heat-sinking may be required. The voltage drop can also be reduced, but this also gives to a poorer filtering capability (i.e. less headroom).
 {{% /aside %}}
 
 Capacitance multipliers don't have to built from BJT transistors, they can also use MOSFETs or op-amps as their active component. BJTs are used in a majority of cases though because of their cost, power dissipation capability, and simplicity.
@@ -998,7 +998,7 @@ This can be done with power supply set the rated voltage and a high-power (e.g. 
 
 ## Energy Loss While Charging A Capacitor
 
-An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage `\(V_{cc}\)`. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
+An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage \(V_{cc}\). It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
 
 {{% ref "fig-energy-loss-while-charging-a-capacitor-schematic" %}} shows an example schematic.
 
@@ -1016,59 +1016,59 @@ Let's start from the basics.
 
 We know total energy in the circuit is the integral of power over time:
 
-<p>\begin{align}
+$$\begin{align}
 E_{in} = \int{P_{in} \cdot dt}
-\end{align}</p>
+\end{align}$$
 
-Using the basic equation for electrical power `\(P = VI\)` we can write:
+Using the basic equation for electrical power \(P = VI\) we can write:
 
-<p>\begin{align}
+$$\begin{align}
 P_{in} = V_{in} \cdot I_{in}
-\end{align}</p>
+\end{align}$$
 
 Substituting the power equation into integral equation, we get an equation for the energy in terms of the voltage and current:
 
-<p>\begin{align}
+$$\begin{align}
 E_{in} = \int{  V_{in} I_{in} \cdot dt }
-\end{align}</p>
+\end{align}$$
 
-If we assume a fixed DC voltage source, `\(V_{in}\)`, that does not vary over time, we can bring it outside the integral:
+If we assume a fixed DC voltage source, \(V_{in}\), that does not vary over time, we can bring it outside the integral:
 
-<p>\begin{align}
+$$\begin{align}
 E_{in} = V_{in} \int{  I_{in} \cdot dt }
-\end{align}</p>
+\end{align}$$
 
-Now using the equation for charge in it's integral form `\(Q = \int{I \cdot dt}\)` we can write:
+Now using the equation for charge in it's integral form \(Q = \int{I \cdot dt}\) we can write:
 
-<p>\begin{align}
+$$\begin{align}
 Q_{in} = \int{I_{in} \cdot dt}
-\end{align}</p>
+\end{align}$$
 
 We can substitute the charge equation into for energy equation:
 
-<p>\begin{align}
+$$\begin{align}
 E_{in} = V_{in} Q_{in}
-\end{align}</p>
+\end{align}$$
 
-Assuming the cap was fully charged to `\(V_{in}\)` (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (`\(E = \frac{1}{2}CV^2\)`), we can write:
+Assuming the cap was fully charged to \(V_{in}\) (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (\(E = \frac{1}{2}CV^2\)), we can write:
 
-<p>\begin{align}
+$$\begin{align}
 E_{cap} = \frac{1}{2}CV_{in}^2
-\end{align}</p>
+\end{align}$$
 
-Now, all of the input charge `\(Q_{in}\)` referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using `\(Q=CV\)`):
+Now, all of the input charge \(Q_{in}\) referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using \(Q=CV\)):
 
-<p>\begin{align}
+$$\begin{align}
 E_{cap} = \frac{1}{2} V_{in} Q_{in}
-\end{align}</p>
+\end{align}$$
 
 We now have an equation for the energy given out by the voltage source, and an equation for the amount of energy given to the capacitor. Subtracting the two will give the amount of energy lost to the resistance during charging:
 
-<p>\begin{align} 
+$$\begin{align} 
 E_{res} &= E_{in} - E_{cap} \nonumber \\
         &= V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} \nonumber \\
         &= \frac{1}{2} V_{in} Q_{in}
-\end{align}</p>
+\end{align}$$
 
 Woah, hang on a moment, this is the same as the energy in the capacitor!
 

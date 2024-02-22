@@ -17,7 +17,7 @@ For an **ideal transformer**, the voltage of the output (secondary) compared to 
 
 ## Power Equivalence
 
-Remember, energy cannot be created nor destroyed. Therefore, for an **ideal transformer**, with no losses, the output (secondary) power `\(P_S\)` must be equal to the input (primary) power `\(P_P\)`.
+Remember, energy cannot be created nor destroyed. Therefore, for an **ideal transformer**, with no losses, the output (secondary) power \(P_S\) must be equal to the input (primary) power \(P_P\).
 
 <div>$$ P_P = P_S $$</div>
 
@@ -33,7 +33,7 @@ In general, the number of mutual inductances that a transformer with N windings 
 
 <div>$$\frac{N \cdot (N-1)}{2}$$</div>
 
-Notice that the number of mutual inductances grows with `\(N^2\)`.
+Notice that the number of mutual inductances grows with \(N^2\).
 
 ## Coupling Coefficient
 
@@ -53,7 +53,7 @@ These losses occur due to the windings of the transformer having a non-zero resi
 
 <div>$$ P = I^2 \cdot R $$</div>
 
-for both the primary and secondary. For this reason they are also called `\(I^2 R\)` losses.
+for both the primary and secondary. For this reason they are also called \(I^2 R\) losses.
 
 ## Hysteresis Losses
 

@@ -23,13 +23,13 @@ This page focuses on noise created by electronics components such as resistors, 
 
 ### Noise Power Spectral Density (PSD)
 
-**The _noise power spectral density_ (PSD) is a measure of the noise power per Hertz of bandwidth in a signal**. It also called the _noise spectral density_, _noise power density_, or just _noise density_. Typically denoted with `\(N_0\)` and has units `\(W / Hz\)`. The `\(0\)` in the symbol `\(N_0\)` is used to distinguish a density (i.e., per `\(Hz\)`). Without the `\(0\)`, `\(N\)` represents a noise power over a specified bandwidth.
+**The _noise power spectral density_ (PSD) is a measure of the noise power per Hertz of bandwidth in a signal**. It also called the _noise spectral density_, _noise power density_, or just _noise density_. Typically denoted with \(N_0\) and has units \(W / Hz\). The \(0\) in the symbol \(N_0\) is used to distinguish a density (i.e., per \(Hz\)). Without the \(0\), \(N\) represents a noise power over a specified bandwidth.
 
-In the case that the noise power spectral density is constant (white noise), the noise power `\(N\)` can be calculated from the noise power density `\(N_0\)` with the following equation:
+In the case that the noise power spectral density is constant (white noise), the noise power \(N\) can be calculated from the noise power density \(N_0\) with the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 N = BN_0
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -44,14 +44,14 @@ Noise power spectral density can be either one-sided or double-sided. TODO: Add 
 
 _Noise amplitude spectral density_ (ASD) is an alternative to specifying a _noise power spectral density_. Instead of the noise power (in Watts), the noise "amplitude" is used. The amplitude is almost always either voltage or current (with voltage being the more common of the two). The symbol and units depend on whether voltage or current is used:
 
-- Noise voltage spectral density: Typical symbol `\(v_n\)` and has units `\(V / \sqrt{HZ}\)`
-- Noise current spectral density: Typical symbol `\(i_n\)` and has units `\(A / \sqrt{HZ}\)`
+- Noise voltage spectral density: Typical symbol \(v_n\) and has units \(V / \sqrt{HZ}\)
+- Noise current spectral density: Typical symbol \(i_n\) and has units \(A / \sqrt{HZ}\)
 
-The noise voltage spectral density `\(v_n\)` can be calculated from the noise power spectral density `\(N\)` if you assume the load is a resistance of `\(1\Omega\)`:
+The noise voltage spectral density \(v_n\) can be calculated from the noise power spectral density \(N\) if you assume the load is a resistance of \(1\Omega\):
 
-<p>\begin{align}
+$$\begin{align}
 v_n = \sqrt{N}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -60,13 +60,13 @@ where:<br/>
 
 ## Colours Of Noise (Power Law Noise)
 
-The _colour of noise_ refers to the shape of the power spectral density (PSD) with respect to the frequency. The category of noises that are assigned colours can also be called _power law noise_, as it's PSD is proportional to `\(\frac{1}{f^n}\)`, where `\(n\)` can be a positive (most commonly) or negative integer.
+The _colour of noise_ refers to the shape of the power spectral density (PSD) with respect to the frequency. The category of noises that are assigned colours can also be called _power law noise_, as it's PSD is proportional to \(\frac{1}{f^n}\), where \(n\) can be a positive (most commonly) or negative integer.
 
-* **White noise**: White noise is the simplest form of noise, and has a flat power spectral density when plotted against frequency (it has a spectral power density proportional to `\(1\)`). 
-* **Pink noise**: _Pink noise_ has a spectral power density proportional to `\(\frac{1}{f}\)`.
-* **Red noise**: _Red noise_ has a spectral power density proportional to `\(\frac{1}{f^2}\)`. Also called _Brownian noise_.
-* **Blue noise**: _Blue noise_ has a spectral power density proportional to `\(f\)`.
-* **Violet noise**: _Violet noise_ has a spectral power density proportional to `\(f^2\)`.
+* **White noise**: White noise is the simplest form of noise, and has a flat power spectral density when plotted against frequency (it has a spectral power density proportional to \(1\)). 
+* **Pink noise**: _Pink noise_ has a spectral power density proportional to \(\frac{1}{f}\).
+* **Red noise**: _Red noise_ has a spectral power density proportional to \(\frac{1}{f^2}\). Also called _Brownian noise_.
+* **Blue noise**: _Blue noise_ has a spectral power density proportional to \(f\).
+* **Violet noise**: _Violet noise_ has a spectral power density proportional to \(f^2\).
 
 If you don't have access to equipment that can perform a spectrum/frequency analysis on measured voltages or currents, you can roughly identify the "colour" of the noise sources by recognizing the "shape" of the noise in the time domain on a simple oscilloscope. The following sections contain examples of what each colour of noise looks like in both the time and frequency domain.
 
@@ -94,7 +94,7 @@ _Stochastic resonance_ is the clever technique of adding white noise to a signal
 
 ### Pink Noise
 
-Also called `\(\frac{1}{f}\)` noise. The PSD decreases at `\(3dB\)` per octave.
+Also called \(\frac{1}{f}\) noise. The PSD decreases at \(3dB\) per octave.
 
 The following graph shows what pink noise looks like in the time domain:
 
@@ -106,18 +106,18 @@ And this is what it looks like in the frequency domain (the discrete FFT of the 
 
 Examples and uses of pink noise:
 
-* Interestingly, the frequency fluctuations of music have a `\(\frac{1}{f}\)` spectral density. The reasoning behind this is that music generated by white‐noise sources sounded too random, while those generated by 1/f2 noise sounded too correlated[^bib-voss-1-f-noise-in-music]. The "loudness" of music and speech also has a `\(\frac{1}{f}\)` PSD.
-* The audio of steady rain fall or rustling leaves has a `\(\frac{1}{f}\)` PSD.
+* Interestingly, the frequency fluctuations of music have a \(\frac{1}{f}\) spectral density. The reasoning behind this is that music generated by white‐noise sources sounded too random, while those generated by 1/f2 noise sounded too correlated[^bib-voss-1-f-noise-in-music]. The "loudness" of music and speech also has a \(\frac{1}{f}\) PSD.
+* The audio of steady rain fall or rustling leaves has a \(\frac{1}{f}\) PSD.
 
 The following difference equation can create pink noise[^procaccia-schuster-universal-1-f-noise]:
 
-<p>\begin{align}
+$$\begin{align}
 x_t = (x_{t-1} + x_{t-1}^2)\ mod\ 1
-\end{align}</p>
+\end{align}$$
 
 ### Red (Brownian) Noise
 
-Also called _Brownian_ or `\(\frac{1}{f^2}\)` noise. The PSD decreases at `\(6dB\)` per octave.
+Also called _Brownian_ or \(\frac{1}{f^2}\) noise. The PSD decreases at \(6dB\) per octave.
 
 The following graph shows what red noise looks like in the time domain:
 
@@ -129,7 +129,7 @@ And this is what it looks like in the frequency domain (the discrete FFT of the 
 
 ### Blue Noise
 
-Also called _Azure_ or `\(f\)` noise. It has a PSD proportional to frequency. As the frequency goes up, the noise power goes up also. The PSD increases at `\(3dB\)` per octave.
+Also called _Azure_ or \(f\) noise. It has a PSD proportional to frequency. As the frequency goes up, the noise power goes up also. The PSD increases at \(3dB\) per octave.
 
 The following graph shows what blue noise looks like in the time domain:
 
@@ -162,9 +162,9 @@ Examples/uses of blue noise include:
 
 The noise power spectral density of thermal noise is found with the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 N_0 = 4 k_B T R 
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -176,46 +176,46 @@ where:<br/>
 
 This is commonly written as a voltage spectral density instead of power:
 
-<p>\begin{align}
+$$\begin{align}
 v_n &= \sqrt{N_0} \nonumber \\
 \label{eq:thermal-noise-vsd}
     &= \sqrt{4 k_B T R}
-\end{align}</p>
+\end{align}$$
 
 {{% aside type="example" %}}
 
-For example, a `\(10k\Omega\)` resistor at `\(25^{\circ}C\)` has a noise power spectral density `\(N_0\)` of:
+For example, a \(10k\Omega\) resistor at \(25^{\circ}C\) has a noise power spectral density \(N_0\) of:
 
-<p>\begin{align}
+$$\begin{align}
 N_0 &= 4 k_B T R \nonumber \\
     &= 4 \cdot 1.380649\times10^{-23} JK^{-1} \cdot 298.15K \cdot 10k\Omega \nonumber \\
     &= 1.647\times 10^{-16} W Hz^{-1} \nonumber
-\end{align}</p>
+\end{align}$$
 
-Converting this to a noise voltage spectral density `\(v_n\)`:
+Converting this to a noise voltage spectral density \(v_n\):
 
-<p>\begin{align}
+$$\begin{align}
 v_n &= \sqrt{N_0} \nonumber \\
     &= \sqrt{1.647\times 10^{-16} W Hz^{-1}} \nonumber \\
     &= 12.83 nV Hz^{-0.5}
-\end{align}</p>
+\end{align}$$
 
-If our system had a bandwidth `\(B\)` of `\(10kHz\)`, then the RMS noise voltage would be:
+If our system had a bandwidth \(B\) of \(10kHz\), then the RMS noise voltage would be:
 
-<p>\begin{align}
+$$\begin{align}
 v_{rms} &= v_n \cdot \sqrt{B} \nonumber \\
         &= 12.83 nV / \sqrt{Hz} \cdot \sqrt{10kHz} \nonumber \\
         &= 1.28uV \nonumber
-\end{align}</p>
+\end{align}$$
 
 {{% /aside %}}
 
-Instead of modelling the thermal noise source as a voltage in series with a noiseless resistor, you can model it as a current source in parallel with a noiseless resistor (the Norton equivalent). To get this equation, simply divide Eq. `\(\ref{eq:thermal-noise-vsd}\)` by `\(R\)`. This gives a current spectral density of:
+Instead of modelling the thermal noise source as a voltage in series with a noiseless resistor, you can model it as a current source in parallel with a noiseless resistor (the Norton equivalent). To get this equation, simply divide Eq. \(\ref{eq:thermal-noise-vsd}\) by \(R\). This gives a current spectral density of:
 
-<p>\begin{align}
+$$\begin{align}
 i_n &= \frac{v_n}{R} \nonumber \\
     &= \sqrt{\frac{4 k_B T}{R}}
-\end{align}</p>
+\end{align}$$
 
 ### Shot Noise
 
@@ -224,28 +224,28 @@ _Shot noise_ (a.k.a. _Poisson noise_) in electronic components arises from the r
 {{% aside type="tip" %}}
 Whilst shot noise can be considered white for practically all popular use cases, this assumption breaks down at really high frequencies and really low currents in where the frequency is now similar to the individual arrival rate of each electron  (the law of large numbers no longer holds). This frequency is given by[^bib-ee302a04]:
 
-<p>\begin{align}
+$$\begin{align}
 f_0 &= \frac{I}{q}
-\end{align}</p>
+\end{align}$$
 
 [.text-center]
 where: +
-`\(I\)` is the average DC current, in Amps `\(A\)` +
-`\(q\)` is the charge of an electron, in Coulombs `\(C\)` (`\(q = 1.602e^{-19} C\)`)
+\(I\) is the average DC current, in Amps \(A\) +
+\(q\) is the charge of an electron, in Coulombs \(C\) (\(q = 1.602e^{-19} C\))
 
 {{% /aside %}}
 
 Shot noise is typically talked about being present in semiconductor components such as diodes, and not in basic passives such as resistors. However, more recent literature suggests that shot noise is also present in basic resistors[^bib-sub-poi-shot-noise].
 
-The rms value of the shot noise current `\(i_n\)` is given by the equation:
+The rms value of the shot noise current \(i_n\) is given by the equation:
 
-<p>\begin{align}
+$$\begin{align}
 i_n &= \sqrt{2IqB}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
-`\(B\)` is the bandwidth of the circuit/measurement, in Hertz `\(Hz\)`<br/>
+\(B\) is the bandwidth of the circuit/measurement, in Hertz \(Hz\)<br/>
 and everything else as previously mentioned.<br/>
 </p>
 
@@ -253,21 +253,21 @@ Current will create shot noise. When this current flows through a resistor, this
 
 {{% aside type="example" %}}
 
-A current of `\(1A\)` measured over a bandwidth of `\(1kHz\)` gives a RMS shot noise current value `\(i_n\)` of:
+A current of \(1A\) measured over a bandwidth of \(1kHz\) gives a RMS shot noise current value \(i_n\) of:
 
-<p>\begin{align}
+$$\begin{align}
 i_n &= \sqrt{2IqB} \nonumber \\
     &= \sqrt{2*1A*1.602e^{-19} C*1kHz} \nonumber \\
     &= 17.9nA \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-If this noise current is flowing through a resistor of `\(100\Omega\)`, this will manifest in a noise voltage `\(v_n\)` of:
+If this noise current is flowing through a resistor of \(100\Omega\), this will manifest in a noise voltage \(v_n\) of:
 
-<p>\begin{align}
+$$\begin{align}
 v_n &= i_n R \nonumber \\
     &= 17.9nA * 100\Omega \nonumber \\
     &= 1.79uV \\
-\end{align}</p>
+\end{align}$$
 
 {{% /aside %}}
 
@@ -275,11 +275,11 @@ Shot noise also occurs in optics, such as photography, due to the discrete natur
 
 ## Addition of Noise Sources
 
-**The RMS amplitudes of independent noise sources add like orthogonal vectors (Pythagorean addition)**. If two independent voltage noise sources `\(v_{n1}\)` and `\(v_{n2}\)` were connected in series, then the total voltage noise `\(v_n\)` is given by:
+**The RMS amplitudes of independent noise sources add like orthogonal vectors (Pythagorean addition)**. If two independent voltage noise sources \(v_{n1}\) and \(v_{n2}\) were connected in series, then the total voltage noise \(v_n\) is given by:
 
-<p>\begin{align}
+$$\begin{align}
 v_n^2 = v_{n1}^2 + v_{n2}^2
-\end{align}</p>
+\end{align}$$
 
 Noise sources like thermal noise and shot noise are independent.
 
@@ -301,15 +301,15 @@ Typically, when doing noise measurements with an oscilloscope, AC coupling is tu
 
 Uncorrelated noise sources add in a root-sum-of-squares manner.
 
-<p>\begin{align}
+$$\begin{align}
 e_{total} = \sqrt{e_{1}^2 + e_{2}^2}
-\end{align}</p>
+\end{align}$$
 
 This comes from the equation:
 
-<p>\begin{align}
+$$\begin{align}
 x_{rms}^2 = \bar{x}^2 + \sigma_{x}^2
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -324,10 +324,10 @@ As you can see, if the average of the waveform is 0 (as in the case when the wav
 
 ### Power Law Noise
 
-The following Python code is flexible enough to generate power law noise `\(\frac{1}{f^n}\)` of any power `\(n\)`. The code is from [colorednoise.py](https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py), which uses an algorithm published by J. Timmer and M. Konig called _On Generating Power Law Noise_[^bib-timmer-konig-generating-power-law-noise]. Depends on the popular Numpy library. This function was used to create the power law noise example signals on this page.
+The following Python code is flexible enough to generate power law noise \(\frac{1}{f^n}\) of any power \(n\). The code is from [colorednoise.py](https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py), which uses an algorithm published by J. Timmer and M. Konig called _On Generating Power Law Noise_[^bib-timmer-konig-generating-power-law-noise]. Depends on the popular Numpy library. This function was used to create the power law noise example signals on this page.
 
 {{% aside type="tip" %}}
-You can also pass in negative exponents `\(-1\)`, `\(-2\)` to generate blue noise and purple noise.
+You can also pass in negative exponents \(-1\), \(-2\) to generate blue noise and purple noise.
 {{% /aside %}}
 
 ```python

@@ -76,4 +76,4 @@ A y direction shear (a shearing along y that is proportional to x):
 
 Multiple affine transformations (translation, rotation, shear, e.t.c) can be combined into a single transformation matrix.
 
-Remember, we can do this because **matrix multiplication is associative!** `\(A(Bx) = (AB)x\)`.
+Remember, we can do this because **matrix multiplication is associative!** \(A(Bx) = (AB)x\).

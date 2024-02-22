@@ -32,11 +32,11 @@ Active filters are electronic waveform filters which require their own power sou
 
 The _cutoff frequency_ (a.k.a. _corner frequency_ or _break frequency_) is the frequency which marks the **transition from a pass band to a stop band**. It marks the frequency at which the energy (whether it be voltage, current or both) stops being passed through and begins being blocked. For any real filter, there is a transition from the passband to the stopband, as so the cutoff frequency is usually defined at the "-3dB" point --- the point at which the **signal degrades to -3dB (half power) of the nominal passband value**.
 
-The symbol `\(f_c\)` is usually used to represent the cutoff frequency. Sometimes you may see `\(f_{-3dB}\)` instead.
+The symbol \(f_c\) is usually used to represent the cutoff frequency. Sometimes you may see \(f_{-3dB}\) instead.
 
 #### Gain Factor (K)
 
-At frequencies `\(f << f_c\)`, the circuit multiplies the input signal by gain factor `K`.
+At frequencies \(f << f_c\), the circuit multiplies the input signal by gain factor `K`.
 
 #### Component Spread
 
@@ -62,9 +62,9 @@ The low-pass RC filter lets through low frequencies but dampens high frequencies
 
 The cut-off frequency is determined by **both the value of the resistor and the value of the capacitor**, and is equal to:
 
-<p>\begin{align}
+$$\begin{align}
 f_{c} = \frac{1}{2\pi RC}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -73,20 +73,20 @@ where:</br>
 \(f_c\) is the cut-off frequency, in Hertz</br>
 </p>
 
-As usual, the choice of `\(R\)` and `\(C\)` is a design decision which involves trade-offs. In terms of choosing `\(R\)`:
+As usual, the choice of \(R\) and \(C\) is a design decision which involves trade-offs. In terms of choosing \(R\):
 
 * A resistance which is too small could draw too much current, either presenting too much load to the input, or overheating. It also could mean that the capacitor has to be very large and/or expensive to get the desired cut-off frequency.
-* A resistance which is too large increases the output impedance of the filter, resulting in distortions if too much load is applied to `\(V_{out}\)`. It also increases the noise susceptibility of the circuit.
+* A resistance which is too large increases the output impedance of the filter, resulting in distortions if too much load is applied to \(V_{out}\). It also increases the noise susceptibility of the circuit.
 
-Typically, a resistance between `\(1k\Omega\)` and `\(100k\Omega\)` is used. Then the capacitance is chosen to give the desired cut-off frequency.
+Typically, a resistance between \(1k\Omega\) and \(100k\Omega\) is used. Then the capacitance is chosen to give the desired cut-off frequency.
 
 #### Frequency Response
 
-To plot the frequency response, we first need to find the transfer function for the low-pass RC filter. We can use the voltage divider rule to write `\(v_{out}\)` as a function of `\(v_{in}\)`:
+To plot the frequency response, we first need to find the transfer function for the low-pass RC filter. We can use the voltage divider rule to write \(v_{out}\) as a function of \(v_{in}\):
 
-<p>\begin{align}
+$$\begin{align}
 \frac{V_{out}}{V_{in}} = \frac{X_C}{X_C + R}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -95,27 +95,27 @@ where:</br>
 \(R\) is the resistance of the resistor, in Ohms</br>
 </p>
 
-Recall that we can write `\(X_C\)` in the Laplace domain as `\(X_C = \frac{1}{sC}\)`. Also, `\(\frac{v_{out}}{v_{in}}\)` is just our transfer function `\(H(s)\)`:
+Recall that we can write \(X_C\) in the Laplace domain as \(X_C = \frac{1}{sC}\). Also, \(\frac{v_{out}}{v_{in}}\) is just our transfer function \(H(s)\):
 
-<p>\begin{align}
+$$\begin{align}
 H(s) = \frac{\frac{1}{sC}}{\frac{1}{sC} + R}
-\end{align}</p>
+\end{align}$$
 
-Multiply top and bottom by `\(\frac{1}{sC}\)` to clean things up:
+Multiply top and bottom by \(\frac{1}{sC}\) to clean things up:
 
-<p>\begin{align}
+$$\begin{align}
 H(s) = \frac{1}{1 + sRC}
-\end{align}</p>
+\end{align}$$
 
-Now replace `\(s\)` with `\(j\omega\)` so we can then take the magnitude:
+Now replace \(s\) with \(j\omega\) so we can then take the magnitude:
 
-<p>\begin{align}
+$$\begin{align}
 H(j\omega) = \frac{1}{1 + j\omega RC}
-\end{align}</p>
+\end{align}$$
 
 Now take the magnitude (for more info on why and how to do this, see the [What Are Transfer Functions, Poles, And Zeroes? page](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/)):
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:abc}
 | H(j\omega) | &= \left| \frac{1}{1 + j\omega RC} \right| \nonumber \\
          &= \frac{1}{\sqrt{(1 + j\omega RC)(1 - j\omega RC)}} \nonumber \\
@@ -123,42 +123,42 @@ Now take the magnitude (for more info on why and how to do this, see the [What A
          &= \frac{1}{\sqrt{1 - (-1)(\omega RC)^2}} \nonumber \\
 \label{eq:mag-response-lp-rc-filter}
          &= \frac{1}{\sqrt{1 + (\omega RC)^2}} \\
-\end{align}</p>
+\end{align}$$
 
 And let's find the phase response:
 
-<p>\begin{align}
+$$\begin{align}
 \angle H(j\omega) &= Arg\left(H(j\omega)\right) \nonumber \\
                   &= Arg\left(\frac{1}{1 + j\omega RC}\right) \nonumber \\
                   &= Arg(1) - Arg(1 + j\omega RC) \nonumber \\
                   &= 0 - arctan\left(\frac{j\omega RC}{1}\right) \nonumber \\
 \label{eq:phase-response-lp-rc-filter}
                   &= -arctan\left(j\omega RC\right) \\
-\end{align}</p>
+\end{align}$$
 
 This shows us that an RC filter "delays" signals as they pass through. The higher the frequency, the greater the delay.
 
-The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values `\(R = 1k\Omega\)` and `\(C = 1\mu F\)`. Magnitude is plotted in blue and phase in green.
+The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values \(R = 1k\Omega\) and \(C = 1\mu F\). Magnitude is plotted in blue and phase in green.
 
 {{% figure src="rc-low-pass-filter-frequency-response.png" width="700px" caption="The frequency response (magnitude and phase) of a low-pass RC filter." %}}
 
-The cut-off frequency (also called the _break frequency_ or _turnover frequency_[^bib-wikipedia-low-pass-filter]), `\(f_c\)` is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
+The cut-off frequency (also called the _break frequency_ or _turnover frequency_[^bib-wikipedia-low-pass-filter]), \(f_c\) is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
 
-<p>\begin{align}
+$$\begin{align}
 V_{out} = \frac{1}{\sqrt{2}} V_{in} = 0.707*V_{in}
-\end{align}</p>
+\end{align}$$
 
-The choice of resistor and capacitor above gives a cut-off frequency of `\(f_c = 159Hz\)`.
+The choice of resistor and capacitor above gives a cut-off frequency of \(f_c = 159Hz\).
 
 Low-pass RC filters are typically used for applications up to 100kHz, above 100kHz RLC filters are used[^bib-elec-tutorial-filters].
 
 #### Time Constant
 
-The time constant `\(\tau\)` of a low-pass RC filter is[^bib-wikipedia-low-pass-filter]:
+The time constant \(\tau\) of a low-pass RC filter is[^bib-wikipedia-low-pass-filter]:
 
-<p>\begin{align}
+$$\begin{align}
 \tau = RC
-\end{align}</p>
+\end{align}$$
 
 #### Typical Uses
 
@@ -170,21 +170,21 @@ The low-pass RC filter can be used to provide filtering on analogue inputs to a 
 
 Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible** (for a particular cut-off frequency). Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
 
-**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/electronics/circuit-design/adcs)).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between `\(20-500k\Omega\)` (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
+**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/electronics/circuit-design/adcs)).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between \(20-500k\Omega\) (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
 
-<p>\begin{align}
+$$\begin{align}
 R_{RC filter} << R_{ADC}
-\end{align}</p>
+\end{align}$$
 
-**A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of `\(50k\Omega\)`, this means that the resistor in the RC filter should be no more than `\(1k\Omega\)`.
+**A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of \(50k\Omega\), this means that the resistor in the RC filter should be no more than \(1k\Omega\).
 
 #### Transient Response
 
 The equation for the voltage across the capacitor is:
 
-<p>\begin{align}
+$$\begin{align}
 V_c = V_s(1 - e^{(\frac{t}{RC})})
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -195,13 +195,13 @@ where:<br/>
 \(C\) = capacitance, Farads<br/>
 </p>
 
-This equation can be re-arranged to find the time `\(t\)`, and which the capacitor is at a certain voltage:
+This equation can be re-arranged to find the time \(t\), and which the capacitor is at a certain voltage:
 
-<p>\begin{align}
+$$\begin{align}
 t = -log(\frac{V-V_c}{V})RC
-\end{align}</p>
+\end{align}$$
 
-This form of the equation can be useful to calculate the delay (aka the time `\(t\)`), that the RC circuit will provide before something happens.
+This form of the equation can be useful to calculate the delay (aka the time \(t\)), that the RC circuit will provide before something happens.
 
 
 ### Building A VDAC From An ADC And Low-pass RC Filter
@@ -220,21 +220,21 @@ This makes an LC low-pass filter suitable for higher-power applications. You wil
 
 The cut-off frequency of a low-pass LC filter is given by the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 f_c = \frac{1}{2\pi \sqrt{LC}}
-\end{align}</p>
+\end{align}$$
 
 The characteristic impedance is:
 
-<p>\begin{align}
+$$\begin{align}
 Z = \sqrt{LC}
-\end{align}</p>
+\end{align}$$
 
 which you will notice is also present in the cut-off frequency equation.
 
 #### Parasitic elements
 
-The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor, `\(R_L\)`. Larger valued inductors typically have a larger coil resistance (due to more windings). This dampens the output signal.
+The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor, \(R_L\). Larger valued inductors typically have a larger coil resistance (due to more windings). This dampens the output signal.
 
 {{% figure src="low-pass-lc-filter-with-parasitics-schematic.png" width="539px" caption="A schematic of a LC low-pass filter with parasitic inductor resistance included." %}}
 
@@ -244,18 +244,18 @@ This is equivalent to a low-pass RLC filter.
 
 The quality factor is equal to:
 
-<p>\begin{align}
+$$\begin{align}
 Q = \frac{2\pi f}{R}
-\end{align}</p>
+\end{align}$$
 
 As you increase the series resistance, the quality factor decreases.
 
 The damping factor is equal to:
 
-<p>\begin{align}
+$$\begin{align}
 d_0 &= \frac{1}{Q} \\
 d_0 &= \frac{R}{2\pi fL} \\
-\end{align}</p>
+\end{align}$$
 
 ### Low-Pass Pi And t Filters
 
@@ -265,11 +265,11 @@ A 1st-order low-pass π-filter has two capacitors and one inductor. The first ca
 
 The equations for a 1st order filter are:
 
-<p>\begin{align}
+$$\begin{align}
 C   &= \frac{z_o}{\pi f_c} \\
 L   &= \frac{1}{z_o \pi f_c} \\
 f_c &= \frac{1}{\pi \sqrt{LC}} \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -283,7 +283,7 @@ where:<br/>
 Mentioned is total capacitance or total inductance, as in the case of the π-filter each capacitor is C/2, and in the case of the t-filter, each inductor is L/2.
 {{% /note %}}
 
-The typical value to use for the characteristic impedance is `\( z_o = 50 \Omega \)`. Use this if you are unsure on what to set it to. This value is only important if your are matching two RF circuits.
+The typical value to use for the characteristic impedance is \( z_o = 50 \Omega \). Use this if you are unsure on what to set it to. This value is only important if your are matching two RF circuits.
 
 A t-filter is usually better at suppressing high-frequencies than a π-filter, as parasitic coupling between input and output due to PCB layout tends to turn the π filter into a notch filter. However, π-filters are more common because they are cheaper (capacitors are cheaper than inductors).
 
@@ -301,17 +301,17 @@ This chaining is also called _cascading_. The benefit of doing this is that a se
 
 ### Second-Order Low-Pass RC
 
-The corner frequency `\(f_c\)` is equal to:
+The corner frequency \(f_c\) is equal to:
 
-<p>\begin{align}
+$$\begin{align}
 f_c = \frac{1}{2\pi \sqrt{R_1 C_1 R_2 C_2}}
-\end{align}</p>
+\end{align}$$
 
-Is is important to remember that for a second-order filter, the gain at the corner frequency is no longer -3dB. Instead it is -6dB. In general, the gain can be described for `\(n\)` stages with:
+Is is important to remember that for a second-order filter, the gain at the corner frequency is no longer -3dB. Instead it is -6dB. In general, the gain can be described for \(n\) stages with:
 
-<p>\begin{align}
+$$\begin{align}
 G = \left( \frac{1}{\sqrt{2}} \right) ^n
-\end{align}</p>
+\end{align}$$
 
 The reduce the effects of each stages dynamic impedance effecting it's neighbours, its recommended that the following stages resistance should be around 10x the previous stage, and the capacitance 1/10th of the previous stage.
 
@@ -330,7 +330,7 @@ A filter topology is an actual circuit configuration which can realize a number 
 
 ## Voltage-Controlled Voltage-Source (VCVS) Filters
 
-Voltage-controlled voltage-source (VCVS) filters are an extension of the [Sallen-Key filter](#sallen-key-filters) (in that sense, the _Sallen-Key filter_ can be thought of as a simplification of the VCVS filter in where the voltage gain of the op-amp is set to one) in where standard resistor divider feedback is added between the op-amp's output and the inverting input, allowing the gain of the filter to be something other than `\(1\)`.
+Voltage-controlled voltage-source (VCVS) filters are an extension of the [Sallen-Key filter](#sallen-key-filters) (in that sense, the _Sallen-Key filter_ can be thought of as a simplification of the VCVS filter in where the voltage gain of the op-amp is set to one) in where standard resistor divider feedback is added between the op-amp's output and the inverting input, allowing the gain of the filter to be something other than \(1\).
 
 They are called VCVS filters because the op-amp is used as a voltage amplifier.
 

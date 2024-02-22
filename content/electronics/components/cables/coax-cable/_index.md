@@ -37,7 +37,7 @@ Properties of popular coaxial cable types:
       <th>RG-6</th>
       <td>
 
-`\(75\Omega\)`[^wp-rg-6]
+\(75\Omega\)[^wp-rg-6]
       </td>
       <td>1.0mm</td>
       <td>4.57mm</td>
@@ -49,7 +49,7 @@ Properties of popular coaxial cable types:
       <th>RG-58</th>
       <td>
 
-`\(50\Omega\)`
+\(50\Omega\)
       </td>
       <td>5.0mm</td>
       <td>82pF/m[^wp-rg-58]</td>
@@ -61,7 +61,7 @@ Properties of popular coaxial cable types:
       <th>RG-59</th>
       <td>
 
-`\(75\Omega\)`[^wp-rg-58]
+\(75\Omega\)[^wp-rg-58]
       </td>
       <td></td>
       <td></td>

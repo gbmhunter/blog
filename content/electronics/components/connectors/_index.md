@@ -330,7 +330,7 @@ BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed
 ### Specifications
 
 * **Passband:** 0-4GHz
-* **Impedance:** `\(50\Omega\)` or `\(75\Omega\)` (video).
+* **Impedance:** \(50\Omega\) or \(75\Omega\) (video).
 
 #### Uses 
 
@@ -360,7 +360,7 @@ The height of the male SMD connector can vary, but something around 1.2mm is com
 
 ### SMA Connectors
 
-SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) `\(50\Omega\)` RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between `\(0-16GHz\)`, although some specialized versions extends in the 30+ GHz territory[^bib-amphenolrf-sma].
+SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) \(50\Omega\) RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between \(0-16GHz\), although some specialized versions extends in the 30+ GHz territory[^bib-amphenolrf-sma].
 
 {{% figure src="sma-male-and-female-next-to-each-other-edited.jpg" width="700px" caption="One male and one female inline (connector to cable) SMA connector next to each other." %}}
 

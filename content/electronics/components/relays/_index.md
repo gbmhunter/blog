@@ -56,7 +56,7 @@ Double-pole, single-throw (1C)
 
 ## Inductive Kickback and Flyback Diodes
 
-The coil of a relay is basically an inductor. Due to the rapid `\(\frac{di}{dt}\)` when the relay is switched off, the inductive coil will generate a large negative voltage to try and keep the current flowing (remember: inductors "resist" the change in current). This is called _inductive kickback_. This voltage spike can cause havoc in neighbouring components (e.g. killing the transistor used to switch the relay on, or arcing across switch terminals) if not suppressed. A _flyback_ diode in anti-parallel across the coil of the relay will clamp the voltage spike to approx. no more than `\(-0.7V\)`.
+The coil of a relay is basically an inductor. Due to the rapid \(\frac{di}{dt}\) when the relay is switched off, the inductive coil will generate a large negative voltage to try and keep the current flowing (remember: inductors "resist" the change in current). This is called _inductive kickback_. This voltage spike can cause havoc in neighbouring components (e.g. killing the transistor used to switch the relay on, or arcing across switch terminals) if not suppressed. A _flyback_ diode in anti-parallel across the coil of the relay will clamp the voltage spike to approx. no more than \(-0.7V\).
 
 {{% figure src="flyback-diode-relay-schematic.png" width="500px" caption="Always add a \"flyback\" diode in anti-parallel across the coil of a relay to quench voltage spikes due the rapid di/dt through the inductor when the relay is switched of. " %}}
 

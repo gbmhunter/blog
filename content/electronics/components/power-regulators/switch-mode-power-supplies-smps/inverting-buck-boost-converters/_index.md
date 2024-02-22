@@ -19,15 +19,15 @@ An inverting buck-boost is a type of switch-mode power supply (SMPS) that conver
 
 ### Output Voltage
 
-Again, the output voltage for an ideal SEPIC is purely determined by the input voltage and the duty cycle `\(D\)`, as given in the following equation:
+Again, the output voltage for an ideal SEPIC is purely determined by the input voltage and the duty cycle \(D\), as given in the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} = -\frac{D}{1 - D} V_{IN}
-\end{align}</p>
+\end{align}$$
 
-To give you an idea of how varying the duty cycle can produce either a higher or lower output voltage, see the below image which shows how the output voltage can vary from a small fraction of `\(V_{IN}\)` to many times larger than `\(V_{IN}\)`, and they are equal when the duty cycle is set at 50%.
+To give you an idea of how varying the duty cycle can produce either a higher or lower output voltage, see the below image which shows how the output voltage can vary from a small fraction of \(V_{IN}\) to many times larger than \(V_{IN}\), and they are equal when the duty cycle is set at 50%.
 
-{{% figure src="vout-to-vin-vs-duty-cycle-buck-boost.png" width="500" caption="Relationship between duty cycle and the voltage ratio for a inverting buck-boost converter, ignoring the sign (so applicable for a SEPIC also). Dotted line drawn where `\(V_{OUT} = V_{IN}\)`, at `\(D=0.5\)`." %}}
+{{% figure src="vout-to-vin-vs-duty-cycle-buck-boost.png" width="500" caption="Relationship between duty cycle and the voltage ratio for a inverting buck-boost converter, ignoring the sign (so applicable for a SEPIC also). Dotted line drawn where \(V_{OUT} = V_{IN}\), at \(D=0.5\)." %}}
 
 As the duty cycle approaches 100%, the ideal output voltage approaches infinity! In practise, non-idealities and component absolute maximums limit the the output voltage to something in the range of 10x the input voltage.
 

@@ -40,7 +40,7 @@ Package Dimensions:
 * Width: 0.62mm (max)[^bib-nexperia-sod-882]
 * Height: 0.50mm (max)[^bib-nexperia-sod-882]
 
-Typical PCB Land Area: `\(1.17mm^2\)` (1.30x0.90mm)[^bib-nexperia-sod-882]
+Typical PCB Land Area: \(1.17mm^2\) (1.30x0.90mm)[^bib-nexperia-sod-882]
 
 Common Uses:
 

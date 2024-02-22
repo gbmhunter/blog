@@ -45,10 +45,10 @@ Similar To:
 
 Thermal Resistance:
 
-* `\(T_{JC} = 15^{\circ}{\rm C}/W\)`
-* `\(T_{JA} = 150^{\circ}{\rm C}/W\)` (mounted in the standard way to the PCB)
+* \(T_{JC} = 15^{\circ}{\rm C}/W\)
+* \(T_{JA} = 150^{\circ}{\rm C}/W\) (mounted in the standard way to the PCB)
 
-Typical PCB Land Area: `\(88mm^2\)` (smallest square area to enclose package)
+Typical PCB Land Area: \(88mm^2\) (smallest square area to enclose package)
 
 3D Models: [3dContentCentral](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=363411)
 
@@ -58,7 +58,7 @@ The TO-39 package comes in different heights, two of which are commonly called l
 
 The ground pin of the `TO-39 package is usually connected to the metal case. The TO-39 can sit directly on the PCB, so it's important to consider that it could short out any unmasked nets running underneath the package. This also applies to the pads surrounding the non-ground pins. I measured the clearance around the non-ground pins and the maximum diameter of the pad surrounding the hole was about 1.60mm before it would short to ground. The pad on the other side of the PCB can be as large as you want.
 
-You can get clip-on heatsinks for the TO-39 package with thermal resistances of around `\(30-40^{\circ}{\rm C}/W\)`, which drops the `\(T_{JA}\)` to around `\(45-55^{\circ}{\rm C}\)`.
+You can get clip-on heatsinks for the TO-39 package with thermal resistances of around \(30-40^{\circ}{\rm C}/W\), which drops the \(T_{JA}\) to around \(45-55^{\circ}{\rm C}\).
 
 ## TO-39-2
 

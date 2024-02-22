@@ -18,9 +18,9 @@ The resistor model is commonly used to calculate basic PCB operating temperature
 
 ### Specific Thermal Conductivity
 
-_Specific thermal conductivity_ is a property of a material which describes it's ability to conduct heat. Materials with a high specific thermal conductivity conduct heat well, and materials with a low specific thermal conductivity conduct heat poorly (they are called _thermal insulators_). The symbol `\( \lambda \)` (_lambda_) is typically used to represent specific thermal conductivity.
+_Specific thermal conductivity_ is a property of a material which describes it's ability to conduct heat. Materials with a high specific thermal conductivity conduct heat well, and materials with a low specific thermal conductivity conduct heat poorly (they are called _thermal insulators_). The symbol \( \lambda \) (_lambda_) is typically used to represent specific thermal conductivity.
 
-<p>\begin{align} \lambda = \frac{P \cdot t}{A \cdot \Delta T} \end{align}</p>
+$$\begin{align} \lambda = \frac{P \cdot t}{A \cdot \Delta T} \end{align}$$
 
 <p class="centered">
   where:<br/>
@@ -37,7 +37,7 @@ _Thermal resistance_ is just the inverse (reciprocal) of thermal conductivity.
 
 Absolute thermal conductance is defined as:
 
-<p>\begin{align} \lambda_A = \frac{P}{A \cdot \Delta T} \end{align}</p>
+$$\begin{align} \lambda_A = \frac{P}{A \cdot \Delta T} \end{align}$$
 
 <p class="centered">
   where:<br/>
@@ -47,16 +47,16 @@ Absolute thermal conductance is defined as:
   \( \Delta T \) is the difference in temperature between the hot and cold surfaces in \(Kelvin\)</br>
 </p>
 
-Notice how it is very similar to the formula for _specific thermal conductivity_, except it is missing the thickness `\(t\)`. **Care has to be taken to distinguish between the two types of thermal resistances!** To recap:
+Notice how it is very similar to the formula for _specific thermal conductivity_, except it is missing the thickness \(t\). **Care has to be taken to distinguish between the two types of thermal resistances!** To recap:
 
-1. _Specific thermal conductivity_ is a property of the material, irrespective of it's shape, length, size, e.t.c. It has units `\( W \cdot m^{-1} \cdot K^{-1} \)`. This is what we were talking about above.
-1. _Absolute thermal conductivity_ (and _absolute thermal resistance_) is used when talking about the thermal conductance of a via, copper plane, PCB, e.t.c. This value takes into account both the material and it's shape/length/size. This has units `\( W \cdot C^{-1} \)`. **Absolute thermal resistance is the value mentioned on component datasheets.**
+1. _Specific thermal conductivity_ is a property of the material, irrespective of it's shape, length, size, e.t.c. It has units \( W \cdot m^{-1} \cdot K^{-1} \). This is what we were talking about above.
+1. _Absolute thermal conductivity_ (and _absolute thermal resistance_) is used when talking about the thermal conductance of a via, copper plane, PCB, e.t.c. This value takes into account both the material and it's shape/length/size. This has units \( W \cdot C^{-1} \). **Absolute thermal resistance is the value mentioned on component datasheets.**
 
 **However, both of these thermal conductivities are usually referred to without the "specific" or "absolute" qualifier**, leaving it up to you to work out what is being used based on the context and units. Remember, 99% of the time when a component datasheet mentioned "thermal resistance" they will be talking about "absolute thermal resistance". 
 
 If you know the specific thermal conductivity, you can find the absolute thermal conductivity with:
 
-<p>\begin{align} \lambda_A = \frac{\lambda_A \cdot A}{t} \end{align}</p>
+$$\begin{align} \lambda_A = \frac{\lambda_A \cdot A}{t} \end{align}$$
 
 Below are the specific thermal conductivities for common PCB materials:
 
@@ -81,34 +81,34 @@ Below are the specific thermal conductivities for common PCB materials:
 
 Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html>[^hyperphysics-thermal-conductivity]. `Solder, SnAgCu` and `Plating, ENIG` values sourced from <https://www.digikey.co.nz/en/articles/optimizing-pcb-thermal-performance-for-cree-xlamp-leds>. `TIM, phase change` was sourced from <https://www.laird.com/thermal-interface-materials/phase-change-materials/tpcm-900>.
 
-You can use these values to calculate an absolute thermal resistance for a particular layer in a PCB stack-up. For example, if we wanted to calculate the absolute thermal resistance `\( R_\theta \)` of a `\( 2cm^2 \)` area of soldermask that is `\( 20um \)` thick:
+You can use these values to calculate an absolute thermal resistance for a particular layer in a PCB stack-up. For example, if we wanted to calculate the absolute thermal resistance \( R_\theta \) of a \( 2cm^2 \) area of soldermask that is \( 20um \) thick:
 
-<p>\begin{align}
+$$\begin{align}
   R_\theta  &= \frac{1}{\lambda_{A}} \\
             &= \frac{t}{\lambda \cdot A} \\
             &= \frac{20um}{0.2Wm^{-1}K^{-1} \cdot 2cm^2} \\
             &= 0.5KW^{-1} \\
             &= 0.5°CW^{-1}
-\end{align}</p>
+\end{align}$$
 
-Thermal conductivity has some dependence on temperature (especially near `\(0K\)`), however for most materials at common PCB temperatures the thermal conductivity can be considered constant.
+Thermal conductivity has some dependence on temperature (especially near \(0K\)), however for most materials at common PCB temperatures the thermal conductivity can be considered constant.
 
 Non-isotropic materials such as FR-4 (which is a glass epoxy) have different thermal conductivities in the through-plane (Z) and across-plane (XY) directions.
 
 ASTM D5470 is a standard used to measure thermal conductivity.
 
-If the thickness of a material is known and constant, sometimes manufacturers will give a thermal resistance with units `\( °C \cdot m^2 \cdot W^{-1} \)` (or `\( °C \cdot in^2 \cdot W^{-1} \)`). This is common for areas of FR-4 PCB (when the thickness is defined as say, 1.6mm), or for TIM material with a defined thickness of say 0.1mm. When this is given, they have already taken the thickness `\(t\)` into account and applied it to the equation. In this sense the thermal resistance is half-way between a specific thermal resistance and an absolute thermal resistance. To fully calculate an absolute thermal resistance from this value, all you need to do is divide the resistance by the area of the material:
+If the thickness of a material is known and constant, sometimes manufacturers will give a thermal resistance with units \( °C \cdot m^2 \cdot W^{-1} \) (or \( °C \cdot in^2 \cdot W^{-1} \)). This is common for areas of FR-4 PCB (when the thickness is defined as say, 1.6mm), or for TIM material with a defined thickness of say 0.1mm. When this is given, they have already taken the thickness \(t\) into account and applied it to the equation. In this sense the thermal resistance is half-way between a specific thermal resistance and an absolute thermal resistance. To fully calculate an absolute thermal resistance from this value, all you need to do is divide the resistance by the area of the material:
 
-<p>\begin{align} R_\theta = \frac{R_{\theta, °Cm^2W^{-1}}}{A} \end{align}</p>
+$$\begin{align} R_\theta = \frac{R_{\theta, °Cm^2W^{-1}}}{A} \end{align}$$
 
 
 ## The Thermal Resistor Model
 
 Remember, thermal resistance is the inverse of thermal conductance. When modelling the thermal properties of PCBs, it is **useful to use thermal resistance instead of conductance as the resistances sum when the materials are in series**, just like resistance values would. We use absolute thermal resistances here as we have taken into account the thickness.
 
-Just like resistance is defined via Ohm's law as `\( R = \frac{V}{I} \)`, thermal resistance (absolute) `\(R_\theta\)` is defined as:
+Just like resistance is defined via Ohm's law as \( R = \frac{V}{I} \), thermal resistance (absolute) \(R_\theta\) is defined as:
 
-<p>\begin{align} R_{\theta} = \frac{\Delta T}{P} \end{align}</p>
+$$\begin{align} R_{\theta} = \frac{\Delta T}{P} \end{align}$$
 
 <p class="centered">
   where:<br>
@@ -123,7 +123,7 @@ When talking about thermal resistances, a resistor symbol is used to indicate th
 
 When looking through component datasheets, one of the most common thermal resistances is the _junction-to-ambient_ thermal resistance. This value is defined as:
 
-<p>\begin{align} \theta_{JA} = \frac{T_J - T_A}{P} \end{align}</p>
+$$\begin{align} \theta_{JA} = \frac{T_J - T_A}{P} \end{align}$$
 
 <p class="centered">
   where:<br>
@@ -134,13 +134,13 @@ When looking through component datasheets, one of the most common thermal resist
 
 However, **you have to be vigilant with specified junction-to-ambient values as they are not just a property of the component package**, but also of the PCB! When specified on a datasheet it is usually tested on a JEDEC standardized PCB and package land pattern.
 
-A much more useful thermal resistance in a components datasheet is the _junction-to-case_ thermal resistance. This is usually specified as `\( \theta_{JC} \)`. This typically represents the thermal resistance from the junction to the place on the PCB where the component is soldered. You can then take into account your PCB layout and estimate a _case-to-ambient_ thermal resistance.
+A much more useful thermal resistance in a components datasheet is the _junction-to-case_ thermal resistance. This is usually specified as \( \theta_{JC} \). This typically represents the thermal resistance from the junction to the place on the PCB where the component is soldered. You can then take into account your PCB layout and estimate a _case-to-ambient_ thermal resistance.
 
 {{% figure src="ic-temperature-diagram-with-junction-case-ambient.svg" width="800px" caption="A diagram of the different temperature points used when defining thermal resistances for ICs mounted on PCBs." %}}
 
 Your case-to-ambient thermal resistance can be added to the manufacturer-specified junction-to-case thermal resistance to get the total junction-to-ambient resistance using simple addition:
 
-<p>\begin{align} \theta_{JA} = \theta_{JC} + \theta_{CA} \end{align}</p>
+$$\begin{align} \theta_{JA} = \theta_{JC} + \theta_{CA} \end{align}$$
 
 ## The Thermal Resistance Of A Via
 

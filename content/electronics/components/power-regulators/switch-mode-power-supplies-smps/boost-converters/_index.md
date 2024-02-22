@@ -15,7 +15,7 @@ type: page
 
 ## Schematics
 
-Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage `\(V_{in}\)` into a higher or equal output voltage `\(V_{out}\)`.
+Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage \(V_{in}\) into a higher or equal output voltage \(V_{out}\).
 
 {{% figure src="boost-converter-basic-schematic.svg" width="600" caption="The basic schematic of a boost converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
 
@@ -25,9 +25,9 @@ Boost converters use a switching element, inductor, diode, and capacitor to conv
 
 The duty cycle for a boost converter is given by:
 
-<p>\begin{align}
+$$\begin{align}
 D = 1 - \eta \cdot \frac{V_{IN}}{V_{OUT}}
-\end{align}</p>
+\end{align}$$
 
 As you can see, the duty cycle is dependent only on the ratio between the input and output voltages. This has to be one of the simplest boost converter equations. This equation ignores the specific voltage drops across the switching element and rectifier, but rather lumps them together into the efficiency term.
 
@@ -35,21 +35,21 @@ As you can see, the duty cycle is dependent only on the ratio between the input 
 
 The inductance can be determined using:
 
-<p>\begin{align}
+$$\begin{align}
 L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L})
-\end{align}</p>
+\end{align}$$
 
-You don't know `\( I_L \)` or `\( \Delta I_L \)` yet, but the trick is here to assume a maximum inductor ripple current `\( \Delta I_L \)` as a percentage of the average inductor current, `\( I_L \)`. A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
+You don't know \( I_L \) or \( \Delta I_L \) yet, but the trick is here to assume a maximum inductor ripple current \( \Delta I_L \) as a percentage of the average inductor current, \( I_L \). A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
 
-<p>\begin{align}
+$$\begin{align}
 \frac{\Delta I_L}{I_L} = 0.35
-\end{align}</p>
+\end{align}$$
 
 Now the equation for the inductance becomes:
 
-<p>\begin{align}
+$$\begin{align}
 L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta }{0.35})
-\end{align}</p>
+\end{align}$$
 
 which can be solved as we know all of the variables.
 
@@ -57,9 +57,9 @@ which can be solved as we know all of the variables.
 
 The maximum output current is given by:
 
-<p>\begin{align}
+$$\begin{align}
 I_{OUT(max)} = (I_{SW(max)} - \frac{\Delta I_L}{2})(1 - D)
-\end{align}</p>
+\end{align}$$
 
 ### Diode Selection
 

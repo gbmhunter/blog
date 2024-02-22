@@ -42,7 +42,7 @@ The SR (**S**et-**R**eset) latch is the most basic form of latch. It can be buil
 
 {{% figure src="sr-latch-from-nor-gates.svg" width="500px" caption="A SR latch made from NOR gates." %}}
 
-Driving either S or R high allows you to set the latch into the 1 or 0 state respectively. The state of the latch is represented by the output `\(Q\)` and it's complement `\(\bar{Q}\)`. Because of feedback from the outputs, driving both S and R low makes the latch "remember" or "retain" it's last known state (holding). Below is the characteristic table for a SR latch built from NOR gates:
+Driving either S or R high allows you to set the latch into the 1 or 0 state respectively. The state of the latch is represented by the output \(Q\) and it's complement \(\bar{Q}\). Because of feedback from the outputs, driving both S and R low makes the latch "remember" or "retain" it's last known state (holding). Below is the characteristic table for a SR latch built from NOR gates:
 
 <table>
   <thead>
@@ -62,13 +62,13 @@ Driving either S or R high allows you to set the latch into the 1 or 0 state res
   </tbody>
 </table>
 
-Driving both set and reset high is a forbidden state, as it makes both `\(Q\)` and `\(\bar{Q}\)` equal 0.
+Driving both set and reset high is a forbidden state, as it makes both \(Q\) and \(\bar{Q}\) equal 0.
 
 A SR latch can also be made with two NAND gates instead of two NOR gates:
 
 {{% figure src="sr-latch-from-nand-gates.png" width="500px" caption="A SR latch made from two NAND gates." %}}
 
-When making the SR latch from NAND gates the invalid state is now `\(\overline{S} = \overline{R} = 0\)` and the hold state is `\(\overline{S} = \overline{R} = 1\)`, they switch positions compared to the SR latch built from NOR gates. This is also the reason why `\(S\)` and `\(R\)` have been renamed to `\(\overline{S}\)` and `\(\overline{R}\)`. Below is the full truth table:
+When making the SR latch from NAND gates the invalid state is now \(\overline{S} = \overline{R} = 0\) and the hold state is \(\overline{S} = \overline{R} = 1\), they switch positions compared to the SR latch built from NOR gates. This is also the reason why \(S\) and \(R\) have been renamed to \(\overline{S}\) and \(\overline{R}\). Below is the full truth table:
 
 <table>
   <thead>
@@ -123,24 +123,24 @@ SR latches can be used to make a switch debounce circuit.
 
 #### Why Have Q And Q Bar?
 
-You might wonder what the purpose of `\(\bar{Q}\)` is, given it's always the opposite of `\(Q\)` and you generally think of the value of `\(Q\)` representing the state of the latch. It's because sometimes you do need the inverse of `\(Q\)` in further logic, and so providing it saves an inverter. And it's needed in the internal logic of the latch anyway, so it's not of great cost to provide a pin for it on the package.
+You might wonder what the purpose of \(\bar{Q}\) is, given it's always the opposite of \(Q\) and you generally think of the value of \(Q\) representing the state of the latch. It's because sometimes you do need the inverse of \(Q\) in further logic, and so providing it saves an inverter. And it's needed in the internal logic of the latch anyway, so it's not of great cost to provide a pin for it on the package.
 
 #### How Does An SR Latch Work?
 
-1. **`\(R\)` is `HIGH` and `\(S\)` is `LOW`:** Since `\(R\)` is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with `\(S\)` which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if `\(R\)` is then brought LOW. This gives the SR latch it's memory.
-1. **`\(R\)` is `LOW` and `\(S\)` is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. `\(Q\)` is `HIGH` and `\(\bar{Q}\)` is `LOW`. Again, if `\(S\)` goes low, the SR latch "remembers" and keeps it's outputs in the same state.
+1. **\(R\) is `HIGH` and \(S\) is `LOW`:** Since \(R\) is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with \(S\) which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if \(R\) is then brought LOW. This gives the SR latch it's memory.
+1. **\(R\) is `LOW` and \(S\) is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. \(Q\) is `HIGH` and \(\bar{Q}\) is `LOW`. Again, if \(S\) goes low, the SR latch "remembers" and keeps it's outputs in the same state.
 
 {{% figure src="sr-latch-from-nor-gates-states-red-black.svg" width="800px" caption="(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical \"1\", black logical \"0\"." %}}
 
 ### D Latch
 
-A _D Latch_ is like a SR latch except extra circuitry is added so that instead of and set and reset input, you obtain a single input to set or reset (`\(D\)`), and an enable line `(\(E\))`. This is generally a more practical type of latch as it can store the arbitrary state of a single line when told to do so by the enable input.
+A _D Latch_ is like a SR latch except extra circuitry is added so that instead of and set and reset input, you obtain a single input to set or reset (\(D\)), and an enable line `(\(E\))`. This is generally a more practical type of latch as it can store the arbitrary state of a single line when told to do so by the enable input.
 
 As the below diagram shows, a D latch is essentially a SR latch but with extra NAND gates and a inverter added to the front. The NAND gates "gate" the data line by anding it with the enable, such as that when the enable line is `0`, no signal gets through. The inverter acts to remove the need to separate "set" and "reset" lines of a traditional SR latch by providing the two signals from one input.
 
 {{% figure src="d-latch-from-nand-gates.png" width="700px" caption="A D latch made from NAND gates and an inverter." %}}
 
-You can see from the below truth table that when `\(E = 0\)`, the latch remembers it's last state. When `\(E = 1\)`, the signal on `\(D\)` is passed onto the output:
+You can see from the below truth table that when \(E = 0\), the latch remembers it's last state. When \(E = 1\), the signal on \(D\) is passed onto the output:
 
 <table>
   <thead>
@@ -172,7 +172,7 @@ You can also make a D latch with inverters and [transmission gates](/electronics
 
 The NAND gate implementation required 16 MOSFETs, but the above circuit only requires 12 (2 for each inverter, 2 for each transmission gate, and 2 to invert the enable signal to drive the transmission gates).
 
-When `\(E\)` is `HIGH`, the lower transmission gate is `ON` and the input `\(D\)` is passed through to the output `\(Q\)` via two inverters. When `\(E\)` is `LOW`, the higher transmission gate is `ON` and the output is fed back to itself via two inverter (hence performing the latching action). The [Texas Instruments CD4042B](https://www.ti.com/lit/ds/symlink/cd4042b.pdf) uses a similar technique to implement it's D latches[^bib-ti-cd4042b-ds].
+When \(E\) is `HIGH`, the lower transmission gate is `ON` and the input \(D\) is passed through to the output \(Q\) via two inverters. When \(E\) is `LOW`, the higher transmission gate is `ON` and the output is fed back to itself via two inverter (hence performing the latching action). The [Texas Instruments CD4042B](https://www.ti.com/lit/ds/symlink/cd4042b.pdf) uses a similar technique to implement it's D latches[^bib-ti-cd4042b-ds].
 
 ### JK Latch
 
@@ -274,11 +274,11 @@ D-type flip-flops are used for counters, shift-registers and input synchronizati
 
 #### D-Type Flip-Flops with Inverters
 
-But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the `\(E\)` (enable) line of a D latch (as shown above) to make a D flip-flop:
+But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the \(E\) (enable) line of a D latch (as shown above) to make a D flip-flop:
 
 {{% figure src="d-flipflop-with-and-inverter.png" width="800px" caption="A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit made with an AND gate and inverter." %}}
 
-We now instead call the `\(E\)` line the `\(CLK\)`, to signify it is edge-triggered rather than level-triggered.
+We now instead call the \(E\) line the \(CLK\), to signify it is edge-triggered rather than level-triggered.
 
 #### Master-Slave D Flip-Flop
 
@@ -461,8 +461,8 @@ You can play around with the interactive simulation below:
 
 Synchronous flip-flops have timing requirements that must be obeyed. The two main requirements are:
 
-* **Setup time `\(t_S\)`:** This is the time that the data line must be stable for BEFORE the edge of the clock signal.
-* **Hold time `\(t_H\)`:** This is the time that the data line must be stable for AFTER the edge of the clock signal.
+* **Setup time \(t_S\):** This is the time that the data line must be stable for BEFORE the edge of the clock signal.
+* **Hold time \(t_H\):** This is the time that the data line must be stable for AFTER the edge of the clock signal.
 
 The below diagram shows this concept, assuming the logic is triggered on the positive-edge of the clock signal.
 
@@ -478,7 +478,7 @@ What do violating signals look like? Violating signals is when the data signal c
 
 A similar but different concept to setup and hold times are _recovery_ and _removal_ times. Recovery and removal times are terms used to describe the **timing requirements for edge-triggered logic for when asynchronous inputs (like set and reset) are de-asserted and the next clock edge**[^bib-vlsi-universe-recovery-and-removal-checks].
 
-When set or reset are ASSERTED, there are no timing requirements since the action is asynchronous. The output of the flip-flop will get set or reset independent of the clock. However, when the set or reset is DE-ASSERTED, it's **not until the next clock edge that the flip-flop removes itself from the effects of set/reset and it's output `\(Q\)` begins to follow `\(D\)` again**. This is where the recovery and removal time requirements come into play:
+When set or reset are ASSERTED, there are no timing requirements since the action is asynchronous. The output of the flip-flop will get set or reset independent of the clock. However, when the set or reset is DE-ASSERTED, it's **not until the next clock edge that the flip-flop removes itself from the effects of set/reset and it's output \(Q\) begins to follow \(D\) again**. This is where the recovery and removal time requirements come into play:
 
 * **Recovery time:** The amount of time that the set/clear must stay de-asserted for BEFORE the clock edge.
 * **Removal time:** The amount of time that the set/clear must stay de-asserted for AFTER the clock edge.

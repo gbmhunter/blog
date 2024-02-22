@@ -19,11 +19,11 @@ Pitch: 1.27mm[^bib-vishay-si7846dp]
 
 Solderability: Reflow is required. Not possible to solder with iron as package has a large thermal pad on the underside, and a very small amount of the pads are exposed.
 
-Thermal Resistance: `\(R_{\theta JC}=1^{\circ}C/W\)`[^bib-vishay-si7846dp]
+Thermal Resistance: \(R_{\theta JC}=1^{\circ}C/W\)[^bib-vishay-si7846dp]
 
 Package LxWxH: 6.05x5.05x1.04mm[^bib-vishay-si7846dp]
 
-Typical PCB Land Area: `\(29.2mm^2\)` (`\(6.61x4.42mm\)`)[^bib-vishay-si7846dp]
+Typical PCB Land Area: \(29.2mm^2\) (\(6.61x4.42mm\))[^bib-vishay-si7846dp]
 
 Common Uses:
 * MOSFETs

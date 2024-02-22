@@ -41,15 +41,15 @@ Because the current cannot change instantaneously through an inductor, the induc
 
 Inductors don't have a polarity right? Most of the time, they don't. **But certain inductors do feature polarity marks for EMC purposes.**
 
-When inductors are used in switch-mode power supplies, one side of the inductor is normally connected to what is called the _switching node_. In a buck converter, the switching node is the side of the inductor that gets switched from `\(V_{IN}\)` to `\(\text{GND}\)`. In a boost converter, the switching node is the side of the inductor which gets switched from `\(V_{OUT}\)` to `\(\text{GND}\)`.
+When inductors are used in switch-mode power supplies, one side of the inductor is normally connected to what is called the _switching node_. In a buck converter, the switching node is the side of the inductor that gets switched from \(V_{IN}\) to \(\text{GND}\). In a boost converter, the switching node is the side of the inductor which gets switched from \(V_{OUT}\) to \(\text{GND}\).
 
-This switching node has a high `\(\frac{dV}{dt}\)` --- it's voltage changes rapidly between two values. The copper on the switching node can act as an antenna and radiate energy, contributing to generated EMC noise. One way to mitigate this is to minimize the amount of copper on the switching node, by placing the components close together and make sure it is shielded with a ground plane.
+This switching node has a high \(\frac{dV}{dt}\) --- it's voltage changes rapidly between two values. The copper on the switching node can act as an antenna and radiate energy, contributing to generated EMC noise. One way to mitigate this is to minimize the amount of copper on the switching node, by placing the components close together and make sure it is shielded with a ground plane.
 
 Some inductors include polarity marks to indicate which side of the inductor has the shortest copper path to the leads. One example is the Coilcraft XAL Family of inductors, including the `XAL7050-223MEC`. {{% ref "fig-coilcraft-xal7050-showing-polarity-indicator-and-emi-note" %}} shows the top view of the inductor, highlighting the polarity indicator and a note about how to reduce EMI.
 
 {{% figure ref="fig-coilcraft-xal7050-showing-polarity-indicator-and-emi-note" src="coilcraft-xal7050-showing-polarity-indicator-and-emi-note.png" width="500px" caption="Top view of the Coilcraft XAL7050 inductor, showing the polarity mark." %}}
 
-Connecting the side of the inductor with the bar to the high `\(\frac{dV}{dt}\)` switching node gives the lowest EMI. {{% ref "fig-inductor-polarity-radiated-emissions-improvement-analog-devices" %}} shows the improvement in radiated emissions when connecting the shortest inductor lead to the switching node.
+Connecting the side of the inductor with the bar to the high \(\frac{dV}{dt}\) switching node gives the lowest EMI. {{% ref "fig-inductor-polarity-radiated-emissions-improvement-analog-devices" %}} shows the improvement in radiated emissions when connecting the shortest inductor lead to the switching node.
 
 {{% figure ref="fig-inductor-polarity-radiated-emissions-improvement-analog-devices" src="inductor-polarity-radiated-emissions-improvement-analog-devices.png" width="600px" caption="Graphs from Analog Devices showing the improvement in radiated emissions when the shortest inductor lead is connected to the switching node[^analog-devices-assembly-orientation-inductor-affect-emissions]. Orientation 1 is with the short lead connected to the switching node, orientation 2 is the opposite." %}}
 
@@ -81,9 +81,9 @@ Most general-purpose oscilloscope have very poor common-mode rejection. The comm
 
 The impedance mismatch between the noise source, the tracks, the scope probe and oscilloscope may cause reflections to reduce the accuracy of your noise measurements. 
 
-For example, the output impedance of a SMPS may be a few `\(m\Omega\)`, which then connects to the PCB tracks and scope probe, which may have an impedance of `\(50\Omega\)`. This then connects to the oscilloscope which has an impedance in the `\(M\Omega\)`. 
+For example, the output impedance of a SMPS may be a few \(m\Omega\), which then connects to the PCB tracks and scope probe, which may have an impedance of \(50\Omega\). This then connects to the oscilloscope which has an impedance in the \(M\Omega\). 
 
-These reflections can be minimised by adding the appropriate termination resistors, e.g. a `\(50\Omega\)` resistor in series with the SMPS (as close to the SMPS output as you can), and then another `\(50\Omega\)` resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements
+These reflections can be minimised by adding the appropriate termination resistors, e.g. a \(50\Omega\) resistor in series with the SMPS (as close to the SMPS output as you can), and then another \(50\Omega\) resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements
 
 ## Mu-metal
 

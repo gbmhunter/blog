@@ -12,7 +12,7 @@ Regular hexagons are hexagons were all the edges (sides) are the same length.
 
 ## Cube Grids
 
-A cube grid uses three axes `\((x, y, z)\)` to describe a hexagon.
+A cube grid uses three axes \((x, y, z)\) to describe a hexagon.
 
 The coordinate for any hexagon in a cube grid must satisfy the following condition:
 

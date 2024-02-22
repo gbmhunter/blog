@@ -38,7 +38,7 @@ Package Dimensions:
 * Width: 0.80mm[^bib-on-semi-rb751s40-ds]
 * Height: 0.60mm[^bib-on-semi-rb751s40-ds]
 
-Typical PCB Land Area: `\(2.58mm^2\)` (2.15x1.20mm)[^bib-nxp-sod523-package-info]
+Typical PCB Land Area: \(2.58mm^2\) (2.15x1.20mm)[^bib-nxp-sod523-package-info]
 
 Common Uses:
 

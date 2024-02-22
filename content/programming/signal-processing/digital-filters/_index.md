@@ -39,15 +39,15 @@ _Cycles per sample_ is a convenient way of expressing a frequency w.r.t. the sam
 
 A difference equation is the core equation of a filter which shows how the next output value is calculated based on past and present input and output values. For example, the difference equation for an exponential moving average filter is:
 
-<p>\begin{align}
+$$\begin{align}
 y_i = y_{i-1} \cdot (1 - \alpha) + x_i \cdot \alpha \nonumber
-\end{align}</p>
+\end{align}$$
 
 ### Discrete Unit Sample Function
 
-The _discrete unit sample function_ `\(\delta[n]\)` is the digital equivalent of the analogue impulse function (the analogue impulse function is infinitely thin, but has an area of 1). The discrete unit sample function has a value of 1 at sample 1, but is 0 everywhere else. It is defined as:
+The _discrete unit sample function_ \(\delta[n]\) is the digital equivalent of the analogue impulse function (the analogue impulse function is infinitely thin, but has an area of 1). The discrete unit sample function has a value of 1 at sample 1, but is 0 everywhere else. It is defined as:
 
-<p>\begin{align}
+$$\begin{align}
 \delta[n] =
 \begin{cases} 
       1 & n = 0 \\
@@ -61,7 +61,7 @@ This function is used for finding the impulse response of digital filters. One e
 
 Remember, to map a continuous time-domain frequency to the discrete time-domain, use the following equation:
 
-<p>$$ F = \frac{f}{f_s} $$</p>
+$$ F = \frac{f}{f_s} $$
 
 <p class="centered">
     where:<br />
@@ -85,7 +85,7 @@ Python is a great language for experimenting with digital filters. The popular `
 <p>\begin{align}
 H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
      &= \frac{b_0 + b_1 z^{-1} + b_2 z^{-2} + ... + b_m z^{-m}} {a_0 + a_1 z^{-1} + a_2 z^{-2} + ... + a_n z^{-n}} \\
-\end{align}</p>
+\end{align}$$
 
 {{% warning %}}
 The order of these coefficients to `freqz()` is the reverse of what is standard in most places.

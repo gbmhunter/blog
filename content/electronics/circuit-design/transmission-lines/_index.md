@@ -27,13 +27,13 @@ This is related to the capacitive ability of the medium between two copper layer
 
 The _characteristic impedance_ of a conductor is the impedance a signal "sees" when travelling down a conductor that has to be treated as a transmission line (more on at what length a conductor becomes a transmission line below). Note that the main difference between standard resistance and the characteristic impedance is that the **characteristic impedance does not depend on the length of the conductor**. It has the same value no matter the length of the transmission line!
 
-**The characteristic impedance of a transmission line is usually called `\(Z_C\)`.** It is dependant on the per unit length inductance `\(L\)` and capacitance `\(C\)` of the transmission line. The equation is: 
+**The characteristic impedance of a transmission line is usually called \(Z_C\).** It is dependant on the per unit length inductance \(L\) and capacitance \(C\) of the transmission line. The equation is: 
 
-<p>\begin{align}
+$$\begin{align}
 Z_C = \sqrt{ \frac{L}{C} }
-\end{align}</p>
+\end{align}$$
 
-However, you rarely calculate `\(Z_C\)` from the per-unit inductance and capacitance. Instead, you either use transmission lines with well controlled parameters that specify their impedance (e.g. `\(50\Omega\)` [RG-58 coax cable](/electronics/components/cables/#_coaxial_cable)), or you design PCB traces using well know formulas for the impedance determined by the track width, PCB di-electric, geometry and proximity to ground.
+However, you rarely calculate \(Z_C\) from the per-unit inductance and capacitance. Instead, you either use transmission lines with well controlled parameters that specify their impedance (e.g. \(50\Omega\) [RG-58 coax cable](/electronics/components/cables/#_coaxial_cable)), or you design PCB traces using well know formulas for the impedance determined by the track width, PCB di-electric, geometry and proximity to ground.
 
 Typical impedances and their associated uses are:
 
@@ -50,11 +50,11 @@ Typical impedances and their associated uses are:
 
 **Wires, cables, PCB tracks e.t.c. have to be treated as transmission lines when the signal passing through it changes rapidly compared to the time the signal takes to travel through the transmission line.**
 
-So how rapid is "rapid"? Most guidelines state that a conductive path has to be treated as a transmission line once the cable becomes longer than about 1/10 of the wavelength of the operating frequency. Remember that the wavelength of a signal `\(\lambda\)` is calculated with the simple equation:
+So how rapid is "rapid"? Most guidelines state that a conductive path has to be treated as a transmission line once the cable becomes longer than about 1/10 of the wavelength of the operating frequency. Remember that the wavelength of a signal \(\lambda\) is calculated with the simple equation:
 
-<p>\begin{align}
+$$\begin{align}
 \lambda = \frac{c}{f}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -73,17 +73,17 @@ You have a signal at 780MHz. At what length does a cable carrying this signal ha
 
 The wavelength of a 780MHz signal is:
 
-<p>\begin{align}
+$$\begin{align}
 \lambda &= \frac{3{\times}10^8ms^{-1}}{780MHz} \nonumber \\
         &= 385mm \\
-\end{align}</p>
+\end{align}$$
 
 The length of cable at which it "becomes" a transmission line is just 1/10th of this wavelength:
 
-<p>\begin{align}
+$$\begin{align}
 l &= \frac{\lambda}{10} \nonumber \\
   &= 38.5mm \\
-\end{align}</p>
+\end{align}$$
 
 {{% /aside %}}
 
@@ -91,9 +91,9 @@ l &= \frac{\lambda}{10} \nonumber \\
 
 The first problem with digital waveforms is finding out the maximum frequency you need to support for it. It is not the clocking/data speed! If you assumed that, the edges of the clock would be rounded off and you'd end up with a sine-wave like waveform. The highest frequency components you need to support are the edges of the data. There is a well-known rule-of-thumb for applies to digital waveforms:
 
-<p>\begin{align}
+$$\begin{align}
 BW \approx \frac{0.35}{t_r}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -113,9 +113,9 @@ For example, the USB 2.0 specification states a maximum rise time of 4ns. Using 
 
 From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
 
-<p>\begin{align}
+$$\begin{align}
 \lambda = \frac{c}{f\sqrt{\epsilon_r}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -132,11 +132,11 @@ Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the char
 
 **Whenever the signal passes from one medium to another with different characteristic impedance, a reflection occurs at the boundary.** The reflection appears at the boundary at propagates in both directions (both forwards with the signal, and backwards towards the signal source). The magnitude (in terms of voltage) of the reflection is determined by the voltage reflection coefficient.
 
-Voltage reflection coefficients are usually represented with the Greek uppercase "Gamma" (`\(\Gamma\)`), with subscripts representing the direction of signal as it crosses the boundaries between two "mediums" (cables, circuit traces, e.t.c.) of different impedance. The voltage reflection coefficient is defined as the ratio of the reflected wave to the incident wave:
+Voltage reflection coefficients are usually represented with the Greek uppercase "Gamma" (\(\Gamma\)), with subscripts representing the direction of signal as it crosses the boundaries between two "mediums" (cables, circuit traces, e.t.c.) of different impedance. The voltage reflection coefficient is defined as the ratio of the reflected wave to the incident wave:
 
-<p>\begin{align}
+$$\begin{align}
 \Gamma \equiv \frac{B}{A}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -144,11 +144,11 @@ where:<br/>
 \( B \) is the voltage of the reflection (going back to the source), in \(V\)<br/>
 </p>
 
-The voltage reflection coefficient `\(\Gamma_{12}\)`, of a signal moving from medium 1 to medium 2 is:
+The voltage reflection coefficient \(\Gamma_{12}\), of a signal moving from medium 1 to medium 2 is:
 
-<p>\begin{align}
+$$\begin{align}
 \Gamma_{12} = \frac{Z_2 - Z_1}{Z_2 + Z_1}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -158,43 +158,43 @@ where:<br/>
 
 Similarly, the voltage reflection coefficient for a wave going the other way is:
 
-<p>\begin{align}
+$$\begin{align}
 \Gamma_{21} = \frac{Z_1 - Z_2}{Z_1 + Z_2}
-\end{align}</p>
+\end{align}$$
 
 Thus the coefficients have the same magnitude, but differ in sign:
 
-<p>\begin{align}
+$$\begin{align}
 \Gamma_{21} = -\Gamma_{12}
-\end{align}</p>
+\end{align}$$
 
 Let's consider a transmission line connected to a receiver in three different scenarios:
 
 **Receiver Is Terminated With Characteristic Impedance**
 
-You can see from the above equation that for perfectly matched mediums the reflection coefficient is `\(0\)`. No energy is reflected back to the source. This is also the condition in which maximum power is transferred to the load.
+You can see from the above equation that for perfectly matched mediums the reflection coefficient is \(0\). No energy is reflected back to the source. This is also the condition in which maximum power is transferred to the load.
 
 **Receiver Is Shorted To Ground**
 
-When the receiver is shorted to ground, then `\(Z_2 = 0\)`. The voltage reflection coefficient is then:
+When the receiver is shorted to ground, then \(Z_2 = 0\). The voltage reflection coefficient is then:
 
-<p>\begin{align}
+$$\begin{align}
 \Gamma_{12} &= \frac{0 - Z_1}{0 + Z_1} \nonumber \\
             &= -1 \\
-\end{align}</p>
+\end{align}$$
 
-As you can see, `\(Z_0\)` is gone, `\(Z_1\)` cancels out and you are left with a `\(\Gamma = -1\)`. Thus the reflected wave is equal in magnitude but 180° out of phase with the incident wave. This means they cancel each over out, giving `\(0V\)` at the receiver. This makes sense! There cannot be any voltage across a short (by definition)!
+As you can see, \(Z_0\) is gone, \(Z_1\) cancels out and you are left with a \(\Gamma = -1\). Thus the reflected wave is equal in magnitude but 180° out of phase with the incident wave. This means they cancel each over out, giving \(0V\) at the receiver. This makes sense! There cannot be any voltage across a short (by definition)!
 
 **Receiver Is Open Circuit**
 
-When the receiver is open circuit, then `\(Z_2 \to \infty\)`. Using L'Hospital's rule:
+When the receiver is open circuit, then \(Z_2 \to \infty\). Using L'Hospital's rule:
 
-<p>\begin{align}
+$$\begin{align}
 \Gamma_{12} &= lim_{Z_2 \to \infty} \frac{Z_2 - Z_1}{Z_2 + Z_1} \nonumber \\
             &= lim_{Z_2 \to \infty} \frac{\frac{d}{d(Z_2)}(Z_2 - Z_1)}{\frac{d}{d(Z_2)}(Z_2 + Z_1)} \nonumber \\
             &= \frac{1}{1} \nonumber \\
             &= 1
-\end{align}</p>
+\end{align}$$
 
 All of the energy is reflected back to the source. The reflected wave is equal in magnitude and in phase with the incident wave.
 

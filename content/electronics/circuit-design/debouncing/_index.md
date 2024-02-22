@@ -37,7 +37,7 @@ The following diagram shows how this RC debouncing circuit works:
 
 {{% figure src="rc-debouncing-waveforms.webp" width="900px" %}}
 
-One problem with this approach is asymmetric charging and discharging times, due to the capacitor being discharged through only `\(R1\)` but charged back up through `\(R1\)` and `\(R2\)`. This difference can be minimized by making `\(R2\)` much larger than `\(R1\)` (`\(R2 >> R1\)`) or by adding in a by-pass diode (see below).
+One problem with this approach is asymmetric charging and discharging times, due to the capacitor being discharged through only \(R1\) but charged back up through \(R1\) and \(R2\). This difference can be minimized by making \(R2\) much larger than \(R1\) (\(R2 >> R1\)) or by adding in a by-pass diode (see below).
 
 Another way to get around debouncing issues is to use a double-throw switch, and connect both sides of the throw (one side of the pole) through pull-up resistors to a microcontroller. Connect the other side of the pole to ground. The microcontroller can then monitor both pins and detect a switch state only when one pin goes high and then the other goes low.
 

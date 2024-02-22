@@ -17,7 +17,7 @@ During circuit design, you may need a sine wave for some reason. One way to crea
 
 {{% figure src="four-rc-filter-sine-wave-generator-schematic.png" width="900px" caption="Schematic of a sine wave generator circuit using a square wave input and 4 RC filter stages." %}}
 
-If you can remember Fourier analysis, a square wave can be thought of as being made up of an infinite number of sine waves, starting at the fundamental frequency and then going up with all the odd numbered harmonics. The filtering works by **allowing the fundamental frequency through (it's in it's pass band), whilst blocking all the higher harmonics**. The below image shows a `\(10kHz\)`, `\(3.3V\)` square wave at it's FFT. You can see the spike which represents the fundamental at `\(10kHz\)`. The next spike is the first harmonic at `\(30kHz\)`. 
+If you can remember Fourier analysis, a square wave can be thought of as being made up of an infinite number of sine waves, starting at the fundamental frequency and then going up with all the odd numbered harmonics. The filtering works by **allowing the fundamental frequency through (it's in it's pass band), whilst blocking all the higher harmonics**. The below image shows a \(10kHz\), \(3.3V\) square wave at it's FFT. You can see the spike which represents the fundamental at \(10kHz\). The next spike is the first harmonic at \(30kHz\). 
 
 {{% figure src="sim-four-stage-rc-filter-fft-of-input-plot.png" width="600px" caption="The time domain voltage signal of a 10kHz 3.3V square wave (top) and the FFT of this signal (bottom)." %}}
 
@@ -25,15 +25,15 @@ If you can remember Fourier analysis, a square wave can be thought of as being m
 
 ## Choosing The R And Cs
 
-Lets say we want a sine wave at `\(10kHz\)`. We'll configure a timer or PWM peripheral on a microcontroller to output a square wave at `\(10kHz\)` with a `\(50\%\)` duty cycle.
+Lets say we want a sine wave at \(10kHz\). We'll configure a timer or PWM peripheral on a microcontroller to output a square wave at \(10kHz\) with a \(50\%\) duty cycle.
 
-For each RC filter, we get to pick either the capacitance or resistance and then calculate the other. Let's pick a capacitance of `\(10nF\)`.
+For each RC filter, we get to pick either the capacitance or resistance and then calculate the other. Let's pick a capacitance of \(10nF\).
 
-We'll design the cut-off frequency of each stage to be equal to the desired sine wave frequency. Remember that the cut-off frequency `\(f_c\)` for a RC filter is:
+We'll design the cut-off frequency of each stage to be equal to the desired sine wave frequency. Remember that the cut-off frequency \(f_c\) for a RC filter is:
 
-<p>\begin{align}
+$$\begin{align}
 f_c &= \frac{1}{2\pi R C} \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -48,17 +48,17 @@ where:</br>
 
 This means the resistor in each RC stage has to be:
 
-<p>\begin{align}
+$$\begin{align}
 R &= \frac{1}{2\pi f_c C} \nonumber \\
   &= \frac{1}{2\pi \cdot 10kHz \cdot 10nF} \nonumber \\
   &= 1.592k\Omega \\
-\end{align}</p>
+\end{align}$$
 
 {{% warning %}}
-Setting the cut-off frequency for each stage to 10kHz does not mean the entire filter will attenuate the input signal by only `\(-3dB\)`. It will attenuate the signal by much more than that!
+Setting the cut-off frequency for each stage to 10kHz does not mean the entire filter will attenuate the input signal by only \(-3dB\). It will attenuate the signal by much more than that!
 {{% /warning %}}
 
-Remember, all the `\(R\)` and `\(C\)` values should be the same. This gives us the following schematic:
+Remember, all the \(R\) and \(C\) values should be the same. This gives us the following schematic:
 
 {{% figure src="sim-four-stage-rc-filter-schematic.png" width="700px" caption="Schematic for our 10kHz sine wave generator." %}}
 
@@ -72,14 +72,14 @@ The simulated output voltage waveforms are shown below (using SPICE transient an
 
 {{% figure src="sim-four-stage-rc-filter-output-plot.png" width="700px" caption="Simulation results for the four-stage RC filter based sine wave generator circuit." %}}
 
-It's also interesting to point out that the final output the sine wave has a DC offset of `\(1.65V\)`. This is because the DC component (average voltage) of the input `\(3.3V\)` square wave at `\(50\%\)` duty cycle is `\(3.3V / 2 = 1.65V\)`. If you want to remove this bias, you can connect an AC coupling capacitor to the output to center the sine wave around `\(0V\)`.
+It's also interesting to point out that the final output the sine wave has a DC offset of \(1.65V\). This is because the DC component (average voltage) of the input \(3.3V\) square wave at \(50\%\) duty cycle is \(3.3V / 2 = 1.65V\). If you want to remove this bias, you can connect an AC coupling capacitor to the output to center the sine wave around \(0V\).
 
-The bode plots (frequency response) of this circuit is shown below. Each successive filter stage increases the slope of the attenuation. At the fundamental frequency (which the frequency we want to pass) of `\(10kHz\)`, the attenuation is `\(23dB\)` (14x reduction). At `\(30kHz\)` (which is the 1st harmonic of the square wave, and we want to block this), the output is attenuated by `\(45dB\)` (178x reduction).
+The bode plots (frequency response) of this circuit is shown below. Each successive filter stage increases the slope of the attenuation. At the fundamental frequency (which the frequency we want to pass) of \(10kHz\), the attenuation is \(23dB\) (14x reduction). At \(30kHz\) (which is the 1st harmonic of the square wave, and we want to block this), the output is attenuated by \(45dB\) (178x reduction).
 
 {{% figure src="sim-four-stage-rc-filter-bode-plot.png" width="700px" caption="Bode plots for the four-stage RC filter based sine wave generator circuit." %}}
 
 {{% note %}}
-As shown in the bode plots above, the phase of the output is also shifted. Our output 10kHz sine wave is shifted by `\(166^{\circ}\)`, which is almost "inverting" the input. Make sure to take this into consideration.
+As shown in the bode plots above, the phase of the output is also shifted. Our output 10kHz sine wave is shifted by \(166^{\circ}\), which is almost "inverting" the input. Make sure to take this into consideration.
 {{% /note %}}
 
 ## Distortion
@@ -94,7 +94,7 @@ One figure of merit we can use for each output is the _total harmonic distortion
 
 {{% figure src="sim-four-stage-rc-filter-thd-bar-plot.png" width="600px" caption="Plot showing the THD at each stage in the sine wave generator circuit." %}}
 
-By the time we get to the final output, `\(V_{OUT4}\)`, we are down to a THD of `\(3.8\%\)`. Pretty good!
+By the time we get to the final output, \(V_{OUT4}\), we are down to a THD of \(3.8\%\). Pretty good!
 
 ## Other Methods Of Making A Sine Wave
 

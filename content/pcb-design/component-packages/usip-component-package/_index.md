@@ -60,9 +60,9 @@ SIL0010A is a 10pin, 3.8x3.0mm package size variant of the uSIP.
 
 SIL0010C is a 10pin, 3.7x2.8mm package size variant of the uSIP.
 
-The below diagram shows `\(\theta_{JA}\)` versus copper area on the PCB for the SIL-10C uSiP package:
+The below diagram shows \(\theta_{JA}\) versus copper area on the PCB for the SIL-10C uSiP package:
 
-{{% figure src="tpsm265r1-theta-ja-vs-copper-area.png" width="500px" caption="`\(\theta_ja\)` vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds]." %}}
+{{% figure src="tpsm265r1-theta-ja-vs-copper-area.png" width="500px" caption="\(\theta_ja\) vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds]." %}}
 
 ## References
 

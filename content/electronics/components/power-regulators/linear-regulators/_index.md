@@ -32,7 +32,7 @@ Series linear regulators work by comparing the output voltage to a accurate (and
 
 Series linear regulators are relatively simple components to connect up into a larger circuit, typically only requiring an input pin, output pin, and either a GND (for fixed voltage versions) or ADJ pin (for variable voltage versions):
 
-{{% figure src="series-linear-regulator-fixed-basic-schematic.svg" width="700px" caption="Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator (`\(V_{OUT} = 5.0V\)`) and so the third pin is just connected to `\(GND\)`." %}}
+{{% figure src="series-linear-regulator-fixed-basic-schematic.svg" width="700px" caption="Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator (\(V_{OUT} = 5.0V\)) and so the third pin is just connected to \(GND\)." %}}
 
 ## Shunt Linear Regulators
 
@@ -40,20 +40,20 @@ Confusingly, shunt regulators are commonly shown in schematics as a zener diode 
 
 {{% figure src="shunt-linear-regulator-symbol-and-detailed-circuit.svg" width="700px" caption="The commonly used diode-looking schematic symbol for a shunt regulator, next to a more detailed circuit of what is actually inside the component! The voltage reference shown is 2.5V, which is used in the popular LM431 (it may be different for other regulators)." %}}
 
-One common use for these devices is a shunt voltage regulator, as shown below. The trick here is that `\(U1\)` will turn on as much as it can to make the voltage at its `\(V_{REF}\)` pin equal to it's internal voltage reference (which is commonly 2.5V). By connecting `\(V_{REF}\)` up to the resistor divider `\(R1\)` and `\(R2\)`, you can get `\(U1\)` to shunt regulate to a chosen `\(V_{OUT}\)`, as long as it's above `\(V_{REF}\)`.
+One common use for these devices is a shunt voltage regulator, as shown below. The trick here is that \(U1\) will turn on as much as it can to make the voltage at its \(V_{REF}\) pin equal to it's internal voltage reference (which is commonly 2.5V). By connecting \(V_{REF}\) up to the resistor divider \(R1\) and \(R2\), you can get \(U1\) to shunt regulate to a chosen \(V_{OUT}\), as long as it's above \(V_{REF}\).
 
 {{% figure src="shunt-linear-regulator-basic-application-schematic.svg" width="500px" caption="A shunt voltage regulator used to create a regulated output voltage from a higher input voltage." %}}
 
-It is quite easy to show that the output voltage in the above circuit is calculated as given in Eq `\(\ref{eq:vout-vref-shunt-reg}\)`.
+It is quite easy to show that the output voltage in the above circuit is calculated as given in Eq \(\ref{eq:vout-vref-shunt-reg}\).
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:vout-vref-shunt-reg}
 V_{OUT} = 1 + \frac{R1}{R2} V_{REF}
-\end{align}</p>
+\end{align}$$
 
 ### Min/Max Shunt Regulation Current
 
-A shunt regulator will have a minimum `\(I_{Z(min)}\)` and maximum `\(I_{Z(max)}\)` current at which it is able to regulate correctly. For example, the LM431 has an `\(I_{Z(min)}\)` of `\(1mA\)` and a `\(I_{Z(max)}\)` of `\(100mA\)`.
+A shunt regulator will have a minimum \(I_{Z(min)}\) and maximum \(I_{Z(max)}\) current at which it is able to regulate correctly. For example, the LM431 has an \(I_{Z(min)}\) of \(1mA\) and a \(I_{Z(max)}\) of \(100mA\).
 
 ### Popular Shunt Regulators
 
@@ -62,9 +62,9 @@ A shunt regulator will have a minimum `\(I_{Z(min)}\)` and maximum `\(I_{Z(max)}
 | Property      | Value
 |---------------|-----------------
 | Part Number   | LM431 
-| `\(V_{REF}\)` | 2.5V
-| `\(V_{OUT}\)` | 2.5-36V
-| `\(I_C\)`     | 1-100mA
+| \(V_{REF}\) | 2.5V
+| \(V_{OUT}\) | 2.5-36V
+| \(I_C\)     | 1-100mA
 | Package(s)    | SOIC-8, SOT-23, TO-92
 
 Popular in the feedback circuit of flyback converters.
@@ -72,24 +72,24 @@ Popular in the feedback circuit of flyback converters.
 ## Important Parameters
 
 * Maximum current (A)
-* Output voltage (or voltage range if adjustable, `\(V_{out}\)`)
-* Input voltage range `\(V_{in}\)`
+* Output voltage (or voltage range if adjustable, \(V_{out}\))
+* Input voltage range \(V_{in}\)
 * Protection circuitry (current limit, input polarity reversal, thermal limit)
-* Junction-to-ambient thermal resistance of linear reg package (`\(T_{j-a}\)`, °C/W)
-* Power-supply rejection ratio (`\(PSRR\)`, dB)
+* Junction-to-ambient thermal resistance of linear reg package (\(T_{j-a}\), °C/W)
+* Power-supply rejection ratio (\(PSRR\), dB)
 * Maximum operating temperature
 
 ## Low Dropout Regulators
 
-Low dropout regulators are a special sub-family of series linear regulators that have much smaller dropout voltages (typically `\(0.3-1.2V\)`, does depend on max. load current) compared with traditional linear regulators which have a typical dropout of `\(2V\)`. However, low dropout regulators tend to be **more prone to oscillation and more strict about capacitance requirements** on the input and output.
+Low dropout regulators are a special sub-family of series linear regulators that have much smaller dropout voltages (typically \(0.3-1.2V\), does depend on max. load current) compared with traditional linear regulators which have a typical dropout of \(2V\). However, low dropout regulators tend to be **more prone to oscillation and more strict about capacitance requirements** on the input and output.
 
 ## Thermal Considerations
 
 The power lost as heat through a linear regulator is:
 
-<p>\begin{align}
+$$\begin{align}
 P_t = (V_{out} - V_{in}) I
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -100,9 +100,9 @@ where:<br/>
 
 The regulator has to be able to dissipate this power without exceeding the maximum operating temperature. The temperature that the linear regulator will operate at is given by:
 
-<p>\begin{align}
+$$\begin{align}
 T_j = P_{t}T_{j-a} + T_a
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -114,11 +114,11 @@ where:</br>
 
 While you easily blow up regulators in the 1990's, even the very cheap modern-day regulators have built in protection circuitry which makes them basically indestructable. Most feature excess current protection, thermal protection (most turning off above if their die temperature exceeds 150-170°C), short-circuit protection, reverse-polarity protection, and input disconnect (reverse current flow) protection. One of the only ways to kill them is over-voltage on either the input or output.
 
-{{% figure src="protection-diode-from-vout-to-vin.svg" width="700px" caption="If `\(V_{IN}\)` falls rapidly (e.g. a short), and there is a lot of capacitance on `\(V_{OUT}\)`, reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from `\(V_{OUT}\)` to `\(V_{IN}\)` protects against this." %}}
+{{% figure src="protection-diode-from-vout-to-vin.svg" width="700px" caption="If \(V_{IN}\) falls rapidly (e.g. a short), and there is a lot of capacitance on \(V_{OUT}\), reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from \(V_{OUT}\) to \(V_{IN}\) protects against this." %}}
 
-This is further compounded if you are using an adjustable linear regulator and have added a filter capacitor on the ADJ pin -- the charge on the capacitor can flow back through the ADJ pin and cause problems. A second diode from the ADJ pin to `\(V_{OUT}\)` fixes this problem:
+This is further compounded if you are using an adjustable linear regulator and have added a filter capacitor on the ADJ pin -- the charge on the capacitor can flow back through the ADJ pin and cause problems. A second diode from the ADJ pin to \(V_{OUT}\) fixes this problem:
 
-{{% figure src="protection-diode-from-vout-to-vin-and-adj-to-vout.svg" width="700px" caption="Protection diodes `\(D1\)` and `\(D2\)` added to safely discharge C1 and C2. " %}}
+{{% figure src="protection-diode-from-vout-to-vin-and-adj-to-vout.svg" width="700px" caption="Protection diodes \(D1\) and \(D2\) added to safely discharge C1 and C2. " %}}
 
 ## Bypass Capacitor
 
@@ -130,7 +130,7 @@ Adding capacitance here helps improve the AC characteristics of the linear regul
 * Increases the PSRR (power supply rejection ratio)
 * Decreases the noise added to the line by the linear regulator
 
-A typical value of a bypass capacitor is `\(10nF\)`.
+A typical value of a bypass capacitor is \(10nF\).
 
 ## Power Supply Rejection Ratio (PSRR)
 
@@ -138,7 +138,7 @@ The _power supply rejection ratio_ (PSRR) (a.k.a _power supply ripple rejection_
 
 ### Basic Equation
 
-<p>\begin{align}
+$$\begin{align}
 PSRR = 20log \frac{V_{ripple,input}}{V_{ripple,output}}
 \end{align}
 
@@ -162,7 +162,7 @@ The below circuit shows how foldback current limiting is typically implemented i
 
 {{% figure src="foldback-current-limiting-circuit.svg" width="800px" caption="Foldback current limiting circuit added to a simple series linear regulator." %}}
 
-The below graph shows the V/I response of a linear regulator with foldback current limiting. As the load resistance decreases, the output voltage stays steady at `\(V_{REG}\)` until `\(I_{MAX}\)` is reached. Then both the output voltage and current reduces, with the current decreasing to `\(I_{SC}\)` as the load resistance reaches `\(0\Omega\)` (direct short).
+The below graph shows the V/I response of a linear regulator with foldback current limiting. As the load resistance decreases, the output voltage stays steady at \(V_{REG}\) until \(I_{MAX}\) is reached. Then both the output voltage and current reduces, with the current decreasing to \(I_{SC}\) as the load resistance reaches \(0\Omega\) (direct short).
 
 {{% figure src="foldback-current-limiting-graph.svg" width="400px" caption="V/I response of a linear regulator with foldback current limiting. Arrow shows direction of decreasing load resistance, all the way to a direct short." %}}
 
@@ -172,19 +172,19 @@ When using a foldback current limiter, non-ohmic loads such as incandescent bulb
 
 ### How Foldback Current Limiting Works
 
-1. Under normal conditions, `\(Q2\)` is off and `\(Q1\)` turns on enough to regulate the output voltage as normal.
-1. As the load current increases, the voltage drop across `\(R_{SC}\)` increases.
-1. When the load current reaches a certain point, the voltage across `\(R_{SC}\)` is large enough that when divided down by `\(R1\)` and `\(R2\)`, it reaches `\(0.6V\)` and begins to turn on `\(Q2\)`.
-1. `\(Q2\)` robs `\(Q1\)` of base drive, turning it more off and thus reducing the output voltage.
+1. Under normal conditions, \(Q2\) is off and \(Q1\) turns on enough to regulate the output voltage as normal.
+1. As the load current increases, the voltage drop across \(R_{SC}\) increases.
+1. When the load current reaches a certain point, the voltage across \(R_{SC}\) is large enough that when divided down by \(R1\) and \(R2\), it reaches \(0.6V\) and begins to turn on \(Q2\).
+1. \(Q2\) robs \(Q1\) of base drive, turning it more off and thus reducing the output voltage.
 
 ### Design Procedure
 
-The maximum load current `\(I_{MAX}\)` before foldback current limiting will kick in is given by Eq. `\(\ref{eq:foldback-imax}\)`.
+The maximum load current \(I_{MAX}\) before foldback current limiting will kick in is given by Eq. \(\ref{eq:foldback-imax}\).
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:foldback-imax}
 I_{MAX} = \frac{1}{R_{SC}} (( 1 + \frac{R1}{R2}) V_{BE} + \frac{R_1}{R_2}V_{REG})
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -193,12 +193,12 @@ where:</br>
 All resistances as shown in [^foldback-current-limiting-circuit] in Ohms [\(\Omega\)]<br/>
 </p>
 
-The short-circuit current `\(I_{SC}\)` when `\(V_{OUT}\)` falls to `\(0\)` is given by Eq. `\(\ref{eq:foldback-isc}\)`.
+The short-circuit current \(I_{SC}\) when \(V_{OUT}\) falls to \(0\) is given by Eq. \(\ref{eq:foldback-isc}\).
 
 <p>\begin{align}
 \label{eq:foldback-isc}
 I_{SC} = \frac{1}{R_{SC}} (1 + \frac{R_1}{R_2}) V_{BE}
-\end{align}</p>
+\end{align}$$
 
 ## Example Devices
 

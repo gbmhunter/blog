@@ -44,21 +44,21 @@ The behaviour of resistors when connected together in series and in parallel is 
 
 When two resistors are connected in parallel, the equivalent total resistance follows the inverse law:
 
-<p>\begin{align}
+$$\begin{align}
 R_{total} = \frac{1}{\frac{1}{R1} + \frac{1}{R2}}
-\end{align}</p>
+\end{align}$$
 
 It is usually easier to remember this equation as:
 
-<p>\begin{align}
+$$\begin{align}
 \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2}
-\end{align}</p>
+\end{align}$$
 
 or as (and this is my favourite):
 
-<p>\begin{align}
+$$\begin{align}
 R_{total} &= \frac{R1R2}{R1 + R2}
-\end{align}</p>
+\end{align}$$
 
 This relationship is shown in {{% ref "fig-resistors-in-parallel-equivalence-with-equation" %}}.
 
@@ -68,9 +68,9 @@ This relationship is shown in {{% ref "fig-resistors-in-parallel-equivalence-wit
 
 When two resistors are connected in series, the total equivalent resistance is equal to the sum of individual resistances.
 
-<p>\begin{align}
+$$\begin{align}
 R_{total} = R1 + R2
-\end{align}</p>
+\end{align}$$
 
 This is shown in {{% ref "fig-resistors-in-series-equivalence-with-equation" %}}.
 
@@ -84,12 +84,12 @@ The simplest voltage divider consists of just two resistors in series, shown in 
 
 {{% figure ref="fig-resistor-divider-schematic" src="_assets/resistor-divider-schematic.webp" width="350" caption="A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!" %}}
 
-The equation for `\(V_{OUT}\)` is:
+The equation for \(V_{OUT}\) is:
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:vout-eq-r2-r1-vin}
 V_{OUT} &= \frac{R2}{R1\ +\ R2} V_{IN} \\
-\end{align}</p>
+\end{align}$$
 
 The input voltage "divides" itself across the resistors proportionally based on relative resistances. The more resistance of any one resistor, the greater amount of voltage that will drop across it. You can easily reach the above equation by applying Ohm's law to the circuit.
 
@@ -97,36 +97,36 @@ The input voltage "divides" itself across the resistors proportionally based on 
 The above equation **only holds true** when the input voltage source is of sufficiently low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
 {{% /aside %}}
 
-During circuit design, you will encounter times when you have three knowns from `\(Eq.\ \ref{eq:vout-eq-r2-r1-vin}\)` but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with `\(V_{IN}\)` and `\(R1\)` being able to be simplified slightly):
+During circuit design, you will encounter times when you have three knowns from \(Eq.\ \ref{eq:vout-eq-r2-r1-vin}\) but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with \(V_{IN}\) and \(R1\) being able to be simplified slightly):
 
-<p>\begin{align}
+$$\begin{align}
 V_{IN} &= \frac{R1 + R2}{R2} V_{OUT} \nonumber \\
        &= \left( \frac{R1}{R2} + 1 \right) V_{OUT} \\
 R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \nonumber \\
    &= \left( \frac{V_{IN}}{V_{OUT}} - 1 \right) R2 \\
 R2 &= \frac{V_{OUT}}{V_{IN} - V_{OUT}} R1 \\
-\end{align}</p>
+\end{align}$$
 
 ### Thevenin Equivalent Circuit
 
-The Thevenin equivalent circuit for a resistor divider is shown in {{% ref "fig-resistor-divider-thevenin-equivalent-diagram" %}}. This is the equivalent circuit as looking from `\(V_{OUT}\)` into the resistor divider.
+The Thevenin equivalent circuit for a resistor divider is shown in {{% ref "fig-resistor-divider-thevenin-equivalent-diagram" %}}. This is the equivalent circuit as looking from \(V_{OUT}\) into the resistor divider.
 
 {{% figure ref="fig-resistor-divider-thevenin-equivalent-diagram" src="_assets/resistor-divider-thevenin-equivalent-diagram.webp" width="800" caption="The Thevenin equivalent circuit for a resistor divider." %}}
 
-Where the Thevenin voltage `\(V_{TH}\)` is equal to the open-circuit output voltage:
+Where the Thevenin voltage \(V_{TH}\) is equal to the open-circuit output voltage:
 
-<p>\begin{align}
+$$\begin{align}
 V_{TH} &= \frac{R2}{R1 + R2} V_{IN} \\
-\end{align}</p>
+\end{align}$$
 
-and the Thevenin resistance `\(R_{TH}\)` is equal to the open-circuit output voltage divided by the short-circuit current:
+and the Thevenin resistance \(R_{TH}\) is equal to the open-circuit output voltage divided by the short-circuit current:
 
-<p>\begin{align}
+$$\begin{align}
 R_{TH} &= R1 || R2 \\
        &= \frac{R1 \cdot R2}{R1 + R2} \\
-\end{align}</p>
+\end{align}$$
 
-The Thevenin resistance is sometimes called the output resistance or impedance `\(\b{Z_O}\)`. The Thevenin equivalent circuit is useful for calculating how long a capacitor attached to the output will take to charge to a certain level. It allows you to have a single resistance that you can then plug into the time constant equation `\(\tau = RC\)`. For more info on this, see the [RC Charging Circuits page](/electronics/circuit-design/rc-charging-circuits/). It is also useful when looking at it's frequency response. For more info on this, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
+The Thevenin resistance is sometimes called the output resistance or impedance \(\b{Z_O}\). The Thevenin equivalent circuit is useful for calculating how long a capacitor attached to the output will take to charge to a certain level. It allows you to have a single resistance that you can then plug into the time constant equation \(\tau = RC\). For more info on this, see the [RC Charging Circuits page](/electronics/circuit-design/rc-charging-circuits/). It is also useful when looking at it's frequency response. For more info on this, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
 
 {{% aside type="example" %}}
 Calculate how long the capacitor in {{% ref "fig-resistor-divider-charging-a-capacitor-example-1" %}} will take to charge to 90% it's final voltage.
@@ -135,18 +135,18 @@ Calculate how long the capacitor in {{% ref "fig-resistor-divider-charging-a-cap
 
 Convert the circuit into it's Thevenin equivalent.
 
-<p>\begin{align}
+$$\begin{align}
 V_{TH} &= \frac{R2}{R1 + R2} V_{IN} \nonumber \\
        &= \frac{10k\Omega}{22k\Omega + 10k\Omega} 5.0V \nonumber \\
        &= 1.56V \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-<p>\begin{align}
+$$\begin{align}
 R_{TH} &= R1 || R2 \nonumber \\
        &= \frac{R1 \cdot R2}{R1 + R2} \nonumber \\
        &= \frac{22k\Omega \cdot 10k\Omega}{22k\Omega + 10k\Omega} \nonumber \\
        &= 6.88k\Omega \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 Now we have the equivalent circuit shown in {{% ref "fig-resistor-divider-charging-a-capacitor-example-2" %}}.
 
@@ -154,7 +154,7 @@ Now we have the equivalent circuit shown in {{% ref "fig-resistor-divider-chargi
 
 Now we use calculate a time constant and use the formula for a RC charging circuit[^mbedded-ninja-rc-charging-circuits]:
 
-<p>\begin{align}
+$$\begin{align}
 V_C &= V_S (1 - e^{\frac{-t}{RC}}) \nonumber \\
 \frac{V_C}{V_S} &= (1 - e^{\frac{-t}{RC}}) \nonumber \\
 0.9 &= (1 - e^{\frac{-t}{RC}}) \nonumber \\
@@ -163,7 +163,7 @@ e^{\frac{-t}{RC}} &= 0.1 \nonumber \\
 t &= -RC\cdot ln(0.1) \nonumber \\
   &= -6.88k\Omega \cdot 10nF \cdot ln(0.10) \nonumber \\
   &= 158us
-\end{align}</p>
+\end{align}$$
 
 {{% /aside %}}
 
@@ -171,9 +171,9 @@ Note that the output impedance of a resistor divider is normally quite high, com
 
 The exception to the above rule is when the two following conditions are met:
 
-* The device will draw a small enough current that the voltage sag due to the extra current through `\(R1\)` is acceptable.
+* The device will draw a small enough current that the voltage sag due to the extra current through \(R1\) is acceptable.
 * Voltage fluctuations when the load changes are acceptable (i.e. this is not active regulation...there is no feedback).
-* The current going through `\(R1\)` will not cause it to overheat.
+* The current going through \(R1\) will not cause it to overheat.
 
 ### Applications
 
@@ -183,7 +183,7 @@ Resistor dividers are used everywhere in circuit design! They are commonly used 
 * Biasing [transistors](/electronics/components/transistors/).
 * Providing the correct voltages to the inputs of [op-amps](/electronics/components/op-amps/).
 
-An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew `\(uA\)` so met the above criteria for using a resistor divider as a power supply.
+An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew \(uA\) so met the above criteria for using a resistor divider as a power supply.
 
 ### Online Calculators
 
@@ -212,11 +212,11 @@ With the advent of SMD resistors, the difference in price between 1% and 5% resi
 
 ## Can I Put Resistors In Series Or Parallel For Better Tolerances?
 
-**The short answer. No.** 2x `\(1k\Omega\)` 1% resistors in series is the equivalent to 1x `\(2k\Omega\)` 1% resistor.
+**The short answer. No.** 2x \(1k\Omega\) 1% resistors in series is the equivalent to 1x \(2k\Omega\) 1% resistor.
 
 **The long answer.** You will never get a worse tolerance by putting two resistors in series or parallel. BUT, you may get a better distribution of values, depending on the distribution of the original resistors. If you assume (and this is a bad assumption) that the resistor values followed a Gaussian distribution, then the resulting distribution is a better Gaussian distribution (skinnier/smaller deviation). If the original resistors had a flat distribution, the resulting distribution is a triangle shape.
 
-However, the distribution of resistor values could be any number of shapes. For example, the manufacturer might make heaps of 5% `\(1k\Omega\)` resistors, which are then measured. If the resistance falls within 1% of `\(1k\Omega\)`, then they are made into 1% resistors. This would leave the 5% resistor bin with a double peak, with a valley right in the middle of the distribution.
+However, the distribution of resistor values could be any number of shapes. For example, the manufacturer might make heaps of 5% \(1k\Omega\) resistors, which are then measured. If the resistance falls within 1% of \(1k\Omega\), then they are made into 1% resistors. This would leave the 5% resistor bin with a double peak, with a valley right in the middle of the distribution.
 
 Also, correlation between resistors from the same manufacturing batch run may mean that you do not get any standard deviation improvements.
 
@@ -257,9 +257,9 @@ Note how there are two digits of precision for E6, E12, and E24 values, while 3 
 
 The values come from the exponential number series, using the equation:
 
-<p>\begin{align}
+$$\begin{align}
 v(i, n) = 10^{i/n}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -267,7 +267,7 @@ where:</br>
 \(n\) = the total number of elements in the series</br>
 </p>
 
-For any E-series range, this pattern is applied for every decade of resistance, e.g. between `\(1-10\Omega\)`, `\(10-100\Omega\)`, `\(100-1k\Omega\)` and so on. standard families of resistors will start at about `\(1\Omega\)` and continue up to `\(10-20M\Omega\)`. For values outside of this range you generally have to find specialist products (e.g. precision current measuring resistors) and pay a little more for them.
+For any E-series range, this pattern is applied for every decade of resistance, e.g. between \(1-10\Omega\), \(10-100\Omega\), \(100-1k\Omega\) and so on. standard families of resistors will start at about \(1\Omega\) and continue up to \(10-20M\Omega\). For values outside of this range you generally have to find specialist products (e.g. precision current measuring resistors) and pay a little more for them.
 
 {{% figure ref="fig-yageo-rc-series-thick-film-general-purpose-resistors-summary-table" src="_assets/yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png" width="900px" caption="Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page]." %}}
 
@@ -337,7 +337,7 @@ Jumper resistors are not specified with a percentage tolerance as most other res
 
 ## Volume Resistance (Bulk Resistance)
 
-Volume resistance (also known as just resistivity, electrical resistivity, or bulk resistance) has the SI units `\(\Omega m\)`. It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a `\(1 \times 1 \times 1m\)` cube of material is measured to be `\(1\Omega\)`, then the material has a volume resistivity of `\(1\Omega m\)`. 
+Volume resistance (also known as just resistivity, electrical resistivity, or bulk resistance) has the SI units \(\Omega m\). It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a \(1 \times 1 \times 1m\) cube of material is measured to be \(1\Omega\), then the material has a volume resistivity of \(1\Omega m\). 
 
 ## Parasitic Elements
 

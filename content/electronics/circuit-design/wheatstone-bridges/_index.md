@@ -18,34 +18,34 @@ The _Wheatstone bridge_ (a.k.a. _resistance bridge_) is a circuit consisting of 
 
 {{% figure src="basic-schematic-of-wheatstone-bridge.png" width="400px" caption="The basic schematic of a Wheatstone bridge (resistance bridge)." %}}
 
-`\(Eq.\ \ref{eq-wheatstone-general}\)` is the general equation for the Wheatstone bridge.
+\(Eq.\ \ref{eq-wheatstone-general}\) is the general equation for the Wheatstone bridge.
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq-wheatstone-general}
 V_{OUT} = V_{DC} \left( \frac{R2}{R1 + R2} - \frac{R4}{R3 + R4} \right)
-\end{align}</p>
+\end{align}$$
 
 The output voltage (and consequentially, output current) is 0 when both of the "legs" of the bridge are balanced. That is:
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} = 0 \quad \text{if} \quad \frac{R2}{R1} = \frac{R4}{R3}
-\end{align}</p>
+\end{align}$$
 
-The traditional use is to replace the bottom resistors on both legs of the Wheatstone bridge -- one leg with a variable resistor (rheostat or potentiometer) and the other with an unknown resistance which you want to measure. The variable resistor is adjusted until the output voltage (or current) is `\(0\)`. Assuming you know the resistance of the rheostat, you can calculate the resistance of `\(R_x\)`.
+The traditional use is to replace the bottom resistors on both legs of the Wheatstone bridge -- one leg with a variable resistor (rheostat or potentiometer) and the other with an unknown resistance which you want to measure. The variable resistor is adjusted until the output voltage (or current) is \(0\). Assuming you know the resistance of the rheostat, you can calculate the resistance of \(R_x\).
 
-{{% figure src="pot-and-unknown-resistance-wheatstone-bridge.png" width="400px" caption="Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat (`\(R2\)`), and the other bottom resistor with the unknown resistance `\(R_x\)`. Adjusting the rheostat until the output voltage (or current) is 0 \"balances\" the bridge, and the unknown resistance can be found knowing the other three." %}}
+{{% figure src="pot-and-unknown-resistance-wheatstone-bridge.png" width="400px" caption="Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat (\(R2\)), and the other bottom resistor with the unknown resistance \(R_x\). Adjusting the rheostat until the output voltage (or current) is 0 \"balances\" the bridge, and the unknown resistance can be found knowing the other three." %}}
 
-In the scenario shown above, the unknown resistance `\(R_x\)` can be found with:
+In the scenario shown above, the unknown resistance \(R_x\) can be found with:
 
-<p>\begin{align}
+$$\begin{align}
 R_x = \frac{R2\ R3}{R1}
-\end{align}</p>
+\end{align}$$
 
 ## Benefits Over A Simple Resistor Divider
 
 You might be wondering why use a complicated 4-resistor Wheatstone bridge when you could just use a simple 2-resistor [resistor divider](/electronics/components/resistors/#_resistor_dividers), and measure the output voltage. By knowing the output voltage, the supply voltage, and at least one of the resistances, you can then calculate the other resistance in a resistor divider. **The benefit of a Wheatstone bridge is that it is inherently a _differential_ measurement**, rather than a _single-ended_ one (which a resistor divider is). This means:
 
-* You don't need a precise auxiliary voltage reference to compare with `\(V_{OUT}\)` if you just plan on balancing the bridge (i.e. making `\(V_{OUT} = 0V\)`). Because it is _ratiometric_, in this case the supply voltage `\(V_{DC}\)` to the bridge is also unimportant.
+* You don't need a precise auxiliary voltage reference to compare with \(V_{OUT}\) if you just plan on balancing the bridge (i.e. making \(V_{OUT} = 0V\)). Because it is _ratiometric_, in this case the supply voltage \(V_{DC}\) to the bridge is also unimportant.
 * Even if you are measuring the output voltage (and hence need an auxiliary voltage reference):
 ** Environmental effects that effect both legs of the bridge cancel each other out (e.g. temperature-related drift in the resistances)
 ** The common-mode voltage that a single-ended resistor divider gives you has been removed, hence it is much easier to apply a large gain to a differential Wheatstone output to measure small voltages.

@@ -67,8 +67,8 @@ I_b \\
 I_c \end{bmatrix} \text{(unsimplified Clarke transform)}
 {{< /highlight >}}
 
-<p>$$
+$$
 I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\
 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\
 \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clarke transform)}
-$$</p>
+$$

@@ -17,68 +17,68 @@ The basic switched-capacitor circuit is shown below:
 
 {{% figure src="basic-switched-capacitor-circuit.png" width="400px" caption="A basic switched-capacitor circuit." %}}
 
-The switches are switched on/off in an alternating fashion, where `\(\Phi_1\)` controls `SW1` and `\(\Phi_2\)` controls `SW2`. This is shown in the below graph. A switching frequency of `\(100kHz\)` is assumed.
+The switches are switched on/off in an alternating fashion, where \(\Phi_1\) controls `SW1` and \(\Phi_2\) controls `SW2`. This is shown in the below graph. A switching frequency of \(100kHz\) is assumed.
 
 {{% figure src="phase-graph.png" width="600px" caption="Plot showing the on/off sequencing for the switches in the above schematic." %}}
 
 ## Equivalent Resistance
 
-**By changing the switching frequency, you can change the equivalent "resistance"** between `\(V_{in}\)` and `\(V_{out}\)`. The equivalent resistance is:
+**By changing the switching frequency, you can change the equivalent "resistance"** between \(V_{in}\) and \(V_{out}\). The equivalent resistance is:
 
-<p>\begin{align}
+$$\begin{align}
 R_{equiv} &= \frac{1}{C_1f} \\
-\end{align}</p>
+\end{align}$$
 
 This is the core principle behind [switched-capacitor filters](/electronics/components/switched-capacitor-filters/).
 
 ### Equivalent Resistance Derivation
 
-In phase 1 when switch `SW1` is closed and `SW2` is open, the capacitor charges up to `\(V_{in}\)`. [By definition](/electronics/components/capacitors/#_charge), the charge stored in the capacitor during this time is:
+In phase 1 when switch `SW1` is closed and `SW2` is open, the capacitor charges up to \(V_{in}\). [By definition](/electronics/components/capacitors/#_charge), the charge stored in the capacitor during this time is:
 
-<p>\begin{align}
+$$\begin{align}
 Q_1 = C_1V_{in}
-\end{align}</p>
+\end{align}$$
 
-Similarly, in phase 2 when switch `SW1` is open and `SW2` is closed, the capacitor charges up to `\(V_{out}\)`. The charge stored in the capacitor during this time is:
+Similarly, in phase 2 when switch `SW1` is open and `SW2` is closed, the capacitor charges up to \(V_{out}\). The charge stored in the capacitor during this time is:
 
-<p>\begin{align}
+$$\begin{align}
 Q_2 = C_1V_{out}
-\end{align}</p>
+\end{align}$$
 
 So the change in charge is:
 
-<p>\begin{align}
+$$\begin{align}
 \Delta Q &= Q_1 - Q_2 \nonumber \\
          &= C_1V_{in} - C_1V_{out} \nonumber \\
          &= C_1(V_{in} - V_{out}) \nonumber \\
          &= C_1\Delta V \\
-\end{align}</p>
+\end{align}$$
 
 Now, current is defined as change in charge over the change in time:
 
-<p>\begin{align}
+$$\begin{align}
 I = \frac{\Delta Q}{\Delta T}
-\end{align}</p>
+\end{align}$$
 
-Assume the switching period `\(\Delta T\)` is the total time of phase 1 and phase 2. The switching frequency is just the reciprocal of this, so:
+Assume the switching period \(\Delta T\) is the total time of phase 1 and phase 2. The switching frequency is just the reciprocal of this, so:
 
-<p>\begin{align}
+$$\begin{align}
 I = \Delta Q*f
-\end{align}</p>
+\end{align}$$
 
-Substitute in `\(\Delta Q\)`:
+Substitute in \(\Delta Q\):
 
-<p>\begin{align}
+$$\begin{align}
 I = C_1 \Delta V*f
-\end{align}</p>
+\end{align}$$
 
 Finally, using Ohm's law, the equivalent resistance of the switched-capacitor circuit is:
 
-<p>\begin{align}
+$$\begin{align}
 R_{equiv} &= \frac{\Delta V}{I} \nonumber \\
           &= \frac{\Delta V}{C_1 \Delta V f} \nonumber \\
           &= \frac{1}{C_1f} \\
-\end{align}</p>
+\end{align}$$
 
 ## Realistic Implementation Using MOSFETs
 
@@ -87,7 +87,7 @@ Above we have just drawn in mechanical switches to show that the circuit is swit
 1. The drain and source voltages are not tied to the gate voltage in anyway (in a BJT, the base is tied to the emitter + 0.7V). This is a very useful property for the MOSFET to have.
 1. The gate requires almost no current to drive, whilst a BJT requires a small but sometimes non-insignificant base current.
 
-However, a single discrete MOSFET is rarely ever used because the internal body diode will conduct in one direction when not desired, and the switching resistance of the MOSFET rapidly increases as the signal voltage nears the gate voltage, which is typically at `\(V_{DD}\)` for N-channel MOSFETs and `\(0V\)` for P-channel MOSFETs.
+However, a single discrete MOSFET is rarely ever used because the internal body diode will conduct in one direction when not desired, and the switching resistance of the MOSFET rapidly increases as the signal voltage nears the gate voltage, which is typically at \(V_{DD}\) for N-channel MOSFETs and \(0V\) for P-channel MOSFETs.
 
 **To overcome both of these challenges, typically complementary non-discrete N-channel/P-channel MOSFET pairs are used** to make an [analogue switch](/electronics/components/analogue-switches/)[^bib-ucla-ch12-intro-switched-cap-circuits]. The complementary pair allows rail-to-rail signals without significant resistance increases, and using non-discrete MOSFETs allows the semiconductor designed to connect the substrate to the rails rather than to the source, preventing the "body diode" conduction effect in one direction.
 

@@ -23,21 +23,21 @@ A _floating buck-boost converter_ is a rarer form of SMPS topology that can gene
 
 * Floating load (not referenced to ground).
 
-{{% figure src="floating-buck-boost-converter-basic-schematic.svg" width="500" caption="Schematic of a floating buck-boost converter. Note that `\(V_{IN}\)` is referenced to ground, but `\(V_{OUT}\)` is not (measured across `\(R_{LOAD}\)` as shown)." %}}
+{{% figure src="floating-buck-boost-converter-basic-schematic.svg" width="500" caption="Schematic of a floating buck-boost converter. Note that \(V_{IN}\) is referenced to ground, but \(V_{OUT}\) is not (measured across \(R_{LOAD}\) as shown)." %}}
 
-[^floating-buck-boost-converter-current-when-switch-closed] shows the current paths through the floating buck-boost converter when the switch is closed[^bib-onsemi-floating-buck-boost]. `\(V_{IN}\)` provides a linearly increasing charging current to `\(L1\)`, whilst output capacitor `\(C_{OUT}\)` provides current to the load. `\(D1\)` is reverse-biased and so open-circuit.
+[^floating-buck-boost-converter-current-when-switch-closed] shows the current paths through the floating buck-boost converter when the switch is closed[^bib-onsemi-floating-buck-boost]. \(V_{IN}\) provides a linearly increasing charging current to \(L1\), whilst output capacitor \(C_{OUT}\) provides current to the load. \(D1\) is reverse-biased and so open-circuit.
 
 [[floating-buck-boost-converter-current-when-switch-closed]]
-{{% figure src="floating-buck-boost-converter-current-when-switch-closed.svg" width="500" caption="Current paths through the floating buck-boost converter when the switch is **closed** (during `\(t_{on}\)`)." %}}
+{{% figure src="floating-buck-boost-converter-current-when-switch-closed.svg" width="500" caption="Current paths through the floating buck-boost converter when the switch is **closed** (during \(t_{on}\))." %}}
 
-[^floating-buck-boost-converter-current-when-switch-open] shows the current paths when the switch is open. `\(L1\)` had current going through it the moment `\(SW1\)` was opened, and isn't too happy about having it's current interrupted. So it generates a voltage which forward biases `\(D1\)` and provides current to both the load and to re-charge the output capacitor `\(C_{OUT}\)`.
+[^floating-buck-boost-converter-current-when-switch-open] shows the current paths when the switch is open. \(L1\) had current going through it the moment \(SW1\) was opened, and isn't too happy about having it's current interrupted. So it generates a voltage which forward biases \(D1\) and provides current to both the load and to re-charge the output capacitor \(C_{OUT}\).
 
 [[floating-buck-boost-converter-current-when-switch-open]]
-{{% figure src="floating-buck-boost-converter-current-when-switch-open.svg" width="500" caption="Current paths through the floating buck-boost converter when the switch is **open** (during `\(t_{off}\)`)." %}}
+{{% figure src="floating-buck-boost-converter-current-when-switch-open.svg" width="500" caption="Current paths through the floating buck-boost converter when the switch is **open** (during \(t_{off}\))." %}}
 
 ### Output Voltage To Duty Cycle Equation
 
-Like the other topologies, we can find the equation linking the input voltage, output voltage and duty cycle by remembering the simple rule that the **average voltage across the inductor must be 0 over a switch cycle**. The voltage across the inductor when the switch is on (during `\(t_{on}\)`) is just `\(V_{IN}\)` (taking the left side of the inductor as positive). The voltage across the inductor when the switch is off (during `\(t_{off}\)`) is `\(-V_{OUT}\)` (ignoring the forward voltage drop across the diode, and remembering we had defined the positive side of the inductor to be the on the left, hence `\(V_{OUT}\)` is negative). So: 
+Like the other topologies, we can find the equation linking the input voltage, output voltage and duty cycle by remembering the simple rule that the **average voltage across the inductor must be 0 over a switch cycle**. The voltage across the inductor when the switch is on (during \(t_{on}\)) is just \(V_{IN}\) (taking the left side of the inductor as positive). The voltage across the inductor when the switch is off (during \(t_{off}\)) is \(-V_{OUT}\) (ignoring the forward voltage drop across the diode, and remembering we had defined the positive side of the inductor to be the on the left, hence \(V_{OUT}\) is negative). So: 
 
 [stem]
 ++++
@@ -60,7 +60,7 @@ D = \frac{t_{on}}{T} \\
 \end{align}
 ++++
 
-We can then write `\(\frac{V_{OUT}}{V_{IN}}\)` in terms of `\(D\)`:
+We can then write \(\frac{V_{OUT}}{V_{IN}}\) in terms of \(D\):
 
 [stem]
 ++++
@@ -71,7 +71,7 @@ We can then write `\(\frac{V_{OUT}}{V_{IN}}\)` in terms of `\(D\)`:
 \end{align}
 ++++
 
-Eq. `\(\ref{eq:floating-buck-boost-vout-vin-d}\)` is the classic equation for a buck-boost converter.
+Eq. \(\ref{eq:floating-buck-boost-vout-vin-d}\) is the classic equation for a buck-boost converter.
 
 ### ICs That Support The Floating Buck-Boost Topology
 

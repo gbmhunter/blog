@@ -29,15 +29,15 @@ AC capable opto-couplers usually have two LEDs in anti-parallel (e.g. the HCPL-3
 
 ### The Current-Transfer Ratio
 
-The _current-transfer ratio_ (CTR) of a photo-transistor based optical isolator tells you how well it amplifies an input signal to an output signal. It is the ratio of the collector current `\(I_C\)` at the output side relative to the forward current `\(I_f\)` going through the LED on the input side, and then expressed as a percentage:
+The _current-transfer ratio_ (CTR) of a photo-transistor based optical isolator tells you how well it amplifies an input signal to an output signal. It is the ratio of the collector current \(I_C\) at the output side relative to the forward current \(I_f\) going through the LED on the input side, and then expressed as a percentage:
 
-<p>\begin{align}
+$$\begin{align}
 CTR = \frac{I_C}{I_f} \times 100%
-\end{align}</p>
+\end{align}$$
 
 For optical isolators with a single phototransistor driver, the current-transfer ratio is normally in the 20-400% range. Sometimes within a family there are multitude of parts with different transfer ratios, specified by slightly different part numbers. The EL3H7-G series from Everlight is one such example.
 
-The current transfer ratio is specified at a particular forward current `\(I_f\)` through the diode and particular voltage across the output collector-emitter `\(V_{CE}\)`.
+The current transfer ratio is specified at a particular forward current \(I_f\) through the diode and particular voltage across the output collector-emitter \(V_{CE}\).
 
 ### Supplier Links
 

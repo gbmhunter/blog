@@ -66,9 +66,9 @@ The bandwidth of a scope defines the range of frequencies it can measure. The up
 * Passive: Non-powered
 * Active: Powered with active buffering and/or amplification of the signal within the probe itself (before it gets to the oscilloscope).
 
-10:1 probes are the industry standard. Almost all oscilloscopes have an input impedance of `\(1M\Omega\)` when looking into the connector on the front panel of the scope.
+10:1 probes are the industry standard. Almost all oscilloscopes have an input impedance of \(1M\Omega\) when looking into the connector on the front panel of the scope.
 
-Capacitance increases when you go from 10:1 to 1:1. e.g. a 10:1 passive probe may have 10pF of capacitance while an equivalent 1:1 probe may have approx. 100pF. You also lose some input resistance, e.g. it drops from `\(10M\Omega\)` to `\(1M\Omega\)`.
+Capacitance increases when you go from 10:1 to 1:1. e.g. a 10:1 passive probe may have 10pF of capacitance while an equivalent 1:1 probe may have approx. 100pF. You also lose some input resistance, e.g. it drops from \(10M\Omega\) to \(1M\Omega\).
 
 1:1 probes can be good for measuring small levels of noise as they effectively increase the minimum resolution of the oscilloscope by 10 (compared to a 10:1 probe).
 
@@ -76,7 +76,7 @@ Capacitance increases when you go from 10:1 to 1:1. e.g. a 10:1 passive probe ma
 
 Some scope probes allow you to adjust the probes compensation.
 
-Without the variable capacitor, the resistance of the probe combined with the resistance and capacitance of the scope will create a low-pass filter that will greatly distort high frequency measurements. The variable capacitor is added in parallel with the `\(9M\Omega\)` probe resistance so that there is both a resistive and capacitive potential divider. The capacitance is then adjusted so that both the resistor divider and capacitor divider have the same division ratio. This ensures the response of the probe is flat across the frequencies of interest.
+Without the variable capacitor, the resistance of the probe combined with the resistance and capacitance of the scope will create a low-pass filter that will greatly distort high frequency measurements. The variable capacitor is added in parallel with the \(9M\Omega\) probe resistance so that there is both a resistive and capacitive potential divider. The capacitance is then adjusted so that both the resistor divider and capacitor divider have the same division ratio. This ensures the response of the probe is flat across the frequencies of interest.
 
 ### Maths Functions
 
@@ -104,11 +104,11 @@ Some multimeters are designed for electricians (people who deal primarily with 2
 
 ### Ghost Voltages (Low-Impedance Voltage Measurements)
 
-Typically, voltage measurements are done at the highest-impedance achievable (`\(>1M\Omega\)`) by the multimeter so that the multimeter does not effect the circuit it is measuring. However, this can sometimes lead to "ghost voltages". This is when a real but high-impedance voltage is present on a circuit, normally due to the circuit picking up noise from near-by circuits via phenomenon such as capacitive coupling. This voltage, although real, is misleading as it does not represent the voltage a load (or person getting a shock) would actually see. For this reason these voltages are called _ghost voltages_.
+Typically, voltage measurements are done at the highest-impedance achievable (\(>1M\Omega\)) by the multimeter so that the multimeter does not effect the circuit it is measuring. However, this can sometimes lead to "ghost voltages". This is when a real but high-impedance voltage is present on a circuit, normally due to the circuit picking up noise from near-by circuits via phenomenon such as capacitive coupling. This voltage, although real, is misleading as it does not represent the voltage a load (or person getting a shock) would actually see. For this reason these voltages are called _ghost voltages_.
 
 Some newer digital multimeters come with a low impedance voltage measurement mode to ignore these ghost voltages. This is especially useful for when working with mains power (115/240VAC) and trying to determine if a voltage on a wire is a significant danger or not. Examples of multimeters which have a low-impedance voltage measurement setting include the [Fluke 117 Digital Multimeter](https://www.fluke.com/en/product/electrical-testing/digital-multimeters/fluke-117).
 
-Older, analogue multimeters are not as susceptible to the ghost voltage problem as they typically have a lower impedance when measuring voltages, normally around `\(10k\Omega\)`.
+Older, analogue multimeters are not as susceptible to the ghost voltage problem as they typically have a lower impedance when measuring voltages, normally around \(10k\Omega\).
 
 Low-impedance mode should not be used when working with sensitive, small-signal circuitry. The low-impedance of the multimeter might draw enough current to disrupt the circuit and will give you incorrect readings.
 
@@ -213,7 +213,7 @@ MIL-STD-461E mandates the use of LISNs to control the impedance of power sources
 
 ### CISPR 25
 
-CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz[^bib-cispr-25]. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a `\(5uH\)` LISN when performing EMI measurements, is one of the main reasons you will see `\(5uH\)` LISN devices available for purchase.
+CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz[^bib-cispr-25]. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a \(5uH\) LISN when performing EMI measurements, is one of the main reasons you will see \(5uH\) LISN devices available for purchase.
 
 The TexBox TBOH01 (5uH LISN) is a LISN designed to be compliant with CISPR 25, and retails for around US$250.
 
@@ -331,7 +331,7 @@ RS Pro is RS Components self-owned brand.
 
 ### Output Voltage Not What You Expect?
 
-Most signal generators have a "Load Impedance" setting. Whilst the signal generator almost always has an output of `\(50\Omega\)`, the signal generator will take this load impedance setting into account and generate a voltage that will result in the set peak-to-peak/amplitude at the output.
+Most signal generators have a "Load Impedance" setting. Whilst the signal generator almost always has an output of \(50\Omega\), the signal generator will take this load impedance setting into account and generate a voltage that will result in the set peak-to-peak/amplitude at the output.
 
 However, if this load impedance setting is set to say, 50R, but connected to a high-impedance load (for example, connected straight up to the oscilloscope), you will measure twice the expected voltage at the output!
 
@@ -511,9 +511,9 @@ Some types of solder contain a rosin core to aid the soldering process, and save
 
 For the chemically-minded people, rosin flux usually has a formula of:
 
-<p>\begin{align}
+$$\begin{align}
 C_{19}H_{19}COOH
-\end{align}</p>
+\end{align}$$
 
 Obviously, being a naturally produced substance, the make-up of a rosin flux will change.
 

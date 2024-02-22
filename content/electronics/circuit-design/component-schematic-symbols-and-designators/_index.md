@@ -206,7 +206,7 @@ Recommended designator(s):
 
 ### Jumper (JP)
 
-Jumper or link (L is for inductor, not link). This maybe a simple piece of wire, a physical jumper component, or perhaps a `\(0\Omega\)` resistor).
+Jumper or link (L is for inductor, not link). This maybe a simple piece of wire, a physical jumper component, or perhaps a \(0\Omega\) resistor).
 
 Recommended designator(s):
 

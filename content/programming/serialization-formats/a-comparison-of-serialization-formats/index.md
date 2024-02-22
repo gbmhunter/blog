@@ -410,7 +410,7 @@ yaml     | 0.48                    | 0.55                      | 6.84           
 
 {{% figure src="serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for 10k objects in popular serialization formats." %}}
 
-It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, `\(log(n)\)`, ...)?. This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
+It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, \(log(n)\), ...)?. This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
 
 Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization (s) | Python Serialization (s)
 ---------|-------------------------|---------------------------|------------------------|-----------------------

@@ -57,7 +57,7 @@ I have written a C library, [LocalExtrema](https://github.com/gbmhunter/LocalExt
 
 Correlation is the measure of "likeness" between sets of data. The correlation coefficient tells you how well the two sets of data match. The Pearson's correlation coefficient is given by:
 
-<p>$$r_{xy} = \frac{ \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})} {\sqrt{ \sum_{i=1}^{n} (X_i - \bar{X})^2} \sqrt{ \sum_{i=1}^{n} (Y_i - \bar{Y})^2 }}$$</p>
+$$r_{xy} = \frac{ \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})} {\sqrt{ \sum_{i=1}^{n} (X_i - \bar{X})^2} \sqrt{ \sum_{i=1}^{n} (Y_i - \bar{Y})^2 }}$$
 
 <p class="centered">
     wher`e:<br>
@@ -85,7 +85,7 @@ Curve fitting is an essential part of signal processing.
 
 A spline is a **sufficiently smooth, piece-wise polynomial function**. It is commonly used to fit a curve to a set of data. You also see them in vector-based drawing packages and 3D CAD programs.
 
-Splines are most commonly a piece-wise collection of polynomials of degree `\(n\)`, in where the first `\(n - 1\)` derivatives are equal at the points where the polynomials meet (remember it is piece-wise).
+Splines are most commonly a piece-wise collection of polynomials of degree \(n\), in where the first \(n - 1\) derivatives are equal at the points where the polynomials meet (remember it is piece-wise).
 
 The most common type of spline is a cubic spline (a spline of order 3). The two most popular cubic splines are the cubic B-spline and cubic Bezier spline.
 

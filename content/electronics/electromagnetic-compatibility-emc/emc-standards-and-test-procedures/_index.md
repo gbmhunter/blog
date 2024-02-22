@@ -75,12 +75,12 @@ For Class A unintentional radiators the voltage that is conducted back onto the 
 {{% tip %}}
 Reminder: To convert from dBuV to uV, use the equation:
 
-<p>\begin{align}
+$$\begin{align}
 \large
 uV = 10^{\frac{dBuV}{20}} \cdot 1uV
-\end{align}</p>
+\end{align}$$
 
-For example, `\(79dBuV = 8913uV = 8.9mV\)`.
+For example, \(79dBuV = 8913uV = 8.9mV\).
 {{% /tip %}}
 
 For everything but Class A devices (i.e. Class B, it's the only other class), the following conductive limits apply:

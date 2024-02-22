@@ -25,7 +25,7 @@ Simple voltage supervisors are very similar to [comparators](/electronics/compon
 1. Voltage supervisors usually have **built-in delays that keeps the MCU in reset** for a minimum amount of time even if the voltage only drops below what is considered valid for a much shorter period of time.
 1. Voltage supervisors usually have **built-in voltage references**. Whilst a traditional comparator does not, many comparator ICs also come with internal voltage references.
 
-Most voltage supervisors have a `\(\overline{RESET}\)` output which is active low (i.e. drive low to reset, drive high to not reset), to align with the industry-standard `\(\overline{RESET}\)` input present on most MCUs.
+Most voltage supervisors have a \(\overline{RESET}\) output which is active low (i.e. drive low to reset, drive high to not reset), to align with the industry-standard \(\overline{RESET}\) input present on most MCUs.
 
 Voltage supervisor ICs can come in families which include preset threshold voltages from about 1.2V to up to 5.0V. They also come in versions which have adjustable thresholds, at the expense of one more pin.
 

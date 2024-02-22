@@ -119,11 +119,11 @@ The current required while actually performing a transmission is still quite hig
 The USB specification puts restrictions around the inrush currents allowed when two USB devices are connected together. Inrush currents need to be considered for two reasons:
 
 
-1. Too large a inrush current can pull down `\(V_{bus}\)` so much that it causes other USB devices to fail.
+1. Too large a inrush current can pull down \(V_{bus}\) so much that it causes other USB devices to fail.
 2. The inrush current is used to detect the attachment of devices (the ADP). This is defined by the _USB Engineering Change Notice_ of USB Spec revision 2.0.
 
 
-The USB specification states that a capacitance of at least `\(1uF\)` but no higher than `\(10uF\)` must be present on `\(V_{bus}\)`.
+The USB specification states that a capacitance of at least \(1uF\) but no higher than \(10uF\) must be present on \(V_{bus}\).
 
 A basic way (note basic does not always equal easiest) to limit the inrush current of a USB device is to add a series switching element (e.g. a MOSFET), and slow down it's turn on time with something like an RC circuit.
 
@@ -137,7 +137,7 @@ The nifty [USB Electrical Analysis Tool (USBET) provided free by www.usb.org](ht
 
 ### Worked Example
 
-Here is an example of what happens when you don't limit inrush currents to PCBs powered from USB correctly. Current measurements where taken with a `\(1\Omega\)` resistor connected between the PCB ground and the negative terminal of the +5.0V supply simulating VBUS (probe grounds where connected on the PCB side , and the current waveform inverted).
+Here is an example of what happens when you don't limit inrush currents to PCBs powered from USB correctly. Current measurements where taken with a \(1\Omega\) resistor connected between the PCB ground and the negative terminal of the +5.0V supply simulating VBUS (probe grounds where connected on the PCB side , and the current waveform inverted).
 
 There was about 50uF of total capacitance on the +3.3V rail. The +3.3V rail was powered by a linear regulator from VBUS, and took approx. 900us to start turning on (as shown below).
 
@@ -151,7 +151,7 @@ And here is what happens after you add a current-limiting IC between VBUS and th
 
 ## Ferrite Beads
 
-The USB spec recommends ferrite beads on `\(V_{bus}\)`. It is common to combine them will bulk decoupling capacitors to make a {{% link text="Pi filter" src="/electronics/circuit-design/analogue-filters#low-pass-pi-and-t-filters" %}}.
+The USB spec recommends ferrite beads on \(V_{bus}\). It is common to combine them will bulk decoupling capacitors to make a {{% link text="Pi filter" src="/electronics/circuit-design/analogue-filters#low-pass-pi-and-t-filters" %}}.
 
 The USB specification prohibits ferrite beads on the D+ and D- signals. 
 
@@ -163,7 +163,7 @@ USB protocol analysers are products which connect to a USB bus and capture traff
 
 The USB standard states that a USB device "must enter suspend mode when there is no activity on the bus for greater than 3.0ms". The maximum current a device may draw in suspend mode is proportional to the number of unit loads it has requested while active. **For every unit load the device requested while active, it may draw 500us of current in suspend mode**.
 
-The maximum suspend current any device except Interchip USB devices may draw is 2.5mA (this was increased from 500uA in the _Suspend Current Limit Changes ECN_). When computing the current, the current from `\(V_{bus}\)` through the bus pull-up and pull-down resistors must be included.
+The maximum suspend current any device except Interchip USB devices may draw is 2.5mA (this was increased from 500uA in the _Suspend Current Limit Changes ECN_). When computing the current, the current from \(V_{bus}\) through the bus pull-up and pull-down resistors must be included.
 
 Devices must be able to enter suspend mode from any other state.
 

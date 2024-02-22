@@ -28,10 +28,10 @@ Variants:
 
 Thermal Resistance
 
-* `\(T_{JC} = 0.83-1.4^{\circ}{\rm C}/W\)` (depending on exact component)
-* `\(T_{CH} = 0.40^{\circ}{\rm C}/W\)` (using thermal grease)
-* `\(T_{CH} = 1.00^{\circ}{\rm C}/W\)` (using thermal grease with mica insulator)
-* `\(T_{JA} = 30.0^{\circ}{\rm C}/W\)` (typical socket mount)
+* \(T_{JC} = 0.83-1.4^{\circ}{\rm C}/W\) (depending on exact component)
+* \(T_{CH} = 0.40^{\circ}{\rm C}/W\) (using thermal grease)
+* \(T_{CH} = 1.00^{\circ}{\rm C}/W\) (using thermal grease with mica insulator)
+* \(T_{JA} = 30.0^{\circ}{\rm C}/W\) (typical socket mount)
 
 Common Uses
 
@@ -42,9 +42,9 @@ Common Uses
 
 This package comes in many variants with a different number of leads. The 2-lead device, called the `TO-3-2L` is the most common. Variants exist with up to 15 leads[^bib-ti-metal-can-packages]!
 
-The TO-3 package has a very low junction-to-case thermal resistance (`\(0.8-1.5^{\,\circ}{\rm C}/W\)`). The TO-3 package is flange mount, which facilitates easy heatsinking. They are commonly screwed onto the metal enclosure of the device (you can sometimes see them on the outside of the enclosure!) for cheap and effective heatsinking.
+The TO-3 package has a very low junction-to-case thermal resistance (\(0.8-1.5^{\,\circ}{\rm C}/W\)). The TO-3 package is flange mount, which facilitates easy heatsinking. They are commonly screwed onto the metal enclosure of the device (you can sometimes see them on the outside of the enclosure!) for cheap and effective heatsinking.
 
-Large heatsinks designed for the TO-3 package can have thermal resistances as low as `\(0.4^{\,\circ}{\rm C/W}\)`. The thermal resistance between the device case and the heatsink is normally between `\(0.5-1.7^{\,\circ}{\rm C/W}\)`.
+Large heatsinks designed for the TO-3 package can have thermal resistances as low as \(0.4^{\,\circ}{\rm C/W}\). The thermal resistance between the device case and the heatsink is normally between \(0.5-1.7^{\,\circ}{\rm C/W}\).
 
 ## TO-3-2
 

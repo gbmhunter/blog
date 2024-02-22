@@ -79,7 +79,7 @@ A 4-20mA current loop signal can be easily interfaced to a microcontroller which
 
 ## A Simple Interface
 
-The schematic below shows probably the simplest 4-20mA interface you could build to an ADC on a microcontroller. It uses just a single, precision `\(100\Omega\)` resistor to convert the 4-20mA signal into a 400-2000mV voltage.
+The schematic below shows probably the simplest 4-20mA interface you could build to an ADC on a microcontroller. It uses just a single, precision \(100\Omega\) resistor to convert the 4-20mA signal into a 400-2000mV voltage.
 
 {{% figure src="simple-4-20ma-current-loop-interface-to-micro-adc.png" width="800px" caption="Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling." %}}
 

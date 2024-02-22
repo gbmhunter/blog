@@ -26,7 +26,7 @@ The anodes A1 and A2 may be called Main Terminal 1 (MT1) and Main Terminal 2 (MT
 
 **Repetitive Peak Off-State Voltage (50-60Hz)**
 
-The maximum repetitive peak voltage (`\(V_{DSM}\)`) allowed across the device. Remember that RMS voltage readings need to be multiplied by `\(\sqrt{2}\)` to find the peak voltage (assuming a sinewave).
+The maximum repetitive peak voltage (\(V_{DSM}\)) allowed across the device. Remember that RMS voltage readings need to be multiplied by \(\sqrt{2}\) to find the peak voltage (assuming a sinewave).
 
 **Non-repetitive Off-State Voltage**
 
@@ -34,7 +34,7 @@ The maximum off-state peak voltage across A1 and A2 that is non-repetitive. Norm
 
 ## Gate Currents
 
-A "normal" TRIAC might have a gate trigger current (`\(I_{gt}\)`) of 20-50mA. A "sensitive" TRIAC might have an `\(I_{gt}\)` of 2-10mA.
+A "normal" TRIAC might have a gate trigger current (\(I_{gt}\)) of 20-50mA. A "sensitive" TRIAC might have an \(I_{gt}\) of 2-10mA.
 
 ## Part Numbering
 

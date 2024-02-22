@@ -33,7 +33,7 @@ type: "post"
 * Added schematics on a [BJT-based astable multivibrator](/electronics/components/timers-and-multivibrators#basic-bjt-astable-multivibrator):
     {{% figure src="bjt-astable-multivibrator-screenshot.png" width="500px" %}}
 
-* Added info on noise power spectral density and noise amplitude spectral density. Added more info about thermal (Johnson-Nyquist) noise including equations and a worked example involving a `\(10k\Omega\)` resistor.
+* Added info on noise power spectral density and noise amplitude spectral density. Added more info about thermal (Johnson-Nyquist) noise including equations and a worked example involving a \(10k\Omega\) resistor.
     {{% figure src="screenshot-thermal-johnson-nyquist-noise-equations.png" width="500px" %}}
 
 * Added graphs of a simple moving average (SMA) filter's frequency response.

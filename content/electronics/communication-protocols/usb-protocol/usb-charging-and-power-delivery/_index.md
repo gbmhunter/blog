@@ -106,7 +106,7 @@ There are some standard definitions in the battery charger spec:
 It's also important to distinguish between the following terms:
 
 * **Attach**: The physical process of plugging in a USB cable between two ports.
-* **Connect**: When the PD connects a `\(1.5k\Omega\)` pull-up resistor to either the D+ or D- line.
+* **Connect**: When the PD connects a \(1.5k\Omega\) pull-up resistor to either the D+ or D- line.
 * **Enumerate**: The initial data exchange between the two ports across the data lines.
 
 The PD needs to determine how much current it can draw from the upstream USB port.
@@ -195,12 +195,12 @@ Before we dive into PD, let's cover what happens without PD. The most basic powe
 
 {{% figure ref="usb2.0-without-pd" src="usb2.0-without-pd.webp" width="800px" caption="Basic connection scheme for USB 2.0 without PD over a Type-C connector." %}}
 
-The value of `\(R_p\)` is how the source/DFP advertises it's current capability. The sink/UFP always has a fixed value for `\(R_d\)` of `\(5.1k\Omega\)`. When connected together, they form a voltage-divider. The sink can measure the voltage at the center point and determine the current capability of the source. {{% ref "rp-requirements" %}} shows the requirements for `\(R_p\)`.
+The value of \(R_p\) is how the source/DFP advertises it's current capability. The sink/UFP always has a fixed value for \(R_d\) of \(5.1k\Omega\). When connected together, they form a voltage-divider. The sink can measure the voltage at the center point and determine the current capability of the source. {{% ref "rp-requirements" %}} shows the requirements for \(R_p\).
 
 <table ref="rp-requirements">
   <caption>
   
-The requirements for `\(R_p\)` on the source side of the cable.[^st-overview-usb-type-c-pd]</caption>
+The requirements for \(R_p\) on the source side of the cable.[^st-overview-usb-type-c-pd]</caption>
   <thead>
     <tr>
       <th>Source Current Capability</th>
@@ -231,13 +231,13 @@ The requirements for `\(R_p\)` on the source side of the cable.[^st-overview-usb
   </tbody>
 </table>
 
-The Type-C cable needs to provide a pull-down resistor `\(R_a\)` on it's `VCONN` pin to signal to the source that it needs power. `\(R_a\)` must be between `\(0.8{-}1.2k\Omega\)`[^infineon-termination-resistors-for-type-c]. With this resistance, the source can easily tell the difference between which CC pin is connected to the sink and which is the `VCONN`. 
+The Type-C cable needs to provide a pull-down resistor \(R_a\) on it's `VCONN` pin to signal to the source that it needs power. \(R_a\) must be between \(0.8{-}1.2k\Omega\)[^infineon-termination-resistors-for-type-c]. With this resistance, the source can easily tell the difference between which CC pin is connected to the sink and which is the `VCONN`. 
 
 ## Emarkers
 
 _Emarkers_ are chips embedded in fancier USB Type-C cables which can inform the source or sink about their capabilities. They are typically embedded in one or both of the ends of the cable. They are required for cables that are designed to go over the standard 3A and provide up to 5A of current.
 
-The Emarker requires power, at it uses one of the CC lines to do so. One of the CC lines is used for communication (which one depends on which way around the Type-C connector is plugged in), and the other is called `\(VCONN\)` and is used to power the Emarker.
+The Emarker requires power, at it uses one of the CC lines to do so. One of the CC lines is used for communication (which one depends on which way around the Type-C connector is plugged in), and the other is called \(VCONN\) and is used to power the Emarker.
 
 It's a manufacturing choice about whether a cable is provided with just one Emarker at one of the cable or one at both ends. In the case of just one at one end, a separate `VCONN` wire must be run the entire length of the cable to bring power to the E-marker from the other end of the cable.
 
@@ -258,13 +258,13 @@ Quick charge is designed to work with a number of different connectors, includin
 
 A typical use case when designing an electronic device is that you want it to be powered from a USB Type-C connector, acting as an UFP and power sink. You may not want the cost or complexity of adding a USB PD IC to your circuit design. What options do you have?
 
-The simplest thing to do is to just connect `\(5.1k\Omega\)` resistors from each CC line to GND. This will allow you to draw 500mA from VBUS without any extra work. In the case where a USB Type A to Type C cable is plugged in, and the DFP is a simple USB 1.0/2.0 device, VBUS will be powered automatically and you should be able to draw 500mA without any issues. If a Type C to Type C cable is plugged in, the CC resistors will indicate to the connected DFP to power the VBUS. You can again take 500mA without any issues.
+The simplest thing to do is to just connect \(5.1k\Omega\) resistors from each CC line to GND. This will allow you to draw 500mA from VBUS without any extra work. In the case where a USB Type A to Type C cable is plugged in, and the DFP is a simple USB 1.0/2.0 device, VBUS will be powered automatically and you should be able to draw 500mA without any issues. If a Type C to Type C cable is plugged in, the CC resistors will indicate to the connected DFP to power the VBUS. You can again take 500mA without any issues.
 
 Even though USB 3.0 allows more than 500mA, with just two resistors you can't tell what is connected at the other end of the cable, and so have to design for the limiting case of the DFP being a USB1.0/2.0 device capable of only 500mA.
 
 ### USB Powered Battery Charger with the MAX14747
 
-The Analog Devices MAX14747 is a IC which can detect a number of different USB charger types and charge a battery from the USB power source. It supports USB Battery Charger Detection Rev 1.2 but not USB PD. `\(V_{BAT}\)` can range from 0-5.5V so single Li-Po cells are supported. It can be controlled from a MCU via I2C lines.
+The Analog Devices MAX14747 is a IC which can detect a number of different USB charger types and charge a battery from the USB power source. It supports USB Battery Charger Detection Rev 1.2 but not USB PD. \(V_{BAT}\) can range from 0-5.5V so single Li-Po cells are supported. It can be controlled from a MCU via I2C lines.
 
 {{% figure ref="fig-max14747-typical-application-circuit" src="max14747-typical-application-circuit.png" width="800px" caption="Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic]." %}}
 

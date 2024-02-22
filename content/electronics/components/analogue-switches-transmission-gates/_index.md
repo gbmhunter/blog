@@ -23,10 +23,10 @@ CMOS ([MOSFETs](/electronics/components/transistors/mosfets/)) is the most popul
 
 The basic idea is to connect 1 N-channel and 1 P-channel MOSFET together in parallel, so their sources and drains are connected together (although because the substrates are not connected to the source, there is symmetry in the construction of the MOSFET and no actual difference between the source and drain, more on this below).
 
-{{% figure ref="fig-analog-switch-circuit-two-mosfets" src="_assets/analog-switch-circuit-two-mosfets.svg" width="600px" caption="Circuit diagram of a basic CMOS analogue switch, using one P-channel MOSFET (`\(Q1\)`) and one N-channel MOSFET (`\(Q2\)`)." %}}
+{{% figure ref="fig-analog-switch-circuit-two-mosfets" src="_assets/analog-switch-circuit-two-mosfets.svg" width="600px" caption="Circuit diagram of a basic CMOS analogue switch, using one P-channel MOSFET (\(Q1\)) and one N-channel MOSFET (\(Q2\))." %}}
 
 {{% aside type="warning" %}}
-The substrates of the two MOSFETS in the diagram above are not connected to the source pin, as they typically are for all discrete MOSFETs. Instead they are connected to `\(V_{SS}\)` (e.g. `\(GND\)`) and `\(V_{DD}\)` respectively such that 1 of the two internal body diodes is always reverse biased and OFF. They have to be like this for this circuit to work correctly. If the substrate WAS connected to the source (like a regular discrete MOSFET), then one of the inherent body diodes is shorted out, leaving only 1 remaining per MOSFET. These remaining body diodes would forward conduct in 1 direction and would mean it would be impossible to turn the analogue switch off. For this reason, you cannot make an analogue switch as shown from typical discrete MOSFETs. See the [MOSFETs page](/electronics/components/transistors/mosfets/#_the_substrate_body_connection) for more info.
+The substrates of the two MOSFETS in the diagram above are not connected to the source pin, as they typically are for all discrete MOSFETs. Instead they are connected to \(V_{SS}\) (e.g. \(GND\)) and \(V_{DD}\) respectively such that 1 of the two internal body diodes is always reverse biased and OFF. They have to be like this for this circuit to work correctly. If the substrate WAS connected to the source (like a regular discrete MOSFET), then one of the inherent body diodes is shorted out, leaving only 1 remaining per MOSFET. These remaining body diodes would forward conduct in 1 direction and would mean it would be impossible to turn the analogue switch off. For this reason, you cannot make an analogue switch as shown from typical discrete MOSFETs. See the [MOSFETs page](/electronics/components/transistors/mosfets/#_the_substrate_body_connection) for more info.
 {{% /aside %}}
 
 When the analogue switch is turned on, the resistance of each MOSFET depends on the analogue switch voltage. At low voltages, the N-channel MOSFETs resistance is very low and conducts most of the current. As the voltage rises, the P-channel MOSFETs resistance decreases whilst the N-channel increases, at the P-channel conducts most of the current. The graph below shows the resistance of each individual MOSFET, as well as the combined resistance seen by an external circuit. The combined resistance is the parallel resistance of both the N-channel and P-channel MOSFET.
@@ -43,9 +43,9 @@ When showing a transmission gate on a schematic, it is almost **never drawn show
 
 {{% figure ref="fig-transmission-gate-symbols" src="_assets/transmission-gate-symbols.png" width="900px" caption="Various schematic symbols used for transmission gates (the same thing as an analogue switch but used for digital signals)." %}}
 
-`\(CLK\)` is the gate of the N-channel MOSFET, `\(\overline{CLK}\)` the gate of the P-channel. `\(A\)` and `\(B\)` are the two sides of the transmission gate.
+\(CLK\) is the gate of the N-channel MOSFET, \(\overline{CLK}\) the gate of the P-channel. \(A\) and \(B\) are the two sides of the transmission gate.
 
-Notice how the clock signal `\(CLK\)` and it's inverse `\(\overline{CLK}\)` are provided to the gates. This will enable the transmission gate when the clock is HIGH, and disable it when LOW. If you swap `\(CLK\)` and `\(\overline{CLK}\)` you will invert the logic and instead enable the transmission gate when the clock is LOW. The clock signal is the most common signal provided to turn the transmission gate on and off. 
+Notice how the clock signal \(CLK\) and it's inverse \(\overline{CLK}\) are provided to the gates. This will enable the transmission gate when the clock is HIGH, and disable it when LOW. If you swap \(CLK\) and \(\overline{CLK}\) you will invert the logic and instead enable the transmission gate when the clock is LOW. The clock signal is the most common signal provided to turn the transmission gate on and off. 
 
 To show a real-world use case for a transmission gate, this is the logic diagram for the Nexperia `74HC74` dual D-type flip-flop IC[^bib-nexperia-74hc74-ds]:
 
@@ -70,7 +70,7 @@ The following values are considered a low-power switch:
 
 ### Intersil ISL43L410
 
-The Intersil `ISL43L410` is a low on-resistance, low-voltage single-supply, DPDT analogue switch. One of its main selling points is it's low power consumption with an `\(I_q = 25nA\)` (typ) and `\(40nA\)` (max). Leakage current is `\(I_{leakage} = 5nA\)` (typ), `\(90nA\)` (max).
+The Intersil `ISL43L410` is a low on-resistance, low-voltage single-supply, DPDT analogue switch. One of its main selling points is it's low power consumption with an \(I_q = 25nA\) (typ) and \(40nA\) (max). Leakage current is \(I_{leakage} = 5nA\) (typ), \(90nA\) (max).
 
 {{% figure src="_assets/intersil-isl43l410-analogue-switch-functional-diagram.png" width="250px" caption="Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." %}}
 

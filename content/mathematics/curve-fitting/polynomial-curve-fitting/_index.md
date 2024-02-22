@@ -19,11 +19,11 @@ Before reading this page, please check out the [Linear Curve Fitting page](/math
 
 We can write an equation for the error as follows:
 
-<p>\begin{align}  
+$$\begin{align}  
 err & = \sum d_i^2 \nonumber \\  
 & = (y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + (y_3 - f(x_3))^2 \nonumber \\  
 & = \sum_{i = 1}^{n} (y_i - f(x_i))^2  
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -31,12 +31,12 @@ err & = \sum d_i^2 \nonumber \\
     \(f(x)\) is the function which describes our polynomial curve of best fit<br>
 </p>
 
-Since we want to fit a polynomial, we can write `\(f(x)\)` as:
+Since we want to fit a polynomial, we can write \(f(x)\) as:
 
-<p>\begin{align}
+$$\begin{align}
 f(x) &= a_0 + a_1 x + a_2 x^2 + ... + a_n x^n \nonumber \\  
 &= a_0 + \sum_{j=1}^k a_j x^j
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -45,21 +45,21 @@ f(x) &= a_0 + a_1 x + a_2 x^2 + ... + a_n x^n \nonumber \\
 
 Substituting into above:
 
-<p>\begin{align}
+$$\begin{align}
 err = \sum_{i = 1}^{n} (y_i - (a_0 + \sum_{j=0}^k a_j x^j))^2
-\end{align}</p>
+\end{align}$$
 
-How do we find the minimum of this error function? We use the derivative. If we can differentiate `\(err\)`, we have an equation for the slope. We know that the slope will be 0 when the error is at a minimum.
+How do we find the minimum of this error function? We use the derivative. If we can differentiate \(err\), we have an equation for the slope. We know that the slope will be 0 when the error is at a minimum.
 
-We have `\(k\)` unknowns, `\(a_0, a_1, ..., a_k \)`. We have to take the derivative of each unknown separately:
+We have \(k\) unknowns, \(a_0, a_1, ..., a_k \). We have to take the derivative of each unknown separately:
 
-<p>\begin{align}
+$$\begin{align}
 \frac{\partial err}{\partial a_0} &= -2 \sum_{i=1}^{n} (y_i - (a_0 + \sum_{j=0}^k a_j x_j)) &= 0 \nonumber \\  
 \frac{\partial err}{\partial a_1} &= -2 \sum_{i=1}^{n} (y_i - (a_0 + \sum_{j=0}^k a_j x_j))x &= 0 \nonumber \\  
 \frac{\partial err}{\partial a_1} &= -2 \sum_{i=1}^{n} (y_i - (a_0 + \sum_{j=0}^k a_j x_j))x^2 &= 0 \nonumber \\  
 \vdots \nonumber \\  
 \frac{\partial err}{\partial a_k} &= -2 \sum_{i=1}^{n} (y_i - (a_0 + \sum_{j=0}^k a_j x_j))x^k &= 0 \\
-\end{align}</p>
+\end{align}$$
 
 These equations can be re-arranged into matrix form:
 
@@ -82,7 +82,7 @@ a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_k
 \end{bmatrix}$$
 </div>
 
-We solve this by re-arranging (which involves taking the inverse of `\(\bf{x}\))`:
+We solve this by re-arranging (which involves taking the inverse of \(\bf{x}\))`:
 
 <div>$$ \mathbf{x} = \mathbf{A^{-1}} \mathbf{B} $$</div>
 
@@ -98,9 +98,9 @@ Find a 2 degree polynomial that best describes the following points:
 
 <div>$$ (1, 1) \\ (2, 3) \\ (3, 4) \\ (4, 8) $$</div>
 
-We will then find the values for each one of the nine elements in the `\(\mathbf{A}\)` matrix:
+We will then find the values for each one of the nine elements in the \(\mathbf{A}\) matrix:
 
-<p>\begin{align}   
+$$\begin{align}   
 A_{11} &= n = 4 \nonumber \\  
 A_{12} &= \sum x_i = 1 + 2 + 3 + 4 = 10 \nonumber \\  
 A_{13} &= \sum x_i^2 = 1^2 + 2^2 + 3^2 + 4^2 = 30 \nonumber \\  
@@ -110,15 +110,15 @@ A_{23} &= \sum x_i^3 = 1^3 + 2^3 + 3^3 + 4^3 = 100 \nonumber \\
 A_{31} &= A_{22} = 30 \nonumber \\  
 A_{32} &= A_{23} = 100 \nonumber \\  
 A_{33} &= \sum x_i^4 = 1^4 + 2^4 + 3^4 + 4^4 = 354 \\ 
-\end{align}</p>
+\end{align}$$
 
-And now find the elements of the `\(\mathbf{B}\)` matrix:
+And now find the elements of the \(\mathbf{B}\) matrix:
 
-<p>\begin{align}  
+$$\begin{align}  
 B_{11} &= \sum y_i = 1 + 3 + 4 + 8 = 16 \nonumber \\  
 B_{21} &= \sum x_i y_i = 1*1 + 2*3 + 3*4 + 4*8 = 51 \nonumber \\  
 B_{31} &= \sum x_i^2 y_i = 1^2*1 + 2^2*3 + 3^2*4 + 4^2*8 = 177 \nonumber \\
-\end{align}</p>
+\end{align}$$
 
 Plugging these values into the matrix equation:
 
@@ -138,7 +138,7 @@ a_0 \\ a_1 \\ a_2
 \end{bmatrix}$$
 </div>
 
-We can then solve `\(\mathbf{x} = \mathbf{A^{-1}}\mathbf{B}\)` by hand, or use a tool. I used Python's NumPy package to end up with:
+We can then solve `\(\mathbf{x} = \mathbf{A^{-1}}\mathbf{B}\) by hand, or use a tool. I used Python's NumPy package to end up with:
 
 <div>
 $$ \begin{bmatrix}a_0 \\ a_1 \\ a_2 \end{bmatrix} =  

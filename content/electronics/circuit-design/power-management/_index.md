@@ -59,17 +59,17 @@ TIP: As the output +48V turns on, you can see it drag the input +48V down (green
 
 One issue with UVLO pins is that they introduce instabilities when there is any kind of impedance between the power supply and the IC. This includes wiring inductance, the step change response of the upstream PSU, and/or internal resistance of PSU/battery. As the input voltage exceed the rising UVLO threshold, the load turns on. Because of upstream impedance, this can cause the input voltage to drop. If the drop is significant enough, it will fall below the falling UVLO threshold, and the output will turn off. This cycle will repeat and the output will quickly oscillate between the on and off states.
 
-The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
+The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between \( V_{OUT} \) and the UVLO pin.
 
 The two equations are:
 
-<p>\begin{align}
+$$\begin{align}
 \frac{V_{BAT} - V_{UVLO}}{R1} + \frac{V_{OUT} - V_{UVLO}}{R3} = \frac{V_{UVLO}}{R_2}
-\end{align}</p>
+\end{align}$$
 
-<p>\begin{align}
+$$\begin{align}
 \frac{V_{BAT} - V_{UVLO}}{R1} = \frac{V_{UVLO}}{R_2} + \frac{V_{UVLO}}{R_3}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>

@@ -24,7 +24,7 @@ Similar To:
 * [DO-15](/pcb-design/component-packages/do-15-component-package/)
 * [DO-35](/pcb-design/component-packages/do-35-do-214ah-component-package/)
 
-Thermal Resistance: `\(100^{\circ}{\rm C/W}\)`
+Thermal Resistance: \(100^{\circ}{\rm C/W}\)
 
 Typical PCB Land Area: 22mm²
 

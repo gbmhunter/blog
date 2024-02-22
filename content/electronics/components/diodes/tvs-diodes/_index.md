@@ -32,26 +32,26 @@ TVS diodes can be grouped into IC packages called arrays. A typical schematic sy
 
 ### Breakdown Voltage
 
-* Symbol: `\(V_{breakdown}\)`
-* Units: `\(V\)`
+* Symbol: \(V_{breakdown}\)
+* Units: \(V\)
 
 Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA.
 
 ### Rated Power
 
-* Symbol: `\(P\)`
-* Units: `\(W\)`
+* Symbol: \(P\)
+* Units: \(W\)
 
 The maximum power the TVS diode can dissipate, for a specified time period. Typical values range between 400W-1.5kW.
 
 ### Standoff Voltage
 
-* Symbol: `\(V_{standoff}\)`, `\(V_{WM}\)`
-* Units: `\(V\)`
+* Symbol: \(V_{standoff}\), \(V_{WM}\)
+* Units: \(V\)
 
 This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
 
-Vishay uses the symbol `\(V_{WM}\)` to denote the standoff voltage[^vishay-xld5a24ca-ds].
+Vishay uses the symbol \(V_{WM}\) to denote the standoff voltage[^vishay-xld5a24ca-ds].
 
 ### Leakage Current
 
@@ -87,7 +87,7 @@ Snapback TVS diodes are a type of TVS diode in which the clamping voltage right 
 
 {{% figure src="vishay-snapback-tvs-typical-vi-curve-vs-standard-tvs.png" width="900px" caption="Excerpt from Vishay document showing the V/I curve of a snapback TVS vs. a conventional TVS[^vishay-did-you-know-snapback]." %}}
 
-The [Vishay XLD5A24CA](https://www.vishay.com/docs/87199/xld5a24ca.pdf) is an example of a snapback TVS from Vishay's XClampR series. Is had a standoff voltage `\(V_{WM} = 24V\)` and a clamping voltage `\(V_C = 18{-}26V\)` at `\(I_{PPM}=120A\)` (`\(10/10,000us\)` waveform)[^vishay-xld5a24ca-ds]. Note the clamping voltage is much closer to the standoff voltage than a conventional TVS!
+The [Vishay XLD5A24CA](https://www.vishay.com/docs/87199/xld5a24ca.pdf) is an example of a snapback TVS from Vishay's XClampR series. Is had a standoff voltage \(V_{WM} = 24V\) and a clamping voltage \(V_C = 18{-}26V\) at \(I_{PPM}=120A\) (\(10/10,000us\) waveform)[^vishay-xld5a24ca-ds]. Note the clamping voltage is much closer to the standoff voltage than a conventional TVS!
 
 ## Special-Purpose TVS Diodes
 

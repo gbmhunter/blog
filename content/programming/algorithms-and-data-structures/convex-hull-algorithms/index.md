@@ -24,11 +24,11 @@ The minimum bounded rectangle must have an edge which is co-linear to one of the
 
 Orientation:
 
-<p>$$ o = (q_y - p_y)(r_x - q_x) - (q_x - p_x)(r_y - q_y) $$</p>
+$$ o = (q_y - p_y)(r_x - q_x) - (q_x - p_x)(r_y - q_y) $$
 
-* If `\(o == 0\)` they are co-linear
-* If `\(o > 0\)` they are clockwise
-* If `\(o < 0\)` they are counter-clockwise
+* If \(o == 0\) they are co-linear
+* If \(o > 0\) they are clockwise
+* If \(o < 0\) they are counter-clockwise
 
 This equation comes from the 3D definition of the cross-product (for a proof, see [here](https://stackoverflow.com/questions/17592800/how-to-find-the-orientation-of-three-points-in-a-two-dimensional-space-given-coo)).
 

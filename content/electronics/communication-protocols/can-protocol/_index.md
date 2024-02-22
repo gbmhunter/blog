@@ -33,9 +33,9 @@ The CAN bus transmits 1 and 0's across a differential pair of wires. A recessive
 
 The following equation can be used as a rule-of-thumb to calculate the maximum transmission speed for distances larger than 50m.
 
-<p>\begin{align}
+$$\begin{align}
 BR\times L\leq 60
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -45,7 +45,7 @@ where:<br/>
 
 {{% figure src="can-bus-bit-rate-vs-bus-length.png" width="500px" caption="Graph showing the relationship between the CAN bus transmission rate and maximum bus length." %}}
 
-A value `\(5ns/m\)` is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
+A value \(5ns/m\) is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
 
 
 | Speed   | Distance | Comment
@@ -73,9 +73,9 @@ There is a significant amount of contradictory information online on what CAN st
 * TI's SLLA270 states to minimize reflections, lengths of stubs should not exceed 1/3 of the critical length of a bus[^bib-ti-slla270-can-phy-layer-req]. The critical length is determined by the transition time of bits on the bus (which is determined by the driver), and the speed at which signals propagate down the bus.
 * Bueno Electric's _Maximum Cable Length For a CAN Bus_ page[^bib-bueno-electric-max-cable-len] gives a maximum cable stub length of 0.3mm for all speeds from 50kb/s to 1Mb/s.
 * and OnSemi[^bib-on-semi-topo-high-speed-can] give the following rule:
-    <p>\begin{align}
+    $$\begin{align}
     L_{STUB_MAX} = \frac{T_{PROP_SEG}}{50 \cdot T_{PROP(BUS)}}
-    \end{align}</p>
+    \end{align}$$
 
 Some CAN bus drivers provide pins so that you can adjust their slew rate.
 
@@ -85,9 +85,9 @@ For high-speed transmission on the CAN bus, **_termination resistors_ are requir
 
 Adding a single termination resistor of `120R` at each end of the bus is called _standard termination_. Sometimes a decoupling capacitor is also added in conjunction with the termination resistors. This is called _split termination_[^bib-ti-importance-of-termination-resistors], as you have to use two termination resistors instead of one, with the capacitor "splitting" them in two. Using this combination of resistors and capacitor makes a _low-pass filter_ for the common-mode noise on the bus, which has a corner frequency given by the equation[^bib-ti-importance-of-termination-resistors]:
 
-<p>\begin{align}
+$$\begin{align}
 f_{corner} = \frac{1}{2\pi \cdot R_{term/2} \cdot C_{split}}
-\end{align}</p>
+\end{align}$$
 
 ## Isolation
 
@@ -132,9 +132,9 @@ If we zoom in on one of the arbitration events as below we can see it aligns wit
 
 ## CAN Bit Timing
 
-The below diagram shows the timing of a single CAN bit. **A single CAN bit is broken down into different time segments**. Each time segment is defined by an integer number of _time quanta_ (`\(t_q\)`). Time quanta is determined by the clock provided to the CAN transceiver. This CAN clock is usually provided from a faster system clock by dividing by a programmable pre-scalar. The minimum is 5, but there is usually 8 or more `\(t_q\)` per CAN bit. The _time quanta_ is the smallest amount of time that the CAN transceiver can adjust it's timing by (i.e. it's resolution).
+The below diagram shows the timing of a single CAN bit. **A single CAN bit is broken down into different time segments**. Each time segment is defined by an integer number of _time quanta_ (\(t_q\)). Time quanta is determined by the clock provided to the CAN transceiver. This CAN clock is usually provided from a faster system clock by dividing by a programmable pre-scalar. The minimum is 5, but there is usually 8 or more \(t_q\) per CAN bit. The _time quanta_ is the smallest amount of time that the CAN transceiver can adjust it's timing by (i.e. it's resolution).
 
-. `SYNC_SEG`: This is always `\(t_q\)`. The transceiver expects the bit transitions to occurs during this time period. If they don't, the transceiver performs [^_resynchronization, resynchronization] to re-align itself.
+. `SYNC_SEG`: This is always \(t_q\). The transceiver expects the bit transitions to occurs during this time period. If they don't, the transceiver performs [^_resynchronization, resynchronization] to re-align itself.
 . `PROP_SEG`: This is the time segment of the bit in which it is expected that the transition will finish propagating to all nodes. It is the _two way propagation_ that matters, i.e. the total time for the transmitted bit to propagate to all nodes and then the nodes response to propagate back. This has to include the propagation time of the signal on the wire (5ns/m is a good approximation), plus propagation delay through the CAN transceivers.
 . `PHASE_SEG_1`: Phase segment 1.
 . `SAMPLE_POINT`: This is the point in time in-between `PHASE_SEG_1` and `PHASE_SEG_2` at which the transceiver samples the value on the bus (recessive or dominant).
@@ -142,7 +142,7 @@ The below diagram shows the timing of a single CAN bit. **A single CAN bit is br
 
 {{% figure src="can-bit-timing.svg" width="900px" caption="Timing diagram of a single CAN bit." %}}
 
-Only one sample point is shown above, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at `\(1t_q\)` before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
+Only one sample point is shown above, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at \(1t_q\) before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
 
 <table>
   <thead>
@@ -384,7 +384,7 @@ Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipm
 
 ### TVS Diodes
 
-There are [TVS diode components](/electronics/components/diodes) specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are `\(12V\)` and `\(24V\)` and common power dissipations are `\(200-500W\)`.
+There are [TVS diode components](/electronics/components/diodes) specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are \(12V\) and \(24V\) and common power dissipations are \(200-500W\).
 
 {{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
 

@@ -15,7 +15,7 @@ Once you have a basic understanding of sorting algorithms, make sure to check ou
 
 **Comparison Sorts**
 
-Comparison sorts are limited by a lower bound of `\( \mathcal{O}(n\log{n}) \)`.
+Comparison sorts are limited by a lower bound of \( \mathcal{O}(n\log{n}) \).
 
 **Integer Sorts**
 
@@ -26,12 +26,12 @@ Data is indexed by an integer key. Integer sorts are usually faster than compari
 
 * Type: Integer  
 * Style: Out-of-place  
-* Worst-case Performance: `\( \mathcal{O}(n + k) \)`
-* Average-case Performance: `\( \mathcal{O}(n + k) \)`
-* Best-case Performance: `\( \mathcal{O}(n + k) \)`
+* Worst-case Performance: \( \mathcal{O}(n + k) \)
+* Average-case Performance: \( \mathcal{O}(n + k) \)
+* Best-case Performance: \( \mathcal{O}(n + k) \)
 * Stability: Stable
 
-where `\( n \)` is the number of element in the array and `\( k \)` is a number such that all keys are in the range `\( 0..k-1 \)`.
+where \( n \) is the number of element in the array and \( k \) is a number such that all keys are in the range \( 0..k-1 \).
 
 1. Loop over every element, counting the number of times each particular integer key occurs with the array.
 2. Determine, for each distinct key, the starting position in the output array for each element having that key.
@@ -41,9 +41,9 @@ where `\( n \)` is the number of element in the array and `\( k \)` is a number 
 
 * Type: Comparison  
 * Style: In place  
-* Worst-case Performance: `\(\mathcal{O}(n^2)\)` comparisons, `\(\mathcal{O}(n^2)\)` swaps  
-* Average-case Performance: `\(\mathcal{O}(n^2)\)` comparisons, `\(\mathcal{O}(n^2)\)` swaps  
-* Best-case Performance: `\( \mathcal{O}(n) \)` comparisons, no swaps  
+* Worst-case Performance: \(\mathcal{O}(n^2)\) comparisons, \(\mathcal{O}(n^2)\) swaps  
+* Average-case Performance: \(\mathcal{O}(n^2)\) comparisons, \(\mathcal{O}(n^2)\) swaps  
+* Best-case Performance: \( \mathcal{O}(n) \) comparisons, no swaps  
 * Stability: Stable
 
 Insertion sort builds the final sorted array one element at a time. It takes the first element from the right-hand side unsorted array, and compares it with each element in the sorted array (starting from the right-most element). If the new element is less than the compared element, it performs a swap.

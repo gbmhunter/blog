@@ -19,7 +19,7 @@ A quaternion (pronounced _qwa-ter-ne-ion_) is a complex-number like system which
 
 The basic form of a quaternion is:
 
-<p>$$ \mathbf{q} = w + x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
+$$ \mathbf{q} = w + x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$
 
 <p class="centered">
   where:<br />
@@ -30,74 +30,74 @@ The basic form of a quaternion is:
 
 The multiplication rules for the quaternion units are:
 
-<p>$$ \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1 $$</p>
+$$ \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1 $$
 
 From these rule above, you can determine some identities:
 
-<p>$$ \mathbf{ijk} = -1 $$</p>
+$$ \mathbf{ijk} = -1 $$
 
-Multiply both sides by `\(\mathbf{i}\)`:
+Multiply both sides by \(\mathbf{i}\):
 
-<p>$$ \mathbf{i}^2\mathbf{jk} = -\mathbf{i} $$</p>
+$$ \mathbf{i}^2\mathbf{jk} = -\mathbf{i} $$
 
 <p>Using the rule that \(\mathbf{i}^2 = -1\):</p>
 
-<p>$$ -\mathbf{jk} = -\mathbf{i} $$</p>
+$$ -\mathbf{jk} = -\mathbf{i} $$
 
 <p>And thus:</p>
 
-<p>$$ \mathbf{i} = \mathbf{jk} $$</p>
+$$ \mathbf{i} = \mathbf{jk} $$
 
 <p>The same process can be applied the other way around and also to \(\mathbf{j}\) and \(\mathbf{k}\) resulting in the following six identities:</p>
 
-<p>$$ \begin{align}
+$$ \begin{align}
   \mathbf{i} &= \mathbf{jk} \\
   \mathbf{j} &= -\mathbf{ik} \\
   \mathbf{k} &= \mathbf{ij} \\
   \mathbf{-i} &= \mathbf{kj} \\
   \mathbf{-j} &= -\mathbf{ki} \\
   \mathbf{-k} &= \mathbf{ji} \\
-\end{align} $$</p>
+\end{align} $$
 
 <p>These identities are used to <b>simplify terms when applying the product rule to quaternion multiplication</b>.</p>
 
 ## Quaternion Conjugates
 
-All quaternions have a conjugate. The conjugate of a quaternion represents a rotation in the opposite direction. For example, if `\( \mathbf{q} \)` describes the orientation of frame `B` relative to frame `A`, then `\( \mathbf{\bar{q}} \)` would describe the orientation of frame `A` relative to frame `B`. The conjugate of a quaternion `\(\mathbf{q}\)` is:
+All quaternions have a conjugate. The conjugate of a quaternion represents a rotation in the opposite direction. For example, if \( \mathbf{q} \) describes the orientation of frame `B` relative to frame `A`, then \( \mathbf{\bar{q}} \) would describe the orientation of frame `A` relative to frame `B`. The conjugate of a quaternion \(\mathbf{q}\) is:
 
-<p>$$ \mathbf{\bar{q}} = w - x\mathbf{i} - y\mathbf{j} - z\mathbf{k} $$</p>
+$$ \mathbf{\bar{q}} = w - x\mathbf{i} - y\mathbf{j} - z\mathbf{k} $$
 
-All you need to do is multiple all of the imaginary terms by `\( -1 \)`. The conjugate can also be denoted by `\( \mathbf{q*} \)` or `\( \mathbf{q^T} \)`. However `\( \mathbf{\bar{q}} \)` is the preferred choice on this site.
+All you need to do is multiple all of the imaginary terms by \( -1 \). The conjugate can also be denoted by \( \mathbf{q*} \) or \( \mathbf{q^T} \). However \( \mathbf{\bar{q}} \) is the preferred choice on this site.
 
 The conjugate of a unit quaternion is the same as it's inverse.
 
 ## Pure/Vector Quaternions
 
-A pure quaternion is a quaternion where `\(w=0\)`. This results in a quaternion:
+A pure quaternion is a quaternion where \(w=0\). This results in a quaternion:
 
-<p>$$ \mathbf{q} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
+$$ \mathbf{q} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$
 
 This three-valued quaternion also happens to be able to represent a vector in 3D space, and so it is also called a <i>vector quaternion</i>. A vector quaternion is used to represent either a vector or point in 3D space when you want to apply a quaternion rotation to it (more on this below).
 
 ## Scalar/Vector Notation
 
-You can split a quaternion into a scalar and a vector component. The `\(w\)` represents the **scalar** part of the quaternions and the `\(x, y, z\)` represents the **vector** part. You may see a quaternion written with an `\(w\)` for the scalar part and a `\(\vec{r}\)` for the vector part.
+You can split a quaternion into a scalar and a vector component. The \(w\) represents the **scalar** part of the quaternions and the \(x, y, z\) represents the **vector** part. You may see a quaternion written with an \(w\) for the scalar part and a \(\vec{r}\) for the vector part.
 
-<p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
+$$ \mathbf{q} = (w, \vec{r}) $$
 
 ## Unit Quaternions
 
 Unit quaternions are quaternions in which the coefficients have been **normalized** as follows:
 
-<p>$$ w^2 + x^2 + y^2 + z^2 = 1 $$</p>
+$$ w^2 + x^2 + y^2 + z^2 = 1 $$
 
-Interestingly, all rotations in 3D space (which is called the 3D rotation group, or `\(\mathbf{SO(3)}\))` can be represented by the unit quaternions (which is a sub-set of all quaternions). In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!
+Interestingly, all rotations in 3D space (which is called the 3D rotation group, or \(\mathbf{SO(3)}\))` can be represented by the unit quaternions (which is a sub-set of all quaternions). In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!
 
 ## Representation In Software/Programming
 
 In software, quaternions are typically described with a vector/array (in the programming sense of the word) in the following form:
 
-<p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
+$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$
 
 in where the coefficients are stored in an array and the quaternion units are implied by position.
 
@@ -117,44 +117,44 @@ Why choose Quaternions? One reason is that Quaternions do not suffer from the _g
   
 ## Rotating A Vector
 
-You can rotate a vector `\(v\)` in 3D space to `\(v'\)` with:
+You can rotate a vector \(v\) in 3D space to \(v'\) with:
 
-<p>$$ \begin{bmatrix}0\\v'\end{bmatrix} = q \begin{bmatrix}0\\v\end{bmatrix}q' $$</p>
+$$ \begin{bmatrix}0\\v'\end{bmatrix} = q \begin{bmatrix}0\\v\end{bmatrix}q' $$
 
 Because the vector is squashed between the quaternion and it's conjugate, this is sometimes referred to as the "sandwich product". The multiplications can be done by the basic product rule, or more easily using the _Hamilton product_.
 
 Lets assume we have the vector:
 
-<p>$$ v = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
+$$ v = \begin{bmatrix}1\\0\\0\end{bmatrix} $$
 
 And we want to rotate it with the quaternion>
 
-<p>$$ q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix} $$</p>
+$$ q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix} $$
 
-This quaternion just so happens to be a rotation of `\(90\)` around the y-axis>
+This quaternion just so happens to be a rotation of \(90\) around the y-axis>
 
-We turn the vector into a vector quaternion by adding a fourth value of 0 (which is the `\(w\)`):
+We turn the vector into a vector quaternion by adding a fourth value of 0 (which is the \(w\)):
 
-<p>$$ v = \begin{bmatrix}0\\1\\0\\0\end{bmatrix} $$</p>
+$$ v = \begin{bmatrix}0\\1\\0\\0\end{bmatrix} $$
 
 Combine into:
 
-<p>$$
+$$
   v' = 
   \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix}
   \begin{bmatrix}0\\1\\0\\0\end{bmatrix}
   \begin{bmatrix}\sqrt{0.5} \\ 0 \\ -\sqrt{0.5} \\ 0]\end{bmatrix}
-$$</p>
+$$
 
 To calculate the multiplication of two quaternions, you can use the Hamilton product. If you have the equation:
 
-<p>$$q3 = q1*q2$$</p>
+$$q3 = q1*q2$$
 
 where each quaternion is composed in the following manner:
 
-<p>$$ q1 = q1_w + q1_x \mathbf{i} + q1_y \mathbf{y} + q1_z \mathbf{z} $$</p>
+$$ q1 = q1_w + q1_x \mathbf{i} + q1_y \mathbf{y} + q1_z \mathbf{z} $$
 
-then using the Hamilton product, the values of each component in `\(q3\)` are<a href="#1"><sup>1</sup></a>:
+then using the Hamilton product, the values of each component in \(q3\) are<a href="#1"><sup>1</sup></a>:
 
 <p> 
 $$
@@ -164,13 +164,13 @@ $$
   q3_x = q1_z q2_w - q1_y q2_x + q1_x q2_y + q1_w q2_z
 $$</p>
 
-You can also rotate a vector `\(\vec{v}\)` by a quaternion `\(q\)` by decomposing the quaternion into it's scalar part `\(w\)` and it's vector part `\(\vec{r}\)`:
+You can also rotate a vector \(\vec{v}\) by a quaternion \(q\) by decomposing the quaternion into it's scalar part \(w\) and it's vector part \(\vec{r}\):
 
-<p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
+$$ \mathbf{q} = (w, \vec{r}) $$
 
-and then using the following formula to calculate the rotated vector `\(v_{rotated}\)`:
+and then using the following formula to calculate the rotated vector \(v_{rotated}\):
 
-<p>$$ v_{rotated} = \vec{v} + 2\vec{r} \times (\vec{r} \times \vec{v} + w\vec{v}) $$</p>
+$$ v_{rotated} = \vec{v} + 2\vec{r} \times (\vec{r} \times \vec{v} + w\vec{v}) $$
 
 <p class="centered">
   where:<br />
@@ -185,11 +185,11 @@ You can calculate a 3x3 rotation matrix from a quaternion. This is useful if you
 
 Rotations can be easily combined when using quaternions.
 
-Given two quaternion rotations that are to be applied consecutively, `\(R_A\)` and then `\(R_B\)`, the total rotation `\(R_C\)` is found with:
+Given two quaternion rotations that are to be applied consecutively, \(R_A\) and then \(R_B\), the total rotation \(R_C\) is found with:
 
-<p>$$ R_C = R_B R_A $$</p>
+$$ R_C = R_B R_A $$
 
-Remember that **quaternion multiplication is not associative**, so the ordering of `\( R_A \)` and `\( R_B \)` is important.</p>
+Remember that **quaternion multiplication is not associative**, so the ordering of \( R_A \) and `\( R_B \) is important.</p>
 
 ## Some Useful Quaternions
 
@@ -288,32 +288,32 @@ def slerp(v0, v1, t_array):
 
 A rotation in axis-angle form:
 
-<p>$$ axis = \begin{bmatrix}a_x\\a_y\\a_z\end{bmatrix} \quad angle = \theta $$</p>
+$$ axis = \begin{bmatrix}a_x\\a_y\\a_z\end{bmatrix} \quad angle = \theta $$
 
 can be converted into a quaternion with:
 
-<p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} = \begin{bmatrix} 
+$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} = \begin{bmatrix} 
     \cos{\frac{\theta}{2}} \\
     a_x \sin{\frac{\theta}{2}} \\
     a_y \sin{\frac{\theta}{2}} \\
     a_z \sin{\frac{\theta}{2}} \\
-    \end{bmatrix} $$</p>
+    \end{bmatrix} $$
 
 ## Conversion From Quaternion To Rotation Matrix
 
 If you have a quaternion in the form:
 
-<p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} $$</p>
+$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} $$
 
 Then the equivalent rotation matrix is:
 
-<p>$$ \mathbf{R} = 
+$$ \mathbf{R} = 
 \begin{bmatrix}
 1 - 2q_y^2 - 2q_z^2     & 2q_xq_y - 2q_zq_w    & 2q_xq_z + 2q_yq_w \\
 2q_xq_y + 2q_zq_w       & 1 - 2q_x^2 - 2q_z^2  & 2q_yq_z - 2q_xq_w \\
 2q_xq_z - 2q_yq_w       & 2q_yq_z + 2q_xq_w    & 1 - 2q_x^2 - 2q_y^2
 \end{bmatrix}
-$$</p>
+$$
 
 ## 3D Rotation
 

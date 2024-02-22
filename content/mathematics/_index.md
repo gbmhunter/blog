@@ -15,38 +15,38 @@ type: "page"
 
 <p>A non-bold standard letter is used to denote a basic scalar:</p>
 
-<p>$$ c = 3e8 $$</p>
+$$ c = 3e8 $$
 
 <p>Bold font and an arrow is used to denote a vector:</p>
 
-<p>$$ \b{\vec{v}} = \begin{bmatrix}1\\2\\3\end{bmatrix} $$</p>
+$$ \b{\vec{v}} = \begin{bmatrix}1\\2\\3\end{bmatrix} $$
 
 <p>Bold font and a hat is used to denote a unit vector:</p>
 
-<p>$$ \b{\hat{x}} = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
+$$ \b{\hat{x}} = \begin{bmatrix}1\\0\\0\end{bmatrix} $$
 
 <p>A bold capital letter is used to denote a matrix or tensor:</p>
 
-<p>$$ \b{B} = \begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix} $$</p>
+$$ \b{B} = \begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix} $$
 
 <p>A bold lower-case letter is used to denote imaginary component(s) (in things such as complex numbers and quaternions).</p>
 
-<p>$$ c = a + b\mathbf{i} $$</p>
+$$ c = a + b\mathbf{i} $$
 
-<p>$$ q = a + b\mathbf{i} + c\mathbf{j} + d\mathbf{k} $$</p>
+$$ q = a + b\mathbf{i} + c\mathbf{j} + d\mathbf{k} $$
 
 A bar is used to indicate a conjugate:
 
-<p>$$ \bar{x} $$</p>
+$$ \bar{x} $$
 
 The "triangle equals" is used to denote "is defined by":
 
-<p>$$ F \triangleq ma $$</p>
+$$ F \triangleq ma $$
 
-The Fourier Transform is denoted with `\(\mathcal{F}\)`.
+The Fourier Transform is denoted with \(\mathcal{F}\).
 
-Belongs to uses the `\in` symbol from Latex (e.g. `\(x\)` belongs to the set of real numbers):
+Belongs to uses the `\in` symbol from Latex (e.g. \(x\) belongs to the set of real numbers):
 
-<p>$$ x \in \mathbb{R} $$</p>
+$$ x \in \mathbb{R} $$
 
 

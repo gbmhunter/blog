@@ -37,7 +37,7 @@ Pitch:
 
 Solderability: Almost impossible to solder with a hand-held soldering iron due to the pads being on the bottom of the package. Need to use reflow oven/hot air soldering techniques.
 
-Typical PCB Land Area: `\(1.17mm^2\)` (1.30x0.90mm)[^bib-nexperia-sot-883]
+Typical PCB Land Area: \(1.17mm^2\) (1.30x0.90mm)[^bib-nexperia-sot-883]
 
 Common Uses:
 

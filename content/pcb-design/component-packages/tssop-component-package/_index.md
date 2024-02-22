@@ -43,46 +43,46 @@ Body widths of TSSOP packages can be 3.0, 4.4 and 6.1mm[^bib-wikipedia-tssop].
 
 `HTSSOP` is a variant of the `TSSOP` with a solder pad on the underside, used by both Texas Instruments and Rohm Semiconductor[^bib-ti-lm3421-datasheet] [^bib-rohm-htssop]. It is used for ICs which require good thermal conductivity (e.g. half-bridges, SMPS).
 
-* `\(R_{\theta JA}\)`: Junction-to-ambient thermal resistance.
-* `\(R_{\theta JB}\)`: Junction-to-board thermal resistance.
-* `\(R_{\theta JC(top)}\)`: Junction-to-case (top) thermal resistance.
-* `\(R_{\theta JC(bot)}\)`: Junction-to-case (bottom) thermal resistance.
+* \(R_{\theta JA}\): Junction-to-ambient thermal resistance.
+* \(R_{\theta JB}\): Junction-to-board thermal resistance.
+* \(R_{\theta JC(top)}\): Junction-to-case (top) thermal resistance.
+* \(R_{\theta JC(bot)}\): Junction-to-case (bottom) thermal resistance.
 
 <table>
   <thead>
     <tr>
       <th>Package Name</th>
       <th width="100">Body Size (nominal)</th>
-      <th width="100">{{% md %}}`\(R_{\theta JA}\)`{{% /md %}}</th>
-      <th width="100">{{% md %}}`\(R_{\theta JB}\)`{{% /md %}}</th>
-      <th width="100">{{% md %}}`\(R_{\theta JC(top)}\)`{{% /md %}}</th>
-      <th width="100">{{% md %}}`\(R_{\theta JC(bot)}\)`{{% /md %}}</th>
+      <th width="100">{{% md %}}\(R_{\theta JA}\){{% /md %}}</th>
+      <th width="100">{{% md %}}\(R_{\theta JB}\){{% /md %}}</th>
+      <th width="100">{{% md %}}\(R_{\theta JC(top)}\){{% /md %}}</th>
+      <th width="100">{{% md %}}\(R_{\theta JC(bot)}\){{% /md %}}</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>HTSSOP-16</td>
       <td>{{% md %}}5.00x4.40mm[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(38.9^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(16.8^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(23.1^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(1.7^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(38.9^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(16.8^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(23.1^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(1.7^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
     </tr>
     <tr>
       <td>HTSSOP-20</td>
       <td>{{% md %}}6.50x4.40mm[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(36.7^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(18^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(21.5^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
-      <td>{{% md %}}`\(1.9^{\circ}C/W\)`[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(36.7^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(18^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(21.5^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
+      <td>{{% md %}}\(1.9^{\circ}C/W\)[^bib-ti-lm3421-datasheet]{{% /md %}}</td>
     </tr>
     <tr>
       <td>HTSSOP-28</td>
       <td>{{% md %}}9.70x4.40mm[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
-      <td>{{% md %}}`\(31.0^{\circ}C/W\)`[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
-      <td>{{% md %}}`\(10.8^{\circ}C/W\)`[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
-      <td>{{% md %}}`\(25.2 ^{\circ}C/W\)`[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
-      <td>{{% md %}}`\(3.3^{\circ}C/W\)`[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
+      <td>{{% md %}}\(31.0^{\circ}C/W\)[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
+      <td>{{% md %}}\(10.8^{\circ}C/W\)[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
+      <td>{{% md %}}\(25.2 ^{\circ}C/W\)[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
+      <td>{{% md %}}\(3.3^{\circ}C/W\)[^bib-ti-drv8424ep-ds]{{% /md %}}</td>
     </tr>
   </tbody>
 </table>

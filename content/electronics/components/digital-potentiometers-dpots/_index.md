@@ -44,7 +44,7 @@ Most DPOT's use either the SPI or I²C communication protocol to control the wip
 
 Whilst standard potentiometers can handle any voltage on their terminals (within power dissipation and arcing limits), DPOT terminals are limited between GND and VDD, since digital switching elements are used to connect the wiper to the internal resistor string.
 
-Digital potentiometers usually have a poor total resistance tolerance, usually around `\(\pm 20%\)`! However, the accuracy of the wiper as a percentage from 0 to full-scale is much more accurate, typically `\(0.1-2%\)`, so it is preferred to use them for ratiometric purposes (i.e. resistive divider, or configured as a potentiometer rather than a rheostat).
+Digital potentiometers usually have a poor total resistance tolerance, usually around \(\pm 20%\)! However, the accuracy of the wiper as a percentage from 0 to full-scale is much more accurate, typically \(0.1-2%\), so it is preferred to use them for ratiometric purposes (i.e. resistive divider, or configured as a potentiometer rather than a rheostat).
 
 ## Manufacturer Part Numbers
 

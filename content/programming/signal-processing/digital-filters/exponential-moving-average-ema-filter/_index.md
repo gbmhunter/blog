@@ -20,9 +20,9 @@ Unlike a SMA, most EMA filters is not windowed, and the next value depends on al
 
 The _difference equation_ for an exponential moving average filter is:
 
-<p>\begin{align}
+$$\begin{align}
 y[i] = \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1]
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -31,13 +31,13 @@ y[i] = \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1]
     \( \alpha \) is a constant which sets the cutoff frequency (a value between \(0\) and \(1\))<br>
 </p>
 
-Notice that the calculation does not require the storage of past values of `\(x\)` and only the previous value of `\(y\)`, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
+Notice that the calculation does not require the storage of past values of \(x\) and only the previous value of \(y\), **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
 
-The constant `\( \alpha \)` determines how aggressive the filter is. It can vary between `\(0\)` and `\(1\)` (inclusive). As `\( \alpha \to 0 \)`, the filter gets more and more aggressive, until at `\( \alpha = 0 \)`, where the input has no effect on the output (if the filter started like this, then the output would stay at `\(0\)`). As `\( \alpha \to 1 \)`, the filter lets more of the raw input through at less filtered data, until at `\( \alpha = 1 \)`, where the filter is not "filtering" at all (pass-through from input to output).
+The constant \( \alpha \) determines how aggressive the filter is. It can vary between \(0\) and \(1\) (inclusive). As \( \alpha \to 0 \), the filter gets more and more aggressive, until at \( \alpha = 0 \), where the input has no effect on the output (if the filter started like this, then the output would stay at \(0\)). As \( \alpha \to 1 \), the filter lets more of the raw input through at less filtered data, until at \( \alpha = 1 \), where the filter is not "filtering" at all (pass-through from input to output).
 
 The filter is called _exponential_ because the weighted contribution of previous inputs decreases exponentially the further the input is away in time. This can be seen in the difference equation if we substitute in previous inputs:
 
-<p>\begin{align}
+$$\begin{align}
 y[i] &= \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1] \nonumber \\
 y[i] &= \alpha \cdot x[i] + (1 - \alpha) \cdot (\alpha \cdot x[i-1] + (1 - \alpha) \cdot y[i-2]) \nonumber \\
 y[i] &= \alpha \cdot x[i] + (1 - \alpha) \cdot (\alpha \cdot x[i-1] + (1 - \alpha) \cdot \nonumber \\ 
@@ -45,7 +45,7 @@ y[i] &= \alpha \cdot x[i] + (1 - \alpha) \cdot (\alpha \cdot x[i-1] + (1 - \alph
 ... \nonumber \\
 \label{eq:ema-sum}
 y[i] &= \alpha \sum_{k=0}^n (1-\alpha)^k x[n-k] \\
-\end{align}</p>
+\end{align}$$
 
 The following code implements a IIR EMA filter in C++, suitable for microcontrollers and other embedded devices[^pieter-p-ema]. {{% link text="Fixed-point numbers" src="/programming/general/fixed-point-mathematics" %}} are used instead of floats to speed up computation. `K` is the number of fractional bits used in the fixed-point representation.
 
@@ -78,32 +78,32 @@ class EMA {
 
 The frequency response of the EMA filter can be found by using the Z transform. If we start with the time-domain equation for an EMA filter:
 
-<p>\begin{align}
+$$\begin{align}
 y[i] = \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1]
-\end{align}</p>
+\end{align}$$
 
 And then take the Z tranform of it:
 
-<p>\begin{align}
+$$\begin{align}
 Y(z) = aX(z) + (1 - \alpha) z^{-1} Y(z)
-\end{align}</p>
+\end{align}$$
 
-Then re-arrange to find the transfer function `\(H(z)\)`:
+Then re-arrange to find the transfer function \(H(z)\):
 
-<p>\begin{align}
+$$\begin{align}
 H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
      &= \frac{\alpha}{1 - (1-\alpha)z^{-1}} \\
-\end{align}</p>
+\end{align}$$
 
-This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with `\(\alpha=0.25\)`. The x-axis frequency is the normalized frequency, in units `\(Hz/sample\)`, which makes the plot applicable for any sampling frequency.
+This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with \(\alpha=0.25\). The x-axis frequency is the normalized frequency, in units \(Hz/sample\), which makes the plot applicable for any sampling frequency.
 
 {{% figure src="ema-bode-plot.png" width="600px" caption="Bode plot showing the magnitude and phase of an EMA filter with \\\\( \alpha=0.25 \\\\)." %}}
 
 The _cut-off frequency_ (-3dB point) of an EMA filter is given by[^se-dsp-ema-cutoff]:
 
-<p>\begin{align}
+$$\begin{align}
 f_c = \frac{f_s}{2\pi} \arccos{\left[1 - \frac{\alpha^2}{2(1-\alpha)}\right]}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -114,7 +114,7 @@ where:<br/>
 
 The discrete unit sample function is defined as:
 
-<p>\begin{align}
+$$\begin{align}
 \delta[n] =
 \begin{cases} 
       1 & n = 0 \\
@@ -123,19 +123,19 @@ The discrete unit sample function is defined as:
 \end{align}
 </p>
 
-If we use this as our input into `\(Eq.\ \ref{eq:ema-sum}\)`:
+If we use this as our input into \(Eq.\ \ref{eq:ema-sum}\):
 
-<p>\begin{align}
+$$\begin{align}
 y[i] &= \alpha \sum_{k=0}^n (1-\alpha)^k \delta[n-k] \\
-\end{align}</p>
+\end{align}$$
 
-Given the unit sample function is 0 at most points, the only sum term that matters is when `\(k = n\)`, so we can simplify this to:
+Given the unit sample function is 0 at most points, the only sum term that matters is when \(k = n\), so we can simplify this to:
 
 <p>\begin{align}
 y[i] &= \alpha (1-\alpha)^n \\
-\end{align}</p>
+\end{align}$$
 
-From this, we can plot what the response will look like for impulse as the input. As you can see in the following graph, the output starts off at `\(y[0] = \alpha\)` and then decays towards 0. A larger alpha makes the initial response larger but also the decay faster.
+From this, we can plot what the response will look like for impulse as the input. As you can see in the following graph, the output starts off at \(y[0] = \alpha\) and then decays towards 0. A larger alpha makes the initial response larger but also the decay faster.
 
 {{% figure src="ema-impulse-response.png" width="600px" caption="Impulse response for an EMA filter with different \\\\(\alpha\\\\) values." %}}
 

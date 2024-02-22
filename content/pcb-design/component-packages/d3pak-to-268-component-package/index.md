@@ -113,7 +113,7 @@ type: page
 
 The TO-268 (D3PAK) package is bigger than the TO-263 (D2PAK) package. The D3PAK name stands for "decawatt 3 package". Unlike the TO-263 package, the TO-268 package only comes in one variant with 3 pins.
 
-It is designed to have a really low thermal resistance so that it can be used in high power applications. The larger die also means that MOSFETs in this package can have lower `\(R_{DS(ON)}\)` values, resulting in less power dissipation for the same current.
+It is designed to have a really low thermal resistance so that it can be used in high power applications. The larger die also means that MOSFETs in this package can have lower \(R_{DS(ON)}\) values, resulting in less power dissipation for the same current.
 
 I have only ever seen this in the 3-pin variant (called TO-268-3).
 

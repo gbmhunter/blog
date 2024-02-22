@@ -31,7 +31,7 @@ where:<br>
 \(f(x)\) is the function which describes our line of best fit<br>
 </p>
 
-Since we want to fit a straight line, we can write `\(f(x)\)` as:
+Since we want to fit a straight line, we can write \(f(x)\) as:
 
 <div>$$ f(x) = ax + b $$</div>
 
@@ -39,15 +39,15 @@ Substituting into above:
 
 <div>$$ err = \sum_{i = 1}^{n} (y_i - (ax_i + b))^2 $$</div>
 
-How do we find the minimum of this error function? We use the derivative. If we can differentiate `\( err \)`, we have an equation for the slope. We know that the slope will be 0 when the error is at a minimum.
+How do we find the minimum of this error function? We use the derivative. If we can differentiate \( err \), we have an equation for the slope. We know that the slope will be 0 when the error is at a minimum.
 
-Because we are solving for two unknowns, `\(a\)` and `\(b\)`, we have to take the derivative of both separately:
+Because we are solving for two unknowns, \(a\) and \(b\), we have to take the derivative of both separately:
 
 <div>$$ \frac{\partial err}{\partial a} = -2 \sum_{i=1}^{n} x_i(y_i - ax_i - b) = 0 $$</div>
 
 <div>$$ \frac{\partial err}{\partial b} = -2 \sum_{i=1}^{n} (y_i - ax_i - b) = 0 $$</div>
 
-We now have two equations and two unknowns, we can solve this! Lets re-write the equations in the form `\( C_1 a + C_2 b = C_3 \)`:
+We now have two equations and two unknowns, we can solve this! Lets re-write the equations in the form \( C_1 a + C_2 b = C_3 \):
 
 <div>
 $$ \begin{align}  
@@ -88,7 +88,7 @@ Find the line of best fit for the following points:
 
 <div>$$ (2, 1) \\ (3, 7) \\ (6, 5) \\ (7, 9) $$</div>
 
-We will then find the values for each one of the four elements in the `\(\mathbf{A}\)` matrix:
+We will then find the values for each one of the four elements in the \(\mathbf{A}\) matrix:
 
 <div>
 $$ \begin{align}   
@@ -99,7 +99,7 @@ A_{22} &= n = 4
 \end{align} $$
 </div>
 
-And now find the elements of the `\(\mathbf{B}\)` matrix:
+And now find the elements of the \(\mathbf{B}\) matrix:
 
 <div>$$\begin{align} B_{11} &= \sum x_i y_i = 2*1 + 3*7 + 6*5 + 7*9 = 116\\  
 B_{21} &= \sum y_i = 1 + 7 + 5 + 9 = 22 \end{align} $$</div>
@@ -120,13 +120,13 @@ a \\ b
 \end{bmatrix}$$
 </p>
 
-We can then solve `\(\mathbf{x} = \mathbf{A^{-1}}\mathbf{B}\)` by hand, or use a tool. I used Python's NumPy package to end up with:
+We can then solve \(\mathbf{x} = \mathbf{A^{-1}}\mathbf{B}\) by hand, or use a tool. I used Python's NumPy package to end up with:
 
-<p>$$ \begin{bmatrix}a \\ b\end{bmatrix} = \begin{bmatrix}1 \\ 1\end{bmatrix} $$</p>
+$$ \begin{bmatrix}a \\ b\end{bmatrix} = \begin{bmatrix}1 \\ 1\end{bmatrix} $$
 
 Thus our line of best fit:
 
-<p>$$ y = 1x + 1 $$</p>
+$$ y = 1x + 1 $$
 
 The points and line of best fit are shown in the below graph:
 

@@ -40,9 +40,9 @@ Typical thickness include 0.12mm and 0.15mm. 0.10mm thick stainless steel can be
 
 The aspect ratio of a particular aperture is the ratio between the width of an aperture and the thickness of the stencil.
 
-<p>\begin{align}
+$$\begin{align}
 R = \frac{W}{T}
-\end{align}</p>
+\end{align}$$
 
 For a particular stencil, this ratio should never be smaller than a particular number. This is commonly 1 or 1.5.
 
@@ -50,9 +50,9 @@ For a particular stencil, this ratio should never be smaller than a particular n
 
 The rule:
 
-<p>\begin{align}
+$$\begin{align}
 R = \frac{LW}{2(L+W)T}
-\end{align}</p>
+\end{align}$$
 
 This ratio should always be greater or equal to 0.66.
 

@@ -20,7 +20,7 @@ Uses of current sources:
 * Biasing [resistors](/electronics/components/resistors/) for pull-ups/pull-downs.
 * Charging [capacitors](/electronics/components/capacitors/) to provide a linear increase in voltage across it (e.g. to make a sawtooth or triangular waveform).
 
-Current sources are very common in circuit design, and as such are usually drawn using schematic symbols as shown below. An independent current source is once which has a predetermined fixed set current. A _controlled_ (or _dependent_) current source is one which is determined by another measurable value in the circuit, usually a voltage (e.g. `\(I_{source} = kV_{\text{somewhere else}}\)`). You may have seen a controlled current source symbol in the small-signal model for a BJT. Many analogue IC functional diagrams will show current sources with these symbols, hiding the discrete components they are made from.
+Current sources are very common in circuit design, and as such are usually drawn using schematic symbols as shown below. An independent current source is once which has a predetermined fixed set current. A _controlled_ (or _dependent_) current source is one which is determined by another measurable value in the circuit, usually a voltage (e.g. \(I_{source} = kV_{\text{somewhere else}}\)). You may have seen a controlled current source symbol in the small-signal model for a BJT. Many analogue IC functional diagrams will show current sources with these symbols, hiding the discrete components they are made from.
 
 {{% figure src="curr-source-symbols.svg" width="400" caption="Popular schematics symbols to represent current sources." %}}
 
@@ -36,16 +36,16 @@ Below shows one of the popular methods for constructing a current source from a 
 
 ### How It Works
 
-. The Zener diode `\(D1\)`, biased into it's voltage regulation range with resistor `\(R1\)`, maintains a steady voltage `\(V_B\)` at the base of the BJT transistor.
-. Using the rule that there is a `\(0.7V\)` drop the base-emitter junction of a BJT, this puts a fixed voltage at the emitter also.
-. Since this means there is a fixed voltage across `\(R_E\)`, this means by Ohm's law there is a fixed current through `\(R_E\)`.
-. Because most of the current supplied to the emitter of a BJT comes from the collector (only about 100-800th of the current comes from the base, depending on the gain `\(h_{FE}\)` of the BJT), this means there is a fixed current through `\(R_{load}\)` also!
+. The Zener diode \(D1\), biased into it's voltage regulation range with resistor \(R1\), maintains a steady voltage \(V_B\) at the base of the BJT transistor.
+. Using the rule that there is a \(0.7V\) drop the base-emitter junction of a BJT, this puts a fixed voltage at the emitter also.
+. Since this means there is a fixed voltage across \(R_E\), this means by Ohm's law there is a fixed current through \(R_E\).
+. Because most of the current supplied to the emitter of a BJT comes from the collector (only about 100-800th of the current comes from the base, depending on the gain \(h_{FE}\) of the BJT), this means there is a fixed current through \(R_{load}\) also!
 
 The current through the load is given by:
 
-<p>\begin{align}
+$$\begin{align}
 I_{load} = \frac{V_Z - 0.7V}{R_E}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -64,19 +64,19 @@ Below shows the schematic for a constant-current diode:
 
 ### How It Works
 
-The constant-current diode works by using the resistor `\(R_S\)` to negatively bias the N-channel JFET at a specific operating point. At this operating point the current from drain to source (and consequentially the load) will be relatively constant[^bib-elec-tut-fet-current-source].
+The constant-current diode works by using the resistor \(R_S\) to negatively bias the N-channel JFET at a specific operating point. At this operating point the current from drain to source (and consequentially the load) will be relatively constant[^bib-elec-tut-fet-current-source].
 
-TIP: Because of the typically large `\(R_S > 100\Omega\)` this circuit is only suitable for making low-power current sources up to the `\(10mA-100mA\)` range. Also, because of the large uncertainty in `\(V_{GS(off)}\)` (e.g. for the 2N5457, the datasheet says it is somewhere between `\(-0.5V\)` and `\(-6.0V\)`![^bib-onsemi-2n5457-ds]), these don't make very accurate current sources (without trimming). But they are stable!
+TIP: Because of the typically large \(R_S > 100\Omega\) this circuit is only suitable for making low-power current sources up to the \(10mA-100mA\) range. Also, because of the large uncertainty in \(V_{GS(off)}\) (e.g. for the 2N5457, the datasheet says it is somewhere between \(-0.5V\) and \(-6.0V\)![^bib-onsemi-2n5457-ds]), these don't make very accurate current sources (without trimming). But they are stable!
 
-### How To Calculate The Value Of The Resistor `\(R_S\)`
+### How To Calculate The Value Of The Resistor \(R_S\)
 
-1. Decide on what N-channel JFET you are going to use and your desired constant current, `\(I_D\)`.
+1. Decide on what N-channel JFET you are going to use and your desired constant current, \(I_D\).
 
 1. You then calculate the required gate-source voltage[^bib-vishay-an103-jfet-constant-current-source]:
-    <p>\begin{align}
+    $$\begin{align}
     \label{eq:jfet-vgs}
     V_{GS} = V_{GS(off)} \left[ 1 - (\frac{I_D}{I_{DSS}})^{1/k} \right]
-    \end{align}</p>
+    \end{align}$$
     <p class="centered">
     where:</br>
     \(V_{GS}\) is the gate-source voltage required to bias the JFET at the correct current, in \(V\)</br>
@@ -86,45 +86,45 @@ TIP: Because of the typically large `\(R_S > 100\Omega\)` this circuit is only s
     \(k\) is the conduction parameter for the JFET, and depends on the device geometry. This is not normally mentioned in the datasheet, however for this equation you can generally assume it to be \(2\).</br>
     </p>
 
-1. You can then find the value of `\(R_S\)` with:
-    <p>\begin{align}
+1. You can then find the value of \(R_S\) with:
+    $$\begin{align}
     \label{eq:rs-vgs-id}
     R_S = \frac{|V_{GS}|}{I_D}
-    \end{align}</p>
+    \end{align}$$
 
 
 ### Worked Example: 1.0mA Constant-Current Diode
 
-Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a constant current `\(I_D\)` of `\(1.0mA\)`.
+Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a constant current \(I_D\) of \(1.0mA\).
 
 From the [OnSemi 2N5457 datasheet](https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf), we get the following values:
 
-<p>\begin{align}
+$$\begin{align}
 I_{DSS} &= 3.0mA\ \text{(typ)} \\
 V_{GS(off)} &= -6.0V\ \text{(max)} \\
-\end{align}</p>
+\end{align}$$
 
-Plugging these values into `\(Eq.\ \ref{eq:jfet-vgs}\)` we can work out the required gate-source voltage (with the common assumption that `\(k = 2\)`):
+Plugging these values into \(Eq.\ \ref{eq:jfet-vgs}\) we can work out the required gate-source voltage (with the common assumption that \(k = 2\)):
 
-<p>\begin{align}
+$$\begin{align}
 V_{GS} &= V_{GS(off)} \left[ 1 - (\frac{I_D}{I_{DSS}})^{1/k} \right] \nonumber \\
        &= -6.0V \left[ 1 - (\frac{1.0mA}{3.0mA})^{1/2} \right] \nonumber \\
        &= -2.54V
-\end{align}</p>
+\end{align}$$
 
-Knowing the current `\(I_D\)` through the resistor and the voltage `\(V_{GS}\)` across it, we can find the resistance using `\(Eq.\ \ref{eq:rs-vgs-id}\)`:
+Knowing the current \(I_D\) through the resistor and the voltage \(V_{GS}\) across it, we can find the resistance using \(Eq.\ \ref{eq:rs-vgs-id}\):
 
-<p>\begin{align}
+$$\begin{align}
 R_S &= \frac{V_{GS}}{I_D} \nonumber \\
     &= \frac{|-2.54V|}{1.0mA} \nonumber \\
     &= 2.54k\Omega \\
-\end{align}</p>
+\end{align}$$
 
 Done!
 
-The resistor `\(R_S\)` can be replaced with a [potentiometer](/electronics/components/potentiometers-and-rheostats/) to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
+The resistor \(R_S\) can be replaced with a [potentiometer](/electronics/components/potentiometers-and-rheostats/) to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
 
-An important parameter determining the accuracy/stability of a constant-current diode is the [output conductance](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/#_output_conductance) `\(g_{oss}\)` of the JFET. This is the ratio of change in `\(I_D\)` to change in `\(V_{DS}\)`. This is a measure of how stable the constant-current source will be to changes in the voltage across it, which occur if either the supply voltage or load resistance changes. The lower the `\(g_{oss}\)` the better (an ideal current source would have `\(g_{oss} = 0\)`, which is the equivalent to a resistance of `\(\infty\)`).
+An important parameter determining the accuracy/stability of a constant-current diode is the [output conductance](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/#_output_conductance) \(g_{oss}\) of the JFET. This is the ratio of change in \(I_D\) to change in \(V_{DS}\). This is a measure of how stable the constant-current source will be to changes in the voltage across it, which occur if either the supply voltage or load resistance changes. The lower the \(g_{oss}\) the better (an ideal current source would have \(g_{oss} = 0\), which is the equivalent to a resistance of \(\infty\)).
 
 For more great reading on the constant-current diode, see https://www.vishay.com/docs/70596/70596.pdf.
 
@@ -134,29 +134,29 @@ TODO: Add info.
 
 ## Op-amp Current Sink
 
-The following schematic shows such a device which can control between 0-1A through the load (shown as `\(R_{load}\)`):
+The following schematic shows such a device which can control between 0-1A through the load (shown as \(R_{load}\)):
 
 {{% figure src="/electronics/components/current-sources-and-sinks/current-sink/op-amp-current-sink-schematic.png" width="700" caption="Schematic of a basic op-amp based current sink." %}}
 
-You set the desired load current by providing a voltage to `\(V_{in}\)`. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
+You set the desired load current by providing a voltage to \(V_{in}\). This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
 
-<p>\begin{align}
+$$\begin{align}
 I_{load} = \frac{V_{in}}{R_{sense}}
-\end{align}</p>
+\end{align}$$
 
 The circuit works like this:
 
-. Desired voltage to set current is provided to `\(V_{in}\)` which is applied to the positive input of the op-amp, `\(V_{op+}\)`.
-. The op-amp will then drive it's output high in an attempt to bring it's `\(V_{op-}\)` to the same voltage.
+. Desired voltage to set current is provided to \(V_{in}\) which is applied to the positive input of the op-amp, \(V_{op+}\).
+. The op-amp will then drive it's output high in an attempt to bring it's \(V_{op-}\) to the same voltage.
 . As the op-amp raises the voltage on it's output, this is connected to the gate of the MOSFET, which will begin to turn it on.
-. As the MOSFET turns on, current begins to flow through the load and sense resistor, `\(R_{sense}\)`.
-. The op-amp will keep turning the MOSFET on until the voltage drop across `\(R_{sense}\)` is equal to `\(V_{in}\)`, meaning `\(V_{op-}\)` is the same as `\(V_{op+}\)`.
-. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation `\( I_{load} = \frac{V_{in}}{R_{sense}} \)`.
+. As the MOSFET turns on, current begins to flow through the load and sense resistor, \(R_{sense}\).
+. The op-amp will keep turning the MOSFET on until the voltage drop across \(R_{sense}\) is equal to \(V_{in}\), meaning \(V_{op-}\) is the same as \(V_{op+}\).
+. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation \( I_{load} = \frac{V_{in}}{R_{sense}} \).
 
 Things to note:
 
-* The op-amp is powered here with a slightly negative voltage rail on it's `\(V_{SS}\)` pin. This is that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at `\(V_{op+}\)` and `\(V_{op-}\)` are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at `\(0V\)`.
-* The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by `\(P = I^2 R\)` at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in it's active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation `\(P = VI\)` to determine the power dissipation in the MOSFET.
+* The op-amp is powered here with a slightly negative voltage rail on it's \(V_{SS}\) pin. This is that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at \(V_{op+}\) and \(V_{op-}\) are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at \(0V\).
+* The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by \(P = I^2 R\) at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in it's active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation \(P = VI\) to determine the power dissipation in the MOSFET.
 * The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. See below to recommended compensation circuitry to add to the basic schematic to make the design more stable.
 
 **Current Sinking Accuracy**
@@ -164,7 +164,7 @@ Things to note:
 The accuracy of the current sink primarily depends of three aspects:
 
 * The input offset voltage of the op-amp.
-* The accuracy of the DAC (or other voltage source) providing the voltage to `\(V_{in}\)`.
+* The accuracy of the DAC (or other voltage source) providing the voltage to \(V_{in}\).
 * The tolerance of the current-sense resistor.
 
 **MOSFET Gate Capacitance Compensation**

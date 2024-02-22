@@ -43,7 +43,7 @@ There is another form of braking which is even faster than shorting the motor ou
 
 ## H-Bridge Built With Transistors
 
-Almost all serious half or full-bridges use [MOSFETs](/electronics/components/transistors/mosfets/) as the switches. This is because MOSFETs have a very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFETs are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
+Almost all serious half or full-bridges use [MOSFETs](/electronics/components/transistors/mosfets/) as the switches. This is because MOSFETs have a very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFETs are pushing on resistances (\( R_{DS(on)} \)) as low as \( 1m\Omega \) or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
 
 For the same price and physical size, N-channel MOSFETs generally have lower on resistances than P-channel MOSFETs. For this reason in many H-bridges the top two P-channel MOSFETs are replaced with N-channel MOSFETs, with the one disadvantage that charge pump circuitry is required to drive the gates higher than the supply voltage when turning them on.
 
@@ -63,7 +63,7 @@ One thing to watch out for here is the forward voltage drop of the diodes compar
 
 There are heaps of H-bridge related ICs! Some are just a controller that takes in a PWM signal and outputs control signals designed to go to a MOSFET driver, some include the controller and the MOSFET driver, and some even include the power MOSFETs (these are typically called _fully integrated_ motor driver ICs).
 
-For the same price and or physical size, N-channel MOSFETs have a lower `\(R_{DS(on)}\)` than P-channels. Because of this, many H-bridge circuits use N-channel MOSFETs for the top-side switches as well as the bottom-side. Top-side N-channel switches require a voltage greater than `\( V_{CC} \)` at the gate to turn them on. Most H-bridge drivers have an internal charge pump which takes care of this for you.
+For the same price and or physical size, N-channel MOSFETs have a lower \(R_{DS(on)}\) than P-channels. Because of this, many H-bridge circuits use N-channel MOSFETs for the top-side switches as well as the bottom-side. Top-side N-channel switches require a voltage greater than \( V_{CC} \) at the gate to turn them on. Most H-bridge drivers have an internal charge pump which takes care of this for you.
 
 There are a few commonly used control methods:
 
@@ -85,7 +85,7 @@ The `DRV8xxx` is a family of fully integrated (control and power electronics) br
 Texas Instruments uses the prefix `DRV` for all of their brushed, brushless and stepper motor driver ICs[^ti-motor-drivers-overview].
 {{% /aside %}}
 
-{{% ref "fig-drv8212p-motor-driver-ic-functional-block-diagram" %}} shows the functional block diagram for the `DRV8212P` motor driver IC. It has internal charge pumps for the gate drives to power the high-side N-Channel MOSFETs, and basic over-current, under-voltage and over-temperature protection. There are two separate power supplies can be provided. `\(V_{CC}\)` is for the logic and can range from 1.65-5.5V. `\(V_M\)` is purely for powering the motor and can range from 0-11V[^ti-drv8212p-motor-driver-ic-ds].
+{{% ref "fig-drv8212p-motor-driver-ic-functional-block-diagram" %}} shows the functional block diagram for the `DRV8212P` motor driver IC. It has internal charge pumps for the gate drives to power the high-side N-Channel MOSFETs, and basic over-current, under-voltage and over-temperature protection. There are two separate power supplies can be provided. \(V_{CC}\) is for the logic and can range from 1.65-5.5V. \(V_M\) is purely for powering the motor and can range from 0-11V[^ti-drv8212p-motor-driver-ic-ds].
 
 {{% figure ref="fig-drv8212p-motor-driver-ic-functional-block-diagram" src="drv8212p-motor-driver-ic-functional-block-diagram.png" width="600px" caption="The functional block diagram for the DRV8212P motor driver IC[^ti-drv8212p-motor-driver-ic-ds]." %}}
 
@@ -123,7 +123,7 @@ Bi-colour LED's that only have two pins (two LED's connected head-to-tail) requi
 
 Unfiltered H-bridges subject the load to square wave whose frequency is the same as frequency of the H-bridge switching elements.
 
-This is acceptable for some loads (e.g. resistive heaters), but not for others (e.g. peltiers). The problem is that although the average power delivered to a load from a PWM controlled H-bridge is the same powering the load from a continuous DC source at the average voltage, resistive losses are proportional to the square of the current (`\( P_R = I^2 R \)`).
+This is acceptable for some loads (e.g. resistive heaters), but not for others (e.g. peltiers). The problem is that although the average power delivered to a load from a PWM controlled H-bridge is the same powering the load from a continuous DC source at the average voltage, resistive losses are proportional to the square of the current (\( P_R = I^2 R \)).
 
 This results in higher resistive losses in a complex load controlled by a PWM source than a constant DC power source providing the same average input power.
 

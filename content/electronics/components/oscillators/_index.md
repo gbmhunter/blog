@@ -15,7 +15,7 @@ This site uses the word _oscillator_ to represent a component with an **self-con
 
 ## Designators
 
-A common designator prefix to use for oscillators is `\(Y\)` (e.g. `\(Y1\)`). I do not recommend using the prefix `\(XC\)` as this should be reserved for crystal oscillators.
+A common designator prefix to use for oscillators is \(Y\) (e.g. \(Y1\)). I do not recommend using the prefix \(XC\) as this should be reserved for crystal oscillators.
 
 ## Important Parameters
 
@@ -25,7 +25,7 @@ Phase noise is a way of describing the stability of the crystal in the frequency
 
 ### Start-Up Time
 
-Symbol: `\(T_{SU}\)`
+Symbol: \(T_{SU}\)
 
 The start-up time for most oscillators is within the range 2-20ms. This start-up time can be important in low-power designs when the start/stop time of the crystal results in wasted energy.
 
@@ -70,27 +70,27 @@ The series RC and parallel RC circuits form high-pass and low-pass circuit eleme
 
 Let's first look at the series and parallel RC circuits that provide the positive feedback.
 
-The impedance `\(Z_S\)` of the series RC circuit is:
+The impedance \(Z_S\) of the series RC circuit is:
 
-<p>\begin{align}
+$$\begin{align}
   Z_S &= R + X_C \nonumber \\
   \label{eqn:zs}
   &= R + \frac{1}{j\omega C}
-\end{align}</p>
+\end{align}$$
 
-The impedance `\(Z_P\)` of the parallel RC circuit is:
+The impedance \(Z_P\) of the parallel RC circuit is:
 
-<p>\begin{align}
+$$\begin{align}
 Z_P &= R \; || \; X_C \nonumber \\
     &= R \; || \; \frac{1}{j\omega C} \nonumber \\
     &= \frac{R \frac{1}{j\omega C}}{R + \frac{1}{j\omega C}} && \small \text{Rule for impedances in parallel.} \nonumber \\
     \label{eqn:zp}
     &= \frac{R}{j\omega RC + 1} && \small \text{Multiplying top and bottom by \(j\omega C\)}
-\end{align}</p>
+\end{align}$$
 
-We can then write an equation for the voltage at the non-inverting pin of the op-amp in terms of the output voltage, and then describing it as a ratio we can get the gain of the RC network, `\(\beta\)` (the symbol `\(\beta\)` used here is consistent with the Barkhausen stability criterion):
+We can then write an equation for the voltage at the non-inverting pin of the op-amp in terms of the output voltage, and then describing it as a ratio we can get the gain of the RC network, \(\beta\) (the symbol \(\beta\) used here is consistent with the Barkhausen stability criterion):
 
-<p>\begin{align}
+$$\begin{align}
 v_{\text{non-inv}} &= \frac{Z_P}{Z_P + Z_S} v_{out} && \tiny\text{Resistor divider rule} \nonumber \\
 \frac{v_{\text{non-inv}}}{v_{out}} &= \beta = \frac{Z_P}{Z_P + Z_S}  \nonumber \\
     &= \frac{ \frac{R}{j\omega RC + 1} }{ \frac{R}{j\omega RC + 1} +  R + \frac{1}{j\omega C} } && \tiny\text{Subs in \(Eq. \ref{eqn:zs}\) and \(Eq. \ref{eqn:zp}\)} \nonumber \\
@@ -100,58 +100,58 @@ v_{\text{non-inv}} &= \frac{Z_P}{Z_P + Z_S} v_{out} && \tiny\text{Resistor divid
     &= \frac{ j\omega RC }{ (j\omega RC)^2 + 3j\omega RC + 1 } && \tiny\text{Collecting terms} \nonumber \\
     \label{eqn:beta}
     &= \frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 } && \tiny\text{Using the identity \(j^2 = -1\)} \\
-\end{align}</p>
+\end{align}$$
 
 Now if we focus on the purely resistive feedback network to the inverting pin of the op-amp, you should recognize this as the standard non-inverting gain configuration, where the gain is:
 
-<p>\begin{align}
+$$\begin{align}
 \label{eqn:op-amp-gain-non-inv}
 A &= 1 + \frac{R_3}{R_4} && \small \text{Gain equation for non-inverting op-amp.} \\
-\end{align}</p>
+\end{align}$$
 
-In steady-state oscillation, the reduction in amplitude of `\(v_{out}\)` to `\(v_{non-inv}\)` as to be exactly "countered" by the gain provided from `\(v_{non-inv}\)` to `\(v_{out}\)`. This is also known as the Barkhausen criterion:
+In steady-state oscillation, the reduction in amplitude of \(v_{out}\) to \(v_{non-inv}\) as to be exactly "countered" by the gain provided from \(v_{non-inv}\) to \(v_{out}\). This is also known as the Barkhausen criterion:
 
-<p>\begin{align}
+$$\begin{align}
 | \beta A | &= 1 \\
 \left(1 + \frac{R_3}{R_4}\right)\left(\frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 }\right) &= 1 && \small \text{Subs. in \(Eq. \ref{eqn:beta}\) and \(Eq. \ref{eqn:op-amp-gain-non-inv}\)}
-\end{align}</p>
+\end{align}$$
 
 Now lets aim to separate the real and imaginary terms and write it as an equation which equals 0:
 
-<p>\begin{align}
+$$\begin{align}
 \left(1 + \frac{R_3}{R_4}\right) j\omega RC = -(\omega RC)^2 + 3j\omega RC + 1 \nonumber \\
 \left[ \left(\frac{R_3}{R_4} - 2\right) \omega RC \right] j + \left[ \omega^2 R^2 C^2 - 1 \right] =  0 \\
-\end{align}</p>
+\end{align}$$
 
-For this equation to hold true, both the real and imaginary parts must be equal to 0. If we focus on the real part first we can find `\(\omega\)` in terms of `\(R\)` and `\(C\)`:
+For this equation to hold true, both the real and imaginary parts must be equal to 0. If we focus on the real part first we can find \(\omega\) in terms of \(R\) and \(C\):
 
-<p>\begin{align}
+$$\begin{align}
 \omega^2 R^2 C^2 - 1 &=  0 \nonumber \\
 \omega  &= \frac{1}{RC} && \text{Re-arranging for \(\omega\)}
-\end{align}</p>
+\end{align}$$
 
 Or in terms of natural frequency rather than angular frequency:
 
-<p>\begin{align}
+$$\begin{align}
 f = \frac{1}{2\pi RC}
-\end{align}</p>
+\end{align}$$
 
-We can now look at the real part of the equation, which also must be 0. This gives us criterion for the ratio of the resistors `\(R_3\)` and `\(R_4\)`:
+We can now look at the real part of the equation, which also must be 0. This gives us criterion for the ratio of the resistors \(R_3\) and \(R_4\):
 
-<p>\begin{align}
+$$\begin{align}
 \left(\frac{R_3}{R_4} - 2\right) \omega RC &= 0 \nonumber \\
 \frac{R_3}{R_4} - 2 &= 0 \nonumber \\
 \label{eqn:r3-2-r4}
 R_3 &= 2R_4 \\
-\end{align}</p>
+\end{align}$$
 
 We can plug this back into the equation for the non-inverting gain of the amplifier so see what gain this results in:
 
-<p>\begin{align}
+$$\begin{align}
 A_{\text{non-inv}} &= 1 + \frac{R_3}{R_4} \nonumber \\
                   &= 1 + \frac{2R_4}{R_4} && \text{Subs. in \(Eq. \ref{eqn:r3-2-r4}\)} \nonumber \\
                   &= 3
-\end{align}</p>
+\end{align}$$
 
 ### Realistic Wien Bridge Oscillator Circuits
 
@@ -169,50 +169,50 @@ Wien bridge oscillators can also be made from a single supply[^bib-analog-device
 
 NOTE: I have just used the calculated capacitance and resistance values, and not picked the nearest realistic E96 value so that it's easier to keep track of where the values come from.
 
-The first thing is to choose an oscillation frequency. Let's choose `\(1kHz\)`. We will also choose an arbitrary capacitance of `\(C = 10nF\)`. It's good to keep the capacitance somewhat low and use ceramic NP0/C0G type dielectrics, as they will introduce the lowest amount of distortion. This means we need a resistance of:
+The first thing is to choose an oscillation frequency. Let's choose \(1kHz\). We will also choose an arbitrary capacitance of \(C = 10nF\). It's good to keep the capacitance somewhat low and use ceramic NP0/C0G type dielectrics, as they will introduce the lowest amount of distortion. This means we need a resistance of:
 
-<p>\begin{align}
+$$\begin{align}
 R &= \frac{1}{2\pi fC} \\
   &= \frac{1}{2\pi 1kHz \cdot 10nF} \\
   &= 15.9k\Omega \\
-\end{align}</p>
+\end{align}$$
 
-Let's use diodes as our non-linear element to make sure the loop gain stays at 1. The trick is to put the diodes in parallel with a portion of the `\(R_3\)` resistance, and make the inverting feedback gain slightly larger than 3 before the diodes begin to conduct.
+Let's use diodes as our non-linear element to make sure the loop gain stays at 1. The trick is to put the diodes in parallel with a portion of the \(R_3\) resistance, and make the inverting feedback gain slightly larger than 3 before the diodes begin to conduct.
 
-Ignoring the diodes for a moment, let's aim for a inverting gain of 3.2 and pick an arbitrary value for `\(R_4\)` of `\(1k\Omega\)`.
+Ignoring the diodes for a moment, let's aim for a inverting gain of 3.2 and pick an arbitrary value for \(R_4\) of \(1k\Omega\).
 
-<p>\begin{align}
+$$\begin{align}
 R_4 = 1k\Omega \\
-\end{align}</p>
+\end{align}$$
 
-<p>\begin{align}
+$$\begin{align}
 A &= 1 + \frac{R_3}{R_4}          \\
 3.2 &= 1 + \frac{R_3}{1k\Omega}   \\
 R_3 &= 2.2k\Omega
-\end{align}</p>
+\end{align}$$
 
-Now, we want the oscillations at `\(v_{out}\)` to reach a decent proportion of the supply voltage before the diode kicks in. Since we are running of `\(\pm 12V\)` supplies, lets make the diodes begin to conduct at `\(5V\)`. Let's calculate how much current is flowing through the series leg of `\(R_3\)` and `\(R_4\)` when there is `\(1V\)` at the output:
+Now, we want the oscillations at \(v_{out}\) to reach a decent proportion of the supply voltage before the diode kicks in. Since we are running of \(\pm 12V\) supplies, lets make the diodes begin to conduct at \(5V\). Let's calculate how much current is flowing through the series leg of \(R_3\) and \(R_4\) when there is \(1V\) at the output:
 
-<p>\begin{align}
+$$\begin{align}
 I &= \frac{1V}{R_3 + R_4} \\
   &= \frac{1V}{1k\Omega + 2.2k\Omega} \\
   &= 0.312mA \\
-\end{align}</p>
+\end{align}$$
 
-Assuming the diodes begin to conduct at `\(0.6V\)`, with `\(0.312mA\)` of current flowing this would be across a resistance of:
+Assuming the diodes begin to conduct at \(0.6V\), with \(0.312mA\) of current flowing this would be across a resistance of:
 
-<p>\begin{align}
+$$\begin{align}
 R_{3,diode} &= \frac{0.6V}{0.312mA} \\
           &= 1.92k\Omega             \\
-\end{align}</p>
+\end{align}$$
 
-So we need to split `\(R_3\)` into two resistors in series, one of `\(1.92k\Omega\)` with the diodes across it `\(R_{3,diode}\)` and one of:
+So we need to split \(R_3\) into two resistors in series, one of \(1.92k\Omega\) with the diodes across it \(R_{3,diode}\) and one of:
 
-<p>\begin{align}
+$$\begin{align}
 R_{3, no-diode} &= R_3 - R_{3,diode}      \\
                 &= 2.2k\Omega - 1.92k\Omega \\
                 &= 280\Omega            \\
-\end{align}</p>
+\end{align}$$
 
 {{% figure src="__assets/wien-bridge-oscillator/schematics.png" width="800px" caption="Wien Bridge oscillator circuit." %}}
 
@@ -222,10 +222,10 @@ We can then simulate the circuit using ngspice (an open-source SPICE-like circui
 
 You can count 6 cycles in approx. 6ms, which puts the simulated frequency at:
 
-<p>\begin{align}
+$$\begin{align}
 f &= \frac{6}{6ms} \\
   &= 1kHz
-\end{align}</p>
+\end{align}$$
 
 which agrees well with what we designed for!
 
@@ -236,13 +236,13 @@ You can download the following assets:
 
 ### JFET Gain-Limited Example
 
-Using a JFET to partially switch in another resistor in parallel with the ground-connected gain resistor `\(R_4\)` in the Wien bridge oscillator circuit is another method for preventing the oscillator for saturating (as opposed to the diode method shown above). **This JFET gain-limited approach is meant to introduce less distortion than the diode-limited approach above**, as the RC circuit driving the JFET's gate does not change much over a single cycle (assuming a suitable large RC time constant is picked).
+Using a JFET to partially switch in another resistor in parallel with the ground-connected gain resistor \(R_4\) in the Wien bridge oscillator circuit is another method for preventing the oscillator for saturating (as opposed to the diode method shown above). **This JFET gain-limited approach is meant to introduce less distortion than the diode-limited approach above**, as the RC circuit driving the JFET's gate does not change much over a single cycle (assuming a suitable large RC time constant is picked).
 
 Schematics of this technique are shown below, with the circuit setup to oscillate at the same frequency as the diode gain-limited variant mentioned above.
 
 {{% figure src="__assets/wien-bridge-oscillator-jfet/schematics.png" width="700px" caption="A practical Wien bridge oscillator circuit using a JFET (Q1) as the non-element to actively limit the gain and prevent the oscillator from saturating." %}}
 
-Note the diode and RC circuit controlling the JFET's gate. When the circuit is first powered up, the gate is at ground and hence the gate-source voltage `\(V_{GS} = 0V\)`. Therefore the JFET is almost fully on (remember, [JFETs are depletion mode devices](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets)), and `\(R_5\)` is in parallel with `\(R_4\)`, increasing the gain of the op-amp. As the output voltage beings to oscillate, on the negative part of the cycle, diode `\(D_1\)` will conduct and charge the RC low-pass filter `\(C_3\)` and `\(R_6\)` with a negative voltage. This will decrease `\(V_{GS}\)` below `\(0V\)`, which will begin to turn the JFET off. This will then increase the equivalent resistance of `\(R_5\)` in parallel with `\(R_4\)` and decrease the op-amp gain. This will continue until the system reaches a steady-state and oscillates forever.
+Note the diode and RC circuit controlling the JFET's gate. When the circuit is first powered up, the gate is at ground and hence the gate-source voltage \(V_{GS} = 0V\). Therefore the JFET is almost fully on (remember, [JFETs are depletion mode devices](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets)), and \(R_5\) is in parallel with \(R_4\), increasing the gain of the op-amp. As the output voltage beings to oscillate, on the negative part of the cycle, diode \(D_1\) will conduct and charge the RC low-pass filter \(C_3\) and \(R_6\) with a negative voltage. This will decrease \(V_{GS}\) below \(0V\), which will begin to turn the JFET off. This will then increase the equivalent resistance of \(R_5\) in parallel with \(R_4\) and decrease the op-amp gain. This will continue until the system reaches a steady-state and oscillates forever.
 
 And below are the simulation results for this circuit:
 

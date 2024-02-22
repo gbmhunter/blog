@@ -65,7 +65,7 @@ type: "page"
       <td>Typical PCB Land Area</td>
       <td>
       
-`\(21.1mm^2\)` (6.2x3.4mm)[^bib-nexperia-sod-128]
+\(21.1mm^2\) (6.2x3.4mm)[^bib-nexperia-sod-128]
       </td>
     </tr>
     <tr>
@@ -83,9 +83,9 @@ type: "page"
 
 ## Thermal Resistance
 
-* `\(R_{JA} = 200^{\circ}{\rm C}/W\)` (standard land pattern, see below)
-* `\(R_{JA} = 120^{\circ}{\rm C}/W\)` (mounting pad for cathode 1cm²)
-* `\(R_{JA} = 60^{\circ}{\rm C}/W\)` (mounted on ceramic PCB with standard footprint)
+* \(R_{JA} = 200^{\circ}{\rm C}/W\) (standard land pattern, see below)
+* \(R_{JA} = 120^{\circ}{\rm C}/W\) (mounting pad for cathode 1cm²)
+* \(R_{JA} = 60^{\circ}{\rm C}/W\) (mounted on ceramic PCB with standard footprint)
 
 ## 3D Render
 

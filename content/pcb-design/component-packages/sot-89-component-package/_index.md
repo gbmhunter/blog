@@ -67,13 +67,13 @@ The `SOT-89-5` package is commonly used as a SMD replacement for the `SIP-4` TH 
 
 www.diodes.com states their SOT-89-5 component package to have:
 
-<p>\begin{align}
+$$\begin{align}
 \theta_{JA} = 168^{\circ}C/W
-\end{align}</p>
+\end{align}$$
 
-<p>\begin{align}
+$$\begin{align}
 \theta_{JC} = 36^{\circ}C/W $$</div>
-\end{align}</p>
+\end{align}$$
 
 ## References
 

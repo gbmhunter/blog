@@ -47,10 +47,10 @@ MOSFETs can be wired to behave like a diode and are sometimes used instead of Sc
 
 This is the most basic type of charge pump. We'll go through each step of the process to show how exactly charge is moved around to have the effect of doubling the input voltage. This concept of "shunting around" charge (hence the _pump_ part in the name) is the key concept of any charge pump topology.
 
-1. When voltage is first applied to the circuit, `\(V_{in}\)` provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops D1 and D2.
+1. When voltage is first applied to the circuit, \(V_{in}\) provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops D1 and D2.
 1. Then the pulse in transitions from 0V to 5V. Because C1 is already charged to 4.7V, and this 5V appears on the capacitors negative lead, it "pushes" the top lead of C1 up to 9.7V. This then causes a current from C1, through D2, into C2, charging it up past 5V.
 1. The pulse then transitions back to 0V, and the cycle begins again with C1 charing back up to 5V (remember that it would of dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
-1. After enough cycles, the output voltage an C2 stabilizes to `\(2*V_{in} - 2V_f\)`.
+1. After enough cycles, the output voltage an C2 stabilizes to \(2*V_{in} - 2V_f\).
 
 {{% figure src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
 
@@ -72,9 +72,9 @@ The below figure shows the behaviour of the voltage doubling charge pump. Notice
 
 Charge pumps can be used as voltage sources, although **normally only for light loads are they generally have significant output impedance** (compared to linear regulators and SMPS). In general, the output impedance for a charge pump can be calculated by[^electronics-se-charge-pump-output-res]:
 
-<p>\begin{align}
+$$\begin{align}
 Z_{out} = \frac{N}{f*C} \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -94,36 +94,36 @@ Let's compare what this equation says compared to a simulation. Below is the sch
 
 The equation predicts the output impedance to be:
 
-<p>\begin{align}
+$$\begin{align}
 Z_{out} &= \frac{1}{5kHz*1uF} \nonumber \\
         &= 200\Omega \\
-\end{align}</p>
+\end{align}$$
 
-To find the output impedance, I found the output voltage under no load, and the output voltage and current with a `\(100\Omega\)` load. Both of these were done using Transient-style simulations.
+To find the output impedance, I found the output voltage under no load, and the output voltage and current with a \(100\Omega\) load. Both of these were done using Transient-style simulations.
 
-At no load, `\(V_{source} = 5.98V\)`.
+At no load, \(V_{source} = 5.98V\).
 
-With `\(R_{load} = 100\Omega\)`, `\(V_{load} = 2.23V\)`.
+With \(R_{load} = 100\Omega\), \(V_{load} = 2.23V\).
 
 Thus we can find the output resistance using the resistor divider equation:
 
-<p>\begin{align}
+$$\begin{align}
 V_{load} &= \frac{R_{load}}{Z_{out} + R_{load}} \\
-\end{align}</p>
+\end{align}$$
 
-Re-arrange for `\(Z_{out}\)`:
+Re-arrange for \(Z_{out}\):
 
-<p>\begin{align}
+$$\begin{align}
 Z_{out} &= \left(\frac{V_{source}}{V_{load}} - 1\right)*R_{load} \nonumber \\
     &= \left(\frac{5.98V}{2.23V} - 1\right) * 100\Omega \nonumber \\
     &= 168\Omega
-\end{align}</p>
+\end{align}$$
 
-So `\(200\Omega\)` predicted by the equation and `\(168\Omega\)` measured in the simulation. Sort of close! I'm guessing some of the differences could be explained by simulation non-idealities such as the diodes and parasitic elements. 
+So \(200\Omega\) predicted by the equation and \(168\Omega\) measured in the simulation. Sort of close! I'm guessing some of the differences could be explained by simulation non-idealities such as the diodes and parasitic elements. 
 
 ### Voltage Inverting Charge Pump
 
-Notice how while the voltage doubling charge pump requires two inputs (`\(V_{in}\)` and `\(V_{pulse}\)`), a voltage inverting charge pump only requires one --- `\(V_{pulse}\)`.
+Notice how while the voltage doubling charge pump requires two inputs (\(V_{in}\) and \(V_{pulse}\)), a voltage inverting charge pump only requires one --- \(V_{pulse}\).
 
 {{% figure src="/electronics/components/power-regulators/charge-pumps/charge-pump-inverter/charge-pump-inverter-schematic.png" width="600px" caption="A schematic for a voltage-inverting charge pump." %}}
 
@@ -155,13 +155,13 @@ Some LED drivers feature charge pumps to boost the supply voltage to a proper le
 
 ### MOSFET Gates
 
-N-channel MOSFETs are typically better performing (lower `\(R_{DS(on)}\)`, larger max. current limit) than P-channel MOSFETs. However, N-channel MOSFETs require a positive gate-source voltage (`\(V_{GS}\)`) to turn them on. This makes it problematic to use them as a high-side switch on a circuit, as you require a voltage on the gate which is higher than the load/input voltage (the load is connected to the source, which is at the same potential as the input voltage when the switch is on).
+N-channel MOSFETs are typically better performing (lower \(R_{DS(on)}\), larger max. current limit) than P-channel MOSFETs. However, N-channel MOSFETs require a positive gate-source voltage (\(V_{GS}\)) to turn them on. This makes it problematic to use them as a high-side switch on a circuit, as you require a voltage on the gate which is higher than the load/input voltage (the load is connected to the source, which is at the same potential as the input voltage when the switch is on).
 
 The most common way to overcome this problem is to use a small charge pump circuit to power the gate. Many buck converters use this trick to use an N-channel rather than a P-channel MOSFET as the switching element.
 
 ### RS-232
 
-The RS-232 standard mandates 5-15V `\(V_{OH}\)` and `\(V_{OL}\)` levels. Because most modern day circuits are powered by +3.3 or +5V, charge pumps are commonly used to provide these higher voltage levels. Early RS-232 transceivers used unregulated charge pumps (which just doubled the input voltage), whilst more modern transceivers use regulated charge pumps which provide stable RS-232 logic levels over a range over input voltages.
+The RS-232 standard mandates 5-15V \(V_{OH}\) and \(V_{OL}\) levels. Because most modern day circuits are powered by +3.3 or +5V, charge pumps are commonly used to provide these higher voltage levels. Early RS-232 transceivers used unregulated charge pumps (which just doubled the input voltage), whilst more modern transceivers use regulated charge pumps which provide stable RS-232 logic levels over a range over input voltages.
 
 ## References
 

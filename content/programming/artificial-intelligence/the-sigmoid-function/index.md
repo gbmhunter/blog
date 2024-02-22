@@ -16,19 +16,19 @@ The sigmoid function is a mathematical function which when plotted, has a charac
 
 The logistic function is given by the following equation:
 
-<p>$$
+$$
 S(x) = \frac{1}{1 + e^{-x}}
-$$</p>
+$$
 
-Plotted from `\(x = -10\)` to `\(x = 10\)`, the function looks like this:
+Plotted from \(x = -10\) to \(x = 10\), the function looks like this:
 
 {{% figure src="graph-logistic-function.png" width="700px" caption="A graph of the logistic function." %}}
 
 The logistic function pops up in _logistic regression_ (a popular algorithm used in machine learning) in the form:
 
-<p>$$
+$$
 P = \frac{1}{1 + e^{-(a + b_i X_i)}}
-$$</p>
+$$
 
 <p class="centered">
 where:<br>

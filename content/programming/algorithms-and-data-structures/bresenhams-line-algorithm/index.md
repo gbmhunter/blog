@@ -9,20 +9,20 @@ title: "Bresenham's Line Algorithm"
 type: "page"
 ---
 
-Bresenham's line algorithm is way of drawing a line between two points, `\(A\)` and `\(B\)` on a computer screen of pixels. While this is somewhat trivial to do with floating point arithmetic, the key idea in Bresenham's line algorithm is to avoid expensive floating point arithmetic, and use integer maths only. This algorithm was invented at a time when floating-point units (FPUs) in CPUs where a lot rarer than they are today. It still has application in todays world for GPUs and other devices where FPUs are not available.
+Bresenham's line algorithm is way of drawing a line between two points, \(A\) and \(B\) on a computer screen of pixels. While this is somewhat trivial to do with floating point arithmetic, the key idea in Bresenham's line algorithm is to avoid expensive floating point arithmetic, and use integer maths only. This algorithm was invented at a time when floating-point units (FPUs) in CPUs where a lot rarer than they are today. It still has application in todays world for GPUs and other devices where FPUs are not available.
 
 To simplify the problem, we will look at drawing a line where:
 
-* `\(x_1 < x_2\)` and `\(y_1 < y_2\)`
-* The slope (gradient) of the line, `\(m\)` is `\(0 < m <= 1\)`
+* \(x_1 < x_2\) and \(y_1 < y_2\)
+* The slope (gradient) of the line, \(m\) is \(0 < m <= 1\)
 
 Although we make these simplifications to explain the algorithm, Bresenham's line algorithm is easily extendible to draw any line (this will be shown later).
 
-We start at the start pixel, `\( x_k,\;y_k \)`, and we increase `\(x\)` by 1. Then we decide on whether `\(y\)` needs to increase by 1, or remain at `\(y\)`. We make this decision based on whether the pixel `\( x_k + 1,\;y_k \)` or the pixel `\( x_k + 1,\;y_k + 1\)` is closest to the line.
+We start at the start pixel, \( x_k,\;y_k \), and we increase \(x\) by 1. Then we decide on whether \(y\) needs to increase by 1, or remain at \(y\). We make this decision based on whether the pixel \( x_k + 1,\;y_k \) or the pixel \( x_k + 1,\;y_k + 1\) is closest to the line.
 
 {{% figure src="bresenham-selecting-next-pixel.png" width="700px" caption="Choosing the next pixel when drawing a line. Each grid point is the center of a pixel. The blue dot is the previously selected pixel that has been drawn. We have to choose the next pixel from the two possible orange options." %}}
 
-So in the example above, we would want to choose the pixel where we increment `\(y\)` by 1, as you can see it is closer to the line. To work this out in code, we keep track of the amount of accumulated error between the line and the chosen pixels (error in the vertical, or y, direction only). If the error becomes larger than 0.5, we know that the `\(y_{k+1}\)` pixel is closer to the line than the `\(y_k\)` pixel, and we increment `\(y\)` by 1.
+So in the example above, we would want to choose the pixel where we increment \(y\) by 1, as you can see it is closer to the line. To work this out in code, we keep track of the amount of accumulated error between the line and the chosen pixels (error in the vertical, or y, direction only). If the error becomes larger than 0.5, we know that the \(y_{k+1}\) pixel is closer to the line than the \(y_k\) pixel, and we increment \(y\) by 1.
 
 The below python code shows this by example:
 
@@ -44,13 +44,13 @@ def draw_line_tracking_error(x_start, y_start, x_end, y_end):
 
 Note we are still using float-point arithmetic. There are further optimizations we can do to remove floats altogether.
 
-Remember that the error (`\(\epsilon\)`) + the slope (`\( \frac{\Delta y}{\Delta x} \)`) must be less than 0.5 for `y` to not be incremented:
+Remember that the error (\(\epsilon\)) + the slope (\( \frac{\Delta y}{\Delta x} \)) must be less than 0.5 for `y` to not be incremented:
 
 <div>$$\epsilon + \frac{\Delta y}{\Delta x} < 0.5$$</div>
 
 Consider the above equation the "check" we will do to see if we increment `y` (the `if` statement). We want to get rid of all possible non-integer values from this equation. The two non-integer values are the slope, and the `0.5`. Let's manipulate this equation to remove them.
 
-First, we multiply everything by `\(\Delta x \)` to get rid of the fraction:
+First, we multiply everything by \(\Delta x \) to get rid of the fraction:
 
 <div>$$\epsilon \Delta x + \Delta y < 0.5 \Delta x$$</div>
 

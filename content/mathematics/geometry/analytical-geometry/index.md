@@ -46,7 +46,7 @@ Notice that this method does not use point C at all! It projects the point M ont
 
 ## How To Find The Distance Between A Line And A Point In 3D
 
-Given two points `\(x_1\)` and `\(x_2\)` which form a line in 3D space, and a third point `\(x_0\)` in 3D space, the shortest distance `\( d \)` between the point `\(x_0\)` and the line is given by:
+Given two points \(x_1\) and \(x_2\) which form a line in 3D space, and a third point \(x_0\) in 3D space, the shortest distance \( d \) between the point \(x_0\) and the line is given by:
 
 <div>$$ d = \frac{|(x_0 - x_1) \times (x_0 - x_2)|}{|x_2 - x_1|} $$</div>
 
@@ -58,45 +58,45 @@ Given two points `\(x_1\)` and `\(x_2\)` which form a line in 3D space, and a th
 
 **The Long Way**
 
-Assume we have points `\(\mathbf{p1}\)` and `\(\mathbf{p2}\)` which form a line, and we want to find the shortest distance from this line to a point `\(\mathbf{p3}\)`.
+Assume we have points \(\mathbf{p1}\) and \(\mathbf{p2}\) which form a line, and we want to find the shortest distance from this line to a point \(\mathbf{p3}\).
 
 {{% figure src="3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475px" caption="A diagram showing a 3D point to line distance problem."  %}}
 
-We will first find the point `\(\mathbf{p4}\)` which is the closest point to `\(\mathbf{p3}\)` which is on the line. Once we have this, finding the distance of the line which goes from `\(\mathbf{p3}\)` to `\(\mathbf{p4}\)` will be trivial.
+We will first find the point \(\mathbf{p4}\) which is the closest point to \(\mathbf{p3}\) which is on the line. Once we have this, finding the distance of the line which goes from \(\mathbf{p3}\) to \(\mathbf{p4}\) will be trivial.
 
-The point `\(\mathbf{p4}\)` can be expressed in parametric form using the equation for a line from `\(\mathbf{p1}\)` to `\(\mathbf{p2}\)`:
+The point \(\mathbf{p4}\) can be expressed in parametric form using the equation for a line from \(\mathbf{p1}\) to \(\mathbf{p2}\):
 
 <div>$$ \mathbf{p4} = u(\mathbf{p2} - \mathbf{p1}) \label{eq:point4} \tag{1} $$</div>
 
-We want to find `\(u\)` so we can then find `\(P4\)`. Since there are two unknowns, we will need another equation. We can form one from the knowledge that the `\(P1 P2\)` line and the line that connects the point `\(P3\)` to this line will be perpendicular, which means that the dot product will be 0. We can write this as:
+We want to find \(u\) so we can then find \(P4\). Since there are two unknowns, we will need another equation. We can form one from the knowledge that the \(P1 P2\) line and the line that connects the point \(P3\) to this line will be perpendicular, which means that the dot product will be 0. We can write this as:
 
 <div>$$ \begin{equation} (\mathbf{p3} - \mathbf{p4}) \bullet (\mathbf{p2} - \mathbf{p1}) = 0 \label{eq:dot-product} \tag{2} \end{equation}$$</div>
 
-Substituting `\( \eqref{eq:point4} \)` into `\( \eqref{eq:dot-product} \)` gives us:
+Substituting \( \eqref{eq:point4} \) into \( \eqref{eq:dot-product} \) gives us:
 
 <div>$$ (\mathbf{p3} - \mathbf{p1} - u(\mathbf{p2} - \mathbf{p1})) \bullet (\mathbf{p2} - \mathbf{p1}) = 0 \label{eq:substituted} \tag{3} $$</div>
 
-Expanding `\(\eqref{eq:substituted}\)` gives us:
+Expanding \(\eqref{eq:substituted}\) gives us:
 
 <div>$$ \mathbf{p3} \bullet (\mathbf{p2} - \mathbf{p1}) - \mathbf{p1} \bullet (\mathbf{p2} - \mathbf{p1}) - u(\mathbf{p2} - \mathbf{p1})\bullet(\mathbf{p2} - \mathbf{p1}) = 0 $$</div>
 
-Factorizing and realizing that `\( (\mathbf{p2} - \mathbf{p1})\bullet(\mathbf{p2} - \mathbf{p1}) \)` is the norm squared:
+Factorizing and realizing that \( (\mathbf{p2} - \mathbf{p1})\bullet(\mathbf{p2} - \mathbf{p1}) \) is the norm squared:
 
 <div>$$ (\mathbf{p3} - \mathbf{p1}) \bullet (\mathbf{p2} - \mathbf{p1}) - u\Vert\mathbf{p2} - \mathbf{p1}\Vert^2 = 0 $$</div>
 
-Re-arrange for `\(u\)`:
+Re-arrange for \(u\):
 
 <div>$$ u = \frac{(\mathbf{p3} - \mathbf{p1}) \bullet (\mathbf{p2} - \mathbf{p1})}{\Vert\mathbf{p2} - \mathbf{p1}\Vert^2} $$</div>
 
-We can now work out a value for `\(u\)`, given the values of the three points we know! Once a value for `\(u\)` is found, we can then calculate the location of point `\(\mathbf{p4}\)` using `\(\eqref{eq:point4}\)`.
+We can now work out a value for \(u\), given the values of the three points we know! Once a value for \(u\) is found, we can then calculate the location of point \(\mathbf{p4}\) using \(\eqref{eq:point4}\).
 
-Once `\(\mathbf{p4}\)` is found, the distance between the point `\(\mathbf{p3}\)` and the line is simply the distance of the line `\(\mathbf{p3p4}\)`:
+Once \(\mathbf{p4}\) is found, the distance between the point \(\mathbf{p3}\) and the line is simply the distance of the line \(\mathbf{p3p4}\):
 
 <div>$$ d = \Vert\mathbf{p4} - \mathbf{p3}\Vert $$</div>
 
 ## How To Calculate The Angle Between Two Lines In 3D
 
-The one is relatively easy. Given the lines `\( l_1 = a_1 t + b_1  \)` (both are in parametric form), we can use the dot product rule. We don't need to use \(`b_1`\) or `\(b_2\)`, **we just need the directional component of each line**, `\(a_1\)` and `\(a_2\)` (think of these as the _vectors_ for each line). Then we can use the dot product rule, and we just need to solve for `\( \theta \)`:
+The one is relatively easy. Given the lines \( l_1 = a_1 t + b_1  \) (both are in parametric form), we can use the dot product rule. We don't need to use \(`b_1`\) or \(b_2\), **we just need the directional component of each line**, \(a_1\) and \(a_2\) (think of these as the _vectors_ for each line). Then we can use the dot product rule, and we just need to solve for \( \theta \):
 
-<p>$$ \cos \theta = \frac{\b{a} \cdot \b{b}}{|\b{a}||\b{b}|} $$</p>
+$$ \cos \theta = \frac{\b{a} \cdot \b{b}}{|\b{a}||\b{b}|} $$
 

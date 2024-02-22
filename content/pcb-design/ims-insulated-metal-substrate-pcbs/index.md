@@ -37,14 +37,14 @@ Sometimes using a IMS PCB saves you having to use a heatsink!
 
 Just for comparison, here are the thermal conductivities of various PCB materials. Note that these units are Watts per metre per Kelvin (or Watts per metre-Kelvin).
 
-* Copper: `\(385 W/m/K\)`
-* Aluminum: `\(205 W/m/K\)`
-* Water: `\(0.56 W/m/K\)`
-* FR4: `\(0.25 W/m/K\)`
-* Thermal prepreg: `\(1.00 – 5.00 W/m/K\)`
-* Still Air: `\(0.24 W/m/K\)`
+* Copper: \(385 W/m/K\)
+* Aluminum: \(205 W/m/K\)
+* Water: \(0.56 W/m/K\)
+* FR4: \(0.25 W/m/K\)
+* Thermal prepreg: \(1.00 – 5.00 W/m/K\)
+* Still Air: \(0.24 W/m/K\)
 
-Notice how traditional PCB prepreg has a very poor thermal conductivity at `\(0.25W/m/K\)`.
+Notice how traditional PCB prepreg has a very poor thermal conductivity at \(0.25W/m/K\).
 
 ## Design
 

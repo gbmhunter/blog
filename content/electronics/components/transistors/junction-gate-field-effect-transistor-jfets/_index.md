@@ -16,7 +16,7 @@ type: page
 
 A _junction-gate field-effect transistor_ (JFET) is a **voltage controlled, three terminal transistor**. It is closely related to the more popular [MOSFET](/electronics/components/transistors/mosfets/) (another form of field-effect transistor).
 
-The **main differences between a MOSFET and a JFET** is that the JFET has more gate current due to the absence of the gate oxide layer, and JFETs only come in depletion mode (JFET is on at `\(V_{GS} = 0V\)`, and turns off as `\(V_{GS}\)` goes negative), whilst MOSFETs come in both enhancement mode and depletion mode types.
+The **main differences between a MOSFET and a JFET** is that the JFET has more gate current due to the absence of the gate oxide layer, and JFETs only come in depletion mode (JFET is on at \(V_{GS} = 0V\), and turns off as \(V_{GS}\) goes negative), whilst MOSFETs come in both enhancement mode and depletion mode types.
 
 ## Schematic Symbols
 
@@ -37,53 +37,53 @@ JFETs are used for:
 
 ## Datasheet Parameters
 
-### Gate-Source Cutoff Voltage (`\(V_{gs(off)}\)`)
+### Gate-Source Cutoff Voltage (\(V_{gs(off)}\))
 
-This is the gate-source voltage at which the JFET is pretty much "turned off", i.e. the current flowing through the drain has dropped to almost 0. Typically it is specified as the voltage at which the drain current drops down to a current of `\(10nA\)`. Unfortunately for JFETs, this value varies significantly due to manufacturing tolerances and typically a Vgs(off) min. to max. range of >5V can be given! Taking the OnSemi 2N5457 for example, it's datasheet specifies a `\(V_{GS(off)}\)` min. of `\(-0.5V\)` and a max. of `\(-6.0V\)` (ignore that because we are dealing with negative numbers, the max. is actually a "smaller" number than the min.)[^bib-onsemi-2n5457-ds].
+This is the gate-source voltage at which the JFET is pretty much "turned off", i.e. the current flowing through the drain has dropped to almost 0. Typically it is specified as the voltage at which the drain current drops down to a current of \(10nA\). Unfortunately for JFETs, this value varies significantly due to manufacturing tolerances and typically a Vgs(off) min. to max. range of >5V can be given! Taking the OnSemi 2N5457 for example, it's datasheet specifies a \(V_{GS(off)}\) min. of \(-0.5V\) and a max. of \(-6.0V\) (ignore that because we are dealing with negative numbers, the max. is actually a "smaller" number than the min.)[^bib-onsemi-2n5457-ds].
 
-### Zero Gate Voltage Drain Current (`\(I_{dss}\)`)
+### Zero Gate Voltage Drain Current (\(I_{dss}\))
 
-This is the current through the drain when `\(V_{GS} = 0V\)`.
+This is the current through the drain when \(V_{GS} = 0V\).
 
-### Gate-Source Breakdown Voltage (`\(V_{(br)gss}\)`)
+### Gate-Source Breakdown Voltage (\(V_{(br)gss}\))
 
-The gate-source breakdown voltage `\(V_{(BR)GSS}\)` is the maximum voltage the gate can withstand (relative to the source) before breakdown occurs.
+The gate-source breakdown voltage \(V_{(BR)GSS}\) is the maximum voltage the gate can withstand (relative to the source) before breakdown occurs.
 
-### Transconductance (`\(g_m\)` or `\(|Y_{fs}|\)`)
+### Transconductance (\(g_m\) or \(|Y_{fs}|\))
 
-The transconductance `\(g_m\)` (also called small-signal transconductance, _forward transfer admittance_ `\(|Y_{fs}|\)`, or `\(g_{fs}\)`) is the ratio of change in `\(I_D\)` to a change in `\(V_{GS}\)` at a constant drain-to-source voltage `\(V_{DS}\)` (see `\(Eq.\ \ref{eq-yfs-gm-di-dv}\)`). It is typically given in units of `\(\mu S\)` (or `\(\mu mhos\)`, which is equivalent). It can be thought of as the small-signal gain, when the JFET is operating at a fixed DC bias point.
+The transconductance \(g_m\) (also called small-signal transconductance, _forward transfer admittance_ \(|Y_{fs}|\), or \(g_{fs}\)) is the ratio of change in \(I_D\) to a change in \(V_{GS}\) at a constant drain-to-source voltage \(V_{DS}\) (see \(Eq.\ \ref{eq-yfs-gm-di-dv}\)). It is typically given in units of \(\mu S\) (or \(\mu mhos\), which is equivalent). It can be thought of as the small-signal gain, when the JFET is operating at a fixed DC bias point.
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq-yfs-gm-di-dv}
 g_m = |Y_{fs}| = \frac{\Delta I_D}{\Delta V_{GS}}
-\end{align}</p>
+\end{align}$$
 
-The transconductance is maximum at `\(V_{GS} = 0V\)`, which is called `\(g_{mo}\)` and is typically specified in the JFET's datasheet[^bib-elec4u-jfet-params]. {{% ref "fig-vgs-vs-id-showing-gradient-2n5457-jfet" %}} shows the curve of `\(V_{GS}\)` vs. `\(I_{D}\)` for the 2N5457 JFET.
+The transconductance is maximum at \(V_{GS} = 0V\), which is called \(g_{mo}\) and is typically specified in the JFET's datasheet[^bib-elec4u-jfet-params]. {{% ref "fig-vgs-vs-id-showing-gradient-2n5457-jfet" %}} shows the curve of \(V_{GS}\) vs. \(I_{D}\) for the 2N5457 JFET.
 
-{{% figure ref="fig-vgs-vs-id-showing-gradient-2n5457-jfet" src="_assets/vgs-vs-id-showing-gradient-2n5457-jfet.png" width="500px" caption="The transconductance is the gradient of the `\(I_D\)` vs. `\(V_{GS}\)` graph at the DC operating point. DC operating point shown by dotted blue lines. This is the source transfer characteristics of the 2N5456 N-channel JFET[^bib-onsemi-2n5457-ds]." %}}
+{{% figure ref="fig-vgs-vs-id-showing-gradient-2n5457-jfet" src="_assets/vgs-vs-id-showing-gradient-2n5457-jfet.png" width="500px" caption="The transconductance is the gradient of the \(I_D\) vs. \(V_{GS}\) graph at the DC operating point. DC operating point shown by dotted blue lines. This is the source transfer characteristics of the 2N5456 N-channel JFET[^bib-onsemi-2n5457-ds]." %}}
 
-The transconductance for most JFETs ranges from `\(1-100mS\)`. They are typically specified at the bias point `\(V_{GS} = 0V.\)`
+The transconductance for most JFETs ranges from \(1-100mS\). They are typically specified at the bias point \(V_{GS} = 0V.\)
 
 ### Output Conductance
 
-The _output conductance_ `\(g_{oss}\)` is the ratio of change in `\(I_D\)` to a change in `\(V_{DS}\)`[^bib-vishay-an103-fet-curr-source].
+The _output conductance_ \(g_{oss}\) is the ratio of change in \(I_D\) to a change in \(V_{DS}\)[^bib-vishay-an103-fet-curr-source].
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq-goss-id-vds}
 g_{oss} = \frac{\Delta I_D}{\Delta V_{DS}}
-\end{align}</p>
+\end{align}$$
 
-`\(g_{oss}\)` ranges from `\(1\mu S\)` to `\(50\mu S\)` for most JFETs[^bib-vishay-an103-fet-curr-source].
+\(g_{oss}\) ranges from \(1\mu S\) to \(50\mu S\) for most JFETs[^bib-vishay-an103-fet-curr-source].
 
 The output conductance is an important consideration for the stability/accuracy of a JFET current source[^bib-vishay-an103-fet-curr-source]. Another way of expressing output conductance is the [^#_dynamic_resistance, dynamic resistance].
 
 ### Dynamic Resistance
 
-The _dynamic resistance_ `\(r_d\)` is just the reciprocal of the [^#_output_conductance, output conductance], and is typically expressed in units of `\(M\Omega\)`.
+The _dynamic resistance_ \(r_d\) is just the reciprocal of the [^#_output_conductance, output conductance], and is typically expressed in units of \(M\Omega\).
 
-<p>\begin{align}
+$$\begin{align}
 r_d = \frac{1}{g_{oss}}
-\end{align}</p>
+\end{align}$$
 
 ## Current Source
 
@@ -96,9 +96,9 @@ JFETs can be used to make two-terminal current sources which can be useful in ci
 
 Parameters for popular JFET parts:
 
-| Part Number | `\(g_m (typ)\)` | Package
+| Part Number | \(g_m (typ)\) | Package
 |-------------|-----------------|---------------
-| 2N5457[^bib-onsemi-2n5457-ds] | `\(3000\mu S\)` | TO-92
+| 2N5457[^bib-onsemi-2n5457-ds] | \(3000\mu S\) | TO-92
 
 ## References
 

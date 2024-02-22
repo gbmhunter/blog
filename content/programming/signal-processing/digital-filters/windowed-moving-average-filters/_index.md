@@ -24,21 +24,21 @@ First off, some terminology.
 
 ### Window Size (N)
 
-* Symbol: `\(N\)`
+* Symbol: \(N\)
 
-The _window size_ is number of data points used in a moving average filter. `\(M\)` is another letter commonly used to represent the same thing.
+The _window size_ is number of data points used in a moving average filter. \(M\) is another letter commonly used to represent the same thing.
 
 ### Normalized Frequency (F)
 
-* Symbol: `\(F\)`
+* Symbol: \(F\)
 
-The normalised frequency, with units `\(Hz/sample\)`. This describes an frequency component in a filter relative to the sampling frequency (e.g. a normalized frequency `\(F\)` of 0.1 means there are 10 samples per cycle. The signal is at Nyquist when `\(F=0.5\)`. This is a frequency in the discrete time-domain. Do not confuse with `\(f\)` which is a frequency in the continuous time-domain.
+The normalised frequency, with units \(Hz/sample\). This describes an frequency component in a filter relative to the sampling frequency (e.g. a normalized frequency \(F\) of 0.1 means there are 10 samples per cycle. The signal is at Nyquist when \(F=0.5\). This is a frequency in the discrete time-domain. Do not confuse with \(f\) which is a frequency in the continuous time-domain.
 
-To convert from a standard frequency `\(f\)` to a normalized frequency `\(F\)`, use the equation:
+To convert from a standard frequency \(f\) to a normalized frequency \(F\), use the equation:
 
-<p>\begin{align}
+$$\begin{align}
 F = \frac{f}{f_s}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -47,15 +47,15 @@ F = \frac{f}{f_s}
     \( f_s \) is the sample rate, in \( Hz \)<br>
 </p>
 
-The normalized frequency can also be expressed in radians, and if so uses the symbol `\(\omega\)`. This has the units `\(radians/sample\)`.
+The normalized frequency can also be expressed in radians, and if so uses the symbol \(\omega\). This has the units \(radians/sample\).
 
 ### Frequency (f)
 
-* Symbol: `\(f\)`
+* Symbol: \(f\)
 
 A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.
 
-### Sampling Frequency (`\(f_s\)`)
+### Sampling Frequency (\(f_s\))
 
 The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here). 
 
@@ -81,9 +81,9 @@ There are two common types of simple moving average filters:
 
 A left-handed simple moving average filter can be represented by:
 
-<p>\begin{align}
+$$\begin{align}
 y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i-j]
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br/>
@@ -92,42 +92,42 @@ y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i-j]
     \( N \) = the number of points in the average (the width of the window)<br/>
  </p>
 
-For example, with a windows size of `\(N = 5\)`, the moving average at point 9 would be sum of the last 5 inputs `\(x[9]\)` thru to `\(x[5]\)` divided by 5:
+For example, with a windows size of \(N = 5\), the moving average at point 9 would be sum of the last 5 inputs \(x[9]\) thru to \(x[5]\) divided by 5:
 
-<p>\begin{align}
+$$\begin{align}
 y[9] = \frac{x[9] + x[8] + x[7] + x[6] + x[5]}{5}
-\end{align}</p>
+\end{align}$$
 
-Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
+Left-handed filters of this type can be calculated in real-time (\(y[i]\) can be found as soon as \(x[i]\) is known).
 
 The window can also be centered around the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
-<p>\begin{align}
+$$\begin{align}
 y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i-j]
-\end{align}</p>
+\end{align}$$
 
-For example, using our `\(y[9]\)` again:
+For example, using our \(y[9]\) again:
 
-<p>\begin{align}
+$$\begin{align}
 y[9] = \frac{x[11] + x[10] + x[9] + x[8] + x[7]}{5}
-\end{align}</p>
+\end{align}$$
 
-Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_)**. Most SMA filters used on stock market data use a left-handed filter so that it is real-time.
+Symmetric simple moving averages require \(N\) to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_)**. Most SMA filters used on stock market data use a left-handed filter so that it is real-time.
 
 When treating a simple moving average filter as a FIR, the coefficients are all equal. The order of the filter is 1 less than the value you divide each value by. The coefficients are given by the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 b_i = \frac{1}{N + 1}
-\end{align}</p>
+\end{align}$$
 
 A simple moving average filter can also be seen as a convolution between the input signal and a rectangular pulse whose area is 1.
 ### Frequency Response
 
 The frequency response for a simple moving average filter is given by:
 
-<p>\begin{align}
+$$\begin{align}
 H(F) = \frac{1}{N}\frac{sin(\pi F N)}{sin(\pi F)}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -136,11 +136,11 @@ H(F) = \frac{1}{N}\frac{sin(\pi F N)}{sin(\pi F)}
     \( N \) = the number of points in the average (the width of the window)<br>
 </p>
 
-Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units (`\(\omega\)`), in which case `\( \omega = 2\pi F \)`. To convert from a standard frequency `\(f\)` to a normalized frequency `\(F\)`, use the equation:
+Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units (\(\omega\)), in which case \( \omega = 2\pi F \). To convert from a standard frequency \(f\) to a normalized frequency \(F\), use the equation:
 
-<p>\begin{align}
+$$\begin{align}
 F = \frac{f}{f_s}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -149,19 +149,19 @@ F = \frac{f}{f_s}
     \( f_s \) is the sample rate, in \( Hz \)<br>
 </p>
 
-To avoid division by zero, use `\( H(0) = 1 \)`. The magnitude follows the shape of a `\( sinc \)` function.
+To avoid division by zero, use \( H(0) = 1 \). The magnitude follows the shape of a \( sinc \) function.
 
 The frequency response can also be written as[^uc-berkeley-freq-response-sma]:
 
-<p>\begin{align}
+$$\begin{align}
 H(\omega) = \frac{1}{N}\left(\frac{1 - e^{-j\omega N}}{1 - e^{-j\omega}}\right)
-\end{align}</p>
+\end{align}$$
 
-Lets design a SMA filter with a sampling rate of `\(1kHz\)` and a window size of `\(10\)`. This gives the following magnitude response:
+Lets design a SMA filter with a sampling rate of \(1kHz\) and a window size of \(10\). This gives the following magnitude response:
 
 {{% figure src="frequency-response-of-sma-magnitude.png" width="700px" caption="The magnitude response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
 
-As expected, this shows us that at DC, the signal is not attenuated at all. As the frequency increases, the filter then begins to block more and more, until it lets through absolutely no signal at `\(100Hz\)`. This can be intuitively understood, because with a `\(1kHz\)` sampling frequency and a window size of `\(10\)`, **a single cycle of a `\(100Hz\)` signal would fit perfectly into the window**. Since you take the average of all the values in the window, this top half of the `\(100Hz\)` signal would cancel out perfectly with the bottom half, giving no output. But then, as the frequency further increases, the filter begins to let through some of the signal, as shown by the side lobes. The next point of infinite attenuation is at `\(200Hz\)`, which is when 2 cycles of the signal would fit perfectly into the window. This cycle occurs all the way up to Nyquist at `\(500Hz\)`.
+As expected, this shows us that at DC, the signal is not attenuated at all. As the frequency increases, the filter then begins to block more and more, until it lets through absolutely no signal at \(100Hz\). This can be intuitively understood, because with a \(1kHz\) sampling frequency and a window size of \(10\), **a single cycle of a \(100Hz\) signal would fit perfectly into the window**. Since you take the average of all the values in the window, this top half of the \(100Hz\) signal would cancel out perfectly with the bottom half, giving no output. But then, as the frequency further increases, the filter begins to let through some of the signal, as shown by the side lobes. The next point of infinite attenuation is at \(200Hz\), which is when 2 cycles of the signal would fit perfectly into the window. This cycle occurs all the way up to Nyquist at \(500Hz\).
 
 The phase response of the same filter is shown below:
 
@@ -175,22 +175,22 @@ As expected, increasing the window size decreases the cut-off frequency and also
 
 ### Cutoff Frequency
 
-When designing a SMA filter, you typically want to set the window size `\(N\)` based on the frequencies you want to pass through and those you want reject. The easiest figure of merit for this is the cutoff frequency `\(\omega_c\)` (or `\(f_c\)`), which we'll define here as the `\(\frac{1}{2}\)` power point (`\(-3dB\)` point). This is the frequency at which the power of the signal is reduced by half.
+When designing a SMA filter, you typically want to set the window size \(N\) based on the frequencies you want to pass through and those you want reject. The easiest figure of merit for this is the cutoff frequency \(\omega_c\) (or \(f_c\)), which we'll define here as the \(\frac{1}{2}\) power point (\(-3dB\) point). This is the frequency at which the power of the signal is reduced by half.
 
-We can find the equation for the cutoff frequency from `\(H(\omega)\)` above.
+We can find the equation for the cutoff frequency from \(H(\omega)\) above.
 
 <p>\begin{equation}
 \sin^2 \left(\frac{\omega_c N}{2}\right) - \frac{N^2}{2} \sin^2 \left( \frac{\omega_c}{2} \right) = 0
 \end{equation}</p>
 
-**Unfortunately, no general closed form solution for the cutoff frequency exists** (i.e. there is no way to re-arrange this equation to solve for `\(\omega_c\)`). However, these are two ways to get around this problem.
+**Unfortunately, no general closed form solution for the cutoff frequency exists** (i.e. there is no way to re-arrange this equation to solve for \(\omega_c\)). However, these are two ways to get around this problem.
 
 1. Solve the equation numerically, e.g. use the Newton-Raphson method.
 1. Use an equation which approximates the answer (easier method, recommended approach unless you really need the accuracy!)
 
 **Numerically**
 
-The Newton-Raphson method can be used to solve the above equation. Below is a code example in Python which includes the function `get_sma_cutoff()` that can calculate the cutoff frequency `\(\omega_c\)` given the window size `\(N\)` to a high degree of accuracy[^pieter-p-sma]:
+The Newton-Raphson method can be used to solve the above equation. Below is a code example in Python which includes the function `get_sma_cutoff()` that can calculate the cutoff frequency \(\omega_c\) given the window size \(N\) to a high degree of accuracy[^pieter-p-sma]:
 
 ```python
 import numpy as np
@@ -220,11 +220,11 @@ def get_sma_cutoff(N, **kwargs):
 
 **Approximate Equation**
 
-An approximate equation can be found relating the window size to the cutoff frequency which is accurate to 0.5% for `\(N >= 4\)`[^dsp-stack-exchange-cut-off-freq-sma]:
+An approximate equation can be found relating the window size to the cutoff frequency which is accurate to 0.5% for \(N >= 4\)[^dsp-stack-exchange-cut-off-freq-sma]:
 
-<p>\begin{align}
+$$\begin{align}
 N = \frac{\sqrt{0.196202 + F_c^2}}{F_c}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -232,11 +232,11 @@ where:<br/>
 \(F_c\) is the normalized cutoff frequency
 </p>
 
-Remember that `\(F_c\)` can be calculated with:
+Remember that \(F_c\) can be calculated with:
 
-<p>\begin{align}
+$$\begin{align}
 F_c = \frac{f_c}{f_s}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -248,17 +248,17 @@ where:<br/>
 
 **The computation power required to calculate the output at each step in a SMA filter can be significantly reduced with a simple trick**. For example, consider a basic left-handed SMA with a window size of 5:
 
-<p>\begin{align}
+$$\begin{align}
 y[9] = \frac{x[9] + x[8] + x[7] + x[6] + x[5]}{5}
-\end{align}</p>
+\end{align}$$
 
 Instead of calculating each output as above, we can instead save the last output value we calculated, add the new input data point to it, and subtract the oldest data point from the window:
 
-<p>\begin{align}
+$$\begin{align}
 y[9] = y[8] + \frac{1}{5}(x[9] - x[4])
-\end{align}</p>
+\end{align}$$
 
-This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large. Whilst this dependence on previous output (`\(y[9]\)` depends on `\(y[8]\)`) makes it look like an IIR filter, this recursion trick does not change the SMAs behaviour, and it still an FIR filter (once the input flies "past" the end of the window, it has no bearing on the output).
+This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large. Whilst this dependence on previous output (\(y[9]\) depends on \(y[8]\)) makes it look like an IIR filter, this recursion trick does not change the SMAs behaviour, and it still an FIR filter (once the input flies "past" the end of the window, it has no bearing on the output).
 
 {{% note %}}
 The simple moving average filter is the only such window-based filter which can be speed up with this recursion trick. Other forms like exponential, Gaussian and Blackman moving averages have to use computationally expensive convolution.
@@ -266,15 +266,15 @@ The simple moving average filter is the only such window-based filter which can 
 
 **One thing to watch out for is accumulated error if using floating point numbers**. Because you are now calculating the next output value from the previous output calculation (rather than fresh input data, as you would for the non-recursive algorithm), floating point precision errors will accumulate slowly in the output. 
 
-To show this, the following graph plots the accumulated error when using 32-bit floating point numbers. 10 million random 32-bit floats in the range of `\([0, 1000]\)` (our input data) was pushed through a left-handed SMA with a window size of 10 (the window size should not really matter). On every 100th input, the output value as computed by the recursive algorithm was compared with the output computed by the non-recursive algorithm. The difference between these two values is the accumulated error. 
+To show this, the following graph plots the accumulated error when using 32-bit floating point numbers. 10 million random 32-bit floats in the range of \([0, 1000]\) (our input data) was pushed through a left-handed SMA with a window size of 10 (the window size should not really matter). On every 100th input, the output value as computed by the recursive algorithm was compared with the output computed by the non-recursive algorithm. The difference between these two values is the accumulated error. 
 
 {{% figure src="windowed-moving-average-accumulated-error.png" width="700px" caption="Plot showing the error that slowly accumulates when using the recursive SMA method with floating points." %}}
 
-**By the time the 10 million inputs have passed through the filter, the answer is wrong by about 0.6!** This may or may not be a bad thing depending on your application. I guess (no proof!) that the average error `\(e\)` will grow proportional to the square root of the number of samples `\(N\)` pushed through the filter, similar to a random walk (drunkards walk).
+**By the time the 10 million inputs have passed through the filter, the answer is wrong by about 0.6!** This may or may not be a bad thing depending on your application. I guess (no proof!) that the average error \(e\) will grow proportional to the square root of the number of samples \(N\) pushed through the filter, similar to a random walk (drunkards walk).
 
-<p>\begin{align}
+$$\begin{align}
 e \propto \sqrt{N}
-\end{align}</p>
+\end{align}$$
 
 {{% warning %}}
 Watch out when using floating point numbers with the recursive algorithm!
@@ -284,11 +284,11 @@ Watch out when using floating point numbers with the recursive algorithm!
 
 ### Similarity To Convolution
 
-A SMA filter is identical to the [convolution (a mathematical concept)](/programming/signal-processing/convolution/) of the input signal with the window waveform (kernel). Typically you would set the height of each point in the window to `\(\frac{1}{N}\)`, so that the area under the window curve is 1 (and the SMA has no gain). For example, a 5-point window waveform `\(g(t)\)` would have the values:
+A SMA filter is identical to the [convolution (a mathematical concept)](/programming/signal-processing/convolution/) of the input signal with the window waveform (kernel). Typically you would set the height of each point in the window to \(\frac{1}{N}\), so that the area under the window curve is 1 (and the SMA has no gain). For example, a 5-point window waveform \(g(t)\) would have the values:
 
-<p>\begin{align}
+$$\begin{align}
 g(t) = 0, 0, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, 0, 0
-\end{align}</p>
+\end{align}$$
 
 ### Multiple Pass Moving Average Filters
 
@@ -344,7 +344,7 @@ y[4] = 3.00
 
 Like all filters, the simple moving average filter introduces lag to the signal. You can use fast start-up logic to reduce the lag on start-up (and reset, if applicable). This is done by keeping track of how many data points have been passed through the filter, and if less have been passed through than the width of the window (i.e. some window elements are still at their initialised value, normally 0), you ignore them when calculating the average.
 
-This is conceptually the same as having a variable-width window which increases from 1 to the maximum value, `\(x\)`, as the first `\(x\)` values are passed through the filter. The window width then stays at width `\(x\)` for evermore (or until the filter is reset/program restarts).
+This is conceptually the same as having a variable-width window which increases from 1 to the maximum value, \(x\), as the first \(x\) values are passed through the filter. The window width then stays at width \(x\) for evermore (or until the filter is reset/program restarts).
 
 If you also know a what times the signal will jump significantly, you can reset the filter at these points to remove the lag from the output. You could even do this automatically by resetting the filter if the value jumps by some minimum threshold.
 
@@ -358,9 +358,9 @@ It is identical to the **discrete first-order low-pass RC filter**.
 
 The _difference equation_ for an exponential moving average filter is:
 
-<p>\begin{align}
+$$\begin{align}
 y_i = y_{i-1} \cdot (1 - \alpha) + x_i \cdot \alpha
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
     where:<br>
@@ -369,9 +369,9 @@ y_i = y_{i-1} \cdot (1 - \alpha) + x_i \cdot \alpha
     \( \alpha \) = is a constant which sets the cutoff frequency (a value between \(0\) and \(1\))<br>
 </p>
 
-Notice that the calculation does not require the storage of past values of `\(x\)` and only the previous value of `\(y\)`, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
+Notice that the calculation does not require the storage of past values of \(x\) and only the previous value of \(y\), **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
 
-The constant `\( \alpha \)` determines how aggressive the filter is. It can vary between `\(0\)` and `\(1\)` (inclusive). As `\( \alpha \to 0 \)`, the filter gets more and more aggressive, until at `\( \alpha = 0 \)`, where the input has no effect on the output (if the filter started like this, then the output would stay at `\(0\)`). As `\( \alpha \to 1 \)`, the filter lets more of the raw input through at less filtered data, until at `\( \alpha = 1 \)`, where the filter is not "filtering" at all (pass-through from input to output).
+The constant \( \alpha \) determines how aggressive the filter is. It can vary between \(0\) and \(1\) (inclusive). As \( \alpha \to 0 \), the filter gets more and more aggressive, until at \( \alpha = 0 \), where the input has no effect on the output (if the filter started like this, then the output would stay at \(0\)). As \( \alpha \to 1 \), the filter lets more of the raw input through at less filtered data, until at \( \alpha = 1 \), where the filter is not "filtering" at all (pass-through from input to output).
 
 The following code implements a IIR EMA filter in C++, suitable for microcontrollers and other embedded devices[^pieter-p-ema]. {{% link text="Fixed-point numbers" src="/programming/general/fixed-point-mathematics" %}} are used instead of floats to speed up computation. `K` is the number of fractional bits used in the fixed-point representation.
 
@@ -402,19 +402,19 @@ class EMA {
 
 ## Gaussian Window
 
-The 1D Gaussian function `\(G(x)\)` is[^auckland-uni-comp-sci-gaussian-filtering]:
+The 1D Gaussian function \(G(x)\) is[^auckland-uni-comp-sci-gaussian-filtering]:
 
-<p>\begin{align}
+$$\begin{align}
 \Large
 G(x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{x^2}{2\sigma^2}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
 \(\sigma\) is the standard deviation<br/>
 </p>
 
-A 5-item symmetric Gaussian window with a standard deviation `\(\sigma\)` of `\(1\)` would give the window coefficients:
+A 5-item symmetric Gaussian window with a standard deviation \(\sigma\) of \(1\) would give the window coefficients:
 
 ```text
 [ 0.061, 0.245, 0.388, 0.245, 0.061 ]

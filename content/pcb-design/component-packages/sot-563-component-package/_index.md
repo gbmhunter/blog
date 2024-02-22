@@ -30,7 +30,7 @@ The body is 1.6mm long (sides with the leads) and 1.2mm wide. The width includin
 
 ## Recommended Footprint
 
-{{% ref "fig-sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6" %}} shows the recommended footprint for the `SOT-563` component package from Texas Instruments. It is 1.30mm long (sides with the leads) and 1.80mm wide, giving a PCB land area of `\(2.34mm^2\)`.
+{{% ref "fig-sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6" %}} shows the recommended footprint for the `SOT-563` component package from Texas Instruments. It is 1.30mm long (sides with the leads) and 1.80mm wide, giving a PCB land area of \(2.34mm^2\).
 
 {{% figure ref="fig-sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6" src="sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png" width="800px" caption="A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/."  %}}
 

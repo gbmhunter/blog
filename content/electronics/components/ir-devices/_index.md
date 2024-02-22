@@ -109,7 +109,7 @@ Pyroelectric sensors are infrared sensors whose output is proportional to the **
 
 ## Passive Infrared Receiver (PIR) Sensors
 
-PIR sensors are pyroelectric infrared devices. They may not detect motion coming directly to, or directly away from the sensor. Lowest temperature difference for detection can be around `\(4^\cdot C\)`.
+PIR sensors are pyroelectric infrared devices. They may not detect motion coming directly to, or directly away from the sensor. Lowest temperature difference for detection can be around \(4^\cdot C\).
 
 Popular brands include Zmotion, Parallax, Panasonic.
 

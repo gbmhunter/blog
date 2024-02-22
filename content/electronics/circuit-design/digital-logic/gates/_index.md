@@ -44,9 +44,9 @@ The truth table for an NOT gate is:
 
 And this gives rise to the simple equation for NOT logic:
 
-<p>\begin{align}
+$$\begin{align}
 Y = \overline{A}
-\end{align}</p>
+\end{align}$$
 
 ### AND
 
@@ -71,12 +71,12 @@ Truth table for an AND gate is:
 
 The equation for the AND logic may be written in one of the following ways:
 
-<p>\begin{align}
+$$\begin{align}
 Y &= A \cdot B \ \text{(preferred)} \\
 Y &= AB \\
 Y &= A \& B \\
 Y &= A \wedge B \\
-\end{align}</p>
+\end{align}$$
 
 An AND gate can be made using basic diode logic as shown below:
 
@@ -126,11 +126,11 @@ Truth table for an OR gate:
 
 The OR operation can be expressed in an equation in the following ways:
 
-<p>\begin{align}
+$$\begin{align}
 Y &= A + B \ \text{(preferred)} \\
 Y &= A \vee B \\
 Y &= A || B \\
-\end{align}</p>
+\end{align}$$
 
 The OR gate be drawn using three equal diameter circles placed on a grid as shown in the below image. Segments of the circles perimeters are taken along with the addition of two horizontal line sections to form the classic OR gate shape[^bib-spin-num-logic-gates].
 
@@ -159,9 +159,9 @@ Truth table for an NOR gate:
 
 The equation for an NOR gate:
 
-<p>\begin{align}
+$$\begin{align}
 Y = \overline{A + B}
-\end{align}</p>
+\end{align}$$
 
 ### XOR
 
@@ -188,19 +188,19 @@ Truth table for a 2-input XOR gate:
 The only difference in behaviour between an OR and XOR is when both inputs are `TRUE`. An OR gate outputs a `TRUE` in this case, whilst and XOR outputs a `FALSE`.
 {{% /note %}}
 
-The symbol `\(\bigoplus\)` is used to represent XOR, as hence XOR can be written in the following ways:
+The symbol \(\bigoplus\) is used to represent XOR, as hence XOR can be written in the following ways:
 
-<p>\begin{align}
+$$\begin{align}
 Y &= (A \cdot \bar{B}) + (\bar{A} \cdot B) \\
 Y &= (A + B) \cdot (\bar{A} + \bar{B}) \\
 Y &= A \bigoplus B \\
-\end{align}</p>
+\end{align}$$
 
-There are many ways to build XOR gates from the more basic NAND, NOR, AND and OR gates. The most intuitive approach to me is to represent the XOR gate as `\(Y = (A \cdot \overline{B}) + (\overline{A} \cdot B)\)`. The following circuit shows this structure:
+There are many ways to build XOR gates from the more basic NAND, NOR, AND and OR gates. The most intuitive approach to me is to represent the XOR gate as \(Y = (A \cdot \overline{B}) + (\overline{A} \cdot B)\). The following circuit shows this structure:
 
 {{% figure src="xor-gate-made-from-ands-and-or.png" width="500px" caption="A XOR gate made from AND and OR gates, with some of the inputs inverted into the front-end of the AND gates." %}}
 
-The following circuit shows a XOR gate made from a AND, NAND and OR gate. This circuit implements the equation `\(Y = (\overline{AB}) \cdot (A + B)\)`. Toggle the inputs in the right-hand side interactive simulation to see the XOR gate in action!
+The following circuit shows a XOR gate made from a AND, NAND and OR gate. This circuit implements the equation \(Y = (\overline{AB}) \cdot (A + B)\). Toggle the inputs in the right-hand side interactive simulation to see the XOR gate in action!
 
 <div style="display: flex;">
 {{% figure src="xor-gate-made-from-and-nand-or.svg" width="500px" caption="A XOR gate made from 1 AND, NAND and OR gate." %}}
@@ -275,7 +275,7 @@ _Resistor-transistor logic_ (RTL) is one of the most basic families of digital l
 * **Weak drive in one direction:** Single transistor strongly drives output only in one direction, pull-up/down resistor is used in opposite direction.
 * **Poor noise margins**.
 
-{{% figure src="rtl-logic-nor-gate.svg" width="400px" caption="Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by `\(R_C\)`. Any `HIGH` input will turn on a transistor, which will drive the output `LOW`. " %}}
+{{% figure src="rtl-logic-nor-gate.svg" width="400px" caption="Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by \(R_C\). Any `HIGH` input will turn on a transistor, which will drive the output `LOW`. " %}}
 
 ### Diode-Transistor Logic (DTL)
 
@@ -302,7 +302,7 @@ A NMOS inverter is simply made from a N-channel MOSFET and a resistor, as shown 
 {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHchYovkWCwJQZFYBzVX24rhg7kV7UtAJT1gwRa5DNQ+dJ+cmsAMpWWjBCW76uIOwAhgA2AM70NFoKRuAaetzIdloAskJYaolYDgmaIGjucVn51olaAB6UyBBo+MgguI31vLxovAByaQDyAMoAOhEAkgB2AG70AE4ALtNDAOIhc-LeKvx+PIFVlAhI3GgQCFiNB3btvACCrNVEWLxghEIk1I-7hbwAmqxT1gHxthU1FQcFYQA" %}}
 </div>
 
-When the input `\(A\)` is `LOW`, the N-channel MOSFET is turned OFF, and so the output `\(Y\)` is pulled `HIGH` by `\(R1\)`. When `\(A\)` is `HIGH`, the N-channel MOSFET gets turned on. It's equivalent drain-source resistance drops to a value much lower than `\(R1\)`, and so therefore the output is effectively driven `LOW`, completing the inverter functionality.
+When the input \(A\) is `LOW`, the N-channel MOSFET is turned OFF, and so the output \(Y\) is pulled `HIGH` by \(R1\). When \(A\) is `HIGH`, the N-channel MOSFET gets turned on. It's equivalent drain-source resistance drops to a value much lower than \(R1\), and so therefore the output is effectively driven `LOW`, completing the inverter functionality.
 
 {{% tip %}}
 You can see the static current flow (and therefore power consumption) in the above NMOS circuit simulation when you toggle the input to `HIGH`.
@@ -336,7 +336,7 @@ The inverter is the easiest CMOS logic gate to make! It just consists of one P-c
 These diagrams use the simplified MOSFET symbols in where the P-channel as a bubble next to it's gate and the N-channel doesn't. No indication of drain or source are shown either, although this may be a moot point if in an integrated circuit with the substrate not connected to the source. If you are unfamiliar with this MOSFET symbol style, see the [MOSFETs page](/electronics/components/transistors/mosfets/) for more info.
 {{% /tip %}}
 
-When the input `\(A\)` is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is `\(+V_{DD}\)` and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is `\(0V\)` and therefore OFF. Hence the output gets driven `LOW`. When `\(A\)` is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to `\(0V\)` and the P-channel's gate-source voltage goes to `\(-V_{DD}\)`, turning it ON and driving the output `HIGH`.
+When the input \(A\) is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is \(+V_{DD}\) and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is \(0V\) and therefore OFF. Hence the output gets driven `LOW`. When \(A\) is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to \(0V\) and the P-channel's gate-source voltage goes to \(-V_{DD}\), turning it ON and driving the output `HIGH`.
 
 {{% figure src="cmos-inverter-from-discrete-mosfets-animation.gif" width="400px" caption="Video of a basic CMOS inverter made from a discrete P-channel and N-channel MOSFET. The inverter is fed a 0.5Hz clock signal into it's input from a function generator. 1 LED is connected to the inverters input, the other connected to it's output." %}}
 
@@ -349,7 +349,7 @@ After the inverter, the two easiest CMOS gates to build are the NAND and NOR gat
 {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGK4QAsiBHNR3MUsAgLMdymhaq8BA9DINbsFwMMMmBhj9xJSYtEISiNMUKdjqRZMZCmRCWcyaVS9ucRsp7qNWAAPShoNSQCCOCgYYqKXgAYQRAHkAMoAHWmADkAIK6gAiOoA4uMAC70cWSijHZCUbHHAYoXj6m2YxVoJAIMBIbjPXjIXgAIRtjjEeGRYDt7iMrpAAE1WEA" %}}
 </div>
 
-Two N-channels are connected in series on the bottom side, and two P-channels are connected in parallel on the top side. Both inputs (`\(A\)` and `\(B\)`) have to be `HIGH` to turn on both the lower side N-channel MOSFETs and drive the output (`\(Y\)`) `LOW`. If either inputs are `LOW`, at least one of the high-side P-channel MOSFETs will be turned on, driving the output `HIGH`. This completes the NAND logic.
+Two N-channels are connected in series on the bottom side, and two P-channels are connected in parallel on the top side. Both inputs (\(A\) and \(B\)) have to be `HIGH` to turn on both the lower side N-channel MOSFETs and drive the output (\(Y\)) `LOW`. If either inputs are `LOW`, at least one of the high-side P-channel MOSFETs will be turned on, driving the output `HIGH`. This completes the NAND logic.
 
 The number of inputs can be easily increased from 2 by adding the appropriate number of extra MOSFETs in series and in parallel. For example, a 3-input CMOS NAND gate's schematic would look like this:
 
@@ -410,15 +410,15 @@ An AND gate can be made from PTL logic using a total of 5 transistors, one less 
 
 {{% figure src="ptl-and-gate.png" width="500px" caption="An AND gate made from PTL logic." %}}
 
-The circuit on the left is just an inverter to provide `\(\overline{B}\)` which is needed for the PTL logic on the right. The TG on the right connects `\(A\)` to the output only if `\(B = 1\)`. Thus:
+The circuit on the left is just an inverter to provide \(\overline{B}\) which is needed for the PTL logic on the right. The TG on the right connects \(A\) to the output only if \(B = 1\). Thus:
 
-* `\(B = 1\)` and `\(A = 0\)`, then `\(Y = 0\)`
-* `\(B = 1\)` and `\(A = 1\)`, then `\(Y = 1\)`
+* \(B = 1\) and \(A = 0\), then \(Y = 0\)
+* \(B = 1\) and \(A = 1\), then \(Y = 1\)
 
-If `\(B = 0\)`, then the TG is off but the bottom-right N-channel MOSFET is turned on, connecting the output to `\(GND\)` (we don't care what `\(A\)` is). Thus:
+If \(B = 0\), then the TG is off but the bottom-right N-channel MOSFET is turned on, connecting the output to \(GND\) (we don't care what \(A\) is). Thus:
 
-* `\(B = 0\)` and `\(A = 0\)`, then `\(Y = 0\)`
-* `\(B = 0\)` and `\(A = 1\)`, then `\(Y = 0\)`
+* \(B = 0\) and \(A = 0\), then \(Y = 0\)
+* \(B = 0\) and \(A = 1\), then \(Y = 0\)
 
 It should now be pretty clear that this works as an AND gate. Play around with the interactive simulation below:
 
@@ -430,15 +430,15 @@ Above we showed how complex a XOR gate is to build in CMOS logic (12 transistors
 
 {{% figure src="ptl-xor-gate-8-tran.png" width="400px" caption="A XOR gate made from PTL logic. This XOR circuit uses a total of 8 transistors, less than the CMOS implementation that uses 12. But we can still do better!" %}}
 
-To see how this works, ignore the simple CMOS inverters on the left and focus on the PTL logic on the right. Input `\(B\)` controls which transmission gate is on and which is off. If `\(B\)` is `LOW`, the bottom transmission gate is on and the top is off, passing `\(A\)` to the output. Thus:
+To see how this works, ignore the simple CMOS inverters on the left and focus on the PTL logic on the right. Input \(B\) controls which transmission gate is on and which is off. If \(B\) is `LOW`, the bottom transmission gate is on and the top is off, passing \(A\) to the output. Thus:
 
-* If `\(B = 0\)` and `\(A = 0\)`, then `\(Y=0\)`
-* If `\(B = 0\)` and `\(A = 1\)`, then `\(Y=1\)`
+* If \(B = 0\) and \(A = 0\), then \(Y=0\)
+* If \(B = 0\) and \(A = 1\), then \(Y=1\)
 
-If `\(B\)` is `HIGH` the opposite happens, the top tranmission gate is on and the bottom is off, passing `\(\overline{A}\)` to the output. Thus:
+If \(B\) is `HIGH` the opposite happens, the top tranmission gate is on and the bottom is off, passing \(\overline{A}\) to the output. Thus:
 
-* If `\(B = 1\)` and `\(A = 0\)`, then `\(Y=1\)`
-* If `\(B = 1\)` and `\(A = 1\)`, then `\(Y=0\)`
+* If \(B = 1\) and \(A = 0\), then \(Y=1\)
+* If \(B = 1\) and \(A = 1\), then \(Y=0\)
 
 Now it should be pretty easy now to see that this gives you a XOR gate!
 
@@ -448,10 +448,10 @@ However, we can reduce the transistor count even further! This following clever 
 
 {{% figure src="ptl-xor-gate-6-tran.png" width="600px" caption="A XOR gate made in PTL logic with only 6 transistors[^bib-uni-waterloo-ptl]." %}}
 
-The left-side of the circuit is an "inverter" (but with the MOSFET source leads connected to `\(A\)` rather than the rails), and the right-hand side is a transmission gate.
+The left-side of the circuit is an "inverter" (but with the MOSFET source leads connected to \(A\) rather than the rails), and the right-hand side is a transmission gate.
 
-* When `\(A = 0\)`, both MOSFETs in the inverter will always be `OFF` because the gate-source voltage of the N-channel MOSFET can never be more positive than 0V and the gate-source voltage of the P-channel can never be more negative than 0V. The right-hand side transmission gate will be ON, and so the output will equal `\(B\)`.
-* When `\(A = 1\)`, the transmission gate will be `OFF`, and the inverter will become active, passing through the inverse of `\(B\)` to the output.
+* When \(A = 0\), both MOSFETs in the inverter will always be `OFF` because the gate-source voltage of the N-channel MOSFET can never be more positive than 0V and the gate-source voltage of the P-channel can never be more negative than 0V. The right-hand side transmission gate will be ON, and so the output will equal \(B\).
+* When \(A = 1\), the transmission gate will be `OFF`, and the inverter will become active, passing through the inverse of \(B\) to the output.
 
 This makes a XOR gate! Have a play around with the interactive simulation of it below:
 
@@ -683,11 +683,11 @@ The 6-state binary counter is a counter which counts from 000 to 101 in the norm
 
 The flip-flop equations expressed as sums of products are:
 
-<p>\begin{align}
+$$\begin{align}
 Q_2 = \bar{Q_2}.\bar{Q_1}.\bar{Q_0}.\bar{y} + \bar{Q_2}.Q_1.Q_0.y + Q_2.\bar{Q_1}.Q_0.\bar{y} + Q_2.\bar{Q_1}.\bar{Q_0}.y \\ \\  
 Q_1 = \bar{Q_2}.\bar{Q_1}.Q_0.y + \bar{Q_2}.Q_1.\bar{Q_0}.y + \bar{Q_2}.Q_1.Q_0.\bar{y} + Q_2.\bar{Q_1}.\bar{Q_0}.\bar{y} \\ \\  
 Q_0 = \bar{Q_2}.\bar{Q_0} + Q_2.\bar{Q_1}.\bar{Q_0} \\ \\  
-\end{align}</p>
+\end{align}$$
 
 {{% figure src="digital-logic-counter-six-state-binary.png" width="700px" caption="Schematic of a six state binary counter." %}}
 

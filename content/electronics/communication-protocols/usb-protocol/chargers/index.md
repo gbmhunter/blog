@@ -30,11 +30,11 @@ An accessory charger adapter (ACA) has one upstream port, and zero or more downs
 
 ## Charging Downstream Port (CDP)
 
-A CDP has to comply with the USB 2.0 definition of a host or a hub, except for when that conflicts with Charging Downstream Port specifications. If a _PD_ is connected to a _Charging Port_, then it is allowed to draw `\(I_{DEV_CHG}\)` without first having to be configured. Also, it does not have to suspend.
+A CDP has to comply with the USB 2.0 definition of a host or a hub, except for when that conflicts with Charging Downstream Port specifications. If a _PD_ is connected to a _Charging Port_, then it is allowed to draw \(I_{DEV_CHG}\) without first having to be configured. Also, it does not have to suspend.
 
 But how does a PD work out whether the upstream port is a standard USB 2.0 port or a Charging Port?
 
-When not connected to a peripheral, a CDP has to output a voltage of `\(V_{DM_SRC}\)` onto D- when it sense a voltage greater than `\(V_{DAT_REF}\)` but less than `\(V_{LGC}\)` on it's D+ line.
+When not connected to a peripheral, a CDP has to output a voltage of \(V_{DM_SRC}\) onto D- when it sense a voltage greater than \(V_{DAT_REF}\) but less than \(V_{LGC}\) on it's D+ line.
 
 ## Charging Port
 

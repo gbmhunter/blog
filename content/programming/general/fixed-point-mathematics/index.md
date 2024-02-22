@@ -52,7 +52,7 @@ uint16_t fp1 = (uint16_t)(6.5 * (float)(1 << 12));
 
 **Unsigned Fixed-Point Numbers**
 
-The range of an unsigned fixed-point number with `\(i\)` bits for the integer and `\(f\)` bits for the decimal parts is:
+The range of an unsigned fixed-point number with \(i\) bits for the integer and \(f\) bits for the decimal parts is:
 
 <div>$$ 0 \textrm{ to } (2^i -1) + 2^{-f} \times (2^{f} - 1) $$</div>
 
@@ -64,7 +64,7 @@ The range for a signed fixed-point number is given by:
 
 <div>$$ -2^{i-1} \textrm{ to } (2^{i-1} -1) + 2^{-f} \times (2^{f} - 1) $$</div>
 
-For example, an 8-bit fixed-point number with `\(5\)` bits for the integer and `\(3\)` bits for the fractional part (`\(Q5.3\)`) would have a range from `\(-16\)` to `\(15.875\)`.
+For example, an 8-bit fixed-point number with \(5\) bits for the integer and \(3\) bits for the fractional part (\(Q5.3\)) would have a range from \(-16\) to \(15.875\).
 
 ## The Precision Of Fixed-Point Numbers
 
@@ -72,7 +72,7 @@ The precision of a fixed-point number is determined solely by the number of frac
 
 <div>$$ 2^{-f} $$</div>
 
-For example, the precision of a `\(Q3.5\)` fixed-point number would be `\(2^{-5} = 0.03125\)`. The precision of a `\(Q8.0\)` number (no fractional bits) would be `\( 2^{-0} = 1\)`, as expected.
+For example, the precision of a \(Q3.5\) fixed-point number would be \(2^{-5} = 0.03125\). The precision of a \(Q8.0\) number (no fractional bits) would be \( 2^{-0} = 1\), as expected.
 
 ## Converting To Fixed-Point
 
@@ -125,7 +125,7 @@ If the numbers have different precision, they must be converted to the same prec
 
 **Multiplication**
 
-Standard multiplication of two fixed-point numbers results in a fixed-point number which has a different number of integer `\(i\)` and fractional bits `\(f\)`. The number of integer bits in the output is the sum of the number of integer bits in both input numbers, `\( i_{out} = i_{in,1} + i_{in,2} \)`. The same applies for the fractional bits, `\( f_{out} = f_{in,1} + f_{in,2} \)`.
+Standard multiplication of two fixed-point numbers results in a fixed-point number which has a different number of integer \(i\) and fractional bits \(f\). The number of integer bits in the output is the sum of the number of integer bits in both input numbers, \( i_{out} = i_{in,1} + i_{in,2} \). The same applies for the fractional bits, \( f_{out} = f_{in,1} + f_{in,2} \).
 
 ```c    
 uint16_t fp1 = 5 << 4; // Q12.4 format

@@ -15,33 +15,33 @@ type: page
 
 This is the graph you'll typically see when talking about distributions, for example the classic Normal (Gaussian) distribution:
 
-{{% figure src="pdf-normal.png" width="500px" caption="The PDF of the normal distribution, with `\(\mu=0\)` and `\(\sigma=1\)`. The x-axis has been cut-off at the 1% and 99% percentiles, in reality the function continues from negative infinity to positive infinity. " %}}
+{{% figure src="pdf-normal.png" width="500px" caption="The PDF of the normal distribution, with \(\mu=0\) and \(\sigma=1\). The x-axis has been cut-off at the 1% and 99% percentiles, in reality the function continues from negative infinity to positive infinity. " %}}
 
-This site uses the notation `\(f(x)\)` to represent the probability density function of `\(x\)`.
+This site uses the notation \(f(x)\) to represent the probability density function of \(x\).
 
-<p>\begin{align}
+$$\begin{align}
 P(a \le x \le b) = \int_a^b f(x) dx
-\end{align}</p>
+\end{align}$$
 
 ## Cumulative Density Function (CDFs)
 
-The _cumulative density function_ (CDF) is a function which gets a PDF and for any `x`, cumulatively sums up the probability up to that point. The y-axis always starts a `\(0\)` and ends at `\(1\)`.
+The _cumulative density function_ (CDF) is a function which gets a PDF and for any `x`, cumulatively sums up the probability up to that point. The y-axis always starts a \(0\) and ends at \(1\).
 
-{{% figure src="cdf-normal.png" width="500px" caption="The CDF of the normal distribution, with `\(\mu=0\)` and `\(\sigma=1\)`. The x-axis has been cut-off at the 1% and 99% percentiles, in reality the function continues from negative infinity to positive infinity. The PDF of this distribution is shown in [^pdf-normal]." %}}
+{{% figure src="cdf-normal.png" width="500px" caption="The CDF of the normal distribution, with \(\mu=0\) and \(\sigma=1\). The x-axis has been cut-off at the 1% and 99% percentiles, in reality the function continues from negative infinity to positive infinity. The PDF of this distribution is shown in [^pdf-normal]." %}}
 
-This site uses the notation `\(F(x)\)` to represent the cumulative density function of `\(x\)`.
+This site uses the notation \(F(x)\) to represent the cumulative density function of \(x\).
 
-<p>\begin{align}
+$$\begin{align}
 F(x) = P(X \le x)
-\end{align}</p>
+\end{align}$$
 
 ## Quantile Function
 
 The _quantile function_ is the inverse of the cumulative density function (CDF). Also called the _percentage point function_ (PPF) or _ICDF_ (inverse cumulative density function).
 
-{{% figure src="quantile-normal.png" width="500px" caption="The quantile function of the normal distribution, with `\(\mu=0\)` and `\(\sigma=1\)`. The x-axis has been cut-off at the 1% and 99% percentiles, in reality the function continues from negative infinity to positive infinity. The PDF of this distribution is shown in [^pdf-normal]." %}}
+{{% figure src="quantile-normal.png" width="500px" caption="The quantile function of the normal distribution, with \(\mu=0\) and \(\sigma=1\). The x-axis has been cut-off at the 1% and 99% percentiles, in reality the function continues from negative infinity to positive infinity. The PDF of this distribution is shown in [^pdf-normal]." %}}
 
-The quantile function is a great way of generating random numbers that follow a specific distribution. Starting with uniformly distributed random numbers in the range from `\(0\)` to `\(1\)` (which is trivially easy to do in most programming languages), you can transform these numbers with the quantile function into random numbers which follow your specific probability distribution.
+The quantile function is a great way of generating random numbers that follow a specific distribution. Starting with uniformly distributed random numbers in the range from \(0\) to \(1\) (which is trivially easy to do in most programming languages), you can transform these numbers with the quantile function into random numbers which follow your specific probability distribution.
 
 ### Generating Random Numbers That Follow A Custom PDF
 
@@ -132,16 +132,16 @@ random_values = dist.rvs(size=10000)
 
 For many different applications, you might find yourself needing to generate random points on a sphere, with the condition that they must be uniformly distributed. You then might think you could do this by using spherical coordinates and:
 
-. Randomly picking a value for `\(\theta\)` (polar angle, measured from the positive Z-axis) between `\(0\)` and `\(\pi\)`.
-. Randomly picking a value for `\(\phi\)` (azimuthal angle)
+. Randomly picking a value for \(\theta\) (polar angle, measured from the positive Z-axis) between \(0\) and \(\pi\).
+. Randomly picking a value for \(\phi\) (azimuthal angle)
 
 However, this does not give points that are uniformly distributed! You will find that points will be clustered closer together at the poles of the sphere.
 
-Instead of being uniform, the PDF for `\(\theta\)` (which we will label `\(f(\theta)\)`) needs to be proportional to a sine curve, where[^bib-uniform-sphere]:
+Instead of being uniform, the PDF for \(\theta\) (which we will label \(f(\theta)\)) needs to be proportional to a sine curve, where[^bib-uniform-sphere]:
 
-<p>\begin{align}
+$$\begin{align}
 f(\theta) = \frac{\sin(\theta)}{2}
-\end{align}</p>
+\end{align}$$
 
 ## References
 

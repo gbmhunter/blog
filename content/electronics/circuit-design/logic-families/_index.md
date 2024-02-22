@@ -47,11 +47,11 @@ ICs are sometimes tested against the EIA/JESD 78A IC latch-up standard and the I
 
 ### Powered Off Protection
 
-By default, most CMOS based devices contain diodes from the I/O pins to the voltage rails and ground (this is an inherent part of the fabrication of a MOSFET and the intrinsic body diodes). Additional ESD protection diodes may be also added in parallel. Whilst normally a good thing, these diodes can cause problems, notably a problem called _backfeeding_. If the local power rail collapses, but signals are still present on the I/O pins (from other parts of the circuitry which are still powered), the diode from the I/O pin to `\(V_{CC}\)` will conduct and keep the power rail "propped up".
+By default, most CMOS based devices contain diodes from the I/O pins to the voltage rails and ground (this is an inherent part of the fabrication of a MOSFET and the intrinsic body diodes). Additional ESD protection diodes may be also added in parallel. Whilst normally a good thing, these diodes can cause problems, notably a problem called _backfeeding_. If the local power rail collapses, but signals are still present on the I/O pins (from other parts of the circuitry which are still powered), the diode from the I/O pin to \(V_{CC}\) will conduct and keep the power rail "propped up".
 
-Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at `\(0V\)`. Texas Instruments calls this `\(I_{OFF}\)` protection[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]. The figure below shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
+Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at \(0V\). Texas Instruments calls this \(I_{OFF}\) protection[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]. The figure below shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
 
-{{% figure src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700px" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to `\(V_{CC}\)` in the case that the power rail is at `\(0V\)`[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
+{{% figure src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700px" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to \(V_{CC}\) in the case that the power rail is at \(0V\)[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
 
 Some examples of ICs with "powered-off protection" include the [SN74LVC1G125: Single Bus Buffer Gate With 3-State Output](https://www.ti.com/lit/ds/symlink/sn74lvc1g125.pdf), the [SN74CB3Q3125: 3.3-V, 2:1 (SPDT), 4-channel FET bus switch](https://www.ti.com/product/SN74CB3Q3125) and the [ADG5248F: 8:1 Analog Multiplexers](https://www.analog.com/en/products/adg5248f.html#product-overview).
 
@@ -160,10 +160,10 @@ TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
 
 Mode                                    | Differential
 ----------------------------------------|------------------------
-Logic High (`\(V_{OH}\)`)               | 1.55mV (+3.5mA through 100Ω)
-Logic Out Low (`\(V_{OL}\)`)            | 0.95mV (-3.5mA through 100Ω)
-Common-mode Voltage (`\(V_{CMO}\)`)     | 1.20V
-Power (`\(P\)`)                         | 8.75mW (@ `\(V_{CC}=2.5V\)`)
+Logic High (\(V_{OH}\))               | 1.55mV (+3.5mA through 100Ω)
+Logic Out Low (\(V_{OL}\))            | 0.95mV (-3.5mA through 100Ω)
+Common-mode Voltage (\(V_{CMO}\))     | 1.20V
+Power (\(P\))                         | 8.75mW (@ \(V_{CC}=2.5V\))
 
 Because the current is kept constant (3.5mA), it doesn't put as much pressure on the decoupling capacitors to provide the energy during switching states. The low common-mode voltage (1.20V), allows this signalling standard to be used with a wide variety of ICs with power supplies down to 2.5V or lower.
 

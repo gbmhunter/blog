@@ -91,9 +91,9 @@ RS-485 introduces the term unit load. A unit load is a specified load impedance 
 
 ## Termination Resistors
 
-The TIA/EIA 485 standard does not specifically state what the characteristic impedance of the twisted-pair cable should be, nor the value of the termination resistors. However, it does provide recommendations, and states that the twisted-pair cable should have a characteristic impedance of `\(120\Omega\)` whenever possible.
+The TIA/EIA 485 standard does not specifically state what the characteristic impedance of the twisted-pair cable should be, nor the value of the termination resistors. However, it does provide recommendations, and states that the twisted-pair cable should have a characteristic impedance of \(120\Omega\) whenever possible.
 
-This implies that `\(120\Omega\)` termination resistors should be used with this twisted-pair cable. Termination resistors of 120R connected between the two differential lines work well at reducing reflections along long cables.
+This implies that \(120\Omega\) termination resistors should be used with this twisted-pair cable. Termination resistors of 120R connected between the two differential lines work well at reducing reflections along long cables.
 
 ## Receiver Hysteresis
 

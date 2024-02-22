@@ -25,21 +25,21 @@ To calculate the impedance of a microstrip, we need to know the following parame
     \( \epsilon_r \) = the dielectric constant of the PCB substrate<br>
 </p>
 
-The following equations can then be used to calculate the impedance of the microstrip. First we calculate the intermediary values `\(W\)` and `\(H\)`.
+The following equations can then be used to calculate the impedance of the microstrip. First we calculate the intermediary values \(W\) and \(H\).
 
 <div>$$ W = w + \frac{t}{\pi} \left[ ln\left(\frac{2h}{t}\right) = 1 \right] $$</div>
 
 <div>$$ H = h - 2t $$</div>
 
-Then we can calculate the effective dielectric, `\(\epsilon_{eff}\)` and then the track impedance, `\(Z\)`. There are different equations to be used depending on the ratio of `\(W\)` to `\(H\)`:
+Then we can calculate the effective dielectric, \(\epsilon_{eff}\) and then the track impedance, \(Z\). There are different equations to be used depending on the ratio of \(W\) to \(H\):
 
-If `\( \frac{W}{H} < 1 \)`:
+If \( \frac{W}{H} < 1 \):
 
 <div>$$ \epsilon_{eff} = \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2}\left[\frac{1}{\sqrt{1 + 12\frac{H}{W}}} + 0.04\left(1 - \frac{W}{H}\right)^2\right] $$</div>
 
 <div>$$ Z = \frac{60}{\sqrt{\epsilon_{eff}}} ln\left(\frac{8H}{W} + \frac{W}{4H}\right) $$</div>
 
-If `\( \frac{W}{H} \geq 1 \)`:
+If \( \frac{W}{H} \geq 1 \):
 
 <div>$$ \epsilon_{eff} = \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2\sqrt{1 + 12\frac{H}{W}}} $$  </div>
 

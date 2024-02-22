@@ -22,18 +22,18 @@ Analogue multiplexers pass an analogue signals from one of many inputs to a sing
 
 {{% figure src="cd4051b-functional-diagram-ti.png" width="400px" caption="The functional diagram of the CD4051B 8:1 analogue multiplexer by Texas Instruments. Image retrieved from https://www.ti.com/lit/ds/symlink/cd4052b.pdf on 2021-01-30." %}}
 
-It's important to note that most analogue multiplexers have a much higher resistance than a traditional mechanical switch or even transistor, with most specifying an _on-state resistance (max)_ between `\(30\)` and `\(150\Omega\)`.
+It's important to note that most analogue multiplexers have a much higher resistance than a traditional mechanical switch or even transistor, with most specifying an _on-state resistance (max)_ between \(30\) and \(150\Omega\).
 
 ### Deviations From An Ideal Switch
 
 * The on-state resistance of a analogue multiplexer is much higher than a mechanical switch.
-* The voltage on the input and output cannot exceed `\(V_{DD}\)` and `\(V_{EE}\)` by more than a diodes forward voltage drop (`\(\approx 0.6V\)`, any higher than this and conduction from your signal to the rails occurs, distorting your signal).
+* The voltage on the input and output cannot exceed \(V_{DD}\) and \(V_{EE}\) by more than a diodes forward voltage drop (\(\approx 0.6V\), any higher than this and conduction from your signal to the rails occurs, distorting your signal).
 
 ### Datasheet Parameters
  
 #### On-State Resistance
 
-The resistance between the input and output when the input is switched to the output. Typically specified as a maximum, with nominal values being between `\(30\)` and `\(150\Omega\)`.
+The resistance between the input and output when the input is switched to the output. Typically specified as a maximum, with nominal values being between \(30\) and \(150\Omega\).
 
 ### Switching Procedure
 

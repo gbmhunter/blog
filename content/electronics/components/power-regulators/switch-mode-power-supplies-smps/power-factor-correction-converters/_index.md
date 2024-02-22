@@ -15,19 +15,19 @@ type: page
 
 _Power factor correction_ (PFC) modules are SMPS which are designed to have an input power factor near unity, irrespective of what load is connected to them. This makes the PFC module look like a purely resistive load to the AC input, which helps devices meet power factor regulations such as the European IEC 1000-3-2[^eeweb-power-factor-correction-modules].
 
-Many PFC modules utilize the boost topology and accept a AC input from 90-264VAC(rms). This results in a peak voltage of `\(264V \times \sqrt{2} = 373V\)` fed into the input of the boost converter. `\(380V\)` DC is commonly chosen output voltage such that it is always operating in boost mode.
+Many PFC modules utilize the boost topology and accept a AC input from 90-264VAC(rms). This results in a peak voltage of \(264V \times \sqrt{2} = 373V\) fed into the input of the boost converter. \(380V\) DC is commonly chosen output voltage such that it is always operating in boost mode.
 
 {{% aside type="note" %}}
-The 264VAC comes from most countries at most having a 240VAC (nominal) single phase voltage specification. Then 10% variation is added as typically allowed in grid specifications, i.e. `\(240V \times 1.1 = 264V\)`[^stack-exchange-where-does-264vac-come-from].
+The 264VAC comes from most countries at most having a 240VAC (nominal) single phase voltage specification. Then 10% variation is added as typically allowed in grid specifications, i.e. \(240V \times 1.1 = 264V\)[^stack-exchange-where-does-264vac-come-from].
 {{% /aside %}}
 
-Boost topology operating in critical conduction mode (CrCM) is a popular choice because it offers provides a very good power factor. In critical conduction mode the on time `\(t_{ON}\)` is held constant over an entire line cycle. The off time is adjusted 
+Boost topology operating in critical conduction mode (CrCM) is a popular choice because it offers provides a very good power factor. In critical conduction mode the on time \(t_{ON}\) is held constant over an entire line cycle. The off time is adjusted 
 
 The power factor is defined as[^all-about-circuits-calculating-power-factor]:
 
-<p>\begin{align}
+$$\begin{align}
 \text{Power factor} = \frac{\text{True power (W)}}{\text{Apparent power (VA)}}
-\end{align}</p>
+\end{align}$$
 
 ## References
 

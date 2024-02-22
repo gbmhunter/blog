@@ -40,17 +40,17 @@ The below schematic shows a simple circuit for voltage-level translation using a
 
 {{% figure src="schematic-of-voltage-level-translation-with-a-mosfet.png" width="600" caption="An example schematic of bi-directional voltage-level translation using a MOSFET." %}}
 
-**What happens if `\(V_{low}\)` is driven?**
+**What happens if \(V_{low}\) is driven?**
 
-If `\(V_{low}\)` is driven high, then the gate-source voltage of the N-channel MOSFET (`\(V_{GS}\)`) is `\(0V\)`, and the MOSFET is OFF. This means that `\(V_{high}\)` is pulled high by its `\(10k\Omega\)` resistor.
+If \(V_{low}\) is driven high, then the gate-source voltage of the N-channel MOSFET (\(V_{GS}\)) is \(0V\), and the MOSFET is OFF. This means that \(V_{high}\) is pulled high by its \(10k\Omega\) resistor.
 
-If `\(V_{low}\)` is driven low, then the gate-source voltage of the N-channel MOSFET (`\(V_{GS}\)`) is now `\(+3.3V\)`, and the MOSFET is ON. This means that `\(V_{high}\)` is driven LOW through the MOSFET.
+If \(V_{low}\) is driven low, then the gate-source voltage of the N-channel MOSFET (\(V_{GS}\)) is now \(+3.3V\), and the MOSFET is ON. This means that \(V_{high}\) is driven LOW through the MOSFET.
 
-**What happens if `\(V_{high}\)` is driven?**
+**What happens if \(V_{high}\) is driven?**
 
-If `\(V_{high}\)` is driven high, the body-diode of the MOSFET will be reverse-biased, and OFF. This means that the source of the MOSFET will be pulled to `\(+3.3V\)` by the `\(10k\Omega\)` resistor, (`\(V_{GS}\)`) will be `\(0V\)`, the MOSFET OFF, and `\(V_{low}\)` also high because of it's `\(10k\Omega\)` resistor.
+If \(V_{high}\) is driven high, the body-diode of the MOSFET will be reverse-biased, and OFF. This means that the source of the MOSFET will be pulled to \(+3.3V\) by the \(10k\Omega\) resistor, (\(V_{GS}\)) will be \(0V\), the MOSFET OFF, and \(V_{low}\) also high because of it's \(10k\Omega\) resistor.
 
-If `\(V_{high}\)` is driven low, the body-diode of the MOSFET will be forward-biased, and switch ON. This will start pulling `\(V_{low}\)` to ground plus the forward voltage drop of the diode (`\(0V + 0.7V = 0.7V\)`). As the voltage on `\(V_{low}\)` drops, the (`\(V_{GS}\)`) of the MOSFET will start to increase, and the MOSFET will soon turn ON. At this point `\(V_{low}\)` will be driven fully to ground (0V).
+If \(V_{high}\) is driven low, the body-diode of the MOSFET will be forward-biased, and switch ON. This will start pulling \(V_{low}\) to ground plus the forward voltage drop of the diode (\(0V + 0.7V = 0.7V\)). As the voltage on \(V_{low}\) drops, the (\(V_{GS}\)) of the MOSFET will start to increase, and the MOSFET will soon turn ON. At this point \(V_{low}\) will be driven fully to ground (0V).
 
 ## Totem-pole Voltage-Level Translators
 
@@ -67,7 +67,7 @@ The _directionality_ of a voltage-level translator is ability to transfer signal
 
 **How Does Auto-Direction Work?**
 
-Auto-direction voltage-level translator ICs use a clever technique to remove the need for a direction pin to specify which side is an input and which side is an output. They work by driving pins with a weak signal (e.g. a CMOS totem-pole driver but with a `\(4k\Omega\)` resistor in series with the output[^bib-ti-txb0104-ds]) that can be overridden by an external signal.
+Auto-direction voltage-level translator ICs use a clever technique to remove the need for a direction pin to specify which side is an input and which side is an output. They work by driving pins with a weak signal (e.g. a CMOS totem-pole driver but with a \(4k\Omega\) resistor in series with the output[^bib-ti-txb0104-ds]) that can be overridden by an external signal.
 
 To fix the problem of these weak drives causing slow edge transitions, one shot timers monitor each side for rising or falling-edges. On a transition, the one shot timers momentarily turn on a strong drive (standard CMOS totem-pole) to create a fast transition. The timer quickly expires, turning of the strong drive and letting the weak drive take over until the next transition.
 
@@ -75,13 +75,13 @@ To fix the problem of these weak drives causing slow edge transitions, one shot 
 
 ### Powered Off Protection (IOFF)
 
-Powered off protection is activated when one or more of the power rails is at `\(0V\)`. Texas Instruments commonly uses the name `\(I_{OFF}\)` to describe this feature.
+Powered off protection is activated when one or more of the power rails is at \(0V\). Texas Instruments commonly uses the name \(I_{OFF}\) to describe this feature.
 
-{{% figure src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to `\(V_{CC}\)` in the case that the power rail is at `\(0V\)`[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
+{{% figure src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to \(V_{CC}\) in the case that the power rail is at \(0V\)[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
 
 ### Propagation Delay
 
-Generally, you want voltage-level translator ICs to have a low _propagation delay_ (commonly abbreviated as `\(t_{pd}\)`). Most voltage-level translator circuits have a propagation delay between 0.4ns (really fast) and 20ns (quite slow, but still fast enough for many applications). 
+Generally, you want voltage-level translator ICs to have a low _propagation delay_ (commonly abbreviated as \(t_{pd}\)). Most voltage-level translator circuits have a propagation delay between 0.4ns (really fast) and 20ns (quite slow, but still fast enough for many applications). 
 
 ### Clamping Diodes
 
@@ -106,7 +106,7 @@ The voltage rail on the B-side must always be higher than the voltage rail on th
 
 #### 74LVC1T45Z6-7: Diodes Incorporated, 1-bit
 
-`\(I_{OFF}\)` is activated when one or more of the power rails is at `\(0V\)`.
+\(I_{OFF}\) is activated when one or more of the power rails is at \(0V\).
 
 {{% figure src="74lvc1t45-diodes-inc-voltage-translator-pinout.png" width="300" caption="The pinout for the single bit Diodes Inc 74LVC1T45Z6-7 voltage translator in the SOT-563 package[^bib-diodes-inc-74lvc1t45z6-7-ds]." %}}
 
@@ -119,8 +119,8 @@ The voltage rail on the B-side must always be higher than the voltage rail on th
 | Topology                  | Totem-pole
 | Num. Bits                 | 4-bit
 | Auto-direction            | Yes
-| Voltage, `\(V_{CCA}\)`    | 1.2-3.6V
-| Voltage, `\(V_{CCB}\)`    | 1.65-5.5V
+| Voltage, \(V_{CCA}\)    | 1.2-3.6V
+| Voltage, \(V_{CCB}\)    | 1.65-5.5V
 | Package                   | BGA-12, SOIC-14, QFN-12, 
 | Cost                      | US$1.64 (TXB0104D, quantities of 100)
 

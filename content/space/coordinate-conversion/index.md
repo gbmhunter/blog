@@ -21,7 +21,7 @@ The _Haversine_ formula can be used to find the shortest distance (great circle 
     \( \varphi_2, \lambda_2 \) is the latitude and longitude of point 2, in radians<br>
  </p>
 
-The typical value used for `\( r \)` is `\( 6731 \times 10^3 m \)`, which is the mean radius of the earth.
+The typical value used for \( r \) is \( 6731 \times 10^3 m \), which is the mean radius of the earth.
 
 The code for this formula in many different languages can be found at [https://rosettacode.org/wiki/Haversine_formula](https://rosettacode.org/wiki/Haversine_formula).
 
@@ -71,4 +71,4 @@ The following formula allows you to calculate a destination coordinate (lat/lon)
  \(p_2\) = destination coordinate, latitude and longitude measured in radians<br>
  </p>
 
-Note that `\( p_{2,lon} \)` depends on `\( p_{2,lat} \)`, so you have to calculate the latitude of p2 before you can calculate the longitude.
+Note that \( p_{2,lon} \) depends on \( p_{2,lat} \), so you have to calculate the latitude of p2 before you can calculate the longitude.

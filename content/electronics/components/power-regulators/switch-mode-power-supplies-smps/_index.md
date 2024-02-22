@@ -43,7 +43,7 @@ _Continuous conduction mode_ (CCM) is when the **current through the inductor ne
 
 For the same output current, the peak current through the inductor is lower when the SMPS is operating in CCM, compared on any other mode of operation.
 
-CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (`\( Q_{rr} \)`). Ultra-fast diodes with low (`\(Q_{rr}\)`) are therefore recommended.
+CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (\( Q_{rr} \)). Ultra-fast diodes with low (\(Q_{rr}\)) are therefore recommended.
 
 ### Discontinuous Conduction Mode (DCM)
 

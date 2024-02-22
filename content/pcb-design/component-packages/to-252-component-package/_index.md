@@ -46,7 +46,7 @@ Synonyms:
 
 Thermal resistance:
 
-* `\(T_{JA} = 80^{\circ}{\rm C}/W\)` (pads only, no copper fill)
+* \(T_{JA} = 80^{\circ}{\rm C}/W\) (pads only, no copper fill)
 
 ## TO-252-5-P1
 
@@ -83,10 +83,10 @@ You can download 3D models from:
 
 The thermal resistances for any TO-252-5 package are shown below. 
 
-* `\(T_{JA} = 59^{\circ}{\rm C}/W\)` (pads only, no copper fill)
-* `\(T_{JA} = 26^{\circ}{\rm C}/W\)` (high-wattage land pattern)
-* `\(T_{JA} = 20^{\circ}{\rm C}/W\)` (one square inch of copper surrounding package, connected to ground)
-* `\(T_{JA} = 7^{\circ}{\rm C}/W\)` (high-wattage land pattern with thermal vias to bottom layer)
+* \(T_{JA} = 59^{\circ}{\rm C}/W\) (pads only, no copper fill)
+* \(T_{JA} = 26^{\circ}{\rm C}/W\) (high-wattage land pattern)
+* \(T_{JA} = 20^{\circ}{\rm C}/W\) (one square inch of copper surrounding package, connected to ground)
+* \(T_{JA} = 7^{\circ}{\rm C}/W\) (high-wattage land pattern with thermal vias to bottom layer)
 
 ## TO-252-5-P2
 

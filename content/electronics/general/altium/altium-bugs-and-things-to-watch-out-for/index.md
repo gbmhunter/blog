@@ -256,7 +256,7 @@ Because of this, the PCB editor will continuously try and update component descr
 
 {{% figure src="altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png" width="1146px" caption="Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols."  %}}
 
-This is unfortunate, as symbols like `\(\Omega\)` and `\(^{\circ}\)` are great to use in component descriptions.
+This is unfortunate, as symbols like \(\Omega\) and \(^{\circ}\) are great to use in component descriptions.
 
 ## BomDoc Gets Modified When You Don't Want It To
 

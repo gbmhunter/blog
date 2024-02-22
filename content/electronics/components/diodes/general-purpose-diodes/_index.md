@@ -32,51 +32,51 @@ Some believe that the diode symbol originated from the drawing of a point contac
 
 ### Maximum Continuous Forward Current
 
-* Symbol: `\(I_{f(cont)}\)` or `\(I_{f(max)}\)`
+* Symbol: \(I_{f(cont)}\) or \(I_{f(max)}\)
 
 The maximum continuous current the diode can withstand, usually limited by overheating.
 
 ### Average Rectified Forward Current
 
-The _average rectified forward current_ is the maximum average current the diode can sustain when it only conducting during the positive half-cycle of a sine wave (i.e. working as a half-wave rectifier). It is related to the maximum current that the diode conducts at during the top of the positive cycle of the sine wave by `\(I_{av} = \frac{I_{max}}{\pi}\)`. This equation is obtained by integrating the current over the positive half-cycle of a sine wave and then dividing it by the total time for one cycle:
+The _average rectified forward current_ is the maximum average current the diode can sustain when it only conducting during the positive half-cycle of a sine wave (i.e. working as a half-wave rectifier). It is related to the maximum current that the diode conducts at during the top of the positive cycle of the sine wave by \(I_{av} = \frac{I_{max}}{\pi}\). This equation is obtained by integrating the current over the positive half-cycle of a sine wave and then dividing it by the total time for one cycle:
 
-<p>\begin{align}
+$$\begin{align}
 I_{av} &= \frac{1}{2\pi} \int_0^{\pi} I_{max} \sin (t) dt \nonumber \\
        &= \frac{1}{2\pi} I_{max} -[\cos (t)] \big|_{0}^{\pi} \nonumber \\
        &= \frac{1}{2\pi} I_{max} -[-1 - 1] \nonumber \\
        &= \frac{1}{2\pi} 2I_{max} \nonumber \\
        &= \frac{I_{max}}{\pi}
-\end{align}</p>
+\end{align}$$
 
-This ignores the fact the diode doesn't conduct until the forward voltage gets to about `\(0.7V\)`, which is fine to ignore is most cases as this part of the cycle will be tiny in comparison to everything else.[^avg-rectified-forward-current-plot] shows graphically when the diode is conducting from a sinusoidal supply and the relationship between average rectified forward current and maximum (peak) current for a complete sine wave cycle. `\(I_{max}\)` was chosen to be `\(5A\)`, and the waveform has a period of `\(2\pi\)` seconds for simplicity (although relationship is independent of period/frequency).
+This ignores the fact the diode doesn't conduct until the forward voltage gets to about \(0.7V\), which is fine to ignore is most cases as this part of the cycle will be tiny in comparison to everything else.[^avg-rectified-forward-current-plot] shows graphically when the diode is conducting from a sinusoidal supply and the relationship between average rectified forward current and maximum (peak) current for a complete sine wave cycle. \(I_{max}\) was chosen to be \(5A\), and the waveform has a period of \(2\pi\) seconds for simplicity (although relationship is independent of period/frequency).
 
 {{% figure src="avg-rectified-forward-current-plot.png" width="500px" caption="Plot showing the relationship between average rectified forward current and max. current for a diode rectifying a sine wave (e.g. mains supply)." %}}
 
 {{% aside type="tip" %}}
-The integration limits are set to `\(0\)` and `\(\pi\)` (and not `\(2\pi\)`) because we only want integrate over the first-half of the sine wave cycle when the diode is conducting.
+The integration limits are set to \(0\) and \(\pi\) (and not \(2\pi\)) because we only want integrate over the first-half of the sine wave cycle when the diode is conducting.
 {{% /aside %}}
 
 ### Peak-surge forward current
 
-* Symbol: `\(I_{FSM}\)`
+* Symbol: \(I_{FSM}\)
 
 The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.
 
 ### Forward Voltage
 
-* Symbol: `\(V_f\)`
+* Symbol: \(V_f\)
 
-The forward voltage drop, usually rated at maximum continuous current (`\(I_f\)`). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
+The forward voltage drop, usually rated at maximum continuous current (\(I_f\)). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
 
 ### Reverse-leakage Current
 
-* Symbol: `\(I_R\)`
+* Symbol: \(I_R\)
 
 The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
 
 ### Peak Reverse Voltage
 
-* Symbol: `\(V_{R(max)}\)` or `\(V_{RRM}\)`[^bib-vishay-1n400x-datasheet]
+* Symbol: \(V_{R(max)}\) or \(V_{RRM}\)[^bib-vishay-1n400x-datasheet]
 
 The maximum reverse voltage the diode can sustain without reverse breakdown occurring and possible damage. Sometimes called PIV (Peak Inverse Voltage)
 
@@ -102,7 +102,7 @@ The short answer: No!
 
 The slightly longer answer...
 
-Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg (called a ballast). They should be identical in resistance and have to drop at least `\(0.3-0.4V\)` (when the diode has a nominal voltage drop of around `\(0.7V\)`) to be effective.
+Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg (called a ballast). They should be identical in resistance and have to drop at least \(0.3-0.4V\) (when the diode has a nominal voltage drop of around \(0.7V\)) to be effective.
 
 ### Bridge Rectifiers
 
@@ -111,14 +111,14 @@ _Bridge rectifiers_ are 4 diodes connected in such a way that they **rectify** a
 {{% figure src="bridge-rectifier-schematic.svg" width="500px" caption="Basic circuit diagram showing the construction of a bridge rectifier from four general purpose diodes." %}}
 
 {{% aside type="warning" %}}
-Whilst the output of a bridge rectifier is technically DC, the voltage is still changing by a decent amount! The output begins to look like regular, stable DC once you start adding capacitance (and at `\(50-60Hz\)` power line frequencies, a lot of it!).
+Whilst the output of a bridge rectifier is technically DC, the voltage is still changing by a decent amount! The output begins to look like regular, stable DC once you start adding capacitance (and at \(50-60Hz\) power line frequencies, a lot of it!).
 {{% /aside %}}
 
-The image below shows a bridge rectifier being used after a transformer to convert `\(12VAC\)` (rms) into `\(12VDC\)`. Note that the frequency of the ripple will be twice the AC input frequency (`\(2\cdot 50Hz = 100Hz\)`).
+The image below shows a bridge rectifier being used after a transformer to convert \(12VAC\) (rms) into \(12VDC\). Note that the frequency of the ripple will be twice the AC input frequency (\(2\cdot 50Hz = 100Hz\)).
 
 {{% figure src="transformer-bridge-recitifier-cap-240vac-to-12vdc.png" width="800px" caption="A schematic of an AC-DC power-supply that uses a bridge rectifier." %}}
 
-Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a `\(47pF\)` capacitor in series with a `\(2k\Omega\)` resistor.
+Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a \(47pF\) capacitor in series with a \(2k\Omega\) resistor.
 
 ### Ideal Diodes
 

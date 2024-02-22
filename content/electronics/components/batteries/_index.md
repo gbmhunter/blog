@@ -62,11 +62,11 @@ They have an energy density of 970mWh/cm^3 (when the discharge current is 100uA)
 
 ### Temperature Range
 
-They can be used over a wide temperature range of `\(-55^\circ C\)` to `\(+85^\circ C\)`.
+They can be used over a wide temperature range of \(-55^\circ C\) to \(+85^\circ C\).
 
 ### Chemical Reaction
 
-Lithium thionyl chloride batteries use liquid thionyl chloride (`\(SOCl_2\)` as the positive active material, and lithium (Li) as the negative active material.
+Lithium thionyl chloride batteries use liquid thionyl chloride (\(SOCl_2\) as the positive active material, and lithium (Li) as the negative active material.
 
 Note that the following table describes the reactions for **discharging**, the reactions occur in the opposite direction when the battery is **recharging**.
 
@@ -103,33 +103,33 @@ The reactions at each part of the battery are shown below:
 
 #### Anode
 
-<p>\begin{align}
+$$\begin{align}
 Zn + 4OH^- \to Zn(OH)_4^{2-} + 2e^-
-\end{align}</p>
+\end{align}$$
 
-This has a voltage potential of `\(E_0 = -1.25V\)`.
+This has a voltage potential of \(E_0 = -1.25V\).
 
 #### Fluid
 
-<p>\begin{align}
+$$\begin{align}
 Zn(OH)_4^{2-} \to ZnO + H_2 O + 2OH^-
-\end{align}</p>
+\end{align}$$
 
 #### Cathode
 
-<p>\begin{align}
+$$\begin{align}
 \frac{1}{2}O_2 + H_2 O + 2e^- \to 2OH^-
-\end{align}</p>
+\end{align}$$
 
-This has a voltage potential of `\(E_0 = 0.34V\)`.
+This has a voltage potential of \(E_0 = 0.34V\).
 
 #### Overall
 
-<p>\begin{align}
+$$\begin{align}
 2Zn + O_2 \to 2ZnO
-\end{align}</p>
+\end{align}$$
 
-This has a voltage potential of `\(E_0 = 1.59V\)`.
+This has a voltage potential of \(E_0 = 1.59V\).
 
 ### Voltage
 

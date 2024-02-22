@@ -31,9 +31,9 @@ There are two dominant standards in use when it comes to calculating track curre
 
 The first standard, IPC-2221A is quite old, and is based of an older standard called IPC-D-275, which is itself based of measurements and graphs drawn in 1954.
 
-IPC-2221A has a single graph (currently figure 6-4), which the following equation for calculating the track current `\(I\)` is derived from:
+IPC-2221A has a single graph (currently figure 6-4), which the following equation for calculating the track current \(I\) is derived from:
 
-<p>$$ I = k\Delta T^b A^c $$</p>
+$$ I = k\Delta T^b A^c $$
 
 <p class="centered">
     where:<br>

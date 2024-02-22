@@ -71,7 +71,7 @@ Advantages:
 
 * Cumulative degradation
 * Large leakage currents
-* Large capacitance (`\(10{-}1000 pF\)`)
+* Large capacitance (\(10{-}1000 pF\))
 
 ### GDT (Gas Discharge Tube)
 
@@ -104,7 +104,7 @@ Disadvantages:
 
 **IEC 61000-4-2**
 
-For example, the ESD Withstand Voltage `\(V_{ESD}\)` for the LittelFuse SP3012-06UTG ESD diode array is rated to `\(\pm 12kV\)` to IEC61000-4-2 (Contact) and `\(\pm 25kV\)` to IEC61000-4-2 (Air)[^bib-littelfuse-sp3012-ds].
+For example, the ESD Withstand Voltage \(V_{ESD}\) for the LittelFuse SP3012-06UTG ESD diode array is rated to \(\pm 12kV\) to IEC61000-4-2 (Contact) and \(\pm 25kV\) to IEC61000-4-2 (Air)[^bib-littelfuse-sp3012-ds].
 
 **IEC 61000-4-4**
 
@@ -124,18 +124,18 @@ Test level `X` designates a special test in where the levels are defined by the 
 
 ## Internal ESD Protection On CMOS I/O
 
-Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (`\( GND <= V_{I/O} <= V_{CC} \)`).
+Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (\( GND <= V_{I/O} <= V_{CC} \)).
 
 {{% figure src="cmos-inputs-showing-internal-protection-diodes.svg" width="400" caption="Diagram of a CMOS digital I/O pin, highlighting the internal protection diodes prevalent in many designs (even if the ICs datasheet does not mention them)." %}}
 
-They serve to protect the sensitive CMOS logic in the case of a fault condition on the pin. If the voltage on `\( V_{I/O} \)` rises above `\( V_{CC} \)` (e.g. positive ESD voltage spike), then the top diode conducts, clamping the voltage on the pin to no more than `\( V_{CC} + V_f \)`. Similarly, if the voltage on `\( V_{I/O} \)` drops below `\(V_{GND}\)` (e.g. negative ESD voltage spike), then the bottom diode conducts, clamping the voltage on the pin to no more than `\( -V_f \)`.
+They serve to protect the sensitive CMOS logic in the case of a fault condition on the pin. If the voltage on \( V_{I/O} \) rises above \( V_{CC} \) (e.g. positive ESD voltage spike), then the top diode conducts, clamping the voltage on the pin to no more than \( V_{CC} + V_f \). Similarly, if the voltage on \( V_{I/O} \) drops below \(V_{GND}\) (e.g. negative ESD voltage spike), then the bottom diode conducts, clamping the voltage on the pin to no more than \( -V_f \).
 
 Be careful, as these diodes usually have quite a low maximum current. Exceeding this maximum current will blow the ESD diode, usually causing it to go open-circuit, removing the protection from the sensitive CMOS circuitry, which then gets fried almost instantaneously. Your I/O pin then stops working. If your lucky, it will only be a single pin that is effected. If your not, the whole port (if applicable), or even the whole device is fried.
 
 However useful they may be, they also generate design challenges in specific scenario's, and therefore require careful consideration when doing any schematic design involving CMOS I/O with the ESD protection diodes present. The two scenario's which cause problems are:
 
 . When powering up a circuit with multiple voltage rails
-. When the voltage on `\(V_{I/O}\)` could at some points be higher than `\(V_{CC}\)` because of the nature of the incoming signal.
+. When the voltage on \(V_{I/O}\) could at some points be higher than \(V_{CC}\) because of the nature of the incoming signal.
 . When you are selectively powering down the voltage rails powering these ICs in low-power designs.
 
 Out of all these scenarios, 3. has to be the one that catches a schematic designer out the most often.
@@ -146,14 +146,14 @@ Backpowering is a phenomenon which occurs in circuits that selectively turn of v
 
 If the leakage current through any CMOS I/O ESD diodes onto the "unpowered" rail is large enough, the circuit may begin back powering itself. This means that although you have turned off the voltage source supplying that rail, the rail still remains powered and all the ICs connected to it still work normally.
 
-You can normally diagnose this by noting the the "unpowered" rail will be one diode forward voltage drop (`\(V_f\)`, which is usually around 0.5-0.7V) less than the voltage on the I/O pin(s) powering the rail (which are normally at `\(V_{CC}\)`).
+You can normally diagnose this by noting the the "unpowered" rail will be one diode forward voltage drop (\(V_f\), which is usually around 0.5-0.7V) less than the voltage on the I/O pin(s) powering the rail (which are normally at \(V_{CC}\)).
 
 ## Standalone TVS Diodes
 
 {{% figure src="basic-esd-protection-with-tvs-diode.svg" width="800" caption="A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB." %}}
 
 {{% note %}}
-A TVS as shown above also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about `\(-0.7V\)`. Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See <<tvs-on-12v-input-and-fuse>> for an example using both a TVS diode and fuse.
+A TVS as shown above also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about \(-0.7V\). Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See <<tvs-on-12v-input-and-fuse>> for an example using both a TVS diode and fuse.
 {{% /note %}}
 
 {{% figure src="basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg" width="800" caption="Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1)." %}}
@@ -163,7 +163,7 @@ Extra diodes, external to the IC, can be added to prevent leakage currents throu
 
 {{% figure src="protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." %}}
 
-However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (`\(V_f\)`) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
+However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (\(V_f\)) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
 ## Series Resistance Into CMOS I/O
 
@@ -189,10 +189,10 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 
 ## Lighting Surge Characterization And Test Transient Pulses
 
-{{% figure src="test-pulse-graph-8-20us.svg" width="800" caption="Transient ESD events are typically specified with two numbers, `\(t_1\)` and `\(t_2\)`. `\(t_1\)` is the time for the current to reach the peak value. `\(t_2\)` is the time from the start to when the current decays to half of the peak value (as shown)." %}}
+{{% figure src="test-pulse-graph-8-20us.svg" width="800" caption="Transient ESD events are typically specified with two numbers, \(t_1\) and \(t_2\). \(t_1\) is the time for the current to reach the peak value. \(t_2\) is the time from the start to when the current decays to half of the peak value (as shown)." %}}
 
 
-| Name | `\(t_1\)` | `\(t_2\)` | Comment
+| Name | \(t_1\) | \(t_2\) | Comment
 |------|-----------|-----------|-----------
 | 8/20us | 8us | 20us |
 | 10/350us | 10us | 350us | Typically used to simulate a lightning strike.

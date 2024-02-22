@@ -12,7 +12,7 @@ type: page
 
 <p>The probability density function of a normal distribution is given by:</p>
 
-<p>$$ f(x, \mu | \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} $$</p>
+$$ f(x, \mu | \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} $$
 
 <p class="centered">
 where:<br>

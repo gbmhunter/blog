@@ -35,9 +35,9 @@ Zinc oxide varistors are made from a sintered matrix of zinc oxide (ZnO) grains.
 
 In the "normal" varistor region of operation (above the leakage current region and below the upturn region), the voltage and current through the varistor is approximated well by the following equation[^bib-lf-theory]:
 
-<p>\begin{align}
+$$\begin{align}
 I = kV^\alpha
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -47,10 +47,10 @@ where:<br/>
 \(\alpha\) is a device specific constant (more on this below)<br/>
 </p>
 
-`\(\alpha\)` is a "figure of merit" and device specific. The higher the `\(\alpha\)` for more non-linear the varistor, and the better it performs as a voltage clamp. It has a very strong relationship to the composition of the device, and can be somewhat generalized by device makeup:
+\(\alpha\) is a "figure of merit" and device specific. The higher the \(\alpha\) for more non-linear the varistor, and the better it performs as a voltage clamp. It has a very strong relationship to the composition of the device, and can be somewhat generalized by device makeup:
 
 
-| Composition | `\(\alpha\)`
+| Composition | \(\alpha\)
 |-------------|---------------
 | SiC (silicon carbide) | 3-7
 | ZnO (zinc oxide) | 20-50

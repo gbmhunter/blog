@@ -27,11 +27,11 @@ We will discuss these further in the following sections:
 
 ### String DAC (Kelvin Divider)
 
-The string DAC (a.k.a Kelvin divider DAC) is the the easiest DAC design to understand, and is just a string of equal-valued resistors from `\(V_{REF}\)` to `\(GND\)`, with taps of each junction to the output.
+The string DAC (a.k.a Kelvin divider DAC) is the the easiest DAC design to understand, and is just a string of equal-valued resistors from \(V_{REF}\) to \(GND\), with taps of each junction to the output.
 
 {{% figure src="dac-architecture-string.svg" width="600px" caption="The internal architecture of a string DAC." %}}
 
-A `\(n\)` bit string DAC requires `\(2^n - 1\)` resistors. This is a sensible number for lower resolutions of 8-10 bits, but soon gets prohibitively high for higher resolutions. For example:
+A \(n\) bit string DAC requires \(2^n - 1\) resistors. This is a sensible number for lower resolutions of 8-10 bits, but soon gets prohibitively high for higher resolutions. For example:
 
 * 8bit DAC: 255 resistors
 * 10bit DAC: 1023 resistors
@@ -46,9 +46,9 @@ R-2R (or R-2R ladder) allows for many outputs.
 
 {{% figure src="dac-architecture-r2r.svg" width="800px" caption="The internal architecture of a R-2R DAC." %}}
 
-A `\(n\)` bit R-2R DAC requires `\(2N\)` resistors[^analog-mt015-basic-dac-architectures].
+A \(n\) bit R-2R DAC requires \(2N\) resistors[^analog-mt015-basic-dac-architectures].
 
-A R-2R DAC can have large glitch errors, due to timing differences in the switches which connect junctions to either `\(V_{REF}\)` or `\(GND\)`.  
+A R-2R DAC can have large glitch errors, due to timing differences in the switches which connect junctions to either \(V_{REF}\) or \(GND\).  
 
 ### MDAC
 
@@ -65,7 +65,7 @@ Delta-Sigma (or Sigma-Delta) DACs provide the highest precision DACs compared to
 
 ## Voltage References
 
-**The voltage reference is a very important piece of a DAC circuit**. The voltage reference provides the full-scale voltage that the DAC will output (or a fixed multiplier of the full-scale output if there is an output buffer with multiplier). It is important to consider the accuracy of the voltage reference over temperature changes. Typically an error in `\(ppm/°C\)` is provided, with a value of `\(10-100ppm/°C\)` being normal.
+**The voltage reference is a very important piece of a DAC circuit**. The voltage reference provides the full-scale voltage that the DAC will output (or a fixed multiplier of the full-scale output if there is an output buffer with multiplier). It is important to consider the accuracy of the voltage reference over temperature changes. Typically an error in \(ppm/°C\) is provided, with a value of \(10-100ppm/°C\) being normal.
 
 ### Internal Voltage References
 
@@ -115,17 +115,17 @@ Integral non-linearity (INL, also called _relative accuracy_) is a measure of th
 
 If the INL is given in bits, this is achieved by dividing the INL in volts by the voltage of the LSB.
 
-<p>\begin{align}
+$$\begin{align}
 INL_{bits} = \frac{INL_{volts}}{V_{LSB}}
-\end{align}</p>
+\end{align}$$
 
-For example, if the `\(INL_{volts}\)` was 4.3mV, the DAC was 10-bit and went from 0V to 2.5V, then:
+For example, if the \(INL_{volts}\) was 4.3mV, the DAC was 10-bit and went from 0V to 2.5V, then:
 
-<p>\begin{align}
+$$\begin{align}
 INL_{bits} &= \frac{4.3mV}{\frac{2.5V}{2^{10}}} \\
            &= \frac{4.3mV}{2.44mV} \\
            &= 1.8 bits
-\end{align}</p>
+\end{align}$$
 
 ### Differential Non-linearity (DNL)
 
@@ -133,15 +133,15 @@ Differential non-linearity measures the deviation from ideal in two analogue out
 
 The differential non-linearity for any step is given by:
 
-<p>\begin{align}
+$$\begin{align}
 DNL(i) = \frac{V_{out}(i + 1) - V_{out}(i)}{ideal LSB output} - 1
-\end{align}</p>
+\end{align}$$
 
 And then the value given on the datasheet is just the maximum \(DNL\) across the whole operating range:
 
-<p>\begin{align}
+$$\begin{align}
 DNL_{max} = max (\sum_{i=0}^{i=n-1} DNL(i))
-\end{align}</p>
+\end{align}$$
 
 A differential non-linearity of more than 1LSB may lead to a non-monotonic transfer function (a.k.a. missing codes).
 
@@ -149,9 +149,9 @@ A differential non-linearity of more than 1LSB may lead to a non-monotonic trans
 
 No, DACs do not have more error on a Tuesday. _Total unadjusted error_ (TUE) is an error metric of a DAC which combines the INL, gain and offset errors into a single metric.
 
-<p>\begin{align}
+$$\begin{align}
 e_{TUE} = \sqrt{ e_{INL}^2 + e_{gain}^2 + e_{offset}^2 }
-\end{align}</p>
+\end{align}$$
 
 This equation only holds true if the three noise sources are **uncorrelated and each follow a normal distribution**. 
 

@@ -19,7 +19,7 @@ Linear active temperature sensors output a analogue voltage which is proportiona
 
 {{% figure src="temp-sensor-tmp36-to-92-photo.jpg" width="300px" caption="A photo of the common TMP36 analogue temperature sensor in the TO-92 package. Image from https://www.sparkfun.com/products/10988." %}}
 
-They require contact with the medium that is to be measured. They usually require three connections (power, ground, and `\(V_{out}\)`, but can be purchased in packages with more pins. They use an internal diode to measure the temperature, surrounded by circuitry which linearises the output, provides an offset, and makes the reading insensitive to other parameter changes.
+They require contact with the medium that is to be measured. They usually require three connections (power, ground, and \(V_{out}\), but can be purchased in packages with more pins. They use an internal diode to measure the temperature, surrounded by circuitry which linearises the output, provides an offset, and makes the reading insensitive to other parameter changes.
 
 {{% figure src="temp-sensor-tc1046-graph-output-voltage-vs-temp.png" width="500px" caption="Graph of the voltage output vs. temperature for a Microchip TC1046 analogue temperature sensor. Image from http://ww1.microchip.com/downloads/en/DeviceDoc/21496C.pdf." %}}
 
@@ -43,25 +43,25 @@ NTCs are used for smaller, but more accurate temperature ranges such as measurin
 
 ### Temperature Accuracy
 
-The temperature accuracy of a thermistor can be calculated (at the reference temperature) by dividing the percentage resistance tolerance at 25°C (or whatever the reference temperature is) by the thermistor's temperature coefficient, `\(\alpha\)`.
+The temperature accuracy of a thermistor can be calculated (at the reference temperature) by dividing the percentage resistance tolerance at 25°C (or whatever the reference temperature is) by the thermistor's temperature coefficient, \(\alpha\).
 
-<p>\begin{align}
+$$\begin{align}
 \text{accuracy (at T)} = \frac{\text{resistance tolerance (at T)}}{\alpha\text{ (at T)}}
-\end{align}</p>
+\end{align}$$
 
-For example, the [Vishay NTCALUG03A103GC](http://www.digikey.com/product-detail/en/vishay-bc-components/NTCALUG03A103GC/BC2381-ND/2230709) has a resistance tolerance of `\(\pm 2%\)` and `\(\alpha_{25} = \pm 4.39%\)`. Therefore:
+For example, the [Vishay NTCALUG03A103GC](http://www.digikey.com/product-detail/en/vishay-bc-components/NTCALUG03A103GC/BC2381-ND/2230709) has a resistance tolerance of \(\pm 2%\) and \(\alpha_{25} = \pm 4.39%\). Therefore:
 
-<p>\begin{align}
+$$\begin{align}
 \text{accuracy}_{25} = \frac{2%}{4.39} \\ = 0.46%
-\end{align}</p>
+\end{align}$$
 
 ### Self Heating
 
-A NTC thermistor, like any other resistor, dissipates energy as heat when current flows through it. The power dissipation, `\(P_{NTC}\)` in a NTC thermistor is:
+A NTC thermistor, like any other resistor, dissipates energy as heat when current flows through it. The power dissipation, \(P_{NTC}\) in a NTC thermistor is:
 
-<p>\begin{align}
+$$\begin{align}
 P_{NTC} = I^2 * R
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -78,11 +78,11 @@ TIP: To make sure self-heating doesn't affect your temperature measurements, mak
 
 The Beta equation or Beta formula is a empirical equation used to work out the temperature from the measured resistance of a NTC thermistor.
 
-It uses a single material constant, `\(\beta\)`, which is also known as the _coefficient of temperature sensitivity_. The equation is an exponential approximation of the relationship between resistance and temperature in the form:
+It uses a single material constant, \(\beta\), which is also known as the _coefficient of temperature sensitivity_. The equation is an exponential approximation of the relationship between resistance and temperature in the form:
 
-<p>\begin{align}
+$$\begin{align}
 R(T) = R(T_0)e^{\beta(\frac{1}{T} - \frac{1}{T_0})}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -92,25 +92,25 @@ where:<br/>
 \(T_0\) is the reference temperature, in Kelvin<br/>
 </p>
 
-At best, the accuracy of the Beta equation approaches `\(\pm 1%\)` between `\(0-100^{\circ}C\)`, and not more than `\(\pm 5%\)` other the NTC thermistor's entire temperature range.
+At best, the accuracy of the Beta equation approaches \(\pm 1%\) between \(0-100^{\circ}C\), and not more than \(\pm 5%\) other the NTC thermistor's entire temperature range.
 
-`\(\beta\)` can be calculated when you have both the temperature and resistance  of the thermistor at two different operating points. `\(\beta\)` can be calculated as follows:
+\(\beta\) can be calculated when you have both the temperature and resistance  of the thermistor at two different operating points. \(\beta\) can be calculated as follows:
 
-<p>\begin{align}
+$$\begin{align}
 \beta = \frac{ln(R_1) - ln(R_2)}{\frac{1}{T_1} - \frac{1}{T_2}}
-\end{align}</p>
+\end{align}$$
 
 Or, written another way:
 
-<p>\begin{align}
+$$\begin{align}
 \beta = \frac{T_1 * T_2}{T_2 - T1}ln(\frac{R_1}{R_2})
-\end{align}</p>
+\end{align}$$
 
-Re-arranged so that we can calculate a temperature from a measured resistance, and using the terminology `\(R_0\)` and `\(T_0\)` instead of `\(R_2\)` and `\(T_2\)`, we get the following equation:
+Re-arranged so that we can calculate a temperature from a measured resistance, and using the terminology \(R_0\) and \(T_0\) instead of \(R_2\) and \(T_2\), we get the following equation:
 
-<p>\begin{align}
+$$\begin{align}
 \frac{1}{T} = \frac{1}{T_0} + \frac{1}{\beta}ln(\frac{R}{R_0}) 
-\end{align}</p>
+\end{align}$$
 
 The free embedded-engineering calculator app, [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
 
@@ -120,9 +120,9 @@ The Steinhart-Hart is a complex but highly accurate way of modelling the relatio
 
 The Steinhart-Hart equation is:
 
-<p>\begin{align}
+$$\begin{align}
 \frac{1}{T} = A + Bln(R) + C(ln(R))^3
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -132,12 +132,12 @@ where:<br/>
 </p>
 
 {{% aside type="warning" %}}
-The `\(B\)` in the Steinhart-Hart equation above is not the same as the `\(\beta\)` in the Beta Equation.
+The \(B\) in the Steinhart-Hart equation above is not the same as the \(\beta\) in the Beta Equation.
 {{% /aside %}}
 
 ### Linearising The NTC With Extra Resistors
 
-By just adding a few extra resistors, the output of a NTC thermistor can be "linearised" enough that the equation `\(y = ax + b\)` can be used within the microcontroller over a limited temperature range.
+By just adding a few extra resistors, the output of a NTC thermistor can be "linearised" enough that the equation \(y = ax + b\) can be used within the microcontroller over a limited temperature range.
 
 Linearisation is also used in purely analogue circuits in where there is no digital circuitry (that means no ADCs or processing logic), and the output of the NTC thermistor circuit goes directly to a voltage comparator (or similar) to control an output.
 

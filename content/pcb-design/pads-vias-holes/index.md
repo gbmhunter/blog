@@ -26,7 +26,7 @@ Vias are simply the name given to plated holes which are used to connect to trac
 
 **DESIGN TIP:** As a rule of thumb, a via with a certain diameter can carry 3 times as much current than a track with the same width.
 
-The above rule-of thumb stems from the fact that when a via wall is unrolled into a 2D track shape, it would be `\(\pi \cdot d\)` wide (`\(c = 2\pi r\)`), where `\(\pi\)` is approximately equal to 3. This assumes that the via wall is the same thickness as the copper track (e.g. 32um or 1oz. copper)). This does not take into account the difference between an external track and a via which is surrounded by PCB material. Since PCB material is more thermally conductive than air, this rule is on the safe side.
+The above rule-of thumb stems from the fact that when a via wall is unrolled into a 2D track shape, it would be \(\pi \cdot d\) wide (\(c = 2\pi r\)), where \(\pi\) is approximately equal to 3. This assumes that the via wall is the same thickness as the copper track (e.g. 32um or 1oz. copper)). This does not take into account the difference between an external track and a via which is surrounded by PCB material. Since PCB material is more thermally conductive than air, this rule is on the safe side.
 
 NinjaCalc (which can be used for free from [here](http://gbmhunter.github.io/NinjaCalc/)) has a via current calculator.
 
@@ -108,13 +108,13 @@ Although the 3-15W/mK specific thermal conductivity of the filled conductive via
 
 The aspect ratio is an important parameter of a hole on a PCB. It is defined as:
 
-<p>$$ aspect\;ratio = \frac{hole\;height}{drilled\;hole\;size} $$</p>
+$$ aspect\;ratio = \frac{hole\;height}{drilled\;hole\;size} $$
 
-The `\( hole\;height \)` is the same as the PCB thickness if the start and finish layers of the hole are the top and bottom layers of the PCB. This is true in most cases, but will not be the case for all holes in a PCB design that uses **buried** or **blind vias**.
+The \( hole\;height \) is the same as the PCB thickness if the start and finish layers of the hole are the top and bottom layers of the PCB. This is true in most cases, but will not be the case for all holes in a PCB design that uses **buried** or **blind vias**.
 
 For example, a hole with a 0.5mm diameter going entirely through a 1.6mm thick PCB has an aspect ratio of
 
-<p>$$ \frac{1.6mm}{0.5mm} = 3.2 $$</p>
+$$ \frac{1.6mm}{0.5mm} = 3.2 $$
 
 The maximum aspect ratio present on a PCB is an important parameter for the PCB manufacturers. Most manufacturers have an upper limit on the aspect ratio that they can manufacture reliably. This is normally about an aspect ratio of 10-12. 
 

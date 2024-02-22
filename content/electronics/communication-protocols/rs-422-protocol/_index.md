@@ -22,7 +22,7 @@ _RS-422_ (a.k.a. TIA/EIA-422) is a serial, differential communication protocol u
 | 10kbps | 1200m[^bib-wp-rs-422]
 | 10Mbps | 10m
 
-The maximum allowed differential voltage is `\(\pm 6.0V\)`[^bib-wp-rs-422].
+The maximum allowed differential voltage is \(\pm 6.0V\)[^bib-wp-rs-422].
 
 A _mark_ (binary 1) is transmitted with a negative differential voltage, a _space_ (binary 0) is transmitted with a positive differential voltage. This is the same terminology and "inverse" polarity as RS-232 and RS-485.
 

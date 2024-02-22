@@ -21,18 +21,18 @@ To learn more about EMI/EMC considerations regarding buck converters, see the [E
 
 ## How A Buck Converter Works
 
-The output voltage of a buck converter is purely determined by the input voltage `\(V_{IN}\)` and the percentage of time that the switch spend on during each switching cycle, `\(D\)`:
+The output voltage of a buck converter is purely determined by the input voltage \(V_{IN}\) and the percentage of time that the switch spend on during each switching cycle, \(D\):
 
-<p>\begin{align}
+$$\begin{align}
 \label{eq:vout-d-vin}
 V_{OUT} = DV_{IN}
-\end{align}</p>
+\end{align}$$
 
-`\(D\)` is the duty cycle, and varies from `\(0\)` to `\(1\)`. It is defined as:
+\(D\) is the duty cycle, and varies from \(0\) to \(1\). It is defined as:
 
-<p>\begin{align}
+$$\begin{align}
 D = \frac{t_{on}}{T}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -41,22 +41,22 @@ where:</br>
 </p>
 
 {{% note %}}
-The simple equation showing `\(V_{OUT}\)` is only dependent on `\(V_{IN}\)` and `\(D\)` is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor) AND the inductor is in continuous conduction (i.e. current never drops to 0). In the real world there are always parasitics, however this equation is still a good first approximation to help understand how it works.
+The simple equation showing \(V_{OUT}\) is only dependent on \(V_{IN}\) and \(D\) is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor) AND the inductor is in continuous conduction (i.e. current never drops to 0). In the real world there are always parasitics, however this equation is still a good first approximation to help understand how it works.
 {{% /note %}}
 
-The following steps show a way to **intuitively understand how a buck converter produces a lower output voltage** (and derive Eq `\(\ref{eq:vout-d-vin}\)`):
+The following steps show a way to **intuitively understand how a buck converter produces a lower output voltage** (and derive Eq \(\ref{eq:vout-d-vin}\)):
 
-1. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because `\(V = L \frac{di}{dt}\)` (the basic equation for an inductor), **the current in the inductor would increase or decrease without bound (i.e. go to infinity)**. 
-1. When the switch is closed (`\(t_{on}\)`), the voltage across `\(L1\)` is `\(V_{IN} - V_{OUT}\)` during this phase.
-1. When the switch is open (`\(t_{off}\)`), `\(D1\)` is forward biased, and if we assume it's a perfect diode (no forward voltage drop), the voltage across `\(L1\)` is `\(-V_{OUT}\)` during this phase.
+1. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because \(V = L \frac{di}{dt}\) (the basic equation for an inductor), **the current in the inductor would increase or decrease without bound (i.e. go to infinity)**. 
+1. When the switch is closed (\(t_{on}\)), the voltage across \(L1\) is \(V_{IN} - V_{OUT}\) during this phase.
+1. When the switch is open (\(t_{off}\)), \(D1\) is forward biased, and if we assume it's a perfect diode (no forward voltage drop), the voltage across \(L1\) is \(-V_{OUT}\) during this phase.
 1. The average (or integral) over the entire switching cycle has to be 0, so:
-    <p>\begin{align}
+    $$\begin{align}
     (V_{IN} - V_{OUT})t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
     V_{IN}t_{on} - V_{OUT}t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
     V_{IN}t_{on} &= V_{OUT}(t_{on} + t_{off}) \nonumber \\
     V_{OUT} &= \frac{t_{on}}{t_{on} + t_{off}} V_{IN} \nonumber \\
             &= D V_{IN} \nonumber 
-    \end{align}</p>
+    \end{align}$$
 
 {{% tip %}}
 This analysis method of realizing the average voltage across the inductor must be 0 over an entire switching cycle also works for other switching topologies. 
@@ -64,13 +64,13 @@ This analysis method of realizing the average voltage across the inductor must b
 
 When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
-{{% figure src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during `\(t_{on}\)` )." %}}
+{{% figure src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during \(t_{on}\) )." %}}
 
-When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing `\(D1\)`, as shown below:
+When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing \(D1\), as shown below:
 
-{{% figure src="buck-converter-schematic-current-path-toff.svg" width="500" caption="Current path when the switch is **open** (during `\(t_{off}\)`)." %}}
+{{% figure src="buck-converter-schematic-current-path-toff.svg" width="500" caption="Current path when the switch is **open** (during \(t_{off}\))." %}}
 
-`\(C1\)` (which is also called `\(C_{OUT}\)`) is to reduce the voltage ripple at the output/load.
+\(C1\) (which is also called \(C_{OUT}\)) is to reduce the voltage ripple at the output/load.
 
 ## Control Methods
 
@@ -124,9 +124,9 @@ You can use the following equations to select the inductor for a buck converter.
 
 Since the inductor is in series with the input, the average inductor current is also equal to the average input current. So we can use the conversation of energy (energy in = energy out) to find the average inductor current using:
 
-<p>\begin{align}
+$$\begin{align}
 I_L = I_{OUT} \frac{V_{OUT}}{\eta V_{IN}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -138,22 +138,22 @@ where:<br/>
 
 Then, calculate the value of inductance required with:
 
-<p>\begin{align}
+$$\begin{align}
 L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
 \(\Delta I_L\) = the desired ripple current in the inductor</br>
-`\(f\)` = the switching frequency</br>
+\(f\) = the switching frequency</br>
 and everything else as mentioned previously</br>
 </p>
 
-The ripple current is typically chosen to be 20-40% of the average current[^ti-slva477b-basic-calc-buck-power-stage]. If we choose 30%, then we can calculate `\(\Delta I_L\)` with:
+The ripple current is typically chosen to be 20-40% of the average current[^ti-slva477b-basic-calc-buck-power-stage]. If we choose 30%, then we can calculate \(\Delta I_L\) with:
 
-<p>\begin{align}
+$$\begin{align}
 \Delta I_L = 0.3I_L
-\end{align}</p>
+\end{align}$$
 
 {{% aside type="warning" %}}
 Aside from making sure the inductor you pick has at least the inductance calculated above, you also want to make sure that the peak inductor current is less than the inductor's _saturation current_ (otherwise it will stop storing energy in it's magnetic field and stop behaving like an inductor), and the average current is less than the inductor's _rated current_ (otherwise it will overheat).
@@ -163,9 +163,9 @@ Aside from making sure the inductor you pick has at least the inductance calcula
 
 The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and it's ESR (equivalent series resistance). The output capacitance of a boost converter can be found using the following equation.
 
-<p>\begin{align}
+$$\begin{align}
 C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>
@@ -175,9 +175,9 @@ and everything else as mentioned previously</br>
 
 The actual ripple will be slightly larger than this due to the ESR of the capacitor.
 
-<p>\begin{align}
+$$\begin{align}
 \Delta V_{ESR} = I_O R_{ESR}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:</br>

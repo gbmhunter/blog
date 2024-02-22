@@ -310,7 +310,7 @@ void Bldc_FillSineLut(void) {
 
 ## Third-Harmonic Injection
 
-With a pure phase-neutral sinusoidal drive, the maximum phase-to-phase voltage is only roughly `\(0.86V_{bus}\)`. This can be improved by 'injecting' the sine wave with the third harmonic. The first thing you may think is, won't this disrupt my nice and smooth sine wave control? Well, no, because as it happens, the third harmonic is in-phase with every winding (which are 120 apart), and since it is applied to every winding, the phase-to-phase waveform does not change. It does however flatten the phase-neutral waveform, making the PWM become under-modulated. You can then scale this back up to full-modulation, and gives approximately a 16% phase-to-phase voltage increase.
+With a pure phase-neutral sinusoidal drive, the maximum phase-to-phase voltage is only roughly \(0.86V_{bus}\). This can be improved by 'injecting' the sine wave with the third harmonic. The first thing you may think is, won't this disrupt my nice and smooth sine wave control? Well, no, because as it happens, the third harmonic is in-phase with every winding (which are 120 apart), and since it is applied to every winding, the phase-to-phase waveform does not change. It does however flatten the phase-neutral waveform, making the PWM become under-modulated. You can then scale this back up to full-modulation, and gives approximately a 16% phase-to-phase voltage increase.
 
 To implement third-harmonic injection, all you have to do is add the third-harmonic to the sine-wave LUT. The third-harmonic has an amplitude that is 1/6 of that of the fundamental (your original sine wave). You'll notice that the maximum value in the LUT has decreased. At this point, scale up all the values in the LUT so they use the full-range again.
 
@@ -332,7 +332,7 @@ Sensor field orientated control (also called vector control) is a permanent magn
 
 ## The Clark Transformation (alpha-beta)
 
-The Clark transformation (also called the `\(\alpha \beta\)` transformation, and occasionally called the Concordia transformation, but I don't know why!) is the projection of three separate sinusoidal phase values onto a stationary 2D axis.
+The Clark transformation (also called the \(\alpha \beta\) transformation, and occasionally called the Concordia transformation, but I don't know why!) is the projection of three separate sinusoidal phase values onto a stationary 2D axis.
 
 The unsimplified Clark transformation equation is shown below:
 
@@ -348,9 +348,11 @@ $$
     \(I_{\alpha\beta\gamma}\) = the Clark transformed currents<br>
 </p>
 
-We are fortunate that when using a star-connected BLDC motor (most are!), `\(I_c\)` is 0, so that we can simplify the equation to:
+We are fortunate that when using a star-connected BLDC motor (most are!), \(I_c\) is 0, so that we can simplify the equation to:
 
-$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix}$$
+$$
+I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix
+$$
 
 {{% figure src="clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." %}}
 
@@ -358,7 +360,7 @@ If you want the code to do the Clark Transformation (written in C++, and designe
 
 ## The Park Transformation (dq)
 
-Park transformation is a projection of three separate sinusoidal phase values onto a rotating 2D axis. The rotating axis (d, q) of the Park transformation rotates at the same speed as the rotor. When the projection occurs, the currents `\(I_d\)` and `\(I_q\)` remain constant (when the motor is at steady-state). It just so happens that `\(I_d\)` controls the magnetizing flux, while `\(I_q\)` controls the torque, and since both parameters are separate, we can control each individually!
+Park transformation is a projection of three separate sinusoidal phase values onto a rotating 2D axis. The rotating axis (d, q) of the Park transformation rotates at the same speed as the rotor. When the projection occurs, the currents \(I_d\) and \(I_q\) remain constant (when the motor is at steady-state). It just so happens that \(I_d\) controls the magnetizing flux, while \(I_q\) controls the torque, and since both parameters are separate, we can control each individually!
 
 The Park transformation equation is shown below:
 
@@ -382,7 +384,7 @@ The following picture shows the control architecture for a PMSM motor controlled
 
 {{% figure src="pmsm-motor-control-architecture-with-psoc-micro.png" width="1372px" caption="The FOC control architecture for a PMSM motor with a PSoC microcontroller."  %}}
 
-It is standard practice to set `\(I_q\)` to some value depending on the torque/speed required, while keeping `\(I_d\)` zero. This is because `\(I_d\)` does nothing to help make the motor spin, and just wastes electrical energy as heat. However, there is a technique called flux weakening, and this is done by making `\(I_d\)` negative. It will allow the motor to spin faster than it's rated speed, in a zone called 'constant power'. I have had good experiences at using this to squeeze more RPM out of BLDC motors that weren't requiring much torque. A good method is to make `\(I_d\)` proportional to `\(I_q\)` (but always negative, no matter what sign `\(I_q\)` is, which essentially gives you a fixed drive is angle which is over 90. You can use this equation to work out the proportion of `\(I_q\)` that `\(I_d\)` has to be for a certain angle.
+It is standard practice to set \(I_q\) to some value depending on the torque/speed required, while keeping \(I_d\) zero. This is because \(I_d\) does nothing to help make the motor spin, and just wastes electrical energy as heat. However, there is a technique called flux weakening, and this is done by making \(I_d\) negative. It will allow the motor to spin faster than it's rated speed, in a zone called 'constant power'. I have had good experiences at using this to squeeze more RPM out of BLDC motors that weren't requiring much torque. A good method is to make \(I_d\) proportional to \(I_q\) (but always negative, no matter what sign \(I_q\) is, which essentially gives you a fixed drive is angle which is over 90. You can use this equation to work out the proportion of \(I_q\) that \(I_d\) has to be for a certain angle.
 
 $$r = \tan (\theta)$$
 
@@ -392,7 +394,7 @@ $$r = \tan (\theta)$$
     \(\theta\) = drive angle<br>
 </p>
 
-FOC typically requires three PID loops, one medium-speed loop for controlling the velocity and two high-speed loops for controlling `\(I_d\)` and `\(I_q\)`.
+FOC typically requires three PID loops, one medium-speed loop for controlling the velocity and two high-speed loops for controlling \(I_d\) and \(I_q\).
 
 The are two methods to measure the phase currents. The first involves just one current sense resistor on the DC return path from the motor, while the second requires three current-sense resistors, one on each leg of the three-phase bridge controlling the motor.
 
@@ -404,7 +406,7 @@ v_{d} = r_{s}i_{d} + L_{d}\frac{di_{d}}{dt} - w_{e}L_{q}i_{q} \\ \\
 T_{m} = \frac{3}{2}\frac{P}{2}[\lambda_{f}i_{q} + (L_{d} - L_{q})i_{d}i_{q}] \\ \\  
 $$
 
-During constant flux operation (which is normal operation, all the flux is created by the permanent magnets), `\(I_d\)` becomes 0. This simplifies the torque equation into that similar to a brushed DC motor as:
+During constant flux operation (which is normal operation, all the flux is created by the permanent magnets), \(I_d\) becomes 0. This simplifies the torque equation into that similar to a brushed DC motor as:
 
 <div>$$ T_{m} = \frac{3}{2}\frac{P}{2}\lambda_{f}i_{q} = K_{T}i_{q} $$</div>
 

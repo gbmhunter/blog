@@ -18,7 +18,7 @@ There is talk of adding an explicit switch in C++ which does not allow fall-thro
 
 Switch statements are notorious for causing inefficiencies in embedded systems. This normally occurs at the point where you decide to use one in an ISR, and then your whole system starts playing up because the ISR takes to long to finish.
 
-If it is implemented as a jump table, switch scale execution time scales with `\(Olog(n)\)` where `\(n\)` is the number of case statements.
+If it is implemented as a jump table, switch scale execution time scales with \(Olog(n)\) where \(n\) is the number of case statements.
 
 However, the alternatives can be worse! An if, else if, else if, ..., else statement can take far longer to executed because of the compilers in-ability to optimise it (each condition needs to be checked in sequential order).
 

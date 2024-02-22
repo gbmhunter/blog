@@ -23,11 +23,11 @@ Like other SMPS, the SEPIC converter uses a switching element of control the out
 
 ### Output Voltage
 
-In continuous-conduction mode (CCM), the equation linking the input voltage `\(V_{IN}\)`, output voltage `\(V_{OUT}\)` and duty cycle `\(D\)` of a SEPIC is:
+In continuous-conduction mode (CCM), the equation linking the input voltage \(V_{IN}\), output voltage \(V_{OUT}\) and duty cycle \(D\) of a SEPIC is:
 
-<p>\begin{align}
+$$\begin{align}
 V_{OUT} = \frac{D}{1-D} V_{IN}
-\end{align}</p>
+\end{align}$$
 
 Like before, this equation assumes all components are ideal. This equation is identical to the one for a inverting buck-boost except for the negative sign (a buck-boost inverts the output, while a SEPIC does not).
 
@@ -35,21 +35,21 @@ Like before, this equation assumes all components are ideal. This equation is id
 
 The SEPIC has two inductors, just like the [^Ćuk Converter]. They can either be wound on separate cores and not share any magnetic field (_uncoupled inductors_), or be wound on the same core and share a magnetic field (a _coupled dual-winding inductor_). Using a coupled dual-winding inductor has the advantages of reducing the component count, and lowering the total inductance requirements, but can be hard to find for high-power requirements. Coupled inductors used in a SEPIC also benefit from some leakage inductance, which reduces the AC losses.
 
-The equations are different for coupled and un-coupled inductor designs. For a coupled inductor, the equation to calculate the inductance `\(L\)` is:
+The equations are different for coupled and un-coupled inductor designs. For a coupled inductor, the equation to calculate the inductance \(L\) is:
 
-<p>\begin{align}
+$$\begin{align}
 L = \frac{V_{IN}^2 d_{min}^2}{2f_s P_{OUT(min)}(1 + d_{min}\frac{1 - n}{n})}
-\end{align}</p>
+\end{align}$$
 
 And for two uncoupled inductors:
 
-<p>\begin{align}
+$$\begin{align}
 L_1 = \frac{d_{min} V_{IN(max)}^2 n}{2f_s P_{OUT(min)}}
-\end{align}</p>
+\end{align}$$
 
-<p>\begin{align}
+$$\begin{align}
 L_2 = \frac{(1 - d_{min}) V_{OUT}^2}{2f_s P_{OUT(min)}}
-\end{align}</p>
+\end{align}$$
 
 The above equations determines the minimum inductance required for CCM operation at maximum input voltage and minimum load (the worst-case scenario for a SEPIC).
 

@@ -26,8 +26,8 @@ A "normal" PN diode has a very small intrinsic region, which is good when you wi
 
 ### Dark Current
 
-* Symbol: `\(I_D\)`
-* Units: `\(nA\)`
+* Symbol: \(I_D\)
+* Units: \(nA\)
 
 Typically in the 0.1-5nA range.
 
@@ -39,11 +39,11 @@ Typically in the 0.1-5nA range.
 
 ### Output Rise Time
 
-* Symbol: `\(t_r\)`
-* Units: `\(s\)`
+* Symbol: \(t_r\)
+* Units: \(s\)
 
 ### Responsivity
-* Symbol: `\(A/W\)`
+* Symbol: \(A/W\)
 
 PIN diodes are normally operated in the reverse bias state.
 
@@ -53,7 +53,7 @@ Because of their good light-to-current linearity, they are commonly connected to
 
 PIN diodes act as almost perfect resistors in the RF and microwave frequencies[^bib-wikip-pin-diode]. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
 
-Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about `\(100m\Omega\)` to `\(10k\Omega\)`.
+Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about \(100m\Omega\) to \(10k\Omega\).
 
 ## Reverse Recovery Time
 

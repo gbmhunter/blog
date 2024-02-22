@@ -34,7 +34,7 @@ Unfortunately for the keen circuit designer learning about MOSFETs, there is a d
 {{% figure ref="fig-mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch" src="_assets/mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.webp" width="700" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." %}}
 
 {{% aside type="warning" %}}
-You will normally encounter P-channel MOSFET symbols with the source at the top (unlike above, where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to `\(V_{DD}\)`).
+You will normally encounter P-channel MOSFET symbols with the source at the top (unlike above, where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to \(V_{DD}\)).
 {{% /aside %}}
 
 The arrow in the symbol has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Sometimes an **outer circle is added to the above symbols**, since a MOSFET is a transistor and by convention transistors are drawn with circles (e.g. think about a BJT symbol). However this has been omitted from the above symbols as it does contribute somewhat to the "noisyness", I find the circle-less symbol much cleaner. Totally a personal preference though.
@@ -45,11 +45,11 @@ Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are 
 
 {{% figure ref="fig-mosfet-schematic-symbols-depletion-mode-n-ch-p-ch" src="_assets/mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.webp" width="700px" caption="Schematic symbols for depletion-mode MOSFETs." %}}
 
-The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown in {{% ref "vgs-vs-id-enhancement-and-depletion-mode" %}}.
+The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a \(V_{GS}\) vs. \(I_D\) graph as shown in {{% ref "vgs-vs-id-enhancement-and-depletion-mode" %}}.
 
 {{% figure ref="vgs-vs-id-enhancement-and-depletion-mode" src="_assets/vgs-vs-id-enhancement-and-depletion-mode.svg" width="700" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
 
-The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when `\(V_{GS}\)` is around `\(-4V\)` and is well and truly on when `\(V_{GS}\)` gets to `\(0V\)`. In comparison, the enhancement-mode MOSFET is fully off when `\(V_{GS} = 0V\)`, and takes around `\(+3V\)` before it starts conducting. 
+The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when \(V_{GS}\) is around \(-4V\) and is well and truly on when \(V_{GS}\) gets to \(0V\). In comparison, the enhancement-mode MOSFET is fully off when \(V_{GS} = 0V\), and takes around \(+3V\) before it starts conducting. 
 
 Depletion-mode MOSFETs are used for:
 
@@ -73,7 +73,7 @@ This style is commonly used when drawing MOSFETs as part of logic gates and othe
 
 ### CMOS 4-pin MOSFETS
 
-MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the **additional fourth pin is connected to the substrate** (a.k.a. _four-port MOSFETs_). When using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-logic-cmos), N-channel MOSFETs are typically connected to the negative voltage rail (e.g. `\(0V\)`), and P-channel MOSFETs connected to the positive voltage rail (e.g. `\(V_{DD}\)`). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected. Also, because the source-to-substrate is not shorted out, the MOSFET now has two internal back-to-back diodes, rather than just the one, and can block current in both directions.
+MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the **additional fourth pin is connected to the substrate** (a.k.a. _four-port MOSFETs_). When using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-logic-cmos), N-channel MOSFETs are typically connected to the negative voltage rail (e.g. \(0V\)), and P-channel MOSFETs connected to the positive voltage rail (e.g. \(V_{DD}\)). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected. Also, because the source-to-substrate is not shorted out, the MOSFET now has two internal back-to-back diodes, rather than just the one, and can block current in both directions.
 
 ICs such as [voltage-level translators](/electronics/components/voltage-level-translation/) and [analogue switches](/electronics/components/analogue-switches/) use this substrate connection to their advantage (especially the part about blocking current in both directions).
 
@@ -81,49 +81,49 @@ For more information on this, see the [The Body Effect And Connecting The Substr
 
 ## Important Parameters
 
-Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\( V_{DS(max)} \)`), the voltage is measured from the first pin to the second pin (e.g. from the drain to the source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
+Note that with all voltage parameters that mention two pins of a MOSFET (e.g. \( V_{DS(max)} \)), the voltage is measured from the first pin to the second pin (e.g. from the drain to the source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
 
 Sorted by alphabetical order, including subscripts.
 
 ### Rds(on)
 
-`\(R_{DS(on)}\)` is the _on-state drain-source resistance_. The resistance between drain and source when the MOSFET is turned on with a strong gate drive and low `\(V_{DS}\)` (hence in the linear, Ohmic region of operation). Usually around `\(1-10\Omega\)` for smaller MOSFETs, and can be as low as `\(1m\Omega\)` for larger power MOSFETs. `\(R_{DS(on)}\)` is roughly linear with the maximum drain-source voltage of the MOSFET. For this reason BJTs or IGBTs (which both have a BJT like output) are instead preferred for high-voltage high-current applications, when the voltage starts to exceed 400V.
+\(R_{DS(on)}\) is the _on-state drain-source resistance_. The resistance between drain and source when the MOSFET is turned on with a strong gate drive and low \(V_{DS}\) (hence in the linear, Ohmic region of operation). Usually around \(1-10\Omega\) for smaller MOSFETs, and can be as low as \(1m\Omega\) for larger power MOSFETs. \(R_{DS(on)}\) is roughly linear with the maximum drain-source voltage of the MOSFET. For this reason BJTs or IGBTs (which both have a BJT like output) are instead preferred for high-voltage high-current applications, when the voltage starts to exceed 400V.
 
 ### Vds(max)
 
-`\(V_{DS(max)}\)` is the _maximum drain-source voltage_. It is the maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown. This is commonly just called the _voltage rating_ of the MOSFET, as it describes the maximum voltage it can withstand between it's "switching" terminals.
+\(V_{DS(max)}\) is the _maximum drain-source voltage_. It is the maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown. This is commonly just called the _voltage rating_ of the MOSFET, as it describes the maximum voltage it can withstand between it's "switching" terminals.
 
 ### Vgs(max)
 
-`\(V_{GS(max)}\)` is the _absolute maximum gate-source voltage_ (aka _gate-source breakdown voltage_). Voltages above this may irreversibly destroy the MOSFET. This is due to the very thin gate-oxide layer (100nm thick, or less!) that separates the gate from the MOSFET channel, which is easily destroyed by a "high" voltage. This can be called _oxide breakdown_. `\(V_{GS(max)}\)` is very commonly `\(\pm 20V\)` for a huge variety of MOSFET families.
+\(V_{GS(max)}\) is the _absolute maximum gate-source voltage_ (aka _gate-source breakdown voltage_). Voltages above this may irreversibly destroy the MOSFET. This is due to the very thin gate-oxide layer (100nm thick, or less!) that separates the gate from the MOSFET channel, which is easily destroyed by a "high" voltage. This can be called _oxide breakdown_. \(V_{GS(max)}\) is very commonly \(\pm 20V\) for a huge variety of MOSFET families.
 
 Because of the very high impedance of the gate pin, MOSFET devices are very sensitive to static electricity. Especially so when not soldered into any circuitry. It does not take much charge on the gate to exceed the max. gate-source voltage and destroy the MOSFET. Anti-static precautions are recommended when handling individual MOSFETs (i.e. anti-static mats, discharge wrist straps).
 
 ### Vgs(th)
 
-`\(V_{GS(th)}\)` is the _gate-source threshold voltage_ (or just _threshold voltage_). The voltage between the gate-source at which the MOSFET begins to turn on. The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet. Typically is is a certain drain current, e.g. `\(1uA\)`.
+\(V_{GS(th)}\) is the _gate-source threshold voltage_ (or just _threshold voltage_). The voltage between the gate-source at which the MOSFET begins to turn on. The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet. Typically is is a certain drain current, e.g. \(1uA\).
 
 ## How To Use Them?
 
-The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If significantly more than `\(V_{GS(th)}\)` is applied to the gate, the MOSFET will fully turn on (conduct current), and the load will get power.
+The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If significantly more than \(V_{GS(th)}\) is applied to the gate, the MOSFET will fully turn on (conduct current), and the load will get power.
 
-P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to `\(V_{CC}\)`, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{CC}\)` to turn it off.
+P-channels work in a similar manner to N-channels, the difference being that a negative \(V_{GS}\) has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to \(V_{CC}\), the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to \(V_{CC}\) to turn it off.
 
 **In any case, do not leave the MOSFET gate floating**. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
 
-The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on. {{% ref "fig-mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions" %}} illustrates a MOSFETs behaviour.
+The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a \(V_{GS}\) at or just above \(V_{GS(th)}\), the MOSFET will only partially turn on. {{% ref "fig-mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions" %}} illustrates a MOSFETs behaviour.
 
 {{% figure ref="fig-mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions" src="_assets/mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions.webp" width="500px" caption="Graph showing the linear and saturation regions for a MOSFET at different gate voltages." %}}
 
 {{% aside type="warning" %}}
-The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and can **completely switch (ha, switch...get it?) meaning depending on the literature you're reading**! At strong gate drives and low `\(V_{DS}\)`, the MOSFET is operating in the _ohmic_ or _linear_ region, where `\( V_{DS} \propto I_D \)`. With weaker gate drive and high `\(V_{DS}\)`, the MOSFET's current `\(I_D\)` is roughly constant with varying `\(V_{DS}\)`, and is in the _saturation_ region (the current is saturated). For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses "test1").
+The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and can **completely switch (ha, switch...get it?) meaning depending on the literature you're reading**! At strong gate drives and low \(V_{DS}\), the MOSFET is operating in the _ohmic_ or _linear_ region, where \( V_{DS} \propto I_D \). With weaker gate drive and high \(V_{DS}\), the MOSFET's current \(I_D\) is roughly constant with varying \(V_{DS}\), and is in the _saturation_ region (the current is saturated). For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses "test1").
 {{% /aside %}}
 
 ## Leakage Current
 
-Leakage current is an important parameter to consider when you are using the MOSFET for switching on-and-off other circuitry in a low power design. MOSFET have both a gate-to-source and a drain-to-source leakage current. Typically the drain-to-source leakage current is 10x greater than the gate-to-source leakage current. The drain-to-source leakage current increases greatly with an increase in temperature. Typical values at 25°C are `\(100nA\)` for the gate-to-source leakage current and `\(1uA\)` for the drain-to-source leakage current.
+Leakage current is an important parameter to consider when you are using the MOSFET for switching on-and-off other circuitry in a low power design. MOSFET have both a gate-to-source and a drain-to-source leakage current. Typically the drain-to-source leakage current is 10x greater than the gate-to-source leakage current. The drain-to-source leakage current increases greatly with an increase in temperature. Typical values at 25°C are \(100nA\) for the gate-to-source leakage current and \(1uA\) for the drain-to-source leakage current.
 
-If you need lower leakage currents that what you can achieve with a MOSFET, try using a J-FET. They have typical leakage currents of `\(1-10nA\)`.
+If you need lower leakage currents that what you can achieve with a MOSFET, try using a J-FET. They have typical leakage currents of \(1-10nA\).
 
 ## Failure Modes
 
@@ -145,7 +145,7 @@ This means that MOSFETs can share current with each other easily. The positive t
 
 ## Dead-Time
 
-Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFETs on the same leg of a H-bridge are on at the same time, creating a direct short between `\(V_{CC}\)` and `\(GND\)`. Shoot-through occurs because of the turn-off delay time of a MOSFET.
+Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFETs on the same leg of a H-bridge are on at the same time, creating a direct short between \(V_{CC}\) and \(GND\). Shoot-through occurs because of the turn-off delay time of a MOSFET.
 
 ## Turn On/Turn Off Times
 
@@ -181,7 +181,7 @@ A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) a
 
 ### Trench MOSFETs
 
-Trench MOSFETs give a very low `\( R_{DS(on)} \)` per unit silicon area.
+Trench MOSFETs give a very low \( R_{DS(on)} \) per unit silicon area.
 
 ### Gallium Nitride (GaN) MOSFETs
 
@@ -235,28 +235,28 @@ An interesting use for [depletion-mode MOSFETs](#depletion-mode) is a **simple b
 
 The circuit above utilizes the **depletion-mode MOSFETs unique feature of being on when the gate-source voltage is 0V**. The circuit works like this:
 
-1. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs `\(V_{GS}\)` is 0V. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value `\(R_S\)`.
-1. As current begins to flow from left-to-right, a voltage drop begins to appear across `\(R_S\)`. This creates a negative `\(V_{GS}\)` for `\(Q1\)` and a positive `\(V_{GS}\)` for `\(Q2\)`. We can ignore the positive `\(V_{GS}\)` as this only serves to turn `\(Q2\)` a little more (note that even if `\(Q2\)` wasn't on, it's internal body diode would conduct anyway). However the negative `\(V_{GS}\)` on `\(Q1\)` is important!
-1. As the current reaches a certain value, `\(V_{GS}\)` across `\(Q1\)` will become negative enough to reach it's `\(V_{GS(th)}\)` (which is between -2.1V and -1V for the BSP149[^bib-infineon-bsp149-ds]). At this point it will begin turning `\(Q1\)` off, `\(Q1\)` will begin to drop voltage across it and hence limit the current of the circuit.
-1. Because of the symmetry this circuit works in exactly the same way if current is flowing in the other direction (right-to-left), but with the roles of `\(Q1\)` and `\(Q2\)` reversed.
+1. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs \(V_{GS}\) is 0V. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value \(R_S\).
+1. As current begins to flow from left-to-right, a voltage drop begins to appear across \(R_S\). This creates a negative \(V_{GS}\) for \(Q1\) and a positive \(V_{GS}\) for \(Q2\). We can ignore the positive \(V_{GS}\) as this only serves to turn \(Q2\) a little more (note that even if \(Q2\) wasn't on, it's internal body diode would conduct anyway). However the negative \(V_{GS}\) on \(Q1\) is important!
+1. As the current reaches a certain value, \(V_{GS}\) across \(Q1\) will become negative enough to reach it's \(V_{GS(th)}\) (which is between -2.1V and -1V for the BSP149[^bib-infineon-bsp149-ds]). At this point it will begin turning \(Q1\) off, \(Q1\) will begin to drop voltage across it and hence limit the current of the circuit.
+1. Because of the symmetry this circuit works in exactly the same way if current is flowing in the other direction (right-to-left), but with the roles of \(Q1\) and \(Q2\) reversed.
 
 #### Worked Example of the Bi-directional Current Limiter
 
-The figure above shows two BSP149 MOSFETs and an `\(R_S = 1k\Omega\)`.
+The figure above shows two BSP149 MOSFETs and an \(R_S = 1k\Omega\).
 
-From the datasheet of the BSP149, `\(V_{GS(th)}\)` is between -2.1V and -1V[^bib-infineon-bsp149-ds]. Unfortunately `\(V_{GS(th)}\)` is never a well defined parameter, so we'll just pick a value in the middle of `\(V_{GS(th)} = -1.5V\)`.
+From the datasheet of the BSP149, \(V_{GS(th)}\) is between -2.1V and -1V[^bib-infineon-bsp149-ds]. Unfortunately \(V_{GS(th)}\) is never a well defined parameter, so we'll just pick a value in the middle of \(V_{GS(th)} = -1.5V\).
 
 This means that the circuit should limit the current to approximately:
 
-<p>\begin{align}
+$$\begin{align}
 I_{LIM} &= \frac{\left| V_{GS(th)} \right|}{R_S} \\
         &= \frac{\left| -1.5V\right| }{1k\Omega} \\
         &= 1.5mA \\
-\end{align}</p>
+\end{align}$$
 
-Because you can get depletion-mode MOSFETs with a maximum `\(V_{DS}\)` rating of 200-1000V, this circuit is an excellent candidate for protecting the input of something that could expect either a high positive or negative voltage.
+Because you can get depletion-mode MOSFETs with a maximum \(V_{DS}\) rating of 200-1000V, this circuit is an excellent candidate for protecting the input of something that could expect either a high positive or negative voltage.
 
-TIP: Because of the part-to-part uncertainty in `\(V_{GS(th)}\)`, this circuit is suitable for crude current-limiting (e.g. for circuit protection) but not for designing an accurate current sink/source. 
+TIP: Because of the part-to-part uncertainty in \(V_{GS(th)}\), this circuit is suitable for crude current-limiting (e.g. for circuit protection) but not for designing an accurate current sink/source. 
 
 ## Internal Diodes
 
@@ -282,15 +282,15 @@ Some discrete MOSFETs do provide you with a separate substrate pin, for example 
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 {{% /aside %}}
 
-The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_. For a N-channel MOSFET, as the substrate becomes more negative than the source, the threshold voltage of the MOSFET is increased.
+The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, \(V_{TH}\) is affected by the voltage difference between the substrate and source, \(V_{SB}\). Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_. For a N-channel MOSFET, as the substrate becomes more negative than the source, the threshold voltage of the MOSFET is increased.
 
-Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
+Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning \(V_{SB} = 0V\). This prevents any body effect from occurring.
 
 For a N-channel MOSFET, the threshold voltage is affected by the body effect as governed by the following equation[^bib-wikipedia-threshold-voltage]:
 
-<p>\begin{align}
+$$\begin{align}
 V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|})
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
   where:<br/>
@@ -301,11 +301,11 @@ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|})
   \(\phi_F\) is substrate Fermi potential<br/>
 </p>
 
-The body effect parameter `\(\gamma\)` is:
+The body effect parameter \(\gamma\) is:
 
-<p>\begin{align}
+$$\begin{align}
 \gamma = \dfrac{\sqrt{2qN_A\epsilon_S}}{C_{ox}}
-\end{align}</p>
+\end{align}$$
 
 Another interesting note is that without the connection of the substrate to the source, the **MOSFET source and drain connections would be identical**, and there would be no need to separately identify them. As soon as the substrate is connected to the source, the MOSFETs internals become **asymmetrical** and you cannot freely swap around the drain and the source (if you do swap them, you'll normally get the body diode **conducting** when you don't want it to!).
 
@@ -325,7 +325,7 @@ Another example is the [NCP380 high-side load switch by On Semiconductor](http:/
 
 ## The Transconductance Of A MOSFET
 
-The transconductance of a MOSFET is the ratio of a change in output current (drain-source current, `\(I_{DS}\)`) due to the change in input voltage (gate-source voltage, `\(V_{GS}\)`) over an arbitrarily small range of operation.
+The transconductance of a MOSFET is the ratio of a change in output current (drain-source current, \(I_{DS}\)) due to the change in input voltage (gate-source voltage, \(V_{GS}\)) over an arbitrarily small range of operation.
 
 The range of operation has to be restricted because the transconductance of a MOSFET changes depending on the operating point.
 
@@ -375,7 +375,7 @@ The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the 
 * Suppliers:
   * [DigiKey, 31-DMN3731U-7CT-ND, NZ$0.19 (100)](https://www.digikey.co.nz/en/products/detail/diodes-incorporated/DMN3731U-7/10295271)
 
-With an max. `\(R_{DS(ON)}\)` of `\(560m\Omega\)` when `\(V_{GS} = 2.5V\)`, this N-channel MOSFET can be directly connected to GPIO lines on a +3.3V MCU. 
+With an max. \(R_{DS(ON)}\) of \(560m\Omega\) when \(V_{GS} = 2.5V\), this N-channel MOSFET can be directly connected to GPIO lines on a +3.3V MCU. 
 
 ## MOSFET Safe Operating Areas
 
@@ -385,9 +385,9 @@ A MOSFET's SOA (_Safe Operating Area_) is usually shown as a graph in the datash
 
 Transient thermal impedance plot. This is a plot which shows how the effective thermal impedance of the MOSFET changes with a time-limited pulse of power (voltage x current). The thermal impedance reduces as the pulse period becomes shorter and shorter (these graphs usually show the change between 1us and 1s). 
 
-For moderate `\(V_{DS}\)` voltages, manufacturers determine the lines on the SOA plot from the transient thermal impedance plot.
+For moderate \(V_{DS}\) voltages, manufacturers determine the lines on the SOA plot from the transient thermal impedance plot.
 
-_Spirito effect_: Named after electronic engineer and professor [Paolo Spirito](https://ieeexplore.ieee.org/author/37282676100) who showed that as MOSFET manufacturers have pushed for lower and lower `\(R_{DS(on)}\)` values, they have also inadvertently increased the tendency for a MOSFET to fail by forming unstable hot spots. Modern-day high-spec MOSFETs are actually made of from an array of MOSFET cells on the silicon with their sources, drains and gates connected in parallel. As some cells become hotter, their threshold voltage decreases relative to the other cells, and then they conduct more current, which can lead to a thermal runaway effect, destroying the MOSFET. High-density trench-style MOSFETs are effected the most[^bib-electronic-design-the-spirito-effect].
+_Spirito effect_: Named after electronic engineer and professor [Paolo Spirito](https://ieeexplore.ieee.org/author/37282676100) who showed that as MOSFET manufacturers have pushed for lower and lower \(R_{DS(on)}\) values, they have also inadvertently increased the tendency for a MOSFET to fail by forming unstable hot spots. Modern-day high-spec MOSFETs are actually made of from an array of MOSFET cells on the silicon with their sources, drains and gates connected in parallel. As some cells become hotter, their threshold voltage decreases relative to the other cells, and then they conduct more current, which can lead to a thermal runaway effect, destroying the MOSFET. High-density trench-style MOSFETs are effected the most[^bib-electronic-design-the-spirito-effect].
 
 The Spirito effect is observed at high Vds voltages and low Id currents. High Vds voltages because this results in a greater change in cell power as the cell current changes. Low Id because this gives the cells more time to thermally runaway -- at higher currents the individual cells do not get a chance to thermally runaway since the entire package quickly hits it's thermal limit.
 
@@ -397,11 +397,11 @@ For a really good read on the Spirito effect, see [NASA's publication: Power MOS
 
 {{% figure ref="fig-mosfet-soa-diagram-with-annotations" src="_assets/mosfet-soa-diagram-with-annotations.png" width="700" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
 
-1. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
+1. Rds(on) Limit: When \(V_{DS}\) is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, \(R_{DS(on)}\). This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
 1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
 1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds it's maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
-1. Thermal Instability: Thermal instability occurs at lower `\(V_{GS}\)` voltages[^bib-infineon-mosfet-safe-operating-diagram].
-1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET experiences "breakdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
+1. Thermal Instability: Thermal instability occurs at lower \(V_{GS}\) voltages[^bib-infineon-mosfet-safe-operating-diagram].
+1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET experiences "breakdown" and stops working correctly. This puts a hard upper-limit on the \(V_{DS}\) voltage, shown by the far right vertical line on the SOA graph.
 
 ## External Resources
 

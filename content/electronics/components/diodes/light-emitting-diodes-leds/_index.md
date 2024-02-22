@@ -34,10 +34,10 @@ _Parameters are sorted alphabetically._
 
 ### Dominant Wavelength
 
-* Symbol: `\(\lambda_{dom}\)`
-* Units (typical): `\(nm\)`
+* Symbol: \(\lambda_{dom}\)
+* Units (typical): \(nm\)
 
-This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the [peak wavelength](#peak-wavelength). Normally measured in nanometres (`\(nm\)`).
+This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the [peak wavelength](#peak-wavelength). Normally measured in nanometres (\(nm\)).
 
 ### Flux
 
@@ -45,22 +45,22 @@ This will be used as a shorthand for either _radiometric flux_, _spectral flux_ 
 
 ### Forward Current
 
-* Symbol: `\(I_F\)`
-* Units (typical): `\(mA\)`
+* Symbol: \(I_F\)
+* Units (typical): \(mA\)
 
 This is the maximum forward current the LED continuously be driven at. For small indicator LEDs, the maximum forward current is typically 20-30mA. Normally an indicator LED with a max. forward current of 20mA would be driven at less than the max., somewhere between 2-10mA. 
 
 ### Forward Surge Current
 
-* Symbol: `\(I_{FM}\)`
-* Units (typical): `\(mA\)`
+* Symbol: \(I_{FM}\)
+* Units (typical): \(mA\)
  
 Normally rated at a fixed temperature, duty cycle, and pulse length.
 
 ### Forward Voltage
 
-* Symbol: `\(V_F\)`
-* Units (typical): `\(V\)`
+* Symbol: \(V_F\)
+* Units (typical): \(V\)
 
 Rated at a fixed forward current.
 
@@ -80,29 +80,29 @@ Blue LEDs are GaN based.
 
 ### Irradiance
 
-* Symbol: `\(E\)`
-* Units (typical): `\(mW/m^2\)`
+* Symbol: \(E\)
+* Units (typical): \(mW/m^2\)
 
-Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol `\(E\)` as `\(I\)` is already used for radiant intensity. It is a radiometric quantity.
+Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.
 
 ### Peak Wavelength
 
-* Symbol: `\(\lambda_{peak}\)`
-* Units (typical): `\(nm\)`
+* Symbol: \(\lambda_{peak}\)
+* Units (typical): \(nm\)
 
 The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the [dominant wavelength](#dominant-wavelength).
 
 ### Photon Flux
 
-* Symbol: `\(\phi_e\)`
-* Units (typical): `\(umol/s\)`
+* Symbol: \(\phi_e\)
+* Units (typical): \(umol/s\)
 
 The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the _radiometric flux_ is given.
 
 ### Photosynthetic Flux
 
-* Symbol: `\(PPF\)`
-* Units (typical): `\(umol/s\)`
+* Symbol: \(PPF\)
+* Units (typical): \(umol/s\)
 
 Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. high-pressure sodium lamps). Typical values range from 100-200umol/s.
 
@@ -115,24 +115,24 @@ The radiation pattern (aka spatial distribution) is usually given on a semi-circ
 
 ### Radiant Flux
 
-* Symbol: `\(\phi_e\)`
-* Units (typical): Watts, `\(mW\)`
+* Symbol: \(\phi_e\)
+* Units (typical): Watts, \(mW\)
 
 The _radiant flux_ (also called the _radiant power_) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.
 
 ### Reverse Voltage
 
-* Symbol: `\(V_R\)`
-* Units (typical): Volts, `\(V\)`
+* Symbol: \(V_R\)
+* Units (typical): Volts, \(V\)
 
 The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.
 
 ### View Angle
 
-* Symbol: `\(2\theta_{\frac{1}{2}}\)`
-* Units (typical): Degrees, `\(^{\circ}\)`
+* Symbol: \(2\theta_{\frac{1}{2}}\)
+* Units (typical): Degrees, \(^{\circ}\)
 
-The _viewing angle_ (a.k.a. _view angle_) is the total angle that the LED light output encompasses before the light radiance drops down to 50% of it's peak. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light. It is called `\(2\theta_{\frac{1}{2}}\)` because `\(\theta_{\frac{1}{2}}\)` is the angle measured from the center to where the radiance falls to half the peak, thus the total angle is twice this. It is assumed that the view angle is the same for any cross-sectional plane of the LED, for most LEDs this is true as their radiation pattern is rotationally symmetric (around the axis pointing forwards).
+The _viewing angle_ (a.k.a. _view angle_) is the total angle that the LED light output encompasses before the light radiance drops down to 50% of it's peak. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light. It is called \(2\theta_{\frac{1}{2}}\) because \(\theta_{\frac{1}{2}}\) is the angle measured from the center to where the radiance falls to half the peak, thus the total angle is twice this. It is assumed that the view angle is the same for any cross-sectional plane of the LED, for most LEDs this is true as their radiation pattern is rotationally symmetric (around the axis pointing forwards).
 
 Another definition of this is the angle until the light radiance drops down to 50% of what it emitted from center[^bib-street-co-viewing-angle]. This is the same as the above definition as long as the LED emits the most amount of light directly forward, which is true for a large number of LEDs.
 
@@ -140,9 +140,9 @@ Another definition of this is the angle until the light radiance drops down to 5
 
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
-<p>\begin{align}
+$$\begin{align}
 R = \frac{V_{dd} - V_{led,f}}{I_{led}}
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:
@@ -166,9 +166,9 @@ Multiplexing is a way of connecting LED's in an arrangement so that it minimises
 
 Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
 
-<p>\begin{align}
+$$\begin{align}
 y = (\frac{x}{2})^2
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">
 where:<br/>
@@ -182,9 +182,9 @@ Charlieplexing is a more efficient (in terms of number of drive signals used) wa
 
 The following equation is given linking the number of pins used and the number of LEDs:
 
-<p>\begin{align}
+$$\begin{align}
 y = x^2 - x
-\end{align}</p>
+\end{align}$$
 
 ## ESD
 
@@ -291,71 +291,71 @@ The dominant wavelength is important for user interface designers as it determin
 
 ## Converting Between uW/cm2 and PAR
 
-Many grow lights (lights that provide a "fake sun" for plants to trigger photosynthesis, typically used in indoor growing environments) now use LEDs (sodium lamps were a popular choice before LEDs became both powerful and cheap enough). In these agricultural applications, you might have to convert between irradiance given in `\(mW{\cdot}cm^{-2}\)` and PAR given in `\(umol{\cdot}m^{-2}{\cdot}s^{-1}\)`.
+Many grow lights (lights that provide a "fake sun" for plants to trigger photosynthesis, typically used in indoor growing environments) now use LEDs (sodium lamps were a popular choice before LEDs became both powerful and cheap enough). In these agricultural applications, you might have to convert between irradiance given in \(mW{\cdot}cm^{-2}\) and PAR given in \(umol{\cdot}m^{-2}{\cdot}s^{-1}\).
 
 The Planck-Einstein equation gives a direct relationship between the frequency of a photon and it's energy[^bib-wp-planck-relation]:
 
-<p>\begin{align}
+$$\begin{align}
 E &= hf \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">{{% md %}}
 where:<br/>
-`\(E\)` is the energy of the photon, in `\(J\)`<br/>
-`\(h\)` is the Planck constant, `\(6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}\)`[^bib-wp-planck-constant]<br/>
-`\(f\)` is the frequency of the photon, in `\(Hz\)`<br/>
+\(E\) is the energy of the photon, in \(J\)<br/>
+\(h\) is the Planck constant, \(6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}\)[^bib-wp-planck-constant]<br/>
+\(f\) is the frequency of the photon, in \(Hz\)<br/>
 {{% /md %}}</p>
 
-Of course you can use `\(c = f\lambda\)` to write this in terms of the wavelength instead of frequency:
+Of course you can use \(c = f\lambda\) to write this in terms of the wavelength instead of frequency:
 
-<p>\begin{align}
+$$\begin{align}
 E &= h\frac{c}{\lambda} \\
-\end{align}</p>
+\end{align}$$
 
 <p class="centered">{{% md %}}
 where:<br/>
-`\(c\)` is speed of light in a vacuum, `\(3{\times}10^{8}ms^{-1}\)`<br/>
+\(c\) is speed of light in a vacuum, \(3{\times}10^{8}ms^{-1}\)<br/>
 {{% /md %}}</p>
 
-Knowing this, you can convert an energy from `\(mW\)` into a number of photons. One issue however is that the light from an LED is not emitted all at one precise frequency, it is usually spread across a small band of wavelengths known as it's spectrum. One approximation is to just pretend all the light is emitted at _peak wavelength_. A more precise method is to take the spectrum, digitize it, and then calculate the proportion of photons for each small increment in wavelength.
+Knowing this, you can convert an energy from \(mW\) into a number of photons. One issue however is that the light from an LED is not emitted all at one precise frequency, it is usually spread across a small band of wavelengths known as it's spectrum. One approximation is to just pretend all the light is emitted at _peak wavelength_. A more precise method is to take the spectrum, digitize it, and then calculate the proportion of photons for each small increment in wavelength.
 
-So number of photons per second per meter squared, based on the irradiance `\(Irr\)` (I'm not using `\(E\)` here for irradiance as that will get confused with the energy `\(E\)` in the Planck-Einstein equation) is:
+So number of photons per second per meter squared, based on the irradiance \(Irr\) (I'm not using \(E\) here for irradiance as that will get confused with the energy \(E\) in the Planck-Einstein equation) is:
 
-<p>\begin{align}
+$$\begin{align}
 photons/s/m2 &= \frac{{Irr}_{[W/m2]}\lambda_{peak}}{hc} \\
-\end{align}</p>
+\end{align}$$
 
-We now need to convert from number of photos to number of moles, which we can use Avogadro constant `\(N_A = 6.022 \times 10^{23}\)` for.
+We now need to convert from number of photos to number of moles, which we can use Avogadro constant \(N_A = 6.022 \times 10^{23}\) for.
 
-<p>\begin{align}
+$$\begin{align}
 PAR_{[mols/s/m2]} &= \frac{{Irr}_{[W/m2]}\lambda_{peak}}{hcN_A} \\
-\end{align}</p>
+\end{align}$$
 
 That is the basic equation done. But if we want to be lazy an not convert to SI units before punching the numbers in, we can compensate for this in the equation:
 
-<p>\begin{align}
+$$\begin{align}
 PAR_{[mols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1e^4}{1e^6} \nonumber \\
 PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1e^4 \times 1e^6}{1e^6} \nonumber \\
 PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \times 1e4 \nonumber \\
-\end{align}</p>
+\end{align}$$
 
-`\(h\)` (the Planck constant), `\(c\)` (the speed of light in a vacuum), and `\(N_A\)` (the Avogadro constant) are all constants, so we can simplify them with the `\(1e4\)` to:
+\(h\) (the Planck constant), \(c\) (the speed of light in a vacuum), and \(N_A\) (the Avogadro constant) are all constants, so we can simplify them with the \(1e4\) to:
 
-<p>\begin{align}
+$$\begin{align}
 PAR_{[umols/s/m2]} &= 83593*{Irr}_{[uW/cm2]}\lambda_{peak} \\
-\end{align}</p>
+\end{align}$$
 
-Since we're trying to make it easy, let's put `\(\lambda_{peak}\)` in units of `\(nm\)` instead of `\(m\)` also:
+Since we're trying to make it easy, let's put \(\lambda_{peak}\) in units of \(nm\) instead of \(m\) also:
 
-<p>\begin{align}
+$$\begin{align}
 PAR_{[umols/s/m2]} &= 8.36e^{-5}\cdot {Irr}_{[uW/cm2]} \cdot \lambda_{peak[nm]} \\
-\end{align}</p>
+\end{align}$$
 
 {{% warning %}}
 Remember that PAR is defined as radiation between 400 and 700nm, so this equation only applicable to wavelengths within this band (although if you drop the "photo-synthetic" bit, this conversion could be useful for other purposes). Also don't forget that using the peak wavelength rather than looking at the spectrum could introduce significant errors. 
 {{% /warning %}}
 
-If you use the equation before we compensated for the different popular units of `\(cm^2\)` for irradiance and `\(m^2\)` for PAR, you can use also use this equation for radiance (e.g. output light power from an LED or collection of LEDs).
+If you use the equation before we compensated for the different popular units of \(cm^2\) for irradiance and \(m^2\) for PAR, you can use also use this equation for radiance (e.g. output light power from an LED or collection of LEDs).
 
 ## Packaging
 

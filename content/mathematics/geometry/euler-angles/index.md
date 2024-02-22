@@ -21,8 +21,8 @@ Euler's theorem states that the rotation of a rigid body can be described by a s
 
 Euler angles are usually defined one of the two symbol sets:
 
-* `\( \alpha, \beta, \gamma \)` (Alpha, Beta, Gamma). These are usually used with _proper Euler angles_ (see below).
-* `\( \Phi, \Theta, \Psi \)` (Phi, Theta, Psi). These are usually used with _Tait-Bryan angles_ (see below).
+* \( \alpha, \beta, \gamma \) (Alpha, Beta, Gamma). These are usually used with _proper Euler angles_ (see below).
+* \( \Phi, \Theta, \Psi \) (Phi, Theta, Psi). These are usually used with _Tait-Bryan angles_ (see below).
 
 
 ## Proper Euler Angles vs. Tait-Bryan Angles
@@ -103,6 +103,6 @@ $$</div>
 \gamma = atan2{r_{21}, r_{11}}
  $$</div>
 
- where `\( atan2(y, x) \)` returns the **principle angle**.
+ where \( atan2(y, x) \) returns the **principle angle**.
 
  
