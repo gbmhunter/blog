@@ -66,7 +66,7 @@ Below is a table of the normalized factored Butterworth polynomials for order \(
 
 _All numbers are rounded to 3 decimal places_.
 
-{{% file src="butterworth-factored-polynomial-table.html" %}}
+{{% file src="butterworth-factored-polynomial-table.data" %}}
 
 Using these polynomials \(B_n\), we can write the transfer function of a Butterworth filter as[^bib-pieter-p-butterworth-filters]:
 
@@ -96,7 +96,7 @@ where:<br/>
 
 There is also a recursive formula to calculate the coefficients, but we'll just use the product based one. The below table shows the Butterworth polynomial coefficients calculated with this equation, up to \(n=8\) (8th order filter).
 
-{{% file src="butterworth-polynomial-coeffs-table.html" %}}
+{{% file src="butterworth-polynomial-coeffs-table.data" %}}
 
 For example, the above table tells you for order \(n=3\) the Butterworth polynomial is \(s^3 + 2s^2 + 2s + 1\). If expand the factorized version we should arrive at the same polynomial:
 
@@ -261,7 +261,7 @@ $$\begin{align}
 
 The above equations were used to generate the table below, which lists the reverse Bessel polynomials of degree 0 to 8. 
 
-{{% file src="bessel-polynomial-coeffs-table.html" %}}
+{{% file src="bessel-polynomial-coeffs-table.data" %}}
 
 The visually demonstrate the flat group delay of the Bessel tuned filter, we can plot the group delay of the Bessel-tuned 4th-order low-pass filter vs. a number of other popular tunings. The below plot shows the group delay for Bessel, Butterworth, Chebyshev and Elliptic tuned filter. The critical frequency was set to \(10kHz\) for all filter tunings. All filters are 4th-order. As you can see, the Bessel tuned filter has the flattest group delay.
 
