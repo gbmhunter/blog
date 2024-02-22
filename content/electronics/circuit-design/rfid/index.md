@@ -183,7 +183,7 @@ Specialized tags/inlays exist for attaching/putting in close proximity to metal 
 
 The are different types of antenna used in different RFID designs. UHF antenna input is typically between 1-5W. 13.56MHz antennas between 100-200mW. Antennas can either be stand-along items, or part of a substrate/PCB. [AN1715: UHF RFID PCB Antenna Design](http://www.nxp.com/documents/application_note/AN171530.pdf) by NXP explains how to design an PCB-based UHF RFID antenna. One of the key parameters of an antenna is it's gain. The gain is usually expressed in `\(dBi\)` (decibels isotropic), or more rarely, `\(dBd\)` (decibels relative to a lossless half-wave dipole antenna). To convert between `\(dBi\)` and `\(dBd\)`, use the following equation:
 
-<p>$$dBi = dBd + 2.15dB$$</p>
+$$dBi = dBd + 2.15dB$$
 
 Smith charts are useful when designing impedance matching circuits between the antenna and RFID transceiver. A great free Smith chart program is [Smith by Fritz Dellsperger](http://www.fritz.dellsperger.net/).
 

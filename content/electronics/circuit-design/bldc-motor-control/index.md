@@ -336,9 +336,9 @@ The Clark transformation (also called the `\(\alpha \beta\)` transformation, and
 
 The unsimplified Clark transformation equation is shown below:
 
-<p>$$  
+$$  
 I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix}  
-$$</p>
+$$
 
 <p class="centered">
     where:<br>
@@ -350,7 +350,7 @@ $$</p>
 
 We are fortunate that when using a star-connected BLDC motor (most are!), `\(I_c\)` is 0, so that we can simplify the equation to:
 
-<p>$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix}$$</p>
+$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix}$$
 
 {{% figure src="clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." %}}
 
@@ -384,7 +384,7 @@ The following picture shows the control architecture for a PMSM motor controlled
 
 It is standard practice to set `\(I_q\)` to some value depending on the torque/speed required, while keeping `\(I_d\)` zero. This is because `\(I_d\)` does nothing to help make the motor spin, and just wastes electrical energy as heat. However, there is a technique called flux weakening, and this is done by making `\(I_d\)` negative. It will allow the motor to spin faster than it's rated speed, in a zone called 'constant power'. I have had good experiences at using this to squeeze more RPM out of BLDC motors that weren't requiring much torque. A good method is to make `\(I_d\)` proportional to `\(I_q\)` (but always negative, no matter what sign `\(I_q\)` is, which essentially gives you a fixed drive is angle which is over 90. You can use this equation to work out the proportion of `\(I_q\)` that `\(I_d\)` has to be for a certain angle.
 
-<p>$$r = \tan (\theta)$$</p>
+$$r = \tan (\theta)$$
 
 <p class="centered">
     where:<br>
@@ -398,11 +398,11 @@ The are two methods to measure the phase currents. The first involves just one c
 
 The dynamic equations for FOC linking voltages, currents and torques are:
 
-<p>$$  
+$$  
 v_{q} = r_{s}i_{q} + L_{q}\frac{di_{q}}{dt} - w_{e}L_{d}i_{d} + w_{e}\lambda_{f} \\ \\  
 v_{d} = r_{s}i_{d} + L_{d}\frac{di_{d}}{dt} - w_{e}L_{q}i_{q} \\ \\  
 T_{m} = \frac{3}{2}\frac{P}{2}[\lambda_{f}i_{q} + (L_{d} - L_{q})i_{d}i_{q}] \\ \\  
-$$</p>
+$$
 
 During constant flux operation (which is normal operation, all the flux is created by the permanent magnets), `\(I_d\)` becomes 0. This simplifies the torque equation into that similar to a brushed DC motor as:
 
@@ -410,14 +410,14 @@ During constant flux operation (which is normal operation, all the flux is creat
 
 ## Equations
 
-<p>$$  
+$$  
 \text{Field Orientated Control:} \\ \\  
 |V_{abc}| = R|I_{abc}| + \frac{d}{dt}|\Phi_{abc}| \text{Lenz-Faraday model}\\ \\  
 R = \text{statoric resistance}  
 |V_{abc}| = \begin{bmatrix}v_a & v_b & v_c \end{bmatrix}^T = \text{statoric voltages,} \\ \\  
 |I_{abc}| = \begin{bmatrix} i_a & i_b & i_c \end{bmatrix}^T = \text{statoric currents,} \\ \\  
 |\Phi_{abc}| = \begin{bmatrix} \Phi_a & \Phi_b & \Phi_c \end{bmatrix} = \text{global fields} \\ \\  
-$$</p>
+$$
 
 ## PWM Frequency
 
@@ -492,7 +492,7 @@ See the [C Programming page](/programming/languages/c) for more help on this sub
 
 Some useful equations...
 
-<p>$$  
+$$  
 \text{Basic Motor Control:} \\ \\  
 v_{rot} (Hz) = \frac{rpm}{60} \\ \\  
 \text{Commutation Cycles Per Second} = \frac{v_{rot}}{6} \\ \\  
@@ -502,7 +502,7 @@ v_{rot} (Hz) = \frac{rpm}{60} \\ \\
 V_{phase-neutral} = \frac{V_{bus}}{2} \\ \\  
 V_{phase-phase} = \frac{\sqrt{3}}{2}*V_{bus} \\ \\  
 V_{third-harmonic} = \frac{1}{6}V_{fundamental} \\ \\  
-$$</p>
+$$
 
 Flux = Magnetic field lines per unit area
 

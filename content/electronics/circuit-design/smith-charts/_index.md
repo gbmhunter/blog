@@ -48,7 +48,7 @@ Moves the operating point clockwise along circles of **constant resistance**.
 
 The equation to calculate inductance from a normalised Smith chart is:
 
-<p>$$z_{IND} = \frac{i2\pi fL}{Z_0}$$</p>
+$$z_{IND} = \frac{i2\pi fL}{Z_0}$$
 
 <p class="centered">
 	where:<br>  

@@ -55,7 +55,7 @@ Go to https://ninjacalc.mbedded.ninja/calculators/electronics/pcb-design/microst
 
 The equation Altium uses (as of AD14, and in unsimplified form):
 
-<p>$$ w = \frac{\frac{5.98h1}{e^{\frac{Z}{\frac{60}{\sqrt{\epsilon_r\left(1 - e^{\frac{-1.55*(0.00002+h1)}{h1}}\right)}}}-h2}}}{0.8} $$</p>
+$$ w = \frac{\frac{5.98h1}{e^{\frac{Z}{\frac{60}{\sqrt{\epsilon_r\left(1 - e^{\frac{-1.55*(0.00002+h1)}{h1}}\right)}}}-h2}}}{0.8} $$
 
 <p class="centered">
     where:<br>
