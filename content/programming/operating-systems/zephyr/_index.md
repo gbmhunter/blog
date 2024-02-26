@@ -1415,21 +1415,73 @@ There are a number of C++ features that Zephyr does not support which removes C+
 
 Zephyr provides an API that the firmware can use to define the commands available to the user over the shell.
 
+## Debugging
+
+You can use the `addr2line` executable to decode a memory address back into a source code file and line number. `addr2line` should be provided by the toolchain as part of the compiler's suite of executables. For example, with Nordic toolchains in Zephyr:
+
+```shell
+c:\ncs\toolchains\31f4403e35\opt\zephyr-sdk\arm-zephyr-eabi\bin\arm-zephyr-eabi-addr2line.exe -e .\app\build\zephyr\zephyr.elf -a 0x0
+```
+
+Would give output something like this:
+
+```
+0x00000000
+C:/my-project/zephyr/subsys/debug/thread_analyzer.c:75
+```
+
 ## Reducing Flash and RAM Usage in Zephyr
 
 Zephyr-based applications can get large, in part due to the powerful features it provides out-of-the-box. Just things like using logging throughout your code can increase flash usage significantly, due to every call saving the log message (before substitution takes place at runtime) as a string literal in ROM. This can easily use up many "kB" of space. If you weren't using float printing before hand, this call also bring in float formatting functionality. Similarly, all `ASSERT()` style macros save the file name and line number of the assert as a string literal in ROM. However these are quite useful, even in production, so think carefully before disabling them.
 
 `CONFIG_SIZE_OPTIMIZATIONS=y` can be set in `prj.conf` to reduce the flash size. One thing this does is set the compiler flag `-Os` which tells the compiler to optimize for size, not speed or debug ability.
 
-On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prf.conf` resulted in a flash size reduction from 421kB to 330kB.
+On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prf.conf` resulted in a flash size reduction from 421kB to 330kB!
 
 You can execute the `west` command with `-t ram_report` to make Zephyr generate and print a table of RAM usage to the terminal.
 
 {{% figure ref="fig-zephyr-ram-report-output-screenshot" src="_assets/zephyr-ram-report-output-screenshot.png" width="500px" caption="A screenshot of the output produce by the `west build -t ram_report` command." %}}
 
+puncover can be used to visualize the memory usage via a web GUI. Install puncover in the projects Python virtual environment:
+
+```shell
+# Activate python environment if needed, then
+pip install puncover
+```
+
+Then perform a clean build of west (it will detect puncover and add a target for it):
+
+```shell
+west build -c
+```
+
+Then run puncover by invoking `west` and giving it a specific target:
+
+```
+west build -t puncover
+```
+
 If you get the error `ninja: error: unknown target 'puncover'` (as shown in {{% ref "fig-puncover-build-error" %}}) when trying to run puncover, it might be because you have not done a clean rebuild. You must do a clean rebuild after installing puncover. This is needed because CMake looks for the puncover executable during the build process. If it can't find it, no target is made for it.
 
 {{% figure ref="fig-puncover-build-error" src="_assets/puncover-build-error.png" width="500px" caption="A screenshot of the build error you can get if you don't clean build after installing puncover." %}}
+
+You can also look at reducing the stack size of some of the default stacks you will likely have in your project:
+
+```python
+# Stack size of the main thread.
+# Defaults to 2048
+CONFIG_MAIN_STACK_SIZE=1024
+
+# Stack used for Zephyr initialization and interrupts
+# If you have a stack overflow before your code gets to main() you will
+# likely need to make this bigger
+# Defaults to 2048
+CONFIG_ISR_STACK_SIZE=1024
+
+# Stack size of the shell thread (if you are using a shell)
+# Defaults to 2048
+CONFIG_SHELL_STACK_SIZE=1024
+```
 
 ## Tests
 
