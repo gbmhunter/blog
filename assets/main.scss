@@ -104,6 +104,10 @@ body {
     justify-content: center;
     align-items: center;
 
+    // Fix the font size so that the icon does not get small as the text of the page
+    // becomes smaller due to decreasing screen width
+    font-size: 20px;
+
     border-radius: 5px;
     border-width: 0px;
 
