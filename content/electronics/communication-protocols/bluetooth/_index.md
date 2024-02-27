@@ -2,7 +2,7 @@
 authors: [ Geoffrey Hunter ]
 date: 2015-01-03
 draft: false
-lastmod: 2023-05-24
+lastmod: 2024-02-27
 tags: [ communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG ]
 title: Bluetooth
 type: page
@@ -12,7 +12,7 @@ type: page
 
 ## Overview
 
-{{% figure src="bluetooth-4-0-icon.jpg" width="300px" float="right" caption="The Bluetooth icon/logo." %}}
+{{% figure ref="fig-bluetooth-4-0-icon" src="_assets/bluetooth-4-0-icon.jpg" width="300px" float="right" caption="The Bluetooth icon/logo." %}}
 
 Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards[^bib-wikipedia-bluetooth-sig]. The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
@@ -41,6 +41,28 @@ An attribute is a piece of labelled and addressable data. A characteristic is a 
 attribute < characteristic < service
 
 Bluetooth 4.0 uses the server/client paradigm.
+
+## Bluetooth Low Energy (BLE)
+
+Bluetooth Low Energy (BLE) is a Bluetooth protocol specifically designed for communication on low power devices that need to run for months or years of small batteries.
+
+### Channels
+
+BLE has 40 channels, compared to Bluetooth Classic which has 79[^argenox-ble-advertising-primer].
+
+### Advertising
+
+_Advertising_ is when a BLE peripheral broadcasts packets to any device that wants to listen. Advertising allows a low energy device to sleep most of the time, only waking up periodically for a short amount of time to send a new advertisement packet. Advertising is unidirectional, the peripheral sends out unsolicited data and expects no response. To achieve 2-way communication you have to connect with the BLE peripheral.
+
+Advertisement packets give you 31 bytes of data for application specific use.
+
+When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone send the device a _scan request_ packet, the the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process[^argenox-ble-advertising-primer]. 
+
+### Beacons
+
+Beacons are BLE peripherals that use advertisement exclusively, and do not allow for connections. This is so that the device can always be found and used, if a connection occurs then the peripheral is meant to stop advertising[^argenox-ble-advertising-primer].
+
+Apple's iBeacon is the most popular beacon standard.
 
 ## Bluetooth Smart Mesh Working Group
 
@@ -83,3 +105,4 @@ Two types of encryption keys:
 [^bib-sig-origin-of-name]: Bluetooth SIG. _About Us - Origin of the Bluetooth Name_. Retrieved 2023-05-24, from https://www.bluetooth.com/about-us/bluetooth-origin/.
 [^bib-wikipedia-piconet]: Wikipedia (2021, May 16). _Piconet_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Piconet.
 [^bib-garg-bluetooth]: Vijay K. Garg (2007). _Wireless Personal Area Network — Bluetooth_. Wireless Communications & Networking. Retrieved 2023-05-24, from https://www.sciencedirect.com/book/9780123735805/wireless-communications-and-networking. 
+[^argenox-ble-advertising-primer]: Argenox. _BLE Advertising Primer_. Retrieved 2024-02-27, from https://www.argenox.com/library/bluetooth-low-energy/ble-advertising-primer/.

@@ -1158,6 +1158,29 @@ __ASSERT_NO_MSG(rc == 0);
 
 If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
 
+If you want to configure an interrupt for a GPIO pin, you can use `gpio_pin_interrupt_configure_dt()`:
+
+```c
+intRc = gpio_pin_interrupt_configure_dt(&myGpio, GPIO_INT_EDGE_TO_ACTIVE);
+__ASSERT_NO_MSG(intRc == 0);
+```
+
+You then need to setup a callback:
+
+```c
+static struct gpio_callback gpioCallbackData;
+
+void GpioCallback(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
+{
+    // GPIO interrupt callback
+}
+
+int main() {
+    gpio_init_callback(&gpioCallbackData, &GpioCallback, BIT(myGpio.pin));
+    gpio_add_callback(myGpio.port, &gpioCallbackData);
+}
+```
+
 ### PWM
 
 For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for "pwm" we find:
@@ -1355,7 +1378,7 @@ Note that the debug level log prints additional information -- it also prints th
 
 ### Compile Time vs. Runtime Log Levels
 
-It's important to make the distinction between compile-time log levels and runtime levels. Providing `CONFIG_LOG_DEFAULT_LEVEL` or a second parameter to `LOG_MODULE_REGISTER` sets a compile-time log level. All log levels higher than this (both in number and verbosity) are not included in the compiled firmware binary, meaning you cannot change the level to high levels at runtime. Runtime log levels are set via `log_filter_set()` or with the shell command `log enable <log_level>` (e.g. `log enable dbg`). My recommendation is to leave the compile time log level to `LOG_LEVEL_DBG` if you have enough flash to allow that, and then set the log level at runtime. This will give you the ability to dynamically change the levels as needed without having to re-compile firmware. It would be a pain to have to recompile and re-flash firmware on a buggy device just to get the "debug" logs you need to diagnose the problem. And you may not want to re-flash as you have just caught an intermittent bug that is hard to reproduce!
+It's important to make the distinction between compile-time log levels and runtime levels. Providing `CONFIG_LOG_DEFAULT_LEVEL` or a second parameter to `LOG_MODULE_REGISTER` sets a compile-time log level. All log levels higher than this (both in number and verbosity) are not included in the compiled firmware binary, meaning you cannot change the level to high levels at runtime. Runtime log levels are set via `log_filter_set()` or with the shell command `log enable <log_level>` (e.g. `log enable dbg`). Runtime adjustable log levels also depend on `CONFIG_LOG_RUNTIME_FILTERING=y`, which is set automatically if the shell is enabled. My recommendation is to leave the compile time log level to `LOG_LEVEL_DBG` if you have enough flash to allow that, and then set the log level at runtime. This will give you the ability to dynamically change the levels as needed without having to re-compile firmware. It would be a pain to have to recompile and re-flash firmware on a buggy device just to get the "debug" logs you need to diagnose the problem. And you may not want to re-flash as you have just caught an intermittent bug that is hard to reproduce!
 
 The code below shows how you can change the logging levels at runtime:
 
@@ -1381,6 +1404,10 @@ int main() {
   // ...
 }
 ```
+
+{{% aside type="tip" %}}
+Remember to set `CONFIG_LOG_RUNTIME_FILTERING=y` in your `prj.conf` if you don't have the shell enabled and you want runtime log level adjustment.
+{{% /aside %}}
 
 ### X Messages Dropped Errors
 
