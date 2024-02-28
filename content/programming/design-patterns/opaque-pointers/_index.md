@@ -1,0 +1,90 @@
+---
+authors: [Geoffrey Hunter]
+date: 2024-02-28
+draft: false
+lastmod: 2024-02-28
+tags: [opaque pointers, programming, design patterns, C, software, firmware]
+title: Opaque Pointers
+type: page
+---
+
+## Overview
+
+_Opaque pointers_ is a design pattern that can be used to hide implementation details of what is being pointed at. Typically a user for a different place in the code can use as see a pointer to a particular type but cannot see any more details about the type itself
+
+Opaque pointers is commonly used in the C programming language to hide implementation details of a struct (object) from a user, and only operations with the object via a function-based API. It is not as commonly used in C++ because C++ gives you the ability to define `private` and `protected` members of your class, removing the need to implement the same behaviour with opaque pointers.
+
+Likely the most significant **disadvantage to this pattern is that memory allocation must be used in the constructor to create the object**, because the caller cannot create the object since the full size of the type is hidden away from them.
+
+## Example
+
+The below example shows how to use the opaque pointer design pattern to implement a simple "Counter" object (you could think of it as a class). The Counter object is defined in `Counter.h`/`Counter.c` and created/used in `main.c`.
+
+In the header `Counter.h`:
+
+```c
+#include <stdint.h>
+
+// Opaque declaration of the counter type.
+typedef struct Counter_t Counter_t;
+
+Counter_t *Counter_Init();
+void Counter_AddOne(Counter_t *me);
+uint8_t Counter_GetCount(Counter_t *me);
+void Counter_DeInit(Counter_t *me);
+```
+
+And in the .c file `Counter.c`:
+
+```c
+#include <stdlib.h>
+
+#include "Counter.h"
+
+// Implementation of Counter_t. Hidden from other files!
+struct Counter_t {
+  uint8_t count;
+};
+
+Counter_t *Counter_Init() {
+  // NOTE: Memory allocation here! May or not be ok for an embedded
+  // project, can be done at initialation time only.
+  Counter_t *newCounter = malloc(sizeof(Counter_t));
+  newCounter->count = 0;
+  return newCounter;
+}
+
+void Counter_AddOne(Counter_t *me) { me->count++; }
+
+uint8_t Counter_GetCount(Counter_t *me) { return me->count; }
+
+void Counter_DeInit(Counter_t *me) {
+    free(me);
+}
+```
+
+We can then use this `Counter_t` from other source files like `main.c`:
+
+```c
+#include <stdio.h>
+
+#include "Counter.h"
+
+int main(void) {
+    printf("Creating counter...\n");
+    // From main.c, we can't access any of the members of the
+    // opaque Counter_t struct, we only have a pointer and have to use
+    // the provided API in Counter.h.
+    Counter_t *myCounter = Counter_Init();
+
+    Counter_AddOne(myCounter);
+    uint8_t count = Counter_GetCount(myCounter);
+    printf("Count: %d\n", count);
+
+    // Finally, destroy counter
+    Counter_DeInit(myCounter);
+    return 0;
+}
+```
+
+Note how in `main.c` we can only create a pointer to the Counter (`Counter_t *`), we aren't given enough information to create a `Counter_t` directly (if we could, then we would be able to access all the internals -- bypassing the public API). If we want to perform operations on it such as adding one or getting the current count, we have to use the API like `Counter_AddOne()` and `Counter_GetCount()`.

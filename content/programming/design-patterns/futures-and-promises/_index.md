@@ -15,7 +15,7 @@ type: page
 
 Futures and promises are a way of dealing with asynchronous events in a multi-threaded environment.
 
-{{% figure src="futures-and-promises-cpp-icon.png" width="200px" caption="Icon for futures and promises." %}}
+{{% figure src="_assets/futures-and-promises-cpp-icon.png" width="200px" caption="Icon for futures and promises." %}}
 
 A promise is used by the producer of the operation, and the future is used by the consumer. The producer writes a value to the promise. A future is used to read back the value, which can be done from a different thread (e.g. asynchronously).
 

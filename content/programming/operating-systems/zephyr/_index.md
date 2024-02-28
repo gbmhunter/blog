@@ -622,6 +622,10 @@ Example device tree (for the STM32F070RB development board):
 
 ## System/OS Features
 
+### Time
+
+System on time can be read with `k_uptime_get()` which returns a `int64_t` with the number of milliseconds since system start.
+
 ### Timers
 
 Zephyr _Timers_ are an OS primitive that you can start and then have timeout after a certain duration. If you provide a callback, you can to run things after a fixed duration in the future in either a one-off (one-shot) or continuous manner. If you don't provide a callback, you can still inspect the state of the timer from your application.
@@ -1180,6 +1184,8 @@ int main() {
     gpio_add_callback(myGpio.port, &gpioCallbackData);
 }
 ```
+
+See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an example of using a Zephyr GPIO to handle button presses along with debouncing using delayable work queue.
 
 ### PWM
 
