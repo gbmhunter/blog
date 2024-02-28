@@ -469,8 +469,21 @@ Padding provides offset so it doesn't collide with top navbar
     overflow-x: hidden;
 }
 
+/* ========================================================================= */
+/* HOMEPAGE CONTENT                                                          */
+/* ========================================================================= */
+
+// Used to center the "recent posts" column
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
 .home-page-content {
-    padding-top: 40px; // Applicable for homepage
+    // Large padding to top to space it out from the top navbar
+    // Small padding on left and right for mobile devices to give gap
+    // between edges of screen and start of text content
+    padding: 40px 10px 0px 10px; // Applicable for homepage
     // max-width: 1200px;
 
     flex-grow: 1;
@@ -1218,27 +1231,6 @@ p, li, div, td, th, input, code.has-jax {
 @media (min-width: 768px) {
     .site-description {
         font-size: 1.0rem;
-    }
-}
-
-
-
-/* ========================================================================= */
-/* HOMEPAGE CONTENT                                                          */
-/* ========================================================================= */
-
-// Used to center the "recent posts" column
-.col-centered {
-    float: none;
-    margin: 0 auto;
-}
-
-// Reduce the heading size on the "recent posts" section
-// of the homepage...the default size is too big
-#recent-posts {
-    h1 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
     }
 }
 
