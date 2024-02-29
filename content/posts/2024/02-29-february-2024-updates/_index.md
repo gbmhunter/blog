@@ -1,11 +1,11 @@
 ---
 authors: [ Geoffrey Hunter ]
 categories: [ Posts, Updates ]
-date: 2024-02-28
+date: 2024-02-29
 description: Blog updates during February 2024.
 draft: false
 images: []
-lastmod: 2024-02-28
+lastmod: 2024-02-29
 tags: []
 title: February 2024 Updates
 type: post
@@ -30,3 +30,5 @@ Started a new page on [RC Charging Circuits](/electronics/circuit-design/rc-char
 Started a new page with info on the [opaque pointer design pattern](/programming/design-patterns/opaque-pointers/).
 
 {{% figure src="_assets/opaque-pointers-screenshot.png" width="600px" %}}
+
+Added info on [Zephyr threads, mutexes, work queues and GPIO](/programming/operating-systems/zephyr/).

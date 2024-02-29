@@ -696,6 +696,53 @@ int main(void) {
 
 You can read the official Zephyr documentation for Timers [here](https://docs.zephyrproject.org/latest/kernel/services/timing/timers.html).
 
+### Threads
+
+A Zephyr _thread_ is a kernel object which can be used to execute code asynchronously to other threads. Threads can operate both cooperatively (a thread continues running until it gives up control) and pre-emptively (the thread is interrupted by the kernel when the kernel decides to run something else).
+
+A basic thread can be created and started with the following code:
+
+```c
+#define PRIORITY   (5)
+#define STACK_SIZE (500)
+
+// Statically define the thread stack. Would be handy if we could do this dynamically.
+K_THREAD_STACK_DEFINE(myThreadStack, STACK_SIZE);
+
+void MyThreadFn(void *, void *, void *)
+{
+    LOG_INF("Thread started!");
+    while(1) {
+        k_msleep(1000);
+    }
+}
+
+int main() {
+    // Dynamically create thread
+    struct k_thread myThread;
+    k_tid_t myTid = k_thread_create(
+        &myThread, myThreadStack,
+        K_THREAD_STACK_SIZEOF(myThreadStack),
+        MyThreadFn,
+        NULL, NULL, NULL, // User data you can pass to your thread function if desired
+        PRIORITY, 0, K_NO_WAIT);
+
+    // Wait for thread to finish (which won't happen because we never return from the
+    // thread function)
+    k_thread_join(myTid, K_FOREVER);
+}
+```
+
+{{% aside type="tip" %}}
+Remember that a thread stack is a different object to just a general purpose "stack" (which Zephyr also provides to the user for general FILO functionality).
+{{% /aside %}}
+
+
+#### Dynamic Thread Stack Allocation
+
+You'll notice that in the above example, although the thread is created at runtime, the stack is statically defined at compile time with `K_THREAD_STACK_DEFINE()`. Zephyr is meant to support dynamic thread stack allocation. However I could not get it working.
+
+
 ### Workqueues
 
 A Zephyr _workqueue_ is like a thread but a few extra features included, the main one being a "queue" in which you can add work to for the thread to complete.
@@ -1161,6 +1208,19 @@ __ASSERT_NO_MSG(rc == 0);
 `GPIO_OUTPUT_LOW` and `GPIO_OUTPUT_HIGH` both set the physical state of the pin, and do not care if the pin is active high or active low. `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` take into account whether the pin is active high or active low. In the case the pin is active high, setting the pin to a logical level of `INACTIVE` results in a physical `LOW`, and `ACTIVE` is `HIGH`. In the case it is active low, `INACTIVE`
 
 If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
+
+To read the value of a GPIO input, use `gpio_pin_get_dt()`:
+
+```c
+int rc = gpio_pin_get_dt(&myGpio);
+__ASSERT_NO_MSG(rc >= 0); // 0 or 1 for low/high, negative number for error
+
+if (rc == 0) {
+    LOG_INF("GPIO was low.");
+} else if (rc == 1) {
+    LOG_INF("GPIO was high.");
+}
+```
 
 If you want to configure an interrupt for a GPIO pin, you can use `gpio_pin_interrupt_configure_dt()`:
 

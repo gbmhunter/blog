@@ -1,22 +1,65 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2013-03-18
 draft: false
 lastmod: 2022-10-30
+tags: [struct, structures, C, programming, typedef]
 title: Structures
 type: page
 ---
 
 ## Overview
 
-Structures can be used to do a "object-orientated" style of programming in C, a language which was originally designed to be functional.
+Structures (also called structs) is a way in C to group several related variables into a larger variable. They are also supported in [C++](/programming/languages/c-plus-plus/), although classes are normally used instead (one of the key differences between the two in C++ is that struct members are public by default, classes members are private by default).
+
+## Basic Usage
+
+For example, the following code declares a `struct` that represents an error, and encapsulates an `errorCode` and an `errorString`:
+
+```c
+struct error {
+    uint8_t errorCode;
+    char * errorString;
+};
+```
+
+This only declares the struct, to use one we must create an instance of it. Then members can be accessed with the dot (`.`) operator:
+
+```c
+int main() {
+    struct error myError;
+    myError.errorCode = 4;
+    myError.errorString = "User error";
+}
+```
+
+## Using Typedef
+
+The `typedef` keyword can be used when defining a `struct`:
+
+```c
+typedef struct {
+    uint8_t errorCode;
+    char * errorString;
+} error_t;
+```
+
+And then instead of creating an instance with `struct error <variable_name>`, you can use `error_t <variable_name>` like so:
+
+```c
+int main() {
+    error_t myError;
+    myError.errorCode = 4;
+    myError.errorString = "User error";
+}
+```
 
 ## Initialising Structures
 
 Initialising structures is way of defining what the values of the variables inside the `struct` will be at the time of creation. Note that there is a big syntax difference between initialising structures in C and in C++.
 
-```c   
-Defining a structure type
+```c
+// Defining a structure type
 typedef struct
 {
     uint16_t value1;
@@ -30,7 +73,7 @@ demoStruct_t struct1 =
     .value1 = 560;
     .value2 = 34;
 }
-```   
+```
 
 Unfortunately, **you cannot define default variables for a structure when you declare it**, only when you create an instance of that structure type. If this is annoying you, you might want to consider switching to C++, which allows you to do such a thing by using the class and constructor mechanisms.
 
@@ -92,3 +135,7 @@ typedef struct {
     cmd_t cmd;
 } cmd_t
 ```
+
+## Further Reading
+
+Structs are a key part of the [opaque pointer design pattern](/programming/design-patterns/opaque-pointers/).

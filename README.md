@@ -52,6 +52,8 @@ python -m venv .venv
 pip install -r scripts/requirements.txt
 ```
 
+`scripts/util` is automatically added to the `PYTHONPATH` by `.vscode/settings.json` if running the Python scripts from inside Visual Studio Code.
+
 ## To Build
 
 To build site and place files in `public` directory:
