@@ -1,7 +1,9 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2014-02-19
 draft: false
+lastmod: 2023-03-11
+tags: [c, programming, enumerations, max values, types, firmware, state machines]
 title: Enumerations
 type: page
 ---
@@ -13,10 +15,10 @@ Enumerations in C are in their most basic sense, a way of creating a meaningful 
 Enumerations are an alternative to using C preprocessor macros to create words which represent numbers. For example:
 
 ```c
-#define RED   	0
-#define GREEN 	1
-#define BLUE	2
-#define YELLOW	3
+#define RED     0
+#define GREEN   1
+#define BLUE    2
+#define YELLOW  3
 ```
 
 If you find yourself doing this, think carefully, would an enumeration be a better way? You can achieve the exact same result with:
@@ -115,8 +117,18 @@ Some compilers support directives which will change the default size of an enume
 
 Which will make all enumerations use the smallest width suitable. You can selectively make enumerations smaller by using:
 
-```c    
+```c
 typedef enum __attribute__ ((__packed__)) {
     ...
 } myEnum_t;
-```  
+```
+
+## Max Values
+
+There is no compiler syntax or language feature to get the number of elements in an enumeration at compile time. This can be useful information, you may want to do things like:
+
+* Iterate over every value in an enumeration.
+* Pick a random value from an enumeration.
+* Continue another enumeration from where a previous one left off (to guarantee unique numbers across many enumerations).
+
+A common way of doing this is to add a value to the end of the enumeration calling something like `MAX_VALUE`. If it is the last the entry in the enumeration and there are no "gaps" in your enumeration (which is only possible if you manually assign numbers) then `MAX_VALUE` will equal the number of members in the enumeration.

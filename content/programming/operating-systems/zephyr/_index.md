@@ -1130,7 +1130,7 @@ You can also set a default compiled log level with:
 CONFIG_LOG_DEFAULT_LEVEL=4
 ```
 
-If you want to add logs to a .c file, first you have to register the source file as a "module":
+If you want to add logs to a .c file, first include `#include <zephyr/logging/log.h>`. Then you have to register the source file as a "module":
 
 ```c
 // Uses the compiled log level set in prj.conf with CONFIG_LOG_DEFAULT_LEVEL
@@ -1211,6 +1211,10 @@ Zephyr supports two different modes for logging, _deferred_ and _immediate_. In 
 Deferred logging is a great choice when you don't want to slow down your threads emitting log messages. The biggest downside is that log messages are not synchronous with what your microcontroller is actually doing in the real world at any point of time. Deferred logging can mask errors such as hard faults -- when a serious fault occurs the processor will restart but you won't see the last 1 second or so of log messages, making it hard to track down the problem.
 
 This is what immediate mode is great for -- debugging crashes and other time-sensitive issues when you need the logs to print at the same time the `LOG_DBG()` calls are being made. If a crash occurs, you can look at the last few log messages and get a good idea were the problem might be in your source code.
+
+### C++ Compatibility
+
+In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`.
 
 ## Peripheral APIs
 
@@ -1520,6 +1524,19 @@ There are a number of C++ features that Zephyr does not support which removes C+
 - No dynamic memory allocation support via `new` or `delete`. Dynamic memory allocation in the embedded land is a contentious subject, but it's nice to be able to use it if it's a suitable choice for your application.
 - No RTTI (run-time type information)
 - No support for exceptions. Again, another contentious embedded subject, but nice to have the option of using them if you want.
+
+You can enable support for compiling C++ by adding the following into `prj.conf`:
+
+```python
+CONFIG_CPP=y
+```
+
+You can then change `main.c` to `main.cpp`. Remember to update the path in the `CMakeLists.txt` file also!
+
+```python
+# Adds everything!
+CONFIG_REQUIRES_FULL_LIBCPP=y
+```
 
 ## The Zephyr Shell
 
