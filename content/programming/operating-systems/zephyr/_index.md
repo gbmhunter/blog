@@ -1690,6 +1690,25 @@ target_include_directories(app PRIVATE "../src/")
 
 Now in our tests `.c` files (`tests/src/*.c`), we can include header files from `app/src/` and test the code.
 
+When writing the tests, just using `west twister -T app/` is not that useful because:
+
+1. It takes a long time to build and run the tests, and the output is hidden in a log file rather than being printed to the terminal. This slows down development when you want to write some test code and then run it to see if it works.
+1. Intellisense does not work as well as it does for the Zephyr app. This is because `compile_commands.json` is not created in the `twister` build directories, and the build directory keeps changing.
+
+A better way is to reserve ``west twister -T app/` only for running your tests once you have finished writing the tests. While writing the tests, use the standard west build instead. You can do this because the `test/` directory is a self-contained west application in it's own right!
+
+First use (assuming you are building the tests to run on `native_sim`):
+
+```shell
+west build -b native_sim ./<path_to_zephyr_app>/tests/ --pristine
+```
+
+and then from then on you can use the faster:
+
+```shell
+west build -t run
+```
+
 ## Common Errors
 
 ### File not found (on Windows)
