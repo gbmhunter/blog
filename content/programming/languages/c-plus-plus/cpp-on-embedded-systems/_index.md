@@ -118,6 +118,33 @@ namespace my_namespace {
 }
 ```
 
+### std::array
+
+`std::array` is a wrapper around a C-style array that provides more safety around it's usage. Unlike in C, it does not decay to a pointer to the element type automatically[^cpp-reference-std-array].
+
+If you use the `[]` operator to access the elements, it behaves the same as in C, with no bounds checking:
+
+```c++
+std::array<uint8_t, 3> myArray;
+myArray[3] = 10; // Woops, no bounds checking!
+```
+
+However, if you use `.at()` instead, you get bounds checking:
+
+```c++
+std::array<uint8_t, 3> myArray;
+myArray.at(3) = 10; // Bounds checking, this will throw an exception
+```
+
+`std::out_of_range` is thrown if the index is out of bounds.
+
+You also get a useful `.fill()` function, to fill all the elements with a single value:
+
+```c++
+// Set the array to all 0's
+myArray.fill(0);
+```
+
 ## C++ Features That Could Be Used, But Only After Careful Consideration
 
 * `new/delete`
@@ -348,3 +375,4 @@ The document "[Technical Performance on C++ Performance](http://www.open-std.org
 ## References
 
 [^bib-iso-tech-report-cpp-performance]: ISO/IEC (2006, Feb 15). _ISO/IEC TR 18015:2006(E) - Technical Report on C++ Performance_. Retrieved 2022-09-29, from https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf.
+[^cpp-reference-std-array]: cppreference.com. _std::array_. Retrieved 2024-03-15, from https://en.cppreference.com/w/cpp/container/array.

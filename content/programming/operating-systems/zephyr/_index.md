@@ -423,6 +423,68 @@ Hello, world!
 ...
 ```
 
+## Getting VSCode IntelliSense Working
+
+The most effective way of getting VS Code's IntelliSense working well with Zephyr is to use the "compile_commands" method as described below. I've found this to be much more effective than trying to provide include paths.
+
+Add the following to your `.west/config` file:
+
+```
+[build]
+cmake-args = -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+```
+
+This will tell CMake to always generate a `compile_commands.json` file when building.
+
+Add the following to your `.vscode/c_cpp_properties.json` file:
+
+```json
+{
+    "configurations": [
+        {
+            "name": "App Config",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
+```
+
+This will tell VS Code to use the `compile_commands.json` file for IntelliSense. The above snippet assumes your build directory is `build/`. Change this as needed.
+
+Rebuild your project from scratch. A `compile_commands.json` should be generated in your build directory. Thus will be picked up by VSCode's Intellisense and should fix any include errors you have!
+
+If you are working on multiple apps with one west workspace, you can separate configurations for each. The following example sets up two configurations, one for the application and one for it's ztest unit tests that are in a `tests/` sub-directory, and with a build folder set to `build-tests`:
+
+```json
+{
+    "configurations": [
+        {
+            "name": "App Config",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        },
+        {
+            "name": "Tests Config",
+            "compileCommands": "${workspaceFolder}/build-tests/compile_commands.json"
+        }
+    ],
+    "version": 4,
+    "enableConfigurationSquiggles": true
+}
+```
+
+Once this is added, you can select the active configuration from the right-hand side of the bottom toolbar within VS Code.
+
+Instead of adding to `.vscode/c_cpp_properties.json`, if you just have one configuration, you can instead add it to `.vscode/settings.json`:
+
+```json
+{
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+}
+```
+
+If you want more info on Zephyr unit tests and IntelliSense, see the [Tests](#tests) section of this page.
+
 ## Moving a West Workspace
 
 I haven't had much luck moving a West workspace on Linux. After moving, the `west` executable could not be found (making sure the Python virtual environment was activated).
@@ -1708,6 +1770,11 @@ and then from then on you can use the faster:
 ```shell
 west build -t run
 ```
+
+## Distributing Zephyr Libraries
+
+See https://github.com/coderkalyan/pubsub for an example.
+
 
 ## Common Errors
 
