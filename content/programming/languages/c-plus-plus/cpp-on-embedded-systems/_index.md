@@ -22,8 +22,8 @@ This page aims to cover many of C++'s features and weigh-in on their suitability
 This is a list of all the C++ features that **you SHOULD USE in most embedded firmware**:
 
 * Classes
-* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size.
-* Function overloading and default parameters. No overhead.
+* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size. Also be careful of overusing them, too much templating makes code very unreadable. 
+* Function overloading and default parameters - Makes it easy to extend functions without massive refactors! And provides more flexibility to an API.
 * Enum classes, typesafe typedefs
 * Operator overloading (when done sensibly!)
 * References (they are just safer pointers that can't be null!)
@@ -39,7 +39,13 @@ These are explained in more detail in the below sub-sections.
 
 If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to main the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` e.t.c. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
 
-Now your functions are looking something like `Uart_Write(Uart& uart, char * bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+Now your functions are looking something like `Uart_Write(Uart * uart, char * bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+
+### Templates
+
+Templates allow you to create slightly different versions of classes that use different types at compile time.
+
+Be careful not to overuse templates. When used too heavily they can make code very hard to read. Just to show how far you can take templating and metaprogrmming, someone wrote an entire [compile-time ray tracer](https://github.com/phresnel/metatrace). Just because you can, doesn't mean you should 😊.
 
 ### Enums Classes
 
@@ -143,6 +149,20 @@ You also get a useful `.fill()` function, to fill all the elements with a single
 ```c++
 // Set the array to all 0's
 myArray.fill(0);
+```
+
+Another useful feature if that you can copy an entire array by just using the `=` operator:
+
+```c++
+std::array<uint8_t, 3> myArray1 = {1, 2, 3};
+std::array<uint8_t, 3> myArray2;
+myArray2 = myArray1;
+
+Note this only works with arrays of the same type AND same size.
+
+```c++
+std::array<uint8_t, 4> myArray3;
+myArray3 = myArray2; // Compiler error! Different sizes
 ```
 
 ## C++ Features That Could Be Used, But Only After Careful Consideration
