@@ -2,31 +2,51 @@
 authors: [ Geoffrey Hunter ]
 date: 2024-03-24
 draft: false
-lastmod: 2024-03-24
-tags: [ Lightsail, Umami, analytics, server, AWS, https, docker, nginx ]
+lastmod: 2024-03-25
+tags: [ Lightsail, Umami, analytics, server, AWS, https, docker, nginx, SSL, Google Analytics ]
 title: Running Umami on AWS Lightsail
 type: page
 ---
 
-## Spinning Up Lightsail Server
+## Overview
 
-Select Ubuntu 22.04. You could choose a different Linux OS, like AWS Linux, but the commands will be different (e.g. `yum` instead of `apt`) and nginx config files will not be in `sites-available`.
+Umami is a popular alternative to Google Analytics which allows free use if you self-host the software on your own server. I decided to switch from Google Analytics to Umami because Ad Blockers were blocking too high a percentage of users (ad blockers block the Google tag script that is downloaded to the users browser from reaching out to Google's servers and registering a page view). By using Umami and self-hosting it, I could point a subdomain (e.g. `umami.mbedded.ninja`) at the server running Umami. There is a very high probability that Ad blockers won't block the Umami client-side script since the request is going out to the same domain as this blog.
 
-{{% figure src="picking-ubuntu-22-04-in-lightsail.png" width="600px" %}}
+This page details how to get Umami setup and running on an AWS Lightsail server instance. AWS Lightsail is a simpler and cheap way (US$3.50 to $5.00/month) of hosting servers that don't need to do much processing, perfect for Umami.
 
-Select the size. Make sure to select As of March 2024, IPv6 doesn't work for cloning projects of GitHub, nor some docker-based commands which fetch data from remotes. What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. More on this below.
+Credit goes to the Digital Ocean's tutorial at https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04 for showing me how to do this for the first time. This tutorial expands on Digital Ocean's by adding Lightsail specific information, as well as updating some parts relevance in 2024 (e.g. we now have `docker compose` rather than `docker-compose`).
 
-I had issues with the memory capped at 512MB. The 1GB RAM/40GB SSD size worked well (US$5.00/month).
+## Spinning Up Lightsail Server in AWS
 
-{{% figure src="_assets/choosing-dual-stack-and-size-lightsail.png" width="600px" %}}
+This assumes you have an AWS account. If you don't, go and sign up now!
+
+Log into the AWS Console, and click on `Services -> Amazon Lightsail`.
+
+{{% figure src="_assets/aws-lightsail-create-instance.png" width="600px" %}}
+
+Firstly, choose an "Instance Location". Pick something close to where most of your users are, but in the end it doesn't matter much!
+
+Then under "Select a blueprint", click "Operating System (OS) only". Select Ubuntu 22.04. You could choose a different Linux OS, like AWS Linux, but the commands will be different (e.g. you'll have to use `yum` instead of `apt`) and the nginx config files structure won't be setup to use `sites-available`/`sites-enabled` (slightly different ways of doing things).
+
+{{% figure src="_assets/picking-ubuntu-22-04-in-lightsail.png" width="600px" %}}
 
 Select or create a keypair to authenticate with this server. If creating a new keypair, the private key will be downloaded. Save this for later when we need to ssh into the instance to set it up.
 
-Click go!
+Select the _Networking Type_. As of March 2024, Amazon is about to charge more for servers that have IPv4 addresses. IPv6 only should work fine -- except that IPv6 doesn't work for cloning projects of GitHub, nor some docker-based commands which fetch data from remotes. What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. More on this below.
+
+So for now select `Dual stack` for the Networking Type.
+
+Select a size. Umami does not take many resources to run. However I had issues with the memory capped at 512MB, so I picked the 1GB RAM/40GB SSD size (as of March 2024, US$5.00/month).
+
+{{% figure src="_assets/choosing-dual-stack-and-size-lightsail.png" width="600px" %}}
+
+Choose an instance name to easily identify this Lightsail instance in the future, e.g. `Umami-Ubuntu-IPv4-1GB`. It's completely up to you and what you want to call it.
+
+Click `Create Instance` and your server will be spun up!
 
 ## Add a Rule For Https
 
-Click on the `Networking" tab under your Lightsail instance, and then add a IPv4 firewall rule allowing https traffic.
+Once your Lightsail instance has spun up, click on the `Networking" tab under your Lightsail instance, and then add a IPv4 firewall rule allowing https traffic.
 
 {{% figure src="_assets/ipv4-https-firewall-rule-in-lightsail.png" width="600px" %}}
 
@@ -40,15 +60,17 @@ I use Cloudflare, so the following image shows a screenshot of myself setting up
 
 {{% figure src="adding-dns-a-record-in-cloudflare.png" width="600px" %}}
 
-## Installing and Starting Umami On Localhost
+## Installing Umami
 
-Connect via ssh. I had problems using the subdomain to connect, so I just used the IP address directly. You will need the private key that you setup/selected when you created the Lightsail instance above.
+Connect via your Lightsail instance via ssh. You can use the in-browser terminal if you want, but I much prefer a proper terminal-based session (e.g. from Windows Terminal, bash on Linux, e.t.c.) for better responsiveness and copy/paste support.
+
+I had problems using the subdomain to connect, so I just used the IP address directly. The IP address is shown on the main page for the Lightsail instance. You will need the private key that you setup/selected when you created the Lightsail instance above.
 
 ```
 ssh -i ~\.ssh\private-key.pem ubuntu@34.207.322.232
 ```
 
-`cd` into the `/opt` directory:
+`cd` into the `/opt` directory, this is where we will put the Umami source code:
 
 ```shell
 cd /opt
@@ -60,29 +82,37 @@ Clone the Umami repo:
 sudo git clone https://github.com/mikecao/umami.git
 ```
 
+`cd` into the new directory:
+
 ```shell
 cd umami/
 ```
 
+We'll now edit the `docker-compose.yml` file, to make sure it only exposes the `3000` port on `localhost`, and not publicly:
+
 ```shell
-sudo vim docker-compose.yml
+sudo nano docker-compose.yml
 ```
+
+Find the following section:
 
 ```
 ports:
       - "3000:3000"
 ```
 
-to:
+and add `127.0.0.1` to the front so that it now looks like:
 
 ```
     ports:
       - "127.0.0.1:3000:3000"
 ```
 
+Save these changes and exit `nano`. We can't yet run Umami because we don't have Docker. Let's do that next!
+
 ## Install Docker
 
-Add Docker's `apt` repository:
+We'll need to install docker so we can actually run Umami. I grabbed these instructions from https://docs.docker.com/engine/install/ubuntu/. Add Docker's `apt` repository:
 
 ```shell
 # Add Docker's official GPG key:
@@ -128,27 +158,13 @@ You should see something like:
 
 ## Install nginx
 
+Whilst we could just expose the Umami 3000 port to the public and get basic `http` working, we are going to install nginx and place it between the public and our Umami application. This will allow us to add support for `https`.
+
+Let's install nginx:
+
 ```shell
 sudo apt update
 sudo apt install nginx
-```
-
-```
-server {
-    listen       80;
-    listen       [::]:80;
-    server_name  my-domain.com;
-
-    access_log  /var/log/nginx/umami.access.log;
-    error_log   /var/log/nginx/umami.error.log;
-
-    location / {
-      proxy_pass http://localhost:3000;
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header Host $host;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
-}
 ```
 
 Add a new config:
@@ -161,7 +177,7 @@ sudo nano /etc/nginx/sites-available/umami.conf
 server {
     listen       80;
     listen       [::]:80;
-    server_name  your_domain_here;
+    server_name  umami.my-domain.com;
 
     access_log  /var/log/nginx/umami.access.log;
     error_log   /var/log/nginx/umami.error.log;
@@ -175,7 +191,7 @@ server {
 }
 ```
 
-
+Create a symbolic link in `sites-enabled` that points to the config file we just created:
 
 ```shell
 sudo ln -s /etc/nginx/sites-available/umami.conf /etc/nginx/sites-enabled/
@@ -187,6 +203,10 @@ Reload nginx:
 sudo systemctl reload nginx
 ```
 
+## Test http Access
+
+You should now be able to get to your Umami server using `http` from anywhere on the internet!
+
 ## Install Certbot
 
 ```shell
@@ -194,7 +214,7 @@ sudo apt install certbot python3-certbot-nginx
 ```
 
 ```shell
-sudo certbot --nginx -d my-domain.com
+sudo certbot --nginx -d umami.my-domain.com
 ```
 
 You'll be prompted to enter in an email address. Once it's complete, it should have modified your nginx `umami.conf` and restarted nginx so that you're set to go!
@@ -203,7 +223,7 @@ Certbot should have modified your `/etc/nginx/sites-available/umami.conf` so tha
 
 ```conf
 server {
-    server_name  my-domain.com;
+    server_name  umami.my-domain.com;
 
     access_log  /var/log/nginx/umami.access.log;
     error_log   /var/log/nginx/umami.error.log;
@@ -217,21 +237,21 @@ server {
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/my-domain.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/my-domain.com/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/umami.my-domain.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/umami.my-domain.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 }
 server {
-    if ($host = my-domain.com) {
+    if ($host = umami.my-domain.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
     listen       80;
     listen       [::]:80;
-    server_name  my-domain.com;
+    server_name  umami.my-domain.com;
     return 404; # managed by Certbot
 }
 ```
@@ -267,3 +287,9 @@ Create a AAAA record with your DNS provider that points your domain to the serve
 All done! You should now be able to get to the Umami dashboard by going to `umami.my-domain.com`.
 
 I presume certbot certificate renewal will work just fine with this IPv6 server. I've yet to hit this point in time (`sudo certbot renew` does nothing until the certificates are about to expire).
+
+## Fine Tuning
+
+Disable the script when developing the site locally.
+
+{{% figure src="_assets/localhost-being-the-top-referrer-in-umami.png" width="600px" %}}
