@@ -1,11 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Circuit Design ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Circuit Design]
 date: 2013-01-03
 description: A tutorial on analogue electronic filters, including low-pass/high-pass 1st order RC, LC and RLC filters and 2nd order RC, Sallen-Key filter topologies.
 draft: false
-lastmod: 2022-10-09
-tags: [ electronics, circuit design, filters, passive filters, active filters, RC, low-pass, high-pass, LC, bode plot, frequency response, Sallen-Key, voltage-controlled voltage source, VCVS, cutoff frequency, corner frequency, break frequency, elliptic filters, Cauer filter, Zolotarev filter ]
+lastmod: 2024-03-26
+tags: [electronics, circuit design, filters, passive filters, active filters, RC, low-pass, high-pass, LC, bode plot, frequency response, Sallen-Key, voltage-controlled voltage source, VCVS, cutoff frequency, corner frequency, break frequency, elliptic filters, Cauer filter, Zolotarev filter]
 title: Analogue Filters
 type: page
 ---
@@ -54,7 +54,7 @@ _Filter optimizations_ maximize a certain characteristic of a filter topology, s
 
 The below schematic shows a first-order low-pass RC filter consisting of a single series resistor and then a single capacitor to ground.
 
-{{% figure src="low-pass-rc/low-pass-rc-filter-schematic.svg" width="500px" caption="Schematic of a simple low-pass RC filter." %}}
+{{% figure src="_assets/low-pass-rc/low-pass-rc-filter-schematic.svg" width="500px" caption="Schematic of a simple low-pass RC filter." %}}
 
 The low-pass RC filter lets through low frequencies but dampens high frequencies.
 
@@ -140,7 +140,7 @@ This shows us that an RC filter "delays" signals as they pass through. The highe
 
 The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values \(R = 1k\Omega\) and \(C = 1\mu F\). Magnitude is plotted in blue and phase in green.
 
-{{% figure src="rc-low-pass-filter-frequency-response.png" width="700px" caption="The frequency response (magnitude and phase) of a low-pass RC filter." %}}
+{{% figure src="_assets/rc-low-pass-filter-frequency-response.png" width="700px" caption="The frequency response (magnitude and phase) of a low-pass RC filter." %}}
 
 The cut-off frequency (also called the _break frequency_ or _turnover frequency_[^bib-wikipedia-low-pass-filter]), \(f_c\) is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
 
@@ -203,7 +203,6 @@ t = -log(\frac{V-V_c}{V})RC
 
 This form of the equation can be useful to calculate the delay (aka the time \(t\)), that the RC circuit will provide before something happens.
 
-
 ### Building A VDAC From An ADC And Low-pass RC Filter
 
 **Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a [PWM signal](/electronics/circuit-design/pulse-width-modulation-pwm).** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
@@ -212,7 +211,7 @@ This form of the equation can be useful to calculate the delay (aka the time \(t
 
 The basic low-pass LC filter consists of a single inductor and capacitor.
 
-{{% figure src="low-pass-lc-filter-schematic.svg" width="556px" caption="A basic schematic of a low-pass LC filter." %}}
+{{% figure src="_assets/low-pass-lc-filter-schematic.svg" width="556px" caption="A basic schematic of a low-pass LC filter." %}}
 
 Unlike the low-pass RC filter, the low-pass LC filter is theoretically loss-less. This means that it does not dissipate energy as heat. However, real-world inductors have coil resistance and magnetic losses, as well as ESR in the capacitor. Also, the presence of the inductance usually makes the LC filter larger and more expensive than the RC filter.
 
@@ -236,7 +235,7 @@ which you will notice is also present in the cut-off frequency equation.
 
 The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor, \(R_L\). Larger valued inductors typically have a larger coil resistance (due to more windings). This dampens the output signal.
 
-{{% figure src="low-pass-lc-filter-with-parasitics-schematic.png" width="539px" caption="A schematic of a LC low-pass filter with parasitic inductor resistance included." %}}
+{{% figure src="_assets/low-pass-lc-filter-with-parasitics-schematic.png" width="539px" caption="A schematic of a LC low-pass filter with parasitic inductor resistance included." %}}
 
 This is equivalent to a low-pass RLC filter.
 
@@ -317,7 +316,7 @@ The reduce the effects of each stages dynamic impedance effecting it's neighbour
 
 ### Passive RC Networks With Voltage Gain > 1
 
-It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
+It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./_assets/herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
 ### 2nd Order Filter Topologies
 
@@ -334,7 +333,7 @@ Voltage-controlled voltage-source (VCVS) filters are an extension of the [Sallen
 
 They are called VCVS filters because the op-amp is used as a voltage amplifier.
 
-{{% figure src="low-pass-vcvs-generic/low-pass-vcvs-generic.svg" width="700px" caption="Schematic of a generic VCVS filter. Note how it is very similar to the Sallen-Key filter, except with the additional resistors R3 and R4 to set a voltage gain other than unity." %}}
+{{% figure src="_assets/low-pass-vcvs-generic/low-pass-vcvs-generic.svg" width="700px" caption="Schematic of a generic VCVS filter. Note how it is very similar to the Sallen-Key filter, except with the additional resistors R3 and R4 to set a voltage gain other than unity." %}}
 
 ## Design Tools
 
@@ -344,7 +343,7 @@ Website: [http://sim.okawa-denshi.jp/en/Fkeisan.htm](http://sim.okawa-denshi.jp/
 
 Great site with web-based calculators and design tools for active and passive filters. Very detailed site with many configuration options and the site even outputs graphs of your designed filter response.
 
-{{% figure src="okawa-filter-design-and-analysis-homepage-screenshot.png" width="700px" caption="Screenshot of the homepage for the OKAWA Filter Design and Analysis website. Image from http://sim.okawa-denshi.jp/en/Fkeisan.htm, retrieved 2021-03-27." %}}
+{{% figure src="_assets/okawa-filter-design-and-analysis-homepage-screenshot.png" width="700px" caption="Screenshot of the homepage for the OKAWA Filter Design and Analysis website. Image from http://sim.okawa-denshi.jp/en/Fkeisan.htm, retrieved 2021-03-27." %}}
 
 ### PSoC Microcontrollers And The PSoC Creator IDE
 
