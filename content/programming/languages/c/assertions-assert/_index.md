@@ -140,7 +140,7 @@ A working example of the above code can  be found at [https://ideone.com/DD1PJs]
 
 ## Compile Time Asserts
 
-Since C11, the standard library has provided an easy way of writing asserts that get checked at compile time rather than runtime. In C11, `<assert.h>` introduced the following macro:
+Since C11, the standard library has provided an easy way of writing asserts that get checked at compile time rather than runtime. In C11, `<assert.h>` introduced the following macro[cppreference-c-static-assert]:
 
 ```c
 #define static_assert _Static_assert
@@ -182,6 +182,8 @@ int main(void)
 }
 ```
 
+In C23, `static_assert()` was turned into a keyword[cppreference-c-static-assert], so you don't even need to `#include <assert.h>`!
+
 ## External Links
 
 [Assert Yourself, by Niall Murphy](http://www.embedded.com/electronics-blogs/other/4023329/Assert-Yourself), is a good read about using the assert() macro.
@@ -189,3 +191,4 @@ int main(void)
 ## References
 
 [^geeks-for-geeks-predefined-macros-in-c-with-examples]: GeeksforGeeks. _Predefined Macros in C with Examples_. Retrieved 2024-03-27, from https://www.geeksforgeeks.org/predefined-macros-in-c-with-examples/.
+[cppreference-c-static-assert]: cppreference.com (2023, Feb 21). _C - Error handling - static_assert_. Retrieved 2024-03-27, from https://en.cppreference.com/w/c/error/static_assert.
