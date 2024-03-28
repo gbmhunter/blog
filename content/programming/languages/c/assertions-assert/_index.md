@@ -1,6 +1,7 @@
 ---
 authors: [Geoffrey Hunter]
 date: 2013-06-17
+description: "How to use runtime and compile-time assert() on embedded microcontrollers."
 draft: false
 lastmod: 2024-03-27
 tags: [C, programming, assert, asserts, exception, firmware, macro, pre-processor, GCC]
@@ -10,19 +11,95 @@ type: page
 
 ## Overview
 
-`assert()` is a useful tool to check that certain conditions hold true during the runtime. Assertions are generally meant for checking fatal errors only. For example, it's usually a good idea to use assert to make sure a pointer is not null. If it was `null`, it means there is a bug in the firmware and it needs fixing. It also generally means you are not able to continue with execution. It's not a good idea to use assert to check if the current room temperature is above 20C.
+`assert()` is a useful tool to check that certain conditions hold true during the runtime.
 
 {{% aside type="tip" %}}
-It's also getting popular to use similar `assert()` like calls to perform certain checks at compile time. More on this below!
+You can use similar `assert()` like calls to perform certain checks at compile time. More on this below!
 {{% /aside %}}
 
 The basic premise behind an `assert(bool_t value)` is that the **macro/function checks to make sure that value is true.** The developer adds the checks where the expected result should be true. If the value is not true (i.e. false), the software/firmware takes specific action.
 
 For a software application, this "specific action" may be printing out the filename and line number the `assert()` was raised in, and then exiting the application. For a firmware application, this may be printing out the filename and line number the `assert()` was raised in, and then restarting (it does not make sense to "quit" in a firmware environment).
 
-Assertions refer to the use of both the standard C library `assert()` macro, and the use of similar user-defined macros.
+## What assert To Use?
+
+The C standard library provides a `assert()` function/macro via `assert.h`:
+
+```c
+#include <assert.h>
+
+int main(void) {
+  assert(0 == 1);
+}
+```
+
+The standard behaviour for this is to evaluate the expression and it it's false, print an error message and abort. If I run this program on Linux, I get the following message printed (and the program aborts):
+
+```text
+main: ./main.c:4: int main(void): Assertion `0 == 1' failed.
+```
+
+With clever use of the `&&` operator you can add a custom message to this assert like so:
+
+```c
+#include <assert.h>
+
+int main(void) {
+  assert(0 == 1 && "0 does no equal 1");
+}
+```
+
+Which prints: `main: ./main.c:4: int main(void): Assertion ``0 == 1 && "0 does no equal 1"' failed.`. This works because the expression you actually want to test gets anded with the address of the string literal (pointer). A valid pointer can never be null, so it's guaranteed to be true, thus the expression is just `0 == 1 && true` which is logically equivalent to just `0 == 1`.
+
+The standard library assert becomes a no-op if `NDEBUG` is defined. For this reason the argument to `assert()` should have no side effects (more on this below).
+
+You might be wondering what happens when an assert is raised on a microcontroller. "Aborting" is not really an option as it is with software running on a fully-fledged OS. Instead, the behaviour is typically overridden so that the abort message is printed out a debug serial port (and/or logged somewhere), and then the MCU is reset. **Sometimes a delay is added in the assert handler before resetting** to prevent fast "boot loops". This can be beneficial to prevent user indicator LEDs from blinking unrecognizable patterns, allow time for debugging the problem, and prevent things like flash from wearing out (if you write to flash on start-up). 
+
+However, you may want to roll your own `assert()`.
 
 If you are looking for a full-blown `assert()` example, check out the compilable/testable `assert()` code snippet at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN).
+
+## What Should I Use assert() For?
+
+Assertions are generally meant for checking fatal, "cannot continue" errors. For example, it's usually a good idea to use assert to make sure a pointer is not null. If it was `null`, it means there is a bug in the firmware and it needs fixing. It also generally means you are not able to continue with execution. It's not a good idea to use assert to check that a temperature sensor reading says that the current room temperature is above 20C.
+
+Asserts usually should be used for:
+
+* Checking pointers are non-null after allocating memory
+* Function arguments are within bounds in your own application code (including making sure passed in pointers are non-null)
+
+Assert usually should NOT be used for:
+
+* Checking the bounds of function arguments in libraries that will be used by many people (it's better to return an error code in this case).
+* Validating user input
+* Verifying something that is likely to fail (e.g. asserting that a CRC on a received packet is correct, it's better to implement a retry mechanism).
+
+Asserts can be great for making sure your code doesn't reach places you expect to be unreachable. For example:
+
+```c
+typedef enum {
+    STATE_1,
+    STATE_2
+} myStates_t;
+
+void handleState(myStates_t state)
+{
+    switch (state)
+    {
+        case STATE_1:
+            break;
+        case STATE_2:
+            break;
+        default:
+            // We should never get here!
+            assert(false);
+    }
+}
+```
+
+This also works well for `if/if else/else` statements, you can add an `assert()` to the last `else` if you know the code should always match against one of the previous `if/else if` branches.
+
+Although it is suggested by many people to disable asserts in production releases of code, my personal opinion is that in an embedded context it usually makes more sense to leave them in so that you can catch errors early, be warned about them in a clear manner, and prevent the processor from executing off into the wild world of undefined behaviour. It might make sense to leave them enabled in much software too!
 
 ## A Simple assert() Using A Macro
 
@@ -140,7 +217,7 @@ A working example of the above code can  be found at [https://ideone.com/DD1PJs]
 
 ## Compile Time Asserts
 
-Since C11, the standard library has provided an easy way of writing asserts that get checked at compile time rather than runtime. In C11, `<assert.h>` introduced the following macro[cppreference-c-static-assert]:
+You can also perform assert-like checks at compile time rather than runtime. In previous times people craftily wrote their own macros do these (or they were provided by compilers). Since C11, the standard library has provided an easy way of writing asserts that get checked at compile time. In C11, `<assert.h>` introduced the following macro[cppreference-c-static-assert]:
 
 ```c
 #define static_assert _Static_assert

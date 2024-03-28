@@ -714,6 +714,7 @@
         "ncols",
         "ncurses",
         "ndarray",
+        "NDEBUG",
         "NEBS",
         "Nelder",
         "nema",
