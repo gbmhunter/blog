@@ -151,3 +151,28 @@ The below image shows a screenshot of Chrome dev tools analysing the Resistors p
 <img src="static/images/readme/resistors-page-size-feb-2024-filtered-by-domain.png" width="900"/>
 
 As highlighted, `3.9MB` of data was transferred from the domain `blog.mbedded.ninja` (a filter is set up to exclude third-party downloads). Netlify reports that blog.mbedded.ninja is using approx. 50GB of it's 100GB limit per month.
+
+## Analytics
+
+Google Analytics was used for many years (now GA4), but ad blockers also block the GA tracking script.
+
+On 2024-03-22, I created a AWS Lightsail instance than runs Umami, a basic, open-source and free to use (if self-hosted) analytics engine.
+
+I largely followed the tutorial at https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04.
+
+Umami can be started by running:
+
+```shell
+cd /opt/umami
+docker-compose up -d
+```
+
+This will start Umami, which listens on 127.0.0.1:3000 (localhost only). An nginx server is placed in front of the Umami server to add SSL/https functionality. The SSL certificate is provided using certbot and Let's Encrypt. nginx is exposed to the public and reverse proxies the traffic to Umami. 
+
+There is a DNS A record for umami.mbedded.ninja which points to the AWS Lightsail instance. This might need to be converted into a AAAA and IPv6 record in the future (to reduce running costs?).
+
+The "SSL/TLS encryption mode" in Cloudflare has to be changed from the default of "Flexible" to "Full (strict)" for https to Umami to work correctly:
+
+<img src="static/images/readme/cloudfare-changing-ssl-from-flexible-to-full-strict.png" width="900"/>
+
+

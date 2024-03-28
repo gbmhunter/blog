@@ -4,7 +4,7 @@ categories: [ Electronics, Circuit Design ]
 date: 2011-09-03
 description: A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more.
 draft: false
-lastmod: 2024-02-12
+lastmod: 2024-03-26
 tags: [ ADCs, microcontrollers, accuracy, resolution, current loop, analog-to-digital converter, digital, analogue, analog, switched capacitor ]
 title: Analogue-to-Digital Converters (ADCs)
 type: page
@@ -49,6 +49,10 @@ The sample-and-hold capacitor **is not normally discharged between successive me
 [Texas Instruments: Switched-Capacitor ADC Analog Input Calculations](https://www.ti.com/lit/an/slaa036/slaa036.pdf) is a great walk through of how to calculate the maximum permissible source resistance \(R_S\) given a desired accuracy in LSB for an ADC.
 
 You may need to add an external capacitor to ADC inputs to compensate for the voltage drop caused when the sample-and-hold capacitor is connected.
+
+Models of ADC input circuitry can get complex! {{% ref "fig-infineon-tc33xext-aa-mcu-adc-input-equivalent-circuit" %}} shows the input model for the Infineon AURIX TriCore TC33xEXT AA family of MCUs.
+
+{{% figure ref="fig-infineon-tc33xext-aa-mcu-adc-input-equivalent-circuit" src="_assets/infineon-tc33xext-aa-mcu-adc-input-equivalent-circuit.png" width="600px" caption="Models of ADC input circuitry can get complex! This one is from the Infineon AURIX TriCore TC33xEXT AA family of MCUs[^infineon-aurix-tricore-tc33xext-aa-mcu-ds]." %}}
 
 ## Medical Uses
 
@@ -97,3 +101,4 @@ Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the ana
 [^ti-switched-capacitor-adc-app-report]: Tom Kugelstadt (1998, Sep). _Switched-Capacitor ADC Analog Input Calculations Application Report_. Texas Instruments. Retrieved 2024-02-11, from https://www.ti.com/lit/an/slaa036/slaa036.pdf.
 [^st-stm32g491ke-mcu-ds]: STMicroelectronics (2021, Sep). _STM32G491xC/STM32G491xE - Arm® Cortex®-M4 32-bit MCU+FPU, 170 MHz / 213 DMIPS, up to 512 KB Flash, 112 KB SRAM, rich analog, math accelerator_ [datasheet]. Retrieved 2024-02-12, from https://www.st.com/resource/en/datasheet/stm32g491ke.pdf.
 [^st-community-stm32g4-adc-sampling-and-hold-capacitor-value]: STMicroelectronics. _STM32G4: ADC sampling and hold capacitor value_ [forum post]. Retrieved 2024-02-12, from https://community.st.com/t5/stm32-mcus-products/stm32g4-adc-sampling-and-hold-capacitor-value/td-p/145004.
+[^infineon-aurix-tricore-tc33xext-aa-mcu-ds]: Infineon (2021, Mar). _AURIX TriCore TC33xEXT AA MCU Family Datasheet_. Retrieved 2024-03-26, from https://www.infineon.com/dgdl/Infineon-TC33xEXT_AA-step_DataSheet-DataSheet-v01_01-EN.pdf?fileId=8ac78c8c82ce566401833cdf75272dba.

@@ -1,12 +1,12 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Circuit Design ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Circuit Design]
 date: 2013-01-03
 description: Butterworth, Chebyshev, Bessel, elliptic, transfer functions, polynomials, equations, graphs and more information on analogue filter tunings. 
 draft: false
-images: [ /electronics/circuit-design/analogue-filters/filter-tunings/cover-photo.png ]
-lastmod: 2022-10-29
-tags: [ electronics, circuit design, filters, tunings, Butterworth, Chebyshev, Bessel, Bessel-Thomson, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband ]
+images: [/electronics/circuit-design/analogue-filters/filter-tunings/cover-photo.png]
+lastmod: 2024-03-26
+tags: [electronics, circuit design, filters, tunings, Butterworth, Chebyshev, Bessel, Bessel-Thomson, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband]
 title: Filter Tunings
 type: page
 ---
@@ -15,7 +15,7 @@ type: page
 
 _Filter tunings_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter tuning directly specifies what the filters polynomials must be in it's transfer function (see [What Are Transfer Functions, Poles and Zeroes](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) for more info).
 
-{{% figure src="cover-photo.png" width="800px" %}}
+{{% figure src="_assets/cover-photo.png" width="800px" %}}
 
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
 * **Chebyshev**: Designed to have a steep transition between the pass and stop-band (but not the steepest, Elliptic tuning claims that award), at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
@@ -66,7 +66,7 @@ Below is a table of the normalized factored Butterworth polynomials for order \(
 
 _All numbers are rounded to 3 decimal places_.
 
-{{% file src="butterworth-factored-polynomial-table.data" %}}
+{{% file src="_assets/butterworth-factored-polynomial-table.data" %}}
 
 Using these polynomials \(B_n\), we can write the transfer function of a Butterworth filter as[^bib-pieter-p-butterworth-filters]:
 
@@ -80,7 +80,7 @@ This equation is different from \(Eq.\ \ref{eq:butterworth-magnitude}\) which de
 
 This transfer function gives the following bode plots (by taking the magnitude and arg of the transfer function):
 
-{{% figure src="butterworth-bode-plot-for-various-n.png" width="900px" caption="Magnitude and phase bode plots for normalized Butterworth filters of orders 1, 2, 4 and 8." %}}
+{{% figure src="_assets/butterworth-bode-plot-for-various-n.png" width="900px" caption="Magnitude and phase bode plots for normalized Butterworth filters of orders 1, 2, 4 and 8." %}}
 
 The Butterworth polynomial coefficients \(a_0, a_1, ..., a_n\) for an \(n\)-order filter can be calculated with this product-based equation[^bib-wikipedia-butterworth-filter]:
 
@@ -96,7 +96,7 @@ where:<br/>
 
 There is also a recursive formula to calculate the coefficients, but we'll just use the product based one. The below table shows the Butterworth polynomial coefficients calculated with this equation, up to \(n=8\) (8th order filter).
 
-{{% file src="butterworth-polynomial-coeffs-table.data" %}}
+{{% file src="_assets/butterworth-polynomial-coeffs-table.data" %}}
 
 For example, the above table tells you for order \(n=3\) the Butterworth polynomial is \(s^3 + 2s^2 + 2s + 1\). If expand the factorized version we should arrive at the same polynomial:
 
@@ -206,7 +206,7 @@ T_5(x) &= 16x^5 - 20x^3 + 5x \nonumber \\
 
 These are special polynomials in which the leading coefficient (coefficient in front of the highest power of \(x\)) is the largest value it can be whilst the polynomial is bounded between \([-1, 1]\) on the interval \(x\ \epsilon\ [-1, 1]\)[^bib-wikipedia-chebyshev-polynomials]. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials \(T_0\) through to \(T_5\). Note that \(T_0 = 1\), and is somewhat hidden by the horizontal bounding line.
 
-{{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from \(T_0\) to \(T_5\)." %}}
+{{% figure src="_assets/chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from \(T_0\) to \(T_5\)." %}}
 
 The below Python function can be used to calculate the Chebyshev polynomial coefficients of the first kind, for a given order \(n\). Although we could build up a recursive function and use sympy to find them based of the recursive equation above, it's easier just to use the `numpy.polynomial` module which provides a function to calculate them.
 
@@ -261,11 +261,11 @@ $$\begin{align}
 
 The above equations were used to generate the table below, which lists the reverse Bessel polynomials of degree 0 to 8. 
 
-{{% file src="bessel-polynomial-coeffs-table.data" %}}
+{{% file src="_assets/bessel-polynomial-coeffs-table.data" %}}
 
 The visually demonstrate the flat group delay of the Bessel tuned filter, we can plot the group delay of the Bessel-tuned 4th-order low-pass filter vs. a number of other popular tunings. The below plot shows the group delay for Bessel, Butterworth, Chebyshev and Elliptic tuned filter. The critical frequency was set to \(10kHz\) for all filter tunings. All filters are 4th-order. As you can see, the Bessel tuned filter has the flattest group delay.
 
-{{% figure src="tuning-comparison-group-delay.png" width="700px" caption="The group delay for various 4th-order filter tunings. The Bessel-tuned filter has the flattest group delay in the passband." %}}
+{{% figure src="_assets/tuning-comparison-group-delay.png" width="700px" caption="The group delay for various 4th-order filter tunings. The Bessel-tuned filter has the flattest group delay in the passband." %}}
 
 This also means that a Bessel-tuned filter has the **least ringing due to a step response**, as shown in the plot below (more on this in the [Comparisons Between Filter Tunings section](#comparisons-between-filter-tunings)).
 
@@ -309,7 +309,7 @@ $$\begin{align}
 
 We now use these equations for magnitude and phase and create bode plots!
 
-{{% figure src="bessel-2nd-order-bode-plot.png" width="600px" caption="Bode plots for the 2nd-order Bessel low-pass filter." %}}
+{{% figure src="_assets/bessel-2nd-order-bode-plot.png" width="600px" caption="Bode plots for the 2nd-order Bessel low-pass filter." %}}
 
 {{% /aside %}}
 
@@ -380,29 +380,29 @@ With the above specified, **the transfer function of each filter is fully define
 
 Now we can finally look at some comparisons. The below plot compares the gain response of each filter tuning. Both axis are logarithmic. You can clearly see the Elliptic-tuned filter winning the race.
 
-{{% figure src="tuning-comparison-gain-db.png" width="600px" caption="Gain comparison of different filter tunings." %}}
+{{% figure src="_assets/tuning-comparison-gain-db.png" width="600px" caption="Gain comparison of different filter tunings." %}}
 
 I think the difference is gain response can be better viewed with linear x and y axes So we'll drop the \(dB\) in favour of \(V/V\) and get rid of the logarithmic x-axis:
 
-{{% figure src="tuning-comparison-gain-linear.png" width="600px" caption="Gain comparison of different filter tunings, now with linear x and y axes." %}}
+{{% figure src="_assets/tuning-comparison-gain-linear.png" width="600px" caption="Gain comparison of different filter tunings, now with linear x and y axes." %}}
 
 The linear axes helps to highlight the spread in behaviour between the different tunings. Look at that ripple in the passband with the Chebyshev and Elliptic filter tunings!
 
 Now we can look at the phase response:
 
-{{% figure src="tuning-comparison-phase-log.png" width="600px" caption="Phase comparison of different filter tunings." %}}
+{{% figure src="_assets/tuning-comparison-phase-log.png" width="600px" caption="Phase comparison of different filter tunings." %}}
 
 What you can't easily pick out with logarithmic frequency axis is how linear the phase response is. So let's replot the above but with a linear x-axis (frequency). We'll stop plotting at twice the characteristic frequency.
 
-{{% figure src="tuning-comparison-phase-linear.png" width="600px" caption="Phase comparison of different filter tunings, with a linear x-axis (frequency) which makes it easy to see how linear the phase response is." %}}
+{{% figure src="_assets/tuning-comparison-phase-linear.png" width="600px" caption="Phase comparison of different filter tunings, with a linear x-axis (frequency) which makes it easy to see how linear the phase response is." %}}
 
 A comparison of group delay for the various filter tunings is shown below. You can clearly shows the flat group delay of the Bessel filter, and the horrible response of the Chebyshev/Elliptic filter tunings.
 
-{{% figure src="tuning-comparison-group-delay.png" width="600px" caption="Group delay comparison of different filter tunings." %}}
+{{% figure src="_assets/tuning-comparison-group-delay.png" width="600px" caption="Group delay comparison of different filter tunings." %}}
 
 The step response is also interesting to look at. The input step was from \(0V\) to \(1V\) and the output of each filter is shown below:
 
-{{% figure src="tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings." %}}
+{{% figure src="_assets/tuning-comparison-step-response.png" width="600px" caption="Step response comparison of different filter tunings." %}}
 
 The Bessel-tuned filter shows the least amount of ringing. This is what we would expect, as the Bessel-filter is optimized to have the flattest group delay. All frequencies get delayed by roughly the same amount, and so the output is not "distorted". Ringing is a result of different frequencies being delayed by different amounts of time (remember that an input step response essentially has frequency components at all frequencies, hence why it is a good testcase for a filter).
 
