@@ -3,7 +3,7 @@ authors: [Geoffrey Hunter]
 date: 2024-03-28
 description: Workings, on GMR, IMR type magnetic rotary position sensors.
 draft: false
-lastmod: 2024-03-28
+lastmod: 2024-03-31
 tags: [magnetism, magnetics, rotation, rotary, sensors, GMR]
 title: Magnetic Rotary Position Sensors
 type: page
@@ -42,7 +42,7 @@ Gaps of 4-8mm between the magnet and sensing IC can be achieved with standard si
 
 Giant magnetoresistance was first discovered in 1988[^wikipedia-giant-magnetoresistance] [^nve-application-notes-for-gmr-sensors]. It is an effect that can be measured with nanometer-thick films of magnetic layers separated by similar thickness non-magnetic layers.
 
-It is called "giant" because the multiple layers significantly increases the resistance change due to a magnetic field (can be a 50% change at very low temperatures) over standard "anisotropic" magnetoresistance (which is typically only a few percent).
+It is called "giant" because the multiple layers significantly increases the resistance change due to a magnetic field (can be a 50% change at very low temperatures) over standard "anisotropic" magnetoresistance (which is typically only a few percent)[^nve-how-gmr-works].
 
 ### Examples
 
@@ -72,3 +72,4 @@ Tunnel magnetoresistance is an extension of spin-valve GMR[^wikipedia-giant-magn
 [^nve-application-notes-for-gmr-sensors]: NVE Corporation. _Application Notes for GMR Sensors_. Retrieved 2024-03-29, from https://www.nve.com/Downloads/apps.pdf.
 [^infineon-tle5014sp16d-ds]: Infineon (2019, May 9). _TLE5014SP16D_ [datasheet]. Retrieved 2024-03-29, from https://www.infineon.com/dgdl/Infineon-TLE5014SP16D%20E0002-DataSheet-v01_00-EN.pdf?fileId=5546d46270c4f93e0170c92e1bc10212.
 [^allegro-future-of-automotive-wheel-sensing-with-gmr]: Allegro Microsystems (2022, Feb 23). _The Future of Automotive Wheel Sensing with GMR_. Retrieved 2024-03-29, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/p0083-future-of-wheel-sensing-gmr.
+[^nve-how-gmr-works]: NVE Corporation. _How GMR Works_. Retrieved 2024-03-31, from https://www2.nve.com/gmrsensors/gmr-operation.htm.
