@@ -12,11 +12,11 @@ type: page
 
 {{% figure src="_assets/umami-logo.png" width="300px" float="right" caption="The Umami logo." %}}
 
-[Umami](https://umami.is/), aside from being a delicious savoury taste, is also an analytics platform. **It is a popular alternative to Google Analytics and allows free use** if you self-host the software on your own server. I decided to switch from Google Analytics to Umami because **ad blockers were blocking the Google Analytics script** used to keep track of the number of page visits and unique visitors to this blog, [NinjaTerm](https://ninjaterm.mbedded.ninja/) and [NinjaCalc](https://ninjacalc.mbedded.ninja/). By using Umami and self-hosting it, I could point a subdomain (e.g. `umami.mbedded.ninja`) at the server running Umami. **There is a very high probability that ad blockers won't block the Umami client-side script** since the data would now be sent to the same domain as this blog.
+[Umami](https://umami.is/), aside from being a delicious savoury taste, is also an analytics platform. It is a popular alternative to Google Analytics and allows free use if you self-host the software on your own server. I decided to switch from Google Analytics to Umami because ad blockers were blocking the Google Analytics script used to keep track of the number of page visits and unique visitors to this blog, [NinjaTerm](https://ninjaterm.mbedded.ninja/) and [NinjaCalc](https://ninjacalc.mbedded.ninja/). By using Umami and self-hosting it, I could point a subdomain (e.g. `umami.mbedded.ninja`) at the server running Umami. There is a very high probability that ad blockers won't block the Umami client-side script since the data would now be sent to the same domain as this blog.
 
 {{% figure ref="fig-umami-dashboard-showing-analytics-for-blog-1" src="_assets/umami-dashboard-showing-analytics-for-blog.png" width="900px" caption="The Umami dashboard showing the page views and visitor count for this blog." %}}
 
-This page details **how to get Umami setup and running on an AWS Lightsail server instance**. AWS Lightsail is a simple and cheap way of hosting servers that don't need to do much processing. Lightsail costs around US$3.50 to $5.00/month for the small size instances that Umami can run on (for small to medium sized sites) using IPv6 only.
+This page details how to get Umami setup and running on an AWS Lightsail server instance. AWS Lightsail is a simple and cheap way of hosting servers that don't need to do much processing. Lightsail costs around US$3.50 to $5.00/month for the small size instances that Umami can run on (for small to medium sized sites) using IPv6 only.
 
 Credit goes to the Digital Ocean's tutorial at https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04 for showing me how to do this for the first time. This tutorial expands on Digital Ocean's by adding Lightsail specific information, DNS information, and updating some parts for relevance in 2024 (e.g. we now have `docker compose` rather than `docker-compose`).
 
@@ -28,7 +28,7 @@ This assumes you have an AWS account. If you don't, go and sign up now! Then log
 
 Firstly, choose an "Instance Location". You can pick something close to where most of your users are, but in the end it doesn't matter much!
 
-Then under "Select a blueprint", click "Operating System (OS) only". Select Ubuntu 22.04 as shown in {{% ref "fig-picking-ubuntu-22-04-in-lightsail" %}}. You **could choose a different Linux OS, like AWS Linux, but the commands will be different** (e.g. you'll have to use `yum` instead of `apt`) and the nginx config files structure won't be setup to use `sites-available`/`sites-enabled` (slightly different ways of doing things).
+Then under "Select a blueprint", click "Operating System (OS) only". Select Ubuntu 22.04 as shown in {{% ref "fig-picking-ubuntu-22-04-in-lightsail" %}}. You could choose a different Linux OS, like AWS Linux, but the commands will be different (e.g. you'll have to use `yum` instead of `apt`) and the nginx config files structure won't be setup to use `sites-available`/`sites-enabled` (slightly different ways of doing things).
 
 {{% figure ref="fig-picking-ubuntu-22-04-in-lightsail" src="_assets/picking-ubuntu-22-04-in-lightsail.png" width="800px" caption="Picking Ubuntu 22.04 LTS as the OS in Lightsail." %}}
 
@@ -38,7 +38,7 @@ Then select or create a keypair to authenticate with this server. If creating a 
 Don't lose your private key, you can't re-download it from the Lightsail console!
 {{% /aside %}}
 
-Select the _Networking Type_. As of March 2024, Amazon is about to charge more for servers that have IPv4 addresses. **IPv6 only should work fine -- except that IPv6 doesn't work for cloning projects of GitHub, nor some docker-based commands which fetch data from remotes.** What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. So let's continue with an instance which has both an IPv4 and IPv6 address -- select `Dual stack` for the Networking Type as shown in {{% ref "fig-choosing-dual-stack-and-size-lightsail" %}}.
+Select the _Networking Type_. As of March 2024, Amazon is about to charge more for servers that have IPv4 addresses. IPv6 only should work fine -- except that IPv6 doesn't work for cloning projects of GitHub, nor some docker-based commands which fetch data from remotes. What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. So let's continue with an instance which has both an IPv4 and IPv6 address -- select `Dual stack` for the Networking Type as shown in {{% ref "fig-choosing-dual-stack-and-size-lightsail" %}}.
 
 Select a size. Umami does not take many resources to run. However I had issues with the memory capped at 512MB, so I picked the 1GB RAM/40GB SSD size (as of March 2024, US$5.00/month). Let me know if you get is running successfully on smaller resources!
 
@@ -339,7 +339,7 @@ How exactly you do this depends on what framework your site runs on/in. I'll giv
 
 [NinjaTerm](https://ninjaterm.mbedded.ninja/) runs on React, so I used the following in my `index.tsx` file:
 
-```
+```js
 if (import.meta.env.PROD) {
   var script = document.createElement('script');
   script.type = 'text/javascript';
@@ -352,3 +352,23 @@ if (import.meta.env.PROD) {
 ```
 
 Note that the NinjaTerm example above uses Javascript in inject the equivalent script tag into the head of the HTML document if the production environment variable evaluates to `true`.
+
+UPDATE: The above way to only include the script if `import.meta.env.PROD` is true works great -- except if you start making Umami API calls to track things like events. If you need to do this, you'd have to guard every call with a check to make sure `window.umami` is defined, which can get repetitive and feels like bad design. The better approach is to always include the script in the `head`, but set `umami.disabled` to `1` in local storage in dev. environments[^umami-docs-track-events]. Umami does not send analytics in this case, but the API is still available.
+
+Here is an example:
+
+```js
+// Enable Umami analytics script in production and disable
+// in dev. environment. Use the umami.disabled key in local storage for doing so
+if (import.meta.env.PROD) {
+  // It's not good enough just to set the key to 0, it needs to be removed
+  window.localStorage.removeItem('umami.disabled');
+} else {
+  console.log('Detected dev. environment, setting umami.disabled in local storage to "1".');
+  window.localStorage.setItem('umami.disabled', '1');
+}
+```
+
+## References
+
+[^umami-docs-track-events]: Umami. _Track events_ [documentation]. Retrieved 2024-03-31, from https://umami.is/docs/track-events.
