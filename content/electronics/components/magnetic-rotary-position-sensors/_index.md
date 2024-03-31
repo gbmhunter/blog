@@ -44,6 +44,8 @@ Giant magnetoresistance was first discovered in 1988[^wikipedia-giant-magnetores
 
 It is called "giant" because the multiple layers significantly increases the resistance change due to a magnetic field (can be a 50% change at very low temperatures) over standard "anisotropic" magnetoresistance (which is typically only a few percent)[^nve-how-gmr-works].
 
+GMR is used in hard-drive read heads to detect read bits of the hard drive platters.
+
 ### Examples
 
 #### Infineon TLE5014
@@ -64,6 +66,10 @@ The TLE5014 has variants with fully redundant dual sensors for safety critical a
 TMR: Tunneling Magneto Resistive technology (Infineon). High sensing sensitivty and high output voltage, no need for internal amplifier.
 
 Tunnel magnetoresistance is an extension of spin-valve GMR[^wikipedia-giant-magnetoresistance].
+
+## Further Reading
+
+If you are interested in dirt-cheap, basic rotation sensors for things like user interface knobs, you might want to use a [potentiometer](/electronics/components/potentiometers-and-rheostats/). Another way of measuring rotation is an [optical encoder](/electronics/components/encoders/).
 
 ## References
 
