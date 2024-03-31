@@ -25,4 +25,7 @@ Added a new page on how to [setup Umami Analytics on Amazon Lightsail](/programm
 
 Added info on [C compile-time asserts()](/programming/languages/c/assertions-assert/).
 
+{{% figure src="_assets/compile-time-asserts-screenshot.png" width="600px" %}}
+
 Added a new page with a small amount of info on [Infineon 32-bit AURIX TriCore MCUs](/programming/microcontrollers/infineon-32bit-aurix-tricore/).
+
