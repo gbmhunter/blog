@@ -176,6 +176,11 @@ body {
     }
 }
 
+// Centers the sun/moon icon vertically in the top navbar
+#theme-toggle {
+    align-items: center;
+}
+
 /* Shows the moon icon when light, sun icon when dark */
 [data-theme='light'] .d-block-light,
 [data-theme='dark'] .d-block-dark {
@@ -188,6 +193,43 @@ body {
 
 .d-block-dark {
     color: var(--text-color-primary);
+}
+
+// NINJATERM and NINJACALC LINKS
+// ==================================================
+
+.ninjaterm-link, .ninjacalc-link {
+    cursor: pointer;
+
+    &:hover {
+        background-color: #303030;
+    }
+
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    img {
+        object-fit: contain;
+        height: 35px;
+    }
+}
+
+.ninjaterm-link {
+    // Nothing specific
+}
+
+.ninjacalc-link {
+
+    // Disable link styling
+    color: inherit;
+    text-decoration: inherit;
+    &:hover {
+        color: inherit;
+    }
+
+    span {
+        font-size: 0.7em;
+    }
 }
 
 /* ========================================================================= */
