@@ -199,6 +199,8 @@ body {
 // ==================================================
 
 .ninjaterm-link, .ninjacalc-link {
+    display: none; // Hide links by default for small screens, enabled below
+                   // at the mobile-to-desktop breakpoint.
     cursor: pointer;
 
     &:hover {
@@ -214,8 +216,10 @@ body {
     }
 }
 
-.ninjaterm-link {
-    // Nothing specific
+@media (min-width: $mobile-to-desktop-breakpoint) {
+    .ninjaterm-link, .ninjacalc-link {
+        display: block;
+    }
 }
 
 .ninjacalc-link {
