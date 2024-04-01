@@ -189,6 +189,19 @@ body {
 // Centers the sun/moon icon vertically in the top navbar
 #theme-toggle {
     align-items: center;
+    // Change mouse pointer
+    cursor: pointer;
+
+    [data-theme='light'] &:hover {
+        background-color: #e0e0e0;
+    }
+
+    [data-theme='dark'] &:hover {
+        background-color: #303030;
+    }
+
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 /* Shows the moon icon when light, sun icon when dark */
