@@ -14,7 +14,7 @@
   <div class="page-left-column">
     <header>
       {{ partial "breadcrumbs_v2.html" . }}
-      <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
+      {{/* Main heading for page */}}
       <h1>
         <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
       </h1>
