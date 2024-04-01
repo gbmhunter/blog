@@ -125,6 +125,13 @@ body {
         cursor: pointer;
         background-color: #949494;
     }
+
+    // Make the hamburger icon the right size inside button
+    // (defaults to 16x16px)
+    svg {
+        width: 35px;
+        height: 35px;
+    }
 }
 @media (min-width: $mobile-to-desktop-breakpoint) {
     .hamburger-button {
@@ -146,6 +153,9 @@ body {
     color: inherit;
     word-break: keep-all; // Prevent the site title from wrapping onto a new line when the screen width is small
 }
+
+// TOP NAVBAR: STUFF AT END
+//==============================================================================
 
 .stuff-at-end {
     flex-shrink: 1;
@@ -201,9 +211,13 @@ body {
 .ninjaterm-link, .ninjacalc-link {
     display: none; // Hide links by default for small screens, enabled below
                    // at the mobile-to-desktop breakpoint.
-    cursor: pointer;
+    cursor: pointer; // Make sure the user knows they are clickable
 
-    &:hover {
+    [data-theme='light'] &:hover {
+        background-color: #e0e0e0;
+    }
+
+    [data-theme='dark'] &:hover {
         background-color: #303030;
     }
 
