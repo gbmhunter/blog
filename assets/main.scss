@@ -721,17 +721,19 @@ div.box {
 }
 
 // Styling for bold text "**text**"
-// Increase weight and set colours depending on light/dark mode
+// Increase weight
 strong {
     font-weight: 900;
 
-    [data-theme='light'] & {
-        color: rgb(255, 153, 0);
-    }
+    // Tried colours for a while but then felt they were too distracting
+    // gone back to just changing the font weight
+    // [data-theme='light'] & {
+    //     color: rgb(255, 153, 0);
+    // }
 
-    [data-theme='dark'] & {
-        color: rgb(255, 176, 57);
-    }
+    // [data-theme='dark'] & {
+    //     color: rgb(255, 176, 57);
+    // }
 }
 
 /* ========================================================================= */
