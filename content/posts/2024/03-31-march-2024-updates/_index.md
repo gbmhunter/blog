@@ -11,7 +11,7 @@ title: March 2024 Updates
 type: post
 ---
 
-Released a new version of NinjaTerm, `v4.13.0` which adds smart copy/paste support with `Ctrl-Shift-C/V`.
+Released a new version of [NinjaTerm](https://ninjaterm.mbedded.ninja/), `v4.13.0` which adds smart copy/paste support with `Ctrl-Shift-C/V`.
 
 {{% figure src="_assets/ninjaterm-v4.13.0-release-notes.png" width="600px" %}}
 
