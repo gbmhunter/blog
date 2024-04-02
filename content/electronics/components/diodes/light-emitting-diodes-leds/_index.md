@@ -1,11 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Electronic Components, Diodes ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Electronic Components, Diodes]
 date: 2011-09-05
 description: Schematic symbols, equations, types, forward voltages, design hints and more info about light-emitting diodes (LEDs).
 draft: false
-lastmod: 2024-01-13
-tags: [ LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB ]
+lastmod: 2024-04-02
+tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB]
 title: Light-emitting Diodes (LEDs)
 type: page
 ---
@@ -299,12 +299,10 @@ $$\begin{align}
 E &= hf \\
 \end{align}$$
 
-<p class="centered">{{% md %}}
 where:<br/>
 \(E\) is the energy of the photon, in \(J\)<br/>
 \(h\) is the Planck constant, \(6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}\)[^bib-wp-planck-constant]<br/>
 \(f\) is the frequency of the photon, in \(Hz\)<br/>
-{{% /md %}}</p>
 
 Of course you can use \(c = f\lambda\) to write this in terms of the wavelength instead of frequency:
 
@@ -312,10 +310,8 @@ $$\begin{align}
 E &= h\frac{c}{\lambda} \\
 \end{align}$$
 
-<p class="centered">{{% md %}}
 where:<br/>
 \(c\) is speed of light in a vacuum, \(3{\times}10^{8}ms^{-1}\)<br/>
-{{% /md %}}</p>
 
 Knowing this, you can convert an energy from \(mW\) into a number of photons. One issue however is that the light from an LED is not emitted all at one precise frequency, it is usually spread across a small band of wavelengths known as it's spectrum. One approximation is to just pretend all the light is emitted at _peak wavelength_. A more precise method is to take the spectrum, digitize it, and then calculate the proportion of photons for each small increment in wavelength.
 
