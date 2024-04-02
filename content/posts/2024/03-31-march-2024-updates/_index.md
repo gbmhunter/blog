@@ -1,6 +1,6 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Posts, Updates ]
+authors: [Geoffrey Hunter]
+categories: [Posts, Updates]
 date: 2024-03-31
 description: Blog updates during March 2024.
 draft: false

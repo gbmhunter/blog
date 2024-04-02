@@ -3,7 +3,7 @@ authors: [Geoffrey Hunter]
 date: 2024-03-28
 description: Workings, on GMR, IMR type magnetic rotary position sensors.
 draft: false
-lastmod: 2024-03-31
+lastmod: 2024-04-02
 tags: [magnetism, magnetics, rotation, rotary, sensors, GMR]
 title: Magnetic Rotary Position Sensors
 type: page
@@ -13,11 +13,19 @@ type: page
 
 ## Overview
 
-The benefits over a standard resistive potentiometer are that:
+Magnetic rotary position sensors (a.k.a. _magnetic rotary encoders_) are devices which measure the rotation angle of something using magnetism. There are a number of sub-categories of magnetic rotary position sensors including:
+
+* Hall-effect sensors: Use the Hall effect to measure the magnetic field.
+* GMR sensors: Use the giant magnetoresistance effect to measure the magnetic field.
+
+Most of these sensors involve attaching a small magnet to the rotor. The rotating magnetic field is then measured contactlessly. The way it is measured it what defines the different sub-classes of sensors.
+
+One of the most simple and common ways of measuring rotation is with a [potentiometer](/electronics/components/potentiometers-and-rheostats/) which varies resistance as a rotating wiper changes position across a resistive track. However, the benefits of magnetism over a standard resistive potentiometer include:
 
 * Supports continuous rotation with no end stops.
 * There is no resistive track/wiper that wears out.
 * It's more resistant to contamination.
+* It can be done contactlessly, e.g. with an air-gap or through some materials.
 
 {{% figure src="_assets/ams-osram-as5600-in-knob-diagram.png" width="600px" caption="Diagram showing how the ams AS5600 rotary position sensor can be embedded into a standard dial (along with a magnet at the end of the shaft) for rotary position detection[^ams-osram-as5600-position-sensor-blog]." %}}
 
@@ -44,8 +52,6 @@ Giant magnetoresistance was first discovered in 1988[^wikipedia-giant-magnetores
 
 It is called "giant" because the multiple layers significantly increases the resistance change due to a magnetic field (can be a 50% change at very low temperatures) over standard "anisotropic" magnetoresistance (which is typically only a few percent)[^nve-how-gmr-works].
 
-GMR is used in hard-drive read heads to detect read bits of the hard drive platters.
-
 ### Examples
 
 #### Infineon TLE5014
@@ -60,12 +66,13 @@ The TLE5014 has variants with fully redundant dual sensors for safety critical a
 
 {{% figure ref="fig-tle5014-dual-sensor-angle-output-graph" src="_assets/tle5014-dual-sensor-angle-output-graph.png" width="600px" caption="Graph showing the output angle from the TLE5014 variant which has dual sensors[^infineon-tle5014sp16d-ds]. The second sensor is flipped w.r.t. to the first one giving outputs which are the inverse of each other. This can be useful in safety critical applications." %}}
 
+## Tunnelling Magnetoresistive (TMR) Sensors
 
-### Tunneling Magnetoresistive (TMR) Sensors
+Tunnelling magnetoresistive sensors use a slightly different principle to GMR. A TMR sensor consists of two ferromagnets separated by a nanometer thing insulating barrier. The barrier is thin enough that electrons can tunnel through it (a quantum effect). An external magnetic field can change the magnetization direction of the ferromagnet layers. When the two layers are magnetically aligned there is a higher change of electrons tunnelling through the barrier. When the two layers are in antiparallel there is a lower chance. This changes the effective resistance of the junction, which is then measured to deduce the direction of the magnetic field[^wikipedia-tunnel-magnetoresistance].
 
-TMR: Tunneling Magneto Resistive technology (Infineon). High sensing sensitivty and high output voltage, no need for internal amplifier.
+TMR sensors generally have a better SNR than GMR sensors. The signal of a TMR sensor can be approx. 6 times higher than that of a GMR sensor, and 200 times higher that a hall sensor[^tdk-tmr-sensors].
 
-Tunnel magnetoresistance is an extension of spin-valve GMR[^wikipedia-giant-magnetoresistance].
+TMR is used in the read heads of modern hard drives[^wikipedia-tunnel-magnetoresistance].
 
 ## Further Reading
 
@@ -79,3 +86,5 @@ If you are interested in dirt-cheap, basic rotation sensors for things like user
 [^infineon-tle5014sp16d-ds]: Infineon (2019, May 9). _TLE5014SP16D_ [datasheet]. Retrieved 2024-03-29, from https://www.infineon.com/dgdl/Infineon-TLE5014SP16D%20E0002-DataSheet-v01_00-EN.pdf?fileId=5546d46270c4f93e0170c92e1bc10212.
 [^allegro-future-of-automotive-wheel-sensing-with-gmr]: Allegro Microsystems (2022, Feb 23). _The Future of Automotive Wheel Sensing with GMR_. Retrieved 2024-03-29, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/p0083-future-of-wheel-sensing-gmr.
 [^nve-how-gmr-works]: NVE Corporation. _How GMR Works_. Retrieved 2024-03-31, from https://www2.nve.com/gmrsensors/gmr-operation.htm.
+[^wikipedia-tunnel-magnetoresistance]: Wikipedia (2024, Jan 2). _Tunnel magnetoresistance_. Retrieved 2024-04-02, from https://en.wikipedia.org/wiki/Tunnel_magnetoresistance.
+[^tdk-tmr-sensors]: TDK. _TMR Sensors_. Retrieved 2024-04-02, from https://product.tdk.com/en/techlibrary/productoverview/tmr-angle-sensors.html.
