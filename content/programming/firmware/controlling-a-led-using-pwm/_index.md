@@ -34,9 +34,17 @@ Luminance is the quantifiable scientific measure that is closely related to brig
 
 What we want is a function which maps brightness to a PWM duty cycle. That way the rest of the firmware can set the LED in terms of brightness, and it will be converted to the correct PWM value.
 
+Although many sources online suggest using the Gamma function to do this, it's not really the right thing. The Gamma function was designed to convert from a CRT voltage to the luminance[^led-shield-led-brightness-gamma-correction-no]. It just happens that the Gamma function is very similar to the actual transformation needed and gives you "good enough" results in many cases.
+
 > These power functions, with a gamma of 2.2, are frequently used to map between linear and perceptual values. Although the “gamma function” is commonly used it is arguable that CIE Lightness is the more precise formulation; and in fact CIE Lightness is the formula use for L in the CIE Lab color model rather than a gamma function[^photonstophotos-psychometric-lightness-and-gamma].
 
+> The gamma correction is used to correct nonlinear relationship between applied voltage to CRT and luminance of CRT. It is nothing to do with human perception. -- Peter Jacobs, LED Shield[^led-shield-led-brightness-gamma-correction-no].
+
 CIELAB represents lightness with the symbol \(L*\)[^wikipedia-lightness] (not to be confused with just \(L\) which is used for luminance).
+
+The lightness to luminance formula gives the relationship shown in {{% ref "fig-lightness-to-luminance-formula" %}}.
+
+{{% figure ref="fig-lightness-to-luminance-formula" src="_assets/lightness-to-luminance.png" width="800px" caption="Graph showing the function which converts lightness to luminance." %}}
 
 Look-up table (LUT).
 
@@ -50,3 +58,4 @@ Another way to control LEDs is with constant-current drivers or sinks.
 
 [^photonstophotos-psychometric-lightness-and-gamma]: Bill Claff (2005, Mar 26)._Psychometric Lightness and Gamma_. photonstophotos.net. Retrieved 2024-04-03, from https://www.photonstophotos.net/GeneralTopics/Exposure/Psychometric_Lightness_and_Gamma.htm.
 [^wikipedia-lightness]: Wikipedia (2024, Feb 10). _Lightness_. Retrieved 2024-04-03, from https://en.wikipedia.org/wiki/Lightness.
+[^led-shield-led-brightness-gamma-correction-no]: Peter Jakobs (2012, Nov 13). _LED Brightness to your eye, Gamma correction – No!_. LED Shield. Retrieved 2024-04-03, from https://ledshield.wordpress.com/2012/11/13/led-brightness-to-your-eye-gamma-correction-no/.

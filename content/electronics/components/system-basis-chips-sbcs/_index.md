@@ -19,9 +19,11 @@ SBCs are offered by many IC manufacturers including:
 * Texas Instruments
 * NXP
 * Infineon
-* STMicroelectrics
+* STMicroelectronics
 
 {{% figure src="_assets/nxp-fs26-architecture-block-diagram.png" width="700px" caption="Architecture block diagram of the NXP FS26 SBC[^nxp-fs26-product-page]." %}}
+
+SBCs are similar in functionality to power management ICs (PMICs). SBCs appear to have more of a automotive focus with the addition of CAN and LIN transceivers, along with the addition of automotive functional safety blocks (e.g. rated to ASIL-B, ASIL-D) such as fail-safe outputs.
 
 ## References
 
