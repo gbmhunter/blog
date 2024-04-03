@@ -1,11 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Components ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Components]
 date: 2022-09-27
 description:
 draft: false
 lastmod: 2022-09-27
-tags: [ electronics, components, switched integrator, ICs ]
+tags: [electronics, components, switched integrator, ICs]
 title: Switched Integrator ICs
 type: page
 ---

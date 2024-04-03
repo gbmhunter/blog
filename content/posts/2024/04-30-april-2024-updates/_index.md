@@ -13,3 +13,8 @@ type: post
 
 Added links in the top navbar to NinjaTerm and NinjaCalc.
 
+New page on the PowerPC e200 CPU architecture.
+
+New page on controlling a LED using PWM.
+
+Added a new page with info on system basis chips (SBCs).

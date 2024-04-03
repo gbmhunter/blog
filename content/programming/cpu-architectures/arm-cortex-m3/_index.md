@@ -1,10 +1,10 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "CPU Architectures", "ARM Cortex-M3" ]
+authors: [Geoffrey Hunter]
+categories: [Programming, CPU Architectures, ARM Cortex-M3]
 date: 2013-07-18
 draft: false
 lastmod: 2013-07-18
-tags: [ "programming", "CPU architectures", "CPU", "ARM Cortex-M3", "microcontroller", "MCU" ]
+tags: [programming, CPU architectures, CPU, ARM Cortex-M3, microcontroller, MCU]
 title: ARM Cortex-M3
 type: page
 ---
@@ -35,7 +35,7 @@ The Cortex-M3 has two stack pointers, the main stack pointer (MSP) and the proce
 
 The memory on the Cortex-M3 has a single continuously mapped memory address space. The memory map is shown below.
 
-{{% figure src="arm-cortex-m3-complete-fixed-memory-map.png" caption="The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf."  width="700px" %}}
+{{% figure src="_assets/arm-cortex-m3-complete-fixed-memory-map.png" width="700px" caption="The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf." %}}
 
 ## Data Types
 
