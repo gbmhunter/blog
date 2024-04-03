@@ -18,7 +18,7 @@ There are many sub-families of QFP packages. The pitch typically varies between 
 
 The QFP package and most of it's variants are very sensitive to improper handling. Because of the fine pitch, size, and protrusion of the pins, they can be easily damaged and bent before the component is soldered onto the PCB. Although uncommon, the BQFP variant (see below) offers the most pin protection.
 
-{{% figure src="stm32f070rbt6-lqfp-64-two-dots.png" width="600px" caption="Close-up of the STM32F070RBT6 microcontroller in a LQFP-64 package (mounted on a NUCLEO-F070RV dev kit). For some reason ST decided to put two polarity-looking dots on the package, it's not easy to work out which is the right one! (the dot on the silkscreen gives it away, but imagine if you just had the raw IC!)" %}}
+{{% figure src="_assets/stm32f070rbt6-lqfp-64-two-dots.png" width="600px" caption="Close-up of the STM32F070RBT6 microcontroller in a LQFP-64 package (mounted on a NUCLEO-F070RV dev kit). For some reason ST decided to put two polarity-looking dots on the package, it's not easy to work out which is the right one! (the dot on the silkscreen gives it away, but imagine if you just had the raw IC!)" %}}
 
 ## Synonyms
 
@@ -48,9 +48,9 @@ _Bumpered Quad Flat Pack_ (BQFP) is a variant of the QFP package which has bumpe
 
 _Ceramic Quad Flat Pack_ (CQFP) is a variant of the QFP package which uses a high-quality ceramic material. The CQFP package can be hermetically sealed and is typically used for space applications.
 
-See the [Texas Instruments Ceramic Quad Flat Pack document (SNOA025)](http://www.ti.com/lit/an/snoa025/snoa025.pdf) ([local cached copy](/pcb-design/component-packages/qfp-component-package/snoa025-ti-instruments-cqfp-dimensions.pdf)) for package dimensions for CQFP packages from 28 to 304 pins.
+See the [Texas Instruments Ceramic Quad Flat Pack document (SNOA025)](http://www.ti.com/lit/an/snoa025/snoa025.pdf) ([local cached copy](_assets/snoa025-ti-instruments-cqfp-dimensions.pdf)) for package dimensions for CQFP packages from 28 to 304 pins.
 
-{{% figure src="cqfp-component-package-3d-render.jpg" width="200px" caption="A 3D render of a CQFP component package. Image from analog.com." %}}
+{{% figure src="_assets/cqfp-component-package-3d-render.jpg" width="200px" caption="A 3D render of a CQFP component package. Image from analog.com." %}}
 
 ## TQFP
 
@@ -58,7 +58,7 @@ The thin-quad-flat-pack package (TQFP) is a leaded, thin SMT package commonly us
 
 Pitch: 0.4-0.8mm
 
-{{% figure src="tqfp-32-component-package-3d-render.jpg" width="300px" caption="A 3D render of the TQFP-32 component package." %}}
+{{% figure src="_assets/tqfp-32-component-package-3d-render.jpg" width="300px" caption="A 3D render of the TQFP-32 component package." %}}
 
 ## References
 
