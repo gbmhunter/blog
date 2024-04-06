@@ -2077,3 +2077,12 @@ span.con {
 .search-subresult-anchor-text {
     font-weight: bold;
 }
+
+/* ========================================================================= */
+/* EMBEDDED YOUTUBE
+/* ========================================================================= */
+
+.embedded-youtube {
+    margin-bottom: 1em; // Add margin to bottom of the video to the next page element
+                        // (normally a text paragraph) does not collide with it
+}
