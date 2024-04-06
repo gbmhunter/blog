@@ -6,7 +6,7 @@ description:
 draft: false
 lastmod: 2024-04-02
 tags: [LEDs, PWM, duty cycle, brightness, look-up table, LUT, microcontrollers, radiance, luminance, firmware, C, CIELAB, lightness, radiant flux]
-title: Controlling a LED Using PWM
+title: Controlling LED Brightness Using PWM
 type: page
 ---
 
@@ -29,6 +29,8 @@ Different people can detect flicker at different frequencies. The _flicker fusio
 {{% /aside %}}
 
 So we can very the duty cycle of the PWM to vary the light output (radiant flux) of the LED. 0% duty cycle would make the LED turn off, and 100% duty cycle would be full brightness. The nice thing is that radiant flux varies very linearly with duty cycle. This is great if humans are not involved (e.g. agricultural grow LEDs for plants). However if you look at an LED whose duty cycle is linearly varied from 0% to 100%, you won't perceive a uniform change in brightness! More on this below...
+
+{{% youtube id="fighUuuayOU" %}}
 
 ## Adjusting For Our Eyes (Perceived Brightness)
 
@@ -118,6 +120,8 @@ const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
 };
 ```
 
+{{% youtube id="VzxEW3SzA3k" %}}
+
 You have to also consider quantization. A decent resolution on the PWM duty cycle is needed for good smoothness. If you had an 8-bit PWM, with only 256 discrete settings for the duty cycle, you're smallest non-off value (setting the duty cycle to 0x01) is 3.9% of the maximum brightness! You can see this by looking at the LUT above, the first 10 lightness values all map to a PWM duty cycle of 0.
 
 {{% figure src="_assets/cie-lightness-to-pwm-8bit.png" width="700px" caption="Graph showing the quantization of lightness with a PWM signal with 8-bit resolution." %}}
@@ -183,6 +187,8 @@ You might find some strong words online about using Gamma correction for LED "br
 Another way to control LEDs is with constant-current drivers or sinks.
 
 The [CodeInsecurity "The problem with driving LEDs with PWM" blog post](https://codeinsecurity.wordpress.com/2023/07/17/the-problem-with-driving-leds-with-pwm/)[^codeinsecurity-the-problem-with-driving-leds-with-pwm] is a good read.
+
+The code used to generate the PWM examples on this page can be found at https://github.com/gbmhunter/blog-controlling-led-brightness-using-pwm.
 
 ## References
 
