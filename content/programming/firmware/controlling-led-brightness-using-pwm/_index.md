@@ -4,7 +4,7 @@ categories: [Programming, Firmware]
 date: 2024-04-02
 description: 
 draft: false
-lastmod: 2024-04-02
+lastmod: 2024-04-07
 tags: [LEDs, PWM, duty cycle, brightness, look-up table, LUT, microcontrollers, radiance, luminance, firmware, C, CIELAB, lightness, radiant flux]
 title: Controlling LED Brightness Using PWM
 type: page
@@ -12,15 +12,29 @@ type: page
 
 ## Overview
 
-This page explains the various ways you can drive a single [LED](/electronics/components/diodes/light-emitting-diodes-leds/) from firmware running on a microcontroller.
+This page how to control the brightness of a single [LED](/electronics/components/diodes/light-emitting-diodes-leds/) using PWM with firmware running on a microcontroller. We'll assume you want to vary the brightness, and to do so in a smooth manner. We'll start of by covering the basics with linear duty-cycle control and then move onto more advanced ways that take into account the human eye's non-linear response to light intensity.
 
-If all you need is a fixed brightness, you could just set the LED current by choosing the appropriate resistor. This will impart a slight colour change, but won't be noticeable for most use cases. 
+## Fixed Brightness
 
-## Varying the Radiant Flux
+If all you need is a fixed brightness, rather than having to consume a PWM peripheral in the microcontroller and add to the firmware complexity, you could just set the LED current by choosing the appropriate resistor. This will impart a slight colour change (LED colour changes slightly with current), but won't be noticeable for most use cases.
 
-The radiant flux is the light output power of the LED, measured in Watts.
+The below image shows how you can do this. The MOSFET `U1` has been added so that the LED can be driven with currents higher than the maximum specified by the microcontroller's GPIO pin (which is normally in the 1-20mA range, check the datasheet of the MCU!). You could omit this MOSFET (and the \(10k\Omega\) resistor `R2`) and just drive the LED directly if the MCU can supply the required current directly.
 
-The easiest way of dynamically varying the light output of an LED is to use [pulse-width modulation (PWM)](/electronics/circuit-design/pulse-width-modulation-pwm/). PWM is a digital signal with a fixed frequency but an adjustable on-time (hence the "width modulation"). The duty cycle is the time the signal is on compared to the total period of the signal.
+{{% figure src="_assets/led-and-resistor-driven-from-mosfet.webp" width="400px" caption="Schematic showing how to drive an LED from a microcontroller if you don't need a varying brightness." %}}
+
+There is nothing that exciting about this though! So let's move on how to vary the brightness...
+
+## Varying the Intensity
+
+The easiest way of dynamically varying the brightness of an LED is to use [pulse-width modulation (PWM)](/electronics/circuit-design/pulse-width-modulation-pwm/). PWM is available on almost all MCUs. The below image shows the circuit. It does not change much from above, you just need to make sure you connect to a pin which is PWM capable (some MCUs like the Nordic nRF52 family let you route the PWM channels to any GPIO).
+
+{{% figure src="_assets/led-driven-with-pwm.webp" width="400px" caption="LED being driven with a PWM signal from a MCU." %}}
+
+{{% aside type="tip" %}}
+If you don't have a PWM peripheral available, you could likely implement the PWM control in software. This is called _bit-banging_ and the LED control is low speed enough that this will generally work. However, use dedicated hardware if you can!
+{{% /aside %}}
+
+PWM is a digital signal with a fixed frequency but an adjustable on-time (hence the "width modulation"). The duty cycle is the time the signal is on compared to the total period of the signal.
 
 If the PWM period was 1s (a frequency of 1Hz) and the duty cycle 50%, we would see the LED "blink". However -- if the PWM frequency is fast enough (e.g. 1kHz), we do not see any flicker due to persistence of vision. Instead, because of the "averaging" that occurs in our eyes, a LED driven at 20mA for 50% of the time (50% PWM duty cycle) looks the same as driving the LED continuously at 10mA (ignoring the slight colour change due to changing current). This is great news! It means we can easily drive our LED using digital on/off signals, and don't have to implement costly and potentially energy inefficient analog current sources/sinks.
 
@@ -28,9 +42,12 @@ If the PWM period was 1s (a frequency of 1Hz) and the duty cycle 50%, we would s
 Different people can detect flicker at different frequencies. The _flicker fusion threshold_ is the frequency at which flicker is no longer detected to an average human observer[^wikipedia-flicker-fusion-threshold]. It depends a lot on the exact circumstances, but a general value of 60-90Hz is often used. You want the PWM frequency to be much higher than this to avoid edge-cases! A frequency of 1kHz is a good starting point.
 {{% /aside %}}
 
-So we can very the duty cycle of the PWM to vary the light output (radiant flux) of the LED. 0% duty cycle would make the LED turn off, and 100% duty cycle would be full brightness. The nice thing is that radiant flux varies very linearly with duty cycle. This is great if humans are not involved (e.g. agricultural grow LEDs for plants). However if you look at an LED whose duty cycle is linearly varied from 0% to 100%, you won't perceive a uniform change in brightness! More on this below...
+So we can very the duty cycle of the PWM to vary the light output (radiant flux) of the LED. 0% duty cycle would make the LED turn off, and 100% duty cycle would be full brightness. The video below shows an LED being controlled in this manner.
 
 {{% youtube id="fighUuuayOU" %}}
+
+The nice thing is that radiant flux (and intensity) varies very linearly with duty cycle. This is great if humans are not involved (e.g. agricultural grow LEDs for plants). However if you look at an LED whose duty cycle is linearly varied from 0% to 100%, you won't perceive a uniform change in brightness! You can see this in the above video, it seem to go from off to quite bright really early in the cycle.
+
 
 ## Adjusting For Our Eyes (Perceived Brightness)
 
@@ -97,7 +114,7 @@ The inverted formula gives the relationship shown in {{% ref "fig-cie-lightness-
 
 We could now use this formula in our firmware to convert a lightness value to a PWM duty cycle. However, given the power and divide operations in it, this is a bit computationally expensive. In most cases a better way is to use a look-up table (LUT). The index of the LUT is the lightness value, and the value at that index is the PWM duty cycle.
 
-Below is an example LUT in C which takes a lightness value as an integer in the range \([0, 255]\) (8-bit) and gives you the corresponding PWM duty cycle as an integer in the range \([0, 255]\).
+Below is an example LUT in C which takes a lightness value as an integer in the range \([0, 255]\) (8-bit) and gives you the corresponding PWM duty cycle as an integer in the range \([0, 255]\). Values have be rounded DOWN to the nearest integer (i.e. float is cast to an int).
 
 ```c
 const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
@@ -119,6 +136,31 @@ const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
   218,  220,  222,  225,  227,  230,  232,  234,  237,  239,  242,  244,  247,  249,  252,  255,
 };
 ```
+
+Below is the same LUT, but with the output rounded to the closest integer (i.e. add +0.5, then cast the float to an int). This might give better results? I'm not sure...
+
+```c
+const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
+    0,    0,    0,    0,    0,    1,    1,    1,    1,    1,    1,    1,    1,    1,    2,    2,
+    2,    2,    2,    2,    2,    2,    2,    3,    3,    3,    3,    3,    3,    3,    3,    4,
+    4,    4,    4,    4,    4,    5,    5,    5,    5,    5,    6,    6,    6,    6,    6,    7,
+    7,    7,    7,    8,    8,    8,    8,    9,    9,    9,   10,   10,   10,   10,   11,   11,
+   11,   12,   12,   12,   13,   13,   13,   14,   14,   15,   15,   15,   16,   16,   17,   17,
+   17,   18,   18,   19,   19,   20,   20,   21,   21,   22,   22,   23,   23,   24,   24,   25,
+   25,   26,   26,   27,   28,   28,   29,   29,   30,   31,   31,   32,   32,   33,   34,   34,
+   35,   36,   37,   37,   38,   39,   39,   40,   41,   42,   43,   43,   44,   45,   46,   47,
+   47,   48,   49,   50,   51,   52,   53,   54,   54,   55,   56,   57,   58,   59,   60,   61,
+   62,   63,   64,   65,   66,   67,   68,   70,   71,   72,   73,   74,   75,   76,   77,   79,
+   80,   81,   82,   83,   85,   86,   87,   88,   90,   91,   92,   94,   95,   96,   98,   99,
+  100,  102,  103,  105,  106,  108,  109,  110,  112,  113,  115,  116,  118,  120,  121,  123,
+  124,  126,  128,  129,  131,  132,  134,  136,  138,  139,  141,  143,  145,  146,  148,  150,
+  152,  154,  155,  157,  159,  161,  163,  165,  167,  169,  171,  173,  175,  177,  179,  181,
+  183,  185,  187,  189,  191,  193,  196,  198,  200,  202,  204,  207,  209,  211,  214,  216,
+  218,  220,  223,  225,  228,  230,  232,  235,  237,  240,  242,  245,  247,  250,  252,  255,
+};
+```
+
+The video below shows an LED (on the right) being faded from off to full brightness using the CIE lightness method. The LED on the left is the linearly controlled duty cycle LED from above.
 
 {{% youtube id="VzxEW3SzA3k" %}}
 

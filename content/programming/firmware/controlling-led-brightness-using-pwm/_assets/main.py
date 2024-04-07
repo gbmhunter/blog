@@ -100,7 +100,8 @@ def createCieLightnessToPwmDutyLut(numLightnessValues, pwmBits, filename: str):
     lightnessValues = np.linspace(0, 1, numLightnessValues)
 
     # Calculate PWM values for input lightness values
-    pwmValues = [int(cieLightnessToRelativeLuminance(lightness) * (numPwmValues - 1)) for lightness in lightnessValues]
+    # The "+ 0.5" is so that we round to the nearest integer rather than always rounding down.
+    pwmValues = [int(cieLightnessToRelativeLuminance(lightness) * (numPwmValues - 1) + 0.5) for lightness in lightnessValues]
 
     # Calculate datatype that can hold the number of bits
     if pwmBits <= 8:
