@@ -36,6 +36,8 @@ If you don't have a PWM peripheral available, you could likely implement the PWM
 
 PWM is a digital signal with a fixed frequency but an adjustable on-time (hence the "width modulation"). The duty cycle is the time the signal is on compared to the total period of the signal.
 
+{{% figure src="_assets/explanation-of-pwm.webp" width="600px" caption="A diagram showing the basic parameters of PWM." %}}
+
 If the PWM period was 1s (a frequency of 1Hz) and the duty cycle 50%, we would see the LED "blink". However -- if the PWM frequency is fast enough (e.g. 1kHz), we do not see any flicker due to persistence of vision. Instead, because of the "averaging" that occurs in our eyes, a LED driven at 20mA for 50% of the time (50% PWM duty cycle) looks the same as driving the LED continuously at 10mA (ignoring the slight colour change due to changing current). This is great news! It means we can easily drive our LED using digital on/off signals, and don't have to implement costly and potentially energy inefficient analog current sources/sinks.
 
 {{% aside type="tip" %}}
