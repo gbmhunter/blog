@@ -40,13 +40,17 @@ PWM is a digital signal with a fixed frequency but an adjustable on-time (hence 
 
 If the PWM period was 1s (a frequency of 1Hz) and the duty cycle 50%, we would see the LED "blink". However -- if the PWM frequency is fast enough (e.g. 1kHz), we do not see any flicker due to persistence of vision. Instead, because of the "averaging" that occurs in our eyes, a LED driven at 20mA for 50% of the time (50% PWM duty cycle) looks the same as driving the LED continuously at 10mA (ignoring the slight colour change due to changing current). This is great news! It means we can easily drive our LED using digital on/off signals, and don't have to implement costly and potentially energy inefficient analog current sources/sinks.
 
+{{% figure src="_assets/different-duty-cycles-different-led-brightness.webp" width="800px" caption="A diagram showing how different PWM duty cycles result in different LED brightness." %}}
+
 {{% aside type="tip" %}}
 Different people can detect flicker at different frequencies. The _flicker fusion threshold_ is the frequency at which flicker is no longer detected to an average human observer[^wikipedia-flicker-fusion-threshold]. It depends a lot on the exact circumstances, but a general value of 60-90Hz is often used. You want the PWM frequency to be much higher than this to avoid edge-cases! A frequency of 1kHz is a good starting point.
 {{% /aside %}}
 
-So we can very the duty cycle of the PWM to vary the light output (radiant flux) of the LED. 0% duty cycle would make the LED turn off, and 100% duty cycle would be full brightness. The video below shows an LED being controlled in this manner.
+So we can very the duty cycle of the PWM to vary the light output (radiant flux) of the LED. 0% duty cycle would make the LED turn off, and 100% duty cycle would be full brightness. The video below shows an LED being faded from 0% intensity to 100% intensity in this manner:
 
 {{% youtube id="fighUuuayOU" %}}
+
+The PWM frequency is \(50Hz\) (a period of \(20ms\)). There are 256 steps from 0% to 100% duty cycle, and the duration between step changes is \(5ms\) (thus the total time to go from 0% to 100% is \((256 - 1)*5ms = 1.275s\)). All this was run on a Nordic nRF52 development board, and the firmware can be found at https://github.com/gbmhunter/blog-controlling-led-brightness-using-pwm.
 
 The nice thing is that radiant flux (and intensity) varies very linearly with duty cycle. This is great if humans are not involved (e.g. agricultural grow LEDs for plants). However if you look at an LED whose duty cycle is linearly varied from 0% to 100%, you won't perceive a uniform change in brightness! You can see this in the above video, it seem to go from off to quite bright really early in the cycle.
 
@@ -62,6 +66,8 @@ Do not confused perceived brightness with luminance! Luminance takes into accoun
 If we wanted to set the brightness to half, this then means we need to set the PWM duty cycle to something less than 50%. Furthermore, if we wanted to fade the LED from off to full brightness, we can't just linearly change the duty cycle. What we need is a function which maps perceived brightness to a PWM duty cycle. There are two functions that we will discuss below.
 
 ### The CIE Lightness Method
+
+#### The Equations
 
 An accurate way to take into account perceived brightness is to use the CIE lightness formula. CIELAB represents lightness with the symbol \(L*\)[^wikipedia-lightness] (not to be confused with just \(L\) which is used for luminance). Lightness adjusts for the eyes non-linear response to changes in intensity. The CIELAB lightness equation is:
 
@@ -114,6 +120,8 @@ The inverted formula gives the relationship shown in {{% ref "fig-cie-lightness-
 
 {{% figure ref="fig-cie-lightness-to-relative-luminance" src="_assets/cie-lightness-to-relative-luminance.png" width="700px" caption="Graph showing the inverse CIE lightness function which converts lightness to luminance." %}}
 
+#### Look-up Tables (LUTs)
+
 We could now use this formula in our firmware to convert a lightness value to a PWM duty cycle. However, given the power and divide operations in it, this is a bit computationally expensive. In most cases a better way is to use a look-up table (LUT). The index of the LUT is the lightness value, and the value at that index is the PWM duty cycle.
 
 Below is an example LUT in C which takes a lightness value as an integer in the range \([0, 255]\) (8-bit) and gives you the corresponding PWM duty cycle as an integer in the range \([0, 255]\). Values have be rounded DOWN to the nearest integer (i.e. float is cast to an int).
@@ -139,7 +147,80 @@ const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
 };
 ```
 
-Below is the same LUT, but with the output rounded to the closest integer (i.e. add +0.5, then cast the float to an int). This might give better results? I'm not sure...
+The video below shows an LED (on the right) being faded from off to full brightness using the CIE lightness method with the 256in/256out LUT above. The LED on the left is the linearly controlled duty cycle LED from above for comparison.
+
+{{% youtube id="VzxEW3SzA3k" %}}
+
+The PWM frequency and step duration is the same as the first example above.
+
+The Python code I wrote to create these LUTs is below if you want to modify it and create your own LUTs. It should run on most versions of Python 3, and the only 3rd party dependency is `numpy`. 
+
+```py
+from pathlib import Path
+
+import numpy as np
+
+SCRIPT_DIR = Path(__file__).parent
+
+def main():
+    # Create LUTs
+    # ==============================
+    
+    # 256 values in, 8-bit out
+    createCieLightnessToPwmDutyLut(256, 8, 'cie-lightness-to-pwm-256-in-8bit-out-lut.h')
+
+    # 256 values in, 10-bit out
+    createCieLightnessToPwmDutyLut(256, 10, 'cie-lightness-to-pwm-256-in-10bit-out-lut.h')
+
+def cieLightnessToRelativeLuminance(lightness):
+    """
+    Convert a lightness value to a luminance value.
+
+    Equation from https://www.photonstophotos.net/GeneralTopics/Exposure/Psychometric_Lightness_and_Gamma.htm.
+
+    :param lightness: The lightness value to convert in the range [0, 1].
+    :return: The luminance value in the range [0, 1].
+    """
+
+    # Equation from https://www.photonstophotos.net/GeneralTopics/Exposure/Psychometric_Lightness_and_Gamma.htm
+    lightness *= 100 # Convert to [0, 100] to work with the equation
+    if lightness <= 8:
+        return lightness / 902.3
+    else:
+        return ((lightness + 16) / 116) ** 3
+
+def createCieLightnessToPwmDutyLut(numLightnessValues, pwmBits, filename: str):
+    numPwmValues = 2**pwmBits
+
+    # Create an array of lightness values from 0 to 1
+    lightnessValues = np.linspace(0, 1, numLightnessValues)
+
+    # Calculate PWM values for input lightness values
+    # The "+ 0.5" is so that we round to the nearest integer rather than always rounding down.
+    pwmValues = [int(cieLightnessToRelativeLuminance(lightness) * (numPwmValues - 1) + 0.5) for lightness in lightnessValues]
+
+    # Calculate datatype that can hold the number of bits
+    if pwmBits <= 8:
+        datatype = 'uint8_t'
+    elif pwmBits <= 16:
+        datatype = 'uint16_t'
+    elif pwmBits <= 32:
+        datatype = 'uint32_t'
+    else:
+        raise ValueError('Num. of bits for PWM too large.')
+
+    # Create and write to file
+    with open(SCRIPT_DIR / filename, 'w') as file:
+        file.write(f'const {datatype} CIE_LIGHTNESS_TO_PWM_LUT_{numLightnessValues}_IN_{pwmBits}BIT_OUT[] = {{')
+        for idx, pwmValue in enumerate(pwmValues):
+            # Insert a new line every 16 values
+            if idx % 16 == 0:
+                file.write('\n')
+            file.write(f'{pwmValue:5d},')
+        file.write('\n};\n')
+```
+
+Below is the same LUT, but with the output rounded to the closest integer (i.e. add +0.5, then cast the float to an int). This might give better results? At first I thought so, but then I realized that there will be less 0's, more 1's, and then a monotonic decrease in frequency of 2's, 3's, e.t.c. Because of this skewing of the 0's I'm not sure it's the right approach.
 
 ```c
 const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
@@ -162,11 +243,9 @@ const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
 };
 ```
 
-The video below shows an LED (on the right) being faded from off to full brightness using the CIE lightness method. The LED on the left is the linearly controlled duty cycle LED from above.
+#### Quantization
 
-{{% youtube id="VzxEW3SzA3k" %}}
-
-You have to also consider quantization. A decent resolution on the PWM duty cycle is needed for good smoothness. If you had an 8-bit PWM, with only 256 discrete settings for the duty cycle, you're smallest non-off value (setting the duty cycle to 0x01) is 3.9% of the maximum brightness! You can see this by looking at the LUT above, the first 10 lightness values all map to a PWM duty cycle of 0.
+The 256 in/256 out LUT above might be fine for basic applications (e.g. indicator LED on a PCB). In other applications you might notice jerkyness, and so you have to consider the effects of quantization and the resolution you are getting. If you had an 8-bit PWM, with only 256 discrete settings for the duty cycle, you're smallest non-off value (setting the duty cycle to 0x01) is 3.9% of the maximum brightness! You can see this by looking at the "round down" LUT above, the first 10 lightness values all map to a PWM duty cycle of 0.
 
 {{% figure src="_assets/cie-lightness-to-pwm-8bit.png" width="700px" caption="Graph showing the quantization of lightness with a PWM signal with 8-bit resolution." %}}
 
@@ -193,13 +272,13 @@ const uint16_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_10BIT_OUT[] = {
 };
 ```
 
-See how there is far less identical outputs at the start of the LUT when using a 10-bit output? Only the first three relative luminances map to a 12-bit PWM 0, rather than the first 10 when using a 8-bit PWM.
+See how there is far less identical outputs at the start of the LUT when using a 10-bit output? Only the first three lightness values map to a 12-bit PWM of 0, rather than the first 10 when using a 8-bit PWM.
 
-
+Once you run out of PWM resolution, for even smoother control, you can use temporal dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle around the desired value to give the appearance of a higher resolution PWM[^codeinsecurity-the-problem-with-driving-leds-with-pwm].
 
 ### Gamma Correction
 
-The Gamma function was designed to convert from a CRT voltage to the luminance[^led-shield-led-brightness-gamma-correction-no]. It just happens that the Gamma function is very similar to the CIE lightness formula above and gives you "good enough" results in many cases.
+Instead of the CIE lightness function for linearize perceived brightness, some people use the gamma function instead. The gamma function was designed to convert from a CRT voltage to the luminance[^led-shield-led-brightness-gamma-correction-no]. It just happens that the Gamma function is very similar to the CIE lightness formula above and gives you "good enough" results in many cases.
 
 The gamma equation is:
 
@@ -214,13 +293,13 @@ where:<br/>
 \(\gamma\) is the gamma value, and is usually set at 2.2.<br/>
 </p>
 
-{{% ref "fig-gamma-correction" %}} shows the gamma correction function, plotted alongside the CIE lightness function. They are very similar!
+The below graph shows the gamma correction function, plotted alongside the CIE lightness function. Note how they are very similar!
 
-{{% figure ref="fig-gamma-correction" src="_assets/gamma-correction.png" width="700px" caption="Graph showing the gamma correction function." %}}
+{{% figure src="_assets/gamma-correction.png" width="700px" caption="Graph showing the gamma correction function." %}}
 
 Just like with the CIE lightness function, you could create a LUT using the gamma correction function instead. Given there is no computational difference between the two (once the LUT is created), I recommend using the CIE lightness function which is likely to be that little bit more "correct".
 
-You might find some strong words online about using Gamma correction for LED "brightness" control:
+You might find some strong words online against using Gamma correction for LED "brightness" control, suggesting how it's not being used for it's intended purpose:
 
 > These power functions, with a gamma of 2.2, are frequently used to map between linear and perceptual values. Although the “gamma function” is commonly used it is arguable that CIE Lightness is the more precise formulation; and in fact CIE Lightness is the formula use for L in the CIE Lab color model rather than a gamma function[^photonstophotos-psychometric-lightness-and-gamma].
 
@@ -228,9 +307,9 @@ You might find some strong words online about using Gamma correction for LED "br
 
 ## Further Reading
 
-Another way to control LEDs is with constant-current drivers or sinks.
+An alternative way to PWM is to control LEDs is with [constant-current drivers or sinks](/electronics/components/current-sources-and-sinks/). Rather than digitally switch the LED on and off really quickly, this technique allows you to change the current going through the LED(s). It's generally are more expensive and complex solution, but can be a good choice in some situations, especially if you need the a current regulated SMPS anyway to power a string of LEDs.
 
-The [CodeInsecurity "The problem with driving LEDs with PWM" blog post](https://codeinsecurity.wordpress.com/2023/07/17/the-problem-with-driving-leds-with-pwm/)[^codeinsecurity-the-problem-with-driving-leds-with-pwm] is a good read.
+The [CodeInsecurity "The problem with driving LEDs with PWM" blog post](https://codeinsecurity.wordpress.com/2023/07/17/the-problem-with-driving-leds-with-pwm/)[^codeinsecurity-the-problem-with-driving-leds-with-pwm] is a good read. It explains temporal dithering to artificially increasing the resolution of the PWM.
 
 The code used to generate the PWM examples on this page can be found at https://github.com/gbmhunter/blog-controlling-led-brightness-using-pwm.
 

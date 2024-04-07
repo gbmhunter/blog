@@ -3,7 +3,12 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+import sys
+import os
 SCRIPT_DIR = Path(__file__).parent
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+import create_lut
 
 def main():
     createRelativeLuminanceToCieLightnessPlot()
@@ -12,11 +17,7 @@ def main():
     createGammaCorrectionPlot()
     createCieLightnessToPwmQuantizationPlot()
 
-    # Create LUTs
-    # ==============================
-    # 256 values in, 8-bit out
-    createCieLightnessToPwmDutyLut(256, 8, 'cie-lightness-to-pwm-256-in-8bit-out-lut.h')
-    createCieLightnessToPwmDutyLut(256, 10, 'cie-lightness-to-pwm-256-in-10bit-out-lut.h')
+    create_lut.main()
 
 
 def createRelativeLuminanceToCieLightnessPlot():
@@ -93,35 +94,7 @@ def createCieLightnessToPwmQuantizationPlot():
     fig.tight_layout()
     plt.savefig(SCRIPT_DIR / 'cie-lightness-to-pwm-8bit.png')
 
-def createCieLightnessToPwmDutyLut(numLightnessValues, pwmBits, filename: str):
-    numPwmValues = 2**pwmBits
 
-    # Create an array of lightness values from 0 to 1
-    lightnessValues = np.linspace(0, 1, numLightnessValues)
-
-    # Calculate PWM values for input lightness values
-    # The "+ 0.5" is so that we round to the nearest integer rather than always rounding down.
-    pwmValues = [int(cieLightnessToRelativeLuminance(lightness) * (numPwmValues - 1) + 0.5) for lightness in lightnessValues]
-
-    # Calculate datatype that can hold the number of bits
-    if pwmBits <= 8:
-        datatype = 'uint8_t'
-    elif pwmBits <= 16:
-        datatype = 'uint16_t'
-    elif pwmBits <= 32:
-        datatype = 'uint32_t'
-    else:
-        raise ValueError('Num. of bits for PWM too large.')
-
-    # Create and write to file
-    with open(SCRIPT_DIR / filename, 'w') as file:
-        file.write(f'const {datatype} CIE_LIGHTNESS_TO_PWM_LUT_{numLightnessValues}_IN_{pwmBits}BIT_OUT[] = {{')
-        for idx, pwmValue in enumerate(pwmValues):
-            # Insert a new line every 16 values
-            if idx % 16 == 0:
-                file.write('\n')
-            file.write(f'{pwmValue:5d},')
-        file.write('\n};\n')
 
 def gammaCorrect(brightness):
     """
