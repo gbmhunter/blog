@@ -10,4 +10,4 @@ title: "DO-204AC Component Package"
 type: "page"
 ---
 
-See the [DO-15 Component Package](../do-15-component-package).
+DO-204AC is a synonym for the [DO-15 Component Package](../do-15-component-package).

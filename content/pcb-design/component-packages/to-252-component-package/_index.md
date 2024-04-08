@@ -1,44 +1,50 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, PCB Design, Component Packages ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-07
 draft: false
-lastmod: 2023-07-19
-tags: [ component packages, PCB design, DPACK, SC-63, SOT-428, TO-252, TO-252AA, CPD, Case 369C ]
-title: TO-252 Component Package
+lastmod: 2024-04-08
+tags: [component packages, PCB design, DPACK, SC-63, SOT-428, TO-252, TO-252AA, CPD, Case 369C]
+title: TO-252 (DPAK) Component Package
 type: page
 ---
 
 ## Overview
 
-_TO-252_ (JEDEC Transistor Outline 252) is family of SMD component packages that is commonly used for things such as medium power MOSFETs and linear power regulators. There is a popular 3-lead variant also known as `DPAK`, along with 2 less commonly used 5-lead variants. All TO-252 packages have a pitch of 1.27mm (50mill).
+{{% figure src="_assets/to-252-component-package-3d-render.jpg" width="150px" float="right" caption="A 3D render of the TO-252-3 (DPACK) component package." %}}
 
-Similar To:
+_TO-252_ (JEDEC Transistor Outline 252) is family of SMD component packages that is commonly used for things such as medium power MOSFETs and linear power regulators. There is a popular 3-lead variant also known as `DPAK`, along with 2 less commonly used 5-lead variants. In the "DPAK" range there is also the larger [TO-263 (D2PAK)](/pcb-design/component-packages/to-263-component-package/) and [TO-268 (D3PAK)](/pcb-design/component-packages/to-268-component-package/) offering higher power dissipation ratings.
 
-* [TO-220](../to-220-component-package)
+All TO-252 packages have a pitch of 1.27mm (50mill). TO-252's are quite easy to hand-solder, although the large tab can make things difficult because of it's heatsinking capabilities.
 
-Solderability: Quite easy to hand-solder, although the large tab can make things difficult because of it's heatsinking capabilities.
+Features a large tab/pin which can be soldered directly onto the PCB, providing good heatsinking capabilities.
 
-Commonly used for power MOSFETs and high power voltage regulators. Features a large tab/pin which can be soldered directly onto the PCB, providing good heatsinking capabilities.
+{{% aside type="tip" %}}
+If DPAK is referred to by itself, with no pin number indication (e.g. not DPAK3, DPAK5), it is usually referring to the 3-pin version (TO-252-3).
+{{% /aside %}}
 
-If DPAK is referred to by itself, with no pin number indication (e.g. DPAK3, DPAK5), it is usually referring to the 3-pin version.
+## Similar To
+
+* [TO-220](../to-220-component-package): The through-hole package that the TO-252-3 was designed to replace (obviously not pin compatible!).
+* [TO-263 (D2PAK)](/pcb-design/component-packages/to-263-component-package/): The TO-263 (D2PAK) is the next step up in power dissipation from the TO-252-3 package.
+* [TO-268 (D3PAK)](/pcb-design/component-packages/to-268-component-package/): The TO-268 (D3PAK) is the next step up in power dissipation from the TO-263 (D2PAK) package.
 
 ## TO-252-3
 
-The `TO-252-3` is the 3-lead variant in the TO-252 family, most commonly known by the synonym `DPACK`. {{% ref "fig-to-252-component-package-3d-render" %}} shows a 3D render of this package.
+The TO-252-3 is the 3-lead variant in the TO-252 family, most commonly known by the synonym DPACK. {{% ref "fig-to-252-component-package-3d-render" %}} shows a 3D render of this package.
 
-{{% figure ref="fig-to-252-component-package-3d-render" src="to-252-component-package-3d-render.jpg" width="300px" caption="A 3D render of the TO-252-3 (DPACK) component package." %}}
+{{% figure ref="fig-to-252-component-package-3d-render" src="_assets/to-252-component-package-3d-render.jpg" width="300px" caption="A 3D render of the TO-252-3 (DPACK) component package." %}}
 
 Synonyms:
 
-* `Case 369C`: Used by On Semiconductor[^onsemi-mbrb1045g-schottky-diode-ds].
-* `CPD`: Used by Rohm Semiconductor[^rohm-semi-rb085b-40fh-schottky-diode-ds].
-* `DPAK`: Popular alternative name.
-* `DPAK3`: A version of DPAK but with a `3` to distinguish it from the 5-lead version.
-* `SC-63`: The JEITA EIAJ standard name[^nexperia-sot-428-package-info].
-* `SOT-428`: Used by Nexperia[^nexperia-sot-428-package-info].
-* `TO-252`: Strictly this is a family of packages, but if no suffix is mentioned it's typically referring to `TO-252-3`[^nexperia-sot-428-package-info].
-* `TO-252AA`: JEDEC name.
+* **Case 369C**: Used by On Semiconductor[^onsemi-mbrb1045g-schottky-diode-ds].
+* **CPD**: Used by Rohm Semiconductor[^rohm-semi-rb085b-40fh-schottky-diode-ds].
+* **DPAK**: Popular alternative name.
+* **DPAK3**: A version of DPAK but with a 3 to distinguish it from the 5-lead version.
+* **SC-63**: The JEITA EIAJ standard name[^nexperia-sot-428-package-info].
+* **SOT-428**: Used by Nexperia[^nexperia-sot-428-package-info].
+* **TO-252**: Strictly this is a family of packages, but if no suffix is mentioned it's typically referring to TO-252-3[^nexperia-sot-428-package-info].
+* **TO-252AA**: JEDEC name.
 
 3D Models:
 
@@ -50,13 +56,13 @@ Thermal resistance:
 
 ## TO-252-5-P1
 
-The `TO-252-5` is the 5-lead variant in the `TO-252` family with a square a shorter tab than the `TO-252-5-P2`. It is not as common as the 3-lead variant. Most of the time the middle lead (3rd lead) is cut short in this variant, as it's electrically connected to the tab.
+The TO-252-5 is the 5-lead variant in the TO-252 family with a square a shorter tab than the TO-252-5-P2. It is not as common as the 3-lead variant. Most of the time the middle lead (3rd lead) is cut short in this variant, as it's electrically connected to the tab.
 
 **3D Model**
 
 {{% ref "fig-to-252-5-p1-3d-model-diodes-inc" %}} shows a 3D model for this component package.
 
-{{% figure ref="fig-to-252-5-p1-3d-model-diodes-inc" src="to-252-5-p1-3d-model-diodes-inc.png" width="400px" caption="3D model of the TO-252-5-P1 package[^diodes-inc-to-252-5-p1]." %}}
+{{% figure ref="fig-to-252-5-p1-3d-model-diodes-inc" src="_assets/to-252-5-p1-3d-model-diodes-inc.png" width="400px" caption="3D model of the TO-252-5-P1 package[^diodes-inc-to-252-5-p1]." %}}
 
 You can download 3D models from:
 
@@ -71,13 +77,13 @@ You can download 3D models from:
 
 {{% ref "fig-to-252-p1-package-dimensions-diode-inc" %}} shows the dimensions of the `TO-252-5-P1` package from Diodes Inc.
 
-{{% figure ref="fig-to-252-p1-package-dimensions-diode-inc" src="to-252-p1-package-dimensions-diode-inc.png" width="600px" caption="Dimensions of the TO-252-5-P1 package from Diodes Inc[^diodes-inc-to-252-5-p2-ds]." %}}
+{{% figure ref="fig-to-252-p1-package-dimensions-diode-inc" src="_assets/to-252-p1-package-dimensions-diode-inc.png" width="600px" caption="Dimensions of the TO-252-5-P1 package from Diodes Inc[^diodes-inc-to-252-5-p2-ds]." %}}
 
 **Recommended Land Pattern**
 
 {{% ref "fig-to-252-p1-recommended-land-pattern-diode-inc" %}} shows the recommended land pattern of the `TO-252-5-P1` package from Diodes Inc.
 
-{{% figure ref="fig-to-252-p1-recommended-land-pattern-diode-inc" src="to-252-p1-recommended-land-pattern-diode-inc.png" width="600px" caption="The recommended land pattern for the TO-252-5-P1 package from Diodes Inc[^diodes-inc-to-252-5-p2-ds]." %}}
+{{% figure ref="fig-to-252-p1-recommended-land-pattern-diode-inc" src="_assets/to-252-p1-recommended-land-pattern-diode-inc.png" width="600px" caption="The recommended land pattern for the TO-252-5-P1 package from Diodes Inc[^diodes-inc-to-252-5-p2-ds]." %}}
 
 **Thermal Resistances**
 
@@ -92,13 +98,13 @@ The thermal resistances for any TO-252-5 package are shown below.
 
 The `TO-252-5-P2` is a 5-lead variant of the `TO-252` package with a rounded and longer tab than the `TO-252-5-P1`[^nisshinbo-to-252-5-p2]. If there is no suffix listed on a `TO-252-5` package (e.g. no mention of `P1` or `P2`), it will likely be this variant. {{% ref "fig-to-252-5-p2-3d-render-nisshinbo" %}} shows a 3D render of this package.
 
-{{% figure ref="fig-to-252-5-p2-3d-render-nisshinbo" src="to-252-5-p2-3d-render-nisshinbo.png" width="300px" caption="A 3D render of the TO-252-5-P2 component package.[^nisshinbo-to-252-5-p2]" %}}
+{{% figure ref="fig-to-252-5-p2-3d-render-nisshinbo" src="_assets/to-252-5-p2-3d-render-nisshinbo.png" width="300px" caption="A 3D render of the TO-252-5-P2 component package.[^nisshinbo-to-252-5-p2]" %}}
 
 **Recommended Land Pattern**
 
 {{% ref "fig-component-package-to-252-5-recommended-land-pattern" %}} shows a recommended land pattern from Ricoh for the `TO-252-5-P2`.
 
-{{% figure ref="fig-component-package-to-252-5-recommended-land-pattern" src="component-package-to-252-5-recommended-land-pattern.png" caption="The recommended PCB land pattern for the TO-252-5 component package. Image from Ricoh TO-252 Package Information (http://www.ricoh.com/LSI/product_power/pkg/to-252-5-p2.pdf)." width="500px" %}}
+{{% figure ref="fig-component-package-to-252-5-recommended-land-pattern" src="_assets/component-package-to-252-5-recommended-land-pattern.png" caption="The recommended PCB land pattern for the TO-252-5 component package. Image from Ricoh TO-252 Package Information (http://www.ricoh.com/LSI/product_power/pkg/to-252-5-p2.pdf)." width="500px" %}}
 
 ## References
 

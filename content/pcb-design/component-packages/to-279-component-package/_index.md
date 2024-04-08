@@ -1,10 +1,10 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-10-25
 draft: false
 lastmod: 2015-10-25
-tags: [ "component packages", "PCB design", "transistor", "TO-279", "D2PAK", "TO-263", "TO-263 THIN" ]
+tags: [component packages, PCB design, transistor, TO-279, D2PAK, TO-263, TO-263 THIN]
 title: TO-279 Component Package
 type: page
 ---

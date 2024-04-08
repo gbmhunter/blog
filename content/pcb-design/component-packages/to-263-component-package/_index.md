@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-07
 draft: false
-lastmod: 2023-06-13
-tags: [ "component packages", "PCB design", "D2PAK", "DDPAK", "SMD-220", "TO-263", "TO-263AB", "TO-279" ]
-title: "TO-263 Component Package"
-type: "page"
+lastmod: 2024-04-08
+tags: [component packages, PCB design, D2PAK, DDPAK, SMD-220, TO-263, TO-263AB, TO-279]
+title: TO-263 Component Package
+type: page
 ---
 
 ## Overview
@@ -22,7 +22,7 @@ Synonyms:
 * TO-263AB (TO-263-3S only)
 * TO-279 (TO-263 THIN only, by Texas Instruments)
 
-{{% figure src="d2pak-to-263-component-package-3d-render.jpg" width="350px" caption="A 3D render of the TO-263 (D2PAK) component package." %}}
+{{% figure src="_assets/d2pak-to-263-component-package-3d-render.jpg" width="350px" caption="A 3D render of the TO-263 (D2PAK) component package." %}}
 
 The height of all `TO-263` variants except `TO-263 THIN` is 4.57mm. `TO-263 THIN` is 2.00mm high.
 
@@ -42,7 +42,7 @@ Pitch: 2.54mm
 
 The junction-to-ambient thermal resistance for the `TO-263-3` component package on both standard JEDEC 2-layer and 4-layer boards is shown below:
 
-{{% figure src="d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png" width="680px" caption="Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com." %}}
+{{% figure src="_assets/d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png" width="680px" caption="Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com." %}}
 
 * \(T_{JA} = 18.0^{\circ}{\rm C}/W\) (1 square inch of copper surrounding pads, connected to ground)
 * \(T_{JA} = 33.6^{\circ}{\rm C}/W\) (copper filling package land-area)
@@ -86,10 +86,17 @@ Pitch: 1.7mm
 
 `TO-263 THIN` is a variant of the `TO-263` component package by Texas Instruments. It shares a similar PCB footprint, but is significantly smaller in height (i.e. thinner).
 
-{{% figure src="to-263-normal-vs-thin-component-package-comparison.pdf.png" width="450px" caption="A comparison in dimensions of the standard TO-263 component package vs. the TO-263 THIN component package. Image from www.ti.com." %}}
+{{% figure src="_assets/to-263-normal-vs-thin-component-package-comparison.pdf.png" width="450px" caption="A comparison in dimensions of the standard TO-263 component package vs. the TO-263 THIN component package. Image from www.ti.com." %}}
 
 It still has a similar exposed pad on it's underside (making it footprint compatible with the standard `TO-263` package).
 
 The exact dimensions of the `TO-263 THIN` package are shown below:
 
-{{% figure src="to-263-thin-component-package-dimensions.png" width="800px" caption="The dimensions for the TO-263 THIN component package. Image built from elements taken from www.ti.com." %}}
+{{% figure src="_assets/to-263-thin-component-package-dimensions.png" width="800px" caption="The dimensions for the TO-263 THIN component package. Image built from elements taken from www.ti.com." %}}
+
+## Similar To
+
+The TO-263 is similar to:
+
+* [TO-252 (DPAK)](/pcb-design/component-packages/to-252-component-package/): The TO-252 (DPAK) is the next step down in power dissipation from the TO-263 (D2PAK) package.
+* [TO-268 (D3PAK)](/pcb-design/component-packages/to-268-component-package/): The TO-268 (D3PAK) is the next step up in power dissipation from the TO-263 (D2PAK) package.

@@ -4,8 +4,8 @@ categories: [Programming, Firmware]
 date: 2024-04-02
 description: 
 draft: false
-lastmod: 2024-04-07
-tags: [LEDs, PWM, duty cycle, brightness, look-up table, LUT, microcontrollers, radiance, luminance, firmware, C, CIELAB, lightness, radiant flux]
+lastmod: 2024-04-08
+tags: [LEDs, PWM, duty cycle, brightness, look-up table, LUT, microcontrollers, radiance, luminance, firmware, C, CIELAB, lightness, radiant flux, intensity]
 title: Controlling LED Brightness Using PWM
 type: page
 ---
