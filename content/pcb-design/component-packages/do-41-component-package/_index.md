@@ -19,7 +19,7 @@ The DO-41 (Diode Outline 41) component package is a very popular 2-lead through-
 ## Synonyms
 
 * **DO-204AL**: JEDEC DO-204 Variant AL[^vishay-1n4001-ds]
-* **SOD66**: NXP[^nxp-sod66]
+* **SOD-66**: NXP[^nxp-sod66]
 * **LALF**: NXP "Package Style"[^nxp-sod66]
 
 ## Thermal Resistance
@@ -37,7 +37,7 @@ Weight of a diode in a DO-41 package is around 0.33g[^vishay-1n4001-ds].
 ## Similar To
 
 * [DO-15](/pcb-design/component-packages/do-15-component-package/)
-* [DO-35](/pcb-design/component-packages/do-35-do-214ah-component-package/)
+* [DO-35](/pcb-design/component-packages/do-35-component-package/)
 
 ## References
 

@@ -30,7 +30,7 @@ Unlike general purpose diodes which are formed from the junction of N-doped and 
 
 ### BAT42/BAT43
 
-The BAT42 and BAT43 are popular Schottky diodes, traditionally provided in the [axial DO-35 package](/pcb-design/component-packages/do-35-do-214ah-component-package/). Manufactured by Vishay and STMicroelectronics (among others). The main (and potentially only?) difference between the BAT42 and BAT43 seems to be that the forward voltage for the BAT42 is measured at 10 and 50mA, whilst for the BAT43 it is measured at 2 and 15mA.
+The BAT42 and BAT43 are popular Schottky diodes, traditionally provided in the [axial DO-35 package](/pcb-design/component-packages/do-35-component-package/). Manufactured by Vishay and STMicroelectronics (among others). The main (and potentially only?) difference between the BAT42 and BAT43 seems to be that the forward voltage for the BAT42 is measured at 10 and 50mA, whilst for the BAT43 it is measured at 2 and 15mA.
 
 ### 1N58xx Family
 

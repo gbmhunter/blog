@@ -52,7 +52,7 @@ For more information, see the [ESD Protection](/electronics/circuit-design/esd-p
 
 ### BZX55 Series
 
-The BZX55 series of Zener diodes was (and still is) a popular choice for a standard through-hole Zener diode, provided in the [axial DO-35 package](/pcb-design/component-packages/do-35-do-214ah-component-package/). Manufactured by Vishay. Zener voltages range from 2.4V to 74V with a power dissipation of 500mW[^bib-bzx55-datasheet].
+The BZX55 series of Zener diodes was (and still is) a popular choice for a standard through-hole Zener diode, provided in the [axial DO-35 package](/pcb-design/component-packages/do-35-component-package/). Manufactured by Vishay. Zener voltages range from 2.4V to 74V with a power dissipation of 500mW[^bib-bzx55-datasheet].
 
 ```
          BZX55    B   3V3
