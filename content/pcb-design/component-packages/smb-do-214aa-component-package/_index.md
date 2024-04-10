@@ -1,0 +1,37 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-03-09
+draft: false
+lastmod: 2015-03-09
+tags: [component packages, PCB design, SMB, DO-214AA]
+title: SMB (DO-214AA) Component Package
+type: page
+---
+
+## Overview
+
+SMB is a SMD component package commonly used for diodes. The packages other common name is DO-214AA (diode outline 214AA). It is in the same family as [SMA (DO-214AC)](/pcb-design/component-packages/sma-do-214ac-component-package/) and [SMC (DO-214AB)](/pcb-design/component-packages/smc-do-214ab-component-package/). The common name, SMB, is not to be confused with SMD (surface-mount device, the common name for any surface-mount component).
+
+{{% figure src="_assets/component-package-do214aa-smb-back-and-front-image.jpg" caption="A front and back photo of the DO-214AA (SMB) diode component package."  width="700px" %}}
+
+SMB is relatively easy to solder by hand. Don't use a really fine tip, as the two pins need a fair amount of heat.
+
+## Dimensions
+
+The pitch of the SMB is 3.97mm (center of lead 1 to center of lead 2). The height of the component is 2.44mm.
+
+The SMB package takes up a PCB land area of approximately \(22.0mm^2 (5.59mm \times 3.94mm)\).
+
+## 3D Renders
+
+{{% figure src="_assets/smb-do-214aa-component-package-3d-render.jpg" width="366px" caption="A 3D render of the SMB (DO-214AA) component package." %}}
+
+## Images
+
+{{% figure src="_assets/component-package-do214aa-smb-dimensions-and-land-pattern.gif" caption="The dimensions and recommended land pattern for the DO-214AA (SMB) diode component package." width="700px" %}}
+
+## Similar To
+
+* [SMA (DO-214AC)](/pcb-design/component-packages/sma-do-214ac-component-package/)
+* [SMC (DO-214AB)](/pcb-design/component-packages/smc-do-214ab-component-package/)

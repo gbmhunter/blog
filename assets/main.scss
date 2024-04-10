@@ -1344,6 +1344,9 @@ h2 {
     // float: left;
     width: 100%;
     padding-bottom: 3px;
+
+    // Enable inline-block if we want the heading to prevent floated images from wrapping around it
+    // display: inline-block;
 }
 
 h3 {

@@ -30,6 +30,12 @@ I have only ever seen this in the 3-pin variant (called TO-268-3). Common uses i
 * Decawatt Package 3
 * TO-268AA (TO-268-3)
 
+## Package Dimensions
+
+Shown below are the package dimensions.
+
+{{% figure src="_assets/to-268-3-component-package-dimensions.png" width="800px" caption="Dimensions for the D3PAK (TO-268) component package." %}}
+
 ## Thermal Resistances
 
 * \(T_{JC}: 0.24-1.18^{\circ}{\rm C}/W\)
@@ -52,12 +58,6 @@ Shown below is the recommended land pattern.
 Shown below is the recommended stencil pattern.
 
 {{% figure src="_assets/to-268-component-package-recommended-stencil-pattern.png" width="500px" caption="Recommended stencil pattern for the D3PAK (TO-268) component package." %}}
-
-## Package Dimensions
-
-Shown below are the package dimensions.
-
-{{% figure src="_assets/to-268-3-component-package-dimensions.png" width="500px" caption="Dimensions for the D3PAK (TO-268) component package." %}}
 
 ## Similar To
 
