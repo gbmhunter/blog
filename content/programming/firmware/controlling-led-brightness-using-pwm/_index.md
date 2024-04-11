@@ -293,7 +293,13 @@ where:<br/>
 \(\gamma\) is the gamma value, and is usually set at 2.2.<br/>
 </p>
 
-The below graph shows the gamma correction function, plotted alongside the CIE lightness function. Note how they are very similar!
+When using this for controlling LED brightness, \(V\) is no longer voltage but the lightness value (input), and \(I\) is the PWM duty cycle (output). Thus it becomes (the \(*\) does not stand for multiplication, it's part of the lightness symbol):
+
+$$
+\frac{Y}{Y_n} = (L*)^\gamma
+$$
+
+The below graph shows the gamma correction function with \(\gamma = 2.2\), plotted alongside the CIE lightness function. Note how they are very similar!
 
 {{% figure src="_assets/gamma-correction.png" width="700px" caption="Graph showing the gamma correction function." %}}
 
