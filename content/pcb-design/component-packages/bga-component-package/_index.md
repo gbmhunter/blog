@@ -1,20 +1,18 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, PCB Design, Component Packages ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-03-08
 lastmod: 2023-07-25
-tags: [ component packages, PCB design, BGA, MO-207, DSBGA ]
+tags: [component packages, PCB design, BGA, MO-207, DSBGA]
 title: BGA Component Package
 type: page
 ---
 
 ## Overview
 
-`BGA` (Ball-Grid Array) is a high-density SMD component package which can have from 4 to 1700+ pins. Common pitches are 0.5mm, 0.8mm, and 1.0mm. BGA packages are used to either make components very small or to encompass a large number of leads. Some modern FPGAs have more than 1700 leads!
+{{% figure src="bga-144-component-package-3d-render.jpg" width="150px" float="right" caption="A 3D render of the BGA-144 component package." %}}
 
-{{% ref "fig-bga-144-component-package-3d-render" %}} shows a 3D render of the `BGA-144` component package.
-
-{{% figure ref="fig-bga-144-component-package-3d-render" src="bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  %}}
+BGA (Ball-Grid Array) is a high-density SMD component package which can have from 4 to 1700+ pins. Common pitches are 0.5mm, 0.8mm, and 1.0mm. BGA packages are used to either make components very small or to encompass a large number of leads. Some modern FPGAs have more than 1700 leads!
 
 BGA usually requires reflow oven or infrared heater. Expert-level solderers can use the "dead-bug" prototyping method and attach super-thin wires to each ball when the package is upside down, but do not consider this a reliable or fast method! BGA packages require an x-ray machine to discover if the balls have correctly soldered onto the pads.
 
@@ -44,7 +42,7 @@ n/a
 
 ## Similar To
 
-* [WLCSP](../wlcsp-component-package)
+* [WLCSP](/pcb-design/component-packages/wlcsp-component-package/)
 
 ## Ball Layout
 

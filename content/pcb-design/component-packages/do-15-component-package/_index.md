@@ -10,30 +10,4 @@ title: DO-15 Component Package
 type: page
 ---
 
-## Overview
-
-DO-15 (Diode Outline 15) is a through-hole axial component package used for diodes. It was a very common package before the advent of SMD packages.
-
-{{% figure src="_assets/do-204ac-do-15-axial-component-package-3d-render.jpg" width="278px" caption="3D render of the DO-204AC (DO-15) component package in an axial configuration." %}}
-
-The peak pulse power for these diodes is typically 500W. For a TVS diode in the DO-15 package the peak current pulse is typically 54.3A (based on the 10/1000us rating).
-
-As with many through-hold leaded packages, the legs can be bent at different points to vary the pitch. Common pitches are 7.62mm (300mil), 10.16mm (400mil), and 12.7mm (500mil). Using the 10.16mm pitch, the used PCB land area is approx. \(38mm^2\). When mounted horizontally, the height of the component (above the surface of the PCB) is approx. 6.30mm. Can be mounted vertically with a 2.54mm pitch to save PCB space (sometimes called the DO-15V package).
-
-## Synonyms
-
-* DO-204AC (Diode Outline 204AC)
-
-## 3D Renders
-
-{{% figure src="_assets/component-package-do-204ac-3d-model.png" caption="A 3D model of the DO-204AC (DO-15) diode component package, with a 10.16mm pitch." width="400px" %}}
-
-* <a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=258357">DO-204AC</a> (horizontal, variable pitch, but red!)
-* <a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=345968">DO-204AC</a> (horizontal, fixed 12.7mm pitch)
-* <a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=348667">DO-204AC</a> (vertical, fixed 2.54mm pitch)
-
-## Similar To
-
-The DO-15 is similar to:
-
-* [DO-41](/pcb-design/component-packages/do-41-component-package/)
+DO-15 is a JEDEC name for the component package otherwise known as DO-204AC. See the [DO-204AC Component Package](/pcb-design/component-packages/do-204ac-component-package/) for more information.
