@@ -20,3 +20,5 @@ New page on controlling a LED using PWM.
 Added a new page with info on system basis chips (SBCs).
 
 Improved the consistency and look of a number of component package pages by removing the old table design and adding more references.
+
+Added more info on [EMA filters](/programming/signal-processing/digital-filters/exponential-moving-average-ema-filter/).

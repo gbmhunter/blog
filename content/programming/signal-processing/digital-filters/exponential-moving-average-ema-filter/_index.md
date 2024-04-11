@@ -1,11 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Programming, Signal Processing, Filters ]
+authors: [Geoffrey Hunter]
+categories: [Programming, Signal Processing, Filters]
 date: 2014-02-26
 description: Equations, graphs and more info on IIR exponential moving average (EMA) filters.
 draft: false
-lastmod: 2022-05-25
-tags: [ EMA, exponential, filters, recursive ]
+lastmod: 2024-04-11
+tags: [EMA, exponential, filters, recursive, frequency response, impulse response, initialization, priming, microcontroller, embedded, IIR, firmware, C++, C, digital signal processing, DSP]
 title: Exponential Moving Average (EMA) Filters
 type: page
 ---
@@ -14,7 +14,11 @@ type: page
 
 The _exponential moving average_ (EMA) filter is a **discrete, low-pass, infinite-impulse response (IIR) filter**. It **places more weight on recent data by discounting old data in an exponential fashion**, and behaves similarly to the **discrete first-order low-pass RC filter**.
 
-Unlike a SMA, most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
+Unlike a [simple moving average (SMA) filter](/programming/signal-processing/digital-filters/windowed-moving-average-filters/), most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
+
+{{% aside type="tip" %}}
+The EMA filter is my personal go-to filter if I ever want to do some basic filtering on a microcontroller. It's fast, memory efficient, and easy to implement.
+{{% /aside %}}
 
 ## EMA Equation
 
@@ -47,32 +51,70 @@ y[i] &= \alpha \cdot x[i] + (1 - \alpha) \cdot (\alpha \cdot x[i-1] + (1 - \alph
 y[i] &= \alpha \sum_{k=0}^n (1-\alpha)^k x[n-k] \\
 \end{align}$$
 
-The following code implements a IIR EMA filter in C++, suitable for microcontrollers and other embedded devices[^pieter-p-ema]. {{% link text="Fixed-point numbers" src="/programming/general/fixed-point-mathematics" %}} are used instead of floats to speed up computation. `K` is the number of fractional bits used in the fixed-point representation.
+The following code implements a basic EMA filter in C++, suitable for microcontrollers and other embedded devices:
 
 ```cpp
-template <uint8_t K, class uint_t = uint16_t>
-class EMA {
-  public:
-    /// Update the filter with the given input and return the filtered output.
-    uint_t operator()(uint_t input) {
-        state += input;
-        uint_t output = (state + half) >> K;
-        state -= output;
-        return output;
+#include <stdio.h>
+#include <cstdint>
+
+class EmaFilter
+{
+public:
+    EmaFilter(double alpha) : 
+        m_alpha(alpha), m_lastOutput(0.0) {}
+
+    double Run(double input)
+    {
+        m_lastOutput = m_alpha * input + (1 - m_alpha) * m_lastOutput;
+        return m_lastOutput;
     }
-
-    static_assert(
-        uint_t(0) < uint_t(-1),  // Check that `uint_t` is an unsigned type
-        "The `uint_t` type should be an unsigned integer, otherwise, "
-        "the division using bit shifts is invalid.");
-
-    /// Fixed point representation of one half, used for rounding.
-    constexpr static uint_t half = 1 << (K - 1);
-
-  private:
-    uint_t state = 0;
+private:
+    double m_alpha;
+    double m_lastOutput;
 };
+
+int main() {
+    EmaFilter emaFilter(0.5);
+
+    for(uint32_t i = 0; i < 20; i++)
+    {
+        double input = 1.0;
+        double output = emaFilter.Run(input);
+        printf("%f\n", output);
+    }
+}
 ```
+
+When setting `alpha=0.5` and hardcoding all input to `1.0` (which means a step change from `0.0` to `1.0` at `t=0`), it prints the following:
+
+```text
+0.500000
+0.750000
+0.875000
+0.937500
+0.968750
+0.984375
+0.992188
+0.996094
+0.998047
+0.999023
+0.999512
+0.999756
+0.999878
+0.999939
+0.999969
+0.999985
+0.999992
+0.999996
+0.999998
+0.999999
+```
+
+This example can be modified and run at https://replit.com/@gbmhunter/cpp-ema-filter.
+
+{{% aside type="warning" %}}
+In the code example above, you could replace the `double` types with integer types if you wanted fast operation and didn't have an FPU. However, be mindful of the loss of precision that occurs, especially if you are using a small \(\alpha\) value. A small \(alpha\) results in a very small contribution from the input. This contribution (\(\alpha \cdot x_i\)) could end up rounding to zero if using an integer, resulting in the output being stuck at zero.
+{{% /aside %}}
 
 ## Frequency Response
 
@@ -82,7 +124,7 @@ $$\begin{align}
 y[i] = \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1]
 \end{align}$$
 
-And then take the Z tranform of it:
+And then take the Z transform of it:
 
 $$\begin{align}
 Y(z) = aX(z) + (1 - \alpha) z^{-1} Y(z)
@@ -97,12 +139,12 @@ H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
 
 This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with \(\alpha=0.25\). The x-axis frequency is the normalized frequency, in units \(Hz/sample\), which makes the plot applicable for any sampling frequency.
 
-{{% figure src="ema-bode-plot.png" width="600px" caption="Bode plot showing the magnitude and phase of an EMA filter with \\\\( \alpha=0.25 \\\\)." %}}
+{{% figure src="ema-bode-plot.png" width="800px" caption="Bode plot showing the magnitude and phase of an EMA filter with \( \alpha=0.25 \)." %}}
 
 The _cut-off frequency_ (-3dB point) of an EMA filter is given by[^se-dsp-ema-cutoff]:
 
 $$\begin{align}
-f_c = \frac{f_s}{2\pi} \arccos{\left[1 - \frac{\alpha^2}{2(1-\alpha)}\right]}
+f_c = \frac{f_s}{2\pi} \cos^{-1}{\left[1 - \frac{\alpha^2}{2(1-\alpha)}\right]}
 \end{align}$$
 
 <p class="centered">
@@ -110,18 +152,33 @@ where:<br/>
 \(f_s\) is the sampling frequency in \(Hz\)<br/>
 </p>
 
+An important consequence of this is that the **filter's response is dependent both on \(\alpha\) and the sampling frequency**. Remember that if you adjust the sampling frequency, you also have to adjust \(\alpha\) to keep the same response.
+
+Note that not all valid values of \(\alpha\) will result in a valid cut-off frequency. This is when the filter response is so gradual that it does not drop to -3dB or below before the Nyquist frequency. Mathematically, this is when:
+
+$$\begin{align}
+\left|1 - \frac{\alpha^2}{2(1 - \alpha)}\right| > 1
+\end{align}$$
+
+and thus the inverse cosine function is undefined. The expression above becomes greater than 1 when \(\alpha\) is at or above[^se-dsp-ema-cutoff]:
+
+$$\begin{align}
+\alpha = 0.82843
+\end{align}$$
+
 ## Impulse Response
 
 The discrete unit sample function is defined as:
 
-$$\begin{align}
+$$
+\begin{align}
 \delta[n] =
 \begin{cases} 
       1 & n = 0 \\
-      0 & n \neq 0 \\      
+      0 & n \neq 0 \\
 \end{cases}
 \end{align}
-</p>
+$$
 
 If we use this as our input into \(Eq.\ \ref{eq:ema-sum}\):
 
@@ -131,15 +188,50 @@ y[i] &= \alpha \sum_{k=0}^n (1-\alpha)^k \delta[n-k] \\
 
 Given the unit sample function is 0 at most points, the only sum term that matters is when \(k = n\), so we can simplify this to:
 
-<p>\begin{align}
+$$\begin{align}
 y[i] &= \alpha (1-\alpha)^n \\
 \end{align}$$
 
 From this, we can plot what the response will look like for impulse as the input. As you can see in the following graph, the output starts off at \(y[0] = \alpha\) and then decays towards 0. A larger alpha makes the initial response larger but also the decay faster.
 
-{{% figure src="ema-impulse-response.png" width="600px" caption="Impulse response for an EMA filter with different \\\\(\alpha\\\\) values." %}}
+{{% figure src="ema-impulse-response.png" width="800px" caption="Impulse response for an EMA filter with different \(\alpha\) values." %}}
 
-## External Resources
+## Initializing (Priming) The Filter
+
+When initializing the filter, the initial value of \(y\) is important. If you set it to 0, then the filter will take a while to "warm up" and reach the correct output. If you set it to the first input value, then the filter will get a "head start". This may or may not be important for your application. I typically have a boolean flag called `firstTime` which is set to `true` when the filter is first created, and then set to `false` after the first input is processed. On the first pass, the filter just sets the output \(y\) to the input \(x\). I call this _priming_ the filter, to avoid confusion with "initialisation" of an object (i.e. constructor).
+
+Here is an example of the C++ class from above but reworked to include priming:
+
+```c++
+class EmaFilterWithPriming
+{
+public:
+    EmaFilterWithPriming(double alpha) : 
+        m_alpha(alpha), m_lastOutput(0.0), m_firstRun(true) {}
+
+    double Run(double input)
+    {
+        if (m_firstRun)
+        {
+            m_firstRun = false;
+            m_lastOutput = input; // Bypass filter and prime with input
+        }
+        else
+        {
+            m_lastOutput = m_alpha * input + (1 - m_alpha) * m_lastOutput;
+        }
+        return m_lastOutput;
+    }
+private:
+    double m_alpha;
+    double m_lastOutput;
+    bool m_firstRun;
+};
+```
+
+This example can be modified and run at https://replit.com/@gbmhunter/cpp-ema-filter.
+
+## Further Reading
 
 [https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/](https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/) is a great page explaining the exponential moving average filter.
 
