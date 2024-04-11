@@ -36,6 +36,7 @@ Weight of a diode in a DO-41 package is around 0.33g[^vishay-1n4001-ds].
 
 ## Similar To
 
+* [DO-7](/pcb-design/component-packages/do-7-component-package/)
 * [DO-15](/pcb-design/component-packages/do-15-component-package/)
 * [DO-35](/pcb-design/component-packages/do-35-component-package/)
 
