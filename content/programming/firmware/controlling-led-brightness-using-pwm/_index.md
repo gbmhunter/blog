@@ -4,6 +4,7 @@ categories: [Programming, Firmware]
 date: 2024-04-02
 description: 
 draft: false
+images: [_assets/cover-image.webp]
 lastmod: 2024-04-08
 tags: [LEDs, PWM, duty cycle, brightness, look-up table, LUT, microcontrollers, radiance, luminance, firmware, C, CIELAB, lightness, radiant flux, intensity]
 title: Controlling LED Brightness Using PWM
@@ -11,6 +12,8 @@ type: page
 ---
 
 ## Overview
+
+{{% figure src="_assets/cover-image.webp" width="200px" float="right" %}}
 
 This page how to control the brightness of a single [LED](/electronics/components/diodes/light-emitting-diodes-leds/) using PWM with firmware running on a microcontroller. We'll assume you want to vary the brightness, and to do so in a smooth manner. We'll start of by covering the basics with linear duty-cycle control and then move onto more advanced ways that take into account the human eye's non-linear response to light intensity.
 
@@ -147,9 +150,11 @@ const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {
 };
 ```
 
-The video below shows an LED (on the right) being faded from off to full brightness using the CIE lightness method with the 256in/256out LUT above. The LED on the left is the linearly controlled duty cycle LED from above for comparison.
+The video below shows an LED (on the right) being faded from off to full brightness using the CIE lightness method with the 256in/256out LUT above. The LED on the left is the linearly controlled duty cycle LED from above for comparison:
 
 {{% youtube id="VzxEW3SzA3k" %}}
+
+Hopefully, the CIE lightness LED looks like a smoother fade to the eye than the linear one. Admittedly, the difference between these two LEDs is not great. I've noticed that linear duty cycle control on LEDs with a much brighter output looks really bad before, so perhaps the fact that both of these LEDs are low power is somewhat hiding the differences. 
 
 The PWM frequency and step duration is the same as the first example above.
 
