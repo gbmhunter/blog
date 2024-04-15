@@ -21,7 +21,7 @@ This page how to control the brightness of a single [LED](/electronics/component
 
 If all you need is a fixed brightness, rather than having to consume a PWM peripheral in the microcontroller and add to the firmware complexity, you could just set the LED current by choosing the appropriate resistor. This will impart a slight colour change (LED colour changes slightly with current), but won't be noticeable for most use cases.
 
-The below image shows how you can do this. The MOSFET `U1` has been added so that the LED can be driven with currents higher than the maximum specified by the microcontroller's GPIO pin (which is normally in the 1-20mA range, check the datasheet of the MCU!). You could omit this MOSFET (and the \(10k\Omega\) resistor `R2`) and just drive the LED directly if the MCU can supply the required current directly.
+The below image shows how you can do this. The [MOSFET](/electronics/components/transistors/mosfets/) `U1` has been added so that the LED can be driven with currents higher than the maximum specified by the microcontroller's GPIO pin (which is normally in the 1-20mA range, check the datasheet of the MCU!). You could omit this MOSFET (and the \(10k\Omega\) resistor `R2`) and just drive the LED directly if the MCU can supply the required current directly.
 
 {{% figure src="_assets/led-and-resistor-driven-from-mosfet.webp" width="400px" caption="Schematic showing how to drive an LED from a microcontroller if you don't need a varying brightness." %}}
 
