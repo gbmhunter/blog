@@ -21,7 +21,7 @@ MELF (Metal Electrode Leadless Face) is a 2-lead cylindrically-shaped SMD compon
 
 ## Similar To
 
-* [MiniMELF (SOD-80, DO-213AA)](/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package/)
+* [MiniMELF (SOD-80, DO-213AA)](/pcb-design/component-packages/minimelf-component-package/)
 * [MicroMELF](/pcb-design/component-packages/micro-melf-component-package/)
 
 ## Dimensions
