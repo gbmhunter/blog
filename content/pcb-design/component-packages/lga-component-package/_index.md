@@ -1,94 +1,22 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-04
-lastmod: 2022-04-19
-tags: [ "component packages", "PCB design", "LGA", "land grid array", "AMD", "Intel" ]
-title: "LGA Component Package"
-type: "page"
+lastmod: 2024-04-16
+tags: [component packages, PCB design, LGA, land grid array, AMD, Intel]
+title: LGA Component Package
+type: page
 ---
 
 ## Overview
 
-<table>
-  <tbody>
-    <tr>
-      <td width="100px">Name</td>
-      <td width="500px">LGA (Land Grid Array)</td>
-    </tr>
-    <tr>
-      <td>Image</td>
-      <td>{{% figure src="lga-component-package-3d-render.jpg" width="200px" caption="" %}}</td>
-    </tr>
-    <tr>
-      <td>Synonyms</td>
-      <td></td>
-    </td>
-    <tr>
-      <td>Similar To</td>
-      <td>
-
-* [BGA](/pcb-design/component-packages/bga-component-package/) (BGA has balls, LGA doesn't)
-* PGA
-      </td>
-    </tr>
-    <tr>
-      <td>Variants</td>
-      <td>Many</td>
-    </tr>
-    <tr>
-      <td>Mounting</td>
-      <td>SMD</td>
-    </tr>
-    <tr>
-      <td>Pin Count</td>
-      <td>Approx 5-2000.</td>
-    </tr>
-    <tr>
-      <td>Pitch</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Solderability</td>
-      <td>Cannot solder with a soldering iron, soldering with hot air or infrared is o.k., recommended practise is to use reflow techniques.</td>
-    </tr>
-    <tr>
-      <td>Thermal Resistance</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Package Dimensions</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Typical PCB Land Area</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>3D Models</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Common Uses</td>
-      <td>
-
-* CPUs
-* Cellular modems
-* WiFi modules
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-## Comments
+{{% figure src="_assets/lga-component-package-3d-render.jpg" width="350px" caption="A 3D render of an LGA component package." %}}
 
 The `LGA` package is is a surface mount package with pads on the underside of the package. It is very similar to the [BGA package](/pcb-design/component-packages/bga-component-package/), except is does not have any balls, instead plain flat pads are used. An `LGA` package may also differ from `BGA` with the addition of arbitrary sized pads for purposes such as grounding, thermal dissipation, shielding and mechanical strength. An LGA package can be made from a PCB, thus many LGA components are actually entire "modules" made from a PCB and a number of components. This modular form is commonly seen with cellular modem and WiFi components.
 
-{{% figure src="lga-component-package-3d-render.jpg" width="350px" caption="A 3D render of an LGA component package." %}}
-
 CPU Variants:
 
-| |
+| Code     | Socket Name
 |----------|----------------
 | LGA 771  | Intel Socket J
 | LGA 775  | Intel Socket T
@@ -103,17 +31,30 @@ CPU Variants:
 
 The LGA package comes in many different variants, all which have a different number of pins and a different pin configuration. The pins are normally lines up in a grid of x columns and y rows, but not every position may have a pad. Therefore you can get variants with the same LGA package width and length.
 
+Cannot solder with a soldering iron, soldering with hot air or infrared is o.k., recommended practise is to use reflow techniques.
+
 Like BGAs, LGA packages can withstand up to 50% mis-alignment when soldering (50% of the distance between consecutive pads, i.e. it's pitch), as the package will automatically align itself[^bib-nxp-lga-rework]. LGA packages can be connected to the PCB either with a socket or direct soldering. Intel has popularised the package by using it on some of it's CPU families.
 
 ## Socket
 
-{{% figure src="lga-775-component-package-socket.jpg" width="500px" caption="Socket for the LGA-775 component package." %}}
+{{% figure src="_assets/lga-775-component-package-socket.jpg" width="500px" caption="Socket for the LGA-775 component package." %}}
 
 ## Shifted Solder Mask Layouts
 
 Sometimes LGA components recommend unique paste mask designs with "shifted" openings, as shown below.
 
-{{% figure src="panasonic-pan9026-solder-mask-layout.png" width="500px" caption="The recommended paste mask layout (Panasonic labels this the \"solder mask\", but they are really talking about what most people call the paste mask!) for the Panasonic PAN9026. Notice the unequal shifting of approx. 150um[^bib-panasonic-pan9026-design-guide]." %}}
+{{% figure src="_assets/panasonic-pan9026-solder-mask-layout.png" width="500px" caption="The recommended paste mask layout (Panasonic labels this the \"solder mask\", but they are really talking about what most people call the paste mask!) for the Panasonic PAN9026. Notice the unequal shifting of approx. 150um[^bib-panasonic-pan9026-design-guide]." %}}
+
+## Common Uses
+
+* CPUs
+* Cellular modems
+* WiFi modules
+
+## Similar To
+
+* [BGA](/pcb-design/component-packages/bga-component-package/): A BGA has balls on the underside pads, while a LGA doesn't.
+* PGA
 
 ## References
 

@@ -13,7 +13,7 @@ type: "page"
 
 _Macro X_ is a 4 lead component package the is used for RF transistors[^bib-microsemi-mrf581-ds]. As of 2022, the package seems obsolete.
 
-{{% figure src="mrf581.png" width="200px" caption="" %}}
+{{% figure src="_assets/mrf581.png" width="200px" caption="" %}}
 
 Synonyms:
 
@@ -27,7 +27,7 @@ Similar To:
 
 Microsemi's BJT pinout for this package connected the longest lead to the collector, the lead opposite this to the base, and the other two leads to the emitter[^bib-microsemi-mrf581-ds].
 
-{{% figure src="mrf581.png" width="350px" caption="Photo of the MRF581 RF NPN transistor in the Macro X component package." %}}
+{{% figure src="_assets/mrf581.png" width="350px" caption="Photo of the MRF581 RF NPN transistor in the Macro X component package." %}}
 
 The `Macro X` package is similar to Macom's `CASE 305A-01` component package, used for the Macom MRF158 N-channel RF MOSFET[^bib-macom-mrf158-ds].
 

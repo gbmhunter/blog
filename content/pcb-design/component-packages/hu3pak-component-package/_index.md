@@ -1,90 +1,31 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, PCB Design, Component Packages ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2022-11-07
 description: Pin count, solderability, thermal resistance, dimensions, land pattern, 3D models and more info for the HU3PAK component package.
 draft: false
-lastmod: 2022-11-07
-tags: [ component packages, PCB design, HU3PAK, ST Microelectronics, MOSFETs, thermal resistance, heatsinks ]
+lastmod: 2024-04-16
+tags: [component packages, PCB design, HU3PAK, ST Microelectronics, MOSFETs, thermal resistance, heatsinks]
 title: HU3PAK Component Package
 type: page
 ---
 
 ## Overview
 
-<table>
-  <tbody>
-    <tr>
-      <td>Name</td>
-      <td style="width: 500px">HU3PAK</td>
-    </tr>
-    <tr>
-      <td>Image</td>
-      <td>{{% figure src="hu3pak-3d-render-st-microelectronics.png" width="300px" %}}</td>
-    </tr>
-    <tr>
-      <td>Synonyms</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>Variants</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>Similar To</td>
-      <td>n/a
-    </td>
-    </tr>
-    <tr>
-      <td>Mounting</td>
-      <td>SMD
-    </td>
-    </tr>
-    <tr>
-      <td>Pin Count</td>
-      <td>7 + tab (which has two PCB contact points)</td>
-    </tr>
-    <tr>
-      <td>Pitch</td>
-      <td>1.27mm{{% md %}}[^bib-st-micro-hu3pak-package-mounting]{{% /md %}}</td>
-    </tr>
-    <tr>
-      <td>Solderability</td>
-      <td>Easy to hand-solder if you have had a bit of practise with surface mount devices before. Easy to solder with infrared or reflow techniques.</td>
-    </tr>
-    <tr>
-      <td>Thermal Resistance</td>
-      <td>
-        <ul>
-          <li>\(R_{JC} = 0.51^{\circ}C/W\){{% md %}}[^bib-st-micro-sthu32n65dm6ag-ds]{{% /md %}}</li>
-          <li>\(R_{JA} = 30^{\circ}C/W\){{% md %}}[^bib-st-micro-sthu32n65dm6ag-ds]{{% /md %}} (when mounted on 2oz. 1inch^2 PCB) (note that this thermal resistance hides the fact that the thermal resistance to ambient can be much lower if a top-side heatsink is added as intended)</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>Dimensions</td>
-      <td>14mm wide, 18.58 long (including leads) and 3.50mm high{{% md %}}[^bib-st-micro-hu3pak-package-mounting]{{% /md %}}</td>
-    </tr>
-    <tr>
-      <td>3D Models</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Common Uses</td>
-      <td>
-        <ul>
-          <li>MOSFETs{{% md %}}[^bib-st-micro-sthu32n65dm6ag-ds]{{% /md %}}</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+{{% figure src="_assets/hu3pak-3d-render-st-microelectronics.png" width="200px" float="right" caption="3D render of the HU3PAK component package[^bib-st-micro-sthu32n65dm6ag-ds]." %}}
 
-The `HU3PAK` component package is a package design used solely by ST Microelectronics. It's designed attached to a heatsink on it's top surface, but unusually does not have any provision for thermally coupling to the PCB (the recommended footprint only has a small amount of soldering points for the 7 pins and two tab locations).
+The HU3PAK component package is a package design used solely by ST Microelectronics. It has 7 leads plus a tab (which has two PCB contact points). It has a pitch of 1.27mm[^bib-st-micro-hu3pak-package-mounting]. It's designed attached to a heatsink on it's top surface, but unusually does not have any provision for thermally coupling to the PCB (the recommended footprint only has a small amount of soldering points for the 7 pins and two tab locations).
 
-{{% figure src="hu3pak-3d-render-st-microelectronics.png" width="300px" caption="3D render of the HU3PAK component package[^bib-st-micro-sthu32n65dm6ag-ds]." %}}
+The only use I could find for this package is for MOSFETs[^bib-st-micro-sthu32n65dm6ag-ds].
 
-The only use I could find for this package is for MOSFETs.
+## Dimensions
+
+The HU3PACK is 14mm wide, 18.58 long (including leads) and 3.50mm high[^bib-st-micro-hu3pak-package-mounting].
+
+## Thermal Resistance
+
+* \(R_{JC} = 0.51^{\circ}C/W\)[^bib-st-micro-sthu32n65dm6ag-ds]
+* \(R_{JA} = 30^{\circ}C/W\)[^bib-st-micro-sthu32n65dm6ag-ds] (when mounted on 2oz. 1inch^2 PCB) (note that this thermal resistance hides the fact that the thermal resistance to ambient can be much lower if a top-side heatsink is added as intended)
 
 ## References
 

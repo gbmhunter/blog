@@ -1,98 +1,40 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-04
 draft: false
-lastmod: 2021-09-07
-tags: [ "component packages", "PCB design", "HC-49US", "SMD", "crystals" ]
-title: "HC-49/US Component Package"
-type: "page"
+lastmod: 2024-04-16
+tags: [component packages, PCB design, HC-49US, SMD, crystals]
+title: HC-49/US Component Package
+type: page
 ---
 
 ## Overview
 
-This page contains info on the HC-49/U-S SMD component package that is commonly used to house older SMD crystal. For info on un-named SMD crystal packages (which are more common than the HC-49/U-S due to their smaller size), see the [SMD Crystal Packages page](/pcb-design/component-packages/smd-crystal-packages/).
+{{% figure src="_assets/hc-49us-component-package-photo.jpg" width="200px" float="right" caption="A photo of the HC-49/US component package." %}}
 
-<table>
-<tbody>
-<tr>
-<td >Name</td>
-<td >HC-49/U-S</td>
-</tr>
-<tr >
-<td >Synonyms
-</td>
-<td >HC49/US, HC-49US, HC49-US
-</td>
-</tr>
-<tr >
-<td >Variants</td>
-<td >There a four variants for different height sizes (but same PCB land pattern).
-</td>
-</tr>
-<tr >
-<td >Similar To</td>
-<td >HC-49/S (though-hole version)
-</td>
-</tr>
-<tr >
-<td >Mounting</td>
-<td >SMD</td>
-</tr>
-<tr >
-<td >Pin Count</td>
-<td >2</td>
-</tr>
-<tr >
-<td >Pitch</td>
-<td >9.5mm</td>
-</tr>
-<tr >
-<td >Solderability</td>
-<td >Easy to solder, as the leads extrude beyond the edge of the package.</td>
-</tr>
-<tr >
-<td >Thermal Resistance</td>
-<td >n/a (this package is used for low power crystals, not normally relevant)</td>
-</tr>
-<tr >
-<td >Land Area</td>
-<td >57.8mm2 (12.3x4.7mm)</td>
-</tr>
-<tr>
-<td>Height</td>
-<td>
-    <ul>
-        <li>A</li>
-        <li>B</li>
-        <li>C</li>
-        <li>D</li>
-    </ul>
-</td>
-</tr>
-<tr>
-<td >3D Models</td>
-<td >
-<p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=137229">HC49/US </a></p>
-</td>
-</tr>
-<tr>
-<td >Common Uses</td>
-<td>Crystals</td>
-</tr>
-</tbody>
-</table>
+HC-49/US is a common component package for larger SMD crystals. The internal circuitry is shielded by metal case. It comes in 4 height variants (A, B, C and D). The power consumption of crystals in these package usually ranges from 1nW to 1mW, with a typical value being 50uW.
 
-## Comments
+The pitch is 9.5mm. The package is easy to solder, as the leads extrude beyond the edge of the package. The PCB land area is 57.8mm2 (12.3x4.7mm).
 
-Common footprint for larger SMD crystals. Internal circuitry is shielded by metal case. Comes in 4 height variants (A, B, C and D). The power consumption of crystals in these package usually ranges from 1nW to 1mW, with a typical value being 50uW.
+## Synonyms
 
-## Photos
+* HC49/US
+* HC-49US
+* HC49-US
 
-{{% figure src="hc-49us-component-package-photo.jpg" width="350px" caption="A photo of the HC-49/US component package." %}}
+## Variants
 
-## Images
+There a four variants for different height sizes (but same PCB land pattern). These are called A, B, C and D.
 
-{{% figure src="hc49us-component-package-dimensions-land-pattern.png" width="800px" caption="The dimensions and recommended land pattern for the HC-49/U-S component package." %}}
+## Similar To
 
-{{% figure src="hc49us-component-package-photo.jpg" width="400px" caption="HC-49/US." %}}
+* HC-49/S: Though-hole equivalent of the HC-49/US package.
+
+## Dimensions and Land Pattern
+
+{{% figure src="_assets/hc49us-component-package-dimensions-land-pattern.png" width="800px" caption="The dimensions and recommended land pattern for the HC-49/U-S component package." %}}
+
+## Further Reading
+
+For info on un-named SMD crystal packages (which are more common than the HC-49/U-S due to their smaller size), see the [SMD Crystal Packages page](/pcb-design/component-packages/smd-crystal-packages/).

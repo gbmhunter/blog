@@ -1,0 +1,47 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2014-11-09
+draft: false
+lastmod: 2024-04-16
+tags: [component packages, PCB design, MELF, LL-34]
+title: MELF Component Package
+type: page
+---
+
+## Overview
+
+MELF (Metal Electrode Leadless Face) is a 2-lead cylindrically-shaped SMD component package. It is a hermetically sealed glass-based package, which offers components with superb reliability characteristics[^wikipedia-melf]. However, they are not very popular because they have a tendency to roll around when soldering. Jokingly they can be referred to as "**M**ost **E**nd up **L**ying on the **F**loor".
+
+## Synonyms
+
+* DO-213AB[^wikipedia-melf]
+* MMB[^wikipedia-melf]
+* SOD-106[^wikipedia-melf]
+
+## Similar To
+
+* [MiniMELF (SOD-80, DO-213AA)](/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package/)
+* [MicroMELF](/pcb-design/component-packages/micro-melf-component-package/)
+
+## Dimensions
+
+The MELF package is 5.00mm long and 2.50mm in diameter[^diodes-inc-melf], as shown in the below diagram:
+
+{{% figure src="_assets/melf-package-dimensions-diodes-inc.png" width="800px" caption="The dimensions of the MELF component package from Diodes Incorporated[^diodes-inc-melf]." %}}
+
+## Recommended Land Pattern
+
+Below is the recommended land pattern for the MELF package from Diodes Inc:
+
+{{% figure src="_assets/melf-recommended-land-pattern-diodes-inc.png" width="800px" caption="The recommended land pattern for the MELF component package from Diodes Incorporated[^diodes-inc-melf]." %}}
+
+## Common Uses
+
+* Resistors
+* Diodes
+
+## References
+
+[^wikipedia-melf]: Wikipedia (2022, Feb 7). _Metal electrode leadless face_. Retrieved 2024-04-16, from https://en.wikipedia.org/wiki/Metal_electrode_leadless_face.
+[^diodes-inc-melf]: Diodes Incorporated (2017, Apr 5). _MELF - PACKAGE INFORMATION_. Retrieved 2024-04-16, from https://www.diodes.com/assets/Package-Files/MELF.pdf.
