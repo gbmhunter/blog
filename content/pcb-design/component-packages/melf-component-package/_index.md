@@ -4,7 +4,7 @@ categories: [Electronics, PCB Design, Component Packages]
 date: 2014-11-09
 draft: false
 lastmod: 2024-04-16
-tags: [component packages, PCB design, MELF, LL-34]
+tags: [component packages, PCB design, MELF, DO-213AB, MMB, SOD-106]
 title: MELF Component Package
 type: page
 ---
@@ -22,7 +22,7 @@ MELF (Metal Electrode Leadless Face) is a 2-lead cylindrically-shaped SMD compon
 ## Similar To
 
 * [MiniMELF (SOD-80, DO-213AA)](/pcb-design/component-packages/minimelf-component-package/)
-* [MicroMELF](/pcb-design/component-packages/micro-melf-component-package/)
+* [MicroMELF](/pcb-design/component-packages/micromelf-component-package/)
 
 ## Dimensions
 
