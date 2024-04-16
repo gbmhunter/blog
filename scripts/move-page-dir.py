@@ -10,14 +10,19 @@ CONTENT_DIR = SCRIPT_DIR.parent / 'content'
 def main():
     parser = argparse.ArgumentParser(description='Move a page in the repository')\
     
-    parser.add_argument('original_path', type=str, help='Original path of the page')
-    parser.add_argument('new_path', type=str, help='New path of the page')
+    parser.add_argument('original_dir_path', type=str, help='Original path of the page directory.')
+    parser.add_argument('new_dir_path', type=str, help='New path of the page directory.')
 
     args = parser.parse_args()
 
-    update_markdown_files(args.original_path, args.new_path)
+    update_markdown_files(args.original_dir_path, args.new_dir_path)
 
-def update_markdown_files(original_path, new_path):
+def update_markdown_files(original_dir_path, new_dir_path):
+
+    if not original_dir_path.exists():
+        print(f'Error: The directory {original_dir_path} does not exist.')
+        sys.exit(1)
+
     # Get the list of markdown files in the repository
     glob_string = str(CONTENT_DIR) + '/**/*.md'
     print(glob_string)
@@ -26,17 +31,17 @@ def update_markdown_files(original_path, new_path):
     print(f'Found {len(markdown_files)} markdown files in the repository.')
 
     # Convert absolute paths to relative URLs. Also convert Windows paths to Unix paths.
-    original_url = original_path.replace(str(CONTENT_DIR), '')
+    original_url = original_dir_path.replace(str(CONTENT_DIR), '')
     original_url = original_url.replace('\\', '/')
     # Remove _index.md or index.md from the original URL
-    original_url = original_url.replace('_index.md', '')
-    original_url = original_url.replace('index.md', '')
+    # original_url = original_url.replace('_index.md', '')
+    # original_url = original_url.replace('index.md', '')
     print(f'Original path: {original_url}')
 
-    new_url = new_path.replace(str(CONTENT_DIR), '')
+    new_url = new_dir_path.replace(str(CONTENT_DIR), '')
     new_url = new_url.replace('\\', '/')
-    new_url = new_url.replace('_index.md', '')
-    new_url = new_url.replace('index.md', '')
+    # new_url = new_url.replace('_index.md', '')
+    # new_url = new_url.replace('index.md', '')
     print(f'New path: {new_url}')
 
     for file in markdown_files:
@@ -49,12 +54,23 @@ def update_markdown_files(original_path, new_path):
         if num_occurrences == 0:
             continue
 
-        print(f'Found {num_occurrences} occurances of {original_url} in {file}')
-        updated_content = content.replace(original_url, new_path)
+        print(f'Found {num_occurrences} occurrences of {original_url} in {file}')
+        updated_content = content.replace(original_url, new_dir_path)
 
         # Write the updated content back to the markdown file
-        # with open(file, 'w') as f:
-        #     f.write(updated_content)
+        with open(file, 'w', encoding='utf-8') as f:
+            f.write(updated_content)
+
+    # Now move the entire directory to the new path
+
+    # Make sure new directory does not exist
+    if new_dir_path.exists():
+        print(f'Error: The directory {new_dir_path} already exists.')
+        sys.exit(1)
+
+    os.rename(original_dir_path, new_dir_path)
+
+
 
     print('Markdown files updated successfully!')
 
