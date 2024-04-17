@@ -24,3 +24,5 @@ Improved the consistency and look of a number of component package pages by remo
 Add more component package pages for the packages in the DO-204 family.
 
 Added more info on [EMA filters](/programming/signal-processing/digital-filters/exponential-moving-average-ema-filter/).
+
+Added a new page on the [SMF (DO-219AB) component package](/pcb-design/component-packages/smf-component-package/).
