@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-06
 draft: false
 lastmod: 2022-03-25
-tags: [ "component packages", "PCB design", "SOD-323", "SC-76", "small-outline", "diodes" ]
-title: "SOD-323 Component Package"
-type: "page"
+tags: [component packages, PCB design, SOD-323, SC-76, small-outline, diodes]
+title: SOD-323 Component Package
+type: page
 ---
 
 ## Overview
@@ -41,7 +41,7 @@ Synonyms:
 
 * `SC-76` (JEITA)
 
-{{% figure src="sod-323-sc-76-component-package-3d-render.jpg" width="200px" caption="3D model of the `SOD-323` component package." %}}
+{{% figure src="_assets/sod-323-sc-76-component-package-3d-render.jpg" width="200px" caption="3D model of the `SOD-323` component package." %}}
 
 |===
 | Property | NXP (nominal)[^bib-nxp-sod323-ds]
@@ -50,7 +50,7 @@ Synonyms:
 | Body Height | 0.95mm
 |===
 
-{{% figure src="sod-323-package-dimensions-nxp.png" width="700px" caption="Dimensions for the `SOD-323` component package[^bib-nxp-sod323-ds]." %}}
+{{% figure src="_assets/sod-323-package-dimensions-nxp.png" width="700px" caption="Dimensions for the `SOD-323` component package[^bib-nxp-sod323-ds]." %}}
 
 Thermal Resistance:
 
@@ -73,17 +73,17 @@ The `SOD-323F` is a variant which has flat leads instead of the bent leads in th
 
 WARNING: Rohm uses the name `SOD-323FL` to refer to the same package as many other manufacturers call `SOD-323F`[^bib-rohm-udzv33b-ds]. Central Semiconductor also uses the package name `SOD-323FL`, but this refers to a different variant with different sized leads (see below).
 
-{{% figure src="sod-323f-3d-render-nexperia.png" width="300px" caption="3D render of the `SOD-323F` component package[^bib-nexperia-sod-323f]." %}}
+{{% figure src="_assets/sod-323f-3d-render-nexperia.png" width="300px" caption="3D render of the `SOD-323F` component package[^bib-nexperia-sod-323f]." %}}
 
-{{% figure src="sod-323f-package-dimensions-diodes-inc.png" width="700px" caption="Package dimensions of the `SOD-323F` component package[^bib-diodes-inc-sod-323f]." %}}
+{{% figure src="_assets/sod-323f-package-dimensions-diodes-inc.png" width="700px" caption="Package dimensions of the `SOD-323F` component package[^bib-diodes-inc-sod-323f]." %}}
 
 ## SOD-323FL (Central Semiconductor Variant)
 
 Central Semiconductors version of the `SOD-323FL` (the `FL` is presumably an acronym for **F**lat **L**eads) is another variant of the `SOD-323` with flat leads, except one of the leads is much longer than the other[^bib-central-semi-sod-323fl]. This improves the heatsinking of the package even more than that of the `SOD-323F` variant.
 
-{{% figure src="sod-323fl-component-package-dimensions-central-semiconductor.png" width="700px" caption="Package dimensions of the Central Semiconductor `SOD-323FL` component package[^bib-central-semi-sod-323fl]." %}}
+{{% figure src="_assets/sod-323fl-component-package-dimensions-central-semiconductor.png" width="700px" caption="Package dimensions of the Central Semiconductor `SOD-323FL` component package[^bib-central-semi-sod-323fl]." %}}
 
-{{% figure src="sod-323fl-land-pattern-central-semiconductor.png" width="700px" caption="Recommended land pattern for the Central Semiconductor `SOD-323FL` component package[^bib-central-semi-sod-323fl]." %}}
+{{% figure src="_assets/sod-323fl-land-pattern-central-semiconductor.png" width="700px" caption="Recommended land pattern for the Central Semiconductor `SOD-323FL` component package[^bib-central-semi-sod-323fl]." %}}
 
 ## SOD-323HE
 
@@ -92,9 +92,9 @@ Synonyms:
 * `SC-108B` (JEITA)[^bib-rohm-rb558vam150-ds]
 * `TUMD2M` (Rohm)[^bib-rohm-rb558vam150-ds]
 
-{{% figure src="sod-323he-3d-model-rohm.png" width="300px" caption="3D model of the SOD-323HE component package[^bib-rohm-rb558vam150-ds]." %}}
+{{% figure src="_assets/sod-323he-3d-model-rohm.png" width="300px" caption="3D model of the SOD-323HE component package[^bib-rohm-rb558vam150-ds]." %}}
 
-{{% figure src="sod-323he-package-dimensions-rohm.png" width="600px" caption="Package dimensions of the SOD-323HE component package[^bib-rohm-rb558vam150-ds]." %}}
+{{% figure src="_assets/sod-323he-package-dimensions-rohm.png" width="600px" caption="Package dimensions of the SOD-323HE component package[^bib-rohm-rb558vam150-ds]." %}}
 
 ## References
 
