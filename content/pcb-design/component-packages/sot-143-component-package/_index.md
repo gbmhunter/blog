@@ -4,7 +4,7 @@ categories: [Electronics, PCB Design, Component Packages]
 date: 2022-04-06
 draft: false
 lastmod: 2024-04-17
-tags: [component packages, PCB design, SOD-143, TO-253-4, TO-253-AA, JEDEC, small-outline, diodes, BJTs, supervisors, PMIC]
+tags: [component packages, PCB design, SOT-143, TO-253-4, TO-253-AA, JEDEC, small-outline, diodes, BJTs, supervisors, PMIC]
 title: SOT-143 Component Package
 type: page
 ---

@@ -12,4 +12,4 @@ type: page
 
 ## Overview
 
-The `TO-253AA` component package a JEDEC synonym (along with `TO-253-4`) for the `SOT-143` component package. See the [SOT-143 Component Package page](/pcb-design/component-packages/sod-143-component-package/) for more info.
+The `TO-253AA` component package a JEDEC synonym (along with `TO-253-4`) for the `SOT-143` component package. See the [SOT-143 Component Package page](/pcb-design/component-packages/sot-143-component-package/) for more info.

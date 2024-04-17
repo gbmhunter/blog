@@ -43,7 +43,7 @@ type: "post"
 * Added [image of a wirewound resistor](/electronics/components/resistors/#_wire_wound).
 {{% figure src="wirewound-resistor-screenshot.png" width="500px" %}}
 
-* Added a new page on the [SOT-143 component package](/pcb-design/component-packages/sod-143-component-package/).
+* Added a new page on the [SOT-143 component package](/pcb-design/component-packages/sot-143-component-package/).
 {{% figure src="sot-143-screenshot.png" width="500px" %}}
 
 * Created a new page called [Protecting IO Lines From ESD](/electronics/circuit-design/esd-protection/protecting-io-lines-from-esd/).
