@@ -20,7 +20,7 @@ The are four variants, with the key differences being:
 * SOD-323: Bent leads.
 * SOD-323F: Flat leads (better heatsinking).
 * SOD-323FL: Flat leads, with one longer than the other (even better heatsinking).
-* SOD-323HE: 
+* SOD-323HE: ?
 
 Solderability: Reflow is recommended. Easy to solder by hand.
 

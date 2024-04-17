@@ -1,3 +1,8 @@
+"""
+Script to move a content page directory in the repository and update all markdown files that link to that page.
+
+Should work in both Windows and Linux.
+"""
 import os
 import sys
 import glob
@@ -10,8 +15,8 @@ CONTENT_DIR = SCRIPT_DIR.parent / 'content'
 def main():
     parser = argparse.ArgumentParser(description='Move a page in the repository')\
     
-    parser.add_argument('original_dir_path', type=str, help='Original path of the page directory.')
-    parser.add_argument('new_dir_path', type=str, help='New path of the page directory.')
+    parser.add_argument('original_dir_path', type=str, help='Original absolute path of the page directory, e.g. C:/Users/Username/blog/content/pcb-design/page-1/')
+    parser.add_argument('new_dir_path', type=str, help='New absolute path of the page directory, e.g. C:/Users/Username/blog/content/pcb-design/page-2/')
 
     args = parser.parse_args()
 
@@ -31,16 +36,11 @@ def update_markdown_files(original_dir_path: Path, new_dir_path: Path):
 
     # Convert absolute paths to relative URLs. Also convert Windows paths to Unix paths.
     original_url = str(original_dir_path).replace(str(CONTENT_DIR), '')
-    original_url = original_url.replace('\\', '/')
-    # Remove _index.md or index.md from the original URL
-    # original_url = original_url.replace('_index.md', '')
-    # original_url = original_url.replace('index.md', '')
+    original_url = original_url.replace('\\', '/') # Convert Windows path to URL
     print(f'Original path: {original_url}')
 
     new_url = str(new_dir_path).replace(str(CONTENT_DIR), '')
-    new_url = new_url.replace('\\', '/')
-    # new_url = new_url.replace('_index.md', '')
-    # new_url = new_url.replace('index.md', '')
+    new_url = new_url.replace('\\', '/') # Convert Windows path to URL
     print(f'New path: {new_url}')
 
     found_at_least_one_occurrence = False
@@ -73,8 +73,6 @@ def update_markdown_files(original_dir_path: Path, new_dir_path: Path):
         sys.exit(1)
 
     os.rename(original_dir_path, new_dir_path)
-
-
 
     print('Markdown files updated successfully!')
 

@@ -1,10 +1,11 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2014-11-09
-tags: [ "component packages", "PCB design", "LL-34", "Mini-MELF" ]
-title: "LL-34 Component Package"
-type: "page"
+lastmod: 2024-04-17
+tags: [component packages, PCB design, LL-34, Mini-MELF]
+title: LL-34 Component Package
+type: page
 ---
 
-LL-34 is a synonym for the [Mini-MELF component package](../mini-melf-sod-80-do-213aa-component-package).
+LL-34 is a synonym for the MiniMELF component package. See the [MiniMELF (SOD-80, DO-213AA) Component Package page](/pcb-design/component-packages/minimelf-component-package/) for more info.
