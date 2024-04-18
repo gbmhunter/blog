@@ -1,103 +1,18 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-01-21
-description: "Synonyms, variants, pitches, pin numbering, mechanical drawings, recommend footprints and more info about the SOIC range of component packages."
+description: Synonyms, variants, pitches, pin numbering, mechanical drawings, recommend footprints and more info about the SOIC range of component packages.
 draft: false
-lastmod: 2022-03-08
-tags: [ "component packages", "PCB design", "SOIC", "R-PSDO", "S8", "WSON", "S8E", "SO-4", "SOIC-4", "optical isolators" ]
-title: "SOIC Component Package"
-type: "page"
+lastmod: 2024-04-18
+tags: [component packages, PCB design, SOIC, R-PSDO, S8, WSON, S8E, SO-4, SOIC-4, optical isolators]
+title: SOIC Component Package
+type: page
 ---
 
 ## Overview
 
-<table>
-    <thead>
-        <tr>
-            <th width="100px">Name</th>
-            <th width="600px">SOIC (Small Outline Integrated Package)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Synonyms</td>
-            <td>
-
-* 11-4M1S (Toshiba SO-4, 4.55mm wide body)[^bib-toshiba-tlp185-ds]
-* 751EP (onsemi SOIC4 W[^bib-on-semiconductor-bridge-rectifier])
-* R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)
-* S8 (SOIC-8, Analog Devices)
-* S8E (Linear Technologies, SOIC-8 with exposed pad)
-* SO (ST Microelectronics)
-* SOIC8E (SOIC-8N with exposed pad, Monolithic Power Solutions[^bib-mps-mp2497-a-ds])
-* SOT162-1 (SOIC-16W, NXP[^bib-nxp-sot162-1])
-* SSOP4/LSOP04 (onsemi, SO-4, 7.5mm wide body)[^bib-onsemi-fodm1009-ds]
-* WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)
-</td>
-        </tr>
-        <tr>
-            <td>Similar To</td>
-            <td>
-
-[SOJ](../soj-soijc-component-package)
-            </td>
-        </tr>
-        <tr>
-            <td>Variants</td>
-            <td>The SOIC family contains packages with a varying number of pins. There are also two width’s for SOIC packages, narrow width (3.9mm wide body, SOICx_N) and wide width (7.5mm wide body, SOICx_W). The width is usually expressed by the addition of _N or _W to the end of the package name. If the width is not mentioned, it is most likely going to be narrow width.</td>
-        </tr>
-        <tr>
-            <td>Mounting</td>
-            <td>SMD</td>
-        </tr>
-        <tr>
-            <td>Pin Count</td>
-            <td>8, 14, 16, 18, 20, 24, 28, 32</td>
-        </tr>
-        <tr>
-            <td>Pitch</td>
-            <td>
-
-* 0.65mm (e.g. R-PDSO)
-* 1.27mm (50mill)
-</td>
-        </tr>
-        <tr>
-            <td>Solderability</td>
-            <td>Relatively easy to hand solder compared to other SMD packages.</td>
-        </tr>
-        <tr>
-            <td>Thermal Resistance</td>
-            <td>Depends on variant, see below.</td>
-        </tr>
-        <tr>
-            <td>Package LxWxH</td>
-            <td>Length and width depends on variant, height is usually between 1.50-2.54mm.</td>
-        </tr>
-        <tr>
-            <td>Typical PCB Land Area</td>
-            <td>Depends on variant, see below.</td>
-        </tr>
-        <tr>
-            <td>3D Models</td>
-            <td>
-n/a
-</td>
-        </tr>
-        <tr>
-            <td>Common Uses</td>
-            <td>
-
-* Linear regulators.
-* Drivers/buffers.
-* High-power MOSFETs (normally in a SOIC-8N, with one pin for the gate, and either 3 or 4 pins for the drain and source).
-</td>
-        </tr>
-    </tbody>
-</table>
-
-## Overview
+SOIC is the name for a family of SMD component packages that have gull-wing leads on two sides of the package. SOIC is a very popular package and is commonly used to house integrated circuits (ICs).
 
 {{% aside type="warning" %}}
 There are are three different widths of SOIC packages, all which can be referred to as just SOIC by manufacturers in component datasheets! When designing a PCB, make sure to double-check the exact package width matches the PCB footprint/land pattern you've chosen.
@@ -109,17 +24,30 @@ There are are three different widths of SOIC packages, all which can be referred
 More on these different width SOIC packages below.
 {{% /aside %}}
 
+## Synonyms
+
+* 11-4M1S (Toshiba SO-4, 4.55mm wide body)[^bib-toshiba-tlp185-ds]
+* 751EP (onsemi SOIC4 W[^bib-on-semiconductor-bridge-rectifier])
+* R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)
+* S8 (SOIC-8, Analog Devices)
+* S8E (Linear Technologies, SOIC-8 with exposed pad)
+* SO (ST Microelectronics)
+* SOIC8E (SOIC-8N with exposed pad, Monolithic Power Solutions[^bib-mps-mp2497-a-ds])
+* SOT162-1 (SOIC-16W, NXP[^bib-nxp-sot162-1])
+* SSOP4/LSOP04 (onsemi, SO-4, 7.5mm wide body)[^bib-onsemi-fodm1009-ds]
+* WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)
+
 ## SOIC (JEDEC, 0.150" Package Body Width)
 
 The JEDEC version of the `SOIC` (a.k.a `SOIC-xN` (SOIC narrow)) family of packages is governed by the JEDEC MS-012-AA standard. There are non-exposed (normally just referred to as SOIC-x or SOIC-xN) and exposed pad versions (which are normally indicated with an "E" in the package name[^bib-mps-mp2497-a-ds]). 
 
 The dimensions for the `SOIC-8N` package are shown below:
 
-{{% figure src="soic-8-component-package-dimensions.png" width="555px" caption="The dimensions for the SOIC-8N component package." %}}
+{{% figure src="_assets/soic-8-component-package-dimensions.png" width="555px" caption="The dimensions for the SOIC-8N component package." %}}
 
 The dimensions for the `SOIC-16N` component package are shown below:
 
-{{% figure src="soic-16-component-package-dimensions.jpg" width="575px" caption="The dimensions for the SOIC-16N component package." %}}
+{{% figure src="_assets/soic-16-component-package-dimensions.jpg" width="575px" caption="The dimensions for the SOIC-16N component package." %}}
 
 Land area:
 
@@ -168,13 +96,13 @@ Adapter PCBs for the `SOIC` family of packages are widely available due to the p
 
 SparkFun makes a `SOIC-8` to `DIP-8-300` adapter PCB.
 
-{{% figure src="soic-8-component-package-sparkfun-breakout-board.jpg" width="272px" caption="A SOIC-8 to DIP-8-300 adapter PCB by SparkFun." %}}
+{{% figure src="_assets/soic-8-component-package-sparkfun-breakout-board.jpg" width="272px" caption="A SOIC-8 to DIP-8-300 adapter PCB by SparkFun." %}}
 
 ## Thermal Resistance And Power Dissipation
 
 This graph shows the maximum power dissipation for the `SOIC-8N` component package, for various PCB copper areas.
 
-{{% figure src="maximum-power-dissapation-graphs-so-8.png" width="701px" caption="Maximum power dissipation graphs for the SOIC-8N component package." %}}
+{{% figure src="_assets/maximum-power-dissapation-graphs-so-8.png" width="701px" caption="Maximum power dissipation graphs for the SOIC-8N component package." %}}
 
 ## Standard Pinout For MOSFETs
 
@@ -184,7 +112,7 @@ The `SOIC-8` component package is commonly used for medium-power N and P-channel
 As far I'm aware, this is not specified in any standard, but is just an industry default. Also, this only applies to `SOIC-8` packages with 1 MOSFET inside them.
 {{% /aside %}}
 
-{{% figure src="soic-8-component-package-standard-mosfet-pinout.png" width="334px" caption="The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package." %}}
+{{% figure src="_assets/soic-8-component-package-standard-mosfet-pinout.png" width="334px" caption="The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package." %}}
 
 Examples that follow this pinout include the [ST STS25NH3LL (N-channel)](https://www.sparkfun.com/datasheets/Robotics/sts25nh3ll.pdf), the [International Rectifier IRF8721PbF-1 (N-channel)](http://www.irf.com/product-info/datasheets/data/irf8721pbf-1.pdf), and the [Vishay SI9407BDY-T1-GE3 (P-channel)](http://www.vishay.com/docs/69902/si9407bd.pdf).
 
@@ -195,6 +123,17 @@ The `SO-4` package is quite unique from other `SO` packages. It typically has th
 The `SO-4` package is different to the `SOIC-4` package, even though these two different names refer to the same package at higher pin counts.
 
 ON Semiconductor uses the case code `751EP` for the `SOIC-4W` package[^bib-on-semiconductor-bridge-rectifier].
+
+## Common Uses
+
+* Linear regulators.
+* Drivers/buffers.
+* High-power MOSFETs (normally in a SOIC-8N, with one pin for the gate, and either 3 or 4 pins for the drain and source).
+
+## Similar To
+
+* [QFP](/pcb-design/component-packages/qfp-component-package/): Another SMD package used for ICs with gull-wing leads (QFP has leads on all four sides of the body).
+* [SOJ](/pcb-design/component-packages/soj-component-package/): Similar body sizes to SOIC, but with J-type leads instead of gull-wing leads.
 
 ## References
 
