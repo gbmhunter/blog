@@ -1,11 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, PCB Design, Component Packages ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-06
 description: Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the SOT-23 component package.
 draft: false
 lastmod: 2023-07-24
-tags: [ component packages, PCB design, RJ-3, RJ-5, RJ-6, RJ-8, SOT-23, SOT-23-3, SOT-23-5, SOT-23-6, SOT-23-6, Micro3, SC-59, SC-59A, SOT-346, SSOT3, SOT-753, SOT-457, SC-74A, TO-236AA, TO-236AB, JEDEC, JEITA, EIAJ, SMT3, SOT-26, SM8, Analog Devices ]
+tags: [component packages, PCB design, RJ-3, RJ-5, RJ-6, RJ-8, SOT-23, SOT-23-3, SOT-23-5, SOT-23-6, SOT-23-6, Micro3, SC-59, SC-59A, SOT-346, SSOT3, SOT-753, SOT-457, SC-74A, TO-236AA, TO-236AB, JEDEC, JEITA, EIAJ, SMT3, SOT-26, SM8, Analog Devices]
 title: SOT-23 Component Package
 type: page
 ---
@@ -36,7 +36,7 @@ Easy to hand-solder if you have had a bit of practise with surface mount devices
 
 `SOT-23-3` is the most common package in the `SOT-23` family, and is sometimes just referred to as `SOT-23`. {{% ref "fig-sot-23-3-3d-render-nisshinbo" %}} shows a 3D render of the SOT-23-3 package by Nisshinbo.
 
-{{% figure ref="fig-sot-23-3-3d-render-nisshinbo" src="sot-23-3-3d-render-nisshinbo.png" width="300px" caption="A 3D render of the SOT-23-3 component package by Nisshinbo[^nisshinbo-sot-23-3]." %}}
+{{% figure ref="fig-sot-23-3-3d-render-nisshinbo" src="_assets/sot-23-3-3d-render-nisshinbo.png" width="300px" caption="A 3D render of the SOT-23-3 component package by Nisshinbo[^nisshinbo-sot-23-3]." %}}
 
 ### Synonyms
 
@@ -69,13 +69,13 @@ Both `TO-236AA` and `TO-236AB` are official JEDEC names for the `SOT-23-3` packa
 
 {{% ref "fig-package-dimensions-sot23-3" %}} shows the dimensions of the `SOT-23-3` package.
 
-{{% figure ref="fig-package-dimensions-sot23-3" src="package-dimensions-sot23-3.gif" caption="The dimensions of the SOT-23-3 component package."  width="500px" %}}
+{{% figure ref="fig-package-dimensions-sot23-3" src="_assets/package-dimensions-sot23-3.gif" caption="The dimensions of the SOT-23-3 component package."  width="500px" %}}
 
 ### Recommended Land Pattern
 
 {{% ref "fig-sot-23-3-recommend-land-pattern-nxp" %}} shows the recommended land pattern by NXP for the `SOT-23-3` package.
 
-{{% figure ref="fig-sot-23-3-recommend-land-pattern-nxp" src="sot-23-3-recommend-land-pattern-nxp.png" width="600px" caption="The recommended land pattern for the SOT-23-3 package by NXP[^nxp-sot-23-package-info]." %}}
+{{% figure ref="fig-sot-23-3-recommend-land-pattern-nxp" src="_assets/sot-23-3-recommend-land-pattern-nxp.png" width="600px" caption="The recommended land pattern for the SOT-23-3 package by NXP[^nxp-sot-23-package-info]." %}}
 
 ### Common Uses
 
@@ -90,7 +90,7 @@ Because of the 3 leads, `SOT-23-3` is used for a large number of low-power 2-3 l
 
 {{% ref "fig-sot-23-5-3d-render-direnc" %}} shows a 3D render of the `SOT-23-5` package from Direnc.
 
-{{% figure ref="fig-sot-23-5-3d-render-direnc" src="sot-23-5-3d-render-direnc.png" width="300px" caption="A 3D render of the SOT-23-5 package from Direnc[^direnc-tps70950dbvr]." %}}
+{{% figure ref="fig-sot-23-5-3d-render-direnc" src="_assets/sot-23-5-3d-render-direnc.png" width="300px" caption="A 3D render of the SOT-23-5 package from Direnc[^direnc-tps70950dbvr]." %}}
 
 ### Synonyms
 
@@ -103,13 +103,13 @@ Because of the 3 leads, `SOT-23-3` is used for a large number of low-power 2-3 l
 
 {{% ref "fig-sot-23-5-dimensions-bourns" %}} shows the dimensions of the `SOT-23-5` package from Bourns.
 
-{{% figure ref="fig-sot-23-5-dimensions-bourns" src="sot-23-5-dimensions-bourns.png" width="700px" caption="The dimensions of the SOT-23-5 package from Bourns[^bourns-sot23-5-package-info]." %}}
+{{% figure ref="fig-sot-23-5-dimensions-bourns" src="_assets/sot-23-5-dimensions-bourns.png" width="700px" caption="The dimensions of the SOT-23-5 package from Bourns[^bourns-sot23-5-package-info]." %}}
 
 ### Recommended Land Pattern
 
 {{% ref "fig-sot-23-5-recommended-land-pattern-bourns" %}} shows a recommended land pattern from Bourns for the `SOT-23-5` package.
 
-{{% figure ref="fig-sot-23-5-recommended-land-pattern-bourns" src="sot-23-5-recommended-land-pattern-bourns.png" width="600px" caption="A recommended land pattern from Bourns for the SOT-23-5 package." %}}
+{{% figure ref="fig-sot-23-5-recommended-land-pattern-bourns" src="_assets/sot-23-5-recommended-land-pattern-bourns.png" width="600px" caption="A recommended land pattern from Bourns for the SOT-23-5 package." %}}
 
 ### Common Uses
 
@@ -124,7 +124,7 @@ The `SOT-23-3` package is very similar to the [SOT-346 package](/pcb-design/comp
 
 {{% ref "fig-component-package-sot-23-6-sc-74a-sot-457-3d-render" %}} shows a 3D render of the `SOT-23-6` component package.
 
-{{% figure ref="fig-component-package-sot-23-6-sc-74a-sot-457-3d-render" src="component-package-sot-23-6-sc-74a-sot-457-3d-render.jpg" width="200px" caption="A 3D render of the SOT-23-6 (SOT-457) component package."  %}}
+{{% figure ref="fig-component-package-sot-23-6-sc-74a-sot-457-3d-render" src="_assets/component-package-sot-23-6-sc-74a-sot-457-3d-render.jpg" width="200px" caption="A 3D render of the SOT-23-6 (SOT-457) component package."  %}}
 
 ### Synonyms
 
@@ -140,7 +140,7 @@ The `SOT-23-3` package is very similar to the [SOT-346 package](/pcb-design/comp
 The `SOT-23-6` package by Rohm (a.k.a `IMT4`, `SOT-457`, `SMT6`) has non-standard, clockwise pin numbering starting at the top right pin.
 {{% /aside %}}
 
-{{% figure src="rohm-sot-457-imt4-sot-23-6-component-package-non-standard-clockwise-pin-numbering-annotated.png" width="645px" caption="The Rohm SOT-23-6 component package (a.k.a. SOT-457, IMT4) with non-standard pin numbering."  %}}
+{{% figure src="_assets/rohm-sot-457-imt4-sot-23-6-component-package-non-standard-clockwise-pin-numbering-annotated.png" width="645px" caption="The Rohm SOT-23-6 component package (a.k.a. SOT-457, IMT4) with non-standard pin numbering."  %}}
 
 ### Dimensions
 
@@ -158,7 +158,7 @@ The `SOT-23-6` has a pitch of 0.95mm.
 
 The SOT-23-8 has a different pitch to the other packages in the family of 0.65mm, so it can fit 4 leads on each side.
 
-{{% figure src="sot-23-8-component-package-dimensions-diodes-incorporated.png" width="800px" caption="Dimensions for the SOT-23-8 component package. Image from http://www.diodes.com/." %}}
+{{% figure src="_assets/sot-23-8-component-package-dimensions-diodes-incorporated.png" width="800px" caption="Dimensions for the SOT-23-8 component package. Image from http://www.diodes.com/." %}}
 
 ### Recommended Land Pattern
 
@@ -166,7 +166,7 @@ The SOT-23-8 has a different pitch to the other packages in the family of 0.65mm
 The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23-5`, and `SOT-23-6` which all have a pitch of 0.95mm. This is to fit the 4 pins on each side, the original `SOT-23` design (which is a synonym for `SOT-23-3`) only had room for a maximum of 3 pins per side.
 {{% /aside %}}
 
-{{% figure src="sot-23-8-component-package-recommended-footprint-diodes-incorporated.png" width="1000px" caption="A recommended footprint for the SOT-23-8 component package. Image from http://www.diodes.com/."  %}}
+{{% figure src="_assets/sot-23-8-component-package-recommended-footprint-diodes-incorporated.png" width="1000px" caption="A recommended footprint for the SOT-23-8 component package. Image from http://www.diodes.com/."  %}}
 
 ## References
 

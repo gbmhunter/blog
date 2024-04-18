@@ -19,7 +19,7 @@ All packages in this family have a number of rectangular leads and a central sin
 
 SOT-89-3 (Small Outline Transistor 89)
 
-{{% figure src="sot-89-sc62-to-243-component-package-3d-render.jpg" width="200px" caption="" %}}
+{{% figure src="_assets/sot-89-sc62-to-243-component-package-3d-render.jpg" width="200px" caption="" %}}
 
 Synonyms:
 
@@ -51,17 +51,17 @@ Common Uses:
 
 ### Dimensions
 
-{{% figure src="sot-89-3-package-dimensions-diodes-inc.png" width="300px" caption="Dimensions of the SOT-89-3 component package[^bib-diodes-sot89]." %}}
+{{% figure src="_assets/sot-89-3-package-dimensions-diodes-inc.png" width="300px" caption="Dimensions of the SOT-89-3 component package[^bib-diodes-sot89]." %}}
 
 ## SOT-89-5
 
 The `SOT-89-5` package is commonly used as a SMD replacement for the `SIP-4` TH package. It call also be called the `SOT-89-6`, since it appears to have 6 leads when look down on the package.
 
-{{% figure src="sot-89-sc62-to-243-component-package-3d-render.jpg" width="296px" caption="A 3D render of the SOT-89 (SC-62, TO-243) component package. Image from http://www.digikey.com/." %}}
+{{% figure src="_assets/sot-89-sc62-to-243-component-package-3d-render.jpg" width="296px" caption="A 3D render of the SOT-89 (SC-62, TO-243) component package. Image from http://www.digikey.com/." %}}
 
 ### Dimensions
 
-{{% figure src="sot-89-sc62-to-243-component-package-dimensions.jpg.png" width="937px" caption="The dimensions for the SOT-89-5 (SC-62, TO-243) component package." %}}
+{{% figure src="_assets/sot-89-sc62-to-243-component-package-dimensions.jpg.png" width="937px" caption="The dimensions for the SOT-89-5 (SC-62, TO-243) component package." %}}
 
 ### Thermal Resistance
 

@@ -14,7 +14,7 @@ type: page
 
 The `SOT-23F` component package is a 3-pin SMD component package that is very similar to the [SOT-23](../sot-23-component-package/) package, except the leads are flat rather than gull-wing (presumably that's what the `F` stands for). A PCB footprint for the SOT-23 can usually be interchangeably used with a SOT-23F as the leads have the same pitch and spacing.
 
-{{% figure src="sot-23f-3d-render-toshiba-rs.png" width="400px" caption="A 3D render of the SOT-23F component package[^bib-rs-toshiba-hall-effect-sensor-tcs40dprlf]." %}}
+{{% figure src="_assets/sot-23f-3d-render-toshiba-rs.png" width="400px" caption="A 3D render of the SOT-23F component package[^bib-rs-toshiba-hall-effect-sensor-tcs40dprlf]." %}}
 
 The `SOT-23F` package is used for the same components the `SOT-23` package is used for -- namely transistors, voltage references
 
@@ -24,11 +24,11 @@ The `SOT-23F` package is used for the same components the `SOT-23` package is us
 
 ## Package Outline and Dimensions
 
-{{% figure src="sot-23f-package-outline-and-dimensions-diodes-inc.png" width="600px" caption="The package outline and dimensions of the SOT-23F package from Diodes Inc[^bib-diodes-inc-sot-23f-package-info]." %}}
+{{% figure src="_assets/sot-23f-package-outline-and-dimensions-diodes-inc.png" width="600px" caption="The package outline and dimensions of the SOT-23F package from Diodes Inc[^bib-diodes-inc-sot-23f-package-info]." %}}
 
 ## Recommended Footprint
 
-{{% figure src="sot-23f-suggested-footprint-diodes-inc.png" width="600px" caption="The recommended PCB footprint for the SOT-23F package by Diodes Inc[^bib-diodes-inc-sot-23f-package-info]." %}}
+{{% figure src="_assets/sot-23f-suggested-footprint-diodes-inc.png" width="600px" caption="The recommended PCB footprint for the SOT-23F package by Diodes Inc[^bib-diodes-inc-sot-23f-package-info]." %}}
 
 ## References
 

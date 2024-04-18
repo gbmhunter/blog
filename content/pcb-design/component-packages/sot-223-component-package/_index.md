@@ -1,107 +1,25 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2015-01-08
 draft: false
-lastmod: 2020-11-02
-tags: [ "component packages", "PCB design", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCBs", "dimensions", "linear regulator" ]
-title: "SOT-223 Component Package"
-type: "page"
+lastmod: 2024-04-19
+tags: [component packages, PCB design, SOT-223, DCQ, DCY, MP04A, PG-SOT-223-4, TO-261-4, R-PDSO-G6, footprint, land pattern, PCBs, dimensions, linear regulator]
+title: SOT-223 Component Package
+type: page
 ---
 
 ## Overview
 
-<table>
-<tbody>
-<tr>
-  <td>Name</td>
-  <td>SOT-223 (Small-outline Transistor 223)</td>
-</tr>
-<tr>
-  <td>Synonyms</td>
-  <td>
-    <ul>
-      <li>DCQ (SOT-223-5, Texas Instruments)</li>
-      <li>DCY (SOT-223, Texas Instruments)</li>
-      <li>MP04A (National Semiconductor)</li>
-      <li>PG-SOT-223-4 (Infineon Technologies)</li>
-      <li>R-PDSO-G6 (SOT-223-5, Texas Instruments)</li>
-      <li>ST Package (Analog Devices)</li>
-      <li>TO-261-4</li>
-    </ul>
-  </td>
-</tr>
-<tr>
-  <td>Variants</td>
-  <td>
-    <ul>
-      <li>SOT-223-3 (3 pin excl. tab)</li>
-      <li>SOT-223-4 (4 pin excl. tab)</li>
-      <li>SOT-223-5 (5 pin excl. tab)</li>
-    </ul>
-  </td>
-</tr>
-<tr>
-  <td>Similar To</td>
-  <td>
-    <ul>
-      <li>[SOT-23](../sot-23-component-package)</li>
-    </ul>
-  </td>
-</tr>
-<tr >
-<td >Mounting</td>
-<td >SMD</td>
-</tr>
-<tr >
-<td >Pin Count</td>
-<td >3, 4, 5 (excl. tab)</td>
-</tr>
-<tr >
-<td >Pitch</td>
-<td >n/a</td>
-</tr>
-<tr >
-<td >Solderability</td>
-<td >Easily solderable by hand</td>
-</tr>
-<tr >
-<td >Thermal Resistance</td>
-<td>
-  <b>SOT-223-3</b>
-  <ul>
-    <li>\(T_{JA} = 174^{\circ}{\rm C}/W\) (standard footprint)</li>
-    <li>\(T_{JA} = 75^{\circ}{\rm C}/W\) (\(300mm^2\) heatsink area)</li>
-    <li>\(T_{JA} = 63^{\circ}{\rm C}/W\)(\(600mm^2\) heatsink area)</li>
-    <li>\(T_{JA} = 27^{\circ}{\rm C}/W\)(one square inch copper fill surrounding package)</li>
-  </ul>
-  <b>SOT-223-5</b>
-  <ul>
-    <li>\(55-165^{\circ}{\rm C}/W\) (see the SOT-223-5 section below)</li>
-  </ul>
-</td>
-</tr>
-<tr>
-<td>Dimensions</td>
-<td>n/a</td>
-</tr>
-<tr>
-<td>3D Models</td>
-<td>n/a</td>
-</tr>
-<tr >
-<td >Common Uses</td>
-<td >
-  <ul>
-    <li>MOSFETs</li>
-    <li>Load switches</li>
-    <li>High-power linear regulators</li>
-    <li>Current sources</li>
-  </ul>
-</td>
-</tr>
-</tbody>
-</table>
+SOT-223 is a family of SMD component packages commonly used for medium-power discrete semiconductor components and basic ICs such as linear regulators. It is characterised by standard gull-wing pins on one side of the body and a larger tab on the other side.
+
+There are three main variants in the SOT-223 family:
+
+* SOT-223-3 (3 pin excl. tab)
+* SOT-223-4 (4 pin excl. tab)
+* SOT-223-5 (5 pin excl. tab)
+
+Members of the SOT-223 family are used for things such as MOSFETs, load switches, high-power linear regulators and current sources.
 
 ## Conflicting Naming Conventions
 
@@ -123,6 +41,16 @@ The tab is sometimes electrically connected to pin 2 (the middle pin on the othe
 
 {{% figure src="az1117i-diodes-incorporated-sot223-pin-diagram-tab-connected-to-pin-2.png" width="400px" caption="The pin diagram for the AZ1117I in a SOT-223 package. Note how the tab is connected to pin 2." %}}
 
+### Synonyms
+
+* DCY: Texas Instruments[^ti-sot-223-3].
+* KC-3: Analog Devices' name[^analog-devices-sot-223].
+* MP04A: National Semiconductor's drawing number[^national-semiconductor-lm3940-ldo-ds].
+* PG-SOT-223-4: Infineon's name[^infineon-bts3205n-low-side-power-switch-ds].
+* R-PDSO-G4: Texas Instruments[^ti-sot-223-3].
+* TO-261-4: JEDEC name[^topline-to261-sot223].
+* TO-261AA: JEDEC name[^topline-to261-sot223] [^analog-devices-sot-223].
+
 ### Thermal Resistance
 
 Texas Instruments gives the following thermal resistance data for the SOT-223-3 package (taken from http://www.ti.com/lit/ds/symlink/tps7b6933-q1.pdf, **as of Dec 2017, URL is unavailable**).
@@ -130,9 +58,9 @@ Texas Instruments gives the following thermal resistance data for the SOT-223-3 
 <table>
   <thead>
     <tr>
-      <th>Property</th>
-      <th>Symbol</th>
-      <th>Value</th>
+      <th style="width: 150px;">Property</th>
+      <th style="width: 150px;">Symbol</th>
+      <th style="width: 150px;">Value</th>
     </tr>
   </thead>
 <tbody >
@@ -189,6 +117,11 @@ This variant can be confused with the three pin and one pad variant (SOT-223-3) 
 
 ## SOT-223-5
 
+### Synonyms
+
+* DCQ: Texas Instruments.
+* R-PDSO-G6: Texas Instruments.
+
 ### Dimensions
 
 Below are the dimensions of the SOT-223-5 package as specified by Texas Instruments.
@@ -208,3 +141,15 @@ Below is a graph showing the thermal resistance of the SOT-223-5 package with va
 {{% figure src="sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png" width="1059px" caption="Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
 
 As you can see, as the copper area increases, the thermal resistance decreases asymptotically to around \(55^{\circ}{\rm C}/W\).
+
+## Similar To
+
+* [SOT-23](/pcb-design/component-packages/sot-23-component-package/)
+
+## References
+
+[^ti-sot-223-3]: Texas Instruments (2002, Jun). _DCY (R-PDSO-G4)_. Retrieved 2024-04-19, from https://www.ti.com/lit/ml/mpds094a/mpds094a.pdf.
+[^national-semiconductor-lm3940-ldo-ds]: National Semiconductor. _LM3940 - 1A Low Dropout Regulator for 5V to 3.3V Conversion_ [datasheet]. Retrieved 2024-04-19, from https://datasheet.octopart.com/LM3940IMP-3.3-National-Semiconductor-datasheet-8805184.pdf.
+[^infineon-bts3205n-low-side-power-switch-ds]: Infineon. _HITFET - BTS3205N - Smart Low-Side Power Switch_. Retrieved 2024-04-19, from https://www.infineon.com/dgdl/Infineon-BTS3205N-DS-v01_01-en.pdf?fileId=db3a30431ed1d7b2011f4ba4f81d5ec6.
+[^topline-to261-sot223]: TopLine. _TO261 - SOT223 - JEDEC TO-261AA Package - TopLine Dummy Component_. Retrieved 2024-04-19, from https://www.topline.tv/TO261.html.
+[^analog-devices-sot-223]: Analog Devices. _3-Lead Small Outline Transistor Package [SOT-223] - (KC-3)_. Retrieved 2024-04-19, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/sot_223kc/kc_3.pdf.
