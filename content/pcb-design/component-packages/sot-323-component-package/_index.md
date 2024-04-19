@@ -74,7 +74,7 @@ SOT-323-5 is the 5 lead variant in the SOT-323 family.
 SOT-323-6 is the 6 lead variant in the SOT-323 family.
 
 {{% aside type="note" %}}
-From a few sources I found online, the SOT-323-6 seems dimensionally identical to the [SOT-363 package](/pcb-design/component-packages/sot-363-sc-88-component-package/). However, I have kept a separate page on the SOT-363 since I could not find conclusive evidence that they are identical.
+From a few sources I found online, the SOT-323-6 seems dimensionally identical to the [SOT-363 package](/pcb-design/component-packages/sot-363-component-package/). However, I have kept a separate page on the SOT-363 since I could not find conclusive evidence that they are identical.
 {{% /aside %}}
 
 ### Synonyms
@@ -111,7 +111,7 @@ Below are the package dimensions for the SOT-323-8 package from Analog Devices:
 The SOT-323 family is similar to:
 
 * [SOT-23](/pcb-design/component-packages/sot-23-component-package/)
-* [SOT-363](/pcb-design/component-packages/sot-363-sc-88-component-package/)
+* [SOT-363](/pcb-design/component-packages/sot-363-component-package/)
 
 ## References
 

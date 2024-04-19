@@ -17,7 +17,7 @@ _SOT-416_ is the JEDEC name for a family of 3-lead SMD component packages that c
 
 `SOT-416` is the default variant with gull-wing leads, rather than the flat leads of the `SOT-416FL`. It is used by companies such as NXP and Rohm semiconductor.
 
-{{% figure src="sot-416-3d-render-rohm.png" width="300px" caption="A 3D render of the SOT-416 component package by Rohm Semiconductor[^rs-dtd523ye3tl-npn-transistor]." %}}
+{{% figure src="_assets/sot-416-3d-render-rohm.png" width="300px" caption="A 3D render of the SOT-416 component package by Rohm Semiconductor[^rs-dtd523ye3tl-npn-transistor]." %}}
 
 ### Synonyms
 
@@ -31,19 +31,19 @@ _SOT-416_ is the JEDEC name for a family of 3-lead SMD component packages that c
 
 {{% ref "fig-sot-416-dimensions-toshiba" %}} shows the dimensions from Toshiba for the `SOT-416` component package.
 
-{{% figure ref="fig-sot-416-dimensions-toshiba" src="sot-416-dimensions-toshiba.png" width="500px" caption="Dimensions from Toshiba for the SOT-416 component package[^toshiba-sot-416]." %}}
+{{% figure ref="fig-sot-416-dimensions-toshiba" src="_assets/sot-416-dimensions-toshiba.png" width="500px" caption="Dimensions from Toshiba for the SOT-416 component package[^toshiba-sot-416]." %}}
 
 ### Recommended Land Pattern
 
 {{% ref "fig-sot-416-recommended-land-pattern-toshiba" %}} shows the recommended land pattern from Toshiba for the `SOT-416`.
 
-{{% figure ref="fig-sot-416-recommended-land-pattern-toshiba" src="sot-416-recommended-land-pattern-toshiba.png" width="300px" caption="The recommended land pattern from Toshiba for the SOT-416 package[^toshiba-sot-416]." %}}
+{{% figure ref="fig-sot-416-recommended-land-pattern-toshiba" src="_assets/sot-416-recommended-land-pattern-toshiba.png" width="300px" caption="The recommended land pattern from Toshiba for the SOT-416 package[^toshiba-sot-416]." %}}
 
 ## SOT-416FL
 
 `SOT-416FL` is the flat-leads (not gull-wing) variant of the `SOT-416`. I could only find references to it by Rohm Semiconductor. {{% ref "fig-sot-416fl-3d-render-snapeda" %}} shows a 3D render from SnapEDA of the `SOT-416FL`.
 
-{{% figure ref="fig-sot-416fl-3d-render-snapeda" src="sot-416fl-3d-render-snapeda.jpg" width="250px" caption="A 3D render of the SOT-416FL from SnapEDA[^snapeda-dtc143zebtl-bjt]." %}}
+{{% figure ref="fig-sot-416fl-3d-render-snapeda" src="_assets/sot-416fl-3d-render-snapeda.jpg" width="250px" caption="A 3D render of the SOT-416FL from SnapEDA[^snapeda-dtc143zebtl-bjt]." %}}
 
 ### Synonyms
 
@@ -56,13 +56,13 @@ _SOT-416_ is the JEDEC name for a family of 3-lead SMD component packages that c
 
 {{% ref "fig-sot-416fl-dimensions-rohm" %}} shows the dimensions of the `SOT-416FL` component package.
 
-{{% figure ref="fig-sot-416fl-dimensions-rohm" src="sot-416fl-dimensions-rohm.png" width="600px" caption="Dimensions of the SOT-416FL package from Rohm Semiconductor[^rohm-rb715wm-schottky-barrier-diode-ds]." %}}
+{{% figure ref="fig-sot-416fl-dimensions-rohm" src="_assets/sot-416fl-dimensions-rohm.png" width="600px" caption="Dimensions of the SOT-416FL package from Rohm Semiconductor[^rohm-rb715wm-schottky-barrier-diode-ds]." %}}
 
 ### Recommended Land Pattern
 
 {{% ref "fig-sot-416fl-recommended-land-pattern-rohm" %}} shows the recommended land pattern from Rohm Semiconductor for their `SOT-416FL` package.
 
-{{% figure ref="fig-sot-416fl-recommended-land-pattern-rohm" src="sot-416fl-recommended-land-pattern-rohm.png" width="400px" caption="The recommended land pattern from Rohm for the SOT-416FL package[^rohm-rb715wm-schottky-barrier-diode-ds]." %}}
+{{% figure ref="fig-sot-416fl-recommended-land-pattern-rohm" src="_assets/sot-416fl-recommended-land-pattern-rohm.png" width="400px" caption="The recommended land pattern from Rohm for the SOT-416FL package[^rohm-rb715wm-schottky-barrier-diode-ds]." %}}
 
 ### Used For
 

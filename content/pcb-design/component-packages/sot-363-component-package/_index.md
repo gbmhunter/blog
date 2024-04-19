@@ -10,7 +10,7 @@ type: page
 
 ## Overview
 
-{{% figure src="sot-363-component-package-3d-render.jpg" width="200px" float="right" caption="A 3D render of the SOT-363 component package." %}}
+{{% figure src="_assets/sot-363-component-package-3d-render.jpg" width="200px" float="right" caption="A 3D render of the SOT-363 component package." %}}
 
 SOT-363 is used for smaller SMD transistors and MOSFETs (up to 2 per package).
 
@@ -32,11 +32,11 @@ Dimensions for the SOT-363 were from NXP[^nxp-sot-363]. Dimensions for the SOT-3
 
 ## Dimensions
 
-{{% figure src="sot-363-component-package-dimensions-diodes-inc.png" width="917px" caption="The dimensions of the SOT-363 component package. Image from http://www.diodes.com/."  %}}
+{{% figure src="_assets/sot-363-component-package-dimensions-diodes-inc.png" width="917px" caption="The dimensions of the SOT-363 component package. Image from http://www.diodes.com/."  %}}
 
 ## Footprint (Land Pattern)
 
-{{% figure src="sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png" width="885px" caption="A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/."  %}}
+{{% figure src="_assets/sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png" width="885px" caption="A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/."  %}}
 
 ## Thermal Resistance
 
@@ -48,7 +48,7 @@ Dimensions for the SOT-363 were from NXP[^nxp-sot-363]. Dimensions for the SOT-3
 
 Some components using the SOT-363 package do not require any polarity marking as the pins are rotationally symmetric. This is a common configuration for a two-device MOSFET component, in where the pinout is shown below:
 
-{{% figure src="dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png" width="322px" caption="Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/."  %}}
+{{% figure src="_assets/dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png" width="322px" caption="Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/."  %}}
 
 ## Similar To
 

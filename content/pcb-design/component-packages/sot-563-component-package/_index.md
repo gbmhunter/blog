@@ -15,7 +15,7 @@ type: page
 
 {{% ref "fig-sot-563-component-package-3d-render" %}} is a 3D render of the `SOT-563` package.
 
-{{% figure ref="fig-sot-563-component-package-3d-render" src="sot-563-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOT-563 component package."  %}}
+{{% figure ref="fig-sot-563-component-package-3d-render" src="_assets/sot-563-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOT-563 component package."  %}}
 
 ## Synonyms
 
@@ -26,13 +26,13 @@ type: page
 
 The body is 1.6mm long (sides with the leads) and 1.2mm wide. The width including the leads is 1.6mm. It has a pitch of 0.5mm. {{% ref "fig-sot-563-component-package-dimensions-ti-drl-r-pdso-n6" %}} shows the dimensions for the `SOT-563` component package as defined by Texas Instruments.
 
-{{% figure ref="fig-sot-563-component-package-dimensions-ti-drl-r-pdso-n6" src="sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png" width="556px" caption="Dimensions of the SOT-563 component package. Image from http://www.ti.com/."  %}}
+{{% figure ref="fig-sot-563-component-package-dimensions-ti-drl-r-pdso-n6" src="_assets/sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png" width="556px" caption="Dimensions of the SOT-563 component package. Image from http://www.ti.com/."  %}}
 
 ## Recommended Footprint
 
 {{% ref "fig-sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6" %}} shows the recommended footprint for the `SOT-563` component package from Texas Instruments. It is 1.30mm long (sides with the leads) and 1.80mm wide, giving a PCB land area of \(2.34mm^2\).
 
-{{% figure ref="fig-sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6" src="sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png" width="800px" caption="A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/."  %}}
+{{% figure ref="fig-sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6" src="_assets/sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png" width="800px" caption="A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/."  %}}
 
 ## References
 
