@@ -14,16 +14,14 @@ type: page
 
 SOT-323 (Small-Outline Transistor 323) is a small family of SMD component packages.
 
-These are the most common variants of the SOT-323 package family:
+Just like the [SOT-23](/pcb-design/component-packages/sot-23-component-package/), there are 3, 5, 6, and 8 lead variants in the SOT-323 package family:
 
 * SOT-323-3 (3 lead)
 * SOT-323-5 (5 lead)
 * SOT-323-6 (6 lead)
 * SOT-323-8 (8 lead)
 
-This package is a little confusing because it shares two common names, the SOT-323-x and the SC-70-x. And it also can have a different pitch (the SOT-323-8, aka SC-70-8 or SC8 has a 0.5mm pitch). It has a lead-pitch double that of the SOT-363.
-
-All of the variants on the SOT-323 family have a typical body width of 1.25mm and a body length of 2.0mm[^nxp-sot-323] [^analog-devices-sc6-package] [^analog-devices-sc8-package]. The width including the leads is 2.1mm.
+All of the variants on the SOT-323 family have a typical body width of 1.25mm and a body length of 2.0mm[^nxp-sot-323] [^analog-devices-sc6-package] [^analog-devices-sc8-package]. The width including the leads is 2.1mm. All variants except the SOT-323-8 have a pitch of 0.65mm. The SOT-323-8 has a pitch of 0.5mm (this is needed to fit all the pins on the side of the body without changing the body length). Again, this is similar behaviour to the SOT-23 package family.
 
 If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common). The SOT-323 package has a significantly smaller PCB footprint than the [SOT-23](/pcb-design/component-packages/sot-23-component-package/).
 
@@ -74,6 +72,10 @@ SOT-323-5 is the 5 lead variant in the SOT-323 family.
 ## SOT-323-6
 
 SOT-323-6 is the 6 lead variant in the SOT-323 family.
+
+{{% aside type="note" %}}
+From a few sources I found online, the SOT-323-6 seems dimensionally identical to the [SOT-363 package](/pcb-design/component-packages/sot-363-sc-88-component-package/). However, I have kept a separate page on the SOT-363 since I could not find conclusive evidence that they are identical.
+{{% /aside %}}
 
 ### Synonyms
 

@@ -1,0 +1,60 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-04-06
+draft: false
+tags: [component packages, PCB design, SOT-363, small-outline, transistor]
+title: SOT-363 (SC-88) Component Package
+type: page
+---
+
+## Overview
+
+{{% figure src="sot-363-component-package-3d-render.jpg" width="200px" float="right" caption="A 3D render of the SOT-363 component package." %}}
+
+SOT-363 is used for smaller SMD transistors and MOSFETs (up to 2 per package).
+
+It has a body width of 1.25mm and a length of 2.0mm. This package seems identical to the [SOT-323-6](/pcb-design/component-packages/sot-323-component-package/#sot-323-6). However I have kept this page separate from the SOT-323-6 since I could not find conclusive evidence that they are identical.
+
+Here is a comparison of major dimensions between the SOT-363 and SOT-323-6:
+
+| Package  | Body Width | Body Length | Total Width | Pitch | Pins |
+|----------|------------|-------------|-------------|-------|------|
+| SOT-363  | 1.25mm     | 2.0mm       | 2.1         | 0.65mm| 6    |
+| SOT-323-6| 1.25mm     | 2.0mm       | 2.1         | 0.65mm| 6    |
+
+Dimensions for the SOT-363 were from NXP[^nxp-sot-363]. Dimensions for the SOT-323-6 were from Analog Devices[^analog-devices-sc6-package]. All values typical.
+
+## Synonyms
+
+* SC-88: JEITA code[^nxp-sot-363].
+* TSSOP6[^nxp-sot-363]
+
+## Dimensions
+
+{{% figure src="sot-363-component-package-dimensions-diodes-inc.png" width="917px" caption="The dimensions of the SOT-363 component package. Image from http://www.diodes.com/."  %}}
+
+## Footprint (Land Pattern)
+
+{{% figure src="sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png" width="885px" caption="A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/."  %}}
+
+## Thermal Resistance
+
+* \(R_{\theta JA} = 435^{\circ}/W\) (FR-4, single-sided, 1oz. copper, minimum recommended pad layout)
+* \(R_{\theta JA} = 330^{\circ}/W\) (FR-4, double-sided, 2oz. copper, 1 inch square copper pad layout)
+* \(R_{\theta JC} = 139^{\circ}/W\)
+
+## Polarity
+
+Some components using the SOT-363 package do not require any polarity marking as the pins are rotationally symmetric. This is a common configuration for a two-device MOSFET component, in where the pinout is shown below:
+
+{{% figure src="dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png" width="322px" caption="Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/."  %}}
+
+## Similar To
+
+* [SOT-323](../sot-323-component-package/)
+
+## References
+
+[^nxp-sot-363]: NXP (2018, May 9). _SOT363 - plastic, surface-mounted package; 6 leads; 0.65 mm pitch; 2mm x 1.25 mm x 0.95 mm body_. Retrieved 2024-04-19, from https://www.nxp.com/docs/en/package-information/SOT363.pdf.
+[^analog-devices-sc6-package]: Analog Devices. _SC6 Package - 6-Lead Plastic SC70_. Retrieved 2024-04-19, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-sc-70/sot_6_05-08-1638.pdf.
