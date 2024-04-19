@@ -33,13 +33,13 @@ This page associates the x in SOT-223-x to stand for the **number of pins exclud
 
 The SOT-223-3 (TO-261AA) component package is the most common variant within the SOT-223 family. It looks similar to the SOT-23 package, but with a tab on one side instead of legs.
 
-{{% figure src="to-261aa-sot-223-component-package-3d-model.jpg" width="341px" caption="A 3D render of the TO-261AA (SOT-223-3) component package." %}}
+{{% figure src="_assets/to-261aa-sot-223-component-package-3d-model.jpg" width="341px" caption="A 3D render of the TO-261AA (SOT-223-3) component package." %}}
 
 It is commonly used for medium-power linear regulators and load switches.
 
 The tab is sometimes electrically connected to pin 2 (the middle pin on the other side of the package), or sometimes electrically isolated for all other pins and called pin 4. For example, the AZ1117I linear regulator from Diodes Incorporated connects the tab to pin 2:
 
-{{% figure src="az1117i-diodes-incorporated-sot223-pin-diagram-tab-connected-to-pin-2.png" width="400px" caption="The pin diagram for the AZ1117I in a SOT-223 package. Note how the tab is connected to pin 2." %}}
+{{% figure src="_assets/az1117i-diodes-incorporated-sot223-pin-diagram-tab-connected-to-pin-2.png" width="400px" caption="The pin diagram for the AZ1117I in a SOT-223 package. Note how the tab is connected to pin 2." %}}
 
 ### Synonyms
 
@@ -95,25 +95,25 @@ Texas Instruments gives the following thermal resistance data for the SOT-223-3 
 
 All of the parameters in the above table were measured with the SOT-223-3 package soldered to a _JEDEC standard high-K profile, JESD 51-7, 2s2p four layer board with 2-oz copper_. The copper pad was soldered to the thermal land pattern.
 
-{{% figure src="to-216aa-sot-223-component-package-thermal-resistance.jpg" width="400px" caption="The thermal resistance of the TO-261AA (SOT-223-3) component package for various PCB footprints."  %}}
+{{% figure src="_assets/to-216aa-sot-223-component-package-thermal-resistance.jpg" width="400px" caption="The thermal resistance of the TO-261AA (SOT-223-3) component package for various PCB footprints."  %}}
 
 ### Standard Linear Regulator Pinout
 
 The SOT-223-3 package is commonly used for small, medium-power linear regulators. There is a de-facto standard pinout that many manufacturers use when incorporating a linear regulator into the SOT-223-3 package:
 
-{{% figure src="sot-223-3-component-package-footprint-layout-example-linear-regulator-with-caps.png" width="441px" caption="The de-facto standard pinout for a linear regulator inside a SOT-223-3 package. This image also shows the standard PCB footprint used to achieve a low thermal resistance. Image from http://www.ti.com/."  %}}
+{{% figure src="_assets/sot-223-3-component-package-footprint-layout-example-linear-regulator-with-caps.png" width="441px" caption="The de-facto standard pinout for a linear regulator inside a SOT-223-3 package. This image also shows the standard PCB footprint used to achieve a low thermal resistance. Image from http://www.ti.com/."  %}}
 
 ### Standard Load Switch Pinout
 
 The SOT-223-3 package is commonly used for smaller low and high-side load switches. As such, there is a de-facto standard pinout that many manufacturers use for load switches in the SOT-223-3 package:
 
-{{% figure src="sot-223-4-component-package-load-switch-typical-pinout.png" width="469px" caption="The de-facto standard pinout for a load switch in a SOT-223-3 package. Image from http://www.infineon.com/."  %}}
+{{% figure src="_assets/sot-223-4-component-package-load-switch-typical-pinout.png" width="469px" caption="The de-facto standard pinout for a load switch in a SOT-223-3 package. Image from http://www.infineon.com/."  %}}
 
 ## SOT-223-4
 
 This variant can be confused with the three pin and one pad variant (SOT-223-3) if you decide to count the pad as well as the pins in the number.
 
-{{% figure src="sot-223-4-component-package-3d-render.jpg" width="268px" caption="A 3D render of the SOT-223-4 component package. Image from http://www.datasheetdir.com/."  %}}
+{{% figure src="_assets/sot-223-4-component-package-3d-render.jpg" width="268px" caption="A 3D render of the SOT-223-4 component package. Image from http://www.datasheetdir.com/."  %}}
 
 ## SOT-223-5
 
@@ -126,19 +126,19 @@ This variant can be confused with the three pin and one pad variant (SOT-223-3) 
 
 Below are the dimensions of the SOT-223-5 package as specified by Texas Instruments.
 
-{{% figure src="sot-223-5-component-package-dimensions-ti.png" width="695px" caption="The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
+{{% figure src="_assets/sot-223-5-component-package-dimensions-ti.png" width="695px" caption="The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
 
 ### Footprint (Land Pattern)
 
 Below is the recommended footprint (land pattern) for the SOT-223-5 component package as specified by Texas Instruments.
 
-{{% figure src="sot-223-5-component-package-recommended-footprint-land-pattern-ti.png" width="858px" caption="A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
+{{% figure src="_assets/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png" width="858px" caption="A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
 
 ### Thermal Resistance
 
 Below is a graph showing the thermal resistance of the SOT-223-5 package with varying copper area.
 
-{{% figure src="sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png" width="1059px" caption="Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
+{{% figure src="_assets/sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png" width="1059px" caption="Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/."  %}}
 
 As you can see, as the copper area increases, the thermal resistance decreases asymptotically to around \(55^{\circ}{\rm C}/W\).
 
