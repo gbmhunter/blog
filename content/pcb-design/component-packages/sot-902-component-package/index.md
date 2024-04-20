@@ -3,6 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
+lastmod: 2024-04-20
 tags: [ "component packages", "PCB design", "SOT-902", "small-outline", "transistor", "XQFN8U", "XQFN8" ]
 title: SOT-902 Component Package
 type: page
@@ -10,135 +11,46 @@ type: page
 
 ## Overview
 
-<table>
-<tbody >
-<tr >
+SOT-902 (Small Outline Transistor 902) is a small family of SMD component packages with 8 leads. There are three variants in this family:
 
-<td >Name
-</td>
-
-<td >SOT-902 (Small Outline Transistor 902)
-</td>
-</tr>
-<tr >
-
-<td >Synonyms
-</td>
-
-<td >XQFN8U (NXP RFID)</td>
-</tr>
-<tr >
-
-<td >Variants
-</td>
-
-<td >
-
-<ul>
-<li>SOT-902-1 (XQFN8U)</li>
-
-<li>SOT-902-2 (XQFN8)</li>
-
-<li>SOT-902-3 (XQFN8)</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>Similar To</td>
-<td>
-  <ul>
-    <li>[SOIC](../soic-component-package)</li>
-    <li>[SOT-1193](../sot-1193-component-package)</li>
-  </ul>
-</td>
-</tr>
-<tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
-</tr>
-<tr >
-
-<td >Pin Count
-</td>
-
-<td >8
-</td>
-</tr>
-<tr >
-
-<td >Pitch
-</td>
-
-<td >?
-</td>
-</tr>
-<tr >
-
-<td >Solderability
-</td>
-
-<td >Very hard to solder by hand.
-</td>
-</tr>
-<tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >?
-</td>
-</tr>
-<tr >
-
-<td >Land Area
-</td>
-
-<td >2.56mm (1.6x1.6mm)
-</td>
-</tr>
-<tr >
-
-<td >Height
-</td>
-
-<td >0.5mm²
-</td>
-</tr>
-<tr >
-
-<td >3D Models
-</td>
-
-<td >?
-</td>
-</tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >RFID tag chips (e.g. the some of the NXP UCODE G2il chips)
-</td>
-</tr>
-</tbody>
-</table>
-
-## Comments
+* SOT-902-1 (XQFN8U)
+* SOT-902-2 (XQFN8)
+* SOT-902-3 (XQFN8)
 
 NXP seems to be the only manufacturer who uses this package.
 
-## Photos
+## SOT-902-1
 
-{{% figure src="sot-902-component-package-photo.gif" width="150px" caption="A photo of the SOT-902 component package."  %}}
+SOT-902-1 is a variant in the SOT-902 family. SOT-901-1 has the added U on the end of it's package code (XQFN8U), whilst SOT-902-2 and SOT-902-3 are both just XQFN8. This U stands for UTLP based (whatever that means?)[^nxp-sot-902-1].
 
-## Dimensions
+## SOT-902-2
 
-{{% figure src="component-package-sot-902-3-nxp-xqfn8-dimensions.png" caption="The dimensions for the SOT-902-3 component package. Image from http://www.nxp.com/documents/outline_drawing/sot902-3_po.pdf."  width="400px" %}}
+{{% figure src="_assets/sot-902-2-3d-render-nxp.png" width="150px" float="right" caption="A 3D render of the SOT-902-2 component package from NXP[^nxp-sot-902-2]." %}}
 
-## Recommended Land Pattern/Footprint
+### Synonyms
 
-{{% figure src="component-package-sot-902-3-nxp-xqfn8-land-pattern.png" caption="The land pattern for the SOT-902-3 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot902-3_fr.pdf."  width="400px" %}}
+* MO-255: JEDEC package outline code[^nxp-sot-902-2].
+* XQFN8: NXP's package type descriptive code[^nxp-sot-902-2]. Note that SOT-902-3 has the same code.
+
+### Dimensions
+
+{{% figure src="_assets/sot-902-2-package-dimensions-nxp.png" width="800px" caption="The dimensions of the SOT-902-2 component package from NXP[^nxp-sot-902-2]." %}}
+
+### Recommended Land Pattern
+
+{{% figure src="_assets/sot-902-2-recommended-land-pattern-nxp.png" caption="The land pattern for the SOT-902-2 component package from NXP[^nxp-sot-902-2]."  width="800px" %}}
+
+## SOT-902-3
+
+### Dimensions
+
+{{% figure src="component-package-sot-902-3-nxp-xqfn8-dimensions.png" width="800px" caption="The dimensions for the SOT-902-3 component package. Image from http://www.nxp.com/documents/outline_drawing/sot902-3_po.pdf."  %}}
+
+### Recommended Land Pattern
+
+{{% figure src="component-package-sot-902-3-nxp-xqfn8-land-pattern.png" width="800px" caption="The land pattern for the SOT-902-3 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot902-3_fr.pdf." %}}
+
+## References
+
+[^nxp-sot-902-2]: NXP (2017, Feb 6). _SOT902-2 - plastic, extremely thin quad flat package; 8 terminals; 0.55mm pitch; 1.6 mm x 1.6 mm x 0.5 mm body_. Retrieved 2024-04-20 from https://www.nxp.com/docs/en/package-information/SOT902-2.pdf
+[^nxp-sot-902-1]: NXP (2016, Feb 8). _SOT902-1 - plastic extremely thin quad flat package; no leads; 8terminals; UTLP based; body 1.6 x 1.6 x 0.5 mm_. Retrieved 2024-04-20, from https://www.nxp.com/docs/en/package-information/SOT902-1.pdf.

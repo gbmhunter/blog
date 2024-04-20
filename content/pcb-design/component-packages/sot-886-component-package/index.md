@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-lastmod: 2015-04-06
+lastmod: 2024-04-20
 tags: [ "component packages", "PCB design", "SOT-886", "small-outline", "transistor", "XSON-6", "6-XFDFN" ]
 title: "SOT-886 Component Package"
 type: "page"
@@ -11,83 +11,37 @@ type: "page"
 
 ## Overview
 
-<table>
-  <tbody>
-    <tr>
-      <td>Name</td>
-      <td>SOT-886 (Small Outline Transistor 886)</td>
-    </tr>
-    <tr>
-      <td>Synonyms</td>
-      <td>
-      <ul>
-      <li>XSON6 (NXP RFID)</li>
-      <li>6-XFDFN (DigiKey)</li>
-      </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>Variants</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Similar To</td>
-      <td>SOIC</td>
-    </tr>
-    <tr>
-      <td>Mounting</td>
-      <td>SMD</td>
-    </tr>
-    <tr>
-      <td>Pin Count</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>Pitch</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Solderability</td>
-      <td>Very hard to solder by hand.</td>
-    </tr>
-    <tr>
-      <td>Thermal Resistance</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Land Area</td>
-      <td>1.45mm² (1.45x1mm)</td>
-    </tr>
-    <tr>
-      <td>Height</td>
-      <td>0.5mm</td>
-    </tr>
-    <tr>
-      <td>3D Models</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Common Uses</td>
-      <td>
-      <ul>
-      <li>RFID tag chips (e.g. the some of the NXP UCODE G2il chips)</li>
-      <li>Logic gates</li>
-      <li>Buffers/line drivers</li>
-      <li>Linear voltage regulators</li>
-      </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+{{% figure src="_assets/sot-886-component-package-3d-render.jpg" width="200px" float="right" caption="A 3D render of the SOT-886 component package." %}}
 
-## Comments
+SOT-886 (Small Outline Transistor 886) is a SMD component package with 6 leads. It is commonly used for RFID tag chips, logic gates, buffer/line drivers and linear voltage regulators.
 
 NXP seems to be the only manufacturer who uses this package.
 
-## 3D Renders
+## Synonyms
 
-{{% figure src="sot-886-component-package-3d-render.jpg" width="378px" caption="A 3D render of the SOT-886 component package." %}}
+* 6-XSON: DigiKey[^digikey-tvs-search].
+* XSON6: NXP's name[^nxp-sot-886].
 
-## Other Images
+## Dimensions
 
-{{% figure src="component-footprint-sot-886-land-pattern.png" caption="The PCB land pattern for the SOT-886 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot886_fr.pdf." width="800px" %}}
+Below are the dimensions for the SOT-886 component package from NXP[^nxp-sot-886]:
+
+{{% figure src="_assets/sot-886-package-dimensions-nxp.png" width="800px" caption="The dimensions of the SOT-886 component package from NXP[^nxp-sot-886]." %}}
+
+| Dimension Name         | Dimension Letter | Value  |
+|------------------------|------------------|--------|
+| Seated height          | \(A\)            | 0.5mm  |
+| Body length            | \(D\)            | 1.45mm |
+| Body width             | \(E\)            | 1.00mm |
+| Pitch                  | \(e\)            | 0.6mm  |
+
+## Recommended Land Pattern
+
+{{% figure src="_assets/component-footprint-sot-886-land-pattern.png" caption="The PCB land pattern for the SOT-886 component package from NXP[^nxp-sot-886]." width="800px" %}}
+
+The total occupied area of the component on the PCB is \(1.70mm \times 1.25mm = 2.15mm^2\).
+
+## References
+
+[^nxp-sot-886]: NXP (2017, Jan 9). _SOT886 - XSON6: plastic extremely thin small outline package; no leads; 6 terminals; 0.6 mm pitch; 1 mm x 1.45 mm x 0.5 mm body_. Retrieved 2024-04-20, from https://www.nxp.com/docs/en/package-information/SOT886.pdf
+[^digikey-tvs-search]: DigiKey. _6-XSON, SOT886 (1.45x1) TVS Diodes_ [search results]. Retrieved 2024-04-20, from https://www.digikey.at/en/products/filter/transient-voltage-suppressors-tvs/tvs-diodes/6-xson-sot886-1-45x1/144?s=N4IgjCBcpgTAnBaIDGUBmBDANgZwKYA0IAbgHZQAuATgK5EgD2UA2iLAGwDsAHLBAF1iAB0pQQAZRoBLMgHMQAX2VA.
