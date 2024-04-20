@@ -56,19 +56,19 @@ There are three sub-variants under the `TO-3-2` banner[^bib-wp-to-3]:
 * `TO-204AD`: Thicker 1.27mm leads for higher currents.
 * `TO-204AE`: Even thicker 1.52mm leads for higher currents.
 
-{{% figure src="component-package-to-3-2l-dimensions.png" width="600px" caption="Dimensions for the TO-3-2 component package" %}}
+{{% figure src="_assets/component-package-to-3-2l-dimensions.png" width="600px" caption="Dimensions for the TO-3-2 component package" %}}
 
 ## TO-3-8
 
-{{% figure src="to-3-8-component-package-photo-top-bottom.jpg" width="400px" caption="A photo of the TO-3-8 component package." %}}
+{{% figure src="_assets/to-3-8-component-package-photo-top-bottom.jpg" width="400px" caption="A photo of the TO-3-8 component package." %}}
 
-{{% figure src="component-package-to-3-8l-dimensions.jpg" width="300px" caption="Dimensions for the TO-3-8 component package." %}}
+{{% figure src="_assets/component-package-to-3-8l-dimensions.jpg" width="300px" caption="Dimensions for the TO-3-8 component package." %}}
 
 ## TO-3-15
 
 A variant of the `TO-3` package with a exceptionally large number of leads, 15. National Semiconductor's package code for this variant is `KA15A`[^bib-ti-metal-can-packages].
 
-{{% figure src="to-3-15-component-package-national-semiconductor-dimensions.png" width="600px" caption="Dimensions of the TO-3-15 (TO-3 15 lead) component package[^bib-ti-metal-can-packages]. Image © 2011, Texas Instruments." %}}
+{{% figure src="_assets/to-3-15-component-package-national-semiconductor-dimensions.png" width="600px" caption="Dimensions of the TO-3-15 (TO-3 15 lead) component package[^bib-ti-metal-can-packages]. Image © 2011, Texas Instruments." %}}
 
 ## References
 
