@@ -40,11 +40,11 @@ Similar To:
 
 The `TO-206AA` is the most common 3-lead version in the `TO-206` family. It is also known by it's older name as the `TO-18-3` -- or just ambiguously as the `TO-18`. National Semiconductor called this package `H03C`[^ti-metal-can-packages]. Transistors such as the [2N2222A BJT](https://www.digikey.com/en/products/detail/central-semiconductor-corp/2N2222A-PBFREE/4806845) are available in this package.
 
-{{% figure src="to-206aa-to-18-3-photo-digikey.png" width="300px" caption="A photo of the TO-206AA (TO-18-3) from DigiKey[^digikey-2n2222a]." %}}
+{{% figure src="_assets/to-206aa-to-18-3-photo-digikey.png" width="300px" caption="A photo of the TO-206AA (TO-18-3) from DigiKey[^digikey-2n2222a]." %}}
 
 The dimensions of the `TO-206AA` are shown below:
 
-{{% figure src="to-206-aa-to-18-3-lead-ti-h03c-dimensions.png" width="700px" caption="Dimensions for the TO-206AA (TO-18) component package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages]." %}}
+{{% figure src="_assets/to-206-aa-to-18-3-lead-ti-h03c-dimensions.png" width="700px" caption="Dimensions for the TO-206AA (TO-18) component package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages]." %}}
 
 ## References
 

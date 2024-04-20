@@ -40,7 +40,7 @@ Common Uses:
 
 The below figure shows the dimensions of the TO-218-3 component package:
 
-{{% figure src="to-218-package-dimensions-on-semi.png" width="600px" caption="Package dimensions of the TO-218 component package[^bib-on-semi-sot-93]." %}}
+{{% figure src="_assets/to-218-package-dimensions-on-semi.png" width="600px" caption="Package dimensions of the TO-218 component package[^bib-on-semi-sot-93]." %}}
 
 When housing a BJT, the pinout is usually:
 
@@ -53,7 +53,7 @@ When housing a BJT, the pinout is usually:
 
 Fairchild Semiconductor has dimensions for a "single-lead" TO-218 package, as shown below. Curiously, I have not found any components that use this package.
 
-{{% figure src="to-218-single-lead-dimensions-fairchild-semiconductor.png" width="800px" caption="Dimensions for a single-lead TO-218 component package[^bib-fairchild-to-218-single-lead]." %}}
+{{% figure src="_assets/to-218-single-lead-dimensions-fairchild-semiconductor.png" width="800px" caption="Dimensions for a single-lead TO-218 component package[^bib-fairchild-to-218-single-lead]." %}}
 
 ## References
 
