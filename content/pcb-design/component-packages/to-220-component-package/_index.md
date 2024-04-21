@@ -84,13 +84,19 @@ This is a JEDEC package which has been made obsolete. It was a variant of the TO
 
 ## TO-220F (TO-220FP, SOT-186A)
 
-{{% figure src="_assets/to-220f-component-package-3d-render.jpg" width="200px" float="right" caption="A 3D render of the TO-220F component package."  %}}
+{{% figure src="_assets/to-220f-component-package-3d-render.jpg" width="200px" float="right" caption="A 3D render of the TO-220F component package." %}}
 
 The TO-220F (also known as TO-220FP or SOT-186A) is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer. The `F` or `FP` is an initialism for _full pack_.
 
-This insulating tab is added to remove one of the disadvantages of the TO-220AB package -- the metal tab, which although great for heatsinking reasons, is electrically connected to the middle pin of the component. This usually requires either an insulated heatsink or an insulated thermal pad between the tab and heatsink to prevent unwanted connections (such as a short-circuit to ground).
+This insulating tab is added to remove one of the disadvantages of the TO-220-3 (TO-220AB) package -- the metal tab, which although great for heatsinking reasons, is electrically connected to the middle pin of the component. This usually requires either an insulated heatsink or an insulated thermal pad between the tab and heatsink to prevent unwanted connections (such as a short-circuit to ground).
 
 TO-220F generally refers to the 3-pin version, although sometimes it may be called TO-220F-3, to distinguish it from [TO-220FM](#to-220fm) (a 2-pin variant). This also might be the same as the TO-220NIS package (not verified).
+
+### Synonyms
+
+* SOT-186A[^nxp-sot-186a]
+* TO-220F[^nxp-sot-186a]
+* TO-220F-3
 
 ### Dimensions
 
@@ -119,3 +125,4 @@ The TO-220FM is a variant of the TO-220 package which is identical to the [TO-22
 [^bib-analog-devices-to-220-7]: Analog Devices. _T7 Package - 7-Lead Plastic TO-220 (Standard) - (Reference LTC DWG # 05-08-1422)_. Retrieved 2023-06-06, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_7_05-08-1422.pdf.
 [^bib-ti-lm2673-ds]: Texas Instruments (2000, Apr). _LM2673 SIMPLE SWITCHER® 3-A Step-Down Voltage Regulator With Adjustable Current Limit (datasheet)_. Retrieved 2023-06-06, from https://www.ti.com/lit/ds/symlink/lm2673.pdf.
 [^bib-power-int-top254-258-ds]: Power Integrations (2007, Sep). _TOP254-258 - TOPSwitch-HX Family (datasheet)_. Retrieved 2023-06-06, from https://www.farnell.com/datasheets/5793.pdf.
+[^nxp-sot-186a]: NXP (2016,Feb 8). _SOT186A - plastic single-ended package; isolated heatsink mounted; 1 mounting hole; 3-lead TO-220 "full pack"_. Retrieved 2024-04-21, from https://www.nxp.com/docs/en/package-information/SOT186A.pdf.

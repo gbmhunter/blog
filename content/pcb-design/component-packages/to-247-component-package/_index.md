@@ -47,17 +47,17 @@ When containing a MOSFET, the pin wiring is usually:
 2. Drain
 3. Source 
 
-{{% figure src="irfp460-to-247.jpg" width="200px" caption="Photo of the International Rectifier (now Vishay) IRFP460 N-channel power MOSFET in the TO-247AC component package." %}}
+{{% figure src="_assets/irfp460-to-247.jpg" width="200px" caption="Photo of the International Rectifier (now Vishay) IRFP460 N-channel power MOSFET in the TO-247AC component package." %}}
 
-{{% figure src="to-247ac-component-package-3d-render-infineon.jpg" width="500px" caption="3D render of the TO-247AC component package. Image from https://www.powerelectronictips.com/igbts-come-fully-isolated-247-package/, retrieved 2021-03-16." %}}
+{{% figure src="_assets/to-247ac-component-package-3d-render-infineon.jpg" width="500px" caption="3D render of the TO-247AC component package. Image from https://www.powerelectronictips.com/igbts-come-fully-isolated-247-package/, retrieved 2021-03-16." %}}
 
-{{% figure src="to-247ac-sod-429-component-package-dimensions.png" width="800px" caption="The dimensions for the TO-247AC (SOD-429) component package. Image from <https://assets.nexperia.com/documents/package-information/SOT429.pdf>, accessed 2021-03-16." %}}
+{{% figure src="_assets/to-247ac-sod-429-component-package-dimensions.png" width="800px" caption="The dimensions for the TO-247AC (SOD-429) component package. Image from <https://assets.nexperia.com/documents/package-information/SOT429.pdf>, accessed 2021-03-16." %}}
 
 ## TO-247PLUS
 
 The `TO-247PLUS` packages (`TO-247PLUS-3` and `TO-247PLUS-4`) are variants of the `TO-247` package by Infineon. The main difference is the removal of the mounting holes in the TO-247PLUS variants, plus some extended creepage distances for the TO-247PLUS[^bib-infineon-to247plus].
 
-{{% figure src="to-247vs-to-247-plus-component-packages-infineon.png" width="500px" caption="Comparisons of the TO-247-3 and -4 to the TO-247PLUS variants[^bib-infineon-to247plus]." %}}
+{{% figure src="_assets/to-247vs-to-247-plus-component-packages-infineon.png" width="500px" caption="Comparisons of the TO-247-3 and -4 to the TO-247PLUS variants[^bib-infineon-to247plus]." %}}
 
 ## References
 
