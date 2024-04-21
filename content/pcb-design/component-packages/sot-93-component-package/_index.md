@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2021-12-25
 draft: false
 lastmod: 2021-12-25
-tags: [ "component packages", "PCB design", "SOT-93" ]
-title: "SOT-93 Component Package"
-type: "page"
+tags: [component packages, PCB design, SOT-93]
+title: SOT-93 Component Package
+type: page
 ---
 
 ## Overview
