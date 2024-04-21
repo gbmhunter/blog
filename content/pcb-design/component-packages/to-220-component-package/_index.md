@@ -116,7 +116,7 @@ The TO-220FM is a variant of the TO-220 package which is identical to the [TO-22
 
 ## Similar To
 
-* [TO-273AA (Super TO-220)](../to-273aa-component-package)
+* [TO-273AA (Super TO-220)](/pcb-design/component-packages/to-273aa-component-package/): The TO-273AA is like the TO-220, but with a clip-mounted design rather than screw-mounted. Sometimes called the "Super TO-220".
 
 ## References
 
