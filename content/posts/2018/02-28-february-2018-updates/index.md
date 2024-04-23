@@ -4,7 +4,6 @@ categories: [ "Updates" ]
 date: 2018-02-28
 draft: false
 lastmod: 2018-02-28
-tags: [ "compiler", "coordinate", "cross product", "fixed point", "geodesic", "geometry", "mathematics", "NinjaCalc", "QT", "RS-232", "UART", "vectors", "warnings" ]
 title: "February 2018 Updates"
 type: "post"
 ---
