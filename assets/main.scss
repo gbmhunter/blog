@@ -1112,6 +1112,14 @@ aside.note .title .icon {
     height: 30px;
 }
 
+// We can't target content in the Disqus iframe directly (it's from a different domain),
+// so we target the div that contains it. This adds some left/right padding because
+// Disqus does not add their own
+#disqus_thread {
+    padding: 0 20px;
+    background-color: white;
+}
+
 /* ========================================================================= */
 /* MATRIX (using a table)                                                    */
 /* ========================================================================= */
