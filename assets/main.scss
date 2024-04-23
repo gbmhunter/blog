@@ -1116,6 +1116,7 @@ aside.note .title .icon {
 // so we target the div that contains it. This adds some left/right padding because
 // Disqus does not add their own
 #disqus_thread {
+    margin-bottom: 2em;
     padding: 0 20px;
     background-color: white;
 }
