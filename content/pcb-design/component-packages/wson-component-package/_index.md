@@ -18,18 +18,12 @@ It has a exposed thermal pad on the underside. However, it is not normally elect
 
 Reflow soldering is the most suitable for this package. It is hard to solder with a soldering iron due to underside thermal pad.
 
-{{% figure src="pg-wson-8-1-3d-render-infineon.png" width="200px" caption="A 3D render of the WSON-8 (PG-WSON-8-1) component package from Infineon[^bib-infineon-pg-wson-8-1]." %}}
+{{% figure src="_assets/pg-wson-8-1-3d-render-infineon.png" width="200px" caption="A 3D render of the WSON-8 (PG-WSON-8-1) component package from Infineon[^bib-infineon-pg-wson-8-1]." %}}
 
 Synonyms:
 
 * `DMB`/`PWSON` (Texas Instruments)[^bib-ti-hdc1080-ds]
 * `DQD` (Texas Instruments)
-
-Similar To:
-
-* [DFN](/pcb-design/component-packages/dfn-component-package/)
-* [SOIC](/pcb-design/component-packages/soic-component-package/)
-* [USON](/pcb-design/component-packages/uson-component-package/)
 
 Common Uses:
 
@@ -47,7 +41,7 @@ Texas Instruments has a WSON package which does not have a pitch of 1.27mm!
 
 Below is an "odd shaped" SON package used by Numonyx flash chips that goes under the name VDFPN8. Notice the half-round appearance of the pins.
 
-{{% figure src="component-package-vdfpn8-mlp8-outline-dimensions.png" width="500px" caption="Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC. Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf." %}}
+{{% figure src="_assets/component-package-vdfpn8-mlp8-outline-dimensions.png" width="500px" caption="Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC. Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf." %}}
 
 Atmel produces a document titled [PCB Design Considerations when Changing from 6-pin SOT23 to 6-pin WSON Atmel Products](http://ww1.microchip.com/downloads/en/AppNotes/QAN0027_6-Pin-SOT23-to-6-Pin-WSON_1_05.pdf). It is a good read if you are migrating from larger SOT-23 packages to the smaller WSON package.
 
@@ -62,14 +56,20 @@ The `R-PWSON`/`DQD` package is a variant of the `WSON` package used by Texas Ins
 * `R-PWSON-N12` (12 leads)[^bib-ti-tpdxf003-ds]
 * `R-PWSON-N16` (16 leads)[^bib-ti-tpdxf003-ds]
 
-{{% figure src="dqd-texas-instruments-tpd8f003-wson-component-package.png" width="500px" caption="The pin diagram for three different TPD8F003 family components which come in the WSON style package[^bib-ti-tpdxf003-ds]." %}}
+{{% figure src="_assets/dqd-texas-instruments-tpd8f003-wson-component-package.png" width="500px" caption="The pin diagram for three different TPD8F003 family components which come in the WSON style package[^bib-ti-tpdxf003-ds]." %}}
 
 3D models exist for some of the DQD packages on 3DContentCentral, for example:
 
 * [WSON-8 (DQD)](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=1025764)
 * [WSON-12 (DQD)](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=1025763)
 * [WSON-16 (DQD)](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=1025762)
- 
+
+## Similar To
+
+* [DFN](/pcb-design/component-packages/dfn-component-package/)
+* [SOIC](/pcb-design/component-packages/soic-component-package/)
+* [USON](/pcb-design/component-packages/uson-component-package/)
+
 ## References
 
 [^bib-infineon-pg-wson-8-1]: Infineon. _Packages > PG-WSON >PG-WSON-8-1_. Retrieved 2022-04-05, from https://www.infineon.com/cms/en/product/packages/PG-WSON/PG-WSON-8-1/.

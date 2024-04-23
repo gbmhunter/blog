@@ -26,7 +26,7 @@ Variants:
 
 The uSiP package is used for the TPSM265R1 family of point-of-load power modules (this component incorporates the SMPS buck controller, MOSFET, inductor and some of the capacitors, hence being a complete power modules). It appears there are SIL0010A and SIL0010C variants (same number of pins, but slightly different pitch and package size), but no SIL0010B.
 
-{{% figure src="sil10c-usip-component-package-3d-render.png" width="150px" caption="A 3D render of the SIL-10C 10-pin uSiP component package[^bib-ti-tpsm265r1-ds]. Image © 2019 Texas Instruments." %}}
+{{% figure src="_assets/sil10c-usip-component-package-3d-render.png" width="150px" caption="A 3D render of the SIL-10C 10-pin uSiP component package[^bib-ti-tpsm265r1-ds]. Image © 2019 Texas Instruments." %}}
 
 [Manufacturing and Rework Design Guide for MicroSiP Power Modules](https://www.ti.com/lit/ug/slib006a/slib006a.pdf) has some good advice regarding manufacturing and reworkability of the uSiP (MicroSiP) package.
 
@@ -62,7 +62,7 @@ SIL0010C is a 10pin, 3.7x2.8mm package size variant of the uSIP.
 
 The below diagram shows \(\theta_{JA}\) versus copper area on the PCB for the SIL-10C uSiP package:
 
-{{% figure src="tpsm265r1-theta-ja-vs-copper-area.png" width="500px" caption="\(\theta_ja\) vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds]." %}}
+{{% figure src="_assets/tpsm265r1-theta-ja-vs-copper-area.png" width="500px" caption="\(\theta_ja\) vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds]." %}}
 
 ## References
 

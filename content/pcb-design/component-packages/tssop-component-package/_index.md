@@ -35,7 +35,7 @@ Common Uses:
 
 ## TSSOP
 
-{{% figure src="tssop-38-component-package-3d-render.jpg" width="300px" caption="A 3D render of the TSSOP-38 component package." %}}
+{{% figure src="_assets/tssop-38-component-package-3d-render.jpg" width="300px" caption="A 3D render of the TSSOP-38 component package." %}}
 
 Body widths of TSSOP packages can be 3.0, 4.4 and 6.1mm[^bib-wikipedia-tssop].
 
@@ -87,7 +87,7 @@ Body widths of TSSOP packages can be 3.0, 4.4 and 6.1mm[^bib-wikipedia-tssop].
   </tbody>
 </table>
 
-{{% figure src="htssop-28-component-package-3d-render-with-thermal-pad.jpg" width="320px" caption="A 3D render of the 28-pin TSSOP component package that has a thermal pad (HTSSOP-28)." %}}
+{{% figure src="_assets/htssop-28-component-package-3d-render-with-thermal-pad.jpg" width="320px" caption="A 3D render of the 28-pin TSSOP component package that has a thermal pad (HTSSOP-28)." %}}
 
 ## References
 
