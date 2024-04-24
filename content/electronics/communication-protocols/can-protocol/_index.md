@@ -1,10 +1,10 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 date: 2012-12-12
 description: Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol.
-categories: [ Electronics, Communication Protocols ]
+categories: [Electronics, Communication Protocols]
 lastmod: 2023-05-01
-tags: [ CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD, NXP, Secure CAN ]
+tags: [CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD, NXP, Secure CAN]
 title: CAN Protocol
 type: page
 ---
@@ -13,17 +13,17 @@ type: page
 
 **The CAN (Controller Area Network) protocol is a serial-based, multi-master digital communication protocol originally developed by BOSCH**.
 
-{{% figure src="can-bus-logo-bosch.png" width="270px" caption="The CAN bus logo. Image from www.bosch.com." %}}
+{{% figure src="_assets/can-bus-logo-bosch.png" width="270px" caption="The CAN bus logo. Image from www.bosch.com." %}}
 
 It was initially developed for use in the automotive industry. It provides priority-based message arbitration by utilizing dominant (driven by transmitter) and recessive (pulled together through bus termination resistors) bit levels.
 
-{{% figure src="oh-look-its-a-can-bus.png" width="500px" caption="Oh look, it's a CAN bus!" %}}
+{{% figure src="_assets/oh-look-its-a-can-bus.png" width="500px" caption="Oh look, it's a CAN bus!" %}}
 
 ## Protocol Versions
 
 * **CAN2.0A (ISO 11898):** Standardized as ISO 11898 in 1993. Supports standard frames (11-bit identifiers).
 * **CAN2.0B:** Released in 1995. Supports both standard and extended frames (11-bit and 29-bit identifiers). CAN 2.0B is backwards compatible with CAN 2.0A, with the exception that the CAN 2.0A controllers have to be updated to be aware of CAN 2.0B and have the _passive_ feature. If they don't, CAN 2.0A controllers will flag CAN 2.0B extended frame messages as errors.
-* **CAN-FD:** The "CAN with Flexible Data-rate" protocol. Protocol updated to change the meaning of different bits in the arbitration sequence, as well as the ability for the bit rate to be changed during the data part of the packet (generally increased to increase bit rate).
+* **CAN-FD:** The "CAN with Flexible Data-rate" protocol. Protocol updated to change the meaning of different bits in the arbitration sequence, as well as the ability for the bit rate to be changed during the data part of the packet (it's generally increased).
 
 ## CAN Bus Voltages
 
@@ -43,10 +43,9 @@ where:<br/>
 \(L\) = length (in m)<br/>
 </p>
 
-{{% figure src="can-bus-bit-rate-vs-bus-length.png" width="500px" caption="Graph showing the relationship between the CAN bus transmission rate and maximum bus length." %}}
+{{% figure src="_assets/can-bus-bit-rate-vs-bus-length.png" width="500px" caption="Graph showing the relationship between the CAN bus transmission rate and maximum bus length." %}}
 
 A value \(5ns/m\) is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
-
 
 | Speed   | Distance | Comment
 |---------|----------|---------------------
@@ -97,7 +96,7 @@ When CAN bus receivers are incorporated onto PCBs with microcontrollers and othe
 
 The CiA DS-102 standard defines CAN bus pin assignments for the ubiquitous serial DE-9 connector:
 
-{{% figure src="can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png" width="500px" caption="CAN bus pin assignments for the DE-9 serial connector from the CiA DS-102 standard." %}}
+{{% figure src="_assets/can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png" width="500px" caption="CAN bus pin assignments for the DE-9 serial connector from the CiA DS-102 standard." %}}
 
 This pin layout is also used for other CAN standards such as CANopen.
 
@@ -124,11 +123,11 @@ Car thieves have been cleverly using a special transmitter that also drives to t
 
 The below image shows arbitration happening with a real-world scope capture, by showing the changing dominant bus voltage as driving transceivers lose arbitration and "drop" off the bus. 
 
-{{% figure src="arbitration-waveform/waveform-full-annotated.png" width="600px" caption="Scope capture showing arbitration happen in real life! This scope was connected at some point on a long CAN bus with many transceivers, with a differential probe across the CAN_H and CAN_L wires. Since each transceiver is a different distance away from the measurement point, and there were transceiver from different IC manufacturers on the bus, each one drives the bus to a slightly different dominant voltage as seen by the scope." %}}
+{{% figure src="_assets/arbitration-waveform/waveform-full-annotated.png" width="600px" caption="Scope capture showing arbitration happen in real life! This scope was connected at some point on a long CAN bus with many transceivers, with a differential probe across the CAN_H and CAN_L wires. Since each transceiver is a different distance away from the measurement point, and there were transceiver from different IC manufacturers on the bus, each one drives the bus to a slightly different dominant voltage as seen by the scope." %}}
 
 If we zoom in on one of the arbitration events as below we can see it aligns with the bit period of 8us (the CAN bus was running at 125kHz).
 
-{{% figure src="arbitration-waveform/waveform-zoomed-in-annotated.png" width="600px" caption="Zoomed in view of the above scope capture, showing the width of the arbitration \"events\" aligns with the bit period of 8us (CAN bus was running at 125kHz)." %}}
+{{% figure src="_assets/arbitration-waveform/waveform-zoomed-in-annotated.png" width="600px" caption="Zoomed in view of the above scope capture, showing the width of the arbitration \"events\" aligns with the bit period of 8us (CAN bus was running at 125kHz)." %}}
 
 ## CAN Bit Timing
 
@@ -140,7 +139,7 @@ The below diagram shows the timing of a single CAN bit. **A single CAN bit is br
 . `SAMPLE_POINT`: This is the point in time in-between `PHASE_SEG_1` and `PHASE_SEG_2` at which the transceiver samples the value on the bus (recessive or dominant).
 . `PHASE_SEG_2`: Phase segment 2.
 
-{{% figure src="can-bit-timing.svg" width="900px" caption="Timing diagram of a single CAN bit." %}}
+{{% figure src="_assets/can-bit-timing.svg" width="900px" caption="Timing diagram of a single CAN bit." %}}
 
 Only one sample point is shown above, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at \(1t_q\) before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
 
@@ -162,7 +161,7 @@ Most CAN transceivers have the lengths of the bit segments configured so that th
 
 Because any CAN node may sample the bus as soon as `PROP_SEG` is over, the two way propagation of the signal between any two nodes on the bus must occur before the end of `PROP_SEG`. The below figure illustrates this between two nodes, one which is the transmitter and another which is the receiver. The signal has to propagate back from the receiver to the transmitter within this time because the transmitter needs to read back values from the bus during arbitration and the acknowledge bit.
 
-{{% figure src="can-bit-timing-prop-delay-between-two-nodes.svg" width="800px" caption="Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`." %}}
+{{% figure src="_assets/can-bit-timing-prop-delay-between-two-nodes.svg" width="800px" caption="Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`." %}}
 
 The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
 
@@ -211,7 +210,7 @@ Dominant bits are logic level 0, while recessive bits are logic level 1.
 
 **Standard Data/Remote Frame (11-bit Identifier)**
 
-{{% figure src="can-standard-base-frame-format-data-remote.png" width="883px" caption="The standard (base) CAN frame format for both data and remote frames." %}}
+{{% figure src="_assets/can-standard-base-frame-format-data-remote.png" width="883px" caption="The standard (base) CAN frame format for both data and remote frames." %}}
 
 _**SOF bit:**_ A dominant start of frame bit marks the start of a message. It is used to synchronize all the nodes on a bus after being idle. Transmitted by the sender.
 
@@ -235,11 +234,11 @@ TIP: In the situation when there are multiple receivers, the acknowledge bit wil
 
 _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
 
-{{% figure src="st-can-frame-incorrect-acronym-ide.png" width="500px" caption="Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19." %}}
+{{% figure src="_assets/st-can-frame-incorrect-acronym-ide.png" width="500px" caption="Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19." %}}
 
 **Extended Data/Remote Frame (29-bit Identifier)**
 
-{{% figure src="can-extended-frame-format-data-remote.png" width="800px" caption="The extended CAN frame format for both data and remote frames." %}}
+{{% figure src="_assets/can-extended-frame-format-data-remote.png" width="800px" caption="The extended CAN frame format for both data and remote frames." %}}
 
 The extended frame is the same as the above standard frame, except for the differences described below:
 
@@ -327,7 +326,7 @@ Xilinx provides the [CAN 2.0B and CAN-FD Controller IP core](https://www.xilinx.
 
 CANopen was developed for embedded devices in automation systems . It defines the OSI network layers that the basic CAN standards leaves unspecified, which includes the network layer and above.
 
-{{% figure src="can-open-logo.jpg" width="500px" caption="The CANopen logo." %}}
+{{% figure src="_assets/can-open-logo.jpg" width="500px" caption="The CANopen logo." %}}
 
 The CANopen standard is defined by the CiA (CAN in Automation) group. The documents for these standards can be found at [https://www.can-cia.org/groups/specifications/](https://www.can-cia.org/groups/specifications/). The most important document is [CiA 301](), which defines the CANopen application layer. If the above link is down, you can view the [local cached copy, v4.2.0, accessed June 2020](cia-301-canopen-specification-document.pdf).
 
@@ -380,19 +379,19 @@ Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipm
 
 **The CAN protocol and CAN FD protocol are protected with IP rights by Bosch**. Any CAN IP modules for a FPGA or ASIC (including self-developed ones!!!), or fixed hardware CAN IP peripherals for microcontrollers **must be licensed**.
 
-{{% figure src="can-bus-licensing-fee-highlighted-bosch.png" width="506px" caption="A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf." %}}
+{{% figure src="_assets/can-bus-licensing-fee-highlighted-bosch.png" width="506px" caption="A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf." %}}
 
 ### TVS Diodes
 
 There are [TVS diode components](/electronics/components/diodes) specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are \(12V\) and \(24V\) and common power dissipations are \(200-500W\).
 
-{{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
+{{% figure src="_assets/can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
 
 ## NoCAN
 
 NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
 
-{{% figure src="omzlo-white.png" width="200px" caption="The Omzlo logo." %}}
+{{% figure src="_assets/omzlo-white.png" width="200px" caption="The Omzlo logo." %}}
 
 NoCAN only uses the _CAN Extended Mode_, which supports a 29-bit ID, and up to 8 bytes of message data. However NoCAN provides the ability to send up to 64 bytes of data per message by chaining together up to 8 CAN messages (also called frames). For every NoCAN bus, there must be one (and only one) "special" node called a _Network Manager_, and one or more "standard" nodes. NoCAN also offers defines message formats for firmware update and bootloader control over the CAN bus.
 
@@ -420,7 +419,7 @@ The TN92527 (a.k.a just the _82527_) is an older CAN transceiver made by Intel[^
 
 NXP makes a whole suite of CAN transceivers all starting with the part number `TJA1`. You can view their portfolio at https://www.nxp.com/products/interfaces/can-transceivers:MC_53485. A common transceiver for “low-speed CAN” is the TJA1054. NXP also make "Secure CAN" transceivers such as the `TJA115x` (these don't use cryptography but rather hardware ID validation with passlists/blocklists)[^bib-nxp-tja115x-secure-can].
 
-{{% figure src="nxp-tja115x-secure-can-application-principle.png" width="500px" caption="The basic principle of the TJA115x Secure CAN range of CAN transceivers from NXP[^bib-nxp-tja115x-secure-can]." %}}
+{{% figure src="_assets/nxp-tja115x-secure-can-application-principle.png" width="500px" caption="The basic principle of the TJA115x Secure CAN range of CAN transceivers from NXP[^bib-nxp-tja115x-secure-can]." %}}
 
 **TJA1052i**
 
@@ -452,7 +451,7 @@ A CAN bus _Controller_ is an IC which contains all the logic and data processing
 
 The _PCA82C200_ is "the" classic original CAN controller. It used a parallel interface (8 address lines + control lines). The [Phillips datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html) I found for this part dated back to October 1990[^bib-philips-pca82c200-ds].
 
-{{% figure src="pca82c200-can-controller-block-diagram.png" width="800px" caption="Block diagram of the PCA82C200 CAN controller IC[^bib-philips-pca82c200-ds]." %}}
+{{% figure src="_assets/pca82c200-can-controller-block-diagram.png" width="800px" caption="Block diagram of the PCA82C200 CAN controller IC[^bib-philips-pca82c200-ds]." %}}
 
 ### SJA1000
 
@@ -522,13 +521,13 @@ Receive mailboxes are configured with a receive mask that filter incoming frames
 
 **CAN bus repeaters are devices that allow you to extend the length of a CAN bus or make a fixed-length bus more resilient to external noise**. They do this by _regenerating_ (a.k.a. _buffering_) the CAN bus signal. They typically pass-through signals from one side to the other very quickly (a low _propagation delay_) and therefore are typically invisible to the other nodes on the CAN bus.
 
-{{% figure src="iso-11898-2-can-bus-repeater.png" width="600px" caption="A CAN bus repeater topology from the CiA ISO 118989-2 standard." %}}
+{{% figure src="_assets/iso-11898-2-can-bus-repeater.png" width="600px" caption="A CAN bus repeater topology from the CiA ISO 118989-2 standard." %}}
 
 Ideally, the CAN bus repeater would go into a sensible passive state when powered down and present high-impedance inputs to the connected CAN bus segments. It should also provide _glitch free_ power up and power down such that spurious signals are not emitted on the bus at start-up or shut-down.
 
 On Semiconductor manufactures the [AMIS-42770 IC](https://docs.rs-online.com/c9be/0900766b816f7ada.pdf) which can be configured to act as a CAN bus repeater with little external circuitry.
 
-{{% figure src="amis-42770-on-semiconductor-can-bus-repeater-ic.png" width="600px" caption="Application diagram from the AMIS-42770 IC's datasheet which shows how it can be configured to act as a CAN bus repeater." %}}
+{{% figure src="_assets/amis-42770-on-semiconductor-can-bus-repeater-ic.png" width="600px" caption="Application diagram from the AMIS-42770 IC's datasheet which shows how it can be configured to act as a CAN bus repeater." %}}
 
 ### Examples
 
@@ -536,7 +535,7 @@ On Semiconductor manufactures the [AMIS-42770 IC](https://docs.rs-online.com/c9b
 
 This device has 4 separate channels and is transparent to the other nodes on the CAN bus.
 
-{{% figure src="ems-crep-s4-can-bus-repeater.png" width="500px" caption="The CRep S4 CAN Bus repeater by EMD Wuensche." %}}
+{{% figure src="_assets/ems-crep-s4-can-bus-repeater.png" width="500px" caption="The CRep S4 CAN Bus repeater by EMD Wuensche." %}}
 
 **CAN FD Repeater Reference Design**
 
@@ -546,7 +545,7 @@ Link: [http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534](http://w
 
 One informative diagram in this document is the block-level architecture of the repeater:
 
-{{% figure src="reference-ti-can-repeater-design-tida-01487.png" width="700px" caption="The block-level architecture of the CAN bus repeater design by Texas Instruments. Image from http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534." %}}
+{{% figure src="_assets/reference-ti-can-repeater-design-tida-01487.png" width="700px" caption="The block-level architecture of the CAN bus repeater design by Texas Instruments. Image from http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534." %}}
 
 ## USB to CAN Bus Dongles
 
@@ -554,7 +553,7 @@ There are many USB to CAN Bus dongles on the market. They allow you to connect a
 
 One of the most popular CAN dongles is the PEAK PCAN-USB "CAN Interface for USB". It supports CAN baud rates from 5kbps to 1Mbps[^bib-peak-pcan-usb] and provides the CAN interface via a [D-Sub DE-9 connector](/electronics/components/connectors/d-subminiature-d-sub-connectors/) (pinout in accordance with CiA 303-1).
 
-{{% figure src="peak-pcan-usb-photo.jpg" width="400px" caption="Product photo of the PEAK PCAN-USB USB to CAN bus dongle[^bib-peak-pcan-usb]." %}}
+{{% figure src="_assets/peak-pcan-usb-photo.jpg" width="400px" caption="Product photo of the PEAK PCAN-USB USB to CAN bus dongle[^bib-peak-pcan-usb]." %}}
 
 ## CAN-FD
 
