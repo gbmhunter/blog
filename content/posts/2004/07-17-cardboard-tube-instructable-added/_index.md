@@ -11,4 +11,4 @@ tags:
 - instructable
 ---
 
-<p>Want to learn how to make your own cardboard tubes? Check out the <a href="/pyrotechnics/making-your-own-cardboard-tubes/">Tools and Equipment section</a>.</p>
+Want to learn how to make your own cardboard tubes? Check out the <a href="/pyrotechnics/making-your-own-cardboard-tubes/">Tools and Equipment section</a>.

@@ -8,4 +8,4 @@ categories:
 - Updates
 ---
 
-<p>Added information on how to make electronic fuses to ignite fireworks or explosives in the "How To" section.</p>
+Added information on how to make electronic fuses to ignite fireworks or explosives in the "How To" section.

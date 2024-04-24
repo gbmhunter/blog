@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2019-01-27
-description: "A review of popular serialization formats (CSV, JSON, YAML, e.t.c), including speed and memory comparisons."
+description: A review of popular serialization formats (CSV, JSON, YAML, e.t.c), including speed and memory comparisons.
 draft: false
-images: [ "/programming/serialization-formats/a-comparison-of-serialization-formats/serialization-formats-conversion-times-10k-python.png" ]
+images: [/programming/serialization-formats/a-comparison-of-serialization-formats/serialization-formats-conversion-times-10k-python.png]
 lastmod: 2019-05-27
-tags: [ "serialization", "format", "comparison", "CSV", "JSON", "Protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++", "Excel", "pandas" ]
-title: "A Comparison Of Serialization Formats"
-type: "page"
+tags: [serialization, format, comparison, CSV, JSON, Protobuf, TOML, XML, YAML, file size, speed, benchmark, review, Python, C++, Excel, pandas]
+title: A Comparison Of Serialization Formats
+type: page
 ---
 
 ## Overview
@@ -31,7 +31,7 @@ In each review section, a score between 1-3 is highlighted <span class="error">r
 
 ## CSV
 
-{{% figure src="file-icon-csv.png" width="100px" caption="" %}}
+{{% figure src="_assets/file-icon-csv.png" width="100px" caption="" %}}
 
 CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures (unlike every other serialization format that is reviewed here).
 
@@ -83,7 +83,7 @@ id, name, age, address
 
 ## JSON
 
-{{% figure src="file-icon-json.png" width="100px" caption="" %}}
+{{% figure src="_assets/file-icon-json.png" width="100px" caption="" %}}
 
 JSON is a ubiquitous human-readable data serialization format that is supported by almost every popular programming language. JSON's data structures closely represent common objects in many languages, e.g. a Python `dict` can be represented by a JSON `object`, and a Python `list` by a JSON `array`. Note there are caveats to this!
 
@@ -140,7 +140,7 @@ It is important to note that the JSON syntax does not support comments! This can
 
 ## Protocol Buffers (Protobuf)
 
-{{% figure src="protobuf-icon.png" width="200px" caption="" %}}
+{{% figure src="_assets/protobuf-icon.png" width="200px" caption="" %}}
 
 Protobuf is a binary serialization protocol developed by Google. Since it serializes to binary, it is not human readable (although you can still pick out strings when viewing the file as ASCII text, see the example below).
 
@@ -185,7 +185,7 @@ The types of data that Protobuf can contain are well defined and include common 
 
 ## TOML
 
-{{% figure src="toml-icon.png" width="200px" caption="" %}}
+{{% figure src="_assets/toml-icon.png" width="200px" caption="" %}}
 
 TOML (Tom's Obvious, Minimal Language) is a newer (relative to the others in this review) human-readable serialization format. It is quite similar to YAML in that is is aimed towards configuration files, but is strives to be simpler format (YAML can get quite complex, and this can be seen in the much slower YAML parse times).
 
@@ -239,7 +239,7 @@ age = 56.78
 
 ## XML
 
-{{% figure src="xml-file-icon.png" width="150px" caption="" %}}
+{{% figure src="_assets/xml-file-icon.png" width="150px" caption="" %}}
 
 XML is a human-readable serialization protocol. A well known XML-like format is HTML which is used to determine the structure of web pages.
 
@@ -300,7 +300,7 @@ XML supports both standard (DOM style) parsers and streaming (SAX style) parsers
 
 ## YAML
 
-{{% figure src="yaml-file-icon.png" width="150px" caption="" %}}
+{{% figure src="_assets/yaml-file-icon.png" width="150px" caption="" %}}
 
 YAML (*YAML Ain't Markup Language*)
 
@@ -406,9 +406,9 @@ toml     | 0.23                    | 0.22                      | 1.08           
 xml      | 0.12                    | 0.16                      | 0.063                  | 0.25
 yaml     | 0.48                    | 0.55                      | 6.84                   | 3.84
 
-{{% figure src="serialization-formats-conversion-times-10k-cpp.png" width="600px" caption="C++ conversion times for 10k objects in popular serialization formats." %}}
+{{% figure src="_assets/serialization-formats-conversion-times-10k-cpp.png" width="600px" caption="C++ conversion times for 10k objects in popular serialization formats." %}}
 
-{{% figure src="serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for 10k objects in popular serialization formats." %}}
+{{% figure src="_assets/serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for 10k objects in popular serialization formats." %}}
 
 It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, \(log(n)\), ...)?. This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
 
@@ -421,9 +421,9 @@ toml     | 2.23                    | 2.19                      | 9.86           
 xml      | 0.85                    | 1.74                      | 0.78                   | 2.58
 yaml     | 4.96                    | 5.70                      | 69.67                  | 36.87
 
-{{% figure src="serialization-formats-conversion-times-100k-cpp.png" width="600px" caption="C++ conversion times for 100k objects in popular serialization formats." %}}
+{{% figure src="_assets/serialization-formats-conversion-times-100k-cpp.png" width="600px" caption="C++ conversion times for 100k objects in popular serialization formats." %}}
 
-{{% figure src="serialization-formats-conversion-times-100k-python.png" width="600px" caption="Python conversion times for 100k objects in popular serialization formats." %}}
+{{% figure src="_assets/serialization-formats-conversion-times-100k-python.png" width="600px" caption="Python conversion times for 100k objects in popular serialization formats." %}}
 
 The code that performed these tests can be found at <https://github.com/gbmhunter/BlogAssets/tree/master/Programming/serialization-formats>.
 
@@ -442,7 +442,7 @@ yaml     | 0.80                         | 8.1
 
 As expected, the file sizes grow linearly with the number of records stored (10x amount of data = 10x the file size).
 
-{{% figure src="serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." %}}
+{{% figure src="_assets/serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." %}}
 
 Being the only binary, non-human readable format that was compared, it's with no surprise that protobuf is the most concise format. Closely behind protobuf was CSV. Because CSV does not support irregular, non-flat data structures, it only requires a value delimiter (e.g. `,`) and end of line character (e.g. `\n`).
 

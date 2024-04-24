@@ -11,4 +11,4 @@ tags:
 - sodium hypochlorate
 ---
 
-<p>Information on making Sodium Hypo-chlorate + Sugar bangs is now available in the "Composition Database".</p>
+Information on making Sodium Hypo-chlorate + Sugar bangs is now available in the "Composition Database".
