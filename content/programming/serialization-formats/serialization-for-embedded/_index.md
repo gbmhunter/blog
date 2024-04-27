@@ -43,7 +43,8 @@ We'll set `myInt` to `7`. This encodes to (I'm using https://www.protobufpal.com
 08 07
 ```
 
-The first byte `0x08` is the tag shifted left by 3 bits (`1 << 3`). You can see this by changing the tag to 2 and seeing that the first byte changes to `0x10` (3 = `0x18`, ...). The second byte `0x07` is the value of the variable. Any `uint32` up to `127` uses 2 bytes (1 byte for the tag and other data, 1 byte for the value). `128` uses 3 bytes:
+The first byte `0x08` 
+is the tag shifted left by 3 bits (`1 << 3`). You can see this by changing the tag to 2 and seeing that the first byte changes to `0x10` (3 = `0x18`, ...). The second byte `0x07` is the value of the variable. Any `uint32` up to `127` uses 2 bytes (1 byte for the tag and other data, 1 byte for the value). `128` uses 3 bytes:
 
 ```text
 Value Encoded Msg.
