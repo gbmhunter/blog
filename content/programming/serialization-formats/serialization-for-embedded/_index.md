@@ -4,7 +4,7 @@ date: 2024-04-24
 description: 
 draft: true
 images: []
-lastmod: 2024-04-24
+lastmod: 2024-04-27
 tags: [serialization, protobuf, nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters]
 title: Serialization for Embedded Systems
 type: page
@@ -136,6 +136,27 @@ Then during encoding:
 * Every time we come across the escape character `0xFC`, replace it with `0xFC 0x02` (this is escaping the escape character).
 
 Now we have a message which is guaranteed to have no `0xFE` nor `0xFD` bytes in it, as we can safely prefix and suffix these bytes to the message as unique start-of-packet and end-of-packet identifiers.
+
+For example, let's say we have the following protobuf encoded message:
+
+```text
+0x08 0xFE 0x01 0xFC 0xAA
+```
+
+This would be escaped to:
+
+```text
+0x08 0xFC 0x00 0x01 0xFC 0x02 0xAA
+```
+
+And then framed:
+  
+```text
+|<- SOP                                 |<- EOP
+0xFD 0x08 0xFC 0x00 0x01 0xFC 0x02 0xAA 0xFE
+```
+
+This is what the sender send across the communication channel, e.g. UART, SPI, etc.
 
 What does the receiver do? The receiver throws away bytes until it receives a start-of-packet delimiter. Then it buffers received bytes until it receives an end-of-packet delimiter. Then it performs the reverse of the escaping process to get the original protobuf encoded message. This can then be decoded with protobuf if you used the `oneof` method above.
 
