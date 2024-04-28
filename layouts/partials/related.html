@@ -1,9 +1,11 @@
-{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{ $related := (where (.Site.RegularPages.Related .) "Type" "page") | first 5 }}
+<h2>Related Content</h2>
 {{ with $related }}
-<h2>Related Content:</h2>
 <ul>
 	{{ range . }}
 	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
 	{{ end }}
 </ul>
+{{ else }}
+<p></p>No related content found.</p>
 {{ end }}

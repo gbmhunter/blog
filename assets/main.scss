@@ -1561,20 +1561,6 @@ div.content td li {
     text-align: left; /* Left aligns text in lists */
 }
 
-/* OK, WARNING AND ERROR ROWS IN A TABLE */
-
-div.content tr.ok {
-    background-color: #d7fcd3;
-}
-
-div.content tr.warning {
-    background-color: #f5f5d3;
-}
-
-div.content tr.error {
-    background-color: #ffe3e3;
-}
-
 table.code th, table.code td {
   font-family: monospace;
 }
@@ -1912,6 +1898,9 @@ span.con {
 /* ========================================================================= */
 /* GOOD/OK/BAD                                                               */
 /* ========================================================================= */
+
+// These are commonly used to style text within table cells.
+// Colours work ok both for light and dark mod
 
 .good {
     color: green;

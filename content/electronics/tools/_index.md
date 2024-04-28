@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Tools" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Tools ]
 date: 2015-11-22
 draft: false
-lastmod: 2021-09-28
-tags: [ "electronics", "tools", "reflow ovens", "Puhui", "T-962", "T-962A", "T-962C", "soldering", "Atten", "AT-R3028", "oscilloscopes", "scope", "probes", "compensation", "passive", "active", "Keysight", "Tektronix", "Tenma", "Rigol", "multimeters", "low-impedance voltage measurements", "Fluke", "ghost voltages", "noise", "capacitive coupling", "logic analysers", "Saleae", "DreamSourceLab", "DSView", "digital", "communication protocols", "sigrok", "decode", "thermal cameras", "thermal resistances", "heatsinking", "Keysight", "TrueIR", "FLIR", "Fluke", "Testo", "RS Pro", "infrared", "IR", "PCBs", "NETD", "noise equivalent temperature difference", "FTDI", "serial", "UART", "converter", "DC loads", "TekBox", "TBOH02", "line impedance stabilization networks", "LISN", "MIL-STD-461E", "impedance control", "power supplies", "soldering iron", "soldering station", "Hakko", "JBC", "Weller", "infrared", "pre-heating station", "rework", "FM-2023", "current probes", "hall-effect", "fluxgate", "magnetometer", "flux", "solder", "rosin", "organic acid", "inorganic acid", "no clean flux", "syringe", "flux pen" ]
-title: "Tools"
-type: "page"
+lastmod: 2024-04-28
+tags: [ electronics, tools, reflow ovens, Puhui, T-962, T-962A, T-962C, soldering, Atten, AT-R3028, oscilloscopes, scope, probes, compensation, passive, active, Keysight, Tektronix, Tenma, Rigol, multimeters, low-impedance voltage measurements, Fluke, ghost voltages, noise, capacitive coupling, logic analysers, Saleae, DreamSourceLab, DSView, digital, communication protocols, sigrok, decode, thermal cameras, thermal resistances, heatsinking, Keysight, TrueIR, FLIR, Fluke, Testo, RS Pro, infrared, IR, PCBs, NETD, noise equivalent temperature difference, FTDI, serial, UART, converter, DC loads, TekBox, TBOH02, line impedance stabilization networks, LISN, MIL-STD-461E, impedance control, power supplies, soldering iron, soldering station, Hakko, JBC, Weller, infrared, pre-heating station, rework, FM-2023, current probes, hall-effect, fluxgate, magnetometer, flux, solder, rosin, organic acid, inorganic acid, no clean flux, syringe, flux pen ]
+title: Tools
+type: page
 ---
 
 {{% warning-is-notes %}}
@@ -33,7 +33,7 @@ Be careful with the 120V and 160V versions, they are high enough to give you a d
 
 They are available on AliExpress from https://www.aliexpress.com/item/1005003151034729.html.
 
-{{% figure src="wanptek-wps3010h-benchtop-psu-30v-10a.png" width="200px" caption="A photo of the Wanptek 30V 10A PSU.[^aliexpress-wanptek-30v-10a-psu]" %}}
+{{% figure src="_assets/wanptek-wps3010h-benchtop-psu-30v-10a.png" width="200px" caption="A photo of the Wanptek 30V 10A PSU.[^aliexpress-wanptek-30v-10a-psu]" %}}
 
 {{% aside type="warning" %}}
 
@@ -47,7 +47,7 @@ Tenma PSUs are more generally more expensive than AliExpress PSUs but are still 
 
 The TENMA 72-2925 is a adjustable 0-30V, 0-10A benchtop power supply. As of Dec 2023 it costs approx. US$230.
 
-{{% figure src="tenma-72-2925-30v-10a-benchtop-psu.png" width="200px" caption="A photo of the TENMA 72-2925 benchtop PSU[^element14-tenma-72-2925]." %}}
+{{% figure src="_assets/tenma-72-2925-30v-10a-benchtop-psu.png" width="200px" caption="A photo of the TENMA 72-2925 benchtop PSU[^element14-tenma-72-2925]." %}}
 
 ## Oscilloscopes
 
@@ -126,7 +126,7 @@ Saleae is probably the most expensive well-known logic analyzer brand. As of Apr
 
 DreamSourceLab provides the _DSView_ software for viewing the digital signals from the _DSLogic_ series of logic analysers. _DSView_ is compatible with Windows, MacOS and Linux. It uses the _sigrok project_ to provide all of the protocol decoders and therefore supports many of the protocols listed on https://sigrok.org/wiki/Protocol_decoders.
 
-{{% figure src="dsview-v1.1.2-screenshot.png" width="700" caption="A screenshot of the DSView v1.1.2 software." %}}
+{{% figure src="_assets/dsview-v1.1.2-screenshot.png" width="700" caption="A screenshot of the DSView v1.1.2 software." %}}
 
 Whilst a setup `.exe` is provided for Windows and a `.dmg` for MacOS, no pre-built executables are provided for Linux, and you have to build yourself from the source code. Easy instructions are provided in the `INSTALL` text file.
 
@@ -137,8 +137,8 @@ Whilst a setup `.exe` is provided for Windows and a `.dmg` for MacOS, no pre-bui
 The Digilent Analog Discovery Pro 3000 series is an combined benchtop oscilloscope, function generator, I/O, and protocol/logic analyser. The ADP3450 is the cheaper member in the family, and the ADP5250 is the more expensive unit with additional power supplies, but lacks a 4-channel option.
 
 <div style="display: flex;">
-{{% figure src="digilent-analog-discovery-pro-adp3450-photo.png" width="400px" caption="A photo of the Analog Discovery Pro ADP3450[^bib-digilent-adp3450-ref-manual]." %}}
-{{% figure src="digilent-analog-discovery-pro-adp5250-photo.png" width="400px" caption="A photo of the Analog Discovery Pro ADP5250[^bib-digilent-adp5250-ref-manual]." %}}
+{{% figure src="_assets/digilent-analog-discovery-pro-adp3450-photo.png" width="400px" caption="A photo of the Analog Discovery Pro ADP3450[^bib-digilent-adp3450-ref-manual]." %}}
+{{% figure src="_assets/digilent-analog-discovery-pro-adp5250-photo.png" width="400px" caption="A photo of the Analog Discovery Pro ADP5250[^bib-digilent-adp5250-ref-manual]." %}}
 </div>
 
 The oscilloscope in the ADP3x50 has a bandwidth of 55MHz. Not as great as the 100MHz you usually get with low-end dedicated oscilloscopes, but still good enough for most general-purpose work. The max. sample rate is 1Msps The WaveForms SDK can be used to control the Analog Discovery Pro via software. Supported languages include C++, C# and Python[^bib-digilent-analog-discovery-pro-ref-manual].
@@ -165,7 +165,7 @@ AC and DC electronic loads are used to:
 
 The _TekBox TBOH02_ DC load is a great, simple, low-cost DC load. It is self-powered, meaning it powers itself from the energy dissipated via the "load" it pretends to be. 25W continuous power dissipation with no fan, 100W with fan. The advantage of it being an analogue, self-powered load means that there will be no digital/PSU/control-circuitry noise superimposed onto the measurements you are making.
 
-{{% figure src="tekbox-tboh02-active-dc-load-photo.jpg" width="300" caption="The TekBox TBOH02 Self-Powered Active Load. Image from https://www.tekbox.com/product/tboh02-self-powered-active-load/." %}}
+{{% figure src="_assets/tekbox-tboh02-active-dc-load-photo.jpg" width="300" caption="The TekBox TBOH02 Self-Powered Active Load. Image from https://www.tekbox.com/product/tboh02-self-powered-active-load/." %}}
 
 This device is open-source hardware (design is based of https://www.edn.com/precision-active-load-operates-as-low-as-2v/, however EDN's link to the PDF/schematics is broken as of 2021-06-22), the full schematics, board files and BOM are provided at https://www.tekbox.com/product/tboh02-self-powered-active-load/. Schematics and board files are in the Eagle file format.
 
@@ -181,11 +181,11 @@ As of 2016, their ICs are commonly found in good quality USB-to-serial hardware 
 
 USB-to-Serial converters introduce a fair bit of delays into serial communications. and depending on your latency requirements, this may effect your design.
 
-{{% figure src="ftdi-ic-send-serial-data-conditions-annotated.png" width="500" caption="The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms 'latency timer'. Image from 'FTDI – AN232B-04 – Data Throughput. Latency and Handshaking'." %}}
+{{% figure src="_assets/ftdi-ic-send-serial-data-conditions-annotated.png" width="500" caption="The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms 'latency timer'. Image from 'FTDI – AN232B-04 – Data Throughput. Latency and Handshaking'." %}}
 
 The below image is a screenshot of FTDI RX/TX data captured with a logic analyser. The computer was running Java code which sent an `0x02` response as soon as it received an `0x01` byte.
 
-{{% figure src="screenshot-fast-computer-response-ftdi-java-set-latency-timer.png" width="700" caption="FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The 'latency timer' on the FTDI IC has been reduced to 1ms, which gives a much faster response time from the computer (about 1.5ms delay)." %}}
+{{% figure src="_assets/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png" width="700" caption="FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The 'latency timer' on the FTDI IC has been reduced to 1ms, which gives a much faster response time from the computer (about 1.5ms delay)." %}}
 
 ### Drivers
 
@@ -237,6 +237,16 @@ Recommended accessories:
 
 * 144 LED Intensity-adjustable Ring Light for Stereo Microscopes with White Housing: https://amscope.com/products/led-144w-zk. This illuminates the work area and gives you great shadow-free light to look at the object at.
 
+### Desk Lamp with Magnifying Glass
+
+Another useful tool to have on your workbench is a desk lamp with a magnifying glass. Generally they have a relocatable magnifying glass on a flexible arm coupled with a illuminating ring around the perimeter of the magnifying glass. They are great for inspecting PCBs and for looking through when soldering small SMD components (as well as checking your rework after you have done it).
+
+These magnifiers are pretty cheap and can be found from many vendors. My favourite in New Zealand is this one shown below from Mighty Ape, which as of April 2024 only costs NZ$55. It is USB powered (which surprisingly gives a good amount of light!) and has in-cable controls to control the light intensity and colour (from yellow to white).
+
+{{% figure src="_assets/usb-light-with-magnifier-mighty-ape.png" width="700" caption="A USB desk lamp with magnifier from Mighty Ape[^mighty-ape-usb-magnifier]." %}}
+
+You can also get larger "dentist" style versions of these with longer booms, but for a larger price.
+
 ## Reflow Ovens
 
 ### The Infamous Puhui T-962 (and variants)
@@ -250,9 +260,9 @@ The T-962A has the same design except is a larger unit and provides and effectiv
     <tr><th>Model Number</th>   <th>Rated Power</th>  <th>Panel Area</th>   <th>Cost (1, approx.)</th>  <th>Image</th></tr>
   </thead>
   <tbody>
-    <tr><td>T-962</td>          <td>800W</td>         <td>180x235mm</td>    <td>US$200</td>             <td>{{% figure src="t-962-smd-reflow-oven-photo.png" width="200px" %}}</td></tr>
+    <tr><td>T-962</td>          <td>800W</td>         <td>180x235mm</td>    <td>US$200</td>             <td>{{% figure src="_assets/t-962-smd-reflow-oven-photo.png" width="200px" %}}</td></tr>
     <tr><td>T-962A</td>         <td>1500W</td>        <td>300x320mm</td>    <td></td>                   <td></td></tr>
-    <tr><td>T-962C</td>        <td>2900W</td>         <td>585x400mm</td>    <td>US$750</td>             <td>{{% figure src="t-962c-smd-reflow-oven-photo.png" width="200px" %}}</td></tr>
+    <tr><td>T-962C</td>        <td>2900W</td>         <td>585x400mm</td>    <td>US$750</td>             <td>{{% figure src="_assets/t-962c-smd-reflow-oven-photo.png" width="200px" %}}</td></tr>
   </tbody>
 </table>
 
@@ -271,7 +281,7 @@ Thermal cameras are great tools to have in an electronics lab for inspecting the
 * See how heat spread across a PCB
 * Detect if things are getting too hot
 * Work out where heat sinking is needed
-* Calculate {{% link text="thermal resistances" src="/pcb-design/thermal-design-for-pcbs" %}}.
+* Calculate [thermal resistances](pcb-design/thermal-design-for-pcbs).
 * Find short-circuits
 
 In the context of hand-held thermal cameras, 80x80 is a small number of pixels, 160x120 is moderate, and 640x480 is a large amount.
@@ -286,7 +296,7 @@ NETD: _Noise Equivalent Temperature Difference_: This is the minimum temperature
 
 Keysight has one range of handheld thermal cameras called TrueIR. Within this range there are 3 separate devices, with the key difference between them being the maximum measurement temperature. They all have a medium resolution of 160x120 pixels.
 
-{{% figure src="keysight-u5856a-marketing-photo.jpg" width="300" caption="A marketing photo for the Keysight U5856A thermal camera." %}}
+{{% figure src="_assets/keysight-u5856a-marketing-photo.jpg" width="300" caption="A marketing photo for the Keysight U5856A thermal camera." %}}
 
 A unique selling point of the Keysight TrueIR range is the small minimum focal distance of 100mm (most other hand-held thermal cameras have a minimum focal length of 300-500mm), which makes them especially useful for inspecting PCBs.
 
@@ -298,7 +308,7 @@ TrueIR Analysis And Reporting Tool
 
 Windows only. Includes ability to stream video from the IR camera when plugged in via USB cable.
 
-{{% figure src="keysight-trueir-analysis-reporting-tool-screenshot.png" width="600" caption="A screenshot of the Keysight TrueIR software tool." %}}
+{{% figure src="_assets/keysight-trueir-analysis-reporting-tool-screenshot.png" width="600" caption="A screenshot of the Keysight TrueIR software tool." %}}
 
 #### FLIR
 
@@ -308,7 +318,7 @@ I was not impressed with the FLIR software (called _Fluke Connect Desktop_). It 
 
 #### Optris
 
-{{% figure src="optris-xi-400-spot-finder-ir-camera-photo.jpg" width="500" caption="A photo of the Optris Xi 400 spot finder IR camera." %}}
+{{% figure src="_assets/optris-xi-400-spot-finder-ir-camera-photo.jpg" width="500" caption="A photo of the Optris Xi 400 spot finder IR camera." %}}
 
 #### Testo
 
@@ -389,11 +399,11 @@ A dual port soldering station. For use with the FM-2027 soldering iron which tak
 
 **Note that that tips are not truly quick change until you also purchase extra _Soldering Pencil Sleeves_**. These are proprietary hand-grips that slide onto the tip. Once each tip has one of these, you can quickly change tips by unclipping the sleeve + tip from the rest of the iron and inserting a new one. These sleeves also remove the need for using pliers or a rubber mat to remove hot tips.
 
-{{% figure src="hakko-soldering-pencil-sleeve-green.png" width="300" caption="A green soldering pencil sleeve from Hakko. You have to purchase one of these per tip before your soldering iron truly becomes 'quick change'. Image from https://nz.element14.com/hakko/b3219/soldering-pencil-sleeve-green/dp/1676853." %}}
+{{% figure src="_assets/hakko-soldering-pencil-sleeve-green.png" width="300" caption="A green soldering pencil sleeve from Hakko. You have to purchase one of these per tip before your soldering iron truly becomes 'quick change'. Image from https://nz.element14.com/hakko/b3219/soldering-pencil-sleeve-green/dp/1676853." %}}
 
 This soldering station can also accept Hakko tweezers. A great choice for popping off and on small 0402/0603/0805 chip resistors and capacitors is the FM-2023 Mini SMD Hot Tweezers with the T9-1L tips:
 
-{{% figure src="hm-2023-hakko-mini-hot-tweezers-with-t9-l1-tips.jpg" width="400" caption="Close up of the T9-1L tips on the Hakko FM-2023 Mini SMD Hot Tweezers. Great for popping on and off small 0402/0603/0805 chip resistors and capacitors." %}}
+{{% figure src="_assets/hm-2023-hakko-mini-hot-tweezers-with-t9-l1-tips.jpg" width="400" caption="Close up of the T9-1L tips on the Hakko FM-2023 Mini SMD Hot Tweezers. Great for popping on and off small 0402/0603/0805 chip resistors and capacitors." %}}
 
 #### Weller WT 1010
 
@@ -463,7 +473,7 @@ The main advantage is that the measuring device does not need to fully encircle 
 
 Aim has patents around it's fluxgate magnetometer based current probe, so it might be a while before other manufacturers make similar probes.
 
-{{% figure src="aim-i-prober-520-fluxgate-magnetometer-current-probe-with-scope.jpg" width="400" caption="The AIM I-Prober 520 current probe based on fluxgate magnetometer technology. Image from http://www.tti-test.com/." %}}
+{{% figure src="_assets/aim-i-prober-520-fluxgate-magnetometer-current-probe-with-scope.jpg" width="400" caption="The AIM I-Prober 520 current probe based on fluxgate magnetometer technology. Image from http://www.tti-test.com/." %}}
 
 ## EM Probes
 
@@ -471,15 +481,15 @@ Aim has patents around it's fluxgate magnetometer based current probe, so it mig
 
 The Beehive Electronics probes set contains three H-field probes (100A, 100B, 100C) and one E-field probe (100D). All are non-contact probes.
 
-{{% figure src="beehive-electronics-non-contact-em-probes-100-a-b-c-d.jpg" width="700" caption="The four non-contact EM probes made by Beehive Electronics. Three are for magnetic field measurement and one is for electric field measurement." %}}
+{{% figure src="_assets/beehive-electronics-non-contact-em-probes-100-a-b-c-d.jpg" width="700" caption="The four non-contact EM probes made by Beehive Electronics. Three are for magnetic field measurement and one is for electric field measurement." %}}
 
 The magnetic flux density can be calculated for the H-field probes using the equation below:
 
-{{% figure src="beehive-magnetic-em-probes-flux-density-equation.png" width="400" caption="The equation to work out the magnetic flux density as measured by any of the three magnetic EM probes made by Beehive Electronics." %}}
+{{% figure src="_assets/beehive-magnetic-em-probes-flux-density-equation.png" width="400" caption="The equation to work out the magnetic flux density as measured by any of the three magnetic EM probes made by Beehive Electronics." %}}
 
 The scale factors for each of the magnetic probes is given below:
 
-{{% figure src="beehive-magnetic-em-probes-scale-factors-and-resonance.png" width="600" caption="The scale factors and resonances for each of the three magnetic field probes made by Beehive Electronics." %}}
+{{% figure src="_assets/beehive-magnetic-em-probes-scale-factors-and-resonance.png" width="600" caption="The scale factors and resonances for each of the three magnetic field probes made by Beehive Electronics." %}}
 
 ## Flux
 
@@ -499,7 +509,7 @@ Flux activity is a measure of the strength/aggressiveness of the flux in it's ab
 
 Rosin fluxes are the oldest types of flux (well, charcoal was first!). Rosin is the name of refined **pine sap**. Rosin flux is typically a solid at room temperature, but quickly melts and flow easily at soldering temperatures. It is usually a light or dark amber colour. Rosin fluxes have a **low flux activity**.
 
-{{% figure src="rosin-flux-tin-kolophonium-loeten-photo.jpg" width="350" caption="A tin of rosin-based flux. Image from https://en.wikipedia.org." %}}
+{{% figure src="_assets/rosin-flux-tin-kolophonium-loeten-photo.jpg" width="350" caption="A tin of rosin-based flux. Image from https://en.wikipedia.org." %}}
 
 As such, it is usually inert while as a solid, and therefore **safe to leave** on the PCB after soldering. This is of course unless during normal operation the PCB temperature rises enough to melt the rosin flux.
 
@@ -507,7 +517,7 @@ Rosin fluxes are usually non-polar and therefore cannot be washed off with plain
 
 Some types of solder contain a rosin core to aid the soldering process, and saves you time because you do not have to apply the flux manually.
 
-{{% figure src="rosin-core-solder-firepower-60-40-photo.jpg" width="300" caption="A brand of solder which has a rosin-based flux core." %}}
+{{% figure src="_assets/rosin-core-solder-firepower-60-40-photo.jpg" width="300" caption="A brand of solder which has a rosin-based flux core." %}}
 
 For the chemically-minded people, rosin flux usually has a formula of:
 
@@ -547,7 +557,7 @@ Flux can be shipped in a syringe. The syringe tip is either a large-diameter (co
 
 Flux pens are permanent marker ("sharpies" for all the Americans) sized pens which contain flux inside them. The tip is made from a porous material which applies flux to the surface and draws more up via the capillary action (much like a normal pen). To promote proper flowing, fluxes used in flux pens are typically of a lower viscosity than the ones in syringes or standard containers.
 
-{{% figure src="solder-flux-pen-no-clean.jpg" width="700" caption="A no-clean solder flux pen from ChemTools (part number CT-NC-DP)." %}}
+{{% figure src="_assets/solder-flux-pen-no-clean.jpg" width="700" caption="A no-clean solder flux pen from ChemTools (part number CT-NC-DP)." %}}
 
 Flux pens are great to have on the work bench for quick, on-off flux applications for reworking. The tips are usually quite thick and do not offer the same precision as flux syringes, but normally this extra precision is not necessary (flux can be "slopped" around the board with little consequence).
 
@@ -567,3 +577,4 @@ It is generally not a good thing to inhale these fumes on a long term basis. Fum
 [^aliexpress-wanptek-30v-10a-psu]: Wanptek. _Wanptek Programmable DC Power Supply WPS3010H Laboratory Maintenance Workbench 30V 10A Voltage Current Regulator AC 220V 110V_. AliExpress. Retrieved 2023-12-29, from https://www.aliexpress.com/item/1005003151034729.html.
 [^wikipedia-extra-low-voltage]: Wikipedia (2023, Dec 12). _Extra-low voltage_. Retrieved 2023-12-29, from https://en.wikipedia.org/wiki/Extra-low_voltage.
 [^element14-tenma-72-2925]: Element14. _TENMA 72-2925 - Bench Power Supply, Digital Control , Adjustable, 1 Output, 0V, 30V, 0A, 10A_ [Product Page]. Retrieved 2023-12-29, from https://nz.element14.com/tenma/72-2925/dc-power-supply-1-ch-30v-10a-prog/dp/254306301.
+[^mighty-ape-usb-magnifier]: Mighty Ape. _Foldable Illuminated USB Magnifier - Black_ [product page]. Retrieved 2024-04-28, from https://www.mightyape.co.nz/product/foldable-illuminated-usb-magnifier-black/35641740.
