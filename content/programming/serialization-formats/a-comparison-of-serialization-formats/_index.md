@@ -27,7 +27,7 @@ Lets begin with a disclaimer: **There is no one-size-fits-all serialization form
 
 The examples in the following sections show how different formats store the same data. I chose a simple, repeatable data structure which was supported by all reviewed serialization formats (two `Pokemon` objects, each which had `id`, `name`, `age` and `address` fields). Note that many of these serialization formats can store non-repeatable, randomly structured data  (in fact, all can except CSV)., so in a way I am tailoring to the lowest common denominator, which influences the results.
 
-In each review section, a score between 1-3 is highlighted <span class="error">red</span>, 4-6 <span class="warning">orange</span>, and 6-10 <span class="ok">green</span>.
+In each review section, a score between 1-3 is highlighted <span class="bad">red</span>, 4-6 <span class="ok">orange</span>, and 6-10 <span class="good">green</span>.
 
 ## CSV
 
@@ -56,26 +56,26 @@ id, name, age, address
 <table>
     <thead>
         <tr>
-            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+            <th>Property</th>           <th style="width: 80px;">Value</th>      <th>Comment</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="ok">
+        <tr class="good">
             <td>Brevity</td>            <td>9/10</td>       <td>With only commas separating values, CSV is very concise for a human-readable format.</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Human Readability</td>  <td>5/10</td>       <td>CSV is readable, although it easy to get lost within a row with a large amount of data.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Language Support</td>   <td>9/10</td>       <td>CSV is wide support and is readable is almost every major language (and if there is no support, it is really easy to write a parser yourself!). Spreadsheet programs also love CSV files.</td>
         </tr>
-        <tr class="error">
+        <tr class="bad">
             <td>Data Structure Support</td><td>3/10</td>    <td>CSV only supports tabular/array-like data. It does not support dictionary/map-like data, nor relational data.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Speed</td>              <td>10/10</td>       <td>CSV is very fast to serialize/deserialize. When serializing/deserializing 10,000 small objects, CSV beat even Protobuf in Python, and was a close second to Protobuf in C++. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
-        <tr class="error">
+        <tr class="bad">
             <td>Standardization</td>    <td>3/10</td>       <td>CSV is not well standardized.</td>
         </tr>
     </tbody>
@@ -113,26 +113,26 @@ It is important to note that the JSON syntax does not support comments! This can
 <table>
     <thead>
         <tr>
-            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+            <th>Property</th>           <th style="width: 80px;">Value</th>      <th>Comment</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="ok">
+        <tr class="good">
             <td>Brevity</td>            <td>7/10</td>       <td>JSON has concise syntax, although not as concise as YAML and TOML in most situations.</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Human Readability</td>  <td>5/10</td>       <td>JSON is human-readable. It loses some marks because it does not support comments.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Language Support</td>   <td>9/10</td>       <td>JSON has very good language support.</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Data Type Support</td>  <td>6/10</td>       <td>JSON supports array and map (object) structures. It supports many different data types including strings, numbers, boolean, null, e.t.c, but not dates.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Speed</td>              <td>9/10</td>       <td>JSON is one of the fastest human-readable formats to serialize/deserialize that I reviewed. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Standardization</td>    <td>9/10</td>       <td>JSON has an official standards body. See <a href="https://www.json.org/">https://www.json.org/</a>.</td>
         </tr>
     </tbody>
@@ -158,26 +158,26 @@ The types of data that Protobuf can contain are well defined and include common 
 <table>
     <thead>
         <tr>
-            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+            <th>Property</th>           <th style="width: 80px;">Value</th>      <th>Comment</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="ok">
+        <tr class="good">
             <td>Brevity</td>            <td>9/10</td>       <td>Protobuf, being a binary format, is very concise. It also uses variable-bit encoding for data types such as integers to reduce the number of bytes when the numbers are small. Would get 10/10 if it implemented some type of encoding scheme.</td>
         </tr>
-        <tr class="error">
+        <tr class="bad">
             <td>Human Readability</td>  <td>1/10</td>       <td>Protobuf is not designed to be human-readable.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Language Support</td>   <td>7/10</td>       <td>Protobuf supports C, C++, C#, Dart, Go, Java, , Objective-C, PHP, Python and Ruby.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Data Type Support</td>  <td>8/10</td>       <td>Protobuf allows you to define data structures in .proto files. Protobuf supports many basic primitive types, which can be combined into classes, which can then be combined into other classes.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Speed</td>              <td>9/10</td>       <td>Protobuf is very fast, especially in C++ (relative to other serialization formats). See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Standardization</td>    <td>9/10</td>       <td>Protobuf is standardized by Google.</td>
         </tr>
     </tbody>
@@ -212,26 +212,26 @@ age = 56.78
 <table>
     <thead>
         <tr>
-            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+            <th>Property</th>           <th style="width: 80px;">Value</th>      <th>Comment</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="ok">
+        <tr class="good">
             <td>Brevity</td>            <td>7/10</td>       <td>TOML is quite concise, except for when it comes to arrays of tables.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Human Readability</td>  <td>9/10</td>       <td>One of TOML's primary goals was to be very easy to understand.</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Language Support</td>   <td>6/10</td>       <td>TOML is a relatively new serialization format and does not have the same number of libraries as say JSON, CSV or XML for various programming languages.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Data Type Support</td>  <td>9/10</td>       <td>TOML supports most common types of data including strings, integers, floats and dates. TOML does not support references like YAML does (probably because TOML aims to be simple).</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Speed</td>              <td>6/10</td>       <td>TOML is on the slower end of the spectrum, but is faster than YAML. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Standardization</td>    <td>9/10</td>       <td>TOML is well standardized.</td>
         </tr>
     </tbody>
@@ -273,26 +273,26 @@ XML supports both standard (DOM style) parsers and streaming (SAX style) parsers
 <table>
     <thead>
         <tr>
-            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+            <th>Property</th>           <th style="width: 80px;">Value</th>      <th>Comment</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="error">
+        <tr class="bad">
             <td>Brevity</td>            <td>3/10</td>       <td>XML is not known for being short and sweet.</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Human Readability</td>  <td>5/10</td>       <td>Human-readable, although you can get lost in-between all the tags in-front of your eyes.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Language Support</td>   <td>9/10</td>       <td>Supported in all major languages, usually with built-in libraries.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Data Type Support</td>  <td>9/10</td>       <td>XML is very flexible as each element can have attributes and arbitrary child elements.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Speed</td>              <td>8/10</td>       <td>XML is quite fast, although typically slower to parse than JSON. See the <a href="#speed-comparison-benchmarking">Speed Comparison Benchmarking section for more info.</a>.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Standardization</td>    <td>10/10</td>       <td>XML is standardized by the W3C. W3C also recommends the use of the XSD (<i>XML Schema Definition</i>, also referred to as WXS) as the primary schema for use with XML. </td>
         </tr>
     </tbody>
@@ -320,26 +320,26 @@ YAML is a strict super-set of JSON, which means you can parse JSON with a YAML p
 <table>
     <thead>
         <tr>
-            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+            <th>Property</th>           <th style="width: 80px;">Value</th>      <th>Comment</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="ok">
+        <tr class="good">
             <td>Brevity</td>            <td>9/10</td>       <td>Values can default to strings, allowing you to omit quote marks. It has terser syntax than TOML for arrays of objects (in TOML you have proceed each element with <code>[[array_name]]</code>).</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Human Readability</td>  <td>7/10</td>       <td>Basic YAML is really easy to read, however YAML's complexity can confuse a reader when using it's advanced features.</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Language Support</td>   <td>6/10</td>       <td>YAML is popular enough for there to be libraries for most popular languages, but it is not as ubiquitous as CSV or JSON.</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Data Type Support</td>  <td>10/10</td>       <td>YAML supports most common types of data including strings, integers, floats and dates. YAML even supports references (relational data) and external data!</td>
         </tr>
-        <tr class="error">
+        <tr class="bad">
             <td>Speed</td>              <td>2/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python (see the <a href="#speed-comparison-benchmarking">Speed Comparison section</a>) for more info).</td>
         </tr>
-        <tr class="ok">
+        <tr class="good">
             <td>Standardization</td>    <td>8/10</td>       <td>YAML is well standardized, but it can be hard to find extra functionality such as schema validators (I have had to reach for <a href="https://json-schema.org/">jsonschema</a> to validate YAML)..</td>
         </tr>
     </tbody>
