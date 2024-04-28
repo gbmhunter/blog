@@ -14,8 +14,8 @@ type: page
 
 Is it better to use a schema-based serialization format or a schemaless one for embedded systems? I generally think formats with schemas are a better fit for embedded systems, because:
 
-1. It allows for the creation of structs or classes in the embedded code that match the schema, which can be used to serialize and deserialize messages. Dynamic memory allocation, and without these schema created structs it can be hard to represent the data without dynamic memory allocation (which is avoided at runtime in many embedded systems).
-2. The schema provides a way of defining and documenting your "API" for the messages that are sent between devices. In typed languages this can improve the developer experience because your message types can be objects containing the message fields.
+1. It allows for the creation of structs or classes in the embedded code that match the schema, which can be used to serialize and deserialize messages. Without these schema created structs it can be hard to represent the data without dynamic memory allocation (which is avoided at runtime in many embedded systems).
+2. The schema provides a way of defining and documenting your "API" for the messages that are sent between devices. In typed languages this can improve the developer experience because your message types can be objects containing the message fields. The `.proto` file can also serve as a form of documentation for the messages (you can also create proper documentation from `.proto` files, e.g. see the GitHub repo [pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)).
 
 Schema based serialization formats include protobuf, Cap'n Proto, and FlatBuffers. Schemaless serialization formats include JSON, CBOR, and MessagePack.
 
@@ -56,6 +56,8 @@ Value Encoded Msg.
 protobuf supports a lot of nice types like `string` which is useful in the embedded world for serializing arbitrary length `char *`. It also supports `bytes` which is useful for serializing binary data. It also supports `repeated` which is useful for serializing arbitrary lengths of other types.
 
 One of it's downsides for embedded systems is the lack of small variable types. It provides `uint32` or `bytes` type (array of bytes), but no `uint8`, `uint16` or bitfields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using nanopb, by default `uint32`s, will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use smaller type (presumably an error is thrown during decoding if nanopb received an encoded number that doesn't fit in the smaller type).
+
+If the lack of smaller types is a show stopper for you, have a look at [bitproto](https://bitproto.readthedocs.io/en/latest/) (more on this in the [Alternatives](#alternatives) section).
 
 protobuf knows how to decode a sequence of received bytes into a message as long as you know:
 
@@ -166,9 +168,90 @@ If you decided to use the enum method to determine the message type, you would n
 If you are worried about how many extra bytes the escaping might add, take a look at [COBS (Constant Overhead Byte Stuffing)](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/). It's a clever method of escaping and framing which has a maximum escaping overhead of 1 byte per 254 bytes of data.
 {{% /aside %}}
 
-### nanopb
+## nanopb
 
-If the lack of smaller types is a show stopper for you, have a look at [bitproto](https://bitproto.readthedocs.io/en/latest/) (more on this in the [Alternatives](#alternatives) section).
+nanopb allows you to specify extra information in the `.proto` file to help it generate structs when compiling for C. This is useful for fields such as `string`, `repeated` and `bytes`, which are all variable length. If you don't specify anything, nanopb will expect you to use callbacks instead to handle the data as a stream. This is generally more cumbersome to work with than having fixed size members of message structs, so I strongly recommend specifying the extra options unless you have good reason not to.
+
+First you have to add:
+
+```proto
+import "nanopb.proto";
+```
+
+### max_size for bytes
+
+You can use `max_size` to specify the maximum size of a bytes field:
+
+```proto
+message Image {
+    bytes data = 1 [(nanopb).max_size = 256];
+}
+```
+
+nanopb will generate a struct with 256 bytes for the `data` field:
+
+```c
+typedef PB_BYTES_ARRAY_T(256) BinaryData_data_t;
+typedef struct _BinaryDataSet {
+    BinaryData_data_t data;
+} BinaryData;
+```
+
+### max_count for repeated
+
+You can use `max_count` to specify the maximum number of elements in a repeated field:
+
+```proto
+/**
+ * Represents a single x,y cartesian point.
+ */
+message Point {
+    uint32 x = 1; // x coordinate, in the rang [0, 1].
+    uint32 y = 2; // y coordinate, in the rang [0, 1].
+}
+
+message PointsArray {
+    repeated Point points = 1 [(nanopb).max_count = 10];
+}
+```
+
+nanopb will generate a struct with 10 elements for the `points` field, along with a `points_count` field to keep track of how many elements are in the array:
+
+```c
+typedef struct _Point {
+    uint32_t x; /* x coordinate, in the rang [0, 1]. */
+    uint32_t y; /* y coordinate, in the rang [0, 1]. */
+} Point;
+
+typedef struct _PointsArray {
+    pb_size_t points_count;
+    Point points[10];
+} PointsArray;
+```
+
+### max_length for string
+
+You can use `max_length` to set the max. length of a string field:
+
+```proto
+message HelloMsg {
+    string text = 1 [(nanopb).max_length = 40]; // The message text.
+}
+```
+
+nanopb will generate a struct with a `char` array of length 41 for the `text` field (+1 to allow for the null terminator):
+
+```c
+typedef struct _HelloMsgSet {
+    char text[41];
+} HelloMsg;
+```
+
+No length is needed because the string length is determined by the null character.
+
+These additional options don't prevent you from compiling the `.proto` file for Python e.t.c with the official compiler, but you do have make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language.
+
+Installing nanopb also provides a version of `protoc` (the official protobuf compiler) that you can use.
 
 ## Alternatives
 
