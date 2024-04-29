@@ -31,17 +31,18 @@ Confusingly, NXP names it's range of QFN packages with SOT... (e.g, SOT-662-1), 
 * `HVQFN`: NXP's name for a QFN with wettable flanks.
 * `LFCSP`: Analog Devices.
 * `MLF`: Micro-leadframe.
-* `MLP`: Fairchild Semiconductor[^bib-fairchild-an-5067-mpl-packages].
+* `MLP`: Fairchild Semiconductor[^fairchild-an-5067-mpl-packages].
 * `QFN-UT`: Samtech's name for ultra-thin QFN packages by Samtech.
 * `RSB`: Texas Instrument's drawing code for a QFN-40 package.
 * `RSN`: Texas Instrument's drawing code for a QFN-32, 8x8 pins, 4.15x4.15x0.80mm body, 0.40mm pitch package[^ti-bq25703a-battery-buck-boost-charger-ds].
 * `RQZ`: Texas Instrument's drawing code for a QFN-48, 7x7mm, 0.50mm pitch package.
 * `SOT....`: NXP's name for it's QFN range of packages, not this does not include packages such as the SOT-23, which are NOT QFN packages.
-* `T3B`: Microchip's code for a VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP package[^bib-microchip-sam-d21-ds].
-* `TMB`: Microchip's code for a VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP package[^bib-microchip-sam-d21-ds].
+* `SOT-762-1`: NXP's name for a QFN-16, 2.5x3.0mm, 0.5mm pitch EP package[^nxp-sot762-1].
+* `T3B`: Microchip's code for a VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP package[^microchip-sam-d21-ds].
+* `TMB`: Microchip's code for a VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP package[^microchip-sam-d21-ds].
 * `UFD`: Linear Technology's (now Analog Devices) code for a QFN-28, 5x4mm, 0.5mm pitch, 3.65x2.65mm EP[^linear-tech-lt3922-1].
-* `ZLG`: Atmel's code for a VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP package[^bib-microchip-sam-d21-ds].
-* `ZST`: Atmel's code for a VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP package[^bib-microchip-sam-d21-ds].
+* `ZLG`: Atmel's code for a VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP package[^microchip-sam-d21-ds].
+* `ZST`: Atmel's code for a VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP package[^microchip-sam-d21-ds].
 
 ## Variants
 
@@ -92,10 +93,6 @@ QFN-32: 7x7x1mm (LA: 49mm2)
 ## Solderability
 
 Surprisingly easy to solder by hand, as long as the pads extend around to the sides of the IC, and you drill a hole to solder the centre pad from the reverse. QFN packages can also be soldered easily with a infrared rework station or the "frying pan" technique.
-
-## Similar To
-
-* [SON (DFN)](/pcb-design/component-packages/son-component-package/)
 
 ## Solder Mask
 
@@ -163,12 +160,11 @@ Aside from the unique corner pins that QFN packages can have (as explained above
 {{% figure src="_assets/powerpak-mlp55-27l-vishay-component-dimensions.png" width="500px" caption="Dimensions of the \"PowerPAK\" MLP55-27L Vishay component package, another \"non-standard\" and very unique QFN-like package." %}}
 
 Another great example is ST Microelectronic's PWD13F60 high-voltage full-bridge with integrated gate driver IC. It comes in a `VFQFPN 10x13x1.0mm` package which contains a variety of pad shapes and sizes, as shown in the below image:
-
-{{% figure src="_assets/st-micro-pwd13f60-vfqfpn-3d-render.png" width="500px" caption="3D render of the VFQFPN 10x13x1.0mm package used for ST Microelectronic's PWD13F60 IC[^bib-st-pwd13f60-ds]." %}}
+{{% figure src="_assets/st-micro-pwd13f60-vfqfpn-3d-render.png" width="500px" caption="3D render of the VFQFPN 10x13x1.0mm package used for ST Microelectronic's PWD13F60 IC[^st-pwd13f60-ds]." %}}
 
 Want to see the recommended footprint for this IC? See below!
 
-{{% figure src="_assets/st-micro-pwd13f60-vfqfpn-recommended-footprint.png" width="700px" caption="The recommended footprint (land pattern) for the PWD13F60 in the VFQFPN 10x13x1.0mm package[^bib-st-pwd13f60-ds]." %}}
+{{% figure src="_assets/st-micro-pwd13f60-vfqfpn-recommended-footprint.png" width="700px" caption="The recommended footprint (land pattern) for the PWD13F60 in the VFQFPN 10x13x1.0mm package[^st-pwd13f60-ds]." %}}
 
 ## Standardization Of Pinout For Logic Functions
 
@@ -178,18 +174,18 @@ JEDEC has a standard on the pinout of QFN packages for logic functions.
 
 ## Wettable Flanks
 
-Component packages which have _wettable flanks_ have a step-cut lead frame and tin added to the sidewalls of the package. This allows a side fillet of solder to form more reliably, aiding automatic optical inspection (AOI)[^bib-ti-wettable-flanks] (QFN packages already had pad metallization on the side of the package, but no step-cut nor plating, and side-fillet formation was less reliable).
+Component packages which have _wettable flanks_ have a step-cut lead frame and tin added to the sidewalls of the package. This allows a side fillet of solder to form more reliably, aiding automatic optical inspection (AOI)[^ti-wettable-flanks] (QFN packages already had pad metallization on the side of the package, but no step-cut nor plating, and side-fillet formation was less reliable).
 
 <div style="display: flex;">
-{{% figure src="_assets/wettable-flank-qfn-component-package-underside-allegro.png" width="200px" caption="Model of the underside of a wettable flank QFN package. Image ©2017, Allegro MicroSystems[^bib-allegro-wettable-flanks]." %}}
-{{% figure src="_assets/wettable-flank-qfn-illustrated-cross-section-allegro.png" width="200px" caption="Illustrated cross-section of a wettable flank on a QFN package. Image ©2017, Allegro MicroSystems[^bib-allegro-wettable-flanks]." %}}
+{{% figure src="_assets/wettable-flank-qfn-component-package-underside-allegro.png" width="200px" caption="Model of the underside of a wettable flank QFN package. Image ©2017, Allegro MicroSystems[^allegro-wettable-flanks]." %}}
+{{% figure src="_assets/wettable-flank-qfn-illustrated-cross-section-allegro.png" width="200px" caption="Illustrated cross-section of a wettable flank on a QFN package. Image ©2017, Allegro MicroSystems[^allegro-wettable-flanks]." %}}
 </div>
 
 The QFN package is one of the most common packages for a manufacturer to add wettable flanks to. Wettable flanks was largely driven by the need to AOI in the automotive industry but this package feature is now found to be generally useful in a number of industries.
 
-{{% figure src="_assets/nxp-sot618-13dd-qfn-wettable-flanks-detail-drawing.png" width="400px" caption="Close-up detail drawing highlighting the wettable flanks on the SOT-618(DD) (QFN) component package by NXP. Image ©2018, NXP[^bib-nxp-sot618-13dd]." %}}
+{{% figure src="_assets/nxp-sot618-13dd-qfn-wettable-flanks-detail-drawing.png" width="400px" caption="Close-up detail drawing highlighting the wettable flanks on the SOT-618(DD) (QFN) component package by NXP. Image ©2018, NXP[^nxp-sot618-13dd]." %}}
 
-The tin plating of the flank prevents the traditionally exposed copper (a by-product of the sawing singulation of a single QFN package from a "brick") from oxidizing[^bib-allegro-wettable-flanks].
+The tin plating of the flank prevents the traditionally exposed copper (a by-product of the sawing singulation of a single QFN package from a "brick") from oxidizing[^allegro-wettable-flanks].
 
 ## Thermal Resistances
 
@@ -201,14 +197,20 @@ $$\begin{align}
 \theta_{JC} = 2.4^{\enspace \circ}C/W \\
 \end{align}$$
 
+## Similar To
+
+* [QFP](/pcb-design/component-packages/qfp-component-package/): Similar to QFN except QFP has gull-wing leads that protrude from the body. For the same pin count, QFP is larger than QFN.
+* [SON (DFN)](/pcb-design/component-packages/son-component-package/)
+
 ## References
 
-[^bib-ti-wettable-flanks]: David Snook (2018, Jan 23). _Make automatic optical inspection easy thanks to packages with wettable flanks_. Texas Instruments. Retrieved 2021-10-27, from https://e2e.ti.com/blogs_/b/behind_the_wheel/posts/make-automatic-optical-inspection-easy-thanks-to-packages-with-wettable-flanks.
-[^bib-allegro-wettable-flanks]: Bradley Smith (2017). _Wettable Flank Plated PQFN_. Allegro Microsystems. Retrieved 2021-10-27, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/semiconductor-packaging-publications/wettable-flank-plated-pqfn.
-[^bib-nxp-sot618-13dd]: NXP (2018). _SOT618-13(DD) HVQFN40, plastic thermal enhanced very thin quad flat package; no leads, wettable flanks; 40 terminals; 0.5 mm pitch, 6 mm x 6 mm x 0.85 mm body_. Retrieved 2021-10-28, from https://www.nxp.com/docs/en/package-information/SOT618-13(DD).pdf.
-[^bib-microchip-sam-d21-ds]: Microchip (2021). _SAM D21/DA1 Family Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM_ [Datasheet]. Retrieved 2022-03-02, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
-[^bib-fairchild-an-5067-mpl-packages]: Fairchild Semiconductor (2005, Sep). _PCB Land Pattern Design and Surface Mount Guidelines for MLP Packages_. Retrieved 2022-03-09, from http://educypedia.karadimov.info/library/AN-5067.pdf.
-[^bib-st-pwd13f60-ds]: ST Microelectronics (2017, Dec). _PWD13F60: High-density power driver - high voltage full bridge with integrated gate driver_ [Datasheet]. Retrieved 2022-04-19, from https://www.st.com/resource/en/datasheet/pwd13f60.pdf.
+[^ti-wettable-flanks]: David Snook (2018, Jan 23). _Make automatic optical inspection easy thanks to packages with wettable flanks_. Texas Instruments. Retrieved 2021-10-27, from https://e2e.ti.com/blogs_/b/behind_the_wheel/posts/make-automatic-optical-inspection-easy-thanks-to-packages-with-wettable-flanks.
+[^allegro-wettable-flanks]: Bradley Smith (2017). _Wettable Flank Plated PQFN_. Allegro Microsystems. Retrieved 2021-10-27, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/semiconductor-packaging-publications/wettable-flank-plated-pqfn.
+[^nxp-sot618-13dd]: NXP (2018). _SOT618-13(DD) HVQFN40, plastic thermal enhanced very thin quad flat package; no leads, wettable flanks; 40 terminals; 0.5 mm pitch, 6 mm x 6 mm x 0.85 mm body_. Retrieved 2021-10-28, from https://www.nxp.com/docs/en/package-information/SOT618-13(DD).pdf.
+[^microchip-sam-d21-ds]: Microchip (2021). _SAM D21/DA1 Family Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM_ [Datasheet]. Retrieved 2022-03-02, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
+[^fairchild-an-5067-mpl-packages]: Fairchild Semiconductor (2005, Sep). _PCB Land Pattern Design and Surface Mount Guidelines for MLP Packages_. Retrieved 2022-03-09, from http://educypedia.karadimov.info/library/AN-5067.pdf.
+[^st-pwd13f60-ds]: ST Microelectronics (2017, Dec). _PWD13F60: High-density power driver - high voltage full bridge with integrated gate driver_ [Datasheet]. Retrieved 2022-04-19, from https://www.st.com/resource/en/datasheet/pwd13f60.pdf.
 [^linear-tech-lt3922-1]: Linear Technology (now Analog Devices). _LT3922-1 - 36V, 2.3A Synchronous Step-Up LED Driver with 25,000:1 PWM Dimming_ [Datasheet]. Retrieved 2023-08-02, from https://nz.mouser.com/datasheet/2/609/lt3922_1-3123537.pdf.
 [^ti-bq25703a-battery-buck-boost-charger-ds]: Texas Instruments (2018, May). _bq25703A - I2C Multi-Chemistry Battery Buck-Boost Charge Controller With System Power Monitor and Processor Hot Monitor_ [Datasheet]. Retrieved 2023-08-02, from https://www.ti.com/lit/ds/symlink/bq25703a.pdf.
 [^digikey-renesas-isl84467irtz-t-ic-switch]: DigiKey. _ISL84467IRTZ-T - 4 Circuit IC Switch 2:1 400mOhm (Typ) 16-TQFN (3x3)_ [Product Page]. Retrieved 2023-08-02, from https://www.digikey.com/en/products/detail/renesas-electronics-america-inc/ISL84467IRTZ-T/1978117.
+[^nxp-sot762-1]: NXP (2019, Aug 2). _SOT762-1 - plastic, dual in-line compatible thermal enhanced very thin quad flat package; no leads; 14 terminals; 0.5 mm pitch; 2.5mm x 3 mm x 0.85 mm body_. Retrieved 2024-04-29, from https://www.nxp.com/docs/en/package-information/SOT762-1.pdf.
