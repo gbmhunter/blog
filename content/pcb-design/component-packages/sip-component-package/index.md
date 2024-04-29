@@ -3,6 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
+lastmod: 2024-04-29
 tags: [ "component packages", "PCB design", "SIP", "single inline package" ]
 title: SIP Component Package
 type: page
@@ -10,108 +11,25 @@ type: page
 
 ## Overview
 
+_SIP_ (Single Inline Package) is a older through-hole component package, commonly used for resistor networks and RAM chips. Similar to the DIP package except there are only one row of pins.
 
-<table >
-<tbody >
-<tr >
-<td >Name</td>
+{{% figure src="_assets/sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package." %}}
 
-<td >SIP (Single Inline Package)
-</td>
-</tr>
-<tr >
-<td >Synonyms</td>
-<td >n/a</td>
-</tr>
-<tr >
-<td >Variants</td>
-<td >n/a</td>
-</tr>
-<tr >
-<td >Similar To</td>
-<td >
-    <ul>
-        <li>[DIP](../dip-component-package)</li>
-        <li>[QIP](../qip-component-package)</li>
-    </ul>
-</td>
-</tr>
-<tr >
-<td >Mounting</td>
-<td >TH
-</td>
-</tr>
-<tr >
+## Resistor Networks
 
-<td >Pin Count
-</td>
+Resistor networks are one of the uses for the SIP package. They are used to save space on the PCB (compared to discrete resistors). The resistors are either isolated or connected to a common bus.
 
-<td >4-24
-</td>
-</tr>
-<tr >
+{{% figure src="_assets/bourns-4300r-series-resistor-network-configurations.png" width="800px" caption="The different configurations available for the Bourns 4300R series resistor networks available in the SIP package[^bourns-4300r-resistor-networks-ds]." %}}
 
-<td >Pitch
-</td>
+## Dimensions
 
-<td >2.54mm (100mill)
-</td>
-</tr>
-<tr >
+The SIP package has a pitch of 2.54mm (100mill). It commonly has a pin count of 4 to 24.
 
-<td >Solderability
-</td>
+## Similar To
 
-<td >Very easy to solder by hand.
-</td>
-</tr>
-<tr >
+* [DIP](/pcb-design/component-packages/dip-component-package/): DIP is the much more popular package with two rows of pins at a 2.54mm pitch.
+* [QIP](/pcb-design/component-packages/qip-component-package/): QIP has four rows of pins at a 2.54mm pitch.
 
-<td >Thermal Resistance
-</td>
+## References
 
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Land Area
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Height
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >n/a
-</td>
-</tr>
-</tbody>
-</table>
-
-## Comments
-
-Commonly used for resistor networks and RAM chips. Similar to the DIP package except there are only one row of pins.
-
-## Photos
-
-{{% figure src="sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package." %}}
+[^bourns-4300r-resistor-networks-ds]: Bourns. _4300R Series - Thick Film Molded SIPs_ [datasheet]. Retrieved 2024-04-29, from https://nz.mouser.com/datasheet/2/54/4300R-777281.pdf.

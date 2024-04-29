@@ -1,102 +1,48 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "PCB Design", "Component Packages" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2020-10-21
-description: "Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the PowerDI123 component package."
+description: Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the PowerDI123 component package.
 draft: false
-lastmod: 2020-10-21
-tags: [ "component packages", "PCB design", "PowerDI123", "diodes", "SOD-123" ]
-title: "PowerDI123 Component Package"
-type: "page"
+lastmod: 2024-04-29
+tags: [component packages, PCB design, PowerDI123, diodes, SOD-123]
+title: PowerDI123 Component Package
+type: page
 ---
 
 ## Overview
 
-<table>
-  <tbody>
-    <tr>
-      <td>Name</td>
-      <td>PowerDI123</td>
-    </tr>
-    <tr>
-      <td>Synonyms</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Variants</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Similar To</td>
-      <td>SOD-123</td>
-    </tr>
-    <tr>
-      <td>Mounting</td>
-      <td>SMD
-    </td>
-    </tr>
-    <tr>
-      <td>Pin Count</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>Pitch</td>
-      <td>3.05mm</td>
-    </tr>
-    <tr>
-      <td>Solderability</td>
-      <td>Easy enough to solder by hand.</td>
-    </tr>
-    <tr>
-      <td>Thermal Resistance</td>
-      <td>
-        <p>Device mounted on 25.4x25.4mm FR-4 PCB (10x10mm 1oz copper, minimum recommended pad layout on
-top layer and thermal vias to bottom layer ground plane)[^al5809-datasheet]:</p>
-        <ul>
-          <li>\( T_{JC} = 27.15°C/W \)</li>
-          <li>\( T_{JA} = 148.61°C/W \)</li>
-        </ul>
-        <p>When mounted on 50.8mm x 50.8mm GETEK PCB with 25.4mm x 25.4mm copper pads[^al5809-datasheet]:</p>
-        <ul>
-          <li>\( T_{JC} = 17.81°C/W \)</li>
-          <li>\( T_{JA} = 81.39°C/W \)</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>Dimensions</td>
-      <td>2.8x1.78x0.98mm</td>
-    </tr>
-    <tr>
-      <td>PCB Footprint</td>
-      <td>6.75mm2</td>
-    </tr>
-    <tr>
-      <td>3D Models</td>
-      <td>n/a</td>
-    </tr>
-    <tr>
-      <td>Common Uses</td>
-      <td>
-        <ul>
-          <li>Diodes</li>
-          <li>Constant-current LED drivers (shunt style)</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-PowerDI123 is a proprietary package by Diodes Incorporated.
+_PowerDI123_ is a proprietary component package by Diodes Incorporated. It is used for diodes and constant-current LED drivers (shunt style).
 
 ## Dimensions
 
-{{% figure src="powerdi123-component-package-dimensions.png" width="800px" caption="The dimensions for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
+{{% figure src="_assets/powerdi123-component-package-dimensions.png" width="800px" caption="The dimensions for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
 
-## Recommended Footprint
+2.8x1.78x0.98mm. Pitch 3.05 mm.
 
-{{% figure src="powerdi123-component-package-recommended-footprint.png" width="800px" caption="The recommended footprint for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
+## Footprint
+
+{{% figure src="_assets/powerdi123-component-package-recommended-footprint.png" width="800px" caption="The recommended footprint for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
+
+The footprint occupies a land area of 6.75mm2.
+
+## Thermal Resistance
+
+Device mounted on 25.4x25.4mm FR-4 PCB (10x10mm 1oz copper, minimum recommended pad layout on
+top layer and thermal vias to bottom layer ground plane)[^diodes-inc-al5809-ds]:
+
+* \( T_{JC} = 27.15°C/W \)
+* \( T_{JA} = 148.61°C/W \)
+
+When mounted on 50.8mm x 50.8mm GETEK PCB with 25.4mm x 25.4mm copper pads[^diodes-inc-al5809-ds]:
+
+* \( T_{JC} = 17.81°C/W \)
+* \( T_{JA} = 81.39°C/W \)
+
+## Similar To
+
+* [SOD-123](/pcb-design/component-packages/sod-123-component-package/)
 
 ## References
 
-[^al5809-datasheet]: <https://www.diodes.com/assets/Datasheets/AL5809.pdf>
+[^diodes-inc-al5809-ds]: Diodes Incorporated (2016, Dec). _AL5809 - 60V Two Terminal Constant Current LED Driver - PowerDI_ [datasheet]. Retrieved 2024-04-29, from https://www.diodes.com/assets/Datasheets/AL5809.pdf.

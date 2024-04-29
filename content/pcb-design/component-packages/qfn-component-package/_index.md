@@ -1,11 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, PCB Design, Component Packages ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2014-12-04
 description: Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package.
 draft: false
 lastmod: 2023-08-02
-tags: [ component packages, PCB design, QFN, LFCSP, MLF, DO-214AC, solder paste, soldermask, singulation, voiding, lead styles, JEDEC, package stress ]
+tags: [component packages, PCB design, QFN, LFCSP, MLF, DO-214AC, solder paste, soldermask, singulation, voiding, lead styles, JEDEC, package stress]
 title: QFN Component Package
 type: page
 ---
@@ -14,7 +14,7 @@ type: page
 
 `QFN` is a family of SMD component packages with typically 12-108 leads. The QFN package is commonly used today for higher lead count ICs such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side). {{% ref "fig-qfn-16-with-ep-3d-model" %}} shows a typical QFN package with an equal number of leads on all sides and an exposed pad.
 
-{{% figure ref="fig-qfn-16-with-ep-3d-model" src="qfn-16-with-ep-3d-model.png" width="300px" caption="A 3D render of a typical QFN-16 package with an exposed pad on the bottom center[^digikey-renesas-isl84467irtz-t-ic-switch]." %}}
+{{% figure ref="fig-qfn-16-with-ep-3d-model" src="_assets/qfn-16-with-ep-3d-model.png" width="300px" caption="A 3D render of a typical QFN-16 package with an exposed pad on the bottom center[^digikey-renesas-isl84467irtz-t-ic-switch]." %}}
 
 QFN packages offer benefits over other packages for high-speed circuits, as well as high heat dissipation capabilities. QFN packages are lacking gull-wing leads (like that present on the QFP package), which create noise in high-speed applications. However because the package is sitting right on the surface of the PCB (or very close to it), they suffer more from mechanical/thermal stress than other SMD packages with larger stand-offs, such as the QFP package. 
 
@@ -107,12 +107,12 @@ Some QFN packages have an exposed metal feature on the underside to indicate pin
 
 It is recommended to reduce the amount of solder paste applied to the centre pad (also called the _mechanical pad_ or _thermal pad_) to prevent the QFN package from floating during reflow. A rule-of-thumb is to have between 50-80% coverage on the center pad (this obviously does not apply to QFN packages with no pad).
 
-{{% figure src="qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png" width="359px" caption="A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended)." %}}
-{{% figure src="qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png" width="340px" caption="A QFN-68 package with solder paste aperture reduction on the center pad (recommended)." %}}
+{{% figure src="_assets/qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png" width="359px" caption="A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended)." %}}
+{{% figure src="_assets/qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png" width="340px" caption="A QFN-68 package with solder paste aperture reduction on the center pad (recommended)." %}}
 
 It may be necessary to mask or plug vias in the center pad to prevent solder paste being carried through the via and away from the pad during reflow. Small holed vias (such as vias with a hole diameter of 0.3mm or less) do not normally cause a big problem.
 
-{{% figure src="qfn-footprint-with-solder-paste.jpg" width="500px" caption="A photo of a 0.5mm pitch QFN footprint on a circuit board with solder paste applied (applied manually with a free-standing stencil, so the alignment is not spot-on, but good enough). You can clearly see the windowing (16 windows in total) on the center pad to reduce the amount of solder paste." %}}
+{{% figure src="_assets/qfn-footprint-with-solder-paste.jpg" width="500px" caption="A photo of a 0.5mm pitch QFN footprint on a circuit board with solder paste applied (applied manually with a free-standing stencil, so the alignment is not spot-on, but good enough). You can clearly see the windowing (16 windows in total) on the center pad to reduce the amount of solder paste." %}}
 
 The central pad may not necessarily be electrically connected to anything.
 
@@ -125,7 +125,7 @@ There are two singulation methods for QFN packages:
 
 The main difference between these two singulation methods is the cross-sectional profile. **Punch singulation gives a tapered cross-section** (larger cross-section at the bottom than the top), while **sawn singulation gives a completely square cross-section**.
 
-{{% figure src="qfn-component-package-sawn-vs-punch-vs-col-singulation.png" width="573px" caption="Cross-sectional comparison of sawn and punch singulated QFN packages. Image from http://cache.freescale.com/files/analog/doc/app_note/AN1902.pdf." %}}
+{{% figure src="_assets/qfn-component-package-sawn-vs-punch-vs-col-singulation.png" width="573px" caption="Cross-sectional comparison of sawn and punch singulated QFN packages. Image from http://cache.freescale.com/files/analog/doc/app_note/AN1902.pdf." %}}
 
 Punch singulated QFN packages are JEDEC compliant.
 
@@ -139,36 +139,36 @@ Because the QFN package sits directly on the PCB and has no standoff, **they are
 
 ## Lead Styles
 
-{{% figure src="qfn-package-e-style-leads-fully-exposed-on-side-of-package.png" width="205px" caption="A QFN package with 'e' style leads which are fully exposed on the side of the package (this is a good thing)." %}}
+{{% figure src="_assets/qfn-package-e-style-leads-fully-exposed-on-side-of-package.png" width="205px" caption="A QFN package with 'e' style leads which are fully exposed on the side of the package (this is a good thing)." %}}
 
-{{% figure src="qfn-package-s-style-leads-not-exposed-on-side-of-package.png" width="207px" caption="A QFN package with 'S' style leads which are only partially exposed on the side of the package (this is a not a good thing)." %}}
-{{% figure src="qfn-package-wf-style-dimpled-leads.png" width="206px" caption="A QFN package with 'WF' style leads. They have dimples which allow for improved soldering." %}}
+{{% figure src="_assets/qfn-package-s-style-leads-not-exposed-on-side-of-package.png" width="207px" caption="A QFN package with 'S' style leads which are only partially exposed on the side of the package (this is a not a good thing)." %}}
+{{% figure src="_assets/qfn-package-wf-style-dimpled-leads.png" width="206px" caption="A QFN package with 'WF' style leads. They have dimples which allow for improved soldering." %}}
 
 ## Unique Corner Pins
 
 QFN packages exist in where the **corner pins have to be of a different shape** to all the others for **clearance reasons**. The only example of this I have ever seen is the package for the [IvenSense MPU-9250 IMU](https://www.invensense.com/products/motion-tracking/9-axis/mpu-9250/). It is a QFN package with 24 pins in a 3x3x1.0mm size with 6 0.40mm pitch pins on each edge. Because of the high pin density, the outer pins on each edge almost touch each other, and so a different pin shape is used. This also means you use a different pad shape for the package footprint.
 
-{{% figure src="qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png" width="306px" caption="The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape." %}}
+{{% figure src="_assets/qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png" width="306px" caption="The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape." %}}
 
-{{% figure src="qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png" width="260px" caption="The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller)." %}}
+{{% figure src="_assets/qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png" width="260px" caption="The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller)." %}}
 
 ## Completely Non-Standard QFN Packages
 
 Aside from the unique corner pins that QFN packages can have (as explained above), **some QFN packages are completely IC specific and do not follow the "standard" at all**. One example is the [MPM3620 which comes in a "QFN-20" component package](https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPM3620GQV/document_id/2092) ([^mps-mpm3620-non-standard-qfn-20-component-package]) which has changing pitch, different sized pins, bridged pins and internal pins near the bottom center of the package:
 
-{{% figure src="mps-mpm3620-non-standard-qfn-20-component-package.png" width="500px" caption="The package dimensions and recommended land pattern for the non-standard QFN-20 package used on the MPS MPM3620 step-down module." %}}
+{{% figure src="_assets/mps-mpm3620-non-standard-qfn-20-component-package.png" width="500px" caption="The package dimensions and recommended land pattern for the non-standard QFN-20 package used on the MPS MPM3620 step-down module." %}}
 
 `MLP` is a common package name used for "non-standard" QFN-like packages, an example is shown below:
 
-{{% figure src="powerpak-mlp55-27l-vishay-component-dimensions.png" width="500px" caption="Dimensions of the \"PowerPAK\" MLP55-27L Vishay component package, another \"non-standard\" and very unique QFN-like package." %}}
+{{% figure src="_assets/powerpak-mlp55-27l-vishay-component-dimensions.png" width="500px" caption="Dimensions of the \"PowerPAK\" MLP55-27L Vishay component package, another \"non-standard\" and very unique QFN-like package." %}}
 
 Another great example is ST Microelectronic's PWD13F60 high-voltage full-bridge with integrated gate driver IC. It comes in a `VFQFPN 10x13x1.0mm` package which contains a variety of pad shapes and sizes, as shown in the below image:
 
-{{% figure src="st-micro-pwd13f60-vfqfpn-3d-render.png" width="500px" caption="3D render of the VFQFPN 10x13x1.0mm package used for ST Microelectronic's PWD13F60 IC[^bib-st-pwd13f60-ds]." %}}
+{{% figure src="_assets/st-micro-pwd13f60-vfqfpn-3d-render.png" width="500px" caption="3D render of the VFQFPN 10x13x1.0mm package used for ST Microelectronic's PWD13F60 IC[^bib-st-pwd13f60-ds]." %}}
 
 Want to see the recommended footprint for this IC? See below!
 
-{{% figure src="st-micro-pwd13f60-vfqfpn-recommended-footprint.png" width="700px" caption="The recommended footprint (land pattern) for the PWD13F60 in the VFQFPN 10x13x1.0mm package[^bib-st-pwd13f60-ds]." %}}
+{{% figure src="_assets/st-micro-pwd13f60-vfqfpn-recommended-footprint.png" width="700px" caption="The recommended footprint (land pattern) for the PWD13F60 in the VFQFPN 10x13x1.0mm package[^bib-st-pwd13f60-ds]." %}}
 
 ## Standardization Of Pinout For Logic Functions
 
@@ -181,13 +181,13 @@ JEDEC has a standard on the pinout of QFN packages for logic functions.
 Component packages which have _wettable flanks_ have a step-cut lead frame and tin added to the sidewalls of the package. This allows a side fillet of solder to form more reliably, aiding automatic optical inspection (AOI)[^bib-ti-wettable-flanks] (QFN packages already had pad metallization on the side of the package, but no step-cut nor plating, and side-fillet formation was less reliable).
 
 <div style="display: flex;">
-{{% figure src="wettable-flank-qfn-component-package-underside-allegro.png" width="200px" caption="Model of the underside of a wettable flank QFN package. Image ©2017, Allegro MicroSystems[^bib-allegro-wettable-flanks]." %}}
-{{% figure src="wettable-flank-qfn-illustrated-cross-section-allegro.png" width="200px" caption="Illustrated cross-section of a wettable flank on a QFN package. Image ©2017, Allegro MicroSystems[^bib-allegro-wettable-flanks]." %}}
+{{% figure src="_assets/wettable-flank-qfn-component-package-underside-allegro.png" width="200px" caption="Model of the underside of a wettable flank QFN package. Image ©2017, Allegro MicroSystems[^bib-allegro-wettable-flanks]." %}}
+{{% figure src="_assets/wettable-flank-qfn-illustrated-cross-section-allegro.png" width="200px" caption="Illustrated cross-section of a wettable flank on a QFN package. Image ©2017, Allegro MicroSystems[^bib-allegro-wettable-flanks]." %}}
 </div>
 
 The QFN package is one of the most common packages for a manufacturer to add wettable flanks to. Wettable flanks was largely driven by the need to AOI in the automotive industry but this package feature is now found to be generally useful in a number of industries.
 
-{{% figure src="nxp-sot618-13dd-qfn-wettable-flanks-detail-drawing.png" width="400px" caption="Close-up detail drawing highlighting the wettable flanks on the SOT-618(DD) (QFN) component package by NXP. Image ©2018, NXP[^bib-nxp-sot618-13dd]." %}}
+{{% figure src="_assets/nxp-sot618-13dd-qfn-wettable-flanks-detail-drawing.png" width="400px" caption="Close-up detail drawing highlighting the wettable flanks on the SOT-618(DD) (QFN) component package by NXP. Image ©2018, NXP[^bib-nxp-sot618-13dd]." %}}
 
 The tin plating of the flank prevents the traditionally exposed copper (a by-product of the sawing singulation of a single QFN package from a "brick") from oxidizing[^bib-allegro-wettable-flanks].
 

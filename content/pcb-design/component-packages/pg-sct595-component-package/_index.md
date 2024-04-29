@@ -1,20 +1,20 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, PCB Design, Component Packages ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
 date: 2023-08-29
 description: Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the SOT-23 component package.
 draft: false
 lastmod: 2023-08-29
-tags: [ component packages, PG-SCT595 ]
+tags: [component packages, PG-SCT595]
 title: PG-SCT595 Component Package
 type: page
 ---
 
 ## Overview
 
-_PG-SCT595_ (_Plastic Green Semiconductor Transistor Package_) is a 5-lead gull-wing SMD component package used by Infineon. {{% ref "fig-pg-sct595-3d-render" %}} shows a 3D render of this package.
+_PG-SCT595_ (_Plastic Green Semiconductor Transistor Package_) is a 5-lead gull-wing SMD component package used by Infineon.
 
-{{% figure ref="fig-pg-sct595-3d-render" src="pg-sct595-3d-render.png" width="300px" caption="A 3D render of the PG-SCT595 package[^digikey-tls105b0mbhtsa1-product-page]." %}}
+{{% figure src="_assets/pg-sct595-3d-render.png" width="300px" caption="A 3D render of the PG-SCT595 package[^digikey-tls105b0mbhtsa1-product-page]." %}}
 
 The _Green_ in it's name refers to it being Pb-free and suitable for Pb-free soldering[^infineon-tls105b0mb-lin-reg-ds] (which is not special in 2023 --- most components are).
 
@@ -24,15 +24,15 @@ The _Green_ in it's name refers to it being Pb-free and suitable for Pb-free sol
 
 ## Dimensions
 
-{{% ref "fig-pg-sct595-package-dimensions" %}} shows the dimensions for the PG-SCT595 package.
+The below image shows the dimensions for the PG-SCT595 package:
 
-{{% figure ref="fig-pg-sct595-package-dimensions" src="pg-sct595-package-dimensions.png" width="800px" caption="The dimensions for the PG-SCT595 package[^infineon-bts3800sl-gate-driver-ds]." %}}
+{{% figure src="_assets/pg-sct595-package-dimensions.png" width="800px" caption="The dimensions for the PG-SCT595 package[^infineon-bts3800sl-gate-driver-ds]." %}}
 
 ## Recommended Land Pattern
 
-{{% ref "fig-pg-sct595-recommended-land-pattern" %}} shows the recommended land pattern and solder paste apertures.
+The below image shows the recommended land pattern and solder paste apertures:
 
-{{% figure ref="fig-pg-sct595-recommended-land-pattern" src="pg-sct595-recommended-land-pattern.png" width="700px" caption="The recommended land pattern and solder paste apertures for the PG-SCT595 package[^infineon-pg-sct595-5-1]." %}}
+{{% figure src="_assets/pg-sct595-recommended-land-pattern.png" width="700px" caption="The recommended land pattern and solder paste apertures for the PG-SCT595 package[^infineon-pg-sct595-5-1]." %}}
 
 ## Common Uses
 

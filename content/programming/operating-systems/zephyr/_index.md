@@ -4,8 +4,8 @@ date: 2020-04-19
 description: Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation.
 draft: false
 categories: [ Programming, Operating Systems ]
-lastmod: 2024-03-07
-tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS ]
+lastmod: 2024-04-29
+tags: [ programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth ]
 title: Zephyr
 type: page
 ---
@@ -1516,6 +1516,24 @@ Although different, Zephyr provides a similar service called the _Retention Syst
 Typically a partition called `storage_partition` is setup in the main flash for the NVS system to use. This can be defined in the board files.
 
 An official code example of the NVS can be found at https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c[^github-zephyr-nvs-code-example].
+
+### Bluetooth
+
+Nordic has contributed significantly to the Zephyr Bluetooth API ever since they adopted Zephyr as their official platform for the nRF52, nRF53 and nRF91 MCU families. 
+
+#### Update the LE Connection Interval
+
+After you are connected, you can call `bt_conn_le_param_update()` to update the Bluetooth connection interval. This is useful if you want to save power by increasing the connection interval when you don't need to send/receive data as often.
+
+```c
+struct bt_le_conn_param conn_param = { .interval_min = (708), .interval_max = (800), .latency = (0), .timeout = (400), };
+int rc = bt_conn_le_param_update(conn, &conn_param);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+`conn` is a pointer to a `struct bt_conn` which is the connection object. It's assumed you have that handy to pass in! The connection interval is in units of 1.25ms, so the above code sets the connection interval min. to 885ms and the max. to 1000ms. By default the min. and max were set to 15ms and 30ms respectively, so this is a significant slow down and results in good power savings for small battery powered devices. The timeout is in units of 10ms, so the above code sets the timeout to 4s. You can use the helper macro `BT_LE_CONN_PARAM()` to create the `struct bt_le_conn_param` object if you want.
+
+If you are a Bluetooth central device, these settings will take effect. If you a peripheral device, these settings are "suggestions". They are sent to the central device and it is up to the central device to accept them. The central device may reject them or choose other values.
 
 ## What Does A Basic Zephyr Firmware Application Look Like?
 
