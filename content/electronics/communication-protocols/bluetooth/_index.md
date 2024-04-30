@@ -1,9 +1,10 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 date: 2015-01-03
+description: "Standards, low energy (BLE), configurations, and more info on the Bluetooth communication protocol."
 draft: false
-lastmod: 2024-02-27
-tags: [ communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG ]
+lastmod: 2024-04-30
+tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG]
 title: Bluetooth
 type: page
 ---
@@ -44,7 +45,7 @@ Bluetooth 4.0 uses the server/client paradigm.
 
 ## Bluetooth Low Energy (BLE)
 
-Bluetooth Low Energy (BLE) is a Bluetooth protocol specifically designed for communication on low power devices that need to run for months or years of small batteries.
+_Bluetooth Low Energy_ (BLE) is a Bluetooth protocol specifically designed for communication on low power devices that need to run for months or years of small batteries. Active BLE connections can be maintained by a MCU with approx. 4-20uA of average current (depends on a lot of things, including connections settings and transmission power).
 
 ### Channels
 
@@ -57,6 +58,19 @@ _Advertising_ is when a BLE peripheral broadcasts packets to any device that wan
 Advertisement packets give you 31 bytes of data for application specific use.
 
 When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone send the device a _scan request_ packet, the the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process[^argenox-ble-advertising-primer]. 
+
+### Connections
+
+Connection settings:
+
+* Connection interval (min): 7.5ms to 4s[^silicon-labs-optimizing-current-ble]. Typically specified in units of 1.25ms.
+* Connection interval (max): 7.5ms to 4s. Typically specified in units of 1.25ms.
+* Latency: This is the latency of the peripheral. It allows the peripheral to skip N connection intervals if it doesn't have any data to send(i.e. not respond)[^silicon-labs-optimizing-current-ble]. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect as reducing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send.
+* Timeout: If no packets have been received in this time, the connection is considered lost.
+
+These connection settings are controlled by the Central device. However, the Peripheral can suggest connection parameters to the Central device. The Central device can choose to accept or reject them (or use different parameters). This is the reason a min. and a max. are given for the connection interval, it allows the peripheral to suggest a range and gives the Central device some flexibility in choosing the connection parameters.
+
+See the [Bluetooth section on the Zephyr page](/programming/operating-systems/zephyr/#bluetooth) for information on how to set these connection parameters on MCUs running the Zephyr RTOS.
 
 ### Beacons
 
@@ -106,3 +120,4 @@ Two types of encryption keys:
 [^bib-wikipedia-piconet]: Wikipedia (2021, May 16). _Piconet_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Piconet.
 [^bib-garg-bluetooth]: Vijay K. Garg (2007). _Wireless Personal Area Network — Bluetooth_. Wireless Communications & Networking. Retrieved 2023-05-24, from https://www.sciencedirect.com/book/9780123735805/wireless-communications-and-networking. 
 [^argenox-ble-advertising-primer]: Argenox. _BLE Advertising Primer_. Retrieved 2024-02-27, from https://www.argenox.com/library/bluetooth-low-energy/ble-advertising-primer/.
+[^silicon-labs-optimizing-current-ble]: Silicon Labs. _Optimizing Current Consumption in Bluetooth Low Energy Devices_. Retrieved 2024-04-30, from https://docs.silabs.com/bluetooth/3.2/general/system-and-performance/optimizing-current-consumption-in-bluetooth-low-energy-devices.

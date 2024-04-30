@@ -15,7 +15,7 @@ type: "page"
 
 `SOT-883` (Small-outline Transistor 883) is a 3-lead SMD component package that is very similar to a DFN package. It is also very similar to the [SOD-882 component package](/pcb-design/component-packages/sod-882-component-package/) (note: that's `SOD`, not `SOT`!). It has the same outside dimensions as the `SOD-882`, except with the addition of an extra pad. This presumably explains the transition from `SOD` to `SOT` -- the two pin package is used for diodes, whilst this three pin package is used for transistors.
 
-{{% figure src="sot-883-component-package-3d-render.png" width="300px" caption="" %}}
+{{% figure src="_assets/sot-883-component-package-3d-render.png" width="300px" caption="" %}}
 
 Synonyms:
 
@@ -52,15 +52,15 @@ onsemi (formally On Semiconductor) calls this package the `XDFN3`[^bib-on-semi-n
 
 ## 3D Render
 
-{{% figure src="sot-883-component-package-3d-render.png" width="400px" caption="A 3D render of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf." %}}
+{{% figure src="_assets/sot-883-component-package-3d-render.png" width="400px" caption="A 3D render of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf." %}}
 
 ## Package Dimensions
 
-{{% figure src="sot-883-component-package-dimensions.png" width="800px" caption="The dimensions of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf." %}}
+{{% figure src="_assets/sot-883-component-package-dimensions.png" width="800px" caption="The dimensions of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf." %}}
 
 ## Recommended Footprint
 
-{{% figure src="sot-883-component-package-recommended-footprint.png" width="800px" caption="The recommended PCB footprint for the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf." %}}
+{{% figure src="_assets/sot-883-component-package-recommended-footprint.png" width="800px" caption="The recommended PCB footprint for the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf." %}}
 
 ## References
 
