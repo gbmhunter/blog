@@ -2,6 +2,7 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design, Digital Logic ]
 date: 2012-08-06
+description: An overview of the different types of digital logic gates, including NOT, AND, NAND, OR, NOR, XOR, XNOR, and how they are constructed from diodes, transistors, and MOSFETs.
 draft: false
 lastmod: 2023-04-29
 images: [ /electronics/circuit-design/digital-logic/gates/cmos-nand-gate-screenshot.png ]
