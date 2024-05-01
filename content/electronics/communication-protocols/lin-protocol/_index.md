@@ -1,18 +1,19 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Communication Protocols" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
 date: 2012-12-13
 draft: false
-tags: [ "LIN", "communication protocol", "bit rate", "transmission distances", "node addressing", "standards" ]
-title: "LIN Protocol"
-type: "page"
+lastmod: 2012-12-13
+tags: [LIN, communication protocol, bit rate, transmission distances, node addressing, standards]
+title: LIN Protocol
+type: page
 ---
 
 ## Overview
 
 The LIN protocol is a serial, wired communications protocol for electronic devices. It consists of one master and one or more slaves, and does not support multiple masters.
 
-The LIN (local interconnect network) protocol was originally designed for localised communication within an automobile (for instance, between electrical devices in the door), while the CAM protocol was designed for global communication (e.g. from the back to the engine bay).
+The LIN (local interconnect network) protocol was originally designed for localised communication within an automobile (for instance, between electrical devices in the door), while the [CAN protocol](/electronics/communication-protocols/can-protocol/) was designed for global communication (e.g. from the back to the engine bay).
 
 It can be considered as a cross between the RS-232/UART and I2C protocols. It uses the open-drain, pull-up design of the [I2C protocol](/electronics/communication-protocols/i2c-communication-protocol/), but the start/stop bit and asynchronous timing of the [UART protocol](/electronics/communication-protocols/uart-communication-protocol).
 
@@ -44,10 +45,14 @@ Atmel makes SiP (System-in-Package) IC's such as the [ATA6624C](http://www.atmel
 
 Texas Instruments make LIN interface IC's, such as the [TPIC1021DR](http://www.ti.com/product/TPIC1021), which is a cheap (approx US$0.50, as of 2012), simple, SOIC-8, LIN bus driver.
 
-{{% figure src="lin-bus-example-schematic-ti-tpic1021-and-micro.png" caption="An example schematic using the Texas Instruments TPIC1021 LIN bus driver IC. Image from http://www.ti.com/lit/ds/slis113c/slis113c.pdf."  width="500px" %}}
+{{% figure src="_assets/lin-bus-example-schematic-ti-tpic1021-and-micro.png" caption="An example schematic using the Texas Instruments TPIC1021 LIN bus driver IC. Image from http://www.ti.com/lit/ds/slis113c/slis113c.pdf."  width="500px" %}}
 
 Texas Instruments MSP430 microcontrollers with the USCI_A (Universal Serial Communication Interface) peripheral support the LIN protocol. This includes the MSP430 Value Line (MSP430G2xx), MSP430 2 Series (MSP430F2xx), MSP430 4 Series, MSP430 5 Series, MSP430 6 Series and MSP430 Automotive Series.
 
-{{% figure src="ti-msp-430-micro-controller-usci-block.png" caption="The USCI_A hardware peripheral block in a MSP430 microcontroller. Image from http://www.ti.com/lit/ds/symlink/msp430g2153.pdf."  width="250px" %}}
+{{% figure src="_assets/ti-msp-430-micro-controller-usci-block.png" caption="The USCI_A hardware peripheral block in a MSP430 microcontroller. Image from http://www.ti.com/lit/ds/symlink/msp430g2153.pdf."  width="250px" %}}
 
 [Freescale's S08 automotive microcontrollers](http://www.freescale.com/webapp/sps/site/overview.jsp?code=8BITAUTO) have an SCIx peripheral, which support the LIN protocol.
+
+## Further Reading
+
+The [CAN Protocol](/electronics/communication-protocols/can-protocol/) is another protocol designed for automotive applications. Because of it's differential signalling, it is more robust than LIN and used for longer transmission distances and/or faster bit rates.

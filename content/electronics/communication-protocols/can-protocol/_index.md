@@ -69,9 +69,9 @@ Propagation delays due to long buses will eventually result in nodes sampling th
 
 There is a significant amount of contradictory information online on what CAN stub lengths are permissible. The various opinions are:
 
-* TI's SLLA270 states to minimize reflections, lengths of stubs should not exceed 1/3 of the critical length of a bus[^bib-ti-slla270-can-phy-layer-req]. The critical length is determined by the transition time of bits on the bus (which is determined by the driver), and the speed at which signals propagate down the bus.
-* Bueno Electric's _Maximum Cable Length For a CAN Bus_ page[^bib-bueno-electric-max-cable-len] gives a maximum cable stub length of 0.3mm for all speeds from 50kb/s to 1Mb/s.
-* and OnSemi[^bib-on-semi-topo-high-speed-can] give the following rule:
+* TI's SLLA270 states to minimize reflections, lengths of stubs should not exceed 1/3 of the critical length of a bus[^ti-slla270-can-phy-layer-req]. The critical length is determined by the transition time of bits on the bus (which is determined by the driver), and the speed at which signals propagate down the bus.
+* Bueno Electric's _Maximum Cable Length For a CAN Bus_ page[^bueno-electric-max-cable-len] gives a maximum cable stub length of 0.3mm for all speeds from 50kb/s to 1Mb/s.
+* and OnSemi[^on-semi-topo-high-speed-can] give the following rule:
     $$\begin{align}
     L_{STUB_MAX} = \frac{T_{PROP_SEG}}{50 \cdot T_{PROP(BUS)}}
     \end{align}$$
@@ -82,7 +82,7 @@ Some CAN bus drivers provide pins so that you can adjust their slew rate.
 
 For high-speed transmission on the CAN bus, **_termination resistors_ are required between the `CAN_H` and `CAN_L` wires at both ends of the cable**. However, make sure to only add them at the ends of the cable, **any CAN devices connected partway along the bus should not have termination resistors**. For a CAN bus in which devices may be arbitrarily connected and disconnected, it is common practise to add _switchable termination_, which can be connected manually with a typical mechanical switch or automatically controlled by firmware/software using an MOSFET-based switch or similar. Although required by the standard, termination resistors are not typically required for the CAN bus to function at slow speeds over small distances.
 
-Adding a single termination resistor of `120R` at each end of the bus is called _standard termination_. Sometimes a decoupling capacitor is also added in conjunction with the termination resistors. This is called _split termination_[^bib-ti-importance-of-termination-resistors], as you have to use two termination resistors instead of one, with the capacitor "splitting" them in two. Using this combination of resistors and capacitor makes a _low-pass filter_ for the common-mode noise on the bus, which has a corner frequency given by the equation[^bib-ti-importance-of-termination-resistors]:
+Adding a single termination resistor of `120R` at each end of the bus is called _standard termination_. Sometimes a decoupling capacitor is also added in conjunction with the termination resistors. This is called _split termination_[^ti-importance-of-termination-resistors], as you have to use two termination resistors instead of one, with the capacitor "splitting" them in two. Using this combination of resistors and capacitor makes a _low-pass filter_ for the common-mode noise on the bus, which has a corner frequency given by the equation[^ti-importance-of-termination-resistors]:
 
 $$\begin{align}
 f_{corner} = \frac{1}{2\pi \cdot R_{term/2} \cdot C_{split}}
@@ -102,23 +102,25 @@ This pin layout is also used for other CAN standards such as CANopen.
 
 ## Arbitration
 
-**The CAN network uses priority-based message arbitration**. Message arbitration is required because the CAN networks supports a multi-master bus configuration (i.e. no one master node controls all communication, any node is freely able to attempt to transmit at any time). Arbitration works like such:
+**The CAN network uses priority-based message arbitration**. Message arbitration is required because the CAN networks supports a multi-master bus configuration (i.e. no one master node controls all communication, any node is freely able to attempt to transmit at any time).
 
 The drivers to the CAN line(s) are open-drain. This means that if a node writes a 0 (dominant), it will over-write a 1 (recessive). This is also called a _wired AND_ configuration.
 
 {{% aside type="tip" %}}
-_Wired AND_ is a good way to allow physical arbitration to take place when multiple nodes to attempt to communicate at the same time. The [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/) is another protocol that uses this technique.
+_Wired AND_ is a good way to allow physical arbitration to take place when multiple nodes attempt to communicate at the same time. The [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/) is another protocol that uses this technique.
 {{% /aside %}}
+
+Arbitration works like such:
 
 * Both nodes starts to transmit, but each message has a different message ID. Both nodes also monitor the state of the bus.
 * At some point in time, because of the different message IDs, one node will try to transmit a 0 (dominant) while the other will try to transmit a 1 (recessive).
 * The node transmitting the 0 will detect the bus as 0, and will continue transmitting.
-* The node transmitting the 1 will detect the bus as 0, indicating that it has lost control (remember a 1 is recessive, and get's "overwritten" by a 1 due to the open-drain drive). This node will back-off, stop transmitting, and try again later.
+* The node transmitting the 1 will detect the bus as 0, indicating that it has lost control (remember a 1 is recessive, and get's "overwritten" by a 0 due to the open-drain drive). This node will back-off, stop transmitting, and try again later.
 
 After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
 
 {{% aside type="tip" %}}
-Car thieves have been cleverly using a special transmitter that also drives to the recessive level to override other messages on a vehicles CAN bus network, which has allowed them to break in and steal cars by accessing the CAN bus from the front headlights[^bib-ken-tindell-keyless-car-theft]. See [CAN Injection: Keyless Car Theft](https://kentindell.github.io/2023/04/03/can-injection/) for more info.
+Car thieves have been cleverly using a special transmitter that also drives to the recessive level to override other messages on a vehicles CAN bus network, which has allowed them to break in and steal cars by accessing the CAN bus from the front headlights[^ken-tindell-keyless-car-theft]. See [CAN Injection: Keyless Car Theft](https://kentindell.github.io/2023/04/03/can-injection/) for more info.
 {{% /aside %}}
 
 The below image shows arbitration happening with a real-world scope capture, by showing the changing dominant bus voltage as driving transceivers lose arbitration and "drop" off the bus. 
@@ -139,7 +141,7 @@ The below diagram shows the timing of a single CAN bit. **A single CAN bit is br
 . `SAMPLE_POINT`: This is the point in time in-between `PHASE_SEG_1` and `PHASE_SEG_2` at which the transceiver samples the value on the bus (recessive or dominant).
 . `PHASE_SEG_2`: Phase segment 2.
 
-{{% figure src="_assets/can-bit-timing.svg" width="900px" caption="Timing diagram of a single CAN bit." %}}
+{{% figure src="_assets/can-bit-timing.webp" width="900px" caption="Timing diagram of a single CAN bit." %}}
 
 Only one sample point is shown above, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at \(1t_q\) before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
 
@@ -157,11 +159,11 @@ Only one sample point is shown above, however **some transceivers support sampli
 
 IPT is the _information processing time_.
 
-Most CAN transceivers have the lengths of the bit segments configured so that they sample the bit between 75% and 87.5% of the time between the start of one bit and the beginning of the next bit[^bib-elektromotus-can-bus-topology-recommendations].
+Most CAN transceivers have the lengths of the bit segments configured so that they sample the bit between 75% and 87.5% of the time between the start of one bit and the beginning of the next bit[^elektromotus-can-bus-topology-recommendations].
 
 Because any CAN node may sample the bus as soon as `PROP_SEG` is over, the two way propagation of the signal between any two nodes on the bus must occur before the end of `PROP_SEG`. The below figure illustrates this between two nodes, one which is the transmitter and another which is the receiver. The signal has to propagate back from the receiver to the transmitter within this time because the transmitter needs to read back values from the bus during arbitration and the acknowledge bit.
 
-{{% figure src="_assets/can-bit-timing-prop-delay-between-two-nodes.svg" width="800px" caption="Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`." %}}
+{{% figure src="_assets/can-bit-timing-prop-delay-between-two-nodes.webp" width="800px" caption="Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`." %}}
 
 The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
 
@@ -169,7 +171,7 @@ The main limiting factor on the total bus length at a specific baud rate is the 
 
 ### Hard Synchronization
 
-_Hard synchronization_ occurs on the first recessive-to-dominant transition (the _start-of-frame_, or SOF) when the bus is idle[^bib-microchip-can-mod-bit-timing].
+_Hard synchronization_ occurs on the first recessive-to-dominant transition (the _start-of-frame_, or SOF) when the bus is idle[^microchip-can-mod-bit-timing].
 
 ### Resynchronization
 
@@ -181,7 +183,7 @@ Resynchronization is done on the recessive-to-dominant transitions that occur du
 * Transition occurs during `SYNC_SEG`: No adjustment.
 * Transition occurs after `SYNC_SEG`: `TQ` is added to `PHASE_SEG_1`.
 
-The amount of `TQ` added or subtracted depends on the _synchronization jump width_ (SJW, also called _resynchronization jump width_ or RJW[^bib-cia-bit-timing]). The SJW is usually a configurable (programmable) parameter of the CAN transceiver.
+The amount of `TQ` added or subtracted depends on the _synchronization jump width_ (SJW, also called _resynchronization jump width_ or RJW[^cia-bit-timing]). The SJW is usually a configurable (programmable) parameter of the CAN transceiver.
 
 TIP: Remember that the dominant state is driven, hence the recessive-to-dominant transition is always going to be sharper then the dominant-to-recessive transition, hence why the former edges are used for resynchronization.
 
@@ -202,7 +204,7 @@ This bit stuffing prevents serious clock drift when there a long sequences of ei
 * **Data Frames**: Used to transmit a data payload of up to 8 bytes. Very similar frame structure to a remote frame.
 * **Remote Frames**: Used to request data and possibly implement a request-response system (the CAN standard does not prescribe what they should be used for). Contains no data payload itself, and very similar frame structure to a data frame. In practise, remote frames are used very little in industry.
 * **Error Frames**: Transmitted when a node encounters an error during communication. An error frame contains only an error flag and an error delimiter. Error counters on numerous nodes are generally incremented when they detect error frames on the bus.
-* **Overload Frames:** If a CAN node receives messages faster than it can process them, then the CAN node can generate Overload Frames to delay the next data/remote frame. An overload frame contains two fields, an overload flag consisting of 6 dominant bits (hence it wins arbitration and prevents another data/remote frame), and then an overload delimiter of eight recessive bits. Error counters are not incremented when overload frames are detected[^bib-eecs-461-can]. 
+* **Overload Frames:** If a CAN node receives messages faster than it can process them, then the CAN node can generate Overload Frames to delay the next data/remote frame. An overload frame contains two fields, an overload flag consisting of 6 dominant bits (hence it wins arbitration and prevents another data/remote frame), and then an overload delimiter of eight recessive bits. Error counters are not incremented when overload frames are detected[^eecs-461-can]. 
 
 ### Frame Structure
 
@@ -259,7 +261,7 @@ There are two different message lengths supported by the CAN protocol.
 
 ## Errors
 
-There are 5 different types of errors defined by the CAN standard[^bib-kvaser-can-error-handling]:
+There are 5 different types of errors defined by the CAN standard[^kvaser-can-error-handling]:
 
 * **Bit Error**: The transmitter monitors the bus level as it sends bits. If the level is not the same as what it is transmitting, a bit error occurs. The one exception to this rule is that no bit errors are raised during the arbitration process as differences are to be expected during this phase. Physical layer error.
 * **Stuff Error**: If 5 consecutive bits of the same level have been transmitted, the transmitter will add a 6th bit of opposite polarity to the transmission (and the receivers remove this 6th bit). A _stuff error_ occurs if 6 or more consecutive bits of the same type are found. Physical layer error.
@@ -273,7 +275,7 @@ All CAN nodes will monitor the bus for the above errors. If a node detects an er
 
 To prevent fault CAN nodes from from permanently disturbing/blocking a CAN network, the CAN standard defines a somewhat sophisticated _fault confinement process_ that nodes much adhere to. This fault confinement process is usually implemented in CAN controllers/peripherals, such that the main application does not have to deal with this itself (many users of CAN systems may be unaware that these fault confinement processes even exist!).
 
-**Each CAN node maintains two error counters**, the _transmit error counter_ (TEC) and the _receive error counter_ (REC). A CAN node initially starts out in the _Error Active_ state. When either of the TEC or REC (error counters) goes above 127, the node will transition to the _Error Passive_ state. When the TEC (but not the REC) goes above 255, the node transitions to the _Bus Off_ state. A node will transmit different error flags depending on what error state it is in[^bib-kvaser-can-error-handling]:
+**Each CAN node maintains two error counters**, the _transmit error counter_ (TEC) and the _receive error counter_ (REC). A CAN node initially starts out in the _Error Active_ state. When either of the TEC or REC (error counters) goes above 127, the node will transition to the _Error Passive_ state. When the TEC (but not the REC) goes above 255, the node transitions to the _Bus Off_ state. A node will transmit different error flags depending on what error state it is in[^kvaser-can-error-handling]:
 
 * In the _Error Active_ state, a node will transmit _Active Error flags_ when it detects an error.
 * In the _Error Passive_ state, a node will transmit _Passive Error flags_ when it detects an error. It also has to wait 
@@ -285,7 +287,7 @@ An _Error Passive_ flag consists only of recessive bits, as to not disrupt any e
 
 **Adding/Subtracting From the Error Counters**
 
-The rules for adding to or subtracting from the error counters is rather complex[^bib-port-can-faq-errors]:
+The rules for adding to or subtracting from the error counters is rather complex[^port-can-faq-errors]:
 
 * When a receiver detects an error, the REC will be increased by 1, except when the detected error was a Bit Error during the sending of an Active error Flag or an Overload Flag.
 * When a receiver detects a dominant bit as the first bit after sending an Error Flag, the REC will be increased by 8.
@@ -307,7 +309,7 @@ Many CAN controllers provide status bits and interrupts (when the node transitio
 * An "error warning", when at least one of the error counters is above 96.
 * When the node is in the "Bus Off state".
 
-Once a node is in the Bus Off state, there are two ways the node can recover from this[^bib-can-connected-bus-off-state]:
+Once a node is in the Bus Off state, there are two ways the node can recover from this[^can-connected-bus-off-state]:
 
 * Automatically after 128 occurrences of 11 consecutive 'recessive' bits have been monitored on the bus. (BOSCH CAN 2.0B §8.12)
 * A node can start the recovery from »bus off« state only upon a user request. (ISO11898-1 §6.15)
@@ -349,7 +351,7 @@ ISO 11783 is title "Tractors and machinery for agriculture and forestry—Serial
 * ISO 11898-2:2016 - Specifies the high-speed physical media attachment (HS-PMA) component for the CAN bus.
 * ISO 11898-3:2006 - Specifies low-speed, fault tolerant CAN bus information transfer between road vehicles.
 
-ISO 11898 specifies a maximum bus length of 1km, but does allow the use of bridge-devices or repeaters to extend the bus beyond this[^bib-cia-can-physical-layer].
+ISO 11898 specifies a maximum bus length of 1km, but does allow the use of bridge-devices or repeaters to extend the bus beyond this[^cia-can-physical-layer].
 
 **Related to ISO 11898 is ISO 16845, which details test suites and test requirements** for checking CAN bus/controller conformance to the specs.
 
@@ -381,12 +383,6 @@ Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipm
 
 {{% figure src="_assets/can-bus-licensing-fee-highlighted-bosch.png" width="506px" caption="A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf." %}}
 
-### TVS Diodes
-
-There are [TVS diode components](/electronics/components/diodes) specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are \(12V\) and \(24V\) and common power dissipations are \(200-500W\).
-
-{{% figure src="_assets/can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
-
 ## NoCAN
 
 NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
@@ -413,13 +409,13 @@ DeviceNet cable typically consists of two shielded, twisted pairs. One pair has 
 
 ### TN82527
 
-The TN92527 (a.k.a just the _82527_) is an older CAN transceiver made by Intel[^bib-intel-82527]. It was Intel's first CAN controller that supported CAN Specification 2.0.
+The TN92527 (a.k.a just the _82527_) is an older CAN transceiver made by Intel[^intel-82527]. It was Intel's first CAN controller that supported CAN Specification 2.0.
 
 ### NXP 
 
-NXP makes a whole suite of CAN transceivers all starting with the part number `TJA1`. You can view their portfolio at https://www.nxp.com/products/interfaces/can-transceivers:MC_53485. A common transceiver for “low-speed CAN” is the TJA1054. NXP also make "Secure CAN" transceivers such as the `TJA115x` (these don't use cryptography but rather hardware ID validation with passlists/blocklists)[^bib-nxp-tja115x-secure-can].
+NXP makes a whole suite of CAN transceivers all starting with the part number `TJA1`. You can view their portfolio at https://www.nxp.com/products/interfaces/can-transceivers:MC_53485. A common transceiver for “low-speed CAN” is the TJA1054. NXP also make "Secure CAN" transceivers such as the `TJA115x` (these don't use cryptography but rather hardware ID validation with passlists/blocklists)[^nxp-tja115x-secure-can].
 
-{{% figure src="_assets/nxp-tja115x-secure-can-application-principle.png" width="500px" caption="The basic principle of the TJA115x Secure CAN range of CAN transceivers from NXP[^bib-nxp-tja115x-secure-can]." %}}
+{{% figure src="_assets/nxp-tja115x-secure-can-application-principle.png" width="500px" caption="The basic principle of the TJA115x Secure CAN range of CAN transceivers from NXP[^nxp-tja115x-secure-can]." %}}
 
 **TJA1052i**
 
@@ -449,9 +445,9 @@ A CAN bus _Controller_ is an IC which contains all the logic and data processing
 | Integrated Transceiver | No
 | Package                | DIP-28
 
-The _PCA82C200_ is "the" classic original CAN controller. It used a parallel interface (8 address lines + control lines). The [Phillips datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html) I found for this part dated back to October 1990[^bib-philips-pca82c200-ds].
+The _PCA82C200_ is "the" classic original CAN controller. It used a parallel interface (8 address lines + control lines). The [Phillips datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html) I found for this part dated back to October 1990[^philips-pca82c200-ds].
 
-{{% figure src="_assets/pca82c200-can-controller-block-diagram.png" width="800px" caption="Block diagram of the PCA82C200 CAN controller IC[^bib-philips-pca82c200-ds]." %}}
+{{% figure src="_assets/pca82c200-can-controller-block-diagram.png" width="800px" caption="Block diagram of the PCA82C200 CAN controller IC[^philips-pca82c200-ds]." %}}
 
 ### SJA1000
 
@@ -490,7 +486,7 @@ CAN bus transceivers only do the work of converting the CAN bus differential sig
 ### STM32
 
 bxCAN: Basic Extended CAN
-FDCAN: Flexible Data-rate CAN. Available on the STM32G0, STM32G4, STM32H7, STM32L5, STM32MP1[^bib-st-micro-an5348-fdcan-peripheral].
+FDCAN: Flexible Data-rate CAN. Available on the STM32G0, STM32G4, STM32H7, STM32L5, STM32MP1[^st-micro-an5348-fdcan-peripheral].
 
 ### ESP32
 
@@ -514,7 +510,7 @@ Receive mailboxes are configured with a receive mask that filter incoming frames
 
 **Real Mailbox Examples**
 
-* CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes[^bib-design-reuse-embedded-can-bus-controller].
+* CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes[^design-reuse-embedded-can-bus-controller].
 * STM32F microcontrollers with CAN peripherals have a number and transmit/receive mailboxes.
 
 ## CAN Bus Repeaters
@@ -547,17 +543,33 @@ One informative diagram in this document is the block-level architecture of the 
 
 {{% figure src="_assets/reference-ti-can-repeater-design-tida-01487.png" width="700px" caption="The block-level architecture of the CAN bus repeater design by Texas Instruments. Image from http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534." %}}
 
+## TVS Diodes
+
+There are [TVS diode components](/electronics/components/diodes) specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are \(12V\) and \(24V\) and common power dissipations are \(200-500W\).
+
+{{% figure src="_assets/can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
+
 ## USB to CAN Bus Dongles
 
 There are many USB to CAN Bus dongles on the market. They allow you to connect a standard computer up to a CAN bus so that you can transmit/receive data and also measure statistics such as bus utilization.
 
-One of the most popular CAN dongles is the PEAK PCAN-USB "CAN Interface for USB". It supports CAN baud rates from 5kbps to 1Mbps[^bib-peak-pcan-usb] and provides the CAN interface via a [D-Sub DE-9 connector](/electronics/components/connectors/d-subminiature-d-sub-connectors/) (pinout in accordance with CiA 303-1).
+One of the most popular CAN dongles is the PEAK PCAN-USB "CAN Interface for USB". It supports CAN baud rates from 5kbps to 1Mbps[^peak-pcan-usb] and provides the CAN interface via a [D-Sub DE-9 connector](/electronics/components/connectors/d-subminiature-d-sub-connectors/) (pinout in accordance with CiA 303-1).
 
-{{% figure src="_assets/peak-pcan-usb-photo.jpg" width="400px" caption="Product photo of the PEAK PCAN-USB USB to CAN bus dongle[^bib-peak-pcan-usb]." %}}
+{{% figure src="_assets/peak-pcan-usb-photo.jpg" width="400px" caption="Product photo of the PEAK PCAN-USB USB to CAN bus dongle[^peak-pcan-usb]." %}}
 
 ## CAN-FD
 
-CAN-FD stands for _CAN with flexible data-rate_. CAN-FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. The physical layer is kept the same (voltage levels and signalling), but the packet structure is changed. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^bib-cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^bib-st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
+CAN-FD stands for _CAN with flexible data-rate_. CAN-FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. The physical layer is kept the same (voltage levels and signalling), but the packet structure is changed. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
+
+The speed is only increased once arbitration is complete. This is because multiple nodes on the bus need to be synchronized during the arbitration phase. Once arbitration is complete, no synchronization is needed and thus data can be sent safely at a higher speed[^cia-can-fd-basic-idea].
+
+### Frame Structure
+
+Below is the arbitration and control field frame structure for a FEFF frame (29-bit ID). The black outline shows whether certain bits are dominant (d), recessive (r) or can be either.
+
+{{% figure src="_assets/can-fd-frame-structure-feff-arbitration-and-control-fields.webp" width="1000px" caption="The CAN FD FEFF frame structure showing the arbitration and control fields." %}}
+
+* BRS: Bit Rate Switch. This bit is used to indicate that the data phase of the frame will be transmitted at a higher bitrate than the arbitration phase.
 
 ## Further Reading
 
@@ -565,29 +577,29 @@ If you are looking for help interfacing with SocketCAN from the Linux command-li
 
 If you are looking for help controlling a SocketCAN interface from C software, see the [How To Use SocketCAN With C In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux/).
 
-A alternative communications protocol used in similar applications is the LIN protocol.
+A alternative communications protocol used in similar applications is the [LIN protocol](/electronics/communication-protocols/lin-protocol/).
 
 ## References
 
-[^bib-ti-importance-of-termination-resistors]: Griffith, John (2016, Jul 14). _Why are termination networks in CAN transceivers so important?_. Texas Instruments. Retrieved 2020-06-10, from https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers.
-[^bib-elektromotus-can-bus-topology-recommendations]: Elektromotus. _Elektromotus CAN bus topology recommendations
+[^ti-importance-of-termination-resistors]: Griffith, John (2016, Jul 14). _Why are termination networks in CAN transceivers so important?_. Texas Instruments. Retrieved 2020-06-10, from https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers.
+[^elektromotus-can-bus-topology-recommendations]: Elektromotus. _Elektromotus CAN bus topology recommendations
 v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf.
-[^bib-cia-can-physical-layer]: CiA. _CAN Physical Layer_. Retrieved 2021-05-06, from http://www.inp.nsk.su/~kozak/canbus/canphy.pdf.
-[^bib-design-reuse-embedded-can-bus-controller]: Design & Reuse. _CAN Bus Controller with Message Filter (Mailbox concept)_. Retrieved 2021-05-06, from https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01.
-[^bib-ti-slla270-can-phy-layer-req]: Corrigan, Steve (2008). _Application Report SLLA270: Controller Area Network Physical Layer Requirements_. Texas Instruments. Retrieved 2021-10-11 from https://www.ti.com/lit/an/slla270/slla270.pdf.
-[^bib-bueno-electric-max-cable-len]: Bueno Electric. _Maximum Cable Length For a CAN Bus_. Retrieved 20221-10-11, from https://www.buenoptic.net/encyclopedia/item/537-maximum-cable-length-for-a-can-bus.html.
-[^bib-on-semi-topo-high-speed-can]: OnSemi (2009, Jan). _AND8376/D:  AMIS-30660/42000 - Topology Aspects of a High-Speed CAN Bus_. Retrieved 2021-10-11, from https://www.onsemi.com/pub/collateral/and8376-d.pdf.
-[^bib-microchip-can-mod-bit-timing]: Richards, Pat (2001). _AN754: Understanding Microchip's CAN Module Bit Timing_. Microchip. Retrieved 2021-10-11, from http://ww1.microchip.com/downloads/en/appnotes/00754.pdf.
-[^bib-intel-82527]: Intel (1997, Dec). _82527 Serial Communications Controller Area Network Protocol_. Retrieved 2021-10-14, from http://www.nj7p.org/Manuals/PDFs/Intel/273150-001.PDF.
-[^bib-cia-bit-timing]: Taralkar, Meenanath (2012). _Computation of CAN Bit Timing Parameters Simplified_. CAN in Automation. Retrieved 2021-10-14, from https://www.can-cia.org/fileadmin/resources/documents/proceedings/2012_taralkar.pdf.
-[^bib-kvaser-can-error-handling]: Kvaser. _Kvaser CAN Protocol Course: CAN Error Handling_. Retrieved 2022-04-07, from https://www.kvaser.com/lesson/can-error-handling/.
-[^bib-port-can-faq-errors]: port (2021, Feb 8). _CanFaqErrors_. Retrieved 2022-04-07, from http://www.port.de/cgi-bin/CAN/CanFaqErrors.
-[^bib-can-connected-bus-off-state]: CAN connected (2018, Aug 21). _CAN Bus-Off condition/state_. Retrieved 2022-04-07, from http://www.can-wiki.info/doku.php?id=can_faq:can_bus_off.
-[^bib-peak-pcan-usb]: PEAK. _PCAN-USB: CAN Interface for USB (product page)_. Retrieved 2022-04-07, from https://www.peak-system.com/PCAN-USB.199.0.html.
-[^bib-espressif-esp32-twai]: Espressif. _ESP32 - API Reference - Two-Wire Automotive Interface (TWAI)_. Retrieved 2022-11-16, from https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html.
-[^bib-st-micro-an5348-fdcan-peripheral]: ST Microelectronics (2019, Oct). _AN5348 - Application Note - FDCAN peripheral on STM32 devices_. Retrieved 2022-11-16, from https://www.st.com/resource/en/application_note/an5348-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf.
-[^bib-cia-can-fd-basic-idea]: CiA. _CAN Knowledge > CAN FD - The basic idea_. Retrieved 2022-11-16, from https://www.can-cia.org/can-knowledge/can/can-fd/.
-[^bib-eecs-461-can]: J. A. Cook, J. S. Freudenberg. _EECS 461 - Controller Area Network (CAN)_. University of Michigan. Retrieved 2022-11-17, from https://www.eecs.umich.edu/courses/eecs461/doc/CAN_notes.pdf.
-[^bib-nxp-tja115x-secure-can]: NXP. _SECURCANTRLFUS REV 3 - NXP TJA115x Secure CAN Transceiver Family_. Retrieved 2022-11-17, from https://www.nxp.com/docs/en/fact-sheet/SECURCANTRLFUS.pdf.
-[^bib-philips-pca82c200-ds]: Philips (now NXP). _PCA82C200 - Stand-alone CAN-controller (datasheet)_. Retrieved 2022-11-23, from https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html.
-[^bib-ken-tindell-keyless-car-theft]: Ken Tindell (2023, Apr 3). _CAN Injection: keyless car theft_. CANIS CTO Blog. Retrieved 2023-05-01, from https://kentindell.github.io/2023/04/03/can-injection/.
+[^cia-can-physical-layer]: CiA. _CAN Physical Layer_. Retrieved 2021-05-06, from http://www.inp.nsk.su/~kozak/canbus/canphy.pdf.
+[^design-reuse-embedded-can-bus-controller]: Design & Reuse. _CAN Bus Controller with Message Filter (Mailbox concept)_. Retrieved 2021-05-06, from https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01.
+[^ti-slla270-can-phy-layer-req]: Corrigan, Steve (2008). _Application Report SLLA270: Controller Area Network Physical Layer Requirements_. Texas Instruments. Retrieved 2021-10-11 from https://www.ti.com/lit/an/slla270/slla270.pdf.
+[^bueno-electric-max-cable-len]: Bueno Electric. _Maximum Cable Length For a CAN Bus_. Retrieved 20221-10-11, from https://www.buenoptic.net/encyclopedia/item/537-maximum-cable-length-for-a-can-bus.html.
+[^on-semi-topo-high-speed-can]: OnSemi (2009, Jan). _AND8376/D:  AMIS-30660/42000 - Topology Aspects of a High-Speed CAN Bus_. Retrieved 2021-10-11, from https://www.onsemi.com/pub/collateral/and8376-d.pdf.
+[^microchip-can-mod-bit-timing]: Richards, Pat (2001). _AN754: Understanding Microchip's CAN Module Bit Timing_. Microchip. Retrieved 2021-10-11, from http://ww1.microchip.com/downloads/en/appnotes/00754.pdf.
+[^intel-82527]: Intel (1997, Dec). _82527 Serial Communications Controller Area Network Protocol_. Retrieved 2021-10-14, from http://www.nj7p.org/Manuals/PDFs/Intel/273150-001.PDF.
+[^cia-bit-timing]: Taralkar, Meenanath (2012). _Computation of CAN Bit Timing Parameters Simplified_. CAN in Automation. Retrieved 2021-10-14, from https://www.can-cia.org/fileadmin/resources/documents/proceedings/2012_taralkar.pdf.
+[^kvaser-can-error-handling]: Kvaser. _Kvaser CAN Protocol Course: CAN Error Handling_. Retrieved 2022-04-07, from https://www.kvaser.com/lesson/can-error-handling/.
+[^port-can-faq-errors]: port (2021, Feb 8). _CanFaqErrors_. Retrieved 2022-04-07, from http://www.port.de/cgi-bin/CAN/CanFaqErrors.
+[^can-connected-bus-off-state]: CAN connected (2018, Aug 21). _CAN Bus-Off condition/state_. Retrieved 2022-04-07, from http://www.can-wiki.info/doku.php?id=can_faq:can_bus_off.
+[^peak-pcan-usb]: PEAK. _PCAN-USB: CAN Interface for USB (product page)_. Retrieved 2022-04-07, from https://www.peak-system.com/PCAN-USB.199.0.html.
+[^espressif-esp32-twai]: Espressif. _ESP32 - API Reference - Two-Wire Automotive Interface (TWAI)_. Retrieved 2022-11-16, from https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html.
+[^st-micro-an5348-fdcan-peripheral]: ST Microelectronics (2019, Oct). _AN5348 - Application Note - FDCAN peripheral on STM32 devices_. Retrieved 2022-11-16, from https://www.st.com/resource/en/application_note/an5348-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf.
+[^cia-can-fd-basic-idea]: CiA. _CAN Knowledge > CAN FD - The basic idea_. Retrieved 2022-11-16, from https://www.can-cia.org/can-knowledge/can/can-fd/.
+[^eecs-461-can]: J. A. Cook, J. S. Freudenberg. _EECS 461 - Controller Area Network (CAN)_. University of Michigan. Retrieved 2022-11-17, from https://www.eecs.umich.edu/courses/eecs461/doc/CAN_notes.pdf.
+[^nxp-tja115x-secure-can]: NXP. _SECURCANTRLFUS REV 3 - NXP TJA115x Secure CAN Transceiver Family_. Retrieved 2022-11-17, from https://www.nxp.com/docs/en/fact-sheet/SECURCANTRLFUS.pdf.
+[^philips-pca82c200-ds]: Philips (now NXP). _PCA82C200 - Stand-alone CAN-controller (datasheet)_. Retrieved 2022-11-23, from https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html.
+[^ken-tindell-keyless-car-theft]: Ken Tindell (2023, Apr 3). _CAN Injection: keyless car theft_. CANIS CTO Blog. Retrieved 2023-05-01, from https://kentindell.github.io/2023/04/03/can-injection/.

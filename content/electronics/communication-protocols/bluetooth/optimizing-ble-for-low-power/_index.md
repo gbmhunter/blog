@@ -1,9 +1,9 @@
 ---
 authors: [Geoffrey Hunter]
 date: 2024-04-30
-description: ""
+description: "How to optimize Bluetooth Low Energy (BLE) for low power consumption. BLE is a Bluetooth protocol specifically designed for communication on low power devices that need to run for months or years off small batteries. With proper design, active BLE connections can be maintained by a microcontroller (MCU) with approx. 4-20uA of average current when running from 3.3V."
 draft: false
-lastmod: 2024-04-30
+lastmod: 2024-05-01
 tags: [BLE, low power, batteries, peripheral, central, bluetooth, Apple, iOS, advertising, latency, connection interval]
 title: Optimizing BLE for Low Power
 type: page
@@ -59,6 +59,10 @@ A screenshot of the BLE connection parameters from Apple's document is shown bel
 
 {{% figure src="_assets/apple-accessory-design-guidelines-ble-connection-parameters.png" width="600px" caption="The recommended BLE connection parameters from Apple's \"Accessory Design Guidelines for Apple Devices\"[^apple-accessory-design-guidelines]." %}}
 
+Silicon Labs provides an Excel spreadsheet which can validate your connection parameters to make sure they are within Apple's guidelines[^silicon-labs-apple-connection-parameters]. It can be downloaded from [here](https://docs.silabs.com/bluetooth/4.0/miscellaneous/mobile/selecting-suitable-connection-parameters-for-apple-devices).
+
+{{% figure src="_assets/silicon-labs-spreadsheet-for-verifying-ble-params-for-apple.webp" width="700px" caption="A screenshot of Silicon Labs' Excel spreadsheet for verifying BLE connection parameters for Apple devices." %}}
+
 ## Further Reading
 
 See the [Bluetooth page](/electronics/communication-protocols/bluetooth/) if you are interested in learning more about the Bluetooth protocol.
@@ -67,3 +71,4 @@ See the [Bluetooth page](/electronics/communication-protocols/bluetooth/) if you
 
 [^silicon-labs-optimizing-current-ble]: Silicon Labs. _Optimizing Current Consumption in Bluetooth Low Energy Devices_. Retrieved 2024-04-30, from https://docs.silabs.com/bluetooth/3.2/general/system-and-performance/optimizing-current-consumption-in-bluetooth-low-energy-devices.
 [^apple-accessory-design-guidelines]: Apple (2023, Oct 10). _Accessory Design Guidelines for Apple Devices - Release R21_. Retrieved 2024-04-30, from https://developer.apple.com/accessories/Accessory-Design-Guidelines.pdf.
+[^silicon-labs-apple-connection-parameters]: Silicon Labs. _Selecting Suitable Connection Parameters for Apple Devices_. Retrieved 2024-05-01, from https://docs.silabs.com/bluetooth/4.0/miscellaneous/mobile/selecting-suitable-connection-parameters-for-apple-devices.
