@@ -4,7 +4,7 @@ date: 2012-12-12
 description: Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol.
 categories: [Electronics, Communication Protocols]
 lastmod: 2023-05-01
-tags: [CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN-FD, NXP, Secure CAN]
+tags: [CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN FD, NXP, Secure CAN]
 title: CAN Protocol
 type: page
 ---
@@ -23,7 +23,7 @@ It was initially developed for use in the automotive industry. It provides prior
 
 * **CAN2.0A (ISO 11898):** Standardized as ISO 11898 in 1993. Supports standard frames (11-bit identifiers).
 * **CAN2.0B:** Released in 1995. Supports both standard and extended frames (11-bit and 29-bit identifiers). CAN 2.0B is backwards compatible with CAN 2.0A, with the exception that the CAN 2.0A controllers have to be updated to be aware of CAN 2.0B and have the _passive_ feature. If they don't, CAN 2.0A controllers will flag CAN 2.0B extended frame messages as errors.
-* **CAN-FD:** The "CAN with Flexible Data-rate" protocol. Protocol updated to change the meaning of different bits in the arbitration sequence, as well as the ability for the bit rate to be changed during the data part of the packet (it's generally increased).
+* **CAN FD:** The "CAN with Flexible Data-rate" protocol. Protocol updated to change the meaning of different bits in the arbitration sequence, as well as the ability for the bit rate to be changed during the data part of the packet (it's generally increased).
 
 ## CAN Bus Voltages
 
@@ -320,7 +320,7 @@ In either case, the node has to wait for 128 occurrences of 11 consecutive reces
 
 Most popular FPGA vendors provide pre-licensed (you don't have to pay anything to use it!) CAN controller IP cores for use within their FPGAs.
 
-Xilinx provides the [CAN 2.0B and CAN-FD Controller IP core](https://www.xilinx.com/products/intellectual-property/1-8dyf-2862.html) which is compatible with the Ultrascale, Zynq-7000, 7-series, 6-series and other Xilinx FPGAs.
+Xilinx provides the [CAN 2.0B and CAN FD Controller IP core](https://www.xilinx.com/products/intellectual-property/1-8dyf-2862.html) which is compatible with the Ultrascale, Zynq-7000, 7-series, 6-series and other Xilinx FPGAs.
 
 ## Standards
 
@@ -557,13 +557,20 @@ One of the most popular CAN dongles is the PEAK PCAN-USB "CAN Interface for USB"
 
 {{% figure src="_assets/peak-pcan-usb-photo.jpg" width="400px" caption="Product photo of the PEAK PCAN-USB USB to CAN bus dongle[^peak-pcan-usb]." %}}
 
-## CAN-FD
+## CAN FD
 
-CAN-FD stands for _CAN with flexible data-rate_. CAN-FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. The physical layer is kept the same (voltage levels and signalling), but the packet structure is changed. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
+CAN FD stands for _CAN with flexible data-rate_. CAN FD is an extension of the classic CAN2.0 protocol, started in 2011 by Bosch. The physical layer is kept the same (voltage levels and signalling), but the packet structure is changed. Some of the big improvements over CAN2.0 is the increase in the maximum data size per packet from 8 bytes to 64 bytes[^cia-can-fd-basic-idea], and the ability to increase the bitrate 8-fold during the data transfer (which means a data transfer rate of up to 8Mbit/s!). The bit rate returns to normal during the second arbitration phase.[^st-micro-an5348-fdcan-peripheral]. Both of these serve to increase the bandwidth of the CAN bus.
+
+With the introduction of CAN FD, the original CAN protocol is referred to as Classical CAN.
 
 The speed is only increased once arbitration is complete. This is because multiple nodes on the bus need to be synchronized during the arbitration phase. Once arbitration is complete, no synchronization is needed and thus data can be sent safely at a higher speed[^cia-can-fd-basic-idea].
 
 ### Frame Structure
+
+As with Classic CAN, CAN FD supports two different frame formats for the arbitration phase[^kvaser-can-fd-tutorial]:
+
+* FBFF: FD Base Frame Format - CAN FD with an 11-bit ID.
+* FEFF: FD Extended Frame Format - CAN FD with a 29-bit ID.
 
 Below is the arbitration and control field frame structure for a FEFF frame (29-bit ID). The black outline shows whether certain bits are dominant (d), recessive (r) or can be either.
 
@@ -603,3 +610,4 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^nxp-tja115x-secure-can]: NXP. _SECURCANTRLFUS REV 3 - NXP TJA115x Secure CAN Transceiver Family_. Retrieved 2022-11-17, from https://www.nxp.com/docs/en/fact-sheet/SECURCANTRLFUS.pdf.
 [^philips-pca82c200-ds]: Philips (now NXP). _PCA82C200 - Stand-alone CAN-controller (datasheet)_. Retrieved 2022-11-23, from https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html.
 [^ken-tindell-keyless-car-theft]: Ken Tindell (2023, Apr 3). _CAN Injection: keyless car theft_. CANIS CTO Blog. Retrieved 2023-05-01, from https://kentindell.github.io/2023/04/03/can-injection/.
+[^kvaser-can-fd-tutorial]: Kvaser. _CAN FD Protocol Tutorial_. Retrieved 2024-05-01, from https://www.kvaser.com/can-fd-protocol-tutorial/.
