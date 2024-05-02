@@ -563,11 +563,11 @@ CAN FD stands for _CAN with flexible data-rate_. CAN FD is an extension of the c
 
 With the introduction of CAN FD, the original CAN protocol is referred to as Classical CAN.
 
-The speed is only increased once arbitration is complete. This is because multiple nodes on the bus need to be synchronized during the arbitration phase. Once arbitration is complete, no synchronization is needed and thus data can be sent safely at a higher speed[^cia-can-fd-basic-idea].
+The speed is only increased once arbitration is complete. This is because multiple nodes on the bus might be writing (and need to be synchronized so they send and detect the same bits in the same bit period) during the arbitration phase. Once arbitration is complete, no synchronization is needed and thus data can be sent safely at a higher speed[^cia-can-fd-basic-idea]. The acknowledgment bit and the end of the packet is also sent the slower arbitration phase speed (again, multiple nodes might be writing it).
 
 ### Frame Structure
 
-As with Classic CAN, CAN FD supports two different frame formats for the arbitration phase[^kvaser-can-fd-tutorial]:
+As with Classic CAN, CAN FD supports two different frame formats for the arbitration phase, with 11-bit or 29-bit IDs[^kvaser-can-fd-tutorial]:
 
 * FBFF: FD Base Frame Format - CAN FD with an 11-bit ID.
 * FEFF: FD Extended Frame Format - CAN FD with a 29-bit ID.
