@@ -578,6 +578,18 @@ Below is the arbitration and control field frame structure for a FEFF frame (29-
 
 * BRS: Bit Rate Switch. This bit is used to indicate that the data phase of the frame will be transmitted at a higher bitrate than the arbitration phase.
 
+## TTCAN
+
+TTCAN (_Time-Triggered CAN_) is a protocol based of the classic CAN protocol. Instead of any node being able to attempt to send a message at any time, messages are sent at specific times. This allows for a more deterministic and predictable message delivery times, especially under heavy loads[^infineon-ttcan-getting-started].
+
+TTCAN uses the same physical layer as classical CAN (i.e. the wires and transceivers do not need to change)[^infineon-ttcan-getting-started]. However, the CAN controller needs to be changed to add support for TTCAN.
+
+A node is assigned as the Time Master (TM). It transmits a synchronization message at regular intervals. The sync point is taken to be the sampling point of the start-of-frame (SOF) bit of this synchronization message. All other nodes used this message to calculate their time slots (when they are allowed to send messages)[^kvaser-ttcan-explained].
+
+### Microcontroller Support
+
+Infineon's MultiCAN supports TTCAN. 
+
 ## Further Reading
 
 If you are looking for help interfacing with SocketCAN from the Linux command-line, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/).
@@ -611,3 +623,5 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^philips-pca82c200-ds]: Philips (now NXP). _PCA82C200 - Stand-alone CAN-controller (datasheet)_. Retrieved 2022-11-23, from https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html.
 [^ken-tindell-keyless-car-theft]: Ken Tindell (2023, Apr 3). _CAN Injection: keyless car theft_. CANIS CTO Blog. Retrieved 2023-05-01, from https://kentindell.github.io/2023/04/03/can-injection/.
 [^kvaser-can-fd-tutorial]: Kvaser. _CAN FD Protocol Tutorial_. Retrieved 2024-05-01, from https://www.kvaser.com/can-fd-protocol-tutorial/.
+[^kvaser-ttcan-explained]: Lars-Berno Fredriksson. _TTCAN Explained_. Kvaser. Retrieved 2024-05-16, from https://kvaser.com/wp-content/uploads/2014/08/ttcan-explained.pdf.
+[^infineon-ttcan-getting-started]: Infineon (2008, Aug). _Application Note, V1.2, Aug. 2008 - AP29006 - TC1796 - TTCAN Getting Started on TC1796-Board & Toolkits_. Retrieved 2024-05-16, from https://www.infineon.com/dgdl/ap2900612_TTCAN_GettingStarted.pdf?fileId=db3a30431c69a49d011cd7006a4d1316.

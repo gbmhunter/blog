@@ -283,6 +283,8 @@ Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://gith
 
 {{% figure src="_assets/bitproto-logo.png" width="200px" caption="The bitproto logo." %}}
 
+[NordicSemiconductor/zcbor](https://github.com/NordicSemiconductor/zcbor) is a C (it's also C++ compatible) CBOR library that uses CDDL to essentially provide a "schema" for defining the messages. C/C++ code is generated from this schema. As of May 2024, it has 100 stars on GitHub.
+
 ## References
 
 [^bitproto-homepage]: bitproto. _Homepage_. Retrieved 2024-04-24, from https://bitproto.readthedocs.io/en/latest/.
