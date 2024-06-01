@@ -2,7 +2,7 @@
 authors: [ Geoffrey Hunter ]
 date: 2024-03-24
 draft: false
-lastmod: 2024-03-25
+lastmod: 2024-06-01
 tags: [ Lightsail, Umami, analytics, server, AWS, https, docker, nginx, SSL, Google Analytics ]
 title: Running Umami on AWS Lightsail
 type: page
@@ -150,7 +150,7 @@ sudo docker compose up -d
 
 You should see output similar to shown in {{% ref "fig-umami-docker-up-command-worked" %}}.
 
-{{% figure ref="fig-umami-docker-up-command-worked" src="umami-docker-up-command-worked.png" width="500px" caption="Running \"sudo docker compose up -d\" and watching Docker pull the layers and start the database and application." %}}
+{{% figure ref="fig-umami-docker-up-command-worked" src="_assets/umami-docker-up-command-worked.png" width="500px" caption="Running \"sudo docker compose up -d\" and watching Docker pull the layers and start the database and application." %}}
 
 We can check that Umami is up and running with the following command:
 
@@ -163,6 +163,30 @@ This will make a request to your localhost at port `3000`. If it's working, you 
 ```html
 <!DOCTYPE html><html id="__next_error__"><head><meta charSet="utf-8"/> ...
 ```
+
+## Configure Umami to Start On Boot
+
+You'll likely want to configure the docker command above to run on boot. That way, if your server ever restarts for any reason, your server will start up and run without manually having to ssh into the server and start it manually.
+
+To do this, first create a new file in `/etc/init.d/` called `start-umami.sh` with the following contents:
+
+```shell
+docker compose -f /opt/umami/docker-compose.yml up -d
+```
+
+Save the file, and then make it executable:
+
+```shell
+sudo chmod +x /etc/init.d/start-umami.sh
+```
+
+Now you can add this script to the list of services that start on boot:
+
+```shell
+sudo update-rc.d start-umami.sh defaults
+```
+
+All done! Test this out by restarting the server and checking that Umami is running after the restart.
 
 ## Install nginx
 
