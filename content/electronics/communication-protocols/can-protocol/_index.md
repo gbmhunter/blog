@@ -586,9 +586,15 @@ TTCAN uses the same physical layer as classical CAN (i.e. the wires and transcei
 
 A node is assigned as the Time Master (TM). It transmits a synchronization message at regular intervals. The sync point is taken to be the sampling point of the start-of-frame (SOF) bit of this synchronization message. All other nodes used this message to calculate their time slots (when they are allowed to send messages)[^kvaser-ttcan-explained].
 
-### Microcontroller Support
+## Microcontroller Support
 
-Infineon's MultiCAN supports TTCAN. 
+### Infineon MultiCAN
+
+Infineon's MultiCAN supports TTCAN.
+
+### NXP FlexCAN
+
+The NXP FlexCAN peripheral supports Classic CAN, CAN FD and CAN 2.0 Version B[^nxp-mcuxpresso-flexcan].
 
 ## Further Reading
 
@@ -625,3 +631,4 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 [^kvaser-can-fd-tutorial]: Kvaser. _CAN FD Protocol Tutorial_. Retrieved 2024-05-01, from https://www.kvaser.com/can-fd-protocol-tutorial/.
 [^kvaser-ttcan-explained]: Lars-Berno Fredriksson. _TTCAN Explained_. Kvaser. Retrieved 2024-05-16, from https://kvaser.com/wp-content/uploads/2014/08/ttcan-explained.pdf.
 [^infineon-ttcan-getting-started]: Infineon (2008, Aug). _Application Note, V1.2, Aug. 2008 - AP29006 - TC1796 - TTCAN Getting Started on TC1796-Board & Toolkits_. Retrieved 2024-05-16, from https://www.infineon.com/dgdl/ap2900612_TTCAN_GettingStarted.pdf?fileId=db3a30431c69a49d011cd7006a4d1316.
+[^nxp-mcuxpresso-flexcan]: NXP. _MCUXpresso SDK API Reference Manual Rev. 0 - FlexCAN Peripheral and Driver Overview_. Retrieved 2024-05-27, from https://mcuxpresso.nxp.com/api_doc/dev/2337/a00096.html.
