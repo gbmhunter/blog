@@ -7,17 +7,27 @@ draft: false
 images: [_assets/cover-image.webp]
 lastmod: 2024-06-02
 tags: []
-title: Choosing Serial Numbers for Embedded Products
+title: Choosing Random Serial Numbers for Embedded Products
 type: page
 ---
 
-If you want to assign you own (and typically write it to non-volatile memory (NVM) like EEPROM or flash) you can go with an incrementing serial number. This works well as long as you have a centralized place to store the last used serial number, and don't have to generate serial numbers across factories at the same time. The downside is that it's an extra step in the assembly process, and you may already need to use MAC addresses for others reasons, so now you have two serial numbers to keep track of.
+## Overview
 
-If you are using a randomly generated number, the interesting question becomes "how large do I need the random number to be so that I have a very low chance of a collision"? This question can be answered with a dose of statistics and mathematics.
+Serial numbers are crucial for embedded devices that you want to individually track. They are used for uniquely identifying devices when talking to a server, warranty purposes and more. There a few ways to go about generating serial numbers. We'll first discuss a few different methods, and then dive into how to calculate the probability of a collision when using random serial numbers.
 
-One way to solve this is to consider comparing every serial number you generate with every other serial number. The number of serial numbers depends on how many products you plan on manufacturing. You can quite easily calculate the probability that any two serial numbers will be the same. 1 minus this gives you the probability that the two serial numbers were not the same. You can then consider iterating over all possible combinations of serial numbers. If, for every single comparison you did, the numbers did not collide, then you know that all of the serial numbers were unique. Every other branch of the "probability tree" would have at least one collision (or maybe more, that's why it easier to work out the single branch in which they are all unique).
+If you want to assign you own (and typically write it to non-volatile memory (NVM) like EEPROM or flash) you can go with an incrementing serial number. This works well as long as you have a centralized place to store the last used serial number, and don't have to generate serial numbers across factories at the same time. The downside is that it's an extra step in the assembly process, and you may already need to use MAC addresses for others reasons, so now you have two serial numbers to keep track of. Of course, another option across multiple sites is to prefix a unique ID with a site ID.
 
-So we need to know how many combinations of serial numbers there are. Because the order does not matter (comparing serial number 1 with serial number 2 is the same as comparing serial number 2 with serial number 1, we are dealing with true mathematical combinations and not permutations (read up on this if you need to learn about these concepts). The equation that tells you the number of combinations given the total number of items and the number of items in each sample is[^calculator-soup-combinations-calculator]:
+## Random Serial Numbers
+
+One option is to use randomly generated serial numbers. However, there is a chance that two serial numbers will be the same (unless of course you keep track of all previously generated serial numbers and regenerate if there is a collision).
+
+The interesting question becomes "how large do I need the random number to be so that I have a very low chance of a collision"? This question can be answered with a dose of statistics!
+
+One way to solve this is to consider comparing every serial number you generate with every other serial number. The number of serial numbers depends on how many products you plan on manufacturing. You can quite easily calculate the probability that any two serial numbers will be the same (e.g. the probability two random 32-bit serial numbers are the same is \(\frac{1}{2^{32}}\)). 1 minus this gives you the probability that the two serial numbers were not the same. You can then consider doing this for all possible combinations of serial numbers. If, for every single comparison you do, the numbers do not collide, then you know that all of the serial numbers were unique. Every other branch of the "probability tree" would have at least one collision (or maybe more, that's why it easier to work out the single branch in which they are all unique rather than all the branches in which at least 1 is not).
+
+## How Many Combinations?
+
+So we need to know how many combinations of serial numbers there are. Because the order does not matter (comparing serial number 1 with serial number 2 is the same as comparing serial number 2 with serial number 1), we are dealing with true mathematical combinations and not permutations (read up on this if you need to learn about these concepts). The equation that tells you the number of combinations given the total number of items and the number of items in each sample is[^calculator-soup-combinations-calculator]:
 
 $$
 C(n,\ r) = \frac{n!}{r!(n-r)!}
@@ -32,6 +42,8 @@ C(1000,\ 2) &= \frac{1000!}{2!(1000-2)!} \\
                   &= \frac{1000*999}{2!} \\
                   &= 499500 \\
 \end{align*}$$
+
+## Probability of a Collision
 
 Next you need to know what the probability of a single comparison of two serial numbers being the same is. If you had a 32-bit serial number, the probability of two serial numbers being the same is:
 
@@ -50,7 +62,9 @@ P(\text{any two are unique}) &= 1 - \frac{1}{2^{32}} \\
                              &= 0.999999999767169356 \\
 \end{align*}$$
 
-You then multiply this probability by itself 499500 times to get the probability that all serial numbers are unique. i.e.:
+## Probability of No Collisions For All Checks
+
+So we know the probability of a single check containing two unique numbers. You then multiply this probability by the number of checks you need to do (e.g. 499500 times with 100,000 serial numbers) to get the probability that all serial numbers are unique. i.e.:
 
 $$\begin{align*}
 P(\text{all are unique}) &= (P(\text{any two are unique}))^{499500} \\
@@ -68,7 +82,7 @@ P(\text{collision}) = 1 - P(\text{all are unique}) \\
 
 This is a 1 in 8600 chance of a collision.
 
-Putting it all together in symbolic form:
+Putting it all together in a generic/symbolic form:
 
 $$
 P(\text{collision}) = 1 - \left[(1-P(\text{any two are identical}))^{\dfrac{n*(n-1)}{2}}\right]
@@ -80,7 +94,9 @@ $$
 P(\text{collision}) = 1 - \left[(1-\dfrac{1}{2^{b}})^{\dfrac{n*(n-1)}{2}}\right]
 $$
 
-Where \(b\) is the number of bits in the serial number.
+Where \(b\) is the number of bits in the serial number. We can plot this:
+
+{{% figure src="_assets/probability-of-collision-32-bit.png" width="600px" caption="The probability of a collision when generating 32-bit random serial numbers for different numbers of devices." %}}
 
 {{% aside type="example" %}}
 
