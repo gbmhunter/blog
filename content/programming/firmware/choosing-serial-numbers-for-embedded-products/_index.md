@@ -33,6 +33,8 @@ The interesting question becomes "how large do I need the random number to be so
 
 One way to solve this is to consider comparing every serial number you generate with every other serial number. The number of serial numbers depends on how many products you plan on manufacturing. You can quite easily calculate the probability that any two serial numbers will be the same (e.g. the probability two random 32-bit serial numbers are the same is \(\frac{1}{2^{32}}\)). 1 minus this gives you the probability that the two serial numbers were not the same. You can then consider doing this for all possible combinations of serial numbers. If, for every single comparison you do, the numbers do not collide, then you know that all of the serial numbers were unique. Every other branch of the "probability tree" would have at least one collision (or maybe more, that's why it easier to work out the single branch in which they are all unique rather than all the branches in which at least 1 is not).
 
+{{% figure src="_assets/probability-tree.webp" width="1000px" caption="A probability tree showing the path to take which allows you to easily calculate the probability there are no collisions." %}}
+
 ## How Many Combinations?
 
 So we need to know how many combinations of serial numbers there are. Because the order does not matter (comparing serial number 1 with serial number 2 is the same as comparing serial number 2 with serial number 1), we are dealing with true mathematical combinations and not permutations (read up on this if you need to learn about these concepts). The equation that tells you the number of combinations given the total number of items and the number of items in each sample is[^calculator-soup-combinations-calculator]:

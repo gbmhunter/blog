@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker
 import numpy as np
 
+import util
+
 SCRIPT_PATH = Path(__file__).parent
 
 def main():
@@ -18,6 +20,7 @@ def main():
     ax.xaxis.set_major_formatter(ticker)
     ax.set_ylim(-0.1, 1.1)
     ax.grid()
+    util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_PATH / 'probability-of-collision-32-bit.png')
 
     numOfSerialNumbers = np.linspace(1, 1e12, 1000)
@@ -30,6 +33,7 @@ def main():
     ax.xaxis.set_major_formatter(ticker)
     ax.set_ylim(-0.1, 1.1)
     ax.grid()
+    util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_PATH / 'probability-of-collision-64-bit.png')
 
 def calcProbabilityOfCollision(numOfSerialNumbers, numOfBits):
