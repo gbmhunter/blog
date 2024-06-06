@@ -2,11 +2,11 @@
 authors: [Geoffrey Hunter]
 categories: [Programming, Firmware]
 date: 2024-06-02
-description: 
+description: What to consider when choosing serial numbers of embedded products, including the probability of a collision when using random serial numbers.
 draft: false
-images: [_assets/cover-image.webp]
-lastmod: 2024-06-02
-tags: []
+images: [_assets/probability-of-collision-32-bit.png]
+lastmod: 2024-06-06
+tags: [serial numbers, probability, statistics, firmware, software, ids, unique identifiers, random numbers, embedded systems, IoT, devices, combinations, permutations]
 title: Choosing Random Serial Numbers for Embedded Products
 type: page
 ---
@@ -29,119 +29,145 @@ Perhaps you want random numbers for serial numbers to obscure the number of devi
 
 One option is to use randomly generated serial numbers. However, there is a chance that two serial numbers will be the same (unless of course you keep track of all previously generated serial numbers and regenerate if there is a collision).
 
-The interesting question becomes "how large do I need the random number to be so that I have a very low chance of a collision"? This question can be answered with a dose of statistics!
+The interesting question becomes "how large do I need the random number to be so that I have a very low chance of a collision"? This question is also highly relevant to hash functions and the birthday problem. It can be answered with a dose of statistics which we'll cover below.
 
-One way to solve this is to consider comparing every serial number you generate with every other serial number. The number of serial numbers depends on how many products you plan on manufacturing. You can quite easily calculate the probability that any two serial numbers will be the same (e.g. the probability two random 32-bit serial numbers are the same is \(\frac{1}{2^{32}}\)). 1 minus this gives you the probability that the two serial numbers were not the same. You can then consider doing this for all possible combinations of serial numbers. If, for every single comparison you do, the numbers do not collide, then you know that all of the serial numbers were unique. Every other branch of the "probability tree" would have at least one collision (or maybe more, that's why it easier to work out the single branch in which they are all unique rather than all the branches in which at least 1 is not).
-
-{{% figure src="_assets/probability-tree.webp" width="1000px" caption="A probability tree showing the path to take which allows you to easily calculate the probability there are no collisions." %}}
-
-## How Many Combinations?
-
-So we need to know how many combinations of serial numbers there are. Because the order does not matter (comparing serial number 1 with serial number 2 is the same as comparing serial number 2 with serial number 1), we are dealing with true mathematical combinations and not permutations (read up on this if you need to learn about these concepts). The equation that tells you the number of combinations given the total number of items and the number of items in each sample is[^calculator-soup-combinations-calculator]:
+One way to solve this is to consider probabilities. Let \(P(A)\) be the probability that that at least one serial number is the same as another. It is easier to calculate the probability that all serial numbers are unique, and then subtract this from 1 to get the probability that at least one serial number is the same as another. Let's call the event \(P(B)\) the probability that all serial numbers are unique. Then:
 
 $$\begin{align*}
-C(n,\ r) = \frac{n!}{r!(n-r)!}
+P(A) = 1 - P(B)
 \end{align*}$$
 
-Where \(n\) is the total number of items, and \(r\) is the number of items in each sample.
-
-\(r\) is always \(2\) in this case. \(n\) is the total number of serial numbers you plan on generating. So if we were planning of making 1000 products, the number of combinations of serial numbers to compare would be:
+Let's assume we have four 8-bit serial numbers which can take on values from 0 to 255. The first serial number can never collide with anything, so it has a probability of being unique of \(\dfrac{256}{256}\) (1). The second serial number to be picked has a \(\dfrac{255}{256}\) chance of being unique. Assuming that was unique (conditional probability), the third serial number to be picked has a \(\dfrac{254}{256}\) chance of being unique. The fourth serial number to be picked has a \(\dfrac{253}{256}\) chance of being unique. Thus the probability that all four serial numbers are unique is:
 
 $$\begin{align*}
-C(1000,\ 2) &= \frac{1000!}{2!(1000-2)!} \\
-                  &= \frac{1000 \times 999}{2} \\
-                  &= 499500 \\
+P(B) &= \frac{256}{256} \times \frac{255}{256} \times \frac{254}{256} \times \frac{253}{256} \\
+     &= 0.977 \\
 \end{align*}$$
 
-{{% aside type="tip" %}}
-
-You might be wondering how \(\dfrac{1000!}{2!(1000-2)!}\) simplifies to \(\dfrac{1000 \times 999}{2!}\). Most calculators will not be able to handle \(1000!\)! Luckily, there is a handy simplification which makes the equation more managable:
+Then simply 1 minus this is the probability that there is a collision:
 
 $$\begin{align*}
-C(1000,\ 2) &= \frac{1000!}{2!(1000-2)!} \\
-            &= \frac{1000!}{2! \times 998!} \\
-            &= \frac{1000 \times 999 \times 998!}{2 \times 998!} \\
+P(A) &= 1 - P(B) \\
+     &= 1 - 0.977 \\
+     &= 0.023 \\
 \end{align*}$$
 
-The \(998!\) terms cancel out, leaving you with:
+So there is a 2.3% chance of a collision with four 8-bit serial numbers.
+
+## Generalizing The Equation
+
+We can generalize the equation above, for use in applicable real-world scenarios of 1,000+ devices and 32 or 64-bit serial numbers. For \(n\) devices and a serial number of \(b\) bits, the probability of a collision is:
 
 $$\begin{align*}
-\frac{1000 \times 999}{2}
+P(A) &= (1 - \frac{1}{2^b})(1 - \frac{2}{2^b}) \ldots (1 - \frac{n-1}{2^b}) \\
 \end{align*}$$
 
-This means you can simplify the combination equation when \(r = 2\) to the following:
+We can write a simple Python script to calculate this for any \(n\) and \(b\):
 
-$$\begin{align*}
-C(n,\ 2) = \frac{n\times (n-1)}{2}
-\end{align*}$$
+```python
+def calc_p_of_collision_exact(num_of_serial_nums, num_of_bits):
+    """
+    This is the exact formula for calculating the probability of a collision.
 
-{{% /aside %}}
+    However, it is very slow when num_of_serial_nums is > 100,000.
 
-## Probability of a Collision
+    :param num_of_serial_nums: The number of serial numbers.
+    :param num_of_bits: The number of bits in the serial number (e.g. 32 for a 32-bit serial number).
+    :return: The probability of a collision as a number in the range [0, 1].
+    """
+    probability_unique = 1.0
+    # You could probably use numpy here to speed things up
+    # (remove the loop and use np.prod() instead)
+    for i in range(1, num_of_serial_nums):
+        probability_unique *= 1 - (i / (2 ** num_of_bits))
 
-Next you need to know what the probability of a single comparison of two serial numbers being the same is. If you had a 32-bit serial number, the probability of two serial numbers being the same is:
+    return 1 - probability_unique
+```
 
-$$
-P(\text{any two are identical}) = \frac{1}{2^{32}}
-$$
-
-$$
-P(\text{any two are unique}) = 1 - P(\text{any two are identical})
-$$
-
-In the case of a 32-bit serial number, this probability is:
-
-$$\begin{align*}
-P(\text{any two are unique}) &= 1 - \frac{1}{2^{32}} \\
-                             &= 0.999999999767169356 \\
-\end{align*}$$
-
-{{% aside type="tip" %}}
-
-We are going to have to go to a large number of decimal places to make sure we don't loose precision! When doing these calculators make sure you use suitably sized floats.
-
-{{% /aside %}}
-
-## Probability of No Collisions For All Checks
-
-So we know the probability of a single check containing two unique numbers. You then multiply this probability by the number of checks you need to do (e.g. 499500 times with 1,000 serial numbers) to get the probability that all serial numbers are unique. i.e.:
-
-$$\begin{align*}
-P(\text{all are unique}) &= (P(\text{any two are unique}))^{499500} \\
-                         &= 0.999999999767169356^{499500} \\
-                         &= 0.999883707855937023 \\
-\end{align*}$$
-
-Now we just subtract this from 1 to get the probability that at least one serial number is the same as another:
-
-$$\begin{align*}
-P(\text{collision}) &= 1 - P(\text{all are unique}) \\
-                    &= 1 - 0.999883707855937023 \\
-                    &= 0.00011629214406297607843 \\
-\end{align*}$$
-
-This is a 1 in 8600 chance of a collision.
-
-Putting it all together in a generic/symbolic form:
-
-$$
-P(\text{collision}) = 1 - \left[(1-P(\text{any two are identical}))^{\dfrac{n \times (n-1)}{2}}\right]
-$$
-
-Where \(n\) is the total number of serial numbers and \(P(\text{any two are identical})\) is the probability that any two serial numbers are the same. In the case of using a fixed number of bits for the serial number, this probability equation becomes:
-
-$$
-P(\text{collision}) = 1 - \left[(1-\dfrac{1}{2^{b}})^{\dfrac{n \times (n-1)}{2}}\right]
-$$
-
-Where \(b\) is the number of bits in the serial number. We can plot this:
+We can plot this for a more realistic 32-bit serial number and a varying number of devices from 1 to 200,000 (200k):
 
 {{% figure src="_assets/probability-of-collision-32-bit.png" width="600px" caption="The probability of a collision when generating 32-bit random serial numbers for different numbers of devices." %}}
 
-You can see that we start running into significant issues with 32-bit random serial numbers as soon as we start manufacturing 1000's of devices. At 25,000 devices the probability of a collision is already at about 10%. We don't run into the same issue with 64-bit numbers. Below is the probability for 64-bit numbers, up to 1e12 device! (it's still a probability of almost 0 past this, it's just not worth plotting any further):
+You can see that we start running into significant issues with 32-bit random serial numbers as soon as we start manufacturing 1000's of devices. At 25,000 devices the probability of a collision is already at about 10%.
 
-{{% figure src="_assets/probability-of-collision-64-bit.png" width="600px" caption="The probability of a collision when generating 64-bit random serial numbers for different numbers of devices." %}}
+It seems like we will likely need more bits. What about 64-bit serial numbers? Unfortunately, the equation above gets very computationally expensive to solve for large numbers of \(n\) (because it loops over \(n\) devices it has \(O(n)\) time complexity). And with larger bit serial numbers we want to check larger \(n\) so see how capable it is! I tried running the above code for \(n = 1e9\) (1 billion devices) and \(b = 64\) but it took too long to compute. Luckily, there is an approximation we can use which works rather well[^wikipedia-birthday-problem]:
 
+$$\begin{align*}
+P(A) &\approx 1 - e^{-\left(\dfrac{n \times (n-1)}{2 \times 2^b}\right)} \\
+\end{align*}$$
+
+This approximation is quite good. Due to the lack of any loops, this has \(O(1)\) time complexity (assuming the maths operations like multiply, divide and exponent are \(O(1)\)). The other nice thing is that this can be calculated by hand. Here is a comparison of the approximation to the exact calculation for 32-bit serial numbers:
+
+{{% figure src="_assets/probability-of-collision-32-bit-approx-vs-exact.png" width="600px" caption="Comparing the approximate and exact equations for calculating the collision probability for 32-bit serial numbers and a varying number of devices." %}}
+
+Can't see two lines? That's because the approximation is good. If we were diving deep into the maths we could plot the difference between the two. But for engineering purposes, this is proof enough!
+
+We can use this approximation to calculate collision probabilities for 64 bits. Below is the probability for 64-bit numbers, up to 1 billion (1e9 devices)! You can see that the probability starts to rise above 0 at about the 1 billion mark.
+
+{{% figure src="_assets/probability-of-collision-64-bit.png" width="600px" caption="The probability of a collision when generating 64-bit random serial numbers for different numbers of devices from 1 to up to 1 billion." %}}
+
+Here is the Python code for the above equation (if you need it):
+
+```python
+def calc_p_of_collision_approx(num_of_serial_nums, num_of_bits):
+    """
+    This works better when num_of_serial_nums is > 100,000.
+
+    :param num_of_serial_nums: The number of serial numbers.
+    :param num_of_bits: The number of bits in the serial number (e.g. 32 for a 32-bit serial number).
+    :return: The probability of a collision as a number in the range [0, 1].
+    """
+    # From https://en.wikipedia.org/wiki/Birthday_problem and
+    # https://stackoverflow.com/questions/62664761/probability-of-hash-collision
+    return 1 - math.exp(-((float(num_of_serial_nums)*float(num_of_serial_nums - 1)) / (2*(2 ** (float(num_of_bits) + 1)))))
+```
+
+If you want to be even lazier you can equate \(n \times (n-1) \approx n^2\) and simplify the equation above even further with:
+
+$$\begin{align*}
+P(A) &\approx 1 - e^{-\dfrac{n^2}{2 \times 2^b}} \\
+\end{align*}$$
+
+As a general rule of thumb, the probability of a collision starts rising significantly when the number of devices is about the same as the square root of the number of possible serial numbers. This is because the total number of comparisons of any two serial numbers is given by the combinations formula. The formula is[^calculator-soup-combinations-calculator]:
+
+$$\begin{align*}
+C(n, r) = \dfrac{n!}{r!(n-r)!}
+\end{align*}$$
+
+Where \(n\) is the total number of objects in the set and \(r\) is the number of items in each selection. For our use case, \(n\) is the number of serial numbers and \(r\) is 2 (since we are comparing any two serial numbers). We can simply this to:
+
+$$\begin{align*}
+C(n, 2) &= \dfrac{n!}{2!(n-2)!} \\
+        &= \dfrac{n!}{2!(n-2)!} \\
+        &= \dfrac{n \times (n-1)}{2}
+\end{align*}$$
+
+The probability of any one comparison colliding is roughly equal to \(\dfrac{1}{N}\) where \(N\) is the number of possible serial numbers. So the approximate probability of a collision is:
+
+$$\begin{align*}
+P(A) &\approx \frac{n^2}{N} \\
+\end{align*}$$
+
+This fraction starts moving away from 0 towards 1 when \(n^2 = N\) (when the top and bottom of the fraction are in the same order of magnitude), thus when \(n = \sqrt{N}\).
+
+{{% aside type="tip" %}}
+
+You might be wondering how \(\dfrac{n!}{2!(n-2)!}\) simplifies to \(\dfrac{n \times (n-1)}{2}\). There is a handy simplification (which is really useful when dealing with factorials, because most calculators don't like computing \(n!\) for \(n > 1000\) or so) which makes the equation more manageable:
+
+$$\begin{align*}
+C(n,\ 2) &= \frac{n!}{2!(n-2)!} \\
+            &= \frac{n \times (n-1) \times (n-2)!}{2 \times (n-2)!} \\
+\end{align*}$$
+
+The \((n-2)!\) terms cancel out, leaving you with:
+
+$$\begin{align*}
+\frac{n \times (n-1)}{2}
+\end{align*}$$
+
+{{% /aside %}}
+
+## Examples
 
 {{% aside type="example" %}}
 
@@ -149,29 +175,29 @@ You can see that we start running into significant issues with 32-bit random ser
 
 If you were planning on manufacturing 100,000 devices, and you were using a 32-bit randomly generated serial number, what would the probability of a collision be?
 
-Let's start with the general equation above. Our \(n\) is 100,000 and our \(b\) is 32:
+Let's start with the approximate equation above. Our \(n\) is 100,000 and our \(b\) is 32:
 
 $$\begin{align*}
-P(\text{collision}) &= 1 - \left[(1-\dfrac{1}{2^{b}})^{\dfrac{n \times (n-1)}{2}}\right] \\
-                    &= 1 - \left[(1-\dfrac{1}{2^{32}})^{\dfrac{100000 \times (100000-1)}{2}}\right] \\
-                    &= 1 - \left[(1-\dfrac{1}{4294967296})^{4999950000}\right] \\
-                    &= 1 - \left[(0.99999999976716935635)^{4999950000}\right] \\
-                    &= 1 - 0.31219053861894671205 \\
-                    &= 0.68780946138105328795 \\
-                    &= 0.69 \\
+P(A) &= 1 - e^{-\dfrac{n^2}{2 \times 2^b}} \\
+     &= 1 - e^{-\dfrac{100,000^2}{2 \times 2^{32}}} \\
+     &= 1 - e^{-\dfrac{1e10}{8.590e9}} \\
+     &= 1 - e^{-1.164} \\
+     &= 1 - 0.312 \\
+     &= 0.688 \\
 \end{align*}$$
 
 So there is a 69% chance of a collision if generating 32-bit random serial numbers for 100,000 devices! Not good :-O. What if we used a 64-bit serial number instead?
 
 $$\begin{align*}
-P(\text{collision}) &= 1 - \left[(1-\dfrac{1}{2^{b}})^{\dfrac{n \times (n-1)}{2}}\right] \\
-                    &= 1 - \left[(1-\dfrac{1}{2^{64}})^{\dfrac{100000 \times (100000-1)}{2}}\right] \\
-                    &= 1 - \left[(0.999999999999999999945789891376)^{4999950000}\right] \\
-                    &= 1 - 0.999999999728952167420788569031 \\
-                    &= 2.71047832579211430968543149181e-10 \\
+P(A) &= 1 - e^{-\dfrac{n^2}{2 \times 2^b}} \\
+     &= 1 - e^{-\dfrac{100,000^2}{2 \times 2^{64}}} \\
+     &= 1 - e^{-\dfrac{1e10}{3.689e19}} \\
+     &= 1 - e^{-2.711e-10} \\
+     &= 1 - 0.99999999972894945692 \\
+     &= 2.711e-10 \\
 \end{align*}$$
 
-This is better! There is a 1 in 3.7 billion chance of a collision if generating 64-bit random serial numbers for 100,000 devices. I don't know about your appetite for risk, but I would be happy with those odds!
+This is better! There is a 1 in 3.7 billion (\(\dfrac{1}{2.711e-10}\)) chance of a collision if generating 64-bit random serial numbers for 100,000 devices. I don't know about your appetite for risk, but I would be happy with those odds!
 
 {{% /aside %}}
 
@@ -181,27 +207,23 @@ This is better! There is a 1 in 3.7 billion chance of a collision if generating 
 
 This is a classic probability problem which is essentially the same problem as what we have been discussing with serial numbers. The problem is as follows: "How many people do you need in a room before you have a 50% chance that two people share the same birthday?". The answer is a someone counter-intuitive 23!
 
-Let's double-check 23 is correct by using the same equations as above. The problem any two compared birthdays are identical is (ignoring leap years):
-
-$$
-P(\text{any two are identical}) = \frac{1}{365}
-$$
-
-The number of people in the room is 23, so that is our \(n\). Substituting into the general equation:
+Let's double-check 23 is correct by using the same approximate equation above. The number of people in the room is 23, so that is our \(n\). Rather than have a number of bits defining our total available options, we just have 365 days of the year to choose from (ignoring leap years). So we will replace \(2^b\) with \(365\). Substituting into the general equation:
 
 $$\begin{align*}
-P(\text{collision}) &= 1 - \left[(1-\frac{1}{365})^{\dfrac{23 \times (23-1)}{2}}\right]
-                    &= 1 - \left[(\frac{364}{365})^{253}\right]
-                    &= 1 - 0.499
-                    &= 0.501
+P(A) &= 1 - e^{-\dfrac{n^2 }{2 \times 2^b}} \\
+      &= 1 - e^{-\dfrac{23^2}{2 \times 365}} \\
+      &= 1 - e^{-\dfrac{529}{730}} \\
+      &= 1 - e^{-0.725} \\
+      &= 1 - 0.484 \\
+      &= 0.516 \\
 \end{align*}$$
 
-Which gives us a 50% chance of collision, as expected.
+Which gives us approx. a 50% chance of collision, as expected.
 
 {{% /aside %}}
-
 
 ## References
 
 [^calculator-soup-combinations-calculator]: Calculator Soup. _Combinations Calculator (nCr)_. Retrieved 2024-06-02, from https://www.calculatorsoup.com/calculators/discretemathematics/combinations.php.
 [^wikipedia-german-tank-problem]: Wikipedia (2024, Jan 4). _German tank problem_. Retrieved 2024-06-03, from https://en.wikipedia.org/wiki/German_tank_problem.
+[^wikipedia-birthday-problem]: Wikipedia (2024, Jun 2). _Birthday problem_. Retrieved 2024-06-04, from https://en.wikipedia.org/wiki/Birthday_problem.
