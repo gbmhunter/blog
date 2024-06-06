@@ -13,7 +13,7 @@ type: page
 
 ## Overview
 
-Serial numbers are crucial for embedded devices that you want to individually track. They are used for uniquely identifying devices when talking to a server, warranty purposes and more. There a few ways to go about generating serial numbers. We'll first discuss a few different methods, and then dive into how to calculate the probability of a collision when using random serial numbers.
+Serial numbers are crucial for embedded devices that you want to individually track. They are used for uniquely identifying devices for a bunch of reasons, including tracking metadata (location, firmware version, customer, e.t.c), used when talking to a server, for warranty purposes and more. There a few ways to go about generating serial numbers. We'll first discuss a few different methods, and then dive into how to calculate the probability of a collision when using random serial numbers.
 
 ## Non-Random Serial Numbers
 
@@ -23,13 +23,22 @@ If you want to assign you own (and typically write it to non-volatile memory (NV
 
 Perhaps you want random numbers for serial numbers to obscure the number of devices you have sold. In WW2, Allied forces we able to estimate the number of tanks Axis forces had by looking at the serial numbers. Parts of the tank (e.g. chassis, gearbox, engine) where assigned sequential serial numbers. Based on the numbers of the tanks that the Allied forces captured, they were able to use statistics to estimate the total number[^wikipedia-german-tank-problem].
 
+{{% figure src="_assets/tank-with-serial-number.png" width="400px" %}}
+
 {{% /aside %}}
 
 ## Random Serial Numbers
 
-One option is to use randomly generated serial numbers. However, there is a chance that two serial numbers will be the same (unless of course you keep track of all previously generated serial numbers and regenerate if there is a collision).
+One option is to use randomly generated serial numbers. However, there is a chance that two serial numbers will be the same. Note some devices have "random" addresses but are guaranteed to be unique, e.g. Bluetooth LE public 48-bit MAC addresses. These are typically issued by a regulating authority.
 
-The interesting question becomes "how large do I need the random number to be so that I have a very low chance of a collision"? This question is also highly relevant to hash functions and the birthday problem. It can be answered with a dose of statistics which we'll cover below.
+Here are some examples of what typical random numbers used for serial numbers and/or MAC addresses look like (in hexadecimal format):
+
+```text
+b81c99c5 // 32 bits
+3c9c1442925fcff1 // 64 bits
+```
+
+If the number is truly random, the interesting question becomes "how large do I need the random number range to be so that I have a very low chance of a collision"? This question is also highly relevant to hash functions and the "birthday problem". It can be answered with a dose of statistics which we'll cover below.
 
 One way to solve this is to consider probabilities. Let \(P(A)\) be the probability that that at least one serial number is the same as another. It is easier to calculate the probability that all serial numbers are unique, and then subtract this from 1 to get the probability that at least one serial number is the same as another. Let's call the event \(P(B)\) the probability that all serial numbers are unique. Then:
 
@@ -37,7 +46,7 @@ $$\begin{align*}
 P(A) = 1 - P(B)
 \end{align*}$$
 
-Let's assume we have four 8-bit serial numbers which can take on values from 0 to 255. The first serial number can never collide with anything, so it has a probability of being unique of \(\dfrac{256}{256}\) (1). The second serial number to be picked has a \(\dfrac{255}{256}\) chance of being unique. Assuming that was unique (conditional probability), the third serial number to be picked has a \(\dfrac{254}{256}\) chance of being unique. The fourth serial number to be picked has a \(\dfrac{253}{256}\) chance of being unique. Thus the probability that all four serial numbers are unique is:
+Let's assume we have four 8-bit serial numbers which can take on values from 0 to 255. The first serial number can never collide with anything, so it has a probability of being unique of \(\dfrac{256}{256}\) (i.e. 1). The second serial number to be picked has a \(\dfrac{255}{256}\) chance of being unique since there is 1 number in 256 which would cause a collision. Assuming that was unique (this is called _conditional probability_), the third serial number to be picked has a \(\dfrac{254}{256}\) chance of being unique. Continuing on, the fourth serial number to be picked has a \(\dfrac{253}{256}\) chance of being unique. Thus the probability that all four serial numbers are unique is:
 
 $$\begin{align*}
 P(B) &= \frac{256}{256} \times \frac{255}{256} \times \frac{254}{256} \times \frac{253}{256} \\
@@ -52,7 +61,7 @@ P(A) &= 1 - P(B) \\
      &= 0.023 \\
 \end{align*}$$
 
-So there is a 2.3% chance of a collision with four 8-bit serial numbers.
+So there is a 2.3% chance of a collision when generating four random 8-bit serial numbers.
 
 ## Generalizing The Equation
 
@@ -171,7 +180,7 @@ $$\begin{align*}
 
 {{% aside type="example" %}}
 
-**100,000 Devices**
+**100,000 Devices, 32-bit or 64-bit Serial Number?**
 
 If you were planning on manufacturing 100,000 devices, and you were using a 32-bit randomly generated serial number, what would the probability of a collision be?
 
