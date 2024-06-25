@@ -1,36 +1,26 @@
 ---
 authors: [Geoffrey Hunter]
 categories: [Posts, Updates]
-date: 2024-05-31
-description: Blog updates during May 2024.
+date: 2024-06-30
+description: Blog updates during June 2024.
 draft: false
 images: []
-lastmod: 2024-05-31
-tags: [NinjaTerm, updates, profiles, baud rates, hex, numbers, flow control, serial port, macros, break signal]
-title: April 2024 Updates
+lastmod: 2024-06-30
+tags: [NinjaTerm, updates]
+title: June 2024 Updates
 type: post
 ---
 
-[NinjaTerm](https://ninjaterm.mbedded.ninja/) got four releases this May! Given all the time I spent on NinjaTerm there were no updates to this blog.
+I added the ability to change basic port settings in NinjaTerm from the right-hand drawer. This was a feature request by a user.
 
-NinjaTerm can now display numerical data types such as hex, uint8, uint16, float32, e.t.c.:
+{{% figure src="_assets/quick-port-settings-screenshot.png" width="600px" %}}
 
-{{% figure src="_assets/ninjaterm-number-types-screenshot.jpg" width="600px" %}}
+You now have the ability to send a break signal at the end of every line in a hex macro. This was another feature request by a user.
 
-You can now send a 200ms break signal by pressing Ctrl-Shift-B when the terminal is focused and the serial port open.
+{{% figure src="_assets/send-break-signal-with-hex-screenshot.png" width="600px" %}}
 
-You can now specify a custom baud rate, and updated the default baud rates to include more common options.
+I added a page to this blog on how to [choose serial numbers for embedded devices](/programming/firmware/choosing-serial-numbers-for-embedded-products/). It shows the way to calculate the mathematical probability of a collision when using random numbers for serial numbers.
 
-A circular progress modal is shown while the port is being opened.
+{{% figure src="_assets/choosing-serial-numbers-screenshot.webp" width="600px" %}}
 
-NinjaTerm has a new macros feature which lets you send pre-defined ASCII or HEX sequences out the serial port:
-
-{{% figure src="_assets/ninjaterm-macros-screenshot.png" width="900px" %}}
-
-You now have the ability to select the flow-control method (none or hardware) when opening a serial port:
-
-{{% figure src="_assets/ninjaterm-flow-control-screenshot.png" width="700px" %}}
-
-NinjaTerm has a new profiles feature which lets you save and load different serial port configurations.
-
-{{% figure src="_assets/ninjaterm-profiles-screenshot.jpg" width="900px" %}}
+I added a page to this blog on [ANSI escape codes](/programming/ansi-escape-sequences/).
