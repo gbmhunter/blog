@@ -29,21 +29,223 @@ A `[` after `ESC` is used to introduce a control sequence. Most of the useful AN
 
 ### Cursor Movement
 
-The following escape sequences can be used to move the cursor around the terminal[^fnky-ansi]:
+The CSI sequence with letters `A` to `G` can be used to move the cursor around the terminal[^fnky-ansi]:
 
-* `ESC[<n>A`: Move the cursor up `n` lines.
-* `ESC[<n>B`: Move the cursor down `n` lines.
-* `ESC[<n>C`: Move the cursor right `n` columns.
-* `ESC[<n>D`: Move the cursor left `n` columns.
+| Escape Sequence | Name | Acronym | Description |
+| --- | --- | --- | --- |
+| `ESC[<n>A` | Cursor Up | CUU | Move the cursor up `n` lines. |
+| `ESC[<n>B` | Cursor Down | CUD | Move the cursor down `n` lines. |
+| `ESC[<n>C` | Cursor Forward | CUF | Move the cursor right `n` columns. |
+| `ESC[<n>D` | Cursor Back | CUB | Move the cursor left `n` columns. |
+| `ESC[<n>E` | Cursor Next Line | CNL | Move the cursor to the beginning line, `n` lines down. `n` defaults to 1. Not ANSI.SYS. |
+| `ESC[<n>F` | Cursor Previous Line | CPL | Move the cursor to the beginning line, `n` lines up. `n` defaults to 1. Not ANSI.SYS. |
+| `ESC[<n>G` | Cursor Horizontal Absolute | CHA | Move the cursor to column `n`. Not ANSI.SYS. |
 
 These commands have no effect if the cursor is already at the edge of the terminal (as defined by the number of rows and columns of the terminal).
 
-### Display Attribute and Mode Commands
+### Erase in Display
 
-The sequence `ESC[<attr>m` is used to set display attributes and modes. This includes text color, background color and text style.
+`ESC[<n>J` is used to erase parts of the display. The value of `n` determines what parts of the display are erased. The following values of `n` are supported:
+
+* `0`: Erase from the cursor to the end of the screen.
+* `1`: Erase from the cursor to the beginning of the screen.
+* `2`: Erase the entire screen.
+* `3`: Erase the entire screen and delete all lines saved in the scrollback buffer. This was added for xterm and is supported by a number of terminal applications.
+
+If `n` is omitted, it defaults to `0`.
+
+### Select Graphic Rendition (SGR)
+
+The sequence `ESC[<n>m` is used to set display attributes and modes. This includes text color, background color and text style.
 
 Attributes can be chained together by separating them with a `;`. For example, `ESC[1;31m` sets the text to bold and red.
+
+<table>
+  <tr>
+    <th>n</th>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Reset or normal</td>
+    <td>Reset all attributes.</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Bold or increased intensity</td>
+    <td>Set the text to bold. Some terminals implemented this as increasing the intensity of the colour rather than making the text bold.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Faint or decreased intensity</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Italic</td>
+    <td>Not widely supported. Sometimes treated as inverse.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Underline</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>30-37</td>
+    <td>Foreground color</td>
+    <td>Set the foreground (text) color. See the table below for the color codes.</td>
+  </tr>
+  <tr>
+    <td>38</td>
+    <td>Foreground color</td>
+    <td>
+    
+Set the foreground color. The next argument is either `5;n` (8-bit colour selection) or `2;r;g;b` (24-bit colour selection).
+</td>
+  </tr>
+  <tr>
+    <td>39</td>
+    <td>Default foreground color</td>
+    <td>Set the foreground color to the default color.</td>
+  </tr>
+  <tr>
+    <td>40-47</td>
+    <td>Background color</td>
+    <td>Set the background color. See the table below for the color codes.</td>
+  </tr>
+</table>
+
+**Colors**
+
+The table below shows the color codes that can be used[^wikipedia-ansi-escape-code]. Foreground colours set the text colour, background colours set the background colour.
+
+The background colour of the cell shows the colour (not the text colour).
+
+<table>
+  <tr>
+    <th>FG Code</th>
+    <th>BG Code</th>
+    <th>Name</th>
+    <th style="width: 130px;">VGA</th>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>40</td>
+    <td>Black</td>
+    <td style="background-color: rgb(0, 0, 0); color: white;">0, 0, 0</td>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>41</td>
+    <td>Red</td>
+    <td style="background-color: rgb(170, 0, 0); color: white;">170, 0, 0</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>42</td>
+    <td>Green</td>
+    <td style="background-color: rgb(0, 170, 0); color: white;">0, 170, 0</td>
+  </tr>
+  <tr>
+    <td>33</td>
+    <td>43</td>
+    <td>Yellow</td>
+    <td style="background-color: rgb(170, 85, 0); color: white;">170, 85, 0</td>
+  </tr>
+  <tr>
+    <td>34</td>
+    <td>44</td>
+    <td>Blue</td>
+    <td style="background-color: rgb(0, 0, 170); color: white;">0, 0, 170</td>
+  </tr>
+  <tr>
+    <td>35</td>
+    <td>45</td>
+    <td>Magenta</td>
+    <td style="background-color: rgb(170, 0, 170); color: white;">170, 0, 170</td>
+  </tr>
+  <tr>
+    <td>36</td>
+    <td>46</td>
+    <td>Cyan</td>
+    <td style="background-color: rgb(0, 170, 170); color: white;">0, 170, 170</td>
+  </tr>
+  <tr>
+    <td>37</td>
+    <td>47</td>
+    <td>White</td>
+    <td style="background-color: rgb(170, 170, 170); color: white;">170, 170, 170</td>
+  </tr>
+  <tr>
+    <td>38</td>
+    <td>48</td>
+    <td>Extended</td>
+    <td>
+    
+8-bit or 24-bit colours.
+</td>
+  </tr>
+  <tr>
+    <td>39</td>
+    <td>49</td>
+    <td>Default</td>
+    <td>Default foreground or background color.</td>
+  <tr>
+    <td>90</td>
+    <td>100</td>
+    <td>Bright Black</td>
+    <td style="background-color: rgb(85, 85, 85); color: white;">85, 85, 85</td>
+  </tr>
+  <tr>
+    <td>91</td>
+    <td>101</td>
+    <td>Bright Red</td>
+    <td style="background-color: rgb(255, 85, 85); color: white;">255, 85, 85</td>
+  </tr>
+  <tr>
+    <td>92</td>
+    <td>102</td>
+    <td>Bright Green</td>
+    <td style="background-color: rgb(85, 255, 85); color: black;">85, 255, 85</td>
+  </tr>
+  <tr>
+    <td>93</td>
+    <td>103</td>
+    <td>Bright Yellow</td>
+    <td style="background-color: rgb(255, 255, 85); color: black;">255, 255, 85</td>
+  </tr>
+  <tr>
+    <td>94</td>
+    <td>104</td>
+    <td>Bright Blue</td>
+    <td style="background-color: rgb(85, 85, 255); color: white;">85, 85, 255</td>
+  </tr>
+  <tr>
+    <td>95</td>
+    <td>105</td>
+    <td>Bright Magenta</td>
+    <td style="background-color: rgb(255, 85, 255); color: white;">255, 85, 255</td>
+  </tr>
+  <tr>
+    <td>96</td>
+    <td>106</td>
+    <td>Bright Cyan</td>
+    <td style="background-color: rgb(85, 255, 255); color: black;">85, 255, 255</td>
+  </tr>
+  <tr>
+    <td>97</td>
+    <td>107</td>
+    <td>Bright White</td>
+    <td style="background-color: rgb(255, 255, 255); color: black;">255, 255, 255</td>
+  </tr>
+</table>
+
+For example, `ESC[31m` sets the text to red. `ESC[31;44m` sets the text to red and the background to blue. Both of these use the basic colour codes which have the widest support.
+
+Using the 8-bit colour selection, `ESC[38;5;160m` sets the text to a red colour. Using the 24-bit colour selection, `ESC[38;2;255;0;0m` also sets the text to red (`255, 0, 0`).
 
 ## References
 
 [^fnky-ansi]: Fnky. _ANSI Escape Sequences_. Retrieved 2024-06-25, from https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797.
+[^wikipedia-ansi-escape-code]: Wikipedia (2024, Jun 1). _ANSI escape code_. Retrieved 2024-06-26, from https://en.wikipedia.org/wiki/ANSI_escape_code.
