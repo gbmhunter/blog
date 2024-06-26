@@ -506,6 +506,10 @@ Padding provides offset so it doesn't collide with top navbar
     // Hiding the x overflow messed up the sticky behaviour of the
     // right-hand TOC column
     overflow-x: clip;
+
+    // Need to set this so on mobile things on the BLDC motor page
+    // don't spill over
+    max-width: 100%;
 }
 
 .page-wrapper {

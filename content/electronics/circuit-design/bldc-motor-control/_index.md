@@ -17,111 +17,109 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 
 ## Acronyms And Terminology
 
-<div class="table-wrapper">
-  <table>
-    <thead>
-      <tr>
-        <th>Subscript</th>
-        <th>Parameter</th>
-        <th>Units (metric)</th>
-        <th>Units (imperial)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-      <td>\(T_C\)</td>
-      <td>Continuous Torque</td>
-      <td>Nm</td>
-      <td>oz-in</td>
-      </tr>
-      <tr>
-      <td>\(T_{PK}\)</td>
-      <td>Peak Torque</td>
-      <td>Nm</td>
-      <td>oz-in</td>
-      </tr>
-      <tr>
-      <td>\(T_{CS}\)</td>
-      <td>Continuous Stall Torque</td>
-      <td>Nm</td>
-      <td>oz-in</td>
-      </tr>
-      <tr>
-      <td>\(T_F\)</td>
-      <td>Friction Torque</td>
-      <td>Nm</td>
-      <td>oz-in</td>
-      </tr>
-      <tr>
-      <td>\(I_C\)</td>
-      <td>Continuous Current</td>
-      <td>A</td>
-      <td>A</td>
-      </tr>
-      <tr>
-      <td>\(I_{PK}\)</td>
-      <td>Peak Current</td>
-      <td>A</td>
-      <td>A</td>
-      </tr>
-      <tr>
-      <td>\(N_{nl}\)</td>
-      <td>No-Load Speed</td>
-      <td>rad/s</td>
-      <td>rpm</td>
-      </tr>
-      <tr>
-      <td>\(P_T\)</td>
-      <td>Rated Power</td>
-      <td>W</td>
-      <td>W</td>
-      </tr>
-      <tr>
-      <td>\(V_T\)</td>
-      <td>Terminal Voltage</td>
-      <td>V</td>
-      <td>V</td>
-      </tr>
-      <tr>
-      <td>\(P_I\)</td>
-      <td>Input Power</td>
-      <td>W</td>
-      <td>W</td>
-      </tr>
-      <tr>
-      <td>\(P_O\)</td>
-      <td>Output Power</td>
-      <td>W</td>
-      <td>W</td>
-      </tr>
-      <tr>
-      <td>\(K_T\)</td>
-      <td>Torque Constant</td>
-      <td>Nm/A</td>
-      <td>oz-in/A</td>
-      </tr>
-      <tr>
-      <td>\(K_E\)</td>
-      <td>Back EMF Constant</td>
-      <td>V/rad/s</td>
-      <td>V/krpm</td>
-      </tr>
-      <tr>
-      <td>\(K_M\)</td>
-      <td>Motor Constant</td>
-      <td>Nm/sqrt(W)</td>
-      <td>oz-in/sqrt(W)
-      </td>
-      </tr>
-      <tr>
-      <td>\(J_R\)</td>
-      <td>Rotational Inertia</td>
-      <td>gram-cm^2</td>
-      <td>oz-in-s^2</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Subscript</th>
+      <th>Parameter</th>
+      <th>Units (metric)</th>
+      <th>Units (imperial)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>\(T_C\)</td>
+    <td>Continuous Torque</td>
+    <td>Nm</td>
+    <td>oz-in</td>
+    </tr>
+    <tr>
+    <td>\(T_{PK}\)</td>
+    <td>Peak Torque</td>
+    <td>Nm</td>
+    <td>oz-in</td>
+    </tr>
+    <tr>
+    <td>\(T_{CS}\)</td>
+    <td>Continuous Stall Torque</td>
+    <td>Nm</td>
+    <td>oz-in</td>
+    </tr>
+    <tr>
+    <td>\(T_F\)</td>
+    <td>Friction Torque</td>
+    <td>Nm</td>
+    <td>oz-in</td>
+    </tr>
+    <tr>
+    <td>\(I_C\)</td>
+    <td>Continuous Current</td>
+    <td>A</td>
+    <td>A</td>
+    </tr>
+    <tr>
+    <td>\(I_{PK}\)</td>
+    <td>Peak Current</td>
+    <td>A</td>
+    <td>A</td>
+    </tr>
+    <tr>
+    <td>\(N_{nl}\)</td>
+    <td>No-Load Speed</td>
+    <td>rad/s</td>
+    <td>rpm</td>
+    </tr>
+    <tr>
+    <td>\(P_T\)</td>
+    <td>Rated Power</td>
+    <td>W</td>
+    <td>W</td>
+    </tr>
+    <tr>
+    <td>\(V_T\)</td>
+    <td>Terminal Voltage</td>
+    <td>V</td>
+    <td>V</td>
+    </tr>
+    <tr>
+    <td>\(P_I\)</td>
+    <td>Input Power</td>
+    <td>W</td>
+    <td>W</td>
+    </tr>
+    <tr>
+    <td>\(P_O\)</td>
+    <td>Output Power</td>
+    <td>W</td>
+    <td>W</td>
+    </tr>
+    <tr>
+    <td>\(K_T\)</td>
+    <td>Torque Constant</td>
+    <td>Nm/A</td>
+    <td>oz-in/A</td>
+    </tr>
+    <tr>
+    <td>\(K_E\)</td>
+    <td>Back EMF Constant</td>
+    <td>V/rad/s</td>
+    <td>V/krpm</td>
+    </tr>
+    <tr>
+    <td>\(K_M\)</td>
+    <td>Motor Constant</td>
+    <td>Nm/sqrt(W)</td>
+    <td>oz-in/sqrt(W)
+    </td>
+    </tr>
+    <tr>
+    <td>\(J_R\)</td>
+    <td>Rotational Inertia</td>
+    <td>gram-cm^2</td>
+    <td>oz-in-s^2</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Motors
 
