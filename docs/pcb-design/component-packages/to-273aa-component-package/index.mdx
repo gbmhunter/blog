@@ -1,0 +1,47 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2019-04-29
+description: "Dimensions, land patterns, thermal resistances and more info on the TO-273AA (Super TO-220) component package."
+draft: false
+lastmod: 2024-04-21
+tags: [ "component packages", "PCB design", "transistor", "TO-273AA", "Super TO-220", "TO-220", "JEDEC" ]
+title: TO-273AA Component Package
+type: page
+---
+
+## Overview
+
+TO-273AA (Transistor Outline 273AA) is a through-hole component package.
+
+The TO-273AA (also known as the Super-220) can be considered a variant of the TO-220 which replaces the screw-mounted design of the TO-220 with a clip-mounted design. Because of the clip, this package can usually achieve lower junction-to-ambient thermal resistances, hence the "Super". It is used by International Rectifier.
+
+## Synonyms
+
+* Super TO-220: International Rectifier.
+
+## 3D Render
+
+<Image src={require('./_assets/to-273aa-super-to-220-component-package-3d-render.png').default} width="200px">A 3D render of the TO-273AA (Super TO-220) component package. Image from http://www.irf.com/part/INTELLIGENT-POWER-SWITCH-1-CHANNEL-LOW-SIDE-DRIVER-IN-A-SUPER-220-TO-273AA-PACKAGE/_/A~IPS0551T.</Image>
+
+## Dimensions
+
+<Image src={require('./_assets/component-package-to-273aa-super-to-220-case-outline-dimensions.png').default} width="700px">The case outline and dimensions of the TO-273AA component package (Super TO-220). Image from http://www.irf.com/product-info/datasheets/data/ips0551t.pdf.</Image>
+
+Pitch is 2.54mm (100mil).
+
+Height is approx. 20.5mm when mounted vertically, with pins pushed into PCB until they hit the taper.
+
+## Thermal Resistance
+
+* $T_{JC} = 0.7^{\circ}{\rm C}/W$
+* $T_{JA} = 60^{\circ}{\rm C}/W$ (min. PCB footprint)
+* $T_{JA} = 35^{\circ}{\rm C}/W$ (1" sq. PCB footprint)
+
+All of the above values are from the IPS0551T MOSFET datasheet[^ir-ips0551t-mosfet-ds].
+
+## Similar To
+
+* [TO-220](/pcb-design/component-packages/to-220-component-package/): TO-220 is a more popular screw-mounted package that looks like this TO-273AA. 
+
+[^ir-ips0551t-mosfet-ds]: International Rectifier. _IPS0551T - Fully Protected Power MOSFET Switch_. Retrieved 2024-04-21, from https://www.irf.com/product-info/datasheets/data/ips0551t.pdf.

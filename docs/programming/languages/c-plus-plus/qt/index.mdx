@@ -1,0 +1,239 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Programming Languages", "C++" ]
+date: 2017-09-28
+description: "Info about the the Qt software framework/library, including threading, serial ports and more."
+draft: false
+lastmod: 2019-08-18
+tags: [ "programming", "programming languages", "C++", "Qt", "QSerialPort", "signals", "slots", "QObject", "PySide2", "file names", "FAT32", "Qt Creator" ]
+title: "Qt"
+type: "page"
+---
+
+## Overview
+
+Qt is a software framework and library aimed at developing GUIs. It's primary API is exposed in C++, although it provides the ability to write the UI in JavaScript (or at least partially) through the QML API and has Python bindings through the officially supported PySide2 bindings.
+
+## Installation
+
+No matter what platform you are installing Qt Creator on, the amount of disk space required can be very large, depending on the selected "kits".
+
+### Linux
+
+On Debian-like machines (e.g. Ubuntu):
+
+```bash
+$ sudo apt install qt5-default
+```
+
+### macOS
+
+You need at least the Xcode command line tools installed so that Qt Creator can find/use the C++ compiler.
+
+<Image src={require('./qt-creator-you-need-to-install-xcode-command-line-tools.png').default} width="200px">The Qt installer warning you that you need Xcode and the Xcode command-line tools installed. Note that you can make do with just the command-line tools.</Image>
+
+You can download both Xcode and the Xcode command-line tools from the Apple app store.
+
+The Xcode command-line tools can be installed with:
+
+```bash
+$ xcode-select --install
+```
+
+Available Qt Kits For macOS:
+
+* Desktop Qt x.x.x clang 64bit
+
+Qt will typically install into your user directory, including a directory for both the version of Qt and the kit used. For example, using `v5.13.0` and the Clang 64-bit kit, the default install path would look something like `/Users/<user_name>/Qt/5.13.0/clang_64/`.
+
+### Windows
+
+Kits:
+
+* MSVC2017 64-bit
+* MinGW
+* Android
+
+## Threading
+
+Qt is designed around an event/listener paradigm (which they call _signals_ and _slots_) which promotes an event driven design over blocking method calls.
+
+All UI interaction must occur in one thread (the default UI thread). It is not advisable to add blocking calls in this thread as this will make the UI unresponsive while the thread is blocked.
+
+## Allowing File Names With Capital Letters
+
+It seems a little strange, that by default, Qt Creator will not allow files with capital letters in them. This was probably done to prevent problems when using FAT32 file systems (e.g. older versions of Windows) that were case insensitive (yet _case preserving_). However, many common file naming standards for C++ along with many 3rd party libraries will use capital letters. Luckily, you can enable/allow capital letters in file names in the Qt Creator settings:
+
+1. Click _Tools_ from the top menu bar and then click on _Options_.
+
+    <Image src={require('./qt-creator-menu-tools-options.png').default} width="300px" />
+
+1. Uncheck the _Lower case file names_ checkbox.
+
+    <Image src={require('./qt-creator-uncheck-lower-case-filenames.png').default} width="700px" />
+
+1. Done!
+
+## Serial Port (QSerialPort)
+
+Qt allows you to access serial ports on the machine via the `QSerialPort` class. Note that serial port operations such as reading and writing must be done from the same thread. In that respect, if you do need to do both reading and writing, it is best not to use a blocking approach for reading, as you can not both block on a read call and send data at the same time. The better alternative is to use the readyRead signal
+
+## Compatibility With std Library
+
+**Qt Threads and std::condition_variable**
+
+In my experience, `std::condition_variable` seems to work without any issues when within a Qt thread.
+
+## Unused Parameter 'xxx'
+
+Qt can provide warnings when function parameters are unused. This can be a good thing, however it can be annoying and clutter up the compile output when you are purposely ignoring function parameters.
+
+```c++    
+void doSomething(QObject* parent) {
+    ...
+}
+```
+
+To remove this warning, you can either delete the name of the unused parameter from the function definition:
+
+```c++    
+void doSomething(QObject* /* unused */) {
+    ...
+}
+```
+
+Or use the `Q_UNUSED()` macro:
+
+```c++    
+void doSomething(QObject* parent) {
+    Q_UNUSED(parent);
+    ...
+}
+```
+
+## Connecting Signals And Slots
+
+Prior to Qt5, you have to use the `SIGNAL()` and `SLOT()` macros in the call to `connect()`:
+
+```c++    
+connect(&a, SIGNAL(MySignal(int)), &b, SLOT(MySlot(int));
+```
+
+Qt5 introduced a new syntax for connecting signals to slots:
+
+```c++    
+connect(&a, a::MySignal, &b, b::MySlot);
+```
+
+This new syntax for `connect()` has the following benefits:
+
+* Will produce compile errors if the signal/slot does not exist (this is a VERY good advantage)
+* Will produce compile errors if the types do not match (another good pro!)
+* Input parameters do not need to be specified (although this does have its drawbacks when the signal or slot is overloaded, see below)
+
+I recommend the new Qt5 syntax wherever possible!
+
+However, this syntax won't work if there is more than one signal with the same name (i.e. an overloaded signal). An example of this would be the `QComboBox::activated()` signal, which has the following two overloads:
+
+```c++    
+void activated(int index)
+void activated(const QString& text)
+```
+
+If you were trying to connect the `activated(int index)` signal to your custom handler, this you would have to do the following:
+
+```c++    
+class A {
+signals:
+    HandleActivated(int index) : public QObject {
+        std::cout << "Handler called!" << std::endl;
+    }
+};
+
+int main() {
+    QComboBox qComboBox;
+    A a;
+
+    // This won't work, will throw compiler error!
+    connect(&qComboBox, &QComboBox::activated, &a, &A::HandleActivated); 
+
+    // Instead, you have to cast to the specific overload of activated that
+    // you wish to use
+    connect(&qComboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &A::HandleActivated);
+}
+```
+
+## QWidget GUI Layout
+
+GUI layout in Qt is done with both `QWidget` and `QLayout` objects. The GUI is based upon a hierarchy of `QWidget` objects. `Qwidget` objects can have multiple `QWidget`'s as children elements. You can create and assign a `QLayout` object to a `QWidget` object (using `my_widget->setLayout()`), and then the `QLayout` object will control the layout of the `QWidget`'s children.
+
+:::note
+`QLayout` objects cannot be assigned as children of a `QWidget` object. The `QWidget` objects are the only objects allowed in the GUI hierarchy tree, each `QLayout` must be assigned to a `QWidget`.
+:::
+
+### Layout Options
+
+QHBoxLayout
+
+## GUI Objects
+
+All GUI elements in a standard Qt GUI application inherit from the base class `QWidget`.
+
+You do not have to manually delete `QWidget` objects that you have created, as long as they have a `QWidget` parent which will be deleted.
+
+### QScrollArea
+
+A `QScrollArea` inherits from `QWidget` and provides a block UI element which allows the user to scroll when the child widget(s) exceed the `QScrollArea` bounds.
+
+Passing in `true` to `QScrollArea::setWidgetResizeable()` gives the scroll area permission to resize it's child widgets. This means that `child_widget.resize()` may not have any effect.
+
+### QTextEdit
+
+**Watching For Text Changes**
+
+.hpp:
+
+```c++
+private slots:
+    void onTextChanged();
+```
+
+.cpp:
+
+```c++
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    connect(ui->textEdit1, SIGNAL(textChanged()), this, SLOT(onTextChanged()));
+}
+
+void MainWindow::onTextChanged() {
+    qDebug() << "Text changed!";
+}
+```
+
+## Building/Deploying
+
+What is an app bundle?
+
+CICD services which support macOS? Azure does support macOS workers for building/deploying your application. TravisCI currently does not.
+
+### Linux
+
+The open-source program `linuxdeployqt` (available from [here](https://github.com/probonopd/linuxdeployqt) aims to mimic the functionality of `macdeployqt`, but for Linux instead of macOS. It aims to bundle all dependencies together to produce a single file that is executable.
+
+### macOS
+
+The Qt installation includes an executable called `macdeployqt` (located at `<Qt install dir>/bin/`). This command-line program can be used to create a disk image (`.dmg`) file from the app bundle.
+
+<Image src={require('./macdeployqt-cli-screenshot.png').default} width="500px">Screenshot of the Qt macdeployqt CLI tool.</Image>
+
+To create a `.dmg` file:
+
+```bash
+$ <Qt install dir>/macdeployqt <path to app bundle> -dmg
+```
+
+### Windows

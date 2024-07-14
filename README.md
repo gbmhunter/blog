@@ -2,7 +2,7 @@
 
 This repo contains the source code which is used to build the blog at https://blog.mbedded.ninja.
 
-The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
+The static site generator Docusaurus is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3983d7b2-7481-4caa-9874-1ce1a3e82369/deploy-status)](https://app.netlify.com/sites/blog-mbedded-ninja/deploys)
 
@@ -97,21 +97,23 @@ NOTE: Placing all the
 ## Recommended VS Code Plugins
 
 * `Code Spell Checker`: Prevents spelling mistakes. Additional dictionary definitions are included in `.vscode/settings.json` under `"cSpell.words"`. Make sure to add new words to the "workspace directory" so they get added to this file.
-* `Vim`: If you're a vim fan!
 * `EditorConfig for VS Code`: Promotes consistent coding styles, incl. indentation rules. Reads rules from `.editorconfig` in this repo's root directory.
-* `AsciiDoc`: For syntax highlighting of AsciiDoc pages (with the `.adoc` extension). Don't rely on it for rendering, use the browser with `hugo` and live file watching for that.
 
-## Markdown Extensions
+## Pages
 
-The syntax `<www.google.com>` can be used (instead of `[www.google.com](www.google.com)`) to include a link in where the displayed text is the same as the href.
+The preferred file format for all pages (both docs and blog posts) is `.mdx` (markdown with JSX). This is because it allows for the easy embedding of React components into a Markdown file.
 
-## Diagrams
+## Images
 
-Diagrams are drawn in Affinity Designer.
+The preferred file format for all images (diagrams and photos) is `.webp`. This is because it is a modern format that provides good compression and quality.
+
+### Diagrams
+
+Diagrams are drawn in Affinity Designer
 
 Diagrams used to be drawn in _LibreOffice Draw_ and then exported to `.svg` to display on a page. The Draw file (`.odg`) is usually located in the same content directory as the page the diagram is shown on.
 
-## Photos
+### Photos
 
 Photos are edited in Affinity Photo. 
 
@@ -152,6 +154,18 @@ The below image shows a screenshot of Chrome dev tools analysing the Resistors p
 
 As highlighted, `3.9MB` of data was transferred from the domain `blog.mbedded.ninja` (a filter is set up to exclude third-party downloads). Netlify reports that blog.mbedded.ninja is using approx. 50GB of it's 100GB limit per month.
 
+## Hosting
+
+This site is built and deployed on Vercel.
+
+As of 2024-07-10, the size of the `build/` directory was 880Mb. It was using approx. 5-6GB of RAM (max.) while building. The site was taking approx. 13min to build on Netlify.
+
+### Out of Memory Errors
+
+Docusaurus can use a lot of memory during the build process. To make node.js put more effort into garbage collection, `NODE_OPTIONS=--max-old-space-size=4096` is set in the `.env` file which is then loaded into the environment by `env-cmd docusaurus build --no-minify` in `package.json`.
+
+Netlify was initially used to build Docusaurus. But the builds failed due to the heap running out memory. `--max-old-space-size` was tried at 2000, 4000 and 7500 but all failed. If the blog sub-site was removed, the site built (just the docs).
+
 ## Analytics
 
 Google Analytics was used for many years (now GA4), but ad blockers also block the GA tracking script.
@@ -169,7 +183,7 @@ docker-compose up -d
 
 This will start Umami, which listens on 127.0.0.1:3000 (localhost only). An nginx server is placed in front of the Umami server to add SSL/https functionality. The SSL certificate is provided using certbot and Let's Encrypt. nginx is exposed to the public and reverse proxies the traffic to Umami. 
 
-There is a DNS A record for umami.mbedded.ninja which points to the AWS Lightsail instance. This might need to be converted into a AAAA and IPv6 record in the future (to reduce running costs?).
+There is a DNS A record for `umami.mbedded.ninja` which points to the AWS Lightsail instance. This might need to be converted into a AAAA and IPv6 record in the future (to reduce running costs?).
 
 The "SSL/TLS encryption mode" in Cloudflare has to be changed from the default of "Flexible" to "Full (strict)" for https to Umami to work correctly:
 

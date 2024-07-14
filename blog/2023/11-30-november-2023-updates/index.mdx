@@ -1,0 +1,33 @@
+---
+authors: [gbmhunter]
+categories: [ Posts, Updates ]
+date: 2023-11-30
+description: Blog updates during November 2023.
+draft: false
+images: []
+lastmod: 2023-11-30
+tags: []
+title: November 2023 Updates
+type: post
+---
+
+* Just like last month, this month I was (almost) solely focused on [NinjaTerm](https://ninjaterm.mbedded.ninja/) development. We went from `v4.7.0` through to `v4.12.0` in the month of November. Updates to NinjaTerm are highlighted below.
+
+* Added glyphs to the Unicode PUA range of the NinjaTerm font to show control characters and hex codes.
+    <Image src={require('./control-char-and-hex-code-glyphs.gif').default} width="700px"></Image>
+
+* Added logging functionality.
+    <Image src={require('./logging.gif').default} width="700px"></Image>
+
+* Last serial port details and connection state are remembered across App reloads, and NinjaTerm can automatically reconnect to previously used serial port.
+
+* Added ability for NinjaTerm to reopen serial port (when available) after unexpected closure.
+
+* Added ability to filter rows of terminal text.
+    <Image src={require('./filtering.gif').default} width="700px"></Image>
+
+* Miscellaneous bug fixes.
+
+* One change with this blog is that I started playing around with the idea of adding ads. I personally don't like ads but they might help pay for the upkeep of this site (domain registration, DNS, hosting, and software licenses for designing things like the diagrams). I have enabled Google AdSense. In it's current form the ads are pretty horrible (e.g. disruptive pop-ups), so I'll be tuning them and making sure they are not so invasive in the near future. If they don't end up making much money, I might remove them altogether.
+    <Image src={require('./google-adsense.png').default} width="700px"></Image>
+    

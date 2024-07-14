@@ -1,5 +1,0 @@
-{{- if not ($.Page.Scratch.Get "ref_count") }}
-  <script src="/js/bib.js"></script>
-{{ end }}
-{{- $.Page.Scratch.Add "ref_count" 1 -}}
-<a class="bib-link" href="#{{ .Get "id" }}"><sup>hello</sup></a>

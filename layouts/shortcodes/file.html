@@ -1,4 +1,0 @@
-{{/* This shortcode can be used to load content from files into the main markdown page. */}}
-{{ $filename := (path.Join $.Page.File.Dir (.Get "src")) }}
-{{ $file := $filename | readFile }}
-{{ $file | markdownify }}

@@ -1,0 +1,33 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2016-02-10
+draft: false
+title: Quantum Platform (QP)
+type: page
+---
+
+## Overview
+
+Quantum Platform (QP) is a framework suite used to create state-machine based applications. It is cross-platform, supporting Window, Linux, embedded systems/toolchains, and other operating systems. It is very applicable to firmware development.
+
+<Image src={require('/images/2016/02/quantum-leaps-qp-logo.png').default} width="259px">The Quantum Leaps QP logo. Image from http://www.state-machine.com/.</Image>
+
+## QP
+
+## Signals
+
+A signal is a unique event that can occur in your application (confusingly, there are also primitives called Events, which are slightly different and can contain data). They are defined in a single enumeration, normally in app.h. Note that this can be very prohibitive when it comes to writing modular, decoupled code (which I believe is a good thing, even if you don't plan on re-using it for another project). As all of the custom events are defined in a single enumeration, you are forced to put them all in the same file, rather than declaring them in the same "module" that they are applicable to.
+
+## Events
+
+Events are used to send data between active objects (and from interrupts to active objects).
+
+## QSpy
+
+QSpy is the debugging engine of QP. It primarily consists of two parts, the target code that runs on the device under test (DUT), and the UI code which is built to read, interpret and present the debug data sent from the DUT.
+
+Unfortunately, it doesn't support coloured text (which is great for debugging purposes). 
+
+## QSpyView
+
+QSpyView is a newer front-end for QSpy which allows you to customise the debug output from QSpy. It is currently buggy, with Exceptions popping up every now and then.

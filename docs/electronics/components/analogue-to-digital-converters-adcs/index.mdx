@@ -1,0 +1,107 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
+date: 2011-09-03
+description: A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more.
+draft: false
+lastmod: 2024-03-26
+tags: [ ADCs, microcontrollers, accuracy, resolution, current loop, analog-to-digital converter, digital, analogue, analog, switched capacitor ]
+title: Analogue-to-Digital Converters (ADCs)
+type: page
+---
+
+## Overview
+
+An _analogue-to-digital converter_ (ADC) is a device which **converts an input analogue voltage level into a representative digital value**. They are commonly used in embedded electronics to measure things such as values from an analogue sensor or voltage rails (typically fed through resistor dividers). They are very popular and many microcontrollers have one or more built in ADCs, with each ADC has multiple inputs (5 to 12 is common) shared with GPIO. You can also get stand-alone ADC ICs which normally offer greater precision and resolutions.
+
+{/* {{% figure ref="fig-adc-symbol-analogue-to-digital" src="_assets/adc-symbol-analogue-to-digital.png" width="350px" caption="A symbol representing a analogue-to-digital converter (ADC)." %}} */}
+<Image src={require('./_assets/adc-symbol-analogue-to-digital.png').default} width="350">A symbol representing a analogue-to-digital converter (ADC).</Image>
+
+## Microcontroller ADCs
+
+Microcontroller ADCs usually have a 8-12bit resolutions (with some going up to 20-bit). A typical microcontroller has only one ADC unit, but offers an input multiplexor to be able to select an analogue input from a number of pins. The ADC is controlled via registers, usually with voltage reference selectable from an external pin or an internal reference. Voltage dividers can be used to scale a larger voltage into the range acceptable to the microcontroller. Since the input to the ADC is usually of a very high impedance, the voltage at the ADC pin will the related to the ratio of the resistances in the resistor divider. A pull-down resistor is usually connected to an ADC input to prevent it from floating (and giving erroneous results when nothing is connected).
+
+On the left-hand side of the below image is a schematic diagram on the of a Nordic nRF52 MCU with the ADC pins highlighted. There are 8 ADC channels, `AIN0` through `AIN7` (4 to 7 are called `ANx` not `AINx` for some reason). Firmware can connect any one of these channels to the internal ADC peripheral which can then measure the voltage at that pin. The right-hand side shows the same ADC peripheral in the MCUs block diagram.
+
+{/* {{% figure ref="fig-adc-pins-highlighted-on-mcu" src="_assets/adc-pins-highlighted-on-mcu.webp" width="300px" caption="On the left is a schematic diagram of a Nordic nRF52 MCU with the ADC pins highlighted. There is a single ADC peripheral inside the MCU with 7 channels. Channels can be connected 1-by-1 to the ADC via firmware and measured. On the right is the same ADC peripheral shown in the MCUs block diagram." %}} */}
+<Image src={require('./_assets/adc-pins-highlighted-on-mcu.webp').default} width="300">On the left is a schematic diagram of a Nordic nRF52 MCU with the ADC pins highlighted. There is a single ADC peripheral inside the MCU with 7 channels. Channels can be connected 1-by-1 to the ADC via firmware and measured. On the right is the same ADC peripheral shown in the MCUs block diagram.</Image>
+
+## Accuracy And Resolution
+
+The resolution of an ADC normally depends on the number of bit's it supports. ADCs typically support a bit resolution of 8 to 24 bits, with the resolution error usually limited to the last bit. The accuracy can normally be increased by increasing the sample time, which lengthens the amount of time the input capacitor has to stabilize and allows the ADC to complete finer adjustments. Accuracy can also be increased by taking multiple samples and averaging them. A good way to do this with a microcontroller is to take a number that is equal to a power of 2n (i.e. 2, 4, 8, 16, ...), and then to save computational time the result can be bit shifted right n times instead of using the divide function (essentially doing the same thing).
+
+## Measuring Techniques
+
+There are many ways to convert a analogue signal into a digital one. The two most popular ADC methodologies are _successive approximation register_ (SAR) and _Delta-Sigma_. **SAR ADCs are usually faster but have a lower resolution (typically 8 to 12-bit) while Delta Sigma's are slower but offer greater accuracy (typically up to 20-bit)**. SAR ADCs typically have a sampling rate of 100kHz-1MHz while Sigma-Delta ADCs have a sampling rate of 1-20Hz.
+
+Delta-Sigma ADCs also take longer to switch between input signals (if measuring multiple signals with just one ADC) because they incorporate a filter which needs to be reset and stabilised before the measurements become accurate (essentially the filter's response time).
+
+## Switched Capacitor Array
+
+Many SAR ADCs use the _switched capacitor array_ architecture[^ti-switched-capacitor-adc-app-report]. Internally, they have a multiplexor to select from one of many input signals (separate pins on a dedicated ADC IC, or shared with GPIO on a MCU). One input is selected and is connected to the sample-and-hold capacitor $C_{SH}$. The length of time it is connected to this capacitor is called the _acquisition time_ or _sample time_.
+
+{/* {{% figure ref="fig-multiplexed-sample-and-hold-capacitor-adc" src="_assets/multiplexed-sample-and-hold-capacitor-adc.webp" width="400px" caption="Block diagram of the switched capacitor array architecture, used by many SAR ADCs." %}} */}
+<Image src={require('./_assets/multiplexed-sample-and-hold-capacitor-adc.webp').default} width="400">Block diagram of the switched capacitor array architecture, used by many SAR ADCs.</Image>
+
+The internal capacitance is also called $C_{ADC}$[^st-stm32g491ke-mcu-ds]. The capacitance is small and normally in the range of $2pF - 10pF$. For example, the $C_{ADC}$ for the STM32G491KE MCU is 5pF[^st-stm32g491ke-mcu-ds].
+
+The sample-and-hold capacitor **is not normally discharged between successive measurements[^st-community-stm32g4-adc-sampling-and-hold-capacitor-value]**. This means that when the sample period begins for a measurement, the capacitor will start of at the voltage of finished the previous sample at. This contributes to **cross-talk**, measurement error which is introduced by the previous measurement (or measurements!).
+
+{/* {{% figure ref="fig-switched-capacitor-adc-with-source-and-adc-input-resistance-modelled" src="_assets/switched-capacitor-adc-with-source-and-adc-input-resistance-modelled.webp" width="600px" caption="Model of a analogue input with source resistance $R_S$ connected to a ADC input with input resistance." %}} */}
+<Image src={require('./_assets/switched-capacitor-adc-with-source-and-adc-input-resistance-modelled.webp').default} width="600">Model of a analogue input with source resistance $R_S$ connected to a ADC input with input resistance.</Image>
+
+[Texas Instruments: Switched-Capacitor ADC Analog Input Calculations](https://www.ti.com/lit/an/slaa036/slaa036.pdf) is a great walk through of how to calculate the maximum permissible source resistance $R_S$ given a desired accuracy in LSB for an ADC.
+
+You may need to add an external capacitor to ADC inputs to compensate for the voltage drop caused when the sample-and-hold capacitor is connected.
+
+Models of ADC input circuitry can get complex! The below image shows the input model for the Infineon AURIX TriCore TC33xEXT AA family of MCUs.
+
+{/* {{% figure ref="fig-infineon-tc33xext-aa-mcu-adc-input-equivalent-circuit" src="_assets/infineon-tc33xext-aa-mcu-adc-input-equivalent-circuit.png" width="600px" caption="Models of ADC input circuitry can get complex! This one is from the Infineon AURIX TriCore TC33xEXT AA family of MCUs[^infineon-aurix-tricore-tc33xext-aa-mcu-ds]." %}} */}
+<Image src={require('./_assets/infineon-tc33xext-aa-mcu-adc-input-equivalent-circuit.png').default} width="600">Models of ADC input circuitry can get complex! This one is from the Infineon AURIX TriCore TC33xEXT AA family of MCUs[^infineon-aurix-tricore-tc33xext-aa-mcu-ds].</Image>
+
+## Medical Uses
+
+ADCs are commonly used in medical devices for biopotential measurements. One common application is for the analogue front-end in EEG devices. The [Texas Instruments ADS1299](http://www.ti.com/product/ads1299) is one example of an ADC IC designed for EEG applications.
+
+## 4-20mA Current Loops
+
+ADCs can be used to read the value from a 4-20mA current loop signal with the help of a current-to-voltage converting resistors (what all resistors do, right?).
+
+See the [4-20mA Current Loops page](/electronics/communication-protocols/4-20ma-current-loops) for more info.
+
+## Examples
+
+### Texas Instruments ADS8866IDRCR
+
+| |
+|-------------------|----------------
+| Manf.             | Texas Instruments
+| Manf. Part Num    | [ADS8866IDRCR](https://www.ti.com/lit/ds/symlink/ads8866.pdf)
+| Topology          | SAR
+| Resolution        | 16-bit
+| Speed             | 100ksps
+| Digital Interface | SPI
+| Package           | DFN-10-3x3-TP
+
+Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the analogue supply voltage ranges are incompatible!
+
+### Microchip MCP33131-05-E/MN
+
+| |
+|-------------------|------------
+| Manf.             | Microchip
+| Manf. Part Num    | [MCP33131-05-E/MN](https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf)
+| Topology          | SAR
+| Resolution        | 16-bit
+| Speed             | 500ksps
+| Digital Interface | SPI
+| Package           | DFN-10-3x3-TP
+
+## Suppliers
+
+* [DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section](https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700) (US)
+
+[^ti-switched-capacitor-adc-app-report]: Tom Kugelstadt (1998, Sep). _Switched-Capacitor ADC Analog Input Calculations Application Report_. Texas Instruments. Retrieved 2024-02-11, from https://www.ti.com/lit/an/slaa036/slaa036.pdf.
+[^st-stm32g491ke-mcu-ds]: STMicroelectronics (2021, Sep). _STM32G491xC/STM32G491xE - Arm® Cortex®-M4 32-bit MCU+FPU, 170 MHz / 213 DMIPS, up to 512 KB Flash, 112 KB SRAM, rich analog, math accelerator_ [datasheet]. Retrieved 2024-02-12, from https://www.st.com/resource/en/datasheet/stm32g491ke.pdf.
+[^st-community-stm32g4-adc-sampling-and-hold-capacitor-value]: STMicroelectronics. _STM32G4: ADC sampling and hold capacitor value_ [forum post]. Retrieved 2024-02-12, from https://community.st.com/t5/stm32-mcus-products/stm32g4-adc-sampling-and-hold-capacitor-value/td-p/145004.
+[^infineon-aurix-tricore-tc33xext-aa-mcu-ds]: Infineon (2021, Mar). _AURIX TriCore TC33xEXT AA MCU Family Datasheet_. Retrieved 2024-03-26, from https://www.infineon.com/dgdl/Infineon-TC33xEXT_AA-step_DataSheet-DataSheet-v01_01-EN.pdf?fileId=8ac78c8c82ce566401833cdf75272dba.

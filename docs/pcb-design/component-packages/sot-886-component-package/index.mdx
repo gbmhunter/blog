@@ -1,0 +1,45 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
+draft: false
+lastmod: 2024-04-20
+tags: [ "component packages", "PCB design", "SOT-886", "small-outline", "transistor", "XSON-6", "6-XFDFN" ]
+title: "SOT-886 Component Package"
+type: "page"
+---
+
+## Overview
+
+<Image src={require('./_assets/sot-886-component-package-3d-render.jpg').default} width="200px">A 3D render of the SOT-886 component package.</Image>
+
+SOT-886 (Small Outline Transistor 886) is a SMD component package with 6 leads. It is commonly used for RFID tag chips, logic gates, buffer/line drivers and linear voltage regulators.
+
+NXP seems to be the only manufacturer who uses this package.
+
+## Synonyms
+
+* 6-XSON: DigiKey[^digikey-tvs-search].
+* XSON6: NXP's name[^nxp-sot-886].
+
+## Dimensions
+
+Below are the dimensions for the SOT-886 component package from NXP[^nxp-sot-886]:
+
+<Image src={require('./_assets/sot-886-package-dimensions-nxp.png').default} width="800px">The dimensions of the SOT-886 component package from NXP[^nxp-sot-886].</Image>
+
+| Dimension Name         | Dimension Letter | Value  |
+|------------------------|------------------|--------|
+| Seated height          | $A$            | 0.5mm  |
+| Body length            | $D$            | 1.45mm |
+| Body width             | $E$            | 1.00mm |
+| Pitch                  | $e$            | 0.6mm  |
+
+## Recommended Land Pattern
+
+<Image src={require('./_assets/component-footprint-sot-886-land-pattern.png').default} width="800px">The PCB land pattern for the SOT-886 component package from NXP[^nxp-sot-886].</Image>
+
+The total occupied area of the component on the PCB is $1.70mm \times 1.25mm = 2.15mm^2$.
+
+[^nxp-sot-886]: NXP (2017, Jan 9). _SOT886 - XSON6: plastic extremely thin small outline package; no leads; 6 terminals; 0.6 mm pitch; 1 mm x 1.45 mm x 0.5 mm body_. Retrieved 2024-04-20, from https://www.nxp.com/docs/en/package-information/SOT886.pdf
+[^digikey-tvs-search]: DigiKey. _6-XSON, SOT886 (1.45x1) TVS Diodes_ [search results]. Retrieved 2024-04-20, from https://www.digikey.at/en/products/filter/transient-voltage-suppressors-tvs/tvs-diodes/6-xson-sot886-1-45x1/144?s=N4IgjCBcpgTAnBaIDGUBmBDANgZwKYA0IAbgHZQAuATgK5EgD2UA2iLAGwDsAHLBAF1iAB0pQQAZRoBLMgHMQAX2VA.

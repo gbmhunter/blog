@@ -1,0 +1,69 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, PCB Design, Component Packages ]
+date: 2021-03-03
+description: Synonyms, variants, dimensions, 3D models, land patterns and more info on the uSiP component package.
+draft: false
+lastmod: 2021-11-15
+tags: [ component packages, PCB design, uSiP, SIL-10C, Texas Instruments, TI, PoL ]
+title: uSiP Component Package
+type: page
+---
+
+## Overview
+
+The `uSiP` package is a _system-in-package_ design used for switch-mode power supplies (SMPS). It is proprietary to Texas Instruments. It uses a PCB base with an embedded SMPS controller IC, connected to an inductor (and optionally, capacitors) mounted to the top surface of the PCB base. Leads are provided as an LGA on the bottom side of the PCB base. All up, this makes a single discrete SMD component that can take part in the reflow process onto a normal PCB design.
+
+Synonyms:
+
+* MicroSiP
+* SIL (TI)
+
+Variants:
+
+* SIL0010A (uSIP-10, 3.8x3.0mm)
+* SIL0010C (uSIP-10, 3.7x2.8mm)
+
+The uSiP package is used for the TPSM265R1 family of point-of-load power modules (this component incorporates the SMPS buck controller, MOSFET, inductor and some of the capacitors, hence being a complete power modules). It appears there are SIL0010A and SIL0010C variants (same number of pins, but slightly different pitch and package size), but no SIL0010B.
+
+<Image src={require('./_assets/sil10c-usip-component-package-3d-render.png').default} width="150px">A 3D render of the SIL-10C 10-pin uSiP component package[^bib-ti-tpsm265r1-ds]. Image © 2019 Texas Instruments.</Image>
+
+[Manufacturing and Rework Design Guide for MicroSiP Power Modules](https://www.ti.com/lit/ug/slib006a/slib006a.pdf) has some good advice regarding manufacturing and reworkability of the uSiP (MicroSiP) package.
+
+## SIL0008D (uSIP-8, 3.0x2.8mm)
+
+| |
+|-------------------|-----------------------------------------
+| Pitch             | 0.65mm[^bib-ti-tps82130-ds]
+| Package WxLxH     | 3.0x2.8x1.53mm[^bib-ti-tps82130-ds]
+| Typical Land Area | 6.11mm² (2.6*2.35mm)[^bib-ti-tps82130-ds]
+
+SIL0008D is a 8-pin, 3.0x2.8mm package size variant of the uSIP. Used by the TPS82130S buck converter module by Texas Instruments.
+
+## SIL0010A (uSIP-10, 3.8x3.0mm)
+
+| |
+|-------------------|------------------------------------------
+| Pitch             | 0.6mm[^bib-ti-lmzm23601-ds]
+| Package WxLxH     | 3.8x3.0x1.6mm[^bib-ti-lmzm23601-ds]
+| Typical Land Area | 10.73mm² (3.7*2.9mm)[^bib-ti-lmzm23601-ds]
+
+SIL0010A is a 10pin, 3.8x3.0mm package size variant of the uSIP.
+
+## SIL0010C (uSIP-10, 3.7x2.8mm)
+
+| |
+|-------------------|------------------------------------------
+| Pitch             | 0.80mm[^bib-ti-tpsm265r1-ds]
+| Package WxLxH     | 3.7x2.8x1.8mm[^bib-ti-tpsm265r1-ds]
+| Typical Land Area | 13.86mm² (3.3*4.2mm)[^bib-ti-tpsm265r1-ds]
+
+SIL0010C is a 10pin, 3.7x2.8mm package size variant of the uSIP.
+
+The below diagram shows $\theta_{JA}$ versus copper area on the PCB for the SIL-10C uSiP package:
+
+<Image src={require('./_assets/tpsm265r1-theta-ja-vs-copper-area.png').default} width="500px">$\theta_ja$ vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds].</Image>
+
+[^bib-ti-tpsm265r1-ds]: Texas Instruments (2019, Oct). _SNVSBF6B: TPSM265R1 65-V Input, 100-mA Power Module with Ultra-Low IQ (Datasheet)_. Retrieved 2021-03-03, from https://www.ti.com/lit/ds/symlink/tpsm265r1.pdf.
+[^bib-ti-lmzm23601-ds]: Texas Instruments (2017, Dec). _LMZM23601 36-V, 1-A Step-Down DC/DC Power Module in 3.8-mm × 3-mm Package (Datasheet)_. Retrieved 2021-11-15, from https://www.mouser.tw/datasheet/2/405/lmzm23601-1275132.pdf.
+[^bib-ti-tps82130-ds]: Texas Instruments (2016, Feb). _TPS82130 17-V Input 3-A Step-Down Converter MicroSiP Module with Integrated Inductor (Datasheet)_. Retrieved 2011-11-15, from https://www.ti.com/lit/ds/symlink/tps82130.pdf.

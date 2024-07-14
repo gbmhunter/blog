@@ -1,0 +1,118 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2014-11-09
+description: Dimensions, recommended footprints, thermal resistances, variants, synonyms and more info about the SOT-323 component package.
+draft: false
+lastmod: 2024-04-19
+tags: [component packages, PCB design, SOT-323, small-outline, transistor]
+title: SOT-323 Component Package
+type: page
+---
+
+## Overview
+
+SOT-323 (Small-Outline Transistor 323) is a small family of SMD component packages.
+
+Just like the [SOT-23](/pcb-design/component-packages/sot-23-component-package/), there are 3, 5, 6, and 8 lead variants in the SOT-323 package family:
+
+* SOT-323-3 (3 lead)
+* SOT-323-5 (5 lead)
+* SOT-323-6 (6 lead)
+* SOT-323-8 (8 lead)
+
+All of the variants on the SOT-323 family have a typical body width of 1.25mm and a body length of 2.0mm[^nxp-sot-323] [^analog-devices-sc6-package] [^analog-devices-sc8-package]. The width including the leads is 2.1mm. All variants except the SOT-323-8 have a pitch of 0.65mm. The SOT-323-8 has a pitch of 0.5mm (this is needed to fit all the pins on the side of the body without changing the body length). Again, this is similar behaviour to the SOT-23 package family.
+
+If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common). The SOT-323 package has a significantly smaller PCB footprint than the [SOT-23](/pcb-design/component-packages/sot-23-component-package/).
+
+## SOT-323-3
+
+<Image src={require('./_assets/component-package-sot-323-3-3d-model.jpg').default} width="200px">3D model of the SOT-323-3 (SC-70-3) component package.</Image>
+
+SOT-323-3 is the 3 lead variant in the SOT-223 family. This package is also commonly known by it's EIAJ name `SC-70`. It is commonly used for discrete semiconductors such as diodes, transistors, and voltage regulators.
+
+### Synonyms
+
+* SC-70: EIAJ[^nxp-sot-323].
+* SCx: Analog Devices.
+* SMini3-G1-B: Panasonic.
+* SOT-323: If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common).
+* SOT-323-3.
+
+### Dimensions
+
+<Image src={require('./_assets/sot323-3-dimensions-nxp.png').default} width="800px">Dimensions for the SOT-323-3 (SC-70-3) component package from NXP[^nxp-sot-323].</Image>
+
+### Recommend Land Pattern
+
+<Image src={require('./_assets/sot-323-recommended-land-pattern-reflow-nxp.png').default} width="800px">Recommended reflow land pattern for the SOT-323-3 (SC-70-3) component package from NXP[^nxp-sot-323].</Image>
+
+The occupied PCB area of the SOT-323-3 is $ 6.23mm^2\ (2.65mm \times 2.35mm) $ when included with the recommended reflow PCB footprint above.
+
+### Thermal Resistance
+
+* $ T_{ja} = 380°C/W $ (mounted on 10x8x0.6mm FR4, still air)
+* $ T_{jc} = 60°C/W $
+
+## SOT-323-5
+
+<Image src={require('./_assets/component-package-sot-323-5-3d-model.jpg').default} width="200px">3D model of the SOT-323-5 (SC-70-5) component package.</Image>
+
+SOT-323-5 is the 5 lead variant in the SOT-323 family.
+
+### Synonyms
+
+* SC-70-5: EIAJ.
+* SOT-323-5.
+
+### Dimensions and Land Pattern
+
+<Image src={require('./_assets/component-package-sot-323-5-dimensions-and-land-pattern.png').default} width="800px">Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package.</Image>
+
+## SOT-323-6
+
+SOT-323-6 is the 6 lead variant in the SOT-323 family.
+
+:::note
+From a few sources I found online, the SOT-323-6 seems dimensionally identical to the [SOT-363 package](/pcb-design/component-packages/sot-363-component-package/). However, I have kept a separate page on the SOT-363 since I could not find conclusive evidence that they are identical.
+:::
+
+### Synonyms
+
+* SC-70-6: EIAJ.
+* SC6: Analog Devices[^analog-devices-sc6-package].
+* SOT-323-6.
+
+### Dimensions and Land Pattern
+
+Below are the dimensions and recommended land pattern for the SOT-323-6 package (SC6, SC70-6) from Analog Devices:
+
+<Image src={require('./_assets/sot-323-6-dimensions-and-land-pattern-analog-devices.png').default} width="800px">Dimensions and recommended land pattern for the SOT-323-6 (SC-70-6) component package from Analog Devices[^analog-devices-sc6-package].</Image>
+
+## SOT-323-8
+
+SOT-323-8 is the 8 lead variant in the SOT-323 family. It differs from both the SOT-323-3 and SOT-323-5 in that it has a pitch of 0.5mm rather than 0.65mm[^analog-devices-sc8-package].
+
+### Synonyms
+
+Synonyms for the SOT-323-8 include:
+
+* MO-203BA: Uncommon JEDEC name[^analog-devices-sc8-package].
+* SC8: Analog Devices' name[^analog-devices-sc8-package].
+
+### Dimensions
+
+Below are the package dimensions for the SOT-323-8 package from Analog Devices:
+
+<Image src={require('./_assets/sc8-sot-223-8-package-dimensions-analog-devices.png').default} width="900px">Dimensions of the SC8 (SOT-223-8) package from Analog Devices[^analog-devices-sc8-package].</Image>
+
+## Similar To
+
+The SOT-323 family is similar to:
+
+* [SOT-23](/pcb-design/component-packages/sot-23-component-package/)
+* [SOT-363](/pcb-design/component-packages/sot-363-component-package/)
+
+[^nxp-sot-323]: NXP (2019, Jul 29). _SOT323 - plastic, surface-mounted package; 3 leads; 1.3 mm pitch; 2mm x 1.25 mm x 0.95 mm body_. Retrieved 2024-04-19, from https://www.nxp.com/docs/en/package-information/SOT323.pdf.
+[^analog-devices-sc8-package]: Analog Devices. _SC8 Package - 8-Lead Plastic SC70_. Retrieved 2024-04-19, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-sc-70/sot_8_05-08-1639.pdf.
+[^analog-devices-sc6-package]: Analog Devices. _SC6 Package - 6-Lead Plastic SC70_. Retrieved 2024-04-19, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-sc-70/sot_6_05-08-1638.pdf.

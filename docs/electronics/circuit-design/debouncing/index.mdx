@@ -1,0 +1,59 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
+date: 2013-08-02
+draft: false
+lastmod: 2023-07-02
+tags: [ buttons, debouncing, hardware, firmware, schematics, Schmitt trigger, Ganssle, switch ]
+title: Debouncing
+type: page
+---
+
+{/* {{% warning-is-notes %}} */}
+<WarningIsNotes />
+
+## Overview
+
+_Debouncing_ is the technique of detecting and removing multiple state changes from a hardware device (most commonly a push-button switch) caused when the mechanical contacts touch. Because of tiny imperfections in switch contacts, as the contacts come together and make a conductive circuit, the actual resistance jumps up and down multiple times in quick succession (this is the bouncing). Although the human eye cannot see this when a light is turned on in a house, this bouncing can cause problems for logic which is expecting a single state tradition (e.g. a microcontroller which is counting button presses).
+
+{/* {{% figure src="example-switch-waveform-needs-debouncing.webp" width="600px" caption="An example output from a button press, which needs debouncing." %}} */}
+<Image src={require('./example-switch-waveform-needs-debouncing.webp').default} width="600">An example output from a button press, which needs debouncing.</Image>
+
+You might have encountered a cheap electronic device before which didn't perform debouncing, and noticed when pressing buttons the device would behave erratically. Sometimes pressing down once will scroll through multiple items, or pressing "back" will jump through multiple menus (Puhui T-962 Reflow Oven, I'm looking at you).
+
+Debouncing has also been adopted as a software term to describe functions which are only called once even though the user may click the button multiple times (or to delay a function after user input[^free-code-camp-debounce-how-to-delay-a-javascript-function]). A classic example is a "Pay Now" button when buying something online.
+
+The amount the time it takes for a switch to stabilize is highly dependent on the type of switch and how it is actuated, but if designing a filter you have to start somewhere right? **A general rule-of-thumb is to allow the switch 20ms to settle** when switching between on and off (in either direction). However, some switches have been seen to take 150ms[^ganssle-guide-to-debouncing]!
+
+## Hardware Debouncing
+
+_Hardware debouncing_ is about using passive components and simple logic to debounce switch presses. Before the advent of plentiful microcontrollers and lots of code space and capabilities, hardware debouncing was the common way of solving debouncing. These days I would recommend firmware based debouncing if possible, but sometimes you will have to revert to hardware debouncing when you don't have the option of using a microcontroller. 
+
+One simple way is to use a RC circuit with a Schmitt inverter:
+
+{/* {{% figure src="rc-debouncing-circuit.webp" width="600px" caption="A simple RC debouncing circuit." %}} */}
+<Image src={require('./rc-debouncing-circuit.webp').default} width="600">A simple RC debouncing circuit.</Image>
+
+Schmitt behaviour is needed on the inverter otherwise the bouncing which causes the RC charging/discharging waveform to wobble could cause the inverter output to toggle back and forth, rendering the circuit useless.
+
+The following diagram shows how this RC debouncing circuit works:
+
+{/* {{% figure src="rc-debouncing-waveforms.webp" width="900px" %}} */}
+<Image src={require('./rc-debouncing-waveforms.webp').default} width="900">RC debouncing waveforms.</Image>
+
+One problem with this approach is asymmetric charging and discharging times, due to the capacitor being discharged through only $R1$ but charged back up through $R1$ and $R2$. This difference can be minimized by making $R2$ much larger than $R1$ ($R2 >> R1$) or by adding in a by-pass diode (see below).
+
+Another way to get around debouncing issues is to use a double-throw switch, and connect both sides of the throw (one side of the pole) through pull-up resistors to a microcontroller. Connect the other side of the pole to ground. The microcontroller can then monitor both pins and detect a switch state only when one pin goes high and then the other goes low.
+
+## Firmware Debouncing
+
+Another way to debounce inputs is to use firmware. Assuming the button is connected to the input of a microcontroller, it is normally simpler, cheaper, and easier to do the debouncing in firmware than hardware.
+
+## Further Reading
+
+[The Ganssle group, A Guide To Debouncing](http://www.ganssle.com/debouncing.pdf), is an awesome, in-depth investigation into switch debouncing. If you are reading up on this topic, it is a must see!
+
+## References
+
+[^ganssle-guide-to-debouncing]: Jack Ganssle (2014, Mar). _A Guide to Debouncing, or, How to Debounce a Contact in Two Easy Pages_ [Web Page]. The Ganssle Group. Retrieved 2020-06-20, from http://www.ganssle.com/debouncing.pdf.
+[^free-code-camp-debounce-how-to-delay-a-javascript-function]: Ondrej Polesny (2021, Jan 18). _Debounce – How to Delay a Function in JavaScript (JS ES6 Example)_ [Web Page]. freeCodeCamp. Retrieved 2023-07-02, from https://www.freecodecamp.org/news/javascript-debounce-example/.

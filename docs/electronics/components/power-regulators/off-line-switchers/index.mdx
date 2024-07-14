@@ -1,0 +1,48 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components, Power Regulators ]
+date: 2016-06-28
+draft: false
+localhost: 2023-04-24
+tags: [ power regulator, off-line switchers, isolation, synchronous rectification, SR, Power Integrations, PSU, "240VAC" ]
+title: Off-line Switchers
+type: page
+---
+
+## Overview
+
+Off-line switchers convert a usually high AC input voltage (e.g. 110-240VAC mains supply) down to a IC-level DC voltage (e.g. 5V). Their design is based on a _flyback regulator_ circuit. The term "_off-line switchers_" comes from the fact that the DC output voltage is derived straight from the AC input (the DC voltage comes straight "off" the line (AC)).
+
+You can buy everything from just the IC controllers which need a lot of supporting circuitry to entire ready-to-use off-line switcher packages.
+
+## Isolation
+
+Both isolated and non-isolated off-line switchers exist on the market. Isolated versions use a transformer to separate the high voltage AC side from the low-voltage DC side.
+
+<Image src={require('./offline-switcher-complete-isolated-flyback-switching-supply-schematic-ti.png').default} width="651px">Schematic of a isolated off-line switcher by TI. Image from http://www.ti.com.</Image>
+
+And here is an example of a non-isolated version:
+
+<Image src={require('./offline-switcher-linkswitch-tn-typical-application-schematic.pdf.png').default} width="625px">A typical application schematic for the LinkSwitch-TN family of non-isolated off-line switchers by Power Integrations. Image from www.power.com.</Image>
+
+## Examples
+
+### InnoSwitch3-Pro Family
+
+The _InnoSwitch3-Pro family_ of off-line converters from Power Integrations features secondary side synchronous rectification (SR), constant voltage (CV) or constant current (CC) control, integrated primary-side switch, integrated 3.6V "$uVCC$" power output to directly powering a microcontroller, cable drop voltage compensation, and an [I2C port](/electronics/communication-protocols/i2c-communication-protocol/)[^bib-innoswitchpro-3-ds].
+
+<Image src={require('./innoswitch3-pro-insop-24d-package-3d-render.png').default} width="300px">3D render of the InnoSwitch3-Pro off-line regulator in a InSOP-24D package[^bib-innoswitchpro-3-ds].</Image>
+
+The I2C port is designed to be connected to a microcontroller powered of the 3.6V, and the microcontroller can configure the main power supply from the converter. You can configure whether it is constant voltage (in 10mV steps), constant current (in 50mA) steps and read back status information. This makes it particularly suitable for [USB](/electronics/communication-protocols/usb-protocol/) PD adapters and chargers.
+
+Below is the applications example from it's datasheet, which shows the circuitry required to build a 40W programmable power supply:
+
+<Image src={require('./innoswitch3-pro-applications-example.png').default} width="900px">The 40W programmable PSU example circuit from the InnoSwitch3-Pro's datasheet[^bib-innoswitchpro-3-ds].</Image>
+
+### MeanWell PM-15-XX Family
+
+These are ready-to-go PCB-mounted AC/DC converter modules that are designed to be hooked into the AC mains (90-270VAC(rms)) on one side, and output a DC voltage on the other side. The below photos shows the MeanWell `PM-15-12` which outputs 12V at up to 1.25A:
+
+<Image src={require('./meanwell-pm-15-12-acdc-converter-size-comparison-photo.jpg').default} width="500px">Size comparison of a Meanwell 15W, 12V AC/DC converter.</Image>
+
+[^bib-innoswitchpro-3-ds]: Power Integrations (2022, Nov). _InnoSwitch3-Pro Family: Digitally Controllable Off-Line CV/CC QR Flyback Switcher IC with Integrated High-Voltage Switch, Synchronous Rectification and FluxLink Feedback (datasheet)_. Retrieved 2023-04-24, from https://www.power.com/sites/default/files/documents/innoswitch3-pro_family_datasheet.pdf.

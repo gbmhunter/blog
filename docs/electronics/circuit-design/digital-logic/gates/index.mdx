@@ -1,0 +1,788 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design, Digital Logic ]
+date: 2012-08-06
+description: An overview of the different types of digital logic gates, including NOT, AND, NAND, OR, NOR, XOR, XNOR, and how they are constructed from diodes, transistors, and MOSFETs.
+draft: false
+lastmod: 2023-04-29
+images: [ /electronics/circuit-design/digital-logic/gates/cmos-nand-gate-screenshot.png ]
+tags: [ electronics, circuit design, digital logic, gates, diode logic, DL, RTL, DTL, TTL, CMOS, binary counter, Karnaugh maps, NAND, NOR ]
+title: Gates
+type: page
+---
+
+## Overview
+
+Logic gate inputs are normally labelled as a single letter, starting with `A` (e.g. a three input AND gate would have inputs `A`, `B` and `C`). The output is normally labelled `Y` (in other material you may see this labelled `X`), unless you are using a flip-flop or latch, and the output is labelled `Q`.
+
+There are a few different standards used to draw logic gates on schematics:
+
+* *MIL-STD-806B* (Graphic Symbols For Logic Diagrams): This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
+* *IEC 60617* (ANSI/IEEE Std 91-1984): All the gates are IC-like rectangles with symbols inside to denote the function. NOT logic is shown with a _flag_ on the pin rather than a _bubble_. Not as easy too quickly identify the gate as MIL-STD-806B, and not as widely used.
+* *DIN 40700-24* (Graphical Symbols; Components For Precision Engineering Devices, Especially Clocks): Ever rarer than the MIL-STD-806B or IEC 60617 symbols, these are rarely seen. The 1976 Edition was released in June 1976. DIN symbols on this page are referenced to https://de.wikipedia.org/wiki/Logikgatter#Typen_von_Logikgattern_und_Symbolik.
+
+This page uses the convention of `TRUE` or `1` to represent the logic state true, and `FALSE` or `0` to represent the logic state false.
+
+## Types of Gates
+
+### NOT
+
+Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inverter) always outputs the opposite (complement) of the input. If the input is `TRUE`, the output is `FALSE`. If the input is `FALSE`, the output is `TRUE`.
+
+{/* {{% figure src="not-gate-symbol.svg" width="800px" caption="The symbols for a NOT gate (inverter)." %}} */}
+<Image src={require('./not-gate-symbol.svg').default} width="800">The symbols for a NOT gate (inverter).</Image>
+
+{/* {{% aside type="tip" %}} */}
+:::tip
+Although almost never shown on basic diagrams (but always shown somewhere on proper circuit schematics), aside from the inputs and outputs, all gates also need power pins to provide power for the internal logic.
+{/* {{% /aside %}} */}
+:::
+
+The truth table for an NOT gate is:
+
+| Inputs | Output |
+|--------|--------|
+| *A*    | *Y*    |
+| 0      | 1      |
+| 1      | 0      |
+
+And this gives rise to the simple equation for NOT logic:
+
+$$
+\begin{align}
+Y = \overline{A}
+\end{align}
+$$
+
+### AND
+
+An AND gate outputs `TRUE` only if all it's inputs are `TRUE`. AND is also called logical conjunction[^bib-wp-list-logic-sym].
+
+{/* {{% figure src="and-gate-symbol.svg" width="800px" caption="The symbols for an AND gate." %}} */}
+<Image src={require('./and-gate-symbol.svg').default} width="800">The symbols for an AND gate.</Image>
+
+Truth table for an AND gate is:
+
+<table>
+  <thead>
+    <tr><th colspan="2">Inputs</th> <th>Output</th></tr>
+    <tr><th>A</th>  <th>B</th>    <th>Y</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>    <td>0</td></tr>
+    <tr><td>0</td>  <td>1</td>    <td>0</td></tr>
+    <tr><td>1</td>  <td>0</td>    <td>0</td></tr>
+    <tr><td>1</td>  <td>1</td>    <td>1</td></tr>
+  </tbody>
+</table>
+
+The equation for the AND logic may be written in one of the following ways:
+
+$$
+\begin{align}
+Y &= A \cdot B \ \text{(preferred)} \\
+Y &= AB \\
+Y &= A \& B \\
+Y &= A \wedge B \\
+\end{align}
+$$
+
+An AND gate can be made using basic diode logic as shown below:
+
+{/* {{% figure src="and-gate-from-diodes-and-resistors.svg" width="300px" caption="An AND gate made from basic diode logic." %}} */}
+<Image src={require('./and-gate-from-diodes-and-resistors.svg').default} width="300">An AND gate made from basic diode logic.</Image>
+
+### NAND
+
+A NAND gate is just an AND gate but with the output inverted. This is shown below with the bubble at the output of the AND symbol:
+
+{/* {{% figure src="nand-gate-symbol.svg" width="800px" caption="The symbol for an NAND gate." %}} */}
+<Image src={require('./nand-gate-symbol.svg').default} width="800">The symbol for an NAND gate.</Image>
+
+Truth table for an NAND gate:
+
+<table>
+  <thead>
+    <tr><th colspan="2">Inputs</th> <th>Output</th></tr>
+    <tr><th>A</th>  <th>B</th>    <th>Y</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>    <td>1</td></tr>
+    <tr><td>0</td>  <td>1</td>    <td>1</td></tr>
+    <tr><td>1</td>  <td>0</td>    <td>1</td></tr>
+    <tr><td>1</td>  <td>1</td>    <td>0</td></tr>
+  </tbody>
+</table>
+
+### OR
+
+A OR gate is `TRUE` if at least one input is `TRUE`. This means it is also outputs `TRUE` if all it's inputs are `TRUE`. OR is also called logical disjunction[^bib-wp-list-logic-sym].
+
+{/* {{% figure src="or-gate-symbol.svg" width="800px" caption="The symbol for an OR gate." %}} */}
+<Image src={require('./or-gate-symbol.svg').default} width="800">The symbol for an OR gate.</Image>
+
+Truth table for an OR gate:
+
+<table>
+  <thead>
+    <tr><th colspan="2">Inputs</th> <th>Output</th></tr>
+    <tr><th>A</th>  <th>B</th>    <th>Y</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>    <td>0</td></tr>
+    <tr><td>0</td>  <td>1</td>    <td>1</td></tr>
+    <tr><td>1</td>  <td>0</td>    <td>1</td></tr>
+    <tr><td>1</td>  <td>1</td>    <td>1</td></tr>
+  </tbody>
+</table>
+
+The OR operation can be expressed in an equation in the following ways:
+
+$$
+\begin{align}
+Y &= A + B \ \text{(preferred)} \\
+Y &= A \vee B \\
+Y &= A || B \\
+\end{align}
+$$
+
+The OR gate be drawn using three equal diameter circles placed on a grid as shown in the below image. Segments of the circles perimeters are taken along with the addition of two horizontal line sections to form the classic OR gate shape[^bib-spin-num-logic-gates].
+
+{/* {{% figure src="how-to-draw-the-or-gate.png" width="600px" caption="Diagram showing how to draw an OR gate from the segments of three equal diameter circles placed on a grid[^bib-spin-num-logic-gates]." %}} */}
+<Image src={require('./how-to-draw-the-or-gate.png').default} width="600">Diagram showing how to draw an OR gate from the segments of three equal diameter circles placed on a grid[^bib-spin-num-logic-gates].</Image>
+
+### NOR
+
+A NOR gate is just a OR gate but with the output inverted (i.e. what you would get if you connected the output of an OR gate to an inverter). Just like the NAND gate, the NOR is gate is shown in the below image -- and is just an OR gate symbol with a bubble on the output.
+
+{/* {{% figure src="nor-gate-symbol.svg" width="800px" caption="The symbols for a NOR gate." %}} */}
+<Image src={require('./nor-gate-symbol.svg').default} width="800">The symbols for a NOR gate.</Image>
+
+Truth table for an NOR gate:
+
+<table>
+  <thead>
+    <tr><th colspan="2">Inputs</th> <th>Output</th></tr>
+    <tr><th>A</th>  <th>B</th>    <th>Y</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>    <td>1</td></tr>
+    <tr><td>0</td>  <td>1</td>    <td>0</td></tr>
+    <tr><td>1</td>  <td>0</td>    <td>0</td></tr>
+    <tr><td>1</td>  <td>1</td>    <td>0</td></tr>
+  </tbody>
+</table>
+
+The equation for an NOR gate:
+
+$$
+\begin{align}
+Y = \overline{A + B}
+\end{align}
+$$
+
+### XOR
+
+A 2-input _XOR gate_ (_exclusive OR_) only outputs `TRUE` if *one and only one* of it's inputs is also `TRUE`. For many gate construction technologies, the XOR gate is the most complex primitive gate to build.
+
+{/* {{% figure src="xor-gate-symbol.svg" width="800px" caption="The symbols for a 2-input XOR (exclusive-or) gate." %}} */}
+<Image src={require('./xor-gate-symbol.svg').default} width="800">The symbols for a 2-input XOR (exclusive-or) gate.</Image>
+
+Truth table for a 2-input XOR gate:
+
+<table>
+  <thead>
+    <tr><th colspan="2">Inputs</th> <th>Output</th></tr>
+    <tr><th>A</th>  <th>B</th>    <th>Y</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>    <td>0</td></tr>
+    <tr><td>0</td>  <td>1</td>    <td>1</td></tr>
+    <tr><td>1</td>  <td>0</td>    <td>1</td></tr>
+    <tr><td>1</td>  <td>1</td>    <td>0</td></tr>
+  </tbody>
+</table>
+
+{/* {{% aside type="note" %}} */}
+:::note
+The only difference in behaviour between an OR and XOR is when both inputs are `TRUE`. An OR gate outputs a `TRUE` in this case, whilst and XOR outputs a `FALSE`.
+{/* {{% /aside %}} */}
+:::
+
+The symbol $\bigoplus$ is used to represent XOR, as hence XOR can be written in the following ways:
+
+$$
+\begin{align}
+Y &= (A \cdot \bar{B}) + (\bar{A} \cdot B) \\
+Y &= (A + B) \cdot (\bar{A} + \bar{B}) \\
+Y &= A \bigoplus B \\
+\end{align}
+$$
+
+There are many ways to build XOR gates from the more basic NAND, NOR, AND and OR gates. The most intuitive approach to me is to represent the XOR gate as $Y = (A \cdot \overline{B}) + (\overline{A} \cdot B)$. The following circuit shows this structure:
+
+{/* {{% figure src="xor-gate-made-from-ands-and-or.png" width="500px" caption="A XOR gate made from AND and OR gates, with some of the inputs inverted into the front-end of the AND gates." %}} */}
+<Image src={require('./xor-gate-made-from-ands-and-or.png').default} width="500">A XOR gate made from AND and OR gates, with some of the inputs inverted into the front-end of the AND gates.</Image>
+
+The following circuit shows a XOR gate made from a AND, NAND and OR gate. This circuit implements the equation $Y = (\overline{AB}) \cdot (A + B)$. Toggle the inputs in the right-hand side interactive simulation to see the XOR gate in action!
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="xor-gate-made-from-and-nand-or.svg" width="500px" caption="A XOR gate made from 1 AND, NAND and OR gate." %}} */}
+<Image src={require('./xor-gate-made-from-and-nand-or.svg').default} width="500">A XOR gate made from 1 AND, NAND and OR gate.</Image>
+
+{/* {{% circuitjs width="400" height="300" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADKVZHhg8IAWAbx7VqAMwCGAGwDO9GpFYBZEFiHgi+Nd03bqaaAlYAPEETjhIJNanDI0IYWmEANAPIAlADqyA4pIALvSmlEQQYNhcjmB4TijCAIKh6jEIPFgIyOAINsLIwgCaHFw8ApaCwuViUCBScgpISmbpwmD4Ngi44CSO+cIAQqzIVOb42nza6m1aKCCOdMNZ5gTgGkREbRrZjkjGI44WE73mmz2OO7XGAO6nW8JaExpKt4+a1G9gz6yvZ2AnnxOLzGx0O43AumBR3A+GECFhMOEwPhbQRKJEUB+KwmCEOljAuMxr3xhIs1GqRNKGPRsVEWJpfGxGORugpZKclihljZqwpSiAA" %}} */}
+</div>
+
+The below image shows a XOR gate made exclusively from NAND gates:
+
+{/* {{% figure src="xor-gate-made-from-nands.svg" width="600px" caption="A XOR gate made exclusively from NAND gates." %}} */}
+<Image src={require('./xor-gate-made-from-nands.svg').default} width="600">A XOR gate made exclusively from NAND gates.</Image>
+
+You can also make a XOR gate exclusively from NOR gates, as shown in the below image. Note that the structure is similar to the all-NAND gate version of the XOR, but with the additional inverting gate on the output.
+
+{/* {{% figure src="xor-gate-made-from-nors.svg" width="600px" caption="A XOR gate made exclusively from NOR gates." %}} */}
+<Image src={require('./xor-gate-made-from-nors.svg').default} width="600">A XOR gate made exclusively from NOR gates.</Image>
+
+Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, e.t.c? **So in general, a XOR gate with more than 2 inputs is ill-defined.** However, there are a few other names used for logic that performs some of these functions:
+
+1. *Output TRUE only if 1 and only 1 input is TRUE*. This is called a _one-hot detector_. However, this is rarely seen in practise.
+1. *Output TRUE only if an odd number of inputs are TRUE*. This is called a _parity generator_ or _modulo-2 adder_.
+
+XOR gates are used for:
+
+* *Parity generators*: A sequence of XOR gates can calculate the parity of block of data, which is used for simple single-bit error detection in some communication protocols (e.g. optional setting you can enable with UART)[^bib-maxim-xor-definition].
+* *Correlation/sequence detection*: XOR gates output `FALSE` if both inputs are the same. This behaviour can be utilized to perform correlation between two bit streams.
+* Cryptographic circuits.
+
+### XNOR
+
+The XNOR gate is an XOR gate but with the output inverted. The symbol is:
+
+{/* {{% figure src="xnor-gate-symbol.svg" width="800px" caption="The symbols for a XNOR gate." %}} */}
+<Image src={require('./xnor-gate-symbol.svg').default} width="800">The symbols for a XNOR gate.</Image>
+
+The truth table for an XNOR gate is:
+
+<table>
+  <thead>
+    <tr><th colspan="2">Inputs</th> <th>Output</th></tr>
+    <tr><th>A</th>  <th>B</th>    <th>Y</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td>  <td>0</td>    <td>1</td></tr>
+    <tr><td>0</td>  <td>1</td>    <td>0</td></tr>
+    <tr><td>1</td>  <td>0</td>    <td>0</td></tr>
+    <tr><td>1</td>  <td>1</td>    <td>1</td></tr>
+  </tbody>
+</table>
+
+## Logic Families
+
+### Diode Logic (DL)
+
+_Diode logic_ (DL) is digital logic circuitry *made from just diodes and resistors*. It is a very simple (if not the simplest) way of constructing logic gates in a circuit. Diode logic is great for getting a basic theoretical understanding of how logic gates are realized, but is *rarely used in practise due to fan-out, switching speed issues, and limited gate constructibility (more on this below)!*. Also known as _diode-resistor logic_ (DRL). 
+
+{/* {{% figure src="and-gate-from-diodes-and-resistors.svg" width="300px" caption="An AND gate made from basic diode logic." %}} */}
+<Image src={require('./and-gate-from-diodes-and-resistors.svg').default} width="300">An AND gate made from basic diode logic.</Image>
+
+Before long you'll be struck with the solemn realization you can't create a NOT gate (inverter) from pure diode logic (or any gates that require inverting capabilities, such as NAND or NOR gates). *This limits you to being only able to make AND or OR gates*, and hence it's usefulness is severely limited. NOT gates are constructable as soon as you add switching elements, such as transistors. [Resistor-transistor logic](#resistor-transistor-logic-rtl) is the extension of diode logic but the addition of transistors.
+
+### Resistor-Transistor Logic (RTL)
+
+_Resistor-transistor logic_ (RTL) is one of the most basic families of digital logic (only diode logic beats it in terms of simplicity). It uses resistors and BJTs to build the basic gates required for digital logic. Now days it is completely superseded by logic families such transistor-transistor logic (TTL) and CMOS. However, it serves as a great place to introduces readers on how logic gates are built from discrete components.
+
+{/* {{% figure src="rtl-logic-inverter.svg" width="400px" caption="A very basic logic \"inverter\" made from RTL." %}} */}
+<Image src={require('./rtl-logic-inverter.svg').default} width="400">A very basic logic "inverter" made from RTL.</Image>
+
+**Advantages:**
+
+* Very basic to create.
+* Used a minimal amount of transistors (this was important in the early days of IC fabrication as transistors were expensive!)
+
+**Disadvantages:**
+
+* **Very limited fan-out.**
+* **Significant power consumption:** When the transistors are switched on.
+* **Weak drive in one direction:** Single transistor strongly drives output only in one direction, pull-up/down resistor is used in opposite direction.
+* **Poor noise margins**.
+
+{/* {{% figure src="rtl-logic-nor-gate.svg" width="400px" caption="Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by $R_C$. Any `HIGH` input will turn on a transistor, which will drive the output `LOW`. " %}} */}
+<Image src={require('./rtl-logic-nor-gate.svg').default} width="400">Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by $R_C$. Any `HIGH` input will turn on a transistor, which will drive the output `LOW`.</Image>
+
+### Diode-Transistor Logic (DTL)
+
+TODO: Add info here.
+
+### Transistor-Transistor Logic (TTL)
+
+The inputs of TTL logic are the emitters of BJTs.
+
+#### TTL NAND Gate
+
+TTL NAND gates can use special multiple-emitter BJTs to reduce the transistor count. Each input of the NAND gate is connected to one of the emitters. In the case of a NPN BJT, is any 1 or more of the base-emitter junctions is forward biased, then the transistor turns on[^bib-wikipedia-ttl].
+
+### N-type Metal-oxide Semiconductor Logic (NMOS)
+
+N-type Metal-oxide Semiconductor (NMOS) logic is a way of building logic functions from N-channel MOSFETs. In the early days of digital logic (1970s), it was much faster and easier to manufacture than CMOS, however since the 1980s CMOS took over and has become the dominant way of implementing logic gates[^bib-wikipedia-nmos]. NMOS is built from an arrangement of N-channel MOSFETs on the low-side (depending on the function) and a pull-up resistor on the high side. 
+
+#### NMOS Inverter Gate
+
+A NMOS inverter is simply made from a N-channel MOSFET and a resistor, as shown below: 
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="nmos-inverter-gate.png" width="200px" caption="The simple inverter made using NMOS technology." %}} */}
+<Image src={require('./nmos-inverter-gate.png').default} width="200">The simple inverter made using NMOS technology.</Image>
+
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHchYovkWCwJQZFYBzVX24rhg7kV7UtAJT1gwRa5DNQ+dJ+cmsAMpWWjBCW76uIOwAhgA2AM70NFoKRuAaetzIdloAskJYaolYDgmaIGjucVn51olaAB6UyBBo+MgguI31vLxovAByaQDyAMoAOhEAkgB2AG70AE4ALtNDAOIhc-LeKvx+PIFVlAhI3GgQCFiNB3btvACCrNVEWLxghEIk1I-7hbwAmqxT1gHxthU1FQcFYQA" %}} */}
+</div>
+
+When the input $A$ is `LOW`, the N-channel MOSFET is turned OFF, and so the output $Y$ is pulled `HIGH` by $R1$. When $A$ is `HIGH`, the N-channel MOSFET gets turned on. It's equivalent drain-source resistance drops to a value much lower than $R1$, and so therefore the output is effectively driven `LOW`, completing the inverter functionality.
+
+{/* {{% aside type="tip" %}} */}
+:::tip
+You can see the static current flow (and therefore power consumption) in the above NMOS circuit simulation when you toggle the input to `HIGH`.
+{/* {{% /aside %}} */}
+:::
+
+#### NMOS NOR Gate
+
+The NMOS NOR gate uses two N-channel MOSFETs connected in parallel to drive the output `LOW` if either input is `HIGH`. If neither input is `LOW`, then no MOSFET will be on and the output will be pulled `HIGH` by the resistor.
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="nmos-nor-gate.png" width="300px" caption="A NOR gate made using NMOS technology." %}} */}
+<Image src={require('./nmos-nor-gate.png').default} width="300">A NOR gate made using NMOS technology.</Image>
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4AsI3YaEEQF8RI5NCQxIaVgHMhI7t3yLB3Ir2qRWAJSFZBeXkUMhsg7XzpRbMBKwAylIqv6CEYIqMu32AQwAbAGd6Gh0AdzVwEkFhdWRvHQBZEENVL1UsImpM2zRJVijTI1josDKdAA8XEnMEJCwEOrQEN3NeADlkgHkAZQAdYM6e3SGAcX8AF3oilzcRNt53KFYahqRuNAgETT5iPhReAEE1tIOwXbTL8GbD5F4ATVYAJwMjSBMzMC9bVDgOEI9issJ8fOBBBIpLBZM5dm58KpPN4VKorAEQmEpHN4XxEUDlvjIgS8aoiMCRMTQbwKoJqXxEqtit9XO8YpY5iVwKz0ty0Zzvgg4iz+cyjL8uZcOWL2WkwbTVgp6cosmCNFpVusrtwcC5NvhqLwHiAAEKsIA" %}} */}
+</div>
+
+### Complementary Metal-oxide Semiconductor Logic (CMOS)
+
+_Complementary metal-oxide-semiconductor_ (CMOS) is a way of building logic functions from complementary pairs of N-channel and P-channel MOSFETs. Today, it is by far the most popular way of constructing digital integrated circuits (ICs)[^bib-wikipedia-cmos]. CMOS circuits typically have negligible static power dissipation and only consume power during transitions. It advances from NMOS technology by replacing the upper resistor with P-channel MOSFETs, which both eliminates static power dissipation and speeds up the low-to-high transition.
+
+Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivalents. The `T` in the logic subfamily name signifies the parts have TTL-compatible inputs.
+
+#### CMOS Inverter Gate
+
+The inverter is the easiest CMOS logic gate to make! It just consists of one P-channel and one N-channel MOSFET in a "totem-pole" configuration, as shown below. On the right-hand side is an interactive simulation.
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="cmos-inverter-gate.png" width="200px" caption="A CMOS inverter gate." %}} */}
+<Image src={require('./cmos-inverter-gate.png').default} width="200">A CMOS inverter gate.</Image>
+
+{/* {{% circuitjs width="400" height="400" data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4CaIImAFh+4CMmhIYkNBy69uwwcqUiBk6bDkB3FSKL594EgMisA5se7cjQgdyK9q5gErGwYIh8jOoIbjp-FylWABlKQxMBBC9o4JB2AEMAGwBnehpzPQQeeNzeUTNWPXt4su5kb3MAWUFbcvxqMFN-NFDShpaBMu6oVgAPSmQINHxkEFwJscUQNF4AYRqAeQBlAB00gEkAOwA3egAnABcjzYBxJNOShQDlAvjsyKM+h77zIYQuwkoECjB8EheMheABBQaCKjgH5EBAkaFAlC8ACarCAA" %}} */}
+</div>
+
+{/* {{% aside type="tip" %}} */}
+:::tip
+These diagrams use the simplified MOSFET symbols in where the P-channel as a bubble next to it's gate and the N-channel doesn't. No indication of drain or source are shown either, although this may be a moot point if in an integrated circuit with the substrate not connected to the source. If you are unfamiliar with this MOSFET symbol style, see the [MOSFETs page](/electronics/components/transistors/mosfets/) for more info.
+{/* {{% /aside %}} */}
+:::
+
+When the input $A$ is `HIGH`, the gate-source voltage of the bottom-side N-channel MOSFET is $+V_{DD}$ and turns the MOSFET ON. The top-side P-channel MOSFETs gate-source voltage is $0V$ and therefore OFF. Hence the output gets driven `LOW`. When $A$ is `LOW`, the bottom-side N-channel MOSFETs gate-source voltage goes to $0V$ and the P-channel's gate-source voltage goes to $-V_{DD}$, turning it ON and driving the output `HIGH`.
+
+{/* {{% figure src="cmos-inverter-from-discrete-mosfets-animation.gif" width="400px" caption="Video of a basic CMOS inverter made from a discrete P-channel and N-channel MOSFET. The inverter is fed a 0.5Hz clock signal into it's input from a function generator. 1 LED is connected to the inverters input, the other connected to it's output." %}} */}
+<Image src={require('./cmos-inverter-from-discrete-mosfets-animation.gif').default} width="400">Video of a basic CMOS inverter made from a discrete P-channel and N-channel MOSFET. The inverter is fed a 0.5Hz clock signal into it's input from a function generator. 1 LED is connected to the inverters input, the other connected to it's output.</Image>
+
+#### CMOS NAND Gate
+
+After the inverter, the two easiest CMOS gates to build are the NAND and NOR gates. A 2-input NAND gate can be built from two P-channel and two N-channel MOSFETs as shown below. On the right-hand is an interactive simulation.
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="cmos-nand-gate.png" width="400px" caption="A 2-input CMOS NAND gate, built from two P-channel and two N-channel MOSFETs." %}} */}
+<Image src={require('./cmos-nand-gate.png').default} width="400">A 2-input CMOS NAND gate, built from two P-channel and two N-channel MOSFETs.</Image>
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGK4QAsiBHNR3MUsAgLMdymhaq8BA9DINbsFwMMMmBhj9xJSYtEISiNMUKdjqRZMZCmRCWcyaVS9ucRsp7qNWAAPShoNSQCCOCgYYqKXgAYQRAHkAMoAHWmADkAIK6gAiOoA4uMAC70cWSijHZCUbHHAYoXj6m2YxVoJAIMBIbjPXjIXgAIRtjjEeGRYDt7iMrpAAE1WEA" %}} */}
+</div>
+
+Two N-channels are connected in series on the bottom side, and two P-channels are connected in parallel on the top side. Both inputs ($A$ and $B$) have to be `HIGH` to turn on both the lower side N-channel MOSFETs and drive the output ($Y$) `LOW`. If either inputs are `LOW`, at least one of the high-side P-channel MOSFETs will be turned on, driving the output `HIGH`. This completes the NAND logic.
+
+The number of inputs can be easily increased from 2 by adding the appropriate number of extra MOSFETs in series and in parallel. For example, a 3-input CMOS NAND gate's schematic would look like this:
+
+{/* {{% figure src="cmos-nand-gate-3-input.png" width="500px" caption="A schematic for a 3-input CMOS NAND gate." %}} */}
+<Image src={require('./cmos-nand-gate-3-input.png').default} width="500">A schematic for a 3-input CMOS NAND gate.</Image>
+
+#### CMOS NOR Gate
+
+A CMOS NOR gate is built in a similar fashion to a NAND gate, except you swap the serial and parallel connections of the P-channel and N-channel MOSFETs around. On the right-hand side is an interactive simulation. 
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="cmos-nor-gate.png" width="400px" caption="A CMOS NOR gate." %}} */}
+<Image src={require('./cmos-nor-gate.png').default} width="400">A CMOS NOR gate.</Image>
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYhEAs1YJaLvj4Dwg5NCQxIaDpVEZ8XMIMXgIEqbFmcEREYP0GxKSVG1yECrIZUhsgsBrPTZAcy68Q3NN0-VuL2pIVgAlZXEsIgiUQKh4ryl4mARWABlKDHsCb3wlNWCQdgBDABsAZ3oaEIyELIdc-JtkorLK6tYAdxi0Xx69KFYAWRAsZEdx0biwSeo0SS6Y5FEiO2QowYAPTKVxpTHdme97PwBhIYB5AGUAHXKAOQvQu4BxYoAXekWjbxyfnz8IW6-z6PACfSBQnBfiIwl+SkhYO8oLhAMG3Tqc2aeiagkhOPAkD8BLAdXRlFh4DJRGQ0VJeO+tKphiZ-AZwNZKy8bPJmOySgQYGiBUWBIaVlUzXxQv58lUOWlwsSMp5ivAoj0xkRdhmtkcMsRcHAGx+Tmihr4MtW+vN3x1VrhZvJsMt0RdxttwJ1k2t9jyzu9gjGE3ZlBlvjo4YVospeGJlIaIW2VA0JGiCEmyxIx2QfgAgqxk5AIMRBBnVEQkH5cyAAEKF0YsQkQGx8SDRat+ACarCAA" %}} */}
+</div>
+
+#### CMOS AND Gate
+
+Funnily enough, the easiest way to build a CMOS AND gate to to build a NAND gate and then add an inverter on it's output. Thus it's schematic looks like what is shown in the below-left picture.
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="cmos-and-gate.png" width="400px" caption="The schematic for building a 2-input CMOS AND gate. Notice how it's just a NAND gate with an inverter attached to the output." %}} */}
+<Image src={require('./cmos-and-gate.png').default} width="400">The schematic for building a 2-input CMOS AND gate. Notice how it's just a NAND gate with an inverter attached to the output.</Image>
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGaX4As4R+IImDR8BwlNCQxIaDpW69sIhCRFLwEZJKixZnBDxDdxQkcZHitU3XKJpFWEUUch1YTdumyA7pVWv8ARULZBFIVl9nEKcXNECoVgBzQXEFAVMjIl5qcIAlPzUEIgLXeyhy7jpynMlWfKjXIsFYspyjKraYBFYAGXlec0pQo3E29gBDABsAZ3oacL6EBVEhi35qkAmZuakI-pWDXjB18N8lh2Vl44FTynXBorE4hLP14XSCcGfbok-3wU+6h+gJcdguLxSFkMGW4yGKt0eI2UhkGCP8YGGGQxYT2WMxLmxEKxCCc4nc8NxZOOkPAwwRywe91GrAAHncSK5IBQsAgKGhUEZXLwAMIAWQA8gBlAA60wAggA5AAisoA4uMAC70VmUbB8ZCUanHAYoXhynUk4rcNBIBBgJDWgS8ZC8ABCOpwT2KWHwFGEHOdvAAmriSMVySAsMMI7coxYsN7o9TYwmNN7fmmEqLI6mI-g-snXLVfAnqBHS3wcns45ma2gwwl8hW4tRm9wbhUOtVaskK2B-BXKh3YxnCX3k3Ia2BU33cyIrDoZJPhvX09RVxoJNYl5EGxGsROgA" %}} */}
+</div>
+
+#### CMOS OR Gate
+
+In a similar fashion to the CMOS AND gate, the simplist way to build a CMOS OR gate is to build a NOR gate and then add an inverter on it's output.
+
+<div style={{ display: 'flex' }}>
+{/* {{% figure src="cmos-or-gate.png" width="400px" caption="The schematic for building a 2-input CMOS OR gate. Notice how it's just a NOR gate with an inverter attached to the output." %}} */}
+<Image src={require('./cmos-or-gate.png').default} width="400">The schematic for building a 2-input CMOS OR gate. Notice how it's just a NOR gate with an inverter attached to the output.</Image>
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYhEAs1YJaLvj4Dwg5NCQxIaDpVEZ8XMIMXgIEqbFmcEREYP0GxKSVG1yECrIZUhsgsBrPTZAcy68Q3NN0-VuL2pIVgAlZXEsIgiUQKh4ryl4mARWABlKDHsCb3wlNWCQdgBDABsAZ3oaEIyELIdc-JtkorLK6tYAdxi0Xx69KC6Y5FEiO2QowYAPSiIkZDBkEFwlBb8-PoBhAFkAeQBlAB1y3dDjgHFigBd6IaNvHPufPxDup76eAL7XoS+-ImEDyUP0+3g+gOeg26dWoDT0TUEP3h4EgfmRYDqUNmSgxhmQ0VxWKI+PAmOJBNEIJJ-EMXhpWJh2SUCDA0QKQ2RcOsiI5rKZ8lUOSRfN8dD59OFFMEemMILsi1sjj5ILg4Em9yc0RVfD5YyVWru8t1gM1RJNxr4kzljmQivseQZIsSIqFHIBKLR7oaIRmVA0JGiCFtKDI3liIAAgqxfZAIMRpcHiEg-Mg-AAhaMgYSOGRZlgo5PhgCahptglwBODPwrpPL4qrQ2EfGDWHwfgVg22WdVHfw8qr9kkQ1b7ZbbfUBu6NY7Ne9YWW47QAxH9m+CToLRSrA8K9ZSl34+Cw8XDt3Dc408xu8x4xcFgvIuaK4aTlMWhkrCAA" %}} */}
+</div>
+
+#### CMOS XOR Gate
+
+The CMOS XOR gate is the hardest CMOS gate primitive to build! It can be built with the circuit shown below, which uses a total of 12 MOSFETs, 3 times as many as the basic NAND and NOR gates![^bib-wikipedia-xor]
+
+{/* {{% figure src="cmos-xor-gate.png" width="600px" caption="A XOR gate built from CMOS logic." %}} */}
+<Image src={require('./cmos-xor-gate.png').default} width="600">A XOR gate built from CMOS logic.</Image>
+
+Have a play around with the interactive XOR gate simulation below:
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUAGYgAsJRI2aSmD4Dwg5NCQxIaDt14ouXIX2RLwECVNizOPPmGEqNB8ZKg65+-gWMZ8GlOemyA5seEOERsPmXVIVgAlYxZBbz58AKhuOhiAyVYAGXBIZWQEQVEMwWj2AEMAGwBnehpAgHdQojojZBJc1iqIlDQvOuRGgA9uNCQ0ZBAiNX5lZTRlAGEAWQB5AGUAHWKADVmg5YBxfIAXeibU9MyxahyoA7AMFAaTlGPK8D87wU9n86rXs8+sPgfL0+O-xQnXOIVeCleRH8MS4cWiMAQrHcr3s4CIDjQE3iF3RrQcn3uciB9ReuJJYic2hkRKuYTRDjphkpFmpGAoviOgi4yFUxyQADsAIKsNngH7cBzcvhcLwgYUfNJvPBjBx-RUysXS1UXRV9AzivXvQ5o6jK-gIX4iyDsg0W7g8818JAAISt7KewmoUpNNH5rs4QMDuMDmmclgDV1hptxUYpWhZsg+wZ8wZq52RMYdry4l2xYODipRWFyMLh8USHyuntuQL+qej+Kefw9ade1b+kbgNbTauU1aDAWSxuronbMQKJTKUgOLTa7VMg+aPj5Ke1ousajGds33BAQrd8hEti4dtRyld64UohPImLu+Fl4MRhvJl3F+tQ1shidyele-fFA1Bid4WsBXJ7g+H5ATYXi4me-4HtBO6gYoYxygcUL4scmH0kaOFzkMGq1hhGqdA4OF0g8FFphRNyBCEFEgjhUTxLE5Tloi7g4ZCRFNucnDQai+FfqGVK6J++JGNxPhmGJchIeoFHqEy8YuPJtiiPhd65qplhLiIsKERihlURqEzUOi1DmXhZmGfhdqmcZFlmViDyzoZs6uTORjWbODmISx1nFlZhnKAAmqwQA" %}} */}
+
+#### Tristate CMOS Inverter
+
+A useful building block for digital logic is a CMOS inverter whose output can also be tri-stated. The obvious way to do this would be connect the output of a regular inverter to a transmission gate, as shown in `(a)` in the figure below. But these MOSFETs can be recombined to make a single "totem-pole" stack which provides the same functionality, as shown in `(b)`[^bib-utah-digital-vlsi-lab-ass-3]. In `(b)`, the N-channel MOSFET of the transmission gate it connected in series with the N-channel MOSFET of the inverter on the lower leg. Likewise for the P-channel MOSFETs. This circuit is sometimes simplified to the symbol shown in `(c)`.
+
+{/* {{% figure src="tristate-inverter.png" width="900px" caption="Diagram showing how a tri-state converter can be made by combining the MOSFETs from a inverter and transmission gate into a single \"totem pole\" arrangement." %}} */}
+<Image src={require('./tristate-inverter.png').default} width="000">Diagram showing how a tri-state converter can be made by combining the MOSFETs from a inverter and transmission gate into a single \"totem pole\" arrangement.</Image>
+
+### Pass Transistor Logic (PTL)
+
+Pass transistor logic (PTL) is a form of logic design in where transistors are used to connect the input directly to the output -- to reduce the number of transistor required to implement the logic. CMOS logic always uses the input to switch the output to either the positive rail or ground. PTL on the other hand eliminates some of the transistors that would be required in CMOS logic by allowing the transistors to connect the input directly to the output (instead of connecting the output to the rails). The disadvantage of doing this is that the output voltage reduces through each stage[^bib-wikipedia-ptl].
+
+[Transmission gates](/electronics/components/analogue-switches-transmission-gates/#transmission-gates) are used frequently in the design of PTL logic as a way of switching the input to the output.
+
+#### PTL AND Gate
+
+An AND gate can be made from PTL logic using a total of 5 transistors, one less than the 6 required in CMOS logic.
+
+{/* {{% figure src="ptl-and-gate.png" width="500px" caption="An AND gate made from PTL logic." %}} */}
+<Image src={require('./ptl-and-gate.png').default} width="500">An AND gate made from PTL logic.</Image>
+
+The circuit on the left is just an inverter to provide $\overline{B}$ which is needed for the PTL logic on the right. The TG on the right connects $A$ to the output only if $B = 1$. Thus:
+
+* $B = 1$ and $A = 0$, then $Y = 0$
+* $B = 1$ and $A = 1$, then $Y = 1$
+
+If $B = 0$, then the TG is off but the bottom-right N-channel MOSFET is turned on, connecting the output to $GND$ (we don't care what $A$ is). Thus:
+
+* $B = 0$ and $A = 0$, then $Y = 0$
+* $B = 0$ and $A = 1$, then $Y = 0$
+
+It should now be pretty clear that this works as an AND gate. Play around with the interactive simulation below:
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADIjZophFcAWasj5QxAMwCGAGwDO9GpFYAPEEIgCkCIhvxrBIAAoAVdgB1ZAQQByAEQsBxSQBd6rAO7giwhDzBZ+ZF8oD3AAlBI-cKCeJU8BIRRggTQBJNjQlLSYtVSUcLiwwOD-QOQMgCVctJJ+LJAiNOpqRKRmqGgEVgBzaq4CPrQ85sy88r16nKVxIoieScjKHmROjsg0VhnSlHK+lh4ECBW22A2MCgSfeaxl4KQAOwAhVnOuG95+PGzRJEsXyAojT0OSI+Cu+gAmptKPg0hg9AhYShQQ1hKsYOtoYiavxsR8GsgUOjTqFtMCfsERPxCghKSiyci9IVvMIUURkIEUcyOfiWfiaZSKbcMp5acLKHSmaF2YFRDL0iFPPKQTyOVLRaIcmKFUpXnjajC0u8Hs89Uj4YauGADiBTQC3ssUV9GTRnpxuC7UqymRIZPJFP8KHxwdbgXdbYGHVweV7o3UQFCALJRtA852p6lcTpY834BHmgQI5bEzG9Xx6VJFiuNMQ0tAVwuUFGVkJmuF5y1gXYm6VwQR6HQ8FvM639hqjqbS1XBQc66UTmeNyd6zV3SDZcN-IA" %}} */}
+
+#### 8 Transistor PTL XOR Gate
+
+Above we showed how complex a XOR gate is to build in CMOS logic (12 transistors!). PTL logic can significantly reduce the transistor count for a XOR gate. One such implementaton is[^bib-all-about-circuits-digital-design-ptl]:
+
+{/* {{% figure src="ptl-xor-gate-8-tran.png" width="400px" caption="A XOR gate made from PTL logic. This XOR circuit uses a total of 8 transistors, less than the CMOS implementation that uses 12. But we can still do better!" %}} */}
+<Image src={require('./ptl-xor-gate-8-tran.png').default} width="400">A XOR gate made from PTL logic. This XOR circuit uses a total of 8 transistors, less than the CMOS implementation that uses 12. But we can still do better!</Image>
+
+To see how this works, ignore the simple CMOS inverters on the left and focus on the PTL logic on the right. Input $B$ controls which transmission gate is on and which is off. If $B$ is `LOW`, the bottom transmission gate is on and the top is off, passing $A$ to the output. Thus:
+
+* If $B = 0$ and $A = 0$, then $Y=0$
+* If $B = 0$ and $A = 1$, then $Y=1$
+
+If $B$ is `HIGH` the opposite happens, the top tranmission gate is on and the bottom is off, passing $\overline{A}$ to the output. Thus:
+
+* If $B = 1$ and $A = 0$, then $Y=1$
+* If $B = 1$ and $A = 1$, then $Y=0$
+
+Now it should be pretty easy now to see that this gives you a XOR gate!
+
+#### 6 Transistor PTL XOR Gate
+
+However, we can reduce the transistor count even further! This following clever circuit implements a XOR gate in PTL logic using a **total of only 6 transistors**[^bib-uni-waterloo-ptl].
+
+{/* {{% figure src="ptl-xor-gate-6-tran.png" width="600px" caption="A XOR gate made in PTL logic with only 6 transistors[^bib-uni-waterloo-ptl]." %}} */}
+<Image src={require('./ptl-xor-gate-6-tran.png').default} width="600">A XOR gate made in PTL logic with only 6 transistors[^bib-uni-waterloo-ptl].</Image>
+
+The left-side of the circuit is an "inverter" (but with the MOSFET source leads connected to $A$ rather than the rails), and the right-hand side is a transmission gate.
+
+* When $A = 0$, both MOSFETs in the inverter will always be `OFF` because the gate-source voltage of the N-channel MOSFET can never be more positive than 0V and the gate-source voltage of the P-channel can never be more negative than 0V. The right-hand side transmission gate will be ON, and so the output will equal $B$.
+* When $A = 1$, the transmission gate will be `OFF`, and the inverter will become active, passing through the inverse of $B$ to the output.
+
+This makes a XOR gate! Have a play around with the interactive simulation of it below:
+
+{/* {{% circuitjs data="CQAgzCAMB0l3BWEBGGAmOaDsWyQBxoBsAnCViApJZdQgKYC0yyAUADIjZophFcAWasj5QxAMwCGAGwDO9GpFYAPcAIgDkIImHwgBA-YO2MAKgCdJAO1kBLWQBcA9uYA6sgAqn27gBoB5ACV3AHFJB3pWAHdwImEEHjAsfmQEqGjwZJQSRKzUniUYg3ieATRDfPSi8pQ0soqswsyUtKSU5ALWQP0akn567UNqaiFFMRgEVgBzHsMMPQG0GuGMgY6FmsqlcWbs0s2cyh5kaCQYSDRWHbaUDtnbngQIE7PYS4wKYtrSrGO0pCsAEFWB8uL9ePw8BVREhgaCiMgWjwESkMEYAJogyAUBD4OYESh4wR0EBAq6UUQsR5EqkUlCnKBvclPFKHXEVQ5ol6Mi4ZdkoNB6flbPmU-6Uu5NYX-GmNDIo76EippKWUtlizqg-l9JWDGhw7EUpG0ZWPEAAIXJRHBaER2nBiKFxwZ50uO2tPHweg9ELp3Nd8oQKVERFGIn4TVDwiI3qDKBjVW0XvjeiwkAqCaaaeh-BjenDiajvqLIpiJbSJczGWzvprpZAdbSdarZbtlXLmsNPuTPrjsKxFB9ttzNoEQtJBoojZ4uGNSEtoO4KfA6eX844YOOCfK0b0wxAUjkCjOA9iJXAgsV-cXNrtO64dsMmIAspuH5DV8OxGhTqwgA" %}} */}
+
+## Logic Gate Part Numbers
+
+Texas Instruments introduced the `SN74xx` series of logic ICs in the 1960s, using TTL logic. These parts became very popular and many other manufactures began making pin-compatible parts. They kept the `74xx` section of the part number to aid identification, and hence the `74xx` is somewhat standardized across the industry.
+
+The 5400 series is the military rated version of the 7400 series. The 4000 series is the newer CMOS alternative to the 7400 TTL logic. However (and which is somewhat confusing), newer 7400 parts can also be made using CMOS logic, for example, the 74HC4051 analogue multiplexer[^bib-ti-74hc4051-multi]. These parts commonly using the logic subfamily names `HC` or `HCT`.
+
+Part number descriptions for the popular TTL 74xx family of ICs:
+
+<table>
+    <thead>
+        <tr>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Num. Units</th>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>74x00</td>
+            <td>Quad 2-input NAND gate</td>
+            <td>4</td>
+            <td>Normal</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x01</td>
+            <td>Quad 2-input NAND gate</td>
+            <td>4</td>
+            <td>Normal</td>
+            <td>Open-collector</td>
+        </tr>
+        <tr>
+            <td>74x02</td>
+            <td>Quad 2-input NOR gate</td>
+            <td>4</td>
+            <td>Normal</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x03</td>
+            <td>Quad 2-input NAND gate</td>
+            <td>4</td>
+            <td>Normal</td>
+            <td>Open-collector</td>
+        </tr>
+        <tr>
+            <td>74x04</td>
+            <td>Hex inverter gate</td>
+            <td>6</td>
+            <td>Normal</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x05</td>
+            <td>Hex inverter gate</td>
+            <td>6</td>
+            <td>Normal</td>
+            <td>Open-collector</td>
+        </tr>
+        <tr>
+            <td>74x06</td>
+            <td>Hex inverter gate</td>
+            <td>6</td>
+            <td>Normal</td>
+            <td>Open-collector, 30V/40mA</td>
+        </tr>
+        <tr>
+            <td>74x07</td>
+            <td>Hex buffer gate</td>
+            <td>6</td>
+            <td>Normal</td>
+            <td>Open-collector, 30V/40mA</td>
+        </tr>
+        <tr>
+            <td>74x08</td>
+            <td>Quad 2-input AND gate</td>
+            <td>4</td>
+            <td>Normal</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x09</td>
+            <td>Quad 2-input AND gate</td>
+            <td>4</td>
+            <td>Normal</td>
+            <td>Open-collector</td>
+        </tr>
+        <tr>
+            <td>74x10</td>
+            <td>Triple 3-input NAND gate</td>
+            <td>3</td>
+            <td>Normal</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x11</td>
+            <td>Triple 3-input AND gate</td>
+            <td>3</td>
+            <td>Normal</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x12</td>
+            <td>Triple 3-input NAND gate</td>
+            <td>3</td>
+            <td>Normal</td>
+            <td>Open-collector</td>
+        </tr>
+        <tr>
+            <td>74x13</td>
+            <td>Dual 4-input NAND gate</td>
+            <td>2</td>
+            <td>Schmitt trigger</td>
+            <td>Push-pull</td>
+        </tr>
+        <tr>
+            <td>74x4051</td>
+            <td>High-speed 8-channel analog multiplexer/demultiplexer</td>
+            <td>1</td>
+            <td>Analog</td>
+            <td>Analog</td>
+        </tr>
+        <tr>
+            <td>74x4052</td>
+            <td>Dual 4-channel analog multiplexer/demultiplexer</td>
+            <td>2</td>
+            <td>Analog</td>
+            <td>Analog</td>
+        </tr>
+        <tr>
+            <td>74x4053</td>
+            <td>Triple 2-channel analog multiplexer/demultiplexer</td>
+            <td>3</td>
+            <td>Analog</td>
+            <td>Analog</td>
+        </tr>
+    </tbody>
+</table>
+
+The `x` is a placeholder for the logic subfamily. For example, in `74LSxx` the `LS` represent the low-power Schottky subfamily.
+
+A company specific prefix may be added to the above part numbers depending on the manufacturer.
+
+<table>
+    <thead>
+        <tr>
+            <th>Prefix</th>
+            <th>Company</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&lt;none&gt;</td>
+            <td>Nexperia, Phillips</td>
+        </tr>
+        <tr>
+            <td>CD</td>
+            <td>Texas Instruments</td>
+        </tr>
+        <tr>
+            <td>DM</td>
+            <td>National Semiconductor</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>IDT</td>
+        </tr>
+        <tr>
+            <td>M</td>
+            <td>STMicroelectronics</td>
+        </tr>
+        <tr>
+            <td>MC</td>
+            <td>OnSemi</td>
+        </tr>
+        <tr>
+            <td>MM</td>
+            <td>National Semiconductor</td>
+        </tr>
+        <tr>
+            <td>NLV</td>
+            <td>OnSemi</td>
+        </tr>
+        <tr>
+            <td>SN</td>
+            <td>Texas Instruments</td>
+        </tr>
+        <tr>
+            <td>TC</td>
+            <td>Toshiba</td>
+        </tr>
+    </tbody>
+</table>
+
+## Karnaugh Maps
+
+Karnaugh maps are a way of simplifying combinational logic, often used before realising a combination equation into a number of gates to reduce the complexity.
+
+## Logic Simulators
+
+[CEDAR Logic Simulator](http://sourceforge.net/projects/cedarlogic/) is my personal favourite. Free, easy to use, colours the wires depending on their state, and allows for named nets as well as direct connections.
+
+## Example Logic Circuits
+
+### 6-State Binary Counter
+
+Category: Counter  
+Expression Style: Sum of Products  
+No. of Gates: 14  
+No. of Flip-flops:  3  
+1-Bit Inputs: 2 + reset  
+1-Bit Outputs: 3  
+
+Tested On:
+
+* Simulation: Yes ([CEDAR Logic Simulator](http://sourceforge.net/projects/cedarlogic/))
+* Hardware: Yes
+
+Downloads: [CEDAR Logic Simulator File](https://docs.google.com/open?id=0B9GgsT_bUc27SW5sTGZDSlhWQkU)
+
+The 6-state binary counter is a counter which counts from 000 to 101 in the normal binary fashion before resetting back to 0. The output increments on every rising-edge of the count pulse, and the direction pin (upNDown) determines the count direction (when upNDown = 1, the counter goes from 000 to 101, when upNDown is 0 the counter goes from 101 to 000).
+
+The flip-flop equations expressed as sums of products are:
+
+$$
+\begin{align}
+Q_2 = \bar{Q_2}.\bar{Q_1}.\bar{Q_0}.\bar{y} + \bar{Q_2}.Q_1.Q_0.y + Q_2.\bar{Q_1}.Q_0.\bar{y} + Q_2.\bar{Q_1}.\bar{Q_0}.y \\ \\
+Q_1 = \bar{Q_2}.\bar{Q_1}.Q_0.y + \bar{Q_2}.Q_1.\bar{Q_0}.y + \bar{Q_2}.Q_1.Q_0.\bar{y} + Q_2.\bar{Q_1}.\bar{Q_0}.\bar{y} \\ \\
+Q_0 = \bar{Q_2}.\bar{Q_0} + Q_2.\bar{Q_1}.\bar{Q_0} \\ \\  
+\end{align}
+$$
+
+{/* {{% figure src="digital-logic-counter-six-state-binary.png" width="700px" caption="Schematic of a six state binary counter." %}} */}
+<Image src={require('./digital-logic-counter-six-state-binary.png').default} width="700">Schematic of a six state binary counter.</Image>
+
+### 3-Bit Grey Encoded Counter
+
+Category: Counter  
+Expression Style: Sum of Products  
+No. of Gates: 14  
+No. of Flip-flops: 3  
+1-Bit Inputs: 2 + reset  
+1-Bit Outputs: 3  
+
+Tested On:
+
+* Simulation: Yes ([CEDAR Logic Simulator](http://sourceforge.net/projects/cedarlogic/))
+* Hardware: Yes
+
+Download: [CEDAR Logic Simulator File](https://docs.google.com/open?id=0B9GgsT_bUc27REVITzhmQk9DMk0)
+
+The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in a grey encoded fashion. The counter increments on every rising edge of the bit 'count' and the direction bit 'upNDown' determines the direction of counting.
+
+{/* {{% figure src="digital-logic-counter-three-bit-grey-encoded-binary.png" width="700px" caption="Schematic of a three-bit Grey encoded binary counter." %}} */}
+<Image src={require('./digital-logic-counter-three-bit-grey-encoded-binary.png').default} width="700">Schematic of a three-bit Grey encoded binary counter.</Image>
+
+[^bib-ti-74hc4051-multi]: Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
+[^bib-maxim-xor-definition]: Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
+[^bib-spin-num-logic-gates]: McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
+[^bib-wp-list-logic-sym]: Wikipedia (2005, Aug 20). _List of logic symbols_. Retrieved 2021-10-25, from https://en.wikipedia.org/wiki/List_of_logic_symbols.
+[^bib-utah-digital-vlsi-lab-ass-3]: University of Utah: John and Marcia Price College of Engineering. _ECE/CS 5710/6710 – Digital VLSI Design: Lab Assignment #3_. Retrieved 2023-04-24, from https://my.eng.utah.edu/~kstevens/5710/lab3.pdf.
+[^bib-wikipedia-cmos]: Wikipedia (2023, Feb 17). _CMOS_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/CMOS.
+[^bib-wikipedia-nmos]: Wikipedia (2023, Mar 12). _NMOS Logic_. Retrieved 2023-04-29, from https://en.wikipedia.org/wiki/NMOS_logic.
+[^bib-wikipedia-xor]: Wikipedia (2023, Mar 20). _XOR gate_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/XOR_gate.
+[^bib-wikipedia-ptl]: Wikipedia (2022, Nov 22). _Pass transistor logic_. Retrieved 2023-05-05, from https://en.wikipedia.org/wiki/Pass_transistor_logic.
+[^bib-all-about-circuits-digital-design-ptl]: Robert Keim (2018, Dec 26). _Digital Design with Pass-Transistor Logic_. All About Circuits. Retrieved 2023-05-09, from https://www.allaboutcircuits.com/technical-articles/digital-design-with-pass-transistor-logic/.
+[^bib-uni-waterloo-ptl]: University of Waterloo - ECE. _ECE 637 - Lecture 11 - Pass-Transistor Logic_. Retrieved 2023-05-09, from https://ece.uwaterloo.ca/~mhanis/ece637/lecture11.pdf.
+[^bib-bar-ilan-ptl]: Bar Ilan's Faculty of Electrical and Computer Engineering. _Digital Microelectronic Circuits - Lecture 9 - Pass Transistor Logic_. Retrieved 2023-05-24, from https://www.eng.biu.ac.il/temanad/files/2018/02/09-PTL-annotated.pdf.
+[^bib-wikipedia-ttl]: Wikipedia (2023, Apr 22). _Transistor–transistor logic_. Retrieved 2023-05-10, from https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic.

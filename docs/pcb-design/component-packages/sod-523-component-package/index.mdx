@@ -1,0 +1,57 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2014-11-09
+draft: false
+lastmod: 2022-03-23
+tags: [ "component packages", "PCB design", "SOD-523", "SC-79", "SSMini2-F5-B", "CASE 502", "small-outline", "diodes" ]
+title: "SOD-523 Component Package"
+type: "page"
+---
+
+## Overview
+
+`SOD-523` (Small Outline Diode 523, JEDEC) is a 2-lead SMD component package.
+
+<Image src={require('./sc-79-sod-523-component-package-3d-render.png').default} width="200px"></Image>
+
+Synonyms:
+
+* CASE 502 (onsemi, STYLE 1 has diode polarity mark, STYLE 2 does not[^bib-on-semi-rb751s40-ds])
+* SC-79 (EIAJ[^bib-nxp-sod523-package-info])
+* SSMini2-F5-B (Panasonic[^bib-panasonic-db2s308-ds])
+
+Similar To:
+
+* [SOD-123](/pcb-design/component-packages/sod-123-component-package/) (largest)
+* [SOD-323](/pcb-design/component-packages/sod-323-component-package/) (larger)
+* [SOD-723](/pcb-design/component-packages/sod-723-component-package/) (smaller)
+* [SOD-923](/pcb-design/component-packages/sod-923-component-package/) (smallest)
+
+Pitch: 1.40mm
+
+Solderability: Reflow is most suitable. Possible to hand solder/reflow as long as experienced.
+
+Package Dimensions:
+
+* Length: 1.65mm[^bib-on-semi-rb751s40-ds]
+* Width: 0.80mm[^bib-on-semi-rb751s40-ds]
+* Height: 0.60mm[^bib-on-semi-rb751s40-ds]
+
+Typical PCB Land Area: $2.58mm^2$ (2.15x1.20mm)[^bib-nxp-sod523-package-info]
+
+Common Uses:
+
+* ESD protection diodes.
+* Schottky diodes.
+
+The SOD-523 package size (excluding height) of 1.65x0.80mm (length x width) is very similar to the 0603 chip package size of (1.55x0.85mm). SOD-523 is smaller than the SOD-323 package, but larger than the SOD-723 package.
+
+<Image src={require('./sod-523-package-dimensions.png').default} width="600px">Package dimensions for the SOD-523 package[^bib-nxp-sod523-package-info].</Image>
+
+<Image src={require('./sod-523-land-pattern.png').default} width="600px">Recommended land pattern for the SOD-523 package[^bib-nxp-sod523-package-info].</Image>
+
+[^bib-on-semi-rb751s40-ds]:  ON Semiconductor (now onsemi). _RB751S40: Schottky Barrier Diode (datasheet)_. Retrieved 2022-03-24, from https://www.onsemi.cn/pdf/datasheet/rb751s40t1-d.pdf.
+[^bib-nxp-sod523-package-info]:  NXP (2022). _SOD523 plastic surface-mounted package; 2 leads (package information)_. Retrieved 2022-03-24, from https://www.nxp.com/docs/en/package-information/SOD523.pdf.
+[^bib-panasonic-db2s308-ds]:  Panasonic (2013, Apr). _DB2S308 (datasheet)_. Retrieved 2022-03-24, from https://docs.rs-online.com/4e91/0900766b814af80d.pdf.
+[^bib-nexperia-sc-79-package]:  Nexperia. _SC-79 (SOD523) plastic, surface-mounted package; 2 leads; 1.2 mm x 0.8 mm x 0.6 mm body_. Retrieved 2022-03-24, from https://www.nexperia.com/packages/SOD523.html.

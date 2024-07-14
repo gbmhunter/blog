@@ -1,0 +1,29 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Mathematics", "Matrices" ]
+date: 2019-02-21
+draft: false
+lastmod: 2019-02-21
+tags: [ "matrix", "dot product", "Numpy" ]
+title: "Matrices"
+type: page
+---
+
+<WarningIsNotes />
+
+<h2>Dot Product</h2>
+
+<h3>Numpy</h3>
+
+<p>The dot product of arrays of vectors can be calculated using Numpy with:</p>
+
+```python
+import numpy as np
+a = np.array([[1, 1, 1], [2, 2, 2]])
+b = np.array([[1, 2, 3], [4, 5, 6]])
+np.sum(a*b, axis=1)
+```
+
+<h3>Projection</h3>
+
+<p>The dot product can be used to calculate the projection of a vector onto an axis in 3D space.</p>

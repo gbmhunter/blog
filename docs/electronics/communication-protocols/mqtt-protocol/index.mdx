@@ -1,0 +1,167 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Communication Protocols ]
+date: 2014-02-16
+description: History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol.
+draft: false
+lastmod: 2022-10-03
+tags: [ electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto, message ordering, messages ]
+title: MQTT Protocol
+type: page
+---
+
+{/* {{% warning-is-notes %}} */}
+<WarningIsNotes />
+
+## Overview
+
+MQTT is a **lightweight publish/subscribe communications protocol** that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
+
+{/* {{% figure src="mqtt-logo.png" width="500" caption="The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30." %}} */}
+<Image src={require('./mqtt-logo.png').default} width="500">The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30.</Image>
+
+[MQTT-SN (MQTT for Sensor Networks)](#mqtt-sn) is an optimized version of the MQTT protocol designed to be used over non-TCP/IP connections.
+
+## History
+
+Andy Stanford-Clark (working at IBM) and Arlen Nipper (working for Eurotech) published the first version of the MQTT protocol in 1999. It was used to monitor oil pipelines that used the SCADA (Supervisory Control and Data Acquisition) control system[^bib-wikipedia-mqtt], with connections to the internet primarily through expensive satellite connections[^bib-paessler-brief-history-mqtt].
+
+The MQ in MQTT stood for "Message Queue" in the IBM MQSeries, a family of messaging software products. Version 3.1 of the protocol referred to it as MQ Telemetry Transport, and hence the name "MQTT" was born[^bib-wikipedia-mqtt].
+
+In 2013, IBM submitted MQTT v3.1 to the OASIS specification body[^bib-wikipedia-mqtt].
+
+On March 7, 2019, MQTT Version 5 was released, and as of 2022-06 is the most recent major version.
+
+## MQTT Brokers
+
+Mosquitto is a very popular open-source MQTT broker.
+
+Online test/sandbox brokers:
+
+* mqtt.eclipse.org
+
+### Mosquitto
+
+#### Installation
+
+**Windows**:
+
+Mosquitto can be installed on Windows by downloading the pre-compiled binaries. The x64 version will be installed in a path similar to `C:\Program Files\Mosquitto`. You will likely want to add that directory path to your system path so that you can call `mosquitto` from the command line.
+
+#### Running
+
+If you have added the installation directory to your system path, you can invoke `mosquitto` with:
+
+```bash
+mosquitto
+```
+
+By default the above command will start a MQTT broker listening on port `1883` (the default port for non-encrypted traffic). The broker will not run as a daemon, so you can stop the broker with `Ctrl-C` (or equivalent). It also uses the following defaults:
+
+- No authentication
+
+You can listen to all system topics by subscribing to `$SYS/#`.
+
+If you are experiencing problems when running `mosquitto`, you might want to run in verbose mode `-v` to print debug information, as by default very little information is printed to the command-line:
+
+```bash
+$ mosquitto -v
+```
+
+`1883` is the default port for unencrypted traffic. `8883` is the default port for traffic encrypted with SSL/TLS.
+
+#### Common Errors
+
+`Client <client-name> disconnected due to protocol error.`: Can be due to the client requesting TLS/SSL encryption on the non-encrypted `1883` port.
+
+`ssl3_read_bytes:tlsv1 alert unknown ca`: Broker does not recognize the CA sent by the connecting client.
+
+#### Creating Password Files
+
+`mosquitto_passwd` is a utility provided alongside `mosquitto` which can generate password files for `mosquitto`. These password files control user access to the broker.
+
+## MQTT Clients
+
+[Paho](https://pypi.org/project/paho-mqtt/) is a popular MQTT client for Desktop and server machines running Windows, Linux or macOS. It's API is reasonably well documented at https://pypi.org/project/paho-mqtt/.
+
+You can install Paho the standard way using `pip`:
+
+```python
+pip install paho-mqtt
+```
+
+The Paho library can then be imported into your Python files with:
+
+```python
+import paho.mqtt.client as mqtt
+```
+
+To request that the client creates the connection by supplying a username and password, call `username_pw_set()` on the client before calling `connect()`:
+
+```python
+client.username_pw_set('admin', 'password')
+client.connect_async(self.broker_address, 1883, 60)
+```
+
+### MQTT Clients For Embedded Devices
+
+There are a number of MQTT clients designed for embedded devices, these include:
+
+* [The embedded Paho MQTT client](https://www.eclipse.org/paho/index.php?page=clients/c/embedded/index.php): Embedded version of the popular Paho MQTT client. It is released as two separate APIs:
+    * MQTTPacket: Low-level C library that deals with the serialization/deserialization of MQTT packets.
+    * MQTTClient: Higher-level C++ library first written for the mbed platform. Depends on MQTTPacket.
+* [arduino-mqtt](https://github.com/256dpi/arduino-mqtt): Arduino wrapper around the lwmqtt MQTT client. Also available for PlatformIO. This one is pretty popular and is recommended in the AWS IoT tutorials.
+* **coreMQTT**: MQTT client maintained by the FreeRTOS group (however, the library does not depend on FreeRTOS to operate).
+
+## MQTT-SN
+
+MQTT-SN (MQTT for Sensor Networks, previously known as just MQTT-S[^bib-mqtt-mqtt-specifications]) is a version of the MQTT protocol which has been optimized use on low-power, low-performance, wireless IoT devices. It is designed to work on non-TCP/IP networks, such as Zigbee[^bib-mqtt-mqtt-specifications].
+
+The following image shows the high-level MQTT-SN architecture, and how MQTT-SN clients talk to a standard MQTT broker.
+
+{/* {{% figure src="mqtt-sn-architecture.png" width="600px" caption="High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2]." %}} */}
+<Image src={require('./mqtt-sn-architecture.png').default} width="600">High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2].</Image>
+
+Some of the changes in MQTT-SN include (compared to standard MQTT):
+
+1. Shortened two-octet (byte) topic IDs are used instead of full topic names (strings)[^bib-ublox-mqtt-sn]. This can cut down on the amount of bytes sent for topic identification considerably, e.g. the topic name `device1/sensor5/temperature` now just becomes topic ID `54`.
+1. Ability to pre-assign topic IDs on both the client and Gateways (GW) so they don't have to be registered across the network (with the `REGISTER` message).
+
+The complete specification for MQTT-SN is called _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_ and can be downloaded for free from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
+
+> MQTT-SN is designed in such a way that it is agnostic of the underlying networking services. Any network
+which provides a bi-directional data transfer service between any node and a particular one (a gateway) should
+be able to support MQTT-SN[^bib-oasis-open-mqtt-protocol-spec-v1.2].
+
+## Message Ordering
+
+**The ordering of messages can sometimes be important, especially when a device is sending control messages or state information across MQTT**. For example, if a switch published a message saying it was on, and then quickly published a message saying it was off, you need the order of these messages to be preserved if you want to know the current state of the switch.
+
+MQTT makes the following guarantees about message ordering for messages sent on the same topic (no guarantee of ordering is made across messages on different topics)[^bib-stackoverflow-is-message-order-preserved-in-mqtt-messages]:
+
+* No guarantees are made about the relative ordering between messages published on a topic with different QoS values. For example, a message published by one client with a QoS of 0 after a message with a QoS of 2 may be received first by a different client.
+* QoS 0 messages will be delivered in order (but messages may get lost)
+* QoS 1 messages will be delivered in order, but only for the first attempt. Duplicates may be sent, and a duplicate may arrive after the next message was received.
+* QoS 2 messages will be delivered in order.
+
+Per [Section 4.6: Message ordering](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718105) of the MQTT v3.1.1 documentation[^bib-oasis-mqtt-v3.1.1-specifications]:
+
+> A Client MUST follow these rules when implementing the protocol flows defined elsewhere in this chapter:
+>
+> When it re-sends any PUBLISH packets, it MUST re-send them in the order in which the original PUBLISH packets were sent (this applies to QoS 1 and QoS 2 messages) [MQTT-4.6.0-1]
+> - It MUST send PUBACK packets in the order in which the corresponding PUBLISH packets were received (QoS 1 messages) [MQTT-4.6.0-2]
+> - It MUST send PUBREC packets in the order in which the corresponding PUBLISH packets were received (QoS 2 messages) [MQTT-4.6.0-3]
+> - It MUST send PUBREL packets in the order in which the corresponding PUBREC packets were received (QoS 2 messages) [MQTT-4.6.0-4]
+> 
+> A Server MUST by default treat each Topic as an "Ordered Topic". It MAY provide an administrative or other mechanism to allow one or more Topics to be treated as an "Unordered Topic" [MQTT-4.6.0-5].
+>
+>  When a Server processes a message that has been published to an Ordered Topic, it MUST follow the rules listed above when delivering messages to each of its subscribers. In addition it MUST send PUBLISH packets to consumers (for the same Topic and QoS) in the order that they were received from any given Client
+
+
+[^bib-ublox-mqtt-sn]: ublox (2020, Jun 16). _MQTT-SN – lowering the cost of IoT at scale_. Retrieved 2022-06-20, from https://www.u-blox.com/en/blogs/insights/mqtt-sn.
+[^bib-mqtt-mqtt-specifications]: MQTT. _MQTT Specifications_. Retrieved 2022-06-20, from https://mqtt.org/mqtt-specification/.
+[^bib-oasis-open-mqtt-protocol-spec-v1.2]: Andy Stanford-Clark and Hong Linh Truong (2013, Nov 14). _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_. Retrieved 2022-06-21, from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
+[^bib-wikipedia-mqtt]: Wikipedia (2022, June 21). _MQTT_. Retrieved 2022-06-22, from https://en.wikipedia.org/wiki/MQTT.
+[^bib-paessler-brief-history-mqtt]: Shaun Behrens (2019, Aug 09). _From Oil Pipelines to the IoT: A Brief History of MQTT_. Paessler. Retrieved 2022-06-22, from https://blog.paessler.com/a-brief-history-of-mqtt.
+[^bib-stackoverflow-is-message-order-preserved-in-mqtt-messages]: StackOverflow. _Is message order preserved in MQTT messages?_. Retrieved 2022-10-03, from https://stackoverflow.com/questions/30955110/is-message-order-preserved-in-mqtt-messages.
+[^bib-oasis-mqtt-v3.1.1-specifications]: Oasis. _MQTT Version 3.1.1 Specifications_. Retrieved 2022-10-03, from http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html.

@@ -1,0 +1,100 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Electronic Components" ]
+date: 2023-07-31
+draft: false
+lastmod: 2023-07-31
+title: "Lithium-ion Batteries"
+type: "page"
+---
+
+{/* {{% warning-is-notes %}} */}
+<WarningIsNotes />
+
+## Overview
+
+A lithium-ion (or li-ion) battery is a rechargeable battery that uses the recombination of Lithium ions with their missing electron to generate electricity, and the reverse of this process to recharge[^wikipedia-lithium-ion-battery].
+
+Lithium-ion batteries can be considered a family of battery technologies including:
+
+1. Traditional lithium-ion
+1. Lithium polymer
+1. Lithium-iron phosphate
+
+The below table shows some of the basic properties of Lithium-ion batteries:
+
+<table>
+  <caption>Some of the basic properties of Lithium-ion batteries.</caption>
+  <thead>
+    <tr><th>Property</th>           <th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>Specific energy</td>
+    <td>
+
+100-265Wh/kg (0.360-0.954MJ/kg)[^wikipedia-lithium-ion-battery]
+
+    </td>
+    </tr>
+    <tr>
+    <td>Energy density</td>
+    <td>
+    
+250-693Wh/L (0.90-2.49MJ/kg)[^wikipedia-lithium-ion-battery]
+
+    </td>
+    </tr>
+    <tr>
+    <td>Specific power</td>
+    <td>
+
+250-340W/kg[^wikipedia-lithium-ion-battery]
+
+  </td>
+  </tr>
+  </tbody>
+</table>
+
+## Self Discharge
+
+Lithium-ion batteries have a self-discharge rate which is 10 times less than NiMH batteries[^ti-li-ion-battery-charger-jeita-compliance].
+
+## Charging
+
+The common way to charge a Lithium-ion battery is to follow these steps:
+
+1. The pre-charge stage, which is only applicable if the battery is really flat (less than 2.8V). The battery is charged with a constant-current, usually 10% of current used in the next stage (sometimes called the fast charge).
+1. Charge the battery with a constant current (CC), at a rate of around 0.5-1C[^battery-university-bu-409-charging-li-ion].
+1. Once the battery reaches a certain voltage (typically 3.9-4.2V), we switch from CC charging to CV charging. We maintain this voltage while the current begins to decrease.
+1. Stop charging once the current drops to approximately 0.1C. 
+
+{/* {{% aside type="warning" %}} */}
+:::warning
+It is not healthy to store a Lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to be provide the best lifetime[^battery-university-bu-702-how-to-store-batteries]. 
+{/* {{% /aside %}} */}
+:::
+
+1C is the current required to drain the battery in 1 hour, e.g. for a 500mAh battery, 1C is 500mA. Most battery charger ICs will automatically perform the above steps for you.
+
+Pre-charge can also been confused with the pre-charge step that occurs in the manufacturing process after the cells have been filled with electrolytes.
+
+### TI's BQ Range
+
+Texas Instruments sells a large number of battery charger ICs under the prefix `BQ`. Some are I2C controllable, others are standalone. Some have hot/cold temperature monitoring and others (typically with a `J` after the numerical code in the part name) have JEITA temperature monitoring.
+
+Four phases:
+
+1. Battery short
+1. Pre-conditioning
+1. Constant current (CC)
+1. Constant voltage (CV)
+
+### Richtek RT9481, RT9485
+
+The `RT9485` has an on-board MCU.
+
+[^ti-li-ion-battery-charger-jeita-compliance]: Jinrong Qian (2010). _Li-ion battery-charger solutions for JEITA compliance_. Texas Instruments. Retrieved 2023-07-31, from https://www.ti.com/lit/an/slyt365/slyt365.pdf.
+[^wikipedia-lithium-ion-battery]: Wikipedia (2023, Jul 27). _Lithium-ion battery_. Retrieved 2023-07-31, from https://en.wikipedia.org/wiki/Lithium-ion_battery.
+[^battery-university-bu-409-charging-li-ion]: Battery University (2021, Oct 25). _BU-409: Charging Lithium-ion_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-409-charging-lithium-ion.
+[^battery-university-bu-702-how-to-store-batteries]: Battery University (2021, Oct 21). _BU-702: How to Store Batteries_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-702-how-to-store-batteries.

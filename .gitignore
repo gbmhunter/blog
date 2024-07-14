@@ -1,38 +1,23 @@
-# Hugo build output goes here
-public/
+# Dependencies
+/node_modules
 
-# Hugo puts page resources (e.g. images) here
-resources/
+# Production
+/build
 
-# Temp Hugo build file
-.hugo_build.lock
+# Generated files
+.docusaurus
+.cache-loader
 
-__pycache__/
-
-# VS Code settings
-# .vscode/
-
-# Python virtual environments
-env/
-.venv/
-
-# LibreOffice temp files
-.~lock.*
-
-# MacOS thingies
+# Misc
 .DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Environment file which has sensitive Algolia admin key
-.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.aider*
 
-# npm libs
-node_modules/
-
-# KiCad files
-sym-lib-table
-*.sch-bak
-*.pro
-_autosave-*.sch
-
-# Affinity files
-**/*.*~lock~
+.venv/

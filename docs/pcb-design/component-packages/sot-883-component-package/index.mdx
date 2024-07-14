@@ -1,0 +1,68 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2020-10-15
+description: "Dimensions, recommended footprints, synonyms, common uses, thermal resistances and more info on the SOT-883 component package."
+draft: false
+images: [ "/pcb-design/component-packages/sot-883-component-package/sot-883-component-package-3d-render.png" ]
+lastmod: 2022-04-03
+tags: [ "component packages", "PCB design", "SOT-883", "small-outline", "transistor", "DFN1006-3", "XDFN3", "SC-101" ]
+title: "SOT-883 Component Package"
+type: "page"
+---
+
+## Overview
+
+`SOT-883` (Small-outline Transistor 883) is a 3-lead SMD component package that is very similar to a DFN package. It is also very similar to the [SOD-882 component package](/pcb-design/component-packages/sod-882-component-package/) (note: that's `SOD`, not `SOT`!). It has the same outside dimensions as the `SOD-882`, except with the addition of an extra pad. This presumably explains the transition from `SOD` to `SOT` -- the two pin package is used for diodes, whilst this three pin package is used for transistors.
+
+<Image src={require('./_assets/sot-883-component-package-3d-render.png').default} width="300px"></Image>
+
+Synonyms:
+
+* `CASE 506DB` (onsemi[^bib-on-semi-ntns3c68nz-ds])
+* `DFN1006-3` (NXP[^bib-nexperia-sot-883])
+* `SC-101` (JEITA, EIAJ)[^bib-nexperia-pbss2515m-ds]
+* `XDFN3` (onsemi)
+
+Package Dimensions:
+
+* Length: 1.0mm (nom)[^bib-nexperia-sot-883]
+* Width: 0.6mm (nom)[^bib-nexperia-sot-883]
+* Height: 0.50mm (nom)[^bib-nexperia-sot-883]
+
+Pitch:
+
+* 0.35mm between the centers of the two small pads (called the nominal pitch by Nexperia)[^bib-nexperia-sot-883]
+* 0.65mm between the centers of the small pads and the large pad (called the minimal pitch by Nexperia)[^bib-nexperia-sot-883]
+
+Solderability: Almost impossible to solder with a hand-held soldering iron due to the pads being on the bottom of the package. Need to use reflow oven/hot air soldering techniques.
+
+Typical PCB Land Area: $1.17mm^2$ (1.30x0.90mm)[^bib-nexperia-sot-883]
+
+Common Uses:
+
+* MOSFETs
+
+Similar To:
+
+* [DFN](/pcb-design/component-packages/dfn-component-package/)
+* [SOD-882](/pcb-design/component-packages/sod-882-component-package/) (2 pins instead of 3, in the same sized package)
+
+onsemi (formally On Semiconductor) calls this package the `XDFN3`[^bib-on-semi-ntns3c68nz-ds]. However, you have to be careful as onsemi also uses the name `XDFN3` for slightly different packages, for example, the NTNS5K0P021Z MOSFET, which has a smaller package size of 0.62x0.42x0.4mm[^bib-on-semi-ntns5k0p021z-ds], rather than 1.0x0.6x0.5mm of the `SOT-883`. The key difference is the "case code" which is `CASE 506CB1`[^bib-on-semi-ntns3c68nz-ds] for the SOT-883, but `CASE 711BH`[^bib-on-semi-ntns5k0p021z-ds] for the smaller 0.62x0.42x0.4mm package.
+
+## 3D Render
+
+<Image src={require('./_assets/sot-883-component-package-3d-render.png').default} width="400px">A 3D render of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
+
+## Package Dimensions
+
+<Image src={require('./_assets/sot-883-component-package-dimensions.png').default} width="800px">The dimensions of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
+
+## Recommended Footprint
+
+<Image src={require('./_assets/sot-883-component-package-recommended-footprint.png').default} width="800px">The recommended PCB footprint for the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
+
+[^bib-nexperia-sot-883]:  Nexperia (2020, Sep 25). _SOT883: plastic, leadless ultra small package; 3 terminals; 0.35 mm pitch; 1 mm x 0.6 mm x 0.48 mm body (package information)_. Retrieved 2022-04-02, from https://assets.nexperia.com/documents/package-information/SOT883.pdf.
+[^bib-nexperia-pbss2515m-ds]:  NXP (now Nexperia) (2003, Jun 17). _PBSS2515M: 15 V, 0.5 A NPN low VCEsat (BISS) transistor (datasheet)_. Retrieved 2022-04-03, from https://assets.nexperia.com/documents/data-sheet/PBSS2515M.pdf. 
+[^bib-on-semi-ntns3c68nz-ds]:  On Semiconductor (now onsemi) (2019, Jun). _NTNS3C68NZ: MOSFET - Single, N-Channel, Small Signal, SOT-883, (XDFN3), 1.0 x 0.6 x 0.4 mm 12 V, 758 mA (datasheet)_. Retrieved 2022-04-03, from https://www.onsemi.com/pdf/datasheet/ntns3c68nz-d.pdf.
+[^bib-on-semi-ntns5k0p021z-ds]:  On Semiconductor (now onsemi) (2019, Jun). _NTNS5K0P021Z: MOSFET - Single P-Channel, Small Signal, XDFN3, 0.62 x 0.42 x 0.4 mm, -20 V, -127 mA (datasheet)_. Retrieved 2022-04-03, from https://www.onsemi.com/pdf/datasheet/ntns5k0p021z-d.pdf.
