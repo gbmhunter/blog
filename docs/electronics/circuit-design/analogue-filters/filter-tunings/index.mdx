@@ -43,11 +43,9 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\omega$ is the angular frequency $[rads^{-1}]$<br/>
-$n$ is the order of the filter<br/>
-</p>
+$n$ is the order of the filter<br/></p>
 
 The normalized Butterworth polynomial of degree $n$ is given by[^bib-pieter-p-butterworth-filters]:
 
@@ -97,11 +95,9 @@ a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $a_0 = 1$ (ignore the above equation for $a_0$)<br/>
-$\gamma = \dfrac{\pi}{2n}$<br/>
-</p>
+$\gamma = \dfrac{\pi}{2n}$<br/></p>
 
 There is also a recursive formula to calculate the coefficients, but we'll just use the product based one. The below table shows the Butterworth polynomial coefficients calculated with this equation, up to $n=8$ (8th order filter).
 
@@ -173,12 +169,10 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\varepsilon$ is the damping factor<br />
 $\omega_0$ is the characteristic frequency<br />
-$T_n(\omega / \omega_0)$ is a Chebyshev polynomial of the first kind with order $n$<br />
-</p>
+$T_n(\omega / \omega_0)$ is a Chebyshev polynomial of the first kind with order $n$<br/></p>
 
 :::note
 The are actually two different kinds of "Chebyshev polynomials". In analogue filter design, we always use the first kind (for both Type I and Type II Chebyshev filters), commonly denoted $T_n$. Chebyshev polynomials of the second kind are usually denoted $U_n$.
@@ -371,13 +365,11 @@ G_n(\omega) &= \frac{1}{\sqrt{1 + \epsilon^2 R_n^2 (\xi, \omega/\omega_c)}} \non
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\epsilon$ is the ripple factor<br/>
 $R_n(\xi, \omega)$ is the nth-order elliptic rational function<br/>
 $\xi$ is the selectivity factor ($\xi \geq 1$)<br/>
-$\omega_c$ is the characteristic frequency, in radians per second $rads^{-1}$<br/>
-</p>
+$\omega_c$ is the characteristic frequency, in radians per second $rads^{-1}$<br/></p>
 
 
 **The big problem is that the elliptic ration function $R_n$ cannot be easily expressed algebraically![^bib-recording-blogs-elliptic-filter]** It's general definition involves a Jacobi elliptic cosine function and the elliptic integral[^bib-rutgers-elliptic-lecture-notes]. Diving into this would be a headache, so we're just going to take the easy option and use the Python `scipy.signal.ellip()` function to provide us with the transfer function coefficients.
