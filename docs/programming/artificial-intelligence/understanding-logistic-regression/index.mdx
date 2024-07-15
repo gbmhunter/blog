@@ -43,12 +43,10 @@ y = \beta_0 + \beta_1 x\\
 -\infty &lt; y &lt; \infty 
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\beta_n$ are the coefficients<br/>
 $x$ is the predictor<br/>
-$y$ is the outcome
-</p>
+$y$ is the outcome</p>
 
 The problem with using linear regression for making binary categorical predictions (i.e. `true/false`) is that $y$ can vary from $-\infty$ to $+\infty$. We really want $y$ to range from $0$ to $1$. When varying between $0$ and $1$, this tells us the probability of the target being `true` or `false`. For example, if $y=0.7$ this would say there is a 70% chance of the target being `true`, and conversely a 30% chance of the target being `false`.
 
@@ -68,10 +66,8 @@ O = \beta_0 + \beta_1 x\\
 0 \leq O &lt; \infty 
 $$
 
-<p class="centered">
-where:<br/>
-$O$ are the odds<br/>
-</p>
+<p className="centered">where:<br/>
+$O$ are the odds<br/></p>
 
 We are getting closer! Now the RHS varies from $0$ to $\infty$ rather than from just $0$ to $1$. So how do we modify a number which ranges from $0$ to $1$ to range from $-\infty$ to $+\infty$? One way is to use the `ln()` function! (to recap some mathematics, the `ln` of values between 0 and 1 map from $-\infty$ and $0$, and the `ln` of values from $1$ to $\infty$ map to $0$ to $\infty$.)
 
@@ -112,10 +108,8 @@ $$
 P = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}}
 $$
 
-<p class="centered">
-where:<br/>
-$\beta_0$ and $\beta_1$ are constants
-</p>
+<p className="centered">where:<br/>
+$\beta_0$ and $\beta_1$ are constants</p>
 
 What happens as we change $\beta_1$?
 

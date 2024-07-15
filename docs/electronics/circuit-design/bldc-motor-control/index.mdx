@@ -342,13 +342,11 @@ I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} 
 I_b \\ I_c \end{bmatrix}  
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $I_a$ = current in motor winding A<br/>
     $I_b$ = current in motor winding B<br/>
     $I_c$ = current in motor winding C<br/>
-    $I_{\alpha\beta\gamma}$ = the Clark transformed currents<br/>
-</p>
+    $I_{\alpha\beta\gamma}$ = the Clark transformed currents<br/></p>
 
 We are fortunate that when using a star-connected BLDC motor (most are!), $I_c$ is 0, so that we can simplify the equation to:
 
@@ -368,13 +366,11 @@ The Park transformation equation is shown below:
 
 <div>$$ I_{dqo} = TI_{abc} = \sqrt{\frac{2}{3}} \begin{bmatrix} \cos(\theta) & \cos(\theta - \frac{2\pi}{3}) & \cos(\theta + \frac{2\pi}{3}) \\ -\sin(\theta) & -\sin(\theta - \frac{2\pi}{3}) & -\sin(\theta + \frac{2\pi}{3}) \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix}$$</div>
 
-<p class="centered">
-    where:<br/>
-    $I_a$ = current in motor winding A<br/>
-    $I_b$ = current in motor winding B<br/>
-    $I_c$ = current in motor winding C<br/>
-    $I_{dqo}$ = the Park transformed currents
- </p>
+<p className="centered">where:<br/>
+$I_a$ = current in motor winding A<br/>
+$I_b$ = current in motor winding B<br/>
+$I_c$ = current in motor winding C<br/>
+$I_{dqo}$ = the Park transformed currents</p>
 
 <Image src={require('./park-transformation-d-q-geometric-interpretation.jpg').default} width="976">A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation.</Image>
 
@@ -394,11 +390,9 @@ r = \tan (\theta)
 \end{aligned}
 $$
 
-<p class="centered">
-    where:<br/>
-    $r$ = ratio ($I_d = rI_q$)<br/>
-    $\theta$ = drive angle<br/>
-</p>
+<p class="centered">where:<br/>
+$r$ = ratio ($I_d = rI_q$)<br/>
+$\theta$ = drive angle<br/></p>
 
 FOC typically requires three PID loops, one medium-speed loop for controlling the velocity and two high-speed loops for controlling $I_d$ and $I_q$.
 

@@ -52,13 +52,11 @@ H(s) &= \frac{K\omega_0^2}{s^2 + \frac{\omega_0}{Q}s + \omega_0^2} \\
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $K$ is the gain factor<br/>
 $\omega_0$ is the characteristic frequency in radians/s [$rads^{-1}$]<br/>
 $Q$ is the quality factor and is dimensionless [$no\ unit$]<br/>
-$s = j\omega$<br/>
-</p>
+$s = j\omega$<br/></p>
 
 :::tip
 For any general 2nd-order filter, the characteristic frequency $\omega_0$ is not necessarily equal to the cut-off frequency. Also, $\frac{1}{Q}$ is sometimes written as $\alpha$.
@@ -365,12 +363,10 @@ Z_O = \frac{z_O}{1 + AB} \\
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $z_O$ is the open-loop impedance<br/>
 $A$ is the closed-loop gain<br/>
-$B$ is the feedback factor, and equal to $\frac{R_4}{R_3 + R_4}$<br/>
-</p>
+$B$ is the feedback factor, and equal to $\frac{R_4}{R_3 + R_4}$<br/></p>
 
 So as the closed-loop gain $A$ of the op-amp begins to drop at high frequencies, the output impedance of the op-amp begins to increase. **The op-amp then struggles to keep the inverting input of the low-pass Sallen-Key filter at virtual ground**, and begins to let through some of the signal. This reduces the effectiveness of the low-pass filter in the stop band.
 

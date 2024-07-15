@@ -52,12 +52,10 @@ R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ V_{CC} $ is the supply voltage that one side of the pull-up resistor is connected to, in Volts<br/>
 $ V_{OL} $ is the maximum voltage allowed on the bus while the device is sinking $I_{OL}$, in Volts<br/>
-$ I_{OL} $ is the maximum current the I2C device pulling the bus line low is required to sink (typ. 3mA), in Amps<br/>
-</p>
+$ I_{OL} $ is the maximum current the I2C device pulling the bus line low is required to sink (typ. 3mA), in Amps<br/></p>
 
 Given the fixed known values, this can be simplified to:
 
@@ -75,11 +73,9 @@ R_{P, max} = \frac{T_R}{0.847298C_{BUS}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ T_R $ is the maximum allowed rise time as specified by the I2C specification for a particular mode, in seconds<br/>
-$ C_{BUS} $ is the total bus capacitance, in Farads<br/>
-</p>
+$ C_{BUS} $ is the total bus capacitance, in Farads<br/></p>
 
 The maximum rise time $ T_R $ is specified by the I2C standard for each I2C mode as shown in the table below:
 

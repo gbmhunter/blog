@@ -14,12 +14,10 @@ A perspective projection has the form:
 
 $$ \begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} = \mathbf{P} \begin{bmatrix}X\\Y\\Z\\S\end{bmatrix} $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $ (x_1,x_2,x_3)^\top $ are the homogeneous coordinates of a point in the image plane $ \mathbf{P} $<br/>
     $ \mathbf{P} $ is a 3x4 matrix<br/>
-    $ (X, Y, Z, S)^\top $ are the homogeneous coordinates of a point in the world<br/>
-</p>
+    $ (X, Y, Z, S)^\top $ are the homogeneous coordinates of a point in the world<br/></p>
 
 ## Plane To Image Projectivity
 
@@ -27,10 +25,8 @@ $$
 \rho \begin{bmatrix} q_1 \\ q_2 \\ 1 \end{bmatrix} = \mathbf{T} \begin{bmatrix} p_1 \\ p_2 \\ 1 \end{bmatrix} = \begin{bmatrix} A&B&C \\ D&E&F \\ G&H&1 \end{bmatrix} \begin{bmatrix} p_1 \\ p_2 \\ 1 \end{bmatrix}
 $$
 
-<p class="centered">
-    where:<br/>
-    $ \rho $ is the scale factor<br/>
-</p>
+<p className="centered">    where:<br/>
+    $ \rho $ is the scale factor<br/></p>
 
 This gives two linear equations with 8 unknowns:
 

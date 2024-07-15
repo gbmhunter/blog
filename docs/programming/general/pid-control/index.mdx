@@ -39,13 +39,11 @@ e(t) = r(t) - y(t)
 \end{align}
 $$
 
-<p class="centered">
-	where:<br/>
+<p className="centered">	where:<br/>
   $e(t)$ is the error<br/>
   $r(t)$ is the set-point (SP)<br/>
 	$y(t)$ is the process value (PV)<br/>
-  and everything else as previously mentioned<br/>
-</p>
+  and everything else as previously mentioned<br/></p>
 
 :::example
 Imagine a simple process in where you want to control the temperature of a room of your house by using an electric heater. You can vary the voltage to the heaters coils to vary the amount of thermal energy added to the room. You also have a thermometer to read the current room temperature. You want to keep the temperature of the room at a comfortable $22^{\circ}C$. The process variable $y(t)$ is the measured temperature of the room from the thermometer. The set point $r(t)$ is the desired $22^{\circ}C$. The control value $u$ is the voltage applied to the heating coils.
@@ -69,16 +67,14 @@ u(t) = K_{p}e(t) + K_{i}\int e(\tau) d\tau + K_{d}\frac{d}{dt}e(t)
 \end{align}
 $$
 
-<p class="centered">
-	where:<br/>
+<p className="centered">	where:<br/>
   $u(t)$ is the calculated control value (CV)<br/>
 	$e(t)$ is the error<br/>
   $t$ is the current time<br/>
   $\tau$ is the variable of integration (takes on values from time=0 to time=t)<br/>
 	$K_p$ is the proportional gain<br/>
 	$K_i$ is the integral gain<br/>
-	$K_d$ is the derivative gain<br/>
-</p>
+	$K_d$ is the derivative gain<br/></p>
 
 :::tip
 Notice that standard $t$ is used for the current time, and $\tau$ (tau) is used for the integration.
@@ -101,10 +97,8 @@ u(t) = K_{p}e_{k} + K_{i}T\sum\limits_{i=0}^k e_{k} + K_{d}\frac{(e_{k} - e_{k-1
 \end{align}
 $$
 
-<p class="centered">
-	where:<br/>
-	$T$ is the time period between samples<br/>
-</p>
+<p className="centered">	where:<br/>
+	$T$ is the time period between samples<br/></p>
 
 This equation is suitable for implementing in code. There also exists the Z transformation of the equation, but this obscures the physical meaning of the parameters used in the controller.
 
@@ -122,11 +116,9 @@ u(t) = K_{p} \left( e(t) + \frac{1}{T_i}\int e(\tau) d\tau + T_d \frac{d}{dt}e(t
 \end{align}
 $$
 
-<p class="centered">
-	where:<br/>
+<p className="centered">	where:<br/>
 	$T_i$ is the integral time<br/>
-	$T_d$ is the derivative time<br/>
-</p>
+	$T_d$ is the derivative time<br/></p>
 
 The _integral time_ $T_i$ refers to a scenario in where the error starts at 0, and then jumps to some fixed value. The proportional term will provide an immediate and fixed response, whilst the integral term will begin at 0 and slowly accumulate. **The integral time is the amount of time it takes for the integral term to equal the proportional term.**
 
@@ -352,12 +344,10 @@ Substituting in the equations for the spring and damper give:
 
 $$ F_{ext} - kx - c\dot{x} = m\ddot{x} $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $x$ is the displacement<br/>
 $\dot{x}$ is the first derivative of $x$ (i.e. velocity)<br/>
-$\ddot{x}$ is the second derivative of $x$ (i.e. acceleration)<br/>
-</p>
+$\ddot{x}$ is the second derivative of $x$ (i.e. acceleration)<br/></p>
 
 We can simulate this system in code by discretizing the system into small time steps, and assume linear values for the acceleration and velocity over these small time steps.
 

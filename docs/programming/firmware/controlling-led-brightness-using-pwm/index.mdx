@@ -79,12 +79,10 @@ L* = 116\left( \frac{Y}{Y_n}^{\frac{1}{3}} \right) - 16
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $L*$ is the lightness value in the range $[0, 100]$.<br/>
 $Y$ is the Y tristimulus value of the colour.<br/>
-$Y_n$ is the Y tristimulus value of the reference white point.<br/>
-</p>
+$Y_n$ is the Y tristimulus value of the reference white point.<br/></p>
 
 $\frac{Y}{Y_n}$ is called the relative luminance. This is just a number that goes from 0 to 1. The trick here is that we can assume the relative luminance is proportional to the duty cycle of LED (and intensity). Thus $\frac{Y}{Y_n}$ is essentially our duty cycle as a number from 0 to 1.
 
@@ -292,12 +290,10 @@ $$
 I = V^\gamma
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $I$ is the intensity<br/>
 $V$ is the applied voltage<br/>
-$\gamma$ is the gamma value, and is usually set at 2.2.<br/>
-</p>
+$\gamma$ is the gamma value, and is usually set at 2.2.<br/></p>
 
 When using this for controlling LED brightness, $V$ is no longer voltage but the lightness value (input), and $I$ is the PWM duty cycle (output). Thus it becomes (the $*$ does not stand for multiplication, it's part of the lightness symbol):
 

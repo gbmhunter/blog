@@ -34,12 +34,10 @@ N = BN_0
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $N$ is the noise power, in Watts $W$<br/>
 $B$ is the bandwidth of the signal, in Hertz $Hz$<br/>
-$N_0$ is the white noise power spectral density, in $W / Hz$<br/>
-</p>
+$N_0$ is the white noise power spectral density, in $W / Hz$<br/></p>
 
 Noise power spectral density can be either one-sided or double-sided. TODO: Add more info on this.
 
@@ -58,10 +56,8 @@ v_n = \sqrt{N}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
-$v_n$ is the noise voltage spectral density, in $V / \sqrt(Hz)$<br/>
-</p>
+<p className="centered">where:<br/>
+$v_n$ is the noise voltage spectral density, in $V / \sqrt(Hz)$<br/></p>
 
 ## Colours Of Noise (Power Law Noise)
 
@@ -183,13 +179,11 @@ N_0 = 4 k_B T R
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $N_0$ is the one-sided noise power spectral density, in $WHz^{-1}$<br/>
 $k_B$ is Boltzmann's constant, in $JK^{-1}$ ($k_B = 1.380649\times10^{-23} JK^{-1}$)<br/>
 $T$ is the temperature of the resistor, in $K$<br/>
-$R$ is the resistance of the resistor, in $\Omega$<br/>
-</p>
+$R$ is the resistance of the resistor, in $\Omega$<br/></p>
 
 This is commonly written as a voltage spectral density instead of power:
 
@@ -261,11 +255,9 @@ f_0 &= \frac{I}{q}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $I$ is the average DC current, in Amps $A$<br/>
-$q$ is the charge of an electron, in Coulombs $C$ ($q = 1.602e^{-19} C$)<br/>
-</p>
+$q$ is the charge of an electron, in Coulombs $C$ ($q = 1.602e^{-19} C$)<br/></p>
 
 {/* {{% /aside %}} */}
 :::
@@ -280,11 +272,9 @@ i_n &= \sqrt{2IqB}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $B$ is the bandwidth of the circuit/measurement, in Hertz $Hz$<br/>
-and everything else as previously mentioned.<br/>
-</p>
+and everything else as previously mentioned.<br/></p>
 
 Current will create shot noise. When this current flows through a resistor, this will manifest itself as a noise voltage, in addition to the thermal noise of the resistor.
 
@@ -360,12 +350,10 @@ x_{rms}^2 = \bar{x}^2 + \sigma_{x}^2
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ x_{rms} $ is the RMS value of waveform x<br/>
 $ \bar{x} $ is the average (mean) of waveform x<br/>
-$ \sigma_{x} $ is the standard deviation of waveform x<br/>
-</p>
+$ \sigma_{x} $ is the standard deviation of waveform x<br/></p>
 
 As you can see, if the average of the waveform is 0 (as in the case when the waveform is AC coupled), the RMS value is the same as the standard deviation.
 

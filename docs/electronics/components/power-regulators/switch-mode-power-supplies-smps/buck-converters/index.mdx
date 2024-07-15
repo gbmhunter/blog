@@ -37,11 +37,9 @@ D = \frac{t_{on}}{T}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $t_{on}$ is the on time of the switch, in seconds<br/>
-$T$ is the switching frequency, in seconds ($t_{on} + t_{off}$)<br/>
-</p>
+$T$ is the switching frequency, in seconds ($t_{on} + t_{off}$)<br/></p>
 
 :::note
 The simple equation showing $V_{OUT}$ is only dependent on $V_{IN}$ and $D$ is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor) AND the inductor is in continuous conduction (i.e. current never drops to 0). In the real world there are always parasitics, however this equation is still a good first approximation to help understand how it works.
@@ -135,13 +133,11 @@ I_L = I_{OUT} \frac{V_{OUT}}{\eta V_{IN}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $V_{IN}$ is the input voltage to the buck regulator<br/>
 $V_{OUT}$ is the output voltage of the buck regulator<br/>
 $I_{OUT}$ is the output current of the buck regulator (pick your maximum)<br/>
-$\eta$ is the efficiency, typically $0.9$ (i.e. 90%)[^ti-slva477b-basic-calc-buck-power-stage]<br/>
-</p>
+$\eta$ is the efficiency, typically $0.9$ (i.e. 90%)[^ti-slva477b-basic-calc-buck-power-stage]<br/></p>
 
 Then, calculate the value of inductance required with:
 
@@ -151,12 +147,10 @@ L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\Delta I_L$ = the desired ripple current in the inductor<br/>
 $f$ = the switching frequency<br/>
-and everything else as mentioned previously<br/>
-</p>
+and everything else as mentioned previously<br/></p>
 
 The ripple current is typically chosen to be 20-40% of the average current[^ti-slva477b-basic-calc-buck-power-stage]. If we choose 30%, then we can calculate $\Delta I_L$ with:
 
@@ -180,11 +174,9 @@ C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\Delta V$ = the maximum desired output voltage ripple<br/>
-and everything else as mentioned previously<br/>
-</p>
+and everything else as mentioned previously<br/></p>
 
 The actual ripple will be slightly larger than this due to the ESR of the capacitor.
 
@@ -194,10 +186,8 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
-$R_{ESR}$ = the parasitic series resistance of the output capacitor<br/>
-</p>
+<p className="centered">where:<br/>
+$R_{ESR}$ = the parasitic series resistance of the output capacitor<br/></p>
 
 The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. 
 

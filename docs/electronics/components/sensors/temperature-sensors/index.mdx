@@ -69,12 +69,10 @@ P_{NTC} = I^2 * R
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $I$ is the current going through the thermistor, in Amps<br/>
 $R$ is the resistance of the thermistor, at the present temperature, in Ohms<br/>
-$P_{NTC}$ is the power dissipation as heat in the NTC thermistor, in Watts<br/>
-</p>
+$P_{NTC}$ is the power dissipation as heat in the NTC thermistor, in Watts<br/></p>
 
 Because the resistance of the NTC changes as the temperature changes, so does the dissipated power. In a simple resister divider circuit, the thermistor dissipates the most power when it's resistance is equal to the fixed resistance.
 
@@ -94,13 +92,11 @@ R(T) = R(T_0)e^{\beta(\frac{1}{T} - \frac{1}{T_0})}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $R(T)$ is the actual resistance, in Ohms, at the actual temperature $T$<br/>
 $R(T_0)$ is the reference resistance, in Ohms, at the reference temperature $T_0$<br/>
 $T$ is the actual temperature, in Kelvin<br/>
-$T_0$ is the reference temperature, in Kelvin<br/>
-</p>
+$T_0$ is the reference temperature, in Kelvin<br/></p>
 
 At best, the accuracy of the Beta equation approaches $\pm 1%$ between $0-100^{\circ}C$, and not more than $\pm 5%$ other the NTC thermistor's entire temperature range.
 
@@ -142,12 +138,10 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $T$ is the temperature, in Kelvins<br/>
 $R$ is the resistance at $T$, in Ohms<br/>
-$A, B, C$ are the _Steinhart-Hart coefficients_ which vary depending on the type of thermistor and the temperature range of interest<br/>
-</p>
+$A, B, C$ are the _Steinhart-Hart coefficients_ which vary depending on the type of thermistor and the temperature range of interest<br/></p>
 
 :::warning
 The $B$ in the Steinhart-Hart equation above is not the same as the $\beta$ in the Beta Equation.

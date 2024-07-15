@@ -99,10 +99,8 @@ I_C = I_{C(sat)} ( 1 + \frac{V_{CE}}{V_A} )
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
-$V_A$ is the Early voltage<br/>
-</p>
+<p className="centered">where:<br/>
+$V_A$ is the Early voltage<br/></p>
 
 The Early voltage can be derived from $I_C$ vs. $V_{CE}$ graphs. If you extrapolate the active part of the curve (beyond the knee) back to where the line crosses the x-axis, this gives you the negative of the Early voltage, $-V_A$. It should not matter what the base current $I_B$ is, all the curves should cross the x-axis at the same point. The following graph shows this:
 
@@ -127,12 +125,10 @@ V_T = \frac{kT}{q}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $k$ is Boltzmann's constant in Joules per Kelvin, which is $1.38\times 10^{-23}JK^{-1}$<br/>
 $T$ is the temperature of the junction, in Kelvin $K$<br/>
-$q$ is the charge on a electron in Coulombs, which is $1.6\times 10^{-19}C$<br/>
-</p>
+$q$ is the charge on a electron in Coulombs, which is $1.6\times 10^{-19}C$<br/></p>
 
 At a room temperature of $22^{\circ}C$, $V_T$ is approximately $25mV$. $25mV$ is a good enough approximation for the thermal voltage in many scenarios without taking the actual junction temperature into account. The thermal voltage is used in the hybrid-pi model of the BJT transistor.
 
@@ -172,11 +168,9 @@ g_m &= \left. \frac{i_C}{v_{BE}} \right|_{v_{ce}=0} \nonumber \\
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $I_C$ is the DC bias collector current (not the small-signal collector current)<br/>
-$V_T$ is the thermal voltage (see above for more info on this)<br/>
-</p>
+$V_T$ is the thermal voltage (see above for more info on this)<br/></p>
 
 The resistance between the base and emitter as looking into the base, $r_{\pi}$, is equal to[^bib-wikipedia-hybrid-pi-model]:
 

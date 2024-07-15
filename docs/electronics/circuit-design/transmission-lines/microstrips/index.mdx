@@ -19,12 +19,10 @@ Microstrips are impedance controlled transmission lines on the top or bottom lay
 
 To calculate the impedance of a microstrip, we need to know the following parameters of the PCB:
 
-<p class="centered">
-    $ w $ = width of the track (in meters)<br/>
+<p className="centered">    $ w $ = width of the track (in meters)<br/>
     $ t $ = thickness of the track (in meters)<br/>  
     $ h $ = thickness (or height) of the substrate (in meters)<br/>
-    $ \epsilon_r $ = the dielectric constant of the PCB substrate<br/>
-</p>
+    $ \epsilon_r $ = the dielectric constant of the PCB substrate<br/></p>
 
 The following equations can then be used to calculate the impedance of the microstrip. First we calculate the intermediary values $W$ and $H$.
 
@@ -87,14 +85,12 @@ w = \frac{\frac{5.98h1}{e^{\frac{Z}{\frac{60}{\sqrt{\epsilon_r\left(1 - e^{\frac
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $w$ = track width<br/>
     $h1$ = track to plane height<br/>
     $h2$ = track height (thickness)<br/>
     $Z$ = desired characteristic impedance<br/>
-    $\epsilon_r$ = dielectric of material between track and plane<br/>
-</p>
+    $\epsilon_r$ = dielectric of material between track and plane<br/></p>
 
 Or in computer equation form:
 

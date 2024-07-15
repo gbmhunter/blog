@@ -30,12 +30,10 @@ y[i] = \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1]
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $ y $ is the output ($[i]$ denotes the sample number)<br/>
     $ x $ is the input<br/>
-    $ \alpha $ is a constant which sets the cutoff frequency (a value between $0$ and $1$)<br/>
-</p>
+    $ \alpha $ is a constant which sets the cutoff frequency (a value between $0$ and $1$)<br/></p>
 
 Notice that the calculation does not require the storage of past values of $x$ and only the previous value of $y$, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
 
@@ -159,10 +157,8 @@ f_c = \frac{f_s}{2\pi} \cos^{-1}{\left[1 - \frac{\alpha^2}{2(1-\alpha)}\right]}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
-$f_s$ is the sampling frequency in $Hz$<br/>
-</p>
+<p className="centered">where:<br/>
+$f_s$ is the sampling frequency in $Hz$<br/></p>
 
 An important consequence of this is that the **filter's response is dependent both on $\alpha$ and the sampling frequency**. Remember that if you adjust the sampling frequency, you also have to adjust $\alpha$ to keep the same response.
 

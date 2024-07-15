@@ -24,14 +24,12 @@ $$
 \begin{align} \lambda = \frac{P \cdot t}{A \cdot \Delta T} \end{align}
 $$
 
-<p class="centered">
-  where:<br/>
+<p className="centered">  where:<br/>
   $ \lambda $ is the specific thermal conductivity in $ W \cdot m^{-1} \cdot K^{-1} $<br/>
   $ P $ is the power in $Watts$<br/>
   $ t $ is the thickness, in $meters$<br/>
   $ A $ is the surface area, in $meters^2$<br/>
-  $ \Delta T $ is the difference in temperature between the hot and cold surfaces in $Kelvin$<br/>
-</p>
+  $ \Delta T $ is the difference in temperature between the hot and cold surfaces in $Kelvin$<br/></p>
 
 _Thermal resistance_ is just the inverse (reciprocal) of thermal conductivity.
 
@@ -43,13 +41,11 @@ $$
 \begin{align} \lambda_A = \frac{P}{A \cdot \Delta T} \end{align}
 $$
 
-<p class="centered">
-  where:<br/>
+<p className="centered">  where:<br/>
   $ \lambda_A $ is the absolute thermal conductivity in $ W \cdot K^{-1} $<br/>
   $ P $ is the power in $Watts$<br/>
   $ A $ is the surface area, in $meters^2$<br/>
-  $ \Delta T $ is the difference in temperature between the hot and cold surfaces in $Kelvin$<br/>
-</p>
+  $ \Delta T $ is the difference in temperature between the hot and cold surfaces in $Kelvin$<br/></p>
 
 Notice how it is very similar to the formula for _specific thermal conductivity_, except it is missing the thickness $t$. **Care has to be taken to distinguish between the two types of thermal resistances!** To recap:
 
@@ -122,12 +118,10 @@ $$
 \begin{align} R_{\theta} = \frac{\Delta T}{P} \end{align}
 $$
 
-<p class="centered">
-  where:<br/>
+<p className="centered">  where:<br/>
   $ R_\theta $ is the thermal resistance, in $ °C \cdot W^{-1} $ <br/>
   $ \Delta T $ is the difference in temperature, in $°C$<br/>
-  $ P $ is the power dissipation, in $ W $
-</p>
+  $ P $ is the power dissipation, in $ W $</p>
 
 When talking about thermal resistances, a resistor symbol is used to indicate the fixed thermal resistance of a component or piece of hardware, between two points or two surfaces. The difference in temperature is analogous to the voltage drop across a resistor, and the power dissipation is analogous to the current through the resistor. 
 
@@ -139,12 +133,10 @@ $$
 \begin{align} \theta_{JA} = \frac{T_J - T_A}{P} \end{align}
 $$
 
-<p class="centered">
-  where:<br/>
+<p className="centered">  where:<br/>
   $ T_J $ is the temperature at the junction (the silicon die) inside the IC, in $°C$<br/>
   $ T_A $ is the ambient temperature (temperature of air/environment PCB is in), in $°C$<br/>
-  $ P $ is the power dissipation of the IC, in $W$
-</p>
+  $ P $ is the power dissipation of the IC, in $W$</p>
 
 However, **you have to be vigilant with specified junction-to-ambient values as they are not just a property of the component package**, but also of the PCB! When specified on a datasheet it is usually tested on a JEDEC standardized PCB and package land pattern.
 

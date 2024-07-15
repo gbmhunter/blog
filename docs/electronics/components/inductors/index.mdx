@@ -38,12 +38,10 @@ $$
 v = L \frac{di}{dt}
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $v$ is the voltage across the inductor<br/>
     $L$ is the inductance of the inductor<br/>
-    $\frac{di}{dt}$ is the instantaneous change in current through the inductor<br/>
-</p>
+    $\frac{di}{dt}$ is the instantaneous change in current through the inductor<br/></p>
 
 :::example
 
@@ -118,12 +116,10 @@ SRF = \frac{1}{2\pi \sqrt{LC}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $L$ is the inductance in Henries<br/>
 $C$ is the parasitic capacitance, in Farads<br/>
-$SRF$ is the self-resonant frequency, in Hertz<br/>
-</p>
+$SRF$ is the self-resonant frequency, in Hertz<br/></p>
 
 The main contributor to the parasitic capacitance is the distributed capacitance between each coil windings.
 
@@ -227,12 +223,10 @@ $$
 E = \frac{1}{2}LI^2
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $E$ is the energy stored in the inductor, in Joules $J$<br/>
     $L$ is the inductance of the inductor, in Henries $H$<br/>
-    $I$ is the current flowing through the inductor, in Amps $A$<br/>
-</p>
+    $I$ is the current flowing through the inductor, in Amps $A$<br/></p>
 
 This equation is only valid when the inductor is operating in it's linear region, that is, before the current reaches the point where the magnetic field begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
 
@@ -246,12 +240,10 @@ $$
 Z_L = 2\pi fL
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $ Z_L $ = inductor's impedance, in Ohms ($ \Omega $)<br/>
     $ f $ = frequency of analysis, in Hertz ($ Hz $)<br/>
-    $ L $ = inductance of inductor, in Henries ($ H $)<br/>
-</p>
+    $ L $ = inductance of inductor, in Henries ($ H $)<br/></p>
 
 :::note
 Sometimes $X_L$ is used instead of $Z_L$. $X$ represents reactance (purely imaginary), whilst $Z$ is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. $X_L = Z_L$.
@@ -265,10 +257,8 @@ $$
 Z_L = \omega L
 $$
 
-<p class="centered">
-    where:<br/>
-    $ \omega $ = radian frequency (rad/s) (which is equal to $ 2\pi f $)<br/>
-</p>
+<p className="centered">    where:<br/>
+    $ \omega $ = radian frequency (rad/s) (which is equal to $ 2\pi f $)<br/></p>
 
 :::note
 Impedance, although measured in Ohms, is **not the same as resistance**. A resistance converts the energy into heat, the impedance of the inductor however cause the energy to be stored in it's magnetic field, which is returned to the circuit when the current falls.
@@ -284,15 +274,13 @@ $$
 Z_L = \frac{1}{ \frac{1}{R_P} + \frac{1}{j \omega L + R_S} + j \omega C_P }
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $ Z_L $ = inductor's impedance ($ \Omega $)<br/>
     $ R_P $ = parasitic parallel resistance (which is negligible for most simulations) ($ \Omega $)<br/>
     $ \omega $ = frequency of analysis ($ rad/s $)<br/>
     $ L $ = inductance of inductor ($ H $)<br/>
     $ R_S $ = parasitic series resistance ($ \Omega $)<br/>
-    $ C_P $ = parasitic parallel capacitance ($ F $)<br/>
-</p>
+    $ C_P $ = parasitic parallel capacitance ($ F $)<br/></p>
 
 The main parasitic components are the series resistance ($ R_S $) and the parallel capacitance ($ C_P $). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
 

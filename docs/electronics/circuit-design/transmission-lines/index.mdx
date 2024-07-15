@@ -62,12 +62,10 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $\lambda$ is the wavelength, in $m$<br/>
 $c$ is the speed of light, in which $3{\times}10^8 ms^{-1}$ is a good enough approximation<br/>
-$f$ is the frequency of the signal, in $Hz$<br/>
-</p>
+$f$ is the frequency of the signal, in $Hz$<br/></p>
 
 For example, electronicdesign.com states[^bib-elec-design-imp-matching-p1]:
 
@@ -109,11 +107,9 @@ BW \approx \frac{0.35}{t_r}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ t_r $ is the maximum rise time from 10 to 90%, in seconds (s).<br/>
-$ BW $ is the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br/>
-</p>
+$ BW $ is the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br/></p>
 
 {/* {{% aside type="tip" %}} */}
 :::tip
@@ -136,12 +132,10 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ c $ is the speed of light, in meters per second<br/>
 $ f $ is the frequency that you worked out above (which we called bandwidth)<br/>
-$ \epsilon_r $ is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br/>
-</p>
+$ \epsilon_r $ is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br/></p>
 
 Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the characteristic impedance of the track is only important if the total track length is greater than 165mm.
 
@@ -160,11 +154,9 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ A $ is the voltage of the incident wave, in $V$<br/>
-$ B $ is the voltage of the reflection (going back to the source), in $V$<br/>
-</p>
+$ B $ is the voltage of the reflection (going back to the source), in $V$<br/></p>
 
 The voltage reflection coefficient $\Gamma_{12}$, of a signal moving from medium 1 to medium 2 is:
 
@@ -174,11 +166,9 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $Z_1$ is the characteristic impedance of medium 1, in $\Omega$<br/>
-$Z_2$ is the characteristic impedance of medium 2, in $\Omega$<br/>
-</p>
+$Z_2$ is the characteristic impedance of medium 2, in $\Omega$<br/></p>
 
 Similarly, the voltage reflection coefficient for a wave going the other way is:
 

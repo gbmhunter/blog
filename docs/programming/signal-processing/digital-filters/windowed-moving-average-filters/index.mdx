@@ -42,12 +42,10 @@ F = \frac{f}{f_s}
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
-    $ F $ is the normalized frequency, in $Hz/sample$<br/>
-    $ f $ is the standard frequency, in $ Hz $<br/>
-    $ f_s $ is the sample rate, in $ Hz $<br/>
-</p>
+<p className="centered">where:<br/>
+$ F $ is the normalized frequency, in $Hz/sample$<br/>
+$ f $ is the standard frequency, in $ Hz $<br/>
+$ f_s $ is the sample rate, in $ Hz $<br/></p>
 
 The normalized frequency can also be expressed in radians, and if so uses the symbol $\omega$. This has the units $radians/sample$.
 
@@ -89,12 +87,10 @@ y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i-j]
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
-    $ x $ = the input signal<br/>
-    $ y $ = the output signal<br/>
-    $ N $ = the number of points in the average (the width of the window)<br/>
- </p>
+<p className="centered">where:<br/>
+$ x $ = the input signal<br/>
+$ y $ = the output signal<br/>
+$ N $ = the number of points in the average (the width of the window)<br/></p>
 
 For example, with a windows size of $N = 5$, the moving average at point 9 would be sum of the last 5 inputs $x[9]$ thru to $x[5]$ divided by 5:
 
@@ -143,12 +139,10 @@ H(F) = \frac{1}{N}\frac{sin(\pi F N)}{sin(\pi F)}
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
-    $ H(F) $ is the frequency response<br/>
-    $ F $ the normalised frequency, in $ cycles/sample $<br/>
-    $ N $ = the number of points in the average (the width of the window)<br/>
-</p>
+<p class="centered">where:<br/>
+$ H(F) $ is the frequency response<br/>
+$ F $ the normalised frequency, in $ cycles/sample $<br/>
+$ N $ = the number of points in the average (the width of the window)<br/></p>
 
 Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units ($\omega$), in which case $ \omega = 2\pi F $. To convert from a standard frequency $f$ to a normalized frequency $F$, use the equation:
 
@@ -158,12 +152,10 @@ F = \frac{f}{f_s}
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
-    $ F $ is the normalized frequency, in $cycles/sample$<br/>
-    $ f $ is the standard frequency, in $ Hz $<br/>
-    $ f_s $ is the sample rate, in $ Hz $<br/>
-</p>
+<p className="centered">where:<br/>
+$ F $ is the normalized frequency, in $cycles/sample$<br/>
+$ f $ is the standard frequency, in $ Hz $<br/>
+$ f_s $ is the sample rate, in $ Hz $<br/></p>
 
 To avoid division by zero, use $ H(0) = 1 $. The magnitude follows the shape of a $ sinc $ function.
 
@@ -248,11 +240,9 @@ N = \frac{\sqrt{0.196202 + F_c^2}}{F_c}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $N$ is the window size, expressed as a number of samples<br/>
-$F_c$ is the normalized cutoff frequency
-</p>
+$F_c$ is the normalized cutoff frequency</p>
 
 Remember that $F_c$ can be calculated with:
 
@@ -262,11 +252,9 @@ F_c = \frac{f_c}{f_s}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $f_c$ is the cutoff frequency, in Hertz $Hz$<br/>
-$f_s$ is the sample frequency, in Hertz $Hz$
-</p>
+$f_s$ is the sample frequency, in Hertz $Hz$</p>
 
 ### Recursive SMA Implementation
 
@@ -396,12 +384,10 @@ y_i = y_{i-1} \cdot (1 - \alpha) + x_i \cdot \alpha
 \end{align}
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $ y $ = the output ($i$ denotes the sample number)<br/>
     $ x $ = the input<br/>
-    $ \alpha $ = is a constant which sets the cutoff frequency (a value between $0$ and $1$)<br/>
-</p>
+    $ \alpha $ = is a constant which sets the cutoff frequency (a value between $0$ and $1$)<br/></p>
 
 Notice that the calculation does not require the storage of past values of $x$ and only the previous value of $y$, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
 
@@ -445,10 +431,8 @@ G(x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{x^2}{2\sigma^2}}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
-$\sigma$ is the standard deviation<br/>
-</p>
+<p className="centered">where:<br/>
+$\sigma$ is the standard deviation<br/></p>
 
 A 5-item symmetric Gaussian window with a standard deviation $\sigma$ of $1$ would give the window coefficients:
 

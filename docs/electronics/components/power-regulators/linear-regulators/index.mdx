@@ -95,12 +95,10 @@ P_t = (V_{out} - V_{in}) I
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ V_{out} $ is the output voltage<br/>
 $ V_{in} $ is the input voltage <br/>
-$ I $ is the current through the regulator.<br/>
-</p>
+$ I $ is the current through the regulator.<br/></p>
 
 The regulator has to be able to dissipate this power without exceeding the maximum operating temperature. The temperature that the linear regulator will operate at is given by:
 
@@ -110,11 +108,9 @@ T_j = P_{t}T_{j-a} + T_a
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $ T_{j-a} $ is the junction-to-ambient thermal resistance<br/>
-$ T_a $ is the ambient temperature<br/>
-</p>
+$ T_a $ is the ambient temperature<br/></p>
 
 ## Protection
 
@@ -196,12 +192,10 @@ I_{MAX} = \frac{1}{R_{SC}} (( 1 + \frac{R1}{R2}) V_{BE} + \frac{R_1}{R_2}V_{REG}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $V_{REG}$ is the desired regulated output voltage under non-fault conditions, in Volts [$V$]<br/>
 $V_{BE}$ is the forward base-emitter voltage drop, approx. $0.6V$<br/>
-All resistances as shown in [^foldback-current-limiting-circuit] in Ohms [$\Omega$]<br/>
-</p>
+All resistances as shown in [^foldback-current-limiting-circuit] in Ohms [$\Omega$]<br/></p>
 
 The short-circuit current $I_{SC}$ when $V_{OUT}$ falls to $0$ is given by Eq. $\ref{eq:foldback-isc}$.
 

@@ -83,11 +83,9 @@ $$
 f_{bin-width} = f_s / N_{bins}
 $$
 
-<p class="centered">
-    where:<br/>
+<p className="centered">    where:<br/>
     $ f_s $ is the sample rate, in Hertz<br/>
-    $ N_{bins} $ is the number of bins<br/>
-</p>
+    $ N_{bins} $ is the number of bins<br/></p>
 
 The bins of interest are those from $ 0 $ to $ \frac{N_{bins}}{2} $.
 
@@ -127,10 +125,8 @@ Converted into a 2D discrete Fourier transform, the equation becomes:
 
 $$ \mathcal{F}(k, l) = \sum_{i=0}^{N-1} \sum_{i=0}^{N-1} f(i,j) e^{-i2\pi (\frac{ki}{M} + \frac{lj}{N})} $$
 
-<p class="centered">
-  where:<br/>
-  $ f(i, j) $ is the image in the spatial domain
-</p>
+<p className="centered">  where:<br/>
+  $ f(i, j) $ is the image in the spatial domain</p>
 
 The basis functions are sine and cosine waves with increasing frequencies. $\mathcal{F}(0, 0)$ represents the DC component in the image (the average brightness), all the way up to $\mathcal{F}(N-1, N-1)$ which represents the highest frequency in the image. Note that $\mathcal{F}(0, 0)$ is usually shifted to be in the center of the frequency domain image.
 
