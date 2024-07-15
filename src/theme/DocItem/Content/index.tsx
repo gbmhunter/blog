@@ -30,23 +30,6 @@ function useSyntheticTitle(): string | null {
 
 export default function DocItemContent({children}: Props): JSX.Element {
   const syntheticTitle = useSyntheticTitle();
-  const {metadata, frontMatter, contentTitle} = useDoc();
-  const frontMatterAny = frontMatter as any;
-  console.log('frontMatter:', frontMatter);
-
-  const doc = useDoc();
-
-  // const authors = (doc.frontMatter as any).authors as {
-  //   name: string;
-  //   picture: string;
-  // }[];
-
-  const authors = [
-    {
-      name: "Geoffrey Hunter",
-      picture: "https://github.com/gbmhunter.png",
-    },
-  ];
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
@@ -55,6 +38,7 @@ export default function DocItemContent({children}: Props): JSX.Element {
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
       )}
+      {/* Add authors here! */}
       <DocAuthors />
       <MDXContent>{children}</MDXContent>
     </div>

@@ -13,7 +13,8 @@ import type {Props} from '@theme/BlogPostItem/Header/Authors';
 import styles from './styles.module.css';
 import { Author } from '@docusaurus/plugin-content-blog';
 
-// Component responsible for the authors layout
+// Component displays authors for the docs plugin in the same way as the blog plugin.
+// Copied from node_modules/@docusaurus/theme-classic/src/theme/BlogPostItem/Header/Authors/index.tsx
 export default function DocItemHeaderAuthors({
   className,
 }: Props): JSX.Element | null {
@@ -22,9 +23,10 @@ export default function DocItemHeaderAuthors({
   //   assets,
   // } = useBlogPost();
 
+  // Hardcoded authors for now, todo would be to get this from the frontmatter
   const authors: Author[] = [
     {
-      name: "Geoffrey Hunter",
+      name: 'Geoffrey Hunter',
       title: 'mbedded.ninja Author',
       url: "https://blog.mbedded.ninja",
       imageURL: 'https://github.com/gbmhunter.png',
@@ -51,11 +53,7 @@ export default function DocItemHeaderAuthors({
           )}
           key={idx}>
           <BlogPostItemHeaderAuthor
-            author={{
-              ...author,
-              // Handle author images using relative paths
-              // imageURL: assets.authorsImageUrls[idx] ?? author.imageURL,
-            }}
+            author={author}
           />
         </div>
       ))}
