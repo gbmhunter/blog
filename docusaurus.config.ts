@@ -182,7 +182,7 @@ const config: Config = {
       defer: true,
       'data-website-id': "e0f4b55d-8cc8-4afe-ab25-68d695b46826",
     },
-  ]
+  ],
 };
 
 export default config;

@@ -1,16 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
-import {useDoc, useSidebarBreadcrumbs} from '@docusaurus/theme-common/internal';
+import {useDoc} from '@docusaurus/theme-common/internal';
 import Heading from '@theme/Heading';
 import MDXContent from '@theme/MDXContent';
 import type {Props} from '@theme/DocItem/Content';
-import DocCardList from '@theme/DocCardList';
-import {
-  useCurrentSidebarCategory,
-  filterDocCardListItems,
-} from '@docusaurus/theme-common';
-import {matchPath, useLocation} from '@docusaurus/router';
+
+import DocAuthors from '../../DocsAuthors';
 
 /**
  Title can be declared inside md content or declared through
@@ -34,10 +30,23 @@ function useSyntheticTitle(): string | null {
 
 export default function DocItemContent({children}: Props): JSX.Element {
   const syntheticTitle = useSyntheticTitle();
+  const {metadata, frontMatter, contentTitle} = useDoc();
+  const frontMatterAny = frontMatter as any;
+  console.log('frontMatter:', frontMatter);
 
-  const breadcrumbs = useSidebarBreadcrumbs();
-  console.log('BREADCRUMBS!!!!!!!!', breadcrumbs);
+  const doc = useDoc();
 
+  // const authors = (doc.frontMatter as any).authors as {
+  //   name: string;
+  //   picture: string;
+  // }[];
+
+  const authors = [
+    {
+      name: "Geoffrey Hunter",
+      picture: "https://github.com/gbmhunter.png",
+    },
+  ];
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
@@ -46,9 +55,7 @@ export default function DocItemContent({children}: Props): JSX.Element {
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
       )}
-      <h2>Child Pages</h2>
-      
-      <DocCardList />
+      <DocAuthors />
       <MDXContent>{children}</MDXContent>
     </div>
   );
