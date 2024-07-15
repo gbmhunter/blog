@@ -319,6 +319,7 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
     $$
 
 1. Build the circuit! It should look like this:
+
     <Image src={require('./low-pass-sallen-key-chebyshev-3db/schematic-print.svg').default} width="700">Schematic of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above.</Image>
 1. And just good measure this was simulated, to make sure the response is as expected.
 
@@ -513,8 +514,11 @@ Inputs:
     $$
 
 1. Done! The finished schematic looks like (ready for simulating):
+
     <Image src={require('./high-pass-sallen-key-fc2khz-q1.5-k4/schematic.png').default} width="600">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
+    
     And the simulated bode plot:
+
     <Image src={require('./high-pass-sallen-key-fc2khz-q1.5-k4/bode-plot.png').default} width="700">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
 
 :::

@@ -342,11 +342,11 @@ I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} 
 I_b \\ I_c \end{bmatrix}  
 $$
 
-<p className="centered">    where:<br/>
-    $I_a$ = current in motor winding A<br/>
-    $I_b$ = current in motor winding B<br/>
-    $I_c$ = current in motor winding C<br/>
-    $I_{\alpha\beta\gamma}$ = the Clark transformed currents<br/></p>
+<p className="centered">where:<br/>
+$I_a$ = current in motor winding A<br/>
+$I_b$ = current in motor winding B<br/>
+$I_c$ = current in motor winding C<br/>
+$I_{\alpha\beta\gamma}$ = the Clark transformed currents<br/></p>
 
 We are fortunate that when using a star-connected BLDC motor (most are!), $I_c$ is 0, so that we can simplify the equation to:
 
@@ -364,7 +364,9 @@ Park transformation is a projection of three separate sinusoidal phase values on
 
 The Park transformation equation is shown below:
 
-<div>$$ I_{dqo} = TI_{abc} = \sqrt{\frac{2}{3}} \begin{bmatrix} \cos(\theta) & \cos(\theta - \frac{2\pi}{3}) & \cos(\theta + \frac{2\pi}{3}) \\ -\sin(\theta) & -\sin(\theta - \frac{2\pi}{3}) & -\sin(\theta + \frac{2\pi}{3}) \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix}$$</div>
+$$
+I_{dqo} = TI_{abc} = \sqrt{\frac{2}{3}} \begin{bmatrix} \cos(\theta) & \cos(\theta - \frac{2\pi}{3}) & \cos(\theta + \frac{2\pi}{3}) \\ -\sin(\theta) & -\sin(\theta - \frac{2\pi}{3}) & -\sin(\theta + \frac{2\pi}{3}) \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix}
+$$
 
 <p className="centered">where:<br/>
 $I_a$ = current in motor winding A<br/>
@@ -380,9 +382,9 @@ If you want the code to do the Park Transformation (written in C++, and designed
 
 The following picture shows the control architecture for a PMSM motor controlled with a PSoC microcontroller.
 
-<Image src={require('./pmsm-motor-control-architecture-with-psoc-micro.png').default} width="1372">The FOC control architecture for a PMSM motor with a PSoC microcontroller.</Image>
+<Image src={require('./pmsm-motor-control-architecture-with-psoc-micro.png').default} width="1000">The FOC control architecture for a PMSM motor with a PSoC microcontroller.</Image>
 
-It is standard practice to set $I_q$ to some value depending on the torque/speed required, while keeping $I_d$ zero. This is because $I_d$ does nothing to help make the motor spin, and just wastes electrical energy as heat. However, there is a technique called flux weakening, and this is done by making $I_d$ negative. It will allow the motor to spin faster than it's rated speed, in a zone called 'constant power'. I have had good experiences at using this to squeeze more RPM out of BLDC motors that weren't requiring much torque. A good method is to make $I_d$ proportional to $I_q$ (but always negative, no matter what sign $I_q$ is, which essentially gives you a fixed drive is angle which is over 90. You can use this equation to work out the proportion of $I_q$ that $I_d$ has to be for a certain angle.
+It is standard practice to set $I_q$ to some value depending on the torque/speed required, while keeping $I_d$ zero. This is because $I_d$ does nothing to help make the motor spin, and just wastes electrical energy as heat. However, there is a technique called flux weakening, and this is done by making $I_d$ negative. It will allow the motor to spin faster than it's rated speed, in a zone called 'constant power'. I have had good experiences at using this to squeeze more RPM out of BLDC motors that weren't requiring much torque. A good method is to make $I_d$ proportional to $I_q$ (but always negative, no matter what sign $I_q$ is, which essentially gives you a fixed drive is angle which is over 90). You can use this equation to work out the proportion of $I_q$ that $I_d$ has to be for a certain angle.
 
 $$
 \begin{aligned}
