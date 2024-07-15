@@ -11,7 +11,7 @@ export default function Image({children, src, width}) {
   if (typeof src === 'function') {
     imgComponent = (<Src width={width} height="" />);
   } else {
-    imgComponent = <img src={src} width={width} />;
+    imgComponent = <a href={src}><img src={src} width={width} /></a>;
   }
 
   return (
