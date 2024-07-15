@@ -1,4 +1,11 @@
 {
+    "[mdx]": {
+        "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+        }
+    },
     "cSpell.language": "en-GB",	
     "cSpell.words": [
         "aarch",

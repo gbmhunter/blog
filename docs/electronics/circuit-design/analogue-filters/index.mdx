@@ -36,7 +36,7 @@ The symbol $f_c$ is usually used to represent the cutoff frequency. Sometimes yo
 
 #### Gain Factor (K)
 
-At frequencies $f &lt;&lt; f_c$, the circuit multiplies the input signal by gain factor `K`.
+At frequencies $f << f_c$, the circuit multiplies the input signal by gain factor `K`.
 
 #### Component Spread
 
@@ -129,12 +129,10 @@ Now take the magnitude (for more info on why and how to do this, see the [What A
 
 $$
 \begin{align}
-\label{eq:abc}
 | H(j\omega) | &= \left| \frac{1}{1 + j\omega RC} \right| \nonumber \\
          &= \frac{1}{\sqrt{(1 + j\omega RC)(1 - j\omega RC)}} \nonumber \\
          &= \frac{1}{\sqrt{1 - (j\omega RC)^2}} \nonumber \\
          &= \frac{1}{\sqrt{1 - (-1)(\omega RC)^2}} \nonumber \\
-\label{eq:mag-response-lp-rc-filter}
          &= \frac{1}{\sqrt{1 + (\omega RC)^2}} \\
 \end{align}
 $$
