@@ -78,12 +78,10 @@ f_{c} = \frac{1}{2\pi RC}
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $R$ is the resistance, in Ohms<br/>
 $C$ is the capacitance, in Farads<br/>
-$f_c$ is the cut-off frequency, in Hertz<br/>
-</p>
+$f_c$ is the cut-off frequency, in Hertz<br/></p>
 
 As usual, the choice of $R$ and $C$ is a design decision which involves trade-offs. In terms of choosing $R$:
 
@@ -102,12 +100,10 @@ $$
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $v_{in}$ is the magnitude of the input signal at frequency $f$, in Volts<br/>
 $X_C$ is the impedance of the capacitor at frequency $f$, in Ohms<br/>
-$R$ is the resistance of the resistor, in Ohms<br/>
-</p>
+$R$ is the resistance of the resistor, in Ohms<br/></p>
 
 Recall that we can write $X_C$ in the Laplace domain as $X_C = \frac{1}{sC}$. Also, $\frac{v_{out}}{v_{in}}$ is just our transfer function $H(s)$:
 
@@ -215,14 +211,12 @@ V_c = V_s(1 - e^{(\frac{t}{RC})})
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $V_c$ = voltage across the capacitor, Volts<br/>
 $V_s$ = supply voltage, Volts<br/>
 $t$ = time since supply was turned on, Seconds<br/>
 $R$ = resistance, Ohms<br/>
-$C$ = capacitance, Farads<br/>
-</p>
+$C$ = capacitance, Farads<br/></p>
 
 This equation can be re-arranged to find the time $t$, and which the capacitor is at a certain voltage:
 
@@ -311,13 +305,11 @@ f_c &= \frac{1}{\pi \sqrt{LC}} \\
 \end{align}
 $$
 
-<p class="centered">
-where:<br/>
+<p className="centered">where:<br/>
 $C$ = total capacitance in $F$<br/>
 $L$ = total inductance, in $H$<br/>
 $z_o$ = characteristic impedance, in $\Omega$<br/>
-$f_c$ = -3dB cut-off frequency, in $Hz$<br/>
-</p>
+$f_c$ = -3dB cut-off frequency, in $Hz$<br/></p>
 
 :::note
 Mentioned is total capacitance or total inductance, as in the case of the π-filter each capacitor is C/2, and in the case of the t-filter, each inductor is L/2.

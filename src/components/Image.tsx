@@ -9,7 +9,7 @@ export default function Image({children, src, width}) {
   // a png, jpg or webp. If it's a svg, it will be a function. In the case of an svg,
   // we have to handle it differently.
   if (typeof src === 'function') {
-    imgComponent = (<Src width={width} height="" />);
+    imgComponent = (<Src width={width} height={undefined} />);
   } else {
     imgComponent = <a href={src}><img src={src} width={width} /></a>;
   }
