@@ -12,7 +12,15 @@ type: page
 
 ## Overview
 
-### Passive vs. Active
+The page covers the design and analysis of analogue filters. It includes a discussion on passive and active filters, low-pass and high-pass filters, and first and second-order filters. There are also dedicated child pages that cover Sallen-Key and voltage-controlled voltage-source (VCVS) filters.
+
+## Child Pages
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
+
+## Passive vs. Active
 
 Even in the pass-band, passive filters almost always increase the impedance of the signal, post filter. For a trace on a circuit board, this actually makes the post-filter trace more susceptible to picking up external noise. For this reason, when using a passive filter to filter out induced noise of a sensitive trace, always place a passive filter as close as possible to the receiving end of the signal (e.g. as close as possible to an ADC pin on a microcontroller).
 
@@ -20,29 +28,29 @@ Low-pass filters have an additional advantage when used on the analogue outputs 
 
 Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
 
-### Filter Topologies vs. Tunings
+## Filter Topologies vs. Tunings
 
 * _Filter types_ describe the purpose of the filter. Filter types include low-pass, high-pass, band-pass, notch (band reject), and all-pass.
 * _Filter topologies_ define the what components go where. Filter topologies include 
 * _Filter tunings_ define the values of the components in a particular topology. Filter tunings include Butterworth, Chebyshev and Bessel.
 
-### Filter Parameters
+## Filter Parameters
 
-#### Cutoff Frequency (fc)
+### Cutoff Frequency (fc)
 
 The _cutoff frequency_ (a.k.a. _corner frequency_ or _break frequency_) is the frequency which marks the **transition from a pass band to a stop band**. It marks the frequency at which the energy (whether it be voltage, current or both) stops being passed through and begins being blocked. For any real filter, there is a transition from the passband to the stopband, as so the cutoff frequency is usually defined at the "-3dB" point --- the point at which the **signal degrades to -3dB (half power) of the nominal passband value**.
 
 The symbol $f_c$ is usually used to represent the cutoff frequency. Sometimes you may see $f_{-3dB}$ instead.
 
-#### Gain Factor (K)
+### Gain Factor (K)
 
-At frequencies $f << f_c$, the circuit multiplies the input signal by gain factor `K`.
+At frequencies $f << f_c$, the circuit multiplies the input signal by gain factor $K$.
 
-#### Component Spread
+### Component Spread
 
 _Component spread_ is a measure of ratio between the highest and lowest valued components required to construct a filter. Low component spread is a good property for a filter to have, as it aids manufacturability.
 
-#### Filter Optimizations
+### Filter Optimizations
 
 _Filter optimizations_ maximize a certain characteristic of a filter topology, such as maximum pass-band flatness or steepest roll-off. Butterworth, Chebyshev and Bessel are examples of filter optimizations.
 
