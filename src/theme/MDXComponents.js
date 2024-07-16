@@ -3,6 +3,7 @@ import React from 'react';
 import MDXComponents from '@theme-original/MDXComponents';
 // import Highlight from '@site/src/components/Highlight';
 import Image from '@site/src/components/Image';
+import CircuitJs from '@site/src/components/CircuitJs';
 import WarningIsNotes from '@site/src/components/WarningIsNotes';
 
 export default {
@@ -13,4 +14,5 @@ export default {
   // Highlight,
   Image,
   WarningIsNotes,
+  CircuitJs,
 };

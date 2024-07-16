@@ -19,14 +19,15 @@ The [MOSFET](/electronics/components/transistors/mosfets/) analogue to the BJT c
 
 **Properties:**
 
+
 <table>
   <tbody>
-    <tr><td>Voltage Gain</td>       <td class="bad">Low</td></tr>
-    <tr><td>Current Gain</td>       <td class="good">High</td></tr>
-    <tr><td>Power Gain</td>         <td class="ok">Medium</td></tr>
-    <tr><td>Input Impedance</td>    <td class="good">High</td></tr>
-    <tr><td>Output Impedance</td>   <td class="good">Low</td></tr>
-    <tr><td>Phase Shift</td>        <td>0°</td></tr>
+    <tr><td>Voltage Gain</td>{/*       */}<td className="bad">Low</td></tr>
+    <tr><td>Current Gain</td>{/*       */}<td className="good">High</td></tr>
+    <tr><td>Power Gain</td>{/*         */}<td className="ok">Medium</td></tr>
+    <tr><td>Input Impedance</td>{/*    */}<td className="good">High</td></tr>
+    <tr><td>Output Impedance</td>{/*   */}<td className="good">Low</td></tr>
+    <tr><td>Phase Shift</td>{/*        */}<td>0°</td></tr>
   </tbody>
 </table>
 
@@ -38,7 +39,6 @@ Lower case letters used below represent changes in quantities, e.g. $V_C$ is the
 
 A schematic of a basic common-collector BJT amplifier is shown below:
 
-{/* {{% figure src="common-collector-bjt-amplifier-basic-schematic.png" width="400px" caption="The basic schematic of a common-collector BJT amplifier." %}} */}
 <Image src={require('./common-collector-bjt-amplifier-basic-schematic.png').default} width="400">The basic schematic of a common-collector BJT amplifier.</Image>
 
 The output voltage is almost equal to the input voltage, except for an approximately $0.7V$ diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or $0dB$.
@@ -51,25 +51,22 @@ $$
 
 Here is a graph of $v_{in}$ vs. $v_{out}$ for the above circuit, with $R1=1k\Omega$:
 
-{/* {{% figure src="basic-common-collector-amplifier/plot-annotated.png" width="800px" caption="$V_{out}$ vs. $V_{in}$ for a basic common-collector BJT amplifier." %}} */}
 <Image src={require('./basic-common-collector-amplifier/plot-annotated.png').default} width="800">$V_{out}$ vs. $V_{in}$ for a basic common-collector BJT amplifier.</Image>
 
 (Micro-Cap simulation file: [circuit.cir](basic-common-collector-amplifier/circuit.cir))
 
 The common-collector amplifier is simulated in circuitjs below:
 
-{/* {{% circuitjs data="CQAgjOB0AMt-CwFMC0B2c1IDYDMAWAJmzQFZcBOADjG1PpG2xEJFOjdTDACgB3ELlKtChfIOHgKraDzBpWQ1mGkTl2Dhwyk2ITXsg6AwgHsANmaQBjAC4mATiABq5mwEMA5kh4e1gwhxKgrjMmjw2gtDiYoGSMXrgICi4hri0+FQEYMRgVBSkVAakFLn5pCrYYoTs4mCwIAAmSABmbgCuZjb8LPgc8bhRPWGOQdXMQbgBCXWwPABuQ-59vYscEDN9hixbmoY+i5PLgSEJsgEY8fEqIiviAJYAdjznfmMgvX2kzOImbV0mIEKkwSvQoFF0WHgFDQdEqOg44iBIHBHHBuB4QA" %}} */}
+<CircuitJs data="CQAgjOB0AMt-CwFMC0B2c1IDYDMAWAJmzQFZcBOADjG1PpG2xEJFOjdTDACgB3ELlKtChfIOHgKraDzBpWQ1mGkTl2Dhwyk2ITXsg6AwgHsANmaQBjAC4mATiABq5mwEMA5kh4e1gwhxKgrjMmjw2gtDiYoGSMXrgICi4hri0+FQEYMRgVBSkVAakFLn5pCrYYoTs4mCwIAAmSABmbgCuZjb8LPgc8bhRPWGOQdXMQbgBCXWwPABuQ-59vYscEDN9hixbmoY+i5PLgSEJsgEY8fEqIiviAJYAdjznfmMgvX2kzOImbV0mIEKkwSvQoFF0WHgFDQdEqOg44iBIHBHHBuB4QA" />
 
 ## Common Collector Amplifier With AC Coupling And DC Bias
 
 A more useful common-collector amplifier can be made which AC couples the input and provides a DC bias point at the base of the BJT. Below is a schematic of one built with a NPN transistor:
 
-{/* {{% figure src="common-collector-bjt-amplifier-ac-coupled-schematic.png" width="600px" caption="Schematic of an AC-coupled common-collector NPN BJT amplifier." %}} */}
 <Image src={require('./common-collector-bjt-amplifier-ac-coupled-schematic.png').default} width="600">Schematic of an AC-coupled common-collector NPN BJT amplifier.</Image>
 
 The small-signal AC model for this circuit is shown below. DC voltage rails and capacitors are shorted.
 
-{/* {{% figure src="common-collector-bjt-amplifier-ac-coupled-ac-equivalent-schematic.png" width="600px" caption="Small-signal AC model for the AC-coupled common-collector BJT amplifier." %}} */}
 <Image src={require('./common-collector-bjt-amplifier-ac-coupled-ac-equivalent-schematic.png').default} width="600">Small-signal AC model for the AC-coupled common-collector BJT amplifier.</Image>
 
 $r_e$ is the small-signal emitter resistance which is internal to the BJT.
@@ -116,7 +113,6 @@ $$
 
 [Common-Collector Amplifier Design by Kenneth A. Kuhn](https://www.kennethkuhn.com/students/ee351/bjt_cc_amplifier_design.pdf) goes into great detail about the amplifier design with precise equations and considerations[^bib-kenneth-kuhn-common-collector-amp-design]. It's much better than what I have here!
 
-{/* {{% figure src="graph-from-kenneth-kuhn-cc-amplifier-design.png" width="400px" caption="Just one example of a graph from Kenneth Kuhn's excellent Common-Collector Amplifier Design[^bib-kenneth-kuhn-common-collector-amp-design]." %}} */}
 <Image src={require('./graph-from-kenneth-kuhn-cc-amplifier-design.png').default} width="400">Just one example of a graph from Kenneth Kuhn's excellent Common-Collector Amplifier Design[^bib-kenneth-kuhn-common-collector-amp-design].</Image>
 
 [^bib-libretexts-common-collector-amplifier]: James M. Fiore (2022, May 23). _Common Collector Amplifier_. LibreTexts: Engineering. Retrieved 2022-08-11, from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07%3A_BJT_Small_Signal_Amplifiers/7.4%3A_Common_Collector_Amplifier.

@@ -72,4 +72,19 @@
 
 .hidden {
   display: none !important;
-  }
+}
+
+/* Used for displaying multiple things which may overflow a single row */
+.flex-row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 
+If you want to center all markdown tables
+table {
+  display: table;
+  width: initial;
+  margin: 0 auto;
+} */

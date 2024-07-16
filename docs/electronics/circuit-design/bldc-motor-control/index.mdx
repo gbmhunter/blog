@@ -171,17 +171,17 @@ The [encoder](/electronics/components/encoders) method uses, well, an encoder at
 
 A common example of a trapezoidal (or block) commutation cycle of a BLDC motor with hall-sensor feedback is shown in the below table. This will drive the motor in one particular direction. This can be used to form a LUT for quick hardware/software commutation.
 
-<div class="table-wrapper">
+<div className="table-wrapper">
 <table>
     <thead>
         <tr>
-            <th colspan="6">Commutation Table</th>
+            <th colSpan="6">Commutation Table</th>
         </tr>
     </thead>
     <tbody >
         <tr >
-            <td colspan="3">Sensor Output</td>
-            <td colspan="3">Driver Input</td>
+            <td colSpan="3">Sensor Output</td>
+            <td colSpan="3">Driver Input</td>
         </tr>
         <tr >
             <td>HS1</td>
@@ -392,7 +392,7 @@ r = \tan (\theta)
 \end{aligned}
 $$
 
-<p class="centered">where:<br/>
+<p className="centered">where:<br/>
 $r$ = ratio ($I_d = rI_q$)<br/>
 $\theta$ = drive angle<br/></p>
 

@@ -21,24 +21,21 @@ The [MOSFET](/electronics/components/transistors/mosfets/) analogue to the BJT c
 
 <table>
   <tbody>
-    <tr><td>Voltage Gain</td>       <td class="good">High</td></tr>
-    <tr><td>Current Gain</td>       <td class="ok">Medium</td></tr>
-    <tr><td>Power Gain</td>         <td class="ok">Medium</td></tr>
-    <tr><td>Input Impedance</td>    <td class="ok">Medium</td></tr>
-    <tr><td>Output Impedance</td>   <td class="bad">High</td></tr>
-    <tr><td>Phase Shift</td>        <td>180°</td></tr>
+    <tr><td>Voltage Gain</td>{/*       */}<td className="good">High</td></tr>
+    <tr><td>Current Gain</td>{/*       */}<td className="ok">Medium</td></tr>
+    <tr><td>Power Gain</td>{/*         */}<td className="ok">Medium</td></tr>
+    <tr><td>Input Impedance</td>{/*    */}<td className="ok">Medium</td></tr>
+    <tr><td>Output Impedance</td>{/*   */}<td className="bad">High</td></tr>
+    <tr><td>Phase Shift</td>{/*        */}<td>180°</td></tr>
   </tbody>
 </table>
 
-{/* {{% aside type="note" %}} */}
 :::note
 Lower case letters used below represent changes in quantities, e.g. $V_C$ is the voltage at the collector, whilst $v_c$ is the change in voltage at the collector, $\Delta V_C$.
 :::
-{/* {{% /aside %}} */}
 
 ## How A Common Emitter Amplifier Works
 
-{/* {{% figure src="common-emitter-amplifier-schematic.png" width="600px" caption="Schematic for a common emitter amplifier with DC bias and AC coupling." %}} */}
 <Image src={require('./common-emitter-amplifier-schematic.png').default} width="600">Schematic for a common emitter amplifier with DC bias and AC coupling.</Image>
 
 * $R1$ and $R2$ are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that).
@@ -50,7 +47,6 @@ Lower case letters used below represent changes in quantities, e.g. $V_C$ is the
 
 ## Gain Of A Common Emitter Amplifier
 
-{/* {{% figure src="common-emitter-amplifier-gain-equation-diagram.png" width="300px" float="right" caption="Diagram showing how the gain equation for a common emitter amplifier is found." %}} */}
 <Image src={require('./common-emitter-amplifier-gain-equation-diagram.png').default} width="300" float="right">Diagram showing how the gain equation for a common emitter amplifier is found.</Image>
 
 The voltage gain of a common-emitter amplifier (by definition) is:
@@ -105,10 +101,8 @@ A_V &= -\frac{R_C}{r_e} \nonumber \\
 \end{align}
 $$
 
-{/* {{% aside type="note" %}} */}
 :::note
 The voltage gain of the common emitter amplifier **is not dependent on the current gain $\beta$ of the BJT**. This is good news, as this property cannot be tightly controlled during manufacture and usually varies between "identical" transistors by a few $100%$ or more!
-{/* {{% /aside %}} */}
 :::
 
 ## Common Emitter Amplifier Design Process
@@ -274,12 +268,10 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
 
 The finished schematic, along with voltage sources ready for simulation is shown below.
 
-{/* {{% figure src="common-emitter-amplifier-design-process-schematic.png" width="800px" caption="The finished schematic of our common emitter amplifier, ready for simulation." %}} */}
 <Image src={require('./common-emitter-amplifier-design-process-schematic.png').default} width="800">The finished schematic of our common emitter amplifier, ready for simulation.</Image>
 
 Given the large gain of $46.5dB$, I didn't want to saturate the output so I chose an input sine wave signal with an amplitude of $10mV$ at a frequency of $1kHz$. The simulated input and output voltages are shown below (**note the change in the y-axis scale - the input is in $mV$ and the output is in $V$**).
 
-{/* {{% figure src="common-emitter-amplifier-simulation-vin-vout-plot.png" width="600px" caption="Simulation results showing $V_{OUT}$ vs. $V_{IN}$." %}} */}
 <Image src={require('./common-emitter-amplifier-simulation-vin-vout-plot.png').default} width="600">Simulation results showing $V_{OUT}$ vs. $V_{IN}$.</Image>
 
 :::note
@@ -288,13 +280,10 @@ You can clearly see the $180^{\circ}$ phase shift between the input and output i
 
 The simulated frequency response shown below is close to what we expect. The simulated gain of around $42dB$ is close enough to our calculated gain of $46.5dB$ considering all the approximations we made! The phase shift is $180^{\circ}$ for most of our signal bandwidth.
 
-{/* {{% figure src="common-emitter-amplifier-simulation-freq-response-plot.png" width="600px" caption="The simulated frequency response of our common emitter amplifier." %}} */}
 <Image src={require('./common-emitter-amplifier-simulation-freq-response-plot.png').default} width="600">The simulated frequency response of our common emitter amplifier.</Image>
 
-{/* {{% aside type="warning" %}} */}
 :::warning
 The gain of the circuit would drop significantly if the load resistance was decreased, due to the medium amount of output impedance (ideally this would be $0\Omega$). When designing a common emitter amplifier, make sure you are not loading it too much. You can decrease the output impedance of a common emitter amplifier by increase the amount of collector quiescent current $I_C$. 
-{/* {{% /aside %}} */}
 :::
 
 [^bib-cadence-common-emitter-design]: Cadence. _Common-Emitter Transistor Amplifier Design_. Retrieved 2022-08-17, from https://resources.system-analysis.cadence.com/blog/msa2021-common-emitter-transistor-amplifier-design.
