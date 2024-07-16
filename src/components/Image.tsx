@@ -17,7 +17,7 @@ export default function Image({children, src, width}) {
   return (
     <figure style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {imgComponent}
-      <figcaption className={styles.figcaption} style={{ width: width }}>{children}</figcaption>
+      <figcaption className={styles.figcaption} style={{ maxWidth: width }}>{children}</figcaption>
     </figure>
   );
 }

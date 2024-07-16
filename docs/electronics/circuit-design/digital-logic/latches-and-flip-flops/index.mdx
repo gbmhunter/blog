@@ -55,10 +55,10 @@ Driving either S or R high allows you to set the latch into the 1 or 0 state res
     </tr>
   </thead>
   <tbody>
-    <tr><td>0</td>  <td>0</td>  <td>$Q$</td>  <td>$\bar{Q}$</td>  <td>No change</td></tr>
-    <tr><td>0</td>  <td>1</td>  <td>0</td>      <td>1</td>            <td>Reset</td></tr>
-    <tr><td>1</td>  <td>0</td>  <td>1</td>      <td>0</td>            <td>Set</td></tr>
-    <tr><td>1</td>  <td>1</td>  <td>0</td>      <td>0</td>            <td>Not allowed</td></tr>
+    <tr><td>0</td>{/**/}<td>0</td>{/**/}<td>$Q$</td>{/**/}<td>$\bar{Q}$</td>{/**/}<td>No change</td></tr>
+    <tr><td>0</td>{/**/}<td>1</td>{/**/}<td>0</td>{/*  */}<td>1</td>{/*        */}<td>Reset</td></tr>
+    <tr><td>1</td>{/**/}<td>0</td>{/**/}<td>1</td>{/*  */}<td>0</td>{/*        */}<td>Set</td></tr>
+    <tr><td>1</td>{/**/}<td>1</td>{/**/}<td>0</td>{/*  */}<td>0</td>{/*        */}<td>Not allowed</td></tr>
   </tbody>
 </table>
 
@@ -81,10 +81,10 @@ When making the SR latch from NAND gates the invalid state is now $\overline{S} 
     </tr>
   </thead>
   <tbody>
-    <tr><td>0</td>  <td>0</td>  <td>1</td> <td>1</td>            <td>Not allowed</td></tr>
-    <tr><td>0</td>  <td>1</td>  <td>0</td> <td>1</td>            <td>Reset</td></tr>
-    <tr><td>1</td>  <td>0</td>  <td>1</td> <td>0</td>            <td>Set</td></tr>
-    <tr><td>1</td>  <td>1</td>  <td>$Q$</td> <td>$\bar{Q}$</td>            <td>No change</td></tr>
+    <tr><td>0</td>{/**/}<td>0</td>{/**/}<td>1</td>{/*  */}<td>1</td>{/*        */}<td>Not allowed</td></tr>
+    <tr><td>0</td>{/**/}<td>1</td>{/**/}<td>0</td>{/*  */}<td>1</td>{/*        */}<td>Reset</td></tr>
+    <tr><td>1</td>{/**/}<td>0</td>{/**/}<td>1</td>{/*  */}<td>0</td>{/*        */}<td>Set</td></tr>
+    <tr><td>1</td>{/**/}<td>1</td>{/**/}<td>$Q$</td>{/**/}<td>$\bar{Q}$</td>{/**/}<td>No change</td></tr>
   </tbody>
 </table>
 
@@ -153,10 +153,10 @@ You can see from the below truth table that when $E = 0$, the latch remembers it
     </tr>
   </thead>
   <tbody>
-    <tr><td>0</td>  <td>0</td>  <td>$Q$</td>  <td>$\bar{Q}$</td>            <td>No change</td></tr>
-    <tr><td>0</td>  <td>1</td>  <td>$Q$</td>  <td>$\bar{Q}$</td>            <td>No change</td></tr>
-    <tr><td>1</td>  <td>0</td>  <td>0</td>      <td>1</td>                      <td>Reset</td></tr>
-    <tr><td>1</td>  <td>1</td>  <td>1</td>      <td>0</td>                      <td>Set</td></tr>
+    <tr><td>0</td>{/**/}<td>0</td>{/**/}<td>$Q$</td>{/**/}<td>$\bar{Q}$</td>{/**/}<td>No change</td></tr>
+    <tr><td>0</td>{/**/}<td>1</td>{/**/}<td>$Q$</td>{/**/}<td>$\bar{Q}$</td>{/**/}<td>No change</td></tr>
+    <tr><td>1</td>{/**/}<td>0</td>{/**/}<td>0</td>{/**/}<td>1</td>{/**/}<td>Reset</td></tr>
+    <tr><td>1</td>{/**/}<td>1</td>{/**/}<td>1</td>{/**/}<td>0</td>{/**/}<td>Set</td></tr>
   </tbody>
 </table>
 
@@ -443,10 +443,10 @@ It behaves in the same manner as a JK latch, but only acts on the negative clock
     </tr>
   </thead>
   <tbody>
-    <tr><td>↓</td>    <td>0</td>   <td>0</td>  <td>$Q$</td>             <td>$\overline{Q}$</td>     <td>No change</td></tr>
-    <tr><td>↓</td>    <td>0</td>   <td>1</td>  <td>0</td>                 <td>1</td>                    <td>Reset</td></tr>
-    <tr><td>↓</td>    <td>1</td>   <td>0</td>  <td>1</td>                 <td>0</td>                    <td>Set</td></tr>
-    <tr><td>↓</td>    <td>1</td>   <td>1</td>  <td>$\overline{Q}$</td>  <td>$Q$</td>                <td>Toggle</td></tr>
+    <tr><td>↓</td>{/**/}<td>0</td>{/**/}<td>0</td>{/**/}<td>$Q$</td>{/**/}<td>$\overline{Q}$</td>{/**/}<td>No change</td></tr>
+    <tr><td>↓</td>{/**/}<td>0</td>{/**/}<td>1</td>{/**/}<td>0</td>{/**/}<td>1</td>{/**/}<td>Reset</td></tr>
+    <tr><td>↓</td>{/**/}<td>1</td>{/**/}<td>0</td>{/**/}<td>1</td>{/**/}<td>0</td>{/**/}<td>Set</td></tr>
+    <tr><td>↓</td>{/**/}<td>1</td>{/**/}<td>1</td>{/**/}<td>$\overline{Q}$</td>{/**/}<td>$Q$</td>{/**/}<td>Toggle</td></tr>
   </tbody>
 </table>
 

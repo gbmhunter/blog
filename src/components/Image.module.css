@@ -1,5 +1,6 @@
 .figcaption {
   font-style: italic; /* Italics to help distinguish the caption from the paragraph text */
+  text-align: center; /* Center the caption */
   min-width: 150px; /* Set a min. width incase the image has a very small width. This will be the actual width if the width property is less than this. */
   color: #929292; /* Lighten the text to distinguish it from paragraph text */
 }

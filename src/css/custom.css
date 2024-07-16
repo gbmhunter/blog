@@ -81,10 +81,11 @@
   justify-content: center;
 }
 
-/* 
-If you want to center all markdown tables
+
+/* If you want to center all markdown tables */
 table {
   display: table;
   width: initial;
   margin: 0 auto;
-} */
+  margin-bottom: 1em;
+}
