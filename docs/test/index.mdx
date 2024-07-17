@@ -5,12 +5,15 @@ date: 2004-09-13
 description: A test page to demonstrate all the features of a content page.
 draft: false
 lastmod: 2021-06-20
+sidebar_class_name: hidden
 tags: [ "test page" ]
 title: "Markdown Test Page"
 type: page
 ---
 
-Is the breadcrumb working above ^^^ ???
+Is the breadcrumb working above ^^^ ?
+
+The author should be listed above^^^.
 
 There should be a TOC either above (narrow screens) or in the right sidebar (wide screen).
 
@@ -22,11 +25,13 @@ There should be a TOC either above (narrow screens) or in the right sidebar (wid
 
 ### Heading (h3)
 
-## MathJax
+## Equations
 
 Some display math with a reference:
 
-$$ f(x) = \frac{2}{3}$$
+$$
+f(x) = \frac{2}{3}
+$$
 
 Some inline math. $f(x) = \frac{2}{3}$. More normal text.
 
@@ -39,103 +44,34 @@ $$
 $$
 
 To align equations we can use:
-
-$$
-\begin{align}
-A &= B\\
-  &= C\\
-  &= D
-\end{align}
-$$
-
-These should be `\small` and `\tiny` equations:
-
-$$
-\begin{align}
-\small y=x \\
-\tiny y=x
-\end{align}
-$$
-
-Should have some descriptive text:
-
-$$
-\begin{align}
-y &= x && \text{Because $y=x$, duh.} \\
-  &= z && \text{Replacing $x$ with $z$.}
-\end{align}
-$$
-
-First equation should not be numbered, second one should:
-
-$$
-\begin{align}
-y &= x \nonumber \\
-  &= z
-\end{align}
-$$
-
-None of the equations should be numbered (but still should be aligned):
 
 $$
 \begin{align*}
-y &= x \\
-  &= z
-\end{align*}
-$$
-
-Custom Latex macros:
-
-This should be bold: $ \b{x} $
-
-This should be bold and have a hat: $ \bhat{x} $
-
-## Hugo Math
-
-Some display math with a reference:
-
-$$ f(x) = \frac{2}{3}$$
-
-Some inline math. $f(x) = \frac{2}{3}$. More normal text.
-
-An equation with `\begin{equation}`, which should be automatically numbered:
-
-$$
-\begin{equation}
-  \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
-  \label{eq:sample-hugo}
-\end{equation}
-$$
-
-To align equations we can use:
-
-$$
-\begin{align}
 A &= B\\
   &= C\\
   &= D
-\end{align}
+\end{align*}
 $$
 
 These should be `\small` and `\tiny` equations:
 
 $$
-\begin{align}
+\begin{align*}
 \small y=x \\
 \tiny y=x
-\end{align}
+\end{align*}
 $$
 
 Should have some descriptive text:
 
 $$
-\begin{align}
+\begin{align*}
 y &= x && \text{Because $y=x$, duh.} \\
   &= z && \text{Replacing $x$ with $z$.}
-\end{align}
+\end{align*}
 $$
 
-First equation should not be numbered, second one should:
+First equation should not be numbered, second one should not:
 
 $$
 \begin{align}
@@ -157,6 +93,16 @@ Custom Latex macros:
 
 * This should be bold: $ \b{x} $
 * This should be bold and have a hat: $ \bhat{x} $
+* $\R$ sjsjs
+
+Really long equation to make sure it doesn't exceed 100% of the page width:
+
+$$
+\begin{align*}
+y &= lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, 
+
+\end{align*}
+$$
 
 
 ## Dividers
@@ -177,7 +123,7 @@ ghi         | jkl
 
 
 <table >
-<caption>Data that doesn't mean anything. This caption should be prefixed with "Table 1: ".</caption>
+<caption>This is a table caption.</caption>
 <tbody>
 <tr>
   <td>abcdefghi</td>
@@ -190,11 +136,15 @@ ghi         | jkl
 
 The logo is shown below:
 
-<Image src={require('./cartoon-ninja.jpg').default} width="300px">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
+<Image src={require('./_assets/cartoon-ninja.jpg').default} width="300px">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
 
 Link to an image which is not a page resource is shown below:
 
 <Image src={require('/images/logo/cartoon-ninja.jpg').default} width="300px">Caption for non-page resource image.</Image>
+
+A wide image to make sure it doesn't exceed the page width:
+
+<Image src={require('./_assets/test-image-1000px.webp').default} width="2000">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width.</Image>
 
 ## Asides
 
@@ -202,7 +152,7 @@ Link to an image which is not a page resource is shown below:
 This is an example. There should be a reference at the end here[^ti-sboa187e-current-mode-control].
 :::
 
-:::note" title="This Has a Custom Title!
+:::note This Has a Custom Title!
 This is a note. It should also have a custom title.
 :::
 
@@ -236,19 +186,19 @@ Below should be a worked example. It should be an aside with info inside it. The
 
 1. Find the voltage across $R_1$, nothing that $Q_1$ has a diode voltage drop of $0.7V$ from emitter to base (with the emitter tied to $V_{CC}$), at that the base and collector of $Q_1$ are tied together and hence at the same voltage:
     $$
-    \begin{align}
+    \begin{align*}
     V_{R1}  &= 12V - 0.7V \nonumber \\
             &= 11.3V
-    \end{align}
+    \end{align*}
     $$
 
 1. Set the resistance of $R_1$ using Ohm's Law:
     $$
-    \begin{align}
+    \begin{align*}
     R_1 &= \frac{V_{R1}}{I_P} \nonumber \\
         &= \frac{11.3V}{1mA} \nonumber \\
         &= 11.3k\Omega
-    \end{align}
+    \end{align*}
     $$
 
 1. All done!
@@ -257,13 +207,11 @@ Below should be a worked example. It should be an aside with info inside it. The
 
 ## Code
 
-Some of the syntax highlighting settings are set in `config.yaml` under `markup` -> `highlight`.
-
 Some inline code. `x[2] = 3`. More text.
 
-Some block code that **shouldn't** have scroll bars, but should have line numbers:
+Some block code that **shouldn't** have scroll bars, but should have a title and line numbers:
 
-```c
+```c showLineNumbers title="The code title."
 x[3] = 4;
 int y = x;
 if (y == 4) {

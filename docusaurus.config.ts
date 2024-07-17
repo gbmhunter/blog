@@ -51,7 +51,19 @@ const config: Config = {
             extendDefaults: true,
           },
           remarkPlugins: [remarkMath],
-          rehypePlugins: [[rehypeKatex, { strict: false }]],
+          rehypePlugins: [
+            [
+              rehypeKatex, {
+                strict: false,
+                // See https://katex.org/docs/options.html for how macros (or other options)
+                // work
+                macros: {
+                  "\\b": "\\mathbf{#1}",
+                  "\\bhat": "{\\hat{\\mathbf{#1}}}",
+                }
+              }
+            ]
+          ],
             
         },
         blog: {

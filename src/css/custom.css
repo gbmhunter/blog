@@ -89,3 +89,8 @@ table {
   margin: 0 auto;
   margin-bottom: 1em;
 }
+
+.katex-display {
+  /* This prevents long equations from exceeding the width of the page */
+  overflow: auto hidden;
+}
