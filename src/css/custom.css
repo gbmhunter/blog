@@ -94,3 +94,9 @@ table {
   /* This prevents long equations from exceeding the width of the page */
   overflow: auto hidden;
 }
+
+.katex-html {
+  /* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
+  \begin{align} is used and they are numbered in the right-hand side of the page. */
+  margin: 0.1em;
+}
