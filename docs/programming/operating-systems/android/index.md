@@ -2,7 +2,9 @@
 authors: [ "Geoffrey Hunter" ]
 date: 2013-10-10
 draft: false
-last_update: 2013-10-10
+last_update:
+  date: 2013-10-10
+  author: Geoffrey Hunter
 title: "Android"
 type: "page"
 ---

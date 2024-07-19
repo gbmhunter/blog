@@ -4,7 +4,9 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2020-06-26
 description: "How to get/set the IO scheduling class and priority for processes running in Linux via the command-line."
 draft: false
-last_update: 2020-06-26
+last_update:
+  date: 2020-06-26
+  author: Geoffrey Hunter
 tags: [ "programming", "operating systems", "Linux", "IO", "scheduling class", "priority", "processes", "command-line", "ionice" ]
 title: "How To Change The IO Scheduling Class And Priority In Linux"
 ---

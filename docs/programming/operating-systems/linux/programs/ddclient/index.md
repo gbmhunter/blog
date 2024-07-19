@@ -3,7 +3,9 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2013-10-21
 draft: false
-last_update: 2013-10-21
+last_update:
+  date: 2013-10-21
+  author: Geoffrey Hunter
 title: ddclient
 type: page
 ---

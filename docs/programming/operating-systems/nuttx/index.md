@@ -3,7 +3,9 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems" ]
 date: 2016-12-16
 draft: false
-last_update: 2016-12-16
+last_update:
+  date: 2016-12-16
+  author: Geoffrey Hunter
 tags: [ "programming", "operating systems" ]
 title: NuttX
 type: page

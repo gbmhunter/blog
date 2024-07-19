@@ -4,7 +4,9 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-12-19
 description: ""
 draft: true
-last_update: 2019-12-19
+last_update:
+  date: 2019-12-19
+  author: Geoffrey Hunter
 tags: []
 title: "A Review Of Linux Shells"
 ---
