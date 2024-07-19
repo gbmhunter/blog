@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-04-20
 draft: false
-lastmod: 2019-09-16
+last_update: 2019-09-16
 tags: [ "programming", "operating systems", "Linux", "programs", "command-line", "du", "disk usage", "mount", "file system", "directory" ]
 title: "du (disk usage)"
 type: "page"

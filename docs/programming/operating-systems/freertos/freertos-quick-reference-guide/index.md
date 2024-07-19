@@ -2,7 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 date: 2016-06-21
 draft: false
-lastmod: 2019-04-22
+last_update: 2019-04-22
 title: FreeRTOS Quick Reference Guide
 type: page
 ---

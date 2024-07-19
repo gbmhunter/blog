@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2014-01-03
 draft: false
-lastmod: 2014-01-03
+last_update: 2014-01-03
 title: "export"
 type: page
 ---

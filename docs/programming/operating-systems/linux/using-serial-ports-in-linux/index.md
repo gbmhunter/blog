@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2014-01-07
 draft: false
-lastmod: 2014-01-07
+last_update: 2014-01-07
 tags: [ "programming", "operating systems", "Linux", "serial ports", "tty", "permissions", "dialout" ]
 title: Using Serial Ports In Linux
 type: page

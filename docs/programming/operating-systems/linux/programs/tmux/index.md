@@ -4,7 +4,7 @@ categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2018-11-13
 description: "A tutorial on tmux, session management software for Linux."
 draft: false
-lastmod: 2019-12-18
+last_update: 2019-12-18
 tags: [ "programming", "operating systems", "Linux", "programs", "tmux", "sessions", "detach", "windows", "panes", "scrollback", "buffers", "history", "installation", "install", "libevent", "ncurses" ]
 title: "tmux"
 type: "page"

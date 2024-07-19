@@ -4,7 +4,7 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-12-19
 description: ""
 draft: true
-lastmod: 2019-12-19
+last_update: 2019-12-19
 tags: []
 title: "A Review Of Linux Shells"
 ---

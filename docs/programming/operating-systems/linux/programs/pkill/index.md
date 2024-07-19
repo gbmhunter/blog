@@ -4,7 +4,7 @@ categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-01-05
 description: "A tutorial on the command-line tool pkill, used for matching processes against strings and killing them."
 draft: false
-lastmod: 2019-07-29
+last_update: 2019-07-29
 tags: [ "programming", "operating systems", "Linux", "programs", "kill", "pkill", "regex", "process", "SIGKILL" ]
 title: "pkill"
 type: "page"

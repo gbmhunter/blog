@@ -46,6 +46,8 @@ const config: Config = {
           editUrl: 'https://github.com/gbmhunter/blog-docusaurus/tree/main/',
           // path: 'docs',
           routeBasePath: '/', // Set this to '/' to serve the docs at the root of the site
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
           admonitions: {
             keywords: ['example'], // Additional admonition types
             extendDefaults: true,
