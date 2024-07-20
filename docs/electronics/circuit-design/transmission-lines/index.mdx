@@ -11,16 +11,20 @@ title: "Transmission Lines"
 type: "page"
 ---
 
+## Child Pages
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
+
 ## Overview
 
 A _transmission line_ is a wire/cable/track on the PCB, that, because of the frequency of the electrical signals going through have reached a certain point (typically RF), you can no longer just treat the wire as a short circuit. Instead, the connection must be treated as a _transmission line_, and must be _impedance matched_ all the way from the driver to the receiver. Impedance matching is done to maximise power transfer and minimise reflections from the load. The typical way to impedance match is to make sure the transmission line is _terminated_ correctly.
 
-{/* {{% figure src="transmission-line-schematic-symbol.png" width="500px" caption="Schematic symbol for a transmission line, which represents a piece of coax cable. Because this usually isn't a component to appear on the BOM (if it's a PCB track), it's not normally given a designator." %}} */}
 <Image src={require('./_assets/transmission-line-schematic-symbol.png').default} width="500">Schematic symbol for a transmission line, which represents a piece of coax cable. Because this usually isn't a component to appear on the BOM (if it's a PCB track), it's not normally given a designator.</Image>
 
 _Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. See the Termination page for more info.
 
-{/* {{% figure src="microstrip-track-example-in-isometric-view-microchip.gif" width="300px" caption="An isometric diagram of a microstrip. Image from www.maximintegrated.com." %}} */}
 <Image src={require('./_assets/microstrip-track-example-in-isometric-view-microchip.gif').default} width="300">An isometric diagram of a microstrip. Image from www.maximintegrated.com.</Image>
 
 ## Dielectric Constant
@@ -73,7 +77,6 @@ For example, electronicdesign.com states[^bib-elec-design-imp-matching-p1]:
 
 > A cable becomes a transmission line when it has a length greater than λ/8 at the operating frequency.
 
-{/* {{% aside type="example" %}} */}
 :::example
 
 You have a signal at 780MHz. At what length does a cable carrying this signal have to be treated as a transmission line?
@@ -96,7 +99,6 @@ l &= \frac{\lambda}{10} \nonumber \\
 \end{align}
 $$
 
-{/* {{% /aside %}} */}
 :::
 
 ### What About Digital Waveforms?
@@ -113,13 +115,10 @@ $$
 $ t_r $ is the maximum rise time from 10 to 90%, in seconds (s).<br/>
 $ BW $ is the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br/></p>
 
-{/* {{% aside type="tip" %}} */}
 :::tip
 The impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
-{/* {{% /aside %}} */}
 :::
 
-{/* {{% aside type="example" %}} */}
 :::example
 
 Finding the track length at which you have to treat it as a transmission line for USB2.0. 
@@ -141,7 +140,6 @@ $ \epsilon_r $ is the di-electric of the material the electro-magnetic wave is t
 
 Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the characteristic impedance of the track is only important if the total track length is greater than 165mm.
 
-{/* {{% /aside %}} */}
 :::
 
 ## Reflections
@@ -226,7 +224,6 @@ All of the energy is reflected back to the source. The reflected wave is equal i
 
 Co-planaer waveguides (CPW) are a third alternative to microstrips and striplines for controlling the impedance of a circuitboard trace. There are two variants, the basic _co-planar waveguide_ and the _co-planar waveguide with ground_. The main advantage of a co-planar waveguide is that it **does not require a solid power plane** above or below it, making it a more flexible choice for layer and space constrained PCBs.
 
-{/* {{% figure src="coplanaer-waveguide-for-gsm-antenna.png" width="490px" caption="A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit." %}} */}
 <Image src={require('./_assets/coplanaer-waveguide-for-gsm-antenna.png').default} width="490">A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.</Image>
 
 Although you can't see it in the image above, there is a ground plane underneath the CPW (there are two internal layers between the visible top layer (red) and bottom layer (blue)).

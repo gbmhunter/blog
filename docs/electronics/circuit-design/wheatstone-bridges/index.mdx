@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2022-01-17
 draft: false
-images: [ "/electronics/circuit-design/wheatstone-bridges/basic-schematic-of-wheatstone-bridge.png" ]
+image: /images/page-images/wheatstone-bridges.png
 last_update:
   date: 2022-02-05
   author: Geoffrey Hunter
@@ -12,15 +12,13 @@ title: "Wheatstone Bridges"
 type: "page"
 ---
 
-{/* {{% warning-is-notes %}} */}
 <WarningIsNotes />
 
 ## Overview
 
 The _Wheatstone bridge_ (a.k.a. _resistance bridge_) is a circuit consisting of four resistive components. It has the benefit of being able to perform accurate measurements of resistance. The below image shows the basic schematic:
 
-{/* {{% figure src="basic-schematic-of-wheatstone-bridge.png" width="400px" caption="The basic schematic of a Wheatstone bridge (resistance bridge)." %}} */}
-<Image src={require('./basic-schematic-of-wheatstone-bridge.png').default} width="400">The basic schematic of a Wheatstone bridge (resistance bridge).</Image>
+<Image src={require('./_assets/basic-schematic-of-wheatstone-bridge.png').default} width="400">The basic schematic of a Wheatstone bridge (resistance bridge).</Image>
 
 Below is the general equation for the Wheatstone bridge:
 
@@ -40,8 +38,7 @@ $$
 
 The traditional use is to replace the bottom resistors on both legs of the Wheatstone bridge -- one leg with a variable resistor (rheostat or potentiometer) and the other with an unknown resistance which you want to measure. The variable resistor is adjusted until the output voltage (or current) is $0$. Assuming you know the resistance of the rheostat, you can calculate the resistance of $R_x$.
 
-{/* {{% figure src="pot-and-unknown-resistance-wheatstone-bridge.png" width="400px" caption="Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat ($R2$), and the other bottom resistor with the unknown resistance $R_x$. Adjusting the rheostat until the output voltage (or current) is 0 \"balances\" the bridge, and the unknown resistance can be found knowing the other three." %}} */}
-<Image src={require('./pot-and-unknown-resistance-wheatstone-bridge.png').default} width="400">Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat ($R2$), and the other bottom resistor with the unknown resistance $R_x$. Adjusting the rheostat until the output voltage (or current) is 0 "balances" the bridge, and the unknown resistance can be found knowing the other three.</Image>
+<Image src={require('./_assets/pot-and-unknown-resistance-wheatstone-bridge.png').default} width="400">Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat ($R2$), and the other bottom resistor with the unknown resistance $R_x$. Adjusting the rheostat until the output voltage (or current) is 0 "balances" the bridge, and the unknown resistance can be found knowing the other three.</Image>
 
 In the scenario shown above, the unknown resistance $R_x$ can be found with:
 

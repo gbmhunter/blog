@@ -4,7 +4,7 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2013-10-16
 description: "Noise spectral densities, the colours of noise, thermal noise, shot noise, and more info about electrical noise."
 draft: false
-images: [ "/electronics/circuit-design/electrical-noise/noise-pink-time-domain.png" ]
+image: /images/page-images/electrical-noise.png
 last_update:
   date: 2021-07-04
   author: Geoffrey Hunter
@@ -17,8 +17,7 @@ type: "page"
 
 _Electrical noise_ is the unintentional (most of the time, but not in the case of stochastic resonance[^wikipedia-stochastic-resonance], dither, or random number generation) introduction of voltage/current disturbance in an electrical signal. Noise is added to a signal as it flows through a circuit/cable by the circuit components themselves, as well as being picked up by electromagnetic means from the surrounding environment. Noise is also emitted by a signal via electromagnetic means to the surrounding environment.
 
-{/* {{% figure src="noise-from-3-smps.png" width="700px" caption="Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!" %}} */}
-<Image src={require('./noise-from-3-smps.png').default} width="700">Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!</Image>
+<Image src={require('./_assets/noise-from-3-smps.png').default} width="700">Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!</Image>
 
 This page focuses on noise created by electronics components such as resistors, how to model it, and what it looks like. If you want to know how to protect your circuit from transient voltage spikes and other ESD events, see the [ESD Protection page](/electronics/circuit-design/esd-protection/).
 
@@ -79,13 +78,11 @@ White noise has a flat power spectral density when plotted against frequency. Wh
 
 The following graph shows what Gaussian white noise looks like in the time domain:
 
-{/* {{% figure src="noise-white-time-domain.png" width="700px" caption="What white noise looks like in the time domain." %}} */}
-<Image src={require('./noise-white-time-domain.png').default} width="700">What white noise looks like in the time domain.</Image>
+<Image src={require('./_assets/noise-white-time-domain.png').default} width="700">What white noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{/* {{% figure src="noise-white-freq-domain.png" width="700px" caption="What white noise looks like in the frequency domain." %}} */}
-<Image src={require('./noise-white-freq-domain.png').default} width="700">What white noise looks like in the frequency domain.</Image>
+<Image src={require('./_assets/noise-white-freq-domain.png').default} width="700">What white noise looks like in the frequency domain.</Image>
 
 Although it commonly is modelled as such, white noise does not have to be _Gaussian_. Gaussian noise means the probability density function has a Gaussian distribution. However other forms of white noise exist, for example, Poisson white noise.
 
@@ -95,7 +92,7 @@ Examples of white noise include:
 
 #### Stochastic Resonance
 
-_Stochastic resonance_ is the clever technique of adding white noise to a signal which is usually too weak to be detected by the measurement device. The frequencies in the white noise which are also present in the signal will resonate with each other, amplifying the original signal but not amplifying the rest of the white noise. The system has to have a non-linear response for this to work[^bib-wikipedia-stochastic-resonance].
+_Stochastic resonance_ is the clever technique of adding white noise to a signal which is usually too weak to be detected by the measurement device. The frequencies in the white noise which are also present in the signal will resonate with each other, amplifying the original signal but not amplifying the rest of the white noise. The system has to have a non-linear response for this to work[^wikipedia-stochastic-resonance].
 
 ### Pink Noise
 
@@ -103,13 +100,11 @@ Also called $\frac{1}{f}$ noise. The PSD decreases at $3dB$ per octave.
 
 The following graph shows what pink noise looks like in the time domain:
 
-{/* {{% figure src="noise-pink-time-domain.png" width="700px" caption="What pink noise looks like in the time domain." %}} */}
-<Image src={require('./noise-pink-time-domain.png').default} width="700">What pink noise looks like in the time domain.</Image>
+<Image src={require('./_assets/noise-pink-time-domain.png').default} width="700">What pink noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{/* {{% figure src="noise-pink-freq-domain.png" width="700px" caption="What pink noise looks like in the frequency domain." %}} */}
-<Image src={require('./noise-pink-freq-domain.png').default} width="700">What pink noise looks like in the frequency domain.</Image>
+<Image src={require('./_assets/noise-pink-freq-domain.png').default} width="700">What pink noise looks like in the frequency domain.</Image>
 
 Examples and uses of pink noise:
 
@@ -130,13 +125,11 @@ Also called _Brownian_ or $\frac{1}{f^2}$ noise. The PSD decreases at $6dB$ per 
 
 The following graph shows what red noise looks like in the time domain:
 
-{/* {{% figure src="noise-red-time-domain.png" width="700px" caption="What red noise looks like in the time domain." %}} */}
-<Image src={require('./noise-red-time-domain.png').default} width="700">What red noise looks like in the time domain.</Image>
+<Image src={require('./_assets/noise-red-time-domain.png').default} width="700">What red noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{/* {{% figure src="noise-red-freq-domain.png" width="700px" caption="What red noise looks like in the frequency domain." %}} */}
-<Image src={require('./noise-red-freq-domain.png').default} width="700">What red noise looks like in the frequency domain.</Image>
+<Image src={require('./_assets/noise-red-freq-domain.png').default} width="700">What red noise looks like in the frequency domain.</Image>
 
 ### Blue Noise
 
@@ -144,13 +137,11 @@ Also called _Azure_ or $f$ noise. It has a PSD proportional to frequency. As the
 
 The following graph shows what blue noise looks like in the time domain:
 
-{/* {{% figure src="noise-blue-time-domain.png" width="700px" caption="What blue noise looks like in the time domain." %}} */}
-<Image src={require('./noise-blue-time-domain.png').default} width="700">What blue noise looks like in the time domain.</Image>
+<Image src={require('./_assets/noise-blue-time-domain.png').default} width="700">What blue noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{/* {{% figure src="noise-blue-freq-domain.png" width="700px" caption="What blue noise looks like in the frequency domain." %}} */}
-<Image src={require('./noise-blue-freq-domain.png').default} width="700">What blue noise looks like in the frequency domain.</Image>
+<Image src={require('./_assets/noise-blue-freq-domain.png').default} width="700">What blue noise looks like in the frequency domain.</Image>
 
 In the audio spectrum, blue noise sounds like a horrible high-pitched hiss.
 
@@ -197,7 +188,6 @@ v_n &= \sqrt{N_0} \nonumber \\
 \end{align}
 $$
 
-{/* {{% aside type="example" %}} */}
 :::example
 
 For example, a $10k\Omega$ resistor at $25^{\circ}C$ has a noise power spectral density $N_0$ of:
@@ -230,10 +220,9 @@ v_{rms} &= v_n \cdot \sqrt{B} \nonumber \\
 \end{align}
 $$
 
-{/* {{% /aside %}} */}
 :::
 
-Instead of modelling the thermal noise source as a voltage in series with a noiseless resistor, you can model it as a current source in parallel with a noiseless resistor (the Norton equivalent). To get this equation, simply divide Eq. $\ref{eq:thermal-noise-vsd}$ by $R$. This gives a current spectral density of:
+Instead of modelling the thermal noise source as a voltage in series with a noiseless resistor, you can model it as a current source in parallel with a noiseless resistor (the Norton equivalent). To get this equation, simply divide the thermal noise equation above in VSD by $R$. This gives a current spectral density of:
 
 $$
 \begin{align}
@@ -246,7 +235,6 @@ $$
 
 _Shot noise_ (a.k.a. _Poisson noise_) in electronic components arises from the random statistical fluctuations that occur in an electric current, due to electrical current not being a continuous flow but rather being made up of discrete (quantized) electrons travelling through a conductor. The PSD of _Shot noise_ is independent of frequency, so it is spectrally [^_white_noise, white] (just like Thermal noise). 
 
-{/* {{% aside type="tip" %}} */}
 :::tip
 
 Whilst shot noise can be considered white for practically all popular use cases, this assumption breaks down at really high frequencies and really low currents in where the frequency is now similar to the individual arrival rate of each electron  (the law of large numbers no longer holds). This frequency is given by[^bib-ee302a04]:
@@ -261,7 +249,6 @@ $$
 $I$ is the average DC current, in Amps $A$<br/>
 $q$ is the charge of an electron, in Coulombs $C$ ($q = 1.602e^{-19} C$)<br/></p>
 
-{/* {{% /aside %}} */}
 :::
 
 Shot noise is typically talked about being present in semiconductor components such as diodes, and not in basic passives such as resistors. However, more recent literature suggests that shot noise is also present in basic resistors[^bib-sub-poi-shot-noise].
@@ -280,7 +267,6 @@ and everything else as previously mentioned.<br/></p>
 
 Current will create shot noise. When this current flows through a resistor, this will manifest itself as a noise voltage, in addition to the thermal noise of the resistor.
 
-{/* {{% aside type="example" %}} */}
 :::example
 
 A current of $1A$ measured over a bandwidth of $1kHz$ gives a RMS shot noise current value $i_n$ of:
@@ -303,7 +289,6 @@ v_n &= i_n R \nonumber \\
 \end{align}
 $$
 
-{/* {{% /aside %}} */}
 :::
 
 Shot noise also occurs in optics, such as photography, due to the discrete nature of the photons striking each pixel in the camera. 
@@ -365,11 +350,9 @@ As you can see, if the average of the waveform is 0 (as in the case when the wav
 
 The following Python code is flexible enough to generate power law noise $\frac{1}{f^n}$ of any power $n$. The code is from [colorednoise.py](https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py), which uses an algorithm published by J. Timmer and M. Konig called _On Generating Power Law Noise_[^bib-timmer-konig-generating-power-law-noise]. Depends on the popular Numpy library. This function was used to create the power law noise example signals on this page.
 
-{/* {{% aside type="tip" %}} */}
 :::tip
 
 You can also pass in negative exponents $-1$, $-2$ to generate blue noise and purple noise.
-{/* {{% /aside %}} */}
 :::
 
 ```python
