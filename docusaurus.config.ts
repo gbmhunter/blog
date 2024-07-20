@@ -94,8 +94,8 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    // 1200x675px generic logo-style image for social sharing. Override this in the frontmatter of the page if you want a specific image for that page.
+    image: 'images/logo/mbedded-ninja-social-card-1200x675.jpg',
     //=============================================================================
     // TOP NAVBAR
     //=============================================================================

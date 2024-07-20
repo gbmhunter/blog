@@ -20,4 +20,8 @@ yarn-debug.log*
 yarn-error.log*
 .aider*
 
+# Python virtual environment
 .venv/
+
+# Affinity Photo/Designer temp files
+*.*~lock~
