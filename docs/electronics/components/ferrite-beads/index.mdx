@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 date: 2013-09-19
 description: "Impedance graphs, schematic symbols, important datasheet parameters, uses, example circuits and more info on ferrite beads."
 draft: false
-images: [ "/electronics/components/ferrite-beads/ferrite-bead-schematic-symbol-ieee-315-slanted-rectangle.png" ]
+image: /images/page-images/ferrite-beads.png
 last_update:
   date: 2021-01-22
   author: Geoffrey Hunter
@@ -18,7 +18,7 @@ Ferrite beads (also called ferrite chips) are inductors which are used for filte
 
  The following graph shows the typical impedance of a ferrite bead across a range of frequencies.
 
-<Image src={require('./impedance-frequency-characteristics-graph-of-ferrite-beads.png').default} width="644">Graph showing the impedance-frequency characteristics of a range of ferrite beads.</Image>
+<Image src={require('./_assets/impedance-frequency-characteristics-graph-of-ferrite-beads.png').default} width="644">Graph showing the impedance-frequency characteristics of a range of ferrite beads.</Image>
 
 This high impedance at high frequency property of ferrite beads reduces noise via two mechanisms:
 
@@ -27,7 +27,7 @@ This high impedance at high frequency property of ferrite beads reduces noise vi
 
 The most basic ferrite bead is a piece of wire with encased in ferrite material, it is this ferrite material which is lossy at high frequencies.
 
-<Image src={require('./usb-cable-with-ferrite-beads-annotated.png').default} width="450">A USB cable with the in-cable ferrite bead highlighted.</Image>
+<Image src={require('./_assets/usb-cable-with-ferrite-beads-annotated.png').default} width="450">A USB cable with the in-cable ferrite bead highlighted.</Image>
 
 Ferrite beads are good at filtering out high frequency differential mode noise. For filtering out common-mode noise, see the [Common-mode Choke page](/electronics/components/common-mode-chokes).
 
@@ -35,15 +35,15 @@ Ferrite beads are good at filtering out high frequency differential mode noise. 
 
 The IEEE 315 standard dictates that a ferrite bead should have the following schematic symbol:
 
-<Image src={require('./ferrite-bead-schematic-symbol-ieee-315-slanted-rectangle.png').default} width="223">The IEEE 315 schematic symbol for a ferrite bead.</Image>
+<Image src={require('./_assets/ferrite-bead-schematic-symbol-ieee-315-slanted-rectangle.png').default} width="223">The IEEE 315 schematic symbol for a ferrite bead.</Image>
 
 You might also see a ferrite bead symbol like this:
 
-<Image src={require('./ferrite-bead-schematic-symbol-triple-line.png').default} width="324">The 'triple-line' type of schematic symbol for a ferrite bead.</Image>
+<Image src={require('./_assets/ferrite-bead-schematic-symbol-triple-line.png').default} width="324">The 'triple-line' type of schematic symbol for a ferrite bead.</Image>
 
 Unfortunately, you may even see them used with an inductor symbol (and with an L for it's designator)!
 
-<Image src={require('./inductor-schematic-symbol-curly-with-bar.png').default} width="361">Some schematics will use the inductor symbol for a ferrite bead.</Image>
+<Image src={require('./_assets/inductor-schematic-symbol-curly-with-bar.png').default} width="361">Some schematics will use the inductor symbol for a ferrite bead.</Image>
 
 However, although technically correct (a ferrite bead is an inductor, and does have a core, so the bar on top of the coil is correct also), I find this very confusing. You never use a ferrite bead for it's inductive properties (it's designed to be lossy at high frequencies, while most standard inductors are designed to be as loss-less as possible and return the energy to the circuit).
 
@@ -57,13 +57,13 @@ The frequency is usually 100MHz. This is good for comparing one ferrite bead aga
 
 Ferrite beads are commonly placed in series on the power supply rails of electronic circuits.
 
-<Image src={require('./differential-noise-diagram.svg').default} width="600">Simple schematic showing how ferrite beads absorb/block high frequency noise.</Image>
+<Image src={require('./_assets/differential-noise-diagram.svg').default} width="600">Simple schematic showing how ferrite beads absorb/block high frequency noise.</Image>
 
 ## Their Frequency Response Explained...
 
 As the graph shows below, it is the ferrite beads resistance, not inductance, which is largely responsible for the increase in it's reactance. This is what we want, as resistance dissipates the noise as heat, while inductance only stores the energy ina magnetic field to return to the circuit at a later point in time.
 
-<Image src={require('./impedance-frequency-characteristics-graph-of-ferrite-beads-showing-inductance-and-resistive-components.png').default} width="706">This graph shows a breakdown of the different components (resistive R and reactive X, which has both inductive and capacitive parts) contributing to the overall impedance Z.</Image>
+<Image src={require('./_assets/impedance-frequency-characteristics-graph-of-ferrite-beads-showing-inductance-and-resistive-components.png').default} width="706">This graph shows a breakdown of the different components (resistive R and reactive X, which has both inductive and capacitive parts) contributing to the overall impedance Z.</Image>
 
 Ultimately, at higher frequencies (1-10GHz), it is their parasitic capacitance which causes the ferrite bead to become ineffective. This capacitance shorts out the inductive and resistive elements of the ferrite bead.
 
@@ -71,7 +71,7 @@ Ultimately, at higher frequencies (1-10GHz), it is their parasitic capacitance w
 
 The following image shows a common way of simulating a ferrite bead.
 
-<Image src={require('./ferrite-bead-circuit-model-and-spice-simulation-setup.png').default} width="832">A basic simulation model for a ferrite bead, and the equivalent representation in SPICE.</Image>
+<Image src={require('./_assets/ferrite-bead-circuit-model-and-spice-simulation-setup.png').default} width="832">A basic simulation model for a ferrite bead, and the equivalent representation in SPICE.</Image>
 
 Another way to model a ferrite bead is a high-frequency transformer with a low valued resistance connected across it's secondary. The two transformer primary inputs are the two leads on the ferrite bead.
 

@@ -4,7 +4,6 @@ categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
 description: "Info on floating buck-boost converters."
 draft: false
-images: [ "/electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png" ]
 last_update:
   date: 2022-07-18
   author: Geoffrey Hunter
@@ -25,15 +24,15 @@ A _floating buck-boost converter_ is a rarer form of SMPS topology that can gene
 
 * Floating load (not referenced to ground).
 
-<Image src={require('./floating-buck-boost-converter-basic-schematic.svg').default} width="500">Schematic of a floating buck-boost converter. Note that $V_{IN}$ is referenced to ground, but $V_{OUT}$ is not (measured across $R_{LOAD}$ as shown).</Image>
+<Image src={require('./_assets/floating-buck-boost-converter-basic-schematic.svg').default} width="500">Schematic of a floating buck-boost converter. Note that $V_{IN}$ is referenced to ground, but $V_{OUT}$ is not (measured across $R_{LOAD}$ as shown).</Image>
 
 The below image shows the current paths through the floating buck-boost converter when the switch is closed[^bib-onsemi-floating-buck-boost]. $V_{IN}$ provides a linearly increasing charging current to $L1$, whilst output capacitor $C_{OUT}$ provides current to the load. $D1$ is reverse-biased and so open-circuit.
 
-<Image src={require('./floating-buck-boost-converter-current-when-switch-closed.svg').default} width="500">Current paths through the floating buck-boost converter when the switch is **closed** (during $t_{on}$).</Image>
+<Image src={require('./_assets/floating-buck-boost-converter-current-when-switch-closed.svg').default} width="500">Current paths through the floating buck-boost converter when the switch is **closed** (during $t_{on}$).</Image>
 
 The below image shows the current paths when the switch is open. $L1$ had current going through it the moment $SW1$ was opened, and isn't too happy about having it's current interrupted. So it generates a voltage which forward biases $D1$ and provides current to both the load and to re-charge the output capacitor $C_{OUT}$.
 
-<Image src={require('./floating-buck-boost-converter-current-when-switch-open.svg').default} width="500">Current paths through the floating buck-boost converter when the switch is **open** (during $t_{off}$).</Image>
+<Image src={require('./_assets/floating-buck-boost-converter-current-when-switch-open.svg').default} width="500">Current paths through the floating buck-boost converter when the switch is **open** (during $t_{off}$).</Image>
 
 ### Output Voltage To Duty Cycle Equation
 
