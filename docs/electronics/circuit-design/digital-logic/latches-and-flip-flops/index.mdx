@@ -115,7 +115,7 @@ And here is the transient analysis, which agrees with the expected behaviour:
 Quite nicely, Micro-Cap shows the indeterminate state between 0 and 10ns with lines at both the `0` and `1` level.
 :::
 
-The Micro-Cap circuit file used to perform this simulation can be downloaded [here](sr-latch-nand-sim/circuit.cir).
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/sr-latch-nand-sim/circuit.cir).
 
 ::::
 
@@ -258,7 +258,7 @@ The resulting transient analysis is:
 
 <Image src={require('./_assets/edge-detection-using-and-inverter-sim/transient-analysis.png').default} width="900px"></Image>
 
-The Micro-Cap circuit file used to perform this simulation can be downloaded [here](edge-detection-using-and-inverter-sim/circuit.cir).
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/edge-detection-using-and-inverter-sim/circuit.cir).
 
 :::
 
@@ -385,7 +385,7 @@ Explanation of behaviour:
 1. Then we have a play around with the asynchronous reset and set inputs. At `t=3.1us`, we drive `nSET` low, which correctly sets `Q` high, regardless of the clock. Then at `t=3.3us` we drive `nRESET` low and it correctly sets `Q` back to `0`, again, asynchronous to the clock.
 1. Everything looks like it is working correctly!
 
-The Micro-Cap circuit file used to perform this simulation can be downloaded [here](d-flipflop-nand-with-set-reset-sim/circuit.cir).
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/d-flipflop-nand-with-set-reset-sim/circuit.cir).
 
 :::
 
