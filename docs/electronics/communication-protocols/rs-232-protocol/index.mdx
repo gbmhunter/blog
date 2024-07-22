@@ -27,8 +27,7 @@ RS-232 is commonly used today for a variety of different purposes in embedded sy
 
 ## Pinout
 
-{/* {{% figure src="rs232-comm-protocol-male-connector-large-pinout.png" width="350" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/." %}} */}
-<Image src={require('./rs232-comm-protocol-male-connector-large-pinout.png').default} width="350">The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/.</Image>
+<Image src={require('./_assets/rs232-comm-protocol-male-connector-large-pinout.png').default} width="350">The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/.</Image>
 
 ## Revisions
 
@@ -63,10 +62,8 @@ The following tables lists all of the flow control signals (as well as the data 
 | Common Ground (GND) | n/a | The common ground for all signals. | 7 | 5 |
 | Protective Ground (PG) | n/a | The protective ground. This is usually just connected up to the common ground on the PCB. | 1 | n/a |
 
-{/* {{% aside type="warning" %}} */}
 :::warning
 There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
-{/* {{% /aside %}} */}
 :::
 
 > Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
@@ -85,8 +82,7 @@ Do you need a higher-level communication protocol that works over a UART connect
 
 The pinout of a typical Analog Devices RS-232 to UART transceiver is shown below.
 
-{/* {{% figure src="analog-devices-rs-232-transceiver-pin-layout.png" width="242" caption="Pinout of a RS-232 transceiver by Analog Devices." %}} */}
-<Image src={require('./analog-devices-rs-232-transceiver-pin-layout.png').default} width="242">Pinout of a RS-232 transceiver by Analog Devices.</Image>
+<Image src={require('./_assets/analog-devices-rs-232-transceiver-pin-layout.png').default} width="242">Pinout of a RS-232 transceiver by Analog Devices.</Image>
 
 Another example of a RS-232 to CMOS UART converter is the MAX3221IDBE4. It supports an auto-shutdown feature based on the voltage-level of the receiving RS-232 line.
 
@@ -100,15 +96,13 @@ The Maxim MAX3227 is a popular RS-232 line transceiver. It contains 1 driver and
 
 A RS-232 to TTL logic-level converter can be made out of a few discrete components. The schematic shown below uses some clever circuitry, including a charge-pump like circuit, to generate the negative voltage required for RS-232 transmission back to the computer.
 
-{/* {{% figure src="low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png" width="600" caption="The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/)." %}} */}
-<Image src={require('./low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png').default} width="600">The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/).</Image>
+<Image src={require('./_assets/low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png').default} width="600">The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/).</Image>
 
 ## RS-232 DE-9 To RJ-45 Cables
 
 Many routers contain a RJ-45 socket that carry a RS-232 bus. They are designed so you can plug in a DE-9 to RJ-45 cable and connect the router to a PC for configuration. One example of a cable is the [Tripp Lite RJ45 to DB9F Cisco Serial Console Port Rollover Cable](https://assets.tripplite.com/product-pdfs/en/p430006.pdf), as shown in the below image:
 
-{/* {{% figure src="tripplite-rj45-to-db9f-cisco-serial-console-port-rollover-cable-photo.png" width="300px" caption="Photo of the TrippLite RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)[^bib-tripp-lite-rj45-to-db9f-cable-ds]." %}} */}
-<Image src={require('./tripplite-rj45-to-db9f-cisco-serial-console-port-rollover-cable-photo.png').default} width="300">Photo of the TrippLite RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)[^bib-tripp-lite-rj45-to-db9f-cable-ds].</Image>
+<Image src={require('./_assets/tripplite-rj45-to-db9f-cisco-serial-console-port-rollover-cable-photo.png').default} width="300">Photo of the TrippLite RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)[^bib-tripp-lite-rj45-to-db9f-cable-ds].</Image>
 
 The common pinout for this cable is shown in the table below[^bib-juniper-rj45-to-db9-adapter] [^bib-us-converters-making-db-to-rj45-adapter]:
 
