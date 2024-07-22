@@ -4,7 +4,7 @@ categories: [ "Programming", "Serilization Formats" ]
 date: 2020-07-27
 description: "The encoding and decoding process for packetizing (framing) data using Consistent Overhead Byte Stuffing (COBS)."
 draft: false
-images: [ "/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/cobs-encoding-diagram.png" ]
+image: /images/page-images/consistent-overhead-byte-stuffing-cobs.png
 last_update:
   date: 2020-08-13
   author: Geoffrey Hunter
@@ -21,7 +21,7 @@ _Consistent overhead byte stuffing_ (COBS) is an encoding algorithm for framing 
 
 COBS encoding transforms bytes in the range `[0, 255]` to `[1, 255]` so that `0x00` (or any other one byte) can be used to **unambiguously mark the end of the packet**. The encoding process is best explained with a diagram as below:
 
-<Image src={require('./cobs-encoding-diagram.png').default} width="800px">A step-by-step diagram of the COBS encoding process.</Image>
+<Image src={require('./_assets/cobs-encoding-diagram.png').default} width="800px">A step-by-step diagram of the COBS encoding process.</Image>
 
 ### Dealing With 255 Bytes
 

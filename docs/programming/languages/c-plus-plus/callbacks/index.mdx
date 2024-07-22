@@ -1,13 +1,10 @@
 ---
-aliases: [
-    "/programming/languages/c-plus-plus/passing-a-cpp-member-function-to-a-c-callback/", # Combined the content into this page
-]
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Languages", "C++" ]
 date: 2014-01-17
 description: "How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments."
 draft: false
-images: [ "/programming/languages/c-plus-plus/callbacks/callback.png" ]
+image: /images/page-images/cpp-callbacks.png
 last_update:
   date: 2022-08-21
   author: Geoffrey Hunter
@@ -20,7 +17,7 @@ type: "page"
 
 Callbacks are functions which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing.
 
-<Image src={require('./callback.png').default} width="500px"></Image>
+<Image src={require('./_assets/callback.png').default} width="500px"></Image>
 
 C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (it's a mixed bag, some embedded C++ environments I've used do support `<functional>`, others do not).
 
