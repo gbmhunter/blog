@@ -25,7 +25,7 @@ std::string& GetString() {
 
 The above code creates a new static qualified string inside the function, and then returns a reference to it. **Seeing a reference being returned to a locally defined variable should give you the heebie jeebies!** This is the only time I can think of where this kind of behaviour is allowed (if the variable was not declared static, then it would be deleted when the function returned, and accessing the reference would likely crash your system!).
 
-<Image src={require('/images/2017/08/magic-statics-icon-bunny-hat-code.png').default} width="300px"></Image>
+<Image src={require('./_assets/magic-statics-icon-bunny-hat-code.png').default} width="300px"></Image>
 
 ## Thread Safety
 
@@ -64,7 +64,7 @@ Singleton& Singleton::GetInstance()
 
 The constructor and destructor is made private, and both the copy and move constructors deleted, so that this class cannot be duplicated/transferred in anyway.
 
-This is sometimes called the _Meyers' Singleton_ after Scott Meyers publication "[_C++ and the Perils of Double-Checked Locking_](/images/2017/08/Scott-Meyers-Cpp-and-the-Perils-of-Double-Checked-Locking.pdf)".
+This is sometimes called the _Meyers' Singleton_ after Scott Meyers publication "[_C++ and the Perils of Double-Checked Locking_](./_assets/Scott-Meyers-Cpp-and-the-Perils-of-Double-Checked-Locking.pdf)".
 
 ## Lazy Initialization
 
@@ -80,7 +80,7 @@ Most C++ compilers support magic statics, but you have to be careful about the t
 
 On the Windows side of things, thread safety was implemented for magic statics in Visual Studio 2015.
 
-<Image src={require('/images/2017/08/visual-studio-support-for-cpp-magic-statics.png').default} width="622px">Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.</Image>
+<Image src={require('./_assets/visual-studio-support-for-cpp-magic-statics.png').default} width="622px">Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.</Image>
 
 ## Recursive Calls
 
