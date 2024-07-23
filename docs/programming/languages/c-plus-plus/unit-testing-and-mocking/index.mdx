@@ -76,13 +76,13 @@ UnitTest++ is a small, lightweight, but capable unit test library for C++ code.
 
 Example output from UnitTest++ when one of the tests fails.
 
-<Image src={require('/images/2013/05/example-output-from-unittestpp-when-test-fail.png').default} width="961px">Example output from UnitTest++ when one of the tests fails.</Image>
+<Image src={require('./_assets/example-output-from-unittestpp-when-test-fail.png').default} width="961px">Example output from UnitTest++ when one of the tests fails.</Image>
 
 ## Running Just One Test Suite
 
 The unit tests can be grouped into "Suites" which are designed to be for grouping together similar tests. You can also run just one test suite, useful for preventing yourself getting swamped with errors when debugging failed unit tests. The documentation on many sites on how to run just one suite is wrong as of June 2013 (maybe they recently updated the code). Here is a way I found of doing it:
 
-```c++    
+```c++
 int main()
 {
     UnitTest::TestReporterStdout reporter;

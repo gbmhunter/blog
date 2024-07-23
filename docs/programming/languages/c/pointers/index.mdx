@@ -10,14 +10,12 @@ type: page
 
 Pointers are a core concept in C programming, yet can be a difficult concept to grasp for those who are new to the language.
 
-<Image src={require('/images/2013/03/pointing-hand-icon.png').default} width="300px"></Image>
+<Image src={require('./_assets/pointing-hand-icon.png').default} width="300px"></Image>
 
 And, here is my favourite question and answer regarding pointers:
 
-<blockquote>
 > Q. Why are pointers used in C?
 > A. It's easier to give someone an address to your home than to give a copy of your home to everyone.
-</blockquote>
 
 ## Pointer Arithmetic
 
@@ -25,7 +23,7 @@ The rule to remember with pointer arithmetic is that **a pointer will always inc
 
 This is explained in the following example...
 
-```c    
+```c
 // Both examples assume memory is address byte-wise, i.e. memory 0x00 is byte 0, memory 0x01 is byte 1 e.t.c
 
 // 16-bit EXAMPLE

@@ -10,11 +10,11 @@ type: post
 
 Certain pages around this website where **not displaying source code** correctly. I was using [Crayon Syntax Highlighter](https://wordpress.org/plugins/crayon-syntax-highlighter/) to style the code. Instead of nicely formatted code like this:
 
-<Image src={require('/images/2015/07/sb-child-list-plugin-bug-code-displaying-correctly.png').default} width="508px">Code displaying correctly.</Image>
+<Image src={require('./_assets/sb-child-list-plugin-bug-code-displaying-correctly.png').default} width="508px">Code displaying correctly.</Image>
 
 I was left with Crayon shortcodes in the form
 
-<Image src={require('/images/2015/07/sb-child-list-plugin-bug-code-displaying-incorrectly.png').default} width="379px">Code displaying incorrectly because of a bug with the SB Child List plugin.</Image>
+<Image src={require('./_assets/sb-child-list-plugin-bug-code-displaying-incorrectly.png').default} width="379px">Code displaying incorrectly because of a bug with the SB Child List plugin.</Image>
 
 It seemed that shortcodes with the form `[crayon-55a318c46df22443583779/]` were somehow not being processed (it might be that all shortcodes were not being processed, I did not test any others).
 
