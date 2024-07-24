@@ -14,4 +14,11 @@ sidebar_class_name: hidden
 
 Welcome to the mbedded.ninja blog!
 
-Use the sidebar to navigate to different sections of the technical docs.
+Use the sidebar/menu or buttons below to navigate to different sections of the docs.
+
+import DocCardList from '/src/components/HomepagePageList';
+
+<DocCardList items={[
+  { type: 'category', title: 'Electronics', description: 'Electronics theory, components, and design.', href: '/electronics', linkUnlisted: false },
+]} />
+
