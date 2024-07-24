@@ -1,5 +1,0 @@
-RewriteEngine On
-    <Files *>
-    Deny from all
-    </Files> 
-       

@@ -25,13 +25,13 @@ void* AppendNewArrayElement(void* arrayStart, uint8 currNumElements, uint8 sizeO
 
 ## "elf section '.bss' will not fit in region 'ram'
 
-<Image src={require('/images/programming-c-builderrors/elf-section-bss-will-not-fit-in-region-ram.png').default} width="700px">C build error 'elf section '.bss' will not fit in region 'ram'</Image>
+<Image src={require('./_assets/elf-section-bss-will-not-fit-in-region-ram.png').default} width="700px">C build error 'elf section '.bss' will not fit in region 'ram'</Image>
 
 The .bss section contains all 0-initialized global and static variables. This error normally occurs when you have overly large static variables, or you haven't allocated the stack/heap sizes correctly.
 
 ## "Suggested parenthesis around assignment used as a truth value"
 
-<Image src={require('/images/programming-misc/c-warning-suggesed-parentheses-around-assignment-used-as-truth-value.png').default} width="500px">A warning message from the C compiler.</Image>
+<Image src={require('./_assets/c-warning-suggesed-parentheses-around-assignment-used-as-truth-value.png').default} width="500px">A warning message from the C compiler.</Image>
 
 This is usually because you've forgotten to add the second `=` in the if statement.
 
@@ -51,7 +51,7 @@ if(value1 == value2) {
 
 ## "Subscripted value is neither array nor pointer"
 
-<Image src={require('/images/programming-misc/c-build-error-subscripted-value-is-neither-array-nor-pointer.png').default} width="500px">The C build error 'subscripted value is neither array nor pointer'.</Image>
+<Image src={require('./_assets/c-build-error-subscripted-value-is-neither-array-nor-pointer.png').default} width="500px">The C build error 'subscripted value is neither array nor pointer'.</Image>
 
 Normally occurs when you try and index something like an array which isn't. For example...
 
@@ -69,13 +69,13 @@ value = sin(180);
 
 ## "#pragma once in main file"
 
-<Image src={require('/images/programming-misc/c-build-warning-pragma-once-in-main-file.png').default} width="500px">The C compiler warning '#pragma once in main file' which occurs when the directive '#pragma once' is incorrectly placed in a .c file.</Image>
+<Image src={require('./_assets/c-build-warning-pragma-once-in-main-file.png').default} width="500px">The C compiler warning '#pragma once in main file' which occurs when the directive '#pragma once' is incorrectly placed in a .c file.</Image>
 
 This occurs when you incorrectly write "#pragma once" in a .c file (even though the error would suggest it, it doesn't have to be main.c). "#pragma once" is a header guard which prevents an .h file from being included twice in a project and causing multiple declaration/definition errors. Hence "#pragma once" should be only place in .h files. It is an alternative to the "#ifndef" header guard style (see [this page](/programming/languages/c/header-guards) for more info).
 
 ## "variable or field declared void"
 
-<Image src={require('/images/programming-misc/c-build-error-variable-or-field-declared-void.png').default} width="500px">The C build error 'Variable or field declared void'.</Image>
+<Image src={require('./_assets/c-build-error-variable-or-field-declared-void.png').default} width="500px">The C build error 'Variable or field declared void'.</Image>
 
 This can occur when you declare/define a function in C++ and the compiler doesn't recognise one of the data types used for an input variable. It will precede a `<variable> was not declared in scope` error.
 
@@ -103,7 +103,7 @@ If you get the error macro names must be identifiers it is usually because you h
 
 ## "Not In Formal Parameter List"
 
-<Image src={require('/images/programming-psoc/keil-c51-build-error-not-in-formal-parameter-list.png').default} width="500px">The 'not in formal parameter list' build error is most likely to occur when you have forgotten to add the semi-colon at the end of a function declaration.</Image>
+<Image src={require('./_assets/keil-c51-build-error-not-in-formal-parameter-list.png').default} width="500px">The 'not in formal parameter list' build error is most likely to occur when you have forgotten to add the semi-colon at the end of a function declaration.</Image>
 
 Applies To: Keil C51 Compiler
 

@@ -10,7 +10,7 @@ type: page
 
 The PSoC development environment tends to be mostly bug free. However, there are a few bugs I've noticed...  * The MiniProg pragrammer can have trouble working when other USB devices are plugged in that emulate a COM port.  * Find and replace can freeze when a search is started in a large number of files, even after the search is supposedly 'cancelled'.
 
-<Image src={require('/images/programming-psoc/psoc-creator-bug-find-replace-freezing-with-large-num-files.png').default} width="600px">PsoC Creator freezing when using find-replace on a large number of files.</Image>
+<Image src={require('./_assets/psoc-creator-bug-find-replace-freezing-with-large-num-files.png').default} width="600px">PsoC Creator freezing when using find-replace on a large number of files.</Image>
 
 The PSoC 3 and 5 range of microcontrollers are relatively new (as of writing this, September 2011), and therefore have a few issues here and there that need to be smoothed out. Let it be mentioned here that all-in-all they are already a very capable and powerful microcontroller, with this being more like little annoyances than huge problems. This page does not detail all issues, rather just some of the more major ones.
 
@@ -44,7 +44,7 @@ The PSoC 3 and 5 range of microcontrollers are relatively new (as of writing thi
 
 ## Debug Crash
 
-Sometimes PSoC Creator crashes when running the debugger. If I investigate the exception using Visual Studio, the exception I see is caused by "Invalid characters in path". <Image src={require('/images/programming-psoc/psoc-creator-exe-has-stopped-working.png').default} width="450px">The less than helpful error message when PSoC crashes. The actual cause can be investigated further if you have Visual Studio installed.</Image> <Image src={require('/images/programming-psoc/psoc-creator-debug-crash-illegal-characters-in-path.png').default} width="450px">Exception thrown when trying to enter debug mode in PSoC Creator. This information was discovered with Visual Studio.</Image>
+Sometimes PSoC Creator crashes when running the debugger. If I investigate the exception using Visual Studio, the exception I see is caused by "Invalid characters in path". <Image src={require('./_assets/psoc-creator-exe-has-stopped-working.png').default} width="450px">The less than helpful error message when PSoC crashes. The actual cause can be investigated further if you have Visual Studio installed.</Image> <Image src={require('./_assets/psoc-creator-debug-crash-illegal-characters-in-path.png').default} width="450px">Exception thrown when trying to enter debug mode in PSoC Creator. This information was discovered with Visual Studio.</Image>
 
 ## Programming Crash
 
@@ -52,31 +52,31 @@ I've also had PSoC Creator crash while attempting to program a PSoC, if the PSoC
 
 I have found that you can recover from this error by closing the "Select Debug Target" application from Task Manager, without killing PSoC Creator (and without losing any unsaved work).
 
-<Image src={require('/images/programming-psoc/psoc-debug-target-in-task-manager.png').default} width="600px">Closing the 'Select Debug Target' application from Windows task manager can unfreeze PSoC Creator when it crashes during a programming attempt.</Image>
+<Image src={require('./_assets/psoc-debug-target-in-task-manager.png').default} width="600px">Closing the 'Select Debug Target' application from Windows task manager can unfreeze PSoC Creator when it crashes during a programming attempt.</Image>
 
 ## Flash And SRAM Sizes Incorrect
 
 The Flash and SRAM sizes calculated when you build a project don't take into account the Stack size defined in the Design-wide resources file.
 
-<Image src={require('/images/programming-psoc/psoc-creator-screenshot-dwr-stack-and-heap-size-fields.png').default} width="600px">How to change the stack and heap sizes for PSoc 5 devices in PSoC Creator.</Image>
+<Image src={require('./_assets/psoc-creator-screenshot-dwr-stack-and-heap-size-fields.png').default} width="600px">How to change the stack and heap sizes for PSoc 5 devices in PSoC Creator.</Image>
 
 Even when Creator reports this
 
-<Image src={require('/images/programming-psoc/psoc-creator-screenshot-compile-flash-and-sram-used.png').default} width="600px">PSoC Creator tells you the amount of flash and SRAM used, however, does not take into account the stack.</Image>
+<Image src={require('./_assets/psoc-creator-screenshot-compile-flash-and-sram-used.png').default} width="600px">PSoC Creator tells you the amount of flash and SRAM used, however, does not take into account the stack.</Image>
 
 After adding another single-byte variable to the project, you might receive this error.
 
-<Image src={require('/images/programming-psoc/psoc-creator-region-ram-overflowed.png').default} width="400px">PSoC Creator RAM overflowed error message.</Image>
+<Image src={require('./_assets/psoc-creator-region-ram-overflowed.png').default} width="400px">PSoC Creator RAM overflowed error message.</Image>
 
 ## Invalid Input Module
 
 This applies to PSoC 3 and the Keil tool chain.
 
-<Image src={require('/images/programming-psoc/psoc-3-build-error-invalid-input-module-build-message.png').default} width="400px">The PSoC 3 build error 'Invalid Input Module',</Image>
+<Image src={require('./_assets/psoc-3-build-error-invalid-input-module-build-message.png').default} width="400px">The PSoC 3 build error 'Invalid Input Module',</Image>
 
 This is caused it you select "True" for the "Browse Information" setting under Build Options->Compiler->General.
 
-<Image src={require('/images/programming-psoc/psoc-3-build-error-invalid-input-module-browse-information-setting.png').default} width="450px">How to get rid of the PSoC 3 build error 'Invalid Input Module' (change it to FALSE).</Image>
+<Image src={require('./_assets/psoc-3-build-error-invalid-input-module-browse-information-setting.png').default} width="450px">How to get rid of the PSoC 3 build error 'Invalid Input Module' (change it to FALSE).</Image>
 
 ## Math Functions Won't Work In PSoC 5
 
@@ -86,7 +86,7 @@ If you keep getting "undefined reference errors" at build time when trying to us
 
 When using Find/Replace in PSoC Creator, you will notice that the search resets itself if you edit any text while doing a stepwise search. This becomes really annoying, because every time it resets, you end up iteration through all the previously found strings before searching for any new ones.
 
-<Image src={require('/images/programming-psoc/psoc-creator-find-replace-bug-stepwise-search-resets-on-edit.png').default} width="450px">When using Find/Replace in PSoC Creator, you will notice that the search resets itself if you edit any text while doing a stepwise search.</Image>
+<Image src={require('./_assets/psoc-creator-find-replace-bug-stepwise-search-resets-on-edit.png').default} width="450px">When using Find/Replace in PSoC Creator, you will notice that the search resets itself if you edit any text while doing a stepwise search.</Image>
 
 ## PSoC Creator Doesn't Delete Old Files When Renaming Project
 

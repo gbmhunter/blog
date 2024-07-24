@@ -13,7 +13,7 @@ draft: false
 
 The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
 
-<Image src={require('/images/posts/2018-12-15-site-migration-to-hugo-complete/wordpress-to-hugo.png').default} width="500px"></Image>
+<Image src={require('./_assets/wordpress-to-hugo.png').default} width="500px"></Image>
 
 My site has been powered for the last 7 years by Wordpress (see [Site Info](/site-info) for an entire history of this blog). [Wordpress](https://wordpress.org/) is a great CMS (content management system) which runs on a server (I have been paying for hosting through GoDaddy). However, it was time to move to a static website generator, and I choose [Hugo](https://gohugo.io/). Read on for more details...
 
@@ -36,7 +36,7 @@ Being that Hugo is a single compiled executable, there is no dependency issues y
 
 Hopefully one of the big improvements to the site's SEO will be from the speed increases (see the Speed section below). Below is a graph of the numbers of users per day for the last two months on the Wordpress blog:
 
-<Image src={require('/images/posts/2018-12-15-site-migration-to-hugo-complete/wordpress-users-per-day-last-two-months.png').default} width="800px"></Image>
+<Image src={require('./_assets/wordpress-users-per-day-last-two-months.png').default} width="800px"></Image>
 
 ## Speed
 
@@ -44,11 +44,11 @@ After moving to Hugo, I saw a huge increase in page load time performance. Load 
 
 _Wordpress Page Speed_
 
-<Image src={require('/images/posts/2018-12-15-site-migration-to-hugo-complete/wordpress-homepage-page-speed.png').default} width="500px"></Image>
+<Image src={require('./_assets/wordpress-homepage-page-speed.png').default} width="500px"></Image>
 
 _Hugo Page Speed_
 
-<Image src={require('/images/posts/2018-12-15-site-migration-to-hugo-complete/hugo-homepage-page-speed.png').default} width="500px"></Image>
+<Image src={require('./_assets/hugo-homepage-page-speed.png').default} width="500px"></Image>
 
 ## The Wordpress Export
 
@@ -135,7 +135,7 @@ I'm pleased to say that all page URLs should be the same. Post URLs have changed
 
 I noticed that URLs that were embedded within image captions were getting corrupted. This was occuring about 1s after the initial page load. On inspection of the HTML elements, I noticed that the URL had been broken up into many small `<span>` elements, and that each one of these elements had been assigned the class `vglnk`. After a bit of Googling, I realized that the Disqus plugin (for commenting) was causing this. To fix this, I had to disable *Tracking* and *Affiliate links* in the *Advanced* section of the Disqus config, as shown below:
 
-<Image src={require('/images/posts/2018-12-15-site-migration-to-hugo-complete/disqus-admin-vglnk-url-corruption.png').default} width="500px">The two checkboxes I had to disable in my Disqus settings to prevent Disqus from corrupting URLs on the rest of the page, and adding vglnk classes.</Image>
+<Image src={require('./_assets/disqus-admin-vglnk-url-corruption.png').default} width="500px">The two checkboxes I had to disable in my Disqus settings to prevent Disqus from corrupting URLs on the rest of the page, and adding vglnk classes.</Image>
 
 ## DNS Updates
 
@@ -159,6 +159,6 @@ The following DNS changes were made on my GoDaddy account:
 
 Currently, this site is not mobile compatible (what is called *responsive*). This is what the homepage currently looks like when rendered on a cellphone.
 
-<Image src={require('/images/posts/2018-12-15-site-migration-to-hugo-complete/mbedded-ninja-homepage-mobile-device.png').default} width="400px">This is what the blog.mbedded.ninja homepage currently looks like when rendered on a cellphone. Urgh...</Image>
+<Image src={require('./_assets/mbedded-ninja-homepage-mobile-device.png').default} width="400px">This is what the blog.mbedded.ninja homepage currently looks like when rendered on a cellphone. Urgh...</Image>
 
 Hopefully I can fix this soon!
