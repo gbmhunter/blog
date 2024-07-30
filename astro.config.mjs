@@ -204,10 +204,20 @@ export default defineConfig({
       },
       components: {
         Head: "./src/components/starlight/Head.astro",
+        SkipLink: './src/components/starlight/SkipLink.astro', // Google Analytics is added in here
       },  
       customCss: [
         // Relative path to your custom CSS file
         "./src/styles/custom.css",
+      ],
+      // Add a script for Google Tag Manager.
+      head: [
+        {
+          tag: 'script',
+          // Content truncated for brevity.
+          content:
+            "console.log('hello!');",
+        },
       ],
       plugins: [starlightBlog({
         authors: {

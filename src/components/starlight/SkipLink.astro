@@ -1,0 +1,21 @@
+---
+import type { Props } from '@astrojs/starlight/props'
+import Default from '@astrojs/starlight/components/SkipLink.astro'
+---
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WDEVQLPS2"></script>
+<script>
+
+if (import.meta.env.MODE === 'development') {
+  console.log('Google Analytics is disabled in development mode');
+} else {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0WDEVQLPS2');
+}
+</script>
+<!-- Render the default <SkipLink/> component. -->
+<Default {...Astro.props}><slot /></Default>
