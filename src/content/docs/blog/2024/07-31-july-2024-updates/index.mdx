@@ -18,8 +18,16 @@ Migrated this site from Hugo to Docusaurus. The main reason for this was to take
 
 The Docusuaurus theme should have much better responsive design than my self-writted Hugo theme.
 
-{/* import quick_port_settings_screenshot from './_assets/quick-port-settings-screenshot.png'
+import img_docusaurus_migration_before from './_assets/docusaurus-migration-before.webp'
 
-<Image src={quick_port_settings_screenshot} width="900px"></Image> */}
+<Image src={img_docusaurus_migration_before} width="900px">A screenshot of this website before migrating to Docusaurus.</Image>
+
+import img_docusaurus_example_page_screenshot from './_assets/docusaurus-example-page-screenshot.webp'
+
+<Image src={img_docusaurus_example_page_screenshot} width="900px">A screenshot of this website after migrating to Docusaurus.</Image>
+
+Unfortunately, I encountered some serious issues with Docusaurus late in the migration process. The biggest issues were build time and memory usage. The build process was taking over 10 minutes and using approx. 5-7GB of RAM when running on my Windows laptop. The build was failing in the Netlify pipeline due to it exceeding the pipeline limits (8GB is promised, so presumably the total system usage was exceeding this).
+
+So I decided to migrate to astro.js instead, leveraging the Starlight theme (which is designed for documentation). Luckily, astro.js supports MDX much in the same way Docusaurus does, so not as much per-page porting was required. I had to add some imports to each .mdx file (I couldn't work out how to add global imports to all .mdx files), and I had to replace my inline `require()` statements in the `<Image>` component's `src` with a seperate `import` statement above it. 
 
 Added new info on the [MAHD (Modified Agile for Hardware Development) project management methodology](/project-management/mahd/).

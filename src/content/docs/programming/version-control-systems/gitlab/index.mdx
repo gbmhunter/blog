@@ -32,3 +32,17 @@ Then you be able to push a built image:
 ```bash
 docker push "$CI_REGISTRY_IMAGE"
 ```
+
+You can download images from the GitLab container registery to your local machine by first logging in:
+
+```bash
+docker login registry.gitlab.com
+```
+
+You will be prompted to enter your username and password. If you have 2FA enabled, you will have to substitute your password with a personal access token.
+
+You can then download and run an image with:
+
+```bash
+docker run -it registry.gitlab.com/<org_name>/<project_path> bash
+```
