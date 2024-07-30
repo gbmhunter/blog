@@ -1,0 +1,140 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2020-07-30
+description: Synonyms, variants, dimensions, recommended footprints, thermal resistance and more info about the SON (DFN) component package.
+draft: false
+last_update:
+  date: 2024-04-15
+  author: Geoffrey Hunter
+tags: [component packages, PCB design, DFN, SON, QFN]
+title: DFN Component Package
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+import son_6_component_package_3d_model from './_assets/son-6-component-package-3d-model.jpg'
+
+<Image src={son_6_component_package_3d_model} width="150px">The 3D model of the DFN-6 component package.</Image>
+
+The `DFN` (_Dual Flat No-lead_) component package is also commonly known as the `SON` package. TI also calls this the _Plastic Small Outline No-lead_ package.
+
+The `DFN` package is very closely related to the `QFN` package. **From what I can tell, the main difference between the DFN and QFN package is that the `DFN` package generally only has pins running down two of it's sides, while a `QFN` package has pins on all four sides.** However, this is not a hard-and-fast rule, for example the `V-DFN3020-13 (Type A)` package by Diodes Inc. has pins on three of four sides[^bib-diodes-inc-ap63356]. The other big difference I have seen is that QFN packages seem to more standardized with consistent pin/package shapes and dimensions, whilst packages labelled "DFN" can have all sorts of "weird" pad/package geometries (see the below image).
+
+import ap63356_dfn_pin_assignments from './_assets/ap63356-dfn-pin-assignments.png'
+
+<Image src={ap63356_dfn_pin_assignments} width="300px">Outline of the V-DFN3020-13 package by Diodes Inc[^bib-diodes-inc-ap63356]. Notice the very un-standard pin geometries, which you'll see in some DFN packages.</Image>
+
+JEDEC standard `JESD75-5` specifies how generic logic circuits will be connected to certain pins of the DFN package.
+
+Below is an "odd shaped" SON package used by Numonyx flash chips that goes under the name VDFPN8. Notice the half-round appearance of the pins.
+
+import component_package_vdfpn8_mlp8_outline_dimensions from './_assets/component-package-vdfpn8-mlp8-outline-dimensions.png'
+
+<Image src={component_package_vdfpn8_mlp8_outline_dimensions} width="500px">Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf.</Image>
+
+[Texas Instruments AN-1187: Leadless Leadframe Package (LLP)](https://www.ti.com/lit/an/snoa401r/snoa401r.pdf) is a great PCB designers reference document when using DFN or QFN packages (the document calls them LLP, but it is the same thing as DFN/QFN).
+
+## Synonyms
+
+* DFN (Linear Technology, Micron Technology Inc, this synonym is more common than the JEDEC named SON!)
+* DRC/S-PVSON-N9 (TI, DFN-10_1EP_3x3mm_P0.5mm_EP1.05x2.5mm)[^bib-ti-drc-s-pvson-n9-package-outline]
+* DRP/S-PVSON-N6 (TI)
+* DSG/S-PWSON-N8 (TI)
+* LLP (Leadless Lead frame Package). The terminology used by National Semiconductor for their SON/DFN/QFN packages until they were acquired by Texas Instruments[^bib-ti-qfn-son-faqs].
+* MLP (micro leadframe package or moulded leaded package). This also can refer to variants with pins on all four sides of the package, which is also called a QFN package. This name is used by Linear Technologies, Carsem.
+* MLPD (MLP dual).
+* MLPM (MLP micro). This name is used by Carsem.
+* MLPQ (MLP quad).
+* PE-SON-8 (SON-8, Ricoh)
+* SON (JEDEC)
+* SW-PWSON-N8 (SON-8, TI)
+* VDFPN (Numonyx, Micron Technology)
+* VFDFN (DigiKey, e.g. part TPS54260DRCT).
+* VSON (Texas Instruments)
+* WDFN-6 (SON-6, On Semiconductor/Fairchild Semiconductor)
+
+## Variants
+
+The SON package can have a varying number of pins. There are also VSON and WSON packages which are exactly the same as the SON package except for a different height. This package can also optionally include an exposed pad.
+
+## Similar To
+
+* QFN (note that some may call SON a variant of QFN)
+* SOD-882 (two pad package used for diodes)
+* SOT-883 (three pad package used for transistors)
+
+## Thermal Pad
+
+The SON package has a exposed thermal pad on the underside, similar to a QFN package.
+
+For a comparable TQFP package with the same pin count, the SON package (with an exposed pad) can usually handle more than twice the power dissipation.
+
+## Solderability
+
+Reflow soldering is recommended. Hard to solder with a soldering iron due to underside thermal pad (some don’t have a thermal pad, and in that case, your chances are better). The tiny pitch is not so much of an issue as unlike the TQFP package, solder bridges are really easy to remove. You can solder the exposed pad in some cases by drilling a hole in the centre of the pad and soldering from the underside.
+
+## DFN-6, 3x3mm
+
+The DFN-6 3x3mm package is used for components such as MOSFETs.
+
+<Image src={son_6_component_package_3d_model} width="300px">The 3D model of the DFN-6 component package.</Image>
+
+import son_6_component_package_with_two_thermal_pads from './_assets/son-6-component-package-with-two-thermal-pads.jpg'
+
+<Image src={son_6_component_package_with_two_thermal_pads} width="300px">The 3D model of the DFN-6 component package which has two thermal pads instead of one.</Image>
+
+## DFN-8, 3x3mm
+
+The DFN-8 3x3mm package is used for components such as linear regulators[^bib-st-ldk715-ds].
+
+import son_8_component_package_3d_model from './_assets/son-8-component-package-3d-model.jpg'
+
+<Image src={son_8_component_package_3d_model} width="400px">The 3D model of the DFN-8 component package.</Image>
+
+import son_8_component_package_dimensions from './_assets/son-8-component-package-dimensions.png'
+
+<Image src={son_8_component_package_dimensions} width="400px">The package dimensions of the DFN-8 component package.</Image>
+
+import son_8_component_package_exposed_thermal_pad from './_assets/son-8-component-package-exposed-thermal-pad.png'
+
+<Image src={son_8_component_package_exposed_thermal_pad} width="400px">The package dimensions of the DFN-8 component package with exposed thermal pad.</Image>
+
+import son_8_component_package_land_pattern_and_thermal_properties from './_assets/son-8-component-package-land-pattern-and-thermal-properties.png'
+
+<Image src={son_8_component_package_land_pattern_and_thermal_properties} width="400px">The recommended land pattern and thermal properties of the DFN-8 component package.</Image>
+
+import son_8_component_package_ti_land_pattern from './_assets/son-8-component-package-ti-land-pattern.png'
+
+<Image src={son_8_component_package_ti_land_pattern} width="400px">The recommended land pattern (from TI) of the DFN-8 component package.</Image>
+
+## WSON And VSON Variants
+
+The WSON and VSON variants of the SON package are identical to the SON package except for varying heights.
+
+The WSON variant has a height of 0.80mm (max.)
+
+import wson_component_package_height from './_assets/wson-component-package-height.png'
+
+<Image src={wson_component_package_height} width="450px">An outline of the WSON component package showing it's height.</Image>
+
+The VSON variant has a height of 1.00mm (max.)
+
+import vson_component_package_height from './_assets/vson-component-package-height.png'
+
+<Image src={vson_component_package_height} width="470px">An outline of the VSON component package showing it's height.</Image>
+
+## Common Uses
+
+* MOSFETs
+* Embedded SIM cards
+* Solid-state load switches
+* Flash memory ICs
+
+[^bib-ti-qfn-son-faqs]:  Texas Instruments. _QFN/SON package FAQs_. Retrieved 2020-07-30, from https://www.ti.com/support-quality/faqs/qfn-son-faqs.html.
+[^bib-diodes-inc-ap63356]:  Diodes Incorporated. _3.8V to 32V input, 3.5A low Iq Synchronous Buck with Enhanced EMI Reduction_. Retrieved 2021-12-14, from https://www.diodes.com/assets/Datasheets/AP63356-AP63357.pdf.
+[^bib-st-ldk715-ds]:  STMicroelectronics (2020, Apr). _LDK715 (datasheet)_. Retrieved 2021-12-14, from https://www.st.com/resource/en/datasheet/ldk715.pdf.
+[^bib-ti-drc-s-pvson-n9-package-outline]: Texas Instruments (2011, Sep). _DRC (S-PVSON-N9): Mechanical Data_. Retrieved 2022-10-06, from https://www.ti.com/lit/ml/mpss035d/mpss035d.pdf.

@@ -1,0 +1,85 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-01-21
+description: "Synonyms, variants, dimensions, 3D models, land patterns and more info on the WSON component package."
+draft: false
+last_update:
+  date: 2022-04-05
+  author: Geoffrey Hunter
+tags: [ "component packages", "PCB design", "WSON", "SOIC", "flash memory", "DQD", "DMB", "PWSON", "SOT-23" ]
+title: "WSON Component Package"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+The `WSON` (Plastic Small-outline No-lead Package) is a SMD package. It typically has 8 leads. The pitch of the `WSON` varies. Many are 1.27mm (just like SOIC, for example the Cypress WSON 8L package), the TI DMB package as a pitch of 1.0mm, and the TI DQD package as a pitch of 0.4mm.
+
+It has a exposed thermal pad on the underside. However, it is not normally electrically connected to anything, and is optionally soldered to the PCB. It is recommended to be soldered when the PCB has a large amount of flex, else left unconnected.
+
+Reflow soldering is the most suitable for this package. It is hard to solder with a soldering iron due to underside thermal pad.
+
+import pg_wson_8_1_3d_render_infineon from './_assets/pg-wson-8-1-3d-render-infineon.png'
+
+<Image src={pg_wson_8_1_3d_render_infineon} width="200px">A 3D render of the WSON-8 (PG-WSON-8-1) component package from Infineon[^bib-infineon-pg-wson-8-1].</Image>
+
+Synonyms:
+
+* `DMB`/`PWSON` (Texas Instruments)[^bib-ti-hdc1080-ds]
+* `DQD` (Texas Instruments)
+
+Common Uses:
+
+* Flash memory ICs
+* Secondary-side bias regulators for DC-DC converters
+
+3D Models:
+
+* [WSON-8 6x8mm](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=416428)
+* [WSON-10 3x3mm](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=626725)
+
+<Aside type="caution">
+Texas Instruments has a WSON package which does not have a pitch of 1.27mm!
+</Aside>
+
+Below is an "odd shaped" SON package used by Numonyx flash chips that goes under the name VDFPN8. Notice the half-round appearance of the pins.
+
+import component_package_vdfpn8_mlp8_outline_dimensions from './_assets/component-package-vdfpn8-mlp8-outline-dimensions.png'
+
+<Image src={component_package_vdfpn8_mlp8_outline_dimensions} width="500px">Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC. Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf.</Image>
+
+Atmel produces a document titled [PCB Design Considerations when Changing from 6-pin SOT23 to 6-pin WSON Atmel Products](http://ww1.microchip.com/downloads/en/AppNotes/QAN0027_6-Pin-SOT23-to-6-Pin-WSON_1_05.pdf). It is a good read if you are migrating from larger SOT-23 packages to the smaller WSON package.
+
+## The DMB/PWSON Package (Texas Instruments)
+
+The `DMB` package (also called `PWSON`) is a variant of the `WSON` package used by Texas Instruments[^bib-ti-hdc1080-ds]. It has a pitch of 1mm. The [HDC1080](http://www.ti.com/lit/ds/symlink/hdc1080.pdf) datasheet is an example of a TI component which comes in the `DMB` package.
+
+## R-PWSON/DQD Package (Texas Instruments)
+
+The `R-PWSON`/`DQD` package is a variant of the `WSON` package used by Texas Instruments. The [TPD8F003 datasheet](http://www.ti.com/lit/ds/symlink/tpd8f003.pdf) is an example of a TI component which comes in the `DQD` package. There seems to be a number of different packages using the `DQD` code, these include:
+
+* `R-PWSON-N12` (12 leads)[^bib-ti-tpdxf003-ds]
+* `R-PWSON-N16` (16 leads)[^bib-ti-tpdxf003-ds]
+
+import dqd_texas_instruments_tpd8f003_wson_component_package from './_assets/dqd-texas-instruments-tpd8f003-wson-component-package.png'
+
+<Image src={dqd_texas_instruments_tpd8f003_wson_component_package} width="500px">The pin diagram for three different TPD8F003 family components which come in the WSON style package[^bib-ti-tpdxf003-ds].</Image>
+
+3D models exist for some of the DQD packages on 3DContentCentral, for example:
+
+* [WSON-8 (DQD)](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=1025764)
+* [WSON-12 (DQD)](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=1025763)
+* [WSON-16 (DQD)](https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=1025762)
+
+## Similar To
+
+* [DFN](/pcb-design/component-packages/dfn-component-package/)
+* [SOIC](/pcb-design/component-packages/soic-component-package/)
+* [USON](/pcb-design/component-packages/uson-component-package/)
+
+[^bib-infineon-pg-wson-8-1]: Infineon. _Packages > PG-WSON >PG-WSON-8-1_. Retrieved 2022-04-05, from https://www.infineon.com/cms/en/product/packages/PG-WSON/PG-WSON-8-1/.
+[^bib-ti-hdc1080-ds]: Texas Instruments (2016, Jan). _HDC1080: Low Power, High Accuracy Digital Humidity Sensor with Temperature Sensor (datasheet)_. Retrieved 2022-04-05, from https://www.ti.com/lit/ds/symlink/hdc1080.pdf.
+[^bib-ti-tpdxf003-ds]: Texas Instruments (2014, Aug). _TPDxF003: Four-, Six-, and Eight-Channel EMI Filters With Integrated ESD Protection (datasheet)_. Retrieved 2022-04-05, from https://www.ti.com/lit/ds/symlink/tpd8f003.pdf.

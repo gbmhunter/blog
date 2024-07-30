@@ -1,0 +1,61 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-04-07
+description: Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the TSOC component package.
+draft: false
+last_update:
+  date: 2024-04-23
+  author: Geoffrey Hunter
+tags: [component packages, PCB design, transistor, TSOC, thin small-outline C-Lead, TSOC-6, D6-1, D6N-1, Dallas, Maxim]
+title: TSOC Component Package
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+TSOC (Thin Small-Outline C-Lead) is a SMD component package.
+
+As far as I can tell, this package only comes in the 6-pin version (TSOC-6), and is only used by Dallas/Maxim (since 2001, Dallas has been a subsidiary of Maxim). While Maxim Integrated lists four different variants (see the `Title` section of the recommended land patterns below), there seems to be no physical difference between the D6+1 and D6-1 variants, and no difference between the D6N+1 and D6N-1 variants. The difference between the variants with and without `N` in their name are the package width and the lead length (and hence two slightly different land patterns).
+
+Variants:
+
+* D6+1/D6-1 (Variant A)
+* D6N+1/D6N-1 (Variant B)
+
+See [https://www.maximintegrated.com/en/design/packaging/package-information.html](https://www.maximintegrated.com/en/design/packaging/package-information.html) for the official dimensions and land patterns from Maxim Integrated.
+
+## TSOC-6
+
+import tsoc_6_component_package_photo from './_assets/tsoc-6-component-package-photo.jpg'
+
+<Image src={tsoc_6_component_package_photo} width="360px">A photo of the TSOC-6 component package. Image from maximintegrated.com.</Image>
+
+### Synonyms
+
+* D6: Maxim
+
+### Dimensions
+
+All Variants:
+
+import tsoc_6_component_package_dimensions from './_assets/tsoc-6-component-package-dimensions.png'
+
+<Image src={tsoc_6_component_package_dimensions} width="900px">A photo of the TSOC-6 component package. Image from maximintegrated.com.</Image>
+
+* 3.94x4.29x1.40mm, LA: 17.6mm2 (D6+1/D6-1)
+* 3.94x4.62x1.40mm, LA: 18.9mm2 (D6N+1/D6N-1)
+
+### Footprint
+
+D6+1/D6-1 Variants (Variant A):
+
+import component_package_tsoc_6_d6n_1_recommended_land_pattern from './_assets/component-package-tsoc-6-d6n-1-recommended-land-pattern.png'
+
+<Image src={component_package_tsoc_6_d6n_1_recommended_land_pattern} width="900px">The recommended land pattern for the TSOC-6 D6+1/D6-1 component package. Image from maximintegrated.com.</Image>
+
+D6N+1/D6N-1 Variants (Variant B):
+
+<Image src={component_package_tsoc_6_d6n_1_recommended_land_pattern} width="900px">The recommended land pattern for the TSOC-6 D6N+1/D6N-1 component package. Image from maximintegrated.com.</Image>

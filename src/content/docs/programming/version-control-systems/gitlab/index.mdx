@@ -1,0 +1,34 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Version Control Systems" ]
+date: 2014-02-08
+draft: false
+last_update:
+  date: 2019-08-29
+  author: Geoffrey Hunter
+tags: []
+title: "GitLab"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## Container Registries
+
+Each repo can have it's own container registry. You can use this to store Docker images relating to the project.
+
+`CI_REGISTRY_IMAGE` is provided and is the base path for the container registry.
+
+You can log into the repo's container registry inside a pipeline with the command:
+
+```bash
+echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+```
+
+Then you be able to push a built image:
+
+```bash
+docker push "$CI_REGISTRY_IMAGE"
+```

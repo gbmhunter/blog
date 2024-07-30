@@ -73,26 +73,34 @@ class PowerEdit:
 
         # Read in the file
         with open(file_path, 'r', encoding='utf-8') as file :
-            filedata = file.read()
+            filedata_in = file.read()
 
         if multiline:
             regex_flags = re.MULTILINE|re.DOTALL
         else:
             regex_flags = 0
 
+        filedata_out = ''
+
         # Replace the target string
         if isinstance(replace, str):
             regex = re.compile(regex_str, regex_flags)
-            filedata = re.sub(regex, replace, filedata)
+            filedata_out = re.sub(regex, replace, filedata_in)
         elif callable(replace):
             regex = re.compile(regex_str, regex_flags)
 
-            while(True):
-                match = regex.search(filedata)
+            # Use finditer so we get non-overlapping matches
+            matches = regex.finditer(filedata_in)
 
-                # Exit out of find/replace loop if we don't find anymore matches
-                if match is None:
-                    break
+            last_match_end = 0
+
+            for match in matches:
+                # match = regex.search(filedata, curr_pos)
+                # print('match =', match.group())
+
+                # # Exit out of find/replace loop if we don't find anymore matches
+                # if match is None:
+                #     break
 
                 group = match.group()
                 sig = signature(replace)
@@ -107,7 +115,12 @@ class PowerEdit:
 
                 if not isinstance(replacement_text, str):
                     raise ValueError('Returned object from replace function must be a string.')
-                filedata = filedata[:match.start()] + replacement_text + filedata[match.end():]
+                filedata_out += filedata_in[last_match_end:match.start()] + replacement_text
+                last_match_end = match.end()
+
+            # Copy the rest of the file after last match
+            filedata_out += filedata_in[last_match_end:]
+
         else:
             raise RuntimeError(f'replace must be either a string or a callable object. replace = {replace}.')
 
@@ -115,12 +128,14 @@ class PowerEdit:
             pass
             # print(f'find_replace() finished. replaced filedata = {filedata}')
 
+
+
         # Write the file out again
         if not self.sim_run:
             with open(file_path, 'w', encoding=self._encoding) as file:
-                file.write(filedata)
+                file.write(filedata_out)
 
-        return filedata
+        return filedata_in
 
     def find_insert(self, file_path: str, find_str: str, insert_str: str) -> None:
         """

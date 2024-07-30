@@ -1,0 +1,36 @@
+---
+authors: [gbmhunter]
+categories: [ "Posts", "Updates" ]
+date: 2020-02-29
+description: "Blog updates during February 2020."
+draft: false
+last_update:
+  date: 2020-02-29
+  author: Geoffrey Hunter
+tags: []
+title: "February 2020 Updates"
+type: "post"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+Added the following information to the [AWS S3 page](/programming/cloud/aws/s3):
+
+    * `aws s3 sync` and the `--exact-timestamps` parameter.
+    * AWS S3's data consistency model (including _read after write_ and _eventual_ consistency).
+
+import img_aws_s3_logo from './_assets/aws-s3-logo.png'
+
+<Image src={img_aws_s3_logo} width="250px"></Image>
+
+Added a new tutorial on [The Sigmoid Function](/programming/artificial-intelligence/the-sigmoid-function), including the logistic function.
+
+import graph_logistic_function from './_assets/graph-logistic-function.png'
+
+<Image src={graph_logistic_function} width="300px"></Image>
+
+Added a new tutorial on logistic regression (the logistic function being one type of Sigmoid function), called [Understanding Logistic Regression](/programming/artificial-intelligence/understanding-logistic-regression)
+
+import img_logistic_function_changing_b1 from './_assets/logistic-function-changing-b1.gif'
+
+<Image src={img_logistic_function_changing_b1} width="500px"></Image>

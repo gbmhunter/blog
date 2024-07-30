@@ -1,0 +1,106 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2021-12-22
+draft: false
+lastmood: 2021-12-22
+tags: [ ]
+title: "A Sensible Part Numbering Scheme For Electronic Components"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+When designing circuits, you have to keep track of all the different components used in the design. A a minimum you usually keep track of things like the manufacturer, manufacturer part number, supplier, supplier part number and quantity. This information is output in tabular form inside a BOM (bill of materials) by your PCB CAD software. The manufacturer part number (combined with the manufacturer, as it's not like they chat with each other when coming up with a part number and pick something that is globally unique) is usually used as a unique identifier.
+
+The problem with using the manufacturer/manufacturer part number as the unique identifier on a BOM is that the part may have "alternatives". For example, you may discover that stock of your favourite 555 timer used in your design has run out. Yet you can find another manufacturer which produces a pin and footprint compatible alternative that works as a drop-in replacement. One way to solve this is to create your own part numbers if you work for a company, these are called "internal" part numbers). Against your internal part number, there may be many approved alternatives for a specific design. This internal part number offers a consistent way of tracking a logical component across many versions of a BOM.
+
+This page presents a sensible way of numbering electronic components.
+
+Rules:
+
+* **A section of a part number will always have the same number of characters, no matter what the value is.** This means that part numbers within a component family will always have the same length, so they are easy to scan thrrough in a column, and easy to parse by a computer.
+* **All part numbers will have a sequential number at the end.** The proceeding sections of the part number will not likely guarantee uniqueness within a part family. For example, you might have two 10kΩ, 1%, 0603 resistors, the difference being one is thin-film and the other is thick-film. Unless "thick" or "thin" film is a section of the part number, the part numbers will be identical. Thus, the sequential number can be used to distinguish between the two.
+
+## Basic Passives
+
+### Resistors
+
+Resistors use the following part number format:
+
+```text
+R0603-12K0-01P-01
+||    |    |   |
+||    |    |   Sequential number
+||    |    |
+||    |    Tolerance
+||    |      05P: 5%
+||    |      01P: 1%
+||    |      0P1: 0.1%
+||    |
+||    Resistance
+||      M005: 5mΩ (note: M at start for milli-ohms)
+||      01K2: 1.2kΩ
+||      010K: 10kΩ
+||      02M2: 2.2MΩ
+||
+|Package (imperial)
+|  e.g. 0603, 0805
+|
+Resistor
+```
+
+WARNING: Resistors frequently come in milli-ohm and mega-ohms ranges, both of which start with m. We don't have the luxury of using lower-case m for milli and upper-case M for mega, as we want to keep the entire part number in upper case. Instead, use M as usual for mega-ohm resistors, and for milli-ohm resistors always add the M at the start of this section of the part number. This means we can't represent fractions of a milli-ohm, but that should be fine for 99.9% of use cases!
+
+### Capacitors
+
+Capacitors use the following part number format:
+
+```text
+CC0603-100N-050V-01
+|||    |    |    |
+|||    |    |    Sequential number
+|||    |    Voltage
+|||    Capacitance
+|||      02P2: 2.2pF
+|||      100N: 100nF
+|||      010U: 10uF
+|||      002F: 2F (e.g. supercap)
+||Package (imperial)
+||  e.g. 0603, 0805
+|Type
+|  C: Ceramic
+|  E: Electrolytic
+|  T: Tantalum
+Capacitor
+```
+
+Some examples:
+
+```text
+CC0603-100N-050V-01: Cap, Ceramic, 0603, 100nF, 50F
+CT1206-010U-016V-01: Cap, Tantalum, 1206, 10uF, 16V
+```
+
+###  Inductors
+
+Inductors usually have two very similar current parameters, _rated current_ and _saturation current_. Unfortunately they do not come is the same standarized SMD packages that resistors and capacitors do, so we omit a package section from the part number. So we have the following part number format:
+
+```text
+L120U-002A-01
+||    |    |
+||    |    Sequential number
+||    Rated current
+||      120M: 120mA
+||      002A: 2A
+|Inductance
+|  120N: 120nF
+Inductor (L being commonly used as the designator prefix for an inductor)
+```
+
+Some examples:
+
+```text
+L
+```

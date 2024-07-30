@@ -1,0 +1,454 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2013-12-03
+draft: false
+title: Ultrasonic Sensors
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+Ultrasound is sound waves that are at a frequency **above** the audible range. This is usually frequencies above 18kHz. Also note that **infrasound** are sound waves with a frequency of 16Hz or below, which is below the audible range.
+
+## Terminology
+
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+<tbody>
+<tr>
+<td>Acoustic Impedance</td>
+<td>The acoustic impedance of a material is a measure of it's opposition to displacement by ultrasonic waves. The symbol for acoustic impedance is $Z$.</td>
+</tr>
+<tr>
+<td>Apodization</td>
+<td>When referring to ultrasound, <i>apodization</i> is usually referring to the technique of shaping the wave so that the intensity of the side lobes is reduced. Used in medical ultrasound machines.</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>The <i>bandwidth</i> of a ultrasonic transducer is the frequency range at which the transducer can operate within.</td>
+</tr>
+<tr>
+<td>Bulk Waves</td>
+<td><i>Bulk waves</i> are ultrasonic waves that do not depend on the surface or boundary of the medium it is travelling through. Two types of bulks waves can exist in an isotropic medium, longitudinal and shear waves.</td>
+</tr>
+<tr>
+<td>Capacitance</td>
+<td>When talking about piezo-electric transducers, this refers to the capacitance of the transducer, which is typically around 180pF-2.2nF.</td>
+</tr>
+<tr>
+<td>CMUT</td>
+<td>CMUT (or cMUT) is an initialism for <i>Capacitive Micromachined Ultrasonic Transducers</i>. They emit ultrasonic waves from a cavity in silicon as their capacitance changes. They work easily at high frequencies due to their small size.</td>
+</tr>
+<tr>
+<td>Collapse Voltage</td>
+<td>Applies to CMUT transducers only. Also see <i>Snapback Voltage</i>.</td>
+</tr>
+<tr>
+<td>Couplant</td>
+<td>A medium which is used to transfer ultrasonic energy from the transducer to the medium under investigation. Common couplants are water, oil or glycerine.</td>
+</tr>
+<tr >
+<td>Directivity</td>
+<td>A measure of the interaction angle of a ultrasonic sensor with the medium under investigation. Normally defined as the angle range at which the signal is no less the -3dB than the peak. Normally 5-15°.</td>
+</tr>
+<tr >
+<td>Fixed Capacitance</td>
+<td>Applies to <i>CMUT</i> transducers only.</td>
+</tr>
+<tr >
+<td>Free Capacitance</td>
+<td>Applies to <i>CMUT</i> transducers only.</td>
+</tr>
+<tr >
+<td>Heterodyne Laser Interferometer</td>
+<td>A laser-based tool that can be used to detect ultrasonic waves.</td>
+</tr>
+<tr >
+<td>Input Voltage</td>
+<td>When talking about piezo-electric ultrasonic sensors, this is normally the maximum peak-to-peak voltage that can be applied across it's two pins. Normally between 30-200Vp2p.</td>
+</tr>
+<tr >
+<td>Kundt's Tube</td>
+<td>Kundt's tube is a long glass tube held in the horizontal direction with lycopodium powder sprinkled inside it. When ultrasonic waves pass through the tube the power forms heaps at the nodal points and is blown off the antinodal points. This works as long as the wavelength of the ultrasound is not too small.</td>
+</tr>
+<tr >
+<td>LNA</td>
+<td>LNA is an initialism for <i>low noise amplifier</i>. LNAs are used on the front-end of ultra-sonic transducer circuits.</td>
+</tr>
+<tr >
+<td>Longitudinal Waves</td>
+<td><i>Longitudinal waves</i> (also called distortional, compression or primary waves) are waves whose particles motion is parallel to the direction of the wave propagation. This is opposed to shear waves.</td>
+</tr>
+<tr >
+<td>Phased Array</td>
+<td>An array of ultrasonic transducers that is designed to produce a linear wavefront, as opposed to a singular transducer which produces a circular wavefront.</td>
+</tr>
+<tr >
+<td>PRF</td>
+<td>PRF is an initialism for <i>pulse repetition frequency</i>. It is the number of ultrasound pulses per second.</td>
+</tr>
+<tr >
+<td>Ringing</td>
+<td>The is the self-oscillation of a piezo-electric sensor after it has just been driven. The ringing limits the minimum distance that can be measured.</td>
+</tr>
+<tr >
+<td>Sensitivity</td>
+<td>Used to describe an ultrasonic transducers electrical response to received ultrasonic energy, usually measure in $dB$. Common values are around $-75dB$.</td>
+</tr>
+<tr >
+<td>Shear Waves</td>
+<td>Shear waves (also called distortional, transverse or secondary waves) are waves whose particle motion is perpendicular to the direction of the wave propagation. This is opposed to longitudinal waves.</td>
+</tr>
+<tr >
+<td>Snapback Voltage</td>
+<td>Applies to CMUT transducers only. Also see <i>Collapse Voltage</i>.</td>
+</tr>
+<tr >
+<td>Sonotrode</td>
+<td>A sonotrode is a tool used in ultrasonic welding to apply the vibration energy to the material to be welded.</td>
+</tr>
+<tr >
+<td>SPL</td>
+<td>SPL is an initialism for <i>Sound Pressure Level</i>. A common value for an ultrasonic transducer is $110dB$.</td>
+</tr>
+<tr >
+<td>Temporal Resolution</td>
+<td>A ability to accurately locate events at a particular instant in time. Related to <i>Spatial Resolution</i>.</td>
+</tr>
+<tr >
+<td>TGA</td>
+<td>TGA is an initialism for <i>Time Gain Amplifier</i>. They are used on the front-end of ultrasonic transducer circuits to compensate for the fact that returning ultrasonic signals are attenuated the further they travel.</td>
+</tr>
+<tr >
+<td>TOF</td>
+<td>TOF is an initialism for <i>Time Of Flight</i>. It is when the time is measured between emitted and received waveforms, and distance information is determined from this, when knowing the speed and which the wave travels through the medium.</td>
+</tr>
+<tr >
+<td>TOFD</td>
+<td>TOFD is an initialism for <i>Time Of Flight Diffraction</i>. It is used for the non-destructive testing of weld defects.</td>
+</tr>
+</tbody>
+</table>
+
+## Basic Principle
+
+Ultrasonic sensors work by emitting high-frequency sound waves (18-50MHz), and analysing the reflected waves  (including time of flight). Ultrasonic waves are longitudinal sound waves and require an elastic medium to travel through. They are normally made with a piezo-electric material that vibrates when a AC voltage is applied to it. Because piezo-electric materials convert energy in both ways (they also convert mechanical vibration into electricity), the same sensor can be used as the receiver, while some setups use separate transmitters and receivers. Smooth surfaces are hard to detect on inclined levels (e.g. only up to 10°). Rough/jagged surfaces are much easier to detect on inclined angles. The higher the ultrasound frequency, the better it will reflect of smaller objects (such as defects in materials).
+
+## Comparison Against Other Sensors
+
+Ultrasound sensors are not effected by the translucence of the target object. For this reason they are better then photo-sensitive sensors are detecting transparent objects, or objects where there is high glare. They are also relatively cheap compared to other forms of distance sensors. Piezo-electric ultrasonic transducers are larger than most other photo-sensitive sensors.
+
+## Variations
+
+Open and closed types. The following image shows a open type piezo-electric ultrasonic transducer commonly used by electronic hobbyists, robiticists, and the maker community, called the HC-SR04. These modules integrate easily with the Arduino microcontroller platform.
+
+import arduino_ultrasound_module from './_assets/arduino-ultrasound-module.jpg'
+
+<Image src={arduino_ultrasound_module} width="1200px">An Arduino compatible ultrasound module.</Image>
+
+High-power types have a power rating between 40-150W. These types of ultrasonic transmitters are used for ultrasonic cleaning.
+
+## Uses
+
+* Ultrasound modules for tank level measurement. They normally can measure a range of liquids including water, black water, oil, petrol, diesel without any adjustment (liquid type agnostic). Range is typically from 100mm to 4m. Some have focusers made of materials such as glass-reinforced polypropylene to produce narrow beams.
+* Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
+* High-end wind sensors (anemometers) use ultrasound to measure the wind speed and direction (or more concisely, it's velocity).
+
+import n_3d_sonic_anemometer from './_assets/3d-sonic-anemometer.jpg'
+
+<Image src={n_3d_sonic_anemometer} width="149px">A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.</Image>
+    
+* Similar to anemometers, ultrasonic flowmeters can be used to determine the speed and direction of liquid within pipes.
+* Ultrasonic devices are used in the medical world for getting images of body parts (e.g. an unborn baby). Human tissue attenuates ultrasound by approximately 1dB/cm/MHz.
+  
+import medical_ultrasonic_sensor_sonosite_c60x from './_assets/medical-ultrasonic-sensor-sonosite-c60x.jpg'
+
+<Image src={medical_ultrasonic_sensor_sonosite_c60x} width="286px">The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.</Image>
+
+* Parking sensors in vehicles commonly use ultrasound sensors for distance detection.
+* Manufacturing processes such as flaw detection, thickness gauging, weld inspection.
+* Ultrasonic welding is the process of using high-energy ultrasonic sound waves (20-40kHz) to soften or melt thermoplastics to join them together. Welds are very fast (typically less than a second to completion).
+* Gas leak detection (leaks usually produce a high-frequency sound).
+* Ultrasonic fuel vaporizers. They use ultrasound to vaporize fuel, usually before entering the combustion chamber on a vehicle.
+* Bat detectors. Ultrasonic bat detectors listen for the ultrasonic noises made by bats, and either graph them or convert them to the audible spectrum (heterodyning). The circuit below converts ultrasonic waves into the audible spectrum.
+
+## Common Outputs For Modules
+
+* 4-20mA current output
+* Voltage output (max voltage varies, usually 3.3-12V)
+* Relay outputs (both NC and NO)
+
+## Beam Pattern And Range
+
+With a simple single transducer acting as both the receiver and transmitter, the further away the object you wish to detect, the slower your maximum sample frequency can be, as you have to wait longer for the ultrasonic wave to return.
+
+import detection_beam_pattern_of_sonarange_ups_ultrasonic_transducers from './_assets/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png'
+
+<Image src={detection_beam_pattern_of_sonarange_ups_ultrasonic_transducers} width="358px">The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.</Image>
+
+## Minimum Range
+
+The minimum range of a single ultrasonic transmitter/receiver is primarily determined by three things:
+
+* The rise-time to full-power of the drive circuitry
+* The ring-down time of the transducer
+* The medium the ultrasound is travelling through
+
+The combination of these three factors creates a dead-zone right in-front of the transducer at which the ultrasonic transceiver cannot detect anything. A larger rise-time, a larger ring-down time, or a denser medium (one which ultrasound travels faster through), will all increase the dead-zone distance. A separate transmitter/receiver circuit like the one shown below does not suffer from the first two issues.
+
+import ultrasonic_proximity_detector_circuit_with_seperate_transmitter_and_receiver from './_assets/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png'
+
+<Image src={ultrasonic_proximity_detector_circuit_with_seperate_transmitter_and_receiver} width="988px">A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.</Image>
+
+## Maximum Range
+
+The maximum range of a ultrasonic transducer is primarily determined by:
+
+* The output power
+* The acoustic impedance matching between any different mediums
+* The amount of attenuation by the medium
+* The texture and angle of the surface the ultrasound bounces of
+* The sensitivity of the receiver
+* The quality of the analogue front-end receiver circuitry (especially in relation to noise)
+
+## Frequency
+
+Higher frequency ultrasonic waveforms lose energy quicker when travelling through a medium. For this reason low-frequency (40kHZ) is normally used when air is the medium. Higher frequencies such as 1MHz are used when the medium is water or metal.
+
+import graph_of_audible_and_ultrasound_frequency_range_with_subsections from './_assets/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png'
+
+<Image src={graph_of_audible_and_ultrasound_frequency_range_with_subsections} width="561px">A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.</Image>
+
+When using ultrasound for imaging, the frequency of the ultrasound determines the image resolution.
+
+## Amplitude
+
+Strong pressure waves suffer from deformation. This generates harmonics and causes non-linear propagation.
+
+## Electrical Model
+
+An piezo-based ultrasound transducer can be modeled as a capacitor and resistor in series. This can be represented as a parallel capacitor and resistor with a suitable electrical transformation.
+
+## Tuned Driving
+
+See the External Resources section at the bottom of this page.
+
+## Transmission Speeds
+
+Speed of sound through various mediums:
+
+<table>
+    <thead>
+        <tr>
+            <th>Medium</th>
+            <th>Speed (m/s @ 10°C)</th>
+        </tr>
+    </thead>
+<tbody >
+<tr>
+<td >Air</td>
+<td >331.32</td>
+</tr>
+<tr >
+<td >Ammonia</td>
+<td >414.83</td>
+</tr>
+<tr >
+<td >Argon</td>
+<td >301.90</td>
+</tr>
+<tr >
+<td >Carbon Dioxide</td>
+<td >257.86 (low freq), 268.53 (high freq)</td>
+</tr>
+<tr >
+<td >Carbon Disulfide</td>
+<td >184.71</td>
+</tr>
+<tr >
+<td >Carbon Monoxide</td>
+<td >337.12</td>
+</tr>
+<tr >
+<td >Chlorine</td>
+<td >205.44</td>
+</tr>
+<tr >
+<td >Ethylene</td>
+<td >313.94</td>
+</tr>
+<tr >
+<td >Helium</td>
+<td >969.87</td>
+</tr>
+<tr >
+<td >Hydrogen</td>
+<td >1269.49</td>
+</tr>
+<tr >
+<td >Methane</td>
+<td >431.90</td>
+</tr>
+<tr >
+<td >Neon</td>
+<td >434.95</td>
+</tr>
+<tr >
+<td >Nitric Oxide</td>
+<td >324.92</td>
+</tr>
+<tr >
+<td >Nitrogen</td>
+<td >334.06</td>
+</tr>
+<tr >
+<td >Nitrous Oxide</td>
+<td >261.82</td>
+</tr>
+<tr >
+<td >Oxygen</td>
+<td >317.30</td>
+</tr>
+<tr >
+<td >Steam (100°C)</td>
+<td >403.25</td>
+</tr>
+</tbody>
+</table>
+
+## Sound Pressure Level (SPL)
+
+The sound pressure level (SPL) is a measure of the magnitude of the sound waves from a ultrasonic transmitter. Note that SPL varies with the distance to the source, but the sound power does not. As sound travels through a medium, the magnitude of the sound pressure is reduced due to two things:
+
+* Attenuation due friction as the medium's particles vibrate
+* The spreading loss due to the expanding surface area of the radiating beam as it travels outwards from the transmitter
+
+The sound pressure decreases proportionally as the distance between the source and receiver increases, i.e. $\rho \propto \frac{1}{r}$. The SPL at a distance R from the transmitter is given by:
+
+$$ SPL(R) = SPL(R_0) - 20 log(\frac{R}{R_0}) - \alpha_f R $$
+
+<p className="centered">    where:<br/>
+    $SPL(R)$ = sound pressure at distance $R$ in $dB/1uPa$<br/>
+    $SPL(R)$ = sound pressure at distance $R_0$ in $dB/1uPa$<br/>
+    $\alpha(f)$ = attenuation coefficient in $dB/unit distance$ at frequency $f$<br/></p>
+
+It is interesting to note that the SPL threshold of pain for a human is somewhere between $120-140dB$.
+
+## Acoustic Impedance
+
+Acoustic impedance is the measure of opposition to deflection of a mediums particles due to sound. It has the SI units $N \cdot s \cdot m^{-3}$ or $Pa\cdot s \cdot m^{-1}$.
+
+$$ Z = \rho c $$
+
+<p className="centered">where:<br/>
+$Z$ = acoustic impedance ($Nsm^{-3}$)<br/>
+$\rho$ = material density<br/>
+$c$ = material sound velocity<br/></p>
+
+## Impedences Of Common Mediums
+
+<table>
+    <thead>
+        <tr>
+            <th>Medium</th>
+            <th>Characteristic Specific Acoustic Impedance ($Pa \cdot s \cdot m^{-1}$)</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
+<td >Air (room temperature)</td>
+<td >415</td>
+</tr>
+<tr >
+<td >Lead</td>
+<td >246</td>
+</tr>
+<tr >
+<td >Steel (1020)</td>
+<td >454</td>
+</tr>
+<tr >
+<td >Tin</td>
+<td >242</td>
+</tr>
+</tbody>
+</table>
+
+Note that acoustic impedance is also commonly expressed in the units:
+
+$$ \frac{g}{cm^2 \cdot s} $$
+
+<p className="centered">where:<br/>
+$ g $ = mass (in grams)<br/>
+$ cm $ = centimeters<br/>
+$ s $ = seconds<br/></p>
+
+You can convert between the two different units with:
+
+$$ \frac{Pa \cdot s}{m^1} = 10 \cdot \frac{g}{cm^2 \cdot s} $$
+
+## Intensity Reflection Coefficient
+
+This determines how much intensity will be reflected at the boundary between two mediums with different acoustic impedances.
+
+$$ IRC = (\frac{Z_2 - Z_1}{Z_2 + Z_1}) $$
+
+## Intensity Transmission Coefficient
+
+This determines how much intensity will be transmitted at the boundary between two mediums with different acoustic impedances.
+
+$$ ITC = 1- IRC$$
+
+## Acoustic Interface
+
+The boundary between two mediums with different acoustic impedances is called an acoustic interface. The loss (in dB) of a sound wave travelling from medium 1 to medium 2 is given by:
+
+$$ dB_{loss} = 10Log_{10}\frac{4 Z_1 Z_2}{(Z_1 + Z_2)^2}$$
+
+<p class="centered">where:<br/>
+$Z_1$ = acoustic impedance of the first medium<br/>
+$Z_2$ = acoustic impedance of the second medium<br/></p>
+
+## Classification Of Detected Object Shapes
+
+Detected objects can be classified as follows:
+
+* (A) Flat-surface objects such as fluids, boxes, paper, and windows
+* (B) Cylindrical objects such as cans, bottles and human bodies
+* (C) Powders and chunky objects such as minerals, rocks, coal, plastic, rubbish
+
+## CMUTs
+
+CMUTs use a change in capacitance to perform energy transduction. They are micromachined (i.e. small), and therefore easier to assemble into 2D and 3D arrays than traditional piezo transducers. They have a large frequency bandwidth.
+
+## Ultrasonic Humidifiers
+
+_Ultrasonic humidifiers_ vibrates a diaphragm immersed in water at higher-than-hearing frequencies (much higher that hearing --- 1.7MHz can be used[^rotasystem-ultrasonic-humidification]). The vibrations "push" tiny droplets of water into the air to create water vapour and a humid environment. They are used as a more energy efficient and quieter alternative to evaporative humidifiers[^sylvane-how-do-ultrasonic-humidifiers-work].
+
+import ultrasonic_humidifier_toy_kettle from './_assets/ultrasonic-humidifier-toy-kettle.gif'
+
+<Image src={ultrasonic_humidifier_toy_kettle} width="250px">A toy kettle which uses an ultrasonic humidifier to create water vapour and give the impression of steam.</Image>
+
+The exact mechanism of creating water vapour from ultrasound seems to be a mixture of cavitation and capillary wave action which creates the water vapour. Cavitation due the amplitude of the ultrasonic sound waves creates small vacuum bubbles. This creates crossed capillary waves, where small droplets are released from the waves crest on the surface of the water[^rotasystem-ultrasonic-humidification].
+
+## Further Reading
+
+The [Olympus Ultrasonic Transducers Technical Notes](http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf) is a great document explaining some of the basics of ultrasonic transducers and related equations. If the link is dead, you can use the [local download](./_assets/olympus-ultrasonic-technical-notes.pdf).
+
+A technical resource on ultrasonic flowmeter basics can be found at [http://www.sensorsmag.com/sensors/acoustic-ultrasound/ultrasonic-flowmeter-basics-842](http://www.sensorsmag.com/sensors/acoustic-ultrasound/ultrasonic-flowmeter-basics-842).
+
+For information on how to tune circuits with piezo transducers in them, see http://traktoria.org/files/sonar/system_design/notes_on_the_design_of_matching_systems_for_piezo_elements.pdf . If the link is dead (**which it has been since Dec 2017**), you can use the [local download](./_assets/airmar-notes-on-the-design-of-matching-systems-for-piezo-elements.pdf).
+
+A good journal article on ultrasound losses in air is at [http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf](http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf) [Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems](http://www.cypress.com/?docID=42341) is a good document describing an ultrasonic system built from a transducer and a PSoC 1 microcontroller. You can also use the [local download](/docs/Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems.pdf).
+
+_Maxim - Proximity Detector Features In Ultrasonic Transducers_ shows a good circuit when using a separate transmitter and receiver. You can also use the [local download link](/docs/Maxim - Proximity Detector Features Ultrasonic Transducers.pdf).
+
+[^sylvane-how-do-ultrasonic-humidifiers-work]: Sylvane (2021, Nov 18). _How Do Ultrasonic Humidifiers Work?_ [Web Page]. Retrieved 2023-07-04, from https://www.sylvane.com/blog/how-do-ultrasonic-humidifiers-work-html. 
+[^rotasystem-ultrasonic-humidification]: Rotasystem. _Ultrasonic Humidification_. Retrieved 2023-07-04, from https://www.rotasystem-english.com/air-humidification/ultrasonic-humidification/.

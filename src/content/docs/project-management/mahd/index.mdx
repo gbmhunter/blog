@@ -1,0 +1,38 @@
+---
+authors: [Geoffrey Hunter]
+date: 2024-07-18
+draft: false
+last_update:
+  date: 2024-07-19
+  author: Geoffrey Hunter
+tags: [MAHD]
+title: MAHD
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## Overview
+
+MAHD (Modified Agile for Hardware Development) is a project management methodology aimed at hardware development that is a hybrid of Agile and traditional project management methodologies. It was founded by Dorian Simpson and Gary Hinkle and broadly shared to the public in 2017[^mahd-about-us]. The authors recognize the benefits of Agile methodlogies that are very common in software development, but also recognize that hardware development has unique challenges (usually due to much slower iteration time to design and build a piece of hardware than it is to write and test a piece of software).
+
+import mahd_logo from './_assets/mahd-logo.webp'
+
+<Image src={mahd_logo} width="400px">The MAHD logo[^mahd-homepage].</Image>
+
+> Hardware is different than software — requirements must be frozen to ship, prototypes cost money,
+incremental features impact whole designs, etc. To address these unique needs of physical products,
+MAHD rethinks Agile tactics while maintaining the benefits of Agile principles.
+>
+> — MAHD Framework Overview[^mahd-framework-overview].
+
+## IPAC Iterations
+
+An IPAC (Integration-Prototype-Alignment-Customer) iteration is a development and learning cycle that is aimed to be about 1-3 months long (this can vary depending on the project)[^mahd-framework-core]. An IPAC iteration is the key concept which enforces an agile approach to hardware development. This is because it provisions for a short development cycle, followed by a testing and engagement with a customer before the next iteration begins. IMO the term Customer should really be replaced with "Stakeholder" (IPAS perhaps?), as "Customer" may not apply for early IPEC iteration deliverables, indeed for some projects the concept of a "Customer" may not even exist.
+
+[^mahd-framework-overview]: MAHD. _MAHD Framework Overview_. Retrieved 2024-07-18, from https://mahdframework.com/wp-content/uploads/2023/02/MAHD-Overview-v3.0-1_20_2023.pdf.
+[^mahd-homepage]: MAHD. _MAHD Homepage_. Retrieved 2024-07-18, from https://mahdframework.com/.
+[^mahd-framework-core]: MAHD. _The MAHD Framework Core_. Retrieved 2024-07-19, from https://mahdframework.com/mahd-framework-core/.
+[^mahd-about-us]: MAHD. _About Us_. Retrieved 2024-07-19, from https://mahdframework.com/modified-agile-for-hardware-founders/.

@@ -1,0 +1,42 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Electronic Components", "Diodes" ]
+date: 2011-09-05
+description: "Info about signal diodes."
+draft: false
+last_update:
+  date: 2022-07-16
+  author: Geoffrey Hunter
+tags: [ "electronics", "diodes", "components", signal, signal diodes ]
+title: Signal Diodes
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+_Signal diodes_ (a.k.a. _small signal diodes_) are designed for rectification of low power signals rather than the higher power electronics that general purpose diodes are designed to rectify. Although they can't handle high currents or high reverse voltages, they benefit from being able switch faster and therefore more suitable for higher frequency operation. Signal diodes are built in two different ways:
+
+* Point contact diode
+* Glass passivated diode
+
+import n_1n4148_small_signal_diode_photo_on_semi from './1n4148-small-signal-diode-photo-on-semi.png'
+
+<Image src={n_1n4148_small_signal_diode_photo_on_semi} width="200">Photo of the small signal 1N41488 diode by onsemi in the DO-35 component package. Image (C) onsemi.</Image>
+
+SPICE model for the small signal `1N4148` diode:
+
+```
+.model 1N4148 D 
++ IS = 4.352E-9 
++ N = 1.906 
++ BV = 110 
++ IBV = 0.0001 
++ RS = 0.6458 
++ CJO = 7.048E-13 
++ VJ = 0.869 
++ M = 0.03 
++ FC = 0.5 
++ TT = 3.48E-9
+```

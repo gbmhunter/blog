@@ -1,0 +1,51 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ PCB Design ]
+date: 2023-06-19
+description: Photos, explanations, solder paste improvements and more info on mid-chip solder balls, a common PCB manufacturing defect.
+draft: false
+last_update:
+  date: 2023-06-19
+  author: Geoffrey Hunter
+tags: [ PCB design, solder, mid-chip solder balls, soldering, reflow, solder, stencils, solder paste, PCBs, defects, manufacturing ]
+title: Mid-Chip Solder Balls
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## Overview
+
+_Mid-chip solder balls_ is a **PCB manufacturing defect when 1 or more solder balls form between the two pads/leads of a SMD [chip](/pcb-design/component-packages/chip-eia-component-packages/) component during the soldering process**. The ball is typically just off the side of the one of the pads.
+
+import mid_chip_solder_ball_3d_render_henkel_electronics from './mid-chip-solder-ball-3d-render-henkel-electronics.png'
+
+<Image src={mid_chip_solder_ball_3d_render_henkel_electronics} width="500px">A 3D render of a mid-chip solder ball.[^henkel-eliminating-mid-chip-solder-balls]</Image>
+
+## What Causes Mid-Chip Solder Balls?
+
+Mid-chip solder balls are usually **caused by too much solder paste, poor hot slump, and/or insufficient wetting**[^henkel-eliminating-mid-chip-solder-balls]. Solder paste is squeezed off the pad and underneath the chip, and does not coalesce back to the pad during reflow. Surface tension usually pulls the small amount of solder into a ball, which either remains hidden or protrudes from the sides of the chip, as shown in the image below:
+
+Mid-chip solder balls are a problem as they can either create instant short circuits, or work free overtime (they normally only remain stuck to the PCB due to flux residue[^circuits-assembly-mid-chip-solder-balls]), roll around and then cause short circuits at a later date.
+
+Mid-chip solder balls commonly occurs on larger [chip package](/pcb-design/component-packages/chip-eia-component-packages/) sizes, from about size 0603 (imperial) and up[^circuit-insight-predicting-mid-chip-solder-balling] [^circuits-assembly-mid-chip-solder-balls]. There is dispute about which components are most effected, with some sources saying resistors cause the most mid-chip solder balls, due to only 3 surfaces at each end of the chip being wettable (top, bottom and end), whilst capacitors have 5(top, bottom, end and 2 sides)[^henkel-eliminating-mid-chip-solder-balls]. Others say capacitors are the biggest problem[^circuit-insight-predicting-mid-chip-solder-balling].
+
+## Fixing Mid-Chip Solder Balls
+
+The most common remedy is to **modify the solder paste opening on the stencil** (called the _aperture_). The most basic change is a simple percentage reduction in the entire aperture on all sides. However, this sometimes is not the best solution, and more complex solder paste apertures are needed[^circuits-assembly-mid-chip-solder-balls].
+
+There are few commons designs in use:
+
+* Homeplate
+* Crown
+* U-Shape
+
+import solder_paste_aperture_designs from './solder-paste-aperture-designs.webp'
+
+<Image src={solder_paste_aperture_designs} width="800px">Diagram showing the common aperture designs used to fix mid-chip solder balls. Diagram not to scale.</Image>
+
+[^circuit-insight-predicting-mid-chip-solder-balling]: Phil Zarrow, Jim Hall. _Predicting Mid-Chip Solder Balling_. Circuit Insight. Retrieved 2023-06-19, from https://www.circuitinsight.com/programs/55538.html.
+[^henkel-eliminating-mid-chip-solder-balls]: Mark Currie, Neil Poole, Wanda O’Hara, Doug Dixon. _Eliminating Mid-Chip Solder Balls: A Practical Guide to Understanding and Doing Away with this Common Defect_. Retrieved 2023-06-19, from https://www.mouser.com/catalog/additional/Henkel_1enewsletter_1116_MidChipSolderBallPreventionfinal.pdf.
+[^circuits-assembly-mid-chip-solder-balls]: Clive Ashmore (2018, Mar 21). _Understanding and Eliminating Mid-Chip Solder Balls_. Retrieved 2023-06-19, from https://circuitsassembly.com/ca/features-itemid-fix/408-screen-printing/29120-screen-printing-1804.html. 

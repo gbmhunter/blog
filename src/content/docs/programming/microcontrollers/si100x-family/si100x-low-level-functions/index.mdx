@@ -1,0 +1,22 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2011-09-15
+draft: false
+title: Si100x - Low Level Functions
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## No Operation (NOP)
+
+A nop is an instruction that does nothing. It it used to stall a cpu for precisely timed operations. It can be created by making a pre-compiler macro that executes the assembly code 0x00 as shown below
+
+```c
+// Macro
+#define NOP() asm{0x00}
+
+// Pause for two clock cycles
+NOP();
+NOP();
+```

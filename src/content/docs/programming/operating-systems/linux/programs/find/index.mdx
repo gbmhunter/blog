@@ -1,0 +1,87 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
+date: 2014-01-05
+description: "An introduction to the UNIX program find, which can be used to search for files and directories on your computer."
+draft: false
+last_update:
+  date: 2019-11-14
+  author: Geoffrey Hunter
+tags: [ "programming", "operating systems", "Linux", "programs", "find", "UNIX", "files", "directories" ]
+title: "find"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+`find` is a UNIX utility program which searches directory trees for files matching particular patterns.
+
+By default, `find` is recursive. It searches from the specified directory and looks in all sub-directories.
+
+By default, the search pattern uses glob-style pattern matching (not regex). However, regex can be supplied with the `-regex` option (more )
+
+## Find File By Name
+
+A common use case is using `find` to find files which match a specific glob pattern. For example, if you wanted to find all C++ header files (`.hpp`) in the current directory and all subdirectories (remember, `find` is recursive by default), you would use:
+
+```sh
+$ find . -name '*.cpp'
+```
+
+You have to provide the `*` at the start because find matches against the whole path (it doesn't allow partial matches).
+
+<Aside type="caution">
+Always make sure to make the search path **the first argument** to `find`, as `find` is sensitive to the argument order (even with optional arguments!).
+</Aside>
+
+## Multiple Patterns
+
+You can provide find with multiple patterns by using the `-o` option.
+
+The following example looks for all files with the `.cpp` or `.hpp` file extension in the current directory.
+
+```sh    
+$ find . -name "*.cpp" -o -name "*.hpp"
+```
+
+## Find In Path
+
+The `-name` option only searches in the filename, but not the path in which the file sits. If you want to find matches against the path, use the `-path` option instead. The following example will find all paths that contain the string `image`:
+
+```sh
+$ find . -path '*image*'
+```
+
+Note that the path includes the filename, so you'll find matches in the file name also. Replace `-path` with `-ipath` to make the pattern case insensitive.
+
+As far as I know, the `-wholename` option is identical to `-path`. I believe `-path` is more portable, being part of the POSIX 2008 standard.
+
+## Using Regex
+
+You can use the `-regex` flag to use regex search patterns instead of glob. For example, to find all images in your current directory that have a filename made of numbers, you could use:
+
+```sh
+$ find . -regex '\./[0-9]+\.jpg'
+```
+
+Note that `find` always lists files in the current directory with `./` at the start.
+
+By default, `find` uses emacs style regex, which have different escaping rules than the usual `egrep` regex. Weirdly, on Mac I could not get the `+` operator (match one or more of the proceeding item) to work. I had to add `-E` (the `-E` tells find to use extended regex):
+
+```sh
+$ find . -regex '\./[0-9]+\.jpg' -E
+```
+
+## Finding Directories
+
+You can restrict `find` to searching just for directories by providing the `-type d` argument:
+
+```sh
+$ find . -type d -name "my_dir_name"
+```
+
+## Combining With sed
+
+`find`, a program which finds files, lends itself to working well in conjunction with `sed`, a program for modifying the contents of a file.

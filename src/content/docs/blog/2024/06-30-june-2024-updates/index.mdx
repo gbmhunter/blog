@@ -1,0 +1,39 @@
+---
+authors: [gbmhunter]
+categories: [Posts, Updates]
+date: 2024-06-30
+description: Blog updates during June 2024.
+draft: false
+last_update:
+  date: 2024-06-30
+  author: Geoffrey Hunter
+tags: [NinjaTerm, updates, ANSI escape codes, serial numbers]
+title: June 2024 Updates
+type: post
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+I added the ability to change basic port settings in [NinjaTerm](https://ninjaterm.mbedded.ninja/app) from the right-hand drawer. This was a feature request by a user.
+
+import quick_port_settings_screenshot from './_assets/quick-port-settings-screenshot.png'
+
+<Image src={quick_port_settings_screenshot} width="900px"></Image>
+
+You now have the ability in [NinjaTerm](https://ninjaterm.mbedded.ninja/app) to send a break signal at the end of every line in a hex macro. This was another feature request by a user.
+
+import send_break_signal_with_hex_screenshot from './_assets/send-break-signal-with-hex-screenshot.png'
+
+<Image src={send_break_signal_with_hex_screenshot} width="900px"></Image>
+
+I added a page to this blog on how to [choose serial numbers for embedded devices](/programming/firmware/choosing-serial-numbers-for-embedded-products/). It shows the way to calculate the mathematical probability of a collision when using random numbers for serial numbers.
+
+import choosing_serial_numbers_screenshot from './_assets/choosing-serial-numbers-screenshot.webp'
+
+<Image src={choosing_serial_numbers_screenshot} width="900px"></Image>
+
+I added a page to this blog on [ANSI escape codes](/programming/ansi-escape-sequences/).
+
+import ansi_escape_codes_screenshot from './_assets/ansi-escape-codes-screenshot.webp'
+
+<Image src={ansi_escape_codes_screenshot} width="900px"></Image>

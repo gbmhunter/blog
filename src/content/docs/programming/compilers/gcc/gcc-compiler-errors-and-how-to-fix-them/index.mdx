@@ -1,0 +1,22 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Compilers" ]
+date: 2019-02-02
+draft: false
+last_update:
+  date: 2019-02-02
+  author: Geoffrey Hunter
+tags: [ "programming", "compilers", "GCC", "errors" ]
+title: "GCC Compiler Errors And How To Fix Them"
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## undefined reference to `pthread_create'
+
+This error usually occurs when trying to compile C++ code which uses threads on Linux. This error can usually be fixed by adding the option `-pthread` to the call to `g++`, e.g.:
+
+```sh
+$ g++ -pthread main.cpp
+```

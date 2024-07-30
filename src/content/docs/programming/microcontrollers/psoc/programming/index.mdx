@@ -1,0 +1,29 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2013-03-27
+draft: false
+title: Programming
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+import swd_programming_interface_for_psoc_5 from './_assets/swd-programming-interface-for-psoc-5.png'
+
+<Image src={swd_programming_interface_for_psoc_5} width="250px">The pinout for the PSoC programming interface.</Image>
+
+Programming is supported by the MiniProg programmers. The current version is the MiniProg 3 which supports JTAG, SWD, ISSP, SWV and I2C (in a bridge, not programming protocol). It can program target boards with a voltage ranging from 1.5 to 5.5V, or supply power to the target board at one of four voltage levels. It comes with both a 5-pin 100mil pitch and 10-pin 50mill pitch header. The 10-pin connector is used on the prototyping boards, and a cable is provided. The programmer is small! (which is a good thing). Some (e.g. ATMEL's) are huge, and also quite expensive in comparison (especially for the ATMEL JTAG programmer).
+
+PCB Header: Samtec FTSH-105-01-L-DV-K-ND (Digi-Key Part Num: FTSH-105-01-L-DV-K-ND)  
+Supplied Cable: Samtec FFSD-10-D-06.00-01-N  
+Socket-to-Socket 152.40mm (Digi-Key Part Num: SAM8218-ND)
+
+However, the header is typically out-of-stock on DigiKey. It can be set to provide one of four voltage levels to the target board (1.8V, 2.5V, 3.3V, 5V). Cypress provides a standalone program, PSoC Programmer, to program it's PSoC chips. However, programming is usually done through PSoC Creator (the design software), which also supports debugging. Cypress also provides a command-line interface (CLI) and component-object model (COM) so that you can design your own applications that utilize PSoC Programmer's backend to program chips.
+
+import mini_prog_3_insides_top from './_assets/mini-prog-3-insides-top.jpg'
+
+<Image src={mini_prog_3_insides_top} width="400px">The top view of the MiniProg3 PCB with the cover removed.</Image>
+
+import mini_prog_3_insides_bottom_0 from './_assets/mini-prog-3-insides-bottom_0.jpg'
+
+<Image src={mini_prog_3_insides_bottom_0} width="400px">The bottom view of the MiniProg3 PCB with the cover removed.</Image>

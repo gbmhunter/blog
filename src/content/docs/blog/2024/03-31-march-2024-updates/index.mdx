@@ -1,0 +1,42 @@
+---
+authors: [gbmhunter]
+categories: [Posts, Updates]
+date: 2024-03-31
+description: Blog updates during March 2024.
+draft: false
+last_update:
+  date: 2024-03-31
+  author: Geoffrey Hunter
+tags: []
+title: March 2024 Updates
+type: post
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+Released a new version of [NinjaTerm](https://ninjaterm.mbedded.ninja/), `v4.13.0` which adds smart copy/paste support with `Ctrl-Shift-C/V`.
+
+import ninjaterm_v4_13_0_release_notes from './_assets/ninjaterm-v4.13.0-release-notes.png'
+
+<Image src={ninjaterm_v4_13_0_release_notes} width="600px"></Image>
+
+Started using Umami Analytics for analytics alongside Google Analytics. Umami is self-hosted on a Amazon Lightsail instance. The subdomain `umami.mbedded.ninja` points to the IPv6 only instance. If Umami works well (it's privacy focused and is unlikely to be blocked by ad blockers), Google Analytics will be removed in the following months.
+
+import umami_dashboard_showing_analytics_for_blog from './_assets/umami-dashboard-showing-analytics-for-blog.png'
+
+<Image src={umami_dashboard_showing_analytics_for_blog} width="600px"></Image>
+
+Added a new page on how to [setup Umami Analytics on Amazon Lightsail](/programming/website-design/running-umami-on-aws-lightsail/).
+
+import running_umami_on_lightsail_screenshot from './_assets/running-umami-on-lightsail-screenshot.png'
+
+<Image src={running_umami_on_lightsail_screenshot} width="600px"></Image>
+
+Added info on [C compile-time asserts()](/programming/languages/c/assertions-assert/).
+
+import compile_time_asserts_screenshot from './_assets/compile-time-asserts-screenshot.png'
+
+<Image src={compile_time_asserts_screenshot} width="600px"></Image>
+
+Added a new page with a small amount of info on [Infineon 32-bit AURIX TriCore MCUs](/programming/microcontrollers/infineon-32bit-aurix-tricore/).
+

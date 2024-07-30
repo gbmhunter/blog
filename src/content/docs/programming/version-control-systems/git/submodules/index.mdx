@@ -1,0 +1,59 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Version Control Systems" ]
+date: 2017-01-20
+draft: false
+tags: [ "programming", "version control systems", "VCS", "git", "submodules" ]
+title: Git Submodules
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+The git submodule feature allows you to **embed one git repository inside another**.
+
+When a git submodule is added, the files contained with the submodule have special treatment inside the parent repository. The **parent repository does not commit the individual files**, but rather just saves the current commit SHA1 that is checked-out with the submodule.
+
+## Basic Example
+
+To add a new submodule:
+
+```sh   
+$ git submodule add git@mygithost.com:projectname lib/projectname
+```
+
+With newer version of git, the above add command will also clone the submodule files into the directory.
+
+But if you don't have the files yet, run:
+
+```sh   
+$ git submodule init
+$ git submodule update
+```
+
+## Version Lockdown
+
+git submodules can be used for **file management and version lockdown of external dependencies**.
+
+Note that when using C++, it may be better to use the CMake `ExternalProject_Add()` and `find_package()` API (if available), rather than to rely on git submodules for version lockdown of external dependencies.
+
+## Changing An Existing Submodule
+
+Sometimes you may wish to change an existing submodule to point to a completely different remote repo.
+
+1. Change the URL in .gitmodules.
+2. Delete the relevant entry in _.git/config_.
+3. Delete the relevant folder in _.git/modules_. The actual submodule folder will have the same path in _.git/modules_ as it does in your repo, e.g. if your submodule is at _/lib/mysubmodule_ then delete the folder at _.git/modules/lib/mysubmodule_.
+4. Delete the submodule (e.g. delete lib/mysubmodule).
+5. Run git submodule init then git submodule update. Note, you may get an error similar to:  
+
+	```text
+    fatal: reference is not a tree: a094dcfeeb43...
+	```
+
+	when trying to run git submodule update. Don't worry, this just means it can't find the old commit SHA1 in your changed submodule. All you have to do to fix this is navigate to the submodule folder, and run `git checkout <valid SHA1 here>`.
+
+6. All done! Don't for get to commit your changes.
+

@@ -1,0 +1,313 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2011-09-07
+draft: false
+last_update:
+  date: 2020-04-13
+  author: Geoffrey Hunter
+tags: [ "programming", "languages", "C", "preprocessor", "macros", "syntax", "code", "embedded", "microcontroller", "variadic", "stringification" ]
+title: "The C Preprocessor"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+Preprocessor directives (also known as precompiler directives) are pieces of code that are executed by the pre-compiler. The directives themselves do not appear in the final assembly files, but they are really useful for defining values for replacement through-out the code (e.g. a centralised place to define a constant that is used many times throughout the code), or to include/exclude blocks of code depending on the configuration you want.
+
+They are also used to clever assert and debug messages which can be built to automatically report the filename and line number of the code.
+
+## General Syntax
+
+All preprocessor functions in C start with the `#` character, telling the preprocessor that it must parse this line.
+
+## Macros (#define)
+
+Macros are one of the most commonly used preprocessor directives.
+
+There are two basic types of macros, object-style macros, and function-style macros.
+
+## Object-Style Macros
+
+The general syntax for a object-style macro is:
+
+```c
+#define <identifier>
+```
+
+The first syntax layout just defines a identifier to be present. This doesn't do much on it's own, but can be used to control the outcome of conditional preprocessor directives (which are explained below). A typical example would be:
+
+```c
+#define PWM_FREQ_50KHZ
+```
+
+One would assume this states that the PWM frequency needs to be set to 50kHz, and could co the inclusion of another block of code which configures a PWM module to run at 50kHz.
+
+The second object-style macro syntax offers a replacement variable. Anywhere in the code that the preprocessor finds the `<identifier>`, it will replace it with the `<replacement>`.
+
+```c
+#define <identifier> <replacement>
+```
+
+A common example is to define a constant
+
+```c 
+#define NUM_OF_COUNTS 12
+
+uint8 x = 0;
+while(x < NUM_OF_COUNTS)
+{
+    // x will be incremented NUM_OF_COUNTS times
+    x++
+}
+```
+
+During a build sequence, before the code reaches the compiler, the preprocessor will replace and instances of `NUM_OF_COUNTS` with the variable 12.
+
+## Function-Style Macros
+
+Function style macros are similar in syntax and operation to standard functions in C. They use the following syntax:
+
+```c
+#define MY_FUNC(x) x*x
+```
+
+And so when this is written in code somewhere
+
+```c 
+MY_FUNC(2)
+```
+
+The preprocessor will replace it with `2*2`.
+
+## Variadic Macros
+
+The C preprocessor allows variadic macros, just like the C compiler allows for variadic functions. The variable-length parameters are encapsulated within the variable `__VA_ARGS__`, and you indicate in a macro that you want it to be variadic with ....
+
+```c
+#define eprintf(...) fprintf (stderr, __VA_ARGS__)
+```
+
+The variadic example below allows for conditional inclusion of debug statements, which behaves just like `printf()` does. Note that it also uses FreeRTOS and their semaphores for debug UART resource control.
+
+```c
+#if(configPRINT_DEBUG_GPRS_MAIN == 1)
+    #define Main_SendDebugMsg(...)  								\
+    { 																\
+        xSemaphoreTake(xUartTxMutex, 5000/portTICK_RATE_MS); 		\
+        snprintf(debugMsgBuff, sizeof(debugMsgBuff), __VA_ARGS__); 	\
+        UartDebug_PutString(debugMsgBuff); 							\
+        xSemaphoreGive(xUartTxMutex); 								\
+    }
+#else
+    #define Main_SendDebugMsg(...)   
+#endif
+```
+
+If `configPRINT_DEBUG_GPRS_MAIN` is not defined as 1, then all occurrences of the debug printing will be replaced with blank space. You would then use it like this:
+
+```c
+uint32_t myNumber = 16;
+Main_SendDebugMsg("My number = %u.\r\n", myNumber);
+```
+
+Variadic macros were added as part of the C99 standard. The GCC compiler had supported them long before this standard was introduced, but only in the format args....
+
+The example below uses a variadic macro along with the special macros `__FILE__` and `__LINE__` to create a powerful debug message printer (very useful on embedded platforms).
+
+```c
+#define PRINT_DEBUG(...) \
+    { \
+        char temp[100]; \
+        snprintf(temp, sizeof(temp), __FILE__ ", %u: ", __LINE__); \
+        UartDebug_PutString(temp); \		
+        snprintf(temp, sizeof(temp), __VA_ARGS__); \
+        UartDebug_PutString(temp); \
+        UartDebug_PutString("\r\n"); \
+    }
+```
+
+The `UartDebug_PutString()` function in the code above is part of the hardware abstraction layer on an embedded platform, and prints the passed in string to the debug UART.
+
+## Stringification
+
+### Basic Stringification
+
+_Stringification_ is the process of turning macros into C-style strings.
+
+You can make the preprocessor replace a macro with a string by prefixing the macro name with the # character.
+
+```c    
+#define REPLACEMENT_STRING This is a message
+
+// Note the use of the '#' character to get the preprocessor
+// to replace with a string
+char* msg = #REPLACEMENT_STRING;
+
+// This ends up as (this is what the compiler sees)
+char* msg = "This is a message";
+```
+
+### Replacing Strings Inside Other Strings
+
+A problem exists when you want to put a macro inside a string. You can use a function-style macro for this. This is a classic C pre-processor problem.
+
+The example below uses two function-like macros. This allows the stringification of variable-like macros!
+
+```c 
+#define STR_EXPAND(tok) #tok
+#define STR(tok) STR_EXPAND(tok)
+
+// The string-like macro
+#define PF_UINT32_T %lu
+
+uint32_t aNum = 378;
+
+printf("This is an " STR(PF_UINT32_T) ".", sNum);
+```
+
+## Conditional Statements (#if, #else, ...)
+
+Conditional statements are used just like normal C if statements, except you must remember that the only valid conditions for checking are values (numbers, and in some cases, strings) that are constant. This makes perfect sense if you consider what the precompiler does. It parses this code before the 'c code' is compiled, and therefore has no idea what run-time variables are going to be.
+
+An annoying limitation of preprocessor conditional statements is that it only supports comparisons against integers, aka you cannot use floats/doubles in the comparison. Thus if you wanted to make sure double1 was less than double2, you would have to do that at run-time.
+
+A general formatting rule I follow with `#if` statements is that I only indent the enclosed #if  code if it is a few lines and you can see the #endif  at the same time on the screen. For larger blocks I do not indent, and I add the #if  part as a comment at the end of the #endif , so you know what to associate the #endif with.
+    
+```c
+#if SOME_CONDITION
+    // Short amount of code here,
+    // so indented like a normal if
+#endif
+
+#if SOME_CONDITION
+
+// Longer
+// block
+// of
+// code
+// so
+// no
+// indentation
+
+// Note however, the comment at the end of the #endif
+
+#endif // #if SOME_CONDITION
+```
+
+## Commenting Blocks Of Code
+
+You can use #if statements for commenting out sections of code. This is useful is you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in it's body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. `#if 0` is a great alternative.
+    
+```c
+#if 0
+
+void aFunction()
+{
+    /* The comment stops you from using "/*" to
+    comment out a block of code. Instead, use
+    #if 0 (as above) */
+}
+
+#endif // #if 0
+```
+
+## Include (#include)
+
+The #include directive is used to include the text contents of one file into another. #include can be called from both `.c` and `.h` files, and can be used to include both `.c` and `.h` files. However, I strongly recommend that you **don't use it to include .c files!** There is normally no reason to do this. `.c` files are compiled individually into object files, and then linked together by the linker. By including a `.c` file, you are kinda doing the linkers job, AND, you will end with **messy multiple definition errors**.
+
+The exact `#include` syntax depends on whether you are including system or user files. To include a system file, wrap the file name in `<` and `>` brackets as shown below:
+
+```c
+// Including a system file
+#include <stdint.h>
+```
+
+To include a user file, wrap the file name in " quotes as shown below:
+
+```c 
+// Including a user file
+#include "MyFile.h"
+```
+
+I make no rule about where `#include` should be called from, and although some people will say otherwise (e.g. only put them in header files), I recommend placing `#include` in any file which depends on objects/definitions from another!
+
+**The order in which #include files are added can be important.** If one header file depends on types (enums, structures) that are defined in other header files, if the header file with the definition is not included first, the compiler may not recognise it (it won't, unless the header file requiring the definitions includes the header file with the definition as mentioned above).
+
+Watch out for circular inclusions! This is when you have one header file that depends on a second, and the second also depends on the first. This can be fixed by doing **forward declarations**.
+
+## Warnings And Errors (#warning, #error)
+
+Most C pre-compilers support directives which cause either warning or error messages to be printed to the standard output when compiling. The pre-compiler prints them if it comes across them, so they are usually wrapped in pre-compiler condition directives (e.g. #if). Warnings just print a message to the screen, however errors have the extra feature of stopping compilation.
+
+To show a warning, use the following syntax:
+
+```c
+#warning This is a warning.
+```
+
+To show an error (and stop compilation), use the following syntax:
+
+```c 
+#error This is an error, and will stop compilation.
+```
+
+## Comments
+
+Some pre-compilers support the ability to print messages to the standard output without using `#warning` or `#error`. This includes the GCC pre-compiler.
+
+To print a message (there are normally two supported syntaxes), type:
+
+```c
+// First syntax
+#pragma message("This is a message.")
+
+// Second syntax
+#pragma message "This is a message."
+```
+
+You can use these keywords to make up "groups" of messages, for example, a **TODO** group:
+
+```c
+#define DO_PRAGMA(x) _Pragma (#x)
+#define TODO(x) DO_PRAGMA(message ("TODO - " #x))
+
+TODO(Remember to fix this)
+```
+
+prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix this’`
+
+## File Names And Line Numbers
+
+When the preprocessor runs through source code, it updates variables remembering the current file name and line number that the preprocessor is executing from. These are called _predefined macros_. These are useful to use if you want to print out debug information to the user (similar to how a compiler reports back file names/line numbers when it encounters a warning/error), or when it comes to [**using assertions**](/programming/languages/c/assertions-assert).
+
+You can override the pre-processors current line number at any point with the directive:
+    
+```c
+#line 230
+```
+
+## Tidying Up Preprocessor Code
+
+Unfortunately, unlike the compiler, the preprocessor is pretty dumb, and won't give you warnings like #define SOMETHING is not used. This means you can end up with heaps of redundant code, which confuses both you and whoever is going to look at your code in the future.
+
+The obvious but not necessarily quickest nor safest way to find redundant `#define`'s is to comment them out and check if it still compiles. However, the precompiler doesn't need to have a variable declared to use it in a conditional statement (remember the `#ifdef` directive?), so just because it compiles doesn't mean it is not used, and it can also change the behaviour of your code.
+
+A better way is to use another program to check for these. Some expensive programs exist, but you can do it quite easily yourself by utilising some command-line Linux programs.
+
+```c
+# This will return the lines of code which
+# contain the phrase "configNUM_OF_COUNTS"
+# in all files in the current directory and
+# any sub-directories
+grep -r configNUM_OF_COUNTS ./*
+
+## And if only one match was returned you can
+# continue...
+
+## The next line will delete all lines of code 
+# that have the phrase "configNUM_OF_COUNTS" on 
+# them, in the files in the current directory.
+sed -i "/configNUM_OF_COUNTS/d" ./*.*
+```

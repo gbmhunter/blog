@@ -1,0 +1,36 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2020-01-20
+last_update:
+  date: 2020-01-20
+  author: Geoffrey Hunter
+tags: [ "electronics", "communication protocols", "MIPI Alliance", "MIPI", "CSI", "CSI-2", "CSI-3", "interfaces", "D-PHY", "C-PHY", "OSI" ]
+title: "MIPI CSI Communication Protocol"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## Overview
+
+The CSI communication protocol defines an physical, electrical and logical interface between a camera and host processor. The protocol defines OSI layers 1 (physical) through 7 (application). The CSI communication protocol is commonly used between the cameras in the smart phones and the main processor, in VR headsets, drones, and non-camera related sensing applications (such as mmWave sensors).
+
+The specification documents of the MIPI communication protocol are only available to paying members of the MIPI Alliance[^mipi-csi-3-specs]. The official MIPI site is at [https://www.mipi.org/](https://www.mipi.org/).
+
+## Versions
+
+### MIPI CSI-1
+
+### MIPI CSI-2
+
+### MIPI CSI-3
+
+> A basic CSI-3 v1.1 link configuration using four forward lanes and one reverse lane (10 total wires) can support up to 14.88 Gbps (usable bit rate, including 8B10B and UniPro overhead) in the forward direction and typically supports 1 Mbps or more in the reverse direction[^mipi-csi-3-specs].
+
+## Physical Layers
+
+The MIPI CSI-2 v1.0 protocol can use either D-PHY or C-PHY as the physical layer. Both D-PHY and C-PHY are also standards set by the MIPI Alliance.
+
+[^mipi-csi-3-specs]: [https://www.mipi.org/specifications/csi-3](https://www.mipi.org/specifications/csi-3)

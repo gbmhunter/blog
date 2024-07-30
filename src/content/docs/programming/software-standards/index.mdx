@@ -1,0 +1,44 @@
+---
+authors: [Geoffrey Hunter]
+categories: []
+date: 2024-07-11
+description: Info on software standards.
+draft: false
+last_update:
+  date: 2024-07-11
+  author: Geoffrey Hunter
+tags: [programming, standards, SOUP, IEC 62304, medical devices]
+title: Software Standards
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## IEC 62304
+
+IEC 62304 is a standard aimed at medical device software. It defines software lifecycle processes that must be applied during the development and maintenance of software that will be used in medical devices.
+
+There are three safety classes:
+
+* Class A: No injury or damage to health is possible.
+* Class B: Non-serious injury is possible.
+* Class C: Death or serious injury is possible.
+
+_SOUP_ is an acronym used frequently with IEC 62304. It stands for "Software Of Unknown Provenance". It refers to existing software that is then used in a medical device, but has not been developed under the IEC 62304 standard. For example, if you choose to use FreeRTOS in your medical device or incorporate a ADC IC driver library you found on GitHub, you would need to treat these as SOUP.
+
+Topics:
+
+* Risk management (must conform to ISO 14971)
+
+Documents:
+
+* Software development plan
+* Software requirements specification
+* Software architecture
+* Configuration
+* Test documentation
+* Problem reports
+
+IEC 62304 enforces that the manufacturer of the software implements and documents a software development plan. The plan has to detail the processes, deliverables, traceability and problem resolution. The standard also enforces that system/software requirements are defined and documented.

@@ -1,0 +1,133 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-06-19
+draft: false
+last_update:
+  date: 2024-04-17
+  author: Geoffrey Hunter
+tags: [component packages, PCB design, SOD-123, small-outline, diodes, D6, SC-109D, SOD-123EP, CASE 425AC, SOD-123W]
+title: SOD-123 Component Package
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+import sod_123_component_package_3d_render from './_assets/sod-123-component-package-3d-render.jpg'
+
+<Image src={sod_123_component_package_3d_render} width="150px">A 3D render of the SOD-123 component package. Image from www.digikey.com.</Image>
+
+The _SOD-123_ (Small-outline diode 123) component package is a family of medium sized, 2-lead SMD packages, commonly used for packaging diodes.
+
+## Variants
+
+SOD-123 has the following variants:
+
+* SOD-123: De-facto. Gull-wing style leads.
+* SOD-123EP: Pads extended further under package for better thermal performance.
+* SOD-123F: Pads.
+* SOD-123FL
+* SOD-123W
+
+## SOD-123
+
+<Image src={sod_123_component_package_3d_render} width="200px">A 3D render of the SOD-123 component package. Image from www.digikey.com.</Image>
+
+The de-facto SOD-123 leads are gull-wing style (coming out the side of the package), whilst the SOD-123F variant has pads (on the underside of the package). It is the largest SOD package from the family including SOD-323, SOD-523, SOD-723 and SOD-923.
+
+### Dimensions And Recommended Footprint
+
+import sod_123_component_package_dimensions_and_recommended_footprint from './_assets/sod-123-component-package-dimensions-and-recommended-footprint.png'
+
+<Image src={sod_123_component_package_dimensions_and_recommended_footprint} width="550px">Dimensions and a recommended footprint (land pattern) for the SOD-123 component package.</Image>
+
+Note that the pins in the above diagram are labelled with the diode anode being pin 2, and the cathode being pin 1. This is not what I would consider to be intuitive numbering!
+
+## SOD-123F
+
+import component_package_sod_123f_3d_model from './_assets/component-package-sod-123f-3d-model.jpg'
+
+<Image src={component_package_sod_123f_3d_model} width="200px">3D model of the top of the SOD-123F component package.</Image>
+
+The SOD-123F component package has narrow, flat leads protruding from the base of the SMD package.
+
+### Synonyms
+
+* DO-219AA: Although I can't find any robust source linking the DO-219AA to the SOD-123F, the Diodes Inc. dimensions for the DO-219AA [here](https://www.diodes.com/assets/Package-Files/DO-219AA_RevA.pdf) are so similar to the SOD-123F [here](https://www.diodes.com/assets/Package-Files/SOD123F.pdf) that I think they are the same?
+* PDMU: Rohm's name[^rohm-rb160m-90-schottky-barrier-diode-ds].
+* M1F: Fagor Electronica.
+* Mini2-F4-B: Panasonic's name[^panasonic-db2x20700l-schottky-barrier-diode-ds].
+* SC-109D: JEITA name, according to Panasonic[^panasonic-db2x20700l-schottky-barrier-diode-ds].
+
+### Dimensions
+
+The SOD-123F is 3.5mm long (from lead end to lead end), 1.6mm wide and 1.1mm high (typical or average values).
+
+import component_package_sod_123f_dimensions from './_assets/component-package-sod-123f-dimensions.png'
+
+<Image src={component_package_sod_123f_dimensions} width="900px">Dimensions of the SOD-123F component package from Diodes Incorporated[^diodes-inc-sod-123f].</Image>
+
+### Recommended Land Pattern
+
+Below is the recommended land pattern for the SOD-123F component package from Diodes Incorporated[^diodes-inc-sod-123f]:
+
+import component_package_sod_123f_recommended_land_pattern from './_assets/component-package-sod-123f-recommended-land-pattern.png'
+
+<Image src={component_package_sod_123f_recommended_land_pattern} width="900px">Recommended land pattern for the SOD-123F component package.</Image>
+
+The land area that the recommended footprint above takes up on the PCB is $4.4mm \times 2.1mm = 9.2mm^2$. The pitch is $2.8mm$ based of the centers of each landing pad.
+
+## SOD-123EP
+
+The SOD-123EP is a variant of the SOD-123 package with one of the pads being extended further underneath the package for improved power dissipation. This package is typically used for diodes, with the cathode connected to the larger pad[^onsemi-ss12fp-ds]. Known as CASE 425AC by On Semi[^onsemi-ss12fp-ds].
+
+import sod_123ep_3d_model_onsemi_ss12fp from './_assets/sod-123ep-3d-model-onsemi-ss12fp.png'
+
+<Image src={sod_123ep_3d_model_onsemi_ss12fp} width="500px">3D model of the SOD-123EP component package. You can clearly see the larger pad on the underside, which in this case is connected to the cathode of the OnSemi SS12FP diode[^onsemi-ss12fp-ds].</Image>
+
+### Synonyms
+
+* CASE 425AC: OnSemi[^onsemi-ss12fp-ds].
+
+### Dimensions
+
+import sod_123ep_mechanical_dimensions_on_semi from './_assets/sod-123ep-mechanical-dimensions-on-semi.png'
+
+<Image src={sod_123ep_mechanical_dimensions_on_semi} width="700px">Mechanical dimensions of the SOD-123EP component package[^onsemi-ss12fp-ds].</Image>
+
+## SOD-123W
+
+### Synonyms
+
+* CFP3 (Nexperia)[^nexperia-pmeg60t20elr-ds]
+* SOD-123W-2 (Mouser)[^mouser-diodes-sod-123w-2]
+
+Dimensions[^nexperia-pmeg60t20elr-ds]:
+
+* Length: 3.5mm
+* Width: 1.7mm
+* Height: 1.0mm 
+
+The above dimensions are nominal and include the leads (i.e. outer dimensions). This package the same nominal outer dimensions as the SOD-123F and SOD-123EP variants.
+
+import sod_123w_package_outline_nexperia_cfp3 from './_assets/sod-123w-package-outline-nexperia-cfp3.png'
+
+<Image src={sod_123w_package_outline_nexperia_cfp3} width="800px">Package outline for the SOD-123W component package. This outline is taken from the Nexperia PMEG60T20ELR Schottky barrier diode datasheet[^nexperia-pmeg60t20elr-ds].</Image>
+
+## Similar To
+
+The SOD-123 family of packages is similar to:
+
+* [SOD-323](/docs/pcb-design/component-packages/sod-323-component-package/index.mdx) (larger)
+* [SOD-523](/docs/pcb-design/component-packages/sod-523-component-package/index.mdx) (smaller)
+* [SOD-723](/docs/pcb-design/component-packages/sod-723-component-package/index.mdx) (even smaller)
+* [SOD-923](/docs/pcb-design/component-packages/sod-923-component-package/index.mdx) (smallest)
+
+[^onsemi-ss12fp-ds]:  ON Semiconductor (now On Semi) (2021, May). _Surface Mount Schottky Barrier Rectifiers 1 A, 20 V - 150 V: SS12FP - S115FP_ [datasheet]. Retrieved 2022-01-36, from https://www.mouser.com/datasheet/2/308/1/S110FP_D-2320074.pdf.
+[^nexperia-pmeg60t20elr-ds]:  Nexperia (2018, Mar 6). _PMEG60T20ELR: 60 V, 2 A low leakage current Trench MEGA Schottky barrier rectifier_ [datasheet]. Retrieved 2022-01-26, from https://www.mouser.com/datasheet/2/916/PMEG60T20ELR-1599911.pdf.
+[^mouser-diodes-sod-123w-2]:  Mouser. _SOD-123W-2 Schottky Diodes & Rectifiers_ [search]. Retrieved 2022-01-26, from https://www.mouser.com/c/semiconductors/discrete-semiconductors/diodes-rectifiers/schottky-diodes-rectifiers/?package%20%2F%20case=SOD-123W-2.
+[^diodes-inc-sod-123f]: Diodes Incorporated (2019, Oct 9). _SOT123F - PACKAGE INFORMATION_. Retrieved 2024-04-17, from https://www.diodes.com/assets/Package-Files/SOD123F.pdf.
+[^rohm-rb160m-90-schottky-barrier-diode-ds]: Rohm Semiconductor (2015). _Schottky barrier diode - RB160M-90_ [datasheet]. Retrieved 2024-04-17, from https://fscdn.rohm.com/en/products/databook/datasheet-nrnd/discrete/diode/schottky_barrier/rb160m-90.pdf.
+[^panasonic-db2x20700l-schottky-barrier-diode-ds]: Panasonic (2013, Apr 24). _Schottky Barrier Diode - DB2X20700L_ [datasheet]. Retrieved 2024-04-17, from https://www.datasheet.es/PDF/737041/DB2X20700L-pdf.html.

@@ -1,0 +1,29 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Programming, CPU Architectures, ARM Cortex-M3]
+date: 2024-04-03
+draft: false
+last_update:
+  date: 2024-04-03
+  author: Geoffrey Hunter
+tags: [programming, CPU architectures, CPU, microcontrollers, MCU]
+title: PowerPC e200
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## Overview
+
+The PowerPC e200 is a family of 32-bit CPU cores developed by Freescale for embedded in SoCs targeted at automotive and industrial control system markets[^wikipedia-powerpc-e200].
+
+The e200z7 is used in the MPC5775B/E SoCs[^nxp-mpc5775b-mcus-for-bms-and-inverters], as shown below:
+
+import e200z7_used_in_mpc5775b_mcu_annotated from './_assets/e200z7-used-in-mpc5775b-mcu-annotated.png'
+
+<Image src={e200z7_used_in_mpc5775b_mcu_annotated} width="700px">The e200z7 core used in the MPC5775B/E MCUs[^nxp-mpc5775b-mcus-for-bms-and-inverters].</Image>
+
+[^nxp-mpc5775b-mcus-for-bms-and-inverters]: NXP. _MPC5775B and MPC5775E Microcontrollers for Battery Management Systems (BMS) and Inverter Applications_. Retrieved 2024-04-03, from https://www.nxp.com/products/processors-and-microcontrollers/power-architecture/mpc5xxx-microcontrollers/ultra-reliable-mpc57xx-mcus/mpc5775b-and-mpc5775e-microcontrollers-for-battery-management-systems-bms-and-inverter-applications:MPC5775B-E.
+[^wikipedia-powerpc-e200]: Wikipedia (2022, Jul 11). _PowerPC e200_. Retrieved 2024-04-03, from https://en.wikipedia.org/wiki/PowerPC_e200.

@@ -1,0 +1,23 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Signal Processing", "Image Processing" ]
+date: 2019-07-09
+description: ""
+draft: false
+last_update:
+  date: 2019-07-09
+  author: Geoffrey Hunter
+tags: [ "programming", "signal processing", "image processing", "image registration", "self-similarity context", "SSC", "modality independent neighbourhood descriptor", "MIND" ]
+title: "Self-similarity Context (SSC)"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+The SSC (Self-similarity Context) is a image registration algorithm that is designed to work well against images of different modalities.
+
+It is described in the publication [Towards Realtime Multimodal Fusion for Image-Guided Interventions using Self-Similarities](http://www.mpheinrich.de/pub/miccai2013_943_mheinrich.pdf) ([cached local copy](TowardsRealtimeMultimodalFusionForImageGuidedInterventionsUsingSelfSimilarities.pdf)). One of the authors, Mattias P. Heinrich, is also the author of the Modality Independent Neighbourhood Descriptor publication, which SSC builds upon. I recommend you read the [Modality Independent Neighbourhood Descriptor (MIND) page](/programming/signal-processing/image-processing/image-registration/modality-independent-neighbourhood-descriptor-mind/) to learn about the shared concepts before continuing on with this tutorial.
+
+The main advantage of SSC over MIND is it's higher resilience to noise, due to exclusion of the pixel you are calculating the descriptor for from the descriptor pixels search space pairs. Instead of each pixel in the search space being compared to the descriptor pixel, search space pixels are compared with neighbouring search space pixels, which captures the "structural context" surrounding the descriptor pixel.

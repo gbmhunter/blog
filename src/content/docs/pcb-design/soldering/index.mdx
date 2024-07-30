@@ -1,0 +1,49 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2013-08-27
+draft: false
+last_update:
+  date: 2021-03-14
+  author: Geoffrey Hunter
+tags: [ "PCB design", "solder", "soldering", "solder paste", "reflow", "oven", "head-in-pillow", "HiP", "tombstoning" ]
+title: "Soldering"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+import smd_components_in_reflow from './smd-components-in-reflow.gif'
+
+<Image src={smd_components_in_reflow} width="240px">SMD components during a reflow soldering process.</Image>
+
+## Manually Applying Solder Paste
+
+Plastic syringe tips are usually better than metal ones, as they offer less friction to the paste, making it easier to control the amount of paste which comes out.
+
+## Solder Paste Dispensing Machines
+
+If you are applying solder paste by hand (as opposed to using a template), you can purchase machines which help automatically dispense a measured amount of solder paste from the syringe. Most are operated with air pressure and require an external air compressor (recommended to be at least 1.5HP). You can also get based around linear motors and peristaltic pumps. Common models from AliExpress include:
+
+* YDL-983A
+* AD-982
+
+Model Number | Features       | Vendor     | Vendor Price
+-------------|----------------|------------|-------------------------
+xxx-982      | Analogue dials | AliExpress | US$70 (inc. shipping)
+xxx-983A     | Digital dials  | AliExpress | US$120 (inc. shipping)
+
+## Pre/Post Soldering Heaters
+
+Many components require controlled pre-heating and post-cooling to solder effectively.
+
+## Soldering Defects
+
+### Tombstoning
+
+TODO: Add info.
+
+### Head-In-Pillow (HiP)
+
+AIM Solder has a great paper on head-in-pillow defects at https://aimsolder.com/sites/default/files/head-in-pillow_bga_defects.pdf ([cached local copy](head-in-pillow-bga-defects-aim-solder.pdf)).

@@ -1,0 +1,65 @@
+---
+authors: [gbmhunter]
+categories: [ "Posts", "Updates" ]
+date: 2021-09-30
+description: "Blog updates during September 2021."
+draft: false
+last_update:
+  date: 2021-09-30
+  author: Geoffrey Hunter
+tags: []
+title: "September 2021 Updates"
+type: "post"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+* Added a ["How They Work" section](/electronics/components/analogue-switches-transmission-gates/) to the Analogue Switches page, including a circuit diagram.
+
+import analogue_switch_screenshot from './analogue-switch-screenshot.png'
+
+<Image src={analogue_switch_screenshot} width="500px"></Image>
+
+* Added a new page with info on the [SC-89 component package](/pcb-design/component-packages/sc-89-component-package/).
+
+* Added a model of the input offset voltage for op-amps, a schematic for external input offset voltage trimming, and info on input offset voltage drift with both temperature and time to the [Op-Amps page](/electronics/components/op-amps/).
+
+* Added new page called [What Are Transfer Functions, Poles, And Zeroes?](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/).
+
+* Add the tutorial: [Creating A Scheduled Lambda Function Using AWS CDK](/programming/cloud/aws/creating-a-scheduled-lambda-function-using-aws-cdk/).
+
+* Added info on [SMD crystal packages](/pcb-design/component-packages/crystal-packages/).
+
+* Added info on the [turnover temperature and oscillation mode of 32.768kHz crystals and the negative resistance test](/electronics/components/crystals/#32678khz-crystals).
+
+import n_32678khz_crystal_turnover_temp_screenshot from './32678khz-crystal-turnover-temp-screenshot.png'
+
+<Image src={n_32678khz_crystal_turnover_temp_screenshot} width="500px"></Image>
+
+* Added info on [RTL and SR latches](/electronics/circuit-design/digital-logic/latches-and-flip-flops/).
+
+import sr_latch_screenshot from './sr-latch-screenshot.png'
+
+<Image src={sr_latch_screenshot} width="500px"></Image>
+
+* Added info on summing amplifiers to the Op-Amps page.
+
+import non_inverting_summing_amplifier_screenshot from './non-inverting-summing-amplifier-screenshot.png'
+
+<Image src={non_inverting_summing_amplifier_screenshot} width="400px"></Image>
+
+* Added info, schematics and simulation results for op-amp based level-shifters.
+
+import op_amp_level_shifter_screenshot from './op-amp-level-shifter-screenshot.png'
+
+<Image src={op_amp_level_shifter_screenshot} width="400px"></Image>
+
+* Condensed the four battery pages (lead-acid, zinc-air, coin cells, lithium thionyl chloride) into a [single Batteries page](/electronics/components/batteries/).
+
+* Condensed the diode pages (TVS diodes, LEDs, Zener Diodes, General Purpose Diodes) into a [single page](/electronics/components/diodes/).
+
+* Added info, schematics and equations for op-amp based ideal diodes and half-wave rectifiers.
+
+import inverting_half_wave_rectifier_screenshot from './inverting-half-wave-rectifier-screenshot.png'
+
+<Image src={inverting_half_wave_rectifier_screenshot} width="400px"></Image>

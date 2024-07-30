@@ -1,50 +1,27 @@
 {
-  "name": "blog-docusaurus",
-  "version": "0.0.0",
-  "private": true,
+  "name": "blog-astro",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "env-cmd node -e \"console.log(v8.getHeapStatistics().heap_size_limit/(1024*1024))\" && env-cmd docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@docusaurus/core": "3.4.0",
-    "@docusaurus/preset-classic": "3.4.0",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "@astrojs/check": "^0.8.2",
+    "@astrojs/starlight": "^0.25.2",
+    "astro": "^4.10.2",
+    "astro-auto-import": "^0.4.2",
     "rehype-katex": "^7.0.0",
-    "remark-math": "^6.0.0"
+    "rehype-mathjax": "^6.0.0",
+    "remark-math": "^6.0.0",
+    "sharp": "^0.32.5",
+    "starlight-blog": "^0.11.1",
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.4.0",
-    "@docusaurus/tsconfig": "3.4.0",
-    "@docusaurus/types": "3.4.0",
-    "env-cmd": "^10.1.0",
-    "typescript": "~5.2.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 3 chrome version",
-      "last 3 firefox version",
-      "last 5 safari version"
-    ]
-  },
-  "engines": {
-    "node": ">=18.0"
+    "astro-vtbot": "^1.8.2"
   }
 }

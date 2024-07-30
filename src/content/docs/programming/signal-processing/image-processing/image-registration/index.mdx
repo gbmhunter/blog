@@ -1,0 +1,47 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Signal Processing" ]
+date: 2019-06-20
+description: ""
+draft: false
+last_update:
+  date: 2019-06-27
+  author: Geoffrey Hunter
+tags: [ "programming", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch" ]
+title: "Image Registration"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+Some of the difficulties of image registration:
+
+* Non-rigid deformation. When the features in one image have been stretched or squeezed in the sense that the feature has undergone more than just a simple translation and rotation.
+* Intensity distortions. Different modalities (e.g. US and MRI) measure different physical phenomena to construct an image. These modalities may (and likely will) respond differently in intensity for the same feature in the image (e.g. in one modality, the feature may get linearly lighter from left to right, while in another, it gets exponentially darker).
+
+## Terminology
+
+* _image patch_: A small piece (generally rectangular) of a larger image. For example, you could examine 4x4 pixel patches of a 500x500 image.
+* _kernel_: A small image which is usually of a specific pattern, and is used in a convolution with another image to perform operations such as blurring, sharpening, and edge detection.
+
+## Types of Transformations
+
+A transformation is _rigid_ if it only contains translations and rotations.
+
+A transformation is _affine_ if it maps parallel lines onto parallel lines.
+
+A transformation is _projective_ if it maps lines onto lines.
+
+A transformation is _elastic_ if it maps lines onto curves.
+
+## Cross-Correlation
+
+### Mutual Information
+
+MI (_Mutual information_) quantifies the information shared between two different images. It is different to cross-correlation in that the relationship between the two images does not have to be linear.
+
+### Modalities
+
+Image correlation becomes more difficult when the images have different modalities. A modality is a particular technique used to perform imaging. A typical example of image registration between images of different moldalities occurs in the medical domain with MR (magnetic resonance) and US (ultrasound) images.

@@ -1,0 +1,27 @@
+---
+import { Image as AstroImage } from 'astro:assets';
+
+const { src, width, ...attrs } = Astro.props;
+---
+
+<div class="image-wrapper">
+  <a href={src.src}><AstroImage src={src} width={width} alt="" {...attrs} /></a>
+<figcaption><slot /></figcaption>
+</div>
+
+<style define:vars={{ width }}>
+    .image-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem 0;
+    }
+    
+    figcaption {
+        font-size: 1.0rem;
+        color: #666;
+        margin-top: 0.5rem;
+        min-width: 100px; /* Don't make the caption too narrow if image is small */
+        width: var(--width);
+    }
+</style>

@@ -1,0 +1,29 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2013-09-05
+draft: false
+title: How To Route A PSoC Microcontroller
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## SIO Pins
+
+SIO pins can:
+
+* Act as digital I/O
+* Can handle up to 5.5V on SIO pins, regardless of the microcontrollers maximum supply voltage (this is due to no top ESD diode).
+* Sink/source more current than GPIO
+* Can have programmable drive voltage levels
+
+SIO pins cannot:
+
+* Act as analogue I/O. This means you cannot connect them up things like the ADC, VDAC, IDAC, e.t.c.
+* Cannot act as LCD I/O.
+
+Some SIO pins also have fixed-hardware I2C peripherals connected to them. In my experience, SIO pins also tend to use a little more power than GPIO, it seems that their input buffers consume more current.
+
+import additional_features_only_provided_on_sio_pins from './_assets/additional-features-only-provided-on-sio-pins.png'
+
+<Image src={additional_features_only_provided_on_sio_pins} width="631px">Information on the SIO pins from a PSoC datasheet.</Image>

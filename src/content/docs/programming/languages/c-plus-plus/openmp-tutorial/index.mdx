@@ -1,0 +1,70 @@
+---
+title: "OpenMP Tutorial"
+description: "\"Hello, world\" example using OpenMP."
+tags: [ "OpenMP", "multiprocessing", "parallelization", "multi-threading" ]
+authors: [ "Geoffrey Hunter" ]
+date: 2018-12-04
+last_update:
+  date: 2018-12-05
+  author: Geoffrey Hunter
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Prerequisites
+
+* You are familiar with the command-line and you have access to a Linux/Mac OS, or you know how to tweak these commands where needed to run on Windows (you shouldn't need to change much)
+* You have a modern version of GCC installed.
+
+## The Hello, World Example
+
+1. Create a new empty working directory and `cd` into it.
+
+2. Create a new file called `main.cpp` with the following contents:
+
+    ```c++
+    #include <iostream>
+
+    int main() {
+        #pragma omp parallel num_threads(4)
+        {
+            std::cout << "Hello!\n";
+        }
+    }
+    ```
+
+3. Run the following command to compile/link your code into an executable:
+
+    ```sh
+    $ g++ main.cpp -o hello_world -fopenmp
+    ```
+
+4. Run the following command to run your program:
+
+    ```sh
+    $ ./hello_world
+    ```
+
+    You should see output similar to:
+
+    ```sh
+    $ ./hello_world
+    Hello!
+    Hello!
+    Hello!
+    Hello!
+    ```
+
+The `#pragma omp parallel` macro told the compile to parallelize the code within the braces. A _team_ of 4 theads are created, as specified by `num_threads(4)`. These threads ran concurrently (and potentially in parallel if you have multiple cores) and each printed out `"Hello!"`.
+
+You shouldn't see any mangling of the `"Hello!\n"` as a single stream operation (`<<`) is guaranteed to be atomic. However, we would run into a mess if we tried to do something like:
+
+```c++
+std::cout << "Hello, " << "world" << std::endl;
+```
+
+as there would be no guarantee that `"world"` will be printed directly after `"hello"`...another thread may grab control of `std::cout` and print something in-between (the same applies to the `std::endl`, which normally prints a `\n`).
+
+`-fopenmp` told GCC to compile using OpenMP (otherwise the `#pragma ...` macro would of been ignored).
+

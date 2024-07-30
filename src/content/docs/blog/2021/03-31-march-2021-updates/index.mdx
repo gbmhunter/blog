@@ -1,0 +1,116 @@
+---
+authors: [gbmhunter]
+categories: [ "Posts", "Updates" ]
+date: 2021-03-31
+description: "Blog updates during March 2021."
+draft: false
+last_update:
+  date: 2021-03-31
+  author: Geoffrey Hunter
+tags: []
+title: "March 2021 Updates"
+type: "post"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+Added a new page on the [uSiP Component Package](/pcb-design/component-packages/usip-component-package/).
+
+import img_usip_component_package_3d_render from './_assets/sil10c-usip-component-package-3d-render.png'
+
+<Image src={img_usip_component_package_3d_render} width="200px"></Image>
+
+Added a new page on [Light-Dependent Resistors (LDRs)](/electronics/components/light-dependent-resistors-ldrs).
+
+Added data on the [Early Voltage](/electronics/components/transistors/bipolar-junction-transistors-bjts#early-voltage-va) $V_A$ and [thermal voltage](/electronics/components/transistors/bipolar-junction-transistors-bjts#thermal-voltage) $V_T$ to the Bipolar Junction Transistors (BJTs) page.
+
+Added [schematics and a design procedure](/electronics/components/transistors/bipolar-junction-transistors-bjts#using-a-resistor-divider-to-drive-the-base) for a NPN BJT current-sink whose base is driven by a resistor divider.
+
+import img_current_source_npn_voltage_divider_base from './_assets/current-source-npn-voltage-divider-base.svg'
+
+<Image src={img_current_source_npn_voltage_divider_base} width="400px"></Image>
+
+Added [schematics and a design procedure](/electronics/components/transistors/bipolar-junction-transistors-bjts#current-mirrors) for a BJT current mirror.
+
+New [PlatformIO page](/programming/integrated-development-environments-ides/platform-io).
+
+import img_platformio_logo from './_assets/platformio-logo.png'
+
+<Image src={img_platformio_logo} width="150px"></Image>
+
+Updated the [size codes on the SMD Electrolytic Capacitor Packages page](/pcb-design/component-packages/smd-electrolytic-capacitor-packages).
+
+Added info on the [hybrid-pi transistor model to the Bipolar Junction Transistors (BJTs) page](/electronics/components/transistors/bipolar-junction-transistors-bjts#hybrid-pi-transistor-model).
+
+import img_hybrid_pi_model_simplified from './_assets/hybrid-pi-model-simplified.png'
+
+<Image src={img_hybrid_pi_model_simplified} width="600px"></Image>
+
+Added a new page on reliability engineering for electronics.
+
+Added a open-loop vs. closed-loop bode plot and generalized negative feedback block diagram (with equations) to the Op-Amps page.
+
+Added new page on the [TO-99 Component Package](/pcb-design/component-packages/to-99-component-package).
+
+import img_lm741h_op_amp_to_99_component_package_photo from './_assets/lm741h-op-amp-to-99-component-package-photo.jpg'
+
+<Image src={img_lm741h_op_amp_to_99_component_package_photo} width="200px"></Image>
+
+Added a new page on the [Thermoelectric Effect](/electronics/circuit-design/thermoelectric-effect).
+
+import img_seebeck_effect_two_wires_across_temp_differential from './_assets/seebeck-effect-two-wires-across-temp-differential.svg'
+
+<Image src={img_seebeck_effect_two_wires_across_temp_differential} width="600px"></Image>
+
+Added a new page on the [TO-247 Component Package](/pcb-design/component-packages/to-247-component-package).
+
+import img_to_247ac_component_package_3d_render_infineon from './_assets/to-247ac-component-package-3d-render-infineon.jpg'
+
+<Image src={img_to_247ac_component_package_3d_render_infineon} width="300px"></Image>
+
+Updated the `img` shortcode so that caption text is now rendered as markdown (done by calling the hugo function `| markdownify` on the passed in parameter). This allows things such as the ability to add URL links into the image caption, great when referencing the source of the image.
+
+Added a section to the Op-Amp page on Negative Impedance Converters (NICs).
+
+import img_negative_impedance_converter_nic from './_assets/negative-impedance-converter-nic.svg'
+
+<Image src={img_negative_impedance_converter_nic} width="500px"></Image>
+
+Merged the Passive Filters and Active Filters pages into a single new [Analogue Filters page](/electronics/circuit-design/analogue-filters/) and re-organized the entire page.
+
+Added info on the Sallen-Key filter topology.
+
+import low_pass_unity_gain_sallen_key_filter_schematic from './_assets/low-pass-unity-gain-sallen-key-filter-schematic.png'
+
+<Image src={low_pass_unity_gain_sallen_key_filter_schematic} width="800px"></Image>
+
+Added info on four common analogue filter optimizations/tunings (Butterworth, Chebyshev, Bessel and Elliptic).
+
+Added info on overriding the standard library version of `malloc()` (and friends) with an application specific version:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    inti = malloc(sizeof(int));
+    free(i);   
+}
+
+voidmalloc(size_t s)
+{
+    printf("My custom malloc() called");
+    return NULL;
+}
+
+void free(voidp)
+{
+    printf("My custom free() called");
+}
+```
+
+Added info on the [MQTT broker Mosquitto and MQTT client Paho](/electronics/communication-protocols/mqtt-protocol).
+
+import img_mqtt_logo from './_assets/mqtt-logo.png'
+
+<Image src={img_mqtt_logo} width="400px"></Image>

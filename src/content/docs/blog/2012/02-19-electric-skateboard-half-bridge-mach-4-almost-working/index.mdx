@@ -1,0 +1,31 @@
+---
+authors: [gbmhunter]
+categories: [ "Electric Skateboard" ]
+date: 2012-02-19
+draft: false
+tags: [ "electric skateboard", "half-bridges", "heating", "MOSFETs", "motors" ]
+title: Electric Skateboard Half-Bridge Mach 4 Almost Working
+type: post
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+I finished building and started testing half-bridge mach 4 this weekend. To my surprise, it's working much better than the previous 3! For one, no MOSFETs blew up within the first few seconds of connecting it up to the motor. I have a feeling it's to do with the higher Vds (100V) of these MOSFETs over the previous ones (75V). This gives the drain-source TVS diodes plenty of play-room to kick in and absorb transients before the MOSFET gets damaged.
+
+The schematic the prototype board was made from.
+
+import half_bridge_schematic_for_eda_forums from './half-bridge-schematic-for-eda-forums.jpg'
+
+<Image src={half_bridge_schematic_for_eda_forums} width="320px"></Image>
+
+Testing it with a motor. I was able to stand on it for short times! (last time the MOSFETs blew).
+
+import n_2012_02_18_17_08_37 from './2012-02-18-17-08-37.jpg'
+
+<Image src={n_2012_02_18_17_08_37} width="320px"></Image>
+
+However, the MOSFETs and the bulk capacitor were getting unusually hot. I hooked a scope up to the gates of the MOSFETs and noticed ringing on the low-side FET when the high-side FET switched on. I think this is causing momentary shoot-through. This would explain hot FETs, and, if the voltage rail was sagging, hot bulk capacitors.
+
+import n_2012_02_18_16_17_26 from './2012-02-18-16-17-26.jpg'
+
+<Image src={n_2012_02_18_16_17_26} width="320px">The oscillating gate drive to the MOSFETs.</Image>

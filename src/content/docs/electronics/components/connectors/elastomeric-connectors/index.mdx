@@ -1,0 +1,40 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2022-06-06
+description: "Info on Elastomeric connectors."
+draft: false
+last_update:
+  date: 2022-06-06
+  author: Geoffrey Hunter
+tags: [ electronics, connectors, elastomeric, LCDs, liquid crystal displays, current, ZEBRA, anisotropic, conductive, Fujipoly ]
+title: Elastomeric Connectors
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+_Elastomeric connectors_ (a.k.a. ZEBRA connectors, the popular trademarked name by Fujipoly[^bib-fujipoly-design-guidelines]) are electrical connectors made from **alternating regions of conductive and insulating rubber or elastomer**[^bib-wikipedia-elastomer-conn] (e.g. carbon-filled and normal silicone rubber[^bib-fujipoly-zebra-conn]).
+
+import zebra_connector_photo from './zebra-connector-photo.png'
+
+<Image src={zebra_connector_photo} width="400">Photo of the ZEBRA branded elastomeric connector from Fujipoly[^bib-fujipoly-zebra-elastomeric-conn].</Image>
+
+One popular use for these connectors was (and still is) to connect small liquid crystal displays (LCDs) to the controlling circuit board. LCDs only require small currents and thus suitable for use with elastomeric connectors. 
+
+## Pitch Considerations
+
+There are two common ways of using elastomeric connectors:
+
+1. **Pitch of elastomeric connector is the same** as the PCB/components, and pads on components are aligned with the connector (1 to 1).
+1. **Pitch of elastomeric connector is much smaller** (at least twice as small, but ideally even finer), and no precise alignment is required. This method relies on there being at least one conductive part of the connector touching each pad on the component. This idea is very similar to anisotropic conductive film.
+
+import zebra_connector_interface from './zebra-connector-interface.png'
+
+<Image src={zebra_connector_interface} width="500">Drawing from Fujipoly showing how a fine-pitch elastomeric connector can connect larger pitched components without precise alignment[^bib-fujipoly-zebra-elastomeric-conn].</Image>
+
+[^bib-wikipedia-elastomer-conn]: Wikipedia (2021, Aug 31). _Elastomeric connector_. Retrieved 2022-06-06, from https://en.wikipedia.org/wiki/Elastomeric_connector.
+[^bib-fujipoly-zebra-conn]: Fujipoly. _Zebra® Connectors Earn Their Stripes_. Retrieved 2022-06-06, from https://www.fujipoly.com/usa/news/announcements/zebra%C2%AE-connectors-earn-their-stripes.html.
+[^bib-fujipoly-design-guidelines]: Fujipoly. _Connectors: Design Guidelines for Connectors_. Retrieved 2022-06-06, from https://www.fujipoly.eu/resources/design-guidelines/connectors/.
+[^bib-fujipoly-zebra-elastomeric-conn]: Fujipoly. _ZEBRA® Elastomeric Connectors_. Retrieved 2022-06-06, from https://www.fujipoly.com/usa/products/zebra-elastomeric-connectors/.

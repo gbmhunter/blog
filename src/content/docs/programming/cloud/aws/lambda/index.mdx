@@ -1,0 +1,38 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Cloud", "AWS" ]
+date: 2020-03-26
+description: "An introduction to lambda, a function execution service (aka serverless) provided by AWS."
+draft: false
+last_update:
+  date: 2020-03-26
+  author: Geoffrey Hunter
+tags: [ "programming", "cloud", "AWS", "Amazon Web Services", "lambda", "function", "serverless" ]
+title: "Lambda"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+AWS Lambda is a service that can run code in the cloud, without you having to worry about servers. It let's you upload your code and a `.zip` file and then run it on pre-determined runtime environments. You only pay for the service when your "lambda" function is running. Scalability is also built into the service, as multiple instances of a lambda function can be created with ease.
+
+Amazon Linux is what runs on EC2 instances, [https://hub.docker.com/_/amazonlinux/](https://hub.docker.com/_/amazonlinux/).
+
+## Creating A Deployable Python Package
+
+If you are only importing modules that are shipped with Python, deploying Python code to a lambda function is easy, you can just zip up the files and upload them. Things get more difficult when you are including modules (libraries) that are not shipped with Python (e.g. you are `pip install`ing). Especially so when the modules come pre-built as a wheel for your particular machine. You cannot just bundle these up into the `.zip` file and upload it, as it will not likely run on different environment provided by the lambda service (e.g. if you pip install Numpy on a mac you will download Numpy executables for macOs, these will not run on the Linux-like environment in lambda).
+
+The common solution to this problem is to build/package your Python code up on a system environment which closely resembles the Lambda execution environment. lambci has published an image which closely represents the AWS lambda environment. It can be found at [https://hub.docker.com/r/lambci/lambda/](https://hub.docker.com/r/lambci/lambda/).
+
+For Python:
+
+```
+FROM lambci/lambda:build-python3.6
+```
+
+## AWS Lambda Container Image Converter Tool (img2lambda)
+
+Link: https://github.com/awslabs/aws-lambda-container-image-converter
+

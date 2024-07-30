@@ -1,0 +1,500 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Programming Languages", "Python", "C++" ]
+date: 2017-08-16
+draft: false
+last_update:
+  date: 2019-03-25
+  author: Geoffrey Hunter
+tags: [ "programming", "programming languages", "Python", "SWIG", "binding", "C", "C++", "interface", "CMake", "typemaps", "directors" ]
+title: Python SWIG Bindings From C/C++
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+**Sometimes you may want to call C++/C code from python.** This could be because the functionality you need is contained in a C++ library, you require low-level system or I/O access, or you want the performance benefits of running C++/C code vs. python.
+
+Although there are many different ways of calling C++ code from Python, this page focuses on using [SWIG](http://www.swig.org/).
+
+import swig_python_bindings_logo from './_assets/swig-python-bindings-logo.png'
+
+<Image src={swig_python_bindings_logo} width="307px">The SWIG logo.</Image>
+
+There are numerous working SWIG example projects at [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig) which follow along with the below tutorial. They are designed to be run in a Docker container created by the Dockerfile in the same repo (run the root-level run.sh to create and enter the Docker container).
+
+## What is SWIG?
+
+The Simplified Wrapper And Interface Generator (SWIG) is a free open-source tool which allows you to call C or C++ from a range of other programming languages.
+
+To steal a quote directly from [http://www.swig.org/](http://www.swig.org/):
+
+> SWIG is a software development tool that connects programs written in C and C++ with a variety of high-level programming languages.
+
+SWIG can build C/C++ bindings to large number of programming languages, including:
+
+* Guile
+* Perl
+* Python
+* Tcl
+
+This tutorial focuses on building bindings for calling C++ code from Python, using the CMake build system.
+
+## The Interface File
+
+SWIG is configured with what is called an interface file. The interface file tells SWIG where to find C/C++ files, what objects it should create wrappers for, and what features should be included.
+
+The interface file typically has the file extension .i and is called something like input.i.
+
+Here is an example of a SWIG interface file:
+
+```c++
+/* File: example.i */
+%module example
+
+%{
+    #define SWIG_FILE_WITH_INIT
+    #include "Example.hpp"
+%}
+
+%include "Example.hpp"
+```
+
+This file can be found at [https://github.com/gbmhunter/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i.](https://github.com/gbmhunter/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i)
+
+## Installing And Running SWIG
+
+SWIG can be installed with the following commands:
+
+debian-like:
+
+```sh
+$ sudo apt install swig   
+```
+
+mac OS (using homebrew):
+
+```sh
+$ brew install swig
+```
+
+Run the following command to check that SWIG was installed successfully (this was run on Mac OS):
+
+```sh    
+$ swig -version
+
+SWIG Version 3.0.12
+
+Compiled with clang++ [x86_64-apple-darwin16.3.0]
+
+Configured options: +pcre
+```
+
+The basic invocation of SWIG for generated a python wrapper for C code is:
+
+```sh    
+$ swig -python input.i
+```
+
+This will make SWIG ingest the _interface file_ input.i and create a C wrapper file.
+
+If you are creating a wrapper for C++ code instead of C, use:
+
+```sh    
+$ swig -python -c++ input.i
+```
+
+See [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/BasicExample](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/BasicExample) for a basic example which creates bindings for C++ code and then calls them from Python.
+
+**Commonly Used SWIG Program Arguments:**
+
+_Sorted alphabetically:_
+
+`-includeall`: SWIG parses #include directives from within source code, and generates bindings for all these files also. Usually not a good idea!
+
+`-threads`: SWIG will release the GIL when calling any C/C++ library code from Python (excluding classes that have been wrapped in directors)
+
+## CMake
+
+CMake has built-in support for creating SWIG bindings for your C++ project (for more information on CMake itself, see [/programming/build-systems-and-package-managers/cmake](/programming/build-systems-and-package-managers/cmake)). To use CMake to build SWIG bindings, make sure to include the SWIG package with the following command in your CMakeLists.txt:
+
+```text
+FIND_PACKAGE(SWIG REQUIRED)
+```
+
+When using the CMake SWIG package, swig is automatically called for you by CMake. Don't worry, you can still provide arguments to calling swig via the `SET_SOURCE_FILES_PROPERTIES` command.
+
+```cmake
+SET_SOURCE_FILES_PROPERTIES(MySWIGInterfaceFile.i PROPERTIES SWIG_FLAGS "-threads")
+```
+
+You also need to provide a list of all the source files required to generated the library/bindings:
+
+```cmake
+file(GLOB_RECURSE Swig_SRC "src/*.cpp")
+```
+
+You create a Python module (a set of bindings created from settings in an interface file) by using the `SWIG_ADD_MODULE()` command.
+
+```cmake
+# Make sure to set all SWIG properties/config before calling the
+# below line! This makes a make target called "_<ModuleName>"
+SWIG_ADD_MODULE(<ModuleName> python MyInterfaceFile.i ${Swig_SRC})
+SWIG_LINK_LIBRARIES(<ModuleName> ${PYTHON_LIBRARIES})
+```
+
+## Applying Compile Flags To The Generated SWIG Source File
+
+SWIG generates a specific source file (normally with the extension .cxx if using C++) which contains the binding code which makes the C++ library compatible with Python.
+
+If you want, you can modify the compiler flags used to compile this file with the `${swig_generated_file_fullname}` parameter. For example, to compile with the C++11 standard:
+
+```text
+SET_SOURCE_FILES_PROPERTIES(${swig_generated_file_fullname}
+        PROPERTIES COMPILE_FLAGS "-std=c++11")
+```
+
+`${swig_generated_file_fullname}` usually expands to `<path>/<module name>PYTHON_wrap.cxx` for C++ libraries. The variable is only valid after `SWIG_ADD_MODULE(...)` is called.
+
+## Installing Python Bindings Using CMake
+
+You can instruct CMake to install the generated SWIG Python bindings onto your computer when sudo make install is run.
+
+Add the following code to your `CMakeLists.txt` file, after the `SWIG_ADD_MODULE(...)` line.
+
+```text
+# INSTALL PYTHON BINDINGS
+# Get the python site packages directory by invoking python
+execute_process(COMMAND python3 -c "import site; print(site.getsitepackages()[0])" OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
+message("PYTHON_SITE_PACKAGES = ${PYTHON_SITE_PACKAGES}")
+install(TARGETS _<PythonModuleName> DESTINATION ${PYTHON_SITE_PACKAGES})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/<PythonModuleName>.py DESTINATION ${PYTHON_SITE_PACKAGES})
+```
+
+Notice the mention of `_<PythonModuleName>`. The SWIG package automatically adds a underscore to the compiled C/C++ library, while the generated `<PythonModuleName>.py` file does not have this underscore.
+
+## Order Is Important
+
+**The order in which to add classes** (or header files via %include) to the SWIG .i file **is important**. For example, is class B uses class A (say class B gets passed a pointer to a class A object in one of it's methods), then class A should be included before class B, otherwise you won't be able to pass in a python object of class A into B (it will complain about a TypeError).
+
+## Typemaps
+
+**Typecheck Typemaps**
+
+There is a specific type of type map called a _typecheck_. The job of a typecheck function is to check that a provided object is of the correct type. You may stumble across to need to create custom type checks when trying to create C++ overloaded functions that have an input variable with a custom typemap. SWIG requires custom typechecks for these variables in order to work out which version of the overloaded function to call.
+
+For example, say we provided a custom typemap for `std::vector<uint8_t>`, we should then provide a custom typecheck if we ever want to use call overloaded functions that accept a `std::vector<uint8_t>` from Python. Our SWIG interface file would then look like:
+
+```c++
+%include "typemaps.i"
+%include "std_vector.i"
+%include "stdint.i"
+
+%template(IntVector) std::vector<int>;
+
+//================================//
+//===== std::vector<uint8_t> =====//
+//================================//
+
+// Convert from Python --> C
+%typemap(in) std::vector<uint8_t, std::allocator<uint8_t>> {  
+    auto temp = std::vector<uint8_t>();
+    for(int i = 0; i < PyList_Size($input); i++) {
+    temp.push_back(PyInt_AsLong(PyList_GetItem($input, i)));
+    }
+    $1 = temp;  
+}
+
+// This typecheck allows for function overloads with std::vector<uint8_t>
+// Copy typecheck for std::vector<int>
+%typemap(typecheck) std::vector<uint8_t, std::allocator<uint8_t>> = std::vector<int>;
+
+// Rest of interface file here...
+```
+
+We would then be able to create Python interfaces for the following C++ overloaded functions (notice, same function name, different arguments, and at least one of these arguments requires a custom typemap):
+
+```
+int SumUInt8(std::vector<uint8_t> array);
+int SumUInt8(std::vector<uint8_t> array, uint32_t numElements);
+```
+
+without the dreaded `**NotImplementedError: Wrong number or type of arguments for overloaded function '<function name>'**` error!
+
+**For a working code example using custom typemaps and typechecks, see [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample).**
+
+## Cross-language Polymorphism (Directors)
+
+**By default, cross-language polymorphism will not work with SWIG bindings.** For example, consider a Python class which inherits from a wrapped C++ class containing virtual methods. If the child Python class then overrides some of the base class functions, and is passed into the C++ side, these overriding functions will not be called.
+
+Cross-language polymorphism is important when you are using interfaces. Some C++ libraries use pure virtual (or just virtual) classes to describe interfaces to your application, which may be in Python.
+
+Thankfully, SWIG supports cross language polymorphism. They support the feature through the use of **_directors_**. To enable directors, make sure `directors="1"` is appended to the `module` keyword as below:
+
+```c++
+%module(directors="1") <module name>
+```
+
+However, you still need to tell SWIG what classes to create directors for. To do this, use `%feature("director")` as shown below. **To enable directors for all classes which have virtual methods, add:**
+
+```c++
+%feature("director");
+```
+
+**To enable directors for specific classes** (recommended for larger projects as the code bloat that directors introduces can be quite high):
+
+```c++
+%feature("director") <class name>;
+```
+
+**Threading Issues With Directors**
+
+Normally, you can pass in the `-threads` argument when calling SWIG to make SWIG release the GIL upon every entry to your C/C++ library from Python (or if you are using CMake, call `SET_PROPERTY(SOURCE MyInterfaceFile.i PROPERTY SWIG_FLAGS "-threads")` ). **However, this is not the case for any C/C++ class that has been converted into a director.**
+
+I currently do not know how to make SWIG release the GIL when director methods are called from Python. This means that all other python threads will be blocked when C/C++ functions/classes that have been converted into directors are called from your Python code.
+
+**Output Variable Issues With Directors**
+
+Output variables passed into a C/C++ function (pointers or non-const references that are intended for relaying information back to the calling function, rather than using the return value) **require careful treatment with SWIG**. Even more so when the C/C++ functions are converted into directors.
+
+The problem stems from the fact that Python has no concept of pointers. Which means that all parameters are passed by copy. This is o.k. for mutable Python objects, as it is always a reference to the object which is copied (i.e. similar behaviour to a pointer), **but is a problem for basic immutable object types in Python such as integers or strings.**
+
+A C/C++ application which calls a base function which gets redirected to a Python child class (through the director mechanism) **will not work correctly** if it passes in pointers to basic data types such as integers and expects their value to be changed.
+
+A work-around is to specify a SWIG typemap which converts the primitive C/C++ data type into a _mutable_ Python object (such as a list with only one element, the primitive you are concerned about). Since a mutable Python object gets passed by taking a copy of the reference (works like a pointer to the object), any modifications in the callee code will be reflected in the caller's code.
+
+The disadvantage to this approach is that you have to remember that the variable passed into the Python code is now a list (or alternative mutable object), and you must use indexing to read/write the variable correctly.
+
+We will work through an example that creates typemaps such that int * output variables will work correctly with directors.
+
+Imagine we had this C++ code:
+
+```c++
+// A concrete version of this class will be created
+// in Python
+class AbstractClass {
+public:
+    virtual AddOne(int * outputVar) = 0;
+}
+
+// This function will be called from Python code
+// (standard function call)
+void CallMe(AbstractClass * abstractClass) {
+    int count = 3;
+    std::cout << "count equals " << count << std::endl;
+    // This call will not change count correctly
+    // unless typemaps have been created that turn the int
+    // into a Python object
+    abstractClass->AddOne(&count);
+
+    std::cout << "count now equals " << count << std::endl;
+}
+```
+
+Place this code in your SWIG interface file (.i file):
+
+```c++
+%typemap(directorin) int * {
+    $input = PyList_New(1);
+    PyList_SetItem($input, 0, PyInt_FromLong(*$1));
+}
+
+%typemap(directorargout) int * {
+    *$1 = PyInt_AsLong(PyList_GetItem($input, 0));
+}
+```
+
+Now we can do this in the Python code:
+
+```python
+class ConcreteClass(AbstractClass):
+    def AddOne(outputVar):
+        # Notice outputVar is a list in Python!
+        # This is what allows us to send data back to the
+        # callers function
+        outputVar[0] = outputVar[0] + 1
+
+concreteClass = ConcreteClass()
+SWIGWrapper.CallMe(concreteClass)
+# This will print:
+# count equals 3
+# count now equals 4
+```
+
+An alternative approach to converting the primitive C/C++ type into a mutable Python object is to use typemaps to extract the return value from a tuple that is returned from the called Python code. However, this can be messy as you have to map specific output variables to the returned tuple (but not all of them, only ones that are immutable types in Python).
+
+**Implementing Callbacks With Directors**
+
+You may encounter the need to create callbacks in Python which can be given to the C++ code, and then called. This functionality can be accomplished with the use of directors (cross-language polymorphism).
+
+First, in a C++ header file called Example.hpp, we will define an ICallback interface and an Example class which stores and then calls a pointer to a callback.
+
+```c++
+class ICallback {
+public:
+    virtual void Call() = 0;
+    virtual ~ICallback() {};
+};
+
+class Example {
+public:
+    void GiveCallback(ICallback* callback) {
+        callback_ = callback;
+    }
+
+    void CallCallback() {
+        callback_->Call();
+    }
+
+    ICallback * callback_;
+};
+```
+
+We will then create a SWIG interface file called example.i which creates bindings for the classes in the above Example.hpp file. We will make sure to enable directors, and then specifically specify the ICallback class as a director (this allows cross-language polymorphism).
+
+```text
+%module(directors="1") example
+
+%feature("director") ICallback;
+
+%{
+#include "Example.hpp"
+%}
+
+%include "Example.hpp"
+```
+
+We will then use swig to create some python bindings:
+
+```sh    
+$ swig -Wall -c++ -python example.i
+$ g++ -shared -fPIC example_wrap.cxx -o _example.so -I/usr/include/python3.5m/
+```
+
+Now lets write some Python code to test the callback functionality! Let's create a file called test.py:
+
+```c++    
+import example
+
+class Callback(example.ICallback):
+    def __init__(self, fnToCall):
+        example.ICallback.__init__(self)
+        self.fnToCall = fnToCall
+    def Call(self):
+        self.fnToCall()        
+
+def TestFunction():
+    print('Hello from a callback!')
+
+callback = Callback(TestFunction)
+
+example1 = example.Example()
+example1.GiveCallback(callback)
+example1.CallCallback()
+```
+
+As you can see above, we can now create a Callback object, passing in a python function we wish to call (in this case it is called TestFunction), and then pass it to an instance of a Example class (which is a C++ class). The Python function is then called when CallCallback() is executed.
+
+**This working code example can be found at [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CallbackExample.](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CallbackExample)**
+
+## What Did SWIG Create?
+
+Sometimes, even though SWIG compiled successfully, it can be difficult to determine if SWIG create the python bindings as intended. There are some useful tools you can use within the Python environment to determine what SWIG has exactly created.
+
+The first one worthy of mention is the Python help() command. Pass into help the module name of your bindings and Python will print all of the attributes of this module.
+
+```py   
+help(MyBindingModuleName)
+```
+
+This allows you to see what functions, classes, enumerations e.t.c are available from the Python code.
+
+## Return Values
+
+Whilst the C++ compiler enforces return values (if the function's signature says that it will return a value), python does not. This can lead to issues when implementing concrete class in python of a base class that was defined in C++. If you forget to return the correct type, your program can segmentation fault.
+
+## Smart Pointers
+
+As of September 2017, SWIG only has support for `std::shared_ptr`, but not `std::unique_ptr` or `std::weak_ptr`.
+
+The SWIG support for `std::shared_ptr`, is quite automatic. You have to first include the `std::shared_ptr.i` file in your SWIG interface file:
+
+```c++
+%include <std_shared_ptr.i>
+```
+
+Once this is included, you then need to tell SWIG about all the types that will be used with a shared pointer. For example, if you want SWIG to handle `std::shared_ptr<std::vector<uint8_t>>` type variables, you would write:
+
+```c++
+%shared_ptr(std::vector<uint8_t>)
+```
+
+Once this is done, shared pointers of this type should be created automatically when using this type with the SWIG interface.
+
+However, I have run into a problem with this feature, in where I could no longer pass the underlying type back and forth if I had used the %shared_ptr() macro on it. So instead of enabling this special shared pointer type mapping, I created a custom type map for the shared pointer:
+
+```c++
+// Convert from Python --> C
+%typemap(in) std::shared_ptr<std::vector<uint8_t>> {
+    auto temp = std::make_shared<ByteArray>();
+    for(int i = 0; i < PyList_Size($input); i++) {
+    temp->push_back(PyInt_AsLong(PyList_GetItem($input, i)));
+    }
+    $1 = temp;
+}
+```
+
+The above type map allows you to call C++ code that asks for a `std::shared_ptr<std::vector<uint8_t>>` by passing in a standard Python list.
+
+A similar type map was created for the other direction (C++ to Python) in the case that your are using directors:
+
+```c++
+// C++ --> Python director
+%typemap(directorin) std::shared_ptr<std::vector<uint8_t> {
+    // Create Python object
+    $input = PyList_New($1->size());
+    for(int i = 0; i < $1->size(); i++) {
+        PyList_SetItem($input, i, PyInt_FromLong($1->at(i)));
+    }
+}
+```
+
+This creates a Python list from a `std::shared_ptr<std::vector<uint8_t>>`.
+
+## Common Errors
+
+**fatal error: 'Python.h' file not found**
+
+This usually occurs if you are not providing the right include directory to your Python installation.
+
+```sh    
+$ g++ -shared -fPIC Example.cpp example_wrap.cxx -o _example.so -I/anaconda3/include/python3.6m/
+```
+
+Make sure the directory after `-I` is correct! (it should contain a `Python.h` file).
+
+**error: ‘SWIG_exception’ was not declared in this scope**
+
+Try adding `%include <exception.i>` to the top of your SWIG interface (.i) file.
+
+`**NotImplementedError: Wrong number or type of arguments for overloaded function '<function name>'.**`
+
+This could be because you have an C++ overloaded function like:
+
+```c++    
+void foo(uint32_t number);
+void foo(std::string msg);
+```
+
+But you have forgot to include the relevant typemaps for `uint32_t` and `std::string` in the SWIG interface file. In this particular instance, adding:
+
+```c++
+%include "stdint.i"
+%include "std_string.i"
+```
+
+before the code is added to the `.i` file fixes this error.
+
+If the function takes in arguments for which you have written custom typemaps, then you will also need to provide a typecheck typemap.

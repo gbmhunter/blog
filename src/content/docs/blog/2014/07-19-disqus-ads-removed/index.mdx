@@ -1,0 +1,33 @@
+---
+authors: [gbmhunter]
+date: 2014-07-19
+draft: false
+last_update:
+  date: 2014-07-19
+  author: Geoffrey Hunter
+tags: [ "ads", "Disqus" ]
+title: Disqus "Ads" Removed
+type: post
+categories:
+- Site Admin
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+It was only when I viewed my website from another person's computer that I realised that the [disqus commenting system](http://www.disqus.com/) was adding ads (an "Around The Web" section) to the bottom of this site's pages. I have a strong aversion to ads (especially IRRELEVANT ones like disqus was adding), even though they could potentially earn me money (I had earnt around US$12 so far, sarcastic yay!).
+
+import screenshot_with_disqus_ads_present from './screenshot-with-disqus-ads-present.png'
+
+<Image src={screenshot_with_disqus_ads_present} width="700px">Screenshot with disqus ads present.</Image>
+
+After looking through the disqus setting on this site, I discovered that I had to remove them through the admin panel on [www.disqus.com](http://www.disqus.com).
+
+import disabling_disqus_ads_promoted_discovery_annotated from './disabling-disqus-ads-promoted-discovery-annotated.png'
+
+<Image src={disabling_disqus_ads_promoted_discovery_annotated} width="600px">Disabling disqus ads.</Image>
+
+Now we are back to normal!
+
+import screenshot_with_disqus_ads_removed from './screenshot-with-disqus-ads-removed.png'
+
+<Image src={screenshot_with_disqus_ads_removed} width="700px">Screenshot with disqus ads removed.</Image>

@@ -1,0 +1,100 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Programming, Web Design]
+date: 2024-07-15
+draft: false
+last_update:
+  date: 2024-07-15
+  author: Geoffrey Hunter
+tags: [programming, web design, Docusaurus, sizzle, static website generator, browser, Netlify, Vercel]
+title: Docusaurus
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<WarningIsNotes />
+
+## Overview
+
+Docusaurus is a static website generator that is designed for documentation websites.
+
+## Registering Plugins So Intellisense Recognizes Them
+
+If you are using the `mdx-analyze` plugin to highlight errors in your `.mdx` files, you may notice that the Intellisense gets confused when certain plugins are added. For example, if you add the `remark-math` plugin so you can display math in your markdown files, it allows you to use `\(` for inline math and `$$` for block math. Inside these elements, Latex supports using {`{`} and {`}`} for grouping. However, this confuses the Intellisense as it does not know the plugin exists and believes this to be invalid `.mdx` syntax.
+
+To fix this, add the plugins to your `tsconfig.json` file as shown below:
+
+```js title="tsconfig.json"
+{
+  // ...
+
+  // This mdx section is so that mdx-analyze can parse frontmatter and math
+  // as per example on https://github.com/mdx-js/mdx-analyzer.
+  // Without this it gets confused about Latex math when the math contains "{".
+  // This also makes the "Outline" work in VS Code (show headings)
+  "mdx": {
+    "plugins": [
+      [
+        "remark-frontmatter",
+        ["toml", "yaml"]
+      ],
+      "remark-math"
+    ]
+  }
+}
+```
+
+## Running Code On The Client Side On Page Load
+
+One way to run javascript code on the client side (i.e. have access to all the Browser objects like `window`) is to Sizzle the Root. Weirdly, this element can't be ejected via the standard `docusaurus sizzle` command. Instead, just create a file at `src/theme/Root.js` with the following contents:
+
+```js title="src/theme/Root.js"
+import React from 'react';
+
+import useIsBrowser from '@docusaurus/useIsBrowser';
+
+// Default implementation, that you can customize
+export default function Root({children}) {
+  if (useIsBrowser()) {
+    // Run code in Browser here,
+    // we can access window, document, etc.
+  }
+
+  return <>{children}</>;
+}
+```
+
+`useIsBrowser()` is used to check if the code is running in the browser or not. This is important because this code will also be executed on the server side when the page is being built due to SSR (Server Side Rendering). If you try to access `window` on the server side, you will get an error.
+
+## Memory Constraints
+
+When building a Docusaurus site with a large number of pages (e.g. this website, which contains approx. 1500 `.mdx` files), I found that the memory usage would increase to approx. 4-8GB during the build process. This was fine on my local computer, but getting dangerously close to the 8GB limit most CICD services provide (e.g. Netlify or Vercel).
+
+One way to reduce the memory usage is to set the `NODE_OPTIONS` environment variable to `--max_old_space_size=4096`. This tells the node.js runtime to focus more on garbage collection if it's memory usage gets close to this limit. I have found that it doesn't kill the process if the memory usage exceeds this limit, but still works harder than it would otherwise to keep the memory usage down.
+
+To set this environment variable in a Docusaurus project, add the following to the `package.json` file:
+
+```json title="package.json"
+{
+  // ...
+  "scripts": {
+      "build": "env-cmd docusaurus build",
+    },
+    // ...
+}
+```
+
+And then in a new `.env` file in the root of the project:
+
+```env title=".env"
+NODE_OPTIONS=--max_old_space_size=4096
+```
+
+This approach will work on Windows, Linux, and MacOS.
+
+However, even with this change, Netlify (which provides 8GB of RAM) ran out of memory when building this site. Luckily, the build was successful when running on Vercel (which also gurantees 8GB RAM, presumably this means that in practise they give you a bit more!).
+
+import docusaurus_deployed_successfully_on_vercel from './_assets/docusaurus-deployed-successfully-on-vercel.webp'
+
+<Image src={docusaurus_deployed_successfully_on_vercel} width="900">A screenshowing showing this blog being built and deployed successfully on Vercel.</Image>

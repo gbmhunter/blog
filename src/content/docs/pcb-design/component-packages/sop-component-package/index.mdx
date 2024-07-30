@@ -1,0 +1,72 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-04-06
+description: Dimensions, variants, recommended footprints, typical applications and more info about the SOP component package.
+draft: false
+last_update:
+  date: 2024-04-15
+  author: Geoffrey Hunter
+tags: [electronics, component packages, PCB design, SOP, SOP-4, relays, DUB, SOP-8, Texas Instruments]
+title: SOP Component Package
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+import sop_4_component_package_3d_model from './_assets/sop-4-component-package-3d-model.jpg'
+
+<Image src={sop_4_component_package_3d_model} width="200px">A 3D model of the SOP-4 component package. Image from www.digikey.com.</Image>
+
+SOP (Small Outline Package) is a SMD component package. The `SOP` is the SMD equivalent of the `DIP` component package, and has the same pitch of 2.54mm (100mil).
+
+## Synonyms
+
+* 11-5H1S: Toshiba's package code for it's 2.54SOP4[^toshiba-2.54sop4].
+* 2.54SOP4: Toshiba variant of the SOP-4[^toshiba-2.54sop4].
+* DUB: TI SOP-8[^ti-iso1050-ds]
+
+## Similar To
+
+* SSOP (Shrink Small Outline Package): A smaller version of the SOP package.
+
+## SOP-4
+
+The `SOP-4` is an easy to solder, medium sized, 4-pin SMD package. Commonly used for small solid-state relays (Vishay makes quite a few of them). Related to `SOP-4L`, which is the same width, but longer.
+
+import sop_4_component_package_photo from './_assets/sop-4-component-package-photo.jpg'
+
+<Image src={sop_4_component_package_photo} width="356px">A photo of the SOP-4 component package.</Image>
+
+### Dimensions
+
+import sop_4_component_package_dimensions_and_land_pattern from './_assets/sop-4-component-package-dimensions-and-land-pattern.png'
+
+<Image src={sop_4_component_package_dimensions_and_land_pattern} width="500px">The dimensions and recommended land pattern for the SOP-4 component package. Image from http://www.everlight.com/datasheets/EL452-G.pdf.</Image>
+
+## 2.54SOP4
+
+The 2.54SOP4 is a SOP-4 variant from Toshiba[^toshiba-2.54sop4]. It has slightly different body dimensions from the SOP-4.
+
+### Dimensions
+
+The 2.54SOP4 body is 4.4mm wide (the edges with the leads) and 3.9mm long. It is 2.1mm high from PCB to top of package[^toshiba-2.54sop4].
+
+## SOP-8
+
+import sop_8_package_dimensions_ti from './_assets/sop-8-package-dimensions-ti.png'
+
+<Image src={sop_8_package_dimensions_ti} width="600px">The package dimensions for the SOP-8 component package from TI[^ti-iso1050-ds].</Image>
+
+## Common Uses
+
+Common uses:
+
+* Solid-state relays.
+* Optocouplers.
+* Optically-isolated transceivers.
+
+[^ti-iso1050-ds]: Texas Instruments (2023, Oct). _ISO1050 Isolated CAN Transceiver_ [datasheet[. Retrieved 2024-04-15, from https://www.ti.com/lit/ds/symlink/iso1050.pdf.
+[^toshiba-2.54sop4]: Toshiba. 2.54SOP4. _2.54SOP4_. Retrieved 2024-04-15, from https://toshiba.semicon-storage.com/ap-en/semiconductor/design-development/package/detail.2.54SOP4.html.

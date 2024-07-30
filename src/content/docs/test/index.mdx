@@ -1,0 +1,323 @@
+---
+aliases: [ "test-alias" ]
+authors: [ "Geoffrey Hunter" ]
+date: 2004-09-13
+description: A test page to demonstrate all the features of a content page.
+draft: false
+last_update:
+  date: 2021-06-20
+  author: Geoffrey Hunter
+sidebar_class_name: hidden
+tags: [ "test page" ]
+title: "Markdown Test Page"
+type: page
+---
+
+import { Aside, Image } from '/src/components/General.astro';
+
+
+Is the breadcrumb working above ^^^ ?
+
+The author should be listed above^^^.
+
+There should be a TOC either above (narrow screens) or in the right sidebar (wide screen).
+
+**Bold**, _italics_.
+
+# Page Title
+
+## Heading (h2) (should be a number on left)
+
+### Heading (h3)
+
+## Equations
+
+Some display math with a reference:
+
+$$
+f(x) = \frac{2}{3}
+$$
+
+Some inline math. $f(x) = \frac{2}{3}$. More normal text.
+
+An equation with `\begin{equation}`, which should be automatically numbered:
+
+$$
+\begin{equation}
+  \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
+\end{equation}
+$$
+
+To align equations we can use:
+
+$$
+\begin{align*}
+A &= B\\
+  &= C\\
+  &= D
+\end{align*}
+$$
+
+These should be `\small` and `\tiny` equations:
+
+$$
+\begin{align*}
+\small y=x \\
+\tiny y=x
+\end{align*}
+$$
+
+Should have some descriptive text:
+
+$$
+\begin{align*}
+y &= x && \text{Because $y=x$, duh.} \\
+  &= z && \text{Replacing $x$ with $z$.}
+\end{align*}
+$$
+
+First equation should not be numbered, second one should not:
+
+$$
+\begin{align}
+y &= x \nonumber \\
+  &= z
+\end{align}
+$$
+
+None of the equations should be numbered (but still should be aligned):
+
+$$
+\begin{align*}
+y &= x \\
+  &= z
+\end{align*}
+$$
+
+Custom Latex macros:
+
+* This should be bold: $ \b{x} $
+* This should be bold and have a hat: $ \bhat{x} $
+* $\R$ sjsjs
+
+Really long equation to make sure it doesn't exceed 100% of the page width:
+
+$$
+\begin{align*}
+y &= lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, lorum ipsum dolor sit amet, 
+
+\end{align*}
+$$
+
+
+## Dividers
+
+A divider below:
+
+---
+
+
+## Tables
+
+A markdown table:
+
+Heading 1   | Heading 2
+------------|------------
+abc         | def
+ghi         | jkl
+
+
+<table >
+<caption>This is a table caption.</caption>
+<tbody>
+<tr>
+  <td>abcdefghi</td>
+  <td>jklmnopqr</td>
+</tr>
+</tbody>
+</table>
+
+## Images
+
+The logo is shown below:
+
+import cartoonNinja from './_assets/cartoon-ninja.jpg';
+
+<Image src={cartoonNinja} width="300px" alt="">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
+
+Link to an image which is not a page resource is shown below:
+
+{/* <Image src={require('/images/logo/cartoon-ninja.jpg').default} width="300px">Caption for non-page resource image.</Image> */}
+
+A wide image to make sure it doesn't exceed the page width:
+
+import testImage1000px from './_assets/test-image-1000px.webp';
+
+<Image src={testImage1000px} width="2000" alt="">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width.</Image>
+
+## Asides
+
+<Aside type="example">
+This is an example. There should be a reference at the end here[^ti-sboa187e-current-mode-control].
+</Aside>
+
+:::note This Has a Custom Title!
+This is a note. It should also have a custom title.
+:::
+
+<Aside type="tip">
+This is a tip.
+</Aside>
+
+:::warning
+This is a warning.
+:::
+
+:::note
+This has code inside the aside:
+
+```python
+print('Hello, world!')
+```
+:::
+
+:::note
+There should be an equation here: $y = x^2$
+:::
+
+Below should be a worked example. It should be an aside with info inside it. There should be numbered steps, and there should be equations in some of the steps.
+
+:::example
+
+**Design Procedure:**
+
+1. Decide on the program current, $I_P$. This will also be the current through the load. We'll use this value later! For this example we'll choose $1mA$.
+
+1. Find the voltage across $R_1$, nothing that $Q_1$ has a diode voltage drop of $0.7V$ from emitter to base (with the emitter tied to $V_{CC}$), at that the base and collector of $Q_1$ are tied together and hence at the same voltage:
+    $$
+    \begin{align*}
+    V_{R1}  &= 12V - 0.7V \nonumber \\
+            &= 11.3V
+    \end{align*}
+    $$
+
+1. Set the resistance of $R_1$ using Ohm's Law:
+    $$
+    \begin{align*}
+    R_1 &= \frac{V_{R1}}{I_P} \nonumber \\
+        &= \frac{11.3V}{1mA} \nonumber \\
+        &= 11.3k\Omega
+    \end{align*}
+    $$
+
+1. All done!
+
+:::
+
+## Code
+
+Some inline code. `x[2] = 3`. More text.
+
+Some block code that **shouldn't** have scroll bars, but should have a title and line numbers:
+
+```c showLineNumbers title="The code title."
+x[3] = 4;
+int y = x;
+if (y == 4) {
+  printf("Hello, world!");
+}
+```
+
+Some block code that **should** have an x-axis scroll bar:
+
+```c
+a long line of text a long line of text a long line of text a long line of text a long line of text a long line of text lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum lorem dipsum
+int y = x;
+```
+
+## Footnotes
+
+This is a footnote[^foot-1].
+
+This is another footnote[^foot-2].
+
+[^foot-1]: The footnote text.
+[^foot-2]: Another footnote
+
+## Links
+
+[External link](https://www.google.com)
+
+## Lists
+
+* Here
+
+* is a list
+
+* of a few elements.
+
+## Other
+
+References, authors, related content and tags sections should be below (in that order).
+
+* Application note[^ti-sboa187e-current-mode-control].
+* Video reference[^university-of-colorado-bolder-intro-to-peak-current-mode-control].
+
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+## Lots Of Headings So TOC Overflows
+
+[^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control_ [Video]. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.
+[^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Current Mode Control in Switching Power Supplies_ [Application Note]. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.

@@ -1,0 +1,62 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-04-07
+draft: false
+last_update:
+  date: 2024-04-22
+  author: Geoffrey Hunter
+tags: [component packages, PCB design, transistor, TO-Leadless]
+title: TO-Leadless Component Package
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+import to_leadless_component_package_3d_render from './_assets/to-leadless-component-package-3d-render.jpg'
+
+<Image src={to_leadless_component_package_3d_render} width="200px">A 3D render of the TO-Leadless component package.</Image>
+
+TO-Leadless is a component package is solely used by Infineon for a range of it's high power MOSFETs[^infineon-to-leadless]. In this package, Infineon's MOSFETs can achieve on-resistances as low as 0.4mΩ. It's package size is 60% smaller than the D2PAK 7-pin package.
+
+The package has 8 leads plus and exposed pad[^infineon-ipt026n10n5-mosfet-ds].
+
+Below is a size comparison between DPAK (left) and TO-Leadless (right):
+
+import to_leadless_component_package_size_comparison_with_d2pak from './_assets/to-leadless-component-package-size-comparison-with-d2pak.png'
+
+<Image src={to_leadless_component_package_size_comparison_with_d2pak} width="500px">Size comparison between the TO-Leadless and DPAK component packages.</Image>
+
+## Synonyms
+
+* PG-HSOF-8: Infineon name[^infineon-ipt026n10n5-mosfet-ds].
+
+## Dimensions
+
+import to_leadless_component_package_dimensions from './_assets/to-leadless-component-package-dimensions.png'
+
+<Image src={to_leadless_component_package_dimensions} width="800px">The dimensions of the TO-Leadless component package.</Image>
+
+## Footprint
+
+import to_leadless_component_package_recommended_land_pattern from './_assets/to-leadless-component-package-recommended-land-pattern.png'
+
+<Image src={to_leadless_component_package_recommended_land_pattern} width="800px">The recommended land pattern for the TO-Leadless component package.</Image>
+
+import to_leadless_component_package_recommended_stencil from './_assets/to-leadless-component-package-recommended-stencil.png'
+
+<Image src={to_leadless_component_package_recommended_stencil} width="600px">The recommended stencil pattern for the TO-Leadless component package.</Image>
+
+## Solderability
+
+Not suitable for hand soldering due to pads underneath the package. Suitable for hot air and reflow soldering techniques
+
+## Thermal Resistance
+
+* $R_{JC} = 0.4^{\circ}{\rm C}/W$
+* $R_{JA} = 40^{\circ}{\rm C}/W$ (max)
+
+[^infineon-ipt026n10n5-mosfet-ds]: Infineon. _IPT026N10N5 - MOSFET - OptiMOS 5 Power-Transistor, 100V_ [datasheet]. Retrieved 2024-04-22, from https://www.infineon.com/dgdl/Infineon-IPT026N10N5-DS-v02_01-EN.pdf?fileId=5546d46269e1c019016ac029615332f7.
+[^infineon-to-leadless]: Infineon. _TO-Leadless (TOLL) OptiMOS™ package_. Retrieved 2024-04-22, from https://www.infineon.com/cms/en/product/power/mosfet/n-channel/optimos-and-strongirfet-latest-packages/to-leadless/.

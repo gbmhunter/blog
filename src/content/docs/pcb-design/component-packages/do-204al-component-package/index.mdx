@@ -1,0 +1,53 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, PCB Design, Component Packages]
+date: 2015-04-04
+description: Info on the DO-204AL component package, commonly used for older through-hole diodes.
+draft: false
+last_update:
+  date: 2024-04-12
+  author: Geoffrey Hunter
+tags: [component packages, PCB design, DO-41, DO-204, DO-204AL, diodes, thermal resistance, 1N4001]
+title: DO-204AL (DO-41) Component Package
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+The DO-204AL (also commonly known as DO-41) component package is a very popular 2-lead through-hole package used for older diodes (incl. the famous 1N400x series[^vishay-1n4001-ds]). The pitch is typically 400mil, although because of the long through-hole leads, it is user variable. It is easy to solder by hand. The DO-41 package is normally used for higher power "rectifier" diodes, whilst the lower power "signal" diodes use smaller through-hole packages such as the DO-35. The typical rated current for a diode in this package is 1A.
+
+import do_41_component_package_photo from './_assets/do-41-component-package-photo.jpg'
+
+<Image src={do_41_component_package_photo} width="300px">A photo of the DO-41 component package.</Image>
+
+## Synonyms
+
+* **DO-204AL** (Diode Outline 204 Variant AL): Newer JEDEC name[^vishay-1n4001-ds]
+* **DO-41** (Diode Outline 41): Older JEDEC name.
+* **SOD-66**: NXP[^nxp-sod66]
+* **LALF**: NXP "Package Style"[^nxp-sod66]
+
+## Thermal Resistance
+
+Vishay gives the typical junction-to-ambient thermal resistance of a DO-204AL mounted to be $R_{\theta JA} = 50^{\circ C/W}$. This is when the DO-204AL is mounted horizontally on a PCB with a 9.5mm lead length. The junction-to-lead thermal resistance is $R_{\theta JL} = 25^{\circ C/W}$[^vishay-1n4001-ds].
+
+## Dimensions and Mounting
+
+import do_41_package_dimensions_vishay from './_assets/do-41-package-dimensions-vishay.png'
+
+<Image src={do_41_package_dimensions_vishay} width="500px">The dimensions for the DO-204AL (DO-41) component package from Vishay[^vishay-1n4001-ds].</Image>
+
+This package is normally mounted on the PCB in two ways, either flat with the legs bent at 90° to fit into the holes, or in space-constrained applications, vertical, with one of the legs straight and one bent 180° to fit into the holes in the PCB (which are closer together than when in the flat orientation). Material of package is normally moulded plastic.
+
+Weight of a diode in a DO-41 package is around 0.33g[^vishay-1n4001-ds].
+
+## Similar To
+
+* [DO-204AA (DO-7)](/pcb-design/component-packages/do-204aa-component-package/)
+* [DO-15](/pcb-design/component-packages/do-15-component-package/)
+* [DO-35](/pcb-design/component-packages/do-35-component-package/)
+
+[^nxp-sod66]: NXP (2016, Feb 8). _SOD66: Package Information_. Retrieved 2021-09-26, from https://www.nxp.com/docs/en/package-information/SOD66.pdf.
+[^vishay-1n4001-ds]: Vishay (2020, Apr 29). _1N4001, 1N4002, 1N4003, 1N4004, 1N4005, 1N4006, 1N4007 - General Purpose Plastic Rectifier_ [datasheet]. Retrieved 2024-04-08, from https://www.vishay.com/docs/88503/1n4001.pdf.

@@ -1,0 +1,81 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2011-09-07
+draft: false
+title: Header Guards
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+A header guard is a piece of code that goes at the top and bottom of a header file that prevents the file from being linked more than once at compile time. A header file can be included from many different `.c` files. The guard only lets the first inclusion of the header file actually parse. This prevents all the coding errors you would receive if the same code was written twice such as multiple definition errors and variable over writing. Examples follow...
+
+## The "#ifndef" Way
+
+Also, it is standard for system header files guard identifiers to begin with `__` (e.g. `#ifndef __IDENTIFIER_H`). You should not do that either! This is because macros beginning with `_<capital letter>` or `__` are part of a reserved namespace for system macros.
+
+> In a user header file, the macro name should not begin with ‘_’. - GNU GCC: The C Preprocessor
+
+```c
+// Top of header file...
+#ifndef <IDENTIFIER>_H
+#define <IDENTIFIER>_H
+
+// Rest of header code...
+
+#endif // #ifndef <IDENTIFIER>_H
+// EOF
+```
+
+The identifier just has to be some unique word that won't be used as an identifier for another header guard. Usually the filename without the extension is used as the identifier, for example, if the file controlled the flashing of led's, you could use.
+
+```c    
+#ifndef LEDS_H
+#define LEDS_H
+
+// Codey code code...
+
+#endif // #ifndef LEDS_H
+// EOF
+```
+
+## The "#pragma once" Way
+
+The other way to create a header guard is to use the #pragma once directive. This approach has been supported by most compilers for a smaller length of time than the #ifndef method, but in today's world you can be confident that most compilers support it (including GCC).
+
+This method in some cases allows faster compilation and greater optimisation, due to the compiler being able to determine whether to include code before the pre-processor is run. It also is simpler to write, and does not require any termination code at the end of file (as does the #ifndef method).
+
+However, it is not supported by all preprocessors, so is not as portable as the `#ifndef` way.
+
+```c    
+// Top of header file
+
+// Header guard
+#pragma once
+
+// Codey code code
+
+// EOF
+```
+
+Note how there is no header guard syntax needed at the bottom of the file!
+
+## The #import Method
+
+The third and final way is to use the #import directive instead of `#include`. However, this is only considered standard in Objective-C, **and is deprecated in both C and C++**.
+
+Problems arise because the user must know that the header must be only included once, and use the `#import` directive rather than `#include`.
+
+```c    
+// A C file
+
+// This header file will only be imported once
+#import "abc.h"
+
+// However, problems will arise if the user accidentally writes instead
+#include "abc.h"
+
+// EOF
+```

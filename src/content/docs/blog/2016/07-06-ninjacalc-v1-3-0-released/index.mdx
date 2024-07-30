@@ -1,0 +1,35 @@
+---
+authors: [gbmhunter]
+categories: [ "NinjaCalc" ]
+date: 2016-07-06
+draft: false
+tags: [ "algorithm", "calculator", "checksum", "CRC", "custom", "cyclic redundancy check", "NinjaCalc", "polynomial", "update" ]
+title: NinjaCalc v1.3.0 Released
+type: post
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+[NinjaCalc v1.3.0 has been released!](http://gbmhunter.github.io/NinjaCalc/) The biggest change is the addition of a **CRC calculator**, which allows you to calculate the CRC value for ASCII or hex data, using either **common pre-loaded CRC algorithms or your own custom algorithm**.
+
+import ninja_calc_crc_calculator_example from './_assets/ninja-calc-crc-calculator-example.gif'
+
+<Image src={ninja_calc_crc_calculator_example} width="1094px">Example usage of the CRC Calculator within NinjaCalc (http://gbmhunter.github.io/NinjaCalc/).</Image>
+
+The **custom algorithm section** allows you to enter a CRC width from 1-64 bits, a CRC polynomial, initial value, XOR-out value, and whether the input data and/or the output CRC value is reflected. Then it will calculate the resultant CRC value.
+
+**Either [download NinjaCalc v1.3.0 here](http://gbmhunter.github.io/NinjaCalc/)**, or open up your previous installation and click yes to update when prompted.
+
+More information on CRC algorithms can be found on the [CRCs (Cyclic Redundancy Checks) page](/programming/general/crcs-cyclic-redundancy-checks).
+
+**Changelog**
+
+* Added CRC calculator, closes [#122](https://github.com/gbmhunter/NinjaCalc/issues/122).
+* Fixed issue with install4j dependency, closes [#123](https://github.com/gbmhunter/NinjaCalc/issues/123).
+* Removed .idea/workspace.xml file from repo, closes [#124](https://github.com/gbmhunter/NinjaCalc/issues/124).
+* Added a text-based calculator variable, closes [#125](https://github.com/gbmhunter/NinjaCalc/issues/125).
+* Added check so that calculator variables can't be accidentally added to the same calculator twice, closes [#126](https://github.com/gbmhunter/NinjaCalc/issues/126).
+
+import ninja_calc_logo_v2_no_transparency from './_assets/ninja-calc-logo-v2-no-transparency.png'
+
+<Image src={ninja_calc_logo_v2_no_transparency} width="308px">The NinjaCalc logo (with no transparency).</Image>

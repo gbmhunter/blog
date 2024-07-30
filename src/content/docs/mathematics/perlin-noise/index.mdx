@@ -1,0 +1,27 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Mathematics" ]
+date: 2017-10-30
+draft: false
+tags: [ "Perlin", "noise", "clouds", "Ken Perlin", "computer graphics" ]
+title: Perlin Noise
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+**Perlin noise** is commonly used to create natural looking textures in computer graphics. A common example is it's use to create a randomly generated landscape, or realistic looking clouds.
+
+import perlin_noise_cloud_example from './perlin-noise-cloud-example.png'
+
+<Image src={perlin_noise_cloud_example} width="331px">Rendered Perlin noise that has been configured to make realistic looking clouds.</Image>
+
+Ken Perlin invented the Perlin noise algorithm following CGI work on the movie Tron.
+
+## Libraries
+
+<a href="https://github.com/Reputeless/PerlinNoise">siv::PerlinNoise</a> is a good header-only Perlin noise library for C++.
+
+The <a href="https://pypi.python.org/pypi/noise/">Python library noise</a> has Perlin "improved" noise and Perlin simplex noise algorithms.

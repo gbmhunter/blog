@@ -1,0 +1,197 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Programming Languages" ]
+date: 2013-05-01
+description: "A quick reference and tutorial on regex (regular expressions) including lookahead and lookbehind."
+draft: false
+last_update:
+  date: 2019-01-05
+  author: Geoffrey Hunter
+tags: [ "regex", "tutorial", "expressions", "lookahead", "lookbehind", "quick reference" ]
+title: "Regex"
+type: "page"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+> All the listed regex examples can be tested with the online regex engine [regexpal](http://regexpal.com/).
+
+## Quick Reference
+
+<div class="table-wrapper">
+<table>
+    <thead>
+        <tr>
+            <th>Operator</th>
+            <th>Name</th>
+            <th>Use</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+\
+            </td>
+            <td>Backslash/Escape Character</td>
+            <td>A backslash is used as the escape character. It turns off the special meaning of the following character (i.e. any character in this table). e.g. \* will match *, and \\ will match \.</td>
+        </tr>
+        <tr>
+            <td>.</td>
+            <td>Period</td>
+            <td>Will match a single instance of any character, except end-of-line.</td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>Carat</td>
+            <td>Match the start of a line (also see $).</td>
+        </tr>
+        <tr>
+            <td>$</td>
+            <td>Dollar Sign</td>
+            <td>Match the end of a line (also see ^.</td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>Pipe</td>
+            <td>Match either the regular expression preceding it or the regular expression following it (OR operation).</td>
+        </tr>
+        <tr>
+            <td>[]</td>
+            <td>Square Brackets</td>
+            <td>Match any of the characters inside the square brackets (a character set). e.g. [ade] will match a, d or e. For a range use - (hyphen), e.g. [0-9].</td>
+        </tr>
+        <tr>
+            <td>[^]</td>
+            <td>Square Brackets With Carat</td>
+            <td>Match any characters except those inside the square brackets (a character set). e.g. [^ade] will match anything **EXCEPT** a, d or e. For a range use - (hyphen), e.g. [^0-9].</td>
+        </tr>
+        <tr>
+            <td>()</td>
+            <td>Parentheses</td>
+            <td>Used to group regular expressions together, and override the standard order of processing of particular operators. This is similar to how parentheses are used in maths.</td>
+        </tr>
+        <tr>
+            <td>!</td>
+            <td>Exclamation Mark</td>
+            <td>Do not match the next regular expression (or group, when enclosed in parentheses). Similar to ^, but this is used outside of square brackets.</td>
+        </tr>
+        <tr>
+            <td>?</td>
+            <td>Question Mark</td>
+            <td>Match the preceding expression 0 or 1 times. This is equivalent to saying "this expression is optional".</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Asterisk</td>
+            <td>Match the preceding expression 0 or more times. This is equivalent to saying "this is a greedy expression, but is optional".</td>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>Plus Sign</td>
+            <td>Match the preceding expression 1 or more times. This is equivalent to saying "this is a greedy expression". This is equivalent to using</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+## Preventing Recursive Find And Replace Matches
+
+## A Lookahead Example
+
+If you had the function `UartComms()` and you wanted to find and replace all instances with `UartCommsSend()`, you would use the following syntax:
+    
+Find: `UartComms(?!Send)`
+    
+Replace: `UartCommsSend`
+    
+This example uses a regex "lookahead" rather than a "lookbehind". Notice how you don't have to use an angular bracket in the lookahead example, but you have to use a `<` in the lookbehind example.
+
+## A Lookbehind Example
+
+Sometimes when using find and replace you can find yourself in a loop, the thing you are replacing with contains the original word, and so when "Find Next" is run, it finds the word in itself. You can use Regex (if your find and replace program supports it) to prevent this from happening. Note that this normally only happens if you iterate through each one by clicking "Replace Next". Clicking "Replace All" normally overcomes this problem.
+
+For example, say you had the function `CommsSend()`, and you wished to find and replace all instances of this in your code with `UartCommsSend()`. With a normal "Replace Next", this would get you into an infinite loop.
+
+Find: `CommsSend`
+
+Replace: `UartCommsSend`
+    
+The trick is to use a Regex expression called a "positive/negative lookahead". In this case we need a lookbehind, which will check the characters before `CommsSend`; If they are equal and only equal to `Uart` it will not create a match, hence fixing the recursive find-replace issue.
+
+Find: `(?<!Uart)CommsSend`
+    
+Replace: `UartCommsSend`
+
+<Aside type="caution">
+I have had issues using greedy operators (such as `*` and `+`) inside a lookahead. Upon adding such operators to character regions (e.g. `[a=z]*`), the lookbehind fails to match anything. The error message was "Lookbehind requires fixed-width pattern".
+</Aside>
+
+## Finding C/C++ Function Definitions
+
+You can use the following syntax to find a C/C++ function definitions based purely on the function name. This does not take into account the name or number of input variables, so in a language which supports function overloading (e.g. C++), this will **find all overloads** of a certain function. It works by looking for the function name, matching the `(`, and number of characters and a matching `)`, then any number of white space or new lines before a `{`, then any number of characters, white-space or new lines before the closing `}`.
+
+```text
+FuncName(.*)\s{(.*\n)*.*(\n)*}
+```
+
+Replace FuncName with the name of the function you wish to find.
+
+## File Paths
+
+To match a directory, including the last `/` of a file path, use:
+
+```text
+(.*=?\\)
+```
+
+This will match `C:/test/` in `C:/test/reg.exe` and `root/samples/` in `root/samples/filename.txt`.
+
+To match the directory, excluding the last `/` of a file path, use:
+
+```text
+.*(?=/)
+```
+
+This will match `C:/test` in `C:/test/reg.exe` and `root/samples` in `root/samples/filename.txt`.
+
+To match all files, except those that begin with the tilda character (`~`), use:
+
+```text
+.*(?=/)/[^~]*
+```
+
+This will match `C:/dir/include.txt` **but NOT** `C:/dir/~exclude.txt`.
+
+## Matching Strings
+
+The following regex will match strings enclosed by double or single quotations. Delete either enclosed in the square brackets to exclude that style of string delimiting from the match.
+
+```text
+(["'])(?:\\\1|.)*?\1
+```
+
+This will match `test string 1` and `test string 2` in this is `test string 1` and this is `test string 2`.
+
+The following regex expression matches all spaces, except those that are enclosed in double quotes. **Ignore the first and last double quotation** (it is just there to show you that a space exists at the start), and note the first character of the expression is a space. The expression can be useful in command-line processing applications.
+
+```text
+" (?=[^"]*("[^"]*"[^"]*)*$)"
+```
+
+## Matching All Printable ASCII Characters
+
+The following matches all printable ASCII characters (which are grouped together on the ASCII table, from number 32 to 126).
+
+```text
+[ -~]
+```
+
+## Online Regex Testers
+
+Plenty of online regex testers exist for testing the matching of regex expressions on sample text.
+
+My favourite is [RegExr by gSkinner](http://gskinner.com/RegExr/). It has powerful features like helpful **mouseover tooltips** which tell you what a certain sections of your regex string are doing.
+
+There is also:
+
+* [ExtendClass: Regex Tester](https://extendsclass.com/regex-tester.html)

@@ -1,0 +1,128 @@
+---
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
+description: The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, mounting considerations, home-made crystals and more info about piezoelectric speakers.
+date: 2012-05-02
+last_update:
+  date: 2023-05-06
+  author: Geoffrey Hunter
+tags: [ piezo, schematic symbols, schematic, frequency response, driver circuit, crystal, nodal mounting, silicone, benders ]
+title: Piezoelectric Speakers
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+**_Piezoelectric speakers_ are speakers that generate sound waves from electricity using the piezoelectric effect.** When you apply a voltage to a piezoelectric crystal, the crystal distorts, vibrating a plate and producing noise. **They are very loud for their relatively small size and price**, and typically achieve over 90dB of sound pressure from an object the size of a few coins. Their disadvantage compared to traditional magnetic speakers is that they have a narrow bandwidth (typically only a few kilohertz, depending on how you specify the limits) and a very non-flat frequency response. So they are good for making beeps/chirps, but not so good as reproducing music or voice. The annoying beeps you hear from the insides of computer on boot-up or when you do something wrong (like mash the keyboard) are typically made with a piezo, as are the alarm noises from most smoke alarms.
+
+import piezo_photo from './piezo-photo.jpg'
+
+<Image src={piezo_photo} width="400px">Photo of an externally driven piezo. They tend to be smaller than their internally driven cousins.</Image>
+
+Important Parameters:
+
+* Maximum drive voltage
+* Sound-pressure level (SPL)
+* Resonant frequency
+* Operating current
+
+## The Piezo Schematic Symbol
+
+The schematic symbol for a 2-pin piezoelectric speaker is shown below. Some piezoelectric speakers have internal oscillating circuity already built into them, and only require a DC voltage to run (typically 9-12V). These are called internal drive piezos (or buzzers), while the ones without circuitry are called external drive piezos (or just piezos). Externally driven piezos are not polarized, while internally driven ones usually are. Some have a third leg, which is called the feedback pin, and can be used as an input to the driving circuitry to drive the piezo at it's resonant frequency.
+
+import piezoelectric_speaker_schematic_symbol from './piezoelectric-speaker-schematic-symbol.png'
+
+<Image src={piezoelectric_speaker_schematic_symbol} width="400px">The schematic symbol for a 2-pin piezoelectric speaker.</Image>
+
+## A Piezo's Frequency Response
+
+A piezo does not have near anything like an ideal flat frequency response over the audible range! This does not make them suitable for quality sound/music reproduction. See the figure below.
+
+import piezo_4khz_resonant_frequency_response from './piezo-4khz-resonant-frequency-response.jpg'
+
+<Image src={piezo_4khz_resonant_frequency_response} width="500px">The frequency response of a piezo speaker with a resonant frequency of 4kHz.</Image>
+
+Most piezoelectric speakers have a resonant frequency in the range of 2-4kHz, one of the reasons being this is the range is which audio is most easily heard by humans[^bib-murata-piezoelectric-sound-components].
+
+## How To Drive A 2-lead Piezo
+
+An easy and loud way to drive a 2-lead (or pin) piezoelectric speaker is with an inductor in parallel with the piezo and a NPN BJT acting as a switch.
+
+When the NPN BJT is switched on, the current builds up through the inductor and energy is stored in it's magnetic field. When the transistor is switched off, the inductor creates a large voltage spike which excites the piezo speaker. The piezo can be driven to around 40-60V with a 5V supply. Make sure the BJT has a collector-emitter breakdown voltage high enough to withstand this!
+
+**The frequency of the PWM controls the pitch of the sound, the duty cycle controls the volume.** Duty cycle should be varied from 0-50%. The inductance does not matter to much, something in the range of 10-50mH seems to give the best results with most piezos.
+
+import piezo_drive_circuit_parallel_inductor from './piezo-drive-circuit-parallel-inductor.jpg'
+
+<Image src={piezo_drive_circuit_parallel_inductor} width="500px">An easy and loud way to drive a piezo speaker using an inductor in parallel with the piezo and a NPN BJT.</Image>
+
+A non-standard and slightly convoluted method for driving a piezo speaker using a half-bridge driver IC:
+
+import piezo_drive_circuit_half_bridge_ic from './piezo-drive-circuit-half-bridge-ic.jpg'
+
+<Image src={piezo_drive_circuit_half_bridge_ic} width="500px">A non-standard and slightly convoluted method for driving a Piezo speaker using a half-bridge driver IC.</Image>
+
+## How To Drive Piezos With Feedback (3-lead)
+
+Some piezos have a third lead, also called the feedback electrode[^bib-murata-piezoelectric-sound-components]. They are sometimes called "self-driven" piezos and are designed to be connected to a "self-drive circuit". The benefit of self-driven piezos is that they are naturally driven at their resonant frequency, at where you get the highest SPL (volume).
+
+## How To Drive A Buzzer
+
+Buzzers (or internally driven piezo's), contain internal drive circuitry, and only require a DC voltage to run. They are typically louder than externally driven versions because:
+
+1. They normally feature a resonant cavity which amplifies the sound. You will notice most buzzers are larger than externally driven piezo's.
+2. The internal circuitry usually has feedback, which means the piezo is always driven at resonance.
+
+One disadvantage of buzzers is that you can't change the tone of the sound.
+
+The volume can be controlled with a simple RC low pass filter and PWM signal as shown in the circuit diagram below.
+
+import piezo_int_drive_volume_control_circuit from './piezo-int-drive-volume-control-circuit.jpg'
+
+<Image src={piezo_int_drive_volume_control_circuit} width="500px">The schematic of an internally driven piezo volume control circuit.</Image>
+
+This circuit uses a RC low-pass filter and PWM to change the DC voltage that the buzzer sees across it's terminal, thus controlling the volume.
+
+<Aside type="note">
+The volume changes drastically from 0-1% duty cycle because of the logarithmic nature of sound, so a 12-bit or higher PWM is normally needed for smooth control. 12-bits will give you increments of approximately 0.025%. When I built one of these circuits, at 1% duty cycle the piezo was at approximately 90% apparent volume.
+</Aside>
+
+## Piezo Benders
+
+Piezo benders are essentially un-mounted piezos, the insides of the standard black cased piezo that you commonly see. They are used in more spaced-constrained situations.
+
+import piezoelectric_speaker_in_aura_br_au_109b_smoke_alarm from './piezoelectric-speaker-in-aura-br-au-109b-smoke-alarm.png'
+
+<Image src={piezoelectric_speaker_in_aura_br_au_109b_smoke_alarm} width="800px">A piezoelectric \"bender\" style speaker mounted in a Aura BR-AU-109B smoke alarm. You can also see the third feedback lead (yellow wire connecting to \"broom\" shape on piezo).</Image>
+
+These un-mounted piezos have to be mounted on something, and consideration about the vibrational aspects of the piezo have to be taken into account. Obviously, if you glue the entire piezo to the mounting surface, it won't be able to vibrate, and you'll get no sound. There are two standard ways of mounting a piezo, and they are called either edge-mounting or nodal-mounting.
+
+Edge mounting is pretty self-explanatory, it is when you mount the piezo by holding onto its edge. A thin ring of double-sided adhesive tape can achieve this. Nodal mounting is where the piezo is fixed around it's nodal points. A nodal point is a place on the piezo surface that does not move while it is vibrating. As a general rule of thumb, there are nodal points on a piezo at 0.65 of the radius from the centre of the piezo, in all directions. Again, this can be done with a ring of double-sided adhesive tape, whose diameter is 0.65 that of the edge mounting tape ring.
+
+import pieoelectric_speaker_with_nodal_mounting from './pieoelectric-speaker-with-nodal-mounting.jpg'
+
+<Image src={pieoelectric_speaker_with_nodal_mounting} width="800px">The piezoelectric speaker in the Aura BR-AU-109B smoke alarm appears to be nodally mounted, as you can see the silicone and mounting point radius is about 0.65 times the piezoelectric speaker radius.</Image>
+
+## Multi-layer Piezo Speakers
+
+Multi-layer piezo speakers contain more than one vibrating piezo element. The vibrating elements are designed to have different resonant frequency's, and when combined, give a speaker which has a flatter frequency response over the audible range than traditional piezo speakers.
+
+The bandwidth of multi-layer piezos is usually between 200-500Hz and 20kHz. Because of this, they are able to reproduce music and voice much better than a traditional piezos whose frequency response if usually limited to a few hundred hertz either side of a resonant frequency in the 3-4kHz region.
+
+[PUI Audio](http://www.puiaudio.com/) makes some good quality multi-layer speakers, which can be found on DigiKey.
+
+## Home-made Piezo Crystals
+
+You can easily make crystals with a few common household ingredients. See the [Piezo Crystal Formation Project](/electronics/projects/piezo-crystal-formation) for more information.
+
+import home_made_piezo_crystal from './home-made-piezo-crystal.jpg'
+
+<Image src={home_made_piezo_crystal} width="600px">A large home-made piezo crystal. Photo from 2012.</Image>
+
+## Examples
+
+If you want a loud buzzer, then the ABI-D23-RC (Element14 Num: [102-2400](http://nz.element14.com/pro-signal/abi-023-rc/piezo-buzzer-12vdc-leads/dp/1022400)) is a good choice. It runs of 12VDC and has a SPL of 96dBm.
+
+[^bib-murata-piezoelectric-sound-components]: Murata (2012, Oct 26). _Piezoelectric Sound Components: Application Manual_. Retrieved 2023-05-09, from https://www.murata.com/~/media/webrenewal/support/library/catalog/products/sound/p15e.ashx.

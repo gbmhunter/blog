@@ -1,0 +1,75 @@
+---
+authors: [gbmhunter]
+categories: [ "Posts", "Updates" ]
+date: 2021-08-31
+description: "Blog updates during August 2021."
+draft: false
+last_update:
+  date: 2021-08-31
+  author: Geoffrey Hunter
+tags: []
+title: "August 2021 Updates"
+type: "post"
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Updates This Month
+
+* A new page on [Probabilities](/mathematics/statistics/probabilities/). Added info on it about how to generate random numbers that follow a specific distribution.
+
+import probabilities_page_screenshot from './probabilities-page-screenshot.png'
+
+<Image src={probabilities_page_screenshot} width="400px"></Image>
+
+* Updated the Resistors page from Markdown to AsciiDoc format.
+
+* Added a red horizontal bottom boarder to all `h2` headings in the main content of each page.
+
+import red_border_under_titles_screenshot from './red-border-under-titles-screenshot.png'
+
+<Image src={red_border_under_titles_screenshot} width="400px"></Image>
+
+* Added parasitic models of resistors.
+
+import resistor_parasitic_elements_screenshot from './resistor-parasitic-elements-screenshot.png'
+
+<Image src={resistor_parasitic_elements_screenshot} width="400px"></Image>
+
+* Consolidated all the info on non-isolated switch-mode power supplies (e.g. buck converters, boost converters, buck-boost, SEPIC, Ćuk) into a [single page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/). And then added more info, as well as updating the basic schematics of the various topologies to match this site's style.
+
+* Added info on MQTT clients suitable for embedded devices.
+
+* Expanded the TOC to contain heading levels 2 to 4 (beforehand it was only showing level 2).
+
+* Added the ability to define multiple authors per page, and added an author block to all content pages. Followed a really useful tutorial at https://moonbooth.com/hugo/authors/.
+
+* Added a safe operating area (SOA) graph to the BJT page, and added information on secondary breakdown.
+
+import bjt_safe_operating_area_screenshot from './bjt-safe-operating-area-screenshot.png'
+
+<Image src={bjt_safe_operating_area_screenshot} width="400px"></Image>
+
+* Added info and schematics on adding protection diodes to linear regulators.
+
+import lin_reg_discharge_protection_screenshot from './lin-reg-discharge-protection-screenshot.png'
+
+<Image src={lin_reg_discharge_protection_screenshot} width="400px"></Image>
+
+* Added info on low-dropout linear regulators.
+
+* Updated the Ethernet page with info on [serial-to-ethernet ICs](/electronics/communication-protocols/ethernet-protocol/).
+
+* New [AWS IoT page](/programming/cloud/aws/aws-iot/).
+
+* New [Isolated Switch Mode Power Supplies page](/electronics/components/power-regulators/isolated-switch-mode-power-supplies/), with info on flyback converters including basic schematics and feedback using optoisolators.
+
+import flyback_converters_screenshot from './flyback-converters-screenshot.png'
+
+<Image src={flyback_converters_screenshot} width="400px"></Image>
+
+* Added info on how to design foldback current limiting with a linear regulator.
+
+import linear_reg_foldback_current_limit_screenshot from './linear-reg-foldback-current-limit-screenshot.png'
+
+<Image src={linear_reg_foldback_current_limit_screenshot} width="400px"></Image>

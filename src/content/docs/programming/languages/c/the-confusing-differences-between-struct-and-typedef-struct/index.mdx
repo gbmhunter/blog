@@ -1,0 +1,97 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2022-10-30
+draft: false
+last_update:
+  date: 2022-10-30
+  author: Geoffrey Hunter
+title: The Confusing Differences Between struct and typedef struct
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+It's rather unfortunate that the syntax around defining a `struct` in the C programming language can be confusing, especially the behaviour differences between using `struct` and `typedef struct`. This page will hopefully clear up the confusion!
+
+## Just Using a Tag
+
+If you define a `struct` with just a tag, i.e. `struct <tag>`, you get no created variables, and you have to type `struct <tag>` everytime you want to make one. For example, if we type:
+
+```c
+struct Person {
+  uint8_t age;
+  char name[50];
+};
+```
+
+You then create a variable of this type with:
+
+```c
+struct Person my_person;
+```
+
+## Tag and Variable
+
+What happens if we add a word after the `}` but before the `;`? This creates a variable of the struct type that we can use:
+
+```c
+struct Person {
+  uint8_t age;
+  char name[50];
+} my_person;
+```
+
+We can now use this struct variable:
+
+```c
+// Now we get one struct already created for us
+my_person.age = 4;
+// We can still now make more variables of this type
+struct Person my_person2;
+```
+
+## Typedef
+
+Now most of the confusion comes from when you add `typedef` into the mix. If you add `typedef` to the front of the `struct` definition like this:
+
+```c
+typedef struct Person {
+  uint8_t age;
+  char name[50];
+} Person;
+```
+
+This changes the meaning of the word after the `}`, it now becomes an `alias` for the struct type, and not the name of a variable as it did above. What this does is save you having to type `struct Person` all the time, now you can just type `Person`. This is why most people use `typedef` with `struct`.
+
+```c
+Person my_person;
+```
+
+Note that I have used the same word `Person` as the typedef `alias` as I did for the `struct` tag. This is fine, there will be no naming collisions, and I could still create variables using `struct Person` if I wanted to.
+
+You can also leave out the last `Person` when defining a struct using `typedef`, but there is not much point in this!
+
+```c
+typedef struct Person {
+  uint8_t age;
+  char name[50];
+} Person;
+```
+
+What you will see often though is people using `typedef struct` and then skipping the tag, and only providing an alias at the end:
+
+```c
+typedef struct {
+  uint8_t age;
+  char name[50];
+} Person;
+```
+
+Which then allows you to use the word `Person` as a type, but not `struct Person` (which is generally acceptable):
+
+```c
+Person my_person; // This works
+struct Person my_person; // This won't (but this is normally fine!)
+```

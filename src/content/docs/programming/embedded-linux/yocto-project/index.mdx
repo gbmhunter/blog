@@ -1,0 +1,155 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2017-04-14
+draft: false
+title: Yocto Project
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## Overview
+
+The _Yocto Project_, or more commonly just called _Yocto_, is a build system used to create custom Linux distributions for embedded systems.
+
+<Aside type="note">
+It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
+</Aside>
+
+import the_yocto_project_logo from './the-yocto-project-logo.png'
+
+<Image src={the_yocto_project_logo} width="404px">The logo for the Yocto project.</Image>
+
+## Quick Start
+
+This is a Yocto "Quick Start", aimed to get you familiar with the basics of the Yocto and building a embedded Linux image in no time!
+
+This quick start has been tested with Ubuntu 16.04 64-bit, running in VMWare on a Windows host (the free VirtualBox VM should also work fine).
+
+<Aside type="caution">
+Give your VM a ton of hard drive space, memory and processors. You will be building Linux from source code, and this is very resource intensive! I gave the VM 120GB hard drive space (grows as needed), 8GB memory and 8 processors.**
+</Aside>
+
+Yocto has it's own quick start guide at [http://www.yoctoproject.org/docs/2.2.1/yocto-project-qs/yocto-project-qs.html](http://www.yoctoproject.org/docs/2.2.1/yocto-project-qs/yocto-project-qs.html). However, I have has problems with this, including errors such as:
+
+```
+E: Unable to locate package pip3
+E: Unable to locate package pexpect
+```
+
+## Install Prerequisites
+
+Run the following bash command:
+
+```sh    
+$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 python-pip libsdl1.2-dev xterm
+```
+
+## Clone Yocto's poky Repository
+
+_poky_ is a _Yocto project release_. As of April 2017, this is the most recent release. Run the following command, which should clone poky into `~/poky/`.
+
+```sh    
+$ git clone git://git.yoctoproject.org/poky
+```
+
+## Checkout The Correct Branch Of poky
+
+Now change into the poky directory:
+
+```sh   
+$ cd poky/
+```
+Switch to the morty branch:
+
+```sh    
+$ git checkout morty
+```
+
+(with new versions of git, this will automatically set it up to track `origin/morty`).
+
+## Initialise Build Environment
+
+Before you can start a Linux build, you need to initialise the Yocto build environment. This can be done with the following command:
+
+```sh   
+$ source oe-init-build-env
+```
+
+After running this command, you should of automatically been moved into the `poky/build/` directory.
+
+This command needs to be re-run everytime your environment variables get reset (e.g. everytime you login).
+
+## Build Linux
+
+We're almost at Linux building time! We won't touch any of the config files for now, and just build Linux using Yocto's default settings. Run the following command (from the `poky/build/` directory):
+
+```sh    
+$ bitbake core-image-sato
+```
+
+Now go grab a coffee. Or better yet, take your family out to a restaurant for a nice meal. This is going to **TAKE A WHILE**.
+
+import yocto_linux_build_in_progress_showing_cpu_usage from './yocto-linux-build-in-progress-showing-cpu-usage.png'
+
+<Image src={yocto_linux_build_in_progress_showing_cpu_usage} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
+
+**Make sure your computer is not set to go to sleep/shutdown after 1-2 hours of activity, otherwise you might find the build won't complete!**
+
+Yocto will calculate all dependencies, download them, and compile! (make sure you have an o.k. internet connection).
+
+You can safely ignore (usually)  most of the orange "Failed to fetch URL..." warnings that pop-up as the build progresses, as Yocto can attempt to download them from other sources.
+
+After the build was complete, Yocto had used about 35GB of hard drive memory. The output build images should be in `poky/build/tmp/deploy/images/`. You can now test out the Linux image you just built by running it in QEMU:
+
+```sh    
+$ runqemu qemux86
+```
+
+This should load up a separate window, and display a GUI of the Linux image you just built.
+
+import yocto_running_qemu_after_building_default_linux_image from './yocto-running-qemu-after-building-default-linux-image.png'
+
+<Image src={yocto_running_qemu_after_building_default_linux_image} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
+
+## The Project Configuration File
+
+The main configuration for a Yocto project is located at `poky/build/conf/local.conf`.
+
+## Moving The Entire Yocto Project Directory Somewhere Else
+
+Moving the entire Yocto project directory isn't as straightforward as you might think (e.g. moving or renaming the poky folder). Because Yocto stores a small but non-zero amount of information in the project using absolute paths (gasp!), moving/renaming this folder will break a build (assuming a build has already been completed at least once, if not, you're o.k.!).
+
+You will probably receive an error message along the lines of:
+
+Oh no! I have to rebuild? But that took hours! Luckily, you can fix this without having to do a complete rebuild. Upon receiving this error, open up the `poky/build/tmp/saved_tmpdir` file in a text editor, and update the path to the new location (the path should be the only thing in this file).
+
+You should now be able to run bitbake ... without any errors, and without having to restart the build from scratch.
+
+## Disabling sanity Checks
+
+Although not recommended, sometimes it is necessary to disable the sanity checks. This can be done by commenting out the out the `INHERIT += "sanity"` line from the file `meta/conf/sanity.conf`, so it looks like the following:
+
+```sh    
+# Sanity checks for common user misconfigurations
+#
+# See sanity.bbclass
+#
+# Expert users can confirm their sanity with "touch conf/sanity.conf"
+BB_MIN_VERSION = "1.31.2"
+
+SANITY_ABIFILE = "${TMPDIR}/abi_version"
+
+SANITY_VERSION ?= "1"
+LOCALCONF_VERSION  ?= "1"
+LAYER_CONF_VERSION ?= "7"
+SITE_CONF_VERSION  ?= "1"
+
+#INHERIT += "sanity"
+```
+
+This will disable all sanity checks, including:
+
+* `Do not use Bitbake as root`
+* `Error, TMPDIR has changed location`
+* The `TMPDIR: <path> can't be located on nfs`. 

@@ -1,0 +1,62 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Build Systems And Package Managers", "CMake" ]
+date: 2017-01-08
+description: "A cheat sheet for the CMake build tool."
+draft: false
+last_update:
+  date: 2019-01-01
+  author: Geoffrey Hunter
+tags: [ "CMake", "cheat", "sheet", "C", "C++", "build system", "code", "compile", "install" ]
+title: "CMake Cheat Sheet"
+type: page
+---
+
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+## cmake Cheat Sheet
+
+Below is a **cheat sheet for the most common statements** you will use in a `CMakeLists.txt` file!
+
+**By no means is this a complete reference guide**, even for the mentioned functions (commonly they are just depicted in their most used form). For full documentation, see [https://cmake.org/documentation/](https://cmake.org/documentation/).
+
+Sorted roughly by in which order you would use them (i.e. from compiling to linking).
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>set(srcs file1.c file2.c ...)</code></td>
+      <td>Creates a variable (e.g. <code>src</code>), and assigns something to it (e.g. the list file1.c file2.c). To clear a variable, do not provide second argument, e.g. <code>set(srcs)</code>.</td>
+    </tr>
+    <tr>
+      <td><code>include_directories(dir1 dir2 ...)</code></td>
+      <td>Adds the provided directory paths to the compilers list of directories that it will search for include files in, for any following targets.</td>
+    </tr>
+    <tr>
+      <td><code>add_library(name STATIC/SHARED/MODULE file1.c file2.c ...)</code></td>
+      <td>Adds a library target that will be build from the provided source files. **DO NOT APPEND** <code>lib_</code> to the name (this is done automatically by cmake depending on architecture).</td>
+    </tr>
+    <tr>
+      <td><code>add_executable(name file1.c file2.c ...)</code></td>
+      <td>Adds an executable target (as opposed to a library target).</td>
+    </tr>
+    <tr>
+      <td><code>link_libraries(lib_1 lib_2 ...)</code></td>
+      <td>Links the provided libraries to all following targets in the CMakeLists.txt file. This is deprecated. It is recommended you use <code>target_link_libraries()</code> instead.</td>
+    </tr>
+    <tr>
+      <td><code>target_link_libraries(target_lib other_lib_1 other_lib_2 ...)</code></td>
+      <td>Links the provided libraries to the specific target library. <code>link_libraries()</code> can be used to apply to libraries to all following targets (i.e. no specific target is provided), however, it is deprecated.</td>
+    </tr>
+    <tr>
+      <td><code>install(TARGETS targets...)</code></td>
+      <td>Used to place build output into certain directories on the user's system (as well as do things like assign privileges to these files).</td>
+    </tr>
+  </tbody>
+</table>
