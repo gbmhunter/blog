@@ -62,3 +62,10 @@ to break anything? */
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.wrappable-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: center;
+}

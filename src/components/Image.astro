@@ -19,9 +19,11 @@ const { src, width, ...attrs } = Astro.props;
     
     figcaption {
         font-size: 1.0rem;
+        font-style: italic;
         color: #666;
         margin-top: 0.5rem;
         min-width: 100px; /* Don't make the caption too narrow if image is small */
+        max-width: 100%; /* Make sure caption never exceeds the page width */
         width: var(--width);
     }
 </style>

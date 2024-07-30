@@ -238,6 +238,18 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [
+      [
+        rehypeKatex,
+        {
+          // See https://katex.org/docs/options.html for how macros (or other options)
+          // work
+          macros: {
+            "\\b": "\\mathbf{#1}",
+            "\\bhat": "{\\hat{\\mathbf{#1}}}",
+          }
+        },
+      ],
+    ],
   },
 });
