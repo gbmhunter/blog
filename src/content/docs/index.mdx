@@ -16,9 +16,16 @@ description: The blog.mbedded.ninja homepage.
 #       icon: external
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Use the menu to navigate through the different sections of the site.
 
 ## Categories
+
+<CardGrid>
+  <LinkCard title="Electronics" href="/electronics/" description="Info on electronic components, circuit design, tools and more." />
+  <LinkCard title="PCB Design" href="/pcb-design/" description="Component package database, PCB routing guides and more." />
+</CardGrid>
 
 <CardGrid>
 	<Card title="Electronics" icon="pencil">

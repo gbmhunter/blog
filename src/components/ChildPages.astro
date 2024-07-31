@@ -1,0 +1,20 @@
+---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+const {pages} = Astro.props;
+
+let childPageInfo = []
+for (const page in pages) {
+  const fileInfo = await pages[page]();
+  childPageInfo.push({
+      title: fileInfo.frontmatter.title,
+      url: fileInfo.url,
+      description: fileInfo.frontmatter.description,
+  });
+}
+---
+
+<CardGrid>
+    {childPageInfo.map((childPageInfo) => (
+        <LinkCard title={childPageInfo.title} description={childPageInfo.description} />
+    ))}
+</CardGrid>
