@@ -5,16 +5,21 @@ const {pages} = Astro.props;
 let childPageInfo = []
 for (const page in pages) {
   const fileInfo = await pages[page]();
+  const childPageFilePathParts = fileInfo.url.split('/');
+  const childPageSlugPartial = childPageFilePathParts[childPageFilePathParts.length - 2];
+  const childPathSlug = `/${Astro.params.slug}/${childPageSlugPartial}/`;
   childPageInfo.push({
       title: fileInfo.frontmatter.title,
-      url: fileInfo.url,
+      url: childPathSlug,
       description: fileInfo.frontmatter.description,
   });
 }
+// console.log(Astro.params); // slug: electronics/circuit-design
+// console.log(Astro.url); // pathaame: /electronics/circuit-design/
 ---
 
 <CardGrid>
     {childPageInfo.map((childPageInfo) => (
-        <LinkCard title={childPageInfo.title} description={childPageInfo.description} />
+        <LinkCard title={childPageInfo.title} href={childPageInfo.url} description={childPageInfo.description} />
     ))}
 </CardGrid>
