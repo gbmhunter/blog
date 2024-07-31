@@ -1,13 +1,22 @@
 ---
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
-const {pages} = Astro.props;
+const {pages, excludes=[]} = Astro.props;
 
 let childPageInfo = []
 for (const page in pages) {
   const fileInfo = await pages[page]();
   const childPageFilePathParts = fileInfo.url.split('/');
   const childPageSlugPartial = childPageFilePathParts[childPageFilePathParts.length - 2];
-  const childPathSlug = `/${Astro.params.slug}/${childPageSlugPartial}/`;
+  if (excludes.includes(childPageSlugPartial)) {
+    continue;
+  }
+  // Astro.params.slug is undefined on the homepage
+  let childPathSlug;
+  if (Astro.params.slug === undefined) {
+    childPathSlug = `/${childPageSlugPartial}/`;
+  } else {
+    childPathSlug = `/${Astro.params.slug}/${childPageSlugPartial}/`;
+  }
   childPageInfo.push({
       title: fileInfo.frontmatter.title,
       url: childPathSlug,
@@ -19,7 +28,7 @@ for (const page in pages) {
 ---
 
 <CardGrid>
-    {childPageInfo.map((childPageInfo) => (
-        <LinkCard title={childPageInfo.title} href={childPageInfo.url} description={childPageInfo.description} />
-    ))}
+  {childPageInfo.map((childPageInfo) => (
+    <LinkCard title={childPageInfo.title} href={childPageInfo.url} description={childPageInfo.description} />
+  ))}
 </CardGrid>
