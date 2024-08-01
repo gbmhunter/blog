@@ -2,6 +2,7 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2013-08-02
+description: Schematics, waveforms, hardware vs. firmware and more info on switch debouncing.
 draft: false
 last_update:
   date: 2023-07-02
@@ -19,8 +20,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Debouncing_ is the technique of detecting and removing multiple state changes from a hardware device (most commonly a push-button switch) caused when the mechanical contacts touch. Because of tiny imperfections in switch contacts, as the contacts come together and make a conductive circuit, the actual resistance jumps up and down multiple times in quick succession (this is the bouncing). Although the human eye cannot see this when a light is turned on in a house, this bouncing can cause problems for logic which is expecting a single state tradition (e.g. a microcontroller which is counting button presses).
 
-{/* {{% figure src="example-switch-waveform-needs-debouncing.webp" width="600px" caption="An example output from a button press, which needs debouncing." %}} */}
-import example_switch_waveform_needs_debouncing from './example-switch-waveform-needs-debouncing.webp'
+import example_switch_waveform_needs_debouncing from './_assets/example-switch-waveform-needs-debouncing.webp'
 
 <Image src={example_switch_waveform_needs_debouncing} width="600">An example output from a button press, which needs debouncing.</Image>
 
@@ -36,8 +36,7 @@ _Hardware debouncing_ is about using passive components and simple logic to debo
 
 One simple way is to use a RC circuit with a Schmitt inverter:
 
-{/* {{% figure src="rc-debouncing-circuit.webp" width="600px" caption="A simple RC debouncing circuit." %}} */}
-import rc_debouncing_circuit from './rc-debouncing-circuit.webp'
+import rc_debouncing_circuit from './_assets/rc-debouncing-circuit.webp'
 
 <Image src={rc_debouncing_circuit} width="600">A simple RC debouncing circuit.</Image>
 
@@ -45,8 +44,7 @@ Schmitt behaviour is needed on the inverter otherwise the bouncing which causes 
 
 The following diagram shows how this RC debouncing circuit works:
 
-{/* {{% figure src="rc-debouncing-waveforms.webp" width="900px" %}} */}
-import rc_debouncing_waveforms from './rc-debouncing-waveforms.webp'
+import rc_debouncing_waveforms from './_assets/rc-debouncing-waveforms.webp'
 
 <Image src={rc_debouncing_waveforms} width="900">RC debouncing waveforms.</Image>
 

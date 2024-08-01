@@ -2,6 +2,7 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2011-09-03
+description: Capacitors, zeners, TVS diodes, MOVs, GDTs, spark gaps, series resistance and more info on ESD protection.
 draft: false
 last_update:
   date: 2022-04-27
@@ -11,7 +12,7 @@ title: ESD Protection
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+import { Aside, ChildPages, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
@@ -21,6 +22,10 @@ Electrostatic discharge (ESD) is a unintended quick high-voltage transient wavef
 * **Electromagnetic compatibility (EMC)**: The measure of ability for a system to both:
     * Function correctly in the presence of electromagnetic radiation (EMI).
     * Not emit EMI that exceeds the regulations defined by the type of system and the environment it will be used in.
+
+## Child Pages
+
+<ChildPages />
 
 ## ESD Protection Devices
 
@@ -130,8 +135,7 @@ Test level `X` designates a special test in where the levels are defined by the 
 
 Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions ($ GND <= V_{I/O} <= V_{CC} $).
 
-{/* {{% figure src="cmos-inputs-showing-internal-protection-diodes.svg" width="400" caption="Diagram of a CMOS digital I/O pin, highlighting the internal protection diodes prevalent in many designs (even if the ICs datasheet does not mention them)." %}} */}
-import cmos_inputs_showing_internal_protection_diodes from './cmos-inputs-showing-internal-protection-diodes.svg'
+import cmos_inputs_showing_internal_protection_diodes from './_assets/cmos-inputs-showing-internal-protection-diodes.svg'
 
 <Image src={cmos_inputs_showing_internal_protection_diodes} width="400">Diagram of a CMOS digital I/O pin, highlighting the internal protection diodes prevalent in many designs (even if the ICs datasheet does not mention them).</Image>
 
@@ -157,19 +161,15 @@ You can normally diagnose this by noting the the "unpowered" rail will be one di
 
 ## Standalone TVS Diodes
 
-{/* {{% figure src="basic-esd-protection-with-tvs-diode.svg" width="800" caption="A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB." %}} */}
-import basic_esd_protection_with_tvs_diode from './basic-esd-protection-with-tvs-diode.svg'
+import basic_esd_protection_with_tvs_diode from './_assets/basic-esd-protection-with-tvs-diode.svg'
 
 <Image src={basic_esd_protection_with_tvs_diode} width="800">A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB.</Image>
 
-{/* {{% aside type="note" %}} */}
 <Aside type="note">
 A TVS as shown above also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about $-0.7V$. Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See the below image for an example using both a TVS diode and fuse.
-{/* {{% /aside %}} */}
 </Aside>
 
-{/* {{% figure src="basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg" width="800" caption="Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1)." %}} */}
-import basic_esd_protection_with_tvs_diode_and_reverse_polarity_fuse from './basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg'
+import basic_esd_protection_with_tvs_diode_and_reverse_polarity_fuse from './_assets/basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg'
 
 <Image src={basic_esd_protection_with_tvs_diode_and_reverse_polarity_fuse} width="800">Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1).</Image>
 
@@ -177,8 +177,7 @@ import basic_esd_protection_with_tvs_diode_and_reverse_polarity_fuse from './bas
 
 Extra diodes, external to the IC, can be added to prevent leakage currents through CMOS IO pins on devices which have ESD protection diodes to VCC and GND. The following image shows how they would be connected to the IC of interest.
 
-{/* {{% figure src="protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." %}} */}
-import protection_diodes_to_disable_esd_diodes_on_cmos_io from './protection-diodes-to-disable-esd-diodes-on-cmos-io.png'
+import protection_diodes_to_disable_esd_diodes_on_cmos_io from './_assets/protection-diodes-to-disable-esd-diodes-on-cmos-io.png'
 
 <Image src={protection_diodes_to_disable_esd_diodes_on_cmos_io} width="489">Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.</Image>
 
@@ -208,8 +207,7 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 
 ## Lighting Surge Characterization And Test Transient Pulses
 
-{/* {{% figure src="test-pulse-graph-8-20us.svg" width="800" caption="Transient ESD events are typically specified with two numbers, $t_1$ and $t_2$. $t_1$ is the time for the current to reach the peak value. $t_2$ is the time from the start to when the current decays to half of the peak value (as shown)." %}} */}
-import test_pulse_graph_8_20us from './test-pulse-graph-8-20us.svg'
+import test_pulse_graph_8_20us from './_assets/test-pulse-graph-8-20us.svg'
 
 <Image src={test_pulse_graph_8_20us} width="800">Transient ESD events are typically specified with two numbers, $t_1$ and $t_2$. $t_1$ is the time for the current to reach the peak value. $t_2$ is the time from the start to when the current decays to half of the peak value (as shown).</Image>
 
@@ -218,8 +216,6 @@ import test_pulse_graph_8_20us from './test-pulse-graph-8-20us.svg'
 | 8/20us | 8us | 20us |
 | 10/350us | 10us | 350us | Typically used to simulate a lightning strike.
 | 10/1000us | 10us | 1000us |
-
-## References
 
 [^bib-bourns-cddfn10-0506n-ds]: Bourns. _CDDFN10-0506N - TVS/Steering Diode Array (datasheet)_. Retrieved 2022-04-27 from https://www.bourns.com/docs/Product-Datasheets/CDDFN10-0506N.pdf.
 [^bib-iec-61000-4-4-2012]: Retrieved 2022-04-28, from https://webstore.iec.ch/publication/22271.

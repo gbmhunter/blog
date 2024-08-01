@@ -2,13 +2,16 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
+description: How to design circuits, including info on analogue filters, transistor amplifiers, cap sensing, digital logic, ESD, power management, thermal management, and more.
 draft: false
 title: Circuit Design
 type: page
 ---
 
-import { Aside, CircuitJs, ChildPages, Image, WarningIsNotes } from '/src/components/General.astro';
+import { Aside, ChildPages, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+export { default as coverImage } from './_assets/test-image.png';
 
 ## Child Pages
 
-<ChildPages pages={import.meta.glob('./*/*.mdx')} />
+<ChildPages />

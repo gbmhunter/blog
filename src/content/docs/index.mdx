@@ -17,10 +17,10 @@ description: The blog.mbedded.ninja homepage.
 ---
 
 import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
-import { Aside, CircuitJs, ChildPages, Image, WarningIsNotes } from '/src/components/General.astro';
+import { Aside, ChildPages, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 Use the menu to navigate through the different sections of the site.
 
 ## Categories
 
-<ChildPages pages={import.meta.glob('./*/*.mdx')} excludes={['site-info', 'test']}/>
+<ChildPages />

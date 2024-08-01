@@ -19,10 +19,7 @@ import { Aside, Image } from '/src/components/General.astro';
 
 _Filter tunings_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter tuning directly specifies what the filters polynomials must be in it's transfer function (see [What Are Transfer Functions, Poles and Zeroes](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) for more info).
 
-
-import cover_photo from './_assets/cover-photo.png'
-
-<Image src={cover_photo} width="500">Schematic of a simple low-pass RC filter.</Image>
+<Image src={import('./_assets/cover-photo.png')} width="500">Schematic of a simple low-pass RC filter.</Image>
 
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
 * **Chebyshev**: Designed to have a steep transition between the pass and stop-band (but not the steepest, Elliptic tuning claims that award), at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:

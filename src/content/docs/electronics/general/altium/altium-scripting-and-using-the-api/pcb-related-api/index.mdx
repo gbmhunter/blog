@@ -16,7 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The following code shows how to create a track (a straight line, curved ones are called arcs) on a PCB.
 
-```delphi
+```txt
 procedure CreateTrack();
 var
     board : IPCB_Board;
@@ -41,7 +41,7 @@ end;
 
 The following code shows how to create an arc (a curved line) on a PCB.
     
-```delphi
+```txt
 arcN_2 := PCBServer.PCBObjectFactory(eArcObject, eNoDimension, eCreate_Default);
 arcN_2.XCenter := MMsToCoord(xm);
 arcN_2.YCenter := MMsToCoord(ym);
@@ -59,7 +59,7 @@ Board.AddPCBObject(arcN_2);
 
 The following functions belonging to the `IPCB_Board` object request input from the user:
     
-```delphi
+```txt
 GetObjectAtCursor
 GetObjectAtXYAskUserIfAmbiguous
 ChooseRectangleByCorners
@@ -70,7 +70,7 @@ ChooseLocation
 
 The following code prompt the user to select a position on the PCB. The position (as x and y co-ordinates) the user clicks can then be used in proceeding code.
     
-```delphi
+```txt
 // Request for the user to select the centre of the object
 if (board.ChooseLocation(xm,ym,'Choose the centre of the circular pads.') = true) then
 begin
@@ -81,7 +81,7 @@ end;
 
 To prompt the user to select objects, use the function `GetObjectAtCursor();` on a PCB board (`IPCB_Board`) object. It's syntax is:
     
-```delphi
+```txt
 IPCB_Primative GetObjectAtCursor(
     TObjectSet objectSet,
     TLayerSet layerSet,
@@ -92,7 +92,7 @@ where `objectSet` is a list of all object types that the user can select (think 
 
 The `TObjectSet` variable is normally made by calling the function `MkSet()`, which makes a set from the passed in object(s) (this only required when scripting in Delphi, as Delphi doesn't natively support sets). The objects you can pass into `MkSet()` are part of the TObjectID enumeration and include:
     
-```delphi
+```txt
 eNoObject
 eArcObject
 ePadObject
@@ -123,7 +123,7 @@ eBoardOutlineObject
 
 The example below requests the user to select a component from an layer.
     
-```delphi
+```txt
 Procedure GetComponent;
 var
     board       : IPCB_Board;
@@ -146,7 +146,7 @@ end;
 
 You commonly need to check that when a script is run, the active window is the right thing for the script to act on. The following code shows how to check if a PCB board file is loaded (`.Pcb`), and it feature at the start of lots of the other code examples. If a PCB board is not currently selected, the script quietly exits.
     
-```delphi
+```txt
 // obtains the PCB server and the PCB document
 board := PCBServer.GetCurrentPCBBoard;
 if (board = nil) then exit;
@@ -160,7 +160,7 @@ You can create PCB regions (which are similar to polygons, but have slightly dif
 
 Define the following objects after the `var` keyword and before the `begin` keyword.
     
-```delphi
+```txt
 board : IPCB_Board;
 contour : IPCB_Contour;
 region : IPCB_Region;
@@ -170,7 +170,7 @@ region : IPCB_Region;
 
 Use the following function to create an arc an add it to the contour (which will be used once all the segments have been added to generate the region).
     
-```delphi
+```txt
 PCBServer.PCBContourMaker.AddArcToContour(
     contour contour1,
     double startAngle,
@@ -187,7 +187,7 @@ Make `Aclockwise` be `true` if going clockwise, `false` if going clockwise.
 
 Use the following function to create a line segment and add it to a contour (which will be used once all the segments have been added to generate the region). Note that it is slightly simpler to add a line segment to a contour than an arc, basically because for a line all you have to do is define the start and end points.
     
-```delphi
+```txt
 contour.AddPoint(x : interger, y : integer);
 ```
 
@@ -195,7 +195,7 @@ contour.AddPoint(x : interger, y : integer);
 
 Once you have defined a region by using the contour object, you can add it to the PCB with the following code. This assumes
     
-```delphi
+```txt
 region := PCBServer.PCBObjectFactory(eRegionObject, eNoDimension, eCreate_Default);
 region.SetOutlineContour(contour);
 region.Layer := eTopLayer;
@@ -208,7 +208,7 @@ You can create polygons on a PCB by using the `IPCB_Polygon` and `TPolySegment` 
 
 Here is an example that will create a rather large, square polygon on the top layer of your PCB.
     
-```delphi
+```txt
 procedure CreatePolygonUsingPolySegments();
     var
         polygon : IPCB_Polygon;
@@ -275,7 +275,7 @@ end;
 
 Use the Client object to update the PCB window. This will update the PCB to show any changes that have been made to it by preceding code (it is not updated automatically). It is useful to call this at the end of a script to update the PCB and show the user the changes that have been made. If you don't call this, the the user will only see the changes once this method is called by another process.
     
-```delphi
+```txt
 Call Client.SendMessage("PCB:Zoom", "Action=Redraw" , 255, Client.CurrentView)
 ```
 
@@ -285,7 +285,7 @@ With specifically calling the functions `PCBServer.PreProcess` and `PCBServer.Po
 
 Make sure that you call `PCBServer.PreProcess` and `PCBServer.PostProcess` after doing any action that would change the PCB in anyway. If you are losing Undo functionality, it is likely due to the fact you are calling `PreProcess` without calling `PostProcess`. Essentially, any action done on the PCB between these two function calls is counted as one 'Undo'. The code below shows how to use these two functions correctly.
     
-```delphi
+```txt
 Sub UsingUndoProperly()
 
     PCBServer.PreProcess
@@ -332,7 +332,7 @@ Call RunProcess("PCB:Zoom")
 
 You can get the currently selected PCB layer with the code:
     
-```delphi
+```txt
 Board.CurrentLayer
 ```
 
@@ -340,7 +340,7 @@ On a valid `IPCB_Board` object.
 
 You can use the `LayerToString()` and `StringToLayer()` functions to convert a PCB layer object into a human readable string and back again. For example, if the PCB was currently on the top copper layer, you could do the following:
     
-```delphi
+```txt
 ShowMessage(LayerToString(Board.CurrentLayer))
 
 ' This will display the current layer to the user, if say, the top

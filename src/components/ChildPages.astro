@@ -1,10 +1,47 @@
 ---
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { getImage, Image } from "astro:assets";
+
+import { pageGlob, pageNodes } from '../PageHierarchy.ts';
+
+
 const {pages, excludes=[]} = Astro.props;
 
-let childPageInfo = []
-for (const page in pages) {
-  const fileInfo = await pages[page]();
+let childPageInfo = [];
+
+const pageSlug = Astro.params.slug; // e.g. electronics/circuit-design
+
+// Find the page node for the current page by iterating over the slug parts
+let pageNode = pageNodes;
+if (pageSlug !== undefined) {
+  const pageSlugParts = pageSlug.split('/');
+  // console.log('Page slug parts:', pageSlugParts);
+  for (const pageSlugPart of pageSlugParts) {
+    const foundChildNode = pageNode.items.find((child) => {
+      // console.log('Checking child:', child);
+      return child.label === pageSlugPart
+    });
+    if (foundChildNode === undefined) {
+      console.error('Could not find child node:', pageSlugPart);
+      break;
+    }
+    pageNode = foundChildNode;
+    // console.log('Found page node:', pageNode);
+  }
+}
+// console.log('Found page node:', pageNode);
+
+for (const childPage of pageNode.items) {
+  console.log('Looking at child page:', childPage.label);
+  if (childPage.slug === '') {
+    console.error('Child page has no slug:', childPage);
+    continue;
+  }
+
+  const fullPath = `/src/content/docs/${childPage.slug}/index.mdx`;
+  // console.log('Full path:', fullPath);
+  const fileInfo = await pageGlob[fullPath]() as any;
+  // console.log('image:', fileInfo.coverImage);
   const childPageFilePathParts = fileInfo.url.split('/');
   const childPageSlugPartial = childPageFilePathParts[childPageFilePathParts.length - 2];
   if (excludes.includes(childPageSlugPartial)) {
@@ -21,6 +58,7 @@ for (const page in pages) {
       title: fileInfo.frontmatter.title,
       url: childPathSlug,
       description: fileInfo.frontmatter.description,
+      image: fileInfo.coverImage // If coverImage is exported from .mdx files, otherwise undefined
   });
 }
 // console.log(Astro.params); // slug: electronics/circuit-design
@@ -29,6 +67,9 @@ for (const page in pages) {
 
 <CardGrid>
   {childPageInfo.map((childPageInfo) => (
+    <>
     <LinkCard title={childPageInfo.title} href={childPageInfo.url} description={childPageInfo.description} />
+    { childPageInfo.image !== undefined ? <Image src={childPageInfo.image} alt="" /> : null }
+    </>
   ))}
 </CardGrid>
