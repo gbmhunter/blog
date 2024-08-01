@@ -1,10 +1,12 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
+import { sidebarData } from '../PageHierarchy.ts';
+
 export async function getStaticPaths() {
 
   // Glob mdx files
-  const pageGlob = await import.meta.glob('/src/content/docs/electronics/**/*.mdx');
+  const pageGlob = await import.meta.glob('/src/content/docs2/electronics/**/*.mdx');
   // Slice first 10
   // console.log('Page glob:', pageGlob);
 
@@ -13,20 +15,26 @@ export async function getStaticPaths() {
   const maxNum = 5;
   let count = 0;
   for (const pageFilePath in pageGlob) {
-    console.log('Page:', pageFilePath);
+    // console.log('Page:', pageFilePath);
     const fileInfo = await pageGlob[pageFilePath]() as any;
-    console.log('File info:', fileInfo);
+    // console.log('File info:', fileInfo);
 
     // Remove /src/content/docs/ and /index.mdx
-    let pageSlug = pageFilePath.replace('/src/content/docs/', '2/');
+    let pageSlug = pageFilePath.replace('/src/content/docs2/', '2/');
     pageSlug = pageSlug.replace('/index.mdx', '');
-    console.log('Page slug:', pageSlug);
+    // console.log('Page slug:', pageSlug);
 
-    console.log('headings:', fileInfo.getHeadings());
+    // console.log('headings:', fileInfo.getHeadings());
+
+    // console.log('sidebarData:', sidebarData);
 
     staticPaths.push({
       params: { slug: pageSlug },
-      props: { title: fileInfo.frontmatter.title, Content: fileInfo.Content, headings: fileInfo.getHeadings() },
+      props: { 
+        title: fileInfo.frontmatter.title,
+        Content: fileInfo.Content,
+        headings: fileInfo.getHeadings()
+      },
     });
 
     count++;
@@ -47,7 +55,7 @@ export async function getStaticPaths() {
 
 const { title, Content, headings } = Astro.props;
 ---
-<StarlightPage frontmatter={{ title: title }} headings={headings}>
+<StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items}>
   <p>222</p>
   <Content /> 
 </StarlightPage>

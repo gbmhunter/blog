@@ -1,7 +1,7 @@
 
 console.log('Creating page hierarchy...');
 
-export const pageGlob = import.meta.glob("/src/content/docs/**/*.mdx");
+export const pageGlob = import.meta.glob("/src/content/docs2/electronics/**/*.mdx");
 let maxNum = 0;
 
 class PageNode {
@@ -27,8 +27,8 @@ const menuDirectoryBlackList = [
 
 for (const path in pageGlob) {
   maxNum++;
-  // console.log(path);
-  if (maxNum > 9999) {
+  console.log(path);
+  if (maxNum > 10) {
     break;
   }
 
@@ -43,7 +43,7 @@ for (const path in pageGlob) {
 
 
   // Get the path without the './src/content/docs/' prefix
-  const pathWithoutPrefix = path.replace('/src/content/docs/', '');
+  const pathWithoutPrefix = path.replace('/src/content/docs2/', '');
   // console.log(pathWithoutPrefix);
 
   // Calculate slug by removing index.mdx from the end of the path
@@ -126,41 +126,51 @@ for (const path in pageGlob) {
   }
 }
 
-// console.log('before converting leaf nodes:', JSON.stringify(sidebarNodes, null, 2));
+console.log('before converting leaf nodes:', JSON.stringify(pageNodes, null, 2));
+// Deep copy the sidebarNodes object
+export let sidebarData = JSON.parse(JSON.stringify(pageNodes));
+console.log('sidebarData:', JSON.stringify(sidebarData, null, 2));
+function convertNodesToSidebarData(node: any) {
+  if (node.items.length === 0) {
+    // Delete items array
+    delete node.items;
+    // Delete label
+    // delete node.label;
+    // Copy slug to href
+    node.href = node.slug;
+    // Delete slug
+    delete node.slug;
+    return;
+  }
 
-// function convertLeafNodes(node) {
-//   if (node.items.length === 0) {
-//     // Delete items array
-//     delete node.items;
-//     // Delete label
-//     delete node.label;
-//     // Leave slugs
-//     return;
-//   }
+  // Must not be a leaf node
+  // Change from page-name to Page Name
+  node.label = node.label.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-//   // Must not be a leaf node
-//   // Change from page-name to Page Name
-//   node.label = node.label.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  node.collapsed = true;
 
-//   node.collapsed = true;
+  for (let i = 0; i < node.items.length; i++) {
+    convertNodesToSidebarData(node.items[i]);
+  }
 
-//   for (let i = 0; i < node.items.length; i++) {
-//     convertLeafNodes(node.items[i]);
-//   }
+  // If the slug is defined, then this branch node also has a page. Add it
+  // to the items array
+  if (node.slug !== undefined) {
+    // Insert Overview page at the top
+    // so it is shown as the first item
+    // in the UI
+    node.items.unshift({
+      label: '[Overview]',
+      href: node.slug,
+    });
+    // Delete the slug
+    delete node.slug;
+  } else {
+    // Delete the slug
+    node.href = node.slug;
+    delete node.slug;
+  }
+}
 
-//   // If the slug is defined, then this branch node also has a page. Add it
-//   // to the items array
-//   if (node.slug !== undefined) {
-//     // Insert Overview page at the top
-//     // so it is shown as the first item
-//     // in the UI
-//     node.items.unshift({
-//       label: '[Overview]',
-//       slug: node.slug,
-//     });
-//     // Delete the slug
-//     delete node.slug;
-//   }
-// }
-
-// convertLeafNodes(sidebarNodes);
+convertNodesToSidebarData(sidebarData);
+console.log('after converting leaf nodes:', JSON.stringify(sidebarData, null, 2));
