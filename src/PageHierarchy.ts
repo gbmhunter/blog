@@ -1,8 +1,19 @@
 
 console.log('Creating page hierarchy...');
 
-export const pageGlob = import.meta.glob("/src/content/docs2/electronics/**/*.mdx");
-let maxNum = 0;
+const maxPages = 10;
+
+export let pageGlob = import.meta.glob("/src/content/docs2/electronics/**/*.mdx");
+let pageGlobLimited: any = {};
+let count = 0;
+for (const path in pageGlob) {
+  if (count > maxPages) {
+    break;
+  }
+  pageGlobLimited[path] = pageGlob[path];
+  count++;
+}
+pageGlob = pageGlobLimited;
 
 class PageNode {
   label: string;
@@ -26,14 +37,9 @@ const menuDirectoryBlackList = [
 ];
 
 for (const path in pageGlob) {
-  maxNum++;
   console.log(path);
-  if (maxNum > 10) {
-    break;
-  }
 
   // console.log('path:', await pagePaths[path]());
-
 
   // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore
   // (we use this to indicate the file is a partial)
