@@ -1,0 +1,53 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+export async function getStaticPaths() {
+
+  // Glob mdx files
+  const pageGlob = await import.meta.glob('/src/content/docs/electronics/**/*.mdx');
+  // Slice first 10
+  // console.log('Page glob:', pageGlob);
+
+
+  let staticPaths = [];
+  const maxNum = 5;
+  let count = 0;
+  for (const pageFilePath in pageGlob) {
+    console.log('Page:', pageFilePath);
+    const fileInfo = await pageGlob[pageFilePath]() as any;
+    console.log('File info:', fileInfo);
+
+    // Remove /src/content/docs/ and /index.mdx
+    let pageSlug = pageFilePath.replace('/src/content/docs/', '2/');
+    pageSlug = pageSlug.replace('/index.mdx', '');
+    console.log('Page slug:', pageSlug);
+
+    console.log('headings:', fileInfo.getHeadings());
+
+    staticPaths.push({
+      params: { slug: pageSlug },
+      props: { title: fileInfo.frontmatter.title, Content: fileInfo.Content, headings: fileInfo.getHeadings() },
+    });
+
+    count++;
+    if (count >= maxNum) {
+      break;
+    }
+  }
+
+  return staticPaths;
+  // return pageGlob.map((page) => {
+  //   console.log('Page:', page);
+  //   return {
+  //     params: { slug },
+  //     props: { title, text },
+  //   };
+  // });
+}
+
+const { title, Content, headings } = Astro.props;
+---
+<StarlightPage frontmatter={{ title: title }} headings={headings}>
+  <p>222</p>
+  <Content /> 
+</StarlightPage>
