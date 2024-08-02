@@ -9,13 +9,19 @@ import { getCollection, getEntry } from 'astro:content';
 const pagesCollection = await getCollection('docs2');
 // console.log(allBlogPosts);
 
-const pageSlug = Astro.params.slug; // e.g. electronics/circuit-design
+let pageSlug = Astro.params.slug; // e.g. electronics/circuit-design
+if (pageSlug === undefined) {
+  // Will be undefined if homepage (root index.mdx)
+  pageSlug = '';
+} else {
+  pageSlug = pageSlug + '/';
+}
 
 let count = 0;
 let childPages: any = [];
 for (const page of pagesCollection) {
   // console.log(page);
-  if (count > 9999) {
+  if (count > 9900) {
     break;
   }
   count++;
@@ -23,72 +29,18 @@ for (const page of pagesCollection) {
   // Check slug matches regex
   // console.log('Checking slug:', page.slug);
   // console.log('curr page slug:', pageSlug);
-  const regex = new RegExp(`^${pageSlug}\/[^\/]*$`);
+  const regex = new RegExp(`^${pageSlug}[^\/]*$`);
   // console.log('regex:', regex);
   const match = page.slug.match(regex);
   if (match === null) {
     // console.log('No match');
     continue;
   }
-  console.log('Found match:', match);
+  // console.log('Found match:', match);
   childPages.push(page);
 }
-console.log('Child pages:', childPages);
+// console.log('Child pages:', childPages);
 
-// // const {pages, excludes=[]} = Astro.props;
-
-// // let childPageInfo = [];
-
-// // Find the page node for the current page by iterating over the slug parts
-// let pageNode = pageNodes;
-// if (pageSlug !== undefined) {
-//   const pageSlugParts = pageSlug.split('/');
-//   // console.log('Page slug parts:', pageSlugParts);
-//   for (const pageSlugPart of pageSlugParts) {
-//     const foundChildNode = pageNode.items.find((child) => {
-//       // console.log('Checking child:', child);
-//       return child.label === pageSlugPart
-//     });
-//     if (foundChildNode === undefined) {
-//       console.error('Could not find child node:', pageSlugPart);
-//       break;
-//     }
-//     pageNode = foundChildNode;
-//     // console.log('Found page node:', pageNode);
-//   }
-// }
-// console.log('Found page node:', pageNode);
-
-// for (const childPage of pageNode.items) {
-//   console.log('Looking at child page:', childPage.label);
-//   if (childPage.slug === '') {
-//     console.error('Child page has no slug:', childPage);
-//     continue;
-//   }
-
-//   const fullPath = `/src/content/docs/${childPage.slug}/index.mdx`;
-//   // console.log('Full path:', fullPath);
-//   const fileInfo = await pageGlob[fullPath]() as any;
-//   // console.log('image:', fileInfo.coverImage);
-//   const childPageFilePathParts = fileInfo.url.split('/');
-//   const childPageSlugPartial = childPageFilePathParts[childPageFilePathParts.length - 2];
-//   if (excludes.includes(childPageSlugPartial)) {
-//     continue;
-//   }
-//   // Astro.params.slug is undefined on the homepage
-//   let childPathSlug;
-//   if (Astro.params.slug === undefined) {
-//     childPathSlug = `/${childPageSlugPartial}/`;
-//   } else {
-//     childPathSlug = `/${Astro.params.slug}/${childPageSlugPartial}/`;
-//   }
-//   childPageInfo.push({
-//       title: fileInfo.frontmatter.title,
-//       url: childPathSlug,
-//       description: fileInfo.frontmatter.description,
-//       image: fileInfo.coverImage // If coverImage is exported from .mdx files, otherwise undefined
-//   });
-// }
 // console.log(Astro.params); // slug: electronics/circuit-design
 // console.log(Astro.url); // pathaame: /electronics/circuit-design/
 ---
