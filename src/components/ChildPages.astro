@@ -1,15 +1,43 @@
 ---
-// import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 // import { getImage, Image } from "astro:assets";
 
 // import { pageGlob, pageNodes } from '../PageHierarchy.ts';
 
+import { getCollection, getEntry } from 'astro:content';
 
-// const {pages, excludes=[]} = Astro.props;
+const pagesCollection = await getCollection('docs2');
+// console.log(allBlogPosts);
 
-// let childPageInfo = [];
+const pageSlug = Astro.params.slug; // e.g. electronics/circuit-design
 
-// const pageSlug = Astro.params.slug; // e.g. electronics/circuit-design
+let count = 0;
+let childPages: any = [];
+for (const page of pagesCollection) {
+  // console.log(page);
+  if (count > 9999) {
+    break;
+  }
+  count++;
+
+  // Check slug matches regex
+  // console.log('Checking slug:', page.slug);
+  // console.log('curr page slug:', pageSlug);
+  const regex = new RegExp(`^${pageSlug}\/[^\/]*$`);
+  // console.log('regex:', regex);
+  const match = page.slug.match(regex);
+  if (match === null) {
+    // console.log('No match');
+    continue;
+  }
+  console.log('Found match:', match);
+  childPages.push(page);
+}
+console.log('Child pages:', childPages);
+
+// // const {pages, excludes=[]} = Astro.props;
+
+// // let childPageInfo = [];
 
 // // Find the page node for the current page by iterating over the slug parts
 // let pageNode = pageNodes;
@@ -29,7 +57,7 @@
 //     // console.log('Found page node:', pageNode);
 //   }
 // }
-// // console.log('Found page node:', pageNode);
+// console.log('Found page node:', pageNode);
 
 // for (const childPage of pageNode.items) {
 //   console.log('Looking at child page:', childPage.label);
@@ -65,13 +93,10 @@
 // console.log(Astro.url); // pathaame: /electronics/circuit-design/
 ---
 
-<!-- <CardGrid> -->
-  <!-- {childPageInfo.map((childPageInfo) => (
-    <>
-    <LinkCard title={childPageInfo.title} href={childPageInfo.url} description={childPageInfo.description} />
-    { childPageInfo.image !== undefined ? <Image src={childPageInfo.image} alt="" /> : null }
-    </>
-  ))}
-</CardGrid> -->
-
-<p>Child pages</p>
+<CardGrid>
+  {
+    childPages.map((childPage: any) => (
+      <LinkCard title={childPage.data.title} href={'/' + childPage.slug + '/'} description={childPage.data.description} />
+    ))
+  }
+</CardGrid>

@@ -31,6 +31,9 @@ for (const path in pageGlob) {
   const slug = '/' + path.replace('/src/content/docs2/', '').replace('index.mdx', '');
   pageRoutes.push(new PageRoutes(slug, pageInfo));
   count++;
+  if (count % 100 === 0) {
+    console.log('Processed', count, 'pages...');
+  }
 }
 
 class PageNode {
