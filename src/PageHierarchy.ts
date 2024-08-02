@@ -4,7 +4,7 @@ console.log('===================================================================
 
 const maxPages = 10000;
 
-export let pageGlob = import.meta.glob("/src/content/docs2/electronics/**/*.mdx");
+export let pageGlob = import.meta.glob("/src/content/docs2/**/*.mdx");
 
 class PageRoutes {
   slug: string;
@@ -28,7 +28,7 @@ for (const path in pageGlob) {
 
   let pageInfo = await pageGlob[path]();
   // Absolute slug in the form "/electronics/components/resistors/", e.t.c
-  const slug = '/' + path.replace('/src/content/docs2/', '').replace('/index.mdx', '') + '/';
+  const slug = '/' + path.replace('/src/content/docs2/', '').replace('index.mdx', '');
   pageRoutes.push(new PageRoutes(slug, pageInfo));
   count++;
 }
