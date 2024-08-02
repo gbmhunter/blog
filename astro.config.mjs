@@ -219,16 +219,16 @@ export default defineConfig({
             "console.log('hello!');",
         },
       ],
-      plugins: [starlightBlog({
-        authors: {
-          gbmhunter: {
-            name: 'Geoffrey Hunter',
-            title: 'mbedded.ninja Author',
-            picture: '/images/authors/gbmhunter.png', // Images in the `public` directory are supported.
-            url: 'https://hideoo.dev',
-          },
-        },
-      })],
+      // plugins: [starlightBlog({
+      //   authors: {
+      //     gbmhunter: {
+      //       name: 'Geoffrey Hunter',
+      //       title: 'mbedded.ninja Author',
+      //       picture: '/images/authors/gbmhunter.png', // Images in the `public` directory are supported.
+      //       url: 'https://hideoo.dev',
+      //     },
+      //   },
+      // })],
       sidebar: sidebarNodes.items,
     }),
   ],
