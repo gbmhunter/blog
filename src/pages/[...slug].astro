@@ -1,27 +1,35 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
 
-import { pageRoutes, sidebarData } from '../PageHierarchy.ts';
+import { getRoutablePages, getSidebarData } from '../PageHierarchy.ts';
 
 export async function getStaticPaths() {
+  console.log('====================================================');
+  console.log('getStaticPaths');
+  console.log('====================================================');
 
+
+  let pagesCollection = await getCollection('docs2');
+  // Trim down to first 10
+  // pagesCollection = pagesCollection.slice(0, 2);
+
+  const routablePages = getRoutablePages(pagesCollection);
+  const sidebarData = getSidebarData(pagesCollection);
 
   let staticPaths = [];
-  for (const pageRoute of pageRoutes) {
-    // console.log('Page:', pageFilePath);
-    const fileInfo = pageRoute.fileData;
+  for (let pageRoute of routablePages) {
 
-    // console.log('Page slug:', pageRoute.slug);
-    // console.log('headings:', fileInfo.getHeadings());
-    // console.log('sidebarData:', sidebarData);
-    // console.log('Page title:', fileInfo.frontmatter.title);
+    if (pageRoute.slug === 'index') {
+      pageRoute.slug = undefined;
+    }
 
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
-        title: fileInfo.frontmatter .title,
-        Content: fileInfo.Content,
-        headings: fileInfo.getHeadings()
+        title: pageRoute.data.title,
+        render: pageRoute.render,
+        sidebarData: sidebarData,
       },
     });
   }
@@ -29,7 +37,8 @@ export async function getStaticPaths() {
   return staticPaths;
 }
 
-const { title, Content, headings } = Astro.props;
+const { title, render, sidebarData } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await render();
 ---
 <StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any}>
   <Content /> 

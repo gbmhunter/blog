@@ -1,40 +1,60 @@
+import { getCollection, getEntry } from 'astro:content';
+
 console.log('==========================================================================================================');
 console.log('Creating page hierarchy...');
 console.log('==========================================================================================================');
 
-const maxPages = 10000;
 
-export let pageGlob = import.meta.glob("/src/content/docs2/**/*.mdx");
+// export let pageGlob = import.meta.glob("/src/content/docs2/**/*.mdx");
 
-class PageRoutes {
-  slug: string;
-  fileData: any;
-  constructor(slug: string, fileData: any) {
-    this.slug = slug;
-    this.fileData = fileData;
+// class PageRoutes {
+//   slug: string;
+//   fileData: any;
+//   constructor(slug: string, fileData: any) {
+//     this.slug = slug;
+//     this.fileData = fileData;
+//   }
+// }
+// export let pageRoutes: PageRoutes[] = [];
+// let count = 0;
+// for (const path in pageGlob) {
+//   if (count > maxPages) {
+//     break;
+//   }
+//   
+//   if (path.includes('/_')) {
+//     continue;
+//   }
+
+//   let pageInfo = await pageGlob[path]();
+//   // Absolute slug in the form "/electronics/components/resistors/", e.t.c
+//   const slug = '/' + path.replace('/src/content/docs2/', '').replace('index.mdx', '');
+//   pageRoutes.push(new PageRoutes(slug, pageInfo));
+//   count++;
+//   if (count % 100 === 0) {
+//     console.log('Processed', count, 'pages...');
+//   }
+// }
+
+// const pagesCollection = await getCollection('docs2');
+
+export function getRoutablePages(pagesCollection: any) {
+  let routablePages = [];
+  for (const page of pagesCollection) {
+    // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore
+    // (we use this to indicate the file is a partial)
+    if (page.slug.includes('/_')) {
+      continue;
+    }
+
+    // if (page.slug === 'index') {
+    //   page.slug = '/';
+    // }
+    routablePages.push(page);
   }
+  return routablePages;
 }
-export let pageRoutes: PageRoutes[] = [];
-let count = 0;
-for (const path in pageGlob) {
-  if (count > maxPages) {
-    break;
-  }
-  // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore
-  // (we use this to indicate the file is a partial)
-  if (path.includes('/_')) {
-    continue;
-  }
 
-  let pageInfo = await pageGlob[path]();
-  // Absolute slug in the form "/electronics/components/resistors/", e.t.c
-  const slug = '/' + path.replace('/src/content/docs2/', '').replace('index.mdx', '');
-  pageRoutes.push(new PageRoutes(slug, pageInfo));
-  count++;
-  if (count % 100 === 0) {
-    console.log('Processed', count, 'pages...');
-  }
-}
 
 class PageNode {
   label: string;
@@ -49,93 +69,87 @@ class PageNode {
   }
 }
 
-// This structure is constructed below
-export let pageNodes: PageNode = new PageNode('root', undefined);
 
-const menuDirectoryBlackList = [
-  'blog',
-  'pyrotechnics',
-  'site-info',
-  'test',
-];
+export function getSidebarData(pagesCollection: any) {
+  // This structure is constructed below
+  let pageNodes: PageNode = new PageNode('root', undefined);
 
-for (const pageRoute of pageRoutes) {
-  // console.log('pageRoute:', pageRoute);
+  const menuDirectoryBlackList = [
+    // 'blog',
+    'pyrotechnics',
+    'site-info',
+    'test',
+  ];
 
-  // // Get the path without the './src/content/docs/' prefix
-  // const pathWithoutPrefix = path.replace('/src/content/docs2/', '');
-  // // console.log(pathWithoutPrefix);
-
-  // // Calculate slug by removing index.mdx from the end of the path
-  // let slug = pathWithoutPrefix.replace('/index.mdx', '');
-  // slug = '/' + slug;
-  // console.log('slug:', slug);
-
-  // Split the path into an array of directories and the file name
-  const pathParts = pageRoute.slug.split('/');
-  // Get rid of the file name (should be index.mdx)
-  pathParts.pop();
-  // Get rid of empty first element
-  pathParts.shift();
-  // console.log('pathParts:', pathParts);
-  // console.log(pathParts);
-  let currentNode = pageNodes;
-  let currentSlug = '/';
-  for (let i = 0; i < pathParts.length; i++) {
-    const pathPart = pathParts[i];
-
-    // If we are looking at the first directory under docs/
-    // check the names against the blacklist
-    if (i === 0) {
-      if (menuDirectoryBlackList.includes(pathPart)) {
-        // console.log(`Skipping directory ${pathPart} as it is in the blacklist.`);
-        break;
-      }
+  let count = 0;
+  for (const collectionPage of pagesCollection) {
+    // Root page in collection is index.mdx, we don't want to include it in the sidebar
+    if (collectionPage.slug === 'index') {
+      continue;
     }
 
-    currentSlug += pathPart + '/';
+    // Split the path into an array of directories and the file name
+    const pathParts = collectionPage.slug.split('/');
+    // console.log(pathParts);
+    let currentNode = pageNodes;
+    let currentSlug = '/';
+    for (let i = 0; i < pathParts.length; i++) {
+      const pathPart = pathParts[i];
 
-    // See if object with label=pathPart exists in currentNode
-    const foundChildNodes = currentNode.items.filter((node) => {
-      return node.label === pathPart;
-    });
-    if (foundChildNodes.length === 0) {
-      // console.log(`Node with id ${pathPart} not found in currentNode. Creating new node...`);
-      
-      let newNode;
-      if (i === pathParts.length - 1) {
-        // This is a leaf node
-        newNode = new PageNode(pathPart, pageRoute.slug);
-        newNode.fileData = pageRoute.fileData;
-      } else {
-        newNode = new PageNode(pathPart, currentSlug);
-      }
-      currentNode.items.push(newNode);
-      currentNode = newNode;
-    } else if (foundChildNodes.length === 1) {
-      // Node already exists
-      let foundChildNode = foundChildNodes[0];
-      if (i === pathParts.length - 1) {
-        // This will happen if we hit a branch index page after we have already processed
-        // a child node
-        // Add a slug so we know there is a page here
-        foundChildNode.fileData = pageRoute.fileData;
-      } else {
-        // console.log(`Node with label ${pathPart} found in ${currentNode}.`);
-        currentNode = foundChildNode;
-
-        if (currentNode.items === undefined) {
-          console.error(`Node ${currentNode} is a branch node but does not have an items array.`);
-          currentNode.items = [];
+      // If we are looking at the first directory under docs/
+      // check the names against the blacklist
+      if (i === 0) {
+        if (menuDirectoryBlackList.includes(pathPart)) {
+          // console.log(`Skipping directory ${pathPart} as it is in the blacklist.`);
+          break;
         }
       }
-    } else {
-      console.error(`Found more than one node with label ${pathPart} in ${currentNode}.`);
+
+      currentSlug += pathPart + '/';
+
+      // See if object with label=pathPart exists in currentNode
+      const foundChildNodes = currentNode.items.filter((node) => {
+        return node.label === pathPart;
+      });
+      if (foundChildNodes.length === 0) {
+        // console.log(`Node with id ${pathPart} not found in currentNode. Creating new node...`);
+        
+        let newNode;
+        if (i === pathParts.length - 1) {
+          // This is a leaf node
+          newNode = new PageNode(pathPart, currentSlug);
+          newNode.fileData = collectionPage.data;
+        } else {
+          newNode = new PageNode(pathPart, currentSlug);
+        }
+        currentNode.items.push(newNode);
+        currentNode = newNode;
+      } else if (foundChildNodes.length === 1) {
+        // Node already exists
+        let foundChildNode = foundChildNodes[0];
+        if (i === pathParts.length - 1) {
+          // This will happen if we hit a branch index page after we have already processed
+          // a child node
+          // Add a slug so we know there is a page here
+          foundChildNode.fileData = collectionPage.data;
+        } else {
+          // console.log(`Node with label ${pathPart} found in ${currentNode}.`);
+          currentNode = foundChildNode;
+
+          if (currentNode.items === undefined) {
+            console.error(`Node ${currentNode} is a branch node but does not have an items array.`);
+            currentNode.items = [];
+          }
+        }
+      } else {
+        console.error(`Found more than one node with label ${pathPart} in ${currentNode}.`);
+      }
     }
   }
-}
 
-// console.log('pageNodes:', JSON.stringify(pageNodes, null, 2));
+  const sidebarData = convertNodesToSidebarData(pageNodes);
+  return sidebarData;
+}
 
 class SidebarNode {
   label: string;
@@ -153,10 +167,9 @@ class SidebarNode {
 // Deep copy the sidebarNodes object
 function convertNodesToSidebarData(node: PageNode) : SidebarNode {
 
-  // console.log('convertNodesToSidebarData() called with node:', node);
   let label;
-  if (node.fileData !== null && node.fileData.frontmatter !== undefined && node.fileData.frontmatter.title !== undefined) {
-    label = node.fileData.frontmatter.title;
+  if (node.fileData !== null && node.fileData.title !== undefined) {
+    label = node.fileData.title;
   } else {
     console.warn('No page title found for page:', node.label);
     // label = node.label.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -190,6 +203,3 @@ function convertNodesToSidebarData(node: PageNode) : SidebarNode {
 
   return new SidebarNode(label, items, href, collapsed);
 }
-
-export const sidebarData = convertNodesToSidebarData(pageNodes);
-// console.log('after converting leaf nodes:', JSON.stringify(sidebarData, null, 2));
