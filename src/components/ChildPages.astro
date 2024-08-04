@@ -6,40 +6,80 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 import { getCollection, getEntry } from 'astro:content';
 
+const { excludes=[] } = Astro.props;
+
 const pagesCollection = await getCollection('docs2');
 // console.log(allBlogPosts);
 
-let pageSlug = Astro.params.slug; // e.g. electronics/circuit-design
-if (pageSlug === undefined) {
-  // Will be undefined if homepage (root index.mdx)
-  pageSlug = '';
+// e.g. the file at <collection root>/electronics/circuit-design/index.mdx produces the slug "electronics/circuit-design"
+// Will be undefined if homepage (root index.mdx)
+let currPageSlug = Astro.params.slug;
+if (currPageSlug === undefined) {
+  
+  currPageSlug = undefined;
 } else {
-  pageSlug = pageSlug + '/';
+  currPageSlug = currPageSlug;
 }
+
+function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string) {
+  // Check if the current page is a parent of the page in the collection
+  // Collection page needs to have one more part than the current page, and all parts of the current page need to match
+  // first parts of the collection page
+
+  let parentSlugParts: string[] = [];
+  if (parentSlug === undefined) {
+    parentSlugParts = [];
+  } else {
+    parentSlugParts = parentSlug.split('/');
+  }
+  const potentialChildSlugParts = potentialChildSlug.split('/');
+  // console.log('parentSlugParts:', parentSlugParts);
+  // console.log('potentialChildSlugParts:', potentialChildSlugParts);
+  if (potentialChildSlugParts.length !== parentSlugParts.length + 1) {
+    return false;
+  }
+  for (let i = 0; i < parentSlugParts.length; i++) {
+    if (parentSlugParts[i] !== potentialChildSlugParts[i]) {
+      return false;
+    }
+  }
+  return true;
+} 
 
 let count = 0;
 let childPages: any = [];
-for (const page of pagesCollection) {
+for (const collectionPage of pagesCollection) {
   // console.log(page);
   if (count > 9900) {
     break;
   }
   count++;
 
-  // Check slug matches regex
-  // console.log('Checking slug:', page.slug);
-  // console.log('curr page slug:', pageSlug);
-  const regex = new RegExp(`^${pageSlug}[^\/]*$`);
-  // console.log('regex:', regex);
-  const match = page.slug.match(regex);
-  if (match === null) {
-    // console.log('No match');
+  // console.log('Checking slug:', collectionPage.slug);
+  const isChild = checkIfChild(currPageSlug, collectionPage.slug);
+  if (!isChild) {
     continue;
   }
-  // console.log('Found match:', match);
-  childPages.push(page);
+
+  // Make sure the child page passes the exclude filter
+  const collectionPageSlugParts = collectionPage.slug.split('/');
+  console.log('exclude:', excludes);
+  console.log('collectionPageSlugParts:', collectionPageSlugParts);
+  if (excludes.includes(collectionPageSlugParts[collectionPageSlugParts.length - 1])) {
+    continue;
+  }
+
+  // const regex = new RegExp(`^${currPageSlug}[^\/]*$`);
+  // // console.log('regex:', regex);
+  // const match = collectionPage.slug.match(regex);
+  // if (match === null) {
+  //   // console.log('No match');
+  //   continue;
+  // }
+  console.log('Found child page:', collectionPage.slug);
+  childPages.push(collectionPage);
 }
-// console.log('Child pages:', childPages);
+console.log('Child pages:', childPages);
 
 // console.log(Astro.params); // slug: electronics/circuit-design
 // console.log(Astro.url); // pathaame: /electronics/circuit-design/
