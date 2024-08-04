@@ -1,42 +1,3 @@
-import { getCollection, getEntry } from 'astro:content';
-
-console.log('==========================================================================================================');
-console.log('Creating page hierarchy...');
-console.log('==========================================================================================================');
-
-
-// export let pageGlob = import.meta.glob("/src/content/docs2/**/*.mdx");
-
-// class PageRoutes {
-//   slug: string;
-//   fileData: any;
-//   constructor(slug: string, fileData: any) {
-//     this.slug = slug;
-//     this.fileData = fileData;
-//   }
-// }
-// export let pageRoutes: PageRoutes[] = [];
-// let count = 0;
-// for (const path in pageGlob) {
-//   if (count > maxPages) {
-//     break;
-//   }
-//   
-//   if (path.includes('/_')) {
-//     continue;
-//   }
-
-//   let pageInfo = await pageGlob[path]();
-//   // Absolute slug in the form "/electronics/components/resistors/", e.t.c
-//   const slug = '/' + path.replace('/src/content/docs2/', '').replace('index.mdx', '');
-//   pageRoutes.push(new PageRoutes(slug, pageInfo));
-//   count++;
-//   if (count % 100 === 0) {
-//     console.log('Processed', count, 'pages...');
-//   }
-// }
-
-// const pagesCollection = await getCollection('docs2');
 
 export function getRoutablePages(pagesCollection: any) {
   let routablePages = [];
@@ -81,7 +42,6 @@ export function getSidebarData(pagesCollection: any) {
     'test',
   ];
 
-  let count = 0;
   for (const collectionPage of pagesCollection) {
     // Root page in collection is index.mdx, we don't want to include it in the sidebar
     if (collectionPage.slug === 'index') {

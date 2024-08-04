@@ -1,10 +1,7 @@
 ---
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
-// import { getImage, Image } from "astro:assets";
 
-// import { pageGlob, pageNodes } from '../PageHierarchy.ts';
-
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 const { excludes=[] } = Astro.props;
 
@@ -24,6 +21,7 @@ function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string
   // Check if the current page is a parent of the page in the collection
   // Collection page needs to have one more part than the current page, and all parts of the current page need to match
   // first parts of the collection page
+  console.log('checkIfChild called. parentSlug:', parentSlug, 'potChildSlug', potentialChildSlug);
 
   let parentSlugParts: string[] = [];
   if (parentSlug === undefined) {
