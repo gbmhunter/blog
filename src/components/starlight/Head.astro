@@ -14,9 +14,12 @@ import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
   const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
   console.log('sidebarContent: ', sidebarContent);
 
-  const link = sidebarContent.querySelectorAll("a[href='/electronics/']");
+  const link = sidebarContent.querySelectorAll("a[href='/electronics/']")[0];
   console.log('link: ', link);
 
   // Find <details ...> parents of <a href="/electronics/"> elements
-  
+  // Setting the open attribute (to anything, just has to be present) makes
+  // that menu group open
+  link.closest('details')!.setAttribute('open', '');
+
 </script>
