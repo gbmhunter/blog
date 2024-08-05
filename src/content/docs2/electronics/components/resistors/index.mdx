@@ -110,7 +110,6 @@ The equation for $V_{OUT}$ is:
 
 $$
 \begin{align}
-\label{eq:vout-eq-r2-r1-vin}
 V_{OUT} &= \frac{R2}{R1\ +\ R2} V_{IN} \\
 \end{align}
 $$
@@ -121,7 +120,7 @@ The input voltage "divides" itself across the resistors proportionally based on 
 The above equation **only holds true** when the input voltage source is of sufficiently low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
 </Aside>
 
-During circuit design, you will encounter times when you have three knowns from $Eq.\ \ref{eq:vout-eq-r2-r1-vin}$ but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with $V_{IN}$ and $R1$ being able to be simplified slightly):
+During circuit design, you will encounter times when you have three knowns from the equation above but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with $V_{IN}$ and $R1$ being able to be simplified slightly):
 
 $$
 \begin{align}
@@ -137,9 +136,7 @@ $$
 
 The Thevenin equivalent circuit for a resistor divider is shown below. This is the equivalent circuit as looking from $V_{OUT}$ into the resistor divider.
 
-import resistor_divider_thevenin_equivalent_diagram from './_assets/resistor-divider-thevenin-equivalent-diagram.webp'
-
-<Image src={resistor_divider_thevenin_equivalent_diagram} width="800">The Thevenin equivalent circuit for a resistor divider.</Image>
+<Image src={import('./_assets/resistor-divider-thevenin-equivalent-diagram.webp')} width="800">The Thevenin equivalent circuit for a resistor divider.</Image>
 
 Where the Thevenin voltage $V_{TH}$ is equal to the open-circuit output voltage:
 

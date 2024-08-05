@@ -2,20 +2,26 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { getCollection } from 'astro:content';
 
+import Aside from 'src/components/Aside.astro';
+import ChildPages from 'src/components/ChildPages.astro';
+import CircuitJs from 'src/components/CircuitJs.astro';
+import Image from 'src/components/Image.astro';
+import WarningIsNotes from 'src/components/WarningIsNotes.astro';
+
 import { getRoutablePages, getSidebarData } from '../PageHierarchy.ts';
 
 export async function getStaticPaths() {
-  console.log('====================================================');
-  console.log('getStaticPaths');
-  console.log('====================================================');
-
-
   let pagesCollection = await getCollection('docs2');
+  // Uncomment this line if you want to test code logic with a smaller collection
+  // let pagesCollection = await getCollection('test');
+  
   // Trim down to first 10
   // pagesCollection = pagesCollection.slice(0, 2);
 
   const routablePages = getRoutablePages(pagesCollection);
+  // console.log('routablePages: ', routablePages);
   const sidebarData = getSidebarData(pagesCollection);
+  // console.log('sidebarData: ', sidebarData);
 
   let staticPaths = [];
   for (let pageRoute of routablePages) {
@@ -41,5 +47,11 @@ const { title, render, sidebarData } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render();
 ---
 <StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any}>
-  <Content /> 
+  <Content components={{
+    Aside: Aside,
+    ChildPages: ChildPages,
+    CircuitJs: CircuitJs,
+    Image: Image,
+    WarningIsNotes: WarningIsNotes
+  }} /> 
 </StarlightPage>

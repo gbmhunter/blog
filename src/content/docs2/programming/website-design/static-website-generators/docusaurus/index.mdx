@@ -11,8 +11,6 @@ title: Docusaurus
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
-
 <WarningIsNotes />
 
 ## Overview
@@ -87,7 +85,7 @@ To set this environment variable in a Docusaurus project, add the following to t
 
 And then in a new `.env` file in the root of the project:
 
-```env title=".env"
+```txt title=".env"
 NODE_OPTIONS=--max_old_space_size=4096
 ```
 
@@ -95,6 +93,4 @@ This approach will work on Windows, Linux, and MacOS.
 
 However, even with this change, Netlify (which provides 8GB of RAM) ran out of memory when building this site. Luckily, the build was successful when running on Vercel (which also gurantees 8GB RAM, presumably this means that in practise they give you a bit more!).
 
-import docusaurus_deployed_successfully_on_vercel from './_assets/docusaurus-deployed-successfully-on-vercel.webp'
-
-<Image src={docusaurus_deployed_successfully_on_vercel} width="900">A screenshowing showing this blog being built and deployed successfully on Vercel.</Image>
+<Image src={import('./_assets/docusaurus-deployed-successfully-on-vercel.webp')} width="900">A screenshowing showing this blog being built and deployed successfully on Vercel.</Image>

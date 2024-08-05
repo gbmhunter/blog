@@ -17,17 +17,22 @@ if (currPageSlug === undefined) {
   currPageSlug = currPageSlug;
 }
 
-function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string) {
+function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string | undefined): boolean {
   // Check if the current page is a parent of the page in the collection
   // Collection page needs to have one more part than the current page, and all parts of the current page need to match
   // first parts of the collection page
-  console.log('checkIfChild called. parentSlug:', parentSlug, 'potChildSlug', potentialChildSlug);
+  // console.log('checkIfChild called. parentSlug:', parentSlug, 'potChildSlug', potentialChildSlug);
 
   let parentSlugParts: string[] = [];
   if (parentSlug === undefined) {
     parentSlugParts = [];
   } else {
     parentSlugParts = parentSlug.split('/');
+  }
+  // Potential child slug is undefined if it's the root-level index.mdx file
+  // in the collection (i.e. homepage)
+  if (potentialChildSlug === undefined) {
+    return false;
   }
   const potentialChildSlugParts = potentialChildSlug.split('/');
   // console.log('parentSlugParts:', parentSlugParts);
@@ -43,15 +48,8 @@ function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string
   return true;
 } 
 
-let count = 0;
 let childPages: any = [];
 for (const collectionPage of pagesCollection) {
-  // console.log(page);
-  if (count > 9900) {
-    break;
-  }
-  count++;
-
   // The index.mdx file at the root of the collection is a special case, it returns
   // the slug "index" which is not a child of any other page, so just exclude it here
   // otherwise it will appear to be a child page of the homepage
@@ -60,7 +58,14 @@ for (const collectionPage of pagesCollection) {
   }
 
   // console.log('Checking slug:', collectionPage.slug);
-  const isChild = checkIfChild(currPageSlug, collectionPage.slug);
+  let isChild = false;
+  try {
+    isChild = checkIfChild(currPageSlug, collectionPage.slug);
+  }
+  catch (e) {
+    console.log('Error occured while calling checkIfChild(). currPageSlug:', currPageSlug, 'collectionPage', collectionPage);
+    throw e;
+  }
   if (!isChild) {
     continue;
   }

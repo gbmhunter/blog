@@ -1,0 +1,62 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Programming, Web Design]
+date: 2024-08-05
+description: "Info on the static-site generator Astro."
+draft: false
+last_update:
+  date: 2024-08-05
+  author: Geoffrey Hunter
+tags: [programming, web design, astro]
+title: Astro
+type: page
+---
+
+<WarningIsNotes />
+
+After running into some significant issues building this site with Docusaurus, I decided to give Astro a try instead.
+
+## Generating the Routes Myself With Glob
+
+I wanted more control over how the routes were implemented.
+
+```js
+import.meta.glob()
+```
+
+`import.meta.global()` is like `Astro.glob()` but can be used in any file, not just `.astro` files. It also provides the path to the file, where `Astro.glob` just returns the contents.
+
+One of the additional benefits is I can now pass components to the MDX files, which is something I couldn't do when using Starlights default route generation because it doesn't give you access to the `<Content />` component. Now I can get rid of all the repetitive `import ...` statements at the top of each MDX file!
+
+Now I can do:
+
+```astro title="[...slug].astro"
+---
+import Aside from 'src/components/Aside.astro';
+import ChildPages from 'src/components/ChildPages.astro';
+import CircuitJs from 'src/components/CircuitJs.astro';
+import Image from 'src/components/Image.astro';
+import WarningIsNotes from 'src/components/WarningIsNotes.astro';
+
+// ...
+---
+<StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any}>
+  <Content components={{
+    Aside: Aside,
+    ChildPages: ChildPages,
+    CircuitJs: CircuitJs,
+    Image: Image,
+    WarningIsNotes: WarningIsNotes
+  }} /> 
+</StarlightPage>
+```
+
+
+To glob about 1000 MDX files it took approx. 30s the first time around. One nice thing about this glob was that it ran much faster on re-runs whilst in dev mode.
+
+## Collections
+
+Only after I ran into performance issues with the glob method did I discover the `collections` feature of Astro. It turns out that collections was just what I was looking for, and ended up saving all the problems I had with the glob method!
+
+The main difference was that using collections, I could easily read the frontmatter of each MDX file WITHOUT rendering the entire file, was provided a huge speed up for both creating the sidebar (which needs to to know the title of each page, and is present on every page) and determining the child pages of each page.
+

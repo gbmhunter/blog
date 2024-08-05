@@ -1,5 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"]
+    }
+  },
   // This mdx section is so that mdx-analyze can parse frontmatter and math
   // as per example on https://github.com/mdx-js/mdx-analyzer.
   // Without this it gets confused about Latex math when the math contains "{".

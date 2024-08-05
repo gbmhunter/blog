@@ -545,7 +545,7 @@ Zephyr borrows the concept of device trees popularized by Linux to describe the 
 
 ### Terminology
 
-```dts
+```txt
 /dts-v1/;
 
 / {
@@ -561,7 +561,7 @@ Zephyr borrows the concept of device trees popularized by Linux to describe the 
 
 ### Basic Example
 
-```dts
+```txt
 /dts-v1/;
 
 / {
@@ -583,7 +583,7 @@ Use `DT_PATH()` to get the node from a fully quality path from the root node. e.
 
 Do not use camel case when naming nodes, as `DT_PATH()` cannot work with these.
 
-```dts
+```txt
 / {
     mySoc { // Bad! DT_PATH() won't like this
         serial@12340000 {
@@ -1447,7 +1447,7 @@ See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an exampl
 
 For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for "pwm" we find:
 
-```dts
+```txt
 / {
     soc {
         pwm0: pwm@4001c000 {

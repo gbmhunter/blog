@@ -72,7 +72,7 @@ Now, everytime you ssh into the machine, any disk space warnings will be printed
 
 It will look something like this:
 
-```ssh
+```bash
 gbmhunter@local$ ssh remote
 Checking free space on disks...
 WARNING: Disk /dev/sdc1 is 87% full.

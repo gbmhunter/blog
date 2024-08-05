@@ -225,7 +225,7 @@ Add a new config:
 sudo nano /etc/nginx/sites-available/umami.conf
 ```
 
-```conf
+```txt
 server {
     listen       80;
     listen       [::]:80;
@@ -289,7 +289,7 @@ You'll be prompted to enter in an email address. Once it's complete, it should h
 
 For reference, Certbot should have modified your `/etc/nginx/sites-available/umami.conf` so that it looks similar to the following:
 
-```conf
+```txt
 server {
     server_name  umami.my-domain.com;
 

@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2017-05-26
-draft: false
+description: gtest, gmock, UnitTest++, catch2.
+lastmod: 2024-08-05
+tags: [c++, CMake, catch2, gtest, gmock, UnitTest++, unit tests, mocking, CICD]
 title: Unit Testing And Mocking
 type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## gtest (Google Test)
 
@@ -14,7 +14,7 @@ gtest (a.k.a Google Test) is an open-source C++ unit testing framework developed
 
 The introduction of lambda functions in C++11 make certain C++ unit tests much less verbose. This includes tests where you want to verify that a boost::signal was emitted:
 
-```c++    
+```c++
 bool lambdaCalled = false;
 
 // Use lambda notation to provide a "slot"
@@ -34,7 +34,7 @@ EXPECT_EQ(true, lambdaCalled);
 
 You can timeouts to Google unit tests by defining the following macros:
 
-```c++    
+```c++
 #include <future>
 
 #define TEST_TIMEOUT_BEGIN \
@@ -55,7 +55,7 @@ You can timeouts to Google unit tests by defining the following macros:
 
 You then use these macros in the following fashion:
 
-```c++    
+```c++
 TEST(UnitTestModule, TimeoutTest)
 {
     TEST_TIMEOUT_BEGIN
@@ -82,7 +82,7 @@ import example_output_from_unittestpp_when_test_fail from './_assets/example-out
 
 <Image src={example_output_from_unittestpp_when_test_fail} width="961px">Example output from UnitTest++ when one of the tests fails.</Image>
 
-## Running Just One Test Suite
+### Running Just One Test Suite
 
 The unit tests can be grouped into "Suites" which are designed to be for grouping together similar tests. You can also run just one test suite, useful for preventing yourself getting swamped with errors when debugging failed unit tests. The documentation on many sites on how to run just one suite is wrong as of June 2013 (maybe they recently updated the code). Here is a way I found of doing it:
 
@@ -101,3 +101,26 @@ int main()
 ```
 
 Replace "Test Suite Name" with the name of the test suite you want to run.
+
+## catch2
+
+catch2 is a popular C++ unit test library that uses [CMake](/programming/build-systems-and-package-managers/cmake/) as its build system.
+
+v2 of catch was a header-only library, presumably choosen because of the ease-of-installation (copy the header file into your project, include it and you're done). From v3 they switched to a more traditional header/source style library. The main reason for this was compile-time performance. With the header-only library you had to re-compile catch2 everytime you wanted to recompile your unit tests. This could take 30-60s on fast machines. With the more traditional header/source style library, you only need to compile catch2 once, and then you can link against the statis library everytime you rebuild your unit tests, shortening the compile time to a second or less.
+
+You can easily grab a version of catch2 by using CMake's `FetchContent` functionality. It is the simplist way, CMake will automatically download the library for you.
+
+```txt title="CMakeLists.txt"
+Include(FetchContent)
+
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.4.0 # or a later release
+)
+
+FetchContent_MakeAvailable(Catch2)
+
+add_executable(tests test.cpp)
+target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+```

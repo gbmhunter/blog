@@ -7,3 +7,16 @@ import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
 <VtbotStarlight {...Astro.props}>
   <StarlightHead {...Astro.props}><slot /></StarlightHead>
 </VtbotStarlight>
+
+<script>
+  console.log('Hello');
+
+  const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
+  console.log('sidebarContent: ', sidebarContent);
+
+  const link = sidebarContent.querySelectorAll("a[href='/electronics/']");
+  console.log('link: ', link);
+
+  // Find <details ...> parents of <a href="/electronics/"> elements
+  
+</script>

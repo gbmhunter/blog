@@ -16,7 +16,6 @@ export function getRoutablePages(pagesCollection: any) {
   return routablePages;
 }
 
-
 class PageNode {
   label: string;
   slug: string | undefined;
@@ -45,12 +44,12 @@ export function getSidebarData(pagesCollection: any) {
   for (const collectionPage of pagesCollection) {
     // Root page in collection is index.mdx, we don't want to include it in the sidebar
     if (collectionPage.slug === 'index') {
+      pageNodes.fileData = collectionPage.data;
       continue;
     }
 
     // Split the path into an array of directories and the file name
     const pathParts = collectionPage.slug.split('/');
-    // console.log(pathParts);
     let currentNode = pageNodes;
     let currentSlug = '/';
     for (let i = 0; i < pathParts.length; i++) {
@@ -60,7 +59,6 @@ export function getSidebarData(pagesCollection: any) {
       // check the names against the blacklist
       if (i === 0) {
         if (menuDirectoryBlackList.includes(pathPart)) {
-          // console.log(`Skipping directory ${pathPart} as it is in the blacklist.`);
           break;
         }
       }
@@ -72,7 +70,6 @@ export function getSidebarData(pagesCollection: any) {
         return node.label === pathPart;
       });
       if (foundChildNodes.length === 0) {
-        // console.log(`Node with id ${pathPart} not found in currentNode. Creating new node...`);
         
         let newNode;
         if (i === pathParts.length - 1) {
@@ -111,6 +108,9 @@ export function getSidebarData(pagesCollection: any) {
   return sidebarData;
 }
 
+/**
+ * Represents a node in the sidebar data tree structure.
+ */
 class SidebarNode {
   label: string;
   items: SidebarNode[] | undefined;
@@ -128,11 +128,11 @@ class SidebarNode {
 function convertNodesToSidebarData(node: PageNode) : SidebarNode {
 
   let label;
+  // Use node.fileData.title if it exists (title set in frontmatter of .mdx file), otherwise use the node.label (path part)
   if (node.fileData !== null && node.fileData.title !== undefined) {
     label = node.fileData.title;
   } else {
-    console.warn('No page title found for page:', node.label);
-    // label = node.label.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    console.warn('No page title found for page:', node);
     label = node.label;
   }
 
