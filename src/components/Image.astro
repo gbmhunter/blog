@@ -6,24 +6,34 @@ const { src, width, ...attrs } = Astro.props;
 
 <div class="image-wrapper">
   <a href={src.src}><AstroImage src={src} width={width} alt="" {...attrs} /></a>
-<figcaption><slot /></figcaption>
+  <figcaption><slot /></figcaption>
 </div>
 
 <style define:vars={{ width }}>
-    .image-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 1rem 0;
-    }
-    
-    figcaption {
-        font-size: 1.0rem;
-        font-style: italic;
-        color: #666;
-        margin-top: 0.5rem;
-        min-width: 100px; /* Don't make the caption too narrow if image is small */
-        max-width: 100%; /* Make sure caption never exceeds the page width */
-        width: var(--width);
-    }
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  :root {
+    --caption-text-color: #666;
+  }
+
+  :root[data-theme="dark"] {
+    --caption-text-color: #aaa;
+  }
+  
+  figcaption {
+    font-size: 1.0rem;
+    font-style: italic;
+    color: var(--caption-text-color);
+    margin-top: 0.5rem;
+    min-width: 100px; /* Don't make the caption too narrow if image is small */
+    max-width: 100%; /* Make sure caption never exceeds the page width */
+    width: var(--width);
+    text-align: center
+  }
+
 </style>

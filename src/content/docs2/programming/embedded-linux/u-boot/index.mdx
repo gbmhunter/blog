@@ -6,18 +6,16 @@ title: U-Boot
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
-
 ## Environment Variables
 
-To print an environment variable, use the printenv command:
+To print an environment variable, use the `printenv` command:
 
 ```text
 uboot> printenv autoload
 autoload=yes
 ```
 
-To set an environment variable, use the setenv command:
+To set an environment variable, use the `setenv` command:
     
 ```text
 uboot> setenv autoload=no
@@ -26,7 +24,7 @@ uboot> setenv autoload=no
 You don't actually need the equals sign! This works also:
     
 ```text
-uboot> setenv autoload=no
+uboot> setenv autoload no
 ```
 
 If you want to set a variable to something which includes special characters, such as spaces or semi-colons, you can enclose the value in single quotes:
@@ -67,7 +65,7 @@ $ sudo apt-get install xinetd tftpd tftp
 
 Create a file called `/etc/xinetd.d/tftp` and save the text below inside it:
 
-```text
+```text title="/etc/xinetd.d/tftp"
 service tftp
 {
 protocol = udp
@@ -134,4 +132,4 @@ These commands can be combined and saved to the boot variable:
 setenv bootcmd 'tftpboot 0x2000000 uImage; tftpboot 0x3000000 core-image-minimal-zc702-zynq7.cpio.gz.u-boot; tftpboot 0x2A00000 uImage-zynq-zc702.dtb; bootm 0x2000000 0x3000000 0x2A00000'
 ```
 
-Remember to use saveenv if you want these config parameters to persist when power cycling.
+Remember to use `saveenv` if you want these config parameters to persist when power cycling.

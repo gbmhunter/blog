@@ -3,9 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2019-01-11
 draft: false
-last_update:
-  date: 2019-01-11
-  author: Geoffrey Hunter
+lastUpdated: 2019-01-11
 title: "wc (Word Count)"
 type: "page"
 ---

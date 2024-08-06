@@ -2,9 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 date: 2017-03-27
 draft: false
-last_update:
-  date: 2017-03-27
-  author: Geoffrey Hunter
+lastUpdated: 2017-03-27
 title: "FreeRTOS And Watchdogs"
 type: "page"
 ---

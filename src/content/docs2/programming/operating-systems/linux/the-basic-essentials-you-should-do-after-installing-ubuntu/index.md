@@ -4,9 +4,7 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2014-07-21
 description: "Basic improvements/additions that every installation of Linux should have."
 draft: false
-last_update:
-  date: 2020-05-01
-  author: Geoffrey Hunter
+lastUpdated: 2020-05-01
 tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files", "cd", "directory", "alias", "zsh", "shell", "Powerline10k", "pm-utils", "suspend", "hibernate" ]
 title: "The Basic Essentials You Should Do After Installing Ubuntu"
 type: page

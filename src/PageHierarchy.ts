@@ -1,3 +1,4 @@
+import type { CollectionEntry } from 'astro:content';
 
 export function getRoutablePages(pagesCollection: any) {
   let routablePages = [];

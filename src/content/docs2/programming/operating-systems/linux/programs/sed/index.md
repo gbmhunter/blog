@@ -3,9 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2014-01-05
 draft: false
-last_update:
-  date: 2014-01-05
-  author: Geoffrey Hunter
+lastUpdated: 2014-01-05
 title: "sed"
 type: page
 ---

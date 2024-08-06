@@ -5,9 +5,7 @@ description: "Creating files, outputing files, appending to files, emptying file
 tags: [ "cat", "UNIX", "Linux", "concatenate", "program", "command-line" ]
 authors: [ "Geoffrey Hunter" ]
 date: 2014-07-08
-last_update:
-  date: 2018-12-29
-  author: Geoffrey Hunter
+lastUpdated: 2018-12-29
 type: "page"
 ---
 

@@ -1,20 +1,15 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2017-04-12
 draft: false
+lastmod: 2024-08-06
 title: Zynq
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
-
-## Overview
-
 **The Zynq is a family of Xilinx FPGAs which incorporate both programmable logic and one or more dedicated ARM Cortex-A9 processors** (because of the inclusion of the processor, it can be referred to as a SoC instead of an FPGA).
 
-import xilinx_zynq_7000_ZC720_evaluation_kit_photo from './xilinx-zynq-7000-ZC720-evaluation-kit-photo.png'
-
-<Image src={xilinx_zynq_7000_ZC720_evaluation_kit_photo} width="773px">The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC.</Image>
+<Image src={import('./_assets/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png')} width="773px">The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC.</Image>
 
 ## Acronyms
 
@@ -55,4 +50,4 @@ The device trees are located at:
 meta-xilinx/recipes-bsp/device-tree/
 ```
 
-In particular, zynq7-base.dtsi located at meta-xilinx/recipes-bsp/device-tree/files/common/ could be of particular interest because it defines hardware such as the ethernet, UART, I2C, CAN, USB, ADC e.t.c.
+In particular, zynq7-base.dtsi located at `meta-xilinx/recipes-bsp/device-tree/files/common/` could be of particular interest because it defines hardware such as the ethernet, UART, I2C, CAN, USB, ADC e.t.c.

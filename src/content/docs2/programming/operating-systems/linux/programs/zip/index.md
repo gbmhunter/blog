@@ -3,9 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2020-03-27
 draft: false
-last_update:
-  date: 2020-03-27
-  author: Geoffrey Hunter
+lastUpdated: 2020-03-27
 tags: [ "programming", "operating systems", "OS", "Linux", "programs", "zip" ]
 title: "zip"
 type: "page"

@@ -3,9 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-01-06
 draft: false
-last_update:
-  date: 2019-10-04
-  author: Geoffrey Hunter
+lastUpdated: 2019-10-04
 tags: [ "programming", "operating systems", "Linux", "Programs", "mv", "move", "bash", "shell", "command-line", "file paths", "directories", "verbose" ]
 title: "mv (move)"
 type: "page"

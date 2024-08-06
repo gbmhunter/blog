@@ -51,18 +51,6 @@ export default defineConfig({
         // Relative path to your custom CSS file
         "./src/styles/custom.css",
       ],
-      // Add a script for Google Tag Manager.
-      // plugins: [starlightBlog({
-      //   authors: {
-      //     gbmhunter: {
-      //       name: 'Geoffrey Hunter',
-      //       title: 'mbedded.ninja Author',
-      //       picture: '/images/authors/gbmhunter.png', // Images in the `public` directory are supported.
-      //       url: 'https://hideoo.dev',
-      //     },
-      //   },
-      // })],
-      // sidebar: sidebarNodes.items,
     }),
   ],
   markdown: {

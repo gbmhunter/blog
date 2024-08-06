@@ -4,15 +4,11 @@ categories: [ Electronics, Electronic Components, Diodes ]
 date: 2011-09-05
 description: Info about diodes.
 draft: false
-last_update:
-  date: 2022-04-28
-  author: Geoffrey Hunter
+lastUpdated: 2022-04-28
 tags: [ electronics, diodes, components, schematic symbols, TVS, ESD, snapback, Semtech ]
 title: TVS Diodes
 type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
@@ -24,7 +20,7 @@ They come in either _uni-directional_ or _bi-directional_ flavours. Uni-directio
 
 ## Schematic Symbol
 
-import tvs_diode_schematic_symbol from './tvs-diode-schematic-symbol.svg'
+import tvs_diode_schematic_symbol from './_assets/tvs-diode-schematic-symbol.svg'
 
 <Image src={tvs_diode_schematic_symbol} width="400">My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol.</Image>
 
@@ -32,7 +28,7 @@ import tvs_diode_schematic_symbol from './tvs-diode-schematic-symbol.svg'
 
 TVS diodes can be grouped into IC packages called arrays. A typical schematic symbol for a diode array is shown below.
 
-import schematic_symbol_esd_diode_array from './schematic-symbol-esd-diode-array.png'
+import schematic_symbol_esd_diode_array from './_assets/schematic-symbol-esd-diode-array.png'
 
 <Image src={schematic_symbol_esd_diode_array} width="300">The schematic symbol of a diode array, with a common anode connection.</Image>
 
@@ -65,7 +61,7 @@ Vishay uses the symbol $V_{WM}$ to denote the standoff voltage[^vishay-xld5a24ca
 
 The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. Be warned, the leakage current of TVS diodes which have low voltage stand-offs (e.g. &lt;10V), can have large leakage currents! A 5V stand-off TVS diode typically has a reverse-leakage current of around 500uA, but TVS diodes with a stand-off voltage of 10V or higher have a reverse-leakage of 1uA or less. Note that at low stand-off voltages, the leakage current of a bi-directional diode can be double that of a uni-directional diode for the same stand-off voltage.
 
-import leakage_currents_of_tvs_diodes_with_low_standoff_voltage from './leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png'
+import leakage_currents_of_tvs_diodes_with_low_standoff_voltage from './_assets/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png'
 
 <Image src={leakage_currents_of_tvs_diodes_with_low_standoff_voltage} width="1182">Leakage currents of TVS diodes with low stand-off voltages.</Image>
 
@@ -77,7 +73,7 @@ Unusually, TVS diodes. along with a fuse or other current-limiting device, can a
 
 They are especially suited to this role (when considering other diodes) as the are usually built to dissipate large amounts of heat.
 
-import tvs_diode_for_reverse_polarity_protection from './tvs-diode-for-reverse-polarity-protection.png'
+import tvs_diode_for_reverse_polarity_protection from './_assets/tvs-diode-for-reverse-polarity-protection.png'
 
 <Image src={tvs_diode_for_reverse_polarity_protection} width="700">A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection.</Image>
 
@@ -89,7 +85,7 @@ There are a family of TVS diodes called low-capacitance (or ultra-low) TVS diode
 
 This low capacitance is achieved by adding a forward-biased general purpose diode in series with the usual reverse-biased TVS (zener-style diode). The schematic symbol for a low-capacitance TVS diode is shown below:
 
-import internal_schematic_of_low_capacitance_tvs_diode_annotated from './internal-schematic-of-low-capacitance-tvs-diode-annotated.png'
+import internal_schematic_of_low_capacitance_tvs_diode_annotated from './_assets/internal-schematic-of-low-capacitance-tvs-diode-annotated.png'
 
 <Image src={internal_schematic_of_low_capacitance_tvs_diode_annotated} width="500">The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.</Image>
 
@@ -99,11 +95,19 @@ The forward-biased general purpose diode has a much smaller parasitic capacitanc
 
 Snapback TVS diodes are a type of TVS diode in which the clamping voltage right after triggering is less than the trigger voltage (a form of foldback). This is to provider a harder "turn-on" characteristic and results in the voltage not creeping as far above the reverse standoff voltage than with a conventional TVS. Snapback can either be _shallow_ or _deep_, depending on the application. Shallow snapback can be achieved with a standard TVS diode connected in parallel with a BJT. Deep snapback can be achieved with a self-triggering thyristor circuit[^semtech-tvs-just-a-diode-part-2].
 
-import vishay_snapback_tvs_typical_vi_curve_vs_standard_tvs from './vishay-snapback-tvs-typical-vi-curve-vs-standard-tvs.png'
+import vishay_snapback_tvs_typical_vi_curve_vs_standard_tvs from './_assets/vishay-snapback-tvs-typical-vi-curve-vs-standard-tvs.png'
 
 <Image src={vishay_snapback_tvs_typical_vi_curve_vs_standard_tvs} width="900px">Excerpt from Vishay document showing the V/I curve of a snapback TVS vs. a conventional TVS[^vishay-did-you-know-snapback].</Image>
 
 The [Vishay XLD5A24CA](https://www.vishay.com/docs/87199/xld5a24ca.pdf) is an example of a snapback TVS from Vishay's XClampR series. Is had a standoff voltage $V_{WM} = 24V$ and a clamping voltage $V_C = 18{-}26V$ at $I_{PPM}=120A$ ($10/10,000us$ waveform)[^vishay-xld5a24ca-ds]. Note the clamping voltage is much closer to the standoff voltage than a conventional TVS!
+
+## Automotive Clamping
+
+TVS diodes can be used to clamp the nominally +12V rail in automotive applications.
+
+Load-dump TVS diodes are designed to protect systems when the alternator is running and the battery is suddenly disconnected.
+
+A "standard" load-dump surge which TVS diodes can be rated to (and products tested against) is defined in ISO16750-2[^diodes-inc-load-dump-tvs-series-ds].
 
 ## Special-Purpose TVS Diodes
 
@@ -111,7 +115,7 @@ The [Vishay XLD5A24CA](https://www.vishay.com/docs/87199/xld5a24ca.pdf) is an ex
 
 TVS diodes built specifically for protecting RS-485 communication protocol bus lines are bi-directional and have two different hold-off voltages to meet the RS-485 spec. They normally include the character sequence "SM712" in their part name (e.g. SM712-02HTG by Littelfuse and SM712-TP by Micro Commerical).
 
-import sm712_02htg_rs485_tvs_diode_pinout_and_functional_block_diagram from './sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png'
+import sm712_02htg_rs485_tvs_diode_pinout_and_functional_block_diagram from './_assets/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png'
 
 <Image src={sm712_02htg_rs485_tvs_diode_pinout_and_functional_block_diagram} width="500">The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf.</Image>
 
@@ -120,3 +124,4 @@ More information on these diodes can be found in the [Specialised TVS Diodes sec
 [^semtech-tvs-just-a-diode-part-2]: Bill Russell (2020, Mar 18). _TVS? It’s Just a Diode, Right? Part Two_. Semtech. Retrieved 2023-05-30, from https://blog.semtech.com/tvs-its-just-a-diode-right-part-two.
 [^vishay-did-you-know-snapback]: Vishay (2022). _Did you know? - Industry-first Snapback Type XClampR™ TVS_. Retrieved 2023-05-30, from https://www.vishay.com/docs/48799/ms26900578_did_you_know-xclampr_tvs.pdf.
 [^vishay-xld5a24ca-ds]: Vishay (2022, Dec 1). _XLD5A24CA - Surface Mount XClampRTM Transient Voltage Suppressors (datasheet)_. Retrieved 2023-05-30, from https://www.vishay.com/docs/87199/xld5a24ca.pdf.
+[^diodes-inc-load-dump-tvs-series-ds]: Diodes Incorporated. _DM5WxxAQ, DM6WxxAQ, DM8WxxAQ - Automotive-Grade DO-218 Load Dump TVS Series_. Retrieved 2024-08-06, from https://www.diodes.com/assets/product-showcases/Automotive-Grade-DO-218-Load-Dump-TVS-Series-Diodes-NPA-052019.pdf.
