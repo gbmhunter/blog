@@ -11,17 +11,13 @@ title: Sallen-Key Filters
 type: page
 ---
 
-import { Aside, Image } from '/src/components/General.astro';
-
 ## Overview
 
 The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters topologies**[^bib-analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name. It is a _filter topology_, and defines the components and connections between them to realize a 2nd order filter. Various [filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) such as Butterworth, Bessel and Chebyshev can be implemented using the Sallen-Key topology.
 
 <div style={{display: "flex"}}>
-
-<Image src={import('./_assets/low-pass-variable-gain-sallen-key-filter-schematic.png')} width="400">The schematic for a variable-gain low-pass Sallen-Key filter.</Image>
-
-<Image src={import('./_assets/low-pass-sallen-key-chebyshev-3db/response.png')} width="400">Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above.</Image>
+  <Image src={import('./_assets/low-pass-variable-gain-sallen-key-filter-schematic.png')} width="400">The schematic for a variable-gain low-pass Sallen-Key filter.</Image>
+  <Image src={import('./_assets/low-pass-sallen-key-chebyshev-3db/response.png')} width="400">Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above.</Image>
 </div>
 
 The Sallen-Key filter has **low _component spread_** (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers.
@@ -38,10 +34,9 @@ Another popular alternative to the Sallen-Key topology is the Multiple Feedback 
 
 The schematic for a variable-gain low-pass Sallen-Key filter (a.k.a. VCVS filter) is shown below.
 
-<Image src={low_pass_variable_gain_sallen_key_filter_schematic} width="700">The schematic for a variable-gain low-pass Sallen-Key filter.</Image>
+<Image src={import('./_assets/low-pass-variable-gain-sallen-key-filter-schematic.png')} width="700">The schematic for a variable-gain low-pass Sallen-Key filter.</Image>
 
 The schematic for the unity-gain low-pass Sallen-Key filter is shown below (which is generally not called a VCVS filter). Note the removal of $R_3$ and $R_4$, the output is instead directly fed into the inverting input of the op-amp, just like when using an op-amp as a buffer. **The filter has unity gain in the pass-band.**
-
 
 <Image src={import('./_assets/low-pass-unity-gain-sallen-key-filter-schematic.png')} width="700">The schematic for a unity-gain low-pass Sallen-Key filter.</Image>
 
@@ -219,11 +214,9 @@ $$
 
 All done! Our finished schematic looks like this:
 
-
 <Image src={import('./_assets/low-pass-sallen-key-mn-ratios/low-pass-sallen-key-mn-ratios-schematic.png')} width="500">The finished schematic of the low-pass Sallen-Key filter designed using the mn ratio technique.</Image>
 
 The simulated frequency and phase response for this circuit is shown below.
-
 
 <Image src={import('./_assets/low-pass-sallen-key-mn-ratios/low-pass-sallen-key-mn-ratios-bode-plot.png')} width="700">The simulated bode plots for the low-pass Sallen-Key filter designed using the mn ratio technique.</Image>
 
@@ -324,11 +317,10 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 1. Build the circuit! It should look like this:
 
-    
 <Image src={import('./_assets/low-pass-sallen-key-chebyshev-3db/schematic-print.svg')} width="700">Schematic of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above.</Image>
 1. And just good measure this was simulated, to make sure the response is as expected.
 
-<Image src={low_pass_sallen_key_chebyshev_3db_response} width="700">Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above.</Image>
+<Image src={import('./_assets/low-pass-sallen-key-chebyshev-3db/response.png')} width="700">Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above.</Image>
 
 </Aside>
 
@@ -337,7 +329,6 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 A low-pass Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key low-pass begins to suffer at high frequencies. This typically manifests itself with **the -40dB/decade gain turning around and beginning to increase again after a certain frequency in the stop band of the filter**.
 
 This phenomenon can be best understood by analyzing the behaviour at high frequencies. At frequencies much higher than the cut-off frequency $f_c$, we can treat the capacitors as shorts. This gives rise to the equivalent circuit shown below. Shorting $C_2$ means that the op-amps non-inverting input is kept at ground (for high frequency signals), and so nothing should pass from input to output. This is true as long as the op-amp has strong enough "drive" to keep this basic tenant true. Unfortunately, as frequency increases, so does the op-amps output impedance. This impedance effects the op-amps ability to keep the output at $0V$, and the gain begins to rise again.
-
 
 <Image src={import('./_assets/low-pass-variable-gain-sallen-key-filter-freq-limit.png')} width="900">Equivalent circuit for a low-pass Sallen-Key filter at high frequencies. The left-hand shows the circuit with the capacitors shorted. The right-hand is a simplification showing the addition of the op-amps output impedance.</Image>
 
@@ -379,13 +370,11 @@ So as the closed-loop gain $A$ of the op-amp begins to drop at high frequencies,
 
 We can see the effect of an increasing output impedance at high frequencies in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency $f_c$ of 1kHz:
 
-
 <Image src={import('./_assets/low-pass-sallen-key-showing-gain-rise/annotated-plot.svg')} width="600">Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance.</Image>
 
 ## High-Pass Sallen-Key Filter
 
 You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the following schematic:
-
 
 <Image src={import('./_assets/high-pass-variable-gain-sallen-key-filter-schematic.png')} width="600">Schematic of a variable-gain high-pass Sallen-Key filter.</Image>
 
@@ -523,13 +512,11 @@ Inputs:
 
 1. Done! The finished schematic looks like (ready for simulating):
 
-    
-<Image src={import('./_assets/high-pass-sallen-key-fc2khz-q1.5-k4/schematic.png')} width="600">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
+    <Image src={import('./_assets/high-pass-sallen-key-fc2khz-q1.5-k4/schematic.png')} width="600">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
     
     And the simulated bode plot:
 
-    
-<Image src={import('./_assets/high-pass-sallen-key-fc2khz-q1.5-k4/bode-plot.png')} width="700">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
+    <Image src={import('./_assets/high-pass-sallen-key-fc2khz-q1.5-k4/bode-plot.png')} width="700">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
 
 </Aside>
 
@@ -581,11 +568,9 @@ You can a practical example of this frequency limitation with the high-pass Sall
 
 The [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm) has some good Sallen-Key filter calculators, including 2nd and 3rd-order low-pass and high-pass calculators.
 
-
 <Image src={import('./_assets/okawa-sallen-key-filter-calculators-screenshot.png')} width="500">Screenshot of the Sallen-Key filter calculators offered by the [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm)[^bib-okawa-filter-design-and-analysis].</Image>
 
 The Texas Instruments [Filter Design Tool](https://webench.ti.com/filter-design-tool/filter-type) is a web-based tool that supports the Sallen-Key topology. You firstly enter in the desired characteristics of your filter (e.g. low-pass, cut-off frequency, amount of rejection in stop band, tuning, e.t.c) and then can select Sallen-Key as a topology to implement the filter with.
-
 
 <Image src={import('./_assets/ti-filter-design-tool-screenshot.png')} width="700">Screenshot of the Filter Design Tool from Texas Instruments[^bib-ti-filter-design-tool].</Image>
 
@@ -594,7 +579,6 @@ The Texas Instruments [Filter Design Tool](https://webench.ti.com/filter-design-
 For general information on analogue filters, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
 
 See the [Filter Tunings page](/electronics/circuit-design/analogue-filters/filter-tunings/) for information on Butterworth, Bessel, Chebyshev, e.t.c filter tunings and their polynomial coefficients (these can be applied to a Sallen-Key filter topology).
-
 
 <Image src={import('./_assets/filter-tunings-page-screenshot.png')} width="400"></Image>
 
