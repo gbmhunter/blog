@@ -1,6 +1,4 @@
-import type { CollectionEntry } from 'astro:content';
-
-export function getRoutablePages(pagesCollection: any) {
+export function getRoutablePages(pagesCollection: any[]) {
   let routablePages = [];
   for (const page of pagesCollection) {
     // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore
@@ -31,7 +29,7 @@ class PageNode {
 }
 
 
-export function getSidebarData(pagesCollection: any) {
+export function getSidebarData(pagesCollection: any[]) {
   // This structure is constructed below
   let pageNodes: PageNode = new PageNode('root', undefined);
 
