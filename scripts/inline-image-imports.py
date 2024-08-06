@@ -57,7 +57,7 @@ def image_replace_fn(found_text, file_path):
         caption = ''
     print('caption:', caption)
 
-    inline_image = f"<Image src={{import({src})}} width=\"{width}\">{caption}</Image>"
+    inline_image = f"<Image src={{import('{src}')}} width=\"{width}\">{caption}</Image>"
 
     print(f'========= Replacing: =============')
     print(found_text)
