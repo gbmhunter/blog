@@ -104,7 +104,9 @@ The [Vishay XLD5A24CA](https://www.vishay.com/docs/87199/xld5a24ca.pdf) is an ex
 
 TVS diodes can be used to clamp the nominally +12V rail in automotive applications.
 
-Load-dump TVS diodes are designed to protect systems when the alternator is running and the battery is suddenly disconnected[^littelfuse-load-dump-standard]. When this happens a large positive going voltage spike can occur on the +12V rail. The spike is worst when the battery is significantly discharged, as the alternator current is the highest.
+Load-dump TVS diodes are designed to protect systems when the alternator is running and the battery is suddenly disconnected[^littelfuse-load-dump-standard]. When this happens a large positive going voltage spike can occur on the +12V rail. The spike is worst when the battery is significantly discharged.
+
+When the battery is very flat, the alternator is generating a large amount of current to charge the battery. When the battery is suddenly disconnected, the load on the alternator suddenly decreases. The voltage regulation circuitry which typically controls the output voltage of the alternator cannot reduce the current fast enough (because the alternator windings have a large inductance) to keep the voltage "in regulation", and thus a large voltage spike occurs[^wikipedia-load-dump].
 
 A "standard" load-dump surge which TVS diodes can be rated to (and products tested against) is defined in ISO16750-2[^diodes-inc-load-dump-tvs-series-ds].
 
@@ -127,3 +129,4 @@ More information on these diodes can be found in the [Specialised TVS Diodes sec
 [^vishay-xld5a24ca-ds]: Vishay (2022, Dec 1). _XLD5A24CA - Surface Mount XClampRTM Transient Voltage Suppressors (datasheet)_. Retrieved 2023-05-30, from https://www.vishay.com/docs/87199/xld5a24ca.pdf.
 [^diodes-inc-load-dump-tvs-series-ds]: Diodes Incorporated. _DM5WxxAQ, DM6WxxAQ, DM8WxxAQ - Automotive-Grade DO-218 Load Dump TVS Series_. Retrieved 2024-08-06, from https://www.diodes.com/assets/product-showcases/Automotive-Grade-DO-218-Load-Dump-TVS-Series-Diodes-NPA-052019.pdf.
 [^littelfuse-load-dump-standard]: Littelfuse. _TVS Diodes to Meet Automotive Load Dump Standard_. Retrieved 2024-08-06, from https://m.littelfuse.com/~/media/electronics/application_notes/littelfuse_tvs_diode_meet_automotive_load_dump_standard_application_note.pdf.pdf.
+[^wikipedia-load-dump]. Wikipedia (2023, Dec 4). _Load dump_. Retrieved 2024-08-07, from https://en.wikipedia.org/wiki/Load_dump.
