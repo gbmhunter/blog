@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Before reading this page, please check out the [Linear Curve Fitting page](/mathematics/curve-fitting/linear-curve-fitting). Many of the principles mentioned there will be re-used here, and will not be explained in as much detail.
 
-import many_polynomial_best_fits_on_graph from './many-polynomial-best-fits-on-graph.png'
-
-<Image src={many_polynomial_best_fits_on_graph} width="605px">A graph showing how different degree polynomials can be fitted to data.</Image>
+<Image src={import('./many-polynomial-best-fits-on-graph.png')} width="605px">A graph showing how different degree polynomials can be fitted to data.</Image>
 
 ## Calculating The Polynomial Curve
 
@@ -165,6 +163,4 @@ $$ y = 1 - 0.3x + 0.5x^2 $$
 
 The data points and polynomial of best fit are shown in the below graph:
 
-import n_2_degree_poly_best_fit_graph from './2-degree-poly-best-fit-graph.png'
-
-<Image src={n_2_degree_poly_best_fit_graph} width="600px">Four data points and a 2 degree polynomial of best fit (using the least squares method).</Image>
+<Image src={import('./2-degree-poly-best-fit-graph.png')} width="600px">Four data points and a 2 degree polynomial of best fit (using the least squares method).</Image>

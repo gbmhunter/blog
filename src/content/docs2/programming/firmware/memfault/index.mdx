@@ -13,17 +13,13 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Memfault is a commercial cloud-based service designed for collecting and analysing data from a fleet of internet-connected embedded devices. It also allows you to manage and deploy OTA (over-the-air) updates to your devices.
 
-import memfault_logo_full_light_min from './_assets/memfault-logo-full-light-min.png'
-
-<Image src={memfault_logo_full_light_min} width="500px">The Memfault logo[^memfault-docs].</Image>
+<Image src={import('./_assets/memfault-logo-full-light-min.png')} width="500px">The Memfault logo[^memfault-docs].</Image>
 
 ## Dashboard
 
 Memfault has a web-based dashboard for viewing data from your devices and managing things like OTA updates.
 
-import memfault_demo_dashboard_overview_screenshot from './_assets/memfault-demo-dashboard-overview-screenshot.webp'
-
-<Image src={memfault_demo_dashboard_overview_screenshot} width="1000px">A screenshot of the Memfault dashboard on their demo account[^memfault-demo-dashboard].</Image>
+<Image src={import('./_assets/memfault-demo-dashboard-overview-screenshot.webp')} width="1000px">A screenshot of the Memfault dashboard on their demo account[^memfault-demo-dashboard].</Image>
 
 ## Heartbeats
 
@@ -65,9 +61,7 @@ The nRF Memfault app by Nordic Semiconductor is a phone app (available for [Andr
 
 The nRF Memfault app displays the application key (project key) and device ID.
 
-import nrf_memfault_app_chunks_screenshot from './_assets/nrf-memfault-app-chunks-screenshot.webp'
-
-<Image src={nrf_memfault_app_chunks_screenshot} width="300px">A screenshot of the nRF Memfault app with a device connected to it. You can see the chunks of data which have been downloaded of the device and uploaded to Memfault.</Image>
+<Image src={import('./_assets/nrf-memfault-app-chunks-screenshot.webp')} width="300px">A screenshot of the nRF Memfault app with a device connected to it. You can see the chunks of data which have been downloaded of the device and uploaded to Memfault.</Image>
 
 [^memfault-docs]: Memfault. _Memfault Docs_. Retrieved 2024-07-03, from https://docs.memfault.com/.
 [^memfault-demo-dashboard]: Memfault. _Demo Dashboard_. Retrieved 2024-07-03, from https://demo.memfault.com/organizations/acme-inc/projects/shapemate/dashboards/memfault-overview.

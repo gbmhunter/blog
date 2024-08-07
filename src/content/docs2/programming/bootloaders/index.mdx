@@ -24,9 +24,7 @@ Bootloaders are typically the first thing that is run whenever the microcontroll
 
 The image below shows what the memory layout might look like for a microcontroller using a basic bootloader. The _Reset Vector_ is the first instruction executed by the microcontroller on start-up. This is typically located at memory address `0x0000 0000` (the Intel 8086 processor is a notable exception). The reset vector usually contains a "goto" (jump) instruction will tells the CPU to jump to the bootloaders entry point. The bootloader will then execute. The bootloader could then initialise a transport to download new firmware, e.g. over UART. It then might wait for a message for a fixed amount of time. After 10s the chance to download firmware passes, and then the bootloader jumps to the start of the application executable.
 
-import basic_bootloader_memory_map from './_assets/basic-bootloader-memory-map.webp'
-
-<Image src={basic_bootloader_memory_map} width="700px">A basic example showing the layout of a microcontrollers memory when a bootloader is used.</Image>
+<Image src={import('./_assets/basic-bootloader-memory-map.webp')} width="700px">A basic example showing the layout of a microcontrollers memory when a bootloader is used.</Image>
 
 ## Erase Cycles
 
@@ -46,9 +44,7 @@ The scratch area must be large enough to hold the largest sector that is going t
 
 ### Swap-Move Algorithm
 
-import swap_move_algorithm_mcuboot from './_assets/swap-move-algorithm-mcuboot.webp'
-
-<Image src={swap_move_algorithm_mcuboot} width="900px">Illustration of the swap-move algorithm to swap two firmware images using just a single extra erase sector in slot 0.</Image>
+<Image src={import('./_assets/swap-move-algorithm-mcuboot.webp')} width="900px">Illustration of the swap-move algorithm to swap two firmware images using just a single extra erase sector in slot 0.</Image>
 
 * **a):** All of the segments in slot 0 are moved one segment up, starting by copying segment 3 into the empty sector, then segment 2 into where segment 3 used to be, e.t.c. This moves the empty segment to the start of slot 0.
 * **b)**: The first segment of slot 1 is moved down to the empty segment.
@@ -78,9 +74,7 @@ A golden image is a firmware application with minimal support for firmware updat
 
 MCUboot is a popular, open-source, secure bootloader for 32-bit microcontrollers. As of Jan 2024 it has 1.1k star on GitHub, 2,201 commits and active development month over month. It is designed to be run from flash memory[^mcuboot-doc].
 
-import mcuboot_homepage_screenshot from './_assets/mcuboot-homepage-screenshot.png'
-
-<Image src={mcuboot_homepage_screenshot} width="700px">A screenshot of MCUboot's homepage as of Jan 2024.</Image>
+<Image src={import('./_assets/mcuboot-homepage-screenshot.png')} width="700px">A screenshot of MCUboot's homepage as of Jan 2024.</Image>
 
 It currently supports the following frameworks/OSes:
 
@@ -95,9 +89,7 @@ It currently supports the following frameworks/OSes:
 
 The MCUboot implementation for Zephyr supports Bluetooth bootloading. The Nordic nRF app can be used to bootload during development.
 
-import zephyr_mcuboot_shell_output_during_swap from './_assets/zephyr-mcuboot-shell-output-during-swap.png'
-
-<Image src={zephyr_mcuboot_shell_output_during_swap} width="700px">The output to the Zephyr shell just after a new image has been downloaded, the MCU reboots and MCUboot performs a swap of the images.</Image>
+<Image src={import('./_assets/zephyr-mcuboot-shell-output-during-swap.png')} width="700px">The output to the Zephyr shell just after a new image has been downloaded, the MCU reboots and MCUboot performs a swap of the images.</Image>
 
 [^mcuboot-doc]: MCUboot. _MCUboot - Secure boot for 32-bit Microcontrollers!_ [project homepage]. Retrieved 2024-01-27, from https://docs.mcuboot.com/.
 [^mcuboot-sim-readme]: MCUboot. _MCUboot simulator - README_. Retrieved 2024-01-27, from https://github.com/mcu-tools/mcuboot/blob/main/sim/README.rst.

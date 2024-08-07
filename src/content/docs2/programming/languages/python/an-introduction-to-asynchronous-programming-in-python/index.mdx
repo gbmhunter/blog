@@ -18,9 +18,7 @@ Asynchronous programming is a software paradigm which involves scheduling many s
 
 Two core parts of Pythons asynchronous capabilities a provided through the `await` and `async` keywords. The rest of the functionality is largely supplied by the `asyncio` library. The `asyncio` library **provides event loops and functions to create, run and await tasks**. Event loops are the "runners" of asynchronous functions (these functions are officially called _coroutines_). They keep track of all the coroutines which are currently blocked waiting for an event, and continue these coroutines from where they left off once the event occurs.
 
-import python_event_loop from './python-event-loop.png'
-
-<Image src={python_event_loop} width="400px"></Image>
+<Image src={import('./python-event-loop.png')} width="400px"></Image>
 
 When you wait for an event with the `await` keyword, Python can save the state of the function (i.e. the value of all the _local variables_, and the point of execution), and return to the active event loop. In the active event loop, the application can respond to other events while it is waiting. Once the specific event you waited on occurs, Python restores the state of the function and returns execution to that exact point is was saved at (they are very similar to _Python generators_).
 

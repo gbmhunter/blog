@@ -25,9 +25,7 @@ If you want to assign you own (and typically write it to non-volatile memory (NV
 
 Perhaps you want random numbers for serial numbers to obscure the number of devices you have sold. In WW2, Allied forces we able to estimate the number of tanks Axis forces had by looking at the serial numbers. Parts of the tank (e.g. chassis, gearbox, engine) where assigned sequential serial numbers. Based on the numbers of the tanks that the Allied forces captured, they were able to use statistics to estimate the total number[^wikipedia-german-tank-problem].
 
-import tank_with_serial_number from './_assets/tank-with-serial-number.png'
-
-<Image src={tank_with_serial_number} width="400px"></Image>
+<Image src={import('./_assets/tank-with-serial-number.png')} width="400px"></Image>
 
 </Aside>
 
@@ -99,9 +97,7 @@ def calc_p_of_collision_exact(num_of_serial_nums, num_of_bits):
 
 We can plot this for a more realistic 32-bit serial number and a varying number of devices from 1 to 200,000 (200k):
 
-import probability_of_collision_32_bit from './_assets/probability-of-collision-32-bit.png'
-
-<Image src={probability_of_collision_32_bit} width="600px">The probability of a collision when generating 32-bit random serial numbers for different numbers of devices.</Image>
+<Image src={import('./_assets/probability-of-collision-32-bit.png')} width="600px">The probability of a collision when generating 32-bit random serial numbers for different numbers of devices.</Image>
 
 You can see that we start running into significant issues with 32-bit random serial numbers as soon as we start manufacturing 1000's of devices. At 25,000 devices the probability of a collision is already at about 10%.
 
@@ -113,17 +109,13 @@ P(A) &\approx 1 - e^{-\left(\dfrac{n \times (n-1)}{2 \times 2^b}\right)} \\
 
 This approximation is quite good. Due to the lack of any loops, this has $O(1)$ time complexity (assuming the maths operations like multiply, divide and exponent are $O(1)$). The other nice thing is that this can be calculated by hand. Here is a comparison of the approximation to the exact calculation for 32-bit serial numbers:
 
-import probability_of_collision_32_bit_approx_vs_exact from './_assets/probability-of-collision-32-bit-approx-vs-exact.png'
-
-<Image src={probability_of_collision_32_bit_approx_vs_exact} width="600px">Comparing the approximate and exact equations for calculating the collision probability for 32-bit serial numbers and a varying number of devices.</Image>
+<Image src={import('./_assets/probability-of-collision-32-bit-approx-vs-exact.png')} width="600px">Comparing the approximate and exact equations for calculating the collision probability for 32-bit serial numbers and a varying number of devices.</Image>
 
 Can't see two lines? That's because the approximation is good. If we were diving deep into the maths we could plot the difference between the two. But for engineering purposes, this is proof enough!
 
 We can use this approximation to calculate collision probabilities for 64 bits. Below is the probability for 64-bit numbers, up to 1 billion (1e9 devices)! You can see that the probability starts to rise above 0 at about the 1 billion mark.
 
-import probability_of_collision_64_bit from './_assets/probability-of-collision-64-bit.png'
-
-<Image src={probability_of_collision_64_bit} width="600px">The probability of a collision when generating 64-bit random serial numbers for different numbers of devices from 1 to up to 1 billion.</Image>
+<Image src={import('./_assets/probability-of-collision-64-bit.png')} width="600px">The probability of a collision when generating 64-bit random serial numbers for different numbers of devices from 1 to up to 1 billion.</Image>
 
 Here is the Python code for the above equation (if you need it):
 

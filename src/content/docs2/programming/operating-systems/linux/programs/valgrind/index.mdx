@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Valgrind is a tool that can be used to detect memory management and threading bugs.
 
-import valgrind_logo from './valgrind-logo.jpg'
-
-<Image src={valgrind_logo} width="316px">The Valgrind logo.</Image>
+<Image src={import('./valgrind-logo.jpg')} width="316px">The Valgrind logo.</Image>
 
 ## Installation
 
@@ -112,6 +110,4 @@ $ kcachegrind
 
 You should then be presented with wonderful profiling data as shown below!
 
-import callgrind_profiling_output_displayed_in_kcachegrind from './callgrind-profiling-output-displayed-in-kcachegrind.png'
-
-<Image src={callgrind_profiling_output_displayed_in_kcachegrind} width="1310px">The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping).</Image>
+<Image src={import('./callgrind-profiling-output-displayed-in-kcachegrind.png')} width="1310px">The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping).</Image>

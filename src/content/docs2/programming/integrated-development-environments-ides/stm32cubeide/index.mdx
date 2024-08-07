@@ -18,9 +18,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 STM32CubeIDE is an IDE from STMicroelectronics specifically for the STM32 range of microcontrollers. It supports firmware development in C or C++. It integrates with _STM32Cube_.
 
-import stm32_cube_ide_logo from './stm32-cube-ide-logo.png'
-
-<Image src={stm32_cube_ide_logo} width="600px">The STM32CubeIDE logo.</Image>
+<Image src={import('./stm32-cube-ide-logo.png')} width="600px">The STM32CubeIDE logo.</Image>
 
 ## Installation
 
@@ -60,9 +58,7 @@ Below shows the default directory/file structure for a STM32CubeIDE project:
 
 The `.ioc` file contains information about the target microcontroller and the hardware configuration for your project.
 
-import stm32cubeide_ioc_file_micro_pinout from './stm32cubeide-ioc-file-micro-pinout.png'
-
-<Image src={stm32cubeide_ioc_file_micro_pinout} width="700px">A screenshot of the 'Pinout & Configuration' view of the .ioc file in STM32CubeIDE.</Image>
+<Image src={import('./stm32cubeide-ioc-file-micro-pinout.png')} width="700px">A screenshot of the 'Pinout & Configuration' view of the .ioc file in STM32CubeIDE.</Image>
 
 Enabling peripherals via the `.ioc` file generates `MX_<peripheral_name>_Init()` functions in the `main.c` file. HAL driver files are also provided for peripherals. They are written in a object-orientated way (e.g. every `UART` related HAL function which take a pointer to the UART object as it's first parameter).
 
@@ -86,6 +82,4 @@ UPDATE 2022-06-06: Apparently you can get STM32CubeIDE to create a `main.cpp` wh
 
 ## STM32CubeMonitor
 
-import stm32_cube_monitor_screenshot from './stm32-cube-monitor-screenshot.png'
-
-<Image src={stm32_cube_monitor_screenshot} width="800px">A screenshot of the STM32CubeMonitor application running on Windows.</Image>
+<Image src={import('./stm32-cube-monitor-screenshot.png')} width="800px">A screenshot of the STM32CubeMonitor application running on Windows.</Image>

@@ -18,9 +18,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Zephyr_ is the combination of a **real-time operating system, peripheral/system API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
-import zephyr_project_logo from './_assets/zephyr-project-logo.png'
-
-<Image src={zephyr_project_logo} width="500px">The Zephyr Project logo.</Image>
+<Image src={import('./_assets/zephyr-project-logo.png')} width="500px">The Zephyr Project logo.</Image>
 
 Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`. 
 
@@ -769,9 +767,7 @@ int main(void) {
 }
 ```
 
-import timers_basic_example_output from './_assets/timers-basic-example-output.png'
-
-<Image src={timers_basic_example_output} width="400px">Running the timer example code above and observing the expiry function run every second.</Image>
+<Image src={import('./_assets/timers-basic-example-output.png')} width="400px">Running the timer example code above and observing the expiry function run every second.</Image>
 
 
 You can read the official Zephyr documentation for Timers [here](https://docs.zephyrproject.org/latest/kernel/services/timing/timers.html).
@@ -1036,9 +1032,7 @@ int main(void) {
 }
 ```
 
-import watchdog_example from './_assets/watchdog-example.png'
-
-<Image src={watchdog_example} width="800px">Running the watchdog example code and seeing it timeout.</Image>
+<Image src={import('./_assets/watchdog-example.png')} width="800px">Running the watchdog example code and seeing it timeout.</Image>
 
 ### Semaphores
 
@@ -1175,9 +1169,7 @@ int main(void) {
 and the output is:
 
 
-import semaphore_working_example_stdout from './_assets/semaphore-working-example-stdout.png'
-
-<Image src={semaphore_working_example_stdout} width="800px">The output from the full working Polling API example above, showing how a thread blocks on two separate semaphores.</Image>
+<Image src={import('./_assets/semaphore-working-example-stdout.png')} width="800px">The output from the full working Polling API example above, showing how a thread blocks on two separate semaphores.</Image>
 
 ## Logging
 
@@ -1265,9 +1257,7 @@ Remember to set `CONFIG_LOG_RUNTIME_FILTERING=y` in your `prj.conf` if you don't
 
 Zephyr implements a character based circular buffer for storing messages to be processed (remember -- Zephyr logging is typically done asynchronously). If other threads create logs too quickly for the log thread to process, at some point Zephyr will drop logs. You will typically see a log error generated when this happens stating `--- x messages dropped ---` (as shown below).
 
-import zephyr_shell_x_messages_dropped_screenshot from './_assets/zephyr-shell-x-messages-dropped-screenshot.png'
-
-<Image src={zephyr_shell_x_messages_dropped_screenshot} width="700px">A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging.</Image>
+<Image src={import('./_assets/zephyr-shell-x-messages-dropped-screenshot.png')} width="700px">A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging.</Image>
 
 If you have extra RAM space, one way to reduce the probability of this error is to bump up the circular buffer Zephyr uses to write messages into in your `prj.conf`:
 
@@ -1661,9 +1651,7 @@ On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `
 
 You can execute the `west` command with `-t ram_report` to make Zephyr generate and print a table of RAM usage to the terminal.
 
-import zephyr_ram_report_output_screenshot from './_assets/zephyr-ram-report-output-screenshot.png'
-
-<Image src={zephyr_ram_report_output_screenshot} width="500px">A screenshot of the output produce by the `west build -t ram_report` command.</Image>
+<Image src={import('./_assets/zephyr-ram-report-output-screenshot.png')} width="500px">A screenshot of the output produce by the `west build -t ram_report` command.</Image>
 
 puncover can be used to visualize the memory usage via a web GUI. Install puncover in the projects Python virtual environment:
 
@@ -1686,9 +1674,7 @@ west build -t puncover
 
 If you get the error `ninja: error: unknown target 'puncover'` (as shown below) when trying to run puncover, it might be because you have not done a clean rebuild. You must do a clean rebuild after installing puncover. This is needed because CMake looks for the puncover executable during the build process. If it can't find it, no target is made for it.
 
-import puncover_build_error from './_assets/puncover-build-error.png'
-
-<Image src={puncover_build_error} width="500px">A screenshot of the build error you can get if you don't clean build after installing puncover.</Image>
+<Image src={import('./_assets/puncover-build-error.png')} width="500px">A screenshot of the build error you can get if you don't clean build after installing puncover.</Image>
 
 You can also look at reducing the stack size of some of the default stacks you will likely have in your project:
 
@@ -1823,9 +1809,7 @@ CMake Error at C:/Users/Geoffrey Hunter/temp/zephyrproject/zephyr/cmake/kconfig.
 
 It is due to there being one or more spaces in the path to your Zephyr project directory. This isn't a bug that is going to be fixed anytime soon, Zephyr is very clear on the matter in their documentation:
 
-import spaces_in_path_not_supported_zephyr_documentation_warning from './_assets/spaces-in-path-not-supported-zephyr-documentation-warning.png'
-
-<Image src={spaces_in_path_not_supported_zephyr_documentation_warning} width="900px">A warning on Zephyr's documentation about using spaces in paths.</Image>
+<Image src={import('./_assets/spaces-in-path-not-supported-zephyr-documentation-warning.png')} width="900px">A warning on Zephyr's documentation about using spaces in paths.</Image>
 
 I found this out the hard way and went through all the trouble of [renaming my user directory](https://superuser.com/questions/890812/how-to-rename-the-user-folder-in-windows-10) to fix the issue.
 
@@ -1860,9 +1844,7 @@ C:/project/zephyr/include/zephyr/device.h:83:41: error: '__device_dts_ord_DT_N_N
 
 If you are using the VS Code and the nRF Connect extension, sometimes this can be fixed by making when you setup the build configuration you set the Configuration to "Use build system default" as shown below:
 
-import selecting_use_build_system_default_in_nrf_connect from './_assets/selecting-use-build-system-default-in-nrf-connect.png'
-
-<Image src={selecting_use_build_system_default_in_nrf_connect} width="600px">Selecting \"Use build system default\" can sometimes fix device tree errors.</Image>
+<Image src={import('./_assets/selecting-use-build-system-default-in-nrf-connect.png')} width="600px">Selecting \"Use build system default\" can sometimes fix device tree errors.</Image>
 
 ### "ERROR: Build directory xxx is for application yyy, but source directory zzz was specified"
 
@@ -1901,9 +1883,7 @@ CMake Warning at CMakeLists.txt:3 (find_package):
   installed.
 ```
 
-import by_not_providing_find_zephyr_cmake from './_assets/by-not-providing-find-zephyr-cmake.png'
-
-<Image src={by_not_providing_find_zephyr_cmake} width="700px">Screenshot of the error \"By not providing \"FindZephyr.cmake\" in CMAKE_MODULE_PATH ...\".</Image>
+<Image src={import('./_assets/by-not-providing-find-zephyr-cmake.png')} width="700px">Screenshot of the error \"By not providing \"FindZephyr.cmake\" in CMAKE_MODULE_PATH ...\".</Image>
 
 It usually can be due to forgetting to export Zephyr to the CMake user package registry. Run the following command from the west workspace directory:
 
@@ -1922,9 +1902,7 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'elftools'
 ```
 
-import error_no_module_named_elftools from './_assets/error-no-module-named-elftools.png'
-
-<Image src={error_no_module_named_elftools} width="700px">Screenshot of the error \"No module named 'elftools'\".</Image>
+<Image src={import('./_assets/error-no-module-named-elftools.png')} width="700px">Screenshot of the error \"No module named 'elftools'\".</Image>
 
 can occur if you have forgotten to install the additional Zephyr dependencies into your Python environment (which can happen if you delete the existing virtual environment and recreate it). This can be fixed by running the following command, assuming you have activated the Python virtual environment if relevant:
 

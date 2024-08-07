@@ -32,9 +32,7 @@ $ sudo apt install qt5-default
 
 You need at least the Xcode command line tools installed so that Qt Creator can find/use the C++ compiler.
 
-import qt_creator_you_need_to_install_xcode_command_line_tools from './qt-creator-you-need-to-install-xcode-command-line-tools.png'
-
-<Image src={qt_creator_you_need_to_install_xcode_command_line_tools} width="200px">The Qt installer warning you that you need Xcode and the Xcode command-line tools installed. Note that you can make do with just the command-line tools.</Image>
+<Image src={import('./qt-creator-you-need-to-install-xcode-command-line-tools.png')} width="200px">The Qt installer warning you that you need Xcode and the Xcode command-line tools installed. Note that you can make do with just the command-line tools.</Image>
 
 You can download both Xcode and the Xcode command-line tools from the Apple app store.
 
@@ -70,15 +68,11 @@ It seems a little strange, that by default, Qt Creator will not allow files with
 
 1. Click _Tools_ from the top menu bar and then click on _Options_.
 
-import qt_creator_menu_tools_options from './qt-creator-menu-tools-options.png'
-
-<Image src={qt_creator_menu_tools_options} width="300px"></Image>
+<Image src={import('./qt-creator-menu-tools-options.png')} width="300px"></Image>
 
 1. Uncheck the _Lower case file names_ checkbox.
 
-import qt_creator_uncheck_lower_case_filenames from './qt-creator-uncheck-lower-case-filenames.png'
-
-<Image src={qt_creator_uncheck_lower_case_filenames} width="700px"></Image>
+<Image src={import('./qt-creator-uncheck-lower-case-filenames.png')} width="700px"></Image>
 
 1. Done!
 
@@ -236,9 +230,7 @@ The open-source program `linuxdeployqt` (available from [here](https://github.co
 
 The Qt installation includes an executable called `macdeployqt` (located at `<Qt install dir>/bin/`). This command-line program can be used to create a disk image (`.dmg`) file from the app bundle.
 
-import macdeployqt_cli_screenshot from './macdeployqt-cli-screenshot.png'
-
-<Image src={macdeployqt_cli_screenshot} width="500px">Screenshot of the Qt macdeployqt CLI tool.</Image>
+<Image src={import('./macdeployqt-cli-screenshot.png')} width="500px">Screenshot of the Qt macdeployqt CLI tool.</Image>
 
 To create a `.dmg` file:
 

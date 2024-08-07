@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Jupyter is a collection of software tools orientated towards the processing and visualizing of data. The two most prominent tools are Jupyter Notebooks, a web-based IDE/user interface for writing software and visualizing data, and Jupyter Labs, their newer web application which incorporates Notebooks plus many other features.
 
-import jupyter_logo from './jupyter-logo.svg'
-
-<Image src={jupyter_logo} width="300px">The Jupyter logo.</Image>
+<Image src={import('./jupyter-logo.svg')} width="300px">The Jupyter logo.</Image>
 
 Most of the code examples on this page assume you are using the Python programming language, although the features should be available in the other languages that Jupyter supports.
 

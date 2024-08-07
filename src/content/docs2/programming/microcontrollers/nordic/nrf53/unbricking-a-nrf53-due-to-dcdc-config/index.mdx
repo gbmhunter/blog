@@ -18,9 +18,7 @@ Unfortunately, you can quite easily "brick" a Nordic nRF53 series microcontrolle
 1. Are using the newer nRF Connect SDK (based on Zephyr), and **don't explicitly disable the DCDC converters** in the `proj.conf`.
 1. **Don't fit the inductors required for the internal DCDC converters** (also called Switch-mode Power Supplies, or SMPS), because you plan on using the LDO (low dropout linear regulator) instead.
 
-import schematic_showing_inductors_which_can_be_not_fitted from './schematic-showing-inductors-which-can-be-not-fitted.webp'
-
-<Image src={schematic_showing_inductors_which_can_be_not_fitted} width="1000px">Schematic highlighting the three inductors that can be not placed in a design in where you plan to use the LDO rather than the DCDC converters.</Image>
+<Image src={import('./schematic-showing-inductors-which-can-be-not-fitted.webp')} width="1000px">Schematic highlighting the three inductors that can be not placed in a design in where you plan to use the LDO rather than the DCDC converters.</Image>
 
 In this scenario, if you forget to explicitly disable the SMPS in the Zephyr `prj.conf` file, then the SMPS will be enabled (yes -- they are enabled by default). But you don't have the required inductors, the SMPS will not work, and the internal voltage rails required by the MCU will not do anything but stay at 0V. **This unfortunately "bricks" the MCU. You can't re-program the device** with a fixed firmware binary because the MCU requires these internal voltage rails for programming.
 
@@ -46,14 +44,10 @@ However, you can recover from this by providing the required power rails externa
 
 The image below is a schematic of a nRF53 SoC showing which pins to apply these voltages to. 
 
-import schematic_showing_where_to_apply_voltages from './schematic-showing-where-to-apply-voltages.webp'
-
-<Image src={schematic_showing_where_to_apply_voltages} width="800px">Schematic showing where to connect the two voltages up to on an nRF53 SoC.</Image>
+<Image src={import('./schematic-showing-where-to-apply-voltages.webp')} width="800px">Schematic showing where to connect the two voltages up to on an nRF53 SoC.</Image>
 
 The image below shows a photo of two wires soldered onto the bulk capacitance on these two power rails. These two wires go off to external power supplies (ground is connected via a ground test point elsewhere).
 
-import soldered_wires_to_nrf53_to_provide_two_voltage_rails from './soldered-wires-to-nrf53-to-provide-two-voltage-rails.jpg'
-
-<Image src={soldered_wires_to_nrf53_to_provide_two_voltage_rails} width="800px">Picture of two wires soldered onto the XX and XX pins of a bricked Nordic nRF5340-QKAAD0 MCU so that the internal voltage rails can be provided by external power supplies.</Image>
+<Image src={import('./soldered-wires-to-nrf53-to-provide-two-voltage-rails.jpg')} width="800px">Picture of two wires soldered onto the XX and XX pins of a bricked Nordic nRF5340-QKAAD0 MCU so that the internal voltage rails can be provided by external power supplies.</Image>
 
 Once you've powered these rails (along with providing power to the standard input power pins on the MCU), you should be able to connect to the device again using a programmer. At this point all you need to do is to flash it with firmware which disables the DCDC converters (or just erase the device). Then you can remove the external voltage supplies and wires and you're back in action!

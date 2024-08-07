@@ -26,9 +26,7 @@ Trigonometric ratios are the three ratios $\sin$, $\cos$, and $\tan$ which are d
 
 Given you have a triangle with a right-angle in it, and another angle $A$, then the image below shows the naming of the triangle's sides when using trigonometric ratios.
 
-import sin_cos_tan_diagram from './_assets/sin-cos-tan-diagram.webp'
-
-<Image src={sin_cos_tan_diagram} width="400px">Diagram illustrating the naming of the triangles sides w.r.t. to angle A when using trigonometric ratios.</Image>
+<Image src={import('./_assets/sin-cos-tan-diagram.webp')} width="400px">Diagram illustrating the naming of the triangles sides w.r.t. to angle A when using trigonometric ratios.</Image>
 
 It might be obvious from the figure, but the names are because:
 
@@ -60,9 +58,7 @@ $$
 
 Given the triangle in the image below, calculate the value of angle $A$.
 
-import sin_example from './_assets/sin-example.webp'
-
-<Image src={sin_example} width="400px">Diagram for the worked example using sin().</Image>
+<Image src={import('./_assets/sin-example.webp')} width="400px">Diagram for the worked example using sin().</Image>
 
 Relative to angle $A$, we know the value of the opposite side and the hypotenuse. Thus we need to use the $\sin()$ ratio:
 
@@ -100,15 +96,11 @@ $\sin^{-1}()$ is not $ \frac{1}{\sin()} $, but rather the inverse of the $\sin$ 
 
 Given the triangle in image below, calculate the length of side $x$.
 
-import tan_example from './_assets/tan-example.webp'
-
-<Image src={tan_example} width="400px">Diagram for the worked example using tan().</Image>
+<Image src={import('./_assets/tan-example.webp')} width="400px">Diagram for the worked example using tan().</Image>
 
 Relative to the known angle, we know the value of the opposite side and want to know the length of the adjacent side. The image below shows the values labelled accordingly.
 
-import tan_example_labelled from './_assets/tan-example-labelled.webp'
-
-<Image src={tan_example_labelled} width="400px">Triangle now has labelled edges and angles.</Image>
+<Image src={import('./_assets/tan-example-labelled.webp')} width="400px">Triangle now has labelled edges and angles.</Image>
 
 The $\tan()$ ratio allows us to use the 2 knowns to solve for the unknown adjacent side length:
 
@@ -144,9 +136,7 @@ $$
 
 The _Law of Sines_ is a useful equation for determining unknown lengths and angles of any triangle (not just right-angled triangles) if you know some of the other lengths and angles. Together with the [Law of Cosines](#law-of-cosines) you can find the lengths and angles of any triangle as long as you know enough values already to fully-constrain it.
 
-import law_of_sines_diagram from './_assets/law-of-sines-diagram.webp'
-
-<Image src={law_of_sines_diagram} width="400px">Diagram illustrating the variables used in the Law of Sines.</Image>
+<Image src={import('./_assets/law-of-sines-diagram.webp')} width="400px">Diagram illustrating the variables used in the Law of Sines.</Image>
 
 If a triangle has lengths of $a$, $b$, and $c$ and opposite angles of $A$, $B$, and $C$ respectively (as shown in the above diagram), then the Law of Sines is:
 
@@ -172,9 +162,7 @@ The lengths $a$, $b$, and $c$ and opposite angles of $A$, $B$, and $C$ may be mo
 
 Given the triangle shown below, calculate the length of side $a$.
 
-import law_of_sines_example_1_diagram from './_assets/law-of-sines-example-1-diagram.webp'
-
-<Image src={law_of_sines_example_1_diagram} width="400px">Diagram for Example 1.</Image>
+<Image src={import('./_assets/law-of-sines-example-1-diagram.webp')} width="400px">Diagram for Example 1.</Image>
 
 We'll flip the Law of Sines equation and just use one equality:
 
@@ -212,9 +200,7 @@ In certain circumstances, there is more than one possible answer when calculatin
 * Angle $A$ is in the range $0^{\circ} < A < 90^{\circ}$ (i.e. is acute).
 * Length $a$ is greater than $h$ but less than $b$, where $h$ is the "vertical" height as shown below:
 
-import law_of_sines_ambiguous_case_diagram from './_assets/law-of-sines-ambiguous-case-diagram.webp'
-
-<Image src={law_of_sines_ambiguous_case_diagram} width="1000px">Diagram showing the situations when you know two sides of the triangle and 1 opposite angle. c) is the ambiguous cases which has two possible solutions.</Image>
+<Image src={import('./_assets/law-of-sines-ambiguous-case-diagram.webp')} width="1000px">Diagram showing the situations when you know two sides of the triangle and 1 opposite angle. c) is the ambiguous cases which has two possible solutions.</Image>
 
 Mathematically this occurs because $\sin^{-1}$ can give two answers in the range of $[0, 180]$ (a valid angle of a triangle has to be within this range). For example, $\sin^{-1}(0.6)$ gives the following values:
 
@@ -228,15 +214,11 @@ $$
 
 Calculators always give you the angle in the range of $[-90, 90]$ when using $\sin^{-1}$ (also called $asin$ or $arcsin$). To get the other answer you have to subtract the calculator answer from $180^{\circ}$. The image below explains the situation in visual manner.
 
-import sine_law_sine_wave_graph from './_assets/sine-law-sine-wave-graph.png'
-
-<Image src={sine_law_sine_wave_graph} width="600px">Graph showing how inverse sine can result in two values between $[0, 180]$.</Image>
+<Image src={import('./_assets/sine-law-sine-wave-graph.png')} width="600px">Graph showing how inverse sine can result in two values between $[0, 180]$.</Image>
 
 Ambiguity is not a problem if A is in the range $90^{\circ} \leq A < 180^{\circ}$ (i.e. $A$ is **not** acute). In this scenario, There can either be no solution or just 1 solution, but never 2. The image below illustrates this.
 
-import law_of_sines_ambiguous_case_a_not_acute_diagram from './_assets/law-of-sines-ambiguous-case-a-not-acute-diagram.webp'
-
-<Image src={law_of_sines_ambiguous_case_a_not_acute_diagram} width="600px">Diagram showing that when A is not acute, there is no ambiguous case for the Law of Sines.</Image>
+<Image src={import('./_assets/law-of-sines-ambiguous-case-a-not-acute-diagram.webp')} width="600px">Diagram showing that when A is not acute, there is no ambiguous case for the Law of Sines.</Image>
 
 **If you find yourself in a position with two possible answers, what can you do?** If you don't have any other information about the triangle, then you are out of luck. However, if you know the length of the remaining side of the triangle, you can use the Cosine Law to completely solve for all angles and sides of the triangle. If you know one other angle of the triangle, then you can use the simple fact that all the internal angles sum to $180^{\circ}$ to solve for the angle you were interested in.
 
@@ -244,9 +226,7 @@ import law_of_sines_ambiguous_case_a_not_acute_diagram from './_assets/law-of-si
 
 Given the triangle shown below, calculate the angle of $B$. This triangle has been designed to be ambiguous (two possible answers).
 
-import law_of_sines_ambiguous_example_diagram from './_assets/law-of-sines-ambiguous-example-diagram.webp'
-
-<Image src={law_of_sines_ambiguous_example_diagram} width="600px">Diagram for the ambiguous Law of Sines worked example.</Image>
+<Image src={import('./_assets/law-of-sines-ambiguous-example-diagram.webp')} width="600px">Diagram for the ambiguous Law of Sines worked example.</Image>
 
 Let's start with the Law of Sines equation:
 
@@ -313,9 +293,7 @@ $C$ is the opposite angle of side $c$<br /></p>
 
 The image below shows the side and angles involved in the Law of Cosines equation. Knowing all but one of these values, you can calculate the last one by re-arranging the equation.
 
-import law_of_cosines_diagram from './_assets/law-of-cosines-diagram.webp'
-
-<Image src={law_of_cosines_diagram} width="400px">Diagram showing the sides and angles involved in the Law of Cosines.</Image>
+<Image src={import('./_assets/law-of-cosines-diagram.webp')} width="400px">Diagram showing the sides and angles involved in the Law of Cosines.</Image>
 
 **The law of cosines is useful for solving the sides and angles of a triangle when all three sides are known, or two sides and their included angle are known.** If you know two angles and a side, or two sides and an angle other than the included angle, use the [law of sines](#law-of-sines) instead.
 
@@ -350,15 +328,11 @@ $$
 
 Given the triangle and known dimensions as shown below, calculate all unknown sides and angles.
 
-import law_of_cosines_two_sides_and_included_angle_known_example_diagram from './_assets/law-of-cosines-two-sides-and-included-angle-known-example-diagram.webp'
-
-<Image src={law_of_cosines_two_sides_and_included_angle_known_example_diagram} width="400px">Diagram for the worked example using the Law of Cosines on a triangle with 2 sides and their included angle known.</Image>
+<Image src={import('./_assets/law-of-cosines-two-sides-and-included-angle-known-example-diagram.webp')} width="400px">Diagram for the worked example using the Law of Cosines on a triangle with 2 sides and their included angle known.</Image>
 
 Given we know the values of two of the sides and their included angle, the Law of Cosines can help us solve for the remaining dimensions. Let's assign letters to each of the sides and angles (we assign $C$ to the known angle, just so we can use the Law of Cosine equation verbatim without any swapping of the variable names for the first equation):
 
-import law_of_cosines_two_sides_and_included_angle_known_example_diagram_letters_added from './_assets/law-of-cosines-two-sides-and-included-angle-known-example-diagram-letters-added.webp'
-
-<Image src={law_of_cosines_two_sides_and_included_angle_known_example_diagram_letters_added} width="400px">Variable names have been added.</Image>
+<Image src={import('./_assets/law-of-cosines-two-sides-and-included-angle-known-example-diagram-letters-added.webp')} width="400px">Variable names have been added.</Image>
 
 We can now use the Law of Cosines to solve for side $c$:
 
@@ -403,9 +377,7 @@ Just like the Law of Sines, the Law of Cosines can also have multiple solutions.
 
 Given the triangle below, calculate the length of side $b$.
 
-import law_of_cosines_multiple_solutions_example from './_assets/law-of-cosines-multiple-solutions-example.webp'
-
-<Image src={law_of_cosines_multiple_solutions_example} width="600px">Diagram for the worked example for the Law of Cosines that has multiple solutions.</Image>
+<Image src={import('./_assets/law-of-cosines-multiple-solutions-example.webp')} width="600px">Diagram for the worked example for the Law of Cosines that has multiple solutions.</Image>
 
 We'll need to re-arrange the Law of Cosines equation to solve for $b$, which has already be done for us above in $Eq.\ \ref{law-of-cosines-solve-for-b}$.
 
@@ -432,15 +404,11 @@ $$
 
 Google has handy Law of Sines/Cosines calculators that pops up when you search ["law of sines"](https://www.google.com/search?q=law+of+sines)/["law of cosines"](https://www.google.com/search?q=law+of+cosines). The image below shows a screenshot of the Law of Cosines calculator.
 
-import law_of_cosines_google_calculator from './_assets/law-of-cosines-google-calculator.png'
-
-<Image src={law_of_cosines_google_calculator} width="600px">Screenshot of the Law of Cosines calculator Google provides when you search \"law of cosines\"[^google-law-of-cosines-calc].</Image>
+<Image src={import('./_assets/law-of-cosines-google-calculator.png')} width="600px">Screenshot of the Law of Cosines calculator Google provides when you search \"law of cosines\"[^google-law-of-cosines-calc].</Image>
 
 The [eMathHelp Law of Cosines calculator](https://www.emathhelp.net/en/calculators/geometry/law-of-cosines-calculator/) as shown below is different from most and shows you the working to solve the triangle. They also has a Law of Sines calculator.
 
-import emathhelp_law_of_cosines_calculator_screenshot from './_assets/emathhelp-law-of-cosines-calculator-screenshot.png'
-
-<Image src={emathhelp_law_of_cosines_calculator_screenshot} width="600px">Screenshot of the [Law of Cosines calculator from eMathHelp](https://www.emathhelp.net/en/calculators/geometry/law-of-cosines-calculator/) that shows the step-by-step working to the solution[^emathhelp-law-of-cosines-calc].</Image>
+<Image src={import('./_assets/emathhelp-law-of-cosines-calculator-screenshot.png')} width="600px">Screenshot of the [Law of Cosines calculator from eMathHelp](https://www.emathhelp.net/en/calculators/geometry/law-of-cosines-calculator/) that shows the step-by-step working to the solution[^emathhelp-law-of-cosines-calc].</Image>
 
 [^libretexts-maths-the-law-of-sines]: Libretexts: Mathematics. _2.1: The Law of Sines_. Retrieved 2023-12-31, from https://math.libretexts.org/Bookshelves/Precalculus/Elementary_Trigonometry_(Corral)/02%3A_General_Triangles/2.01%3A_The_Law_of_Sines
 [^google-law-of-cosines-calc]: Google. _Law of Cosines_ [Search Results]. Retrieved 2024-01-03, from https://www.google.com/search?q=law+of+cosines.

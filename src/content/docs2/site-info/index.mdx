@@ -21,9 +21,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it solely contained information on how to make fireworks. It was initially designed in [Microsoft Front Page](https://en.wikipedia.org/wiki/Microsoft_FrontPage) and then in [Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver). These were both WYSIWYG editors!
 
-import geoweb_homepages_inspire_net_nz from './_assets/geoweb-homepages-inspire-net-nz.png'
-
-<Image src={geoweb_homepages_inspire_net_nz} width="700px">The homepage of the original blog back in 2004.</Image>
+<Image src={import('./_assets/geoweb-homepages-inspire-net-nz.png')} width="700px">The homepage of the original blog back in 2004.</Image>
 
 Yes and that is a `<marquee>` HTML element right underneath the main image there, I was so classy back then.
 
@@ -48,60 +46,38 @@ Yes and that is a `<marquee>` HTML element right underneath the main image there
 * Hosted By: Just Host (paid)  
 * Powered By: Wordpress 3.x
 
-import n_2011_12_c_sharp_programming_page_screenshot from './_assets/2011-12-c-sharp-programming-page-screenshot.jpg'
-
-<Image src={n_2011_12_c_sharp_programming_page_screenshot} width="800px">A screenshot of the C# programming page just after the migration to Wordpress (take in December 2011).</Image>
+<Image src={import('./_assets/2011-12-c-sharp-programming-page-screenshot.jpg')} width="800px">A screenshot of the C# programming page just after the migration to Wordpress (take in December 2011).</Image>
 
 ### 2013-04: Background Darkened
 
 This is when I switched from using a light theme to a dark theme.
 
-import cladlabs_background_changed_to_black from './_assets/cladlabs-background-changed-to-black.png'
-
-<Image src={cladlabs_background_changed_to_black} width="700px">The CladLabs background has been changed to a dark, dark grey (April 2013).</Image>
+<Image src={import('./_assets/cladlabs-background-changed-to-black.png')} width="700px">The CladLabs background has been changed to a dark, dark grey (April 2013).</Image>
 
 **Some of the banner images this site used at this time were:**
 
-import banner_980x300_coil_gun from './_assets/banner-980x300-coil-gun.jpg'
+<Image src={import('./_assets/banner-980x300-coil-gun.jpg')} width="800px">Banner image relating to the coil gun I made.</Image>
 
-<Image src={banner_980x300_coil_gun} width="800px">Banner image relating to the coil gun I made.</Image>
+<Image src={import('./_assets/banner-980x300-columbus-radio.jpg')} width="800px">Banner image relating to the retro valve-operated radio that I renovated and added Spotify playback to.</Image>
 
-import banner_980x300_columbus_radio from './_assets/banner-980x300-columbus-radio.jpg'
+<Image src={import('./_assets/banner-980x300-component-packages.jpg')} width="800px">Banner image advertising the component packages section of this blog.</Image>
 
-<Image src={banner_980x300_columbus_radio} width="800px">Banner image relating to the retro valve-operated radio that I renovated and added Spotify playback to.</Image>
+<Image src={import('./_assets/banner-980x300-electric-skateboard.jpg')} width="800px">Banner image taking the reader to the project page for the electric skateboard I built.</Image>
 
-import banner_980x300_component_packages from './_assets/banner-980x300-component-packages.jpg'
+<Image src={import('./_assets/banner-980x300-high-voltage.jpg')} width="800px">Banner image with photos with myself messing around with a neon-sign transformer.</Image>
 
-<Image src={banner_980x300_component_packages} width="800px">Banner image advertising the component packages section of this blog.</Image>
+<Image src={import('./_assets/banner-980x300-inursery.jpg')} width="800px">Banner image taking the reader to the project page for the temperature regulated 'iNursery' I built.</Image>
 
-import banner_980x300_electric_skateboard from './_assets/banner-980x300-electric-skateboard.jpg'
+<Image src={import('./_assets/banner-980x300-luxcity-tonic.jpg')} width="800px">Banner image advertising the Luxcity 'Tonic' project I was involved in.</Image>
 
-<Image src={banner_980x300_electric_skateboard} width="800px">Banner image taking the reader to the project page for the electric skateboard I built.</Image>
-
-import banner_980x300_high_voltage from './_assets/banner-980x300-high-voltage.jpg'
-
-<Image src={banner_980x300_high_voltage} width="800px">Banner image with photos with myself messing around with a neon-sign transformer.</Image>
-
-import banner_980x300_inursery from './_assets/banner-980x300-inursery.jpg'
-
-<Image src={banner_980x300_inursery} width="800px">Banner image taking the reader to the project page for the temperature regulated 'iNursery' I built.</Image>
-
-import banner_980x300_luxcity_tonic from './_assets/banner-980x300-luxcity-tonic.jpg'
-
-<Image src={banner_980x300_luxcity_tonic} width="800px">Banner image advertising the Luxcity 'Tonic' project I was involved in.</Image>
-
-import banner_980x300_op_amps from './_assets/banner-980x300-op-amps.jpg'
-
-<Image src={banner_980x300_op_amps} width="800px">Banner image advertising the op-amp section of this blog.</Image>
+<Image src={import('./_assets/banner-980x300-op-amps.jpg')} width="800px">Banner image advertising the op-amp section of this blog.</Image>
 
 ### 2014: Blog Renamed To mbedded.ninja
 
 * Name: mbedded.ninja
 * URL: http://www.mbedded.ninja  
 
-import mbedded_ninja_front_page_header_2014 from './_assets/mbedded-ninja-front-page-header-2014.png'
-
-<Image src={mbedded_ninja_front_page_header_2014} width="800px">A screenshot of the frontpage header just after blog was moved from cladlabs.com to mbedded.ninja (the theme was essentially kept the same).</Image>
+<Image src={import('./_assets/mbedded-ninja-front-page-header-2014.png')} width="800px">A screenshot of the frontpage header just after blog was moved from cladlabs.com to mbedded.ninja (the theme was essentially kept the same).</Image>
 
 ### 2015: Updated To The Wordpress TwentyFifteen Theme
 
@@ -123,15 +99,11 @@ In 2015, in an attempt to simplify the aesthetics of the blog and reduce "clutte
 
 Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The GitHub repo that the site is generated from can be found at [https://github.com/gbmhunter/blog](https://github.com/gbmhunter/blog).
 
-import hugo_homepage from './_assets/hugo-homepage.png'
-
-<Image src={hugo_homepage} width="700px">The homepage just after migrating to Hugo in December 2018.</Image>
+<Image src={import('./_assets/hugo-homepage.png')} width="700px">The homepage just after migrating to Hugo in December 2018.</Image>
 
 A full post with more information on this migration can be found [here](/updates/2018/12/15/site-migration-to-hugo-complete/).
 
-import page_view_decrease_migration_from_wordpress_to_hugo from './_assets/page-view-decrease-migration-from-wordpress-to-hugo.png'
-
-<Image src={page_view_decrease_migration_from_wordpress_to_hugo} width="800px">The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration.</Image>
+<Image src={import('./_assets/page-view-decrease-migration-from-wordpress-to-hugo.png')} width="800px">The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration.</Image>
 
 ### 2024-07 Blog Migrated From Hugo To Docusaurus
 
@@ -139,9 +111,7 @@ This lets me use React components in the markdown files, which is a big win comp
 
 This meant porting all the page content from markdown files using Hugo shortcodes for additional features such as images, admonitions to `.mdx` files using React components for the additional features.
 
-import docusaurus_migration_before from './_assets/docusaurus-migration-before.webp'
-
-<Image src={docusaurus_migration_before} width="800px">A screenshot of a typical page before the migration to Docusaurus.</Image>
+<Image src={import('./_assets/docusaurus-migration-before.webp')} width="800px">A screenshot of a typical page before the migration to Docusaurus.</Image>
 
 import img_docusaurus_example_page_screenshot from './_assets/docusaurus-example-page-screenshot.webp' 
 

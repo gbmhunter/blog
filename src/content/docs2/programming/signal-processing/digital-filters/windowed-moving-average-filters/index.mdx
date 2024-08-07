@@ -67,9 +67,7 @@ The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one
 
 The following plot shows the effect of a SMA filter. The data used is New Zealand's national average temperature (data from https://data.mfe.govt.nz/table/89453-new-zealands-national-temperature-19092016/):
 
-import nz_nat_yearly_temp_plot from './nz-nat-yearly-temp-plot.png'
-
-<Image src={nz_nat_yearly_temp_plot} width="600px">The effect of SMAs on data. New Zealand's national average yearly temperatures, overlaid with a 5-wide and 20-wide left-handed SMA.</Image>
+<Image src={import('./nz-nat-yearly-temp-plot.png')} width="600px">The effect of SMAs on data. New Zealand's national average yearly temperatures, overlaid with a 5-wide and 20-wide left-handed SMA.</Image>
 
 <Aside type="note">
 Sometimes SMAs don't start at the same point as the data due to them not being considered "valid" until the window is full of data (like above). Other times you may want to reduce the effective window size as you approach the ends to get an output at every input.
@@ -77,9 +75,7 @@ Sometimes SMAs don't start at the same point as the data due to them not being c
 
 The below plot shows a noisy 1kHz sine wave (with random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which does a commendable job at recovering the original signal:
 
-import sine_wave_with_noise from './sine-wave-with-noise.png'
-
-<Image src={sine_wave_with_noise} width="600px">Plot showing a noisy sine wave (random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which recovers the original signal really well!</Image>
+<Image src={import('./sine-wave-with-noise.png')} width="600px">Plot showing a noisy sine wave (random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which recovers the original signal really well!</Image>
 
 There are two common types of simple moving average filters:
 * Left-handed SMA
@@ -175,23 +171,17 @@ $$
 
 Lets design a SMA filter with a sampling rate of $1kHz$ and a window size of $10$. This gives the following magnitude response:
 
-import frequency_response_of_sma_magnitude from './frequency-response-of-sma-magnitude.png'
-
-<Image src={frequency_response_of_sma_magnitude} width="700px">The magnitude response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2).</Image>
+<Image src={import('./frequency-response-of-sma-magnitude.png')} width="700px">The magnitude response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2).</Image>
 
 As expected, this shows us that at DC, the signal is not attenuated at all. As the frequency increases, the filter then begins to block more and more, until it lets through absolutely no signal at $100Hz$. This can be intuitively understood, because with a $1kHz$ sampling frequency and a window size of $10$, **a single cycle of a $100Hz$ signal would fit perfectly into the window**. Since you take the average of all the values in the window, this top half of the $100Hz$ signal would cancel out perfectly with the bottom half, giving no output. But then, as the frequency further increases, the filter begins to let through some of the signal, as shown by the side lobes. The next point of infinite attenuation is at $200Hz$, which is when 2 cycles of the signal would fit perfectly into the window. This cycle occurs all the way up to Nyquist at $500Hz$.
 
 The phase response of the same filter is shown below:
 
-import frequency_response_of_sma_phase from './frequency-response-of-sma-phase.png'
-
-<Image src={frequency_response_of_sma_phase} width="700px">The phase response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2).</Image>
+<Image src={import('./frequency-response-of-sma-phase.png')} width="700px">The phase response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2).</Image>
 
 For interest, let's have a look at how increasing the window size effects the frequency response:
 
-import sma_freq_response_various_window_sizes from './sma-freq-response-various-window-sizes.png'
-
-<Image src={sma_freq_response_various_window_sizes} width="500px">Plot showing what effect an increasing window size has on the frequency response (magnitude) of a SMA filter.</Image>
+<Image src={import('./sma-freq-response-various-window-sizes.png')} width="500px">Plot showing what effect an increasing window size has on the frequency response (magnitude) of a SMA filter.</Image>
 
 As expected, increasing the window size decreases the cut-off frequency and also improves the roll-off. However, for a left-handed (casual) SMA filter, it also significantly increases the phase shift (or time delay!), so normally a trade-off has to be made.
 
@@ -296,9 +286,7 @@ The simple moving average filter is the only such window-based filter which can 
 
 To show this, the following graph plots the accumulated error when using 32-bit floating point numbers. 10 million random 32-bit floats in the range of $[0, 1000]$ (our input data) was pushed through a left-handed SMA with a window size of 10 (the window size should not really matter). On every 100th input, the output value as computed by the recursive algorithm was compared with the output computed by the non-recursive algorithm. The difference between these two values is the accumulated error. 
 
-import windowed_moving_average_accumulated_error from './windowed-moving-average-accumulated-error.png'
-
-<Image src={windowed_moving_average_accumulated_error} width="700px">Plot showing the error that slowly accumulates when using the recursive SMA method with floating points.</Image>
+<Image src={import('./windowed-moving-average-accumulated-error.png')} width="700px">Plot showing the error that slowly accumulates when using the recursive SMA method with floating points.</Image>
 
 **By the time the 10 million inputs have passed through the filter, the answer is wrong by about 0.6!** This may or may not be a bad thing depending on your application. I guess (no proof!) that the average error $e$ will grow proportional to the square root of the number of samples $N$ pushed through the filter, similar to a random walk (drunkards walk).
 
@@ -462,15 +450,11 @@ Stuck on what window shape to use? If a simple moving average won't suffice in i
 
 The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
 
-import window_comparison_shapes from './window-comparison-shapes.png'
-
-<Image src={window_comparison_shapes} width="600px">A comparison of the popular window shapes for moving average filters.</Image>
+<Image src={import('./window-comparison-shapes.png')} width="600px">A comparison of the popular window shapes for moving average filters.</Image>
 
 And a comparison of the frequency responses of these windows is shown below: 
 
-import window_comparison_frequency_response from './window-comparison-frequency-response.png'
-
-<Image src={window_comparison_frequency_response} width="600px">The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs.</Image>
+<Image src={import('./window-comparison-frequency-response.png')} width="600px">The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs.</Image>
 
 ## References
 

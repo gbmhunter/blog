@@ -21,9 +21,7 @@ _Consistent overhead byte stuffing_ (COBS) is an encoding algorithm for framing 
 
 COBS encoding transforms bytes in the range `[0, 255]` to `[1, 255]` so that `0x00` (or any other one byte) can be used to **unambiguously mark the end of the packet**. The encoding process is best explained with a diagram as below:
 
-import cobs_encoding_diagram from './_assets/cobs-encoding-diagram.png'
-
-<Image src={cobs_encoding_diagram} width="800px">A step-by-step diagram of the COBS encoding process.</Image>
+<Image src={import('./_assets/cobs-encoding-diagram.png')} width="800px">A step-by-step diagram of the COBS encoding process.</Image>
 
 ### Dealing With 255 Bytes
 

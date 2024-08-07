@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 `rasterio` is a Python package which aims to provide a friendlier API to GDAL than GDAL's own Python API (which feels very C-like). It is an [open source project on GitHub](https://github.com/mapbox/rasterio) that is created and maintained by [mapbox](https://www.mapbox.com/).
 
-import raster_io_example_image from './raster-io-example-image.png'
-
-<Image src={raster_io_example_image} width="400px">A GeoTIF file which has been reprojected and displayed using rasterio.</Image>
+<Image src={import('./raster-io-example-image.png')} width="400px">A GeoTIF file which has been reprojected and displayed using rasterio.</Image>
 
 Most of the code examples below assume you have imported `rasterio` into the current module with:
 

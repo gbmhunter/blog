@@ -10,9 +10,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Sometimes you run into the issue of the background "running out" before the page has finished, as shown below.
 
-import open_cart_background_running_out_before_content_finishes from './_assets/open-cart-background-running-out-before-content-finishes.jpg'
-
-<Image src={open_cart_background_running_out_before_content_finishes} width="800px">Sometime the background finishes before the content does. Usually this is because either the image has run out or the container holding the image (usually a DIV element) does not fully encompass its child elements.</Image>
+<Image src={import('./_assets/open-cart-background-running-out-before-content-finishes.jpg')} width="800px">Sometime the background finishes before the content does. Usually this is because either the image has run out or the container holding the image (usually a DIV element) does not fully encompass its child elements.</Image>
 
 This can be either a case of the image running out, or the object that the image is contained in finishing.
 

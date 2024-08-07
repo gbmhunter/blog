@@ -14,17 +14,13 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The MPLAB XC compilers are a range of compilers built by Microchip, which **compile C/C++ source code for 8, 16 and 32-bit PIC microcontrollers**, as well as the dsPIC DSCs.
 
-import mplab_xc_compiler_microchip_logo from './mplab-xc-compiler-microchip-logo.png'
-
-<Image src={mplab_xc_compiler_microchip_logo} width="282px">The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/.</Image>
+<Image src={import('./mplab-xc-compiler-microchip-logo.png')} width="282px">The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/.</Image>
 
 ## Licensing
 
 The _Free_ versions of the MPLAB XC compilers allow for limited optimisation (both in w.r.t. size and speed). The _Standard_ and _Pro_ versions allow for increased optimisation levels.
 
-import mplab_xc_compiler_build_status_output_memory_summary_licensing from './mplab-xc-compiler-build-status-output-memory-summary-licensing.png'
-
-<Image src={mplab_xc_compiler_build_status_output_memory_summary_licensing} width="540px">Build status output from the free version of the MPLAB XC compiler.</Image>
+<Image src={import('./mplab-xc-compiler-build-status-output-memory-summary-licensing.png')} width="540px">Build status output from the free version of the MPLAB XC compiler.</Image>
 
 ## MPLAB X IDE Integration
 
@@ -34,9 +30,7 @@ The MPLAB XC compilers are designed to be used with the MPLAB X IDE, also provid
 
 Delays are provided by the compiler/library through the `__delay_us()` and `__delay_ms()` functions.
 
-import built_in_pic_microcontroller_delay_functions from './built-in-pic-microcontroller-delay-functions.png'
-
-<Image src={built_in_pic_microcontroller_delay_functions} width="719px">A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h.</Image>
+<Image src={import('./built-in-pic-microcontroller-delay-functions.png')} width="719px">A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h.</Image>
 
 <Aside type="note">
 You have to manually define the macro `_XTAL_FREQ` correctly before you can use these delays.

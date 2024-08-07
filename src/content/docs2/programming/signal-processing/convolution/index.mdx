@@ -78,21 +78,15 @@ g(t) =
 \end{cases}
 $$
 
-import box_car_functions_ft_gt from './box-car-functions-ft-gt.png'
-
-<Image src={box_car_functions_ft_gt} width="700px"></Image>
+<Image src={import('./box-car-functions-ft-gt.png')} width="700px"></Image>
 
 We need to "flip" $g(\tau)$ to give $g(-\tau)$:
 
-import g_tau_flipped from './g-tau-flipped.png'
-
-<Image src={g_tau_flipped} width="700px"></Image>
+<Image src={import('./g-tau-flipped.png')} width="700px"></Image>
 
 Then we need to shift $g(-\tau)$ by $t$ to give $g(t - \tau)$:
 
-import g_tau_offset from './g-tau-offset.png'
-
-<Image src={g_tau_offset} width="700px"></Image>
+<Image src={import('./g-tau-offset.png')} width="700px"></Image>
 
 Now we to vary $t$ from $-\infty$ to $+\infty$, and at each $t$, multiply the two signals together $f(\tau)g(t - \tau)$, and calculate the total area under this new signal (mathematically, the integral between $-\infty$ and $+\infty$). This area is the value of the convolution at time $t$. 
 
@@ -104,9 +98,7 @@ Obviously, varying $t$ from $-\infty$ to $+\infty$ manually is impossible, but w
 
 When $t < 0$ the two box-cars do not intersect at all, thus the product of $f$ and $g$ is always 0, and thus the area is also 0, which means the value of the convolution function when $t < 0$ is also 0:
 
-import when_t_less_than_0 from './when-t-less-than-0.png'
-
-<Image src={when_t_less_than_0} width="400px"></Image>
+<Image src={import('./when-t-less-than-0.png')} width="400px"></Image>
 
 $$
   \int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau = 0
@@ -118,9 +110,7 @@ $$
 
 When $0 \le t < 1$, the two box-car functions begin to intersect, with the amount if intersection increasing with $t$. Where they intersect, the product of the two functions is also $1$. This product is shown as the green line below.
 
-import when_0_lte_t_lt_1 from './when-0-lte-t-lt-1.png'
-
-<Image src={when_0_lte_t_lt_1} width="400px"></Image>
+<Image src={import('./when-0-lte-t-lt-1.png')} width="400px"></Image>
 
 From visual inspection of the green plot, it is obvious that the area under the curve is going to be width*height, which in this case is $(t - 0)*1 = t$. Mathematically this can be calculated by:
 
@@ -138,9 +128,7 @@ $$
 
 When $1 \le t < 2$, the functions still intersect, but they are beginning to separate. The area is again width*height, where the width is from $t-1$ to $1$, and the height is still $1$.
 
-import when_1_lte_t_lt_2 from './when-1-lte-t-lt-2.png'
-
-<Image src={when_1_lte_t_lt_2} width="400px"></Image>
+<Image src={import('./when-1-lte-t-lt-2.png')} width="400px"></Image>
 
 We can calculate a function for the convolution in this interval with:
 
@@ -159,9 +147,7 @@ $$
 
 When $t \ge 2$, the two box-cars do not intersect at all (just like when $t < 0$):
 
-import when_2_lte_t_lt_inf from './when-2-lte-t-lt-inf.png'
-
-<Image src={when_2_lte_t_lt_inf} width="400px"></Image>
+<Image src={import('./when-2-lte-t-lt-inf.png')} width="400px"></Image>
 
 Mathematically we can write this as:
 
@@ -185,9 +171,7 @@ t, &\text{for $0 \le t < 1$} \\
 \end{cases}
 $$
 
-import convolution_two_box_car_functions from './convolution-two-box-car-functions.gif'
-
-<Image src={convolution_two_box_car_functions} width="700px">An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together).</Image>
+<Image src={import('./convolution-two-box-car-functions.gif')} width="700px">An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together).</Image>
 
 ## Convolution With Unit Impulse (Dirac Delta) Function
 

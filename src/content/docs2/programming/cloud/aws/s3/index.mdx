@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 S3 is a popular key-value storage service provided by Amazon Web Services (AWS). It offers cheap and moderately fast (not as fast as a hard-drive, but faster than deep archive systems) mechanism for the storage and retrieval of arbitrary files.
 
-import aws_s3_logo from './aws-s3-logo.png'
-
-<Image src={aws_s3_logo} width="300px">The AWS S3 logo.</Image>
+<Image src={import('./aws-s3-logo.png')} width="300px">The AWS S3 logo.</Image>
 
 ## S3 Doesn't Have Directories, But It Does?
 

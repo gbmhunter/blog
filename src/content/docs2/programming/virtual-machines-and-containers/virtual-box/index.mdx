@@ -19,9 +19,7 @@ VirtualBox is virtual machine software by Oracle.
 
 A long-standing bug with Oracles VirtualBox and the popular Linux text editor, Gedit (or any other text editor, for that matter), is the "File Busy" error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit (e.g. saving into a Windows-hosted folder).
 
-import gedit_save_to_shared_virtual_box_folder_text_file_busy_error from './gedit-save-to-shared-virtual-box-folder-text-file-busy-error.png'
-
-<Image src={gedit_save_to_shared_virtual_box_folder_text_file_busy_error} width="800px">The workaround, to enable the 'Save Backup Copy' option in the preferences, and hit the save button twice.</Image>
+<Image src={import('./gedit-save-to-shared-virtual-box-folder-text-file-busy-error.png')} width="800px">The workaround, to enable the 'Save Backup Copy' option in the preferences, and hit the save button twice.</Image>
 
 The problem comes from shared folders which are mounted using the command:
 
@@ -31,9 +29,7 @@ $ sudo mount -t vboxsf shared-name folder-to-mount-to
 
 The only workaround I am aware of is to enable the "Save Backup Copy" option in the preferences, and hit the save button twice. Annoying and far from perfect, but you can get quick at doing this (`Ctrl-S`, `Enter`, `Ctrl-S` does the trick).
 
-import gedit_preferences_enabling_save_backup_copy_to_stop_file_busy_error from './gedit-preferences-enabling-save-backup-copy-to-stop-file-busy-error.png'
-
-<Image src={gedit_preferences_enabling_save_backup_copy_to_stop_file_busy_error} width="500px">The 'File Busy' error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit.</Image>
+<Image src={import('./gedit-preferences-enabling-save-backup-copy-to-stop-file-busy-error.png')} width="500px">The 'File Busy' error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit.</Image>
 
 You will also have to delete all the `.goutputstream-XXXXXX` files that are created in the directory (these are the backup files).
 

@@ -24,9 +24,7 @@ PSoC devices are great in the fact that almost all hardware peripherals are reco
 
 ## FreeRTOS and PSoC
 
-import freertos_logo_large from './_assets/freertos-logo-large.jpg'
-
-<Image src={freertos_logo_large} width="320px">The FreeRTOS logo. Image from http://www.arm.com/community/partners/display_product/rw/ProductId/4028/.</Image>
+<Image src={import('./_assets/freertos-logo-large.jpg')} width="320px">The FreeRTOS logo. Image from http://www.arm.com/community/partners/display_product/rw/ProductId/4028/.</Image>
 
 As far as I know, there are three ports for the PSoC family for using freeRTOS, all for the PSoC 5 family. Two are supplied with the[ freeRTOS download](http://www.freertos.org/) (i.e. officially supported), and the other is available on the Cypress forums (specifically, [here](http://www.freertos.org/index.html?http://interactive.freertos.org/entries/211156-cypress-cy8c55xx-family-demo-project)). The two official ports both have the same functionality, but one is for the GCC compiler while the other is for IAR. It utilises the CY8CKIT-001 development board and features some sophisticated RTOS feature tests, as well as flashing the lights and using the LCD screen. The unofficial port is targeted for the same dev board, but is much simpler and just flashes two lights. They all use the native ARM M3 timer interrupt for the RTOS tick, which can be misleading since this is not set-up graphically (as most interrupts are, you can see them on the schematic editor). However, it is pretty easy to change this tick to run off a different source, such as the sleep timer, and ignore the ARM timer interrupt completely. You can find various FreeRTOS firmware modules for the PSoC microcontroller on my [GitHub account](https://github.com/gbmhunter). This includes:
 

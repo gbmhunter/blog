@@ -60,9 +60,7 @@ We will work through the process of calculating the MIND descriptor for pixel $(
 * A search space of 4-neighbourhood (i.e. the pixels directly touching the pixel of interest), shown in light blue. The pixel we are calculating the MIND descriptor for is not in the search space.
 * A patch size of 3 (more on this later).
 
-import mind_descriptor_search_space from './mind_descriptor_search_space.svg'
-
-<Image src={mind_descriptor_search_space} width="500px"></Image>
+<Image src={import('./mind_descriptor_search_space.svg')} width="500px"></Image>
 
 For our search space $\mathbb{R}$ 4-neighbourhood, we use the following pixels (coordinates are relative to the pixel we are calculating the MIND descriptor for).
 
@@ -72,9 +70,7 @@ Remember, these correspond to $(row, column)$ or $(y, x)$.
 
 For each one of the pixels in the search space $\mathbb{R}$, a 3x3 pixel _patch_ is formed, with the pixel in the center (and this time, the pixel IS included in the patch). We chose a patch with a width/height of 3 for simplicity, but this is a parameter which can be adjusted. In the below image on the left, the patch for the $(1, 1)$ pixel is shown. A patch centered on the MIND descriptor pixel is also formed.
 
-import mind_descriptor_patch_comparison from './mind_descriptor_patch_comparison.svg'
-
-<Image src={mind_descriptor_patch_comparison} width="700px"></Image>
+<Image src={import('./mind_descriptor_patch_comparison.svg')} width="700px"></Image>
 
 With these two patches, a _patch distance_ is calculated. Each patch element can has a different weighting (common weightings are a 2D gaussian or a constant value). This is an element-wise sum-of-squared differences calculation.
 
@@ -84,9 +80,7 @@ $$ \begin{align} SOS &=(\frac{1}{3}(20-10))^2 + (\frac{1}{3}(10-17))^2 + (\frac{
 
 This value of $163.11$ is attached to the $(1, 1)$ pixel in the search space. The same patch distance calculation is repeated for all pixels in the search space, which would give the results as shown in the below diagram:
 
-import mind_descriptor_patch_distances from './mind_descriptor_patch_distances.svg'
-
-<Image src={mind_descriptor_patch_distances} width="500px"></Image>
+<Image src={import('./mind_descriptor_patch_distances.svg')} width="500px"></Image>
 
 Next, we have to calculate a variance for each pixel. For every pixel, we estimate the variance using the **mean of the patch distance values calculated for each pixel in the search space**.
 

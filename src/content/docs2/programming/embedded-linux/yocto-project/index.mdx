@@ -16,9 +16,7 @@ The _Yocto Project_, or more commonly just called _Yocto_, is a build system use
 It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
 </Aside>
 
-import the_yocto_project_logo from './the-yocto-project-logo.png'
-
-<Image src={the_yocto_project_logo} width="404px">The logo for the Yocto project.</Image>
+<Image src={import('./the-yocto-project-logo.png')} width="404px">The logo for the Yocto project.</Image>
 
 ## Quick Start
 
@@ -90,9 +88,7 @@ $ bitbake core-image-sato
 
 Now go grab a coffee. Or better yet, take your family out to a restaurant for a nice meal. This is going to **TAKE A WHILE**.
 
-import yocto_linux_build_in_progress_showing_cpu_usage from './yocto-linux-build-in-progress-showing-cpu-usage.png'
-
-<Image src={yocto_linux_build_in_progress_showing_cpu_usage} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
+<Image src={import('./yocto-linux-build-in-progress-showing-cpu-usage.png')} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
 
 **Make sure your computer is not set to go to sleep/shutdown after 1-2 hours of activity, otherwise you might find the build won't complete!**
 
@@ -108,9 +104,7 @@ $ runqemu qemux86
 
 This should load up a separate window, and display a GUI of the Linux image you just built.
 
-import yocto_running_qemu_after_building_default_linux_image from './yocto-running-qemu-after-building-default-linux-image.png'
-
-<Image src={yocto_running_qemu_after_building_default_linux_image} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
+<Image src={import('./yocto-running-qemu-after-building-default-linux-image.png')} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
 
 ## The Project Configuration File
 

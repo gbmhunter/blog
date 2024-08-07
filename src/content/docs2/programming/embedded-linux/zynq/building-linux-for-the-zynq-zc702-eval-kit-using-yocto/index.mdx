@@ -91,9 +91,7 @@ We then start the build with:
 
 Go have lunch! This build is going to take a while...
 
-import screenshot_building_linux_for_zynq_7_using_yocto from './_assets/screenshot-building-linux-for-zynq-7-using-yocto.png'
-
-<Image src={screenshot_building_linux_for_zynq_7_using_yocto} width="1067px">Screenshot while building embedded Linux for the ZC702 Eval Kit board using Yocto.</Image>
+<Image src={import('./_assets/screenshot-building-linux-for-zynq-7-using-yocto.png')} width="1067px">Screenshot while building embedded Linux for the ZC702 Eval Kit board using Yocto.</Image>
 
 ## Booting Via SD Card
 
@@ -229,9 +227,7 @@ Connect a cable from the mini-USB port on the dev. board (labelled `J17` or `USB
 
 Now turn on the power switch to the dev. board. Hopefully, you should see it boot up!
 
-import terminal_output_start_of_zynq_zc702_linux_boot_using_yocty from './_assets/terminal-output-start-of-zynq-zc702-linux-boot-using-yocty.png'
-
-<Image src={terminal_output_start_of_zynq_zc702_linux_boot_using_yocty} width="1656px">The terminal output during the start of a Linux boot built using Yocty, and running on the Xilinx ZC702 dev. board.</Image>
+<Image src={import('./_assets/terminal-output-start-of-zynq-zc702-linux-boot-using-yocty.png')} width="1656px">The terminal output during the start of a Linux boot built using Yocty, and running on the Xilinx ZC702 dev. board.</Image>
 
 You should be able to log in as user `root`, with no password.
 
@@ -267,21 +263,15 @@ Yocto produces a `boot.bin` file when building a Linux image for the ZC-702 (usi
 
 Load up the SDK. Select New->Application Project.
 
-import xilinx_sdk_new_application_project_screenshot from './_assets/xilinx-sdk-new-application-project-screenshot.png'
-
-<Image src={xilinx_sdk_new_application_project_screenshot} width="513px">Creating a 'New Application' in the Xilinx SDK.</Image>
+<Image src={import('./_assets/xilinx-sdk-new-application-project-screenshot.png')} width="513px">Creating a 'New Application' in the Xilinx SDK.</Image>
 
 Enter a name:
 
-import xilinx_sdk_new_application_project_settings_screen from './_assets/xilinx-sdk-new-application-project-settings-screen.png'
-
-<Image src={xilinx_sdk_new_application_project_settings_screen} width="465px">Give the Zynq FSBL project a name and make sure the right platform/processor is selected.</Image>
+<Image src={import('./_assets/xilinx-sdk-new-application-project-settings-screen.png')} width="465px">Give the Zynq FSBL project a name and make sure the right platform/processor is selected.</Image>
 
 Click Next. Select FSBL.
 
-import xilinx_sdk_new_application_project_settings_screen_2_select_fsbl from './_assets/xilinx-sdk-new-application-project-settings-screen-2-select-fsbl.png'
-
-<Image src={xilinx_sdk_new_application_project_settings_screen_2_select_fsbl} width="456px">Select 'Zynq FSBL' as the template for the application.</Image>
+<Image src={import('./_assets/xilinx-sdk-new-application-project-settings-screen-2-select-fsbl.png')} width="456px">Select 'Zynq FSBL' as the template for the application.</Image>
 
 The Xilinx SDK should now create all the necessary files and run the build once.
 
@@ -361,9 +351,7 @@ Now run QEMU, passing in the location of the just-built QEMU configuration file.
 ~/poky/build-qemu$ runqemu tmp/deploy/images/qemu-zynq7/core-image-minimal-qemu-zynq7.qemuboot.conf
 ```
 
-import xilinx_zc702_yocto_linux_build_qemu_boot_console_screenshot from './_assets/xilinx-zc702-yocto-linux-build-qemu-boot-console-screenshot.png'
-
-<Image src={xilinx_zc702_yocto_linux_build_qemu_boot_console_screenshot} width="728px">The final stages of a Yocto Linux (built for the Xilinx ZC702 dev. board) boot running in QEMU.</Image>
+<Image src={import('./_assets/xilinx-zc702-yocto-linux-build-qemu-boot-console-screenshot.png')} width="728px">The final stages of a Yocto Linux (built for the Xilinx ZC702 dev. board) boot running in QEMU.</Image>
 
 You should be able to log onto the Linux system with the username `root`, no password required.
 

@@ -138,19 +138,13 @@ ghi         | jkl
 
 The logo is shown below:
 
-import cartoonNinja from './_assets/cartoon-ninja.jpg';
-
-<Image src={cartoonNinja} width="300px" alt="">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
+<Image src={import('./_assets/cartoon-ninja.jpg')} width="300px">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
 
 Link to an image which is not a page resource is shown below:
 
-{/* <Image src={require('/images/logo/cartoon-ninja.jpg').default} width="300px">Caption for non-page resource image.</Image> */}
-
 A wide image to make sure it doesn't exceed the page width:
 
-import testImage1000px from './_assets/test-image-1000px.webp';
-
-<Image src={testImage1000px} width="2000" alt="">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width.</Image>
+<Image src={import('./_assets/test-image-1000px.webp')} width="2000">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width.</Image>
 
 ## Asides
 

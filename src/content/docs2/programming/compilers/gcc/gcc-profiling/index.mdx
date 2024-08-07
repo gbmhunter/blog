@@ -147,6 +147,4 @@ $ gprof2dot ./profiling.txt | dot -Tpng -o profiling.png
 
 This created the below image for the example code above:
 
-import gprof2dot_profiling_dot_graph from './gprof2dot-profiling-dot-graph.png'
-
-<Image src={gprof2dot_profiling_dot_graph} width="442px">A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool.</Image>
+<Image src={import('./gprof2dot-profiling-dot-graph.png')} width="442px">A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool.</Image>

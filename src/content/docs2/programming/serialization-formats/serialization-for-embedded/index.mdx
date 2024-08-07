@@ -280,9 +280,7 @@ Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://gith
 
 [bitproto](https://bitproto.readthedocs.io/en/latest/) is a protobuf-like serialization format which allows you to specify variable widths on the bit level, eliminating some of protobuf's shortcomings when it comes to specifying small data types. It uses similar looking files to protobuf to describe messages.
 
-import bitproto_logo from './_assets/bitproto-logo.png'
-
-<Image src={bitproto_logo} width="200px">The bitproto logo.</Image>
+<Image src={import('./_assets/bitproto-logo.png')} width="200px">The bitproto logo.</Image>
 
 [NordicSemiconductor/zcbor](https://github.com/NordicSemiconductor/zcbor) is a C (it's also C++ compatible) CBOR library that uses CDDL to essentially provide a "schema" for defining the messages. C/C++ code is generated from this schema. As of May 2024, it has 100 stars on GitHub.
 

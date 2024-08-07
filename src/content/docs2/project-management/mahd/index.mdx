@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 MAHD (Modified Agile for Hardware Development) is a project management methodology aimed at hardware development that is a hybrid of Agile and traditional project management methodologies. It was founded by Dorian Simpson and Gary Hinkle and broadly shared to the public in 2017[^mahd-about-us]. The authors recognize the benefits of Agile methodlogies that are very common in software development, but also recognize that hardware development has unique challenges (usually due to much slower iteration time to design and build a piece of hardware than it is to write and test a piece of software).
 
-import mahd_logo from './_assets/mahd-logo.webp'
-
-<Image src={mahd_logo} width="400px">The MAHD logo[^mahd-homepage].</Image>
+<Image src={import('./_assets/mahd-logo.webp')} width="400px">The MAHD logo[^mahd-homepage].</Image>
 
 > Hardware is different than software — requirements must be frozen to ship, prototypes cost money,
 incremental features impact whole designs, etc. To address these unique needs of physical products,

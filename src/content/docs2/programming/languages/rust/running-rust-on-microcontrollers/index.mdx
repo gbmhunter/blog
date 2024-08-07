@@ -19,9 +19,7 @@ Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but
 
 **As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware**. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
 
-import ewg_logo_blue_white_on_transparent from './_assets/ewg-logo-blue-white-on-transparent.png'
-
-<Image src={ewg_logo_blue_white_on_transparent} width="200px">The logo of Rust's Embedded Devices Working Group[^bib-rust-embedded-working-group-repo].</Image>
+<Image src={import('./_assets/ewg-logo-blue-white-on-transparent.png')} width="200px">The logo of Rust's Embedded Devices Working Group[^bib-rust-embedded-working-group-repo].</Image>
 
 This page aims to be an exploration into running Rust on microcontrollers (what you would consider to be low-level embedded firmware, and not running on a hosted environment such as Linux), covering things such as:
 
@@ -214,9 +212,7 @@ uart_write_bytes(&data); // Oh oh, we've forgotten to check for an error
 
 Rust will spit out:
 
-import compiler_warning_about_unused_result from './_assets/compiler-warning-about-unused-result.png'
-
-<Image src={compiler_warning_about_unused_result} width="700px">The Rust compiler warning when compiling the above code.</Image>
+<Image src={import('./_assets/compiler-warning-about-unused-result.png')} width="700px">The Rust compiler warning when compiling the above code.</Image>
 
 How to deal with this returned `Result` object properly? One way is to call `unwrap()`. `unwrap()` returns the value if it didn't error, and panics if there was an error. You would use `unwrap()` in cases in where the error is non-recoverable, and in embedded situations you get to define what panic does (think of it to the same as a C/C++ assert).
 
@@ -330,9 +326,7 @@ Another nice thing about cargo and embedded is that the community seems to have 
 
 This structure is shown in the image below:
 
-import crate_structure_for_embedded_rust from './_assets/crate-structure-for-embedded-rust.png'
-
-<Image src={crate_structure_for_embedded_rust} width="1000px">The hierarchical crate structure for an embedded Rust firmware project.</Image>
+<Image src={import('./_assets/crate-structure-for-embedded-rust.png')} width="1000px">The hierarchical crate structure for an embedded Rust firmware project.</Image>
 
 ### cargo Features
 
@@ -368,9 +362,7 @@ One common pattern in embedded C/C++ firmware is to use the preprocessor to make
 
 This is made possible by the special `__LINE__`, `__FILE__` and `#exp` (where the `#` stringifies the `exp`), and the fact that the macro contents gets plonked in the source code everywhere `assert()` is called. Luckily, you can do the same thing in Rust by utilizing the `line!()`, `file!()` and `stringify!()` macros (which are compiler built-ins)[^bib-rust-lang-docs-macro-std-line].
 
-import file_macro_in_rust_compiler_built_in from './_assets/file-macro-in-rust-compiler-built-in.png'
-
-<Image src={file_macro_in_rust_compiler_built_in} width="600px">Screenshot of the file! macro source code inside the Rust standard library.</Image>
+<Image src={import('./_assets/file-macro-in-rust-compiler-built-in.png')} width="600px">Screenshot of the file! macro source code inside the Rust standard library.</Image>
 
 ### Volatile Access
 
@@ -418,9 +410,7 @@ You can quickly start a new project for a Cortex-M CPU with the command:
 cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
 ```
 
-import cargo_cortex_m_quickstart_project_files from './_assets/cargo-cortex-m-quickstart-project-files.png'
-
-<Image src={cargo_cortex_m_quickstart_project_files} width="800px">The resulting Cortex-M quickstart project creating by running the above cargo command.</Image>
+<Image src={import('./_assets/cargo-cortex-m-quickstart-project-files.png')} width="800px">The resulting Cortex-M quickstart project creating by running the above cargo command.</Image>
 
 The crate [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) provides a heap allocator for Cortex-M based microcontrollers. The below code example shows how this allocator can be setup as the global allocator (so that standard collections such as `Vec` work) and used within a firmware application[^bib-github-rust-embedded-alloc-cortex-m]:
 
@@ -490,9 +480,7 @@ Table of the supported RISC-V compilation targets for Rust[^bib-the-rustc-book-p
 
 The [riscv_rt crate](https://docs.rs/riscv-rt/latest/riscv_rt/) provides the basic start-up/runtime for RISC-V CPUs.
 
-import riscv_rt_crate_docs_screenshot from './_assets/riscv-rt-crate-docs-screenshot.png'
-
-<Image src={riscv_rt_crate_docs_screenshot} width="700px">Screenshot of the docs for the riscv_rt (RISC-V runtime) crate.</Image>
+<Image src={import('./_assets/riscv-rt-crate-docs-screenshot.png')} width="700px">Screenshot of the docs for the riscv_rt (RISC-V runtime) crate.</Image>
 
 ### Xtensa
 
@@ -505,9 +493,7 @@ So we've covered the CPU architecture (which defines the instruction set), but w
 
 The STM32 family of microcontrollers has some of the richest Rust support out of any microcontroller. The stm32-rs/stm32-rs repo contains Rust PAC crates for a large variety of STM32 microcontrollers. As of Nov 2022 it is actively maintained and has 824 stars.
 
-import stm32_rs_repo_readme_screenshot from './_assets/stm32-rs-repo-readme-screenshot.png'
-
-<Image src={stm32_rs_repo_readme_screenshot} width="600px">A screenshot of the stm32-rs repo's README.</Image>
+<Image src={import('./_assets/stm32-rs-repo-readme-screenshot.png')} width="600px">A screenshot of the stm32-rs repo's README.</Image>
 
 ### Atmel AVR
 
@@ -519,15 +505,11 @@ import stm32_rs_repo_readme_screenshot from './_assets/stm32-rs-repo-readme-scre
 cargo +stable install ravedude
 ```
 
-import using_cargo_generate_for_arduino_uno from './_assets/using-cargo-generate-for-arduino-uno.png'
-
-<Image src={using_cargo_generate_for_arduino_uno} width="700px">cargo generate with the Rahix/avr-hal-template GitHub repo provides a really quick way of setting up a Rust project for an Arduino board.</Image>
+<Image src={import('./_assets/using-cargo-generate-for-arduino-uno.png')} width="700px">cargo generate with the Rahix/avr-hal-template GitHub repo provides a really quick way of setting up a Rust project for an Arduino board.</Image>
 
 There is a great tutorial on getting Rust working on the Arduino Uno (which uses the ATmega328P microcontroller) at https://blog.logrocket.com/complete-guide-running-rust-arduino/. Getting a blinky Rust project built and programming takes about 5 minutes using that tutorial when developing in the WSL (passing through the Arduino USB device with `usbip`).
 
-import screenshot_of_basic_arduino_app_in_rust from './_assets/screenshot-of-basic-arduino-app-in-rust.png'
-
-<Image src={screenshot_of_basic_arduino_app_in_rust} width="700px">Screenshot of a bare-bones Arduino app written in Rust (flashing an LED and printing \"Hello\" to the console.</Image>
+<Image src={import('./_assets/screenshot-of-basic-arduino-app-in-rust.png')} width="700px">Screenshot of a bare-bones Arduino app written in Rust (flashing an LED and printing \"Hello\" to the console.</Image>
 
 ### Atmel SAM
 
@@ -535,9 +517,7 @@ The [atsamd-rs/atsamd](https://github.com/atsamd-rs/atsamd) GitHub repo provides
 
 Also included in this repo are BSPs (Board Support Packages) for a number of development boards. They distinguish between _Tier 1_ and _Tier 2_ BSPs, the Tier 1 BSPs are those that are kept up-to-date with the latest version of `atsamd-hal`, whilst the Tier 2 BSPs don't (they might be locked to some past version).
 
-import atsamd_rs_atsamd_repo_screenshot from './_assets/atsamd-rs-atsamd-repo-screenshot.png'
-
-<Image src={atsamd_rs_atsamd_repo_screenshot} width="600px">Screenshot of the README of the atsamd-rs/atsamd repository.</Image>
+<Image src={import('./_assets/atsamd-rs-atsamd-repo-screenshot.png')} width="600px">Screenshot of the README of the atsamd-rs/atsamd repository.</Image>
 
 The repo looks to be active, with 705 commits and 421 stars as of November 2022.
 
@@ -567,9 +547,7 @@ The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile f
 
 The RP2040 is just a single chip rather than a "family", but there are a number of boards you can buy based of this IC. There is a good quality RP2040 provided by the [rp-rs/rp-hal](https://github.com/rp-rs/rp-hal) repo. This repo is organized as a Cargo Workspace which also includes a number of Board Support Crates for development boards that use this chip, including the Raspberry Pi Pico, Adafruit Feather RP2040, Adafruit ItsyBitsy RP2040, Pimoroni Pico Explorer, SolderParty RP2040 Stamp, Sparkfun Pro Micro RP2040, Sparkfun Thing Plus RP2040, and Seeeduino XIAO RP2040[^bib-github-rp-rs-rp-hal].
 
-import rp_hal_rust_support_for_the_rp2040_readme_screenshot from './_assets/rp-hal-rust-support-for-the-rp2040-readme-screenshot.png'
-
-<Image src={rp_hal_rust_support_for_the_rp2040_readme_screenshot} width="400px">Screenshot of the rp-rs/rp-hal repo README.</Image>
+<Image src={import('./_assets/rp-hal-rust-support-for-the-rp2040-readme-screenshot.png')} width="400px">Screenshot of the rp-rs/rp-hal repo README.</Image>
 
 ### Others
 
@@ -584,9 +562,7 @@ I had access to a STM32F303 Discovery Kit (development board with a STM32F303 MC
 
 All I needed to do is hit `F5` -- this built the code, flashed it to the STM32F303 dev. kit and then jumped into a debug session. Below is an image from when I was stepping through the "Blinky" example. I was using VS Code connected to Ubuntu via the WSL (using `usbip` to pass-through the STM32F303 USB device).
 
-import stm32_discovery_blinky_debugging_in_vs_code from './_assets/stm32-discovery-blinky-debugging-in-vs-code.png'
-
-<Image src={stm32_discovery_blinky_debugging_in_vs_code} width="800px">Step-by-step debugging a STM32F303 Discovery Kit blinky Rust application in VS Code. I started with the repo at https://github.com/rubberduck203/stm32f3-discovery, and after a few tweaks, this was up and running!</Image>
+<Image src={import('./_assets/stm32-discovery-blinky-debugging-in-vs-code.png')} width="800px">Step-by-step debugging a STM32F303 Discovery Kit blinky Rust application in VS Code. I started with the repo at https://github.com/rubberduck203/stm32f3-discovery, and after a few tweaks, this was up and running!</Image>
 
 [Knurling](https://github.com/knurling-rs/) is a collection of projects by Ferrous Systems (two of their popular tools include `probe-run` and `defmt`).
 
@@ -611,9 +587,7 @@ RTIC (_Real-Time Interrupt-driven Concurrency_) is an interesting approach to an
 | Num. Repo Stars    | 1k
 | Num. Repo Commits  | 1.1k
 
-import rtic_documentation_screenshot from './_assets/rtic-documentation-screenshot.png'
-
-<Image src={rtic_documentation_screenshot} width="400px">A screenshot of the homepage for RTIC's documentation.</Image>
+<Image src={import('./_assets/rtic-documentation-screenshot.png')} width="400px">A screenshot of the homepage for RTIC's documentation.</Image>
 
 ### Embassy
 
@@ -627,9 +601,7 @@ _Embassy_ primarily supports co-operative multitasking over preemptive schedulin
 
 ### Tock
 
-import tock_os_logo from './_assets/tock-os-logo.png'
-
-<Image src={tock_os_logo} width="700px">The Tock logo. Image from the Tock GitHub organization page.</Image>
+<Image src={import('./_assets/tock-os-logo.png')} width="700px">The Tock logo. Image from the Tock GitHub organization page.</Image>
 
 > Tock is an embedded operating system designed for running multiple concurrent, mutually distrustful applications on Cortex-M and RISC-V based embedded platforms -- GitHub README.
 
@@ -639,9 +611,7 @@ import tock_os_logo from './_assets/tock-os-logo.png'
 | Num. Repo Stars    | 4k
 | Num. Repo Commits  | 11k
 
-import tock_architecture_diagram from './_assets/tock-architecture-diagram.png'
-
-<Image src={tock_architecture_diagram} width="700px">Architecture block diagram for the Tock RTOS. Image from the Tock documentation[^bib-tock-tock-design].</Image>
+<Image src={import('./_assets/tock-architecture-diagram.png')} width="700px">Architecture block diagram for the Tock RTOS. Image from the Tock documentation[^bib-tock-tock-design].</Image>
 
 Some of Tock is not completely baked into Rust, for example you have to break out of the Rust ecosystem and call `make` to program the kernel onto your board. Once the kernel is programmed onto your board, you can then use their own `tockloader` program to flash the application code.
 
@@ -666,9 +636,7 @@ As mentioned in the [Rust Language Features section](#rust-language-features), R
 
 When compiled without the `--release` option, **Rust will also perform overflow checking when doing mathematical operations such as add and multiply.** We can see this if we use the Godbolt Compiler Explorer and compare the assembly output of a simple `square()` function in both C++ and Rust:
 
-import comparison_of_the_square_function_in_cpp_and_rust from './_assets/comparison-of-the-square-function-in-cpp-and-rust.png'
-
-<Image src={comparison_of_the_square_function_in_cpp_and_rust} width="1000px">Screenshot of the Compiler Explorer showing the difference in square() assembly output for C++ and Rust.</Image>
+<Image src={import('./_assets/comparison-of-the-square-function-in-cpp-and-rust.png')} width="1000px">Screenshot of the Compiler Explorer showing the difference in square() assembly output for C++ and Rust.</Image>
 
 You can see in the Rust pane that it has a few extra instructions, including `seto` to read the overflow flag, and then a `test` and jump `jne` to a `panic!` in the case an overflow occurred. This will slow down mathematical operations, but in most cases this is a worthwhile trade-off to catch overflow bugs. And remember -- the overhead disappears if you built with the `--release` option.
 

@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Futures and promises are a way of dealing with asynchronous events in a multi-threaded environment.
 
-import futures_and_promises_cpp_icon from './_assets/futures-and-promises-cpp-icon.png'
-
-<Image src={futures_and_promises_cpp_icon} width="200px">Icon for futures and promises.</Image>
+<Image src={import('./_assets/futures-and-promises-cpp-icon.png')} width="200px">Icon for futures and promises.</Image>
 
 A promise is used by the producer of the operation, and the future is used by the consumer. The producer writes a value to the promise. A future is used to read back the value, which can be done from a different thread (e.g. asynchronously).
 

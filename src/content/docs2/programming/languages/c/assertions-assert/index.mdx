@@ -198,17 +198,13 @@ error: void value not ignored as it ought to be
 
 Note that I was using gcc-5.1 when I was presented with this error.
 
-import screenshot_of_compiler_error_disallowing_assert_side_effects from './_assets/screenshot-of-compiler-error-disallowing-assert-side-effects.png'
-
-<Image src={screenshot_of_compiler_error_disallowing_assert_side_effects} width="700px">A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert().</Image>
+<Image src={import('./_assets/screenshot-of-compiler-error-disallowing-assert-side-effects.png')} width="700px">A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert().</Image>
 
 ## Complete Code Example
 
 I have written a working `assert()` example at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN). It employs all of the functionality described above, including filename and line number reporting, expression printing, and syntax which disallows the use of assignments or function calls within the parameter passed to `assert()`.
 
-import assert_example_code_on_ide_one from './_assets/assert-example-code-on-ide-one.png'
-
-<Image src={assert_example_code_on_ide_one} width="900px">Example assert() code on Ideone (http://ideone.com/CSX6wN).</Image>
+<Image src={import('./_assets/assert-example-code-on-ide-one.png')} width="900px">Example assert() code on Ideone (http://ideone.com/CSX6wN).</Image>
 
 ## Assert With printf() Style Messages
 
