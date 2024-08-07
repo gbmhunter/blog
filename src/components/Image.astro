@@ -2,10 +2,25 @@
 import { Image as AstroImage } from 'astro:assets';
 
 const { src, width, ...attrs } = Astro.props;
+console.log('test');
+console.log('src', await src);
+let href;
+if (src instanceof Promise) {
+  console.log('src is a promise');
+  const resolvedImg = await src;
+  console.log('resolvedImg', resolvedImg);
+  href = resolvedImg.default.src;
+
+} else {
+  console.log('src is not a promise');
+  href = src.src;
+}
+console.log('href', href);
+
 ---
 
 <div class="image-wrapper">
-  <a href={src.src}><AstroImage src={src} width={width} alt="" {...attrs} /></a>
+  <a href={href}><AstroImage src={src} width={width} alt="" {...attrs} /></a>
   <figcaption><slot /></figcaption>
 </div>
 

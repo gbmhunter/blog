@@ -146,6 +146,12 @@ A wide image to make sure it doesn't exceed the page width:
 
 <Image src={import('./_assets/test-image-1000px.webp')} width="2000">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width.</Image>
 
+A static import image:
+
+import imgAnotherTestImage from './_assets/another-test-image.png';
+
+<Image src={imgAnotherTestImage} width="300px">This image is imported statically.</Image>
+
 ## Asides
 
 <Aside type="example">
