@@ -29,9 +29,7 @@ Centre-aligned PWM is good for motor control as it generates fewer harmonics in 
 
 Some PWM peripherals have a complemntary output feature. This is one PWM timer in hardware controls two output pins. One pin is the normal PWM signal, the other is the inverse of this. Complementary outputs are useful for driving H-bridges and other motor control circuits. Usually these peripherals will also support an adjustable programmable dead-time to prevent shoot-through.
 
-import diagram_showing_pwm_deadtime_stm32 from './_assets/diagram-showing-pwm-deadtime-stm32.webp'
-
-<Image src={diagram_showing_pwm_deadtime_stm32} width="500px">Diagram showing how deadtime is applied to the standard and complementary PWM signals to prevent shoot-through.</Image>
+<Image src={import('./_assets/diagram-showing-pwm-deadtime-stm32.webp')} width="500px">Diagram showing how deadtime is applied to the standard and complementary PWM signals to prevent shoot-through.</Image>
 
 One example is the STM32 advanced motor control timers which are present in many of the STM32 MCU families including the STM32G series[^st-an4013-intro-to-timers-for-stm32-mcus].
 
@@ -39,9 +37,7 @@ One example is the STM32 advanced motor control timers which are present in many
 
 When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
 
-import oscilloscope_aliasing_pwm_output_appaearing_to_turn_on_off from './_assets/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg'
-
-<Image src={oscilloscope_aliasing_pwm_output_appaearing_to_turn_on_off} width="1200">An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).</Image>
+<Image src={import('./_assets/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg')} width="1200">An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).</Image>
 
 While your PWM could actually be doing this, more often than not what you are seeing is an **artefact caused by the digital sampling of the oscilloscope**. The following picture shows a 15kHz PWM signal appearing to stop and start every 10ms or so. I can assure you that the PWM signal is fine, it is the Rigol 100MHz oscilloscope showing the wrong thing.
 

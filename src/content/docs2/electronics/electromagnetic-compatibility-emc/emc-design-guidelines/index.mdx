@@ -27,17 +27,13 @@ _Hot loops_ are the current loops in SMPS designs which generally generate/radia
 
 The following image shows a basic buck converter circuit (with the switch representing a MOSFET and using a flyback diode rather than active rectification). The light blue rectangle shows the current path when the switch is closed. The green rectangle shows the current path when the switch is open. The red rectangle shows the "hot loop", the current path which has the highest di/dt and is generally the loop you want to minimize and pay particular care to when routing the tracks. 
 
-import buck_converter_hot_loop from './buck-converter-hot-loop.png'
-
-<Image src={buck_converter_hot_loop} width="700px">Schematic showing the \"Hot Loop\" of a standard buck converter.</Image>
+<Image src={import('./buck-converter-hot-loop.png')} width="700px">Schematic showing the \"Hot Loop\" of a standard buck converter.</Image>
 
 The loop involving the inductor and output capacitor are not so important because they experience a relatively smooth trapezoidal shaped current profile (at least when in continuous conduction). The input capacitor and switch however experience a much larger di/dt -- when the switch is closed it goes from 0A and jumps up to the current through the inductor. It then follows the inductor current on the upwards rise until the switch is opened, at which point the current rapidly falls back to 0A. The diode is in a similar position, except it conducts when the input cap and switch are not (it takes the falling edge of the inductor current). Thus the "hot loop" creating the most EMI is the loop involving the input capacitor, switch and diode[^bib-analog-devices-hot-loops].
 
 The hot loop for a boost converter is on the output side rather than the input:
 
-import boost_converter_hot_loop from './boost-converter-hot-loop.png'
-
-<Image src={boost_converter_hot_loop} width="700px">Schematic showing the \"Hot Loop\" of a boost converter.</Image>
+<Image src={import('./boost-converter-hot-loop.png')} width="700px">Schematic showing the \"Hot Loop\" of a boost converter.</Image>
 
 <Aside type="tip">
 Because the current cannot change instantaneously through an inductor, the inductor is never part of the hot loop, no matter what topology of SMPS you are using. However, this rule does not apply to transformers (they can be part of hot loops, e.g. the flyback topology), as they do not behave like an inductor.
@@ -53,15 +49,11 @@ This switching node has a high $\frac{dV}{dt}$ --- it's voltage changes rapidly 
 
 Some inductors include polarity marks to indicate which side of the inductor has the shortest copper path to the leads. One example is the Coilcraft XAL Family of inductors, including the `XAL7050-223MEC`. The image below shows the top view of the inductor, highlighting the polarity indicator and a note about how to reduce EMI.
 
-import coilcraft_xal7050_showing_polarity_indicator_and_emi_note from './coilcraft-xal7050-showing-polarity-indicator-and-emi-note.png'
-
-<Image src={coilcraft_xal7050_showing_polarity_indicator_and_emi_note} width="500px">Top view of the Coilcraft XAL7050 inductor, showing the polarity mark.</Image>
+<Image src={import('./coilcraft-xal7050-showing-polarity-indicator-and-emi-note.png')} width="500px">Top view of the Coilcraft XAL7050 inductor, showing the polarity mark.</Image>
 
 Connecting the side of the inductor with the bar to the high $\frac{dV}{dt}$ switching node gives the lowest EMI. The image below shows the improvement in radiated emissions when connecting the shortest inductor lead to the switching node.
 
-import inductor_polarity_radiated_emissions_improvement_analog_devices from './inductor-polarity-radiated-emissions-improvement-analog-devices.png'
-
-<Image src={inductor_polarity_radiated_emissions_improvement_analog_devices} width="600px">Graphs from Analog Devices showing the improvement in radiated emissions when the shortest inductor lead is connected to the switching node[^analog-devices-assembly-orientation-inductor-affect-emissions]. Orientation 1 is with the short lead connected to the switching node, orientation 2 is the opposite.</Image>
+<Image src={import('./inductor-polarity-radiated-emissions-improvement-analog-devices.png')} width="600px">Graphs from Analog Devices showing the improvement in radiated emissions when the shortest inductor lead is connected to the switching node[^analog-devices-assembly-orientation-inductor-affect-emissions]. Orientation 1 is with the short lead connected to the switching node, orientation 2 is the opposite.</Image>
 
 ## Solid Reference Planes Under Traces
 
@@ -69,17 +61,13 @@ At high frequencies, the current through a signal trace on a PCB wants to return
 
 The image below shows a example PCB with an upper layer that has a trace on it, and a reference plane on the layer beneath it. A signal source on the bottom left (simulated as a current source here) generates a signal that travels along the trace on the top layer, and returns through the reference plane on the second layer. At DC or low frequencies, the return current takes the shortest path straight through the copper plane back to the source. However at high frequencies the current travels back through the plane on a path that is directly underneath the trace[^learn-emc-identifying-current-paths] [^nwes-how-to-design-your-pcb-return-current-path].
 
-import current_following_trace_at_high_frequencies from './current-following-trace-at-high-frequencies.webp'
-
-<Image src={current_following_trace_at_high_frequencies} width="1000px">Diagram illustrating how current in the reference plane follows directly underneath the trace at high frequencies, rather than taking the shortest path back to the source.</Image>
+<Image src={import('./current-following-trace-at-high-frequencies.webp')} width="1000px">Diagram illustrating how current in the reference plane follows directly underneath the trace at high frequencies, rather than taking the shortest path back to the source.</Image>
 
 At all frequencies, the return current is taking the path of least impedance (well, distributing itself among all paths, proportional to the inverse of impedance). At low frequencies, this happens to be the shortest path, as the impedance is dominated by the resistance of the copper. At high frequencies, the impedance is dominated by the inductance, and the path of lowest inductance happens to be directly underneath the trace where in minimizes the loop area of the current loop.
 
 The below image shows what happens when there is a gap in the reference plane, preventing the return current from travelling directly underneath the trace. The current has to spread out around the gap, increasing the overall loop area and making the EMI worse.
 
-import gap_in_reference_plane from './gap-in-reference-plane.webp'
-
-<Image src={gap_in_reference_plane} width="500px">A gap in the reference plane forces high frequency signals</Image>
+<Image src={import('./gap-in-reference-plane.webp')} width="500px">A gap in the reference plane forces high frequency signals</Image>
 
 This is why it is **important to have continuous reference planes under traces whenever possible**. If removing a gap (or split) is impossible, then the next best thing is to bridge the gap on another layer, tying the bridge to the reference plane on each side of the gap. 
 

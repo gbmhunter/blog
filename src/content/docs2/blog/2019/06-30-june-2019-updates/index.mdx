@@ -18,15 +18,11 @@ Renamed the Fast Fourier Transform page to the [Fourier Transform page](/program
 
 Added graphs of 1D Fourier transformations:
 
-import img_1d_fourier_transform from './_assets/1d-fourier-transform.png'
-
-<Image src={img_1d_fourier_transform} width="400px"></Image>
+<Image src={import('./_assets/1d-fourier-transform.png')} width="400px"></Image>
 
 and animated .gifs of 2D Fourier transformations:
 
-import sinusoidal from './_assets/sinusoidal.gif'
-
-<Image src={sinusoidal} width="400px"></Image>
+<Image src={import('./_assets/sinusoidal.gif')} width="400px"></Image>
 
 Updated the pytest page with info on `mark` (markers) and `pytest` naming conventions.
 
@@ -34,17 +30,13 @@ Removed the `updates` directory that all monthly update posts were under.
 
 Added a [tutorial on pandas](/programming/languages/python/pandas), a popular data analytics library for Python.
 
-import pandas_logo from './_assets/pandas_logo.png'
-
-<Image src={pandas_logo} width="700px">The pandas logo.</Image>
+<Image src={import('./_assets/pandas_logo.png')} width="700px">The pandas logo.</Image>
 
 Updated the [Python Debugging page](/programming/languages/python/python-debugging) with more info on `pdb`.
 
 Updated the [Filters page](/electronics/circuit-design/analogue-filters) with more information on low-pass RC filters, including plots of the frequency response:
 
-import rc_low_pass_filter_frequency_response from './_assets/rc-low-pass-filter-frequency-response.png'
-
-<Image src={rc_low_pass_filter_frequency_response} width="500px"></Image>
+<Image src={import('./_assets/rc-low-pass-filter-frequency-response.png')} width="500px"></Image>
 
 I created a public mbedded.ninja project on CircuitMaker at [https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja](https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja). I am going to trial out CircuitMaker as a tool for drawing schematic diagrams for this blog. In the past I have used Altium (not free), MultisimLive and InkScape (free but is a general vector graphics editor, not a dedicated electronics CAD program).
 
@@ -52,6 +44,4 @@ Added the [Command-Line CSV Viewer page](/programming/operating-systems/linux/co
 
 Added a [new page about the programming language Julia](/programming/languages/julia).
 
-import julia_programming_language_logo from './_assets/julia_programming_language_logo.png'
-
-<Image src={julia_programming_language_logo} width="200px">The Julia logo.</Image>
+<Image src={import('./_assets/julia_programming_language_logo.png')} width="200px">The Julia logo.</Image>

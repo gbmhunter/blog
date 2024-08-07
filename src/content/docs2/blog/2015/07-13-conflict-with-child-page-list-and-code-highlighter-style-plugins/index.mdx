@@ -12,15 +12,11 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Certain pages around this website where **not displaying source code** correctly. I was using [Crayon Syntax Highlighter](https://wordpress.org/plugins/crayon-syntax-highlighter/) to style the code. Instead of nicely formatted code like this:
 
-import sb_child_list_plugin_bug_code_displaying_correctly from './_assets/sb-child-list-plugin-bug-code-displaying-correctly.png'
-
-<Image src={sb_child_list_plugin_bug_code_displaying_correctly} width="508px">Code displaying correctly.</Image>
+<Image src={import('./_assets/sb-child-list-plugin-bug-code-displaying-correctly.png')} width="508px">Code displaying correctly.</Image>
 
 I was left with Crayon shortcodes in the form
 
-import sb_child_list_plugin_bug_code_displaying_incorrectly from './_assets/sb-child-list-plugin-bug-code-displaying-incorrectly.png'
-
-<Image src={sb_child_list_plugin_bug_code_displaying_incorrectly} width="379px">Code displaying incorrectly because of a bug with the SB Child List plugin.</Image>
+<Image src={import('./_assets/sb-child-list-plugin-bug-code-displaying-incorrectly.png')} width="379px">Code displaying incorrectly because of a bug with the SB Child List plugin.</Image>
 
 It seemed that shortcodes with the form `[crayon-55a318c46df22443583779/]` were somehow not being processed (it might be that all shortcodes were not being processed, I did not test any others).
 

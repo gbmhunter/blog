@@ -31,9 +31,7 @@ We will discuss these further in the following sections:
 
 The string DAC (a.k.a Kelvin divider DAC) is the the easiest DAC design to understand, and is just a string of equal-valued resistors from $V_{REF}$ to $GND$, with taps of each junction to the output.
 
-import dac_architecture_string from './dac-architecture-string.svg'
-
-<Image src={dac_architecture_string} width="600px">The internal architecture of a string DAC.</Image>
+<Image src={import('./dac-architecture-string.svg')} width="600px">The internal architecture of a string DAC.</Image>
 
 A $n$ bit string DAC requires $2^n - 1$ resistors. This is a sensible number for lower resolutions of 8-10 bits, but soon gets prohibitively high for higher resolutions. For example:
 
@@ -48,9 +46,7 @@ A string DAC is very dependent on well matched resistors to achieve good lineari
 
 R-2R (or R-2R ladder) allows for many outputs.
 
-import dac_architecture_r2r from './dac-architecture-r2r.svg'
-
-<Image src={dac_architecture_r2r} width="800px">The internal architecture of a R-2R DAC.</Image>
+<Image src={import('./dac-architecture-r2r.svg')} width="800px">The internal architecture of a R-2R DAC.</Image>
 
 A $n$ bit R-2R DAC requires $2N$ resistors[^analog-mt015-basic-dac-architectures].
 
@@ -83,9 +79,7 @@ Most DACs have a requirement for the external voltage reference to be no less th
 
 ## Datasheet Specifications
 
-import digital_input_analogue_output_graph from './digital-input-analogue-output-graph.svg'
-
-<Image src={digital_input_analogue_output_graph} width="500px">A graph showing how the DAC output voltage varies with the digital input code, and the various names given to parts of the behaviour.</Image>
+<Image src={import('./digital-input-analogue-output-graph.svg')} width="500px">A graph showing how the DAC output voltage varies with the digital input code, and the various names given to parts of the behaviour.</Image>
 
 ### Resolution
 
@@ -119,9 +113,7 @@ Integral non-linearity (INL, also called _relative accuracy_) is a measure of th
 
 2. **Best fitting line**: A line fitted using linear least-squares regression.
 
-import dac_integral_non_linearity from './dac-integral-non-linearity.svg'
-
-<Image src={dac_integral_non_linearity} width="500px">The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages.</Image>
+<Image src={import('./dac-integral-non-linearity.svg')} width="500px">The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages.</Image>
 
 If the INL is given in bits, this is achieved by dividing the INL in volts by the voltage of the LSB.
 

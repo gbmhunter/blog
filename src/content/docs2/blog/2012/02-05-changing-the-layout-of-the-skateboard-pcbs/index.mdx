@@ -10,6 +10,4 @@ type: post
 
 import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
-import remote_2d_pcb_layout from './remote-2d-pcb-layout.jpg'
-
-<Image src={remote_2d_pcb_layout} width="300px">The 2D layout of the Remote PCB v1.</Image>
+<Image src={import('./remote-2d-pcb-layout.jpg')} width="300px">The 2D layout of the Remote PCB v1.</Image>

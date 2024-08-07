@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 ## Overview
 
-import cover_image from './_assets/cover-image.png'
-
-<Image src={cover_image} width="600"></Image>
+<Image src={import('./_assets/cover-image.png')} width="600"></Image>
 
 A _latch_ or _flip-flop_ (a.k.a. _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. They are are key component in _sequential logic_ (logic which depends not only on the present state on the inputs, but also past information). It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). **Latches and flip-flops form the basic storage element in sequential logic**. This page assumes a working knowledge of digital gates such as AND gates, OR gates, e.t.c. See the [Gates page](/electronics/circuit-design/digital-logic/gates/) if you want to get up to speed on those first!
 
@@ -26,9 +24,7 @@ There is a lot of debate on what constitutes a latch vs. a flip-flop. We will ad
 * Latches are either completely  _asynchronous_ and they act immediately when their inputs change, or they are _synchronous_ and provided a control signal which gates the latch so that it only acts when the control signal is a certain level (level-triggered) (the control signal called be called a clock). They are never edge-triggered.
 * Flip-flops are fed a clock-signal, and only act the transition of the clock signal between states (edge-triggered). Just like some latches, flip-flops are _synchronous_.
 
-import what_type_of_flipflop from './_assets/what-type-of-flipflop.png'
-
-<Image src={what_type_of_flipflop} width="700">We're talking about the flip-flops on the right, not the left. If you're not following along, don't worry, this is a New Zealand thing :-D.</Image>
+<Image src={import('./_assets/what-type-of-flipflop.png')} width="700">We're talking about the flip-flops on the right, not the left. If you're not following along, don't worry, this is a New Zealand thing :-D.</Image>
 
 There is some confusing statements made in online references to the difference between latches and flip-flops. Some sources say latches are level-triggered and flip-flops are edge-triggered, but then go on to present a "D-type flip-flop" schematic which is actually level-triggered (normally transparent when the clock is high) and has no edge detection circuitry. Other sources say latches are not provided a clock whilst flip-flops need a clock, but then go to show a SR "latch" with an enable input, which could easily be driven by a clock signal.
 
@@ -46,9 +42,7 @@ Most latches are built from **two identical cross-coupled inverting logic gates*
 
 The SR (**S**et-**R**eset) latch is the most basic form of latch. It can be built from two cross-coupled NOR gates as shown below:
 
-import sr_latch_from_nor_gates from './_assets/sr-latch-from-nor-gates.svg'
-
-<Image src={sr_latch_from_nor_gates} width="500">A SR latch made from NOR gates.</Image>
+<Image src={import('./_assets/sr-latch-from-nor-gates.svg')} width="500">A SR latch made from NOR gates.</Image>
 
 Driving either S or R high allows you to set the latch into the 1 or 0 state respectively. The state of the latch is represented by the output $Q$ and it's complement $\bar{Q}$. Because of feedback from the outputs, driving both S and R low makes the latch "remember" or "retain" it's last known state (holding). Below is the characteristic table for a SR latch built from NOR gates:
 
@@ -74,9 +68,7 @@ Driving both set and reset high is a forbidden state, as it makes both $Q$ and $
 
 A SR latch can also be made with two NAND gates instead of two NOR gates:
 
-import sr_latch_from_nand_gates from './_assets/sr-latch-from-nand-gates.png'
-
-<Image src={sr_latch_from_nand_gates} width="500">A SR latch made from two NAND gates.</Image>
+<Image src={import('./_assets/sr-latch-from-nand-gates.png')} width="500">A SR latch made from two NAND gates.</Image>
 
 When making the SR latch from NAND gates the invalid state is now $\overline{S} = \overline{R} = 0$ and the hold state is $\overline{S} = \overline{R} = 1$, they switch positions compared to the SR latch built from NOR gates. This is also the reason why $S$ and $R$ have been renamed to $\overline{S}$ and $\overline{R}$. Below is the full truth table:
 
@@ -105,9 +97,7 @@ You can play with the interactive NAND-gate based SR latch below:
 <Aside type="example">
 Let's simulate a NAND-based SR latch in Micro-Cap. Here is the schematic:
 
-import sr_latch_nand_sim_schematic from './_assets/sr-latch-nand-sim/schematic.png'
-
-<Image src={sr_latch_nand_sim_schematic} width="500"></Image>
+<Image src={import('./_assets/sr-latch-nand-sim/schematic.png')} width="500"></Image>
 
 The digital stimulus `U1` drives `R` and `U2` drives `S`. With the following sequence:
 
@@ -119,9 +109,7 @@ The digital stimulus `U1` drives `R` and `U2` drives `S`. With the following seq
 
 And here is the transient analysis, which agrees with the expected behaviour:
 
-import sr_latch_nand_sim_transient_analysis from './_assets/sr-latch-nand-sim/transient-analysis.png'
-
-<Image src={sr_latch_nand_sim_transient_analysis} width="900"></Image>
+<Image src={import('./_assets/sr-latch-nand-sim/transient-analysis.png')} width="900"></Image>
 
 <Aside type="tip">
 Quite nicely, Micro-Cap shows the indeterminate state between 0 and 10ns with lines at both the `0` and `1` level.
@@ -144,9 +132,7 @@ You might wonder what the purpose of $\bar{Q}$ is, given it's always the opposit
 1. **$R$ is `HIGH` and $S$ is `LOW`:** Since $R$ is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with $S$ which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if $R$ is then brought LOW. This gives the SR latch it's memory.
 1. **$R$ is `LOW` and $S$ is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. $Q$ is `HIGH` and $\bar{Q}$ is `LOW`. Again, if $S$ goes low, the SR latch "remembers" and keeps it's outputs in the same state.
 
-import sr_latch_from_nor_gates_states_red_black from './_assets/sr-latch-from-nor-gates-states-red-black.svg'
-
-<Image src={sr_latch_from_nor_gates_states_red_black} width="800">(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical "1", black logical "0".</Image>
+<Image src={import('./_assets/sr-latch-from-nor-gates-states-red-black.svg')} width="800">(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical "1", black logical "0".</Image>
 
 ### D Latch
 
@@ -154,9 +140,7 @@ A _D Latch_ is like a SR latch except extra circuitry is added so that instead o
 
 As the below diagram shows, a D latch is essentially a SR latch but with extra NAND gates and a inverter added to the front. The NAND gates "gate" the data line by anding it with the enable, such as that when the enable line is `0`, no signal gets through. The inverter acts to remove the need to separate "set" and "reset" lines of a traditional SR latch by providing the two signals from one input.
 
-import d_latch_from_nand_gates from './_assets/d-latch-from-nand-gates.png'
-
-<Image src={d_latch_from_nand_gates} width="700">A D latch made from NAND gates and an inverter.</Image>
+<Image src={import('./_assets/d-latch-from-nand-gates.png')} width="700">A D latch made from NAND gates and an inverter.</Image>
 
 You can see from the below truth table that when $E = 0$, the latch remembers it's last state. When $E = 1$, the signal on $D$ is passed onto the output:
 
@@ -180,17 +164,13 @@ You can see from the below truth table that when $E = 0$, the latch remembers it
 
 **You can actually simplify the above circuit and remove the need for an inverter altogether.** Just realise the output of the top left NAND gate is always the inverse of `D` as long as `E` is high, so you can actually take the output of this as the inverted `D` and feed it into the bottom left NAND gate as shown:
 
-import d_latch_from_nand_gates_simplified from './_assets/d-latch-from-nand-gates-simplified.png'
-
-<Image src={d_latch_from_nand_gates_simplified} width="700">A simplified D latch without an inverter.</Image>
+<Image src={import('./_assets/d-latch-from-nand-gates-simplified.png')} width="700">A simplified D latch without an inverter.</Image>
 
 The above design, when built using [CMOS technology](/docs/electronics/circuit-design/digital-logic/gates/index.mdx#complementary-metal-oxide-semiconductor-logic-cmos) would require 16 MOSFETs (4 for each NAND gate).
 
 You can also make a D latch with inverters and [transmission gates](/electronics/components/analogue-switches-transmission-gates/). This will result in a lower total transistor count to implement than the NAND gate style D latch above. The below schematic shows one way of doing it:
 
-import d_latch_from_transmission_gates from './_assets/d-latch-from-transmission-gates.png'
-
-<Image src={d_latch_from_transmission_gates} width="500">A D latch made from transmission gates.</Image>
+<Image src={import('./_assets/d-latch-from-transmission-gates.png')} width="500">A D latch made from transmission gates.</Image>
 
 The NAND gate implementation required 16 MOSFETs, but the above circuit only requires 12 (2 for each inverter, 2 for each transmission gate, and 2 to invert the enable signal to drive the transmission gates).
 
@@ -200,9 +180,7 @@ When $E$ is `HIGH`, the lower transmission gate is `ON` and the input $D$ is pas
 
 A JK latch is also known as the gated or clocked SR latch[^bib-byju-sr-flip-flop]. It is a level-triggered device, even though many online tutorials suggest it is edge-triggered. Along with this, many references call this a _JK flip-flop_. Based on the rules we decided on above (latches for asynchronous or level-triggered devices, flip-flops for edge-triggered devices), we are calling this a latch. The schematic symbol is:
 
-import jk_flipflop_symbol from './_assets/jk-flipflop-symbol.png'
-
-<Image src={jk_flipflop_symbol} width="400">The schematic symbol for a JK latch.</Image>
+<Image src={import('./_assets/jk-flipflop-symbol.png')} width="400">The schematic symbol for a JK latch.</Image>
 
 <Aside type="caution">
 The `CLK` input to a JK latch is traditionally drawn with a wedge symbol. The wedge symbol is normally associated with edge-triggered inputs, but the `CLK` input for a JK latch is level-triggered.
@@ -210,31 +188,23 @@ The `CLK` input to a JK latch is traditionally drawn with a wedge symbol. The we
 
 The letters J and K were chosen by the inventor of the JK latch, Jack Kilby[^electronics-tutorials-jk-flip-flop]. A JK latch can be built with NAND gates with the following circuit:
 
-import jk_flipflop_from_nand_gates from './_assets/jk-flipflop-from-nand-gates.png'
-
-<Image src={jk_flipflop_from_nand_gates} width="700">Circuit showing how to build a JK latch from NAND gates.</Image>
+<Image src={import('./_assets/jk-flipflop-from-nand-gates.png')} width="700">Circuit showing how to build a JK latch from NAND gates.</Image>
 
 <Aside type="example">
 
 Let's simulate a NAND-based JK latch in Micro-Cap. The schematic is:
 
-import jk_flipflop_nand_sim_schematic from './_assets/jk-flipflop-nand-sim/schematic.png'
-
-<Image src={jk_flipflop_nand_sim_schematic} width="600">The simulation schematic for the JK latch.</Image>
+<Image src={import('./_assets/jk-flipflop-nand-sim/schematic.png')} width="600">The simulation schematic for the JK latch.</Image>
 
 We have to set up some rather complicated digital stimulus to put the JK flip-flop through it's paces. The simulation text determining these waveforms is:
 
-import jk_flipflop_nand_sim_schematic_sim_text from './_assets/jk-flipflop-nand-sim/schematic-sim-text.png'
-
-<Image src={jk_flipflop_nand_sim_schematic_sim_text} width="300">The supported simulation "text" that goes with the schematic. This defines the waveforms of the 3x digital stimulus and the initial conditions.</Image>
+<Image src={import('./_assets/jk-flipflop-nand-sim/schematic-sim-text.png')} width="300">The supported simulation "text" that goes with the schematic. This defines the waveforms of the 3x digital stimulus and the initial conditions.</Image>
 
 Notice also the definition of initial conditions at the bottom (`.IC`). If this was not provided, the states of `Q` and `nQ` would be forever stuck as indeterminate (in Micro-Cap this is represented by an `X` in text or double-lines at `0` and `1` in the waveform views), as the only way for the simulator to determine their state without using themselves (because of feedback) would be if `nR` or `nS` were 0 (because then the indeterminate state of `Q` and `nQ` doesn't matter in determining `Q` and `nQ`, they would just be `1`). However with a `JK` flip-flop we can't set `nR` or `nS` to `0` via the inputs `J` and `K` without also considering the feedback from `Q` and `nQ` in the triple input NAND gates. Hence the circuit gets stuck! In real life, the circuit would settle on either `Q=1` or `Q=0` at start-up due to real-world noise and manufacturing differences in the start-up times of the NAND gates.
 
 Below is the simulated waveforms of the circuit:
 
-import jk_flipflop_nand_sim_transient_analysis from './_assets/jk-flipflop-nand-sim/transient-analysis.png'
-
-<Image src={jk_flipflop_nand_sim_transient_analysis} width="1000">Annotated transient analysis of the JK flip-flop.</Image>
+<Image src={import('./_assets/jk-flipflop-nand-sim/transient-analysis.png')} width="1000">Annotated transient analysis of the JK flip-flop.</Image>
 
 Explanation of behaviour:
 
@@ -264,15 +234,11 @@ The key feature about flip-flops is that they are edge-triggered rather than lev
 
 This is the basic schematic:
 
-import edge_detection_using_and_inverter from './_assets/edge-detection-using-and-inverter.png'
-
-<Image src={edge_detection_using_and_inverter} width="500">Simple edge detection circuit made with an inverter and AND gate.</Image>
+<Image src={import('./_assets/edge-detection-using-and-inverter.png')} width="500">Simple edge detection circuit made with an inverter and AND gate.</Image>
 
 And this is what the timing looks like:
 
-import edge_detection_using_and_inverter_timing_diagram from './_assets/edge-detection-using-and-inverter-timing-diagram.png'
-
-<Image src={edge_detection_using_and_inverter_timing_diagram} width="700">Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter.</Image>
+<Image src={import('./_assets/edge-detection-using-and-inverter-timing-diagram.png')} width="700">Positive edge-detecting circuit made from an inverter and an AND gate. This circuit exploits the non-zero propagation delay through the inverter.</Image>
 
 <Aside type="note">
 Any odd number of inverters may be placed in series to increase the pulse-width of the output signal. You commonly see this circuit drawn with three. An RC circuit may also be used to increase the pulse-width.
@@ -282,21 +248,15 @@ Any odd number of inverters may be placed in series to increase the pulse-width 
 
 To test this idea, we can simulate the circuit in Micro-Cap. The schematic looks like this:
 
-import edge_detection_using_and_inverter_sim_schematic from './_assets/edge-detection-using-and-inverter-sim/schematic.png'
-
-<Image src={edge_detection_using_and_inverter_sim_schematic} width="700"></Image>
+<Image src={import('./_assets/edge-detection-using-and-inverter-sim/schematic.png')} width="700"></Image>
 
 This simulation used logic gates which had a nominal delay time of `0.3ns` (both low to high and high to low). This is the `D_ABC` timing model in Micro-Cap. The 1-bit Digital Stimulus was setup to go high at `t=5ns` and go low again at `t=10ns` as follows:
 
-import edge_detection_using_and_inverter_sim_1_bit_digital_stimulus_config from './_assets/edge-detection-using-and-inverter-sim/1-bit-digital-stimulus-config.png'
-
-<Image src={edge_detection_using_and_inverter_sim_1_bit_digital_stimulus_config} width="500px"></Image>
+<Image src={import('./_assets/edge-detection-using-and-inverter-sim/1-bit-digital-stimulus-config.png')} width="500px"></Image>
 
 The resulting transient analysis is:
 
-import edge_detection_using_and_inverter_sim_transient_analysis from './_assets/edge-detection-using-and-inverter-sim/transient-analysis.png'
-
-<Image src={edge_detection_using_and_inverter_sim_transient_analysis} width="900px"></Image>
+<Image src={import('./_assets/edge-detection-using-and-inverter-sim/transient-analysis.png')} width="900px"></Image>
 
 The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/edge-detection-using-and-inverter-sim/circuit.cir).
 
@@ -308,9 +268,7 @@ The problem with the above edge-detection circuit is that it cannot guarantee th
 
 A _D-type flip-flop_ (where the D either stands for **D**elay or **D**ata depending on who you ask) is a flip-flop which is **based off the D latch, with additional circuitry to make it edge-triggered instead of level triggered**. Below are the basic symbols for a D-type flip-flop:
 
-import d_flipflop_symbol from './_assets/d-flipflop-symbol.png'
-
-<Image src={d_flipflop_symbol} width="700">The schematic symbols for a D-type flipflop. On the left is one WITH NO asynchronous set or reset, and the right is one WITH asynchronous set or reset.</Image>
+<Image src={import('./_assets/d-flipflop-symbol.png')} width="700">The schematic symbols for a D-type flipflop. On the left is one WITH NO asynchronous set or reset, and the right is one WITH asynchronous set or reset.</Image>
 
 <Aside type="tip">
 The wedge symbol drawn against the `CLK` input to tell the reader it is an edge-triggered input. Typically the set and reset are inverse logic, i.e. `1` to do nothing and `0` to either set or reset. The reset pin can also be called _preset_[^bib-ti-sn7474-ds].
@@ -322,9 +280,7 @@ D-type flip-flops are used for counters, shift-registers and input synchronizati
 
 But how is a D flip-flop actually made? Basically, you could add the edge-trigger circuit to the $E$ (enable) line of a D latch (as shown above) to make a D flip-flop:
 
-import d_flipflop_with_and_inverter from './_assets/d-flipflop-with-and-inverter.png'
-
-<Image src={d_flipflop_with_and_inverter} width="800">A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit made with an AND gate and inverter.</Image>
+<Image src={import('./_assets/d-flipflop-with-and-inverter.png')} width="800">A D flip-flop made from a D NAND-based latch and additional edge-trigger circuit made with an AND gate and inverter.</Image>
 
 We now instead call the $E$ line the $CLK$, to signify it is edge-triggered rather than level-triggered.
 
@@ -334,9 +290,7 @@ Master-slave flip-flops are a **another way of creating edge-triggered flip-flop
 
 A _master-slave D flip-flop_ is made from connecting two D latches (edge-triggered) in series.
 
-import master_slave_d_flip_flop_logic_diagram from './_assets/master-slave-d-flip-flop-logic-diagram.png'
-
-<Image src={master_slave_d_flip_flop_logic_diagram} width="800">How a master-slave D flip-flop can be built from two D latches and a bit of additional logic.</Image>
+<Image src={import('./_assets/master-slave-d-flip-flop-logic-diagram.png')} width="800">How a master-slave D flip-flop can be built from two D latches and a bit of additional logic.</Image>
 
 <Aside type="tip">
 Because we have the output and it's inverse from the master latch, we don't need the inverter at the input of the second latch, and can just wire to two connections straight through to the slave latch.
@@ -350,9 +304,7 @@ Below is an interactive simulation of negative edge-triggered master-slave D fli
 
 The above D-type master-slave flip-flop topology gives us reliable clock edge-triggered behaviour, but uses quite a few components (8 NAND gates + 2 inverters)! We can actually produce a functionality equivalent design with less components, with a clever arrangement of 6 NAND gates (of which 1 is 3-input, the rest 2-input). The logic diagram is:
 
-import d_flipflop_with_more_nand_gates from './_assets/d-flipflop-with-more-nand-gates.png'
-
-<Image src={d_flipflop_with_more_nand_gates} width="600">A D-type flip-flop made solely from NAND gates. This version has no asynchronous set and clear inputs.</Image>
+<Image src={import('./_assets/d-flipflop-with-more-nand-gates.png')} width="600">A D-type flip-flop made solely from NAND gates. This version has no asynchronous set and clear inputs.</Image>
 
 Roughly speaking, the above circuit is made from three SR latches, the output latch (center right), the input reset latch (upper left) and input set latch (lower left). Note that one of the input NAND gates is has three inputs rather than two.
 
@@ -419,15 +371,11 @@ This circuit gets even more complicated when you add asynchronous set and reset 
 
 Let's simulate a NAND-based edge-triggered D-type flip-flop with asynchronous set and reset inputs. The schematic is:
 
-import d_flipflop_nand_with_set_reset_sim_schematic from './_assets/d-flipflop-nand-with-set-reset-sim/schematic.png'
-
-<Image src={d_flipflop_nand_with_set_reset_sim_schematic} width="600px">The Micro-Cap schematic for simulating a edge-triggered D-type flip-flop with async. set and reset.</Image>
+<Image src={import('./_assets/d-flipflop-nand-with-set-reset-sim/schematic.png')} width="600px">The Micro-Cap schematic for simulating a edge-triggered D-type flip-flop with async. set and reset.</Image>
 
 The resulting transient analysis looks as expected! (explanation below graph):
 
-import d_flipflop_nand_with_set_reset_sim_transient_analysis from './_assets/d-flipflop-nand-with-set-reset-sim/transient-analysis.png'
-
-<Image src={d_flipflop_nand_with_set_reset_sim_transient_analysis} width="900px">The transient analysis of the above circuit.</Image>
+<Image src={import('./_assets/d-flipflop-nand-with-set-reset-sim/transient-analysis.png')} width="900px">The transient analysis of the above circuit.</Image>
 
 Explanation of behaviour:
 
@@ -445,17 +393,13 @@ You can play around with the interactive D flip-flop simulation below. Toggle th
 
 <CircuitJs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKDAQmzRExRABYuPDHyqiKbDiC5Uw-fgKFyFY6ghYB3RX2XbwGQlE16wB6dxT8qkY4L689l67aFPzssza0z9hn2EJnbwsrdx4EQxt2CADZeWEdeNVaSRjAgTwEjKgeNVTwdIcikRzsPOiCqmxCTIdqzOSJLViQQgUWvCDKkE6s5lFjFrAUTKHho2b0-qzerxmxEv4GwcK8UfTcFRWqyAU66oms7AO6msOW7AQdDYO5i5OSzcOHYcz-EeeSkbeLNc+dMwtNx3DY6D5CO4ffgBLLQyLbLLEQwOOZI7pDdIgqp4BRo7A4owAGRAeIJQnxKnAIAAZgBDAA2AGc6NQbAAlEnIx72EoQHRwHjQJAoIU5GDqACyJni-DRujEQpYUrssLRKMF6i0cvSapKWPChiBoTmL3iL08xlOtUWMMhmTh4HBAy0L3GLw+Jt5H1NWxdX399j+nsD1r4TxsAHtpFQ2jloZA+EgYPBIGRCBEUEncrhpCAACIsKNCWNUeOJqCweBpjNZiAARUL0ggJYEYATrMrcGrhEzOTDnBAAGN6QBrFhAA" />
 
-import cmos_d_flipflop_on_breadboard from './_assets/cmos-d-flipflop-on-breadboard.jpg'
-
-<Image src={cmos_d_flipflop_on_breadboard} width="900px">A D-type flip-flop made from 6 NAND gates (1 being a 3-input NAND gate), with each NAND gate being made from discrete P (Microchip VP2106N3-G) and N-channel (onsemi 2N7000-D75Z) MOSFETs (i.e. CMOS technology) in the TO-92 package. Everything was powered from a +5V rail. This goes to show you how many transistors are needed even for simple things such as a D flip-flop!</Image>
+<Image src={import('./_assets/cmos-d-flipflop-on-breadboard.jpg')} width="900px">A D-type flip-flop made from 6 NAND gates (1 being a 3-input NAND gate), with each NAND gate being made from discrete P (Microchip VP2106N3-G) and N-channel (onsemi 2N7000-D75Z) MOSFETs (i.e. CMOS technology) in the TO-92 package. Everything was powered from a +5V rail. This goes to show you how many transistors are needed even for simple things such as a D flip-flop!</Image>
 
 #### D-Type Flip-Flops with Transmission Gates
 
 In reality, the actual D-type flip-flops you can buy can be much more complicated than what we have just discussed! This is the logic diagram for the Nexperia `74HC74` dual D-type flip-flop IC[^bib-nexperia-74hc74-ds]:
 
-import nexperia_74hc74_d_flip_flop_logic_diagram from './_assets/nexperia-74hc74-d-flip-flop-logic-diagram.png'
-
-<Image src={nexperia_74hc74_d_flip_flop_logic_diagram} width="700px">Logic diagram for 1 of the positive-edge triggered D-type flip-flops in the Nexperia 74HC74 IC. Note the complexity![^bib-nexperia-74hc74-ds]</Image>
+<Image src={import('./_assets/nexperia-74hc74-d-flip-flop-logic-diagram.png')} width="700px">Logic diagram for 1 of the positive-edge triggered D-type flip-flops in the Nexperia 74HC74 IC. Note the complexity![^bib-nexperia-74hc74-ds]</Image>
 
 The four triangles pointing towards each other are [transmission gates (TGs)](/electronics/components/analogue-switches-transmission-gates/), normally made from one N-channel and one P-channel MOSFET connected in parallel (with the substrate not connected to the body, to avoid conduction through it's internal diodes). Some of the circuitry that seems to serve no purpose (like the two inverters in series on the `D` input) has been presumably added to balance propagation times.
 
@@ -467,9 +411,7 @@ Going from the `74` above to the `174` gives you an Hex (6 units) D-type flip-fl
 
 The partial part number `LS734` is used for an 8-channel (octal) edge-triggered D-type flip-flop IC. The Texas Instruments [74LS373](https://www.ti.com/lit/ds/symlink/sn54ls373-sp.pdf) is one such example.
 
-import ti_ls374_octal_edge_triggered_d_flip_flop_ic_logic_diagram from './_assets/ti-ls374-octal-edge-triggered-d-flip-flop-ic-logic-diagram.png'
-
-<Image src={ti_ls374_octal_edge_triggered_d_flip_flop_ic_logic_diagram} width="300px">Logic diagram of the Texas Instruments 74LS373 Edge-Triggered D-type Flip-flop IC[^bib-ti-ls374-ds].</Image>
+<Image src={import('./_assets/ti-ls374-octal-edge-triggered-d-flip-flop-ic-logic-diagram.png')} width="300px">Logic diagram of the Texas Instruments 74LS373 Edge-Triggered D-type Flip-flop IC[^bib-ti-ls374-ds].</Image>
 
 #### Triggering
 
@@ -483,9 +425,7 @@ Adding an inverting gate to the clock signal increases the propagation delay for
 
 In a similar manner to the master-slave D flip-flop above, a master-slave JK flip-flop is made from connecting two JK latches in series. Sometimes the "master-slave" part of it's name is dropped and this circuit is just called the _JK flip-flop_.
 
-import jk_master_slave_flipflop_logic_diagram from './_assets/jk-master-slave-flipflop-logic-diagram.png'
-
-<Image src={jk_master_slave_flipflop_logic_diagram} width="900px">The construction of a master-slave JK flip-flop.</Image>
+<Image src={import('./_assets/jk-master-slave-flipflop-logic-diagram.png')} width="900px">The construction of a master-slave JK flip-flop.</Image>
 
 It behaves in the same manner as a JK latch, but only acts on the negative clock-edge. Here is the truth table for this NAND-gate based master-slave JK flipflop:
 
@@ -529,17 +469,13 @@ Synchronous flip-flops have timing requirements that must be obeyed. The two mai
 
 The below diagram shows this concept, assuming the logic is triggered on the positive-edge of the clock signal.
 
-import setup_and_hold_time_diagram from './_assets/setup-and-hold-time-diagram.png'
-
-<Image src={setup_and_hold_time_diagram} width="500px">Diagram showing how the setup and hold time are defined.</Image>
+<Image src={import('./_assets/setup-and-hold-time-diagram.png')} width="500px">Diagram showing how the setup and hold time are defined.</Image>
 
 The edges of the signals have been drawn at a diagonal to illustrate that the signals do not instantly change state, and that the setup and hold times are defined from when the signal voltage passes through the half-way point between `LOW` and `HIGH`. In reality, the edges may not be straight lines but feature somewhat of an exponential curve due to capacitance.
 
 What do violating signals look like? Violating signals is when the data signal changes state in the setup or hold period, as illustrated in the diagram below.
 
-import setup_and_hold_time_diagram_with_violation_examples from './_assets/setup-and-hold-time-diagram-with-violation-examples.png'
-
-<Image src={setup_and_hold_time_diagram_with_violation_examples} width="800px">Diagram illustrating the concept of setup and hold times, and showing 3 different data signals, one which is just ok, one which violates the setup time requirement and one which violates the hold time requirement.</Image>
+<Image src={import('./_assets/setup-and-hold-time-diagram-with-violation-examples.png')} width="800px">Diagram illustrating the concept of setup and hold times, and showing 3 different data signals, one which is just ok, one which violates the setup time requirement and one which violates the hold time requirement.</Image>
 
 ### Recovery and Removal Times
 
@@ -580,9 +516,7 @@ Another key principle is that metastability occurs for an unbounded amount of ti
 
 A toggle flip-flop can be made from an edge-triggered D-type flip-flop with it's `nQ` connected to it's `D`. The input signal is fed to the `CLK`.
 
-import toggle_flipflop_made_from_edge_triggered_d_type from './_assets/toggle-flipflop-made-from-edge-triggered-d-type.png'
-
-<Image src={toggle_flipflop_made_from_edge_triggered_d_type} width="800px">A toggle flip-flop made from an edge-triggered D-type flip-flop with it's nQ output connected to it's D input. The input signal is fed to it's CLK.</Image>
+<Image src={import('./_assets/toggle-flipflop-made-from-edge-triggered-d-type.png')} width="800px">A toggle flip-flop made from an edge-triggered D-type flip-flop with it's nQ output connected to it's D input. The input signal is fed to it's CLK.</Image>
 
 As you can see from the above timing diagram, the output toggles between high and low on every positive clock edge. This also can be considered a _divide-by-two_ device (i.e. the output signal is half the frequency of the input), and is the basis for many digital counters[^bib-learnaboutelectronics-d-type-flip-flops]. Many of these could be connected in series, with the output of the first (`Q`) being connected to the input of the second (`CLK`). This would form a simple n-bit digital counter where n is the number of flip-flops in series.
 
@@ -592,17 +526,13 @@ This quadrature detection circuit is built entirely in hardware, and only uses o
 
 When the encoder is spinning in one direction, the output will be logic high (1), when it is spinning in the opposite direction, it will be logic low (0).
 
-import quadrature_phase_detection_circuit from './_assets/quadrature-phase-detection-circuit.png'
-
-<Image src={quadrature_phase_detection_circuit} width="600px">A simple quadrature phase detection circuit using a D flip-flop.</Image>
+<Image src={import('./_assets/quadrature-phase-detection-circuit.png')} width="600px">A simple quadrature phase detection circuit using a D flip-flop.</Image>
 
 ### Delay Circuit
 
 A simple delay circuit can be made just by chaining DQ flip-flops together in series (the output of one feeds the input of another). For every flip-flop, the signal will be delayed by one clock-cycle (assuming they all share the same clock source).
 
-import four_clock_cycle_delay_element_from_flipflops from './_assets/four-clock-cycle-delay-element-from-flipflops.png'
-
-<Image src={four_clock_cycle_delay_element_from_flipflops} width="800px">A simple four clock-cycle delay element made from four DQ flip-flops. This can be used as a simple timer.</Image>
+<Image src={import('./_assets/four-clock-cycle-delay-element-from-flipflops.png')} width="800px">A simple four clock-cycle delay element made from four DQ flip-flops. This can be used as a simple timer.</Image>
 
 This can be used to make a simple timer. Obviously, a limitation is that a flip-flop is needed for every clock cycle of delay needed (try that with a 1000 clock cycle delay!). More advanced timers use binary encoding with the flip-flops to achieve a greater number of states for a lower number of flip-flops.
 

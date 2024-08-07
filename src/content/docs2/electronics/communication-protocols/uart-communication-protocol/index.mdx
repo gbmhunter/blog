@@ -61,9 +61,7 @@ UART sends data in groups of 5, 6, 7 or 8 bits at a time across the bus (typical
 The figure below shows what a UART frame would look like when configured in the popular '8n1' configuration (8 bits, no parity, 1 stop bit):
 
 {/* {{% figure src="uart-example-byte-waveform-8n1.png" width="800px" caption="Drawing showing the basic frame structure of a byte sent across a UART bus in the popular '8n1' configuration (8 bits, no parity, 1 stop bit)." %}} */}
-import uart_example_byte_waveform_8n1 from './uart-example-byte-waveform-8n1.png'
-
-<Image src={uart_example_byte_waveform_8n1} width="800">Drawing showing the basic frame structure of a byte sent across a UART bus in the popular '8n1' configuration (8 bits, no parity, 1 stop bit).</Image>
+<Image src={import('./uart-example-byte-waveform-8n1.png')} width="800">Drawing showing the basic frame structure of a byte sent across a UART bus in the popular '8n1' configuration (8 bits, no parity, 1 stop bit).</Image>
 
 UART has no say in what the data means, it is up to the application code to make sense of one these bits of data mean and to group them into larger data structures.
 
@@ -155,9 +153,7 @@ A common scenario for this to occur is debug UARTs, in where an FTDI cable or si
 [Voltage-level translator ICs](/electronics/components/voltage-level-translation/) are one way to fix this problem. You have make sure they are of the type which make the I/O pins $A$ and $B$ high-impedance when there is $0V$ on one or more of the $V_{CC}$ pins. The below image shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART:
 
 {/* {{% figure src="voltage-translator-to-prevent-uart-backfeeding.png" width="800" caption="Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed." %}} */}
-import voltage_translator_to_prevent_uart_backfeeding from './voltage-translator-to-prevent-uart-backfeeding.png'
-
-<Image src={voltage_translator_to_prevent_uart_backfeeding} width="800">Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed.</Image>
+<Image src={import('./voltage-translator-to-prevent-uart-backfeeding.png')} width="800">Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed.</Image>
 
 Rather than a voltage-level translating IC, a buffer IC with $I_{OFF}$ functionality (this is what Texas Instruments calls a logic IC which won't backfeed current from the I/O pins into the $V_{CC}$ pins when the VCC pins are at $0V$) will also work -- for example, the SN74LVC1G125 ("Single Bus Buffer Gate With 3-State Output").
 
@@ -166,9 +162,7 @@ Rather than a voltage-level translating IC, a buffer IC with $I_{OFF}$ functiona
 Spurious garbage can be sent along along a microcontrollers UART TX line when the microcontroller resets. When microcontrollers reset, all of their GPIO pins typically default back to high-impedance inputs. This will cause the voltage on the TX line, typically idling HIGH, to collapse and signal `LOW`. The UART receiver on the other end of the bus could interpret this as data and give to nonsensical garbage. As shown in the below image, a solution to this is to add a pull-up resistor to $V_{CC}$, which keeps the TX line HIGH when the microcontroller resets.
 
 {/* {{% figure src="pull-up-on-uart-tx-line.png" width="500" caption="A 10kΩ pull-up resistor added to the UART TX line (TX w.r.t to the MCU) from a MCU to prevent spurious data being sent when the MCU resets or otherwise disables the UART peripheral via firmware." %}} */}
-import pull_up_on_uart_tx_line from './pull-up-on-uart-tx-line.png'
-
-<Image src={pull_up_on_uart_tx_line} width="500">A 10kΩ pull-up resistor added to the UART TX line (TX w.r.t to the MCU) from a MCU to prevent spurious data being sent when the MCU resets or otherwise disables the UART peripheral via firmware.</Image>
+<Image src={import('./pull-up-on-uart-tx-line.png')} width="500">A 10kΩ pull-up resistor added to the UART TX line (TX w.r.t to the MCU) from a MCU to prevent spurious data being sent when the MCU resets or otherwise disables the UART peripheral via firmware.</Image>
 
 {/* {{% aside type="tip" %}} */}
 <Aside type="tip">
@@ -189,9 +183,7 @@ A easy to use and powerful terminal program for Windows. Stolen from the website
 It can view and send binary, hex, ASCII, ANSI, integers (both signed and unsigned, 8 or 16-bit), floats and more. Support for half-duplex communication as well as I2C! Does not lag/hang at all (including when you disable the COM port while it is still running). You can run multiple RealTerm apps at the same time, to get data from multiple UART ports simultaneously. It can add timestamps to received UART messages, which is useful for data logging.
 
 {/* {{% figure src="realterm-window.jpg" width="620" caption="A screenshot of RealTerm in action." %}} */}
-import realterm_window from './realterm-window.jpg'
-
-<Image src={realterm_window} width="620">A screenshot of RealTerm in action.</Image>
+<Image src={import('./realterm-window.jpg')} width="620">A screenshot of RealTerm in action.</Image>
 
 I have noticed a few bugs with RealTerm, especially when it comes to changing the number of rows and columns, and scrolling back through received data (the scrollback variable is buggy also).
 
@@ -204,9 +196,7 @@ Website: [https://sites.google.com/site/terminalbpp/](https://sites.google.com/s
 A simple and tidy Windows terminal program. Personally, it doesn't get the same amount of respect as RealTerm because of it's simplicity and slightly buggy nature. When decoding into hex, the program can hang if your receiving large amounts of data. It can also hang if you disable the COM port while it is still connected.
 
 {/* {{% figure src="terminal-v1-9b-by-bray-window.jpg" width="800" caption="A screenshot of 'Terminal by Br@y' in action." %}} */}
-import terminal_v1_9b_by_bray_window from './terminal-v1-9b-by-bray-window.jpg'
-
-<Image src={terminal_v1_9b_by_bray_window} width="800">A screenshot of 'Terminal by Br@y' in action.</Image>
+<Image src={import('./terminal-v1-9b-by-bray-window.jpg')} width="800">A screenshot of 'Terminal by Br@y' in action.</Image>
 
 ### PuTTy (4/5)
 
@@ -217,16 +207,12 @@ Website: [http://www.chiark.greenend.org.uk/~sgtatham/putty/](http://www.chiark.
 If your running windows, PuTTY is a very handy application to have if you want to emulate the command-line style interface of a UNIX-like system. Although the debugging and capturing features are not as good as say, RealTerm, it offers character-by-character input and proper response to pressing 'special' keys such as enter (which RealTerm doesn't allow, instead you have to enter a string and then press send). This may sound like a very small difference, but this feature does come in useful! I find it very handy when using FreeRTOS and the CLI (command-line interface) extension, which allows you to communicate from a pc to a embedded system using a command-line style interface (as in the picture to the right).
 
 {/* {{% figure src="putty-terminal-screenshot-with-settings-window.png" width="831" caption="A screenshot of the PuTTy application in action, along with the settings window." %}} */}
-import putty_terminal_screenshot_with_settings_window from './putty-terminal-screenshot-with-settings-window.png'
-
-<Image src={putty_terminal_screenshot_with_settings_window} width="831">A screenshot of the PuTTy application in action, along with the settings window.</Image>
+<Image src={import('./putty-terminal-screenshot-with-settings-window.png')} width="831">A screenshot of the PuTTy application in action, along with the settings window.</Image>
 
 I have discovered one bug in PuTTY...if it receives a large number of characters all at once (which is common when printing debug messages from an embedded system, and for some reason, the string is not null-terminated, and starts printing gobble-de-gooch from random memory locations), PuTTY can freeze, and needs to be restarted. In this situation, it can also print the message "PuTTyPuTTyPuTTy" many times over across the COM port you are debugging. Weird.
 
 {/* {{% figure src="putty-bug-when-receiving-large-num-of-chars.png" width="699" caption="PuTTY can freeze when printing a large number of random characters to it across a COM port." %}} */}
-import putty_bug_when_receiving_large_num_of_chars from './putty-bug-when-receiving-large-num-of-chars.png'
-
-<Image src={putty_bug_when_receiving_large_num_of_chars} width="699">PuTTY can freeze when printing a large number of random characters to it across a COM port.</Image>
+<Image src={import('./putty-bug-when-receiving-large-num-of-chars.png')} width="699">PuTTY can freeze when printing a large number of random characters to it across a COM port.</Image>
 
 ## 9-Bit Addressing
 
@@ -263,8 +249,6 @@ The [SIG60](http://www.yamar.com/sig60.php) is an example of a powerline transce
 There are occasions when you want or need to send serial data between two pieces of software on the computer, or between two hardware devices both connected to the computer. An example would be to unit test a PC-based serial communications protocol you have written without writing the unit-test code on the microcontroller. There are software programs that emulate a serial port bridge, but in my experience I found these are every buggy or cost money.
 
 {/* {{% figure src="testing-a-physical-serial-port-bridge.jpg" width="931" caption="Testing a physical serial-port bridge, made by connecting two FTDI cable together." %}} */}
-import testing_a_physical_serial_port_bridge from './testing-a-physical-serial-port-bridge.jpg'
-
-<Image src={testing_a_physical_serial_port_bridge} width="931">Testing a physical serial-port bridge, made by connecting two FTDI cable together.</Image>
+<Image src={import('./testing-a-physical-serial-port-bridge.jpg')} width="931">Testing a physical serial-port bridge, made by connecting two FTDI cable together.</Image>
 
 You can create a rudimentary serial bridge to connect to pieces of software together by connecting two USB-to-UART (or USB-to-RS232) converters together, crossing the RX and TX lines over. Although not a very permanent solution, this is good for simple tests. The following image shows a hardware-based serial port bridge with a terminal on each end.

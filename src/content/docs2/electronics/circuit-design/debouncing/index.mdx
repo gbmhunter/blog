@@ -18,9 +18,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Debouncing_ is the technique of detecting and removing multiple state changes from a hardware device (most commonly a push-button switch) caused when the mechanical contacts touch. Because of tiny imperfections in switch contacts, as the contacts come together and make a conductive circuit, the actual resistance jumps up and down multiple times in quick succession (this is the bouncing). Although the human eye cannot see this when a light is turned on in a house, this bouncing can cause problems for logic which is expecting a single state tradition (e.g. a microcontroller which is counting button presses).
 
-import example_switch_waveform_needs_debouncing from './_assets/example-switch-waveform-needs-debouncing.webp'
-
-<Image src={example_switch_waveform_needs_debouncing} width="600">An example output from a button press, which needs debouncing.</Image>
+<Image src={import('./_assets/example-switch-waveform-needs-debouncing.webp')} width="600">An example output from a button press, which needs debouncing.</Image>
 
 You might have encountered a cheap electronic device before which didn't perform debouncing, and noticed when pressing buttons the device would behave erratically. Sometimes pressing down once will scroll through multiple items, or pressing "back" will jump through multiple menus (Puhui T-962 Reflow Oven, I'm looking at you).
 
@@ -34,17 +32,13 @@ _Hardware debouncing_ is about using passive components and simple logic to debo
 
 One simple way is to use a RC circuit with a Schmitt inverter:
 
-import rc_debouncing_circuit from './_assets/rc-debouncing-circuit.webp'
-
-<Image src={rc_debouncing_circuit} width="600">A simple RC debouncing circuit.</Image>
+<Image src={import('./_assets/rc-debouncing-circuit.webp')} width="600">A simple RC debouncing circuit.</Image>
 
 Schmitt behaviour is needed on the inverter otherwise the bouncing which causes the RC charging/discharging waveform to wobble could cause the inverter output to toggle back and forth, rendering the circuit useless.
 
 The following diagram shows how this RC debouncing circuit works:
 
-import rc_debouncing_waveforms from './_assets/rc-debouncing-waveforms.webp'
-
-<Image src={rc_debouncing_waveforms} width="900">RC debouncing waveforms.</Image>
+<Image src={import('./_assets/rc-debouncing-waveforms.webp')} width="900">RC debouncing waveforms.</Image>
 
 One problem with this approach is asymmetric charging and discharging times, due to the capacitor being discharged through only $R1$ but charged back up through $R1$ and $R2$. This difference can be minimized by making $R2$ much larger than $R1$ ($R2 >> R1$) or by adding in a by-pass diode (see below).
 

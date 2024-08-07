@@ -10,9 +10,7 @@ type: "post"
 
 import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
-import happy_new_year_2021 from './happy-new-year-2021.jpg'
-
-<Image src={happy_new_year_2021} width="500px">Happy new year!</Image>
+<Image src={import('./happy-new-year-2021.jpg')} width="500px">Happy new year!</Image>
 
 [2020 may be the year we all want to forget](https://en.wikipedia.org/wiki/Death_to_2020). The silver lining is that the lockdown period gave me some extra time to work on extra content and improvements for this blog.
 
@@ -47,13 +45,9 @@ Year | Num. Page Views | Num. Users
 2019 | 99k             | 49k
 2020 | 134k            | 97k
 
-import number_of_page_views_2019_2020 from './number-of-page-views-2019-2020.png'
+<Image src={import('./number-of-page-views-2019-2020.png')} width="800px">A comparison of the number of page views per week for the 2019 and 2020 years. Image from Google Analytics.</Image>
 
-<Image src={number_of_page_views_2019_2020} width="800px">A comparison of the number of page views per week for the 2019 and 2020 years. Image from Google Analytics.</Image>
-
-import number_of_users_2019_2020 from './number-of-users-2019-2020.png'
-
-<Image src={number_of_users_2019_2020} width="800px">A comparison of the number of users per week for the 2018 and 2019 years. Image from Google Analytics.</Image>
+<Image src={import('./number-of-users-2019-2020.png')} width="800px">A comparison of the number of users per week for the 2018 and 2019 years. Image from Google Analytics.</Image>
 
 As per standard Google nomenclature, a _page view_ is a single view of a page (which can be a returning or new user). A _user_ is a unique person who has visited this website at least once.
 
@@ -61,27 +55,19 @@ As per standard Google nomenclature, a _page view_ is a single view of a page (w
 
 The top 6 pages, ranked by number of page views:
 
-import top_6_pages_2019_2020 from './top-6-pages-2019-2020.png'
-
-<Image src={top_6_pages_2019_2020} width="800px">The top 10 most visited pages of 2019. Image from Google Analytics.</Image>
+<Image src={import('./top-6-pages-2019-2020.png')} width="800px">The top 10 most visited pages of 2019. Image from Google Analytics.</Image>
 
 Again, we see the Linux-related serial port and CAN bus pages that shifted to top position in 2019 remain there for 2020. 
 
 ### Acquisition
 
-import acquisitions_2019_2020 from './acquisitions-2019-2020.png'
+<Image src={import('./acquisitions-2019-2020.png')} width="800px">The top channels of 2020 as a bar graph, compared with 2019. Image from Google Analytics.</Image>
 
-<Image src={acquisitions_2019_2020} width="800px">The top channels of 2020 as a bar graph, compared with 2019. Image from Google Analytics.</Image>
-
-import top_channels_2019_2020 from './top-channels-2019-2020.png'
-
-<Image src={top_channels_2019_2020} width="400px">The top channels of 2020 as a percentage, compared with 2019. Image from Google Analytics.</Image>
+<Image src={import('./top-channels-2019-2020.png')} width="400px">The top channels of 2020 as a percentage, compared with 2019. Image from Google Analytics.</Image>
 
 ### Most Popular Referrers
 
-import referrals_2020 from './referrals-2020.png'
-
-<Image src={referrals_2020} width="800px">The top referrers of 2020. Image from Google Analytics.</Image>
+<Image src={import('./referrals-2020.png')} width="800px">The top referrers of 2020. Image from Google Analytics.</Image>
 
 ## Goal Completion
 

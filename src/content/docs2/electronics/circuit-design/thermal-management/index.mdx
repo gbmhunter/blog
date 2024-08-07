@@ -45,16 +45,12 @@ P_D = \frac{T_J - T_A}{R_{JC} + R_{CH} + R_{HA}}
 $$
 
 {/* {{% figure src="thermal-resistance-diagram-with-semiconductor.png" caption="A diagram showing how thermal resistance works. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf."  width="800px" %}} */}
-import thermal_resistance_diagram_with_semiconductor from './thermal-resistance-diagram-with-semiconductor.png'
-
-<Image src={thermal_resistance_diagram_with_semiconductor} width="800">A diagram showing how thermal resistance works. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf</Image>
+<Image src={import('./thermal-resistance-diagram-with-semiconductor.png')} width="800">A diagram showing how thermal resistance works. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf</Image>
 
 An analogy to electrical resistance...
 
 {/* {{% figure src="analogy-of-thermal-resistance-to-electrical-resistance.png" caption="The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf."  width="800px" %}} */}
-import analogy_of_thermal_resistance_to_electrical_resistance from './analogy-of-thermal-resistance-to-electrical-resistance.png'
-
-<Image src={analogy_of_thermal_resistance_to_electrical_resistance} width="800">The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
+<Image src={import('./analogy-of-thermal-resistance-to-electrical-resistance.png')} width="800">The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
 
 ## Inaccuracies In The Thermal Resistance Model
 
@@ -67,6 +63,4 @@ See the [Component Packages page](/pcb-design/component-packages/). This has man
 Below is a condensed list of experimentally found internal thermal resistances (junction-to-case).
 
 {/* {{% figure src="experimentally-determined-internal-thermal-resistances-for-smd-resistors.png" caption="Experimentally determined values for the internal thermal resistance (junction-to-case) for various sized SMD resistors. Image from http://www.vishay.com/docs/28705/mc_pro.pdf."  width="500px" %}} */}
-import experimentally_determined_internal_thermal_resistances_for_smd_resistors from './experimentally-determined-internal-thermal-resistances-for-smd-resistors.png'
-
-<Image src={experimentally_determined_internal_thermal_resistances_for_smd_resistors} width="500">Experimentally determined values for the internal thermal resistance (junction-to-case) for various sized SMD resistors. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
+<Image src={import('./experimentally-determined-internal-thermal-resistances-for-smd-resistors.png')} width="500">Experimentally determined values for the internal thermal resistance (junction-to-case) for various sized SMD resistors. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>

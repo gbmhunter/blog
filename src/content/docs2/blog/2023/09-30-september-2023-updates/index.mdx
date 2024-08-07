@@ -16,22 +16,16 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
     * Migrated from an Electron App to a PWA (Progressive Web App).
     * The homepage needed some love, half the .gifs were broken and showed out-of-date content. I embraced the dark side and [remade the homepage](https://ninjaterm.mbedded.ninja/) with a dark theme that matched the theme of the app. I also migrated it from using GitHub pages to being part of the app itself, meaning only 1 website to deploy, not two.
 
-import ninjaterm_homepage_old_new_comparison from './ninjaterm-homepage-old-new-comparison.webp'
-
-<Image src={ninjaterm_homepage_old_new_comparison} width="900px"></Image>
+<Image src={import('./ninjaterm-homepage-old-new-comparison.webp')} width="900px"></Image>
     * Added support for more ANSI Escape Codes.
 
 * Added info on [stuck (hung) I2C buses and how to recover from them](/electronics/communication-protocols/i2c-communication-protocol/#stuck-i2c-buses).
 
-import stuck_i2c_buses_screenshot from './stuck-i2c-buses-screenshot.png'
-
-<Image src={stuck_i2c_buses_screenshot} width="600px"></Image>
+<Image src={import('./stuck-i2c-buses-screenshot.png')} width="600px"></Image>
 
 * Added info on [I2C start conditions, address bytes, data bytes and stop conditions](/electronics/communication-protocols/i2c-communication-protocol/#protocol-format).
 
-import i2c_protocol_format_screenshot from './i2c-protocol-format-screenshot.png'
-
-<Image src={i2c_protocol_format_screenshot} width="600px"></Image>
+<Image src={import('./i2c-protocol-format-screenshot.png')} width="600px"></Image>
 
 * Added info on providing clearance on PCBs for screw heads.
 

@@ -31,9 +31,7 @@ You could aim to add enough capacitance so that when the internal capacitor is c
 
 1. **The ADC input takes a long time to settle if the battery voltage changes quickly.** This is most apparent if you have just connected the battery to the device, and the MCU powers up and measures the battery voltage. The MCU boot time is likely to be very fast compared to the RC time constant with $2.2M\Omega$ resistors. Your MCU firmware might think the battery is flat, but in reality the ADC input capacitance is still charing up! You will have to add a delay in to only measure the battery after a delay on startup.
 
-import battery_voltage_measurement_with_resistor_divider_caps_and_adc from './_assets/battery-voltage-measurement-with-resistor-divider-caps-and-adc.webp'
-
-<Image src={battery_voltage_measurement_with_resistor_divider_caps_and_adc} width="800px">.</Image>
+<Image src={import('./_assets/battery-voltage-measurement-with-resistor-divider-caps-and-adc.webp')} width="800px">.</Image>
 
 ## Use a SMPS Instead of a Linear Regulator
 
@@ -72,12 +70,8 @@ Get that `-Os` flag into action!
 
 One of the difficulties of measuring low power circuits is that you often need a measurement device which has a very large dynamic range. Most low power circuits will draw something in the 1 to 10's of microamps when sleeping, and then suddenly draw mA or amps for short durations when actively doing something. Most multimeters can measure microamps accurately, but will saturate when large currents are draw. Worse, they may not even permit a large current to be drawn, either due to a large measurement resistance or fuse being blown.
 
-import power_profiler_kit_2_photo from './_assets/power-profiler-kit-2-photo.webp'
+<Image src={import('./_assets/power-profiler-kit-2-photo.webp')} width="1000px">A photo of the Nordic Power Profiler Kit 2 when measuring the power to a low-power embedded circuit (off the bottom of screen, not visible).</Image>
 
-<Image src={power_profiler_kit_2_photo} width="1000px">A photo of the Nordic Power Profiler Kit 2 when measuring the power to a low-power embedded circuit (off the bottom of screen, not visible).</Image>
-
-import nrf_power_profiler_screenshot_showing_typical_low_power_mcu_with_spikes from './_assets/nrf-power-profiler-screenshot-showing-typical-low-power-mcu-with-spikes.png'
-
-<Image src={nrf_power_profiler_screenshot_showing_typical_low_power_mcu_with_spikes} width="1000px">A screenshot of the nRF Power Profiler showing the current consumption of a typical low-power MCU circuit using Bluetooth LE. The idle current consumption is approx. 7uA, and current spikes up to approx. 10mA during Bluetooth transmissions, resulting in an average current of 120uA. Note the logarithmic Y-axis.</Image>
+<Image src={import('./_assets/nrf-power-profiler-screenshot-showing-typical-low-power-mcu-with-spikes.png')} width="1000px">A screenshot of the nRF Power Profiler showing the current consumption of a typical low-power MCU circuit using Bluetooth LE. The idle current consumption is approx. 7uA, and current spikes up to approx. 10mA during Bluetooth transmissions, resulting in an average current of 120uA. Note the logarithmic Y-axis.</Image>
 
 [^nordic-measuring-lithium-batt-voltage-with-nrf52]: Ole Bauck (2016, May 23). _Measuring Lithium battery voltage with nRF52_. Nordic Semiconductor. Retrieved 2024-02-10, from https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/measuring-lithium-battery-voltage-with-nrf52.

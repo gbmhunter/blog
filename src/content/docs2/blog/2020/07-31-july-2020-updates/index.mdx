@@ -14,15 +14,11 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Added a [Input Resistors section to the Op-Amp page](/electronics/components/op-amps#input-resistors).
 
-import img_op_amp_input_pin_resistors from './_assets/op-amp-input-pin-resistors.png'
-
-<Image src={img_op_amp_input_pin_resistors} width="500px"></Image>
+<Image src={import('./_assets/op-amp-input-pin-resistors.png')} width="500px"></Image>
 
 Added a section on [CMOS latch-up to the Logic Families page](/electronics/circuit-design/logic-families#latch-up).
 
-import img_cmos_latch_up_semiconductor_diagram from './_assets/cmos-latch-up-semiconductor-diagram.svg'
-
-<Image src={img_cmos_latch_up_semiconductor_diagram} width="700px"></Image>
+<Image src={import('./_assets/cmos-latch-up-semiconductor-diagram.svg')} width="700px"></Image>
 
 Added a new [IEEE-488 (GLIB) page](/electronics/communication-protocols/ieee-488-glib) under [Communication Protocols](/electronics/communication-protocols). 
 
@@ -36,8 +32,6 @@ Updated the [SOIC Component Package page](/pcb-design/component-packages/soic-co
 
 Added a new [Consistent Overhead Byte Stuffing page](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs).
 
-import cobs_encoding_diagram from './_assets/cobs-encoding-diagram.png'
-
-<Image src={cobs_encoding_diagram} width="800px"></Image>
+<Image src={import('./_assets/cobs-encoding-diagram.png')} width="800px"></Image>
 
 Updated the [SON Component Package page](/pcb-design/component-packages/son-component-package). Added a [DFN Component Package page](/pcb-design/component-packages/dfn-component-package) which links to the SON page.

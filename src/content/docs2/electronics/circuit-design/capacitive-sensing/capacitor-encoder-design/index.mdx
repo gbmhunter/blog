@@ -106,9 +106,7 @@ The reason I recommend adding a dielectric is that it **stabilizes** the capacit
 
 I achieved good results when using 0.165mm thick acrylic adhesive transfer tape (3M code 467MP), as shown below.
 
-import n_165um_dielectric_3m_467mp_half_peeled_off_backing from './165um-dielectric-3m-467mp-half-peeled-off-backing.jpg'
-
-<Image src={n_165um_dielectric_3m_467mp_half_peeled_off_backing} width="400">165um plastic dielectric (3M 467MP).</Image>
+<Image src={import('./165um-dielectric-3m-467mp-half-peeled-off-backing.jpg')} width="400">165um plastic dielectric (3M 467MP).</Image>
 
 ## Maximum Velocities
 
@@ -124,21 +122,15 @@ The skewing can be prevented by:
 
 The following image shows the individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).
 
-import cap_encoder_individual_cdc_waveform_graphs_for_both_tracks from './cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg'
-
-<Image src={cap_encoder_individual_cdc_waveform_graphs_for_both_tracks} width="800">The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).</Image>
+<Image src={import('./cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg')} width="800">The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).</Image>
 
 The following image shows the grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).
 
-import cap_encoder_grouped_cdc_waveform_graphs_for_both_tracks from './cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg'
-
-<Image src={cap_encoder_grouped_cdc_waveform_graphs_for_both_tracks} width="800">The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).</Image>
+<Image src={import('./cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg')} width="800">The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).</Image>
 
 What makes the signal processing difficult is that the channels of CDC values can have different offset's. The graph below shows this (notice the light green channel which has a much higher offset than all the others.
 
-import cdc_vs_time_graph_showing_different_offsets_of_each_channel from './cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg'
-
-<Image src={cdc_vs_time_graph_showing_different_offsets_of_each_channel} width="800">CDC values vs. time graph showing the different offsets each channel can have.</Image>
+<Image src={import('./cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg')} width="800">CDC values vs. time graph showing the different offsets each channel can have.</Image>
 
 ## Firmware And Algorithm
 
@@ -213,9 +205,7 @@ The absolute position can be found if the capacitive encoder has two tracks (usi
 
 The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
 
-import cdc_phase_difference_graph_showing_noisy_stepwise_increments from './cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg'
-
-<Image src={cdc_phase_difference_graph_showing_noisy_stepwise_increments} width="800">Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks.</Image>
+<Image src={import('./cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg')} width="800">Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks.</Image>
 
 A maths function, `Maths_RoundToPrecision()` needs to be used to round the phase difference to the closest expected value.
 

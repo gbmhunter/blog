@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Electrical _connectors_ are physical devices to electrically connect things together. Not only are they used in the traditional sense to connect a [^_wire_to_board_wtb_connectors, wire to a board] (board usually means PCB), but there is a huge number of types to connect wires to wires, boards to boards, wires to panels (panel mount), breakouts, and more. There are specialty connectors for RF (radio frequency), high current and high voltage. Connectors can also be characterized by their shape, for example the popular M8/M12 circular connectors.
 
-import jst_ph_connector_photo from './jst-ph-connector-photo.png'
-
-<Image src={jst_ph_connector_photo} width="400">Photo of the W2B (wire-to-board) PH 2.0mm pitch connector from JST[^bib-jst-ph-conn].</Image>
+<Image src={import('./jst-ph-connector-photo.png')} width="400">Photo of the W2B (wire-to-board) PH 2.0mm pitch connector from JST[^bib-jst-ph-conn].</Image>
 
 This page will hopefully explain the various types of connectors you can purchase and when they should be used in electronic/embedded projects. 
 
@@ -120,9 +118,7 @@ Selecting gold tinned contacts can add a good US$0.50 or more to the price of th
 
 Mixing the two plating metals is not recommended! The corrosion rate is greatly increased when two dissimilar metals come into contact with each other (this is due to the difference in the metal's electrode potentials, which is +1.5V for gold, and only +0.15V for tin).
 
-import gold_and_tin_plated_contacts from './gold-and-tin-plated-contacts.jpg'
-
-<Image src={gold_and_tin_plated_contacts} width="500">You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/</Image>
+<Image src={import('./gold-and-tin-plated-contacts.jpg')} width="500">You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/</Image>
 
 ## Telecom Connectors
 
@@ -138,9 +134,7 @@ This is still a relatively new field compared to other forms of connectors, and 
 
 TE Connectivity make a range under the family name [ARISO](http://www.digikey.co.nz/en/product-highlight/t/te-connectivity-amp/ariso-contactless-connectivity). They are capable to transmitting up to 12W of power at 24VDC.
 
-import te_connectivity_ariso_m30_contactless_connector_pair_photo from './te-connectivity-ariso-m30-contactless-connector-pair-photo.png'
-
-<Image src={te_connectivity_ariso_m30_contactless_connector_pair_photo} width="640">A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com.</Image>
+<Image src={import('./te-connectivity-ariso-m30-contactless-connector-pair-photo.png')} width="640">A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com.</Image>
 
 ## Terminal Blocks
 
@@ -177,9 +171,7 @@ There are different types of terminal blocks:
 
 You can see the push-in terminal blocks I used to connect up all the solenoids for the [Luxcity Tonic project](/electronics/projects/luxcity-uv-tonic-control-system) in the image below (the green things with numbered stickers and wires coming out of them).
 
-import arduino_relay_shields_and_relays from './arduino-relay-shields-and-relays.jpg'
-
-<Image src={arduino_relay_shields_and_relays} width="1200">Many push-in terminal blocks (items in green) I used as part of the [Luxcity Tonic project](/electronics/projects/luxcity-uv-tonic-control-system).</Image>
+<Image src={import('./arduino-relay-shields-and-relays.jpg')} width="1200">Many push-in terminal blocks (items in green) I used as part of the [Luxcity Tonic project](/electronics/projects/luxcity-uv-tonic-control-system).</Image>
 
 However, because they do not enforce a specific wiring configuration, they are prone to wiring errors, especially if someone else than that who designed the circuit is wiring it up.
 
@@ -218,9 +210,7 @@ Common pitches for terminal blocks are:
 
 A better way to fix this problem is to use wire ferrules. These are small hollow metal cylinder which just fit over the wire and then crimped onto it, before being inserted into the terminal block. It stops the wires from fraying, and gets rid of the solder creep problem.
 
-import wire_ferrules_used_in_terminal_block from './wire-ferrules-used-in-terminal-block.jpg'
-
-<Image src={wire_ferrules_used_in_terminal_block} width="500">Wire ferrule are crimped onto wires before they are inserted into a terminal block, preventing fraying and solder creep.</Image>
+<Image src={import('./wire-ferrules-used-in-terminal-block.jpg')} width="500">Wire ferrule are crimped onto wires before they are inserted into a terminal block, preventing fraying and solder creep.</Image>
 
 ### Connection Type
 
@@ -228,17 +218,13 @@ Terminal blocks have many different connection types:
 
 #### Screw
 
-import terminal_block_screw_style from './terminal-block-screw-style.jpg'
-
-<Image src={terminal_block_screw_style} width="181">A terminal block with a screw-style connection method.</Image>
+<Image src={import('./terminal-block-screw-style.jpg')} width="181">A terminal block with a screw-style connection method.</Image>
 
 The most basic terminal block connection type. I don't particularly like this connection style, especially when clamping bare wires (i.e. no wire ferrule), as the screw can pinch and break the individual wire strands, as well as the screw completely missing some/all of the wire strands if they ride up the sides of the metal enclosure. This problem is exasperated when the gauge of the wire is small compared to the size of the terminal block.
 
 #### Rising Cage
 
-import terminal_block_rising_cage_close_up from './terminal-block-rising-cage-close-up.jpg'
-
-<Image src={terminal_block_rising_cage_close_up} width="148">A terminal block with a rising-cage style connection method.</Image>
+<Image src={import('./terminal-block-rising-cage-close-up.jpg')} width="148">A terminal block with a rising-cage style connection method.</Image>
 
 Screw with rising cage clamp is my preferred connection type. This is where the bottom side of a square cage rises up and clamps the wire when you tighten the screw. This does not pinch and break the wire as often as the basic screw connection type terminal block does.
 
@@ -248,35 +234,25 @@ You can purchase terminal block covers, which give further protection to the wir
 
 Commonly, they clip onto the top of the terminal block and shield the terminal block from objects approaching from overhead.
 
-import terminal_block_cover_beside_block1 from './terminal-block-cover-beside-block1.jpg'
+<Image src={import('./terminal-block-cover-beside-block1.jpg')} width="400">A terminal block cover beside the terminal block.</Image>
 
-<Image src={terminal_block_cover_beside_block1} width="400">A terminal block cover beside the terminal block.</Image>
-
-import terminal_block_cover_mounted_on_block from './terminal-block-cover-mounted-on-block.jpg'
-
-<Image src={terminal_block_cover_mounted_on_block} width="400">A terminal block cover mounted onto a terminal block.</Image>
+<Image src={import('./terminal-block-cover-mounted-on-block.jpg')} width="400">A terminal block cover mounted onto a terminal block.</Image>
 
 ### Ceramic (Porcelain) Terminal Blocks
 
 Ceramic (also called _porcelain_) terminal blocks were used before plastic ones became widely available. They still find a niche in applications where they would be subjected to very high temperatures that would melt plastic. They can typically operate in temperatures of -40° to 650°C. This includes things such as heaters, thermocouple connections, machinery, and many other industrial uses. Steatite is a popular ceramic material used for construction of these types of terminal blocks.
 
-import n_20150109_ceramic_terminal_block from './20150109-ceramic-terminal-block.jpg'
-
-<Image src={n_20150109_ceramic_terminal_block} width="400">A ceramic terminal block.</Image>
+<Image src={import('./20150109-ceramic-terminal-block.jpg')} width="400">A ceramic terminal block.</Image>
 
 ## Barrier Strips
 
 _Barrier strips_ (a.k.a. _barrier blocks_) are rows of screw-based electrical clamps designed to connect wires together. They are very similar to [^_terminal_blocks, terminal blocks], however they generally provide better protection than terminal blocks against loose of frayed wire ends shorting out against adjacent positions. They are also generally rated for higher current/voltage applications than terminal blocks (300-600V, 10-30A ratings are common), and consequentially usually larger (pitches of 8-12mm).
 
-import molex_0387700104_barrier_strip_photo from './molex-0387700104-barrier-strip-photo.png'
-
-<Image src={molex_0387700104_barrier_strip_photo} width="400">Photo of a 4 circuit 9.53mm (0.375") pitch barrier strip by Molex (part number: 0387700104). Image retrieved 2021-10-07, from https://www.digikey.com/en/products/detail/molex/0387700104/362488.</Image>
+<Image src={import('./molex-0387700104-barrier-strip-photo.png')} width="400">Photo of a 4 circuit 9.53mm (0.375") pitch barrier strip by Molex (part number: 0387700104). Image retrieved 2021-10-07, from https://www.digikey.com/en/products/detail/molex/0387700104/362488.</Image>
 
 Whilst terminal blocks don't usually have an exposed metal that can easily short out against neighbouring parts, barrier strips are open on the top face (to allow for the connection of lugs). If the exposed conductors are a problem, you can purchase some barrier strips that come with insulating covers. The covers are usually see-through and made of plastic.
 
-import barrier_strips_forks_coloured_glarks from './barrier-strips-forks-coloured-glarks.png'
-
-<Image src={barrier_strips_forks_coloured_glarks} width="400">Photo of covered barrier strips, combs and wire forks. Image retrieved 2021-10-07, from https://www.amazon.com/Glarks-Positions-Terminals-Pre-Insulated-Insulated/dp/B07Y217129/.</Image>
+<Image src={import('./barrier-strips-forks-coloured-glarks.png')} width="400">Photo of covered barrier strips, combs and wire forks. Image retrieved 2021-10-07, from https://www.amazon.com/Glarks-Positions-Terminals-Pre-Insulated-Insulated/dp/B07Y217129/.</Image>
 
 Barrier strips can be found on DigiKey at https://www.digikey.com/en/products/filter/terminal-blocks-barrier-blocks/368.
 
@@ -298,9 +274,7 @@ Trying the find a good, reasonably-priced WTB connector on a electronic supplier
 
 The JST PH 2.0mm pitch W2B connector family is used for the [Adafruit STEMMA devices](https://learn.adafruit.com/introducing-adafruit-stemma-qt), and the JST SH 1.0mm pitch W2B connector used for Adafruit STEMMA QT (QT representing _cutie_, referring to the smaller pitch) and SparkFun QwiiC devices[^bib-adafruit-jst-sh-conn].
 
-import jst_sh_conn_adafruit_stemma_qt_sparkfun_qwiic from './jst-sh-conn-adafruit-stemma-qt-sparkfun-qwiic.png'
-
-<Image src={jst_sh_conn_adafruit_stemma_qt_sparkfun_qwiic} width="400">A photo of a Adafruit "STEMMA QT" or SparkFun "Qwiic" connector + cable. Both use the JST SH 1.0mm pitch W2B connector family[^bib-adafruit-jst-sh-conn]. Image (C) 2021, Adafruit.</Image>
+<Image src={import('./jst-sh-conn-adafruit-stemma-qt-sparkfun-qwiic.png')} width="400">A photo of a Adafruit "STEMMA QT" or SparkFun "Qwiic" connector + cable. Both use the JST SH 1.0mm pitch W2B connector family[^bib-adafruit-jst-sh-conn]. Image (C) 2021, Adafruit.</Image>
 
 #### TE Connectivity HPI
 
@@ -312,9 +286,7 @@ Manufacturing codes include _1775469-x_ for the right-angle SMD variants, and _1
 
 Molex's PicoBlade connector families are quite popular. They have a 1.25mm pitch and a 1A capacity per contact. There are a variety of wire-to-board and wire-to-wire options.
 
-import molex_picoblade_connector_photo from './molex-picoblade-connector-photo.gif'
-
-<Image src={molex_picoblade_connector_photo} width="300">A photo showing a few of the connectors from the Molex PicoBlade families. Image from www.molex.com.</Image>
+<Image src={import('./molex-picoblade-connector-photo.gif')} width="300">A photo showing a few of the connectors from the Molex PicoBlade families. Image from www.molex.com.</Image>
 
 #### MTA/CST-100 Connectors
 
@@ -355,9 +327,7 @@ RF connectors are connectors specifically designed to carry high-frequency signa
 
 BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed for RF signals. It is named after it's **B**ayonet locking mechanism and it's inventors, Paul **N**eill and Carl **C**oncelman. It is "standardized" in MIL-STD-348A[^bib-everyspec-mil-std-348a].
 
-import bnc_connectors_on_oscilloscope from './bnc-connectors-on-oscilloscope.jpg'
-
-<Image src={bnc_connectors_on_oscilloscope} width="700">Four BNC connectors on the front of a Keysight InfiniiVision DSOX2024A oscilloscope to connect the probes to.</Image>
+<Image src={import('./bnc-connectors-on-oscilloscope.jpg')} width="700">Four BNC connectors on the front of a Keysight InfiniiVision DSOX2024A oscilloscope to connect the probes to.</Image>
 
 ### Specifications
 
@@ -372,9 +342,7 @@ They were originally designed for military use, but are now commonly used for a 
 * **Analog video signals**
 * **Radio antennas**
 
-import bnc_adapter_edited from './bnc-adapter-edited.jpg'
-
-<Image src={bnc_adapter_edited} width="300">Photo of a BNC adapter, showing the male BNC connector.</Image>
+<Image src={import('./bnc-adapter-edited.jpg')} width="300">Photo of a BNC adapter, showing the male BNC connector.</Image>
 
 The USSR version of the BNC connector is called the SR connector. However, the connector dimensions are slightly different due to the conversion from imperial to metric. The SR connectors can be mated with BNC connectors, although sometimes it requires a decent amount of force.
 
@@ -382,17 +350,13 @@ The USSR version of the BNC connector is called the SR connector. However, the c
 
 Also known as UMC or XFL connectors.
 
-import ufl_connector_photo from './ufl-connector-photo.png'
-
-<Image src={ufl_connector_photo} width="350">A photo of a male, SMD mount UFL connector. Image from www.digikey.com.</Image>
+<Image src={import('./ufl-connector-photo.png')} width="350">A photo of a male, SMD mount UFL connector. Image from www.digikey.com.</Image>
 
 #### Schematic Symbol
 
 There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
 
-import ufl_umc_umcc_rf_connector_schematic_symbol from './ufl-umc-umcc-rf-connector-schematic-symbol.png'
-
-<Image src={ufl_umc_umcc_rf_connector_schematic_symbol} width="510">A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.</Image>
+<Image src={import('./ufl-umc-umcc-rf-connector-schematic-symbol.png')} width="510">A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.</Image>
 
 The height of the male SMD connector can vary, but something around 1.2mm is common.
 
@@ -400,18 +364,14 @@ The height of the male SMD connector can vary, but something around 1.2mm is com
 
 SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) \(50\Omega\) RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between \(0-16GHz\), although some specialized versions extends in the 30+ GHz territory[^bib-amphenolrf-sma].
 
-import sma_male_and_female_next_to_each_other_edited from './sma-male-and-female-next-to-each-other-edited.jpg'
-
-<Image src={sma_male_and_female_next_to_each_other_edited} width="700">One male and one female inline (connector to cable) SMA connector next to each other.</Image>
+<Image src={import('./sma-male-and-female-next-to-each-other-edited.jpg')} width="700">One male and one female inline (connector to cable) SMA connector next to each other.</Image>
 
 The original SMA connectors were developed in the 1960s[^bib-reichelt-sma-rpsma].
 
 * Standard Male SMA connector: Central **0.9mm diameter pin** surrounded by a barrel with **inside** threads.
 * Standard Female SMA connector: Central **sleeve** (made from the di-electric) surrounded by a barrel with **outside** threads.
 
-import sma_cable_edited from './sma-cable-edited.jpg'
-
-<Image src={sma_cable_edited} width="700">A coaxial cable with SMA connectors at both ends.</Image>
+<Image src={import('./sma-cable-edited.jpg')} width="700">A coaxial cable with SMA connectors at both ends.</Image>
 
 _Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between the male and female parts. Also known as _RP-SMA_ or _R-SMA_. _Reverse-polarity_ was designed  to prevent the unauthorized connection of a antenna with a larger gain to WiFi equipment[^bib-reichelt-sma-rpsma], to distinguish them from cellular equipment involving LTE/GSM/UMTS which was utilizing the standard SMA connector. These days, RP-SMA connectors are now commonplace, somewhat defeating the protection through obscurity. However in general, standard SMA connectors are still used for cellular applications whilst RP-SMA for WiFi/WLAN.
 
@@ -419,9 +379,7 @@ _Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between t
 
 _N connectors_ (a.k.a. N-type or Type N connectors) are large RF connectors.
 
-import n_connector_close_up_edited from './n-connector-close-up-edited.jpg'
-
-<Image src={n_connector_close_up_edited} width="300">Close-up of a N Connector.</Image>
+<Image src={import('./n-connector-close-up-edited.jpg')} width="300">Close-up of a N Connector.</Image>
 
 ### 7/16 DIN Connectors
 
@@ -433,9 +391,7 @@ Board-to-board connectors which connect to PCBs side-by-side are called _coplana
 
 Board-to-board-connectors which connect PCBs ontop of one another are called _mezzanine_ or _stacked_ connectors.
 
-import stacked_board_to_board_connector_photo from './stacked-board-to-board-connector-photo.png'
-
-<Image src={stacked_board_to_board_connector_photo} width="500px">An example of a 'mezzanine' or 'stacked' style of board-to-board connector.</Image>
+<Image src={import('./stacked-board-to-board-connector-photo.png')} width="500px">An example of a 'mezzanine' or 'stacked' style of board-to-board connector.</Image>
 
 ### Wire-to-Board (WTB) Support
 
@@ -443,9 +399,7 @@ Some board-to-board connector families are have wire-to-board support, with a sp
 
 The Hirose DF-59 family is a set of board-to-board/board-to-wire connectors. The special feature about this family is the "floating" contact which allows up to 0.5mm of mis-alignment between the boards.
 
-import df59_hirose_board_to_board_connector_with_special_floating_feature_pdf from './df59-hirose-board-to-board-connector-with-special-floating-feature.pdf.png'
-
-<Image src={df59_hirose_board_to_board_connector_with_special_floating_feature_pdf} width="400px">Diagram of the Hirose DF-59 family of board-to-board connectors, showing their special 'floating' feature.</Image>
+<Image src={import('./df59-hirose-board-to-board-connector-with-special-floating-feature.pdf.png')} width="400px">Diagram of the Hirose DF-59 family of board-to-board connectors, showing their special 'floating' feature.</Image>
 
 ## Mains Power Connectors
 
@@ -453,9 +407,7 @@ import df59_hirose_board_to_board_connector_with_special_floating_feature_pdf fr
 
 The C13/C14 coupler is very common for powering computers, computer screens and other tech equipment from mains power. In New Zealand, they are commonly called "jug plugs".
 
-import iec_60320_c13_male_and_female_mains_power_connector_photo from './iec-60320-c13-male-and-female-mains-power-connector-photo.jpg'
-
-<Image src={iec_60320_c13_male_and_female_mains_power_connector_photo} width="500px">A photo of both the male and female C13/C14 style connectors from the IEC 60320 standard. Also known as 'kettle' or 'jug' plugs. Image from www.amazon.com.</Image>
+<Image src={import('./iec-60320-c13-male-and-female-mains-power-connector-photo.jpg')} width="500px">A photo of both the male and female C13/C14 style connectors from the IEC 60320 standard. Also known as 'kettle' or 'jug' plugs. Image from www.amazon.com.</Image>
 
 ## PCB Card Edge Connectors
 
@@ -465,33 +417,23 @@ The fingers that are etched on the PCB are usually gold plated to make the conta
 
 Card-edge connectors are very susceptible to board warping and board thickness errors, so takes these into consideration when adding card-edge connectors to your PCB design.
 
-import edge_connector_gold_fingers_and_bevel from './edge-connector-gold-fingers-and-bevel.png'
-
-<Image src={edge_connector_gold_fingers_and_bevel} width="445px">Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors.</Image>
+<Image src={import('./edge-connector-gold-fingers-and-bevel.png')} width="445px">Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors.</Image>
 
 The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown).
 
-import pcb_card_edge_connector_example_from_cavro_xl_3000 from './pcb-card-edge-connector-example-from-cavro-xl-3000.jpg'
-
-<Image src={pcb_card_edge_connector_example_from_cavro_xl_3000} width="1200px">An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump.</Image>
+<Image src={import('./pcb-card-edge-connector-example-from-cavro-xl-3000.jpg')} width="1200px">An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump.</Image>
 
 You can get PCB card edge connectors which have latches, which lock in the daughter board which has special "hockey stick" pieces routed on the sides.
 
-import pcb_edge_connector_pci_hockey_stick from './pcb-edge-connector-pci-hockey-stick.png'
-
-<Image src={pcb_edge_connector_pci_hockey_stick} width="412px">Male pcb-card edge connectors can have 'hockey-stick' latches as indicated (the female connector also has to support this).</Image>
+<Image src={import('./pcb-edge-connector-pci-hockey-stick.png')} width="412px">Male pcb-card edge connectors can have 'hockey-stick' latches as indicated (the female connector also has to support this).</Image>
 
 This is a screenshot from a PCB design for the male part of a card-edge connector in Altium.
 
-import altium_card_edge_male_connector_on_pcb from './altium-card-edge-male-connector-on-pcb.png'
-
-<Image src={altium_card_edge_male_connector_on_pcb} width="1502px">An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series.</Image>
+<Image src={import('./altium-card-edge-male-connector-on-pcb.png')} width="1502px">An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series.</Image>
 
 This is a female latching card-edge connector.
 
-import pcb_connector_with_latches_3m_spd08 from './pcb-connector-with-latches-3m-spd08.png'
-
-<Image src={pcb_connector_with_latches_3m_spd08} width="1265px">A 20-pin card-edge female connector from the Molex SPD08 series.</Image>
+<Image src={import('./pcb-connector-with-latches-3m-spd08.png')} width="1265px">A 20-pin card-edge female connector from the Molex SPD08 series.</Image>
 
 In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from the socket, the connector manufacturer will also manufacture a plug which replicates PCB fingers, instead of you using the PCB for this purpose.
 
@@ -501,9 +443,7 @@ Unlike most other electrical components, most connector manufacturers do not app
 
 The website https://connectorbook.com/identification.html is a great tool to help you identify unknown connectors. If guides you through a series of questions which narrows down the connector you are looking at.
 
-import identifying_a_w2b_connector_on_connector_book from './identifying-a-w2b-connector-on-connector-book.png'
-
-<Image src={identifying_a_w2b_connector_on_connector_book} width="700px">Identifying a W2B (wire-to-board) connector with the help connectorbook.com[^bib-connector-book].</Image>
+<Image src={import('./identifying-a-w2b-connector-on-connector-book.png')} width="700px">Identifying a W2B (wire-to-board) connector with the help connectorbook.com[^bib-connector-book].</Image>
 
 [^bib-te-mta-100-conns]:  TE Connectivity. _MTA 100 & MTA 156 Connectors_. Retrieved 2021-10-07, from https://www.te.com/usa-en/products/connectors/pcb-connectors/intersection/mta-100-mta-156-connectors.html.
 [^bib-reichelt-sma-rpsma]:  Reichelt Elektronik. _SMA and RP-SMA – What You Need to Know About Coaxial Connectors_. Retrieved 2021-11-22, from https://www.reichelt.com/magazin/en/sma-and-rp-sma-what-you-need-to-know-about-coaxial-connectors/.

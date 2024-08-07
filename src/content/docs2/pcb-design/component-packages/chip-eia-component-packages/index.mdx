@@ -167,15 +167,11 @@ Used for PTC resettable fuses[^bib-belfuse-0zcf-ptc].
 
 The following image shows how you can easily route an 0.2mm thick trace between the pads of a 0805 component.
 
-import routing_between_0805_footprints from './routing-between-0805-footprints.jpg'
-
-<Image src={routing_between_0805_footprints} width="500px">Routing between the pads of a 0805 footprint (in Altium).</Image>
+<Image src={import('./routing-between-0805-footprints.jpg')} width="500px">Routing between the pads of a 0805 footprint (in Altium).</Image>
 
 The following image is of 0603 (imperial) SMD components inside a small container.
 
-import smd_container_open_and_closed from './smd-container-open-and-closed.jpg'
-
-<Image src={smd_container_open_and_closed} width="800px">A container from DealExtreme used for holding SMD components (capacitors in this picture)</Image>
+<Image src={import('./smd-container-open-and-closed.jpg')} width="800px">A container from DealExtreme used for holding SMD components (capacitors in this picture)</Image>
 
 ## SMD Chip Resistors
 
@@ -238,9 +234,7 @@ There are reports that the default 0402 (imperial) footprint that is shipped wit
 
 Reverse geometry chip capacitors (named _LICC_ (Low Inductance Chip Capacitor) by Kyocera AVX[^kyocera-avx-licc]) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse geometry reduces the length of the current path through the component and **reduces the parasitic inductance of the capacitor** (less than 400pH[^tdk-reverse-geometry-mlcc]). For applications such as high-speed design, when capacitors are used for noise decoupling, the parasitic inductance needs to be as low as possible to increase the capacitors resonant frequency[^tdk-reverse-geometry-mlcc].
 
-import reverse_geometery_chip_capacitor_photo_tdk from './reverse-geometery-chip-capacitor-photo-tdk.png'
-
-<Image src={reverse_geometery_chip_capacitor_photo_tdk} width="200px">A photo of a reverse geometry chip capacitor from TDKs C series[^tdk-reverse-geometry-mlcc-ds].</Image>
+<Image src={import('./reverse-geometery-chip-capacitor-photo-tdk.png')} width="200px">A photo of a reverse geometry chip capacitor from TDKs C series[^tdk-reverse-geometry-mlcc-ds].</Image>
 
 They are normally named the same as normal chip capacitors except with the two numbers in reverse order, i.e. an `0603` sized capacitor now becomes a `0306` capacitor.
 
@@ -248,9 +242,7 @@ They are normally named the same as normal chip capacitors except with the two n
 
 Some MEMS oscillators uses chip package sizes, but with extra pins for power and ground. One common package size is `2012` (2.0x1.2mm) which is sometimes used for 32.768kHz crystal oscillators (XTAL):
 
-import n_2012_smd_mems_oscillator_component_package from './2012-smd-mems-oscillator-component-package.png'
-
-<Image src={n_2012_smd_mems_oscillator_component_package} width="300px">Photo of the underside of a MEMS oscillator in a modified (2 extra pins) 2012 (2.0x1.2mm) chip package. Image from https://www.mouser.com/ProductDetail/SiTime/SiT1533AI-H4-AA3-32768E/?qs=dMZC7um9hO9NUxlac12G7g%3D%3D.</Image>
+<Image src={import('./2012-smd-mems-oscillator-component-package.png')} width="300px">Photo of the underside of a MEMS oscillator in a modified (2 extra pins) 2012 (2.0x1.2mm) chip package. Image from https://www.mouser.com/ProductDetail/SiTime/SiT1533AI-H4-AA3-32768E/?qs=dMZC7um9hO9NUxlac12G7g%3D%3D.</Image>
 
 ## References
 

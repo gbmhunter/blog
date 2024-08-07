@@ -24,9 +24,7 @@ Uses of current sources:
 
 Current sources are very common in circuit design, and as such are usually drawn using schematic symbols as shown below. An independent current source is once which has a predetermined fixed set current. A _controlled_ (or _dependent_) current source is one which is determined by another measurable value in the circuit, usually a voltage (e.g. $I_{source} = kV_{\text{somewhere else}}$). You may have seen a controlled current source symbol in the small-signal model for a BJT. Many analogue IC functional diagrams will show current sources with these symbols, hiding the discrete components they are made from.
 
-import curr_source_symbols from './curr-source-symbols.svg'
-
-<Image src={curr_source_symbols} width="400">Popular schematics symbols to represent current sources.</Image>
+<Image src={import('./curr-source-symbols.svg')} width="400">Popular schematics symbols to represent current sources.</Image>
 
 The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current falls out of regulation. 
 
@@ -36,9 +34,7 @@ Current sources may either provide power into a circuit (like a power supply), o
 
 Below shows one of the popular methods for constructing a current source from a [Zener diode](/docs/electronics/components/diodes/zener-diodes/index.mdx) and [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/).
 
-import zener_diode_bjt_current_source_schematic from './zener-diode-bjt-current-source-schematic.png'
-
-<Image src={zener_diode_bjt_current_source_schematic} width="400">Schematic of a Zener diode + BJT current source.</Image>
+<Image src={import('./zener-diode-bjt-current-source-schematic.png')} width="400">Schematic of a Zener diode + BJT current source.</Image>
 
 ### How It Works
 
@@ -66,9 +62,7 @@ The _constant-current_ diode (a.k.a _JFET current source_, _current-limiting dio
 
 Below shows the schematic for a constant-current diode:
 
-import constant_current_diode_schematic from './constant-current-diode-schematic.png'
-
-<Image src={constant_current_diode_schematic} width="350">Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!</Image>
+<Image src={import('./constant-current-diode-schematic.png')} width="350">Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!</Image>
 
 ### How It Works
 
@@ -152,9 +146,7 @@ TODO: Add info.
 
 The following schematic shows such a device which can control between 0-1A through the load (shown as $R_{load}$):
 
-import current_sink_op_amp_current_sink_schematic from './current-sink/op-amp-current-sink-schematic.png'
-
-<Image src={current_sink_op_amp_current_sink_schematic} width="700">Schematic of a basic op-amp based current sink.</Image>
+<Image src={import('./current-sink/op-amp-current-sink-schematic.png')} width="700">Schematic of a basic op-amp based current sink.</Image>
 
 You set the desired load current by providing a voltage to $V_{in}$. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
 
@@ -191,9 +183,7 @@ The accuracy of the current sink primarily depends of three aspects:
 
 The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
 
-import lt1492_voltage_controlled_current_sink from './lt1492-voltage-controlled-current-sink.png'
-
-<Image src={lt1492_voltage_controlled_current_sink} width="500">A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^bib-linear-lt1492-ds].</Image>
+<Image src={import('./lt1492-voltage-controlled-current-sink.png')} width="500">A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^bib-linear-lt1492-ds].</Image>
 
 Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
 

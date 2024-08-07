@@ -41,9 +41,7 @@ Lower case letters used below represent changes in quantities, e.g. $V_C$ is the
 A schematic of a basic common-collector BJT amplifier is shown below:
 
 
-import common_collector_bjt_amplifier_basic_schematic from './common-collector-bjt-amplifier-basic-schematic.png'
-
-<Image src={common_collector_bjt_amplifier_basic_schematic} width="400">The basic schematic of a common-collector BJT amplifier.</Image>
+<Image src={import('./common-collector-bjt-amplifier-basic-schematic.png')} width="400">The basic schematic of a common-collector BJT amplifier.</Image>
 
 The output voltage is almost equal to the input voltage, except for an approximately $0.7V$ diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or $0dB$.
 
@@ -56,9 +54,7 @@ $$
 Here is a graph of $v_{in}$ vs. $v_{out}$ for the above circuit, with $R1=1k\Omega$:
 
 
-import basic_common_collector_amplifier_plot_annotated from './basic-common-collector-amplifier/plot-annotated.png'
-
-<Image src={basic_common_collector_amplifier_plot_annotated} width="800">$V_{out}$ vs. $V_{in}$ for a basic common-collector BJT amplifier.</Image>
+<Image src={import('./basic-common-collector-amplifier/plot-annotated.png')} width="800">$V_{out}$ vs. $V_{in}$ for a basic common-collector BJT amplifier.</Image>
 
 (Micro-Cap simulation file: [circuit.cir](basic-common-collector-amplifier/circuit.cir))
 
@@ -71,16 +67,12 @@ The common-collector amplifier is simulated in circuitjs below:
 A more useful common-collector amplifier can be made which AC couples the input and provides a DC bias point at the base of the BJT. Below is a schematic of one built with a NPN transistor:
 
 
-import common_collector_bjt_amplifier_ac_coupled_schematic from './common-collector-bjt-amplifier-ac-coupled-schematic.png'
-
-<Image src={common_collector_bjt_amplifier_ac_coupled_schematic} width="600">Schematic of an AC-coupled common-collector NPN BJT amplifier.</Image>
+<Image src={import('./common-collector-bjt-amplifier-ac-coupled-schematic.png')} width="600">Schematic of an AC-coupled common-collector NPN BJT amplifier.</Image>
 
 The small-signal AC model for this circuit is shown below. DC voltage rails and capacitors are shorted.
 
 
-import common_collector_bjt_amplifier_ac_coupled_ac_equivalent_schematic from './common-collector-bjt-amplifier-ac-coupled-ac-equivalent-schematic.png'
-
-<Image src={common_collector_bjt_amplifier_ac_coupled_ac_equivalent_schematic} width="600">Small-signal AC model for the AC-coupled common-collector BJT amplifier.</Image>
+<Image src={import('./common-collector-bjt-amplifier-ac-coupled-ac-equivalent-schematic.png')} width="600">Small-signal AC model for the AC-coupled common-collector BJT amplifier.</Image>
 
 $r_e$ is the small-signal emitter resistance which is internal to the BJT.
 
@@ -127,9 +119,7 @@ $$
 [Common-Collector Amplifier Design by Kenneth A. Kuhn](https://www.kennethkuhn.com/students/ee351/bjt_cc_amplifier_design.pdf) goes into great detail about the amplifier design with precise equations and considerations[^bib-kenneth-kuhn-common-collector-amp-design]. It's much better than what I have here!
 
 
-import graph_from_kenneth_kuhn_cc_amplifier_design from './graph-from-kenneth-kuhn-cc-amplifier-design.png'
-
-<Image src={graph_from_kenneth_kuhn_cc_amplifier_design} width="400">Just one example of a graph from Kenneth Kuhn's excellent Common-Collector Amplifier Design[^bib-kenneth-kuhn-common-collector-amp-design].</Image>
+<Image src={import('./graph-from-kenneth-kuhn-cc-amplifier-design.png')} width="400">Just one example of a graph from Kenneth Kuhn's excellent Common-Collector Amplifier Design[^bib-kenneth-kuhn-common-collector-amp-design].</Image>
 
 [^bib-libretexts-common-collector-amplifier]: James M. Fiore (2022, May 23). _Common Collector Amplifier_. LibreTexts: Engineering. Retrieved 2022-08-11, from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07%3A_BJT_Small_Signal_Amplifiers/7.4%3A_Common_Collector_Amplifier.
 [^bib-kenneth-kuhn-common-collector-amp-design]: Kenneth A. Kuhn. _Common-Collector Amplifier Design_. Retrieved 2022-09-03, from https://www.kennethkuhn.com/students/ee351/bjt_cc_amplifier_design.pdf.

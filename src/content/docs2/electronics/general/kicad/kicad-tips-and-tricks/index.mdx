@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 KiCad is an open-source electronic design CAD software package. It runs on Windows, Linux and MacOS.
 
-import kicad_logo from './_assets/kicad-logo.png'
-
-<Image src={kicad_logo} width="300px">The KiCad logo.</Image>
+<Image src={import('./_assets/kicad-logo.png')} width="300px">The KiCad logo.</Image>
 
 KiCad is a C++ program which uses the wxWidgets library to provide the GUI elements.
 
@@ -69,9 +67,7 @@ choco install kicad
 
 ## Configuring The Global Symbol Library Table
 
-import kicad_configure_global_symbol_library_table from './_assets/kicad-configure-global-symbol-library-table.png'
-
-<Image src={kicad_configure_global_symbol_library_table} width="500px">The pop-up that occurs when you run KiCad for the first time.</Image>
+<Image src={import('./_assets/kicad-configure-global-symbol-library-table.png')} width="500px">The pop-up that occurs when you run KiCad for the first time.</Image>
 
 ## Schematics
 
@@ -81,9 +77,7 @@ By default, the mouse wheel will zoom in/out on the current schematic.
 
 You can navigate the schematic hierarchy using the _Navigate Schematic Hierarchy_ button as shown:
 
-import kicad_navigate_schematic_hierarchy_button from './_assets/kicad-navigate-schematic-hierarchy-button.png'
-
-<Image src={kicad_navigate_schematic_hierarchy_button} width="500px">The 'Navigate Schematic Hierarchy' button in KiCad.</Image>
+<Image src={import('./_assets/kicad-navigate-schematic-hierarchy-button.png')} width="500px">The 'Navigate Schematic Hierarchy' button in KiCad.</Image>
 
 **Keyboard Shortcuts**
 
@@ -152,9 +146,7 @@ The default grid step size is the symbol editor is 50mil (0.050" or 1.27mm). I r
 
 The KiCad symbol editor has a spreadsheet-style bulk pin editor window that lets you change the properties of multiple pins at once:
 
-import bulk_editing_pins_in_kicad_symbol_editor from './_assets/bulk-editing-pins-in-kicad-symbol-editor.png'
-
-<Image src={bulk_editing_pins_in_kicad_symbol_editor} width="500px">Bulk editing pins in KiCad's symbol editor.</Image>
+<Image src={import('./_assets/bulk-editing-pins-in-kicad-symbol-editor.png')} width="500px">Bulk editing pins in KiCad's symbol editor.</Image>
 
 ### 3D Models
 
@@ -303,20 +295,14 @@ KiCad comes with example simulation circuits located at `<KiCad installation dir
 
 * **laser_driver**: Good example if you want to know how to include op-amps and transistors into your simulation. Notice that the pinout for the op-amp used in this schematic is very different to that of the op-amps in KiCAD's two built-in simulation component libraries.
 
-import kicad_laser_driver_simulation_schematic_screenshot from './_assets/kicad-laser-driver-simulation-schematic-screenshot.png'
-
-<Image src={kicad_laser_driver_simulation_schematic_screenshot} width="600px">A screenshot of the Laser Driver simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot.</Image>
+<Image src={import('./_assets/kicad-laser-driver-simulation-schematic-screenshot.png')} width="600px">A screenshot of the Laser Driver simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot.</Image>
 * rectifier
 * pspice
 * **sallen_key**: Another example using op-amps, this time setup to perform AC analysis (i.e. produce gain and phase plots). Simulates a Sallen-Key low-pass filter.
 
-import kicad_sallen_key_simulation_schematic_screenshot from './_assets/kicad-sallen-key-simulation-schematic-screenshot.png'
+<Image src={import('./_assets/kicad-sallen-key-simulation-schematic-screenshot.png')} width="600px">A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot.</Image>
 
-<Image src={kicad_sallen_key_simulation_schematic_screenshot} width="600px">A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot.</Image>
-
-import kicad_sallen_key_simulation_plots from './_assets/kicad-sallen-key-simulation-plots.png'
-
-<Image src={kicad_sallen_key_simulation_plots} width="700px">The simulation plots for the op-amp output of the KiCad Sallen Key simulation example.</Image>
+<Image src={import('./_assets/kicad-sallen-key-simulation-plots.png')} width="700px">The simulation plots for the op-amp output of the KiCad Sallen Key simulation example.</Image>
 
 ### Simulation Specific Symbol Parameters
 
@@ -508,9 +494,7 @@ Make sure the symbol reference starts with an `M`, e.g. `M1`. Make sure the `Val
 .model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1)
 ```
 
-import crucial_discrete_mosfet_simulation_setup_in_kicad from './_assets/crucial-discrete-mosfet-simulation-setup-in-kicad.png'
-
-<Image src={crucial_discrete_mosfet_simulation_setup_in_kicad} width="800px">Screenshot showing the crucial setup required to simulate discrete MOSFETs in KiCAD with ngspice.</Image>
+<Image src={import('./_assets/crucial-discrete-mosfet-simulation-setup-in-kicad.png')} width="800px">Screenshot showing the crucial setup required to simulate discrete MOSFETs in KiCAD with ngspice.</Image>
 
 See the section [11.3 Power MOSFET model (VDMOS) in the ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for more information.
 
@@ -539,9 +523,7 @@ Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
 1. `pspice`: "Legacy pspice symbol library." --- Presumably symbols which were used when KiCad used PSPICE.
 1. `Simulation_SPICE`: "Symbols specialized for SPICE circuit simulation (including ngspice)." --- Presumably newer symbols designed to work with the current bundled SPICE simulator `ngspice`.
 
-import kicad_pspice_legacy_symbol_libraries from './_assets/kicad-pspice-legacy-symbol-libraries.png'
-
-<Image src={kicad_pspice_legacy_symbol_libraries} width="700px">Searching for the PSPICE symbol libraries in KiCad.</Image>
+<Image src={import('./_assets/kicad-pspice-legacy-symbol-libraries.png')} width="700px">Searching for the PSPICE symbol libraries in KiCad.</Image>
 
 ### Naming Nets
 
@@ -593,13 +575,9 @@ To do a basic sweep of voltage source `V1` (which must exist in your schematic w
 .dc V1 0.0 5.0 0.1
 ```
 
-import kicad_spice_dc_voltage_sweep_zener_schematic from './_assets/kicad-spice-dc-voltage-sweep-zener-schematic.png'
+<Image src={import('./_assets/kicad-spice-dc-voltage-sweep-zener-schematic.png')} width="500px">A KiCAD simulation schematic with a text box defining a DC sweep analysis, sweeping V1 from 0V to 5V in increments of 0.1V.</Image>
 
-<Image src={kicad_spice_dc_voltage_sweep_zener_schematic} width="500px">A KiCAD simulation schematic with a text box defining a DC sweep analysis, sweeping V1 from 0V to 5V in increments of 0.1V.</Image>
-
-import kicad_spice_dc_voltage_sweep_zener_plot from './_assets/kicad-spice-dc-voltage-sweep-zener-plot.png'
-
-<Image src={kicad_spice_dc_voltage_sweep_zener_plot} width="500px">KiCAD SPICE simulation plot of a DC sweep from 0-5V, showing the input voltage and the voltage across a 3.3V Zener diode.</Image>
+<Image src={import('./_assets/kicad-spice-dc-voltage-sweep-zener-plot.png')} width="500px">KiCAD SPICE simulation plot of a DC sweep from 0-5V, showing the input voltage and the voltage across a 3.3V Zener diode.</Image>
 
 Click [here](./_assets/kicad-spice-dc-voltage-sweep-zener-files.zip) to download the source files for this simulation example.
 
@@ -635,9 +613,7 @@ version
 
 ngspice will then print out the following information when the simulation is run:
 
-import adding_control_text_to_print_ngspice_version_in_kicad from './_assets/adding-control-text-to-print-ngspice-version-in-kicad.png'
-
-<Image src={adding_control_text_to_print_ngspice_version_in_kicad} width="500px">Adding the shown text anywhere on the KiCAD schematic will trigger ngspice to print out version/build information when you run the simulation.</Image>
+<Image src={import('./_assets/adding-control-text-to-print-ngspice-version-in-kicad.png')} width="500px">Adding the shown text anywhere on the KiCAD schematic will trigger ngspice to print out version/build information when you run the simulation.</Image>
 
 ### Saving Plots
 
@@ -658,9 +634,7 @@ Error: there aren't any circuits loaded.
 
 #### There are duplicate components. You need to annotate schematics first.
 
-import kicad_simulation_there_are_duplicate_components_error from './_assets/kicad-simulation-there-are-duplicate-components-error.png'
-
-<Image src={kicad_simulation_there_are_duplicate_components_error} width="300px">Screenshot of the 'There are duplicate components' simulation error in KiCad.</Image>
+<Image src={import('./_assets/kicad-simulation-there-are-duplicate-components-error.png')} width="300px">Screenshot of the 'There are duplicate components' simulation error in KiCad.</Image>
 
 This error usually arises if you have not assigned unique designators to all components. Perhaps there are still `R?`, `C?` e.t.c designators on the schematic? Or multiple instances of properly labelled components, such as two `R1`'s. The best way to fix this is just to reset and re-annotate the schematics.
 

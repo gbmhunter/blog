@@ -15,11 +15,11 @@ def main():
     power_edit.sim_run = not args.modify
     files = power_edit.find_files(args.path_glob, recursive=True)
     print(f'Running the inline image import converter. Provide -m to actually modify the files, otherwise a dryrun will be performed.')
-    print(files)
+    # print(files)
     for file_path in files:
 
         # Replace images
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'import.*?from .*\n\n<Image src=.*?<\/Image>', replace=image_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'import \S+ from \S+$\n\n<Image src=.*?<\/Image>', replace=image_replace_fn, multiline=True)
 
 
 def image_replace_fn(found_text, file_path):

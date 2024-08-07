@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Inductors are passive, 2 pin electronic components which **store energy as a magnetic field**. They are made by coiling wire around a material (be it air, or something else). They are well used but due to their bulk, cost and usefulness, are not as common as [resistors](/electronics/components/resistors) or [capacitors](/electronics/components/capacitors) in electronic circuits.
 
-import n_3_35uh_20a_large_inductor from './_assets/3-35uh-20a-large-inductor.jpg'
-
-<Image src={n_3_35uh_20a_large_inductor} width="400px">A 3.35uH 20A large inductor.</Image>
+<Image src={import('./_assets/3-35uh-20a-large-inductor.jpg')} width="400px">A 3.35uH 20A large inductor.</Image>
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
@@ -57,9 +55,7 @@ If you connected 12V across an inductor, initially there would be no current, as
 
 There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The figure below shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
 
-import schematic_symbols_of_inductors from './_assets/schematic-symbols-of-inductors.png'
-
-<Image src={schematic_symbols_of_inductors} width="500px">Schematic symbols for a range of the basic inductor sub-families.</Image>
+<Image src={import('./_assets/schematic-symbols-of-inductors.png')} width="500px">Schematic symbols for a range of the basic inductor sub-families.</Image>
 
 ## Important Parameters
 
@@ -92,9 +88,7 @@ The _saturation current_ is the maximum current the inductor can take before it 
 
 For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The following graph shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
 
-import inductance_vs_dc_current_vishay_ihlp1212bzer1r0m11 from './_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png'
-
-<Image src={inductance_vs_dc_current_vishay_ihlp1212bzer1r0m11} width="500px">Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds].</Image>
+<Image src={import('./_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png')} width="500px">Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds].</Image>
 
 Typical saturation currents range from 10-100mA's for small inductors, up to 1-10A for larger PCB mount inductors.
 
@@ -114,9 +108,7 @@ The _self-resonant frequency_ of an inductor is the frequency at which the paras
 
 The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance $L$ spikes at about 75MHz:
 
-import self_resonant_frequency from './_assets/self-resonant-frequency.png'
-
-<Image src={self_resonant_frequency} width="600px">Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF).</Image>
+<Image src={import('./_assets/self-resonant-frequency.png')} width="600px">Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF).</Image>
 
 The equation for the SRF is[^bib-coilcraft-measuring-srf]:
 
@@ -149,9 +141,7 @@ Flat coil inductors have a very low profile (height from the surface of the PCB)
 
 Metal composite inductors (also called _moulded power inductors_) are made with metal powders moulded around copper windings at high pressure.
 
-import metal_composite_inductor_construction_kemet_mpx from './_assets/metal-composite-inductor-construction-kemet-mpx.png'
-
-<Image src={metal_composite_inductor_construction_kemet_mpx} width="300px">Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30.</Image>
+<Image src={import('./_assets/metal-composite-inductor-construction-kemet-mpx.png')} width="300px">Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30.</Image>
 
 ### Air-cored Inductors
 
@@ -213,9 +203,7 @@ $$
 
 The following diagram shows this:
 
-import inductors_in_parallel_with_equation from './_assets/inductors-in-parallel-with-equation.png'
-
-<Image src={inductors_in_parallel_with_equation} width="608px">Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.</Image>
+<Image src={import('./_assets/inductors-in-parallel-with-equation.png')} width="608px">Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.</Image>
 
 ### Inductors In Series
 
@@ -227,9 +215,7 @@ $$
 
 This is shown in the diagram below:
 
-import inductor_in_series_with_equation from './_assets/inductor-in-series-with-equation.png'
-
-<Image src={inductor_in_series_with_equation} width="609px">Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances.</Image>
+<Image src={import('./_assets/inductor-in-series-with-equation.png')} width="609px">Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances.</Image>
 
 ## The Energy Stored In An Inductor
 
@@ -343,9 +329,7 @@ Inductors only behave like inductors over a **limited current range**. As the cu
 
 The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
-import inductance_vs_current_graph_wurth_7447789003_3_3uh from './_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png'
-
-<Image src={inductance_vs_current_graph_wurth_7447789003_3_3uh} width="502px">Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.</Image>
+<Image src={import('./_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png')} width="502px">Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.</Image>
 
 As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
 
@@ -482,9 +466,7 @@ $$
 
 Unfortunately for the PCB designer, almost all SMD inductor packages are non-standard and unique to the manufacturer and series.
 
-import ipc_sm_782_component_dimensions_for_smd_inductors from './_assets/ipc-sm-782-component-dimensions-for-smd-inductors.png'
-
-<Image src={ipc_sm_782_component_dimensions_for_smd_inductors} width="709px">Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard.</Image>
+<Image src={import('./_assets/ipc-sm-782-component-dimensions-for-smd-inductors.png')} width="709px">Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard.</Image>
 
 [^bib-dos4ever-meas-unknown-inductors]: Ronald Dekker. _A Simple Method to Measure Unknown Inductors_. DOS4Ever. Retrieved 2022-07-06, from https://www.dos4ever.com/inductor/inductor.html.
 [^bib-wiktionary-henry]: Wiktionary. _henry_. Retrieved 2022-07-10, from https://en.wiktionary.org/wiki/henry.

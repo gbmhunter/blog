@@ -127,9 +127,7 @@ $$
 
 When talking about thermal resistances, a resistor symbol is used to indicate the fixed thermal resistance of a component or piece of hardware, between two points or two surfaces. The difference in temperature is analogous to the voltage drop across a resistor, and the power dissipation is analogous to the current through the resistor. 
 
-import basic_thermal_resistance_principle from './basic-thermal-resistance-principle.svg'
-
-<Image src={basic_thermal_resistance_principle} width="300px">The basic principle behind thermal resistance. Note the similarity to Ohm's law.</Image>
+<Image src={import('./basic-thermal-resistance-principle.svg')} width="300px">The basic principle behind thermal resistance. Note the similarity to Ohm's law.</Image>
 
 When looking through component datasheets, one of the most common thermal resistances is the _junction-to-ambient_ thermal resistance. This value is defined as:
 
@@ -146,9 +144,7 @@ However, **you have to be vigilant with specified junction-to-ambient values as 
 
 A much more useful thermal resistance in a components datasheet is the _junction-to-case_ thermal resistance. This is usually specified as $ \theta_{JC} $. This typically represents the thermal resistance from the junction to the place on the PCB where the component is soldered. You can then take into account your PCB layout and estimate a _case-to-ambient_ thermal resistance.
 
-import ic_temperature_diagram_with_junction_case_ambient from './ic-temperature-diagram-with-junction-case-ambient.svg'
-
-<Image src={ic_temperature_diagram_with_junction_case_ambient} width="800px">A diagram of the different temperature points used when defining thermal resistances for ICs mounted on PCBs.</Image>
+<Image src={import('./ic-temperature-diagram-with-junction-case-ambient.svg')} width="800px">A diagram of the different temperature points used when defining thermal resistances for ICs mounted on PCBs.</Image>
 
 Your case-to-ambient thermal resistance can be added to the manufacturer-specified junction-to-case thermal resistance to get the total junction-to-ambient resistance using simple addition:
 
@@ -180,9 +176,7 @@ Thermal interface materials (TIMs) are thin layers of compressible ("compliant")
 
 Phase-change TIMs are a flexible solid sheet at room temperature, but quickly soften at higher temperatures (e.g. 50°C and above) to fill in microscopic irregularities between the two surfaces and decrease thermal resistance. The thickness of phase-change TIMs is usually between 0.1 and 0.5mm. [Boron nitride](https://en.wikipedia.org/wiki/Boron_nitride) is an example of a compound which has phase-change abilities.
 
-import thermal_resistance_vs_pressure_tim_t_global_tg_a1250 from './thermal-resistance-vs-pressure-tim-t-global-tg-a1250.png'
-
-<Image src={thermal_resistance_vs_pressure_tim_t_global_tg_a1250} width="600px">The relationship between pressure and thermal resistance for a silicon TIM from T-Global Technology (TG-A1250). Image acquired 2020-08-14 from http://www.tglobaltechnology.com/uploads/files/tds/TG-A1250.pdf.</Image>
+<Image src={import('./thermal-resistance-vs-pressure-tim-t-global-tg-a1250.png')} width="600px">The relationship between pressure and thermal resistance for a silicon TIM from T-Global Technology (TG-A1250). Image acquired 2020-08-14 from http://www.tglobaltechnology.com/uploads/files/tds/TG-A1250.pdf.</Image>
 
 [^ti-an-2020-thermal-design-by-insight]: https://www.ti.com/lit/an/snva419c/snva419c.pdf. Visited 2020-08-10.
 [^hyperphysics-thermal-conductivity]: http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html. Visited 2020-08-10.

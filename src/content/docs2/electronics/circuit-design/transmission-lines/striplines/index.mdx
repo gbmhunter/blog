@@ -19,9 +19,7 @@ Striplines are impedance controlled transmission lines that are embedded on a mi
 Edge-coupled striplines are differential transmission striplines where both **tracks lay on the same plane**, i.e. are both on the same internal PCB copper layer. This is as opposed to a _broad-side coupled stripline_ in where the tracks are ontop of each other.
 
 {/* {{% figure src="edge-coupled-stripline-impedance-controlled-routing-diagram-with-dimensions.png" width="827px" caption="A cross-sectional diagram of a edge-coupled stripline, showing the common names for the dimensions."  %}} */}
-import edge_coupled_stripline_impedance_controlled_routing_diagram_with_dimensions from './_assets/edge-coupled-stripline-impedance-controlled-routing-diagram-with-dimensions.png'
-
-<Image src={edge_coupled_stripline_impedance_controlled_routing_diagram_with_dimensions} width="827">A cross-sectional diagram of a edge-coupled stripline, showing the common names for the dimensions.</Image>
+<Image src={import('./_assets/edge-coupled-stripline-impedance-controlled-routing-diagram-with-dimensions.png')} width="827">A cross-sectional diagram of a edge-coupled stripline, showing the common names for the dimensions.</Image>
 
 Because they only involve three layers (broad-side coupled involves 4 copper layers), edge-coupled striplines are **easier to route in low-layer boards** (4-8), while still adhering to good EMI practices and maintaining high copper utilisation.
 

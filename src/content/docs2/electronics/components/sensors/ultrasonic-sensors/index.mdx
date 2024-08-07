@@ -149,9 +149,7 @@ Ultrasound sensors are not effected by the translucence of the target object. Fo
 
 Open and closed types. The following image shows a open type piezo-electric ultrasonic transducer commonly used by electronic hobbyists, robiticists, and the maker community, called the HC-SR04. These modules integrate easily with the Arduino microcontroller platform.
 
-import arduino_ultrasound_module from './_assets/arduino-ultrasound-module.jpg'
-
-<Image src={arduino_ultrasound_module} width="1200px">An Arduino compatible ultrasound module.</Image>
+<Image src={import('./_assets/arduino-ultrasound-module.jpg')} width="1200px">An Arduino compatible ultrasound module.</Image>
 
 High-power types have a power rating between 40-150W. These types of ultrasonic transmitters are used for ultrasonic cleaning.
 
@@ -161,16 +159,12 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 * Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
 * High-end wind sensors (anemometers) use ultrasound to measure the wind speed and direction (or more concisely, it's velocity).
 
-import n_3d_sonic_anemometer from './_assets/3d-sonic-anemometer.jpg'
-
-<Image src={n_3d_sonic_anemometer} width="149px">A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.</Image>
+<Image src={import('./_assets/3d-sonic-anemometer.jpg')} width="149px">A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.</Image>
     
 * Similar to anemometers, ultrasonic flowmeters can be used to determine the speed and direction of liquid within pipes.
 * Ultrasonic devices are used in the medical world for getting images of body parts (e.g. an unborn baby). Human tissue attenuates ultrasound by approximately 1dB/cm/MHz.
   
-import medical_ultrasonic_sensor_sonosite_c60x from './_assets/medical-ultrasonic-sensor-sonosite-c60x.jpg'
-
-<Image src={medical_ultrasonic_sensor_sonosite_c60x} width="286px">The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.</Image>
+<Image src={import('./_assets/medical-ultrasonic-sensor-sonosite-c60x.jpg')} width="286px">The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.</Image>
 
 * Parking sensors in vehicles commonly use ultrasound sensors for distance detection.
 * Manufacturing processes such as flaw detection, thickness gauging, weld inspection.
@@ -189,9 +183,7 @@ import medical_ultrasonic_sensor_sonosite_c60x from './_assets/medical-ultrasoni
 
 With a simple single transducer acting as both the receiver and transmitter, the further away the object you wish to detect, the slower your maximum sample frequency can be, as you have to wait longer for the ultrasonic wave to return.
 
-import detection_beam_pattern_of_sonarange_ups_ultrasonic_transducers from './_assets/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png'
-
-<Image src={detection_beam_pattern_of_sonarange_ups_ultrasonic_transducers} width="358px">The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.</Image>
+<Image src={import('./_assets/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png')} width="358px">The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.</Image>
 
 ## Minimum Range
 
@@ -203,9 +195,7 @@ The minimum range of a single ultrasonic transmitter/receiver is primarily deter
 
 The combination of these three factors creates a dead-zone right in-front of the transducer at which the ultrasonic transceiver cannot detect anything. A larger rise-time, a larger ring-down time, or a denser medium (one which ultrasound travels faster through), will all increase the dead-zone distance. A separate transmitter/receiver circuit like the one shown below does not suffer from the first two issues.
 
-import ultrasonic_proximity_detector_circuit_with_seperate_transmitter_and_receiver from './_assets/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png'
-
-<Image src={ultrasonic_proximity_detector_circuit_with_seperate_transmitter_and_receiver} width="988px">A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.</Image>
+<Image src={import('./_assets/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png')} width="988px">A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.</Image>
 
 ## Maximum Range
 
@@ -222,9 +212,7 @@ The maximum range of a ultrasonic transducer is primarily determined by:
 
 Higher frequency ultrasonic waveforms lose energy quicker when travelling through a medium. For this reason low-frequency (40kHZ) is normally used when air is the medium. Higher frequencies such as 1MHz are used when the medium is water or metal.
 
-import graph_of_audible_and_ultrasound_frequency_range_with_subsections from './_assets/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png'
-
-<Image src={graph_of_audible_and_ultrasound_frequency_range_with_subsections} width="561px">A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.</Image>
+<Image src={import('./_assets/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png')} width="561px">A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.</Image>
 
 When using ultrasound for imaging, the frequency of the ultrasound determines the image resolution.
 
@@ -432,9 +420,7 @@ CMUTs use a change in capacitance to perform energy transduction. They are micro
 
 _Ultrasonic humidifiers_ vibrates a diaphragm immersed in water at higher-than-hearing frequencies (much higher that hearing --- 1.7MHz can be used[^rotasystem-ultrasonic-humidification]). The vibrations "push" tiny droplets of water into the air to create water vapour and a humid environment. They are used as a more energy efficient and quieter alternative to evaporative humidifiers[^sylvane-how-do-ultrasonic-humidifiers-work].
 
-import ultrasonic_humidifier_toy_kettle from './_assets/ultrasonic-humidifier-toy-kettle.gif'
-
-<Image src={ultrasonic_humidifier_toy_kettle} width="250px">A toy kettle which uses an ultrasonic humidifier to create water vapour and give the impression of steam.</Image>
+<Image src={import('./_assets/ultrasonic-humidifier-toy-kettle.gif')} width="250px">A toy kettle which uses an ultrasonic humidifier to create water vapour and give the impression of steam.</Image>
 
 The exact mechanism of creating water vapour from ultrasound seems to be a mixture of cavitation and capillary wave action which creates the water vapour. Cavitation due the amplitude of the ultrasonic sound waves creates small vacuum bubbles. This creates crossed capillary waves, where small droplets are released from the waves crest on the surface of the water[^rotasystem-ultrasonic-humidification].
 

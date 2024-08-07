@@ -13,9 +13,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
 
-import wordpress_to_hugo from './_assets/wordpress-to-hugo.png'
-
-<Image src={wordpress_to_hugo} width="500px"></Image>
+<Image src={import('./_assets/wordpress-to-hugo.png')} width="500px"></Image>
 
 My site has been powered for the last 7 years by Wordpress (see [Site Info](/site-info) for an entire history of this blog). [Wordpress](https://wordpress.org/) is a great CMS (content management system) which runs on a server (I have been paying for hosting through GoDaddy). However, it was time to move to a static website generator, and I choose [Hugo](https://gohugo.io/). Read on for more details...
 
@@ -38,9 +36,7 @@ Being that Hugo is a single compiled executable, there is no dependency issues y
 
 Hopefully one of the big improvements to the site's SEO will be from the speed increases (see the Speed section below). Below is a graph of the numbers of users per day for the last two months on the Wordpress blog:
 
-import wordpress_users_per_day_last_two_months from './_assets/wordpress-users-per-day-last-two-months.png'
-
-<Image src={wordpress_users_per_day_last_two_months} width="800px"></Image>
+<Image src={import('./_assets/wordpress-users-per-day-last-two-months.png')} width="800px"></Image>
 
 ## Speed
 
@@ -48,15 +44,11 @@ After moving to Hugo, I saw a huge increase in page load time performance. Load 
 
 _Wordpress Page Speed_
 
-import wordpress_homepage_page_speed from './_assets/wordpress-homepage-page-speed.png'
-
-<Image src={wordpress_homepage_page_speed} width="500px"></Image>
+<Image src={import('./_assets/wordpress-homepage-page-speed.png')} width="500px"></Image>
 
 _Hugo Page Speed_
 
-import hugo_homepage_page_speed from './_assets/hugo-homepage-page-speed.png'
-
-<Image src={hugo_homepage_page_speed} width="500px"></Image>
+<Image src={import('./_assets/hugo-homepage-page-speed.png')} width="500px"></Image>
 
 ## The Wordpress Export
 
@@ -143,9 +135,7 @@ I'm pleased to say that all page URLs should be the same. Post URLs have changed
 
 I noticed that URLs that were embedded within image captions were getting corrupted. This was occuring about 1s after the initial page load. On inspection of the HTML elements, I noticed that the URL had been broken up into many small `<span>` elements, and that each one of these elements had been assigned the class `vglnk`. After a bit of Googling, I realized that the Disqus plugin (for commenting) was causing this. To fix this, I had to disable *Tracking* and *Affiliate links* in the *Advanced* section of the Disqus config, as shown below:
 
-import disqus_admin_vglnk_url_corruption from './_assets/disqus-admin-vglnk-url-corruption.png'
-
-<Image src={disqus_admin_vglnk_url_corruption} width="500px">The two checkboxes I had to disable in my Disqus settings to prevent Disqus from corrupting URLs on the rest of the page, and adding vglnk classes.</Image>
+<Image src={import('./_assets/disqus-admin-vglnk-url-corruption.png')} width="500px">The two checkboxes I had to disable in my Disqus settings to prevent Disqus from corrupting URLs on the rest of the page, and adding vglnk classes.</Image>
 
 ## DNS Updates
 
@@ -169,8 +159,6 @@ The following DNS changes were made on my GoDaddy account:
 
 Currently, this site is not mobile compatible (what is called *responsive*). This is what the homepage currently looks like when rendered on a cellphone.
 
-import mbedded_ninja_homepage_mobile_device from './_assets/mbedded-ninja-homepage-mobile-device.png'
-
-<Image src={mbedded_ninja_homepage_mobile_device} width="400px">This is what the blog.mbedded.ninja homepage currently looks like when rendered on a cellphone. Urgh...</Image>
+<Image src={import('./_assets/mbedded-ninja-homepage-mobile-device.png')} width="400px">This is what the blog.mbedded.ninja homepage currently looks like when rendered on a cellphone. Urgh...</Image>
 
 Hopefully I can fix this soon!

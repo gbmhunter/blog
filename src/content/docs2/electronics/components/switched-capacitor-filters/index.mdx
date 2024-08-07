@@ -28,9 +28,7 @@ They have the following disadvantages compared to passive RC filters:
 * They are generally **noisier**, introducing noise at the switching frequency and it's harmonics (clock feedthru)[^bib-linear-tech-mystery-switched-capacitor].
 * They sample the input, and thus are **subject to aliasing**. Care must be taken that there are no frequencies in the input higher than half the clock frequency[^bib-libretext-switched-capacitor-filters]. 
 
-import ltc1068_switched_capacitor_filter_typical_application from './ltc1068-switched-capacitor-filter-typical-application.png'
-
-<Image src={ltc1068_switched_capacitor_filter_typical_application} width="500px">A dual 4th order butterworth lowpass filter made from the Analog Devices LTC1068 switched-capacitor filter IC[^bib-analog-devices-ltc-1068-ds].</Image>
+<Image src={import('./ltc1068-switched-capacitor-filter-typical-application.png')} width="500px">A dual 4th order butterworth lowpass filter made from the Analog Devices LTC1068 switched-capacitor filter IC[^bib-analog-devices-ltc-1068-ds].</Image>
 
 The cut-off frequency of a switched-capacitor circuit depends on the ratio of the capacitances, and not their absolute values. Generally, the ratio of two capacitors can be more tightly controlled than their absolute values (especially in IC design). Furthermore, IC technology allows capacitor ratios to be much made much easier than resistor ratios[^bib-linear-tech-mystery-switched-capacitor].
 
@@ -56,9 +54,7 @@ The paper [AC analysis of switched capacitor filters in SPICE-family programs by
 
 The _MF10_ is a dual 2nd order, state variable, switched-capacitor filter[^bib-maxim-mf10-ds]. It has been produced by companies such as National Semiconductor, Maxim and Texas Instruments under variations of the `MF10` part number.
 
-import maxim_mf10_switched_capacitor_filter_4th_order_lowpass_butterworth from './maxim-mf10-switched-capacitor-filter-4th-order-lowpass-butterworth.png'
-
-<Image src={maxim_mf10_switched_capacitor_filter_4th_order_lowpass_butterworth} width="700px">Schematic using the Maxim MF10 to create a 4th order lowpass 2kHz butterworth filter[^bib-maxim-mf10-ds]. The clock is 100x the cutoff frequency.</Image>
+<Image src={import('./maxim-mf10-switched-capacitor-filter-4th-order-lowpass-butterworth.png')} width="700px">Schematic using the Maxim MF10 to create a 4th order lowpass 2kHz butterworth filter[^bib-maxim-mf10-ds]. The clock is 100x the cutoff frequency.</Image>
 
 Texas Instruments has in active production the `MF-10N`, which is an equivalent IC in a [SOIC-20 package](/pcb-design/component-packages/soic-component-package/). However, they recommend the LMF100 which is pin-compatible and has improved performance[^bib-ti-mf10-n-ds].
 

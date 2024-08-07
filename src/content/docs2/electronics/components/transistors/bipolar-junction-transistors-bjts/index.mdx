@@ -30,9 +30,7 @@ The differences between the NPN and PNP transistor types are analogous to the [N
 
 The schematic symbols for NPN and PNP transistors are shown below:
 
-import bjt_schematic_symbols_npn_pnp from './bjt-schematic-symbols-npn-pnp.png'
-
-<Image src={bjt_schematic_symbols_npn_pnp} width="600px">Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics.</Image>
+<Image src={import('./bjt-schematic-symbols-npn-pnp.png')} width="600px">Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics.</Image>
 
 Notice that the collector and emitter have been flipped for the PNP (compared to the NPN), this is how they are normally drawn on schematics.
 
@@ -61,9 +59,7 @@ The characteristic output curve for a BJT shows show the collector current $I_C$
 
 The below figure shows the simulated output transfer characteristics for the popular 2N2222 BJT. $I_C$ is plotted against $V_{CE}$ for a range of base currents $I_B$ varying from 0 to 5mA:
 
-import output_transfer_characteristics_microcap_sim_plot from './output-transfer-characteristics-microcap-sim/plot.png'
-
-<Image src={output_transfer_characteristics_microcap_sim_plot} width="600px">The output transfer characteristics (simulated) for the 2N2222 BJT.</Image>
+<Image src={import('./output-transfer-characteristics-microcap-sim/plot.png')} width="600px">The output transfer characteristics (simulated) for the 2N2222 BJT.</Image>
 
 (Micro-Cap simulation file: [circuit.cir](output-transfer-characteristics-microcap-sim/circuit.cir))
 
@@ -110,9 +106,7 @@ $V_A$ is the Early voltage<br/></p>
 
 The Early voltage can be derived from $I_C$ vs. $V_{CE}$ graphs. If you extrapolate the active part of the curve (beyond the knee) back to where the line crosses the x-axis, this gives you the negative of the Early voltage, $-V_A$. It should not matter what the base current $I_B$ is, all the curves should cross the x-axis at the same point. The following graph shows this:
 
-import early_voltage_microcap_sim_vce_vs_ic_with_early_voltage from './early-voltage-microcap-sim/vce-vs-ic-with-early-voltage.png'
-
-<Image src={early_voltage_microcap_sim_vce_vs_ic_with_early_voltage} width="700px">Graph of Vce vs. Ic showing how the Early voltage is the extrapolation of the curves (in the active region) back to the x-axis intersection.</Image>
+<Image src={import('./early-voltage-microcap-sim/vce-vs-ic-with-early-voltage.png')} width="700px">Graph of Vce vs. Ic showing how the Early voltage is the extrapolation of the curves (in the active region) back to the x-axis intersection.</Image>
 
 (Micro-Cap simulation file: [early-voltage.cir](early-voltage-microcap-sim/early-voltage.cir))
 
@@ -154,9 +148,7 @@ The hybrid-pi model is a well-used model for approximating the small-signal beha
 
 The small-signal linearized hybrid-pi model is a simplification of the complete hybrid-pi model.
 
-import hybrid_pi_model_simplified from './hybrid-pi-model-simplified.png'
-
-<Image src={hybrid_pi_model_simplified} width="600px">A simplified Hybrid-Pi model of a BJT transistor.</Image>
+<Image src={import('./hybrid-pi-model-simplified.png')} width="600px">A simplified Hybrid-Pi model of a BJT transistor.</Image>
 
 Inputs (independent variables) to the model are:
 
@@ -255,15 +247,11 @@ The BJT _common-base_ (a.k.a. _grounded-base_, and sometimes just abbreviated to
 
 A basic schematic of a common-base NPN BJT amplifier is shown below, excluding DC biasing components:
 
-import common_base_amplifier from './common-base-amplifier.png'
-
-<Image src={common_base_amplifier} width="400px">Basic schematic of a NPN BJT common-base amplifier. DC biasing componentry is not shown.</Image>
+<Image src={import('./common-base-amplifier.png')} width="400px">Basic schematic of a NPN BJT common-base amplifier. DC biasing componentry is not shown.</Image>
 
 Note that the above circuit is not realistic because it does not show the DC biasing componentry, however it is useful to illustrate the basic principle of the amplifier. The following schematic shows a common-base amplifier with the DC biasing component included:
 
-import common_base_amplifier_dc_bias from './common-base-amplifier-dc-bias.png'
-
-<Image src={common_base_amplifier_dc_bias} width="700px">Schematic of a NPN BJT common-base amplifier with DC biasing componentry shown.</Image>
+<Image src={import('./common-base-amplifier-dc-bias.png')} width="700px">Schematic of a NPN BJT common-base amplifier with DC biasing componentry shown.</Image>
 
 #### Input Resistance
 
@@ -295,9 +283,7 @@ $$
 
 BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations in where high precision is not the name of the game. If you want high precision, you're best bet is to build a [current-sink from an op-amp](/docs/electronics/components/current-sources-and-sinks/index.mdx#op-amp-current-sink).
 
-import constant_current_bjt_based_led_driver from './constant-current-bjt-based-led-driver.png'
-
-<Image src={constant_current_bjt_based_led_driver} width="300px">The simulation schematic for a constant-current BJT-based LED driver.</Image>
+<Image src={import('./constant-current-bjt-based-led-driver.png')} width="300px">The simulation schematic for a constant-current BJT-based LED driver.</Image>
 
 The schematic above was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at $+3.3V$. Since $+3.3V$ is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is $0.7V$ less, e.g.
 
@@ -321,17 +307,13 @@ Notice how the LED current is independent of the $+12V$. The $+12V$ can change t
 
 Below are the simulation results for the schematic above, showing the LED current to be indeed $10mA$. It works!
 
-import constant_current_bjt_based_led_driver_simulation_results from './constant-current-bjt-based-led-driver-simulation-results.png'
-
-<Image src={constant_current_bjt_based_led_driver_simulation_results} width="800px">The simulation results of a constant-current BJT-based LED driver.</Image>
+<Image src={import('./constant-current-bjt-based-led-driver-simulation-results.png')} width="800px">The simulation results of a constant-current BJT-based LED driver.</Image>
 
 #### Using A Resistor Divider To Drive The Base
 
 A resistor divider can simple way to drive the base of an NPN current-sink if you don't need active control. This works well if the supply voltage is known and stable, as the current will fluctuate with supply voltage (if this is going to be an issue, consider using a Zener-based circuit to drive the base of the NPN BJT). Schematics of the design are shown below.
 
-import current_source_npn_voltage_divider_base from './current-source-npn-voltage-divider-base.png'
-
-<Image src={current_source_npn_voltage_divider_base} width="500px">A NPN BJT current-sink using a resistor divider to drive the base.</Image>
+<Image src={import('./current-source-npn-voltage-divider-base.png')} width="500px">A NPN BJT current-sink using a resistor divider to drive the base.</Image>
 
 <Aside type="example">
 
@@ -366,9 +348,7 @@ import current_source_npn_voltage_divider_base from './current-source-npn-voltag
 
 A _current mirror_ is a current-copying circuit in where one the current in one BJT is programmed via a resistor and is used to control the current in a second BJT which is used to drive the same current into a load. The current-mirrors shown below are built with BJTs, but other active transistors such as [MOSFETs](/electronics/components/transistors/mosfets) can also be used. The below image shows a basic PNP BJT-based current mirror. 
 
-import current_mirror_pnp from './current-mirror-pnp.png'
-
-<Image src={current_mirror_pnp} width="400px">A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current.</Image>
+<Image src={import('./current-mirror-pnp.png')} width="400px">A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current.</Image>
 
 <Aside type="example">
 
@@ -417,9 +397,7 @@ The `BC` range of BJTs, including the `BC547` and `BC548` are very common, low-c
 * `BC548`: Common NPN transistor, used for switching and amplification purposes. Suitable replacement for the `2N2222` as long as max. voltage/current rating are not exceeded.
 * `BC549`: Low noise version of the BC548.
 
-import bc548_transistor_to92_photo from './bc548-transistor-to92-photo.png'
-
-<Image src={bc548_transistor_to92_photo} width="300px">A photo of the ubiquitous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html.</Image>
+<Image src={import('./bc548-transistor-to92-photo.png')} width="300px">A photo of the ubiquitous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html.</Image>
 
 ### S8050/S8550
 
@@ -431,17 +409,13 @@ The `S8550` is the complementary PNP transistor[^bib-el-component-s8050-bjt].
 
 Multiple emitter and multiple collector BJTs are special types of BJTs which have more than one emitter or more than one collector.
 
-import multiple_emitter_bjt_schematic_symbol_u1 from './multiple-emitter-bjt-schematic-symbol-u1.png'
-
-<Image src={multiple_emitter_bjt_schematic_symbol_u1} width="300px">The schematic symbol for a multiple-emitter BJT.</Image>
+<Image src={import('./multiple-emitter-bjt-schematic-symbol-u1.png')} width="300px">The schematic symbol for a multiple-emitter BJT.</Image>
 
 In the case of a multiple collector BJT, the total collector current $I_{C,tot}\,$ is set by the base current $I_B$. If all the collectors are the same size (the silicon is physically the same size), then the current is equally split across all collectors.
 
 **The multiple-emitter BJT can be used to implement AND logic.** The multiple-emitter BJT forms an integral part of the TTL AND input circuitry (e.g. the 7400 series of integrated circuits). They were introduced into digital logic design to replace the diodes of _diode-transistor logic (DTL)_, with the advantage of a lower switching time and lower power dissipation.
 
-import basic_two_input_tll_nand_gate_schematic from './basic-two-input-tll-nand-gate-schematic.png'
-
-<Image src={basic_two_input_tll_nand_gate_schematic} width="600px">The schematic of a basic two-input TTL NAND gate.</Image>
+<Image src={import('./basic-two-input-tll-nand-gate-schematic.png')} width="600px">The schematic of a basic two-input TTL NAND gate.</Image>
 
 Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For example, Intel's first IC, the 3101 (64 bits of RAM!), **contains multiple emitter BJTs as part of the 2-state latch circuitry which holds one bit of information**. One emitter is used to select which cell to read or write, while the other emitter is used to read or write the data. See an excellent tear-down of the IC on [Ken Shirriff's blog](http://www.righto.com/2017/07/inside-intels-first-product-3101-ram.html).
 
@@ -458,9 +432,7 @@ The _safe operating area_ of a BJT defines the **region of voltage and current i
 1. Maximum power dissipation
 1. [^What Is Second Breakdown?, Secondary breakdown] (only applicable to power BJTs)
 
-import bjt_safe_operating_area from './bjt-safe-operating-area.png'
-
-<Image src={bjt_safe_operating_area} width="500px">A typical representation of the safe operating area (SOA) of a BJT. Normally multiple curves are drawn, one for DC and a number for pulses of various lengths. Both $V_{CE}$ and $I_C$ are on logarithmic axes.</Image>
+<Image src={import('./bjt-safe-operating-area.png')} width="500px">A typical representation of the safe operating area (SOA) of a BJT. Normally multiple curves are drawn, one for DC and a number for pulses of various lengths. Both $V_{CE}$ and $I_C$ are on logarithmic axes.</Image>
 
 ### What Is Second Breakdown?
 
@@ -490,9 +462,7 @@ $I_{ces}$ is the leakage from collector to emitter with the base connected to th
 
 The three leakage parameters are measured as shown in the following circuits.
 
-import leakage_current_diagrams from './leakage-current-diagrams.png'
-
-<Image src={leakage_current_diagrams} width="800px">Circuits showing how each 1 of the three BJT leakage currents is measured.</Image>
+<Image src={import('./leakage-current-diagrams.png')} width="800px">Circuits showing how each 1 of the three BJT leakage currents is measured.</Image>
 
 ## Transistor Testers
 

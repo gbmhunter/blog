@@ -15,15 +15,11 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 A _transmission line_ is a wire/cable/track on the PCB, that, because of the frequency of the electrical signals going through have reached a certain point (typically RF), you can no longer just treat the wire as a short circuit. Instead, the connection must be treated as a _transmission line_, and must be _impedance matched_ all the way from the driver to the receiver. Impedance matching is done to maximise power transfer and minimise reflections from the load. The typical way to impedance match is to make sure the transmission line is _terminated_ correctly.
 
-import transmission_line_schematic_symbol from './_assets/transmission-line-schematic-symbol.png'
-
-<Image src={transmission_line_schematic_symbol} width="500">Schematic symbol for a transmission line, which represents a piece of coax cable. Because this usually isn't a component to appear on the BOM (if it's a PCB track), it's not normally given a designator.</Image>
+<Image src={import('./_assets/transmission-line-schematic-symbol.png')} width="500">Schematic symbol for a transmission line, which represents a piece of coax cable. Because this usually isn't a component to appear on the BOM (if it's a PCB track), it's not normally given a designator.</Image>
 
 _Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. See the Termination page for more info.
 
-import microstrip_track_example_in_isometric_view_microchip from './_assets/microstrip-track-example-in-isometric-view-microchip.gif'
-
-<Image src={microstrip_track_example_in_isometric_view_microchip} width="300">An isometric diagram of a microstrip. Image from www.maximintegrated.com.</Image>
+<Image src={import('./_assets/microstrip-track-example-in-isometric-view-microchip.gif')} width="300">An isometric diagram of a microstrip. Image from www.maximintegrated.com.</Image>
 
 ## Dielectric Constant
 
@@ -222,9 +218,7 @@ All of the energy is reflected back to the source. The reflected wave is equal i
 
 Co-planaer waveguides (CPW) are a third alternative to microstrips and striplines for controlling the impedance of a circuitboard trace. There are two variants, the basic _co-planar waveguide_ and the _co-planar waveguide with ground_. The main advantage of a co-planar waveguide is that it **does not require a solid power plane** above or below it, making it a more flexible choice for layer and space constrained PCBs.
 
-import coplanaer_waveguide_for_gsm_antenna from './_assets/coplanaer-waveguide-for-gsm-antenna.png'
-
-<Image src={coplanaer_waveguide_for_gsm_antenna} width="490">A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.</Image>
+<Image src={import('./_assets/coplanaer-waveguide-for-gsm-antenna.png')} width="490">A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.</Image>
 
 Although you can't see it in the image above, there is a ground plane underneath the CPW (there are two internal layers between the visible top layer (red) and bottom layer (blue)).
 

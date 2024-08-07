@@ -27,9 +27,7 @@ This page assumes a working knowledge of a few basic switch-mode power supplies 
 
 _Voltage mode control_ (a.k.a. duty-cycle control[^ti-slva636-feedback-loop-analysis-current-mode-boost-converter]) uses the difference between the actual and desired output voltage to control the average voltage applied across the inductor (done by modifying the duty cycle). Due to it's simplicity, it was the first methodology used to control SMPSs[^microchip-classic-analog-smps-control-techniques].
 
-import voltage_mode_control_diagram from './_assets/voltage-mode-control-diagram.webp'
-
-<Image src={voltage_mode_control_diagram} width="700px">Diagram showing the basic (simplified) feedback circuitry that makes up voltage mode control. No gain resistors or compensation shown.</Image>
+<Image src={import('./_assets/voltage-mode-control-diagram.webp')} width="700px">Diagram showing the basic (simplified) feedback circuitry that makes up voltage mode control. No gain resistors or compensation shown.</Image>
 
 <Aside type="note">
 Although most of the examples on this page use a [buck converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/), the control methodologies are similarly applicable to other topologies such as [boost converters](/electronics/components/power-regulators/switch-mode-power-supplies-smps/boost-converters/).
@@ -73,15 +71,11 @@ _Peak Current Mode Control_ (PCMC) is a specific type of current mode control wh
 
 The below diagram shows what this looks like during continuous conduction:
 
-import peak_current_mode_control_waveforms from './_assets/peak-current-mode-control-waveforms.webp'
-
-<Image src={peak_current_mode_control_waveforms} width="600px"></Image>
+<Image src={import('./_assets/peak-current-mode-control-waveforms.webp')} width="600px"></Image>
 
 The following diagram shows the basic components of peak current mode control for a buck converter:
 
-import peak_current_mode_control_diagram from './_assets/peak-current-mode-control-diagram.webp'
-
-<Image src={peak_current_mode_control_diagram} width="900px">Block diagram showing the basics of peak current mode control for a buck converter.</Image>
+<Image src={import('./_assets/peak-current-mode-control-diagram.webp')} width="900px">Block diagram showing the basics of peak current mode control for a buck converter.</Image>
 
 <Aside type="caution">
 It's important to notice that the left-hand "op-amp" symbol is an analogue amplifier (output is equal to the difference in the inputs, multiplied by a gain) but the right-hand "op-amp" symbol is a comparator (comparator output is either high or low depending on the sign of the difference in the inputs).
@@ -108,9 +102,7 @@ Peak current-mode control can experience subharmonic (a.k.a. sub-cycle[^microchi
 
 Because the switching action causes noise, and the current-measuring voltage signal is usually low (because low-valued resistors ($10{-}200m\Omega$) are used to keep power dissipation down), current mode control has a high susceptibility to noise and voltage transients[^ti-sboa187e-current-mode-control] [^university-of-colorado-bolder-intro-to-peak-current-mode-control]. The switching action can cause ringing in the voltage measurement of the current at the point of turn on. This ringing can cause the measured signal to go over the control threshold and prematurely turn the switch OFF, as shown in the below diagram:
 
-import peak_current_mode_control_noise from './_assets/peak-current-mode-control-noise.webp'
-
-<Image src={peak_current_mode_control_noise} width="500px">Diagram showing how switching noise can prematurely turn the switch OFF, and how a blanking interval can be used to improve the noise immunity.</Image>
+<Image src={import('./_assets/peak-current-mode-control-noise.webp')} width="500px">Diagram showing how switching noise can prematurely turn the switch OFF, and how a blanking interval can be used to improve the noise immunity.</Image>
 
 One way to compensate for this is to add in a _blanking interval_. This is a short interval that begins at switch turn-on in which the output of the current feedback comparator is ignored[^university-of-colorado-bolder-intro-to-peak-current-mode-control]. This improves the current mode controls noise immunity.
 
@@ -118,17 +110,13 @@ One way to compensate for this is to add in a _blanking interval_. This is a sho
 
 The YouTube video [Introduction to Peak Current Mode Control by the University of Colorado Bolder](https://www.youtube.com/watch?v=3tTSMDEyVKc) is a great visual explanation of how current-mode control works in SMPS[^university-of-colorado-bolder-intro-to-peak-current-mode-control].
 
-import university_of_colorado_boulder_peak_current_mode_control_screenshot from './_assets/university-of-colorado-boulder-peak-current-mode-control-screenshot.png'
-
-<Image src={university_of_colorado_boulder_peak_current_mode_control_screenshot} width="600px">Screenshot of the YouTube video \"Introduction to Peak Current Mode Control\" by the University of Colorado Bolder[^university-of-colorado-bolder-intro-to-peak-current-mode-control].</Image>
+<Image src={import('./_assets/university-of-colorado-boulder-peak-current-mode-control-screenshot.png')} width="600px">Screenshot of the YouTube video \"Introduction to Peak Current Mode Control\" by the University of Colorado Bolder[^university-of-colorado-bolder-intro-to-peak-current-mode-control].</Image>
 
 If you want to get right into the control theory of current-mode control, the [Texas Instruments Understanding and Applying Current-Mode Control Theory](https://www.ti.com/lit/an/snva555/snva555.pdf) is a recommended read[^ti-snva555-current-mode-control-theory].
 
 Average current mode control (as opposed to the more common peak mode control) is explained in depth in [Unitrode's Application Note "Average Current Mode Control of Switching Power Supplies" by Lloyd Dixon](https://www.ti.com/lit/an/slua079/slua079.pdf)[^unitrode-average-current-mode-control-of-smps].
 
-import average_current_mode_control_screenshot from './_assets/average-current-mode-control-screenshot.png'
-
-<Image src={average_current_mode_control_screenshot} width="500px">Screenshot from Unitrode's Application Note \"Average Current Mode Control of Switching Power Supplies\" by Lloyd Dixon[^unitrode-average-current-mode-control-of-smps].</Image>
+<Image src={import('./_assets/average-current-mode-control-screenshot.png')} width="500px">Screenshot from Unitrode's Application Note \"Average Current Mode Control of Switching Power Supplies\" by Lloyd Dixon[^unitrode-average-current-mode-control-of-smps].</Image>
 
 [^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Current Mode Control in Switching Power Supplies_ [Application Brief]. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.
 [^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control_ [Video]. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.

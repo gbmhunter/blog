@@ -12,9 +12,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 ## Overview
 
-import lga_component_package_3d_render from './_assets/lga-component-package-3d-render.jpg'
-
-<Image src={lga_component_package_3d_render} width="350px">A 3D render of an LGA component package.</Image>
+<Image src={import('./_assets/lga-component-package-3d-render.jpg')} width="350px">A 3D render of an LGA component package.</Image>
 
 The `LGA` package is is a surface mount package with pads on the underside of the package. It is very similar to the [BGA package](/pcb-design/component-packages/bga-component-package/), except is does not have any balls, instead plain flat pads are used. An `LGA` package may also differ from `BGA` with the addition of arbitrary sized pads for purposes such as grounding, thermal dissipation, shielding and mechanical strength. An LGA package can be made from a PCB, thus many LGA components are actually entire "modules" made from a PCB and a number of components. This modular form is commonly seen with cellular modem and WiFi components.
 
@@ -41,17 +39,13 @@ Like BGAs, LGA packages can withstand up to 50% mis-alignment when soldering (50
 
 ## Socket
 
-import lga_775_component_package_socket from './_assets/lga-775-component-package-socket.jpg'
-
-<Image src={lga_775_component_package_socket} width="500px">Socket for the LGA-775 component package.</Image>
+<Image src={import('./_assets/lga-775-component-package-socket.jpg')} width="500px">Socket for the LGA-775 component package.</Image>
 
 ## Shifted Solder Mask Layouts
 
 Sometimes LGA components recommend unique paste mask designs with "shifted" openings, as shown below.
 
-import panasonic_pan9026_solder_mask_layout from './_assets/panasonic-pan9026-solder-mask-layout.png'
-
-<Image src={panasonic_pan9026_solder_mask_layout} width="500px">The recommended paste mask layout (Panasonic labels this the \"solder mask\", but they are really talking about what most people call the paste mask!) for the Panasonic PAN9026. Notice the unequal shifting of approx. 150um[^bib-panasonic-pan9026-design-guide].</Image>
+<Image src={import('./_assets/panasonic-pan9026-solder-mask-layout.png')} width="500px">The recommended paste mask layout (Panasonic labels this the \"solder mask\", but they are really talking about what most people call the paste mask!) for the Panasonic PAN9026. Notice the unequal shifting of approx. 150um[^bib-panasonic-pan9026-design-guide].</Image>
 
 ## Common Uses
 

@@ -94,9 +94,7 @@ The HE910 family of modems come in a LGA component package. It has selectively d
 3 of the pads on the footprint have "do not route" areas surrounding three of their sides (these are the main cellular antenna, the optional diversity antenna, and the GPS antenna). Make sure to not include and tracks or ground planes in these areas.
 
 {/* {{% figure src="he910-component-footprint-with-keepouts.png" caption="The Telit HE-910 cellular modem component footprint (a LGA-style footprint) with keepouts around three EMI-sensitive pads." width="700px" %}} */}
-import he910_component_footprint_with_keepouts from './he910-component-footprint-with-keepouts.png'
-
-<Image src={he910_component_footprint_with_keepouts} width="700">The Telit HE-910 cellular modem component footprint (a LGA-style footprint) with keepouts around three EMI-sensitive pads.</Image>
+<Image src={import('./he910-component-footprint-with-keepouts.png')} width="700">The Telit HE-910 cellular modem component footprint (a LGA-style footprint) with keepouts around three EMI-sensitive pads.</Image>
 
 ## The Antenna
 
@@ -123,8 +121,6 @@ The HE910 can be sent AT commands and have it's GPS information read through the
 The HE910 can run directly of a Li-Ion battery (3.7V nominal battery voltage). Any other battery chemistry will require buck/boost/lin regulator circuitry to keep the voltage in the allowable range.
 
 {/* {{% figure src="recommended-power-supply-filter-for-he910.png" caption="The recommended power supply filter for the Telit HE910 cellular modem."  width="700px" %}} */}
-import recommended_power_supply_filter_for_he910 from './recommended-power-supply-filter-for-he910.png'
-
-<Image src={recommended_power_supply_filter_for_he910} width="700">The recommended power supply filter for the Telit HE910 cellular modem.</Image>
+<Image src={import('./recommended-power-supply-filter-for-he910.png')} width="700">The recommended power supply filter for the Telit HE910 cellular modem.</Image>
 
 The device uses about 40uA when in shutdown. Although this doesn't seem like much, this can result in a large energy loss in a energy critical application (e.g. battery power). Instead of putting the device into shutdown, it can be better to turn-off the power supply to the HE910 instead (most linear regulators/DC-DC converters support this) instead. However, when doing this, note that you have to pay particular attention to any leakage currents that may occur from any connected devices (e.g. a microcontroller) due to the voltage rail collapsing and the internal ESD diodes conducting.

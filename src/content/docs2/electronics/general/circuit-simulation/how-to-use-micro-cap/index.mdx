@@ -42,15 +42,11 @@ You can't use normal voltage or current sources to power and control digital cir
 
 Once you have placed a Digital Stimulus on your circuit, you configure it by double-clicking it and then enter in logic level transitions in the large text box. Example syntax is shown in the image below:
 
-import n_1_bit_digital_stimulus_sim_1_bit_digital_stimulus_config from './1-bit-digital-stimulus-sim/1-bit-digital-stimulus-config.png'
-
-<Image src={n_1_bit_digital_stimulus_sim_1_bit_digital_stimulus_config} width="800px">Screenshot showing how to configure a 1-bit digital stimulus.</Image>
+<Image src={import('./1-bit-digital-stimulus-sim/1-bit-digital-stimulus-config.png')} width="800px">Screenshot showing how to configure a 1-bit digital stimulus.</Image>
 
 The above settings gives the following waveform if we perform a transient analysis:
 
-import n_1_bit_digital_stimulus_sim_transient_analysis from './1-bit-digital-stimulus-sim/transient-analysis.png'
-
-<Image src={n_1_bit_digital_stimulus_sim_transient_analysis} width="900px">Transient analysis for the 1-bit digital stimulus.</Image>
+<Image src={import('./1-bit-digital-stimulus-sim/transient-analysis.png')} width="900px">Transient analysis for the 1-bit digital stimulus.</Image>
 
 There are four preset timings you can choose from to help you get started. These are `1MHzClk`, `Clear`, `Set` and `Train`. The "1MHzClk" preset inserts the following text:
 
@@ -73,15 +69,11 @@ _Initial conditions_ let you specify starting values for various simulation para
 
 One such example when initial conditions are needed is to construct and simulate a NAND-based JK flip-flop. The schematic looks like this:
 
-import jk_flipflop_nand_sim_schematic from './jk-flipflop-nand-sim/schematic.png'
-
-<Image src={jk_flipflop_nand_sim_schematic} width="600px">The simulation schematic for the JK flip-flop.</Image>
+<Image src={import('./jk-flipflop-nand-sim/schematic.png')} width="600px">The simulation schematic for the JK flip-flop.</Image>
 
 Without specifying initial conditions, `Q` and `nQ` will always stay in an indeterminate state. This is because one of `R` or `S` of the SR latch needs to go to `0` for the latch to be set into a valid state. But you can't get `R` or `S` into the `0` state without one of the outputs being `1`, as they are fed back as feedback into the front-end NAND gates. The simulator does not care about indeterminate states if one of the NAND gates inputs is `0`, because it can become a "don't care" signal and the simulator can set the output to `1`. But for the output of a NAND gate to be `0`, ALL of the inputs have to be `1`. 
 
-import jk_flipflop_nand_sim_transient_analysis_without_initial_conditions from './jk-flipflop-nand-sim/transient-analysis-without-initial-conditions.png'
-
-<Image src={jk_flipflop_nand_sim_transient_analysis_without_initial_conditions} width="900px">Simulation results without specifying initial conditions. The outputs get stuck in an indeterminate state forever.</Image>
+<Image src={import('./jk-flipflop-nand-sim/transient-analysis-without-initial-conditions.png')} width="900px">Simulation results without specifying initial conditions. The outputs get stuck in an indeterminate state forever.</Image>
 
 We add the following initial conditions in the `Text` tab of the Micro-Cap "circuit" simulation:
 
@@ -91,15 +83,11 @@ We add the following initial conditions in the `Text` tab of the Micro-Cap "circ
 
 A screenshot of the initial conditions added to the Micro-Cap simulation is shown below:
 
-import jk_flipflop_nand_sim_initial_conditions from './jk-flipflop-nand-sim/initial-conditions.png'
-
-<Image src={jk_flipflop_nand_sim_initial_conditions} width="400px">The initial conditions specified for the JK flip-flop simulation.</Image>
+<Image src={import('./jk-flipflop-nand-sim/initial-conditions.png')} width="400px">The initial conditions specified for the JK flip-flop simulation.</Image>
 
 Now the outputs start in a determinate state, and the simulation works as expected:
 
-import jk_flipflop_nand_sim_transient_analysis_with_initial_conditions from './jk-flipflop-nand-sim/transient-analysis-with-initial-conditions.png'
-
-<Image src={jk_flipflop_nand_sim_transient_analysis_with_initial_conditions} width="900px">Simulation with initial conditions.</Image>
+<Image src={import('./jk-flipflop-nand-sim/transient-analysis-with-initial-conditions.png')} width="900px">Simulation with initial conditions.</Image>
 
 </Aside>
 

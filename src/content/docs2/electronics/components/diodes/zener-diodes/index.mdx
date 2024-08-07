@@ -26,9 +26,7 @@ You can purchase Zeners with a reverse voltage drop as low as $1.8V$ all the way
 
 ## Schematic Symbol
 
-import zener_diode_schematic_symbol from './zener-diode-schematic-symbol.svg'
-
-<Image src={zener_diode_schematic_symbol} width="300">The schematic symbol for a Zener diode.</Image>
+<Image src={import('./zener-diode-schematic-symbol.svg')} width="300">The schematic symbol for a Zener diode.</Image>
 
 ## How To Read A Zener Diode Datasheet
 
@@ -42,9 +40,7 @@ Low voltage (1-4V) Zener diodes are notoriously bad at voltage regulation due to
 
 You can build a simple voltage limiting circuit from a Zener diode, a NPN BJT transistor, and a couple of resistors. The schematic below shows an example of this, used to limit the maximum voltage to the $V_{in}\,$ pin of the ADP8140 LED driver IC.
 
-import zener_and_npn_bjt_voltage_limiter_adp8140 from './zener-and-npn-bjt-voltage-limiter-adp8140.png'
-
-<Image src={zener_and_npn_bjt_voltage_limiter_adp8140} width="600">A simple Zener/NPN based voltage limiter circuit for the input to the ADP8140 LED driver IC. Image from https://www.analog.com/media/en/technical-documentation/data-sheets/ADP8140.pdf.</Image>
+<Image src={import('./zener-and-npn-bjt-voltage-limiter-adp8140.png')} width="600">A simple Zener/NPN based voltage limiter circuit for the input to the ADP8140 LED driver IC. Image from https://www.analog.com/media/en/technical-documentation/data-sheets/ADP8140.pdf.</Image>
 
 The voltage at $V_{in}\,$ is regulated to approximately $ V_Z - 0.7V $. The current through $R_Z$ is:
 

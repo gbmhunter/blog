@@ -19,17 +19,13 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The below image shows the schematic symbol commonly used for a crystal:
 
-import crystal_schematic from './_assets/crystal-schematic.png'
-
-<Image src={crystal_schematic} width="400px">A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value).</Image>
+<Image src={import('./_assets/crystal-schematic.png')} width="400px">A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value).</Image>
 
 ## Equivalent Circuit
 
 A piezoelectric crystal resonator can be modelled as a series LCR circuit in parallel with a capacitor, as shown below:
 
-import crystal_equivalent_circuit from './_assets/crystal-equivalent-circuit.svg'
-
-<Image src={crystal_equivalent_circuit} width="800px">The equivalent circuit for a two-lead piezoelectric crystal resonator.</Image>
+<Image src={import('./_assets/crystal-equivalent-circuit.svg')} width="800px">The equivalent circuit for a two-lead piezoelectric crystal resonator.</Image>
 
 The series components $C_1$, $L_1$, and $R_1$ model the physical properties of the piezoelectric crystal, and are called the motional arm[^bib-atmel-avr4100]. They are not real physical electronic components inside the crystal. The parallel component $C_0$ is the lead capacitance[^bib-cts-app-note-crystal-basics].
 
@@ -89,9 +85,7 @@ Many microcontrollers have pins which you can connect a 32.678kHz crystal to, wi
 
 As shown below, 32.678kHz crystals are also called _tuning fork crystals_, as the crystal is usually cut into the shape of a tuning fork[^bib-atmel-avr4100] (it vibrates in a similar manner to a large metal one used for tuning musical instruments).
 
-import tuning_fork_32_678khz_crystal_shape from './_assets/tuning-fork-32.678khz-crystal-shape.svg'
-
-<Image src={tuning_fork_32_678khz_crystal_shape} width="700px">Basic shape of a 32.678kHz crystal.</Image>
+<Image src={import('./_assets/tuning-fork-32.678khz-crystal-shape.svg')} width="700px">Basic shape of a 32.678kHz crystal.</Image>
 
 ### Important Parameters
 
@@ -99,17 +93,13 @@ import tuning_fork_32_678khz_crystal_shape from './_assets/tuning-fork-32.678khz
 
 The _frequency tolerance_ of a crystal is the accuracy of the frequency as guaranteed by the manufacturer. It is one of the most important parameters and is typically expressed in parts per million (ppm). Values between $\pm20ppm$ and $\pm50ppm$ are common for standard crystals (high precision crystals can have a lower ppm). Because frequency can vary significantly with temperature, the frequency tolerance is specified at a fixed temperature, usually $25^{\circ}C$. A separate parameter, the _temperature coefficient_, describes how the crystal's frequency changes with temperature.
 
-import abracon_abs05_32_678khz_crystal_with_freq_tolerance_params_highlighted from './_assets/abracon-abs05-32-678khz-crystal-with-freq-tolerance-params-highlighted.png'
-
-<Image src={abracon_abs05_32_678khz_crystal_with_freq_tolerance_params_highlighted} width="700px">A screenshot from the Abracon ABS05 32.768kHz crystal datasheet highlighting the frequency tolerance parameters.</Image>
+<Image src={import('./_assets/abracon-abs05-32-678khz-crystal-with-freq-tolerance-params-highlighted.png')} width="700px">A screenshot from the Abracon ABS05 32.768kHz crystal datasheet highlighting the frequency tolerance parameters.</Image>
 
 #### Temperature Coefficient and Turnover Temperature
 
 **_Turnover temperature_ ($T_O$) is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency**. 32.768kHz crystals have a negative parabolic frequency response to temperature (**frequency drops proportionally to the square of the temperature change**) at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature $T_O$ between 20 and 30°C and $\alpha$ of approx. $-0.034ppm^{\circ}C^2$[^bib-st-32khz-temp-comp]. Presumably the crystal was designed to have a turnover temperature close to nominal operating conditions to minimize the frequency change due to temperature fluctuations around operating conditions (it matters because the drift is proportional to the **square** of the temperature difference...it would not matter where the turnover temperature was if it was linear).
 
-import n_32768khz_crystal_drift from './_assets/32768khz-crystal-drift.png'
-
-<Image src={n_32768khz_crystal_drift} width="500px">The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. In this model, $T_O=25^{\circ}C,\ \alpha = -0.034ppm^{\circ}C^2$.</Image>
+<Image src={import('./_assets/32768khz-crystal-drift.png')} width="500px">The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. In this model, $T_O=25^{\circ}C,\ \alpha = -0.034ppm^{\circ}C^2$.</Image>
 
 The _temperature coefficient_ describes how the frequency drops as the temperature moves away from the turnover temperature.
 
@@ -176,9 +166,7 @@ So a 32.768kHz crystal with a tolerance of $\pm 20ppm$ could drift by $\pm 10.5\
 
 An interesting 32.767kHz crystal start-up issue is discussed in STM's STM32F10xx4 STM32F10xx6 Errata sheet[^bib-st-stm32f10xx4-errata]. Start-up issues with the LSE (low speed external) 32.678kHz crystal have been observed when there is some small amount of leakage current from the `OSC32_IN` and `OSC32_OUT` pins. This is especially true in "harsh conditions", i.e. humid environments.
 
-import n_32_678khz_xtal_start_up_issue_st_es0348_stm32f101x46_errata from './_assets/32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata.png'
-
-<Image src={n_32_678khz_xtal_start_up_issue_st_es0348_stm32f101x46_errata} width="700px">Schematic showing an additional parallel _feedback resistor_ (shown in green) between $16M\Omega$ and $22M\Omega$ to prevent 32.678kHz crystal start-up issues when there is significant leakage from the crystal traces.[^bib-st-stm32f10xx4-errata].</Image>
+<Image src={import('./_assets/32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata.png')} width="700px">Schematic showing an additional parallel _feedback resistor_ (shown in green) between $16M\Omega$ and $22M\Omega$ to prevent 32.678kHz crystal start-up issues when there is significant leakage from the crystal traces.[^bib-st-stm32f10xx4-errata].</Image>
 
 As shown in above, the solution is to place and additional $16{-}22M\Omega$ parallel feedback resistor between the crystals pins (the `OSC32_IN` and `OSC32_OUT` tracks).
 
@@ -190,9 +178,7 @@ The _negative resistance test_ can be used to find the oscillator load safety ma
 
 High-performance crystal oscillators are kept with temperature-controlled environments to increase the stability of the oscillator. They are called oven-controlled crystal oscillators (OCXOs).
 
-import n4a_series_oven_controlled_crystal_oscillator_ocxo_photo from './_assets/n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif'
-
-<Image src={n4a_series_oven_controlled_crystal_oscillator_ocxo_photo} width="264px">A photo of an N4A series OCXO. Image from http://www.bliley.com/.</Image>
+<Image src={import('./_assets/n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif')} width="264px">A photo of an N4A series OCXO. Image from http://www.bliley.com/.</Image>
 
 The crystals are designed to have a _turning-point_, a point of greatest stability, close to the oven temperature. OCXOs, rather than having a temperature stability in the ppm (parts-per-million) range like normal crystals, have a stability in the ppb (parts-per-billion) range (20ppb would be a viable stability).
 

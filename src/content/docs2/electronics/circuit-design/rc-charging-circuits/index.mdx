@@ -21,9 +21,7 @@ This page looks at how the **RC circuit responds in the time domain**. If you ar
 ## The Circuit
 
 {/* {{% figure ref="fig-basic-rc-schematic" src="_assets/basic-rc-schematic.webp" width="500px" caption="A basic RC charging circuit." %}} */}
-import basic_rc_schematic from './_assets/basic-rc-schematic.webp'
-
-<Image src={basic_rc_schematic} width="500">A basic RC charging circuit.</Image>
+<Image src={import('./_assets/basic-rc-schematic.webp')} width="500">A basic RC charging circuit.</Image>
 
 Assuming the capacitor's voltage started at \(0V\) at \(t=0\), and a constant supply voltage \(V_S\) is applied across the capacitor and resistor, then the capacitors voltage at any time \(t\) is[^electronics-tutorials-ws-rc-charging-circuit]:
 
@@ -54,9 +52,7 @@ $$
 The capacitor voltage with respect to time is shown below.
 
 {/* {{% figure ref="fig-rc-charging-plot" src="_assets/rc-charging-plot.png" width="700px" caption="A basic RC charging circuit." %}} */}
-import rc_charging_plot from './_assets/rc-charging-plot.png'
-
-<Image src={rc_charging_plot} width="700">A basic RC charging circuit.</Image>
+<Image src={import('./_assets/rc-charging-plot.png')} width="700">A basic RC charging circuit.</Image>
 
 {/* {{% aside type="tip" %}} */}
 <Aside type="tip">

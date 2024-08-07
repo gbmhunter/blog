@@ -18,9 +18,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The _Wheatstone bridge_ (a.k.a. _resistance bridge_) is a circuit consisting of four resistive components. It has the benefit of being able to perform accurate measurements of resistance. The below image shows the basic schematic:
 
-import basic_schematic_of_wheatstone_bridge from './_assets/basic-schematic-of-wheatstone-bridge.png'
-
-<Image src={basic_schematic_of_wheatstone_bridge} width="400">The basic schematic of a Wheatstone bridge (resistance bridge).</Image>
+<Image src={import('./_assets/basic-schematic-of-wheatstone-bridge.png')} width="400">The basic schematic of a Wheatstone bridge (resistance bridge).</Image>
 
 Below is the general equation for the Wheatstone bridge:
 
@@ -40,9 +38,7 @@ $$
 
 The traditional use is to replace the bottom resistors on both legs of the Wheatstone bridge -- one leg with a variable resistor (rheostat or potentiometer) and the other with an unknown resistance which you want to measure. The variable resistor is adjusted until the output voltage (or current) is $0$. Assuming you know the resistance of the rheostat, you can calculate the resistance of $R_x$.
 
-import pot_and_unknown_resistance_wheatstone_bridge from './_assets/pot-and-unknown-resistance-wheatstone-bridge.png'
-
-<Image src={pot_and_unknown_resistance_wheatstone_bridge} width="400">Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat ($R2$), and the other bottom resistor with the unknown resistance $R_x$. Adjusting the rheostat until the output voltage (or current) is 0 "balances" the bridge, and the unknown resistance can be found knowing the other three.</Image>
+<Image src={import('./_assets/pot-and-unknown-resistance-wheatstone-bridge.png')} width="400">Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat ($R2$), and the other bottom resistor with the unknown resistance $R_x$. Adjusting the rheostat until the output voltage (or current) is 0 "balances" the bridge, and the unknown resistance can be found knowing the other three.</Image>
 
 In the scenario shown above, the unknown resistance $R_x$ can be found with:
 

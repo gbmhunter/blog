@@ -22,9 +22,7 @@ It covers the four main steps:
 1. Compiling with G++ rather than GCC using custom compiler flags
 
 
-import psoc_creator_build_settings_command_line_custom_flags from './psoc-creator-build-settings-command-line-custom-flags.png'
-
-<Image src={psoc_creator_build_settings_command_line_custom_flags} width="500px">Adding custom command line flags in PSoC Creator to force GCC to use the C++ compiler.</Image>
+<Image src={import('./psoc-creator-build-settings-command-line-custom-flags.png')} width="500px">Adding custom command line flags in PSoC Creator to force GCC to use the C++ compiler.</Image>
 
 2. Wrapping C code with guards:
 
@@ -43,9 +41,7 @@ import psoc_creator_build_settings_command_line_custom_flags from './psoc-creato
     Preventing exception functionality to prevent linker errors such as `undefined reference to __gxx_personality_v0` and `undefined reference to __cxa_end_cleanup` (again, this is optional, and only applied if you want to use new and delete)
     
 
-import cplusplus_linker_error_undefined_reference_to_gxx_personality from './cplusplus-linker-error-undefined-reference-to-gxx-personality.png'
-
-<Image src={cplusplus_linker_error_undefined_reference_to_gxx_personality} width="600px">Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error.</Image>
+<Image src={import('./cplusplus-linker-error-undefined-reference-to-gxx-personality.png')} width="600px">Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error.</Image>
 
 The steps have pictures and code examples to help you through the process.
 

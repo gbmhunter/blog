@@ -25,16 +25,12 @@ High-side current-sense resistors require differential measurements.
 
 The below image shows the oscilloscope the voltage on the top-side of a low-side 100mΩ resistor connected to a small brushed DC motor as it is turned on. The voltage peaks at 280mV, which corresponds to 2.8A ($I = \frac{V}{R}$). It then drops and settles down to approx. 90mV, which corresponds to 0.9A. I think the noise is due to the switching action of the motors brushes.
 
-import current_sense_resistor_waveform_showing_dc_motor_turn_on from './current-sense-resistor-waveform-showing-dc-motor-turn-on.png'
-
-<Image src={current_sense_resistor_waveform_showing_dc_motor_turn_on} width="600">Oscilloscope capture of the voltage across a low-side 100mΩ resistor connected to a small brushed DC motor.</Image>
+<Image src={import('./current-sense-resistor-waveform-showing-dc-motor-turn-on.png')} width="600">Oscilloscope capture of the voltage across a low-side 100mΩ resistor connected to a small brushed DC motor.</Image>
 
 The following image shows a schematic for a low-side current sensing circuit that can be connected to an ADC. This can be used for applications such as brushed/BLDC motor phase current measurement (see the [BLDC Motor Control page](/electronics/circuit-design/bldc-motor-control)). It uses a current sense resistor on the low side of the current path (i.e., next to ground) and then shifts the result away from the rails to $ \frac{V_{cc}}{2} $ for better precision/compatibility with ADCs.
 
 {/* {{% figure src="low-side-current-sense-adc-interface-circuit.png" width="663px" caption="A schematic for a low-side current sensing circuit that can be connected to a microcontroller/MCU ADC."  %}} */}
-import low_side_current_sense_adc_interface_circuit from './low-side-current-sense-adc-interface-circuit.png'
-
-<Image src={low_side_current_sense_adc_interface_circuit} width="663">A schematic for a low-side current sensing circuit that can be connected to a microcontroller/MCU ADC.</Image>
+<Image src={import('./low-side-current-sense-adc-interface-circuit.png')} width="663">A schematic for a low-side current sensing circuit that can be connected to a microcontroller/MCU ADC.</Image>
 
 The value of the resistance is a trade-off between resolution and power dissipation/circuit disruption. The higher the current-sense resistance, the large the voltage signal for a given current and hence better resolution. However, a larger voltage means both more power dissipation in the resistance AND greater disruption to the circuit you are trying to measure. Assuming a resistive load, disruption means the load begins to see a reduced voltage and draws less current (the very current you are trying to measure!).
 

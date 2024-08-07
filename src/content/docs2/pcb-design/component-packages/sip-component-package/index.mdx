@@ -15,17 +15,13 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _SIP_ (Single Inline Package) is a older through-hole component package, commonly used for resistor networks and RAM chips. Similar to the DIP package except there are only one row of pins.
 
-import sip_component_package_photo from './_assets/sip-component-package-photo.jpg'
-
-<Image src={sip_component_package_photo} width="385px">A photo of the SIP component package.</Image>
+<Image src={import('./_assets/sip-component-package-photo.jpg')} width="385px">A photo of the SIP component package.</Image>
 
 ## Resistor Networks
 
 Resistor networks are one of the uses for the SIP package. They are used to save space on the PCB (compared to discrete resistors). The resistors are either isolated or connected to a common bus.
 
-import bourns_4300r_series_resistor_network_configurations from './_assets/bourns-4300r-series-resistor-network-configurations.png'
-
-<Image src={bourns_4300r_series_resistor_network_configurations} width="800px">The different configurations available for the Bourns 4300R series resistor networks available in the SIP package[^bourns-4300r-resistor-networks-ds].</Image>
+<Image src={import('./_assets/bourns-4300r-series-resistor-network-configurations.png')} width="800px">The different configurations available for the Bourns 4300R series resistor networks available in the SIP package[^bourns-4300r-resistor-networks-ds].</Image>
 
 ## Dimensions
 

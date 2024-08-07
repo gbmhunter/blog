@@ -13,23 +13,17 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 Temperature sensors are electronic transducers which measure the temperature of the nearby body (which in many cases is the temperature sensor itself) and then converts it into either a analogue or digital electrical signal.
 
-import schematic_icon_for_temperature_sensor from './schematic-icon-for-temperature-sensor.png'
-
-<Image src={schematic_icon_for_temperature_sensor} width="350px">A schematic icon for a temperature sensor.</Image>
+<Image src={import('./schematic-icon-for-temperature-sensor.png')} width="350px">A schematic icon for a temperature sensor.</Image>
 
 ## Linear Active Temperature Sensors
 
 Linear active temperature sensors output a analogue voltage which is proportional (linear) to the temperature, and require a voltage supply to run.
 
-import temp_sensor_tmp36_to_92_photo from './temp-sensor-tmp36-to-92-photo.jpg'
-
-<Image src={temp_sensor_tmp36_to_92_photo} width="300px">A photo of the common TMP36 analogue temperature sensor in the TO-92 package. Image from https://www.sparkfun.com/products/10988.</Image>
+<Image src={import('./temp-sensor-tmp36-to-92-photo.jpg')} width="300px">A photo of the common TMP36 analogue temperature sensor in the TO-92 package. Image from https://www.sparkfun.com/products/10988.</Image>
 
 They require contact with the medium that is to be measured. They usually require three connections (power, ground, and $V_{out}$, but can be purchased in packages with more pins. They use an internal diode to measure the temperature, surrounded by circuitry which linearises the output, provides an offset, and makes the reading insensitive to other parameter changes.
 
-import temp_sensor_tc1046_graph_output_voltage_vs_temp from './temp-sensor-tc1046-graph-output-voltage-vs-temp.png'
-
-<Image src={temp_sensor_tc1046_graph_output_voltage_vs_temp} width="500px">Graph of the voltage output vs. temperature for a Microchip TC1046 analogue temperature sensor. Image from http://ww1.microchip.com/downloads/en/DeviceDoc/21496C.pdf.</Image>
+<Image src={import('./temp-sensor-tc1046-graph-output-voltage-vs-temp.png')} width="500px">Graph of the voltage output vs. temperature for a Microchip TC1046 analogue temperature sensor. Image from http://ww1.microchip.com/downloads/en/DeviceDoc/21496C.pdf.</Image>
 
 Being encapsulated in a standard through-hole or surface mount component package, **these temperature sensors are designed to measure the temperature at the location at which they are soldered onto the circuit board**. This is called _local_ temperature sensing. This makes them somewhat unsuitable if you want to measure the temperature of an off-PCB location (_remote_ temperature sensing), although you can mount the through-hole versions onto pretty much anything you want and then attach it to the PCB via a cable. The [Texas Instruments LM35DT temperature sensor](http://www.ti.com/lit/ds/symlink/lm35.pdf) is one of the last commonly available sensors in a TO-220 package.
 
@@ -41,9 +35,7 @@ TIP: When looking at the accuracy, be careful, as they usually advertise the typ
 
 **A _negative-temperature coefficient_ (NTC) thermistor can be used as a temperature sensor.** A NTC thermistor is a resistor which has a non-linear change in resistance in a response to a change in temperature. It is a _passive sensor_.
 
-import ntc_thermistor_with_lug_vishay_ntcalug03a103gc_v2 from './ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg'
-
-<Image src={ntc_thermistor_with_lug_vishay_ntcalug03a103gc_v2} width="400px">An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com.</Image>
+<Image src={import('./ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg')} width="400px">An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com.</Image>
 
 ### NTCs vs RTDs
 
@@ -167,9 +159,7 @@ Linearisation is also used in purely analogue circuits in where there is no digi
 
 Digital temperature sensors are not as easy to interface with a microcontroller, but offer other advantages, such as the ability to be added onto an existing communication bus (and hence requiring to extra pins to the microcontroller), less sensitivity to noise (you are now transmitting a digital signal, not an analogue one), and the ability to chain many together (temperature sensors using the I2C or 1-Wire interface commonly allow for this).
 
-import tmp_102_temperature_sensor_ic from './tmp-102-temperature-sensor-ic.jpg'
-
-<Image src={tmp_102_temperature_sensor_ic} width="250px">The TMP102 digital temperature sensor.</Image>
+<Image src={import('./tmp-102-temperature-sensor-ic.jpg')} width="250px">The TMP102 digital temperature sensor.</Image>
 
 Digital temperature sensors require contact with the medium that is to be measured.
 
@@ -185,9 +175,7 @@ The first every temperature sensor IC was the Texas Instruments LM3911 in 1970.
 
 Because it is common to want to string many temperature sensors together to get temperature profiles of large objects (e.g. rooms, buildings, chimneys, pipes, ...) you can get temperature sensors which support **sequence detect**. This allows a microcontroller to determine the position of each sensor in a daisy chain, without requiring a manually entered look-up table (LUT). They normally also use the 1-wire interface, making them very easy to string together. The DS28EA00 "1-wire digital thermometer with sequence detect and PIO"  from Dallas is one example. Below is a typical application circuit for this temperature sensor.
 
-import ds28ea00_sequence_detect_temp_sensor_typical_schematic from './ds28ea00-sequence-detect-temp-sensor-typical-schematic.png'
-
-<Image src={ds28ea00_sequence_detect_temp_sensor_typical_schematic} width="800px">A typical application circuit for the Dallas DS28EA00 '1-wire digital thermometer with sequence detect and PIO' sensor.</Image>
+<Image src={import('./ds28ea00-sequence-detect-temp-sensor-typical-schematic.png')} width="800px">A typical application circuit for the Dallas DS28EA00 '1-wire digital thermometer with sequence detect and PIO' sensor.</Image>
 
 ## Thermostats
 

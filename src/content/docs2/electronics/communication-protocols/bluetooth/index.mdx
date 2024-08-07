@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 ## Overview
 
 {/* {{% figure ref="fig-bluetooth-4-0-icon" src="_assets/bluetooth-4-0-icon.jpg" width="300px" float="right" caption="The Bluetooth icon/logo." %}} */}
-import bluetooth_4_0_icon from './_assets/bluetooth-4-0-icon.jpg'
-
-<Image src={bluetooth_4_0_icon} width="300">The Bluetooth icon/logo.</Image>
+<Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300">The Bluetooth icon/logo.</Image>
 
 Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards[^bib-wikipedia-bluetooth-sig]. The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 

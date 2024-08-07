@@ -16,23 +16,17 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 * Updated the [Electrical Noise page](/electronics/circuit-design/electrical-noise/) with info on the various "Colours of Noise" including graphs (in both the time and frequency domains) of white, pink, red, and blue noise.
 
-import pink_noise_screenshot from './pink-noise-screenshot.png'
-
-<Image src={pink_noise_screenshot} width="500px"></Image>
+<Image src={import('./pink-noise-screenshot.png')} width="500px"></Image>
 
 * Added info on [Hakko soldering tweezers](/electronics/tools/#soldering-irons-and-stations).
 
-import hakko_screenshot from './hakko-screenshot.png'
-
-<Image src={hakko_screenshot} width="300px"></Image>
+<Image src={import('./hakko-screenshot.png')} width="300px"></Image>
 
 * Starting testing the Asciidoc format and comparing it against the Markdown format.
 
 * Added schematics, equations, worked examples, and bode plots on Capacitance Multiplier circuits.
 
-import capacitance_multiplier_screenshot from './capacitance-multiplier-screenshot.png'
-
-<Image src={capacitance_multiplier_screenshot} width="500px"></Image>
+<Image src={import('./capacitance-multiplier-screenshot.png')} width="500px"></Image>
 
 * Removed the "Test And Measurement" section of the site. Moved the only page underneath it (the "Current Probes" page) to under "Tools" instead.
 

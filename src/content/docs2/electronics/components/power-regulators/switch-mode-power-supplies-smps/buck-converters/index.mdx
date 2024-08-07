@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Buck converters_ are a particular topology of [switch-mode power supply](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (SMPSs) that use a switching element, diode (or second switch), inductor and capacitor to convert an input voltage into a **lower** output voltage.
 
-import buck_converter_basic_schematic from './_assets/buck-converter-basic-schematic.svg'
-
-<Image src={buck_converter_basic_schematic} width="600">The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown).</Image>
+<Image src={import('./_assets/buck-converter-basic-schematic.svg')} width="600">The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown).</Image>
 
 To learn more about EMI/EMC considerations regarding buck converters, see the [EMC Design Guidelines page](/electronics/electromagnetic-compatibility-emc/emc-design-guidelines/).
 
@@ -70,15 +68,11 @@ This analysis method of realizing the average voltage across the inductor must b
 
 When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
-import buck_converter_schematic_current_path_ton from './_assets/buck-converter-schematic-current-path-ton.svg'
-
-<Image src={buck_converter_schematic_current_path_ton} width="500">Current path when the switch is **closed** (during $t_{on}$ ).</Image>
+<Image src={import('./_assets/buck-converter-schematic-current-path-ton.svg')} width="500">Current path when the switch is **closed** (during $t_{on}$ ).</Image>
 
 When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing $D1$, as shown below:
 
-import buck_converter_schematic_current_path_toff from './_assets/buck-converter-schematic-current-path-toff.svg'
-
-<Image src={buck_converter_schematic_current_path_toff} width="500">Current path when the switch is **open** (during $t_{off}$).</Image>
+<Image src={import('./_assets/buck-converter-schematic-current-path-toff.svg')} width="500">Current path when the switch is **open** (during $t_{off}$).</Image>
 
 $C1$ (which is also called $C_{OUT}$) is to reduce the voltage ripple at the output/load.
 
@@ -94,9 +88,7 @@ See the [SMPS Control Methodologies page](/electronics/components/power-regulato
 
 _Voltage-mode (VM) control_ is the simplest control method, originating in approx. the 1970's[^bib-microsemi-v-i-mode]. It works by taking a proportion of the output voltage and comparing it with a fixed reference voltage. The difference between these two is called the error voltage and is amplified by an _error amplifier_. This error voltage is then fed into a comparator, with the other input being a sawtooth signal (triangular waveform). The switch is turned on at the start of the sawtooth period, and turned off when the sawtooth exceeds the error voltage. An SR latch is normally used to prevent multiple triggers per cycle due to noise. Voltage-mode control is named as such because the duty cycle is proportional to the control voltage.
 
-import voltage_mode_control_diagram from './_assets/voltage-mode-control-diagram.svg'
-
-<Image src={voltage_mode_control_diagram} width="800">The basic logical components used for voltage-mode control.</Image>
+<Image src={import('./_assets/voltage-mode-control-diagram.svg')} width="800">The basic logical components used for voltage-mode control.</Image>
 
 ### Current-Mode Control (Constant Frequency)
 
@@ -208,9 +200,7 @@ These equations assume a constant load. Load transients (fluctuations in the loa
 
 NinjaCalc has an online [buck converter calculator](https://ninjacalc.mbedded.ninja/calculators/electronics/smps/buck-converter). 
 
-import ninja_calc_buck_converter_calculator_screenshot from './_assets/ninja-calc-buck-converter-calculator-screenshot.png'
-
-<Image src={ninja_calc_buck_converter_calculator_screenshot} width="950">A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0).</Image>
+<Image src={import('./_assets/ninja-calc-buck-converter-calculator-screenshot.png')} width="950">A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0).</Image>
 
 ## Synchronous Rectification
 
@@ -226,15 +216,11 @@ The input current "hot loop" of a buck converter is the most important part to w
 
 Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter modules in 2015. One of the most impressive features is that this includes the inductor (external capacitors are still required). One example is the LMZ20502, which can provide up to 2A of current with an input voltage range of 2.7-5.5V and a output voltage range of 0.8-3.6V.
 
-import photo_of_lmz20502_buck_converter from './_assets/photo-of-lmz20502-buck-converter.jpg'
-
-<Image src={photo_of_lmz20502_buck_converter} width="306">A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/.</Image>
+<Image src={import('./_assets/photo-of-lmz20502-buck-converter.jpg')} width="306">A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/.</Image>
 
 Notice how most of the volume on the module is taken up the chip inductor (the big brown thing that dominates most of the image). The dimensions of the package are shown in the diagram below.
 
-import microsip_component_package_dimensions from './_assets/microsip-component-package-dimensions.png'
-
-<Image src={microsip_component_package_dimensions} width="500">The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf.</Image>
+<Image src={import('./_assets/microsip-component-package-dimensions.png')} width="500">The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf.</Image>
 
 [^bib-microsemi-v-i-mode]: Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control.
 [^ti-slva477b-basic-calc-buck-power-stage]: Brigitte Hauke (2015, Aug). _Basic Calculation of a Buck Converter's Power Stage_ [Application Report]. Texas Instruments. Retrieved 2023-06-20, from https://www.ti.com/lit/an/slva477b/slva477b.pdf.

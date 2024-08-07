@@ -28,9 +28,7 @@ Variants:
 
 The uSiP package is used for the TPSM265R1 family of point-of-load power modules (this component incorporates the SMPS buck controller, MOSFET, inductor and some of the capacitors, hence being a complete power modules). It appears there are SIL0010A and SIL0010C variants (same number of pins, but slightly different pitch and package size), but no SIL0010B.
 
-import sil10c_usip_component_package_3d_render from './_assets/sil10c-usip-component-package-3d-render.png'
-
-<Image src={sil10c_usip_component_package_3d_render} width="150px">A 3D render of the SIL-10C 10-pin uSiP component package[^bib-ti-tpsm265r1-ds]. Image © 2019 Texas Instruments.</Image>
+<Image src={import('./_assets/sil10c-usip-component-package-3d-render.png')} width="150px">A 3D render of the SIL-10C 10-pin uSiP component package[^bib-ti-tpsm265r1-ds]. Image © 2019 Texas Instruments.</Image>
 
 [Manufacturing and Rework Design Guide for MicroSiP Power Modules](https://www.ti.com/lit/ug/slib006a/slib006a.pdf) has some good advice regarding manufacturing and reworkability of the uSiP (MicroSiP) package.
 
@@ -66,9 +64,7 @@ SIL0010C is a 10pin, 3.7x2.8mm package size variant of the uSIP.
 
 The below diagram shows $\theta_{JA}$ versus copper area on the PCB for the SIL-10C uSiP package:
 
-import tpsm265r1_theta_ja_vs_copper_area from './_assets/tpsm265r1-theta-ja-vs-copper-area.png'
-
-<Image src={tpsm265r1_theta_ja_vs_copper_area} width="500px">$\theta_ja$ vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds].</Image>
+<Image src={import('./_assets/tpsm265r1-theta-ja-vs-copper-area.png')} width="500px">$\theta_ja$ vs. copper area for the TPSM265R1 power module in the SIL-10C uSiP component package[^bib-ti-tpsm265r1-ds].</Image>
 
 [^bib-ti-tpsm265r1-ds]: Texas Instruments (2019, Oct). _SNVSBF6B: TPSM265R1 65-V Input, 100-mA Power Module with Ultra-Low IQ (Datasheet)_. Retrieved 2021-03-03, from https://www.ti.com/lit/ds/symlink/tpsm265r1.pdf.
 [^bib-ti-lmzm23601-ds]: Texas Instruments (2017, Dec). _LMZM23601 36-V, 1-A Step-Down DC/DC Power Module in 3.8-mm × 3-mm Package (Datasheet)_. Retrieved 2021-11-15, from https://www.mouser.tw/datasheet/2/405/lmzm23601-1275132.pdf.

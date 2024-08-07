@@ -97,9 +97,7 @@ PCI devices have a set of registers referred to as the _configuration space_, an
 The configuration space is a standardized section of memory on PCIe cards that allows PCIe cards to configure correctly.
 
 {/* {{% figure src="pci-type-0-non-bridge-config-space-diagram-v2.png" width="624px" caption="The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org."  %}} */}
-import pci_type_0_non_bridge_config_space_diagram_v2 from './pci-type-0-non-bridge-config-space-diagram-v2.png'
-
-<Image src={pci_type_0_non_bridge_config_space_diagram_v2} width="624">The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org.</Image>
+<Image src={import('./pci-type-0-non-bridge-config-space-diagram-v2.png')} width="624">The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org.</Image>
 
 ## What Are BARs?
 
@@ -126,16 +124,12 @@ The way to detect and explore the PCIe device depends on the OS that the compute
 The built-in Device Manager gives a very brief overview of detected PCI cards.
 
 {/* {{% figure src="screenshot-of-custom-pcie-card-in-device-manager.png" width="341px" caption="A screenshot of Windows Device Manager showing the presence of a custom PCIe card."  %}} */}
-import screenshot_of_custom_pcie_card_in_device_manager from './screenshot-of-custom-pcie-card-in-device-manager.png'
-
-<Image src={screenshot_of_custom_pcie_card_in_device_manager} width="341">A screenshot of Windows Device Manager showing the presence of a custom PCIe card.</Image>
+<Image src={import('./screenshot-of-custom-pcie-card-in-device-manager.png')} width="341">A screenshot of Windows Device Manager showing the presence of a custom PCIe card.</Image>
 
 _RWEverything_ is a great Windows tool that allows you to read and write from any available memory location on the PCIe card (not just the configuration memory, as many other tools provide).
 
 {/* {{% figure src="screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  %}} */}
-import screenshot_of_custom_pcie_card_in_rw_everything from './screenshot-of-custom-pcie-card-in-rw-everything.png'
-
-<Image src={screenshot_of_custom_pcie_card_in_rw_everything} width="883">A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC.</Image>
+<Image src={import('./screenshot-of-custom-pcie-card-in-rw-everything.png')} width="883">A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC.</Image>
 
 {/* {{% aside type="note" %}} */}
 <Aside type="note">

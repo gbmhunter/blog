@@ -11,28 +11,20 @@ type: post
 
 import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
-import img_6210 from './img_6210.jpg'
-
-<Image src={img_6210} width="200px">A supposedly '3kW' BLDC motor I got from Hobby King.</Image>
+<Image src={import('./img_6210.jpg')} width="200px">A supposedly '3kW' BLDC motor I got from Hobby King.</Image>
 
 If you ever need to control a BLDC motor, hit up [this page](/electronics/circuit-design/bldc-motor-control)! This newly added information is all about the different types of BLDC motor, how the windings and magnets are orientated, the different control methods and the different feedback variables.
 
 It also has BLDC motor equations,
 
-import bldc_motor_equation_screenshot from './bldc-motor-equation-screenshot.png'
-
-<Image src={bldc_motor_equation_screenshot} width="400px">Screenshot of the BLDC motor equations on the BLDC motor page.</Image>
+<Image src={import('./bldc-motor-equation-screenshot.png')} width="400px">Screenshot of the BLDC motor equations on the BLDC motor page.</Image>
 
 a schematic diagram for PSoC hardware,
 
-import psoc_bldc_schematic_luts_and_multiplexors_for_phase_drive from './psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png'
-
-<Image src={psoc_bldc_schematic_luts_and_multiplexors_for_phase_drive} width="600px">A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.</Image>
+<Image src={import('./psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png')} width="600px">A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.</Image>
 
 and example code.
 
-import bldc_motor_example_lut_code_screenshot from './bldc-motor-example-lut-code-screenshot.png'
-
-<Image src={bldc_motor_example_lut_code_screenshot} width="600px">Screenshot of the LUT code on the BLDC page.</Image>
+<Image src={import('./bldc-motor-example-lut-code-screenshot.png')} width="600px">Screenshot of the LUT code on the BLDC page.</Image>
 
 This page can be found at Electronics->Circuit Design->[BLDC Motor Control](/electronics/circuit-design/bldc-motor-control).

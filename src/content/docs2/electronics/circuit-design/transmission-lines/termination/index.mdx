@@ -31,9 +31,7 @@ Most of these termination methods are discussed in the context of digital signal
 
 _Series termination_ (a.k.a. _back termination_ or _source termination_) is a termination method in where a resistor is added in series at the start of the transmission line, and no termination is added at the end of the termination line. Even though the start of the transmission line receives half the voltage from the driver, **the receiver sees a perfect transition to the full voltage due to a purposeful reflection back to the driver**. 
 
-import series_termination_schematic from './_assets/series-termination-schematic.png'
-
-<Image src={series_termination_schematic} width="800">How to do series termination. Resistor $R_S$ is placed at the output of the driver before the transmission line. $R_S$ is equal to the characteristic impedance of the transmission line.</Image>
+<Image src={import('./_assets/series-termination-schematic.png')} width="800">How to do series termination. Resistor $R_S$ is placed at the output of the driver before the transmission line. $R_S$ is equal to the characteristic impedance of the transmission line.</Image>
 
 Advantages:
 
@@ -76,9 +74,7 @@ The above impedances should have no imaginary component, so they are just resist
 
 The below diagram shows a real-world example where the driver has an output impedance of $20\Omega$, driving a $50\Omega$ transmission line. A $30\Omega$ series termination resistor is added to make the total series resistance equal to the transmission line's characteristic impedance.
 
-import series_termination_with_non_zero_driver_output_impedance from './_assets/series-termination-with-non-zero-driver-output-impedance.png'
-
-<Image src={series_termination_with_non_zero_driver_output_impedance} width="800">Real-world series termination, in where the driver has non-zero output impedance. Reduce the series termination resistance so that the total resistance is still equal to the characteristic impedance of the transmission line.</Image>
+<Image src={import('./_assets/series-termination-with-non-zero-driver-output-impedance.png')} width="800">Real-world series termination, in where the driver has non-zero output impedance. Reduce the series termination resistance so that the total resistance is still equal to the characteristic impedance of the transmission line.</Image>
 
 **Series Termination Summary**
 
@@ -90,9 +86,7 @@ import series_termination_with_non_zero_driver_output_impedance from './_assets/
 
 _Parallel termination_ is a termination method in where a resistor $R_P$ is added to the receiver end of the transmission line, and is connected across the line and either GND or $V_{CC}$ (hence in parallel).
 
-import parallel_termination_schematic from './_assets/parallel-termination-schematic.png'
-
-<Image src={parallel_termination_schematic} width="800">Schematic showing basic parallel termination. A resistor $R_P$ is added at the receiver end to either GND or $V_{CC}$.</Image>
+<Image src={import('./_assets/parallel-termination-schematic.png')} width="800">Schematic showing basic parallel termination. A resistor $R_P$ is added at the receiver end to either GND or $V_{CC}$.</Image>
 
 The waveform exiting the transmission line needs to see the same impedance as the transmission line itself.
 
@@ -130,9 +124,7 @@ $$
 
 _Thevenin termination_ is a form of termination in where two resistors (usually identical) are connected to the receiving end of the transmission line, one to $V_{CC}$ and the other to $GND$. 
 
-import thevenin_termination_schematic from './_assets/thevenin-termination-schematic.png'
-
-<Image src={thevenin_termination_schematic} width="800">Schematic showing Thevenin termination. Two usually identical resistors $R_{P1}$ and $R_{P2}$ are connected to the receiver.</Image>
+<Image src={import('./_assets/thevenin-termination-schematic.png')} width="800">Schematic showing Thevenin termination. Two usually identical resistors $R_{P1}$ and $R_{P2}$ are connected to the receiver.</Image>
 
 Assuming the receiver is relatively high impedance, the parallel combination of $R_{P1}$ and $R_{P2}$ must equal the impedance of the transmission line.
 
@@ -153,8 +145,6 @@ $$
 
 _AC termination_ is similar to parallel termination, except a capacitor is added in series with the termination resistor at the receiver, as shown below. AC termination addresses the DC current consumption of parallel termination. The idea is that the resistor is still present to provide termination for the high-speed signals (which are fast enough to see the capacitance as low impedance), whilst the capacitor blocks DC current consumption[^bib-avx-ac-term].
 
-import ac_termination_schematic from './_assets/ac-termination-schematic.png'
-
-<Image src={ac_termination_schematic} width="800">Schematic showing AC termination.</Image>
+<Image src={import('./_assets/ac-termination-schematic.png')} width="800">Schematic showing AC termination.</Image>
 
 [^bib-avx-ac-term]: Ben Smith. _Technical Information: AC Termination for Signal Buses_. AVX. Retrieved 2022-01-31, from https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.298&rep=rep1&type=pdf.

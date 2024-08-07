@@ -72,9 +72,7 @@ I got some weird `cb() never called!` errors when trying to install express with
 
 I installed geany (`sudo apt-get install geany`), to get a better code editor than `nano` or `leafpad`.
 
-import raspberry_pi_with_lots_of_cables_filtered from './raspberry-pi-with-lots-of-cables-filtered.jpg'
-
-<Image src={raspberry_pi_with_lots_of_cables_filtered} width="800px">The RaspberryPi while testing.</Image>
+<Image src={import('./raspberry-pi-with-lots-of-cables-filtered.jpg')} width="800px">The RaspberryPi while testing.</Image>
 
 
 ## List Of Installed Programs
@@ -87,9 +85,7 @@ import raspberry_pi_with_lots_of_cables_filtered from './raspberry-pi-with-lots-
 
 The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privlages).
 
-import simple_led_connected_to_raspberry_pi_gpio from './simple-led-connected-to-raspberry-pi-gpio.jpg'
-
-<Image src={simple_led_connected_to_raspberry_pi_gpio} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
+<Image src={import('./simple-led-connected-to-raspberry-pi-gpio.jpg')} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
 
 ## Nodejs Modules
 
@@ -99,15 +95,11 @@ Managed to get the RaspberryPi to take action when the client visited a specific
 
 Wanted to send information back to the server without the client browsing to a different page.
 
-import node_js_server_running_on_raspberry_pi_terminal_output_filtered from './node-js-server-running-on-raspberry-pi-terminal-output-filtered.jpg'
-
-<Image src={node_js_server_running_on_raspberry_pi_terminal_output_filtered} width="600px">The terminal output when a client visits the node.js server running on the RaspberryPi.</Image>
+<Image src={import('./node-js-server-running-on-raspberry-pi-terminal-output-filtered.jpg')} width="600px">The terminal output when a client visits the node.js server running on the RaspberryPi.</Image>
 
 The express extension serves up a web page.
 
-import basic_web_page_served_by_node_js from './basic-web-page-served-by-node-js.jpg'
-
-<Image src={basic_web_page_served_by_node_js} width="800px">The basic web page served with node.js running on the RaspberryPi (viewed in Chrome).</Image>
+<Image src={import('./basic-web-page-served-by-node-js.jpg')} width="800px">The basic web page served with node.js running on the RaspberryPi (viewed in Chrome).</Image>
 
 At first I was just using the `window.redirect()` to send data back to the server when the user toggled the on/off button. This had the problem of the web page wanting to change everytime you clicked the button. To send back data without reloading the page, I use the AJAX (this was new to me) post request that comes with jQuery, `$.post()`.
 
@@ -123,9 +115,7 @@ I used the following command when currently in the repo directory on my PC (note
 rsync -arvz --delete . pi@192.168.1.51:~/autoeb
 ```
 
-import sending_files_via_rsync_between_pc_and_raspberry_pi from './sending-files-via-rsync-between-pc-and-raspberry-pi.png'
-
-<Image src={sending_files_via_rsync_between_pc_and_raspberry_pi} width="800px">Sending code files using rsync from the PC to the RaspberryPi.</Image>
+<Image src={import('./sending-files-via-rsync-between-pc-and-raspberry-pi.png')} width="800px">Sending code files using rsync from the PC to the RaspberryPi.</Image>
 
 ## Dynamic DNS
 
@@ -195,9 +185,7 @@ But it still seemed to work fine.
 
 I pulled apart the electric blanket. Simple control. Looks like switch selects different resistance circuits to power.
 
-import camerazoom_20131009175933171 from './camerazoom-20131009175933171.jpg'
-
-<Image src={camerazoom_20131009175933171} width="800px">The circuit inside the electric blanket controls (for one side of the bed).</Image>
+<Image src={import('./camerazoom-20131009175933171.jpg')} width="800px">The circuit inside the electric blanket controls (for one side of the bed).</Image>
 
 The Pololu ([http://www.pololu.com/catalog/product/2120](http://www.pololu.com/catalog/product/2120)) wasn't enough to power the RaspberryPi with the WiFi module installed (it got hot and then kept restarting).
 

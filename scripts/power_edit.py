@@ -76,7 +76,7 @@ class PowerEdit:
             filedata_in = file.read()
 
         if multiline:
-            regex_flags = re.MULTILINE|re.DOTALL
+            regex_flags = re.MULTILINE
         else:
             regex_flags = 0
 

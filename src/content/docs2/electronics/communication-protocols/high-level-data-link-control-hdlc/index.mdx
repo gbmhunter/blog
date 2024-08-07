@@ -13,9 +13,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 **High-Level Data Link Control (HDLC) is a synchronous data-link layer protocol**. It was developed by the International Organization for Standardization (ISO).
 
 {/* {{% figure src="high-level-data-link-control-icon.png" width="300px" %}} */}
-import high_level_data_link_control_icon from './high-level-data-link-control-icon.png'
-
-<Image src={high_level_data_link_control_icon} width="300"></Image>
+<Image src={import('./high-level-data-link-control-icon.png')} width="300"></Image>
 
 It only describes the data-link layer (layer 2 in the OSI model), and therefore is not really considered an communication protocol in it's own right. It may be used by other communication protocols such as LVDS.
 

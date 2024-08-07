@@ -14,42 +14,28 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 blog.mbedded.ninja now has a dark mode. New CSS styling rules have been created to properly colour things when in dark mode, and a little JS script has been added to respond to the light/dark toggle button click and store the preference in the users local storage.
 
-import dark_mode_screenshot from './_assets/dark-mode-screenshot.png'
-
-<Image src={dark_mode_screenshot} width="700px"></Image>
+<Image src={import('./_assets/dark-mode-screenshot.png')} width="700px"></Image>
 
 The page structure got modified. I wanted to improve the main left navigation menu. So I created a top navbar for the site logo, name and light/dark mode toggle. And then the left column is dedicated purely to the navigation menu. The on hover styling has been improved, with a clear indication you can click the chevron to expand/collapse a sub-menu. The chevrons are now all aligned on the right of the menu rather than on the left.
 
-import new_menu_screenshot from './_assets/new-menu-screenshot.png'
-
-<Image src={new_menu_screenshot} width="300px"></Image>
+<Image src={import('./_assets/new-menu-screenshot.png')} width="300px"></Image>
 
 Updated the VMIN and VTIME information on [Linux Serial Ports Using C/C++](/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/).
 
-import vmin_vtime_screenshot from './_assets/vmin-vtime-screenshot.png'
-
-<Image src={vmin_vtime_screenshot} width="700px"></Image>
+<Image src={import('./_assets/vmin-vtime-screenshot.png')} width="700px"></Image>
 
 Added info on converting a version string into numbers to the [C String Manipulation page](/programming/languages/c/string-manipulation-in-c/#converting-a-version-string-to-numbers). This page was also restructured to read better.
 
-import converting_version_string_to_numbers_screenshot from './_assets/converting-version-string-to-numbers-screenshot.png'
-
-<Image src={converting_version_string_to_numbers_screenshot} width="700px"></Image>
+<Image src={import('./_assets/converting-version-string-to-numbers-screenshot.png')} width="700px"></Image>
 
 Added info on the [Zephyr Hardware Info Interface (including reset causes)](/programming/operating-systems/zephyr/#hardware-info).
 
-import zephyr_reset_causes_screenshot from './_assets/zephyr-reset-causes-screenshot.png'
-
-<Image src={zephyr_reset_causes_screenshot} width="700px"></Image>
+<Image src={import('./_assets/zephyr-reset-causes-screenshot.png')} width="700px"></Image>
 
 Added more info on Benchtop PSUs to the [Electronics Tools page](/electronics/tools/).
 
-import benchtop_psus_screenshot from './_assets/benchtop-psus-screenshot.png'
-
-<Image src={benchtop_psus_screenshot} width="700px"></Image>
+<Image src={import('./_assets/benchtop-psus-screenshot.png')} width="700px"></Image>
 
 Started a page on [Triangles](/mathematics/geometry/triangles/), and added information about the [Law of Sines](/mathematics/geometry/triangles/#law-of-sines) to it.
 
-import law_of_sines_screenshot from './_assets/law-of-sines-screenshot.png'
-
-<Image src={law_of_sines_screenshot} width="700px"></Image>
+<Image src={import('./_assets/law-of-sines-screenshot.png')} width="700px"></Image>

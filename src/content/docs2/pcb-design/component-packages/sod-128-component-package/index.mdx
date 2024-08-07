@@ -13,9 +13,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 ## Overview
 
-import sod_128_component_package_3d_render from './_assets/sod-128-component-package-3d-render.jpg'
-
-<Image src={sod_128_component_package_3d_render} width="150px"></Image>
+<Image src={import('./_assets/sod-128-component-package-3d-render.jpg')} width="150px"></Image>
 
 SOD-128 is a package used by a few manufacturers for diodes. I could not find any JEITA (EIAJ) code (e.g. SC-xxx) for this package. ST Microelectronics calls this package the SOD-128 FLAT (presumably because it has flat leads, as opposed to many SOD packages which by default have gull-wing leads, and only offer flat variants once you add a F suffix)[^bib-st-sm6fxxay-ds]. There does not appear to be any difference between the ST Microelectronics SOD-128 FLAT package and the SOD-128 as labelled by Rohm and Nexperia.
 
@@ -34,7 +32,7 @@ SOD-128 is a package used by a few manufacturers for diodes. I could not find an
 
 ## 3D Render
 
-<Image src={sod_128_component_package_3d_render} width="300">A 3D render of the SOD-128 component package.</Image>
+<Image src={import('./_assets/sod-128-component-package-3d-render.jpg')} width="300">A 3D render of the SOD-128 component package.</Image>
 
 ## Dimensions
 
@@ -46,15 +44,11 @@ The main dimensions of the SOD-128 package are:
 
 The below diagram shows these dimensions:
 
-import sod128_package_outline from './_assets/sod128-package-outline.jpg'
-
-<Image src={sod128_package_outline} width="900">The package outline for the SOD-128 component package.</Image>
+<Image src={import('./_assets/sod128-package-outline.jpg')} width="900">The package outline for the SOD-128 component package.</Image>
 
 ## Recommended Land Pattern
 
-import sod128_recommended_land_pattern from './_assets/sod128-recommended-land-pattern.jpg'
-
-<Image src={sod128_recommended_land_pattern} width="900">The recommended land pattern for the SOD-128 component package.</Image>
+<Image src={import('./_assets/sod128-recommended-land-pattern.jpg')} width="900">The recommended land pattern for the SOD-128 component package.</Image>
 
 The land area is $21.1mm^2$ (6.2x3.4mm)[^bib-nexperia-sod-128].
 

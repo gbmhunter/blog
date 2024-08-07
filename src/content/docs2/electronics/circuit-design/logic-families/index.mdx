@@ -29,9 +29,7 @@ Logic families are sorted in alphabetical order. Take note that there may be a l
 CMOS (_complementary metal-oxide semiconductor_) is the most widespread logic family in use today. CMOS logic is built from P-channel (PMOS) and N-channel (NMOS) [MOSFETs](/electronics/components/transistors/mosfets).
 
 {/* {{% figure src="logic-family-cmos-technologies-voltage-vs-speed.png" width="762px" caption="A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/." %}} */}
-import logic_family_cmos_technologies_voltage_vs_speed from './logic-family-cmos-technologies-voltage-vs-speed.png'
-
-<Image src={logic_family_cmos_technologies_voltage_vs_speed} width="762">A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/.</Image>
+<Image src={import('./logic-family-cmos-technologies-voltage-vs-speed.png')} width="762">A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/.</Image>
 
 ### Latch-up
 
@@ -40,9 +38,7 @@ CMOS logic suffers from a phenomenon known as _latch-up_. This is when a **short
 Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching elements form parasitic [PNPN thyristors (SCRs)](/electronics/components/transistors/silicon-controlled-rectifiers-scrs)**[^ti-latch-up-white-paper]. A latch-up has to be initially triggered by an over-voltage/current condition which causes the voltage on a pin to go at least one diode drop above the rail voltage, or one voltage drop below the ground.
 
 {/* {{% figure src="cmos-latch-up-semiconductor-diagram.svg" width="800px" caption="Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR)." %}} */}
-import cmos_latch_up_semiconductor_diagram from './cmos-latch-up-semiconductor-diagram.svg'
-
-<Image src={cmos_latch_up_semiconductor_diagram} width="800">Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR).</Image>
+<Image src={import('./cmos-latch-up-semiconductor-diagram.svg')} width="800">Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR).</Image>
 
 Hot-plugging can cause latch-up issues.
 
@@ -51,9 +47,7 @@ ICs are sometimes tested against the EIA/JESD 78A IC latch-up standard and the I
 * Applying a supply overvoltage condition to the ICs power pins
 * A current injection to the ICs I/O pins
 
-import static_latchup_tests_snippet_stm32f070xx from './static-latchup-tests-snippet-stm32f070xx.png'
-
-<Image src={static_latchup_tests_snippet_stm32f070xx} width="500">A snippet of the STM32F070xx microcontrollers datasheet showing the latch-up tests which were performed on the IC.</Image>
+<Image src={import('./static-latchup-tests-snippet-stm32f070xx.png')} width="500">A snippet of the STM32F070xx microcontrollers datasheet showing the latch-up tests which were performed on the IC.</Image>
 
 ### Powered Off Protection
 
@@ -61,9 +55,7 @@ By default, most CMOS based devices contain diodes from the I/O pins to the volt
 
 Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at $0V$. Texas Instruments calls this $I_{OFF}$ protection[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]. The figure below shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
 
-import cmos_powered_off_protection_circuit_ioff_ti from './cmos-powered-off-protection-circuit-ioff-ti.png'
-
-<Image src={cmos_powered_off_protection_circuit_ioff_ti} width="700">Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to $V_{CC}$ in the case that the power rail is at $0V$[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps].</Image>
+<Image src={import('./cmos-powered-off-protection-circuit-ioff-ti.png')} width="700">Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to $V_{CC}$ in the case that the power rail is at $0V$[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps].</Image>
 
 Some examples of ICs with "powered-off protection" include the [SN74LVC1G125: Single Bus Buffer Gate With 3-State Output](https://www.ti.com/lit/ds/symlink/sn74lvc1g125.pdf), the [SN74CB3Q3125: 3.3-V, 2:1 (SPDT), 4-channel FET bus switch](https://www.ti.com/product/SN74CB3Q3125) and the [ADG5248F: 8:1 Analog Multiplexers](https://www.analog.com/en/products/adg5248f.html#product-overview).
 

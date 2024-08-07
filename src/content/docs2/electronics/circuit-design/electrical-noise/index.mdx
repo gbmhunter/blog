@@ -17,9 +17,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Electrical noise_ is the unintentional (most of the time, but not in the case of stochastic resonance[^wikipedia-stochastic-resonance], dither, or random number generation) introduction of voltage/current disturbance in an electrical signal. Noise is added to a signal as it flows through a circuit/cable by the circuit components themselves, as well as being picked up by electromagnetic means from the surrounding environment. Noise is also emitted by a signal via electromagnetic means to the surrounding environment.
 
-import noise_from_3_smps from './_assets/noise-from-3-smps.png'
-
-<Image src={noise_from_3_smps} width="700">Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!</Image>
+<Image src={import('./_assets/noise-from-3-smps.png')} width="700">Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!</Image>
 
 This page focuses on noise created by electronics components such as resistors, how to model it, and what it looks like. If you want to know how to protect your circuit from transient voltage spikes and other ESD events, see the [ESD Protection page](/electronics/circuit-design/esd-protection/).
 
@@ -80,15 +78,11 @@ White noise has a flat power spectral density when plotted against frequency. Wh
 
 The following graph shows what Gaussian white noise looks like in the time domain:
 
-import noise_white_time_domain from './_assets/noise-white-time-domain.png'
-
-<Image src={noise_white_time_domain} width="700">What white noise looks like in the time domain.</Image>
+<Image src={import('./_assets/noise-white-time-domain.png')} width="700">What white noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-import noise_white_freq_domain from './_assets/noise-white-freq-domain.png'
-
-<Image src={noise_white_freq_domain} width="700">What white noise looks like in the frequency domain.</Image>
+<Image src={import('./_assets/noise-white-freq-domain.png')} width="700">What white noise looks like in the frequency domain.</Image>
 
 Although it commonly is modelled as such, white noise does not have to be _Gaussian_. Gaussian noise means the probability density function has a Gaussian distribution. However other forms of white noise exist, for example, Poisson white noise.
 
@@ -106,15 +100,11 @@ Also called $\frac{1}{f}$ noise. The PSD decreases at $3dB$ per octave.
 
 The following graph shows what pink noise looks like in the time domain:
 
-import noise_pink_time_domain from './_assets/noise-pink-time-domain.png'
-
-<Image src={noise_pink_time_domain} width="700">What pink noise looks like in the time domain.</Image>
+<Image src={import('./_assets/noise-pink-time-domain.png')} width="700">What pink noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-import noise_pink_freq_domain from './_assets/noise-pink-freq-domain.png'
-
-<Image src={noise_pink_freq_domain} width="700">What pink noise looks like in the frequency domain.</Image>
+<Image src={import('./_assets/noise-pink-freq-domain.png')} width="700">What pink noise looks like in the frequency domain.</Image>
 
 Examples and uses of pink noise:
 
@@ -135,15 +125,11 @@ Also called _Brownian_ or $\frac{1}{f^2}$ noise. The PSD decreases at $6dB$ per 
 
 The following graph shows what red noise looks like in the time domain:
 
-import noise_red_time_domain from './_assets/noise-red-time-domain.png'
-
-<Image src={noise_red_time_domain} width="700">What red noise looks like in the time domain.</Image>
+<Image src={import('./_assets/noise-red-time-domain.png')} width="700">What red noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-import noise_red_freq_domain from './_assets/noise-red-freq-domain.png'
-
-<Image src={noise_red_freq_domain} width="700">What red noise looks like in the frequency domain.</Image>
+<Image src={import('./_assets/noise-red-freq-domain.png')} width="700">What red noise looks like in the frequency domain.</Image>
 
 ### Blue Noise
 
@@ -151,15 +137,11 @@ Also called _Azure_ or $f$ noise. It has a PSD proportional to frequency. As the
 
 The following graph shows what blue noise looks like in the time domain:
 
-import noise_blue_time_domain from './_assets/noise-blue-time-domain.png'
-
-<Image src={noise_blue_time_domain} width="700">What blue noise looks like in the time domain.</Image>
+<Image src={import('./_assets/noise-blue-time-domain.png')} width="700">What blue noise looks like in the time domain.</Image>
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-import noise_blue_freq_domain from './_assets/noise-blue-freq-domain.png'
-
-<Image src={noise_blue_freq_domain} width="700">What blue noise looks like in the frequency domain.</Image>
+<Image src={import('./_assets/noise-blue-freq-domain.png')} width="700">What blue noise looks like in the frequency domain.</Image>
 
 In the audio spectrum, blue noise sounds like a horrible high-pitched hiss.
 

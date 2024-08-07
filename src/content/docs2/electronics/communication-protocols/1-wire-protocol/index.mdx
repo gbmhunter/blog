@@ -13,9 +13,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The 1-wire protocol is a one wire, half-duplex, bi-directional, multi-drop, wired communication protocol.
 
-import n_1_wire_ic_schematic_ds18b20_high_zoom_logo from './_assets/1-wire-ic-schematic-ds18b20-high-zoom-logo.png'
-
-<Image src={n_1_wire_ic_schematic_ds18b20_high_zoom_logo} width="181">A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor.</Image>
+<Image src={import('./_assets/1-wire-ic-schematic-ds18b20-high-zoom-logo.png')} width="181">A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor.</Image>
 
 <table>
   <tbody>
@@ -56,9 +54,7 @@ import n_1_wire_ic_schematic_ds18b20_high_zoom_logo from './_assets/1-wire-ic-sc
 
 The 1-wire communication protocol is a hardware and software design that allows communication between a microcontroller and other ICs, using only a single wire (excluding ground, and if needed, a power rail). Each and every 1-Wire IC has it's own unique code.
 
-import ds18b20_temp_sensor_functional_block_diagram_showing_one_wire_interface from './_assets/ds18b20-temp-sensor-functional-block-diagram-showing-one-wire-interface.png'
-
-<Image src={ds18b20_temp_sensor_functional_block_diagram_showing_one_wire_interface} width="475">The functional block diagram of the DS18B20 temperature sensor, showing the 1-wire interface circuitry. Image from www.maximintegrated.com.</Image>
+<Image src={import('./_assets/ds18b20-temp-sensor-functional-block-diagram-showing-one-wire-interface.png')} width="475">The functional block diagram of the DS18B20 temperature sensor, showing the 1-wire interface circuitry. Image from www.maximintegrated.com.</Image>
 
 ## Addressing
 
@@ -84,9 +80,7 @@ Although the standard 1-wire bus allows the master to search and discover an arb
 
 Some 1-wire devices have two additional pins to support sequence detection.
 
-import n_1_wire_bus_example_showing_sequence_detection_with_ds28ea00 from './_assets/1-wire-bus-example-showing-sequence-detection-with-ds28ea00.png'
-
-<Image src={n_1_wire_bus_example_showing_sequence_detection_with_ds28ea00} width="702">An example of a 1-wire bus with the DS28EA00 ICs, which support sequence detection. Image from www.maximintegrated.com.</Image>
+<Image src={import('./_assets/1-wire-bus-example-showing-sequence-detection-with-ds28ea00.png')} width="702">An example of a 1-wire bus with the DS28EA00 ICs, which support sequence detection. Image from www.maximintegrated.com.</Image>
 
 ## Bit Bashing
 

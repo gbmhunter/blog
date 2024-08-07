@@ -22,9 +22,7 @@ A typical output signal for is called 'quadrature encoding'. The encoder has 2 o
 
 The phase difference can be determined in electronics hardware by using a 'D type' flip-flop. The output is 1 when the encoder is spinning in one direction and 0 when spinning in the other. See the schematic below.
 
-import quadrature_phase_detection_circuit from './quadrature-phase-detection-circuit.png'
-
-<Image src={quadrature_phase_detection_circuit} width="600px">A simple quadrature phase detection circuit using a D flip-flop.</Image>
+<Image src={import('./quadrature-phase-detection-circuit.png')} width="600px">A simple quadrature phase detection circuit using a D flip-flop.</Image>
 
 ## Overflow Protection
 
@@ -98,6 +96,4 @@ The [PSoC range of microcontrollers](/programming/microcontrollers/psoc) contain
 
 The datasheet for the Baumer BHK series of incremental encoders has an error on the encoders wiring diagram. The pinout on page (3/4) for the 8-pin connector, used for the 05A series, is mislabelled. All the pin numbers around the circumference need to be rotated anti-clockwise by one pin. Pin 2 should be pin 1, pin 3 should be pin 2, e.t.c. Pin 8 remains the same.
 
-import incorrect_pinout_on_baumer_bhk_05a_encoder from './incorrect-pinout-on-baumer-bhk-05a-encoder.png'
-
-<Image src={incorrect_pinout_on_baumer_bhk_05a_encoder} width="400px">The incorrect pinout on a Baumer BHK-05A encoder datasheet.</Image>
+<Image src={import('./incorrect-pinout-on-baumer-bhk-05a-encoder.png')} width="400px">The incorrect pinout on a Baumer BHK-05A encoder datasheet.</Image>

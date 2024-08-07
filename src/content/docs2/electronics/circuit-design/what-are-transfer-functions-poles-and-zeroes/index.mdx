@@ -68,9 +68,7 @@ This is much more useful! It tells use everything we need to know about the elec
 Note that because we are using the complex variable $s$, the transfer function $H(s)$ encodes both magnitude and phase relationships between the output and input. On it's own, it's complex in nature and not really useful for deducing anything "measurable". But, using two clever tricks, you can separately extract the magnitude and phase response equations from $H(s)$. The below diagram shows the value of $H(s)$ at a single frequency $\omega$, and how the magnitude and phase information is encoded in this (more on this below).
 
 {/* {{% figure src="diagram-of-hs-in-complex-plane.png" width="600px" caption="Graphical representation of H(s) on the complex plane and how the magnitude and phase are encoded into this." %}} */}
-import diagram_of_hs_in_complex_plane from './diagram-of-hs-in-complex-plane.png'
-
-<Image src={diagram_of_hs_in_complex_plane} width="600">Graphical representation of $H(s)$ on the complex plane and how the magnitude and phase are encoded into this.</Image>
+<Image src={import('./diagram-of-hs-in-complex-plane.png')} width="600">Graphical representation of $H(s)$ on the complex plane and how the magnitude and phase are encoded into this.</Image>
 
 Bear in mind that the above plot shows $H(s)$ at a single frequency. This point will move around as the frequency changes. The magnitude response is found by taking the magnitude of $H(s)$, which is $|H(s)|$ as shown in the below equation.
 
@@ -177,9 +175,7 @@ Poles and zeroes are plotted in a _Argand diagram_ in what is called a _pole-zer
 Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are building an oscillator, poles in the right-hand half of the plane (having a positive real component) are a bad thing, as they represent an instability.
 
 {/* {{% figure src="poles-graph.png" width="900px" caption="Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses)." %}} */}
-import poles_graph from './poles-graph.png'
-
-<Image src={poles_graph} width="900">Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses).</Image>
+<Image src={import('./poles-graph.png')} width="900">Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses).</Image>
 
 ## Group Delay
 
@@ -199,9 +195,7 @@ Intuitively, you can **think of group delay as the time delay in seconds that a 
 Group delay for a number of 4-order filter tunings is shown below. The Bessel filter tuning aims to have maximally flat group delay across the pass-band of the signal (at the expense of other metrics we don't talk about here). You can see this in the plot with the straight green line.
 
 {/* {{% figure src="tuning-comparison-group-delay.png" width="600px" caption="Group delay plotted for a number of different 4-order filter tunings." %}} */}
-import tuning_comparison_group_delay from './tuning-comparison-group-delay.png'
-
-<Image src={tuning_comparison_group_delay} width="600">Group delay plotted for a number of different 4-order filter tunings.</Image>
+<Image src={import('./tuning-comparison-group-delay.png')} width="600">Group delay plotted for a number of different 4-order filter tunings.</Image>
 
 Group delay can be calculated in Python with `scipy`. `scipy` provides the `scipy.signal.group_delay()` function which takes as input the numerator and denominator coefficients of the transfer function and returns the calculated group delay.
 
@@ -247,9 +241,7 @@ $$
 The above equation shows the final result. Notice that by finding the magnitude, the imaginary components are gone! We can plot this on a graph.
 
 {/* {{% figure src="low-pass-rc-filter-mag.png" width="600px" caption="The magnitude response of the the low-pass RC filter, found by plotting $Eq.\ \ref{eq:mag-response-lp-rc-filter}$. Note that the magnitude has been converted into decibels with $dB = 20log10(mag)$." %}} */}
-import low_pass_rc_filter_mag from './low-pass-rc-filter-mag.png'
-
-<Image src={low_pass_rc_filter_mag} width="600">The magnitude response of the the low-pass RC filter, found by plotting $Eq.\ \ref{eq:mag-response-lp-rc-filter}$. Note that the magnitude has been converted into decibels with $dB = 20log10(mag)$.</Image>
+<Image src={import('./low-pass-rc-filter-mag.png')} width="600">The magnitude response of the the low-pass RC filter, found by plotting $Eq.\ \ref{eq:mag-response-lp-rc-filter}$. Note that the magnitude has been converted into decibels with $dB = 20log10(mag)$.</Image>
 
 We can find the phase response of the low-pass RC filter by using rule in $Eq.\ \ref{eq:xfer-fn-phase}$.
 
@@ -270,9 +262,7 @@ We can safely reduce $Arg$ to $arctan$ because we know that $1 + j\omega RC$ wil
 </Aside>
 
 {/* {{% figure src="low-pass-rc-filter-phase.png" width="600px" caption="The phase response of the the low-pass RC filter, found by plotting $Eq.\ \ref{eq:phase-response-lp-rc-filter}$" %}} */}
-import low_pass_rc_filter_phase from './low-pass-rc-filter-phase.png'
-
-<Image src={low_pass_rc_filter_phase} width="600">The phase response of the the low-pass RC filter, found by plotting $Eq.\ \ref{eq:phase-response-lp-rc-filter}$</Image>
+<Image src={import('./low-pass-rc-filter-phase.png')} width="600">The phase response of the the low-pass RC filter, found by plotting $Eq.\ \ref{eq:phase-response-lp-rc-filter}$</Image>
 
 ## Transfer Function Design Tools
 
@@ -287,9 +277,7 @@ transfer function (3)/(s^2+3s+3)
 It will spit back at you things like the unit step response, state space representation, zeroes and poles, bode plot, Nyquist plot, Nichols plot, Root locus plot, gain margin and phase margin[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]. Click [here](https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29) to jump to these results in Wolfram Alpha.
 
 {/* {{% figure src="wolfram-alpha-transfer-function-analysis-screenshot.png" width="600px" caption="Screenshot of Wolfram Alpha's results when you provide it a transfer function[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]." %}} */}
-import wolfram_alpha_transfer_function_analysis_screenshot from './wolfram-alpha-transfer-function-analysis-screenshot.png'
-
-<Image src={wolfram_alpha_transfer_function_analysis_screenshot} width="600">Screenshot of Wolfram Alpha's results when you provide it a transfer function[^bib-wolfram-alpha-transfer-function-2nd-order-bessel].</Image>
+<Image src={import('./wolfram-alpha-transfer-function-analysis-screenshot.png')} width="600">Screenshot of Wolfram Alpha's results when you provide it a transfer function[^bib-wolfram-alpha-transfer-function-2nd-order-bessel].</Image>
 
 ### OKAWA Transfer Function Analysis and Design Tool
 

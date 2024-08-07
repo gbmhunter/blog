@@ -15,21 +15,15 @@ After playing around with the NextGen plugin PHP files and this sites CSS style 
 
 Here is what images look like now, with the custom template applied.
 
-import cladlab_nextgen_custom_template_image_code_working from './cladlab-nextgen-custom-template-image-code-working.png'
-
-<Image src={cladlab_nextgen_custom_template_image_code_working} width="500px">When the NextGEN custom template code works!</Image>
+<Image src={import('./cladlab-nextgen-custom-template-image-code-working.png')} width="500px">When the NextGEN custom template code works!</Image>
 
 Which, IMO, is a big improvement over what they used to be. They now have a nice, semi-transparent border, and include a caption below the image (which is associated with the image in the NextGEN gallery page). This is what they used to look like:
 
-import image_before_nextgen_caption_and_border_template_for_singlepic_added from './image-before-nextgen-caption-and-border-template-for-singlepic-added.png'
-
-<Image src={image_before_nextgen_caption_and_border_template_for_singlepic_added} width="500px">What images used to look like before the NextGEN caption and border template was added.</Image>
+<Image src={import('./image-before-nextgen-caption-and-border-template-for-singlepic-added.png')} width="500px">What images used to look like before the NextGEN caption and border template was added.</Image>
 
 But...it's not perfect...yet. As you can see below, in certain situations the images to go crazy.
 
-import cladlab_nextgen_custom_template_image_code_not_fully_working from './cladlab-nextgen-custom-template-image-code-not-fully-working.png'
-
-<Image src={cladlab_nextgen_custom_template_image_code_not_fully_working} width="650px">When the NextGEN custom template code isn't working correctly, this happens.</Image>
+<Image src={import('./cladlab-nextgen-custom-template-image-code-not-fully-working.png')} width="650px">When the NextGEN custom template code isn't working correctly, this happens.</Image>
 
 I am no full-time website designer. Playing with HTML objects like div's  and getting the right float setting, width, height, margin, alignment e.t.c can be a guestimate at the best of times. I will hopefully work out how to fix this sometime soon...
 

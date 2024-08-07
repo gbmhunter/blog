@@ -15,9 +15,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Switched integrator ICs_ are integrated circuits (ICs) that are designed to convert very small currents into larger voltages by the process of integration. The integration occurs by feeding the input current into a capacitor for a known time period.
 
-import ivc102_switched_integrator_ic_functional_diagram from './ivc102-switched-integrator-ic-functional-diagram.png'
-
-<Image src={ivc102_switched_integrator_ic_functional_diagram} width="500px">Functional diagram of the IVC102 switched integrator IC from Burr-Brown (now Texas Instruments)[^burr-brown-ivc102-ds].</Image>
+<Image src={import('./ivc102-switched-integrator-ic-functional-diagram.png')} width="500px">Functional diagram of the IVC102 switched integrator IC from Burr-Brown (now Texas Instruments)[^burr-brown-ivc102-ds].</Image>
 
 A switched integrator IC is an alternative to using a transimpedance amplifier for measuring the current through a photodiode. However, they are far less common than a standard transimpedance amplifier. This could be due to their extra complexity, cost and reduced bandwidth, with marginal gains in SNR at low frequencies[^burr-brown-transimpedance-vs-switched-int].
 

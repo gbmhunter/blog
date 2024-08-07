@@ -12,9 +12,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 ## Overview
 
-import sot_665_component_package_3d_render from './_assets/sot-665-component-package-3d-render.jpg'
-
-<Image src={sot_665_component_package_3d_render} width="200px">A 3D render of the SOT-665 component package. Image from http://www.digikey.com/.</Image>
+<Image src={import('./_assets/sot-665-component-package-3d-render.jpg')} width="200px">A 3D render of the SOT-665 component package. Image from http://www.digikey.com/.</Image>
 
 SOT-665 (Small-Outline Transistor 665) is a SMD component package with 5 leads. It is commonly used for TVS diodes manufacturer by NXP and STMicroelectronics.
 
@@ -27,9 +25,7 @@ SOT-665 (Small-Outline Transistor 665) is a SMD component package with 5 leads. 
 
 Below are the dimensions for the SOT-665 component package from NXP[^nxp-sot-665]:
 
-import sot_665_component_package_dimensions from './_assets/sot-665-component-package-dimensions.png'
-
-<Image src={sot_665_component_package_dimensions} width="836px">The dimensions for the SOT-665 component package from NXP[^nxp-sot-665].</Image>
+<Image src={import('./_assets/sot-665-component-package-dimensions.png')} width="836px">The dimensions for the SOT-665 component package from NXP[^nxp-sot-665].</Image>
 
 As per the above diagram, the SOT-665 body is 1.2mm wide and 1.6mm long. The total width including the leads is 1.6mm. The pitch is 0.5mm.
 
@@ -37,17 +33,13 @@ As per the above diagram, the SOT-665 body is 1.2mm wide and 1.6mm long. The tot
 
 A recommended footprint (land pattern) for the `SOT-665` component package is shown below:
 
-import sot_665_component_package_footprint_land_pattern from './_assets/sot-665-component-package-footprint-land-pattern.png'
-
-<Image src={sot_665_component_package_footprint_land_pattern} width="736px">A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/.</Image>
+<Image src={import('./_assets/sot-665-component-package-footprint-land-pattern.png')} width="736px">A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/.</Image>
 
 The footprint has a land area of $3.38mm^2$ (1.3x2.6mm), ignoring any clearance area given around the perimeter of the footprint (i.e. courtyard).
 
 Here is another land pattern for the SOT-665, this time from NXP:
 
-import sot_665_recommended_land_pattern from './_assets/sot-665-recommended-land-pattern.png'
-
-<Image src={sot_665_recommended_land_pattern} width="800px">The recommended land pattern for the SOT-665 component package from NXP[^nxp-sot-665].</Image>
+<Image src={import('./_assets/sot-665-recommended-land-pattern.png')} width="800px">The recommended land pattern for the SOT-665 component package from NXP[^nxp-sot-665].</Image>
 
 ## Similar To
 

@@ -18,9 +18,7 @@ _Resistors_ are a passive electronic components that **restrict the flow of curr
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-import ti_it_looks_like_weve_encountered_some_resistance from './_assets/ti-it-looks-like-weve-encountered-some-resistance.png'
-
-<Image src={ti_it_looks_like_weve_encountered_some_resistance} width="600">One should always appreciate a good pun. Texas Instruments 404 page as of October 2020.</Image>
+<Image src={import('./_assets/ti-it-looks-like-weve-encountered-some-resistance.png')} width="600">One should always appreciate a good pun. Texas Instruments 404 page as of October 2020.</Image>
 
 Resistors are used for a huge number of purposes, including:
 
@@ -36,9 +34,7 @@ Resistors are used for a huge number of purposes, including:
 
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European purely because there are already many "box-like" schematic symbols used for other components (e.g. fuses, ICs), and so the squiggle makes a resistor more distinguishable (given my distaste for the American imperial system, I never thought I would ever say that!). The American style is used through-out the rest of this website.
 
-import schematic_symbols_amer_euro_resistors from './_assets/schematic-symbols-amer-euro-resistors.png'
-
-<Image src={schematic_symbols_amer_euro_resistors} width="500">The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols.</Image>
+<Image src={import('./_assets/schematic-symbols-amer-euro-resistors.png')} width="500">The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols.</Image>
 
 See the [Potentiometers And Rheostats page](/docs/electronics/components/potentiometers-and-rheostats/index.mdx) for more schematic symbols related to resistors.
 
@@ -74,9 +70,7 @@ $$
 
 This relationship is shown below:
 
-import resistors_in_parallel_equivalence_with_equation from './_assets/resistors-in-parallel-equivalence-with-equation.webp'
-
-<Image src={resistors_in_parallel_equivalence_with_equation} width="700px">Two resistors in parallel can be treated as one resistor using the shown equation.</Image>
+<Image src={import('./_assets/resistors-in-parallel-equivalence-with-equation.webp')} width="700px">Two resistors in parallel can be treated as one resistor using the shown equation.</Image>
 
 ### Resistors In Series
 
@@ -90,9 +84,7 @@ $$
 
 This is shown below:
 
-import resistors_in_series_equivalence_with_equation from './_assets/resistors-in-series-equivalence-with-equation.webp'
-
-<Image src={resistors_in_series_equivalence_with_equation} width="700px">Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.</Image>
+<Image src={import('./_assets/resistors-in-series-equivalence-with-equation.webp')} width="700px">Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.</Image>
 
 ## Resistor Dividers
 
@@ -100,9 +92,7 @@ import resistors_in_series_equivalence_with_equation from './_assets/resistors-i
 
 The simplest voltage divider consists of just two resistors in series, shown below:
 
-import resistor_divider_schematic from './_assets/resistor-divider-schematic.webp'
-
-<Image src={resistor_divider_schematic} width="350">A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!</Image>
+<Image src={import('./_assets/resistor-divider-schematic.webp')} width="350">A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!</Image>
 
 The equation for $V_{OUT}$ is:
 
@@ -159,9 +149,7 @@ The Thevenin resistance is sometimes called the output resistance or impedance $
 
 Calculate how long the capacitor in the below image will take to charge to 90% it's final voltage.
 
-import resistor_divider_charging_a_capacitor_example_1 from './_assets/resistor-divider-charging-a-capacitor-example-1.webp'
-
-<Image src={resistor_divider_charging_a_capacitor_example_1} width="400">Schematic of a capacitor being charged through a resistor divider. How long will it take to charge?</Image>
+<Image src={import('./_assets/resistor-divider-charging-a-capacitor-example-1.webp')} width="400">Schematic of a capacitor being charged through a resistor divider. How long will it take to charge?</Image>
 
 Convert the circuit into it's Thevenin equivalent.
 
@@ -184,9 +172,7 @@ $$
 
 Now we have the equivalent circuit shown below:
 
-import resistor_divider_charging_a_capacitor_example_2 from './_assets/resistor-divider-charging-a-capacitor-example-2.webp'
-
-<Image src={resistor_divider_charging_a_capacitor_example_2} width="400">The Thevenin equivalent circuit.</Image>
+<Image src={import('./_assets/resistor-divider-charging-a-capacitor-example-2.webp')} width="400">The Thevenin equivalent circuit.</Image>
 
 Now we use calculate a time constant and use the formula for a RC charging circuit[^mbedded-ninja-rc-charging-circuits]:
 
@@ -227,9 +213,7 @@ An interesting example I have seen of a resistor divider powering a circuit was 
 
 [NinjaCalc](https://ninjacalc.mbedded.ninja/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
-import screenshot_of_ninjacalc_resistor_divider_calculator from './_assets/screenshot-of-ninjacalc-resistor-divider-calculator.png'
-
-<Image src={screenshot_of_ninjacalc_resistor_divider_calculator} width="604">A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance.</Image>
+<Image src={import('./_assets/screenshot-of-ninjacalc-resistor-divider-calculator.png')} width="604">A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance.</Image>
 
 ## Tolerances
 
@@ -309,15 +293,11 @@ $n$ = the total number of elements in the series<br/></p>
 
 For any E-series range, this pattern is applied for every decade of resistance, e.g. between $1-10\Omega$, $10-100\Omega$, $100-1k\Omega$ and so on. standard families of resistors will start at about $1\Omega$ and continue up to $10-20M\Omega$. For values outside of this range you generally have to find specialist products (e.g. precision current measuring resistors) and pay a little more for them.
 
-import yageo_rc_series_thick_film_general_purpose_resistors_summary_table from './_assets/yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png'
-
-<Image src={yageo_rc_series_thick_film_general_purpose_resistors_summary_table} width="900px">Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page].</Image>
+<Image src={import('./_assets/yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png')} width="900px">Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page].</Image>
 
 [The NinjaCalc Standard Resistance Finder calculator](https://ninjacalc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
 
-import screenshot_ninjacalc_standard_resistance_finder_preferred_value_e6_e192_324 from './_assets/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png'
-
-<Image src={screenshot_ninjacalc_standard_resistance_finder_preferred_value_e6_e192_324} width="550">NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance).</Image>
+<Image src={import('./_assets/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png')} width="550">NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance).</Image>
 
 See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number) for more information on these series.
 
@@ -327,15 +307,11 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses, with ratings up into the 100's of Watts.
 
-import wire_wound_resistor_diagram_bourns from './_assets/wire-wound-resistor-diagram-bourns.png'
-
-<Image src={wire_wound_resistor_diagram_bourns} width="300">Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors.</Image>
+<Image src={import('./_assets/wire-wound-resistor-diagram-bourns.png')} width="300">Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors.</Image>
 
 Given they are normally a coil of wire, they can have a significant parasitic inductance and be give off/be susceptible to magnetic fields.
 
-import tt_electronics_w22_2kji_2kr_wirewound_resistor from './_assets/tt-electronics-w22-2kji-2kr-wirewound-resistor.png'
-
-<Image src={tt_electronics_w22_2kji_2kr_wirewound_resistor} width="500">Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor[^bib-tt-electronics-w20-series-ds].</Image>
+<Image src={import('./_assets/tt-electronics-w22-2kji-2kr-wirewound-resistor.png')} width="500">Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor[^bib-tt-electronics-w20-series-ds].</Image>
 
 ### Metal Film
 
@@ -361,23 +337,17 @@ Carbon film resistors are formed by forming a conductive carbon film on a cerami
 
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
 
-import bunch_of_ceramic_power_resistors from './_assets/bunch-of-ceramic-power-resistors.jpg'
-
-<Image src={bunch_of_ceramic_power_resistors} width="600">A bunch of ceramic power resistors rated from 5 to 25W of power dissipation.</Image>
+<Image src={import('./_assets/bunch-of-ceramic-power-resistors.jpg')} width="600">A bunch of ceramic power resistors rated from 5 to 25W of power dissipation.</Image>
 
 Power resistors can be used to intentionally heat things. The below image shows a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
-import using_a_power_resistor_to_heat_oil from './_assets/using-a-power-resistor-to-heat-oil.jpg'
-
-<Image src={using_a_power_resistor_to_heat_oil} width="800">Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.</Image>
+<Image src={import('./_assets/using-a-power-resistor-to-heat-oil.jpg')} width="800">Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.</Image>
 
 ## Current-Sense Resistors
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), other times they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
-import current_sensing_resistor_large_four_lead from './_assets/current-sensing-resistor-large-four-lead.jpg'
-
-<Image src={current_sensing_resistor_large_four_lead} width="500">A large four-lead current sensing resistor.</Image>
+<Image src={import('./_assets/current-sensing-resistor-large-four-lead.jpg')} width="500">A large four-lead current sensing resistor.</Image>
 
 More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](/electronics/circuit-design/current-sensing).
 
@@ -397,15 +367,11 @@ Volume resistance (also known as just resistivity, electrical resistivity, or bu
 
 For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a extra inductor and capacitor, although the is no standard way of wiring them (depends on what literature you are reading). One popular configuration is shown below:
 
-import parasitic_model_of_resistor_series_rl_parallel_c from './_assets/parasitic-model-of-resistor-series-rl-parallel-c.svg'
-
-<Image src={parasitic_model_of_resistor_series_rl_parallel_c} width="600">Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor.</Image>
+<Image src={import('./_assets/parasitic-model-of-resistor-series-rl-parallel-c.svg')} width="600">Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor.</Image>
 
 The below image shows another model which is popular as it models the resistance in parallel with the end cap capacitance and this in series with the lead inductance[^bib-edn-resistors-arent-resistors].
 
-import parasitic_model_of_resistor_parallel_rc_series_l from './_assets/parasitic-model-of-resistor-parallel-rc-series-l.svg'
-
-<Image src={parasitic_model_of_resistor_parallel_rc_series_l} width="600">Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance.</Image>
+<Image src={import('./_assets/parasitic-model-of-resistor-parallel-rc-series-l.svg')} width="600">Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance.</Image>
 
 The below table shows resistor types and the ranges of their parasitic inductance[^bib-eepower-res-ind]:
 
@@ -428,29 +394,21 @@ Resistor come in many packages, from large, wire-wound power resistors that come
 
 Through-hole resistors use the older color code scheme (the current international standard as of 2013 is IEC 60062). Newer surface-mount resistors usually have the value printed directly on them (a three-digit number is most common, with the third digit being the multiplier).
 
-import n_500_0603_smd_resistors_on_tape from './_assets/500-0603-smd-resistors-on-tape.jpg'
-
-<Image src={n_500_0603_smd_resistors_on_tape} width="530">SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors.</Image>
+<Image src={import('./_assets/500-0603-smd-resistors-on-tape.jpg')} width="530">SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors.</Image>
 
 Once taken out of the tape, they don't look like much!
 
-import n_500_0603_smd_resistors_next_to_a_pin from './_assets/500-0603-smd-resistors-next-to-a-pin.jpg'
-
-<Image src={n_500_0603_smd_resistors_next_to_a_pin} width="517">500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller).</Image>
+<Image src={import('./_assets/500-0603-smd-resistors-next-to-a-pin.jpg')} width="517">500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller).</Image>
 
 The below image was me trying to be arty-farty with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.
 
-import reel_0603_resistor_leftovers_best from './_assets/reel-0603-resistor-leftovers-best.jpg'
-
-<Image src={reel_0603_resistor_leftovers_best} width="900">This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.</Image>
+<Image src={import('./_assets/reel-0603-resistor-leftovers-best.jpg')} width="900">This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.</Image>
 
 ## Resistor Optimizer Tool
 
 There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([download it here](http://jahonen.kapsi.fi/Electronics/ResOptimizer/)) which finds optimal values for resistor dividers and optimal values for series/parallel resistor combinations to achieve the desired total resistance. It runs on Windows (Win32 application)[^bib-jahonen-kapsi-resistor-optimizer].
 
-import resistor_optimizer_janne_ahonen_screenshot from './_assets/resistor-optimizer-janne-ahonen-screenshot.png'
-
-<Image src={resistor_optimizer_janne_ahonen_screenshot} width="700px">Screenshot of the Resistor Optimizer tool[^bib-jahonen-kapsi-resistor-optimizer].</Image>
+<Image src={import('./_assets/resistor-optimizer-janne-ahonen-screenshot.png')} width="700px">Screenshot of the Resistor Optimizer tool[^bib-jahonen-kapsi-resistor-optimizer].</Image>
 
 ## Further Reading
 

@@ -15,21 +15,15 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 _Castellation_ is a way of mounting one PCB onto another. It is also known by the name _half-vias_, _edge-plating_ and _leadless chip carrier_ (LCC).
 
-import castellation_close_up_of_edge_holes from './castellation-close-up-of-edge-holes.jpg'
-
-<Image src={castellation_close_up_of_edge_holes} width="500px">Close-up of the edge holes on a castellated PCB.</Image>
+<Image src={import('./castellation-close-up-of-edge-holes.jpg')} width="500px">Close-up of the edge holes on a castellated PCB.</Image>
 
 It is a common technique used for a daughter board, module or secondary PCB that needs to be mounted on the main PCB.
 
-import castellation_photo_of_telit_module from './castellation-photo-of-telit-module.jpg'
-
-<Image src={castellation_photo_of_telit_module} width="300px">A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/.</Image>
+<Image src={import('./castellation-photo-of-telit-module.jpg')} width="300px">A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/.</Image>
 
 Once soldered onto the parent PCB, it is a permanent attachment.
 
-import castellated_daughter_board_logitech_keyboard from './castellated-daughter-board-logitech-keyboard.jpg'
-
-<Image src={castellated_daughter_board_logitech_keyboard} width="500px">Photo of a castellated daughter board (one of many) inside the Logitech G810 mechanical keyboard.</Image>
+<Image src={import('./castellated-daughter-board-logitech-keyboard.jpg')} width="500px">Photo of a castellated daughter board (one of many) inside the Logitech G810 mechanical keyboard.</Image>
 
 ## Process
 
@@ -49,8 +43,6 @@ Because the half-holes are plated and of a concave shape, they are very suitable
 
 Watch out for torn edge-holes!
 
-import castellation_torn_edge_holes from './castellation-torn-edge-holes.jpg'
-
-<Image src={castellation_torn_edge_holes} width="400px">Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/.</Image>
+<Image src={import('./castellation-torn-edge-holes.jpg')} width="400px">Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/.</Image>
 
 The router bit can squash the via barrels, as shown in the following image:

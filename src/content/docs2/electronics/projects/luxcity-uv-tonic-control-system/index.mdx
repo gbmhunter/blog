@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 ## The Challenge
 
-import luxcity_tonic_logo_small from './luxcity-tonic-logo-small.png'
-
-<Image src={luxcity_tonic_logo_small} width="320px">The Luxcity Tonic logo.</Image>
+<Image src={import('./luxcity-tonic-logo-small.png')} width="320px">The Luxcity Tonic logo.</Image>
 
 To design and build a sequencing control system for 64 solenoids that controls a mixture of UV tonic and air into a manifold of pipes to be pumped around a structure. This was for a team participating in the Luxcity Project ([http://stajegrouparchitects.wordpress.com/](http://stajegrouparchitects.wordpress.com/)), or news articles
 
@@ -29,9 +27,7 @@ or the Luxcity event page itself (http://www.luxcity.co.nz/, **as of Dec 2017, w
 
 or the Luxcity page on EventFinder ([http://www.eventfinder.co.nz/2012/luxcity/christchurch-city/christchurch](http://www.eventfinder.co.nz/2012/luxcity/christchurch-city/christchurch))
 
-import luxcity_event_october_2012_christchurch from './luxcity-event-october-2012-christchurch.jpg'
-
-<Image src={luxcity_event_october_2012_christchurch} width="600px">Luxcity event poster for Christchurch 2012.</Image>
+<Image src={import('./luxcity-event-october-2012-christchurch.jpg')} width="600px">Luxcity event poster for Christchurch 2012.</Image>
 
 **EDIT 2012-10-30:**
 
@@ -47,9 +43,7 @@ The repo for this project can be found on [BitBucket](https://bitbucket.org/) at
 
 ## 8x FreeTronics 8-Channel Relay Driver Shields
 
-import arduino_8_ch_relay_channel_02 from './arduino-8-ch-relay-channel-02.jpg'
-
-<Image src={arduino_8_ch_relay_channel_02} width="250px">The Freetronics 8-channel relay driver shield for the Arduino.</Image>
+<Image src={import('./arduino-8-ch-relay-channel-02.jpg')} width="250px">The Freetronics 8-channel relay driver shield for the Arduino.</Image>
 
 * Manufacturer: [Freetronics](http://www.freetronics.com/)  
 * Store URL: http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield
@@ -58,15 +52,11 @@ import arduino_8_ch_relay_channel_02 from './arduino-8-ch-relay-channel-02.jpg'
 
 The I2C controlled shield provides 8 outputs that can drive standard relays. Being I2C controlled, it only uses 2-pins of the Ardunio. Luckily, the I2C address settings are 3-bit, meaning I could just control all 8 from a single I2C line. The boards feature the MCP23017 I2C expander IC ([datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/21952b.pdf)).
 
-import freetronics_relay_driver_schematic_snapshot_of_1_channel from './freetronics-relay-driver-schematic-snapshot-of-1-channel.png'
-
-<Image src={freetronics_relay_driver_schematic_snapshot_of_1_channel} width="500px">Part of the schematics for the Freetronics 8-channel relay driver shield showing one channel.</Image>
+<Image src={import('./freetronics-relay-driver-schematic-snapshot-of-1-channel.png')} width="500px">Part of the schematics for the Freetronics 8-channel relay driver shield showing one channel.</Image>
 
 ## 64x SPDT 12V Relays
 
-import n_64_12v_relays from './64-12v-relays.jpg'
-
-<Image src={n_64_12v_relays} width="500px">64 12V relays.</Image>
+<Image src={import('./64-12v-relays.jpg')} width="500px">64 12V relays.</Image>
 
 * Manufacturer: Zhejiang Dongya Electric Co. Ltd.
 * Supplier: [NiceGear](http://nicegear.co.nz/)
@@ -82,9 +72,7 @@ import n_64_12v_relays from './64-12v-relays.jpg'
 
 ## 62x 12V Solenoid Valves
 
-import n_12v_solenoid_valve_02 from './12v-solenoid-valve-02.jpg'
-
-<Image src={n_12v_solenoid_valve_02} width="320px">A 12V solenoid valve. 62 of these were used to control the flow of UV-reactive tonic water or air through the pipes.</Image>
+<Image src={import('./12v-solenoid-valve-02.jpg')} width="320px">A 12V solenoid valve. 62 of these were used to control the flow of UV-reactive tonic water or air through the pipes.</Image>
 
 * Manufacturer: HR Products
 * Supplier: HR Products
@@ -98,9 +86,7 @@ import n_12v_solenoid_valve_02 from './12v-solenoid-valve-02.jpg'
 
 62 solenoids are needed to either allow tonic or air to flow into one of the 31 pipes. When I first received them, I had a horrible feeling as I blew in one end and the solenoid let air through with some resistance. This was until I realised that they have a minimum operating pressure of 20kPA.
 
-import solenoid_minimum_operating_pressure from './solenoid-minimum-operating-pressure.png'
-
-<Image src={solenoid_minimum_operating_pressure} width="500px"></Image>
+<Image src={import('./solenoid-minimum-operating-pressure.png')} width="500px"></Image>
 
 ## 1x Arduino Uno
 
@@ -112,9 +98,7 @@ I decided to use the Arduino development environment for speed, simplicity, and 
 
 ## 2x Power Supplies
 
-import twin_power_supplies from './twin-power-supplies.jpg'
-
-<Image src={twin_power_supplies} width="320px">Twin 500W power supplies to turn on up to half of the relays and solenoids all at once.</Image>
+<Image src={import('./twin-power-supplies.jpg')} width="320px">Twin 500W power supplies to turn on up to half of the relays and solenoids all at once.</Image>
 
 * Manufacturer: EnerMax
 * Product: TomaHawk2 500W ATX2.2 PSU
@@ -129,9 +113,7 @@ They quote that there are two +12V supplies, but when using a multimeter, there 
 
 ## 1x Arduino LCD Screen Shield
 
-import arduino_lcd_shield_02 from './arduino-lcd-shield-02.jpg'
-
-<Image src={arduino_lcd_shield_02} width="320px">The Freetronics LCD shield for the Arduino. This was used to display running information to the user.</Image>
+<Image src={import('./arduino-lcd-shield-02.jpg')} width="320px">The Freetronics LCD shield for the Arduino. This was used to display running information to the user.</Image>
 
 * Manufacturer: [Freetronics](http://www.freetronics.com/)
 * Supplier: [NiceGear](http://nicegear.co.nz/)
@@ -143,9 +125,7 @@ The LCD screen was one of easiest parts of this project to setup. Built in libra
 
 ## Vixen Software
 
-import vixen_software_logo from './vixen-software-logo.jpg'
-
-<Image src={vixen_software_logo} width="300px">The Vixen software logo. Image from http://www.vixenlights.com.</Image>
+<Image src={import('./vixen-software-logo.jpg')} width="300px">The Vixen software logo. Image from http://www.vixenlights.com.</Image>
 
 * URL: [http://www.vixenlights.com/](http://www.vixenlights.com/)
 * License: Closed-source, free to use.
@@ -154,178 +134,122 @@ Vixen is a free PC-based sequencer designed for controlling lights. Although not
 
 To get around the problem with Vixen not outputting cells with an intensity of 0 (the firmware can't recognise what output value is for what channel unless all 64 are output in the correct order), I made the minimum allowable intensity equal to 1, so that Vixen outputs a value for every cell at every time step, and the firmware looks for a non-one value.
 
-import vixen_screenshot_tonic_test_sequence from './vixen-screenshot-tonic-test-sequence.png'
-
-<Image src={vixen_screenshot_tonic_test_sequence} width="600px"></Image>
+<Image src={import('./vixen-screenshot-tonic-test-sequence.png')} width="600px"></Image>
 
 ## Construction
 
 The hardware! (just after arrival).
 
-import luxcity_tonic_hardware from './luxcity-tonic-hardware.jpg'
-
-<Image src={luxcity_tonic_hardware} width="600px">The hardware for the Luxcity Tonic project (just after it arrived).</Image>
+<Image src={import('./luxcity-tonic-hardware.jpg')} width="600px">The hardware for the Luxcity Tonic project (just after it arrived).</Image>
 
 The relay boards and LCD were stacked ontop of each other.
 
-import arduino_and_relay_shield_stack_vertical from './arduino-and-relay-shield-stack-vertical.jpg'
-
-<Image src={arduino_and_relay_shield_stack_vertical} width="600px">A Ardunio stack with the Uno (at bottom), 8 relay shields, and an LCD shield on-top.</Image>
+<Image src={import('./arduino-and-relay-shield-stack-vertical.jpg')} width="600px">A Ardunio stack with the Uno (at bottom), 8 relay shields, and an LCD shield on-top.</Image>
 
 Wiring up the relay boards.
 
-import relay_shiled_wiring_02 from './relay-shiled-wiring-02.jpg'
-
-<Image src={relay_shiled_wiring_02} width="600px">More wires!</Image>
+<Image src={import('./relay-shiled-wiring-02.jpg')} width="600px">More wires!</Image>
 
 Placement of the relays onto strip board (they JUST managed to fit all on one board).
 
-import relay_shield_wiring_and_relays_01 from './relay-shield-wiring-and-relays-01.jpg'
-
-<Image src={relay_shield_wiring_and_relays_01} width="600px">Wiring up the relay shields, with the relays next door.</Image>
+<Image src={import('./relay-shield-wiring-and-relays-01.jpg')} width="600px">Wiring up the relay shields, with the relays next door.</Image>
 
 A quick way of breaking tracks on prototype board.
 
-import quick_way_of_breaking_tracks_on_prototype_board from './quick-way-of-breaking-tracks-on-prototype-board.jpg'
-
-<Image src={quick_way_of_breaking_tracks_on_prototype_board} width="600px">The quick way to break tracks on a prototype board.</Image>
+<Image src={import('./quick-way-of-breaking-tracks-on-prototype-board.jpg')} width="600px">The quick way to break tracks on a prototype board.</Image>
 
 Soldering the relays, relay coil inputs, and power connectors to the board.
 
-import soldering_prototype_board from './soldering-prototype-board.jpg'
-
-<Image src={soldering_prototype_board} width="600px">Soldering up the prototype board.</Image>
+<Image src={import('./soldering-prototype-board.jpg')} width="600px">Soldering up the prototype board.</Image>
 
 The 62 solenoid valves.
 
-import solenoids_in_a_box from './solenoids-in-a-box.jpg'
-
-<Image src={solenoids_in_a_box} width="600px">All of the 62 solenoids, in a box.</Image>
+<Image src={import('./solenoids-in-a-box.jpg')} width="600px">All of the 62 solenoids, in a box.</Image>
 
 After testing a solenoid valve with the system, the comms between the computer and Arduino dropped out when the solenoid was turned off. I realised that although the relay shield boards had protection diodes, I still needed to add some to the solenoid's (on the relay outputs), as this inductive kickback was coupling into the digital system. Luckily I had a string of 1N4003 diodes on hand...
 
-import string_of_diodes from './string-of-diodes.jpg'
-
-<Image src={string_of_diodes} width="600px">String of diodes for quenching the inductive kick of the solenoids.</Image>
+<Image src={import('./string-of-diodes.jpg')} width="600px">String of diodes for quenching the inductive kick of the solenoids.</Image>
 
 The Arduino, relay control boards, and the relay board, semi-assembled.
 
-import arduino_and_relays_semi_assembled from './arduino-and-relays-semi-assembled.jpg'
-
-<Image src={arduino_and_relays_semi_assembled} width="600px">The Arduino and relays semi-assembled.</Image>
+<Image src={import('./arduino-and-relays-semi-assembled.jpg')} width="600px">The Arduino and relays semi-assembled.</Image>
 
 The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point.
 
-import finished_soldering_the_prototype_board from './finished-soldering-the-prototype-board.jpg'
-
-<Image src={finished_soldering_the_prototype_board} width="600px">The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point.</Image>
+<Image src={import('./finished-soldering-the-prototype-board.jpg')} width="600px">The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point.</Image>
 
 Wiring up the solenoids, as they need to have a 2m cable reach. I'm going through 100m cable rolls like it's Christmas.
 
-import lots_of_twisted_wire from './lots-of-twisted-wire.jpg'
-
-<Image src={lots_of_twisted_wire} width="600px">Lots of twisted wire for the solenoids.</Image>
+<Image src={import('./lots-of-twisted-wire.jpg')} width="600px">Lots of twisted wire for the solenoids.</Image>
 
 The pile of wired solenoids. It took a good 8+ hours to wire these up!
 
-import pile_of_wired_solenoids from './pile-of-wired-solenoids.jpg'
-
-<Image src={pile_of_wired_solenoids} width="600px">The pile of wired solenoids. It took a good 8+ hours to wire these up!</Image>
+<Image src={import('./pile-of-wired-solenoids.jpg')} width="600px">The pile of wired solenoids. It took a good 8+ hours to wire these up!</Image>
 
 Shorting out the green wire to ground on the PSU to get it to turn on.
 
-import grounding_the_green_wire_on_psu from './grounding-the-green-wire-on-psu.jpg'
-
-<Image src={grounding_the_green_wire_on_psu} width="600px">Grounding the green wire on the PSU to get it to turn on.</Image>
+<Image src={import('./grounding-the-green-wire-on-psu.jpg')} width="600px">Grounding the green wire on the PSU to get it to turn on.</Image>
 
 Adding small-valued power resistors in series with the PSU outputs to make them share the current equally.
 
-import current_sharing_power_resistors from './current-sharing-power-resistors.jpg'
-
-<Image src={current_sharing_power_resistors} width="600px">Adding small-valued power resistors in series with the PSU outputs to make them share the current equally.</Image>
+<Image src={import('./current-sharing-power-resistors.jpg')} width="600px">Adding small-valued power resistors in series with the PSU outputs to make them share the current equally.</Image>
 
 The heavy duty fuses used to protect the +12V rails of the power supply. The two in use are 30A 5AG fuses, and the two spares are 40A.
 
-import heavy_duty_fuses from './heavy-duty-fuses.jpg'
-
-<Image src={heavy_duty_fuses} width="600px">The heavy duty fuses used to protect the +12V rails of the power supply. The two in use are 30A 5AG fuses, and the two spares are 40A.</Image>
+<Image src={import('./heavy-duty-fuses.jpg')} width="600px">The heavy duty fuses used to protect the +12V rails of the power supply. The two in use are 30A 5AG fuses, and the two spares are 40A.</Image>
 
 The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working.
 
-import lcd_screen_tonic_active from './lcd-screen-tonic-active.jpg'
-
-<Image src={lcd_screen_tonic_active} width="600px">The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working.</Image>
+<Image src={import('./lcd-screen-tonic-active.jpg')} width="600px">The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working.</Image>
 
 The solenoids were numbered so sequencing would become confusing when out in the field.
 
-import solenoid_number_3 from './solenoid-number-3.jpg'
-
-<Image src={solenoid_number_3} width="600px">Numbering the solenoids...</Image>
+<Image src={import('./solenoid-number-3.jpg')} width="600px">Numbering the solenoids...</Image>
 
 Testing the complete system the night before it's due to be used.
 
-import circle_of_solenoids from './circle-of-solenoids.jpg'
-
-<Image src={circle_of_solenoids} width="600px">Testing the system in my living room the night before it's to be used.</Image>
+<Image src={import('./circle-of-solenoids.jpg')} width="600px">Testing the system in my living room the night before it's to be used.</Image>
 
 The Vixen software sequence used to test the solenoids. Each solenoid is turned on for 1 second in sequential order.
 
-<Image src={vixen_screenshot_tonic_test_sequence} width="600px"></Image>
+<Image src={import('./vixen-screenshot-tonic-test-sequence.png')} width="600px"></Image>
 
 The settings to configure the 'Generic Serial' output plugin in Vixen.
 
-import vixen_tonic_generic_serial_output_plugin_settings from './vixen-tonic-generic-serial-output-plugin-settings.png'
-
-<Image src={vixen_tonic_generic_serial_output_plugin_settings} width="600px"></Image>
+<Image src={import('./vixen-tonic-generic-serial-output-plugin-settings.png')} width="600px"></Image>
 
 ## Onsite
 
 The manifold with the solenoids in place, being assembled on-site.
 
-import manifold_with_solenoids_in_place from './manifold-with-solenoids-in-place.jpg'
-
-<Image src={manifold_with_solenoids_in_place} width="600px">The manifold with the solenoids in place, being assembled on-site.</Image>
+<Image src={import('./manifold-with-solenoids-in-place.jpg')} width="600px">The manifold with the solenoids in place, being assembled on-site.</Image>
 
 Carrying the water tank for the gin and tonic drinks down the road to the the construction site.
 
 
-import carrying_tank_down_road from './carrying-tank-down-road.jpg'
-
-<Image src={carrying_tank_down_road} width="600px">Carrying the water tank for the gin and tonic drinks down the road to the the construction site.</Image>
+<Image src={import('./carrying-tank-down-road.jpg')} width="600px">Carrying the water tank for the gin and tonic drinks down the road to the the construction site.</Image>
 
 The tensioned cable structure being hoisted into the air by the crane.
 
-import structure_half_up_in_air from './structure-half-up-in-air.jpg'
-
-<Image src={structure_half_up_in_air} width="600px">The tensioned cable structure being hoisted into the air by the crane.</Image>
+<Image src={import('./structure-half-up-in-air.jpg')} width="600px">The tensioned cable structure being hoisted into the air by the crane.</Image>
 
 The annoying street-light which dampened the fluorescent effect.
 
-import bright_light_in_the_way from './bright-light-in-the-way.jpg'
-
-<Image src={bright_light_in_the_way} width="600px">A bright light that we couldn't turn off. This reduced the fluorescent effect of the tonic.</Image>
+<Image src={import('./bright-light-in-the-way.jpg')} width="600px">A bright light that we couldn't turn off. This reduced the fluorescent effect of the tonic.</Image>
 
 The pipes with tonic inside them, glowing with UV.
 
-import pipes_with_tonic_and_uv from './pipes-with-tonic-and-uv.jpg'
-
-<Image src={pipes_with_tonic_and_uv} width="600px">The central structure and the tonic-filled pipes glowing under UV light.</Image>
+<Image src={import('./pipes-with-tonic-and-uv.jpg')} width="600px">The central structure and the tonic-filled pipes glowing under UV light.</Image>
 
 Gin and tonic!
 
-import gin_and_tonic_uv from './gin-and-tonic-uv.jpg'
-
-<Image src={gin_and_tonic_uv} width="600px">Gin and tonic glowing under UV light!</Image>
+<Image src={import('./gin-and-tonic-uv.jpg')} width="600px">Gin and tonic glowing under UV light!</Image>
 
 Some of the other structures at the Luxcity event.
 
-import altitude_02 from './altitude-02.jpg'
+<Image src={import('./altitude-02.jpg')} width="600px">A view of Altitude from the centre.</Image>
 
-<Image src={altitude_02} width="600px">A view of Altitude from the centre.</Image>
-
-import scary_tree from './scary-tree.jpg'
-
-<Image src={scary_tree} width="600px"></Image>
+<Image src={import('./scary-tree.jpg')} width="600px"></Image>
 
 ## Firmware
 

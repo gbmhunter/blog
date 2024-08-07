@@ -29,9 +29,7 @@ One of the most simple and common ways of measuring rotation is with a [potentio
 * It's more resistant to contamination.
 * It can be done contactlessly, e.g. with an air-gap or through some materials.
 
-import ams_osram_as5600_in_knob_diagram from './_assets/ams-osram-as5600-in-knob-diagram.png'
-
-<Image src={ams_osram_as5600_in_knob_diagram} width="600px">Diagram showing how the ams AS5600 rotary position sensor can be embedded into a standard dial (along with a magnet at the end of the shaft) for rotary position detection[^ams-osram-as5600-position-sensor-blog].</Image>
+<Image src={import('./_assets/ams-osram-as5600-in-knob-diagram.png')} width="600px">Diagram showing how the ams AS5600 rotary position sensor can be embedded into a standard dial (along with a magnet at the end of the shaft) for rotary position detection[^ams-osram-as5600-position-sensor-blog].</Image>
 
 Most of the ICs include a processor to convert the raw magnetic readings into rotational data that can be read back over a communications bus to a microcontroller.
 
@@ -60,9 +58,7 @@ It is called "giant" because the multiple layers significantly increases the res
 
 #### Infineon TLE5014
 
-import tle5014sp16d_3d_render_of_ic from './_assets/tle5014sp16d-3d-render-of-ic.png'
-
-<Image src={tle5014sp16d_3d_render_of_ic} width="200px">A 3D render of the TLE5014SP16D IC[^infineon-tle5014sp16d-ds].</Image>
+<Image src={import('./_assets/tle5014sp16d-3d-render-of-ic.png')} width="200px">A 3D render of the TLE5014SP16D IC[^infineon-tle5014sp16d-ds].</Image>
 
 Integrated sensor, EEPROM. 
 
@@ -70,9 +66,7 @@ There are variants of the TLE5014 for different communication protocols. Support
 
 The TLE5014 has variants with fully redundant dual sensors for safety critical applications. To further aide with fault detection, the magnetic sensors are flipped w.r.t. to each other to create inverted outputs, as shown below.
 
-import tle5014_dual_sensor_angle_output_graph from './_assets/tle5014-dual-sensor-angle-output-graph.png'
-
-<Image src={tle5014_dual_sensor_angle_output_graph} width="600px">Graph showing the output angle from the TLE5014 variant which has dual sensors[^infineon-tle5014sp16d-ds]. The second sensor is flipped w.r.t. to the first one giving outputs which are the inverse of each other. This can be useful in safety critical applications.</Image>
+<Image src={import('./_assets/tle5014-dual-sensor-angle-output-graph.png')} width="600px">Graph showing the output angle from the TLE5014 variant which has dual sensors[^infineon-tle5014sp16d-ds]. The second sensor is flipped w.r.t. to the first one giving outputs which are the inverse of each other. This can be useful in safety critical applications.</Image>
 
 ## Tunnelling Magnetoresistive (TMR) Sensors
 

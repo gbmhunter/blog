@@ -199,9 +199,7 @@ import joule_thief from './joule-thief.jpg'
 
 ## DC/DC Converters And Controllers
 
-import recom_acdc_converter from './recom-acdc-converter.jpg'
-
-<Image src={recom_acdc_converter} width="200px">A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA.</Image>
+<Image src={import('./recom-acdc-converter.jpg')} width="200px">A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA.</Image>
 
 DC/DC converters and controllers are ICs which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/transistors/mosfets/)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
 
@@ -211,9 +209,7 @@ Two important patents in the history of DC/DC converters are patent [US3040271](
 
 DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard.
 
-import ul60950_limited_power_circuits_graph from './ul60950-limited-power-circuits-graph.png'
-
-<Image src={ul60950_limited_power_circuits_graph} width="400px">A graph of voltage vs. current for a LPS (limited power supply).</Image>
+<Image src={import('./ul60950-limited-power-circuits-graph.png')} width="400px">A graph of voltage vs. current for a LPS (limited power supply).</Image>
 
 ### Efficiencies
 

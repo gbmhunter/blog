@@ -18,9 +18,7 @@ Holes in PCBs are typically used to mount through-hole components (their main us
 
 The smallest hole PCB manufacturers can support is usually 0.1-0.2mm, with anything under 0.2mm becoming specialty and hence more expensive. Holes which are designed for component leads to go through require pads surrounding the holes on the top and/or bottom of the PCB. This allows a good solder bond between the component and the PCB tracks. A typical rule-of-thumb is to make the pad diameter twice the size of the hole diameter. The middle pad in the image below shows this.
 
-import hole_size_versus_pad_size from './hole-size-versus-pad-size.png'
-
-<Image src={hole_size_versus_pad_size} width="767px">Diagram showing different ratios between hole and pad size.</Image>
+<Image src={import('./hole-size-versus-pad-size.png')} width="767px">Diagram showing different ratios between hole and pad size.</Image>
 
 ## Vias
 
@@ -34,17 +32,13 @@ The above rule-of thumb stems from the fact that when a via wall is unrolled int
 
 NinjaCalc (which can be used for free from [here](http://gbmhunter.github.io/NinjaCalc/)) has a via current calculator.
 
-import ninja_calc_via_current_ipc_2221a_calculator_screenshot from './ninja-calc-via-current-ipc-2221a-calculator-screenshot.png'
-
-<Image src={ninja_calc_via_current_ipc_2221a_calculator_screenshot} width="890px">A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc.</Image>
+<Image src={import('./ninja-calc-via-current-ipc-2221a-calculator-screenshot.png')} width="890px">A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc.</Image>
 
 ### Drilling Out Vias
 
 Vias can be drilled out easily to break connections when re-wiring, modifying existing PCBs. Just use a drill-bit 2-5x the diameter of the via's copper pad, and drill down gently until the connection between the via's pad and plated hole are disconnected.
 
-import drilled_out_via_on_pcb_next_to_resistor from './drilled-out-via-on-pcb-next-to-resistor.jpg'
-
-<Image src={drilled_out_via_on_pcb_next_to_resistor} width="1600px">A drilled-out via (to break the connection) between a 0603 resistor and SOT-23-3 MOSFET.</Image>
+<Image src={import('./drilled-out-via-on-pcb-next-to-resistor.jpg')} width="1600px">A drilled-out via (to break the connection) between a 0603 resistor and SOT-23-3 MOSFET.</Image>
 
 ### Microvias
 
@@ -73,9 +67,7 @@ Trepanning is when the laser is moved in a circular pattern to make a large diam
 
 The annular ring is the width of the copper pad which surrounds the via/pad hole.
 
-import minimum_annular_ring from './minimum-annular-ring.gif'
-
-<Image src={minimum_annular_ring} width="124px">The definition of an annular ring in PCB design.</Image>
+<Image src={import('./minimum-annular-ring.gif')} width="124px">The definition of an annular ring in PCB design.</Image>
 
 Most PCB manufacturers specify a minimum annular ring distance, and may offer more expensive pricing tiers for smaller minimum annular rings. The minimum annular ring is typically **driven by the accuracy in which the PCB manufacturer can drill the via/pad hole**. The drill hole may wander from the desired center in the x and y direction, and they need a specify a minimum annular ring to guarantee there will always be a copper pad surrounding the drilled hole. If the drill hole touches the side of the copper pad (i.e. the annular ring reduces to 0), this error condition is called _tangency_. If the problem is even worse and the drill hole escapes the pad, this is called _breakout_[^pcb-directory-what-is-an-annular-ring].
 
@@ -87,9 +79,7 @@ Thermal relief is a connection style between copper pours (typically power or gr
 
 The image below shows a a direct-connect style pad on the left, and a thermal relief style pad on the right.
 
-import pads_with_direct_connect_and_thermal_relief from './pads-with-direct-connect-and-thermal-relief.png'
-
-<Image src={pads_with_direct_connect_and_thermal_relief} width="440px">The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.</Image>
+<Image src={import('./pads-with-direct-connect-and-thermal-relief.png')} width="440px">The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.</Image>
 
 Component pads without thermal relief can tombstone upon cooling. If one pad is solidly connected to a copper plane, while the other pad is connected to a thin track, the solidly connected pad will cool much faster after soldering. This can cause the pad to pull the component closer (due to surface tension) and pull the component off the other pad, even raising it so the component is standing on its end (tombstoning). This can be somewhat mitigated with slow changing, controlled temperature profiles in a reflow soldering environment.
 

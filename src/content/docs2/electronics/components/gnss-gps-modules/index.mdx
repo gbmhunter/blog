@@ -103,9 +103,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 <h2>Antenna Basics</h2>
 
-import gps_bluetooth_antenna_with_isolated_magnetic_dipole_photo from './gps-bluetooth-antenna-with-isolated-magnetic-dipole-photo.jpg'
-
-<Image src={gps_bluetooth_antenna_with_isolated_magnetic_dipole_photo} width="281px">Photo of a combined GPS and Bluetooth antenna with an isolated magnetic dipole. Image from www.digikey.com.</Image>
+<Image src={import('./gps-bluetooth-antenna-with-isolated-magnetic-dipole-photo.jpg')} width="281px">Photo of a combined GPS and Bluetooth antenna with an isolated magnetic dipole. Image from www.digikey.com.</Image>
 
 <h3>Gain</h3>
 
@@ -123,9 +121,7 @@ import gps_bluetooth_antenna_with_isolated_magnetic_dipole_photo from './gps-blu
 
 <p>For a GPS antenna, the VSWR approaches 1 for the GPS signal frequency. The below graph shows the typical VSWR and efficiency vs. frequency for a passive SMD GPS antenna.</p>
 
-import gps_chip_antenna_vswr_and_efficiency_graph from './gps-chip-antenna-vswr-and-efficiency-graph.png'
-
-<Image src={gps_chip_antenna_vswr_and_efficiency_graph} width="540px">A graph of the VSWR and efficiency vs. frequency for a passive SMD GPS antenna. Image from http://www.fractus.com/sales_documents/FR05-S1-E-0-103/DS_FR05-S1-E-0-103.pdf.</Image>
+<Image src={import('./gps-chip-antenna-vswr-and-efficiency-graph.png')} width="540px">A graph of the VSWR and efficiency vs. frequency for a passive SMD GPS antenna. Image from http://www.fractus.com/sales_documents/FR05-S1-E-0-103/DS_FR05-S1-E-0-103.pdf.</Image>
 
 ## Types Of Antennas
 
@@ -164,21 +160,15 @@ Typical parameter values:
 
 Chip antennas are SMD components which look similar to chip resistors or chip capacitors. Chip antennas come in two types; **on ground types**, that require a **ground below them and a clearance around them**, and **ground-cleared** types, that require a **ground-free area** underneath them. Ground-cleared types have the useful ability of being able to be **reverse mounted** onto PCBs. Examples of GNSS chip antenna manufacturers include [Pulse Electronics](http://www.pulseelectronics.com/products/antennas), Antenova, Taiyo Yuden (who also manufacture chip resistors and capacitors), Johanson Technology, and Ethertronics.
 
-import gps_chip_antenna_3d_model from './gps-chip-antenna-3d-model.jpg'
-
-<Image src={gps_chip_antenna_3d_model} width="278px">Photo of a small GPS chip antenna. Image from www.digikey.com.</Image>
+<Image src={import('./gps-chip-antenna-3d-model.jpg')} width="278px">Photo of a small GPS chip antenna. Image from www.digikey.com.</Image>
 
 Below is a typical footprint for a 0603-sized chip antenna. Notice how both the input and ground connect up to the same pad of the chip! (and the other pad is connected to ground only). Although you may think this is a direct short, at microwave frequencies you can do this.
 
-import gps_chip_antenna_footprint_w3009 from './gps-chip-antenna-footprint-w3009.png'
-
-<Image src={gps_chip_antenna_footprint_w3009} width="969px">The recommended footprint for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdfhttp://productfinder.pulseeng.com/products/datasheets/W3009.pdf.</Image>
+<Image src={import('./gps-chip-antenna-footprint-w3009.png')} width="969px">The recommended footprint for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdfhttp://productfinder.pulseeng.com/products/datasheets/W3009.pdf.</Image>
 
 Below is the typical radiation patterns for a 0603-sized chip antenna.
 
-import gps_chip_antenna_w3009_typical_free_space_radiation_patterns from './gps-chip-antenna-w3009-typical-free-space-radiation-patterns.png'
-
-<Image src={gps_chip_antenna_w3009_typical_free_space_radiation_patterns} width="992px">The typical radiation pattern for all 3 planes for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdf.</Image>
+<Image src={import('./gps-chip-antenna-w3009-typical-free-space-radiation-patterns.png')} width="992px">The typical radiation pattern for all 3 planes for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdf.</Image>
 
 ## Helixes
 
@@ -188,19 +178,13 @@ Helixes are one of the best types of GNSS antennas because their large volume en
 
 Patch antennas are common on circuit boards (PCBs), and also for plug in antennas to smallish GNSS devices.
 
-import gps_patch_antenna_01_photo from './gps-patch-antenna-01-photo.jpg'
-
-<Image src={gps_patch_antenna_01_photo} width="331px">Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com.</Image>
+<Image src={import('./gps-patch-antenna-01-photo.jpg')} width="331px">Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com.</Image>
 
 They are normally made from a base ceramic material (and called ceramic patch antennas). They are typically more expensive than chip antennas but cheaper than helical antennas.
 
-import gps_patch_antenna_02_photo from './gps-patch-antenna-02-photo.jpg'
+<Image src={import('./gps-patch-antenna-02-photo.jpg')} width="358px">Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com.</Image>
 
-<Image src={gps_patch_antenna_02_photo} width="358px">Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com.</Image>
-
-import gps_external_patch_antenna_photo from './gps-external-patch-antenna-photo.jpg'
-
-<Image src={gps_external_patch_antenna_photo} width="407px">Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com.</Image>
+<Image src={import('./gps-external-patch-antenna-photo.jpg')} width="407px">Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com.</Image>
 
 ## Relativity
 

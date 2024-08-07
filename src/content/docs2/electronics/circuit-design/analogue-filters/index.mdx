@@ -5,8 +5,6 @@ date: 2013-01-03
 description: A tutorial on analogue electronic filters, including low-pass/high-pass 1st order RC, LC and RLC filters and 2nd order RC, Sallen-Key filter topologies.
 draft: false
 lastUpdated: 2024-03-26
-sidebar:
-  order: 1
 tags: [electronics, circuit design, filters, passive filters, active filters, RC, low-pass, high-pass, LC, bode plot, frequency response, Sallen-Key, voltage-controlled voltage source, VCVS, cutoff frequency, corner frequency, break frequency, elliptic filters, Cauer filter, Zolotarev filter]
 title: Analogue Filters
 type: page
@@ -61,9 +59,6 @@ _Filter optimizations_ maximize a certain characteristic of a filter topology, s
 #### Schematic
 
 The below schematic shows a first-order low-pass RC filter consisting of a single series resistor and then a single capacitor to ground.
-
-import Test from './_assets/low-pass-rc/low-pass-rc-filter-schematic.svg';
-
 
 <Image src={import('./_assets/low-pass-rc/low-pass-rc-filter-schematic.svg')} width="500">Schematic of a simple low-pass RC filter.</Image>
 
@@ -267,7 +262,6 @@ which you will notice is also present in the cut-off frequency equation.
 
 The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor, $R_L$. Larger valued inductors typically have a larger coil resistance (due to more windings). This dampens the output signal.
 
-
 <Image src={import('./_assets/low-pass-lc-filter-with-parasitics-schematic.png')} width="550">A schematic of a LC low-pass filter with parasitic inductor resistance included.</Image>
 
 This is equivalent to a low-pass RLC filter.
@@ -384,7 +378,6 @@ They are called VCVS filters because the op-amp is used as a voltage amplifier.
 Website: [http://sim.okawa-denshi.jp/en/Fkeisan.htm](http://sim.okawa-denshi.jp/en/Fkeisan.htm)
 
 Great site with web-based calculators and design tools for active and passive filters. Very detailed site with many configuration options and the site even outputs graphs of your designed filter response.
-
 
 <Image src={import('./_assets/okawa-filter-design-and-analysis-homepage-screenshot.png')} width="700">Screenshot of the homepage for the OKAWA Filter Design and Analysis website. Image from [http://sim.okawa-denshi.jp/en/Fkeisan.htm](http://sim.okawa-denshi.jp/en/Fkeisan.htm), retrieved 2021-03-27.</Image>
 

@@ -17,9 +17,7 @@ This page details the teardown of a Cavro XL-3000 pump. I had an OEM model, so t
 
 I found the schematic "[Metrolab Wiring Diagram](http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf)" which had the following section in it.
 
-import m2300p_cpu_to_cavro_xl3000_schematic from './_assets/m2300p-cpu-to-cavro-xl3000-schematic.jpg'
-
-<Image src={m2300p_cpu_to_cavro_xl3000_schematic} width="900px">Image from http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf.</Image>
+<Image src={import('./_assets/m2300p-cpu-to-cavro-xl3000-schematic.jpg')} width="900px">Image from http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf.</Image>
 
 Although there was no reference to the PCB fingers on the XL3000, the pinout is strangely similar.
 
@@ -31,15 +29,11 @@ I finally got it! Thanks to Emerald Bio, who sent me the [Cavro XL-3000 Syringe 
 
 Pictured below is the wiring diagram for the PCB finger connector on the XL-3000.
 
-import cavro_xl3000_syringe_pump_wiring_diagram_for_connector from './_assets/cavro-xl3000-syringe-pump-wiring-diagram-for-connector.jpg'
-
-<Image src={cavro_xl3000_syringe_pump_wiring_diagram_for_connector} width="800px">The wiring diagram for the PCB finger connector on the Cavro XL-3000 syringe pump. Taken from the schematic in the operators manual.</Image>
+<Image src={import('./_assets/cavro-xl3000-syringe-pump-wiring-diagram-for-connector.jpg')} width="800px">The wiring diagram for the PCB finger connector on the Cavro XL-3000 syringe pump. Taken from the schematic in the operators manual.</Image>
 
 The bare minimum number of connections to get it working are 4, the +24V, GND, RS-485 A Line, and RS-485 B Line (or the RS-232 TX and RX line instead of the RS-485 connections if you have the RS-232 interface board attached). The +24V power supply has to be capable of providing 850mA. A USB-to-RS-485 converter is a good way to control the pump from a computer. The syringe pump is set by default to communicate at 9600 baud.
 
-import communicating_via_rs_485_to_syringe_pump from './_assets/communicating-via-rs-485-to-syringe-pump.jpg'
-
-<Image src={communicating_via_rs_485_to_syringe_pump} width="700px">Communicating to the syringe pump via a USB-to-RS-485 converter.</Image>
+<Image src={import('./_assets/communicating-via-rs-485-to-syringe-pump.jpg')} width="700px">Communicating to the syringe pump via a USB-to-RS-485 converter.</Image>
 
 When 24V is applied, the port motor should rotate to the start position. If it is already at the start position, it will do a full rotation anyway. I presume this is so the optical encoder can work out where the motor is.
 
@@ -47,28 +41,18 @@ When 24V is applied, the port motor should rotate to the start position. If it i
 
 There are two communication protocols, the OEM protocol and the DT (data terminal) protocol. The OEM protocol is more noise resistant, has checksums, and return message formats. The DT protocol is basic and suitable for controlling directly from a data terminal. I used the following settings in the PuTTy terminal. I decided to try the DT protocol.
 
-import putty_configuration_for_comms_with_cavro_xl3000_syring_pump from './_assets/putty-configuration-for-comms-with-cavro-xl3000-syring-pump.png'
-
-<Image src={putty_configuration_for_comms_with_cavro_xl3000_syring_pump} width="700px">The PuTTY configuration settings for communicating to the syringe pump.</Image>
+<Image src={import('./_assets/putty-configuration-for-comms-with-cavro-xl3000-syring-pump.png')} width="700px">The PuTTY configuration settings for communicating to the syringe pump.</Image>
 
 Making sure the virtual COM port was installed correctly.
 
-import usb_serial_port_for_rs_485_converter_in_device_manager from './_assets/usb-serial-port-for-rs-485-converter-in-device-manager.png'
+<Image src={import('./_assets/usb-serial-port-for-rs-485-converter-in-device-manager.png')} width="500px">When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows.</Image>
 
-<Image src={usb_serial_port_for_rs_485_converter_in_device_manager} width="500px">When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows.</Image>
-
-import dip_switch_sw2_configuration_cavro_xl3000_syringe_pump from './_assets/dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png'
-
-<Image src={dip_switch_sw2_configuration_cavro_xl3000_syringe_pump} width="80px">The DIP switch settings for SW2 on the XL-3000 syringe pump</Image>
+<Image src={import('./_assets/dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png')} width="80px">The DIP switch settings for SW2 on the XL-3000 syringe pump</Image>
 
 To get it running, the only setting I had to change was DIP switch 2 (`SW2`), from `ON` to `OFF`. This changed the message protocol from OEM to DT, allowing simple, no checksum needed comms from a terminal program on a PC.
 
-import the_dip_switch_sw2_on_the_syringe_pump from './_assets/the-dip-switch-sw2-on-the-syringe-pump.jpg'
-
-<Image src={the_dip_switch_sw2_on_the_syringe_pump} width="700px">The DIP switch (SW2) on the XL-3000 syringe pump.</Image>
+<Image src={import('./_assets/the-dip-switch-sw2-on-the-syringe-pump.jpg')} width="700px">The DIP switch (SW2) on the XL-3000 syringe pump.</Image>
 
 <p>To get the pump to initialise, I sent the command <code>/1ZR</code>. <code>/</code> indicates that a command follows, <code>1</code> is the pump address, <code>Z</code> is the command (initialise with valve to the right), and <code>R</code> executes the command. See the datasheet for more information on the commands. You should get the response <code>/0@</code>, as shown in the image below.</p>
 
-import basic_message_and_response_to_xl3000_in_terminal from './_assets/basic-message-and-response-to-xl3000-in-terminal.png'
-
-<Image src={basic_message_and_response_to_xl3000_in_terminal} width="700px">Sending the initialise message to the syringe pump at the pumps response. This was using the PuTTy terminal program, with the pump in the 'RT' protocol mode.</Image>
+<Image src={import('./_assets/basic-message-and-response-to-xl3000-in-terminal.png')} width="700px">Sending the initialise message to the syringe pump at the pumps response. This was using the PuTTy terminal program, with the pump in the 'RT' protocol mode.</Image>

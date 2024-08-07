@@ -4,11 +4,10 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2012-05-20
 description: Info on linear and rotational capacitive sensing methods.
 draft: false
+lastUpdated: 2012-05-20
 title: Capacitive Sensing
 type: page
 ---
-
-import { Aside, CircuitJs, Image } from '/src/components/General.astro';
 
 ## Overview
 
@@ -18,9 +17,7 @@ For information about capacitors in general, see the [Capacitor page](/electroni
 
 Capacitive sensing is a widely used technique for proximity detection, touch-screens, level measurement, and distance measurements. It is used in the more expensive touch-screens found in today's smart phones (as opposed to the cheaper and poorer performing resistive touch screens), for contact-less buttons (see page on [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing)), the distance measuring mechanism in digital callipers, liquid level measurement and much more.
 
-import capacitive_encoder_photo_cui_amt from './capacitive-encoder-photo-cui-amt.jpg'
-
-<Image src={capacitive_encoder_photo_cui_amt} width="300">The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/.</Image>
+<Image src={import('./capacitive-encoder-photo-cui-amt.jpg')} width="300">The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/.</Image>
 
 ## Applications
 
@@ -43,12 +40,12 @@ import digital_calliper_capacitive_encoder_strip_up_close_photo from './digital-
 import capacitance_strip_dimensions_for_linear_encoder from './capacitance-strip-dimensions-for-linear-encoder.jpg'
 
 <table>
-    <tbody>
-        <tr>
-            <td><Image src={digital_calliper_capacitive_encoder_strip_up_close_photo} width="284">A zoomed in photo of the capacitive linear encoder pads on a digital calliper. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356.</Image></td>
-            <td><Image src={capacitance_strip_dimensions_for_linear_encoder} width="321">The dimensions for a capacitive linear encoder commonly found in digital callipers. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356.</Image></td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <td><Image src={digital_calliper_capacitive_encoder_strip_up_close_photo} width="284">A zoomed in photo of the capacitive linear encoder pads on a digital calliper. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356.</Image></td>
+      <td><Image src={capacitance_strip_dimensions_for_linear_encoder} width="321">The dimensions for a capacitive linear encoder commonly found in digital callipers. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356.</Image></td>
+    </tr>
+  </tbody>
 </table>
 
 ## Rotational
@@ -57,12 +54,10 @@ Rotational capacitive sensors can be used in similar situations to those that us
 
 Examples of a small capacitive encoder:
 
-<Image src={capacitive_encoder_photo_cui_amt} width="300">The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/.</Image>
+<Image src={import('./capacitive-encoder-photo-cui-amt.jpg')} width="300">The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/.</Image>
 
 ## External Resources
 
 Section 3.1 of the "Basic Linear Design" book by Analog Devices. Freely available from [here](http://www.analog.com/library/analogDialogue/archives/43-09/linear_circuit_design_handbook.html).
 
-import toc_section_3_1_analog_devices_basic_linear_design_book_capactivie_sensings_highlighted from './toc-section-3-1-analog-devices-basic-linear-design-book-capactivie-sensings-highlighted.png'
-
-<Image src={toc_section_3_1_analog_devices_basic_linear_design_book_capactivie_sensings_highlighted} width="800">Section 3.1 of the "Basic Linear Design" book by Analog Devices. Freely available from [here](http://www.analog.com/library/analogDialogue/archives/43-09/linear_circuit_design_handbook.html).</Image>
+<Image src={import('./toc-section-3-1-analog-devices-basic-linear-design-book-capactivie-sensings-highlighted.png')} width="800">Section 3.1 of the "Basic Linear Design" book by Analog Devices. Freely available from [here](http://www.analog.com/library/analogDialogue/archives/43-09/linear_circuit_design_handbook.html).</Image>

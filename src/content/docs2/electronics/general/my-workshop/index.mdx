@@ -31,15 +31,11 @@ import component_trays_02 from './_assets/component_trays_02.jpg'
 
 <p>No, I didn't eat all that ice cream myself (but I sure did help!). But they are all 2L ice-cream containers, eaten by my family over the last 8 years. They make really good stackable containers for holding components and anything else that is too big or not used enough for the component trays.</p>
 
-import storage_containers from './_assets/storage_containers.jpg'
-
-<Image src={storage_containers} width="400px">Ice cream containers for storage. I didn't eat all that ice cream, honest :-).</Image>
+<Image src={import('./_assets/storage_containers.jpg')} width="400px">Ice cream containers for storage. I didn't eat all that ice cream, honest :-).</Image>
 
 <p>For storing SMD components such as resistors, capacitors, and ferrite beads, I use these modular storage containers from DealExtreme. They are great because a) cheap, b) small, c) modular, d) have flip-top lids which spring open. I use a labeller to create small labels for each one, describing the component.</p>
 
-import smd_container_open_and_closed from './_assets/smd-container-open-and-closed.jpg'
-
-<Image src={smd_container_open_and_closed} width="600px">A container from DealExtreme used for holding SMD components (capacitors in this picture)</Image>
+<Image src={import('./_assets/smd-container-open-and-closed.jpg')} width="600px">A container from DealExtreme used for holding SMD components (capacitors in this picture)</Image>
 
 <h2>Tools</h2>
 
@@ -49,15 +45,11 @@ A variable voltage-limited or current-limited power supply is a must for any ser
 
 I brought a cheap 0-30V, 0-5A power supply from AliExpress. It is the YH-305D, as shown below. It set me back about NZ$130, including shipping.
 
-import single_channel_dc_power_supply_photo from './_assets/single-channel-dc-power-supply-photo.jpg'
-
-<Image src={single_channel_dc_power_supply_photo} width="400px">A single channel DC power supply with variable voltage and current controls.</Image>
+<Image src={import('./_assets/single-channel-dc-power-supply-photo.jpg')} width="400px">A single channel DC power supply with variable voltage and current controls.</Image>
 
 I also have a high-power DC-DC buck converter that I use when I need high current. It is a 12A, 4.5-30V in, 0.8-28V out (adjustable) buck converter that is rated to 100W without a fan and up to 200W with active cooling. It was about NZ$13 (US$9) on [AliExpress](http://www.aliexpress.com/). Here is a [link to the product](http://www.ebay.com/itm/ws/eBayISAPI.dll?ViewItem&item=321013571373&ssPageName=ADME:X:AAQ:US:1123).
 
-import n_12a_buck_converter_from_aliexpress from './_assets/12a-buck-converter-from-aliexpress.jpg'
-
-<Image src={n_12a_buck_converter_from_aliexpress} width="400px">A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling.</Image>
+<Image src={import('./_assets/12a-buck-converter-from-aliexpress.jpg')} width="400px">A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling.</Image>
 
 ### Oscilloscope
 
@@ -77,9 +69,7 @@ import oscilloscope_02 from './_assets/oscilloscope_02.jpg'
 
 As of 2012 I got a new oscilloscope, a Rigol ADS 1102CAL. It has a 100MHz bandwidth. Brought it for NZ$400 from [AliExpress](http://www.aliexpress.com/).
 
-import n_2012_07_19_19_13_37 from './_assets/2012-07-19-19-13-37.jpg'
-
-<Image src={n_2012_07_19_19_13_37} width="500px">The new Rigol ADS 1102CAL oscilloscope.</Image>
+<Image src={import('./_assets/2012-07-19-19-13-37.jpg')} width="500px">The new Rigol ADS 1102CAL oscilloscope.</Image>
 
 Newer oscilloscopes like this one usually have USB ports for saving captures of waveforms to. You can usually select from a range of file formats such as an image (.png, .jpeg), comma-separated values (.csv), or a proprietary binary format such as .wfm. I have found .csv files to be to most useful, since it gives you all of the raw data. I'm pretty sure the .wfm files also store all of the data, but for some reason I have had trouble trying to extract the timing information from them.
 
@@ -93,9 +83,7 @@ Logic analysers usually have 8 or more inputs. They record the 1's and 0's on th
 
 The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/logic)" logic analyser below uses a [PSoC microcontroller](/programming/microcontrollers/psoc).
 
-import digital_logic_analyzer from './_assets/digital-logic-analyzer.jpg'
-
-<Image src={digital_logic_analyzer} width="400px">A digital logic analyser.</Image>
+<Image src={import('./_assets/digital-logic-analyzer.jpg')} width="400px">A digital logic analyser.</Image>
 
 ### UART-To-RS-232 Converter
 
@@ -105,9 +93,7 @@ One of these is essential for debugging embedded designs. My favourite is the TT
 
 Plenty of industrial, hard-wearing and/or long-distance electrical equipment uses the RS-485 interface for communicating. The DT-5019 is a great USB-to-RS-485 converter for talking to devices uses this protocol with a computer.
 
-import usb_serial_port_for_rs_485_converter_in_device_manager from './_assets/usb-serial-port-for-rs-485-converter-in-device-manager.png'
-
-<Image src={usb_serial_port_for_rs_485_converter_in_device_manager} width="500px">When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows.</Image>
+<Image src={import('./_assets/usb-serial-port-for-rs-485-converter-in-device-manager.png')} width="500px">When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows.</Image>
 
 I got this from [DealExtreme](http://dx.com/), part number [54289](http://dx.com/p/dtech-usb-2-0-to-rs422-rs485-adapter-cable-1-2m-cable-54289), for US$19.70 in Jan 2013 (inc. shipping to NZ). It is made by Dtech.
 
@@ -138,9 +124,7 @@ Supported transmission speeds are:
   </tbody>
 </table>
 
-import dt5019_usb_to_rs_485_converter_photo from './_assets/dt5019-usb-to-rs-485-converter-photo.jpg'
-
-<Image src={dt5019_usb_to_rs_485_converter_photo} width="600px">The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board.</Image>
+<Image src={import('./_assets/dt5019-usb-to-rs-485-converter-photo.jpg')} width="600px">The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board.</Image>
 
 The manual for this Dtech converter can be downloaded [here](./_assets/dtech-usb-to-rs-485-manual.pdf).
 
@@ -190,21 +174,15 @@ import monster_cap_bank_04 from './_assets/monster_cap_bank_04.jpg'
 
 PCBs are useful when developing a circuit past the quick prototype stage. I have both blank copper PCB sheets as well as protoboard (copper tracks running parallel with each other), and variations on proto-board designed to make it easier to hook up ICs and other chips.
 
-import pcbs from './_assets/pcbs.jpg'
-
-<Image src={pcbs} width="400px">Collection of proto-typing and solid copper boards for making up circuits.</Image>
+<Image src={import('./_assets/pcbs.jpg')} width="400px">Collection of proto-typing and solid copper boards for making up circuits.</Image>
 
 ### Laser
 
-import hene_laser_tube from './_assets/hene-laser-tube.jpg'
-
-<Image src={hene_laser_tube} width="400px">The HeNe laser, looking down the 'barrel'.</Image>
+<Image src={import('./_assets/hene-laser-tube.jpg')} width="400px">The HeNe laser, looking down the 'barrel'.</Image>
 
 3kV HeNe Laser - I picked this laser up from [TradeMe](https://www.trademe.co.nz/) in 2005 for NZ$40. The tube is about 400mm long and 80mm in diameter. The power supply is a separate PCB which runs of 12V. So far I have never managed to get the laser running continuously, only turning on intermittently every few seconds. It seems there is a problem with the power supply and it cannot supply the required current to keep the laser on. It also emits quite a annoying squeal when running (I'm guessing it's the switching frequency). I am unsure of it's output power...
 
-import hene_laser_3kv_power_supply from './_assets/hene-laser-3kv-power-supply.jpg'
-
-<Image src={hene_laser_3kv_power_supply} width="500px">The power supply for a 3kV HeNe laser.</Image>
+<Image src={import('./_assets/hene-laser-3kv-power-supply.jpg')} width="500px">The power supply for a 3kV HeNe laser.</Image>
 
 ## Software
 

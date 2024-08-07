@@ -24,9 +24,7 @@ The **main differences between a MOSFET and a JFET** is that the JFET has more g
 
 The below image shows the commonly used schematic symbols for JFETs. As with MOSFETs, there is an arrow pointing in towards the body for the N-channel, and an arrow pointing outwards for the P-channel.
 
-import jfet_schematic_symbols from './_assets/jfet-schematic-symbols.png'
-
-<Image src={jfet_schematic_symbols} width="700px">Schematic symbols of asymmetric and symmetric JFETs, both having N-channel and P-channel variants.</Image>
+<Image src={import('./_assets/jfet-schematic-symbols.png')} width="700px">Schematic symbols of asymmetric and symmetric JFETs, both having N-channel and P-channel variants.</Image>
 
 Interestingly, when you learn about the basic construction of a JFET, you would assume that the **drain and source pins are interchangeable** due to the symmetric nature of it's design. That leads you to being able to use a schematic symbol with the gate pin in the middle of the gate. However, **not all JFET pins are symmetric**, and in that case it's better to use the symbols shown which move the gate pin closer to the source (similar to how a MOSFET symbol is drawn).
 
@@ -66,9 +64,7 @@ $$
 
 The transconductance is maximum at $V_{GS} = 0V$, which is called $g_{mo}$ and is typically specified in the JFET's datasheet[^bib-elec4u-jfet-params]. The below image shows the curve of $V_{GS}$ vs. $I_{D}$ for the 2N5457 JFET.
 
-import vgs_vs_id_showing_gradient_2n5457_jfet from './_assets/vgs-vs-id-showing-gradient-2n5457-jfet.png'
-
-<Image src={vgs_vs_id_showing_gradient_2n5457_jfet} width="500px">The transconductance is the gradient of the $I_D$ vs. $V_{GS}$ graph at the DC operating point. DC operating point shown by dotted blue lines. This is the source transfer characteristics of the 2N5456 N-channel JFET[^bib-onsemi-2n5457-ds].</Image>
+<Image src={import('./_assets/vgs-vs-id-showing-gradient-2n5457-jfet.png')} width="500px">The transconductance is the gradient of the $I_D$ vs. $V_{GS}$ graph at the DC operating point. DC operating point shown by dotted blue lines. This is the source transfer characteristics of the 2N5456 N-channel JFET[^bib-onsemi-2n5457-ds].</Image>
 
 The transconductance for most JFETs ranges from $1-100mS$. They are typically specified at the bias point $V_{GS} = 0V.$
 

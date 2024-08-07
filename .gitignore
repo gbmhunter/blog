@@ -22,6 +22,8 @@ pnpm-debug.log*
 
 # Python virtual environment
 .venv/
+# Python cache
+__pycache__/
 
 # Affinity Photo/Designer temp files
 *.*~lock~

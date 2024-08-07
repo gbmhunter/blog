@@ -63,9 +63,7 @@ Remember that transformers work with an AC voltage/current. The tiny magnetic do
 
 The hysteresis loss can be seen on the BH (flux-density vs. field strength) curve.
 
-import transformer_graph_explaining_hysteresis_losses from './transformer-graph-explaining-hysteresis-losses.jpg'
-
-<Image src={transformer_graph_explaining_hysteresis_losses} width="609px">Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.</Image>
+<Image src={import('./transformer-graph-explaining-hysteresis-losses.jpg')} width="609px">Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.</Image>
 
 ## Eddy Current Losses
 
@@ -75,9 +73,7 @@ Because the core is conductive, it too gets an EMF generated in it, just like th
 
 _Flyback transformers_ are transformers used in the construction of a boost converter. They are also known as _switching transformers_ or _SMPS transformers_. Because of the way they operate, current does not flow in the primary and secondary windings at the same time. For this reason, it is conceptually appropriate to consider a _flyback transfer_ as _two parallel inductors_, rather than a true transformer. 
 
-import typical_flyback_schematic from './typical-flyback-schematic.png'
-
-<Image src={typical_flyback_schematic} width="600px">Schematic of a boost converter using a flyback transformer. Image from https://www.coilcraft.com/edu/flyback_transformer.cfm.</Image>
+<Image src={import('./typical-flyback-schematic.png')} width="600px">Schematic of a boost converter using a flyback transformer. Image from https://www.coilcraft.com/edu/flyback_transformer.cfm.</Image>
 
 Examples of flyback transformers can be found on [DigiKey under their Transformers->Switching Converter, SMPS Transformers section](https://www.digikey.com/products/en/transformers/switching-converter-smps-transformers/168).
 

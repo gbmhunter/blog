@@ -17,15 +17,11 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 During circuit design, you may need a sine wave for some reason. One way to create a sine wave is by **generating a square wave (which is trivial to produce digitally) and then filtering the result with some [RC filters](/electronics/circuit-design/analogue-filters/)**.
 
-import four_rc_filter_sine_wave_generator_schematic from './_assets/four-rc-filter-sine-wave-generator-schematic.png'
-
-<Image src={four_rc_filter_sine_wave_generator_schematic} width="900">Schematic of a sine wave generator circuit using a square wave input and 4 RC filter stages.</Image>
+<Image src={import('./_assets/four-rc-filter-sine-wave-generator-schematic.png')} width="900">Schematic of a sine wave generator circuit using a square wave input and 4 RC filter stages.</Image>
 
 If you can remember Fourier analysis, a square wave can be thought of as being made up of an infinite number of sine waves, starting at the fundamental frequency and then going up with all the odd numbered harmonics. The filtering works by **allowing the fundamental frequency through (it's in it's pass band), whilst blocking all the higher harmonics**. The below image shows a $10kHz$, $3.3V$ square wave at it's FFT. You can see the spike which represents the fundamental at $10kHz$. The next spike is the first harmonic at $30kHz$. 
 
-import sim_four_stage_rc_filter_fft_of_input_plot from './_assets/sim-four-stage-rc-filter-fft-of-input-plot.png'
-
-<Image src={sim_four_stage_rc_filter_fft_of_input_plot} width="600">The time domain voltage signal of a 10kHz 3.3V square wave (top) and the FFT of this signal (bottom).</Image>
+<Image src={import('./_assets/sim-four-stage-rc-filter-fft-of-input-plot.png')} width="600">The time domain voltage signal of a 10kHz 3.3V square wave (top) and the FFT of this signal (bottom).</Image>
 
 **One RC filter does not provide enough attenuation of the higher harmonics**. But we can **stack many RC filters together** until we get a sine wave which is "good enough". One disadvantage of the RC filter approach is that the voltage gets attenuated through every stage of the filter. If this is going to be a problem, active filters can be used (or an amplifier could be added at the end).
 
@@ -68,9 +64,7 @@ Setting the cut-off frequency for each stage to 10kHz does not mean the entire f
 
 Remember, all the $R$ and $C$ values should be the same. This gives us the following schematic:
 
-import sim_four_stage_rc_filter_schematic from './_assets/sim-four-stage-rc-filter-schematic.png'
-
-<Image src={sim_four_stage_rc_filter_schematic} width="700">Schematic for our 10kHz sine wave generator.</Image>
+<Image src={import('./_assets/sim-four-stage-rc-filter-schematic.png')} width="700">Schematic for our 10kHz sine wave generator.</Image>
 
 [(Micro-Cap simulation file)](./_assets/sim-four-stage-rc-filter.cir)
 
@@ -80,17 +74,13 @@ I added taps at the outputs of the intermediate stages so we can see how the wav
 
 The simulated output voltage waveforms are shown below (using SPICE transient analysis). Note how the waveforms get progressively more and more sinewave-esque as they pass through each RC filter stage:
 
-import sim_four_stage_rc_filter_output_plot from './_assets/sim-four-stage-rc-filter-output-plot.png'
-
-<Image src={sim_four_stage_rc_filter_output_plot} width="700">Simulation results for the four-stage RC filter based sine wave generator circuit.</Image>
+<Image src={import('./_assets/sim-four-stage-rc-filter-output-plot.png')} width="700">Simulation results for the four-stage RC filter based sine wave generator circuit.</Image>
 
 It's also interesting to point out that the final output the sine wave has a DC offset of $1.65V$. This is because the DC component (average voltage) of the input $3.3V$ square wave at $50\%$ duty cycle is $3.3V / 2 = 1.65V$. If you want to remove this bias, you can connect an AC coupling capacitor to the output to center the sine wave around $0V$.
 
 The bode plots (frequency response) of this circuit is shown below. Each successive filter stage increases the slope of the attenuation. At the fundamental frequency (which the frequency we want to pass) of $10kHz$, the attenuation is $23dB$ (14x reduction). At $30kHz$ (which is the 1st harmonic of the square wave, and we want to block this), the output is attenuated by $45dB$ (178x reduction).
 
-import sim_four_stage_rc_filter_bode_plot from './_assets/sim-four-stage-rc-filter-bode-plot.png'
-
-<Image src={sim_four_stage_rc_filter_bode_plot} width="700">Bode plots for the four-stage RC filter based sine wave generator circuit.</Image>
+<Image src={import('./_assets/sim-four-stage-rc-filter-bode-plot.png')} width="700">Bode plots for the four-stage RC filter based sine wave generator circuit.</Image>
 
 <Aside type="note">
 As shown in the bode plots above, the phase of the output is also shifted. Our output 10kHz sine wave is shifted by $166^{\circ}$, which is almost "inverting" the input. Make sure to take this into consideration.
@@ -102,15 +92,11 @@ As shown in the bode plots above, the phase of the output is also shifted. Our o
 
 The following plots show the waveform and it's FFT at the input and at the output of each RC filter stage. The DC component of the waveform has been removed as to not swamp the FFT plot (we usually don't care about the DC component anyway, we could easily remove this with an AC coupling capacitor).
 
-import sim_four_stage_rc_filter_thd from './_assets/sim-four-stage-rc-filter-thd.png'
-
-<Image src={sim_four_stage_rc_filter_thd} width="700">Plots showing the reduction in harmonic distortion through each successive RC filter stage.</Image>
+<Image src={import('./_assets/sim-four-stage-rc-filter-thd.png')} width="700">Plots showing the reduction in harmonic distortion through each successive RC filter stage.</Image>
 
 One figure of merit we can use for each output is the _total harmonic distortion_ (THD). This is found by take the square root of the sum of all the RMS harmonic magnitudes in the FFT plots, and dividing it by the RMS voltage of the fundamental frequency. If we do this, we get the following graph:
 
-import sim_four_stage_rc_filter_thd_bar_plot from './_assets/sim-four-stage-rc-filter-thd-bar-plot.png'
-
-<Image src={sim_four_stage_rc_filter_thd_bar_plot} width="600">Plot showing the THD at each stage in the sine wave generator circuit.</Image>
+<Image src={import('./_assets/sim-four-stage-rc-filter-thd-bar-plot.png')} width="600">Plot showing the THD at each stage in the sine wave generator circuit.</Image>
 
 By the time we get to the final output, $V_{OUT4}$, we are down to a THD of $3.8\%$. Pretty good!
 

@@ -24,9 +24,7 @@ First off, you need a way to accurately measure the current consumption of your 
 My preferred tool is the Nordic Power Profiler Kit (PPK) which is a USB dongle that can either measure in-series current with an external voltage source or also provide the voltage source via an adjustable internal regulator. Shown below is a photo of the hardware:
 
 {/* {{% figure src="_assets/power-profiler-kit-2-photo.webp" width="800px" caption="A photo of the Nordic Power Profiler Kit 2 which is great for measuring the power consumption of low power circuits!" %}} */}
-import power_profiler_kit_2_photo from './_assets/power-profiler-kit-2-photo.webp'
-
-<Image src={power_profiler_kit_2_photo} width="800">A photo of the Nordic Power Profiler Kit 2 which is great for measuring the power consumption of low power circuits!</Image>
+<Image src={import('./_assets/power-profiler-kit-2-photo.webp')} width="800">A photo of the Nordic Power Profiler Kit 2 which is great for measuring the power consumption of low power circuits!</Image>
 
 The current consumption graphs in the rest of this page are screenshots from the Nordic Power Profiler software which accompanies this hardware.
 
@@ -45,16 +43,12 @@ When a peripheral device is advertising, it is regularly sending out transmit-on
 The connection interval specifies the amount of time between when the central device and peripheral device both wake up and communicate with each other. The connection interval is a trade-off between latency and power consumption. The below graph shows the current consumption of 94uA for a nRF52 MCU that is connected to a central device with a connection interval of 30ms and a peripheral latency of 0. The average current consumption is 94uA:
 
 {/* {{% figure src="_assets/ble-current-conn-interval-30ms-latency-0.webp" width="1000px" caption="The current consumption of a BLE device with a connection interval of 30ms and a peripheral latency of 0." %}} */}
-import ble_current_conn_interval_30ms_latency_0 from './_assets/ble-current-conn-interval-30ms-latency-0.webp'
-
-<Image src={ble_current_conn_interval_30ms_latency_0} width="1000">The current consumption of a BLE device with a connection interval of 30ms and a peripheral latency of 0.</Image>
+<Image src={import('./_assets/ble-current-conn-interval-30ms-latency-0.webp')} width="1000">The current consumption of a BLE device with a connection interval of 30ms and a peripheral latency of 0.</Image>
 
 Now if we change the connection interval from 30ms to 1000ms we get a significant current consumption to 20.4uA:
 
 {/* {{% figure src="_assets/ble-current-conn-interval-1000ms-latency-0.webp" width="1000px" caption="The current consumption of a BLE device with a connection interval of 1000ms and a peripheral latency of 0." %}} */}
-import ble_current_conn_interval_1000ms_latency_0 from './_assets/ble-current-conn-interval-1000ms-latency-0.webp'
-
-<Image src={ble_current_conn_interval_1000ms_latency_0} width="1000">The current consumption of a BLE device with a connection interval of 1000ms and a peripheral latency of 0.</Image>
+<Image src={import('./_assets/ble-current-conn-interval-1000ms-latency-0.webp')} width="1000">The current consumption of a BLE device with a connection interval of 1000ms and a peripheral latency of 0.</Image>
 
 ## Peripheral Latency
 
@@ -63,9 +57,7 @@ The peripheral latency specifies the number of connection intervals that the per
 If we set the connection interval back to 30ms, but change the peripheral latency from 0 to 30 (which would mean the peripheral would skip packets for at most 900ms), the current consumption drops from 94uA (as per above) to 18uA as shown in the below image:
 
 {/* {{% figure src="_assets/ble-current-conn-interval-30ms-latency-30.webp" width="1000px" caption="The current consumption of a BLE device with a connection interval of 30ms and a peripheral latency of 30." %}} */}
-import ble_current_conn_interval_30ms_latency_30 from './_assets/ble-current-conn-interval-30ms-latency-30.webp'
-
-<Image src={ble_current_conn_interval_30ms_latency_30} width="1000">The current consumption of a BLE device with a connection interval of 30ms and a peripheral latency of 30.</Image>
+<Image src={import('./_assets/ble-current-conn-interval-30ms-latency-30.webp')} width="1000">The current consumption of a BLE device with a connection interval of 30ms and a peripheral latency of 30.</Image>
 
 ## Apple Device Support
 
@@ -74,16 +66,12 @@ Apple recommends some further restrictions on the connection interval and periph
 A screenshot of the BLE connection parameters from Apple's document is shown below:
 
 {/* {{% figure src="_assets/apple-accessory-design-guidelines-ble-connection-parameters.png" width="600px" caption="The recommended BLE connection parameters from Apple's \"Accessory Design Guidelines for Apple Devices\"[^apple-accessory-design-guidelines]." %}} */}
-import apple_accessory_design_guidelines_ble_connection_parameters from './_assets/apple-accessory-design-guidelines-ble-connection-parameters.png'
-
-<Image src={apple_accessory_design_guidelines_ble_connection_parameters} width="600">The recommended BLE connection parameters from Apple's "Accessory Design Guidelines for Apple Devices".</Image>
+<Image src={import('./_assets/apple-accessory-design-guidelines-ble-connection-parameters.png')} width="600">The recommended BLE connection parameters from Apple's "Accessory Design Guidelines for Apple Devices".</Image>
 
 Silicon Labs provides an Excel spreadsheet which can validate your connection parameters to make sure they are within Apple's guidelines[^silicon-labs-apple-connection-parameters]. It can be downloaded from [here](https://docs.silabs.com/bluetooth/4.0/miscellaneous/mobile/selecting-suitable-connection-parameters-for-apple-devices).
 
 {/* {{% figure src="_assets/silicon-labs-spreadsheet-for-verifying-ble-params-for-apple.webp" width="700px" caption="A screenshot of Silicon Labs' Excel spreadsheet for verifying BLE connection parameters for Apple devices." %}} */}
-import silicon_labs_spreadsheet_for_verifying_ble_params_for_apple from './_assets/silicon-labs-spreadsheet-for-verifying-ble-params-for-apple.webp'
-
-<Image src={silicon_labs_spreadsheet_for_verifying_ble_params_for_apple} width="700">A screenshot of Silicon Labs' Excel spreadsheet for verifying BLE connection parameters for Apple devices.</Image>
+<Image src={import('./_assets/silicon-labs-spreadsheet-for-verifying-ble-params-for-apple.webp')} width="700">A screenshot of Silicon Labs' Excel spreadsheet for verifying BLE connection parameters for Apple devices.</Image>
 
 ## Further Reading
 

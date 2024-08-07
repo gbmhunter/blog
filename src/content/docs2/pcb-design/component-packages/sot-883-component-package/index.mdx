@@ -17,9 +17,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 `SOT-883` (Small-outline Transistor 883) is a 3-lead SMD component package that is very similar to a DFN package. It is also very similar to the [SOD-882 component package](/pcb-design/component-packages/sod-882-component-package/) (note: that's `SOD`, not `SOT`!). It has the same outside dimensions as the `SOD-882`, except with the addition of an extra pad. This presumably explains the transition from `SOD` to `SOT` -- the two pin package is used for diodes, whilst this three pin package is used for transistors.
 
-import sot_883_component_package_3d_render from './_assets/sot-883-component-package-3d-render.png'
-
-<Image src={sot_883_component_package_3d_render} width="300px"></Image>
+<Image src={import('./_assets/sot-883-component-package-3d-render.png')} width="300px"></Image>
 
 Synonyms:
 
@@ -56,19 +54,15 @@ onsemi (formally On Semiconductor) calls this package the `XDFN3`[^bib-on-semi-n
 
 ## 3D Render
 
-<Image src={sot_883_component_package_3d_render} width="400px">A 3D render of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
+<Image src={import('./_assets/sot-883-component-package-3d-render.png')} width="400px">A 3D render of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
 
 ## Package Dimensions
 
-import sot_883_component_package_dimensions from './_assets/sot-883-component-package-dimensions.png'
-
-<Image src={sot_883_component_package_dimensions} width="800px">The dimensions of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
+<Image src={import('./_assets/sot-883-component-package-dimensions.png')} width="800px">The dimensions of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
 
 ## Recommended Footprint
 
-import sot_883_component_package_recommended_footprint from './_assets/sot-883-component-package-recommended-footprint.png'
-
-<Image src={sot_883_component_package_recommended_footprint} width="800px">The recommended PCB footprint for the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
+<Image src={import('./_assets/sot-883-component-package-recommended-footprint.png')} width="800px">The recommended PCB footprint for the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.</Image>
 
 [^bib-nexperia-sot-883]:  Nexperia (2020, Sep 25). _SOT883: plastic, leadless ultra small package; 3 terminals; 0.35 mm pitch; 1 mm x 0.6 mm x 0.48 mm body (package information)_. Retrieved 2022-04-02, from https://assets.nexperia.com/documents/package-information/SOT883.pdf.
 [^bib-nexperia-pbss2515m-ds]:  NXP (now Nexperia) (2003, Jun 17). _PBSS2515M: 15 V, 0.5 A NPN low VCEsat (BISS) transistor (datasheet)_. Retrieved 2022-04-03, from https://assets.nexperia.com/documents/data-sheet/PBSS2515M.pdf. 

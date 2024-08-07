@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 A silicon controlled rectifier, or _SCR_, is an electrical semiconductor which is part of the thyristor family. A SCR is made up of 4 alternating layers of P-type and N-type semiconductor.
 
-import scr_pn_junction_diagram from './scr-pn-junction-diagram.svg'
-
-<Image src={scr_pn_junction_diagram} width="400px">The construction of a SCR showing the P and N semiconductor regions.</Image>
+<Image src={import('./scr-pn-junction-diagram.svg')} width="400px">The construction of a SCR showing the P and N semiconductor regions.</Image>
 
 It is argued whether an SCR and thyristor are identical or represent two different devices. Those who believe they are two different devices argue that SCRs are thyristors which have a least four layers of alternating p and n-type silicon[^wikipedia-scrs]. This site always refers to a _four-layer thyristor_ when talking about SCRs. Other parts that are part of the thyristor family that are NOT SCRs include:
 
@@ -27,17 +25,13 @@ It is argued whether an SCR and thyristor are identical or represent two differe
 
 An SCR can be turned on electrically via the _gate_, just like a normal transistor, **but cannot be turned off as easily**. Once turned on, the SCR _latches_ on, even if the gate voltage is removed. It only turns off when the current through the SCR drops below the _holding current_, **and** then a sufficient reverse voltage is applied to a fixed length of time[^electronics-hub-scr-turn-off-methods]. The process of turning a SCR off is called _commutation_.
 
-import two_scrs_on_heatsinks from './two-scrs-on-heatsinks.jpg'
-
-<Image src={two_scrs_on_heatsinks} width="600px">Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR).</Image>
+<Image src={import('./two-scrs-on-heatsinks.jpg')} width="600px">Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR).</Image>
 
 ## Schematic Symbol
 
 The schematic symbol for an SCR is shown below:
 
-import scr_schematic_symbol from './scr-schematic-symbol.svg'
-
-<Image src={scr_schematic_symbol} width="400px">The schematic symbol for a silicon controlled rectifier (SCR).</Image>
+<Image src={import('./scr-schematic-symbol.svg')} width="400px">The schematic symbol for a silicon controlled rectifier (SCR).</Image>
 
 ## Commutation
 
@@ -78,9 +72,7 @@ Parasitic SCRs are formed during the manufacturing of CMOS logic devices (e.g. a
 
 SCRs are typically used in applications that require the switching of high voltages and/or currents.
 
-import m54123l_circuit_breaker_typical_application_with_scr from './m54123l-circuit-breaker-typical-application-with-scr.png'
-
-<Image src={m54123l_circuit_breaker_typical_application_with_scr} width="600px">Typical application diagram for the M54123L circuit breaker IC, showing the use of an external SCR.</Image>
+<Image src={import('./m54123l-circuit-breaker-typical-application-with-scr.png')} width="600px">Typical application diagram for the M54123L circuit breaker IC, showing the use of an external SCR.</Image>
 
 They are used in coil-gun/rail-gun designs to connect the charged capacitor bank into the coil or rail, dumping the energy into the gun and firing the device. The typical high voltage and pulse current ratings of SCRs makes them a good choice for this. The main disadvantage of using an SCR over an IGBT for this purpose is that you cannot turn them off. This is not so important in a rail-gun, but in a coil-gun design you may want to disconnect the capacitor bank once the projectile reaches the center of the coil, to prevent pull-back.
 

@@ -10,9 +10,7 @@ type: post
 
 import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
-import electric_skateboard_pcb_panel_camtastic from './electric-skateboard-pcb-panel-camtastic.jpg'
-
-<Image src={electric_skateboard_pcb_panel_camtastic} width="650px">Screenshot of the Gerber's sent to PCB Cart for manufacturing.</Image>
+<Image src={import('./electric-skateboard-pcb-panel-camtastic.jpg')} width="650px">Screenshot of the Gerber's sent to PCB Cart for manufacturing.</Image>
 
 Finally, the electric skateboard PCBs have been sent away for manufacturing. I eventually chose [PCB Cart](http://www.pcbcart.com/) after discovering that I couldn't run the PCBs as a 'Prototype' at [Silver Circuits](http://www.custompcb.com/) (their maximum Prototype PCB size was 160mm in any direction, my panel was 200mm). See the [Electrical Suppliers page](/electronics/general/electrical-suppliers) for more info on PCB manufacturers.
 

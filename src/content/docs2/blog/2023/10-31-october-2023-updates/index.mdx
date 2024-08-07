@@ -20,44 +20,30 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 * Addition of a graphing feature which can extract data points from incoming data and graph them live.
 
-import graphing from './graphing.gif'
-
-<Image src={graphing} width="600px"></Image>
+<Image src={import('./graphing.gif')} width="600px"></Image>
 
 * Easter egg style "fake ports" to NinjaTerm for demo/testing purposes. Press "f" when the serial port config. settings are visible to show the fake port selection screen.
 
-import fake_ports_screenshot from './fake-ports-screenshot.png'
-
-<Image src={fake_ports_screenshot} width="600px"></Image>
+<Image src={import('./fake-ports-screenshot.png')} width="600px"></Image>
 
 * Ability to change terminal font size.
 
-import change_font_size_screenshot from './change-font-size-screenshot.png'
-
-<Image src={change_font_size_screenshot} width="400px"></Image>
+<Image src={import('./change-font-size-screenshot.png')} width="400px"></Image>
 
 * Added initial Playwright e2e (end-to-end) tests.
 
-import playwright_test_ui_screenshot from './playwright-test-ui-screenshot.png'
-
-<Image src={playwright_test_ui_screenshot} width="600px"></Image>
+<Image src={import('./playwright-test-ui-screenshot.png')} width="600px"></Image>
 
 * Fixed an annoying rendering glitch where I was using React's `useEffect()` but should of been using `useLayoutEffect()`.
 
 * Migrated from using `react-starter`/Webpack to build to using Vite, it's much faster! Also migrated the unit tests from using Jest/RTL to using Vitest (which works really well with Vite).
 
-import vite_build_screenshot from './vite-build-screenshot.png'
-
-<Image src={vite_build_screenshot} width="400px"></Image>
+<Image src={import('./vite-build-screenshot.png')} width="400px"></Image>
 
 * Improved the version updating process -- Now a snackbar pops up when a new version is available giving the user the choice to reload and update. This was easily added thanks to Vite's PWA plugin.
 
-import new_version_available_screenshot from './new-version-available-screenshot.png'
-
-<Image src={new_version_available_screenshot} width="700px"></Image>
+<Image src={import('./new-version-available-screenshot.png')} width="700px"></Image>
 
 * Added settings to be able to configure behaviour on receipt of carriage return and line feed characters.
 
-import new_line_and_carriage_return_settings_screenshot from './new-line-and-carriage-return-settings-screenshot.png'
-
-<Image src={new_line_and_carriage_return_settings_screenshot} width="600px"></Image>
+<Image src={import('./new-line-and-carriage-return-settings-screenshot.png')} width="600px"></Image>

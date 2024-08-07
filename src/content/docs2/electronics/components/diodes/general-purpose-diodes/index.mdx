@@ -16,17 +16,13 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 General purpose diodes are just what they say they are -- simple diodes with no special functionality, used for a wide range of rectification purposes.
 
-import n_1n4007_diode_photo_nte_electronics from './1n4007-diode-photo-nte-electronics.png'
-
-<Image src={n_1n4007_diode_photo_nte_electronics} width="250px">Photo of a 1N4007 general-purpose diode from NTE Electronics in the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/)[^bib-digikey-nte-11n4007]. Image (C) NTE Electronics. </Image>
+<Image src={import('./1n4007-diode-photo-nte-electronics.png')} width="250px">Photo of a 1N4007 general-purpose diode from NTE Electronics in the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/)[^bib-digikey-nte-11n4007]. Image (C) NTE Electronics. </Image>
 
 ## Schematic Symbol And Designator
 
 On schematics, general purpose diodes use the schematic symbol `D` (as do all most all types of diodes) and use the following symbol (most other types of diodes DO NOT use this symbol, they use slightly adjusted versions).
 
-import general_purpose_diode_schematic_symbol from './general-purpose-diode-schematic-symbol.svg'
-
-<Image src={general_purpose_diode_schematic_symbol} width="300px">The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Current can only flow from anode to cathode, but not the other way around. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.</Image>
+<Image src={import('./general-purpose-diode-schematic-symbol.svg')} width="300px">The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Current can only flow from anode to cathode, but not the other way around. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.</Image>
 
 <Aside type="tip">
 A handy mnemonic for remembering the polarity of a diode is to remember that the triangle in the symbol points in the direction of "forward" current (current when the diode is forward conducting).
@@ -58,9 +54,7 @@ $$
 
 This ignores the fact the diode doesn't conduct until the forward voltage gets to about $0.7V$, which is fine to ignore is most cases as this part of the cycle will be tiny in comparison to everything else.[^avg-rectified-forward-current-plot] shows graphically when the diode is conducting from a sinusoidal supply and the relationship between average rectified forward current and maximum (peak) current for a complete sine wave cycle. $I_{max}$ was chosen to be $5A$, and the waveform has a period of $2\pi$ seconds for simplicity (although relationship is independent of period/frequency).
 
-import avg_rectified_forward_current_plot from './avg-rectified-forward-current-plot.png'
-
-<Image src={avg_rectified_forward_current_plot} width="500px">Plot showing the relationship between average rectified forward current and max. current for a diode rectifying a sine wave (e.g. mains supply).</Image>
+<Image src={import('./avg-rectified-forward-current-plot.png')} width="500px">Plot showing the relationship between average rectified forward current and max. current for a diode rectifying a sine wave (e.g. mains supply).</Image>
 
 <Aside type="tip">
 The integration limits are set to $0$ and $\pi$ (and not $2\pi$) because we only want integrate over the first-half of the sine wave cycle when the diode is conducting.
@@ -104,9 +98,7 @@ Some diodes, such as bi-directional TVS diodes, do not have a polarity.
 
 Diodes come in many [component packages](/pcb-design/component-packages), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
 
-import silkscreen_polarity_marks_on_0603_diode_footprint from './silkscreen-polarity-marks-on-0603-diode-footprint.png'
-
-<Image src={silkscreen_polarity_marks_on_0603_diode_footprint} width="500px">Polarity marks have been added to the silkscreen layer for these 0603 diodes.</Image>
+<Image src={import('./silkscreen-polarity-marks-on-0603-diode-footprint.png')} width="500px">Polarity marks have been added to the silkscreen layer for these 0603 diodes.</Image>
 
 ### Can Diodes Share Current?
 
@@ -120,9 +112,7 @@ Diodes have a **negative resistive thermal co-efficient**, that is, as they warm
 
 _Bridge rectifiers_ are 4 diodes connected in such a way that they **rectify** an AC voltage waveform into a DC one. The below schematic shows how a bridge rectifier is made from four diodes, and where the input AC and output DC signals are connected. 
 
-import bridge_rectifier_schematic from './bridge-rectifier-schematic.svg'
-
-<Image src={bridge_rectifier_schematic} width="500px">Basic circuit diagram showing the construction of a bridge rectifier from four general purpose diodes.</Image>
+<Image src={import('./bridge-rectifier-schematic.svg')} width="500px">Basic circuit diagram showing the construction of a bridge rectifier from four general purpose diodes.</Image>
 
 <Aside type="caution">
 Whilst the output of a bridge rectifier is technically DC, the voltage is still changing by a decent amount! The output begins to look like regular, stable DC once you start adding capacitance (and at $50-60Hz$ power line frequencies, a lot of it!).
@@ -130,9 +120,7 @@ Whilst the output of a bridge rectifier is technically DC, the voltage is still 
 
 The image below shows a bridge rectifier being used after a transformer to convert $12VAC$ (rms) into $12VDC$. Note that the frequency of the ripple will be twice the AC input frequency ($2\cdot 50Hz = 100Hz$).
 
-import transformer_bridge_recitifier_cap_240vac_to_12vdc from './transformer-bridge-recitifier-cap-240vac-to-12vdc.png'
-
-<Image src={transformer_bridge_recitifier_cap_240vac_to_12vdc} width="800px">A schematic of an AC-DC power-supply that uses a bridge rectifier.</Image>
+<Image src={import('./transformer-bridge-recitifier-cap-240vac-to-12vdc.png')} width="800px">A schematic of an AC-DC power-supply that uses a bridge rectifier.</Image>
 
 Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a $47pF$ capacitor in series with a $2k\Omega$ resistor.
 

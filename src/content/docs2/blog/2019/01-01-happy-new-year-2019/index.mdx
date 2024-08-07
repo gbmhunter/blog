@@ -9,9 +9,7 @@ type: "post"
 
 import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
-import colorful_happy_new_year_2019_vector from './colorful-happy-new-year-2019-vector.jpg'
-
-<Image src={colorful_happy_new_year_2019_vector} width="800px">Happy new year! Image from www.vecteezy.com.</Image>
+<Image src={import('./colorful-happy-new-year-2019-vector.jpg')} width="800px">Happy new year! Image from www.vecteezy.com.</Image>
 
 ## Statistics for 2018
 
@@ -24,9 +22,7 @@ Metric      | 2017  | 2018 |
 Page Views  | 83k   | 116k |
 Users       | 41k   | 63k  |
 
-import google_analytics_2018_mbedded_ninja_users from './google-analytics-2018-mbedded-ninja-users.png'
-
-<Image src={google_analytics_2018_mbedded_ninja_users} width="800px">Number of users per week for the 2018 year. Image from Google Analytics.</Image>
+<Image src={import('./google-analytics-2018-mbedded-ninja-users.png')} width="800px">Number of users per week for the 2018 year. Image from Google Analytics.</Image>
 
 A _User_ is a unique person who visited this website at least once.
 

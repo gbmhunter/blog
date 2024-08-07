@@ -16,13 +16,9 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 A _PTC resettable fuse_ (or just PTC, a.k.a. _polyfuse_, _polyswitch_, _multifuse_ or _posistor_[^bib-elec-point-posistor] [^bib-juno-106-service-notes]) is a passive electronic component used to **protect against excessive load currents and short-circuits in electronic circuits**. The key difference between standard blowable fuses and PTC resettable fuses is that a PTC resettable is _resettable_ -- once the fault condition is cleared the fuses resets and the circuit can work normally again, without any manual replacement of fuses. PTC stands for positive temperature coefficient and references the fact that the components resistance increases with increasing temperature.
 
 <div style={{ display: 'flex' }}>
-import n_3d_render_of_chip_ptc_fuse_bel_fuse_0zcj0035ff2g from './3d-render-of-chip-ptc-fuse-bel-fuse-0zcj0035ff2g.png'
+<Image src={import('./3d-render-of-chip-ptc-fuse-bel-fuse-0zcj0035ff2g.png')} width="300">3D render of a 1206 chip sized PTC fuse from Bel Fuse Inc[^bib-digikey-bel-fuse-0zcj0035ff2g].</Image>
 
-<Image src={n_3d_render_of_chip_ptc_fuse_bel_fuse_0zcj0035ff2g} width="300">3D render of a 1206 chip sized PTC fuse from Bel Fuse Inc[^bib-digikey-bel-fuse-0zcj0035ff2g].</Image>
-
-import bourns_mf_sm050_ptc_fuse from './bourns-mf-sm050-ptc-fuse.png'
-
-<Image src={bourns_mf_sm050_ptc_fuse} width="300px">A photo of the Bourns MF-SM050 PTC fuse. This was on a PCB used in an agricultural LED light (grow light).</Image>
+<Image src={import('./bourns-mf-sm050-ptc-fuse.png')} width="300px">A photo of the Bourns MF-SM050 PTC fuse. This was on a PCB used in an agricultural LED light (grow light).</Image>
 </div>
 
 For information on just plain old resistors, see the [Resistors page](/electronics/components/resistors).
@@ -35,9 +31,7 @@ It is essentially a resistor whose resistance increases as temperature increases
 
 I prefer to use the designator prefix `RT` (e.g. `RT1`) and the following schematic symbol for a PTC-type thermistor. 
 
-import positive_temperature_coefficient_ptc_component_schematic_symbol_and_designator from './positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png'
-
-<Image src={positive_temperature_coefficient_ptc_component_schematic_symbol_and_designator} width="400">Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.</Image>
+<Image src={import('./positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png')} width="400">Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.</Image>
 
 I use the designator prefix `RT` for thermistors (**R**esistance depends on **T**emperature), while using `RV` for varistors (**R**esistance depends on **V**oltage).
 

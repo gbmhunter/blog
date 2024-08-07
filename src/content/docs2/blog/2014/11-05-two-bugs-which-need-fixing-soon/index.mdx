@@ -14,9 +14,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 1. Lately, a strange asterisk has popped up next to all page headings. Clicking it takes you almost back up to the top of the page. I think this might have something to do with an upgrade to the [Better Anchor Links plugin](https://wordpress.org/plugins/better-anchor-links/) I use to automatically create a "Contents" section at the top of the page which has hyperlinks to all the the pages headings.
 
 
-import bug_asterisk_appearing_after_page_headings from './bug-asterisk-appearing-after-page-headings.png'
-
-<Image src={bug_asterisk_appearing_after_page_headings} width="452px">Weird asterisks appearing after the page headings!</Image>
+<Image src={import('./bug-asterisk-appearing-after-page-headings.png')} width="452px">Weird asterisks appearing after the page headings!</Image>
 
     **UPDATE 2014-11-07:** It is indeed a problem caused by the Better Anchor Links plugin. The plugin supports an option to add a "back link", which adds a character beside each header that takes you back to the start of the page. This is what you are seeing here. I don't know why they appearing throughout my site, when I clearly have the option **unticked** in the settings page for the plugin. As a temporary fix, I commented out the entire body of the function 
 
@@ -29,8 +27,6 @@ import bug_asterisk_appearing_after_page_headings from './bug-asterisk-appearing
 2. The resistor symbols on the Resistors page are not being rendered. The error messages given are: "QuickLatex cannot compile formula..." and "Error: cannot create svg file.". I think this might have something to do with me switching back to using the Visual editor rather than the raw text error.  
 
 
-import bug_quick_latex_not_rendering_resistor_symbols from './bug-quick-latex-not-rendering-resistor-symbols.png'
-
-<Image src={bug_quick_latex_not_rendering_resistor_symbols} width="569px">The resistor symbols on the Resistors page are not being rendered.</Image>
+<Image src={import('./bug-quick-latex-not-rendering-resistor-symbols.png')} width="569px">The resistor symbols on the Resistors page are not being rendered.</Image>
 
     **UPDATE 2014-11-25:** This has been fixed, the problem was caused by Wordpress inserting HTML breaks (`<br>`) into the Latex code when switching from the text to visual editor. This was occurring even when the Raw HTML plugin was enabled, which is meant to stop this thing from happening!

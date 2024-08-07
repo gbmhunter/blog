@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 The DO-204AL (also commonly known as DO-41) component package is a very popular 2-lead through-hole package used for older diodes (incl. the famous 1N400x series[^vishay-1n4001-ds]). The pitch is typically 400mil, although because of the long through-hole leads, it is user variable. It is easy to solder by hand. The DO-41 package is normally used for higher power "rectifier" diodes, whilst the lower power "signal" diodes use smaller through-hole packages such as the DO-35. The typical rated current for a diode in this package is 1A.
 
-import do_41_component_package_photo from './_assets/do-41-component-package-photo.jpg'
-
-<Image src={do_41_component_package_photo} width="300px">A photo of the DO-41 component package.</Image>
+<Image src={import('./_assets/do-41-component-package-photo.jpg')} width="300px">A photo of the DO-41 component package.</Image>
 
 ## Synonyms
 
@@ -33,9 +31,7 @@ Vishay gives the typical junction-to-ambient thermal resistance of a DO-204AL mo
 
 ## Dimensions and Mounting
 
-import do_41_package_dimensions_vishay from './_assets/do-41-package-dimensions-vishay.png'
-
-<Image src={do_41_package_dimensions_vishay} width="500px">The dimensions for the DO-204AL (DO-41) component package from Vishay[^vishay-1n4001-ds].</Image>
+<Image src={import('./_assets/do-41-package-dimensions-vishay.png')} width="500px">The dimensions for the DO-204AL (DO-41) component package from Vishay[^vishay-1n4001-ds].</Image>
 
 This package is normally mounted on the PCB in two ways, either flat with the legs bent at 90° to fit into the holes, or in space-constrained applications, vertical, with one of the legs straight and one bent 180° to fit into the holes in the PCB (which are closer together than when in the flat orientation). Material of package is normally moulded plastic.
 

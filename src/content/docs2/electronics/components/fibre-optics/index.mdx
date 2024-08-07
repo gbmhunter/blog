@@ -31,39 +31,27 @@ Some fiber optic transmitter/receiver pairs are DC-coupled, which extends the ba
 
 Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter). Common bandwidths for TOSLINK connections are from DC to 10Mbps[^bib-toshiba-torx1355f-ds].
 
-import torx1355f_totx1353f_toslink_transceivers from './torx1355f-totx1353f-toslink-transceivers.jpg'
-
-<Image src={torx1355f_totx1353f_toslink_transceivers} width="700px">Photo of the TOSLINK TORX1355(F) receiver and TOTX1353(F) transmitter.</Image>
+<Image src={import('./torx1355f-totx1353f-toslink-transceivers.jpg')} width="700px">Photo of the TOSLINK TORX1355(F) receiver and TOTX1353(F) transmitter.</Image>
 
 The TOSLINK transmitter components just contains the LED (e.g. the `TOTX1353(F)`), hence the need for a current-limiting resistor and driver. The driver can be open-collector/open-drain, as it only needs to sink current.
 
-import totx1353f_driver_schematic from './totx1353f-driver-schematic.png'
-
-<Image src={totx1353f_driver_schematic} width="500px">Typical surrounding circuitry required to drive the TOTX1353(F) transmitter[^bib-toshiba-totx1353f-ds]. </Image>
+<Image src={import('./totx1353f-driver-schematic.png')} width="500px">Typical surrounding circuitry required to drive the TOTX1353(F) transmitter[^bib-toshiba-totx1353f-ds]. </Image>
 
 The receiver contains more circuitry than the transmitter, including _automatic threshold control_ (ATC) to compensate for widely different input optical power levels[^bib-toshiba-torx1355f-ds].
 
-import torx1355f_application_circuit from './torx1355f-application-circuit.png'
-
-<Image src={torx1355f_application_circuit} width="500px">Typical surrounding circuitry to receive signals via the TORX1355(F) receiver[^bib-toshiba-torx1355f-ds]. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).</Image>
+<Image src={import('./torx1355f-application-circuit.png')} width="500px">Typical surrounding circuitry to receive signals via the TORX1355(F) receiver[^bib-toshiba-torx1355f-ds]. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).</Image>
 
 TOSLINK components are becoming harder to find these days, although TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
 
-import toslink_cabke_jr9907_5md4mmblk_5m from './toslink-cabke-jr9907.5md4mmblk-5m.png'
+<Image src={import('./toslink-cabke-jr9907.5md4mmblk-5m.png')} width="300px">Photo of a 5m TOSLINK cable from Multicomp Pro with plugs on both ends (part number JR9907.5M D=4MM BLK)[^bib-e14-toslink-cable].</Image>
 
-<Image src={toslink_cabke_jr9907_5md4mmblk_5m} width="300px">Photo of a 5m TOSLINK cable from Multicomp Pro with plugs on both ends (part number JR9907.5M D=4MM BLK)[^bib-e14-toslink-cable].</Image>
-
-import toslink_visible_illumination from './toslink-visible-illumination.jpg'
-
-<Image src={toslink_visible_illumination} width="700px">Photo showing the clearly visible illumination when TOSLINK is in working. On left, the TOTX1353(F) transmitter being driven with 1.5mA of current. On right, the same signal but now with a 5m cable plugged into the transmitter, with this photo being taken of the other end.</Image>
+<Image src={import('./toslink-visible-illumination.jpg')} width="700px">Photo showing the clearly visible illumination when TOSLINK is in working. On left, the TOTX1353(F) transmitter being driven with 1.5mA of current. On right, the same signal but now with a 5m cable plugged into the transmitter, with this photo being taken of the other end.</Image>
 
 The image below shows an oscilloscope capture of a TOSLINK system in use. The upper green waveform is a 1MHz, 5V square wave being fed into a TOTX1353(F) transmitter (with a 2.2kΩ resistor to limit the LED current). The lower yellow waveform is the resulting output from a TORX1355(F) receiver connected to the transmitter via a 5m TOSLINK cable.
 
 TIP: The 5V input square wave is fed into the cathode of the transmitters LED (as per the recommended application circuit in the datasheet), so the LED is turned on when the signal is low, hence the inversion of the signal.
 
-import toslink_5m_in_vs_out_1mhz from './toslink-5m-in-vs-out-1mhz.png'
-
-<Image src={toslink_5m_in_vs_out_1mhz} width="700px">Oscilloscope capture showing the input and output waveform of a TOSLINK system in use.</Image>
+<Image src={import('./toslink-5m-in-vs-out-1mhz.png')} width="700px">Oscilloscope capture showing the input and output waveform of a TOSLINK system in use.</Image>
 
 The difference between an edge on the input and the edge appearing on the output (time between the dotted vertical "cursor" lines) is 148ns. **Light travels at 3e8m/s, so would take 17ns to travel down the 5m cable. The remaining 131ns of the 148ns must be due to processing delays in the TOSLINK transceiver and receiver**. Time delays of the oscilloscope probes is small and consistent for both input and output, so should have a negligible effect on this measurement.
 
@@ -73,15 +61,11 @@ _Versatile Link_ (VL) was first introduced by Hewlett-Packard.
 
 Field-installable connections are relatively simple with Versatile Link connectors. For example, the Avago AFBR-4526Z and AFBR-452BZ duplex connectors show in their datasheet a four-step process involving cutting the fibre (with simple wire cutters), fitting the cable into the connector housing, trimming and polishing (polishing is optional, using a purpose-made fibre holding tool and various grit sand paper), and final finishing[^bib-avago-afbr-4526z-ds].
 
-import avago_afbr_4526z_versatile_link_fibre_conn_photo from './avago-afbr-4526z-versatile-link-fibre-conn-photo.png'
-
-<Image src={avago_afbr_4526z_versatile_link_fibre_conn_photo} width="300px">Photo of the Avago AFBR-4516Z (black) and AFBR-452BZ (blue) fibre optic.</Image>
+<Image src={import('./avago-afbr-4526z-versatile-link-fibre-conn-photo.png')} width="300px">Photo of the Avago AFBR-4516Z (black) and AFBR-452BZ (blue) fibre optic.</Image>
 
 Development kits such as the HFBR-0410Z shown in are available for quick prototyping with with fibre-optic system. Note that the dev kit does not come with any cable!
 
-import hfbr_0410z_fibre_optic_eval_kit from './hfbr-0410z-fibre-optic-eval-kit.jpg'
-
-<Image src={hfbr_0410z_fibre_optic_eval_kit} width="400px">Photo of the HFBR-0410Z fiber optic development kit.</Image>
+<Image src={import('./hfbr-0410z-fibre-optic-eval-kit.jpg')} width="400px">Photo of the HFBR-0410Z fiber optic development kit.</Image>
 
 ### ST/SC
 

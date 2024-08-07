@@ -13,9 +13,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 ## Overview
 
-import sod_123_component_package_3d_render from './_assets/sod-123-component-package-3d-render.jpg'
-
-<Image src={sod_123_component_package_3d_render} width="150px">A 3D render of the SOD-123 component package. Image from www.digikey.com.</Image>
+<Image src={import('./_assets/sod-123-component-package-3d-render.jpg')} width="150px">A 3D render of the SOD-123 component package. Image from www.digikey.com.</Image>
 
 The _SOD-123_ (Small-outline diode 123) component package is a family of medium sized, 2-lead SMD packages, commonly used for packaging diodes.
 
@@ -31,23 +29,19 @@ SOD-123 has the following variants:
 
 ## SOD-123
 
-<Image src={sod_123_component_package_3d_render} width="200px">A 3D render of the SOD-123 component package. Image from www.digikey.com.</Image>
+<Image src={import('./_assets/sod-123-component-package-3d-render.jpg')} width="200px">A 3D render of the SOD-123 component package. Image from www.digikey.com.</Image>
 
 The de-facto SOD-123 leads are gull-wing style (coming out the side of the package), whilst the SOD-123F variant has pads (on the underside of the package). It is the largest SOD package from the family including SOD-323, SOD-523, SOD-723 and SOD-923.
 
 ### Dimensions And Recommended Footprint
 
-import sod_123_component_package_dimensions_and_recommended_footprint from './_assets/sod-123-component-package-dimensions-and-recommended-footprint.png'
-
-<Image src={sod_123_component_package_dimensions_and_recommended_footprint} width="550px">Dimensions and a recommended footprint (land pattern) for the SOD-123 component package.</Image>
+<Image src={import('./_assets/sod-123-component-package-dimensions-and-recommended-footprint.png')} width="550px">Dimensions and a recommended footprint (land pattern) for the SOD-123 component package.</Image>
 
 Note that the pins in the above diagram are labelled with the diode anode being pin 2, and the cathode being pin 1. This is not what I would consider to be intuitive numbering!
 
 ## SOD-123F
 
-import component_package_sod_123f_3d_model from './_assets/component-package-sod-123f-3d-model.jpg'
-
-<Image src={component_package_sod_123f_3d_model} width="200px">3D model of the top of the SOD-123F component package.</Image>
+<Image src={import('./_assets/component-package-sod-123f-3d-model.jpg')} width="200px">3D model of the top of the SOD-123F component package.</Image>
 
 The SOD-123F component package has narrow, flat leads protruding from the base of the SMD package.
 
@@ -63,17 +57,13 @@ The SOD-123F component package has narrow, flat leads protruding from the base o
 
 The SOD-123F is 3.5mm long (from lead end to lead end), 1.6mm wide and 1.1mm high (typical or average values).
 
-import component_package_sod_123f_dimensions from './_assets/component-package-sod-123f-dimensions.png'
-
-<Image src={component_package_sod_123f_dimensions} width="900px">Dimensions of the SOD-123F component package from Diodes Incorporated[^diodes-inc-sod-123f].</Image>
+<Image src={import('./_assets/component-package-sod-123f-dimensions.png')} width="900px">Dimensions of the SOD-123F component package from Diodes Incorporated[^diodes-inc-sod-123f].</Image>
 
 ### Recommended Land Pattern
 
 Below is the recommended land pattern for the SOD-123F component package from Diodes Incorporated[^diodes-inc-sod-123f]:
 
-import component_package_sod_123f_recommended_land_pattern from './_assets/component-package-sod-123f-recommended-land-pattern.png'
-
-<Image src={component_package_sod_123f_recommended_land_pattern} width="900px">Recommended land pattern for the SOD-123F component package.</Image>
+<Image src={import('./_assets/component-package-sod-123f-recommended-land-pattern.png')} width="900px">Recommended land pattern for the SOD-123F component package.</Image>
 
 The land area that the recommended footprint above takes up on the PCB is $4.4mm \times 2.1mm = 9.2mm^2$. The pitch is $2.8mm$ based of the centers of each landing pad.
 
@@ -81,9 +71,7 @@ The land area that the recommended footprint above takes up on the PCB is $4.4mm
 
 The SOD-123EP is a variant of the SOD-123 package with one of the pads being extended further underneath the package for improved power dissipation. This package is typically used for diodes, with the cathode connected to the larger pad[^onsemi-ss12fp-ds]. Known as CASE 425AC by On Semi[^onsemi-ss12fp-ds].
 
-import sod_123ep_3d_model_onsemi_ss12fp from './_assets/sod-123ep-3d-model-onsemi-ss12fp.png'
-
-<Image src={sod_123ep_3d_model_onsemi_ss12fp} width="500px">3D model of the SOD-123EP component package. You can clearly see the larger pad on the underside, which in this case is connected to the cathode of the OnSemi SS12FP diode[^onsemi-ss12fp-ds].</Image>
+<Image src={import('./_assets/sod-123ep-3d-model-onsemi-ss12fp.png')} width="500px">3D model of the SOD-123EP component package. You can clearly see the larger pad on the underside, which in this case is connected to the cathode of the OnSemi SS12FP diode[^onsemi-ss12fp-ds].</Image>
 
 ### Synonyms
 
@@ -91,9 +79,7 @@ import sod_123ep_3d_model_onsemi_ss12fp from './_assets/sod-123ep-3d-model-onsem
 
 ### Dimensions
 
-import sod_123ep_mechanical_dimensions_on_semi from './_assets/sod-123ep-mechanical-dimensions-on-semi.png'
-
-<Image src={sod_123ep_mechanical_dimensions_on_semi} width="700px">Mechanical dimensions of the SOD-123EP component package[^onsemi-ss12fp-ds].</Image>
+<Image src={import('./_assets/sod-123ep-mechanical-dimensions-on-semi.png')} width="700px">Mechanical dimensions of the SOD-123EP component package[^onsemi-ss12fp-ds].</Image>
 
 ## SOD-123W
 
@@ -110,9 +96,7 @@ Dimensions[^nexperia-pmeg60t20elr-ds]:
 
 The above dimensions are nominal and include the leads (i.e. outer dimensions). This package the same nominal outer dimensions as the SOD-123F and SOD-123EP variants.
 
-import sod_123w_package_outline_nexperia_cfp3 from './_assets/sod-123w-package-outline-nexperia-cfp3.png'
-
-<Image src={sod_123w_package_outline_nexperia_cfp3} width="800px">Package outline for the SOD-123W component package. This outline is taken from the Nexperia PMEG60T20ELR Schottky barrier diode datasheet[^nexperia-pmeg60t20elr-ds].</Image>
+<Image src={import('./_assets/sod-123w-package-outline-nexperia-cfp3.png')} width="800px">Package outline for the SOD-123W component package. This outline is taken from the Nexperia PMEG60T20ELR Schottky barrier diode datasheet[^nexperia-pmeg60t20elr-ds].</Image>
 
 ## Similar To
 

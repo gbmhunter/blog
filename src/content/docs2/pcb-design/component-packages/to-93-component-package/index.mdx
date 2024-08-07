@@ -16,9 +16,7 @@ import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General
 
 TO-93 (Transistor Outline 93) is a large panel mount component package used for high-power SCRs and thyristors[^vishay-to-209ab-to-93]. It has good heat-sinking capabilities. Thread is 28.5mm in diameter, so fits 29-30mm hole. The metal case/thread is usually used as the anode, and the thick cable the cathode (there normally is a flying lead for the cathode also), along with a white flying lead for the gate.
 
-import to_93_component_package_photo from './_assets/to-93-component-package-photo.jpg'
-
-<Image src={to_93_component_package_photo} width="160px">A photo of the TO-93 component package.</Image>
+<Image src={import('./_assets/to-93-component-package-photo.jpg')} width="160px">A photo of the TO-93 component package.</Image>
 
 ## Synonyms
 
@@ -29,8 +27,6 @@ import to_93_component_package_photo from './_assets/to-93-component-package-pho
 
 Height is 49.5mm (exc. cable), 231mm (approx, cable fully extended).
 
-import two_scrs_on_heatsinks from './_assets/two-scrs-on-heatsinks.jpg'
-
-<Image src={two_scrs_on_heatsinks} width="600px">Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR).</Image>
+<Image src={import('./_assets/two-scrs-on-heatsinks.jpg')} width="600px">Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR).</Image>
 
 [^vishay-to-209ab-to-93]: Vishay. _Outline Dimensions - TO-209AB (TO-93)_. Retrieved 2024-04-20, from https://www.vishay.com/docs/95079/t209abcf.pdf.

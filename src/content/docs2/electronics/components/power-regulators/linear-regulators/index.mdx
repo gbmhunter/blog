@@ -17,9 +17,7 @@ Linear regulators are devices which vary their "resistance" to generate a **fixe
 
 Linear regulators are **only capable of producing an output voltage which is lower** than the output voltage. For regulators capable of producing higher output voltages, see [switch mode power supplies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) or [charge pumps](/electronics/components/power-regulators/charge-pumps/).
 
-import lt1086_3_3_linear_regulator_basic_schematic from './lt1086-3.3-linear-regulator-basic-schematic.png'
-
-<Image src={lt1086_3_3_linear_regulator_basic_schematic} width="700px">The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.</Image>
+<Image src={import('./lt1086-3.3-linear-regulator-basic-schematic.png')} width="700px">The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.</Image>
 
 Linear regulators are great when you want a cheap, low power voltage regulation solution. They can also be used on the output of a SMPS regulator (which are far noisier) to reduce the voltage ripple (the ripple will be reduced by the linear regulators high PSRR).
 
@@ -36,23 +34,17 @@ Series linear regulators work by comparing the output voltage to a accurate (and
 
 Series linear regulators are relatively simple components to connect up into a larger circuit, typically only requiring an input pin, output pin, and either a GND (for fixed voltage versions) or ADJ pin (for variable voltage versions):
 
-import series_linear_regulator_fixed_basic_schematic from './series-linear-regulator-fixed-basic-schematic.svg'
-
-<Image src={series_linear_regulator_fixed_basic_schematic} width="700px">Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator ($V_{OUT} = 5.0V$) and so the third pin is just connected to $GND$.</Image>
+<Image src={import('./series-linear-regulator-fixed-basic-schematic.svg')} width="700px">Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator ($V_{OUT} = 5.0V$) and so the third pin is just connected to $GND$.</Image>
 
 ## Shunt Linear Regulators
 
 Confusingly, shunt regulators are commonly shown in schematics as a zener diode with a third pin coming from the middle of the rectangle, as shown below. This zener diode symbol hides significant complexity, in reality they are actually a integrated circuit containing a voltage reference, op-amp and BJT!
 
-import shunt_linear_regulator_symbol_and_detailed_circuit from './shunt-linear-regulator-symbol-and-detailed-circuit.svg'
-
-<Image src={shunt_linear_regulator_symbol_and_detailed_circuit} width="700px">The commonly used diode-looking schematic symbol for a shunt regulator, next to a more detailed circuit of what is actually inside the component! The voltage reference shown is 2.5V, which is used in the popular LM431 (it may be different for other regulators).</Image>
+<Image src={import('./shunt-linear-regulator-symbol-and-detailed-circuit.svg')} width="700px">The commonly used diode-looking schematic symbol for a shunt regulator, next to a more detailed circuit of what is actually inside the component! The voltage reference shown is 2.5V, which is used in the popular LM431 (it may be different for other regulators).</Image>
 
 One common use for these devices is a shunt voltage regulator, as shown below. The trick here is that $U1$ will turn on as much as it can to make the voltage at its $V_{REF}$ pin equal to it's internal voltage reference (which is commonly 2.5V). By connecting $V_{REF}$ up to the resistor divider $R1$ and $R2$, you can get $U1$ to shunt regulate to a chosen $V_{OUT}$, as long as it's above $V_{REF}$.
 
-import shunt_linear_regulator_basic_application_schematic from './shunt-linear-regulator-basic-application-schematic.svg'
-
-<Image src={shunt_linear_regulator_basic_application_schematic} width="500px">A shunt voltage regulator used to create a regulated output voltage from a higher input voltage.</Image>
+<Image src={import('./shunt-linear-regulator-basic-application-schematic.svg')} width="500px">A shunt voltage regulator used to create a regulated output voltage from a higher input voltage.</Image>
 
 It is quite easy to show that the output voltage in the above circuit is calculated as given in Eq $\ref{eq:vout-vref-shunt-reg}$.
 
@@ -126,15 +118,11 @@ $ T_a $ is the ambient temperature<br/></p>
 
 While you easily blow up regulators in the 1990's, even the very cheap modern-day regulators have built in protection circuitry which makes them basically indestructable. Most feature excess current protection, thermal protection (most turning off above if their die temperature exceeds 150-170°C), short-circuit protection, reverse-polarity protection, and input disconnect (reverse current flow) protection. One of the only ways to kill them is over-voltage on either the input or output.
 
-import protection_diode_from_vout_to_vin from './protection-diode-from-vout-to-vin.svg'
-
-<Image src={protection_diode_from_vout_to_vin} width="700px">If $V_{IN}$ falls rapidly (e.g. a short), and there is a lot of capacitance on $V_{OUT}$, reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from $V_{OUT}$ to $V_{IN}$ protects against this.</Image>
+<Image src={import('./protection-diode-from-vout-to-vin.svg')} width="700px">If $V_{IN}$ falls rapidly (e.g. a short), and there is a lot of capacitance on $V_{OUT}$, reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from $V_{OUT}$ to $V_{IN}$ protects against this.</Image>
 
 This is further compounded if you are using an adjustable linear regulator and have added a filter capacitor on the ADJ pin -- the charge on the capacitor can flow back through the ADJ pin and cause problems. A second diode from the ADJ pin to $V_{OUT}$ fixes this problem:
 
-import protection_diode_from_vout_to_vin_and_adj_to_vout from './protection-diode-from-vout-to-vin-and-adj-to-vout.svg'
-
-<Image src={protection_diode_from_vout_to_vin_and_adj_to_vout} width="700px">Protection diodes $D1$ and $D2$ added to safely discharge C1 and C2. </Image>
+<Image src={import('./protection-diode-from-vout-to-vin-and-adj-to-vout.svg')} width="700px">Protection diodes $D1$ and $D2$ added to safely discharge C1 and C2. </Image>
 
 ## Bypass Capacitor
 
@@ -164,9 +152,7 @@ $$
 
 DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec. (incl. suspend to RAM, suspend to disk states).
 
-import tps51206_ti_ddr_termination_regulator_simplified_application_schematic from './tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png'
-
-<Image src={tps51206_ti_ddr_termination_regulator_simplified_application_schematic} width="470px">The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/.</Image>
+<Image src={import('./tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png')} width="470px">The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/.</Image>
 
 DDR memory draws current in quick surges of around 2-3A. Most DDR termination regulators support both the sinking and sourcing of current, which means they can clamp the voltage if an overshoot occurs due to a fast switching transient. Standard linear regulators cannot do this, and only source current.
 
@@ -180,15 +166,11 @@ For example, a 15V in, 12V 1A out linear regulator under normal conditions would
 
 The below circuit shows how foldback current limiting is typically implemented in a linear regulator (either internally or externally to an IC):
 
-import foldback_current_limiting_circuit from './foldback-current-limiting-circuit.svg'
-
-<Image src={foldback_current_limiting_circuit} width="800px">Foldback current limiting circuit added to a simple series linear regulator.</Image>
+<Image src={import('./foldback-current-limiting-circuit.svg')} width="800px">Foldback current limiting circuit added to a simple series linear regulator.</Image>
 
 The below graph shows the V/I response of a linear regulator with foldback current limiting. As the load resistance decreases, the output voltage stays steady at $V_{REG}$ until $I_{MAX}$ is reached. Then both the output voltage and current reduces, with the current decreasing to $I_{SC}$ as the load resistance reaches $0\Omega$ (direct short).
 
-import foldback_current_limiting_graph from './foldback-current-limiting-graph.svg'
-
-<Image src={foldback_current_limiting_graph} width="400px">V/I response of a linear regulator with foldback current limiting. Arrow shows direction of decreasing load resistance, all the way to a direct short.</Image>
+<Image src={import('./foldback-current-limiting-graph.svg')} width="400px">V/I response of a linear regulator with foldback current limiting. Arrow shows direction of decreasing load resistance, all the way to a direct short.</Image>
 
 <Aside type="caution">
 When using a foldback current limiter, non-ohmic loads such as incandescent bulbs or inductive motors can get "stuck" at start-up.

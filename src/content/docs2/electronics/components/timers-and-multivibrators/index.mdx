@@ -30,9 +30,7 @@ The first recorded multivibrator was the Abraham-Bloch multivibrator oscillator 
 
 A basic astable multivibrator can be made from two [BJT NPN transistors](/electronics/components/transistors/bipolar-junction-transistors-bjts) and a handful of passive components, as shown below:
 
-import classic_bjt_astable_multivibrator from './classic-bjt-astable-multivibrator.svg'
-
-<Image src={classic_bjt_astable_multivibrator} width="600px">A basic (and somewhat of a classic) BJT astable multivibrator.</Image>
+<Image src={import('./classic-bjt-astable-multivibrator.svg')} width="600px">A basic (and somewhat of a classic) BJT astable multivibrator.</Image>
 
 <Aside type="note">
 The capacitors do not need to be polarized, they are just shown as polarized as traditional for this circuit, and it helps you understand how the circuit works by showing the voltage polarity across each.
@@ -40,9 +38,7 @@ The capacitors do not need to be polarized, they are just shown as polarized as 
 
 As a throw back to the past, Dick Smith's Fun Way Into Electronics (first printed in 1979) contains a "flasher" which is exactly this circuit. This book is arguably what sparked my interest in Electronics!
 
-import flasher_schematics_dick_smiths_funway_into_electronics from './flasher-schematics-dick-smiths-funway-into-electronics.png'
-
-<Image src={flasher_schematics_dick_smiths_funway_into_electronics} width="600px">'The flasher' circuit here is a BJT astable multivibrator. Diode and 390R resistor are just for protection in-case the 9V battery gets hooked up the wrong way. Image from Dick Smith's Fun Way Into Electronics, Eighth Printing, page 24.</Image>
+<Image src={import('./flasher-schematics-dick-smiths-funway-into-electronics.png')} width="600px">'The flasher' circuit here is a BJT astable multivibrator. Diode and 390R resistor are just for protection in-case the 9V battery gets hooked up the wrong way. Image from Dick Smith's Fun Way Into Electronics, Eighth Printing, page 24.</Image>
 
 ### How It Works
 
@@ -54,9 +50,7 @@ Due to it's popularity, the 555 timer is sometimes referred to as the "IC Time M
 
 ### Internal Workings
 
-import n_555_timer_simplified_internal_schematic_ti from './555-timer-simplified-internal-schematic-ti.png'
-
-<Image src={n_555_timer_simplified_internal_schematic_ti} width="600px">A simplified internal schematic of a 555 timer IC. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe.</Image>
+<Image src={import('./555-timer-simplified-internal-schematic-ti.png')} width="600px">A simplified internal schematic of a 555 timer IC. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe.</Image>
 
 ### Modes Of Operation
 
@@ -64,9 +58,7 @@ import n_555_timer_simplified_internal_schematic_ti from './555-timer-simplified
 
 _Monostable mode_ is when the 555 timer is configured to output a single pulse after a fixed amount of time. It only outputs one pulse and then stops until it is externally reset. This mode is used for creating a time delay.
 
-import n_555_timer_schematic_for_monostable_operation_ti from './555-timer-schematic-for-monostable-operation-ti.png'
-
-<Image src={n_555_timer_schematic_for_monostable_operation_ti} width="600px">Schematic for putting the 555 timer into monostable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe.</Image>
+<Image src={import('./555-timer-schematic-for-monostable-operation-ti.png')} width="600px">Schematic for putting the 555 timer into monostable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe.</Image>
 
 #### Astable Mode
 
@@ -74,9 +66,7 @@ Astable mode is when the 555 timer is configured to output a continuous waveform
 
 Astable mode is also called running the 555 timer as a _multi-vibrator_. **The duty cycle of the output waveform cannot be reduced below 50%**. If you want a duty cycle lower than that, you have to use an inverter on the output.
 
-import n_555_timer_schematic_for_astable_operation_ti from './555-timer-schematic-for-astable-operation-ti.png'
-
-<Image src={n_555_timer_schematic_for_astable_operation_ti} width="600px">Schematic for putting the 555 timer into astable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe.</Image>
+<Image src={import('./555-timer-schematic-for-astable-operation-ti.png')} width="600px">Schematic for putting the 555 timer into astable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe.</Image>
 
 Equations:
 

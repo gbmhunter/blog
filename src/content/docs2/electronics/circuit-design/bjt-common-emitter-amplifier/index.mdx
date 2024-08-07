@@ -39,9 +39,7 @@ Lower case letters used below represent changes in quantities, e.g. $V_C$ is the
 ## How A Common Emitter Amplifier Works
 
 
-import common_emitter_amplifier_schematic from './_assets/common-emitter-amplifier-schematic.png'
-
-<Image src={common_emitter_amplifier_schematic} width="600">Schematic for a common emitter amplifier with DC bias and AC coupling.</Image>
+<Image src={import('./_assets/common-emitter-amplifier-schematic.png')} width="600">Schematic for a common emitter amplifier with DC bias and AC coupling.</Image>
 
 * $R1$ and $R2$ are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that).
 * $C1$ is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC.
@@ -53,9 +51,7 @@ import common_emitter_amplifier_schematic from './_assets/common-emitter-amplifi
 ## Gain Of A Common Emitter Amplifier
 
 
-import common_emitter_amplifier_gain_equation_diagram from './_assets/common-emitter-amplifier-gain-equation-diagram.png'
-
-<Image src={common_emitter_amplifier_gain_equation_diagram} width="300">Diagram showing how the gain equation for a common emitter amplifier is found.</Image>
+<Image src={import('./_assets/common-emitter-amplifier-gain-equation-diagram.png')} width="300">Diagram showing how the gain equation for a common emitter amplifier is found.</Image>
 
 The voltage gain of a common-emitter amplifier (by definition) is:
 
@@ -277,16 +273,12 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
 The finished schematic, along with voltage sources ready for simulation is shown below.
 
 
-import common_emitter_amplifier_design_process_schematic from './_assets/common-emitter-amplifier-design-process-schematic.png'
-
-<Image src={common_emitter_amplifier_design_process_schematic} width="800">The finished schematic of our common emitter amplifier, ready for simulation.</Image>
+<Image src={import('./_assets/common-emitter-amplifier-design-process-schematic.png')} width="800">The finished schematic of our common emitter amplifier, ready for simulation.</Image>
 
 Given the large gain of $46.5dB$, I didn't want to saturate the output so I chose an input sine wave signal with an amplitude of $10mV$ at a frequency of $1kHz$. The simulated input and output voltages are shown below (**note the change in the y-axis scale - the input is in $mV$ and the output is in $V$**).
 
 
-import common_emitter_amplifier_simulation_vin_vout_plot from './_assets/common-emitter-amplifier-simulation-vin-vout-plot.png'
-
-<Image src={common_emitter_amplifier_simulation_vin_vout_plot} width="600">Simulation results showing $V_{OUT}$ vs. $V_{IN}$.</Image>
+<Image src={import('./_assets/common-emitter-amplifier-simulation-vin-vout-plot.png')} width="600">Simulation results showing $V_{OUT}$ vs. $V_{IN}$.</Image>
 
 <Aside type="note">
 You can clearly see the $180^{\circ}$ phase shift between the input and output in the plots above. Also, the output decoupling capacitor is doing a good job at removing the DC component and centers around signal around $0V$.
@@ -295,9 +287,7 @@ You can clearly see the $180^{\circ}$ phase shift between the input and output i
 The simulated frequency response shown below is close to what we expect. The simulated gain of around $42dB$ is close enough to our calculated gain of $46.5dB$ considering all the approximations we made! The phase shift is $180^{\circ}$ for most of our signal bandwidth.
 
 
-import common_emitter_amplifier_simulation_freq_response_plot from './_assets/common-emitter-amplifier-simulation-freq-response-plot.png'
-
-<Image src={common_emitter_amplifier_simulation_freq_response_plot} width="600">The simulated frequency response of our common emitter amplifier.</Image>
+<Image src={import('./_assets/common-emitter-amplifier-simulation-freq-response-plot.png')} width="600">The simulated frequency response of our common emitter amplifier.</Image>
 
 <Aside type="caution">
 The gain of the circuit would drop significantly if the load resistance was decreased, due to the medium amount of output impedance (ideally this would be $0\Omega$). When designing a common emitter amplifier, make sure you are not loading it too much. You can decrease the output impedance of a common emitter amplifier by increase the amount of collector quiescent current $I_C$. 
