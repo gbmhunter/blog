@@ -4,7 +4,7 @@ categories: [Electronics, Electronic Components, Diodes]
 date: 2011-09-05
 description: Schematic symbols, arrays, important parameters, reverse polarity protection, snapback, low capacitance, automotive load dump clamping and more info on TVS diodes.
 lastUpdated: 2024-08-06
-tags: [electronics, diodes, components, schematic symbols, TVS, ESD, snapback, Semtech]
+tags: [electronics, diodes, components, schematic symbols, TVS, ESD, snapback, Semtech, automotice, load dump, clamping, alternator]
 title: TVS Diodes
 type: page
 ---
@@ -94,7 +94,11 @@ TVS diodes can be used to clamp the nominally +12V rail in automotive applicatio
 
 Load-dump TVS diodes are designed to protect systems when the alternator is running and the battery is suddenly disconnected[^littelfuse-load-dump-standard]. When this happens a large positive going voltage spike can occur on the +12V rail. The spike is worst when the battery is significantly discharged.
 
-When the battery is very flat, the alternator is generating a large amount of current to charge the battery. When the battery is suddenly disconnected, the load on the alternator suddenly decreases. The voltage regulation circuitry which typically controls the output voltage of the alternator cannot reduce the current fast enough (because the alternator windings have a large inductance) to keep the voltage "in regulation", and thus a large voltage spike occurs[^wikipedia-load-dump].
+**Why does this happen?** When the battery is very flat, the alternator is generating a large amount of current to charge the battery. When the battery is suddenly disconnected, the load on the alternator suddenly decreases. The field windings which are used to regulate the alternators output current have a significant inductance to them. Because of this inducance, the control circuitry cannot reduce the field winding current fast enough, the alternator starts producing too much energy and thus a large voltage spike occurs on the output[^wikipedia-load-dump].
+
+<Aside type="tip">
+The alternators main windings also have an inductance, which when the current is suddenly reduced also contributes to the output voltage spike (this might have been your first guess as to why the spike occurs in the first place). However, it's contribution is the voltage spike is far less than that due to the field windings[^wikipedia-load-dump].  
+</Aside>
 
 A "standard" load-dump surge which TVS diodes can be rated to (and products tested against) is defined in ISO16750-2[^diodes-inc-load-dump-tvs-series-ds].
 

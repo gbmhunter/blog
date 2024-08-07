@@ -1377,6 +1377,6 @@
         "${workspaceFolder}\\scripts\\util"
     ],
     "markdown.validate.enabled": false,
-    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.scrollback": 2000,
     "editor.autoClosingQuotes": "never",
 }

@@ -1,30 +1,25 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Electronic Components ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Electronic Components]
 date: 2014-06-24
-draft: false
+description: Comparators vs. op-amps, types, gain, hyteresis, push-pull and open-drain output comparators, non-inverting and inverting configurations, PCB surface leakage and more info about the comparators.
 lastUpdated: 2023-08-01
-tags: [ comparators, op-amp, voltage reference, hysteresis, PCBs, surface leakage, non-inverting, inverting ]
+tags: [comparators, op-amp, voltage reference, hysteresis, PCBs, surface leakage, non-inverting, inverting]
 title: Comparators
 type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
 A _comparator_ is an electronic circuit which takes two inputs, and outputs a signal which depends on which input has a higher voltage. One input is called the non-inverting input and the other input the inverting input. The output is `1` (`HIGH`) if the non-inverting input voltage is higher than the inverting input, the output is `0` (`LOW`) is the opposite is true.
 
-{/* {{% aside type="tip" %}} */}
 <Aside type="tip">
 Comparators are closely related to op-amps. A comparator is basically an op-amp which is operated in it's open-loop mode (no feedback). Be careful interchanging the two as there are other subtleties, such that comparators are generally higher speed. Op-amps can generally work well as slow comparators, but comparators don't work so well as op-amps.
-{/* {{% /aside %}} */}
 </Aside>
 
 This is the schematic symbol for a comparator, which is the same as the op-amp.
 
-{/* {{% figure src="basic-op-amp-schematic-symbol.png" width="350px" caption="The basic schematic symbol for a comparator (it is the same for an op-amp)."  %}} */}
-<Image src={import('./basic-op-amp-schematic-symbol.png')} width="350">The basic schematic symbol for a comparator (it is the same for an op-amp).</Image>
+<Image src={import('./_assets/basic-op-amp-schematic-symbol.png')} width="350">The basic schematic symbol for a comparator (it is the same for an op-amp).</Image>
 
 Comparators are commonly used as building-blocks in larger circuits. Comparators are a core component in [voltage supervisor ICs](/electronics/components/voltage-supervisors/).
 
@@ -52,8 +47,7 @@ Hystersis is essentially caused by positive feedback. Many comparators have a sm
 
 The following diagram shows how hystersis effects the outputs state changes (from low to high and back again) in regards to the input, for a non-inverting comparator configuration.
 
-{/* {{% figure src="comparator-hystersis-graph.png" width="334px" caption="A graph showing how comparator hystersis works."  %}} */}
-<Image src={import('./comparator-hystersis-graph.png')} width="334">A graph showing how comparator hystersis works.</Image>
+<Image src={import('./_assets/comparator-hystersis-graph.png')} width="334">A graph showing how comparator hystersis works.</Image>
 
 ## Push-Pull Output Comparators
 
@@ -61,8 +55,7 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 
 The following diagram shows a non-inverting comparator with hystersis resistors added.
 
-{/* {{% figure src="comparator-push-pull-out-non-inverting-configuration.png" width="535px" caption="A schematic of a comparator in the non-inverting configuration."  %}} */}
-<Image src={import('./comparator-push-pull-out-non-inverting-configuration.png')} width="535">A schematic of a comparator in the non-inverting configuration.</Image>
+<Image src={import('./_assets/comparator-push-pull-out-non-inverting-configuration.png')} width="535">A schematic of a comparator in the non-inverting configuration.</Image>
 
 Firstly, determine the amount of hystersis you want ($ V_{HYST} $). Then use the following equation to work out the ratio between the feedback and input resistor.
 
