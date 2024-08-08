@@ -55,7 +55,8 @@ if (src instanceof Promise) {
     min-width: 100px; /* Don't make the caption too narrow if image is small */
     max-width: 100%; /* Make sure caption never exceeds the page width */
     width: var(--width);
-    text-align: center
+    text-align: center;
+    overflow-wrap: break-word; /* Makes sure long word like URLs don't overflow */
   }
 
 </style>
