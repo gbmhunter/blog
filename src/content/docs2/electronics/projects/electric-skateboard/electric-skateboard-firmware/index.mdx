@@ -1,26 +1,22 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2011-09-06
-draft: false
+description: The wireless comms format, speed control, programming and more info on the electric skateboard firmware.
+lastUpdated: 2012-02-04
 title: Electric Skateboard Firmware
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
-import bit_bucket_logo from './_assets/bit-bucket-logo.png'
-
-<Image src={bit_bucket_logo} width="320px">The BitBucket logo. Image from https://bitbucket.org/.</Image>
+<Image src={import('./_assets/bit-bucket-logo.png')} width="320px">The BitBucket logo. Image from https://bitbucket.org/.</Image>
 
 The firmware covers the code that runs on the remote and board microcontrollers (ATmega8's, or PSoC 5's, depending on which version).
 
 The firmware is public and can be downloaded as a Mercurial repo on www.bitbucket.com from [https://bitbucket.org/gbmhunter/electric-skateboard-firmware](https://bitbucket.org/gbmhunter/proj-electricskateboardfirmware). Note that this is quite a large repo, as it contains the most recent and old versions of code, which were for different platforms.
 
-import _images_electronics_electricskateboard_electric_skateboard_c_code_screenshot from '/images/electronics-electricskateboard/electric-skateboard-c-code-screenshot.png'
-
-<Image src={_images_electronics_electricskateboard_electric_skateboard_c_code_screenshot} width="600px">Screenshot of the electric skateboard firmware, showing main.c.</Image>
+<Image src={"/images/electronics-electricskateboard/electric-skateboard-c-code-screenshot.png"} width="600px">Screenshot of the electric skateboard firmware, showing main.c.</Image>
 
 ## Wireless Comms
 

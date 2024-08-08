@@ -1,45 +1,56 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Communication Protocols" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
 date: 2015-02-13
-draft: false
-tags: [ "LON", "communication protocol", "Echelon", "LonTalk", "wiring topology", "routers", "ANSI709.2" ]
-title: "LON (ANSI709.2) Communication Protocol"
-type: "page"
+description: A tutorial on the LON (ANSI709.2) communication protocol.
+lastUpdated: 2015-02-13
+tags: [LON, communication protocol, Echelon, LonTalk, wiring topology, routers, ANSI709.2]
+title: LON (ANSI709.2) Communication Protocol
+type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
 The Local Operating Network (LON) protocol is a inter-device communication protocol. Echelon holds the rights to the protocol, with the trade name LonTalk, although it also known as ANSI709.2 (see the standards section for more info). It is a multi-media protocol, supporting many different modes of transmission.
 
-import lonmark_international_logo_certified from './_assets/lonmark-international-logo-certified.jpg'
-
 <table>
-    <tbody>
-        <tr>
-            <td>Logo</td>
-            <td><Image src={lonmark_international_logo_certified} width="200"></Image></td>
-        </tr>
-        <tr>
-            <td>Speed</td>
-            <td><ul><li>78kbit/s (twisted pair)</li><li>5.4, 3.6kbit/s (powerline)</li></ul></td>
-        </tr>
-        <tr >
-            <td>Transmission mediums</td>
-            <td><ul><li>Twister pair cable</li><li>Powerlines</li><li>Fiber optics</li><li>RF</li></ul></td>
-        </tr>
-        <tr>
-            <td>Main uses</td>
-            <td><ul>
-                <li>Building lighting control</li>
-                <li>HVAC</li>
-                <li>Service station forecourt control</li>
-                <li>In-train controls</li>
-            </ul></td>
-        </tr>
-    </tbody>
+<tbody>
+  <tr>
+    <td>Logo</td>
+    <td><Image src={import('./_assets/lonmark-international-logo-certified.jpg')} width="200"></Image></td>
+  </tr>
+  <tr>
+    <td>Speed</td>
+    <td>
+      <ul>
+        <li>78kbit/s (twisted pair)</li>
+        <li>5.4, 3.6kbit/s (powerline)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr >
+    <td>Transmission mediums</td>
+    <td>
+      <ul>
+        <li>Twister pair cable</li>
+        <li>Powerlines</li>
+        <li>Fiber optics</li>
+        <li>RF</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Main uses</td>
+    <td>
+      <ul>
+        <li>Building lighting control</li>
+        <li>HVAC</li>
+        <li>Service station forecourt control</li>
+        <li>In-train controls</li>
+      </ul>
+    </td>
+  </tr>
+</tbody>
 </table>
 
 ## Standards

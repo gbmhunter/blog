@@ -1,15 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Circuit Design]
 date: 2015-01-13
-draft: false
+description: How to use resistors and NTC thermistors to limit inrush current to a circuit.
 lastUpdated: 2023-04-12
-tags: [ "electronics", "circuit design", "inrush current", "power supplies" ]
+tags: [electronics, circuit design, inrush current, power supplies]
 title: Inrush Current
-type: "page"
+type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
@@ -23,8 +21,7 @@ Standard resistors are one of the simplest ways of limiting inrush current. They
 
 NTC thermistors can be used for reducing the amount of inrush current.
 
-{/* {{% figure src="inrush-current-limiting-with-thermistor.jpg" width="475px" caption="A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit."  %}} */}
-<Image src={import('./inrush-current-limiting-with-thermistor.jpg')} width="475">A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit.</Image>
+<Image src={import('./_assets/inrush-current-limiting-with-thermistor.jpg')} width="475">A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit.</Image>
 
 They will always be some measurable amount of voltage drop when using a NTC, as some continuous thermal dissipation is required to keep the thermistor warm enough to be in it's low resistance state.
 
@@ -36,14 +33,14 @@ E = \frac{1}{2} C V_{in}^2
 \end{align}
 $$
 
-<p className="centered">    where:<br/>
-    $C$ = the downstream capacitance, in Farads<br/>
-    $V_{in}$ = the input voltage, in Volts<br/></p>
+<p className="centered">
+  where:<br/>
+  $C$ = the downstream capacitance, in Farads<br/>
+  $V_{in}$ = the input voltage, in Volts<br/>
+</p>
 
-{/* {{% aside type="note" %}} */}
 <Aside type="note">
 You may be initially confused, thinking, wait, this is the equation for the energy stored in the capacitor, not the energy dissipated by the thermistor. The cool thing is, in this circuit, the energy stored in the capacitor and the energy dissipated by the thermistor (or any resistor) is exactly the same!
-{/* {{% /aside %}} */}
 </Aside>
 
 The minimum resistance (provided by the NTC thermistor), $R_{min}$, is given by:
@@ -54,8 +51,10 @@ R_{min} = \frac{V_{in}}{I_{max}}
 \end{align}
 $$
 
-<p className="centered">    where:<br/>
-    $I_{max}$ = the desired maximum inrush current, in Amps<br/></p>
+<p className="centered">
+  where:<br/>
+  $I_{max}$ = the desired maximum inrush current, in Amps<br/>
+</p>
 
 This assumes that the other resistances in the path of the inrush current (e.g. the trace resistance, the ESR of the input capacitors) is negligible.
 

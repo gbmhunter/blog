@@ -1,18 +1,14 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Communication Protocols" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
 date: 2022-02-05
-description: "Standards, transmission distances, baud rates, transceivers, high-level protocols and more info about the RS-422 communication protocol."
-draft: false
+description: Standards, transmission distances, baud rates, transceivers, high-level protocols and more info about the RS-422 communication protocol.
 lastUpdated: 2022-02-05
-tags: [ "RS-422", "TIA-422", "EIA-422", "communication protocols", "transmitters", "receivers", "data", "bus", "serial", "nodes" ]
-title: "RS-422 Protocol"
-type: "page"
+tags: [RS-422, TIA-422, EIA-422, communication protocols, transmitters, receivers, data, bus, serial, nodes]
+title: RS-422 Protocol
+type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
-
-{/* {{% warning-is-notes %}} */}
 <WarningIsNotes />
 
 ## Overview
@@ -34,8 +30,7 @@ The [DE-9](/electronics/components/connectors/d-subminiature-d-sub-connectors/) 
 
 ### DE-9 (DB-9)
 
-{/* {{% figure src="dsub-db-9-female-male-photo-pin-numbers.png" width="500px" caption="Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors." %}} */}
-<Image src={import('./dsub-db-9-female-male-photo-pin-numbers.png')} width="500">Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors.</Image>
+<Image src={import('./_assets/dsub-db-9-female-male-photo-pin-numbers.png')} width="500">Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors.</Image>
 
 The industry standard pinout for RS-422 in a DE-9 connector is shown in the table below[^bib-active-experts-rs422-pinout].
 
@@ -100,8 +95,7 @@ The industry standard pinout for RS-422 in a DE-9 connector is shown in the tabl
 
 The [D-Subminiature DB-25 connector](/electronics/components/connectors/d-subminiature-d-sub-connectors/) is another popular choice for carrying RS-422 signals.
 
-{/* {{% figure src="dsub-db-25-pin-numbers.png" width="500px" caption="Pin numbers for the male DB-25 connector, looking at the \"front\" of the connector which mates with the female part." %}} */}
-<Image src={import('./dsub-db-25-pin-numbers.png')} width="500">Pin numbers for the male DB-25 connector, looking at the \"front\" of the connector which mates with the female part.</Image>
+<Image src={import('./_assets/dsub-db-25-pin-numbers.png')} width="500">Pin numbers for the male DB-25 connector, looking at the \"front\" of the connector which mates with the female part.</Image>
 
 Industry standard pinout for RS-422 on a DB-25 connector[^bib-sweet-serial-posix]:
 

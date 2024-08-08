@@ -6,7 +6,6 @@ title: Timers
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 The `System.Windows.Threading.DispatcherTimer` dispatch timer is used when you only want a single event. It fires of an event, and DOES NOT create a new thread. However, this means that the timer function will not run while other code in the  same thread is executing.
 

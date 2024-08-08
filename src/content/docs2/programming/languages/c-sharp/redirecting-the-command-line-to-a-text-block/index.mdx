@@ -6,7 +6,6 @@ title: Redirecting The Command-line To A Text Block
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 It involves inheriting from the `StringWriter` class, and overwriting it's `WriteLine` function with your own code that writes the text to the text block (or any other text-capable object), rather than Windows writing it to the system console (whatever that may be).
 

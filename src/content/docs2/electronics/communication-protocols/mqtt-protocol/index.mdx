@@ -1,26 +1,21 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Communication Protocols ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
 date: 2014-02-16
 description: History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol.
-draft: false
 lastUpdated: 2022-10-03
-tags: [ electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto, message ordering, messages ]
+tags: [electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto, message ordering, messages]
 title: MQTT Protocol
 type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
-
-{/* {{% warning-is-notes %}} */}
 <WarningIsNotes />
 
 ## Overview
 
 MQTT is a **lightweight publish/subscribe communications protocol** that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
 
-{/* {{% figure src="mqtt-logo.png" width="500" caption="The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30." %}} */}
-<Image src={import('./mqtt-logo.png')} width="500">The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30.</Image>
+<Image src={import('./_assets/mqtt-logo.png')} width="500">The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30.</Image>
 
 [MQTT-SN (MQTT for Sensor Networks)](#mqtt-sn) is an optimized version of the MQTT protocol designed to be used over non-TCP/IP connections.
 
@@ -121,8 +116,7 @@ MQTT-SN (MQTT for Sensor Networks, previously known as just MQTT-S[^bib-mqtt-mqt
 
 The following image shows the high-level MQTT-SN architecture, and how MQTT-SN clients talk to a standard MQTT broker.
 
-{/* {{% figure src="mqtt-sn-architecture.png" width="600px" caption="High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2]." %}} */}
-<Image src={import('./mqtt-sn-architecture.png')} width="600">High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2].</Image>
+<Image src={import('./_assets/mqtt-sn-architecture.png')} width="600">High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2].</Image>
 
 Some of the changes in MQTT-SN include (compared to standard MQTT):
 

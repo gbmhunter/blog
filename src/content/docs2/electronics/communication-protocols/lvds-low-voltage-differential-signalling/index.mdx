@@ -1,14 +1,15 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Communication Protocols" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
 date: 2017-08-21
-draft: false
-tags: [ "LVDS", "low voltage", "differential signalling", "communication protocol", "FPGA", "multipoint" ]
-title: "LVDS (Low-Voltage Differential Signalling)"
-type: "page"
+description: Overview of the LVDS (Low-Voltage Differential Signalling) communication protocol.
+lastUpdated: 2017-08-21
+tags: [LVDS, low voltage, differential signalling, communication protocol, FPGA, multipoint]
+title: LVDS (Low-Voltage Differential Signalling)
+type: page
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+<WarningIsNotes />
 
 ## Overview
 
@@ -49,8 +50,7 @@ A serializer/deserializer (SERDES) can be used to convert the stream of bits int
 
 The original LVDS standard was concerned only with point-to-point communications. NSC invented a standard called Bus LVDS (BLVDS) which is a variant on LVDS which allows for a topology of one transmitter connected to multiple receivers.
 
-{/* {{% figure src="lvds-multipoint-configuration-example-schematic-ti.png" width="676px" caption="Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com."  %}} */}
-<Image src={import('./lvds-multipoint-configuration-example-schematic-ti.png')} width="676">Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com.</Image>
+<Image src={import('./_assets/lvds-multipoint-configuration-example-schematic-ti.png')} width="676">Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com.</Image>
 
 Multipoint LVDS is now covered by the TIA/EIA-899 standard.
 

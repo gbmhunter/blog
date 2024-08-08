@@ -1,14 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Circuit Design]
 date: 2015-11-01
-draft: false
-tags: [ "electronics", "circuit design", "light dimmers", "resistive dimming", "Atmel", "zero-cross detection" ]
-title: "Light Dimmers"
-type: "page"
+description: Resistive dimming, phase cutting, zero-cross detection, LED light dimming and more info on light dimmers.
+tags: [electronics, circuit design, light dimmers, resistive dimming, Atmel, zero-cross detection]
+title: Light Dimmers
+type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Overview
 
@@ -29,8 +27,7 @@ There are two types of phase-cutting:
 
 Here is a VERY simple two-component zero-cross detection circuit by Atmel:
 
-{/* {{% figure src="two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png" width="333px" caption="A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/."  %}} */}
-<Image src={import('./two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png')} width="333">A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/.</Image>
+<Image src={import('./_assets/two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png')} width="333">A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/.</Image>
 
 More info on this circuit can be found [here](http://www.atmel.com/Images/doc2508.pdf).
 

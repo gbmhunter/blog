@@ -9,7 +9,6 @@ title: "Bresenham's Line Algorithm"
 type: "page"
 ---
 
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 Bresenham's line algorithm is way of drawing a line between two points, $A$ and $B$ on a computer screen of pixels. While this is somewhat trivial to do with floating point arithmetic, the key idea in Bresenham's line algorithm is to avoid expensive floating point arithmetic, and use integer maths only. This algorithm was invented at a time when floating-point units (FPUs) in CPUs where a lot rarer than they are today. It still has application in todays world for GPUs and other devices where FPUs are not available.
 

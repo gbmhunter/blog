@@ -1,15 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Circuit Design]
 date: 2013-08-21
-draft: false
+description: Info on thermal resistance.
 lastUpdated: 2013-08-21
-tags: [ "electronics", "circuit design", "thermal management" ]
-title: "Thermal Management"
-type: "page"
+tags: [electronics, circuit design, thermal management]
+title: Thermal Management
+type: page
 ---
-
-import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
 
 ## Thermal Resistance
 
@@ -23,10 +21,12 @@ P_D = \frac{\Delta T}{\sum R_\theta}
 \end{align}
 $$
 
-<p className="centered">	where:<br/>
+<p className="centered">
+  where:<br/>
 	$ P_D $ = Power dissipated by device ($ W $)<br/>
 	$ \Delta T $ = Change in temperature between both end-points<br/>
-	$ \sum R_{\theta} $ = The sum of thermal resistances over which $ \Delta T $ exists<br/></p>
+	$ \sum R_{\theta} $ = The sum of thermal resistances over which $ \Delta T $ exists<br/>
+</p>
 
 Which is usually expanded (and used) as:
 
@@ -44,13 +44,11 @@ P_D = \frac{T_J - T_A}{R_{JC} + R_{CH} + R_{HA}}
 \end{align}
 $$
 
-{/* {{% figure src="thermal-resistance-diagram-with-semiconductor.png" caption="A diagram showing how thermal resistance works. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf."  width="800px" %}} */}
-<Image src={import('./thermal-resistance-diagram-with-semiconductor.png')} width="800">A diagram showing how thermal resistance works. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf</Image>
+<Image src={import('./_assets/thermal-resistance-diagram-with-semiconductor.png')} width="800">A diagram showing how thermal resistance works. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf</Image>
 
 An analogy to electrical resistance...
 
-{/* {{% figure src="analogy-of-thermal-resistance-to-electrical-resistance.png" caption="The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf."  width="800px" %}} */}
-<Image src={import('./analogy-of-thermal-resistance-to-electrical-resistance.png')} width="800">The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
+<Image src={import('./_assets/analogy-of-thermal-resistance-to-electrical-resistance.png')} width="800">The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
 
 ## Inaccuracies In The Thermal Resistance Model
 
@@ -62,5 +60,4 @@ See the [Component Packages page](/pcb-design/component-packages/). This has man
 
 Below is a condensed list of experimentally found internal thermal resistances (junction-to-case).
 
-{/* {{% figure src="experimentally-determined-internal-thermal-resistances-for-smd-resistors.png" caption="Experimentally determined values for the internal thermal resistance (junction-to-case) for various sized SMD resistors. Image from http://www.vishay.com/docs/28705/mc_pro.pdf."  width="500px" %}} */}
-<Image src={import('./experimentally-determined-internal-thermal-resistances-for-smd-resistors.png')} width="500">Experimentally determined values for the internal thermal resistance (junction-to-case) for various sized SMD resistors. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
+<Image src={import('./_assets/experimentally-determined-internal-thermal-resistances-for-smd-resistors.png')} width="500">Experimentally determined values for the internal thermal resistance (junction-to-case) for various sized SMD resistors. Image from http://www.vishay.com/docs/28705/mc_pro.pdf</Image>
