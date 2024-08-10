@@ -1,14 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Electronic Components]
 date: 2013-02-24
-draft: false
+description: Transformation ratios, power equivalence, mutual inductance, coupling coefficients, non-ideal transformer losses and more info on transformers.
 lastUpdated: 2020-05-06
-tags: [ "electronics", "components", "transformers", "coupling coefficients", "resistive losses", "hysteresis", "flyback transformers", "switching transformers", "SMPS transformers", "inductors" ]
-title: "Transformers"
+tags: [electronics, components, transformers, coupling coefficients, resistive losses, hysteresis, flyback transformers, switching transformers, SMPS transformers, inductors]
+title: Transformers
 type: page
 ---
-
 
 ## Transformation Ratio
 
@@ -48,7 +47,7 @@ There are three main types of losses that occur in a non-ideal (real-world) tran
 
 In large power transformers, with the appropriate design to reduce the non-ideal losses mentioned below, the efficiency of the transformer can be up around 98%, closely approximating an ideal transformer.
 
-## Resistive Losses
+### Resistive Losses
 
 These losses occur due to the windings of the transformer having a non-zero resistance. The power lost by resistive losses is:
 
@@ -56,15 +55,15 @@ $$ P = I^2 \cdot R $$
 
 for both the primary and secondary. For this reason they are also called $I^2 R$ losses.
 
-## Hysteresis Losses
+### Hysteresis Losses
 
 Remember that transformers work with an AC voltage/current. The tiny magnetic domains in the core material are reversed each cycle. This causes losses in the core of the transformer.
 
 The hysteresis loss can be seen on the BH (flux-density vs. field strength) curve.
 
-<Image src={import('./transformer-graph-explaining-hysteresis-losses.jpg')} width="609px">Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.</Image>
+<Image src={import('./_assets/transformer-graph-explaining-hysteresis-losses.jpg')} width="609px">Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.</Image>
 
-## Eddy Current Losses
+### Eddy Current Losses
 
 Because the core is conductive, it too gets an EMF generated in it, just like the secondary. This causes a current to flow in the core, which is dissipated as heat energy due to the resistance of the core material. To reduce eddy currents, most transformers use a core built up from many **laminated** sheets of metal, sandwiched between insulating layers.
 
@@ -72,7 +71,7 @@ Because the core is conductive, it too gets an EMF generated in it, just like th
 
 _Flyback transformers_ are transformers used in the construction of a boost converter. They are also known as _switching transformers_ or _SMPS transformers_. Because of the way they operate, current does not flow in the primary and secondary windings at the same time. For this reason, it is conceptually appropriate to consider a _flyback transfer_ as _two parallel inductors_, rather than a true transformer. 
 
-<Image src={import('./typical-flyback-schematic.png')} width="600px">Schematic of a boost converter using a flyback transformer. Image from https://www.coilcraft.com/edu/flyback_transformer.cfm.</Image>
+<Image src={import('./_assets/typical-flyback-schematic.png')} width="600px">Schematic of a boost converter using a flyback transformer. Image from https://www.coilcraft.com/edu/flyback_transformer.cfm.</Image>
 
 Examples of flyback transformers can be found on [DigiKey under their Transformers->Switching Converter, SMPS Transformers section](https://www.digikey.com/products/en/transformers/switching-converter-smps-transformers/168).
 
