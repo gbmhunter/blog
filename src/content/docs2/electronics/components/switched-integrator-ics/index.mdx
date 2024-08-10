@@ -2,19 +2,16 @@
 authors: [Geoffrey Hunter]
 categories: [Electronics, Components]
 date: 2022-09-27
-draft: false
+description: Info on switched integrator ICs.
 lastUpdated: 2022-09-27
 tags: [electronics, components, switched integrator, ICs]
 title: Switched Integrator ICs
 type: page
 ---
 
-
-## Overview
-
 _Switched integrator ICs_ are integrated circuits (ICs) that are designed to convert very small currents into larger voltages by the process of integration. The integration occurs by feeding the input current into a capacitor for a known time period.
 
-<Image src={import('./ivc102-switched-integrator-ic-functional-diagram.png')} width="500px">Functional diagram of the IVC102 switched integrator IC from Burr-Brown (now Texas Instruments)[^burr-brown-ivc102-ds].</Image>
+<Image src={import('./_assets/ivc102-switched-integrator-ic-functional-diagram.png')} width="500px">Functional diagram of the IVC102 switched integrator IC from Burr-Brown (now Texas Instruments)[^burr-brown-ivc102-ds].</Image>
 
 A switched integrator IC is an alternative to using a transimpedance amplifier for measuring the current through a photodiode. However, they are far less common than a standard transimpedance amplifier. This could be due to their extra complexity, cost and reduced bandwidth, with marginal gains in SNR at low frequencies[^burr-brown-transimpedance-vs-switched-int].
 
