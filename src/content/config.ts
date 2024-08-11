@@ -15,7 +15,7 @@ const docs2Collection = defineCollection({
     title: z.string(),
     tags: z.array(z.string()).optional(),
 	  description: z.string().optional(),
-    previewImage: image().optional(),
+    image: image().optional(),
   }),
 });
 
