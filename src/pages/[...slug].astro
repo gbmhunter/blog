@@ -30,12 +30,19 @@ export async function getStaticPaths() {
       pageRoute.slug = undefined;
     }
 
+    if (pageRoute.data.image !== undefined) {
+
+      console.log('pageRoute.data.image: ', pageRoute.data.previewImage);
+    }
+    // console.log('pageRoute.slug: ', pageRoute.slug);
+
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
         title: pageRoute.data.title,
         render: pageRoute.render,
         sidebarData: sidebarData,
+        image: pageRoute.data.previewImage,
       },
     });
   }
@@ -43,8 +50,11 @@ export async function getStaticPaths() {
   return staticPaths;
 }
 
-const { title, render, sidebarData } = Astro.props;
+const { title, render, sidebarData, image } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render();
+
+console.log('Rendering page: ', title);
+console.log('image: ', image);
 ---
 <StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any}>
   <Content components={{

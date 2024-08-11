@@ -1,22 +1,26 @@
 ---
 import { Icon } from '@astrojs/starlight/components';
 import type { HTMLAttributes } from 'astro/types';
+import { Image } from "astro:assets";
 
 interface Props extends Omit<HTMLAttributes<'a'>, 'title'> {
 	title: string;
 	description?: string;
+	image?: any;
 }
 
-const { title, description, ...attributes } = Astro.props;
+const { title, description, image, ...attributes } = Astro.props;
 ---
 
 <div class="sl-link-card">
-	<div>Image</div>
 	<span class="sl-flex stack">
 		<a {...attributes}>
 			<span class="title" set:html={title} />
 		</a>
-		{description && <span class="description" set:html={description} />}
+		<div class="image-and-text">
+			{image ? <div class="link-card-image"><Image src={image} width="100" alt=""/></div> : null}
+			{description && <span class="description" set:html={description} />}
+		</div>
 	</span>
 	<Icon name="right-arrow" size="1.333em" class="icon rtl:flip" />
 </div>
@@ -24,14 +28,26 @@ const { title, description, ...attributes } = Astro.props;
 <style>
 
 	.sl-link-card {
-		display: grid;
-		grid-template-columns: 1fr 2fr auto;
+		/* display: grid; */
+		/* grid-template-columns: 1fr 2fr auto; */
+		display: flex;
+		align-items: flex-start;
+
 		gap: 0.5rem;
 		border: 1px solid var(--sl-color-gray-5);
 		border-radius: 0.5rem;
 		padding: 1rem;
 		box-shadow: var(--sl-shadow-sm);
 		position: relative;
+	}
+
+	.link-card-image {
+		float: left;
+		margin-right: 0.5rem;
+	}
+
+	.image-and-text {
+		display: inline-block;
 	}
 
 	a {
@@ -64,6 +80,8 @@ const { title, description, ...attributes } = Astro.props;
 
 	.icon {
 		color: var(--sl-color-gray-3);
+		width: 20px;
+		flex-shrink: 0;
 	}
 
 	/* Hover state */

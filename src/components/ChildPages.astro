@@ -92,7 +92,12 @@ for (const collectionPage of pagesCollection) {
 <CardGrid>
   {
     childPages.map((childPage: any) => (
-      <LinkCard title={childPage.data.title} href={'/' + childPage.slug + '/'} description={childPage.data.description} />
+      <LinkCard
+        title={childPage.data.title}
+        href={'/' + childPage.slug + '/'}
+        description={childPage.data.description}
+        image={childPage.data.previewImage}  
+      />
     ))
   }
 </CardGrid>

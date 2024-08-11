@@ -11,10 +11,11 @@ import { docsSchema } from '@astrojs/starlight/schema';
 // 2. Define your collection(s)
 const docs2Collection = defineCollection({
 	type: 'content', // v2.5.0 and later
-  schema: z.object({
+  schema: ({image}) => z.object({
     title: z.string(),
     tags: z.array(z.string()).optional(),
 	  description: z.string().optional(),
+    previewImage: image().optional(),
   }),
 });
 
