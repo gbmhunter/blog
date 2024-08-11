@@ -1,7 +1,9 @@
 ---
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
 
 import { getCollection } from 'astro:content';
+
+import LinkCard from './LinkCard.astro';
 
 const { excludes=[] } = Astro.props;
 
