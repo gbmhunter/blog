@@ -3,17 +3,14 @@ authors: [ eoffrey Hunter]
 categories: [Electronics, Circuit Design, Transmission Lines]
 date: 2013-10-29
 draft: false
-images: /images/page-images/termination.png
+image: ./_assets/series-termination-schematic.png
 lastUpdated: 2022-01-31
 tags: [PCB design, termination, series, parallel, Thevenin, AC, impedance, characteristic, reflections, RF]
 title: Termination
 type: page
 ---
 
-
 <WarningIsNotes />
-
-## Overview
 
 _Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line $Z_C$ is usually $50-150\Omega$, but drivers are usually low impedance ($<20\Omega$), and receivers high-impedance ($>1k\Omega$). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance equal to the characteristic impedance.
 

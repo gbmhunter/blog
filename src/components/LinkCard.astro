@@ -18,7 +18,7 @@ const { title, description, image, ...attributes } = Astro.props;
 			<span class="title" set:html={title} />
 		</a>
 		<div class="image-and-text">
-			{image ? <div class="link-card-image"><Image src={image} width="100" alt=""/></div> : null}
+			{image ? <div class="link-card-image"><Image src={image} width="120" alt=""/></div> : null}
 			{description && <span class="description" set:html={description} />}
 		</div>
 	</span>
@@ -65,6 +65,7 @@ const { title, description, image, ...attributes } = Astro.props;
 	.stack {
 		flex-direction: column;
 		gap: 0.5rem;
+    flex-grow: 1;
 	}
 
 	.title {

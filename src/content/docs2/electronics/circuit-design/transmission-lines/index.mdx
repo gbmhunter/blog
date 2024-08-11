@@ -9,7 +9,6 @@ title: Transmission Lines
 type: page
 ---
 
-
 ## Overview
 
 A _transmission line_ is a wire/cable/track on the PCB, that, because of the frequency of the electrical signals going through have reached a certain point (typically RF), you can no longer just treat the wire as a short circuit. Instead, the connection must be treated as a _transmission line_, and must be _impedance matched_ all the way from the driver to the receiver. Impedance matching is done to maximise power transfer and minimise reflections from the load. The typical way to impedance match is to make sure the transmission line is _terminated_ correctly.
@@ -19,6 +18,10 @@ A _transmission line_ is a wire/cable/track on the PCB, that, because of the fre
 _Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. See the Termination page for more info.
 
 <Image src={import('./_assets/microstrip-track-example-in-isometric-view-microchip.gif')} width="300">An isometric diagram of a microstrip. Image from www.maximintegrated.com.</Image>
+
+## Child Pages
+
+<ChildPages />
 
 ## Dielectric Constant
 
