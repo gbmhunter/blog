@@ -1,14 +1,17 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "Version Control Systems" ]
+authors: [Geoffrey Hunter]
+categories: [Programming, Version Control Systems]
 date: 2014-02-08
-draft: false
-lastUpdated: 2019-08-29
-tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect", "cherry-pick", "stat" ]
-title: "Git"
-type: "page"
+description: Git is a very popular version control system (VCS) used for software and firmware development.
+lastUpdated: 2024-08-12
+tags: [programming, version control systems, VCS, git, amend, fixup, squash, history, commits, vim, merge-base, diff, bisect, cherry-pick, stat, ssh]
+title: Git
+type: page
 ---
 
+## Child Pages
+
+<ChildPages />
 
 ## Pulling In Temporary Changes To Your Branch
 
@@ -247,3 +250,24 @@ If you are currently on your branch, this can be simplified even further to:
 ```bash
 $ git diff master...
 ```
+
+## Rewriting https as ssh
+
+Sometimes you might be checking out a repo that contains a large number of submodules (perhaps even recursively) that contain https-style URLs to the submodules. For example:
+
+```txt
+[submodule "my-submodule"]
+	path = my-submodule
+	url = https://gitlab.com/my-org/my-repo
+```
+
+This can be an issue if you use `ssh` for authentication. One way around this is to make Git locally rewrite all https-style URLs into ssh-style URLs. 
+
+```bash
+# For GitHub
+git config url.git@github.com/.insteadOf https://github.com/
+# For GitLab
+git config url.git@gitlab.com/.insteadOf https://gitlab.com/
+```
+
+This only applies the changes locally, i.e. none of this info saved with the repo.

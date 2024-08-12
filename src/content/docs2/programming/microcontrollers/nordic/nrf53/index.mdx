@@ -25,3 +25,14 @@ The nRF5340-DK (nRF5340 Develop Kit) is the de facto development kit for the nRF
 nRF53 MCUs can be programmed with the Nordic _Programmer_ software (part of _Nordic Connect for Desktop_) along with a physical programmer such as a the nRF9160-DK development board.
 
 <Image src={import('./_assets/screenshot-of-nordic-programmer-software-programming-nrf5340-with-nrf9160-dk.png')} width="900px">A screenshot of the Nordic \"Programmer\" software being used to program a nRF5340 MCU with a nRF9160-DK board being used as the physical programmer.</Image>
+
+## nrfjprog
+
+If you are using Zephyr with nRF MCUs and get the following `nrfjprog` not found error:
+
+```txt
+-- west flash: using runner nrfjprog
+FATAL ERROR: required program nrfjprog not found; install it or add its location to PATH
+```
+
+Then it might be because you need to install the Nordic "Programmer" tool. This tool is part of the nRF Connect for Desktop suite. Download nRF Connect for Desktop, and then from within it's GUI you can install Programmer.
