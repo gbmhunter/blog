@@ -1,23 +1,24 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 date: 2015-01-09
-draft: false
+description: Bootloaders are specific bits of code that are capable of updating the main application (or the bootloader) running on a machine. They can either be their own application or integrated into the main application. 
 lastUpdated: 2024-01-26
-tags: [ bootloaders, MCUboot Zephyr, firmware, microcontroller, memory, updates ]
+tags: [bootloaders, MCUboot Zephyr, firmware, microcontroller, memory, updates]
 title: Bootloaders
 type: page
 ---
 
-
 <WarningIsNotes />
-
-## Overview
 
 A _bootloader_ is a separate program in a computers memory that is run when you want to update the main application that resides at different memory address(es). They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include UART, RS-232, I2C, CAN, Ethernet, WiFi or Bluetooth. 
 
 The bootloader will typically verify the downloaded image using a checksum or hash before allowing the new version of firmware to run. The bootloader can either then force a reset and boot into the new application, or allow it to happen at a more convenient time in the future. The bootloader can also enforce that the application "checks in" and states it's ok (typically once initialization is complete) otherwise it will fall back to the previous version.
 
 Bootloaders are typically the first thing that is run whenever the microcontroller is reset. This gives the bootloader control over what application to then boot.
+
+## Child Pages
+
+<ChildPages />
 
 ## Memory Layout
 

@@ -1,9 +1,9 @@
 ---
 authors: [Geoffrey Hunter]
 date: 2013-04-08
-description: Connectors, magnetics, physical layer, MAC, standards, PoE, EtherCAT, popular chips and more about the Ethernet protocol.
+description: Connectors, magnetics, physical layer, MAC, standards, PoE, EtherCAT, popular chips, lwIP and more about the Ethernet protocol.
 lastUpdated: 2021-08-24
-tags: [electronics, communication protocols, ethernet, internet, IP, PHY, MAC, Arduino, shield, integrated connector modules, ICMs]
+tags: [electronics, communication protocols, ethernet, internet, IP, PHY, MAC, Arduino, shield, integrated connector modules, ICMs, lwIP]
 title: Ethernet Protocol
 type: page
 ---
@@ -134,6 +134,12 @@ EtherCAT is a communication protocol with it's physical layer following the Ethe
 
 The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC is used. However, whilst the slave node use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
 
+## lwIP
+
+lwIP is a BSD-licensed implementation of the TCP/IP protocol suite with a focus on small resource (RAM and flash memory) usage. It is designed for embedded systems, and requires only 10's of kB of free RAM and 40kB's of ROM (e.gc. flash)[^lwip-homepage].
+
+It has support for IP, IPv6, UDP, TCP, ARP, PPPoE and more[^lwip-homepage].
+
 ## Popular Chips
 
 ### WIZnet W5xxx Family
@@ -148,3 +154,5 @@ The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker c
 ### Microchip LAN867x Family
 
 Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-T1S, 10BASE-T1S], allowing a multidrop architecture of "at least 8 nodes and a minimum 25m of length".
+
+[^lwip-homepage]: lwIP. _Homepage_. Retrieved 2024-08-13, from https://savannah.nongnu.org/projects/lwip/.

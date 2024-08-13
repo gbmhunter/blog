@@ -19,9 +19,7 @@ export async function getStaticPaths() {
   // pagesCollection = pagesCollection.slice(0, 2);
 
   const routablePages = getRoutablePages(pagesCollection);
-  // console.log('routablePages: ', routablePages);
   const sidebarData = getSidebarData(pagesCollection);
-  // console.log('sidebarData: ', sidebarData);
 
   let staticPaths = [];
   for (let pageRoute of routablePages) {
@@ -29,12 +27,6 @@ export async function getStaticPaths() {
     if (pageRoute.slug === 'index') {
       pageRoute.slug = undefined;
     }
-
-    if (pageRoute.data.image !== undefined) {
-
-      console.log('pageRoute.data.image: ', pageRoute.data.previewImage);
-    }
-    // console.log('pageRoute.slug: ', pageRoute.slug);
 
     staticPaths.push({
       params: { slug: pageRoute.slug },
@@ -53,8 +45,6 @@ export async function getStaticPaths() {
 const { title, render, sidebarData, image } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render();
 
-console.log('Rendering page: ', title);
-console.log('image: ', image);
 ---
 <StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any}>
   <Content components={{
