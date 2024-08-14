@@ -10,7 +10,13 @@ type: page
 
 <WarningIsNotes />
 
-A _bootloader_ is a separate program in a computers memory that is run when you want to update the main application that resides at different memory address(es). They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include UART, RS-232, I2C, CAN, Ethernet, WiFi or Bluetooth. 
+A _bootloader_ is a program in a computers memory that runs before the main application. In an embedded context, it is typically responsible for:
+
+* Configuring up basic hardware (most of the hardware configuration is left to the main application, the bootloader would typically just configure the clocks it needs and perhaps the watchdog)
+* Loading the main app into memory
+* Executing the main app (typcially a "jump" instruction which goes to a predefined memory address)
+
+They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include UART, RS-232, I2C, CAN, Ethernet, WiFi or Bluetooth. 
 
 The bootloader will typically verify the downloaded image using a checksum or hash before allowing the new version of firmware to run. The bootloader can either then force a reset and boot into the new application, or allow it to happen at a more convenient time in the future. The bootloader can also enforce that the application "checks in" and states it's ok (typically once initialization is complete) otherwise it will fall back to the previous version.
 

@@ -1,10 +1,19 @@
 {
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.suggestOnTriggerCharacters": false
+    },
     "[mdx]": {
         "editor.quickSuggestions": {
-        "other": false,
-        "comments": false,
-        "strings": false
-        }
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.suggestOnTriggerCharacters": false
     },
     "cSpell.language": "en-GB",	
     "cSpell.words": [
@@ -1379,4 +1388,5 @@
     "markdown.validate.enabled": false,
     "terminal.integrated.scrollback": 2000,
     "editor.autoClosingQuotes": "never",
+    "editor.wordWrap": "on",
 }
