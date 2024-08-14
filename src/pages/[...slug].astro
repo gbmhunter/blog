@@ -11,7 +11,7 @@ import WarningIsNotes from 'src/components/WarningIsNotes.astro';
 import { getRoutablePages, getSidebarData } from '../PageHierarchy.ts';
 
 export async function getStaticPaths() {
-  let pagesCollection = await getCollection('docs2');
+  let pagesCollection = await getCollection('pages');
   // Uncomment this line if you want to test code logic with a smaller collection
   // let pagesCollection = await getCollection('test');
   

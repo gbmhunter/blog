@@ -8,7 +8,7 @@ import CardGrid from './CardGrid.astro';
 
 const { excludes=[] } = Astro.props;
 
-const pagesCollection = await getCollection('docs2');
+const pagesCollection = await getCollection('pages');
 
 // e.g. the file at <collection root>/electronics/circuit-design/index.mdx produces the slug "electronics/circuit-design"
 // Will be undefined if homepage (root index.mdx)
