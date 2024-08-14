@@ -47,10 +47,14 @@ const { title, description, image, ...attributes } = Astro.props;
 	.link-card-image {
 		margin-right: 0.5rem;
     flex-shrink: 0;
-    /* flex-basis: 30%; */
-    max-width: 30%;
+    /* Allocated a fixed percentage of the total link card width for the image, and then center the image
+    inside of this allocation. Ideally the images should be around the 4:3 to 16:9 aspect ratio to make full use
+    of the available space */
+    flex-basis: 25%;
+    /* max-width: 30%; */
     align-self: center;
-    /* height: 100%; */
+    display: flex;
+    justify-content: center;
 	}
 
   .link-card-image img {
