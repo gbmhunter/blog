@@ -20,6 +20,7 @@ export default defineConfig({
       components: {
         Head: "./src/components/starlight/Head.astro",
         SkipLink: './src/components/starlight/SkipLink.astro', // Google Analytics is added in here
+        SocialIcons: './src/components/starlight/SocialIcons.astro',
       },  
       customCss: [
         // Relative path to your custom CSS file
