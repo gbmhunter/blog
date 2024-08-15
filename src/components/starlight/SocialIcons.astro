@@ -1,8 +1,58 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/SocialIcons.astro';
+import { Image } from 'astro:assets';
+
+import NinjaTermLogo from './ninjaterm-logo.png';
+import NinjaCalcLogo from './ninjacalc-logo.png';
 ---
 
-<a href="https://ninjaterm.mbedded.ninja/">NinjaTerm</a>
-<a href="https://ninjacalc.mbedded.ninja/">NinjaCalc</a>
+<!-- Custom NinjaTerm/NinjaCalc links before the normal social icons -->
+<a class="header-link" href="https://ninjaterm.mbedded.ninja/" target="_blank">
+  <div>
+    <Image src={NinjaTermLogo} alt="NinjaTerm Logo" width="100" />
+  </div>
+</a>
+<a class="header-link" href="https://ninjacalc.mbedded.ninja/" target="_blank">
+  <div>
+    <Image src={NinjaCalcLogo} alt="NinjaCalc Logo" width="30" />
+    NinjaCalc
+  </div>
+</a>
+
+<!-- The default starlight social icons (e.g. GitHub) -->
 <Default {...Astro.props}><slot /></Default>
+
+<style>
+  .header-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .header-link div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem;
+    border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.5rem;
+
+    height: 3rem;
+  }
+
+  :root {
+    --link-background-color: var(--sl-color-gray-5);
+  }
+
+  :root[data-theme="dark"] {
+    --link-background-color: var(--sl-color-gray-5);
+  }
+
+  /* Hover state */
+	.header-link div:hover {
+		background: var(--link-background-color);
+		border-color: var(--sl-color-gray-2);
+    text-decoration: none;
+	}
+</style>
