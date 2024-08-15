@@ -1,4 +1,10 @@
 export function getRoutablePages(pagesCollection: any[]) {
+  /**
+   * Filter out all pages that are not routable. A page is not routable if it's slug includes "/_".
+   * 
+   * @param pagesCollection The list of pages to filter. Each item should be in the format as returned by await getCollection().
+   * @returns A list of pages that are routable, in the same format as the input except with the non-routable pages removed.
+   */
   let routablePages = [];
   for (const page of pagesCollection) {
     // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore

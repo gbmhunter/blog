@@ -12,14 +12,31 @@ import { getRoutablePages, getSidebarData } from '../PageHierarchy.ts';
 
 export async function getStaticPaths() {
   let pagesCollection = await getCollection('pages');
+  // pagesCollection = [];
+
+  // All pages in the updates collection will have a slug prefixed with "updates/"
+  let updatesCollection = await getCollection('updates');
+  for (let update of updatesCollection as any) {
+    if (update.slug === 'index') {
+      update.id = 'updates/index.mdx'
+      update.slug = 'updates';
+    } else {
+      update.slug = 'updates/' + update.slug;
+    }
+  }
+  console.log('updatesCollection:', updatesCollection);
+
+  // Merge the updates collection into the pages collection
+  const combinedCollection = (pagesCollection as any).concat(updatesCollection);
+
   // Uncomment this line if you want to test code logic with a smaller collection
   // let pagesCollection = await getCollection('test');
   
   // Trim down to first 10
   // pagesCollection = pagesCollection.slice(0, 2);
 
-  const routablePages = getRoutablePages(pagesCollection);
-  const sidebarData = getSidebarData(pagesCollection);
+  const routablePages = getRoutablePages(combinedCollection);
+  const sidebarData = getSidebarData(combinedCollection);
 
   let staticPaths = [];
   for (let pageRoute of routablePages) {
