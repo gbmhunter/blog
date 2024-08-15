@@ -3,7 +3,7 @@ author: gbmhunter
 date: 2012-09-17 05:33:17+00:00
 draft: false
 title: '''Popped Cherry'' All-grain Beer Recipe Notes Added'
-type: post
+type: updates
 categories:
 - Homebrewing
 tags:

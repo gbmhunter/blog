@@ -3,7 +3,7 @@ author: gbmhunter
 date: 2011-09-08
 draft: false
 title: Hefeweizen Brewing Notes Added
-type: post
+type: updates
 categories:
 - Homebrewing
 tags:

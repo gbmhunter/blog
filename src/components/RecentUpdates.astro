@@ -1,0 +1,26 @@
+---
+import { getValidUpdatesPages } from 'src/js/Collections'
+import { getGlobalMdxComponents } from 'src/js/GlobalMdxComponents'
+
+const NUM_OF_PAGES_TO_SHOW = 12;
+
+let updates = await getValidUpdatesPages();
+// Sort by date, most recent first
+updates = updates.sort((a, b) => b.data.date - a.data.date)
+updates = updates.slice(0, NUM_OF_PAGES_TO_SHOW)
+
+for (let update of updates) {
+  update.Content = (await update.render()).Content
+}
+
+const globalMdxComponents = getGlobalMdxComponents();
+---
+
+{
+  updates.map((update) => (
+    <div>
+      <h3>{update.data.title}</h3>
+      <update.Content components={globalMdxComponents}/>
+    </div>
+  ))
+}

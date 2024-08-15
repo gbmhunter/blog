@@ -3,11 +3,11 @@ authors: [gbmhunter]
 categories: [Posts, Updates]
 date: 2024-08-30
 description: Blog updates during August 2024.
-draft: true
+draft: false
 lastUpdated: 2024-08-30
 tags: []
 title: August 2024 Updates
-type: post
+type: updates
 ---
 
 Added [info of TVS diodes]() used in automotive applications to protect against alternator "load dumps".
@@ -15,3 +15,9 @@ Added [info of TVS diodes]() used in automotive applications to protect against 
 Converted the separate "import then Image component" style images in MDX pages to inline imports.
 
 Added images to the child page links shown on parent pages.
+
+Moves all updates into their own Astro content "collection", rather than being mixed in with the pages collection.
+
+Added the most recent 10 updates to the home page underneath the main content links:
+
+<Image src={import('./_assets/updates-on-homepage-screenshot.webp')} width={800} />

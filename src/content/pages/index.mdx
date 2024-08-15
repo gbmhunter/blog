@@ -16,10 +16,14 @@ description: The blog.mbedded.ninja homepage.
 #       icon: external
 ---
 
-import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
+import RecentUpdates from 'src/components/RecentUpdates.astro'
 
 Use the menu to navigate through the different sections of the site.
 
 ## Categories
 
-<ChildPages excludes={['test', 'site-info']} />
+<ChildPages excludes={['test', 'site-info', 'updates']} />
+
+## Recent Updates
+
+<RecentUpdates />
