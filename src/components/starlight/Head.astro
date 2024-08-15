@@ -13,30 +13,38 @@ import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
   // console.log('location.pathname: ', location.pathname);
   // console.log('location.pathname: ', location.pathname);
 
-  const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
-  console.log('sidebarContent: ', sidebarContent);
+  function configureSidebar() {
+    const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
+    console.log('sidebarContent: ', sidebarContent);
 
-  const link = sidebarContent.querySelectorAll(`a[href="${location.pathname}"]`)[0];
-  console.log('link: ', link);
+    const link = sidebarContent.querySelectorAll(`a[href="${location.pathname}"]`)[0];
+    console.log('link: ', link);
 
-  // This makes the current page link have a different background color
-  link.setAttribute('aria-current', 'page');
+    // This makes the current page link have a different background color
+    link.setAttribute('aria-current', 'page');
 
-  // Find <details ...> parents of <a href="/electronics/"> elements
-  // Setting the open attribute (to anything, just has to be present) makes
-  // that menu group open
-  let currElement = link.closest('details');
-  while (true) {
-    console.log('currElement: ', currElement);
-    if (!currElement) {
-      break;
+    // Link could be undefined if the current page is not in the sidebar, for example,
+    // the homepage
+    if (link === undefined) {
+      return
     }
-    if (!sidebarContent.contains(currElement)) {
-      break;
-    }
-    currElement.setAttribute('open', '');
-    currElement = currElement.parentElement!.closest('details');
 
+    // Find <details ...> parents of <a href="/electronics/"> elements
+    // Setting the open attribute (to anything, just has to be present) makes
+    // that menu group open
+    let currElement = link.closest('details');
+    while (true) {
+      console.log('currElement: ', currElement);
+      if (!currElement) {
+        break;
+      }
+      if (!sidebarContent.contains(currElement)) {
+        break;
+      }
+      currElement.setAttribute('open', '');
+      currElement = currElement.parentElement!.closest('details');
+
+    }
   }
 
 </script>
