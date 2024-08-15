@@ -5,6 +5,7 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://blog.mbedded.ninja',
   integrations: [
     // Make sure the MDX integration is included AFTER astro-auto-import
     starlight({
