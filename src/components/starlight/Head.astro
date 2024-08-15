@@ -13,12 +13,14 @@ import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
   // console.log('location.pathname: ', location.pathname);
   // console.log('location.pathname: ', location.pathname);
 
+  configureSidebar();
+
   function configureSidebar() {
     const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
-    console.log('sidebarContent: ', sidebarContent);
+    // console.log('sidebarContent: ', sidebarContent);
 
     const link = sidebarContent.querySelectorAll(`a[href="${location.pathname}"]`)[0];
-    console.log('link: ', link);
+    // console.log('link: ', link);
 
     // This makes the current page link have a different background color
     link.setAttribute('aria-current', 'page');
@@ -26,6 +28,7 @@ import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
     // Link could be undefined if the current page is not in the sidebar, for example,
     // the homepage
     if (link === undefined) {
+      // console.log('link is undefined');
       return
     }
 
@@ -34,7 +37,7 @@ import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
     // that menu group open
     let currElement = link.closest('details');
     while (true) {
-      console.log('currElement: ', currElement);
+      // console.log('currElement: ', currElement);
       if (!currElement) {
         break;
       }
