@@ -25,7 +25,7 @@ You could aim to add enough capacitance so that when the internal capacitor is c
 
 1. **The ADC input takes a long time to settle if the battery voltage changes quickly.** This is most apparent if you have just connected the battery to the device, and the MCU powers up and measures the battery voltage. The MCU boot time is likely to be very fast compared to the RC time constant with $2.2M\Omega$ resistors. Your MCU firmware might think the battery is flat, but in reality the ADC input capacitance is still charing up! You will have to add a delay in to only measure the battery after a delay on startup.
 
-<Image src={import('./_assets/battery-voltage-measurement-with-resistor-divider-caps-and-adc.webp')} width="800px">.</Image>
+<Image src={import('./_assets/battery-voltage-measurement-with-resistor-divider-caps-and-adc.webp')} width="800px">A model showing the typical input capacitance that an ADC has. This can take a long time charge up if connected to a high-valued resistor divider!</Image>
 
 ## Use a SMPS Instead of a Linear Regulator
 
@@ -45,7 +45,6 @@ The amount you can reduce the period of a flash is a function of brightness. The
 Leaving the green LED on at 10mA to indicate the product is working drains the battery too quickly.
 
 You decide it is sufficient to flash it ON for 5ms every 10s to indicate it is working (still drawing 10mA when on). This reduces the average current down to 5uA, a reduction of 2000.
-
 </Aside>
 
 For pulses shorter than the flicker fusion frequency, the eye "sees" a brief pulse whose brightness is proportional to the luminous intensity multiplied by the ON time.
