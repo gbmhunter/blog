@@ -1,7 +1,7 @@
 ---
 import { Image as AstroImage } from 'astro:assets';
 
-const { src, width, ...attrs } = Astro.props;
+const { src, width, float='none', ...attrs } = Astro.props;
 let href;
 // src is a Promise if the syntax "import('path/to/image.jpg')" is used
 // src is an Object is the syntax "import myImage from 'path/to/image.jpg'" is used
@@ -23,7 +23,7 @@ if (src instanceof Promise) {
 }
 ---
 
-<div class="image-wrapper">
+<div class:list={['image-wrapper']}>
   <a href={href}>
     {imported ? <AstroImage src={src} width={width} alt="" {...attrs} /> : null}
     {!imported ? <img src={src} width={width} alt="" /> : null}
@@ -31,12 +31,13 @@ if (src instanceof Promise) {
   <figcaption><slot /></figcaption>
 </div>
 
-<style define:vars={{ width }}>
+<style define:vars={{ width, float }}>
   .image-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1rem 0;
+    float: var(--float);
   }
 
   :root {

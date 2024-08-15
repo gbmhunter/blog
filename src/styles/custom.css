@@ -1,3 +1,11 @@
+:root {
+	/* Larger content width, default of 45rem is too narrow when on wide screens */
+	--sl-content-width: 60rem;
+
+	/* Larger page titles (h1) */
+	--sl-text-5xl: 3.5rem;
+}
+
 .katex * {
     margin-top: 0px !important;
 }
@@ -68,4 +76,20 @@ to break anything? */
 	flex-wrap: wrap;
 	gap: 1rem;
 	justify-content: center;
+}
+
+/* ============================================================================================== */
+/* ASIDES */
+/* ============================================================================================== */
+
+.starlight-aside--tip {
+    --sl-color-asides-text-accent: var(--sl-color-green-high);
+    --sl-color-asides-border: var(--sl-color-green);
+    background-color: var(--sl-color-green-low);
+}
+
+.starlight-aside--example {
+    --sl-color-asides-text-accent: var(--sl-color-purple-high);
+    --sl-color-asides-border: var(--sl-color-purple);
+    background-color: var(--sl-color-purple-low);
 }

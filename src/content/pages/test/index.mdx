@@ -153,39 +153,58 @@ import imgAnotherTestImage from './_assets/another-test-image.png';
 
 <Image src={imgAnotherTestImage} width="300px">This image is imported statically.</Image>
 
+
+<Image src={import('./_assets/arrow-right.png')} width="200px" float="right">This image should be floating to the right of text.</Image>
+
+An image with float="right". This should be floating to the right of the text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla justo ac erat lacinia, non porta nibh commodo. Suspendisse velit orci, elementum nec lectus et, dapibus pharetra sapien. Aliquam erat volutpat. Suspendisse vitae augue vel urna vulputate sodales sed rhoncus ante. Phasellus ultrices lacus sit amet neque scelerisque, ut fermentum elit hendrerit. Morbi sit amet purus massa. Ut hendrerit orci ut commodo vestibulum. Sed velit orci, dignissim eu lacus vitae, consequat iaculis dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc quis cursus justo, in sollicitudin risus.
+
+Nunc blandit facilisis ligula. Fusce ac aliquam nunc, vitae vehicula massa. Quisque massa augue, mattis ut laoreet ultrices, consequat et dui. Mauris fringilla velit sit amet nulla egestas cursus. Fusce gravida lectus vitae nibh suscipit, vitae efficitur ipsum finibus. Quisque ac fringilla nibh. Vivamus auctor posuere risus ut suscipit. Phasellus laoreet rutrum justo quis hendrerit.
+
 ## Asides
+
+### Types
+
+<Aside type="note">
+This is type="note".
+</Aside>
+
+<Aside type="tip">
+This is type="tip".
+</Aside>
+
+<Aside type="caution">
+This is type="caution".
+</Aside>
+
+<Aside type="danger">
+This is type="danger".
+</Aside>
 
 <Aside type="example">
 This is an example. There should be a reference at the end here[^ti-sboa187e-current-mode-control].
 </Aside>
 
-:::note This Has a Custom Title!
-This is a note. It should also have a custom title.
-:::
+### Other Features
 
-<Aside type="tip">
-This is a tip.
+<Aside type="note" title="My Custom Title">
+This is a note. It should also have a custom title.
 </Aside>
 
-:::warning
-This is a warning.
-:::
-
-:::note
+<Aside type="note">
 This has code inside the aside:
 
 ```python
 print('Hello, world!')
 ```
-:::
+</Aside>
 
-:::note
+<Aside type="note">
 There should be an equation here: $y = x^2$
-:::
+</Aside>
 
 Below should be a worked example. It should be an aside with info inside it. There should be numbered steps, and there should be equations in some of the steps.
 
-:::example
+<Aside type="example">
 
 **Design Procedure:**
 
@@ -210,7 +229,7 @@ Below should be a worked example. It should be an aside with info inside it. The
 
 1. All done!
 
-:::
+</Aside>
 
 ## Code
 
