@@ -1,14 +1,12 @@
 ---
-// import { CardGrid } from '@astrojs/starlight/components';
-
-import { getCollection } from 'astro:content';
-
 import LinkCard from './LinkCard.astro';
 import CardGrid from './CardGrid.astro';
 
+import { getAllCollections } from '../js/Collections';
+
 const { excludes=[] } = Astro.props;
 
-const pagesCollection = await getCollection('pages');
+const allCollections = await getAllCollections();
 
 // e.g. the file at <collection root>/electronics/circuit-design/index.mdx produces the slug "electronics/circuit-design"
 // Will be undefined if homepage (root index.mdx)
@@ -52,7 +50,7 @@ function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string
 } 
 
 let childPages: any = [];
-for (const collectionPage of pagesCollection) {
+for (const collectionPage of allCollections) {
   // The index.mdx file at the root of the collection is a special case, it returns
   // the slug "index" which is not a child of any other page, so just exclude it here
   // otherwise it will appear to be a child page of the homepage
@@ -80,11 +78,8 @@ for (const collectionPage of pagesCollection) {
   if (excludes.includes(collectionPageSlugParts[collectionPageSlugParts.length - 1])) {
     continue;
   }
-
-  // console.log('Found child page:', collectionPage.slug);
   childPages.push(collectionPage);
 }
-// console.log('Child pages:', childPages);
 
 // console.log(Astro.params); // slug: electronics/circuit-design
 // console.log(Astro.url); // pathaame: /electronics/circuit-design/

@@ -8,26 +8,22 @@ import CircuitJs from 'src/components/CircuitJs.astro';
 import Image from 'src/components/Image.astro';
 import WarningIsNotes from 'src/components/WarningIsNotes.astro';
 
-import { getRoutablePages, getSidebarData } from '../PageHierarchy.ts';
+import { getRoutablePages, getSidebarData } from 'src/js/PageHierarchy';
+import { correctUpdatesSlugs, getAllCollections } from 'src/js/Collections';
 
 export async function getStaticPaths() {
-  let pagesCollection = await getCollection('pages');
+  // let pagesCollection = await getCollection('pages');
   // pagesCollection = [];
 
   // All pages in the updates collection will have a slug prefixed with "updates/"
-  let updatesCollection = await getCollection('updates');
-  for (let update of updatesCollection as any) {
-    if (update.slug === 'index') {
-      update.id = 'updates/index.mdx'
-      update.slug = 'updates';
-    } else {
-      update.slug = 'updates/' + update.slug;
-    }
-  }
-  console.log('updatesCollection:', updatesCollection);
+  // let updatesCollection = await getCollection('updates');
+  // correctUpdatesSlugs(updatesCollection);
 
   // Merge the updates collection into the pages collection
-  const combinedCollection = (pagesCollection as any).concat(updatesCollection);
+  // const combinedCollection = (pagesCollection as any).concat(updatesCollection);
+
+  const combinedCollection = await getAllCollections();
+
 
   // Uncomment this line if you want to test code logic with a smaller collection
   // let pagesCollection = await getCollection('test');
