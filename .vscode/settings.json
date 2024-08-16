@@ -116,6 +116,7 @@
         "bmatrix",
         "BMBF",
         "boms",
+        "Bootgen",
         "bootload",
         "bootloading",
         "boto",
@@ -509,6 +510,7 @@
         "Impinj",
         "incatools",
         "incl",
+        "iNEMO",
         "Infineon",
         "infrared",
         "infty",
@@ -524,6 +526,7 @@
         "intersil",
         "INTR",
         "Intusoft",
+        "InvenSense",
         "ioctl",
         "ionice",
         "ipath",
@@ -999,6 +1002,7 @@
         "RTCK",
         "rtds",
         "RTIC",
+        "RTIMULib",
         "rtos",
         "rtoslibs",
         "rtree",
@@ -1041,6 +1045,7 @@
         "Sekigawa",
         "Semihosting",
         "semtech",
+        "SEooC",
         "sepic",
         "sepics",
         "seterr",
@@ -1389,4 +1394,8 @@
     "terminal.integrated.scrollback": 2000,
     "editor.autoClosingQuotes": "never",
     "editor.wordWrap": "on",
+    "cSpell.enableFiletypes": [
+        "mdx"
+    ],
+    "workbench.editor.wrapTabs": true,
 }

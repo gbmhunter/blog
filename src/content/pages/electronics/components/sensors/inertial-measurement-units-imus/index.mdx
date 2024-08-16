@@ -1,13 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2014-12-02
-draft: false
+description: Inertial Measurement Units (IMUs) are devices that combine accelerometers, gyroscopes and sometimes magnetometers together as a single device. These days they are usually made with MEMS technology and are housed in tiny SMD packages.
+lastUpdated: 2024-08-16
+tags: [sensors, IMU, accelerometers, gyroscopes, magnetometers]
 title: Inertial Measurement Units (IMUs)
 type: page
 ---
-
-
-## Overview
 
 The IMU can either consist of 3 separate chips mounted onto a small piece of PCB, or a single system-on-chip that integrated all of the components into one package.
 
@@ -39,7 +38,7 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 [RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMUs working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMUs, send it via UART to a computer, where it can be processed.
 
-<Image src={import('./screenshot-playing-around-with-rthostimugl.png')} width="782px">Playing around with RTHostIMUGL and a connected IMU through an Arduino.</Image>
+<Image src={import('./_assets/screenshot-playing-around-with-rthostimugl.png')} width="782px">Playing around with RTHostIMUGL and a connected IMU through an Arduino.</Image>
 
 ## Packages
 
@@ -47,7 +46,7 @@ A big advantage of an IMU is the reduced PCB footprint due the the combination o
 
 ## Examples
 
-## MPU-9250
+### MPU-9250
 
 <table>
 <tbody >
@@ -139,7 +138,7 @@ A big advantage of an IMU is the reduced PCB footprint due the the combination o
 
 It has an on-board digital motion processor (DMP). Note that although the QFN package this IMU comes in has a exposed pad on the bottom, InvenSense recommend that you **do not connect it** to anything to reduce the amount of stress put on the sensitive MEMS device.
 
-## LSM9DS1
+### LSM9DS1
 
 <table>
 <tbody >
@@ -208,7 +207,19 @@ It has an on-board digital motion processor (DMP). Note that although the QFN pa
 
 The LSM9DS1 is part of the iNEMO family.
 
-## Others
+### ST ASM330LHB
+
+The STMicroelectronics ASM330LHB is a 6-axis IMU designed for ASIL-B automotive applications. It comes in a [LGA-14 package](/pcb-design/component-packages/lga-component-package/) and contains a 3-axis accelerometer and 3-axis gyroscope[^st-asm330lhb-imu-ds].
+
+It supports the [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [MIPI I3C](/electronics/communication-protocols/i3c-communication-protocol/) and [SPI](/electronics/communication-protocols/spi-communication-protocol/) communication interfaces for commuincation to a MCU[^st-asm330lhb-imu-ds].
+
+<Image src={import('./_assets/st-asm330lhb-lga-14l-package-photo.webp')} width="300px">The ST ASM330LHB 6-axis IMU in a LGA-14 package[^st-asm330lhb-imu-ds].</Image>
+
+One differentiating feature of the ASM330LHB is that it has been designed to meet ASIL-B automotive safety requirements. Two ASM330LHB's (for redundancy) can be used together with ST's "Safety Engine" firmware module to achieve ASIL-B [^st-asm330lhb-asil-b-safety-manual]. The image below shows the high-level architecture proposed by ST:
+
+<Image src={import('./_assets/st-asm330lhb-seooc-asil-b-diagram.webp')} width="800px">Diagram showing how 2 ASM330LHB's can be used together with ST's "Safety Engine" firmware module to achieve ASIL-B[^st-asm330lhb-asil-b-safety-manual].</Image>
+
+### Others
 
 Analog devices makes high-end military grade IMUs.
 
@@ -219,3 +230,6 @@ DigiKey lists IMUs under the section [Sensors, Transducers -> Multifunction](htt
 ST and InvenSense are the dominant manufacturers of the chips used on the [Sparkfun IMU modules](https://www.sparkfun.com/categories/160).
 
 The cheapest 9-axis IMU I have found on the internet ANYWHERE is the [GY-85 sold by DealExtreme](http://www.dx.com/p/gy-85-6dof-9dof-imu-sensor-module-for-arduino-148436), which as of Dec 2014 is US$9.49 (1).
+
+[^st-asm330lhb-imu-ds]: STMicroelectronics (2023 Nov). _High-accuracy 6-axis inertial measurement unit (IMU) for ASIL B automotive applications_. Retrieved 2024-08-16, from https://www.st.com/resource/en/datasheet/asm330lhb.pdf.
+[^st-asm330lhb-asil-b-safety-manual]: STMicroelectronics (2023, Feb). _AN5691 - Application Note - ASM330LHBxx_ASILB_library safety manual_. Retrieved 2024-08-16, from https://www.st.com/resource/en/application_note/an5691-asm330lhbxxasilblibrary-safety-manual-stmicroelectronics.pdf.

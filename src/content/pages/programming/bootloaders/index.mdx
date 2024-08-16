@@ -14,7 +14,7 @@ A _bootloader_ is a program in a computers memory that runs before the main appl
 
 * Configuring up basic hardware (most of the hardware configuration is left to the main application, the bootloader would typically just configure the clocks it needs and perhaps the watchdog)
 * Loading the main app into memory
-* Executing the main app (typcially a "jump" instruction which goes to a predefined memory address)
+* Executing the main app (typically a "jump" instruction which goes to a predefined memory address)
 
 They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include UART, RS-232, I2C, CAN, Ethernet, WiFi or Bluetooth. 
 
@@ -74,6 +74,25 @@ TODO: Add info here.
 
 A golden image is a firmware application with minimal support for firmware updating. If updating over-the-air (OTA), than this image must include basic wireless comms support. It is usually stored either in external flash or in a protected area of the microcontrollers internal memory. It is loaded by the bootloader if the main application is faulty, and in that sense, it is a backup application which is guaranteed to work.
 
+## Zynq 7000 Boot Sequence
+
+BootROM is the first thing that executes. BootROM runs on the first A9 processor core on the Zynq. The second A9 executes a "wait for event" (WFE) instruction[^amd-bootgen-user-guide]. 
+
+The main job of BootROM is to configure the system, copy the First Stage Bootloader (FSBL) from the boot device (e.g. QSPI flash) to the on-chip memory (OCM) and then execute the FSBL.
+
+The BootROM expects the boot images to be in a specific format as defined by AMD. Each boot image can contains:
+
+1. A boot header. This contains info such as whether the boot image in encrypted, the size, offset and execution address of the FSBL, and offsets to the image and partition header tables.
+1. A register initialization table: This contains 256 address-value pairs used to initialize PS registers for MIO multiplexing, and flash clocks[^amd-bootgen-user-guide].
+1. A image header table. This contains info about the number of 
+1. Image and partition headers.
+1. Partition 1 containing the FSBL.
+1. Optional additional partitions containing the main application.
+
+Confusingly, AMD uses an "image" to refer to two different things. A "boot image" is the entire structure defined above. This "boot image" can contain multiple images, which are defined as pieces of data that have been extracted by Bootgen from files (e.g. the ELF files, bitstream, data files) when creating the boot image. For example, the FSBL is an image, as is the main application[^amd-bootgen-user-guide]. Each image inside the overall boot image can contain one or more partitions. One use case for this is because an ELF file can contain multiple loadable sections -- each one of these sections becomes a partition.
+
+<Image src={import('./_assets/zynq-7000-boot-image-layout.webp')} width="700px">The layout of a boot image that would be typically written to QSPI flash connected to a Zynq 7000 SoC. The Zynq 7000 BootROM knows how to read this and load the FSBL[^amd-bootgen-user-guide].</Image>
+
 ## Bootloader Libraries
 
 ### MCUboot
@@ -99,3 +118,4 @@ The MCUboot implementation for Zephyr supports Bluetooth bootloading. The Nordic
 
 [^mcuboot-doc]: MCUboot. _MCUboot - Secure boot for 32-bit Microcontrollers!_ [project homepage]. Retrieved 2024-01-27, from https://docs.mcuboot.com/.
 [^mcuboot-sim-readme]: MCUboot. _MCUboot simulator - README_. Retrieved 2024-01-27, from https://github.com/mcu-tools/mcuboot/blob/main/sim/README.rst.
+[^amd-bootgen-user-guide]: AMD. _UG1283 - Bootgen User Guide_. Retrieved 2024-08-16, from https://docs.amd.com/r/2023.1-English/ug1283-bootgen-user-guide/Introduction.
