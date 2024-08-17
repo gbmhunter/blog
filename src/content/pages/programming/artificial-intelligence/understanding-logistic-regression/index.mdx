@@ -10,10 +10,6 @@ title: "Understanding Logistic Regression"
 type: "page"
 ---
 
-
-## Overview
-
-
 _Logistic regression_ (or _logit regression_) is a very common and popular algorithm that is used in machine learning. It is used for making binary categorical predictions, such as "is it going to rain today?" or more precisely, it can be used to give a percentage chance of it raining today. Logistic regression can also be extended to make many-option categorical predictions, such as "is it more likely to be sunny, overcast, or rainy today?".
 
 ## Probability and Odds
@@ -22,15 +18,21 @@ Before learning about logistic regression, it is wise to understand the terms pr
 
 We'll start with a real simple equation. The probability $P$ of a binary event occurring is:
 
-$$ P $$
+$$
+P
+$$
 
-The probability of a binary event not occurring must then be:
+The probability of a binary event **not** occurring must then be:
 
-$$ 1 - P $$
+$$
+1 - P
+$$
 
 The Odds is defined as the **ratio of success to the ratio of failure**.
 
-$$ O = \frac{P}{1 - P} $$
+$$
+O = \frac{P}{1 - P}
+$$
 
 It should be clear from the above equation that if $P$ can vary in the range $[0, 1]$ then $O$ can vary in the range $[0, \infty]$. The higher the odds, the higher the chance of success. This should sound very familiar to gamblers, who use this term frequently.
 
@@ -201,8 +203,6 @@ And let's print the accuracy score:
 print(accuracy_score(y_test, predictions))
 # 0.9666666666666667
 ```
-
-pocky
 
 ## External Resources
 
