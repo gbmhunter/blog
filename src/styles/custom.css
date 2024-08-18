@@ -21,6 +21,21 @@
 	display: block;
 	/* This prevents long equations from exceeding the width of the page */
 	overflow: auto hidden;
+
+	margin-top: 1rem;
+}
+
+/* Copied this from Starlight CSS. Removed span from :not lists so that the right spacing would be added
+for katex spans used for display equations. */
+.sl-markdown-content :not(a, strong, em, del, input, code) + :not(a, strong, em, del, input, code, :where(.not-content *)) {
+    margin-top: 1rem;
+}
+
+/* Default font size for the content was too small (1.0rem). */
+@media (min-width: 72rem) {
+.main-pane {
+	font-size: 1.15rem;
+}
 }
 
 .centered {
