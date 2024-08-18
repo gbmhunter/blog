@@ -149,7 +149,7 @@ from sklearn.model_selection import train_test_split
 data = sns.load_dataset('iris')
 print(data.shape[0])
 # 150
-data.head())
+data.head()
 ```
 
 <Image src={import('./data-head-iris.png')} width="500px">The first 5 rows of the Iris dataset.</Image>
@@ -195,11 +195,15 @@ For someone new to categorization, these terms in the classification report can 
 
 * The _precision_ is how well the classifier is at labelling an instance positive when it was actually positive. It can be thought of as: "For all instances labelled positive, what percentage of them are actually correct?
 
-    $$ precision = \frac{true\,positive}{true\,positive + false\,positive} $$
+    $$
+    precision = \frac{true\,positive}{true\,positive + false\,positive}
+    $$
 
 * The _recall_ is the ability for a classifier to find all true positives. It can be though of as: "For all instances that where actually positive, what percentage were labelled correctly?"
 
-    $$ recall = \frac{true\,positive}{true\,positive + false\,negative} $$
+    $$
+    recall = \frac{true\,positive}{true\,positive + false\,negative}
+    $$
 
 * The _f1-score_ is the [harmonic mean](/mathematics/statistics/the-three-classical-pythagorean-means/) of the precision and recall. Personally I find this the most difficult metric to understand intuitively. It is a score which incorporates both the _precision_ and _recall_, and varies between 0 and 1.
 
@@ -207,7 +211,7 @@ For someone new to categorization, these terms in the classification report can 
 
 And let's print the accuracy score:
 
-```python
+```python frame="none"
 print(accuracy_score(y_test, predictions))
 # 0.9666666666666667
 ```
