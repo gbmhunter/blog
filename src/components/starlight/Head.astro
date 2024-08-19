@@ -2,9 +2,26 @@
 import type { Props } from '@astrojs/starlight/props';
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
+
+if (Astro.props.entry.slug === 'test') {
+  console.log('Astro.props: ', Astro.props.image);
+}
+
+let imageSrc = '';
+if (Astro.props.image !== undefined && Astro.props.image !== null) {
+  // Ignore ts
+  // @ts-ignore
+  imageSrc = Astro.props.image.src;
+} else {
+  imageSrc = 'https://vtbot.com/images/vtbot-logo.png';
+}
+console.log('imageSrc: ', imageSrc);
 ---
 
+
 <VtbotStarlight {...Astro.props}>
+  <meta property="og:image" content={imageSrc} />
+  <meta name="twitter:image" content={imageSrc} />
   <StarlightHead {...Astro.props}><slot /></StarlightHead>
 </VtbotStarlight>
 

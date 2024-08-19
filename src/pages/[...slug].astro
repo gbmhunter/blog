@@ -47,7 +47,7 @@ export async function getStaticPaths() {
         title: pageRoute.data.title,
         render: pageRoute.render,
         sidebarData: sidebarData,
-        image: pageRoute.data.previewImage,
+        image: pageRoute.data.image,
       },
     });
   }
@@ -59,7 +59,8 @@ const { title, render, sidebarData, image } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render();
 
 ---
-<StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any}>
+<!-- // @ts-ignore -->
+<StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any} image={image}>
   <Content components={{
     Aside: Aside,
     ChildPages: ChildPages,
