@@ -11,18 +11,18 @@
 }
 
 .katex-html {
-    display: none;
+    /* display: none; */
 	/* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
 	\begin{align} is used and they are numbered in the right-hand side of the page. */
-	/* margin: 0.1em; */
+	margin: 0.1em;
 }
 
 .katex-display {
-	display: block;
+	/* display: block; */
 	/* This prevents long equations from exceeding the width of the page */
 	overflow: auto hidden;
 
-	margin-top: 1rem;
+	/* margin-top: 1rem; */
 }
 
 /* Copied this from Starlight CSS. Removed span from :not lists so that the right spacing would be added
@@ -33,11 +33,12 @@ for katex spans used for display equations. */
 
 /* Default font size for the content was too small (1.0rem). */
 @media (min-width: 72rem) {
-.main-pane {
-	font-size: 1.15rem;
-}
+	.main-pane {
+		font-size: 1.15rem;
+	}
 }
 
+/* This centered class is used a lot for variable definitions underneath display equations */
 .centered {
     text-align: center;
 }
@@ -107,4 +108,13 @@ to break anything? */
     --sl-color-asides-text-accent: var(--sl-color-purple-high);
     --sl-color-asides-border: var(--sl-color-purple);
     background-color: var(--sl-color-purple-low);
+}
+
+/* ============================================================================================== */
+/* CODE */
+/* ============================================================================================== */
+
+/* Remove margin from code blocks. */
+code div.ec-line {
+	margin-top: 0rem;
 }

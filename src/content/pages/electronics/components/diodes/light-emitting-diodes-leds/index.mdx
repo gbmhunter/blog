@@ -4,14 +4,11 @@ categories: [Electronics, Electronic Components, Diodes]
 date: 2011-09-05
 description: Schematic symbols, equations, types, forward voltages, design hints and more info about light-emitting diodes (LEDs).
 draft: false
-lastUpdated: 2024-04-02
-tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB]
+lastUpdated: 2024-08-19
+tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB, Zynq]
 title: Light-emitting Diodes (LEDs)
 type: page
 ---
-
-
-## Overview
 
 _Light-emitting diodes_ (LEDs) are electrical components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet). 
 
@@ -147,7 +144,7 @@ R = \frac{V_{dd} - V_{led,f}}{I_{led}}
 \end{align}
 $$
 
-<p className="centered">where:
+<p className="centered">where:<br/>
 $R$ is the resistance required in series of LED to limit current, in $\Omega$<br/>
 $V_{dd}$ = supply voltage driving the LED (typ. 3.3, 5, 12V), in $V$<br/>
 $V_{led,f}$ = forward voltage drop of the led (typ. 2.0V), in $V$<br/>
@@ -157,9 +154,11 @@ $I_{led}$ = required current through the led (typ. 5-20mA), in $A$<br/></p>
 
 Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use light guides (since the light guides can be mounted up against flat PCB).
 
-WARNING: Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
+<Aside type="caution">
+Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
+</Aside>
 
-<Image src={import('./osram-ls-p47k-reverse-mount-led-photo.png')} width="450">An Osram reverse-mount LED (P47K series).</Image>
+<Image src={import('./_assets/osram-ls-p47k-reverse-mount-led-photo.png')} width="450">An Osram reverse-mount LED (P47K series).</Image>
 
 ## Multiplexing
 
@@ -201,7 +200,7 @@ A little known fact about LEDs is that they can be used for light detection. Alt
 
 The schematic below shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
 
-<Image src={import('./led-connected-to-micro-for-light-detection-schematic.png')} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
+<Image src={import('./_assets/led-connected-to-micro-for-light-detection-schematic.png')} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
 
 The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
 
@@ -215,7 +214,7 @@ You can get RGD LEDs which already have the control and drive circuitry (e.g. th
 
 One popular example, the Worldsemi WS2811, uses it's own custom communications protocol running at 800kHz.
 
-<Image src={import('./ws2811-rgb-led-front-and-back-photo.png')} width="500">The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.</Image>
+<Image src={import('./_assets/ws2811-rgb-led-front-and-back-photo.png')} width="500">The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.</Image>
 
 Overview of Worldsemi's RGB LED product offering:
 
@@ -266,7 +265,7 @@ Laser diodes are LEDs which emits 'lasered' light using a similar method to stan
 
 Some laser diodes have integrated switching FETs and capacitors for high-speed, high-power applications (such as laser range finding).
 
-<Image src={import('./laser-diode-with-integrated-fet-and-cap.png')} width="500">A laser diode with an integrated FET and capacitor for high-seed, high-power switching.</Image>
+<Image src={import('./_assets/laser-diode-with-integrated-fet-and-cap.png')} width="500">A laser diode with an integrated FET and capacitor for high-seed, high-power switching.</Image>
 
 ## Pulse-Width Extending
 
@@ -276,7 +275,7 @@ The problem with this is that the length of time that the output pin is active f
 
 One way to fix this with hardware to to use a simple pulse-width extender circuit as shown below:
 
-<Image src={import('./led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png')} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
+<Image src={import('./_assets/led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png')} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
@@ -286,7 +285,7 @@ LEDs are usually given with two different quantifiers regarding their wavelength
 
 Most LEDs emit a **narrow spectrum of light** (as opposed to filament-style bulbs, which emit a broad spectrum of light). The **spectral shape is approximately Gaussian** (a.k.a. the normal distribution).
 
-<Image src={import('./green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png')} width="650">A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.</Image>
+<Image src={import('./_assets/green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png')} width="650">A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.</Image>
 
 The peak wavelength is the wavelength at the peak of the spectral density curve. The dominant wavelength is a _colorimetric_ quantity that describes the perceived colour of the LED with respect to the human eye. The human eye essentially sees a weighted average of all the wavelengths emitted by the LED, and perceives a single colour based on this averaging.
 
@@ -304,10 +303,10 @@ E &= hf \\
 \end{align}
 $$
 
-where:<br/>
+<p class="centered">where:<br/>
 $E$ is the energy of the photon, in $J$<br/>
 $h$ is the Planck constant, $6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}$[^bib-wp-planck-constant]<br/>
-$f$ is the frequency of the photon, in $Hz$<br/>
+$f$ is the frequency of the photon, in $Hz$<br/></p>
 
 Of course you can use $c = f\lambda$ to write this in terms of the wavelength instead of frequency:
 
@@ -317,8 +316,8 @@ E &= h\frac{c}{\lambda} \\
 \end{align}
 $$
 
-where:<br/>
-$c$ is speed of light in a vacuum, $3{\times}10^{8}ms^{-1}$<br/>
+<p class="centered">where:<br/>
+$c$ is speed of light in a vacuum, $3{\times}10^{8}ms^{-1}$<br/></p>
 
 Knowing this, you can convert an energy from $mW$ into a number of photons. One issue however is that the light from an LED is not emitted all at one precise frequency, it is usually spread across a small band of wavelengths known as it's spectrum. One approximation is to just pretend all the light is emitted at _peak wavelength_. A more precise method is to take the spectrum, digitize it, and then calculate the proportion of photons for each small increment in wavelength.
 
@@ -343,7 +342,7 @@ That is the basic equation done. But if we want to be lazy an not convert to SI 
 $$
 \begin{align}
 PAR_{[mols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1e^4}{1e^6} \nonumber \\
-PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1e^4 \times 1e^6}{1e^6} \nonumber \\
+PAR_{[`umols`/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1e^4 \times 1e^6}{1e^6} \nonumber \\
 PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \times 1e4 \nonumber \\
 \end{align}
 $$
@@ -370,11 +369,25 @@ Remember that PAR is defined as radiation between 400 and 700nm, so this equatio
 
 If you use the equation before we compensated for the different popular units of $cm^2$ for irradiance and $m^2$ for PAR, you can use also use this equation for radiance (e.g. output light power from an LED or collection of LEDs).
 
+## Basic UI Uses
+
+LEDs are commonly used for basic user interface (UI) purposes in embedded systems.
+
+Because of their simplicity, they are often a fall-back mechanism if there is no other form of error reporting available to the application at that time. For example, even if a microcontroller has a debug serial port and a LCD display for indicating errors during normal operation, there is still a few situations in where these would be unavailable:
+
+1. During the boot process, before the serial port and LCD are initialized.
+1. If the microcontroller is in a low-power mode, and the serial port and LCD are turned off.
+1. During an error condition such a segmentation fault. In certain errors you cannot rely on the firmware to work correctly (memory could be corrupted). Attempting to indicate this error to the user using the serial port of LCD may fail due to the driver code being corrupted. There is a much higher chance that writing to a single register to turn the LED on will work.
+
+One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic code that runs on startup that loads the FSBL. To indicate an error, it toggles a pin high and low. It is designed so that you can connect an LED to this pin and see the error code. The waveform of the LED error code output by the Zynq 7000 BootROM is shown below:
+
+<Image src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
+
 ## Packaging
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
 
-<Image src={import('./0603-led-up-close.jpg')} width="700">A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).</Image>
+<Image src={import('./_assets/0603-led-up-close.jpg')} width="700">A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).</Image>
 
 ## Lifetime And Reliability
 
@@ -390,3 +403,4 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 [^bib-wp-planck-constant]:  Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
 [^bib-street-co-viewing-angle]: Street Co. _How Is Viewing Angle An Important Asset Of LED Displays_. Retrieved 2022-06-19, from https://streetcommunication.com/how-is-viewing-angle-an-important-asset-of-led-displays/.
 [^worldsemi-ws2812-vs-ws2812b]: Worldsemi. _WS2812 vs. WS2812B_. Retrieved 2024-01-13, from https://cdn.sparkfun.com/assets/learn_tutorials/1/0/5/WS2812B_VS_WS2812.pdf.
+[^amd-zynq-7000-trm]: AMD. _Zynq 7000 SoC Technical Reference Manual (UG585)_. Retrieved 2024-08-19, from https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/BootROM-Error-Codes.
