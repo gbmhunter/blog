@@ -45,10 +45,9 @@ export async function getStaticPaths() {
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
-        title: pageRoute.data.title,
+        frontmatter: pageRoute.data,
         render: pageRoute.render,
         sidebarData: sidebarData,
-        image: pageRoute.data.image,
       },
     });
   }
@@ -56,12 +55,11 @@ export async function getStaticPaths() {
   return staticPaths;
 }
 
-const { title, render, sidebarData, image } = Astro.props;
+const { frontmatter, render, sidebarData } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render();
 
 ---
-<!-- // @ts-ignore -->
-<StarlightPage frontmatter={{ title: title }} headings={headings} sidebar={sidebarData.items as any} image={image}>
+<StarlightPage frontmatter={{ title: frontmatter.title, description: frontmatter.description }} headings={headings} sidebar={sidebarData.items as any} image={frontmatter.image}>
   <Content components={{
     Aside: Aside,
     ChildPages: ChildPages,
