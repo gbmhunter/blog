@@ -3,25 +3,26 @@ import type { Props } from '@astrojs/starlight/props';
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
 
-if (Astro.props.entry.slug === 'test') {
-  console.log('Astro.props: ', Astro.props.image);
-}
-
 let imageSrc = '';
 if (Astro.props.image !== undefined && Astro.props.image !== null) {
   // Ignore ts
   // @ts-ignore
   imageSrc = Astro.props.image.src;
 } else {
-  imageSrc = 'https://vtbot.com/images/vtbot-logo.png';
+  imageSrc = '/images/cartoon-ninja.jpg';
 }
-console.log('imageSrc: ', imageSrc);
+
+// Create a URL from the image.src
+// When running in dev, imageSrc will be in the form: @fs/C:/<path_to_repo>/src/content/pages/test/_assets/cover-image.webp?origWidth=1000&origHeight=750&origFormat=webp
+// This will be converted to http://localhost:4321/@fs/C:/<path_to_repo>/src/content/pages/test/_assets/cover-image.webp?origWidth=1000&origHeight=750&origFormat=webp
+// which is valid
+const imageUrl = new URL(imageSrc, Astro.url);
 ---
 
-
 <VtbotStarlight {...Astro.props}>
-  <meta property="og:image" content={imageSrc} />
-  <meta name="twitter:image" content={imageSrc} />
+  <!-- Add image that social media platforms pull when rendering links -->
+  <meta property="og:image" content={imageUrl.href} />
+  <meta name="twitter:image" content={imageUrl.href} />
   <StarlightHead {...Astro.props}><slot /></StarlightHead>
 </VtbotStarlight>
 
