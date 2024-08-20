@@ -3,9 +3,9 @@ import type { Props } from '@astrojs/starlight/props';
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
 
+// Extact the image src to add to the meta tags
 let imageSrc = '';
 if (Astro.props.image !== undefined && Astro.props.image !== null) {
-  // Ignore ts
   // @ts-ignore
   imageSrc = Astro.props.image.src;
 } else {
@@ -27,35 +27,26 @@ const imageUrl = new URL(imageSrc, Astro.url);
 </VtbotStarlight>
 
 <script>
-  // console.log('location.href: ', location.href);
-  // console.log('location.pathname: ', location.pathname);
-  // console.log('location.pathname: ', location.pathname);
-
   configureSidebar();
 
   function configureSidebar() {
     const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
-    // console.log('sidebarContent: ', sidebarContent);
-
     const link = sidebarContent.querySelectorAll(`a[href="${location.pathname}"]`)[0];
-    // console.log('link: ', link);
+
+    // Link could be undefined if the current page is not in the sidebar, for example,
+    // the homepage or a page which is hidden from the sidebar
+    if (link === undefined) {
+      return
+    }
 
     // This makes the current page link have a different background color
     link.setAttribute('aria-current', 'page');
-
-    // Link could be undefined if the current page is not in the sidebar, for example,
-    // the homepage
-    if (link === undefined) {
-      // console.log('link is undefined');
-      return
-    }
 
     // Find <details ...> parents of <a href="/electronics/"> elements
     // Setting the open attribute (to anything, just has to be present) makes
     // that menu group open
     let currElement = link.closest('details');
     while (true) {
-      // console.log('currElement: ', currElement);
       if (!currElement) {
         break;
       }
@@ -64,7 +55,6 @@ const imageUrl = new URL(imageSrc, Astro.url);
       }
       currElement.setAttribute('open', '');
       currElement = currElement.parentElement!.closest('details');
-
     }
   }
 

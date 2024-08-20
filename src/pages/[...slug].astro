@@ -59,7 +59,13 @@ const { frontmatter, render, sidebarData } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render();
 
 ---
-<StarlightPage frontmatter={{ title: frontmatter.title, description: frontmatter.description }} headings={headings} sidebar={sidebarData.items as any} image={frontmatter.image}>
+<!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
+<StarlightPage 
+  frontmatter={{ title: frontmatter.title, description: frontmatter.description }}
+  headings={headings}
+  sidebar={sidebarData.items as any}
+  image={frontmatter.image}
+>
   <Content components={{
     Aside: Aside,
     ChildPages: ChildPages,
