@@ -59,10 +59,15 @@ export default defineConfig({
           displayMode: false,
           // See https://katex.org/docs/options.html for how macros (or other options)
           // work
+          // support eqref
+          trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
           macros: {
             "\\b": "\\mathbf{#1}",
             "\\bhat": "{\\hat{\\mathbf{#1}}}",
-          }
+            "\\eqref": "\\href{###1}{(\\text{#1})}",
+            "\\ref": "\\href{###1}{\\text{#1}}",
+            "\\label": "\\htmlId{#1}{}",
+          },
         },
       ],
     ],
