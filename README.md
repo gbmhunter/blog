@@ -2,7 +2,7 @@
 
 This repo contains the source code which is used to build the blog at https://blog.mbedded.ninja.
 
-The static site generator Docusaurus is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
+The static site generator Astro.js is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3983d7b2-7481-4caa-9874-1ce1a3e82369/deploy-status)](https://app.netlify.com/sites/blog-mbedded-ninja/deploys)
 
@@ -10,37 +10,17 @@ The static site generator Docusaurus is used to build the website from the files
 
 1. The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
 
-1. Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows). **Make sure to install the extended version, as we need to compile `.scss` files into `.css`**.
+1. Make sure you have node.js installed.
 
-1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`). Since this is a large site, we'll also use `--renderToDisk` otherwise it can take up 6GB of memory!!! Also add in `--navigateToChanged` so that when you save a source file, the server will automatically redirect the browser to the changed page:
+1. Clone this repo locally.
 
-    ```sh
-    $ hugo server -wDF --renderToDisk --navigateToChanged
-    ```
+1. Run `npm install` from the command-line in the root-level directory of this repo.
 
-1. Development server should now be live at `localhost:1313`.
-
-Sometimes hugo gets out of sync with the latest file changes. If this happens, you can force hugo to rebuild everything when detecting a file change (warning: this slows down build times):
-
-```sh
-$ hugo server -wDF --disableFastRender --renderToDisk
-```
-
-There are test pages filled with different shortcode and style tests.
-
-* Markdown: `/posts/tests/markdown`
+1. Run `npm run dev` to start a dev. server that will be accessible at `localhost:4321`.
 
 ### pagefind
 
-[pagefind](https://pagefind.app/) is used to create a static search for the blog. This is run AFTER the hugo build step on Netlify during the deployment process. If developing locally, this is not run by default. If you want the search to work when running locally, make sure you have `npx` installed (as of Feb 2024 it is bundled with [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)) and then run:
-
-```shell
-npx -y pagefind@v1.0.4 --site public
-```
-
-This command takes some time to run (a few mins on my laptop). You generally do not need to re-run it the next time you set up a dev server, unless you want content you've added since the last time you ran it to appear in the search.
-
-Running pagefind locally relied on the hugo dev server being started in `--renderToDisk` mode (which is recommended) because it can't scan files in memory!
+[pagefind](https://pagefind.app/) is used to create a static search for the blog. The is run automatically as part of the build process.
 
 ### Python Environment
 
@@ -56,10 +36,10 @@ pip install -r scripts/requirements.txt
 
 ## To Build
 
-To build site and place files in `public` directory:
+To build the site and place files in `dist` directory:
 
 ```sh
-$ hugo
+npm run build
 ```
 
 This is not normally run on a development machine, but rather only run as part of the deployment process on Netlify.
@@ -71,33 +51,25 @@ Below is an explanation of the directory structure used for this site:
 ```text
 |-- .vscode/
 |  |--settings.json -> Contains the word dictionary for VS Code (under "cSpell.words")
-|-- assets/
-|  |-- main.scss -> Main stylesheet. This requires `hugo-extended` to compile.
-|-- content/ -> Markdown files which contain the content which creates the sites pages and posts.
-|  |-- example-page-1/
-|     |-- _assets/ -> All images, Python scripts used to generate images, Affinity Designer/Photo files 
-|     |               used to generate images and any other files used to create content for the page go in this `_assets/`
-|     |               directory.
-|     |-- example-nested-page-1/ -> Content pages can be nested to arbitrary depths depending on the
-|     |                             desired hierarchy. This folder contains the same info as `example-page-1/`. 
-|     |-- _index.md -> The markdown file containing the textual content for the page.
-|-- layouts/
-|  |-- shortcodes -> Hugo shortcodes.
-|  |-- calculators -> Contains the HTML/CSS/jQuery based interactive calculators 
-|                     which are embedded into certain pages (deprecated, these are now part of NinjaCalc)
+|-- src/ -> Contains page content, page structure and reusable Astro components.
+|  |-- content/ -> Contains content collections, which includes pages and updates.
+|  |  |-- pages/ -> Contains page data (all "normal" pages, except for updates about this blog).
+|     |  |-- example-page-1/
+|     |  |-- _assets/ -> All images, Python scripts used to generate images, Affinity Designer/Photo files 
+|     |  |               used to generate images and any other files used to create content for the page go in this `_assets/`
+|     |  |               directory.
+|     |  |-- example-nested-page-1/ -> Content pages can be nested to arbitrary depths depending on the
+|     |  |                             desired hierarchy. This folder contains the same info as `example-page-1/`. 
+|     |  |-- _index.md -> The markdown file containing the textual content for the page.
+|     |-- updates/ -> Contains update pages
 |-- old/ -> Deprecated content which is kept around just in case I need it again.
-|-- requirements/ -> Contains a requirements.txt used to create a Python virtual environment
-|                    for running the various Python scripts in this repo.
 |-- scripts/ -> Useful Python scripts to automate some laborious tasks.
 |-- templates/ -> Contains Affinity Designer diagram template, various Python script templates and a Markdown page template.
 ```
 
-NOTE: Placing all the 
-
 ## Recommended VS Code Plugins
 
-* `Code Spell Checker`: Prevents spelling mistakes. Additional dictionary definitions are included in `.vscode/settings.json` under `"cSpell.words"`. Make sure to add new words to the "workspace directory" so they get added to this file.
-* `EditorConfig for VS Code`: Promotes consistent coding styles, incl. indentation rules. Reads rules from `.editorconfig` in this repo's root directory.
+See `.vscode/extensions.json`.
 
 ## Pages
 
@@ -154,18 +126,6 @@ The below image shows a screenshot of Chrome dev tools analysing the Resistors p
 
 As highlighted, `3.9MB` of data was transferred from the domain `blog.mbedded.ninja` (a filter is set up to exclude third-party downloads). Netlify reports that blog.mbedded.ninja is using approx. 50GB of it's 100GB limit per month.
 
-## Hosting
-
-This site is built and deployed on Vercel.
-
-As of 2024-07-10, the size of the `build/` directory was 880Mb. It was using approx. 5-6GB of RAM (max.) while building. The site was taking approx. 13min to build on Netlify.
-
-### Out of Memory Errors
-
-Docusaurus can use a lot of memory during the build process. To make node.js put more effort into garbage collection, `NODE_OPTIONS=--max-old-space-size=4096` is set in the `.env` file which is then loaded into the environment by `env-cmd docusaurus build --no-minify` in `package.json`.
-
-Netlify was initially used to build Docusaurus. But the builds failed due to the heap running out memory. `--max-old-space-size` was tried at 2000, 4000 and 7500 but all failed. If the blog sub-site was removed, the site built (just the docs).
-
 ## Analytics
 
 Google Analytics was used for many years (now GA4), but ad blockers also block the GA tracking script.
@@ -188,5 +148,3 @@ There is a DNS A record for `umami.mbedded.ninja` which points to the AWS Lights
 The "SSL/TLS encryption mode" in Cloudflare has to be changed from the default of "Flexible" to "Full (strict)" for https to Umami to work correctly:
 
 <img src="static/images/readme/cloudfare-changing-ssl-from-flexible-to-full-strict.png" width="900"/>
-
-

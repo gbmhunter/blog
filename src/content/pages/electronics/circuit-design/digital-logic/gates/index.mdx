@@ -1,12 +1,12 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 categories: [ Electronics, Circuit Design, Digital Logic ]
 date: 2012-08-06
 description: An overview of the different types of digital logic gates, including NOT, AND, NAND, OR, NOR, XOR, XNOR, and how they are constructed from diodes, transistors, and MOSFETs.
 draft: false
-lastmod: 2023-04-29
+lastmod: 2024-08-21
 image: ./_assets/digital-logic-gates.png
-tags: [ electronics, circuit design, digital logic, gates, diode logic, DL, RTL, DTL, TTL, CMOS, binary counter, Karnaugh maps, NAND, NOR ]
+tags: [electronics, circuit design, digital logic, gates, diode logic, DL, RTL, DTL, TTL, CMOS, binary counter, Karnaugh maps, NAND, NOR]
 title: Gates
 type: page
 ---
@@ -288,6 +288,8 @@ _Resistor-transistor logic_ (RTL) is one of the most basic families of digital l
 * **Poor noise margins**.
 
 <Image src={import('./_assets/rtl-logic-nor-gate.svg')} width="400">Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by $R_C$. Any `HIGH` input will turn on a transistor, which will drive the output `LOW`.</Image>
+
+The Apollo Guidance Computer (AGC) used RTL logic. The AGC controlled and navigated the Apollo spacecraft to the Moon and back[^wikipedia-apollo-guidance-computer].
 
 ### Diode-Transistor Logic (DTL)
 
@@ -745,3 +747,4 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 [^bib-uni-waterloo-ptl]: University of Waterloo - ECE. _ECE 637 - Lecture 11 - Pass-Transistor Logic_. Retrieved 2023-05-09, from https://ece.uwaterloo.ca/~mhanis/ece637/lecture11.pdf.
 [^bib-bar-ilan-ptl]: Bar Ilan's Faculty of Electrical and Computer Engineering. _Digital Microelectronic Circuits - Lecture 9 - Pass Transistor Logic_. Retrieved 2023-05-24, from https://www.eng.biu.ac.il/temanad/files/2018/02/09-PTL-annotated.pdf.
 [^bib-wikipedia-ttl]: Wikipedia (2023, Apr 22). _Transistor–transistor logic_. Retrieved 2023-05-10, from https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic.
+[^wikipedia-apollo-guidance-computer]: Wikipedia (2024, Aug 2). _Apollo Guidance Computer_. Retrieved 2024-08-21, from https://en.wikipedia.org/wiki/Apollo_Guidance_Computer.

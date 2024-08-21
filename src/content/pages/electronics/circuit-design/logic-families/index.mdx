@@ -1,19 +1,18 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [Geoffrey Hunter]
+categories: [ Electronics, Circuit Design ]
 date: 2013-12-16
-description: "CMOS, TTL, latch-up and other info about logic families."
+description: CMOS, TTL, latch-up and other info about logic families.
 draft: false
-lastUpdated: 2020-07-03
-tags: [ "electronics", "circuit design", "logic families", "electrical signal types", "CMOS", "latch-up", "TTL", "transistor-transistor logic" ]
-title: "Logic Families"
-type: "page"
+lastUpdated: 2024-08-21
+tags: [electronics, circuit design, logic families, electrical signal types, CMOS, latch-up, TTL, transistor-transistor logic]
+title: Logic Families
+type: page
 ---
 
-
-## Overview
-
 Logic families are groups of basic digital logic electronic circuits (and, or, nor gates e.t.c), where each group consists of a different semiconductor technology from which the logic gates are built from. Within a family the voltage levels and signalling should be compatible between the various inputs and outputs.
+
+This page covers high-level information about logic families that is useful when using them in circuit design. If you are interested in how the gates in the logic families are actually constructed, see the [Digital Logic -> Gates page](/electronics/circuit-design/digital-logic/gates/). 
 
 Logic families are sorted in alphabetical order. Take note that there may be a low-voltage equivalent of many signal types under the prefix "LV" (e.g. TTL and LVTTL).
 
@@ -27,7 +26,6 @@ Logic families are sorted in alphabetical order. Take note that there may be a l
 
 CMOS (_complementary metal-oxide semiconductor_) is the most widespread logic family in use today. CMOS logic is built from P-channel (PMOS) and N-channel (NMOS) [MOSFETs](/electronics/components/transistors/mosfets).
 
-{/* {{% figure src="logic-family-cmos-technologies-voltage-vs-speed.png" width="762px" caption="A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/." %}} */}
 <Image src={import('./logic-family-cmos-technologies-voltage-vs-speed.png')} width="762">A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/.</Image>
 
 ### Latch-up
@@ -36,7 +34,6 @@ CMOS logic suffers from a phenomenon known as _latch-up_. This is when a **short
 
 Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching elements form parasitic [PNPN thyristors (SCRs)](/electronics/components/transistors/silicon-controlled-rectifiers-scrs)**[^ti-latch-up-white-paper]. A latch-up has to be initially triggered by an over-voltage/current condition which causes the voltage on a pin to go at least one diode drop above the rail voltage, or one voltage drop below the ground.
 
-{/* {{% figure src="cmos-latch-up-semiconductor-diagram.svg" width="800px" caption="Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR)." %}} */}
 <Image src={import('./cmos-latch-up-semiconductor-diagram.svg')} width="800">Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR).</Image>
 
 Hot-plugging can cause latch-up issues.
