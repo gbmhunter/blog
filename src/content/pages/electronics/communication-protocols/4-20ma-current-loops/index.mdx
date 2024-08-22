@@ -1,16 +1,13 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 date: 2016-03-10
 description: Topologies, standards, schematics, popular ICs, microcontroller interfaces, HART, filtering/buffering and more info about 4-20mA current loops.
-draft: false
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-01-31
-tags: [ 4-20mA, current loop, analogue, transmitter, receiver, over-voltage, HART, communication protocol, out-of-band signalling, noise, filtering, buffering, microcontroller, ISA S50.1, NAMUR NE43, 2-Wire, 3-Wire, XTR115, XTR116 ]
+tags: [4-20mA, current loop, analogue, transmitter, receiver, over-voltage, HART, communication protocol, out-of-band signalling, noise, filtering, buffering, microcontroller, ISA S50.1, NAMUR NE43, 2-Wire, 3-Wire, XTR115, XTR116]
 title: 4-20mA Current Loops
 type: page
 ---
-
-
-## Overview
 
 The 4-20mA current loop protocol is an **analogue electrical communication protocol**. It is based around a **current loop** from transmitter to receiver that is varied between 4-20mA under normal operating conditions. This signal is usually used to represent 1 continuously varying measurement such as temperature, pressure, e.t.c.
 
@@ -58,8 +55,7 @@ NAMUR, an international association of process instrumentation companies, made a
 
 The "standard" defines any current below 3.6mA or above 21mA as a sensor fault. This signal needs to be present for at least 4 seconds before it is considered a fault.
 
-{/* {{% figure src="namur-ne-43-current-loop-current-ranges-diagram.png" width="560px" caption="The current ranges allowed by the NAMUR NE 43 current-loop standard." %}} */}
-<Image src={import('./namur-ne-43-current-loop-current-ranges-diagram.png')} width="560">The current ranges allowed by the NAMUR NE 43 current-loop standard.</Image>
+<Image src={import('./_assets/namur-ne-43-current-loop-current-ranges-diagram.png')} width="560">The current ranges allowed by the NAMUR NE 43 current-loop standard.</Image>
 
 The standard also extends the normal operation 4-20mA current range to 3.8-20.5mA, allowing more measurement information to be communicated.
 
@@ -83,8 +79,7 @@ A 4-20mA current loop signal can be easily interfaced to a microcontroller which
 
 The schematic below shows probably the simplest 4-20mA interface you could build to an ADC on a microcontroller. It uses just a single, precision \(100\Omega\) resistor to convert the 4-20mA signal into a 400-2000mV voltage.
 
-{/* {{% figure src="simple-4-20ma-current-loop-interface-to-micro-adc.png" width="800px" caption="Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling." %}} */}
-<Image src={import('./simple-4-20ma-current-loop-interface-to-micro-adc.png')} width="800">Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling.</Image>
+<Image src={import('./_assets/simple-4-20ma-current-loop-interface-to-micro-adc.png')} width="800">Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling.</Image>
 
 The value of the resistor can be changed to modify the voltage range that the ADC measures. Below is a table of common resistors that are used and the voltage ranges they give:
 
@@ -119,8 +114,7 @@ The value of the resistor can be changed to modify the voltage range that the AD
 
 The schematic below shows how you can convert the 4-20mA current loop into a voltage signal suitable for the ADC, along with a low-pass filter and buffering circuitry.
 
-{/* {{% figure src="4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png" width="800px" caption="An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer." %}} */}
-<Image src={import('./4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png')} width="800">An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer.</Image>
+<Image src={import('./_assets/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png')} width="800">An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer.</Image>
 
 ## Noise
 
@@ -138,8 +132,7 @@ The NAMUR NE43 standard specifies any current below 3.6mA or above 21mA should b
 
 The HART communication protocol (_Highway Addressable Remote Transducer_) is a separate communications protocol which can communicate on the same wires as the 4-20mA current loop protocol.
 
-{/* {{% figure src="hart-communication-protocol-logo-4-20ma-current-loop.jpg" width="400px" caption="The logo for the HART communication protocol." %}} */}
-<Image src={import('./hart-communication-protocol-logo-4-20ma-current-loop.jpg')} width="400">The logo for the HART communication protocol.</Image>
+<Image src={import('./_assets/hart-communication-protocol-logo-4-20ma-current-loop.jpg')} width="400">The logo for the HART communication protocol.</Image>
 
 It transmits one or digital signals which are **superimposed** onto the 4-20mA current signal.
 
@@ -161,5 +154,4 @@ The [Voltage-To-Current Converters page](/electronics/circuit-design/voltage-to-
 
 The Burr-Brown (now Texas Instruments) XTR115, XTR116, XTR117 are loop-powered 4-20mA current loop transmitters. Their typical application schematic is shown in .
 
-{/* {{% figure src="burr-brown-ti-xtr115-xtr116-current-loop-transmitters-application-schematic.png" width="750px" caption="Application schematic for the Burr-Brown (now Texas Instruments) XTR115/XTR116 loop-powered 4-20mA current loop transmitters. Image retrieved 2021-08-30, from https://www.ti.com/lit/ds/symlink/xtr115.pdf." %}} */}
-<Image src={import('./burr-brown-ti-xtr115-xtr116-current-loop-transmitters-application-schematic.png')} width="750">Application schematic for the Burr-Brown (now Texas Instruments) XTR115/XTR116 loop-powered 4-20mA current loop transmitters. Image retrieved 2021-08-30, from https://www.ti.com/lit/ds/symlink/xtr115.pdf.</Image>
+<Image src={import('./_assets/burr-brown-ti-xtr115-xtr116-current-loop-transmitters-application-schematic.png')} width="750">Application schematic for the Burr-Brown (now Texas Instruments) XTR115/XTR116 loop-powered 4-20mA current loop transmitters. Image retrieved 2021-08-30, from https://www.ti.com/lit/ds/symlink/xtr115.pdf.</Image>

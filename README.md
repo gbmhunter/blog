@@ -79,8 +79,11 @@ The preferred file format for all pages (both docs and blog posts) is `.mdx` (ma
 
 The preferred file format for all images (diagrams and photos) is `.webp`. This is because it is a modern format that provides good compression and quality.
 
+1280x720px images are recommended for use as page cover images.
+
 Aspect ratios:
 
+* 1:1 (1.0) - Square
 * 4:3 - Traditional
 * 3:2 (1.5) - Common
 * 16:9 (1.78) - Common landscape. Common pixel size is 1280x720 (HD).

@@ -2,27 +2,21 @@
 authors: [Geoffrey Hunter]
 date: 2015-01-03
 description: Standards, low energy (BLE), configurations, and more info on the Bluetooth communication protocol.
-draft: false
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-04-30
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG]
 title: Bluetooth
 type: page
 ---
 
-
 <WarningIsNotes />
 
-## Overview
-
-{/* {{% figure ref="fig-bluetooth-4-0-icon" src="_assets/bluetooth-4-0-icon.jpg" width="300px" float="right" caption="The Bluetooth icon/logo." %}} */}
 <Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300">The Bluetooth icon/logo.</Image>
 
 Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards[^bib-wikipedia-bluetooth-sig]. The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
-{/* {{% aside type="tip" %}} */}
 <Aside type="tip">
 Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link[^bib-sig-origin-of-name].
-{/* {{% /aside %}} */}
 </Aside>
 
 ## Piconet And Scatternets
@@ -108,12 +102,6 @@ Two types of encryption keys:
 
 1. Network keys: Specific to a physical network.
 1. Application keys: Specific to the function of the data, e.g. reading sensor values vs. configuring the sensor.
-
-### Generic Models
-
-#### Generic OnOff Server
-
-#### Generic Level Server
 
 [^bib-sig-intro-to-mesh-part-2]: Martin Woolley (2017, Aug 1). _BlueTooth Blog - An Intro to Bluetooth Mesh Part 2_. BlueTooth SIG. Retrieved 2023-05-24, from https://www.bluetooth.com/blog/an-intro-to-bluetooth-mesh-part2/.
 [^bib-silicon-labs-bluetooth-mesh-performance]: Silicon Labs. _AN1137: Bluetooth Mesh Network Performance_. Retrieved 2023-05-24, from https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf.

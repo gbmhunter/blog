@@ -1,15 +1,12 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Communication Protocols ]
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
 date: 2011-09-03
-draft: false
 lastUpdated: 2024-01-15
-tags: [ electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP, WS2812, RGB ]
+tags: [electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP, WS2812, RGB]
 title: SPI Communication Protocol
 type: page
 ---
-
-## Overview
 
 SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams (typical rates up to 10-24Mbps[^bib-totalphase-single-dual-quad-spi]) between devices on the same PCB. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 

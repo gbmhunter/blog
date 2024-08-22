@@ -1,0 +1,77 @@
+---
+authors: [Geoffrey Hunter]
+categories: [Electronics, Communication Protocols]
+date: 2024-08-22
+description: Trivial File Transfer Protocol (TFTP) is a lightweight file transfer protocol that runs atop of UDP. It is commonly used in embedded bootloaders to load firmware images across a local area network (LAN).
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-08-22
+tags: [electronics, communication protocols, trivial file transfer protocol, TFTP, lwIP, lightweight IP, UDP, bootloaders, ethernet, files, FTP, Netascii, octet]
+title: Trivial File Transfer Protocol (TFTP)
+type: page
+---
+
+_Trivial File Transfer Protocol_ (TFTP) is a lightweight file transfer protocol that runs atop of UDP. It is a much simplified version of the _File Transfer Protocol_ (FTP). It typically only supports the ability to read and write files to and from a server, with no directory listing (you have to already know the filenames of what you want to read!) or security features.
+
+Because of it's small RAM and ROM requirements, TFTP is often used in embedded systems, particularly in bootloaders to load firmware images into memory across a local area network (LAN)[^wikipedia-tftp]. As of today it is rarely used for file transfers across the internet (due to it's simplicity and lack of security features).
+
+## History
+
+TFTP was first standardized in 1981 with [RFC 783 - The TFTP Protocol (Revision 1)](https://datatracker.ietf.org/doc/html/rfc783).
+
+In 1984 [RFC 906 - Bootstrap Loading using TFTP](https://datatracker.ietf.org/doc/html/rfc906) was published, which helped establish TFTP's association with network bootloading.
+
+In 1992 RFC 1350 was released which fixed a major bug in the initial specification which caused packet transmissions to "multiply" when transmission occurred over a network with long delay times. This was called the Sorcerer's Apprentice Syndrome[^wikipedia-tftp].
+
+## Protocol
+
+TFTP defines three _modes of transfer_:
+
+* **Netascii**: Netascii is a modified version of ASCII which extends the 7-bit ASCII character set. It allows some control characters (codes below 0x20), including NULL, LF and CR.
+* **Octet**: Octet mode allows the transfer of binary data. It allows the transfer of arbitrary 8-bit bytes of binary data. This is the most common mode used when using TFTP for bootloading (since firmware images are binary files).
+* **Mail**: Mail transfer mode is like Netascii mode but allows the file to be sent to an email address by specifying the receiver's email address in the filename field. RFC 1350 made this mode obsolete[^wikipedia-tftp].
+
+TFTP uses UDP as it's transport protocol. UDP uses less RAM and ROM to implement than TCP. A transfer request always begins with a request from a TFTP client to a TFTP server on port 69. They can then negotiate the transfer itself on a different port.
+
+Each "non-terminal" packet has to be ACKed by the receiver before the sender sends the next packet. UDP does not contain any packet delivery guarantees, so TFTP implements this logic itself (TFTPs acknowledgement and retransmission scheme was inspired from TCP[^ietf-rfc-783]). Because of this, packets are sent in "lockstep". This prevents either end from having to re-order packets (which TCP does), saving on memory requirements.
+
+Data is sent in fixed 512-byte blocks, except for the last packet. The fact that there is less than 512 bytes of data in the last packet indicates the end of the transfer. If the amount of data happens to be a multiple of 512 bytes, a zero-length packet is sent to indicate the end of the transfer[^ietf-rfc-783].
+
+TFTP defines five types of packets[^ietf-rfc-783]:
+
+| Opcode | Operation
+| ------ | ---------
+| 1      | Read request (RRQ)
+| 2      | Write request (WRQ)
+| 3      | Data (DATA)
+| 4      | Acknowledgment (ACK)
+| 5      | Error (ERROR)
+
+## Implementations
+
+### tftpd-hpa
+
+`tftpd-hpa` is a popular open-source TFTP server for Unix like systems. It can be installed on Debian-based systems with:
+
+```bash
+sudo apt-get install tftpd-hpa
+```
+
+### lwIP
+
+The _lightweight IP_ (lwIP) stack is a popular open-source TCP/IP stack for embedded systems. It includes a TFTP server implementation[^lwip-tftp-server-docs].
+
+* Documentation for the TFTP structs/functions: https://www.nongnu.org/lwip/2_1_x/group__tftp.html
+* Example client (or is it a server?): https://github.com/particle-iot/lwip/blob/master/contrib/examples/tftp/tftp_example.c
+
+### tftpd64
+
+tftpd64 is a free and open-source TFTP server and client for Windows (among other things). It provides "extended" features such as directory listings, security, filtering and progress bars[^tftpd64-homepage].
+
+* Homepage: https://pjo2.github.io/tftpd64/
+
+<Image src={import('./_assets/tftpd64-windows-application-screenshot.webp')} width="800px">A screenshot of the tftpd64 Windows application which provides a TFTP server and client[^tftpd64-homepage].</Image>
+
+[^lwip-tftp-server-docs]: lwIP. _TFTP server documentation_. Retrieved 2024-08-22, from https://www.nongnu.org/lwip/2_1_x/group__tftp.html.
+[^wikipedia-tftp]: Wikipedia (2024, Jul 8). _Trivial File Transfer Protocol_. Retrieved 2024-08-22, from https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol.
+[^tftpd64-homepage]: tftpd64. _Homepage_. Retrieved 2024-08-22, from https://pjo2.github.io/tftpd64/.
+[^ietf-rfc-783]: IETF (1981, Jun). _RFC 783 -  THE TFTP PROTOCOL (REVISION 2)_. Retrieved 2024-08-22, from https://datatracker.ietf.org/doc/html/rfc783.

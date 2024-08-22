@@ -1,14 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
-draft: false
+description: GitLab is a web-based Git repository manager and a strong competitor to GitHub, especially for commercial uses.
 lastUpdated: 2019-08-29
-tags: []
-title: "GitLab"
-type: "page"
+tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry]
+title: GitLab
+type: page
 ---
-
 
 <WarningIsNotes />
 
@@ -30,7 +29,7 @@ Then you be able to push a built image:
 docker push "$CI_REGISTRY_IMAGE"
 ```
 
-You can download images from the GitLab container registery to your local machine by first logging in:
+You can download images from the GitLab container registry to your local machine by first logging in:
 
 ```bash
 docker login registry.gitlab.com
@@ -42,4 +41,29 @@ You can then download and run an image with:
 
 ```bash
 docker run -it registry.gitlab.com/<org_name>/<project_path> bash
+```
+
+## Includes
+
+You can include files in your `.gitlab-ci.yml` file with the `include` keyword. This is useful for sharing common configuration between multiple projects.
+
+```yaml
+include:
+  - project: 'my-group/my-project'
+    file: '/path/to/file.yml'
+```
+
+You can also use the `ref` to specify a branch, tag or commit SHA when including a file. This is good for "version control" of your include dependencies.
+
+```yaml
+include:
+  - project: 'my-group/my-project'
+    ref: 'main' # Branch name
+    file: '/path/to/file.yml'
+  - project: 'my-group/my-project'
+    ref: 'v1.0.0' # Tag name
+    file: '/path/to/file.yml'
+  - project: 'my-group/my-project'
+    ref: 'b6901dcb0918db67a81b190d24fa67f0b5f99fdb' # Commit SHA
+    file: '/path/to/file.yml'
 ```
