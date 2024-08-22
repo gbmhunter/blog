@@ -7,8 +7,6 @@ title: tar
 type: page
 ---
 
-## Overview
-
 `tar` is a UNIX utility program which can be used to package and unpackage files using the `.tar` format. It is commonly used along with `gzip` to produce compressed archives (usually with the `.tar.gz` extension).
 
 ## What About .tar.gz Files?

@@ -10,8 +10,6 @@ title: "Map Tile Servers"
 ---
 
 
-## Overview
-
 Map tile servers are web servers which have an API for returning tiles of map imagery. Most web and mobile applications (think Google maps) which provide map services do not download or store a copy of all the map data, due to the huge file sizes, latencies and data caps. Instead, as a user pans and zooms on a map, requests for square tiles of map imagery at the users current zoom level (resolution) and area-of-interest (AOI )are sent out by the user application to the map server. The map server either has pre-rendered, cached copies of these tiles or renders them on-the-fly, compresses them, and sends them back to the user (the server typically sends back compressed `.png` or `.jpeg` files). The map application inserts these tiles into the map to provide a seamless browsing experience to the user.
 
 Typically WGS84 Web Mercator (EPSG:3857).

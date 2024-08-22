@@ -8,8 +8,6 @@ title: less
 type: page
 ---
 
-## Overview
-
 `less` is a Linux-based program that can be used to read sections of large text-based files to the terminal. Unlike `cat`, `less` will limit the output to the height of the current terminal session and implements a scroll buffer to scroll forward and backwards through the file.
 
 A consequence of `less` implementing it's own scroll buffer is that the terminal history will not be polluted with the contents of the file once `less` is closed.

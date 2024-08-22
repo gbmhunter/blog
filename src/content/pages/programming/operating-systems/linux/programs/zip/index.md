@@ -9,8 +9,6 @@ title: "zip"
 type: "page"
 ---
 
-## Overview
-
 `zip` is a command-line utility for compressing and archiving files.
 
 ## Adding Files To An Existing Archive

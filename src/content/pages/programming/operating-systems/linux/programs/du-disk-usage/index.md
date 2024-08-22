@@ -9,8 +9,6 @@ title: "du (disk usage)"
 type: "page"
 ---
 
-## Overview
-
 `du` (disk usage) is a UNIX-based command-line program that is used for displaying estimated file space usage. It can recursively iterate through directories, listing the total space used by that directory and it's contents. Note that the common `ls` command cannot do this, and will only display the space used by the directory and not it's contents (typically around 4kB for a directory).
 
 ## Typical Usage

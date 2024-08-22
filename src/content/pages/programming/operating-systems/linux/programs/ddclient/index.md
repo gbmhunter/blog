@@ -8,8 +8,6 @@ title: ddclient
 type: page
 ---
 
-## Overview
-
 `ddclient` is a open-source client program written in Perl to update DNS entries on Dynamic DNS Servers. It supports a number of different routers and dynamic DNS servers.
 
 Website: [http://sourceforge.net/projects/ddclient/](http://sourceforge.net/projects/ddclient/)

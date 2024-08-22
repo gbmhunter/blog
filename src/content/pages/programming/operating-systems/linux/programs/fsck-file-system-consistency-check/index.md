@@ -7,8 +7,6 @@ title: fsck (File System Consistency checK)
 type: page
 ---
 
-## Overview
-
 Sometimes you are asked to run `fsck` manually when a UNIX system boots and presents you with the error:
 
 ```text

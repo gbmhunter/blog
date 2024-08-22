@@ -7,8 +7,6 @@ title: cp (copy)
 type: page
 ---
 
-## Overview
-
 If you want to move or rename files (instead of copying), please checkout the [mv command](/programming/operating-systems/linux/programs/mv-move).
 
 ## Copying A Single File

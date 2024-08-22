@@ -8,8 +8,6 @@ title: "sed"
 type: page
 ---
 
-## Overview
-
 `sed` is a command that parses and transforms text, line-by-line. It is a form of stream-editing.
 
 seds first parameter is an input script which describes how to transform the text. It can either be passed on the command-line (`-e` option, and is the default), or through a file (`-f` option).

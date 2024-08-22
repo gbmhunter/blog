@@ -9,8 +9,6 @@ lastUpdated: 2018-12-29
 type: "page"
 ---
 
-## Overview
-
 `cat` (short for concatenate), is a basic terminal-based Linux program for manipulating text-based files. It is commonly used to quickly output the contents of a text file to the screen, so that you can read it without having to open an editor.
 
 Some of the following examples use `.txt` file extensions to indicate they contain textual information, but remember that this is optional, there is no notion of a "file extension" in Linux.

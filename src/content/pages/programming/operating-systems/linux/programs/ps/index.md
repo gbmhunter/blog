@@ -7,8 +7,6 @@ title: ps
 type: page
 ---
 
-## Overview
-
 The ps command (a.k.a _process status_) provides a **snapshot of the current processes** running on the system.
 
 For **repetitive updating of the process information** (e.g. updates on how much CPU and memory each process is using, similar to Task Manager in Windows) see the top command instead.

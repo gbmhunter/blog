@@ -7,8 +7,6 @@ title: ls
 type: page
 ---
 
-## Overview
-
 The ls command **lists directory contents**. It is one of the most commonly used commands in a Linux environment. ls is similar to dir in a Windows environment.
 
 ## List File/Folder Size

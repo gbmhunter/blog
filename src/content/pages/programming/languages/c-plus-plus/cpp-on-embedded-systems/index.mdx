@@ -10,8 +10,6 @@ type: page
 ---
 
 
-## Overview
-
 One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is -- "it depends". Also, the concept on what an embedded system various between people and companies. You can use most C++ features on high-level embedded devices that are running a full-blown OS such as Linux. What this page refers to is "deeply" embedded systems -- systems which are running "bare metal" (no OS) or with an RTOS on a microcontroller. Memory is normally very constrained, typical flash memory sizes are between 16-256kB, and RAM between 2-64kB. The CPU clock speed might be anywhere from 8 to 250MHz, with typically a single core.
 
 **I believe you can carefully select a subset of the C++ language which provides most of the benefits of OO-based design, but does not incur any significant performance hits for the target embedded system**.

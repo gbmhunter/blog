@@ -8,8 +8,6 @@ title: ln (link)
 type: page
 ---
 
-## Overview
-
 There are two types of links in Linux:
 
 **symbolic/soft links**: I believe their official name is a symbolic link, but they are also known as soft links. Symbolic links can span file systems (hardlinks cannot).

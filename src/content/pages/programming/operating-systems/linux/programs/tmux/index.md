@@ -10,8 +10,6 @@ title: "tmux"
 type: "page"
 ---
 
-## Overview
-
 `tmux` uses an _alternate screen buffer_ which is the same height and width as the parent terminal.
 
 In all of the below code examples, `<prefix>` refers to the `tmux` prefix key combination. It is typically `Ctrl-B` by default, although it can vary from system to system.

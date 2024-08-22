@@ -8,8 +8,6 @@ type: page
 ---
 
 
-## Overview
-
 Fixed-point mathematics is a method for representing numbers on a binary computer architecture. It allows the storage numbers with decimal points, similar to the float and double, but with the benefit of requiring less computation time. The trade-off is lower precision and flexibility.
 
 If you think about it, normal integers are just a special case of a fixed-point number in where the decimal point is to the right of the least-significant bit. A 32-bit unsigned integer (`uint32_t`), would be `fp(32, 0)`. It is common to use the bit-width of the architecture as the default fixed-point length, as the architecture has native support for manipulating these variables (commonly 32-bit on the more powerful embedded microcontrollers).

@@ -9,8 +9,6 @@ type: page
 ---
 
 
-## Overview
-
 _Opaque pointers_ is a design pattern that can be used to hide implementation details of what is being pointed at. Typically a user for a different place in the code can use as see a pointer to a particular type but cannot see any more details about the type itself
 
 Opaque pointers is commonly used in the C programming language to hide implementation details of a struct (object) from a user, and only operations with the object via a function-based API. It is not as commonly used in C++ because C++ gives you the ability to define `private` and `protected` members of your class, removing the need to implement the same behaviour with opaque pointers.

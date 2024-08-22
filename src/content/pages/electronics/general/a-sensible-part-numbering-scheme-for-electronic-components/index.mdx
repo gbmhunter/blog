@@ -9,8 +9,6 @@ type: "page"
 ---
 
 
-## Overview
-
 When designing circuits, you have to keep track of all the different components used in the design. A a minimum you usually keep track of things like the manufacturer, manufacturer part number, supplier, supplier part number and quantity. This information is output in tabular form inside a BOM (bill of materials) by your PCB CAD software. The manufacturer part number (combined with the manufacturer, as it's not like they chat with each other when coming up with a part number and pick something that is globally unique) is usually used as a unique identifier.
 
 The problem with using the manufacturer/manufacturer part number as the unique identifier on a BOM is that the part may have "alternatives". For example, you may discover that stock of your favourite 555 timer used in your design has run out. Yet you can find another manufacturer which produces a pin and footprint compatible alternative that works as a drop-in replacement. One way to solve this is to create your own part numbers if you work for a company, these are called "internal" part numbers). Against your internal part number, there may be many approved alternatives for a specific design. This internal part number offers a consistent way of tracking a logical component across many versions of a BOM.

@@ -12,8 +12,6 @@ type: page
 
 <WarningIsNotes />
 
-## Overview
-
 Many C/C++ software engineers could go their entire life without ever needing to use the `volatile` keyword. However in embedded systems, knowing how the `volatile` keyword works and how to use it is a vital skill.
 
 The `volatile` keyword is a qualifier you apply to a variable, e.g. `volatile uint8_t my_var;`. It tells the compiler that the value stored at this address may change at any time, even if the compiler cannot see a code path that would cause it to change. This forces the compiler to perform a read/write from memory every time the variable is used in the code, rather than the compiler storing the variable locally in a register or optimizing the read/write out completely!

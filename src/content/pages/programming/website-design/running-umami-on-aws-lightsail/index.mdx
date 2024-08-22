@@ -9,8 +9,6 @@ type: page
 ---
 
 
-## Overview
-
 <Image src={import('./_assets/umami-logo.png')} width="300px">The Umami logo.</Image>
 
 [Umami](https://umami.is/), aside from being a delicious savoury taste, is also an analytics platform. It is a popular alternative to Google Analytics and allows free use if you self-host the software on your own server. I decided to switch from Google Analytics to Umami because ad blockers were blocking the Google Analytics script used to keep track of the number of page visits and unique visitors to this blog, [NinjaTerm](https://ninjaterm.mbedded.ninja/) and [NinjaCalc](https://ninjacalc.mbedded.ninja/). By using Umami and self-hosting it, I could point a subdomain (e.g. `umami.mbedded.ninja`) at the server running Umami. There is a very high probability that ad blockers won't block the Umami client-side script since the data would now be sent to the same domain as this blog.

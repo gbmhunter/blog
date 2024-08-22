@@ -10,8 +10,6 @@ type: "page"
 ---
 
 
-## Overview
-
 Dynamic memory allocation is the process of assigning space for variables at run time. This is done automatically for function-scope variables which are put onto the stack when they are defined, but dynamic memory allocation usually refers to the process of using one of the malloc-family functions to manually allocate space of the heap.
 
 The biggest risk with dynamic memory allocation is forgetting to free the memory after your finished with it. This can quickly lead to you running out of memory as more and more spaces in memory are assigned to the same variable (this is called a memory leak).

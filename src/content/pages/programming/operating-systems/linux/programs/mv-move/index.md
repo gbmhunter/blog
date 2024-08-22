@@ -9,8 +9,6 @@ title: "mv (move)"
 type: "page"
 ---
 
-## Overview
-
 The mv (a.k.a. move) program is commonly used on Linux systems to both move and rename files (to copy files, use the `cp` command).
 
 ## Be Careful, Overwriting Is The Default!

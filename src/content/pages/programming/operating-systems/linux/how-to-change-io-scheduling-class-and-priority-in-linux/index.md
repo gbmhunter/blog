@@ -9,8 +9,6 @@ tags: [ "programming", "operating systems", "Linux", "IO", "scheduling class", "
 title: "How To Change The IO Scheduling Class And Priority In Linux"
 ---
 
-## Overview
-
 This tutorial makes use of the Linux command-line program `ionice`.
 
 Scheduling classes:

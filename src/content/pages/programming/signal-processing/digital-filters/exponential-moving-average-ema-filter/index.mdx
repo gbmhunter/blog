@@ -11,8 +11,6 @@ type: page
 ---
 
 
-## Overview
-
 The _exponential moving average_ (EMA) filter is a **discrete, low-pass, infinite-impulse response (IIR) filter**. It **places more weight on recent data by discounting old data in an exponential fashion**, and behaves similarly to the **discrete first-order low-pass RC filter**.
 
 Unlike a [simple moving average (SMA) filter](/programming/signal-processing/digital-filters/windowed-moving-average-filters/), most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.

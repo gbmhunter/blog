@@ -11,8 +11,6 @@ type: "page"
 ---
 
 
-## Overview
-
 Asynchronous programming is a software paradigm which involves scheduling many small _tasks_ that are invoked when events occurs. It is also known as _event-driven programming_. It is an alternative (although it can also be a complement) to both _multi-threading_ and _multiprocessing_. Asynchronous programming is well suited to tasks which are _IO bound_ and not _CPU bound_. It is well suited for IO bound applications because it allows other tasks to occurs while one task is blocked, waiting on some external process to complete. Because control is only given up explicitly with the `await` keyword, you do not have to worry about common multi-threading issues such as data contention. It is not well suited to CPU bound applications because it does not make use of multiple cores/CPUs.
 
 Two core parts of Pythons asynchronous capabilities a provided through the `await` and `async` keywords. The rest of the functionality is largely supplied by the `asyncio` library. The `asyncio` library **provides event loops and functions to create, run and await tasks**. Event loops are the "runners" of asynchronous functions (these functions are officially called _coroutines_). They keep track of all the coroutines which are currently blocked waiting for an event, and continue these coroutines from where they left off once the event occurs.

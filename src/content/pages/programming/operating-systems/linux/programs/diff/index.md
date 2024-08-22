@@ -7,8 +7,6 @@ title: diff
 type: page
 ---
 
-## Overview
-
 The command-line Linux program `diff` allows you to check for differences between files and folders.
 
 ## Compare Two Folders

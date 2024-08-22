@@ -7,8 +7,6 @@ type: page
 ---
 
 
-## Overview
-
 Pointers are a core concept in C programming, yet can be a difficult concept to grasp for those who are new to the language.
 
 <Image src={import('./_assets/pointing-hand-icon.png')} width="300px"></Image>
@@ -84,8 +82,6 @@ From section 6.5 of the C99 standard:
 Historically, these rules could be broken without too much worry. You could use pointer casting to access different representations of the same data by casting to different types. However, in modern compilers with optimisation turned on, this kind of code can cause fatal errors, because these rules allow them to assume that pointers to different types do not point to the same region (or an overlapping) region in memory, and once they assume that they can perform optimisations which will cause fatal errors if the pointers do infact point to the same region in memory.
 
 ## Function Pointers
-
-## Overview
 
 Functions pointers are variables that rather than store a number or point to one, point to a function. They are commonly used for call-back routines and for function-based state machines. Function pointers can also be defined as a type.
 

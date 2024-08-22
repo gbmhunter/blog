@@ -7,8 +7,6 @@ title: readelf
 type: page
 ---
 
-## Overview
-
 `readelf` is a program for displaying/disassembling information in `.elf` files. It is similar to the `objdump` program, but is more detailed.
 
 ## Basic Usage

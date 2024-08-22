@@ -7,8 +7,6 @@ title: df (disk free)
 type: page
 ---
 
-## Overview
-
 The df (_disk free_) program allows you to see how much space has been used up (and how much is still available) on all of the current mounted file systems.
 
 ## Usage

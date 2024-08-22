@@ -9,8 +9,6 @@ title: NuttX
 type: page
 ---
 
-## Overview
-
 NuttX is a real-time operating system that is closely tied with the ANSI and POSIX standards that operating systems like Linux are based from.
 
 It is designed to be run on embedded targets such as 8 to 32-bit microcontrollers. It supports commons microcontrollers such as the ARM Cortex M0, M3, M4 and M7.

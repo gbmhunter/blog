@@ -1,4 +1,3 @@
-## Overview
 
 This repo contains the source code which is used to build the blog at https://blog.mbedded.ninja.
 

@@ -10,8 +10,6 @@ title: "pkill"
 type: "page"
 ---
 
-## Overview
-
 `pkill` is a program that can be used to send a signal to a processes, by specifying a regex pattern that matches part of the process name (or it's full command line name with the `-f` option).
 
 ## Force Kill

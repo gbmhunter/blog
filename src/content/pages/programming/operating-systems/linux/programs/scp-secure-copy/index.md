@@ -7,8 +7,6 @@ title: scp (secure copy)
 type: page
 ---
 
-## Overview
-
 `scp` (secure copy) is a UNIX command-line program.
 
 ## Copy File From Local To Remote

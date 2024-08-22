@@ -8,8 +8,6 @@ title: Compiling FreeRTOS With C++
 type: page
 ---
 
-## Overview
-
 This page contains helpful advice for people wanting to use FreeRTOS on a C++ application designed for a embedded system (e.g. a microcontroller).
 
 ## General Compatibility

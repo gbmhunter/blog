@@ -10,8 +10,6 @@ title: "The Basic Essentials You Should Do After Installing Ubuntu"
 type: page
 ---
 
-## Overview
-
 The following instructions should be compatible with `Ubuntu 18.04`.
 
 ## Make The Up/Down Keys Search History

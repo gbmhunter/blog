@@ -12,8 +12,6 @@ type: "page"
 
 <WarningIsNotes />
 
-## Overview
-
 **Embedded systems are hard to debug**. You don't have the luxury of connecting up a monitor and keyboard (well, most of the time), and stepping through code isn't much use when the application needs to continually respond to real-world events for the bug to appear in the first place. And after a while, toggling your single GPIO LED just does not cut it, and you decide you need to be able to log messages and print values. This is typically where `printf()` and a trusty UART is employed (or similar serial transport), spitting messages out to a computer (via an FTDI cable, virtual COM port over USB, or similar).
 
 This page aims to discuss the finer details about logging on embedded systems, and cover some interesting topics such as _deferred logging_.

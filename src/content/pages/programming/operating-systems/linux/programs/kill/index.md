@@ -7,8 +7,6 @@ title: kill
 type: page
 ---
 
-## Overview
-
 `kill` is a UNIX-based program that makes it easy to "kill" (stop running) process running in the operating system.
 
 ## Find And Kill Processes By Name

@@ -7,8 +7,6 @@ title: "FreeRTOS And Watchdogs"
 type: "page"
 ---
 
-## Overview
-
 The multi-tasked nature of FreeRTOS presents challenges when implementing a watchdog.
 
 ## A Simple Approach

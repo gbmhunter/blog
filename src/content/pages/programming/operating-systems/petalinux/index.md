@@ -6,8 +6,6 @@ title: PetaLinux
 type: page
 ---
 
-## Overview
-
 PetaLinux is a custom version of Linux designed for embedded Xilinx systems. PetaLinux is designed to work with the Zynq-7000, all programmables SOCs, MicroBlaze and PowerPC.
 
 ## Compiling For PetaLinux

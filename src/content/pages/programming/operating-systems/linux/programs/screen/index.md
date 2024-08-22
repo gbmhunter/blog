@@ -7,8 +7,6 @@ title: screen
 type: page
 ---
 
-## Overview
-
 screen can be used as a terminal, to send and receive information from a serial port.
 
 ## Pausing The Terminal And Scrolling Through Past Data

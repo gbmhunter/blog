@@ -7,8 +7,6 @@ title: meld
 type: page
 ---
 
-## Overview
-
 **meld** is a graphical software tool that allows the user to compare and merge the differences between files and folders.
 
 It is commonly used when **resolving merge conflicts** between two files with are under a version control system such as git.
