@@ -10,9 +10,6 @@ title: Op-Amps
 type: page
 ---
 
-
-## Overview
-
 At it's most basic level, an _operational amplifier_ (op-amp) is a **discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain**.
 
 An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manipulate the op-amp to act as as a current amplifier or perform "mathematical" operations on signals.
@@ -21,7 +18,7 @@ An op-amp's gain can be adjusted with the appropriate external circuitry (the op
 
 An op-amp is commonly drawn on schematics as:
 
-<Image src={import('./op-amp-basic-schematic-symbol.svg')} width="500px">The basic schematic symbol for an op-amp.</Image>
+<Image src={import('./_assets/op-amp-basic-schematic-symbol.svg')} width="500px">The basic schematic symbol for an op-amp.</Image>
 
 You may see this symbol with or without the voltage supply pins $ +V_{S} $ and $ -V_{S} $. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
@@ -43,7 +40,7 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 
 A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp.
 
-<Image src={import('./op-amp-schematic-voltage-follower-buffer.svg')} width="500px">An op-amp configured as a voltage follower (aka buffer).</Image>
+<Image src={import('./_assets/op-amp-schematic-voltage-follower-buffer.svg')} width="500px">An op-amp configured as a voltage follower (aka buffer).</Image>
 
 The output voltage for a voltage follower is just simply:
 
@@ -60,11 +57,11 @@ As shown in Eq $\ref{eq:buffer-vout-eq-vin}$, the output voltage is the same as 
 
 A simulation schematic for a voltage-follower op-amp is shown below.
 
-<Image src={import('./simulation-schematic-for-op-amp-voltage-follower-buffer.png')} width="400px">A simulation schematic for an op-amp configured as a voltage-follower (buffer).</Image>
+<Image src={import('./_assets/simulation-schematic-for-op-amp-voltage-follower-buffer.png')} width="400px">A simulation schematic for an op-amp configured as a voltage-follower (buffer).</Image>
 
 The results of the simulation:
 
-<Image src={import('./output-voltage-vs-input-voltage-op-amp-voltage-follower.png')} width="600px">The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.</Image>
+<Image src={import('./_assets/output-voltage-vs-input-voltage-op-amp-voltage-follower.png')} width="600px">The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.</Image>
 
 </Aside>
 
@@ -72,7 +69,7 @@ The results of the simulation:
 
 A op-amp in the non-inverting amplifier configuration is shown below.
 
-<Image src={import('./non-inverting-amplifier-schematic.svg')} width="500px">An op-amp configured as a non-inverting amplifier.</Image>
+<Image src={import('./_assets/non-inverting-amplifier-schematic.svg')} width="500px">An op-amp configured as a non-inverting amplifier.</Image>
 
 The equation for the output voltage of the non-inverting amplifier is:
 
@@ -102,11 +99,11 @@ A_V &= 1 + \frac{R_f}{R_i} \\
 \end{align}
 $$
 
-<Image src={import('./non-inverting-op-amp-amplifier-simulation-schematic.png')} width="450px">The simulation schematic for a non-inverting op-amp amplifier.</Image>
+<Image src={import('./_assets/non-inverting-op-amp-amplifier-simulation-schematic.png')} width="450px">The simulation schematic for a non-inverting op-amp amplifier.</Image>
 
 The results of the simulation are shown below. As you can see, the output voltage $v_{out}$ is exactly twice the input voltage $v_{in}$.
 
-<Image src={import('./vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png')} width="700px">A graph of $v_{out}$ vs. $v_{in}$ for a non-inverting op-amp amplifier circuit.</Image>
+<Image src={import('./_assets/vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png')} width="700px">A graph of $v_{out}$ vs. $v_{in}$ for a non-inverting op-amp amplifier circuit.</Image>
 
 </Aside>
 
@@ -114,7 +111,7 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 A op-amp amplifier in the inverting configuration is shown below.
 
-<Image src={import('./inverting-amplifier-schematic.svg')} width="500px">An op-amp configured as an inverting amplifier.</Image>
+<Image src={import('./_assets/inverting-amplifier-schematic.svg')} width="500px">An op-amp configured as an inverting amplifier.</Image>
 
 The equation for the output voltage of an inverting amplifier is:
 
@@ -132,11 +129,11 @@ The negative sign is to show that the output is the inverse polarity of the inpu
 
 Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how is requires a negative voltage power supply.
 
-<Image src={import('./inverting-op-amp-simulation-schematic.png')} width="600px">A schematic for simulating the behaviour of an inverting op-amp.</Image>
+<Image src={import('./_assets/inverting-op-amp-simulation-schematic.png')} width="600px">A schematic for simulating the behaviour of an inverting op-amp.</Image>
 
 And below are the simulation results for the above schematic:
 
-<Image src={import('./vout-vs-vin-inverting-op-amp-gain-neg-1.png')} width="700px">$v_{out}$ vs. $v_{in}$ for an inverting op-amp with a gain of -1.</Image>
+<Image src={import('./_assets/vout-vs-vin-inverting-op-amp-gain-neg-1.png')} width="700px">$v_{out}$ vs. $v_{in}$ for an inverting op-amp with a gain of -1.</Image>
 
 </Aside>
 
@@ -144,7 +141,7 @@ And below are the simulation results for the above schematic:
 
 A difference (a.k.a _differential_ or _subtractive_) amplifier is an op-amp circuit which amplifies the voltage difference between two electrical signals. It is the mathematical equivalent of subtraction with some additional gain. The schematic is shown below:
 
-<Image src={import('./differential-amplifier-schematic.svg')} width="700px">An op-amp configured as a differential amplifier.</Image>
+<Image src={import('./_assets/differential-amplifier-schematic.svg')} width="700px">An op-amp configured as a differential amplifier.</Image>
 
 The output voltage is given by the equation[^electronics-tutorials-ws-the-differential-amplifier]:
 
@@ -174,11 +171,11 @@ Now you can clearly see how it behaves as a subtractor ($v_1 - v_2$) followed by
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
-<Image src={import('./differential-op-amp-simulation-schematic.png')} width="800px">A schematic for simulating the behaviour of a differential op-amp.</Image>
+<Image src={import('./_assets/differential-op-amp-simulation-schematic.png')} width="800px">A schematic for simulating the behaviour of a differential op-amp.</Image>
 
 This schematic produces the following results:
 
-<Image src={import('./differential-op-amp-simulation-graph-vin1-vin2-vout.png')} width="700px">A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.</Image>
+<Image src={import('./_assets/differential-op-amp-simulation-graph-vin1-vin2-vout.png')} width="700px">A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.</Image>
 
 </Aside>
 
@@ -186,7 +183,7 @@ This schematic produces the following results:
 
 An _integration amplifier_ performs mathematical integration on the input signal -- It's output voltage is proportional to the integral of the input voltage w.r.t. time. The below schematic shows an **ideal** op-amp based integrator.
 
-<Image src={import('./integration-amplifier-schematic-ideal.svg')} width="500px">An op-amp configured as an ideal integrator.</Image>
+<Image src={import('./_assets/integration-amplifier-schematic-ideal.svg')} width="500px">An op-amp configured as an ideal integrator.</Image>
 
 Eq. $\ref{eq:vout-vin-ideal-integrator}$ shows the relationship between input and output voltage.
 
@@ -201,7 +198,7 @@ $$
 
 A way to fix this problem is to insert a high-valued feedback resistor, $R_f$, to limit the DC gain, as well as a resistor, $R_{bias}$, on the non-inverting input terminal to compensate for the input bias current.
 
-<Image src={import('./integration-amplifier-schematic-non-ideal.svg')} width="430px">An op-amp configured as a non-ideal (real world) integrator, with feedback resistor $R_f$ to slowly remove DC offset and $R_{bias}$ to compensate for input bias current.</Image>
+<Image src={import('./_assets/integration-amplifier-schematic-non-ideal.svg')} width="430px">An op-amp configured as a non-ideal (real world) integrator, with feedback resistor $R_f$ to slowly remove DC offset and $R_{bias}$ to compensate for input bias current.</Image>
 
 $$
 \begin{align}
@@ -233,7 +230,7 @@ See the [Photodiodes page](/electronics/components/diodes/photodiodes/) for info
 
 An **op-amp can be easily wired up with a MOSFET and sense resistor to make a _voltage controlled current source_**. See [Current Sources And Sinks: Op-amp Current Sink](/docs/electronics/components/current-sources-and-sinks/index.mdx#op-amp-current-sink) for info on how to make an op-amp current source, including schematics, equations and worked examples.
 
-<Image src={import('./op-amp-current-sink-schematic.png')} width="500px">Schematic of an op-amp based current sink. See [Current Sources And Sinks: Op-amp Current Sink](/docs/electronics/components/current-sources-and-sinks/index.mdx#op-amp-current-sink) for more info.</Image>
+<Image src={import('./_assets/op-amp-current-sink-schematic.png')} width="500px">Schematic of an op-amp based current sink. See [Current Sources And Sinks: Op-amp Current Sink](/docs/electronics/components/current-sources-and-sinks/index.mdx#op-amp-current-sink) for more info.</Image>
 
 ### Summing Amplifiers
 
@@ -249,7 +246,7 @@ Summing amplifiers are used for things such as:
 
 The below schematic shows a inverting summing amplifier with three inputs.
 
-<Image src={import('./summing-amplifier-inverting.svg')} width="500px">A summing amplifier with three inputs.</Image>
+<Image src={import('./_assets/summing-amplifier-inverting.webp')} width="500px">A summing amplifier with three inputs.</Image>
 
 **_How Does The Inverting Summing Amplifier Work?_**
 
@@ -317,7 +314,7 @@ The _non-inverting summing amplifier_ is similar to the _inverting summing ampli
 
 The below schematic shows a non-inverting summing amplifier with three inputs.
 
-<Image src={import('./summing-amplifier-non-inverting.svg')} width="500px">A non-inverting summing amplifier with three inputs.</Image>
+<Image src={import('./_assets/summing-amplifier-non-inverting.svg')} width="500px">A non-inverting summing amplifier with three inputs.</Image>
 
 If all the input resistors are equal ($R_1 = R_2 = R_3 = R$), the gain equation is:
 
@@ -385,9 +382,9 @@ Op-amps can be used to perform _level-shifting_. The concept of level-shifting i
 
 The below schematic shows a op-amp based level shifter which converts a $\pm 5.0V$ signal into a $0-3.3V$ signal, suitable for passing into a microcontrollers DAC for digital conversion and processing (microcontrollers often run of $+3.3V$, hence that is also a common choice for the reference voltage of the DAC). If you used rail-to-rail op-amps, you might be able to get away with lowering the voltage rails for the op-amp to $\pm 5.0V$.
 
-<Image src={import('./level-shifter-sim/schematic.png')} width="700px">Schematic of a level-shifting circuit that converts a $\pm 5.0V$ signal into a $0-3.3V$ signal.</Image>
+<Image src={import('./_assets/level-shifter-sim/schematic.png')} width="700px">Schematic of a level-shifting circuit that converts a $\pm 5.0V$ signal into a $0-3.3V$ signal.</Image>
 
-<Image src={import('./level-shifter-sim/out.png')} width="700px">Simulation results of the level-shifting circuit shown in [^level-shifter-sim-schematic]. You can clearly see that the $\pm 5.0V$ signal has been level-shifted to the range $0-3.3V$. Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted).</Image>
+<Image src={import('./_assets/level-shifter-sim/out.png')} width="700px">Simulation results of the level-shifting circuit shown in [^level-shifter-sim-schematic]. You can clearly see that the $\pm 5.0V$ signal has been level-shifted to the range $0-3.3V$. Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted).</Image>
 
 </Aside>
 
@@ -402,11 +399,11 @@ An op-amp can be combined with a regular diode to make an "ideal diode" (also ca
 
 The below schematic shows the most basic form of an ideal diode (a.k.a. a _half-wave rectifier_). Because feedback to the inverting pin is taken from the load ($v_{out}$), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when $v_{in}$ is positive), thereby compensating for the forward voltage drop of the diode. When $v_{in}$ is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
 
-<Image src={import('./ideal-diode-basic.svg')} width="600px">A basic ideal diode circuit.</Image>
+<Image src={import('./_assets/ideal-diode-basic.svg')} width="600px">A basic ideal diode circuit.</Image>
 
 The below graph shows the response of the basic ideal diode circuit.
 
-<Image src={import('./ideal-diode-basic-response.png')} width="500px">The response of the basic ideal diode circuit.</Image>
+<Image src={import('./_assets/ideal-diode-basic-response.png')} width="500px">The response of the basic ideal diode circuit.</Image>
 
 The ideal diode is only ideal up to a point. It is not limited by the bandwidth and max. slew rates of the op-amp, which is typically much less than of a basic diode! There is also an issue with slew rates with the above circuit. As soon as $v_{in}$ goes negative, the op-amp will "saturate" and swing it's output to the maximum negative voltage. This will cause some delay on the output (limited by the slew rate) when the input once again goes positive.
 
@@ -416,7 +413,7 @@ TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky
 
 The below schematic shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle[^bib-microchip-op-amp-rectifiers]. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
 
-<Image src={import('./ideal-diode-improved-inverting.svg')} width="700px">An improved ideal diode/half-wave rectifier.</Image>
+<Image src={import('./_assets/ideal-diode-improved-inverting.svg')} width="700px">An improved ideal diode/half-wave rectifier.</Image>
 
 The gain of the half-wave rectifier above is:
 
@@ -433,7 +430,7 @@ $$
 
 The basic op-amp based _sample and hold_ circuit is an extension of the ideal diode circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
 
-<Image src={import('./sample-and-hold.svg')} width="600px">Basic op-amp based sample-and-hold circuit.</Image>
+<Image src={import('./_assets/sample-and-hold.svg')} width="600px">Basic op-amp based sample-and-hold circuit.</Image>
 
 ## Important Variables
 
@@ -447,7 +444,7 @@ The _common-mode input voltage range_ is the range of voltages that can appear a
 
 **The _input offset voltage_ $V_{OS}$ (or sometimes called $V_{IO}$) is the voltage difference required between the two input pins to force the output to 0**. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V, hence the input offset voltage is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. The below circuit shows how the input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp.
 
-<Image src={import('./input-offset-voltage-model.svg')} width="600px">The input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp (it doesn't matter which input, as the input offset voltage can be positive or negative).</Image>
+<Image src={import('./_assets/input-offset-voltage-model.svg')} width="600px">The input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp (it doesn't matter which input, as the input offset voltage can be positive or negative).</Image>
 
 A non-zero input offset voltage results in gain errors between the input and output of a op-amp. The input offset voltage is typically in the following ranges:
 
@@ -472,7 +469,7 @@ Some op-amps are trimmed by the manufacturer after the op-amp is packaged. Perfo
 
 If your op-amp lacks a dedicated trim pin, you can make your own trimming circuit as shown below. This is for an op-amp in the inverting configuration. $VR1$ is a potentiometer, manually adjusted until it cancels out the op-amps input offset voltage. 
 
-<Image src={import('./input-offset-voltage-trimming-inverting.svg')} width="700px">A popular way of performing external input offset voltage trimming with a inverting op-amp.</Image>
+<Image src={import('./_assets/input-offset-voltage-trimming-inverting.svg')} width="700px">A popular way of performing external input offset voltage trimming with a inverting op-amp.</Image>
 
 The maximum input offset voltage you can compensate for with this circuit is given by Eq $\ref{eq:trim-inverting-offset}$[^bib-analog-devices-input-offset-voltage].
 
@@ -523,7 +520,7 @@ Op-amps have a limited output slew rate due to internal compensation capacitor c
 
 The plot below shows how the non-infinite slew rate of an op-amp distorts the shape of an input square-wave "pulse". The slew rate of $0.4V/us$ (which is not particularly good by any standard) of the "jellybean" LM324 op-amp was used in this plot[^bib-ti-lm324-datasheet].
 
-<Image src={import('./slew-rate-distortion-diagram-square-wave.png')} width="500px">Plot showing the effect an op-amps slew rate on a input square wave. Slew rate was chosen to be equal to the LM324's of 0.4V/us[^bib-ti-lm324-datasheet].</Image>
+<Image src={import('./_assets/slew-rate-distortion-diagram-square-wave.png')} width="500px">Plot showing the effect an op-amps slew rate on a input square wave. Slew rate was chosen to be equal to the LM324's of 0.4V/us[^bib-ti-lm324-datasheet].</Image>
 
 The **max. slew rate of an op-amp limits the amplitude of output waveforms it can produce at high frequencies without distortion**. This parameter usually increases as the GBW of the op-amp increases. Higher slew rate op-amps also tend to have higher quiescent currents.
 
@@ -596,7 +593,7 @@ $$
 
 The below plot shows different levels of distortion for a 10V (peak) 20kHz sine wave when it is generated by an op-amps with different slew rates. The jellybean LM324 slew rate of $0.4V/us$ is shown (which outputs a triangle wave!) along with a slightly better $1.0V/us$ (which just clips the sine wave). The minimum slew rate required to prevent any distortion of the sine wave is $1.26V/us$.
 
-<Image src={import('./slew-rate-distortion-diagram-sine-wave.png')} width="600px">Plots showing the distortion of a 10V (peak) 20kHz sine wave when subjected to different op-amp slew rates.</Image>
+<Image src={import('./_assets/slew-rate-distortion-diagram-sine-wave.png')} width="600px">Plots showing the distortion of a 10V (peak) 20kHz sine wave when subjected to different op-amp slew rates.</Image>
 
 ### Quiescent Current
 
@@ -665,7 +662,7 @@ A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the 
 
 This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
-<Image src={import('./lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png')} width="688px">The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png')} width="688px">The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.</Image>
 
 ### Micropower Op-Amps
 
@@ -710,11 +707,11 @@ Open-loop gain $A_V$ (sometimes written as $A_{OL}$) is the gain of the op-amp w
 
 Closed loop gain $G_V$ is the over-all gain of the op-amp with feedback.
 
-<Image src={import('./open-loop-vs-closed-loop-op-amp-gain-bode-plot.svg')} width="500px">How the open-loop and closed-loop gain of an op-amp changes with increasing frequency.</Image>
+<Image src={import('./_assets/open-loop-vs-closed-loop-op-amp-gain-bode-plot.svg')} width="500px">How the open-loop and closed-loop gain of an op-amp changes with increasing frequency.</Image>
 
 We can generalize the circuit of an op-amp with negative feedback to the block diagram shown below. 
 
-<Image src={import('./generalized-negative-feedback-block-diagram.svg')} width="700px">A block diagram showing a generalized op-amp configuration with negative feedback.</Image>
+<Image src={import('./_assets/generalized-negative-feedback-block-diagram.svg')} width="700px">A block diagram showing a generalized op-amp configuration with negative feedback.</Image>
 
 From the above block diagram we can write an equation for $v_{out}$:
 
@@ -791,7 +788,7 @@ Dedicated charge-pump topology power supply ICs are available that supply a smal
 
 Isolation amplifiers provide galvanic isolation between the input (sensor) and output (measurement circuitry). They are used to protect the sensor measurement and recording circuitry (e.g. a microcontroller with on-board ADC) from dangerously high voltages at the sensor, and also the opposite, to protect the sensor environment from potentially dangerous voltages on the rest of the system.
 
-<Image src={import('./fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png')} width="700px">A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png')} width="700px">A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.</Image>
 
 A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
 
@@ -801,7 +798,7 @@ Basic isolation amplifiers require two power supplies (one for each side of isol
 
 One of the first things you learn about an op-amp is that the input impedance on the input pins are very large (ideally infinite). So naturally you would start to question why resistors would be connected to the input pins of an op-amp like shown below.
 
-<Image src={import('./op-amp-input-pin-resistors.png')} width="500px">Schematic showing a resistor on the positive input to a op-amp.</Image>
+<Image src={import('./_assets/op-amp-input-pin-resistors.png')} width="500px">Schematic showing a resistor on the positive input to a op-amp.</Image>
 
 These input resistors serve to limit the input current if the voltage on the input pin goes above $V_{CC}$. Most op-amps have protection/clamping diodes from the input pins to $V_{CC}$ (typically you can determines this if in the datasheet the input pins max voltage is rated to $V_{CC} + 0.3V$, which is one diode voltage drop). If there was no resistor there, the built-in diode would conduct and sink a large current from the input pin to $V_{CC}$, possibly damaging the op-amp. The resistor limits this current to a safe value.
 
@@ -809,7 +806,7 @@ These input resistors serve to limit the input current if the voltage on the inp
 
 Some op-amps which are designed to have very low input offset voltages also come with _offset nulling pins_ to further trim the input offset voltage once the op-amp is installed in circuit. The OP07 is one op-amp which has these pins. Typically, a $10-50k\Omega$ potentiometer is connected across these pins with the wiper going to $V_{CC}$, as shown below.
 
-<Image src={import('./op07-op-amp-offset-nulling-circuit.png')} width="500px">Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf.</Image>
+<Image src={import('./_assets/op07-op-amp-offset-nulling-circuit.png')} width="500px">Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf.</Image>
 
 <Aside type="caution">
 If not using the trim pins, leave them not connected (open circuit). Do NOT connect them to ground.
@@ -821,7 +818,7 @@ If not using the trim pins, leave them not connected (open circuit). Do NOT conn
 
 A _negative impedance converter_ (NIC) is a clever op-amp circuit which creates negative impedance (you might be wondering what negative impedance actually is, more on this later). A NIC can be constructed from an op-amp and a few passive components as shown in the following schematic:
 
-<Image src={import('./negative-impedance-converter-nic.svg')} width="500px">Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components.</Image>
+<Image src={import('./_assets/negative-impedance-converter-nic.svg')} width="500px">Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components.</Image>
 
 Typically the two resistances are the same ($R1 = R2$), and then the input impedance $Z_{IN}$ is:
 
@@ -944,7 +941,7 @@ Op-amps are usually packaged in industry standard through-hole and surface mount
 
 For 8-pin packages:
 
-<Image src={import('./standard-8-pin-dual-op-amp-pinout.svg')} width="400px">The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages.</Image>
+<Image src={import('./_assets/standard-8-pin-dual-op-amp-pinout.svg')} width="400px">The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages.</Image>
 
 [^bib-ti-lm234-datasheet]: Texas Instruments (2015). _LMx24-N, LM2902-N Low-Power, Quad-Operational Amplifiers_. Retrieved 2020-10-20, from https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf.
 [^bib-ti-app-report-input-offset-voltage]: Palmer, Richard (2001). _DC Parameters: Input Offset Voltage (Vio)_. Texas Instruments. Retrieved 2020-10-20, from https://www.ti.com/lit/an/sloa059/sloa059.pdf.

@@ -2,9 +2,48 @@
 	/* Larger content width, default of 45rem is too narrow when on wide screens */
 	--sl-content-width: 60rem;
 
+	
+	--sl-text-2xs: 0.75rem;
+    --sl-text-xs: 0.8125rem;
+    --sl-text-sm: 0.875rem;
+    --sl-text-base: 1rem;
+    --sl-text-lg: 1.125rem;
+    --sl-text-xl: 1.25rem;
+    --sl-text-2xl: 1.5rem;
+    --sl-text-3xl: 1.8125rem;
+    --sl-text-4xl: 2.1875rem;
 	/* Larger page titles (h1) */
-	--sl-text-5xl: 3.5rem;
+    --sl-text-5xl: 3.5rem;
+    --sl-text-6xl: 4rem;
+
+	--sl-text-body: var(--sl-text-base);
+    --sl-text-body-sm: var(--sl-text-xs);
+    --sl-text-code: var(--sl-text-sm);
+    --sl-text-code-sm: var(--sl-text-xs);
 }
+
+/* Default font size for the content was too small (1.0rem). */
+@media (min-width: 72rem) {
+	:root {
+		--sl-text-xs: 1.0rem;
+		--sl-text-base: 1.125rem;
+		--sl-text-code: var(--sl-text-base);
+
+		/* This targets inline code */
+		/* --sl-text-code-sm: var(--sl-text-base); */
+		/* --ec-codeFontSize: var(--sl-text-base) !important; */
+	}
+}
+
+.sl-markdown-content {
+	/* For some reason just setting sl-text-base above is not enough to change the
+	font size of the content. */
+	font-size: var(--sl-text-body);
+}
+
+/* ============================================================================================== */
+/* MATHS */
+/* ============================================================================================== */
 
 .katex * {
     margin-top: 0px !important;
@@ -27,16 +66,17 @@
 
 /* Copied this from Starlight CSS. Removed span from :not lists so that the right spacing would be added
 for katex spans used for display equations. */
-/* .sl-markdown-content :not(a, strong, em, del, input, code) + :not(a, strong, em, del, input, code, :where(.not-content *)) {
-    margin-top: 1rem;
+/* .sl-markdown-content
+	:not(a, strong, em, del, span, input, code, div.expressive-code)
+	+ :not(a, strong, em, del, span, input, code, div.expressive-code, :where(.not-content *)) {
+	margin-top: 1rem;
 } */
 
-/* Default font size for the content was too small (1.0rem). */
-@media (min-width: 72rem) {
-	.main-pane {
-		font-size: 1.15rem;
-	}
+.sl-markdown-content .expressive-code * {
+	margin-top: 0;
 }
+
+
 
 /* This centered class is used a lot for variable definitions underneath display equations */
 .centered {
