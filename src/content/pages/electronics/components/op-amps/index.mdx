@@ -850,7 +850,7 @@ To prove $Z_{IN} = -Z$, we need to find the input current at inverting terminal,
 
 $$
 \begin{align}
-\label{eqn:vzeqv}
+\label{vzeqv}
 V_Z = V
 \end{align}
 $$
@@ -867,7 +867,7 @@ Because there is no current going into the inverting terminal of the op-amp, thi
 
 $$
 \begin{align}
-\label{eqn:i_r2}
+\label{i-r2}
 I_{R2} = \frac{V}{Z}
 \end{align}
 $$
@@ -876,10 +876,10 @@ Now knowing the voltage at the inverting terminal and the current through $R2$ w
 
 $$
 \begin{align}
-\label{eqn:vout_eq}
+\label{vout-eq}
 V_{OUT} &= V_Z + V_{R2} \\
         &= V_Z + I_{R2} \cdot R \\
-        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in eqn-vzeqv and eqn-ir2}
+        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in \ref{vzeqv} and \ref{ir2}}
 \end{align}
 $$
 
@@ -887,9 +887,9 @@ Now that we know the voltage on both sides of $R1$ we can find the voltage acros
 
 $$
 \begin{align}
-\label{eqn:v-r1}
+\label{v-r1}
 V_{R1} &= V_{OUT} - V                   &\\
-       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in eqn:vout-eq} \\
+       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in \ref{vout-eq}} \\
        &= \frac{V}{Z} \cdot R           & &\text{Simplifying}
 \end{align}
 $$
@@ -898,9 +898,9 @@ Now we know the voltage across $R1$ we can find the current going through it usi
 
 $$
 \begin{align}
-\label{eqn:i_r1}
+\label{eqn:i-r1}
 I_{R1} &= \frac{V_{R1}}{R}                &\\
-       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{eqn:v-r1}} \\
+       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{v-r1}} \\
        &= \frac{V}{Z}                     & &\text{Simplifying}
 \end{align}
 $$
@@ -909,7 +909,7 @@ Because the voltage on the right-hand side of $R1$ is higher, this current is fl
 
 $$
 \begin{align}
-\label{eqn:i_in}
+\label{i-in}
 I_{IN} = -\frac{V}{Z}
 \end{align}
 $$
@@ -920,7 +920,7 @@ $$
 \begin{align}
 \label{eqn:z_in}
 Z_{IN} &= \frac{V_{IN}}{I_{IN}}       & &\text{Ohms law} \\
-       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in eqn:i-in} \\
+       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in \ref{i-in}} \\
        &= -Z                          & &\text{Simplifying} \\
 \end{align}
 $$
@@ -941,7 +941,7 @@ Op-amps are usually packaged in industry standard through-hole and surface mount
 
 For 8-pin packages:
 
-<Image src={import('./_assets/standard-8-pin-dual-op-amp-pinout.svg')} width="400px">The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages.</Image>
+<Image src={import('./_assets/standard-8-pin-dual-op-amp-pinout.webp')} width="400px">The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages.</Image>
 
 [^bib-ti-lm234-datasheet]: Texas Instruments (2015). _LMx24-N, LM2902-N Low-Power, Quad-Operational Amplifiers_. Retrieved 2020-10-20, from https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf.
 [^bib-ti-app-report-input-offset-voltage]: Palmer, Richard (2001). _DC Parameters: Input Offset Voltage (Vio)_. Texas Instruments. Retrieved 2020-10-20, from https://www.ti.com/lit/an/sloa059/sloa059.pdf.
