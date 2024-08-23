@@ -1,10 +1,11 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 categories: [ Electronics, Electronic Components ]
 date: 2015-03-25
-description: How they work, crosstalk, switching speeds, power consumtion, examples and more info on analogue switches (tranmission gates).
+description: Analogue switches (transmission gates) are electronically controlled switches that allow voltage and current to flow in either direction. This page covers how they work, crosstalk, switching speeds, power consumption, examples and more.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-02-21
-tags: [ analogue, analog, switches, crosstalk, power consumption, CMOS, MOSFETs, ADC, resistance, substrate, transmission gates, TGs, flip-flops, latches, I2C ]
+tags: [analogue, analog, switches, crosstalk, power consumption, CMOS, MOSFETs, ADC, resistance, substrate, transmission gates, TGs, flip-flops, latches, I2C]
 title: Analogue Switches (Transmission Gates)
 type: page
 ---
@@ -24,10 +25,8 @@ The basic idea is to connect 1 N-channel and 1 P-channel MOSFET together in para
 
 <Image src={import('./_assets/analog-switch-circuit-two-mosfets.svg')} width="600">Circuit diagram of a basic CMOS analogue switch, using one P-channel MOSFET ($Q1$) and one N-channel MOSFET ($Q2$).</Image>
 
-{/* {{% aside type="warning" %}} */}
 <Aside type="caution">
 The substrates of the two MOSFETS in the diagram above are not connected to the source pin, as they typically are for all discrete MOSFETs. Instead they are connected to $V_{SS}$ (e.g. $GND$) and $V_{DD}$ respectively such that 1 of the two internal body diodes is always reverse biased and OFF. They have to be like this for this circuit to work correctly. If the substrate WAS connected to the source (like a regular discrete MOSFET), then one of the inherent body diodes is shorted out, leaving only 1 remaining per MOSFET. These remaining body diodes would forward conduct in 1 direction and would mean it would be impossible to turn the analogue switch off. For this reason, you cannot make an analogue switch as shown from typical discrete MOSFETs. See the [MOSFETs page](/docs/electronics/components/transistors/mosfets/index.mdx#the-body-effect-and-connecting-the-substrate-to-the-source) for more info.
-{/* {{% /aside %}} */}
 </Aside>
 
 When the analogue switch is turned on, the resistance of each MOSFET depends on the analogue switch voltage. At low voltages, the N-channel MOSFETs resistance is very low and conducts most of the current. As the voltage rises, the P-channel MOSFETs resistance decreases whilst the N-channel increases, at the P-channel conducts most of the current. The graph below shows the resistance of each individual MOSFET, as well as the combined resistance seen by an external circuit. The combined resistance is the parallel resistance of both the N-channel and P-channel MOSFET.
@@ -42,7 +41,7 @@ A _transmission gate_ (which can be abbreviated to just _TG_[^bib-electronics-tu
 
 When showing a transmission gate on a schematic, it is almost **never drawn showing discrete MOSFETs**. It is usually simplified in the form of a "single bow tie" or "double bow tie" symbol, as shown below. Sometimes, simplified MOSFET symbols are shown, in where no arrows are used to indicate NMOS from PMOS, but rather a "inverting bubble" is added to the gate of the PMOS MOSFET. 
 
-<Image src={import('./_assets/transmission-gate-symbols.png')} width="900">Various schematic symbols used for transmission gates (the same thing as an analogue switch but used for digital signals).</Image>
+<Image src={import('./_assets/transmission-gate-symbols.webp')} width="900">Various schematic symbols used for transmission gates (the same thing as an analogue switch but used for digital signals).</Image>
 
 $CLK$ is the gate of the N-channel MOSFET, $\overline{CLK}$ the gate of the P-channel. $A$ and $B$ are the two sides of the transmission gate.
 
