@@ -1,13 +1,12 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 date: 2012-08-20
-draft: false
+description: Power regulators aim to convert input voltages and currents into different output voltages and currents. This section covers SMPS, linear regulators, charge pumps, voltage references and more.
 lastUpdated: 2023-04-24
-tags: [ power, regulator, linear, buck, boost, DC/DC, converter, topology, SEPIC, current sharing ]
+tags: [power, regulator, linear, buck, boost, DC/DC, converter, topology, SEPIC, current sharing]
 title: Power Regulators
 type: page
 ---
-
 
 Power regulators aim to **convert input voltages and currents into different output voltages and currents**. There are many different ways of doing this, an each design has its benefits and advantages. The important parameters of all types of power regulators are efficiency, power levels, versatility, accuracy, noise, size and complexity.
 
@@ -63,16 +62,12 @@ If you want to increase the voltage and have really low current requirements, [C
         </tr>
         <tr>
           <td>Topology</td>
-          <td>The type of design/technology of the converter (e.g. a buck converter is one type of topology, while a boost converter is another.</td>
+          <td>The type of design/technology of the converter (e.g. a buck converter is one type of topology, while a boost converter is another).</td>
         </tr>
     </tbody>
 </table>
 
 ## Topology Summary
-
-import lm7805_voltage_regulator from './lm7805-voltage-regulator.jpg'
-import ptma401120_dcdc_converter_module_from_ti from './ptma401120-dcdc-converter-module-from-ti.png'
-import joule_thief from './joule-thief.jpg'
 
 <table>
     <thead>
@@ -102,7 +97,7 @@ import joule_thief from './joule-thief.jpg'
     </ul>
   </td>
   <td>Uses transistors to create a dynamically changing resistance to drop the voltage to the required level (hence linear). Dissipates the energy as heat, and therefore is very inefficient, and limited in power. Linear regulators have very low radiated EMI because they do not have a switching element. For the very same reason they also have very low output ripple, and high PSRR (power supply rejection ratio).</td>
-  <td><Image src={lm7805_voltage_regulator} width="160px">The LM7805 5V linear voltage regulator in a TO-220 package.</Image></td>
+  <td><Image src={import('./_assets/lm7805-voltage-regulator.jpg')} width="160px">The LM7805 5V linear voltage regulator in a TO-220 package.</Image></td>
 </tr>
 <tr>
 <td>Buck Converter</td>
@@ -119,7 +114,7 @@ import joule_thief from './joule-thief.jpg'
   </ul>
 </td>
 <td>Uses an inductor, capacitor and switching element to reduce the input voltage. The alternative method to a buck converter for reducing the input voltage is a linear voltage regulator. Very high efficiencies in some cases due to the absence resistive power losses.</td>
-<td><Image src={ptma401120_dcdc_converter_module_from_ti} width="160px">The PTMA401120 DC/DC converter module from Texas Instruments. This can convert anything from 36 to 72V down to 12V with a 1A output.</Image></td>
+<td><Image src={import('./_assets/ptma401120-dcdc-converter-module-from-ti.png')} width="160px">The PTMA401120 DC/DC converter module from Texas Instruments. This can convert anything from 36 to 72V down to 12V with a 1A output.</Image></td>
 </tr>
 <tr>
   <td>Boost Converter</td>
@@ -189,14 +184,14 @@ import joule_thief from './joule-thief.jpg'
     </ul>
   </td>
   <td> Used in low power and cheap applications, e.g. powering an LED from a 1.5V battery.</td>
-  <td><Image src={joule_thief} width="160px">A tiny Joule Thief made for a single coin battery that can power an LED.</Image></td>
+  <td><Image src={import('./_assets/joule-thief.jpg')} width="160px">A tiny Joule Thief made for a single coin battery that can power an LED.</Image></td>
 </tr>
 </tbody>
 </table>
 
 ## DC/DC Converters And Controllers
 
-<Image src={import('./recom-acdc-converter.jpg')} width="200px">A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA.</Image>
+<Image src={import('./_assets/recom-acdc-converter.jpg')} width="200px">A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA.</Image>
 
 DC/DC converters and controllers are ICs which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/transistors/mosfets/)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
 
@@ -206,7 +201,7 @@ Two important patents in the history of DC/DC converters are patent [US3040271](
 
 DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard.
 
-<Image src={import('./ul60950-limited-power-circuits-graph.png')} width="400px">A graph of voltage vs. current for a LPS (limited power supply).</Image>
+<Image src={import('./_assets/ul60950-limited-power-circuits-graph.png')} width="400px">A graph of voltage vs. current for a LPS (limited power supply).</Image>
 
 ### Efficiencies
 

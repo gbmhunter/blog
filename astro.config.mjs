@@ -57,6 +57,7 @@ export default defineConfig({
         rehypeKatex,
         {
           displayMode: false,
+          strict: false,
           // See https://katex.org/docs/options.html for how macros (or other options)
           // work
           // support eqref

@@ -1,15 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
+authors: [Geoffrey Hunter]
 date: 2015-03-24
-description: "Topologies (buck, boost, buck-boost, SEPIC, Ćuk), control methods, component selection, equations, operation modes, schematics, examples and more info on switch-mode power supplies."
+description: Switch-mode power supplies are power regulators that use electronic switching to convert voltages and currents. Topologies include buck, boost, buck-boost, SEPIC and Ćuk.
 draft: false
-lastUpdated: 2023-06-18
-tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode", "SEPIC", "Cuk", "Ćuk" ]
-title: "Switch Mode Power Supplies (SMPS)"
-type: "page"
+lastUpdated: 2024-08-23
+tags: [electronics, components, power regulators, SMPS, buck converter, power electronics, inductor, capacitor, regulation, control methods, constant frequency, current-mode, SNVA555, PCM, peak current mode, CCM, constant current mode, SEPIC, Cuk, Ćuk]
+title: Switch Mode Power Supplies (SMPS)
+type: page
 ---
-
 
 _Switch-mode power supplies_ (SMPS) are power conversion circuits that efficiently convert input voltages/currents (power) into different output voltages/currents by **switching currents through inductors and capacitors**.
 
@@ -20,7 +18,7 @@ There are many child pages covering the various SMPS topologies. If you want to:
 * Increase or decrease the voltage, see the [Floating Buck-Boost page](floating-buck-boost-converters/), or [SEPIC page](sepics/)
 * Increase or decrease AND invert the voltage, see the [Inverting Buck-Boost Converters page](inverting-buck-boost-converters/)
 
-Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, **SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor** (and are not limited to just producing lower output voltages, they can produce higher output voltages also).
+Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, **SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor** (and are not limited to just producing lower output voltages, they can produce higher output voltages also). While constant output voltage is the more common configuration, they can also be configured with constant current outputs (i.e. act as a current source) which is useful for things such as LED drivers. 
 
 If you want to learn about the different SMPS control methodologies, e.g. voltage mode control or current mode control, see the [SMPS Control Methodologies page](control-methodologies/)
 

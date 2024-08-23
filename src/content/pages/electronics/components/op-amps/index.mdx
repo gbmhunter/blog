@@ -38,9 +38,9 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 
 ### Voltage Followers (a.k.a. Buffers)
 
-A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp.
+A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp. The schematic is shown below:
 
-<Image src={import('./_assets/op-amp-schematic-voltage-follower-buffer.svg')} width="500px">An op-amp configured as a voltage follower (aka buffer).</Image>
+<Image src={import('./_assets/voltage-follower-buffer-schematic.webp')} width="500px">An op-amp configured as a voltage follower (aka buffer).</Image>
 
 The output voltage for a voltage follower is just simply:
 
@@ -312,9 +312,9 @@ The _non-inverting summing amplifier_ is similar to the _inverting summing ampli
 * More complicated gain equation/resistor values (because there is no virtual ground at the inputs).
 * Unused inputs cannot be left floating, they must be grounded (more on this below).
 
-The below schematic shows a non-inverting summing amplifier with three inputs.
+The below schematic shows a non-inverting summing amplifier with three inputs:
 
-<Image src={import('./_assets/summing-amplifier-non-inverting.svg')} width="500px">A non-inverting summing amplifier with three inputs.</Image>
+<Image src={import('./_assets/summing-amplifier-non-inverting.webp')} width="500px">A non-inverting summing amplifier with three inputs.</Image>
 
 If all the input resistors are equal ($R_1 = R_2 = R_3 = R$), the gain equation is:
 
@@ -399,7 +399,7 @@ An op-amp can be combined with a regular diode to make an "ideal diode" (also ca
 
 The below schematic shows the most basic form of an ideal diode (a.k.a. a _half-wave rectifier_). Because feedback to the inverting pin is taken from the load ($v_{out}$), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when $v_{in}$ is positive), thereby compensating for the forward voltage drop of the diode. When $v_{in}$ is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
 
-<Image src={import('./_assets/ideal-diode-basic.svg')} width="600px">A basic ideal diode circuit.</Image>
+<Image src={import('./_assets/ideal-diode-basic.webp')} width="600px">A basic ideal diode circuit.</Image>
 
 The below graph shows the response of the basic ideal diode circuit.
 
@@ -475,7 +475,7 @@ The maximum input offset voltage you can compensate for with this circuit is giv
 
 $$
 \begin{align}
-\label{eq:trim-inverting-offset}
+\label{eq-trim-inverting-offset}
 V_{offset} =  \pm\left(1 + \frac{R2}{R1}\right) \left(\frac{R_P}{R_P + R3}\right) V_R
 \end{align}
 $$
@@ -879,7 +879,7 @@ $$
 \label{eqn:vout_eq}
 V_{OUT} &= V_Z + V_{R2} \\
         &= V_Z + I_{R2} \cdot R \\
-        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in \ref{eqn:vzeqv} and \ref{eqn:i_r2}}
+        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in eqn-vzeqv and eqn-ir2}
 \end{align}
 $$
 
@@ -887,9 +887,9 @@ Now that we know the voltage on both sides of $R1$ we can find the voltage acros
 
 $$
 \begin{align}
-\label{eqn:v_r1}
+\label{eqn:v-r1}
 V_{R1} &= V_{OUT} - V                   &\\
-       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in \ref{eqn:vout_eq}} \\
+       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in eqn:vout-eq} \\
        &= \frac{V}{Z} \cdot R           & &\text{Simplifying}
 \end{align}
 $$
@@ -900,11 +900,11 @@ $$
 \begin{align}
 \label{eqn:i_r1}
 I_{R1} &= \frac{V_{R1}}{R}                &\\
-       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{eqn:v_r1}} \\
+       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{eqn:v-r1}} \\
        &= \frac{V}{Z}                     & &\text{Simplifying}
 \end{align}
 $$
-"
+
 Because the voltage on the right-hand side of $R1$ is higher, this current is flowing right-to-left. Since no current flows into the inverting terminal of the op-amp, this also must be current flowing "out" of the input terminal. Thus:
 
 $$
@@ -920,7 +920,7 @@ $$
 \begin{align}
 \label{eqn:z_in}
 Z_{IN} &= \frac{V_{IN}}{I_{IN}}       & &\text{Ohms law} \\
-       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in \ref{eqn:i_in}} \\
+       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in eqn:i-in} \\
        &= -Z                          & &\text{Simplifying} \\
 \end{align}
 $$
