@@ -3,8 +3,7 @@ authors: [Geoffrey Hunter]
 categories: [ Electronics, Electronic Components ]
 date: 2011-09-05
 description: Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps).
-draft: false
-lastUpdated: 2023-08-29
+lastUpdated: 2024-08-23
 tags: [op-amps, schematic symbols, analogue, analog, operational amplifiers, inverting, buffers, non-inverting, components, gain, voltage followers, offset nulling, input offset voltages, instrumentation amplifiers, capacitive loading, current sources, quiescent currents, GBW, slew rates, negative impedance converters, NICs, summing amplifiers, level shifting]
 title: Op-Amps
 type: page
@@ -413,7 +412,7 @@ TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky
 
 The below schematic shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle[^bib-microchip-op-amp-rectifiers]. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
 
-<Image src={import('./_assets/ideal-diode-improved-inverting.svg')} width="700px">An improved ideal diode/half-wave rectifier.</Image>
+<Image src={import('./_assets/ideal-diode-improved-inverting.webp')} width="700px">An improved ideal diode/half-wave rectifier.</Image>
 
 The gain of the half-wave rectifier above is:
 
@@ -430,7 +429,7 @@ $$
 
 The basic op-amp based _sample and hold_ circuit is an extension of the ideal diode circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
 
-<Image src={import('./_assets/sample-and-hold.svg')} width="600px">Basic op-amp based sample-and-hold circuit.</Image>
+<Image src={import('./_assets/sample-and-hold.webp')} width="600px">Basic op-amp based sample-and-hold circuit.</Image>
 
 ## Important Variables
 
