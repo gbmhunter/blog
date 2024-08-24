@@ -1,15 +1,13 @@
 ---
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Electronic Components ]
+authors: [Geoffrey Hunter]
 date: 2022-08-06
 description: Info about current mirrors.
-draft: false
+image: ./_assets/cover-image.webp
 lastUpdated: 2022-08-06
-tags: [ electronics, components, current mirrors ]
+tags: [electronics, components, current mirrors]
 title: Current Mirrors
 type: page
 ---
-
 
 A _current mirror_ is a circuit designed to "copy" (mirror) the current through one part of a circuit into another. The output current is kept relatively constant even though the load resistance may be dynamically changing.
 
@@ -19,21 +17,19 @@ Current mirrors are used extensively inside analogue ICs such as operation ampli
 
 You can make a basic current mirror from nothing but two [bi-polar transistors (BJTs)](/electronics/components/transistors/bipolar-junction-transistors-bjts/). Shown below is a basic BJT current mirror made from two NPN BJTs:
 
-<Image src={import('./basic-bjt-current-mirror.png')} width="400px">A basic BJT current mirror made from two NPN bipolar junction transistors.</Image>
+<Image src={import('./_assets/basic-bjt-current-mirror.png')} width="400px">A basic BJT current mirror made from two NPN bipolar junction transistors.</Image>
 
 **<u>How Does It Work?</u>**
 
 Both $Q_1$ and $Q_2$ should be identical transistors at the same temperature. The clever trick in this circuit is the base of $Q_1$ which is connected to its collector. The BJT will adjust it's base-emitter voltage $V_{BE}$ to pass the input current. This  $V_{BE}$ is then applied to the base of $Q_2$. Because it is the same type of transistor as $Q_2$, this $V_{BE}$ should cause the same base current, and the same $\beta$ will produce the same collector current through $Q_2$.  
 
-{/* {{% aside type="note" %}} */}
 <Aside type="note">
 $R_{IN}$ is not strictly needed (it is not part of the current mirror), but added here so you can visualize connecting a voltage source to the input.
-{/* {{% /aside %}} */}
 </Aside>
 
 Below is a circuit simulation of this basic BJT current mirror. 4.37mA is provided to the input leg of the current mirror, and the current mirror sinks 4.28mA from the output. Close enough for many applications!
 
-{/* {{< circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKABcKAWTkFPPCmBS9+UcGJiFs2MFmwYwhThkIJshZFQAmdAGYBDAK4AbNuwoqRAwvitiIDTtHWECRPtgQpsnDZOmyOApKKmoaYHAgOgYmZgBKgsKyGghC4NwSIJy0mTAILABOiby2qcIo2fbwLADuxRW0aSgIfrX1LfUYwpBtZbwdCBnNrXWDPHwCY-0jXOOiCJYTUCwA5sW4PH3YaBKrIDYCG-u221RnLPKNSZZ9aAIQ5wkHvJXPd5mVSGdQ0PmXxwIGgDeF1xOcgA" >}} */}
+<CircuitJs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKABcKAWTkFPPCmBS9+UcGJiFs2MFmwYwhThkIJshZFQAmdAGYBDAK4AbNuwoqRAwvitiIDTtHWECRPtgQpsnDZOmyOApKKmoaYHAgOgYmZgBKgsKyGghC4NwSIJy0mTAILABOiby2qcIo2fbwLADuxRW0aSgIfrX1LfUYwpBtZbwdCBnNrXWDPHwCY-0jXOOiCJYTUCwA5sW4PH3YaBKrIDYCG-u221RnLPKNSZZ9aAIQ5wkHvJXPd5mVSGdQ0PmXxwIGgDeF1xOcgA" />
 
 The main current error in the basic BJT current mirror circuit is because the base of `Q1` and `Q2` "suck" away some of the current you are tying to measure through the collector of `Q1`. If `Q1`/`Q2` had current gains of 100, then $2*\frac{1}{101} = \frac{2}{101}$ of the current will be diverted into the bases rather than through the collector, and hence not mirrored on the output. 
 
@@ -41,10 +37,10 @@ The main current error in the basic BJT current mirror circuit is because the ba
 
 As mentioned above, one of the main problems with the basic current mirror is that the bases of `Q1` and `Q2` "suck" away some of the input current. To improve on this, we can add another NPN BJT on the input side to "buffer" the base of `Q1`/`Q2`. Now only $\frac{1}{101} * \frac{2}{101} = \frac{3}{10201}$ of the current is diverted away. This is called the _buffered feedback current mirror_, or _emitter follower augmented mirror_[^bib-analog-devices-current-mirror].
 
-<Image src={import('./buffered-bjt-current-mirror.png')} width="400px">Schematic of a buffered BJT current mirror.</Image>
+<Image src={import('./_assets/buffered-bjt-current-mirror.png')} width="400px">Schematic of a buffered BJT current mirror.</Image>
 
 Below is a simulation of the buffered feedback current mirror. Notice now the the output current is only $0.03\%$ different from the input! This is a great improvement on the $2\%$ error of the basic BJT current mirror!
 
-{/* {{< circuitjs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKABcKAWTkFPPCmBS9+UcCAYwEfYihRDICbGmL4o0QrmybihTpEJhChZFQAmdAGYBDAK4AbNuwoYTfAYTXuxEBp2jautqQ2AjE2HjYPDCaITp6BkYmYHAgFjYOTgBKgsJCAghCILpiVPrUVJXQCCwATrngng1gsj7wLADuDSjlhcIoCCaQnd2D3RjCw10I3CIFrnNQLADmDbg8fSDKlUurngLrIPtbaKUs2Bi0RfnNTRCVLDnHPVTPaju9peo1F69e5c8JuIHhxNi8uDxwVRfNhoHh9BgwNhiGAZgYesQkFIZHIFEoVGoUuYrHZHCMZpDRBTeGMpt1etdWsMctS5BtZi1JmJPjspCwgA" >}} */}
+<CircuitJs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKABcKAWTkFPPCmBS9+UcCAYwEfYihRDICbGmL4o0QrmybihTpEJhChZFQAmdAGYBDAK4AbNuwoYTfAYTXuxEBp2jautqQ2AjE2HjYPDCaITp6BkYmYHAgFjYOTgBKgsJCAghCILpiVPrUVJXQCCwATrngng1gsj7wLADuDSjlhcIoCCaQnd2D3RjCw10I3CIFrnNQLADmDbg8fSDKlUurngLrIPtbaKUs2Bi0RfnNTRCVLDnHPVTPaju9peo1F69e5c8JuIHhxNi8uDxwVRfNhoHh9BgwNhiGAZgYesQkFIZHIFEoVGoUuYrHZHCMZpDRBTeGMpt1etdWsMctS5BtZi1JmJPjspCwgA" />
 
 [^bib-analog-devices-current-mirror]: Analog Devices (2021, Sep 17). _Chapter 11: The Current Mirror_. Retrieved 2022-08-06, from https://wiki.analog.com/university/courses/electronics/text/chapter-11.
