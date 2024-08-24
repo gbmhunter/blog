@@ -1,45 +1,42 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [Geoffrey Hunter]
 date: 2021-01-18
-description: "Schematic symbols, designators, manufacturing part numbers are more info about common-mode chokes."
-draft: false
+description: Schematic symbols, designators, manufacturing part numbers are more info about common-mode chokes.
+image: ./_assets/cover-image.webp
 lastUpdated: 2021-01-19
-tags: [ "electronics", "components", "common-mode chokes" ]
-title: "Common-mode Chokes"
-type: "page"
+tags: [electronics, components, common-mode chokes]
+title: Common-mode Chokes
+type: page
 ---
-
 
 <WarningIsNotes />
 
 Common-mode chokes 
 
-Power-line filters?
-
 Find them on DigiKey under [Filters -> Common Mode Chokes](https://www.digikey.co.nz/products/en/filters/common-mode-chokes/839) (CMC).
 
 Commmon-mode chokes are good at filtering out high frequency common-mode noise. For filtering out differential-mode noise, see the [Ferrite Bead page](/electronics/components/ferrite-beads/).
+
+<Image src={import('./_assets/wurth-we-cmb-common-mode-power-line-choke.webp')} width="300">A photo of a Wurth WE-CMB common-mode power line choke[^wurth-we-cmb-common-mode-power-line-choke].</Image>
 
 ## Schematic Symbol And Designator
 
 **A common-mode choke is typically drawn as two inductors separated by two lines**. The two lines represent the inductive coupling between the two inductors. A common-mode choke has 4 pins. Typical designator prefixes are `L` (which is also used for a single inductor) or `FL` (for FiLter).
 
-{/* {{% figure src="common-mode-choke-schematic-symbol.png" width="300px" caption="The schematic symbol for a common-mode choke." %}} */}
-<Image src={import('./common-mode-choke-schematic-symbol.png')} width="300">The schematic symbol for a common-mode choke.</Image>
+<Image src={import('./_assets/common-mode-choke-schematic-symbol.png')} width="300">The schematic symbol for a common-mode choke.</Image>
 
 ## How It Works
 
 A common-mode choke blocks common-mode noise (noise which is equal in voltage/current at the same time on two signals, typically power and ground). At this point you might be wondering, how can the current be going in the same direction down both wires, doesn't the current need a return path? The key is to understand that **common-noise finds a way back to it's source through an external ground and capacitive coupling**. The following diagram attempts to illustrate this: 
 
-{/* {{% figure src="common-mode-choke-how-it-works-diagram.svg" width="700px" caption="Diagram showing how a common-mode choke works." %}} */}
-<Image src={import('./common-mode-choke-how-it-works-diagram.svg')} width="700">Diagram showing how a common-mode choke works.</Image>
+<Image src={import('./_assets/common-mode-choke-how-it-works-diagram.svg')} width="700">Diagram showing how a common-mode choke works.</Image>
 
 The other type of noise, differential noise, is not blocked with a common-mode choke. To block differential noise, you need to use something such as a ferrite bead in a pi-filter configuration (the capacitors are not needed, but greatly help!).
 
-{/* {{% figure src="differential-noise-diagram.svg" width="700px" caption="Diagram showing what differential noise is and how it is commonly suppressed." %}} */}
-<Image src={import('./differential-noise-diagram.svg')} width="700">Diagram showing what differential noise is and how it is commonly suppressed.</Image>
+<Image src={import('./_assets/differential-noise-diagram.svg')} width="700">Diagram showing what differential noise is and how it is commonly suppressed.</Image>
 
 ## Manufacturer Part Numbers
 
-* **BNX023-01L**: Expensive but performant power-line filter by Murata. 
+* **BNX023-01L**: Expensive but performant power-line filter by Murata.
+
+[^wurth-we-cmb-common-mode-power-line-choke]: Wurth Elektronik. _WE-CMB Common Mode Power Line Choke [product page]_. Retrieved 2024-08-24, from https://www.we-online.com/en/components/products/WE-CMB.
