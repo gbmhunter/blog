@@ -12,8 +12,7 @@ type: "page"
 
 IDC (_insulation displacement connector_) connectors are very common style of connector used to carry low speed communications and low current power between multiple circuit boards and between circuit boards and other devices. They are distinguishable by the typically black, square and sharp edged connectors, with a ribbon cable coming out the side.
 
-{/* {{% figure src="idc-connector-plug-and-socket-photo.png" width="400px" caption="A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped." %}} */}
-<Image src={import('./idc-connector-plug-and-socket-photo.png')} width="400">A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped.</Image>
+<Image src={import('./_assets/idc-connector-plug-and-socket-photo.png')} width="400">A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped.</Image>
 
 The namesake comes from the way the connector attaches to the ribbon cable --- the connector has sharp "razor" style blades with a notch cut through the center of each one. The ribbon cable is pushed onto the end of the blades, and the blades pierce the ribbon cable and make contact with the blades (hence "displacing the insulation"). This removes the need to strip the end of the ribbon cable and connect via crimps/soldering/screw terminals and thus makes them extremely easy to construct.
 
@@ -25,8 +24,6 @@ A 2.54mm pitched (w.r.t to the pins) IDC connector has two rows of pins, this re
 
 Some IDC connectors come with built-in strain relief. This is usually in the form of a clip which sits ontop of the connector. The cable is brought out of the insulation displacement part and then curled back around to be clamped by the clip. Strain relief is more common on the 2.54mm pitch IDC connectors, and not so much on the 1.27mm pitch IDC connectors. This can be a problem for longevity of these smaller 1.27mm IDC connectors, which are commonly used for 10-pin ARM SWD programming headers.
 
-{/* {{% aside type="note" %}} */}
 <Aside type="note">
 A production line programming step I was involved with used a 10pin 1.27mm pitch IDC cable to connect the programming dongle to the PCB. We were concerned about the reliability when inserting and then pulling out the IDC connector many times over. Sure enough, after about 300 programming cycles the cable failed.
-{/* {{% /aside %}} */}
 </Aside>
