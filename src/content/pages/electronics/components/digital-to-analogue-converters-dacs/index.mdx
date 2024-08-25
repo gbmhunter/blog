@@ -1,15 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [Geoffrey Hunter]
 date: 2020-11-03
-description: "Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs)."
-draft: false
+description: Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs).
+image: ./_assets/cover-image.webp
 lastUpdated: 2021-01-21
-tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma", "unipolar", "single-supply", "bipolar", "ppm", "voltage references", "monotonic", "monotonicity", "multiplying DAC", "TUE", "total unadjusted error", "differential non-linearity", "DNL", "glitches", "glitch energy" ]
-title: "Digital-to-Analogue Converters (DACs)"
-type: "page"
+tags: [electronics, components, digital-to-analogue converters, DACs, string DAC, MDAC, R2R, R-2R, Kelvin divider, voltage switching DAC, delta-sigma, unipolar, single-supply, bipolar, ppm, voltage references, monotonic, monotonicity, multiplying DAC, TUE, total unadjusted error, differential non-linearity, DNL, glitches, glitch energy]
+title: Digital-to-Analogue Converters (DACs)
+type: page
 ---
-
 
 <WarningIsNotes />
 
@@ -24,13 +22,13 @@ When looking for a DAC for your next project, you might stumble across a few dif
 
 **Any of these architectures can be _unipolar_ or _bipolar_**. _Unipolar_ (a.k.a. _single supply_) DACs only convert digital values into either positive or negative values, while _bipolar_ DACs can output both negative and positive output values.
 
-We will discuss these further in the following sections:
+We will discuss these further in the following sections.
 
 ### String DAC (Kelvin Divider)
 
 The string DAC (a.k.a Kelvin divider DAC) is the the easiest DAC design to understand, and is just a string of equal-valued resistors from $V_{REF}$ to $GND$, with taps of each junction to the output.
 
-<Image src={import('./dac-architecture-string.svg')} width="600px">The internal architecture of a string DAC.</Image>
+<Image src={import('./_assets/dac-architecture-string.svg')} width="600px">The internal architecture of a string DAC.</Image>
 
 A $n$ bit string DAC requires $2^n - 1$ resistors. This is a sensible number for lower resolutions of 8-10 bits, but soon gets prohibitively high for higher resolutions. For example:
 
@@ -45,7 +43,7 @@ A string DAC is very dependent on well matched resistors to achieve good lineari
 
 R-2R (or R-2R ladder) allows for many outputs.
 
-<Image src={import('./dac-architecture-r2r.svg')} width="800px">The internal architecture of a R-2R DAC.</Image>
+<Image src={import('./_assets/r-2r-dac-architecture.webp')} width="1000px">The internal architecture of a R-2R DAC.</Image>
 
 A $n$ bit R-2R DAC requires $2N$ resistors[^analog-mt015-basic-dac-architectures].
 
@@ -78,7 +76,7 @@ Most DACs have a requirement for the external voltage reference to be no less th
 
 ## Datasheet Specifications
 
-<Image src={import('./digital-input-analogue-output-graph.svg')} width="500px">A graph showing how the DAC output voltage varies with the digital input code, and the various names given to parts of the behaviour.</Image>
+<Image src={import('./_assets/digital-input-analogue-output-graph.svg')} width="500px">A graph showing how the DAC output voltage varies with the digital input code, and the various names given to parts of the behaviour.</Image>
 
 ### Resolution
 
@@ -112,7 +110,7 @@ Integral non-linearity (INL, also called _relative accuracy_) is a measure of th
 
 2. **Best fitting line**: A line fitted using linear least-squares regression.
 
-<Image src={import('./dac-integral-non-linearity.svg')} width="500px">The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages.</Image>
+<Image src={import('./_assets/dac-integral-non-linearity.svg')} width="500px">The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages.</Image>
 
 If the INL is given in bits, this is achieved by dividing the INL in volts by the voltage of the LSB.
 
