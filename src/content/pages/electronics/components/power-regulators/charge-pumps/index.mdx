@@ -1,14 +1,13 @@
 ---
-authors: [ Geoffrey Hunter ]
+authors: [Geoffrey Hunter]
 date: 2014-12-01
 description: Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS).
 draft: false
 lastUpdated: 2022-09-14
-tags: [ electronics, components, power supplies, charge pumps, SMPS, switch-mode power supplies, op-amps, MOSFETs, voltage doublers, diodes, schottky, capacitors, reservoir capacitor, Dickson charge pump ]
+tags: [electronics, components, power supplies, charge pumps, SMPS, switch-mode power supplies, op-amps, MOSFETs, voltage doublers, diodes, schottky, capacitors, reservoir capacitor, Dickson charge pump]
 title: Charge Pumps
 type: page
 ---
-
 
 A _charge pump_ (also known as a _Dickson charge pump_, _switched capacitor_ circuit, _voltage multiplier_, or _voltage splitter_ when halving the input voltage) is a voltage-converting circuit that **uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another**. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage. However, they can also be configured to reduce the input voltage (buck) or invert it.
 
@@ -30,7 +29,7 @@ Charge pumps are very closely related to [Switched-Capacitor Circuits](/electron
 
 In charge pump designs in which both legs of the capacitor are switched to different parts of the circuit at the same time, the capacitors are called _flying capacitors_, named because both their leads are for a brief moment in time disconnected from the circuit. The capacitor connected across the output load is called the _reservoir capacitor_, _storage capacitor_ or _load capacitor_[^sipex-charge-pump-caps-for-rs-232].
 
-<Image src={import('./charge-pump-voltage-doubler-schematic.png')} width="700px">The basic schematic for a voltage doubling charge pump circuit.</Image>
+<Image src={import('./_assets/charge-pump-voltage-doubler-schematic.png')} width="700px">The basic schematic for a voltage doubling charge pump circuit.</Image>
 
 Schottky diodes are preferred because of their low forward voltage drop and higher switching speeds.
 
@@ -51,21 +50,21 @@ This is the most basic type of charge pump. We'll go through each step of the pr
 1. The pulse then transitions back to 0V, and the cycle begins again with C1 charing back up to 5V (remember that it would of dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
 1. After enough cycles, the output voltage an C2 stabilizes to $2*V_{in} - 2V_f$.
 
-<Image src={import('./charge-pump-voltage-doubler-schematic.png')} width="700px">The basic schematic for a voltage doubling charge pump circuit.</Image>
+<Image src={import('./_assets/charge-pump-voltage-doubler-schematic.png')} width="700px">The basic schematic for a voltage doubling charge pump circuit.</Image>
 
 To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngspice. The simulation files can be downloaded below:
 
-* <a href="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation.sch" download>KiCad Schematics</a>
-* <a href="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation-rescue.lib" download>KiCad Symbol Library</a>
-* <a href="/electronics/components/power-regulators/charge-pumps/1n5817.lib" download>1N5817 SPICE model</a>
+* <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation.sch" download>KiCad Schematics</a>
+* <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-rescue.lib" download>KiCad Symbol Library</a>
+* <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/1n5817.lib" download>1N5817 SPICE model</a>
 
 The following KiCad schematics were used to perform the simulation:
 
-<Image src={import('./charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-schematics.png')} width="800px">The schematics for the voltage-doubling charge pump simulation.</Image>
+<Image src={import('./_assets/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-schematics.png')} width="800px">The schematics for the voltage-doubling charge pump simulation.</Image>
 
 The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to it's steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which effects the stabilization time and output current capacity.
 
-<Image src={import('./charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-plot.png')} width="600px">A plot of the simulation results for the above voltage doubling charge pump circuit.</Image>
+<Image src={import('./_assets/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-plot.png')} width="600px">A plot of the simulation results for the above voltage doubling charge pump circuit.</Image>
 
 **Output Impedance**
 
@@ -87,9 +86,9 @@ For more information on how this equation is derived, see the  [Switched Capacit
 
 Let's compare what this equation says compared to a simulation. Below is the schematic of a Micro-Cap +3.3V voltage-doubling charge pump simulation. The input is driven with a 10kHz +3.3V square wave.
 
-<Image src={import('./charge-pump-voltage-doubler-sim-microcap/schematics.png')} width="800px">Micro-Cap simulation schematic of a +3.3V voltage-doubling charge pump.</Image>
+<Image src={import('./_assets/charge-pump-voltage-doubler-sim-microcap/schematics.png')} width="800px">Micro-Cap simulation schematic of a +3.3V voltage-doubling charge pump.</Image>
 
-[Micro-Cap simulation file](charge-pump-voltage-doubler-sim-microcap/charge-pump-voltage-doubler-sim-microcap.cir)
+[Micro-Cap simulation file](/misc/charge-pumps/charge-pump-voltage-doubler-sim-microcap/charge-pump-voltage-doubler-sim-microcap.cir)
 
 The equation predicts the output impedance to be:
 
@@ -130,11 +129,11 @@ So $200\Omega$ predicted by the equation and $168\Omega$ measured in the simulat
 
 Notice how while the voltage doubling charge pump requires two inputs ($V_{in}$ and $V_{pulse}$), a voltage inverting charge pump only requires one --- $V_{pulse}$.
 
-<Image src={import('./charge-pump-inverter/charge-pump-inverter-schematic.png')} width="600px">A schematic for a voltage-inverting charge pump.</Image>
+<Image src={import('./_assets/charge-pump-inverter/charge-pump-inverter-schematic.png')} width="600px">A schematic for a voltage-inverting charge pump.</Image>
 
 The simulation results:
 
-<Image src={import('./charge-pump-inverter/charge-pump-inverter-simulation-results.png')} width="600px">A schematic for a voltage-inverting charge pump.</Image>
+<Image src={import('./_assets/charge-pump-inverter/charge-pump-inverter-simulation-results.png')} width="600px">A schematic for a voltage-inverting charge pump.</Image>
 
 ## History
 
@@ -142,7 +141,7 @@ The _Greinacher voltage multiplier_ (a.k.a. _half-wave doubler_) was invented by
 
 John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980)[^justia-patents-john-f-dickson]. It is very similar to the Greinacher doubler except it runs of an DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
 
-<Image src={import('./john-f-dickson-patent-charge-pump-schematic.png')} width="600px">A schematic from John F. Dickson's 1978 charge pump patent. Image from https://patentimages.storage.googleapis.com/d5/27/b7/321211f48454c8/US4214174.pdf, retrieved 2020-12-14.</Image>
+<Image src={import('./_assets/john-f-dickson-patent-charge-pump-schematic.png')} width="600px">A schematic from John F. Dickson's 1978 charge pump patent. Image from https://patentimages.storage.googleapis.com/d5/27/b7/321211f48454c8/US4214174.pdf, retrieved 2020-12-14.</Image>
 
 ## Uses
 
@@ -152,7 +151,7 @@ Charge pumps can be used to provide the negative voltage to op-amps. They suit t
 
 Special charge pumps exist that only produce a very small negative voltage (e.g. -250mV), for providing the negative power supply to rail-to-rail "single-supply" op-amps so that they can output a true 0V. [More on this on the Op-amps page.](/electronics/components/op-amps#rail-to-rail-op-amps)
 
-<Image src={import('./lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png')} width="409px">The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png')} width="409px">The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.</Image>
 
 ### LED Drivers
 

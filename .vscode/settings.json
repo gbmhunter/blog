@@ -1411,4 +1411,11 @@
         "mdx"
     ],
     "workbench.editor.wrapTabs": true,
+    "favorites.resources": [
+        {
+            "filePath": "public\\misc",
+            "group": "Default"
+        }
+    ],
+    "explorer.copyRelativePathSeparator": "/",
 }

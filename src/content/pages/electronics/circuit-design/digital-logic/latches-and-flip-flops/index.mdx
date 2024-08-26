@@ -112,7 +112,7 @@ And here is the transient analysis, which agrees with the expected behaviour:
 Quite nicely, Micro-Cap shows the indeterminate state between 0 and 10ns with lines at both the `0` and `1` level.
 </Aside>
 
-The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/sr-latch-nand-sim/circuit.cir).
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](/misc/sr-latch-nand-sim/circuit.cir).
 
 </Aside>
 
@@ -163,7 +163,7 @@ You can see from the below truth table that when $E = 0$, the latch remembers it
 
 <Image src={import('./_assets/d-latch-from-nand-gates-simplified.png')} width="700">A simplified D latch without an inverter.</Image>
 
-The above design, when built using [CMOS technology](/docs/electronics/circuit-design/digital-logic/gates/index.mdx#complementary-metal-oxide-semiconductor-logic-cmos) would require 16 MOSFETs (4 for each NAND gate).
+The above design, when built using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-logic-cmos) would require 16 MOSFETs (4 for each NAND gate).
 
 You can also make a D latch with inverters and [transmission gates](/electronics/components/analogue-switches-transmission-gates/). This will result in a lower total transistor count to implement than the NAND gate style D latch above. The below schematic shows one way of doing it:
 
@@ -255,7 +255,7 @@ The resulting transient analysis is:
 
 <Image src={import('./_assets/edge-detection-using-and-inverter-sim/transient-analysis.png')} width="900px"></Image>
 
-The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/edge-detection-using-and-inverter-sim/circuit.cir).
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](/misc/edge-detection-using-and-inverter-sim/circuit.cir).
 
 </Aside>
 
@@ -382,7 +382,7 @@ Explanation of behaviour:
 1. Then we have a play around with the asynchronous reset and set inputs. At `t=3.1us`, we drive `nSET` low, which correctly sets `Q` high, regardless of the clock. Then at `t=3.3us` we drive `nRESET` low and it correctly sets `Q` back to `0`, again, asynchronous to the clock.
 1. Everything looks like it is working correctly!
 
-The Micro-Cap circuit file used to perform this simulation can be downloaded [here](./_assets/d-flipflop-nand-with-set-reset-sim/circuit.cir).
+The Micro-Cap circuit file used to perform this simulation can be downloaded [here](/misc/d-flipflop-nand-with-set-reset-sim/circuit.cir).
 
 </Aside>
 

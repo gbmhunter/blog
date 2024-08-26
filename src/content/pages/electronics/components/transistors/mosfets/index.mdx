@@ -19,7 +19,7 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 * Basic electric switches (turn a load on/off)
 * Totem-pole drivers
-* [H-bridges](/docs/electronics/components/h-bridges/index.mdx)
+* [H-bridges](/electronics/components/h-bridges/)
 * 3-Phase Inverters
 * Current regulating shunts (with feedback)
 * [Switch-mode PSUs](/electronics/components/power-regulators)
@@ -74,7 +74,7 @@ This style is commonly used when drawing MOSFETs as part of logic gates and othe
 
 MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the **additional fourth pin is connected to the substrate** (a.k.a. _four-port MOSFETs_). When using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-logic-cmos), N-channel MOSFETs are typically connected to the negative voltage rail (e.g. $0V$), and P-channel MOSFETs connected to the positive voltage rail (e.g. $V_{DD}$). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected. Also, because the source-to-substrate is not shorted out, the MOSFET now has two internal back-to-back diodes, rather than just the one, and can block current in both directions.
 
-ICs such as [voltage-level translators](/electronics/components/voltage-level-translation/) and [analogue switches](/docs/electronics/components/analogue-switches-transmission-gates/index.mdx) use this substrate connection to their advantage (especially the part about blocking current in both directions).
+ICs such as [voltage-level translators](/electronics/components/voltage-level-translation/) and [analogue switches](/electronics/components/analogue-switches-transmission-gates/) use this substrate connection to their advantage (especially the part about blocking current in both directions).
 
 For more information on this, see the [The Body Effect And Connecting The Substrate To The Source section below](#the-body-effect-and-connecting-the-substrate-to-the-source). 
 
@@ -198,7 +198,7 @@ One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MO
 
 ### Load Switching
 
-MOSFETs can be used for load switches, as shown on the [Load Switches page](/docs/electronics/circuit-design/load-switches/index.mdx). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
+MOSFETs can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/load-switches/). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
 Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown below, this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
 
@@ -393,7 +393,7 @@ _Spirito effect_: Named after electronic engineer and professor [Paolo Spirito](
 
 The Spirito effect is observed at high Vds voltages and low Id currents. High Vds voltages because this results in a greater change in cell power as the cell current changes. Low Id because this gives the cells more time to thermally runaway -- at higher currents the individual cells do not get a chance to thermally runaway since the entire package quickly hits it's thermal limit.
 
-For a really good read on the Spirito effect, see [NASA's publication: Power MOSFET Thermal Instability Operation Characterization Support](./_assets/nasa-tm-2010-216684-power-mosfet-thermal-instability-operation.pdf)
+For a really good read on the Spirito effect, see [NASA's publication: Power MOSFET Thermal Instability Operation Characterization Support](/pdfs/nasa-tm-2010-216684-power-mosfet-thermal-instability-operation.pdf)
 
 The below image shows a MOSFETs SOA diagram:
 

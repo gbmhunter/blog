@@ -1,0 +1,114 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***      Transient Analysis of charge-pump-voltage-doubler-sim-microcap      ***
+***                          14/09/2022 6:56:18 pm                           ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           20m
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+OUT           2.228   2             2.764   IN            0.000  
+4             3.300  
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:               D1            D2
+Using model:        1N5810        1N5810
+
+Capacitance Terms:
+CAP                34.932n       34.932n
+
+Current Terms:
+ID                 22.275m       22.275m
+
+Resistance Terms:
+REQ                 1.250         1.250 
+
+Voltage Terms:
+VD                536.233m      536.233m
+
+Power DC Terms:
+PD                 11.945m       11.945m
+PS                  0.000         0.000 
+
+DC Pin Currents:
+Id                 22.275m       22.275m
+
+Condition:
+State                   ON            ON
+
+Device Variables:
+area                1.000         1.000 
+ic                  0.000         0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                R1
+V                    2.228 
+Power DC Terms:
+PD                  49.619m
+
+DC Pin Currents:
+Ir                  22.275m
+
+Device Variables:
+tc1                  0.000 
+tc2                  0.000 
+
+
+
+Operating Point for Devices of Type Capacitor
+=============================================
+Instance:                C2            C1
+V                    2.228         2.764 
+Power DC Terms:
+PS                   0.000         0.000 
+
+DC Pin Currents:
+Ic                   0.000         0.000 
+
+Device Variables:
+ic                   0.000         0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:               V1            V2
+V                   0.000         3.300 
+Power DC Terms:
+PG                  0.000        73.509m
+
+DC Pin Currents:
+ISource             0.000       -22.275m
+
+

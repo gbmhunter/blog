@@ -62,7 +62,7 @@ Remember, all the $R$ and $C$ values should be the same. This gives us the follo
 
 <Image src={import('./_assets/sim-four-stage-rc-filter-schematic.png')} width="700">Schematic for our 10kHz sine wave generator.</Image>
 
-[(Micro-Cap simulation file)](./_assets/sim-four-stage-rc-filter.cir)
+[(Micro-Cap simulation file)](/how-to-create-sine-waves-from-square-waves-and-rc-filters/sim-four-stage-rc-filter.cir)
 
 I added taps at the outputs of the intermediate stages so we can see how the waveform changes as it moves through the circuit!
 
@@ -104,6 +104,6 @@ Using cascaded RC filter is only one way of many to create sine waves! Some othe
 
 1. **A [digital-to-analogue converter (DAC)](/electronics/components/digital-to-analogue-converters-dacs/):** You can easily generate a sine wave by feeding it with sine wave digital codes generated in a microcontroller or FPGA. Precision will depend on the resolution and clock speed of the DAC.
 
-1. **A [Wien Bridge Oscillator](/docs/electronics/components/oscillators/index.mdx#wien-bridge-oscillator):** Using an op-amp, 2x diodes and a few resistors/capacitors you can generate very pure sine wave.
+1. **A [Wien Bridge Oscillator](/electronics/components/oscillators/#wien-bridge-oscillator):** Using an op-amp, 2x diodes and a few resistors/capacitors you can generate very pure sine wave.
 
 1. **Function generator:** The simple go-to method to create a sine wave in a laboratory environment. Very flexible in terms of the frequency and amplitude you can choose.

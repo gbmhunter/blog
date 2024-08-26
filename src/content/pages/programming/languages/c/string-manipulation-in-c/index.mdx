@@ -308,13 +308,12 @@ printf("%s", msg);
 
 The `printf()` function takes format specifiers which tell the function how you want the numbers displayed.
 
-
 Most C compiler installations include standard C libraries for manipulating strings. A common one is `stdio.h`, usually included into a C file using the syntax `#include <stdio.h>`. This library contains string copy, concatenate, string build and many others. Most of them rely on null-terminated strings to function properly. Some of the most widely used ones are shown below.
 
 <Aside type="caution">
 `printf()` and friends can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
 
-For example, the RTOS/framework [Zephyr](/docs/programming/operating-systems/zephyr/index.mdx) uses deferred logging by default, in which the format strings and variables are saved and passed to a low priority logging thread for processing.
+For example, the RTOS/framework [Zephyr](/programming/operating-systems/zephyr/) uses deferred logging by default, in which the format strings and variables are saved and passed to a low priority logging thread for processing.
 </Aside>
 
 ### Conversion Specifiers

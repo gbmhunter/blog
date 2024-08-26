@@ -19,6 +19,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "astro-vtbot": "^1.8.2"
+    "astro-vtbot": "^1.8.2",
+    "broken-link-checker": "^0.7.8"
   }
 }

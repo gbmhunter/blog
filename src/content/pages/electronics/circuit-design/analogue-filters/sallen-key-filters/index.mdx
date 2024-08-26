@@ -256,7 +256,7 @@ These equations give you enough info to calculate all the resistances and capaci
 
 The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Chebyshev 3dB ripple coefficients (this will give us a sharp transition from the passband to the stopband) and a corner frequency of $f_c = 1kHz$.
 
-1. Look up the [Chebyshev filter coefficients](/docs/electronics/circuit-design/analogue-filters/filter-tunings/index.mdx#chebyshev-tunings). From the table we get:
+1. Look up the [Chebyshev filter coefficients](/electronics/circuit-design/analogue-filters/filter-tunings/#chebyshev-tunings). From the table we get:
     $$
     \begin{align}
     a_1 = 1.0650 \\
@@ -528,7 +528,7 @@ At frequencies much higher than the cut-off $f_c$, we can assume the two capacit
 <Image src={import('./_assets/high-pass-variable-gain-sallen-key-filter-freq-limit.png')} width="500">Equivalent circuit for high frequency signals through the high-pass Sallen-Key filter. Both capacitors are considered shorts.</Image>
 
 <Aside type="note">
-Recognize this schematic? It's essentially a basic [non-inverting amplifier](/docs/electronics/components/op-amps/index.mdx#non-inverting-amplifiers)! You can somewhat ignore $R_1$ and $R_2$ as they don't change the basic behaviour of the circuit.
+Recognize this schematic? It's essentially a basic [non-inverting amplifier](/electronics/components/op-amps/#non-inverting-amplifiers)! You can somewhat ignore $R_1$ and $R_2$ as they don't change the basic behaviour of the circuit.
 </Aside>
 
 If we assume a non-infinite open-loop gain $A$ of the op-amp, the transfer function of this above circuit is:

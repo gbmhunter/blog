@@ -112,13 +112,15 @@ I have found Broken Link Checker to be the best tool to check links. See the Bro
 
 ### Broken Link Checker (blc)
 
-[broken-link-checker](https://github.com/stevenvachon/broken-link-checker) is the recommended way. Run this locally once you have a hugo develop server up and running:
+[broken-link-checker](https://github.com/stevenvachon/broken-link-checker) is the recommended way. Run this locally once you have the dev server up and running:
 
 ```bash
-blc -rofe http://localhost:1313/ --requests 10
+npm install broken-link-checker -g
+
+blc -rofe http://localhost:4321/ --requests 10
 
 # Exclude tags can categories pages
-blc -rofe http://localhost:1313/ --requests 10 --exclude */tags/* --exclude */categories/*
+blc -rofe http://localhost:4321/ --requests 10 --exclude */tags/* --exclude */categories/*
 ```
 
 WARNING: Increasing the concurrency from 10 to 50 actually slows it down, because it overloads the development server.

@@ -9,10 +9,9 @@ title: "Polynomial Curve Fitting"
 type: "page"
 ---
 
-
 Before reading this page, please check out the [Linear Curve Fitting page](/mathematics/curve-fitting/linear-curve-fitting). Many of the principles mentioned there will be re-used here, and will not be explained in as much detail.
 
-<Image src={import('./many-polynomial-best-fits-on-graph.png')} width="605px">A graph showing how different degree polynomials can be fitted to data.</Image>
+<Image src={import('./_assets/many-polynomial-best-fits-on-graph.png')} width="605px">A graph showing how different degree polynomials can be fitted to data.</Image>
 
 ## Calculating The Polynomial Curve
 
@@ -26,9 +25,9 @@ err & = \sum d_i^2 \nonumber \\
 \end{align}
 $$
 
-<p className="centered">    where:<br/>
-    $n$ is the number of points of data (each data point is an $x, y$ pair)<br/>
-    $f(x)$ is the function which describes our polynomial curve of best fit<br/></p>
+<p className="centered">where:<br/>
+$n$ is the number of points of data (each data point is an $x, y$ pair)<br/>
+$f(x)$ is the function which describes our polynomial curve of best fit<br/></p>
 
 Since we want to fit a polynomial, we can write $f(x)$ as:
 
@@ -39,8 +38,8 @@ f(x) &= a_0 + a_1 x + a_2 x^2 + ... + a_n x^n \nonumber \\
 \end{align}
 $$
 
-<p className="centered">    where:<br/>
-    $k$ is the order of the polynomial<br/></p>
+<p className="centered">where:<br/>
+$k$ is the order of the polynomial<br/></p>
 
 Substituting into above:
 
@@ -94,7 +93,7 @@ Thus a polynomial curve of best fit is:
 
 $$ y = x[0] + x[1]x + x[2]x^2 + ... + x[j]x^j $$
 
-See <a href="main.py" download>main.py</a> for Python code which performs these calculations.
+See <a href="/misc/polynomial-curve-fitting/main.py" download>main.py</a> for Python code which performs these calculations.
 
 ## Worked Example
 
@@ -160,4 +159,4 @@ $$ y = 1 - 0.3x + 0.5x^2 $$
 
 The data points and polynomial of best fit are shown in the below graph:
 
-<Image src={import('./2-degree-poly-best-fit-graph.png')} width="600px">Four data points and a 2 degree polynomial of best fit (using the least squares method).</Image>
+<Image src={import('./_assets/2-degree-poly-best-fit-graph.png')} width="600px">Four data points and a 2 degree polynomial of best fit (using the least squares method).</Image>

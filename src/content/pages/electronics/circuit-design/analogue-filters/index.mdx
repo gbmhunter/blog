@@ -186,7 +186,7 @@ The low-pass RC filter can be used to provide filtering on analogue inputs to a 
 
 Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible** (for a particular cut-off frequency). Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
 
-**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/docs/electronics/components/analogue-to-digital-converters-adcs/index.mdx).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between $20-500k\Omega$ (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
+**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/electronics/components/analogue-to-digital-converters-adcs/).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between $20-500k\Omega$ (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
 
 $$
 \begin{align}
@@ -349,7 +349,7 @@ The reduce the effects of each stages dynamic impedance effecting it's neighbour
 
 ### Passive RC Networks With Voltage Gain > 1
 
-It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./_assets/herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
+It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](/pdfs/herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
 ### 2nd Order Filter Topologies
 
@@ -362,7 +362,7 @@ A filter topology is an actual circuit configuration which can realize a number 
 
 ## Voltage-Controlled Voltage-Source (VCVS) Filters
 
-Voltage-controlled voltage-source (VCVS) filters are an extension of the [Sallen-Key filter](/docs/electronics/circuit-design/analogue-filters/sallen-key-filters/index.mdx) (in that sense, the _Sallen-Key filter_ can be thought of as a simplification of the VCVS filter in where the voltage gain of the op-amp is set to one) in where standard resistor divider feedback is added between the op-amp's output and the inverting input, allowing the gain of the filter to be something other than $1$.
+Voltage-controlled voltage-source (VCVS) filters are an extension of the [Sallen-Key filter](/electronics/circuit-design/analogue-filters/sallen-key-filters/) (in that sense, the _Sallen-Key filter_ can be thought of as a simplification of the VCVS filter in where the voltage gain of the op-amp is set to one) in where standard resistor divider feedback is added between the op-amp's output and the inverting input, allowing the gain of the filter to be something other than $1$.
 
 They are called VCVS filters because the op-amp is used as a voltage amplifier.
 
@@ -388,7 +388,7 @@ The PSoC microcontroller features an in-built and versatile digital filter block
 * The [New Jersey Institute of Technology EE 494 Laboratory IV Part B lab manual](https://web.njit.edu/~gilhc/EE494/ee494b.pdf) is a great practical resource for learning how to design active filters.
 * The [Design With Operational Amplifiers And Analog Integrated Circuits by Sergio Franco, Fourth Edition](https://www.mheducation.com/highered/product/design-operational-amplifiers-analog-integrated-circuits-franco/M9780078028168.html) is a great book to purchase if you are interesting in further reading and getting right into the weeds of analogue filter design!
 * [Op Amps For Everyone by Ron Mancini (SLOD006B)](https://web.mit.edu/6.101/www/reference/op_amps_everyone.pdf) has some detailed sections on op-amp filter circuits.
-* [SLOA024B: Analysis of the Sallen-Key Architecture - Application Report, by Texas Instruments](https://www.ti.com/lit/an/sloa024b/sloa024b.pdf) can be used for further reading on the Sallen-Key and VCVS amplifiers (<a href="sloa024b-analysis-of-the-sallen-key-architecture-application-report-texas-instruments.pdf" download>cached local copy</a>).
+* [SLOA024B: Analysis of the Sallen-Key Architecture - Application Report, by Texas Instruments](https://www.ti.com/lit/an/sloa024b/sloa024b.pdf) can be used for further reading on the Sallen-Key and VCVS amplifiers (<a href="/pdfs/sloa024b-analysis-of-the-sallen-key-architecture-application-report-texas-instruments.pdf" download>cached local copy</a>).
 * Texas Instruments [Filter Designer](https://www.ti.com/design-resources/design-tools-simulation/filter-designer.html) is a free online tool to design filters.
 * The Analog Devices [Filter Wizard](https://tools.analog.com/en/filterwizard/) is an alternative to the Texas Instruments version.   
 

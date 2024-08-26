@@ -40,8 +40,6 @@ They use less power than a crystal-based oscillator, making them suitable for ba
 
 MEMS oscillators have been made in packages which are also commonly used for crystal packages, such as the 2012 SMD package.
 
-{/* <Image src={import('./_assets/mems-vs-crystal-oscillator-package-size.png')} width="700px">A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground.</Image> */}
-
 Some common industry sizes for oscillators include:
 
 - 1612: 1.6 mm × 1.2 mm
@@ -264,8 +262,8 @@ which agrees well with what we designed for!
 
 You can download the following assets:
 
-* <a href="wien-bridge-oscillator/wien-bridge-oscillator-sim.sch" download>KiCad schematics</a>
-* <a href="wien-bridge-oscillator/wien-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
+* <a href="/misc/oscillators/wien-bridge-oscillator-sim.sch" download>KiCad schematics</a>
+* <a href="/misc/oscillators/wien-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
 
 ### JFET Gain-Limited Example
 
@@ -291,13 +289,13 @@ A _ring oscillator_ (a.k.a. _RO_) is an electronic oscillator made up of a **cha
 
 <Image src={import('./_assets/ring-oscillator-triple/simulation.png')} width="700px">KiCad schematic of a three stage ring oscillator (ready for simulation).</Image>
 
-I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](./_assets/ring-oscillator-single/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/e.t.c inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
+I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](/misc/oscillators/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/e.t.c inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
 
 I then looked harder around the internet and found the `MyHCU04` SPICE model [posted on Google Groups by the late Jim Thompson](https://groups.google.com/g/sci.electronics.basics/c/k93fFgwnw-s?pli=1):
 
 > On popular request, 74HCU04 Spice Model rescued from 1993 archives and posted on the Device Models & Subcircuits page of my website...
 
-This SPICE model for an inverter fixed the convergence issues I was having (if anyone else is interested in this file, I've saved it [here](./_assets/ring-oscillator-triple/MyHCU04.lib)). Hurrah!
+This SPICE model for an inverter fixed the convergence issues I was having (if anyone else is interested in this file, I've saved it [here](/misc/oscillators/MyHCU04.lib)). Hurrah!
 
 <Image src={import('./_assets/ring-oscillator-triple/out.png')} width="700px">It's working! Simulated output of the three stage ring oscillator schematic shown above.</Image>
 

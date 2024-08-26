@@ -36,7 +36,7 @@ This is the core principle behind [switched-capacitor filters](/electronics/comp
 
 ### Equivalent Resistance Derivation
 
-In phase 1 when switch `SW1` is closed and `SW2` is open, the capacitor charges up to $V_{in}$. [By definition](/docs/electronics/components/capacitors/index.mdx#charge), the charge stored in the capacitor during this time is:
+In phase 1 when switch `SW1` is closed and `SW2` is open, the capacitor charges up to $V_{in}$. [By definition](/electronics/components/capacitors/#charge), the charge stored in the capacitor during this time is:
 
 $$
 \begin{align}
@@ -106,7 +106,7 @@ Above we have just drawn in mechanical switches to show that the circuit is swit
 
 However, a single discrete MOSFET is rarely ever used because the internal body diode will conduct in one direction when not desired, and the switching resistance of the MOSFET rapidly increases as the signal voltage nears the gate voltage, which is typically at $V_{DD}$ for N-channel MOSFETs and $0V$ for P-channel MOSFETs.
 
-**To overcome both of these challenges, typically complementary non-discrete N-channel/P-channel MOSFET pairs are used** to make an [analogue switch](/docs/electronics/components/analogue-switches-transmission-gates/index.mdx)[^bib-ucla-ch12-intro-switched-cap-circuits]. The complementary pair allows rail-to-rail signals without significant resistance increases, and using non-discrete MOSFETs allows the semiconductor designed to connect the substrate to the rails rather than to the source, preventing the "body diode" conduction effect in one direction.
+**To overcome both of these challenges, typically complementary non-discrete N-channel/P-channel MOSFET pairs are used** to make an [analogue switch](/electronics/components/analogue-switches-transmission-gates/)[^bib-ucla-ch12-intro-switched-cap-circuits]. The complementary pair allows rail-to-rail signals without significant resistance increases, and using non-discrete MOSFETs allows the semiconductor designed to connect the substrate to the rails rather than to the source, preventing the "body diode" conduction effect in one direction.
 
 ## References
 

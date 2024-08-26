@@ -29,7 +29,7 @@ After going nuts on this project in the last week, I have nearly finished the PC
 
 Finally got some time of work to 'start' finishing this thing! Worked on the schematics today, and are planning to get a PCB done so that Massey in Palmerston North can make some rough 2-layer PCB prototype boards for testing. I brought a PSoC development kit a while back in anticipation of using it to develop code/test hardware before these boards are ready.
 
-<Image src="./_assets/psoc-5-cy8c5246ax1-054-microcontroller.png" width="320px">A schematic drawing of the PSoC 5 CY8C5246AX1-054 microcontroller.</Image>
+<Image src={import('./_assets/psoc-5-cy8c5246ax1-054-microcontroller.png')} width="320px">A schematic drawing of the PSoC 5 CY8C5246AX1-054 microcontroller.</Image>
 
 ### 14/03/2011
 
@@ -37,11 +37,11 @@ Got the motor and cog back from Niven's! Awesome work. They shaved a D into the 
 
 ### 12/03/2011
 
-Fixed the Li-Po battery. Removed the dead cell and reconnected the remaining cells and terminals to make a 7 cell battery pack. It was quite hard to solder a bridge on the terminals, they are huge pieves of metal and solder which make good heatsinks, my soldering iron and mini blow torch had a hard time melting the solder.
+Fixed the Li-Po battery. Removed the dead cell and reconnected the remaining cells and terminals to make a 7 cell battery pack. It was quite hard to solder a bridge on the terminals, they are huge pieces of metal and solder which make good heatsinks, my soldering iron and mini blow torch had a hard time melting the solder.
 
 **11/03/2011**
 
-Nivens engineering is kindly cutting a 'D' into my motor shaft, so the cog can slide on, as well as drilling a hole for a grub screw to keep the cog in place (their idea, I was just going to rely on friction, but the experts siad thats bad!)
+Nivens engineering is kindly cutting a 'D' into my motor shaft, so the cog can slide on, as well as drilling a hole for a grub screw to keep the cog in place (their idea, I was just going to rely on friction, but the experts said that's bad!)
 
 **05/03/2011**
 
@@ -49,7 +49,7 @@ Protoboard made! O.K., so it's just the two trucks fixed to a piece of MDF. But 
 
 **08/01/2011**
 
-Sourcing the axles, wheels and drive parts at the moment. Greenskate (a company on Trade Me sells parts for electric skateboards. I am looking into these at the moment. The XBee modules are playing up slightly. One of them seems to turn off some of the time, and the pin voltages drop to 2.1V (should be Vcc, which is 3.3V). After a while they reset and go back up to 3.3V. This problem seems to occur sporadically and go away in the same fashion. Weird. I hoping proper PCBs will solve this.
+Sourcing the axles, wheels and drive parts at the moment. Greenskate is a company on Trade Me sells parts for electric skateboards. I am looking into these at the moment. The XBee modules are playing up slightly. One of them seems to turn off some of the time, and the pin voltages drop to 2.1V (should be Vcc, which is 3.3V). After a while they reset and go back up to 3.3V. This problem seems to occur sporadically and go away in the same fashion. Weird. I hoping proper PCBs will solve this.
 
 **05/01/2011**
 
@@ -61,19 +61,19 @@ State machine for the skateboard is working and is controllable by the remote! C
 
 **27/12/2010**
 
-Bug found! USART data being sent at the wrong baud rate, even though everything was set correcty. At first I though the internal osciallator was drifting, but after replacing it with an external crystal and no progress, I changed the reg value that sets the baud rate (on the off chance). Lowering it from 51 (what ATMEL recommends for 0.2% error at 9600 baud, 8MHz crystal), down to 48. This made the usart data send and receive perfectly! Weird?!?. I must of spent 20+ hours debugging this...
+Bug found! USART data being sent at the wrong baud rate, even though everything was set correctly. At first I though the internal oscillator was drifting, but after replacing it with an external crystal and no progress, I changed the reg value that sets the baud rate (on the off chance). Lowering it from 51 (what ATMEL recommends for 0.2% error at 9600 baud, 8MHz crystal), down to 48. This made the usart data send and receive perfectly! Weird?!?. I must of spent 20+ hours debugging this...
 
 **26/12/2010**
 
-Been debugging the comms between the two chips today. Wrote code to write a package, and then decode the package on the other chip. Tested this with a direct link, and it works fine. The only problem is the XBee modules, data corruption is frequent when using them. I think it might be a frequency mismatch between the chip and the Xbee module. I am currently using the Atmega8 internal oscialltor set at 8Mhz without loading the calibration byte into OSCAL (this made it worse). It could be off by enough that the XBee module gets frame errors...
+Been debugging the comms between the two chips today. Wrote code to write a package, and then decode the package on the other chip. Tested this with a direct link, and it works fine. The only problem is the XBee modules, data corruption is frequent when using them. I think it might be a frequency mismatch between the chip and the Xbee module. I am currently using the Atmega8 internal oscillator set at 8Mhz without loading the calibration byte into OSCAL (this made it worse). It could be off by enough that the XBee module gets frame errors...
 
 **24/12/2010**
 
-Been working on the electronics quite extensively in the last few days. I have built the second prototype board so now there is a handhed receiver and skateboard circuit. The last few days have been primarly based around getting the ATmega8 USART working, building a TTL to RS232 serial level shifter, and then the XBee modules talking to each and the chip. Success has just been reached, but not without difficulty. I have been having voltage drop-out issues on the breadboard causing weird behaviour. Sometimes 400mV was dropped over a 'track'! This was fixed by making direct connections from the regulator to the power consuming devices, bypassing the high resistance breadboard connections. The XBee modules were playing up also, and after many hours of debugging I finally fixed them by swapping the two identical modules around. Wtf?!?
+Been working on the electronics quite extensively in the last few days. I have built the second prototype board so now there is a handheld receiver and skateboard circuit. The last few days have been primarily based around getting the ATmega8 USART working, building a TTL to RS232 serial level shifter, and then the XBee modules talking to each and the chip. Success has just been reached, but not without difficulty. I have been having voltage drop-out issues on the breadboard causing weird behaviour. Sometimes 400mV was dropped over a 'track'! This was fixed by making direct connections from the regulator to the power consuming devices, bypassing the high resistance breadboard connections. The XBee modules were playing up also, and after many hours of debugging I finally fixed them by swapping the two identical modules around. Wtf?!?
 
 **21/12/2010**
 
-Build a rpm counter using an infrared diode and transistor. I glued a piece of KNEX onto the rotor that spun around and blocked the infrared beam twice per revolution. I connected the oscilloscope up the the transistor section and could easily detect when the beam was blocked. Check out the electrical desgin page.
+Build a rpm counter using an infrared diode and transistor. I glued a piece of KNEX onto the rotor that spun around and blocked the infrared beam twice per revolution. I connected the oscilloscope up the the transistor section and could easily detect when the beam was blocked. Check out the electrical design page.
 
 **18/12/2010**
 
