@@ -1,0 +1,19 @@
+---
+authors: [Geoffrey Hunter]
+date: 2024-08-27
+description: 
+lastUpdated: 2024-08-27
+tags: [electronics, components]
+title: On/Off Controllers
+type: page
+---
+
+<WarningIsNotes />
+
+On/off controllers are ICs which are designed to control the power state of a device, typically from a push button or similar user input.
+
+Even if a microcontroller that is capable of low-power sleep is being used in the device, they are still often added to a design as a back-up in case the microcontroller freezes or becomes otherwise unresponsive. This is the approach used in many desktop and laptop computers to force a hard off. If the power button is pressed for a short period, the software tried to shutdown the computer gracefully. If the software does not respond, the user can hold the power button down for a longer period to force a hard off, which is done by an on/off controller (or similar).
+
+<Image src={import('./_assets/ltc2954-application-circuit.webp')} width="800">An application circuit for the LTC2954, a push button on/off controller from Analog Devices[^analog-devices-ltc2954-ds].</Image>
+
+[^analog-devices-ltc2954-ds]: Analog Devices (2024). _LTC2954 - Push Button On/Off Controller with µP Interrupt_. Retrieved 2024-08-27, from https://www.analog.com/en/products/ltc2954.html.

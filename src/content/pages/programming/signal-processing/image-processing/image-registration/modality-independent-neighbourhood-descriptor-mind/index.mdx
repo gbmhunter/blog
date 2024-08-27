@@ -1,13 +1,11 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "Signal Processing", "Image Processing" ]
+authors: [Geoffrey Hunter]
 date: 2019-06-20
-description: "A tutorial (with step-by-step examples) on the MIND descriptor, and image registration algorithm that works well for multi-modal image registration."
-draft: false
+description: A tutorial (with step-by-step examples) on the MIND descriptor, and image registration algorithm that works well for multi-modal image registration.
 lastUpdated: 2019-07-17
-tags: [ "programming", "signal processing", "image processing", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch", "voxel", "SSC", "convolution", "Fourier transform" ]
-title: "Modality Independent Neighbourhood Descriptor (MIND)"
-type: "page"
+tags: [programming, signal processing, image processing, image registration, MI, mutual information, MIND, modality independent neighbourhood descriptor, modalities, patch, voxel, SSC, convolution, Fourier transform]
+title: Modality Independent Neighbourhood Descriptor (MIND)
+type: page
 ---
 
 MIND (_Modality Independent Neighbourhood Descriptor_) is an image registration algorithm that aims to extract structural content in the local region around each pixel/voxel which can also be seen in other modalities. The academic paper that introduces MIND can be found [here](http://iplab.dmi.unict.it/miss14/MISS2014-ReadingGroup00-All-Paper.pdf) ([cached local copy](/misc/modality-independent-neighbourhood-descriptor-mind/2012-01-16-mind-modality-independent-neighbourhood-descriptor-article.pdf)). It supports non-rigid image registration and is generally more robust to different modalities (e.g. MRI and ultrasound images) than other registration algorithms such as MI (mutual information).
@@ -18,7 +16,9 @@ The concept is based on the idea that each pixel in an image can be assigned a _
 
 Each value in the MIND descriptor for a pixel is described by the following equation[^mind]:
 
-$$ \text{MIND}({\bf I}, \vec{x}, \vec{r}) = \frac{1}{n} \, \exp\left(-\frac{D_p(\mathbf{I}, \vec{x}, \vec{x} + \vec{r})}{V(\mathbf{I}, \vec{x})}\right) \quad \vec{r} \in \mathbb{R} \tag{1} $$
+$$
+\text{MIND}({\bf I}, \vec{x}, \vec{r}) = \frac{1}{n} \, \exp\left(-\frac{D_p(\mathbf{I}, \vec{x}, \vec{x} + \vec{r})}{V(\mathbf{I}, \vec{x})}\right) \quad \vec{r} \in \mathbb{R} \tag{1}
+$$
 
 where:
 
@@ -43,7 +43,7 @@ An example image registration algorithm written in Matlab and using MIND/Gauss-N
 
 Should you normalize images (e.g. between 0 and 1) before calculating the MIND descriptors for each pixel?
 
-If using the MIND descriptor to coregister two images, you should find that normalization should not have a significant effect on the objective function.
+If using the MIND descriptor to co-register two images, you should find that normalization should not have a significant effect on the objective function.
 
 ## Worked Example
 
@@ -56,33 +56,39 @@ We will work through the process of calculating the MIND descriptor for pixel $(
 * A search space of 4-neighbourhood (i.e. the pixels directly touching the pixel of interest), shown in light blue. The pixel we are calculating the MIND descriptor for is not in the search space.
 * A patch size of 3 (more on this later).
 
-<Image src={import('./mind_descriptor_search_space.svg')} width="500px"></Image>
+<Image src={import('./_assets/mind_descriptor_search_space.svg')} width="500px"></Image>
 
 For our search space $\mathbb{R}$ 4-neighbourhood, we use the following pixels (coordinates are relative to the pixel we are calculating the MIND descriptor for).
 
-$$ \mathbb{R} = \left(\quad (0,1), (0,-1), (1,0), (-1,0)\quad \right) $$
+$$
+\mathbb{R} = \left(\quad (0,1), (0,-1), (1,0), (-1,0)\quad \right)
+$$
 
 Remember, these correspond to $(row, column)$ or $(y, x)$.
 
 For each one of the pixels in the search space $\mathbb{R}$, a 3x3 pixel _patch_ is formed, with the pixel in the center (and this time, the pixel IS included in the patch). We chose a patch with a width/height of 3 for simplicity, but this is a parameter which can be adjusted. In the below image on the left, the patch for the $(1, 1)$ pixel is shown. A patch centered on the MIND descriptor pixel is also formed.
 
-<Image src={import('./mind_descriptor_patch_comparison.svg')} width="700px"></Image>
+<Image src={import('./_assets/mind_descriptor_patch_comparison.svg')} width="700px"></Image>
 
 With these two patches, a _patch distance_ is calculated. Each patch element can has a different weighting (common weightings are a 2D gaussian or a constant value). This is an element-wise sum-of-squared differences calculation.
 
 For simplicity, we will use a constant patch weighting of $\frac{1}{9}$ to normalize the 3x3 patch. For the above patches, this would be:
 
-$$ \begin{align} SOS &=(\frac{1}{3}(20-10))^2 + (\frac{1}{3}(10-17))^2 + (\frac{1}{3}(17-2))^2 \\ &+ (\frac{1}{3}(16-11))^2 + (\frac{1}{3}(11-4))^2 + (\frac{1}{3}(4-21))^2 \\ &+ (\frac{1}{3}(3-12))^2 + (\frac{1}{3}(12-1))^2 + (\frac{1}{3}(1-24))^2 \\ &= 163.11 \end{align}$$
+$$
+\begin{align} SOS &=(\frac{1}{3}(20-10))^2 + (\frac{1}{3}(10-17))^2 + (\frac{1}{3}(17-2))^2 \\ &+ (\frac{1}{3}(16-11))^2 + (\frac{1}{3}(11-4))^2 + (\frac{1}{3}(4-21))^2 \\ &+ (\frac{1}{3}(3-12))^2 + (\frac{1}{3}(12-1))^2 + (\frac{1}{3}(1-24))^2 \\ &= 163.11 \end{align}
+$$
 
 This value of $163.11$ is attached to the $(1, 1)$ pixel in the search space. The same patch distance calculation is repeated for all pixels in the search space, which would give the results as shown in the below diagram:
 
-<Image src={import('./mind_descriptor_patch_distances.svg')} width="500px"></Image>
+<Image src={import('./_assets/mind_descriptor_patch_distances.svg')} width="500px"></Image>
 
 Next, we have to calculate a variance for each pixel. For every pixel, we estimate the variance using the **mean of the patch distance values calculated for each pixel in the search space**.
 
 For our chosen pixel, this would be:
 
-$$ var = \frac{163.11 + 128.78 + 152.00 + 61.11}{4} = 126.25 $$
+$$
+var = \frac{163.11 + 128.78 + 152.00 + 61.11}{4} = 126.25
+$$
 
 If we do this for every pixel, this results in the following array (you can see the value we just calculated at entry $(1, 2)$):
 
@@ -96,7 +102,9 @@ array([[ 15.33,  41.97,  68.19,  87.61,  60.97],
 
 We have now ready to perform the final calculation and find the MIND descriptors for each pixel, using the equation from [^mind].
 
-$$ MIND(I, \vec{x}, \vec{r}) = \frac{1}{n}exp(-\frac{D_P(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}) \quad \vec{r} \in \mathbb{R} $$
+$$
+MIND(I, \vec{x}, \vec{r}) = \frac{1}{n}exp(-\frac{D_P(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}) \quad \vec{r} \in \mathbb{R}
+$$
 
 Because we have four pixels in the search space $R$ for each pixel we are calculating the MIND descriptor for, the MIND descriptor will also contain four values (dimensions).
 
@@ -111,7 +119,9 @@ $$
 
 Giving the MIND descriptor:
 
-$$ MIND(I, (1,2)) = [ 0.300, 0.275, 0.361, 0.616 ] $$
+$$
+MIND(I, (1,2)) = [ 0.300, 0.275, 0.361, 0.616 ]
+$$
 
 This calculation is performed for all pixels, giving the following array of MIND descriptors (first axis is pixel columns, second axis is pixel rows, third axis contains the four values that make up the MIND descriptor for that pixel):
 

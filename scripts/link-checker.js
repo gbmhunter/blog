@@ -37,12 +37,14 @@ var siteChecker = new blc.SiteChecker(options, {
   site: function(error, siteUrl, customData){},
   end: function(){
     console.log(`Link checking complete. Found ${brokenLinks.length} broken links.`);
+    // Stop the periodic printing of progress
+    clearInterval(interval);
   }
 });
 
 // Print last checked link every second. Don't print all of them
 // because this may slow the process down.
-setInterval(function() {
+let interval = setInterval(function() {
   if (lastCheckedLink) {
     printProgress(`In progress... num. of pages checked: ${numCheckedPages}`);
   }

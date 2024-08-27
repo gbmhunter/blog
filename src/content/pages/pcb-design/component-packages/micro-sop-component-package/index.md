@@ -7,4 +7,4 @@ title: "Micro SOP Component Package"
 type: "page"
 ---
 
-Micro SOP is a synonym for the [MSOP component package](../msop-component-package).
+Micro SOP is a synonym for the [MSOP component package](/pcb-design/component-packages/msop-component-package).
