@@ -1,44 +1,44 @@
 :root {
-	/* Larger content width, default of 45rem is too narrow when on wide screens */
-	--sl-content-width: 60rem;
+  /* Larger content width, default of 45rem is too narrow when on wide screens */
+  --sl-content-width: 60rem;
 
-	
-	--sl-text-2xs: 0.75rem;
-    --sl-text-xs: 0.8125rem;
-    --sl-text-sm: 0.875rem;
-    --sl-text-base: 1rem;
-    --sl-text-lg: 1.125rem;
-    --sl-text-xl: 1.25rem;
-    --sl-text-2xl: 1.5rem;
-    --sl-text-3xl: 1.8125rem;
-    --sl-text-4xl: 2.1875rem;
-	/* Larger page titles (h1) */
-    --sl-text-5xl: 3.5rem;
-    --sl-text-6xl: 4rem;
+  
+  --sl-text-2xs: 0.75rem;
+  --sl-text-xs: 0.8125rem;
+  --sl-text-sm: 0.875rem;
+  --sl-text-base: 1rem;
+  --sl-text-lg: 1.125rem;
+  --sl-text-xl: 1.25rem;
+  --sl-text-2xl: 1.5rem;
+  --sl-text-3xl: 1.8125rem;
+  --sl-text-4xl: 2.1875rem;
+  /* Larger page titles (h1) */
+  --sl-text-5xl: 3.5rem;
+  --sl-text-6xl: 4rem;
 
-	--sl-text-body: var(--sl-text-base);
-    --sl-text-body-sm: var(--sl-text-xs);
-    --sl-text-code: var(--sl-text-sm);
-    --sl-text-code-sm: var(--sl-text-xs);
+  --sl-text-body: var(--sl-text-base);
+  --sl-text-body-sm: var(--sl-text-xs);
+  --sl-text-code: var(--sl-text-sm);
+  --sl-text-code-sm: var(--sl-text-xs);
 }
 
 /* Default font size for the content was too small (1.0rem). */
 @media (min-width: 72rem) {
-	:root {
-		--sl-text-xs: 1.0rem;
-		--sl-text-base: 1.125rem;
-		--sl-text-code: var(--sl-text-base);
+  :root {
+    --sl-text-xs: 1.0rem;
+    --sl-text-base: 1.125rem;
+    --sl-text-code: var(--sl-text-base);
 
-		/* This targets inline code */
-		/* --sl-text-code-sm: var(--sl-text-base); */
-		/* --ec-codeFontSize: var(--sl-text-base) !important; */
-	}
+    /* This targets inline code */
+    /* --sl-text-code-sm: var(--sl-text-base); */
+    /* --ec-codeFontSize: var(--sl-text-base) !important; */
+  }
 }
 
 .sl-markdown-content {
-	/* For some reason just setting sl-text-base above is not enough to change the
-	font size of the content. */
-	font-size: var(--sl-text-body);
+  /* For some reason just setting sl-text-base above is not enough to change the
+  font size of the content. */
+  font-size: var(--sl-text-body);
 }
 
 /* ============================================================================================== */
@@ -51,29 +51,29 @@
 
 .katex-html {
     /* display: none; */
-	/* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
-	\begin{align} is used and they are numbered in the right-hand side of the page. */
-	margin: 0.1em;
+  /* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
+  \begin{align} is used and they are numbered in the right-hand side of the page. */
+  margin: 0.1em;
 }
 
 .katex-display {
-	/* display: block; */
-	/* This prevents long equations from exceeding the width of the page */
-	overflow: auto hidden;
+  /* display: block; */
+  /* This prevents long equations from exceeding the width of the page */
+  overflow: auto hidden;
 
-	/* margin-top: 1rem; */
+  /* margin-top: 1rem; */
 }
 
 /* Copied this from Starlight CSS. Removed span from :not lists so that the right spacing would be added
 for katex spans used for display equations. */
 /* .sl-markdown-content
-	:not(a, strong, em, del, span, input, code, div.expressive-code)
-	+ :not(a, strong, em, del, span, input, code, div.expressive-code, :where(.not-content *)) {
-	margin-top: 1rem;
+  :not(a, strong, em, del, span, input, code, div.expressive-code)
+  + :not(a, strong, em, del, span, input, code, div.expressive-code, :where(.not-content *)) {
+  margin-top: 1rem;
 } */
 
 .sl-markdown-content .expressive-code * {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 
@@ -89,32 +89,32 @@ Generated from https://starlight.astro.build/guides/css-and-tailwind/
 */
 /* Dark mode colors. */
 :root {
-	--sl-color-accent-low: #460b05;
-	--sl-color-accent: #c60e00;
-	--sl-color-accent-high: #feb3a6;
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #eeeeee;
-	--sl-color-gray-2: #c2c2c2;
-	--sl-color-gray-3: #8b8b8b;
-	--sl-color-gray-4: #585858;
-	--sl-color-gray-5: #383838;
-	--sl-color-gray-6: #272727;
-	--sl-color-black: #181818;
+  --sl-color-accent-low: #460b05;
+  --sl-color-accent: #c60e00;
+  --sl-color-accent-high: #feb3a6;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eeeeee;
+  --sl-color-gray-2: #c2c2c2;
+  --sl-color-gray-3: #8b8b8b;
+  --sl-color-gray-4: #585858;
+  --sl-color-gray-5: #383838;
+  --sl-color-gray-6: #272727;
+  --sl-color-black: #181818;
 }
 /* Light mode colors. */
 :root[data-theme='light'] {
-	--sl-color-accent-low: #ffc8be;
-	--sl-color-accent: #c90e00;
-	--sl-color-accent-high: #640300;
-	--sl-color-white: #181818;
-	--sl-color-gray-1: #272727;
-	--sl-color-gray-2: #383838;
-	--sl-color-gray-3: #585858;
-	--sl-color-gray-4: #8b8b8b;
-	--sl-color-gray-5: #c2c2c2;
-	--sl-color-gray-6: #eeeeee;
-	--sl-color-gray-7: #f6f6f6;
-	--sl-color-black: #ffffff;
+  --sl-color-accent-low: #ffc8be;
+  --sl-color-accent: #c90e00;
+  --sl-color-accent-high: #640300;
+  --sl-color-white: #181818;
+  --sl-color-gray-1: #272727;
+  --sl-color-gray-2: #383838;
+  --sl-color-gray-3: #585858;
+  --sl-color-gray-4: #8b8b8b;
+  --sl-color-gray-5: #c2c2c2;
+  --sl-color-gray-6: #eeeeee;
+  --sl-color-gray-7: #f6f6f6;
+  --sl-color-black: #ffffff;
 }
 
 /* Center tables.
@@ -122,16 +122,16 @@ Tables were defined by default as display: block.
 Not sure if changing this to display: table is going
 to break anything? */
 .sl-markdown-content table {
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wrappable-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-	justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
 /* ============================================================================================== */
@@ -139,15 +139,15 @@ to break anything? */
 /* ============================================================================================== */
 
 .starlight-aside--tip {
-    --sl-color-asides-text-accent: var(--sl-color-green-high);
-    --sl-color-asides-border: var(--sl-color-green);
-    background-color: var(--sl-color-green-low);
+  --sl-color-asides-text-accent: var(--sl-color-green-high);
+  --sl-color-asides-border: var(--sl-color-green);
+  background-color: var(--sl-color-green-low);
 }
 
 .starlight-aside--example {
-    --sl-color-asides-text-accent: var(--sl-color-purple-high);
-    --sl-color-asides-border: var(--sl-color-purple);
-    background-color: var(--sl-color-purple-low);
+  --sl-color-asides-text-accent: var(--sl-color-purple-high);
+  --sl-color-asides-border: var(--sl-color-purple);
+  background-color: var(--sl-color-purple-low);
 }
 
 /* ============================================================================================== */
@@ -156,7 +156,7 @@ to break anything? */
 
 /* Remove margin from code blocks. */
 code div.ec-line {
-	margin-top: 0rem;
+  margin-top: 0rem;
 }
 
 /* ============================================================================================== */
@@ -164,6 +164,6 @@ code div.ec-line {
 /* ============================================================================================== */
 
 section.footnotes {
-	/* Add a border to the top to visually separate it from the bottom of the page content */
-	border-top: 1px solid var(--sl-color-gray-4);
+  /* Add a border to the top to visually separate it from the bottom of the page content */
+  border-top: 1px solid var(--sl-color-gray-4);
 }
