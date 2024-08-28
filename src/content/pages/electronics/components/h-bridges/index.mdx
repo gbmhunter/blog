@@ -1,16 +1,13 @@
 ---
-aliases: [ /electronics/circuit-design/h-bridges/ ]
-authors: [ Geoffrey Hunter ]
-categories: [ Electronics, Circuit Design ]
+authors: [Geoffrey Hunter]
 date: 2011-09-03
 description: Schematics, circuits, half-bridges, transistor-based design, motors, controlling bi-color LEDs and more info about H-bridges.
-draft: false
+image: ./_assets/cover-image.webp
 lastUpdated: 2018-12-31
-tags: [ electronics, circuit design, H-bridges, half-bridges, circuits, transistors, MOSFETs, motors, LEDs ]
+tags: [electronics, circuit design, H-bridges, half-bridges, circuits, transistors, MOSFETs, motors, LEDs]
 title: H-Bridges
 type: page
 ---
-
 
 A _H-bridge_ is a two-leg/four-switch power inverter which converts DC current into a form of AC current. It is also known as a full-bridge. A half-bridge is only one leg of the full-bridge.
 
@@ -24,7 +21,7 @@ Adding a third-leg creates an _inverter_, which is commonly used to convert DC t
 
 The image below shows the basic concept behind an H-bridge. Four switches (typically implemented as BJTs or MOSFETs) are arranged in two legs, with each side of the motor connected in the middle of each leg. By turning on various switches, you can apply voltage/current of either polarity to the motor, as well as make the motor open-circuit or short-circuit (which are useful for coasting and braking purposes).
 
-<Image src={import('./basic-h-bridge-circuit.webp')} width="300px">Circuit showing the basic concept behind an H-bridge.</Image>
+<Image src={import('./_assets/basic-h-bridge-circuit.webp')} width="300px">Circuit showing the basic concept behind an H-bridge.</Image>
 
 <Aside type="tip">
 You might wonder why transistors are normally used and not mechanical switches such as relays -- whilst mechanical relays are used for simple, infrequent switching H-bridges (heating/cooling elements), most applications require fast switching that would either wear the relay contacts out too quickly or are simply faster that what a relay can switch at. Also, transistors such are MOSFETs of the equivalent current rating to a relay are physically much smaller! 
@@ -32,7 +29,7 @@ You might wonder why transistors are normally used and not mechanical switches s
 
 The image below shows the four basic modes of operation you can achieve by turning on and off various switches in the H-bridge. With SW1 and SW4 closed, the supply voltage is applied across the motor in the positive direction and it spins "forwards" (forwards being an arbitrary direction depending on the motor windings). With SW2 and SW3 closed, the supply voltage is reversed across the motor, and it spins in the "backwards" direction. With all switches open (or any one switch closed) the motor is open-circuit and will "coast", only slowing down due to friction and the load it's connected to. With SW2 and SW4 closed, the motor short-circuited and will brake, coming to a stop quickly.
 
-<Image src={import('./basic-h-bridge-circuit-showing-modes-of-operation.webp')} width="600px">Circuits showing the four basic modes of operation for an H-bridge.</Image>
+<Image src={import('./_assets/basic-h-bridge-circuit-showing-modes-of-operation.webp')} width="600px">Circuits showing the four basic modes of operation for an H-bridge.</Image>
 
 <Aside type="tip">
 If you have a small brushed DC motor lying around, spin the axle with the wires open-circuit. You should feel that the axle spins freely, coming to a stop due to fiction. Now short the motor wires together, and should feel that the axle is much harder to turn (braking).
@@ -52,7 +49,7 @@ TODO: Add MOSFET H-bridge circuit.
 
 With a bit of clever circuitry, you can create a H-bridge made from discrete components that only requires two control lines, direction and PWM.
 
-<Image src={import('./full-bridge-schematic-two-control-inputs-discrete-components.png')} width="1067px">A full-bridge example schematic made from discrete components. This circuit only requires two control inputs and has shoot-thru protection.</Image>
+<Image src={import('./_assets/full-bridge-schematic-two-control-inputs-discrete-components.png')} width="1067px">A full-bridge example schematic made from discrete components. This circuit only requires two control inputs and has shoot-thru protection.</Image>
 
 As a bonus, it also has shoot-through protection!
 
@@ -74,7 +71,7 @@ There are a few commonly used control methods:
 
 The `L298` is an older (and now mostly obsolete), fully integrated motor driver IC that uses BJTs rather than MOSFETs for the H-bridges. It contains 2 independent H-bridges. It uses AND gates to implement simple control logic based two input lines and 1 enable line per H-bridge.
 
-<Image src={import('./l298-motor-driver-ic-photo.jpg')} width="400px">Photo of the L298 motor IC. Smial (FAL or GFDL 1.2 http://www.gnu.org/licenses/old-licenses/fdl-1.2.html), via Wikimedia Commons[^wikipedia-h-bridge].</Image>
+<Image src={import('./_assets/l298-motor-driver-ic-photo.jpg')} width="400px">Photo of the L298 motor IC. Smial (FAL or GFDL 1.2 http://www.gnu.org/licenses/old-licenses/fdl-1.2.html), via Wikimedia Commons[^wikipedia-h-bridge].</Image>
 
 ### DRV8xxx
 
@@ -86,7 +83,7 @@ Texas Instruments uses the prefix `DRV` for all of their brushed, brushless and 
 
 The below image shows the functional block diagram for the `DRV8212P` motor driver IC. It has internal charge pumps for the gate drives to power the high-side N-Channel MOSFETs, and basic over-current, under-voltage and over-temperature protection. There are two separate power supplies can be provided. $V_{CC}$ is for the logic and can range from 1.65-5.5V. $V_M$ is purely for powering the motor and can range from 0-11V[^ti-drv8212p-motor-driver-ic-ds].
 
-<Image src={import('./drv8212p-motor-driver-ic-functional-block-diagram.png')} width="600px">The functional block diagram for the DRV8212P motor driver IC[^ti-drv8212p-motor-driver-ic-ds].</Image>
+<Image src={import('./_assets/drv8212p-motor-driver-ic-functional-block-diagram.png')} width="600px">The functional block diagram for the DRV8212P motor driver IC[^ti-drv8212p-motor-driver-ic-ds].</Image>
 
 {/* The below table summarizes various parts in the DRV8xxx family.
 

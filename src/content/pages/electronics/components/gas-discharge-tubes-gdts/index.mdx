@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2021-07-02
-description: "Schematic symbols, an explanation on 2 and 3-electrode versions, important parameters, how they work, and more info on gas discharge tubes (GDTs)."
+description: Schematic symbols, an explanation on 2 and 3-electrode versions, important parameters, how they work, and more info on gas discharge tubes (GDTs).
 draft: false
-image: ./_assets/gas-discharge-tubes.svg
+image: ./_assets/cover-image.webp
 lastUpdated: 2021-07-03
-tags: [ "electronics", "gas discharge tubes", "GDT", "GDTs", "gas tube arrestors", "surge arrestors", "sparkover voltage", "impulse discharge current" ]
-title: "Gas Discharge Tubes (GDTs)"
-type: "page"
+tags: [electronics, gas discharge tubes, GDT, GDTs, gas tube arrestors, surge arrestors, sparkover voltage, impulse discharge current]
+title: Gas Discharge Tubes (GDTs)
+type: page
 ---
 
 _Gas Discharge Tubes (GDTs)_ (a.k.a. _Gas Tube Arrestors (GTAs)_ or _Surge Arrestors (SAs)_) are transient voltage/current spike protection components used in electronic circuits.
@@ -18,12 +18,9 @@ GDTs, along with [TVS diodes](/electronics/components/diodes/tvs-diodes/), [MOVs
 
 My preferred schematic symbol for 2 and 3 electrode GDTs are shown below:
 
-import gdt_schematic_symbol_2_electrode from './_assets/gdt-schematic-symbol-2-electrode.svg'
-import gdt_schematic_symbol_3_electrode from './_assets/gdt-schematic-symbol-3-electrode.svg'
-
-<div style={{ display: 'flex' }}>
-<Image src={gdt_schematic_symbol_2_electrode} width="250px">Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). </Image>
-<Image src={gdt_schematic_symbol_3_electrode} width="250px">Schematic symbol and designator for a 3-electrode gas discharge tube (GDT). </Image>
+<div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+<Image src={import('./_assets/gdt-schematic-symbol-2-electrode.svg')} width="250px">Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). </Image>
+<Image src={import('./_assets/gdt-schematic-symbol-3-electrode.svg')} width="250px">Schematic symbol and designator for a 3-electrode gas discharge tube (GDT). </Image>
 </div>
 
 <Aside type="tip">
@@ -61,12 +58,12 @@ The _impulse sparkover voltage_ is like the _sparkover voltage_, except that it'
 
 For example, an excerpt of parameters from the Bourns 2036-xx-SM datasheet, from https://www.bourns.com/docs/Product-Datasheets/2036-xx-SM.pdf:
 
-|===
+| Parameter             | Value
+| --------------------- | ---------
 | Part Num.             | 2036-07
 | DC Sparkover @ 100V/s | 75V
 | Impulse Sparkover, 100V/us | 250V
 | Impulse Sparkover, 1000V/us | 525V
-|===
 
 ### Impulse Discharge Current
 
