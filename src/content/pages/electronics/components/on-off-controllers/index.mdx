@@ -17,7 +17,7 @@ On/off controllers are ICs which are designed to control the power state of a de
 On/off controllers can also refer to completely different thing -- an industrial system control method in where the output is turned either fully on of off based on whether the process value is above or below a certain setpoint. This is related to [PID control](/programming/general/pid-control/).
 </Aside>
 
-Even if a microcontroller that is capable of low-power sleep is being used in the device, they are still often added to a design as a back-up in case the microcontroller freezes or becomes otherwise unresponsive. This is the approach used in many desktop and laptop computers to force a hard off. If the power button is pressed for a short period, the software tried to shutdown the computer gracefully. If the software does not respond, the user can hold the power button down for a longer period to force a hard off, which is done by an on/off controller (or similar).
+They are commonly interfaced into devices with [microcontrollers](/programming/microcontrollers/) and other products running programmable systems (e.g. FPGAs). Even if a microcontroller that is capable of low-power sleep is being used in the device, they are still often added to a design as a back-up in case the microcontroller freezes or becomes otherwise unresponsive. This is the approach used in many desktop and laptop computers to force a hard off. If the power button is pressed for a short period, the software tried to shutdown the computer gracefully. If the software does not respond, the user can hold the power button down for a longer period to force a hard off, which is done by an on/off controller (or similar).
 
 <Image src={import('./_assets/ltc2954-application-circuit.webp')} width="600px">An application circuit for the LTC2954, a push button on/off controller from Analog Devices[^analog-devices-ltc2954-ds].</Image>
 
@@ -26,6 +26,12 @@ Even if a microcontroller that is capable of low-power sleep is being used in th
 ### STM6600/STM6601
 
 The STM6600/STM6601 are on/off controller ICs made by STMicroelectronics. They call the push-button reset feature "smart reset", and requires two push-button switches to be held on at the same time for a certain time period for a reset to occur[^st-on-off-controllers].
+
+### LTC2954
+
+The LTC2954 is a push-button on/off controller from Analog Devices. It has a wide input voltage range of 2.7V to 26.4V. It comes in 3x2mm [DFN](/pcb-design/component-packages/dfn-component-package/) and ThinSOT packages[^analog-devices-ltc2954-ds].
+
+<Image src={import('./_assets/ltc2954-application-circuit.webp')} width="400px">An application circuit for the LTC2954, a push button on/off controller from Analog Devices[^analog-devices-ltc2954-ds].</Image>
 
 [^analog-devices-ltc2954-ds]: Analog Devices (2024). _LTC2954 - Push Button On/Off Controller with µP Interrupt_. Retrieved 2024-08-27, from https://www.analog.com/en/products/ltc2954.html.
 [^st-on-off-controllers]: STMicroelectronics (2024). _Reset and Supervisor ICs > On-Off Controllers_ [product page]. Retrieved 2024-08-27, from https://www.st.com/en/reset-and-supervisor-ics/on-off-controllers.html.

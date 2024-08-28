@@ -1,10 +1,10 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [Geoffrey Hunter]
 date: 2012-09-20
 description: Incremental, overflow protection, PSoC peripherals and more info about encoders.
+image: ./_assets/cover-image.webp
 lastUpdated: 2012-09-20
-tags: [ "encoder", "PSoC", "incremental", "overflow protection" ]
+tags: [encoder, PSoC, incremental, overflow protection]
 title: Encoders
 type: page
 ---
@@ -30,7 +30,7 @@ An encoder at 6000rpm, which has 1000 counts/rev and quadrature output, is outpu
 
 This means that if you want to track it for longer than 89minutes, you will have to use a larger numeric type (e.g. int64_t). This is fine if you are monitoring the state changes directly with interrupts fired from changes on the quadrature pins, but what about if you are using a quadrature peripheral that returns a 32-bit number?
 
-One way is use software overflow protection, as shown below. This takes a overflow-is-possible 32-bit number and converts it into a 64-bit number. It uses probability to determine whether an overflow has occured, based on the difference between the previous and current 32-bit value. The only requirement for this to work correctly is that it is called often enough that the encoder value **cannot change more that half full-scale of the 32-bit number between two successive calls**.
+One way is use software overflow protection, as shown below. This takes a overflow-is-possible 32-bit number and converts it into a 64-bit number. It uses probability to determine whether an overflow has occurred, based on the difference between the previous and current 32-bit value. The only requirement for this to work correctly is that it is called often enough that the encoder value **cannot change more that half full-scale of the 32-bit number between two successive calls**.
 
 ```c
 int64_t Encoder::Get64BitVal() {

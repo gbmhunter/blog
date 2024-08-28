@@ -4,12 +4,11 @@ categories: [Electronics, PCB Design, Component Packages]
 date: 2015-04-06
 description: Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the SOT-23 component package.
 draft: false
-lastUpdated: 2023-07-24
+lastUpdated: 2024-08-28
 tags: [component packages, PCB design, RJ-3, RJ-5, RJ-6, RJ-8, SOT-23, SOT-23-3, SOT-23-5, SOT-23-6, SOT-23-6, Micro3, SC-59, SC-59A, SOT-346, SSOT3, SOT-753, SOT-457, SC-74A, TO-236AA, TO-236AB, JEDEC, JEITA, EIAJ, SMT3, SOT-26, SM8, Analog Devices]
 title: SOT-23 Component Package
 type: page
 ---
-
 
 `SOT-23` (_Small Outline Transistor 23_) is the JEDEC code for a family of very popular medium-sized SMD packages with 3 to 8 gull-wing leads.
 
@@ -19,9 +18,9 @@ The SOT-23 family probably has the largest number of differing variant names whi
 
 The number of pins used not only depends on the required number of connections but also the desired thermal resistance (high-current `SOT-23` devices may use more than one pin for the same net to improve thermal performance). SparkFun makes a [SOT-23 to DIP breakout board](http://www.sparkfun.com/products/717).
 
-The 3, 5, and 6 pin `SOT-23` variants have the same pitch of 0.95mm, and all are compatible with the 6 pin footprint (which means you can use a `SOT-23-6` adapter board for the 3 and 5 pin variants also). `SOT-23-8` has a smaller pitch to fit all the leads on the package.
+The 3, 5, and 6 pin `SOT-23` variants have the same pitch of 0.95mm, and all are compatible with the 6 pin footprint (which means you can use a `SOT-23-6` adapter board for the 3 and 5 pin variants also). `SOT-23-8` has a smaller pitch of 0.65mm to fit all the leads on the package without changing the body dimensions.
 
-JEDEC formalized the dimensions of the `SOT-23` package (and all it's variants) in the MO-178 document (with package designator `R-PDSO-G`). After registering, you can download this document for free from (https://www.jedec.org/standards-documents/docs/mo-178-c)[https://www.jedec.org/standards-documents/docs/mo-178-c].
+JEDEC formalized the dimensions of the `SOT-23` package (and all it's variants) in the MO-178 document (with package designator `R-PDSO-G`). After registering, you can download this document for free from https://www.jedec.org/standards-documents/docs/mo-178-c.
 
 The [SOT-23F package](/pcb-design/component-packages/sot-23f-component-package/) is closely related to the `SOT-23` put has flat leads instead of gull-wing leads.
 
@@ -147,15 +146,18 @@ The `SOT-23-6` has a pitch of 0.95mm.
 
 ## SOT-23-8
 
+`SOT-23-8` is a package with 8 leads in the `SOT-23` family.
+
 ### Synonyms
 
 * `RJ-8`: Analog Devices
 * `SM8`: Diodes Incorporated
 * `SOT-28`: TopLine
+* `TS8`: Linear Technology (now Analog Devices)[^analog-devices-ltc2954-on-off-controller-ds]
 
 ### Dimensions
 
-The SOT-23-8 has a different pitch to the other packages in the family of 0.65mm, so it can fit 4 leads on each side.
+The SOT-23-8 has a pitch of 0.65mm, which is different to the 0.95mm pitch used in all other packages in this family. This is so it can fit 4 leads on each side without changing the body dimensions.
 
 <Image src={import('./_assets/sot-23-8-component-package-dimensions-diodes-incorporated.png')} width="800px">Dimensions for the SOT-23-8 component package. Image from http://www.diodes.com/.</Image>
 
@@ -184,3 +186,4 @@ The `SOT-23-8` has a smaller pitch of 0.65mm compared to the `SOT-23-3`, `SOT-23
 [^onsemi-m1ma151kt1-diode]: onsemi (2012, Jul). _M1MA151KT1, M1MA152KT1 - Single Silicon Switching Diodes_ [Datasheet]. Retrieved 2023-07-23, from https://www.onsemi.com/pdf/datasheet/m1ma151kt1-d.pdf.
 [^fairchild-semi-fdn304p-mosfet]: Fairchild Semiconductor (2000, Jun). _FDN304P - P-Channel 1.8V Specified PowerTrench MOSFET_ [Datasheet]. Retrieved 2023-07-24, from https://pdf.dzsc.com/FDN/FDN304P.pdf. 
 [^mouser-fdn5632n-f085-mosfet]: Mouser. _FDN5632N-F085_ [Product Page]. Retrieved 2023-07-24, from https://www.mouser.com/ProductDetail/onsemi-Fairchild/FDN5632N-F085?qs=THZS4U49PK5JFq8XNv2RZA%3D%3D.
+[^analog-devices-ltc2954-on-off-controller-ds]: Analog Devices. _Pushbutton On/Off Controller with µP Interrupt_ [datasheet]. Retrieved 2024-08-28, from https://www.analog.com/media/en/technical-documentation/data-sheets/2954fb.pdf.
