@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2017-05-31
-draft: false
+lastUpdated: 2017-05-31
+tags: [Yocto, device trees, embedded Linux]
 title: Device Trees
 type: page
 ---
-
 
 ## Converting From Binary (.dtb) To Human-Readable (.dts) Device Tree Files
 
@@ -21,4 +21,4 @@ $ build/tmp/sysroots/x86_64-linux/usr/bin/dtc -I dtb -O dts -o devicetree.dts de
 
 This `.dts` file is much more useful to a developer than the `.dtb` file, and can be inspected to make sure the Yocto build is configured correctly!
 
-<Image src={import('./yocto-device-tree-conversion-from-blob-to-source.png')} width="1159px">A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.</Image>
+<Image src={import('./_assets/yocto-device-tree-conversion-from-blob-to-source.png')} width="1159px">A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.</Image>

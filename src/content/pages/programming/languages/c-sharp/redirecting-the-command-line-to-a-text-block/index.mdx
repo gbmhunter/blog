@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2013-03-18
-draft: false
+lastUpdated: 2013-03-18
+tags: [programming, C#]
 title: Redirecting The Command-line To A Text Block
 type: page
 ---
-
 
 It involves inheriting from the `StringWriter` class, and overwriting it's `WriteLine` function with your own code that writes the text to the text block (or any other text-capable object), rather than Windows writing it to the system console (whatever that may be).
 

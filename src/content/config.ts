@@ -5,9 +5,11 @@ import { docsSchema } from '@astrojs/starlight/schema';
 const pagesCollection = defineCollection({
 	type: 'content', // v2.5.0 and later
   schema: ({image}) => z.object({
+    date: z.date(),
 	  description: z.string().optional(),
     draft: z.boolean().default(false),
     image: image().optional(),
+    lastUpdated: z.date(),
     tags: z.array(z.string()).optional(),
     title: z.string(),
   }),

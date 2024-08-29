@@ -1,0 +1,10 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+
+console.log('Astro.props', Astro.props.entry);
+---
+
+<!-- This component is inserted after the page title. The markdown content gets inserted as a slot. -->
+<p>Author</p>
+<Default {...Astro.props}><slot /></Default>

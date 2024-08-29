@@ -2,11 +2,10 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Build Systems And Package Managers" ]
 date: 2018-03-08
-draft: false
+lastUpdated: 2018-03-08
 title: A C/C++ Build System/Package Manager Comparison
 type: page
 ---
-
 
 This article is a *opinionated* comparison of popular, open-source build systems/package managers for C/C++. This review looks at both programs that compile your code and those that manage dependencies, as the line between build systems and package managers is blurred. The build and packaging support are treated as separate qualities which will be reviewed for each.
 
@@ -26,7 +25,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 
 ## Bazel
 
-<Image src={import('./bazel-build-system-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/bazel-build-system-logo.png')} width="150px"></Image>
 
 * Website: [https://bazel.build/](https://bazel.build/)
 * Code: [https://github.com/bazelbuild/bazel](https://github.com/bazelbuild/bazel)
@@ -84,7 +83,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buck
 
-<Image src={import('./buck-build-system-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/buck-build-system-logo.png')} width="150px"></Image>
 
 * Website: [https://buckbuild.com/](https://buckbuild.com/)
 * Code: [https://github.com/facebook/buck](https://github.com/facebook/buck)
@@ -132,7 +131,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buckaroo
 
-<Image src={import('./buckaroo-package-manager-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/buckaroo-package-manager-logo.png')} width="150px"></Image>
 
 * Website: [https://buckaroo.pm/](https://buckaroo.pm/)
 * Code: [https://github.com/LoopPerfect/buckaroo](https://github.com/LoopPerfect/buckaroo)
@@ -144,7 +143,7 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 
 ## CMake
 
-<Image src={import('./cmake-build-system-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/cmake-build-system-logo.png')} width="150px"></Image>
 
 * Website: [https://cmake.org/](https://cmake.org/)
 * Code: [https://gitlab.kitware.com/cmake/cmake](https://gitlab.kitware.com/cmake/cmake)
@@ -209,7 +208,7 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 
 ## Conan
 
-<Image src={import('./conan-c-cpp-package-manager-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/conan-c-cpp-package-manager-logo.png')} width="150px"></Image>
 
 * Website: [https://conan.io/](https://conan.io/)
 * Code: [https://github.com/conan-io/conan](https://github.com/conan-io/conan)
@@ -263,7 +262,7 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 ## Makefiles
 
-<Image src={import('./gnu-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/gnu-logo.png')} width="150px"></Image>
 
 * Website: [https://www.gnu.org/software/make/](https://www.gnu.org/software/make/)
 * Code: [http://savannah.gnu.org/projects/make/](http://savannah.gnu.org/projects/make/)
@@ -314,7 +313,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 
 ## Scons
 
-<Image src={import('./scons-build-system.png')} width="200px"></Image>
+<Image src={import('./_assets/scons-build-system.png')} width="200px"></Image>
 
 * Website: [https://scons.org/](https://scons.org/)
 * Code: [https://github.com/SCons/scons](https://github.com/SCons/scons)

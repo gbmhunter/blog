@@ -1,16 +1,15 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2015-03-04
-draft: false
+lastUpdated: 2015-03-04
+tags: [USB, USB chargers]
 title: Chargers
 type: page
 ---
 
-
 USB wasn't initially designed for charging batteries in devices such as phones and GPS units. However, people soon realised USB was a neat way to charge these things while connected to your computer, without having to provide a separate power supply, cable and connector. USB chargers starting appearing which just gave the user a "dumb" USB A receptacle that just provided VBUS and GND (nothing connected to the data lines). This immediately breaks the USB 2.0 spec (devices need to draw less than 100mA in the unconfigured state, and less than 2.5mA if the bus is suspended).
 
-{/* {{% figure src="generic-usb-charger.jpg" width="393px" caption="A generic 5V wall-socket USB charger."  %}} */}
-<Image src={import('./generic-usb-charger.jpg')} width="393">A generic 5V wall-socket USB charger.</Image>
+<Image src={import('./_assets/generic-usb-charger.jpg')} width="393">A generic 5V wall-socket USB charger.</Image>
 
 Even so, most devices managed to draw 500mA and get away with it (one exception is Sony, which designed chargers/devices that strictly followed the USB 2.0 protocol). Soon however, the 500mA limit of the standard USB 2.0 specification began to limit the speed at which you could charge things.
 

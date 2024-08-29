@@ -1,11 +1,11 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [Geoffrey Hunter]
 date: 2017-04-14
-draft: false
+lastUpdated: 2017-04-14
+tags: [Yocto, Linux, embedded systems]
 title: Yocto Project
 type: page
 ---
-
 
 The _Yocto Project_, or more commonly just called _Yocto_, is a build system used to create custom Linux distributions for embedded systems.
 
@@ -13,7 +13,11 @@ The _Yocto Project_, or more commonly just called _Yocto_, is a build system use
 It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
 </Aside>
 
-<Image src={import('./the-yocto-project-logo.png')} width="404px">The logo for the Yocto project.</Image>
+<Image src={import('./_assets/the-yocto-project-logo.png')} width="404px">The logo for the Yocto project.</Image>
+
+## Child Pages
+
+<ChildPages />
 
 ## Quick Start
 
@@ -85,7 +89,7 @@ $ bitbake core-image-sato
 
 Now go grab a coffee. Or better yet, take your family out to a restaurant for a nice meal. This is going to **TAKE A WHILE**.
 
-<Image src={import('./yocto-linux-build-in-progress-showing-cpu-usage.png')} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
+<Image src={import('./_assets/yocto-linux-build-in-progress-showing-cpu-usage.png')} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
 
 **Make sure your computer is not set to go to sleep/shutdown after 1-2 hours of activity, otherwise you might find the build won't complete!**
 
@@ -101,7 +105,7 @@ $ runqemu qemux86
 
 This should load up a separate window, and display a GUI of the Linux image you just built.
 
-<Image src={import('./yocto-running-qemu-after-building-default-linux-image.png')} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
+<Image src={import('./_assets/yocto-running-qemu-after-building-default-linux-image.png')} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
 
 ## The Project Configuration File
 
