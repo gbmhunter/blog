@@ -61,10 +61,10 @@ const { Content, headings, remarkPluginFrontmatter } = await render();
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
 <StarlightPage 
-  frontmatter={{ title: frontmatter.title, description: frontmatter.description }}
+  frontmatter={{ ...frontmatter }}
   headings={headings}
   sidebar={sidebarData.items as any}
-  image={frontmatter.image}
+  customFrontmatter={frontmatter}
 >
   <Content components={{
     Aside: Aside,

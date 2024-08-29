@@ -5,6 +5,7 @@ import { docsSchema } from '@astrojs/starlight/schema';
 const pagesCollection = defineCollection({
 	type: 'content', // v2.5.0 and later
   schema: ({image}) => z.object({
+    authors: z.array(z.string()),
     date: z.date(),
 	  description: z.string().optional(),
     draft: z.boolean().default(false),

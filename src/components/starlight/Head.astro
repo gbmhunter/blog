@@ -4,10 +4,11 @@ import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
 
 // Extact the image src to add to the meta tags
+const customFrontmatter = Astro.props.customFrontmatter as any;
 let imageSrc = '';
-if (Astro.props.image !== undefined && Astro.props.image !== null) {
+if (customFrontmatter.image !== undefined && customFrontmatter.image !== null) {
   // @ts-ignore
-  imageSrc = Astro.props.image.src;
+  imageSrc = customFrontmatter.image.src;
 } else {
   imageSrc = '/images/cartoon-ninja.jpg';
 }

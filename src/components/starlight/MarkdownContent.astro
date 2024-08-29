@@ -2,9 +2,11 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 
-console.log('Astro.props', Astro.props.entry);
+const customFrontmatter = Astro.props.customFrontmatter as any;
 ---
 
 <!-- This component is inserted after the page title. The markdown content gets inserted as a slot. -->
-<p>Author</p>
+<p>Author: {customFrontmatter.authors}</p>
+<p>Published On: {customFrontmatter.date}</p>
+<p>Last Updated: {customFrontmatter.lastUpdated}</p>
 <Default {...Astro.props}><slot /></Default>
