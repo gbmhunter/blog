@@ -2,7 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Embedded", "Software", "Operating Systems" ]
 date: 2013-08-01
-draft: false
+lastUpdated: 2013-08-01
 tags: [ "FreeRTOS", "C++", "compilers", "C", "gcc", "g++" ]
 title: Compiling FreeRTOS With C++
 type: page

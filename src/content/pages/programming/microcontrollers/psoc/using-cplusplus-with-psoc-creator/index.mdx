@@ -1,12 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2013-04-03
-draft: false
+lastUpdated: 2013-04-03
 tags: [ "C++", "PSoC", "PSoC Creator", "C", "IDEs", "gcc", "g++", "microcontroller", "new", "delete", "vtable", "nothrow" ]
 title: "Using C++ With PSoC Creator"
 type: "page"
 ---
-
 
 With a few hacks, you can compile C++ with the [PSoC Creator IDE](http://www.cypress.com/?id=2494) and run C++ code on PSoC microcontrollers!
 
@@ -16,7 +15,7 @@ For more information about C++, check out the pages under Programming->Languages
 
 To some degree PSoC Creator disregards the code file extensions, and passes all files to GCC, so that calling the file main.cpp will not force it to compile as C++. This is why you need to enable the command-line parameter -x c++ to force GCC to use the C++ compiler.
 
-But you'll notice that if you right-click a file called main.cpp, the 'Build Settings' option has gone! To get this back, from the same menu, select properties. **Then change the "File Type" to C_FILE.** Now the "Build Settings" option will be availiable for main.cpp. Select this, and navigate to Compiler->Command Line. In the "Custom Flags" box, enter the flag `-x c++`.
+But you'll notice that if you right-click a file called main.cpp, the 'Build Settings' option has gone! To get this back, from the same menu, select properties. **Then change the "File Type" to C_FILE.** Now the "Build Settings" option will be available for main.cpp. Select this, and navigate to Compiler->Command Line. In the "Custom Flags" box, enter the flag `-x c++`.
 
 <Image src={import('./_assets/psoc-creator-build-settings-command-line-custom-flags.png')} width="800px">Adding custom command line flags in PSoC Creator to force GCC to use the C++ compiler.</Image>
 

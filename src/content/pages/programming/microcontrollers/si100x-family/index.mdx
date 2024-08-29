@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2011-09-15
-draft: false
+lastUpdated: 2011-09-15
+tags: [Silicon Laboratories, microcontroller]
 title: Si100x Family
 type: page
 ---
-
 
 The Si100x is a microcontroller range from Silicon Laboratories that features an inbuilt sub-GHz RF transceiver. It also has a 10-bit ADC, SPI, UART and timer hardware peripherals. It has ultra-low power consumption modes, such as the sleep mode which only uses 60nA. It uses a digital 'priority' crossbar to assign hardware to specific pins. At first glance this may seem like a flexible and nice way of assigning any peripheral to any pin, but actually has huge restrictions! Although peripherals can be mapped to certain pins, peripherals have to be mapped in an certain order (e.g. UART cannot be before SPI in terms of `P0.0` down to `P2.7`), and the peripheral pins have to be in the correct order (e.g. `SCLK`, `SDO` and `SDI` have to be in that order, again in respect to `P0.0` down to `P2.7`).
 

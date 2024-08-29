@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2013-07-26
-draft: false
+lastUpdated: 2013-07-26
+tags: [PSoC, Cypress, microcontroller]
 title: Useful PSoC Macros
 type: page
 ---
-
 
 ## Working Out What PSoC IC You Are Using
 
@@ -34,7 +34,7 @@ CY_PSOC5_ES2 // PSoC5, Engineering Silicon 2
 #ifdef CY_PSOC5 // This won't work!!!
 ```
 
-Note that these are only define once the precompiler passes the line `#define <device.h>`, therefore there is no way to write code that detects if you are compiling on a PSoC chip, and if so, then including `device.h`. A way to get around this is to add a compiler macro as a compiler flag (e.g. `-D PSOC`), and then use the following code.
+Note that these are only define once the pre-compiler passes the line `#define <device.h>`, therefore there is no way to write code that detects if you are compiling on a PSoC chip, and if so, then including `device.h`. A way to get around this is to add a compiler macro as a compiler flag (e.g. `-D PSOC`), and then use the following code.
 
 ```c
 // PSOC is defined by adding "-D PSOC" to the compiler build flags

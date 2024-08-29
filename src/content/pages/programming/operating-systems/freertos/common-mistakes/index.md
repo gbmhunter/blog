@@ -2,7 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Embedded", "Operating Systems", "Software" ]
 date: 2014-07-20
-draft: false
+lastUpdated: 2014-07-20
 tags: [ "FreeRTOS", "stack", "main()", "scheduler", "portTICK_RATE_MS" ]
 title: Common Mistakes When Using FreeRTOS
 type: page

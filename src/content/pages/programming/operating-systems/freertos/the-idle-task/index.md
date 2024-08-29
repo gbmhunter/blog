@@ -2,7 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Embedded", "Software", "Operating Systems" ]
 date: 2013-07-31
-draft: false
+lastUpdated: 2013-07-31
 tags: [ "FreeRTOS", "idle task", "hook", "vApplicationIdleHook", "freeing memory" ]
 title: The Idle Task
 type: page
