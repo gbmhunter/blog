@@ -32,7 +32,6 @@ if (customFrontmatter !== undefined) {
 }
 
 // Don't render dates and authors if we are on the homepage
-console.log(Astro);
 if (Astro.props.slug === '') {
   shouldRenderDatesAndAuthors = false;
 }
@@ -51,7 +50,7 @@ Only render it if custom frontmatter is defined.
     {pageAuthors.map((author) => {
       return (
         <Image src={author.data.image} alt={author.data.name} class="author-image" />
-        <div><a href={author.data.link}>{author.data.name}</a></div>
+        <div><a href={author.data.link} target="_blank">{author.data.name}</a></div>
       );
     })}
   </div>
