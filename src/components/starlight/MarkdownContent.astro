@@ -7,6 +7,7 @@ import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 const customFrontmatter = Astro.props.customFrontmatter as any;
 const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
+let shouldRenderDatesAndAuthors = true;
 let pageAuthors = [] as any[];
 if (customFrontmatter !== undefined) {
   // Create a new format which will produce dates like "Jan 1, 2022"
@@ -27,6 +28,13 @@ if (customFrontmatter !== undefined) {
   }
 } else {
   console.warn(`No custom frontmatter found for page`);
+  shouldRenderDatesAndAuthors = false;
+}
+
+// Don't render dates and authors if we are on the homepage
+console.log(Astro);
+if (Astro.props.slug === '') {
+  shouldRenderDatesAndAuthors = false;
 }
 
 ---
@@ -35,7 +43,7 @@ if (customFrontmatter !== undefined) {
 This component is inserted after the page title. The markdown content gets inserted as a slot. 
 Only render it if custom frontmatter is defined. 
 -->
-{(customFrontmatter !== undefined) &&
+{(shouldRenderDatesAndAuthors) &&
 <div class="dates-and-authors-container">
   <div class="authors">
     <div class="authors-title"><b>Authors:</b></div>
