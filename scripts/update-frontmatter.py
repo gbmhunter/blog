@@ -18,10 +18,11 @@ def main():
         parse_file(file_path)
 
 def parse_file(file_path):
+    print(f'Parsing file: {file_path}')
     # Prevent aliases in YAML output
     yaml.SafeDumper.ignore_aliases = lambda *args : True
 
-    with open(file_path) as f:
+    with open(file_path, encoding='utf-8') as f:
         post = frontmatter.load(f)
     print(post.metadata)
 
@@ -35,7 +36,7 @@ def parse_file(file_path):
 
     print(post.metadata)
     # Write back to the file
-    with open(file_path, 'w') as f:
+    with open(file_path, 'w', encoding='utf-8') as f:
         f.write('---\n')
         f.write(yaml.safe_dump(post.metadata, default_flow_style=None))
         f.write('---\n')
