@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2018-06-26
-description: "A tutorial showing how to fit a linear curve to a set of data."
+description: A tutorial showing how to fit a linear curve to a set of data.
 draft: false
-lastUpdated: 2019-01-10
+lastUpdated: 2024-08-30
 tags: [ "linear", "curve fitting", "least squares", "regression", "fit", "matrix", "error" ]
 title: "Linear Curve Fitting"
 type: "page"
@@ -32,22 +32,29 @@ $f(x)$ is the function which describes our line of best fit<br/></p>
 
 Since we want to fit a straight line, we can write $f(x)$ as:
 
-$$ f(x) = ax + b $$
+$$
+f(x) = ax + b
+$$
 
 Substituting into above:
 
-$$ err = \sum_{i = 1}^{n} (y_i - (ax_i + b))^2 $$
+$$
+err = \sum_{i = 1}^{n} (y_i - (ax_i + b))^2
+$$
 
 How do we find the minimum of this error function? We use the derivative. If we can differentiate $ err $, we have an equation for the slope. We know that the slope will be 0 when the error is at a minimum.
 
 Because we are solving for two unknowns, $a$ and $b$, we have to take the derivative of both separately:
 
-$$ \frac{\partial err}{\partial a} = -2 \sum_{i=1}^{n} x_i(y_i - ax_i - b) = 0 $$
+$$
+\frac{\partial err}{\partial a} = -2 \sum_{i=1}^{n} x_i(y_i - ax_i - b) = 0
+$$
 
-$$ \frac{\partial err}{\partial b} = -2 \sum_{i=1}^{n} (y_i - ax_i - b) = 0 $$
+$$
+\frac{\partial err}{\partial b} = -2 \sum_{i=1}^{n} (y_i - ax_i - b) = 0
+$$
 
 We now have two equations and two unknowns, we can solve this! Lets re-write the equations in the form $ C_1 a + C_2 b = C_3 $:
-
 
 $$
 \begin{align}  
@@ -74,28 +81,35 @@ $$
 
 We solve this by re-arranging which involves taking the inverse of x):
 
-$$ \mathbf{x} = \mathbf{A^{-1}} \mathbf{B} $$
+$$
+\mathbf{x} = \mathbf{A^{-1}} \mathbf{B}
+$$
 
 Thus a linear curve of best fit is:
 
-$$ y = x[0] x + x[1] $$
+$$
+y = x[0] x + x[1]
+$$
 
 See [https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/CurveFitting/linear](https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/CurveFitting/linear) for Python code which performs these calculations.
 
 **_Worked Example_**
 
+<Aside type="example" title="EXAMPLE: Find a line of best fit">
+
 Find the line of best fit for the following points:
 
-$$ (2, 1) \\ (3, 7) \\ (6, 5) \\ (7, 9) $$
+$$
+(2, 1) \\ (3, 7) \\ (6, 5) \\ (7, 9)
+$$
 
 We will then find the values for each one of the four elements in the $\mathbf{A}$ matrix:
 
-
 $$
-\begin{align}   
-A_{11} &= \sum x_i^2 = 2^2 + 3^2 + 6^2 + 7^2 = 98 \\  
-A_{12} &= \sum x_i = 2 + 3 + 6 + 7 = 18 \\  
-A_{21} &= \sum x_i = 2 + 3 + 6 + 7 = 18 \\  
+\begin{align}
+A_{11} &= \sum x_i^2 = 2^2 + 3^2 + 6^2 + 7^2 = 98 \\
+A_{12} &= \sum x_i = 2 + 3 + 6 + 7 = 18 \\
+A_{21} &= \sum x_i = 2 + 3 + 6 + 7 = 18 \\
 A_{22} &= n = 4  
 \end{align}
 $$
@@ -118,8 +132,8 @@ $$
 \end{bmatrix}   
 \begin{bmatrix}  
 a \\ b  
-\end{bmatrix} =   
-\begin{bmatrix}  
+\end{bmatrix} =
+\begin{bmatrix}
 116 \\  
 22  
 \end{bmatrix}
@@ -127,12 +141,18 @@ $$
 
 We can then solve $\mathbf{x} = \mathbf{A^{-1}}\mathbf{B}$ by hand, or use a tool. I used Python's NumPy package to end up with:
 
-$$ \begin{bmatrix}a \\ b\end{bmatrix} = \begin{bmatrix}1 \\ 1\end{bmatrix} $$
+$$
+\begin{bmatrix}a \\ b\end{bmatrix} = \begin{bmatrix}1 \\ 1\end{bmatrix}
+$$
 
 Thus our line of best fit:
 
-$$ y = 1x + 1 $$
+$$
+y = 1x + 1
+$$
 
 The points and line of best fit are shown in the below graph:
 
 <Image src={import('./linear_curve_fitting_graph_of_points_and_line.png')} width="587px">The linear curve fitting (using the least squares approach) to four data points.</Image>
+
+</Aside>
