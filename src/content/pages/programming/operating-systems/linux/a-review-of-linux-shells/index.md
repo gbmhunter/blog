@@ -1,5 +1,5 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [gbmhunter]
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-12-19
 description: ""

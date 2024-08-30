@@ -1,5 +1,5 @@
 ---
-authors: [Geoffrey Hunter]
+authors: [gbmhunter]
 date: 2015-10-04
 lastUpdated: 2015-10-04
 tags: [electric blanket, project, smart phone, IoT]
@@ -68,7 +68,7 @@ I got some weird `cb() never called!` errors when trying to install express with
 
 I installed geany (`sudo apt-get install geany`), to get a better code editor than `nano` or `leafpad`.
 
-<Image src={import('./raspberry-pi-with-lots-of-cables-filtered.jpg')} width="800px">The RaspberryPi while testing.</Image>
+<Image src={import('./_assets/raspberry-pi-with-lots-of-cables-filtered.jpg')} width="800px">The RaspberryPi while testing.</Image>
 
 ## List Of Installed Programs
 
@@ -78,9 +78,9 @@ I installed geany (`sudo apt-get install geany`), to get a better code editor th
 
 ## Controlling GPIO
 
-The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privlages).
+The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privileges).
 
-<Image src={import('./simple-led-connected-to-raspberry-pi-gpio.jpg')} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
+<Image src={import('./_assets/simple-led-connected-to-raspberry-pi-gpio.jpg')} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
 
 ## Nodejs Modules
 
@@ -90,13 +90,13 @@ Managed to get the RaspberryPi to take action when the client visited a specific
 
 Wanted to send information back to the server without the client browsing to a different page.
 
-<Image src={import('./node-js-server-running-on-raspberry-pi-terminal-output-filtered.jpg')} width="600px">The terminal output when a client visits the node.js server running on the RaspberryPi.</Image>
+<Image src={import('./_assets/node-js-server-running-on-raspberry-pi-terminal-output-filtered.jpg')} width="600px">The terminal output when a client visits the node.js server running on the RaspberryPi.</Image>
 
 The express extension serves up a web page.
 
-<Image src={import('./basic-web-page-served-by-node-js.jpg')} width="800px">The basic web page served with node.js running on the RaspberryPi (viewed in Chrome).</Image>
+<Image src={import('./_assets/basic-web-page-served-by-node-js.jpg')} width="800px">The basic web page served with node.js running on the RaspberryPi (viewed in Chrome).</Image>
 
-At first I was just using the `window.redirect()` to send data back to the server when the user toggled the on/off button. This had the problem of the web page wanting to change everytime you clicked the button. To send back data without reloading the page, I use the AJAX (this was new to me) post request that comes with jQuery, `$.post()`.
+At first I was just using the `window.redirect()` to send data back to the server when the user toggled the on/off button. This had the problem of the web page wanting to change every time you clicked the button. To send back data without reloading the page, I use the AJAX (this was new to me) post request that comes with jQuery, `$.post()`.
 
 The server checks to see if it can resolve the address www.google.com every 5 seconds. If it can, it turns the online LED on, if it can't, it turns it off. This gives the user a good indication of whether the device is connected to the internet or not.
 
@@ -110,7 +110,7 @@ I used the following command when currently in the repo directory on my PC (note
 rsync -arvz --delete . pi@192.168.1.51:~/autoeb
 ```
 
-<Image src={import('./sending-files-via-rsync-between-pc-and-raspberry-pi.png')} width="800px">Sending code files using rsync from the PC to the RaspberryPi.</Image>
+<Image src={import('./_assets/sending-files-via-rsync-between-pc-and-raspberry-pi.png')} width="800px">Sending code files using rsync from the PC to the RaspberryPi.</Image>
 
 ## Dynamic DNS
 
@@ -180,7 +180,7 @@ But it still seemed to work fine.
 
 I pulled apart the electric blanket. Simple control. Looks like switch selects different resistance circuits to power.
 
-<Image src={import('./camerazoom-20131009175933171.jpg')} width="800px">The circuit inside the electric blanket controls (for one side of the bed).</Image>
+<Image src={import('./_assets/camerazoom-20131009175933171.jpg')} width="800px">The circuit inside the electric blanket controls (for one side of the bed).</Image>
 
 The Pololu ([http://www.pololu.com/catalog/product/2120](http://www.pololu.com/catalog/product/2120)) wasn't enough to power the RaspberryPi with the WiFi module installed (it got hot and then kept restarting).
 

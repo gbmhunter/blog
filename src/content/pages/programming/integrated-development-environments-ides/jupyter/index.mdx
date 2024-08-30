@@ -1,19 +1,17 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
+authors: [gbmhunter]
 date: 2019-07-15
 description: "A tutorial on Jupyter Notebooks and Jupyter Labs."
 draft: false
 lastUpdated: 2019-10-28
-tags: [ "programming", "integrated development environments", "IDEs", "Jupyter", "notebooks", "Jupyter Labs", "HTML", "IPython", "images", "server", "CSS", "embedded", "base64", "requests" ]
+tags: [programming, integrated development environments, IDEs, Jupyter, notebooks, Jupyter Labs, HTML, IPython, images, server, CSS, embedded, base64, requests]
 title: "Jupyter"
 type: "page"
 ---
 
-
 Jupyter is a collection of software tools orientated towards the processing and visualizing of data. The two most prominent tools are Jupyter Notebooks, a web-based IDE/user interface for writing software and visualizing data, and Jupyter Labs, their newer web application which incorporates Notebooks plus many other features.
 
-<Image src={import('./jupyter-logo.svg')} width="300px">The Jupyter logo.</Image>
+<Image src={import('./_assets/jupyter-logo.svg')} width="300px">The Jupyter logo.</Image>
 
 Most of the code examples on this page assume you are using the Python programming language, although the features should be available in the other languages that Jupyter supports.
 
@@ -59,7 +57,7 @@ and then change the HTML to:
 display(HTML('<img src="http://localhost:8123/my_dir/image.png" style="width: 400px;" />'))
 ```
 
-Note that both of these methods will not embed the image into the HTML but rather link to it. This will result in fast load times but will require the file system/server to be available everytime you want to re-render the cell.
+Note that both of these methods will not embed the image into the HTML but rather link to it. This will result in fast load times but will require the file system/server to be available every time you want to re-render the cell.
 
 ### Embedded Images
 

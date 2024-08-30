@@ -1,5 +1,5 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [gbmhunter]
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2020-06-26
 description: "How to get/set the IO scheduling class and priority for processes running in Linux via the command-line."

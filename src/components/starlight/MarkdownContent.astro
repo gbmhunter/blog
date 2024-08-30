@@ -1,12 +1,90 @@
 ---
+import { getCollection } from 'astro:content';
+import { Image } from "astro:assets";
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 
 const customFrontmatter = Astro.props.customFrontmatter as any;
+const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+let pageAuthors = [] as any[];
+if (customFrontmatter !== undefined) {
+  // Create a new format which will produce dates like "Jan 1, 2022"
+  const pageAuthorIds = customFrontmatter.authors;
+
+  let authorsCollection = await getCollection('authors');
+
+  // Filter authorsCollection to only include authors that are in the pageAuthors array
+  pageAuthors = authorsCollection.filter((author) => {
+    // Author ID in collection is the directory name under authors/, so extract this from the "id" field. id field is in the form "author/data" where data comes from the file name data.json
+    const authorId = author.id.split('/')[0];
+    return pageAuthorIds.includes(authorId);
+  });
+
+  // Print warning if an author is not found
+  if (pageAuthors.length === 0) {
+    console.warn(`No authors found for page with author IDs:`, pageAuthorIds);
+  }
+} else {
+  console.warn(`No custom frontmatter found for page`);
+}
+
 ---
 
-<!-- This component is inserted after the page title. The markdown content gets inserted as a slot. -->
-<p>Author: {customFrontmatter.authors}</p>
-<p>Published On: {customFrontmatter.date}</p>
-<p>Last Updated: {customFrontmatter.lastUpdated}</p>
+<!--
+This component is inserted after the page title. The markdown content gets inserted as a slot. 
+Only render it if custom frontmatter is defined. 
+-->
+{(customFrontmatter !== undefined) &&
+<div class="dates-and-authors-container">
+  <div class="authors">
+    <div class="authors-title"><b>Authors:</b></div>
+    <!-- Loop over authors -->
+    {pageAuthors.map((author) => {
+      return (
+        <Image src={author.data.image} alt={author.data.name} class="author-image" />
+        <div><a href={author.data.link}>{author.data.name}</a></div>
+      );
+    })}
+  </div>
+  <div class="page-dates">
+    <div><b>Published On:</b></div> <div>{dateFormat.format(customFrontmatter.date)}</div>
+    <div><b>Last Updated:</b></div> <div>{dateFormat.format(customFrontmatter.lastUpdated)}</div>
+  </div>
+</div>
+}
 <Default {...Astro.props}><slot /></Default>
+
+<style>
+
+  .dates-and-authors-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .authors {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 1rem;
+    align-items: center;
+  }
+
+  .authors-title {
+    grid-column: 1 / span 2;
+  }
+
+  .author-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  /* Use grid for page dates */
+  .page-dates {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+    align-items: center;
+  }
+</style>

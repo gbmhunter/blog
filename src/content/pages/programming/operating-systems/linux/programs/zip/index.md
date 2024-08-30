@@ -1,5 +1,5 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [gbmhunter]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2020-03-27
 draft: false

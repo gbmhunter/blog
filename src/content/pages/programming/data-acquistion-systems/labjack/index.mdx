@@ -1,0 +1,32 @@
+---
+authors: [gbmhunter]
+date: 2024-08-30
+description: LabJack is a company that produces data acquisition systems (DAQs).
+lastUpdated: 2024-08-30
+tags: [programming, data acquisition systems, DAQs, LabJack, U6]
+title: LabJack
+type: page
+---
+
+<WarningIsNotes />
+
+LabJack is a company that produces data acquisition systems (DAQs).
+
+Python is one of the best supported languages to interface to the LabJack devices, followed by C and C++. Python is supported by most devices on most operating systems (e.g. Windows, Linux, macOS).
+
+## LabJack U6
+
+The LabJack U6 has 20 digital I/O. The pins MIO0-MIO2 are multiplexed with the CIO0-CIO2 pins[^labjack-u6-ds-digital-io].
+
+The following bit numbers are used to specify the digital I/O:
+
+```txt
+0-7 FIO0-FIO7
+8-15 EIO0-EIO7
+16-19 CIO0-CIO3
+20-22 MIO0-MIO2  (Use 16-18 to operate on these)
+```
+
+Using pin numbers 20-22 in the API will not work. Instead, you have to use the corresponding `CIOx` bit numbers 16-18.
+
+[^labjack-u6-ds-digital-io]: LabJack. _Support and Documentation / Datasheets / U6 Datasheet / 2 - Hardware Description [U6 Datasheet]_. Retrieved 2024-08-30, from https://support.labjack.com/docs/2-8-digital-i-o-u6-datasheet.

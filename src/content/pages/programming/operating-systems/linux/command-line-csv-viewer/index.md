@@ -1,5 +1,5 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [gbmhunter]
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-06-18
 description: "How to make a simple command-line CSV viewer for Linux."

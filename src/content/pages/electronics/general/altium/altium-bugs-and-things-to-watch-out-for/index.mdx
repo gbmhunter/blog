@@ -1,5 +1,5 @@
 ---
-authors: [Geoffrey Hunter]
+authors: [gbmhunter]
 date: 2012-04-27
 lastUpdated: 2012-04-27
 tags: [Altium, bugs, crash, error, PCB design, electronics, CAD]
@@ -68,16 +68,13 @@ UPDATE, March 2016: This does not seem to be happening anymore with AD15 or AD15
 
 Altium decides whether or not it wants to export holes/vias in step files. Upon importing these step files into a 3D CAD program, more often than not you will find that some of the holes have been covered (or partially covered) up by a very thin solid on the top and/or bottom. I have tried removing copper, silkscreen, soldermask and solderpaste layers to see if these were causing the trouble, but have had no luck in finding out why Altium does this. It is very annoying when it doesn't create the mounting holes, and you can't check that the PCB will work with the rest of the mechanical design (which is normally one of the reasons why you'd be exporting a 3D model).
 
-import altium_not_exporting_holes_properly_before from './altium-not-exporting-holes-properly-before.jpg'
-import altium_not_exporting_holes_properly_after from './altium-not-exporting-holes-properly-after.jpg'
-
 <table>
-    <tbody>
-        <tr>
-            <td><Image src={altium_not_exporting_holes_properly_before} width="369px">Hole in PCB.</Image></td>
-            <td><Image src={altium_not_exporting_holes_properly_after} width="382px">Hole covered over in step file output.</Image></td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <td><Image src={import('./_assets/altium-not-exporting-holes-properly-before.jpg')} width="369px">Hole in PCB.</Image></td>
+      <td><Image src={import('./_assets/altium-not-exporting-holes-properly-after.jpg')} width="382px">Hole covered over in step file output.</Image></td>
+    </tr>
+  </tbody>
 </table>
 
 ## Variants With Multi-part Components

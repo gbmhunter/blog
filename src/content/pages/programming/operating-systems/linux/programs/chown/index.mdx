@@ -1,0 +1,39 @@
+---
+authors: [gbmhunter]
+date: 2024-08-30
+description: chown is a Linux command-line program that is used to change the owner and group of a file or directory.
+lastUpdated: 2024-08-30
+tags: [Linux, programs, chown, ownership, permissions, groups, users, Docker, sudo]
+title: chown
+type: page
+---
+
+<WarningIsNotes />
+
+`chown` is a Linux command-line program that is used to change the owner and group of a file or directory. The syntax is as follows:
+
+```bash
+chown [OPTIONS] OWNER[:GROUP] FILE
+```
+
+For example, to change the owner of a file to `someuser`, use the following command:
+
+```bash
+chown someuser /path/to/file
+```
+
+In the above example, a group is not specified, so the group will remain unchanged. To change the group as well, use the following command:
+
+```bash
+chown someuser:somegroup /path/to/file
+```
+
+To operate recursively on a directory, use the `-R` flag:
+
+```bash
+chown -R someuser:somegroup /path/to/directory
+```
+
+This recursive option is really useful for when shared files (e.g. a volume) have been written to from inside a Docker container, but you want to modify them from the host machine. Docker images typically run as `root`, so the files will be owned by `root`. You can use `chown` to change the owner of the files to your user.
+
+`sudo` is commonly used in conjunction with `chown` as the standard user does not normally have permissions to change the owner and/or group.
