@@ -1,3 +1,6 @@
+"""
+This script is used to bulk update frontmatter in markdown files.
+"""
 import frontmatter
 import yaml
 import datetime
