@@ -3,6 +3,7 @@ flake8==7.0.0
 matplotlib==3.8.3
 numpy==1.26.4
 pandas==2.2.0
+python-frontmatter==1.1.0
 PyYAML==6.0.1
 requests==2.31.0
 scipy==1.12.0
