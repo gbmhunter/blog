@@ -8,6 +8,11 @@ import datetime
 import argparse
 import glob
 
+# As per https://github.com/yaml/pyyaml/issues/535
+class VerboseSafeDumper(yaml.SafeDumper):
+    def ignore_aliases(self, data):
+        return True
+
 def main():
 
     # Get single argument from command line which is glob path
@@ -19,6 +24,11 @@ def main():
 
     paths = glob.glob(pathname, recursive=True)
     for file_path in paths:
+        # Ignore any file which contains "/_" in the path
+        # Normalized path for Windows and Linux
+        if '/_' in file_path or '\\_' in file_path:
+            print(f'Skipping file: {file_path}')
+            continue
         parse_file(file_path)
 
 def parse_file(file_path):
@@ -42,7 +52,7 @@ def parse_file(file_path):
     # Write back to the file
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write('---\n')
-        f.write(yaml.safe_dump(post.metadata, default_flow_style=None))
+        f.write(yaml.dump(post.metadata, default_flow_style=None, width=1000, Dumper=VerboseSafeDumper))
         f.write('---\n')
         f.write('\n')
         f.write(post.content)
