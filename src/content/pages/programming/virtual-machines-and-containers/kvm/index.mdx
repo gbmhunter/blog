@@ -1,15 +1,12 @@
 ---
 authors: [gbmhunter]
-categories: [ "Programming", "Virtual Machines And Containers" ]
 date: 2020-05-25
-description: "A tutorial on KVM, a virtualization tool for Linux."
-draft: false
+description: A tutorial on KVM, a virtualization tool for Linux.
 lastUpdated: 2020-06-02
-tags: [ "programming", "virtual machines", "KVM", "Linux", "client", "host", "Windows" ]
-title: "KVM"
-type: "page"
+tags: [programming, virtual machines, KVM, Linux, client, host, Windows]
+title: KVM
+type: page
 ---
-
 
 KVM (Kernel-based Virtual Machine) is a virtualization tool for Linux. KVM can be used to run virtual machines on Linux, in which the client operating system is typically either Linux or Windows.
 
@@ -19,4 +16,4 @@ If you get the following error:
 
 <Image src={import('./kvm-unable-to-connect-to-libvirt.png')} width="500px">Screenshot of the 'Unable to connect to libvirt' error in KVM.</Image>
 
-It is probably because the current user does not belong to the `libvirt` group. Type `groups` to see what groups the user currently belongs to. 
+It is probably because the current user does not belong to the `libvirt` group. Type `groups` to see what groups the user currently belongs to.

@@ -1,9 +1,7 @@
 ---
 authors: [gbmhunter]
-categories: [Programming, Web Design]
 date: 2024-08-05
-description: "Info on the static-site generator Astro."
-draft: false
+description: Info on the static-site generator Astro.
 lastUpdated: 2024-08-05
 tags: [programming, web design, astro]
 title: Astro
@@ -57,4 +55,3 @@ To glob about 1000 MDX files it took approx. 30s the first time around. One nice
 Only after I ran into performance issues with the glob method did I discover the `collections` feature of Astro. It turns out that collections was just what I was looking for, and ended up saving all the problems I had with the glob method!
 
 The main difference was that using collections, I could easily read the frontmatter of each MDX file WITHOUT rendering the entire file, was provided a huge speed up for both creating the sidebar (which needs to to know the title of each page, and is present on every page) and determining the child pages of each page.
-

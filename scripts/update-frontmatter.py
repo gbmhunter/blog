@@ -48,6 +48,10 @@ def parse_file(file_path):
     if 'categories' in post.metadata:
         del post.metadata['categories']
 
+    # Delete the draft variable if it is false
+    if 'draft' in post.metadata and not post.metadata['draft']:
+        del post.metadata['draft']
+
     print(post.metadata)
     # Write back to the file
     with open(file_path, 'w', encoding='utf-8') as f:

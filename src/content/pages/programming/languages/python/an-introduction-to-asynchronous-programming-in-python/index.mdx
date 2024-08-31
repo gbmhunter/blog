@@ -1,15 +1,12 @@
 ---
 authors: [gbmhunter]
-categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-09-16
-description: "An introduction to asynchronous programming in Python, including async/await, coroutines, event loops, queues, tasks and more."
-draft: false
+description: An introduction to asynchronous programming in Python, including async/await, coroutines, event loops, queues, tasks and more.
 lastUpdated: 2021-04-13
-tags: [ "Python", "programming", "programming languages", "software", "async", "await", "asyncio", "coroutines", "event loops", "asynchronous programming", "asynchronous", "IO bound", "CPU bound", "queues", "yield", "generators", "tasks" ]
-title: "An Introduction To Asynchronous Programming In Python"
-type: "page"
+tags: [Python, programming, programming languages, software, async, await, asyncio, coroutines, event loops, asynchronous programming, asynchronous, IO bound, CPU bound, queues, yield, generators, tasks]
+title: An Introduction To Asynchronous Programming In Python
+type: page
 ---
-
 
 Asynchronous programming is a software paradigm which involves scheduling many small _tasks_ that are invoked when events occurs. It is also known as _event-driven programming_. It is an alternative (although it can also be a complement) to both _multi-threading_ and _multiprocessing_. Asynchronous programming is well suited to tasks which are _IO bound_ and not _CPU bound_. It is well suited for IO bound applications because it allows other tasks to occurs while one task is blocked, waiting on some external process to complete. Because control is only given up explicitly with the `await` keyword, you do not have to worry about common multi-threading issues such as data contention. It is not well suited to CPU bound applications because it does not make use of multiple cores/CPUs.
 
@@ -241,5 +238,3 @@ async def main():
 if __name__ == '__main__':
     asyncio.run(main())
 ```
-
-
