@@ -1,14 +1,17 @@
 ---
 authors: [gbmhunter]
 date: 2016-12-08
+description: protobuf is an open-source, multi-language library from Google for serialising/deserialising data. Native + 3rd party support allows protobuf to be used in embedded systems.
+image: ./_assets/cover-image.webp
 lastUpdated: 2019-02-08
+tags: [protobuf, serialization, data, messaging, protocol, C++, Python, Java, CMake]
 title: protobuf
 type: page
 ---
 
 _**protobuf**_ is an open-source, multi-language library from Google for serialising/deserialising data.
 
-<Image src={import('./_assets/google-protobuf-logo.png')} width="467px">Icon for Google's protobuf library.</Image>
+<Image src={import('./_assets/google-protobuf-logo.png')} width="300px">Icon for Google's protobuf library.</Image>
 
 It is designed as an efficient, **language agnostic** way of sending data over messaging protocols such as TCP/UDP, or UART/SPI/I2C e.t.c.
 
@@ -144,3 +147,7 @@ target_link_libraries(messages ${PROTOBUF_LIBRARY})
 ## Applications
 
 protobuf is used with the Publish/Subscribe messaging system in the [Robotic Operating System (ROS)](http://www.ros.org/).
+
+## More Resources
+
+See the [Serialization for Embedded Systems page](/programming/serialization-formats/serialization-for-embedded-systems/) for information specifically about using protobuf to develop and messaging framework for embedded systems.

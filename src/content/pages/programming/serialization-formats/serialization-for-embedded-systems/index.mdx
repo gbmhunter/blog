@@ -7,7 +7,7 @@ title: Serialization for Embedded Systems
 type: page
 ---
 
-This page details one way of serializing messages for embedded systems. The method described here is based on Google's protobuf serialization format.
+This page details one way of serializing messages for embedded systems. The method described here is based on Google's [protobuf](/programming/serialization-formats/protobuf/) serialization format.
 
 ## Schema vs. Schemaless Serialization
 
@@ -279,6 +279,10 @@ Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://gith
 <Image src={import('./_assets/bitproto-logo.png')} width="200px">The bitproto logo.</Image>
 
 [NordicSemiconductor/zcbor](https://github.com/NordicSemiconductor/zcbor) is a C (it's also C++ compatible) CBOR library that uses CDDL to essentially provide a "schema" for defining the messages. C/C++ code is generated from this schema. As of May 2024, it has 100 stars on GitHub.
+
+## More Resources
+
+See the [protobuf page](/programming/serialization-formats/protobuf/) for general information on protobuf.
 
 ## References
 
