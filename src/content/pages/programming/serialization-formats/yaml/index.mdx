@@ -1,8 +1,10 @@
 ---
 authors: [gbmhunter]
 date: 2019-01-04
-lastUpdated: 2019-01-04
-tags: [YAML, serialization, configuration, data, file, Javascript, object notation]
+description: YAML, or YAML Ain't Markup Language, is a human-readable data serialization format. It is commonly used to store user-modifiable configuration data for software applications.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-08-31
+tags: [YAML, serialization, configuration, data, file, Javascript, object notation, aliases, PyYAML, JSON, anchors]
 title: YAML
 type: page
 ---
@@ -12,6 +14,10 @@ YAML, or **YAML Ain't Markup Language**, is a human-readable data serialization 
 The official site can be found at [https://yaml.org/](https://yaml.org/) (which is written in YAML format!!!).
 
 JSON is a valid subset of the YAML specification, which means a `.json` file is a valid YAML file, and you can embed JSON syntax inside a YAML file.
+
+## History
+
+YAML initially stood for **Yet Another Markup Language**. However, it was later changed to **YAML Ain't Markup Language** (a recursive acronym) to emphasize its data-oriented nature and distinguish it from document markup[^wikipedia-yaml].
 
 ## A List
 
@@ -50,3 +56,92 @@ YAML comments begin with a `#` (hash symbol, or Octothorpe if you're feeling fan
 ```yaml
 # This is a comment
 ```
+
+## PyYAML
+
+Interestingly, Python is not shipped with a built-in YAML parser. The most popular library for parsing YAML in Python is PyYAML (`pyyaml`). You can install it via `pip`:
+
+```bash
+pip install pyyaml
+```
+
+<Aside type="tip">
+Even though the package is called `pyyaml`, the module you import (see below) is just `yaml`.
+</Aside>
+
+Here is an example of how to read a YAML file:
+
+```python
+import yaml
+
+with open("config.yaml", "r") as file:
+    config = yaml.safe_load(file)
+```
+
+### Line Width
+
+By default, `yaml.dump` inserts new lines when a line reaches around 80-100 characters. You can change this with the `width` parameter:
+
+```python
+yaml.dump(data, width=200) # Longer lines
+yaml.dump(data, width=float("inf")) # Infinitely long lines
+```
+
+### Prevent Aliases
+
+By default, PyYAML will use aliases to when it comes across references to the same object in memory when serializing (dumping). The following example shows a basic example which doesn't use aliases, because string assignment in Python creates a new object:
+
+```python
+data = {}
+data['name'] = 'Bob'
+data['name_copy'] = data['name']
+print(yaml.dump(data))
+# Output:
+# name: Bob
+# name_copy: Bob
+```
+
+But things happen differently for a `datetime` object, in where the assignment just takes a reference to the object:
+  
+```python
+data = {}
+data['date'] = datetime.datetime.now().date()
+data['date_copy'] = data['date']
+print(yaml.dump(data))
+# Output:
+# date: &id001 2024-09-01
+# date_copy: *id001
+```
+
+`date_copy` is now just `*id001`, which is an _alias_ (think: reference) to the `date` object above which has been given the _anchor_ `&id001`[^bitbucket-yaml-anchors]. While this is valid YAML (and in fact it's required to work this way, see below), in many cases it's not what you want. Some parsers may not handle aliases correctly, and it also makes it hard to a user to read or update things (imagine a big file with many aliases!). I would submit that most of time it's preferable to copy the data. To do this, you need to tell PyYAML to ignore aliases. You can do this on a global level with:
+
+<Aside type="tip">
+Section 3.1.1 of the YAML spec requires anchors and aliases to be used when serializing multiple references to the same node (data object)[^ttl255-yaml-anchors-and-aliases]. So this explains PyYAML's default behaviour.
+</Aside>
+
+```python
+yaml.SafeDumper.ignore_aliases = lambda *args : True
+```
+
+Or even better, you can subclass `yaml.SafeDumper` and override the `ignore_aliases` method. This has the advantage of not being a global change and affecting other parts of your code (unless that's what you want):
+
+```python
+# As per https://github.com/yaml/pyyaml/issues/535
+class VerboseSafeDumper(yaml.SafeDumper):
+    def ignore_aliases(self, data):
+        return True
+
+yaml.dump(Dumper=VerboseSafeDumper)
+```
+
+Either of these methods would then result in `yaml.dump()` giving you a string like this:
+
+```python
+# Output:
+# date: 2024-09-01
+# date_copy: 2024-09-01
+```
+
+[^wikipedia-yaml]: Wikipedia (2024, Jul 19). _YAML_. Retrieved 2024-08-31, from https://en.wikipedia.org/wiki/YAML.
+[^bitbucket-yaml-anchors]: BitBucket. _YAML anchors_. Retrieved 2024-09-01, from https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/.
+[^ttl255-yaml-anchors-and-aliases]: TTL255 - Przemek Rogala's blog. _YAML Anchors and Aliases_. Retrieved 2024-09-01, from https://ttl255.com/yaml-anchors-and-aliases-and-how-to-disable-them/. 
