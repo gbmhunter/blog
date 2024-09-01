@@ -1,31 +1,33 @@
 ---
 authors: [gbmhunter]
 date: 2024-04-24
-lastUpdated: 2024-04-27
-tags: [serialization, protobuf, nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters]
+lastUpdated: 2024-09-01
+tags: [serialization, protobuf, Nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters]
 title: Serialization for Embedded Systems
 type: page
 ---
 
-This page details one way of serializing messages for embedded systems. The method described here is based on Google's [protobuf](/programming/serialization-formats/protobuf/) serialization format.
+This page details a way (one of many!) of serializing messages for embedded systems. The method described here is based on Google's [protobuf](/programming/serialization-formats/protobuf/) serialization format along with additional escaping and framing to allow for the data to be streamed across a communication channel like [UART](/electronics/communication-protocols/uart-communication-protocol/), [SPI](/electronics/communication-protocols/spi-communication-protocol/), a WebSocket or any other "byte stream" style communication.
 
 ## Schema vs. Schemaless Serialization
 
 Is it better to use a schema-based serialization format or a schemaless one for embedded systems? I generally think formats with schemas are a better fit for embedded systems, because:
 
 1. It allows for the creation of structs or classes in the embedded code that match the schema, which can be used to serialize and deserialize messages. Without these schema created structs it can be hard to represent the data without dynamic memory allocation (which is avoided at runtime in many embedded systems).
-2. The schema provides a way of defining and documenting your "API" for the messages that are sent between devices. In typed languages this can improve the developer experience because your message types can be objects containing the message fields. The `.proto` file can also serve as a form of documentation for the messages (you can also create proper documentation from `.proto` files, e.g. see the GitHub repo [pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)).
+2. The schema provides a way of defining and documenting your "API" for the messages that are sent between devices. In typed languages this can improve the developer experience because your message types can be objects containing the message fields. The types, variable names and comments in the `.proto` file(s) can also serve as the documentation of the API (you can also create proper documentation from `.proto` files, e.g. see the GitHub repo [pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)).
 
-Schema based serialization formats include protobuf, Cap'n Proto, and FlatBuffers. Schemaless serialization formats include JSON, CBOR, and MessagePack.
+Schema based serialization formats include [protobuf](/programming/serialization-formats/protobuf/), Cap'n Proto, and FlatBuffers. Schemaless serialization formats include [JSON](/programming/serialization-formats/jason/), CBOR, and MessagePack.
 
 ## protobuf
 
-protobuf is a schema-based binary serialization format developed by Google. It is one of the most popular serialization formats. The schema (the message definitions) is defined in a `.proto` file. protobuf is officially supported in C++, Java, Python and other languages. One language that is not officially supported is C! Thankfully, there is a popular 3rd party tool called nanopb which provides support for C, and is well-suited for use on embedded systems. For each language, protobuf comes in two parts:
+We are going to use protobuf to convert objects in computer memory into a stream of bytes (this is what serialization is).
+
+protobuf is a schema-based binary serialization format developed by Google. It is one of the most popular serialization formats. The schema (the message definitions) is defined in a `.proto` file. protobuf is officially supported in C++, Java, Python and other languages. One language that is not officially supported is C! Thankfully, there is a popular 3rd party tool called [Nanopb](https://github.com/nanopb/nanopb) which provides support for C, and is well-suited for use on embedded systems. For each language, protobuf comes in two parts:
 
 1. A compiler that takes the `.proto` file and generates objects representing each message in the target language.
 1. A runtime library that provides functions to serialize and deserialize messages.
 
-Protobuf serializes each variable in a message into a tag (a unique variable ID) and the variable value. Providing a tag for each variable in a message might seem like a waste. Why not just send them in order and get rid of all the bytes that the tags take up? The reason is to allow for both forwards and backwards compatibility when the message format changes. The ids allow newer code to receive an old message and create default values for variables that are not present, and older code to receive a new message and just ignore variables that it doesn't know about. It also allows for optional variables. You can't just append new variables to the end of the message. What happens if that message is then used somewhere else in the middle of a bigger message?
+Protobuf serializes each variable in a message into a tag (a unique variable ID) and the variable value. Providing a tag for each variable in a message might seem like a waste. Why not just send them in order and get rid of all the bytes that the tags take up? The reason is to allow for both forwards and backwards compatibility when the message format changes. The ids allow newer code to receive an old message and create default values for variables that are not present, and older code to receive a new message and just ignore variables that it doesn't know about. It also allows for optional variables and for the ability to just not send the variable if it's set to it's default value.
 
 Let's look at a basic example to see how protobuf works. Here is a simple `.proto` file:
 
@@ -42,8 +44,7 @@ We'll set `myInt` to `7`. This encodes to (I'm using https://www.protobufpal.com
 08 07
 ```
 
-The first byte `0x08` 
-is the tag shifted left by 3 bits (`1 << 3`). You can see this by changing the tag to 2 and seeing that the first byte changes to `0x10` (3 = `0x18`, ...). The second byte `0x07` is the value of the variable. Any `uint32` up to `127` uses 2 bytes (1 byte for the tag and other data, 1 byte for the value). `128` uses 3 bytes:
+The first byte `0x08` is the tag shifted left by 3 bits (`1 << 3`). You can see this by changing the tag to 2 and seeing that the first byte changes to `0x10` (3 = `0x18`, ...). The second byte `0x07` is the value of the variable. `uint32` is a variable-width type (there is no `uint8` or `uint16`). Any `uint32` up to `127` uses 2 bytes (1 byte for the tag and other data, 1 byte for the value). `128` uses 3 bytes:
 
 ```text
 Value Encoded Msg.
@@ -52,9 +53,9 @@ Value Encoded Msg.
 128   08 80 01
 ```
 
-protobuf supports a lot of nice types like `string` which is useful in the embedded world for serializing arbitrary length `char *`. It also supports `bytes` which is useful for serializing binary data. It also supports `repeated` which is useful for serializing arbitrary lengths of other types.
+protobuf supports a lot of nice types like `string` which is useful in the embedded world for serializing arbitrary length `char *`. It also supports `bytes` which is useful for serializing binary data. It also supports `repeated` which is useful for serializing arbitrary length arrays of other types.
 
-One of it's downsides for embedded systems is the lack of small variable types. It provides `uint32` or `bytes` type (array of bytes), but no `uint8`, `uint16` or bitfields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using nanopb, by default `uint32`s, will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use smaller type (presumably an error is thrown during decoding if nanopb received an encoded number that doesn't fit in the smaller type).
+One of it's downsides for embedded systems is the lack of small variable types. It provides `uint32` and `bytes` type (array of bytes), but no `uint8`, `uint16` or bit fields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using Nanopb, by default `uint32`s, will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, Nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use smaller type (presumably an error is thrown during decoding if Nanopb received an encoded number that doesn't fit in the smaller type).
 
 If the lack of smaller types is a show stopper for you, have a look at [bitproto](https://bitproto.readthedocs.io/en/latest/) (more on this in the [Alternatives](#alternatives) section).
 
