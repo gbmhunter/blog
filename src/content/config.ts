@@ -34,6 +34,7 @@ const updatesCollection = defineCollection({
     lastUpdated: z.date(),
     tags: z.array(z.string()).optional(),
     title: z.string(),
+    type: z.string(),
   }),
 });
 

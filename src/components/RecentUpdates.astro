@@ -3,8 +3,9 @@ import { getValidUpdatesPages } from 'src/js/Collections'
 import { getGlobalMdxComponents } from 'src/js/GlobalMdxComponents'
 
 const NUM_OF_PAGES_TO_SHOW = 12;
-
+console.log("Getting updates")
 let updates = await getValidUpdatesPages();
+console.log(updates)
 // Sort by date, most recent first
 updates = updates.sort((a, b) => b.data.date - a.data.date)
 updates = updates.slice(0, NUM_OF_PAGES_TO_SHOW)
