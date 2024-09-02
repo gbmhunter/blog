@@ -167,3 +167,15 @@ section.footnotes {
   /* Add a border to the top to visually separate it from the bottom of the page content */
   border-top: 1px solid var(--sl-color-gray-4);
 }
+
+/* ============================================================================================== */
+/* TABLES */
+/* ============================================================================================== */
+
+/* Make wide tables scrollable */
+.sl-markdown-content table {
+  display: block; /* Change from display: table */
+  width: fit-content; /* Because of display: block, this is needed to prevent the table from taking up the full width of the page */
+  max-width: 100%;
+  overflow-x: auto;
+}

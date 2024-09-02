@@ -1,7 +1,7 @@
 ---
 import { Image as AstroImage } from 'astro:assets';
 
-const { src, width, float='none', ...attrs } = Astro.props;
+const { src, width, float='none', userClass='', ...attrs } = Astro.props;
 let href;
 // src is a Promise if the syntax "import('path/to/image.jpg')" is used
 // src is an Object is the syntax "import myImage from 'path/to/image.jpg'" is used
@@ -23,7 +23,7 @@ if (src instanceof Promise) {
 }
 ---
 
-<div class:list={['image-wrapper']}>
+<div class:list={['image-wrapper', userClass]}>
   <a href={href}>
     {imported ? <AstroImage src={src} width={width} alt="" {...attrs} /> : null}
     {!imported ? <img src={src} width={width} alt="" /> : null}
@@ -42,10 +42,12 @@ if (src instanceof Promise) {
 
   :root {
     --caption-text-color: #666;
+    --red-glow-color: #ff0000;
   }
 
   :root[data-theme="dark"] {
     --caption-text-color: #aaa;
+    --red-glow-color: #ff2e2e;
   }
   
   figcaption {
@@ -58,6 +60,10 @@ if (src instanceof Promise) {
     width: var(--width);
     text-align: center;
     overflow-wrap: break-word; /* Makes sure long word like URLs don't overflow */
+  }
+
+  .red-glow img {
+    filter: drop-shadow(0 0 10px var(--red-glow-color));
   }
 
 </style>

@@ -120,8 +120,16 @@ abc         | def
 ghi         | jkl
 
 
-<table >
+A HTML table with a caption:
+
+<table>
 <caption>This is a table caption.</caption>
+<thead>
+<tr>
+  <th>Heading 1</th>
+  <th>Heading 2</th>
+</tr>
+</thead>
 <tbody>
 <tr>
   <td>abcdefghi</td>
@@ -129,6 +137,12 @@ ghi         | jkl
 </tr>
 </tbody>
 </table>
+
+A really wide table, which should have a horizontal scroll bar:
+
+Heading 1 | Heading 2
+----------|----------
+abcdefghi | jklmnopqrjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
 
 ## Images
 
@@ -156,6 +170,8 @@ import imgAnotherTestImage from './_assets/another-test-image.png';
 An image with float="right". This should be floating to the right of the text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla justo ac erat lacinia, non porta nibh commodo. Suspendisse velit orci, elementum nec lectus et, dapibus pharetra sapien. Aliquam erat volutpat. Suspendisse vitae augue vel urna vulputate sodales sed rhoncus ante. Phasellus ultrices lacus sit amet neque scelerisque, ut fermentum elit hendrerit. Morbi sit amet purus massa. Ut hendrerit orci ut commodo vestibulum. Sed velit orci, dignissim eu lacus vitae, consequat iaculis dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc quis cursus justo, in sollicitudin risus.
 
 Nunc blandit facilisis ligula. Fusce ac aliquam nunc, vitae vehicula massa. Quisque massa augue, mattis ut laoreet ultrices, consequat et dui. Mauris fringilla velit sit amet nulla egestas cursus. Fusce gravida lectus vitae nibh suscipit, vitae efficitur ipsum finibus. Quisque ac fringilla nibh. Vivamus auctor posuere risus ut suscipit. Phasellus laoreet rutrum justo quis hendrerit.
+
+<Image src={import('./_assets/test-image-1000px.webp')} width="500" userClass="red-glow">This image should have a red glowing outline.</Image>
 
 ## Asides
 

@@ -10,7 +10,7 @@ type: page
 
 **High-Level Data Link Control (HDLC) is a synchronous data-link layer protocol**. It was developed by the International Organization for Standardization (ISO).
 
-<Image src={import('./high-level-data-link-control-icon.png')} width="300"></Image>
+<Image src={import('./_assets/high-level-data-link-control-icon.png')} width="300">The icon for HDLC.</Image>
 
 It only describes the data-link layer (layer 2 in the OSI model), and therefore is not really considered an communication protocol in it's own right. It may be used by other communication protocols such as LVDS.
 
@@ -44,7 +44,7 @@ It only describes the data-link layer (layer 2 in the OSI model), and therefore 
         </tr>
         <tr>
             <td>SLARP</td>
-            <td>Serial Line Address Resolution Protocol. A control protocol used by Cisco HDLC to maintain serial link keepalives.</td>
+            <td>Serial Line Address Resolution Protocol. A control protocol used by Cisco HDLC to maintain serial link keep-alives.</td>
         </tr>
         <tr>
             <td>X.25</td>
@@ -69,7 +69,7 @@ To prevent **0x7E** from ever occurring in the packet data, **bit stuffing** is 
 
 Bit-stuffing is inconvenient when the communication protocol requires bits to be sent in groups such as bytes (e.g. RS-232). In this case, _**control-octet transparency**_ is used instead (also called byte stuffing or octet stuffing).
 
-With control-octet transparency, if either **0x7E** (the _frame boundary octet_) or **0x7D** (the _control escape octet_) appears in the packet data, the escape octet is first sent, followed by the original data, but with bit 5 inverted. This ensures that **0x7E** is never found withing the packet data, and is only used for packet framing.
+With control-octet transparency, if either **0x7E** (the _frame boundary octet_) or **0x7D** (the _control escape octet_) appears in the packet data, the escape octet is first sent, followed by the original data, but with bit 5 inverted. This ensures that **0x7E** is never found within the packet data, and is only used for packet framing.
 
 Obviously, the receiver has to look for escape octets, remove them from the data stream, and invert bit 5 of the next byte.
 
@@ -81,4 +81,4 @@ Obviously, the receiver has to look for escape octets, remove them from the data
 
 ## Standards
 
-The HLDC protocol is specified in ISO 13239.
+The HDLC protocol is specified in ISO 13239.
