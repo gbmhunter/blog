@@ -8,16 +8,20 @@ title: July 2024 Updates
 type: updates
 ---
 
-Migrated this site from Hugo to Docusaurus. The main reason for this was to take advantage of the more modern React-based framework that Docusaurus provides, as well as the ability to use MDX for content pages. MDX allows you to embed React components within it when you want to add functionality to page above and beyond what standard markdown provides. Over the last 5 years I had found Hugo's shortcode syntax to be a bit clunky and difficult to work with, and I was looking for a more modern solution. Given I am already familiar with React due to the NinjaTerm and NinjaCalc projects, Docusaurus seemed like a good fit. It also has a built in theme which suited this site well, reducing development time.
+#### Migration from Hugo to Docusaurus then Astro.js
 
-The Docusuaurus theme should have much better responsive design than my self-writted Hugo theme.
+This month I migrated this site from Hugo to Docusaurus and then finally to Hugo. The first attempt was to migrate to Docusaurus. The main reason for this was to take advantage of the more modern React-based framework that Docusaurus provides, as well as the ability to use [MDX](https://mdxjs.com/) for content pages. MDX allows you to embed React components within it when you want to add functionality to page above and beyond what standard markdown provides. Over the last 5 years I had found Hugo's shortcode syntax to be a bit clunky and difficult to work with, and I was looking for a more modern solution. Given I am already familiar with React due to the NinjaTerm and NinjaCalc projects, Docusaurus seemed like a good fit. It also has a built in theme which suited this site well, reducing development time.
 
-<Image src={import('./_assets/docusaurus-migration-before.webp')} width="900px">A screenshot of this website before migrating to Docusaurus.</Image>
+The Docusaurus theme should have much better responsive design than my self-written Hugo theme.
 
-<Image src={import('./_assets/docusaurus-example-page-screenshot.webp')} width="900px">A screenshot of this website after migrating to Docusaurus.</Image>
+<Image src={import('./_assets/docusaurus-migration-before.webp')} width="900px" userClass="red-glow">A screenshot of this website before migrating to Docusaurus.</Image>
+
+<Image src={import('./_assets/docusaurus-example-page-screenshot.webp')} width="900px" userClass="red-glow">A screenshot of this website after migrating to Docusaurus.</Image>
 
 Unfortunately, I encountered some serious issues with Docusaurus late in the migration process. The biggest issues were build time and memory usage. The build process was taking over 10 minutes and using approx. 5-7GB of RAM when running on my Windows laptop. The build was failing in the Netlify pipeline due to it exceeding the pipeline limits (8GB is promised, so presumably the total system usage was exceeding this).
 
-So I decided to migrate to astro.js instead, leveraging the Starlight theme (which is designed for documentation). Luckily, astro.js supports MDX much in the same way Docusaurus does, so not as much per-page porting was required. I had to add some imports to each .mdx file (I couldn't work out how to add global imports to all .mdx files), and I had to replace my inline `require()` statements in the `<Image>` component's `src` with a seperate `import` statement above it. 
+So I decided to migrate to astro.js instead, leveraging the Starlight theme (which is designed for documentation). Luckily, astro.js supports MDX much in the same way Docusaurus does, so not as much per-page porting was required. I had to add some imports to each .mdx file (I couldn't work out how to add global imports to all .mdx files), and I had to replace my inline `require()` statements in the `<Image>` component's `src` with a separate `import` statement above it. 
+
+#### Added New Info on MAHD
 
 Added new info on the [MAHD (Modified Agile for Hardware Development) project management methodology](/project-management/mahd/).
