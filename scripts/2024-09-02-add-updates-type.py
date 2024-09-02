@@ -1,6 +1,5 @@
 """
-This script is used to bulk update frontmatter in markdown files.
-
+This script was used to set type: updates in the frontmatter for all updates pages.
 """
 import frontmatter
 import yaml

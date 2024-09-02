@@ -2,29 +2,42 @@
 authors: [gbmhunter]
 date: 2024-08-30
 description: Blog updates during August 2024.
-draft: true
 lastUpdated: 2024-08-30
 tags: []
 title: August 2024 Updates
 type: updates
 ---
 
-Added [info on TVS diodes](/electronics/components/diodes/tvs-diodes/#automotive-load-dump-clamping) used in automotive applications to protect against alternator "load dumps".
+* Added [info on TVS diodes](/electronics/components/diodes/tvs-diodes/#automotive-load-dump-clamping) used in automotive applications to protect against alternator "load dumps".
 
-Converted the separate "import then Image component" style images in MDX pages to inline imports.
+    <Image src={import('./_assets/tvs-load-dumping-screenshot.webp')} width="800px" userClass="red-glow" />
 
-Added images to the child page links shown on parent pages.
+* Converted the separate "import then Image component" style images in MDX pages to inline imports.
 
-Moves all updates into their own Astro content "collection", rather than being mixed in with the pages collection.
+    <Image src={import('./_assets/separate-image-variable-to-inline-import.webp')} width="600px" userClass="red-glow" />
 
-Added the most recent 10 updates to the home page underneath the main content links:
+* Added images to the child page links shown on parent pages.
 
-<Image src={import('./_assets/updates-on-homepage-screenshot.webp')} width={800} />
+<Image src={import('./_assets/child-pages-cover-image-screenshot.webp')} width="800px" userClass="red-glow" />
 
-Added information on the Trivial File Transfer Protocol (TFTP).
+* Moves all updates into their own Astro content "collection", rather than being mixed in with the pages collection.
 
-Experimented with different image aspect ratios for page cover images. The main aspect ratios I tested were 4:3 (old TV), 16:9 (HD), and 1.91:1 (recommended by Facebook for sharing). Eventually I settled on using the 16:9 aspect ratio with a resolution of 1280x720px.
+    <Image src={import('./_assets/astro-content-collections-screenshot.webp')} width="400px" userClass="red-glow" />
 
-Added info on [on/off controller ICs](/electronics/components/on-off-controllers/).
+* Added the most recent 12 updates to the home page underneath the main content links:
 
-Added info on [chown](/programming/operating-systems/linux/programs/chown/).
+    <Image src={import('./_assets/updates-on-homepage-screenshot.webp')} width="800px" />
+
+* Added information on the [Trivial File Transfer Protocol (TFTP)](/electronics/communication-protocols/trivial-file-transfer-protocol-tftp/).
+
+    <Image src={import('./_assets/tftp-screenshot.webp')} width="800px" userClass="red-glow" />
+
+* Experimented with different image aspect ratios for page cover images. The main aspect ratios I tested were 4:3 (old TV), 16:9 (HD), and 1.91:1 (recommended by Facebook for sharing). Eventually I settled on using the 16:9 aspect ratio with a resolution of 1280x720px.
+
+* Added info on [on/off controller ICs](/electronics/components/on-off-controllers/).
+
+    <Image src={import('./_assets/on-off-controllers-screenshot.webp')} width="800px" userClass="red-glow" />
+
+* Added info on [chown](/programming/operating-systems/linux/programs/chown/).
+
+    <Image src={import('./_assets/chown-screenshot.webp')} width="800px" userClass="red-glow" />
