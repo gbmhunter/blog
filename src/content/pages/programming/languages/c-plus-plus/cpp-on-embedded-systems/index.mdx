@@ -377,19 +377,27 @@ C++ performs name mangling so it can support function overloading (functions wit
 
 ISRs typically have a strict function type signature -- no input variables and no return type. Thus there is no way to pass through as function inputs instances of C++ classes to access and call class member functions. For this reason you generally have to define file scoped class instances that the ISR has access to (or a static member function, or just call a C-style function). See the [C++ Callbacks page](/programming/languages/c-plus-plus/callbacks/) for more info.
 
-## Further Reading
-
-The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform[^bib-iso-tech-report-cpp-performance].
-
-[The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
-
 ## C++ Standard Libraries For Embedded Devices
 
 [uClibc++](http://cxx.uclibc.org/index.html) is a C++ standard library designed specifically for microcontrollers. It even has exception support!
 
 [Check out The Standard Template Library (STL) For AVR With C++ Streams](http://andybrown.me.uk/wk/2011/01/15/the-standard-template-library-stl-for-avr-with-c-streams/) if you want to get a library for using things like string and iostream with AVR microcontrollers.
 
-## References
+## The Embedded Template Library (ETL)
+
+The [Embedded Template Library (ETL)](https://www.etlcpp.com/) is an popular open-source, MIT licensed C++ library which is designed to complement (and in cases replace) parts of the C++ STL (Standard Template Library) to provide a standard library which is useful in embedded environments[^etl-homepage]. One of the main problems with the STL from an embedded perspective is the use of dynamic memory allocation built into the use of the STL containers (e.g. `std::vector` and `std::string`). Dynamic memory allocation is used in these containers to provide powerful and flexible containers that work well when running on a full-blown OS, but the indeterministic nature and fragmentation of dynamic memory allocation usually makes these STL containers unsuitable for embedded systems.
+
+The ETL provides a set of alternative containers that are statically allocated, and thus do not use dynamic memory allocation.
+
+ETL is popular in the embedded community and as of September 2024 it has 2.1k stars on GitHub[^etl-github]. [CMake](/programming/build-systems-and-package-managers/cmake/) is used to build the library[^etl-homepage].
+
+## More Resources
+
+The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform[^bib-iso-tech-report-cpp-performance].
+
+[The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
 
 [^bib-iso-tech-report-cpp-performance]: ISO/IEC (2006, Feb 15). _ISO/IEC TR 18015:2006(E) - Technical Report on C++ Performance_. Retrieved 2022-09-29, from https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf.
 [^cpp-reference-std-array]: cppreference.com. _std::array_. Retrieved 2024-03-15, from https://en.cppreference.com/w/cpp/container/array.
+[^etl-homepage]: Embedded Template Library (ETL). _Embedded Template Library [homepage]_. Retrieved 2024-09-03, from https://www.etlcpp.com/.
+[^etl-github]: Embedded Template Library (ETL). _Embedded Template Library [GitHub repo]_. Retrieved 2024-09-03, from https://github.com/ETLCPP/etl.

@@ -9,6 +9,12 @@ title: Component Schematic Symbols and Designators
 type: page
 ---
 
+export const symbolStyle = {
+  display: 'flex',
+  gap: '20px',
+  justifyContent: 'center',
+};
+
 Component designators and schematic symbols are used to quickly identify components both on schematics and PCBs. They usually consist of a short acronym representing the type of component, followed by unique number to distinguish it from other components of the same type (e.g. `R3`, `R4`, `C3`).
 
 Over the years, many standards have been released that specify particular designator prefixes for component types. These include:
@@ -34,7 +40,7 @@ Designator(s):
 
 Recommended schematic symbols(s):
 
-<div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+<div style={symbolStyle}>
 <Image src={import('./_assets/antenna-symbol-open-top.svg')} width="200px">A schematic symbol for an antenna with an open top.</Image>
 <Image src={import('./_assets/antenna-symbol-closed-top.svg')} width="200px">A schematic symbol for an antenna with an closed top.</Image>
 </div>
@@ -61,7 +67,7 @@ Recommended schematic symbol(s):
 
 ### Capacitors \(C)
 
-`C` is the recommended designator for capacitors (both polarised and non-polarised). Sometimes you will see `VC` used for a variable capacitor (these are not common). I recommend using two different schematic symbols, flat plates for a non-polarised capacitor, and one plate which is curved for a polarised capacitor.
+`C` is the recommended designator for [capacitors](/electronics/components/capacitors/) (both polarised and non-polarised). Sometimes you will see `VC` used for a variable capacitor (these are not common). I recommend using two different schematic symbols, flat plates for a non-polarised capacitor, and one plate which is curved for a polarised capacitor.
 
 Recommended designator(s):
 
@@ -69,7 +75,7 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-<div style={{ display: 'flex' }}>
+<div  style={symbolStyle}>
 <Image src={import('./_assets/capacitor-symbol-unpolarized.svg')} width="200">The schematic symbol for a non-polarised capacitor.</Image>
 <Image src={import('./_assets/capacitor-symbol-polarized.svg')} width="200">The schematic symbol for a polarised capacitor.</Image>
 <Image src={import('./_assets/capacitor-symbol-variable.svg')} width="200">The schematic symbol for a variable capacitor.</Image>
@@ -92,7 +98,7 @@ Recommended designator(s):
 
 Recommended symbol(s):
 
-<div style={{ display: 'flex' }}>
+<div  style={symbolStyle}>
 <Image src={import('./_assets/diode-symbol-general-purpose.svg')} width="200">The recommended schematic symbol for an general purpose diode.</Image>
 <Image src={import('./_assets/diode-symbol-zener.svg')} width="200">The recommended schematic symbol for an Zener diode.</Image>
 <Image src={import('./_assets/diode-symbol-tvs-avalanche.svg')} width="200">The recommended schematic symbol for a unidirectional avalanche diode (including TVS diodes).</Image>
@@ -148,7 +154,7 @@ Recommended designator:
 
 Recommended schematic symbols(s):
 
-<div style={{ display: 'flex' }}>
+<div  style={symbolStyle}>
 <Image src={import('./_assets/gdt-schematic-symbol-2-electrode.svg')} width="250">Schematic symbol and designator for a 2-electrode gas discharge tube (GDT).</Image>
 <Image src={import('./_assets/gdt-schematic-symbol-3-electrode.svg')} width="250">Schematic symbol and designator for a 3-electrode gas discharge tube (GDT).</Image>
 </div>
@@ -171,7 +177,7 @@ Ground designators are not usually shown on schematics next to the symbols, as t
 
 Schematic symbol(s):
 
-<div style={{ display: 'flex' }}>
+<div  style={symbolStyle}>
 <Image src={import('./_assets/ground-symbol-signal.svg')} width="250">The schematic symbol for a signal (general) ground.</Image>
 <Image src={import('./_assets/ground-symbol-earth.svg')} width="250">The schematic symbol for a earth ground.</Image>
 <Image src={import('./_assets/ground-symbol-chassis.svg')} width="250">The schematic symbol for a chassis ground.</Image>
@@ -211,11 +217,15 @@ Recommended designator(s):
 
 ### Inductor (L)
 
-`L` is used as a designator for inductors. This is probably in honour of the physicist Heinrich Lenz who was a pioneer in the discovery of electromagnetism (and because `I` is commonly used to represent current).
+`L` is used as a designator for [inductors](/electronics/components/inductors/). This is probably in honour of the physicist Heinrich Lenz who was a pioneer in the discovery of electromagnetism (and because `I` is commonly used to represent current).
 
 Recommended designator(s):
 
 * `L`
+
+Recommended schematic symbol(s):
+
+<Image src={import('./_assets/inductors-different-schematic-symbols.webp')} width="700px">Schematic symbols for a variety of different inductor types.</Image>
 
 ### Motor (M)
 
@@ -259,7 +269,7 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-<div style={{ display: 'flex' }}>
+<div style={symbolStyle}>
 <Image src={import('./_assets/resistor-schematic-symbol-r1.png')} width="250">The schematic symbol for a standard resistor.</Image>
 <Image src={import('./_assets/variable-resistor-potentiometer-schematic-symbol.png')} width="250">The schematic symbol for a variable resistor (potentiometer).</Image>
 </div>
