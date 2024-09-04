@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2014-04-17
 description: A style/feature guide on writing firmware (code for microcontrollers) using C++.
-lastUpdated: 2022-09-29
-tags: [c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers, NTBS, strings, pointers, MISRA, arrays, dynamic memory allocation, new, delete, malloc, free]
+lastUpdated: 2024-09-04
+tags: [c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers, NTBS, strings, pointers, MISRA, arrays, dynamic memory allocation, new, delete, malloc, free, ETL]
 title: C++ On Embedded Systems
 type: page
 ---
@@ -381,7 +381,7 @@ ISRs typically have a strict function type signature -- no input variables and n
 
 [uClibc++](http://cxx.uclibc.org/index.html) is a C++ standard library designed specifically for microcontrollers. It even has exception support!
 
-[Check out The Standard Template Library (STL) For AVR With C++ Streams](http://andybrown.me.uk/wk/2011/01/15/the-standard-template-library-stl-for-avr-with-c-streams/) if you want to get a library for using things like string and iostream with AVR microcontrollers.
+[Check out The Standard Template Library (STL) For AVR With C++ Streams](http://andybrown.me.uk/wk/2011/01/15/the-standard-template-library-stl-for-avr-with-c-streams/) if you want to get a library for using things like `string` and `iostream` with AVR microcontrollers.
 
 ## The Embedded Template Library (ETL)
 
@@ -390,6 +390,58 @@ The [Embedded Template Library (ETL)](https://www.etlcpp.com/) is an popular ope
 The ETL provides a set of alternative containers that are statically allocated, and thus do not use dynamic memory allocation.
 
 ETL is popular in the embedded community and as of September 2024 it has 2.1k stars on GitHub[^etl-github]. [CMake](/programming/build-systems-and-package-managers/cmake/) is used to build the library[^etl-homepage].
+
+### Installation
+
+One way of adding ETL to your project is to either copy the repo or add it as a submodule. Once you have done that, you can use CMake's `add_subdirectory()`. The example below shows a `CMakeLists.txt` configuration assuming you have added the ETL repo as a submodule to `lib/etl` and you have your source code under `src/`:
+
+```cmake
+cmake_minimum_required(VERSION 3.22)
+project(my_project)
+
+add_subdirectory(lib/etl)
+add_executable(my_project src/main.cpp)
+target_link_libraries(my_project PRIVATE etl::etl)
+```
+
+My favourite way to add ETL is to use CMake's `FetchContent`, which means you don't even have to download the ETL repo manually! The example below shows how to do this:
+
+```cmake
+Include(FetchContent)
+
+FetchContent_Declare(
+  etl
+  GIT_REPOSITORY https://github.com/ETLCPP/etl
+  GIT_TAG        <targetVersion>
+)
+
+FetchContent_MakeAvailable(etl)
+
+add_executable(my_project src/main.cpp)
+target_link_libraries(my_project PRIVATE etl::etl)
+```
+
+### Containers
+
+```c++
+#include <iostream>
+#include <inttypes.h>
+
+#include <etl/vector.h>
+
+void passMeAVector(etl::ivector<uint32_t>& vec) {
+    // Do something with the vector
+    vec.push_back(13);
+    vec.push_back(14);
+}
+
+int main() {
+    etl::vector<uint32_t, 6> vec;
+    passMeAVector(vec);
+    printf("Num. of things in vec is %lu, vec[0] is %u, capacity is %lu\n", vec.size(), vec[0], vec.capacity());
+    return 0;
+}
+```
 
 ## More Resources
 
