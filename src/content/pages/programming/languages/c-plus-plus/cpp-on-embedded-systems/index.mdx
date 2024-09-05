@@ -423,6 +423,10 @@ target_link_libraries(my_project PRIVATE etl::etl)
 
 ### Containers
 
+ETL provides a number of containers (e.g. a vector, string, array) that are similar to the C++ STL containers, except they are backed by statically allocated memory and no dynamic allocation occurs.
+
+Below is an example if the `etl::vector` container and how you would use it:
+
 ```c++
 #include <iostream>
 #include <inttypes.h>
@@ -442,6 +446,10 @@ int main() {
     return 0;
 }
 ```
+
+Notice how both the type (`uint32_t`) and the size of the vector (6) are specified in the template arguments when creating the vector. This allows space for 6 elements to be allocated on the stack (inside `main()` at that point in time). This in comparison with `std::vector` in which only the type is specified, and the buffer to hold the element is dynamically allocated (and resized!) on the heap at runtime.
+
+One clever thing ETL does it allow you to accept function inputs of the `etl::vector` type without having to also provide the size. This would be a pain, as it would mean a different version of the function for every different sized vector. ETL does this by defining a base class called `etl::ivector` which only required the type as a template parameter. You can pass a `etl::vector` to a function that accepts a `etl::ivector` and it will work fine.
 
 ## More Resources
 
