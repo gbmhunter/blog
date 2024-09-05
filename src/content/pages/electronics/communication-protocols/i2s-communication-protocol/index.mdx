@@ -4,14 +4,13 @@ date: 2024-09-05
 description: The I2S communication protocol is used to transmit audio data between integrated circuits.
 image: ./_assets/cover-image.webp
 lastUpdated: 2024-09-05
-tags: [I2S, communication protocols, electronics]
+tags: [I2S, communication protocols, electronics, audio, ICs, sample rate, signals, serial, Zephyr]
 title: I2S Communication Protocol
 type: page
 ---
-
 <WarningIsNotes />
 
-Inter-Integrated Circuit Sound (I2S) is a synchronous, serial communication protocol used to transmit audio data between integrated circuits. It is commonly used to send audio between electronics such as MCUs, DSPs and audio amplifiers.
+Inter-Integrated Circuit Sound (I2S) is a synchronous, serial communication protocol used to transmit audio data between integrated circuits, typically those within the same PCB. It is commonly used to send audio between electronics such as MCUs, DSPs and audio amplifiers.
 
 It can be written/pronounced as:
 
@@ -48,6 +47,10 @@ WS has a 50% duty cycle and has the same frequency as the audio sample rate. WS 
 ### Serial Data (SD)
 
 Data is sent signed in two's complement format. The Most Significant Byte (MSB) is sent first. No fixed number of bits per frame are specified in the standard, and I2S allows this to be set by the user. The WS signal is used to indicate the end of a frame.
+
+## MCU Support
+
+The Nordic nRF52 and [nRF53](/programming/microcontrollers/nordic/nrf53/) MCU families have I2C peripherals.
 
 ## Frameworks and Libraries
 
