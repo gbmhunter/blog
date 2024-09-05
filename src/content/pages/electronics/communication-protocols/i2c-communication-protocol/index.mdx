@@ -11,7 +11,11 @@ type: page
 
 The I²C (_Inter-Integrated Circuit_, but pronounced _I-2-C_, and also spelt I2C) bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex, synchronous protocol which requires 2 wires (4 if you include power and ground). It uses device addressing (typically 7-bit) to indicate the recipient of the data. Arbitration is achieved via use of open-drain or open-collector outputs for the SCL and SDA lines (except for uncommon Ultra-fast mode, which uses push-pull drivers). It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
 
-<Image src={import('./_assets/i2c-logo.gif')} width="200">The I2C logo.</Image>
+<Image src={import('./_assets/i2c-logo.gif')} width="200px">The I2C logo.</Image>
+
+<Aside type="tip">
+Although it sounds similar, I2C is not to be confused with [I2S communication protocol](/electronics/communication-protocols/i2c-communication-protocol/) that is used specifically for audio.
+</Aside>
 
 ## History
 

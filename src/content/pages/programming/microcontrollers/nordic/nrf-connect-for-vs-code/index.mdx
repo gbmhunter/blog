@@ -13,7 +13,7 @@ type: page
 
 _nRF Connect for VS Code_ is a VS Code plugin by Nordic that provides additional development features for the nRF52, nRF53 and nRF92 series of microcontrollers.
 
-<Image src={import('./_assets/nrf-connect-logo.webp')} width="250px">The nRF Connect for VS Code logo[^vs-code-plugins-nrf-connect].</Image>
+<Image src={import('./_assets/nrf-connect-logo.webp')} width="150px">The nRF Connect for VS Code logo[^vs-code-plugins-nrf-connect].</Image>
 
 ## Visual Device Tree Editor
 
@@ -21,22 +21,22 @@ nRF Connect has a visual device tree editor that allows you to configure your nR
 
 Below is a screenshot of the tool's peripheral view which shows the device's peripherals and their configuration.
 
-<Image src={import('./_assets/nrf-visual-device-tree-editor-peripheral-view.webp')} width="450px">The nRF Connect visual device tree editor's peripheral view.</Image>
+<Image src={import('./_assets/nrf-visual-device-tree-editor-peripheral-view.webp')} width="800px">The nRF Connect visual device tree editor's peripheral view.</Image>
 
 Below is a screenshot of the tool's pin view which is a concentrated view of just the device's pins and their configuration.
 
-<Image src={import('./_assets/nrf-visual-device-tree-editor-pin-view.webp')} width="450px">The nRF Connect visual device tree editor's pin view.</Image>
+<Image src={import('./_assets/nrf-visual-device-tree-editor-pin-view.webp')} width="600px">The nRF Connect visual device tree editor's pin view.</Image>
 
 ## How to Fix the "No Devices Found" Error
 
 You might get a nRF board plugged into your computer, but have a "No devices found" error in the nRF Connect page.
 
-<Image src={import('./_assets/nrf-connect-no-devices-found-vs-code.webp')} width="450px">The "No devices found" error in nRF Connect.</Image>
+<Image src={import('./_assets/nrf-connect-no-devices-found-vs-code.webp')} width="350px">The "No devices found" error in nRF Connect.</Image>
 
 Firstly make sure that the standalone nRF Programmer tool can find the board. If it can't, you probably have an issue with the JLink drivers. If the Programmer tool can find the board, then it might be because the _Device provider_ setting in VS Code is incorrect.
 
 To fix this, go to VS Code's settings (File > Preferences > Settings) and search for "device provider". Select the correct device provider. When I encountered this problem, the option was blank and I had to select `nrfjprog` from the dropdown. That fixed the "No devices found" error and my board (a nRF52840 dev. kit) was detected.
 
-<Image src={import('./_assets/nrf-connect-device-provider-setting-in-vs-code.webp')} width="450px">The _Device provider_ setting in VS Code.</Image>
+<Image src={import('./_assets/nrf-connect-device-provider-setting-in-vs-code.webp')} width="900px">The _Device provider_ setting in VS Code.</Image>
 
 [^vs-code-plugins-nrf-connect]: Nordic Semiconductor. _nRF Connect for VS Code [plugin page]_. Retrieved 2024-09-05, from https://marketplace.visualstudio.com/items?itemName=nordic-semiconductor.nrf-connect.
