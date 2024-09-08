@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2012-12-12
 description: Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-05-01
-tags: [CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN FD, NXP, Secure CAN]
+lastUpdated: 2024-09-08
+tags: [CAN bus, bus, communication protocol, CAN1.0, CAN2.0, CAN base frame, CAN extended frame, USB adapters, NoCAN, encoding, controller, CANopen, NEMA 2000, termination resistors, FlexRay, SAE, J1850, J1939, ISO 11783, ISOBUS, isolation, mailboxes, CAN FD, NXP, Secure CAN, OBD2]
 title: CAN Protocol
 type: page
 ---
@@ -98,7 +98,6 @@ When CAN bus receivers are incorporated onto PCBs with microcontrollers and othe
 
 The CiA DS-102 standard defines CAN bus pin assignments for the ubiquitous serial DE-9 connector:
 
-{/* {{% figure src="_assets/can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png" width="500px" caption="CAN bus pin assignments for the DE-9 serial connector from the CiA DS-102 standard." %}} */}
 <Image src={import('./_assets/can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png')} width="500">CAN bus pin assignments for the DE-9 serial connector from the CiA DS-102 standard.</Image>
 
 This pin layout is also used for other CAN standards such as CANopen.
@@ -109,10 +108,8 @@ This pin layout is also used for other CAN standards such as CANopen.
 
 The drivers to the CAN line(s) are open-drain. This means that if a node writes a 0 (dominant), it will over-write a 1 (recessive). This is also called a _wired AND_ configuration.
 
-{/* {{% aside type="tip" %}} */}
 <Aside type="tip">
 _Wired AND_ is a good way to allow physical arbitration to take place when multiple nodes attempt to communicate at the same time. The [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/) is another protocol that uses this technique.
-{/* {{% /aside %}} */}
 </Aside>
 
 Arbitration works like such:
@@ -124,20 +121,16 @@ Arbitration works like such:
 
 After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
 
-{/* {{% aside type="tip" %}} */}
 <Aside type="tip">
 Car thieves have been cleverly using a special transmitter that also drives to the recessive level to override other messages on a vehicles CAN bus network, which has allowed them to break in and steal cars by accessing the CAN bus from the front headlights[^ken-tindell-keyless-car-theft]. See [CAN Injection: Keyless Car Theft](https://kentindell.github.io/2023/04/03/can-injection/) for more info.
-{/* {{% /aside %}} */}
 </Aside>
 
 The below image shows arbitration happening with a real-world scope capture, by showing the changing dominant bus voltage as driving transceivers lose arbitration and "drop" off the bus. 
 
-{/* {{% figure src="_assets/arbitration-waveform/waveform-full-annotated.png" width="600px" caption="Scope capture showing arbitration happen in real life! This scope was connected at some point on a long CAN bus with many transceivers, with a differential probe across the CAN_H and CAN_L wires. Since each transceiver is a different distance away from the measurement point, and there were transceiver from different IC manufacturers on the bus, each one drives the bus to a slightly different dominant voltage as seen by the scope." %}} */}
 <Image src={import('./_assets/arbitration-waveform/waveform-full-annotated.png')} width="600">Scope capture showing arbitration happen in real life! This scope was connected at some point on a long CAN bus with many transceivers, with a differential probe across the CAN_H and CAN_L wires. Since each transceiver is a different distance away from the measurement point, and there were transceiver from different IC manufacturers on the bus, each one drives the bus to a slightly different dominant voltage as seen by the scope.</Image>
 
 If we zoom in on one of the arbitration events as below we can see it aligns with the bit period of 8us (the CAN bus was running at 125kHz).
 
-{/* {{% figure src="_assets/arbitration-waveform/waveform-zoomed-in-annotated.png" width="600px" caption="Zoomed in view of the above scope capture, showing the width of the arbitration \"events\" aligns with the bit period of 8us (CAN bus was running at 125kHz)." %}} */}
 <Image src={import('./_assets/arbitration-waveform/waveform-zoomed-in-annotated.png')} width="600">Zoomed in view of the above scope capture, showing the width of the arbitration "events" aligns with the bit period of 8us (CAN bus was running at 125kHz).</Image>
 
 ## CAN Bit Timing
@@ -150,7 +143,6 @@ The below diagram shows the timing of a single CAN bit. **A single CAN bit is br
 . `SAMPLE_POINT`: This is the point in time in-between `PHASE_SEG_1` and `PHASE_SEG_2` at which the transceiver samples the value on the bus (recessive or dominant).
 . `PHASE_SEG_2`: Phase segment 2.
 
-{/* {{% figure src="_assets/can-bit-timing.webp" width="900px" caption="Timing diagram of a single CAN bit." %}} */}
 <Image src={import('./_assets/can-bit-timing.webp')} width="900">Timing diagram of a single CAN bit.</Image>
 
 Only one sample point is shown above, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at $1t_q$ before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
@@ -173,7 +165,6 @@ Most CAN transceivers have the lengths of the bit segments configured so that th
 
 Because any CAN node may sample the bus as soon as `PROP_SEG` is over, the two way propagation of the signal between any two nodes on the bus must occur before the end of `PROP_SEG`. The below figure illustrates this between two nodes, one which is the transmitter and another which is the receiver. The signal has to propagate back from the receiver to the transmitter within this time because the transmitter needs to read back values from the bus during arbitration and the acknowledge bit.
 
-{/* {{% figure src="_assets/can-bit-timing-prop-delay-between-two-nodes.webp" width="800px" caption="Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`." %}} */}
 <Image src={import('./_assets/can-bit-timing-prop-delay-between-two-nodes.webp')} width="800">Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`.</Image>
 
 The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
@@ -223,7 +214,6 @@ Dominant bits are logic level 0, while recessive bits are logic level 1.
 
 **Standard Data/Remote Frame (11-bit Identifier)**
 
-{/* {{% figure src="_assets/can-standard-base-frame-format-data-remote.png" width="883px" caption="The standard (base) CAN frame format for both data and remote frames." %}} */}
 <Image src={import('./_assets/can-standard-base-frame-format-data-remote.png')} width="883">The standard (base) CAN frame format for both data and remote frames.</Image>
 
 _**SOF bit:**_ A dominant start of frame bit marks the start of a message. It is used to synchronize all the nodes on a bus after being idle. Transmitted by the sender.
@@ -248,12 +238,10 @@ TIP: In the situation when there are multiple receivers, the acknowledge bit wil
 
 _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
 
-{/* {{% figure src="_assets/st-can-frame-incorrect-acronym-ide.png" width="500px" caption="Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19." %}} */}
 <Image src={import('./_assets/st-can-frame-incorrect-acronym-ide.png')} width="500">Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19.</Image>
 
 **Extended Data/Remote Frame (29-bit Identifier)**
 
-{/* {{% figure src="_assets/can-extended-frame-format-data-remote.png" width="800px" caption="The extended CAN frame format for both data and remote frames." %}} */}
 <Image src={import('./_assets/can-extended-frame-format-data-remote.png')} width="800">The extended CAN frame format for both data and remote frames.</Image>
 
 The extended frame is the same as the above standard frame, except for the differences described below:
@@ -391,6 +379,15 @@ PeliCAN mode extensions include:
 
 Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipment.
 
+### OBD2, ISO 15765-4 and ISO-TP
+
+OBD2 (On Board Diagnostics) is a standard to read diagnostic information from a car. It is normally thought of as the OBD2 connector. One of the protocols used by OBD2 is ISO 15765-4, which is a CAN-based protocol.
+
+<WrappableRow>
+<Image src={import('./_assets/konnwei-obd2-car-scanner.webp')} width="400px">A Konnwei OBD2 car scanner. It plugs into the OBD2 port in a car, and communicates with a phone via Bluetooth. You use an app to control the device.</Image>
+<Image src={import('./_assets/car-scanner-app-showing-obd2-can-connection.webp')} width="300px">A car scanner app with the CAN connection highlighted.</Image>
+</WrappableRow>
+
 ## Licensing
 
 **The CAN protocol and CAN FD protocol are protected with IP rights by Bosch**. Any CAN IP modules for a FPGA or ASIC (including self-developed ones!!!), or fixed hardware CAN IP peripherals for microcontrollers **must be licensed**.
@@ -461,7 +458,6 @@ A CAN bus _Controller_ is an IC which contains all the logic and data processing
 
 The _PCA82C200_ is "the" classic original CAN controller. It used a parallel interface (8 address lines + control lines). The [Phillips datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/87716/PHILIPS/PCA82C200.html) I found for this part dated back to October 1990[^philips-pca82c200-ds].
 
-{/* {{% figure src="_assets/pca82c200-can-controller-block-diagram.png" width="800px" caption="Block diagram of the PCA82C200 CAN controller IC[^philips-pca82c200-ds]." %}} */}
 <Image src={import('./_assets/pca82c200-can-controller-block-diagram.png')} width="800">Block diagram of the PCA82C200 CAN controller IC[^philips-pca82c200-ds].</Image>
 
 ### SJA1000
