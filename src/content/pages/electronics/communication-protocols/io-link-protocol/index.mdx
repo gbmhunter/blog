@@ -2,6 +2,7 @@
 authors: [gbmhunter]
 date: 2015-04-22
 description: Packet types and more about the IO-Link protocol.
+image: ./_assets/cover-image.webp
 lastUpdated: 2015-04-22
 tags: [communication protocols, electronics, IO-Link, packets, events]
 title: IO-Link Protocol
@@ -11,6 +12,8 @@ type: page
 <WarningIsNotes />
 
 The IO-Link protocol is a point-to-point serial communication protocol which is commonly used for sensor and actuator communication in an industrial environment.
+
+<Image src={import('./_assets/io-link-logo.webp')} width="400px">The IO-Link logo[^profinet-io-link].</Image>
 
 ## Packet Types
 
@@ -25,3 +28,5 @@ Service data is used to send large amounts of non-periodic data at the request o
 ### Events
 
 Events are unsolicited messages that convey information such as alarm status or info.
+
+[^profinet-io-link]: Profinet. _IO-LInk Technology_. Retrieved 2024-09-09, from https://us.profinet.com/technology/io-link/.
