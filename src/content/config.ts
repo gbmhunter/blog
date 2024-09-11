@@ -1,14 +1,13 @@
 import { z, defineCollection } from 'astro:content';
 import { docsSchema } from '@astrojs/starlight/schema';
 
-// 2. Define your collection(s)
-
 //=========================================================
 // PAGES COLLECTION
 //=========================================================
 const pagesCollection = defineCollection({
 	type: 'content', // v2.5.0 and later
   schema: ({image}) => z.object({
+    aliases: z.array(z.string()).optional(), // Used to setup dynamic redirects. This is done in [...slug].astro 
     authors: z.array(z.string()),
     date: z.date(),
 	  description: z.string().optional(),

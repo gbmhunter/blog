@@ -1,0 +1,28 @@
+---
+authors: [gbmhunter]
+date: 2012-10-25
+description: Solid-state relays (SRRs) are relays that use don't have any moving mechanical parts involved in the switching. They use semi-conductor devices (normally MOSFETs) to perform the switching instead.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-09-11
+tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw]
+title: Solid State Relays (SSRs)
+type: page
+---
+
+Solid-state relays (SRRs) are relays that use don't have any moving mechanical parts involved in the switching. They use semi-conductor devices (normally [MOSFETs](/electronics/components/transistors/mosfets/)) to perform the switching instead. The key feature that distinguishes SSRs from standard transistors is that they provide electrical isolation between the input and output. This is typically achieved by using an opto-coupler to drive the MOSFETs.
+
+SSRs or more reliable than mechanical relays as there are no moving parts to wear out. They also have a faster switching times than mechanical relays. However, they are more typically more expensive for comparable voltage/current ratings and can be more easily damaged by over-voltage conditions.
+
+<Aside type="note">
+Although SSRs are normally faster than mechanical relays, there are not as fast as you might think! A standalone MOSFET can switch in the 1-10ns range. However, SSRs normally have on and off times in the 1-10ms range[^panasonic-aqy212g2Sx-ds]. This is a million times slower! This is because of the time it takes for the opto-coupler to turn on and off (the price you pay for isolation).
+</Aside>
+
+<Image src={import('./_assets/solid-state-relay-mgr-1-d4825.jpg')} width="500px">The MGR-1 D4825 solid state relay from Mager. The input takes 3-32VDC to switch the output 24-480VAC contacts at up to 25A.</Image>
+
+The normal way of doing this is to perform the switching with back-to-back N-channel [MOSFETs](/electronics/components/transistors/mosfets/) whose gates are activated by a isolating opto-coupler (LED and receiver).
+
+Below is the typical schematic symbol for a solid-state relay. It shows the inputs feeding the opto-coupler and the back-to-back MOSFETs that do the switching on the output:
+
+<Image src={import('./_assets/ssr-schematic-symbol.webp')} width="300px">The schematic symbol for a SSR.</Image>
+
+[^panasonic-aqy212g2Sx-ds]: Panasonic. _PhotoMOS - GU SOP 1 Form A - High Capacity - Product Catalog [product catalog]_. Retrieved 2024-09-11, from https://www3.panasonic.biz/ac/cdn/e/control/relay/photomos/catalog/semi_eng_gu1a_aqy21_gs.pdf.

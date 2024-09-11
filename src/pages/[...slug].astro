@@ -43,9 +43,27 @@ export async function getStaticPaths() {
       pageRoute.slug = undefined;
     }
 
+    // Need to create additional paths if the page contains aliases in it's frontmatter
+    const aliases = pageRoute.data.aliases;
+    if (aliases) {
+      for (let alias of aliases) {
+        staticPaths.push({
+          params: { slug: alias },
+          props: { 
+            aliasTo: pageRoute.slug,
+            // Nothing more is needed for the alias page
+            frontmatter: undefined,
+            render: undefined,
+            sidebarData: undefined,
+          },
+        });
+      }
+    }
+
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
+        aliasTo: undefined,
         frontmatter: pageRoute.data,
         render: pageRoute.render,
         sidebarData: sidebarData,
@@ -56,8 +74,18 @@ export async function getStaticPaths() {
   return staticPaths;
 }
 
-const { frontmatter, render, sidebarData } = Astro.props;
+const { aliasTo, frontmatter, render, sidebarData } = Astro.props;
+
+// Check if this page is an alias, and if so, redirect before attempting to render page
+if (aliasTo) {
+  return Astro.redirect(`/${aliasTo}/`);
+}
+
 const { Content, headings, remarkPluginFrontmatter } = await render();
+
+
+
+
 
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
