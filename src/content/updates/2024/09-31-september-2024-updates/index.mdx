@@ -24,3 +24,103 @@ Added info on [nRF Connect for VS Code](/programming/microcontrollers/nordic/nrf
 #### I2S Communication Protocol
 
 Added info on the [I2S Communication Protocol](/electronics/communication-protocols/i2s-communication-protocol/).
+
+#### Cover Images
+
+Added cover images to many pages, especially those in the [Communication Protocols section](/electronics/communication-protocols/).
+
+#### Added Ability To Add Page Aliases
+
+I added the ability for document pages to specify aliases. Aliases are great when you are moving pages around and the existing page is linked (and has a significant amount of traffic) from external sites. These aliases are added to each `.mdx` documents front matter like so:
+
+```mdx title="src/content/pages/my-page.mdx" {2}
+---
+aliases: [/my-old-page/]
+authors: [gbmhunter]
+date: 2024-09-11
+lastUpdated: 2024-09-11
+tags: [my tag]
+title: My Page
+type: page
+---
+
+This is my page!
+```
+
+This field is specified in the content collection so it becomes available in the `.data` object when inside the `getStaticPaths()` function. To specify it in the collection's schema, add the following to the `src/content/config.ts` file:
+
+```ts title="src/content/config.ts" {4}
+const pagesCollection = defineCollection({
+	type: 'content',
+  schema: ({image}) => z.object({
+    aliases: z.array(z.string()).optional(), // Used to setup dynamic redirects. This is done in [...slug].astro 
+    authors: z.array(z.string()),
+    date: z.date(),
+	  description: z.string().optional(),
+    draft: z.boolean().default(false),
+    image: image().optional(),
+    lastUpdated: z.date(),
+    tags: z.array(z.string()).optional(),
+    title: z.string(),
+  }),
+});
+```
+
+Then, in the `[...slug].astro` file which contains the `getStaticPaths()` function which determines the routes for the site, I check if the page has aliases and if so, add them to the static paths array. Alias paths are passed a `aliasTo` prop which is used to redirect to the correct page:
+
+```astro title="src/pages/[...slug].astro" {13-27, 45-48}
+---
+export async function getStaticPaths() {
+  const combinedCollection = await getAllCollections();
+  const routablePages = getRoutablePages(combinedCollection);
+  const sidebarData = getSidebarData(combinedCollection);
+
+  let staticPaths = [];
+  for (let pageRoute of routablePages) {
+
+    //...
+
+    // Need to create additional paths if the page contains aliases in it's front matter
+    const aliases = pageRoute.data.aliases;
+    if (aliases) {
+      for (let alias of aliases) {
+        staticPaths.push({
+          params: { slug: alias },
+          props: { 
+            aliasTo: pageRoute.slug,
+            // Nothing more is needed for the alias page
+            frontmatter: undefined,
+            render: undefined,
+            sidebarData: undefined,
+          },
+        });
+      }
+    }
+
+    staticPaths.push({
+      params: { slug: pageRoute.slug },
+      props: { 
+        aliasTo: undefined,
+        frontmatter: pageRoute.data,
+        render: pageRoute.render,
+        sidebarData: sidebarData,
+      },
+    });
+  }
+
+  return staticPaths;
+}
+
+const { aliasTo, frontmatter, render, sidebarData } = Astro.props;
+
+// Check if this page is an alias, and if so, redirect before attempting to render page
+if (aliasTo) {
+  return Astro.redirect(`/${aliasTo}/`);
+}
+
+---
+```
+
+#### Created a Programming > Design Section
+
+I decided that the `Programming > General` section was somewhat mis-labeled (what is "General" mean anyway?). Some of the pages under this section seemed to fit a "Design" section, so I created a new section called `Programming > Design`. As a start, the pages on state machines have been moved across.

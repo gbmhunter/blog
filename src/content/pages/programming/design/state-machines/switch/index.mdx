@@ -1,0 +1,90 @@
+---
+authors: [gbmhunter]
+date: 2024-09-11
+lastUpdated: 2024-09-11
+tags: [programming]
+title: A Switch Statement State Machine
+type: page
+---
+
+This is one of the easiest state machines to implement, and is one of the first that programmers will encounter, most often by intuitive happenstance.
+
+The code below demonstrates the switch() state machine with a basic motor-based example:
+
+```c
+enum class MotorStates
+{
+    NONE,
+    INIT,
+    STOPPED,
+    RUNNING
+};
+
+int main()
+{
+    MotorStates currState = MotorStates::INIT;
+
+    // Loop indefinetly
+    while(true)
+    {
+        switch(currState)
+        {
+            case MotorStates::NONE :
+                break;
+            case MotorStates::INIT :
+                // Init complete, goto STOPPED state
+                currState = MotorStates::STOPPED;
+                break;
+            case MotorStates::STOPPED :
+                break;
+            case MotorStates::RUNNING :
+                break;
+        }
+    }
+}
+```
+
+You can add code which runs only on the entry to each state by keeping track of the previous state. You will now see why I added the MotorStates::NONE state.
+
+```c    
+int main()
+{
+    MotorStates currState = MotorStates::INIT;
+    MotorStates prevState = MotorStates::NONE;
+    
+    // Loop indefinitely
+    while(true)
+    {
+        switch(currState)
+        {
+            case MotorStates::NONE :
+                break;
+            case MotorStates::INIT :
+                if(prevState != currState)
+                {
+                    // This code will run once on entry to state
+                    prevState = currState;
+                }
+                // Init complete, goto STOPPED state
+                currState = MotorStates::STOPPED;
+                break;
+            case MotorStates::STOPPED :
+                if(prevState != currState)
+                {
+                    // This code will run once on entry to state
+                    prevState = currState;
+                }
+                break;
+            case MotorStates::RUNNING :
+                if(prevState != currState)
+                {
+                    // This code will run once on entry to state
+                    prevState = currState;
+                }
+                break;
+        }
+    }
+}
+```
+
+One of the drawbacks is that you have to remember to break out of every case, otherwise you will get fall through to the next state.

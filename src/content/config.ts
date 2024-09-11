@@ -5,7 +5,7 @@ import { docsSchema } from '@astrojs/starlight/schema';
 // PAGES COLLECTION
 //=========================================================
 const pagesCollection = defineCollection({
-	type: 'content', // v2.5.0 and later
+	type: 'content',
   schema: ({image}) => z.object({
     aliases: z.array(z.string()).optional(), // Used to setup dynamic redirects. This is done in [...slug].astro 
     authors: z.array(z.string()),
