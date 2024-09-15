@@ -1,6 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2024-09-12
+description: Bleak is a Bluetooth Low Energy (BLE) library for Python. It is a cross-platform library that supports Windows, Linux, and macOS. It uses the asyncio Python library. This page covers installation, basic usage, and backends.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-09-12
 tags: [programming, programming languages, Python, Bleak, Bluetooth]
 title: Bleak
@@ -9,7 +11,9 @@ type: page
 
 <WarningIsNotes />
 
-Bleak is a [Bluetooth Low Energy (BLE)](/electronics/communication-protocols/bluetooth/) library for [Python](/programming/languages/python/). It is a cross-platform library that supports Windows, Linux, and macOS. It is built on top of the `asyncio` Python library.
+Bleak (Bluetooth Low Energy platform Agnostic Klient)[^github-bleak-repo] is a [Bluetooth Low Energy (BLE)](/electronics/communication-protocols/bluetooth/) library for [Python](/programming/languages/python/). It is a cross-platform library that supports Windows, Linux, and macOS. It is built on top of the `asyncio` Python library.
+
+<Image src={import('./_assets/bleak-logo.webp')} width="200px">The Bleak logo[^github-bleak-repo].</Image>
 
 It can be found on GitHub [here](https://github.com/hbldh/bleak).
 
@@ -20,6 +24,8 @@ Install Bleak with pip:
 ```sh
 pip install bleak
 ```
+
+It's recommended to install Bleak in a virtual environment (create one with `python -m venv .venv`, and then activate it).
 
 ## Basic Usage
 
@@ -83,6 +89,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## Backends
 
-On Windows, Bleak uses the `winrt` (Windows Runtime) backend. On Linux, it communicates with BlueZ via DBus. On macOS, it interfaces with the CoreBluetooth API[bleak-docs-backend-implementations].
+On Windows, Bleak uses the `winrt` (Windows Runtime) backend. On Linux, it communicates with BlueZ via DBus. On macOS, it interfaces with the CoreBluetooth API[^bleak-docs-backend-implementations].
 
-[bleak-docs-backend-implementations]: Bleak. _Backend implementations [docs]. Retrieved 2024-09-15, from https://bleak.readthedocs.io/en/latest/backends/index.html.
+[^bleak-docs-backend-implementations]: Bleak. _Backend implementations [docs]. Retrieved 2024-09-15, from https://bleak.readthedocs.io/en/latest/backends/index.html.
+[^github-bleak-repo]: GitHub. _Bleak repository_. Retrieved 2024-09-15, from https://github.com/hbldh/bleak.
