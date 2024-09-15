@@ -1,0 +1,88 @@
+---
+authors: [gbmhunter]
+date: 2024-09-12
+lastUpdated: 2024-09-12
+tags: [programming, programming languages, Python, Bleak, Bluetooth]
+title: Bleak
+type: page
+---
+
+<WarningIsNotes />
+
+Bleak is a [Bluetooth Low Energy (BLE)](/electronics/communication-protocols/bluetooth/) library for [Python](/programming/languages/python/). It is a cross-platform library that supports Windows, Linux, and macOS. It is built on top of the `asyncio` Python library.
+
+It can be found on GitHub [here](https://github.com/hbldh/bleak).
+
+## Installation
+
+Install Bleak with pip:
+
+```sh
+pip install bleak
+```
+
+## Basic Usage
+
+Bleak uses asyncio, so you need to run it in an asyncio event loop.
+
+To scan for devices, you can use the following code:
+
+```python
+import asyncio
+from bleak import BleakScanner
+
+async def main():
+    devices = await BleakScanner.discover()
+    for d in devices:
+        print(d)
+
+asyncio.run(main())
+```
+
+When I ran this at home, I got the following output:
+
+```sh
+64:33:DB:9A:4C:1B: SAJ_Twoleg_S002594
+E0:03:6B:B3:07:03: None
+21:F3:9C:4A:0A:16: None
+C6:EF:69:E2:77:B2: GN
+50:0F:D7:2C:0F:4E: None
+DC:CD:18:18:66:A0: Pokemon GO Plus +
+70:D5:98:56:8B:E1: None
+```
+
+Here is a simple example that connects to BLE device and reads the model number, based of it's MAC address:
+
+```python
+import asyncio
+from bleak import BleakClient
+
+address = "24:71:89:cc:09:05"
+MODEL_NBR_UUID = "2A24"
+
+async def main(address):
+    async with BleakClient(address) as client:
+        model_number = await client.read_gatt_char(MODEL_NBR_UUID)
+        print("Model Number: {0}".format("".join(map(chr, model_number))))
+
+asyncio.run(main(address))
+```
+
+A context manager is used (the `with` above), which removes the need to manually disconnect from the device (it will automatically disconnect when the context manager exits).
+
+As part of the connection process, Bleak will scan for BLE devices until it finds one that matches the MAC address.
+
+Bleak will raise a `BleakDeviceNotFoundError` exception if it cannot find the device.
+
+To get debug information from Bleak, you can import `logging` and set the logging level to `DEBUG`:
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+```
+
+## Backends
+
+On Windows, Bleak uses the `winrt` (Windows Runtime) backend. On Linux, it communicates with BlueZ via DBus. On macOS, it interfaces with the CoreBluetooth API[bleak-docs-backend-implementations].
+
+[bleak-docs-backend-implementations]: Bleak. _Backend implementations [docs]. Retrieved 2024-09-15, from https://bleak.readthedocs.io/en/latest/backends/index.html.
