@@ -1,12 +1,17 @@
 ---
 authors: [gbmhunter]
 date: 2013-10-02
-description: EEPROM, flash, SD cards and more info about memory.
+description: Memory is an electronic component which stores digital data in either a volatile (e.g. RAM) or non-volatile manner (e.g. flash). This section covers EEPROM, flash, SD cards and more.
+image: ./_assets/cover-image.webp
 lastUpdated: 2020-06-25
 tags: [memory, EEPROM, flash, I2C, M25P128]
 title: Memory
 type: page
 ---
+
+## Child Pages
+
+<ChildPages />
 
 ## EEPROM
 
@@ -21,9 +26,3 @@ The cheapest EEPROM on the market is usually available with an I2C, 1-wire (e.g.
 Some EEPROM chips also come with unique ID's burnt into memory. The [DS28E05 by Maxim Integrated](http://datasheets.maximintegrated.com/en/ds/DS28E05.pdf) is one such example. It provides a unique 64-bit ID number which can be read back from read-only memory. It also serves as it's 1-wire address.
 
 <Image src={import('./_assets/ds28e05-eeprom-ic-connected-to-micro-using-1-wire.pdf.png')} width="390px">The DS28E05 EEPROM I2C, connected to a microcontroller via the 1-wire interface.</Image>
-
-## Flash
-
-Flash sometimes uses flip-flop style pin naming conventions. The M25P128 is one such example.
-
-<Image src={import('./_assets/m25p128-flash-ic-that-uses-flip-flop-style-naming-for-spi-pins.png')} width="420px">The M25P128 flash IC which uses flip-flop style pin naming conventions.</Image>

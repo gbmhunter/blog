@@ -1,32 +1,36 @@
 ---
 authors: [gbmhunter]
 date: 2015-11-02
-description: Transistor output optocouplers, schematic symbols, phototraic output optocouplers, component packages and more info on optical isolators.
+description: Transistor output optocouplers, schematic symbols, phototriac output optocouplers, component packages and more info on optical isolators.
+image: ./_assets/cover-image.webp
 lastUpdated: 2015-11-02
-tags: [optical isolators, phototriac, schematic symbols, component packages, opto-isolators]
+tags: [optical isolators, phototriacs, schematic symbols, component packages, opto-isolators, optocouplers]
 title: Optical Isolators
 type: page
 ---
 
+Optical isolators (a.k.a. opto-isolators or optocouplers) are used to isolate two circuits electrically while allowing data to pass between them. They are used to prevent high voltages from damaging sensitive electronics, and to prevent noise from one part of a circuit from affecting another part.
+
 Types:
 
-* Transistor output optocouplers.
+* BJT output optocouplers.
+* Phototriac output optocouplers.
 
-## Transistor Output Optocouplers
+## BJT Output Optocouplers
 
 ### Schematic Symbol
 
-A commonly used schematic symbol for an optical isolator is shown below:
+A commonly used schematic symbol for a basic [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/)-based optocoupler is shown below:
 
-<Image src={import('./_assets/opto-isolator-schematic-symbol.png')} width="200px">A commonly used symbol for a standard optical isolator.</Image>
+<Image src={import('./_assets/basic-optocoupler-schematic-symbol.webp')} width="500px">A commonly used symbol for a basic BJT-based optocoupler.</Image>
 
 Many opto-isolators use a infrared emitting diode optically coupled to a photo transistor, all within a single enclosed component.
 
-AC capable opto-couplers usually have two LEDs in anti-parallel (e.g. the HCPL-354 by Avago).
+AC capable optocouplers usually have two LEDs in anti-parallel (e.g. the HCPL-354 by Avago).
 
 ### The Current-Transfer Ratio
 
-The _current-transfer ratio_ (CTR) of a photo-transistor based optical isolator tells you how well it amplifies an input signal to an output signal. It is the ratio of the collector current $I_C$ at the output side relative to the forward current $I_f$ going through the LED on the input side, and then expressed as a percentage:
+The _current-transfer ratio_ (CTR) of a BJT-based optical isolator tells you how well it amplifies an input signal to an output signal. It is the ratio of the collector current $I_C$ at the output side relative to the forward current $I_f$ going through the LED on the input side, and then expressed as a percentage:
 
 $$
 \begin{align}
@@ -44,7 +48,7 @@ The current transfer ratio is specified at a particular forward current $I_f$ th
 
 ## Phototriac Output Optocouplers
 
-_Phototriac output optocouplers_ (a.k.a. _triac couplers_) are like phototransistor optocouplers, except they have a traic instead of a transistor on the output. The triac's gate is controlled by the incoming light source. Phototriac optocouplers are used to switch on and off an AC load in an isolated manner.
+_Phototriac output optocouplers_ (a.k.a. _triac couplers_) are like phototransistor optocouplers, except they have a triac instead of a transistor on the output. The triac's gate is controlled by the incoming light source. Phototriac optocouplers are used to switch on and off an AC load in an isolated manner.
 
 <Image src={import('./_assets/phototriac-based-optical-isolator-internal-schematic.png')} width="400px">The internal schematic of an optical isolator with a phototriac output driver rather than a phototransistor. Image from http://www.ti.com/.</Image>
 
