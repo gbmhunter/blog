@@ -1,0 +1,67 @@
+---
+authors: [gbmhunter]
+date: 2024-09-17
+description: The GNU linker (ld) is a program that combines object files and libraries to create an executable file.
+lastUpdated: 2024-09-17
+tags: [ld, linkers, GCC, C, C++]
+title: GNU Linker Scripts
+type: page
+---
+
+<WarningIsNotes />
+
+Linker scripts use the `.ld` file extension.
+
+## Entry Point
+
+The entry point of a program can be specified in a few different ways[^gnu-linker-command-language]:
+
+1. Using the `ENTRY` command.
+1. The value to the `start` symbol.
+1. The address of the first byte of the `.text` section.
+1. The address `0`.
+
+For example, if we were to use the `ENTRY()` command:
+
+```ld
+ENTRY(reset_handler)
+```
+
+## Memory Layout
+
+You can use the `MEMORY` command to describe the size and location of memory "blocks" in the target system. Based on this information, the linker will place requested sections into the correct memory blocks and also raise errors if any block overflows.
+
+A `.ld` file can contain only one `MEMORY` command. Inside the command, you can define as many blocks of memory as you want. The syntax is[^gnu-linker-command-language]:
+
+```txt
+MEMORY
+{
+  name1 (attr) : ORIGIN = origin1, LENGTH = length1
+  ...
+}
+```
+
+* `name1` is the name of the memory block, used internally by the linker to refer to that region.
+* `attr` is a list of attributes for the memory block. The supported attributes are:
+  * `r` for read-only.
+  * `w` for read/write sections.
+  * `x` for executable sections.
+  * `a` for allocatable sections.
+  * `i` for initialized sections.
+  * `l` same as `i`.
+* `origin1` is the starting address of the memory block.
+* `length1` is the size (in bytes) of the memory block.
+
+## Sections
+
+The following example creates an output file with three sections: `.text`, `.data`, and `.bss`. It takes all input files and takes the corresponding sections from them (`.text` goes to `.text`) and places them in the output file: 
+
+```txt
+SECTIONS { 
+  .text : { *(.text) }
+  .data : { *(.data) } 
+  .bss :  { *(.bss)  *(COMMON) } 
+}
+```
+
+[^gnu-linker-command-language]: GNU. _Manuals > ld v2.9.1. > Command Language_. Retrieved 2024-09-17, from https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_chapter/ld_3.html.
