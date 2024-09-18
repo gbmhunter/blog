@@ -1,14 +1,15 @@
 ---
 authors: [gbmhunter]
 date: 2015-10-13
-description: Contruction, important parameters, examples and more info on Peltiers (thermoelectric coolers).
+description: Construction, important parameters, examples and more info on Peltier devices (thermoelectric coolers).
+image: ./_assets/cover-image.webp
 lastUpdated: 2015-10-13
 tags: [Peltier, thermoelectric, PWM, components, electronics]
 title: Peltiers (Thermoelectric Coolers)
 type: page
 ---
 
-Peltiers are electrical components that use the Peltier effect to heat/cool objects. They act as a heat pump, moving heat energy from the cold side to the hot side.
+Peltier devices are electrical components that use the Peltier effect to heat/cool objects. They act as a heat pump, moving heat energy from the cold side to the hot side.
 
 <Image src={import('./_assets/standard-peltier-module-photo.jpg')} width="444px">A photo of a standard peltier module. Image from www.cherrybiotech.com.</Image>
 
@@ -40,7 +41,7 @@ The maximum heat transfer (also known as $Q_{max}$, or maximum work), is the **m
 
 This always occurs when the **temperature differential** between the hot and cold sides is 0°C. (i.e. at the same temperature). Obviously, for any real-life operating Peltier, this is impossible. The larger the temperature differential, the less heat can be moved across the plates.
 
-$Q_{max}$ is also dependent on the **absolute temperature** of the plates. As the absolute temperature rises, $Q_{max}$ also increases. The absolute temperature that $Q_{max}$ is measured at is usually specified on the Peltier's datasheet. The absolute temperature of the hot side is usually given ($T_H$. Since $Q_{max}$ is given for when both sides are at the same temperature, this is also equal to the temperature of the cold side.
+$Q_{max}$ is also dependent on the **absolute temperature** of the plates. As the absolute temperature rises, $Q_{max}$ also increases. The absolute temperature that $Q_{max}$ is measured at is usually specified on the Peltier's datasheet. The absolute temperature of the hot side is usually given ($T_H$). Since $Q_{max}$ is given for when both sides are at the same temperature, this is also equal to the temperature of the cold side.
 
 It is important to NOT confuse the heat transfer $Q$ with the input power $P$.
 
@@ -64,7 +65,7 @@ If you want simple on/off control and the hot/cold sides don't need to switch, t
 
 If you want tighter control over the power, you can PWM a transistor to provide varying power from a constant DC source.
 
-If you want full control over the heat direction (i.e. which side is hot/cold), then you will need a H-bridge setup (similar to what is used to control stepper motors.
+If you want full control over the heat direction (i.e. which side is hot/cold), then you will need a H-bridge setup (similar to what is used to control stepper motors).
 
 ## Examples
 

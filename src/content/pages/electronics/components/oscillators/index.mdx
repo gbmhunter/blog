@@ -2,6 +2,7 @@
 authors: [gbmhunter]
 date: 2012-01-05
 description: Important parameters, MEMS oscillators, Wien bridges, ring oscillators and more info about oscillators.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-01-30
 tags: [electronics, components, oscillators, crystals, MEMS, XTAL, XC, XO, OCXO, frequency, clocks, power consumption, stability, accuracy, ultrasonic baths, ring oscillators, NOT gates, turnover temperature]
 title: Oscillators
@@ -40,12 +41,12 @@ MEMS oscillators have been made in packages which are also commonly used for cry
 
 Some common industry sizes for oscillators include:
 
-- 1612: 1.6 mm × 1.2 mm
-- 2016: 2.0 mm × 1.6 mm
-- 2520: 2.5 mm × 2.0 mm
-- 3225: 3.2 mm × 2.5 mm
-- 5032: 5.0 mm × 3.2 mm
-- 7050: 7.0 mm × 5.0 mm
+- 1612: 1.6 mm x 1.2 mm
+- 2016: 2.0 mm x 1.6 mm
+- 2520: 2.5 mm x 2.0 mm
+- 3225: 3.2 mm x 2.5 mm
+- 5032: 5.0 mm x 3.2 mm
+- 7050: 7.0 mm x 5.0 mm
 
 ## Wien Bridge Oscillator
 
@@ -180,9 +181,7 @@ Common methods of actively limiting the gain include using:
 
 Wien bridge oscillators can also be made from a single supply[^bib-analog-devices-single-supply-wien-bridge].
 
-### Diode Limited Example And SPICE Simulation
-
-NOTE: I have just used the calculated capacitance and resistance values, and not picked the nearest realistic E96 value so that it's easier to keep track of where the values come from.
+<Aside type="example" title="EXAMPLE: Diode Limited Example and SPICE Simulation">
 
 The first thing is to choose an oscillation frequency. Let's choose $1kHz$. We will also choose an arbitrary capacitance of $C = 10nF$. It's good to keep the capacitance somewhat low and use ceramic NP0/C0G type dielectrics, as they will introduce the lowest amount of distortion. This means we need a resistance of:
 
@@ -193,6 +192,10 @@ R &= \frac{1}{2\pi fC} \\
   &= 15.9k\Omega \\
 \end{align}
 $$
+
+<Aside type="note">
+I have just used the calculated capacitance and resistance values, and not picked the nearest realistic E96 value so that it's easier to keep track of where the values come from.
+</Aside>
 
 Let's use diodes as our non-linear element to make sure the loop gain stays at 1. The trick is to put the diodes in parallel with a portion of the $R_3$ resistance, and make the inverting feedback gain slightly larger than 3 before the diodes begin to conduct.
 
@@ -262,6 +265,8 @@ You can download the following assets:
 
 * <a href="/misc/oscillators/wien-bridge-oscillator-sim.sch" download>KiCad schematics</a>
 * <a href="/misc/oscillators/wien-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
+
+</Aside>
 
 ### JFET Gain-Limited Example
 
