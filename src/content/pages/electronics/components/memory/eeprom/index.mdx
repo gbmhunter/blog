@@ -1,0 +1,29 @@
+---
+authors: [gbmhunter]
+date: 2013-10-02
+description: EEPROM is a type of non-volatile memory that can be read, written, and erased byte-by-byte. It is used in applications where data needs to be stored even when the power is turned off.
+lastUpdated: 2024-09-19
+tags: [EEPROM, memory, emulated EEPROM, MCUs]
+title: EEPROM
+type: page
+---
+
+EEPROM (Electrically Erasable Programmable Read-Only Memory) is a type of non-volatile memory that can be read, written, and erased byte-by-byte. It is used in applications where data needs to be stored even when the power is turned off. EEPROM is slower than general-purpose RAM and has a limited number of write cycles (typically 100,000 to 1,000,000 cycles). However, it supports a larger number of write cycles than non-volatile [flash memory](/electronics/components/memory/flash/), and is read/writable at the byte level, making it suitable for storing small amounts of configuration data.
+
+The cheapest EEPROM on the market is usually available with an I2C, 1-wire (e.g. UNI/O), or SPI-like (e.g. Microwire) interface, in packages such as the [SOT-23-6](/pcb-design/component-packages/sot-23-component-package/), [SOIC-8](/pcb-design/component-packages/soic-component-package/) and [DIP-8](/pcb-design/component-packages/dip-component-package/).
+
+<Image src={import('./_assets/example-eeprom-pinout-in-sot-23-6-package.png')} width="361px">Example pinout of a EEPROM IC in a SOT-23-6 component package.</Image>
+
+## Unique IDs
+
+Some EEPROM chips also come with unique IDs burnt into memory. The [DS28E05 by Maxim Integrated](http://datasheets.maximintegrated.com/en/ds/DS28E05.pdf) is one such example. It provides a unique 64-bit ID number which can be read back from read-only memory. It also serves as it's [1-wire](/electronics/communication-protocols/1-wire-protocol/) address.
+
+<Image src={import('./_assets/ds28e05-eeprom-ic-connected-to-micro-using-1-wire.pdf.png')} width="390px">The DS28E05 EEPROM I2C, connected to a microcontroller via the 1-wire interface.</Image>
+
+## Emulated EEPROM
+
+These days many MCUs do not come with internal EEPROM memory. Instead, it is common for the firmware developer to reserve some of the internal flash memory to store non-volatile data at runtime. This can be called emulated EEPROM. See the emulated EEPROM section on the [Flash Memory page](/electronics/components/memory/flash/#emulated-eeprom) for more information.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}

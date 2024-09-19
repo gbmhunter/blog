@@ -26,7 +26,7 @@ You can use flash to store small bits of configuration data just like you can wi
 
 EEPROM is non-volatile memory that allows you to read and write single bytes of data, which can be useful in embedded applications for storing small amounts of configuration data (typically from 1 to a few kB's in size). However, flash memory is designed with higher densities in mind and you cannot read and write at the byte level. To write to flash, you first have to erase an entire block (e.g. 4KB) and then write the entire block back.
 
-Furthermore, flash memory has a much more limited number of write cycles compared to EEPROM. Flash endurance is typically in the 10,000-100,000 write cycles range, far less than EEPROM[^ti-app-note-eeprom-emulation-type-a-design].
+Furthermore, flash memory has a much more limited number of write cycles compared to EEPROM. Flash endurance is typically in the 10,000-100,000 write cycles range, far less than EEPROM which is in the millions[^ti-app-note-eeprom-emulation-type-a-design].
 
 Firmware can be written to get around these flash limitations and provide the application with the same read/write a byte functionality that you get natively with EEPROM. This is called emulated EEPROM.
 
@@ -39,7 +39,10 @@ Writing an emulated EEPROM driver is a non-trivial task and requires careful con
 
 Some embedded firmware platforms have pre-built emulated EEPROM libraries. For example, PSoC Creator has an emulated EEPROM component that can be added to [PSoC MCU](/programming/microcontrollers/psoc/) based designs.
 
-<Image src={import('./_assets/psoc-emulated-eeprom-component.webp')} width="350px">The emulated EEPROM component that is available for PSoC MCUs.</Image>
+<Image src={import('./_assets/psoc-emulated-eeprom-component.webp')} width="700px">The emulated EEPROM component that is available for PSoC MCUs.</Image>
 
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^ti-app-note-eeprom-emulation-type-a-design]: Texas Instruments (2023, Apr). _SLAAE58 - Application Note - EEPROM Emulation Type A Design_. Retrieved 2024-09-18, from https://www.ti.com/lit/an/slaae58/slaae58.pdf.

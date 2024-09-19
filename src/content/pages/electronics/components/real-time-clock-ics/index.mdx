@@ -1,6 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2024-01-25
+description: Real-Time Clock (RTC) ICs are chips which accurately track calender time. They are generally designed for low-power operation so that they can run of a small battery such as a coin cell. They are normally included on circuits and connected to a microcontroller when the application requires the microcontroller to keep track of time.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-01-25
 tags: [electronics, electronic components, real time clocks]
 title: Real Time Clock (RTC) ICs
@@ -73,6 +75,10 @@ The time-based values (100ths of a second, seconds, minutes, hours, days, months
 It automatically handles leap years correctly (which are deterministic and apply to all time zones). It does not handle day light saving (depends on the time zone), nor leap seconds (not deterministic).
 
 The PCF85263A has an offset register that can be used to dynamically make small adjustments to the period of a second, so it can be used for things such as tuning/calibration and temperature compensation. It also supports a number of different quartz crystal types, including crystals that need a load capacitance of 6.0pF, 7.0pF, and 12.5pF.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^nxp-pcf85263a-rtc-ds]: NXP (2023, Nov 22). _PCF85263A - Tiny RTC/calendar with alarm function, battery switch-over, time stamp input, and I2C-bus_ [datasheet]. Retrieved 2024-01-25, from https://www.nxp.com/docs/en/data-sheet/PCF85263A.pdf.
 [^zephyr-peripherals-rtc]: Zephyr (2024, Jan 25). _Real-Time Clock (RTC)_ [API documentation]. Retrieved 2024-01-25, from https://docs.zephyrproject.org/latest/hardware/peripherals/rtc.html.
