@@ -2,6 +2,7 @@
 authors: [gbmhunter]
 date: 2022-08-29
 description: Info on switched-capacitor filters.
+image: ./_assets/cover-image.webp
 lastUpdated: 2022-08-29
 tags: [electronics, components, switched-capacitor filters, switched-capacitor, filters, capacitors, analogue, clock feedthrough, Linear Technology, Analog Devices, lowpass, highpass, notch, bandpass]
 title: Switched-Capacitor Filters
@@ -22,7 +23,7 @@ They have the following disadvantages compared to passive RC filters:
 * They are generally **noisier**, introducing noise at the switching frequency and it's harmonics (clock feedthru)[^bib-linear-tech-mystery-switched-capacitor].
 * They sample the input, and thus are **subject to aliasing**. Care must be taken that there are no frequencies in the input higher than half the clock frequency[^bib-libretext-switched-capacitor-filters]. 
 
-<Image src={import('./ltc1068-switched-capacitor-filter-typical-application.png')} width="500px">A dual 4th order butterworth lowpass filter made from the Analog Devices LTC1068 switched-capacitor filter IC[^bib-analog-devices-ltc-1068-ds].</Image>
+<Image src={import('./_assets/ltc1068-switched-capacitor-filter-typical-application.png')} width="500px">A dual 4th order butterworth lowpass filter made from the Analog Devices LTC1068 switched-capacitor filter IC[^bib-analog-devices-ltc-1068-ds].</Image>
 
 The cut-off frequency of a switched-capacitor circuit depends on the ratio of the capacitances, and not their absolute values. Generally, the ratio of two capacitors can be more tightly controlled than their absolute values (especially in IC design). Furthermore, IC technology allows capacitor ratios to be much made much easier than resistor ratios[^bib-linear-tech-mystery-switched-capacitor].
 
@@ -48,13 +49,17 @@ The paper [AC analysis of switched capacitor filters in SPICE-family programs by
 
 The _MF10_ is a dual 2nd order, state variable, switched-capacitor filter[^bib-maxim-mf10-ds]. It has been produced by companies such as National Semiconductor, Maxim and Texas Instruments under variations of the `MF10` part number.
 
-<Image src={import('./maxim-mf10-switched-capacitor-filter-4th-order-lowpass-butterworth.png')} width="700px">Schematic using the Maxim MF10 to create a 4th order lowpass 2kHz butterworth filter[^bib-maxim-mf10-ds]. The clock is 100x the cutoff frequency.</Image>
+<Image src={import('./_assets/maxim-mf10-switched-capacitor-filter-4th-order-lowpass-butterworth.png')} width="700px">Schematic using the Maxim MF10 to create a 4th order lowpass 2kHz butterworth filter[^bib-maxim-mf10-ds]. The clock is 100x the cutoff frequency.</Image>
 
 Texas Instruments has in active production the `MF-10N`, which is an equivalent IC in a [SOIC-20 package](/pcb-design/component-packages/soic-component-package/). However, they recommend the LMF100 which is pin-compatible and has improved performance[^bib-ti-mf10-n-ds].
 
 ### LTC1068
 
 With 4x 2nd-order filters, the LTC1068 allows you to make up to 1x 8th order filter[^bib-analog-devices-ltc-1068-ds].
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^bib-maxim-mf10-ds]: Maxim Integrated (1996, Jul). _MF10: Dual Universal Switched Capacitor Filter_. Retrieved 2022-08-29, from https://datasheets.maximintegrated.com/en/ds/MF10.pdf.
 [^bib-ti-mf10-n-ds]: Texas Instruments (2013, Apr). _SNOS547C: MF10-N Universal Monolithic Dual Switched Capacitor Filter_. Retrieved 2022-08-29, from https://www.ti.com/lit/ds/symlink/mf10-n.pdf.

@@ -2,6 +2,7 @@
 authors: [gbmhunter]
 date: 2011-09-05
 description: Peak power point, partial illumination, surface area based specific power, operating temperature range, charging batteries, and more on solar cells.
+image: ./_assets/cover-image.webp
 lastUpdated: 2011-09-05
 tags: [solar, cells, photovoltaic, MPPT, power, temperature, batteries]
 title: Solar Cells
@@ -10,11 +11,11 @@ type: page
 
 ## The Peak Power Point
 
-To draw the most power from the solar panel, a certain current must be drawn from the panel at a certain voltage. 0% power draw occurs when the voltage is maximum and current is nothing (open-circuit), and when the current is maximum and the voltage is nothing (short-circuit). 100% power draw occurs somewhere inbetween these limits. The relationship between voltage or current and percentage power draw increases quite linearly up to the maximum power point, but then drops of sharply in a very non-linear fashion. Therefor is good to err on the lower side of the maximum power point voltage and current, if you believe you can't stay at the maximum power point continuously.
+To draw the most power from the solar panel, a certain current must be drawn from the panel at a certain voltage. 0% power draw occurs when the voltage is maximum and current is nothing (open-circuit), and when the current is maximum and the voltage is nothing (short-circuit). 100% power draw occurs somewhere in-between these limits. The relationship between voltage or current and percentage power draw increases quite linearly up to the maximum power point, but then drops of sharply in a very non-linear fashion. Therefore is good to err on the lower side of the maximum power point voltage and current, if you believe you can't stay at the maximum power point continuously.
 
 The peak power point is usually specified as a voltage and current on the datasheet for the solar cell (multiply them together to get power), and is typically at a voltage around 80% of the open-circuit voltage (the open-circuit voltage and short-circuit current are also normally specified on the datasheet.
 
-Many chip vendors have IC's that can perform maximum power point tracking (MPPT). Texas Instruments manufactur the [BQ24650](http://focus.ti.com/docs/prod/folders/print/bq24650.html), which performs MPPT using the fixed voltage technique. It accepts an input voltage range from 5 to 28V. Linear Technology produces MPPT tracking chips for lower voltages, including single cell applications (?500mV). Chips like their [LTC3105](http://www.linear.com/product/ltc3105) can operate down to 225mV!
+Many chip vendors have IC's that can perform maximum power point tracking (MPPT). Texas Instruments manufacture the [BQ24650](http://focus.ti.com/docs/prod/folders/print/bq24650.html), which performs MPPT using the fixed voltage technique. It accepts an input voltage range from 5 to 28V. Linear Technology produces MPPT tracking chips for lower voltages, including single cell applications (?500mV). Chips like their [LTC3105](http://www.linear.com/product/ltc3105) can operate down to 225mV!
 
 ## Partial Illumination
 
