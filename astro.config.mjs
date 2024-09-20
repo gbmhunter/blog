@@ -25,7 +25,7 @@ export default defineConfig({
       },
       favicon: '/favicon.ico',
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: 'https://github.com/gbmhunter/blog',
       },
       components: {
         Head: "./src/components/starlight/Head.astro",
