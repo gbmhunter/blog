@@ -1,5 +1,6 @@
+# mbedded.ninja blog
 
-This repo contains the source code which is used to build the blog at https://blog.mbedded.ninja.
+This repo contains the source code which is used to build the embedded engineering blog at https://blog.mbedded.ninja.
 
 The static site generator Astro.js is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
@@ -102,32 +103,29 @@ Photos are edited in Affinity Photo.
 
 The code to generate blog statistics (e.g. number of visitors, increases since last year) is all contained in the separate repo <https://github.com/gbmhunter/blog-stats> (it needs to be separate because when it runs, it checks out specific commits of this repo).
 
-## Link Checking
+## Broken Link Checking
 
-I have found Broken Link Checker to be the best tool to check links. See the Broken Link Checker section below.
+There is a custom Javascript script at `scripts/link-checker.js` for finding broken internal links. This script leverages the broken-link-checker library. It is much fast to build the site, serve it and run the scan on that rather than run the scan on the development server.
 
-### lychee
+Firstly, build the site (it's faster this way, even when factoring in the build time):
 
-[lychee](https://github.com/lycheeverse/lychee) did not work so well since it's not that reliable to check the markdown file links, and it doesn't support recursive checking over HTML.
-
-### Broken Link Checker (blc)
-
-[broken-link-checker](https://github.com/stevenvachon/broken-link-checker) is the recommended way. Run this locally once you have the dev server up and running:
-
-```bash
-npm install broken-link-checker -g
-
-blc -rofe http://localhost:4321/ --requests 10
-
-# Exclude tags can categories pages
-blc -rofe http://localhost:4321/ --requests 10 --exclude */tags/* --exclude */categories/*
+```shell
+npm run build
 ```
 
-WARNING: Increasing the concurrency from 10 to 50 actually slows it down, because it overloads the development server.
+Spin up a simple server to serve this, which should use port `3000`:
 
-### linkcheck
+```shell
+npx serve dist/
+```
 
-[linkcheck](https://github.com/filiph/linkcheck) runs out of memory.
+Then from another terminal, run the link checker script:
+
+```shell
+node scripts/link-checker.js
+```
+
+The link checker script normally takes about 10-20 mins to run. I normally run it manually (on my local machine) a few times per year to tidy up any broken links.
 
 ## Page Sizes
 

@@ -1356,7 +1356,7 @@ void LogResetCause()
 
 To setup a single GPIO pin your device tree, you can add the following to your `.dts` file:
 
-```dts
+```txt
 my_gpio {
     # Pin 7 in GPIO controller bank 0
     gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
@@ -1376,7 +1376,7 @@ __ASSERT_NO_MSG(boolRc);
 
 You can statically configure your GPIO as an output in your `.dts` file by using `compatible = "gpio-leds";`:
 
-```dts
+```txt
 / {
   gpio_outputs {
       // It doesn't sound right but we use gpio-leds for general I/O outputs
