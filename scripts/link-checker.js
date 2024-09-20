@@ -36,9 +36,9 @@ var siteChecker = new blc.SiteChecker(options, {
   },
   site: function(error, siteUrl, customData){},
   end: function(){
-    console.log(`Link checking complete. Found ${brokenLinks.length} broken links.`);
     // Stop the periodic printing of progress
     clearInterval(interval);
+    console.log(`\nLink checking complete. Found ${brokenLinks.length} broken links.`);
   }
 });
 
