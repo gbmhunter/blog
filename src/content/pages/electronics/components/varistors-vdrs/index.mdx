@@ -2,7 +2,8 @@
 authors: [gbmhunter]
 date: 2015-11-23
 description: A varistor (VDR) is an electrical component whose resistance depends on the applied voltage. This page contains information on their schematic symbols, how they work, and important parameters.
-lastUpdated: 2021-07-09
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-09-20
 tags: [electronics, components, varistors, resistors, VDRs, MOVs, ESD, schematic symbols, surge current, energy rating]
 title: Varistors (VDRs)
 type: page
@@ -18,7 +19,7 @@ Because their resistance in not fixed, they are called _non-Ohmic devices_.
 
 ## Schematic Symbol and Designators
 
-<Image src={import('./_assets/varistor-symbol-mov.svg')} width="200px">The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR).</Image>
+<Image src={import('./_assets/varistor-schematic-symbol.webp')} width="200px">The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR).</Image>
 
 Common designators used for varistors:
 
@@ -71,6 +72,10 @@ Typically a one-off (non-repetitive) and repetitive pulse energy rating is given
 ## Comparison With Other Forms Of Circuit Protection
 
 Varistors are preferred over TVS diodes when the product is price-sensitive, higher surge energy absorption is required, when physical space is not a constraint, or when high operating voltage capability is required.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^bib-lf-theory]:  Littelfuse. (1999, July). _Littelfuse Varistors - Basic Properties,
 Terminology and Theory_. Retrieved 2021-07-11, from https://www.littelfuse.com/~/media/electronics_technical/application_notes/varistors/littelfuse_varistors_basic_properties_terminology_and_theory_application_note.pdf

@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2024-01-25
 description: Real-Time Clock (RTC) ICs are chips which accurately track calender time. They are generally designed for low-power operation so that they can run of a small battery such as a coin cell. They are normally included on circuits and connected to a microcontroller when the application requires the microcontroller to keep track of time.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-01-25
-tags: [electronics, electronic components, real time clocks]
+lastUpdated: 2024-09-20
+tags: [electronics, electronic components, real time clocks, RTC, time keeping, calender time, UNIX time, broken-down time, Zephyr]
 title: Real Time Clock (RTC) ICs
 type: page
 ---
@@ -26,9 +26,32 @@ RTCs normally keep track of either UNIX time (or any arbitrary start point you c
 
 It is called broken-down time due to the time not being a single monotonic count of some unit like UNIX time (which is the number of seconds elapsed since 00:00:00 UTC on Jan 1st, 1970), but broken down into days/months/years.
 
-## Code Examples
+It's worth noting that even though you can calculate the day of the week from the day/month/year, most RTCs let you store it as a separate variable for convenience (so you don't have to keep recalculating it). If you do need to calculate it, below is some C code you can use to calculate the day of the week from the day/month/year[^wikipedia-determination-of-the-day-of-the-week].
 
-### Conversion Between UNIX Time and Calender Time
+```c
+/**
+ * Calculate the day of the week given the year, month and day. Accurate for any Gregorian date.
+ * Taken from https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week.
+ *
+ * @param[in] y Year in the format YYYY, e.g. 2024. 
+ * @param[in] m Month in the range [1, 12], e.g. 9 for September.
+ * @param[in] d Day in the range [1, 31], e.g. 20.
+ * @return Day of the week in the range [0, 6], where 0 is Sunday, 1 is Monday, etc.
+ */
+uint8_t CalcDayOfWeek(uint16_t y, uint8_t m, uint8_t d)	/* 1 <= m <= 12, y > 1752 (in the U.K.) */
+{
+    static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+    if(m < 3)
+    {
+        y -= 1;
+    }
+    return (y + y/4 - y/100 + y/400 + t[m - 1] + d) % 7;
+}
+```
+
+For example, `CalcDayOfWeek(2024, 9, 20)` would return `5` which is a Friday.
+
+## Conversion Between UNIX Time and Calender Time
 
 The following C code shows how to convert to/from UNIX time and calender time, which can be useful when dealing with RTCs in firmware:
 
@@ -76,9 +99,15 @@ It automatically handles leap years correctly (which are deterministic and apply
 
 The PCF85263A has an offset register that can be used to dynamically make small adjustments to the period of a second, so it can be used for things such as tuning/calibration and temperature compensation. It also supports a number of different quartz crystal types, including crystals that need a load capacitance of 6.0pF, 7.0pF, and 12.5pF.
 
+## Firmware Support
+
+The RTOS and peripheral API framework that [Zephyr](/programming/operating-systems/zephyr/) provides defines a RTC API (interface)[^zephyr-rtc-interface]. There are simple methods such as `rtc_set_time()` and `rtc_get_time()`. The API also provides methods to set alarms (e.g. `	rtc_alarm_set_time()`), callbacks to be called when alarms are triggered, and functions to calibrate the RTC.
+
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
 [^nxp-pcf85263a-rtc-ds]: NXP (2023, Nov 22). _PCF85263A - Tiny RTC/calendar with alarm function, battery switch-over, time stamp input, and I2C-bus_ [datasheet]. Retrieved 2024-01-25, from https://www.nxp.com/docs/en/data-sheet/PCF85263A.pdf.
 [^zephyr-peripherals-rtc]: Zephyr (2024, Jan 25). _Real-Time Clock (RTC)_ [API documentation]. Retrieved 2024-01-25, from https://docs.zephyrproject.org/latest/hardware/peripherals/rtc.html.
+[^wikipedia-determination-of-the-day-of-the-week]: Wikipedia (2024, Sep 7). _Determination of the day of the week_. Retrieved 2024-09-20, from https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week.
+[^zephyr-rtc-interface]: Zephyr. _RTC Interface_. Retrieved 2024-09-20, from https://docs.zephyrproject.org/latest/doxygen/html/group__rtc__interface.html.

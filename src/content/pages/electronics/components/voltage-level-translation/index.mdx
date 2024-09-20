@@ -2,6 +2,7 @@
 authors: [gbmhunter]
 date: 2015-05-08
 description: Voltage-level translators are used to convert digital logic signals from one voltage level to another. This page contains information on topologies, suppliers, and examples.
+image: ./_assets/cover-image.webp
 lastUpdated: 2022-03-17
 tags: [electronics, components, voltage-level translators, voltage domains, level shifters]
 title: Voltage-Level Translators
@@ -35,7 +36,7 @@ The below schematic shows a simple circuit for voltage-level translation using a
 * <span class="pro">Simple circuitry.</span>
 * <span class="con">Weak pull-up for certain edges in certain directions, resulting in slow transition speeds.</span>
 
-<Image src={import('./_assets/schematic-of-voltage-level-translation-with-a-mosfet.png')} width="600">An example schematic of bi-directional voltage-level translation using a MOSFET.</Image>
+<Image src={import('./_assets/schematic-of-voltage-level-translation-with-a-mosfet.webp')} width="600">An example schematic of bi-directional voltage-level translation using a MOSFET.</Image>
 
 **What happens if $V_{low}$ is driven?**
 
@@ -133,6 +134,10 @@ Confusingly, voltage level translators can be found in two separate sections (bo
 
 . Integrated Circuits (ICs) > Logic - Buffers, Drivers, Receivers, Transceivers. One example is https://www.digikey.com/en/products/detail/nexperia-usa-inc/74AUP1T45GW-125/1300776.
 . Integrated Circuits (ICs) > Logic - Translators, Level Shifters. One example is https://www.digikey.com/en/products/detail/diodes-incorporated/74lvc1t45z6-7/4898825.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^bib-diodes-inc-74lvc1t45z6-7-ds]:  Diodes Incorporated (2018, Oct). _74LVC1T45: Single Bit Dual Power Supply Translating Transceiver With 3 State Outputs_. Retrieved 2022-03-11, from https://www.diodes.com/assets/Datasheets/74LVC1T45.pdf.
 [^bib-nxp-voltage-translation]:  NXP (2014, May). _Voltage translation: How to manage mixed-voltage designs with NXP level translators_. Retrieved 2022-03-11, from https://www.nxp.com/docs/en/nxp/brochures/75017511.pdf.
