@@ -32,6 +32,7 @@ export default defineConfig({
         SkipLink: './src/components/starlight/SkipLink.astro', // Google Analytics is added in here
         SocialIcons: './src/components/starlight/SocialIcons.astro',
         MarkdownContent: './src/components/starlight/MarkdownContent.astro',
+        PageTitle: './src/components/starlight/PageTitle.astro',
       },  
       customCss: [
         // Relative path to your custom CSS file

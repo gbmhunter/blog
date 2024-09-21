@@ -33,7 +33,7 @@ export async function getStaticPaths() {
   // let pagesCollection = await getCollection('test');
   
   // Trim down to first 10
-  combinedCollection = combinedCollection.slice(0, 2);
+  // combinedCollection = combinedCollection.slice(0, 2);
 
   // Convert the collection into a hierarchy of pages, where each page
   // is represented as a node with potential children nodes.
@@ -64,18 +64,18 @@ export async function getStaticPaths() {
     // Breadcrumb generation
     //================================================================================
     const pageNode = findPageNodeBySlug(pageRoute.slug, pageHierarchy);
-    console.log('Used slug:', pageRoute.slug, 'to find page node:', pageNode);
+    // console.log('Used slug:', pageRoute.slug, 'to find page node:', pageNode);
 
     // Generate breadcrumb trail for the page
     let breadcrumbs: BreadcrumbItem[] = [];
     let currentNode = pageNode;
     while (currentNode && currentNode.parent) {
-      breadcrumbs.unshift(new BreadcrumbItem(currentNode.label, currentNode.slug || ''));
+      breadcrumbs.unshift(new BreadcrumbItem(currentNode.fileData?.title || currentNode.label, currentNode.slug || ''));
       currentNode = currentNode.parent;
     }
     // // Add home page as the first breadcrumb
     breadcrumbs.unshift(new BreadcrumbItem('Home', '/'));
-    console.log('Breadcrumb trail:', breadcrumbs);
+    // console.log('Breadcrumb trail:', breadcrumbs);
 
     // Need to create additional paths if the page contains aliases in it's frontmatter
 
@@ -118,7 +118,7 @@ export async function getStaticPaths() {
   return staticPaths;
 }
 
-const { aliasTo, frontmatter, render, sidebarData } = Astro.props;
+const { aliasTo, frontmatter, render, sidebarData, breadcrumbs } = Astro.props;
 
 // Check if this page is an alias, and if so, redirect before attempting to render page
 if (aliasTo) {
@@ -133,6 +133,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render();
   headings={headings}
   sidebar={sidebarData.items as any}
   customFrontmatter={frontmatter}
+  breadcrumbs={breadcrumbs}
 >
   <Content components={{
     Aside: Aside,

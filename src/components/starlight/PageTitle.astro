@@ -1,0 +1,57 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+
+const breadcrumbs = Astro.props.breadcrumbs as { label: string, slug: string }[];
+---
+
+<nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol>
+    {breadcrumbs.map((crumb, index) => (
+      <li>
+        {index < breadcrumbs.length - 1 ? (
+          <a href={crumb.slug}>{crumb.label}</a>
+        ) : (
+          <span>{crumb.label}</span>
+        )}
+        {index < breadcrumbs.length - 1 && <span class="separator">&gt;</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<Default {...Astro.props}><slot /></Default>
+
+<style>
+  .breadcrumb-nav {
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumb-nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-nav li {
+    display: inline-flex;
+    align-items: center;
+    /* margin-right: 0.25rem; */
+  }
+
+  .breadcrumb-nav a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+
+  .breadcrumb-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb-nav .separator {
+    margin: 0 0.5rem;
+    color: var(--sl-color-gray-4);
+  }
+</style>
