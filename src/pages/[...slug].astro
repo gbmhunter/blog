@@ -10,10 +10,13 @@ import Image from 'src/components/Image.astro';
 import WarningIsNotes from 'src/components/WarningIsNotes.astro';
 import WrappableRow from 'src/components/WrappableRow.astro';
 
-import { getRoutablePages, getSidebarData } from 'src/js/PageHierarchy';
+import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug } from 'src/js/PageHierarchy';
 import { correctUpdatesSlugs, getAllCollections } from 'src/js/Collections';
 
+
+
 export async function getStaticPaths() {
+
   // let pagesCollection = await getCollection('pages');
   // pagesCollection = [];
 
@@ -24,26 +27,58 @@ export async function getStaticPaths() {
   // Merge the updates collection into the pages collection
   // const combinedCollection = (pagesCollection as any).concat(updatesCollection);
 
-  const combinedCollection = await getAllCollections();
-
+  let combinedCollection = await getAllCollections();
 
   // Uncomment this line if you want to test code logic with a smaller collection
   // let pagesCollection = await getCollection('test');
   
   // Trim down to first 10
-  // pagesCollection = pagesCollection.slice(0, 2);
+  combinedCollection = combinedCollection.slice(0, 2);
 
+  // Convert the collection into a hierarchy of pages, where each page
+  // is represented as a node with potential children nodes.
+  
   const routablePages = getRoutablePages(combinedCollection);
-  const sidebarData = getSidebarData(combinedCollection);
+  const pageHierarchy = getPageHierarchy(routablePages);
+  const sidebarData = convertNodesToSidebarData(pageHierarchy);
+
+  class BreadcrumbItem {
+    label: string;
+    slug: string;
+
+    constructor(label: string, slug: string) {
+      this.label = label;
+      this.slug = slug;
+    }
+  }
 
   let staticPaths = [];
   for (let pageRoute of routablePages) {
 
+    // These slugs do not have a leading / nor a trailing /
     if (pageRoute.slug === 'index') {
       pageRoute.slug = undefined;
     }
 
+    //================================================================================
+    // Breadcrumb generation
+    //================================================================================
+    const pageNode = findPageNodeBySlug(pageRoute.slug, pageHierarchy);
+    console.log('Used slug:', pageRoute.slug, 'to find page node:', pageNode);
+
+    // Generate breadcrumb trail for the page
+    let breadcrumbs: BreadcrumbItem[] = [];
+    let currentNode = pageNode;
+    while (currentNode && currentNode.parent) {
+      breadcrumbs.unshift(new BreadcrumbItem(currentNode.label, currentNode.slug || ''));
+      currentNode = currentNode.parent;
+    }
+    // // Add home page as the first breadcrumb
+    breadcrumbs.unshift(new BreadcrumbItem('Home', '/'));
+    console.log('Breadcrumb trail:', breadcrumbs);
+
     // Need to create additional paths if the page contains aliases in it's frontmatter
+
     const aliases = pageRoute.data.aliases;
     if (aliases) {
       for (let alias of aliases) {
@@ -60,6 +95,14 @@ export async function getStaticPaths() {
       }
     }
 
+    // Generate a breadcrumb trail for the page
+    // let breadcrumb = [];
+    // let parent = pageRoute.parent;
+    // while (parent) {
+    //   breadcrumb.unshift(parent.data.title);
+    //   parent = parent.parent;
+    // }
+
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
@@ -67,6 +110,7 @@ export async function getStaticPaths() {
         frontmatter: pageRoute.data,
         render: pageRoute.render,
         sidebarData: sidebarData,
+        breadcrumbs: breadcrumbs,
       },
     });
   }
@@ -82,11 +126,6 @@ if (aliasTo) {
 }
 
 const { Content, headings, remarkPluginFrontmatter } = await render();
-
-
-
-
-
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
 <StarlightPage 

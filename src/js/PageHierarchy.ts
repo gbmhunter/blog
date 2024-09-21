@@ -21,23 +21,31 @@ export function getRoutablePages(pagesCollection: any[]) {
   return routablePages;
 }
 
+/**
+ * Represents a page in the hierarchical page structure.
+ */
 class PageNode {
   label: string;
   slug: string | undefined;
-  items: PageNode[];
+  parent: PageNode | null;
+
+  /**
+   * The children of this node in the page hierarchy.
+   */
+  children: PageNode[];
   fileData: any;
-  constructor(label: string, slug: string | undefined) {
+  constructor(label: string, slug: string | undefined, parent: PageNode | null) {
     this.label = label;
     this.slug = slug;
-    this.items = [];
+    this.parent = parent;
+    this.children = [];
     this.fileData = null;
   }
 }
 
-
-export function getSidebarData(pagesCollection: any[]) {
+export function getPageHierarchy(pagesCollection: any[]): PageNode {
   // This structure is constructed below
-  let pageNodes: PageNode = new PageNode('root', undefined);
+  let pageNodes: PageNode = new PageNode('root', undefined, null);
 
   const menuDirectoryBlackList = [
     // 'blog',
@@ -71,7 +79,7 @@ export function getSidebarData(pagesCollection: any[]) {
       currentSlug += pathPart + '/';
 
       // See if object with label=pathPart exists in currentNode
-      const foundChildNodes = currentNode.items.filter((node) => {
+      const foundChildNodes = currentNode.children.filter((node) => {
         return node.label === pathPart;
       });
       if (foundChildNodes.length === 0) {
@@ -79,12 +87,12 @@ export function getSidebarData(pagesCollection: any[]) {
         let newNode;
         if (i === pathParts.length - 1) {
           // This is a leaf node
-          newNode = new PageNode(pathPart, currentSlug);
+          newNode = new PageNode(pathPart, currentSlug, currentNode);
           newNode.fileData = collectionPage.data;
         } else {
-          newNode = new PageNode(pathPart, currentSlug);
+          newNode = new PageNode(pathPart, currentSlug, currentNode);
         }
-        currentNode.items.push(newNode);
+        currentNode.children.push(newNode);
         currentNode = newNode;
       } else if (foundChildNodes.length === 1) {
         // Node already exists
@@ -98,9 +106,9 @@ export function getSidebarData(pagesCollection: any[]) {
           // console.log(`Node with label ${pathPart} found in ${currentNode}.`);
           currentNode = foundChildNode;
 
-          if (currentNode.items === undefined) {
+          if (currentNode.children === undefined) {
             console.error(`Node ${currentNode} is a branch node but does not have an items array.`);
-            currentNode.items = [];
+            currentNode.children = [];
           }
         }
       } else {
@@ -108,10 +116,39 @@ export function getSidebarData(pagesCollection: any[]) {
       }
     }
   }
-
-  const sidebarData = convertNodesToSidebarData(pageNodes);
-  return sidebarData;
+  return pageNodes;
 }
+
+/**
+ * Locates a page node in the hierarchy based on the given slug.
+ * @param slug The slug of the page to find.
+ * @param hierarchy The root of the page hierarchy.
+ * @returns The found PageNode or undefined if not found.
+ */
+export function findPageNodeBySlug(slug: string, hierarchy: PageNode): PageNode | undefined {
+	if (!slug) return undefined;
+
+	const pathParts = slug.split('/').filter(part => part !== '');
+
+	let currentNode = hierarchy;
+
+	for (const part of pathParts) {
+		const foundChild = currentNode.children.find(child => child.label === part);
+		if (!foundChild) return undefined;
+		currentNode = foundChild;
+	}
+
+	return currentNode.fileData ? currentNode : undefined;
+}
+
+
+
+// export function getSidebarData(pagesCollection: any[]) {
+ 
+
+//   const sidebarData = convertNodesToSidebarData(pageNodes);
+//   return sidebarData;
+// }
 
 /**
  * Represents a node in the sidebar data tree structure.
@@ -130,7 +167,7 @@ class SidebarNode {
   }
 }
 // Deep copy the sidebarNodes object
-function convertNodesToSidebarData(node: PageNode) : SidebarNode {
+export function convertNodesToSidebarData(node: PageNode) : SidebarNode {
 
   let label;
   // Use node.fileData.title if it exists (title set in frontmatter of .mdx file), otherwise use the node.label (path part)
@@ -141,7 +178,7 @@ function convertNodesToSidebarData(node: PageNode) : SidebarNode {
     label = node.label;
   }
 
-  if (node.items.length === 0) {
+  if (node.children.length === 0) {
     // Must be a leaf node
     return new SidebarNode(label, undefined, node.slug, true);
   }
@@ -152,8 +189,8 @@ function convertNodesToSidebarData(node: PageNode) : SidebarNode {
   const collapsed = true;
   const items = [];
 
-  for (let i = 0; i < node.items.length; i++) {
-    items.push(convertNodesToSidebarData(node.items[i]));
+  for (let i = 0; i < node.children.length; i++) {
+    items.push(convertNodesToSidebarData(node.children[i]));
   }
 
   // If the slug is defined, then this branch node also has a page. Add it
