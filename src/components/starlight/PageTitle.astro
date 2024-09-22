@@ -14,7 +14,7 @@ const breadcrumbs = Astro.props.breadcrumbs as { label: string, slug: string }[]
         ) : (
           <span>{crumb.label}</span>
         )}
-        {index < breadcrumbs.length - 1 && <span class="separator">&gt;</span>}
+        {index < breadcrumbs.length - 1 && <span class="separator">/</span>}
       </li>
     ))}
   </ol>
