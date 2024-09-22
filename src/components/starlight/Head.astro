@@ -29,10 +29,18 @@ if (customFrontmatter !== undefined) {
      <meta property="og:image" content={imageUrl!.href} />
      <meta name="twitter:image" content={imageUrl!.href} />
    }
+   <!-- Umami tacking code for blog.mbedded.ninja -->
+   <script defer src="https://umami.mbedded.ninja/script.js" data-website-id="e0f4b55d-8cc8-4afe-ab25-68d695b46826"></script>
   <StarlightHead {...Astro.props}><slot /></StarlightHead>
 </VtbotStarlight>
 
 <script>
+  // Disable Umami when running in development mode
+  if (!import.meta.env.PROD) {
+    console.log('Running in development mode, disabling Umami.');
+    localStorage.setItem('umami.disabled', '1');
+  }
+
   configureSidebar();
 
   function configureSidebar() {
