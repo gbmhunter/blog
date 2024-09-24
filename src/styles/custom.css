@@ -179,3 +179,19 @@ section.footnotes {
   max-width: 100%;
   overflow-x: auto;
 }
+
+/* ============================================================================================== */
+/* SIDEBAR MENU */
+/* ============================================================================================== */
+
+/* The default Starlight sidebar font size and weight is different for group labels and links. This updates the styles to make them the same. */
+
+.group-label .large {
+  font-size: var(--sl-text-body-sm);
+  font-weight: inherit;
+  color: var(--sl-color-gray-2);
+}
+
+.sidebar-pane a {
+  font-size: var(--sl-text-body-sm);
+}

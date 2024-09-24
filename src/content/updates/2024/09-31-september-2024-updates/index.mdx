@@ -149,23 +149,87 @@ Umami has now been running long enough to do a useful comparison with Google Ana
 
 Time range: 1st April 2024 - 30th June 2024 (3 months)
 
-Google Analytics: 92k views, 45k visitors (users)
-Umami: 116k views, 66.9k visitors
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Google Analytics</th>
+      <th>Umami</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Views</td>
+      <td>92k</td>
+      <td>116k</td>
+    </tr>
+    <tr>
+      <td>Visitors (Users)</td>
+      <td>45k</td>
+      <td>66.9k</td>
+    </tr>
+  </tbody>
+</table>
 
 **NinjaCalc**
 
 Time range: 1st May 2024 - 31st August 2024 (4 months)
 
-Google Analytics: 13k views, 1.1k visitors
-Umami: 4.32k views, 1.57k visitors
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Google Analytics</th>
+      <th>Umami</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Views</td>
+      <td>13k</td>
+      <td>4.32k</td>
+    </tr>
+    <tr>
+      <td>Visitors (Users)</td>
+      <td>1.1k</td>
+      <td>1.57k</td>
+    </tr>
+  </tbody>
+</table>
 
 **NinjaTerm**
 
 Time range: 1st April 2024 - 31st August 2024 (5 months)
 
-Google Analytics: 1.5k views, 590 visitors
-Umami: 3.21k views, 1.18k visitors
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Google Analytics</th>
+      <th>Umami</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Views</td>
+      <td>1.5k</td>
+      <td>3.21k</td>
+    </tr>
+    <tr>
+      <td>Visitors (Users)</td>
+      <td>590</td>
+      <td>1.18k</td>
+    </tr>
+  </tbody>
+</table>
 
 #### Added Info on the Memfault CLI
 
 Added info on the [Memfault CLI](/programming/firmware/memfault/#memfault-cli).
+
+#### Updated Menu Styling
+
+The default Starlight menu styling provided different font size and weights to sections and links. Given the arbitrarily nested nature of this site's menu hierarchy, this did not look that great. I decided to make all the menu items look the same. To this I add to add some more selective CSS that would override the default Starlight styling.
+
+<Image src={import('./_assets/starlight-menu-styling-changes-old-vs-new.webp')} width="500px" userClass="red-glow">A comparison of the old and new menu styling.</Image>
