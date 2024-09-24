@@ -1,13 +1,14 @@
 ---
 authors: [gbmhunter]
 date: 2024-07-01
-lastUpdated: 2024-07-04
-tags: [Memfault, embedded, firmware, IoT, nRF Connect SDK, nRF Connect, nRF, Bluetooth, GATT, Memfault Diagnostic Service, MDS, Android, iOS, OTA]
+description: Memfault is a commercial cloud-based service designed for managing and analysing faults/data from a fleet of internet-connected embedded devices. It also allows you to manage and deploy OTA (over-the-air) updates to your devices.
+lastUpdated: 2024-09-24
+tags: [Memfault, embedded, firmware, IoT, nRF Connect SDK, nRF Connect, nRF, Bluetooth, GATT, Memfault Diagnostic Service, MDS, Android, iOS, OTA, CLI]
 title: Memfault
 type: page
 ---
 
-Memfault is a commercial cloud-based service designed for collecting and analysing data from a fleet of internet-connected embedded devices. It also allows you to manage and deploy OTA (over-the-air) updates to your devices.
+Memfault is a commercial cloud-based service designed for managing and analysing faults/data from a fleet of internet-connected embedded devices. It also allows you to manage and deploy OTA (over-the-air) updates to your devices.
 
 <Image src={import('./_assets/memfault-logo-full-light-min.png')} width="500px">The Memfault logo[^memfault-docs].</Image>
 
@@ -58,6 +59,24 @@ The nRF Memfault app by Nordic Semiconductor is a phone app (available for [Andr
 The nRF Memfault app displays the application key (project key) and device ID.
 
 <Image src={import('./_assets/nrf-memfault-app-chunks-screenshot.webp')} width="300px">A screenshot of the nRF Memfault app with a device connected to it. You can see the chunks of data which have been downloaded of the device and uploaded to Memfault.</Image>
+
+## Memfault CLI
+
+Memfault CLI is a [Python](/programming/languages/python/) tool for interacting with the Memfault Cloud API via the command line. It is useful for automating tasks (as an alternative to using the manual web GUI) such as uploading firmware, symbol files, and more from your CI/CD pipeline.
+
+### Installation
+
+The Memfault CLI is on [PyPI](https://pypi.org/project/memfault-cli/) can be installed using `pip` with the command:
+
+```bash
+pip3 install memfault-cli
+```
+
+It is recommended to install the CLI in a virtual environment to avoid conflicts with other Python packages.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^memfault-docs]: Memfault. _Memfault Docs_. Retrieved 2024-07-03, from https://docs.memfault.com/.
 [^memfault-demo-dashboard]: Memfault. _Demo Dashboard_. Retrieved 2024-07-03, from https://demo.memfault.com/organizations/acme-inc/projects/shapemate/dashboards/memfault-overview.

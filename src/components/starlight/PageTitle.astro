@@ -3,22 +3,26 @@ import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 
 const breadcrumbs = Astro.props.breadcrumbs as { label: string, slug: string }[];
+const { slug } = Astro.params;
 ---
 
-<nav aria-label="Breadcrumb" class="breadcrumb-nav">
-  <ol>
-    {breadcrumbs.map((crumb, index) => (
-      <li>
-        {index < breadcrumbs.length - 1 ? (
-          <a href={crumb.slug}>{crumb.label}</a>
-        ) : (
-          <span>{crumb.label}</span>
-        )}
-        {index < breadcrumbs.length - 1 && <span class="separator">/</span>}
-      </li>
-    ))}
-  </ol>
-</nav>
+<!-- Don't render breadcrumbs if we are on the homepage (i.e. slug is undefined) -->
+{
+  (slug !== undefined) && <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <ol>
+      {breadcrumbs.map((crumb, index) => (
+        <li>
+          {index < breadcrumbs.length - 1 ? (
+            <a href={crumb.slug}>{crumb.label}</a>
+          ) : (
+            <span>{crumb.label}</span>
+          )}
+          {index < breadcrumbs.length - 1 && <span class="separator">/</span>}
+        </li>
+      ))}
+    </ol>
+  </nav>
+}
 
 <Default {...Astro.props}><slot /></Default>
 

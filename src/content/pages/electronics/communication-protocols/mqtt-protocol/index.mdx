@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2014-02-16
 description: History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol.
 image: ./_assets/cover-image.webp
-lastUpdated: 2022-10-03
+lastUpdated: 2024-09-24
 tags: [electronics, communication protocols, MQTT, paho, Python, TLS, SSL, '1883', '8883', brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto, message ordering, messages]
 title: MQTT Protocol
 type: page
@@ -26,6 +26,12 @@ The MQ in MQTT stood for "Message Queue" in the IBM MQSeries, a family of messag
 In 2013, IBM submitted MQTT v3.1 to the OASIS specification body[^bib-wikipedia-mqtt].
 
 On March 7, 2019, MQTT Version 5 was released, and as of 2022-06 is the most recent major version.
+
+## Topics
+
+MQTT uses a topic-based system for sending and receiving messages. A topic is a string that clients and publish on and subscribe to. Topics are hierarchical and can contain multiple levels separated by forward slashes. For example, `home/bedroom/temperature` is a topic with three levels.
+
+Generic MQTT viewers support this hierarchical structure and allow you to "drill down" in large datasets to view data as needed.
 
 ## MQTT Brokers
 
@@ -151,6 +157,9 @@ Per [Section 4.6: Message ordering](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/
 >
 >  When a Server processes a message that has been published to an Ordered Topic, it MUST follow the rules listed above when delivering messages to each of its subscribers. In addition it MUST send PUBLISH packets to consumers (for the same Topic and QoS) in the order that they were received from any given Client
 
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^bib-ublox-mqtt-sn]: ublox (2020, Jun 16). _MQTT-SN – lowering the cost of IoT at scale_. Retrieved 2022-06-20, from https://www.u-blox.com/en/blogs/insights/mqtt-sn.
 [^bib-mqtt-mqtt-specifications]: MQTT. _MQTT Specifications_. Retrieved 2022-06-20, from https://mqtt.org/mqtt-specification/.
