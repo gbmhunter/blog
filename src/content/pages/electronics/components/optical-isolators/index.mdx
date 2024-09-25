@@ -13,7 +13,7 @@ Optical isolators (a.k.a. opto-isolators or optocouplers) are used to galvanical
 
 Types:
 
-* Phototransistor optocouplers: A phototransistor is used to drive the output.
+* Phototransistor optocouplers: A [phototransistor](/electronics/components/phototransistors/) is used to drive the output.
 * Phototriac optocouplers.
 
 Opto-isolators are similar to [relays](/electronics/components/relays/). The key differences are:
@@ -31,9 +31,9 @@ A commonly used schematic symbol for a basic phototransistor-based optocoupler i
 
 Many opto-isolators use a infrared emitting diode optically coupled to a phototransistor, all within a single enclosed component.
 
-AC capable optocouplers usually have two LEDs in anti-parallel (e.g. the 
+AC capable optocouplers usually have two LEDs in anti-parallel.
 
-### The Current-Transfer Ratio
+### The Current-Transfer Ratio (CTR)
 
 The _current-transfer ratio_ (CTR) of a BJT-based optical isolator tells you how well it amplifies an input signal to an output signal. It is the ratio of the collector current $I_C$ at the output side relative to the forward current $I_f$ going through the LED on the input side, and then expressed as a percentage[^wurth-ano007-understanding-phototransistor-optocouplers]:
 
@@ -58,6 +58,16 @@ The schematic symbol for a bidirectional phototransistor opto-isolator is shown 
 <Image src={import('./_assets/bidirectional-phototransistor-optocoupler-schematic-symbol.webp')} width="500px">A schematic symbol for a bidirectional phototransistor opto-isolator.</Image>
 
 Bidirectional opto-isolators are used often for AC. One example is the HCPL-354 by Avago.
+
+### Phototransistor Optocoupler with a Base Pin
+
+Some phototransistor-based optocouplers provide an electrical pin connected to the base of the phototransistor. With this pin, you can reduce the turn-off time of the optocoupler. To get the phototransistor to turn off quickly, you need remove the charge stored in the base-emitter junction. By adding a resistor in the approx. range of $220-470k\Omega$ you can remove this charge quicker than it would naturally and increase the maximum speed the optocoupler can operate at[^eevblog-purpose-of-base-in-optocoupler].
+
+<Image src={import('./_assets/4n25-optocoupler-pinout-with-base-pin.webp')} width="400px">The pinout of a 4N25 optocoupler which contains a pin connected to the base of the phototransistor[^vishay-4n25-optocoupler-ds].</Image>
+
+The downside is that adding a resistor here also reduces the CTR of the optocoupler[^eevblog-purpose-of-base-in-optocoupler][^edaboard-floating-base-pin-of-optocoupler].
+
+Another purpose of the base pin connection is to **improve noise immunity**. By connecting a capacitor between the base and the emitter, you can create a low-pass filter to improve the rejection of high-frequency noise/spikes. A $0.1nF$ capacitor is a good starting point[^stack-exchange-optocoupler-with-base-lead].
 
 ### Supplier Links
 
@@ -85,3 +95,7 @@ Some of the common packages used for optical isolation components are:
 
 [^wurth-ano007-understanding-phototransistor-optocouplers]: Wurth Elektronik. _Application Note - ANO007 - Understanding Phototransistor Optocouplers_. Retrieved 2024-09-17, from https://www.we-online.com/components/media/o760909v410%20ANO007a_EN.pdf.
 [^digikey-wurth-opto-140354245100]: DigiKey. _Product Index > Isolators > Optoisolators > Transistor, Photovoltaic Output > Würth Elektronik 140354245100_ [product page]. Retrieved 2024-09-18, from https://www.digikey.co.nz/en/products/detail/w%C3%BCrth-elektronik/140354245100/13584843.
+[^vishay-4n25-optocoupler-ds]: Vishay. _4N25, 4N26, 4N27, 4N28 - Optocoupler, Phototransistor Output, with Base Connection_ [datasheet]. Retrieved 2024-09-25, from https://www.vishay.com/docs/83725/4n25.pdf.
+[^eevblog-purpose-of-base-in-optocoupler]: EEVblog. _Purpose of the base on the opto-transistor in an opto-coupler_ [forum question]. Retrieved 2024-09-25, from https://www.eevblog.com/forum/beginners/purpose-of-the-base-on-the-opto-transistor-in-an-opto-coupler/.
+[^edaboard-floating-base-pin-of-optocoupler]: EDAboard. _Floating base pin of optocoupler output transistor?_ [forum question]. Retrieved 2024-09-25, from https://www.edaboard.com/threads/floating-base-pin-of-optocoupler-output-transistor.402208/.
+[^stack-exchange-optocoupler-with-base-lead]: Anindo Ghosh (2012, Nov 8). _Optocoupler with base lead_ [question]. StackExchange. Retrieved 2024-09-25, from https://electronics.stackexchange.com/questions/48462/optocoupler-with-phototransistor-base-lead.

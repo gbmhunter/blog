@@ -1,0 +1,41 @@
+---
+authors: [gbmhunter]
+date: 2024-09-25
+lastUpdated: 2024-09-25
+tags: [phototransistors, transistors, BJT, optical isolators, optocouplers]
+title: Phototransistors
+type: page
+---
+
+Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light). Their downside is that they have a slower response time compared to photodiodes.
+
+<Image src={import('./_assets/photos-of-phototransistors.webp')} width="600px">Some examples of phototransistors. a) A Lite-On Inc. LTR-4206E in a through-hole T1 package[^digikey-lite-on-ltr-4206e], b) An Everlight Electronics PT11-21C/L41/TR8 in a SMD 1206 chip package[^digikey-everlight-pt11-21c-l41-tr8]. Images not to scale. The purple looking lens of a) is a good indicator that the phototransistor operates in the infrared spectrum (these lenses filter out visible light).</Image>
+
+## Schematic Symbol
+
+The basic phototransistor schematic symbol is shown below:
+
+<Image src={import('./_assets/basic-phototransistor-schematic-symbol.webp')} width="200px">The basic phototransistor schematic symbol.</Image>
+
+## How They Work
+
+A phototransistor is a [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/) but with the base driven from a light-sensitive photodiode rather than electrically from another part of the circuit.
+
+
+
+## Applications
+
+Phototransistors are used in a variety of applications, including:
+
+* [Optical isolators (optocouplers)](/electronics/components/optical-isolators/): They are a core component in a optocoupler, used on the receiving side to detect the light emitted by the LED on the transmitting side.
+
+## Suppliers
+
+* [DigiKey](https://www.digikey.com/en/products/filter/optical-sensors/phototransistors/544)
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^digikey-lite-on-ltr-4206e]: DigiKey. _Product Index > Sensors, Transducers > Optical Sensors > Phototransistors > Lite-On Inc. LTR-4206E_ [product page]. Retrieved 2024-09-25, from https://www.digikey.com/en/products/detail/liteon/LTR-4206E/121710.
+[^digikey-everlight-pt11-21c-l41-tr8]: DigiKey. _Product Index > Sensors, Transducers > Optical Sensors > Phototransistors > Everlight Electronics Co Ltd PT11-21C/L41/TR8_ [product page]. Retrieved 2024-09-25, from https://www.digikey.com/en/products/detail/everlight-electronics-co-ltd/PT11-21C-L41-TR8/2675867.

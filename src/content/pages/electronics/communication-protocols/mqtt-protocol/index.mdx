@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2014-02-16
-description: History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol.
+description: MQTT is a lightweight publish/subscribe communications protocol that uses TCP/IP (and other secondary transport mechanisms) that is a popular choice for IoT communications. This page covers the history, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more.
 image: ./_assets/cover-image.webp
 lastUpdated: 2024-09-24
 tags: [electronics, communication protocols, MQTT, paho, Python, TLS, SSL, '1883', '8883', brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto, message ordering, messages]
@@ -11,9 +11,9 @@ type: page
 
 <WarningIsNotes />
 
-MQTT is a **lightweight publish/subscribe communications protocol** that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
+MQTT is a **lightweight publish/subscribe communications protocol** that uses TCP/IP (and other secondary transport mechanisms) that is a popular choice for IoT communications. It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
 
-<Image src={import('./_assets/mqtt-logo.png')} width="500">The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30.</Image>
+<Image src={import('./_assets/mqtt-logo.png')} width="500">The MQTT logo[^eclipse-paho].</Image>
 
 [MQTT-SN (MQTT for Sensor Networks)](#mqtt-sn) is an optimized version of the MQTT protocol designed to be used over non-TCP/IP connections.
 
@@ -29,11 +29,13 @@ On March 7, 2019, MQTT Version 5 was released, and as of 2022-06 is the most rec
 
 ## Topics
 
-MQTT uses a topic-based system for sending and receiving messages. A topic is a string that clients and publish on and subscribe to. Topics are hierarchical and can contain multiple levels separated by forward slashes. For example, `home/bedroom/temperature` is a topic with three levels.
+MQTT uses a topic-based system for sending and receiving messages. A topic is a UTF-8 encoded string[^influx-a-guide-to-mqtt] that clients and publish on and subscribe to. Topics are hierarchical and can contain multiple levels separated by forward slashes (`/`). For example, `home/bedroom/temperature` is a topic with three levels.
 
 Generic MQTT viewers support this hierarchical structure and allow you to "drill down" in large datasets to view data as needed.
 
 ## MQTT Brokers
+
+The MQTT broker is the central server which "brokers" messages between clients. Clients connects to the broker and publish messages to specific topics. Other clients can then subscribe to those topics and receive the messages. Brokers are typically run on a cloud-based server, while clients run on embedded devices and inside software applications.
 
 Mosquitto is a very popular open-source MQTT broker.
 
@@ -168,3 +170,5 @@ Per [Section 4.6: Message ordering](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/
 [^bib-paessler-brief-history-mqtt]: Shaun Behrens (2019, Aug 09). _From Oil Pipelines to the IoT: A Brief History of MQTT_. Paessler. Retrieved 2022-06-22, from https://blog.paessler.com/a-brief-history-of-mqtt.
 [^bib-stackoverflow-is-message-order-preserved-in-mqtt-messages]: StackOverflow. _Is message order preserved in MQTT messages?_. Retrieved 2022-10-03, from https://stackoverflow.com/questions/30955110/is-message-order-preserved-in-mqtt-messages.
 [^bib-oasis-mqtt-v3.1.1-specifications]: Oasis. _MQTT Version 3.1.1 Specifications_. Retrieved 2022-10-03, from http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html.
+[^eclipse-paho]: Eclipse. _Paho_. Retrieved 2021-03-30, from https://www.eclipse.org/paho/.
+[^influx-a-guide-to-mqtt]: Influx. _A Guide to MQTT - MQTT Guide - Definition, Use Cases, Applications, and Resources_. Retrieved 2024-09-25, from https://www.influxdata.com/mqtt/.
