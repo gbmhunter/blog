@@ -1378,6 +1378,8 @@
         "VDDIO",
         "VDFPN",
         "VDMOS",
+        "VEMT2000X01",
+        "VEMT2020X01",
         "venv",
         "versicolor",
         "versioned",

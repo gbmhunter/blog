@@ -9,27 +9,27 @@ title: September 2024 Updates
 type: updates
 ---
 
-#### Split Battery Page
+## Split Battery Page
 
-The Lithium Thionyl Chloride and Zinc-Air battery pages have been split from the main Batteries page into their own pages. This was done to match the other battery chemistries.
+The Lithium Thionyl Chloride and Zinc-Air info have been split from the main Batteries page into their own pages. This was done to match the other battery chemistries.
 
-#### Embedded Template Library (ETL)
+## Embedded Template Library (ETL)
 
 Added info on the [C++ Embedded Template Library (ETL)](/programming/languages/c-plus-plus/cpp-on-embedded-systems/#the-embedded-template-library-etl).
 
-#### nRF Connect for VS Code
+## nRF Connect for VS Code
 
 Added info on [nRF Connect for VS Code](/programming/microcontrollers/nordic/nrf-connect-for-vs-code/).
 
-#### I2S Communication Protocol
+## I2S Communication Protocol
 
 Added info on the [I2S Communication Protocol](/electronics/communication-protocols/i2s-communication-protocol/).
 
-#### Cover Images
+## Cover Images
 
 Added cover images to many pages, especially those in the [Communication Protocols section](/electronics/communication-protocols/).
 
-#### Added Ability To Add Page Aliases
+## Added Ability To Add Page Aliases
 
 I added the ability for document pages to specify aliases. Aliases are great when you are moving pages around and the existing page is linked (and has a significant amount of traffic) from external sites. These aliases are added to each `.mdx` documents front matter like so:
 
@@ -121,27 +121,27 @@ if (aliasTo) {
 ---
 ```
 
-#### Created a Programming > Design Section
+## Created a Programming > Design Section
 
 I decided that the `Programming > General` section was somewhat mis-labeled (what is "General" mean anyway?). Some of the pages under this section seemed to fit a "Design" section, so I created a new section called `Programming > Design`. As a start, the pages on state machines have been moved across.
 
-#### Added Info on GNU Linker Scripts
+## Added Info on GNU Linker Scripts
 
 Added info on [GNU Linker Scripts](/programming/compilers/gcc/gnu-linker-scripts/).
 
-#### Added New Optocoupler Schematic Symbols
+## Added New Optocoupler Schematic Symbols
 
 Added new schematic symbols for [bidirectional phototransistor optocouplers](/electronics/components/optocouplers/#bidirectional-phototransistor-opto-isolators).
 
-#### Moved the EEPROM Info to it's Own Page
+## Moved the EEPROM Info to it's Own Page
 
 The EEPROM info has been moved from the [Memory page](/electronics/components/memory/) to it's own [EEPROM page](/electronics/components/memory/eeprom/).
 
-#### Added Code To Convert From Year/Month/Day To Day Of The Week
+## Added Code To Convert From Year/Month/Day To Day Of The Week
 
 Added code to calculate the day of the week from the year, month and day in the [Real Time Clock (RTC) ICs page](/electronics/components/real-time-clock-ics/).
 
-#### Google Analytics vs. Umami
+## Google Analytics vs. Umami
 
 Umami has now been running long enough to do a useful comparison with Google Analytics. Below are the results for this blog, NinjaCalc and NinjaTerm. The time periods are slightly different for each site (due to different dates on which the data was valid).
 
@@ -224,12 +224,16 @@ Time range: 1st April 2024 - 31st August 2024 (5 months)
   </tbody>
 </table>
 
-#### Added Info on the Memfault CLI
+## Added Info on the Memfault CLI
 
 Added info on the [Memfault CLI](/programming/firmware/memfault/#memfault-cli).
 
-#### Updated Menu Styling
+## Updated Menu Styling
 
 The default Starlight menu styling provided different font size and weights to sections and links. Given the arbitrarily nested nature of this site's menu hierarchy, this did not look that great. I decided to make all the menu items look the same. To this I add to add some more selective CSS that would override the default Starlight styling.
 
 <Image src={import('./_assets/starlight-menu-styling-changes-old-vs-new.webp')} width="500px" userClass="red-glow">A comparison of the old and new menu styling.</Image>
+
+## Info on Phototransistors
+
+Added info on [phototransistors](/electronics/components/phototransistors/), including the schematic symbol and a basic circuit.

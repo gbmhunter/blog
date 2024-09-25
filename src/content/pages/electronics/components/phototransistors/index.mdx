@@ -1,6 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2024-09-25
+description: Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light) at the expense of a slower response time. This page covers how they work, schematic symbols, important parameters, circuits, applications, suppliers,and more.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-09-25
 tags: [phototransistors, transistors, BJT, optical isolators, optocouplers]
 title: Phototransistors
@@ -21,13 +23,45 @@ The basic phototransistor schematic symbol is shown below:
 
 A phototransistor is a [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/) but with the base driven from a light-sensitive photodiode rather than electrically from another part of the circuit.
 
+The base-collector junction of a phototransistor is exposed to light (usually via a transparent window on the package). When photos hit the base-collector junction (in the depletion region), they create electron-hole pairs. The generated current is passed through the base to the emitter. The transistor amplifies this base-to-emitter current due to it's current gain $h_{FE}$, creating a much larger collector-to-emitter current.
 
+If the emitter pin of a phototransistor is not used, the connection from the base to collector acts just like a photodiode[^wikipedia-photodiode].
+
+## Important Parameters
+
+### Collector Dark Current (I_CEO)
+
+* Symbol: $I_{CEO}$
+
+The collector dark current is the current that flows through the collector-emitter junction when no light is shining on the phototransistor. It is typically around 100nA[^lite-on-ltr-4206e-ds]. If you are attaching a resistor to the phototransistor, make sure the resistance isn't so high that the dark current causes a significant voltage drop across it.
+
+### Collector Light Current (I_CA)
+
+* Symbol: $I_{CA}$
+
+The collector light current is the current that flows through the collector-emitter junction when a set amount of light shines on the phototransistor. It is typically in the range of $1-20mA$ and is specified at a particular light irradiance ($mW/cm^2$), light wavelength ($nm$), and collector-emitter voltage ($V_{CE}$ in $V$).
+
+You can compare collector light currents to get some idea of the phototransistor's sensitivity.
+
+For example, the Vishay VEMT2000X01 has an $I_{CA}$ of $6mA$ (typical) at $1mW/cm^2$, $950nm$, and $V_{CE} = 5V$[^vishay-vemt2000x01-ds].
+
+## Circuits
+
+One of the most basic phototransistor circuits can be made simply with a phototransistor and a [resistor](/electronics/components/resistors/), as shown below. Under no or low light conditions, the phototransistor is off (save for the dark current) and the output will be pulled high by resistor $R_1$. When light shines on the phototransistor, it turns on and the output will be pulled to ground by the phototransistor. With a strong enough light source, the phototransistor will saturate and the output voltage will look like a square wave. This is useful for digital circuits (i.e. you can feed this pin directly into a microcontroller GPIO and read it digitally).
+
+<Image src={import('./_assets/basic-phototransistor-circuit.webp')} width="600px">A basic phototransistor circuit.</Image>
+
+Sometimes you won't have such a nice on/off light source to deal with, and will want to measure varying degrees of light intensity. To do this, you can route the output of this circuit to a microcontroller's [ADC](/electronics/components/analogue-to-digital-converters-adcs/) and measure the analogue voltage.
+
+Resistor $R_1$ sets the gain of the phototransistor. The larger the resistor, the larger the voltage drop across it for a given current through the phototransistor. A higher resistance means a higher gain (increased sensitivity to light), but also increases the noise and results in the circuit saturating (the output getting to about 0V) at a lower light level.  Choosing an appropriate value for $R_1$ is normally a case of trial and error until you find the right balance between sensitivity, noise, and saturation level.
 
 ## Applications
 
 Phototransistors are used in a variety of applications, including:
 
 * [Optocouplers](/electronics/components/optocouplers/): They are a core component in a optocoupler, used on the receiving side to detect the light emitted by the LED on the transmitting side.
+* Detecting environmental light levels.
+* Presence detection.
 
 ## Suppliers
 
@@ -39,3 +73,6 @@ Phototransistors are used in a variety of applications, including:
 
 [^digikey-lite-on-ltr-4206e]: DigiKey. _Product Index > Sensors, Transducers > Optical Sensors > Phototransistors > Lite-On Inc. LTR-4206E_ [product page]. Retrieved 2024-09-25, from https://www.digikey.com/en/products/detail/liteon/LTR-4206E/121710.
 [^digikey-everlight-pt11-21c-l41-tr8]: DigiKey. _Product Index > Sensors, Transducers > Optical Sensors > Phototransistors > Everlight Electronics Co Ltd PT11-21C/L41/TR8_ [product page]. Retrieved 2024-09-25, from https://www.digikey.com/en/products/detail/everlight-electronics-co-ltd/PT11-21C-L41-TR8/2675867.
+[^wikipedia-photodiode]: Wikipedia (2024, Sep 2). _Photodiode_. Retrieved 2024-09-25, from https://en.wikipedia.org/wiki/Photodiode.
+[^lite-on-ltr-4206e-ds]: Lite-On Inc. _IR Emitter and Detector - LTR-4206E_ [datasheet]. Retrieved 2024-09-25, from https://optoelectronics.liteon.com/upload/download/DS-50-92-0073/R4206E.pdf.
+[^vishay-vemt2000x01-ds]: Vishay Semiconductors. _VEMT2000X01, VEMT2020X01 - Silicon NPN Phototransistor_ [datasheet]. Retrieved 2024-09-25, from https://www.vishay.com/docs/81595/vemt2000x01.pdf.
