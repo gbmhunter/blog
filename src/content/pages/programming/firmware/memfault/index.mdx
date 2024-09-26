@@ -20,13 +20,15 @@ Memfault has a web-based dashboard for viewing data from your devices and managi
 
 ## Heartbeats
 
+Heartbeats are one of the common ways of sending data from your embedded device to Memfault. Not only do they indicate to Memfault that your device is still alive, but heartbeats can also contain user-defined metrics that you can use to monitor things like battery life, temperature, and more.
+
 As of June 2024, all Memfault pricing plans allow up to 24 heartbeats per day[^memfault-pricing].
 
 Heartbeats can be triggered manually with `memfault_metrics_heartbeat_debug_trigger()`.
 
 ## Metrics
 
-Metrics are parameters you can track on your embedded device. The data is cached to be sent to Memfault on every heartbeat.
+Metrics are parameters you can track on your embedded device. The data is cached locally and sent to Memfault on the next heartbeat.
 
 Metrics are defined with `MEMFAULT_METRICS_KEY_DEFINE()` macro in your `memfault_metrics_heartbeat_config.def` file[^memfault-metrics-api].
 
@@ -36,17 +38,35 @@ The macro takes two parameters, the name of the metric and it's type. For exampl
 MEMFAULT_METRICS_KEY_DEFINE(my_metric, kMemfaultMetricType_Unsigned);
 ```
 
-Then, in your code, you can update the metric with `MEMFAULT_METRIC_ADD()` like so:
+Then, in your code, you can set/update the metric with `MEMFAULT_METRIC_SET_xxx()` or `MEMFAULT_METRIC_ADD()` marcos:
 
 ```c
 #include "memfault/metrics/metrics.h"
 
 void main() {
     // ...
-    MEMFAULT_METRIC_ADD(my_metric, 32);
+    MEMFAULT_METRIC_SET_UNSIGNED(my_metric, 1234); // Directly set the metric to 1234
+    MEMFAULT_METRIC_ADD(my_metric, 1); // Increment the metric by 1
     // ...
 }
 ```
+
+The following metric types are supported[^memfault-metrics-api]:
+
+- `kMemfaultMetricType_Signed`
+- `kMemfaultMetricType_Unsigned`
+- `kMemfaultMetricType_Timer`
+- `kMemfaultMetricType_String`
+
+<Aside type="note">
+Notice there is no `float` type. Any float values you want to record as metrics will need to converted into appropriately scaled integer values first.
+</Aside>
+
+You can either manually define metrics via the Memfault web dashboard or by uploading the built .elf file. You need to make sure you define your metrics, otherwise you won't see them come through, as Memfault will ignore any unrecognized metrics that are posted to it's API.
+
+Memfault imposes quotas on the amount of different metrics you can have per project.
+
+More about metrics can be read in the Memfault Docs [here](https://docs.memfault.com/docs/platform/metrics).
 
 ## Traces
 

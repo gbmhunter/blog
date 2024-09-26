@@ -1519,11 +1519,109 @@ __ASSERT_NO_MSG(intRc == 0);
 
 ### ADCs
 
-There is a working example in the Zephyr repo at `samples/drivers/adc/`.
+The Zephyr ADC API is documented [here](https://docs.zephyrproject.org/latest/doxygen/html/group__adc__interface.html).
+
+There are working ADC examples in the Zephyr repo at `samples/drivers/adc/`. As of September 2024, there are two examples:
+
+* `adc_dt`: Basic ADC example.
+* `adc_sequence`: An ADC example showing how to take readings using sequences.
+
+A full example showing how to setup and use the ADC is shown in the below code block.
 
 ```c
 #include <zephyr/drivers/adc.h>
+
+#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
+    ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
+
+/* Data of ADC io-channels specified in devicetree. */
+static const struct adc_dt_spec adc_channels[] = {
+    DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user), io_channels,
+                 DT_SPEC_AND_COMMA)
+};
+
+int main() {
+    int rc = 0;
+
+    // Configure channels individually prior to sampling.
+    for (size_t i = 0; i < ARRAY_SIZE(adc_channels); i++) {
+        if (!device_is_ready(adc_channels[i].dev)) {
+            LOG_INF("ADC controller device %s not ready\n", adc_channels[i].dev->name);
+            return -1;
+        }
+
+        rc = adc_channel_setup_dt(&adc_channels[i]);
+        if (rc < 0) {
+            LOG_INF("Could not setup channel #%d (%d)\n", i, rc);
+            return -1;
+        }
+    }
+
+    // Call our function to perform a measurement
+    int32_t sample_mV = 0;
+    rc = SampleChannel(0, NULL, &sample_mV);
+    __ASSERT_NO_MSG(rc == 0);
+}
+
+int SampleChannel(uint8_t channelId, int32_t * sample_counts, int32_t * sample_mV)
+{
+    // We are doing just one measurement, so buffer does not need to be an array
+    uint16_t buf; // NOTE: Nordic's driver uses int16_t, see below
+    struct adc_sequence sequence = {
+        .buffer = &buf,
+        // buffer size in bytes, not number of samples
+        .buffer_size = sizeof(buf),
+    };
+
+    int rc;
+    rc = adc_sequence_init_dt(&adc_channels[channelId], &sequence);
+    if (rc)
+    {
+        LOG_ERR("Couldn't configure the ADC sequence. adc_sequence_init_dt() rc: %d.", rc);
+        return -1;
+    }
+
+    // Perform the actual measurements
+    rc = adc_read(adc_channels[channelId].dev, &sequence);
+    if (rc < 0) {
+        LOG_ERR("Could not read value from ADC. adc_read() rc: %d.", rc);
+        return -1;
+    }
+
+    int32_t tempSample_counts = 0;
+    if (adc_channels[channelId].channel_cfg.differential) {
+        tempSample_counts = (int32_t)((int16_t)buf);
+    } else {
+        tempSample_counts = (int32_t)buf;
+    }
+
+    // Save raw value if provided pointer
+    if (sample_counts) {
+        *sample_counts = tempSample_counts;
+    }
+
+    // Convert raw sample_mV to mV, more useful to caller
+    int32_t convertedVoltage_mV = tempSample_counts; // Needs to start of with raw value, function reads then modified it!
+    rc = adc_raw_to_millivolts_dt(&adc_channels[channelId],
+                                   &convertedVoltage_mV);
+    if (rc < 0) {
+        LOG_ERR("Could not convert ADC reading to mV. adc_raw_to_millivolts_dt() rc: %d.", rc);
+        return -1;
+    }
+
+    if (sample_mV) {
+        *sample_mV = convertedVoltage_mV;
+    }
+
+    return 0;
+}
 ```
+
+Nordic Semiconductor has a guide on setting the ADC for their nRF MCUs using Zephyr [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-intermediate/lessons/lesson-6-analog-to-digital-converter-adc/topic/exercise-1-interfacing-with-adc-using-zephyr-api/).
+
+<Aside type="warning">
+Nordic's guide uses the `int16_t` type for the ADC buffer, while the Zephyr example uses `uint16_t`. I'm not sure if this is a typo or intentional because their driver works differently.
+</Aside>
 
 ### I2C
 
