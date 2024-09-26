@@ -1,5 +1,7 @@
-console.log('test');
 
+/**
+ * Represents a reference destination in the page.
+ */
 class RefDestination {
   type: string;
   index: number;
@@ -13,7 +15,9 @@ class RefDestination {
 
 let found_ref_destinations: { [key: string]: RefDestination } = {};
 
-// Prefix figcaptions with "Figure X: "
+// Find all figures.
+// 1) Prefix figcaptions with "Figure X: "
+// 2) Add figure to found_ref_destinations if ref present
 const figures = document.querySelectorAll('.figure');
 console.log('figures', figures);
 figures.forEach((figure, index) => {
