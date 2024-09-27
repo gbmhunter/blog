@@ -128,7 +128,7 @@ ghi         | jkl
 
 A HTML table with a caption:
 
-<table>
+<table data-iref="test-table">
 <caption>This is a table caption.</caption>
 <thead>
 <tr>
@@ -152,9 +152,9 @@ abcdefghi | jklmnopqrjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
 
 ## Images
 
-An image which is stored with this test page in the `src/` directory is shown below:
+<IRef iref="cartoon-ninja" /> is an image which is stored with this test page in the `src/` directory.
 
-<Image src={import('./_assets/cartoon-ninja.jpg')} width="300px">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
+<Image iref="cartoon-ninja" src={import('./_assets/cartoon-ninja.jpg')} width="300px">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
 
 Link to an image which is in the public directory is below:
 

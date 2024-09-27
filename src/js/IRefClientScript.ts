@@ -19,7 +19,7 @@ class RefDestination {
 }
 
 function create_ref_links() {
-  let found_ref_destinations: { [key: string]: RefDestination } = {};
+  let found_iref_destinations: { [key: string]: RefDestination } = {};
 
   // Find all figures.
   // 1) Prefix figcaptions with "Figure X: "
@@ -32,27 +32,49 @@ function create_ref_links() {
       figcaption.textContent = `Figure ${index + 1}: ` + figcaption.textContent;
     }
     // If figure has an id, add it to the found_ref_destinations array
-    const id = figure.getAttribute('id');
-    if (id) {
-      found_ref_destinations[id] = new RefDestination('figure', index, `Figure ${index + 1}`);
+    const iref = figure.getAttribute('data-iref');
+    if (iref) {
+      found_iref_destinations[iref] = new RefDestination('figure', index, `Figure ${index + 1}`);
     }
   });
 
-  console.log('found_ref_destinations', found_ref_destinations);
+  // Find all tables under the div with the content-panel class
+  // 1) Prefix table captions with "Table X: "
+  // 2) Add table to found_ref_destinations if ref present
+  const contentPanel = document.querySelector('.sl-markdown-content');
+  console.log('contentPanel', contentPanel);
+  if (contentPanel) {
+    const tables = contentPanel.querySelectorAll('table');
+    console.log('tables', tables);
+    tables.forEach((table, index) => {
+      console.log('table', table);
+      const tableCaption = table.querySelector('caption');
+      if (tableCaption) {
+        tableCaption.textContent = `Table ${index + 1}: ` + tableCaption.textContent;
+      }
+      // If table has an id, add it to the found_ref_destinations array
+      const iref = table.getAttribute('data-iref');
+      if (iref) {
+        found_iref_destinations[iref] = new RefDestination('table', index, `Table ${index + 1}`);
+      }
+    });
+  }
+
+  console.log('found_ref_destinations', found_iref_destinations);
 
   // Find all ref-source elements and link them to the corresponding ref in the page
   const refSources = document.querySelectorAll('.ref-source');
   console.log('refSources', refSources);
   refSources.forEach((refSource) => {
-    const ref = refSource.getAttribute('id');
+    const ref = refSource.getAttribute('data-iref');
     console.log('ref', ref);
     // Check if ref is in found_ref_destinations
     if (!ref) {
       console.error('ref not found in refSource', refSource);
       return;
     }
-    if (found_ref_destinations[ref]) {
-      refSource.textContent = `${found_ref_destinations[ref].ref_name}`;
+    if (found_iref_destinations[ref]) {
+      refSource.textContent = `${found_iref_destinations[ref].ref_name}`;
     } else {
       console.log('ref not found in found_ref_destinations', ref);
     }
