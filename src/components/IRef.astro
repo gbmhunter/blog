@@ -1,0 +1,10 @@
+---
+const { ref } = Astro.props;
+---
+
+<!-- The placeholder text gets replaced with the actual reference by the JavaScript that runs in the browser -->
+<a id={ref} class="ref-source" href={`#${ref}`}>This is a placeholder for the reference: {ref}</a>
+
+<!-- It is safe to include this multiple times (it is also included in components such as Image.astro) as it will
+ only be bundled and served once by Astro. -->
+<script src="../js/IRefClientScript.ts"></script>
