@@ -21,10 +21,16 @@ class RefDestination {
 function create_ref_links() {
   let found_iref_destinations: { [key: string]: RefDestination } = {};
 
+  const markdownContentDiv = document.querySelector('.sl-markdown-content');
+  if (!markdownContentDiv) {
+    console.error('markdownContentDiv not found');
+    return;
+  }
+
   // Find all figures.
   // 1) Prefix figcaptions with "Figure X: "
   // 2) Add figure to found_ref_destinations if ref present
-  const figures = document.querySelectorAll('.figure');
+  const figures = markdownContentDiv.querySelectorAll('.figure');
   console.log('figures', figures);
   figures.forEach((figure, index) => {
     const figcaption = figure.querySelector('figcaption');
@@ -38,27 +44,25 @@ function create_ref_links() {
     }
   });
 
-  // Find all tables under the div with the content-panel class
+  // Find all tables under the markdown content div
   // 1) Prefix table captions with "Table X: "
-  // 2) Add table to found_ref_destinations if ref present
-  const contentPanel = document.querySelector('.sl-markdown-content');
-  console.log('contentPanel', contentPanel);
-  if (contentPanel) {
-    const tables = contentPanel.querySelectorAll('table');
-    console.log('tables', tables);
-    tables.forEach((table, index) => {
-      console.log('table', table);
-      const tableCaption = table.querySelector('caption');
-      if (tableCaption) {
-        tableCaption.textContent = `Table ${index + 1}: ` + tableCaption.textContent;
-      }
-      // If table has an id, add it to the found_ref_destinations array
-      const iref = table.getAttribute('data-iref');
-      if (iref) {
-        found_iref_destinations[iref] = new RefDestination('table', index, `Table ${index + 1}`);
-      }
-    });
-  }
+  // 2) Add table to found_ref_destinations if iref present
+  const tables = markdownContentDiv.querySelectorAll('table');
+  console.log('tables', tables);
+  tables.forEach((table, index) => {
+    console.log('table', table);
+    const tableCaption = table.querySelector('caption');
+    if (tableCaption) {
+      tableCaption.textContent = `Table ${index + 1}: ` + tableCaption.textContent;
+    }
+    // If table has an iref, add it to the found_ref_destinations array
+    const iref = table.getAttribute('data-iref');
+    if (iref) {
+      found_iref_destinations[iref] = new RefDestination('table', index, `Table ${index + 1}`);
+      // Add id to table so we can link to it
+      table.id = iref;
+    }
+  });
 
   console.log('found_ref_destinations', found_iref_destinations);
 

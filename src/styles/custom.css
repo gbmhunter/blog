@@ -20,6 +20,9 @@
   --sl-text-body-sm: var(--sl-text-xs);
   --sl-text-code: var(--sl-text-sm);
   --sl-text-code-sm: var(--sl-text-xs);
+
+  /* Test colour for figure and table captions */
+  --caption-text-color: #666;
 }
 
 /* Default font size for the content was too small (1.0rem). */
@@ -125,6 +128,19 @@ to break anything? */
   display: table;
   margin-left: auto;
   margin-right: auto;
+}
+
+caption {
+  caption-side: bottom;
+  font-size: 1.0rem;
+  font-style: italic;
+  color: var(--caption-text-color);
+  margin-top: 0.5rem;
+  min-width: 100px; /* Don't make the caption too narrow if image is small */
+  max-width: 100%; /* Make sure caption never exceeds the page width */
+  width: var(--width);
+  text-align: center;
+  overflow-wrap: break-word; /* Makes sure long word like URLs don't overflow */
 }
 
 .wrappable-row {
