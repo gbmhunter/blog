@@ -4,20 +4,20 @@ date: 2024-09-25
 description: Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light) at the expense of a slower response time. This page covers how they work, schematic symbols, important parameters, circuits, applications, suppliers,and more.
 image: ./_assets/cover-image.webp
 lastUpdated: 2024-09-26
-tags: [phototransistors, transistors, BJT, optical isolators, optocouplers]
+tags: [phototransistors, transistors, BJT, optical isolators, optocouplers, sensors, optics, photodiodes]
 title: Phototransistors
 type: page
 ---
 
 Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light). Their downside is that they have a slower response time compared to photodiodes.
 
-<Image ref="photos-of-phototransistors" src={import('./_assets/photos-of-phototransistors.webp')} width="600px">Some examples of phototransistors. a) A Lite-On Inc. LTR-4206E in a through-hole T1 package[^digikey-lite-on-ltr-4206e], b) An Everlight Electronics PT11-21C/L41/TR8 in a SMD 1206 chip package[^digikey-everlight-pt11-21c-l41-tr8]. Images not to scale. The purple looking lens of a) is a good indicator that the phototransistor operates in the infrared spectrum (these lenses filter out visible light).</Image>
+<Image iref="photos-of-phototransistors" src={import('./_assets/photos-of-phototransistors.webp')} width="600px">Some examples of phototransistors. a) A Lite-On Inc. LTR-4206E in a through-hole T1 package[^digikey-lite-on-ltr-4206e], b) An Everlight Electronics PT11-21C/L41/TR8 in a SMD 1206 chip package[^digikey-everlight-pt11-21c-l41-tr8]. Images not to scale. The purple looking lens of a) is a good indicator that the phototransistor operates in the infrared spectrum (these lenses filter out visible light).</Image>
 
 ## Schematic Symbol
 
 The basic phototransistor schematic symbol is shown in <IRef ref="basic-phototransistor-schematic-symbol" />.
 
-<Image ref="basic-phototransistor-schematic-symbol" src={import('./_assets/basic-phototransistor-schematic-symbol.webp')} width="200px">The basic phototransistor schematic symbol.</Image>
+<Image iref="basic-phototransistor-schematic-symbol" src={import('./_assets/basic-phototransistor-schematic-symbol.webp')} width="200px">The basic phototransistor schematic symbol.</Image>
 
 Notice that it looks very similar to the BJT schematic symbol, except the base pin is replaced with arrows indicating it is light-sensitive (the same style of arrows that point away from LED symbols to indicate they emit light).
 
@@ -51,7 +51,7 @@ For example, the Vishay VEMT2000X01 has an $I_{CA}$ of $6mA$ (typical) at $1mW/c
 
 One of the most basic phototransistor circuits can be made simply with a phototransistor and a [resistor](/electronics/components/resistors/), as shown in <IRef ref="basic-phototransistor-circuit" />. Under no or low light conditions, the phototransistor is off (save for the dark current) and the output will be pulled high by resistor $R_1$. When light shines on the phototransistor, it turns on and the output will be pulled to ground by the phototransistor. With a strong enough light source, the phototransistor will saturate and the output voltage will look like a square wave. This is useful for digital circuits (i.e. you can feed this pin directly into a microcontroller GPIO and read it digitally).
 
-<Image ref="basic-phototransistor-circuit" src={import('./_assets/basic-phototransistor-circuit.webp')} width="600px">A basic phototransistor circuit.</Image>
+<Image iref="basic-phototransistor-circuit" src={import('./_assets/basic-phototransistor-circuit.webp')} width="600px">A basic phototransistor circuit.</Image>
 
 Sometimes you won't have such a nice on/off light source to deal with, and will want to measure varying degrees of light intensity. To do this, you can route the output of this circuit to a microcontroller's [ADC](/electronics/components/analogue-to-digital-converters-adcs/) and measure the analogue voltage.
 
@@ -59,7 +59,7 @@ Resistor $R_1$ sets the gain of the phototransistor. The larger the resistor, th
 
 <IRef ref="phototransistor-response-to-led" /> shows the response of a Wurth Electronics 1541201NC3060 phototransistor to a light source. The yellow trace represents the LED control signal, where HIGH is OFF and LOW is ON. The blue trace represents the phototransistor output. $R_1$ is $150k\Omega$. The horizontal time grid is $200us$ per division, so this is a short pulse. You can see the phototransistor output taking time to respond. This is due to the parasitic capacitance on the output and the low drive strength of the phototransistor. If we left the LED on, the output would eventually settle.
 
-<Image ref="phototransistor-response-to-led" src={import('./_assets/phototransistor-response-to-led.webp')} width="800px">An oscilloscope trace showing the response of a phototransistor to a light source.</Image>
+<Image iref="phototransistor-response-to-led" src={import('./_assets/phototransistor-response-to-led.webp')} width="800px">An oscilloscope trace showing the response of a phototransistor to a light source.</Image>
 
 ## Applications
 
@@ -72,6 +72,8 @@ Phototransistors are used in a variety of applications, including:
 ## Suppliers
 
 * [DigiKey](https://www.digikey.com/en/products/filter/optical-sensors/phototransistors/544)
+* [Mouser](https://www.mouser.com/c/optoelectronics/optical-detectors-sensors/phototransistors/)
+* [Newark/Element14](https://www.newark.com/c/optoelectronics-displays/phototransistors)
 
 {/* ======================================================================== */}
 {/* REFERENCES */}

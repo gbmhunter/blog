@@ -1,9 +1,8 @@
 ---
 authors: [gbmhunter]
-date: 2024-09-31
+date: 2024-09-30
 description: Blog updates during September 2024.
-draft: true
-lastUpdated: 2024-09-31
+lastUpdated: 2024-09-30
 tags: []
 title: September 2024 Updates
 type: updates
@@ -17,17 +16,25 @@ The Lithium Thionyl Chloride and Zinc-Air info have been split from the main Bat
 
 Added info on the [C++ Embedded Template Library (ETL)](/programming/languages/c-plus-plus/cpp-on-embedded-systems/#the-embedded-template-library-etl).
 
+<Image src={import('./_assets/etl-screenshot.webp')} width="500px" userClass="red-glow"/>
+
 ## nRF Connect for VS Code
 
 Added info on [nRF Connect for VS Code](/programming/microcontrollers/nordic/nrf-connect-for-vs-code/).
+
+<Image src={import('./_assets/nrf-connect-screenshot.webp')} width="500px" userClass="red-glow"/>
 
 ## I2S Communication Protocol
 
 Added info on the [I2S Communication Protocol](/electronics/communication-protocols/i2s-communication-protocol/).
 
+<Image src={import('./_assets/i2s-screenshot.webp')} width="500px" userClass="red-glow"/>
+
 ## Cover Images
 
 Added cover images to many pages, especially those in the [Communication Protocols section](/electronics/communication-protocols/).
+
+<Image src={import('./_assets/child-page-cover-images-screenshot.webp')} width="500px" userClass="red-glow"/>
 
 ## Added Ability To Add Page Aliases
 
@@ -129,9 +136,13 @@ I decided that the `Programming > General` section was somewhat mis-labeled (wha
 
 Added info on [GNU Linker Scripts](/programming/compilers/gcc/gnu-linker-scripts/).
 
+<Image src={import('./_assets/gnu-linker-scripts-screenshot.webp')} width="500px" userClass="red-glow"/>
+
 ## Added New Optocoupler Schematic Symbols
 
 Added new schematic symbols for [bidirectional phototransistor optocouplers](/electronics/components/optocouplers/#bidirectional-phototransistor-opto-isolators).
+
+<Image src={import('./_assets/bidirectional-optocouplers-screenshot.webp')} width="500px" userClass="red-glow"/>
 
 ## Moved the EEPROM Info to it's Own Page
 
@@ -140,6 +151,8 @@ The EEPROM info has been moved from the [Memory page](/electronics/components/me
 ## Added Code To Convert From Year/Month/Day To Day Of The Week
 
 Added code to calculate the day of the week from the year, month and day in the [Real Time Clock (RTC) ICs page](/electronics/components/real-time-clock-ics/).
+
+<Image src={import('./_assets/calc-day-of-week-screenshot.webp')} width="500px" userClass="red-glow"/>
 
 ## Google Analytics vs. Umami
 
@@ -236,7 +249,136 @@ The default Starlight menu styling provided different font size and weights to s
 
 ## Info on Phototransistors
 
-Added info on [phototransistors](/electronics/components/phototransistors/), including the schematic symbol and a basic circuit.
+Added info on [phototransistors](/electronics/components/sensors/phototransistors/), including the schematic symbol and a basic circuit.
 
-## Added Figure Numbering and References
+<Image src={import('./_assets/phototransistors-screenshot.webp')} width="500px" userClass="red-glow"/>
 
+## Added Figure/Table Numbering and References
+
+I wanted to be able to refer to figures and tables within page text using syntax like "Figure 1", "Table 2" e.t.c, rather than "see the figure below". Unfortunately this feature is not supported by `.mdx` out-of-the-box.
+
+I figured I had two options to implement this:
+
+1. Write a remark/rehype plugin that runs during the build process.
+1. Write a Typescript script that runs on the client's browser.
+
+Even though the remark/rehype plug-in would of have been the best for load speeds, I decided to go with the Typescript route as it would be easier to implement (I have no experience with remark/rehype).
+
+I decided to call this feature "Item References" to distinguish them from the references already used to cite sources. I made a `<IRef />` Astro component that can be used to reference items. This allows page authors to write this:
+
+```mdx title="src/content/pages/my-page.mdx"
+<IRef iref="my-figure" /> shows my picture I made. Yay!
+
+<Image iref="my-figure" src={import('./_assets/my-figure.webp')}>A picture!</Image>
+```
+
+The user will see `<IRef ... />` replaced with the text `Figure 1`, and the figure will have `Figure 1` prefixed to the caption text.
+
+So far only images and tables can be referenced, but I plan on adding support for equations and code snippets soon. The entire client-side script can be shown below.
+
+<details>
+<summary>The client-side script source code</summary>
+
+```tsx title="src/js/IRefClientScript.ts"
+/**
+ * This script is run in the user's browser and adds "Item Reference" (IRef) functionality.
+ * Item references are used to link to specific elements in the page, such as figures, tables, equations, e.t.c. They
+ * are different from "references" which are used to cite sources.
+ * It prefixes figure captions with "Figure 1", "Figure 2", etc.
+ * It also looks for <IRef /> components and replaces the text and link to the corresponding item.
+ */
+
+/**
+ * Represents a reference destination in the page.
+ */
+class RefDestination {
+  type: string;
+  index: number;
+  ref_name: string;
+  constructor(type: string, index: number, ref_name: string) {
+    this.type = type;
+    this.index = index;
+    this.ref_name = ref_name;
+  }
+}
+
+function create_ref_links() {
+  let found_iref_destinations: { [key: string]: RefDestination } = {};
+
+  const markdownContentDiv = document.querySelector('.sl-markdown-content');
+  if (!markdownContentDiv) {
+    console.error('markdownContentDiv not found');
+    return;
+  }
+
+  // Find all figures.
+  // 1) Prefix figcaptions with "Figure X: "
+  // 2) Add figure to found_ref_destinations if ref present
+  const figures = markdownContentDiv.querySelectorAll('.figure');
+  console.log('figures', figures);
+  figures.forEach((figure, index) => {
+    const figcaption = figure.querySelector('figcaption');
+    if (figcaption) {
+      figcaption.textContent = `Figure ${index + 1}: ` + figcaption.textContent;
+    }
+    // If figure has an id, add it to the found_ref_destinations array
+    const iref = figure.getAttribute('data-iref');
+    if (iref) {
+      found_iref_destinations[iref] = new RefDestination('figure', index, `Figure ${index + 1}`);
+    }
+  });
+
+  // Find all tables under the markdown content div
+  // 1) Prefix table captions with "Table X: "
+  // 2) Add table to found_ref_destinations if iref present
+  const tables = markdownContentDiv.querySelectorAll('table');
+  console.log('tables', tables);
+  tables.forEach((table, index) => {
+    console.log('table', table);
+    const tableCaption = table.querySelector('caption');
+    if (tableCaption) {
+      tableCaption.textContent = `Table ${index + 1}: ` + tableCaption.textContent;
+    }
+    // If table has an iref, add it to the found_ref_destinations array
+    const iref = table.getAttribute('data-iref');
+    if (iref) {
+      found_iref_destinations[iref] = new RefDestination('table', index, `Table ${index + 1}`);
+      // Add id to table so we can link to it
+      table.id = iref;
+    }
+  });
+
+  console.log('found_ref_destinations', found_iref_destinations);
+
+  // Find all ref-source elements and link them to the corresponding item ref in the page
+  const refSources = document.querySelectorAll('.ref-source');
+  console.log('refSources', refSources);
+  refSources.forEach((refSource) => {
+    const ref = refSource.getAttribute('data-iref');
+    console.log('ref', ref);
+    // Check if ref is in found_ref_destinations
+    if (!ref) {
+      console.error('ref not found in refSource', refSource);
+      return;
+    }
+    if (found_iref_destinations[ref]) {
+      refSource.textContent = `${found_iref_destinations[ref].ref_name}`;
+    } else {
+      // This is an error, it means there is an <IRef /> component in the markdown
+      // that does not have a corresponding figure, table, etc.
+      console.error('ref not found in found_ref_destinations', ref);
+    }
+  });
+}
+
+// Create ref links on page load (e.g. navigating to the site from a different site)
+create_ref_links()
+
+// Re-link figures after swapping pages (i.e. navigating between pages on this site)
+// We need to do this because page transitions do not reload the entire page and
+// trigger this script file to be reparsed.
+// Using after-swap is better than page-load because it is before the page is rendered
+document.addEventListener("astro:after-swap", create_ref_links)
+```
+
+</details>

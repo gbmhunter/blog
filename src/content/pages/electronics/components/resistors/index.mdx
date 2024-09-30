@@ -33,7 +33,7 @@ Resistors are used for a huge number of purposes, including:
 
 The most commonly-used resistor schematic symbols are shown in <IRef ref="schematic-symbols-amer-euro-resistors" />. I prefer the American-style resistor over the European purely because there are already many "box-like" schematic symbols used for other components (e.g. fuses, ICs), and so the squiggle makes a resistor more distinguishable (given my distaste for the American imperial system, I never thought I would ever say that!). The American style is used through-out the rest of this website.
 
-<Image ref="schematic-symbols-amer-euro-resistors" src={import('./_assets/schematic-symbols-amer-euro-resistors.png')} width="500">The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols.</Image>
+<Image iref="schematic-symbols-amer-euro-resistors" src={import('./_assets/schematic-symbols-amer-euro-resistors.png')} width="500">The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols.</Image>
 
 See the [Potentiometers And Rheostats page](/electronics/components/potentiometers-and-rheostats/) for more schematic symbols related to resistors.
 
@@ -69,7 +69,7 @@ $$
 
 This relationship is shown in <IRef ref="resistors-in-parallel-equivalence-with-equation" />.
 
-<Image ref="resistors-in-parallel-equivalence-with-equation" src={import('./_assets/resistors-in-parallel-equivalence-with-equation.webp')} width="700px">Two resistors in parallel can be treated as one resistor using the shown equation.</Image>
+<Image iref="resistors-in-parallel-equivalence-with-equation" src={import('./_assets/resistors-in-parallel-equivalence-with-equation.webp')} width="700px">Two resistors in parallel can be treated as one resistor using the shown equation.</Image>
 
 ### Resistors In Series
 
@@ -83,7 +83,7 @@ $$
 
 This is shown in <IRef ref="resistors-in-series-equivalence-with-equation" />.
 
-<Image ref="resistors-in-series-equivalence-with-equation" src={import('./_assets/resistors-in-series-equivalence-with-equation.webp')} width="700px">Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.</Image>
+<Image iref="resistors-in-series-equivalence-with-equation" src={import('./_assets/resistors-in-series-equivalence-with-equation.webp')} width="700px">Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.</Image>
 
 ## Resistor Dividers
 
@@ -91,7 +91,7 @@ This is shown in <IRef ref="resistors-in-series-equivalence-with-equation" />.
 
 The simplest voltage divider consists of just two resistors in series, as shown in <IRef ref="resistor-divider-schematic" />.
 
-<Image ref="resistor-divider-schematic" src={import('./_assets/resistor-divider-schematic.webp')} width="350">A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!</Image>
+<Image iref="resistor-divider-schematic" src={import('./_assets/resistor-divider-schematic.webp')} width="350">A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!</Image>
 
 The equation for $V_{OUT}$ is:
 
@@ -123,7 +123,7 @@ $$
 
 The Thevenin equivalent circuit for a resistor divider is shown in <IRef ref="resistor-divider-thevenin-equivalent-diagram" />. This is the equivalent circuit as looking from $V_{OUT}$ into the resistor divider.
 
-<Image ref="resistor-divider-thevenin-equivalent-diagram" src={import('./_assets/resistor-divider-thevenin-equivalent-diagram.webp')} width="800">The Thevenin equivalent circuit for a resistor divider.</Image>
+<Image iref="resistor-divider-thevenin-equivalent-diagram" src={import('./_assets/resistor-divider-thevenin-equivalent-diagram.webp')} width="800">The Thevenin equivalent circuit for a resistor divider.</Image>
 
 Where the Thevenin voltage $V_{TH}$ is equal to the open-circuit output voltage:
 
@@ -171,7 +171,7 @@ $$
 
 Now we have the equivalent circuit as shown in <IRef ref="resistor-divider-charging-a-capacitor-example-2" />.
 
-<Image ref="resistor-divider-charging-a-capacitor-example-2" src={import('./_assets/resistor-divider-charging-a-capacitor-example-2.webp')} width="400">The Thevenin equivalent circuit.</Image>
+<Image iref="resistor-divider-charging-a-capacitor-example-2" src={import('./_assets/resistor-divider-charging-a-capacitor-example-2.webp')} width="400">The Thevenin equivalent circuit.</Image>
 
 Now we use calculate a time constant and use the formula for a RC charging circuit[^mbedded-ninja-rc-charging-circuits]:
 
@@ -366,11 +366,11 @@ Volume resistance (also known as just resistivity, electrical resistivity, or bu
 
 For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a extra inductor and capacitor, although the is no standard way of wiring them (depends on what literature you are reading). One popular configuration is shown in <IRef ref="parasitic-model-of-resistor-series-rl-parallel-c" />.
 
-<Image ref="parasitic-model-of-resistor-series-rl-parallel-c" src={import('./_assets/parasitic-model-of-resistor-series-rl-parallel-c.svg')} width="600">Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor.</Image>
+<Image iref="parasitic-model-of-resistor-series-rl-parallel-c" src={import('./_assets/parasitic-model-of-resistor-series-rl-parallel-c.svg')} width="600">Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor.</Image>
 
 <IRef ref="parasitic-model-of-resistor-parallel-rc-series-l" /> shows another model which is popular as it models the resistance in parallel with the end cap capacitance and this in series with the lead inductance[^bib-edn-resistors-arent-resistors].
 
-<Image ref="parasitic-model-of-resistor-parallel-rc-series-l" src={import('./_assets/parasitic-model-of-resistor-parallel-rc-series-l.svg')} width="600">Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance.</Image>
+<Image iref="parasitic-model-of-resistor-parallel-rc-series-l" src={import('./_assets/parasitic-model-of-resistor-parallel-rc-series-l.svg')} width="600">Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance.</Image>
 
 The below table shows resistor types and the ranges of their parasitic inductance[^bib-eepower-res-ind]:
 
@@ -401,7 +401,7 @@ Once taken out of the tape, they don't look like much!
 
 <IRef ref="reel-0603-resistor-leftovers-best" /> was me trying to be arty-farty with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.
 
-<Image ref="reel-0603-resistor-leftovers-best" src={import('./_assets/reel-0603-resistor-leftovers-best.jpg')} width="900">This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.</Image>
+<Image iref="reel-0603-resistor-leftovers-best" src={import('./_assets/reel-0603-resistor-leftovers-best.jpg')} width="900">This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.</Image>
 
 ## Resistor Optimizer Tool
 

@@ -1,0 +1,33 @@
+---
+authors: [gbmhunter]
+date: 2024-09-30
+lastUpdated: 2024-09-30
+tags: []
+title: Handling Time in Firmware
+type: page
+---
+
+<WarningIsNotes />
+
+If writing the firmware in C, you'll likely want to leverage the features provided by `time.h`.
+
+Here are some of the ways that firmware can keep track of the time:
+
+* Count the mains power AC cycles to keep track of the time.
+* Use a RTC.
+* Download the time from an internet server.
+* Use a GPS receiver.
+
+## mktime
+
+`mktime()` is used to convert from broken-down time to a UNIX time (time since Epoch). It ignores the weekday (`tm_wday`) and yearday (`tm_yday`) fields when converting (as this is redundant information)[^open-group-mktime].
+
+## Real-time Clocks (RTC)
+
+Real-time clocks (RTC) are low-power devices that maintain an accurate time even when the primary power source is interrupted. They usually accept a secondary power source (e.g. coin-cell battery) to ensure they keep running when the primary power source is not available.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^open-group-mktime]: The Open Group (2004). _mktime - convert broken-down time into time since the Epoch_. Retrieved 2024-09-30, from https://pubs.opengroup.org/onlinepubs/009695399/functions/mktime.html.

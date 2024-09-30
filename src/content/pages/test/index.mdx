@@ -76,12 +76,14 @@ y &= x && \text{Because $y=x$, duh.} \\
 \end{align*}
 $$
 
-First equation should not be numbered, second one should not:
+Below is an equation with two lines. The first line should not be numbered, the second one should be.
+
+This should be a link to the second line: <IRef iref="y-eq-z" />
 
 $$
 \begin{align}
 y &= x \nonumber \\
-  &= z \\
+  &= z \htmlId{y-eq-z}{} \\
 \end{align}
 $$
 

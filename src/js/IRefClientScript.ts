@@ -1,5 +1,7 @@
 /**
  * This script is run in the user's browser and adds "Item Reference" (IRef) functionality.
+ * Item references are used to link to specific elements in the page, such as figures, tables, equations, e.t.c. They
+ * are different from "references" which are used to cite sources.
  * It prefixes figure captions with "Figure 1", "Figure 2", etc.
  * It also looks for <IRef /> components and replaces the text and link to the corresponding item.
  */
@@ -66,7 +68,7 @@ function create_ref_links() {
 
   console.log('found_ref_destinations', found_iref_destinations);
 
-  // Find all ref-source elements and link them to the corresponding ref in the page
+  // Find all ref-source elements and link them to the corresponding item ref in the page
   const refSources = document.querySelectorAll('.ref-source');
   console.log('refSources', refSources);
   refSources.forEach((refSource) => {
@@ -80,7 +82,9 @@ function create_ref_links() {
     if (found_iref_destinations[ref]) {
       refSource.textContent = `${found_iref_destinations[ref].ref_name}`;
     } else {
-      console.log('ref not found in found_ref_destinations', ref);
+      // This is an error, it means there is an <IRef /> component in the markdown
+      // that does not have a corresponding figure, table, etc.
+      console.error('ref not found in found_ref_destinations', ref);
     }
   });
 }

@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2015-08-10
 description: Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs).
-lastUpdated: 2022-10-24
+lastUpdated: 2024-09-30
 tags: [electronics, components, transistors, bipolar junction transistors, BJTs, base, collector, emitter, reverse active mode, amplifiers, common-emitter, CE, common-collector, CC, common-base, CB, grounded base, Miller capacitance, Widlar, Widlar current mirror, current mirrors, Micronta, Radio Shack, transistor testers]
 title: Bipolar Junction Transistors (BJTs)
 type: page
@@ -76,8 +76,9 @@ I_C = \beta I_B
 $$
 
 The $FE$ part of the two H-parameter gains represents:
-* $F$: The _**F**orward_ current amplification
-* $E$: As measured with the BJT in the _common-**E**mitter_ configuration 
+
+* $F$: The _Forward_ current amplification
+* $E$: As measured with the BJT in the _common-Emitter_ configuration 
 
 Temperature has a major influence on the gain of a BJT.
 
@@ -107,6 +108,7 @@ The Early voltage can be derived from $I_C$ vs. $V_{CE}$ graphs. If you extrapol
 Micro-Cap with the QNB transistor was used to simulate these $I_C$ vs. $V_{CE}$ curves. This model had a Early voltage `VAF` set to `45V`, which agrees well with the extrapolated curves and the x-axis intersection.
 
 In SPICE models, the variable `VAF` is typically used to denote the Early voltage (standing for _forward Early voltage_).
+
 ### Miller Capacitance
 
 TODO: Add notes here
@@ -470,11 +472,17 @@ I also found this older "Micronta Transistor Tester" device on TradeMe many year
 <div style={{ gridRow: 2, gridColumn: '2' }}><Image src={import('./_assets/micronta-transistor-tester-internals.jpg')} width="300px">The internal circuitry.</Image></div>
 </div>
 
-## External Resources
+## Further Reading
 
 [This](https://www.youtube.com/watch?v=t0UOSIUve9E) is a great video on two not-so-common transistor biasing configurations.
 
 The you are looking for a slice of history and some informative transistor information, check out the [1964 edition of the GE Transistor Manual](/pdfs/ge-transistor-manual-1964.pdf).
+
+[Phototransistors](/electronics/components/phototransistors/) are very similar to a standard NPN BJT, but use light to drive the base rather than an electrical signal.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^bib-haenichen-interview]: http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
 [^bib-penn-ese319-lecture-notes]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.

@@ -22,48 +22,48 @@ Important Parameters:
 
 ## The Piezo Schematic Symbol
 
-The schematic symbol for a 2-pin piezoelectric speaker is shown below. Some piezoelectric speakers have internal oscillating circuity already built into them, and only require a DC voltage to run (typically 9-12V). These are called internal drive piezos (or buzzers), while the ones without circuitry are called external drive piezos (or just piezos). Externally driven piezos are not polarized, while internally driven ones usually are. Some have a third leg, which is called the feedback pin, and can be used as an input to the driving circuitry to drive the piezo at it's resonant frequency.
+The schematic symbol for a 2-pin piezoelectric speaker is shown in <IRef iref="piezoelectric-speaker-schematic-symbol" />. Some piezoelectric speakers have internal oscillating circuity already built into them, and only require a DC voltage to run (typically 9-12V). These are called internal drive piezos (or buzzers), while the ones without circuitry are called external drive piezos (or just piezos). Externally driven piezos are not polarized, while internally driven ones usually are. Some have a third leg, which is called the feedback pin, and can be used as an input to the driving circuitry to drive the piezo at it's resonant frequency.
 
-<Image src={import('./_assets/piezoelectric-speaker-schematic-symbol.png')} width="400px">The schematic symbol for a 2-pin piezoelectric speaker.</Image>
+<Image iref="piezoelectric-speaker-schematic-symbol" src={import('./_assets/piezoelectric-speaker-schematic-symbol.png')} width="400px">The schematic symbol for a 2-pin piezoelectric speaker.</Image>
 
 ## A Piezo's Frequency Response
 
-A piezo does not have near anything like an ideal flat frequency response over the audible range! This does not make them suitable for quality sound/music reproduction. See the figure below.
+A piezo does not have near anything like an ideal flat frequency response over the audible range! <IRef iref="piezo-4khz-resonant-frequency-response" /> shows a typical frequency response for a piezo speaker with a resonant frequency of 4kHz. This does not make them suitable for quality sound/music reproduction.
 
-<Image src={import('./_assets/piezo-4khz-resonant-frequency-response.jpg')} width="500px">The frequency response of a piezo speaker with a resonant frequency of 4kHz.</Image>
+<Image iref="piezo-4khz-resonant-frequency-response" src={import('./_assets/piezo-4khz-resonant-frequency-response.jpg')} width="500px">The frequency response of a piezo speaker with a resonant frequency of 4kHz.</Image>
 
-Most piezoelectric speakers have a resonant frequency in the range of 2-4kHz, one of the reasons being this is the range is which audio is most easily heard by humans[^bib-murata-piezoelectric-sound-components].
+Most piezoelectric speakers have a resonant frequency in the range of 2-4kHz, one of the reasons being this is the range is which audio is most easily heard by humans[^murata-piezoelectric-sound-components].
 
 ## How To Drive A 2-lead Piezo
 
-An easy and loud way to drive a 2-lead (or pin) piezoelectric speaker is with an inductor in parallel with the piezo and a NPN BJT acting as a switch.
+An easy and loud way to drive a 2-lead (or pin) piezoelectric speaker is with an [inductor](/electronics/components/inductors/) in parallel with the piezo and a NPN [BJT](/electronics/components/transistors/bipolar-junction-transistors/) acting as a switch, as shown in <IRef iref="piezo-drive-circuit-parallel-inductor" />.
 
 When the NPN BJT is switched on, the current builds up through the inductor and energy is stored in it's magnetic field. When the transistor is switched off, the inductor creates a large voltage spike which excites the piezo speaker. The piezo can be driven to around 40-60V with a 5V supply. Make sure the BJT has a collector-emitter breakdown voltage high enough to withstand this!
 
 **The frequency of the PWM controls the pitch of the sound, the duty cycle controls the volume.** Duty cycle should be varied from 0-50%. The inductance does not matter to much, something in the range of 10-50mH seems to give the best results with most piezos.
 
-<Image src={import('./_assets/piezo-drive-circuit-parallel-inductor.jpg')} width="500px">An easy and loud way to drive a piezo speaker using an inductor in parallel with the piezo and a NPN BJT.</Image>
+<Image iref="piezo-drive-circuit-parallel-inductor" src={import('./_assets/piezo-drive-circuit-parallel-inductor.jpg')} width="500px">An easy and loud way to drive a piezo speaker using an inductor in parallel with the piezo and a NPN BJT.</Image>
 
-A non-standard and slightly convoluted method for driving a piezo speaker using a half-bridge driver IC:
+<IRef iref="piezo-drive-circuit-half-bridge-ic" /> shows a non-standard and slightly convoluted method for driving a piezo speaker using a half-bridge driver IC.
 
-<Image src={import('./_assets/piezo-drive-circuit-half-bridge-ic.jpg')} width="500px">A non-standard and slightly convoluted method for driving a Piezo speaker using a half-bridge driver IC.</Image>
+<Image iref="piezo-drive-circuit-half-bridge-ic" src={import('./_assets/piezo-drive-circuit-half-bridge-ic.jpg')} width="500px">A non-standard and slightly convoluted method for driving a Piezo speaker using a half-bridge driver IC.</Image>
 
 ## How To Drive Piezos With Feedback (3-lead)
 
-Some piezos have a third lead, also called the feedback electrode[^bib-murata-piezoelectric-sound-components]. They are sometimes called "self-driven" piezos and are designed to be connected to a "self-drive circuit". The benefit of self-driven piezos is that they are naturally driven at their resonant frequency, at where you get the highest SPL (volume).
+Some piezos have a third lead, also called the feedback electrode[^murata-piezoelectric-sound-components]. They are sometimes called "self-driven" piezos and are designed to be connected to a "self-drive circuit". The benefit of self-driven piezos is that they are naturally driven at their resonant frequency, at where you get the highest SPL (volume).
 
 ## How To Drive A Buzzer
 
 Buzzers (or internally driven piezo's), contain internal drive circuitry, and only require a DC voltage to run. They are typically louder than externally driven versions because:
 
 1. They normally feature a resonant cavity which amplifies the sound. You will notice most buzzers are larger than externally driven piezo's.
-2. The internal circuitry usually has feedback, which means the piezo is always driven at resonance.
+1. The internal circuitry usually has feedback, which means the piezo is always driven at resonance.
 
 One disadvantage of buzzers is that you can't change the tone of the sound.
 
-The volume can be controlled with a simple RC low pass filter and PWM signal as shown in the circuit diagram below.
+The volume can be controlled with a simple RC low pass filter and PWM signal as shown in <IRef iref="piezo-int-drive-volume-control-circuit" />.
 
-<Image src={import('./_assets/piezo-int-drive-volume-control-circuit.jpg')} width="500px">The schematic of an internally driven piezo volume control circuit.</Image>
+<Image iref="piezo-int-drive-volume-control-circuit" src={import('./_assets/piezo-int-drive-volume-control-circuit.jpg')} width="500px">The schematic of an internally driven piezo volume control circuit.</Image>
 
 This circuit uses a RC low-pass filter and PWM to change the DC voltage that the buzzer sees across it's terminal, thus controlling the volume.
 
@@ -81,7 +81,7 @@ These un-mounted piezos have to be mounted on something, and consideration about
 
 Edge mounting is pretty self-explanatory, it is when you mount the piezo by holding onto its edge. A thin ring of double-sided adhesive tape can achieve this. Nodal mounting is where the piezo is fixed around it's nodal points. A nodal point is a place on the piezo surface that does not move while it is vibrating. As a general rule of thumb, there are nodal points on a piezo at 0.65 of the radius from the centre of the piezo, in all directions. Again, this can be done with a ring of double-sided adhesive tape, whose diameter is 0.65 that of the edge mounting tape ring.
 
-<Image src={import('./_assets/pieoelectric-speaker-with-nodal-mounting.jpg')} width="800px">The piezoelectric speaker in the Aura BR-AU-109B smoke alarm appears to be nodally mounted, as you can see the silicone and mounting point radius is about 0.65 times the piezoelectric speaker radius.</Image>
+<Image iref="piezoelectric-speaker-with-nodal-mounting" src={import('./_assets/piezoelectric-speaker-with-nodal-mounting.jpg')} width="800px">The piezoelectric speaker in the Aura BR-AU-109B smoke alarm appears to be nodally mounted, as you can see the silicone and mounting point radius is about 0.65 times the piezoelectric speaker radius.</Image>
 
 ## Multi-layer Piezo Speakers
 
@@ -101,4 +101,4 @@ You can easily make crystals with a few common household ingredients. See the [P
 
 If you want a loud buzzer, then the ABI-D23-RC (Element14 Num: [102-2400](http://nz.element14.com/pro-signal/abi-023-rc/piezo-buzzer-12vdc-leads/dp/1022400)) is a good choice. It runs of 12VDC and has a SPL of 96dBm.
 
-[^bib-murata-piezoelectric-sound-components]: Murata (2012, Oct 26). _Piezoelectric Sound Components: Application Manual_. Retrieved 2023-05-09, from https://www.murata.com/~/media/webrenewal/support/library/catalog/products/sound/p15e.ashx.
+[^murata-piezoelectric-sound-components]: Murata (2012, Oct 26). _Piezoelectric Sound Components: Application Manual_. Retrieved 2023-05-09, from https://www.murata.com/~/media/webrenewal/support/library/catalog/products/sound/p15e.ashx.

@@ -1,0 +1,36 @@
+---
+authors: [gbmhunter]
+date: 2021-03-03
+description: LDRs are simple electrical components whose resistance changes with light intensity. They are useful as a cheap solution for basic light detection.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-09-30
+tags: [electronics, components, light-dependent resistors, LDRs]
+title: Light-Dependent Resistors (LDRs)
+type: page
+---
+
+<WarningIsNotes />
+
+A _light-dependent resistor_ (LDR) (a.k.a. _photoresistor_, _photocell_, _photoconductor_) is a basic electronic component which can be used to measure light levels. It contains a [resistor](/electronics/components/resistors/) whose resistance changes when exposed to light. They are one of the cheapest and simplest light-detection components you can buy.
+
+## Construction
+
+LDRs are made with semiconductor-based materials to allow them to be sensitive to light. A once popular semiconductor for LDRs was cadmium sulphide (CdS), however it's use is becoming restricted due to the environmental problems that Cadmium can cause.
+
+The semiconductor has a crystal lattice which, in the absence of light, greatly restricts the movement of electrons across it's structure. This gives the component a large resistance in the dark. When light strikes the lattice, some of the photon energy is transferred to the electrons, which allows them to break free and conduct. This causes the resistance of component to decrease.
+
+Even though an LDR contains semiconductor material, it is **not considered an active device** (such as a diode or transistor) as it does not contain a PN junction.
+
+## Resistance Changes
+
+LDRs typically have a resistance in the hundreds of $k\Omega$ or $M\Omega$ in the dark, dropping to a few hundred $\Omega$ under bright light[^engineers-garage-light-sensors].
+
+## Further Reading
+
+A [phototransistor](/electronics/components/sensors/phototransistors/) is a transistor-based component which is used to detect light levels. It is similar to a standard NPN [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/), but uses light to drive the base rather than an electrical signal. Most phototransistors are sensitive in the infrared region, whilst most LDRs are sensitive to visible light. One benefit of a LDR is that they are non-polarized, so they can work with voltages/currents in either direction.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^engineers-garage-light-sensors]: Nikhil Agnihotri (2021, Jul 12). _What are the different types of light sensors?_. Engineers Garage. Retrieved 2024-09-30, from https://www.engineersgarage.com/light-sensors-ldr-photodiode-phototransistor-solar-cell/.
