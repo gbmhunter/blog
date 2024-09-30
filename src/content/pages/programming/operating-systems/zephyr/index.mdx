@@ -1619,7 +1619,7 @@ int SampleChannel(uint8_t channelId, int32_t * sample_counts, int32_t * sample_m
 
 Nordic Semiconductor has a guide on setting the ADC for their nRF MCUs using Zephyr [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-intermediate/lessons/lesson-6-analog-to-digital-converter-adc/topic/exercise-1-interfacing-with-adc-using-zephyr-api/).
 
-<Aside type="warning">
+<Aside type="caution">
 Nordic's guide uses the `int16_t` type for the ADC buffer, while the Zephyr example uses `uint16_t`. I'm not sure if this is a typo or intentional because their driver works differently.
 </Aside>
 
