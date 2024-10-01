@@ -1,0 +1,26 @@
+---
+authors: [gbmhunter]
+date: 2024-10-01
+description: IEEE 2030 is a standard designed to promote interoperability between smart grid devices.
+lastUpdated: 2024-10-01
+tags: [communication protocols]
+title: IEEE 2030 Smart Grid Interoperability
+type: page
+---
+
+<WarningIsNotes />
+
+REST based communication protocol (e.g. GET, POST, PUT, DELETE endpoints). As such, it leverages HTTP/HTTPS and TCP for communication[^ieee-2030-5-2018-smart-energy-profile-application].
+
+The standard allows people to extend 2030.5 with proprietary extensions. One condition is that they do not use the `smartenergy` Service Type[^ieee-2030-5-2018-smart-energy-profile-application].
+
+## Server Implementations
+
+[quantumscript/IEEE_2030_5_gridappsd_server](https://github.com/quantumscript/IEEE_2030_5_gridappsd_server) is a Python-based server that implements the Common Smart Inverter Profile (CSIP)[^github-quantumscript-ieee-2030-5-gridappsd-server].
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^github-quantumscript-ieee-2030-5-gridappsd-server]: quantumscript. _GridAPPS-D IEEE 2030.5 Server_. Retrieved 2024-10-01, from https://github.com/quantumscript/IEEE_2030_5_gridappsd_server.
+[^ieee-2030-5-2018-smart-energy-profile-application]: IEEE. _IEEE Std 2030.5-2018 - IEEE Standard for Smart Energy Profile Application Protocol_ [standard].

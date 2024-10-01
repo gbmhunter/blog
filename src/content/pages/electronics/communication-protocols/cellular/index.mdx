@@ -1,0 +1,59 @@
+---
+authors: [gbmhunter]
+date: 2024-10-01
+description: Cellular communication protocols are those involving cellular networks. This includes GSM, CDMA, LTE, LTE Cat-M1, and NB-IoT.
+lastUpdated: 2024-10-02
+tags: [communication protocols, cellular, LTE, IoT, bands, nRF9160]
+title: Cellular Communication Protocols
+type: page
+---
+
+<WarningIsNotes />
+
+## LTE Cat-M1
+
+LTE Cat-M1 is a cellular communication protocol designed for IoT devices. It is based on the LTE standards and supported by many cellular providers around the world. It competes with the NB-IoT standard. It has two main factors which makes it ideal for IoT devices:
+
+1. Low power consumption: Cat-M1 supports a power saving mode which allows devices to sleep for extended periods of time, reducing power consumption compared to regular LTE communication.
+1. Narrow bandwidth: Cat-M1 uses a bandwidth of 1.4 MHz. This is narrow compared to other LTE variants, which allows for more devices to be connected to a cell site on the same frequency band, supporting densely deployed IoT devices.
+
+LTE uses categories to classify the capabilities of devices, where Cat 1 devices support download speeds of 10 Mbps and Cat 4 150 Mbps. Cat M1 supports up to 1 Mbps.
+
+Cat-M1 uses a bandwidth of 1.4 MHz. This is narrow compared to other LTE variants, which allows for more devices to be connected to a cell site on the same frequency band. A typical LTE cell site can support 10x as many Cat-M1 devices compared to regular LTE devices[^twilio-lte-cat-m-for-iot-devices]. This makes it ideal from the cellular providers perspective for IoT devices that are densely deployed.
+
+### Coverage
+
+Cat-M1 is not at widely deployed as regular LTE. However, as of 2024 it has good coverage in many countries. <IRef iref="gsma-mobile-iot-deployment-map" /> shows the coverage of LTE-M and NB-IoT across the globe.
+
+<Image iref="gsma-mobile-iot-deployment-map" src="./_assets/gsma-mobile-iot-deployment-map.webp" width="800px">A world map showing where LTE-M and NB-IoT networks have been deployed[^gsma-mobile-iot-deployment-map].</Image>
+
+### Power Consumption
+
+Cat-M1 has a power saving mode (PSM) that allows the devices to sleep for extended periods of time, reducing power consumption. Devices can negotiate an extended sleep period (hours or days) with the network. If any traffic arrives for the device while it is in sleep mode, the network buffers the data until the device wakes up (becomes ACTIVE)[^twilio-lte-cat-m-for-iot-devices].
+
+### Bands
+
+Cat-M1 is designed to operate in the frequency bands specified in section 5.5E in 3GPP TS 36.101, which include[^eseye-frequency-bands]:
+
+* FDD (half duplex and full-duplex) bands - 1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 18, 19, 20, 21, 24, 25, 26, 27, 28, 31, 66, 71, 72, 73, 74, 85, 87 and 88
+* TDD bands - 39, 40, 41, 42 and 43
+
+### Modem Support
+
+The [Nordic](/programming/microcontrollers/nordic/) nRF9160 SiP (System in Package) supports Cat-M1 (as well as NB-IoT)[^nordic-nrf9160-product-spec].
+
+## NB-IoT
+
+NB-IoT (Narrowband Internet of Things) is a cellular communication protocol designed for IoT devices. It is also known as LTE Cat NB1. It competes with the LTE Cat-M1 standard.
+
+Unlike Cat-M1, NB-IoT does not support cellular tower handovers. This means that devices using this network must largely remain stationary[^onlogic-cat-m1-wireless].
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^gsma-mobile-iot-deployment-map]: GSMA. _Mobile IoT Deployment Map_. Retrieved 2024-10-01, from https://www.gsma.com/solutions-and-impact/technologies/internet-of-things/deployment-map/.
+[^twilio-lte-cat-m-for-iot-devices]: Vijay Devarapalli (2021, May 5). _When to Use LTE Cat M for IoT Devices_. Twilio. Retrieved 2024-10-01, from https://www.twilio.com/en-us/blog/when-to-use-lte-cat-m.
+[^onlogic-cat-m1-wireless]: Darek Fanton (2021, Mar 18). _Cat M1 Wireless: What is it, what's it for, and why would you use it?_. OnLogic. Retrieved 2024-10-02, from https://www.onlogic.com/blog/cat-m1-wireless-what-is-it-whats-it-for-and-why-would-you-use-it/.
+[^eseye-frequency-bands]: Eseye. _Frequency bands_. Retrieved 2024-10-02, from https://docs.eseye.com/Content/GettingStarted/FrequencyBands.htm.
+[^nordic-nrf9160-product-spec]: Nordic Semiconductor. _nRF9160 Product Specification_. Retrieved 2024-10-02, from https://docs.nordicsemi.com/bundle/ps_nrf9160/page/nRF9160_html5_keyfeatures.html.
