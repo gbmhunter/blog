@@ -23,76 +23,11 @@ Applications for LPWAN include:
 
 LTE (Long Term Evolution) is a term used to describe the fourth generation (4G) cellular networks designed to replace 3G. LTE Cat-M1 and NB-IoT are two variants of LTE designed for IoT devices. Even though they were introduces as part of 4G, both LTE Cat-M and NB-IoT will continue to evolve with newer 5G standards.
 
-<IRef iref="lpwan-standards-comparison" /> compares some of the key metrics across many of the popular LPWAN standards
+<IRef iref="lpwan-standards-comparison" /> compares some of the key metrics across many of the popular LPWAN standards.
 
-<p>
-
-**blglglg**
-[^wikipedia-narrowband-iot].
-
-</p>
-
-<table iref="lpwan-standards-comparison">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>LTE Cat M1</th>
-<th>LTE Cat M2</th>
-<th>LTE Cat NB1</th>
-<th>LTE Cat NB2</th>
-</tr>
-</thead>
-<tbody> 
-<tr>
-<td>Device Receive Bandwidth</td> {/* Parameter */}
-<td>1.4 MHz</td> {/* LTE Cat M1 */}
-<td>5 MHz</td> {/* LTE Cat M2 */}
-<td>180 kHz</td> {/* LTE Cat NB1 */}
-<td>180 kHz</td> {/* LTE Cat NB2 */}
-</tr>
-<tr>
-<td>Peak downlink data rate</td> {/* Parameter */}
-<td>1 Mbps</td> {/* LTE Cat M1 */}
-<td>4 Mbps</td> {/* LTE Cat M2 */}
-<td>26 kbps</td> {/* LTE Cat NB1 */}
-<td>127 kbps</td> {/* LTE Cat NB2 */}
-</tr>
-<tr>
-<td>Peak uplink data rate</td> {/* Parameter */}
-<td>1 Mbps</td> {/* LTE Cat M1 */}
-<td>7 Mbps</td> {/* LTE Cat M2 */}
-<td>62 kbps</td> {/* LTE Cat NB1 */}
-<td>159 kbps</td> {/* LTE Cat NB2 */}
-</tr>
-<tr>
-<td>Latency</td> {/* Parameter */}
-<td>10-15 ms</td> {/* LTE Cat M1 */}
-<td>10-15 ms</td> {/* LTE Cat M2 */}
-<td>1.6-10 s</td> {/* LTE Cat NB1 */}
-<td>1.6-10 s</td> {/* LTE Cat NB2 */}
-</tr>
-<tr>
-<td>Device transmit power</td> {/* Parameter */}
-<td>20, 23 dBm</td> {/* LTE Cat M1 */}
-<td>20, 23 dBm</td> {/* LTE Cat M2 */}
-<td>20, 23 dBm</td> {/* LTE Cat NB1 */}
-<td>14, 20, 23 dBm</td> {/* LTE Cat NB2 */}
-</tr>
-</tbody>
-<caption>
-
-<p>
-
-**ldldld**
-Comparison of LTE Cat-M1/M2 and Cat NB1/NB2 (NB-IoT) features[^wikipedia-narrowband-iot].
-
-
-</p>
-
-</caption>
-</table>
-
-<Table data={
+<Table
+  iref="lpwan-standards-comparison"
+  data={
     [
       {
         "Standard": "LTE Cat M1",
@@ -127,16 +62,10 @@ Comparison of LTE Cat-M1/M2 and Cat NB1/NB2 (NB-IoT) features[^wikipedia-narrowb
         "Transmit Power": "14, 20, 23 dBm",
       }
     ]
-  } 
-  transpose={{
-    'enable': false,
-    'headerKey': 'Standard',
-    'topLeftCellText': 'Parameter',
-  }}
+  }
 >
-  <p slot="caption">Comparison of LTE Cat-M1/M2 and Cat NB1/NB2 (NB-IoT) features[^wikipedia-narrowband-iot].</p>
+  <caption slot="caption">Comparison of LTE Cat-M1/M2 and Cat NB1/NB2 (NB-IoT) features[^wikipedia-narrowband-iot].</caption>
 </Table>
-
 
 ## LTE Cat-M1
 

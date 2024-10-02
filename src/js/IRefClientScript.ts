@@ -37,7 +37,8 @@ function create_ref_links() {
   figures.forEach((figure, index) => {
     const figcaption = figure.querySelector('figcaption');
     if (figcaption) {
-      figcaption.textContent = `Figure ${index + 1}: ` + figcaption.textContent;
+      // Must set innerHTML and not textContent because figcaption can contain HTML
+      figcaption.innerHTML = `Figure ${index + 1}: ` + figcaption.innerHTML;
     }
     // If figure has an id, add it to the found_ref_destinations array
     const iref = figure.getAttribute('data-iref');
@@ -52,10 +53,11 @@ function create_ref_links() {
   const tables = markdownContentDiv.querySelectorAll('table');
   console.log('tables', tables);
   tables.forEach((table, index) => {
-    console.log('table', table);
     const tableCaption = table.querySelector('caption');
+    console.log('tableCaption', tableCaption);
     if (tableCaption) {
-      tableCaption.textContent = `Table ${index + 1}: ` + tableCaption.textContent;
+      // Must set innerHTML and not textContent because the table caption can contain HTML
+      tableCaption.innerHTML = `Table ${index + 1}: ` + tableCaption.innerHTML;
     }
     // If table has an iref, add it to the found_ref_destinations array
     const iref = table.getAttribute('data-iref');
@@ -65,6 +67,10 @@ function create_ref_links() {
       table.id = iref;
     }
   });
+
+  // Find all tables that are wrapped in a div with class "table-container"
+  const containerTables = markdownContentDiv.querySelectorAll('.table-container');
+  console.log('containerTables', containerTables);
 
   console.log('found_ref_destinations', found_iref_destinations);
 
