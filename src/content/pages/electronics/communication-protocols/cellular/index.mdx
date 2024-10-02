@@ -3,12 +3,140 @@ authors: [gbmhunter]
 date: 2024-10-01
 description: Cellular communication protocols are those involving cellular networks. This includes GSM, CDMA, LTE, LTE Cat-M1, and NB-IoT.
 lastUpdated: 2024-10-02
-tags: [communication protocols, cellular, LTE, IoT, bands, nRF9160]
+tags: [communication protocols, cellular, LTE, IoT, bands, nRF9160, LPWAN, NB-IoT, LTE Cat NB1, LTE Cat NB2, asset tracking, industrial IoT, smart meters, 4G, 5G]
 title: Cellular Communication Protocols
 type: page
 ---
 
 <WarningIsNotes />
+
+LPWAN (Low Power Wide Area Network) is a term used to describe a group of cellular communication protocols designed to support IoT devices. This includes the LTE Cat-M1 and NB-IoT standards. The general idea is that these protocols support low power, low bandwidth, low cost communication between cell sites and many simple low power (e.g. battery, solar) embedded devices such as MCUs and their cellular modems.
+
+Applications for LPWAN include:
+
+* Smart water/gas/electricity meters
+* Environmental monitoring (e.g. water quality, air quality, temperature)
+* Smart cities (e.g. smart bins, street lights, parking and metering)
+* Asset tracking (e.g. cars, trucks, trailers, shipping containers)
+* Industrial IoT (e.g. machinery, equipment)
+* Agricultural IoT (e.g. livestock, soil, weather)
+
+LTE (Long Term Evolution) is a term used to describe the fourth generation (4G) cellular networks designed to replace 3G. LTE Cat-M1 and NB-IoT are two variants of LTE designed for IoT devices. Even though they were introduces as part of 4G, both LTE Cat-M and NB-IoT will continue to evolve with newer 5G standards.
+
+<IRef iref="lpwan-standards-comparison" /> compares some of the key metrics across many of the popular LPWAN standards
+
+<p>
+
+**blglglg**
+[^wikipedia-narrowband-iot].
+
+</p>
+
+<table iref="lpwan-standards-comparison">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>LTE Cat M1</th>
+<th>LTE Cat M2</th>
+<th>LTE Cat NB1</th>
+<th>LTE Cat NB2</th>
+</tr>
+</thead>
+<tbody> 
+<tr>
+<td>Device Receive Bandwidth</td> {/* Parameter */}
+<td>1.4 MHz</td> {/* LTE Cat M1 */}
+<td>5 MHz</td> {/* LTE Cat M2 */}
+<td>180 kHz</td> {/* LTE Cat NB1 */}
+<td>180 kHz</td> {/* LTE Cat NB2 */}
+</tr>
+<tr>
+<td>Peak downlink data rate</td> {/* Parameter */}
+<td>1 Mbps</td> {/* LTE Cat M1 */}
+<td>4 Mbps</td> {/* LTE Cat M2 */}
+<td>26 kbps</td> {/* LTE Cat NB1 */}
+<td>127 kbps</td> {/* LTE Cat NB2 */}
+</tr>
+<tr>
+<td>Peak uplink data rate</td> {/* Parameter */}
+<td>1 Mbps</td> {/* LTE Cat M1 */}
+<td>7 Mbps</td> {/* LTE Cat M2 */}
+<td>62 kbps</td> {/* LTE Cat NB1 */}
+<td>159 kbps</td> {/* LTE Cat NB2 */}
+</tr>
+<tr>
+<td>Latency</td> {/* Parameter */}
+<td>10-15 ms</td> {/* LTE Cat M1 */}
+<td>10-15 ms</td> {/* LTE Cat M2 */}
+<td>1.6-10 s</td> {/* LTE Cat NB1 */}
+<td>1.6-10 s</td> {/* LTE Cat NB2 */}
+</tr>
+<tr>
+<td>Device transmit power</td> {/* Parameter */}
+<td>20, 23 dBm</td> {/* LTE Cat M1 */}
+<td>20, 23 dBm</td> {/* LTE Cat M2 */}
+<td>20, 23 dBm</td> {/* LTE Cat NB1 */}
+<td>14, 20, 23 dBm</td> {/* LTE Cat NB2 */}
+</tr>
+</tbody>
+<caption>
+
+<p>
+
+**ldldld**
+Comparison of LTE Cat-M1/M2 and Cat NB1/NB2 (NB-IoT) features[^wikipedia-narrowband-iot].
+
+
+</p>
+
+</caption>
+</table>
+
+<Table data={
+    [
+      {
+        "Standard": "LTE Cat M1",
+        "Device receive bandwidth": "1.4 MHz",
+        "Peak downlink data rate": "1 Mbps",
+        "Peak uplink data rate": "1 Mbps",
+        "Latency": "10-15 ms",
+        "Transmit Power": "20, 23 dBm",
+      },
+      {
+        "Standard": "LTE Cat M2",
+        "Device receive bandwidth": "5 MHz",
+        "Peak downlink data rate": "4 Mbps",
+        "Peak uplink data rate": "7 Mbps",
+        "Latency": "10-15 ms",
+        "Transmit Power": "20, 23 dBm",
+      },
+      {
+        "Standard": "LTE Cat NB1",
+        "Device receive bandwidth": "180 kHz",
+        "Peak downlink data rate": "26 kbps",
+        "Peak uplink data rate": "62 kbps",
+        "Latency": "1.6-10 s",
+        "Transmit Power": "20, 23 dBm",
+      },
+      {
+        "Standard": "LTE Cat NB2",
+        "Device receive bandwidth": "180 kHz",
+        "Peak downlink data rate": "127 kbps",
+        "Peak uplink data rate": "159 kbps",
+        "Latency": "1.6-10 s",
+        "Transmit Power": "14, 20, 23 dBm",
+      }
+    ]
+  } 
+  transpose={{
+    'enable': false,
+    'headerKey': 'Standard',
+    'topLeftCellText': 'Parameter',
+  }}
+>
+  <p slot="caption">Comparison of LTE Cat-M1/M2 and Cat NB1/NB2 (NB-IoT) features[^wikipedia-narrowband-iot].</p>
+</Table>
+
 
 ## LTE Cat-M1
 
@@ -25,11 +153,13 @@ Cat-M1 uses a bandwidth of 1.4 MHz. This is narrow compared to other LTE variant
 
 Cat-M1 is not at widely deployed as regular LTE. However, as of 2024 it has good coverage in many countries. <IRef iref="gsma-mobile-iot-deployment-map" /> shows the coverage of LTE-M and NB-IoT across the globe.
 
-<Image iref="gsma-mobile-iot-deployment-map" src="./_assets/gsma-mobile-iot-deployment-map.webp" width="800px">A world map showing where LTE-M and NB-IoT networks have been deployed[^gsma-mobile-iot-deployment-map].</Image>
+<Image iref="gsma-mobile-iot-deployment-map" src={import('./_assets/gsma-mobile-iot-deployment-map.webp')} width="800px">A world map showing where LTE-M and NB-IoT networks have been deployed[^gsma-mobile-iot-deployment-map].</Image>
 
 ### Power Consumption
 
 Cat-M1 has a power saving mode (PSM) that allows the devices to sleep for extended periods of time, reducing power consumption. Devices can negotiate an extended sleep period (hours or days) with the network. If any traffic arrives for the device while it is in sleep mode, the network buffers the data until the device wakes up (becomes ACTIVE)[^twilio-lte-cat-m-for-iot-devices].
+
+eDRX also allows for further power savings.
 
 ### Bands
 
@@ -40,13 +170,62 @@ Cat-M1 is designed to operate in the frequency bands specified in section 5.5E i
 
 ### Modem Support
 
-The [Nordic](/programming/microcontrollers/nordic/) nRF9160 SiP (System in Package) supports Cat-M1 (as well as NB-IoT)[^nordic-nrf9160-product-spec].
+The [Nordic](/programming/microcontrollers/nordic/) nRF9160 SiP (System in Package) supports Cat-M1 (as well as NB-IoT). It has a quoted current consumption of eDRX @ 81.92s: 18 µA in Cat-M1, 37 µA in Cat-NB1 (UICC included[^nordic-nrf9160-product-spec].
+
+<Image iref="nordic-nrf9160-sip" src={import('./_assets/nrf9160-sip-photo.webp')} width="300px">A close-up photo of the nRF9160 SiP from Nordic Semiconductor[^nordic-nrf9160].</Image>
 
 ## NB-IoT
 
-NB-IoT (Narrowband Internet of Things) is a cellular communication protocol designed for IoT devices. It is also known as LTE Cat NB1. It competes with the LTE Cat-M1 standard.
+NB-IoT (Narrowband Internet of Things) is a cellular communication protocol designed for IoT devices. It is also known as LTE Cat NB1 or LTE Cat NB2 (different standards). It competes with the LTE Cat-M1 standard.
 
-Unlike Cat-M1, NB-IoT does not support cellular tower handovers. This means that devices using this network must largely remain stationary[^onlogic-cat-m1-wireless].
+Unlike Cat-M1, NB-IoT does not support cellular tower handovers. This means that devices using this network must largely remain stationary[^onlogic-cat-m1-wireless] [^onomondo-lte-explainer].
+
+There are two NB-IoT standards[^haltian-nb1-vs-nb2]:
+
+* **LTE Cat NB1**: Standardized in 3GPP Release 13.
+* **LTE Cat NB2**: Standardized in 3GPP Release 14. LTE Cat NB2 is a newer standard which improves on LTE Cat NB1, increasing the data rates, adding support for lower transmit powers and adding positioning support.
+
+<IRef iref="lte-cat-nb-comparison" /> compares some of the key metrics of the two NB-IoT standards.
+
+<table data-iref="lte-cat-nb-comparison">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>LTE Cat NB1</th>
+      <th>LTE Cat NB2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bandwidth</td>
+      <td>180kHz</td>
+      <td>180kHz</td>
+    </tr>
+    <tr>
+      <td>Max. downlink data rate</td>
+      <td>26 kbps</td>
+      <td>80/127 kbps (1HARQ/2HARQ)</td>
+    </tr>
+    <tr>
+      <td>Max. uplink data rate</td>
+      <td>62 kbps</td>
+      <td>105/159 kbps (1HARQ/2HARQ)</td>
+    </tr>
+    <tr>
+      <td>Positioning</td>
+      <td>Cell ID</td>
+      <td>OTDOA, E-CID</td>
+    </tr>
+    <tr>
+      <td>Max. transmission power</td>
+      <td>20, 23 dBm</td>
+      <td>14, 20, 23 dBm</td>
+    </tr>
+  </tbody>
+  <caption>Comparison of LTE Cat NB1 and LTE Cat NB2 features.</caption>
+</table>
+
+The addition of the lower 14 dBm transmit power in Cat NB2 allows for devices with smaller batteries and thus smaller overall form factors to use the network.
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
@@ -57,3 +236,7 @@ Unlike Cat-M1, NB-IoT does not support cellular tower handovers. This means that
 [^onlogic-cat-m1-wireless]: Darek Fanton (2021, Mar 18). _Cat M1 Wireless: What is it, what's it for, and why would you use it?_. OnLogic. Retrieved 2024-10-02, from https://www.onlogic.com/blog/cat-m1-wireless-what-is-it-whats-it-for-and-why-would-you-use-it/.
 [^eseye-frequency-bands]: Eseye. _Frequency bands_. Retrieved 2024-10-02, from https://docs.eseye.com/Content/GettingStarted/FrequencyBands.htm.
 [^nordic-nrf9160-product-spec]: Nordic Semiconductor. _nRF9160 Product Specification_. Retrieved 2024-10-02, from https://docs.nordicsemi.com/bundle/ps_nrf9160/page/nRF9160_html5_keyfeatures.html.
+[^haltian-nb1-vs-nb2]: Haltian (2019, Jan 30). _NB1 vs. NB2 complete comparison table and overview_. Retrieved 2024-10-02, from https://haltian.com/resource/nb1-vs-nb2-complete-comparison-table-and-overview/.
+[^nordic-nrf9160]: Nordic Semiconductor. _Products > nRF9160_ [product page]. Retrieved 2024-10-02, from https://www.nordicsemi.com/Products/nRF9160.
+[^onomondo-lte-explainer]: Michael Bosson (2023, Mar 3). _LTE explainer: LTE Cat 1, LTE Cat 1bis, LTE-M, and NB-IoT_. Onomondo. Retrieved 2024-10-02, from https://onomondo.com/blog/lte-standards-for-iot-comparison/.
+[^wikipedia-narrowband-iot]: Wikipedia (2024, Apr 1). _Narrowband IoT_. Retrieved 2024-10-02, from https://en.wikipedia.org/wiki/Narrowband_IoT.

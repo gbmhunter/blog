@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2014-02-08
 description: GitLab is a web-based Git repository manager and a strong competitor to GitHub, especially for commercial uses.
-lastUpdated: 2019-08-29
-tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry]
+lastUpdated: 2024-10-02
+tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry, local pipelines, GCL]
 title: GitLab
 type: page
 ---
@@ -66,3 +66,48 @@ include:
     ref: 'b6901dcb0918db67a81b190d24fa67f0b5f99fdb' # Commit SHA
     file: '/path/to/file.yml'
 ```
+
+## Running Pipelines Locally
+
+GitLab does not have official support for running pipelines locally, but there is a popular third-party tool called [gitlab-ci-local](https://github.com/firecow/gitlab-ci-local) (a.k.a. GCL) which allows you to do this.
+
+### Running a Job
+
+Clone the repository that contains the pipeline (i.e. has a `.gitlab-ci.yml` file) and run the following command:
+
+```bash
+gitlab-ci-local <job_name>
+```
+
+This will run the job (and all of it's dependencies) locally and output the results to the console. You may need authentication for the job to run successfully, see the section below for details.
+
+### Authentication
+
+Normal pipelines that are run on GitLab's servers get provided with a `CI_JOB_TOKEN` which can be used to authenticate when pulling submodules that are other private GitLab repositories, or when pulling/pushing to the GitLab container registry. To authenticate when running locally, you can create a file called `.gitlab-ci-local-variables.yml` in the root directory of the repository with the following contents:
+
+```yaml title=".gitlab-ci-local-variables.yml"
+---
+CI_JOB_TOKEN: <your_personal_access_token>
+```
+
+Do not commit this file to the repository! Make sure to add it to your `.gitignore` file.
+
+### Manual Jobs
+
+You can trigger a manual job to run during the execution of another job with `--manual <job_name>`. For example:
+
+```bash
+gitlab-ci-local build_firmware --manual my_manual_job
+```
+
+### Watch Out For Untracked Files
+
+GCL will not sync local files that are not tracked by Git. So if you are playing around and add a completely new file, you might run into a "file not found" error when running your pipeline. To fix this, all you need to do is run `git add ...` to stage the file in git (it doesn't need to be committed)[^github-repo-gitlab-ci-local].
+
+The file does not need to be continuously re-added to the git staging area when changes are made, as long as the file has been staged (or committed) at least once.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^github-repo-gitlab-ci-local]: GitHub. _firecow/gitlab-ci-local_ [repo README]. Retrieved 2024-10-02, from https://github.com/firecow/gitlab-ci-local.

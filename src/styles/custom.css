@@ -130,7 +130,7 @@ to break anything? */
   margin-right: auto;
 }
 
-caption {
+caption, .table-caption {
   caption-side: bottom;
   font-size: 1.0rem;
   font-style: italic;

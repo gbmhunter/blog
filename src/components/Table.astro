@@ -1,0 +1,66 @@
+---
+import { Markdown } from 'astro/components';
+
+interface Props {
+  data: { [key: string]: string }[];
+  transpose?: {
+    enable: boolean;
+    headerKey: string;
+    topLeftCellText: string;
+  };
+  caption?: string;
+}
+
+const { data, transpose = { enable: false, headerKey: '', topLeftCellText: '' }, caption } = Astro.props as Props;
+
+// Data is an array of objects, where each object represents a row in the table.
+// Each object should have keys that correspond to the table headers.
+
+let headers: string[] = [];
+let rows: string[][] = [];
+if (transpose.enable) {
+  headers = data.map(row => row[transpose.headerKey]);
+  headers.unshift(transpose.topLeftCellText);
+
+  // Create a row for each key in the data
+  rows = Object.keys(data[0]).filter(key => key !== transpose.headerKey).map(key => {
+    console.log('key', key);
+    return [key, ...data.map(row => row[key])];
+  });
+} else {
+  // If note transpoing, header cells are just simply the keys of the objects
+  headers = Object.keys(data[0]);
+
+  // Create a row for each object in the data
+  rows = data.map(row => Object.values(row));
+}
+console.log('headers', headers);
+console.log('rows', rows);
+
+---
+
+<div class="table-container">
+<table>
+  <thead>
+    <tr>
+      {headers.map((key, index) => (
+        <th>{key}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((row, rowIndex) => (
+      <tr>
+        {row.map((value, colIndex) => (
+          <td>{value}</td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+  <!-- We place the caption outside of the table so that [^my-reference] works inside the caption text. -->
+  <div class="table-caption">
+    <slot name="caption" />
+  </div>
+</div>
