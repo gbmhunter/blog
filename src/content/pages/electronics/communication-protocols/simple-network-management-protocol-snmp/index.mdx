@@ -1,0 +1,67 @@
+---
+authors: [gbmhunter]
+date: 2024-10-03
+description: The Simple Network Management Protocol (SNMP) is a protocol used for managing devices across an IP network. It allows for both monitoring and control of the network devices.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-10-03
+tags: [communication protocols]
+title: Simple Network Management Protocol (SNMP)
+type: page
+---
+
+<WarningIsNotes />
+
+## Roles
+
+A SNMP network consists of two different types of nodes:
+
+1. **Managed devices**: A node on the network that implements SNMP and allows read or read/write access to its information. Each Managed Device (MD) has an Agent that runs on it. The Agent is the software module responsible for communicating using SNMP. The term Agent is commonly used to refer the entire device.
+1. **Network Management Station (NMS)**: A device used to configure and manage the network. Managed devices talk to the NMS. Also just called the Manager for short.
+
+## Versions
+
+There are three versions of SNMP:
+
+1. **SNMPv1**: First version. As of 2024 this is still widely used and is the de facto network management protocol[^wikipedia-snmp].
+1. **SNMPv2**: SNMPv2 introduced the controversial party-based security model. This was seen as too complex for many users, and in response SNMPv2c was created.
+    * **SNMPv2c**: The same as SNMPv2, but with the party-based security model removed and replaced with the same community-based security model as SNMPv1[^wikipedia-snmp]. It ended up being much more popular than SNMPv2.
+1. **SNMPv3**: Adds more advanced security features such as encryption, authentication, and granular access control.
+
+## Network Hierarchy
+
+SNMP sits in the application layer of the Internet Protocol Suite 4-layer framework. It uses UDP as it's transport layer protocol[^wikipedia-snmp].
+
+The NMS can send requests from any source port to managed devices listening on UDP port 161. The managed device responds back from port 161 to same port on the NMS.
+
+The manager receives notifications such as traps on UDP port 162. The managed device can send these notifications from any available source port.
+
+## Management Information Base (MIB)
+
+The Management Information Base (MIB) is a hierarchy that describes the variables.
+
+## Traps
+
+SNMP traps are the event-based mechanism for managed devices to report events (such as errors) back to the NMS. Traps are one way, and the sending device does not expect acknowledgement or confirmation of delivery.
+
+### Generic Traps
+
+Generic traps are defined and standardized by the Internet Engineering Task Force (IETF)[^auvik-mastering-snmp-traps].
+
+## Embedded SNMP Libraries
+
+### Arduino_SNMP_Manager
+
+[Arduino_SNMP_Manager](https://github.com/shortbloke/Arduino_SNMP_Manager) is an Arduino library (which appears to support the ESP32 and ESP8266)for implementing a SNMP Manager. It supports SNMPv1 and SNMPv2. It supports the `GetRequest` and `GetResponse` PDUs[^github-arduino-snmp-manager].
+
+### 0neblock/Arduino_SNMP
+
+[Arduino_SNMP](https://github.com/0neblock/Arduino_SNMP) is an Arduino library for implementing a SNMPv2c SNMP Agent. It was designed and tested with a ESP32, but should work with in any Arduino environment which has a UDP object available[^github-0neblock-arduino-snmp].
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^wikipedia-snmp]: Wikipedia (2024, Sep 27). _Simple Network Management Protocol_. Retrieved 2024-10-03, from https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol.
+[^github-arduino-snmp-manager]: GitHub. _shortbloke/Arduino_SNMP_Manager_ [Git repository]. Retrieved 2024-10-03, from https://github.com/shortbloke/Arduino_SNMP_Manager.
+[^github-0neblock-arduino-snmp]: GitHub. _0neblock/Arduino_SNMP_ [Git repository]. Retrieved 2024-10-03, from https://github.com/0neblock/Arduino_SNMP.
+[^auvik-mastering-snmp-traps]: Nolan Greene (2024, Jul 17). _Mastering SNMP Traps_. Auvik. Retrieved 2024-10-03, from https://www.auvik.com/franklyit/blog/snmp-traps/.
