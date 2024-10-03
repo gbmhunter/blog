@@ -1,4 +1,5 @@
 ---
+/* This component is used to display a number of the most recent updates pages on the homepage. */
 import { getValidUpdatesPages } from 'src/js/Collections'
 import { getGlobalMdxComponents } from 'src/js/GlobalMdxComponents'
 
@@ -17,9 +18,25 @@ const globalMdxComponents = getGlobalMdxComponents();
 
 {
   updates.map((update) => (
-    <div>
+    <div class="update">
       <h3>{update.data.title}</h3>
-      <update.Content components={globalMdxComponents}/>
+      <div class="update-content">
+        <update.Content components={globalMdxComponents}/>
+      </div>
     </div>
   ))
 }
+
+<style is:global>
+/* Make the headings inside the update content smaller than they would be if displayed on their own page.
+This is to make it look correct when they are part of the recent updates section on the homepage. 
+We don't expect anything other than h2 and h3's to be used. 
+Style needs to be global because we are selecting elements within child components. */
+.update-content h2 {
+  font-size: 1.5rem;
+}
+
+.update-content h3 {
+  font-size: 1.25rem;
+}
+</style>
