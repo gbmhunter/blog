@@ -120,6 +120,8 @@ A divider below:
 
 ## Tables
 
+### Simple Markdown Table
+
 A simple markdown table:
 
 Heading 1   | Heading 2
@@ -127,6 +129,8 @@ Heading 1   | Heading 2
 abc         | def
 ghi         | jkl
 
+
+### HTML Table with Caption
 
 <IRef iref="test-table" /> is an HTML table with a caption. The caption should be below the table.
 
@@ -145,6 +149,8 @@ ghi         | jkl
 </tbody>
 <caption>This is a table caption. There should be a reference at the end of this sentence[^table-ref].</caption>
 </table>
+
+### Table Component with JS Data
 
 <IRef iref="astro-table-component-with-js-data" /> is a table using the `Table` component and the data provided from a Javascript object.
 
@@ -231,7 +237,7 @@ ghi         | jkl
       },
     ]
   }
-  transposed={{
+  transpose={{
     enable: true,
     headerKey: "Year",
     topLeftCellText: "Metric",
@@ -244,7 +250,7 @@ A really wide table, which should have a horizontal scroll bar:
 
 Heading 1 | Heading 2
 ----------|----------
-abcdefghi | jklmnopqrjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+0000000000000000000000000000000000000000000000000000000 | 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 
 ## Images
 
