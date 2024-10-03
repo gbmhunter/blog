@@ -1,0 +1,269 @@
+---
+aliases: [/programming/general/makefiles]
+authors: [gbmhunter]
+date: 2013-05-28
+description: Makefiles are a way of describing the build process for source code. They are used by the GNU make tool. This page cov
+lastUpdated: 2024-10-03
+tags: [make, build, tool, GNU, gcc, makefile]
+title: Makefiles
+type: page
+---
+
+Makefiles are a way of making a **"one touch" build solution for source code**. They are a type of file used by the GNU command **make**. They take multiple file inputs, do some part or all of the code build process, and produce output(s). They are commonly used to create executables, object files, or libraries (combined object files) from source code. They come in particularly useful when dealing with large projects.
+
+They are text files that are stored with the filename "Makefile" (or "makefile"), with no file extension (**do not** call it `makefile.txt`!). The capital M version is recommended because it persists at the top of the directory, along with other important files like the README.
+
+Makefiles are most commonly used to compile code for Linux environments but also works in Windows. You can compile code for the native machine or cross-compile for other things such as embedded systems.
+
+Unlike most other programming/scripting languages, Makefiles are white-space sensitive, AND have different behaviour for tabs and spaces. This can be annoying! Take care when coping makefile code from the internet, the clipboard can easily convert tabs into spaces and cause the makefile **code to break**.
+
+Make can be then used by "higher-level" build programs, such as the [Autoconfig](http://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/index.html#Top) and [Automake](http://www.gnu.org/software/automake/) tools .
+
+## A Simple Example
+
+A simple, complete example of a Makefile is shown below:
+
+```make 
+make: main
+	gcc -o main main.c
+```
+
+If in Linux, opening a terminal, typing `make` and pressing enter while in the same directory as this makefile will compile a file called `main.c` with the GCC compiler and produce the output executable file `main`.
+
+The primary three things a Makefile consists of are **targets**, **prerequisites**, and **recipes**. The above code contains two of these, `main`, which is the target, and `gcc -o main main.c`, which is the recipe. Make interprets this code as saying "You make `main` by running the command `gcc -o main main.c` in the terminal. Note that all recipes are run in the terminal, and each new recipe (which is on a new line), is **run in a different instance of the terminal**.
+
+<Aside type="caution">
+There is a tab in-front of the recipe `gcc ...`. This is important! **All recipes must be proceeded by a tab.** Spaces will not work. This is the cause of many "duoh!" moments.
+</Aside>
+
+If no parameters are passed in when you call make, the first rule in the makefile will be run.
+
+## Adding Variables
+
+Make supports variables that are defined before they are used in a rule. The value of the variable is substituted to replace the constant at run-time, similar to the C preprocessor.
+
+You assign a value to a variable in the following ways:
+
+<table>
+  <tbody>
+    <tr>
+      <td style="width: 180px">`VARIABLE = VALUE`</td>
+      <td>Normal assignment of a variable. Any other variables within in it are recursively expanded when the variable is used, not when it is declared. This is the same behaviour you would expect from a variable declared in C.</td>
+    </tr>
+    <tr>
+      <td>`VARIABLE := VALUE`</td>
+      <td>Any other variables within in it are expanded on declaration (instantly). This is similar behaviour to if you declared a const variable in C++.</td>
+    </tr>
+    <tr>
+      <td>`VARIABLE ?= VALUE`</td>
+      <td>This sets the variable only if it doesn't have a value already. If the variable hasn't already been set, the actual calculation of the value will be deferred until when it is used (like `VARIABLE = VALUE`).</td>
+    </tr>
+    <tr>
+      <td>`VARIABLE += VALUE`</td>
+      <td>This appends `VALUE` to the value that `VARIABLE` already has. Determining when to calculate the variable follows how it was initially set (i.e. with `=` or `:=`).</td>
+    </tr>
+  </tbody>
+</table>
+
+There are common names that most people use for variables, which are shown below.
+
+```text
+CC
+CFLAGS
+```
+
+Using wildcards in variable assignment requires special syntax, see the Wildcards section.
+
+## Wildcards
+
+Wildcards are a great way to make automatic makefiles, i.e. makefiles that you do not need to continuously update as you create/delete code files.
+
+One of the most common uses for a wildcard is with the "clean" rule, which is usually along the lines of:
+
+```make
+clean: 
+	rm -f *.o
+```
+
+The `*.o` string is called a [glob](http://en.wikipedia.org/wiki/Glob_(programming)). It will match any file names which end in `.o`. This will delete all object files in the current directory.
+
+
+**Wildcard expansion does not occur if you define a variable.** For this reason, if you use wildcards in variable assignments, you use the following syntax instead:
+
+```make
+objects := $(wildcard *.o)
+```
+
+This will replace `$(wildcard *.o)` with a space-separated list of all object files in the current directory, e.g. `objects := object_file1.o object_file2.o`.
+
+What is also neat is you can combine the wildcard functions with other functions for string substitution and analysis. For example, you could create a list of "future" object files by scanning the directory for files using the wildcard function, and then substituting the `.c` for `.o`. In this way you can compile and link a whole directory of `.c` files automatically. The following example does this using the `patsubst` function.
+
+```make
+objects := $(patsubst %.c,%.o,$(wildcard *.c))
+
+foo : $(objects)
+	cc -o foo $(objects)
+```
+
+## Automatic Variables
+
+Automatic variables are another great tool to use when creating automatic makefiles. Automatic variables begin with the $ character, just like normal variables.
+
+Here is a table some of the most useful automatic variables:
+
+<table>
+  <thead>
+    <tr>
+      <th>Automatic Variable</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`$@`</td>
+      <td>The file name of the target of the rule.</td>
+    </tr>
+    <tr>
+      <td>`$%`</td>
+      <td>The target member name, when the target is an archive member.</td>
+    </tr>
+    <tr>
+      <td>`$`</td>
+      <td>The name of the first prerequisite.</td>
+    </tr>
+    <tr>
+      <td>`$?`</td>
+      <td>The names of all the prerequisites that are newer than the target, with spaces between them.</td>
+    </tr>
+    <tr>
+      <td>`$^`</td>
+      <td>The names of all the prerequisites, **even if they are not newer than the target**, with spaces between them. **Does not contain any order-only prerequisites!**</td>
+    </tr>
+    <tr>
+      <td>`$|`</td>
+      <td>The names of all of the order-only prerequisites, with spaces between them.</td>
+    </tr>
+  </tbody>
+</table>
+
+Automatic variables are used frequently in the compiler command that is executed when a rule is matched.
+
+## Including One Makefile In Another
+
+Note that this is different from Calling One Makefile From Another.
+  
+A Makefile (or a partial Makefile) can be included in another with the -include directive.
+
+## Calling One Makefile From Another
+
+Note that this is different from Including One Makefile In Another.
+
+You can easily call one makefile from another. This is useful when you have a project which is made up of smaller sub-projects, and each one of the sub-projects has it's own makefile.
+
+The recommended to run another makefile is to write:
+
+```make
+# Run another makefile from this makefile
+$(MAKE) -C ./path/to/makefile/ all
+```
+
+where all can be substituted for any other parameter you wish to pass to the secondary makefile. Note that this method is preferred over manually changing directory and calling make yourself, which can be done in the following manner:
+
+```make
+subsystem:
+	cd subdir && $(MAKE)
+```
+
+The `&&` is so that make will only be called if `cd` is successful. If this wasn't there and `cd` was not successful, make would be called in the wrong directory.
+
+## Debugging
+
+Make prints out some debug information to the standard output when it is run. If you want more debugging functionality, try [Remake](http://bashdb.sourceforge.net/remake/), which is a patched version of GNU Make with better error reporting, and trace execution/debugging capability.
+
+## Changing Directory
+
+You can change directory in a Makefile using the shell `cd` command. You must be aware though that each separate command in a recipe is run in a separate instance of the shell. This means that a `cd` will not effect consecutive commands. To get around this, you will have to concatenate all your commands into a single command, using `;` (and `\` to effectively split a single command over multiple lines in the Makefile for readability).
+
+```make
+all:
+	cd my_dir; \
+	echo "I'm in a different dir."; \
+	my_command
+```
+
+Be warned though that with the above method, the steps in the command won't stop if one fails. This can lead to unexpected behaviour, such as deleting the wrong thing if say, a `cd` command fails first. To prevent this, a better approach is to replace `;` with the `&&` operator.
+
+```make
+all:
+	cd my_dir && \
+	echo "I'm in a different dir." && \
+	my_command
+```
+
+As of GNU make 3.82 (release in July 2010), you can use the special `.ONESHELL` target to run all commands in a recipe in the same shell instance[^stack-overflow-cd-cmd-in-makefile]. This removes the need to concatenate all the commands with `cd` together.
+
+```make
+.ONESHELL: # Applies to all targets in the file!
+
+all:
+	cd my_dir
+	echo "I'm in a different dir."
+```
+
+## OS Detection
+
+You can detect the operating system of the machine that `make` is being run on by inspecting the `$(OS)` variable.
+
+The example below assigns a shell command to the `RM` variable depending on the operating system.
+
+```make
+ifeq ($(OS),Windows_NT)
+    RM = del /q
+else # Assume UNIX
+    RM = rm -f
+endif
+```
+
+<Aside type="tip">
+`Windows_NT` is reported for XP, 2000, 7, Vista, 10, 11, e.t.c (any Windows OS that is part of the NT family)[^wikipedia-environment-variable].
+</Aside>
+
+## Silencing Commands
+
+By default, `make` will print out the commands in a recipe before it runs them. For example:
+
+```make
+all:
+	echo "Hello, World!"
+```
+
+Will output:
+
+```text
+echo "Hello, World!"
+"Hello, World!"
+```
+
+Obviously, in certain cases (like the `echo` command above) you do not want the command to be printed, you want just the commands output to be printed. To achieve this, you can use the `@` symbol at the beginning of the command. For example:
+
+```make
+all:
+	@echo "Hello, World!"
+```
+
+Will output what we expect:
+
+```text
+"Hello, World!"
+```
+
+## Further Reading
+
+For a comprehensive reading, checkout the [GNU 'make' manual](http://www.gnu.org/software/make/manual/make.html#Rules).
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^stack-overflow-cd-cmd-in-makefile]: StackOverflow. _How do I write the 'cd' command in a makefile?_. Retrieved 2024-10-03, from https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile.
+[^wikipedia-environment-variable]: Wikipedia (2024, Sep 28). _Environment variable_. Retrieved 2024-10-03, from https://en.wikipedia.org/wiki/Environment_variable.

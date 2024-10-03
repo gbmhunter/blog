@@ -120,7 +120,7 @@ A divider below:
 
 ## Tables
 
-A markdown table:
+A simple markdown table:
 
 Heading 1   | Heading 2
 ------------|------------
@@ -128,10 +128,9 @@ abc         | def
 ghi         | jkl
 
 
-<IRef iref="test-table" /> is an HTML table with a caption.
+<IRef iref="test-table" /> is an HTML table with a caption. The caption should be below the table.
 
 <table data-iref="test-table">
-<caption>This is a table caption.</caption>
 <thead>
 <tr>
   <th>Heading 1</th>
@@ -144,7 +143,102 @@ ghi         | jkl
   <td>jklmnopqr</td>
 </tr>
 </tbody>
+<caption>This is a table caption. There should be a reference at the end of this sentence[^table-ref].</caption>
 </table>
+
+<IRef iref="astro-table-component-with-js-data" /> is a table using the `Table` component and the data provided from a Javascript object.
+
+<Table
+  iref="astro-table-component-with-js-data"
+  data={
+    [
+      {
+        "Column 1": "Row 1, Column 1",
+        "Column 2": "Row 1, Column 2",
+        "Column 3": "Row 1, Column 3",
+        "Column 4": "Row 1, Column 4",
+        "Column 5": "Row 1, Column 5",
+      },
+      {
+        "Column 1": "Row 2, Column 1",
+        "Column 2": "Row 2, Column 2",
+        "Column 3": "Row 2, Column 3",
+        "Column 4": "Row 2, Column 4",
+        "Column 5": "Row 2, Column 5",
+      },
+      {
+        "Column 1": "Row 3, Column 1",
+        "Column 2": "Row 3, Column 2",
+        "Column 3": "Row 3, Column 3",
+        "Column 4": "Row 3, Column 4",
+        "Column 5": "Row 3, Column 5",
+      },
+      {
+        "Column 1": "Row 4, Column 1",
+        "Column 2": "Row 4, Column 2",
+        "Column 3": "Row 4, Column 3",
+        "Column 4": "Row 4, Column 4",
+        "Column 5": "Row 4, Column 5",
+      },
+      {
+        "Column 1": "Row 5, Column 1",
+        "Column 2": "Row 5, Column 2",
+        "Column 3": "Row 5, Column 3",
+        "Column 4": "Row 5, Column 4",
+        "Column 5": "Row 5, Column 5",
+      },
+    ]
+  }
+>
+  <caption slot="caption">A table using the `Table` component and the data provided from a Javascript object. There should be a reference at the end of this sentence[^table-ref].</caption>
+</Table>
+
+### Table Component with Transposed Data
+
+<IRef iref="astro-table-component-with-js-data-transposed" /> is a table using the `Table` component and the data provided from a Javascript object. The data is transposed, so the table is rotated 90 degrees.
+
+<Table
+  iref="astro-table-component-with-js-data-transposed"
+  data={
+    [
+      {
+        "Year": "2020",
+        "Num. Page Visits": "5",
+        "Num. Sessions": "2",
+        "Bounce Rate": "90%",
+        "Avg. Session Duration": "10 min",
+      },
+      {
+        "Year": "2021",
+        "Num. Page Visits": "10",
+        "Num. Sessions": "4",
+        "Bounce Rate": "80%",
+        "Avg. Session Duration": "20 min",
+      },
+      {
+        "Year": "2022",
+        "Num. Page Visits": "15",
+        "Num. Sessions": "6",
+        "Bounce Rate": "70%",
+        "Avg. Session Duration": "30 min",
+      },
+      {
+        "Year": "2023",
+        "Num. Page Visits": "20",
+        "Num. Sessions": "8",
+        "Bounce Rate": "60%",
+        "Avg. Session Duration": "40 min",
+      },
+    ]
+  }
+  transposed={{
+    enable: true,
+    headerKey: "Year",
+    topLeftCellText: "Metric",
+  }}
+>
+  <caption slot="caption">A table using the `Table` component and the data provided from a Javascript object. There should be a reference at the end of this sentence[^table-ref].</caption>
+</Table>
 
 A really wide table, which should have a horizontal scroll bar:
 
@@ -377,3 +471,4 @@ References, authors, related content and tags sections should be below (in that 
 
 [^university-of-colorado-bolder-intro-to-peak-current-mode-control]: University of Colorado Bolder (2020, Aug 7). _Introduction to Peak Current Mode Control_ [Video]. YouTube. Retrieved 2023-06-18, from https://www.youtube.com/watch?v=3tTSMDEyVKc.
 [^ti-sboa187e-current-mode-control]: Texas Instruments (2020, Dec). _Current Mode Control in Switching Power Supplies_ [Application Note]. Retrieved 2023-06-18, from https://www.ti.com/lit/an/sboa187e/sboa187e.pdf.
+[^table-ref]: This is a reference used by the tables.

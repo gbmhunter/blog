@@ -86,9 +86,21 @@ Cat-M1 is not at widely deployed as regular LTE. However, as of 2024 it has good
 
 ### Power Consumption
 
+Cat M1 reduces the power consumption of devices with two features regular LTE does not support:
+
+* Power saving mode (PSM)
+* Extended Discontinuous Reception (eDRX)
+
 Cat-M1 has a power saving mode (PSM) that allows the devices to sleep for extended periods of time, reducing power consumption. Devices can negotiate an extended sleep period (hours or days) with the network. If any traffic arrives for the device while it is in sleep mode, the network buffers the data until the device wakes up (becomes ACTIVE)[^twilio-lte-cat-m-for-iot-devices].
 
-eDRX also allows for further power savings.
+eDRX (Extended Discontinuous Reception) also allows for further power savings for IoT devices. Phones don't normally have a continuous connection with the cell site. Instead, they frequently connect and check for new data every 2.56 seconds (typically). Between these connections, the devices cellular modem is in a low-power sleep state.
+
+eDRX allow for the device to negotiate longer sleep periods with the network. They can negotiate two parameters:
+
+* PTW (amount of time the device is reachable for in each cycle) between 1.28 and 20.48 s
+* eDRX cycle (amount of time the device is unreachable for in each cycle) up to 48 mins
+
+The **Paging Time Window** (PTW) is the amount of time the device is reachable for in each cycle. The **eDRX cycle** is the amount of time the device is unreachable for in each cycle. Together they sum to form the **Page Cycle Length** (PCL).
 
 ### Bands
 
