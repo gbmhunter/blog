@@ -67,7 +67,7 @@ Generic traps are defined and standardized by the Internet Engineering Task Forc
 
 ### lwIP
 
-The lightweight IP stack (lwIP) library has built-in support for acting as SNMPv2c or SNMPv3 Agent. A MIB compiler and viewer (written in C# and Windows Forms) is also provided in the lwIP contrib repository[^lwip-snmp-v2c-3-agent].
+The lightweight IP stack (lwIP) library has built-in support for acting as SNMPv2c or SNMPv3 Agent. A MIB compiler and viewer (written in C# and Windows Forms) is also provided in the lwIP contrib repository[^lwip-snmp-v2c-3-agent]. The lwIP library is well supported by the Espressif ESP32 and ESP8266 MCUs.
 
 ### Arduino_SNMP_Manager
 
@@ -76,6 +76,12 @@ The lightweight IP stack (lwIP) library has built-in support for acting as SNMPv
 ### 0neblock/Arduino_SNMP
 
 [Arduino_SNMP](https://github.com/0neblock/Arduino_SNMP) is an Arduino library for implementing a SNMPv2c SNMP Agent. It was designed and tested with a ESP32, but should work with in any Arduino environment which has a UDP object available[^github-0neblock-arduino-snmp].
+
+### Lantronix Ethernet to Serial Device Servers
+
+The Lantronix XPort "Ethernet to Serial Device Servers" support SNMP (as well as ARP, ICMP, TFTP, DHCP, HTTP and other network protocols)[^lantronix-xport-ethernet-to-serial-device-server]. This device easily allows you to add TCP/IP network capabilities to MCUs and other embedded devices which can't otherwise natively support it.
+
+<Image src={import('./_assets/lantronix-xport-ethernet-to-serial-device-server.webp')} width="400px">A photo of the Lantronix XPort which supports the SNMP protocol[^lantronix-xport-ethernet-to-serial-device-server].</Image>
 
 ## Further Reading
 
@@ -92,3 +98,4 @@ Explore and find OIDs at the free online [Global OID reference database](https:/
 [^lwip-snmp-v2c-3-agent]: lwIP. _lwIP v2.1.0 - Modules > Application > SNMPv2c/v3 agent_ [documentation]. Retrieved 2024-10-04, from https://www.nongnu.org/lwip/2_1_x/group__snmp.html.
 [^paessler-snmp-mibs-oids]: Paessler. _SNMP, MIBs and OIDs - an overview_. Retrieved 2024-10-04, from https://www.paessler.com/info/snmp_mibs_and_oids_an_overview.
 [^sys-admin-most-useful-snmp-oids]: SysAdmin. _Most useful SNMP OIDs_. Retrieved 2024-10-04, from https://www.sysadmin.md/most-useful-snmp-oids.html.
+[^lantronix-xport-ethernet-to-serial-device-server]: Lantronix. _XPort Ethernet to Serial Device Server_ [product page]. Retrieved 2024-10-04, from https://www.lantronix.com/products/xport/.
