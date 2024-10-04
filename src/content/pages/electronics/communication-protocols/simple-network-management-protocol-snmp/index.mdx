@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2024-10-03
 description: The Simple Network Management Protocol (SNMP) is a protocol used for managing devices across an IP network. It allows for both monitoring and control of the network devices.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-03
-tags: [communication protocols]
+lastUpdated: 2024-10-04
+tags: [communication protocols, SNMP, MIB, OID, traps, UDP, lwIP, Arduino, ESP32, ESP8266]
 title: Simple Network Management Protocol (SNMP)
 type: page
 ---
@@ -39,6 +39,22 @@ The manager receives notifications such as traps on UDP port 162. The managed de
 
 The Management Information Base (MIB) is a hierarchy that describes the variables.
 
+An Object Identifier (OID) uniquely identifies a managed object in the MIB hierarchy[^paessler-snmp-mibs-oids].
+
+For example, the OID for `Percentages of user CPU time (ssCpuUser)` (which is specified in the `UCD-SNMP-MIB` MIB) in asn1 form is[^sys-admin-most-useful-snmp-oids]:
+
+```txt
+{iso(1) identified-organization(3) dod(6) internet(1) private(4) enterprise(1) ucdavis(2021) systemStats(11) ssCpuUser(9)}
+```
+
+This shows how to drill down in the MIB hierarchy to find the managed object. The top level is `iso(1)`, the next level is `identified-organization(3)`, and so on, all the way down to the managed object`ssCpuUser(9)`. OIDs are typically written in dot notation, which just uses the numbers separated by dots. So the OID becomes:
+
+```txt
+1.3.6.1.4.1.2021.11.9
+```
+
+You can explore and find OIDs at the free online [Global OID reference database](https://oidref.com/).
+
 ## Traps
 
 SNMP traps are the event-based mechanism for managed devices to report events (such as errors) back to the NMS. Traps are one way, and the sending device does not expect acknowledgement or confirmation of delivery.
@@ -49,6 +65,10 @@ Generic traps are defined and standardized by the Internet Engineering Task Forc
 
 ## Embedded SNMP Libraries
 
+### lwIP
+
+The lightweight IP stack (lwIP) library has built-in support for acting as SNMPv2c or SNMPv3 Agent. A MIB compiler and viewer (written in C# and Windows Forms) is also provided in the lwIP contrib repository[^lwip-snmp-v2c-3-agent].
+
 ### Arduino_SNMP_Manager
 
 [Arduino_SNMP_Manager](https://github.com/shortbloke/Arduino_SNMP_Manager) is an Arduino library (which appears to support the ESP32 and ESP8266)for implementing a SNMP Manager. It supports SNMPv1 and SNMPv2. It supports the `GetRequest` and `GetResponse` PDUs[^github-arduino-snmp-manager].
@@ -56,6 +76,10 @@ Generic traps are defined and standardized by the Internet Engineering Task Forc
 ### 0neblock/Arduino_SNMP
 
 [Arduino_SNMP](https://github.com/0neblock/Arduino_SNMP) is an Arduino library for implementing a SNMPv2c SNMP Agent. It was designed and tested with a ESP32, but should work with in any Arduino environment which has a UDP object available[^github-0neblock-arduino-snmp].
+
+## Further Reading
+
+Explore and find OIDs at the free online [Global OID reference database](https://oidref.com/).
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
@@ -65,3 +89,6 @@ Generic traps are defined and standardized by the Internet Engineering Task Forc
 [^github-arduino-snmp-manager]: GitHub. _shortbloke/Arduino_SNMP_Manager_ [Git repository]. Retrieved 2024-10-03, from https://github.com/shortbloke/Arduino_SNMP_Manager.
 [^github-0neblock-arduino-snmp]: GitHub. _0neblock/Arduino_SNMP_ [Git repository]. Retrieved 2024-10-03, from https://github.com/0neblock/Arduino_SNMP.
 [^auvik-mastering-snmp-traps]: Nolan Greene (2024, Jul 17). _Mastering SNMP Traps_. Auvik. Retrieved 2024-10-03, from https://www.auvik.com/franklyit/blog/snmp-traps/.
+[^lwip-snmp-v2c-3-agent]: lwIP. _lwIP v2.1.0 - Modules > Application > SNMPv2c/v3 agent_ [documentation]. Retrieved 2024-10-04, from https://www.nongnu.org/lwip/2_1_x/group__snmp.html.
+[^paessler-snmp-mibs-oids]: Paessler. _SNMP, MIBs and OIDs - an overview_. Retrieved 2024-10-04, from https://www.paessler.com/info/snmp_mibs_and_oids_an_overview.
+[^sys-admin-most-useful-snmp-oids]: SysAdmin. _Most useful SNMP OIDs_. Retrieved 2024-10-04, from https://www.sysadmin.md/most-useful-snmp-oids.html.
