@@ -29,14 +29,20 @@ function create_ref_links() {
     return;
   }
 
-  // Find all figures.
+  //============================================================================
+  // FIND ALL FIGURES
+  //============================================================================
   // 1) Prefix figcaptions with "Figure X: "
   // 2) Add figure to found_ref_destinations if ref present
   const figures = markdownContentDiv.querySelectorAll('.figure');
   console.log('figures', figures);
   figures.forEach((figure, index) => {
     const figcaption = figure.querySelector('figcaption');
-    if (figcaption) {
+    // We need to check for empty figcaptions because astro.js can't conditionally render the figcaption
+    // in the Image component based on the slot being empty or not.
+    // Figures without captions will still be numbered and able to be referenced, the user just won't see
+    // the figure number anywhere.
+    if (figcaption && figcaption.textContent !== '') {
       // Must set innerHTML and not textContent because figcaption can contain HTML
       figcaption.innerHTML = `Figure ${index + 1}: ` + figcaption.innerHTML;
     }
@@ -47,7 +53,9 @@ function create_ref_links() {
     }
   });
 
-  // Find all tables under the markdown content div
+  //============================================================================
+  // FIND ALL TABLES
+  //============================================================================
   // 1) Prefix table captions with "Table X: "
   // 2) Add table to found_ref_destinations if iref present
   const tables = markdownContentDiv.querySelectorAll('table');
@@ -68,12 +76,11 @@ function create_ref_links() {
     }
   });
 
-  // Find all tables that are wrapped in a div with class "table-container"
-  const containerTables = markdownContentDiv.querySelectorAll('.table-container');
-  console.log('containerTables', containerTables);
-
   console.log('found_ref_destinations', found_iref_destinations);
 
+  //============================================================================
+  // FIND ALL REF SOURCES AND LINK THEM
+  //============================================================================
   // Find all ref-source elements and link them to the corresponding item ref in the page
   const refSources = document.querySelectorAll('.ref-source');
   console.log('refSources', refSources);

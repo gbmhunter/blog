@@ -254,17 +254,25 @@ Heading 1 | Heading 2
 
 ## Images
 
-<IRef iref="cartoon-ninja" /> is an image which is stored with this test page in the `src/` directory.
+### Image from Relative _assets/ Directory
+
+<IRef iref="cartoon-ninja" /> is an image which is stored with this test page in a relative `_assets/` directory.
 
 <Image iref="cartoon-ninja" src={import('./_assets/cartoon-ninja.jpg')} width="300px">This should be an clickable image of the logo. **Bold text**. An equation: $x^2$. There should be a footnote number at the end of this sentence[^foot-1].</Image>
+
+### Image from Public Directory
 
 Link to an image which is in the public directory is below:
 
 <Image src="/images/test/image-in-public-dir-for-test-page.webp" width="2000">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width. Make sure this URL wraps: http://www.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.a.really.long.url.</Image>
 
+### Wide Image
+
 A wide image to make sure it doesn't exceed the page width:
 
 <Image src={import('./_assets/test-image-1000px.webp')} width="2000">A larger test image. Make the screen width small and make sure this image does not exceed 100% page width.</Image>
+
+### Static Import Image
 
 A static import image:
 
@@ -272,6 +280,7 @@ import imgAnotherTestImage from './_assets/another-test-image.png';
 
 <Image src={imgAnotherTestImage} width="300px">This image is imported statically.</Image>
 
+### Floating Image
 
 <Image src={import('./_assets/arrow-right.png')} width="200px" float="right">This image should be floating to the right of text.</Image>
 
@@ -279,7 +288,15 @@ An image with float="right". This should be floating to the right of the text. L
 
 Nunc blandit facilisis ligula. Fusce ac aliquam nunc, vitae vehicula massa. Quisque massa augue, mattis ut laoreet ultrices, consequat et dui. Mauris fringilla velit sit amet nulla egestas cursus. Fusce gravida lectus vitae nibh suscipit, vitae efficitur ipsum finibus. Quisque ac fringilla nibh. Vivamus auctor posuere risus ut suscipit. Phasellus laoreet rutrum justo quis hendrerit.
 
+### Image with Red Border Glow
+
 <Image src={import('./_assets/test-image-1000px.webp')} width="500" userClass="red-glow">This image should have a red glowing outline.</Image>
+
+### Image with No Caption
+
+<IRef iref="wikipedia-colour-test-image" /> below should have no caption. The "Figure X" link at the start of this paragraph should still work, you just won't be able to see the figure number below the image.
+
+<Image iref="wikipedia-colour-test-image" src={import('./_assets/wikipedia-colour-test-image.webp')} width="500"></Image>
 
 ## Asides
 
