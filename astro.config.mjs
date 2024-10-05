@@ -6,7 +6,7 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.mbedded.ninja',
+  site: 'https://blog.mbedded.ninja', // This enables the sitemap generation
   integrations: [
     astroExpressiveCode({
       // You can optionally override the plugin's default settings here
@@ -49,7 +49,7 @@ export default defineConfig({
             href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css',
           },
         }
-      ]
+      ],
     }),
   ],
   markdown: {
