@@ -76,6 +76,37 @@ function create_ref_links() {
     }
   });
 
+  //============================================================================
+  // FIND ALL EQUATIONS
+  //============================================================================
+  // htmlId{} creates a span with the id equal to the text inside the curly braces.
+  // Equation IDs must be prefixed with "eq-" so we can easily find them
+  const equations = markdownContentDiv.querySelectorAll('span[id^="eq-"]');
+  console.log('equations', equations);
+  equations.forEach((equation, index) => {
+    const equationTop = equation.getBoundingClientRect().top;
+    console.log('equation', equation, 'top', equationTop);
+    // Loop through all elements with the class "eqn-num" and find the one with the same vertical position in the DOM
+    // This is so we can find the equation number
+    const eqnNums = markdownContentDiv.querySelectorAll('.eqn-num');
+    let equationNumber = 0;
+    for (let i = 0; i < eqnNums.length; i++) {
+      const eqnNum = eqnNums[i];
+      const eqnNumTop = eqnNum.getBoundingClientRect().top;
+      console.log('eqnNum', eqnNum, 'top', eqnNumTop);
+      // Check if they are within 1px of each other
+      if (Math.abs(equationTop - eqnNumTop) < 5) {
+        console.log('equation and eqnNum are within 1px of each other. number is ', i + 1);
+        // console.log('eqnNum.textContent', getComputedStyle(eqnNum, ':before').getPropertyValue('content'));
+        equationNumber = i + 1;
+        break;
+      }
+    }
+    // Got the equation number, now add it to the found_ref_destinations array
+    console.log('Creating ref destination with id', equation.id, 'equationNumber', equationNumber, 'name', `Equation ${equationNumber}`);
+    found_iref_destinations[equation.id] = new RefDestination('equation', equationNumber, `Equation ${equationNumber}`);
+  });
+
   console.log('found_ref_destinations', found_iref_destinations);
 
   //============================================================================
