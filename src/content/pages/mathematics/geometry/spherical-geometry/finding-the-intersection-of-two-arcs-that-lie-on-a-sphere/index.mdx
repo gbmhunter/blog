@@ -75,7 +75,9 @@ These cross-products will be perpendicular to the plane that the arc lies in. He
 
 Yup, you read that correctly. We now calculate the cross-product of the two cross-products we calculated above. Because the two arc cross-products define two plane normals, the cross-product of two plane normals gives us a vector that is in the same direction as the intersecting line.
 
-$$ \b{L} = \b{N_1} \times \b{N_2} $$
+$$
+\b{L} = \b{N_1} \times \b{N_2}
+$$
 
 Because the line must pass through $[0, 0, 0]^T$, this vector is also the line itself!
 
@@ -96,17 +98,23 @@ So we now have the two points of intersection between the arcs. If these arcs we
 
 We can determine if these intersection points lies within arc segments by doing a angle test, using the dot product:
 
-$$ \b{a} \cdot \b{b} = ||\b{a}|| ||\b{b}|| cos (\theta) $$
+$$
+\b{a} \cdot \b{b} = ||\b{a}|| ||\b{b}|| cos (\theta)
+$$
 
 We will re-arrange for $\theta$:
 
-$$ \theta = \arccos \left( \frac{\b{a} \cdot \b{b}}{||\b{a}|| ||\b{b}|| } \right) $$
+$$
+\theta = \arccos \left( \frac{\b{a} \cdot \b{b}}{||\b{a}|| ||\b{b}|| } \right)
+$$
 
 The angle from the start of arc 1 to intersecting point 1, and the angle from the end of arc 1 to intersecting point 1, and compare it against the angle between the start and end of arc 1.
 
 The intersecting point is within arc 1 if:
 
-$$ \theta_{a11,i1} + \theta_{a12,i1} = \theta_{a11,a12} $$
+$$
+\theta_{a11,i1} + \theta_{a12,i1} = \theta_{a11,a12}
+$$
 
 Take note that if calculating this result using any data type that can lose precision (e.g. floats, doubles), you will have to check it is close to equal rather than exactly equal. This can be done by adding some epsilon. Usually $1^{-10}$ is sufficient.
 
@@ -255,6 +263,6 @@ $$
 
 </Aside>
 
-## External Resources
+## Further Reading
 
 [https://stackoverflow.com/questions/2954337/great-circle-rhumb-line-intersection](https://stackoverflow.com/questions/2954337/great-circle-rhumb-line-intersection) is a great page showing how to calculate the intersection between a arc and a Rhumb line (similar to above).

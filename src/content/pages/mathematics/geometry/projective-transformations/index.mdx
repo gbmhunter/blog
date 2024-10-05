@@ -1,7 +1,10 @@
 ---
 authors: [gbmhunter]
 date: 2017-11-16
-lastUpdated: 2017-11-16
+description: Projective transformations are a type of transformation that can be used to map points from one space to another. This page covers the mathematics of projective transformations, and provides examples and code libraries.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-10-06
+tags: [projective transformations, mathematics, geometry, quad-to-quad, Qt, Python, matrices, transformations, image processing]
 title: Projective Transformations
 type: page
 ---
@@ -101,7 +104,7 @@ $$
 
 [http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/BEARDSLEY/node3.html](http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/BEARDSLEY/node3.html) has more information on this projection method.
 
-**Worked Example**
+<Aside type="example">
 
 For example, take the square (which is a simple quadrilateral) defined by (0, 0), (1, 0), (1, 1), (0, 1) (the blue square below) and a second quadrilateral defined by (1, 2), (1, 4), (3, 4), (3, 2) (the red square below). _Find the transformation matrix $T$ which maps points from $P$ to $Q$._
 
@@ -137,16 +140,24 @@ $$
 
 Note that the last element in $\mathbf{T}$ is always 1! We can now transform any point from out input space to our output space using:
 
-$$ \hat{q} = \mathbf{T}\hat{p} $$
+$$
+\hat{q} = \mathbf{T}\hat{p}
+$$
 
-$$ \begin{bmatrix}q_x\\q_y\\1\end{bmatrix} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} \begin{bmatrix}p_x\\p_y\\1\end{bmatrix} $$
+$$
+\begin{bmatrix}q_x\\q_y\\1\end{bmatrix} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} \begin{bmatrix}p_x\\p_y\\1\end{bmatrix}
+$$
 
 Let's select point $\hat{p} = (0.5, 0.5)$. This is in the middle of our input polygon, so we should expect it to be transformed to the middle of our output polygon, at $\hat{q} = (2, 3)$.
 
-$$ \begin{bmatrix}q_x\\q_y\\1\end{bmatrix} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} \begin{bmatrix}0.5\\0.5\\1\end{bmatrix} $$
+$$
+\begin{bmatrix}q_x\\q_y\\1\end{bmatrix} = \begin{bmatrix} 2&0&1\\0&2&2\\0&0&1 \end{bmatrix} \begin{bmatrix}0.5\\0.5\\1\end{bmatrix}
+$$
 
-$$ q_x = 2*0.5 + 0*0.5 + 1*1 = 2 \\  
- q_y = 0*0.5 + 2*0.5 + 2*1 = 3 $$
+$$
+q_x = 2*0.5 + 0*0.5 + 1*1 = 2 \\
+q_y = 0*0.5 + 2*0.5 + 2*1 = 3
+$$
 
 ... which is what we expected!
 
@@ -156,7 +167,9 @@ Of course, Quad-to-Quad transformations do not have to use simple square, any fo
 
 <Image src={import('./_assets/quad-to-quad-transformation-complex-image.png')} width="616px">A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges.</Image>
 
-**Code Libraries**
+</Aside>
+
+## Code Libraries
 
 Qt provides a `QTranform::quadToQuad()` method which can be used to create a transformation object that can then be applied to things such as images. Note how ever that that when transforming an image, **"extra" translation is removed from the output so that the translated image is contained within the smallest number of pixels possible**. Qt also specifies the structure of the transformation matrix slightly differently, **with the order of each element being different from "standard"** (it looks like it has been mirrored around the leading diagonal).
 
