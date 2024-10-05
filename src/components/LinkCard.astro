@@ -1,51 +1,110 @@
 ---
 import { Icon } from '@astrojs/starlight/components';
 import type { HTMLAttributes } from 'astro/types';
-import { Image } from "astro:assets";
 
 interface Props extends Omit<HTMLAttributes<'a'>, 'title'> {
-	title: string;
-	description?: string;
-	image?: any;
+  title: string;
+  description?: string;
+  image?: any;
 }
 
-const { title, description, image, ...attributes } = Astro.props;
+const { title, description, image, href } = Astro.props;
 ---
 
-<div class="sl-link-card">
-  {image ? <div class="link-card-image">
-    {/* <Image src={image} width="200" alt=""/> */}
-    <img src={image.src} width="50rem" />
-  </div> : null}
-	<div class="sl-flex stack">
-		<a {...attributes}>
-			<span class="title" set:html={title} />
-		</a>
-		<div class="image-and-text">
-			{description && <span class="description" set:html={description} />}
-		</div>
-	</div>
-	<Icon name="right-arrow" size="1.5em" class="icon rtl:flip" />
-</div>
+<a href={href}>
+  <div class="sl-link-card-small">
+    <div class="image-title-arrow">
+      {image ? <div class="link-card-image">
+        <img src={image.src} width="50rem" />
+      </div> : null}
+      <span class="title" set:html={title} />
+      <div class="right-arrow-wrapper">
+        <Icon name="right-arrow" size="1.5em" class="icon rtl:flip" />
+      </div>
+    </div>
+
+    <div class="text">
+      {description && <span class="description" set:html={description} />}
+    </div>
+  </div>
+</a>
+
+<a href={href}>
+  <div class="sl-link-card-large">
+    {image ? <div class="link-card-image">
+      <img src={image.src} width="50rem" />
+    </div> : null}
+    <div class="sl-flex stack">
+      <span class="title" set:html={title} />
+      <div class="image-and-text">
+        {description && <span class="description" set:html={description} />}
+      </div>
+    </div>
+    <Icon name="right-arrow" size="1.5em" class="icon rtl:flip" />
+  </div>
+</a>
 
 <style>
 
-	.sl-link-card {
-		/* display: grid; */
-		/* grid-template-columns: 1fr 2fr auto; */
-		display: flex;
-		align-items: flex-start;
+.sl-link-card-small {
+  display: flex;
+  flex-direction: column;
 
-		gap: 0.5rem;
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: 0.5rem;
-		padding: 1rem;
-		box-shadow: var(--sl-shadow-sm);
-		position: relative;
-	}
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: var(--sl-shadow-sm);
+  position: relative;
+}
 
-	.link-card-image {
-		margin-right: 0.5rem;
+.image-title-arrow {
+  display: flex;
+  align-items: center;
+  gap: 1.0rem;
+}
+
+.link-card-image img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 5rem;
+}
+
+.right-arrow-wrapper {
+  margin-left: auto;
+}
+
+.sl-link-card-large {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 50rem is when the sidebar on the left appears */
+@media (min-width: 50rem) {
+  .sl-link-card-small {
+    display: none;
+  }
+
+  .sl-link-card-large {
+    display: block;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 2fr auto; */
+    display: flex;
+    align-items: flex-start;
+
+    gap: 0.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: var(--sl-shadow-sm);
+    position: relative;
+  }
+
+  .link-card-image {
+    margin-right: 0.5rem;
     flex-shrink: 0;
     /* Allocated a fixed percentage of the total link card width for the image, and then center the image
     inside of this allocation. Ideally the images should be around the 4:3 to 16:9 aspect ratio to make full use
@@ -55,7 +114,7 @@ const { title, description, image, ...attributes } = Astro.props;
     align-self: center;
     display: flex;
     justify-content: center;
-	}
+  }
 
   .link-card-image img {
     max-width: 100%;
@@ -64,56 +123,45 @@ const { title, description, image, ...attributes } = Astro.props;
     max-height: 7rem;
   }
 
-	.image-and-text {
-		display: inline-block;
-	}
+  .image-and-text {
+    display: inline-block;
+  }
+}
 
-	a {
-		text-decoration: none;
-		line-height: var(--sl-line-height-headings);
-	}
+.stack {
+  margin: 0 !important;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+  height: 100%;
+  justify-content: center;
+}
 
-	/* a11y fix for https://github.com/withastro/starlight/issues/487 */
-	a::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-	}
+.title {
+  color: var(--sl-color-white);
+  font-weight: 600;
+  font-size: var(--sl-text-lg);
+}
 
-	.stack {
-    margin: 0 !important;
-		flex-direction: column;
-		gap: 0.5rem;
-    flex-grow: 1;
-    height: 100%;
-    justify-content: center;
-	}
+.description {
+  color: var(--sl-color-gray-3);
+  line-height: 1.5;
+}
 
-	.title {
-		color: var(--sl-color-white);
-		font-weight: 600;
-		font-size: var(--sl-text-lg);
-	}
+.icon {
+  color: var(--sl-color-gray-3);
+  /* width: 20px; */
+  flex-shrink: 0;
+  margin: 0 !important;
+}
 
-	.description {
-		color: var(--sl-color-gray-3);
-		line-height: 1.5;
-	}
+/* Hover state */
+.sl-link-card:hover {
+  background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  border-color: var(--sl-color-gray-2);
+}
 
-	.icon {
-		color: var(--sl-color-gray-3);
-		/* width: 20px; */
-		flex-shrink: 0;
-    margin: 0 !important;
-	}
-
-	/* Hover state */
-	.sl-link-card:hover {
-		background: var(--sl-color-gray-7, var(--sl-color-gray-6));
-		border-color: var(--sl-color-gray-2);
-	}
-
-	.sl-link-card:hover .icon {
-		color: var(--sl-color-white);
-	}
+.sl-link-card:hover .icon {
+  color: var(--sl-color-white);
+}
 </style>
