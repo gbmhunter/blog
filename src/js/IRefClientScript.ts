@@ -7,6 +7,11 @@
  */
 
 /**
+ * The y-axis tolerance to which an equation number is considered to be associated with an equation, in pixels.
+ */
+const EQUATION_TO_EQ_NUMBER_TOLERANCE_PX = 5;
+
+/**
  * Represents a reference destination in the page.
  */
 class RefDestination {
@@ -35,7 +40,6 @@ function create_ref_links() {
   // 1) Prefix figcaptions with "Figure X: "
   // 2) Add figure to found_ref_destinations if ref present
   const figures = markdownContentDiv.querySelectorAll('.figure');
-  console.log('figures', figures);
   figures.forEach((figure, index) => {
     const figcaption = figure.querySelector('figcaption');
     // We need to check for empty figcaptions because astro.js can't conditionally render the figcaption
@@ -59,10 +63,8 @@ function create_ref_links() {
   // 1) Prefix table captions with "Table X: "
   // 2) Add table to found_ref_destinations if iref present
   const tables = markdownContentDiv.querySelectorAll('table');
-  console.log('tables', tables);
   tables.forEach((table, index) => {
     const tableCaption = table.querySelector('caption');
-    console.log('tableCaption', tableCaption);
     if (tableCaption) {
       // Must set innerHTML and not textContent because the table caption can contain HTML
       tableCaption.innerHTML = `Table ${index + 1}: ` + tableCaption.innerHTML;
@@ -82,42 +84,32 @@ function create_ref_links() {
   // htmlId{} creates a span with the id equal to the text inside the curly braces.
   // Equation IDs must be prefixed with "eq-" so we can easily find them
   const equations = markdownContentDiv.querySelectorAll('span[id^="eq-"]');
-  console.log('equations', equations);
   equations.forEach((equation, index) => {
-    const equationTop = equation.getBoundingClientRect().top;
-    console.log('equation', equation, 'top', equationTop);
+    const equationY = equation.getBoundingClientRect().y;
     // Loop through all elements with the class "eqn-num" and find the one with the same vertical position in the DOM
     // This is so we can find the equation number
     const eqnNums = markdownContentDiv.querySelectorAll('.eqn-num');
     let equationNumber = 0;
     for (let i = 0; i < eqnNums.length; i++) {
       const eqnNum = eqnNums[i];
-      const eqnNumTop = eqnNum.getBoundingClientRect().top;
-      console.log('eqnNum', eqnNum, 'top', eqnNumTop);
-      // Check if they are within 1px of each other
-      if (Math.abs(equationTop - eqnNumTop) < 5) {
-        console.log('equation and eqnNum are within 1px of each other. number is ', i + 1);
-        // console.log('eqnNum.textContent', getComputedStyle(eqnNum, ':before').getPropertyValue('content'));
+      const eqnNumY = eqnNum.getBoundingClientRect().y;
+      // Check if they are within a certain y distance of each other
+      if (Math.abs(equationY - eqnNumY) <= EQUATION_TO_EQ_NUMBER_TOLERANCE_PX) {
         equationNumber = i + 1;
         break;
       }
     }
     // Got the equation number, now add it to the found_ref_destinations array
-    console.log('Creating ref destination with id', equation.id, 'equationNumber', equationNumber, 'name', `Equation ${equationNumber}`);
     found_iref_destinations[equation.id] = new RefDestination('equation', equationNumber, `Equation ${equationNumber}`);
   });
-
-  console.log('found_ref_destinations', found_iref_destinations);
 
   //============================================================================
   // FIND ALL REF SOURCES AND LINK THEM
   //============================================================================
   // Find all ref-source elements and link them to the corresponding item ref in the page
   const refSources = document.querySelectorAll('.ref-source');
-  console.log('refSources', refSources);
   refSources.forEach((refSource) => {
     const ref = refSource.getAttribute('data-iref');
-    console.log('ref', ref);
     // Check if ref is in found_ref_destinations
     if (!ref) {
       console.error('ref not found in refSource', refSource);
