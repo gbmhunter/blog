@@ -1,0 +1,63 @@
+---
+/// <reference path="../../../node_modules/@astrojs/starlight/virtual.d.ts"/>
+import type { Props } from '@astrojs/starlight/props';
+
+import EditLink from 'virtual:starlight/components/EditLink';
+import LastUpdated from 'virtual:starlight/components/LastUpdated';
+import Pagination from 'virtual:starlight/components/Pagination';
+import config from 'virtual:starlight/user-config';
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<footer class="sl-flex">
+	<div class="meta sl-flex">
+    <!-- License code generated with https://chooser-beta.creativecommons.org/ -->
+    <!--@ts-ignore -->
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://blog.mbedded.ninja/">blog.mbedded.ninja</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/gbmhunter">Geoffrey Hunter</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p>
+		<EditLink {...Astro.props} />
+		<LastUpdated {...Astro.props} />
+	</div>
+	<Pagination {...Astro.props} />
+
+	{
+		config.credits && (
+			<a class="kudos sl-flex" href="https://starlight.astro.build">
+        <!--@ts-ignore -->
+				<Icon name={'starlight'} /> {Astro.locals.t('builtWithStarlight.label')}
+			</a>
+		)
+	}
+</footer>
+
+<style>
+	footer {
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	.meta {
+		gap: 0.75rem 3rem;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-top: 3rem;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+	.meta > :global(p:only-child) {
+		margin-inline-start: auto;
+	}
+
+	.kudos {
+		align-items: center;
+		gap: 0.5em;
+		margin: 1.5rem auto;
+		font-size: var(--sl-text-xs);
+		text-decoration: none;
+		color: var(--sl-color-gray-3);
+	}
+	.kudos :global(svg) {
+		color: var(--sl-color-orange);
+	}
+	.kudos:hover {
+		color: var(--sl-color-white);
+	}
+</style>

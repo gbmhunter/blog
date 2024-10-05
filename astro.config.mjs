@@ -28,11 +28,12 @@ export default defineConfig({
         github: 'https://github.com/gbmhunter/blog',
       },
       components: {
+        Footer: "./src/components/starlight/Footer.astro",
         Head: "./src/components/starlight/Head.astro",
-        SkipLink: './src/components/starlight/SkipLink.astro', // Google Analytics is added in here
-        SocialIcons: './src/components/starlight/SocialIcons.astro',
         MarkdownContent: './src/components/starlight/MarkdownContent.astro',
         PageTitle: './src/components/starlight/PageTitle.astro',
+        SkipLink: './src/components/starlight/SkipLink.astro', // Google Analytics is added in here
+        SocialIcons: './src/components/starlight/SocialIcons.astro',
       },  
       customCss: [
         // Relative path to your custom CSS file
