@@ -48,8 +48,9 @@
 /* MATHS */
 /* ============================================================================================== */
 
+/* .katex is used on the span for inline equations. */
 .katex * {
-    margin-top: 0px !important;
+  margin-top: 0px !important;
 }
 
 .katex-html {
@@ -57,6 +58,7 @@
   /* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
   \begin{align} is used and they are numbered in the right-hand side of the page. */
   margin: 0.1em;
+  overflow: auto hidden;
 }
 
 .katex-display {
@@ -211,3 +213,13 @@ section.footnotes {
 .sidebar-pane a {
   font-size: var(--sl-text-body-sm);
 }
+
+/* ============================================================================================== */
+/* UPDATE CONTENT */
+/* ============================================================================================== */
+
+.update-content {
+  /* Don't allow update content to overflow the page width */
+  overflow-x: hidden;
+}
+

@@ -93,7 +93,11 @@ function create_ref_links() {
     for (let i = 0; i < eqnNums.length; i++) {
       const eqnNum = eqnNums[i];
       const eqnNumY = eqnNum.getBoundingClientRect().y;
-      // Check if they are within a certain y distance of each other
+      // Check if they are within a certain y distance of each other. Unfortunately there is no parent
+      // element that encompasses both the eqn and eqn num., so we have to use this crude y position
+      // check instead.
+      // Also, the eqn num. uses the CSS "counter" trick to show the number, which I don't think we can access
+      // with JavaScript, so we rely on finding all the equation numbers in order and using the index
       if (Math.abs(equationY - eqnNumY) <= EQUATION_TO_EQ_NUMBER_TOLERANCE_PX) {
         equationNumber = i + 1;
         break;

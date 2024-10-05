@@ -78,13 +78,27 @@ $$
 
 Below is an equation with two lines. The first line should not be numbered, the second one should be.
 
-This should be a link to the second line: <IRef iref="eq-w-eq-y" />
+Following should say "Equation X" and link to the second line below: <IRef iref="eq-w-eq-y" />
 
 $$
 \begin{align}
 w &= x \\
   &= y \htmlId{eq-w-eq-y}{} \\
   &= z \nonumber \\
+\end{align}
+$$
+
+Here should be three references to the three lines below:
+
+* <IRef iref="eq-a-x" />
+* <IRef iref="eq-a-y" />
+* <IRef iref="eq-a-z" />
+
+$$
+\begin{align}
+a &= x \htmlId{eq-a-x}{} \\
+  &= y \htmlId{eq-a-y}{} \\
+  &= z \htmlId{eq-a-z}{} \\
 \end{align}
 $$
 
@@ -297,7 +311,7 @@ Nunc blandit facilisis ligula. Fusce ac aliquam nunc, vitae vehicula massa. Quis
 
 <IRef iref="wikipedia-colour-test-image" /> below should have no caption. The "Figure X" link at the start of this paragraph should still work, you just won't be able to see the figure number below the image.
 
-<Image iref="wikipedia-colour-test-image" src={import('./_assets/wikipedia-colour-test-image.webp')} width="500"></Image>
+<Image iref="wikipedia-colour-test-image" src={import('./_assets/wikipedia-colour-test-image.webp')} width="500" />
 
 ## Asides
 
