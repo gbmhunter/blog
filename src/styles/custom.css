@@ -58,7 +58,7 @@
   /* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
   \begin{align} is used and they are numbered in the right-hand side of the page. */
   margin: 0.1em;
-  overflow: auto hidden;
+  /* overflow: auto hidden; */
 }
 
 .katex-display {
