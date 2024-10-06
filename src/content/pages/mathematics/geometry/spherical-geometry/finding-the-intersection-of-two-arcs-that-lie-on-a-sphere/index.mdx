@@ -140,7 +140,7 @@ Then convert them to spherical coordinates:
 
 $$
 \begin{align}
-\newcommand{\pAOneStart}{\left[ {\begin{array}{c} 0.9254 \\ 0.3368 \\ 0.1736 \end{array} } \right]}
+\gdef\pAOneStart{\left[ {\begin{array}{c} 0.9254 \\ 0.3368 \\ 0.1736 \end{array} } \right]}
 \b{a_{11}} &= \left[ {\begin{array}{c} x_{11} \\ y_{11} \\ z_{11} \end{array} } \right] \\
            &= \left[ {\begin{array}{c} \cos(\theta) \cos(\phi) \\ \cos(\theta) \sin(\phi) \\ \sin(\theta) \end{array} } \right] \\
            &= \left[ {\begin{array}{c} \cos(10) \cos(20) \\ \cos(10) \sin(20) \\ \sin(10) \end{array} } \right] \\
@@ -156,7 +156,7 @@ And do the same for the other three points:
 
 $$
 \begin{align}
-\newcommand{\pAOneEnd}{\left[ {\begin{array}{c} 3.0616e{-}17 \\ 5.0000e{-}01 \\ 8.6603e{-}01 \end{array} } \right]}
+\gdef\pAOneEnd{\left[ {\begin{array}{c} 3.0616e{-}17 \\ 5.0000e{-}01 \\ 8.6603e{-}01 \end{array} } \right]}
 \b{a_{12}} = \pAOneEnd 
 \b{a_{21}} = \left[ {\begin{array}{c} 0.633 \\ 0.1116 \\ 0.766 \end{array} } \right]  
 \b{a_{22}} = \left[ {\begin{array}{c} 0.173 \\ 0.9811 \\ 0.0872 \end{array} } \right]
@@ -190,12 +190,12 @@ Now find the two points of intersection of the arc planes:
 
 $$
 \begin{align}
-\newcommand{\iOne}{\left[ {\begin{array}{c} -0.5718 \\ -0.5149 \\ -0.6387 \end{array} } \right]}
+\gdef\iOne{\left[ {\begin{array}{c} -0.5718 \\ -0.5149 \\ -0.6387 \end{array} } \right]}
 \b{I_1} &= \frac{ \b{L} }{ || \b{L}|| } \\
         &= \left[ {\begin{array}{c} -8.535e+14 \\ -7.686e+14 \\ -9.533e+14 \end{array} } \right] \cdot \frac{1}{ 1.493e15 } \\
         &= \iOne \\
 \b{I_2} &= -\b{I_1} \\
-\newcommand{\iTwo}{\left[ {\begin{array}{c} 0.5718 \\ 0.5149 \\ 0.6387 \end{array} } \right]}
+\gdef\iTwo{\left[ {\begin{array}{c} 0.5718 \\ 0.5149 \\ 0.6387 \end{array} } \right]}
         &= \iTwo \\
 \end{align}
 $$

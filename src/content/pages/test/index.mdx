@@ -126,6 +126,23 @@ $$
 
 Paragraph below long equation.
 
+We define an display an expression using `\gdef` in the block below:
+
+$$
+\begin{align}
+\gdef\myExpr{x^2 + y^2 = z^2}
+\myExpr
+\end{align}
+$$
+
+And you should be able to see the expression in other equation blocks like the one below:
+
+$$
+\begin{align}
+\myExpr
+\end{align}
+$$
+
 ## Dividers
 
 A divider below:
