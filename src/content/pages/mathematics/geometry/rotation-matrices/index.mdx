@@ -31,7 +31,9 @@ Rotation matrices are always **orthogonal matrices which have a determinant of 1
 
 Two successive rotations represented by $\b{R_1}$ and $\b{R_2}$ can be represented by a single rotation matrix $\b{R_3}$ where:
 
-$$ \b{R_3} = \b{R_2} \b{R_1} $$
+$$
+\b{R_3} = \b{R_2} \b{R_1}
+$$
 
 Pay careful attention to the order of the matrix multiplication, successive rotation matrices are multiplied on the left.
 
@@ -67,7 +69,9 @@ $$
 
 A rotation expressed as Euler angles (which includes RPY or roll-pitch-yaw notation) can be easily converted into a rotation matrix. To represent a extrinsic rotation with Euler angles $ \alpha $, $ \beta $, $ \gamma $ are about axes $ x $, $ y$, $ z $ can be formed with the equation:
 
-$$ \b{R} = \b{R}_z(\gamma) \b{R}_y(\beta) \b{R}_x(\alpha) $$
+$$
+\b{R} = \b{R}_z(\gamma) \b{R}_y(\beta) \b{R}_x(\alpha)
+$$
 
 where:
 
@@ -99,6 +103,6 @@ Whilst converting a rotation expressed as Euler angles is relatively trivial (se
 
 THREE.js has a `Euler` class with the function `.setFromRotationMatrix()` which can convert a rotation matrix to Euler angles. The supported Euler angle orders are `XYZ`, `YZX`, `ZXY`, `XZY`, `YXZ`, `ZYX`, and it only supports _intrinsic_ rotations.
 
-## External Resources
+## Further Reading
 
 https://www.andre-gaschler.com/rotationconverter/ is a great one-page rotation calculator.

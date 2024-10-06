@@ -41,9 +41,13 @@ The line of nodes is the line (or vector) made by the intersection of the xy and
 
 First we calculate the cross-product of the two vectors, which gives us the vector of rotation:
 
-$$ \mathbf{N} = \mathbf{a} \times \mathbf{b} $$
+$$
+\mathbf{N} = \mathbf{a} \times \mathbf{b}
+$$
 
-$$ \cos{\theta} = \frac{a \cdot b}{length(a)*length(b)} $$
+$$
+\cos{\theta} = \frac{a \cdot b}{length(a)*length(b)}
+$$
 
 If you are using unit vectors, you can ignore the lengths (this would just divide by 1).
 
@@ -79,7 +83,9 @@ $$
 
 We can combine these to form a single rotation matrix:
 
-$$ \mathbf{R(\alpha, \beta, \gamma)} = \mathbf{R_z(\alpha)} \mathbf{R_y(\beta)} \mathbf{R_x(\gamma)} $$
+$$
+\mathbf{R(\alpha, \beta, \gamma)} = \mathbf{R_z(\alpha)} \mathbf{R_y(\beta)} \mathbf{R_x(\gamma)}
+$$
 
 Remember that these a proper matrix multiplications! This order performs the roll, then the pitch, then the yaw. These are extrinsic rotations?
 
@@ -97,6 +103,6 @@ $$
 \alpha = atan2{r_{32}, r_{33}} \\
 \beta = -a \sin{r_{31}} \\
 \gamma = atan2{r_{21}, r_{11}}
- $$
+$$
 
- where $ atan2(y, x) $ returns the **principle angle**.
+where $ atan2(y, x) $ returns the **principle angle**.

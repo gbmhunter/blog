@@ -24,11 +24,15 @@ An affine transformation can encompass the following "basic" modifications:
 
 A 2D affine transformation matrix is always in the form:
 
-$$ M = \begin{bmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{bmatrix} $$
+$$
+M = \begin{bmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{bmatrix}
+$$
 
 This maps from one affine space to another via the equation:
 
-$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{bmatrix}\begin{bmatrix}x\\y\\1\end{bmatrix}$$
+$$
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{bmatrix}\begin{bmatrix}x\\y\\1\end{bmatrix}
+$$
 
 Note how one more matrix dimension is used than the dimension of the space you wish to apply the affine transformation to. This is so that translation transformations can be performed.
 
@@ -36,39 +40,55 @@ Note how one more matrix dimension is used than the dimension of the space you w
 
 A 2D translation can be described by the following equation (using homogeneous coordinates):
 
-$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&t_x\\0&1&t_y\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$
+$$
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&t_x\\0&1&t_y\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+$$
 
 ## Scaling
 
 A 2D scaling can be done with:
 
-$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}s_x&0&0\\0&s_y&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$
+$$
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}s_x&0&0\\0&s_y&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+$$
 
 ## Rotation
 
 A 2D counter-clockwise rotation can be described by the following equation:
 
-$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$
+$$
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+$$
 
 Note that the above equation performs rotation around the origin. To perform rotation around an arbitrary point, first translate the point to the origin, perform the rotation, and then translate back.
 
 3D rotation can be divided into 3 rotations around each of the axis:
 
-$$R_x = \begin{bmatrix}1&0&0\\0&cos\theta&-sin\theta\\0&sin\theta&cos\theta\end{bmatrix}$$
+$$
+R_x = \begin{bmatrix}1&0&0\\0&cos\theta&-sin\theta\\0&sin\theta&cos\theta\end{bmatrix}
+$$
 
-$$R_y = \begin{bmatrix}cos\theta&0&sin\theta\\0&1&0\\-sin\theta&0&cos\theta\end{bmatrix}$$
+$$
+R_y = \begin{bmatrix}cos\theta&0&sin\theta\\0&1&0\\-sin\theta&0&cos\theta\end{bmatrix}
+$$
 
-$$R_z = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix}$$
+$$
+R_z = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix}
+$$
 
 ## Shearing
 
 A x direction shear (a shearing along x that is proportional to y):
 
-$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&0\\\lambda&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$
+$$
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&0\\\lambda&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+$$
 
 A y direction shear (a shearing along y that is proportional to x):
 
-$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&\lambda&0\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$
+$$
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&\lambda&0\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+$$
 
 ## Combining Transformations
 
