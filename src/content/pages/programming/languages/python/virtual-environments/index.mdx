@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2019-06-28
 description: Info on Python virtual environments.
-lastUpdated: 2021-05-26
+lastUpdated: 2024-10-07
 tags: [programming, programming languages, Python, virtual environments, virtualenv, venv, conda, pipenv]
 title: Python Virtual Environments
 type: page
@@ -12,7 +12,7 @@ When writing a Python application, you will likely pull in a number of third par
 
 The solution to this problem is to **create a separate installation space for all of the libraries, specific to the application that uses them**. This is called a _virtual environment_.
 
-Python has a few popular frameworks for creating virtual environments.
+Prior to v3, Python had a few popular third party frameworks for creating virtual environments. However, since Python 3, `virtualenv` is now bundled with Python and has become the de facto standard.
 
 ## virtualenv 
 
@@ -24,6 +24,8 @@ Started at Python 3, virtualenv is installed as `venv` with your Python installa
 $ pip install virtualenv # Python 2.x users only
 ```
 
+### Creating a Virtual Environment
+
 `env` will be the name of the virtual environment.
 
 ```python
@@ -32,17 +34,29 @@ python -m venv env
 
 This will create a directory called `env` in your current working directory.
 
+### Activating a Virtual Environment
+
+Activating a virtual environment is necessary before you can use it. Activating it modifies your shell environment to calls to `python` and `pip` use the virtual environments installation and not any system-wide installation. Unfortunately, the way to enable it differs between Unix/macOS and Windows. You have to keep this in mind when writing code that should run on many OSes.
+
 To activate (on UNIX or macOS):
 
 ```bash
 $ source env/bin/activate
 ```
 
-To deactivate:
+To activate (on Windows):
+
+```batch
+.venv\Scripts\activate
+```
+
+To deactivate (on all OSes):
 
 ```bash
 $ deactivate
 ```
+
+### Saving Dependencies to a `requirements.txt`
 
 To save all the libraries to a `requirements.txt` (Linux or Windows `cmd.exe`):
 
@@ -54,6 +68,14 @@ Be careful if running the above command in PowerShell on Windows! By default, Po
 
 ```powershell
 pip freeze | Out-File -Encoding UTF8 requirements.txt
+```
+
+### Activating a Virtual Environment Inside a Batch File
+
+If you are typing commands inside a Windows Batch file (`.bat`), you can't just use the line `.venv/Scripts/activate` to activate the virtual environment. You will need to activate the virtual environment with `call` like this:
+
+```batch
+call .venv\Scripts\activate
 ```
 
 ## pipenv

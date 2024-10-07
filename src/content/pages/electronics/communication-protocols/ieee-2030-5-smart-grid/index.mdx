@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2024-10-01
 description: IEEE 2030 is a standard designed to promote interoperability between smart grid devices.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-01
-tags: [communication protocols]
+lastUpdated: 2024-10-07
+tags: [communication protocols, IEEE 2030.5, DER, Distributed Energy Resources, smart grid, smart inverters, Rule 21, electricity]
 title: IEEE 2030.5 Smart Grid Communication Protocol
 type: page
 ---
@@ -17,6 +17,12 @@ IEEE 2030.5 is a REST based communication protocol (e.g. GET, POST, PUT, DELETE 
 
 The standard allows people to extend 2030.5 with proprietary extensions. One condition is that they do not use the `smartenergy` Service Type[^ieee-2030-5-2018-smart-energy-profile-application].
 
+## Smart Inverters and Rule 21
+
+The state of California introduced Rule 21 which mandates the use of a standardized communication protocol for smart inverters (which count as _Distributed Energy Resources_, or DERs) to manage energy distribution.
+
+The main changes to the S1 version of IEEE 2030.5 was to add additional support for DERs, which in turn was driven from CA Rule 21 phases 1, 2 and 3[^kitu-systems-ieee-2030-5-security-overview].
+
 ## Server Implementations
 
 [quantumscript/IEEE_2030_5_gridappsd_server](https://github.com/quantumscript/IEEE_2030_5_gridappsd_server) is a Python-based server that implements the Common Smart Inverter Profile (CSIP)[^github-quantumscript-ieee-2030-5-gridappsd-server].
@@ -27,3 +33,5 @@ The standard allows people to extend 2030.5 with proprietary extensions. One con
 
 [^github-quantumscript-ieee-2030-5-gridappsd-server]: quantumscript. _GridAPPS-D IEEE 2030.5 Server_. Retrieved 2024-10-01, from https://github.com/quantumscript/IEEE_2030_5_gridappsd_server.
 [^ieee-2030-5-2018-smart-energy-profile-application]: IEEE. _IEEE Std 2030.5-2018 - IEEE Standard for Smart Energy Profile Application Protocol_ [standard].
+[^scalosoft-ieee-2030-5-smart-energy]: Scalosoft (2024, Jul 1). _Why Do You Need to Include the IEEE 2030.5 Protocol in Your Smart Energy Solution?_. Retrieved 2024-10-07, from https://www.scalosoft.com/blog/why-do-you-need-to-include-the-ieee-2030-5-protocol-in-your-smart-energy-solution/.
+[^kitu-systems-ieee-2030-5-security-overview]: Gordon Lum (2018, Jul 24). _IEEE 2030.5 Security Overview_. Kitu Systems. Retrieved 2024-10-07, from https://sunspec.org/wp-content/uploads/2017/08/IEEE2030.5SecurityOverview-Gordon07-24-2018.pdf.
