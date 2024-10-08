@@ -14,7 +14,7 @@ The static site generator Astro.js is used to build the website from the files i
 
 1. Clone this repo locally.
 
-1. Run `npm install` from the command-line in the root-level directory of this repo.
+1. Run `npm install` from the command-line in the root-level directory of this repo. 
 
 1. Run `npm run dev` to start a dev. server that will be accessible at `localhost:4321`.
 
@@ -70,6 +70,8 @@ Below is an explanation of the directory structure used for this site:
 ## Recommended VS Code Plugins
 
 See `.vscode/extensions.json`.
+
+The VS Code MDX extension requires `npm install` to be run because it uses `remark-math` to provide syntax highlighting the `.mdx` files (this is configured in `tsconfig.json`). If you get errors in VS Code about the MDX server crashing, this is likely to be the cause.
 
 ## Pages
 

@@ -10,8 +10,7 @@ type: page
 
 The RS-485 communication protocol is a differential, multi-drop, half-duplex, two-wire communication protocol. It was formally specified in 1983 by the Electronics Industries Association (EIA).
 
-{/* {{% figure src="rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png" width="819px" caption="A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/."  %}} */}
-<Image src={import('./rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png')} width="819">A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png')} width="819">A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/.</Image>
 
 It is a very common protocol used in industry for between-room control system to sensor communication.
 
@@ -166,8 +165,7 @@ The RS-485 specification states that the transmitter must produce a differential
 
 The waveform below shows the voltage on the A and B nets of a RS-485 bus when operating normally at 115200 baud.
 
-{/* {{% figure src="typical-rs-485-a-b-waveforms-during-communication.png" width="800px" caption="The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud."  %}} */}
-<Image src={import('./typical-rs-485-a-b-waveforms-during-communication.png')} width="800">The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud.</Image>
+<Image src={import('./_assets/typical-rs-485-a-b-waveforms-during-communication.png')} width="800">The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud.</Image>
 
 The standard also states that the driver is not allowed to produce a differential voltage of more than ±6V.
 
@@ -185,8 +183,7 @@ The +12V and -7V limits arise from the section of the RS-485 spec which states t
 
 One such example is the Semtech SM712 diode array. Below is an image of the components internal schematic.
 
-{/* {{% figure src="sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png" width="267px" caption="The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/."  %}} */}
-<Image src={import('./sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png')} width="267">The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/.</Image>
+<Image src={import('./_assets/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png')} width="267">The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/.</Image>
 
 ## SAE J1708
 
@@ -194,15 +191,12 @@ SAE J1708 is a communications protocol standard introduced by SAE in 1986. It wa
 
 The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired for open collector operation. Transmission of bits is done through controlling the driver enable pin of the transceiver (rather than using the data in (DI) pin, which is used during normal RS-485 operation).
 
-{/* {{% figure src="rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png" width="1167px" caption="A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf." %}} */}
-<Image src={import('./rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png')} width="1167">A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf.</Image>
+<Image src={import('./_assets/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png')} width="1167">A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf.</Image>
 
 The receiver is always enabled (RE* pin connected to ground) so that the bus state can be checked on every attempted write of a bit. The bus state needs to be compared with the intended write bit, if they are different, another node is also writing on the bus and this bus has lost arbitration.
 
 The modification to RS-485 essentially allows you to operate a multi-master (multi-point) configuration. 
 
-{/* {{% aside type="note" %}} */}
 <Aside type="note">
 This configuration means you will no longer be RS-485 compliant.
-{/* {{% /aside %}} */}
 </Aside>
