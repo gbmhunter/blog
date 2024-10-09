@@ -153,21 +153,25 @@ export function findPageNodeBySlug(slug: string, hierarchy: PageNode): PageNode 
 /**
  * Represents a node in the sidebar data tree structure.
  */
-class SidebarNode {
+export class SidebarNode {
   label: string;
   items: SidebarNode[] | undefined;
-  href: string | undefined;
-  collapsed: boolean;
+  link: string | undefined;
+  // collapsed: boolean;
 
   constructor(label: string, items: SidebarNode[] | undefined, href: string | undefined, collapsed: boolean) {
     this.label = label;
     this.items = items;
-    this.href = href;
-    this.collapsed = collapsed;
+    if (href) {
+      this.link = href;
+    } else {
+      delete this.link;
+    }
+    // this.collapsed = collapsed;
   }
 }
 // Deep copy the sidebarNodes object
-export function convertNodesToSidebarData(node: PageNode) : SidebarNode {
+export function convertNodesToSidebarData(node: PageNode) : any {
 
   let label;
   // Use node.fileData.title if it exists (title set in frontmatter of .mdx file), otherwise use the node.label (path part)
@@ -180,7 +184,7 @@ export function convertNodesToSidebarData(node: PageNode) : SidebarNode {
 
   if (node.children.length === 0) {
     // Must be a leaf node
-    return new SidebarNode(label, undefined, node.slug, true);
+    return { label, link: node.slug };
   }
 
   // Must not be a leaf node
@@ -196,12 +200,12 @@ export function convertNodesToSidebarData(node: PageNode) : SidebarNode {
   // If the slug is defined, then this branch node also has a page. Add it
   // to the items array
   // if (node.slug !== undefined) {
-    if (items.length > 0 && node.label !== 'root') {
+  if (items.length > 0 && node.label !== 'root') {
     // Insert Overview page at the top
     // so it is shown as the first item
     // in the UI
-    items.unshift(new SidebarNode('[Overview]', undefined, node.slug, false));
+    items.unshift({ label: '[Overview]', link: node.slug });
   }
 
-  return new SidebarNode(label, items, href, collapsed);
+  return { label, items };
 }

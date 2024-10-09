@@ -12,8 +12,9 @@ import Table from 'src/components/Table.astro';
 import WarningIsNotes from 'src/components/WarningIsNotes.astro';
 import WrappableRow from 'src/components/WrappableRow.astro';
 
-import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug } from 'src/js/PageHierarchy';
+import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug, SidebarNode } from 'src/js/PageHierarchy';
 import { correctUpdatesSlugs, getAllCollections } from 'src/js/Collections';
+import { undefined } from 'astro:schema';
 
 
 
@@ -128,12 +129,30 @@ if (aliasTo) {
 }
 
 const { Content, headings, remarkPluginFrontmatter } = await render();
+
+
+let sidebarNode = new SidebarNode('hello', [], undefined, false);
+
+console.log('sidebarData', sidebarData);
+// sidebarNode = {
+//   'label': 'hello',
+//   'items': [],
+//   // 'link': undefined,
+// }
+
+// sidebarNode = {
+//   'label': 'Resources',
+//   'items': [],
+// }
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
 <StarlightPage 
-  frontmatter={{ ...frontmatter }}
-  headings={headings}
-  sidebar={sidebarData.items as any}
+frontmatter={{ ...frontmatter }}
+headings={headings}
+sidebar={[
+  sidebarNode
+]}
+sidebar={sidebarData.items as any}
   customFrontmatter={frontmatter}
   breadcrumbs={breadcrumbs}
 >
