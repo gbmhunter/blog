@@ -141,38 +141,15 @@ export function findPageNodeBySlug(slug: string, hierarchy: PageNode): PageNode 
 	return currentNode.fileData ? currentNode : undefined;
 }
 
-
-
-// export function getSidebarData(pagesCollection: any[]) {
- 
-
-//   const sidebarData = convertNodesToSidebarData(pageNodes);
-//   return sidebarData;
-// }
-
 /**
- * Represents a node in the sidebar data tree structure.
+ * Converts our custom page hierarchy structure into the format that Starlight expects for the sidebar prop.
+ * 
+ * This function has to change what is returned when Starlight updated to v0.26.0, due to the sidebar data structure 
+ * that StarlightPage expects changing. See https://newreleases.io/project/github/withastro/starlight/release/@astrojs%2Fstarlight@0.26.0 for more details.
+ * @param node The root PageNode of the page hierarchy to convert to sidebar data.
+ * @returns An object that StarlightPage expects for the sidebar prop.
  */
-export class SidebarNode {
-  label: string;
-  items: SidebarNode[] | undefined;
-  link: string | undefined;
-  // collapsed: boolean;
-
-  constructor(label: string, items: SidebarNode[] | undefined, href: string | undefined, collapsed: boolean) {
-    this.label = label;
-    this.items = items;
-    if (href) {
-      this.link = href;
-    } else {
-      delete this.link;
-    }
-    // this.collapsed = collapsed;
-  }
-}
-// Deep copy the sidebarNodes object
-export function convertNodesToSidebarData(node: PageNode) : any {
-
+export function convertNodesToSidebarData(node: PageNode) : object {
   let label;
   // Use node.fileData.title if it exists (title set in frontmatter of .mdx file), otherwise use the node.label (path part)
   if (node.fileData !== null && node.fileData.title !== undefined) {
@@ -189,8 +166,6 @@ export function convertNodesToSidebarData(node: PageNode) : any {
 
   // Must not be a leaf node
   // Change from page-name to Page Name
-  const href = undefined; // Have to set this to undefined otherwise starlight will render the menu item as a link rather than a category
-  const collapsed = true;
   const items = [];
 
   for (let i = 0; i < node.children.length; i++) {
@@ -199,7 +174,6 @@ export function convertNodesToSidebarData(node: PageNode) : any {
 
   // If the slug is defined, then this branch node also has a page. Add it
   // to the items array
-  // if (node.slug !== undefined) {
   if (items.length > 0 && node.label !== 'root') {
     // Insert Overview page at the top
     // so it is shown as the first item

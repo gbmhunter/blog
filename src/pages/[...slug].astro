@@ -12,11 +12,9 @@ import Table from 'src/components/Table.astro';
 import WarningIsNotes from 'src/components/WarningIsNotes.astro';
 import WrappableRow from 'src/components/WrappableRow.astro';
 
-import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug, SidebarNode } from 'src/js/PageHierarchy';
+import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug } from 'src/js/PageHierarchy';
 import { correctUpdatesSlugs, getAllCollections } from 'src/js/Collections';
 import { undefined } from 'astro:schema';
-
-
 
 export async function getStaticPaths() {
 
@@ -64,7 +62,7 @@ export async function getStaticPaths() {
     }
 
     //================================================================================
-    // Breadcrumb generation
+    // Breadcrumb Generation
     //================================================================================
     const pageNode = findPageNodeBySlug(pageRoute.slug, pageHierarchy);
     // console.log('Used slug:', pageRoute.slug, 'to find page node:', pageNode);
@@ -78,10 +76,11 @@ export async function getStaticPaths() {
     }
     // // Add home page as the first breadcrumb
     breadcrumbs.unshift(new BreadcrumbItem('Home', '/'));
-    // console.log('Breadcrumb trail:', breadcrumbs);
 
+    //================================================================================
+    // Page Aliases
+    //================================================================================
     // Need to create additional paths if the page contains aliases in it's frontmatter
-
     const aliases = pageRoute.data.aliases;
     if (aliases) {
       for (let alias of aliases) {
@@ -98,14 +97,9 @@ export async function getStaticPaths() {
       }
     }
 
-    // Generate a breadcrumb trail for the page
-    // let breadcrumb = [];
-    // let parent = pageRoute.parent;
-    // while (parent) {
-    //   breadcrumb.unshift(parent.data.title);
-    //   parent = parent.parent;
-    // }
-
+    //================================================================================
+    // Main Page Route Creation
+    //================================================================================
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
@@ -129,30 +123,12 @@ if (aliasTo) {
 }
 
 const { Content, headings, remarkPluginFrontmatter } = await render();
-
-
-let sidebarNode = new SidebarNode('hello', [], undefined, false);
-
-console.log('sidebarData', sidebarData);
-// sidebarNode = {
-//   'label': 'hello',
-//   'items': [],
-//   // 'link': undefined,
-// }
-
-// sidebarNode = {
-//   'label': 'Resources',
-//   'items': [],
-// }
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
 <StarlightPage 
-frontmatter={{ ...frontmatter }}
-headings={headings}
-sidebar={[
-  sidebarNode
-]}
-sidebar={sidebarData.items as any}
+  frontmatter={{ ...frontmatter }}
+  headings={headings}
+  sidebar={sidebarData.items as any}
   customFrontmatter={frontmatter}
   breadcrumbs={breadcrumbs}
 >

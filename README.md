@@ -71,7 +71,7 @@ Below is an explanation of the directory structure used for this site:
 
 See `.vscode/extensions.json`.
 
-The VS Code MDX extension requires `npm install` to be run because it uses `remark-math` to provide syntax highlighting the `.mdx` files (this is configured in `tsconfig.json`). If you get errors in VS Code about the MDX server crashing, this is likely to be the cause.
+The VS Code MDX extension requires `npm install` to be run because it uses `remark-math` to provide syntax highlighting to the `.mdx` files (this is configured in `tsconfig.json`). If you get errors in VS Code about the MDX server crashing, this is likely to be the cause.
 
 ## Pages
 
