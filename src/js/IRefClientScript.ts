@@ -82,8 +82,8 @@ function create_ref_links() {
   // FIND ALL EQUATIONS
   //============================================================================
   // htmlId{} creates a span with the id equal to the text inside the curly braces.
-  // Equation IDs must be prefixed with "eq-" so we can easily find them
-  const equations = markdownContentDiv.querySelectorAll('span[id^="eq-"]');
+  // Equation IDs must be prefixed with "eqn-" so we can find them
+  const equations = markdownContentDiv.querySelectorAll('span[id^="eqn-"]');
   equations.forEach((equation, index) => {
     const equationY = equation.getBoundingClientRect().y;
     // Loop through all elements with the class "eqn-num" and find the one with the same vertical position in the DOM
@@ -114,7 +114,7 @@ function create_ref_links() {
   const refSources = document.querySelectorAll('.ref-source');
   refSources.forEach((refSource) => {
     const ref = refSource.getAttribute('data-iref');
-    // Check if ref is in found_ref_destinations
+    // If data-iref is not present
     if (!ref) {
       console.error('ref not found in refSource', refSource);
       return;
@@ -124,7 +124,7 @@ function create_ref_links() {
     } else {
       // This is an error, it means there is an <IRef /> component in the markdown
       // that does not have a corresponding figure, table, etc.
-      console.error('ref not found in found_ref_destinations', ref);
+      console.error(`Destination ref "${ref}" linked to from IRef component not found on page.`);
     }
   });
 }

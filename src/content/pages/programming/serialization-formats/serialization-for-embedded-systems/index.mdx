@@ -1,8 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2024-04-24
-lastUpdated: 2024-09-01
-tags: [serialization, protobuf, Nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters]
+description: When sending data between two microcontrollers (or between a microcontroller and a computer/server, e.g. IoT), you'll need some method of serializing and deserializing the data. This page details one such method leveraging the protobuf standard and the Nanopb library.
+lastUpdated: 2024-10-10
+tags: [serialization, protobuf, Nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters, options]
 title: Serialization for Embedded Systems
 type: page
 ---
@@ -85,7 +86,10 @@ protobuf provides an `optional` modifier if you do need to detect presence of sc
 
 ## The Message Type
 
-There are a few ways to solve the problem of not knowing the message type. One way is 
+There are a few ways to solve the problem of not knowing the message type. Here are two ways you can solve this problem:
+
+1. Use an `enum` to define the message types and then send that along with your message.
+1. Use a "wrapper" message with a `oneof` field that contains all the possible message types (I recommend this approach).
 
 Higher-level languages can solve this problem by using a RPC client. gRPC would be the obvious choice if using protobuf, as it's built on top of protobuf, with the RPC definitions being defined alongside the message definitions in the `.proto` file. This is not a great solution for low-level embedded systems though, as the gRPC server and client are quite heavy. There are embedded orientated RPC libraries like eRPC but they are not as well supported as protobuf for higher level languages.
 
@@ -116,14 +120,6 @@ message GoodbyeMessage
 A different approach is to use protobuf's `oneof` functionality, and create a wrapper message which contains `oneof` all the possible messages that can be sent. `oneof` allows you specify a field which can be one of a number of different types (think of it like a union). Here is an example of this in a `.proto` file:
 
 ```proto
-message WrapperMsg
-{
-  oneof innerMsg {
-    HelloMsg helloMsg = 1;
-    GoodbyeMsg goodbyeMsg = 2;
-  }
-}
-
 message HelloMsg
 {
   string greeting = 1;
@@ -133,9 +129,17 @@ message GoodbyeMsg
 {
   string greeting = 1;
 }
+
+message WrapperMsg
+{
+  oneof innerMsg {
+    HelloMsg helloMsg = 1;
+    GoodbyeMsg goodbyeMsg = 2;
+  }
+}
 ```
 
-Behind the scenes, protobuf will encode an ID for each possible message in the oneof field, and expose a way in each programming language to be able to determine which type it is. In a way, this is very similar to the enum method above, except that protobuf is generating the enum and including it in the message, rather than you adding it to a header.
+Behind the scenes, protobuf will encode an ID for each possible message in the oneof field (it uses the tag number), and expose a way in each programming language to be able to determine which type it is. In a way, this is very similar to the enum method above, except that protobuf is generating the enum and including it in the message, rather than you adding it to a header.
 
 One further benefit from the wrapped message approach is that you can add additional generic fields to the wrapper message which will then be added to all messages. For example, this could be useful for holding things such as a timestamp or CRC checksum.
 
@@ -182,9 +186,11 @@ If you decided to use the enum method to determine the message type, you would n
 If you are worried about how many extra bytes the escaping might add, take a look at [COBS (Constant Overhead Byte Stuffing)](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/). It's a clever method of escaping and framing which has a maximum escaping overhead of 1 byte per 254 bytes of data.
 </Aside>
 
-## nanopb
+## Nanopb
 
-nanopb allows you to specify extra information in the `.proto` file to help it generate structs when compiling for C. This is useful for fields such as `string`, `repeated` and `bytes`, which are all variable length. If you don't specify anything, nanopb will expect you to use callbacks instead to handle the data as a stream. This is generally more cumbersome to work with than having fixed size members of message structs, so I strongly recommend specifying the extra options unless you have good reason not to.
+Nanopb is a popular library for working with protobuf in C/embedded systems.
+
+Nanopb allows you to specify extra information in the `.proto` file to help it generate structs when compiling for C. This is useful for fields such as `string`, `repeated` and `bytes`, which are all variable length. If you don't specify anything, Nanopb will expect you to use callbacks instead to handle the data as a stream. This is generally more cumbersome to work with than having fixed size members of message structs, so I strongly recommend specifying the extra options unless you have good reason not to.
 
 First you have to add:
 
@@ -192,7 +198,13 @@ First you have to add:
 import "nanopb.proto";
 ```
 
-### max_size for bytes
+### Nanopb Options
+
+Nanopb provides a number of special options you can specify in the `.proto` file which are used to avoid dynamic memory allocation (or the need for callbacks, and to reduce the memory footprint of the structs by allowing sizes smaller than 32-bits) and allow Nanopb to generate fixed sized structs for holding message data. These additional options don't prevent you from compiling the `.proto` file for Python e.t.c with the official compiler, but you do have make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language[^nanopb-api-reference].
+
+Installing nanopb also provides a version of `protoc` (the official protobuf compiler) that you can use.
+
+#### max_size for bytes
 
 You can use `max_size` to specify the maximum size of a bytes field:
 
@@ -211,7 +223,7 @@ typedef struct _BinaryDataSet {
 } BinaryData;
 ```
 
-### max_count for repeated
+#### max_count for repeated
 
 You can use `max_count` to specify the maximum number of elements in a repeated field:
 
@@ -220,8 +232,8 @@ You can use `max_count` to specify the maximum number of elements in a repeated 
  * Represents a single x,y cartesian point.
  */
 message Point {
-    uint32 x = 1; // x coordinate, in the rang [0, 1].
-    uint32 y = 2; // y coordinate, in the rang [0, 1].
+    float x = 1; // x coordinate, in the rang [0, 1].
+    float y = 2; // y coordinate, in the rang [0, 1].
 }
 
 message PointsArray {
@@ -243,7 +255,7 @@ typedef struct _PointsArray {
 } PointsArray;
 ```
 
-### max_length for string
+#### max_length for string
 
 You can use `max_length` to set the max. length of a string field:
 
@@ -263,9 +275,28 @@ typedef struct _HelloMsgSet {
 
 No length is needed because the string length is determined by the null character.
 
-These additional options don't prevent you from compiling the `.proto` file for Python e.t.c with the official compiler, but you do have make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language.
+#### int_size
 
-Installing nanopb also provides a version of `protoc` (the official protobuf compiler) that you can use.
+You can use the Nanopb option `int_size` with `IS_8`, `IS_16`, e.t.c to specify the exact size of integer fields in the struct. The standard `.proto` syntax doesn't allow you to specify a smaller integer type than 32-bits (note though that it does compress small integers stored in these fields to a smaller number of bytes when sending them over the wire). This allows you to specify a smaller integer type in the generated struct, which is useful for saving on precious RAM on your MCU, especially for repeated fields.
+
+```proto
+import "nanopb.proto";
+
+message Frame {
+  uint32 my_number = 1 [(nanopb).int_size = IS_8]; // This will generate a struct with a uint8_t.
+  int32 my_other_number = 2 [(nanopb).int_size = IS_16]; // This will generate a struct with a int16_t.
+}
+```
+
+When using `IS_8`, `IS_16`, e.t.c, the "sign-ness" of the integer type is preserved based on the original type (e.g. `uint32` vs. `int32`).
+
+The supported types for the `int_size` option are:
+
+* `IS_DEFAULT`: Defaults to 32-bit or 64-bit depending on the protobuf type.
+* `IS_8`: `uint8_t` or `int8_t`.
+* `IS_16`: `uint16_t` or `int16_t`.
+* `IS_32`: `uint32_t` or `int32_t`.
+* `IS_64`: `uint64_t` or `int64_t`.
 
 ## Generating Python Code
 
@@ -285,7 +316,10 @@ Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://gith
 
 See the [protobuf page](/programming/serialization-formats/protobuf/) for general information on protobuf.
 
-## References
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^bitproto-homepage]: bitproto. _Homepage_. Retrieved 2024-04-24, from https://bitproto.readthedocs.io/en/latest/.
 [^danielgtaylor-python-betterproto]: Daniel G. Taylor. _python-betterproto_ [repo]. Retrieved 2024-05-02, from https://github.com/danielgtaylor/python-betterproto.
+[^nanopb-api-reference]: Petteri Aimonen. _Nanopb: API reference_ [documentation]. Retrieved 2024-10-10, from https://jpa.kapsi.fi/nanopb/docs/reference.html.

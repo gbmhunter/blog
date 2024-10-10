@@ -78,27 +78,27 @@ $$
 
 Below is an equation with two lines. The first line should not be numbered, the second one should be.
 
-Following should say "Equation X" and link to the second line below: <IRef iref="eq-w-eq-y" />
+Following should say "Equation X" and link to the second line below: <IRef iref="eqn-w-eq-y" />
 
 $$
 \begin{align}
 w &= x \\
-  &= y \htmlId{eq-w-eq-y}{} \\
+  &= y \htmlId{eqn-w-eq-y}{} \\
   &= z \nonumber \\
 \end{align}
 $$
 
 Here should be three references to the three lines below:
 
-* <IRef iref="eq-a-x" />
-* <IRef iref="eq-a-y" />
-* <IRef iref="eq-a-z" />
+* <IRef iref="eqn-a-x" />
+* <IRef iref="eqn-a-y" />
+* <IRef iref="eqn-a-z" />
 
 $$
 \begin{align}
-a &= x \htmlId{eq-a-x}{} \\
-  &= y \htmlId{eq-a-y}{} \\
-  &= z \htmlId{eq-a-z}{} \\
+a &= x \htmlId{eqn-a-x}{} \\
+  &= y \htmlId{eqn-a-y}{} \\
+  &= z \htmlId{eqn-a-z}{} \\
 \end{align}
 $$
 
@@ -164,9 +164,9 @@ ghi         | jkl
 
 ### HTML Table with Caption
 
-<IRef iref="test-table" /> is an HTML table with a caption. The caption should be below the table.
+<IRef iref="tbl-test-table" /> is an HTML table with a caption. The caption should be below the table.
 
-<table data-iref="test-table">
+<table data-iref="tbl-test-table">
 <thead>
 <tr>
   <th>Heading 1</th>
@@ -184,10 +184,10 @@ ghi         | jkl
 
 ### Table Component with JS Data
 
-<IRef iref="astro-table-component-with-js-data" /> is a table using the `Table` component and the data provided from a Javascript object.
+<IRef iref="tbl-astro-table-component-with-js-data" /> is a table using the `Table` component and the data provided from a Javascript object.
 
 <Table
-  iref="astro-table-component-with-js-data"
+  iref="tbl-astro-table-component-with-js-data"
   data={
     [
       {
@@ -326,9 +326,9 @@ Nunc blandit facilisis ligula. Fusce ac aliquam nunc, vitae vehicula massa. Quis
 
 ### Image with No Caption
 
-<IRef iref="wikipedia-colour-test-image" /> below should have no caption. The "Figure X" link at the start of this paragraph should still work, you just won't be able to see the figure number below the image.
+<IRef iref="fig-wikipedia-colour-test-image" /> below should have no caption. The "Figure X" link at the start of this paragraph should still work, you just won't be able to see the figure number below the image.
 
-<Image iref="wikipedia-colour-test-image" src={import('./_assets/wikipedia-colour-test-image.webp')} width="500" />
+<Image iref="fig-wikipedia-colour-test-image" src={import('./_assets/wikipedia-colour-test-image.webp')} width="500" />
 
 ## Asides
 

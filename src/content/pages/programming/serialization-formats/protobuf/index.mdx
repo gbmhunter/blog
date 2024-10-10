@@ -9,7 +9,7 @@ title: protobuf
 type: page
 ---
 
-_**protobuf**_ is an open-source, multi-language library from Google for serialising/deserialising data.
+_**protobuf**_ is an open-source, multi-language library from Google for serialising/de-serialising data.
 
 <Image src={import('./_assets/google-protobuf-logo.png')} width="300px">Icon for Google's protobuf library.</Image>
 
@@ -19,8 +19,7 @@ Source code and downloads can be found at [https://github.com/google/protobuf](h
 
 ## Installing
 
-The installation for the C++ version of protobuf is described well at [https://github.com/google/protobuf/tree/master/src](https://github.com/google/protobuf/tree/master/src). It uses **command-line tools** (autotools and make) and works best on a UNIX-like system.
-
+The installation for the C++ version of protobuf is described well at [https://github.com/google/protobuf/tree/master/src](https://github.com/google/protobuf/tree/master/src). It uses **command-line tools** (Autotools and [make](/programming/makefiles/)) and works best on a UNIX-like system.
 
 ## .proto Files
 
@@ -120,15 +119,15 @@ When working with protobuf, you usually want your build system to generate C++ s
 
 CMake ships with a `FindProtobuf.cmake` file, which allows you to do this in your `CMakeLists.txt`:
 
-```text
+```cmake
 find_package(Protobuf REQUIRED)
 ```
 
-This will look for libprotobuf and the associated header files on your system.
+This will look for `libprotobuf` and the associated header files on your system.
 
 This then exposes the macro `PROTOBUF_GENERATE_CPP`, which you can use to generate C++ source code from your .proto files!
 
-```text
+```cmake
 # Gather together all .proto files in the same directory as
 # this CMakeLists.txt file
 file(GLOB ProtoFiles "${CMAKE_CURRENT_SOURCE_DIR}/*.proto")
