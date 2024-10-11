@@ -181,5 +181,7 @@ export function convertNodesToSidebarData(node: PageNode) : object {
     items.unshift({ label: '[Overview]', link: node.slug });
   }
 
-  return { label, items };
+  // Make sure that all branch nodes are collapsed by default. Client side
+  // script will expand the relevant ones so the current page is visible in the menu.
+  return { label, items, collapsed: true };
 }
