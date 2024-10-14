@@ -1,22 +1,23 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-05
-description: Schematic symbols, equations, types, forward voltages, design hints and more info about light-emitting diodes (LEDs).
+description: Light-emitting diodes (LEDs) are basic active electronic components which when provided with voltage and current emit light using a diode. This page covers schematic symbols, equations, types, forward voltages, design hints and more.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-08-19
 tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB, Zynq]
 title: Light-emitting Diodes (LEDs)
 type: page
 ---
 
-_Light-emitting diodes_ (LEDs) are electrical components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet). 
+_Light-emitting diodes_ (LEDs) are basic active (non-linear) electronic components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet).
 
 <Image src={import('./_assets/red-led-5mm-th-diffused.jpg')} width="250px">A diffused-lens, red, 5mm through-hole LED.</Image>
 
 ## Schematic Symbol
 
-The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives of light. The schematic symbol for a LED is shown below. As with a normal diode, the anode is on the left, and the cathode on the right.
+The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives of light. The schematic symbol for a LED is shown in <IRef iref="fig-led-diode-schematic-symbol"/>. As with a normal diode, the anode is on the left, and the cathode on the right.
 
-<Image src={import('./_assets/led-diode-schematic-symbol.webp')} width="300">Schematic symbol for an LED (light emitting diode).</Image>
+<Image iref="fig-led-diode-schematic-symbol" src={import('./_assets/led-diode-schematic-symbol.webp')} width="300">Schematic symbol for an LED (light emitting diode).</Image>
 
 <Aside type="caution">
 It's worth pointing out that the LED's schematic symbol looks very similar to a [photodiodes](/electronics/components/diodes/photodiodes/), except the "light arrows" on a photodiode's symbol point inwards.
@@ -60,27 +61,66 @@ Normally rated at a fixed temperature, duty cycle, and pulse length.
 
 Rated at a fixed forward current.
 
-LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photons with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
+LED forward voltages for common LED colours are listed in <IRef iref="tbl-led-forward-voltages"/>. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photons with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
 
-
-| Colour | Forward Voltage
-|--------|------------------
-| Red    | 2.0V
-| Orange | 2.0V
-| Yellow | 2.1V
-| Green  | 2.2V
-| Blue   | 3.3V
-| UV     | 3.0V (UVA) to 7.5V (UVC)
-
-Blue LEDs are GaN based.
+<table data-iref="tbl-led-forward-voltages">
+  <thead>
+    <tr>
+      <th>Colour</th>
+      <th>Forward Voltage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Red</td>
+      <td>2.0V</td>
+    </tr>
+    <tr>
+      <td>Orange</td>
+      <td>2.0V</td>
+    </tr>
+    <tr>
+      <td>Yellow</td>
+      <td>2.1V</td>
+    </tr>
+    <tr>
+      <td>Green</td>
+      <td>2.2V</td>
+    </tr>
+    <tr>
+      <td>Blue</td>
+      <td>3.3V</td>
+    </tr>
+    <tr>
+      <td>UV</td>
+      <td>3.0V (UVA) to 7.5V (UVC)</td>
+    </tr>
+  </tbody>
+  <caption>Forward voltages for common LED colours.</caption>
+</table>
 
 <Aside type="tip">
-You can calculate the approximate forward voltage of a LED just based of it's wavelength using the equation:
+
+You can calculate the approximate forward voltage of a LED just based on the wavelength of light it emits! First you convert the wavelength to a frequency, and then calculate the energy of a photon (the energy of a photon is purely determined by the frequency, via the Planck-Einstein equation). Once you have the energy of a photon in Joules, you can convert this to $eV$ by dividing by the elementary charge ($1.602 \times 10^{-19} C$). This gives you the approximate forward voltage of the LED.
+
+The basic relationship between the speed of light $c$, frequency $f$ and wavelength $\lambda$ is:
 
 $$
 \begin{align}
-v = f\lambda \\
-f = \frac{c}{\lambda} \\
+c = f\lambda \\
+\end{align}
+$$
+
+<p class="centered">where:<br/>
+$c$ is the speed of light, $3 \times 10^8 ms^{-1}$<br/>
+$f$ is the frequency, in $Hz$<br/>
+$\lambda$ is the wavelength, in $m$<br/></p>
+
+Re-arranging for frequency gives:
+
+$$
+\begin{align}
+f = \frac{c}{\lambda} \htmlId{eqn-f-c-lambda}{} \\
 \end{align}
 $$
 
@@ -88,11 +128,16 @@ The energy of a photon is given by the Planck-Einstein equation:
 
 $$
 \begin{align}
-E = hf \\
+E = hf \htmlId{eqn-plank-einstein}{} \\
 \end{align}
 $$
 
-Combining the two equations gives:
+<p class="centered">where:<br/>
+$E$ is the energy of the photon, in $J$<br/>
+$h$ is the Planck constant, $6.626 \times 10^{-34} JHz^{-1}$<br/>
+$f$ is the frequency, in $Hz$<br/></p>
+
+Combining <IRef iref="eqn-f-c-lambda" /> and <IRef iref="eqn-plank-einstein" /> gives:
 
 $$
 \begin{align}
@@ -100,19 +145,19 @@ E = \frac{hc}{\lambda}
 \end{align}
 $$
 
-This gives the energy in Joules. To convert to $eV$, divide by the elementary charge ($1.602 \times 10^{-19} C$). This means that $1eV = 1.602 \times 10^{-19} J$. So
+This gives the energy in Joules. To convert to $eV$, divide by the elementary charge $e$ ($1.602 \times 10^{-19} C$). This means that $1eV = 1.602 \times 10^{-19} J$. This energy in $eV$ happens to be similar to the required forward voltage (it's not a coincidence). So our equation becomes:
 
 $$
 \begin{align}
-E_{eV} = \frac{hc}{\lambda \times 1.602 \times 10^{-19}}
+E_{eV} = \frac{hc}{\lambda e}
 \end{align}
 $$
 
-We can combine the $h$ (Planck's constant, $6.626 \times 10^{-34} JHz^{-1}$), $c$ (speed of light, $3 \times 10^8 ms^{-1}$) and $1.602 \times 10^{-19}$ into a single constant, which is $1.241e^{-6}\ eV\ m$ (or $1241 eV\ nm$). So the equation simply becomes:
+We can combine the $h$ (Planck's constant, $6.626 \times 10^{-34} JHz^{-1}$), $c$ (speed of light, $3 \times 10^8 ms^{-1}$) and $e$ (elementary charge, $1.602 \times 10^{-19} C$) into a single constant, which is $1.241e^{-6}\,eV\,m$ (or $1241\,eV\,nm$). Let's round this to $1240\,eV\,nm$ for convenience. So the equation simply becomes:
 
 $$
 \begin{align}
-V_F = \frac{1241\,nm\,V}{\lambda_{nm}}
+V_F = \frac{1240\,nm\,V}{\lambda_{nm}}
 \end{align}
 $$
 
@@ -120,7 +165,7 @@ For example, a red LED with a wavelength of 660 nm has a forward voltage of appr
 
 $$
 \begin{align}
-V_F &= \frac{1241\,nm\,V}{660\,nm} \\
+V_F &= \frac{1240\,nm\,V}{660\,nm} \nonumber \\
     &= 1.88\,V
 \end{align}
 $$
@@ -155,7 +200,7 @@ The number of photons emitted per second by the LED. This is a not a common prop
 * Symbol: $PPF$
 * Units (typical): $umol/s$
 
-Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. high-pressure sodium lamps). Typical values range from 100-200umol/s.
+Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700 nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. high-pressure sodium lamps). Typical values range from 100-200 umol/s.
 
 ### Radiation Pattern
 
@@ -185,7 +230,7 @@ The maximum voltage the LED can withstand when reverse biased. Typically LEDs ar
 
 The _viewing angle_ (a.k.a. _view angle_) is the total angle that the LED light output encompasses before the light radiance drops down to 50% of it's peak. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light. It is called $2\theta_{\frac{1}{2}}$ because $\theta_{\frac{1}{2}}$ is the angle measured from the center to where the radiance falls to half the peak, thus the total angle is twice this. It is assumed that the view angle is the same for any cross-sectional plane of the LED, for most LEDs this is true as their radiation pattern is rotationally symmetric (around the axis pointing forwards).
 
-Another definition of this is the angle until the light radiance drops down to 50% of what it emitted from center[^bib-street-co-viewing-angle]. This is the same as the above definition as long as the LED emits the most amount of light directly forward, which is true for a large number of LEDs.
+Another definition of this is the angle until the light radiance drops down to 50% of what it emitted from center[^street-co-viewing-angle]. This is the same as the above definition as long as the LED emits the most amount of light directly forward, which is true for a large number of LEDs.
 
 ## Limiting The LED Current
 
@@ -251,9 +296,9 @@ The susceptibility for LEDs to ESD is low enough that no extra ESD protection me
 
 A little known fact about LEDs is that they can be used for light detection. Although not as sensitive as purpose-built photo-diodes, with a few external components, can be interfaced with a microcontroller and be used to detect variations in the light level.
 
-The schematic below shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
+The schematic in <IRef iref="fig-led-connected-to-micro-for-light-detection-schematic" /> shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
 
-<Image src={import('./_assets/led-connected-to-micro-for-light-detection-schematic.png')} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
+<Image iref="fig-led-connected-to-micro-for-light-detection-schematic" src={import('./_assets/led-connected-to-micro-for-light-detection-schematic.png')} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
 
 The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
 
@@ -275,9 +320,9 @@ Overview of Worldsemi's RGB LED product offering:
 * WS2812: Combined RGB LED and driver IC.
 * WS2812b: Upgraded version of the WS2812. This includes added reverse polarity protection, higher brightness and colour uniformity, better pinout (a drop from six pins in the WS2812 to only four pins in the WS2812b), better heat dissipation (lower junction to case thermal resistance)[^worldsemi-ws2812-vs-ws2812b].
 
-The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for communication. The below image shows an example application schematic showing how they can daisy-chained together. Microcontroller SPI peripherals running at 16x the WS28xx bit rate can be used to generate the data stream.
+The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for communication. <IRef iref="fig-ws2812b-typical-application-schematic" /> shows an example application schematic showing how they can daisy-chained together. Microcontroller SPI peripherals running at 16x the WS28xx bit rate can be used to generate the data stream.
 
-<Image src={import('./_assets/ws2812b-typical-application-schematic.webp')} width="900px">Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together.</Image>
+<Image iref="fig-ws2812b-typical-application-schematic" src={import('./_assets/ws2812b-typical-application-schematic.webp')} width="900px">Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together.</Image>
 
 For information on how a MCU SPI peripheral can be used to send data to a WS2812 LED, see the [SPI Communication Protocol page](/electronics/communication-protocols/spi-communication-protocol/#ws2812-rgb-leds).
 
@@ -326,9 +371,9 @@ A common use for an LED is to connect it to a digital output pin of a microcontr
 
 The problem with this is that the length of time that the output pin is active for can be a really short amount of time, e.g. microseconds or even nanoseconds. It the events are rare enough, this may make it impossible to see the LED flicker.
 
-One way to fix this with hardware to to use a simple pulse-width extender circuit as shown below:
+One way to fix this with hardware to to use a simple pulse-width extender circuit as shown in <IRef iref="fig-led-pulse-extending-circuit-schematic-annotated-rc-mosfet" />.
 
-<Image src={import('./_assets/led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png')} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
+<Image iref="fig-led-pulse-extending-circuit-schematic-annotated-rc-mosfet" src={import('./_assets/led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png')} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
@@ -348,7 +393,7 @@ The dominant wavelength is important for user interface designers as it determin
 
 Many grow lights (lights that provide a "fake sun" for plants to trigger photosynthesis, typically used in indoor growing environments) now use LEDs (sodium lamps were a popular choice before LEDs became both powerful and cheap enough). In these agricultural applications, you might have to convert between irradiance given in $mW{\cdot}cm^{-2}$ and PAR given in $umol{\cdot}m^{-2}{\cdot}s^{-1}$.
 
-The Planck-Einstein equation gives a direct relationship between the frequency of a photon and it's energy[^bib-wp-planck-relation]:
+The Planck-Einstein equation gives a direct relationship between the frequency of a photon and it's energy[^wp-planck-relation]:
 
 $$
 \begin{align}
@@ -358,7 +403,7 @@ $$
 
 <p class="centered">where:<br/>
 $E$ is the energy of the photon, in $J$<br/>
-$h$ is the Planck constant, $6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}$[^bib-wp-planck-constant]<br/>
+$h$ is the Planck constant, $6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}$[^wp-planck-constant]<br/>
 $f$ is the frequency of the photon, in $Hz$<br/></p>
 
 Of course you can use $c = f\lambda$ to write this in terms of the wavelength instead of frequency:
@@ -432,9 +477,9 @@ Because of their simplicity, they are often a fall-back mechanism if there is no
 1. If the microcontroller is in a low-power mode, and the serial port and LCD are turned off.
 1. During an error condition such a segmentation fault. In certain errors you cannot rely on the firmware to work correctly (memory could be corrupted). Attempting to indicate this error to the user using the serial port of LCD may fail due to the driver code being corrupted. There is a much higher chance that writing to a single register to turn the LED on will work.
 
-One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic code that runs on startup that loads the FSBL. To indicate an error, it toggles a pin high and low. It is designed so that you can connect an LED to this pin and see the error code. The waveform of the LED error code output by the Zynq 7000 BootROM is shown below:
+One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic code that runs on startup that loads the FSBL. To indicate an error, it toggles a pin high and low. It is designed so that you can connect an LED to this pin and see the error code. The waveform of the LED error code output by the Zynq 7000 BootROM is shown in <IRef iref="fig-zynq-7000-bootrom-led-error-code-waveform" />.
 
-<Image src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
+<Image iref="fig-zynq-7000-bootrom-led-error-code-waveform" src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
 
 ## Packaging
 
@@ -456,8 +501,8 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
-[^bib-wp-planck-relation]:  Wikipedia (2022, Jan 15). _Planck relation_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_relation.
-[^bib-wp-planck-constant]:  Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
-[^bib-street-co-viewing-angle]: Street Co. _How Is Viewing Angle An Important Asset Of LED Displays_. Retrieved 2022-06-19, from https://streetcommunication.com/how-is-viewing-angle-an-important-asset-of-led-displays/.
+[^wp-planck-relation]:  Wikipedia (2022, Jan 15). _Planck relation_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_relation.
+[^wp-planck-constant]:  Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
+[^street-co-viewing-angle]: Street Co. _How Is Viewing Angle An Important Asset Of LED Displays_. Retrieved 2022-06-19, from https://streetcommunication.com/how-is-viewing-angle-an-important-asset-of-led-displays/.
 [^worldsemi-ws2812-vs-ws2812b]: Worldsemi. _WS2812 vs. WS2812B_. Retrieved 2024-01-13, from https://cdn.sparkfun.com/assets/learn_tutorials/1/0/5/WS2812B_VS_WS2812.pdf.
 [^amd-zynq-7000-trm]: AMD. _Zynq 7000 SoC Technical Reference Manual (UG585)_. Retrieved 2024-08-19, from https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/BootROM-Error-Codes.

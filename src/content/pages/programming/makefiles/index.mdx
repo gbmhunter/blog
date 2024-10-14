@@ -10,7 +10,7 @@ title: Makefiles
 type: page
 ---
 
-Makefiles are a way of making a **"one touch" build solution for source code**. They are a type of file used by the GNU command **make**. They take multiple file inputs, do some part or all of the code build process, and produce output(s). They are commonly used to create executables, object files, or libraries (combined object files) from source code. They come in particularly useful when dealing with large projects.
+Makefiles are a way of making a defining a source code build system to be used by the GNU command `make`. They take multiple file inputs, do some part or all of the code build process, and produce output(s). They are commonly used to create executables, object files, or libraries (combined object files) from source code (and sometimes there are used for completely different things that are not related to compiling code!). They come in particularly useful when dealing with large projects.
 
 They are text files that are stored with the filename "Makefile" (or "makefile"), with no file extension (**do not** call it `makefile.txt`!). The capital M version is recommended because it persists at the top of the directory, along with other important files like the README.
 
@@ -18,7 +18,9 @@ Makefiles are most commonly used to compile code for Linux environments but also
 
 Unlike most other programming/scripting languages, Makefiles are white-space sensitive, AND have different behaviour for tabs and spaces. This can be annoying! Take care when coping makefile code from the internet, the clipboard can easily convert tabs into spaces and cause the makefile **code to break**.
 
-Make can be then used by "higher-level" build programs, such as the [Autoconfig](http://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/index.html#Top) and [Automake](http://www.gnu.org/software/automake/) tools .
+Make can be then used by "higher-level" build programs, such as the [Autoconfig](http://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/index.html#Top) and [Automake](http://www.gnu.org/software/automake/) tools.
+
+If you are thinking of using Make and Makefiles for a new project, I would recommend you consider using [CMake](/programming/build-systems-and-package-managers/cmake/) instead. CMake provides a much more modern, higher-level and powerful framework for building software.
 
 ## A Simple Example
 
@@ -149,6 +151,20 @@ Here is a table some of the most useful automatic variables:
 
 Automatic variables are used frequently in the compiler command that is executed when a rule is matched.
 
+## Phony Targets
+
+By default, Makefile targets are file targets, in the sense they expect the job to create a file with the same name. Sometimes you don't want targets to represent files, for example `clean`. If `clean` was a file target, and if by chance a file called `clean` existed, then Makefile would not re-run it unless it thought the dependencies were out of date.
+
+To get around this, you can use the special `PHONY` keyword.
+
+```make
+.PHONY: clean
+clean: 
+	rm -f *.o
+```
+
+The above code will force `make` to always run the `clean` target, even if a file called `clean` exists. It essentially tells `make` that the `clean` target is always out-of-date, so it will always run. The `.PHONY` keyword can be placed before or after the target. Common targets to be labelled as phony are `clean`, `all`, and `install`[^stack-overflow-purpose-of-phony-in-makefile].
+
 ## Including One Makefile In Another
 
 Note that this is different from Calling One Makefile From Another.
@@ -266,5 +282,6 @@ For a comprehensive reading, checkout the [GNU 'make' manual](http://www.gnu.org
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
-[^stack-overflow-cd-cmd-in-makefile]: StackOverflow. _How do I write the 'cd' command in a makefile?_. Retrieved 2024-10-03, from https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile.
+[^stack-overflow-cd-cmd-in-makefile]: StackOverflow. _How do I write the 'cd' command in a makefile?_ [forum post]. Retrieved 2024-10-03, from https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile.
 [^wikipedia-environment-variable]: Wikipedia (2024, Sep 28). _Environment variable_. Retrieved 2024-10-03, from https://en.wikipedia.org/wiki/Environment_variable.
+[^stack-overflow-purpose-of-phony-in-makefile]: StackOverflow (2024, Mar 25). _What is the purpose of .PHONY in a Makefile?_ [forum post]. Retrieved 2024-10-14, from https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-phony-in-a-makefile.
