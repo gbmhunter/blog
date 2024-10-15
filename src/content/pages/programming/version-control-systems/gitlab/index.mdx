@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2014-02-08
 description: GitLab is a web-based Git repository manager and a strong competitor to GitHub, especially for commercial uses. The page covers container registries, pipeline includes, and running pipelines locally using gitlab-ci-local.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-14
-tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry, local pipelines, GCL]
+lastUpdated: 2024-10-15
+tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry, Docker, images, local pipelines, GCL]
 title: GitLab
 type: page
 ---
@@ -72,6 +72,29 @@ include:
     file: '/path/to/file.yml'
 ```
 
+### Conditionally Running Jobs
+
+Sometimes you will only want to run a job under certain conditions. You can do this by using the `rules` keyword.
+
+Regex can be used with the `rules` keyword by using `=~`.
+
+```yaml
+my_job:
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^docker-image-v.*$/
+  script:
+    - echo "This job will only run for commits that are tagged with docker-image-v1, docker-image-v2 etc."
+```
+
+<Aside type="warning">
+Make sure you don't wrap the regex in quotes. This is still a valid rule, but will not invoke the regex engine. For example, don't do this:
+
+```yaml
+  rules:
+    - if: $CI_COMMIT_TAG =~ "^docker-image-v.*$"
+```
+</Aside>
+
 ## Running Pipelines Locally
 
 GitLab does not have official support for running pipelines locally, but there is a popular third-party tool called [gitlab-ci-local](https://github.com/firecow/gitlab-ci-local) (a.k.a. GCL) which allows you to do this.
@@ -104,17 +127,6 @@ gitlab-ci-local <job_name> --needs
 
 `gitlab-ci-local` will cache the "dot env" of dependencies, so you don't need to keep using `--needs` during testing if the dependencies haven't changed. By default, `gitlab-ci-local` stores the cache of the artifacts at `.gitlab-ci-local/artifacts/<job_name>`. This is quite a convenient place to check if you need to debug a job.
 
-### Authentication
-
-Normal pipelines that are run on GitLab's servers get provided with a `CI_JOB_TOKEN` which can be used to authenticate when pulling submodules that are other private GitLab repositories, or when pulling/pushing to the GitLab container registry. To authenticate when running locally, you can create a file called `.gitlab-ci-local-variables.yml` in the root directory of the repository with the following contents:
-
-```yaml title=".gitlab-ci-local-variables.yml"
----
-CI_JOB_TOKEN: <your_personal_access_token>
-```
-
-Do not commit this file to the repository! Make sure to add it to your `.gitignore` file.
-
 ### Manual Jobs
 
 You can trigger a manual job to run during the execution of another job with `--manual <job_name>`. For example:
@@ -122,6 +134,43 @@ You can trigger a manual job to run during the execution of another job with `--
 ```bash
 gitlab-ci-local build_firmware --manual my_manual_job
 ```
+
+### GitLab Variables
+
+When a pipeline is running on GitLab's servers, a number of pre-defined environment variables get provided that the pipeline scripts can use. When running them locally, `gitlab-ci-local` will do it's best to provide sensible defaults for these variables. However those dealing with authentication and other URLs will not work, as `gitlab-ci-local` cannot work out what these should be. In these cases, you can create a file called `.gitlab-ci-local-variables.yml` in the root directory of the repository and manually provide the variables.
+
+```yaml title=".gitlab-ci-local-variables.yml"
+---
+MY_VAR_1: <value_1>
+MY_VAR_2: <value_2>
+```
+
+`CI_REGISTRY` defaults to `https://registry-1.docker.io/v2/`.
+
+`CI_PROJECT_DIR` will be set to `/gcl-builds`, which should be where the root directory of the repository resides.
+
+If `.gitlab-ci-local-variables.yml` ends up containing sensitive information like personal access tokens, do not commit this file to the repository! Make sure to add it to your `.gitignore` file.
+
+#### Authentication
+
+Normal pipelines that are run on GitLab's servers get provided with a `CI_JOB_TOKEN` which can be used to authenticate when pulling submodules that are other private GitLab repositories, or when pulling/pushing to the GitLab container registry. If you want access when running locally, first create a personal access token. Then add it to your `.gitlab-ci-local-variables.yml` file as shown:
+
+```yaml title=".gitlab-ci-local-variables.yml"
+---
+CI_JOB_TOKEN: <your_personal_access_token>
+```
+
+#### Image Registry
+
+If you access the repos image registry (or another GitLab repo's image registry) you will need to set both `CI_JOB_TOKEN` and `CI_REGISTRY_IMAGE` in `.gitlab-ci-local-variables.yml`.
+
+```yaml title=".gitlab-ci-local-variables.yml"
+---
+CI_JOB_TOKEN: <your_personal_access_token>
+CI_REGISTRY_IMAGE: <your_registry_image>
+```
+
+`CI_REGISTRY_IMAGE` should be in the format `registry.gitlab.com/<namespace>/<project>`, e.g. `registry.gitlab.com/my-group/my-project`. You can copy the registry URL from the GitLab web interface by going to the image registry and copying any one image URL to the clipboard, and then removing the `:tag` from the end of the URL.
 
 ### Watch Out For Untracked Files
 

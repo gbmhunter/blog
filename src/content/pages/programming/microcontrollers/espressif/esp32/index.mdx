@@ -1,0 +1,33 @@
+---
+authors: [gbmhunter]
+date: 2024-10-15
+description: The ESP32 is a series of low-cost, low-power SoC microcontrollers designed by Espressif Systems.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-10-15
+tags: [programming, microcontrollers, Espressif, ESP32]
+title: ESP32
+type: page
+---
+
+<WarningIsNotes />
+
+ESP32 is a series of low-cost, low-power SoC microcontrollers designed by [Espressif Systems](/programming/microcontrollers/espressif/).
+
+The ESP32 range is supported by the ESP-IDF framework.
+
+## ESP-IDF
+
+ESP-IDF provides a FreeRTOS port that supports both the Xtensa and RISC-V architectures used by ESP SoCs. ESP-IDF provides different versions of FreeRTOS in order to support SMP (symmetric multiprocessing) on 2-core ESP SoCs. There is also the option of using the Amazon SMP FreeRTOS which supports any number of cores[^espressif-esp-idf-freertos].
+
+<Image src={import('./_assets/esp-idf-supported-socs.webp')} width="600px">ESP-IDF supported SoCs as of October 2024.[^espressif-idf].</Image>
+
+ESP-IDF supports dev containers.
+
+<Image src={import('./_assets/esp-idf-dev-container-json-screenshot.webp')} width="800px">A screenshot of the .json file describing the ESP-IDF Dev Container.</Image>
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^espressif-idf]: Espressif Systems. _ESP-IDF_. Retrieved 2024-10-15, from https://idf.espressif.com/.
+[^espressif-esp-idf-freertos]: Espressif Systems. _ESP-IDF - API Reference > System API > FreeRTOS_ [documentation]. Retrieved 2024-10-15, from https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/freertos.html.
