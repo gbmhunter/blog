@@ -34,3 +34,17 @@ Added information on how to [run GitLab pipelines locally](/programming/version-
 To support data-rich tables in `.mdx` files, I created a `Table` component.
 
 The `Table` component allows you to pass in the data as a Javascript object, and it will automatically create the headers and rows from this.
+
+## Using Dev Containers for Firmware Development
+
+Added information on how to use [dev containers for firmware development](/programming/firmware/using-dev-containers-for-firmware/).
+
+## Add Info on ESP32 and ESP-IDF
+
+Added info on [ESP32 SoCs and ESP-IDF](/programming/microcontrollers/espressif/esp32/).
+
+## Added Equation Referencing Support
+
+When moving from MathJac to Katex (as part of the move from Hugo to astro.js), I lost the ability to reference equations from within text as Katex does not support the `\label` and `\ref` commands with automatically numbered equations.
+
+To get around this, I add `\htmlId{}{}` markers in the Katex and implement the reset of the logic for equation referencing in the client-side `IRefClientScript.js` script (which already does the figure and table referencing).

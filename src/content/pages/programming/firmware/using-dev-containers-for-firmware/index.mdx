@@ -1,0 +1,98 @@
+---
+authors: [gbmhunter]
+date: 2024-10-16
+lastUpdated: 2024-10-16
+tags: [firmware, dev containers, Microsoft, VS Code]
+title: Using Dev Containers For Firmware
+type: page
+---
+
+<WarningIsNotes />
+
+A dev container (development container) is a containerized development environment that is used to provide a consistent operating system configuration for software development. They can also be used for firmware!
+
+Dev containers are standardized as part of the Development Containers specification maintained by Microsoft[^microsoft-dev-container-spec-homepage]. VS Code has great support for dev containers.
+
+Here is an overview of the pros and cons of using dev containers for firmware development.
+
+Pros:
+
+- **Very easy to "spin up" the dev. environment**: It might take a bit of time to set it up the first time, but then all you configuration is captured within the code and you can easily share the dev container with others (or yourself a year down the line when you need to pick up the project again!).
+- **Makes it easy to setup a CI/CD pipeline**: You can normally re-use the dev. container for CI/CD pipelines.
+- **Consistent environment**: All developers use the same dev. environment.
+
+Cons:
+
+- Can be difficult to pass-through USB programmers/debuggers
+- File permissions can cause problems
+- Windows-only tools are a problem.
+- File I/O (think: slow build times) when running a Dev Container directly on a Windows host.
+- Many layers of machine, you can quite easily end up with a Dev Container running on WSL running on Windows!
+
+
+## USB Pass-Through
+
+Docker has great support for passing through network devices, but not so great support for USB devices.
+
+`usbipd-win` is a open-source tool you can use to pass-through USB devices on a Windows host to other machines, including WSL 2.
+
+## Slow File I/O
+
+If you run a Dev Container directly on a Windows host, with files mounted from Windows into the Linux container, the file I/O is typically slow, resulting in longer-than-desired build times. This is because the differences in the file systems (NTFS to ext4). The way around this is to first jump into WSL, clone the repo into the WSL filesystem, and then run the Dev Container from there. This way it is a Linux host with a Linux container (ext4 to ext4) and the file I/O is fast.
+
+## File Permissions
+
+File permissions can be a bit of a pain when using dev containers. If your host machine is Linux, the files mounted into the container will have the same UID and GID as the host machine. If you use the `root` user inside the container, a new files you create inside the container that are mounted to the host will be owned by root. This can be annoying when you go to delete a `build/` directory on the host only to find you don't have permission!
+
+You can also run into issues with Git, such as the following:
+
+```txt
+fatal: detected dubious ownership in repository at '/builds/my-repo/'
+```
+
+## Using Dev Containers for CI
+
+There is a node.js library called `@devcontainers/cli` you can use to build a Docker image from a dev container configuration. You can use this to build the image and then upload it to a image repository (most cloud-based Dev Ops software platforms like GitHub and GitLab will provide image repositories to upload to).
+
+Once you install the library with `npm install -g @devcontainers/cli`, you can build a dev container with a command like the following:
+
+```bash
+devcontainer build --workspace-folder . --push true --image-name <image_name>:<tag>
+```
+
+For example, below is a GitLab job that builds a dev container and pushes it to the repo's image registry. It uses many of the automatic `CI_xxx` variables provided by GitLab CI/CD.
+
+```yaml title="gitlab-ci.yml"
+# Build dev container image to use in other CI jobs like build_firmware
+build_dev_container:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  rules:
+    # Dev. container releases are created by pushing a tag in the form dev-container-v1, dev-container-v2 etc.
+    - if: $CI_COMMIT_TAG =~ /^dev-container-v.*$/
+  before_script:
+    - apk add --update nodejs npm python3 make g++
+    - npm install -g @devcontainers/cli
+  script:
+    - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - devcontainer build --workspace-folder . --push true --image-name ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
+```
+
+This image can then be used to run other jobs in the pipeline. The example below shows a GitLab CI/CD job that runs inside the dev container image we pushed to the repo's image registry above.
+
+```yaml title="gitlab-ci.yml"
+# Use the dev container image to build the firmware
+build_firmware:
+  stage: build
+  image: ${CI_REGISTRY_IMAGE}::dev-container-v1
+  script:
+    - echo "I'm running inside a dev container!"
+```
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^microsoft-dev-container-spec-homepage]: Microsoft. _Development Containers Specification Homepage_. Retrieved 2024-10-16, from https://containers.dev/.

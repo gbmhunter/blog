@@ -21,9 +21,23 @@ ESP-IDF provides a FreeRTOS port that supports both the Xtensa and RISC-V archit
 
 <Image src={import('./_assets/esp-idf-supported-socs.webp')} width="600px">ESP-IDF supported SoCs as of October 2024.[^espressif-idf].</Image>
 
-ESP-IDF supports dev containers.
+ESP-IDF supports dev containers. There is a [Docker image pushed to Docker Hub](https://hub.docker.com/r/espressif/idf) that can be used for both dev containers and CI/CD pipelines. It contains ESP-IDF plus all of the additional tools required to build a ESP-IDF based project[^dockerhub-espressif-idf]. It is tagged with the ESP-IDF version.
 
 <Image src={import('./_assets/esp-idf-dev-container-json-screenshot.webp')} width="800px">A screenshot of the .json file describing the ESP-IDF Dev Container.</Image>
+
+### Post-built Commands
+
+To add a post-build command to a CMake-based ESP-IDF project, you can use the `add_custom_command` function, targeting the `gen_project_binary` target. This function allows you to specify a shell command that should be executed after the build process has completed.
+
+```cmake title="CMakeLists.txt"
+add_custom_command(
+    TARGET gen_project_binary
+    POST_BUILD
+    COMMAND echo "My custom command that runs after the project binary has been built."
+)
+```
+
+Be aware that the shell command may make the project platform dependent. You could couple this with `IF (WIN32)` style conditionals to run OS specific commands. You can see where the target `gen_project_binary` is defined in the ESP-IDF code [here](https://github.com/espressif/esp-idf/blob/v5.3.1/components/esptool_py/project_include.cmake#L146). `app` is another valid target you could use to run commands on.
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
@@ -31,3 +45,4 @@ ESP-IDF supports dev containers.
 
 [^espressif-idf]: Espressif Systems. _ESP-IDF_. Retrieved 2024-10-15, from https://idf.espressif.com/.
 [^espressif-esp-idf-freertos]: Espressif Systems. _ESP-IDF - API Reference > System API > FreeRTOS_ [documentation]. Retrieved 2024-10-15, from https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/freertos.html.
+[^dockerhub-espressif-idf]: dockerhub. _espressif/idf_ [docker image]. Retrieved 2024-10-15, from https://hub.docker.com/r/espressif/idf.

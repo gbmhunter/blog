@@ -95,6 +95,41 @@ Make sure you don't wrap the regex in quotes. This is still a valid rule, but wi
 ```
 </Aside>
 
+### Running Jobs In Docker Containers
+
+You can tell GitLab to run the job inside a Docker container by using the `image` keyword.
+
+```yaml
+my_job:
+  image:
+    name: my-docker-image
+  services:
+    - docker:dind
+  script:
+    - echo "This job will run in a Docker container with the image my-docker-image"
+```
+
+<Aside type="caution">
+Remember to always add the `docker:dind` (Docker in Docker) service to `services` if you are using Docker images. This starts the Docker daemon inside the container.
+
+```yaml
+  services:
+    - docker:dind
+```
+</Aside>
+
+The default Docker user will be used by default. If you want to override this, you can change the structure of the `image` key a bit and add a `docker`/`user` key as shown below.
+
+```yaml
+my_job:
+  image:
+    name: my-docker-image
+    docker:
+      user: root
+  script:
+    - echo "This job will run in a Docker container with the image my-docker-image and as user root"
+```
+
 ## Running Pipelines Locally
 
 GitLab does not have official support for running pipelines locally, but there is a popular third-party tool called [gitlab-ci-local](https://github.com/firecow/gitlab-ci-local) (a.k.a. GCL) which allows you to do this.
@@ -150,6 +185,17 @@ MY_VAR_2: <value_2>
 `CI_PROJECT_DIR` will be set to `/gcl-builds`, which should be where the root directory of the repository resides.
 
 If `.gitlab-ci-local-variables.yml` ends up containing sensitive information like personal access tokens, do not commit this file to the repository! Make sure to add it to your `.gitignore` file.
+
+### Variables In Variables
+
+It doesn't look like `gitlab-ci-local` supports defining variables using other variables. For example, this is works when running on GitLab:
+
+```yaml
+variables:
+  MY_PATH: $MY_PATH /another/path 
+```
+
+But when this same job is run locally with `gitlab-ci-local`, the variable does not get updated, as just seems to set to what ever value it was as if this expression was never run.
 
 #### Authentication
 
