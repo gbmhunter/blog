@@ -1,6 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2018-03-08
+description: An opinionated comparison of popular, open-source build systems and package managers for C/C++. This review looks at both programs that compile your code and those that manage dependencies, as the line between build systems and package managers is blurred. Complete with sample code for each build system.
 lastUpdated: 2018-03-08
 title: A C/C++ Build System/Package Manager Comparison
 type: page
@@ -24,7 +25,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 
 ## Bazel
 
-<Image src={import('./_assets/bazel-build-system-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/bazel-build-system-logo.png')} width="150px">The Bazel logo.</Image>
 
 * Website: [https://bazel.build/](https://bazel.build/)
 * Code: [https://github.com/bazelbuild/bazel](https://github.com/bazelbuild/bazel)
@@ -82,7 +83,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buck
 
-<Image src={import('./_assets/buck-build-system-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/buck-build-system-logo.png')} width="150px">The Buck logo.</Image>
 
 * Website: [https://buckbuild.com/](https://buckbuild.com/)
 * Code: [https://github.com/facebook/buck](https://github.com/facebook/buck)
@@ -130,7 +131,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buckaroo
 
-<Image src={import('./_assets/buckaroo-package-manager-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/buckaroo-package-manager-logo.png')} width="150px">The Buckaroo logo.</Image>
 
 * Website: [https://buckaroo.pm/](https://buckaroo.pm/)
 * Code: [https://github.com/LoopPerfect/buckaroo](https://github.com/LoopPerfect/buckaroo)
@@ -142,7 +143,7 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 
 ## CMake
 
-<Image src={import('./_assets/cmake-build-system-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/cmake-build-system-logo.png')} width="150px">The CMake logo.</Image>
 
 * Website: [https://cmake.org/](https://cmake.org/)
 * Code: [https://gitlab.kitware.com/cmake/cmake](https://gitlab.kitware.com/cmake/cmake)
@@ -178,7 +179,7 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
         <tr>
             <td>Community</td>
             <td>8/10</td>
-            <td>CMake has become the defacto standard for newer C++/C projects.</td>
+            <td>CMake has become the de-facto standard for newer C++/C projects.</td>
         </tr>
         <tr>
             <td><b>TOTAL</b></td>
@@ -207,7 +208,7 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 
 ## Conan
 
-<Image src={import('./_assets/conan-c-cpp-package-manager-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/conan-c-cpp-package-manager-logo.png')} width="150px">The Conan logo.</Image>
 
 * Website: [https://conan.io/](https://conan.io/)
 * Code: [https://github.com/conan-io/conan](https://github.com/conan-io/conan)
@@ -261,7 +262,7 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 ## Makefiles
 
-<Image src={import('./_assets/gnu-logo.png')} width="150px"></Image>
+<Image src={import('./_assets/gnu-logo.png')} width="150px">The GNU logo.</Image>
 
 * Website: [https://www.gnu.org/software/make/](https://www.gnu.org/software/make/)
 * Code: [http://savannah.gnu.org/projects/make/](http://savannah.gnu.org/projects/make/)
@@ -308,11 +309,11 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </table>
 
 
-No. No. No. Please don't consider raw makefiles as your build system unless you absolutely have to. Did I mention this comparison was opinionated?
+No. No. No. Please don't consider raw Make as your build system unless you absolutely have to (using it as a generator from CMake is ok). Did I mention this comparison was opinionated?
 
 ## Scons
 
-<Image src={import('./_assets/scons-build-system.png')} width="200px"></Image>
+<Image src={import('./_assets/scons-build-system.png')} width="200px">The SCons logo.</Image>
 
 * Website: [https://scons.org/](https://scons.org/)
 * Code: [https://github.com/SCons/scons](https://github.com/SCons/scons)

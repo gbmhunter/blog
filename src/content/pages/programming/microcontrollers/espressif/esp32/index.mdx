@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2024-10-15
 description: The ESP32 is a series of low-cost, low-power SoC microcontrollers designed by Espressif Systems.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-15
+lastUpdated: 2024-10-17
 tags: [programming, microcontrollers, Espressif, ESP32]
 title: ESP32
 type: page
@@ -17,7 +17,7 @@ The ESP32 range is supported by the ESP-IDF framework.
 
 ## ESP-IDF
 
-ESP-IDF provides a FreeRTOS port that supports both the Xtensa and RISC-V architectures used by ESP SoCs. ESP-IDF provides different versions of FreeRTOS in order to support SMP (symmetric multiprocessing) on 2-core ESP SoCs. There is also the option of using the Amazon SMP FreeRTOS which supports any number of cores[^espressif-esp-idf-freertos].
+ESP-IDF provides a [FreeRTOS](/programming/operating-systems/freertos/) port that supports both the Xtensa and RISC-V architectures used by ESP SoCs. ESP-IDF provides different versions of FreeRTOS in order to support SMP (symmetric multiprocessing) on 2-core ESP SoCs. There is also the option of using the Amazon SMP FreeRTOS which supports any number of cores[^espressif-esp-idf-freertos]. ESP-IDF uses [CMake](/programming/build-systems-and-package-managers/cmake/) as it's build system.
 
 <Image src={import('./_assets/esp-idf-supported-socs.webp')} width="600px">ESP-IDF supported SoCs as of October 2024.[^espressif-idf].</Image>
 
@@ -27,7 +27,7 @@ ESP-IDF supports dev containers. There is a [Docker image pushed to Docker Hub](
 
 ### Post-built Commands
 
-To add a post-build command to a CMake-based ESP-IDF project, you can use the `add_custom_command` function, targeting the `gen_project_binary` target. This function allows you to specify a shell command that should be executed after the build process has completed.
+To add a post-build command to a CMake-based ESP-IDF project, you can use the `add_custom_command()` function, targeting the `gen_project_binary` target and with the `POST_BUILD` argument. This function allows you to specify a shell command that should be executed after the build process has completed.
 
 ```cmake title="CMakeLists.txt"
 add_custom_command(
@@ -37,7 +37,7 @@ add_custom_command(
 )
 ```
 
-Be aware that the shell command may make the project platform dependent. You could couple this with `IF (WIN32)` style conditionals to run OS specific commands. You can see where the target `gen_project_binary` is defined in the ESP-IDF code [here](https://github.com/espressif/esp-idf/blob/v5.3.1/components/esptool_py/project_include.cmake#L146). `app` is another valid target you could use to run commands on.
+Be aware that the shell command may make the project platform dependent. You could couple this with `if(CMAKE_HOST_WIN32)` style conditionals to run OS specific commands. You can see where the target `gen_project_binary` is defined in the ESP-IDF code [here](https://github.com/espressif/esp-idf/blob/v5.3.1/components/esptool_py/project_include.cmake#L146). `app` is another valid target you could use to run commands on.
 
 {/* ======================================================================== */}
 {/* REFERENCES */}

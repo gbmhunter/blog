@@ -1,7 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2022-09-15
-description: Schematics, equations, resistances, filters, charge-pumps and more info on switched-capacitor circuits.
+description: Switched-capacitor circuits are circuits which move electronic charge in and out of capacitors using electronics switches. They are commonly manipulated to make a "tunable" resistance which depends on the switching frequency. This page shows schematics, equations, resistances, filters, charge-pumps and more.
+image: ./_assets/cover-image.webp
 lastUpdated: 2022-09-19
 tags: [switched capacitors, capacitors, MOSFETs, BJTs, body diode, substrate, analogue switch, filters]
 title: Switched-Capacitor Circuits
@@ -12,13 +13,11 @@ Switched-capacitor circuits are circuits which move electronic charge in and out
 
 The basic switched-capacitor circuit is shown below:
 
-{/* {{% figure src="basic-switched-capacitor-circuit.png" width="400px" caption="A basic switched-capacitor circuit." %}} */}
-<Image src={import('./basic-switched-capacitor-circuit.png')} width="400">A basic switched-capacitor circuit.</Image>
+<Image src={import('./_assets/basic-switched-capacitor-circuit.png')} width="400">A basic switched-capacitor circuit.</Image>
 
-The switches are switched on/off in an alternating fashion, where $\Phi_1$ controls `SW1` and $\Phi_2$ controls `SW2`. This is shown in the below graph. A switching frequency of $100kHz$ is assumed.
+The switches are switched on/off in an alternating fashion, where $\Phi_1$ controls `SW1` and $\Phi_2$ controls `SW2`. This is shown in the below graph. A switching frequency of $100\,kHz$ is assumed.
 
-{/* {{% figure src="phase-graph.png" width="600px" caption="Plot showing the on/off sequencing for the switches in the above schematic." %}} */}
-<Image src={import('./phase-graph.png')} width="600">Plot showing the on/off sequencing for the switches in the above schematic.</Image>
+<Image src={import('./_assets/phase-graph.png')} width="600">Plot showing the on/off sequencing for the switches in the above schematic.</Image>
 
 ## Equivalent Resistance
 
@@ -99,10 +98,10 @@ $$
 
 Above we have just drawn in mechanical switches to show that the circuit is switched at these points. But how is the switching actually done in reality? A common approach is to use a [MOSFET](/electronics/components/transistors/mosfets/). They allow the circuit to be switched between their drain and source by applying a voltage on the gate. They offer two main benefits over BJTs:
 
-1. The drain and source voltages are not tied to the gate voltage in anyway (in a BJT, the base is tied to the emitter + 0.7V). This is a very useful property for the MOSFET to have.
+1. The drain and source voltages are not tied to the gate voltage in anyway (in a BJT, the base is tied to the emitter + $0.7\,V$). This is a very useful property for the MOSFET to have.
 1. The gate requires almost no current to drive, whilst a BJT requires a small but sometimes non-insignificant base current.
 
-However, a single discrete MOSFET is rarely ever used because the internal body diode will conduct in one direction when not desired, and the switching resistance of the MOSFET rapidly increases as the signal voltage nears the gate voltage, which is typically at $V_{DD}$ for N-channel MOSFETs and $0V$ for P-channel MOSFETs.
+However, a single discrete MOSFET is rarely ever used because the internal body diode will conduct in one direction when not desired, and the switching resistance of the MOSFET rapidly increases as the signal voltage nears the gate voltage, which is typically at $V_{DD}$ for N-channel MOSFETs and $0\,V$ for P-channel MOSFETs.
 
 **To overcome both of these challenges, typically complementary non-discrete N-channel/P-channel MOSFET pairs are used** to make an [analogue switch](/electronics/components/analogue-switches-transmission-gates/)[^bib-ucla-ch12-intro-switched-cap-circuits]. The complementary pair allows rail-to-rail signals without significant resistance increases, and using non-discrete MOSFETs allows the semiconductor designed to connect the substrate to the rails rather than to the source, preventing the "body diode" conduction effect in one direction.
 

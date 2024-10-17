@@ -1,7 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2016-12-07
-lastUpdated: 2016-12-07
+description: CMake is a cross-platform tool for building applications. It is commonly used with C and C++. The program is configured through CMakeLists.txt files, which typically reside in the source directories of the corresponding code. This section covers the CMake basics, external projects, finding packages, installing, OS specific code, and more.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-10-17
 tags: [CMake]
 title: cmake
 type: page
@@ -9,7 +11,7 @@ type: page
 
 **cmake** is a cross-platform tool for building applications. It is commonly used with C and C++. The program is configured through CMakeLists.txt files, which reside in the source directories of the corresponding code.
 
-<Image src={import('./cmake-logo.png')} width="383px">The CMake logo.</Image>
+<Image src={import('./_assets/cmake-logo.webp')} width="400px">The CMake logo[^kitware-cmake-homepage].</Image>
 
 The output of cmake is standard build/project files (e.g. Makefiles if targeting GNU make). These build files are then run using the standard build command to generate the final build files.
 
@@ -45,7 +47,7 @@ This created a new variable called `SOURCES`.
 
 `set()` may also be used to make a list variable. Each element in the list should be separated with a space.
 
-```cmake    
+```cmake
 set(SOURCES foo1.cpp foo2.cpp)
 ```
 
@@ -69,7 +71,7 @@ If `<folder_path>` is relative, it will be relative to the `CMakeLists.txt` file
 
 Libraries can be added with:
 
-```cmake    
+```cmake
 add_library(<name> [STATIC | SHARED | MODULE]
 [EXCLUDE_FROM_ALL]
 source1 [source2 ...])
@@ -93,7 +95,7 @@ Once libraries have been added with `add_library()`, they need to be linked. Thi
 
 Files can be copied as part of the build process using the following syntax:
 
-```cmake    
+```cmake
 file(COPY files... DESTINATION <dir>)
 ```
 
@@ -160,3 +162,34 @@ $ make
 ```
 
 This is of course assuming an out-of-source build setup (the recommended approach!). This standard way of building is used by [OpenCV](http://opencv.org/).
+
+## Running OS Specific Code
+
+You can run OS specific code in CMake by using the `if(CMAKE_HOST_WIN32)` and `if(WIN32)` expressions. `CMAKE_HOST_WIN32` will be true if the machine cmake is running on is Windows. `WIN32` will be true if you are compiling FOR windows (`CMAKE_HOST_WIN32` can be true but `WIN32` false if cross-compiling on Windows for a different architecture)[^stack-overflow-platform-detection-in-cmake].
+
+```cmake title="CMakeLists.txt"
+if(CMAKE_HOST_WIN32)
+    message(STATUS "Running on Windows.")
+else()
+    message(STATUS "Not running on Windows.")
+endif()
+
+if(WIN32)
+    message(STATUS "Compiling for Windows.")
+else()
+    message(STATUS "Not compiling for Windows.")
+endif()
+```
+
+This can be useful when wanting to run OS-specific shell commands, for example when using the `add_custom_command()` function.
+
+<Aside type="tip">
+You should try and make your CMake code as OS-independent as possible (most people will expect a CMake project to build on multiple OSes). Only use OS specific code if absolutely necessary.
+</Aside>
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^kitware-cmake-homepage]: Kitware. _CMake Homepage_. Retrieved 2024-10-17, from https://cmake.org/.
+[^stack-overflow-platform-detection-in-cmake]: StackOverflow. _Platform detection in CMake_ [forum post]. Retrieved 2024-10-17, from https://stackoverflow.com/questions/9742003/platform-detection-in-cmake.
