@@ -223,3 +223,20 @@ section.footnotes {
   overflow-x: hidden;
 }
 
+/* ============================================================================================== */
+/* GOOD, OK, BAD UI ELEMENTS */
+/* ============================================================================================== */
+
+/* Used for table cells */
+
+.good {
+  color: var(--sl-color-green);
+}
+
+.ok {
+  color: var(--sl-color-orange);
+}
+
+.bad {
+  color: var(--sl-color-red);
+}
