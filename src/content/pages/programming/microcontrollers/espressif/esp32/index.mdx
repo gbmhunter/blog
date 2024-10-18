@@ -15,6 +15,12 @@ ESP32 is a series of low-cost, low-power SoC microcontrollers designed by [Espre
 
 The ESP32 range is supported by the ESP-IDF framework.
 
+## Serial Bootloader
+
+ESP32-S3's have serial bootloaders permanently baked into their ROM, and can talk to a host computer running `esptool.py` over a USB serial connection. The serial protocol is described [here](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/advanced-topics/serial-protocol.html).
+
+To get around limitations with a permanently unmodifiable bootloader, the first thing `esptool.py` does when it connects is to upload a flasher stub (a.k.a. "stub loader" or "stub") to the ESP32 SoC. This stub loader than essentially takes over as the bootloader, and can provide extra functionality or fix bugs in the ROM bootloader[^espressif-esptool-flasher-stub].
+
 ## ESP-IDF
 
 ESP-IDF provides a [FreeRTOS](/programming/operating-systems/freertos/) port that supports both the Xtensa and RISC-V architectures used by ESP SoCs. ESP-IDF provides different versions of FreeRTOS in order to support SMP (symmetric multiprocessing) on 2-core ESP SoCs. There is also the option of using the Amazon SMP FreeRTOS which supports any number of cores[^espressif-esp-idf-freertos]. ESP-IDF uses [CMake](/programming/build-systems-and-package-managers/cmake/) as it's build system.
@@ -46,3 +52,4 @@ Be aware that the shell command may make the project platform dependent. You cou
 [^espressif-idf]: Espressif Systems. _ESP-IDF_. Retrieved 2024-10-15, from https://idf.espressif.com/.
 [^espressif-esp-idf-freertos]: Espressif Systems. _ESP-IDF - API Reference > System API > FreeRTOS_ [documentation]. Retrieved 2024-10-15, from https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/freertos.html.
 [^dockerhub-espressif-idf]: dockerhub. _espressif/idf_ [docker image]. Retrieved 2024-10-15, from https://hub.docker.com/r/espressif/idf.
+[^espressif-esptool-flasher-stub]: Espressif Systems. _esptool.py > Flasher Stub_ [documentation]. Retrieved 2024-10-18, from https://docs.espressif.com/projects/esptool/en/latest/esp32s3/esptool/flasher-stub.html.
