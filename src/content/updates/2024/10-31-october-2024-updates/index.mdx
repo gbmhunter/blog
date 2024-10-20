@@ -48,3 +48,7 @@ Added info on [ESP32 SoCs and ESP-IDF](/programming/microcontrollers/espressif/e
 When moving from MathJac to Katex (as part of the move from Hugo to astro.js), I lost the ability to reference equations from within text as Katex does not support the `\label` and `\ref` commands with automatically numbered equations.
 
 To get around this, I add `\htmlId{}{}` markers in the Katex and implement the reset of the logic for equation referencing in the client-side `IRefClientScript.js` script (which already does the figure and table referencing).
+
+## Added Resistor Node Analysis Info
+
+Added a [convoluted resistor network example](/electronics/components/resistors/#node-analysis) to show how to analyse the nodes in a resistor network to determine whether resistors are in series or parallel.
