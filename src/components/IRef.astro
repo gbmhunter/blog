@@ -1,10 +1,7 @@
 ---
 const { iref } = Astro.props;
+if (!iref) {
+  throw new Error('IRef component requires an `iref` prop.');
+}
 ---
-
-<!-- The placeholder text gets replaced with the actual reference by the JavaScript that runs in the browser -->
-<a data-iref={iref} class="ref-source" href={`#${iref}`}>This is a placeholder for the reference: {iref}</a>
-
-<!-- It is safe to include this multiple times (it is also included in components such as Image.astro) as it will
- only be bundled and served once by Astro. -->
-<script src="../js/IRefClientScript.ts"></script>
+<!-- The placeholder text gets replaced with the actual reference by the JavaScript that runs in the browser --><a data-iref={iref} class="ref-source" href={`#${iref}`}>This is a placeholder for the reference: {iref}</a><!-- It is safe to include this multiple times (it is also included in components such as Image.astro) as it will only be bundled and served once by Astro. --><script src="../js/IRefClientScript.ts"></script>
