@@ -101,7 +101,7 @@ R_{total} = \sum_{i=1}^{n} R_i
 \end{align}
 $$
 
-### Node Analysis
+### Network Analysis
 
 Sometimes you have to think carefully about the circuit connections to determine whether resistors are in series or parallel. For example, what is the equivalent resistance between points $A$ and $B$ in the circuit shown in <IRef iref="fig-3-resistors-in-a-confusing-parallel-arrangement" />?
 
@@ -110,6 +110,10 @@ Sometimes you have to think carefully about the circuit connections to determine
 The answer is $\frac{R}{3}$, because all of the resistors are in parallel (using <IRef iref="eqn-resistors-in-parallel-n" />). This may not be obvious at first glance, but the two nodes have been highlighted in <IRef iref="fig-3-resistors-in-a-confusing-parallel-arrangement-nodes-highlighted" />. It should then become pretty clear that all the resistors are in parallel. While you should never ever draw a schematic like this for a real world project/design (where the aim is to draw things as clearly as possible) it is a useful exercise to get into the habit of analysing the nodes in circuits (this sort of convoluted series/parallel arrangement question is a favourite for people writing university exams).
 
 <Image iref="fig-3-resistors-in-a-confusing-parallel-arrangement-nodes-highlighted" src={import('./_assets/3-resistors-in-a-confusing-parallel-arrangement-nodes-highlighted.webp')} width="800px">The same circuit as <IRef iref="fig-3-resistors-in-a-confusing-parallel-arrangement" />, but with the two nodes highlighted in different colours. It should now become clear that all the resistors are in parallel.</Image>
+
+Some more complicated resistor networks can't be solved with methodical application of parallel and series combinations alone. See the [Delta-Wye Resistor Networks page](/electronics/components/resistors/delta-wye-resistor-networks/) for more information.
+
+<Image src={import('./delta-wye-resistor-networks/_assets/delta-wye-pi-t-networks.png')} width="500px">Screenshot of the circuits explained on the [Delta-Wye Resistor Networks page](/electronics/components/resistors/delta-wye-resistor-networks/).</Image>
 
 ## Resistor Dividers
 
@@ -437,9 +441,13 @@ There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([downlo
 
 ## Further Reading
 
-* For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Resettable Fuses page](/electronics/components/ptc-resettable-fuses/).
-* For info on mechanically variable resistors, see the [Potentiometers and Rheostats page](/electronics/components/potentiometers-and-rheostats/).
-* For info on digital controlled variable resistors, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
+For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Resettable Fuses page](/electronics/components/ptc-resettable-fuses/).
+
+For info on mechanically variable resistors, see the [Potentiometers and Rheostats page](/electronics/components/potentiometers-and-rheostats/).
+
+For info on digital controlled variable resistors, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
+
+The [Delta-Wye Resistor Networks page](/electronics/components/resistors/delta-wye-resistor-networks/) shows how to transform a Delta resistor network into a Wye network, and vise versa. These networks can't be solved with simple series and parallel combination analysis alone.
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
