@@ -8,23 +8,129 @@ title: Kirchhoff's Circuit Laws
 type: page
 ---
 
-<WarningIsNotes />
-
 Kirchhoff's circuit laws are two laws that describe how currents and voltages sum up in electrical circuits. Along with Ohm's law, they are probably the most often used laws in circuit design. They are relatively easy to understand and quickly become second nature.
 
 Kirchhoff's current law (KCL) describes how the currents entering and leaving a node sum up to zero. Kirchhoff's voltage law (KVL) describes how the voltages around a closed loop sum up to zero. More on these below!
 
 ## Kirchhoff's Current Law
 
-Kirchhoff's current law (KCL) states that the sum of currents entering an electrical node must equal the sum of currents leaving that node. <IRef iref="fig-kirchhoffs-current-law-i1-i2-i3" /> shows the basic idea. The dot represents an electrical node, which is essentially a connection point between two or more conductive parts of the circuit.
+Kirchhoff's current law (KCL) states that the sum of currents entering an electrical node must equal the sum of currents leaving that node[^khan-academy-kirchhoffs-laws].
+
+$$
+\begin{align}
+\sum i_{in} &= \sum i_{out}
+\end{align}
+$$
+
+For example, given the circuit in <IRef iref="fig-kirchhoffs-current-law-i1-i2-i3" />, Kirchhoff's current law says that the following must be true:
+
+$$
+\begin{align}
+i_1 + i_2 &= i_3
+\end{align}
+$$
 
 <Image iref="fig-kirchhoffs-current-law-i1-i2-i3" src={import('./_assets/kirchhoffs-current-law-i1-i2-i3.webp')} width="400px">Schematic showing Kirchhoff's current law: the sum of currents entering a node must equal the sum of currents leaving that node.</Image>
 
+The dot represents an electrical node, which is essentially a connection point between two or more conductive parts of the circuit. KCL is a consequence of the conservation of charge[^wikipedia-kirchhoffs-circuit-laws].
+
+Rather than stating that the currents entering and leaving a node must sum up to zero, we can assign a sign to currents. If currents entering the node are positive, then currents leaving the node are negative, then we can simply write the law as[^wikipedia-kirchhoffs-circuit-laws]:
+
+$$
+\begin{align}
+\sum_{i=1}^{n} I_i = 0
+\end{align}
+$$
+
 <Aside type="tip">
-Fun fact: The use of the symbol $i$ for current comes from the French word "intensité du courant". Ampere was French. Although it could be the "intensity" of anything, I guess it's good enough since we already use $c$ for Coulomb.
+Fun fact: The use of the symbol $i$ for current comes from the French word "intensité du courant" (current intensity). The $i$ symbol was used by André-Marie Ampère of which the unit Amps is named after[^wikipedia-electric-current]. Using $i$ for current also means in electronics we use $j$ instead of $i$ for imaginary numbers.
+</Aside>
+
+It might be surprising that KCL works for [capacitors](/electronics/components/capacitors/), even though we think of capacitors storing charge. The reason KCL holds is that just as much charge leaves the negative plate of the capacitor as enters the positive plate, such that the net change in charge is zero.
+
+<Aside type="example">
+Calculate the current $i$ in the circuit shown in <IRef iref="fig-kirchhoffs-current-law-example-basic" />.
+
+<Image iref="fig-kirchhoffs-current-law-example-basic" src={import('./_assets/kirchhoffs-current-law-example-basic.webp')} width="300px">Schematic for a basic KCL example.</Image>
+
+The current entering the node must equal the current leaving the node, so we have:
+
+$$
+\begin{align}
+2\,A + i &= 5\,A \nonumber \\
+       i &= 5\,A - 2\,A \nonumber \\
+      i &= 3\,A
+\end{align}
+$$
+
+If we'd gone with the approach of assigning signs to the currents, we'd have the following process giving us the same result:
+
+$$
+\begin{align}
+2\,A + i - 5\,A &= 0 \nonumber \\
+              i &= 5\,A - 2\,A \nonumber \\
+              i &= 3\,A
+\end{align}
+$$
+
 </Aside>
 
 ## Kirchhoff's Voltage Law
 
-Kirchhoff's voltage law (KVL) states that the sum of voltages around a closed loop must equal zero.
+Kirchhoff's voltage law (KVL) states that the sum of voltages around a closed loop must equal zero. This can be written as[^wikipedia-kirchhoffs-circuit-laws]:
 
+$$
+\begin{align}
+\sum_{i=1}^{n} V_i = 0
+\end{align}
+$$
+
+<p class="centered">where:  
+$i$ is the index of the element in the loop,  
+$V_i$ is the voltage across the $i$th element in the loop.</p>
+
+<Aside type="caution">
+Care must be taken to preserve the sign of the voltages, especially when going through resistive elements. Going with the flow of conventional current through a resistor, the voltage drop across the resistor is negative.
+</Aside>
+
+Lets look at the circuit shown in <IRef iref="fig-kirchhoffs-voltage-law-diagram" />:
+
+<Image iref="fig-kirchhoffs-voltage-law-diagram" src={import('./_assets/kirchhoffs-voltage-law-diagram.webp')} width="400px">Schematic showing Kirchhoff's voltage law.</Image>
+
+Kirchhoff's voltage law says that the sum of the voltages around the loop must equal zero, so we have:
+
+$$
+\begin{align}
+V_1 + V_2 + V_3 &= 0
+\end{align}
+$$
+
+We are walking clockwise around the loop, and orange arrows have been added to show the direction. Think of using a volt meter and placing the red (positive) probe at the tip of the arrow and the black (negative) probe at the tail of the arrow. The voltage across the voltage source will be positive, and the voltage across the two resistors will be negative.
+
+<Aside type="example">
+
+Consider the circuit shown in <IRef iref="fig-kirchhoffs-voltage-law-diagram-basic-example" />. What is the voltage $V$?
+
+<Image iref="fig-kirchhoffs-voltage-law-diagram-basic-example" src={import('./_assets/kirchhoffs-voltage-law-diagram-basic-example.webp')} width="400px">Schematic for a basic KVL example.</Image>
+
+KVL tell us that:
+
+$$
+\begin{align}
+12\,V + V + (-5\,V) &= 0 \nonumber \\
+                  V &= -12\,V + 5\,V \nonumber \\
+                  V &= -7\,V
+\end{align}
+$$
+
+Normally you would just say the voltage drop across the resistors is $5\,V$ and $7\,V$ (and when measuring the voltage with a voltmeter, most people would put the red probe on the more positive side of each resistor, always giving a positive reading). Most of the time the sign/direction of the voltage measurement is implied by the diagram and knowledge of the current flow. But when using KVL, it's important to make sure you are consistent with the sign!
+
+</Aside>
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^wikipedia-electric-current]: Wikipedia (2024, Oct 2). _Electric current_. Retrieved 2024-10-22, from https://en.wikipedia.org/wiki/Electric_current.
+[^wikipedia-kirchhoffs-circuit-laws]: Wikipedia (2024, May 20). _Kirchhoff's circuit laws_. Retrieved 2024-10-22, from https://en.wikipedia.org/wiki/Kirchhoff%27s_circuit_laws.
+[^khan-academy-kirchhoffs-laws]: Khan Academy. _Course: AP/College Physics 2 > Unit 3 > Lesson 1: Current, resistivity, and Ohm's law > Kirchhoff's laws_. Retrieved 2024-10-22, from https://www.khanacademy.org/science/ap-physics-2/x0e2f5a2c:ap-2-circuits/x0e2f5a2c:ap-2-circuits-with-resistors/a/ee-kirchhoffs-laws.

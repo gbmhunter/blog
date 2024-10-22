@@ -1,0 +1,31 @@
+---
+authors: [gbmhunter]
+date: 2024-10-22
+description: Google Cloud is a cloud computing service provided by Google.
+lastUpdated: 2024-10-22
+tags: [programming, cloud, Google Cloud]
+title: Google Cloud
+type: page
+---
+
+## Firebase
+
+Firebase is a Google Cloud platform that provides a set of cloud services to make it easier to develop and deploy web applications. It bundles together hosting, database, authentication, file storage and other common cloud services.
+
+To deploy the entire Firebase project, run the following command:
+
+```bash
+firebase deploy
+```
+
+To deploy only the functions, run the following command:
+
+```bash
+firebase deploy --only functions
+```
+
+You can (slightly) speed up deployments even more by only deploying a specific function, e.g.:
+
+```bash
+firebase deploy --only functions:functionName
+```
