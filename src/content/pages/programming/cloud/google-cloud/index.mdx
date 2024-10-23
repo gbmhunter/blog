@@ -1,16 +1,31 @@
 ---
 authors: [gbmhunter]
 date: 2024-10-22
-description: Google Cloud is a cloud computing service provided by Google.
-lastUpdated: 2024-10-22
+description: Google Cloud (a.k.a. Google Cloud Platform, or GCP) is a cloud computing service provided by Google.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-10-23
 tags: [programming, cloud, Google Cloud]
 title: Google Cloud
 type: page
 ---
 
+Google Cloud (a.k.a. Google Cloud Platform, or GCP) is a cloud computing service provided by Google.
+
+<Image src={import('./_assets/google-cloud-logo.svg')} width="500px">The Google Cloud logo[^wikipedia-google-cloud-logo].</Image>
+
 ## Firebase
 
-Firebase is a Google Cloud platform that provides a set of cloud services to make it easier to develop and deploy web applications. It bundles together hosting, database, authentication, file storage and other common cloud services.
+Firebase is a Google Cloud service that provides a set of cloud-based features to make it easier to develop and deploy web applications. It bundles together hosting, database, authentication, file storage and other common cloud services into a single product.
+
+### Firebase CLI
+
+Firebase provides a command line interface (CLI) that can be used to deploy and manage your Firebase projects. It can be installed via npm with the command[^google-firebase-cli-reference]:
+
+```bash
+npm install -g firebase-tools
+```
+
+This will make the `firebase` command globally available from your terminal.
 
 To deploy the entire Firebase project, run the following command:
 
@@ -29,3 +44,6 @@ You can (slightly) speed up deployments even more by only deploying a specific f
 ```bash
 firebase deploy --only functions:functionName
 ```
+
+[^wikipedia-google-cloud-logo]: Wikipedia (2021, Feb 8). _Google Cloud logo_ [file]. Retrieved 2024-10-23, from https://en.m.wikipedia.org/wiki/File:Google_Cloud_logo.svg.
+[^google-firebase-cli-reference]: Google. _Firebase > Documentation > Reference > Firebase CLI Reference_ [documentation]. Retrieved 2024-10-23, from https://firebase.google.com/docs/cli.
