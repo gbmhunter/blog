@@ -1,10 +1,10 @@
 ---
 authors: [gbmhunter]
 date: 2024-10-22
-description: Google Cloud (a.k.a. Google Cloud Platform, or GCP) is a cloud computing service provided by Google.
+description: Google Cloud (a.k.a. Google Cloud Platform, or GCP) is a cloud computing service provided by Google. This page contains information on Firebase.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-23
-tags: [programming, cloud, Google Cloud]
+lastUpdated: 2024-10-24
+tags: [programming, cloud, Google Cloud, Firebase, npm, functions, Firestore, NoSQL, CLI]
 title: Google Cloud
 type: page
 ---
@@ -16,6 +16,12 @@ Google Cloud (a.k.a. Google Cloud Platform, or GCP) is a cloud computing service
 ## Firebase
 
 Firebase is a Google Cloud service that provides a set of cloud-based features to make it easier to develop and deploy web applications. It bundles together hosting, database, authentication, file storage and other common cloud services into a single product.
+
+<Image src={import('./_assets/firebase-logo.svg')} width="500px">The Firebase logo[^google-firebase-brand-guidelines].</Image>
+
+### Firestore
+
+Firestore is the NoSQL database provided by Firebase. It is a scalable database that offers offline support for mobile and web applications by caching reads/writes locally[^google-firebase-firestore]. Data is stored in documents which are in turn grouped into collections. Firebase provides a web-based console for viewing and managing data in the Firestore.
 
 ### Firebase CLI
 
@@ -45,5 +51,15 @@ You can (slightly) speed up deployments even more by only deploying a specific f
 firebase deploy --only functions:functionName
 ```
 
+### Logs
+
+Logs can be viewed in the Google Cloud console, or using the following Firebase CLI command:
+
+```bash
+firebase functions:log
+```
+
 [^wikipedia-google-cloud-logo]: Wikipedia (2021, Feb 8). _Google Cloud logo_ [file]. Retrieved 2024-10-23, from https://en.m.wikipedia.org/wiki/File:Google_Cloud_logo.svg.
 [^google-firebase-cli-reference]: Google. _Firebase > Documentation > Reference > Firebase CLI Reference_ [documentation]. Retrieved 2024-10-23, from https://firebase.google.com/docs/cli.
+[^google-firebase-brand-guidelines]: Google. _Firebase > Brand Guidelines_. Retrieved 2024-10-24, from https://firebase.google.com/brand-guidelines.
+[^google-firebase-firestore]: Google. _Firebase > Documentation > Firestore > Build > Cloud Firestore_. Retrieved 2024-10-24, from https://firebase.google.com/docs/firestore.

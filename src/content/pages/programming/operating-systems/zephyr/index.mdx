@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-09-09
-tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC]
+lastUpdated: 2024-10-24
+tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation]
 title: Zephyr
 type: page
 ---
@@ -1810,9 +1810,14 @@ void main(void)
 }
 ```
 
-## Emulation
+## Simulating Zephyr Applications
 
-Zephyr supports the targets `qemu_x86` and `qemu_cortex_m3` for running Zephyr applications on desktop computers. This is great for development, testing and CICD purposes.
+There are two options for simulating Zephyr applications:
+
+1. **Native**: Zephyr supports a native target (a "board"). This generates an executable that runs directly on the host machine.
+1. **QEMU**: Zephyr supports the targets `qemu_x86` and `qemu_cortex_m3` for running applications inside QEMU. In this case, the application is built for the same architecture as the real target, but runs inside the QEMU virtual machine on the host machine.
+
+[Javad Rahamipetroudi's "Using emulators and fake devices in Zephyr"](https://mind.be/using-emulators-and-fake-devices-in-zephyr/) blog post is a good read when it comes to emulating Zephyr peripherals[^mind-using-emulators-and-fake-devices-in-zephyr].
 
 ## Zephyr and C++
 
@@ -2156,3 +2161,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-1, from https://www.scaler.com/topics/zephyr-operating-system/.
 [^wikipedia-zephyr-operating-system]: Wikipedia (2023, Oct 20). _Zephyr (operating system)_. Retrieved 2024-02-21, from https://en.wikipedia.org/wiki/Zephyr_(operating_system).
 [^nordic-semi-nrf52-zephyr-support-added]: Nordic Semiconductor (2020, Apr 2). _Nordic Semiconductor now offering broad product line support for its short-range and cellular IoT devices on nRF Connect platform including a suite of development tools and open source nRF Connect SDK_ [blog post]. Retrieved 2024-02-21, from https://www.nordicsemi.com/Nordic-news/2020/04/nordic-now-offering-support-for-its-shortrange-and-cellular-iot-devices-on-nrf-connect-platform.
+[^mind-using-emulators-and-fake-devices-in-zephyr]: Javad Rahamipetroudi (2024, May 22). _Using emulators and fake devices in Zephyr_. Retrieved 2024-10-24, from https://mind.be/using-emulators-and-fake-devices-in-zephyr/.
