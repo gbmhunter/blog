@@ -354,19 +354,15 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
-import inductor_measurement_with_sig_gen_and_oscilloscope_01 from './_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png'
+    <Image src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png')} width="500px" />
 
-    <Image src={inductor_measurement_with_sig_gen_and_oscilloscope_01} width="500px"></Image>
-
-    :::note
+    <Aside type="tip">
     If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.
-    :::
+    </Aside>
 
-1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like this:
+1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like <IRef iref="fig-inductor-measurement-with-sig-gen-and-oscilloscope-02" />:
 
-import inductor_measurement_with_sig_gen_and_oscilloscope_02 from './_assets/inductor-measurement-with-sig-gen-and-oscilloscope-02.png'
-
-    <Image src={inductor_measurement_with_sig_gen_and_oscilloscope_02} width="600px"></Image>
+    <Image iref="fig-inductor-measurement-with-sig-gen-and-oscilloscope-02" src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-02.png')} width="600px" />
 
 1. Adjust the frequency of the signal generator until the peak-to-peak voltage across the inductor is half the measured open-circuit peak-to-peak voltage.
 
@@ -391,7 +387,7 @@ import inductor_measurement_with_sig_gen_and_oscilloscope_02 from './_assets/ind
 
 **How It Works**
 
-The internal resistance of the signal generator $50\Omega$ and the inductance form a voltage divider. The impedance of the resistor stays constant at $50\Omega$ no matter the frequency, but the impedance of the inductor does change with frequency ($Z_L = X_L = \omega L$). You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
+The internal resistance of the signal generator $50\,\Omega$ and the inductance form a voltage divider. The impedance of the resistor stays constant at $50\,\Omega$ no matter the frequency, but the impedance of the inductor does change with frequency ($Z_L = X_L = \omega L$). You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
 
 We arrive at the equation for the inductance by using the voltage-divider rule for a complex circuit:
 
