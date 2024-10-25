@@ -86,7 +86,7 @@ my_job:
     - echo "This job will only run for commits that are tagged with docker-image-v1, docker-image-v2 etc."
 ```
 
-<Aside type="warning">
+<Aside type="caution">
 Make sure you don't wrap the regex in quotes. This is still a valid rule, but will not invoke the regex engine. For example, don't do this:
 
 ```yaml
