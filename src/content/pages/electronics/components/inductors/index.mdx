@@ -35,22 +35,20 @@ $$
 v = L \frac{di}{dt}
 $$
 
-<p className="centered">    where:<br/>
-    $v$ is the voltage across the inductor<br/>
-    $L$ is the inductance of the inductor<br/>
-    $\frac{di}{dt}$ is the instantaneous change in current through the inductor<br/></p>
+<p className="centered">where:<br/>
+$v$ is the voltage across the inductor<br/>
+$L$ is the inductance of the inductor<br/>
+$\frac{di}{dt}$ is the instantaneous change in current through the inductor<br/></p>
 
 <Aside type="example">
-
 If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit, your inductors magnetic core would saturate, or your inductor will start to overheat.
-
 </Aside>
 
 ## Schematic Symbols and Designator
 
-There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The figure below shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
+There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. <IRef iref="fig-schematic-symbols-of-inductors" /> shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
 
-<Image src={import('./_assets/schematic-symbols-of-inductors.png')} width="500px">Schematic symbols for a range of the basic inductor sub-families.</Image>
+<Image iref="fig-schematic-symbols-of-inductors" src={import('./_assets/schematic-symbols-of-inductors.png')} width="500px">Schematic symbols for a range of the basic inductor sub-families.</Image>
 
 ## Important Parameters
 
@@ -81,9 +79,9 @@ Typical DC resistances range from $10m\Omega$ to $10\Omega$.
 
 The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor (it's not a sudden point, but rather defined as when the inductance drops to a fixed percentage of it's nominal value). Above this point, the magnetic field does not increase proportionally with the current (the core is "saturated"), and the apparent inductance of the inductor is decreasing. This also means that above the saturation current the current will rise/fall much faster, which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
 
-For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The following graph shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
+For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. <IRef iref="fig-inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11" /> shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
 
-<Image src={import('./_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png')} width="500px">Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds].</Image>
+<Image iref="fig-inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11" src={import('./_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png')} width="500px">Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds].</Image>
 
 Typical saturation currents range from 10-100mA's for small inductors, up to 1-10A for larger PCB mount inductors.
 
@@ -103,7 +101,7 @@ The _self-resonant frequency_ of an inductor is the frequency at which the paras
 
 The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance $L$ spikes at about 75MHz:
 
-<Image src={import('./_assets/self-resonant-frequency.png')} width="600px">Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF).</Image>
+<Image iref="fig-self-resonant-frequency" src={import('./_assets/self-resonant-frequency.png')} width="600px">Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF).</Image>
 
 The equation for the SRF is[^bib-coilcraft-measuring-srf]:
 

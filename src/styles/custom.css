@@ -69,6 +69,13 @@
   /* margin-top: 1rem; */
 }
 
+/**
+This CSS fixes issue where \sqrt{} was not being rendered in Katex, due to another svg height selector
+*/
+.katex-html svg {
+  height: inherit;
+}
+
 /* Copied this from Starlight CSS. Removed span from :not lists so that the right spacing would be added
 for katex spans used for display equations. */
 /* .sl-markdown-content
