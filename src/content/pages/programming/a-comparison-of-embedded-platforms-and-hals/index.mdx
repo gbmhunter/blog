@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2021-05-11
 description: A comparison of the many different cross-platform frameworks and HALs available when developing firmware for microcontrollers.
-lastUpdated: 2021-05-11
+lastUpdated: 2024-10-26
 tags: [programming]
 title: A Comparison Of Embedded Platforms And HALs
 type: page
@@ -25,29 +25,50 @@ Shall be rated under the following categories:
 
 ## Arduino
 
-### Ratings
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HAL</td>
+      <td>7/10</td>
+    </tr>
+    <tr>
+      <td>RTOS Support</td>
+      <td>4/10</td>
+    </tr>
+    <tr>
+      <td>Dependency Management</td>
+      <td>6/10</td>
+    </tr>
+    <tr>
+      <td>Library Support</td>
+      <td>9/10</td>
+    </tr>
+    <tr>
+      <td>IDE Support</td>
+      <td>9/10</td>
+    </tr>
+    <tr>
+      <td>Build System</td>
+      <td>8/10</td>
+    </tr>
+    <tr>
+      <td>Community Support</td>
+      <td>10/10</td>
+    </tr>
+  </tbody>
+</table>
 
-**HAL: 7/10**
+The documentation for the Arduino API is o.k. Not bad, not great, but generally acceptable. Community support for Arduino is excellent, given it's huge popularity. You might feel Arduino lacks a bit when it comes to powerful features that you expect of modern higher-ended MCUs/SoCs.
 
-The documentation for the Arduino API is o.k. Not bad, not great, but generally acceptable.
+Arduino has no built-in or bundled RTOS. FreeRTOS is a popular pairing with Arduino if you need an RTOS. Arduino also has `yield()` based co-routines.
 
-**RTOS Support: 4/10**
-
-**Dependency Management: 6/10**
-
-**Library Support: 5/10**
-
-**IDE Support: 9/10**
-
-**Community Support: x/10**
-
-### Comments
-
-Most popular.
-No built-in or bundled RTOS.
-Global, constant definitions/peripherals can hinder the flexibility. `yield()` based co-routines.
-
-Many Arduino libraries make assumptions about what SPI/I2C peripheral you are using. For example, most just assume (and use) the `SPI` interface), which is a global variable to your first SPI interface.
+Global, constant definitions/peripherals can hinder the flexibility and architecture for larger projects. Also, many Arduino libraries make assumptions about what SPI/I2C peripheral you are using. For example, most just assume (and use) the `SPI` interface), which is a global variable to your first SPI interface.
 
 Digital and analogue pins are read from/written to using global functions like `digitalRead()`. Whilst this is simple and easy to use, it does impose some limitations when trying to perform unit testing and create mock hardware. Without any Pin objects, you cannot really utilize dependency injection to replace real hardware pins with mocked test pins (although you could pass in the `digitalRead()` function, and then mock that?).
 
@@ -102,10 +123,45 @@ Only polling support for SPI.
 
 ## Zephyr
 
-Lacking C++ support for:
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HAL</td>
+      <td>7/10</td>
+    </tr>
+    <tr>
+      <td>RTOS Support</td>
+      <td>9/10</td>
+    </tr>
+    <tr>
+      <td>Dependency Management</td>
+      <td>6/10</td>
+    </tr>
+    <tr>
+      <td>Library Support</td>
+      <td>9/10</td>
+    </tr>
+    <tr>
+      <td>IDE Support</td>
+      <td>6/10</td>
+    </tr>
+    <tr>
+      <td>Build System</td>
+      <td>8/10</td>
+    </tr>
+    <tr>
+      <td>Community Support</td>
+      <td>7/10</td>
+    </tr>
+  </tbody>
+</table>
 
-- Dynamic memory allocation via `new` or `delete`
-- No exception support
-- No RTTI
+[Zephyr](/programming/operating-systems/zephyr/) is a popular RTOS, peripheral API and build system for microcontrollers. Zephyr has a large and powerful HAL. It's got all the standard things you would expect plus stuff like SD card controllers, a Bluetooth stack, a powerful console/shell utility and more. On the downside, I'm not a huge fan of its use of device trees to configure hardware. It never feels intuitive to setup and you inevitable ended up trudging through cryptic compiler errors as you try and expose handles to your device tree setup in your C/C++ code. I find the 10 pages of compiler error garbage when you make a single typo in a `LOG_DBG()` macro is a bit much.
 
 ## cmsis
