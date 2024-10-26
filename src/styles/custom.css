@@ -70,7 +70,7 @@
 }
 
 /**
-This CSS fixes issue where \sqrt{} was not being rendered in Katex, due to another svg height selector
+This CSS fixes issue where \sqrt{} was not being rendered in Katex, due to a Starlight Css svg height rule
 */
 .katex-html svg {
   height: inherit;

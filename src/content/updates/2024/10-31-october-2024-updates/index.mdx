@@ -60,3 +60,28 @@ Added a new page on [Kirchhoff's Circuit Laws](/electronics/circuit-design/kirch
 ## Added Info on Google Cloud
 
 Added a new page on [Google Cloud](/programming/cloud/google-cloud/), including info on Firebase.
+
+## Fixed Missing Square Root Symbols
+
+I discovered this month that square root symbols were not rendering in any equations across the site. After much digging, I found at that this was because some Starlight CSS was messing with the svg used to render the square root symbol.
+
+The offending CSS from Starlight was:
+
+```css
+.sl-markdown-content :is(img, picture, video, canvas, svg, iframe):not(:where(.not-content *)) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+```
+
+Specifically, it is the `height: auto;` which selects `svg`. Katex uses an `svg` to draw the square root symbol in equations (many other parts of the equation are not `svg`, which is why you may not notice anything is amiss!). I added the following CSS to `custom.css` to fix this:
+
+```css title="custom.css"
+/**
+This CSS fixes issue where \sqrt{} was not being rendered in Katex, due to a Starlight Css svg height rule
+*/
+.katex-html svg {
+  height: inherit;
+}
+```

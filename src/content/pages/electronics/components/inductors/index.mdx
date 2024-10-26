@@ -185,37 +185,45 @@ The behaviour of inductors when connected together in series and in parallel is 
 When two inductors are connected in parallel, the equivalent total inductance follows the inverse law, as long as there is no **mutual coupling** of their magnetic fields:
 
 $$
+\begin{align}
 L_{total} = \dfrac{1}{\dfrac{1}{L1} + \dfrac{1}{L2}}
+\end{align}
 $$
 
 It is usually easier to remember this equation as:
 
 $$
+\begin{align}
 \dfrac{1}{L_{total}} = \dfrac{1}{L1} + \dfrac{1}{L2}
+\end{align}
 $$
 
-The following diagram shows this:
+<IRef iref="fig-inductors-in-parallel-with-equation" /> shows this:
 
-<Image src={import('./_assets/inductors-in-parallel-with-equation.png')} width="600px">Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.</Image>
+<Image iref="fig-inductors-in-parallel-with-equation" src={import('./_assets/inductors-in-parallel-with-equation.png')} width="600px">Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.</Image>
 
 ### Inductors In Series
 
 The equivalent inductance of two inductors connected in series is the sum of the individual inductances, as long as there is no **mutual coupling** of their magnetic fields.
 
 $$
+\begin{align}
 L_{total} = L1 + L2
+\end{align}
 $$
 
-This is shown in the diagram below:
+<IRef iref="fig-inductors-in-series-with-equation" /> shows this:
 
-<Image src={import('./_assets/inductor-in-series-with-equation.png')} width="600px">Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances.</Image>
+<Image iref="fig-inductors-in-series-with-equation" src={import('./_assets/inductor-in-series-with-equation.png')} width="600px">Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances.</Image>
 
 ## The Energy Stored In An Inductor
 
 The energy stored in a inductor is given by:
 
 $$
+\begin{align}
 E = \frac{1}{2}LI^2
+\end{align}
 $$
 
 <p className="centered">where:<br/>
@@ -232,13 +240,15 @@ This equation is only valid when the inductor is operating in it's linear region
 An ideal inductor (no parasitic elements) has an impedance $Z_L$ given by:
 
 $$
+\begin{align}
 Z_L = 2\pi fL
+\end{align}
 $$
 
 <p className="centered">where:<br/>
-$ Z_L $ = inductor's impedance, in O`hms ($ \Omega $)<br/>
+$ Z_L $ = inductor's impedance, in Ohms ($ \Omega $)<br/>
 $ f $ = frequency of analysis, in Hertz ($ Hz $)<br/>
-$ L $ = inductance of inductor, in Henries ($ H` $)<br/></p>
+$ L $ = inductance of inductor, in Henries ($ H $)<br/></p>
 
 <Aside type="note">
 Sometimes $X_L$ is used instead of $Z_L$. $X$ represents reactance (purely imaginary), whilst $Z$ is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. $X_L = Z_L$.
@@ -249,7 +259,9 @@ This shows that the impedance goes up as the frequency goes up. At DC levels, th
 You may also see this written as:
 
 $$
+\begin{align}
 Z_L = \omega L
+\end{align}
 $$
 
 <p className="centered">where:<br/>
@@ -266,16 +278,18 @@ For a more accurate but complex model, see the Parasitic Model section.
 An inductor with parasitic components may be modelled by:
 
 $$
+\begin{align}
 Z_L = \frac{1}{ \frac{1}{R_P} + \frac{1}{j \omega L + R_S} + j \omega C_P }
+\end{align}
 $$
 
-<p className="centered">    where:<br/>
-    $ Z_L $ = inductor's impedance ($ \Omega $)<br/>
-    $ R_P $ = parasitic parallel resistance (which is negligible for most simulations) ($ \Omega $)<br/>
-    $ \omega $ = frequency of analysis ($ rad/s $)<br/>
-    $ L $ = inductance of inductor ($ H $)<br/>
-    $ R_S $ = parasitic series resistance ($ \Omega $)<br/>
-    $ C_P $ = parasitic parallel capacitance ($ F $)<br/></p>
+<p className="centered">where:<br/>
+$ Z_L $ = inductor's impedance ($ \Omega $)<br/>
+$ R_P $ = parasitic parallel resistance (which is negligible for most simulations) ($ \Omega $)<br/>
+$ \omega $ = frequency of analysis ($ rad/s $)<br/>
+$ L $ = inductance of inductor ($ H $)<br/>
+$ R_S $ = parasitic series resistance ($ \Omega $)<br/>
+$ C_P $ = parasitic parallel capacitance ($ F $)<br/></p>
 
 The main parasitic components are the series resistance ($ R_S $) and the parallel capacitance ($ C_P $). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
 
@@ -283,10 +297,10 @@ This model is a pretty good representation for most simulation purposes, and giv
 
 Typical values might be:
 
-* $ R_P = 0\Omega $
-* $ L = 1uH $
-* $ R_S = 10m\Omega $
-* $ C_P = 10pF $.
+* $ R_P = 0\,\Omega $
+* $ L = 1\,uH $
+* $ R_S = 10\,m\Omega $
+* $ C_P = 10\,pF $.
 
 ## Inductor Networks
 
@@ -295,7 +309,9 @@ Typical values might be:
 Inductors in parallel behave just like resistors in parallel.
 
 $$
+\begin{align}
 \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N}
+\end{align}
 $$
 
 ### Inductors In Series
@@ -303,7 +319,9 @@ $$
 Inductors in series behave just like resistors in series.
 
 $$
+\begin{align}
 L_{eq} = L_1 + L_2 + \ldots + L_n
+\end{align}
 $$
 
 ## Inductor Kickback
@@ -320,9 +338,9 @@ Inductors only behave like inductors over a **limited current range**. As the cu
 
 > Saturation is the state reached when an increase in applied external magnetizing field H cannot increase the magnetization of the material any further.
 
-The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
+<IRef iref="fig-inductance-vs-current-graph-wurth-7447789003-3.3uh" /> shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
-<Image src={import('./_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png')} width="502px">Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.</Image>
+<Image iref="fig-inductance-vs-current-graph-wurth-7447789003-3.3uh" src={import('./_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png')} width="502px">Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.</Image>
 
 As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
 
@@ -348,13 +366,13 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Set the signal generator to:
     * Waveform: `Sine wave`
-    * Voltage: `1V peak-to-peak`
-    * Frequency: `10kHz`
+    * Voltage: `1 V peak-to-peak`
+    * Frequency: `10 kHz`
     * Output type: `High-Z`
 
-1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
+1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1 V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
-    <Image src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png')} width="500px" />
+    <Image iref="fig-inductor-measurement-with-sig-gen-and-oscilloscope-01" src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png')} width="500px" />
 
     <Aside type="tip">
     If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.
@@ -370,16 +388,14 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
     $$
     \begin{align}
-    L = \sqrt{\frac{1}{3}} \cdot \frac{50\Omega}{2\pi f}
+    L = \sqrt{\frac{1}{3}} \cdot \frac{50\,\Omega}{2\pi f}
     \end{align}
     $$
 
-    <p class="centered">
-    where:<br/>
+    <p class="centered">where:<br/>
     $f$ is the frequency in Hertz at which the inductors peak-to-peak voltage was half the signal generators open-circuit peak-to-peak voltage<br/>
-    $50\Omega$ is the output impedance of the signal generator (measure and tweak this value for a more accurate calculation)<br/>
-    $L$ is the calculated inductance, in Henries<br/>
-    </p>
+    $50\,\Omega$ is the output impedance of the signal generator (measure and tweak this value for a more accurate calculation)<br/>
+    $L$ is the calculated inductance, in Henries<br/></p>
 
     <Aside type="caution">
     The above method only works well for inductors which have a low series resistance[^bib-dos4ever-meas-unknown-inductors].
