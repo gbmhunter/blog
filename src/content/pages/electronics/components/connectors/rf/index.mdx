@@ -1,0 +1,80 @@
+---
+authors: [gbmhunter]
+date: 2011-09-05
+description: RF connectors are connectors designed to pass high-frequency signals with too much reflection or attenuation.
+lastUpdated: 2024-10-27
+tags: [electronics, connectors, RF]
+title: RF Connectors
+type: page
+---
+
+RF connectors are connectors specifically designed to carry high-frequency signals, typically in the 100MHz-30GHz range.
+
+## BNC Connectors
+
+BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed for RF signals. It is named after it's **B**ayonet locking mechanism and it's inventors, Paul **N**eill and Carl **C**oncelman. It is "standardized" in MIL-STD-348A[^everyspec-mil-std-348a].
+
+<Image src={import('./_assets/bnc-connectors-on-oscilloscope.jpg')} width="700px">Four BNC connectors on the front of a Keysight InfiniiVision DSOX2024A oscilloscope to connect the probes to.</Image>
+
+### Specifications
+
+* **Passband:** 0-4GHz
+* **Impedance:** $50\,\Omega$ (standard) or $75\,\Omega$ (video).
+
+### Uses 
+
+They were originally designed for military use, but are now commonly used for a variety of RF applications including:
+
+* **Oscilloscope probes:** Used for lower frequency oscilloscope probes (0-200MHz). The top-end modern oscilloscopes tend to have proprietary connections to the probes, with added pins for extra functionality.
+* **Analog video signals**
+* **Radio antennas**
+
+<Image src={import('./_assets/bnc-adapter-edited.jpg')} width="300px">Photo of a BNC adapter, showing the male BNC connector.</Image>
+
+The USSR version of the BNC connector is called the SR connector. However, the connector dimensions are slightly different due to the conversion from imperial to metric. The SR connectors can be mated with BNC connectors, although sometimes it requires a decent amount of force.
+
+## U.FL
+
+Also known as UMC or XFL connectors.
+
+<Image src={import('./_assets/ufl-connector-photo.png')} width="350">A photo of a male, SMD mount UFL connector. Image from www.digikey.com.</Image>
+
+### Schematic Symbol
+
+There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
+
+<Image src={import('./_assets/ufl-umc-umcc-rf-connector-schematic-symbol.png')} width="510px">A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.</Image>
+
+The height of the male SMD connector can vary, but something around 1.2mm is common.
+
+## SMA Connectors
+
+SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) $50\,\Omega$ RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between $0-16\,GHz$, although some specialized versions extends in the $30{+}\,GHz$ territory[^amphenolrf-sma].
+
+<Image src={import('./_assets/sma-male-and-female-next-to-each-other-edited.jpg')} width="700px">One male and one female inline (connector to cable) SMA connector next to each other.</Image>
+
+The original SMA connectors were developed in the 1960s[^reichelt-sma-rpsma].
+
+* Standard Male SMA connector: Central **0.9 mm diameter pin** surrounded by a barrel with **inside** threads.
+* Standard Female SMA connector: Central **sleeve** (made from the di-electric) surrounded by a barrel with **outside** threads.
+
+<Image src={import('./_assets/sma-cable-edited.jpg')} width="700px">A coaxial cable with SMA connectors at both ends.</Image>
+
+### Reverse-polarity and Reverse-thread SMA Connectors
+
+Be wary, there are two additional variations (aside from the normal SMA connector) of SMA connectors which are hard to recognise on first glance.
+
+_Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between the male and female parts. Also known as _RP-SMA_ or _R-SMA_. _Reverse-polarity_ was designed  to prevent the unauthorized connection of a antenna with a larger gain to WiFi equipment[^reichelt-sma-rpsma], to distinguish them from cellular equipment involving LTE/GSM/UMTS which was utilizing the standard SMA connector. These days, RP-SMA connectors are now commonplace, somewhat defeating the protection through obscurity. However in general, standard SMA connectors are still used for cellular applications whilst RP-SMA for WiFi/WLAN.
+
+There are also _reverse-thread_ (RT) SMA connectors which have the threads in the opposite direction to the standard SMA connectors. One such example is the Pasternack "RT SMA Male Connector Crimp/Solder Attachment for RG55, RG141, RG142, RG223, RG400"[^pasternack-rt-sma-male-connector].
+
+## N Connectors
+
+_N connectors_ (a.k.a. N-type or Type N connectors) are large RF connectors.
+
+<Image src={import('./_assets/n-connector-close-up-edited.jpg')} width="300px">Close-up of a N Connector.</Image>
+
+[^reichelt-sma-rpsma]:  Reichelt Elektronik. _SMA and RP-SMA - What You Need to Know About Coaxial Connectors_. Retrieved 2021-11-22, from https://www.reichelt.com/magazin/en/sma-and-rp-sma-what-you-need-to-know-about-coaxial-connectors/.
+[^amphenolrf-sma]:  Amphenol RF. _SMA Connectors_. Retrieved 2021-11-22, from https://www.amphenolrf.com/connectors/sma-connectors.html.
+[^everyspec-mil-std-348a]:  Department of Defence. _Interface Standard: Radio Frequency Connector Interfaces for MIL-C-3643, MIL-C-3650, MIL-C-3655, MIL-C-25516, MIL-C-26637, MIL-C-39012, MIL-C-49142, MIL-A-55339, MIL-C-83517_. Retrieved 2021-12-10, from http://everyspec.com/MIL-STD/MIL-STD-0300-0499/MIL-STD-348A_420/.
+[^pasternack-rt-sma-male-connector]: Pasternack. _RT SMA Male Connector Crimp/Solder Attachment for RG55, RG141, RG142, RG223, RG400_ [product page]. Retrieved 2024-10-27, from https://www.pasternack.com/sma-male-reverse-thread-rg55-rg141-rg142-rg223-rg400-connector-pe44182-p.aspx.

@@ -27,40 +27,16 @@ Shall be rated under the following categories:
 
 <table>
   <thead>
-    <tr>
-      <th>Category</th>
-      <th>Rating</th>
-    </tr>
+    <tr><th>Category</th>              <th>Rating</th></tr>
   </thead>
   <tbody>
-    <tr>
-      <td>HAL</td>
-      <td>7/10</td>
-    </tr>
-    <tr>
-      <td>RTOS Support</td>
-      <td>4/10</td>
-    </tr>
-    <tr>
-      <td>Dependency Management</td>
-      <td>6/10</td>
-    </tr>
-    <tr>
-      <td>Library Support</td>
-      <td>9/10</td>
-    </tr>
-    <tr>
-      <td>IDE Support</td>
-      <td>9/10</td>
-    </tr>
-    <tr>
-      <td>Build System</td>
-      <td>8/10</td>
-    </tr>
-    <tr>
-      <td>Community Support</td>
-      <td>10/10</td>
-    </tr>
+    <tr><td>HAL</td>                   <td>7/10</td></tr>
+    <tr><td>RTOS Support</td>          <td>4/10</td></tr>
+    <tr><td>Dependency Management</td> <td>6/10</td></tr>
+    <tr><td>Library Support</td>       <td>9/10</td></tr>
+    <tr><td>IDE Support</td>           <td>8/10</td></tr>
+    <tr><td>Build System</td>          <td>8/10</td></tr>
+    <tr><td>Community Support</td>     <td>10/10</td></tr>
   </tbody>
 </table>
 
@@ -74,94 +50,70 @@ Digital and analogue pins are read from/written to using global functions like `
 
 ## PlatformIO
 
-### Ratings
+<table>
+  <thead>
+    <tr><th>Category</th>              <th>Rating</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>HAL</td>                   <td>n/a</td></tr>
+    <tr><td>RTOS Support</td>          <td>n/a</td></tr>
+    <tr><td>Dependency Management</td> <td>9/10</td></tr>
+    <tr><td>Library Support</td>       <td>5/10</td></tr>
+    <tr><td>IDE Support</td>           <td>8/10</td></tr>
+    <tr><td>Build System</td>          <td>8/10</td></tr>
+    <tr><td>Community Support</td>     <td>6/10</td></tr>
+  </tbody>
+</table>
 
-**HAL: n/a**
-
-Being a build system and package manager PlatformIO does not provide any HAL. 
-
-**RTOS Support: n/a**
-
-Being a build system and package manager PlatformIO does not provide any RTOS. 
-
-**Dependency Management: 9/10**
+ 
+PlatformIO is a package manager and build system. Being a build system and package manager PlatformIO does not provide any RTOS. It can be used together with many of the platforms mentioned here that do provide a HAL, such as Arduino, mbed or Zephyr. 
 
 Unsure of the amount of support for libraries of libraries (dependencies of dependencies).
 
-**Library Support: 5/10**
-
-**IDE Support: x/10**
-
-**Community Support: x/10**
-
-### Comments
-
-PlatformIO is a package manager and build system. It can be used together with many of the platforms mentioned here that do provide a HAL, such as Arduino, mbed or Zephyr.
-
-
 ## mbed
 
-**HAL: n/a**
+<table>
+  <thead>
+    <tr><th>Category</th>              <th>Rating</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>HAL</td>                   <td>7/10</td></tr>
+    <tr><td>RTOS Support</td>          <td>8/10</td></tr>
+    <tr><td>Dependency Management</td> <td>6/10</td></tr>
+    <tr><td>Library Support</td>       <td>5/10</td></tr>
+    <tr><td>IDE Support</td>           <td>4/10</td></tr>
+    <tr><td>Build System</td>          <td>7/10</td></tr>
+    <tr><td>Community Support</td>     <td>3/10</td></tr>
+  </tbody>
+</table>
 
-**RTOS Support: 8/10**
+Mbed provides the Mbed Studio IDE for firmware development and debugging. Only polling support for SPI.
 
 The mbed HAL comes packaged with an RTOS. When not using multiple threads, a compile time switch disables the scheduler code and you are left with just the one thread.
-
-**Dependency Management: x/10**
-
-**Library Support: x/10**
-
-**IDE Support: x/10**
-
-Mbed provides the Mbed Studio IDE for firmware development and debugging.
-
-**Community Support: x/10**
-
-### Comments
-
-Only polling support for SPI.
 
 ## Zephyr
 
 <table>
   <thead>
-    <tr>
-      <th>Category</th>
-      <th>Rating</th>
-    </tr>
+    <tr><th>Category</th>              <th>Rating</th></tr>
   </thead>
   <tbody>
-    <tr>
-      <td>HAL</td>
-      <td>7/10</td>
-    </tr>
-    <tr>
-      <td>RTOS Support</td>
-      <td>9/10</td>
-    </tr>
-    <tr>
-      <td>Dependency Management</td>
-      <td>6/10</td>
-    </tr>
-    <tr>
-      <td>Library Support</td>
-      <td>9/10</td>
-    </tr>
-    <tr>
-      <td>IDE Support</td>
-      <td>6/10</td>
-    </tr>
-    <tr>
-      <td>Build System</td>
-      <td>8/10</td>
-    </tr>
-    <tr>
-      <td>Community Support</td>
-      <td>7/10</td>
-    </tr>
+    <tr><td>HAL</td>                   <td>7/10</td></tr>
+    <tr><td>RTOS Support</td>          <td>9/10</td></tr>
+    <tr><td>Dependency Management</td> <td>6/10</td></tr>
+    <tr><td>Library Support</td>       <td>9/10</td></tr>
+    <tr><td>IDE Support</td>           <td>6/10</td></tr>
+    <tr><td>Build System</td>          <td>8/10</td></tr>
+    <tr><td>Community Support</td>     <td>7/10</td></tr>
   </tbody>
 </table>
 
-[Zephyr](/programming/operating-systems/zephyr/) is a popular RTOS, peripheral API and build system for microcontrollers. Zephyr has a large and powerful HAL. It's got all the standard things you would expect plus stuff like SD card controllers, a Bluetooth stack, a powerful console/shell utility and more. On the downside, I'm not a huge fan of its use of device trees to configure hardware. It never feels intuitive to setup and you inevitable ended up trudging through cryptic compiler errors as you try and expose handles to your device tree setup in your C/C++ code. I find the 10 pages of compiler error garbage when you make a single typo in a `LOG_DBG()` macro is a bit much.
+[Zephyr](/programming/operating-systems/zephyr/) is a popular RTOS, peripheral API and build system for microcontrollers. Zephyr has a large and powerful HAL/peripheral API. It's got all the standard things you would expect plus stuff like SD card controllers, a Bluetooth stack, a powerful console/shell utility and more.
+
+On the downside, I'm not a huge fan of its use of device trees to configure hardware. It never feels intuitive to setup and you inevitable ended up trudging through cryptic compiler errors as you try and expose handles to your device tree setup in your C/C++ code. Also, I find the 10 pages of compiler error garbage when you make a single typo in a `LOG_DBG()` macro a bit much.
+
+Nordic backed Zephyr with their choice to use it for their nRF 52, 53 and 91 SoCs.
 
 ## cmsis
+
+cmsis provides a RTOS API (but not the actual RTOS itself) which can act as a standardized wrapper over many different RTOSes including FreeRTOS and Zephyr.
