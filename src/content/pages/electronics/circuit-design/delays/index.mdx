@@ -1,0 +1,29 @@
+---
+authors: [gbmhunter]
+date: 2024-10-28
+description: 
+lastUpdated: 2024-10-28
+tags: [delay, electronics, Schmitt trigger, RC, 555 timer, digital, analogue, circuits, circuit design]
+title: Delay Circuits
+type: page
+---
+
+<WarningIsNotes />
+
+_Delay circuits_ are used to delay the progression of a analogue or digital signal through a circuit.
+
+## RC with Schmitt Trigger
+
+A [RC circuit](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) combined with a Schmitt trigger can be used to create a digital delay. The RC circuit converts a sharp input transition into a slower transition based on the RC circuit time constant. The Schmitt trigger then "sharpens" up the edges again by switching it's output quickly when the input reaches certain thresholds.
+
+The 74HC14 "Hex Inverter with Schmitt Trigger Inputs" family of ICs are commonly used as the Schmitt trigger.
+
+By adding another RC circuit between the two Schmitt triggers, the delay time can be made to be the same for the high-to-low as the low-to-high transition. You will want to split your delay time evenly between the two RC circuits.
+
+## 555 Timer
+
+A [555 timer](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
