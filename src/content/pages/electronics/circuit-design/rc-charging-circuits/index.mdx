@@ -17,7 +17,7 @@ This page looks at how the **RC circuit responds in the time domain**. If you ar
 
 <Image src={import('./_assets/basic-rc-schematic.webp')} width="500">A basic RC charging circuit.</Image>
 
-Assuming the capacitor's voltage started at \(0V\) at \(t=0\), and a constant supply voltage \(V_S\) is applied across the capacitor and resistor, then the capacitors voltage at any time \(t\) is[^electronics-tutorials-ws-rc-charging-circuit]:
+Assuming the capacitor's voltage started at $0V$ at $t=0$, and a constant supply voltage $V_S$ is applied across the capacitor and resistor, then the capacitors voltage at any time $t$ is[^electronics-tutorials-ws-rc-charging-circuit]:
 
 $$
 \begin{align}\Large{
@@ -26,14 +26,14 @@ V_C = V_S (1 - e^{ \left[ \frac{-t}{RC} \right] })
 $$
 
 <p className="centered">where:<br/>
-\(V_C\) is the voltage across the capacitor, in Volts<br/>
-\(V_S\) is the supply voltage, in Volts<br/>
-\(e\) is Euler's number, \(= 2.718...\)<br/>
-\(t\) is the time, in seconds<br/>
-\(R\) is the resistance, in Ohms<br/>
-\(C\) is the capacitance, in Farads<br/></p>
+$V_C$ is the voltage across the capacitor, in Volts<br/>
+$V_S$ is the supply voltage, in Volts<br/>
+$e$ is Euler's number, $= 2.718...$<br/>
+$t$ is the time, in seconds<br/>
+$R$ is the resistance, in Ohms<br/>
+$C$ is the capacitance, in Farads<br/></p>
 
-\(RC\) can be replaced with a concept called a time constant, where \(\tau \equiv RC\). This gives:
+$RC$ can be replaced with a concept called a time constant, where $\tau \equiv RC$. This gives:
 
 $$
 \begin{align}
@@ -59,7 +59,7 @@ $$
 
 </Aside>
 
-The capacitors voltage \(V_C\) starts of a \(0V\) and charges towards \(V_S\). However the charging rate follows an exponential decay, the rate gets slower and slower. Mathematically, the capacitors voltage never reaches \(V_S\). However for most practical purposes you can consider the capacitor "fully-charged" after about 5 _time constants_.
+The capacitors voltage $V_C$ starts of a $0V$ and charges towards $V_S$. However the charging rate follows an exponential decay, the rate gets slower and slower. Mathematically, the capacitors voltage never reaches $V_S$. However for most practical purposes you can consider the capacitor "fully-charged" after about 5 _time constants_.
 
 ## What is the Time Constant?
 
@@ -71,7 +71,7 @@ $$
 \end{align}
 $$
 
-After 1 time constant (\(t = 1\tau\)), then the equation simplifies to:
+After 1 time constant ($t = 1\tau$), then the equation simplifies to:
 
 $$
 \begin{align}
@@ -83,18 +83,18 @@ $$
 \end{align}
 $$
 
-So you know that at \(1\tau\), your capacitor has charged to 63% of the supply voltage. The beauty of \(\tau\) is that you can quickly calculate it for any RC circuit and get a feel for how long it will take to charge (it is also very useful when looking at [RC filters](/electronics/circuit-design/analogue-filters/)). The table below shows various time constants and the voltage level on the capacitor at that point.
+So you know that at $1\tau$, your capacitor has charged to 63% of the supply voltage. The beauty of $\tau$ is that you can quickly calculate it for any RC circuit and get a feel for how long it will take to charge (it is also very useful when looking at [RC filters](/electronics/circuit-design/analogue-filters/)). The table below shows various time constants and the voltage level on the capacitor at that point.
 
 <table>
   <thead>
     <tr><th>Time Constant</th>    <th>Voltage as Percentage of Supply</th></tr>
   </thead>
   <tbody>
-    <tr><td>1\(\tau\)</td>        <td>63.2%</td></tr>
-    <tr><td>2\(\tau\)</td>        <td>86.5%</td></tr>
-    <tr><td>3\(\tau\)</td>        <td>95.0%</td></tr>
-    <tr><td>4\(\tau\)</td>        <td>98.2%</td></tr>
-    <tr><td>5\(\tau\)</td>        <td>99.3%</td></tr>
+    <tr><td>1$\tau$</td>        <td>63.2%</td></tr>
+    <tr><td>2$\tau$</td>        <td>86.5%</td></tr>
+    <tr><td>3$\tau$</td>        <td>95.0%</td></tr>
+    <tr><td>4$\tau$</td>        <td>98.2%</td></tr>
+    <tr><td>5$\tau$</td>        <td>99.3%</td></tr>
   </tbody>
 </table>
 

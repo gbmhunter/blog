@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2024-10-28
-description: 
+description: Delay circuits are used to delay the progression of a analogue or digital signal through a circuit.
 lastUpdated: 2024-10-28
 tags: [delay, electronics, Schmitt trigger, RC, 555 timer, digital, analogue, circuits, circuit design]
 title: Delay Circuits
@@ -14,16 +14,189 @@ _Delay circuits_ are used to delay the progression of a analogue or digital sign
 
 ## RC with Schmitt Trigger
 
-A [RC circuit](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) combined with a Schmitt trigger can be used to create a digital delay. The RC circuit converts a sharp input transition into a slower transition based on the RC circuit time constant. The Schmitt trigger then "sharpens" up the edges again by switching it's output quickly when the input reaches certain thresholds.
+A [RC circuit](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) combined with  Schmitt triggers can be used to create a digital delay. The RC circuit converts a sharp input transition into a slower transition based on the RC circuit time constant. The Schmitt trigger then "sharpens" up the edges again by switching it's output quickly when the input reaches certain thresholds. <IRef iref="fig-schmitt-trigger-delay-single-rc" /> shows the circuit. This uses two inverting Schmitt triggers -- the purpose of the second one (U2) is to re-invert the signal so it is the same polarity as the input.
 
-The 74HC14 "Hex Inverter with Schmitt Trigger Inputs" family of ICs are commonly used as the Schmitt trigger.
+<Image iref="fig-schmitt-trigger-delay-single-rc" src={import('./_assets/schmitt-trigger-delay-single-rc.webp')} width="600px">A delay circuit made from a RC circuit and a Schmitt trigger.</Image>
 
-By adding another RC circuit between the two Schmitt triggers, the delay time can be made to be the same for the high-to-low as the low-to-high transition. You will want to split your delay time evenly between the two RC circuits.
+<IRef iref="fig-schmitt-trigger-single-rc-waveforms" /> shows the waveforms for the single RC delay circuit. Notice how the delays are not symmetrical. The delay for the low-to-high transition is longer than the high-to-low transition. This can be fixed by adding another RC circuit between the two Schmitt triggers (more on this below).
 
+<Image iref="fig-schmitt-trigger-single-rc-waveforms" src={import('./_assets/schmitt-trigger-single-rc-waveforms.webp')} width="800px">Waveforms for the single RC delay circuit in <IRef iref="fig-schmitt-trigger-delay-single-rc" />.</Image>
+
+One downside to this circuit is that there is a "cooldown" period between transitions. This is the time it takes to the RC circuit to settle so that it can work correctly for the next transition. As such, the cooldown is normally about $5\tau$ (5 time constants) where $\tau = RC$. If transitions occur within this cooldown period, the circuit will not work as expected, sometimes transitioning to quickly (the RC circuit has not settled yet, and already has a head-start in going back in the other direction), or not transitioning at all (e.g. a transition to high and then back to low before the output has switched would result in no output change).
+
+### Design Procedure
+
+You generally want to pick a capacitance in the range of $100\,pF$ to $1\,\mu F$. This is because if the capacitance is lower than $100\,pF$, parasitic capacitance (typically in the $1-20pF$ range) will be have a significant effect on the delay. Capacitances higher than $1\,\mu F$ start to get more expensive, are physically larger, and start to use dielectrics (e.g. `X7R` or `X5R`) which cause the capacitance to significantly vary with voltage.
+
+The 74HC14 "Hex Inverter with Schmitt Trigger Inputs" family of ICs are commonly used as the Schmitt trigger. You would then pick a resistance to give the desired delay. To do this, we need to use the RC charging equation (see the [RC Charging Circuits](/electronics/circuit-design/rc-charging-circuits/) page for more info).
+
+$$
+\begin{align}
+V = V_{CC} (1 - e^{ \large{\left[ \frac{-t}{RC} \right]} })
+\end{align}
+$$
+
+In this situation, $V$ would be the threshold voltage ($V_{T+}$ or $V_{T-}$ depending on the transition direction), $V_{CC}$ is the supply voltage, $t$ is the desired delay time, and $C$ is the capacitance.
+
+We need to rearrange this equation to solve for $R$:
+
+$$
+\begin{align}
+V &= V_{CC} (1 - e^{ \large{\left[ \frac{-t}{RC} \right]} }) \nonumber \\
+\frac{V}{V_{CC}} &= 1 - e^{ \large{\left[ \frac{-t}{RC} \right]} } \nonumber \\
+e^{ \large{\left[ \frac{-t}{RC} \right]} } &= 1 - \frac{V}{V_{CC}} \nonumber \\
+\frac{-t}{RC} &= \ln(1 - \frac{V}{V_{CC}}) \nonumber \\
+RC &= \frac{-t}{\ln(1 - \frac{V}{V_{CC}})} \nonumber \\
+R &= \frac{-t}{\ln(1 - \frac{V}{V_{CC}})C} \htmlId{eqn-schmitt-trigger-delay-resistance}{} \\
+\end{align}
+$$
+
+
+<Aside type="example" title="Example: Single RC/Schmitt Trigger Delay">
+Design a RC/Schmitt trigger circuit to create a 100us low-to-high delay from a +3.3V supply.
+
+We'll use the Texas Instruments SN74HC14 "SNx4HC14 Hex Inverters with Schmitt-Trigger Inputs" IC. <IRef iref="fig-schmitt-trigger-thresholds" /> shows the trigger thresholds for the SN74HC14 taken from the datasheet[^ti-snx4hc14-ds].
+
+<table data-iref="fig-schmitt-trigger-thresholds">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>VCC</th>
+      <th>MIN</th>
+      <th>TYP</th>
+      <th>MAX</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td rowspan="3">$V_{T+}$</td>
+      <td>2V</td>
+      <td>0.7V</td>
+      <td>1.2V</td>
+      <td>1.5V</td>
+    </tr>
+    <tr>
+      <td>4.5V</td>
+      <td>1.55V</td>
+      <td>2.5V</td>
+      <td>3.13V</td>
+    </tr>
+    <tr>
+      <td>6V</td>
+      <td>2.1V</td>
+      <td>3.3V</td>
+      <td>4.2V</td>
+    </tr>
+    <tr>
+      <td rowspan="3">$V_{T-}$</td>
+      <td>2V</td>
+      <td>0.3V</td>
+      <td>0.6V</td>
+      <td>1V</td>
+    </tr>
+    <tr>
+      <td>4.5V</td>
+      <td>0.9V</td>
+      <td>1.6V</td>
+      <td>2.45V</td>
+    </tr>
+    <tr>
+      <td>6V</td>
+      <td>1.2V</td>
+      <td>2V</td>
+      <td>3.2V</td>
+    </tr>
+  </tbody>
+  <caption>Schmitt trigger thresholds for the Texas Instruments SN74HC14[^ti-snx4hc14-ds].</caption>
+</table>
+
+Unfortunately, $+3.3\,V$ is not one of the supply voltages the thresholds are given for. We'll do a bit of simple linear interpolation to estimate the thresholds. We'll use typical values to keep things simple -- however bear in mind that the delay time could vary somewhat due to the tolerances of the thresholds!
+
+$$
+\begin{align}
+V_{T+(3.3V)} &= 1.2\,V + \left(3.3\,V - 2\,V\right) \times \frac{2.5\,V - 1.2\,V}{4.5\,V - 2\,V} \nonumber \\
+&= 1.2\,V + 1.3 \times \frac{1.3\,V}{2.5\,V} \nonumber \\
+&= 1.2\,V + 0.676\,V \nonumber \\
+&= 1.88\,V
+\end{align}
+$$
+
+$$
+\begin{align}
+V_{T-(3.3V)} &= 0.6\,V + \left(3.3\,V - 2\,V\right) \times \frac{1.6\,V - 0.6\,V}{4.5\,V - 2\,V} \nonumber \\
+&= 0.6\,V + 1.3 \times \frac{1\,V}{2.5\,V} \nonumber \\
+&= 0.6\,V + 0.52\,V \nonumber \\
+&= 1.12\,V
+\end{align}
+$$
+
+We'll now pick a capacitance. Let's try $C = 1\,\text{nF}$. We can now calculate the resistance so that the RC circuit charges up to $1.88\,V$ in $100\,\mu s$. Using <IRef iref="eqn-schmitt-trigger-delay-resistance" /> we have:
+
+$$
+\begin{align}
+R &= \frac{-t}{\ln(1 - \frac{V}{V_{CC}})C} \nonumber \\
+&= \frac{-100\,\mu s}{\ln(1 - \frac{1.88\,V}{3.3\,V}) \times 1\,\text{nF}} \nonumber \\
+&= 119\,k\Omega
+\end{align}
+$$
+
+Solved! <IRef iref="fig-schmitt-trigger-delay-single-rc-example" /> shows the completed circuit. SN74HC14 contains 6 individual Schmitt triggers, so we use 2 of them from the same IC, hence `U1A` and `U1B`.
+
+<Image iref="fig-schmitt-trigger-delay-single-rc-example" src={import('./_assets/schmitt-trigger-delay-single-rc-example.webp')} width="800px">The completed RC with Schmitt trigger circuit, giving a positive-going edge delay of $100\,\mu s$.</Image>
+
+</Aside>
+
+### Symmetrical Delays
+
+The circuit shown in <IRef iref="fig-schmitt-trigger-delay-single-rc" /> does not have symmetrical delays. The delay for the low-to-high transition is longer than the high-to-low transition. This will occur whenever the $V_{T+}$ and $V_{T-}$ thresholds for the Schmitt trigger are not symmetrical around the midpoint of the supply voltage. This perfect condition is unlikely to occur in practise.
+
+By adding another RC circuit between the two Schmitt triggers as shown in <IRef iref="fig-schmitt-trigger-delay-symmetrical" />, the delay time for the positive and negative going transitions can be made to be the same (well...more equal, there is still a rather large manufacturing tolerance for $V_{T+}$ and $V_{T-}$).
+
+<Image iref="fig-schmitt-trigger-delay-symmetrical" src={import('./_assets/schmitt-trigger-delay-symmetrical.webp')} width="800px">A RC/Schmitt trigger delay circuit with symmetrical positive and negative going delays.</Image>
+
+When doing this you will want to split your delay time evenly between the two RC circuits (i.e. identical RC circuits). You can use the same process as in the example above with a single RC element, but set $t$ to half the desired delay time.
+
+<Aside type="example" title="Example: Symmetrical RC/Schmitt Trigger Delay">
+
+Use the same requirements as in the previous example (100us delay), but make the delay time equal for both positive and negative going transitions.
+
+$t$ for each RC circuit is now $50\,\mu s$ (half the total delay time).
+
+$$
+\begin{align}
+R &= \frac{-t}{\ln(1 - \frac{V}{V_{CC}})C} \nonumber \\
+&= \frac{-50\,\mu s}{\ln(1 - \frac{1.88\,V}{3.3\,V}) \times 1\,\text{nF}} \nonumber \\
+&= 59.3\,k\Omega
+\end{align}
+$$
+
+<IRef iref="fig-schmitt-trigger-delay-symmetrical-example" /> shows the completed circuit.
+
+<Image iref="fig-schmitt-trigger-delay-symmetrical-example" src={import('./_assets/schmitt-trigger-delay-symmetrical-example.webp')} width="800px">The completed symmetrical delay RC/Schmitt trigger circuit, giving a delay of $100\,\mu s$.</Image>
+
+</Aside>
 ## 555 Timer
 
 A [555 timer](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay.
 
+## Long Piece of Wire
+
+It sounds almost too simple, but a suitably sized length of wire (or fibre-optic cable) can be used to create short delays. The propagation of an electrical signal is fast (around 0.6c), but not instant! Light travels about 30cm in one nanosecond, so you can get delays in the 0.1 to 100ns+ range with cable.
+
+A great thing about this technique is that it works for both digital and analogue and is bi-directional.
+
+This is a common technique in oscilloscopes.
+
+### More Elaborate Delay Lines
+
+## Chains of Inverter Gates
+
+A chain of inverter gates can be used to create a digital delay.
+
+## Bucket Brigades
+
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
+
+[^ti-snx4hc14-ds]: Texas Instruments (2021, Jun). _SNx4HC14 Hex Inverters with Schmitt-Trigger Inputs_ [datasheet]. Retrieved 2024-10-29, from https://www.ti.com/lit/ds/symlink/sn74hc14.pdf.
