@@ -2,15 +2,20 @@
 authors: [gbmhunter]
 date: 2024-10-28
 description: Delay circuits are used to delay the progression of a analogue or digital signal through a circuit.
-lastUpdated: 2024-10-28
-tags: [delay, electronics, Schmitt trigger, RC, 555 timer, digital, analogue, circuits, circuit design]
+lastUpdated: 2024-10-30
+tags: [delay, electronics, Schmitt trigger, RC, 555 timer, digital, analogue, circuits, circuit design, delay lines, Dallas Semiconductor, Analog Devices]
 title: Delay Circuits
 type: page
 ---
 
 <WarningIsNotes />
 
-_Delay circuits_ are used to delay the progression of a analogue or digital signal through a circuit.
+_Delay circuits_ are used to delay the progression of a analogue or digital signal through a circuit. You may want to delay a signal to:
+
+* Allow time for a circuit to settle.
+* Debounce a switch.
+* Create an audio delay/reverb effect.
+* Create an oscillator at a specific frequency (feeding back the output of three inverters connected in series creates an oscillator).
 
 ## RC with Schmitt Trigger
 
@@ -51,13 +56,12 @@ R &= \frac{-t}{\ln(1 - \frac{V}{V_{CC}})C} \htmlId{eqn-schmitt-trigger-delay-res
 \end{align}
 $$
 
-
 <Aside type="example" title="Example: Single RC/Schmitt Trigger Delay">
 Design a RC/Schmitt trigger circuit to create a 100us low-to-high delay from a +3.3V supply.
 
-We'll use the Texas Instruments SN74HC14 "SNx4HC14 Hex Inverters with Schmitt-Trigger Inputs" IC. <IRef iref="fig-schmitt-trigger-thresholds" /> shows the trigger thresholds for the SN74HC14 taken from the datasheet[^ti-snx4hc14-ds].
+We'll use the Texas Instruments SN74HC14 "SNx4HC14 Hex Inverters with Schmitt-Trigger Inputs" IC. <IRef iref="tbl-schmitt-trigger-thresholds" /> shows the trigger thresholds for the SN74HC14 taken from the datasheet[^ti-snx4hc14-ds].
 
-<table data-iref="fig-schmitt-trigger-thresholds">
+<table data-iref="tbl-schmitt-trigger-thresholds">
   <thead>
     <tr>
       <th>Parameter</th>
@@ -148,7 +152,19 @@ Solved! <IRef iref="fig-schmitt-trigger-delay-single-rc-example" /> shows the co
 
 ### Symmetrical Delays
 
-The circuit shown in <IRef iref="fig-schmitt-trigger-delay-single-rc" /> does not have symmetrical delays. The delay for the low-to-high transition is longer than the high-to-low transition. This will occur whenever the $V_{T+}$ and $V_{T-}$ thresholds for the Schmitt trigger are not symmetrical around the midpoint of the supply voltage. This perfect condition is unlikely to occur in practise.
+The circuit shown in <IRef iref="fig-schmitt-trigger-delay-single-rc" /> does not have symmetrical delays. The delay for the low-to-high transition is longer than the high-to-low transition. This will occur whenever the $V_{T+}$ and $V_{T-}$ thresholds for the Schmitt trigger are not symmetrical around the midpoint of the supply voltage. This perfect condition is unlikely to occur in practise. <IRef iref="tbl-schmitt-trigger-symmetry" /> summarises the typical thresholds for the SN74HC14 and calculates the center point of these thresholds. As you can see, they are not equal to 0.5 (but pretty close, being in the range of 0.44 to 0.46).
+
+<table data-iref="tbl-schmitt-trigger-symmetry">
+  <thead>
+    <tr><th>VCC</th>   <th>$V_{T+}$ (typ.)</th>   <th>Ratio of VCC</th>  <th>$V_{T-}$ (typ.)</th>   <th>Ratio of VCC</th>  <th>Thresholds Mid-point (ratio of VCC)</th></tr>
+  </thead>
+  <tbody>
+      <tr><td>2V</td>  <td>1.2V</td>              <td>0.6</td>           <td>0.6V</td>              <td>0.3</td>           <td>0.45</td></tr>
+      <tr><td>4.5V</td>  <td>2.5V</td>            <td>0.56</td>          <td>1.6V</td>              <td>0.36</td>          <td>0.46</td></tr>
+      <tr><td>6V</td>    <td>3.3V</td>            <td>0.55</td>          <td>2V</td>                <td>0.33</td>          <td>0.44</td></tr>
+  </tbody>
+  <caption>The threshold mid-points (as a ratio of VCC) for the Texas Instruments SN74HC14[^ti-snx4hc14-ds].</caption>
+</table>
 
 By adding another RC circuit between the two Schmitt triggers as shown in <IRef iref="fig-schmitt-trigger-delay-symmetrical" />, the delay time for the positive and negative going transitions can be made to be the same (well...more equal, there is still a rather large manufacturing tolerance for $V_{T+}$ and $V_{T-}$).
 
@@ -175,6 +191,7 @@ $$
 <Image iref="fig-schmitt-trigger-delay-symmetrical-example" src={import('./_assets/schmitt-trigger-delay-symmetrical-example.webp')} width="800px">The completed symmetrical delay RC/Schmitt trigger circuit, giving a delay of $100\,\mu s$.</Image>
 
 </Aside>
+
 ## 555 Timer
 
 A [555 timer](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay.
@@ -187,16 +204,28 @@ A great thing about this technique is that it works for both digital and analogu
 
 This is a common technique in oscilloscopes.
 
-### More Elaborate Delay Lines
+## Delay Lines
+
+You can purchase digital delay line ICs which have a series of "taps". Many of these delay line ICs work internally by using a chain of inverter gates, along with advanced circuitry to compensate for voltage and temperature variations and keep the delays accurate. Dallas Semiconductor pioneered this technology with the production of the DS1000, DS1100, DS1135, DS1110, DS1077, DS1085 and DS1086 ICs[^analog-devices-how-delay-lines-work].
+
+One example is the Analog Devices (formerly Dallas Semiconductor/Maxim) DS1110L "3V 10-Tap Silicon Delay Line" IC[^analog-devices-ds1110l-ds].
 
 ## Chains of Inverter Gates
 
-A chain of inverter gates can be used to create a digital delay.
+A chain of inverter gates can be used to create a digital delay. You utilize the propagation delay (the time it takes for the input signal to appear at the output) of the inverter gates to create the delay. Most inverter gates have propagation delays from 1-20ns, so this approach is useful for short delays.
 
 ## Bucket Brigades
+
+## Microcontroller
+
+Of course, a microcontroller can be used to delay both digital and analogue signals. You would need basic GPIO to interface with digital signals, and a ADC and DAC for analogue signals. Combined with some memory (typically RAM) setup as a FIFO buffer, you can create a delay of your choosing. You will want to choose a sample rate that is at least 2 times higher (Nyquist) than the highest frequency you want to delay. For analogue signals, the bit depth of the ADC and DAC will determine the resolution of the signal, and combined with the sample rate and desired delay time, will determine how much memory you will need.
+
+Using a microcontroller could be the best approach if you already have microcontroller, need to delay complex analogue signals, or need the delay to be highly configurable and/or updatable in the field (i.e. via a bootloader). Using a microcontroller is probably not the best option if all you need is a simple digital delay, or in needs to be really quick (1-20ns range).
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
 [^ti-snx4hc14-ds]: Texas Instruments (2021, Jun). _SNx4HC14 Hex Inverters with Schmitt-Trigger Inputs_ [datasheet]. Retrieved 2024-10-29, from https://www.ti.com/lit/ds/symlink/sn74hc14.pdf.
+[^analog-devices-ds1110l-ds]: Analog Devices (formerly Dallas Semiconductor/Maxim) (20023, Nov). _DS1110L - 3V 10-Tap Silicon Delay Line_. Retrieved 2024-10-30, from https://www.analog.com/media/en/technical-documentation/data-sheets/DS1110L-DS1110LE-500.pdf.
+[^analog-devices-how-delay-lines-work]: Analog Devices (2002, Aug 30). _How Delay Lines Work_. Retrieved 2024-10-30, from https://www.analog.com/en/resources/technical-articles/how-delay-lines-work.html.
