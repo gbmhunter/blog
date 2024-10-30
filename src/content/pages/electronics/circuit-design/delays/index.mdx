@@ -206,7 +206,11 @@ This is a common technique in oscilloscopes.
 
 ## Delay Lines
 
-You can purchase digital delay line ICs which have a series of "taps". Many of these delay line ICs work internally by using a chain of inverter gates, along with advanced circuitry to compensate for voltage and temperature variations and keep the delays accurate. Dallas Semiconductor pioneered this technology with the production of the DS1000, DS1100, DS1135, DS1110, DS1077, DS1085 and DS1086 ICs[^analog-devices-how-delay-lines-work].
+[Delay lines](/electronics/components/delay-lines/) are digital ICs which can delay a digital signal by a certain amount of time. Many of these delay line ICs work internally by using a long chain of inverter gates, along with advanced circuitry to compensate for voltage and temperature variations and keep the delays accurate. Most also provide "taps" which are pins that connect to various points along the inverter gates. Dallas Semiconductor pioneered this technology with the production of the DS1000, DS1100, DS1135, DS1110, DS1077, DS1085 and DS1086 ICs[^analog-devices-how-delay-lines-work].
+
+<IRef iref="fig-ds1135-internal-circuitry" /> shows the internal circuitry of the Analog Devices DS1135 "3-in-1 Delay Line" IC[^analog-devices-how-delay-lines-work].
+
+<Image iref="fig-ds1135-internal-circuitry" src={import('./_assets/ds1135-internal-circuitry.webp')} width="500px">The internal circuitry of the Analog Devices DS1135 "3-in-1 Delay Line" IC[^analog-devices-how-delay-lines-work].</Image>
 
 One example is the Analog Devices (formerly Dallas Semiconductor/Maxim) DS1110L "3V 10-Tap Silicon Delay Line" IC[^analog-devices-ds1110l-ds].
 
@@ -218,9 +222,25 @@ A chain of inverter gates can be used to create a digital delay. You utilize the
 
 ## Microcontroller
 
-Of course, a microcontroller can be used to delay both digital and analogue signals. You would need basic GPIO to interface with digital signals, and a ADC and DAC for analogue signals. Combined with some memory (typically RAM) setup as a FIFO buffer, you can create a delay of your choosing. You will want to choose a sample rate that is at least 2 times higher (Nyquist) than the highest frequency you want to delay. For analogue signals, the bit depth of the ADC and DAC will determine the resolution of the signal, and combined with the sample rate and desired delay time, will determine how much memory you will need.
+Of course, a microcontroller can be used to delay both digital and analogue signals. You would need basic GPIO to interface with digital signals, and a ADC and DAC for analogue signals. Combined with some memory (typically RAM) setup as a FIFO buffer, you can create a delay of your choosing. You will want to choose a sample rate that is at least 2 times higher than the highest frequency you want to delay (i.e. obey the Nyquist-Shannon sampling theorem). For analogue signals, the bit depth of the ADC and DAC will determine the resolution of the signal, and combined with the sample rate and desired delay time, will determine how much memory you will need.
 
-Using a microcontroller could be the best approach if you already have microcontroller, need to delay complex analogue signals, or need the delay to be highly configurable and/or updatable in the field (i.e. via a bootloader). Using a microcontroller is probably not the best option if all you need is a simple digital delay, or in needs to be really quick (1-20ns range).
+<IRef iref="fig-mcu-delay" /> shows a pseudo-circuit (high-level diagram) illustrating how to create an analogue delay using a microcontroller.
+
+<Image iref="fig-mcu-delay" src={import('./_assets/mcu-delay.webp')} width="600px">A pseudo-circuit illustrating how to create an analogue delay using a microcontroller.</Image>
+
+Using a microcontroller could be the best approach if you:
+
+- Already have microcontroller.
+- Need to delay complex analogue signals.
+- Need the delay to be highly configurable and/or updatable in the field (i.e. via a bootloader).
+- The signal already passes through the microcontroller.
+
+Using a microcontroller is probably not the best option if:
+
+- All you need is a simple digital delay.
+- It needs to be really quick (1-20ns range).
+- You don't already have a microcontroller.
+- The delay needs to be very reliable (e.g. not affected by firmware bugs or higher priority interrupts).
 
 {/* ======================================================================== */}
 {/* REFERENCES */}

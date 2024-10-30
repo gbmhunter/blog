@@ -3,16 +3,37 @@ authors: [gbmhunter]
 date: 2015-06-11
 description: Delay lines are components which delay an analogue or digital signal by a certain amount of time.
 image: ./_assets/cover-image.webp
-lastUpdated: 2015-06-11
-tags: [clocks, timing, delay lines]
+lastUpdated: 2024-10-30
+tags: [clocks, timing, delay lines, Analog Devices, Dallas Semiconductor, ICs]
 title: Delay Lines
 type: page
 ---
 
 <WarningIsNotes />
 
-## Delay Lines
+Delay lines are digital ICs which can delay a digital signal by a certain amount of time. They are used for a number of applications, including:
 
-Delay lines usually have multiple output pins, each which is connected to a different point in the delay sequence. These are called _taps_. The number of taps is an important parameter of the delay line.
+- Signal delay
+- HSYNC pulse generation in LCD displays[^analog-devices-ds1124-product-page]
+
+## How They Work
+
+Most delay ICs work by using a chain of inverter gates, along with advanced circuitry to compensate for voltage and temperature variations and keep the delays accurate[^analog-devices-how-delay-lines-work]. <IRef iref="fig-ds1135-internal-circuitry" /> shows the internal circuitry of the Analog Devices DS1135 "3-in-1 Delay Line" IC[^analog-devices-how-delay-lines-work].
+
+<Image iref="fig-ds1135-internal-circuitry" src={import('./_assets/ds1135-internal-circuitry.webp')} width="500px">The internal circuitry of the Analog Devices DS1135 "3-in-1 Delay Line" IC[^analog-devices-how-delay-lines-work].</Image>
+
+Delay lines usually have multiple output pins, each which is connected to a different point in the delay sequence. These are called _taps_. The number of taps is an important parameter of the delay line[^analog-devices-ds1110l-ds].
 
 Delay until first tap, and the incremental delay are also important parameters.
+
+## Further Reading
+
+See the [Delay Circuits page](/electronics/circuit-design/delays/) for a summary of various types of analogue and digital delay circuits.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^analog-devices-ds1110l-ds]: Analog Devices (formerly Dallas Semiconductor/Maxim) (20023, Nov). _DS1110L - 3V 10-Tap Silicon Delay Line_. Retrieved 2024-10-30, from https://www.analog.com/media/en/technical-documentation/data-sheets/DS1110L-DS1110LE-500.pdf.
+[^analog-devices-how-delay-lines-work]: Analog Devices (2002, Aug 30). _How Delay Lines Work_. Retrieved 2024-10-30, from https://www.analog.com/en/resources/technical-articles/how-delay-lines-work.html.
+[^analog-devices-ds1124-product-page]: Analog Devices. _DS1124 - 5.0V 8-Bit Programmable Timing Element_. Retrieved 2024-10-30, from https://www.analog.com/en/products/ds1124.html.
