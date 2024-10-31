@@ -200,6 +200,8 @@ A [555 timer](/electronics/components/timers-and-multivibrators/) can be configu
 
 It sounds almost too simple, but a suitably sized length of wire (or fibre-optic cable) can be used to create short delays. The propagation of an electrical signal is fast (around 0.6c), but not instant! Light travels about 30cm in one nanosecond, so you can get delays in the 0.1 to 100ns+ range with cable.
 
+<Image iref="fig-propagation-of-electrical-signal-down-wire" src={import('./_assets/propagation-of-electrical-signal-down-wire.webp')} width="600px">The propagation of an electrical signal down a wire.</Image>
+
 A great thing about this technique is that it works for both digital and analogue and is bi-directional.
 
 This is a common technique in oscilloscopes.
@@ -219,6 +221,10 @@ One example is the Analog Devices (formerly Dallas Semiconductor/Maxim) DS1110L 
 A chain of inverter gates can be used to create a digital delay. You utilize the propagation delay (the time it takes for the input signal to appear at the output) of the inverter gates to create the delay. Most inverter gates have propagation delays from 1-20ns, so this approach is useful for short delays.
 
 ## Bucket Brigades
+
+## Analogue Filters
+
+Analogue filter
 
 ## Microcontroller
 
