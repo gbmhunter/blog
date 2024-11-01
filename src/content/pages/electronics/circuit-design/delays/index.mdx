@@ -196,15 +196,21 @@ $$
 
 A [555 timer](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay.
 
-## Long Piece of Wire
+## A Long Piece of Wire
 
-It sounds almost too simple, but a suitably sized length of wire (or fibre-optic cable) can be used to create short delays. The propagation of an electrical signal is fast (around 0.6c), but not instant! Light travels about 30cm in one nanosecond, so you can get delays in the 0.1 to 100ns+ range with cable.
+It sounds almost too simple, but a suitably sized length of wire (or fibre-optic cable) can be used to create short delays. The propagation of an electrical signal in copper wire is fast (around 0.7c, where c is the speed of light in a vacuum), but not instant! Light travels about 30cm in one nanosecond, so you can get delays in the 0.1 to 100ns+ range with right length of cable.
 
-<Image iref="fig-propagation-of-electrical-signal-down-wire" src={import('./_assets/propagation-of-electrical-signal-down-wire.webp')} width="600px">The propagation of an electrical signal down a wire.</Image>
+<Image iref="fig-propagation-of-electrical-signal-down-wire" src={import('./_assets/propagation-of-electrical-signal-down-wire.webp')} width="400px">The propagation of an electrical signal down a wire.</Image>
 
-A great thing about this technique is that it works for both digital and analogue and is bi-directional.
+A great thing about this technique is that it works for both digital and analogue and is bi-directional. This is a common technique in oscilloscopes. The exact speed of the signal depends on many factors including the dielectric surrounding the copper wire. Most sources give a speed of around 0.7c for a signal in a typical copper wire[^physics-stack-exchange-speed-of-signals-wire-vs-fibre-optic].
 
-This is a common technique in oscilloscopes.
+<Aside type="tip">
+The fast propagation of the electrical signal is not to be confused with the speed of the electrons (drift velocity) which is much slower. For a DC current of 1A in 2mm diameter copper wire, the drift velocity is only about 8 cm per hour[^wikipedia-speed-of-electricity]!
+</Aside>
+
+An interesting application of this technique was used by the IEX stock exchange. High-frequency traders typically leverage microsecond-scale delays inherent in stock market information to "game" the market. This style of trading (latency arbitrage) is generally viewed negatively and not conducive to a healthy market. To combat this, IEX created a "Speed Bump" (shown in <IRef iref="fig-iex-speed-bump-fibre-optic-cable" />) which contained 61km of fibre optic cable, that they routed all traffic to their stock market through[^iex-speed-bump]. This spool of cable introduced a 350us delay to all market data, allowing multiple markets time to adjust to new data, and preventing latency arbitrage from being profitable[^hackaday-brakes-on-high-frequency-trades]. The neat physical delay trick also side-stepped many of the legal issues around reliability and control had they implemented the delay in software.
+
+<Image iref="fig-iex-speed-bump-fibre-optic-cable" src={import('./_assets/iex-speed-bump-fibre-optic-cable-photo.webp')} width="800px">The "Speed Bump" at the IEX stock exchange[^iex-speed-bump].</Image>
 
 ## Delay Lines
 
@@ -255,3 +261,7 @@ Using a microcontroller is probably not the best option if:
 [^ti-snx4hc14-ds]: Texas Instruments (2021, Jun). _SNx4HC14 Hex Inverters with Schmitt-Trigger Inputs_ [datasheet]. Retrieved 2024-10-29, from https://www.ti.com/lit/ds/symlink/sn74hc14.pdf.
 [^analog-devices-ds1110l-ds]: Analog Devices (formerly Dallas Semiconductor/Maxim) (20023, Nov). _DS1110L - 3V 10-Tap Silicon Delay Line_. Retrieved 2024-10-30, from https://www.analog.com/media/en/technical-documentation/data-sheets/DS1110L-DS1110LE-500.pdf.
 [^analog-devices-how-delay-lines-work]: Analog Devices (2002, Aug 30). _How Delay Lines Work_. Retrieved 2024-10-30, from https://www.analog.com/en/resources/technical-articles/how-delay-lines-work.html.
+[^wikipedia-speed-of-electricity]: Wikipedia (2024, Sep 7). _Speed of electricity_. Retrieved 2024-11-01, from https://en.wikipedia.org/wiki/Speed_of_electricity.
+[^physics-stack-exchange-speed-of-signals-wire-vs-fibre-optic]: Physics StackExchange (2019, Jun 2). _Speed of Signals in a Wire vs Fiber Optic Cable_. Retrieved 2024-11-01, from https://physics.stackexchange.com/questions/274886/speed-of-signals-in-a-wire-vs-fiber-optic-cable.
+[^hackaday-brakes-on-high-frequency-trades]: Dan Maloney (2019, Oct 31). _Putting The Brakes on High-Frequency Trading with Physics_. Hackaday. Retrieved 2024-11-01, from https://hackaday.com/2019/02/26/putting-the-brakes-on-high-frequency-trading-with-physics/.
+[^iex-speed-bump]: IEX. _Technology > The Speed Bump_. Retrieved 2024-11-01, from https://www.iexexchange.io/technology#the-speed-bump.
