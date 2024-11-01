@@ -21,11 +21,11 @@ _Delay circuits_ are used to delay the progression of a analogue or digital sign
 
 A [RC circuit](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) combined with  Schmitt triggers can be used to create a digital delay. The RC circuit converts a sharp input transition into a slower transition based on the RC circuit time constant. The Schmitt trigger then "sharpens" up the edges again by switching it's output quickly when the input reaches certain thresholds. <IRef iref="fig-schmitt-trigger-delay-single-rc" /> shows the circuit. This uses two inverting Schmitt triggers -- the purpose of the second one (U2) is to re-invert the signal so it is the same polarity as the input.
 
-<Image iref="fig-schmitt-trigger-delay-single-rc" src={import('./_assets/schmitt-trigger-delay-single-rc.webp')} width="600px">A delay circuit made from a RC circuit and a Schmitt trigger.</Image>
+<Image iref="fig-schmitt-trigger-delay-single-rc" src={import('./_assets/schmitt-trigger-delay-single-rc.svg')} width="600px">A delay circuit made from a RC circuit and a Schmitt trigger.</Image>
 
 <IRef iref="fig-schmitt-trigger-single-rc-waveforms" /> shows the waveforms for the single RC delay circuit. Notice how the delays are not symmetrical. The delay for the low-to-high transition is longer than the high-to-low transition. This can be fixed by adding another RC circuit between the two Schmitt triggers (more on this below).
 
-<Image iref="fig-schmitt-trigger-single-rc-waveforms" src={import('./_assets/schmitt-trigger-single-rc-waveforms.webp')} width="800px">Waveforms for the single RC delay circuit in <IRef iref="fig-schmitt-trigger-delay-single-rc" />.</Image>
+<Image iref="fig-schmitt-trigger-single-rc-waveforms" src={import('./_assets/schmitt-trigger-single-rc-waveforms.svg')} width="800px">Waveforms for the single RC delay circuit in <IRef iref="fig-schmitt-trigger-delay-single-rc" />.</Image>
 
 One downside to this circuit is that there is a "cooldown" period between transitions. This is the time it takes to the RC circuit to settle so that it can work correctly for the next transition. As such, the cooldown is normally about $5\tau$ (5 time constants) where $\tau = RC$. If transitions occur within this cooldown period, the circuit will not work as expected, sometimes transitioning to quickly (the RC circuit has not settled yet, and already has a head-start in going back in the other direction), or not transitioning at all (e.g. a transition to high and then back to low before the output has switched would result in no output change).
 
@@ -146,7 +146,7 @@ $$
 
 Solved! <IRef iref="fig-schmitt-trigger-delay-single-rc-example" /> shows the completed circuit. SN74HC14 contains 6 individual Schmitt triggers, so we use 2 of them from the same IC, hence `U1A` and `U1B`.
 
-<Image iref="fig-schmitt-trigger-delay-single-rc-example" src={import('./_assets/schmitt-trigger-delay-single-rc-example.webp')} width="800px">The completed RC with Schmitt trigger circuit, giving a positive-going edge delay of $100\,\mu s$.</Image>
+<Image iref="fig-schmitt-trigger-delay-single-rc-example" src={import('./_assets/schmitt-trigger-delay-single-rc-example.svg')} width="800px">The completed RC with Schmitt trigger circuit, giving a positive-going edge delay of $100\,\mu s$.</Image>
 
 </Aside>
 
@@ -168,7 +168,7 @@ The circuit shown in <IRef iref="fig-schmitt-trigger-delay-single-rc" /> does no
 
 By adding another RC circuit between the two Schmitt triggers as shown in <IRef iref="fig-schmitt-trigger-delay-symmetrical" />, the delay time for the positive and negative going transitions can be made to be the same (well...more equal, there is still a rather large manufacturing tolerance for $V_{T+}$ and $V_{T-}$).
 
-<Image iref="fig-schmitt-trigger-delay-symmetrical" src={import('./_assets/schmitt-trigger-delay-symmetrical.webp')} width="800px">A RC/Schmitt trigger delay circuit with symmetrical positive and negative going delays.</Image>
+<Image iref="fig-schmitt-trigger-delay-symmetrical" src={import('./_assets/schmitt-trigger-delay-symmetrical.svg')} width="800px">A RC/Schmitt trigger delay circuit with symmetrical positive and negative going delays.</Image>
 
 When doing this you will want to split your delay time evenly between the two RC circuits (i.e. identical RC circuits). You can use the same process as in the example above with a single RC element, but set $t$ to half the desired delay time.
 
@@ -188,7 +188,7 @@ $$
 
 <IRef iref="fig-schmitt-trigger-delay-symmetrical-example" /> shows the completed circuit.
 
-<Image iref="fig-schmitt-trigger-delay-symmetrical-example" src={import('./_assets/schmitt-trigger-delay-symmetrical-example.webp')} width="800px">The completed symmetrical delay RC/Schmitt trigger circuit, giving a delay of $100\,\mu s$.</Image>
+<Image iref="fig-schmitt-trigger-delay-symmetrical-example" src={import('./_assets/schmitt-trigger-delay-symmetrical-example.svg')} width="800px">The completed symmetrical delay RC/Schmitt trigger circuit, giving a delay of $100\,\mu s$.</Image>
 
 </Aside>
 
@@ -200,7 +200,7 @@ A [555 timer](/electronics/components/timers-and-multivibrators/) can be configu
 
 It sounds almost too simple, but a suitably sized length of wire (or fibre-optic cable) can be used to create short delays. The propagation of an electrical signal in copper wire is fast (around 0.7c, where c is the speed of light in a vacuum), but not instant! Light travels about 30cm in one nanosecond, so you can get delays in the 0.1 to 100ns+ range with right length of cable.
 
-<Image iref="fig-propagation-of-electrical-signal-down-wire" src={import('./_assets/propagation-of-electrical-signal-down-wire.webp')} width="400px">The propagation of an electrical signal down a wire.</Image>
+<Image iref="fig-propagation-of-electrical-signal-down-wire" src={import('./_assets/propagation-of-electrical-signal-down-wire.svg')} width="400px">The propagation of an electrical signal down a wire.</Image>
 
 A great thing about this technique is that it works for both digital and analogue and is bi-directional. This is a common technique in oscilloscopes. The exact speed of the signal depends on many factors including the dielectric surrounding the copper wire. Most sources give a speed of around 0.7c for a signal in a typical copper wire[^physics-stack-exchange-speed-of-signals-wire-vs-fibre-optic].
 
@@ -212,9 +212,21 @@ An interesting application of this technique was used by the IEX stock exchange.
 
 <Image iref="fig-iex-speed-bump-fibre-optic-cable" src={import('./_assets/iex-speed-bump-fibre-optic-cable-photo.webp')} width="800px">The "Speed Bump" at the IEX stock exchange[^iex-speed-bump].</Image>
 
+## Chains of Inverter Gates
+
+A chain of inverter gates can be used to create a digital delay. You utilize the propagation delay (the time it takes for the input signal to appear at the output) of the inverter gates to create the delay. Most inverter gates have propagation delays from 0.5-10ns, so this approach is useful for short delays. You can do this yourself if delay does not need to be very precise ($t_{pd}$ only gives an approximation of the total delay) or long (chaining together hundreds of discrete gates starts to become impractical). If you want more precision or length, consider using a dedicated delay line IC (see below).
+
+<Image iref="fig-series-inverter-based-delay-schematic" src={import('./_assets/series-inverter-based-delay-schematic.svg')} width="600px">A series of inverter gates creating a digital delay.</Image>
+
+<Aside type="example" title="Example: Series Inverter Based Delay">
+
+For example, if I choose to use the Diodes Incorporated 74HC04 "Hex Inverter" IC, each inverter gate has a propagation delay $t_{pd}$ of $9\,ns$ (typical) at $V_{CC} = 4.5\,V$[^diodes-inc-74hc04-hex-inverters-ds]. Chaining 4 of these together would give a delay of about $36\,ns$.
+
+</Aside>
+
 ## Delay Lines
 
-[Delay lines](/electronics/components/delay-lines/) are digital ICs which can delay a digital signal by a certain amount of time. Many of these delay line ICs work internally by using a long chain of inverter gates, along with advanced circuitry to compensate for voltage and temperature variations and keep the delays accurate. Most also provide "taps" which are pins that connect to various points along the inverter gates. Dallas Semiconductor pioneered this technology with the production of the DS1000, DS1100, DS1135, DS1110, DS1077, DS1085 and DS1086 ICs[^analog-devices-how-delay-lines-work].
+[Delay lines](/electronics/components/delay-lines/) are digital ICs which can delay a digital signal by a certain amount of time. Many of these delay line ICs work internally by using a long chain of inverter gates (very similar to how you would wire them discretely), but also with advanced circuitry to compensate for voltage and temperature variations and keep the delays accurate. Most also provide "taps" which are pins that connect to various points along the inverter gates. Dallas Semiconductor pioneered this technology with the production of the DS1000, DS1100, DS1135, DS1110, DS1077, DS1085 and DS1086 ICs[^analog-devices-how-delay-lines-work].
 
 <IRef iref="fig-ds1135-internal-circuitry" /> shows the internal circuitry of the Analog Devices DS1135 "3-in-1 Delay Line" IC[^analog-devices-how-delay-lines-work].
 
@@ -222,15 +234,11 @@ An interesting application of this technique was used by the IEX stock exchange.
 
 One example is the Analog Devices (formerly Dallas Semiconductor/Maxim) DS1110L "3V 10-Tap Silicon Delay Line" IC[^analog-devices-ds1110l-ds].
 
-## Chains of Inverter Gates
+## Bucket Brigade Devices
 
-A chain of inverter gates can be used to create a digital delay. You utilize the propagation delay (the time it takes for the input signal to appear at the output) of the inverter gates to create the delay. Most inverter gates have propagation delays from 1-20ns, so this approach is useful for short delays.
+Bucket brigade devices (BBDs) are analogue delay ICs which work by "shuffling" sampled inputs voltages along a chain of capacitors until it reaches the output. They were commonly used in early audio processing systems, and still find use today in specialty items such as guitar effect pedals[^wikipedia-bucket-brigade-device].
 
-## Bucket Brigades
-
-## Analogue Filters
-
-Analogue filter
+BBDs usually have quite a number of buckets in them! Common sizes include 256, 512, 1024, 2048, and 4096 buckets per chip[^gerlt-technologies-bbds]. Because they were designed for audio, delays ranged from about 5 ms to 200 ms. Delays longer than this can be achieved by chaining multiple BBDs together.
 
 ## Microcontroller
 
@@ -238,7 +246,7 @@ Of course, a microcontroller can be used to delay both digital and analogue sign
 
 <IRef iref="fig-mcu-delay" /> shows a pseudo-circuit (high-level diagram) illustrating how to create an analogue delay using a microcontroller.
 
-<Image iref="fig-mcu-delay" src={import('./_assets/mcu-delay.webp')} width="600px">A pseudo-circuit illustrating how to create an analogue delay using a microcontroller.</Image>
+<Image iref="fig-mcu-delay" src={import('./_assets/mcu-delay.svg')} width="600px">A pseudo-circuit illustrating how to create an analogue delay using a microcontroller.</Image>
 
 Using a microcontroller could be the best approach if you:
 
@@ -265,3 +273,6 @@ Using a microcontroller is probably not the best option if:
 [^physics-stack-exchange-speed-of-signals-wire-vs-fibre-optic]: Physics StackExchange (2019, Jun 2). _Speed of Signals in a Wire vs Fiber Optic Cable_. Retrieved 2024-11-01, from https://physics.stackexchange.com/questions/274886/speed-of-signals-in-a-wire-vs-fiber-optic-cable.
 [^hackaday-brakes-on-high-frequency-trades]: Dan Maloney (2019, Oct 31). _Putting The Brakes on High-Frequency Trading with Physics_. Hackaday. Retrieved 2024-11-01, from https://hackaday.com/2019/02/26/putting-the-brakes-on-high-frequency-trading-with-physics/.
 [^iex-speed-bump]: IEX. _Technology > The Speed Bump_. Retrieved 2024-11-01, from https://www.iexexchange.io/technology#the-speed-bump.
+[^diodes-inc-74hc04-hex-inverters-ds]: Diodes Incorporated (2013, Jan). _74HC04 Hex Inverters_ [datasheet]. Retrieved 2024-11-01, from https://www.diodes.com/datasheet/download/74HC04.pdf.
+[^wikipedia-bucket-brigade-device]: Wikipedia (2024, Oct 13). _Bucket brigade device_. Retrieved 2024-11-01, from https://en.wikipedia.org/wiki/Bucket-brigade_device.
+[^gerlt-technologies-bbds]: Gerlt Technologies. _Bucket Brigade Delay ICs (BBDs)_. Retrieved 2024-11-01, from https://www.gerlttechnologies.com/index.php/more-info/components/173-bucket-brigade-delay-ics-bbds.

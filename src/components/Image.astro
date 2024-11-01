@@ -67,6 +67,13 @@ if (src instanceof Promise) {
     filter: drop-shadow(0 0 10px var(--red-glow-color));
   }
 
+  /**
+   * Make the background to images white, this helps for .svg diagrams.
+   */
+  .image-wrapper img {
+    background-color: white;
+  }
+
 </style>
 
 <!-- It is safe to include this multiple times (it is also included in components such as IRef.astro) as it will

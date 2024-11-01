@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 537 273" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <use xlink:href="#_Image1" x="443.714" y="251.019" width="90px" height="22px"/>
+    <g transform="matrix(0.328709,0,0,0.328709,258.443,-101.478)">
+        <g transform="matrix(33.3333,0,0,33.3333,809.236,1122.3)">
+        </g>
+        <text x="590.551px" y="1122.3px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:white;">mbedded.ninja</text>
+    </g>
+    <g transform="matrix(2.368,0,0,1.728,-990.236,-4036.54)">
+        <rect x="472.441" y="2362.2" width="118.11" height="118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;"/>
+    </g>
+    <g transform="matrix(1.44694,0,0,0.64,-502.176,-1451.34)">
+        <rect x="472.441" y="2362.2" width="118.11" height="118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.43px;"/>
+    </g>
+    <g transform="matrix(1.076,0,0,0.320691,-302.835,-666.91)">
+        <rect x="472.441" y="2362.2" width="118.11" height="118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.43px;"/>
+    </g>
+    <g transform="matrix(0.896,0,0,0.64,-279.685,-1315.28)">
+        <path d="M472.441,2385.83L413.386,2385.83" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.49px;"/>
+    </g>
+    <g transform="matrix(0.896,0,0,0.64,-136.063,-1315.28)">
+        <path d="M590.551,2385.83L649.606,2385.83" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.49px;"/>
+    </g>
+    <g transform="matrix(0.64,0,0,0.64,-1421.1,-1708.35)">
+        <g transform="matrix(33.3333,0,0,33.3333,2562.5,3011.94)">
+        </g>
+        <text x="2492.13px" y="3011.94px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:rgb(234,117,0);">ADC</text>
+    </g>
+    <g transform="matrix(0.64,0,0,0.64,-1277.48,-1708.43)">
+        <g transform="matrix(33.3333,0,0,33.3333,2562.5,3011.94)">
+        </g>
+        <text x="2492.13px" y="3011.94px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:rgb(234,117,0);">DAC</text>
+    </g>
+    <g transform="matrix(0.64,0,0,0.64,-1356.14,-1844.41)">
+        <g transform="matrix(33.3333,0,0,33.3333,2576.41,3011.94)">
+        </g>
+        <text x="2502.33px" y="3011.94px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:rgb(234,117,0);">RAM</text>
+    </g>
+    <g transform="matrix(0.64,0,0,0.64,-1466.46,-1889.76)">
+        <g transform="matrix(33.3333,0,0,33.3333,2577.33,3011.94)">
+        </g>
+        <text x="2501.41px" y="3011.94px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:rgb(234,117,0);">MCU</text>
+    </g>
+    <g transform="matrix(0.64,0,0,0.64,-1356.14,-1810.43)">
+        <g transform="matrix(33.3333,0,0,33.3333,2577.33,3011.94)">
+        </g>
+        <text x="2501.41px" y="3011.94px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:rgb(234,117,0);">FIFO</text>
+    </g>
+    <g transform="matrix(0.461538,0,0,0.428571,-205.257,-1149.02)">
+        <path d="M755.906,3174.8L801.26,3121.89L952.441,3121.89L952.441,3227.72L801.26,3227.72L755.906,3174.8Z" style="fill:none;stroke:rgb(52,101,164);stroke-width:5.99px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(-0.461538,0,0,0.428571,741.95,-1149.02)">
+        <path d="M755.906,3174.8L801.26,3121.89L952.441,3121.89L952.441,3227.72L801.26,3227.72L755.906,3174.8Z" style="fill:none;stroke:rgb(52,101,164);stroke-width:5.99px;stroke-linecap:butt;"/>
+    </g>
+    <g id="sine-wave" transform="matrix(1,0,0,1,-1572.28,-2963.15)">
+        <g transform="matrix(0.64,0,0,0.64,75.5906,831.496)">
+            <path d="M2362.2,3661.42C2362.2,3625.98 2378.74,3614.17 2385.83,3614.17C2392.19,3614.17 2409.45,3625.98 2409.45,3661.42" style="fill:none;stroke:rgb(234,117,0);stroke-width:4.17px;"/>
+        </g>
+        <g transform="matrix(-0.64,-7.83774e-17,7.83774e-17,-0.64,3159.69,5518.03)">
+            <path d="M2362.2,3661.42C2362.2,3625.98 2378.74,3614.17 2385.83,3614.17C2392.19,3614.17 2409.45,3625.98 2409.45,3661.42" style="fill:none;stroke:rgb(234,117,0);stroke-width:4.17px;"/>
+        </g>
+    </g>
+    <g id="sine-wave1" serif:id="sine-wave" transform="matrix(1,0,0,1,-1126.3,-2963.15)">
+        <g transform="matrix(0.64,0,0,0.64,75.5906,831.496)">
+            <path d="M2362.2,3661.42C2362.2,3625.98 2378.74,3614.17 2385.83,3614.17C2392.19,3614.17 2409.45,3625.98 2409.45,3661.42" style="fill:none;stroke:rgb(234,117,0);stroke-width:4.17px;"/>
+        </g>
+        <g transform="matrix(-0.64,-7.83774e-17,7.83774e-17,-0.64,3159.69,5518.03)">
+            <path d="M2362.2,3661.42C2362.2,3625.98 2378.74,3614.17 2385.83,3614.17C2392.19,3614.17 2409.45,3625.98 2409.45,3661.42" style="fill:none;stroke:rgb(234,117,0);stroke-width:4.17px;"/>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,-22.6772,-90.7087)">
+        <g transform="matrix(1,-0,-0,1,22.6772,90.7087)">
+            <path d="M190.853,107.404L204.094,109.566L194.42,118.861L190.853,107.404Z" style="fill:rgb(234,117,0);"/>
+            <path d="M234.331,211.613C244.586,210.984 258.522,209.035 257.008,196.535C255.494,184.036 229.77,166.809 219.213,158.74C209.968,151.675 180.178,122.197 194.928,112.419" style="fill:none;stroke:rgb(234,117,0);stroke-width:2.67px;"/>
+        </g>
+    </g>
+    <g transform="matrix(-1,0,0,1,559.484,-90.7087)">
+        <g transform="matrix(-1,0,0,1,559.484,90.7087)">
+            <path d="M289.85,216.151L302.476,211.613L291.27,204.236L289.85,216.151Z" style="fill:rgb(234,117,0);"/>
+            <path d="M292.943,210.477C285.35,208.92 278.731,205.353 279.799,196.535C281.313,184.036 307.037,166.809 317.594,158.74C328.151,150.672 365.504,113.372 332.712,109.566" style="fill:none;stroke:rgb(234,117,0);stroke-width:2.67px;"/>
+        </g>
+    </g>
+    <defs>
+        <image id="_Image1" width="90px" height="22px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAAWCAYAAABAMosVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADE0lEQVRYhc2Y0XHjMAxEIVmlpIWUkKpTQlpIKSfpPmzYq9UuSDq+zGGGI0oiCeAJBGhPMSjf7x/T6JyIiLevz/0n8/8nSV9GpOl0AaYHWMug34Ku7BjVXfrSgi+VCbiT6atno1/7pQ7/kuymb4GfnCTIk7i2oDuDWvqfWetV0CvdlV53PQE/KADIDBZbiH5lnIOhdFXSs2brXWXHqO4dmro/wL4rIciqzeY5G+uMQundKa21eqLc6eZ+SxRQbFucwd9hTxEl5BmuM90r2D2Q0cmeHdLcpoN6UUcvdAV5iwdc7p8iezFGMNwL9R1sZRhelaPV7nBrtaCPfmSl19mAYLeIWGG9Na5cNta/mGhmwAvcI3SE7QxzDrsUhU47yFWUuzFOL+rjPvrD0bzGA/IK4zZaY4+4AnRGIOzLbewlzrBVVKvoY3kVaHd/Kk60/izsqIQhq0DLMZxGD6D5q6YxCHeJB3CO6pw3Wgx7i2svVFeYWCdDcikkfWLQf2jsdltTwl5gMXZ8jnOe5lalD4ShpILcG9EbPVcFiSNaFfsKNoNe6X3qSxaYOqaI2L/fP6aqGGJfnT5UnlaRyH12yEFGcaBzbIKdwNFT9Q8P2e0oBXSie7Wzc+49shXoZ0QBQoMUPJ7jtiz22XF+zlvW2aDSpPv4KJka1EdyfkTEuRimUS4P5pEGt0huX6XMpQ3UxbBcvsf1qrzMaUPl6bQd/XBw0Q5Xc1p+StDKET43RlxzdBrPBbEyooosNV+t01MEW6kD0wza7/I25uiNmvuwd1nooYLrkn9GtttCLRmBjNI6dTjHWU8rVyt/EnSeOrKvgKONp4hmA1fxLgHnWdIVkh5xeb2SnsgeAd1qrBt/rPTAtj/BEahTok4brwDdM1+Bxn65hUPD5nsHm3d6Bfsgy9vX5377GY4vEXIa3fOnEl57pBp7OB6ZMapIqb7TOwIZ10zQCLzK1/bUETApjzQqJ0dog0ZgPzOnOo2oa6WvOtqpiObDgSqMVlnrT3++74liPrb9K6mOWj2gsd8KIA5ChC5TV/4f/RcqMuqcLvjyegAAAABJRU5ErkJggg=="/>
+    </defs>
+</svg>
