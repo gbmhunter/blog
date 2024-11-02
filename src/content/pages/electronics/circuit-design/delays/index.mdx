@@ -238,7 +238,11 @@ One example is the Analog Devices (formerly Dallas Semiconductor/Maxim) DS1110L 
 
 Bucket brigade devices (BBDs) are analogue delay ICs which work by "shuffling" sampled inputs voltages along a chain of capacitors until it reaches the output. They were commonly used in early audio processing systems, and still find use today in specialty items such as guitar effect pedals[^wikipedia-bucket-brigade-device].
 
-BBDs usually have quite a number of buckets in them! Common sizes include 256, 512, 1024, 2048, and 4096 buckets per chip[^gerlt-technologies-bbds]. Because they were designed for audio, delays ranged from about 5 ms to 200 ms. Delays longer than this can be achieved by chaining multiple BBDs together.
+<IRef iref="fig-bucket-brigade-delay-basic-internal-schematic" /> shows the basic internal design of a basic bucket brigade IC.
+
+<Image iref="fig-bucket-brigade-delay-basic-internal-schematic" src={import('./_assets/bucket-brigade-delay-basic-internal-schematic.webp')} width="900px">The basic internal design of a bucket brigade IC[^electrosmash-bucket-brigade-devices-mn3007].</Image>
+
+BBDs usually have quite a number of buckets in them! Common sizes include 256, 512, 1024, 2048, and 4096 buckets per chip. Because they were designed for audio, delays ranged from about 5 ms to 200 ms[^gerlt-technologies-bbds]. Delays longer than this can be achieved by chaining multiple BBDs together.
 
 ## Microcontroller
 
@@ -276,3 +280,4 @@ Using a microcontroller is probably not the best option if:
 [^diodes-inc-74hc04-hex-inverters-ds]: Diodes Incorporated (2013, Jan). _74HC04 Hex Inverters_ [datasheet]. Retrieved 2024-11-01, from https://www.diodes.com/datasheet/download/74HC04.pdf.
 [^wikipedia-bucket-brigade-device]: Wikipedia (2024, Oct 13). _Bucket brigade device_. Retrieved 2024-11-01, from https://en.wikipedia.org/wiki/Bucket-brigade_device.
 [^gerlt-technologies-bbds]: Gerlt Technologies. _Bucket Brigade Delay ICs (BBDs)_. Retrieved 2024-11-01, from https://www.gerlttechnologies.com/index.php/more-info/components/173-bucket-brigade-delay-ics-bbds.
+[^electrosmash-bucket-brigade-devices-mn3007]: ElectroSmash. _Bucket Brigade Devices: MN3007_. Retrieved 2024-11-02, from https://www.electrosmash.com/mn3007-bucket-brigade-devices.
