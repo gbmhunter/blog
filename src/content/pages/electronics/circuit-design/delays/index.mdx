@@ -194,7 +194,11 @@ $$
 
 ## 555 Timer
 
-A [555 timer](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay.
+[555 timers](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay. To wait for a low-to-high transition on the input, delay for a while, and then present a fixed width high pulse on the output you have to use two 555 timers. You will want to configure both 555's in monostable mode.
+
+Note one of the key behaviours with the above 555 circuit is that when the input transitions from low-to-high, the output only stays high for a fixed amount of time before returning to it's original state. You could view it more of a pulse generator than a delay circuit.
+
+I'm not sure if you can easily use 555 timers to delay input transitions and have the output stay in the same state as the input indefinitely (until the next input transition) as you can with the RC/Schmitt trigger circuit. My guess is yes, but I haven't put the time/energy into working out how. You would also have to consider what happens if the input changes before the output has "caught up".
 
 ## A Long Piece of Wire
 
