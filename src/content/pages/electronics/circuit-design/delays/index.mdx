@@ -194,9 +194,19 @@ $$
 
 ## 555 Timer
 
-[555 timers](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay. To wait for a low-to-high transition on the input, delay for a while, and then present a fixed width high pulse on the output you have to use two 555 timers. You will want to configure both 555's in monostable mode.
+[555 timers](/electronics/components/timers-and-multivibrators/) can be configured to create a variable digital delay. <IRef iref="fig-555-timer-delay" /> shows a circuit using a 555 timer configured in monostable mode. It will output a fixed width pulse after a high-to-low transition on the input.
 
-Note one of the key behaviours with the above 555 circuit is that when the input transitions from low-to-high, the output only stays high for a fixed amount of time before returning to it's original state. You could view it more of a pulse generator than a delay circuit.
+<Image iref="fig-555-timer-delay" src={import('./_assets/555-timer-delay.svg')} width="500px">A 555 timer configured to output a fixed width pulse after a high-to-low transition on the input.</Image>
+
+The width of the output pulse is determined by the values of $R_1$ and $C_1$[^ti-xx555-prevision-timers-ds]:
+
+$$
+\begin{align}
+t_{pulse} &= 1.1 R_1 C_1 \\
+\end{align}
+$$
+
+Note one of the key behaviours with the circuit in <IRef iref="fig-555-timer-delay" /> is that when the input transitions from high-to-low, the output only stays high for a fixed amount of time before returning to it's original state. You could view it more of a pulse generator than a delay circuit.
 
 I'm not sure if you can easily use 555 timers to delay input transitions and have the output stay in the same state as the input indefinitely (until the next input transition) as you can with the RC/Schmitt trigger circuit. My guess is yes, but I haven't put the time/energy into working out how. You would also have to consider what happens if the input changes before the output has "caught up".
 
@@ -285,3 +295,4 @@ Using a microcontroller is probably not the best option if:
 [^wikipedia-bucket-brigade-device]: Wikipedia (2024, Oct 13). _Bucket brigade device_. Retrieved 2024-11-01, from https://en.wikipedia.org/wiki/Bucket-brigade_device.
 [^gerlt-technologies-bbds]: Gerlt Technologies. _Bucket Brigade Delay ICs (BBDs)_. Retrieved 2024-11-01, from https://www.gerlttechnologies.com/index.php/more-info/components/173-bucket-brigade-delay-ics-bbds.
 [^electrosmash-bucket-brigade-devices-mn3007]: ElectroSmash. _Bucket Brigade Devices: MN3007_. Retrieved 2024-11-02, from https://www.electrosmash.com/mn3007-bucket-brigade-devices.
+[^ti-xx555-prevision-timers-ds]: Texas Instruments (2014, Sep). _NA555, NE555, SA555, SE555 - xx555 Precision Timers_ [datasheet]. Retrieved 2024-11-03, from https://www.ti.com/lit/ds/symlink/sa555.pdf.
