@@ -1,126 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 499 273" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <use xlink:href="#_Image1" x="419.162" y="249.654" width="80px" height="23px"/>
-    <g transform="matrix(0.303158,0,0,0.303158,249.037,-74.7762)">
-        <g transform="matrix(33.3333,0,0,33.3333,809.236,1122.3)">
-        </g>
-        <text x="590.551px" y="1122.3px" style="font-family:'ArialMT', 'Arial';font-size:33.333px;fill:white;">mbedded.ninja</text>
+<svg width="100%" height="100%" viewBox="0 0 489 267" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <use xlink:href="#_Image1" x="410.451" y="244.494" width="79px" height="22px"/>
+    <g transform="matrix(9.89474,0,0,9.89474,484.064,259.928)">
     </g>
-    <g id="wire-h" transform="matrix(0.64,-2.16573e-16,-5.41434e-16,0.64,-619.843,15.1181)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+    <text x="419.149px" y="259.928px" style="font-family:'ArialMT', 'Arial';font-size:9.895px;fill:white;">mbedded.ninja</text>
+    <path id="wire-h" d="M133.228,88.819l74.016,-0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h1" serif:id="wire-h" d="M355.276,88.819l111.023,-0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h2" serif:id="wire-h" d="M133.228,162.835l74.016,-0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h3" serif:id="wire-h" d="M429.291,162.835l37.008,-0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h4" serif:id="wire-h" d="M133.228,236.85l111.024,0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h5" serif:id="wire-h" d="M377.48,236.85l88.819,0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h6" serif:id="wire-h" d="M244.252,177.638l133.228,-0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h7" serif:id="wire-h" d="M207.244,162.835c0,-0 0.13,-35.493 37.008,-51.811c18.244,-8.073 37.008,-7.402 37.008,-7.402" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h8" serif:id="wire-h" d="M355.276,103.622c-0,0 0.129,35.493 37.007,51.811c18.244,8.073 37.008,7.402 37.008,7.402" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h9" serif:id="wire-h" d="M207.244,29.606l148.032,0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h10" serif:id="wire-h" d="M281.26,103.622l74.016,0" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h11" serif:id="wire-h" d="M133.228,111.024l333.071,-0" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:1.31,1.31,1.31,1.31,0,0;"/>
+    <path id="wire-h12" serif:id="wire-h" d="M133.228,148.031l333.071,0" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:1.31,1.31,1.31,1.31,0,0;"/>
+    <path id="wire-h13" serif:id="wire-h" d="M207.244,251.654l0,-236.851" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:1.31,1.31,1.31,1.31,0,0;"/>
+    <path id="wire-h14" serif:id="wire-h" d="M355.276,251.66l-0,-236.85" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:1.31,1.31,1.31,1.31,0,0;"/>
+    <path id="wire-h15" serif:id="wire-h" d="M244.252,251.654l-0,-236.851" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:1.31,1.31,1.31,1.31,0,0;"/>
+    <path id="wire-h16" serif:id="wire-h" d="M377.48,251.66l0,-236.85" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.31px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:1.31,1.31,1.31,1.31,0,0;"/>
+    <path id="wire-h17" serif:id="wire-h" d="M215.077,203.327l-7.833,3.917l7.833,3.917l0,-7.834Z" style="fill:rgb(234,117,0);"/>
+    <path d="M236.419,203.327l7.833,3.917l-7.833,3.917l-0,-7.834Z" style="fill:rgb(234,117,0);"/>
+    <path d="M213.511,207.244l24.474,0" style="fill:none;stroke:rgb(234,117,0);stroke-width:2.61px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;"/>
+    <path id="wire-h18" serif:id="wire-h" d="M363.109,203.327l-7.833,3.917l7.833,3.917l-0,-7.834Z" style="fill:rgb(234,117,0);"/>
+    <path d="M369.647,203.327l7.833,3.917l-7.833,3.917l-0,-7.834Z" style="fill:rgb(234,117,0);"/>
+    <path d="M361.542,207.244l9.672,0" style="fill:none;stroke:rgb(234,117,0);stroke-width:2.61px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;"/>
+    <path id="wire-h19" serif:id="wire-h" d="M207.244,29.606l0,59.213" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h20" serif:id="wire-h" d="M355.276,29.606l-0,59.213" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h21" serif:id="wire-h" d="M244.252,177.638l-0,59.212" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <path id="wire-h22" serif:id="wire-h" d="M377.48,177.638l0,59.212" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.66px;"/>
+    <g transform="matrix(26.1111,0,0,26.1111,125.827,68.5644)">
     </g>
-    <g id="wire-h1" serif:id="wire-h" transform="matrix(0.96,-4.57211e-16,-1.05279e-15,0.64,-771.024,15.1181)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.33px;"/>
-    </g>
-    <g id="wire-h2" serif:id="wire-h" transform="matrix(0.64,-2.16573e-16,-5.41434e-16,0.64,-619.843,90.7087)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
-    </g>
-    <g id="wire-h3" serif:id="wire-h" transform="matrix(0.32,2.64701e-16,2.10557e-16,0.64,60.4724,90.7087)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:5.37px;"/>
-    </g>
-    <g id="wire-h4" serif:id="wire-h" transform="matrix(0.96,-4.66765e-16,-1.05938e-15,0.64,-997.795,166.299)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.33px;"/>
-    </g>
-    <g id="wire-h5" serif:id="wire-h" transform="matrix(0.768,-2.74256e-16,-7.19167e-16,0.64,-521.575,166.299)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.85px;"/>
-    </g>
-    <g id="wire-h6" serif:id="wire-h" transform="matrix(1.152,-6.59275e-16,-1.3996e-15,0.64,-1111.18,105.827)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.92px;"/>
-    </g>
-    <g id="wire-h7" serif:id="wire-h" transform="matrix(0.64,-2.16573e-16,-5.41434e-16,0.64,-544.252,90.7087)">
-        <path d="M1181.1,118.11C1181.1,118.11 1181.31,61.473 1240.16,35.433C1269.27,22.551 1299.21,23.622 1299.21,23.622" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
-    </g>
-    <g id="wire-h8" serif:id="wire-h" transform="matrix(0.64,2.16573e-16,-5.41434e-16,-0.64,-393.071,181.417)">
-        <path d="M1181.1,118.11C1181.1,118.11 1181.31,61.473 1240.16,35.433C1269.27,22.551 1299.21,23.622 1299.21,23.622" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
-    </g>
-    <g id="wire-h9" serif:id="wire-h" transform="matrix(1.28,-6.97848e-16,-1.56414e-15,0.64,-1300.16,-45.3543)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.69px;"/>
-    </g>
-    <g id="wire-h10" serif:id="wire-h" transform="matrix(0.64,-2.16573e-16,-5.41434e-16,0.64,-468.661,30.2362)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
-    </g>
-    <g id="wire-h11" serif:id="wire-h" transform="matrix(2.88,-2.02135e-15,-4.16102e-15,0.64,-3265.51,37.7953)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:0.64px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:0.64,0.64,0.64,0.64,0,0;"/>
-    </g>
-    <g id="wire-h12" serif:id="wire-h" transform="matrix(2.88,-2.02135e-15,-4.16102e-15,0.64,-3265.51,75.5906)">
-        <path d="M1181.1,118.11L1299.21,118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:0.64px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:0.64,0.64,0.64,0.64,0,0;"/>
-    </g>
-    <g id="wire-h13" serif:id="wire-h" transform="matrix(2.88,-2.02135e-15,-4.16102e-15,0.64,-3246.61,147.845)">
-        <path d="M1200.79,170.566L1200.79,-207.386" style="fill:none;stroke:rgb(52,101,164);stroke-width:0.64px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:0.64,0.64,0.64,0.64,0,0;"/>
-    </g>
-    <g id="wire-h14" serif:id="wire-h" transform="matrix(2.88,-2.02135e-15,-4.16102e-15,0.64,-3095.43,147.852)">
-        <path d="M1200.79,170.566L1200.79,-207.386" style="fill:none;stroke:rgb(52,101,164);stroke-width:0.64px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:0.64,0.64,0.64,0.64,0,0;"/>
-    </g>
-    <g id="wire-h15" serif:id="wire-h" transform="matrix(2.88,-2.02135e-15,-4.16102e-15,0.64,-3208.82,147.845)">
-        <path d="M1200.79,170.566L1200.79,-207.386" style="fill:none;stroke:rgb(52,101,164);stroke-width:0.64px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:0.64,0.64,0.64,0.64,0,0;"/>
-    </g>
-    <g id="wire-h16" serif:id="wire-h" transform="matrix(2.88,-2.02135e-15,-4.16102e-15,0.64,-3072.76,147.852)">
-        <path d="M1200.79,170.566L1200.79,-207.386" style="fill:none;stroke:rgb(52,101,164);stroke-width:0.64px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:0.64,0.64,0.64,0.64,0,0;"/>
-    </g>
-    <g id="wire-h17" serif:id="wire-h" transform="matrix(0.32,2.37963e-16,1.74536e-17,0.64,-166.299,136.063)">
-        <g transform="matrix(3.125,-1.16193e-15,-8.52228e-17,1.5625,519.685,-212.598)">
-            <path d="M219.654,207.654L211.654,211.654L219.654,215.654L219.654,207.654Z" style="fill:rgb(234,117,0);"/>
-            <path d="M241.449,207.654L249.449,211.654L241.449,215.654L241.449,207.654Z" style="fill:rgb(234,117,0);"/>
-            <path d="M218.054,211.654L243.049,211.654" style="fill:none;stroke:rgb(234,117,0);stroke-width:2.67px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;"/>
-        </g>
-    </g>
-    <g id="wire-h18" serif:id="wire-h" transform="matrix(0.192,4.30473e-16,3.95492e-16,0.64,136.063,136.063)">
-        <g transform="matrix(5.20833,-3.5032e-15,-3.21852e-15,1.5625,-708.661,-212.598)">
-            <path d="M370.835,207.654L362.835,211.654L370.835,215.654L370.835,207.654Z" style="fill:rgb(234,117,0);"/>
-            <path d="M377.512,207.654L385.512,211.654L377.512,215.654L377.512,207.654Z" style="fill:rgb(234,117,0);"/>
-            <path d="M369.235,211.654L379.112,211.654" style="fill:none;stroke:rgb(234,117,0);stroke-width:2.67px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;"/>
-        </g>
-    </g>
-    <g id="wire-h19" serif:id="wire-h" transform="matrix(0.256,1.27864e-16,1.56266e-16,0.568889,-90.7087,-36.9554)">
-        <path d="M1181.1,118.11L1181.1,224.409" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.16px;"/>
-    </g>
-    <g id="wire-h20" serif:id="wire-h" transform="matrix(0.256,1.27864e-16,1.56266e-16,0.568889,60.4724,-36.9554)">
-        <path d="M1181.1,118.11L1181.1,224.409" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.16px;"/>
-    </g>
-    <g id="wire-h21" serif:id="wire-h" transform="matrix(0.256,1.27864e-16,1.56266e-16,0.568889,-52.9134,114.226)">
-        <path d="M1181.1,118.11L1181.1,224.409" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.16px;"/>
-    </g>
-    <g id="wire-h22" serif:id="wire-h" transform="matrix(0.256,1.27864e-16,1.56266e-16,0.568889,83.1496,114.226)">
-        <path d="M1181.1,118.11L1181.1,224.409" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.16px;"/>
-    </g>
-    <g transform="matrix(0.64,0,0,0.64,-98.2677,-464.882)">
-        <g transform="matrix(41.6667,0,0,41.6667,354.331,835.789)">
-        </g>
-        <text x="229.331px" y="835.789px" style="font-family:'ArialMT', 'Arial';font-size:41.667px;fill:rgb(234,117,0);">INPUT</text>
-    </g>
-    <g transform="matrix(0.64,0,0,0.64,-181.417,-396.85)">
+    <text x="47.493px" y="68.564px" style="font-family:'ArialMT', 'Arial';font-size:26.111px;fill:rgb(234,117,0);">INPUT</text>
+    <g transform="matrix(0.626667,0,0,0.626667,-177.638,-388.583)">
         <text x="299.844px" y="821.185px" style="font-family:'ArialMT', 'Arial';font-size:41.667px;fill:rgb(234,117,0);">SCHMITT</text>
         <g transform="matrix(41.6667,0,0,41.6667,484.252,864.215)">
         </g>
         <text x="377.746px" y="864.215px" style="font-family:'ArialMT', 'Arial';font-size:41.667px;fill:rgb(234,117,0);">U1 IN</text>
     </g>
-    <g transform="matrix(0.64,0,0,0.64,-181.417,-313.701)">
-        <g transform="matrix(41.6667,0,0,41.6667,484.252,835.789)">
-        </g>
-        <text x="312.967px" y="835.789px" style="font-family:'ArialMT', 'Arial';font-size:41.667px;fill:rgb(234,117,0);">OUTPUT</text>
+    <g transform="matrix(26.1111,0,0,26.1111,125.827,216.596)">
     </g>
-    <g transform="matrix(0.64,0,0,0.64,22.6772,-412.547)">
-        <g transform="matrix(20.8333,0,0,20.8333,255.507,817.421)">
-        </g>
-        <text x="216.719px" y="817.421px" style="font-family:'ArialMT', 'Arial';font-size:20.833px;fill:rgb(234,117,0);">VT+</text>
+    <text x="18.488px" y="216.596px" style="font-family:'ArialMT', 'Arial';font-size:26.111px;fill:rgb(234,117,0);">OUTPUT</text>
+    <g transform="matrix(13.0556,0,0,13.0556,182.322,108.298)">
     </g>
-    <g transform="matrix(0.64,0,0,0.64,22.6772,-374.752)">
-        <g transform="matrix(20.8333,0,0,20.8333,252.318,817.421)">
-        </g>
-        <text x="219.908px" y="817.421px" style="font-family:'ArialMT', 'Arial';font-size:20.833px;fill:rgb(234,117,0);">VT<tspan x="245.38px " y="817.421px ">-</tspan></text>
+    <text x="158.015px" y="108.298px" style="font-family:'ArialMT', 'Arial';font-size:13.056px;fill:rgb(234,117,0);">VT+</text>
+    <g transform="matrix(13.0556,0,0,13.0556,180.324,145.306)">
     </g>
-    <g transform="matrix(0.64,0,0,0.64,3.77953,-313.701)">
-        <g transform="matrix(25,0,0,25,312.992,829.82)">
-        </g>
-        <text x="233.781px" y="829.82px" style="font-family:'ArialMT', 'Arial';font-size:25px;fill:rgb(234,117,0);">↑ delay</text>
+    <text x="160.014px" y="145.306px" style="font-family:'ArialMT', 'Arial';font-size:13.056px;fill:rgb(234,117,0);">VT-</text>
+    <g transform="matrix(15.6667,0,0,15.6667,199.843,212.855)">
     </g>
-    <g transform="matrix(0.64,0,0,0.64,257.008,-313.701)">
-        <g transform="matrix(25,0,0,25,291.81,829.82)">
-        </g>
-        <text x="212.598px" y="829.82px" style="font-family:'ArialMT', 'Arial';font-size:25px;fill:rgb(234,117,0);">↓ delay</text>
+    <text x="150.203px" y="212.855px" style="font-family:'ArialMT', 'Arial';font-size:15.667px;fill:rgb(234,117,0);">↑ delay</text>
+    <g transform="matrix(15.6667,0,0,15.6667,434.521,212.855)">
     </g>
+    <text x="384.882px" y="212.855px" style="font-family:'ArialMT', 'Arial';font-size:15.667px;fill:rgb(234,117,0);">↓ delay</text>
     <defs>
-        <image id="_Image1" width="80px" height="23px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAXCAYAAACcTMh5AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACwElEQVRYhdVY0XHsMAhEF5eSFl4Jr+qUkBZeKTk7Hy/cofUuoEsmmTCjESdLAtYrkG/Yovz783esrvnt8vz6cqhnKRgJWKsgHg+s+WmRoEVAaVAEuCF0tYc0XqyrpLPvV8shdHt+fTmmIAC40exXHOiAX+3xyPPP2DuyfvNZCXis4ZzMASaK0YOslQxYsId2OhKBim2as9lZFGgXMY7OVQF3GJ0xoGtH2UU92xPbbgDkZjaxT4F2CY2B2XEGA6iYnB6dxli0hftnbETm7aEf8NsyBkbQnuB3BDM6mLGEBcR0FQjq7Bmz2U07zO4O7Wp3EM3M9o2wz/UIXmw+hkxkTqDOmI62WSAKRJWfXM/soU/MpoMWwbuGOQMZyI6uA7fZGcg4l0l0iB3hbhpg+cjHMS9VL6yTOiL7nszszc5AH1YUETzCCCQeZSbqCDP2dRiIAO7JM9/bjKebCsDD/rPtGub4+OXD9o2BLAAsJjEXMgC71xkF3iqAHgiyEAHMmpn2e4d5zsipgKojrALMKnOHhez4sGAO0LPmQXnAEcQKQGUb8ymLddjHgAqWjWfHSa1drXyr9zu2z6qo/IzPTuIM7LxxfNOYVLOcgo5WiZytz/y63ctsfgldBsZ4WCXGF3uTeIQZiOwOFOerI8xAZDmW9bgO+wxEFugqgNGOX2GwySrMHHPw4hxnI/u8q6QCEv1B35ifyEC1fxdAszn2N7tX5Agi/RJBh652BrQC7zNAMn9QX83FneLITo0DGNvExGFGv4VZpe18Dz8CXGddBaKB7r9V1Y96BWAE8aQrBsaCgUUkgoxOmfVAfGSuApH1mS0FYpzj+8QCxfLh/Q9VYCFunlG+y74VsDJR1xyls5erwEQ7rNJP/bRIgMgMKaNfBVJXVu+MFZhs/6zqnxeJf6aVoe9iHUoGVnWhZ7+rAqZy7fEODXOTK78IQEgAAAAASUVORK5CYII="/>
+        <image id="_Image1" width="79px" height="22px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE8AAAAWCAYAAACBtcG5AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACtElEQVRYhd2YXVLDMAyElTZH6RU4AqfuEXoFjgIJD1TpZrP6cQf6gGc8NnYsyZ9lyWWygfLx9j6NfP8fyuV2XaO5FEYA6y8AsszQ4BcWaQPClCAIWqffVT5yGF2Ao6BH9K3R/OV2XXeCAmgT9VXbMQRL9xBYTiW3e2BVWUXLYzZ7R4BTleeUcdGGn/Hg8OQHxlh+58AZGtbtm9mOhYGdqI2AZkaw4ZUHRxupdGSe1/VABWwRf0+z2c7rGNqJ+jw2cuVwMyokROujFjda6VNtpFNBW6hOZrbOBTivZ2oRoDIo2lB2/dVGcEPZWAawe1goi4F9iXVLdm0R3HxvER5CNGi71zaLm7iW400UhzgmoR6lk/WiHITm4L7om4nhcTw7U3WIDBDXV/A6ADMPU1eL59VestcD63RwHJpc/mQEj4VzvGOQZ9snEV/7DLzI8zrgIk+MXgzVS8HlKnDO4pEwhLAq/mEMVAA6wbu6triZqPphOUTWzY7QeSksMKZgbmtVzKs2W52mMohlsUxcl4FfoFUyVzvK69rNa93TwhtSwetcm5NeGspS4yrZoF62hW1S834Q6kAYUuT5aXF4rCRK2R5I+Zvq+inDo7YCqN5gDBJ1bQHeHp6EY2wz71fFUzPbex4CxLsfQcOnShT0uairXa0bSRr4vctWNbMbs61XBfJwbZVhDA3T+G/A4z7bE7WR16kYOxKvGd7nvR68UcU8NIzHPcap37teuvFjBB72M0/E+SxBRVnX1/Ijmb1wNbOff0kN/rbN3L4Cl82rORX/uI28E2VWAFkHx3q+vouZLdvCO8AIYhYrRpIFb2qkZImE59WTxduoz3LwinISWUxcW5Xa8U3lSUQpfQZId4165kTgKl0KHo6jB6uMvj3Id8Yn/0nO2oOcF5bO2xFLN9tXGd7MbP0Gf1SQyGskBlsAAAAASUVORK5CYII="/>
     </defs>
 </svg>
