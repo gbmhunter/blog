@@ -1,8 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2024-10-28
-description: Delay circuits are used to delay the progression of a analogue or digital signal through a circuit.
-lastUpdated: 2024-10-30
+description: Delay circuits are used to delay the progression of a analogue or digital signal through a circuit. This page covers a range of techniques for creating delays, including RC/Schmitt trigger circuits, 555 timers, long pieces of wire, delay line ICs, bucket brigade ICs, and microcontrollers.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-11-03
 tags: [delay, electronics, Schmitt trigger, RC, 555 timer, digital, analogue, circuits, circuit design, delay lines, Dallas Semiconductor, Analog Devices]
 title: Delay Circuits
 type: page
@@ -15,11 +16,14 @@ _Delay circuits_ are used to delay the progression of a analogue or digital sign
 * Allow time for a circuit to settle.
 * Debounce a switch.
 * Create an audio delay/reverb effect.
-* Create an oscillator at a specific frequency (feeding back the output of three inverters connected in series creates an oscillator).
+* Create an oscillator at a specific frequency (e.g. feeding back the output of three inverters connected in series creates an oscillator).
+* Delay user interactions.
+
+This page covers a range of techniques for creating delays, including RC/Schmitt trigger circuits, 555 timers, long pieces of wire, delay line ICs, bucket brigade ICs, and microcontrollers.
 
 ## RC with Schmitt Trigger
 
-A [RC circuit](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) combined with  Schmitt triggers can be used to create a digital delay. The RC circuit converts a sharp input transition into a slower transition based on the RC circuit time constant. The Schmitt trigger then "sharpens" up the edges again by switching it's output quickly when the input reaches certain thresholds. <IRef iref="fig-schmitt-trigger-delay-single-rc" /> shows the circuit. This uses two inverting Schmitt triggers -- the purpose of the second one (U2) is to re-invert the signal so it is the same polarity as the input.
+A [RC circuit](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) combined with Schmitt triggers can be used to create a digital delay. The RC circuit converts a sharp input transition into a slower transition based on the RC circuit time constant. The Schmitt trigger then "sharpens" up the edges again by switching it's output quickly when the input reaches certain thresholds. <IRef iref="fig-schmitt-trigger-delay-single-rc" /> shows the circuit. This uses two inverting Schmitt triggers -- the purpose of the second one (U2) is to re-invert the signal so it is the same polarity as the input.
 
 <Image iref="fig-schmitt-trigger-delay-single-rc" src={import('./_assets/schmitt-trigger-delay-single-rc.svg')} width="600px">A delay circuit made from a RC circuit and a Schmitt trigger.</Image>
 
