@@ -1,0 +1,36 @@
+---
+authors: [gbmhunter]
+date: 2024-11-04
+description: Bucket brigade devices (BBDs) are analogue delay ICs that "shunt" charge along a series of switched capacitors to create a delay.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-11-04
+tags: [BBD, bucket brigade devices, analogue delays, switched capacitors, digital sampling, capacitors]
+title: Bucket Brigade Devices (BBDs)
+type: page
+---
+
+<WarningIsNotes />
+
+Bucket brigade devices (BBDs, a.k.a. bucket brigades) are analogue delay ICs that "shunt" charge along a series of switched [capacitors](/electronics/components/capacitors/) to create a delay. <IRef iref="fig-bucket-brigade-delay-basic-internal-schematic" /> shows a basic internal schematic of a bucket brigade device.
+
+<Image iref="fig-bucket-brigade-delay-basic-internal-schematic" src={import('./_assets/bucket-brigade-delay-basic-internal-schematic.svg')} width="900px">A basic internal schematic of a bucket brigade device[^electrosmash-bucket-brigade-devices-mn3007].</Image>
+
+<IRef iref="fig-bucket-brigade-delay-basic-internal-schematic" /> was the initial design, but is suffered from a few problems, the most serious being poor transfer efficiency[^bbds-circa-1977].
+
+Bucket brigades are analogue in amplitude, but discrete (digital) in time. Thus they suffer from the same aliasing issues all other digital sampling methods do. Care must be taken to ensure the input signal has no frequencies above half the sampling rate to avoid aliasing. This is typically done with an analogue low-pass "anti-aliasing" filter. Second-order [Sallen-Key filters](/electronics/circuit-design/analogue-filters/sallen-key-filters/) are a common choice due to their effectiveness and simplicity.
+
+## History
+
+The bucket brigade in it's integrated form was first invented by F.L.J. Sangster at Phillips in 1968[^bbds-circa-1977] [^ethw-flj-sangster]. 
+
+## Further Reading
+
+See the [Delay Circuits page](/electronics/circuit-design/delays/) for an overview on the many different types of analogue and digital delay circuits you can use.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^bbds-circa-1977]: _BUCKET BRIGADE DEVICES CIRCA 1977_. Retrieved 2024-11-04, from https://www.imagesensors.org/Past%20Workshops/Marvin%20White%20Collection/1977%20Short%20Course/1977%203%20Weckler.pdf.
+[^electrosmash-bucket-brigade-devices-mn3007]: ElectroSmash. _Bucket Brigade Devices: MN3007_. Retrieved 2024-11-02, from https://www.electrosmash.com/mn3007-bucket-brigade-devices.
+[^ethw-flj-sangster]: Engineering and Technology History Wiki (2019, Jan 18). _F. L. J. Sangster_ [Biography]. Retrieved 2024-11-04, from https://ethw.org/F._L._J._Sangster. 

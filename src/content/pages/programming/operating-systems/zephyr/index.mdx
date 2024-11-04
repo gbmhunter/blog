@@ -188,7 +188,7 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     source .venv/bin/activate
     ```
 
-1. Install `west` in the new virtual environment (`west` is a Python package):
+1. Install `west` in the new virtual environment (`west` is a Python package). As long as the virtual environment is activated, this will make `west` available from the command line:
 
     ```sh
     pip install west
@@ -204,11 +204,11 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
 
 1. Update:
 
-    ```
+    ```sh
     west update
     ```
 
-    `west update` downloads a lot of Git submodules that are present in the project under `./modules/`.
+    `west update` downloads a lot of Git submodules that are present in the project under `./modules/`. This may take a few minutes to complete.
 
 1. Export a Zephyr CMake package:
 
@@ -216,7 +216,13 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     west zephyr-export
     ```
 
-    This adds `Zephyr` to the user package registry at `~/.cmake/packages/Zephyr` (which is outside of the project root directory).
+    This adds `Zephyr` to the user package registry at `~/.cmake/packages/Zephyr` (which is outside of the project root directory). You should get a message like this:
+
+    ```text
+    Zephyr (/home/gbmhunter/zephyr-project/zephyr/share/zephyr-package/cmake)
+    has been added to the user package registry in:
+    ~/.cmake/packages/Zephyr
+    ```
 
 1. Install additional Python dependencies:
 
@@ -241,7 +247,7 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     tar xvf zephyr-sdk-0.16.4_linux-x86_64.tar.xz
     ```
 
-    This will extract the SDK to `~/zephyr-sdk-0.16.4`. You can choose to move it somewhere else if you want. Other common choices include `/opt/` and `/usr/local/`.
+    This will extract the SDK to `~/zephyr-sdk-0.16.4`. You can choose to move it somewhere else if you want. Other common choices include `/opt/` and `/usr/local/`. This is another big operation which might take minutes to complete!
 
 1. Run the Zephyr SDK setup script:
 
@@ -348,16 +354,17 @@ Once you've followed the installation instructions, you should be able to build 
 
 ### Creating a Workspace Application
 
-If you are learning, I'd recommend you start by creating a bare bones workspace application to learn what the core files are for. Create a directory called `app` in the workspace:
+If you are learning, I'd recommend you start by creating a bare bones workspace application to learn what the core files are for. Create a directory called `app` in the workspace, and then `cd` into it:
 
 ```bash
 cd ~/zephyr-project
 mkdir app
+cd app
 ```
 
 Now create a file called `CMakeLists.txt` with the follow context:
 
-```cmake
+```cmake title="app/CMakeLists.txt"
 cmake_minimum_required(VERSION 3.20.0)
 
 find_package(Zephyr)
@@ -366,11 +373,11 @@ project(my_zephyr_app)
 target_sources(app PRIVATE src/main.c)
 ```
 
-Create an empty `prj.conf`. It needs to exist, but you don't need anything in it for now.
+Create an empty `prj.conf` inside this `app` directory. It needs to exist, but you don't need anything in it for now.
 
 The last thing you need to create a directory called `src` to store all the source code, and then create a file in it called `main.c` with the following contents.
 
-```c
+```c title="app/src/main.c"
 #include <stdio.h>
 #include <zephyr/kernel.h>
 
@@ -524,11 +531,33 @@ You can then run the built application with:
 west build -t run
 ```
 
+The executable will start up and run until you kill it with `Ctrl+C`. Note that you cannot terminate the program from the code by returning from `main()` or by calling `exit()`. If you do want to exit, you can call `nsi_exit()` instead, providing a `int` status code which will be returned as if you had returned it from `main()`. For example:
+
+```c
+void my_function(void) {
+    // ...
+    // This will cause the Zephyr native_sim executable to correctly exit
+    nsi_exit(0);
+}
+```
+
+If the code you want to return from needs to support other boards, you can use the preprocessor `CONFIG_ARCH_POSIX` to conditionally include the call:
+
+```c
+void my_function(void) {
+    // ...
+#ifdef CONFIG_ARCH_POSIX
+    nsi_exit(0);
+#endif
+}
+```
+
 The `native_sim` board supports the following APIs:
 
 * GPIO (mocked)
 * Watchdog
 * Timers
+
 
 ## Device Trees
 
@@ -1165,6 +1194,15 @@ and the output is:
 
 
 <Image src={import('./_assets/semaphore-working-example-stdout.png')} width="800px">The output from the full working Polling API example above, showing how a thread blocks on two separate semaphores.</Image>
+
+### Memory Allocation
+
+Zephyr provides `k_malloc()` and `k_free()` for dynamic memory allocation of a shared block of heap memory. To use these (and have them defined) you need to add the following to your `prf.conf`:
+
+```python title="prf.conf"
+# Required for k_malloc()
+CONFIG_HEAP_MEM_POOL_SIZE=1024
+```
 
 ## Logging
 
@@ -2151,6 +2189,10 @@ Nordic chose to move from their nRF5 platform to Zephyr as the officially suppor
 ## Other Resources
 
 Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772017664/).
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
 [^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.

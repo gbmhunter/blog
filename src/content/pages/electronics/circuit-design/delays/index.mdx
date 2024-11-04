@@ -9,8 +9,6 @@ title: Delay Circuits
 type: page
 ---
 
-<WarningIsNotes />
-
 _Delay circuits_ are used to delay the progression of a analogue or digital signal through a circuit. You may want to delay a signal to:
 
 * Allow time for a circuit to settle.
@@ -254,7 +252,7 @@ One example is the Analog Devices (formerly Dallas Semiconductor/Maxim) DS1110L 
 
 ## Bucket Brigade Devices
 
-Bucket brigade devices (BBDs) are analogue delay ICs which work by "shuffling" sampled inputs voltages along a chain of capacitors until it reaches the output. They were commonly used in early audio processing systems, and still find use today in specialty items such as guitar effect pedals[^wikipedia-bucket-brigade-device].
+[Bucket brigade devices (BBDs)](/electronics/components/bucket-brigade-devices/) are analogue delay ICs which work by "shuffling" sampled inputs voltages along a chain of capacitors until it reaches the output. They were commonly used in early audio processing systems, and still find use today in specialty items such as guitar effect pedals[^wikipedia-bucket-brigade-device].
 
 <IRef iref="fig-bucket-brigade-delay-basic-internal-schematic" /> shows the basic internal design of a basic bucket brigade IC.
 
@@ -264,7 +262,7 @@ BBDs usually have quite a number of buckets in them! Common sizes include 256, 5
 
 ## Microcontroller
 
-Of course, a microcontroller can be used to delay both digital and analogue signals. You would need basic GPIO to interface with digital signals, and a ADC and DAC for analogue signals. Combined with some memory (typically RAM) setup as a FIFO buffer, you can create a delay of your choosing. You will want to choose a sample rate that is at least 2 times higher than the highest frequency you want to delay (i.e. obey the Nyquist-Shannon sampling theorem). For analogue signals, the bit depth of the ADC and DAC will determine the resolution of the signal, and combined with the sample rate and desired delay time, will determine how much memory you will need.
+Of course, a microcontroller can be used to delay both digital and analogue signals. You would need basic GPIO to interface with digital signals, and a [ADC](/electronics/components/analogue-to-digital-converters-adcs/) and [DAC](/electronics/components/digital-to-analogue-converters-dacs/) for analogue signals. Combined with some [memory](/electronics/components/memory/) (typically RAM) setup as a FIFO buffer, you can create a delay of your choosing. You will want to choose a sample rate that is at least 2 times higher than the highest frequency you want to delay (i.e. obey the Nyquist-Shannon sampling theorem). For analogue signals, the bit depth of the ADC and DAC will determine the resolution of the signal, and combined with the sample rate and desired delay time, will determine how much memory you will need.
 
 <IRef iref="fig-mcu-delay" /> shows a pseudo-circuit (high-level diagram) illustrating how to create an analogue delay using a microcontroller.
 
