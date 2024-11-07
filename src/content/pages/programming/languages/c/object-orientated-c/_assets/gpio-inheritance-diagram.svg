@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 454 333" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <use xlink:href="#_Image1" x="371.239" y="308.52" width="83px" height="25px"/>
+    <g transform="matrix(10.1053,0,0,10.1053,446.441,324.325)">
+    </g>
+    <text x="380.144px" y="324.325px" style="font-family:'ArialMT', 'Arial';font-size:10.105px;fill:white;">mbedded.ninja</text>
+    <path d="M328.819,35.906L328.819,85.039C328.819,98.598 317.811,109.606 304.252,109.606L149.291,109.606C135.732,109.606 124.724,98.598 124.724,85.039L124.724,35.906C124.724,22.347 135.732,11.339 149.291,11.339L304.252,11.339C317.811,11.339 328.819,22.347 328.819,35.906Z" style="fill:rgb(235,235,235);"/>
+    <path d="M215.433,217.323L215.433,274.016C215.433,289.661 202.731,302.362 187.087,302.362L39.685,302.362C24.04,302.362 11.339,289.661 11.339,274.016L11.339,217.323C11.339,201.678 24.04,188.976 39.685,188.976L187.087,188.976C202.731,188.976 215.433,201.678 215.433,217.323Z" style="fill:rgb(235,235,235);"/>
+    <path d="M442.205,217.323L442.205,274.016C442.205,289.661 429.503,302.362 413.858,302.362L266.457,302.362C250.812,302.362 238.11,289.661 238.11,274.016L238.11,217.323C238.11,201.678 250.812,188.976 266.457,188.976L413.858,188.976C429.503,188.976 442.205,201.678 442.205,217.323Z" style="fill:rgb(235,235,235);"/>
+    <g transform="matrix(32,0,0,32,284.444,45.3543)">
+    </g>
+    <text x="143.913px" y="45.354px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">GpioBase</text>
+    <g transform="matrix(32,0,0,32,169.498,220.412)">
+    </g>
+    <text x="36.092px" y="220.412px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">GpioReal</text>
+    <g transform="matrix(32,0,0,32,401.598,219.213)">
+    </g>
+    <text x="262.864px" y="219.213px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">GpioFake</text>
+    <g transform="matrix(1,0,0,1,2.38466,-505.974)">
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">set(uint8_t val)</text>
+        <g transform="matrix(21.3333,0,0,21.3333,257.466,596.683)">
+        </g>
+        <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">uint8_t get()</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-105.827,-324.557)">
+        <text x="143.622px" y="570.831px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">set/get modify</text>
+        <text x="143.622px" y="587.354px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">hardware peripheral</text>
+        <g transform="matrix(16,0,0,16,204.974,603.878)">
+        </g>
+        <text x="143.622px" y="603.878px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">registers</text>
+    </g>
+    <g transform="matrix(1,0,0,1,120.945,-325.039)">
+        <text x="143.622px" y="570.831px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">set/get just increment</text>
+        <text x="143.622px" y="587.354px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">counters (so tester can</text>
+        <text x="143.622px" y="603.878px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">check they were</text>
+        <g transform="matrix(16,0,0,16,190.755,620.401)">
+        </g>
+        <text x="143.622px" y="620.401px" style="font-family:'ArialMT', 'Arial';font-size:16px;fill:rgb(234,117,0);">called)</text>
+    </g>
+    <path d="M213.5,111.572L226.772,109.606L220.382,121.403L213.5,111.572Z" style="fill:rgb(52,101,164);"/>
+    <path d="M113.386,188.976C113.386,188.976 193.213,133.097 218.907,115.112" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+    <path d="M233.162,121.403L226.772,109.606L240.043,111.572L233.162,121.403Z" style="fill:rgb(52,101,164);"/>
+    <path d="M340.157,188.976C340.157,188.976 260.33,133.097 234.636,115.112" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+    <defs>
+        <image id="_Image1" width="83px" height="25px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAZCAYAAABNcRIKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADBElEQVRogdVZ23HjMAyEHJeSFq6Eq9oluIUrJRbzcYYOWu0CoJxJ5jDDEU2ReKyWAGUtNil/fv1eZtf87/J+v43OvBSYBLhZQMeJNT8tEkAFLg2QgLiIvtLReZJnwG0x5ItliP4B1F1AAOLSvM4403kQlY4z91+xN4rrBuqmPAGSNZyTOcNEMX0hayUzJuyhnY5E0LAZ9O39fhtXYZS1ixhHR6vgO0zPmNG1o+xiP9OJbTUAMfYXsx0rFYCX0BiwHccwmIrh5fYqxqIt1J+xFJm3husKv3dszZgZAXyD3xHY6GzGHhYc66ugsM/uMZvd1MTsrtAez7Xrc84a110JK70fgYzNx5ChzCHssx2AtllQClCWy+LazB76xGw6gBHIR5izIxAyk21vB/FqR1DjXCbRObbNu6kiKwKYx6qH10kvkZVvZvZhR9C9+XhagHCbI6i43Zmobc5Y2WEmgol5CxnqOllKqsAc9peFjzDHxy9P265nmNniYLJgsBDF3MnA7B6RFJCzYHpQtBgI/dVJJNpeYZ4zVRZftc1VsFmF77CTbTEW2IB+1jxADz4CWoGpbGP+ZbEeHsYlCZyNZ1tOrZ2toNkxp5LZ+S4qn+O9VJyZHSYgAzAhZzkIna6KAFuf+eXXOM/1zjRmjx3UaXxXGERA2RkrzlfbnAHKcjK7Mke7gLKgZ8GMdvxYhI3awpzJnHQg4xxnKXvFrKQCFf1B35ifyEylvwum2T72D/tX2SOgO2FHI3TuYUdwKyBfAZX5g/3Z3N0prGw3OZixKYaOxYy+m7OK3Xk/PwNiZ10FqEHff6vTQ+xXYEZAWX/zQzEzFhssQBFwdNCsB+iZuQpQds1sKUDjHNcTixvLn7sHugUD7ERD2bbosnIGuEzU0Un12YNWwKIddmJQJ4i9AgEoM6oc+CrAujJ7Jq2AZfqz08Nm9/1+GwcF4h93ZfS72IiSAafuZQ++Kn4qN29ASiXiq+SZwvFToip6ZyzTd8jN8aNaqeyF7+TfAXRnazM549vOFvvc+wlJCMG3C2d6bAAAAABJRU5ErkJggg=="/>
+    </defs>
+</svg>

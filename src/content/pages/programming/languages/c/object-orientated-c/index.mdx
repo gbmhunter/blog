@@ -83,9 +83,17 @@ void main() {
 }
 ```
 
-## Polymorphism
+## Inheritance
 
-Both Microsoft Direct X, the Linux kernel, GObject use C polymorphism.
+Inheritance is the ability to define a new object/class which is a modified (extended) version of an existing object/class. One use case for inheritance for embedded C is to make code testable. Inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (through special memory mapped registers).
+
+<IRef iref="fig-gpio-inheritance-diagram" /> shows how the basic inheritance structure for our example GPIO driver.
+
+<Image iref="fig-gpio-inheritance-diagram" src={import('./_assets/gpio-inheritance-diagram.svg')} width="600px">A diagram showing how inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (through special memory mapped registers).</Image>
+
+<IRef iref="fig-gpio-real-vs-testing-swimlane-diagram" /> shows how the real application and testing application would start-up, create the appropriate GPIO object and pass it to the module.
+
+<Image iref="fig-gpio-real-vs-testing-swimlane-diagram" src={import('./_assets/gpio-real-vs-testing-swimlane-diagram.svg')} width="700px">A swimlane diagram showing the difference between real hardware and a testing environment.</Image>
 
 ## Interfacing To Imperative Code
 

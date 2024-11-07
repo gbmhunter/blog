@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 605 681" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+        <rect x="7.559" y="45.354" width="264.567" height="249.449" style="fill:rgb(223,247,225);"/>
+        <rect x="7.559" y="347.717" width="264.567" height="317.48" style="fill:rgb(223,247,225);"/>
+        <rect x="298.583" y="45.354" width="264.567" height="249.449" style="fill:rgb(241,229,241);"/>
+        <rect x="298.583" y="347.717" width="264.567" height="317.48" style="fill:rgb(241,229,241);"/>
+        <use xlink:href="#_Image1" x="480.948" y="648.613" width="122px" height="32px"/>
+    </g>
+    <g transform="matrix(15.7193,0,0,15.7193,593.611,668.436)">
+    </g>
+    <text x="490.484px" y="668.436px" style="font-family:'ArialMT', 'Arial';font-size:15.719px;fill:white;">mbedded.ninja</text>
+    <g transform="matrix(32,0,0,32,365.298,34.567)">
+    </g>
+    <text x="16.72px" y="34.567px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(52,101,164);">Real <tspan x="89.657px 111.001px " y="34.567px 34.567px ">Ap</tspan>p (runs on MCU)</text>
+    <g transform="matrix(32,0,0,32,359.446,332.598)">
+    </g>
+    <text x="14.368px" y="332.598px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(52,101,164);">T<tspan x="30.368px 48.165px " y="332.598px 332.598px ">es</tspan>t <tspan x="80.181px 101.524px " y="332.598px 332.598px ">Ap</tspan>p (runs on Linux)</text>
+    <g transform="matrix(32,0,0,32,447.371,94.6644)">
+    </g>
+    <text x="317.527px" y="94.664px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">Module.c</text>
+    <g transform="matrix(32,0,0,32,447.371,381.667)">
+    </g>
+    <text x="317.527px" y="381.667px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">Module.c</text>
+    <g transform="matrix(32,0,0,32,107.259,94.6644)">
+    </g>
+    <text x="13.009px" y="94.664px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">main.c</text>
+    <g transform="matrix(32,0,0,32,107.259,381.667)">
+    </g>
+    <text x="13.009px" y="381.667px" style="font-family:'ArialMT', 'Arial';font-size:32px;fill:rgb(234,117,0);">main.c</text>
+    <g transform="matrix(1,0,0,1,-128.504,-448.084)">
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Create a GpioReal</text>
+        <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Cast to GpioBase and</text>
+        <g transform="matrix(21.3333,0,0,21.3333,255.112,618.714)">
+        </g>
+        <text x="143.622px" y="618.714px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">pass to <tspan x="217.153px 231.382px " y="618.714px 618.714px ">Ap</tspan>p</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-128.504,-161.081)">
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Create a GpioT<tspan x="287.101px 298.966px " y="574.651px 574.651px ">es</tspan>t</text>
+        <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Cast to GpioBase and</text>
+        <g transform="matrix(21.3333,0,0,21.3333,255.112,618.714)">
+        </g>
+        <text x="143.622px" y="618.714px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">pass to <tspan x="217.153px 231.382px " y="618.714px 618.714px ">Ap</tspan>p</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-126.152,22.6772)">
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Checks set/get were</text>
+        <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">called as expected (using</text>
+        <g transform="matrix(21.3333,0,0,21.3333,238.476,618.714)">
+        </g>
+        <text x="143.622px" y="618.714px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">counters).</text>
+    </g>
+    <g transform="matrix(1,0,0,1,171.271,-373.622)">
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Accepts GpioBase</text>
+        <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Calls gpioBase.set() and</text>
+        <text x="143.622px" y="618.714px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">gpioBase.get() as</text>
+        <g transform="matrix(21.3333,0,0,21.3333,221.893,640.745)">
+        </g>
+        <text x="143.622px" y="640.745px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">required</text>
+    </g>
+    <g transform="matrix(1,0,0,1,171.271,-86.6193)">
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Accepts GpioBase</text>
+        <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Calls gpioBase.set() and</text>
+        <text x="143.622px" y="618.714px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">gpioBase.get() as</text>
+        <g transform="matrix(21.3333,0,0,21.3333,221.893,640.745)">
+        </g>
+        <text x="143.622px" y="640.745px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">required</text>
+    </g>
+    <path d="M297.921,179.748L309.921,185.748L297.921,191.748L297.921,179.748Z" style="fill:rgb(52,101,164);"/>
+    <path d="M15.118,185.748L300.321,185.748" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+    <path d="M297.921,466.751L309.921,472.751L297.921,478.751L297.921,466.751Z" style="fill:rgb(52,101,164);"/>
+    <path d="M15.118,472.751L300.321,472.751" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+    <path d="M34.677,572.929L22.677,566.929L34.677,560.929L34.677,572.929Z" style="fill:rgb(52,101,164);"/>
+    <path d="M317.48,566.929L32.277,566.929" style="fill:none;stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+    <defs>
+        <image id="_Image1" width="122px" height="32px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAgCAYAAADdTGx1AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFX0lEQVRoge1b7bHbRgyEpJdU4hZSQqp2CW4hleR9yD8kWMvlLgCKfLEzCWY4PJJ3BxwWX0eJpziQ/vrjz9Ok35dvX6+fNfde/ket4Uh5J/w6elqYZiHumRWWF1LMv0eBW5XFvHYp+0jaCnyrtI2ATkG4mvbW+Sf8eP6Jgqp59xpLNwf2d/1W9zvg7YII4ErBkzYLdxX3HKk5ldydghRPbFeyd/NUskxkm1KrQwf4akEG4GfPTtCrEdrJh+eOx5Sv4vms/FvmeIYcwLyWH/0Y8IUwAmQ+1P0Qz1ZzCwGtkDTW8VY8FDnFVEC5cNuNnxr8FlJ6UjrkewuwX8zkqNCzaU8MgQV2QuIZZeD5jgB6pRDB18me7Q+a2xn6kYWjkv+D2m7sQxDwZgb1bI4K8CnQVSh1QJ9DA10VPR1vxVPJjopVY581Ric3X6MMH+JgGX94NXs0C3qJm2Iv1GawHfAs7BaglTwd2IoY7AosNR970EKRRs7OGLuCzAHNIL/DcYqHV3PEuTEmb0avvcTNGC6ijWBXHo4MlbJ5YddYK6cyqIgZ2C7kOa9Och6Esqoo6AxeydaRMrb3iHijcx4oc3z59vWKHq2sEgHGowP7DHPyghzIXc6sgGZeTMojulwdoQFGr0b5VKrrDHECcvZDoBPc8/2s+qURtqGbgf4NzpeYe7YTuALaefUWoF00cUC74icVi2cG2tUwCHb2VeByUacIZXmPh+5zTl7fgtdJhG0GF4/fYwk2hvgutDpgGWC3cBcSHdhdrq0KMxUmEWzs74DuvLqKYNxW3vwWEX/T8Xo/3oLSjArd2GbwMU/n2VmxA6PyoEoJVQ2AfZhfXnd52nl+FjqnWBY9DHRVrCqDV8Ty4zrQ6HJuvHehZwtS+2gFdme1atvV5Si34CpvYu6fAN2ljgrsDxpfeSBGNqePiljn3OaQHPf2SzzALaOpe2HCAuyhyssUubzplMBzdWAjnWMNNBdZaj7lmcpBpnJMolXyu8QN5K74XZAC2uVMrkDf6RlWeqnALS83mJ+SpVIet/d4Na9VPWfZ0tvwDdVkzZUDoEdX1FbvzqNRASo3YB8MWSdx3mrdVSXs5tji0SpEd0DzHpX30TjOvT0M6Mvyoc6usQ75XDOgHKOtIgLtFovFCPbLAoDzN4PMeRXJhacKaBw38QZXH1Re6t5AKcWqGqYydI5MDDQbCcqUcmTVrQxQvqdwoVuBfKJnvCgHsgujDgB1VmPU+AnQqrrma2XsTpHJo4pmyiDzHupObVMd0LmdSsCdbA8l3PfSyjLxLZh6SdKBqxZbhe0ID/JK7uKa72FbpQZ3T73+zGvsy/pzIKs6otq5sHPhPvqVjrcwwPMrUF7gKdYFF+dqtajufXSXn1UbaVLgTPm4ok8VoSqfM7/pupXOqi2ZSiMZvl+hbeWrqm6sHpOJ269Vh1uso7aCHMwzjRrYZr4qZ6twjzw59ypZVH6uCrjkowrD6geNhXwvEbdfN+7hGwXHxeWz9HS1qOpaLdhRB/R0HtdPAVr1cblcje3WrHSEYGNERFIpBF/JdjVEu49OJqfwILvzVoD30FYezpgq0LfuCLprB7TyZpVC1K9pq9CdfzxYCFH8MbDLN2qMW+g/Rcx3khKq/lX9gFumTo68N0l5ObfaCShgJchSCPE/7i4MTa8/k47K/VvG76klXAhXup5sAWU6KYFOMn/cf7bKVc+eUfxRxrMX9Ok8E51UICOPrk6QAE8EiYhd3xD9rJD92bTXSKpU1zlEWyeM/8C/h47+sOzfQJNvoDZ81jSJfIvr6TdY/zlgfhUafkQoQXzmy8r/gf4FaBIJ9342+x3hjVKJbWFo0AAAAABJRU5ErkJggg=="/>
+    </defs>
+</svg>

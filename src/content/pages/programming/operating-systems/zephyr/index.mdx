@@ -507,10 +507,6 @@ Examples of some of the HALs (which are installed under `<project root dir>/modu
 * Atmel
 * Microchip
 
-## Zephyr SDK
-
-The _Zephyr SDK_ contains toolchains to compile, assemble, link and program/debug Zephyr applications. Currently it is only supported on Linux. On Windows and macOS, you have to manually install the toolchains you require for your Zephyr application.
-
 ## Supported Boards
 
 See https://docs.zephyrproject.org/latest/boards/index.html#boards for a comprehensive list of all the development boards supported by the Zephyr platform.
@@ -556,7 +552,7 @@ void my_function(void) {
 }
 ```
 
-I couldn't find out what header declared this function, so if you want to get rid of the compiler warning about the function being undefined, declare it yourself with:
+I couldn't find out what Zephyr header file declared this function, so if you want to get rid of the compiler warning about the function being undefined, declare it yourself (above where you want to use it in a `.c` file, or in your own header file) with:
 
 ```c
 // Declaration of the function provided by Zephyr. Couldn't find the header file where it's declared,
@@ -564,7 +560,7 @@ I couldn't find out what header declared this function, so if you want to get ri
 void nsi_exit(int status);
 ```
 
-The `native_sim` board supports the following APIs:
+The `native_sim` board supports the following APIs (among others):
 
 * GPIO (mocked)
 * Watchdog
