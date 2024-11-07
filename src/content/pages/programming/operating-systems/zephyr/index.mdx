@@ -241,6 +241,10 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
 
     This file is over 1GB in size, so make sure you have space! There is also a _minimal release_ which doesn't come with all the toolchains, but instead let's you select and download the ones you needed.
 
+    <Aside type="caution">
+    Arguably a bit of a naming gaffe, but the Zephyr SDK does not actually contain the Zephyr source code (the Zephyr source code is pulled into the west workspace when you run `west update`). It contains toolchains for all of Zephyr's supported architectures. I would have thought "Zephyr Toolchain" or similar would have been a better name!
+    </Aside>
+
 1. Extract the downloaded SDK:
 
     ```sh
@@ -550,6 +554,14 @@ void my_function(void) {
     nsi_exit(0);
 #endif
 }
+```
+
+I couldn't find out what header declared this function, so if you want to get rid of the compiler warning about the function being undefined, declare it yourself with:
+
+```c
+// Declaration of the function provided by Zephyr. Couldn't find the header file where it's declared,
+// so it's declared here.
+void nsi_exit(int status);
 ```
 
 The `native_sim` board supports the following APIs:
