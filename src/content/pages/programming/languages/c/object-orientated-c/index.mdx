@@ -95,6 +95,8 @@ Inheritance is the ability to define a new object/class which is a modified (ext
 
 <Image iref="fig-gpio-real-vs-testing-swimlane-diagram" src={import('./_assets/gpio-real-vs-testing-swimlane-diagram.svg')} width="700px">A swimlane diagram showing the difference between real hardware and a testing environment.</Image>
 
+Notice how the module does not depends on either child class, meaning that it run both on a real hardware or in a testing environment on Linux just fine. A different `main()` function, is used to the build the embedded application compared to the testing application. This allows each to create an instance of their respective GPIO class. This GPIO instance is then passed to the module (this is known as dependency injection). When passing it, you can either just pass the `.base` portion of the `struct`, or cast the entire `struct` to the base class type (this works because the `.base` portion is the first member of the `struct`).
+
 ## Interfacing To Imperative Code
 
 You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style.
