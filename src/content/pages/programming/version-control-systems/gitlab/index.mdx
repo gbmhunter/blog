@@ -4,7 +4,7 @@ date: 2014-02-08
 description: GitLab is a web-based Git repository manager and a strong competitor to GitHub, especially for commercial uses. The page covers container registries, pipeline includes, and running pipelines locally using gitlab-ci-local.
 image: ./_assets/cover-image.webp
 lastUpdated: 2024-10-15
-tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry, Docker, images, local pipelines, GCL]
+tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry, Docker, images, local pipelines, GCL, runners]
 title: GitLab
 type: page
 ---
@@ -224,9 +224,30 @@ GCL will not sync local files that are not tracked by Git. So if you are playing
 
 The file does not need to be continuously re-added to the git staging area when changes are made, as long as the file has been staged (or committed) at least once.
 
+## GitLab Runners
+
+GitLab runners are the machines/applications that run your CI pipelines. GitLab runners can be configured and run on GitLab's servers (GitLab-hosted runners) or self-hosted on your own servers.
+
+You use tags (GitLab tags, not Git tags) to specify what runner should run a job. GitLab-hosted runners will by default (an untagged job) use the `small` Linux x86-64 runner[^gitlab-gitlab-hosted-runners].
+
+GitLab-hosted runners support Linux, Windows and MacOS. As of November 2024, the Windows and MacOS runners are in beta[^gitlab-gitlab-hosted-runners].
+
+To use a Windows runner, you would use the `saas-windows-medium-amd64` tag as follows:
+
+```yaml
+my_windows_job:
+  tags:
+    - saas-windows-medium-amd64
+```
+
+<Aside type="note">
+Windows runners are much slower to start than Linux runners.
+</Aside>
+
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
 [^github-repo-gitlab-ci-local]: GitHub. _firecow/gitlab-ci-local_ [repo README]. Retrieved 2024-10-02, from https://github.com/firecow/gitlab-ci-local.
 [^gitlab-our-new-logo]: GitLab (2015, Jul 3). _Our new logo_ [blog post]. Retrieved 2024-10-14, from https://about.gitlab.com/blog/2015/07/03/our-new-logo/.
+[^gitlab-gitlab-hosted-runners]: GitLab. _GitLab-hosted runners_ [docs]. Retrieved 2024-11-11, from https://docs.gitlab.com/ee/ci/runners/index.html.

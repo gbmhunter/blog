@@ -7,7 +7,12 @@ title: Object-Orientated C
 type: page
 ---
 
-Although C is not generally thought of as an object-orientated language, it's flexibility does allow **object-orientated style code** to be written, albeit with slightly more verbose syntax than a "object-orientated" language such as C++.
+Although C is not generally thought of as an object-orientated language, it's flexibility does allow **object-orientated style code** to be written, albeit with slightly more verbose syntax than a "object-orientated" language such as C++. Why would you want to do this? Well, there are a number of reasons:
+
+* **Organization**: We humans tend to think of the world in terms of objects and their interactions. Writing code in the same style can make it easier to understand. It helps bundle data and functions that operate on that data into the same files, making them easier to maintain.
+* **Testing**: Inheritance along with dependency injection can allow you to write code which is easier to test (more on this below).
+* **Flexibility**: Writing code in an object-orientated style naturally makes it easy to create many instances of objects, which can be harder in imperative languages when you rely on file local or global variables.
+* **Clear Data Ownership**: Using an OO style means your are more likely to bundle data into `structs` and less likely to rely on file local or global variables that are defined outside of any function in a `.c` file. This is a good thing. File local or global data makes it harder to understand what happens when functions are called, and makes it easier to introduce bugs such as multiple threads accessing the same data without synchronisation. When data is bundled into objects, you are forced to pass the object around to all functions that need it, making developers aware of what data is used where.
 
 Object-orientated code is a broad term for a number of different coding ideas. These include:
 
@@ -20,44 +25,46 @@ The above points can be implemented in C with varying levels of success and simp
 
 Also miss out on compiler-enforced encapsulation and abstraction.
 
-## The Basic Object
+## Defining the Basic Object
 
-In C, _structures_ (`typedef struct`) can be used to represent an object. Here is C code which defines a very simple object, which only holds data and contains no functions. Think of a struct in C being the equivalent of a class in dedicated OO-languages.
-    
+In C, _structures_ (`typedef struct`) can be used to represent an "object". Below is C code which defines a very simple object, which only holds data and contains no functions. Think of a `struct` in C being the equivalent of a `class` in dedicated OO-languages.
+
 ```c
 typedef struct {
     double real;
     double imag;
-} complexNum_t;
+} ComplexNum;
 ```
 
 We would then create an instance of our object with the code:
 
 ```c 
 void main () {
-    complexNum_t myComplexNum;
+    ComplexNum myComplexNum;
     myComplexNum.real = 3.4;
     myComplexNum.imag = 5.7;
 }
 ```
 
-Note that by itself, the above code is not very object-orientated, even non-OO styled C would make extensive use of structures. This is where methods come in (functions which belong to an object).
+Note that by itself, the above code is not very object-orientated, as even non-OO styled C would make extensive use of structures. This is where methods come in (functions which belong to an object).
 
 ## Methods
 
 A method is just a name for a **function which belongs to an object**. When we say "belong" we mean that the function can **manipulate the data** or call other methods of a particular object instance.
 
-In stronger OO languages, methods are declared as part of a _class_, and a pointer to the current instance of the object (the keyword this) is automatically passed into each method.
+In stronger OO languages, methods are declared as part of a _class_, and a pointer to the current instance of the object (the keyword `this`) is automatically passed into each method. We don't have such luxuries in C, and so have to declare our methods as normal functions, and pass in the pointer to the object instance explicitly. You would normally want to do this as the first argument for consistency. Here we just call it `obj`.
 
-We don't have such luxuries in C, and so have to declare our methods as normal functions, and pass in the pointer to the object instance explicitly.
-
-```c  
-double ComplexNum_GetMagnitude(complexNum_t * obj) {
-
+```c
+double ComplexNum_GetMagnitude(ComplexNum const * obj) {
+    return sqrt(obj->real * obj->real + obj->imag * obj->imag);
 }
 ```
 
-The first (and only, in this case) argument passed into this "method" is a pointer to instance of a complexNum_t object that you wish to operate on. **All non-static methods of an object will have this as their first argument.** Note I choose to use the name obj rather than this to prevent any confusion to viewers or the compiler if it also understands C++.
+The first (and only, in this case) argument passed into this "method" is a pointer to instance of a `ComplexNum` object that you wish to operate on. **All non-static methods of an object will have this as their first argument.**
+
+<Aside type="caution">
+It's wise not to use the variable name `this` to pass in the object, as it is a reserved word in C++[^uni-of-missouri-cpp-reserved-words].
+</Aside>
 
 ## Wait, What About A Constructor?
 
@@ -189,3 +196,9 @@ int main(void) {
     return 0;
 }
 ```
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^uni-of-missouri-cpp-reserved-words]: University of Missouri-St. Louis. _C++ Reserved Words_. Retrieved 2024-11-11, from https://www.umsl.edu/~lawtonb/224/oview2a.html.
