@@ -92,7 +92,7 @@ void main() {
 
 ## Inheritance
 
-Inheritance is the ability to define a new object/class which is a modified (extended) version of an existing object/class. One use case for inheritance for embedded C is to make code testable. Inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (through special memory mapped registers).
+Inheritance is the ability to define a new object/class which is a modified (extended) version of an existing object/class. Inheritance allows polymorphism, which is the ability to treat different objects in a similar way. One great use case for inheritance/polymorphism for embedded C is to make code testable. Inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (which is done on real hardware through special memory mapped registers).
 
 <IRef iref="fig-gpio-inheritance-diagram" /> shows how the basic inheritance structure for our example GPIO driver.
 
@@ -102,7 +102,183 @@ Inheritance is the ability to define a new object/class which is a modified (ext
 
 <Image iref="fig-gpio-real-vs-testing-swimlane-diagram" src={import('./_assets/gpio-real-vs-testing-swimlane-diagram.svg')} width="700px">A swimlane diagram showing the difference between real hardware and a testing environment.</Image>
 
-Notice how the module does not depends on either child class, meaning that it run both on a real hardware or in a testing environment on Linux just fine. A different `main()` function, is used to the build the embedded application compared to the testing application. This allows each to create an instance of their respective GPIO class. This GPIO instance is then passed to the module (this is known as dependency injection). When passing it, you can either just pass the `.base` portion of the `struct`, or cast the entire `struct` to the base class type (this works because the `.base` portion is the first member of the `struct`).
+Notice how the module does not depends on either child class, meaning that it run both on a real hardware or in a testing environment on Linux just fine. A different `main()` function, is used to the build the embedded application compared to the testing application. This allows each to create an instance of their respective GPIO class. This GPIO instance is then passed to the module (this is known as dependency injection). When passing it, you can either just pass the `.base` portion of the `struct`, or cast the entire `struct` to the base class type (this works because the `.base` portion is the first member of the `struct`). The module will then call `get()` and `set()`, which due to polymorphism, will call different functions depending on whether it is a `GpioReal` or `GpioTest` instance.
+
+We begin by defining the base "class" (a `struct` because we are using C) in `GpioBase.h`:
+
+```c title="GpioBase.h"
+// Forward declaration
+typedef struct GpioBase GpioBase;
+
+struct GpioBase {
+    void (*set)(GpioBase *self, uint8_t value);
+    uint8_t (*get)(GpioBase *self);
+};
+
+void GpioBase_Init(GpioBase *self);
+```
+
+Since we are planning on using this as an interface, we don't actually want anyone every creating an instance of `GpioBase` (it exists solely to be extended from to make child classes). So we don't actually need to define a constructor for it, nor any `set()` or `get()` methods. However, I did create a constructor, just to be consistent across all "classes". I did however make sure that `assert()`'s are raised if the base class methods are called.
+
+```c title="GpioBase.c"
+#include "GpioBase.h"
+
+// Private function declarations
+void GpioBase_set(GpioBase *self, uint8_t value);
+uint8_t GpioBase_get(GpioBase *self);
+
+void GpioBase_Init(GpioBase *self) {
+    self->set = GpioBase_set;
+    self->get = GpioBase_get;
+}
+
+void GpioBase_set(GpioBase *self, uint8_t value) {
+    printf("GpioBase_set() called. This should never happen!\n");
+    assert(0);
+}
+
+uint8_t GpioBase_get(GpioBase *self) {
+    printf("GpioBase_get() called. This should never happen!\n");
+    assert(0);
+    return 0;
+}
+```
+
+We can then define the `GpioReal` class in `GpioReal.h`, which inherits from `GpioBase`:
+
+```c title="GpioReal.h"
+#include "GpioBase.h"
+
+typedef struct {
+    GpioBase base;
+    uint32_t pinNumber;
+} GpioReal;
+
+void GpioReal_init(GpioReal *self, uint32_t pinNumber);
+```
+
+Notice how we have added a new member to the `struct`, `pinNumber`. This is needed because this class will need to pass the pin number when calling the hardware-specific GPIO driver functions. We have also declared a constructor function for this class.
+
+We can then define the methods for this class in `GpioReal.c`:
+
+```c title="GpioReal.c"
+#include "GpioReal.h"
+
+void GpioReal_set(GpioBase *self, uint8_t value);
+uint8_t GpioReal_get(GpioBase *self);
+
+void GpioReal_init(GpioReal *self, uint32_t pinNumber) {
+    // Initialize the base class
+    GpioBase_Init(&self->base);
+    // Override the set and get methods
+    self->base.set = GpioReal_set;
+    self->base.get = GpioReal_get;
+    // Initialize the pin number
+    self->pinNumber = pinNumber;
+}
+
+void GpioReal_set(GpioBase *self, uint8_t value) {
+    GpioReal *gpioReal = (GpioReal *)self;
+    printf("Real GPIO set() called. This is where you would make hardware calls.\n");
+    // gpio_set(gpioReal->pinNumber, value);
+}
+
+uint8_t GpioReal_get(GpioBase *self) {
+    GpioReal *gpioReal = (GpioReal *)self;
+    printf("Real GPIO get() called. This is where you would make hardware calls.\n");
+    // return gpio_get(gpioReal->pinNumber);
+    return 0;
+}
+```
+
+We can do the same for our `GpioFake` class in `GpioFake.h` and `GpioFake.c`.
+
+```c title="GpioFake.h"
+#include "GpioBase.h"
+
+typedef struct {
+    GpioBase base;
+    uint8_t state;
+    uint32_t numSetCalls;
+    uint32_t numGetCalls;
+} GpioFake;
+
+void GpioFake_init(GpioFake *self);
+```
+
+Note that we extend the class with a new variable, `state`, which keeps track of the GPIO state, since we don't have any hardware to do this for us. We also add two variables to keep track of how many times the `set()` and `get()` methods are called.
+
+And now the implementation of the methods:
+
+```c title="GpioFake.c"
+#include "GpioFake.h"
+
+void GpioFake_set(GpioBase *self, uint8_t value);
+uint8_t GpioFake_get(GpioBase *self);
+
+void GpioFake_init(GpioFake *self) {
+    // Initialize the base class
+    GpioBase_Init(&self->base);
+    // Override the set and get methods
+    self->base.set = GpioFake_set;
+    self->base.get = GpioFake_get;
+    // Initialize the test state
+    self->state = 0;
+    self->numSetCalls = 0;
+    self->numGetCalls = 0;
+}
+
+void GpioFake_set(GpioBase *self, uint8_t value) {
+    GpioFake *gpioFake = (GpioFake *)self;
+    gpioFake->state = value;
+    gpioFake->numSetCalls++;
+    printf("Fake GPIO set() called. For testing, this is where you would keep track how many times the GPIO is set, when it was called, and what value.\n");
+}
+
+uint8_t GpioFake_get(GpioBase *self) {
+    GpioFake *gpioFake = (GpioFake *)self;
+    gpioFake->numGetCalls++;
+    printf("Fake GPIO get() called. This is where you would keep track how many times the GPIO is read, when, and you could fake return values.\n");
+    return gpioFake->state;
+}
+```
+
+And our trifecta of `Gpio` classes is complete! We can now use them.
+
+```c title="main.c"
+#include "GpioBase.h"
+#include "GpioFake.h"
+#include "GpioReal.h"
+
+// This function accepts either a GpioReal or a GpioTest!
+// This function does not depend on any specific GPIO nor hardware calls
+// (i.e. it could be in it's own file and not import GpioReal.h or GpioTest.h)
+void functionWhichAcceptsAnyGpio(GpioBase *gpio) {
+    // Set the GPIO
+    gpio->set(gpio, 1);
+
+    // Read back the GPIO
+    gpio->get(gpio);
+}
+
+int main() {
+    // Create a instance of GpioReal. 13 is the pin number.
+    GpioReal gpioReal;
+    GpioReal_init(&gpioReal, 13);
+    functionWhichAcceptsAnyGpio(&gpioReal.base);
+
+    // Create a instance of GpioFake
+    GpioFake gpioFake;
+    GpioFake_init(&gpioFake);
+    functionWhichAcceptsAnyGpio(&gpioFake.base);
+
+    return 0;
+}
+```
+
+Notice that `functionWhichAcceptsAnyGpio()` accepts and operates on the `GpioBase` interface. This function is an example of how you can write code that will work on both the real embedded hardware and a Linux testing environment. This function could be in it's own file and not import `GpioReal.h` nor `GpioFake.h`. Depending on what child class is passed in, different `set()` and `get()` methods will be called (this is polymorphism).
+
+You can see a full working example of this code on GitHub at [gbmhunter/c-inheritance-example](https://github.com/gbmhunter/c-inheritance-example).
 
 ## Interfacing To Imperative Code
 

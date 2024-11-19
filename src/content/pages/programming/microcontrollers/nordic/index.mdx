@@ -13,6 +13,34 @@ Nordic has a range of microcontroller families. They specialize in low-power Blu
 
 The nRF5 SDK entered maintenance mode around the year 2021-2022[^reddit-embedded-nrf5-sdk-vs-nrf-connect-sdk], with the intention that new FW projects would use the Nordic nRF Connect SDK instead.
 
+```batch
+PS C:\Users\geoff> nrfjprog --program C:\my_file.zip --verify
+[ #################### ]   0.000s | Finding image components - Finished
+[error] [ Client] - Encountered error -93: Command program_file executed for 79 milliseconds with result -93
+[error] [  nRF91] - Failed to preapre modem coprocessor for bootloader upload
+[error] [  nRF91] - Failed to initialize modem
+[error] [ Worker] - Memory access failed with SECUREFAULT at 1342189832.
+ERROR: Access to the selected address is blocked by the SPU.
+```
+
+The problem in my case was an old version of `nrfjprog`. After upgrading from version `10.21.0` to `10.24.2`, the above error was resolved.
+
+Before upgrading:
+
+```batch
+PS C:\Users\geoff> nrfjprog --version
+nrfjprog version: 10.21.0 external
+JLinkARM.dll version: 7.94e
+```
+
+And after upgrading to `10.24.2`:
+
+```batch
+PS C:\Users\geoff> nrfjprog --version
+nrfjprog version: 10.24.2 external
+JLinkARM.dll version: 7.94e
+```
+
 ## Child Pages
 
 <ChildPages />

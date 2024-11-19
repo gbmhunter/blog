@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-24
+lastUpdated: 2024-11-14
 tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation]
 title: Zephyr
 type: page
@@ -845,11 +845,12 @@ int main() {
 Remember that a thread stack is a different object to just a general purpose "stack" (which Zephyr also provides to the user for general FILO functionality).
 </Aside>
 
+Make sure you call `K_THREAD_STACK_SIZEOF()` in the same file as the `K_THREAD_STACK_DEFINE()` macro. If you pass the stack into a different file, and call `K_THREAD_STACK_SIZEOF()` on it, you will get back the wrong size (I got `-60` when doing this). Thus you have to pass both the stack and the size into functions in other files (just like you would for a basic C array).
+
 
 #### Dynamic Thread Stack Allocation
 
 You'll notice that in the above example, although the thread is created at runtime, the stack is statically defined at compile time with `K_THREAD_STACK_DEFINE()`. Zephyr is meant to support dynamic thread stack allocation. However I could not get it working.
-
 
 ### Workqueues
 
@@ -1619,6 +1620,17 @@ if (rc == 0) {
 }
 ```
 
+You can also read the current value of a GPIO output using `gpio_pin_get_dt()`. HOWEVER -- you must make sure to provide the `GPIO_INPUT` flag along with the appropriate output flag when configuring the GPIO pin. For example:
+
+```c
+int rc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_LOW | GPIO_INPUT);
+__ASSERT_NO_MSG(rc == 0);
+
+// Now you can read the value of the GPIO output!
+int value = gpio_pin_get_dt(&myGpio);
+
+```
+
 #### GPIO Interrupts
 
 If you want to configure an interrupt for a GPIO pin, you can use `gpio_pin_interrupt_configure_dt()`:
@@ -1644,7 +1656,72 @@ int main() {
 }
 ```
 
-See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an example of using a Zephyr GPIO to handle button presses along with debouncing using delayable work queue.
+There are many interrupt configuration flags to choose from, including both physical (actual voltage at the pin) and logical (depends on the pin's active high or active low configuration) triggers. For both physical and logical, there are both edge (transition) and level triggers. <IRef iref="tbl-gpio-interrupt-config-flags" /> lists the different flags[^zephyr-docs-gpio-h-file-reference].
+
+<table data-iref="tbl-gpio-interrupt-config-flags">
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Description</th>
+      <th>Physical or Logical</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`GPIO_INT_DISABLE`</td>
+      <td>Disable interrupts for the GPIO pin.</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_EDGE_RISING`</td>
+      <td>Trigger interrupt on rising edge.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_EDGE_FALLING`</td>
+      <td>Trigger interrupt on falling edge.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_EDGE_BOTH`</td>
+      <td>Trigger interrupt on both rising and falling edges.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_LOW`</td>
+      <td>Trigger interrupt when the GPIO pin is low.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_HIGH`</td>
+      <td>Trigger interrupt when the GPIO pin is high.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_TO_INACTIVE`</td>
+      <td>Trigger interrupt when pin changes to inactive (logical level 0).</td>
+      <td>Logical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_TO_ACTIVE`</td>
+      <td>Trigger interrupt when pin changes to active (logical level 1).</td>
+      <td>Logical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_INACTIVE`</td>
+      <td>Trigger interrupt when pin is inactive (logical level 0).</td>
+      <td>Logical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_ACTIVE`</td>
+      <td>Trigger interrupt when pin is active (logical level 1).</td>
+      <td>Logical</td>
+    </tr>
+  </tbody>
+  <caption>GPIO interrupt configuration flags.</caption>
+</table>
+
+See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an example of using a Zephyr GPIO to handle button presses along with debouncing using a delayable work queue.
 
 ### PWM
 
@@ -2157,7 +2234,7 @@ Let's create a directory called `tests` under `app`, and then copy all of the fi
 ```
 
 <Aside type="caution">
-When including sources from `app/src/` into your test application, make sure NOT to include the apps `main.c` (or wherever your `int main()` function is defined). The test application defines it's own `main()` which runs the unit test functions (which makes sense, you don't want to RUN your app normally, you want a new entry point which runs the unit test functions). If you include the apps `main()` you'll get a `multiple definition of main` compile error.
+When including sources from `app/src/` into your test application, make sure NOT to include the apps `main.c` (or wherever your `int main()` function is defined) in the tests `CMakeLists.txt` file. The test application defines it's own `main()` which runs the unit test functions (which makes sense, you don't want to RUN your app normally, you want a new entry point which runs the unit test functions). If you include the apps `main()` you'll get a `multiple definition of main` compile error.
 </Aside>
 
 Assuming you are currently in the root of the west workspace, you can run your tests with the following command. You do not need to pass in the `tests` directory, `west twister` can work that out so you just need to pass in the directory to your app.
@@ -2198,7 +2275,7 @@ When writing the tests, just using `west twister -T app/` is not that useful bec
 1. It takes a long time to build and run the tests, and the output is hidden in a log file rather than being printed to the terminal. This slows down development when you want to write some test code and then run it to see if it works.
 1. Intellisense does not work as well as it does for the Zephyr app. This is because `compile_commands.json` is not created in the `twister` build directories, and the build directory keeps changing.
 
-A better way is to reserve ``west twister -T app/` only for running your tests once you have finished writing the tests. While writing the tests, use the standard west build instead. You can do this because the `test/` directory is a self-contained west application in it's own right!
+A better way is to reserve `west twister -T app/` only for running your tests once you have finished writing the tests. While writing the tests, use the standard west build instead. You can do this because the `test/` directory is a self-contained west application in it's own right! One downside to this is you will lose the ability to only run specific tests via the command line. You have to comment out code instead.
 
 First use (assuming you are building the tests to run on `native_sim`):
 
@@ -2211,6 +2288,68 @@ and then from then on you can use the faster:
 ```shell
 west build -t run
 ```
+
+Zephyr's `ztest` framework provides the standard setup of test suites and tests.
+
+You can use `ZTEST_F(my_suite, my_test)` to define a test which automatically pulls in the fixture returned from the setup function and gives it the name `<suite_name>_fixture` (i.e. `my_suite_fixture` in this case).
+
+```c
+#include <zephyr/ztest.h>
+
+// This name is important! Must be `<suite_name>_fixture`!
+struct my_suite_fixture {
+     uint32_t number;
+};
+
+static void *my_suite_setup(void)
+{
+    struct my_suite_fixture *fixture = malloc(sizeof(struct my_suite_fixture));
+    zassume_not_null(fixture, NULL);
+
+    // Initialize the fixture
+    fixture->number = 99;
+    return fixture;
+}
+
+static void my_suite_before(void *f)
+{
+    struct my_suite_fixture *fixture = (struct my_suite_fixture *)f;
+}
+
+static void my_suite_teardown(void *f)
+{
+    // Remember to free the memory allocated in the setup function!
+    free(f);
+}
+
+ZTEST_SUITE(my_suite, NULL, my_suite_setup, my_suite_before, NULL, my_suite_teardown);
+
+ZTEST_F(my_suite, test_feature_x)
+{
+    // Because we use `ZTEST_F()` we automatically get access to the `fixture` object 
+    zassert_equal(99, fixture->number);
+}
+```
+
+### Cleaning Up
+
+Many firmware applications are designed to run forever on a MCU (well, until it's reset of course). Because of this, you rarely need to clean up resources you have created. In a testing environment however, you will typically be setting up and tearing down parts of your application for each test. Because of this, you will need to put more focus on cleaning up resources correctly, otherwise it can lead to memory leaks, segmentation faults or other bugs.
+
+You should stop any Zephyr timers you have started in your test, as you can get segmentation faults if you reuse the same struct as a new timer with the same callback function.
+
+```c
+ZTEST_F(my_suite, test_example)
+{
+    struct k_timer my_timer;
+    k_timer_init(&my_timer, my_timer_callback, NULL);
+    k_timer_start(&my_timer, K_SECONDS(1), K_SECONDS(1));
+
+    // Stop the timer. Perfectly fine to call even if the timer
+    // has already stopped.
+    k_timer_stop(&my_timer);
+}
+```
+
 
 ## Distributing Zephyr Libraries
 
@@ -2365,3 +2504,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^mind-using-emulators-and-fake-devices-in-zephyr]: Javad Rahamipetroudi (2024, May 22). _Using emulators and fake devices in Zephyr_. Retrieved 2024-10-24, from https://mind.be/using-emulators-and-fake-devices-in-zephyr/.
 [^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
 [^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.
+[^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
