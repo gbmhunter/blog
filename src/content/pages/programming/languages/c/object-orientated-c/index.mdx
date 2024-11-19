@@ -191,7 +191,11 @@ uint8_t GpioReal_get(GpioBase *self) {
 }
 ```
 
-We can do the same for our `GpioFake` class in `GpioFake.h` and `GpioFake.c`.
+Note how the first thing we do in the `set()` and `get()` methods is to cast the `self` pointer from the base type to the child type. We can safely do this because we know that the `self` pointer passed in will always be of the type of the child class (since it must have been initialized with a constructor function from that class). Casting it gives us access to the child class members, which we would need to get hardware specific data so we can make the right HAL calls (or direct register manipulation if you're feeling up to it!).
+
+For a more real-world example, let's pretend you were writing a `GpioReal` class for running on the [Zephyr framework/RTOS](/programming/operating-systems/zephyr/). You would likely want to make the `GpioReal_init()` take in a pointer to the Zephyr GPIO device from the device tree (`struct gpio_dt_spec`) and save it to the GpioReal `struct`. You could then make the appropriate call in the `set()` method (`gpio_pin_set_dt(&self->gpioDtSpec, value)`), and similarly in the `get()` method (`return gpio_pin_get_dt(&self->gpioDtSpec)`).
+
+Now we've finished our `GpioReal` class, let's write the `GpioFake` class in `GpioFake.h` and `GpioFake.c`.
 
 ```c title="GpioFake.h"
 #include "GpioBase.h"
@@ -277,6 +281,16 @@ int main() {
 ```
 
 Notice that `functionWhichAcceptsAnyGpio()` accepts and operates on the `GpioBase` interface. This function is an example of how you can write code that will work on both the real embedded hardware and a Linux testing environment. This function could be in it's own file and not import `GpioReal.h` nor `GpioFake.h`. Depending on what child class is passed in, different `set()` and `get()` methods will be called (this is polymorphism).
+
+This is the output from running the code:
+
+```bash
+gbmhunter@geoff-laptop:~/personal/c-inheritance-example/build$ ./c-inheritance-example 
+Real GPIO set() called. This is where you would make hardware calls.
+Real GPIO get() called. This is where you would make hardware calls.
+Fake GPIO set() called. For testing, this is where you would keep track how many times the GPIO is set, when it was called, and what value.
+Fake GPIO get() called. This is where you would keep track how many times the GPIO is read, when, and you could fake return values.
+```
 
 You can see a full working example of this code on GitHub at [gbmhunter/c-inheritance-example](https://github.com/gbmhunter/c-inheritance-example).
 
