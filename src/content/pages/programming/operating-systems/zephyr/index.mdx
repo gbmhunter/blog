@@ -1322,7 +1322,7 @@ This is what immediate mode is great for -- debugging crashes and other time-sen
 
 In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`.
 
-## The State Machine Framework
+## The State Machine Framework (SMF)
 
 Zephyr provides a state machine framework (SMF) which can be used to implement finite state machines (FSMs) and hierarchical state machines (HSMs). SMF was added to Zephyr in `v2.7.0`[^zephyr-release-notes-v2-7-0].
 
