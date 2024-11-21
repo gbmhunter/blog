@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2012-10-25
 description: Relays are electronic components which can switch a load on and off from an isolated control signal. There are traditional mechanical relays and more modern solid-state relays. This page covers terminology, parameters, contact arrangements, inductive kickback, flyback diodes, latching, common relay packages, supplier links and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-09-11
-tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw, inductive kickback]
+lastUpdated: 2024-11-21
+tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw, inductive kickback, wet contacts, dry contacts]
 title: Mechanical Relays
 type: page
 ---
@@ -42,9 +42,15 @@ Double-pole, single-throw (1C)
 
 <Image src={import('./_assets/relay-no-nc-schematic-symbol.png')} width="500px">Schematic symbol for a relay with a normally-open (NO), normally-closed (NC) and common contact.</Image>
 
+## Dry Contacts
+
+It is common in the electrical industry to refer to "wet" or "dry" contacts. In the context of relays, "dry contacts" are normally used. This is when the relay does not provide electrical power to the output contacts. The relay simply switches the contacts together, in the same way a mechanical switch would. It is up to the external circuitry to provide the power to the load. In this case, one contact could be connected to 240VAC (or any other voltage), and the other contact to the live of an external load (which already has a neutral connected to it). When the relay is activated, the contacts will be connected together.
+
+It is not clear to me what a "wet" relay contact would be. Potentially this would be if one contact of a NO pair was permanently connected to 240VAC (and not connected to the outside world), with the other contact being available to connect to an external load. When the relay is activated, the available contact would be "energized" to 240VAC and power the load.
+
 ## Inductive Kickback and Flyback Diodes
 
-The coil of a relay is basically an inductor. Due to the rapid $\frac{di}{dt}$ when the relay is switched off, the inductive coil will generate a large negative voltage to try and keep the current flowing (remember: inductors "resist" the change in current). This is called _inductive kickback_. This voltage spike can cause havoc in neighbouring components (e.g. killing the transistor used to switch the relay on, or arcing across switch terminals) if not suppressed. A _flyback_ diode in anti-parallel across the coil of the relay will clamp the voltage spike to approx. no more than $-0.7V$.
+The coil of a relay is basically an [inductor](/electronics/components/inductors/). Due to the rapid $\frac{di}{dt}$ when the relay is switched off, the inductive coil will generate a large negative voltage to try and keep the current flowing (remember: inductors "resist" the change in current). This is called _inductive kickback_. This voltage spike can cause havoc in neighbouring components (e.g. killing the transistor used to switch the relay on, or arcing across switch terminals) if not suppressed. A _flyback_ diode in anti-parallel across the coil of the relay will clamp the voltage spike to approx. no more than $-0.7V$.
 
 <Image src={import('./_assets/flyback-diode-relay-schematic.png')} width="500px">Always add a \"flyback\" diode in anti-parallel across the coil of a relay to quench voltage spikes due the rapid di/dt through the inductor when the relay is switched of. </Image>
 
