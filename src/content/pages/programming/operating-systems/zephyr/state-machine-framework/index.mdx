@@ -1,0 +1,204 @@
+---
+authors: [gbmhunter]
+date: 2024-10-02
+description: The Zephyr State Machine Framework (SMF) is a Zephyr framework (API) for implementing finite state machines (FSMs) and hierarchical state machines (HSMs).
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-11-22
+tags: [zephyr, state machine framework, SMF, finite state machine, FSM, hierarchical state machine, HSM, state machines, states]
+title: The Zephyr State Machine Framework (SMF)
+type: page
+---
+
+Zephyr provides a state machine framework (SMF) which can be used to implement finite state machines (FSMs) and hierarchical state machines (HSMs). SMF was added to Zephyr in `v2.7.0`[^zephyr-release-notes-v2-7-0].
+
+<Image src={import('./_assets/basic-led-state-machine-diagram.svg')} width="800px">A diagram of a basic hierarchical LED state machine (HSM) that you could build using the Zephyr SMF.</Image>
+
+## Building A FSM
+
+The first thing you need to do is enable the framework in your `prj.conf`:
+
+```python
+CONFIG_SMF=y
+```
+
+Then, you can start creating a state machine in a `.c` file. First things first, make sure to import the SMF header file:
+
+```c
+#include <zephyr/smf.h>
+```
+
+You will likely want to access data within your state machine. The recommended way to do this is to create a `struct` to hold your data, with the first member being special `struct smf_ctx ctx`. The SMF will pass this object to all of your state machine functions, and also access and modify the `ctx` member to keep track of the state machines internal state.
+
+```c
+typedef struct {
+    struct smf_ctx ctx;
+    // User defined data goes here
+    uint32_t event;
+} MyStateMachine;
+```
+
+We also need to define our states as an enumeration:
+
+```c
+typedef enum {
+    S1,
+    S2,
+} MyState;
+```
+
+Now let's create some state machine functions. The SMF is designed so that you can have up to three functions per state:
+
+1. **The entry function**: Called whenever the state machine enters the state.
+2. **The run function**: Called when the state machine is in this state and `smf_run_state()` is called.
+3. **The exit function**: Called whenever the state machine exits the state.
+
+Let's create a simple FSM (no hierarchical states) with two states: `s1` and `s2`.
+
+```c
+static void s1_entry(void *data) {
+    printf("State 1 entry.\n");
+}
+
+static void s1_run(void *data) {
+    printf("State 1 run.\n");
+
+static void s1_exit(void *data) {
+    printf("State 1 exit.\n");
+}
+
+static void s2_entry(void *data) {
+    printf("State 2 entry.\n");
+}
+
+static void s2_run(void *data) {
+    printf("State 2 run.\n");
+}
+
+static void s2_exit(void *data) {
+    printf("State 2 exit.\n");
+}
+```
+
+The `void *data` parameter is actually a pointer to the state machine object (e.g. of type `MyStateMachine *` in our example). You can safely cast this `void *data` pointer to the correct type and access "member variables" of the state machine object. For example:
+
+```c
+static void s1_run(void *data) {
+    // Cast the data pointer to the correct type
+    MyStateMachine *obj = (MyStateMachine *)data;
+    // Now we can access member variables
+    printf("myEvent: %d.\n", obj->myEvent);
+}
+```
+
+### Transitioning Between States
+
+You can call the `smf_set_state()` function inside state `run()` functions to transition to a different state. The below example makes the state machine transition from `S1` to `S2` when the `event` member of the `MyStateMachine` object is set to `1`.
+
+```c
+static void s1_run(void *data) {
+    MyStateMachine *obj = (MyStateMachine *)data;
+    if (obj->event == 1) {
+        smf_set_state(SMF_CTX(obj), &l_myStateTable[S2]);
+        // We are now in state S2!
+        return;
+    }
+}
+```
+
+<Aside type="tip">
+Note that state transitions are not queued, they happen immediately. So the appropriate `exit()` and `entry()` functions for the state transition will be called by the time `smf_set_state()` returns. You should normally make sure to `return` after the call to `smf_set_state()` or otherwise make sure that no other old state logic is executed.
+</Aside>
+
+We need to register all these functions using a state table. We can use the `SMF_CREATE_STATE()` macro to create the state table easily. It takes 5 parameters:
+
+```c
+SMF_CREATE_STATE(entry_function, run_function, exit_function, parent, initial)
+```
+
+The `parent` parameter is optional and can be used to create a hierarchical state machine (more on this below). The `initial` parameter is optional and can be used to set the initial state of the state machine.
+
+```c
+// Populate state table
+static const struct smf_state l_myStateTable[] = {
+        [S1] = SMF_CREATE_STATE(s1_entry, s1_run, s1_exit, NULL, NULL),
+        [S2] = SMF_CREATE_STATE(s2_entry, s2_run, s2_exit, NULL, NULL),
+};
+```
+
+We can then run the state machine!
+
+```c
+int main(void)
+{
+    // Create state machine object
+    MyStateMachine sm;
+
+    // Set initial state
+    smf_set_initial(SMF_CTX(&sm), &l_myStateTable[S1]);
+
+    // Run the state machine
+    while(1) {
+        int32_t ret = smf_run_state(SMF_CTX(&sm));
+        if (ret) {
+            // State machine terminates if a non-zero value is returned
+            break;
+        }
+        k_msleep(1000);
+    }
+}
+```
+
+Note that the example above is not very ideal since is sleeps for 1s between calls to the `run()` function of whatever state it is in. This would make the state machine seem unresponsive. If you decrease the sleep time, the state machine will appear more responsive, but you'll end up churning through CPU cycles needlessly. This would be an issue in a multi-threaded application or if low power consumption is a concern. A better approach is to build a event system alongside the state machine. When events arrive, they are handled by the state machine. Events could be created by interrupts, timers, or other threads. Because you cannot pass extra variables into state functions, you have to save the event data to the `sm` object which the state functions have access to.
+
+Below is pseudo code of the idea:
+
+```c
+while(1) {
+    event = eventQueue.get(); // Blocks until an event is available
+    sm.event = event; // Save the event to the state machine object, this is the only way to get data "into" the state machine
+    smf_run_state(SMF_CTX(&sm)); // Run the state machine
+}
+```
+
+<IRef iref="tbl-smf-prj-conf-options" /> lists the different options you can set in your `prj.conf` to configure the SMF[^zephyr-docs-smf].
+
+<table data-iref="tbl-smf-prj-conf-options">
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`CONFIG_SMF`</td>
+      <td>`y` enables the state machine framework, `n` disables it.</td>
+      <td>`n`</td>
+    </tr>
+    <tr>
+      <td>`CONFIG_SMF_ANCESTOR_SUPPORT`</td>
+      <td>`y` enables support for ancestor state machines, `n` disables it.</td>
+      <td>`n`</td>
+    </tr>
+    <tr>
+      <td>`CONFIG_SMF_INITIAL_TRANSITION`</td>
+      <td>`y` enables support for initial transitions in HSMs, `n` disables it.</td>
+      <td>`n`</td>
+    </tr>
+  </tbody>
+  <caption>Zephyr state machine framework (SMF) configuration options.</caption>
+</table>
+
+### Hierarchical State Machines
+
+SMF supports hierarchical state machines (HSMs). HSMs are very useful in real-world applications for managing complex systems. They help 
+
+For a full working example of the SMF that runs on Linux (the `native_sim` board), see the GitHub repo [gbmhunter / zephyr-examples](https://github.com/gbmhunter/zephyr-examples/tree/main/apps/state-machine-framework).
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
+[^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.

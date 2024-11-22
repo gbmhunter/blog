@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 719 273" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+        <path d="M672.756,30.236L672.756,226.772C672.756,235.116 665.982,241.89 657.638,241.89L355.276,241.89C346.932,241.89 340.157,235.116 340.157,226.772L340.157,30.236C340.157,21.892 346.932,15.118 355.276,15.118L657.638,15.118C665.982,15.118 672.756,21.892 672.756,30.236Z" style="fill:rgb(235,235,235);stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+        <path d="M241.89,30.236L241.89,151.181C241.89,159.525 235.116,166.299 226.772,166.299L30.236,166.299C21.892,166.299 15.118,159.525 15.118,151.181L15.118,30.236C15.118,21.892 21.892,15.118 30.236,15.118L226.772,15.118C235.116,15.118 241.89,21.892 241.89,30.236Z" style="fill:rgb(235,235,235);stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+        <g transform="matrix(21.3333,0,0,21.3333,149.806,38.2188)">
+        </g>
+        <text x="107.15px" y="38.219px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">OFF</text>
+        <g transform="matrix(13.3333,0,0,13.3333,328.701,100.422)">
+        </g>
+        <text x="264.254px" y="100.422px" style="font-family:'ArialMT', 'Arial';font-size:13.333px;fill:rgb(234,117,0);">TURN_ON</text>
+        <g transform="matrix(13.3333,0,0,13.3333,330.528,183.565)">
+        </g>
+        <text x="213.959px" y="183.565px" style="font-family:'ArialMT', 'Arial';font-size:13.333px;fill:rgb(234,117,0);">ST<tspan x="230.007px 238.9px 248.288px 256.433px " y="183.565px 183.565px 183.565px 183.565px ">ART_</tspan>FLASHING</text>
+        <g transform="matrix(13.3333,0,0,13.3333,307.829,206.249)">
+        </g>
+        <text x="236.722px" y="206.249px" style="font-family:'ArialMT', 'Arial';font-size:13.333px;fill:rgb(234,117,0);">TURN_OFF</text>
+        <g transform="matrix(13.3333,0,0,13.3333,334.077,130.658)">
+        </g>
+        <text x="262.97px" y="130.658px" style="font-family:'ArialMT', 'Arial';font-size:13.333px;fill:rgb(234,117,0);">TURN_OFF</text>
+        <g transform="matrix(21.3333,0,0,21.3333,522.816,37.5349)">
+        </g>
+        <text x="490.816px" y="37.535px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">ON</text>
+        <path d="M472.441,83.15L472.441,151.181C472.441,159.525 465.667,166.299 457.323,166.299L374.173,166.299C365.829,166.299 359.055,159.525 359.055,151.181L359.055,83.15C359.055,74.806 365.829,68.031 374.173,68.031L457.323,68.031C465.667,68.031 472.441,74.806 472.441,83.15Z" style="fill:rgb(235,235,235);stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+        <path d="M644.409,83.15L644.409,151.263C644.409,159.606 637.635,166.381 629.291,166.381L504.567,166.381C496.223,166.381 489.449,159.606 489.449,151.263L489.449,83.15C489.449,74.806 496.223,68.031 504.567,68.031L629.291,68.031C637.635,68.031 644.409,74.806 644.409,83.15Z" style="fill:rgb(235,235,235);stroke:rgb(52,101,164);stroke-width:2.67px;"/>
+        <g transform="matrix(21.3333,0,0,21.3333,448.574,90.4482)">
+        </g>
+        <text x="384.553px" y="90.448px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">SOLID</text>
+        <g transform="matrix(21.3333,0,0,21.3333,621.176,91.1218)">
+        </g>
+        <text x="514.488px" y="91.122px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">FLASHING</text>
+        <path d="M350.655,101.627L359.055,105.827L350.655,110.027L350.655,101.627Z" style="fill:rgb(52,101,164);"/>
+        <path d="M241.89,105.827L352.335,105.827" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.87px;"/>
+        <path d="M250.29,140.263L241.89,136.063L250.29,131.863L250.29,140.263Z" style="fill:rgb(52,101,164);"/>
+        <path d="M359.055,136.063L248.61,136.063" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.87px;"/>
+        <path d="M524.934,174.699L529.134,166.299L533.334,174.699L524.934,174.699Z" style="fill:rgb(52,101,164);"/>
+        <path d="M204.094,166.381L204.094,188.976L529.134,188.976L529.134,173.019" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.87px;"/>
+        <path d="M162.099,174.781L166.299,166.381L170.499,174.781L162.099,174.781Z" style="fill:rgb(52,101,164);"/>
+        <path d="M566.929,166.381L566.929,211.654L166.299,211.654L166.299,173.101" style="fill:none;stroke:rgb(52,101,164);stroke-width:1.87px;"/>
+        <use xlink:href="#_Image1" x="637.953" y="254.352" width="81px" height="18px"/>
+    </g>
+    <g transform="matrix(10.9733,0,0,10.9733,715.332,267.318)">
+    </g>
+    <text x="643.341px" y="267.318px" style="font-family:'ArialMT', 'Arial';font-size:10.973px;fill:white;">mbedded.ninja</text>
+    <defs>
+        <image id="_Image1" width="81px" height="18px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAASCAYAAAAjQzL0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACy0lEQVRYhc1Y0bHbMAyDEneTrvBG6NQdoSt0kr7Y6keMBIZB2Un78Xink2NLJAiTFJ2GF+X3x482ev7918/+L/vP6n0Vx7t2K30qUfEJg832dpuPxPdX0g90Jh1HGHyPrz96DmBL6maDkZccbTa7sRGZunekR/W5XteXHD5DejtYl3A4JgB3Mh8ghMCLzcl5PlNZ8HRi5HQLuivwPlRcB58vtjbhf0U8OHaYGrAj8IKno7yuhhpSEpcARgmkXnXSgavexe77y/C1ug7YB0YS3VNFn+p/XE+BwAuAK4BpnSsiL6K8ByMpcpTEFElVVCVyFJeumcO6KrvUViXu27zON2KcTGnDnbwJwLd1VqdHJDqBqWBTxxVbx7jenVO9TqJiUOeUxAsy/iQjMoljxp28z/X+DUCfZCEj8Io7gRwkUkF7FEDAO4HJ8Su2L6RyYEQicfTVNgfvqS0nUnWk0pOE0ffH7m0ikYNEejS2MCsBVRonxz2quS4RqimdyO5BJ3VdZXggOD7NBJ9pX7OPL6xpJHKTHwBVSjgYTUvVN0prT9+UaqrXo8ZPSq5VOySxyew63J7OlFnmDRdOoir1k5FCcAv2JHjU+UHhdtJhonb8vr6UoxZIidfaWUWit3ApS3Tdw3clUY2ygGpqpPYnOYcT90ethu7lfi0ZjrevWIl7LtYk3JBn/tzt8+Da1ehJFBEkCeRvpkBK55QaZxraFq6P9nrTq/e8/UgtToWZ67SGevdB/Z/r4EvrsNOZ6TnL76pPrNqF/0Gil4R00uu1Hjqj8qN4HWM6yf1Q0fbmhmfU9xSJvtGN+3hH3tk3aoNG9dGxJ/sViV7i2OaQ0A7g/u0sXy0pVZPxROJR5+9OvSMjIjmPcFQvflTv/VNvVxv9dE4FPKWeX38FqfpTYIw1tXUq/p9At99b5YP/Eati/NXkbDZQ1If0NeOHWWyn/gJ8yWwY7lxEMQAAAABJRU5ErkJggg=="/>
+    </defs>
+</svg>

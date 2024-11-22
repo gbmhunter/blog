@@ -9,7 +9,7 @@ title: Zephyr
 type: page
 ---
 
-<WarningIsNotes />
+## Overview
 
 _Zephyr_ is the combination of a **real-time operating system, peripheral/system API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
@@ -28,6 +28,10 @@ Uses a [CMake](/programming/build-systems-and-package-managers/cmake) build envi
 Zephyr is cross-platform and supported on Linux, Windows and macOS (i.e. you can cross-compile projects and flash embedded devices from any of those systems). You can also compile Zephyr for Linux, which is useful for testing and debugging.
 
 Zephyr is also a platform supported by the [PlatformIO](/programming/integrated-development-environments-ides/platform-io) build system and IDE.
+
+## Child Pages
+
+<ChildPages />
 
 ## Installation
 
@@ -1321,155 +1325,6 @@ This is what immediate mode is great for -- debugging crashes and other time-sen
 ### C++ Compatibility
 
 In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`.
-
-## The State Machine Framework (SMF)
-
-Zephyr provides a state machine framework (SMF) which can be used to implement finite state machines (FSMs) and hierarchical state machines (HSMs). SMF was added to Zephyr in `v2.7.0`[^zephyr-release-notes-v2-7-0].
-
-The first thing you need to do is enable the framework in your `prj.conf`:
-
-```python
-CONFIG_SMF=y
-```
-
-Then, you can start creating a state machine in a `.c` file. First things first, make sure to import the SMF header file:
-
-```c
-#include <zephyr/smf.h>
-```
-
-You will likely want to access data within your state machine. The recommended way to do this is to create a `struct` to hold your data, with the first member being special `struct smf_ctx ctx`. The SMF will pass this object to all of your state machine functions, and also access and modify the `ctx` member to keep track of the state machines internal state.
-
-```c
-typedef struct {
-    struct smf_ctx ctx;
-    // User defined data goes here
-} MyStateMachine;
-```
-
-We also need to define our states as an enumeration:
-
-```c
-typedef enum {
-    S1,
-    S2,
-} MyState;
-```
-
-Now let's create some state machine functions. The SMF is designed so that you can have up to three functions per state:
-
-1. **The entry function**: Called whenever the state machine enters the state.
-2. **The run function**: Called when the state machine is in this state and `smf_run_state()` is called.
-3. **The exit function**: Called whenever the state machine exits the state.
-
-Let's create a simple state machine with two states: `s1` and `s2`.
-
-```c
-static void s1_entry(MyStateMachine *sm) {
-    printf("State 1 entry.\n");
-}
-
-static void s1_run(MyStateMachine *sm) {
-    printf("State 1 run.\n");
-}
-
-static void s1_exit(MyStateMachine *sm) {
-    printf("State 1 exit.\n");
-}
-
-static void s2_entry(MyStateMachine *sm) {
-    printf("State 2 entry.\n");
-}
-
-static void s2_run(MyStateMachine *sm) {
-    printf("State 2 run.\n");
-}
-
-static void s2_exit(MyStateMachine *sm) {
-    printf("State 2 exit.\n");
-}
-```
-
-We need to register all these functions using a state table. We can use the `SMF_CREATE_STATE()` macro to create the state table easily. It takes 5 parameters:
-
-```c
-SMF_CREATE_STATE(entry_function, run_function, exit_function, parent, initial)
-```
-
-The `parent` parameter is optional and can be used to create a hierarchical state machine (more on this below). The `initial` parameter is optional and can be used to set the initial state of the state machine.
-
-```c
-// Populate state table
-static const struct smf_state l_myStateTable[] = {
-        [S1] = SMF_CREATE_STATE(s1_entry, s1_run, s1_exit, NULL, NULL),
-        [S2] = SMF_CREATE_STATE(s2_entry, s2_run, s2_exit, NULL, NULL),
-};
-```
-
-We can then run the state machine!
-
-```c
-int main(void)
-{
-    // Create state machine object
-    MyStateMachine sm;
-
-    // Set initial state
-    smf_set_initial(SMF_CTX(&sm), &l_myStateTable[S1]);
-
-    // Run the state machine
-    while(1) {
-        int32_t ret = smf_run_state(SMF_CTX(&sm));
-        if (ret) {
-            // State machine terminates if a non-zero value is returned
-            break;
-        }
-        k_msleep(1000);
-    }
-}
-```
-
-Note that the example above is not very ideal since is sleeps for 1s between calls to the `run()` function of whatever state it is in. This would make the state machine seem unresponsive. If you decrease the sleep time, the state machine will appear more responsive, but you'll end up churning through CPU cycles needlessly. This would be an issue in a multi-threaded application or if low power consumption is a concern. A better approach is to build a event system alongside the state machine. When events arrive, they are handled by the state machine. Events could be created by interrupts, timers, or other threads.
-
-Below is pseudo code of the idea:
-
-```c
-while(1) {
-    event = eventQueue.get(); // Blocks until an event is available
-    sm.event = event; // Save the event to the state machine object, this is the only way to get data "into" the state machine
-    smf_run_state(SMF_CTX(&sm)); // Run the state machine
-}
-```
-
-<IRef iref="tbl-smf-prj-conf-options" /> lists the different options you can set in your `prj.conf` to configure the SMF[^zephyr-docs-smf].
-
-<table data-iref="tbl-smf-prj-conf-options">
-  <thead>
-    <tr>
-      <th>Option</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`CONFIG_SMF`</td>
-      <td>`y` enables the state machine framework, `n` disables it.</td>
-      <td>`n`</td>
-    </tr>
-    <tr>
-      <td>`CONFIG_SMF_ANCESTOR_SUPPORT`</td>
-      <td>`y` enables support for ancestor state machines, `n` disables it.</td>
-      <td>`n`</td>
-    </tr>
-    <tr>
-      <td>`CONFIG_SMF_INITIAL_TRANSITION`</td>
-      <td>`y` enables support for initial transitions in HSMs, `n` disables it.</td>
-      <td>`n`</td>
-    </tr>
-  </tbody>
-  <caption>Zephyr state machine framework (SMF) configuration options.</caption>
-</table>
 
 ## Peripheral APIs
 
