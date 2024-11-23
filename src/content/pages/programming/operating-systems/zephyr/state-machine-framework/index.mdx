@@ -192,7 +192,76 @@ while(1) {
 
 ### Hierarchical State Machines
 
-SMF supports hierarchical state machines (HSMs). HSMs are very useful in real-world applications for managing complex systems. They help 
+SMF supports hierarchical state machines (HSMs). HSMs are very useful in real-world applications for managing complex systems. They help manage complexity and reduce code duplication by allowing you to group states into sub-trees and have events propagate "up" to parent states until they are handled.
+
+To create a HSM, you pretty much do the same thing as with a FSM, except you provide a non-null `parent` parameter to the `SMF_CREATE_STATE()` macro. For example:
+
+```c
+// Populate state table
+static const struct smf_state l_myStateTable[] = {
+    [ROOT] = SMF_CREATE_STATE(root_entry, root_run, root_exit, NULL, NULL),
+    [S1] = SMF_CREATE_STATE(s1_entry, s1_run, s1_exit, &l_myStateTable[ROOT], NULL),
+    [S1A] = SMF_CREATE_STATE(s1a_entry, s1a_run, s1a_exit, &l_myStateTable[S1], NULL),
+    [S1B] = SMF_CREATE_STATE(s1b_entry, s1b_run, s1b_exit, &l_myStateTable[S1], NULL),
+    [S2] = SMF_CREATE_STATE(s2_entry, s2_run, s2_exit, &l_myStateTable[ROOT], NULL),
+};
+```
+
+<Aside type="tip">
+A `root` state that is a parent to all other states is useful those situations where you want to catch and handle an event no matter what state you might be in (e.g. to respond to an error event). 
+</Aside>
+
+Transitioning between states in HSMs follows these rules:
+
+* All of the exit functions from the current state up to but not including the lowest common ancestor (LCA) state are called. The current state exit function is called first, and then in order working upwards towards the LCA (but not the LCA itself).
+* All of the entry functions from (but not including) the LCA state down to the next state are called. The entry functions are called in order from the child of the LCA all the way down to the next state.
+
+If we use our `root`, `S1`, `S1A`, `S1B`, and `S2` states from the example above, the transitions would be handled as follows:
+
+* An initial transition to `S1A` would call `root_entry()`, `s1_entry()`, and `s1a_entry()`.
+* Transitioning from `S1A` to `S1B` would call `s1a_exit()` then `s1b_entry()`.
+* Transitioning from `S1B` to `S2` would call `s1b_exit()`, `s1_exit()`, and then `s2_entry()`.
+
+## Practical Guidelines
+
+### Use Large Comment Blocks
+
+A large state machine in a `.c` or `.cpp` file can be difficult for unfamiliar developers to understand. State diagrams can help, but they require maintenance to keep them in sync with the code. Instead, I recommend adding large comment blocks before each state.
+
+```c
+/* ======================================================================== */
+/* S1 - Initial idle state. */
+/* ======================================================================== */
+static void s1_entry(void *data) {
+    printf("State 1 entry.\n");
+}
+
+static void s1_run(void *data) {
+    printf("State 1 run.\n");
+}
+
+static void s1_exit(void *data) {
+    printf("State 1 exit.\n");
+}
+
+/* ======================================================================== */
+/* S2 - Runs when an event ID of 1 occurs. */
+/* ======================================================================== */
+
+// ...
+
+/* ======================================================================== */
+/* S3 - Error state, device goes into disabled state until manual reset. */
+/* ======================================================================== */
+
+// ...
+```
+
+### Do Not Use States For "Transient" Events
+
+States should represent "states" the devices can in for a non-zero amount of time. In general, do not create states for things where you only run things on entry to that state and immediately transition away. States should always have a run function that looks for a particular event before transitioning to a different state.
+
+## Working Examples
 
 For a full working example of the SMF that runs on Linux (the `native_sim` board), see the GitHub repo [gbmhunter / zephyr-examples](https://github.com/gbmhunter/zephyr-examples/tree/main/apps/state-machine-framework).
 
