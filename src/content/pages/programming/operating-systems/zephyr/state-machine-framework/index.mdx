@@ -207,6 +207,10 @@ static const struct smf_state l_myStateTable[] = {
 };
 ```
 
+This would create the state machine shown in <IRef iref="fig-hierarchical-state-diagram" />.
+
+<Image iref="fig-hierarchical-state-diagram" src={import('./_assets/hierarchical-state-diagram.svg')} width="800px">A diagram of the hierarchical state machine created in the above code.</Image>
+
 <Aside type="tip">
 A `root` state that is a parent to all other states is useful those situations where you want to catch and handle an event no matter what state you might be in (e.g. to respond to an error event). 
 </Aside>
@@ -218,9 +222,14 @@ Transitioning between states in HSMs follows these rules:
 
 If we use our `root`, `S1`, `S1A`, `S1B`, and `S2` states from the example above, the transitions would be handled as follows:
 
-* An initial transition to `S1A` would call `root_entry()`, `s1_entry()`, and `s1a_entry()`.
-* Transitioning from `S1A` to `S1B` would call `s1a_exit()` then `s1b_entry()`.
-* Transitioning from `S1B` to `S2` would call `s1b_exit()`, `s1_exit()`, and then `s2_entry()`.
+* An initial transition to `S1` would call `root_entry()` and `s1_entry()`.
+* `EVT1` arriving would cause a transition from `S1` to `S1A`. This would call `s1_exit()` then `s1a_entry()`.
+* `EVT2` arriving would cause a transition from `S1A` to `S1B`. This would call `s1a_exit()` then `s1b_entry()`.
+* `EVT3` arriving would cause a transition from `S1B` to `S2`. This would call `s1b_exit()`, `s1_exit()`, and then `s2_entry()`.
+
+<Aside type="tip">
+You don't have to be have different events to cause different transitions! You can re-use the same event for different transitions in different states. In fact, in this example, we could have just had one single event responsible for all transitions.
+</Aside>
 
 ## Practical Guidelines
 
