@@ -207,7 +207,7 @@ static const struct smf_state l_myStateTable[] = {
 };
 ```
 
-This would create the state machine shown in <IRef iref="fig-hierarchical-state-diagram" />.
+The state functions (`entry()`, `run()`, and `exit()`) are defined in the exact same way as with a FSM. This would create the state machine shown in <IRef iref="fig-hierarchical-state-diagram" />.
 
 <Image iref="fig-hierarchical-state-diagram" src={import('./_assets/hierarchical-state-diagram.svg')} width="800px">A diagram of the hierarchical state machine created in the above code.</Image>
 
@@ -223,44 +223,53 @@ Transitioning between states in HSMs follows these rules:
 If we use our `root`, `S1`, `S1A`, `S1B`, and `S2` states from the example above, the transitions would be handled as follows:
 
 * An initial transition to `S1` would call `root_entry()` and `s1_entry()`.
-* `EVT1` arriving would cause a transition from `S1` to `S1A`. This would call `s1_exit()` then `s1a_entry()`.
-* `EVT2` arriving would cause a transition from `S1A` to `S1B`. This would call `s1a_exit()` then `s1b_entry()`.
-* `EVT3` arriving would cause a transition from `S1B` to `S2`. This would call `s1b_exit()`, `s1_exit()`, and then `s2_entry()`.
+* `EVT1` arriving would cause a transition from `S1` to `S1A`. This is a transition to a child state and would just call `s1a_entry()`.
+* `EVT2` arriving would cause a transition from `S1A` to `S1B`. This is a transition to a sibling state and would call `s1a_exit()` then `s1b_entry()`.
+* `EVT3` arriving would cause a transition from `S1B` to `S2`. This is a transition to a different branch of the state machine and would call `s1b_exit()`, `s1_exit()`, and then `s2_entry()`.
 
 <Aside type="tip">
 You don't have to be have different events to cause different transitions! You can re-use the same event for different transitions in different states. In fact, in this example, we could have just had one single event responsible for all transitions.
 </Aside>
 
+### Event Propagation
+
+When you call `smf_run_state()` with a HSM, the current states `run()` function is not the only one that can be called. The SMF library will also call the `run()` function of all ancestor states, unless the event is deemed handled. The event is considered handled if ANY of the following occur:
+
+1. `smf_set_state()` is called.
+2. `smf_set_handled()` is called.
+
+Event propagation is a powerful way of generalizing code and reducing duplication by adding handlers to parent states that will then be applied to all child states (presuming they don't handle the event themselves).
+
 ## Practical Guidelines
 
 ### Use Large Comment Blocks
 
-A large state machine in a `.c` or `.cpp` file can be difficult for unfamiliar developers to understand. State diagrams can help, but they require maintenance to keep them in sync with the code. Instead, I recommend adding large comment blocks before each state.
+A large state machine in a `.c` or `.cpp` file can be difficult for unfamiliar developers to understand. State diagrams can help, but they require maintenance to keep them in sync with the code. Instead, I recommend adding large comment blocks before each state with the state name (including the hierarchy, which I like to write in "path" format, e.g. `root/parent_state/child_state`) and a brief description of what the state does.
 
 ```c
 /* ======================================================================== */
-/* S1 - Initial idle state. */
+/* root/mode_1/idle: Initial idle state. */
 /* ======================================================================== */
-static void s1_entry(void *data) {
-    printf("State 1 entry.\n");
+static void idle_entry(void *data) {
+    printf("idle entry.\n");
 }
 
-static void s1_run(void *data) {
-    printf("State 1 run.\n");
+static void idle_run(void *data) {
+    printf("idle run.\n");
 }
 
-static void s1_exit(void *data) {
-    printf("State 1 exit.\n");
+static void idle_exit(void *data) {
+    printf("idle exit.\n");
 }
 
 /* ======================================================================== */
-/* S2 - Runs when an event ID of 1 occurs. */
+/* root/mode_1/run: Runs when an event ID of 1 occurs. */
 /* ======================================================================== */
 
 // ...
 
 /* ======================================================================== */
-/* S3 - Error state, device goes into disabled state until manual reset. */
+/* root/mode_2: Error state, device goes into disabled state until manual reset. */
 /* ======================================================================== */
 
 // ...
@@ -269,6 +278,20 @@ static void s1_exit(void *data) {
 ### Do Not Use States For "Transient" Events
 
 States should represent "states" the devices can in for a non-zero amount of time. In general, do not create states for things where you only run things on entry to that state and immediately transition away. States should always have a run function that looks for a particular event before transitioning to a different state.
+
+### Use A root State To Perform Actions That Would Apply In Any State
+
+Most of my state machines end up needing a `root` state to capture events and perform actions that would apply in any state. For example, you may have an `ERROR` event in which you would want to transition to an error state, no matter what state you are in. Be aware however that this would also mean that you would re-enter the error state if the error event occurred when already in the error state. If you don't want this to happen, make sure to add a handler for the `ERROR` event in the error state and call `smf_set_handled()` to prevent event propagation.
+
+## Don't Pack Too Much Into A Single State Machine
+
+It can be a bad idea to write all of your code in a single state machine. As the state machine grows in complexity, it can become difficult to understand and maintain.
+
+Furthermore, many concepts when writing software are orthogonal to one another and should be managed in separate state machines. For example, consider a state machine with states `LIGHT_1_ON` and `LIGHT_1_OFF`. You then add a second light and add two child states, `LIGHT_2_ON`, and `LIGHT_2_OFF` to `LIGHT_1_ON`. You realize you also need to handle the 2nd light when the first light is off, so you again and add two child states, `LIGHT_2_ON` and `LIGHT_2_OFF` to `LIGHT_1_OFF`. You might start to see here that this is generally not a good design pattern, as the number of states will grow multiplicatively with the number of lights. Instead, you should probably just create two separate state machines, one for each light. If they need to be coordinated, you can use a event system to send events between the two state machines.
+
+## Event System
+
+The Zephyr SMF does not provide an event system, so you will normally want to implement one yourself. This is a good thing, since if allows flexibility for the many different ways applications can be designed.
 
 ## Working Examples
 
