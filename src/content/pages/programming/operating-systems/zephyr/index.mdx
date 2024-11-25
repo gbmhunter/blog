@@ -183,6 +183,43 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
       make gcc gcc-multilib g++-multilib libsdl2-dev
     ```
 
+1. Next, download the _Zephyr SDK_. The SDK contains toolchains (compilers, linkers, assemblers and other tools such as QEMU and OpenOCD) for all of Zephyr's supported architectures (e.g. `ARM`, `RISCV64`, `x86_64`, `Xtensa`, `aarch64`). Find the release you want from https://github.com/zephyrproject-rtos/sdk-ng/tags (use the latest if you don't otherwise care). The example below uses `v0.16.4` for x86-64 Linux.
+
+    This is downloaded and installed outside of the Zephyr project directory. You only need one copy of this for many Zephyr projects.
+
+    ```sh
+    cd ~
+    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.4/zephyr-sdk-0.16.4_linux-x86_64.tar.xz
+    ```
+
+    This file is over 1GB in size, so make sure you have space! There is also a _minimal release_ which doesn't come with all the toolchains, but instead let's you select and download the ones you needed.
+
+    <Aside type="caution">
+    Arguably a bit of a naming gaffe, but the Zephyr SDK does not actually contain the Zephyr source code (the Zephyr source code is pulled into the west workspace when you run `west update`). It contains toolchains for all of Zephyr's supported architectures. I would have thought "Zephyr Toolchain" or similar would have been a better name!
+    </Aside>
+
+1. Extract the downloaded SDK:
+
+    ```sh
+    tar xvf zephyr-sdk-0.16.4_linux-x86_64.tar.xz
+    ```
+
+    This will extract the SDK to `~/zephyr-sdk-0.16.4`. You can choose to move it somewhere else if you want. Other common choices include `/opt/` and `/usr/local/`. This is another big operation which might take minutes to complete!
+
+1. Run the Zephyr SDK setup script:
+
+    ```sh
+    cd zephyr-sdk-0.16.4
+    ./setup.sh
+    ```
+
+1. Install `udev` rules, which let's you program most boards as a regular user (serial port permissions):
+
+    ```sh
+    sudo cp ~/zephyr-sdk-0.16.4/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
+    sudo udevadm control --reload
+    ```
+
 1. Create a new directory for the Zephyr project and a Python virtual environment in a `.venv` sub-directory:
 
     ```sh
@@ -232,43 +269,6 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
 
     ```sh
     pip install -r ./zephyr/scripts/requirements.txt
-    ```
-
-1. Next, download the _Zephyr SDK_. The SDK contains toolchains (compilers, linkers, assemblers and other tools such as QEMU and OpenOCD) for all of Zephyr's supported architectures (e.g. `ARM`, `RISCV64`, `x86_64`, `Xtensa`, `aarch64`). Find the release you want from https://github.com/zephyrproject-rtos/sdk-ng/tags (use the latest if you don't otherwise care). The example below uses `v0.16.4`.
-
-    This is downloaded and installed outside of the Zephyr project directory. You only need one copy of this for many Zephyr projects.
-
-    ```sh
-    cd ~
-    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.4/zephyr-sdk-0.16.4_linux-x86_64.tar.xz
-    ```
-
-    This file is over 1GB in size, so make sure you have space! There is also a _minimal release_ which doesn't come with all the toolchains, but instead let's you select and download the ones you needed.
-
-    <Aside type="caution">
-    Arguably a bit of a naming gaffe, but the Zephyr SDK does not actually contain the Zephyr source code (the Zephyr source code is pulled into the west workspace when you run `west update`). It contains toolchains for all of Zephyr's supported architectures. I would have thought "Zephyr Toolchain" or similar would have been a better name!
-    </Aside>
-
-1. Extract the downloaded SDK:
-
-    ```sh
-    tar xvf zephyr-sdk-0.16.4_linux-x86_64.tar.xz
-    ```
-
-    This will extract the SDK to `~/zephyr-sdk-0.16.4`. You can choose to move it somewhere else if you want. Other common choices include `/opt/` and `/usr/local/`. This is another big operation which might take minutes to complete!
-
-1. Run the Zephyr SDK setup script:
-
-    ```sh
-    cd zephyr-sdk-0.16.4
-    ./setup.sh
-    ```
-
-1. Install `udev` rules, which let's you program most boards as a regular user (serial port permissions):
-
-    ```sh
-    sudo cp ~/zephyr-sdk-0.16.4/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
-    sudo udevadm control --reload
     ```
 
 1. `cd` into the `zephyr` directory (a sub-directory of the project directory) and build the Blinky sample:
@@ -2205,6 +2205,11 @@ ZTEST_F(my_suite, test_example)
 }
 ```
 
+## Setting Up CI for Zephyr Projects
+
+The Zephyr Project provides a Docker container that is suitable for CI pipelines. The images can be found on Docker Hub [here](https://hub.docker.com/r/zephyrprojectrtos/ci). Note the images are quite large, with the current ones as of November 2024 being around 4GB in size!
+
+```Dockerfile
 
 ## Distributing Zephyr Libraries
 

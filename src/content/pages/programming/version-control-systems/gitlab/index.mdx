@@ -199,7 +199,7 @@ But when this same job is run locally with `gitlab-ci-local`, the variable does 
 
 #### Authentication
 
-Normal pipelines that are run on GitLab's servers get provided with a `CI_JOB_TOKEN` which can be used to authenticate when pulling submodules that are other private GitLab repositories, or when pulling/pushing to the GitLab container registry. If you want access when running locally, first create a personal access token. Then add it to your `.gitlab-ci-local-variables.yml` file as shown:
+Normal pipelines that are run on GitLab's servers get provided with a `CI_JOB_TOKEN` which can be used to authenticate when pulling submodules that are other private GitLab repositories, or when pulling/pushing to the GitLab container registry. If you want access when running locally, first create a personal access token through the GitLab web interface (with the necessary permissions). Then add it to your `.gitlab-ci-local-variables.yml` file as shown:
 
 ```yaml title=".gitlab-ci-local-variables.yml"
 ---

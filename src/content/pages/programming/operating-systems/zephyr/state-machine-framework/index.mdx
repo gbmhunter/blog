@@ -283,15 +283,35 @@ States should represent "states" the devices can in for a non-zero amount of tim
 
 Most of my state machines end up needing a `root` state to capture events and perform actions that would apply in any state. For example, you may have an `ERROR` event in which you would want to transition to an error state, no matter what state you are in. Be aware however that this would also mean that you would re-enter the error state if the error event occurred when already in the error state. If you don't want this to happen, make sure to add a handler for the `ERROR` event in the error state and call `smf_set_handled()` to prevent event propagation.
 
-## Don't Pack Too Much Into A Single State Machine
+### Don't Pack Too Much Into A Single State Machine
 
 It can be a bad idea to write all of your code in a single state machine. As the state machine grows in complexity, it can become difficult to understand and maintain.
 
 Furthermore, many concepts when writing software are orthogonal to one another and should be managed in separate state machines. For example, consider a state machine with states `LIGHT_1_ON` and `LIGHT_1_OFF`. You then add a second light and add two child states, `LIGHT_2_ON`, and `LIGHT_2_OFF` to `LIGHT_1_ON`. You realize you also need to handle the 2nd light when the first light is off, so you again and add two child states, `LIGHT_2_ON` and `LIGHT_2_OFF` to `LIGHT_1_OFF`. You might start to see here that this is generally not a good design pattern, as the number of states will grow multiplicatively with the number of lights. Instead, you should probably just create two separate state machines, one for each light. If they need to be coordinated, you can use a event system to send events between the two state machines.
 
+### Nesting State Machines
+
+As well as splitting up state machines, a valid design pattern to reduce code duplication and/or complexity is to nest state machines within one another. This is useful to encapsulate parts of your application which would be considered "implementation details" of another state machine.
+
+The parent state machine can completely encapsulate the child state machine, in the sense that the user of the parent state machine has no idea the child state machine even exists! The parent state machine can create/initialize the child state machine in it's own initialization, and the parent state machine can forward events to the child state machine
+
 ## Event System
 
-The Zephyr SMF does not provide an event system, so you will normally want to implement one yourself. This is a good thing, since if allows flexibility for the many different ways applications can be designed.
+The Zephyr SMF does not provide an event system, so you will normally want to implement one yourself. This is a good thing, since they are not tricky to do and it allows flexibility for the many different ways applications can be designed.
+
+Events can be generated in these ways:
+
+1. **By an interrupt**: You might have set up a GPIO pin to call a interrupt handler when the pin goes high. This can create an event and place it on the event queue.
+1. **By a timer**: Timers are a very popular way of generating events for things like flashing LEDs at a particular rate, or implementing timeouts. You can use Zephyr's timers (which run in a different thread), and make their callback functions create events and place them on the event queue.
+1. **By the state machines themselves**: At any point in the `entry()`, `run()`, or `exit()` functions, you can create and post events to the event queue. This is useful for inter-state machine communication.
+
+State machines can be placed into threads in a few different ways:
+
+1. **Thread per state machine**: Each state machine has a event queue that it blocks on, waiting for events. Each state machine can perform time consuming work, and it won't hold up the other state machines.
+1. **Single thread running all state machines (event loop)**: There is an event queue which the event loops blocks on, waiting for events. When a event is received, it is passed to each state machine in sequence (the order may or may not matter, depending on your application). In this case, you may only need the one thread (the one that `main()` runs in), so you have a single threaded application.
+1. **Hybrid approach**: Most state machines run inside the same thread, but certain time consuming state machines are placed in separate threads.
+
+I prefer a single thread running all state machines (event loop) approach. Any time consuming work can be offloaded into worker threads, and now you don't have an synchronization issues between the state machines to deal with. It also keeps the state machines lightweight, and means you can more easily nest state machines or split them up to separate concerns.
 
 ## Working Examples
 
