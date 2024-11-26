@@ -224,6 +224,18 @@ GCL will not sync local files that are not tracked by Git. So if you are playing
 
 The file does not need to be continuously re-added to the git staging area when changes are made, as long as the file has been staged (or committed) at least once.
 
+### Caching
+
+`gitlab-ci-local` does not support the GitLab caching feature. `gitlab-ci.yml` statements like:
+
+```yaml
+cache:
+  paths:
+    - path/to/cache
+```
+
+will not be cached when running the job locally with `gitlab-ci-local`, and so expect things to run slower in this situation.
+
 ## GitLab Runners
 
 GitLab runners are the machines/applications that run your CI pipelines. GitLab runners can be configured and run on GitLab's servers (GitLab-hosted runners) or self-hosted on your own servers.

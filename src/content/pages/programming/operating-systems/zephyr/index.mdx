@@ -2130,7 +2130,7 @@ When writing the tests, just using `west twister -T app/` is not that useful bec
 1. It takes a long time to build and run the tests, and the output is hidden in a log file rather than being printed to the terminal. This slows down development when you want to write some test code and then run it to see if it works.
 1. Intellisense does not work as well as it does for the Zephyr app. This is because `compile_commands.json` is not created in the `twister` build directories, and the build directory keeps changing.
 
-A better way is to reserve `west twister -T app/` only for running your tests once you have finished writing the tests. While writing the tests, use the standard west build instead. You can do this because the `test/` directory is a self-contained west application in it's own right! One downside to this is you will lose the ability to only run specific tests via the command line. You have to comment out code instead.
+A better way is to reserve `west twister -T app/` only for running your tests once you have finished writing the tests. While writing the tests, use the standard west build instead. You can do this because the `test/` directory is a self-contained west application in it's own right!
 
 First use (assuming you are building the tests to run on `native_sim`):
 
@@ -2143,6 +2143,15 @@ and then from then on you can use the faster:
 ```shell
 west build -t run
 ```
+
+You can run specific tests by not using the shortcut `-t run` and instead calling the built `zephyr.exe` (yes, it's even suffixed with `.exe` on Linux) with command-line options. For example:
+
+```shell
+west build -b native_sim
+./build/zephyr/zephyr.exe -test="my_suite::my_test"
+```
+
+You can use the command line option `-list` with a ztest `zephyr.exe` to list all the tests that are available to run. Chain the above two commands together with `&&` for a quick one liner while developing.
 
 Zephyr's `ztest` framework provides the standard setup of test suites and tests.
 
@@ -2207,14 +2216,38 @@ ZTEST_F(my_suite, test_example)
 
 ## Setting Up CI for Zephyr Projects
 
-The Zephyr Project provides a Docker container that is suitable for CI pipelines. The images can be found on Docker Hub [here](https://hub.docker.com/r/zephyrprojectrtos/ci). Note the images are quite large, with the current ones as of November 2024 being around 4GB in size!
+The Zephyr Project provides a Docker container that is suitable for CI pipelines. The images can be found on Docker Hub [here](https://hub.docker.com/r/zephyrprojectrtos/ci) (they are also on GitHub's container registry). <IRef iref="fig-zephyr-docker-images-on-docker-hub" /> shows a screenshot of some of the available images as of November 2024. Note the images are quite large, with some of them being around 4GB in size!
+
+<Image id="fig-zephyr-docker-images-on-docker-hub" src={import('./_assets/zephyr-docker-images-on-docker-hub.webp')} width="1000px">The Zephyr Docker images on Docker Hub.[^dockerhub-zephyr-project-rtos]</Image>
+
+Some of the images are:[^github-zephyrproject-rtos-docker-image]
+
+* **ci-base**: Minimal image with just the basic installed. No toolchains installed.
+* **ci**: Contains the Zephyr SDK, west and other things you would typically need to CI use.
+* **zephyr-build**: Like the `ci` image, but with additional developer tools installed.
+
+If you need to customize the container further, you can extend the image by making your own Dockerfile. Use `FROM zephyrprojectrtos/ci:v0.27.4` and then you own additional `RUN` commands. For example:
 
 ```Dockerfile
+FROM zephyrprojectrtos/ci:v0.27.4
+
+RUN echo "Do other things here!"
+```
+
+You would then want to build the image with `docker build -t my-custom-zephyr-image .` and upload it to a container registry so it can be used in your CI pipelines to build/run Zephyr applications.
+
+The command line tool `west` is globally available inside the container, so you don't need to create a Python virtual environment and install it.
+
+When building a Zephyr application, you will likely want to cache all the dependencies installed from the `west update` command, as these can take a long time to install. Most cloud-based CI services (e.g. GitHub Actions, [GitLab](/programming/version-control-systems/gitlab/) Pipelines) will allow you to cache files/directories between jobs. I have found it easiest to group all dependencies into a directory for easy caching, and so your `.west/config` file might look like this:
+
+```text
+[zephyr]
+base = external/zephyr
+```
 
 ## Distributing Zephyr Libraries
 
 See https://github.com/coderkalyan/pubsub for an example.
-
 
 ## Common Errors
 
@@ -2334,7 +2367,7 @@ pip install -r ./zephyr/scripts/requirements.txt
 
 If tring to print a float using `%f` in any printf style functions (or log macros) results in the output `*float*`, it's likely you need to enable floating-point print support with `CONFIG_FPU=y` in `prj.conf`:
 
-```text
+```python
 CONFIG_FPU=y # Required for printing floating point numbers
 ```
 
@@ -2342,7 +2375,7 @@ CONFIG_FPU=y # Required for printing floating point numbers
 
 In February 2016, Wind River (the same company the makes VxWorks, one of the leading commercial RTOSes for safety critical systems) donated the Rocket OS kernel to the Linux Foundation and Zephyr was born[^wikipedia-zephyr-operating-system] [^scalar-zephyr-operating-system]. Rocket still existed in parallel as a commercial version of Zephyr.
 
-Nordic chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, nRF53 and nRF92 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020[^nordic-semi-nrf52-zephyr-support-added].
+[Nordic](/programming/microcontrollers/nordic/) chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, [nRF53](/programming/microcontrollers/nordic/nrf53/) and nRF92 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020[^nordic-semi-nrf52-zephyr-support-added].
 
 ## Other Resources
 
@@ -2365,3 +2398,5 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
 [^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.
 [^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
+[^dockerhub-zephyr-project-rtos]: Docker Hub. _zephyrprojectrtos_ [user page]. Retrieved 2024-11-26, from https://hub.docker.com/u/zephyrprojectrtos.
+[^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
