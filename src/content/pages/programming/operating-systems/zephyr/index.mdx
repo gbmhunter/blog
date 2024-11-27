@@ -1318,9 +1318,19 @@ CONFIG_LOG_BUFFER_SIZE=2048
 
 Zephyr supports two different modes for logging, _deferred_ and _immediate_. In deferred mode, whenever your code calls `LOG_DBG(...)` or similar, the passed in format string and variables get saved for for further processing in a separate logging thread (further processing entails inserting the arguments into the format string, and sending it to backends such as UART). In immediate mode, when your code calls `LOG_DBG(...)`, the log is processed and emitted to backends in the calling thread.
 
-Deferred logging is a great choice when you don't want to slow down your threads emitting log messages. The biggest downside is that log messages are not synchronous with what your microcontroller is actually doing in the real world at any point of time. Deferred logging can mask errors such as hard faults -- when a serious fault occurs the processor will restart but you won't see the last 1 second or so of log messages, making it hard to track down the problem.
+Deferred logging is a great choice when you don't want to slow down your threads emitting log messages (it even allows you to log from an interrupt context!). The biggest downside is that log messages are not synchronous with what your microcontroller is actually doing in the real world at any point of time. Deferred logging can mask errors such as hard faults and segmentation faults -- when a serious fault occurs the processor will crash/hang (or a fault handler will be called) but you won't see the last 1 second or so of log messages, making it hard to track down the problem.
 
-This is what immediate mode is great for -- debugging crashes and other time-sensitive issues when you need the logs to print at the same time the `LOG_DBG()` calls are being made. If a crash occurs, you can look at the last few log messages and get a good idea were the problem might be in your source code.
+This is what immediate mode is great for -- debugging crashes and other time-sensitive issues when you need the logs to print at the same time the `LOG_DBG()` calls are being made. If a crash occurs, you can look at the last few log messages and get a good idea were the problem might be in your source code. Immediate mode is not suitable when you are logging from an interrupt context or from a time-sensitive thread.
+
+### Speeding Up Log Output
+
+By default, Zephyr logs can be seem to be quite laggy and "slow" when being used to emit logs across a serial port for debugging during development. One of the ways to speed things up is to add the following to your `prj.conf`:
+
+```python
+CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD=1
+```
+
+The setting tells Zephyr to only wait for 1 log message in the queue before waking up the logging thread to process it. By default this value is set to 10, which can make logs seem slow![^zephyr-docs-kconfig-log-trigger-threshold]
 
 ### C++ Compatibility
 
@@ -1886,12 +1896,6 @@ If you are a Bluetooth central device, these settings will take effect. If you a
 The following example shows `main.c` (the only `.c` file) for the `Blinky` sample project:
 
 ```c
-/*
- * Copyright (c) 2016 Intel Corporation
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
 #include <zephyr.h>
 #include <device.h>
 #include <devicetree.h>
@@ -2245,6 +2249,24 @@ When building a Zephyr application, you will likely want to cache all the depend
 base = external/zephyr
 ```
 
+Twister generates standard [JUnit style XML](https://www.ibm.com/docs/en/developer-for-zos/16.0?topic=formats-junit-xml-format) test reports. The test report is written to `twister-out/twister_report.xml`. These test reports can be parsed by most CI services. For example, GitLab pipelines supports adding a `reports: junit: ...` field which will parse the test report and display the results in the UI. Your `.gitlab-ci.yml` file might look like this:
+
+```yaml
+my_job:
+  script:
+    - west twister -T .
+  artifacts:
+      when: always
+      paths:
+        - $CI_PROJECT_DIR/twister-out/twister_report.xml
+      reports:
+        junit: $CI_PROJECT_DIR/twister-out/twister_report.xml
+```
+
+GitLab will display the test results in a merge request, as shown in <IRef iref="fig-gitlab-test-summary-in-merge-request" />.
+
+<Image iref="fig-gitlab-test-summary-in-merge-request" src={import('./_assets/gitlab-test-summary-in-merge-request.webp')} width="600px">The Zephyr twister test results displayed in a GitLab merge request.</Image>
+
 ## Distributing Zephyr Libraries
 
 See https://github.com/coderkalyan/pubsub for an example.
@@ -2400,3 +2422,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
 [^dockerhub-zephyr-project-rtos]: Docker Hub. _zephyrprojectrtos_ [user page]. Retrieved 2024-11-26, from https://hub.docker.com/u/zephyrprojectrtos.
 [^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
+[^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.

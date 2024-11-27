@@ -125,6 +125,10 @@ static const struct smf_state l_myStateTable[] = {
 };
 ```
 
+<Aside type="caution">
+If you create a enum value for a state (e.g. `S3`) but forget to add it to the state table, you will get a segmentation fault when you try and transition to that state using `smf_set_state()`.
+</Aside>
+
 We can then run the state machine!
 
 ```c
@@ -312,6 +316,23 @@ State machines can be placed into threads in a few different ways:
 1. **Hybrid approach**: Most state machines run inside the same thread, but certain time consuming state machines are placed in separate threads.
 
 I prefer a single thread running all state machines (event loop) approach. Any time consuming work can be offloaded into worker threads, and now you don't have an synchronization issues between the state machines to deal with. It also keeps the state machines lightweight, and means you can more easily nest state machines or split them up to separate concerns.
+
+The event loop (in pseudo code) looks like this:
+
+```txt
+while (true) {
+    evt = queue_get();
+    dispatch_event_to_state_machines(evt);
+}
+```
+
+### Preventing Timer Synchronization Issues
+
+The built in Zephyr timers call the timer expiry callbacks from the content of the system clock interrupt handler. Generally, you would post a `TIMER_EXPIRED` event to the event queue (with no waiting if queue is full) and return. The event loop will then receive the event and pass it to the state machines. Because the callback is not synchronized with the event loop, you have to be mindful of synchronization issues. Be aware that after you stop a timer from a state machine function, you still may receive `TIMER_EXPIRED` callbacks, and these could be already waiting on the event queue. Even if you emptied the queue first, you could get unlucky and have the timer interrupt fire just as you are calling the timer stop function.
+
+A solutions to this is to not use Zephyr's timers, but instead utilize the variable you can pass into a queue to wait for up to a specific maximum amount of time. Using this, you can implement timer functionality yourself. You can design a module which can be used to create multiple timers, and register timeouts in the future. When it comes around to blocking on the queue, you work out what timer would expire next, and provide that timeout to the queue. When the queue returns, you can check the return code to see if it received an event or it was due to the timeout. If it was due to the timeout, you can create a `TIMER_EXPIRED` event and pass it to the state machines.
+
+This approach makes the timers synchronous with the event loop, and fixes the problems discussed above.
 
 ## Working Examples
 
