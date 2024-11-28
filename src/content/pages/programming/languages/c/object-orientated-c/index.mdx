@@ -157,6 +157,10 @@ typedef struct {
 void GpioReal_init(GpioReal *self, uint32_t pinNumber);
 ```
 
+<Aside type="tip">
+The base class has to be a named member in the child class struct (named `base` in this case). This is ok, but does mean that we have to type `self->base` when calling methods on the base class. Luckily, there is a compiler flag which we can use (`-fms-extension`) which we can use to embed the base struct directly into the child struct. More on this below.
+</Aside>
+
 Notice how we have added a new member to the `struct`, `pinNumber`. This is needed because this class will need to pass the pin number when calling the hardware-specific GPIO driver functions. We have also declared a constructor function for this class.
 
 We can then define the methods for this class in `GpioReal.c`:
@@ -290,6 +294,30 @@ Real GPIO set() called. This is where you would make hardware calls.
 Real GPIO get() called. This is where you would make hardware calls.
 Fake GPIO set() called. For testing, this is where you would keep track how many times the GPIO is set, when it was called, and what value.
 Fake GPIO get() called. This is where you would keep track how many times the GPIO is read, when, and you could fake return values.
+```
+
+### Embedding the Base Class In The Child Class
+
+As mentioned above, the base class has to be a named member in the child class struct (named `base` in this case). This is ok, but does mean that we have to type `self->base` when calling methods on the base class.
+
+If you want to get around this, add the `-fms-extension` compiler flag. Luckily this flag is supported by most compilers, including GCC (the flag stands for "Microsoft extensions", and this embedding feature was first done by Microsoft). This will allow you to write:
+
+```c
+typedef struct {
+    GpioBase; // NOTE: No name!
+    uint32_t pinNumber;
+} GpioReal;
+```
+
+To embed the base class, you write out the type, but do not give it a name. With the `-fms-extension` flag, you can then access the base class methods directly on the child class instance:
+
+```c
+void GpioReal_init(GpioReal *self, uint32_t pinNumber) {
+    GpioBase_Init(&self->base);
+    self->set = GpioReal_set; // No base prefix needed!
+    self->get = GpioReal_get; // No base prefix needed!
+    self->pinNumber = pinNumber;
+}
 ```
 
 You can see a full working example of this code on GitHub at [gbmhunter/c-inheritance-example](https://github.com/gbmhunter/c-inheritance-example).

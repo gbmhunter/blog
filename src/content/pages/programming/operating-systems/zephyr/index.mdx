@@ -1330,7 +1330,7 @@ By default, Zephyr logs can be seem to be quite laggy and "slow" when being used
 CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD=1
 ```
 
-The setting tells Zephyr to only wait for 1 log message in the queue before waking up the logging thread to process it. By default this value is set to 10, which can make logs seem slow![^zephyr-docs-kconfig-log-trigger-threshold]
+The setting tells Zephyr to only wait for 1 log message in the queue before waking up the logging thread to process it. By default this value is set to 10, which can make logs seem slow![^zephyr-docs-kconfig-log-trigger-threshold] `CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD` is only applicable when `CONFIG_LOG_MODE_IMMEDIATE=n`.
 
 ### C++ Compatibility
 
@@ -2154,6 +2154,14 @@ You can run specific tests by not using the shortcut `-t run` and instead callin
 west build -b native_sim
 ./build/zephyr/zephyr.exe -test="my_suite::my_test"
 ```
+
+<Aside type="tip">
+You can substitute the test name with `*` to run all tests in that suite, e.g.:
+
+```shell
+./build/zephyr/zephyr.exe -test="my_suite::*"
+```
+</Aside>
 
 You can use the command line option `-list` with a ztest `zephyr.exe` to list all the tests that are available to run. Chain the above two commands together with `&&` for a quick one liner while developing.
 
