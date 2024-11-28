@@ -1,0 +1,35 @@
+---
+authors: [gbmhunter]
+date: 2024-11-29
+description: SOD-57 is a older glass passivated hermetically sealed 2-lead through-hole component package used for diodes that was somewhat popular in the late 1970s and 1980s.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-11-29
+tags: [component packages, PCB design, SOD-57, diodes]
+title: SOD-57 Component Package
+type: page
+---
+
+SOD-57 (Small-outline Diode 57) is a older glass passivated hermetically sealed 2-lead through-hole component package used for diodes. It was somewhat popular in the late 1970s and 1980s. The 1N5059, 1N5060, 1N5061, and 1N5062 diodes were packaged in this format.[^vishay-1n5059-diode-ds]
+
+<Image src={import('./_assets/sod-57-component-package-photo.webp')} width="500px">A photo of the SOD-57 component package.[^ebay-diode-avalanche-1kv-2a-sod-57]</Image>
+
+They typically have high reverse voltage ratings in the range of 100V to 1000V. For example, the Vishay 1N5060 has a $V_R = 400V$. Vishay uses the term "Sinterglass" to describe the these glass passivated diodes.
+
+## Dimensions
+
+The SOD-57 package dimensions are shown in <IRef iref="fig-sod-57-package-dimensions-vishay" />.
+
+<Image iref="fig-sod-57-package-dimensions-vishay" src={import('./_assets/sod-57-package-dimensions-vishay.webp')} width="800px">The dimensions of the SOD-57 package as used in the Vishay 1N5060 diode.[^vishay-1n5059-diode-ds]</Image>
+
+Notice the "bulb" width is 3.6mm. The SOD-64 is a similar package to this but with a bulb width of 4.3mm.
+
+## Similar To
+
+* [SOD-64](/pcb-design/component-packages/sod-64-component-package/): Another glass passivated package that looks very similar to the SOD-57. The main difference is the "bulb" length and width of the SOD-57 is 4.0mm and 3.6mm, while for the SOD-64 it is 4.2mm and 4.3mm.[^vishay-1n5059-diode-ds] [^vishay-sod-64-package-dimensions]
+
+## References
+
+[^ebay-diode-avalanche-1kv-2a-sod-57]: Ebay UK. _Blue Sky Components Ltd > DIODE AVALANCHE 1KV 2A SOD57_ [product page]. Retrieved 2024-11-29, from https://www.ebay.co.uk/itm/145358816251.
+[^vishay-1n5059-diode-ds]: Vishay (2018, Feb 20). _1N5059, 1N5060, 1N5061, 1N5062 - Standard Avalanche Sinterglass Diode_ [datasheet]. Retrieved 2024-11-29, from https://www.vishay.com/docs/86000/1n5059.pdf.
+[^vishay-byv28-50-diode-ds]: Vishay (2018, Feb 21). _BYV28-50, BYV28-100, BYV28-150, BYV28-200 - Ultra-Fast Avalanche Sinterglass Diode_ [datasheet]. Retrieved 2024-11-29, from https://www.vishay.com/docs/86044/byv2850.pdf.
+[^vishay-sod-64-package-dimensions]: Vishay (2003, Dec 9). _SOD-64 - Package Dimensions in mm (Inches)_. Retrieved 2024-11-29, from https://www.vishay.com/docs/84009/84009.pdf.
