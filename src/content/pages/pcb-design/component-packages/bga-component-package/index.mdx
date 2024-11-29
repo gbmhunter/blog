@@ -1,13 +1,15 @@
 ---
 authors: [gbmhunter]
 date: 2015-03-08
-lastUpdated: 2023-07-25
+description: BGA is a high-density SMD component package which can have from 4 to 1700+ pins. The pins are solder balls which are arranged in a grid on the underside of the package.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-11-29
 tags: [component packages, PCB design, BGA, MO-207, DSBGA]
 title: BGA Component Package
 type: page
 ---
 
-<Image src={import('./bga-144-component-package-3d-render.jpg')} width="150px">A 3D render of the BGA-144 component package.</Image>
+<Image src={import('./_assets/bga-144-component-package-3d-render.jpg')} width="150px">A 3D render of the BGA-144 component package.</Image>
 
 BGA (Ball-Grid Array) is a high-density SMD component package which can have from 4 to 1700+ pins. Common pitches are 0.5mm, 0.8mm, and 1.0mm. BGA packages are used to either make components very small or to encompass a large number of leads. Some modern FPGAs have more than 1700 leads!
 
@@ -55,7 +57,7 @@ The pad diameter for a BGA footprint can be determined by one of three methods:
 
 ## Soldermask Considerations
 
-<Image src={import('./example-of-nsmd-pcb-pad-solder-joint-xilinx.png')} width="507px">Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/.</Image>
+<Image src={import('./_assets/example-of-nsmd-pcb-pad-solder-joint-xilinx.png')} width="507px">Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/.</Image>
 
 ## Variants
 
@@ -63,7 +65,7 @@ The pad diameter for a BGA footprint can be determined by one of three methods:
 
 DSBGA (Die Sized BGA) is the name given by Texas Instruments for their family of BGA packages in where the die size is the same as the package size. They are also known by the term Wafer-Level Chip Scale Package (WLCSP). As of October 2015, they are available in 0.30, 0.35, 0.40, and 0.50mm pitches. 
 
-<Image src={import('./dsbga-component-package-4-25-bump-size-comparison-ti.png')} width="282px">A size comparison of the 4 to 25 bump DSBGA component packages. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/dsbga-component-package-4-25-bump-size-comparison-ti.png')} width="282px">A size comparison of the 4 to 25 bump DSBGA component packages. Image from http://www.ti.com/.</Image>
 
 Texas Instruments also assigns a package code to each package within the DSBGA family. Here are some example (this is in no way an exhaustive list):
 
@@ -100,4 +102,4 @@ Texas Instruments also assigns a package code to each package within the DSBGA f
 
 Note that confusingly, the three letter Texas Instrument's code is **not unique** for a particular package. For example, the code "YZP" may refer to a 5, 6, or 8 ball DSBGA package, which also may have **different** height, width and length dimensions. 
 
-<Image src={import('./dsbga-8-component-package-2d-pcb-footprint-birds-eye.png')} width="236px">A 2D birds-eye view of the CAD model for the DSBGA-8 component package.</Image>
+<Image src={import('./_assets/dsbga-8-component-package-2d-pcb-footprint-birds-eye.png')} width="236px">A 2D birds-eye view of the CAD model for the DSBGA-8 component package.</Image>

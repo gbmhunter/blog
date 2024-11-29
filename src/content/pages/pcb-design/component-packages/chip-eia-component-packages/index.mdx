@@ -1,8 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2015-10-25
-description: Sizes, dimensions, recommended land patterns and more info for the chip (EIA xxxx) component package, which is commonly used for SMD resistors and capacitors.
-lastUpdated: 2023-06-14
+description: Chip (EIA xxxx) components are family of very popular rectangular SMD cuboid packages, commonly used for resistors and capacitors.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-11-29
 tags: [component packages, PCB design, chip, EIA, IEC, '0603', 0805, '1206', MEMS, oscillators, crystals, tombstoning, head-in-pillow, resistors, capacitors, MLCC, ferrite beads, LICC, reverse geometry, low inductance, parasitics]
 title: Chip (EIA) Component Packages
 type: page
@@ -161,11 +162,11 @@ Used for PTC resettable fuses[^bib-belfuse-0zcf-ptc].
 
 The following image shows how you can easily route an 0.2mm thick trace between the pads of a 0805 component.
 
-<Image src={import('./routing-between-0805-footprints.jpg')} width="500px">Routing between the pads of a 0805 footprint (in Altium).</Image>
+<Image src={import('./_assets/routing-between-0805-footprints.jpg')} width="500px">Routing between the pads of a 0805 footprint (in Altium).</Image>
 
 The following image is of 0603 (imperial) SMD components inside a small container.
 
-<Image src={import('./smd-container-open-and-closed.jpg')} width="800px">A container from DealExtreme used for holding SMD components (capacitors in this picture)</Image>
+<Image src={import('./_assets/smd-container-open-and-closed.jpg')} width="800px">A container from DealExtreme used for holding SMD components (capacitors in this picture)</Image>
 
 ## SMD Chip Resistors
 
@@ -228,7 +229,7 @@ There are reports that the default 0402 (imperial) footprint that is shipped wit
 
 Reverse geometry chip capacitors (named _LICC_ (Low Inductance Chip Capacitor) by Kyocera AVX[^kyocera-avx-licc]) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse geometry reduces the length of the current path through the component and **reduces the parasitic inductance of the capacitor** (less than 400pH[^tdk-reverse-geometry-mlcc]). For applications such as high-speed design, when capacitors are used for noise decoupling, the parasitic inductance needs to be as low as possible to increase the capacitors resonant frequency[^tdk-reverse-geometry-mlcc].
 
-<Image src={import('./reverse-geometery-chip-capacitor-photo-tdk.png')} width="200px">A photo of a reverse geometry chip capacitor from TDKs C series[^tdk-reverse-geometry-mlcc-ds].</Image>
+<Image src={import('./_assets/reverse-geometery-chip-capacitor-photo-tdk.png')} width="200px">A photo of a reverse geometry chip capacitor from TDKs C series[^tdk-reverse-geometry-mlcc-ds].</Image>
 
 They are normally named the same as normal chip capacitors except with the two numbers in reverse order, i.e. an `0603` sized capacitor now becomes a `0306` capacitor.
 
@@ -236,7 +237,7 @@ They are normally named the same as normal chip capacitors except with the two n
 
 Some MEMS oscillators uses chip package sizes, but with extra pins for power and ground. One common package size is `2012` (2.0x1.2mm) which is sometimes used for 32.768kHz crystal oscillators (XTAL):
 
-<Image src={import('./2012-smd-mems-oscillator-component-package.png')} width="300px">Photo of the underside of a MEMS oscillator in a modified (2 extra pins) 2012 (2.0x1.2mm) chip package. Image from https://www.mouser.com/ProductDetail/SiTime/SiT1533AI-H4-AA3-32768E/?qs=dMZC7um9hO9NUxlac12G7g%3D%3D.</Image>
+<Image src={import('./_assets/2012-smd-mems-oscillator-component-package.png')} width="300px">Photo of the underside of a MEMS oscillator in a modified (2 extra pins) 2012 (2.0x1.2mm) chip package. Image from https://www.mouser.com/ProductDetail/SiTime/SiT1533AI-H4-AA3-32768E/?qs=dMZC7um9hO9NUxlac12G7g%3D%3D.</Image>
 
 ## References
 
