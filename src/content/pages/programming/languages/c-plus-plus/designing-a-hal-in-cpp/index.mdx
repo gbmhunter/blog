@@ -1,0 +1,46 @@
+---
+authors: [gbmhunter]
+date: 2024-12-02
+lastUpdated: 2024-12-02
+tags: [C++, programming]
+title: Designing a HAL in C++
+type: page
+---
+
+Objectives:
+
+* Must be easy to mock and run on Linux.
+* Must be easy to support different hardware platforms.
+* Must provide a nice developer experience.
+* Must be easy to understand.
+
+We will use a simple GPIO HAL driver as our example when we look at different ways to implement a HAL in C++.
+
+## Swapping Out .cpp Files
+
+This method can also be done just as easily in C.
+
+## Inheritance and Virtual Methods
+
+Inheritance and virtual methods allow us to implement runtime polymorphism.
+
+1. Define a base class which will act as your interface. Name it something like `GpioBase`. Define virtual methods for the interface, such as `void set(uint8_t value)` and `uint8_t get()`.
+1. The generic parts of your app will get passes a pointer to a `GpioBase` object.
+1. Create derived classes which implement the interface for specific platforms, e.g. `GpioReal` and `GpioFake`.
+1. Create the appropriate derived classes for the platforms you are targeting in `main()`.
+1. Pass these into the generic part of your app, as a `GpioBase*`.
+
+Although implementing inheritance and virtual methods is more suited to a OO-first language such as C++, it is still possible to do in C. If you want to seen an example on how to do this in C, see the [Object-Orientated C page](/programming/languages/c/object-orientated-c/).
+
+## Static Polymorphism via Templates
+
+One of the downsides to runtime polymorphism is that it can add additional CPU overhead. This is because of two reasons:
+
+1. The compiler needs to look up the correct virtual method to call at runtime, which it does using a `vtable`. The cost of this is essentially one level of indirection.
+1. Because of this indirection, the compiler cannot optimize the call to the method. This may be a more serious problem than the single level of indirection, as the compiler cannot inline the call or do other optimizations.
+
+Static polymorphism aims to implement the lookup at compile time, rather than at runtime. One way to do this is with templates.
+
+## C++ Concepts
+
+C++ concepts also allow you to implement compile time polymorphism.
