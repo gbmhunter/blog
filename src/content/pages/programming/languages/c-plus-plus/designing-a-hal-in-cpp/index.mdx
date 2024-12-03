@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2024-12-02
-lastUpdated: 2024-12-02
-tags: [C++, programming]
+lastUpdated: 2024-12-03
+tags: [C++, programming, dynamic polymorphism, static polymorphism, concepts, templates, CRTP, firmware, GPIO, HAL, hardware abstraction layer]
 title: Designing a HAL in C++
 type: page
 ---
@@ -32,6 +32,93 @@ Inheritance and virtual methods allow us to implement runtime polymorphism.
 
 Although implementing inheritance and virtual methods is more suited to a OO-first language such as C++, it is still possible to do in C. If you want to seen an example on how to do this in C, see the [Object-Orientated C page](/programming/languages/c/object-orientated-c/).
 
+Let's start by defining a base class:
+
+```c++ title="virtual-methods/LedBase.hpp"
+class LedBase {
+public:
+    virtual void set(uint8_t value) = 0;
+};
+```
+
+Let's now create a derived class for a real LED:
+
+```c++ title="virtual-methods/LedReal.hpp"
+#include "LedBase.hpp"
+
+class LedReal : public LedBase {
+public:
+    void set(uint8_t value) override {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+};
+```
+
+And a similarly derived class for a fake LED:
+
+```c++ title="virtual-methods/LedFake.hpp"
+#include "LedBase.hpp"
+
+class LedFake : public LedBase {
+public:
+    void set(uint8_t value) override {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+};
+```
+
+We can demonstrate this with the following `main()` function below:
+
+```c++ title="virtual-methods/main.cpp"
+#include "virtual-methods/App.hpp"
+#include "virtual-methods/LedFake.hpp"
+#include "virtual-methods/LedReal.hpp"
+
+int main() {
+    {
+        LedReal realLed;
+        App app(realLed);
+        app.run();
+    }
+
+    {
+        LedFake fakeLed;
+        App app(fakeLed);
+        app.run();
+    }
+
+    return 0;
+}
+```
+
+This gives us the following output:
+
+```
+virtual void virtual_methods::LedReal::set(uint8_t)() called with value: 1
+virtual void virtual_methods::LedFake::set(uint8_t)() called with value: 1
+```
+
+For any real world largish project, passing many GPIO objects (and all the other HAL objects, such as ADCs, DACs, Timers, etc.) into the App as individual parameters is going to be cumbersome. Instead, we could create a `Hal` object that wraps all these, and pass a single `Hal` object into the App.
+
+```c++ title="virtual-methods/Hal.hpp"
+class Hal {
+public:
+    GpioBase* gpio1;
+    GpioBase* gpio2;
+    GpioBase* gpio3;
+    GpioBase* gpio4;
+    GpioBase* gpio5;
+
+    Hal() : gpio1(nullptr), gpio2(nullptr), gpio3(nullptr), gpio4(nullptr), gpio5(nullptr) {}
+};
+```
+
+Then in `main()`, we can create a `Hal` object, and pass it into the App:
+
+```c++ title="virtual-methods/main.cpp"
+
+```
+
 ## Static Polymorphism via Templates
 
 One of the downsides to runtime polymorphism is that it can add additional CPU overhead. This is because of two reasons:
@@ -39,8 +126,134 @@ One of the downsides to runtime polymorphism is that it can add additional CPU o
 1. The compiler needs to look up the correct virtual method to call at runtime, which it does using a `vtable`. The cost of this is essentially one level of indirection.
 1. Because of this indirection, the compiler cannot optimize the call to the method. This may be a more serious problem than the single level of indirection, as the compiler cannot inline the call or do other optimizations.
 
-Static polymorphism aims to implement the lookup at compile time, rather than at runtime. One way to do this is with templates.
+Static polymorphism aims to implement the lookup at compile time, rather than at runtime. It is sometimes called _early binding_.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism] One way to do this is with templates and the CRTP (Curiously Recurring Template Pattern).
+
+Let's start by defining a base class:
+
+```c++ title="templates/GpioBase.hpp"
+template <typename T>
+class GpioBase {
+public:
+    void set(uint8_t value) {
+        // This is where the magic happens
+        // NOTE Intellisense will not be able to give you any help on what properties the class T has,
+        // this is one of the disadvantages of template polymorphism.
+        static_cast<T*>(this)->set(value);
+    }
+};
+```
+
+Let's now create a derived class for a real LED:
+
+```c++ title="templates/LedReal.hpp"
+#pragma once
+
+#include <cstdio>
+
+#include "GpioBase.hpp"
+
+namespace templates {
+
+// We inherit from ourselves (sort of!). This is called CRTP (Curiously Recurring Template Pattern).
+class GpioReal : public GpioBase<GpioReal> {
+public:
+    void set(uint8_t value) {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+};
+
+} // namespace templates
+```
+
+And a similarly derived class for a fake LED:
+
+```c++ title="templates/LedFake.hpp"
+#pragma once
+
+#include <cstdio>
+
+#include "LedBase.hpp"
+
+namespace templates {
+
+class LedFake : public LedBase<LedFake> {
+public:
+    void set(uint8_t value) {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+};
+
+} // namespace templates
+```
+
+We can demonstrate this with the following `main()` function below. C++17 or later is required for template parameter deduction.
+
+```c++ title="templates/main.cpp"
+#include <cstdio>
+
+#include "templates/App.hpp"
+#include "templates/LedFake.hpp"
+#include "templates/LedReal.hpp"
+
+namespace tpl = templates;
+namespace vm = virtual_methods;
+
+int main() {
+    {
+        tpl::LedReal realLed;
+        tpl::App app(realLed); // Template parameter deduction, no <LedReal> needed!
+        app.run();
+    }
+
+    {
+        tpl::LedFake fakeLed;
+        tpl::App app(fakeLed);
+        app.run();
+    }
+
+    return 0;
+}
+```
+
+This gives us the following output:
+
+```
+void templates::LedReal::set(uint8_t)() called with value: 1
+void templates::LedFake::set(uint8_t)() called with value: 1
+```
+
+Notice how we get the same polymorphism capabilities as we did with virtual methods, but these operations are performed at compile time and there should be no additional runtime overhead.
 
 ## C++ Concepts
 
-C++ concepts also allow you to implement compile time polymorphism.
+C++ concepts allow us to expand on the idea of using templates to implement static polymorphism. They allow us to enforce the derived classes implement the required methods, just as `virtual my_func() = 0` enforces this for dynamic polymorphism.
+
+
+If I didn't know what methods I could call, and I guess it was `set2`,
+
+```c++ title="concepts/main.cpp"
+template <typename T>
+class GpioBase {
+public:
+    void set(uint8_t value) {
+        // Incorrectly guessed the method name as set2()
+        static_cast<T*>(this)->set2(value);
+    }
+};
+```
+
+I would get the following error:
+
+```
+src/templates/GpioBase.hpp:14:32: error: ‘class templates::GpioReal’ has no member named ‘set2’; did you mean ‘set’?
+   14 |         static_cast<T*>(this)->set2(value);
+```
+
+Roger Booth shows a way of using concepts along with inheritance to provide better compiler errors. However, you do have to define the functions in the base class, even though you have already defined them in the concept, and will also have to define them in the derived classes.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism] Thomas Sedlmair shows a method which doesn't involve inheritance, and also gets around the hassle of having to define the functions in the base class.[^coding-with-thomas-crtp-and-concepts] We will use this method in our example below.
+
+## Summary
+
+Some other languages like Rust default to compile time polymorphism (this is provided by Rust's traits). In Rust, the compile time polymorphism feels much more natural and terse than in C++.
+
+[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism]: Roger Booth (2024, Feb 2). _Using the CRTP and C++20 Concepts to Enforce Contracts for Static Polymorphism_. Medium. Retrieved 2024-12-03, from https://medium.com/@rogerbooth/using-the-crtp-and-c-20-concepts-to-enforce-contracts-for-static-polymorphism-a27d93111a75
+[^coding-with-thomas-crtp-and-concepts]: Thomas Sedlmair (2024, Sep 24). _[C++] Static, Dynamic Polymorphism, CRTP and C++20’s Concepts_. Coding with Thomas. Retrieved 2024-12-03, from https://www.codingwiththomas.com/blog/c-static-dynamic-polymorphism-crtp-and-c20s-concepts.

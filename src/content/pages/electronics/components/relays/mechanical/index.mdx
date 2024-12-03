@@ -31,39 +31,86 @@ Relays can also come packaged with other functionality such as built-in timers.
 
 <Image src={import('./_assets/relay-tyco-t9as5d12-12-12vdc-240vac.jpg')} width="350px">The Tyco T9AS5D12 relay. Coil is driven with 12VDC and switches 240VAC. Notice the two different contact ratings, 10A for the N.C. (normally closed) and 20A for the N.O. (normally open).</Image>
 
-### Must Operate Voltage
+## Must Operate Voltage
 
 The _must operate voltage_ is the minimum voltage that is guaranteed to activate the relay. You should make sure to drive the relay with a voltage that is higher than this when you want to activate the relay. For example, a relay rated at 12 VDC will typically have a must operate voltage of around 9 VDC.
 
-### Must Release Voltage
+## Must Release Voltage
 
 The _must release voltage_ is the maximum voltage that is guaranteed to deactivate the relay. You should make sure to drive the relay with a voltage that is lower than this (or disconnect the coil) when you want to deactivate the relay. For example, a relay rated at 12 VDC will typically have a must release voltage of around 1.2 VDC.
 
-### Enclosure Rating
+## Normal Position of Contacts
 
-The enclosure rating is the amount of environment protection the relay has. A common thing to denote is whether or not the relay is sealed. Two common ratings are:
-
-* Flux protection: Not fully sealed, but enclosed enough to prevent any issue with flux.
-* Sealed: Fully enclosed.
-
-If you are planning on submersing a PCB with a relay on it in an ultrasonic bath, make sure you are using a sealed relay. If not, the cleaning solution will more than likely enter the relay and cause damage. It can either cause an immediate fault (i.e. direct short-circuit) or slowly corrode the contacts over months. I have personally experienced this first hand with a product that started failing a few months after it was installed in the field due to it being cleaned ultrasonically. The PCB had a relay on it that was not sealed, and after cutting open a relay on a failed unit, the contacts were seriously corroded.
-
-## Contact Configuration
-
-There are a number of different configurations relay contacts (the output pins) of a relay can have.
-
-Normally open and normally closed are terms that describe the state specific pairs of relay contacts when the relay is not energized. 
+The _normal position of contacts_ describes whether contacts are normally open or normally closed when the relay is not energised.
 
 * **Normally open (NO):** Contacts which are open-circuit when the coil is not energized, and become a short-circuit when the coil is energized. This is probably the most commonly used contact style, although NC is popular also.
 * **Normally closed (NC):** Contacts which are short-circuit to common when the coil is not energized, and become open-circuit when the coil is energized.
 
-The National Association of Relay Manufacturers (now called the Relay and Switch Industry Association) define 23 electrical contact "forms". These apply to relays, but are used to describe switches. Below are the most common ones that apply to relays:[^wikipedia-electrical-contact]
+## Contact Configuration
 
-* **Form A:** Contacts are NO and become closed when the relay is energised. Also known as SPST-NO.
-* **Form B:** Contacts are NC and become open when the relay is energised. Also known as SPST-NC.
-* **Form C:** There are three output pins, with a common to one NO and one NC contact. When the relay is energised, the NO contact will be connected to the common and the NC contact will be disconnected from the common. It is performed in a break-before-make sequence (see Form D for the opposite). These are also called NO-C-NC or SPDT relays.[^wikipedia-electrical-contact]. Can be used as a Form A or Form B relay by ignoring one of the outputs.
-* **Form D:** Similar to Form C, but with a make-before-break sequence rather than a break-before-make. This is an uncommon form.
-* **Form X:** Is equivalent to two Form A relays in series, which are mechanically linked and actuated at the same time. These are commonly found in contactors and toggle switches designed to handle high power inductive loads[^wikipedia-electrical-contact].
+There are a number of different configurations relay contacts (the output pins) of a relay can have. The National Association of Relay Manufacturers (NARM) (now called the Relay and Switch Industry Association, RSIA) define 23 electrical contact "forms". These apply to relays, but are used to describe switches. Below are the most common ones that apply to relays:[^wikipedia-electrical-contact]
+
+* **Form A:** Contacts are NO and become closed when the relay is energised. Also known as `SP ST NO`.
+* **Form B:** Contacts are NC and become open when the relay is energised. Also known as `SP ST NC`.
+* **Form C:** There are three output pins, with a common to one NO and one NC contact. When the relay is energised, the NO contact will be connected to the common and the NC contact will be disconnected from the common. It is performed in a break-before-make sequence (see Form D for the opposite). These are also called `NO-C-NC` or `SP DT (B-M)` relays.[^wikipedia-electrical-contact]. Can be used as a Form A or Form B relay by ignoring one of the outputs.
+* **Form D:** Similar to Form C, but with a make-before-break sequence rather than a break-before-make. This is an uncommon form. Can be abbreviated as `SP DT (M-B)`.
+* **Form X:** Is equivalent to two Form A relays in series, which are mechanically linked and actuated at the same time. Called a _double make_ relay, and can be abbreviated as `SP ST NO DM`. These are commonly found in contactors and toggle switches designed to handle high power inductive loads.[^wikipedia-electrical-contact] [^rsia-engineers-relay-handbook]
+* **Form Y:** Is equivalent to two Form B relays in series, which are mechanically linked and actuated at the same time. Called a _double break_ relay, and can be abbreviated as `SP ST NC DB`.[^rsia-engineers-relay-handbook]
+
+Many of the forms above are abbreviated into the form `<num. poles> <num. contacts> <contact type> <make-break order>`. For example, `SP ST NO` or `SP DT (B-M)`. This comes from the Engineers'Relay Handbook which states:
+
+> Sequence of abbreviations. When abbreviations are used to designate a contact assembly, the following order is used: (1) Poles (2) Throws (3) Normal position (4) Double make or break (if applicable).
+Example: SPST NO DM refers to single pole, single throw, normally open, double make contacts. -- Relay and Switch Industry Association (RSIA): Engineers' Relay Handbook.[^rsia-engineers-relay-handbook]
+
+<IRef iref="tbl-relay-acronyms" /> summarises the acronyms used.
+
+<table data-iref="tbl-relay-acronyms">
+  <thead>
+    <tr>
+      <th>Acronym</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NO</td>
+      <td>Normally open</td>
+    </tr>
+    <tr>
+      <td>NC</td>
+      <td>Normally closed</td>
+    </tr>
+    <tr>
+      <td>DP</td>
+      <td>Double pole</td>
+    </tr>
+    <tr>
+      <td>TP</td>
+      <td>Triple pole</td>
+    </tr>
+    <tr>
+      <td>DT</td>
+      <td>Double throw</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>Break</td>
+    </tr>
+    <tr>
+      <td>M</td>
+      <td>Make</td>
+    </tr>
+    <tr>
+      <td>DB</td>
+      <td>Double break</td>
+    </tr>
+    <tr>
+      <td>DM</td>
+      <td>Double make</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <IRef iref="fig-relay-contact-forms" /> shows a diagram of the different relay contact forms.
 
@@ -114,6 +161,15 @@ With a little external componentry, a mechanical relay can be made to latch-on a
 
 <Image src={import('./_assets/latching-relay-circuit.png')} width="400px">A simple latching relay circuit. The RESET push button can be replaced with short if you only need the circuit to reset on power off.</Image>
 
+## Enclosure Rating
+
+The enclosure rating is the amount of environment protection the relay has. A common thing to denote is whether or not the relay is sealed. Two common ratings are:
+
+* Flux protection: Not fully sealed, but enclosed enough to prevent any issue with flux.
+* Sealed: Fully enclosed.
+
+If you are planning on submersing a PCB with a relay on it in an ultrasonic bath, make sure you are using a sealed relay. If not, the cleaning solution will more than likely enter the relay and cause damage. It can either cause an immediate fault (i.e. direct short-circuit) or slowly corrode the contacts over months. I have personally experienced this first hand with a product that started failing a few months after it was installed in the field due to it being cleaned ultrasonically. The PCB had a relay on it that was not sealed, and after cutting open a relay on a failed unit, the contacts were seriously corroded.
+
 ## Common Relay Packages
 
 Most PCB mount relays are through-hole components. My guess is that they have not gone SMD like many other components because they are quite bulky and heavy -- using SMD pads would probably pose a risk of the pads being ripped of the PCB. Through-hole leads gives much better mechanical strength.
@@ -142,3 +198,4 @@ The G5Q/G5LE is a popular range of though-hole PCB mount relays from Omron. The 
 [^bib-te-coil-suppression-relay-life]: TE Connectivity. _Application Note: Coil Suppression Can Reduce Relay Life_. Retrieved 2021-12-29, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=13C3264_AppNote&DocType=CS&DocLang=EN.
 [^bib-relay-tech-info]: Panasonic. _Relay Technical Information_. Retrieved 2021-12-29, from https://www.panasonic-electric-works.com/pew/eu/downloads/technical_information_relay_en.pdf.
 [^wikipedia-electrical-contact]: Wikipedia (2024, Sep 16). _Electrical contact_. Retrieved 2024-12-02, from https://en.wikipedia.org/wiki/Electrical_contact.
+[^rsia-engineers-relay-handbook]: Relay and Switch Industry Association (RSIA). _Engineers' Relay Handbook_. Retrieved 2024-12-03, from https://web.archive.org/web/20170705143411/http://www.esterline.com/powersystems/DesignReference/RelayHandbook.aspx.
