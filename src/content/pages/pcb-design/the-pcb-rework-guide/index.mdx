@@ -7,18 +7,31 @@ title: The PCB Rework Guide
 type: page
 ---
 
+## Get a Good Quality Soldering Iron
+
+Your soldering iron is going to be the most important tool when performing PCB rework. Make sure you have a good quality one! You want one that has good temperature control, and supports a range of quick-change tips. You will want a selection of tips, from large chisel tips for heating up large pads or bits with thermal relief, to fine angled tips for delicate work.
+
+## Magnification
+
+It today's age with SMD components being so small, some form of magnification tool is essential for fine work. I find I can solder down to about 0402 chip size with the naked eye, but need magnification when soldering on things like 0.65/0.50mm pitch leads.
+
+One of my favourite magnification tools is a magnifying lamp that can be clamped to your desk, as shown in <IRef iref="fig-magnifying-lamp-desk-clamped" />. I prefer the clamp style rather than the heavy base style, as it doesn't take up as much desk space and is more secure. Most come with a ring of LED lights to illuminate the work area (sometimes adjustable in brightness).
+
+<Image iref="fig-magnifying-lamp-desk-clamped" src={import('./_assets/magnifying-lamp-desk-clamped.webp')} width="300px">A magnifying lamp that can be clamped to your desk. One of many varieties available from places like Amazon.</Image>
+
 ## Cleaning Up Flux Residue
 
 ## Lead-Based Soldering
 
-Lead-based soldering is ok for small amounts of prototype rework.
+Although lead-free solder should be used for production PCBs, lead-based soldering is ok for small amounts of prototype rework. Leaded solder is almost always easier to work with compared to it's lead-free counterparts. It typically has a lower melting point, and flows more easily. These are vital properties if you are doing a spot of tricky rework.
 
 ## Kapton Tape IC Pin Swap Method
 
-Sometimes you might realize you have wired up the pins of an IC incorrectly, and some of them need swapping around.
+Sometimes you might realize you have wired up the pins of an IC incorrectly, and some of them need rerouting for the circuit to work. One technique to do this is to place Kapton tape under the leads of the IC to insulate them from the PCB pads, and then reroute them to other parts of the circuit using hook-up wire.
 
 This method works well if:
 
+* The IC has leads that protrude from the body of the IC. For example, SOIC, TSSOP, QFP, SOT. Packages where this doesn't work well is ones which only have pads on the side of the IC, e.g. QFN or DFN. Totally impossible if the pads that need rewiring are on the underside of the IC, e.g. BGA or LGA.
 * Some of the pins don't need rewiring, and can act as anchor points for the IC.
 * There are no high current or thermal concerns due to rewiring some of the pins with wire wrap wire (if there is concerns, you might need to just respin the board!).
 * There are other solderable parts on the PCB (e.g. pads of chip resistors/capacitors, other IC pins, test points, e.t.c.) that you can reroute the pins to.
@@ -35,6 +48,16 @@ Next, solder the IC back in place using the pins that don't need swapping, as sh
 
 <Image iref="fig-kapton-tape-ic-pin-swap-ics-soldered-back-on" src={import('./_assets/kapton-tape-ic-pin-swap-ics-soldered-back-on.webp')} width="800px">The two ICs with the pins 5-8 swapped around soldered back in place.</Image>
 
-Now you need to connect the pins that need rewiring to other parts of the circuit. 
+Now you need to connect the pins that need rewiring to other parts of the circuit. If you have a small pitch IC (e.g. 0.5-0.65mm) you might need a magnifying lamp or similar optical aid to tack the wires in place.
 
-<Image iref="fig-kapton-tape-ic-pin-swap-rerouted-pins" src={import('./_assets/kapton-tape-ic-pin-swap-rerouted-pins.webp')} width="800px">The PCB after rerouting pins to the correct parts of the circuit. I needed a magnifying glass and steady hand to tack the wires in place on the 0.65mm pitch TSSOP leads.</Image>
+<Image iref="fig-kapton-tape-ic-pin-swap-rerouted-pins" src={import('./_assets/kapton-tape-ic-pin-swap-rerouted-pins.webp')} width="800px">The PCB after rerouting pins to the correct parts of the circuit. I needed a magnifying lamp and a steady hand to tack the wires in place on the 0.65mm pitch TSSOP leads.</Image>
+
+## Too Much Rework
+
+Be careful, this is such a thing as too much rework. After many heat cycles and physical stress, things can start wearing out, such as:
+
+* Copper pads on the PCB lift off (delaminate).
+* Small parts of solder mask flake off.
+* Oxidization makes it harder for the solder to flow, resulting in cold/dry joints (flux goes a long way to fixing this).
+
+<Image iref="fig-qfn-footprint-damage-from-too-much-rework" src={import('./_assets/qfn-footprint-damage-from-too-much-rework.webp')} width="600px">A QFN footprint that has been damaged from too much rework.</Image>
