@@ -1,0 +1,40 @@
+---
+authors: [gbmhunter]
+date: 2024-12-06
+lastUpdated: 2024-12-06
+tags: [PCBs, rework, guide]
+title: The PCB Rework Guide
+type: page
+---
+
+## Cleaning Up Flux Residue
+
+## Lead-Based Soldering
+
+Lead-based soldering is ok for small amounts of prototype rework.
+
+## Kapton Tape IC Pin Swap Method
+
+Sometimes you might realize you have wired up the pins of an IC incorrectly, and some of them need swapping around.
+
+This method works well if:
+
+* Some of the pins don't need rewiring, and can act as anchor points for the IC.
+* There are no high current or thermal concerns due to rewiring some of the pins with wire wrap wire (if there is concerns, you might need to just respin the board!).
+* There are other solderable parts on the PCB (e.g. pads of chip resistors/capacitors, other IC pins, test points, e.t.c.) that you can reroute the pins to.
+
+Firstly, remove the IC from the PCB (if it was soldered on prior to you realizing your mistake). This could be done with a hot air gun to remove the IC. Then remove the leftover bits of the solder from the pads. This could be done with copper braid and a soldering iron (remember to add a bit of flux to the braid to boost its solder sucking ability).
+
+Next, clean up any flux residue from around the pads (e.g. with isopropyl alcohol), because we want the Kapton tape to stick well.
+
+Then, cut a piece of Kapton tape to size and place it over the pads you need to swap around as shown in <IRef iref="fig-kapton-tape-ic-pin-swap-tape-over-pads" />.
+
+<Image iref="fig-kapton-tape-ic-pin-swap-tape-over-pads" src={import('./_assets/kapton-tape-ic-pin-swap-tape-over-pads.webp')} width="500px">Kapton tape over the pads of two TSSOP-8 ICs that needed their pins 5-8 swapped around. The pins have a pitch of 0.65mm.</Image>
+
+Next, solder the IC back in place using the pins that don't need swapping, as shown in <IRef iref="fig-kapton-tape-ic-pin-swap-ics-soldered-back-on" />.
+
+<Image iref="fig-kapton-tape-ic-pin-swap-ics-soldered-back-on" src={import('./_assets/kapton-tape-ic-pin-swap-ics-soldered-back-on.webp')} width="800px">The two ICs with the pins 5-8 swapped around soldered back in place.</Image>
+
+Now you need to connect the pins that need rewiring to other parts of the circuit. 
+
+<Image iref="fig-kapton-tape-ic-pin-swap-rerouted-pins" src={import('./_assets/kapton-tape-ic-pin-swap-rerouted-pins.webp')} width="800px">The PCB after rerouting pins to the correct parts of the circuit. I needed a magnifying glass and steady hand to tack the wires in place on the 0.65mm pitch TSSOP leads.</Image>
