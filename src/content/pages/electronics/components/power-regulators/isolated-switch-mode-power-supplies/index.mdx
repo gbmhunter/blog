@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2021-08-27
-description: Schematics, uses/applications and more info about isolated switch-mode power supplies.
-lastUpdated: 2021-08-27
+description: Isolated switch-mode power supplies (SMPS) are switch-mode power supplies with isolation between the input and output. They are typically used when mains power is used for safety reasons.
+lastUpdated: 2024-12-05
 tags: [electronics, components, power supplies, isolated, switch-mode power supplies, SMPS, flyback, forward]
 title: Isolated Switch Mode Power Supplies
 type: page
@@ -20,15 +20,15 @@ Isolated SMPS topologies:
 | Flybuck       | Higher freq. than flyback (= smaller components/better efficiency).
 | Forward
 
-<Image src={import('./traco-power-tsp600-124-psu-photo.jpg')} width="350px">Photo of the Traco TSP600-124 24V 600W DIN-mounted power supply, which runs of mains power. This is medium power isolated switch-mode power supply unit.</Image>
+<Image src={import('./_assets/traco-power-tsp600-124-psu-photo.jpg')} width="350px">Photo of the Traco TSP600-124 24V 600W DIN-mounted power supply, which runs of mains power. This is medium power isolated switch-mode power supply unit.</Image>
 
 ## Flyback Converters
 
 A flyback converter is a type of isolated power converter. It can be thought of as a buck-boost converter with the inductor split to form a transformer. The basic schematic is shown below:
 
-<Image src={import('./flyback-regulator-schematic-basic.svg')} width="600px">Schematic of a basic flyback converter, with no feedback. Transformer T1 is usually called a \"mutually coupled inductor\".</Image>
+<Image src={import('./_assets/flyback-regulator-schematic-basic.svg')} width="600px">Schematic of a basic flyback converter, with no feedback. Transformer T1 is usually called a \"mutually coupled inductor\".</Image>
 
-Flyback converters are unique in the fact that they use the transformer as **both a transformer (to provide voltage/current conversion and isolation) and inductor (for storage of energy in it's magnetic field)**. All other isolating SMPSs only use the transformer for voltage/current conversion and isolation, and require a separate inductor on the secondary side for performing the buck/boost regulation. The flyback converter to the most used isolating SMPS topology used[^bib-ti-feedback-loop-design-considerations].
+Flyback converters are unique in the fact that they use the transformer as **both a transformer (to provide voltage/current conversion and isolation) and inductor (for storage of energy in it's magnetic field)**. All other isolating SMPSs only use the transformer for voltage/current conversion and isolation, and require a separate inductor on the secondary side for performing the buck/boost regulation. The flyback converter to the most used isolating SMPS topology used[^ti-feedback-loop-design-considerations].
 
 ### Principle Of Operation
 
@@ -40,11 +40,11 @@ Flyback converters are unique in the fact that they use the transformer as **bot
 TIP: At first you may be thinking, but wait, because inductors don't like changes in current, isn't the transformer going to create a huge primary side voltage when the switch is opened? This would be true for a standalone inductor, but because the magnetic field is coupled to the secondary side, the moment the switch opens and the primary-side current stops, the current in the secondary side starts. However, there is still the problem of parasitic inductance. This is a portion of the total primary inductance which is not coupled over to the secondary. This does create a large voltage spike, and has to be dealt with zeners/TVS diodes.
 </Aside>
 
-The output voltage is given by Eq $\ref{eq:vout-vin-flyback}$.
+The output voltage is given by <IRef iref="eqn-vout-vin-flyback" />.
 
 $$
 \begin{align}
-\label{eq:vout-vin-flyback}
+\htmlId{eqn-vout-vin-flyback}{}
 V_{OUT} = \frac{V_{IN}}{N_{PS}} \frac{D}{1 - D}
 \end{align}
 $$
@@ -65,7 +65,7 @@ Without feedback, regulation for a flyback converter can be as good a 5-10% (ass
 
 The TL431 precision shunt voltage reference in tandem with an optocoupler is a popular way of providing feedback from the secondary side back to a flyback converter. As shown below, it's REF pin is connected via resistor divider to $V_{OUT}$, and it sinks as much current through the optocoupler's LED to keep $V_{REF}$ at $2.5V$, hence providing just enough feedback drive to regulate the output voltage.
 
-<Image src={import('./flyback-regulator-schematic-with-optocoupler-feedback.svg')} width="800px">Schematic of a flyback regulator with optocoupler-based feedback. The TL431 plays a pivotal role in the feedback loop, essentially sinking as much current through the LED of the optocoupler to keep it's REF voltage at 2.5V (which is a proportion of the output voltage). Compensation components have been omitted for brevity.</Image>
+<Image src={import('./_assets/flyback-regulator-schematic-with-optocoupler-feedback.svg')} width="800px">Schematic of a flyback regulator with optocoupler-based feedback. The TL431 plays a pivotal role in the feedback loop, essentially sinking as much current through the LED of the optocoupler to keep it's REF voltage at 2.5V (which is a proportion of the output voltage). Compensation components have been omitted for brevity.</Image>
 
 Flyback converters are used extensively in [Power over Ethernet (PoE) applications](/electronics/communication-protocols/ethernet-protocol/#power-over-ethernet-poe).
 
@@ -81,4 +81,21 @@ TODO: Add info here.
 
 TODO: Add info here.
 
-[^bib-ti-feedback-loop-design-considerations]: Lee, S.W. (2020, May). _Practical Feedback Loop Design Considerations for Flyback Converter Using UCC28740_. Texas Instruments. Retrieved 2021-08-27, from https://www.ti.com/lit/an/sluaa66/sluaa66.pdf.
+## Modules
+
+Rather than designing the circuitry yourself, you can purchase isolated SMPS modules from a number of suppliers.
+
+For example, the Mean Well IRM-30-12ST shown in <IRef iref="fig-mean-well-irm-30-12st-psu-photo" /> is a 30W 85-264VAC input, 12V output isolated SMPS module. There is also a PCB variant of this module which has bottom side through-hole pins rather than the terminal blocks shown.
+
+<Image iref="fig-mean-well-irm-30-12st-psu-photo" src={import('./_assets/mean-well-irm-30-12st-psu-photo.webp')} width="350px">Photo of the Mean Well IRM-30-12ST 30W 85-264VAC input, 12V output isolated SMPS module.[^rs-components-mean-well-irm-30-12st-product-page]</Image>
+
+The high-level internal block diagram of the Mean Well IRM-30-12ST is shown in <IRef iref="fig-mean-well-irm-30-12st-internal-block-diagram" />.
+
+<Image iref="fig-mean-well-irm-30-internal-block-diagram" src={import('./_assets/mean-well-irm-30-internal-block-diagram.webp')} width="800px">Internal block diagram of the Mean Well IRM-30-12ST 30W 85-264VAC input, 12V output isolated SMPS module.[^rs-components-mean-well-irm-30-12st-product-page]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ti-feedback-loop-design-considerations]: Lee, S.W. (2020, May). _Practical Feedback Loop Design Considerations for Flyback Converter Using UCC28740_. Texas Instruments. Retrieved 2021-08-27, from https://www.ti.com/lit/an/sluaa66/sluaa66.pdf.
+[^rs-components-mean-well-irm-30-12st-product-page]: RS Components. _MEAN WELL Switching Power Supply, IRM-30-12ST, 12V dc, 2.5A, 30W, 1 Output, 85 → 264V ac Input Voltage_ [product page]. Retrieved 2024-12-05, from https://nz.rs-online.com/web/p/switching-power-supplies/1358951.
