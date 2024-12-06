@@ -1,0 +1,40 @@
+---
+authors: [gbmhunter]
+date: 2024-12-06
+description: Chip carrier packages are a family of large SMD packages that hold ICs with leads on all four sides of the package. One of the most common variants is the PLCC package with J leads.
+image: ./_assets/cover-image.webp
+lastUpdated: 2024-12-06
+tags: [component packages, PCB design, chip carrier, PLCC, LCC, LCCC, BCC]
+title: Chip Carrier Packages
+type: page
+---
+
+Chip carrier packages are a family of large SMD packages that hold ICs with leads on all four sides of the package. One of the most common variants is the PLCC package with J leads.
+
+## Variants
+
+There are lots of variants in the chip carrier family, including:[^wikipedia-chip-carrier]
+
+* BCC (Bump Chip Carrier)
+* LCC (Leaded Chip Carrier)
+* LCCC (Leaded Ceramic Chip Carrier)
+* PLCC (Plastic Leaded Chip Carrier)
+
+## PLCC
+
+The plastic leaded chip carrier (PLCC) package is likely the most common variant of chip carrier package.
+
+There are some weird versions of the PLCC, for example the Infineon Technologies IR2131JTRPBF gate driver IC shown in <IRef iref="fig-ir2131jtrpbf-plcc44-missing-leads" />. It is a PLCC44 package, but some of the leads are missing, and the leads tuck into little recesses in the bottom side of the package.
+
+<Image iref="fig-ir2131jtrpbf-plcc44-missing-leads" src={import('./_assets/ir2131jtrpbf-plcc44-missing-leads.webp')} width="300px">A Infineon Technologies IR2131JTRPBF gate driver IC in the PLCC44 package. Note that some of the leads are missing, and the leads tuck into little recesses in the bottom side of the package![^digikey-infineon-tech-ir2131jtrpbf]</Image>
+
+## Similar To
+
+* [SOJ](/pcb-design/component-packages/soj-component-package/): SOJ is another SMD package that uses J leads, but only on 2 sides of the package.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^wikipedia-chip-carrier]: Wikipedia (2024, Oct 25). _Chip carrier_. Retrieved 2024-12-06, from https://en.wikipedia.org/wiki/Chip_carrier.
+[^digikey-infineon-tech-ir2131jtrpbf]: DigiKey. _Integrated Circuits (ICs) > Power Management (PMIC) > Gate Drivers > Infineon Technologies IR2131JTRPBF_ [product page]. Retrieved 2024-12-06, from https://www.digikey.co.nz/en/products/detail/infineon-technologies/IR2131JTRPBF/1928462.
