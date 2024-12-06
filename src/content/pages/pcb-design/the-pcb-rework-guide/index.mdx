@@ -11,19 +11,23 @@ type: page
 
 Your soldering iron is going to be the most important tool when performing PCB rework. Make sure you have a good quality one! You want one that has good temperature control, and supports a range of quick-change tips. You will want a selection of tips, from large chisel tips for heating up large pads or bits with thermal relief, to fine angled tips for delicate work.
 
+The Hakko FX-971 soldering iron shown in <IRef iref="fig-hakko-fx-971-soldering-iron" /> is an example of a soldering iron suitable for PCB rework.
+
+<Image iref="fig-hakko-fx-971-soldering-iron" src={import('./_assets/hakko-fx-971-soldering-iron.webp')} width="600px">An image of the Hakko FX-971 soldering iron. This comes with a standard and small handle, with interchangeable tips.</Image>
+
 ## Magnification
 
-It today's age with SMD components being so small, some form of magnification tool is essential for fine work. I find I can solder down to about 0402 chip size with the naked eye, but need magnification when soldering on things like 0.65/0.50mm pitch leads.
+It today's age with SMD components being so small, some form of magnification tool is essential for fine work. I find I can solder down to about [0402 chip size](/pcb-design/component-packages/chip-eia-component-packages/) with the naked eye, but need magnification when soldering on things like 0.65/0.50mm pitch leads.
 
 One of my favourite magnification tools is a magnifying lamp that can be clamped to your desk, as shown in <IRef iref="fig-magnifying-lamp-desk-clamped" />. I prefer the clamp style rather than the heavy base style, as it doesn't take up as much desk space and is more secure. Most come with a ring of LED lights to illuminate the work area (sometimes adjustable in brightness).
 
 <Image iref="fig-magnifying-lamp-desk-clamped" src={import('./_assets/magnifying-lamp-desk-clamped.webp')} width="300px">A magnifying lamp that can be clamped to your desk. One of many varieties available from places like Amazon.</Image>
 
-## Cleaning Up Flux Residue
-
 ## Lead-Based Soldering
 
 Although lead-free solder should be used for production PCBs, lead-based soldering is ok for small amounts of prototype rework. Leaded solder is almost always easier to work with compared to it's lead-free counterparts. It typically has a lower melting point, and flows more easily. These are vital properties if you are doing a spot of tricky rework.
+
+<Image iref="fig-leaded-solder" src={import('./_assets/leaded-solder.webp')} width="300px">A roll of lead-based solder.</Image>
 
 ## Kapton Tape IC Pin Swap Method
 
@@ -51,6 +55,16 @@ Next, solder the IC back in place using the pins that don't need swapping, as sh
 Now you need to connect the pins that need rewiring to other parts of the circuit. If you have a small pitch IC (e.g. 0.5-0.65mm) you might need a magnifying lamp or similar optical aid to tack the wires in place.
 
 <Image iref="fig-kapton-tape-ic-pin-swap-rerouted-pins" src={import('./_assets/kapton-tape-ic-pin-swap-rerouted-pins.webp')} width="800px">The PCB after rerouting pins to the correct parts of the circuit. I needed a magnifying lamp and a steady hand to tack the wires in place on the 0.65mm pitch TSSOP leads.</Image>
+
+## Cleaning Up Flux Residue
+
+You may or may not want to clean up the flux residue after the rework is complete. Modern fluxes don't typically cause long term problems if left on the board (plus, it it's just a prototype, longevity might not be a concern). So it's usually more a matter of appearance, as the left over flux can be quite unsightly.
+
+If you do want to clean up the flux residue, one of the best ways is to dunk it in an ultrasonic bath. If you don't have one (or if you can't, because there is something on the PCB which wouldn't like being submerged), then isopropyl alcohol and a cotton bud will work. Apply some isopropyl alcohol and gently scrub with the cotton bud to loosen/dissolve the flux residue. Then flush the area with more isopropyl alcohol so that is "washes" the dissolved residue away (I let it drip on the floor).
+
+<Aside type="note">
+Don't forget the flushing step! If you forget it, the isopropyl will evaporate and your residue will re-appear.
+</Aside>
 
 ## Too Much Rework
 
