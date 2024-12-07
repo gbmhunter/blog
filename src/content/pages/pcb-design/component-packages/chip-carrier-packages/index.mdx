@@ -4,12 +4,14 @@ date: 2024-12-06
 description: Chip carrier packages are a family of large SMD packages that hold ICs with leads on all four sides of the package. One of the most common variants is the PLCC package with J leads.
 image: ./_assets/cover-image.webp
 lastUpdated: 2024-12-06
-tags: [component packages, PCB design, chip carrier, PLCC, LCC, LCCC, BCC]
+tags: [component packages, PCB design, chip carrier, PLCC, LCC, LCCC, BCC, sockets]
 title: Chip Carrier Packages
 type: page
 ---
 
-Chip carrier packages are a family of large SMD packages that hold ICs with leads on all four sides of the package. One of the most common variants is the PLCC package with J leads.
+Chip carrier packages are a family of large SMD packages that hold ICs with leads on all four sides of the package. One of the most common variants is the PLCC package with J leads. As of 2024, chip carrier packages are not commonly used, and have been largely replaced by [QFP](/pcb-design/component-packages/qfp-component-package/), [QFN](/pcb-design/component-packages/qfn-component-package/) and [BGA](/pcb-design/component-packages/bga-component-package/) packages when it comes to housing ICs.
+
+One area it still remains popular for is when you need a swappable IC (as it is easy to make sockets for), such as read-only memory (ROM).
 
 ## Variants
 
@@ -22,7 +24,17 @@ There are lots of variants in the chip carrier family, including:[^wikipedia-chi
 
 ## PLCC
 
-The plastic leaded chip carrier (PLCC) package is likely the most common variant of chip carrier package.
+The plastic leaded chip carrier (PLCC) package as shown in <IRef iref="fig-plcc-3d-render" /> is likely the most common variant of chip carrier package. They often have a square body, but can be rectangular. All the ones I have come across have a pitch of 1.27mm.
+
+<Image iref="fig-plcc-3d-render" src={import('./_assets/plcc-3d-render.webp')} width="300px">A 3D render of a PLCC package.[^ebay-nineveh-chip-package-plcc-44-oem-parts]</Image>
+
+The JEDEC trade group started a task force in 1981 to standardise the PLCC package. The MO-047 standard was released in 1984 for square PLCC packages and the MO-052 standard was released in 1985 for rectangular packages.[^wikipedia-chip-carrier] You can purchase sockets for PLCC packages, both through-hole and SMD versions. A through-hole PLCC socket is shown in <IRef iref="fig-adam-tech-plcc-socket-plcc-52-at" />.
+
+<Image iref="fig-adam-tech-plcc-socket-plcc-52-at" src={import('./_assets/adam-tech-plcc-socket-plcc-52-at.webp')} width="400px">The Adam Tech PLCC-52-AT, a through-hole 52-lead PLCC socket.[^digikey-adam-tech-plcc-52-at-socket]</Image>
+
+### Synonyms
+
+* **FN**: Texas Instruments package code for the PLCC.[^texas-instruments-plcc-fn-package-info]
 
 There are some weird versions of the PLCC, for example the Infineon Technologies IR2131JTRPBF gate driver IC shown in <IRef iref="fig-ir2131jtrpbf-plcc44-missing-leads" />. It is a PLCC44 package, but some of the leads are missing, and the leads tuck into little recesses in the bottom side of the package.
 
@@ -30,6 +42,7 @@ There are some weird versions of the PLCC, for example the Infineon Technologies
 
 ## Similar To
 
+* [QFP](/pcb-design/component-packages/qfp-component-package/): QFP is another SMD package commonly used for ICs, but has gull-wing leads instead of J leads.
 * [SOJ](/pcb-design/component-packages/soj-component-package/): SOJ is another SMD package that uses J leads, but only on 2 sides of the package.
 
 {/* ======================================================================== */}
@@ -38,3 +51,6 @@ There are some weird versions of the PLCC, for example the Infineon Technologies
 
 [^wikipedia-chip-carrier]: Wikipedia (2024, Oct 25). _Chip carrier_. Retrieved 2024-12-06, from https://en.wikipedia.org/wiki/Chip_carrier.
 [^digikey-infineon-tech-ir2131jtrpbf]: DigiKey. _Integrated Circuits (ICs) > Power Management (PMIC) > Gate Drivers > Infineon Technologies IR2131JTRPBF_ [product page]. Retrieved 2024-12-06, from https://www.digikey.co.nz/en/products/detail/infineon-technologies/IR2131JTRPBF/1928462.
+[^texas-instruments-plcc-fn-package-info]: Texas Instruments (2017, Apr). _FN 20 - PLCC - 4.57mm max height_. Retrieved 2024-12-07, from https://www.ti.com/lit/ml/mpqc018a/mpqc018a.pdf.
+[^ebay-nineveh-chip-package-plcc-44-oem-parts]: Ebay, nineveh. _IC CHIP package PLCC-44 ORIGINAL OEM PARTS_ [product listing]. Retrieved 2024-12-07, from https://www.ebay.com/itm/273980251251.
+[^digikey-adam-tech-plcc-52-at-socket]: DigiKey. _Connectors, Interconnects > Sockets for ICs, Transistors > IC Sockets > Adam Tech PLCC-52-AT_ [product listing]. Retrieved 2024-12-07, from https://www.digikey.com/en/products/detail/adam-tech/PLCC-52-AT/9833068.
