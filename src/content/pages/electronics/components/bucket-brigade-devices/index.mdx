@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2024-11-04
 description: Bucket brigade devices (BBDs) are analogue delay ICs that "shunt" charge along a series of switched capacitors to create a delay.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-11-04
+lastUpdated: 2024-12-09
 tags: [BBD, bucket brigade devices, analogue delays, switched capacitors, digital sampling, capacitors]
 title: Bucket Brigade Devices (BBDs)
 type: page
@@ -11,7 +11,7 @@ type: page
 
 <WarningIsNotes />
 
-Bucket brigade devices (BBDs, a.k.a. bucket brigades) are analogue delay ICs that "shunt" charge along a series of switched [capacitors](/electronics/components/capacitors/) to create a delay. <IRef iref="fig-bucket-brigade-delay-basic-internal-schematic" /> shows a basic internal schematic of a bucket brigade device.
+Bucket brigade devices (BBDs, a.k.a. bucket brigades) are analogue delay ICs that "shunt" charge along a series of switched [capacitors](/electronics/components/capacitors/) to create a delay. Moving charge from one capacitor to the next is not a simple process (if you connect two capacitors together in parallel, only some of the charge is transferred until the voltages are equal). Bucket brigades use a clever technique to completely transfer the signal (represented as charge) from one capacitor to the next. They do this representing the signal as an absence of charge, and a clever circuit which involves transistors and capacitors with one of their plates connected to the gate. <IRef iref="fig-bucket-brigade-delay-basic-internal-schematic" /> shows a basic internal schematic of a bucket brigade device.
 
 <Image iref="fig-bucket-brigade-delay-basic-internal-schematic" src={import('./_assets/bucket-brigade-delay-basic-internal-schematic.svg')} width="900px">A basic internal schematic of a bucket brigade device[^electrosmash-bucket-brigade-devices-mn3007].</Image>
 

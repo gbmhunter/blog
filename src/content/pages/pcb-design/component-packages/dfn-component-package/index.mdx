@@ -23,7 +23,7 @@ Below is an "odd shaped" SON package used by Numonyx flash chips that goes under
 
 <Image src={import('./_assets/component-package-vdfpn8-mlp8-outline-dimensions.png')} width="500px">Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf.</Image>
 
-[Texas Instruments AN-1187: Leadless Leadframe Package (LLP)](https://www.ti.com/lit/an/snoa401r/snoa401r.pdf) is a great PCB designers reference document when using DFN or QFN packages (the document calls them LLP, but it is the same thing as DFN/QFN).
+[Texas Instruments AN-1187: Leadless Lead frame Package (LLP)](https://www.ti.com/lit/an/snoa401r/snoa401r.pdf) is a great PCB designers reference document when using DFN or QFN packages (the document calls them LLP, but it is the same thing as DFN/QFN).
 
 ## Synonyms
 
@@ -32,7 +32,8 @@ Below is an "odd shaped" SON package used by Numonyx flash chips that goes under
 * DRP/S-PVSON-N6 (TI)
 * DSG/S-PWSON-N8 (TI)
 * LLP (Leadless Lead frame Package). The terminology used by National Semiconductor for their SON/DFN/QFN packages until they were acquired by Texas Instruments[^bib-ti-qfn-son-faqs].
-* MLP (micro leadframe package or moulded leaded package). This also can refer to variants with pins on all four sides of the package, which is also called a QFN package. This name is used by Linear Technologies, Carsem.
+* MFF2: Package name used for eSIM cards. Represents a DFN-8 package.[^st-st4sim-200m-esim-ds]
+* MLP (micro lead frame package or moulded leaded package). This also can refer to variants with pins on all four sides of the package, which is also called a QFN package. This name is used by Linear Technologies, Carsem.
 * MLPD (MLP dual).
 * MLPM (MLP micro). This name is used by Carsem.
 * MLPQ (MLP quad).
@@ -86,6 +87,12 @@ The DFN-8 3x3mm package is used for components such as linear regulators[^bib-st
 
 <Image src={import('./_assets/son-8-component-package-ti-land-pattern.png')} width="400px">The recommended land pattern (from TI) of the DFN-8 component package.</Image>
 
+## MFF2 (DFN-8)
+
+MFF2 is a package that eSIM cards use. It is a DFN-8, that measures 5x6x1.27mm.[^velocity-iot-viot-flex-mff2-ds] The complete dimensions are shown in <IRef iref="fig-mff2-dfn-8-package-dimensions-stm" />.
+
+<Image iref="fig-mff2-dfn-8-package-dimensions-stm" src={import('./_assets/mff2-dfn-8-package-dimensions-stm.webp')} width="700px">The dimensions of the MFF2 (DFN-8) component package that is commonly used for eSIM ICs, as per STMicroelectronics' ST4SIM-200M eSIM. This package has wettable flanks.[^st-st4sim-200m-esim-ds]</Image>
+
 ## WSON And VSON Variants
 
 The WSON and VSON variants of the SON package are identical to the SON package except for varying heights.
@@ -105,7 +112,13 @@ The VSON variant has a height of 1.00mm (max.)
 * Solid-state load switches
 * Flash memory ICs
 
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
 [^bib-ti-qfn-son-faqs]:  Texas Instruments. _QFN/SON package FAQs_. Retrieved 2020-07-30, from https://www.ti.com/support-quality/faqs/qfn-son-faqs.html.
 [^bib-diodes-inc-ap63356]:  Diodes Incorporated. _3.8V to 32V input, 3.5A low Iq Synchronous Buck with Enhanced EMI Reduction_. Retrieved 2021-12-14, from https://www.diodes.com/assets/Datasheets/AP63356-AP63357.pdf.
 [^bib-st-ldk715-ds]:  STMicroelectronics (2020, Apr). _LDK715 (datasheet)_. Retrieved 2021-12-14, from https://www.st.com/resource/en/datasheet/ldk715.pdf.
 [^bib-ti-drc-s-pvson-n9-package-outline]: Texas Instruments (2011, Sep). _DRC (S-PVSON-N9): Mechanical Data_. Retrieved 2022-10-06, from https://www.ti.com/lit/ml/mpss035d/mpss035d.pdf.
+[^st-st4sim-200m-esim-ds]: STMicroelectronics (2021, Jan). _ST4SIM-200M - eSIM GSMA system-on-chip solution for secure M2M industrial applications_. Retrieved 2024-12-09, from https://www.st.com/resource/en/data_brief/st4sim-200m.pdf.
+[^velocity-iot-viot-flex-mff2-ds]: Velocity IoT. _VIoT-Flex MFF2 - Multi-IMSI eUICC compliant eSIM card_ [datasheet]. Retrieved 2024-12-09, https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/4887/VIOT-1SIM-MFF2.pdf.
