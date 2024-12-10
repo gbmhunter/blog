@@ -2057,7 +2057,7 @@ There is a template test project located at `zephyr/samples/subsys/testsuite/int
 
 Twister is Zephyrs test runner tool. It is a command-line tool that collects tests, builds the test application and runs it. The best way to access it is via a subcommand of `west`, i.e. `west twister`.
 
-Twister dumps it's build output into directories called `twister-out`, `twister-out1`, `twister-out2`, e.t.c.
+Twister dumps it's build output into a directory called `twister-out`. If `twister-out` already exists (i.e. twister has already been run before) then it will rename the existing directory to `twister-out1`, `twister-out2`, e.t.c. Part of the build output are the test reports. These are JUnit style XML reports that can be read by CI tools such as GitHub Actions, GitLab, Jenkins, etc. See the [Setting Up CI for Zephyr Projects](#setting-up-ci-for-zephyr-projects) section for more information.
 
 ### Adding Native Unit Tests To Your Application
 
@@ -2165,6 +2165,12 @@ You can substitute the test name with `*` to run all tests in that suite, e.g.:
 
 You can use the command line option `-list` with a ztest `zephyr.exe` to list all the tests that are available to run. Chain the above two commands together with `&&` for a quick one liner while developing.
 
+You can also chain together multiple selectors in the `-test` option with a comma, e.g.:
+
+```shell
+./build/zephyr/zephyr.exe -test="my_suite::my_test,my_suite2::my_test2"
+```
+
 Zephyr's `ztest` framework provides the standard setup of test suites and tests.
 
 You can use `ZTEST_F(my_suite, my_test)` to define a test which automatically pulls in the fixture returned from the setup function and gives it the name `<suite_name>_fixture` (i.e. `my_suite_fixture` in this case).
@@ -2206,6 +2212,22 @@ ZTEST_F(my_suite, test_feature_x)
     zassert_equal(99, fixture->number);
 }
 ```
+
+### Your Own Entry Point
+
+ztest provides a default entry point for your tests, but if you want you can provide your own. This is useful if you need to setup some global state before running the tests, or have more control over when they start. All you need to do is define a function called `test_main()`, and then call `ztest_run_all()` from it as shown below:
+
+```c++
+#include <zephyr/ztest.h>
+
+void test_main(void)
+{
+    // Run all tests once
+    ztest_run_all(NULL, false, 1, 1);
+}
+```
+
+`ztest_run_all()` has the following signature: `const void *state, bool shuffle, int suite_iter, int case_iter`. `suite_iter` is the number of times to run each suite, and `case_iter` is the number of times to run each test in a suite. Setting this higher than `1` can be a good way to catch memory leaks (all tests are run in the same executable program, so memory leak issues will accumulate and hopefully make themselves apparent). `shuffle` can be set to `true` to randomize the order of the tests, which can be useful to make sure your tests are independent of one another.
 
 ### Cleaning Up
 
