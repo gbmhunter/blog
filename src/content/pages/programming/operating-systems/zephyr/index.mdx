@@ -570,6 +570,19 @@ The `native_sim` board supports the following APIs (among others):
 * Watchdog
 * Timers
 
+## Programming
+
+`west` has built-in support for programming a number of different MCUs via `west flash`. You can specify the programmer you want to use with the `--runner` option. For example, to use a JLink programmer:
+
+```bash
+west flash --runner jlink
+```
+
+I got the following error when the target board was not powered up (when programming a Nordic Semiconductor nRF52840):
+
+```txt
+FATAL ERROR: command exited with status 1: /opt/SEGGER/JLink_V794i/JLinkExe -nogui 1 -if swd -speed 4000 -device nrf52840_xxaa -CommanderScript /tmp/tmp48nqgzxijlink/runner.jlink -nogui 1
+```
 
 ## Device Trees
 
