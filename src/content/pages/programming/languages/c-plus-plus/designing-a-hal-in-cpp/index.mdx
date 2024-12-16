@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2024-12-02
-lastUpdated: 2024-12-04
+lastUpdated: 2024-12-16
 tags: [C++, programming, dynamic polymorphism, static polymorphism, concepts, templates, CRTP, firmware, GPIO, HAL, hardware abstraction layer]
 title: Designing a HAL in C++
 type: page
@@ -15,6 +15,10 @@ Objectives:
 * Must be easy to understand.
 
 We will use a simple GPIO HAL driver as our example when we look at different ways to implement a HAL in C++.
+
+<Aside type="note">
+Many of the concepts below can be found as working examples on GitHub at [gbmhunter/designing-hal-in-cpp](https://github.com/gbmhunter/designing-hal-in-cpp).
+</Aside>
 
 ## Swapping Out .cpp Files
 
@@ -251,12 +255,121 @@ C++ concepts allow us to expand on the idea of using templates to implement stat
 
 Without concepts, in the above template example, the only thing the compiler will enforce is that the derived class has a `set()` method and tha it can be passed a `uint8_t`. If you happened to define the derived function as `void set(int32_t value)`, it would still work fine. Likewise, if you added a return value and defined it as `bool set(int32_t value)`, it would still be happy. You can start to see how the enforcement of the API of the derived class are loose. Concepts can help tighten this up!
 
-Roger Booth shows a way of using concepts along with inheritance to provide better compiler errors. However, you do have to define the functions in the base class, even though you have already defined them in the concept, and will also have to define them in the derived classes.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism] Thomas Sedlmair shows a method which doesn't involve inheritance, and also gets around the hassle of having to define the functions in the base class.[^coding-with-thomas-crtp-and-concepts] We will use this method in our example below.
+[Roger Booth](https://medium.com/@rogerbooth/using-the-crtp-and-c-20-concepts-to-enforce-contracts-for-static-polymorphism-a27d93111a75
+) shows a way of using concepts along with inheritance to provide better compiler errors. However, you do have to define the functions in the base class, even though you have already defined them in the concept, and will also have to define them in the derived classes.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism] Thomas Sedlmair shows a method which doesn't involve inheritance, and also gets around the hassle of having to define the functions in the base class.[^coding-with-thomas-crtp-and-concepts] Will will compare both of the methods below.
 
 ### Concepts with Inheritance
 
+Let's start by making our `GpioBase` class.
+
+```c++ title="concepts/GpioBase.hpp"
+template <typename T>
+concept Gpio = requires(T t, uint8_t value) {
+    { t.set_impl(value) } -> std::same_as<void>;
+};
+
+// Empty base class, the concept will force the derived class to implement the set method
+template <typename T>
+class GpioBase {
+public:
+    GpioBase() {
+        // This static assertion will fail if the derived class does not both:
+        // 1. Implement the set_impl() method
+        // 2. Inherit from GpioBase
+        static_assert(Gpio<T> && std::derived_from<T, GpioBase>);
+    }
+
+    void set(uint8_t value) {
+        static_cast<T&>(*this).set_impl(value);
+    }
+};
+```
+
+The `concept` part of the above code is the important part in this example. It is used to enforce that the derived class implements the `set_impl()` method that takes a `uint8_t` as a parameter and returns nothing (`void`). This concept is then checked in the `static_assert` in the constructor of `GpioBase`.
+
+<Aside type="note">
+We can't use the concept in the natural way `template <Gpio T>`, because the compiler will complain about an incomplete type. Instead, we have to resort to a `static_assert` in the constructor of `GpioBase`.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism]
+</Aside>
+
+Now let's define the derived classes, `GpioReal` and `GpioFake`. Firstly, `GpioReal`:
+
+```c++ title="GpioReal.hpp"
+#include "GpioBase.hpp"
+
+class GpioReal : public GpioBase<GpioReal> {
+public:
+    void set_impl(uint8_t value) {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+};
+```
+
+And now `GpioFake`:
+
+```c++ title="GpioFake.hpp"
+#include "GpioBase.hpp"
+
+class GpioFake : public GpioBase<GpioFake> {
+public:
+    void set_impl(uint8_t value) {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+};
+```
+
+And an `App` class which doesn't care if it's using a real or fake GPIO:
+
+```c++ title="App.hpp"
+#include "GpioBase.hpp"
+
+template <typename T>
+class App {
+public:
+    App(GpioBase<T>& gpio) : gpio(gpio) {}
+
+    void run() {
+        gpio.set(1);
+    }
+
+private:
+    GpioBase<T>& gpio;
+};
+```
+
+And finally a `main.cpp` which demonstrates the use of the `App` class with both `GpioReal` and `GpioFake`:
+
+```c++ title="main.cpp"
+int main() {
+    // Real main()
+    {
+        GpioReal realGpio;
+        App app(realGpio);
+        app.run();
+    }
+
+    // Test main()
+    {
+        GpioFake fakeGpio;
+        App app(fakeGpio);
+        app.run();
+    }
+
+    return 0;
+}
+```
+
+Running main produces the following output:
+
+```text
+void GpioReal::set_impl(uint8_t)() called with value: 1
+void GpioFake::set_impl(uint8_t)() called with value: 1
+```
+
+See the working example [here](https://github.com/gbmhunter/designing-hal-in-cpp/tree/main/src/concepts-inheritance).
 
 ### Concepts with No Inheritance
+
+Now let's use concepts again, but this time without inheritance.
 
 ```c++ title="concepts/GpioBase.hpp"
 template <typename T>
