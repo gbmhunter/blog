@@ -7,14 +7,17 @@ title: Designing a HAL in C++
 type: page
 ---
 
+Using C++ for an embedded system? Great! At some point you might find yourself needing (or wanting) to implement a HAL (Hardware Abstraction Layer) atop of your hardware peripherals (e.g. for the uninitiated, a HAL typically includes things like GPIO drivers, UART drivers, e.t.c.). Why? Perhaps there is not one provided by your MCU vendor (although this is rare these days), or perhaps the existing one doesn't work well (unfortunately not as rare), or perhaps it doesn't easily provide the ability to mock it for testing (very common). You might have specific requirements on what you want the HAL to be able to do. Vendor provided or framework provided HAL layers can be hard to test.
+
 Objectives:
 
+* Provides an appropriate level of abstraction.
 * Must be easy to mock and run on Linux.
 * Must be easy to support different hardware platforms.
 * Must provide a nice developer experience.
 * Must be easy to understand.
 
-We will use a simple GPIO HAL driver as our example when we look at different ways to implement a HAL in C++.
+We will use a simple GPIO HAL driver as our example when we look at different ways to implement a HAL in C++. We'll be mostly focusing on ways that we can write the HAL so that we can run our firmware on both real hardware and on a Linux machine with the hardware mocked.
 
 <Aside type="note">
 Many of the concepts below can be found as working examples on GitHub at [gbmhunter/designing-hal-in-cpp](https://github.com/gbmhunter/designing-hal-in-cpp).
@@ -22,19 +25,27 @@ Many of the concepts below can be found as working examples on GitHub at [gbmhun
 
 ## Swapping Out .cpp Files
 
+One of the simplest ways to setup a HAL that you can mock is to define the interface in a header file, and then swap out the implementation in the `.cpp` files depending on whether you are building for the real hardware or for testing. For example, if you were using [CMake](/programming/build-systems-and-package-managers/cmake/), the `CMakeLists.txt` for the real hardware would include a different `.cpp` file than the `CMakeLists.txt` for the testing.
+
 This method can also be done just as easily in C.
+
+## Stub Generation
+
+One way to mock hardware is to use a library like [CMock](https://www.throwtheswitch.org/cmock) to generate mock functions ("stubs") based off header files.
 
 ## Inheritance and Virtual Methods
 
-Inheritance and virtual methods allow us to implement runtime polymorphism.
+Inheritance and virtual methods allow us to implement runtime polymorphism as a way to create real and mock implementations of the HAL. The process goes like this:
 
 1. Define a base class which will act as your interface. Name it something like `GpioBase`. Define virtual methods for the interface, such as `void set(uint8_t value)` and `uint8_t get()`.
-1. The generic parts of your app will get passes a pointer to a `GpioBase` object.
+1. The generic parts of your app will get passed a pointer to a `GpioBase` object.
 1. Create derived classes which implement the interface for specific platforms, e.g. `GpioReal` and `GpioFake`.
 1. Create the appropriate derived classes for the platforms you are targeting in `main()`.
 1. Pass these into the generic part of your app, as a `GpioBase*`.
 
+<Aside type="tip">
 Although implementing inheritance and virtual methods is more suited to a OO-first language such as C++, it is still possible to do in C. If you want to seen an example on how to do this in C, see the [Object-Orientated C page](/programming/languages/c/object-orientated-c/).
+</Aside>
 
 Let's start by defining a base class:
 
@@ -45,6 +56,8 @@ public:
 };
 ```
 
+Note the use of `virtual` and `= 0`. `virtual` means that we can override the method in derived classes, and `= 0` means that method must be implemented in derived classes, i.e. no default implementation exists. Together they make what is known as an abstract class, a class that cannot be instantiated by itself, only derived classes can be instantiated.
+
 <Aside type="note">
 Common `#include`s and other boilerplate code are omitted from these examples for brevity.
 </Aside>
@@ -52,17 +65,21 @@ Common `#include`s and other boilerplate code are omitted from these examples fo
 Let's now create a derived class for a real GPIO pin:
 
 ```c++ title="GpioReal.hpp"
+#include <SomeHardwareDependency.h>
 #include "GpioBase.hpp"
 
 class GpioReal : public GpioBase {
 public:
     void set(uint8_t value) override {
         printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+        // realHardwareGpioSet(value);
     }
 };
 ```
 
-And a similarly derived class for a fake LED:
+Note that in `GpioReal` we can include headers which are only valid when building for real hardware, and make calls to functions which actually set the GPIO pin (or you could modify the memory-mapped registers directly here, up to you!).
+
+And a similarly derived class for a fake GPIO:
 
 ```c++ title="GpioFake.hpp"
 #include "GpioBase.hpp"
@@ -75,7 +92,29 @@ public:
 };
 ```
 
-We can demonstrate this with the following `main()` function below:
+In `GpioFake`, we don't include/depend on any hardware specific headers, i.e. we want to be able to run this code on Linux. We could make `set()` just print like in the example here, or you could increment a counter to check that `set()` was indeed called (you could add `counter` as a member variable to `GpioFake`).
+
+Now we can write an app class which doesn't care if it's using a real or fake GPIO. Do this we make it accept a reference to a `GpioBase` object rather than any specific implementation. Note that this means it can only call methods which are defined in `GpioBase`, but this is what we want, as this defines the interface.
+
+```c++ title="App.hpp"
+#include "GpioBase.hpp"
+
+class App {
+public:
+    App(GpioBase &gpio) : gpio(gpio) {}
+
+    void run() {
+        gpio.set(1);
+    }
+
+private:
+    GpioBase& gpio;
+};
+```
+
+Our rudimentary `App` class just sets the GPIO pin high, but this enough to demonstrate the concept.
+
+We can tie this all together with the following `main()` function below:
 
 ```c++ title="main.cpp"
 #include "App.hpp"
@@ -447,10 +486,6 @@ int main() {
 }
 ```
 
-## Further Reading
-
-[GuillaumeDua/cpp_legacy_inheritance_vs_std_variant.md](https://gist.github.com/GuillaumeDua/0239fda353264b67ddcb39b5d9a01105) is a good overview of standard dynamic polymorphism vs. static polymorphism via CRTP. It covers best practises for base classes such as making the constructor private and make the base class a `friend` of it's derived class. It also covers the use of `std::variant` and `std::visit` to create containers which can hold any of the derived types.
-
 ## Summary
 
 So we have looked at a number of different ways to implement a HAL in C++ for an embedded system. Dynamic polymorphism via inheritance and virtual methods feels  the most natural and easiest to understand, however has the runtime burden of a `vtable` lookup. Whether or not that is a concern for your HAL implementation is something you must decide.
@@ -460,6 +495,12 @@ We can achieve static polymorphism via templates and the CRTP, which eliminates 
 C++ concepts go some way to improving the developer experience of static polymorphism.
 
 Some other languages like Rust default to compile time polymorphism (this is provided by Rust's Traits and Generics). In Rust, the compile time polymorphism feels much more natural and terse than in C++ (Rust also provided dynamic polymorphism via Trait objects and the `dyn` keyword).[^matt-oswalt-polymorphism-in-rust]
+
+Implementing a HAL you can easily mock on top of an existing HAL (e.g. any of the runtime or template polymorphism examples above, assuming the existing HAL does not support this) induces a maintenance burden. It's worth keeping this in mind when you consider whether it is worth it. If you feel that this is not worth it, the swapping out of `.cpp` files method or using a method to override existing functions might be the best choice for you.
+
+## Further Reading
+
+[GuillaumeDua/cpp_legacy_inheritance_vs_std_variant.md](https://gist.github.com/GuillaumeDua/0239fda353264b67ddcb39b5d9a01105) is a good overview of standard dynamic polymorphism vs. static polymorphism via CRTP. It covers best practises for base classes such as making the constructor private and make the base class a `friend` of it's derived class. It also covers the use of `std::variant` and `std::visit` to create containers which can hold any of the derived types.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
