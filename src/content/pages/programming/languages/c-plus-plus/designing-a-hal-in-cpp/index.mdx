@@ -29,9 +29,13 @@ One of the simplest ways to setup a HAL that you can mock is to define the inter
 
 This method can also be done just as easily in C.
 
+This method doesn't work if you have function definitions in the header file, which are unavoidable if you are using templates.
+
 ## Stub Generation
 
-One way to mock hardware is to use a library like [CMock](https://www.throwtheswitch.org/cmock) to generate mock functions ("stubs") based off header files.
+One way to mock hardware is to use a library like [CppUMock](https://cpputest.github.io/mocking_manual.html) (suitable for C++) or [CMock](https://www.throwtheswitch.org/cmock) (suitable for C) to generate mock functions.
+
+CppUMock can work in tandem with some of the other methods described here, such as dynamic and static polymorphism. In these scenarios, CppUMock can be used to make sure specific functions were called, and with what parameters.
 
 ## Inheritance and Virtual Methods
 
@@ -488,7 +492,7 @@ int main() {
 
 ## Summary
 
-So we have looked at a number of different ways to implement a HAL in C++ for an embedded system. Dynamic polymorphism via inheritance and virtual methods feels  the most natural and easiest to understand, however has the runtime burden of a `vtable` lookup. Whether or not that is a concern for your HAL implementation is something you must decide.
+So we have looked at a number of different ways to implement a HAL in C++ for an embedded system. Dynamic polymorphism via inheritance and virtual methods feels the most natural and easiest to understand, however has the runtime burden of a `vtable` lookup. Whether or not that is a concern for your HAL implementation is something you must decide.
 
 We can achieve static polymorphism via templates and the CRTP, which eliminates the runtime overhead of virtual methods. Given for a HAL on an embedded system all the types would be known at compile time, losing runtime polymorphism is not a big deal. The biggest downside is that the code feels a little more clunky to write, and you don't get the automatic "you have forgot to implement this method" compile time error that `virtual my_func() = 0` provides.
 
