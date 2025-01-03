@@ -1,19 +1,25 @@
 ---
 authors: [gbmhunter]
 date: 2025-01-01
-draft: true
 description: A post introducing 2025 and reflecting on the 2024 year (including blog statistics).
+image: ./_assets/cover-image.webp
 lastUpdated: 2025-01-01
 tags: [new year, '2025', statistics, Google Analytics, page view, user, referral, Hugo, GitHub, blog]
 title: Happy New Year 2025
 type: updates
 ---
 
-## Statistics for 2024
+2024 saw 505k (505,000) page views for [blog.mbedded.ninja](https://blog.mbedded.ninja)! This was up from 436k last year, an increase of 69k or 16%. <IRef iref="fig-stats-graphs" /> shows the page views and other key stats per year.
 
-Page views were based on a combination of Umami and Google Analytics. Umami was used were data was available, otherwise Google Analytics was used. Google Analytics values were adjusted to "Umami" values based on the average difference between the two. The average difference was calculated over all months that both were available.
+<Image iref="fig-stats-graphs" src={import('./_assets/stats-graphs.png')} width="900px">Graphs of page views and content up to the end of 2024.</Image>
 
-<IRef iref="tbl-2024-page-views" /> shows the page views for each month from the different analytics services.
+[NinjaTerm](https://ninjaterm.mbedded.ninja/) went through 11 releases from [v4.12.1](https://github.com/gbmhunter/NinjaTerm/releases/tag/v4.12.1) to [v4.19.0](https://github.com/gbmhunter/NinjaTerm/releases/tag/v4.19.0). Some significant features were added, after it got turned into a PWA just before the start of 2024. It has 75 stars on [GitHub](https://github.com/gbmhunter/NinjaTerm) and had 3.1k page views (as reported by Google Analytics).
+
+[NinjaCalc](https://ninjacalc.mbedded.ninja/) went through 2 releases from [v3.5.2](https://github.com/gbmhunter/NinjaCalc/releases/tag/v3.5.2) to [v3.5.4](https://github.com/gbmhunter/NinjaCalc/releases/tag/v3.5.4). These were minor releases which just fixed a broken URL and added the Umami analytics functionality. It has 30 stars on [GitHub](https://github.com/gbmhunter/NinjaCalc) and had 52k page views (as reported by Google Analytics).
+
+[CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial) went through 1 release from [v2.8.1](https://github.com/gbmhunter/CppLinuxSerial/releases/tag/v2.8.1) to [v2.8.2](https://github.com/gbmhunter/CppLinuxSerial/releases/tag/v2.8.2). This added changes to the CMake build system to allow `add_subdirectory()` to work correctly. It has 387 stars on [GitHub](https://github.com/gbmhunter/CppLinuxSerial).
+
+Blog page views were based on a combination of [Umami](/programming/website-design/running-umami-on-aws-lightsail/) and Google Analytics. Umami was used were data was available due to it not being blocked by ad blockers, otherwise Google Analytics was used. Google Analytics values were adjusted to "Umami" values based on the average difference between the two. The average difference was calculated over all months that both were available. <IRef iref="tbl-2024-page-views" /> shows the page views for each month from the different analytics services. These were used to create <IRef iref="fig-stats-graphs" />.
 
 <table data-iref="tbl-2024-page-views">
   <thead>
@@ -40,65 +46,38 @@ Page views were based on a combination of Umami and Google Analytics. Umami was 
     <tr><td>Dec</td>   <td>36k</td>   <td>24k</td>   <td>36k</td> </tr>
     <tr><td>Total</td> <td>n/a</td>   <td>386k</td>  <td>505k</td> </tr>
   </tbody>
-  <caption>The page views for each month from the different analytics services.</caption>
+  <caption>The blog page views for each month from the different analytics services.</caption>
 </table>
 
 For all months in which data was available for both, Umami reported 282k views, and Google Analytics reported 216k views. Umami is 31% higher than Google Analytics.
 
+## Most Popular Blog Pages
 
-### Most Popular Pages
+<IRef iref="fig-engagement-pages-and-screens" /> shows the top 10 most popular pages, ranked by number of page views.
 
-The top 10 most popular pages, ranked by number of page views:
+<Image iref="fig-engagement-pages-and-screens" src={import('./_assets/engagement-pages-and-screens.webp')} width="800px">The top 10 most visited pages of 2024.</Image>
 
-<Image src={import('./_assets/engagement-pages-and-screens.webp')} width="800px">The top 10 most visited pages of 2024.</Image>
+## Blog Acquisition
 
-_Programming_ related pages again took the top spots. I'm not sure what "(not set)" is, this wasn't here last year!
+<IRef iref="fig-traffic-acquisition" /> shows the top 7 sources of acquisition traffic in 2024. As usual, most of the traffic was from organic search (e.g. Google search engine).
 
+<Image iref="fig-traffic-acquisition" src={import('./_assets/traffic-acquisition.webp')} width="500px">Top 5 sources of acquisition traffic in 2024.</Image>
 
+## Blog Word, Page and Image Counts
 
+At the end of 2024 the site had 704k words, up from 639k words last year (an increase of 65k). These words were spread over 1313 pages (up from 1221 pages last year), and included 3,222 images (an decrease of 1,296 from 4,518 images images last year). Even though many new images were added last year, the total dropped because I purged all of the redundant images that were still hanging around in the `public/` directory from when the site was migrated away from Wordpress.
 
+## Achievements in 2024
 
+* The blog was migrated from Hugo to Astro.js. I'm really happy with the change, as Astro.js component syntax is much clearer than Hugo's, and Astro.js lets me use React components if needed (I use React on a number of other projects).
+* I fully embraced the `.webp` image format (which has great compression size), and almost all new raster images are now in this format. `.svg` is still used for vector images.
+* Site-wide search was added to the blog. This became easier to implement after the migration to Astro.js.
+* Added a "cover image" feature to each page. Each page can now have a cover image assigned to it (a piece of metadata in the frontmatter). This cover image is used in the parent page's "child pages" section to display beside the page description. It is also used for the social media preview image.
+* Added figure, table and equation numbering support (I had this in Hugo, but lost it when migrating to Astro.js).
+* NinjaTerm got heaps of new features added, after it got turned into a PWA just before the start of 2024.
 
+## Plans For The 2025 Year
 
-
-
-
-
-
-
-
-
-
-
-2023 saw 436k (436,000) page views as reported by Google Analytics! This was up from 384k last year, an increase of 52k or 14%.
-
-<Image src={import('./_assets/stats-graphs.png')} width="800px">Graphs of page views and content up to the end of 2023.</Image>
-
-**I discovered that many ad blockers also block Google Analytics**, so this figure is likely less than the true value, given many people visiting this site will be software/electrical engineers who will use ad blockers. In an attempt to get a more realistic number, I paid for a month of Netlify's analytics service which can't be blocked in the same way as it's working on the server side when requests are made (I use Netlify to host this blog). Netlify reported 729k visitors in just 1 month!?! Is this is to be believed that is approx. 8.7M visitors a year. This seems too high, so maybe it's also recording a lot of bots? The true value might be someone between the two?
-
-<Image src={import('./_assets/blog-site-analytics-nov-2023-netlify.jpg')} width="800px">The number of page views are reported by Netlify in the period of 30 days. 729k visitors!?!</Image>
-
-At the end of 2023 the site had 639k words, up from 604k words last year (an increase of 35k). These words were spread over 1221 pages, and included 4,518 images (an increase of 199 from 4,319 images last year).
-
-
-
-### Acquisition
-
-As usual, most of the traffic was from organic search (e.g. Google search engine).
-
-<Image src={import('./_assets/traffic-acquisition.png')} width="600px">Top 5 sources of acquisition traffic in 2023.</Image>
-
-### Donations
-
-I received NZD\$59 worth of donations through [my Ko-Fi page](https://ko-fi.com/gbmhunter) from this blog, [NinjaCalc](https://ninjacalc.mbedded.ninja/) and [NinjaTerm](https://ninjaterm.mbedded.ninja/) this year. Some kind folk donated NZ\$3 a month, and there were two one-off donations of \$15 and \$20.
-
-## Achievements in 2023
-
-* Asciidoc pages have been fully phased out.
-* [NinjaTerm](https://ninjaterm.mbedded.ninja/) was fixed up and turned into a PWA.
-* Finally, the end of the year saw the blog get a dark mode!
-
-## Plans For The 2024 Year
-
-* **More content, and improving existing content**: As always!
-* **Add the ability to do a site wide search**: I'm thinking I'll write a frontend along with using [pagefind](https://pagefind.app/) for this. I feel like this is a better approach than using [Algolia](https://www.algolia.com/), which is a paid for (although they do give out open-source licenses if you contact them) third party search service. Mostly because I will not depend on the 3rd party, the search index can be built at compile time and then the searching done by the client browser.
+* Add more content to the blog (as always!).
+* Keep adding features to [NinjaTerm](https://ninjaterm.mbedded.ninja/).
+* Make sure CppLinuxSerial can work with CMake's `FetchContent` feature (it's an easy way to include external dependencies).
