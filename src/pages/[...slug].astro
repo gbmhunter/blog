@@ -14,6 +14,7 @@ import WrappableRow from 'src/components/WrappableRow.astro';
 
 import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug } from 'src/js/PageHierarchy';
 import { correctUpdatesSlugs, getAllCollections } from 'src/js/Collections';
+import { getGlobalMdxComponents } from 'src/js/GlobalMdxComponents'
 
 export async function getStaticPaths() {
 
@@ -122,6 +123,7 @@ if (aliasTo) {
 }
 
 const { Content, headings, remarkPluginFrontmatter } = await render();
+const globalMdxComponents = getGlobalMdxComponents();
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
 <StarlightPage 
@@ -131,14 +133,5 @@ const { Content, headings, remarkPluginFrontmatter } = await render();
   customFrontmatter={frontmatter}
   breadcrumbs={breadcrumbs}
 >
-  <Content components={{
-    Aside: Aside,
-    ChildPages: ChildPages,
-    CircuitJs: CircuitJs,
-    Image: Image,
-    IRef: IRef,
-    Table: Table,
-    WarningIsNotes: WarningIsNotes,
-    WrappableRow: WrappableRow,
-  }} /> 
+  <Content components={globalMdxComponents} /> 
 </StarlightPage>
