@@ -170,7 +170,7 @@ V_F &= \frac{1240\,nm\,V}{660\,nm} \nonumber \\
 \end{align}
 $$
 
-Red LEDs usually have a forward voltage of around 1.8-2.2 V, so this agrees well!
+Red LEDs usually have a forward voltage of around $1.8-2.2\ V$, so this agrees well!
 
 </Aside>
 
@@ -481,6 +481,14 @@ One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic cod
 
 <Image iref="fig-zynq-7000-bootrom-led-error-code-waveform" src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
 
+## Chemistries
+
+Aluminium gallium indium phosphide (AlGaInP): Used for making high-brightness red, orange, yellow and green LEDs.
+
+Gallium nitride (GaN): Used for making blue LEDs, and white LEDs by coating the blue LED with a phosphor which emits light across the visible spectrum.
+
+Gallium phosphide (GaP): Used in the older green and yellow LEDs that were not that bright.
+
 ## Packaging
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
@@ -503,9 +511,13 @@ In the 1970s, the first green LEDs became available. These were gallium phosphid
 
 Gallium aluminium arsenide (GaAlA) LEDs became available in the 1980s, and offered significant brightness improvements over the GaP LEDs.[^marktech-optoelectronics-history-of-leds]
 
-{/* ======================================================================== */}
+In the 1990's, aluminium gallium indium phosphide (AlGaInP, also AlInGaP, InGaAlP) LEDs were developed which allowed the production of ultra-bright red, orange, yellow and green LEDs. By adjusting the specific composition of the AlGaInP, the wavelength of the emitted light can be adjusted across the range from red to green (but not blue).[^illare-history-of-led]
+
+The first commercially viable blue LED was developed by Shuji Nakamura (along with Isamu Akasaki and Hiroshi Amano) in 1992. It was a revolutionary breakthrough as it was one of the last colours yet available, and also allowed the creation of bright white LEDs (by using a blue LED and a fluorescent phosphor).[^lightology-shuji-nakamura-blue-led] They were awarded the Nobel Prize in Physics in 2014 for their work.[^azo-materials-nobel-prize-in-physics-2014]
+
+{/* ============================================================================================ */}
 {/* REFERENCES */}
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 
 [^wp-planck-relation]:  Wikipedia (2022, Jan 15). _Planck relation_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_relation.
 [^wp-planck-constant]:  Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
@@ -515,3 +527,6 @@ Gallium aluminium arsenide (GaAlA) LEDs became available in the 1980s, and offer
 [^wp-gallium-phosphide]: Wikipedia (2024, May 2). _Gallium phosphide_. Retrieved 2025-01-10, from https://en.wikipedia.org/wiki/Gallium_phosphide.
 [^marktech-optoelectronics-history-of-leds]: Marktech Optoelectronics. _The History of LEDs and LED Technology_. Retrieved 2025-01-10, from https://marktechopto.com/the-history-of-leds-and-led-technology/.
 [^reddit-ask-electronics-green-leds-one-dim-one-bright]: Strostkovy (username). _Response to "I have two almost identical green leds but one is very dim while other one is very bright"_ [Reddit post]. Reddit. Retrieved 2025-01-10, from https://www.reddit.com/r/AskElectronics/comments/1hl00kz/comment/m3iqhlr/.
+[^lightology-shuji-nakamura-blue-led]: Lightology. _Shuji Nakamura Blue LED_. Retrieved 2025-01-11, from https://www.lightology.com/index.php?module=how_to&sub=shuji_nakamura_blue_led.
+[^azo-materials-nobel-prize-in-physics-2014]: Alexander Chilton (2014, Oct 10). _Nobel Prize in Physics 2014: Why Were Blue LEDs so Hard to Make?_ [article]. Azo Materials. Retrieved 2025-01-11, from https://www.azom.com/article.aspx?ArticleID=11451.
+[^illare-history-of-led]: Illare. _History of LED_. Retrieved 2025-01-11, from https://illare.com/knowledge/history-of-led/.
