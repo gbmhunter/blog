@@ -481,13 +481,23 @@ One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic cod
 
 <Image iref="fig-zynq-7000-bootrom-led-error-code-waveform" src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
 
-## Chemistries
+## LED Chemistries
 
 Aluminium gallium indium phosphide (AlGaInP): Used for making high-brightness red, orange, yellow and green LEDs.
 
 Gallium nitride (GaN): Used for making blue LEDs, and white LEDs by coating the blue LED with a phosphor which emits light across the visible spectrum.
 
-Gallium phosphide (GaP): Used in the older green and yellow LEDs that were not that bright.
+Gallium phosphide (GaP): Used in the older green and yellow LEDs and had horrible luminous efficiency (around 0.1 lumens/W) which meant they were not very bright. Hewlett Packard referred to this colour as "emerald green".[^don-klipstein-led-types-by-color-brightness-chemistry]
+
+Gallium arsenide (GaAs): Used for making infrared LEDs with a spectral peak at 950nm and a forward voltage drop of around 1.2V. Almost completely invisible to the human eye.[^don-klipstein-led-types-by-color-brightness-chemistry]
+
+Gallium arsenide phosphide (GaAsP): This chemistry was used to make the first yellow LEDs which achieved wide adoption. GaAsP was placed on a GaP substrate. They were not very bright, with a luminous efficiency of around 0.1 lumens/W. GaAlAsP yellow LEDs have a slightly better luminous efficiency of around 0.5 lumens/W, but InGaAsP yellow LEDs are the brightest.[^don-klipstein-led-types-by-color-brightness-chemistry]
+
+## LED Manufacturing By Color
+
+### White LEDs
+
+The most powerful white LEDs are made by coating a blue LED with a phosphor which re-emits the blue light in a spectrum from mid-green to mid-red. These LEDs had a higher colour temperature of 5000-8000 K, which can be described as a icy cold white. This colour can be considered "harsh" for domestic interior lighting, and warmer whites have been developed. These have colour temperatures of around 3500K, and are made by making the phosphor convert more blue light into yellow light.[^don-klipstein-led-types-by-color-brightness-chemistry]
 
 ## Packaging
 
@@ -507,7 +517,7 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 
 ## A History of LEDs
 
-In the 1970s, the first green LEDs became available. These were gallium phosphide (GaP) LEDs, and were not very bright compared to modern green LEDs. Pure GaP LEDs emit light with a wavelength of 555 nm.[^wp-gallium-phosphide] If a green LED looks somewhat faint and yellow-green, it might be a GaP LED.[^reddit-ask-electronics-green-leds-one-dim-one-bright]
+In the 1970s, the first green LEDs became available. These were gallium phosphide (GaP) LEDs, and were not very bright compared to modern green LEDs (they had a luminous efficiency of around 0.1 lumens/W).[^don-klipstein-led-types-by-color-brightness-chemistry] Pure GaP LEDs emit light with a wavelength of 555 nm.[^wp-gallium-phosphide] If a green LED looks somewhat faint and yellow-green, it might be a GaP LED.[^reddit-ask-electronics-green-leds-one-dim-one-bright]
 
 Gallium aluminium arsenide (GaAlA) LEDs became available in the 1980s, and offered significant brightness improvements over the GaP LEDs.[^marktech-optoelectronics-history-of-leds]
 
@@ -530,3 +540,4 @@ The first commercially viable blue LED was developed by Shuji Nakamura (along wi
 [^lightology-shuji-nakamura-blue-led]: Lightology. _Shuji Nakamura Blue LED_. Retrieved 2025-01-11, from https://www.lightology.com/index.php?module=how_to&sub=shuji_nakamura_blue_led.
 [^azo-materials-nobel-prize-in-physics-2014]: Alexander Chilton (2014, Oct 10). _Nobel Prize in Physics 2014: Why Were Blue LEDs so Hard to Make?_ [article]. Azo Materials. Retrieved 2025-01-11, from https://www.azom.com/article.aspx?ArticleID=11451.
 [^illare-history-of-led]: Illare. _History of LED_. Retrieved 2025-01-11, from https://illare.com/knowledge/history-of-led/.
+[^don-klipstein-led-types-by-color-brightness-chemistry]: Don Klipstein. _LED Types by Color, Brightness, and Chemistry_. Retrieved 2025-01-13, from https://donklipstein.com/ledc.html.

@@ -1,0 +1,52 @@
+---
+authors: [gbmhunter]
+date: 2025-01-13
+description: Mechanical switches are electro-mechanical components which electrically connect and disconnect pins.
+lastUpdated: 2025-01-13
+tags: [electronics, components, switches]
+title: Switches
+type: page
+---
+
+Switches (mechanical) are electro-mechanical components which electrically connect and disconnect pins.
+
+## DIP Switches
+
+DIP switches are a group of mechanical switches that are grouped together in a single DIP package. The older versions where through-hole and used the [DIP package](/pcb-design/component-packages/dip-component-package/) and thus the DIP name, however these days you can also purchase SMD versions (the "DIP switch" name is still used).
+
+<Image src={import('./_assets/th-and-smd-4-pos-dip-switches.webp')} width="600px">Examples of DIP switches. Left: TE Connectivity 1825057-3, a through-hole 4 position DIP switch. Right: TE Connectivity 1825058-7, a SMD 4 position DIP switch.[^digikey-te-connectivity-1825057-3-dip-switch] [^digikey-te-connectivity-1825058-7-dip-switch]</Image>
+
+DIP switches are designed for signalling, and are commonly used for configuring electronic devices at manufacturing or installation time (and sometimes allowing the user to configure it also). DIP switches can be used to:
+
+* Directly change the behaviour of electronic circuits (e.g. such switching in op-amp feedback resistors to change the gain).
+* Be wired up to a [microcontroller](/programming/microcontrollers/) to allow the firmware to be configured (e.g. changing the baud rate of a serial port).
+
+They are a good way of allowing for multiple product variants to be supported without having to change either the PCB design of the firmware.
+
+### Number of Positions
+
+The number of positions is the number of individual switches in the DIP switch. Typically this ranges from 2 to 24, with 4, 8 and 12 being some of the most common sizes.
+
+### Voltage and Current Ratings
+
+DIP switches are designed for signalling, and thus are not rated for high current applications. The maximum current rating of each switch is usually around 25-100 mA. The maximum voltage rating is usually 12-30 VDC.[^digikey-dip-switch-category]
+
+### Supplier Links
+
+The DigiKey DIP switch category can be found [here](https://www.digikey.com/en/products/filter/dip-switches/194).
+
+## Further Reading
+
+If you want to control a mechanical switch using an electrical signal, you could use a [mechanical relay](/electronics/components/relays/mechanical/). If you want no moving parts (i.e. purely electronic), and still need the isolation and current handling capacities of a relay, you could use a [solid state relay](/electronics/components/relays/solid-state/).
+
+If you were looking for low-power two way electrical switching, you could use a [analogue switch (transmission gate)](/electronics/components/analogue-switches-transmission-gates/).
+
+If you are looking to electronically switch a circuit from another electrical signal (not two way) and don't need isolation, you can use a [transistor](/electronics/components/transistors/). A [MOSFET](/electronics/components/transistors/mosfets/) or [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/) might be suitable (both are common forms of transistors).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^digikey-dip-switch-category]: DigiKey. _DIP Switches_ [product category]. Retrieved 2025-01-13, from https://www.digikey.com/en/products/filter/dip-switches/194.
+[^digikey-te-connectivity-1825057-3-dip-switch]: DigiKey. _Product Index > Switches > DIP Switches > TE Connectivity ALCOSWITCH Switches 1825057-3_ [product page]. Retrieved 2025-01-13, from https://www.digikey.com/en/products/detail/te-connectivity-alcoswitch-switches/1825057-3/969174.
+[^digikey-te-connectivity-1825058-7-dip-switch]: DigiKey. _Product Index > Switches > DIP Switches > TE Connectivity ALCOSWITCH Switches 1825058-7_ [product page]. Retrieved 2025-01-13, from https://www.digikey.com/en/products/detail/te-connectivity-alcoswitch-switches/1825058-7/1021543.
