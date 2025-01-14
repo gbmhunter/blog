@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-11-14
+lastUpdated: 2025-01-14
 tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation]
 title: Zephyr
 type: page
@@ -2488,11 +2488,37 @@ If tring to print a float using `%f` in any printf style functions (or log macro
 CONFIG_FPU=y # Required for printing floating point numbers
 ```
 
+## Contributing to Zephyr
+
+As an open-source project, Zephyr welcomes contributions from the community. Zephyr has a detailed contribution guide [here](https://docs.zephyrproject.org/latest/contribute/guidelines.html#contribute-guidelines).
+
+The recommended way to begin to make changes is by first forking the [Zephyr repository on GitHub](https://github.com/zephyrproject-rtos/zephyr) to your own GitHub account. Then clone the forked repository to your local machine and create a new branch for your changes. Once you have made changes, commit these and push them to your forked repository. Then create a pull request in your forked repository (when you click "New pull request" in your forked repo, it will automatically set the base to the `main` branch of the Zephyr repository).
+
+One requirement is that a "Signed-off-by" line is added to each commit message. This is so that the Developer Certificate of Origin (DCO) process is followed. This can be done by adding the `-s` option to your `git commit` command, e.g.:[^zephyr-docs-contribution-guidelines]
+
+```shell
+git commit -s
+```
+
+This will automatically add the line to the commit message, based on your configured git username and email address. For example:
+
+```text
+Commit message title.
+
+Commit message description.
+
+Signed-off-by: Foo Bar <foo.bar@example.com>
+```
+
+The Zephyr repo on GitHub has extensive CI workflows that run before a PR is allowed to be merged into the `main` branch. <IRef iref="zephyr-pr-github-ci-workflows-screenshot" /> shows a screenshot of the CI workflows.
+
+<Image iref="zephyr-pr-github-ci-workflows-screenshot" src={import('./_assets/zephyr-pr-github-ci-workflows-screenshot.webp')} width="600px">Screenshot of the Zephyr PR GitHub CI workflows.</Image>
+
 ## History
 
-In February 2016, Wind River (the same company the makes VxWorks, one of the leading commercial RTOSes for safety critical systems) donated the Rocket OS kernel to the Linux Foundation and Zephyr was born[^wikipedia-zephyr-operating-system] [^scalar-zephyr-operating-system]. Rocket still existed in parallel as a commercial version of Zephyr.
+In February 2016, Wind River (the same company the makes VxWorks, one of the leading commercial RTOSes for safety critical systems) donated the Rocket OS kernel to the Linux Foundation and Zephyr was born.[^wikipedia-zephyr-operating-system] [^scalar-zephyr-operating-system] Rocket still existed in parallel as a commercial version of Zephyr.
 
-[Nordic](/programming/microcontrollers/nordic/) chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, [nRF53](/programming/microcontrollers/nordic/nrf53/) and nRF92 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020[^nordic-semi-nrf52-zephyr-support-added].
+[Nordic](/programming/microcontrollers/nordic/) chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, [nRF53](/programming/microcontrollers/nordic/nrf53/) and nRF92 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020.[^nordic-semi-nrf52-zephyr-support-added]
 
 ## Other Resources
 
@@ -2519,3 +2545,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
 [^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
 [^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
+[^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
