@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2014-02-08
 description: GitLab is a web-based Git repository manager and a strong competitor to GitHub, especially for commercial uses. The page covers container registries, pipeline includes, and running pipelines locally using gitlab-ci-local.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-15
+lastUpdated: 2025-01-15
 tags: [GitLab, Git, version control, CI/CD, continuous integration, continuous deployment, yaml, container registry, Docker, images, local pipelines, GCL, runners]
 title: GitLab
 type: page
@@ -256,6 +256,84 @@ my_windows_job:
 Windows runners are much slower to start than Linux runners.
 </Aside>
 
+## Cleaning Up The Repo
+
+You might find that you have committed too many large files to a repository and want to get rid of them. Just deleting them from the repository and committing will not work, as Git will still keep a copy of the file in the repository history.
+
+<Image src={import('./_assets/gitlab-large-repo-3.9gb-project-storage.webp')} width="300px">A screenshot of the project information shown on the landing page of a large GitLab repository.</Image>
+
+To permanently remove files from a repositories history, GitLab provides a feature called [Repository maintenance](https://docs.gitlab.com/ee/user/project/repository/repository_size.html) which can be used alongside the [git-filter-repo tool](https://github.com/newren/git-filter-repo).[^gitlab-repository-size]
+
+You may get the error shown below if you don't run the `git-filter-repo` commands from a fresh clone of the repository.
+
+```txt
+$ python .\git-filter-repo --path .\releases\ --invert-paths
+Aborting: Refusing to destructively overwrite repo history since
+this does not look like a fresh clone.
+  (expected freshly packed repo)
+Please operate on a fresh clone instead.  If you want to proceed
+anyway, use --force.
+```
+
+You should be able to fix this by performing a fresh clone of the repo. If this will take a long time from the internet and you have a local copy already, you can use:
+
+```bash
+git clone ./existing-path-to-repo/ ./new-clone-path/ --no-local
+```
+
+The `--no-local` flag is needed so that the `.git` directory is in the same state as if cloned from the internet.
+
+<Aside type="caution">
+Even when using `--no-local`, I was not able to make the "Aborting: Refusing to destructively overwrite repo history since this does not look like a fresh clone." error go away. Instead, I just added the `--force` flag to continue anyway.
+</Aside>
+
+Now you need to run `git-filter-repo` to remove the large files as needed. For example, let's pretend someone was lazy and rather than releasing build artifacts correctly (e.g. releases section of cloud Git hosting or file storage), decided to commit them to the repository. This folder got rather large and now you want to remove it (and all the Git history associated with it). To do this, you can run:
+
+```bash
+python .\git-filter-repo --path releases --invert-paths
+```
+
+<Aside type="caution">
+On Windows, providing the path as `.\releases` as above will not work. You need to provide the path as `releases`.
+</Aside>
+
+`git-filter-repo` creates a commit map at `.git/filter-repo/commit-map` whenever it is run. This file will look something like this:
+
+```txt
+old                                      new
+00df40253a7d17435864fe5a005f6f0469ef13b2 77966bbe6fc535c8a2b30d0d880a72c583ba0d55
+00e98efe0aa8a60c4b69b06918b882718f747bb9 73890befb43ab56b81a27f6e8c874f326c4cc67b
+044801170462ad46b077871557a9101964466edc 044801170462ad46b077871557a9101964466edc
+0527cd140f2e071093581b61bff8faa768c17ae2 ee4ed5aead68b4c149e73481f8a05b38ab777ee6
+```
+
+Make sure to back this up somewhere as we will be uploading it to GitLab once we have pushed the repo changes.
+
+Next, we need to push the changes that `git-filter-repo` made locally to the remote repository. You might need to re-add `origin` as `git-filter-repo` can remove it for safety reasons. If so, run:
+
+```bash
+git remote add origin https://gitlab.com/my-group/my-project.git
+```
+
+Then push the changes to the remote repository:
+
+```bash
+git push origin --force 'refs/heads/*'
+git push origin --force 'refs/tags/*'
+git push origin --force 'refs/replace/*'
+```
+
+Then, you can run the GitLab cleanup process. The GitLab cleanup process does the following:[^gitlab-repository-size]
+
+* Removes any internal Git references to old commits.
+* Runs `git gc --prune=30.minutes.ago` against the repository to remove unreferenced objects.
+* Unlinks any unused LFS objects attached to your project, freeing up storage space.
+* Recalculates the size of your repository on disk.
+
+Go to _Settings > Repository > Repository maintenance_ in the GitLab web interface. Upload the `commit-map` file and then click "Start cleanup" as shown in <IRef iref="gitlab-ui-repo-maintenance-start-cleanup" />.
+
+<Image iref="gitlab-ui-repo-maintenance-start-cleanup" src={import('./_assets/gitlab-ui-repo-maintenance-start-cleanup.webp')} width="600px">A screenshot of the GitLab UI showing the Repository maintenance page and the "Start cleanup" button.</Image>
+
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
@@ -263,3 +341,4 @@ Windows runners are much slower to start than Linux runners.
 [^github-repo-gitlab-ci-local]: GitHub. _firecow/gitlab-ci-local_ [repo README]. Retrieved 2024-10-02, from https://github.com/firecow/gitlab-ci-local.
 [^gitlab-our-new-logo]: GitLab (2015, Jul 3). _Our new logo_ [blog post]. Retrieved 2024-10-14, from https://about.gitlab.com/blog/2015/07/03/our-new-logo/.
 [^gitlab-gitlab-hosted-runners]: GitLab. _GitLab-hosted runners_ [docs]. Retrieved 2024-11-11, from https://docs.gitlab.com/ee/ci/runners/index.html.
+[^gitlab-repository-size]: GitLab. _Repository size_ [documentation]. Retrieved 2025-01-15, from https://docs.gitlab.com/ee/user/project/repository/repository_size.html.

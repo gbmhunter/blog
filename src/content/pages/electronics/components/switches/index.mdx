@@ -2,8 +2,9 @@
 authors: [gbmhunter]
 date: 2025-01-13
 description: Mechanical switches are electro-mechanical components which electrically connect and disconnect pins.
-lastUpdated: 2025-01-13
-tags: [electronics, components, switches]
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-01-15
+tags: [electronics, components, switches, DIP, rotary, configuration]
 title: Switches
 type: page
 ---
@@ -19,9 +20,17 @@ DIP switches are a group of mechanical switches that are grouped together in a s
 DIP switches are designed for signalling, and are commonly used for configuring electronic devices at manufacturing or installation time (and sometimes allowing the user to configure it also). DIP switches can be used to:
 
 * Directly change the behaviour of electronic circuits (e.g. such switching in op-amp feedback resistors to change the gain).
-* Be wired up to a [microcontroller](/programming/microcontrollers/) to allow the firmware to be configured (e.g. changing the baud rate of a serial port).
+* Be wired up to a [microcontroller](/programming/microcontrollers/) to allow the firmware to be configured (e.g. changing the baud rate of a serial port, or changing the address of an I2C device on a shared bus). <IRef iref="dip-switch-connected-to-mcu-schematic" /> shows this in action.
+
+<Image iref="dip-switch-connected-to-mcu-schematic" src={import('./_assets/dip-switch-connected-to-mcu-schematic.svg')} width="800px">A schematic showing how a DIP switch is typically connected to a microcontroller using pull-up resistors and standard GPIO pins configured as inputs.</Image>
 
 They are a good way of allowing for multiple product variants to be supported without having to change either the PCB design of the firmware.
+
+### Schematic Symbols
+
+DIP switches are often represented in schematics by just using an array of the simple switch symbol. <IRef iref="dip-switch-schematic-8-position" /> shows a common schematic symbol for a 8 position DIP switch.
+
+<Image iref="dip-switch-schematic-8-position" src={import('./_assets/dip-switch-schematic-8-position.svg')} width="500px">A common schematic symbol for a 8 position DIP switch.</Image>
 
 ### Number of Positions
 
@@ -30,6 +39,20 @@ The number of positions is the number of individual switches in the DIP switch. 
 ### Voltage and Current Ratings
 
 DIP switches are designed for signalling, and thus are not rated for high voltage or current applications. The maximum current rating of each switch is usually around 25-100 mA. The maximum voltage rating is usually 12-30 VDC.[^digikey-dip-switch-category]
+
+### Actuator Style
+
+DIP switches are available with a number of different actuator styles. The actuator is the part of the switch that is moved by the user to select a position. The styles are:
+
+* **Slide**: The actuator slides linearly between two positions. This is the most common style. There are two sub-styles for the slide style, depending on the shape of the actuator:
+    * **Flat**: The actuator does not protrude from the switch body. These typically require a small screwdriver to actuate, and make it harder for a user to accidentally change the position by hand.
+    * **Convex**: The actuator protrudes from the switch body. These are designed to be actuated by a finger nail (or screwdriver tip).
+* **Piano key**: The actuator is a protruding lever which is pressed down to switch the position. This has two positions (i.e. binary), just like the slide style.
+* **Rotary**: The actuator rotates to select the position. This style typically has more than two position, with 10 (BCD) or 16 (hex) being common. See the [Rotary DIP Switches](#rotary-dip-switches) section for more information.
+
+These styles are shown in <IRef iref="dip-switch-actuator-types" />.
+
+<Image iref="dip-switch-actuator-types" src={import('./_assets/dip-switch-actuator-types.webp')} width="800px">Examples of the different actuator styles for DIP switches.</Image>
 
 ### Rotary DIP Switches
 
