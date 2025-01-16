@@ -31,11 +31,9 @@ Relays can also come packaged with other functionality such as built-in timers.
 
 <Image src={import('./_assets/relay-tyco-t9as5d12-12-12vdc-240vac.jpg')} width="350px">The Tyco T9AS5D12 relay. Coil is driven with 12VDC and switches 240VAC. Notice the two different contact ratings, 10A for the N.C. (normally closed) and 20A for the N.O. (normally open).</Image>
 
-## Must Operate Voltage
+## Must Operate and Must Release Voltage
 
 The _must operate voltage_ is the minimum voltage that is guaranteed to activate the relay. You should make sure to drive the relay with a voltage that is higher than this when you want to activate the relay. For example, a relay rated at 12 VDC will typically have a must operate voltage of around 9 VDC.
-
-## Must Release Voltage
 
 The _must release voltage_ is the maximum voltage that is guaranteed to deactivate the relay. You should make sure to drive the relay with a voltage that is lower than this (or disconnect the coil) when you want to deactivate the relay. For example, a relay rated at 12 VDC will typically have a must release voltage of around 1.2 VDC.
 
@@ -145,15 +143,35 @@ The coil of a relay is basically an [inductor](/electronics/components/inductors
 
 <Image src={import('./_assets/flyback-diode-relay-schematic.svg')} width="500px">Always add a \"flyback\" diode in anti-parallel across the coil of a relay to quench voltage spikes due the rapid di/dt through the inductor when the relay is switched of. </Image>
 
-> It is absolutely necessary to connect a diode in the circuit as a means of preventing damage from the counter emf --- Panasonic: Relay Technical Information[^bib-relay-tech-info].
+> It is absolutely necessary to connect a diode in the circuit as a means of preventing damage from the counter emf --- Panasonic: Relay Technical Information[^relay-tech-info].
 
-However, there are some drawbacks to using basic flyback diodes. On relay switch-off, the flyback diode decays the magnetic field of the coil far more slowly than if there was no flyback diode protection present. This causes the relay to take longer for the "clapper type" relay contacts to open. When relay contacts open, small "microwelds" occurs at the contact interface. Usually, the contacts are moving apart with enough force/velocity that these welds are easily broken. However, the slower open time with a flyback diode can cause the relay to "stick" -- this is when the contacts become welded together and do not open[^bib-te-coil-suppression-relay-life][^bib-relay-tech-info].
+However, there are some drawbacks to using basic flyback diodes. On relay switch-off, the flyback diode decays the magnetic field of the coil far more slowly than if there was no flyback diode protection present. This causes the relay to take longer for the "clapper type" relay contacts to open. When relay contacts open, small "microwelds" occurs at the contact interface. Usually, the contacts are moving apart with enough force/velocity that these welds are easily broken. However, the slower open time with a flyback diode can cause the relay to "stick" -- this is when the contacts become welded together and do not open[^te-coil-suppression-relay-life][^relay-tech-info].
 
-> This diode shunt provides maximum protection to the solid state switch, but may have very adverse effects on the switching capability of the relay --- TE Connectivity (Application Note): Coil Suppression Can Reduce Relay Life[^bib-te-coil-suppression-relay-life].
+> This diode shunt provides maximum protection to the solid state switch, but may have very adverse effects on the switching capability of the relay --- TE Connectivity (Application Note): Coil Suppression Can Reduce Relay Life[^te-coil-suppression-relay-life].
 
 The solution? Add a Zener diode in series with the general purpose diode to increase the voltage drop when the coil is turning off. This causes the magnetic field to collapse faster (closer to an open-circuit), but still provides circuit protection. Choose a Zener voltage so that the Zener voltage plus forward diode drop does not exceed the maximum voltage of the switching element (or other circuitry).
 
 <Image src={import('./_assets/flyback-zener-relay-schematic.png')} width="500px">Adding a Zener in series with a general purpose diode as shown will improve the turn-off time and help prevent sticking, yet still provides over-voltage protection. </Image>
+
+## Contact Voltage and Current Ratings
+
+Relays rated for switching specific voltages and currents through their contacts (the output side of the relay).
+
+You might be wondering why a relay might be rated for a higher current with AC than at DC. Switching AC signals are gentler than DC signals on relays. This is because the voltage and current drops to zero twice per cycle in an AC signal. When you break an AC connection, the arc that forms is typically extinguished at the zero-crossing point. An arc in DC is harder to extinguish as the current flow is constant. <IRef iref="fig-cit-j107f-relay-ul-and-tuv-contact-ratings-with-ac-dc-differences-highlighted" /> shows an example of this with the CIT J107F family of relays.
+
+<Image iref="fig-cit-j107f-relay-ul-and-tuv-contact-ratings-with-ac-dc-differences-highlighted" src={import('./_assets/cit-j107f-relay-ul-and-tuv-contact-ratings-with-ac-dc-differences-highlighted.webp')} width="700px">The UL and TUV ratings for the family of CIT J107F relays. The differences in contact ratings between AC and DC are highlighted.</Image>
+
+<IRef iref="fig-omron-g5le-1-dc24-relay-switching-capacity-and-durability-graphs" /> shows another example, this time it's from the datasheet of the Omron G5LE-1 DC24 general purpose relay.
+
+<Image iref="fig-omron-g5le-1-dc24-relay-switching-capacity-and-durability-graphs" src={import('./_assets/omron-g5le-1-dc24-relay-switching-capacity-and-durability-graphs.webp')} width="800px">A screenshot from the datasheet of the Omron G5LE-11-DC24 relay showing the difference between the AC and DC ratings on the switching capacity and durability graphs.[^omron-g5le-relay-ds]</Image>
+
+There can also be a different in current rating for a relay which has normally-open and normally-closed contacts. This is due to the contact pressure difference when the contacts are closed. For a normally-open contact, the contacts are held closed by the magnetic force of the relay coil. For a normally-closed contact, the contacts are only held closed by the spring. The force from the coil is much stronger than the spring, as this directly impacts the contact resistance. The contacts held closed by the coil have a lower contact resistance, and can therefore handle more current. <IRef iref="fig-omron-g5le-relay-no-vs-nc-current-difference" /> shows an example of this with the Omron G5LE relay family.[^durakool-contacts-resistance-vs-contact-pressure]
+
+<Image iref="fig-omron-g5le-relay-no-vs-nc-current-difference" src={import('./_assets/omron-g5le-relay-no-vs-nc-current-difference.webp')} width="400px">A screenshot from the datasheet of the Omron G5LE relay family showing the difference in current rating between the normally-open (NO) and normally-closed (NC) contacts.[^omron-g5le-relay-ds]</Image>
+
+<Aside type="caution">
+Be careful not to get the coil and contact ratings mixed up!
+</Aside>
 
 ## Latching
 
@@ -191,11 +209,13 @@ You can get DIN mounted relay "sockets" for mounting relays onto DIN rail, as sh
 
 The G5Q/G5LE is a popular range of though-hole PCB mount relays from Omron. The G5Q series can go up to 250VAC at 10A.
 
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 {/* REFERENCES */}
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 
-[^bib-te-coil-suppression-relay-life]: TE Connectivity. _Application Note: Coil Suppression Can Reduce Relay Life_. Retrieved 2021-12-29, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=13C3264_AppNote&DocType=CS&DocLang=EN.
-[^bib-relay-tech-info]: Panasonic. _Relay Technical Information_. Retrieved 2021-12-29, from https://www.panasonic-electric-works.com/pew/eu/downloads/technical_information_relay_en.pdf.
+[^te-coil-suppression-relay-life]: TE Connectivity. _Application Note: Coil Suppression Can Reduce Relay Life_. Retrieved 2021-12-29, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=13C3264_AppNote&DocType=CS&DocLang=EN.
+[^relay-tech-info]: Panasonic. _Relay Technical Information_. Retrieved 2021-12-29, from https://www.panasonic-electric-works.com/pew/eu/downloads/technical_information_relay_en.pdf.
 [^wikipedia-electrical-contact]: Wikipedia (2024, Sep 16). _Electrical contact_. Retrieved 2024-12-02, from https://en.wikipedia.org/wiki/Electrical_contact.
 [^rsia-engineers-relay-handbook]: Relay and Switch Industry Association (RSIA). _Engineers' Relay Handbook_. Retrieved 2024-12-03, from https://web.archive.org/web/20170705143411/http://www.esterline.com/powersystems/DesignReference/RelayHandbook.aspx.
+[^omron-g5le-relay-ds]: Omron. _G5LE - PCB Power Relay - Cubic, Single-pole 10A Power Relay_ [datasheet]. Retrieved 2025-01-16, from https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf.
+[^durakool-contacts-resistance-vs-contact-pressure]: Durakool. _Contact Resistance Vs Contact Pressure_. Retrieved 2025-01-16, from https://www.durakool.com/media/5bqpde0s/contact-resistance-vs-contact-pressure.pdf.
