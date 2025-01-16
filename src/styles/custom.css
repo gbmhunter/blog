@@ -247,3 +247,9 @@ section.footnotes {
 .bad {
   color: var(--sl-color-red);
 }
+
+sup {
+  /* Set the line-height to 0 so that paragraph lines with superscripts (e.g. reference numbers)
+  don't have uneven line spacing. See https://stackoverflow.com/questions/1530685/how-can-i-keep-consistent-line-height-with-superscript-elements for more details. */
+  line-height: 0;
+}
