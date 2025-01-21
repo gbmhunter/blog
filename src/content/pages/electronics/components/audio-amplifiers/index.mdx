@@ -1,0 +1,29 @@
+---
+authors: [gbmhunter]
+date: 2025-01-21
+description: Audio amplifiers are circuits used to amplify audio signals. Can can be made out of discrete components, or more commonly these days, come packaged as ICs. Audio amplifiers output an analogue audio signal, but the input can either be a smaller analogue signal or a digital signal.
+lastUpdated: 2025-01-21
+tags: [audio amplifiers, audio, amplifiers]
+title: Audio Amplifiers
+type: page
+---
+
+<WarningIsNotes />
+
+Audio amplifiers are circuits used to amplify audio signals. Can can be made out of discrete components, or more commonly these days, come packaged as ICs. Audio amplifiers output an analogue audio signal, but the input can either be a smaller analogue signal or a digital signal.
+
+## Examples
+
+### TI TAS2780
+
+The TI TAS2780 is a digital input mono class D audio amplifier. It supports [I2S](/electronics/communication-protocols/i2s-communication-protocol/) for the audio input and [I2C](/electronics/communication-protocols/i2c-communication-protocol/) for the configuration. <IRef iref="fig-ti-tas2780-audio-amp-internal-block-diagram" /> shows the internal block diagram of the TAS2780. Up to 8 TAS2780 ICs can share the same I2S and I2C buses.
+
+<Image iref="fig-ti-tas2780-audio-amp-internal-block-diagram" src={import('./_assets/ti-tas2780-audio-amp-internal-block-diagram.webp')} width="800px">The internal block diagram of the Texas Instruments TAS2780 audio amplifier.[^ti-tas2780-ds]</Image>
+
+The IC can deliver 25W into a 4Ω speaker at a 18V supply voltage with a 1%THD, rising to 30W if you are happy with a 10%THD.[^ti-tas2780-ds]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ti-tas2780-ds]: Texas Instruments (2023, Mar). _TAS2780 Digital Input Mono Class-D Audio Amplifier With Speaker IV Sense_ [datasheet]. Retrieved 2025-01-21, from https://www.ti.com/lit/ds/symlink/tas2780.pdf.

@@ -90,7 +90,7 @@ WS has a 50% duty cycle and has the same frequency as the audio sample rate.
 
 The Serial Data signal (SD) is used to transmit the audio samples. Data is sent as a signed number in two's complement format. The most significant byte (MSB) is sent first.
 
-Data may be clocked out by the transmitter on either the rising or falling edge of SCK (usually on the falling edge). However, at the receiver data is always sampled on the rising edge of SCK [^phillips-semi-i2s-spec][^all-about-circuits-intro-to-i2s].
+Data may be clocked out by the transmitter on either the rising or falling edge of SCK (usually on the falling edge). However, at the receiver data is always sampled on the rising edge of SCK.[^phillips-semi-i2s-spec][^all-about-circuits-intro-to-i2s]
 
 ## Master vs. Slave vs. Transmitter vs. Receiver
 
@@ -137,6 +137,10 @@ The MAX98365 also supports TDM mode, where up to 8 of the MAX98365s can be conne
 ## Frameworks and Libraries
 
 [Zephyr RTOS](/programming/operating-systems/zephyr/) has an [I2S API](https://docs.zephyrproject.org/latest/hardware/peripherals/audio/i2s.html) that can be used to configure and use I2S peripherals on supported MCUs. It also supports non-standard extensions such as PCM short/long frame sync and left/right justified data formats[^zephyr-i2s-bus-docs].
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^wiki-commons-i2s-logo]: Wikimedia Commons. _I2S Logo [image]_. Retrieved 2024-09-05, from https://commons.wikimedia.org/wiki/File:Logo_i2S.jpg.
 [^wikipedia-i2s]: Wikipedia. _I²S [article]_. Retrieved 2024-09-05, from https://en.wikipedia.org/wiki/I%C2%B2S.
