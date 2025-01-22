@@ -652,6 +652,24 @@ Use `DT_NODELABEL()`, e.g. `DT_NODELABEL(uart0)`.
 
 When you perform a build, a final, merged device tree gets generated at `build/zephyr/zephyr.dts`. This file is useful for debugging device tree issues.
 
+### Silencing Spurious Duplicate Unit Address Warnings
+
+Sometimes when building Zephyr projects you can get "duplicate unit-address" warnings which are false positives. These are emitted by the `dtc` (devicetree compiler). This happens for example with the nRF52 SoC, where different Zephyr "peripherals" do share the same memory address.
+
+For example, when building for a custom board that uses the nRF52 SoC, I got the following warning:
+
+```text
+/home/gbmhunter/project/app/build/zephyr/zephyr.dts:54.25-59.5: Warning (unique_unit_address_if_enabled): /soc/clock@40000000: duplicate unit-address (also used in node /soc/power@40000000)
+```
+
+To silence this warning, you can create a file called `pre_dt_board.cmake` in your board directory and add the following:
+
+```cmake
+list(APPEND EXTRA_DTC_FLAGS "-Wno-unique_unit_address_if_enabled")
+```
+
+This is in fact what nRF has added to their dev. board files to silence the warning.[nordic-dev-zone-custom-board-duplicate-unit-address-warning]
+
 ### Full Example
 
 Example device tree (for the STM32F070RB development board):
@@ -2546,3 +2564,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
 [^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
 [^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
+[nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled

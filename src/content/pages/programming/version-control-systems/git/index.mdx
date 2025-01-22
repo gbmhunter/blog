@@ -2,11 +2,16 @@
 authors: [gbmhunter]
 date: 2014-02-08
 description: Git is a very popular version control system (VCS) used for software and firmware development.
-lastUpdated: 2024-08-12
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-01-22
 tags: [programming, version control systems, VCS, git, amend, fixup, squash, history, commits, vim, merge-base, diff, bisect, cherry-pick, stat, ssh]
 title: Git
 type: page
 ---
+
+Git is a very popular version control system (VCS) used for software and firmware development.
+
+<Image src={import('./_assets/git-logo-2-color.svg')} width="400px">The Git logo.[^git-scm-logos]</Image>
 
 ## Child Pages
 
@@ -270,3 +275,66 @@ git config url.git@gitlab.com/.insteadOf https://gitlab.com/
 ```
 
 This only applies the changes locally, i.e. none of this info saved with the repo.
+
+## Using Different SSH Keys for Different Repos
+
+Firstly, make sure you have added the two SSH keys into your `~/.ssh` directory. For example, lets pretend we want to use different keys for work and personal use. These will be attached to different GitHub accounts (GitHub doesn't let you use the same key for multiple accounts, for obvious reasons). The contents of the `~/.ssh` directory would contain:
+
+```text title="~/.ssh/"
+id_ed25519_work
+id_ed25519_work.pub
+id_ed25519_personal
+id_ed25519_personal.pub
+```
+
+<Aside type="tip">
+I'm using the `~/` syntax for the users home directory, which works on Linux and macOS. However, this works just as well on Windows if you replace `~` with the path to your user home directory.
+</Aside>
+
+Then in `~/.ssh/config`, you define two different hosts, one called `work` and one called `personal`. They both use the same `HostName`, but use different `IdentityFile` entries:
+
+```text title="~/.ssh/config"
+Host work
+  HostName github.com
+  IdentityFile ~/.ssh/id_ed25519_work
+  User git
+
+Host personal
+  HostName github.com
+  IdentityFile ~/.ssh/id_ed25519_personal
+  User git
+```
+
+<Aside type="tip">
+You are free to create the `config` file if it doesn't exist.
+</Aside>
+
+Lastly, you need to modify the SSH URLs used when cloning and/or the remotes. The SSH URLs usually look like this:
+
+```text
+git@github.com:my_org/my_repo.git
+```
+
+We need to rename this to replace `github.com` with `work` or `personal`. For example, if we wanted to use the work SSH key:
+
+```text
+git@work:my_org/my_repo.git
+```
+
+And if we wanted to use the personal SSH key:
+
+```text
+git@personal:my_org/my_repo.git
+```
+
+If you have already cloned the repo, you will need to change the remote URL with `git remote set-url origin` or similar. If you are doing a fresh clone, you can run:
+
+```bash
+git clone git@work:my_org/my_repo.git
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^git-scm-logos]: Git. _Logos_ [web page]. Retrieved 2025-01-22, from https://git-scm.com/downloads/logos.

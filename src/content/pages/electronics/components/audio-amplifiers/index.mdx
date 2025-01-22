@@ -2,7 +2,8 @@
 authors: [gbmhunter]
 date: 2025-01-21
 description: Audio amplifiers are circuits used to amplify audio signals. Can can be made out of discrete components, or more commonly these days, come packaged as ICs. Audio amplifiers output an analogue audio signal, but the input can either be a smaller analogue signal or a digital signal.
-lastUpdated: 2025-01-21
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-01-22
 tags: [audio amplifiers, audio, amplifiers]
 title: Audio Amplifiers
 type: page
@@ -22,8 +23,24 @@ The TI TAS2780 is a digital input mono class D audio amplifier. It supports [I2S
 
 The IC can deliver 25W into a 4Ω speaker at a 18V supply voltage with a 1%THD, rising to 30W if you are happy with a 10%THD.[^ti-tas2780-ds]
 
+### Analog Devices MAX98365
+
+The Analog Devices MAX98365 is a family of mono digital PCM input class D audio amplifiers. It's internal block diagram is shown in <IRef iref="fig-max-98365-audio-amp-internal-block-diagram" />.
+
+<Image iref="fig-max-98365-audio-amp-internal-block-diagram" src={import('./_assets/max-98365-audio-amp-internal-block-diagram.webp')} width="500px">The internal block diagram of the Analog Devices MAX98365 audio amplifier.[^max-98365-ds]</Image>
+
+There are four variants:[^max-98365-ds]
+
+* MAX98365A: 1ms turn-on time. Accepts standard I2S data.
+* MAX98365B: 1ms turn-on time. Accepts left-justified I2S data.
+* MAX98365C: 13ms turn-on/off time (ramp-up/down of volume). Accepts standard I2S data.
+* MAX98365D: 13ms turn-on/off time (ramp-up/down of volume). Accepts left-justified I2S data.
+
+The slower 13ms turn on/off time is intended as automatic click/pop reduction, and saves the user from having to taper the volume of the incoming data manually (i.e. inside the microcontroller sending the data) before turning it on/off. Even with automatic click/pop reduction however, you still have to make sure the clock lines stay active for at least 13ms after de-asserting the EN pin.[^max-98365-ds]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^ti-tas2780-ds]: Texas Instruments (2023, Mar). _TAS2780 Digital Input Mono Class-D Audio Amplifier With Speaker IV Sense_ [datasheet]. Retrieved 2025-01-21, from https://www.ti.com/lit/ds/symlink/tas2780.pdf.
+[^max-98365-ds]: Analog Devices (2022, Jan). _MAX98365 Tiny, Cost-Effective, 14V Plug-and-Play Digital Class-D Amplifier_ [datasheet]. Retrieved 2025-01-22, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX98365.pdf.
