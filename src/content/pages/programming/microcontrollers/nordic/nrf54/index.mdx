@@ -1,0 +1,67 @@
+---
+authors: [gbmhunter]
+date: 2025-02-04
+description: The nRF54 series is a family of SoCs by Nordic Semiconductor. Some of the core features of this family are a low power multi-protocol 2.4GHZ radio, a 128 MHz Arm Cortex-M33 CPU and ultra low-energy operation.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-02-04
+tags: [programming, microcontrollers, Nordic, nRF54]
+title: nRF54
+type: page
+---
+
+The _nRF54 Series_ is a family of SoCs by Nordic Semiconductor. Some of the core features of this family are a low power multi-protocol 2.4GHZ radio, a 128 MHz Arm Cortex-M33 CPU and ultra low-energy operation. Within the nRF54 family there are two sub-families, the nRF54H and nRF54L series[^nordic-semi-nrf54l-series-ds]
+
+## nRF54L Series
+
+<Image iref="fig-nrf54l15-qfn-photo" src={import('./_assets/nrf54l15-qfn-photo.webp')} width="200px">A photo of the nRF54L15 SoC in a 6x6 mm QFN package.[^nordic-semi-nrf54l15-product-page]</Image>
+
+<IRef iref="fig-nrf54l-internal-architecture-block-diagram" /> shows the internal architecture block diagram of the nRF54L series SoC.
+
+<Image iref="fig-nrf54l-internal-architecture-block-diagram" src={import('./_assets/nrf54l-internal-architecture-block-diagram.webp')} width="500px">The internal architecture block diagram of the nRF54L series SoC.[^nordic-semi-nrf54l-series-ds]</Image>
+
+In the nRF54L series there are three SoCs, the nRF54L15, nRF54L10 and nRF54L05 (excluding package type, there are a number of suffixes on each of these to denote the package type). They differentiate themselves by having different amounts of RAM and NVM memory. Note that we can't really call the NVM flash, as Nordic uses RRAM (resistive random access memory) for the NVM. <IRef iref="table-nrf54l-series-socs-memory-specs" /> shows the memory specifications for each of the SoCs.
+
+<table data-iref="table-nrf54l-series-socs-memory-specs">
+  <thead>
+    <tr>
+      <th>SoC Part Number</th>
+      <th>RAM</th>
+      <th>NVM (RRAM)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>nRF54L05</td>
+      <td>96 kB</td>
+      <td>0.5 MB</td>
+    </tr>
+    <tr>
+      <td>nRF54L10</td>
+      <td>192 kB</td>
+      <td>1 MB</td>
+    </tr>
+    <tr>
+      <td>nRF54L15</td>
+      <td>256 kB</td>
+      <td>1.5 MB</td>
+    </tr>
+  </tbody>
+  <caption>The memory specifications for the nRF54L series SoCs.[^nordic-semi-nrf54l-series-ds]</caption>
+</table>
+
+### Tamper Detection
+
+The nRF54L series SoCs have a built-in tamper controlled called `TAMPC`. This tamper controller can do the following:
+
+* Detect internal timing glitches to protect against fault injection attacks such as voltage spiking or electromagnetic fault injection (EMFI).
+* Detect external tampering via sending a PRBS (pseudo-random bit sequence) pattern to an output pin and making sure the same pattern is received on an input pin (this is designed to be connected to an external tamper shield which detects when the product is broken in to).
+* Detect if tampering occurs during AED and IKG operations (the `CRACEN` detector).
+
+<Image iref="fig-nrf54l-tampc-internal-block-diagram" src={import('./_assets/nrf54l-tampc-internal-block-diagram.webp')} width="400px">The internal block diagram of the TAMPC.[^nordic-semi-nrf54l-series-ds]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nordic-semi-nrf54l-series-ds]: Nordic Semiconductor. _nRF54L15, nRF54L10, and nRF54L05 Wireless SoCs - PRELIMINARY DATASHEET v0.8_ [datasheet]. Retrieved 2025-02-04, from https://docs-be.nordicsemi.com/bundle/ps_nrf54L15/page/pdf/nRF54L15_nRF54L10_nRF54L05_Datasheet_v0.8.pdf.
+[^nordic-semi-nrf54l15-product-page]: Nordic Semiconductor. _nRF54L15 - System-on-Chip - Ultra-low-power wireless SoC_ [product page]. Retrieved 2025-02-04, from https://www.nordicsemi.com/Products/nRF54L15.
