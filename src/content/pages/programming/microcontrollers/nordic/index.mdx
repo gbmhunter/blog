@@ -1,17 +1,25 @@
 ---
 authors: [gbmhunter]
 date: 2023-10-01
+description: Nordic Semiconductor is a company that makes microcontrollers (SoCs) and other electronic components. This section covers the Nordic nRF53 and nRF54 MCUs as well as nRF Connect.
+image: ./_assets/cover-image.webp
 lastUpdated: 2024-02-08
 tags: [programming, microcontrollers]
 title: Nordic
 type: page
 ---
 
-<WarningIsNotes />
-
 Nordic has a range of microcontroller families. They specialize in low-power Bluetooth MCUs, and their portfolio includes the nRF52, nRF53 and nRF92 range of MCUs (they call them SOCs).
 
 The nRF5 SDK entered maintenance mode around the year 2021-2022[^reddit-embedded-nrf5-sdk-vs-nrf-connect-sdk], with the intention that new FW projects would use the Nordic nRF Connect SDK instead.
+
+## Child Pages
+
+<ChildPages />
+
+## Access is Blocked by the SPU Error
+
+If you get the following error:
 
 ```batch
 PS C:\Users\geoff> nrfjprog --program C:\my_file.zip --verify
@@ -40,9 +48,5 @@ PS C:\Users\geoff> nrfjprog --version
 nrfjprog version: 10.24.2 external
 JLinkARM.dll version: 7.94e
 ```
-
-## Child Pages
-
-<ChildPages />
 
 [^reddit-embedded-nrf5-sdk-vs-nrf-connect-sdk]: Reddit. _nRF5 SDK vs. nRF Connect SDK_ [Forum Post]. Retrieved 2024-02-08, from https://www.reddit.com/r/embedded/comments/vdr8oz/nrf5_sdk_vs_nrf_connect_sdk/?rdt=56428.
