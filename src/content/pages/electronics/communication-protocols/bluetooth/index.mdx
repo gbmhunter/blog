@@ -13,19 +13,19 @@ type: page
 
 <Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300">The Bluetooth icon/logo.</Image>
 
-Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards[^bib-wikipedia-bluetooth-sig]. The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
+Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards.[^bib-wikipedia-bluetooth-sig] The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
 <Aside type="tip">
-Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link[^bib-sig-origin-of-name].
+Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link.[^bib-sig-origin-of-name]
 </Aside>
 
 ## Piconet And Scatternets
 
-A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in a inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state[^bib-wikipedia-piconet].
+A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in a inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state.[^bib-wikipedia-piconet]
 
 Both active and parked slaves in a Piconet are time-synchronized to the master so that RF contention does not occur (they implement a Time Division Multiple Access (TDMA) network).
 
-A _Scatternet_ is two or more independent Piconets which are connected together by one node in one Piconet (either the master or a slave) also acting as a slave in the second Piconet[^bib-garg-bluetooth].
+A _Scatternet_ is two or more independent Piconets which are connected together by one node in one Piconet (either the master or a slave) also acting as a slave in the second Piconet.[^bib-garg-bluetooth]
 
 ## Advanced Audio Distribution Profile (A2DP)
 
@@ -47,7 +47,7 @@ _Bluetooth Low Energy_ (BLE) is a Bluetooth protocol specifically designed for c
 
 ### Channels
 
-BLE has 40 channels, compared to Bluetooth Classic which has 79[^argenox-ble-advertising-primer].
+BLE has 40 channels, compared to Bluetooth Classic which has 79.[^argenox-ble-advertising-primer]
 
 ### Advertising
 
@@ -61,9 +61,9 @@ When a phone or other connecting device sees advertisement packets from a BLE pe
 
 Connection settings:
 
-* Connection interval (min): 7.5ms to 4s[^silicon-labs-optimizing-current-ble]. Typically specified in units of 1.25ms.
+* Connection interval (min): 7.5ms to 4s.[^silicon-labs-optimizing-current-ble] Typically specified in units of 1.25ms.
 * Connection interval (max): 7.5ms to 4s. Typically specified in units of 1.25ms.
-* Latency: This is the latency of the peripheral. It allows the peripheral to skip N connection intervals if it doesn't have any data to send(i.e. not respond)[^silicon-labs-optimizing-current-ble]. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect as reducing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send.
+* Latency: This is the latency of the peripheral. It allows the peripheral to skip N connection intervals if it doesn't have any data to send(i.e. not respond).[^silicon-labs-optimizing-current-ble] The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect as reducing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send.
 * Timeout: If no packets have been received in this time, the connection is considered lost.
 
 These connection settings are controlled by the Central device. However, the Peripheral can suggest connection parameters to the Central device. The Central device can choose to accept or reject them (or use different parameters). This is the reason a min. and a max. are given for the connection interval, it allows the peripheral to suggest a range and gives the Central device some flexibility in choosing the connection parameters.
@@ -72,7 +72,7 @@ See the [Bluetooth section on the Zephyr page](/programming/operating-systems/ze
 
 ### Beacons
 
-Beacons are BLE peripherals that use advertisement exclusively, and do not allow for connections. This is so that the device can always be found and used, if a connection occurs then the peripheral is meant to stop advertising[^argenox-ble-advertising-primer].
+Beacons are BLE peripherals that use advertisement exclusively, and do not allow for connections. This is so that the device can always be found and used, if a connection occurs then the peripheral is meant to stop advertising.[^argenox-ble-advertising-primer]
 
 Apple's iBeacon is the most popular beacon standard.
 
@@ -111,9 +111,25 @@ The CH9141 is a serial-to-Bluetooth BLE bridge IC made by Nanjing Qinheng Microe
 
 <Image src={import('./_assets/ch9141-ble-bridge-application-diagram.webp')} width="600px">A typical application diagram from the CH9141 BLE bridge IC[^wch-ch9141-product-page].</Image>
 
-{/* ======================================================================== */}
+## Chipsets
+
+Bluetooth chipsets are ICs that contain a Bluetooth transceiver and processor that are designed to be used in things such as Bluetooth USB dongles.
+
+### Broadcom BCM20702
+
+The BCM20702 is a Bluetooth 4.0 processor made by Broadcom that is commonly found in Bluetooth USB dongles. Sometime on or before 2016, Cypress Semiconductor acquired the part number/IP and renamed it the CYW20702. There is not much information online about the original Broadcom BCM20702, but there is a [datasheet for the Cypress part](https://www.alldatasheet.com/datasheet-pdf/download/902264/CYPRESS/BCM20702.html).
+
+<Iref iref="fig-cyw20702-internal-block-diagram" /> shows the internal block diagram of the CYW20702 IC.
+
+<Image iref="fig-cyw20702-internal-block-diagram" src={import('./_assets/cyw20702-internal-block-diagram.webp')} width="400px">An internal block diagram of the CYW20702 Bluetooth transceiver and baseband processor.[^cypress-cyw20702-bluetooth-transceiver-and-baseband-processor]</Image>
+
+### CSR8510
+
+The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PCs and other devices. It was originally designed by CSR (Cambridge Silicon Radio). CSR was acquired by Qualcomm in 2015.[^wikipedia-csr-plc] Qualcomm has kept the CSR part numbers. It appears the popular TP-Link UB400 Bluetooth dongle uses this chipset.[^tonymacx86-tp-link-ub400-not-recognized]
+
+{/* ============================================================================================ */}
 {/* REFERENCES */}
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 
 [^bib-sig-intro-to-mesh-part-2]: Martin Woolley (2017, Aug 1). _BlueTooth Blog - An Intro to Bluetooth Mesh Part 2_. BlueTooth SIG. Retrieved 2023-05-24, from https://www.bluetooth.com/blog/an-intro-to-bluetooth-mesh-part2/.
 [^bib-silicon-labs-bluetooth-mesh-performance]: Silicon Labs. _AN1137: Bluetooth Mesh Network Performance_. Retrieved 2023-05-24, from https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf.
@@ -124,3 +140,6 @@ The CH9141 is a serial-to-Bluetooth BLE bridge IC made by Nanjing Qinheng Microe
 [^argenox-ble-advertising-primer]: Argenox. _BLE Advertising Primer_. Retrieved 2024-02-27, from https://www.argenox.com/library/bluetooth-low-energy/ble-advertising-primer/.
 [^silicon-labs-optimizing-current-ble]: Silicon Labs. _Optimizing Current Consumption in Bluetooth Low Energy Devices_. Retrieved 2024-04-30, from https://docs.silabs.com/bluetooth/3.2/general/system-and-performance/optimizing-current-consumption-in-bluetooth-low-energy-devices.
 [^wch-ch9141-product-page]: Nanjing Qinheng Microelectronics Co., Ltd. _Bluetooth serial port transparent chip: CH9141_. Retrieved 2024-11-20, from https://www.wch-ic.com/products/CH9141.html.
+[^cypress-cyw20702-bluetooth-transceiver-and-baseband-processor]: Cypress Semiconductor (2016, Nov 23). _CYW20702 - Single-Chip Bluetooth Transceiver and Baseband Processor_ [datasheet]. Retrieved 2025-02-05, from https://www.alldatasheet.com/datasheet-pdf/download/902264/CYPRESS/BCM20702.html.
+[^wikipedia-csr-plc]: Wikipedia (2024, Sep 12). _CSR plc_ [wiki]. Retrieved 2025-02-05, from https://en.wikipedia.org/wiki/CSR_plc.
+[^tonymacx86-tp-link-ub400-not-recognized]: tonymacx86 (2022, Oct 25). _Tp-Link UB400 not being recognized_ [forum post]. Retrieved 2025-02-05, from https://www.tonymacx86.com/threads/tp-link-ub400-not-being-recognized.322815/.
