@@ -1,0 +1,38 @@
+---
+authors: [gbmhunter]
+date: 2025-02-11
+description: pynrfjprog is a Python wrapper around the Nordic Semiconductor nrfjprog DLL (dynamic link library).
+lastUpdated: 2025-02-11
+tags: [programming, microcontrollers, Nordic, pynrfjprog, python, nrfjprog]
+title: pynrfjprog
+type: page
+---
+
+pynrfjprog is a Python wrapper around the Nordic Semiconductor nrfjprog DLL (dynamic link library). The code is open source and available on [GitHub](https://github.com/NordicSemiconductor/pynrfjprog).
+
+## Installation
+
+To install pynrfjprog, into your Python environment, run the following command:
+
+```bash
+pip install pynrfjprog
+```
+
+As always, it is recommended to use a virtual environment to manage your Python packages.
+
+## Usage
+
+Use `enum_emu_snr()` to enumerate the serial numbers of the connected programmers:
+
+```python
+from pynrfjprog import LowLevel
+
+with LowLevel.API('NRF52') as api:
+    serial_numbers = api.enum_emu_snr()
+    if serial_numbers is None:
+        print("No programmers found")
+    else:
+        print(f"Found {len(serial_numbers)} programmers with serial numbers: {serial_numbers}")
+```
+
+`enum_emu_snr()` returns a list of serial numbers (e.g. `[960095105, 1051285627]`). If no programmers are found, it returns `None`.

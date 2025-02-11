@@ -1109,6 +1109,7 @@
         "PWMs",
         "PWSON",
         "pygments",
+        "pynrfjprog",
         "pyplot",
         "pyproject",
         "pytest",
