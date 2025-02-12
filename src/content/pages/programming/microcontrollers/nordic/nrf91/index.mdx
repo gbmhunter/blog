@@ -1,0 +1,77 @@
+---
+authors: [gbmhunter]
+date: 2025-02-12
+description: The nRF91 series is a family of wireless SiPs (system-in-packages) by Nordic Semiconductor that feature an integrated low-power LTE-M/NB-IoT modem and GNSS.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-02-12
+tags: [programming, microcontrollers, Nordic, nRF91]
+title: nRF91
+type: page
+---
+
+<WarningIsNotes />
+
+The _nRF91 Series_ is a family of wireless SiPs (system-in-packages) by Nordic Semiconductor that feature an integrated low-power LTE-M/NB-IoT modem and GNSS. They include a 64MHz Arm Cortex-M33 CPU dedicated for application processing (the modem has its own CPU).
+
+<Image iref="fig-nrf9160-package-photo" src={import('./_assets/nrf9160-package-photo.webp')} width="300px">A photo of the nRF9160 SoC in a 6x6 mm QFN package.[^nordic-semi-nrf9160-product-page]</Image>
+
+The following SiPs are available in this series:
+
+* nRF9131
+* nRF9151
+* nRF9160
+* nRF9161
+
+All SiPs in this family come with 1MB of NVM and 256kB of RAM.
+
+## AT Commands
+
+The nRF91 SiP modems support AT commands for configuration and control.
+
+`AT%CMNG` (credential management) is used to manage the credentials used by the modem. This includes reading and writing keys and certificates. `AT%CMNG=1` can be used to list all available credentials.
+
+To write a certificate, use `AT%CMNG=0,"<tag>",<type>,"<certificate>"`.
+
+Certificate and key files in `.pem` format usually contain around 1000-2000 characters (the root certificate I was looking at was 1300 or so).
+
+## nRF9151-DK Getting Started Guide
+
+Install the nRF Connect for VS Code extension to VS Code.
+
+Install the most recent SDK and toolchain. As of Feb 2025, these were both at version `v2.9.0`.
+
+From with the nRF Connect extension, click "Create a new application" and then click "Copy a sample" as shown in <IRef iref="fig-nrf-connect-vs-code-create-new-application-from-sample" />.
+
+<Image iref="fig-nrf-connect-vs-code-create-new-application-from-sample" src={import('./_assets/nrf-connect-vs-code-create-new-application-from-sample.webp')} width="600px">Screenshot showing the "Create New Application -> Copy a sample" dialog in the nRF Connect extension for VS Code.</Image>
+
+Then select the SDK you just downloaded as the SDK to select the sample from. Then search and click on the "modem_shell Sample". This should bootstrap you into a new project. You should see a directory structure like that shown in <IRef iref="fig-modem-shell-project-files-vs-code" />.
+
+<Image iref="fig-modem-shell-project-files-vs-code" src={import('./_assets/modem-shell-project-files-vs-code.webp')} width="500px">Screenshot showing the files in the modem_shell sample project in VS Code.</Image>
+
+Now you need to add a build configuration before you can build it.
+
+<Image iref="fig-modem-shell-add-build-configuration" src={import('./_assets/modem-shell-add-build-configuration.webp')} width="600px">Screenshot showing where the "Add build configuration" button is in the nRF Connect extension for VS Code.</Image>
+
+The only thing you need to change on the "Build configuration" page is the board. Select the appropriate dev. kit as shown in <IRef iref="fig-modem-shell-build-configuration" />.
+
+<Image iref="fig-modem-shell-build-configuration" src={import('./_assets/modem-shell-build-configuration.webp')} width="600px">Screenshot showing the build configuration for the modem_shell sample project.</Image>
+
+Then hit the big blue "Build Configuration" button at the bottom. All going well, your project should build successfully. Connect your dev. kit to your computer via USB, and then you should be able to program the dev. kit with this firmware. Also, make sure to connect a terminal to the dev. kits other serial port that should be enumerated when the cable is plugged in (one is used for programming, the other as the serial console). All going well, you should see output like that shown in <IRef iref="fig-modem-shell-output-in-ninjaterm" /> (captured in [NinjaTerm](https://ninjaterm.mbedded.ninja/)).
+
+<Image iref="fig-modem-shell-output-in-ninjaterm" src={import('./_assets/modem-shell-output-in-ninjaterm.webp')} width="600px">Screenshot showing the output of the modem_shell sample project in NinjaTerm.</Image>
+
+The model shell example includes the command `at` to forward commands to the modem. There is also an "AT command mode" so that you can send AT commands directly without having to prefix them with `at`. To enter AT command mode, type `at at_cmd_mode start` as shown in <IRef iref="fig-at-command-mode-from-terminal" />. Press `Ctrl-x, Ctrl-q` to exit AT command mode.
+
+<Image iref="fig-at-command-mode-from-terminal" src={import('./_assets/at-command-mode-from-terminal.webp')} width="600px">Screenshot showing AT command mode being entered from the terminal.</Image>
+
+<Aside type="tip">
+If you type commands while in AT command mode and get no response, it might be because your terminal is not sending the write line endings. You can configure the line ending on the firmware side by using the command `at at_cmd_mode <term_cr_lf|term_lf|term_cr>` (or change the line endings in the terminal, if it supports that).
+
+For example, I had to set it to `at at_cmd_mode term_lf` to get the modem to respond to commands with my terminal..
+</Aside>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nordic-semi-nrf9160-product-page]: Nordic Semiconductor. _nRF9160 - System-in-Package - Low power SiP with integrated LTE-M/NB-IoT modem and GNSS_ [product page]. Retrieved 2025-02-12, from https://www.nordicsemi.com/Products/nRF9160.
