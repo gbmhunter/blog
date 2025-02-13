@@ -1,0 +1,128 @@
+---
+authors: [gbmhunter]
+date: 2014-08-13
+description: Echoing, AT result codes, and more about the AT command protocol.
+image: ./_assets/cover-image.webp
+lastUpdated: 2014-08-13
+tags: [communication protocols, electronics, AT command protocol, AT result codes, echo]
+title: AT Commands
+type: page
+---
+
+<WarningIsNotes />
+
+AT commands are an text-based control protocol primarily used for configuring and controlling cellular modems from host microcontrollers or manual typing. AT is an abbreviation of "ATtention". AT commands are usually sent across a [UART serial connection](). Because they are text-based, it is also easy to control a modem connected to a terminal program (such as [NinjaTerm](https://ninjaterm.mbedded.ninja/)) via serial.
+
+The [nRF91 series of SiPs (system-in-packages) from Nordic Semiconductor](/programming/microcontrollers/nordic/nrf91/) include modems which provide the AT command protocol for configuration and control.
+
+## Protocol
+
+AT commands are text-based and limited to the ASCII character set. Each command and response is terminated with either a carriage return (`CR`) and line feed (`LF`) or just a carriage return. This is modem dependent and sometimes configurable. Although rare, some commands "bend" the rules and allow line termination inside the command. For example, the Nordic Semiconductor nRF91 modems allow the command `AT%CMNG` to send a multiline certificate in `.pem` format as part of the command. For example (this is sending the `DigiCertGlobalRootG2` certificate):
+
+```bash
+AT%CMNG=0,16842753,0,"-----BEGIN CERTIFICATE-----
+MIIDjjCCAnagAwIBAgIQAzrx5qcRqaC7KGSxHQn65TANBgkqhkiG9w0BAQsFADBh
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+d3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBH
+MjAeFw0xMzA4MDExMjAwMDBaFw0zODAxMTUxMjAwMDBaMGExCzAJBgNVBAYTAlVT
+MRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j
+b20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IEcyMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuzfNNNx7a8myaJCtSnX/RrohCgiN9RlUyfuI
+2/Ou8jqJkTx65qsGGmvPrC3oXgkkRLpimn7Wo6h+4FR1IAWsULecYxpsMNzaHxmx
+1x7e/dfgy5SDN67sH0NO3Xss0r0upS/kqbitOtSZpLYl6ZtrAGCSYP9PIUkY92eQ
+q2EGnI/yuum06ZIya7XzV+hdG82MHauVBJVJ8zUtluNJbd134/tJS7SsVQepj5Wz
+tCO7TG1F8PapspUwtP1MVYwnSlcUfIKdzXOS0xZKBgyMUNGPHgm+F6HmIcr9g+UQ
+vIOlCsRnKPZzFBQ9RnbDhxSJITRNrw9FDKZJobq7nMWxM4MphQIDAQABo0IwQDAP
+BgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBhjAdBgNVHQ4EFgQUTiJUIBiV
+5uNu5g/6+rkS7QYXjzkwDQYJKoZIhvcNAQELBQADggEBAGBnKJRvDkhj6zHd6mcY
+1Yl9PMWLSn/pvtsrF9+wX3N3KjITOYFnQoQj8kVnNeyIv/iPsGEMNKSuIEyExtv4
+NeF22d+mQrvHRAiGfzZ0JFrabA0UWTW98kndth/Jsw1HKj2ZL7tcu7XUIOGZX1NG
+Fdtom/DzMNU+MeKNhJ7jitralj41E6Vf8PlwUHBHQRFXGU7Aj64GxJUTFy8bJZ91
+8rGOmaFvE7FBcf6IKshPECBV1/MUReXgRPTqh5Uykw7+U0b6LJ3/iyK5S9kJRaTe
+pLiaWN0bfVKfjllDiIGknibVb63dDcY3fe0Dkhvld1927jyNxF1WW6LZZm6zNTfl
+MrY=
+-----END CERTIFICATE-----"
+```
+
+The simplest command is just simply `AT` which the modem will respond to with `OK`.
+
+Proprietary commands are usually prefixed with the `%` character, e.g. Nordic Semiconductor's nRF91 SiP modems have a `AT%CMNG` command to manage credentials (certificates and keys).
+
+## Commands
+
+### AT
+
+This command is used to test if the modem is responding. It should respond with `OK`. The command is just `AT` followed by a carriage return and line feed.
+
+### AT+CGMR
+
+This command is used to get the modem firmware version.
+
+### AT+CMGF
+
+This command sets up the SMS mode of the modem.
+
+### AT+CMGW
+
+This command is used to store a message in the memory of the SIM card.
+
+## Echo
+
+Echoing is a common feature which is enabled when talking with devices using the AT command protocol. An important thing to note is the device will echo letters as they are typed into the terminal, not when you press enter. This may have implications when trying to use echo to match a sent command with a response.
+
+## AT Result Codes
+
+It can be hard to determine the exact cause of an error because the modem usually just responds with `ERROR` with no further information.
+
+The following table lists the most commonly used AT result codes:
+
+<table>
+  <thead>
+    <tr>
+      <th>Result Code (Numerical)</th>
+      <th>Result Code (Textual)</th>
+    </tr>
+  </thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>1</td>
+<td>CONNECT</td>
+</tr>
+<tr>
+<td>2</td>
+<td>RING</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NO CARRIER</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ERROR</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CONNECT 1200</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NO DIALTONE</td>
+</tr>
+<tr>
+<td>7</td>
+<td>BUSY</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NO ANSWER</td>
+</tr>
+</tbody>
+</table>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
