@@ -584,6 +584,16 @@ I got the following error when the target board was not powered up (when program
 FATAL ERROR: command exited with status 1: /opt/SEGGER/JLink_V794i/JLinkExe -nogui 1 -if swd -speed 4000 -device nrf52840_xxaa -CommanderScript /tmp/tmp48nqgzxijlink/runner.jlink -nogui 1
 ```
 
+Sometimes the MCU you are programming may not be recognized by JLink (if using the `--runner jlink` option). You may get an error as shown in <IRef iref="fig-j-link-unknown-device-nrf9151-pop-up" />. This happened to me when I was programming the newish [nRF9151 SoCs](/programming/microcontrollers/nordic/nrf91/) from a nRF9161 DK using JLink v7.94i (presumably JLink v7.94i was not new enough to support the nRF9151).
+
+<Image iref="fig-j-link-unknown-device-nrf9151-pop-up" src={import('./_assets/j-link-unknown-device-nrf9151-pop-up.webp')} width="700px" />
+
+If this happens, and you know that there is a recognized device which will work, you can click OK and a modal will show in which you can select the device. This gets old fast though when programming the SoC during development. Instead, you can specify the SoC with the `--device` option. In the above example, I knew pretending to be the `nRF9160` worked ok, so I could use:
+
+```bash
+west flash --runner jlink --device nrf9160
+```
+
 ## Device Trees
 
 Zephyr borrows the concept of device trees popularized by Linux to describe the hardware that the firmware is running on. Device trees are computer-readable text files that have a hierarchical structure.
