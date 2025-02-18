@@ -3,9 +3,9 @@ authors: [gbmhunter]
 date: 2025-02-12
 description: The nRF91 series is a family of wireless SiPs (system-in-packages) by Nordic Semiconductor that feature an integrated low-power LTE-M/NB-IoT modem and GNSS.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-02-12
-tags: [programming, microcontrollers, Nordic, nRF91]
-title: nRF91
+lastUpdated: 2025-02-18
+tags: [programming, microcontrollers, Nordic, nRF91, Zephyr, shell, modem, AT commands]
+title: nRF91 Series
 type: page
 ---
 
@@ -36,6 +36,12 @@ You must make no certificates exists at the tag before writing a new certificate
 
 The default tag for nRF Cloud credentials is `16842753`.
 
+Note that when managing credentials, the modem must be in the offline state (otherwise the modem will not accept the commands and you will get back an ERROR response). To set the modem in the offline state, use:
+
+```text
+AT+CFUN=4
+```
+
 ## Listing Credentials
 
 Run `AT%CMNG=1` to list all credentials.
@@ -50,7 +56,7 @@ To write a certificate, use `AT%CMNG=0,<sec_tag>,<type>,"<certificate>"`.
 * `1` - Device certificate
 * `2` - Device private key
 
-`<certificate>` is the certificate from a `.pem` file, enclosed in quotes. Within the quotes, new lines are supported, are are not interpreted as the "end of command" as they usually would.
+`<certificate>` is the certificate from a `.pem` file, enclosed in quotes. Within the quotes, new lines are supported, are are not interpreted as the "end of command" as they usually would. This means to can paste the literal contents of the file into the command.
 
 For example, to write a root CA certificate to tag `16842753`, run:
 
@@ -81,13 +87,40 @@ MrY=
 
 ## Deleting Credentials
 
-Run `AT%CMNG=3,<tag>,1` to delete a credential. For example, to delete the credentials stored at tag `16842753`, run:
+Run `AT%CMNG=3,<tag>,<type>` to delete a credential. For example, to delete device certificate (`<type>` = `1`) stored at tag `16842753`, run:
 
 ```bash
 AT%CMNG=3,16842753,1
 ```
 
 Certificate and key files in `.pem` format usually contain around 1000-2000 characters (the root certificate I was looking at was 1300 or so).
+
+## Starting the Modem
+
+To initialize the modem library and turn on the modem, use:
+
+```c
+int err = nrf_modem_lib_init();
+__ASSERT(err == 0, "Failed to initialize modem.");
+```
+
+Nordic documentation for this function can be found [here](https://docs.nordicsemi.com/bundle/nrf-apis-latest/page/group_nrf_modem_lib_ga3a5bb46f3fa920cedbeacd4a1189ac41.html).
+
+You can use `AT_MONITOR()` to listen for AT commands from the modem.
+
+```c
+AT_MONITOR(mosh_at_cmd_mode_handler, ANY, at_cmd_mode_event_handler, PAUSED);
+```
+
+### AT Shell Commands
+
+You can enable AT shell commands with:
+
+```c title="prj.conf"
+CONFIG_AT_SHELL
+```
+
+However, this does not provide the `at_cmd_mode` command. To get this, you manually have to add it. The best way is to copy the model_shell sample project and modify it.
 
 ## nRF9151-DK Getting Started Guide
 
@@ -99,7 +132,7 @@ From with the nRF Connect extension, click "Create a new application" and then c
 
 <Image iref="fig-nrf-connect-vs-code-create-new-application-from-sample" src={import('./_assets/nrf-connect-vs-code-create-new-application-from-sample.webp')} width="600px">Screenshot showing the "Create New Application -> Copy a sample" dialog in the nRF Connect extension for VS Code.</Image>
 
-Then select the SDK you just downloaded as the SDK to select the sample from. Then search and click on the "modem_shell Sample". This should bootstrap you into a new project. You should see a directory structure like that shown in <IRef iref="fig-modem-shell-project-files-vs-code" />.
+Then select the SDK you just downloaded as the SDK to select the sample from. Then search and click on the "modem_shell Sample". This should bootstrap you into a new project. You should see a directory structure like that shown in <IRef iref="fig-modem-shell-project-files-vs-code" />. We choose the "modem_shell" sample as it provides useful AT commands through the [Zephyr shell](/programming/operating-systems/zephyr/#the-zephyr-shell).
 
 <Image iref="fig-modem-shell-project-files-vs-code" src={import('./_assets/modem-shell-project-files-vs-code.webp')} width="500px">Screenshot showing the files in the modem_shell sample project in VS Code.</Image>
 
@@ -124,6 +157,16 @@ If you type commands while in AT command mode and get no response, it might be b
 
 For example, I had to set it to `at at_cmd_mode term_lf` to get the modem to respond to commands with my terminal..
 </Aside>
+
+Using the command `west flash --runner jlink` to program the nRF9151 on Linux (on WSL) using JLink v7.94i would cause the pop-up shown in <IRef iref="fig-j-link-unknown-device-nrf9151-pop-up" /> to appear (presumably JLink v7.94i was not new enough to support the nRF9151).
+
+<Image iref="fig-j-link-unknown-device-nrf9151-pop-up" src={import('./_assets/j-link-unknown-device-nrf9151-pop-up.webp')} width="700px" />
+
+If this happens, and you know that there is a recognized device which will work, you can click OK and a modal will show in which you can select the device. This gets old fast though when programming the SoC during development. Instead, you can specify the SoC with the `--device` option. In the above example, I knew pretending to be the `nRF9160` worked ok, so I could use:
+
+```bash
+west flash --runner jlink --device nrf9160
+```
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
