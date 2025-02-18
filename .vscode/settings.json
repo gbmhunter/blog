@@ -191,6 +191,7 @@
         "cfsetispeed",
         "cfsetospeed",
         "cfsetspeed",
+        "CFUN",
         "Cgdmax",
         "Cgdmin",
         "CGMR",
