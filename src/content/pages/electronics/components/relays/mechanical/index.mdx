@@ -183,10 +183,21 @@ With a little external componentry, a mechanical relay can be made to latch-on a
 
 The enclosure rating is the amount of environment protection the relay has. A common thing to denote is whether or not the relay is sealed. Two common ratings are:
 
-* Flux protection: Not fully sealed, but enclosed enough to prevent any issue with flux.
-* Sealed: Fully enclosed.
+* Flux protection: Not fully sealed, but enclosed enough to prevent any issue with flux. Similar to a RT II rating.
+* Sealed: Fully enclosed. Similar to a RT III or higher rating.
 
 If you are planning on submersing a PCB with a relay on it in an ultrasonic bath, make sure you are using a sealed relay. If not, the cleaning solution will more than likely enter the relay and cause damage. It can either cause an immediate fault (i.e. direct short-circuit) or slowly corrode the contacts over months. I have personally experienced this first hand with a product that started failing a few months after it was installed in the field due to it being cleaned ultrasonically. The PCB had a relay on it that was not sealed, and after cutting open a relay on a failed unit, the contacts were seriously corroded.
+
+Some relays will use IEC 61810 to denote the enclosure rating. IEC 61810 has the following ratings:[^te-potter-and-brumfield-t9g-series] [^te-relay-definitions]
+
+* **RT 0**: Unenclosed relay. Relay not provided with a protective case.
+* **RT I**: Dust protected relay. Relay provided with a protective case that prevents dust from entering the relay.
+* **RT II**: Flux proof relay. Relay capable of being automatically soldered without allowing flux to enter the relay other than were intended.
+* **RT III**: Wash tight (washable) relay. Relay capable of being automatically soldered and then washed (e.g. ultrasonic bath) without allowing the ingress of flux or washing solution.
+* **RT IV**: Sealed relay. Relay provided with a case that has no venting to the outside, with a time constant better than 2x10^4s in accordance with IEC 60068-2-17.
+* **RT V**: Hermetically sealed relay. Sealed relay having an enhanced level of sealing, with a time constant better than 2x10^6s in accordance with IEC 60068-2-17.
+
+<Image src={import('./_assets/te-t9g-series-relay-environmental-protection-ratings-rtii-and-rtiii.webp')} width="800px">A screenshot from the datasheet of the TE T9G series relay showing it's RT II and RT III environmental protection ratings.[^te-potter-and-brumfield-t9g-series]</Image>
 
 ## Common Relay Packages
 
@@ -225,3 +236,5 @@ The G5Q/G5LE is a popular range of though-hole PCB mount relays from Omron. The 
 [^rsia-engineers-relay-handbook]: Relay and Switch Industry Association (RSIA). _Engineers' Relay Handbook_. Retrieved 2024-12-03, from https://web.archive.org/web/20170705143411/http://www.esterline.com/powersystems/DesignReference/RelayHandbook.aspx.
 [^omron-g5le-relay-ds]: Omron. _G5LE - PCB Power Relay - Cubic, Single-pole 10A Power Relay_ [datasheet]. Retrieved 2025-01-16, from https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf.
 [^durakool-contacts-resistance-vs-contact-pressure]: Durakool. _Contact Resistance Vs Contact Pressure_. Retrieved 2025-01-16, from https://www.durakool.com/media/5bqpde0s/contact-resistance-vs-contact-pressure.pdf.
+[^te-potter-and-brumfield-t9g-series]: TE Connectivity (2023, Dec). _POTTER & BRUMFIELD - T9G SERIES - DC COIL 30A PCB RELAY - GENERAL PURPOSE RELAYS | POWER RELAYS_ [datasheet]. Retrieved 2025-02-20, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=T9G&DocType=Data%20Sheet&DocLang=English&DocFormat=pdf&PartCntxt=CAT-P851-T1.
+[^te-relay-definitions]: TE Connectivity (2018, May). _Automotive, General Purpose and Signal Relays - Definitions_ [technical note]. Retrieved 2025-02-20, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=Definitions_Relays&DocType=SS&DocLang=EN.
