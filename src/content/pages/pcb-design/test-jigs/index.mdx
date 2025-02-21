@@ -2,13 +2,29 @@
 authors: [gbmhunter]
 date: 2022-03-08
 description: Info on test jigs.
-lastUpdated: 2022-03-08
+lastUpdated: 2025-02-21
 tags: [PCBs, test jigs]
 title: Test Jigs
 type: page
 ---
 
 <WarningIsNotes />
+
+Test jigs are production-line devices use to both program and test PCBs. This page focuses on the design of test jigs used to test assembled PCBs (PCBAs) that have not yet been fitted into the product (or if they have, the PCBAs surface is still available for pogo pin connections).
+
+## Pogo Pins
+
+Most test jigs use pogo pings (spring loaded connectors) to make electrical contact in many places with the PCB during testing. This saves the need for plugging in traditional connectors, which are slower, more expensive (as the PCB needs a mating connector) and take up more space on the PCB.
+
+Small surface mount pads can be added to the PCB where you want the pogo pins to make contact. For high current applications, you can either use:
+
+* More pogo pins in parallel
+* Larger pogo pins
+* Traditional wire-to-board connectors (although this slows down production, it might be a must if pogo pins are just not sufficient).
+
+Pogo pin tips are available in a range of shapes, including rounded, single-point, and multi-point. I have seen issues with rounded pogo pin tips and bad electrical contact with the PCB. I assume it was either due to residual flux on the PCB or oxidation of the tip or PCB pad, combined with the rounded tip, meaning poor electrical contact was made. For this reason I recommend using the pointed style tips (which I'm assuming can "pierce" through the flux or oxidation) and ones with a strong spring force.
+
+Another point worth considering when using pogo pins is that you will not be testing the connectors on the PCBA. In most cases this is not a big issue since connectors are typically not parts which are faulty, and testing the connectors means you can't just rely on pogo pins and need to plug into these connectors, drastically slowing down the testing process.
 
 ## Suppliers
 
