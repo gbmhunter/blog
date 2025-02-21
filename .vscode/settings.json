@@ -1015,6 +1015,7 @@
         "PBFREE",
         "pbss",
         "PCAN",
+        "PCBA",
         "pcbcart",
         "pcbnew",
         "pcbs",
