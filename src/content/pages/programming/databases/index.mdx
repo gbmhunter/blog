@@ -10,6 +10,12 @@ type: page
 
 <WarningIsNotes />
 
+## Common Data Types
+
+### Text Based
+
+`VARCHAR` lets you store a variable length string, with a settable maximum length. It is likely the most commonly used data type for strings. Only the size of the string plus a small amount of overhead (1 byte if the string is less than 255 bytes, 2 bytes if it is 255 bytes or more) is stored in the table.[^planetscale-mysql-data-types-varchar-and-char]
+
 ## MySQL
 
 A _record_ is the definition for a row in a table.
@@ -128,7 +134,7 @@ SHOW ENGINE INNODB STATUS
 
 ## MariaDB
 
-_MariaDB_ is a fully open-source, GPL licenced database engine that is designed to be a drop-in replacement for MySQL. Whilst MySQL supports Windows, Linux and Mac OS, MariaDB only supports Windows and Linux (no Mac OS support)[^bib-geeks-for-geeks-msql-vs-mariadb].
+_MariaDB_ is a fully open-source, GPL licenced database engine that is designed to be a drop-in replacement for MySQL. Whilst MySQL supports Windows, Linux and Mac OS, MariaDB only supports Windows and Linux (no Mac OS support)[^geeks-for-geeks-mysql-vs-mariadb].
 
 ## PostgreSQL
 
@@ -160,4 +166,23 @@ sudo apt install libpq-dev
 pip install psycopg2
 ```
 
-[^bib-geeks-for-geeks-msql-vs-mariadb]: Vishwash Vishwakarma (2020, May 22). _Difference Between MySQL and MariaDB_. GeeksforGeeks. Retrieved 2022-07-18, from https://www.geeksforgeeks.org/difference-between-mysql-and-mariadb/.
+## Microsoft SQL Server
+
+Microsoft SQL Server is a proprietary relational database engine developed by Microsoft. Microsoft Azure SQL Database is a cloud-based version of SQL Server, provided on Microsoft Azure. It is one of the supported database engines by DBeaver.
+
+### Data Types
+
+SQL Server offers both `datetime` and `datetime2` data types for storing date and time values. `datetime2` is an extension of `datetime` which has a larger date range, a larger default fractional precision, and optional user-specified precision.[^microsoft-sql-server-datetime2]
+
+> Use the time, date, datetime2 and datetimeoffset data types for new work. These types align with the SQL Standard. They are more portable. time, datetime2 and datetimeoffset provide more seconds precision. datetimeoffset provides time zone support for globally deployed applications.
+
+Data in the database is stored in two different types of files, primary data files with the `.mdf` extension and secondary data files with the `.ndf` extension. Logs are stored in files with the `.ldf` extension.[^wikipedia-microsoft-sql-server]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^geeks-for-geeks-mysql-vs-mariadb]: Vishwash Vishwakarma (2020, May 22). _Difference Between MySQL and MariaDB_. GeeksforGeeks. Retrieved 2022-07-18, from https://www.geeksforgeeks.org/difference-between-mysql-and-mariadb/.
+[^wikipedia-microsoft-sql-server]: Wikipedia (2025, Feb 15). _Microsoft SQL Server_. Retrieved 2025-02-24, from https://en.wikipedia.org/wiki/Microsoft_SQL_Server.
+[^microsoft-sql-server-datetime2]: Microsoft (2024, Nov 23). _Learn > SQL > SQL Server > datetime2 (Transact-SQL)_. Retrieved 2025-02-24, from https://learn.microsoft.com/en-us/sql/t-sql/data-types/datetime2-transact-sql?view=sql-server-ver16.
+[^planetscale-mysql-data-types-varchar-and-char]: Brian Morrison II (2022, Sep 30). _Blog > Engineering > MySQL data types: VARCHAR and CHAR_. PlanetScale. Retrieved 2025-02-24, from https://planetscale.com/blog/mysql-data-types-varchar-and-char.

@@ -25,21 +25,21 @@ Some fiber optic transmitter/receiver pairs are DC-coupled, which extends the ba
 
 ### TOSLINK
 
-Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter). Common bandwidths for TOSLINK connections are from DC to 10Mbps[^bib-toshiba-torx1355f-ds].
+Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter). Common bandwidths for TOSLINK connections are from DC to 10Mbps[^toshiba-torx1355f-ds].
 
 <Image src={import('./_assets/torx1355f-totx1353f-toslink-transceivers.jpg')} width="700px">Photo of the TOSLINK TORX1355(F) receiver and TOTX1353(F) transmitter.</Image>
 
 The TOSLINK transmitter components just contains the LED (e.g. the `TOTX1353(F)`), hence the need for a current-limiting resistor and driver. The driver can be open-collector/open-drain, as it only needs to sink current.
 
-<Image src={import('./_assets/totx1353f-driver-schematic.png')} width="500px">Typical surrounding circuitry required to drive the TOTX1353(F) transmitter[^bib-toshiba-totx1353f-ds]. </Image>
+<Image src={import('./_assets/totx1353f-driver-schematic.png')} width="500px">Typical surrounding circuitry required to drive the TOTX1353(F) transmitter[^toshiba-totx1353f-ds]. </Image>
 
-The receiver contains more circuitry than the transmitter, including _automatic threshold control_ (ATC) to compensate for widely different input optical power levels[^bib-toshiba-torx1355f-ds].
+The receiver contains more circuitry than the transmitter, including _automatic threshold control_ (ATC) to compensate for widely different input optical power levels[^toshiba-torx1355f-ds].
 
-<Image src={import('./_assets/torx1355f-application-circuit.png')} width="500px">Typical surrounding circuitry to receive signals via the TORX1355(F) receiver[^bib-toshiba-torx1355f-ds]. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).</Image>
+<Image src={import('./_assets/torx1355f-application-circuit.png')} width="500px">Typical surrounding circuitry to receive signals via the TORX1355(F) receiver[^toshiba-torx1355f-ds]. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).</Image>
 
 TOSLINK components are becoming harder to find these days, although TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
 
-<Image src={import('./_assets/toslink-cabke-jr9907.5md4mmblk-5m.png')} width="300px">Photo of a 5m TOSLINK cable from Multicomp Pro with plugs on both ends (part number JR9907.5M D=4MM BLK)[^bib-e14-toslink-cable].</Image>
+<Image src={import('./_assets/toslink-cabke-jr9907.5md4mmblk-5m.png')} width="300px">Photo of a 5m TOSLINK cable from Multicomp Pro with plugs on both ends (part number JR9907.5M D=4MM BLK)[^e14-toslink-cable].</Image>
 
 <Image src={import('./_assets/toslink-visible-illumination.jpg')} width="700px">Photo showing the clearly visible illumination when TOSLINK is in working. On left, the TOTX1353(F) transmitter being driven with 1.5mA of current. On right, the same signal but now with a 5m cable plugged into the transmitter, with this photo being taken of the other end.</Image>
 
@@ -55,7 +55,7 @@ The difference between an edge on the input and the edge appearing on the output
 
 _Versatile Link_ (VL) was first introduced by Hewlett-Packard.
 
-Field-installable connections are relatively simple with Versatile Link connectors. For example, the Avago AFBR-4526Z and AFBR-452BZ duplex connectors show in their datasheet a four-step process involving cutting the fibre (with simple wire cutters), fitting the cable into the connector housing, trimming and polishing (polishing is optional, using a purpose-made fibre holding tool and various grit sand paper), and final finishing[^bib-avago-afbr-4526z-ds].
+Field-installable connections are relatively simple with Versatile Link connectors. For example, the Avago AFBR-4526Z and AFBR-452BZ duplex connectors show in their datasheet a four-step process involving cutting the fibre (with simple wire cutters), fitting the cable into the connector housing, trimming and polishing (polishing is optional, using a purpose-made fibre holding tool and various grit sand paper), and final finishing[^avago-afbr-4526z-ds].
 
 <Image src={import('./_assets/avago-afbr-4526z-versatile-link-fibre-conn-photo.png')} width="300px">Photo of the Avago AFBR-4516Z (black) and AFBR-452BZ (blue) fibre optic.</Image>
 
@@ -68,7 +68,7 @@ Development kits such as the HFBR-0410Z shown in are available for quick prototy
 
 ### LC
 
-The LC connector was first developed by Lucent Technology for telecommunication applications[^bib-fiber-optic-solutions-lc-fiber].
+The LC connector was first developed by Lucent Technology for telecommunication applications[^fiber-optic-solutions-lc-fiber].
 
 ## Transceivers
 
@@ -136,8 +136,12 @@ HCS: Hard-clad Silica fiber (a.k.a. polymer-clad fiber, PCF) is optical fiber wi
 PCF: Plastic-clad glass fiber.
 POF: :.
 
-[^bib-avago-afbr-4526z-ds]:  Avago (now Broadcom). _AFBR-4526Z, AFBR-452BZPlastic optical fiber duplex connector for AFBR-5972xZ (datasheet)_. Retrieved 2022-02-10, from https://docs.broadcom.com/doc/AV02-2926EN.
-[^bib-fiber-optic-solutions-lc-fiber]:  Fiber Optic Solutions (2018). _LC Fiber Connector Definition, Types And User Guide_. Retrieved 2022-02-10, from https://www.fiber-optic-solutions.com/lc-fiber-connector-definition.html.
-[^bib-e14-toslink-cable]:  Element14. _JR9907.5M D=4MM BLK: Audio / Video Cable Assembly, TOSLINK Plug, TOSLINK Plug, 16.4 ft, 5 m, Black (product page)_. Retrieved 2022-03-01, from https://nz.element14.com/pro-signal/jr9907-5m-d-4mm-blk/lead-optical-5m-toslink/dp/4258472.
-[^bib-toshiba-totx1353f-ds]:  Toshiba (2014, May 20). _TOTX1353(F): Fiber Optic Transmitting Module (datasheet)_. Retrieved 2022-03-31, from https://nz.mouser.com/datasheet/2/408/TORX1355(F)_datasheet_en_20200312-1108723.pdf.
-[^bib-toshiba-torx1355f-ds]:  Toshiba (2020, Mar 12). _TORX1355(F): Fiber Optic Receiving Module (datasheet)_. Retrieved 2022-03-31, from https://nz.mouser.com/datasheet/2/408/TORX1355(F)_datasheet_en_20200312-1108723.pdf.
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^avago-afbr-4526z-ds]: Avago (now Broadcom). _AFBR-4526Z, AFBR-452BZPlastic optical fiber duplex connector for AFBR-5972xZ (datasheet)_. Retrieved 2022-02-10, from https://docs.broadcom.com/doc/AV02-2926EN.
+[^fiber-optic-solutions-lc-fiber]: Fiber Optic Solutions (2018). _LC Fiber Connector Definition, Types And User Guide_. Retrieved 2022-02-10, from https://www.fiber-optic-solutions.com/lc-fiber-connector-definition.html.
+[^e14-toslink-cable]: Element14. _JR9907.5M D=4MM BLK: Audio / Video Cable Assembly, TOSLINK Plug, TOSLINK Plug, 16.4 ft, 5 m, Black (product page)_. Retrieved 2022-03-01, from https://nz.element14.com/pro-signal/jr9907-5m-d-4mm-blk/lead-optical-5m-toslink/dp/4258472.
+[^toshiba-totx1353f-ds]: Toshiba (2014, May 20). _TOTX1353(F): Fiber Optic Transmitting Module (datasheet)_. Retrieved 2022-03-31, from https://nz.mouser.com/datasheet/2/408/TORX1355(F)_datasheet_en_20200312-1108723.pdf.
+[^toshiba-torx1355f-ds]: Toshiba (2020, Mar 12). _TORX1355(F): Fiber Optic Receiving Module (datasheet)_. Retrieved 2022-03-31, from https://nz.mouser.com/datasheet/2/408/TORX1355(F)_datasheet_en_20200312-1108723.pdf.
