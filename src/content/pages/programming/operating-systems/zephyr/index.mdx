@@ -777,7 +777,7 @@ uint64_t currentTime_us = k_cyc_to_us_floor64(k_cycle_get_32());
 
 Although I could not find it explicitly mentioned anywhere in the Zephyr documentation, it appears that it is safe to use cycles for time measurements even if the microcontroller is sleeping. I suspect Zephyr updates the cycle count when the system wakes back up to account for the duration of the sleep.
 
-Be careful with the 32-bit value from `k_cycle_get_32()`. With a fast clock, this could overflow pretty quickly. If you are just interested in the duration between two time points, luckily the maths of subtracting a large unsigned number from a smaller one still gives you the right duration, until of course the later time catches up and passes the same `uint32_t` value the previous time point was at. 
+Be careful with the 32-bit value from `k_cycle_get_32()`. With a fast clock, this could overflow pretty quickly. If you are just interested in the duration between two time points, luckily the maths of subtracting a large unsigned number from a smaller one still gives you the right duration, until of course the later time catches up and passes the same `uint32_t` value the previous time point was at.
 
 ### Timers
 
@@ -895,7 +895,19 @@ Make sure you call `K_THREAD_STACK_SIZEOF()` in the same file as the `K_THREAD_S
 
 #### Dynamic Thread Stack Allocation
 
-You'll notice that in the above example, although the thread is created at runtime, the stack is statically defined at compile time with `K_THREAD_STACK_DEFINE()`. Zephyr is meant to support dynamic thread stack allocation. However I could not get it working.
+You'll notice that in the above example, although the thread is created at runtime, the stack is statically defined at compile time with `K_THREAD_STACK_DEFINE()`. Statically defining the stacks does not play well if you want to write your code in a "object-oriented" manner. Luckily, Zephyr allows you to specify a stack as a member of a struct using the macro `K_KERNEL_STACK_MEMBER(sym, size)`.[^zephyr-docs-thread-stack-apis] For example:
+
+```c
+typedef struct {
+    struct k_thread thread;
+    K_KERNEL_STACK_MEMBER(threadStack, 512);
+} MyModule;
+
+int main() {
+    MyModule myModule;
+    k_thread_create(&myModule.thread, myModule.threadStack, K_THREAD_STACK_SIZEOF(myModule.threadStack), MyThreadFn, NULL, NULL, NULL, 5, 0, K_NO_WAIT);
+}
+```
 
 ### Workqueues
 
@@ -1258,6 +1270,25 @@ Zephyr provides `k_malloc()` and `k_free()` for dynamic memory allocation of a s
 CONFIG_HEAP_MEM_POOL_SIZE=1024
 ```
 
+### Atomic Variables
+
+Zephyr provides an atomic variable API that let's you manipulate simple integers (32-bit integers on a 32-bit architecture, 64-bit integers on a 64-bit architecture) in an atomic manner. This means the API is thread safe and ISR safe, without the need for mutexes. They are a good choice for simple variable manipulation where you don't need the full power of a mutex. Their benefit over a mutex is that they are generally faster to use because they leverage specific processor instructions which are naturally atomic (e.g. writing a variable which is the same size as the architecture's word size) without the need to OS level locks. The atomic API can be accessed by including `#include <zephyr/sys/atomic.h>`.
+
+Use `atomic_set(atomic_t*target, atomic_val_t value)` to set the value of an atomic variable. For example:
+
+```c
+atomic_t myAtomic;
+atomic_set(&myAtomic, 10);
+```
+
+You can use `atomic_clear(atomic_t*target)` to clear the value of an atomic variable. It also has the benefit of returning the previous value of the variable, which is useful when implementing a counter that is incremented in an ISR and read in a thread. For example:
+
+```c
+atomic_t myCounter;
+// Both read the value and clear it at the same time
+atomic_val_t prevValue = atomic_clear(&myCounter);
+```
+
 ## Logging
 
 Zephyr has very powerful logging features (compared to what you typically expect for embedded devices) provided via it's logging API.
@@ -1557,7 +1588,7 @@ You then need to setup a callback:
 ```c
 static struct gpio_callback gpioCallbackData;
 
-void GpioCallback(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
+void GpioCallback(const struct device* dev, struct gpio_callback* cb, uint32_t pins)
 {
     // GPIO interrupt callback
 }
@@ -1634,6 +1665,27 @@ There are many interrupt configuration flags to choose from, including both phys
 </table>
 
 See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an example of using a Zephyr GPIO to handle button presses along with debouncing using a delayable work queue.
+
+The interrupt callback object has not provision for storing user data (e.g. a `void *`, so you could pass it the "object" that was associated with the interrupt). However, you can use the `CONTAINER_OF` macro to do almost the same thing, as long as you store the interrupt callback object in the "object". The following example shows how to do this:
+
+```c
+struct {
+    struct gpio_callback myCallback;
+} MyObject;
+
+int main() {
+    MyObject myObject;
+    gpio_pin_interrupt_configure(myGpio.port, myGpio.pin, GPIO_INT_EDGE_TO_ACTIVE);
+    gpio_init_callback(&myObject.myCallback, &GpioCallbackHandler, BIT(myGpio.pin));
+    gpio_add_callback(myGpio.port, &myObject.myCallback);
+}
+
+static void GpioCallbackHandler(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
+{
+    // Can get "user data" from inside the handler function by using the CONTAINER_OF macro
+    MyObject* myObject = CONTAINER_OF(cb, MyObject, myCallback);
+}
+```
 
 ### PWM
 
@@ -2597,3 +2649,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
 [^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
 [^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
+[^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
