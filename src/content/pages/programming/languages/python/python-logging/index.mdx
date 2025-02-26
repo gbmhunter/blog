@@ -1,0 +1,58 @@
+---
+authors: [gbmhunter]
+date: 2025-02-26
+description: The Python logging library allows you to log messages to a file, console, or other output destinations. It is a great way to debug your application and keep track of what is happening.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-02-26
+tags: [programming, programming languages, Python, logging, logs, debug, debug messages, error messages, warning messages, colour, ANSI escape codes]
+title: Python Logging
+type: page
+---
+
+Python has a built-in logging library which is powerful and flexible enough for most logging needs. This page is a basic guide to the built-in logging library.
+
+You import the library with `import logging`.
+
+## The Basics
+
+The most basic usage is to just import the library and use the `logging.info()` (and `.debug()`, `.warning()`, `.error()`, `.critical()`) functions for logging.
+
+```python title="main.py"
+import logging
+
+logging.info("This is an info message.")
+logging.debug("This is a debug message.")
+logging.warning("This is a warning message.")
+logging.error("This is an error message.")
+logging.critical("This is a critical message.")
+```
+
+By default, the logging library will log messages to the console (i.e. you ran `python main.py` in the terminal, you would see this output).
+
+## Coloured Logging
+
+The logging library does not include any coloured output by default. Coloured output is useful when printing to terminals as you can use colours like red for errors to quickly catch your attention. Most terminals support ANSI escape codes to change the text colours (among other things). Whilst you could output the escape codes yourself with the standard library, the `colorlog` library makes this easier.
+
+The below example shows how to set up the logging library to use the `colorlog` library for coloured output. Install `colorlog` with `pip install colorlog`.
+
+```python title="main.py"
+import logging
+import colorlog
+
+# ==================================================================================================
+# Logging Setup
+# ==================================================================================================
+
+handler = colorlog.StreamHandler()
+handler.setFormatter(colorlog.ColoredFormatter('%(log_color)s%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s'))
+
+# Setup root logger, this will apply to all loggers
+logger = logging.getLogger()
+logger.handlers.clear()
+logger.addHandler(handler)
+logger.setLevel(logging.DEBUG)
+```
+
+This gives the coloured output shown in <IRef iref="fig-coloured-logs-example-in-python" />.
+
+<Image iref="fig-coloured-logs-example-in-python" src={import('./_assets/coloured-logs-example-in-python.webp')} width="800px">An example of coloured logs in Python using the colorlog library.</Image>
