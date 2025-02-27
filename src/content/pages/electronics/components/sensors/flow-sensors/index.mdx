@@ -96,7 +96,7 @@ There are three wires:
 * Black: GND
 * Yellow: Signal
 
-The yellow signal wire outputs a digital signal.
+The yellow signal wire outputs a digital signal which transitions between high and low a fixed number of times per revolution of the impeller (using the hall effect sensor). It has a duty cycle of 50%+-10%.
 
 <Image src={import('./_assets/flow-sensor-oscilloscope-waveform.webp')} width="700px">A waveform from an oscilloscope showing the output of a YF-B6 flow sensor when blowing through it. The air speed was slowing down from left to right.</Image>
 
@@ -146,7 +146,7 @@ The differences between the YF-Bx and G1&x families are:
 <Image src={import('./_assets/yf-b6-flow-sensor-photo-outside-and-inside.webp')} width="1000px">Photo of the outside and inside of the YF-B6 flow sensor.</Image>
 
 
-<IRef iref="tbl-yf-bx-specs" /> shows the core specifications for the flow sensors in the YF-Bx and G1&x families.
+<IRef iref="tbl-yf-bx-specs" /> shows the core specifications for the flow sensors in the YF-Bx and G1&x families. For the frequency equation, $F$ is the frequency of the hall effect signal in Hz, $Q$ is the flow rate in L/min.
 
 <table data-iref="tbl-yf-bx-specs">
   <thead>
@@ -155,6 +155,7 @@ The differences between the YF-Bx and G1&x families are:
       <th>Dimensions (DN)</th>
       <th>Working Voltage</th>
       <th>Flow Rate Range</th>
+      <th>Frequency Eq.</th>
       <th>Length</th>
       <th>Male &amp; Female</th>
       <th>Length of Thread</th>
@@ -167,6 +168,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN15</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 25L/min</td>
+      <td>-</td>
       <td>44mm</td>
       <td>Double Male</td>
       <td>10mm</td>
@@ -177,6 +179,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN15</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 25L/min</td>
+      <td>-</td>
       <td>50mm</td>
       <td>Male in Female out</td>
       <td>10mm</td>
@@ -187,6 +190,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN15</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 25L/min</td>
+      <td>-</td>
       <td>66mm</td>
       <td>Double Male</td>
       <td>18mm</td>
@@ -197,6 +201,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN15</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 25L/min</td>
+      <td>-</td>
       <td>66mm</td>
       <td>Male in Female out</td>
       <td>10mm</td>
@@ -207,6 +212,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN20</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 30L/min</td>
+      <td>F=6.6*Q</td>
       <td>50mm</td>
       <td>Double Male</td>
       <td>10mm</td>
@@ -217,6 +223,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN20</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 30L/min</td>
+      <td>F=6.6*Q</td>
       <td>60mm</td>
       <td>Double Male</td>
       <td>11mm</td>
@@ -227,6 +234,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN15</td>
       <td>5V to 15V(DC)</td>
       <td>1 to 25L/min</td>
+      <td>-</td>
       <td>66mm</td>
       <td>Double Male</td>
       <td>10mm</td>
@@ -237,9 +245,10 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN15</td>
       <td>5V to 24V(DC)</td>
       <td>1 to 30L/min</td>
-      <td></td>
+      <td>-</td>
+      <td>-</td>
       <td>Double Male</td>
-      <td></td>
+      <td>-</td>
       <td>Plastic</td>
     </tr>
     <tr>
@@ -247,9 +256,10 @@ The differences between the YF-Bx and G1&x families are:
       <td>DN20</td>
       <td>5V to 24V(DC)</td>
       <td>1 to 60L/min</td>
-      <td></td>
+      <td>-</td>
+      <td>-</td>
       <td>Double Male</td>
-      <td></td>
+      <td>-</td>
       <td>Plastic</td>
     </tr>
     <tr>
@@ -260,6 +270,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>-</td>
       <td>-</td>
       <td>-</td>
+      <td>-</td>
       <td>Plastic</td>
     </tr>
     <tr>
@@ -267,6 +278,7 @@ The differences between the YF-Bx and G1&x families are:
       <td>-</td>
       <td>5V to 24V(DC)</td>
       <td>0.3 to 6L/min</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>-</td>

@@ -178,6 +178,16 @@ SQL Server offers both `datetime` and `datetime2` data types for storing date an
 
 Data in the database is stored in two different types of files, primary data files with the `.mdf` extension and secondary data files with the `.ndf` extension. Logs are stored in files with the `.ldf` extension.[^wikipedia-microsoft-sql-server]
 
+### Communicating with SQL Server from Python
+
+The `pyodbc` library is a popular library for communicating with SQL Server from Python.
+
+```bash
+pip install pyodbc
+```
+
+You also have to install the Microsoft ODBC Driver for SQL Server from [here](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16). Drivers are available for Windows, Linux and macOS. This driver is used by `pyodbc` to communicate with the database.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}

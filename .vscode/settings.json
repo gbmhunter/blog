@@ -1134,6 +1134,7 @@
         "PWSON",
         "pygments",
         "pynrfjprog",
+        "pyodbc",
         "pyplot",
         "pyproject",
         "pytest",
