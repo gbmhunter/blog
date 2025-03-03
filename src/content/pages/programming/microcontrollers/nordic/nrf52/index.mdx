@@ -1,0 +1,119 @@
+---
+authors: [gbmhunter]
+date: 2025-03-03
+description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-03-03
+tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4]
+title: nRF52
+type: page
+---
+
+The _nRF52 Series_ is a family of SoCs by [Nordic Semiconductor](/programming/microcontrollers/nordic/). Two of their core features are [Bluetooth](/electronics/communication-protocols/bluetooth/) and low-energy operation. They feature a 32-bit ARM Cortex-M4 CPU.
+
+<Image iref="fig-nrf52840-ic-photo" src={import('./_assets/nrf52840-ic-photo.webp')} width="200px">A photo of the nRF52840 SoC IC.[^nordic-semi-nrf52840-product-page]</Image>
+
+The nRF52 series supports the following wireless protocols with it's RF radio:[^nordic-semi-nrf52840-product-page]
+
+* [Bluetooth 5.4](/electronics/communication-protocols/bluetooth/)
+* Bluetooth LE
+* Bluetooth mesh
+* Thread
+* Zigbee
+* 802.15.4
+* ANT
+* 2.4GHz proprietary protocols
+
+The nRF52840 is likely the most popular MCU in the series and is the most advanced variant in terms of features.[^nordic-semi-nrf52840-product-page] It has a 64MHz Cortex-M4 CPU with FPU, 1MB flash and 256kB RAM.
+
+The nRF52 series has good support for using the [Zephyr framework](/programming/operating-systems/zephyr/) to develop the firmware, as is officially backed by Nordic Semiconductor. Zephyr provides a RTOS, peripheral drivers and utility API. There are many project examples and guides available for using Zephyr with the nRF52.
+
+## GPIO Pins
+
+<IRef iref="fig-nrf52-gpio-port-pin-internal-architecture" /> shows the internal architecture of a GPIO pin on the nRF52 series MCU.
+
+<Image iref="fig-nrf52-gpio-port-pin-internal-architecture" src={import('./_assets/nrf52-gpio-port-pin-internal-architecture.webp')} width="1000px">The internal architecture of a GPIO pin on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+### GPIO Drive Strength
+
+The GPIO pins can be configured in two different drive strengths, standard drive and high drive. <IRef iref="tbl-nrf52-gpio-pin-current-limits" /> shows the current limits for the GPIO pins when configured in standard drive and high drive. The current limits depend on the supply voltage and are also characterized for different output levels (e.g. 0.4 V is considered the max. for a logic low).
+
+<table data-iref="tbl-nrf52-gpio-pin-current-limits">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Typ</th>
+      <th>Max</th>
+      <th>Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$I_{OL,SD}$</td>
+      <td>Current at $V_{SS}$+0.4 V, output set low, standard drive, $V_{DD}$ ≥ 1.7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4</td>
+      <td>mA</td>
+    </tr>
+    <tr>
+      <td>$I_{OL,HDH}$</td>
+      <td>Current at $V_{SS}$+0.4 V, output set low, high drive, $V_{DD}$ ≥ 2.7 V</td>
+      <td>6</td>
+      <td>10</td>
+      <td>15</td>
+      <td>mA</td>
+    </tr>
+    <tr>
+      <td>$I_{OL,HDL}$</td>
+      <td>Current at $V_{SS}$+0.4 V, output set low, high drive, $V_{DD}$ ≥ 1.7 V</td>
+      <td>-</td>
+      <td>3</td>
+      <td>-</td>
+      <td>mA</td>
+    </tr>
+    <tr>
+      <td>$I_{OH,SD}$</td>
+      <td>Current at $V_{DD}$-0.4 V, output set high, standard drive, $V_{DD}$ ≥ 1.7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4</td>
+      <td>mA</td>
+    </tr>
+    <tr>
+      <td>$I_{OH,HDH}$</td>
+      <td>Current at $V_{DD}$-0.4 V, output set high, high drive, $V_{DD}$ ≥ 2.7 V</td>
+      <td>6</td>
+      <td>9</td>
+      <td>14</td>
+      <td>mA</td>
+    </tr>
+    <tr>
+      <td>$I_{OH,HDL}$</td>
+      <td>Current at $V_{DD}$-0.4 V, output set high, high drive, $V_{DD}$ ≥ 1.7 V</td>
+      <td>-</td>
+      <td>3</td>
+      <td>-</td>
+      <td>mA</td>
+    </tr>
+  </tbody>
+  <caption>GPIO pin output current limits.[^nordic-semi-nrf52840-datasheet]</caption>
+</table>
+
+When using the [Zephyr framework](/programming/operating-systems/zephyr/) for writing firmware, Zephyr provides nRF specific GPIO flags for controlling the drive strength. The drive strength is individually configurable for both a logic low and a logic high output. This is done with the following macros, which set the upper 8 bits of the `gpio_dt_flags_t` struct:[^zephyr-docs-nrf-specific-gpio-flags]
+
+* `NRF_GPIO_DRIVE_S0`: Logic low, standard drive
+* `NRF_GPIO_DRIVE_H0`: Logic low, high drive
+* `NRF_GPIO_DRIVE_S1`: Logic high, standard drive
+* `NRF_GPIO_DRIVE_H1`: Logic high, high drive
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nordic-semi-nrf52840-product-page]: Nordic Semiconductor. _Products / nRF52840_ [product page]. Retrieved 2025-03-03, from https://www.nordicsemi.com/Products/nRF52840.
+[^nordic-semi-nrf52840-datasheet]: Nordic Semiconductor (2024, Oct 1). _nRF52840 - Product Specification - v1.11_ [datasheet]. Retrieved 2025-03-03, from https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html.
+[^zephyr-docs-nrf-specific-gpio-flags]: Zephyr Project (2025, Mar 3). _Device Driver APIs > GPIO Driver APIs > nRF-specific GPIO Flags_ [documentation]. Retrieved 2025-03-03, from https://docs.zephyrproject.org/apidoc/latest/group__gpio__interface__nrf.html.
