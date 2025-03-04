@@ -33,23 +33,20 @@ if (transpose.enable) {
   // Create a row for each object in the data
   rows = data.map(row => Object.values(row));
 }
-console.log('headers', headers);
-console.log('rows', rows);
-
 ---
 
 <table data-iref={iref}>
   <thead>
     <tr>
-      {headers.map((key, index) => (
+      {headers.map((key) => (
         <th>{key}</th>
       ))}
     </tr>
   </thead>
   <tbody>
-    {rows.map((row, rowIndex) => (
+    {rows.map((row) => (
       <tr>
-        {row.map((value, colIndex) => (
+        {row.map((value) => (
           <td>{value}</td>
         ))}
       </tr>
