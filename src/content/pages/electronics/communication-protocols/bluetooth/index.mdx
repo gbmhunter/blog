@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-11-20
+lastUpdated: 2025-03-06
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG]
 title: Bluetooth
 type: page
@@ -18,6 +18,10 @@ Bluetooth is a collection of short range wireless communication protocols. The B
 <Aside type="tip">
 Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link.[^sig-origin-of-name]
 </Aside>
+
+## Child Pages
+
+<ChildPages />
 
 ## Piconet And Scatternets
 
@@ -90,7 +94,7 @@ Bluetooth Mesh data packets can be up to 384 bytes.
 
 ### Packet Delivery
 
-Packets are not routed in a Bluetooth mesh, but instead use _flooding_. Packets are not sent through a particular sequence of nodes to reach the destination, nor are routing tables kept by any of the nodes. Instead, nodes can be designated as _relays_ receive the message and re-broadcast it to everyone in range. Any relays receiving this will then re-broadcast it again, and so on. Nodes keep track of the packet ID so that they do not re-transmit a message they have already received and transmitted before. This method of _flooding_ is intended to keep the network simple and resilient to node failure. If nodes acted as routers, their failure might have a significant impact on the network[^sig-intro-to-mesh-part-2].
+Packets are not routed in a Bluetooth mesh, but instead use _flooding_. Packets are not sent through a particular sequence of nodes to reach the destination, nor are routing tables kept by any of the nodes. Instead, nodes can be designated as _relays_ receive the message and re-broadcast it to everyone in range. Any relays receiving this will then re-broadcast it again, and so on. Nodes keep track of the packet ID so that they do not re-transmit a message they have already received and transmitted before. This method of _flooding_ is intended to keep the network simple and resilient to node failure. If nodes acted as routers, their failure might have a significant impact on the network.[^sig-intro-to-mesh-part-2]
 
 ### Latencies
 
@@ -109,7 +113,7 @@ Two types of encryption keys:
 
 The CH9141 is a serial-to-Bluetooth BLE bridge IC made by Nanjing Qinheng Microelectronics Co., Ltd. that allows for "transparent" serial communication over Bluetooth. It supports broadcast, host and slave mode.[^wch-ch9141-product-page] It looks like there is not many suppliers for this IC, and much of the information is not in English.
 
-<Image src={import('./_assets/ch9141-ble-bridge-application-diagram.webp')} width="600px">A typical application diagram from the CH9141 BLE bridge IC[^wch-ch9141-product-page].</Image>
+<Image src={import('./_assets/ch9141-ble-bridge-application-diagram.webp')} width="600px">A typical application diagram from the CH9141 BLE bridge IC.[^wch-ch9141-product-page]</Image>
 
 ## Chipsets
 
