@@ -13,19 +13,19 @@ type: page
 
 <Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300">The Bluetooth icon/logo.</Image>
 
-Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards.[^bib-wikipedia-bluetooth-sig] The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
+Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards.[^wikipedia-bluetooth-sig] The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
 <Aside type="tip">
-Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link.[^bib-sig-origin-of-name]
+Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link.[^sig-origin-of-name]
 </Aside>
 
 ## Piconet And Scatternets
 
-A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in a inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state.[^bib-wikipedia-piconet]
+A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in a inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state.[^wikipedia-piconet]
 
 Both active and parked slaves in a Piconet are time-synchronized to the master so that RF contention does not occur (they implement a Time Division Multiple Access (TDMA) network).
 
-A _Scatternet_ is two or more independent Piconets which are connected together by one node in one Piconet (either the master or a slave) also acting as a slave in the second Piconet.[^bib-garg-bluetooth]
+A _Scatternet_ is two or more independent Piconets which are connected together by one node in one Piconet (either the master or a slave) also acting as a slave in the second Piconet.[^garg-bluetooth]
 
 ## Advanced Audio Distribution Profile (A2DP)
 
@@ -90,11 +90,11 @@ Bluetooth Mesh data packets can be up to 384 bytes.
 
 ### Packet Delivery
 
-Packets are not routed in a Bluetooth mesh, but instead use _flooding_. Packets are not sent through a particular sequence of nodes to reach the destination, nor are routing tables kept by any of the nodes. Instead, nodes can be designated as _relays_ receive the message and re-broadcast it to everyone in range. Any relays receiving this will then re-broadcast it again, and so on. Nodes keep track of the packet ID so that they do not re-transmit a message they have already received and transmitted before. This method of _flooding_ is intended to keep the network simple and resilient to node failure. If nodes acted as routers, their failure might have a significant impact on the network[^bib-sig-intro-to-mesh-part-2].
+Packets are not routed in a Bluetooth mesh, but instead use _flooding_. Packets are not sent through a particular sequence of nodes to reach the destination, nor are routing tables kept by any of the nodes. Instead, nodes can be designated as _relays_ receive the message and re-broadcast it to everyone in range. Any relays receiving this will then re-broadcast it again, and so on. Nodes keep track of the packet ID so that they do not re-transmit a message they have already received and transmitted before. This method of _flooding_ is intended to keep the network simple and resilient to node failure. If nodes acted as routers, their failure might have a significant impact on the network[^sig-intro-to-mesh-part-2].
 
 ### Latencies
 
-Bluetooth mesh latency depends on the payload size, number of nodes (incl. number of relays) and the connection topology. You can expect round-trip latencies of around 50ms for packets with an 8 byte payload that go through 3 hops[^bib-silicon-labs-bluetooth-mesh-performance]. Silicon Labs has a great application note, [AN1137: Bluetooth Mesh Network Performance](https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf) which goes into mesh latencies in more detail.
+Bluetooth mesh latency depends on the payload size, number of nodes (incl. number of relays) and the connection topology. You can expect round-trip latencies of around 50ms for packets with an 8 byte payload that go through 3 hops[^silicon-labs-bluetooth-mesh-performance]. Silicon Labs has a great application note, [AN1137: Bluetooth Mesh Network Performance](https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf) which goes into mesh latencies in more detail.
 
 ### Encryption
 
@@ -131,12 +131,12 @@ The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PC
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^bib-sig-intro-to-mesh-part-2]: Martin Woolley (2017, Aug 1). _BlueTooth Blog - An Intro to Bluetooth Mesh Part 2_. BlueTooth SIG. Retrieved 2023-05-24, from https://www.bluetooth.com/blog/an-intro-to-bluetooth-mesh-part2/.
-[^bib-silicon-labs-bluetooth-mesh-performance]: Silicon Labs. _AN1137: Bluetooth Mesh Network Performance_. Retrieved 2023-05-24, from https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf.
-[^bib-wikipedia-bluetooth-sig]: Wikipedia (2023, Apr 27). _Bluetooth Special Interest Group_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Bluetooth_Special_Interest_Group.
-[^bib-sig-origin-of-name]: Bluetooth SIG. _About Us - Origin of the Bluetooth Name_. Retrieved 2023-05-24, from https://www.bluetooth.com/about-us/bluetooth-origin/.
-[^bib-wikipedia-piconet]: Wikipedia (2021, May 16). _Piconet_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Piconet.
-[^bib-garg-bluetooth]: Vijay K. Garg (2007). _Wireless Personal Area Network — Bluetooth_. Wireless Communications & Networking. Retrieved 2023-05-24, from https://www.sciencedirect.com/book/9780123735805/wireless-communications-and-networking. 
+[^sig-intro-to-mesh-part-2]: Martin Woolley (2017, Aug 1). _BlueTooth Blog - An Intro to Bluetooth Mesh Part 2_. BlueTooth SIG. Retrieved 2023-05-24, from https://www.bluetooth.com/blog/an-intro-to-bluetooth-mesh-part2/.
+[^silicon-labs-bluetooth-mesh-performance]: Silicon Labs. _AN1137: Bluetooth Mesh Network Performance_. Retrieved 2023-05-24, from https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf.
+[^wikipedia-bluetooth-sig]: Wikipedia (2023, Apr 27). _Bluetooth Special Interest Group_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Bluetooth_Special_Interest_Group.
+[^sig-origin-of-name]: Bluetooth SIG. _About Us - Origin of the Bluetooth Name_. Retrieved 2023-05-24, from https://www.bluetooth.com/about-us/bluetooth-origin/.
+[^wikipedia-piconet]: Wikipedia (2021, May 16). _Piconet_. Retrieved 2023-05-24, from https://en.wikipedia.org/wiki/Piconet.
+[^garg-bluetooth]: Vijay K. Garg (2007). _Wireless Personal Area Network — Bluetooth_. Wireless Communications & Networking. Retrieved 2023-05-24, from https://www.sciencedirect.com/book/9780123735805/wireless-communications-and-networking. 
 [^argenox-ble-advertising-primer]: Argenox. _BLE Advertising Primer_. Retrieved 2024-02-27, from https://www.argenox.com/library/bluetooth-low-energy/ble-advertising-primer/.
 [^silicon-labs-optimizing-current-ble]: Silicon Labs. _Optimizing Current Consumption in Bluetooth Low Energy Devices_. Retrieved 2024-04-30, from https://docs.silabs.com/bluetooth/3.2/general/system-and-performance/optimizing-current-consumption-in-bluetooth-low-energy-devices.
 [^wch-ch9141-product-page]: Nanjing Qinheng Microelectronics Co., Ltd. _Bluetooth serial port transparent chip: CH9141_. Retrieved 2024-11-20, from https://www.wch-ic.com/products/CH9141.html.
