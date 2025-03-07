@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-01-14
+lastUpdated: 2025-03-06
 tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation]
 title: Zephyr
 type: page
@@ -1529,7 +1529,7 @@ You can statically configure your GPIO as an output in your `.dts` file by using
 };
 ```
 
-You can configure a GPIO as an output at runtime in C with:
+You can configure a GPIO as an output at runtime (my preferred method, I don't like the device tree!) in C with:
 
 ```c
 int intRc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_INACTIVE);
@@ -1549,6 +1549,20 @@ __ASSERT_NO_MSG(rc == 0);
 `GPIO_OUTPUT_LOW` and `GPIO_OUTPUT_HIGH` both set the physical state of the pin, and do not care if the pin is active high or active low. `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` take into account whether the pin is active high or active low. In the case the pin is active high, setting the pin to a logical level of `INACTIVE` results in a physical `LOW`, and `ACTIVE` is `HIGH`. In the case it is active low, `INACTIVE`
 
 If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
+
+The `gpio_pin_configure_dt()` function can also accept SoC specific flags. Some use cases for SoC specific flags are for configuring things like drive strength and enabling internal pull-up/pull-down [resistors](/electronics/components/resistors/). For example, the following code is used to configure a GPIO pin in the nRF52 SoC family with high drive (when both low or high):
+
+```c
+#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h> // Needed for the NRF_GPIO_DRIVE_H0H1 macro
+
+int rc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_HIGH | NRF_GPIO_DRIVE_H0H1);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+You can read more information about nRF specific flags on the [nRF52 page](/programming/microcontrollers/nordic/nrf52/).
+
+
+#### GPIO Inputs
 
 To read the value of a GPIO input, use `gpio_pin_get_dt()`:
 
