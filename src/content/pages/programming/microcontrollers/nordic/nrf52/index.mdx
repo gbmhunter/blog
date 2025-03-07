@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-03-03
 description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-03-03
-tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4]
+lastUpdated: 2025-03-06
+tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength]
 title: nRF52
 type: page
 ---
@@ -109,6 +109,25 @@ When using the [Zephyr framework](/programming/operating-systems/zephyr/) for wr
 * `NRF_GPIO_DRIVE_S1`: Logic high, standard drive
 * `NRF_GPIO_DRIVE_H1`: Logic high, high drive
 
+These flags are defined in the Zephyr repo under `zephyr/include/zephyr/dt-bindings/gpio/nordic-nrf-gpio.h`. For example, the following code is used to configure a GPIO pin with high drive in both directions using the `gpio_pin_configure_dt()` function:
+
+```c
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h> // Needed for the NRF_GPIO_DRIVE_H0H1 macro
+
+// Update the PATH according to your .dts file(s)
+const struct gpio_dt_spec l_myGpio = GPIO_DT_SPEC_GET(DT_PATH(outputs, myGpio), gpios);
+
+int main() {
+    // Configure the GPIO pin as output, defaulting to low, with high drive in both directions. Other flags can be ORed in here too as needed.
+    int intRc = gpio_pin_configure_dt(&l_myGpio, GPIO_OUTPUT_INACTIVE | NRF_GPIO_DRIVE_H0H1);
+    __ASSERT_NO_MSG(intRc == 0);
+}
+```
+
+<Aside type="tip">
+You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
+</Aside>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
