@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-03-03
 description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-03-06
-tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength]
+lastUpdated: 2025-03-13
+tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength, comparators, COMP, SAADC]
 title: nRF52
 type: page
 ---
@@ -128,6 +128,45 @@ int main() {
 <Aside type="tip">
 You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
 </Aside>
+
+### Successive Approximation ADC (SAADC)
+
+The nRF52 series MCUs have a 12-bit successive approximation [ADC](/electronics/components/analogue-to-digital-converters-adcs/) peripheral called `SAADC`. This peripheral can be used to convert analogue voltages on the `AIN0-AIN7` pins to digital values. It can be used in single ended mode or differential mode. <IRef iref="fig-saadc-internal-block-diagram-nrf52" /> shows the internal block diagram of the SAADC peripheral.
+
+<Image iref="fig-saadc-internal-block-diagram-nrf52" src={import('./_assets/saadc-internal-block-diagram-nrf52.webp')} width="800px">The internal block diagram of the SAADC peripheral on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+The accumulator in the SAADC can be to find the average of multiple samples (oversampling). This is used to improve the SNR of the data. Oversampling can be configured with the `OVERSAMPLE` register. `2^OVERSAMPLE` samples are averaged together before one result is written to memory. The `DONE` event is triggered for each input sample, and the `RESULTDONE` event is triggered once per averaged sample written to memory.
+
+<Aside type="tip">
+Oversampling does not improve over sources of error, such as integral non-linearity (INL) or differential non-linearity (DNL).[^nordic-semi-nrf52840-datasheet]
+</Aside>
+
+`SAADC` uses EasyDMA to write conversion results to RAM memory.
+
+The `SAADC` peripheral cannot generate events when the converted value crosses a threshold. If you need this functionality, look at using the comparator peripheral (`COMP`) instead. The same analog input pin cannot be used for both `SAADC` and `COMP` peripherals at the same time.
+
+### Comparator (COMP)
+
+The nRF52 series MCUs have a comparator peripheral called `COMP`. Much like [discrete analogue comparator ICs](/electronics/components/comparators/), this peripheral can be used to compare one input voltage (`VIN+`) against another input voltage (`VIN-`), and can generate events (e.g. raise an interrupt) depending on the result (whether it is higher or lower than the other). `VIN+` can be any of the analog input pins `AIN0-AIN7`. `VIN-` can be any of the analog input pins (differential mode) or from `VREF`, which in turn can be derived from `VDD`, `AIN0-AIN7`, or internal 1.2V, 1.8V or 2.4V references. It's internal block diagram is shown in <IRef iref="fig-comparator-diagram-nrf52" />.
+
+<Image iref="fig-comparator-diagram-nrf52" src={import('./_assets/comparator-diagram-nrf52.webp')} width="600px">The internal architecture of the comparator peripheral on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+Events can be generated from:[^nordic-semi-nrf52840-datasheet]
+
+* `UP` on `VIN-` > `VIN+`
+* `DOWN` on `VIN-` < `VIN+`
+* `CROSS` on `VIN-` crossing `VIN+`
+* `READY` event when core and internal reference are ready.
+
+These built-in events make comparator great for simple analogue change detection. The ADC peripheral (`SAADC`) does not have these events, so if using an ADC instead you would need to continuously poll the ADC result and compare it using CPU time (which would both be higher power and a potential waste of CPU processing time).
+
+The comparator peripheral has configurable hysteresis to prevent false events due to noise on the inputs. In differential mode, the hysteresis is set through the `HYST` register and can either be set to disabled or a fixed 50mV. In single ended mode, hysteresis can be set using `VUP` and `VDOWN` thresholds. The up and down thresholds in single ended mode offer much more flexibility than the `HYST` register available in differential mode.
+
+The comparator peripheral have different speed modes, which also determine the power consumption. The speed modes are set using the `MODE` register. The different modes are:
+
+* Low-power mode
+* Normal mode
+* High-speed mode
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
