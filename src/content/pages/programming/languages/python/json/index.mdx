@@ -1,0 +1,93 @@
+---
+authors: [gbmhunter]
+date: 2025-03-12
+description: How to use JSON in Python.
+lastUpdated: 2025-03-12
+tags: [Python, JSON, data, programming, strings, encoding, decoding]
+title: Using JSON in Python
+type: page
+---
+
+JSON (JavaScript Object Notation) is a human-readable data interchange format that is supported by most programming languages. Python has built-in support for JSON via the `json` module.[^python-docs-json] This module can be used to encode and decode JSON data (serialize and deserialize).
+
+## Importing
+
+To use the `json` module, you need to import it:
+
+```python
+import json
+```
+
+## Basic Encoding and Decoding
+
+There are two basic ways for encoding and decoding JSON data. You can either encode to string or to a file directly.
+
+### Using Strings
+
+Encoding a JSON string from a Python object can be done with the `json.dumps()` (dump to string) function.
+
+```python
+# A simple Python object (dictionary)
+python_object = {
+    "name": "John",
+    "age": 30,
+    "city": "Auckland"
+}
+
+# Encode the Python object to a JSON string
+json_string = json.dumps(python_object)
+
+print(json_string)
+# The JSON string will be:
+# {"name": "John", "age": 30, "city": "Auckland"}
+```
+
+To decode a JSON string to a Python object (i.e. go the other way), use the `json.loads()` (load from string) function.
+
+```python
+# A JSON string
+json_string = '{"name": "John", "age": 30, "city": "Auckland"}'
+
+# Decode the JSON string to a Python object (this will end up as a dictionary)
+python_object = json.loads(json_string)
+
+print(python_object)
+# The Python object will be:
+# {'name': 'John', 'age': 30, 'city': 'Auckland'}
+```
+
+### Using File Objects
+
+To encode a Python object to a JSON string and save it to a file, use the `json.dump()` (note there is no 's' at the end of the function name) function, passing in a file object that is writeable. A common way to create a file object is to open a file in write mode with the `with` statement.
+
+```python
+# A Python object
+python_object = {
+    "name": "John",
+    "age": 30,
+    "city": "Auckland"
+}
+
+# Open a file for writing
+with open('data.json', 'w') as file:
+    # Write the Python object to the file
+    json.dump(python_object, file)
+```
+
+## Compact Encoding
+
+Compact encoding can be done by passing `separators=(',', ':')` to the `json.dumps()` function.
+
+```python
+json_string = json.dumps(python_object, separators=(',', ':'))
+
+print(json_string)
+# The JSON string will be (note the lack of spaces):
+# {"name":"John","age":30,"city":"Auckland"}
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^python-docs-json]: Python.org. _3.13.2 Documentation » The Python Standard Library » Internet Data Handling » json — JSON encoder and decoder_ [documentation]. Retrieved 2025-03-12, https://docs.python.org/3/library/json.html.

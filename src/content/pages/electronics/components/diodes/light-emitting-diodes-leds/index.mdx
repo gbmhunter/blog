@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: Light-emitting diodes (LEDs) are basic active electronic components which when provided with voltage and current emit light using a diode. This page covers schematic symbols, equations, types, forward voltages, design hints and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-08-19
-tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB, Zynq]
+lastUpdated: 2025-03-10
+tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB, Zynq, PCO, photocatalytic oxidation, PCO, germicidal, UVC]
 title: Light-emitting Diodes (LEDs)
 type: page
 ---
@@ -333,8 +333,17 @@ UV LEDs are used for applications such as:
 * UV curing (UVA: 365-405nm)
 * 3D printing/additive manufacturing
 * Disinfection and sterilization (UVC: 220-280nm)
+* Photocatalytic oxidation (PCO) (which is related to sterilization)
 * Fluorescence
 
+UVC light is especially effective at killing bacteria and viruses (germicidal effect). <IRef iref="fig-germicidal-effectiveness-of-uv-light-graph" /> shows the germicidal effectiveness of UV light vs. it's wavelength.
+
+<Image iref="fig-germicidal-effectiveness-of-uv-light-graph" src={import('./_assets/germicidal-effectiveness-of-uv-light-graph.webp')} width="600px">The germicidal effectiveness of UV light vs. wavelength. Note how it is highest in the UVC range and peaks around 260-270nm.[^gryko-impact-time-temperature-uvc-leds]</Image>
+
+UV LEDs are used in photocatalytic oxidation (PCO) systems. This is where the UV light is shined onto a photocatalytic substrate, typically titanium dioxide (TiO2). The TiO2 generates free radicals (OH hydroxyl radicals) which are able to perform oxidation reactions. Titanium oxide PCO has a energy band gap centered around 360nm, which is in the middle of the UV-A range.[^sanuvox-about-pco] <IRef iref="fig-photocatalytic-oxidation-diagram" /> shows a diagram of the process.
+
+<Image iref="fig-photocatalytic-oxidation-diagram" src={import('./_assets/photocatalytic-oxidation-diagram.webp')} width="800px">A diagram showing the photocatalytic oxidation process.[^philips-indoor-air-purification-and-disinfection]</Image>
+ 
 ## LED Controllers
 
 LED controllers are ICs designed specifically to make driving LEDs easier, by providing the correct current for the LEDs to operate and off-loading the processing power which would otherwise have to be done on a microcontroller. They normally allow you to control both the current and the PWM rate for each LED (to control both the brightness and colour). Some are specially designed for RGB LEDs.
@@ -541,3 +550,6 @@ The first commercially viable blue LED was developed by Shuji Nakamura (along wi
 [^azo-materials-nobel-prize-in-physics-2014]: Alexander Chilton (2014, Oct 10). _Nobel Prize in Physics 2014: Why Were Blue LEDs so Hard to Make?_ [article]. Azo Materials. Retrieved 2025-01-11, from https://www.azom.com/article.aspx?ArticleID=11451.
 [^illare-history-of-led]: Illare. _History of LED_. Retrieved 2025-01-11, from https://illare.com/knowledge/history-of-led/.
 [^don-klipstein-led-types-by-color-brightness-chemistry]: Don Klipstein. _LED Types by Color, Brightness, and Chemistry_. Retrieved 2025-01-13, from https://donklipstein.com/ledc.html.
+[^sanuvox-about-pco]: Normand Brais. _About PCO: Photocatalytic Oxidation_ [article]. Sanuvox. Retrieved 2025-03-10, from https://sanuvox.com/en/blog/about-pco-photocatalytic-oxidation/.
+[^gryko-impact-time-temperature-uvc-leds]: Gryko, Lukasz & Blaszczak, Urszula & Zajkowski, Maciej. (2023). The Impact of Time and Temperature of Operation on the Characteristics of High-Power UVC LEDs and Their Disinfection Efficiency. Applied Sciences. 13. 12886. 10.3390/app132312886.
+[^philips-indoor-air-purification-and-disinfection]: Philips. _Indoor Air Purification and Disinfection_ [article]. Retrieved 2025-03-10, from https://www.lighting.philips.com/application-areas/specialist-applications/special-lighting/purification-through-photocatalytic-oxidation.

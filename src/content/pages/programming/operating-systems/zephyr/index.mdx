@@ -2025,10 +2025,38 @@ int main() {
 }
 ```
 
-Data can be written to the NVS with the `nvs_write()` function.
+Data can be written to the NVS with the `nvs_write()` function which has the following signature:
 
 ```c
+ssize_t nvs_write	(
+    struct nvs_fs * fs,
+    uint16_t id,
+    const void * data,
+    size_t len 
+);
 ```
+
+Below is an example of writing a `MyData` structure to the NVS.
+
+```c
+#define MY_DATA_ID 0 // This is the ID
+
+typedef struct {
+    uint8_t sensorId;
+    uint32_t timestamp;
+    float temperature;
+} MyData;
+
+int main() {
+    MyData myData = {.sensorId = 1, .timestamp = k_uptime_get(), .temperature = 24.5};
+    ssize_t rc = nvs_write(fs, MY_DATA_ID, &myData, sizeof(myData));
+    __ASSERT_NO_MSG(rc == sizeof(myData));
+}
+```
+
+On success, `nvs_write()` will return the number of bytes written. On failure it will return a negative error code as defined by `errno.h`. Some of the more common error codes are:
+
+* `-ENOSPC`: Not enough space on the flash device.
 
 An official code example of the NVS can be found at https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c[^github-zephyr-nvs-code-example].
 
