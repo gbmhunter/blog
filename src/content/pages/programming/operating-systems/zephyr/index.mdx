@@ -1976,9 +1976,9 @@ i2s0_default_alt: i2s0_default_alt {
 
 ### Non-Volatile Storage
 
-Zephyr provides an feature rich API for storing things in non-volatile storage (flash memory). The NVS API is provided by `#include <zephyr/fs/nvs.h>`. It represents elements as id-data pairs.
+Zephyr provides an feature rich API for storing things in non-volatile storage (e.g. [flash memory](/electronics/components/memory/flash/)). The NVS API is provided by `#include <zephyr/fs/nvs.h>`. It represents elements as id-data pairs.
 
-To protect against data corruption if power is lost mid-write, the library makes sure there is always one complete copy of the data in flash at all times. The flash area is divided into sectors. Elements are written to the first sector until the sector is full, and then the next sector is prepared for writing. Many sectors can be "active" at once.[^zephyr-docs-nvs]
+To protect against data corruption if power is lost mid-write, the library makes sure there is always one complete copy of the data in flash at all times. The flash area is divided into sectors. Elements are written to the first sector until the sector is full, and then the next sector is prepared for writing (i.e. erased). Many sectors can be "active" at once.[^zephyr-docs-nvs]
 
 <Aside type="note">
 Although different, Zephyr provides a similar service called the _Retention System_ for storing data whilst the device is powered on (i.e. it will persist across resets, but it will NOT persist across power cycles).
@@ -2025,6 +2025,8 @@ int main() {
 }
 ```
 
+#### Writing Data
+
 Data can be written to the NVS with the `nvs_write()` function which has the following signature:
 
 ```c
@@ -2036,7 +2038,7 @@ ssize_t nvs_write	(
 );
 ```
 
-Below is an example of writing a `MyData` structure to the NVS.
+`fs` is the file system object we created above. `id` is a user chosen ID for the data. Think of this as like a path to the file. It is recommended to store each data ID as a constant. It is up to you to make sure they are unique across your application. Below is an example of writing a `MyData` structure to the NVS.
 
 ```c
 #define MY_DATA_ID 0 // This is the ID
@@ -2057,6 +2059,48 @@ int main() {
 On success, `nvs_write()` will return the number of bytes written. On failure it will return a negative error code as defined by `errno.h`. Some of the more common error codes are:
 
 * `-ENOSPC`: Not enough space on the flash device.
+
+`nvs_write()` also checks the ID and incoming data before a write. If the provided data is identical to the data already in flash, no write is performed. This prevents unnecessary flash wear and improves the speed of the operation.
+
+<Aside type="caution">
+Be aware that a `nvs_write()` call may take a significant amount of time to run (> 10ms) if a new sector needs to be prepared for writing (i.e. erased). I recommend making use of threads to make sure high priority work is not blocked.
+</Aside>
+
+#### Reading Data
+
+Data can be read from the NVS with the `nvs_read()` function which has the following signature:
+
+```c
+ssize_t nvs_read(
+    struct nvs_fs * fs,
+    uint16_t id,
+    void * data,
+    size_t len);
+```
+
+It's syntax is very similar to `nvs_write()`. On success, `nvs_read()` will return the number of bytes read. If the return value is larger than the number of bytes requested, this means that more data is available. On error, a negative error code as defined by `errno.h` is returned. Here is an example of reading the `MyData` structure from the NVS.
+
+```c
+MyData myData;
+ssize_t rc = nvs_read(fs, MY_DATA_ID, &myData, sizeof(myData));
+__ASSERT_NO_MSG(rc == sizeof(myData));
+```
+
+#### Calculating Free Space
+
+`nvs_calc_free_space()` can be used to calculate the remaining number of bytes that can be still written to the file system.
+
+```c
+ssize_t freeSpace = nvs_calc_free_space(fs);
+__ASSERT_NO_MSG(freeSpace >= 0);
+printk("Free space: %d bytes\n", freeSpace);
+```
+
+On error, `nvs_calc_free_space()` returns a negative error code as defined by `errno.h`.
+
+<Aside type="tip">
+`ssize_t` is made available via `#include <sys/types.h>`.
+</Aside>
 
 An official code example of the NVS can be found at https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c[^github-zephyr-nvs-code-example].
 
