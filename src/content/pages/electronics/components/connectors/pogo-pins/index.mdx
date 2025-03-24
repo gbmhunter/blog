@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-02-21
 description: Pogo pins (a.k.a. spring loaded connectors) are a type of connector which make electrical contact via a spring loaded mechanism.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-02-21
-tags: [electronics, connectors, electronic components, pogo pins, spring loaded connectors]
+lastUpdated: 2025-03-24
+tags: [electronics, connectors, electronic components, pogo pins, spring loaded connectors, TagConnect, Wurth Elektronik, REDFIT, IDC, SKEDD]
 title: Pogo Pins (Spring Loaded Connectors)
 type: page
 ---
@@ -21,8 +21,23 @@ They are commonly used in:
 * Wireless ear buds, to make electrical contact with the base unit for charging.
 * [Test jigs](/pcb-design/test-jigs/) to make electrical contact with a PCB during testing.
 
+## TagConnect
+
+TagConnect is a company and name of a range of pogo pin style connectors intended use with a PCB for programming and other development/production line related use.
+
+## Wurth Elektronik REDFIT IDC SKEDD
+
+Wurth Elektronik manufactures a range of pogo pin style connectors under the REDFIT IDC SKEDD brand name. SKEDD is the broad name for their pin style which allows connections to the circuit board without soldering. REDFIT IDC is the name of their IDC based connectors which use SKEDD pins. As of March 2025, REDFIT IDC was the only product family under the SKEDD umbrella. The connector accepts 1.27mm IDC (ribbon) cable. <IRef iref="fig-redfit-idc-skedd-pushing-into-pcb-model" /> shows a REDFIT IDC SKEDD connector pushing into a PCB.
+
+<Image iref="fig-redfit-idc-skedd-pushing-into-pcb-model" src={import('./_assets/redfit-idc-skedd-pushing-into-pcb-model.webp')} width="500px">A REDFIT IDC SKEDD connector pushing into a PCB.[^wurth-skedd-tech-advantages-application]</Image>
+
+<IRef iref="fig-skedd-contact-plating-of-pin" /> shows a close up of the contact plating of a single SKEDD pin. Notice also the shape of the forked pin tip, which is presumably so it locates itself in the PCB hole as it's pushed into the PCB.
+
+<Image iref="fig-skedd-contact-plating-of-pin" src={import('./_assets/skedd-contact-plating-of-pin.webp')} width="400px">A close up of the contact plating of a SKEDD pin.[^wurth-skedd-tech-advantages-application]</Image>
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^solarbotics-push-pogo-pin-6]: Solarbotics. _Push Pogo Pin 6 - 6 Point_ [product page]. Retrieved 2025-02-21, from https://www.solarbotics.com/product/pp6.
+[^wurth-skedd-tech-advantages-application]: Moritz Jakob & Stefan Schilpp. _SKEDD - Technology, Advantages & Application_. Wurth Elektronik. Retrieved 2025-03-24, from https://www.we-online.com/components/media/o210254v410%20ANE011b_EN.pdf.
