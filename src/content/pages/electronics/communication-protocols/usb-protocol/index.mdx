@@ -1,7 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-05
-lastUpdated: 2023-07-07
+description: USB (Universal Serial Bus) is a communication protocol for connecting electronic devices together.
+lastUpdated: 2025-03-26
 tags: [electronics, communication protocols, USB, master, slave, encoding, bus, OTG, TPL]
 title: USB Protocol
 type: page
@@ -44,6 +45,12 @@ A targeted peripheral list (TPL) is a list held by a USB host that names devices
 
 Embedded hosts and OTG systems MUST have a TPL.
 
+## USB Hubs
+
+A hub has exactly one upstream port and zero or more downstream ports.
+
+<Image src={import('./_assets/windows-too-many-usb-hubs.png')} width="500px">A Windows error dialog about too many USB hubs.</Image>
+
 ## Embedded Hosts (EH)
 
 An Embedded Host (EH) is a host that supports a limited number of peripheral types, rather than a conventional USB host that supports the full range of peripherals. The are typically implemented in embedded systems (PCBs with microcontrollers, FPGAs) while conventional hosts are found on desktop/laptop computers. Note that embedded computers, such as the RaspberryPi and BeagleBone, are Conventional Hosts, not Embedded Hosts.
@@ -62,7 +69,7 @@ Some embedded systems provide both USB host and USB device functions. They must 
 
 When a Embedded Host has turned off Vbus, it can detect if a device has been connected by using the _Attach Detection Protocol_. The EH measures the time it takes for a fixed current to charge the Vbus line to a specific voltage. If the time takes longer than expected, a device is present. This charge/discharge process repeats about every 1.75s.
 
-<Image src={import('./_assets/usb-adp-architecture-vbus-and-current-sources.png')} width="786px">The ADP architecture, showing Vbus, current sources, and the snesing logic. Image from On-The-Go and Embedded Host Supplement to the USB Revision 2.0 Specification: Revision 2.0 version 1.1a.</Image>
+<Image src={import('./_assets/usb-adp-architecture-vbus-and-current-sources.png')} width="786px">The ADP architecture, showing Vbus, current sources, and the sensing logic. Image from On-The-Go and Embedded Host Supplement to the USB Revision 2.0 Specification: Revision 2.0 version 1.1a.</Image>
 
 Support of the ADP is optional. Hubs do not support the ADP, and so a EH which does support ADP cannot detect a device if a hub is plugged in.
 

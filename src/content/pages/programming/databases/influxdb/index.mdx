@@ -1,0 +1,153 @@
+---
+authors: [gbmhunter]
+date: 2025-04-01
+description: InfluxDB is a popular time-series database (TSDB) developed by InfluxData. It is optimized for the storage and retrieval of time-series data such as metrics and IoT sensor data.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-04-01
+tags: [programming, databases, InfluxDB, tags, fields, InfluxData, Python, AWS, serverless, TSM, measurements, IoT, timeseries]
+title: InfluxDB
+type: page
+---
+
+<WarningIsNotes />
+
+InfluxDB is a popular time-series database (TSDB) developed by InfluxData. It is optimized for the storage and retrieval of time-series data such as metrics and IoT sensor data.
+
+InfluxDB organizes data into buckets. A bucket combines the concept of a database and retention policy (the amount of time data is kept in the database before being automatically deleted).[^influxdb-docs-data-elements]
+
+<Image src={import('./_assets/influx-db-logo.webp')} width="500px">The InfluxDB logo.</Image>
+
+Documentation for InfluxDB can be confusing. Often you will come across documentation which states "You are currently viewing documentation specific to InfluxDB Cloud powered by the TSM storage engine, which offers different functionality than InfluxDB Cloud Serverless powered by the v3 storage engine." (e.g. [here](https://docs.influxdata.com/influxdb/cloud/reference/key-concepts/data-elements/)).
+
+One interesting note is that as of April 2025, you cannot delete data from InfluxDB Cloud Serverless. This can be annoying and make it tricky to manage data if you incorrectly write the wrong thing (which typically happens many times over during initial development!). InfluxDB OSS v2 and InfluxDB Cloud (TSM) both support deleting data.[^influxdb-docs-cli-delete]
+
+## Interacting with InfluxDB Using Python
+
+There are two main libraries you should use:
+
+1. [influxdata/influxdb-client-python](https://github.com/influxdata/influxdb-client-python): Use this if you are using Influx 2.x.
+1. [InfluxCommunity/influxdb3-python](https://github.com/InfluxCommunity/influxdb3-python): Use this if you are using Influx 3.x.
+
+## InfluxDB 3.x
+
+InfluxDB 3 was designed to remove limitations present in the Time Structured Merge Tree (TSM) storage engine (used in what is called InfluxDB Cloud (TSM)). InfluxDB 3.x products no longer support the Flux query language. Instead, they support the InfluxQL query language (as well as native SQL support). All InfluxDB accounts and organizations created through cloud3.influxdata.com on or after January 31, 2023 are powered by InfluxDB 3.[^influxdb-docs-cloud-serverless-docs]
+
+### Data Concepts
+
+A measurement consists of multiple tags and fields. Each tag is an indexed key-value pair (the tag key and tag value). Each field is a non-indexed key-value pair (the field key and field value). Tags, being indexed, are faster to query than fields.
+
+### Interacting with InfluxDB 3.x Using Python
+
+Install `influxdb3-python` into your Python environment using pip:
+
+```bash
+pip install influxdb3-python
+```
+
+You will need to be using Python 3.6 or later. It is recommended to use 3.11 or later for the best support.[^github-influxdb3-python]
+
+<Aside type="tip">
+A optional but recommended dependency to also install is `pandas`. This will allow you to easily convert retrieved data into a pandas DataFrame. The examples below assume you have also installed `pandas` (`pip install pandas`). You can also provide `mode="pandas"` to the `client.query()` method to automatically convert the result into a pandas DataFrame, skipping the `to_pandas()` step after every query.
+</Aside>
+
+To initialize a client, you can use the following code:
+
+```python
+from influxdb_client import InfluxDBClient
+
+client = InfluxDBClient3(token="your-token",
+                         host="your-host",
+                         org="your-org",
+                         database="your-database")
+```
+
+<Aside type="tip">
+
+Windows users will also need to install `certifi` because gRPC cannot locate Windows root certificates automatically.
+
+```bash
+pip install certifi
+```
+
+Then you have to provide the certificate via the `flight_client_options` parameter:
+
+```python
+from influxdb_client import InfluxDBClient
+import certifi
+
+client = InfluxDBClient3(
+    token="your-token",
+    host="your-host",
+    org="your-org",
+    database="your-database",
+    flight_client_options=flight_client_options(
+        tls_root_certs=cert))
+```
+
+</Aside>
+
+#### Querying
+
+To query data, use the `client.query()` method. You can tell the client which query language you are using. The example below uses `sql`, and also provides the `mode="pandas"` parameter to automatically convert the result into a pandas DataFrame.
+
+```python
+df = client.query(
+    query="SELECT * FROM my_measurement",
+    language="sql",
+    mode="pandas")
+print(df)
+```
+
+To list all the measurements in your database:
+
+```python
+# List all measurements in the database
+df = client.query(
+    query=f'SHOW MEASUREMENTS',
+    language="influxql",
+    mode="pandas")
+print(df)
+```
+
+This should print something like this:
+
+```text
+  iox::measurement           name
+0     measurements my_measurement
+```
+
+```python
+df = client.query(
+    query=f'SHOW COLUMNS FROM my_table',
+    language="sql",
+    mode="pandas")
+print(df)
+```
+
+This will print something like this:
+
+```text
+   table_catalog table_schema table_name column_name                    data_type is_nullable
+0         public          iox  my_table            0                      Float64         YES
+1         public          iox  my_table            1                      Float64         YES
+2         public          iox  my_table           10                      Float64         YES
+```
+
+To query tag keys:
+
+```python
+df = client.query(
+    query="SHOW TAG KEYS",
+    language="influxql",
+    mode="pandas")
+print(df)
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^github-influxdb3-python]: InfluxCommunity. _influxdb3-python_ [repository]. Retrieved 2025-04-01, from https://github.com/InfluxCommunity/influxdb3-python.
+[^influxdb-docs-data-elements]: InfluxData. _InfluxDB data elements_ [documentation]. Retrieved 2025-04-01, from https://docs.influxdata.com/influxdb/cloud/reference/key-concepts/data-elements/.
+[^influxdb-docs-cli-delete]: InfluxData. _influx CLI 2.0.3+ > influx delete_ [documentation]. Retrieved 2025-04-01, from https://docs.influxdata.com/influxdb3/cloud-serverless/reference/cli/influx/delete/.
+[^influxdb-docs-cloud-serverless-docs]: InfluxData. _InfluxDB3 > Cloud Serverless_ [documentation]. Retrieved 2025-04-01, from https://docs.influxdata.com/influxdb3/cloud-serverless/.
