@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2019-06-11
 description: A tutorial on pandas, a popular data analysis library for Python.
-lastUpdated: 2022-01-20
+lastUpdated: 2025-03-26
 tags: [programming, programming languages, Python, pandas, DataFrame, CSV, Jupyter, Numpy, conda, merge, VLOOKUP]
 title: pandas
 type: page
@@ -10,7 +10,7 @@ type: page
 
 pandas is a data analysis library for Python. It provides high-level data structures and analytical tools for data analysis.
 
-<Image src={import('./pandas_logo.png')} width="700px">The pandas logo.</Image>
+<Image src={import('./_assets/pandas_logo.png')} width="700px">The pandas logo.</Image>
 
 ## Installation
 
@@ -156,6 +156,18 @@ To load a CSV file into a `DataFrame`:
 ```python
 df = pandas.read_csv('file_path.csv')
 ```
+
+Be warned that if you have whitespace between values in your CSV file, you may need to do some extra massaging to get the correct data. One easy way to this is to pass `skipinitialspace=True` into the `read_csv()` function:
+
+```python
+df = pandas.read_csv('file_path.csv', skipinitialspace=True)
+```
+
+This will work as long as the white space is always prior to value, and there is no whitespace between the end of the value and the separator (e.g. comma). This is normally the case if whitespace was used to visually align the columns in the CSV file.
+
+<Aside type="tip">
+Forgetting about whitespace has caught me out many times. I'm always wondering why `df["my_column"]` returns an error, only to realise that there is whitespace in the column name.
+</Aside>
 
 ## Integration With Jupyter
 
