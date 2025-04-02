@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2019-10-09
-lastUpdated: 2019-10-11
-tags: [programming, cloud, Azure, Active Directory, Microsoft, resources, resource groups, subscriptions, tenants, storage accounts, load balancers, RBAC, file sync]
+lastUpdated: 2025-04-02
+tags: [programming, cloud, Azure, Active Directory, Microsoft, resources, resource groups, subscriptions, tenants, storage accounts, load balancers, RBAC, file sync, functions]
 title: Azure
 type: page
 ---
@@ -112,3 +112,59 @@ Application Insights can then provide it's data via an API or through Visual Stu
 ## Azure Search Service
 
 The _Azure Search Service_ is a managed search service provided by Azure. It allows you to import/connect to the underlying data and then easily create indexes.
+
+## Azure Functions
+
+Azure Functions are a way to run small pieces of code, in which you are only billed for compute time when the code is running (i.e. serverless).
+
+You can write the functions in a number of languages including:
+
+* Python
+* Javascript
+* Java
+* C#
+
+Microsoft provides a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) that helps you write and deploy functions from your local machine.
+
+<Image src={import('./_assets/azure-functions-vs-code-extension-screenshot.webp')} width="800px">A screenshot of the Azure Functions extension for VS Code.</Image>
+
+As of May 2023, the v2 Python programming model became generally available for use.[^microsoft-azure-blog-v2-python-model-available]
+
+By default all files inside the function app root directory are bundled up and uploaded to the Azure Function when you deploy. You can exclude files by adding them to the `.funcignore` file. For a Python based function app, the `.funcignore` file might look like this:
+
+```text
+.git*
+.vscode
+__azurite_db*__.json
+__blobstorage__
+__queuestorage__
+local.settings.json
+test
+.venv
+```
+
+`local.settings.json` contains local environment variables under the `Values` property.
+
+### Using Python for Azure Functions
+
+You can configure a function that runs on a schedule by using the `@app.timer_trigger` decorator. The below example shows a function that runs every day at 00:00:00 (i.e. once a day at midnight).
+
+```python
+import logging
+import azure.functions as func
+
+app = func.FunctionApp()
+
+# Azure Functions uses the NCronTab library to interpret NCRONTAB expressions. An NCRONTAB expression is similar to a CRON expression except that it includes an additional sixth field at the beginning to use for time precision in seconds:
+# {second} {minute} {hour} {day} {month} {day-of-week}
+# 0 0 0 * * * means every day at 00:00:00
+@app.timer_trigger(schedule="0 0 0 * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False) 
+def timer_trigger(myTimer: func.TimerRequest) -> None:
+    logging.info('Python timer trigger function executed.')
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^microsoft-azure-blog-v2-python-model-available]: shreyab (2023, May 24). _Azure Functions: V2 Python Programming Model is Generally Available_ [blog post]. Microsoft. Retrieved 2025-04-02, from https://techcommunity.microsoft.com/blog/azurecompute/azure-functions-v2-python-programming-model-is-generally-available/3827474.

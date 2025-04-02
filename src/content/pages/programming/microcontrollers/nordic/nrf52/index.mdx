@@ -129,7 +129,7 @@ int main() {
 You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
 </Aside>
 
-### Successive Approximation ADC (SAADC)
+## Successive Approximation ADC (SAADC)
 
 The nRF52 series MCUs have a 12-bit successive approximation [ADC](/electronics/components/analogue-to-digital-converters-adcs/) peripheral called `SAADC`. This peripheral can be used to convert analogue voltages on the `AIN0-AIN7` pins to digital values. It can be used in single ended mode or differential mode. <IRef iref="fig-saadc-internal-block-diagram-nrf52" /> shows the internal block diagram of the SAADC peripheral.
 
@@ -145,7 +145,7 @@ Oversampling does not improve over sources of error, such as integral non-linear
 
 The `SAADC` peripheral cannot generate events when the converted value crosses a threshold. If you need this functionality, look at using the comparator peripheral (`COMP`) instead. The same analog input pin cannot be used for both `SAADC` and `COMP` peripherals at the same time.
 
-### Comparator (COMP)
+## Comparator (COMP)
 
 The nRF52 series MCUs have a comparator peripheral called `COMP`. Much like [discrete analogue comparator ICs](/electronics/components/comparators/), this peripheral can be used to compare one input voltage (`VIN+`) against another input voltage (`VIN-`), and can generate events (e.g. raise an interrupt) depending on the result (whether it is higher or lower than the other). `VIN+` can be any of the analog input pins `AIN0-AIN7`. `VIN-` can be any of the analog input pins (differential mode) or from `VREF`, which in turn can be derived from `VDD`, `AIN0-AIN7`, or internal 1.2V, 1.8V or 2.4V references. It's internal block diagram is shown in <IRef iref="fig-comparator-diagram-nrf52" />.
 
@@ -167,6 +167,16 @@ The comparator peripheral have different speed modes, which also determine the p
 * Low-power mode
 * Normal mode
 * High-speed mode
+
+## Near Field Communication Tag (NFCT)
+
+The nRF52 series MCUs have a near field communication tag peripheral called `NFCT`. This peripheral can be used to implement an NFC tag. It supports NFC-A listen mode operation at 13.56MHz and a bitrate of 106kbps.[^nordic-semi-nrf52840-datasheet]
+
+<IRef iref="fig-nrf52-nfct-peripheral-block-diagram" /> shows the internal block diagram of the NFCT peripheral.
+
+<Image iref="fig-nrf52-nfct-peripheral-block-diagram" src={import('./_assets/nrf52-nfct-peripheral-block-diagram.webp')} width="600px">The internal block diagram of the NFCT peripheral on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+The NFCT peripheral uses EasyDMA for the reading and writing of data packets to and from RAM.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
