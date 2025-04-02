@@ -1,0 +1,91 @@
+---
+authors: [gbmhunter]
+date: 2011-09-05
+description: Wire-to-board (WTB) connectors are a very common type of electrical connector that attach free wires and cables to a PCB, to provide both electrical connections and mechanical support.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-04-02
+tags: [electronics, connectors, electronic components, WTB, wire-to-board, JST, ACH, TE Connectivity, Molex, MTA-100, CST-100]
+title: Wire-to-Board (WTB) Connectors
+type: page
+---
+
+Wire-to-board (WTB) connectors are a very common type of electrical connector. WTB connectors are used to attach free wires and cables to a PCB, to provide both electrical connections and mechanical support.
+
+## Naming
+
+The name can be abbreviated to _WTB connectors_ or _W-T-B connectors_. They can also be referred to as _board-to-wire connectors_.
+
+WTB connectors get rid of all the problems with soldering wires directly onto a PCB, which include fatigue/breaking issues, short-circuit woes, and the ease of disconnecting/re-connecting the wires.
+
+Trying the find a good, reasonably-priced WTB connector on a electronic supplier's website can be near-impossible. There are so many varieties, shapes, lead pitches, bad datasheets, and different manufacturer's making nearly identical products. Also, to top it all of, you need to usually find more than one item to make a connector work (e.g. if you buy a connector you must also find the matching receptacle and crimp pins). And most suppliers don't do a good job and making the related parts obvious.
+
+## Examples
+
+### JST PH/SH Family
+
+The JST PH 2.0mm pitch W2B connector family is used for the [Adafruit STEMMA devices](https://learn.adafruit.com/introducing-adafruit-stemma-qt), and the JST SH 1.0mm pitch W2B connector used for Adafruit STEMMA QT (QT representing _cutie_, referring to the smaller pitch) and SparkFun QwiiC devices[^bib-adafruit-jst-sh-conn].
+
+<Image src={import('./_assets/jst-sh-conn-adafruit-stemma-qt-sparkfun-qwiic.png')} width="400px">A photo of a Adafruit "STEMMA QT" or SparkFun "Qwiic" connector + cable. Both use the JST SH 1.0mm pitch W2B connector family[^bib-adafruit-jst-sh-conn]. Image (C) 2021, Adafruit.</Image>
+
+### JST ACH Family
+
+The JST ACH is a family of small top entry, side feed style of wire-to-board connector. They have a pitch of 1.2mm. It has a low profile height of 1.4mm when mated.[^jst-ach-conn-ds]
+
+<Image src={import('./_assets/jst-ach-connector-photo.webp')} width="300px">A photo of a JST ACH connector.[^rs-online-jst-ach-2-way-product]</Image>
+
+They are only available in 2 and 3-way versions. Both are rated for 2A of current per contact when using AWG #28 wire. The 2-pin female version of this connector is used on many of the embedded NFC antennas from Taoglas. <IRef iref="fig-taoglas-nfc-antenna-with-jst-ach-connector" /> shows a photo of the FXR.4040.52.0075X.B.dg Taoglas NFC antenna with a JST ACH connector.
+
+<Image iref="fig-taoglas-nfc-antenna-with-jst-ach-connector" src={import('./_assets/taoglas-nfc-antenna-with-jst-ach-connector.webp')} width="300px">A photo of the FXR.4040.52.0075X.B.dg Taoglas NFC antenna with a JST ACH connector.[^taoglas-fxr-4040-52-0075x-b-dg-nfc-antenna]</Image>
+
+### TE Connectivity HPI
+
+TE Connectivity's 2.0mm HPI connectors are a good choice if you want a smallish connector with 2 to 12 wires. There are SMD and TH variants of the PCB mounted half. I like these because they are relatively cheap, have good documentation, and best of all, come with 3D step models for creating a 3D mock-up of the PCB.
+
+Manufacturing codes include _1775469-x_ for the right-angle SMD variants, and _1775470-x_ for the vertical SMD variants. _x_ is the number of pins in all cases.
+
+### Molex PicoBlade
+
+Molex's PicoBlade connector families are quite popular. They have a 1.25mm pitch and a 1A capacity per contact. There are a variety of wire-to-board and wire-to-wire options.
+
+<Image src={import('./_assets/molex-picoblade-connector-photo.gif')} width="300px">A photo showing a few of the connectors from the Molex PicoBlade families. Image from www.molex.com.</Image>
+
+### MTA/CST-100 Connectors
+
+_MTA-100 connectors_ are a family of wire-to-board and wire-to-wire connectors. They use the insulation displacement contact (IDC) technique to make electrical contact between the housing and the wires without having to use crimps[^bib-te-mta-100-conns]. MTA-100 connectors are colour coded according the wire size they accept.
+
+<table>
+    <thead>
+        <tr>
+            <th>Connector Colour</th>
+            <th>Wire Size</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Red</td>
+            <td>22AWG</td>
+        </tr>
+        <tr>
+            <td>White</td>
+            <td>24AWG</td>
+        </tr>
+        <tr>
+            <td>Blue</td>
+            <td>26AWG</td>
+        </tr>
+        <tr>
+            <td>Green</td>
+            <td>28AWG</td>
+        </tr>
+    </tbody>
+</table>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^bib-te-mta-100-conns]: TE Connectivity. _MTA 100 & MTA 156 Connectors_. Retrieved 2021-10-07, from https://www.te.com/usa-en/products/connectors/pcb-connectors/intersection/mta-100-mta-156-connectors.html.
+[^bib-adafruit-jst-sh-conn]: Adafruit. _JST SH 4-pin Right Angle Connector (10-pack) - Qwiic Compatible_. Retrieved 2021-12-03, from https://www.adafruit.com/product/4208.
+[^jst-ach-conn-ds]: JST. _ACH Connector - Disconnectable Crimp style connectors_ [datasheet]. Retrieved 2025-04-02, from https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2226/ACH_1.2Pitch_DisconnectableCrimp.pdf.
+[^rs-online-jst-ach-2-way-product]: RS. _Connectors / PCB Connectors & Wire Housings / Wire Housings & Plugs / JST, ACH Female Connector Housing, 1.2mm Pitch, 2 Way, 1 Row_ [product page]. Retrieved 2025-04-02, from https://nz.rs-online.com/web/p/wire-housings-plugs/1755471.
+[^taoglas-fxr-4040-52-0075x-b-dg-nfc-antenna]: Taoglas. _NFC Flex Antenna (40*40*0.355 mm) with Reverse Ferrite Layer 75mm Twisted Pair 28AWG Cable and ACH(F) Connector - FXR.4040.52.0075X.B.dg_ [product page]. Retrieved 2025-04-02, from https://www.taoglas.com/product/nfc-flex-antenna-40400-355-mm-with-reverse-ferrite-layer-75mm-twisted-pair-28awg-cable-and-achf-connector/.
