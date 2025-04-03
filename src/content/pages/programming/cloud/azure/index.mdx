@@ -117,6 +117,8 @@ The _Azure Search Service_ is a managed search service provided by Azure. It all
 
 Azure Functions are a way to run small pieces of code, in which you are only billed for compute time when the code is running (i.e. serverless).
 
+<Image src={import('./_assets/azure-functions-logo.webp')} width="250px">The Azure Functions logo.[^microsoft-azure-functions-pricing]</Image>
+
 You can write the functions in a number of languages including:
 
 * Python
@@ -124,7 +126,7 @@ You can write the functions in a number of languages including:
 * Java
 * C#
 
-Microsoft provides a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) that helps you write and deploy functions from your local machine.
+Microsoft provides a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) that helps you write and deploy functions from your local machine. Microsoft Oryx is used to build the source code into a "runnable artifact".[^github-microsoft-oryx-repo]
 
 <Image src={import('./_assets/azure-functions-vs-code-extension-screenshot.webp')} width="800px">A screenshot of the Azure Functions extension for VS Code.</Image>
 
@@ -143,7 +145,7 @@ test
 .venv
 ```
 
-`local.settings.json` contains local environment variables under the `Values` property.
+`local.settings.json` contains local environment variables under the `Values` property. As suggested by the filename, these settings only apply when the function is run on your local machine. To have the same environment variables when running in Azure, you will need to add the environment variables to the function app settings. This can be done via the Azure Portal GUI by clicking Settings -> Environment variables.
 
 ### Using Python for Azure Functions
 
@@ -163,8 +165,12 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function executed.')
 ```
 
+Logging calls in Azure Functions can be accessed via Azure Application Insights. You will need to enable Application Insights in the function app settings before it becomes available. Once enabled, logs can be accessed via Monitoring -> Logs -> traces.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^microsoft-azure-blog-v2-python-model-available]: shreyab (2023, May 24). _Azure Functions: V2 Python Programming Model is Generally Available_ [blog post]. Microsoft. Retrieved 2025-04-02, from https://techcommunity.microsoft.com/blog/azurecompute/azure-functions-v2-python-programming-model-is-generally-available/3827474.
+[^github-microsoft-oryx-repo]: GitHub. _microsoft/Oryx_ [repository]. Microsoft. Retrieved 2025-04-03, from https://github.com/microsoft/Oryx.
+[^microsoft-azure-functions-pricing]: Microsoft. _Azure Functions pricing_ [webpage]. Microsoft. Retrieved 2025-04-03, from https://azure.microsoft.com/en-us/pricing/details/functions/.

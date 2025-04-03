@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2019-06-11
 description: A tutorial on pandas, a popular data analysis library for Python.
-lastUpdated: 2025-03-26
-tags: [programming, programming languages, Python, pandas, DataFrame, CSV, Jupyter, Numpy, conda, merge, VLOOKUP]
+lastUpdated: 2025-04-03
+tags: [programming, programming languages, Python, pandas, DataFrame, CSV, Jupyter, Numpy, conda, merge, VLOOKUP, pickle, Feather, Parquet]
 title: pandas
 type: page
 ---
@@ -147,7 +147,7 @@ print(sorted_df, ascending=False)
 # 0  1  foo
 ```
 
-## Parsing CSV Files
+## Saving and Loading CSV Files
 
 `pandas` has first-tier support for CSV files. It can load in a CSV file directly into a `DataFrame`, ready for analysing, without having to write any line-by-line CSV parsing. It will also label the columns if the CSV file has a header row (which is recommended!).
 
@@ -168,6 +168,35 @@ This will work as long as the white space is always prior to value, and there is
 <Aside type="tip">
 Forgetting about whitespace has caught me out many times. I'm always wondering why `df["my_column"]` returns an error, only to realise that there is whitespace in the column name.
 </Aside>
+
+## Saving and Loading to Other File Formats
+
+For large datasets, CSV files might become too large and slow to save and load. Pandas also supports a number of other file formats/serialization protocols, including pickle (Python's built-in serialization protocol), Feather and Parquet.
+
+To save and load to pickle, you can use the `to_pickle()` and `read_pickle()` functions:
+
+```python
+df.to_pickle('file_path.pickle')
+df = pandas.read_pickle('file_path.pickle')
+```
+
+Similar to pickle, you can use `to_parquet()` and `read_parquet()` to save and load to Parquet. Parquet is developed by Apache and is a open source, column-based data format designed for efficient data storage and retrieval.
+
+```python
+df.to_parquet('file_path.parquet')
+df = pandas.read_parquet('file_path.parquet')
+```
+
+Feather is also done in a similar fashion:
+
+```python
+df.to_feather('file_path.feather')
+df = pandas.read_feather('file_path.feather')
+```
+
+I did some basic tests with all of these formats and found the Parquet format to generate some of the smallest files and fastest save/load times. <IRef iref="fig-dataframe-file-format-size-comparison">Figure 1</IRef> shows a comparison of the file size of the dataframe file formats with a test dataset. This dataset contained approx. 170,000 rows and 100 columns. Many of the columns did not contain data for many of the rows, which might be why some of the advanced formats were able to compress the data so much.
+
+<Image iref="fig-dataframe-file-format-size-comparison" src={import('./_assets/dataframe-file-format-size-comparison.webp')} width="700px">A comparison of the file size of the dataframe file formats with a test dataset.</Image>
 
 ## Integration With Jupyter
 
