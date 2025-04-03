@@ -100,7 +100,7 @@ The yellow signal wire outputs a digital signal which transitions between high a
 
 <Image src={import('./_assets/flow-sensor-oscilloscope-waveform.webp')} width="700px">A waveform from an oscilloscope showing the output of a YF-B6 flow sensor when blowing through it. The air speed was slowing down from left to right.</Image>
 
-The rate is typically expressed as a frequency. For example, the YF-B6 datasheet describes a frequency of `F=6.6*Q(Q=L/MIN)`.[^seeed-studio-water-flow-sensor-yf-b6-ds] F is the measured frequency of the hall effect signal, and Q is the flow rate in L/min. In a microcontroller, you would typically setup a GPIO interrupt on the sensor pin, and then measure the time between pulses. To calculate the flow rate, we would need to re-arrange the equation. Let's also substitute $F$ for the period $t$ ($t = \frac{1}{F}$) since that's what we'll actually measure.
+The rate is typically expressed as a frequency. For example, the YF-B6 datasheet describes a frequency of `F=6.6*Q(Q=L/MIN)`.[^seeed-studio-water-flow-sensor-yf-b6-ds] F is the measured frequency of the hall effect signal, and Q is the flow rate in L/min. In a microcontroller, you would typically setup a GPIO interrupt on the sensor pin, and accumulate the number of pulses over a fixed period of time (e.g. check once per second). To calculate the flow rate, we would need to re-arrange the equation. Let's also substitute $F$ for the period $t$ ($t = \frac{1}{F}$) since that's what we'll actually measure.
 
 $$
 \begin{align}

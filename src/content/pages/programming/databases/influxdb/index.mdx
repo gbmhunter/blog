@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-04-01
 description: InfluxDB is a popular time-series database (TSDB) developed by InfluxData. It is optimized for the storage and retrieval of time-series data such as metrics and IoT sensor data.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-04-01
-tags: [programming, databases, InfluxDB, tags, fields, InfluxData, Python, AWS, serverless, TSM, measurements, IoT, timeseries]
+lastUpdated: 2025-04-03
+tags: [programming, databases, InfluxDB, tags, fields, InfluxData, Python, AWS, serverless, TSM, measurements, IoT, timeseries, bucket, measurement, retention policy]
 title: InfluxDB
 type: page
 ---
@@ -60,6 +60,8 @@ client = InfluxDBClient3(token="your-token",
                          org="your-org",
                          database="your-database")
 ```
+
+Where `token` is an API token (you can generate this from the InfluxDB web GUI) and the `database` parameter is actually the name of your bucket.
 
 <Aside type="tip">
 
