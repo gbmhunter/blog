@@ -2,6 +2,7 @@
 authors: [gbmhunter]
 date: 2019-06-11
 description: A tutorial on pandas, a popular data analysis library for Python.
+image: ./_assets/cover-image.webp
 lastUpdated: 2025-04-03
 tags: [programming, programming languages, Python, pandas, DataFrame, CSV, Jupyter, Numpy, conda, merge, VLOOKUP, pickle, Feather, Parquet]
 title: pandas
@@ -196,7 +197,7 @@ df = pandas.read_feather('file_path.feather')
 
 I did some basic tests with all of these formats and found the Parquet format to generate some of the smallest files and fastest save/load times. <IRef iref="fig-dataframe-file-format-size-comparison">Figure 1</IRef> shows a comparison of the file size of the dataframe file formats with a test dataset. This dataset contained approx. 170,000 rows and 100 columns. Many of the columns did not contain data for many of the rows, which might be why some of the advanced formats were able to compress the data so much.
 
-<Image iref="fig-dataframe-file-format-size-comparison" src={import('./_assets/dataframe-file-format-size-comparison.webp')} width="700px">A comparison of the file size of the dataframe file formats with a test dataset.</Image>
+<Image iref="fig-dataframe-file-format-size-comparison" src={import('./_assets/dataframe-file-format-size-comparison.webp')} width="900px">A comparison of the file size of the dataframe file formats with a test dataset.</Image>
 
 ## Integration With Jupyter
 
