@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2014-04-14
 description: Flow sensors are sensors that measure the flow rate of a fluid or gas. They are used in a wide range of applications, from measuring the flow of water in a pipe to monitoring the flow of air in an engine.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-02-24
-tags: [electronics, components, flow sensors]
+lastUpdated: 2025-04-08
+tags: [electronics, components, flow sensors, Seeed Studio, calibration, water, flow rate]
 title: Flow Sensors
 type: page
 ---
@@ -290,6 +290,24 @@ The differences between the YF-Bx and G1&x families are:
 
 There is also the YF-S201 flow sensor which seems related.
 
+I have found some significant accuracy issues when using this type of sensor, specifically with the YF-B5. The quoted accuracy as per it's datasheet is $\pm 3\%$ over a flow rate range of 1 to 30L.[^seeed-studio-water-flow-sensor-yf-b5-ds] However, I have found the error to be closer to 1L/min when reading a low flow rate of 1L/min, with the accuracy improving as the flow rate increases. <IRef iref="fig-yf-b5-flow-sensor-calibration" /> shows a calibration curve fitted against measurement data from 3 YF-B5 flow sensors. The dotted black line shows where we would expect the points to be if the sensor followed the datasheet's quoted equation and accuracy. The dots are measurements from the 3 sensors vs. the actual flow rate (as measured by an expensive and accurate flow meter). The red line is the linear least squares best fit line through the data.
+
+<Image iref="fig-yf-b5-flow-sensor-calibration" src={import('./_assets/yf-b5-flow-sensor-calibration.webp')} width="800px">A calibration curve fitted against measurement data from 3 YF-B5 flow sensors.</Image>
+
+As shown in <IRef iref="fig-yf-b5-flow-sensor-calibration" />, the equation for the best fit line is:
+
+$$
+\begin{align}
+Q = 0.142f + 0.792
+\end{align}
+$$
+
+<p className="centered">where:<br />
+$Q$ is the flow rate (in L/min)<br />
+$f$ is the frequency (in Hz) of the flow sensor output</p>
+
+Using this linear best fit equation in firmware to convert from the pulses per second to a flow rate should give a much more accurate flow rate than the $F = 6.6Q$ ($Q = 0.152f$) equation provided in the datasheet.
+
 ## Tiny Flow Sensors
 
 Tiny flow sensors exist in chip-size packages. These are in a group of products called MEMS (micro-electro-mechanical system) devices.
@@ -310,3 +328,4 @@ See [Encoders](/electronics/components/encoders/) for more information on how en
 
 [^seeed-studio-water-flow-sensor-yf-b6]: Seeed Studio. _Home / The Devices / Data Collection Systems / Energy Management Units / Water Flow Sensor YF-B6_ [product page]. Retrieved 2025-02-24 from https://www.seeedstudio.com/Water-Flow-Sensor-YF-B6-p-2883.html.
 [^seeed-studio-water-flow-sensor-yf-b6-ds]: Seeed Studio. _Water Flow Sensor YF-B6_ [datasheet]. Retrieved 2025-02-25, from https://media.digikey.com/pdf/data%20sheets/seeed%20technology/114991176_web.pdf.
+[^seeed-studio-water-flow-sensor-yf-b5-ds]: Seeed Studio. _Water Flow Sensor YF-B5_ [datasheet]. Retrieved 2025-04-08, from https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/5670/1597_Seeed%20114991175.pdf.
