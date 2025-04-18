@@ -1,18 +1,55 @@
 ---
 authors: [gbmhunter]
 date: 2017-08-29
-lastUpdated: 2017-08-29
+lastUpdated: 2025-04-18
 tags: [programming, programming languages, C++, magic statics, function-local static initialization, threads, C++11, singletons]
 title: Magic Statics
 type: page
 ---
 
-_Magic statics_, more formally known as _function-local static initialization_, is when a **static variable is declared within a function, and then passed to the caller**.
+_Magic statics_, more formally known as _function-local static initialization_, is the informal term used for the fact that the **initializer of any function-local static variable is guaranteed to be thread-safe, even if the function is entered concurrently by multiple threads at once**. Function-local static means a variable which is declared inside a function with the `static` modifier. For example, below is a function-local static variable:
 
-It looks like:
+```c++
+void someFunction()
+{
+    static int magicStatic = 0;
+}
+```
+
+If another thread enters the same function while the first thread is still initializing the static variable, the compiler will make sure the second thread will block until the first thread has finished initializing (and also make sure the second thread does not initialize the static variable again). This essentially means the compiler has to use a mutex (or similar mechanism) to lock the initialization of the static variable. This is where the "magic" comes from, as the compiler inserts a synchronization mechanism "behind the scenes" to make this work.
+
+> If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization.
+
+The example below shows the basic thread-safe behavior of function-local statics. `counter()` is called from both thread `t1` and `t2`, each passing in a different value to initialize the static variable `i` with. The compiler ensures only the first thread will initialize the variable. Both threads will print either the value of `1` or `2` as being returned from `counter()` (when I tested it, I always got the value `1`...presumably because thread `t1` is created first).
+
+
+```c++
+#include <thread>
+#include <iostream>
+
+int counter(int init) {
+    static int i = init;
+    return i;
+}
+
+int main() {
+    auto t1 = std::thread([](){ 
+        int i = counter(1);
+        std::cout << "t1: " << i << std::endl;
+    });
+    auto t2 = std::thread([](){ 
+        int i = counter(2);
+        std::cout << "t2: " << i << std::endl;
+    });
+    t1.join();
+    t2.join();
+}
+```
+
+Another neat property of function-local static variables is that they continue to exist after the function returns. This is not the case for normal local variables, which are destroyed when the function returns. This means you can return a reference to a function-local static variable to the caller. For example:
 
 ```c++    
-std::string& GetString() {
+std::string& getString() {
     // Create a local static variable
     static std::string magicStatic("Hello");
     // Return a reference to it! :-O
@@ -84,3 +121,13 @@ On the Windows side of things, thread safety was implemented for magic statics i
 **Do NOT recursively call a function which allocates variables with static storage duration**, as this behaviour is undefined.
 
 > [§6.7 [stmt.dcl] p4](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf): If control re-enters the declaration recursively while the variable is being initialized, the behavior is undefined.
+
+## Compiler Options
+
+GCC provides the `-fno-threadsafe-statics` option to prevent the compiler from generating the extra code surrounding function-local static variables to make sure the initialization is thread-safe.[^gnu-gcc-docs-options-controlling-cpp-dialect]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^gnu-gcc-docs-options-controlling-cpp-dialect]: GNU GCC. _Options Controlling C++ Dialect_ [documentation]. Retrieved 2025-04-18, from [https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html).

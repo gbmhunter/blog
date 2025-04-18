@@ -1,0 +1,62 @@
+---
+authors: [gbmhunter]
+date: 2013-10-30
+description: Antennas are an electronic device which converts between electrical energy and electromagnetic waves. They are commonly used for transmitting and receiving radio frequency (RF) signals and can be used for communication and measurement applications.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-04-09
+tags: [antennas, design, terminology, dipoles, RF, PCBs, dome, puck, external, Taoglas, Laird Connectivity]
+title: Antennas
+type: page
+---
+
+Antennas are an electronic device which converts between electrical energy and electromagnetic waves. They are commonly used for transmitting and receiving radio frequency (RF) signals and can be used for communication and measurement applications.
+
+<Image src={import('./_assets/rf-antenna-with-sma-connection.jpg')} width="300px">A standard 1-3GHz RF antenna with an SMA connection.</Image>
+
+## Terminology
+
+| Term        | Description      |
+| ----------- | ---------------- |
+| VSWR        | VSWR is an initialism for "**Voltage Standing Wave Ratio**". The bandwidth of an antenna is usually defined as the range of frequencies at which VSWR is less than 2. |
+
+## Dipoles
+
+The voltage in a dipole is maximum at the ends, and 0 at the middle. The current is the opposite, with the maximum being in the middle, and being 0 at both ends.
+
+## PCB Antennas
+
+You have to consider the placement of other components surrounding the PCB antenna. The following diagram shows the minimum recommended clearances between a PCB antenna and other components.
+
+<Image src={import('./_assets/typical-minimum-component-clearances-from-pcb-antenna.png')} width="800px">The minimum recommended clearances between a PCB antenna and other components. Image from http://www.antenova-m2m.com/resources/literature.</Image>
+
+## Dome/Puck Antennas
+
+Dome (a.k.a puck) antennas are a type of enclosed antenna designed for use outside or rugged use.
+
+Many of the dome style antennas utilise the NMO mount shown in <IRef iref="fig-antenna-next-to-nmo-mount"/>. NMO stands for "New Motorola Mount" and was a standard mount developed by Motorola for their land mobile radio antennas. It is still popular for robust external antenna connections, especially for vehicles.[^digikey-tech-forum-nmo-connectors-mounting]
+
+<Image iref="fig-antenna-next-to-nmo-mount" src={import('./_assets/antenna-next-to-nmo-mount.webp')} width="300px">An Laird Connectivity antenna next to a NMO mount.[^digikey-tech-forum-nmo-connectors-mounting]</Image>
+
+Many of the antennas designed for cellular communication support a range of frequency bands. For example, the Laird Connectivity TRA6927M3PW-001 4G/3G antenna simultaneously supports the 698-960MHz and 1700-2700MHz bands.[^laird-connectivity-tra6927m3pw-001-ds]
+
+### Examples
+
+#### Taoglas Olympian II 5G/4G (G45.A.201111)
+
+The Taoglas Olympian II 5G/4G is a low profile, permanent mount dome style antenna that covers worldwide 5G/4G bands and is backwards compatible with 3/2G. It is 48.5mm tall and 50mm in diameter.[^taoglas-olympian-ii-5g-4g-g45-a-201111-ds]
+
+<Image src={import('./_assets/taoglas-olympian-ii-g45-external-antenna-photo.webp')} width="300px">A photo of the Taoglas Olympian II 5G/4G antenna.[^taoglas-olympian-ii-5g-4g-g45-a-201111-ds]</Image>
+
+Interestingly, Taoglas recommends a "minimum of 1m cable length for stable antenna performance". It works best when the antenna is mounted on a metal ground plane. The cable is 2m of RG-174 with a [male SMA connector](/electronics/components/connectors/rf/#sma-connectors) mounted on the end.[^taoglas-olympian-ii-5g-4g-g45-a-201111-ds]
+
+## Shorting Antennas
+
+Note that shorting out an antenna is not an effective way of stopping it from communicating. At RF frequencies, a direct short with a piece of wire is no longer a direct short, and can for example, appear inductive. This means the antenna can still work, and sometime make it perform better! I have shorted out cellular modem antennas before with pliers and the signal strength increased!
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^laird-connectivity-tra6927m3pw-001-ds]: Laird Connectivity. _TRA6927M3PW-001 - 4G/3G Multiband Phantom Antenna_ [datasheet]. Retrieved 2025-04-09, from https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-06/ANT-DS-TRA6927M3%200619_0.pdf
+[^digikey-tech-forum-nmo-connectors-mounting]: Digikey TechForum (2017, Oct). _NMO Connectors / Mounting_ [forum post]. Retrieved 2025-04-09, from https://forum.digikey.com/t/nmo-connectors-mounting/593/1.
+[^taoglas-olympian-ii-5g-4g-g45-a-201111-ds]: Taoglas. _Olympian II 5G/4G (G45.A.201111)_ [datasheet]. Retrieved 2025-04-09, from https://www.farnell.com/datasheets/3676759.pdf.
