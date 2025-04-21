@@ -2,75 +2,73 @@
 authors: [gbmhunter]
 date: 2013-06-28
 description: A step-by-step tutorial on writing a basic Hello, World program in assembly.
-lastUpdated: 2013-06-28
-tags: [assembly, 'hello, world', Intel, AT&T, NASM, gcc, printf]
+lastUpdated: 2025-04-21
+tags: [assembly, "hello, world", Intel, AT&T, NASM, gcc, printf, compilers, tutorials]
 title: Assembly
 type: page
 ---
 
-<p>If you are writing assembly for ARM processors, make sure to check out the [GNU ARM Assembler Quick Reference](http://bel.gsi.de/scripts/gnu-arm-assy-quick-ref.pdf).</p>
+If you are writing assembly for ARM processors, make sure to check out the [GNU ARM Assembler Quick Reference](http://bel.gsi.de/scripts/gnu-arm-assy-quick-ref.pdf).
 
 <Image src={import('./_assets/assembly-code-example.png')} width="481px">An example of assembly code from the glibc library (an optimised memcpy() function).</Image>
 
-<h2>Intel vs. AT&T Syntax</h2>
+## Intel vs. AT&T Syntax
 
-<b>Intel Syntax</b>
+### Intel Syntax
 
-<p>Intel syntax always puts the destination address before the source address.</p>
+Intel syntax always puts the destination address before the source address.
 
 ```asm
 instr dest, source
 mov eax, [ecx]
 ```
 
-<b>A&T Syntax</b>
+### AT&T Syntax
 
-<p>AT&T syntax always puts the source address before the destination address. It also requires a `%` infront of every register access, and a `$` infront of immediate operands.</p>
+AT&T syntax always puts the source address before the destination address. It also requires a `%` in-front of every register access, and a `$` in-front of immediate operands.
 
 ```asm
 instr source, dest
 movl (%ecx), %eax
 ```
 
-<h2>NASM</h2>
+## NASM
 
-<p>The NASM assembly language is a very popular language that works on the x86 and x86-64 architectures. It has similar syntax to Intel's x86/x86-64 assembly, but it designed to be more "user friendly".</p>
+The NASM assembly language is a very popular language that works on the x86 and x86-64 architectures. It has similar syntax to Intel's x86/x86-64 assembly, but it designed to be more "user friendly".
 
-<b>Compiling NASM Assembly</b>
+### Compiling NASM Assembly
 
-<p>You can download the NASM compiler for Ubuntu and other Debian-like systems with:</p>
+You can download the NASM compiler for Ubuntu and other Debian-like systems with:
 
 ```bash
 $ sudo apt install nasm
 ```
 
-<p>To compile a NASM <code>.asm</code> file, first convert it to an object file with the nasm program:</p>
+To compile a NASM <code>.asm</code> file, first convert it to an object file with the nasm program:
 
 ```bash
 $ nasm -f elf test.asm
 ```
 
-<p>OR for a 64-bit object file:</p>
+OR for a 64-bit object file:
 
 ```bash
 $ nasm -f elf64 test.asm
 ```
-This will produce an object file called <code>myfile.o</code>.
+This will produce an object file called `myfile.o`.
 
 <Aside type="note">
 Not all assembly instructions are supported for both 32-bits and 64-bits.
 </Aside>
 
-<p>You then have two options for linking:</p>
+You then have two options for linking:
 
-<ul>
-<li>Use the linker program <code>ld</code>.</li>
-<li>Use <code>gcc</code>. This automatically links against the C standard library for you.</li>
-</ul>
+1. Use the linker program `ld`.
+2. Use `gcc`. This automatically links against the C standard library for you.
 
-<p>Using gcc:</p>
+Using gcc:
 
-<p>32-bit object files:</p>
+32-bit object files:
 
 ```bash
 $ gcc -m32 test.o -o test
@@ -82,17 +80,17 @@ For 64-bit object files:
 $ gcc -m64 test.o -o test
 ```
 
-<b>Hello World (using NASM)</b>
+### Hello World (using NASM)
 
-<p>This Hello, World example will be as bare-bones as possible, and will not even use the <code>printf()</code> function call (instead it will make a Linux system call directly).</p>
+This Hello, World example will be as bare-bones as possible, and will not even use the `printf()` function call (instead it will make a Linux system call directly).
 
-<p>First, we need a <code>.section text</code> to tell the compiler that this is our executable code.</p>
+First, we need a `.section text` to tell the compiler that this is our executable code.
 
 ```asm
 .section text
 ```
 
-<p>We then need to define an entry point for our program:</p>
+We then need to define an entry point for our program:
 
 ```asm
     global _start
@@ -100,7 +98,7 @@ _start:
     ... more code here ...
 ```
 
-<p>Now, printing <code>Hello, world!</code> requires the use of a Linux system call to print the text to `stdout` (specifically, <code>sys_write</code>). We will use the Linux <i>fastcall</i> convention which <b>allows us to put the input arguments into registers, rather than on the stack</b>. The system call number is placed in <code>eax</code>, and the arguments in the successive registers <code>ebx</code>, <code>ecx</code>, e.t.c. The function number for <code>sys_write</code> is <code>4</code> (<a href="https://syscalls.kernelgrok.com/">see here</a>). We need to place the file we wish to write to in ebx, a pointer to the message (<code>char *</code>) in <code>ecx</code>, and the number of characters in <code>edx</code>.</p>
+Now, printing `Hello, world!` requires the use of a Linux system call to print the text to `stdout` (specifically, `sys_write`). We will use the Linux fastcall convention which allows us to put the input arguments into registers, rather than on the stack. The system call number is placed in `eax`, and the arguments in the successive registers `ebx`, `ecx`, e.t.c. The function number for `sys_write` is `4` (<a href="https://syscalls.kernelgrok.com/">see here</a>). We need to place the file we wish to write to in `ebx`, a pointer to the message (`char *`) in `ecx`, and the number of characters in `edx`.
 
 ```asm
 section .text
@@ -114,7 +112,7 @@ _start:
 
 Note that I have assigned the registers in reverse order (starting at edx and going to eax). This is not necessary (any order would work), however this practise stems from the sequence required making a system call by pushing to the stack instead, in where this order is important. I just kept the same practise for good readability.
 
-So, now we need to place the message in memory somewhere, and also find out it's size, so we can fill in <code>&lt;pointer to msg&gt;</code> and <code>&lt;msg size&gt;</code>. We can create a data section just for this purpose:
+So, now we need to place the message in memory somewhere, and also find out it's size, so we can fill in `<pointer to msg>` and `<msg size>`. We can create a data section just for this purpose:
 
 ```asm
 section .text
@@ -129,9 +127,9 @@ section .data
     len equ $ - msg        ; Calculate the length of the string (note, this does not store anything in memory)
 ```
 
-db is a NASM instruction which stands for <i>define bytes</i>. It defines a sequence of bytes in memory. <code>equ</code> just tells the compiler to calculate the length of the message and save it to <code>len</code> (called a <i>symbol</i>), which can then be used in the code (it does not save the value to memory, it is similar to #define in C).
+`db` is a NASM instruction which stands for define bytes. It defines a sequence of bytes in memory. `equ` just tells the compiler to calculate the length of the message and save it to `len` (called a symbol), which can then be used in the code (it does not save the value to memory, it is similar to `#define` in C).
 
-Lets use the new <code>msg</code> variable in our code:
+Lets use the new `msg` variable in our code:
 
 ```asm
 section .text
@@ -146,7 +144,7 @@ section .data
     len equ $ - msg        ; Calculate the length of the string (note, this does not store anything in memory)
 ```
 
-Great, everything is setup for a system call! But how do we perform a system call? In Linux, a system call is made by triggering the <code>0x80</code> interrupt, so we will do just that:
+Great, everything is setup for a system call! But how do we perform a system call? In Linux, a system call is made by triggering the `0x80` interrupt, so we will do just that:
 
 ```asm
 section .text
@@ -162,7 +160,7 @@ section .data
     len equ $ - msg        ; Calculate the length of the string (note, this does not store anything in memory)
 ```
 
-Running the above code should print <code>Hello, world!</code> to stdout. But your program might then just seg fault. This is because we have not exited cleanly. To do this, we can make another sys call, this time to <code>sys_exit</code> (<code>0x01</code>).
+Running the above code should print `Hello, world!` to stdout. But your program might then just seg fault. This is because we have not exited cleanly. To do this, we can make another sys call, this time to `sys_exit` (`0x01`).
 
 ```asm
 section .text
@@ -183,11 +181,11 @@ section .data
 
 All done! Run this code online at [https://www.tutorialspoint.com/tpcg.php?p=qjMuBp](https://www.tutorialspoint.com/tpcg.php?p=qjMuBp).
 
-<b>Hello World With printf()</b>
+### Hello World With printf()
 
 Because we want to know use a standard library function, we are going to take a slightly different approach.
 
-Create a <code>test.asm</code> file with the following contents:
+Create a `test.asm` file with the following contents:
 
 ```asm
 extern printf   ; Make sure to link with gcc so that standard library is automatically linked against
@@ -219,3 +217,31 @@ $ gcc test.o -m32 -o test
 $ ./test
 Hello, world!
 ```
+
+## x86-64 Assembly
+
+Let's take a look at what a simple C function compiles to in x86-64 assembly. This assumes the compiler is following the [System V ABI](https://wiki.osdev.org/System_V_ABI) (e.g. Linux, macOS).
+
+Let's start with the C function:
+
+```c
+int square(int num) {
+    return num * num;
+}
+```
+
+Compiling with `x86-64 gcc 14.2` on godbolt.org gives us the following assembly code:
+
+```asm
+square(int):
+        push    rbp
+        mov     rbp, rsp
+        mov     DWORD PTR [rbp-4], edi
+        mov     eax, DWORD PTR [rbp-4]
+        imul    eax, eax
+        pop     rbp
+        ret
+```
+
+1. `push rdp` saves the address of the previous stack frame (which is currently in `rbp`) onto the stack.
+2. `mov rbp, rsp` saves `rsp` into `rbp` to create a new stack frame.

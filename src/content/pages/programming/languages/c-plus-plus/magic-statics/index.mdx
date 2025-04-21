@@ -18,7 +18,7 @@ void someFunction()
 
 If another thread enters the same function while the first thread is still initializing the static variable, the compiler will make sure the second thread will block until the first thread has finished initializing (and also make sure the second thread does not initialize the static variable again). This essentially means the compiler has to use a mutex (or similar mechanism) to lock the initialization of the static variable. This is where the "magic" comes from, as the compiler inserts a synchronization mechanism "behind the scenes" to make this work.
 
-> If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization.
+> [§6.7 [stmt.dcl] p4](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf): If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization.
 
 The example below shows the basic thread-safe behavior of function-local statics. `counter()` is called from both thread `t1` and `t2`, each passing in a different value to initialize the static variable `i` with. The compiler ensures only the first thread will initialize the variable. Both threads will print either the value of `1` or `2` as being returned from `counter()` (when I tested it, I always got the value `1`...presumably because thread `t1` is created first).
 
@@ -46,7 +46,15 @@ int main() {
 }
 ```
 
-Another neat property of function-local static variables is that they continue to exist after the function returns. This is not the case for normal local variables, which are destroyed when the function returns. This means you can return a reference to a function-local static variable to the caller. For example:
+<Aside type="warning">
+Only function-local static initialization is guaranteed to be thread-safe by the compiler in C++11 and later. All subsequent access to the variable from multiple threads must be synchronized manually by the programmer.
+</Aside>
+
+Before C++11, calling `counter()` from multiple threads is classified as undefined behaviour (UB).
+
+## Existing After The Function Returns
+
+Another neat property of function-local static variables is that they continue to exist after the function returns (technically this have nothing to do with the "magic" aspect, but it's useful to discuss at the same time). This is not the case for normal (non-static) local variables, which are destroyed when the function returns. This means you can return a reference to a function-local static variable to the caller. For example:
 
 ```c++    
 std::string& getString() {
@@ -57,15 +65,9 @@ std::string& getString() {
 }
 ```
 
-The above code creates a new static qualified string inside the function, and then returns a reference to it. **Seeing a reference being returned to a locally defined variable should give you the heebie jeebies!** This is the only time I can think of where this kind of behaviour is allowed (if the variable was not declared static, then it would be deleted when the function returned, and accessing the reference would likely crash your system!).
+The above code creates a new static qualified string inside the function, and then returns a reference to it. **Seeing a reference being returned to a locally defined variable should give you the heebie jeebies!** Always make sure that you understand it is only allowed because of the `static` qualifier.
 
 <Image src={import('./_assets/magic-statics-icon-bunny-hat-code.png')} width="300px"></Image>
-
-## Thread Safety
-
-**Since C++11, the initialization of magic statics is guaranteed to be thread safe**. Internally, the first thread that calls GetString() will initialize the pointer, blocking until initialization is complete. All other threads will then use the initialized value. Before C++11, calling GetString() from multiple threads is classified as undefined behaviour (UB).
-
-> [§6.7 [stmt.dcl] p4](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf): If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization.
 
 ## Singletons
 
@@ -100,6 +102,8 @@ The constructor and destructor is made private, and both the copy and move const
 
 This is sometimes called the _Meyers' Singleton_ after Scott Meyers publication "[_C++ and the Perils of Double-Checked Locking_](/misc/magic-statics/Scott-Meyers-Cpp-and-the-Perils-of-Double-Checked-Locking.pdf)".
 
+Note that this only guarantees that the initialization is thread-safe. As mentioned before, all subsequent access to the variable from multiple threads must be synchronized manually by the programmer.
+
 ## Lazy Initialization
 
 Magic statics allows for the concept of _lazy initialization_. This means that the object only gets created if it is used (e.g. in the example above, by calling `GetInstance()`).
@@ -126,8 +130,15 @@ On the Windows side of things, thread safety was implemented for magic statics i
 
 GCC provides the `-fno-threadsafe-statics` option to prevent the compiler from generating the extra code surrounding function-local static variables to make sure the initialization is thread-safe.[^gnu-gcc-docs-options-controlling-cpp-dialect]
 
+In MSVC you can disable magic statics with the `/Zc:threadSafeInit-` compiler option (note the dash suffix, to disable it). This option is on by default. Thread-safe initialization of static local variables relies on code implemented in the Universal C run-time library (UCRT). Disabling this will remove the dependency on the UCRT.[^microsoft-msvc-zc-thread-safe-init]
+
+## Comparison with Non Function-Local Statics
+
+If is useful to compare these magic statics with the other main use of `static` -- `static` variables declared outside of a function.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^gnu-gcc-docs-options-controlling-cpp-dialect]: GNU GCC. _Options Controlling C++ Dialect_ [documentation]. Retrieved 2025-04-18, from [https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html).
+[^microsoft-msvc-zc-thread-safe-init]: C++ in Visual Studio Reference (2021, Mar 8). _Learn > C++, C, and Assembler > /Zc:threadSafeInit (Thread-safe Local Static Initialization)_ [documentation]. Microsoft. Retrieved 2025-04-19, from https://learn.microsoft.com/en-us/cpp/build/reference/zc-threadsafeinit-thread-safe-local-static-initialization?view=msvc-170.
