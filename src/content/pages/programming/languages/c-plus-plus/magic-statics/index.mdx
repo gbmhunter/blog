@@ -1,13 +1,14 @@
 ---
 authors: [gbmhunter]
 date: 2017-08-29
-lastUpdated: 2025-04-18
-tags: [programming, programming languages, C++, magic statics, function-local static initialization, threads, C++11, singletons]
+description: Magic statics, more formally known as function-local static initialization, is the term used for the fact that the C++ compiler guarantees that the initializer of any function-local static variable is thread-safe, even if the function is entered concurrently by multiple threads at once.
+lastUpdated: 2025-04-22
+tags: [programming, programming languages, C++, magic statics, function-local static initialization, threads, C++11, singletons, concurrency, GCC, MSVC]
 title: Magic Statics
 type: page
 ---
 
-_Magic statics_, more formally known as _function-local static initialization_, is the informal term used for the fact that the **initializer of any function-local static variable is guaranteed to be thread-safe, even if the function is entered concurrently by multiple threads at once**. Function-local static means a variable which is declared inside a function with the `static` modifier. For example, below is a function-local static variable:
+_Magic statics_, more formally known as _function-local static initialization_, is the term used for the fact that the **initializer of any function-local static variable is guaranteed to be thread-safe, even if the function is entered concurrently by multiple threads at once**. Function-local static means a variable which is declared inside a function with the `static` modifier. For example, below is a function-local static variable:
 
 ```c++
 void someFunction()
@@ -46,8 +47,8 @@ int main() {
 }
 ```
 
-<Aside type="warning">
-Only function-local static initialization is guaranteed to be thread-safe by the compiler in C++11 and later. All subsequent access to the variable from multiple threads must be synchronized manually by the programmer.
+<Aside type="caution">
+Only function-local static initialization is guaranteed to be thread-safe by the compiler (in C++11 and later). All subsequent access to the variable from multiple threads must be synchronized manually by the programmer.
 </Aside>
 
 Before C++11, calling `counter()` from multiple threads is classified as undefined behaviour (UB).
@@ -118,13 +119,15 @@ Most C++ compilers support magic statics, but you have to be careful about the t
 
 On the Windows side of things, thread safety was implemented for magic statics in Visual Studio 2015.
 
-<Image src={import('./_assets/visual-studio-support-for-cpp-magic-statics.png')} width="622px">Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.</Image>
+<Image src={import('./_assets/visual-studio-support-for-cpp-magic-statics.png')} width="600px">Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.</Image>
 
 ## Recursive Calls
 
-**Do NOT recursively call a function which allocates variables with static storage duration**, as this behaviour is undefined.
+**Make sure that the function that initializing the static variable does not call itself while the static variable is being initialized (i.e. recursively)**, as this behaviour is undefined.
 
 > [§6.7 [stmt.dcl] p4](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf): If control re-enters the declaration recursively while the variable is being initialized, the behavior is undefined.
+
+It is ok to recursively call the function as long as it's not recalled during the initialization of the static variable.
 
 ## Compiler Options
 
@@ -132,13 +135,19 @@ GCC provides the `-fno-threadsafe-statics` option to prevent the compiler from g
 
 In MSVC you can disable magic statics with the `/Zc:threadSafeInit-` compiler option (note the dash suffix, to disable it). This option is on by default. Thread-safe initialization of static local variables relies on code implemented in the Universal C run-time library (UCRT). Disabling this will remove the dependency on the UCRT.[^microsoft-msvc-zc-thread-safe-init]
 
-## Comparison with Non Function-Local Statics
+## Non Function-Local Statics
 
-If is useful to compare these magic statics with the other main use of `static` -- `static` variables declared outside of a function.
+Non-local initialization (e.g. a `static` variable declared outside of a function) is usually safer from concurrency issues due to the initialization occurring before `main()` is called and thus usually before any threads are created by the user. However, it is not immune! Non-local initialization also has to be concerned about concurrency issues. There are two sources of non-local concurrency:[^open-std-dynamic-initialization-and-destruction-with-concurrency]
+
+1. Dynamic opening of a shared library in a multi-threaded context.
+1. The creation of multiple threads in initializers, and thus the potential concurrent execution of other initializers.
+
+The document ["Dynamic Initialization and Destruction with Concurrency" by Lawrence Crowl](https://open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm) discusses local and non-local initialization in good detail. It also discusses destruction, which has similar issues to initialization.[^open-std-dynamic-initialization-and-destruction-with-concurrency]
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^gnu-gcc-docs-options-controlling-cpp-dialect]: GNU GCC. _Options Controlling C++ Dialect_ [documentation]. Retrieved 2025-04-18, from [https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html).
+[^gnu-gcc-docs-options-controlling-cpp-dialect]: GNU GCC. _Options Controlling C++ Dialect_ [documentation]. Retrieved 2025-04-18, from https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html.
 [^microsoft-msvc-zc-thread-safe-init]: C++ in Visual Studio Reference (2021, Mar 8). _Learn > C++, C, and Assembler > /Zc:threadSafeInit (Thread-safe Local Static Initialization)_ [documentation]. Microsoft. Retrieved 2025-04-19, from https://learn.microsoft.com/en-us/cpp/build/reference/zc-threadsafeinit-thread-safe-local-static-initialization?view=msvc-170.
+[^open-std-dynamic-initialization-and-destruction-with-concurrency]: Lawrence Crowl. _Dynamic Initialization and Destruction with Concurrency_ [document]. Open Standards. Retrieved 2025-04-22, from https://open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm.

@@ -218,9 +218,107 @@ $ ./test
 Hello, world!
 ```
 
-## x86-64 Assembly
+## x86 Assembly
 
-Let's take a look at what a simple C function compiles to in x86-64 assembly. This assumes the compiler is following the [System V ABI](https://wiki.osdev.org/System_V_ABI) (e.g. Linux, macOS).
+### x86 Register Names
+
+Knowing a little history about the x86 architecture helps to understand the naming of the registers. Initially it was 16-bits, and registers had names like `ax`, `bx`, `cx`, `dx`, etc. Then it was upgraded to 32-bits. The existing register names were kept as is, but new 32-bit register names were added which are prefixed with `e`. For example, `eax` is the 32-bit accumulator register. `ax` is the 16-bit accumulator register, and uses the lower 2 bytes of `eax`. The same process happened again when it was later extended to 64-bits, with the addition of `r` prefixes (e.g. `rax`).
+
+<IRef iref="tbl-x86-registers" /> lists the x86 registers.[^stackoverflow-assembly-registers-in64-bit-architecture]
+
+<table data-iref="tbl-x86-registers">
+  <thead>
+    <tr>
+      <th>64-bit</th>
+      <th>32-bit</th>
+      <th>16-bit</th>
+      <th>8-bit</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rax</td>
+      <td>eax</td>
+      <td>ax</td>
+      <td>ah/al</td>
+      <td>Accumulator. Instructions like `imul` automatically save the result to this register.</td>
+    </tr>
+    <tr>
+      <td>rbx</td>
+      <td>ebx</td>
+      <td>bx</td>
+      <td>bh/bl</td>
+      <td>Base</td>
+    </tr>
+    <tr>
+      <td>rcx</td>
+      <td>ecx</td>
+      <td>cx</td>
+      <td>ch/cl</td>
+      <td>Counter</td>
+    </tr>
+    <tr>
+      <td>rdx</td>
+      <td>edx</td>
+      <td>dx</td>
+      <td>dh/dl</td>
+      <td>Data</td>
+    </tr>
+    <tr>
+      <td>rsp</td>
+      <td>esp</td>
+      <td>sp</td>
+      <td>spl</td>
+      <td>Stack Pointer</td>
+    </tr>
+    <tr>
+      <td>rbp</td>
+      <td>ebp</td>
+      <td>bp</td>
+      <td>bpl</td>
+      <td>Base Pointer</td>
+    </tr>
+    <tr>
+      <td>rsi</td>
+      <td>esi</td>
+      <td>si</td>
+      <td>sil</td>
+      <td>Source Index</td>
+    </tr>
+    <tr>
+      <td>rdi</td>
+      <td>edi</td>
+      <td>di</td>
+      <td>dil</td>
+      <td>Destination Index</td>
+    </tr>
+  </tbody>
+  <caption>x86 register names.</caption>
+</table>
+
+In x86 language, a byte is 8-bits, a word is 16-bits, a double word is 32-bits, and a quad word is 64-bits. This terminology remains the same across 16-bit, 32-bit and 64-bit x86 architectures.
+
+#### rsp and rdb
+
+`rsp` is the stack pointer register. The stack grows downwards, which means as it gets larger, the stack pointer register address gets smaller (i.e. closer to 0). `push` decrements `rsp` (and copies the operand onto the top of the stack) and `pop` copies the top of the stack into the operand and increments `rsp` (makes the stack smaller). It is also valid to manipulate `rsp` directly rather than using `push`/`pop`. For example, you can use `sub rsp, 8` to make the stack smaller by 8 bytes.
+
+`rbp` is the base pointer register. It points to the base of the current stack frame.
+
+### x86 ABI
+
+In x86-64, the first 6 function parameters are passed in registers. If there are more than 6, then the remaining parameters are passed on the stack. In x86-32, all function parameters are passed on the stack.
+
+#### x86-64 Calling Conventions
+
+There are two main calling conventions used for the x86-64 architecture:[^wikipedia-x86-calling-conventions]
+
+1. [System V AMD64 ABI](https://wiki.osdev.org/System_V_ABI)
+2. [Windows x64 ABI](https://en.wikipedia.org/wiki/X86-64_calling_conventions#Microsoft_x64_ABI)
+
+### Basic x86-64 Assembly Function Example
+
+Let's take a look at what a simple C function compiles to in x86-64 assembly. This assumes the compiler is following the [System V AMD64 ABI](https://wiki.osdev.org/System_V_ABI) (e.g. Linux, macOS).
 
 Let's start with the C function:
 
@@ -243,5 +341,23 @@ square(int):
         ret
 ```
 
-1. `push rdp` saves the address of the previous stack frame (which is currently in `rbp`) onto the stack.
-2. `mov rbp, rsp` saves `rsp` into `rbp` to create a new stack frame.
+Note that:
+* `edi` destination index.
+* `esi` source index.
+* `rsp` is the stack pointer. `push` decrements `rsp` and copies the operand onto the top of the stack. `pop` copies the top of the stack into the operand and increments `rsp`.
+* `rdp` points to the base of the current stack frame.
+
+1. `push rdp` saves the address of the previous stack frame base pointer (which is currently in `rbp`) onto the stack.
+1. `mov rbp, rsp` saves `rsp` into `rbp` to create a new stack frame.
+1. `mov DWORD PTR [rbp-4], edi` copies the value of `edi` (the first argument) into the memory location `[rbp-4]`.
+1. `mov eax, DWORD PTR [rbp-4]` copies the value of `[rbp-4]` into `eax`.
+1. `imul eax, eax` multiplies the value of `eax` by itself and stores the result back in `eax`. `eax` happens to be the register the caller expects the result to be stored in, so this does not need to be moved anywhere.
+1. `pop rbp` restores the previous stack frame base pointer.
+1. `ret` pops the return address off the stack and jumps to it.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^stackoverflow-assembly-registers-in64-bit-architecture]: StackOverflow. _Assembly registers in 64-bit architecture_ [forum post]. Retrieved 2025-04-22, from https://stackoverflow.com/questions/20637569/assembly-registers-in-64-bit-architecture.
+[^wikipedia-x86-calling-conventions]: Wikipedia (2025, Mar 19). _x86 calling conventions_. Retrieved 2025-04-22, from https://en.wikipedia.org/wiki/X86_calling_conventions.
