@@ -51,7 +51,7 @@ int main() {
 Only function-local static initialization is guaranteed to be thread-safe by the compiler (in C++11 and later). All subsequent access to the variable from multiple threads must be synchronized manually by the programmer.
 </Aside>
 
-Before C++11, calling `counter()` from multiple threads is classified as undefined behaviour (UB).
+Before C++11, calling `counter()` from multiple threads is classified as undefined behaviour (UB). When I tested this code, the compiler made use of `__cxa_guard_acquire` and `__cxa_guard_release` to make sure the initialization is thread-safe.
 
 ## Existing After The Function Returns
 
@@ -68,7 +68,7 @@ std::string& getString() {
 
 The above code creates a new static qualified string inside the function, and then returns a reference to it. **Seeing a reference being returned to a locally defined variable should give you the heebie jeebies!** Always make sure that you understand it is only allowed because of the `static` qualifier.
 
-<Image src={import('./_assets/magic-statics-icon-bunny-hat-code.png')} width="300px"></Image>
+<Image src={import('./_assets/magic-statics-icon-bunny-hat-code.png')} width="300px" />
 
 ## Singletons
 

@@ -340,9 +340,15 @@ UVC light is especially effective at killing bacteria and viruses (germicidal ef
 
 <Image iref="fig-germicidal-effectiveness-of-uv-light-graph" src={import('./_assets/germicidal-effectiveness-of-uv-light-graph.webp')} width="600px">The germicidal effectiveness of UV light vs. wavelength. Note how it is highest in the UVC range and peaks around 260-270nm.[^gryko-impact-time-temperature-uvc-leds]</Image>
 
+The germicidal effectiveness is normally quantified in terms of a [log reduction](https://en.wikipedia.org/wiki/Log_reduction). The log reduction is the common logarithm (i.e. base 10 logarithm) of the ratio of the number of microbes before and after the UV light is applied. For example 1 log reduction would be a 90% reduction in the number of microbes and a 2 log reduction would be a 99% reduction in the number of microbes.[^wikipedia-log-reduction]
+
+The dose of UV light required is usually specified as $mWcm^{-2}$. The dose is rather complicated to calculate as it depends on a large number of factors including the microbe type, UV wavelength, humidity, irradiation time and other factors. However, roughly speaking, doses between 2-10mW/cm2 can give a 1 log reduction for a large number of microbes.[^american-air-and-water-uv-irradiation-dosage-table]
+
 UV LEDs are used in photocatalytic oxidation (PCO) systems. This is where the UV light is shined onto a photocatalytic substrate, typically titanium dioxide (TiO2). The TiO2 generates free radicals (OH hydroxyl radicals) which are able to perform oxidation reactions. Titanium oxide PCO has a energy band gap centered around 360nm, which is in the middle of the UV-A range.[^sanuvox-about-pco] <IRef iref="fig-photocatalytic-oxidation-diagram" /> shows a diagram of the process.
 
 <Image iref="fig-photocatalytic-oxidation-diagram" src={import('./_assets/photocatalytic-oxidation-diagram.webp')} width="800px">A diagram showing the photocatalytic oxidation process.[^philips-indoor-air-purification-and-disinfection]</Image>
+
+Interestingly, PCO with TiO2 can also be used to oxidize ethylene gas (C2H4) into CO2 and water. This has the benefit of preventing fruit from ripening to quickly (ethylene gas plays an important role in this, so destroying it slows it down).[^elsevier-efficacy-photocatalysis-removal-of-ethylene]
  
 ## LED Controllers
 
@@ -444,7 +450,7 @@ PAR_{[mols/s/m2]} &= \frac{{Irr}_{[W/m2]}\lambda_{peak}}{hcN_A} \\
 \end{align}
 $$
 
-That is the basic equation done. But if we want to be lazy an not convert to SI units before punching the numbers in, we can compensate for this in the equation:
+That is the basic equation done. But if we want to be lazy and not convert to SI units before punching the numbers in, we can compensate for this in the equation:
 
 $$
 \begin{align}
@@ -471,7 +477,7 @@ PAR_{[umols/s/m2]} &= 8.36e^{-5}\cdot {Irr}_{[uW/cm2]} \cdot \lambda_{peak[nm]} 
 $$
 
 <Aside type="caution">
-Remember that PAR is defined as radiation between 400 and 700nm, so this equation only applicable to wavelengths within this band (although if you drop the "photo-synthetic" bit, this conversion could be useful for other purposes). Also don't forget that using the peak wavelength rather than looking at the spectrum could introduce significant errors. 
+Remember that PAR is defined as radiation between 400 and 700nm, so this equation only applicable to wavelengths within this band (although if you drop the "photo-synthetic" bit, this conversion could be useful for other purposes). Also don't forget that just using the single peak wavelength of the light source in the calculation rather than looking at it's entire spectrum could introduce significant errors. 
 </Aside>
 
 If you use the equation before we compensated for the different popular units of $cm^2$ for irradiance and $m^2$ for PAR, you can use also use this equation for radiance (e.g. output light power from an LED or collection of LEDs).
@@ -553,3 +559,6 @@ The first commercially viable blue LED was developed by Shuji Nakamura (along wi
 [^sanuvox-about-pco]: Normand Brais. _About PCO: Photocatalytic Oxidation_ [article]. Sanuvox. Retrieved 2025-03-10, from https://sanuvox.com/en/blog/about-pco-photocatalytic-oxidation/.
 [^gryko-impact-time-temperature-uvc-leds]: Gryko, Lukasz & Blaszczak, Urszula & Zajkowski, Maciej. (2023). The Impact of Time and Temperature of Operation on the Characteristics of High-Power UVC LEDs and Their Disinfection Efficiency. Applied Sciences. 13. 12886. 10.3390/app132312886.
 [^philips-indoor-air-purification-and-disinfection]: Philips. _Indoor Air Purification and Disinfection_ [article]. Retrieved 2025-03-10, from https://www.lighting.philips.com/application-areas/specialist-applications/special-lighting/purification-through-photocatalytic-oxidation.
+[^elsevier-efficacy-photocatalysis-removal-of-ethylene]: Namrata Pathaka, Oluwafemi J. Caleba, Cornelia Rauhc, Pramod V. Mahajan. _Efficacy of photocatalysis and photolysis systems for the removal of ethylene under different storage conditions_ [article]. Elsevier. Retrieved 2025-04-24, from https://fn-nano.com/wp-content/uploads/2019/07/Ethylene-removal.pdf.
+[^wikipedia-log-reduction]: Wikipedia (2024, Dec 31). _Log reduction_. Retrieved 2025-04-24, from https://en.wikipedia.org/wiki/Log_reduction.
+[^american-air-and-water-uv-irradiation-dosage-table]: American Air & Water (2021). _UV Irradiation Dosage Table_ [web page]. Retrieved 2025-04-24, from https://www.americanairandwater.com/uv-facts/uv-dosage.htm.
