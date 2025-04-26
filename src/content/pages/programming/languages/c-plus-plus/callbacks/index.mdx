@@ -9,15 +9,17 @@ title: C++ Callbacks (and giving member functions to C-style callbacks)
 type: page
 ---
 
-Callbacks are functions which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing.
+Callbacks are functions (or more generally --- any object that is callable) which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing. They are useful for eliminating dependencies between modules, and are used for example for libraries to call your application code.
 
-<Image src={import('./_assets/callback.png')} width="500px"></Image>
+<Image src={import('./_assets/callback.png')} width="500px"/>
 
 C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (it's a mixed bag, some embedded C++ environments I've used do support `<functional>`, others do not).
 
 <Aside type="note">
 I have written an open-source C++ callback library called slotmachine-cpp, which you can download from [GitHub here](https://github.com/gbmhunter/slotmachine-cpp).
 </Aside>
+
+Working code for all the example below can be found at [https://github.com/gbmhunter/blog-cpp-callbacks](https://github.com/gbmhunter/blog-cpp-callbacks).
 
 ## Terminology
 
@@ -49,7 +51,7 @@ First, let's get some terminology out of the way:
         </tr>
         <tr>
             <td>Method</td>
-            <td>A function that belongs to an class, and requires an instance of that class to run.</td>
+            <td>A function that belongs to an class, and requires an instance of the class to run (i.e. the `this` pointer).</td>
         </tr>
         <tr>
             <td>Signals</td>
@@ -68,38 +70,36 @@ The problem arises when you want to pass in a non-static method (function belong
 
 This means that for C++ method callbacks in their most primitive form, **the callee has to know the type of the object the function belongs to**. For example:
 
-(run this code at [https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp](https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp)):
-    
-```c++
+```c++ title="main.cpp"
 #include <cstdio>
 
 class MyClass {
 public:
-	// This is our application callback handler for when a message is received, we will
-  // pass this into the library which deals with message parsing
-	void onMsg(int num1, int num2) {
-    printf("onMsg() called with num1=%i, num2=%i\n", num1, num2);
-  }
+    // This is our application callback handler for when a message is received, we will
+    // pass this into the library which deals with message parsing
+        void onMsg(int num1, int num2) {
+        printf("onMsg() called with num1=%i, num2=%i\n", num1, num2);
+    }
 };
 
 class LibraryClass {
 public:
-	// For the library class to call the onMsg, it has to be passed both an instance
-  // of MyClass and a pointer to the member function to call
-	// Note that MyClass has to be known here! This creates undesired coupling...in
-  // reality your library should never have to know about MyClass
-	void passACallbackToMe(MyClass* myClass, void (MyClass::* onMsg)(int num1, int num2)) {
-		// Call the callback function
-		(myClass->*onMsg)(1, 2);
-	}
+    // For the library class to call the onMsg, it has to be passed both an instance
+    // of MyClass and a pointer to the member function to call
+    // Note that MyClass has to be known here! This creates undesired coupling...in
+    // reality your library should never have to know about MyClass
+    void passACallbackToMe(MyClass* myClass, void (MyClass::* onMsg)(int num1, int num2)) {
+        // Call the callback function
+        (myClass->*onMsg)(1, 2);
+    }
 };
 
 int main() {
-	MyClass myClass;
-	LibraryClass libraryClass;
+    MyClass myClass;
+    LibraryClass libraryClass;
 
-	// Provide the instance and function to call
-	libraryClass.passACallbackToMe(&myClass, &MyClass::onMsg);
+    // Provide the instance and function to call
+    libraryClass.passACallbackToMe(&myClass, &MyClass::onMsg);
 }
 ```
 
@@ -107,53 +107,49 @@ int main() {
 
 If you are stuck with a C-style callback, there is no direct way to call non-static (i.e. takes a `this` pointer as the magic first parameter) member function. You can however easily call static member functions (they are no different in type signature to C-style functions):
 
-(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp)):
-
-```c++
+```c++ title="main.cpp"
 #include <cstdio>
 
 class MyClass {
 public:
-	// This is our application callback handler for when a message is received, we will
-  // pass this into the library which deals with message parsing
-  // The "static" keyword makes it easy, as now this function does not
-  // take a this pointer and has the same signature as a plain C function
-	static void onMsg(int num1, int num2) {
-    printf("onMsg() called with num1=%i, num2=%i\n", num1, num2);
-    // NOTE: Can't call any non-static method functions here!
-  }
+    // This is our application callback handler for when a message is received, we will
+    // pass this into the library which deals with message parsing
+    // The "static" keyword makes it easy, as now this function does not
+    // take a this pointer and has the same signature as a plain C function
+    static void onMsg(int num1, int num2) {
+        printf("onMsg() called with num1=%i, num2=%i\n", num1, num2);
+        // NOTE: Can't call any non-static method functions here!
+    }
 };
 
 class LibraryClass {
 public:
-	// For the library class to call the onMsg, it has to be passed both an instance
-  // of MyClass and a pointer to the member function to call
-	// Note that MyClass has to be known here! This creates undesired coupling...in
-  // reality your library should never have to know about MyClass
-	void passACallbackToMe(void (*onMsg)(int num1, int num2)) {
-		// Call the callback function
-		onMsg(1, 2);
-	}
+    // For the library class to call the onMsg, it has to be passed both an instance
+    // of MyClass and a pointer to the member function to call
+    // Note that MyClass has to be known here! This creates undesired coupling...in
+    // reality your library should never have to know about MyClass
+    void passACallbackToMe(void (*onMsg)(int num1, int num2)) {
+        // Call the callback function
+        onMsg(1, 2);
+    }
 };
 
 int main() {
-	MyClass myClass;
-	LibraryClass libraryClass;
+    MyClass myClass;
+    LibraryClass libraryClass;
 
-	// Provide the instance and function to call
-	libraryClass.passACallbackToMe(&myClass.onMsg);
+    // Provide the instance and function to call
+    libraryClass.passACallbackToMe(&myClass.onMsg);
 }
 ```
 
 Note the main limitation of the above method is that no non-static member functions can be called. This limits how "object orientated" you can get with your software/firmware architecture.
 
-## Using Static Methods Or Non-Member Functions, But Calling Member Functions Through Shared Variables
+## Calling Member Functions Via Standard C Function
 
-As we touched on before, if you are stuck with a C-style callback, there is no direct way to call a member function. However, given we can call static methods (as shown directly above), we can use shared variables (e.g. file scoped variables) to call a particular instance from that static function. This is about the best you can do when you can't change the type signature of the C-style callback.
+As we touched on before, if you are stuck with a C-style callback, there is no direct way to call a member function. However, given we can call static methods (as shown directly above), we can use shared variables (e.g. file scoped variables) to call a particular instance from that static function. This is about the best you can do when you want to call a C++ class member function, but you have to provide a C-style callback.
 
 Let's go through an example, this time using a standard C function rather than a static member function purely for illustration they are interchangeable:
-
-(run this code at [https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs](https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs)):
 
 ```c++
 #include <cstdio>
@@ -200,8 +196,6 @@ int main()
 
 A slightly more complicated but flexible approach to the above is to use templating, `std::bind` and `std::function` as shown in the below example:
 
-(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp)):
-
 ```c++
 #include <stdio.h>
 #include <functional>
@@ -212,7 +206,7 @@ struct Callback;
 template <typename Ret, typename... Params>
 struct Callback<Ret(Params...)> {
    template <typename... Args> 
-   static Ret callback(Args... args) {                    
+   static Ret callback(Args... args) {
       return func(args...);  
    }
    static std::function<Ret(Params...)> func; 
@@ -242,82 +236,117 @@ int main() {
     callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);
 
     // Now we can pass this function to a C API which just wants a standard function callback    
-    c_function_which_wants_callback(func);      
+    c_function_which_wants_callback(func);
 }
 ```
 
-## Using std::function
+## Using std::function With std::bind
 
-If you have authorship of the library wanting to callback, then you can do even better than described above. What I would recommend here is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
+`std::function` is a common type to use for a callback in modern C++. For this technique you need to have control over the caller so that you can use the `std::function` type (if you can't, and are stuck with a C-style callback type, see the above sections). There are two main ways to create a `std::function` object from a member function, one is to use `std::bind` and the other is to use a lambda. Let's cover the `std::bind` technique first.
 
-(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp)):
+The following code example shows how to do this. Rather than the callback type being `int (callback*) (int num1, int num2)`, we know change it to `std::function<int(int, int)>`. `<int(int, int)>` defines the type signature of the callback, which is a function which takes two `int` parameters and returns an `int`.
+
+`std::bind` is used to pass a member function to this callback. Notice the syntax is quite verbose. It requires the following syntax: `std::bind(<pointer-to-member-function>, <instance-of-class>, <input-1-placeholder>, <in>)`. 
 
 ```c++
 #include <cstdio>
 #include <functional>
 
-class LibraryClass {
+class MyClass {
 public:
-	void passACallbackToMe(std::function<int(int, int)> callback) {
-	    // Now invoke (call) the callback
-		int o = callback(1, 2);
-        printf("Value: %i\n", o); // We might be on an embedded system, use printf() and not std::cout
-	}
+    int methodToCallback(int num1, int num2) {
+        return num1 + num2;
+    }
 };
+
+void passACallbackToMe(std::function<int(int, int)> callback) {
+    int o = callback(1, 2);
+    printf("Value: %i\n", o);
+}
+
+int main()
+{
+    MyClass myClass;
+    passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
+}
+```
+
+## Using std::function With Lambdas
+
+An alternative to using `std::bind` to pass your member function to the `std::function` is to use a lambda instead. This approach may avoid the dynamic memory allocation of `std::bind` for a small number of captured variables (such as just `this`). Similarly to `std::bind`, a downside is that you have to repeat the function arguments again in the definition of the lambda.
+
+The following code example shows how to do this:
+
+```c++
+#include <cstdio>
+#include <functional>
 
 class MyClass {
 public:
-      int methodToCallback(int num1, int num2) {
-          return num1 + num2;
-      }
+    int methodToCallback(int num1, int num2) {
+        return num1 + num2;
+    }
 };
+
+void passACallbackToMe(std::function<int(int, int)> callback) {
+    int o = callback(1, 2);
+    printf("Value: %i\n", o);
+}
 
 int main()
 {
     MyClass myClass;
     
-    LibraryClass libraryClass;
     // Use a lambda to capture myClass and call the member method
-    libraryClass.passACallbackToMe([&myClass](int num1, int num2) -> int {
+    passACallbackToMe([&myClass](int num1, int num2) -> int {
         return myClass.methodToCallback(num1, num2);
     });
 }
 ```
 
-Rather than a lambda like in the example above, you can use `std::bind` instead. I strongly recommend the lambda way of doing things, but for sake of completeness let's introduce the `std::bind` technique
+## function_ref
 
-(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp)):
+An faster, non dynamic memory allocation alternative to `std::function` is `function_ref`. I use the term `function_ref` to refer to a concept in which there a number of implementations. The first standarized one is hitting the standard library in C++26, which as of mid-2025 is not widely supported by compilers (and good luck trying to get a company to adopt a standard on the bleeding edge). However, there are also 3rd party implementations that you can use today.
+
+`function_ref` is a non-owning function wrapper.
+
+From cppreference.com:
+
+> Class template `std::function_ref` is a non-owning function wrapper. `std::function_ref` objects can store and invoke reference to Callable target - functions, lambda expressions, bind expressions, or other function objects, but not pointers to member functions and pointers to member objects.[^cpp-reference-std-function-ref]
+
+### 3rd Party Implementations
+
+As of mid-2025, C++26 support is not widespread among the popular compilers. And good luck trying to get a company to adopt a standard on the bleeding edge. Luckily, there are 3rd party implementations of essentially the same thing as `std::function_ref`. The GitHub repo [zhihaoy/nontype_functional](https://github.com/zhihaoy/nontype_functional) contains a complete implementation of the `std::function`, `std::function_ref`, and `std::move_only_function` equivalent to those in the C++26 `<functional>` header.[^github-zhihaoy-nontype-functional]
+
+zhihaoy/nontype_functional can be easily included in your CMake based project using `FetchContent`:
+
+```cmake title="CMakeLists.txt"
+include(FetchContent)
+FetchContent_Declare(
+  nontype_functional
+  GIT_REPOSITORY https://github.com/zhihaoy/nontype_functional
+  GIT_TAG        bdb098751ccdba3e03b429064473c70e228a885e # v1.0.2
+)
+FetchContent_MakeAvailable(nontype_functional)
+```
+
+For a lighter implementation, the GitHub repo [TartanLlama/function_ref](https://github.com/TartanLlama/function_ref) provides just a `tl::function_ref` implementation. It describes itself as "a lightweight non-owning reference to a callable".
+
+<Aside type="note">
+The example of the README of `TartanLlama/function_ref` is:
+
+Use `tl::function_ref` instead of `std::function` whenever you don't need to own the callable. The most common case for this is function parameters which aren't stored anywhere:
 
 ```c++
-#include <cstdio>
-#include <functional>
-
-class LibraryClass {
-public:
-	void passACallbackToMe(std::function<int(int, int)> callback) {
-	    // Now invoke (call) the callback
-		int o = callback(1, 2);
-        printf("Value: %i\n", o); // We might be on an embedded system, use printf() and not std::cout
-	}
-};
-
-class MyClass {
-public:
-      int methodToCallback(int num1, int num2) {
-          return num1 + num2;
-      }
-};
-
-int main()
-{
-    MyClass myClass;
-    
-    LibraryClass libraryClass;
-
-    // Alternate way to using a lambda, use std::bind instead. However I recommend the lambda way.
-    libraryClass.passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
+void foo (function_ref<int(int)> func) {
+    std::cout << "Result is " << func(21); //42
 }
+
+foo([](int i) { return i*2; });
 ```
+</Aside>
+
+A working `std::function_ref` example using `zhihaoy/nontype_functional` can be found at https://github.com/gbmhunter/blog-cpp-callbacks/tree/main/using-std-function-ref.
 
 ## C++ Callback Libraries
 
@@ -355,3 +384,10 @@ License: GNU Library General Public License
 [The Type-safe Callbacks In C++](http://www.codeproject.com/Articles/6136/Type-safe-Callbacks-in-C) library on the Code Project gives a great, complete callback library for C++ which allows callbacks with 0 to 5 input arguments.
 
 [Functors to Encapsulate C and C++ Function Pointers](http://www.newty.de/fpt/functor.html) is a short and simple tutorial on using functors.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^cpp-reference-std-function-ref]: cppreference.com. _std::function_ref_ [documentation]. Retrieved 2025-04-25, from https://en.cppreference.com/w/cpp/utility/functional/function_ref.
+[^github-zhihaoy-nontype-functional]: GitHub. _zhihaoy/nontype_functional_ [repo]. Retrieved 2025-04-25, from https://github.com/zhihaoy/nontype_functional.
