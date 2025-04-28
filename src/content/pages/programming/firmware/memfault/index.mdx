@@ -105,6 +105,7 @@ Memfault has first-class support for the [Zephyr RTOS](/programming/operating-sy
 * `CONFIG_MEMFAULT_COREDUMP_COLLECT_BSS_REGIONS`: Set to `y` to collect the BSS region (0 initialised data) of the application as part of the core dump. Defaults to `n`.
 * `CONFIG_MEMFAULT_COREDUMP_MAX_TRACKED_TASKS`: The maximum number of tasks that are tracked in the core dump. For each task, the task name, back trace (up to a limit) and task run state (e.g. `RUNNING`, `SUSPENDED`) are collected. Defaults to `32`.
 * `CONFIG_MEMFAULT_LOGGING_ENABLE`: Set to `y` to route Zephyr log messages to the Memfault log system (i.e. install the Memfault logging backend into Zephyr). Defaults to `n`.
+* `CONFIG_MEMFAULT_RAM_BACKED_COREDUMP_SIZE`: The amount of RAM to use for storing core dumps. Defaults to `8192` bytes.
 
 A complete list of the Memfault Kconfig options can be found [here](https://github.com/memfault/memfault-firmware-sdk/blob/master/ports/zephyr/Kconfig).
 
@@ -116,6 +117,32 @@ Memfault supports sending log messages to the Memfault cloud. This is useful for
 It was not working for me when I was using the `MEMFAULT_SDK_LOG_SAVE()` macro. Then I discovered there is also a `MEMFAULT_LOG_SAVE()` macro. This worked!
 </Aside>
 
+Unfortunately, communication from Zephyr to Memfault logging will not occur if the log mode is set to immediate (`CONFIG_LOG_MODE_IMMEDIATE=y`). This logic is found in `memfault-firmware-sdk/ports/zephyr/common/memfault_logging.c`. This is because when in immediate mode, logging can occurs from ISRs and this might corrupt the Memfault logging buffer.
+
+Assert's won't be captured by Memfault automatically if you have routed Zephyr logging to Memfault, because assert prints using `printk()` rather than `LOG_ERR()`. One way to fix this is to enable printk to log forwarding by adding.
+
+If you can't forward `printk` to Zephyr's logs for some reason (I couldn't in a particular project because doing so broke AT command mode), then you don't really have a nice way to capture asserts. Zephyr defines a weakly linked `assert_post_action()` function that you can override, but unfortunately this only gets passed the file name and line number --- the assert expression and optional message are not provided. These last two parameters are very useful for helping diagnose exactly what went wrong (especially the message, as you can format the value that failed the assert into this). One method I used was to modify the Zephyr source code, which is not ideal since it makes upgrading Zephyr more difficult in the future. I modified `zephyr/include/zephyr/sys/__assert.h` to change the definition of `__ASSERT_PRINT()` if `CONFIG_SEND_ASSERT_INFO_TO_MEMFAULT_LOG` is defined (which I added to the project's Kconfig file). If it is defined, then `__ASSERT_PRINT()` calls `MEMFAULT_LOG_SAVE()` as well as `assert_print()`.
+
+```c title="zephyr/include/zephyr/sys/__assert.h"
+#if defined(CONFIG_ASSERT_VERBOSE)
+// UPDATE to the Zephyr source code to allow for sending assert information to Memfault logs saved with traces.
+// Ideally there would be a better way to do this without having to modify the Zephyr source code.
+// Can't turn on CONFIG_LOG_PRINTK=y because that stopped AT command mode from working in a particular project.
+#ifdef CONFIG_SEND_ASSERT_INFO_TO_MEMFAULT_LOG
+#include "memfault/components.h"
+#define __ASSERT_PRINT(fmt, ...) \
+    do { \
+        MEMFAULT_LOG_SAVE(kMemfaultPlatformLogLevel_Error, fmt, ##__VA_ARGS__); \
+        assert_print(fmt, ##__VA_ARGS__); \
+    } while (false)
+#else /* CONFIG_SEND_ASSERT_INFO_TO_MEMFAULT_LOG */
+#define __ASSERT_PRINT(fmt, ...) assert_print(fmt, ##__VA_ARGS__);
+#endif /* CONFIG_SEND_ASSERT_INFO_TO_MEMFAULT_LOG */
+#else /* CONFIG_ASSERT_VERBOSE */
+#define __ASSERT_PRINT(fmt, ...)
+#endif /* CONFIG_ASSERT_VERBOSE */
+```
+
 ### Memfault Shell Commands
 
 Memfault provides a range of useful Zephyr shell commands that you can enable by setting `CONFIG_MEMFAULT_SHELL=y` in your `prj.conf` file. Once enabled, you should see a command called `mflt` available in the Zephyr shell. The following `mflt` sub-commands are available:
@@ -124,6 +151,10 @@ Memfault provides a range of useful Zephyr shell commands that you can enable by
 - `mflt test` - This contains a number of sub-commands for testing the Memfault integration.
 
 <Image src={import('./_assets/memfault-zephyr-shell-commands.webp')} width="600px">A screenshot of the Memfault shell commands in the Zephyr shell as displayed using [NinjaTerm](https://ninjaterm.mbedded.ninja/).</Image>
+
+## Further Reading
+
+See the [Zephyr page](/programming/operating-systems/zephyr/) for more information on the Zephyr RTOS.
 
 {/* ======================================================================== */}
 {/* REFERENCES */}

@@ -1,0 +1,47 @@
+---
+authors: [gbmhunter]
+date: 2025-04-28
+description: Google Benchmark is a open source C++ library for performance benchmarking snippets of C++/C code.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-04-28
+tags: [programming, languages, C++, Google, benchmarking, CPU, performance, microbenchmarking, analysis, tools, compilers]
+title: Google Benchmark
+type: page
+---
+
+Google Benchmark is a open source C++ library for performance benchmarking snippets of C++/C code.
+
+<Image src={import('./_assets/google-benchmark-repo-screenshot.webp')} width="900px">A screenshot of the Google Benchmark repository as viewed on GitHub.[^github-google-benchmark]</Image>
+
+## Installation
+
+You can easily add Google Benchmark as a dependency to your CMake C++ project by using `FetchContent` in your `CMakeLists.txt` file.
+
+```cmake title="CMakeLists.txt"
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type")
+include(FetchContent)
+set(BENCHMARK_ENABLE_TESTING off)
+FetchContent_Declare(googlebenchmark
+                     GIT_REPOSITORY https://github.com/google/benchmark
+                     GIT_TAG main)
+FetchContent_MakeAvailable(googlebenchmark)
+```
+
+This will automatically download and build Google Benchmark and make it available to your project.
+
+This sets the `BUILD_TYPE` to `Release` to prevent warnings that Google Benchmark emits when it is built in `Debug` mode. `set(BENCHMARK_ENABLE_TESTING off)` prevents Google Benchmark from running it's own unit tests (we can trust it works well!).
+
+<Aside type="tip">
+You may want to replace the `GIT_TAG main` with a specific hash to lock down the version of Google Benchmark you are using. `GIT_TAG main` will always pull whatever version the `main` branch is currently at.
+</Aside>
+
+## Preventing Optimizations
+
+`benchmark::ClobberMemory()` can be used to force the compiler to flush pending writes to global memory. This acts as a read/write barrier. This is implemented with `std::atomic_signal_fence(std::memory_order_acq_rel);`.
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^github-google-benchmark]: GitHub. _google/benchmark_ [repository]. Retrieved 2025-04-28, from https://github.com/google/benchmark.
