@@ -1,0 +1,154 @@
+{
+  "context": {
+    "date": "2025-04-29T09:11:37+12:00",
+    "host_name": "geoff-laptop",
+    "executable": "./output_opt",
+    "num_cpus": 16,
+    "mhz_per_cpu": 2994,
+    "cpu_scaling_enabled": false,
+    "caches": [
+      {
+        "type": "Data",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 2
+      },
+      {
+        "type": "Instruction",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 2,
+        "size": 524288,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 3,
+        "size": 4194304,
+        "num_sharing": 16
+      }
+    ],
+    "load_avg": [0.584473,0.352539,0.311523],
+    "library_version": "v1.9.2-7-gc19058b4",
+    "library_build_type": "release",
+    "json_schema_version": 1
+  },
+  "benchmarks": [
+    {
+      "name": "basicCCallback",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "basicCCallback",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 3291786288,
+      "real_time": 2.1438833273322316e-01,
+      "cpu_time": 2.1439019372936885e-01,
+      "time_unit": "ns"
+    },
+    {
+      "name": "callbackInterfaceUsingInheritance",
+      "family_index": 1,
+      "per_family_instance_index": 0,
+      "run_name": "callbackInterfaceUsingInheritance",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 6471887508,
+      "real_time": 1.0635161398490373e-01,
+      "cpu_time": 1.0635031884426262e-01,
+      "time_unit": "ns"
+    },
+    {
+      "name": "callingMemberThroughStandardCFunction",
+      "family_index": 2,
+      "per_family_instance_index": 0,
+      "run_name": "callingMemberThroughStandardCFunction",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 3301569094,
+      "real_time": 2.1317109773007140e-01,
+      "cpu_time": 2.1316846019639907e-01,
+      "time_unit": "ns"
+    },
+    {
+      "name": "staticVariablesWithTemplating",
+      "family_index": 3,
+      "per_family_instance_index": 0,
+      "run_name": "staticVariablesWithTemplating",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 298971666,
+      "real_time": 2.4358861217151744e+00,
+      "cpu_time": 2.4359087593270461e+00,
+      "time_unit": "ns"
+    },
+    {
+      "name": "stdFunctionWithLambdas",
+      "family_index": 4,
+      "per_family_instance_index": 0,
+      "run_name": "stdFunctionWithLambdas",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 387189343,
+      "real_time": 1.7923085217484234e+00,
+      "cpu_time": 1.7922866745844284e+00,
+      "time_unit": "ns"
+    },
+    {
+      "name": "stdFunctionWithBind",
+      "family_index": 5,
+      "per_family_instance_index": 0,
+      "run_name": "stdFunctionWithBind",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 305256162,
+      "real_time": 2.3162869092245306e+00,
+      "cpu_time": 2.3163027909654428e+00,
+      "time_unit": "ns"
+    },
+    {
+      "name": "templatingTheMemberFunctionAndInstance",
+      "family_index": 6,
+      "per_family_instance_index": 0,
+      "run_name": "templatingTheMemberFunctionAndInstance",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 520502597,
+      "real_time": 1.2767680946002504e+00,
+      "cpu_time": 1.2767742252014151e+00,
+      "time_unit": "ns"
+    },
+    {
+      "name": "stdFunctionRef",
+      "family_index": 7,
+      "per_family_instance_index": 0,
+      "run_name": "stdFunctionRef",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 464502395,
+      "real_time": 1.5175214026632631e+00,
+      "cpu_time": 1.5175334025995706e+00,
+      "time_unit": "ns"
+    }
+  ]
+}

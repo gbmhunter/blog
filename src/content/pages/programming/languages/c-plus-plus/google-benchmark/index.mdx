@@ -39,6 +39,13 @@ You may want to replace the `GIT_TAG main` with a specific hash to lock down the
 
 `benchmark::ClobberMemory()` can be used to force the compiler to flush pending writes to global memory. This acts as a read/write barrier. This is implemented with `std::atomic_signal_fence(std::memory_order_acq_rel);`.
 
+## Saving Results to a File
+
+To save Google Benchmark results to a file, you can pass in the `--benchmark_out` and `--benchmark_out_format` flags to the compiled executable. For example, so save the results to a file called `output.json`:
+
+```bash
+my_benchmark_program --benchmark_out=output.json --benchmark_out_format=json
+```
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

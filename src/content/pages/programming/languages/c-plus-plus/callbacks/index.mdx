@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2014-01-17
 description: How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments.
 image: ./_assets/cpp-callbacks.png
-lastUpdated: 2022-08-21
-tags: [programming, languages, C++, callbacks, methods, functors, functions, Vlpp, libsigc++, signals, slots, callee, embedded, functional, 'std::bind', bind]
+lastUpdated: 2025-04-29
+tags: [programming, languages, C++, callbacks, methods, functors, functions, Vlpp, libsigc++, signals, slots, callee, embedded, functional, "std::bind", bind]
 title: C++ Callbacks (and giving member functions to C-style callbacks)
 type: page
 ---
@@ -438,7 +438,11 @@ Note the callback is now of type `std23::function_ref<int(int, int)>`. To pass a
 
 ### 3rd Party Implementations
 
-As of mid-2025, C++26 support is not widespread among the popular compilers. And good luck trying to get a company to adopt a standard on the bleeding edge. Luckily, there are 3rd party implementations of essentially the same thing as `std::function_ref`. The GitHub repo [zhihaoy/nontype_functional](https://github.com/zhihaoy/nontype_functional) contains a complete implementation of the `std::function`, `std::function_ref`, and `std::move_only_function` equivalent to those in the C++26 `<functional>` header.[^github-zhihaoy-nontype-functional]
+As of mid-2025, C++26 support is not widespread among the popular compilers. And good luck trying to get a company to adopt a standard on the bleeding edge. Luckily, there are 3rd party implementations of essentially the same thing as `std::function_ref`.
+
+#### zhihaoy/nontype_functional
+
+The GitHub repo [zhihaoy/nontype_functional](https://github.com/zhihaoy/nontype_functional) contains a complete implementation of the `std::function`, `std::function_ref`, and `std::move_only_function` equivalent to those in the C++26 `<functional>` header.[^github-zhihaoy-nontype-functional]
 
 zhihaoy/nontype_functional can be easily included in your CMake based project using `FetchContent`:
 
@@ -451,6 +455,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(nontype_functional)
 ```
+
+#### TartanLlama/function_ref
 
 For a lighter implementation, the GitHub repo [TartanLlama/function_ref](https://github.com/TartanLlama/function_ref) provides just a `tl::function_ref` implementation. It describes itself as "a lightweight non-owning reference to a callable".
 
@@ -470,57 +476,33 @@ foo([](int i) { return i*2; });
 
 A working `std::function_ref` example using `zhihaoy/nontype_functional` can be found at https://github.com/gbmhunter/blog-cpp-callbacks/tree/main/using-std-function-ref.
 
+#### abseil function_ref
+
+[Google's Abseil library](https://github.com/abseil/abseil-cpp/) provides a `function_ref` implementation. The header file can be found [here](https://github.com/abseil/abseil-cpp/blob/master/absl/functional/function_ref.h). I couldn't get this to work as I wanted as the `function_ref` required the callable class to be a template parameter, so I'm guessing it does not perform the same type erasure as the other function_ref implementations.
+
 ## Benchmarking
 
 I benchmarked some of the different callback techniques above to compare how quickly they run. Most of the time you wouldn't care about these performance differences, as the callbacks are not part of some critical execution path. However, in certain situations you will care! Some examples might be if you had a callback that fired on every received byte of a high bandwidth communication protocol, or a callback as part of some fast running control loop.
 
-Benchmarking was performed with [Google Benchmark](/programming/languages/c-plus-plus/google-benchmark/). The benchmark results are shown below:
+Benchmarking was performed with [Google Benchmark](/programming/languages/c-plus-plus/google-benchmark/). For some reason turning optimization off (`-O0`) caused the `function_ref` test to segfault! The benchmark results are shown in <IRef iref="fig-callback-benchmarks-no-opt" />.
 
-<table>
-  <thead>
-    <tr>
-      <th>Benchmark Test Name</th>
-      <th>Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>callbackInterfaceUsingInheritance</td>
-      <td>0.100 ns</td>
-    </tr>
-    <tr>
-      <td>basicCCallback</td>
-      <td>0.198 ns</td>
-    </tr>
-    <tr>
-      <td>callingMemberThroughStandardCFunction</td>
-      <td>0.199 ns</td>
-    </tr>
-    <tr>
-      <td>stdFunctionRef</td>
-      <td>0.524 ns</td>
-    </tr>
-    <tr>
-      <td>templatingTheMemberFunctionAndInstance</td>
-      <td>1.42 ns</td>
-    </tr>
-    <tr>
-      <td>stdFunctionWithLambdas</td>
-      <td>1.67 ns</td>
-    </tr>
-    <tr>
-      <td>stdFunctionWithBind</td>
-      <td>2.14 ns</td>
-    </tr>
-    <tr>
-      <td>staticVariablesWithTemplating</td>
-      <td>2.20 ns</td>
-    </tr>
-  </tbody>
-</table>
+<Image iref="fig-callback-benchmarks-no-opt" src={import('./_assets/callback-benchmarks-no-opt.png')} width="900px">The runtimes of the different callback techniques when optimizations are turned off.</Image>
 
+<Aside type="caution">
+Note the logarithmic scale of the y-axis! I did this because the runtimes are so different. The logarithmic scale shows the differences between the faster methods more clearly.
+</Aside>
 
-The sad (but in some sense hardly surprising) news is that if you need the absolute fastest performance, nothing can beat a C-style callback (including a C-style callback that then calls a member function through a shared (e.g. global or file scoped) variable). On the other end of the spectrum, using `std::function` with `std::bind` gave the slowest performance, being about 10x slower than the C-style callback! The middle ground was `function_ref`, which was only about 2-3x slower than the C-style callback.
+The sad (but in some sense hardly surprising) news is that if you need the absolute fastest performance (caveat: with optimizations off!), nothing can beat a C-style callback (including a C-style callback that then calls a member function through a shared (e.g. global or file scoped) variable). On the other end of the spectrum, using `std::function` with `std::bind` and static variables with templating (which also uses `std::bind`) gave the slowest performance, being about 10x slower than the C-style callback!
+
+<Aside type="note">
+For some reason the `function_ref` test segfaulted when optimizations were turned off. I've got a feeling it's a "me issue" and I'm not understanding the lifetime/ownership rules of `function_ref` correctly.
+</Aside>
+
+What if we let the compiler optimize the code? Does the relative performance of the different techniques change? Let's find out! I compiled using GCC and the `-O3` flag (optimize as much as possible for speed) and ran the benchmarks again. And this time the `function_ref` test didn't segfault! <IRef iref="fig-callback-benchmarks-opt" /> shows the results.
+
+<Image iref="fig-callback-benchmarks-opt" src={import('./_assets/callback-benchmarks-opt.png')} width="900px">The runtimes of the different callback techniques when optimizations are turned on.</Image>
+
+Oh how the game changes! Now for some reason the callback interface using inheritance is the fastest, even beating the basic C callback technique. I have no idea why this is? On the slow end of the spectrum, things didn't change much. `std::function` with `std::bind` and static variables with templating (using `std::bind`) are still the slowest. I'm quite surprised that templating the member function and instance was so slow. I would have thought it would perform almost as fast as the C style callback, since the only difference should be the one extra `this` parameter that needs to be passed in.
 
 ## C++ Callback Libraries
 

@@ -1023,11 +1023,22 @@ Zephyr mutexes also support _priority inheritance_. The Zephyr kernel will eleva
 
 Zephyr provides support for standard C library `assert()` function as well as providing more powerful assert macros if you wish you use them.
 
-`ASSERT_NO_MSG()` can be used if you don't want to have to provide a message. I end up using this a lot as adding a message to every assert becomes tiresome (a typical project ends up with hundreds of assert calls, checking things like passed-in pointers are non-null, integers are within range, e.t.c).
+`__ASSERT()` provides the ability to specify both a condition and a message. The message is useful to provide a helpful message when just the condition is not enough to understand what went wrong. For example, if you were checking that `x` was 3 or less, then if the assert failed, you could include what the value of `x` was in the message:
+
+`__ASSERT(x <= 3, "x must be equal to or less than 3. x: %u.", x);`
+
+This will help during debugging. Was `x` just one more than 3 (i.e. `4`), or was it something crazy like 1000? This can tell you about the reason for the failure.
+
+`ASSERT_NO_MSG()` can be used if you don't want to have to provide a message. This is useful when the condition by itself is enough to provide a helpful debug message. This is normally the case when checking booleans, or for non-null pointers. For example:
 
 ```c
-ASSERT_NO_MSG();
+ASSERT_NO_MSG(heaterIsOn);
+ASSERT_NO_MSG(thePointerYouPassedIn);
 ```
+
+<Aside type="note">
+You don't have to write `ASSERT_NO_MSG(thePointerYouPassedIn != NULL)` since C/C++ guarantees that checking the "truthiness" of a pointer will return `true` only if the pointer is not `NULL`.
+</Aside>
 
 ### Watchdog
 
@@ -2317,6 +2328,118 @@ shell_set_bypass(sh, NULL);
 
 The model_shell example project makes use of this bypass feature to provide a direct AT command mode between the shell and the modem.
 
+### Shell Login
+
+You can somewhat easily implement a login shell with Zephyr, which protects all the commands behind a simple root-level password that is required to "login".
+
+Setting `CONFIG_SHELL_CMDS_SELECT=y` in `prj.conf` will allow you to select which shell commands are available. Then you can call `shell_set_root_cmd()` from C code to set a root command. `shell_set_root_cmd(NULL)` will clear the root command and go back to showing all available commands.
+
+<Image src={import('./_assets/zephyr-login-shell-screenshot.webp')} width="500px">A screenshot of a Zephyr login shell in action.</Image>
+
+`shell_obscure_set(sh, true)` causes all logs to stop. Then calling `shell_obscure_set(sh, false)` did not restore the logging. After a while a hard fault occurred, likely due to the log messages building up and overflowing some buffer. I managed to fix this by re-enabling the shell logging backend with `z_shell_log_backend_enable()`:
+
+```c
+z_shell_log_backend_enable(sh->log_backend, (void *)sh, sh->ctx->log_level);
+```
+
+Another way to fix this is to just stop and start the shell with:
+
+```c
+// Fix to restore logging
+shell_stop(sh);
+shell_start(sh);
+```
+
+These stop and start functions call `z_shell_log_backend_disable()` and `z_shell_log_backend_enable()` internally.
+
+Below is the source code to create a login shell. It relies on a `PRODUCTION_BUILD` macro to determine if the login prompt should be shown or not, as in a development build it can be a pain to have to login each time you want to use the shell.
+
+```c title="LoginCmd.c"
+#include <zephyr/kernel.h>
+#include <zephyr/shell/shell.h>
+#include <zephyr/shell/shell_uart.h>
+#include <zephyr/init.h>
+
+/**
+ * The password for the shell login.
+ */
+#define SHELL_PASSWORD "zephyr"
+
+static int LoginInit(void)
+{
+    // Only enable login in production builds, otherwise skip past the login prompt
+#if PRODUCTION_BUILD == 1
+    printk("Please login with password to continue.\n");
+    if (!CONFIG_SHELL_CMD_ROOT[0]) {
+        shell_set_root_cmd("login");
+    }
+    struct shell const * sh = shell_backend_uart_get_ptr();
+    // Obscure the input so that the password is not visible
+    shell_obscure_set(sh, true);
+
+    // Disable logging to the console so that we don't see it at the login prompt
+    z_shell_log_backend_disable(sh->log_backend);
+#else
+    printk("Development build. Login is not required.\n");
+#endif
+    return 0;
+}
+
+static int CheckPassword(char *passwd)
+{
+    return strcmp(passwd, SHELL_PASSWORD);
+}
+
+static int CmdLogin(const struct shell* sh, size_t argc, char** argv)
+{
+    static uint32_t attempts;
+
+    if (CheckPassword(argv[1]) != 0)
+    {
+        shell_error(sh, "Incorrect password!");
+        attempts++;
+        if (attempts > 3)
+        {
+            k_sleep(K_SECONDS(attempts));
+        }
+        return -EINVAL;
+    }
+
+    // Clear history so password not visible there
+    z_shell_history_purge(sh->history);
+    shell_obscure_set(sh, false);
+    
+    shell_set_root_cmd(NULL);
+    shell_prompt_change(sh, "uart:~$ ");
+    z_shell_log_backend_enable(sh->log_backend, (void *)sh, sh->ctx->log_level);
+
+    shell_print(sh, "Logged in successfully! Hit tab for help. Use the command \"logout\" to log back out.\n");
+    attempts = 0;
+    return 0;
+}
+
+static int CmdLogout(const struct shell* sh, size_t argc, char** argv)
+{
+    shell_set_root_cmd("login");
+    shell_obscure_set(sh, true);
+    shell_prompt_change(sh, "login: ");
+    // Disable logging to the console so that we don't see it at the login prompt
+    z_shell_log_backend_disable(sh->log_backend);
+    shell_print(sh, "\n");
+    return 0;
+}
+
+SHELL_CMD_ARG_REGISTER(login, NULL, "<password>", CmdLogin, 2, 0);
+
+SHELL_CMD_REGISTER(logout, NULL, "Log out.", CmdLogout);
+
+SYS_INIT(LoginInit, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+```
+
+`shell_prompt_change(sh, "login: ")` is used to change the shell prompt to `login:` so that it's obvious to the user that they need to login before doing anything else.
+
+An example of shell login can be found [here](https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/shell/shell_module/prj_login.conf).
+
 ## Debugging
 
 You can use the `addr2line` executable to decode a memory address back into a source code file and line number. `addr2line` should be provided by the toolchain as part of the compiler's suite of executables. For example, with Nordic toolchains in Zephyr:
@@ -2757,6 +2880,16 @@ If tring to print a float using `%f` in any printf style functions (or log macro
 CONFIG_FPU=y # Required for printing floating point numbers
 ```
 
+## Fatal Errors
+
+Zephyr supports GCC stack canaries by adding the following to your `prj.conf` file:
+
+```python
+CONFIG_STACK_CANARIES=y
+```
+
+Setting this to `y` will make the compiler add a randomly generated canary value to the end of each functions stack frame. This is checked on function exit. If the canary value is overwritten, the compiler calls `__stack_chk_fail()`, whose Zephyr implementation invokes a fatal stack overflow error.[^zephyr-docs-fatal-errors]
+
 ## Contributing to Zephyr
 
 As an open-source project, Zephyr welcomes contributions from the community. Zephyr has a detailed contribution guide [here](https://docs.zephyrproject.org/latest/contribute/guidelines.html#contribute-guidelines).
@@ -2817,3 +2950,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
 [^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
 [^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
+[^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
