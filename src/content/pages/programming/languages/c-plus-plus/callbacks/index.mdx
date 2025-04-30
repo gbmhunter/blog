@@ -469,6 +469,130 @@ What if we let the compiler optimize the code? Does the relative performance of 
 
 Oh how the game changes! Now for some reason the callback interface using inheritance is the fastest, even beating the basic C callback technique. I have no idea why this is? On the slow end of the spectrum, things didn't change much. `std::function` with `std::bind` and static variables with templating (using `std::bind`) are still the slowest. I'm quite surprised that templating the member function and instance was so slow. I would have thought it would perform almost as fast as the C style callback, since the only difference should be the one extra `this` parameter that needs to be passed in.
 
+## Summary and Comparison of Callback Techniques
+
+Unfortunately there is not just one "right" way to do callbacks in C++. Choosing the right callback technique in C++ depends heavily on your specific requirements, such as compatibility with C APIs, performance needs, desired flexibility, and whether you can use modern C++ features (like `<functional>`) or external libraries.
+
+Here's a table summarizing the key characteristics of the methods discussed:
+
+<table style={{tableLayout: 'fixed', width: '100%', fontSize: '0.9rem', wordBreak: 'break-word'}}>
+  <colgroup>
+    <col style={{width: '100px'}} /> {/* Technique */}
+    <col style={{width: '100px'}} />  {/* Performance* */}
+    <col style={{width: '100px'}} /> {/* Flexibility */}
+    <col style={{width: '100px'}} /> {/* Ease of Use */}
+    <col style={{width: '100px'}} /> {/* Type Safety */}
+    <col style={{width: '100px'}} /> {/* Dependencies */}
+    <col style={{width: '100px'}} /> {/* C API Compatibility */}
+    <col style={{width: '200px'}} /> {/* Key Drawback(s) */}
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Technique</th>
+      <th>Performance*</th>
+      <th>Flexibility (Callable Types)</th>
+      <th>Ease of Use</th>
+      <th>Type Safety</th>
+      <th>Dependencies</th>
+      <th>C API Compatibility</th>
+      <th>Key Drawback(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Static/Non-Member (C-Style)</td>
+      <td>Excellent</td>
+      <td>Low (Only free functions/static methods)</td>
+      <td>Easy</td>
+      <td>Medium (Signature only)</td>
+      <td>None</td>
+      <td>Yes (Native)</td>
+      <td>Can't directly call non-static members or easily manage instance state.</td>
+    </tr>
+    <tr>
+      <td>Member via C Func (Global ptr)</td>
+      <td>Excellent</td>
+      <td>Low (Tied to global/shared state)</td>
+      <td>Moderate (Requires wrapper + state management)</td>
+      <td>Low (Relies on correct global state)</td>
+      <td>None</td>
+      <td>Yes (Via wrapper)</td>
+      <td>Uses global/shared state, not scalable, error-prone.</td>
+    </tr>
+    <tr>
+      <td>Static Vars + Templating (using std::bind)</td>
+      <td>Poor</td>
+      <td>Medium (Wraps members, but global static func limits use)</td>
+      <td>Complex (Templates, std::bind, static state)</td>
+      <td>High</td>
+      <td>Standard (&lt;functional&gt;)</td>
+      <td>Workaround Needed</td>
+      <td>Global state via static func, poor performance, complex, requires &lt;functional&gt;.</td>
+    </tr>
+    <tr>
+      <td>Template Member/Instance</td>
+      <td>Good/Fair</td>
+      <td>Low (Only member functions of specific type)</td>
+      <td>Moderate (Template syntax)</td>
+      <td>High</td>
+      <td>None</td>
+      <td>No</td>
+      <td>Caller API requires templates, inflexible (caller tied to callee type), only member functions.</td>
+    </tr>
+    <tr>
+    <td>Inheritance Interface</td>
+      <td>Excellent</td>
+      <td>Low (Only specific member functions via inheritance)</td>
+      <td>Easy (Standard OOP)</td>
+      <td>High</td>
+      <td>None</td>
+      <td>No</td>
+      <td>Rigid (inheritance required, fixed method names), potential multiple inheritance issues.</td>
+    </tr>
+    <tr>
+      <td>std::function + std::bind</td>
+      <td>Poor</td>
+      <td>High (Most callables)</td>
+      <td>Moderate (Verbose std::bind syntax)</td>
+      <td>High</td>
+      <td>Standard (&lt;functional&gt;)</td>
+      <td>No</td>
+      <td>Performance overhead (type erasure, potential allocation), verbose syntax, requires &lt;functional&gt;.</td>
+    </tr>
+    <tr>
+    <td>std::function + Lambda</td>
+    <td>Fair</td>
+    <td>High (Most callables)</td>
+    <td>Moderate (Lambda syntax clearer than bind)</td>
+    <td>High</td>
+    <td>Standard (&lt;functional&gt;)</td>
+    <td>No</td>
+    <td>Performance overhead (type erasure, possible SBO helps), requires &lt;functional&gt;.</td>
+    </tr>
+    <tr>
+    <td>function_ref (e.g., std23/tl)</td>
+    <td>Excellent</td>
+    <td>High (Most callables)</td>
+    <td>Moderate (Specific library syntax or lambda)</td>
+    <td>High</td>
+    <td>External Lib (pre-C++26) / Standard (C++26+)</td>
+    <td>No</td>
+    <td>Non-owning (lifetime management is critical!), requires library/modern compiler.</td>
+    </tr>
+  </tbody>
+</table>
+
+* Performance ratings are based on the results from the Benchmarking section. Actual performance can vary significantly based on compiler, optimizations, architecture, and specific usage.
+
+Recommendations:
+
+* For C API compatibility: Use C-style function pointers (Static/Non-Member or Member via C Func wrapper, being wary of the latter's drawbacks).
+* For maximum flexibility & modern C++: `std::function` (prefer lambda over `std::bind`) is versatile but has performance costs. `function_ref` is a high-performance alternative if you can manage its non-owning nature and dependencies.
+* For performance & control over API (no C compat needed): Inheritance can be surprisingly fast but rigid. `function_ref` is often the best modern choice for performance without ownership. Templating the caller is an option but can make the caller's API complex.
+* The "Member via C Func (Global ptr)" should be used cautiously due to scalability and safety issues.
+
+Ultimately, analyze your project's constraints and priorities to select the most suitable callback mechanism.
+
 ## C++ Callback Libraries
 
 ### cpgf
