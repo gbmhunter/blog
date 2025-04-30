@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2014-01-17
 description: How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments.
 image: ./_assets/cpp-callbacks.png
-lastUpdated: 2025-04-29
+lastUpdated: 2025-04-30
 tags: [programming, languages, C++, callbacks, methods, functors, functions, Vlpp, libsigc++, signals, slots, callee, embedded, functional, "std::bind", bind]
 title: C++ Callbacks (and giving member functions to C-style callbacks)
 type: page
@@ -13,11 +13,9 @@ Callbacks are functions (or more generally --- any object that is callable) whic
 
 <Image src={import('./_assets/callback.png')} width="500px"/>
 
-C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (it's a mixed bag, some embedded C++ environments I've used do support `<functional>`, others do not).
+C++, being a strongly-typed object-oriented language, makes callbacks a tricker subject to deal with than say, in C (non-object oriented) or Javascript/Python (object oriented but NOT strongly typed). This complexity arises when you want to call non-static member functions as callbacks. The implicit `this` pointer means just a standalone function pointer is not enough. You need to "capture" the instance you want to call the member function on. The type of a member function is also specific to that class, meaning type erasure is needed to opaquely call any member function.
 
-<Aside type="note">
-I have written an open-source C++ callback library called slotmachine-cpp, which you can download from [GitHub here](https://github.com/gbmhunter/slotmachine-cpp).
-</Aside>
+Let's explore the different ways to deal with callbacks in C++, with a special focus on using them in embedded systems. At the end we'll also benchmark the different techniques to see how quickly they run.
 
 Working code for all the example below can be found at [https://github.com/gbmhunter/blog-cpp-callbacks](https://github.com/gbmhunter/blog-cpp-callbacks).
 
@@ -51,7 +49,7 @@ First, let's get some terminology out of the way:
         </tr>
         <tr>
             <td>Method</td>
-            <td>A function that belongs to an class, and requires an instance of the class to run (i.e. the `this` pointer).</td>
+            <td>A function that belongs to an class, and requires an instance of the class to run (i.e. the `this` pointer). Also called a member function.</td>
         </tr>
         <tr>
             <td>Signals</td>
@@ -192,54 +190,6 @@ int main()
 }
 ```
 
-## Static Variables, With Templating
-
-A slightly more complicated but flexible approach to the above is to use templating, `std::bind` and `std::function` as shown in the below example:
-
-```c++
-#include <stdio.h>
-#include <functional>
-
-template <typename T>
-struct Callback;
-
-template <typename Ret, typename... Params>
-struct Callback<Ret(Params...)> {
-   template <typename... Args> 
-   static Ret callback(Args... args) {
-      return func(args...);  
-   }
-   static std::function<Ret(Params...)> func; 
-};
-
-template <typename Ret, typename... Params>
-std::function<Ret(Params...)> Callback<Ret(Params...)>::func;
-
-// C-style API which just wants a standard function for callback
-void c_function_which_wants_callback(int (*func)(int num1, int num2)) {
-   int o = func(1, 2);
-   printf("Value: %i\n", o);
-}
-
-class ClassWithCallback {
-   public:
-      int method_to_callback(int num1, int num2) {
-          return num1 + num2;
-      }
-};
-
-typedef int (*callback_t)(int,int);
-
-int main() {
-    ClassWithCallback my_class;
-    Callback<int(int,int)>::func = std::bind(&ClassWithCallback::method_to_callback, &my_class, std::placeholders::_1, std::placeholders::_2);
-    callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);
-
-    // Now we can pass this function to a C API which just wants a standard function callback    
-    c_function_which_wants_callback(func);
-}
-```
-
 ## Templating the Member Function and Instance
 
 If you have control over the module accepting the callback, one option you can use is to use templating on the passed in callback member function and instance. For example:
@@ -336,9 +286,9 @@ int main() {
 
 ## std::function With std::bind
 
-`std::function` is a common type to use for a callback in modern C++. For this technique you need to have control over the caller so that you can use the `std::function` type (if you can't, and are stuck with a C-style callback type, see the above sections). There are two main ways to create a `std::function` object from a member function, one is to use `std::bind` and the other is to use a lambda. Let's cover the `std::bind` technique first.
+`std::function` (provided by the `<functional>` header) is a common type to use for a callback in modern C++. For this technique you need to have control over the caller so that you can use the `std::function` type (if you can't, and are stuck with a C-style callback type, see the above sections). There are two main ways to create a `std::function` object from a member function, one is to use `std::bind` and the other is to use a lambda. Let's cover the `std::bind` technique first.
 
-The following code example shows how to do this. Rather than the callback type being `int (callback*) (int num1, int num2)`, we know change it to `std::function<int(int, int)>`. `<int(int, int)>` defines the type signature of the callback, which is a function which takes two `int` parameters and returns an `int`.
+The following code example shows how to do this. Rather than the callback type being `int (callback*) (int num1, int num2)`, we now change it to `std::function<int(int, int)>`. `<int(int, int)>` defines the type signature of the callback, which is a function which takes two `int` parameters and returns an `int`.
 
 `std::bind` is used to pass a member function to this callback. Notice the syntax is quite verbose. It requires the following syntax: `std::bind(<pointer-to-member-function>, <instance-of-class>, <input-1-placeholder>, <in>)`. 
 
@@ -364,6 +314,13 @@ int main()
     passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
 }
 ```
+
+Although `std::function` is nice because it can be used to call pretty much anything (static functions, member functions, lambdas, e.t.c.), I'm not a big fan of using `std::bind` as it:
+
+* Seems to always require dynamic memory allocation on creation of the `std::function` object (not when calling it though!).
+* Is really slow to call (see the benchmarking section below).
+
+Because of that, I prefer to use lambdas with `std::function` (see below).
 
 ## std::function With Lambdas
 
@@ -397,6 +354,8 @@ int main()
     });
 }
 ```
+
+In my eyes this is easier to read than the `std::bind` technique above. It also happens to execute faster (see the benchmarking section below) and doesn't normally require dynamic memory allocation (unlike `std::bind`). The caveat here is that it still can! It depends on the number of captured variables. Due to small buffer optimization (SBO) if you only capture one or two things (e.g. the example above just captures the `this` pointer) then it normally won't (test on your architecture). More than that, and it needs to allocate memory on the heap to save the captured variables.
 
 ## function_ref
 
@@ -484,7 +443,13 @@ A working `std::function_ref` example using `zhihaoy/nontype_functional` can be 
 
 I benchmarked some of the different callback techniques above to compare how quickly they run. Most of the time you wouldn't care about these performance differences, as the callbacks are not part of some critical execution path. However, in certain situations you will care! Some examples might be if you had a callback that fired on every received byte of a high bandwidth communication protocol, or a callback as part of some fast running control loop.
 
-Benchmarking was performed with [Google Benchmark](/programming/languages/c-plus-plus/google-benchmark/). For some reason turning optimization off (`-O0`) caused the `function_ref` test to segfault! The benchmark results are shown in <IRef iref="fig-callback-benchmarks-no-opt" />.
+<Aside type="caution">
+Benchmarking is hard! It is dependent on the compiler, optimization level, architecture, standard library implementation, the testing code somewhat representing real world usage, and many more things. Even though I performed the benchmarks on an x86-64 machine, my hope is that the relative performance would be similar on common embedded architectures such as the Armv7E-M (e.g. used by the Cortex M4 CPUs).
+
+YMMV!
+</Aside>
+
+Benchmarking was performed with [Google Benchmark](/programming/languages/c-plus-plus/google-benchmark/). Let's first see how they perform when optimizations are turned off (`-O0`). For some reason turning optimization off caused the `function_ref` test to segfault!?!, so that method is not included in the results. The benchmark results are shown in <IRef iref="fig-callback-benchmarks-no-opt" />.
 
 <Image iref="fig-callback-benchmarks-no-opt" src={import('./_assets/callback-benchmarks-no-opt.png')} width="900px">The runtimes of the different callback techniques when optimizations are turned off.</Image>
 
@@ -492,7 +457,7 @@ Benchmarking was performed with [Google Benchmark](/programming/languages/c-plus
 Note the logarithmic scale of the y-axis! I did this because the runtimes are so different. The logarithmic scale shows the differences between the faster methods more clearly.
 </Aside>
 
-The sad (but in some sense hardly surprising) news is that if you need the absolute fastest performance (caveat: with optimizations off!), nothing can beat a C-style callback (including a C-style callback that then calls a member function through a shared (e.g. global or file scoped) variable). On the other end of the spectrum, using `std::function` with `std::bind` and static variables with templating (which also uses `std::bind`) gave the slowest performance, being about 10x slower than the C-style callback!
+The sad (but in some sense hardly surprising) news is that if you need the absolute fastest performance (caveat: with optimizations off!), nothing can beat a C-style callback. If you want to call a member function, then calling a static function that then reaches out to the member function through a shared (e.g. global or file scoped) variable is the next best thing. On the other end of the spectrum, using `std::function` with `std::bind` gave the slowest performance, being about 10x slower than the C-style callback!
 
 <Aside type="note">
 For some reason the `function_ref` test segfaulted when optimizations were turned off. I've got a feeling it's a "me issue" and I'm not understanding the lifetime/ownership rules of `function_ref` correctly.
@@ -532,6 +497,12 @@ License: GNU Library General Public License
 ### Vlpp
 
 [Vlpp is an open source C++ library](https://github.com/vczh-libraries/Vlpp) which provides cross-platform replacements for `<functional>` (among other std libraries). Sometimes, the `<functional>` library provided by the C++ standard library will not work on embedded systems (I've had it work fine on some embedded platforms and not on others). _Vlpp_ can be used as a substitute, allowing you to use `vl::Func<void(void)>` to replace `std::function<void(void)>` and implement callbacks in this manner on embedded platforms.
+
+### slotmachine-cpp
+
+Website: <a href="https://github.com/gbmhunter/slotmachine-cpp" target="_blank">https://github.com/gbmhunter/slotmachine-cpp</a>
+
+This is an open-source C++ callback library I wrote many years ago!
 
 ## External Resources
 

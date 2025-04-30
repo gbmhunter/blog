@@ -1,6 +1,6 @@
 {
   "context": {
-    "date": "2025-04-29T09:11:44+12:00",
+    "date": "2025-04-30T20:00:18+12:00",
     "host_name": "geoff-laptop",
     "executable": "./output_no_opt",
     "num_cpus": 16,
@@ -32,8 +32,8 @@
         "num_sharing": 16
       }
     ],
-    "load_avg": [0.618164,0.36377,0.31543],
-    "library_version": "v1.9.2-7-gc19058b4",
+    "load_avg": [0.939941,0.341797,0.197266],
+    "library_version": "v1.9.2-8-g0e084592",
     "library_build_type": "release",
     "json_schema_version": 1
   },
@@ -47,9 +47,9 @@
       "repetitions": 1,
       "repetition_index": 0,
       "threads": 1,
-      "iterations": 283808483,
-      "real_time": 2.5080999992770732e+00,
-      "cpu_time": 2.5080857079243821e+00,
+      "iterations": 288684436,
+      "real_time": 2.4262516597327961e+00,
+      "cpu_time": 2.4262579226820526e+00,
       "time_unit": "ns"
     },
     {
@@ -61,9 +61,9 @@
       "repetitions": 1,
       "repetition_index": 0,
       "threads": 1,
-      "iterations": 209387688,
-      "real_time": 3.3994665483980557e+00,
-      "cpu_time": 3.3994739939055050e+00,
+      "iterations": 213639477,
+      "real_time": 3.3176914536245703e+00,
+      "cpu_time": 3.3177033100488265e+00,
       "time_unit": "ns"
     },
     {
@@ -75,65 +75,51 @@
       "repetitions": 1,
       "repetition_index": 0,
       "threads": 1,
-      "iterations": 210752407,
-      "real_time": 3.4350543905932649e+00,
-      "cpu_time": 3.4350653940573972e+00,
-      "time_unit": "ns"
-    },
-    {
-      "name": "staticVariablesWithTemplating",
-      "family_index": 3,
-      "per_family_instance_index": 0,
-      "run_name": "staticVariablesWithTemplating",
-      "run_type": "iteration",
-      "repetitions": 1,
-      "repetition_index": 0,
-      "threads": 1,
-      "iterations": 6620537,
-      "real_time": 1.0481870911685689e+02,
-      "cpu_time": 1.0481976008894746e+02,
+      "iterations": 184531125,
+      "real_time": 3.3774208118030211e+00,
+      "cpu_time": 3.3774378170620274e+00,
       "time_unit": "ns"
     },
     {
       "name": "stdFunctionWithLambdas",
-      "family_index": 4,
+      "family_index": 3,
       "per_family_instance_index": 0,
       "run_name": "stdFunctionWithLambdas",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
       "threads": 1,
-      "iterations": 25833747,
-      "real_time": 2.7146773172397697e+01,
-      "cpu_time": 2.7146089183268693e+01,
+      "iterations": 26935022,
+      "real_time": 2.7691101199840379e+01,
+      "cpu_time": 2.7691267525231648e+01,
       "time_unit": "ns"
     },
     {
       "name": "stdFunctionWithBind",
-      "family_index": 5,
+      "family_index": 4,
       "per_family_instance_index": 0,
       "run_name": "stdFunctionWithBind",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
       "threads": 1,
-      "iterations": 7107155,
-      "real_time": 9.7981495689379969e+01,
-      "cpu_time": 9.7979923049377788e+01,
+      "iterations": 7498243,
+      "real_time": 9.8453189366574819e+01,
+      "cpu_time": 9.8453744430528587e+01,
       "time_unit": "ns"
     },
     {
       "name": "templatingTheMemberFunctionAndInstance",
-      "family_index": 6,
+      "family_index": 5,
       "per_family_instance_index": 0,
       "run_name": "templatingTheMemberFunctionAndInstance",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
       "threads": 1,
-      "iterations": 159378370,
-      "real_time": 4.3367491837368375e+00,
-      "cpu_time": 4.3367001431875609e+00,
+      "iterations": 160343593,
+      "real_time": 4.4559366708566666e+00,
+      "cpu_time": 4.4559685025893119e+00,
       "time_unit": "ns"
     }
   ]
