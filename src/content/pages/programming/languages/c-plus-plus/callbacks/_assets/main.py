@@ -7,15 +7,17 @@ SCRIPT_DIR = Path(__file__).parent
 
 ID_TO_HUMAN_NAME = {
    "basicCCallback": "Basic C Callback",
-   "callbackInterfaceUsingInheritance": "Callback Interface Using Inheritance",
-   "callingMemberThroughStandardCFunction": "Calling Member Through Standard C Function",
-   "callingMemberThroughStdFunction": "Calling Member Through std::function",
-   "callingMemberThroughStdFunctionWithBind": "Calling Member Through std::function With Bind",
-   "staticVariablesWithTemplating": "Static Variables With Templating and Bind",
+   "callbackInterfaceUsingInheritance": "Callback Interface\nUsing Inheritance",
+   "callingMemberThroughStandardCFunction": "Calling Member Through\nStandard C Function",
+   "callingMemberThroughStdFunction": "Calling Member\nThrough std::function",
+   "callingMemberThroughStdFunctionWithBind": "Calling Member Through\nstd::function With Bind",
+   "staticVariablesWithTemplating": "Static Variables With\nTemplating and Bind",
    "stdFunctionRef": "std::function_ref",
-   "stdFunctionWithLambdas": "std::function With Lambdas",
-   "stdFunctionWithBind": "std::function With Bind",
-   "templatingTheMemberFunctionAndInstance": "Templating The Member Function And Instance",
+   "stdFunctionWithLambdas": "std::function With\nLambdas",
+   "stdFunctionWithBind": "std::function With\nBind",
+   "templatingTheMemberFunctionAndInstance": "Templating The Member\nFunction And Instance",
+   "impossiblyFastDelegates": "Impossibly Fast\nDelegates",
+   "naiosFunction2WithLambdas": "Naios/function2\nWith Lambdas",
 }
 
 def main():

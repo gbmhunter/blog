@@ -167,6 +167,108 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
 
 Logging calls in Azure Functions can be accessed via Azure Application Insights. You will need to enable Application Insights in the function app settings before it becomes available. Once enabled, logs can be accessed via Monitoring -> Logs -> traces.
 
+## IoT Hub
+
+The Device Provisioning Service (DPS) can be used to provision devices for Azure IoT Hub. The benefit of using a DPS (vs. directly connecting to an IoT Hub) is that:
+
+* You don't have to hardcode the specific IoT Hub connection information into the device at the factory. Instead, you just have to hardcode the global DPS endpoint (and authentication information, but you'd have to do that either way).
+* You can easily load-balance devices across multiple IoT Hubs.
+* You can re-provision devices to a different IoT Hub if needed.
+* You can route devices to different IoT Hubs based on particular criteria such as geographic location, product, e.t.c.
+
+The DPS has a global endpoint of `global.azure-devices-provisioning.net`.
+
+### Authentication
+
+IoT Hub supports two types of device authentication:[^medium-iot-device-with-certificate-based-authentication]
+
+* Symmetric key authentication: The IoT device has a pre-created symmetric key which IoT also knows about. The device presents a signature based on the symmetric key as proof of identity.
+* X.509 certificate-based authentication: The device stores a client certificate chain and private key. This seems to be the more popular method of authentication.
+
+<Image src={import('./_assets/selecting-attestation-mechanism-in-azure-dps.webp')} width="900px">Selecting an attestation mechanism for an enrollment group in the Azure DPS.</Image>
+
+> The client certificate must have the value of its Subject Common Name (CN) field set to the value of the device ID that is used when registering the corresponding device in Azure IoT Hub.[^microsoft-iot-hub-create-and-upload-certificates-for-testing]
+
+`openssl` will be used to generate the certificates. These examples will assume you are using Linux/macOS, although with a bit of modification you can make them work on Windows too.
+
+The following Python code example shows how to generate a root certificate.
+
+```python
+import datetime
+
+from cryptography import x509
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import ec
+
+def generate_signed_certificate(subject_name, issuer_key, issuer_cert, public_key, cert_filename):
+    cert = (
+        x509.CertificateBuilder()
+        .subject_name(subject_name)
+        .issuer_name(issuer_cert.subject if issuer_cert else subject_name)
+        .public_key(public_key)
+        .serial_number(x509.random_serial_number())
+        .not_valid_before(datetime.datetime.utcnow())
+        # Make it expire a really long time from now so we don't have to keep renewing it
+        .not_valid_after(datetime.datetime.utcnow() + datetime.timedelta(days=1000*365))
+        .add_extension(x509.BasicConstraints(ca=True, path_length=None), critical=True)
+        .sign(issuer_key, hashes.SHA256())
+    )
+
+    with open(cert_filename, "wb") as f:
+        f.write(cert.public_bytes(serialization.Encoding.PEM))
+
+private_key = ec.generate_private_key(ec.SECP256R1())
+
+# Convert to pem format, you'll probably want to save this to file!
+private_key_pem = private_key.private_bytes(
+    encoding=serialization.Encoding.PEM,
+    format=serialization.PrivateFormat.PKCS8,
+    encryption_algorithm=serialization.NoEncryption()
+)
+
+# Create subject name
+subject_name = x509.Name([
+    x509.NameAttribute(NameOID.COUNTRY_NAME, "A Country"),
+    x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, "A State"),
+    x509.NameAttribute(NameOID.LOCALITY_NAME, "A Locality"),
+    x509.NameAttribute(NameOID.ORGANIZATION_NAME, "My Organization"),
+    x509.NameAttribute(NameOID.COMMON_NAME, "Common Name"),
+])
+
+# Generate root certificate using function defined above
+generate_signed_certificate(
+    subject_name,
+    private_key,
+    None, # Root cert is self-signed, so pass in None
+    private_key.public_key(),
+    "root_cert.pem" # File name to save the root certificate to
+)
+```
+
+The certificate expiry is set to 1000 years in the future so that we won't have to worry about renewing it (it's hard to update certificates that have been programmed onto many small IoT devices). Certificates and private keys are stored in the `pem` format, which is base64 encoded.
+
+To double-check your certificate data is correct, you can print out the contents with:
+
+```bash
+openssl x509 -in my_cert.pem -noout -text
+```
+
+It's a good idea to have a standard naming convention for certificate files and private keys. My favourite is:
+
+* `MyRootCA.crt.pem`: The self-managed root certificate.
+* `MyRootCA.key.pem`: The private key for the root certificate.
+* `MyIntermediateCA.crt.pem`: The intermediate certificate.
+* `MyIntermediateCA.key.pem`: The private key for the intermediate certificate.
+* `MyDevice.crt.pem`: The device certificate (leaf certificate).
+* `MyDevice.key.pem`: The private key for the device certificate.
+
+where `MyRootCA` and `MyIntermediateCA` would be changed to match the organisation and/or product name these certificates are being used for.
+
+<Aside type="tip">
+When creating certificate chains, always put the leaf certificate first, then the intermediate certificate, then the root certificate. Order is important!
+</Aside>
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -174,3 +276,5 @@ Logging calls in Azure Functions can be accessed via Azure Application Insights.
 [^microsoft-azure-blog-v2-python-model-available]: shreyab (2023, May 24). _Azure Functions: V2 Python Programming Model is Generally Available_ [blog post]. Microsoft. Retrieved 2025-04-02, from https://techcommunity.microsoft.com/blog/azurecompute/azure-functions-v2-python-programming-model-is-generally-available/3827474.
 [^github-microsoft-oryx-repo]: GitHub. _microsoft/Oryx_ [repository]. Microsoft. Retrieved 2025-04-03, from https://github.com/microsoft/Oryx.
 [^microsoft-azure-functions-pricing]: Microsoft. _Azure Functions pricing_ [webpage]. Microsoft. Retrieved 2025-04-03, from https://azure.microsoft.com/en-us/pricing/details/functions/.
+[^microsoft-iot-hub-create-and-upload-certificates-for-testing]: Azure IoT Hub. _Learn / Azure / Internet of Things / IoT Hub / Tutorial: Create and upload certificates for testing_ [documentation]. Microsoft. Retrieved 2025-05-01, from https://learn.microsoft.com/en-us/azure/iot-hub/tutorial-x509-test-certs.
+[^medium-iot-device-with-certificate-based-authentication]: Nejimon Raveendran. _How to create an IoT device in Azure IoT Hub with certificate-based authentication_ [article]. Medium. Retrieved 2025-05-01, from https://medium.com/@nejimon.raveendran/how-to-create-an-iot-device-in-azure-iot-hub-with-certificate-based-authentication-cc7df8790c55.

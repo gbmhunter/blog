@@ -24,42 +24,46 @@ Working code for all the example below can be found at [https://github.com/gbmhu
 First, let's get some terminology out of the way:
 
 <table>
-    <colgroup>
-       <col span="1" style={{ width: '100px' }}/>
-       <col span="1" style={{ width: '400px' }}/>
-    </colgroup>
-    <thead>
-        <tr>
-            <th>Term</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Callee</td>
-            <td>A function/method/object which gets called by the caller.</td>
-        </tr>
-        <tr>
-            <td>Caller</td>
-            <td>An object which gets passes a callback function, and then calls (executes) it.</td>
-        </tr>
-        <tr>
-            <td>Function</td>
-            <td>A basic function that does not require an instance of a class to run (e.g. standard C style functions, or static member functions).</td>
-        </tr>
-        <tr>
-            <td>Method</td>
-            <td>A function that belongs to an class, and requires an instance of the class to run (i.e. the `this` pointer). Also called a member function.</td>
-        </tr>
-        <tr>
-            <td>Signals</td>
-            <td>Term used for "events" in an event/listener system.</td>
-        </tr>
-        <tr>
-            <td>Slots</td>
-            <td>Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.</td>
-        </tr>
-    </tbody>
+  <colgroup>
+    <col span="1" style={{ width: '100px' }}/>
+    <col span="1" style={{ width: '400px' }}/>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Callee</td>
+      <td>A function/method/object which gets called by the caller.</td>
+    </tr>
+    <tr>
+      <td>Caller</td>
+      <td>An object which gets passes a callback function, and then calls (executes) it.</td>
+    </tr>
+    <tr>
+      <td>Function</td>
+      <td>A basic function that does not require an instance of a class to run (e.g. standard C style functions, or static member functions).</td>
+    </tr>
+    <tr>
+      <td>Functor</td>
+      <td>In the context of C++ and programming, a functor (a.k.a. function object) is an object which can be called like a function. This behaviour is achieved by creating a class and overloading the `operator()`. Unlike regular functions, they can contain state. Not to be confused with the category theory concept of a functor which is something entirely different.[^wikipedia-functor]</td>
+    </tr>
+    <tr>
+      <td>Method</td>
+      <td>A function that belongs to an class, and requires an instance of the class to run (i.e. the `this` pointer). Also called a member function.</td>
+    </tr>
+    <tr>
+      <td>Signals</td>
+      <td>Term used for "events" in an event/listener system.</td>
+    </tr>
+    <tr>
+      <td>Slots</td>
+      <td>Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.</td>
+    </tr>
+  </tbody>
 </table>
 
 ## The Primitive C++ Callback: The Caller Knows The Type Of The Callee 
@@ -203,6 +207,7 @@ public:
     LibraryClass(T callback, U& instance) : callback(callback), instance(instance) {}
 
     void run() {
+        // Take the instance and call it's member function
         (instance.*callback)(1, 2);
     }
 private:
@@ -357,6 +362,54 @@ int main()
 
 In my eyes this is easier to read than the `std::bind` technique above. It also happens to execute faster (see the benchmarking section below) and doesn't normally require dynamic memory allocation (unlike `std::bind`). The caveat here is that it still can! It depends on the number of captured variables. Due to small buffer optimization (SBO) if you only capture one or two things (e.g. the example above just captures the `this` pointer) then it normally won't (test on your architecture). More than that, and it needs to allocate memory on the heap to save the captured variables.
 
+<Aside type="note">
+I also tested the Naios/function2 library, which is designed to be a drop in replacement for `std::function`. See the Benchmarking section below for details.
+</Aside>
+
+## Impossibly Fast Delegates
+
+There is a somewhat famous 2005 article called ["The Impossibly Fast C++ Delegates" by Sergey Ryazanov](https://www.codeproject.com/Articles/11015/The-Impossibly-Fast-C-Delegates) that describes code for invoking pointer-to-member functions in a fast way that does not require any dynamic memory allocation.[^code-project-impossibly-fast-delegates] Then in 2012 there was a [post on the Code Review Stack Exchange](https://codereview.stackexchange.com/questions/14730/impossibly-fast-delegate-in-c11) that modernised the code for C++11.[^code-review-impossibly-fast-delegate-in-cpp11] Let's see how this approach compares to `std::function`!
+
+I'm not going to post the library code here as it's quite large, but you can get it from the links above, or [GitHub repo](https://github.com/gbmhunter/blog-cpp-callbacks/tree/main/impossibly-fast-delegates) I made to help generate this article.
+
+This is how you use the library:
+
+```c++
+#include <cstdio>
+
+#include "ImpossiblyFastDelegates.hpp"
+
+class MyClass {
+public:
+    // This is our application callback handler for when a message is received, we will
+    // pass this into the library which deals with message parsing
+    int methodToCallback(int num1, int num2) {
+        printf("methodToCallback() called with num1=%i, num2=%i\n", num1, num2);
+        return num1 + num2;
+    }
+};
+
+class LibraryClass {
+public:
+    void passACallbackToMe(delegate<int(int, int)> callback) {
+        // Call the callback function
+        callback(1, 2);
+    }
+};
+
+int main() {
+    MyClass myClass;
+    LibraryClass libraryClass;
+
+    auto callback = delegate<int(int, int)>::from(&myClass, &MyClass::methodToCallback);
+
+    // Provide the instance and function to call
+    libraryClass.passACallbackToMe(callback);
+}
+```
+
+You will notice it is very similar to the `std::function` with `std::bind` technique above, except you don't have to specify placeholders for the function input arguments! Interesting, this approach performed faster than the `std::function` techniques when optimizations were turned off, but about the same speed as the `std::function` with lambdas technique when optimizations were turned on. See the Benchmarking section below for details.
+
 ## function_ref
 
 An faster, non dynamic memory allocation alternative to `std::function` is `function_ref`. I use the term `function_ref` to refer to a concept in which there a number of implementations. The first standarized one is hitting the standard library in C++26, which as of mid-2025 is not widely supported by compilers (and good luck trying to get a company to adopt a standard on the bleeding edge). However, there are also 3rd party implementations that you can use today.
@@ -389,7 +442,7 @@ void passACallbackToMe(std23::function_ref<int(int, int)> callback) {
 int main()
 {
     MyClass myClass;
-    passACallbackToMe({std23::nontype<&MyClass::methodToCallback>, myClass});
+    passACallbackToMe({std23::nontype<&MyClass::methodToCallback>, &myClass});
 }
 ```
 
@@ -478,10 +531,9 @@ Here's a table summarizing the key characteristics of the methods discussed:
 <table style={{tableLayout: 'fixed', width: '100%', fontSize: '0.9rem', wordBreak: 'break-word'}}>
   <colgroup>
     <col style={{width: '100px'}} /> {/* Technique */}
-    <col style={{width: '100px'}} />  {/* Performance* */}
-    <col style={{width: '100px'}} /> {/* Flexibility */}
-    <col style={{width: '100px'}} /> {/* Ease of Use */}
-    <col style={{width: '100px'}} /> {/* Type Safety */}
+    <col style={{width: '100px'}} /> {/* Performance* */}
+    <col style={{width: '150px'}} /> {/* Flexibility */}
+    <col style={{width: '150px'}} /> {/* Ease of Use */}
     <col style={{width: '100px'}} /> {/* Dependencies */}
     <col style={{width: '100px'}} /> {/* C API Compatibility */}
     <col style={{width: '200px'}} /> {/* Key Drawback(s) */}
@@ -492,7 +544,6 @@ Here's a table summarizing the key characteristics of the methods discussed:
       <th>Performance*</th>
       <th>Flexibility (Callable Types)</th>
       <th>Ease of Use</th>
-      <th>Type Safety</th>
       <th>Dependencies</th>
       <th>C API Compatibility</th>
       <th>Key Drawback(s)</th>
@@ -501,83 +552,75 @@ Here's a table summarizing the key characteristics of the methods discussed:
   <tbody>
     <tr>
       <td>Static/Non-Member (C-Style)</td>
-      <td>Excellent</td>
-      <td>Low (Only free functions/static methods)</td>
-      <td>Easy</td>
-      <td>Medium (Signature only)</td>
-      <td>None</td>
-      <td>Yes (Native)</td>
+      <td className="good">Excellent</td>
+      <td className="bad">Low (only free functions/static methods)</td>
+      <td className="good">Easy</td>
+      <td className="good">None</td>
+      <td className="good">Yes (native)</td>
       <td>Can't directly call non-static members or easily manage instance state.</td>
     </tr>
     <tr>
       <td>Member via C Func (Global ptr)</td>
-      <td>Excellent</td>
-      <td>Low (Tied to global/shared state)</td>
-      <td>Moderate (Requires wrapper + state management)</td>
-      <td>Low (Relies on correct global state)</td>
-      <td>None</td>
-      <td>Yes (Via wrapper)</td>
+      <td className="good">Excellent</td>
+      <td className="bad">Low (tied to global/shared state)</td>
+      <td className="ok">Moderate (requires wrapper + state management)</td>
+      <td className="good">None</td>
+      <td className="good">Yes (via wrapper)</td>
       <td>Uses global/shared state, not scalable, error-prone.</td>
     </tr>
     <tr>
-      <td>Static Vars + Templating (using std::bind)</td>
-      <td>Poor</td>
-      <td>Medium (Wraps members, but global static func limits use)</td>
-      <td>Complex (Templates, std::bind, static state)</td>
-      <td>High</td>
-      <td>Standard (&lt;functional&gt;)</td>
-      <td>Workaround Needed</td>
-      <td>Global state via static func, poor performance, complex, requires &lt;functional&gt;.</td>
-    </tr>
-    <tr>
       <td>Template Member/Instance</td>
-      <td>Good/Fair</td>
-      <td>Low (Only member functions of specific type)</td>
-      <td>Moderate (Template syntax)</td>
-      <td>High</td>
-      <td>None</td>
-      <td>No</td>
+      <td className="good">Good/Fair</td>
+      <td className="bad">Low (only member functions of specific type)</td>
+      <td className="ok">Moderate (template syntax)</td>
+      <td className="good">None</td>
+      <td className="bad">No</td>
       <td>Caller API requires templates, inflexible (caller tied to callee type), only member functions.</td>
     </tr>
     <tr>
-    <td>Inheritance Interface</td>
-      <td>Excellent</td>
-      <td>Low (Only specific member functions via inheritance)</td>
-      <td>Easy (Standard OOP)</td>
-      <td>High</td>
-      <td>None</td>
-      <td>No</td>
+      <td>Inheritance Interface</td>
+      <td className="good">Excellent</td>
+      <td className="bad">Low (only specific member functions via inheritance)</td>
+      <td className="good">Easy (standard OOP)</td>
+      <td className="good">None</td>
+      <td className="bad">No</td>
       <td>Rigid (inheritance required, fixed method names), potential multiple inheritance issues.</td>
     </tr>
     <tr>
       <td>std::function + std::bind</td>
-      <td>Poor</td>
-      <td>High (Most callables)</td>
-      <td>Moderate (Verbose std::bind syntax)</td>
-      <td>High</td>
-      <td>Standard (&lt;functional&gt;)</td>
-      <td>No</td>
-      <td>Performance overhead (type erasure, potential allocation), verbose syntax, requires &lt;functional&gt;.</td>
+      <td className="bad">Poor</td>
+      <td className="good">High (most callables)</td>
+      <td className="ok">Moderate (verbose std::bind syntax)</td>
+      <td className="good">Standard (&lt;functional&gt;)</td>
+      <td className="bad">No</td>
+      <td>Performance overhead (type erasure, potential allocation), verbose syntax, requires &lt;functional&gt; (may not be available on some embedded systems).</td>
     </tr>
     <tr>
-    <td>std::function + Lambda</td>
-    <td>Fair</td>
-    <td>High (Most callables)</td>
-    <td>Moderate (Lambda syntax clearer than bind)</td>
-    <td>High</td>
-    <td>Standard (&lt;functional&gt;)</td>
-    <td>No</td>
-    <td>Performance overhead (type erasure, possible SBO helps), requires &lt;functional&gt;.</td>
+      <td>std::function + Lambda</td>
+      <td className="ok">Fair</td>
+      <td className="good">High (most callables)</td>
+      <td className="ok">Moderate (lambda syntax clearer than bind)</td>
+      <td className="good">Standard (&lt;functional&gt;)</td>
+      <td className="bad">No</td>
+      <td>Performance overhead (type erasure, possible SBO helps), requires &lt;functional&gt;.</td>
     </tr>
     <tr>
-    <td>function_ref (e.g., std23/tl)</td>
-    <td>Excellent</td>
-    <td>High (Most callables)</td>
-    <td>Moderate (Specific library syntax or lambda)</td>
-    <td>High</td>
-    <td>External Lib (pre-C++26) / Standard (C++26+)</td>
-    <td>No</td>
-    <td>Non-owning (lifetime management is critical!), requires library/modern compiler.</td>
+      <td>Impossibly Fast Delegates</td>
+      <td className="good">Fair/good</td>
+      <td className="good">High (most callables)</td>
+      <td className="good">Easy</td>
+      <td className="ok">External Header Only Library</td>
+      <td className="good">Yes</td>
+      <td>Requires external header only library. Not as fast as C-style callbacks or an inheritance interface.</td>
+    </tr>
+    <tr>
+      <td>function_ref (e.g., std23/tl)</td>
+      <td className="good">Excellent</td>
+      <td className="good">High (most callables)</td>
+      <td className="ok">Moderate (specific library syntax or lambda)</td>
+      <td className="good">External Lib (pre-C++26) / Standard (C++26+)</td>
+      <td className="bad">No</td>
+      <td>Non-owning (lifetime management is critical!), requires library/modern compiler.</td>
     </tr>
   </tbody>
 </table>
@@ -618,6 +661,18 @@ Website: <a href="http://libsigc.sourceforge.net/" target="_blank">http://libsig
 
 License: GNU Library General Public License
 
+### Naios/function2
+
+Website: <a href="https://github.com/Naios/function2" target="_blank">https://github.com/Naios/function2</a>
+
+> "Drop-in replacement for std::function that supports move only types, multiple overloads and more."[^github-naios-function2]
+
+* Similar interface to `std::function`.
+* Has the same small-buffer optimization as `std::function`, meaning no dynamic memory allocation for small functors.
+* Supports (and tested with) Visual Studio 2017+, Clang 3.8+, GCC 5.4+.
+* Header only library.
+* Built with CMake.
+
 ### Vlpp
 
 [Vlpp is an open source C++ library](https://github.com/vczh-libraries/Vlpp) which provides cross-platform replacements for `<functional>` (among other std libraries). Sometimes, the `<functional>` library provided by the C++ standard library will not work on embedded systems (I've had it work fine on some embedded platforms and not on others). _Vlpp_ can be used as a substitute, allowing you to use `vl::Func<void(void)>` to replace `std::function<void(void)>` and implement callbacks in this manner on embedded platforms.
@@ -630,7 +685,7 @@ This is an open-source C++ callback library I wrote many years ago!
 
 ## External Resources
 
-[Callbacks In C++ Using Template Functors](http://www.tutok.sk/fastgl/callback.html) is a great page explaining and analysing all the different ways for implementing callbacks in C++. This includes the functional model, single rooted hierarchy, parameterize the caller, callee mix-in, and functors (which they promote).
+[Callbacks In C++ Using Template Functors](http://www.tutok.sk/fastgl/callback.html) is a great page explaining and analysing all the different ways for implementing callbacks in C++. This includes the functional model, single rooted hierarchy, parametrize the caller, callee mix-in, and functors (which they promote).
 
 [The Type-safe Callbacks In C++](http://www.codeproject.com/Articles/6136/Type-safe-Callbacks-in-C) library on the Code Project gives a great, complete callback library for C++ which allows callbacks with 0 to 5 input arguments.
 
@@ -642,3 +697,7 @@ This is an open-source C++ callback library I wrote many years ago!
 
 [^cpp-reference-std-function-ref]: cppreference.com. _std::function_ref_ [documentation]. Retrieved 2025-04-25, from https://en.cppreference.com/w/cpp/utility/functional/function_ref.
 [^github-zhihaoy-nontype-functional]: GitHub. _zhihaoy/nontype_functional_ [repo]. Retrieved 2025-04-25, from https://github.com/zhihaoy/nontype_functional.
+[^github-naios-function2]: GitHub. _Naios/function2_ [repo]. Retrieved 2025-05-01, from https://github.com/Naios/function2.
+[^wikipedia-functor]: Wikipedia (2025, Apr 25). _Functor_ [article]. Retrieved 2025-05-01, from https://en.wikipedia.org/wiki/Functor.
+[^code-project-impossibly-fast-delegates]: Sergey Ryazanov (2005, Jul 18). _The Impossibly Fast C++ Delegates_ [article]. Retrieved 2025-05-02, from https://www.codeproject.com/Articles/11015/The-Impossibly-Fast-C-Delegates.
+[^code-review-impossibly-fast-delegate-in-cpp11]: Code Review. _Impossibly Fast Delegate in C++11_ [forum post]. Retrieved 2025-05-02, from https://codereview.stackexchange.com/questions/14730/impossibly-fast-delegate-in-c11.
