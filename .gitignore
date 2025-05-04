@@ -27,3 +27,6 @@ __pycache__/
 
 # Affinity Photo/Designer temp files
 *.*~lock~
+
+# Example CMake C/C++ project build directories
+build/
