@@ -1,0 +1,51 @@
+---
+authors: [gbmhunter]
+date: 2025-05-04
+description: The One Definition Rule (ODR) is a rule of the C++ language which states that each entity must have only one definition.
+lastUpdated: 2025-05-04
+tags: [programming, languages, C++, one definition rule, ODR]
+title: One Definition Rule (ODR)
+type: page
+---
+
+The One Definition Rule (ODR) is a C++ language rule that states:
+
+1. Each class/struct or inline function must only have one definition in the entire program.
+1. Templates and types must have only one unique definition per translation unit.
+
+This means that the following is illegal, because it defines `MyClass` twice in the same translation unit:
+
+```c++ title="main.cpp"
+class MyClass {};
+class MyClass {}; // Illegal!
+```
+
+<Aside type="note">
+A translation unit can be thought of as a single source file (i.e. `.cpp` file) and all of the included header files that go along with it.
+</Aside>
+
+Well hang on, what if I define a class in a header file and include the header file in different `.cpp` files? Clearly this is not illegal since it is common practise everywhere. Here is where there is an exception, classes are allowed to be defined multiple times in different translation units, as long as the definitions are identical.
+
+While this is illegal, it's not normally encountered since it's quite obvious when you define the same class twice in the same `.cpp` file.
+
+What IS more common is defining the same class multiple times in different translation units.
+
+## Static Class Members
+
+Static class members can be defined in the header file, but you must make sure that the definition is only in one `.cpp` file:
+
+```c++ title="MyClass.h"
+class MyClass {
+    static int count; // Declaration
+};
+```
+
+```c++ title="MyClass.cpp"
+int MyClass::count = 0; // Definition (must be in only one .cpp file)
+```
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
