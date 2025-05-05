@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2025-05-04
 description: The One Definition Rule (ODR) is a rule of the C++ language which states that each entity must have only one definition.
-lastUpdated: 2025-05-04
-tags: [programming, languages, C++, one definition rule, ODR]
+lastUpdated: 2025-05-05
+tags: [programming, languages, C++, one definition rule, ODR, inline, classes, functions, templates, static]
 title: One Definition Rule (ODR)
 type: page
 ---
@@ -13,7 +13,11 @@ The One Definition Rule (ODR) is a C++ language rule that states:
 1. Each class/struct or inline function must only have one definition in the entire program.
 1. Templates and types must have only one unique definition per translation unit.
 
-This means that the following is illegal, because it defines `MyClass` twice in the same translation unit:
+Well hang on, what if I define a class in a header file and include the header file in different `.cpp` files? Clearly this is not illegal since it is common practise everywhere. Here is where there is an exception, classes are allowed to be defined multiple times in different translation units, as long as the definitions are identical!
+
+## Classes
+
+The ODR rule means that the following is illegal, because it defines `MyClass` twice in the same translation unit:
 
 ```c++ title="main.cpp"
 class MyClass {};
@@ -24,11 +28,110 @@ class MyClass {}; // Illegal!
 A translation unit can be thought of as a single source file (i.e. `.cpp` file) and all of the included header files that go along with it.
 </Aside>
 
-Well hang on, what if I define a class in a header file and include the header file in different `.cpp` files? Clearly this is not illegal since it is common practise everywhere. Here is where there is an exception, classes are allowed to be defined multiple times in different translation units, as long as the definitions are identical.
+While this is illegal, it is not normally a problem since the compiler can easily detect this and give you an error (I tested this with GCC v11.4.0, see <IRef iref="fig-multiple-definitions-in-one-file-error" />). Header guards protect the same header file (and thus the same class) from being defined multiple times in the same translation unit (header guards also do useful things like preventing infinite re-inclusion).
 
-While this is illegal, it's not normally encountered since it's quite obvious when you define the same class twice in the same `.cpp` file.
+<Image iref="fig-multiple-definitions-in-one-file-error" src={import('./_assets/multiple-definitions-in-one-file-error.webp')} width="900px">The error message from the compiler when you define the same class twice in the same `.cpp` file.</Image>
 
-What IS more common is defining the same class multiple times in different translation units.
+What IS more common is defining the same class multiple times in different translation units. This is not picked up by the compiler or linker (it's a linker thing since it would be when combining multiple `.o` files together). I tested this with GCC v11.4.0 and got no error even though I had two different classes defined with the same name.
+
+### Working Example
+
+Here is an example of a C++ application which does not produce any compiler or linker errors (or warnings), but violates the ODR and clearly shows unexpected behaviour at runtime as a result. Let's first define an interface class:
+
+```c++ title="Interface.h"
+#pragma once
+
+// Abstract base class
+class Base {
+public:
+	virtual int getInt() = 0;
+	virtual ~Base() = default;
+};
+
+extern Base *createChild1();
+extern Base *createChild2();
+```
+
+Now let's create two implementations of this interface, but both name the child class `Child`. Here is the first implementation:
+
+```c++ title="Child1.cpp"
+#include "Interface.h"
+
+// Violates the ODR, multiple definitions of "Child"
+class Child : public Base {
+public:
+    int getInt() override {
+        // This version returns 1
+        return 1;
+    }
+};
+
+Base *createChild1() {
+    return new Child();
+}
+```
+
+Now let's create a second implementation of the interface, again named `Child` (which violates the ODR):
+
+```c++ title="Child2.cpp"
+#include "Interface.h"
+
+// Violates the ODR, multiple definitions of "Child"
+class Child : public Base {
+public:
+    int getInt() override {
+        // This version returns 2
+        return 2;
+    }
+};
+
+Base *createChild2() {
+    return new Child();
+}
+```
+
+And finally our main.cpp file looks like this:
+
+```c++ title="main.cpp"
+#include <iostream>
+#include "Interface.h"
+
+int main() {
+    Base *child1 = createChild1();
+    Base *child2 = createChild2();
+    std::cout << "child1: " << child1->getInt() << std::endl;
+    std::cout << "child2: " << child2->getInt() << std::endl;
+    return 0;
+}
+```
+
+When built and run, this code will normally output:
+
+```text
+child1: 1
+child2: 1
+```
+
+Which clearly shows the problem. `child2` is meant to return `2`! But it returns `1` because we have two classes called `Child`, and the compiler only creates a vtable for one of them.
+
+I hit the ODR issue when I was [building a benchmarking executable for testing different C++ callback techniques](/programming/languages/c-plus-plus/callbacks/). I defined a number of `MyClass` classes in various `.cpp` files (I skipped writing these in header files for brevity, and they weren't being used anywhere else) for testing example code. Most of the time this caused no problem at all, but for 1 of the approx. 10 examples the program would segfault. After posting the problem online someone pointed out it was probably due to the ODR issue. Wrapping all the `MyClass` definitions in a [anonymous namespace](/programming/languages/c-plus-plus/namespaces/) (`namespace { ... }`) fixed the problem.
+
+`inline` is a core concept to ODR. Anything that is "inlined" is allowed to have multiple definitions. The compiler will pick one and "throw out" the rest. Some things are implicitly inline, others can be made inline with the `inline` keyword.
+
+Implicitly inline:
+
+* In class function definitions
+* Templated classes
+
+<Aside type="tip">
+The keyword `inline` does not mean the compiler has to "inline" the function (i.e. replace all calls with the function body). It might have originally been designed for this, but now it is more about the ODR. The compiler can choose to inline functions based on what it thinks is most efficient and it's optimization level.
+</Aside>
+
+## Free Functions
+
+Functions that are not members of a class are called free functions. Unless the are declared with `inline`, they are not allowed to be defined more than once in a program. Luckily, most compilers can easily deduct duplicate function definitions and will throw an error, as shown in <IRef iref="fig-multiple-definition-of-my-function-linker-error" />.
+
+<Image iref="fig-multiple-definition-of-my-function-linker-error" src={import('./_assets/multiple-definition-of-my-function-linker-error.webp')} width="900px">The error message from the linker when you define the same function twice in two different `.cpp` files.</Image>
 
 ## Static Class Members
 
@@ -43,7 +146,6 @@ class MyClass {
 ```c++ title="MyClass.cpp"
 int MyClass::count = 0; // Definition (must be in only one .cpp file)
 ```
-
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

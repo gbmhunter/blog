@@ -1,0 +1,226 @@
+---
+authors: [gbmhunter]
+date: 2025-05-05
+description: Namespaces are a C++ language feature that allows you to group related entities together.
+lastUpdated: 2025-05-05
+tags: [programming, languages, C++, namespaces]
+title: Namespaces
+type: page
+---
+
+Namespaces are a C++ language feature that allows you to group related entities together.
+
+## Basic Usage
+
+### The Problem: Name Clashes
+
+Imagine you're building a game. You write a `Player` class to handle things like player movement, attacks, etc.
+
+```cpp
+// MyGame.cpp
+class Player {
+public:
+    // ...
+};
+
+void setup() {
+    Player gamePlayer;
+    gamePlayer.attack();
+}
+```
+
+Later, you decide to add an audio library someone else wrote. Unbeknownst to you, *they* also have a `Player` class for handling audio playback.
+
+```cpp
+// AudioLib.h
+class Player {
+public:
+    // ...
+};
+```
+
+This is bad! If you include both of these header files from a single `.cpp` file, you will get a compiler error about multiple definitions of `Player`. If you don't include both header files in the same `.cpp` file, but non-the-less use both in different `.cpp` files, your program might compile and link fine but will suffer from undefined behaviour at runtime (you have violated the [One Definition Rule (ODR)](/programming/languages/c-plus-plus/one-definition-rule-odr/))!
+
+### The Solution: Namespaces
+
+Namespaces act like containers for your code's identifiers (class names, function names, variable names, etc.). They create a distinct scope, preventing names inside them from clashing with names outside or inside other namespaces.
+
+### Defining a Namespace
+
+You define a namespace using the `namespace` keyword, followed by a name (you can actually have no name, this is called an anonymous namespace), and then curly braces `{}` enclosing the code you want inside that namespace.
+
+Let's fix our previous example:
+
+```cpp
+// AudioLib.h
+namespace AudioLib { // Define a namespace for the audio library
+
+    class Player {
+    public:
+        // ...
+    };
+
+} // namespace AudioLib
+```
+
+```cpp
+// MyGame.h
+namespace MyGame { // Define a namespace for our game logic
+
+    class Player {
+    public:
+        // ...
+    };
+
+} // namespace MyGame
+```
+
+Now that these are in a namespace, there are no more collisions. To access these distinct `Player` classes, you need to include the namespace and `::` before the class name. For example:
+
+```cpp
+#include "AudioLib.h"
+#include "MyGame.h"
+
+int main() {
+    AudioLib::Player audioPlayer;
+    MyGame::Player gamePlayer;
+}
+```
+
+Another way is to use the `using` keyword to bring the class into the current scope, so you don't have to type `namespace::` all the time. For example:
+
+```cpp
+using AudioLib::Player;
+// using MyGame::Player; // Can't do this both, would be ambiguous!
+
+int main() {
+    Player audioPlayer;
+}
+```
+
+### Accessing Members of a Namespace
+
+We covered some of the ways of accessing members of a namespace above. But let's go over them again in more detail. There are three main ways:
+
+1.  **Scope Resolution Operator (`::`) - The Safest Bet**
+
+    This is the most explicit and generally the recommended way, especially in header files. You prefix the identifier with the namespace name followed by `::`.
+
+    ```cpp
+    #include "AudioLib.h" // Contains AudioLib namespace
+    #include "MyGame.h"   // Contains MyGame namespace
+
+    int main() {
+        // Explicitly state which Player you want
+        MyGame::Player gamePlayer;
+        AudioLib::Player musicPlayer;
+
+        gamePlayer.attack();
+        musicPlayer.play("background_theme.wav");
+    }
+    ```
+    *   **Pros:** Perfectly clear, avoids ambiguity, safe to use anywhere (including headers).
+    *   **Cons:** Can make code more verbose if you use many items from the same namespace frequently.
+
+2.  **The `using` Declaration - Bring In Specific Names**
+
+    If you find yourself repeatedly typing `NamespaceName::identifier`, you can bring *just that specific identifier* into the current scope with a `using` declaration.
+
+    ```cpp
+    #include "AudioLib.h"
+    #include "MyGame.h"
+
+    void main() {
+        // Bring specific names into just this function's scope
+        using MyGame::Player;
+        Player gamePlayer; // Refers to MyGame::Player now
+    }
+    ```
+    *   **Pros:** Reduces verbosity for specific, frequently used names. Safer than `using` directives as it only introduces one name at a time.
+    *   **Cons:** Should generally be used within function scopes (`.cpp` files) or local blocks, *not* at global scope in header files (as it can still leak into including files).
+
+3.  **The `using` Directive - Bring In Everything (Use With Caution!)**
+
+    This directive makes *all* names from a namespace accessible without qualification within the scope where the directive is placed.
+
+    ```cpp
+    #include "MyGame.h"
+
+    // Generally discouraged in global scope, especially in headers!
+    // using namespace std;
+    // using namespace GameLogic;
+
+    void setup() {
+        // Apply using directives *only* within this function's scope
+        using namespace MyGame;
+
+        Player gamePlayer; // MyGame::Player (assuming no collision)
+    }
+    ```
+    *   **Pros:** Can significantly reduce typing in implementation (`.cpp`) files within limited scopes (like functions).
+    *   **Cons:** **HIGHLY DANGEROUS IN HEADER FILES.** It dumps *all* names from the namespace into the including scope, completely defeating the purpose of the namespace for anyone who includes that header. This leads to hard-to-diagnose naming collisions down the line. Use sparingly, preferably only inside function definitions in `.cpp` files.
+
+### The `std` Namespace
+
+You've already seen `std::cout`, `std::endl`, `std::string`, `std::vector`, etc. These are all part of the C++ Standard Library, which lives inside the `std` namespace.
+
+This is why many beginner tutorials show `using namespace std;` at the top of the file. While convenient for small examples, **avoid `using namespace std;` at global scope in your projects, especially in header files.** It pollutes the global namespace with hundreds of names, making future collisions highly likely.
+
+Prefer `std::cout` or `using std::cout;` within a function scope.
+
+### Nested Namespaces
+
+You can put namespaces inside other namespaces for even finer organization:
+
+```cpp
+  namespace MyCompany {
+      namespace Graphics {
+          class Renderer { /* ... */ };
+      }
+      namespace Audio {
+          class Player { /* ... */ }; // Different from other Player classes
+      }
+  }
+  // Access via: MyCompany::Graphics::Renderer renderer;
+  ```
+
+## Unnamed (Anonymous) Namespaces
+
+If you declare a namespace without a name:
+
+```cpp
+namespace {
+    // Internal linkage - like 'static' in C for global variables/functions
+    void helperFunction() { /* ... */ }
+    int internalCounter = 0;
+}
+```
+
+Everything inside an unnamed namespace has *internal linkage*. This means it's only accessible within the current translation unit (usually the `.cpp` file). It's the modern C++ way to achieve what `static` used to do for global (non-member) variables and functions, preventing name clashes during linking.
+
+Anonymous namespaces are good for preventing [one definition rule](/programming/languages/c-plus-plus/one-definition-rule-odr/) violations when defining classes in `.cpp` files (as opposed to header files). By wrapping `.cpp` defined classes and other entities in an anonymous namespace, you prevent them from clashing with identically named entities in other translation units (which the compiler cannot detect, and the linker will generally not warn you about, yet can cause undefined behaviour at runtime).
+
+## Namespace Aliases
+
+You can create shorter names for long namespace names:
+
+```cpp title="MyFile.cpp"
+namespace MEP = MyCompany::MyEmbeddedProject;
+MEP::Manager manager; // Easier to type!
+```
+
+## Best Practices Summary
+
+1.  **Use Namespaces:** Encapsulate your library code, game subsystems, or distinct components in namespaces to prevent name clashes.
+2.  **Prefer `::`:** Use the scope resolution operator (`MyNamespace::MyClass`) for clarity, especially when only using a few items from a namespace.
+3.  **Limit `using`:**
+    *   `using` declarations (`using MyNamespace::MyClass;`) are okay inside function scopes (`.cpp` files) for commonly used names. Avoid them at global scope in headers.
+    *   `using` directives (`using namespace MyNamespace;`) should *only* be used in limited scopes (functions) within `.cpp` files, and only if you understand the risks. **NEVER put `using` directives at global scope in header files.**
+4.  **Don't Pollute Global:** Be especially careful with `using namespace std;`.
+5.  **Unnamed Namespaces:** Use them for implementation details specific to a single `.cpp` file (internal linkage).
+6.  **Be Descriptive:** Choose clear, descriptive names for your namespaces.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
