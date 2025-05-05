@@ -5,4 +5,4 @@ project(output LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(output main.cpp file1.cpp file2.cpp) 
+add_executable(output main.cpp Child1.cpp Child2.cpp) 
