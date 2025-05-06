@@ -143,7 +143,7 @@ $$
 
 This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with $\alpha=0.25$. The x-axis frequency is the normalized frequency, in units $Hz/sample$, which makes the plot applicable for any sampling frequency.
 
-<Image src={import('./ema-bode-plot.png')} width="800px">Bode plot showing the magnitude and phase of an EMA filter with $ \alpha=0.25 $.</Image>
+<Image src={import('./_assets/ema-bode-plot.png')} width="800px">Bode plot showing the magnitude and phase of an EMA filter with $ \alpha=0.25 $.</Image>
 
 The _cut-off frequency_ (-3dB point) of an EMA filter is given by[^se-dsp-ema-cutoff]:
 
@@ -206,7 +206,13 @@ $$
 
 From this, we can plot what the response will look like for impulse as the input. As you can see in the following graph, the output starts off at $y[0] = \alpha$ and then decays towards 0. A larger alpha makes the initial response larger but also the decay faster.
 
-<Image src={import('./ema-impulse-response.png')} width="800px">Impulse response for an EMA filter with different $\alpha$ values.</Image>
+<Image src={import('./_assets/ema-impulse-response.png')} width="1000px">Impulse response for an EMA filter with different $\alpha$ values.</Image>
+
+## Time Constant
+
+Related to the frequency response and the impulse response, you can define a time constant for the EMA filter. The time constant is the time it takes for the output to reach $1 - 1/e$ (63.2%) of the steady state value. <IRef iref="fig-ema-time-constant" /> shows the number of iterations required to reach a given fraction of steady state for different $\alpha$ values. This is assuming a step change in the input from 0 to 1 at $t=0$.
+
+<Image iref="fig-ema-time-constant" src={import('./_assets/ema-time-constant.png')} width="700px">The number of iterations required to reach a given fraction of steady state (i.e. time constants) for different $\alpha$ values.</Image>
 
 ## Initializing (Priming) The Filter
 
