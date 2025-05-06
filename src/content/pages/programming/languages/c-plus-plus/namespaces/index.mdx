@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2025-05-05
 description: Namespaces are a C++ language feature that allows you to group related entities together.
-lastUpdated: 2025-05-05
-tags: [programming, languages, C++, namespaces]
+lastUpdated: 2025-05-06
+tags: [programming, languages, C++, namespaces, one definition rule, ODR, undefined behaviour, pretty printing, anonymous namespaces, namespace aliases, namespace naming conventions]
 title: Namespaces
 type: page
 ---
@@ -55,10 +55,10 @@ Let's fix our previous example:
 // AudioLib.h
 namespace AudioLib { // Define a namespace for the audio library
 
-    class Player {
-    public:
-        // ...
-    };
+class Player {
+public:
+    // ...
+};
 
 } // namespace AudioLib
 ```
@@ -67,10 +67,10 @@ namespace AudioLib { // Define a namespace for the audio library
 // MyGame.h
 namespace MyGame { // Define a namespace for our game logic
 
-    class Player {
-    public:
-        // ...
-    };
+class Player {
+public:
+    // ...
+};
 
 } // namespace MyGame
 ```
@@ -173,16 +173,16 @@ Prefer `std::cout` or `using std::cout;` within a function scope.
 You can put namespaces inside other namespaces for even finer organization:
 
 ```cpp
-  namespace MyCompany {
-      namespace Graphics {
-          class Renderer { /* ... */ };
-      }
-      namespace Audio {
-          class Player { /* ... */ }; // Different from other Player classes
-      }
-  }
-  // Access via: MyCompany::Graphics::Renderer renderer;
-  ```
+namespace MyCompany {
+namespace Graphics {
+    class Renderer { /* ... */ };
+}
+namespace Audio {
+    class Player { /* ... */ }; // Different from other Player classes
+}
+}
+// Access via: MyCompany::Graphics::Renderer renderer;
+```
 
 ## Unnamed (Anonymous) Namespaces
 
@@ -190,15 +190,26 @@ If you declare a namespace without a name:
 
 ```cpp
 namespace {
-    // Internal linkage - like 'static' in C for global variables/functions
-    void helperFunction() { /* ... */ }
-    int internalCounter = 0;
+
+// Internal linkage - like 'static' in C for global variables/functions
+void helperFunction() { /* ... */ }
+
+}
+
+int main() {
+    // You can access the things inside the unnamed namespace from outside the namespace but within
+    // the same file, but not from different translation units --- just as if you'd declared them `static`.
+    helperFunction();
 }
 ```
 
 Everything inside an unnamed namespace has *internal linkage*. This means it's only accessible within the current translation unit (usually the `.cpp` file). It's the modern C++ way to achieve what `static` used to do for global (non-member) variables and functions, preventing name clashes during linking.
 
 Anonymous namespaces are good for preventing [one definition rule](/programming/languages/c-plus-plus/one-definition-rule-odr/) violations when defining classes in `.cpp` files (as opposed to header files). By wrapping `.cpp` defined classes and other entities in an anonymous namespace, you prevent them from clashing with identically named entities in other translation units (which the compiler cannot detect, and the linker will generally not warn you about, yet can cause undefined behaviour at runtime).
+
+<Aside type="caution">
+Do NOT define unnamed namespaces in header files. Due to default internal linkage, each translation unit that includes that header file will define it's own unique instance of members in the unnamed namespace that are ODR-used. This can trigger undefined behaviour due to ODR violations.
+</Aside>
 
 ## Namespace Aliases
 
@@ -207,6 +218,89 @@ You can create shorter names for long namespace names:
 ```cpp title="MyFile.cpp"
 namespace MEP = MyCompany::MyEmbeddedProject;
 MEP::Manager manager; // Easier to type!
+```
+
+## Namespace Naming Conventions
+
+There is no standard (or "most popular") naming convention for namespaces. I personally prefer to use `snake_case` for namespaces, like this:
+
+```c++
+namespace my_namespace {
+
+class MyClass {
+    void myFunction() {}
+};
+
+}
+```
+
+The reason is:
+
+* It uses a different style than the class name (or any other type, which I use `PascalCase` for). This makes it easier to tell the difference between a type and a namespace when they are used in conjunction, e.g. `my_namespace::MyClass`.
+* It's different again to functions and variables, which I use `camelCase` for. Again, this just makes it easy to quickly tell the difference between a namespace and a function/variable.
+
+Also, it's generally a good idea NOT to indent the contents of a namespace. This is to reduce the amount of indentation across the entire file. While indentation is a useful visual aid for classes and functions, the extra horizontal space used up by indenting namespaces (which generally cover entire files) is usually more of a hindrance than a help.
+
+## Pretty Printing with Namespaces
+
+Namespaces will be included in the string captured by `__PRETTY_FUNCTION__`. For example:
+
+```c++
+#include <iostream>
+
+namespace my_namespace {
+
+class MyClass {
+public:
+    void myFunction() {
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+    }
+};
+
+}
+
+int main() {
+    my_namespace::MyClass obj;
+    obj.myFunction();
+}
+```
+
+will print:
+
+```
+void my_namespace::MyClass::myFunction()
+```
+
+It is not captured by `__FUNCTION__` or `__func__`. In the example above, this would just print:
+
+```
+myFunction
+```
+
+When using anonymous namespaces, __PRETTY_FUNCTION__ will use `{anonymous}` as the name. For example:
+
+```c++
+#include <iostream>
+
+namespace {
+class MyClass {
+public:
+    void myFunction() {
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+    }
+};
+}
+
+int main() {
+    MyClass obj;
+    obj.myFunction();
+}
+```
+
+will print:
+
+```
+void {anonymous}::MyClass::myFunction()
 ```
 
 ## Best Practices Summary
@@ -223,4 +317,5 @@ MEP::Manager manager; // Easier to type!
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
+
 

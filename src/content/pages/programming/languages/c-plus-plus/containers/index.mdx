@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2016-12-13
 description: A tutorial on the most popular C++ containers including std::array, std::vector, std::map, std::deque, std::set and more.
-lastUpdated: 2018-12-30
+lastUpdated: 2025-05-06
 title: Containers
 type: page
 ---
@@ -39,13 +39,13 @@ Of course, we will always be able to use C-style arrays in C++, which are normal
 
 C++11 provides us with a std container which encapsulates a fixed-size array.
 
-```c++    
+```c++
 std::array<int, 3> myArray = { 1, 2, 3}; 
 ```
 
 A `std::array` is more restrictive than a C-style array in that the size must be provided at compile time. e.g.:
 
-```c++    
+```c++
 int size = 4;
 int cArray[x];                  // This WILL compile
 std::array<int, size> cppArray; // This WON'T compile
@@ -55,7 +55,7 @@ If you want a runtime resizable array-like container, reach for a `std::vector` 
 
 Before C++11 introduced `std::array`, you could use the Boost equivalent. Boost provides a templated class to create fixed-size arrays of a particular type. To create a fixed array that stored 6 doubles, you would use:
 
-```c++    
+```c++
 boost::array<double, 6> myArray;
 ```
 
@@ -63,26 +63,26 @@ Note that `boost::array` provides exactly the same syntax as `std::array` for in
 
 ## deque
 
-<table >
-<tbody >
-<tr>
-    <td>Header</td>
-    <td>#include &lt;deque&gt;</td>
-</tr>
-<tr >
-<td >Full Path</td>
-<td >std::deque</td>
-</tr>
-<tr >
-<td >Time Complexity</td>
-<td>
+<table>
+  <tbody>
+    <tr>
+      <td>Header</td>
+      <td>#include &lt;deque&gt;</td>
+    </tr>
+    <tr>
+      <td>Full Path</td>
+      <td>std::deque</td>
+    </tr>
+    <tr>
+      <td>Time Complexity</td>
+      <td>
 
-Random Access: $ \mathcal{O}(1) $<br/>
-Insertion At Start Or End: $ \mathcal{O}(1) $<br/>
-Insertion In Middle: $ \mathcal{O}(n) $<br/>
-</td>
-</tr>
-</tbody>
+    Random Access: $ \mathcal{O}(1) $<br/>
+    Insertion At Start Or End: $ \mathcal{O}(1) $<br/>
+    Insertion In Middle: $ \mathcal{O}(n) $<br/>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 `std::deque` stands for **double-ended queue** (usually pronounced similar to "deck"). It is an indexed sequence container used for storing data in C++. It is dynamically sized, and can be quickly expanded/contracted both at the front and back.
@@ -91,7 +91,7 @@ A deque is not guaranteed to store all of it's data in a continuous memory seque
 
 **Example**
 
-```c++    
+```c++
 // Create a new queue initialised with 4 integers
 std::deque<int> myDeque = {5, 6, 7, 8};
 myDeque.push_front(4);
@@ -103,38 +103,38 @@ myDeque.push_back(9);
 ## map/multimap
 
 <table>
-    <tbody>
-        <tr>
-            <td>Header</td>
-            <td>#include &lt;map&gt;</td>
-        </tr>
-        <tr>
-            <td>Full Path</td>
-            <td>std::map , std::multimap</td>
-        </tr>
-        <tr>
-            <td>Time Complexity</td>
-            <td>
+  <tbody>
+    <tr>
+      <td>Header</td>
+      <td>#include &lt;map&gt;</td>
+    </tr>
+    <tr>
+      <td>Full Path</td>
+      <td>std::map , std::multimap</td>
+    </tr>
+    <tr>
+      <td>Time Complexity</td>
+      <td>
 
 Random Access: $ \mathcal{O}(1) $<br/>
 Insertion At Start Or End: $ \mathcal{O}(1) $<br/>
 Insertion In Middle: $ \mathcal{O}(n) $<br/>
-            </td>
-        </tr>
-    </tbody>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 `std::map` is an associative C++ container. Is is similar to a dictionary in Python. While an array or vector only allows you to store and retrieve data using an integer, a map allows you to store and retrieve data via any other object.
 
 For example, we could store peoples data based on their first name:
 
-```c++    
+```c++
 std::map <string, int> peoplesAges;
 ```
 
 We could now store a value into the map:
 
-```c++    
+```c++
 peoplesAges["John"] = 32;
 ```
 
@@ -142,7 +142,7 @@ Notice how we can use a string to index into the map, rather than an integer!
 
 We can retrieve values from a map by using the `find()` method.
 
-```c++    
+```c++
 auto it = peoplesAges.find("John");
 if(it != peoplesAges.end()
     std::cout << "Found John's age of " << *it << std::endl;
@@ -156,7 +156,7 @@ if(it != peoplesAges.end()
 
 A set is an associative, ordered container in where the value of the element also serves as a key (as opposed to a map, where the key is different from the value). Another interesting property of sets is that the elements are const, that is, you cannot modify them directly. However, you can add and remove elements.
 
-```c++    
+```c++
 std::set<std::string> mySet;
     
 mySet.insert("Hello, ");
@@ -175,7 +175,7 @@ Each element in a set must be unique. If you want to store multiple elements of 
 
 A `std::vector` is your bread-and-butter array type in C++. It supports the insertion and removal of elements and dynamic resizing at run-time.
 
-```c++    
+```c++
 std::vector<int> myVector;
 myVector.push_back(1);
 myVector.push_back(2);
@@ -189,9 +189,30 @@ std::cout << myVector.at(1) << std::endl; // "2", with bounds checking!
 
 Since C++11, you can get a C-style pointer to the array using the `data()` method:
 
-```c++    
+```c++
 std::vector<int> myVector = { 1, 2, 3 };
 int * ptrToArray = myVector.data();
 ```
 
 The C++ standard guarantees that the data will be stored in a contiguous memory space, and accessible like a C-style array.
+
+## std::span
+
+`std::span` is a container introduced in C++20 that provides a view into a contiguous sequence of objects. It is a lightweight, non-owning view of a contiguous sequence of objects, such as an array or a vector.[^cpp-reference-std-span] It does not perform any memory allocation as part of it's construction, nor does it keep smart pointers alive (it is a _reference type_).
+
+There are two types of `std::span`:[^cpp-reference-std-span]
+
+1. **Static extent**: The number of elements in the sequence is known at compile time and is encoded in the type.
+2. **Dynamic extent**: The number of elements in the sequence is not known at compile time.
+
+You can think of a `std::span` being a `struct { T * ptr; std::size_t size; }` with a bunch of convenience methods added like iterator support.[^stack-overflow-what-is-a-span-and-when-should-i-use-one]
+
+The ISO C++ core guidelines recommend the use of `std::span` instead of passing in raw pointers and sizes to functions which need to operate on an array.[^iso-cpp-cpp-core-guidelines]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^cpp-reference-std-span]: cppreference.com. _C++ > Containers library > std::span_ [documentation]. Retrieved 2025-05-06, from https://en.cppreference.com/w/cpp/container/span.
+[^stack-overflow-what-is-a-span-and-when-should-i-use-one]: Stack Overflow. _What is a "span" and when should I use one?_ [forum post]. Retrieved 2025-05-06, https://stackoverflow.com/questions/45723819/what-is-a-span-and-when-should-i-use-one.
+[^iso-cpp-cpp-core-guidelines]: Bjarne Stroustrup, Herb Sutter. _C++ Core Guidelines_. Retrieved 2025-05-06, from https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.
