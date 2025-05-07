@@ -200,12 +200,47 @@ The C++ standard guarantees that the data will be stored in a contiguous memory 
 
 `std::span` is a container introduced in C++20 that provides a view into a contiguous sequence of objects. It is a lightweight, non-owning view of a contiguous sequence of objects, such as an array or a vector.[^cpp-reference-std-span] It does not perform any memory allocation as part of it's construction, nor does it keep smart pointers alive (it is a _reference type_).
 
+<Aside type="tip">
+`std::span` was formerly known as an `array_view` and even earlier as `array_ref`.[^stack-overflow-what-is-a-span-and-when-should-i-use-one]
+</Aside>
+
 There are two types of `std::span`:[^cpp-reference-std-span]
 
 1. **Static extent**: The number of elements in the sequence is known at compile time and is encoded in the type.
 2. **Dynamic extent**: The number of elements in the sequence is not known at compile time.
 
 You can think of a `std::span` being a `struct { T * ptr; std::size_t size; }` with a bunch of convenience methods added like iterator support.[^stack-overflow-what-is-a-span-and-when-should-i-use-one]
+
+Here is a basic example showing how you can pass a `std::span` to a function instead of a raw pointer and size:
+
+```c++
+#include <cstdint>
+#include <cstdio>
+#include <span>
+
+void worseWay(uint8_t* data, size_t size) {
+    for (size_t i = 0; i < size; i++) {
+        std::printf("%d ", data[i]);
+    }
+    std::printf("\n");
+}
+
+void betterWay(std::span<uint8_t> data) {
+    for (auto& byte : data) {
+        std::printf("%d ", byte);
+    }
+    std::printf("\n");
+}
+
+int main() {
+    std::array<uint8_t, 5> data = {1, 2, 3, 4, 5};
+    worseWay(data.data(), data.size());
+    betterWay(data);
+    return 0;
+}
+```
+
+`worseWay()` is the traditional way of doing it. Note that the caller has to explicitly pass in the size, and there are more ways for things to go wrong. `betterWay()` is the "better" way of doing it using a `std::span`. No explicit size is needed (the compiler automatically captures that for you).
 
 The ISO C++ core guidelines recommend the use of `std::span` instead of passing in raw pointers and sizes to functions which need to operate on an array.[^iso-cpp-cpp-core-guidelines]
 

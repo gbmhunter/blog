@@ -12,3 +12,15 @@ type: page
 <WarningIsNotes />
 
 <Image src={import('./_assets/hall-effect-sensor-on-motor-photo.webp')} width="800px">A hall effect sensor on a BLDC Miranda motor by Overview. A magnet is embedded in the rotor and the hall effect sensor detects when the magnet passes it, using it to locate the absolute rotation of rotor.</Image>
+
+## Current Detection
+
+Hall-effect sensors can also be used for current detection. One example is the Allegro ACS37800 power monitor IC. This IC contains a hall-effect sensor which is used to measure the AC mains current in an isolated manner.
+
+> These features enable isolated current sending without expensive Rogowski coils, oversized current transformers, isolated operational amplifiers, or the power loss of shunt resistors. - Excerpt from the Allegro ACS37800 datasheet.[^allegro-acs37800-ds]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^allegro-acs37800-ds]: Allegro Microsystems (2024, Jun 25). _ACS37800 - Isolated, Digital Output, Power Monitoring IC with Zero-Crossing Detection, Overcurrent and Overvoltage Flagging_ [datasheet]. Retrieved 2025-05-07, from https://www.allegromicro.com/-/media/files/datasheets/acs37800-datasheet.ashx.

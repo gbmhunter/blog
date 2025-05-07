@@ -1,0 +1,65 @@
+---
+authors: [gbmhunter]
+date: 2025-05-07
+lastUpdated: 2025-05-07
+tags: [programming, signal processing, ADCs, microcontrollers]
+title: Removing Mains Noise from ADC Measurements
+type: page
+---
+
+Let's pretend we are measuring a voltage outputted from a temperature sensor. The temperature is currently not changing, but we have two types of noise:
+
+* **Mains noise** - This is the 50/60Hz noise from the power lines.
+* **Random noise** - This is random noise from the sensor.
+
+Let's simulate our signal from the temperature sensor. First off, we'll start with a simple 2V signal. Then we'll add the following random noise:
+
+* Shape: Gaussian
+* Standard deviation: 100mV
+* Amplitude: 0mV (i.e. centered around 0)
+
+And we'll also add the following mains noise:
+
+* Shape: Sine wave
+* Frequency: 50Hz
+* Amplitude: 10mV
+
+Add these all up, we get the signal shown in <IRef iref="fig-analogue-signal" />. This is the signal in the analogue domain. This is the signal which the ADC will see and sample from.
+
+<Image iref="fig-analogue-signal" src={import('./_assets/mains-noise-simulation/analogue-signal.png')} width="650px">The analogue signal with both types of noise added.</Image>
+
+You can't really see the nature of the noise zoomed this far out, so <IRef iref="fig-analogue-signal-zoomed" /> shows a version zoomed into the first 100ms.
+
+<Image iref="fig-analogue-signal-zoomed" src={import('./_assets/mains-noise-simulation/analogue-signal-zoomed.png')} width="650px">The zoomed in plot of the simulated analogue signal. Now you can see the noise!</Image>
+
+<Aside type="note">
+Since the amplitude of the noise is small, we'll keep the y-axis "zoomed in" for the rest of the plots in this article.
+</Aside>
+
+Now let's see what happens when we sample this signal with an ADC. We'll set the sampling interval so that it is almost a integer multiple of the mains period (20ms), but not quite. We are doing this to deliberately exacerbate the aliasing effect to produce very low frequency noise on the output, which will be hard to filter!
+
+<IRef iref="fig-sampled-signal-with-noise" /> shows the sampled signal by our ADC.
+
+<Image iref="fig-sampled-signal-with-noise" src={import('./_assets/mains-noise-simulation/sampled-signal-with-noise.png')} width="650px">The sampled signal by our ADC, now in the digital domain. Oh oh, we can see some very low frequency noise on the output!</Image>
+
+You can clearly see some really low frequency noise in this sampled signal. This is due to the aliasing effect.
+
+Let's try and filter out the noise. We are in firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute!). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
+
+<Image iref="fig-filtered-signal" src={import('./_assets/mains-noise-simulation/filtered-signal.png')} width="650px">The filtered signal after is has been passed through an EMA filter.</Image>
+
+Not good! The noise frequency is so low (it's looks to have a period of about 20s) that it is still very present in the signal. Decreasing $\alpha$ to make the filter more aggressive would eventually remove the noise. However, we don't want to do this as we'll also start filtering the signal we want to keep, i.e. the temperature changing over time.
+
+## Fix 1: Add Jitter to the Sampling
+
+## Fix 2: Sample in Phase with Mains
+
+The second way of fixing this problem is to sample the signal in phase with the mains signal. This will mean that there will be no aliasing of the mains noise.
+
+## Fix 3: Add an Anti-Aliasing Filter
+
+So far, we have discussed ways of solving the problem in firmware. This is great if you have already made the hardware and it is too expensive to change it. It's worth mentioning though that one of the best approaches is to just add an anti-aliasing filter to the ADC input.
+
+An anti-aliasing filter is just a low-pass filter which attenuates any frequency components above half the sampling frequency. This eliminates (well, "significantly reduces" given no filter is perfect!) the effects of aliasing.
+
+This removes the noise while it is still at a much higher frequency than the signal we want to keep. This is the best place to do it. Once the signal is in the digital domain, the noise has been aliased "down" into the valid signal frequency range and is much harder to remove.

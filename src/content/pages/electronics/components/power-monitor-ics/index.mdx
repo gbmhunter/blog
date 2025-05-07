@@ -1,0 +1,31 @@
+---
+authors: [gbmhunter]
+date: 2025-05-07
+description: Power monitor ICs are integrated circuits that typically are used to measure mains power (e.g. 110VAC, 230VAC) in an isolated manner and provide digital outputs to a microcontroller.
+lastUpdated: 2025-05-07
+tags: [power monitors, ICs, microcontrollers, hall-effect sensors]
+title: Power Monitor ICs
+type: page
+---
+
+<WarningIsNotes />
+
+Power monitor ICs are integrated circuits that typically are used to measure mains power (e.g. 110VAC, 230VAC) in an isolated manner and provide digital outputs to a microcontroller. <IRef iref="allegro-acs37800-typical-application" /> shows a typical application diagram of a power monitor IC.
+
+<Image iref="allegro-acs37800-typical-application" src={import('./_assets/allegro-acs37800-typical-application.webp')} width="800px">A typical application diagram of the Allegro ACS37800 power monitor IC.[^allegro-acs37800-ds]</Image>
+
+## Examples
+
+### Allegro ACS37800
+
+The Allegro ACS37800 contains a [hall-effect sensor](/electronics/components/sensors/hall-effect) which is used to measure the AC mains current in an isolated manner.
+
+> These features enable isolated current sending without expensive Rogowski coils, oversized current transformers, isolated operational amplifiers, or the power loss of shunt resistors. - Excerpt from the Allegro ACS37800 datasheet.[^allegro-acs37800-ds]
+
+<Image iref="allegro-acs37800-functional-block-diagram" src={import('./_assets/allegro-acs37800-functional-block-diagram.webp')} width="800px">A functional block diagram of the Allegro ACS37800 power monitor IC.[^allegro-acs37800-ds]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^allegro-acs37800-ds]: Allegro Microsystems (2024, Jun 25). _ACS37800 - Isolated, Digital Output, Power Monitoring IC with Zero-Crossing Detection, Overcurrent and Overvoltage Flagging_ [datasheet]. Retrieved 2025-05-07, from https://www.allegromicro.com/-/media/files/datasheets/acs37800-datasheet.ashx.
