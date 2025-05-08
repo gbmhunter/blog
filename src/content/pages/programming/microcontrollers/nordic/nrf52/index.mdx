@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-03-03
 description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-03-13
-tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength, comparators, COMP, SAADC]
+lastUpdated: 2025-05-08
+tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength, comparators, COMP, SAADC, NFC, NFCT, Zephyr, shell]
 title: nRF52
 type: page
 ---
@@ -178,6 +178,17 @@ The nRF52 series MCUs have a near field communication ([NFC](/electronics/commun
 
 The NFCT peripheral uses EasyDMA for the reading and writing of data packets to and from RAM.
 
+As of May 2025, Nordic has the following firmware code examples relating to NRC:[^nordic-semi-nrf-connect-sdk-nfc-samples]
+
+* **NFC - Launch App**: Launches an app on a polling smartphone.
+* **NFC - Text record**: Exposes a text record to polling devices.
+* **NFC - Shell**: Runs the shell interface with the NFC T4T ISO-DEP transport layer. It uses the NFC shell transport library.
+* **NFC - System OFF**: Wakes the MCU up from System OFF mode when it detects an NFC field.
+* **NFC - Tag reader**: Makes the MCU a tag reader which can interact with a NFC-A tag.
+* **NFC - TNEP poller**: Uses the TNEP for polling device library to exchange data using an NFC polling device.
+* **NFC - TNEP tag**: Uses the TNEP for tag device library to exchange data using NFC's TNEP Protocol on an NFC Tag device.
+* **NFC - Writable NDEF message**: Exposes an NDEF message that can be overwritten with any other NDEF message by an NFC device.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -185,3 +196,4 @@ The NFCT peripheral uses EasyDMA for the reading and writing of data packets to 
 [^nordic-semi-nrf52840-product-page]: Nordic Semiconductor. _Products / nRF52840_ [product page]. Retrieved 2025-03-03, from https://www.nordicsemi.com/Products/nRF52840.
 [^nordic-semi-nrf52840-datasheet]: Nordic Semiconductor (2024, Oct 1). _nRF52840 - Product Specification - v1.11_ [datasheet]. Retrieved 2025-03-03, from https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html.
 [^zephyr-docs-nrf-specific-gpio-flags]: Zephyr Project (2025, Mar 3). _Device Driver APIs > GPIO Driver APIs > nRF-specific GPIO Flags_ [documentation]. Retrieved 2025-03-03, from https://docs.zephyrproject.org/apidoc/latest/group__gpio__interface__nrf.html.
+[^nordic-semi-nrf-connect-sdk-nfc-samples]: Nordic Semiconductor (2025, May 7). _nRF Connect SDK - latest > Samples > NFC samples_ [documentation]. Retrieved 2025-05-08, from https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/nfc.html.
