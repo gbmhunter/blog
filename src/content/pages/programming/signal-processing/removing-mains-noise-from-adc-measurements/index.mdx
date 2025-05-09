@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2025-05-07
-lastUpdated: 2025-05-08
+lastUpdated: 2025-05-10
 tags: [programming, signal processing, ADCs, microcontrollers]
 title: Removing Mains Noise from ADC Measurements
 type: page
@@ -9,7 +9,7 @@ type: page
 
 This page explores how mains noise can cause aliasing in ADC measurements when using a microcontroller to measure a signal. Noise in the analogue domain can cause aliasing in the digital domain, which can be a problem in a number of applications. This includes any PCB which contains both mains and low-voltage electronics, industrial sensors, audio applications, and others.
 
-Let's pretend we are measuring a voltage outputted from a temperature sensor. The temperature is currently not changing, but we have two types of noise:
+We'll use a simulation to explore the problem. Let's pretend we are measuring a voltage outputted from a temperature sensor. The temperature is currently not changing, but we have two types of noise:
 
 * **Mains noise** - This is the 50/60Hz noise from the power lines.
 * **Random noise** - This is random noise from the sensor.
@@ -30,12 +30,12 @@ When we add the 2V output with the random noise and the mains noise, we get the 
 
 <Image iref="fig-analogue-signal" src={import('./_assets/mains-noise-simulation/analogue-signal.png')} width="650px">The analogue signal with both types of noise added.</Image>
 
-You can't really see the nature of the noise zoomed this far out, so <IRef iref="fig-analogue-signal-zoomed" /> shows a version zoomed into the first 100ms.
+We can see that there is noise, but you can't really see the nature of the noise zoomed this far out. <IRef iref="fig-analogue-signal-zoomed" /> shows a version zoomed into the first 100ms (and zoomed in on the y-axis also).
 
 <Image iref="fig-analogue-signal-zoomed" src={import('./_assets/mains-noise-simulation/analogue-signal-zoomed.png')} width="650px">The zoomed in plot of the simulated analogue signal. Now you can see the noise!</Image>
 
 <Aside type="note">
-Since the amplitude of the noise is small, we'll keep the y-axis "zoomed in" for the rest of the plots in this article.
+Since the amplitude of the noise is small, we'll keep the y-axis "zoomed in" for most of the plots in this article.
 </Aside>
 
 ## Digital Sampling and Aliasing
@@ -72,9 +72,11 @@ This means we should expect a $0.05Hz$ ($20s$ period) component in our sampled s
 
 <Image iref="fig-sampled-signal-with-noise" src={import('./_assets/mains-noise-simulation/sampled-signal-with-noise.png')} width="650px">The sampled signal by our ADC, now in the digital domain. Oh oh, we can see some very low frequency noise on the output!</Image>
 
-You can clearly see some really low frequency noise in this sampled signal. This is due to the aliasing effect.
+You can clearly see some really low frequency noise in this sampled signal. This is due to the aliasing effect. It might be worth touching on how aliasing works here. Explaining it in detail is beyond the scope of this article, but <IRef iref="fig-aliasing-demonstration" /> shows a demonstration of aliasing. The yellow line is the analogue signal, and the red dots are the sampled points by the ADC (we are sampling every 2.2 periods of the original signal, which is 22.7Hz). The blue line is the resulting "aliased" signal we would see in the digital domain.
 
-Let's try and filter out the noise. We are in firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
+<Image iref="fig-aliasing-demonstration" src={import('./_assets/mains-noise-simulation/aliasing-demonstration.png')} width="950px">A demonstration of aliasing.</Image>
+
+So now that we are in the digital domain, let's try and filter out the noise. We have to solve this using firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
 
 <Image iref="fig-filtered-signal" src={import('./_assets/mains-noise-simulation/filtered-signal.png')} width="650px">The filtered signal after being passed through an EMA filter.</Image>
 
@@ -114,9 +116,9 @@ Let's filter this signal with the same EMA filter as before. <IRef iref="fig-fil
 
 ## Fix 3: Increase the Sampling Rate
 
-Another way to fix this aliasing problem is to increase the sampling rate. For no aliasing to occur, your sampling rate ($F_s$) must be greater than twice the highest frequency component ($F_{max}$) in the signal (i.e., $F_s > 2 \cdot F_{max}$). The frequency $F_s/2$ is known as the Nyquist frequency, and all signal components you wish to capture accurately must be below this. So if we wanted to get rid of 50Hz aliasing, we would need to sample at a rate strictly greater than 100Hz.
+Another way to fix this aliasing problem is to increase the sampling rate. For no aliasing to occur, your sampling rate ($F_s$) must be greater than or equal to twice the highest frequency component ($F_{max}$) in the signal (i.e., $F_s \geq 2 \cdot F_{max}$). The frequency $F_s/2$ is known as the Nyquist frequency, and all signal components you wish to capture accurately must be below or equal to this. So if we wanted to get rid of 50Hz aliasing, we would need to sample at a rate greater than or equal to 100Hz.
 
-Let's re-run the simulation, but this time sample at 200Hz (giving ourselves some margin above Nyquist).
+Let's re-run the simulation, but this time sample at 200Hz (giving ourselves some healthy margin above Nyquist). <IRef iref="fig-increased-sampling-rate-digital-signal" /> shows the sampled digital signal after sampling at 200Hz.
 
 <Image iref="fig-increased-sampling-rate-digital-signal" src={import('./_assets/mains-noise-simulation/increased-sampling-rate-digital-signal.png')} width="650px">The digital signal after sampling at 200Hz.</Image>
 
