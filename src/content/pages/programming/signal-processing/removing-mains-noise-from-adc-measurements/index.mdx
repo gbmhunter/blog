@@ -7,24 +7,26 @@ title: Removing Mains Noise from ADC Measurements
 type: page
 ---
 
+This page explores how mains noise can cause aliasing in ADC measurements when using a microcontroller to measure a signal. Noise in the analogue domain can cause aliasing in the digital domain, which can be a problem in a number of applications. This includes any PCB which contains both mains and low-voltage electronics, industrial sensors, audio applications, and others.
+
 Let's pretend we are measuring a voltage outputted from a temperature sensor. The temperature is currently not changing, but we have two types of noise:
 
 * **Mains noise** - This is the 50/60Hz noise from the power lines.
 * **Random noise** - This is random noise from the sensor.
 
-Let's simulate our signal from the temperature sensor. First off, we'll start with a simple 2V signal. Then we'll add the following random noise:
+Let's simulate our signal from the temperature sensor. First off, we'll start with a simple constant 2V signal. Then we'll add the following random noise:
 
 * Shape: Gaussian
 * Standard deviation: 100mV
-* Amplitude: 0mV (i.e. centered around 0)
+* Mean: 0mV (i.e. centered around 0)
 
 And we'll also add the following mains noise:
 
 * Shape: Sine wave
-* Frequency: 50Hz
-* Peak-to-peak amplitude: 20mV
+* Frequency: 50Hz (mains can also be 60Hz depending on where you are in the world)
+* Peak-to-peak: 20mV (10mV amplitude)
 
-Add these all up, we get the signal shown in <IRef iref="fig-analogue-signal" />. This is the signal in the analogue domain. This is the signal which the ADC will see and sample from.
+When we add the 2V output with the random noise and the mains noise, we get the signal shown in <IRef iref="fig-analogue-signal" />. This is the signal in the analogue domain. This is the signal which the ADC will see and sample from.
 
 <Image iref="fig-analogue-signal" src={import('./_assets/mains-noise-simulation/analogue-signal.png')} width="650px">The analogue signal with both types of noise added.</Image>
 
@@ -72,15 +74,15 @@ This means we should expect a $0.05Hz$ ($20s$ period) component in our sampled s
 
 You can clearly see some really low frequency noise in this sampled signal. This is due to the aliasing effect.
 
+Let's try and filter out the noise. We are in firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
+
+<Image iref="fig-filtered-signal" src={import('./_assets/mains-noise-simulation/filtered-signal.png')} width="650px">The filtered signal after being passed through an EMA filter.</Image>
+
+Not good! The noise frequency is so low that it is still very present in the signal. Decreasing $\alpha$ to make the filter more aggressive would eventually remove the noise. However, we don't want to do this as we'll also start filtering the signal we want to keep, i.e. the temperature changing slowly over time.
+
 <Aside type="tip">
 You can also see the filtered signal "lags" the original signal by a small amount. We would expect this from any online low-pass filter (online meaning that the current output of the filter is only calculated from the current and previous inputs, not future ones).
 </Aside>
-
-Let's try and filter out the noise. We are in firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute!). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
-
-<Image iref="fig-filtered-signal" src={import('./_assets/mains-noise-simulation/filtered-signal.png')} width="650px">The filtered signal after is has been passed through an EMA filter.</Image>
-
-Not good! The noise frequency is so low that it is still very present in the signal. Decreasing $\alpha$ to make the filter more aggressive would eventually remove the noise. However, we don't want to do this as we'll also start filtering the signal we want to keep, i.e. the temperature changing slowly over time.
 
 ## Fix 1: Add Jitter to the Sampling
 
@@ -100,11 +102,7 @@ Let's use the same EMA filter as before. <IRef iref="fig-jittered-filtered-signa
 
 The second way of fixing this problem is to sample the signal in phase with the mains signal. This will mean that there will be no aliasing of the mains noise. There are ICs you can buy which monitor the mains voltage and provide digital outputs when the voltage crosses 0V (zero-crossing detection). You can feed this signal into a microcontroller and use an interrupt to trigger the ADC sampling.
 
-<Aside type="tip">
-I don't think it matters if there is a significant delay between the zero-crossing and the ADC sampling, or even that this delay is consistent between samples. So if it's better for your firmware design, you can make the interrupt notify a thread to do the sampling, and then have the thread wake up and sample (as long as the thread can do all this before the next zero-crossing, i.e. within 10ms). All you have to make sure is that, on average, the sampling interval is exactly the same as the mains period.
-
-Note that for ultra-sensitive measurements, you may want to sample at precisely the same time in each mains cycle, so that you get precisely the same amount of noise each time. This doesn't really matter for this application since we only care about temperature changing slowly over time (i.e. a very low frequency signal) and thus can just slap a filter on it. 
-</Aside>
+With this approach, you need to make sure you are sampling as consistently as possible with the zero-crossing signal. This might mean that you need to move you ADC sampling from in a thread to in an interrupt handler. Remember to think about any potential latency issues this might cause for the rest of your firmware application.
 
 Let's re-run the simulation, but this time sampling every 100ms. This will be in phase with the mains signal which has a period of 20ms. <IRef iref="fig-sampled-in-phase-signal" /> shows the signal after sampling in phase with the mains. 
 
@@ -116,7 +114,7 @@ Let's filter this signal with the same EMA filter as before. <IRef iref="fig-fil
 
 ## Fix 3: Increase the Sampling Rate
 
-Another way to fix this aliasing problem is to increase the sampling rate. For no aliasing to occur, you need to sample at least twice as fast as the highest frequency in the signal (i.e. the Nyquist frequency). So if we wanted to get rid of 50Hz aliasing, we would need to sample at least 100Hz.
+Another way to fix this aliasing problem is to increase the sampling rate. For no aliasing to occur, your sampling rate ($F_s$) must be greater than twice the highest frequency component ($F_{max}$) in the signal (i.e., $F_s > 2 \cdot F_{max}$). The frequency $F_s/2$ is known as the Nyquist frequency, and all signal components you wish to capture accurately must be below this. So if we wanted to get rid of 50Hz aliasing, we would need to sample at a rate strictly greater than 100Hz.
 
 Let's re-run the simulation, but this time sample at 200Hz (giving ourselves some margin above Nyquist).
 
@@ -134,9 +132,9 @@ An anti-aliasing filter is just a low-pass filter which attenuates any frequency
 
 This removes the noise while it is still at a much higher frequency than the signal we want to keep. This is the best place to do it. Once the signal is in the digital domain, the noise has been aliased "down" into the valid signal frequency range and is much harder to remove.
 
-Let's simulate the addition of a simple low-pass RC filter with the cut-off frequency of 1Hz to the analogue signal, before it enters the ADC. We choose a value of 1Hz so that is much lower than the Nyquist frequency of 5Hz (we have a 100ms sampling interval, which is 10Hz). This makes sure no really noticeable aliasing occurs.
+Let's simulate the addition of a simple low-pass RC filter with the cut-off frequency of 1Hz to the analogue signal, before it enters the ADC. We choose a value of 1Hz so that is much lower than the Nyquist frequency of 5Hz (we have a 100ms sampling interval, which is 10Hz, so half the sampling frequency is 5Hz). This makes sure no really noticeable aliasing occurs.
 
-<IRef iref="fig-analogue-signal-rc-filtered" /> shows the signal after the filter. It's look much cleaner than the original signal. In fact, we can no longer see the noise at this zoom level.
+<IRef iref="fig-analogue-signal-rc-filtered" /> shows the signal after the filter. It looks much cleaner than the original signal. In fact, we can no longer see the noise at this zoom level.
 
 <Image iref="fig-analogue-signal-rc-filtered" src={import('./_assets/mains-noise-simulation/analogue-signal-rc-filtered.png')} width="650px">The analogue signal after the RC low-pass filter.</Image>
 
@@ -152,3 +150,13 @@ Now let's see what happens when we sample this signal. It should be pretty obvio
 
 <Image iref="fig-digital-signal-rc-filtered" src={import('./_assets/mains-noise-simulation/digital-signal-rc-filtered.png')} width="650px">The digital signal after sampling.</Image>
 
+## Conclusion
+
+So what technique is best? If you haven't finalized the hardware, I would recommend adding an anti-aliasing filter in the analogue domain. This prevents there from being any aliasing problem to begin with.
+
+If you already have 500 PCBs manufactured and need a solution fast, then a firmware solution is probably your best bet. If you can just turn up the sampling rate, then this is probably the best solution, on the conditions that:
+
+* You can increase the sampling rate so it's at least twice the highest frequency in the analogue signal.
+* You have enough CPU cycles to do the sampling and filtering at this rate.
+
+If that isn't an option, then you can either add jitter or sample in phase with the mains signal. Adding jitter will usually be the easiest solution, as it does not require any zero-crossing detection circuitry. Jitter might be best first approach to see if it works "well enough" for your application. If you want to be more precise, then sampling in phase with the mains signal could give you better results.
