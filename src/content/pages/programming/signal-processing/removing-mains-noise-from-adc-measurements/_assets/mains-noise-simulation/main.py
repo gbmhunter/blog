@@ -23,6 +23,9 @@ def main():
     # Make the sampling period just out of sync with the mains frequency
     DIGITAL_SAMPLING_PERIOD_S = 0.1001
 
+    # The +- amount around the 2V signal to limit the y-axis too on zoomed in plots
+    DELTA_Y = 30e-3 # 30mV
+
     total_sim_time_s = (NUM_DIGITAL_SAMPLES - 1) * DIGITAL_SAMPLING_PERIOD_S
 
     #=========================================
@@ -60,6 +63,7 @@ def main():
     ax.set_title("Analogue Signal (Zoomed)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
+    ax.set_ylim(2 - DELTA_Y, 2 + DELTA_Y)
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "analogue-signal-zoomed.png")
 
@@ -91,12 +95,14 @@ def main():
 
     # Plot the filtered signal
     fig, ax = plt.subplots()
-    ax.plot(digital_sampling_times_s, filtered_values)
+    ax.plot(digital_sampling_times_s, filtered_values, color='C0', label=f'Filtered digital signal')
+    # Also plot the unfiltered signal as a comparison. Make it in the background
+    ax.plot(digital_sampling_times_s, digital_signal, color='C1', alpha=0.5, label='Unfiltered digital signal')
     ax.set_title(f"EMA Filtered Signal ($\\alpha = {alpha}$)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
-    DELTA_Y = 20e-3 # 20mV
     ax.set_ylim(2 - DELTA_Y, 2 + DELTA_Y)
+    ax.legend()
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "filtered-signal.png")
 
@@ -130,11 +136,14 @@ def main():
 
     # Plot the filtered jittered signal
     fig, ax = plt.subplots()
-    ax.plot(jittered_sampling_times_s, filtered_jittered_samples)
+    ax.plot(jittered_sampling_times_s, filtered_jittered_samples, color='C0', label=f'Filtered jittered signal')
+    # Also plot the unjittered filtered signal as a comparison
+    ax.plot(digital_sampling_times_s, filtered_values, color='C1', alpha=0.5, label='Filtered non-jittered signal')
     ax.set_title(f"EMA Filtered Jittered Signal ($\\alpha = {alpha}$)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
     ax.set_ylim(2 - DELTA_Y, 2 + DELTA_Y)
+    ax.legend()
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "filtered-jittered-signal.png")
 
@@ -167,11 +176,14 @@ def main():
 
     # Plot the filtered sampled in phase signal
     fig, ax = plt.subplots()
-    ax.plot(sampled_in_phase_times_s, filtered_sampled_in_phase_samples)
+    ax.plot(sampled_in_phase_times_s, filtered_sampled_in_phase_samples, color='C0', label=f'Filtered sampled in phase signal')
+    # Plot for filtered signal as a comparison
+    ax.plot(digital_sampling_times_s, filtered_values, color='C1', alpha=0.5, label='Basic filtered signal')
     ax.set_title(f"EMA Filtered \"Sampled in Phase\" Signal ($\\alpha = {alpha}$)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
     ax.set_ylim(2 - DELTA_Y, 2 + DELTA_Y)
+    ax.legend()
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "filtered-sampled-in-phase-signal.png")
 
@@ -202,9 +214,9 @@ def main():
 
     # Plot the RC filtered analogue signal
     fig, ax = plt.subplots()
-    ax.plot(analogue_sampling_times_s, analogue_signal_rc_filtered, label=f'RC Filtered ({cutoff_freq_hz}Hz Cutoff)')
-    # Optionally, plot the original analogue signal for comparison
-    # ax.plot(analogue_sampling_times_s, analogue_signal, label='Original Analogue Signal', alpha=0.5, linestyle=':')
+    ax.plot(analogue_sampling_times_s, analogue_signal_rc_filtered, color='C0', label=f'RC Filtered ({cutoff_freq_hz}Hz Cutoff)')
+    # Plot the original analogue signal for comparison
+    ax.plot(analogue_sampling_times_s, analogue_signal, color='C1', alpha=0.5, label='Original analogue signal')
     ax.set_title(f"Analogue Signal with {cutoff_freq_hz}Hz RC Low-pass Filter")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
@@ -216,11 +228,14 @@ def main():
 
     # Zoom in the y-axis
     fig, ax = plt.subplots()
-    ax.plot(analogue_sampling_times_s, analogue_signal_rc_filtered)
+    ax.plot(analogue_sampling_times_s, analogue_signal_rc_filtered, color='C0', label=f'RC Filtered ({cutoff_freq_hz}Hz Cutoff)')
+    # Plot the original analogue signal for comparison
+    ax.plot(analogue_sampling_times_s, analogue_signal, color='C1', alpha=0.5, label='Original analogue signal')
     ax.set_title(f"Analogue Signal with {cutoff_freq_hz}Hz RC Low-pass Filter (Zoomed)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
-    ax.set_ylim(2 - DELTA_Y, 2 + DELTA_Y)
+    ax.set_ylim(2 - DELTA_Y*2, 2 + DELTA_Y*2)
+    ax.legend()
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "analogue-signal-rc-filtered-zoomed.png")
 
@@ -230,10 +245,14 @@ def main():
 
     # Plot the digital signal
     fig, ax = plt.subplots()
-    ax.plot(digital_sampling_times_s, digital_signal_rc_filtered)
+    ax.plot(digital_sampling_times_s, digital_signal_rc_filtered, color='C0', label=f'RC filtered digital signal')
+    # Compare to the original filtered signal
+    ax.plot(digital_sampling_times_s, filtered_values, color='C1', alpha=0.5, label='Original filtered signal')
     ax.set_title(f"Digital Signal with {cutoff_freq_hz}Hz RC Low-pass Filter")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
+    ax.set_ylim(2 - DELTA_Y, 2 + DELTA_Y)
+    ax.legend()
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "digital-signal-rc-filtered.png")
 

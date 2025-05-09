@@ -22,7 +22,7 @@ And we'll also add the following mains noise:
 
 * Shape: Sine wave
 * Frequency: 50Hz
-* Amplitude: 10mV
+* Peak-to-peak amplitude: 20mV
 
 Add these all up, we get the signal shown in <IRef iref="fig-analogue-signal" />. This is the signal in the analogue domain. This is the signal which the ADC will see and sample from.
 
@@ -38,19 +38,49 @@ Since the amplitude of the noise is small, we'll keep the y-axis "zoomed in" for
 
 ## Digital Sampling and Aliasing
 
-Now let's see what happens when we sample this signal with an ADC. We'll set the sampling interval so that it is almost a integer multiple of the mains period (20ms), but not quite. We are doing this to deliberately exacerbate the aliasing effect to produce very low frequency noise on the output, which will be hard to filter!
+Now let's see what happens when we sample this signal with an ADC. We'll set the sampling interval so that it is almost a integer multiple of the mains period ($20ms$), but not quite. We are doing this to deliberately exacerbate the aliasing effect to produce very low frequency noise on the output, which will be hard to filter! Let's choose $100.1ms$, which is very close to 5 mains cycles ($100ms$).
 
-<IRef iref="fig-sampled-signal-with-noise" /> shows the sampled signal by our ADC.
+A period of $100.1ms$ is a frequency of:
+
+$$
+\begin{align}
+f_{sample} &= \frac{1}{T_{sample}} \\
+           &= \frac{1}{100.1 \text{ms}} \\
+           &= 9.99 \text{Hz}
+\end{align}
+$$
+
+The closest integer $n$ multiple of this to the mains frequency is:
+
+$$
+n = \text{round}\left(\frac{50Hz}{9.99Hz}\right) = 5
+$$
+
+So the aliasing frequency should be:
+
+$$
+\begin{align}
+f_{alias} &= \text{abs}(f_{signal} - n \times f_{sample}) \\
+          &= \text{abs}(50Hz - 5 \times 9.99Hz) \\
+          &= 0.05Hz
+\end{align}
+$$
+
+This means we should expect a $0.05Hz$ ($20s$ period) component in our sampled signal. <IRef iref="fig-sampled-signal-with-noise" /> shows the sampled signal by our ADC. Indeed, we can see a strong frequency component with a $20s$ period.
 
 <Image iref="fig-sampled-signal-with-noise" src={import('./_assets/mains-noise-simulation/sampled-signal-with-noise.png')} width="650px">The sampled signal by our ADC, now in the digital domain. Oh oh, we can see some very low frequency noise on the output!</Image>
 
 You can clearly see some really low frequency noise in this sampled signal. This is due to the aliasing effect.
 
+<Aside type="tip">
+You can also see the filtered signal "lags" the original signal by a small amount. We would expect this from any online low-pass filter (online meaning that the current output of the filter is only calculated from the current and previous inputs, not future ones).
+</Aside>
+
 Let's try and filter out the noise. We are in firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute!). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
 
 <Image iref="fig-filtered-signal" src={import('./_assets/mains-noise-simulation/filtered-signal.png')} width="650px">The filtered signal after is has been passed through an EMA filter.</Image>
 
-Not good! The noise frequency is so low (it's looks to have a period of about 20s) that it is still very present in the signal. Decreasing $\alpha$ to make the filter more aggressive would eventually remove the noise. However, we don't want to do this as we'll also start filtering the signal we want to keep, i.e. the temperature changing over time.
+Not good! The noise frequency is so low that it is still very present in the signal. Decreasing $\alpha$ to make the filter more aggressive would eventually remove the noise. However, we don't want to do this as we'll also start filtering the signal we want to keep, i.e. the temperature changing slowly over time.
 
 ## Fix 1: Add Jitter to the Sampling
 
@@ -71,7 +101,7 @@ Let's use the same EMA filter as before. <IRef iref="fig-jittered-filtered-signa
 The second way of fixing this problem is to sample the signal in phase with the mains signal. This will mean that there will be no aliasing of the mains noise. There are ICs you can buy which monitor the mains voltage and provide digital outputs when the voltage crosses 0V (zero-crossing detection). You can feed this signal into a microcontroller and use an interrupt to trigger the ADC sampling.
 
 <Aside type="tip">
-It doesn't actually matter if there is a significant delay between the zero-crossing and the ADC sampling, or even that this delay is consistent between samples. So if it's better for your firmware design, you can make the interrupt notify a thread to do the sampling, and then have the thread wake up and sample (as long as the thread can do all this before the next zero-crossing, i.e. within 10ms). All you have to make sure is that, on average, the sampling interval is exactly the same as the mains period.
+I don't think it matters if there is a significant delay between the zero-crossing and the ADC sampling, or even that this delay is consistent between samples. So if it's better for your firmware design, you can make the interrupt notify a thread to do the sampling, and then have the thread wake up and sample (as long as the thread can do all this before the next zero-crossing, i.e. within 10ms). All you have to make sure is that, on average, the sampling interval is exactly the same as the mains period.
 
 Note that for ultra-sensitive measurements, you may want to sample at precisely the same time in each mains cycle, so that you get precisely the same amount of noise each time. This doesn't really matter for this application since we only care about temperature changing slowly over time (i.e. a very low frequency signal) and thus can just slap a filter on it. 
 </Aside>
@@ -84,7 +114,9 @@ Let's filter this signal with the same EMA filter as before. <IRef iref="fig-fil
 
 <Image iref="fig-filtered-sampled-in-phase-signal" src={import('./_assets/mains-noise-simulation/filtered-sampled-in-phase-signal.png')} width="650px">The "sampled-in-phase" signal after filtering with the same EMA filter as before.</Image>
 
-## Fix 3: Add an Anti-Aliasing Filter
+## Fix 3: Increase the Sampling Rate
+
+## Fix 4: Add an Anti-Aliasing Filter
 
 So far, we have discussed ways of solving the problem in firmware. This is great if you have already made the hardware and it is too expensive to change it. It's worth mentioning though that one of the best approaches is to just add an anti-aliasing filter to the ADC input.
 
@@ -94,7 +126,7 @@ This removes the noise while it is still at a much higher frequency than the sig
 
 Let's simulate the addition of a simple low-pass RC filter with the cut-off frequency of 1Hz to the analogue signal, before it enters the ADC. We choose a value of 1Hz so that is much lower than the Nyquist frequency of 5Hz (we have a 100ms sampling interval, which is 10Hz). This makes sure no really noticeable aliasing occurs.
 
-<IRef iref="fig-analogue-signal-rc-filtered" /> shows the signal after the filter. It's look much cleaner than the original signal. In fact, we can no longer see the noise as this zoom level.
+<IRef iref="fig-analogue-signal-rc-filtered" /> shows the signal after the filter. It's look much cleaner than the original signal. In fact, we can no longer see the noise at this zoom level.
 
 <Image iref="fig-analogue-signal-rc-filtered" src={import('./_assets/mains-noise-simulation/analogue-signal-rc-filtered.png')} width="650px">The analogue signal after the RC low-pass filter.</Image>
 
