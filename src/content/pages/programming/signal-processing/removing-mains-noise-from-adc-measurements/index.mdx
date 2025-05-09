@@ -116,6 +116,16 @@ Let's filter this signal with the same EMA filter as before. <IRef iref="fig-fil
 
 ## Fix 3: Increase the Sampling Rate
 
+Another way to fix this aliasing problem is to increase the sampling rate. For no aliasing to occur, you need to sample at least twice as fast as the highest frequency in the signal (i.e. the Nyquist frequency). So if we wanted to get rid of 50Hz aliasing, we would need to sample at least 100Hz.
+
+Let's re-run the simulation, but this time sample at 200Hz (giving ourselves some margin above Nyquist).
+
+<Image iref="fig-increased-sampling-rate-digital-signal" src={import('./_assets/mains-noise-simulation/increased-sampling-rate-digital-signal.png')} width="650px">The digital signal after sampling at 200Hz.</Image>
+
+Now let's filter this signal with the same EMA filter as before. <IRef iref="fig-increased-sampling-rate-filtered-signal" /> shows the signal after filtering.
+
+<Image iref="fig-increased-sampling-rate-filtered-signal" src={import('./_assets/mains-noise-simulation/increased-sampling-rate-filtered-digital-signal.png')} width="650px">The "increased sampling rate" signal after filtering with the same EMA filter as before.</Image>
+
 ## Fix 4: Add an Anti-Aliasing Filter
 
 So far, we have discussed ways of solving the problem in firmware. This is great if you have already made the hardware and it is too expensive to change it. It's worth mentioning though that one of the best approaches is to just add an anti-aliasing filter to the ADC input.

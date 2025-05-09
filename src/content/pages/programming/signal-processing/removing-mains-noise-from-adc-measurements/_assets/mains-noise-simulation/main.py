@@ -72,12 +72,12 @@ def main():
     #=========================================
 
     # Now linearly interpolate the analogue signal to the digital sampling times
-    digital_sampling_times_s = np.arange(0, total_sim_time_s, DIGITAL_SAMPLING_PERIOD_S)
-    digital_signal = np.interp(digital_sampling_times_s, analogue_sampling_times_s, analogue_signal)
+    basic_digital_sampling_times_s = np.arange(0, total_sim_time_s, DIGITAL_SAMPLING_PERIOD_S)
+    basic_digital_sampling_signal = np.interp(basic_digital_sampling_times_s, analogue_sampling_times_s, analogue_signal)
 
     # Plot the signal
     fig, ax = plt.subplots()
-    ax.plot(digital_sampling_times_s, digital_signal)
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_signal)
     ax.set_title("Sampled Signal")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
@@ -85,19 +85,19 @@ def main():
     plt.savefig(SCRIPT_DIR / "sampled-signal-with-noise.png")
 
     # Now run this through a EMA filter
-    filtered_values = []
+    basic_digital_sampling_filtered_values = []
     alpha = 0.05
-    for i in range(len(digital_signal)):
+    for i in range(len(basic_digital_sampling_signal)):
         if i == 0:
-            filtered_values.append(digital_signal[i])
+            basic_digital_sampling_filtered_values.append(basic_digital_sampling_signal[i])
         else:
-            filtered_values.append(alpha * digital_signal[i] + (1 - alpha) * filtered_values[i - 1])
+            basic_digital_sampling_filtered_values.append(alpha * basic_digital_sampling_signal[i] + (1 - alpha) * basic_digital_sampling_filtered_values[i - 1])
 
     # Plot the filtered signal
     fig, ax = plt.subplots()
-    ax.plot(digital_sampling_times_s, filtered_values, color='C0', label=f'Filtered digital signal')
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_filtered_values, color='C0', label=f'Filtered digital signal')
     # Also plot the unfiltered signal as a comparison. Make it in the background
-    ax.plot(digital_sampling_times_s, digital_signal, color='C1', alpha=0.5, label='Unfiltered digital signal')
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_signal, color='C1', alpha=0.5, label='Unfiltered digital signal')
     ax.set_title(f"EMA Filtered Signal ($\\alpha = {alpha}$)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
@@ -138,7 +138,7 @@ def main():
     fig, ax = plt.subplots()
     ax.plot(jittered_sampling_times_s, filtered_jittered_samples, color='C0', label=f'Filtered jittered signal')
     # Also plot the unjittered filtered signal as a comparison
-    ax.plot(digital_sampling_times_s, filtered_values, color='C1', alpha=0.5, label='Filtered non-jittered signal')
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_filtered_values, color='C1', alpha=0.5, label='Filtered non-jittered signal')
     ax.set_title(f"EMA Filtered Jittered Signal ($\\alpha = {alpha}$)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
@@ -178,7 +178,7 @@ def main():
     fig, ax = plt.subplots()
     ax.plot(sampled_in_phase_times_s, filtered_sampled_in_phase_samples, color='C0', label=f'Filtered sampled in phase signal')
     # Plot for filtered signal as a comparison
-    ax.plot(digital_sampling_times_s, filtered_values, color='C1', alpha=0.5, label='Basic filtered signal')
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_filtered_values, color='C1', alpha=0.5, label='Basic filtered signal')
     ax.set_title(f"EMA Filtered \"Sampled in Phase\" Signal ($\\alpha = {alpha}$)")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
@@ -186,6 +186,44 @@ def main():
     ax.legend()
     util.add_watermark_to_fig(fig)
     plt.savefig(SCRIPT_DIR / "filtered-sampled-in-phase-signal.png")
+
+    #=========================================
+    # Increase the sampling rate
+    #=========================================
+
+    # Now sample at 200Hz
+    INCREASED_SAMPLING_RATE_HZ = 200
+    INCREASED_SAMPLING_PERIOD_S = 1 / INCREASED_SAMPLING_RATE_HZ
+
+    # Now linearly interpolate the analogue signal to the digital sampling times
+    increased_sampling_rate_sampling_times_s = np.arange(0, total_sim_time_s, INCREASED_SAMPLING_PERIOD_S)
+    increased_sampling_rate_samples = np.interp(increased_sampling_rate_sampling_times_s, analogue_sampling_times_s, analogue_signal)
+
+    # Plot the digital signal
+    fig, ax = plt.subplots()
+    ax.plot(increased_sampling_rate_sampling_times_s, increased_sampling_rate_samples, color='C0', label=f'Digital signal with increased sampling rate')
+    ax.set_title(f"Digital Signal with Increased Sampling Rate ({INCREASED_SAMPLING_RATE_HZ}Hz)")
+    ax.set_xlabel("Time [s]")
+    ax.set_ylabel("Voltage [V]")
+    ax.set_ylim(2 - DELTA_Y*2, 2 + DELTA_Y*2)
+    ax.legend()
+    util.add_watermark_to_fig(fig)
+    plt.savefig(SCRIPT_DIR / "increased-sampling-rate-digital-signal.png")
+
+    # Now filter the digital signal
+    increased_sampling_rate_filtered_samples = filter_signal(increased_sampling_rate_samples, 0.05)
+
+    # Plot the filtered digital signal
+    fig, ax = plt.subplots()
+    ax.plot(increased_sampling_rate_sampling_times_s, increased_sampling_rate_filtered_samples, color='C0', label=f'Filtered digital signal with increased sampling rate')
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_filtered_values, color='C1', alpha=0.5, label='Filtered basic signal')
+    ax.set_title(f"EMA Filtered Digital Signal with Increased Sampling Rate ($\\alpha = {alpha}$)")
+    ax.set_xlabel("Time [s]")
+    ax.set_ylabel("Voltage [V]")
+    ax.set_ylim(2 - DELTA_Y*2, 2 + DELTA_Y*2)
+    ax.legend()
+    util.add_watermark_to_fig(fig)
+    plt.savefig(SCRIPT_DIR / "increased-sampling-rate-filtered-digital-signal.png")
 
     #=========================================
     # Add an anti-aliasing filter
@@ -229,6 +267,7 @@ def main():
     # Zoom in the y-axis
     fig, ax = plt.subplots()
     ax.plot(analogue_sampling_times_s, analogue_signal_rc_filtered, color='C0', label=f'RC Filtered ({cutoff_freq_hz}Hz Cutoff)')
+
     # Plot the original analogue signal for comparison
     ax.plot(analogue_sampling_times_s, analogue_signal, color='C1', alpha=0.5, label='Original analogue signal')
     ax.set_title(f"Analogue Signal with {cutoff_freq_hz}Hz RC Low-pass Filter (Zoomed)")
@@ -240,14 +279,14 @@ def main():
     plt.savefig(SCRIPT_DIR / "analogue-signal-rc-filtered-zoomed.png")
 
     # Now linearly interpolate the analogue signal to the digital sampling times
-    digital_sampling_times_s = np.arange(0, total_sim_time_s, DIGITAL_SAMPLING_PERIOD_S)
-    digital_signal_rc_filtered = np.interp(digital_sampling_times_s, analogue_sampling_times_s, analogue_signal_rc_filtered)
+    basic_digital_sampling_times_s = np.arange(0, total_sim_time_s, DIGITAL_SAMPLING_PERIOD_S)
+    digital_signal_rc_filtered = np.interp(basic_digital_sampling_times_s, analogue_sampling_times_s, analogue_signal_rc_filtered)
 
     # Plot the digital signal
     fig, ax = plt.subplots()
-    ax.plot(digital_sampling_times_s, digital_signal_rc_filtered, color='C0', label=f'RC filtered digital signal')
+    ax.plot(basic_digital_sampling_times_s, digital_signal_rc_filtered, color='C0', label=f'RC filtered digital signal')
     # Compare to the original filtered signal
-    ax.plot(digital_sampling_times_s, filtered_values, color='C1', alpha=0.5, label='Original filtered signal')
+    ax.plot(basic_digital_sampling_times_s, basic_digital_sampling_filtered_values, color='C1', alpha=0.5, label='Original filtered signal')
     ax.set_title(f"Digital Signal with {cutoff_freq_hz}Hz RC Low-pass Filter")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Voltage [V]")
