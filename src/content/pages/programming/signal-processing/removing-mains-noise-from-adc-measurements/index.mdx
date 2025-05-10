@@ -130,11 +130,15 @@ Now let's filter this signal with the same EMA filter as before. <IRef iref="fig
 
 So far, we have discussed ways of solving the problem in firmware. This is great if you have already made the hardware and it is too expensive to change it. It's worth mentioning though that one of the best approaches is to just add an anti-aliasing filter to the ADC input.
 
-An anti-aliasing filter is just a low-pass filter which attenuates any frequency components above half the sampling frequency. This eliminates (well, "significantly reduces" given no filter is perfect!) the effects of aliasing. A simple [RC low-pass filter](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) is usually all you need.
+An anti-aliasing filter is just a low-pass filter which attenuates any frequency components above half the sampling frequency. This eliminates (well, "significantly reduces" given no filter is perfect!) the effects of aliasing. A simple [RC low-pass filter](/electronics/circuit-design/analogue-filters/#first-order-low-pass-rc-filter) is usually all you need unless you need sharp cut-off.
 
 This removes the noise while it is still at a much higher frequency than the signal we want to keep. This is the best place to do it. Once the signal is in the digital domain, the noise has been aliased "down" into the valid signal frequency range and is much harder to remove.
 
 Let's simulate the addition of a simple low-pass RC filter with the cut-off frequency of 1Hz to the analogue signal, before it enters the ADC. We choose a value of 1Hz so that is much lower than the Nyquist frequency of 5Hz (we have a 100ms sampling interval, which is 10Hz, so half the sampling frequency is 5Hz). This makes sure no really noticeable aliasing occurs.
+
+<Aside type="tip">
+An interesting side note: Since I was simulating this, I couldn't just "add" an actual RC filter. However, I believe I can pick any digital filter shape (e.g. Butterworth, Bessel, e.t.c) and as long as I reduce it down so it's 1st order, it's equivalent to an RC filter. The Python library [SciPy](https://scipy.org/) has a `signal.butter` function which can be used to design one.[^stack-exchange-electrical-engineering-low-pass-rc-same-as-butterworth]
+</Aside>
 
 <IRef iref="fig-analogue-signal-rc-filtered" /> shows the signal after the filter. It looks much cleaner than the original signal. In fact, we can no longer see the noise at this zoom level.
 
@@ -162,3 +166,9 @@ If you already have 500 PCBs manufactured and need a solution fast, then a firmw
 * You have enough CPU cycles to do the sampling and filtering at this rate.
 
 If that isn't an option, then you can either add jitter or sample in phase with the mains signal. Adding jitter will usually be the easiest solution, as it does not require any zero-crossing detection circuitry. Jitter might be best first approach to see if it works "well enough" for your application. If you want to be more precise, then sampling in phase with the mains signal could give you better results.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^stack-exchange-electrical-engineering-low-pass-rc-same-as-butterworth]: Stack Exchange - Electrical Engineering (2020, Jan 30). _Is a low pass RC circuit the same thing as a first order Butterworth filter?_ [forum post]. Retrieved 2025-05-10, from https://electronics.stackexchange.com/questions/478610/is-a-low-pass-rc-circuit-the-same-thing-as-a-first-order-butterworth-filter.
