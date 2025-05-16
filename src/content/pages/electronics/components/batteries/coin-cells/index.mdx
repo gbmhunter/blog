@@ -1,7 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-05
-lastUpdated: 2024-04-27
+description: Coin cell batteries (a.k.a. buttons cells or watch batteries) are a small, low energy and low power battery that can power small devices. They are commonly used in small, low-power consumer electronics such as calculators, remotes, and key fobs. They are also fitted to PCBs as backup batteries for things like real-time clocks (RTCs).
+lastUpdated: 2025-05-15
 title: Coin Cell Batteries
 type: page
 ---
@@ -32,11 +33,16 @@ Silver cells have a very stable output voltage over the lifespan of the battery.
 
 CR2032. CR2025.
 
+## PCB Mounting
+
+Coin cells are commonly used as backup batteries for real-time clocks (RTCs) on circuit boards. There are many PCB mount coin cell battery holders available on the market. <IRef iref="fig-pcb-mount-cr1632-coin-cell-battery-holder" /> shows a horizontal PCB mount CR1632 coin cell battery holder. You can also find vertical mount versions which don't take up as much component area on the PCB at the expense of being taller.
+
+<Image iref="fig-pcb-mount-cr1632-coin-cell-battery-holder" src={import('./_assets/pcb-mount-cr1632-coin-cell-battery-holder.webp')} width="400px">A horizontal PCB mount CR1632 coin cell battery holder.</Image>
+
 ## Dangers To Children
 
 Coin cells are very dangerous to children if swallowed. They can cause severe internal burns due to the chemicals inside of them. Some coin cells have a bitter coating to help prevent children swallowing them, as shown in the below image:
 
-{/* {{% figure src="_assets/duracell-cr2032-button-cell-with-bitter-coating.webp" width="800px" caption="A Duracell CR2032 button cell battery with a bitter coating to help prevent children swallowing them." %}} */}
 <Image src={import('./_assets/duracell-cr2032-button-cell-with-bitter-coating.webp')} width="800">A Duracell CR2032 button cell battery with a bitter coating to help prevent children swallowing them.</Image>
 
 The Duracell coin batteries use non-toxic Bitrex (which is commonly used on other household products such as anti-nail biting solutions) as the bitter substance[^duracell-power-safer].
@@ -48,5 +54,9 @@ According to Duracell, the most dangerous sizes are:
 * 2032
 
 (i.e. all the button cells with a 20mm diameter)[^duracell-power-safer].
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^duracell-power-safer]: Duracell. _Duracell Power Safer - The only Lithium Coin battery with bitter taste to prevent ingestion._. Retrieved 2024-04-28, from https://www.duracell-me.com/technology/lithium-coin-battery-safety/.

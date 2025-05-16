@@ -18,3 +18,34 @@ Dart is a programming language developed by Google. Flutter is a UI toolkit for 
 On Windows, make sure to install the Dart SDK into a path containing no special characters or spaces, and one which does not require admin privileges.
 
 The VS Code extension can download and install the Dart SDK for you, as well as putting dart onto your PATH.
+
+## Flutter
+
+```bash
+flutter create flutter_counter
+```
+
+To run the app, use:
+
+```bash
+flutter run
+```
+
+### State Management
+
+Flutter doesn't really have any solid large scale app ready state management solution baked in. However, there are many third party packages which can help.
+
+#### Provider
+
+
+#### Riverpod
+
+Riverpod is designed by the same author as provider (Riverpod is an anagram of "provider") and is designed to supersede it.
+
+<Image iref="fig-riverpod-repo-screenshot" src={import('./_assets/riverpod-repo-screenshot.webp')} width="900px">A screenshot of the Riverpod repository on GitHub.</Image>
+
+When using Riverpod, you can choose to use the generator or do it manually. The generator automatically works out what type of provider you need. If using the generator, you wil have to run `dart run build_runner build` occasionally to regenerate files after certain modifications. The generator creates files called `<name>.g.dart`, which are then designed to be included inside `<name>.dart` with the syntax `part '<name>.g.dart';` (don't use an `import`).
+
+#### Bloc
+
+In my quick look into Bloc, it seems to require much more boilerplate than Riverpod to do the same thing. However, this structure may be of a benefit for larger apps. One thing of concern was that apparently Blocs are not meant to talk to one another. I was expecting to be able to build by application model in Blocs, and of course I would need the different parts of the application to talk to one another.

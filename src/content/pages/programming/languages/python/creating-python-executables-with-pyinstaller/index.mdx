@@ -1,0 +1,80 @@
+---
+authors: [gbmhunter]
+date: 2025-05-14
+lastUpdated: 2025-05-14
+tags: [Python, programming, programming languages, executables, PyInstaller, Windows, Linux, macOS]
+title: Creating Python Executables with PyInstaller
+type: page
+---
+
+PyInstaller is a tool which can be used to create executables from Python scripts. It can create executables for Windows, Linux, and macOS, although it is not a cross-compiler, and so has to be run on the target platform to generate the corresponding application.
+
+## Installation
+
+```bash
+pip install pyinstaller
+```
+
+## Usage
+
+The most basic way to use `pyinstaller` is to just point it at your Python script:
+
+```bash
+pyinstaller my_script.py
+```
+
+This will create new directories called `build` and `dist` in the current working directory. The `build` directory contains the build files, and the `dist` directory contains the executable ready for sharing with users. Note that by default, PyInstaller will not bundle the application into a single file, but rather create one executable and a number of dependent files. If you want to bundle the application into a single file (which can be useful for distribution), you can use the `--onefile` flag, e.g.:
+
+```bash
+pyinstaller --onefile my_script.py
+```
+
+When running, pyinstaller also creates a new file called `my_file.spec` in the current working directory. This file saves the configuration used to create the executable. You can modify this file directly, but because it's not as well documented as the command line arguments, it's easier to configure the script by running PyInstaller again with the command line arguments you want to use.
+
+You can then use this script to re-create the executable in the exact same way as before. Just point `pyinstaller` to the spec file instead of the `.py` file:
+
+```bash
+pyinstaller my_file.spec
+```
+
+<Aside type="note">
+The `.spec` file is just Python code itself (it's not a configuration language like JSON or YAML).
+</Aside>
+
+## Getting the Path
+
+You can use the following code to get the path to either the script (when not running from a PyInstaller executable) or to the executable (when running from a PyInstaller executable):
+
+```python
+import sys, os
+if getattr(sys, 'frozen', False):
+    # If the application is run as a bundle, the PyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app 
+    # path into variable _MEIPASS or sys.executable
+    application_path = sys._MEIPASS # Many-file executable OR
+    # application_path = os.path.dirname(sys.executable) # One-file executable
+else:
+    application_path = os.path.dirname(os.path.abspath(__file__)) # Not bundled
+```
+
+## No Package Metadata Found Error
+
+If you get an error like the following:
+
+```text
+Error: No package metadata was found for <package_name>
+```
+
+I encountered this error when using the `readchar` library.
+
+This command line option adds the following to the `.spec` file (using `readchar` as an example):
+
+```python
+# Imports here
+
+datas = [] # If not already present
+datas += copy_metadata('readchar', recursive=True)
+
+# a = Analysis...
+```
+
