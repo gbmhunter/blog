@@ -1,0 +1,131 @@
+---
+authors: [gbmhunter]
+date: 2025-05-19
+description: Label printers are useful in electronics work for labelling PCBs, cables, production items and more.
+lastUpdated: 2025-05-19
+tags: [electronics, label printers]
+title: Label Printers
+type: page
+---
+
+Label printers are useful in electronics work for labelling PCBs, cables, production items and more.
+
+## Printing From Python in Windows
+
+The `pywin32` Python library can be used to print to most label printers on Windows. You can install it using `pip`:
+
+```bash
+pip install pywin32
+```
+
+Here is an example of how to print a image to the label printer using the `pywin32` library. In this case I was connected to a Brady M511 label printer.
+
+```python
+import datetime
+import os
+import sys
+
+from PIL import Image, ImageWin
+import win32con
+import win32print
+import win32ui
+
+file_name = os.path.join(SCRIPT_DIR, "test.png")
+# Create device context
+hDC = win32ui.CreateDC()
+hDC.CreatePrinterDC(printer_name)
+
+# Get printer dimensions in device units
+printer_width = hDC.GetDeviceCaps(win32con.PHYSICALWIDTH)
+printer_height = hDC.GetDeviceCaps(win32con.PHYSICALHEIGHT)
+
+# Open and prepare the image
+bmp = Image.open(file_name)
+
+# Calculate scaling factor to fit the image within printer dimensions
+# while maintaining aspect ratio
+width_ratio = printer_width / bmp.size[0]
+height_ratio = printer_height / bmp.size[1]
+scale_factor = min(width_ratio, height_ratio)
+
+# Calculate new dimensions
+new_width = int(bmp.size[0] * scale_factor)
+new_height = int(bmp.size[1] * scale_factor)
+
+# Resize the image
+bmp = bmp.resize((new_width, new_height), Image.Resampling.LANCZOS)
+
+
+# Calculate centering offsets
+x_offset = (printer_width - new_width) // 2
+y_offset = (printer_height - new_height) // 2
+
+# Start printing
+hDC.StartDoc(file_name)
+hDC.StartPage()
+
+# Draw the image centered on the page
+dib = ImageWin.Dib(bmp)
+dib.draw(hDC.GetHandleOutput(), (0, 0, new_width, new_height))
+
+hDC.EndPage()
+hDC.EndDoc()
+hDC.DeleteDC()
+```
+
+`GetDeviceCaps()` can be used to retrieve a number of different properties of the printer. Some of the things you can request are:
+
+* `HORZRES`: Printable area width in pixels
+* `VERTRES`: Printable area height in pixels
+* `LOGPIXELS`: Dots per inch
+* `PHYSICALWIDTH`: Total area width in device units
+* `PHYSICALHEIGHT`: Total area height in device units
+* `PHYSICALOFFSETX`: Left margin in device units
+* `PHYSICALOFFSETY`: Top margin in device units
+```
+
+These constants are defined in the `win32con.py` file as part of the `pywin32` library.
+
+```python
+import win32con
+
+print(win32con.PHYSICALWIDTH)
+```
+
+If you are wanting to change the label size, you need to set the paper width and length attributes. To do this, you need to open the printer with the `ACCESS_MASK` set to `win32print.PRINTER_ALL_ACCESS`:
+
+```python
+PRINTER_DEFAULTS = {"DesiredAccess": win32print.PRINTER_ALL_ACCESS}
+printer_handle = win32print.OpenPrinter(printer_name, PRINTER_DEFAULTS)
+```
+
+Here is an example which set a number of different attributes for a printer.
+
+```python
+# PRINTER_ALL_ACCESS is required to set paper size
+PRINTER_DEFAULTS = {"DesiredAccess": win32print.PRINTER_ALL_ACCESS}
+printer_handle = win32print.OpenPrinter(printer_name, PRINTER_DEFAULTS)
+
+# 2 : A PRINTER_INFO_2 structure containing detailed information about the printer.
+# See https://learn.microsoft.com/en-us/windows/win32/printdocs/setprinter
+level = 2
+attributes = win32print.GetPrinter(printer_handle, level)
+# Width is perpendicular to the label feed direction
+# Length is parallel with the label feed direction
+# Both of these are in tenths of a millimeter
+attributes['pDevMode'].PaperWidth = 90
+attributes['pDevMode'].PaperLength = 80
+
+# For printer devices only, selects the size of the paper to print on.
+# This member can be set to zero if the length and width of the paper are
+# both set by the dmPaperLength and dmPaperWidth members
+# (https://learn.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-devmodea)
+attributes['pDevMode'].PaperSize = 0
+
+# Print 2 copies of the label
+attributes['pDevMode'].Copies = 2
+
+win32print.SetPrinter(printer_handle, level, attributes, 0)
+```
+
+This code example also uses `Copies` to set the number of copies to print. I found this to be more reliable than submitting the print job multiple times.
