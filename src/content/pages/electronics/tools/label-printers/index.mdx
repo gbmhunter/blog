@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2025-05-19
 description: Label printers are useful in electronics work for labelling PCBs, cables, production items and more.
 lastUpdated: 2025-05-19
-tags: [electronics, label printers]
+tags: [electronics, label printers, Python, Windows, pywin32, printers, printing, production, manufacturing, cables, Brady, M511]
 title: Label Printers
 type: page
 ---
@@ -12,7 +12,7 @@ Label printers are useful in electronics work for labelling PCBs, cables, produc
 
 ## Printing From Python in Windows
 
-The `pywin32` Python library can be used to print to most label printers on Windows. You can install it using `pip`:
+The `pywin32` Python library can be used to print to most label printers on Windows. This library makes it easy to interact with the Win32 API, which includes printer operations. You can install it using `pip`:
 
 ```bash
 pip install pywin32
@@ -54,7 +54,6 @@ new_height = int(bmp.size[1] * scale_factor)
 
 # Resize the image
 bmp = bmp.resize((new_width, new_height), Image.Resampling.LANCZOS)
-
 
 # Calculate centering offsets
 x_offset = (printer_width - new_width) // 2
@@ -128,4 +127,54 @@ attributes['pDevMode'].Copies = 2
 win32print.SetPrinter(printer_handle, level, attributes, 0)
 ```
 
+I have found that setting changing the printer length can change the position a label is cut on a continuous cartridge.
+
+Be careful when changing the printer paper size. As fair I have found, this will apply the new paper size to all pending print jobs, including ones you have previously submitted but have not yet been printed.
+
 This code example also uses `Copies` to set the number of copies to print. I found this to be more reliable than submitting the print job multiple times.
+
+### Detecting If A Printer Is Connected
+
+It can be useful to be able to detect if a printer is connected and ready to print. If you don't check this, your printing efforts could just end up queuing up a load of print jobs but not actually printing anything. This is not ideal in a production line environment.
+
+The `GetPrinter(<printer_handle>, 2)` function can be used to get printer information. I would have thought the status field would have been the variable to check, but in my testing it was always `0`, whether the printer was actually connected or not. Instead I used the `PRINTER_ATTRIBUTE_WORK_OFFLINE` attribute. This seems to be set to `1024` when the printer is not connected, and `0` when it is.
+
+Below is an example function which returns `True` if the printer is connected (online).
+
+```python
+def is_printer_connected(printer_name: str) -> bool:
+    """
+    Checks if the specified printer is connected and ready to print.
+
+    Args:
+        printer_name (str): The name of the printer to check.
+
+    Returns:
+        bool: True if the printer is connected and ready, False otherwise.
+    """
+    try:
+        # Check if printer exists in the list of available printers
+        available_printers = list_windows_printers()
+        if printer_name not in available_printers:
+            print(f"Printer '{printer_name}' not found in available printers")
+            return False
+
+        # Try to open the printer to check if it's accessible
+        PRINTER_DEFAULTS = {"DesiredAccess": win32print.PRINTER_ACCESS_USE}
+        printer_handle = win32print.OpenPrinter(printer_name, PRINTER_DEFAULTS)
+        
+        if printer_handle:
+            # Get printer status
+            level = 2
+            printer_info = win32print.GetPrinter(printer_handle, level)
+            attributes = printer_info['Attributes']
+            # Status did not change from 0, so we are using this WORK_OFFLINE attribute instead.
+            # Is seems to be set to 1024 when not connected, and 0 when connected.
+            is_ready = (attributes & win32print.PRINTER_ATTRIBUTE_WORK_OFFLINE) == 0
+            win32print.ClosePrinter(printer_handle)
+            return is_ready
+    except Exception as e:
+        print(f"Error checking printer status: {e}.")
+        return False
+    return False
+```

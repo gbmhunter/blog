@@ -1381,131 +1381,6 @@ atomic_t myCounter;
 atomic_val_t prevValue = atomic_clear(&myCounter);
 ```
 
-## Logging
-
-Zephyr has very powerful logging features (compared to what you typically expect for embedded devices) provided via it's logging API.
-
-First you have to enable logging in your `prj.conf` with:
-
-```python
-CONFIG_LOG=y
-```
-
-You can also set a default compiled log level with:
-
-```python
-# The default compile time log level. Recommended to leave this as verbose as
-# possible given memory constraints and then set the runtime log level as needed.
-# 0 = LOG_LEVEL_OFF
-# 1 = LOG_LEVEL_ERR
-# 2 = LOG_LEVEL_WRN
-# 3 = LOG_LEVEL_INFO
-# 4 = LOG_LEVEL_DBG
-CONFIG_LOG_DEFAULT_LEVEL=4
-```
-
-If you want to add logs to a .c file, first include `#include <zephyr/logging/log.h>`. Then you have to register the source file as a "module":
-
-```c
-// Uses the compiled log level set in prj.conf with CONFIG_LOG_DEFAULT_LEVEL
-LOG_MODULE_REGISTER(MyModule);
-
-// OR:
-
-// Optionally override the compiled log level with a custom level as a second
-// parameter to the macro.
-LOG_MODULE_REGISTER(MyModule, LOG_LEVEL_INF);
-```
-
-Now you can use log statements in your code:
-
-```c
-void MyFunction() {
-    LOG_DBG("Here is a debug level log!");   // Prints: [00:10:04.267,242] <dbg> MyModule: MyFunction: Here is a debug level log!
-    LOG_INF("Here is a info level log!");    // Prints: [00:00:01.024,291] <inf> MyModule: Here is a info level log!
-    LOG_WRN("Here is a warning level log!"); // Prints: [00:00:01.024,291] <wrn> MyModule: Here is a warning level log!
-    LOG_ERR("Here is a error level log!");   // Prints: [00:00:01.024,291] <err> MyModule: Here is a error level log!
-}
-```
-
-Note that the debug level log prints additional information -- it also prints the function name (in the above example this is `MyFunction`) that the log message was printed from. For outputs that support ANSI escape codes, the warning log is printed in yellow (except for the timestamp), and similarly the error log is printed in red.
-
-### Compile Time vs. Runtime Log Levels
-
-It's important to make the distinction between compile-time log levels and runtime levels. Providing `CONFIG_LOG_DEFAULT_LEVEL` or a second parameter to `LOG_MODULE_REGISTER` sets a compile-time log level. All log levels higher than this (both in number and verbosity) are not included in the compiled firmware binary, meaning you cannot change the level to high levels at runtime. Runtime log levels are set via `log_filter_set()` or with the shell command `log enable <log_level>` (e.g. `log enable dbg`). Runtime adjustable log levels also depend on `CONFIG_LOG_RUNTIME_FILTERING=y`, which is set automatically if the shell is enabled. My recommendation is to leave the compile time log level to `LOG_LEVEL_DBG` if you have enough flash to allow that, and then set the log level at runtime. This will give you the ability to dynamically change the levels as needed without having to re-compile firmware. It would be a pain to have to recompile and re-flash firmware on a buggy device just to get the "debug" logs you need to diagnose the problem. And you may not want to re-flash as you have just caught an intermittent bug that is hard to reproduce!
-
-The code below shows how you can change the logging levels at runtime:
-
-```c
-#include <zephyr/logging/log.h>
-#include <zephyr/logging/log_ctrl.h>
-
-int main() {
-  // ...
-
-  // Change all log levels at runtime
-  // NOTE: If you do this for a particular event, you may want to save all
-  // the previous levels and restore them after the event is finished
-  uint32_t logLevel = LOG_LEVEL_INF;
-  uint32_t numLogSources = log_src_cnt_get(0);
-  for (uint32_t sourceId = 0; sourceId < numLogSources; sourceId++)
-  {
-      char * sourceName = (char *)log_source_name_get(0, sourceId);
-      __ASSERT_NO_MSG(sourceName); // Should not be null
-      log_filter_set(NULL, 0, sourceId, level);
-  }
-
-  // ...
-}
-```
-
-<Aside type="tip">
-Remember to set `CONFIG_LOG_RUNTIME_FILTERING=y` in your `prj.conf` if you don't have the shell enabled and you want runtime log level adjustment.
-</Aside>
-
-### X Messages Dropped Errors
-
-Zephyr implements a character based circular buffer for storing messages to be processed (remember -- Zephyr logging is typically done asynchronously). If other threads create logs too quickly for the log thread to process, at some point Zephyr will drop logs. You will typically see a log error generated when this happens stating `--- x messages dropped ---` (as shown below).
-
-<Image src={import('./_assets/zephyr-shell-x-messages-dropped-screenshot.png')} width="700px">A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging.</Image>
-
-If you have extra RAM space, one way to reduce the probability of this error is to bump up the circular buffer Zephyr uses to write messages into in your `prj.conf`:
-
-```python
-# Increased from 1024 to reduce probability of --- x messages dropped --- errors 
-CONFIG_LOG_BUFFER_SIZE=2048
-```
-
-`CONFIG_LOG_BUFFER_SIZE` sets the number of bytes assigned to the circular packet buffer.[^zephyr-docs-logging] Note there is also a maximum size per log message, which is discussed in the [Max Message Size section](#max-message-size).
-
-### Max Message Size
-
-Zephyr has a maximum log message size of 2047 bytes. If a message exceeds this size, it will be dropped. As far as I can tell, this is set by `Z_LOG_MSG_MAX_PACKAGE` in `zephyr/subsys/logging/log_msg.c` which is turn set by `#define Z_LOG_MSG_PACKAGE_BITS 11` (2047 is 2^11 - 1). This cannot be changed via a setting in `prj.conf` and thus is a hard limit.
-
-One work around I have used is to split larger log messages up into multiple messages. In my use case I wanted to print a "file" read from an SD card which had multiple lines of text. So a natural choice was to log the file line by line. The downside is that other log messages may insert themselves between the lines (if you have multiple threads running).
-
-### Deferred vs. Immediate Logging
-
-Zephyr supports two different modes for logging, _deferred_ and _immediate_. In deferred mode, whenever your code calls `LOG_DBG(...)` or similar, the passed in format string and variables get saved for for further processing in a separate logging thread (further processing entails inserting the arguments into the format string, and sending it to backends such as UART). In immediate mode, when your code calls `LOG_DBG(...)`, the log is processed and emitted to backends in the calling thread.
-
-Deferred logging is a great choice when you don't want to slow down your threads emitting log messages (it even allows you to log from an interrupt context!). The biggest downside is that log messages are not synchronous with what your microcontroller is actually doing in the real world at any point of time. Deferred logging can mask errors such as hard faults and segmentation faults -- when a serious fault occurs the processor will crash/hang (or a fault handler will be called) but you won't see the last 1 second or so of log messages, making it hard to track down the problem.
-
-This is what immediate mode is great for -- debugging crashes and other time-sensitive issues when you need the logs to print at the same time the `LOG_DBG()` calls are being made. If a crash occurs, you can look at the last few log messages and get a good idea were the problem might be in your source code. Immediate mode is not suitable when you are logging from an interrupt context or from a time-sensitive thread.
-
-### Speeding Up Log Output
-
-By default, Zephyr logs can be seem to be quite laggy and "slow" when being used to emit logs across a serial port for debugging during development. One of the ways to speed things up is to add the following to your `prj.conf`:
-
-```python
-CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD=1
-```
-
-The setting tells Zephyr to only wait for 1 log message in the queue before waking up the logging thread to process it. By default this value is set to 10, which can make logs seem slow![^zephyr-docs-kconfig-log-trigger-threshold] `CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD` is only applicable when `CONFIG_LOG_MODE_IMMEDIATE=n`.
-
-### C++ Compatibility
-
-In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`.
-
 ## Peripheral APIs
 
 Not only does Zephyr provide you with an RTOS, but it also gives you a collection of well defined APIs for interacting with microcontroller peripherals.
@@ -1792,6 +1667,16 @@ static void GpioCallbackHandler(const struct device* dev, struct gpio_callback* 
     MyObject* myObject = CONTAINER_OF(cb, MyObject, myCallback);
 }
 ```
+
+#### Configuring and Setting GPIO In the Shell
+
+Zephyr has a built-in shell command that can be used for configuring and setting GPIO pins. You can enable it by adding the following to your `prj.conf` file:
+
+```txt
+CONFIG_GPIO_SHELL=y
+```
+
+<Image src={import('./_assets/configuring-gpio-in-the-zephyr-shell.webp')} width="700px">A screenshot showing the Zephyr shell command for configuring GPIO.</Image>
 
 ### PWM
 
@@ -2287,158 +2172,20 @@ Zephyr does not support the following C++ features:
 
 You can enable support for compiling C++ by adding the following into `prj.conf`:
 
-```python
+```python title="prj.conf"
 CONFIG_CPP=y
 ```
 
-You can then change `main.c` to `main.cpp`. Remember to update the path in the `CMakeLists.txt` file also!
+You can then change `main.c` to `main.cpp`. Remember to update the path in the `CMakeLists.txt` file also! However, you will still be missing a lot of the C++ standard library (e.g. `std::functional`). To make this available, add the following to your `prj.conf`:
 
-```python
-# Adds everything!
+```python title="prj.conf"
+# Adds the full C++ standard library
 CONFIG_REQUIRES_FULL_LIBCPP=y
 ```
 
+I didn't notice any significant RAM or flash increase just by including the full C++ standard library, so you only pay for what you use.
+
 You should now be able to compile the Zephyr application with C++ code.
-
-## The Zephyr Shell
-
-[Zephyr features a "shell"](https://docs.zephyrproject.org/latest/services/shell/index.html) (one of it's modules) that it can provide over a serial transport such as a UART, USB or Segger RTT. The shell provides to the user things such as Linux command-line style commands, logging, auto-complete, command history and more. In  It is great for implementing a debug interface to control your microcontroller from a terminal application such as [NinjaTerm](https://ninjaterm.mbedded.ninja/) (shameless plug, I developed this app).
-
-Zephyr provides an API that the firmware can use to define the commands available to the user over the shell.
-
-You can get a pointer to specific shell instances by using commands such as `shell_backend_uart_get_ptr()` (declared in `zephyr/shell/shell_uart.h`) or `shell_backend_rtt_get_ptr()` (declared in `zephyr/shell/shell_rtt.h`). For example, if you have a UART backend, you can use:
-
-```c
-#include <zephyr/shell/shell_uart.h>
-
-int main() {
-    struct shell * main_shell;
-    main_shell = shell_backend_uart_get_ptr();
-    __ASSERT(main_shell != NULL, "Failed to get shell backend.");
-}
-```
-
-`shell_set_bypass()` can be used 
-
-You can pass in `NULL` to clear an existing bypass, e.g.:
-
-```c
-shell_set_bypass(sh, NULL);
-```
-
-The model_shell example project makes use of this bypass feature to provide a direct AT command mode between the shell and the modem.
-
-### Shell Login
-
-You can somewhat easily implement a login shell with Zephyr, which protects all the commands behind a simple root-level password that is required to "login".
-
-Setting `CONFIG_SHELL_CMDS_SELECT=y` in `prj.conf` will allow you to select which shell commands are available. Then you can call `shell_set_root_cmd()` from C code to set a root command. `shell_set_root_cmd(NULL)` will clear the root command and go back to showing all available commands.
-
-<Image src={import('./_assets/zephyr-login-shell-screenshot.webp')} width="500px">A screenshot of a Zephyr login shell in action.</Image>
-
-`shell_obscure_set(sh, true)` causes all logs to stop. Then calling `shell_obscure_set(sh, false)` did not restore the logging. After a while a hard fault occurred, likely due to the log messages building up and overflowing some buffer. I managed to fix this by re-enabling the shell logging backend with `z_shell_log_backend_enable()`:
-
-```c
-z_shell_log_backend_enable(sh->log_backend, (void *)sh, sh->ctx->log_level);
-```
-
-Another way to fix this is to just stop and start the shell with:
-
-```c
-// Fix to restore logging
-shell_stop(sh);
-shell_start(sh);
-```
-
-These stop and start functions call `z_shell_log_backend_disable()` and `z_shell_log_backend_enable()` internally.
-
-Below is the source code to create a login shell. It relies on a `PRODUCTION_BUILD` macro to determine if the login prompt should be shown or not, as in a development build it can be a pain to have to login each time you want to use the shell.
-
-```c title="LoginCmd.c"
-#include <zephyr/kernel.h>
-#include <zephyr/shell/shell.h>
-#include <zephyr/shell/shell_uart.h>
-#include <zephyr/init.h>
-
-/**
- * The password for the shell login.
- */
-#define SHELL_PASSWORD "zephyr"
-
-static int LoginInit(void)
-{
-    // Only enable login in production builds, otherwise skip past the login prompt
-#if PRODUCTION_BUILD == 1
-    printk("Please login with password to continue.\n");
-    if (!CONFIG_SHELL_CMD_ROOT[0]) {
-        shell_set_root_cmd("login");
-    }
-    struct shell const * sh = shell_backend_uart_get_ptr();
-    // Obscure the input so that the password is not visible
-    shell_obscure_set(sh, true);
-
-    // Disable logging to the console so that we don't see it at the login prompt
-    z_shell_log_backend_disable(sh->log_backend);
-#else
-    printk("Development build. Login is not required.\n");
-#endif
-    return 0;
-}
-
-static int CheckPassword(char *passwd)
-{
-    return strcmp(passwd, SHELL_PASSWORD);
-}
-
-static int CmdLogin(const struct shell* sh, size_t argc, char** argv)
-{
-    static uint32_t attempts;
-
-    if (CheckPassword(argv[1]) != 0)
-    {
-        shell_error(sh, "Incorrect password!");
-        attempts++;
-        if (attempts > 3)
-        {
-            k_sleep(K_SECONDS(attempts));
-        }
-        return -EINVAL;
-    }
-
-    // Clear history so password not visible there
-    z_shell_history_purge(sh->history);
-    shell_obscure_set(sh, false);
-    
-    shell_set_root_cmd(NULL);
-    shell_prompt_change(sh, "uart:~$ ");
-    z_shell_log_backend_enable(sh->log_backend, (void *)sh, sh->ctx->log_level);
-
-    shell_print(sh, "Logged in successfully! Hit tab for help. Use the command \"logout\" to log back out.\n");
-    attempts = 0;
-    return 0;
-}
-
-static int CmdLogout(const struct shell* sh, size_t argc, char** argv)
-{
-    shell_set_root_cmd("login");
-    shell_obscure_set(sh, true);
-    shell_prompt_change(sh, "login: ");
-    // Disable logging to the console so that we don't see it at the login prompt
-    z_shell_log_backend_disable(sh->log_backend);
-    shell_print(sh, "\n");
-    return 0;
-}
-
-SHELL_CMD_ARG_REGISTER(login, NULL, "<password>", CmdLogin, 2, 0);
-
-SHELL_CMD_REGISTER(logout, NULL, "Log out.", CmdLogout);
-
-SYS_INIT(LoginInit, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
-```
-
-`shell_prompt_change(sh, "login: ")` is used to change the shell prompt to `login:` so that it's obvious to the user that they need to login before doing anything else.
-
-An example of shell login can be found [here](https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/shell/shell_module/prj_login.conf).
 
 ## Debugging
 

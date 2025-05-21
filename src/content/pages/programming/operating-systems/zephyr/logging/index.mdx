@@ -1,0 +1,146 @@
+---
+authors: [gbmhunter]
+date: 2020-04-19
+description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
+lastUpdated: 2025-05-21
+tags: [programming, operating systems, OSes, RTOS, Zephyr, logging, serial, UART, USB, RTT, terminals]
+title: Zephyr Logging
+type: page
+---
+
+Zephyr has very powerful logging features (compared to what you typically expect for embedded devices) provided via it's logging API.
+
+## Basic Usage
+
+First you have to enable logging in your `prj.conf` with:
+
+```python
+CONFIG_LOG=y
+```
+
+<Aside type="warning">
+If you forget about `CONFIG_LOG=y`, your code that uses `LOG_MODULE_REGISTER` and `LOG_INF("my message")` e.t.c. will still compile, it will just not log anything at runtime.
+</Aside>
+
+You can also set a default compiled log level with:
+
+```python
+# The default compile time log level. Recommended to leave this as verbose as
+# possible given memory constraints and then set the runtime log level as needed.
+# 0 = LOG_LEVEL_OFF
+# 1 = LOG_LEVEL_ERR
+# 2 = LOG_LEVEL_WRN
+# 3 = LOG_LEVEL_INFO
+# 4 = LOG_LEVEL_DBG
+CONFIG_LOG_DEFAULT_LEVEL=4
+```
+
+If you want to add logs to a .c file, first include `#include <zephyr/logging/log.h>`. Then you have to register the source file as a "module":
+
+```c
+// Uses the compiled log level set in prj.conf with CONFIG_LOG_DEFAULT_LEVEL
+LOG_MODULE_REGISTER(MyModule);
+
+// OR:
+
+// Optionally override the compiled log level with a custom level as a second
+// parameter to the macro.
+LOG_MODULE_REGISTER(MyModule, LOG_LEVEL_INF);
+```
+
+Now you can use log statements in your code:
+
+```c
+void MyFunction() {
+    LOG_DBG("Here is a debug level log!");   // Prints: [00:10:04.267,242] <dbg> MyModule: MyFunction: Here is a debug level log!
+    LOG_INF("Here is a info level log!");    // Prints: [00:00:01.024,291] <inf> MyModule: Here is a info level log!
+    LOG_WRN("Here is a warning level log!"); // Prints: [00:00:01.024,291] <wrn> MyModule: Here is a warning level log!
+    LOG_ERR("Here is a error level log!");   // Prints: [00:00:01.024,291] <err> MyModule: Here is a error level log!
+}
+```
+
+Note that the debug level log prints additional information -- it also prints the function name (in the above example this is `MyFunction`) that the log message was printed from. For outputs that support ANSI escape codes, the warning log is printed in yellow (except for the timestamp), and similarly the error log is printed in red.
+
+### Compile Time vs. Runtime Log Levels
+
+It's important to make the distinction between compile-time log levels and runtime levels. Providing `CONFIG_LOG_DEFAULT_LEVEL` or a second parameter to `LOG_MODULE_REGISTER` sets a compile-time log level. All log levels higher than this (both in number and verbosity) are not included in the compiled firmware binary, meaning you cannot change the level to high levels at runtime. Runtime log levels are set via `log_filter_set()` or with the shell command `log enable <log_level>` (e.g. `log enable dbg`). Runtime adjustable log levels also depend on `CONFIG_LOG_RUNTIME_FILTERING=y`, which is set automatically if the shell is enabled. My recommendation is to leave the compile time log level to `LOG_LEVEL_DBG` if you have enough flash to allow that, and then set the log level at runtime. This will give you the ability to dynamically change the levels as needed without having to re-compile firmware. It would be a pain to have to recompile and re-flash firmware on a buggy device just to get the "debug" logs you need to diagnose the problem. And you may not want to re-flash as you have just caught an intermittent bug that is hard to reproduce!
+
+The code below shows how you can change the logging levels at runtime:
+
+```c
+#include <zephyr/logging/log.h>
+#include <zephyr/logging/log_ctrl.h>
+
+int main() {
+  // ...
+
+  // Change all log levels at runtime
+  // NOTE: If you do this for a particular event, you may want to save all
+  // the previous levels and restore them after the event is finished
+  uint32_t logLevel = LOG_LEVEL_INF;
+  uint32_t numLogSources = log_src_cnt_get(0);
+  for (uint32_t sourceId = 0; sourceId < numLogSources; sourceId++)
+  {
+      char * sourceName = (char *)log_source_name_get(0, sourceId);
+      __ASSERT_NO_MSG(sourceName); // Should not be null
+      log_filter_set(NULL, 0, sourceId, level);
+  }
+
+  // ...
+}
+```
+
+<Aside type="tip">
+Remember to set `CONFIG_LOG_RUNTIME_FILTERING=y` in your `prj.conf` if you don't have the shell enabled and you want runtime log level adjustment.
+</Aside>
+
+### X Messages Dropped Errors
+
+Zephyr implements a character based circular buffer for storing messages to be processed (remember -- Zephyr logging is typically done asynchronously). If other threads create logs too quickly for the log thread to process, at some point Zephyr will drop logs. You will typically see a log error generated when this happens stating `--- x messages dropped ---` (as shown below).
+
+<Image src={import('./_assets/zephyr-shell-x-messages-dropped-screenshot.png')} width="700px">A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging.</Image>
+
+If you have extra RAM space, one way to reduce the probability of this error is to bump up the circular buffer Zephyr uses to write messages into in your `prj.conf`:
+
+```python
+# Increased from 1024 to reduce probability of --- x messages dropped --- errors 
+CONFIG_LOG_BUFFER_SIZE=2048
+```
+
+`CONFIG_LOG_BUFFER_SIZE` sets the number of bytes assigned to the circular packet buffer.[^zephyr-docs-logging] Note there is also a maximum size per log message, which is discussed in the [Max Message Size section](#max-message-size).
+
+### Max Message Size
+
+Zephyr has a maximum log message size of 2047 bytes. If a message exceeds this size, it will be dropped. As far as I can tell, this is set by `Z_LOG_MSG_MAX_PACKAGE` in `zephyr/subsys/logging/log_msg.c` which is turn set by `#define Z_LOG_MSG_PACKAGE_BITS 11` (2047 is 2^11 - 1). This cannot be changed via a setting in `prj.conf` and thus is a hard limit.
+
+One work around I have used is to split larger log messages up into multiple messages. In my use case I wanted to print a "file" read from an SD card which had multiple lines of text. So a natural choice was to log the file line by line. The downside is that other log messages may insert themselves between the lines (if you have multiple threads running).
+
+### Deferred vs. Immediate Logging
+
+Zephyr supports two different modes for logging, _deferred_ and _immediate_. In deferred mode, whenever your code calls `LOG_DBG(...)` or similar, the passed in format string and variables get saved for for further processing in a separate logging thread (further processing entails inserting the arguments into the format string, and sending it to backends such as UART). In immediate mode, when your code calls `LOG_DBG(...)`, the log is processed and emitted to backends in the calling thread.
+
+Deferred logging is a great choice when you don't want to slow down your threads emitting log messages (it even allows you to log from an interrupt context!). The biggest downside is that log messages are not synchronous with what your microcontroller is actually doing in the real world at any point of time. Deferred logging can mask errors such as hard faults and segmentation faults -- when a serious fault occurs the processor will crash/hang (or a fault handler will be called) but you won't see the last 1 second or so of log messages, making it hard to track down the problem.
+
+This is what immediate mode is great for -- debugging crashes and other time-sensitive issues when you need the logs to print at the same time the `LOG_DBG()` calls are being made. If a crash occurs, you can look at the last few log messages and get a good idea were the problem might be in your source code. Immediate mode is not suitable when you are logging from an interrupt context or from a time-sensitive thread.
+
+### Speeding Up Log Output
+
+By default, Zephyr logs can be seem to be quite laggy and "slow" when being used to emit logs across a serial port for debugging during development. One of the ways to speed things up is to add the following to your `prj.conf`:
+
+```python
+CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD=1
+```
+
+The setting tells Zephyr to only wait for 1 log message in the queue before waking up the logging thread to process it. By default this value is set to 10, which can make logs seem slow![^zephyr-docs-kconfig-log-trigger-threshold] `CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD` is only applicable when `CONFIG_LOG_MODE_IMMEDIATE=n`.
+
+### C++ Compatibility
+
+In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
+[^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.
+

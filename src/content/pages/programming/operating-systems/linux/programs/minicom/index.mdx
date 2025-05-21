@@ -1,13 +1,14 @@
 ---
 authors: [gbmhunter]
 date: 2014-07-07
-lastUpdated: 2014-07-07
-tags: [Linux, programs, minicom]
+description: minicom is a Linux terminal program that can be used to connect to a serial device. It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
+lastUpdated: 2025-05-21
+tags: [Linux, programs, minicom, serial, terminals, RaspberryPi, embedded, microcontrollers, programming, electronics]
 title: minicom
 type: page
 ---
 
-`minicom` is a Linux program. It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
+`minicom` is a Linux terminal program that can be used to connect to a serial device. It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
 
 If you want to connect two terminals together and test the output/input of minicom, check out the [Connecting Two COM Ports Together" section on the socat program page](/programming/operating-systems/linux/programs/socat#connecting-two-com-ports-together).
 
@@ -16,14 +17,14 @@ If you want to connect two terminals together and test the output/input of minic
 If using a Debian-style Linux (incl. the RaspberryPi), you can install `minicom` with the following command:
 
 ```sh   
-$ sudo apt-get install minicom
+$ sudo apt install minicom
 ```  
 
 ## Config
 
 You normally start minicom with the `-s` flag, so that you can set the configuration settings correctly.
 
-```sh    
+```sh
 $ minicom -s
 ```
 
@@ -39,7 +40,7 @@ $ minicom -D /dev/ttyUSB0
 
 Use `-b` to set the baud rate:
 
-```sh   
+```sh
 $ minicom -b 9600
 ```  
 
@@ -52,6 +53,14 @@ $ minicom -C MyLogFile.txt
 ```  
 
 minicom describes this option as "open capture file at startup". A quick way to clear a log file is by using the command `cat /dev/null > MyLogFile.txt`.
+
+## Colors
+
+By default, minicom does not support colors via ANSI escape codes. You can enable colors by passing in `-c on` to minicom.
+
+```sh
+$ minicom -c on
+```
 
 ## Macros
 
