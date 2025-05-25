@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2022-09-11
-lastUpdated: 2022-09-11
-tags: [programming, operating systems, windows, WSL, windows subsystem, Linux, WSL 2]
+lastUpdated: 2025-05-22
+tags: [programming, operating systems, windows, WSL, windows subsystem, Linux, WSL 2, Chrome]
 title: Windows Subsystem For Linux (WSL)
 type: page
 ---
@@ -23,19 +23,19 @@ VS Code has an extension for WSL. It allows you write/run code inside WSL whilst
 
 From inside WSL, if you type the command `code .`, it will open at VS Code in Windows and setup a remote development session into WSL at the current working directory.
 
-```
+```bash
 wsl --shutdown
 ```
 
 Must be run from terminal with Administrator privileges:
 
-```
+```bash
 wsl --upgrade
 ```
 
 You can set the default distribution with:
 
-```
+```bash
 wsl --set-default <distro-name>
 ```
 
@@ -50,3 +50,17 @@ If you first enabled/installed WSL a long time ago, you might be running WSL 1. 
 WSL 1 and 2 do not natively support USB pass-through like VirtualBox does. However, there is a popular 3rd party tool called [usbipd-win](https://github.com/dorssel/usbipd-win) which can do the job. There was a update to WSL 2 to allow usbipd-win to work without too much hassle.
 
 > Windows software for sharing locally connected USB devices to other machines, including Hyper-V guests and WSL 2. -- usbipd-win.
+
+## Installing Chrome on WSL
+
+You can install Chrome on WSL by running the following command:
+
+```bash
+cd ~/tmp
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt -y install ./google-chrome-stable_current_amd64.deb
+```
+
+You can then run Chrome by typing `google-chrome` in the terminal.
+
+<Image src={import('./_assets/running-chrome-in-wsl.webp')} width="700px">A screenshot of Chrome running in WSL.</Image>

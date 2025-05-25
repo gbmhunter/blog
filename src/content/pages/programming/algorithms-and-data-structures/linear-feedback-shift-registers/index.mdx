@@ -1,0 +1,19 @@
+---
+authors: [gbmhunter]
+date: 2025-05-22
+description: Linear feedback shift registers (LFSRs) are a type of shift register whose input bit is a linear function of its previous state. They are used to generate things such as pseudo-random number generators (PRNGs) and pseudo-noise.
+lastUpdated: 2025-05-26
+tags: [programming, LFSR, linear feedback shift registers, PRNG, pseudo-random number generators, pseudo-noise]
+title: Linear Feedback Shift Registers (LFSRs)
+type: page
+---
+
+<WarningIsNotes />
+
+Linear feedback shift registers (LFSRs) are a type of shift register whose input bit is a linear function of its previous state. They are used to generate things such as pseudo-random number generators (PRNGs) and pseudo-noise.
+
+The input bit is determined by the state of the bits in the shift register. Because this is deterministic, as because the shift register can only contain a finite number of states, the sequence of bits outputted by the LFSR will eventually start to repeat. This sequence is known as the _period_ of the LFSR. It is generally desirable to chose the feedback function (the bits which are tapped/XORed together to give the input bit) such that the output seems random and have a long period.
+
+The maximum period of an LFSR can never be greater than the number of states possible in shift register, minus 1 because the state of all $0$ bits is not allowed. This is $2^n - 1$ where $n$ is the number of bits in the shift register. For example, an LFSR with 8 bits can have a period of at most $2^8 - 1 = 255$ before it starts to repeat. The state of all $0$ bits is not allowed because in this case the output would never change.
+
+<Image src={import('./_assets/lfsr-output-waveform-verilog-sim.webp')} width="900px">A screenshot of a simulation of a LFSR written in Verilog. The top trace is the clock, and the bottom trace is the output of the LFSR (which is used as a pseudo-random number generator).</Image>

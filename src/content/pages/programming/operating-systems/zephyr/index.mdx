@@ -859,7 +859,7 @@ A basic thread can be created and started with the following code:
 #define PRIORITY   (5)
 #define STACK_SIZE (500)
 
-// Statically define the thread stack. Would be handy if we could do this dynamically.
+// Statically define the thread stack. See below for how to dynamically allocate the stack using K_KERNEL_STACK_MEMBER()
 K_THREAD_STACK_DEFINE(myThreadStack, STACK_SIZE);
 
 void MyThreadFn(void *, void *, void *)

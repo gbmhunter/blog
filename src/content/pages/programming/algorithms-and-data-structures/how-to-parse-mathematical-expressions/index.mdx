@@ -46,8 +46,6 @@ Evaluator: Processes the output of the parser, and produces the result the user 
 
 ## Grammar
 
-
-
 Context-free grammars are the most common.
 
 Grammar is a way of formally describing the structure of a language. You can call grammar the _language of languages_. Grammar is usually written as a sequence of _rules_. Each rule has two parts, a _name_, and an _expansion_ of the name. The expansion shows what the name can built from. The idea of rules is to describe the syntax as a hierarchy, starting at the broad structure of the language and then breaking it down into smaller and smaller components. The _name_ can also be called a _non-terminal symbol_. This refers to the fact that it just an intermediary representation and will be expanded into smaller components. Things such as a `number` are called _terminal symbols_.
@@ -89,7 +87,7 @@ However, we still can't type `1 + 2 + 3`, as the grammar does not allow for more
 
 Now we can write expressions such as: `1 + 2 + 3` and `4`.
 
-Note that we don't have to specify `| number` anymore, as the case in where the expression is just a single number is handled by zero repetitions of `{"+" <term>}`.
+Note that we don't have to specify `| number` any more, as the case in where the expression is just a single number is handled by zero repetitions of `{"+" <term>}`.
 
 We can use round braces `(` and `)` to group things together. The below example specifies that an expression is composed of any number of terms that are either added OR subtracted from one another:
 
@@ -135,7 +133,6 @@ Putting all of this together, the complete grammar for our calculator now become
 
 <factor> := number
 ```
-
 
 ## A Recursive Decent Parser (RPN)
 

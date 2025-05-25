@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2025-05-05
 description: Namespaces are a C++ language feature that allows you to group related entities together.
-lastUpdated: 2025-05-06
+lastUpdated: 2025-05-22
 tags: [programming, languages, C++, namespaces, one definition rule, ODR, undefined behaviour, pretty printing, anonymous namespaces, namespace aliases, namespace naming conventions]
 title: Namespaces
 type: page
@@ -302,6 +302,10 @@ will print:
 ```
 void {anonymous}::MyClass::myFunction()
 ```
+
+<Aside type="warning">
+Don't wrap `main()` in a namespace! It needs to be in the global namespace so it can be found by the linker as the entry point of the program.
+</Aside>
 
 ## Best Practices Summary
 

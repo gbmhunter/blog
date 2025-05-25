@@ -119,6 +119,12 @@ One work around I have used is to split larger log messages up into multiple mes
 
 Zephyr supports two different modes for logging, _deferred_ and _immediate_. In deferred mode, whenever your code calls `LOG_DBG(...)` or similar, the passed in format string and variables get saved for for further processing in a separate logging thread (further processing entails inserting the arguments into the format string, and sending it to backends such as UART). In immediate mode, when your code calls `LOG_DBG(...)`, the log is processed and emitted to backends in the calling thread.
 
+To enable immediate mode, add the following to your `prj.conf`:
+
+```python title="prj.conf"
+CONFIG_LOG_MODE_IMMEDIATE=y
+```
+
 Deferred logging is a great choice when you don't want to slow down your threads emitting log messages (it even allows you to log from an interrupt context!). The biggest downside is that log messages are not synchronous with what your microcontroller is actually doing in the real world at any point of time. Deferred logging can mask errors such as hard faults and segmentation faults -- when a serious fault occurs the processor will crash/hang (or a fault handler will be called) but you won't see the last 1 second or so of log messages, making it hard to track down the problem.
 
 This is what immediate mode is great for -- debugging crashes and other time-sensitive issues when you need the logs to print at the same time the `LOG_DBG()` calls are being made. If a crash occurs, you can look at the last few log messages and get a good idea were the problem might be in your source code. Immediate mode is not suitable when you are logging from an interrupt context or from a time-sensitive thread.
