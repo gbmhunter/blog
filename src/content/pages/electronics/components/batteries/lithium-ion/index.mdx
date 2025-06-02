@@ -6,7 +6,6 @@ title: Lithium-ion Batteries
 type: page
 ---
 
-{/* {{% warning-is-notes %}} */}
 <WarningIsNotes />
 
 A lithium-ion (or li-ion) battery is a rechargeable battery that uses the recombination of Lithium ions with their missing electron to generate electricity, and the reverse of this process to recharge[^wikipedia-lithium-ion-battery].
@@ -65,10 +64,8 @@ The common way to charge a Lithium-ion battery is to follow these steps:
 1. Once the battery reaches a certain voltage (typically 3.9-4.2V), we switch from CC charging to CV charging. We maintain this voltage while the current begins to decrease.
 1. Stop charging once the current drops to approximately 0.1C. 
 
-{/* {{% aside type="warning" %}} */}
 <Aside type="caution">
 It is not healthy to store a Lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to be provide the best lifetime[^battery-university-bu-702-how-to-store-batteries]. 
-{/* {{% /aside %}} */}
 </Aside>
 
 1C is the current required to drain the battery in 1 hour, e.g. for a 500mAh battery, 1C is 500mA. Most battery charger ICs will automatically perform the above steps for you.

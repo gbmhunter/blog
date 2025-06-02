@@ -18,7 +18,7 @@ First you have to enable logging in your `prj.conf` with:
 CONFIG_LOG=y
 ```
 
-<Aside type="warning">
+<Aside type="caution">
 If you forget about `CONFIG_LOG=y`, your code that uses `LOG_MODULE_REGISTER` and `LOG_INF("my message")` e.t.c. will still compile, it will just not log anything at runtime.
 </Aside>
 
