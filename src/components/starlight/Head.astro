@@ -3,7 +3,7 @@ import type { Props } from '@astrojs/starlight/props';
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
 
-// Extact the image src to add to the meta tags
+// Extract the image src to add to the meta tags
 const customFrontmatter = Astro.props.customFrontmatter as any;
 let imageUrl;
 if (customFrontmatter !== undefined) {
@@ -29,18 +29,10 @@ if (customFrontmatter !== undefined) {
      <meta property="og:image" content={imageUrl!.href} />
      <meta name="twitter:image" content={imageUrl!.href} />
    }
-   <!-- Umami tacking code for blog.mbedded.ninja -->
-   <script defer src="https://umami.mbedded.ninja/script.js" data-website-id="e0f4b55d-8cc8-4afe-ab25-68d695b46826" is:inline></script>
   <StarlightHead {...Astro.props}><slot /></StarlightHead>
 </VtbotStarlight>
 
 <script>
-  // Disable Umami when running in development mode
-  if (!import.meta.env.PROD) {
-    console.log('Running in development mode, disabling Umami.');
-    localStorage.setItem('umami.disabled', '1');
-  }
-
   configureSidebar();
 
   function configureSidebar() {
