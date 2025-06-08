@@ -51,6 +51,22 @@ WSL 1 and 2 do not natively support USB pass-through like VirtualBox does. Howev
 
 > Windows software for sharing locally connected USB devices to other machines, including Hyper-V guests and WSL 2. -- usbipd-win.
 
+You might get the error "Loading vhci_hcd failed" when trying to attach a USB device from the Windows host, like shown below:
+
+```text
+usbipd attach -w -a -b 9-4
+usbipd: info: Using WSL distribution 'Ubuntu' to attach; the device will be available in all WSL 2 distributions.
+usbipd: info: Loading vhci_hcd module.
+usbipd: error: Loading vhci_hcd failed.
+```
+One thing to try is to manually load the module inside WSL. From within your Linux distro, run:
+
+```bash
+sudo modprobe vhci_hcd
+```
+
+And then try to attach the USB device again.
+
 ## Installing Chrome on WSL
 
 You can install Chrome on WSL by running the following command:

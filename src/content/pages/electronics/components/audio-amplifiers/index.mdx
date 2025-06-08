@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2025-01-21
 description: Audio amplifiers are circuits used to amplify audio signals. Can can be made out of discrete components, or more commonly these days, come packaged as ICs. Audio amplifiers output an analogue audio signal, but the input can either be a smaller analogue signal or a digital signal.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-01-22
+lastUpdated: 2025-06-05
 tags: [audio amplifiers, audio, amplifiers]
 title: Audio Amplifiers
 type: page
@@ -21,7 +21,7 @@ The TI TAS2780 is a digital input mono class D audio amplifier. It supports [I2S
 
 <Image iref="fig-ti-tas2780-audio-amp-internal-block-diagram" src={import('./_assets/ti-tas2780-audio-amp-internal-block-diagram.webp')} width="800px">The internal block diagram of the Texas Instruments TAS2780 audio amplifier.[^ti-tas2780-ds]</Image>
 
-The IC can deliver 25W into a 4Ω speaker at a 18V supply voltage with a 1%THD, rising to 30W if you are happy with a 10%THD.[^ti-tas2780-ds]
+The IC can deliver 25W into a 4Ω speaker at a 18V supply voltage with a 1%THD, rising to 30W if you are happy with a 10%THD. It gas a load diagnostics mode where it can detect open circuits, short circuits and also measure the speaker impedance. It does this by playing a 22kHz (outside of the audible range) tone for 100ms and averaging the load.[^ti-tas2780-ds]
 
 ### Analog Devices MAX98365
 

@@ -1,0 +1,92 @@
+---
+authors: [gbmhunter]
+date: 2020-04-19
+description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
+lastUpdated: 2025-06-03
+tags: [programming, operating systems, Zephyr, Bluetooth]
+title: Zephyr Bluetooth
+type: page
+---
+
+Nordic has contributed significantly to the Zephyr Bluetooth API ever since they adopted Zephyr as their official platform for the nRF52, nRF53 and nRF91 MCU families. 
+
+To enable Bluetooth in your Zephyr project, you need to enable the Bluetooth subsystem in your `prj.conf` file with `CONFIG_BT=y`.
+
+``` title="prj.conf"
+CONFIG_BT=y
+```
+
+## Roles
+
+### Peripheral
+
+Most Zephyr-based Bluetooth applications will act as a peripheral. A peripheral is a Bluetooth device that both advertising and allows connections. Enabling the peripheral role is done by setting the `CONFIG_BT_PERIPHERAL` configuration option.
+
+``` title="prj.conf"
+CONFIG_BT_PERIPHERAL=y
+CONFIG_BT_DEVICE_NAME="MY_DEVICE"
+CONFIG_BT_DEVICE_APPEARANCE=1280
+```
+
+The device appearance is an assigned number that describes the type of device. A full list of assigned numbers can be found [here](https://www.bluetooth.com/specifications/assigned-numbers/).
+
+<Image src={import('./_assets/nrf52-showing-up-in-nrf-bluetooth-app.webp')} width="500px">A screenshot of a nRF52 MCU setup as a Bluetooth peripheral and showing up in the nRF Bluetooth phone app after a scan.</Image>
+
+The bare minimal C code to get the Bluetooth peripheral advertising (and connectable) is:
+
+```c title="main.c"
+#include <zephyr/bluetooth/bluetooth.h>
+#include <zephyr/kernel.h>
+
+#define DEVICE_NAME     CONFIG_BT_DEVICE_NAME
+#define DEVICE_NAME_LEN (sizeof(DEVICE_NAME) - 1)
+
+static const struct bt_data ad[] = {
+    BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+    BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
+};
+
+static const struct bt_data sd[] = {
+    BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_UUID_NUS_SRV_VAL),
+};
+
+int main(void)
+{
+    int err;
+    err = bt_enable(NULL);
+    __ASSERT(err == 0, "Failed to enable bluetooth: %d\n", err);
+
+    err = bt_le_adv_start(BT_LE_ADV_CONN, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+    __ASSERT(err == 0, "Failed to start advertising: %d\n", err);
+
+    while (1) {
+        k_sleep(K_MSEC(1000));
+    }
+}
+```
+
+## Nordic UART Service
+
+The Nordic UART Service (NUS) is a service that allows you to send and receive serial data over Bluetooth. You can enable it with:
+
+``` title="prj.conf"
+CONFIG_BT_ZEPHYR_NUS=y
+```
+
+## Update the LE Connection Interval
+
+After you are connected, you can call `bt_conn_le_param_update()` to update the Bluetooth connection interval. This is useful if you want to save power by increasing the connection interval when you don't need to send/receive data as often.
+
+```c
+struct bt_le_conn_param conn_param = { .interval_min = (708), .interval_max = (800), .latency = (0), .timeout = (400), };
+int rc = bt_conn_le_param_update(conn, &conn_param);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+`conn` is a pointer to a `struct bt_conn` which is the connection object. It's assumed you have that handy to pass in! The connection interval is in units of 1.25ms, so the above code sets the connection interval min. to 885ms and the max. to 1000ms. By default the min. and max were set to 15ms and 30ms respectively, so this is a significant slow down and results in good power savings for small battery powered devices. The timeout is in units of 10ms, so the above code sets the timeout to 4s. You can use the helper macro `BT_LE_CONN_PARAM()` to create the `struct bt_le_conn_param` object if you want.
+
+If you are a Bluetooth central device, these settings will take effect. If you a peripheral device, these settings are "suggestions". They are sent to the central device and it is up to the central device to accept them. The central device may reject them or choose other values.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
