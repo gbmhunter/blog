@@ -1,0 +1,79 @@
+---
+authors: [gbmhunter]
+date: 2025-06-10
+description: A tutorial showing how to add your own custom board to Zephyr.
+lastUpdated: 2025-06-10
+tags: [programming, operating systems, Zephyr]
+title: Adding a Custom Board to Zephyr
+type: page
+---
+
+<WarningIsNotes />
+
+This tutorial assumes your custom board has a nRF52840 SoC on it. However, the process is similar for other SoCs, just replace the `nrf52840` with the appropriate SoC name.
+
+Zephyr changes the way it defines boards in version ???.
+
+Many MCU manufacturers provide example projects for their boards. These can be a great starting point for your own custom board. These boards are usually located in the Zephyr repo.
+
+## Folder Structure
+
+There are a few different ways to structure a Zephyr project. I prefer to have the application code reside in a `app/` directory, and all of the dependencies that are managed by `west` inside a directory called `external/` (you could this whatever you want, e.g. `deps/` or `libs/`). Before adding the custom board, this is what my folder structure looked like:
+
+```text
+.west/
+└── config
+app/
+├── CMakeLists.txt
+├── Kconfig
+├── Kconfig.zephyr
+├── main.cpp
+├── prj.conf
+└── west.yml
+external/
+└── zephyr/
+```
+
+## Decide on a Board Name
+
+The board name is used to identify the board in a number of places. I recommend picking a name that is in lowercase, and contains only alphanumeric characters and underscores. For this example, we will use the name `my_board`.
+
+## Add the Board Folder
+
+Within our project root, create a `boards/` directory. Inside that, create another directory called `my_board/`.
+
+## Specifying a Board Root
+
+In your `.west/config` file, specify the relative board root directory:
+
+```python title=".west/config"
+[build]
+cmake-args = -DBOARD_ROOT=../
+```
+
+This is the root directory of our project, which contains the `boards` directory. My complete `.west/config` file looked like this:
+
+```python title=".west/config"
+[manifest]
+path = app
+file = west.yml
+
+[build]
+cmake-args = -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBOARD_ROOT=../
+
+[zephyr]
+base = external/zephyr
+```
+
+## Build
+
+Now you should be able to build your project:
+
+```shell
+cd app/
+west build -b my_board/nrf52840
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}

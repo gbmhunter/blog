@@ -2,9 +2,9 @@
 authors: [gbmhunter]
 date: 2011-09-05
 description: RF connectors are connectors designed to pass high-frequency signals with minimal reflection and attenuation.
-lastUpdated: 2024-10-27
+lastUpdated: 2025-06-10
 image: ./_assets/cover-image.webp
-tags: [electronics, connectors, RF]
+tags: [electronics, connectors, RF, MMCX, SMA, BNC, U.FL, MCX, impedance, high frequency]
 title: RF Connectors
 type: page
 ---
@@ -75,8 +75,65 @@ _N connectors_ (a.k.a. N-type or Type N connectors) are a larger type of threade
 
 <Image src={import('./_assets/n-connector-close-up-edited.jpg')} width="300px">Close-up of a N Connector.</Image>
 
+## MMCX Connectors
+
+Micro-miniature coaxial (MMCX) connectors are a RF connector type similar to MCX (micro coaxial) but smaller. They allow signals from DC to about 6 GHz. It was developed by Huber+Suhner in the 1990s (the creators of the original MCX connector).
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Frequency Range</td>
+      <td>DC-6 GHz</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Impedance</td>
+      <td>50Ω</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Size</td>
+      <td>2.5x3.6mm (approx.). Smaller than SMA, larger than U.FL</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Fastening Type</td>
+      <td>Lock snap</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<Image src={import('./_assets/mmcx-connector-photo-through-hole-female.webp')} width="300px">A photo of a through-hole female MMCX connector.[^digikey-molex-0734151471-mmcx-connector-th-jack]</Image>
+
+They fasten with a lock snap mechanism (no threads) which allows them to be easily connected and disconnected, and for them to rotate 360 degrees. However this makes them less suitable for rugged environments in where there might be significant vibration or force which would cause them to detach.
+
+MMCX connectors are smaller than SMA connectors, but larger than U.FL.
+
+There are plug (male) and jack (female) genders of this connector. As usual, the gender is determined by the shape of the conductive part of the antenna. In a plug it has a protruding pin, and in a jack it has a receiving socket.
+
+Like the MCX connector, the MMCX conforms to the European CECC 22000 specification.[^amphenolrf-mmcx-connectors]
+
+### Uses
+
+MMCX connectors are commonly used on cellular modules for connecting an external antenna.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^reichelt-sma-rpsma]:  Reichelt Elektronik. _SMA and RP-SMA - What You Need to Know About Coaxial Connectors_. Retrieved 2021-11-22, from https://www.reichelt.com/magazin/en/sma-and-rp-sma-what-you-need-to-know-about-coaxial-connectors/.
 [^amphenolrf-sma]:  Amphenol RF. _SMA Connectors_. Retrieved 2021-11-22, from https://www.amphenolrf.com/connectors/sma-connectors.html.
 [^everyspec-mil-std-348a]:  Department of Defence. _Interface Standard: Radio Frequency Connector Interfaces for MIL-C-3643, MIL-C-3650, MIL-C-3655, MIL-C-25516, MIL-C-26637, MIL-C-39012, MIL-C-49142, MIL-A-55339, MIL-C-83517_. Retrieved 2021-12-10, from http://everyspec.com/MIL-STD/MIL-STD-0300-0499/MIL-STD-348A_420/.
 [^pasternack-rt-sma-male-connector]: Pasternack. _RT SMA Male Connector Crimp/Solder Attachment for RG55, RG141, RG142, RG223, RG400_ [product page]. Retrieved 2024-10-27, from https://www.pasternack.com/sma-male-reverse-thread-rg55-rg141-rg142-rg223-rg400-connector-pe44182-p.aspx.
 [^wikipedia-n-connector]: Wikipedia (2025, Feb 6). _N-connector_. Retrieved 2025-04-03, from https://en.wikipedia.org/wiki/N_connector.
+[^digikey-molex-0734151471-mmcx-connector-th-jack]: Digikey. _Connectors, Interconnects > Coaxial Connectors (RF) > Coaxial Connector (RF) Assemblies > Molex 0734151471_ [product page]. Retrieved 2025-06-10, from https://www.digikey.co.nz/en/products/detail/molex/0734151471/1465179.
+[^amphenolrf-mmcx-connectors]: Amphenol RF. _MMCX Connectors_. Retrieved 2025-06-10, from https://www.amphenolrf.com/rf-connectors/mmcx-connectors.html.
+[^renhotecrf-guide-to-mmcx-connectors]: Renhotec (2024, Jul 20). _Comprehensive Guide to MMCX Connectors_ [article]. Retrieved 2025-06-10, from https://www.renhotecrf.com/rf-connector-cable/comprehensive-guide-to-mmcx-connectors.html.

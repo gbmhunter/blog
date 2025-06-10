@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2021-03-03
 description: LDRs are simple electrical components whose resistance changes with light intensity. They are useful as a cheap solution for basic light detection.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-09-30
-tags: [electronics, components, light-dependent resistors, LDRs]
+lastUpdated: 2025-06-08
+tags: [electronics, components, light-dependent resistors, LDRs, photoresistors, photoconductors]
 title: Light-Dependent Resistors (LDRs)
 type: page
 ---
@@ -25,6 +25,10 @@ Even though an LDR contains semiconductor material, it is **not considered an ac
 
 LDRs typically have a resistance in the hundreds of $k\Omega$ or $M\Omega$ in the dark, dropping to a few hundred $\Omega$ under bright light[^engineers-garage-light-sensors].
 
+## Applications
+
+The popular Teletronix LA-2A Leveling Amplifier was an audio compressor produced in the 1960's which used an electroluminescent panel combined with an LDR to control the gain of the amplifier. As the audio signal got stronger, it illuminated the LDR more, causing it's resistance to decrease and reducing the gain of the amplifier.[^wikipedia-la-2a-leveling-amplifier] There were actually two LDRs pointed at the panel, one used for the audio amplifier and the other for the visual meter.[^gearspace-opto-compressor-a-la-la2a]
+
 ## Further Reading
 
 A [phototransistor](/electronics/components/sensors/phototransistors/) is a transistor-based component which is used to detect light levels. It is similar to a standard NPN [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/), but uses light to drive the base rather than an electrical signal. Most phototransistors are sensitive in the infrared region, whilst most LDRs are sensitive to visible light. One benefit of a LDR is that they are non-polarized, so they can work with voltages/currents in either direction.
@@ -34,3 +38,5 @@ A [phototransistor](/electronics/components/sensors/phototransistors/) is a tran
 {/* ======================================================================== */}
 
 [^engineers-garage-light-sensors]: Nikhil Agnihotri (2021, Jul 12). _What are the different types of light sensors?_. Engineers Garage. Retrieved 2024-09-30, from https://www.engineersgarage.com/light-sensors-ldr-photodiode-phototransistor-solar-cell/.
+[^wikipedia-la-2a-leveling-amplifier]: Wikipedia (2025, Feb 7). _LA-2A Leveling Amplifier_ [wiki]. Retrieved 2025-06-08, from https://en.wikipedia.org/wiki/LA-2A_Leveling_Amplifier.
+[^gearspace-opto-compressor-a-la-la2a]: Gearspace.com (2019, Mar 5). _The Forums > So Much Gear, So Little Time > OPTO Compressor a la LA2A_ [forum post]. Retrieved 2025-06-08, from https://gearspace.com/board/so-much-gear-so-little-time/1251760-opto-compressor-la-la2a-3.html.
