@@ -34,13 +34,19 @@ external/
 └── zephyr/
 ```
 
+Having all the managed dependencies in a separate directory makes it easier to add a `.gitignore` for them, reduces the clutter in your root directory, and makes it easier to wipe the directory if you suspect there might be a cache issue.
+
 ## Decide on a Board Name
 
 The board name is used to identify the board in a number of places. I recommend picking a name that is in lowercase, and contains only alphanumeric characters and underscores. For this example, we will use the name `my_board`.
 
-## Add the Board Folder
+## Add the Board Directory
 
 Within our project root, create a `boards/` directory. Inside that, create another directory called `my_board/`.
+
+There are a few required files we need to add to the board directory for it to be a valid board:
+
+* `Kconfig.my_board`: As weird as this filename looks, yes, as per the Zephyr documentation, the extension has to be your board name!
 
 ## Specifying a Board Root
 
@@ -73,6 +79,12 @@ Now you should be able to build your project:
 cd app/
 west build -b my_board/nrf52840
 ```
+
+Note how the SoC you are building for is specified after a `/`. If the SoC had multiple CPUs, the particular CPU you are building for would also be specified here.
+
+<Aside type="tip">
+The use of `/` in board names was introduced in Zephyr v???.
+</Aside>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

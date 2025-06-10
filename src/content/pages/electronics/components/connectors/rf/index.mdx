@@ -79,7 +79,7 @@ _N connectors_ (a.k.a. N-type or Type N connectors) are a larger type of threade
 
 Micro-miniature coaxial (MMCX) connectors are a RF connector type similar to MCX (micro coaxial) but smaller. They allow signals from DC to about 6 GHz. It was developed by Huber+Suhner in the 1990s (the creators of the original MCX connector).
 
-<table>
+<table style={{width: '600px'}}>
   <thead>
     <tr>
       <th>Property</th>
@@ -100,8 +100,8 @@ Micro-miniature coaxial (MMCX) connectors are a RF connector type similar to MCX
     </tr>
     <tr>
       <td>Size</td>
-      <td>2.5x3.6mm (approx.). Smaller than SMA, larger than U.FL</td>
-      <td></td>
+      <td>2.5x3.6mm (approx.)</td>
+      <td> Smaller than SMA, larger than U.FL.</td>
     </tr>
     <tr>
       <td>Fastening Type</td>
@@ -111,7 +111,10 @@ Micro-miniature coaxial (MMCX) connectors are a RF connector type similar to MCX
   </tbody>
 </table>
 
-<Image src={import('./_assets/mmcx-connector-photo-through-hole-female.webp')} width="300px">A photo of a through-hole female MMCX connector.[^digikey-molex-0734151471-mmcx-connector-th-jack]</Image>
+<div style={{display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center'}}>
+  <Image src={import('./_assets/mmcx-connector-photo-through-hole-female.webp')} width="300px">A photo of a through-hole female MMCX connector.[^digikey-molex-0734151471-mmcx-connector-th-jack]</Image>
+  <Image src={import('./_assets/pasternack-mmcx-male-connectors-on-cable.webp')} width="400px">A photo of a cable with MMCX male connectors on both ends. One is straight and the other is a right-angle.[^pasternack-mmcx-cable]</Image>
+</div>
 
 They fasten with a lock snap mechanism (no threads) which allows them to be easily connected and disconnected, and for them to rotate 360 degrees. However this makes them less suitable for rugged environments in where there might be significant vibration or force which would cause them to detach.
 
@@ -123,7 +126,7 @@ Like the MCX connector, the MMCX conforms to the European CECC 22000 specificati
 
 ### Uses
 
-MMCX connectors are commonly used on cellular modules for connecting an external antenna.
+MMCX connectors are commonly used on cellular modules for connecting an external antenna. They are not normally used in smartphones as they are too large, instead the smaller U.FL is normally used.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -137,3 +140,4 @@ MMCX connectors are commonly used on cellular modules for connecting an external
 [^digikey-molex-0734151471-mmcx-connector-th-jack]: Digikey. _Connectors, Interconnects > Coaxial Connectors (RF) > Coaxial Connector (RF) Assemblies > Molex 0734151471_ [product page]. Retrieved 2025-06-10, from https://www.digikey.co.nz/en/products/detail/molex/0734151471/1465179.
 [^amphenolrf-mmcx-connectors]: Amphenol RF. _MMCX Connectors_. Retrieved 2025-06-10, from https://www.amphenolrf.com/rf-connectors/mmcx-connectors.html.
 [^renhotecrf-guide-to-mmcx-connectors]: Renhotec (2024, Jul 20). _Comprehensive Guide to MMCX Connectors_ [article]. Retrieved 2025-06-10, from https://www.renhotecrf.com/rf-connector-cable/comprehensive-guide-to-mmcx-connectors.html.
+[^pasternack-mmcx-cable]: Pasternack. _MMCX Plug to MMCX Plug Right Angle Cable Using RG174 Coax, RoHS_ [product page]. Retrieved 2025-06-10, from https://www.pasternack.com/mmcx-plug-mmcx-plug-rg174au-cable-assembly-pe34881lf-p.aspx.
