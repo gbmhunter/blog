@@ -1,0 +1,103 @@
+---
+authors: [gbmhunter]
+date: 2025-06-11
+lastUpdated: 2025-06-11
+tags: [Code Composer Studio, programming, IDEs, CICD, CCS, Texas Instruments, msp430ware, headless, Docker]
+title: CICD with Code Composer Studio
+type: page
+---
+
+Running automatic builds and tests of your firmware whenever you make git pushes is a great way to catch bugs before they get to production. This page describes how to set up a CICD pipeline for your Code Composer Studio (CCS) projects.
+
+Unfortunately, given the GUI-by-default nature of CCS, it does not make it easy to set up a CICD pipeline.
+
+## Installing Code Composer Studio
+
+Code Composer Studio can be downloaded from the internet using `wget`. This example will download version 20.2.0, update this to match the version you want to download.
+
+```shell
+wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip
+```
+
+Unzip the file:
+
+```shell
+unzip CCS_20.2.0.00012_linux.zip
+```
+
+`cd` into the directory and run the installer:
+
+```shell
+cd CCS_20.2.0.00012_linux
+./ccs_setup_20.2.0.00012.run
+```
+
+Note that by default this loads up a GUI in where you can select which components you want to install. If you want to install it directly from the command line (useful in headless environments, e.g. CICD), you can provide the `--mode unattended` flag:
+
+```shell
+./ccs_setup_20.2.0.00012.run --mode unattended
+```
+
+The default installation location is:
+
+* For regular user: `$HOME/ti/ccs<version>`
+* For root user: `/opt/ti/ccs<version>`
+
+When using the `--mode unattended` flag, by default all components will be installed. This can result in quite a large installation (approx. 7GB when I tested it). You can reduce the installation size by selecting the components you want to install. For example, to just install support for the MSP430:
+
+```shell
+./ccs_setup_20.2.0.00012.run --mode unattended --enable-components PF_MSP430
+```
+
+In my testing, just installing MSP430 support reduced the installation size from 7GB to 5.8G (not as much as I hoped).
+
+## Installing msp430
+
+Alas, one thing that I could not work out how to install via the command line was the msp430. But, as along as you can install it once using a GUI, you can zip up the entire `ti` folder and use that in your CICD pipeline.
+
+To do that, install msp430ware software via the CCS GUI. It will install it to the same directory that CSS was installed to. On my Linux machine, this was `~/ti/
+
+## Zipping up the CCS Installation
+
+Now zip up the entire `ti` directory:
+
+```shell
+zip -r ti.zip ~/ti
+```
+
+## Create a Docker Image
+
+Now that we have all the build dependencies in a zip file, we can create a Docker image that the build job will use.
+
+```dockerfile
+FROM ubuntu:24.04
+```
+
+## Building via the Command Line
+
+CCS provides a command line interface to build projects. The command line interface executable was installed for me at `~/ti/ccs2020/ccs/eclipse/ccs-server-cli.sh`.
+
+<Aside type="tip">
+The command line interface has changed significantly since TI moved to Eclipse Theia. This page assumes you are using Theia.
+</Aside>
+
+I thought I'd be able to be able to call this directly from anywhere with `ccs-server-cli` by installing the following symlink:
+
+```shell
+sudo ln -s ~/ti/ccs2020/ccs/eclipse/ccs-server-cli.sh /usr/local/bin/ccs-server-cli
+```
+
+Unfortunately, while the symlink works fine, it seems that the script expects the CWD (current working directory) to be the directory it is installed in. So no bueno.
+
+## Uninstalling CCS
+
+You can uninstall CSS using the `uninstall_ccs.run` script that is placed in the CCS installation directory. For example:
+
+```shell
+~/ti/ccs2020/ccs$ ./uninstall_ccs.run
+```
+
+This will provide a GUI to uninstall the components.
+
+
+

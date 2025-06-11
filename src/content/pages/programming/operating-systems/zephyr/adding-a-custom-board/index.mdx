@@ -10,6 +10,14 @@ type: page
 
 <WarningIsNotes />
 
+When you are using Zephyr, you need to build your project for a specific "board". Zephyr provides a number of boards out of the box, and you can also create your own custom boards. This tutorial shows you how to create a custom board.
+
+Note that Zephyr's terminology is a little confusing. A Zephyr "board" is not the same as a physical board (i.e. assembled PCB with components on it). A Zephyr board is a particular CPU instance. To quote directly from the Zephyr documentation:
+
+> Board: a particular CPU instance and its peripherals in a concrete hardware specification
+
+Because a physical PCB may have a SoC with multiple CPUs, or even multiple SoCs which have multiple CPUs, the Zephyr definition is somewhat removed from intuition. It's important to understand this distinction when building code.
+
 This tutorial assumes your custom board has a nRF52840 SoC on it. However, the process is similar for other SoCs, just replace the `nrf52840` with the appropriate SoC name.
 
 Zephyr changes the way it defines boards in version ???.
@@ -46,7 +54,26 @@ Within our project root, create a `boards/` directory. Inside that, create anoth
 
 There are a few required files we need to add to the board directory for it to be a valid board:
 
-* `Kconfig.my_board`: As weird as this filename looks, yes, as per the Zephyr documentation, the extension has to be your board name!
+### Kconfig.my_board
+
+`Kconfig.my_board` is a required file. As weird as this filename looks, yes, as per the Zephyr documentation, the extension has to be your board name! This file needs to select the correct SoC for the board.
+
+```python title="boards/my_board/Kconfig.my_board"
+config BOARD_MY_BOARD
+	select SOC_NRF52840_QIAA
+```
+
+### board.yml
+
+`board.yml` is a required file that provides metadata about the board, such as the name, vendor and SoC.
+
+```yaml title="boards/my_board/board.yml"
+board:
+  name: my_board
+  full_name: My Board
+  socs:
+  - name: nrf52840
+```
 
 ## Specifying a Board Root
 

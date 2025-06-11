@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2023-10-01
 description: How to unbrick a Nordic nRF53 MCU due to a DCDC configuration error.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-10-01
+lastUpdated: 2025-06-11
 tags: [programming, microcontrollers, Nordic, nRF53, SMPS, DCDC, converter, linear regulator, LDO, bricked, programming, voltage rails]
 title: Unbricking a nRF53 Due To DCDC Config
 type: page
@@ -16,9 +16,21 @@ Unfortunately, you can quite easily "brick" a Nordic nRF53 series microcontrolle
 
 <Image src={import('./_assets/schematic-showing-inductors-which-can-be-not-fitted.webp')} width="1000px">Schematic highlighting the three inductors that can be not placed in a design in where you plan to use the LDO rather than the DCDC converters.</Image>
 
+<Aside type="note">
+UPDATE (Jun 2025): The latest version of the nRF SDK has deprecated `CONFIG_BOARD_ENABLE_DCDC` for the nRF52 series (it might also be deprecated for the nRF53 series, but I haven't tested this). Instead, you configure this via the `.dts` file with the following:
+
+```text title="my_board_nrf52840.dts"
+&reg1 {
+    regulator-initial-mode = <NRF5X_REG_MODE_LDO>;
+};
+```
+
+Make sure this is not set to `<NRF5X_REG_MODE_DCDC>` if you have not fitted the inductors required for the SMPS!
+</Aside>
+
 In this scenario, if you forget to explicitly disable the SMPS in the Zephyr `prj.conf` file, then the SMPS will be enabled (yes -- they are enabled by default). But you don't have the required inductors, the SMPS will not work, and the internal voltage rails required by the MCU will not do anything but stay at 0V. **This unfortunately "bricks" the MCU. You can't re-program the device** with a fixed firmware binary because the MCU requires these internal voltage rails for programming.
 
-```text
+```python title="prj.conf"
 # Disable all three internal SMPSs.
 # WARNING: Do NOT remove these lines, doing so will brick the MCU,
 # as it expects the inductors to be fitted
