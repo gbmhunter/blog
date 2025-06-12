@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2025-06-11
-lastUpdated: 2025-06-11
-tags: [Code Composer Studio, programming, IDEs, CICD, CCS, Texas Instruments, msp430ware, headless, Docker]
+lastUpdated: 2025-06-12
+tags: [Code Composer Studio, programming, IDEs, CICD, CCS, Texas Instruments, msp430ware, headless, Docker, gdown]
 title: CICD with Code Composer Studio
 type: page
 ---
@@ -55,7 +55,7 @@ In my testing, just installing MSP430 support reduced the installation size from
 
 Alas, one thing that I could not work out how to install via the command line was the msp430. But, as along as you can install it once using a GUI, you can zip up the entire `ti` folder and use that in your CICD pipeline.
 
-To do that, install msp430ware software via the CCS GUI. It will install it to the same directory that CSS was installed to. On my Linux machine, this was `~/ti/
+To do that, install msp430ware software via the CCS GUI (go to the Resource Explorer within CCS to install it). It will install it to the same directory that CSS was installed to. On my Linux machine, this was `~/ti/
 
 ## Zipping up the CCS Installation
 
@@ -67,10 +67,41 @@ zip -r ti.zip ~/ti
 
 ## Create a Docker Image
 
-Now that we have all the build dependencies in a zip file, we can create a Docker image that the build job will use.
+Now that we have all the build dependencies in a zip file, we can create a Docker image that the build job will use. You don't really want to save the huge (2.5GB or so in my case) `ti` directory to the repository, so we'll upload it to Google Drive and get the Docker image build process to download it via a tool called `gdown`.
+
+Here is the Dockerfile:
 
 ```dockerfile
 FROM ubuntu:24.04
+
+WORKDIR /root
+
+RUN apt-get update
+
+# Unzip is needed for extracting the TI dependencies
+RUN apt install -y unzip
+
+## Install git, needed for pulling submodules (if present)
+RUN apt install -y git
+
+# Install Python/pip, needed for gdown
+RUN apt install -y python3 python3-pip
+RUN apt install -y python3.12-venv
+
+# Create a virtual environment for the project
+RUN python3 -m venv /root/.venv
+
+# Install gdown so we can download the TI dependencies from Google Drive
+RUN /root/.venv/bin/pip install gdown
+
+# Verify gdown is installed
+RUN /root/.venv/bin/gdown --help
+
+RUN /root/.venv/bin/gdown -O /root/ti-deps.zip <your-public-gdrive-url-goes-here>
+
+# Extract the ti-deps.zip file to where it expects to be
+# (creates a /root/ti directory)
+RUN unzip /root/ti-deps.zip -d /root/
 ```
 
 ## Building via the Command Line
@@ -89,6 +120,16 @@ sudo ln -s ~/ti/ccs2020/ccs/eclipse/ccs-server-cli.sh /usr/local/bin/ccs-server-
 
 Unfortunately, while the symlink works fine, it seems that the script expects the CWD (current working directory) to be the directory it is installed in. So no bueno.
 
+Ok, so let's run all the commands from within the CCS directory. Within your CICD pipeline, you should run the following steps to build your project from the GUI. This assumed this job is running inside a Docker container created from the image above. I didn't find a way to have the cloned repo location to act as a valid TI CCS workspace, so there is a step below to import the repo into a new workspace before running the build command.
+
+```shell
+cd /root/ti/ccs2020/ccs/eclipse
+./ccs-server-cli.sh -noSplash -workspace /root/workspace/ -application com.ti.ccs.apps.importProject -ccs.location <where your CI clones your repo to>
+./ccs-server-cli.sh -noSplash -workspace /root/workspace/ -application com.ti.ccs.apps.buildProject -ccs.workspace
+```
+
+All done!
+
 ## Uninstalling CCS
 
 You can uninstall CSS using the `uninstall_ccs.run` script that is placed in the CCS installation directory. For example:
@@ -99,5 +140,14 @@ You can uninstall CSS using the `uninstall_ccs.run` script that is placed in the
 
 This will provide a GUI to uninstall the components.
 
+## Old Attempt
 
+When installing CCS inside Docker, I got an install error due to the `init.d` directory not being found (CCS copies `udev` rules into that directory). To fix this, I created `/etc/init.d/` directory and a dummy `udev` executable inside this directory.
+
+```dockerfile
+RUN echo "Creating dummy udev script..." && \
+    mkdir -p /etc/init.d && \
+    printf '#!/bin/sh\nexit 0\n' > /etc/init.d/udev && \
+    chmod +x /etc/init.d/udev
+```
 

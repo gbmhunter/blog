@@ -1,0 +1,94 @@
+---
+authors: [gbmhunter]
+date: 2025-06-12
+description: A tutorial on how to setup debugging when using the Zephyr RTOS.
+lastUpdated: 2025-06-12
+tags: [programming, operating systems, Zephyr, debugging, WSL, VSCode, JLink, usbipd, nRF, nRF52, OpenOCD, pyOCD]
+title: How To Setup Debugging in VSCode For Zephyr
+type: page
+---
+
+Although you can get far with just using Zephyr's powerful logging system for debugging, in certain situations it's much more useful to have a step-by-step debugger. This page will show you how to setup debugging in VSCode for Zephyr. This page will show you how to setup "RTOS aware" debugging, in where you can see the state and stack of every Zephyr thread.
+
+For this tutorial, we'll pick a nRF52 SoC as our target, and pretend we are developing within WSL2 (Windows Subsystem for Linux 2, essentially a Linux VM running on Windows). However, the steps should be transferable to other MCUs and operating systems without to much difficulty.
+
+## Prerequisites
+
+We assume the following has already been setup:
+
+- A Zephyr SDK installed: I had v0.17.0 installed at `~/zephyr-sdk-0.17.0`.
+- A Zephyr-based project: It doesn't matter where this is installed. It should already be compiling correctly in WSL using `west build` (specifying the board with `-b` the first time you run it).
+- VSCode. If using WSL, this should be installed in the Windows host, but opened into the WSL project folder.
+- If using WSL, pass-through of the JLink USB device into WSL using `usbipd`.
+
+## Installing cortex-debug
+
+All three of the paths below require the VSCode `cortex-debug` extension to be installed. Install this from VSCode's extension marketplace.
+
+## Using JLink
+
+Using JLink was my default choice since the nRF52 development boards I use as a programmer already come with an emulated JLink, and it has what I've been using for basic programming using the command `west flash --runner jlink` for some time. If you've been using Windows, this is also probably what you have been using via Nordic's nRF Connect for Desktop tools.
+
+Another reason for defaulting with the JLink option is that I somewhat naively assume it is the fastest, given I'm using a JLink debugger probe.
+
+### Installing JLink
+
+I installed v7.94i.
+
+Luckily, when you install JLink you also get some "RTOS aware" libraries that you can use with the JLink. For me they were installed in the following directory:
+
+```txt
+/opt/SEGGER/JLink_V794i/GDBServer/
+```
+
+The one we are after is `RTOSPlugin_Zephyr.so`, this the full path is `/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so`.
+
+### launch.json
+
+To allows us to use VSCode's "Run and Debug" feature, we need to create a `launch.json` file telling it how to debug our Zephyr application.
+
+```json title="launch.json"
+{
+    "version": "0.2.0",
+    "configurations": [
+        // Adopted from https://github.com/Marus/cortex-debug/issues/969
+        {
+            "name": "Launch",
+            "device": "nRF52840_xxAA",
+            "cwd": "${workspaceFolder}",
+            "executable": "app/build/app/zephyr/zephyr.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "gdbPath": "/home/gbmhunter/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+            "rtos": "/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so",
+            "preLaunchTask": "Build and Flash Firmware"
+        },
+        {
+            "name": "Attach",
+            "device": "nRF52840_xxAA",
+            "cwd": "${workspaceFolder}",
+            "executable": "app/build/app/zephyr/zephyr.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "gdbPath": "/home/gbmhunter/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+            "rtos": "/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so",
+        },
+    ]
+}
+```
+
+## Using OpenOCD
+
+Instead of JLink, we can set the `servertype` to `openocd` and use the `openocd` command to start the debugger.
+
+## Using pyOCD
+
+Instead of JLink or OpenOCD, we can use pyOCD to debug our Zephyr application. I had success making this "RTOS aware". 
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
