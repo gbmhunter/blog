@@ -1,0 +1,94 @@
+---
+authors: [gbmhunter]
+date: 2020-04-19
+description: This guide shows you how to setup and write C++ code for you embedded Zephyr project.
+lastUpdated: 2025-06-14
+tags: [programming, operating systems, RTOS, Zephyr, C++]
+title: How to Use C++ With Zephyr
+type: page
+---
+
+Zephyr has pretty good support for [C++](/programming/languages/c-plus-plus/). All of it's headers are wrapped in `extern C` allowing you to call them easily from C++.
+
+## Setup
+
+You can enable support for compiling C++ by adding the following into `prj.conf`:
+
+```python title="prj.conf"
+CONFIG_CPP=y
+```
+
+You can then change `main.c` to `main.cpp`. Remember to update the path in the `CMakeLists.txt` file also! However, you will still be missing a lot of the C++ standard library (e.g. `std::functional`). To make this available, add the following to your `prj.conf`:
+
+```python title="prj.conf"
+# Adds the full C++ standard library
+CONFIG_REQUIRES_FULL_LIBCPP=y
+```
+
+### Choosing a C++ Standard
+
+By default, Zephyr will use the C++11 standard. This is quite old these days, and you will likely want to use a newer standard. As of June 2025, Zephyr supports up to C++20. You can select the version you want from one of the following:[^zephyr-kconfig-config-std-cpp]
+
+* CONFIG_STD_CPP98
+* CONFIG_STD_CPP11
+* CONFIG_STD_CPP14
+* CONFIG_STD_CPP17
+* CONFIG_STD_CPP2A
+* CONFIG_STD_CPP20
+* CONFIG_STD_CPP2B
+
+Just add the one you want with an `=y` to your `prj.conf` file, e.g.:
+
+```python title="prj.conf"
+CONFIG_STD_CPP20=y # Use C++20
+```
+
+I didn't notice any significant RAM or flash increase just by including the full C++ standard library, so you only pay for what you use.
+
+You should now be able to compile the Zephyr application with C++ code. In summary, your `prj.conf` should look something like this:
+
+```python title="prj.conf"
+CONFIG_CPP=y
+CONFIG_REQUIRES_FULL_LIBCPP=y
+CONFIG_STD_CPP20=y
+```
+
+## Logging
+
+At some point when using C++, you are going to want to place logging calls in header files. This is true for any template code (which has to be in the header file) or for any class functions which you can't be bothered defining in a separate `.cpp` file.
+
+You have to add `LOG_MODULE_DECLARE(<module_name>);` to the beginning of any function in the header file which you want to log from.
+
+I think Zephyr's instance based logging is a bit of a mess and don't really use it. This is unfortunate as it would have paired well with instances of C++ classes.
+
+## Expected
+
+Since C++23 is not supported yet in Zephyr (as of June 2025), we can't get `std::expected`. However, TartanLlama (Sy Brand) has created a replacement implementation that is supported on C++11 and later. You can find the repository [here on GitHub](https://github.com/TartanLlama/expected).
+
+To add this dependency into your project, add the following to your `CMakeLists.txt` file:
+
+```cmake title="CMakeLists.txt"
+# Disable packaging for TlExpected
+set(EXPECTED_BUILD_PACKAGE OFF CACHE BOOL "Disable TlExpected packaging" FORCE)
+set(EXPECTED_BUILD_TESTS OFF CACHE BOOL "Disable TlExpected tests" FORCE)
+
+include(FetchContent)
+FetchContent_Declare(
+    TlExpected
+    GIT_REPOSITORY https://github.com/TartanLlama/expected
+    GIT_TAG v1.1.0
+)
+FetchContent_MakeAvailable(TlExpected)
+
+# The target 'expected' (aliased as tl::expected) is now configured.
+# Link against the alias provided by the library.
+target_link_libraries(app PUBLIC tl::expected)
+```
+
+This uses `FetchContent` to automatically download the repository and make it available to your project. `EXPECTED_BUILD_PACKAGE` and `EXPECTED_BUILD_TESTS` both need to be set to `OFF` to prevent compiler errors since the Zephyr build environment does not support testing or packaging the library (we just want the header files).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^zephyr-kconfig-config-std-cpp]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_STD_CPP_ [documentation]. Retrieved 2025-06-14, from https://docs.zephyrproject.org/latest/kconfig.html#!CONFIG_STD_CPP.

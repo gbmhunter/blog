@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-04-03
 description: Near Field Communication (NFC) is a short-range wireless communication technology that allows devices to exchange data over a distance of a few centimetres.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-04-03
-tags: [communication protocols, electronics, NFC, near field communication]
+lastUpdated: 2025-06-16
+tags: [communication protocols, electronics, NFC, near field communication, NDEF, records, messages]
 title: Near Field Communication (NFC)
 type: page
 ---
@@ -17,8 +17,13 @@ All NFC communication is based on the ISO/IEC 18092 standard.
 
 The [nRF52 series MCUs](/programming/microcontrollers/nordic/nrf52/) have a near field communication tag peripheral called `NFCT`. This peripheral can be used to implement an NFC tag. It supports NFC-A listen mode operation at 13.56MHz and a bitrate of 106kbps.[^nordic-semi-nrf52840-datasheet]
 
+## NDEF
+
+NDEF (NFC Data Exchange Format) is a standard for exchanging data between NFC devices. It is a binary format structured in messages. Each message can contain one or more records. Each record contains metadata (e.g. record type, length) and the payload.[^oreilly-beginning-nfc]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^nordic-semi-nrf52840-datasheet]: Nordic Semiconductor (2024, Oct 1). _nRF52840 - Product Specification - v1.11_ [datasheet]. Retrieved 2025-03-03, from https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html.
+[^oreilly-beginning-nfc]: Tom Igoe, Don Coleman, Brian Jepson. _Beginning NFC_ [book]. O'Reilly. Retrieved 2025-06-16, from https://www.oreilly.com/library/view/beginning-nfc/9781449324094/ch04.html.

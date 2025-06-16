@@ -1,0 +1,169 @@
+---
+authors: [gbmhunter]
+date: 2025-06-16
+description: This tutorial shows you how to enable and interact with NFC tags in the Zephyr RTOS.
+lastUpdated: 2025-06-16
+tags: [programming, operating systems, OSes, RTOS, Zephyr, NFC, NFC tags]
+title: Using NFC in Zephyr
+type: page
+---
+
+<WarningIsNotes />
+
+Zephyr does not have native NFC support across an number of different vendors. However, Nordic Semiconductor has added support for nRF52832 and nRF52840 SoCs. This page will show you how to setup a Zephyr project targeting the nRF52840 DK which enabled the NFC tag and allows polling devices to read text from it.
+
+The source code for Nordic's NFC driver is not available -- they provide a linkable library via nrfxlib instead (Zephyr automatically pulls this in). There are two libraries available:[^nordic-semi-nrfxlib-nfc]
+
+* `libnfct2t_nrf52`: Intended for nRF52832 and nRF52840. Supports NFC-A Type 2 Tag in read-only mode.
+* `libnfct4t_nrf52`: Intended for nRF52832 and nRF52840. Supports NFC-A Type 4 Tag.
+
+## Basic Hello World Tag
+
+Let's build a basic tag which allows a polling device to read back "Hello, World!" from the tag.
+
+Add the following to your `prj.conf` file:
+
+```python title="prj.conf"
+CONFIG_NFC_T2T_NRFXLIB=y # Include the pre-compiled NFC T2T library
+
+CONFIG_NFC_NDEF=y # Enable NDEF support
+CONFIG_NFC_NDEF_MSG=y # Enable NDEF message support
+CONFIG_NFC_NDEF_RECORD=y # Enable NDEF record support
+CONFIG_NFC_NDEF_TEXT_RECORD=y # Enable NDEF text record support
+```
+
+<Aside type="tip">
+`T2T` stands for Type 2 Tag.
+</Aside>
+
+There is no pin configuration needed as the NFC peripheral has two dedicated pins for the antenna which cannot be moved around. By enabling the NFC peripheral (see the code below) those pins will be used for the NFC peripheral. Now add the following `main.c` file:
+
+```c title="main.c"
+#include <zephyr/kernel.h>
+#include <zephyr/logging/log.h>
+
+#include <nfc_t2t_lib.h>
+#include <nfc/ndef/msg.h>
+#include <nfc/ndef/text_rec.h>
+
+#define MAX_REC_COUNT       1
+#define NDEF_MSG_BUF_SIZE   128
+
+LOG_MODULE_REGISTER(Nfc, LOG_LEVEL_DBG);
+
+/* Text message in English with its language code. */
+static const uint8_t en_payload[] = {
+    'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!'
+};
+static const uint8_t en_code[] = {'e', 'n'};
+
+/* Buffer used to hold an NFC NDEF message. */
+static uint8_t ndef_msg_buf[NDEF_MSG_BUF_SIZE];
+
+static void nfc_callback(
+    void *context,
+    nfc_t2t_event_t event,
+    const uint8_t *data,
+    size_t data_length)
+{
+    ARG_UNUSED(context);
+    ARG_UNUSED(data);
+    ARG_UNUSED(data_length);
+
+    switch (event) {
+    case NFC_T2T_EVENT_FIELD_ON:
+        LOG_DBG("NFC field on");
+        break;
+    case NFC_T2T_EVENT_FIELD_OFF:
+        LOG_DBG("NFC field off");
+        break;
+    default:
+        break;
+    }
+}
+
+/**
+ * @brief Function for encoding the NDEF text message.
+ */
+static int welcome_msg_encode(uint8_t *buffer, uint32_t *len)
+{
+    int err;
+
+    /* Create NFC NDEF text record description in English */
+    NFC_NDEF_TEXT_RECORD_DESC_DEF(
+        nfc_en_text_rec,
+        UTF_8,
+        en_code,
+        sizeof(en_code),
+        en_payload,
+        sizeof(en_payload));
+
+    /* Create NFC NDEF message description, capacity - MAX_REC_COUNT
+     * records
+     */
+    NFC_NDEF_MSG_DEF(nfc_text_msg, MAX_REC_COUNT);
+
+    /* Add text records to NDEF text message */
+    err = nfc_ndef_msg_record_add(&NFC_NDEF_MSG(nfc_text_msg),
+                   &NFC_NDEF_TEXT_RECORD_DESC(nfc_en_text_rec));
+    __ASSERT(err == 0, "Cannot add first record!");
+
+    err = nfc_ndef_msg_encode(&NFC_NDEF_MSG(nfc_text_msg),
+                      buffer,
+                      len);
+    __ASSERT(err == 0, "Cannot encode message!");
+
+    return 0;
+}
+
+int main(void)
+{
+    LOG_INF("Initializing NFC...");
+    uint32_t len = sizeof(ndef_msg_buf);
+
+    /* Set up NFC */
+    int nrfSetupRc = nfc_t2t_setup(nfc_callback, NULL);
+    __ASSERT_NO_MSG(nrfSetupRc == 0);
+
+    /* Encode welcome message */
+    int encodeRc = welcome_msg_encode(ndef_msg_buf, &len);
+    __ASSERT_NO_MSG(encodeRc == 0);
+
+    /* Set created message as the NFC payload */
+    int payloadRc = nfc_t2t_payload_set(ndef_msg_buf, len);
+    __ASSERT_NO_MSG(payloadRc == 0);
+
+    /* Start sensing NFC field */
+    int emulationRc = nfc_t2t_emulation_start();
+    __ASSERT_NO_MSG(emulationRc == 0);
+
+    LOG_INF("NFC configuration done");
+    return 0;
+}
+```
+
+Now build and flash the Zephyr project as usual to the nRF52840 DK. Make sure you have connected the NFC antenna to the development kit.
+
+<Image src={import('./_assets/nrf-nfc-toolbox-app-showing-result-of-a-nrf-tag-scan.webp')} width="300px">The nRF-NFC-Toolbox app showing the result after scanning the tag we just setup.</Image>
+
+Note that the NFCT library requires sole use of the following peripherals:[^nordic-semi-nrfxlib-nfc-integration-notes]
+
+* NFCT (obviously)
+* TIMER4
+
+When enabling the NFC peripheral, the NFCT library will automatically enable the high-frequency clock (HFCLK) and leave it enabled. You can however configure more sophisticated clock management in where the HFCLK is only enabled when the NFC peripheral is active.[^nordic-semi-nrfxlib-nfc-integration-notes]
+
+The API documentation for Nordic's NFC t2t library can be found [here](https://docs.nordicsemi.com/bundle/ncs-0.4.0/page/nrfxlib/nfc/doc/api.html).
+
+## Further Reading
+
+Likely the simplest example to get started is the [NFC: Text record example](https://github.com/nrfconnect/sdk-nrf/tree/main/samples/nfc/record_text). It configures a tag to expose a text record to NFC polling devices. The text says "Hello, World!" in three different languages.
+
+Nordic has an example writable NDEF message example [here](https://github.com/nrfconnect/sdk-nrf/tree/main/samples/nfc/writable_ndef_msg).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nordic-semi-nrfxlib-nfc-integration-notes]: Nordic Semiconductor. _Home > nRF Connect SDK - 0.4.0 > nrfxlib > Near-Field Communication (NFC) > Integration notes_ [documentation]. Retrieved 2025-06-16, from https://docs.nordicsemi.com/bundle/ncs-0.4.0/page/nrfxlib/nfc/doc/integration_notes.html.
+[^nordic-semi-nrfxlib-nfc]: Nordic Semiconductor. _Home > nRF Connect SDK - 0.4.0 > nrfxlib > Near-Field Communication (NFC)_ [documentation]. Retrieved 2025-06-16, from https://docs.nordicsemi.com/bundle/ncs-0.4.0/page/nrfxlib/nfc/README.html.
