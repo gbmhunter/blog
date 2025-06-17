@@ -269,6 +269,53 @@ where `MyRootCA` and `MyIntermediateCA` would be changed to match the organisati
 When creating certificate chains, always put the leaf certificate first, then the intermediate certificate, then the root certificate. Order is important!
 </Aside>
 
+### IoT Hub Python SDK
+
+Microsoft provides a Python library for interacting with Azure IoT Hub. Install it using pip with:
+
+```bash
+pip install azure-iot-hub
+```
+
+Documentation for this library can be found [here](https://learn.microsoft.com/en-us/python/api/azure-iot-hub/azure.iot.hub?view=azure-python).
+
+#### Sending a Message From IoT Hub to Device
+
+You can send a message from IoT Hub to a device using the `invoke_device_method` method (a.k.a. a "direct method"). The code example below shows how to do this:
+
+```python
+from azure.iot.hub import IoTHubRegistryManager
+from azure.iot.hub.models import CloudToDeviceMethod
+
+registry_manager = IoTHubRegistryManager("<connection_string>")
+# Create a direct method object
+method = CloudToDeviceMethod(
+    method_name="myMethod",
+    payload="Hello, world!"
+)
+response = registry_manager.invoke_device_method("device_id", method)
+```
+
+#### Querying Devices
+
+IoT Hub provides a SQL-like query language to query devices. The Python library provides a way to query devices using this language. The code example below shows an example of this:
+
+```python
+from azure.iot.hub import IoTHubRegistryManager
+from azure.iot.hub.protocol.models import QuerySpecification
+from azure.iot.hub.protocol.models.twin_py3 import Twin
+
+registry_manager = IoTHubRegistryManager("<connection_string>")
+query_specification = QuerySpecification(query="SELECT * FROM devices")
+query_result = registry_manager.query_iot_hub(query_specification)
+
+# The query result contains a list of Twin objects stored under .items
+# (Twin is defined in azure.iot.hub.protocol.models.twin_py3)
+for device in query_result.items:
+    print(device)
+```
+
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
