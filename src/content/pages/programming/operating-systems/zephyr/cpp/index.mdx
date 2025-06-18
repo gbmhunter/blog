@@ -53,6 +53,10 @@ CONFIG_REQUIRES_FULL_LIBCPP=y
 CONFIG_STD_CPP20=y
 ```
 
+<Aside type="note">
+I tried overriding the limitation to C++20 and use C++23 by providing the compiler flag `-std=c++23` after the `-std=c++20` flag inserted by Zephyr. However I could not get this to work and resigned to C++20.
+</Aside>
+
 ## Logging
 
 At some point when using C++, you are going to want to place logging calls in header files. This is true for any template code (which has to be in the header file) or for any class functions which you can't be bothered defining in a separate `.cpp` file.
