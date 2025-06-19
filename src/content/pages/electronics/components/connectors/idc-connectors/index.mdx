@@ -1,17 +1,17 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-05
-description: Terminology, types, manufacturers, common usages and more info on electrical connectors.
+description: IDC (insulation displacement connector) connectors are a common style of connector used to carry low speed communications and low current power between multiple circuit boards and between circuit boards and other devices. They are distinguishable by the typically black, square and sharp edged connectors, with a ribbon cable coming out the side.
 image: ./_assets/cover-image.webp
-lastUpdated: 2022-06-09
-tags: [electronics, connectors, electronic components]
+lastUpdated: 2025-06-19
+tags: [electronics, connectors, electronic components, IDC, insulation displacement connector, programming, programming headers, ribbon cable]
 title: IDC Connectors
 type: page
 ---
 
 IDC (_insulation displacement connector_) connectors are very common style of connector used to carry low speed communications and low current power between multiple circuit boards and between circuit boards and other devices. They are distinguishable by the typically black, square and sharp edged connectors, with a ribbon cable coming out the side.
 
-<Image src={import('./_assets/idc-connector-plug-and-socket-photo.png')} width="400">A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped.</Image>
+<Image src={import('./_assets/idc-connector-plug-and-socket-photo.png')} width="400px">A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped.</Image>
 
 The namesake comes from the way the connector attaches to the ribbon cable --- the connector has sharp "razor" style blades with a notch cut through the center of each one. The ribbon cable is pushed onto the end of the blades, and the blades pierce the ribbon cable and make contact with the blades (hence "displacing the insulation"). This removes the need to strip the end of the ribbon cable and connect via crimps/soldering/screw terminals and thus makes them extremely easy to construct.
 
@@ -21,8 +21,50 @@ The socket (least-moving piece, the side that gets soldered onto a PCB) is shrou
 
 A 2.54mm pitched (w.r.t to the pins) IDC connector has two rows of pins, this requires that the flat cable has a conductor pitch of 1.27mm (0.05").
 
-Some IDC connectors come with built-in strain relief. This is usually in the form of a clip which sits ontop of the connector. The cable is brought out of the insulation displacement part and then curled back around to be clamped by the clip. Strain relief is more common on the 2.54mm pitch IDC connectors, and not so much on the 1.27mm pitch IDC connectors. This can be a problem for longevity of these smaller 1.27mm IDC connectors, which are commonly used for 10-pin ARM SWD programming headers.
+Some IDC connectors come with built-in strain relief. This is usually in the form of a clip which sits on top of the connector. The cable is brought out of the insulation displacement part and then curled back around to be clamped by the clip. Strain relief is more common on the 2.54mm pitch IDC connectors, and not so much on the 1.27mm pitch IDC connectors. This can be a problem for longevity of these smaller 1.27mm IDC connectors, which are commonly used for 10-pin ARM SWD programming headers.
 
 <Aside type="note">
 A production line programming step I was involved with used a 10pin 1.27mm pitch IDC cable to connect the programming dongle to the PCB. We were concerned about the reliability when inserting and then pulling out the IDC connector many times over. Sure enough, after about 300 programming cycles the cable failed.
 </Aside>
+
+## Examples
+
+### CNC Tech 3230-10-0102-00
+
+The CNC Tech 3230-10-0102-00 is a 10 position, 2x5, 1.27 mm pitch IDC socket. It is commonly connected to 0.64mm pitch 30 AWG 10 conductor IDC ribbon cable and used for programming cables, connecting to a mating header on the PCB.
+
+<Image src={import('./_assets/cnc-tech-3230-10-0102-00-10-pos-2x5-1-27mm-idc-socket-3d-model.webp')} width="300px">A 3D model of the CNC Tech 3230-10-0102-00 10 pos, 2x5, 1.27mm pitch IDC socket.[^digikey-cnc-tech-3230-10-0102-00]</Image>
+
+As of June 2025, these were available on DigiKey for US$0.91 in single quantities.[^digikey-cnc-tech-3230-10-0102-00]
+
+<Aside type="note">
+Because of the fact these 10 position connector have 2 rows of 5 positions, the pitch of the cable needs to be half the pitch of the connector. So a 1.27mm pitch connector needs a 0.64mm pitch cable.
+</Aside>
+
+### CNC Tech 3240-10-00
+
+The CNC Tech 3240-10-00 is a 10 position, 2x5, 1.27 mm pitch IDC cable to male pin connector. The unique thing about this style of connector is that it is direct wire-to-board (normally you have a connector on the cable which mates with another connector on the PCB). You can combine this with the CNC Tech 3230-10-0102-00 (or similar) to make IDC "extension" cables.
+
+<Image src={import('./_assets/cnc-tech-3240-10-00-10-pos-2x5-1-27mm-cable-to-male-pins.webp')} width="300px">A photo of the CNC Tech 3240-10-00 IDC 10 pos, 2x5, 1.27mm pitch IDC cable to male pin connector.[^digikey-cnc-tech-3240-10-00]</Image>
+
+As of June 2025, these were available on [DigiKey](https://www.digikey.co.nz/en/products/detail/cnc-tech/3240-10-00/3883786) for US$2.68 in single quantities.
+
+### 3M 3749/10 100
+
+Although not a IDC connector, the 3M 3749/10 100 is a 10 conductor, 0.64mm pitch, 30 AWG ribbon cable.
+
+<Image src={import('./_assets/3m-3749-10-100-10-conductor-30awg-0-64mm-pitch-ribbon-cable-photo.webp')} width="300px">A photo of the 3M 3749/10 100 10 conductor, 30 AWG, 0.64mm pitch ribbon cable.[^digikey-3m-3749-10-100]</Image>
+
+As of June 2025, this was available on [DigiKey](https://www.digikey.co.nz/en/products/detail/3m/3749-10-100/1107765) for US$45 for a 30.48 m reel.[^digikey-3m-3749-10-100]
+
+### Harwin M50-9020542
+
+The Harwin M50-9020542 is a 10 position, 2x5, 1.27 mm IDC male to female cable assembly. This is a rare style as most IDC cables are female to female. This can't be used as an IDC extension cable however, as the pinout is the wrong way around.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^digikey-cnc-tech-3230-10-0102-00]: Digikey. _Product Index > Connectors, Interconnects > Rectangular Connectors > Free Hanging, Panel Mount > CNC Tech 3230-10-0102-00_ [product page]. Retrieved 2025-06-19, from https://www.digikey.co.nz/en/products/detail/cnc-tech/3230-10-0102-00/3883464.
+[^digikey-cnc-tech-3240-10-00]: Digikey. _Product Index > Connectors, Interconnects > Rectangular Connectors > Board In, Direct Wire to Board > CNC Tech 3240-10-00_ [product page]. Retrieved 2025-06-19, from https://www.digikey.co.nz/en/products/detail/cnc-tech/3240-10-00/3883786.
+[^digikey-3m-3749-10-100]: Digikey. _Product Index > Cables, Wires > Flat Ribbon Cables > 3M 3749/10 100_ [product page]. Retrieved 2025-06-19, from https://www.digikey.co.nz/en/products/detail/3m/3749-10-100/1107765.

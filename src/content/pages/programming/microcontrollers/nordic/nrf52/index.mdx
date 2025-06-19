@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2025-03-03
 description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-05-08
+lastUpdated: 2025-06-19
 tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength, comparators, COMP, SAADC, NFC, NFCT, Zephyr, shell]
 title: nRF52
 type: page
@@ -128,6 +128,18 @@ int main() {
 <Aside type="tip">
 You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
 </Aside>
+
+### Use the NFC Pins
+
+By default, you won't be able to use the two NFC pins (`NFC1` and `NFC2`) on the MCU as GPIOs. To allow them to be used as GPIOs, add `nfct-pins-as-gpios` to your `.dts` file as shown:
+
+```text
+&uicr {
+    nfct-pins-as-gpios;
+};
+```
+
+`&uicr` might already be present in your `dts` file with `nfct-pins-as-gpios;` applied. The old way of overriding the default NFC behaviour adding the Kconfig value `CONFIG_NFCT_PINS_AS_GPIOS=y` to your `prj.conf`. However this is now deprecated.
 
 ## Successive Approximation ADC (SAADC)
 
