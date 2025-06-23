@@ -528,6 +528,12 @@ Instead of adding to `.vscode/c_cpp_properties.json`, if you just have one confi
 
 If you want more info on Zephyr unit tests and IntelliSense, see the [Tests](#tests) section of this page.
 
+## Using clangd
+
+<Image src={import('./_assets/clangd-telling-me-i-need-to-add-config-gpio.webp')} width="500px">A screenshot of clangd telling me I need to add CONFIG_GPIO and the drivers are not included.</Image>
+
+For some reason, I could never get `clangd` to work fully. There was always some issue, like `clangd` not being able to find the header file `<functional>`.
+
 ## Moving a West Workspace
 
 I haven't had much luck moving a West workspace on Linux. After moving, the `west` executable could not be found (making sure the Python virtual environment was activated).

@@ -1,0 +1,67 @@
+---
+authors: [gbmhunter]
+date: 2025-06-23
+description: This guide shows you how to create firmware libraries that use Zephyr that can be linked to other Zephyr applications.
+lastUpdated: 2025-06-23
+tags: [programming, operating systems, RTOS, Zephyr, C++, libraries, CMake, west, linker, compiling, interface, submodules]
+title: How to Create Linkable Zephyr Libraries Using CMake
+type: page
+---
+
+A library is a collection of functions and data that can be compiled in to another program, rather than a program itself. Libraries are useful for sharing code between multiple projects. However, most Zephyr code examples online show you how to create a Zephyr application, but not how to create a library that uses Zephyr, that can then be linked to other Zephyr applications.
+
+## Using the INTERFACE Library Type
+
+I've had luck using the CMake `INTERFACE` library type to create libraries using Zephyr. An `INTERFACE` does not build a library artifact (e.g. static library file) but rather provides a collection of source files, header files, compile rules e.t.c that other projects can "link against" (which just means incorporate --- since there is nothing to link).
+
+This shows an example of the libraries `CMakeLists.txt` file.
+
+```cmake title="my_library/CMakeLists.txt"
+cmake_minimum_required(VERSION 3.20.0)
+
+# This is used by the C/C++ extension in VSCode to provide intellisense for the project.
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(MyLibrary CXX)
+
+# Create the library target
+add_library(MyLibrary INTERFACE)
+
+# Explicitly set the library language to C++
+set_target_properties(MyLibrary PROPERTIES LINKER_LANGUAGE CXX)
+
+# Add sources to the library
+target_sources(
+    MyLibrary
+    INTERFACE
+    file_1.cpp
+    file_2.cpp
+    file_3.cpp
+)
+
+# Link against Zephyr interface library to get include paths and other settings
+target_link_libraries(MyLibrary INTERFACE zephyr_interface)
+
+# Make the library headers available to other targets
+target_include_directories(MyLibrary INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+```
+
+This can then be consumed by another Zephyr project. For example, let's pretend we have a Zephyr application called `my_app` that we want to link to the `MyLibrary` library. We will use `FetchContent` to download the library from GitHub.
+
+```cmake title="my_app/CMakeLists.txt"
+cmake_minimum_required(VERSION 3.20.0)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+FetchContent_Declare(MyLibrary
+    GIT_REPOSITORY https://github.com/gbmhunter/MyLibrary.git
+    GIT_TAG 1.0.0 # This can be a hash, tag or branch.
+)
+FetchContent_MakeAvailable(MyLibrary)
+# Add the subdirectory just downloaded by fetch content
+add_subdirectory(${MyLibrary_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/MyLibrary)
+
+# Now link the library to the main Zephyr app
+target_link_libraries(app INTERFACE MyLibrary)
+```
+
+I couldn't get `INTERFACE` to work natively with `FetchContent`. For some reason `add_subdirectory()` worked fine when adding my library, but if I added the exact same library using `FetchContent`, no valid targets were created. My workaround was to insert the line `add_subdirectory()` after the `FetchContent` call. An alternative would be to add the library as a Git submodule and then use `add_subdirectory()` directly (no `FetchContent` needed in this case).
