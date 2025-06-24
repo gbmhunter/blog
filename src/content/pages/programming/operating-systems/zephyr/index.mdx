@@ -1234,6 +1234,34 @@ CONFIG_GPIO_SHELL=y
 
 <Image src={import('./_assets/configuring-gpio-in-the-zephyr-shell.webp')} width="700px">A screenshot showing the Zephyr shell command for configuring GPIO.</Image>
 
+#### GPIO Reserved Ranges
+
+You can configure reserved ranges of GPIO pins per bank in your `.dts` file with the `gpio-reserved-ranges` property. For example:
+
+```text
+&gpio0 {
+    status = "okay";
+    gpio-reserved-ranges = <0 2>, <6 1>, <8 3>;
+};
+```
+
+`gpio-reserved-ranges` takes a list of ranges, where each range is a tuple of the start pin and the number of pins to reserve. For example, the above configuration reserves pins 0, 1, 6, 8, 9 and 10.
+
+#### GPIO Line Names
+
+You can assign line names to GPIOs in your `.dts` file with the `line-names` property. For example:
+
+```text
+&gpio0 {
+    status = "okay";
+    gpio-line-names = "XL1", "XL2", "AREF", "A0", "A1", "RTS", "TXD",
+        "CTS", "RXD", "NFC1", "NFC2", "BUTTON1", "BUTTON2", "LED1",
+        "LED2", "LED3", "LED4", "QSPI CS", "RESET", "QSPI CLK",
+        "QSPI DIO0", "QSPI DIO1", "QSPI DIO2", "QSPI DIO3","BUTTON3",
+        "BUTTON4", "SDA", "SCL", "A2", "A3", "A4", "A5";
+};
+```
+
 ### PWM
 
 For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for "pwm" we find:
@@ -1266,17 +1294,52 @@ For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for 
 }
 ```
 
-In your .dts file:
+
+
+In your .dts file, we first need to override the `pwm0` with some parameters:
+
+```txt title="my_board.dts"
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_default>;
+    pinctrl-1 = <&pwm0_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+```
+
+Notice how the mapping between the PWM channels and the pins is not directly set here (some examples online directly assign pins here), instead pointing to some structures defined in the pin control file. So then in your pin control file, we need to define the mapping between the PWM channels and the pins. For example:
+
+```txt title="my_board.dtsi"
+&pinctrl {
+    pwm0_default: pwm0_default {
+        group1 {
+            psels = 
+                <NRF_PSEL(PWM_OUT0, 0, 10)>, // Assign pwm0 channel 0 to port 0, pin 10
+                <NRF_PSEL(PWM_OUT1, 0, 5)>, // Assign pwm0 channel 1 to port 0, pin 5
+            nordic,invert;
+        };
+    };
+
+    pwm0_sleep: pwm0_sleep {
+        group1 {
+            psels = 
+                <NRF_PSEL(PWM_OUT0, 0, 10)>, // Assign pwm0 channel 0 to port 0, pin 10
+                <NRF_PSEL(PWM_OUT1, 0, 5)>, // Assign pwm0 channel 1 to port 0, pin 5
+            low-power-enable;
+        };
+    };
+}
+```
 
 ```c
-my-pwm-group {
+my_pwm_group {
     compatible = "pwm-leds";
     status = "okay";
-    my-pwm-pin-1 {
+    my_pwm_pin_1 {
         // Use pwm peripheral 0 and channel 0 
         pwms = <&pwm0 0 PWM_MSEC(5) PWM_POLARITY_NORMAL>;
     };
-    my-pwm-pin-2 {
+    my_pwm_pin_2 {
         // Use pwm peripheral 0 and channel 1
         pwms = <&pwm0 1 PWM_MSEC(5) PWM_POLARITY_NORMAL>;
     };
@@ -1300,34 +1363,6 @@ And then enabled with:
 // This will enable the PWM with a period of 1000us and a pulse width of 500us (i.e. 50% duty cycle)
 int intRc = pwm_set_dt(&myPwmSpec, PWM_USEC(1000), PWM_USEC(500));
 __ASSERT_NO_MSG(intRc == 0);
-```
-
-#### GPIO Reserved Ranges
-
-You can configure reserved ranges of GPIO pins per bank in your `.dts` file with the `gpio-reserved-ranges` property. For example:
-
-```text
-&gpio0 {
-    status = "okay";
-    gpio-reserved-ranges = <0 2>, <6 1>, <8 3>;
-};
-```
-
-`gpio-reserved-ranges` takes a list of ranges, where each range is a tuple of the start pin and the number of pins to reserve. For example, the above configuration reserves pins 0, 1, 6, 8, 9 and 10.
-
-#### GPIO Line Names
-
-You can assign line names to GPIOs in your `.dts` file with the `line-names` property. For example:
-
-```text
-&gpio0 {
-    status = "okay";
-    gpio-line-names = "XL1", "XL2", "AREF", "A0", "A1", "RTS", "TXD",
-        "CTS", "RXD", "NFC1", "NFC2", "BUTTON1", "BUTTON2", "LED1",
-        "LED2", "LED3", "LED4", "QSPI CS", "RESET", "QSPI CLK",
-        "QSPI DIO0", "QSPI DIO1", "QSPI DIO2", "QSPI DIO3","BUTTON3",
-        "BUTTON4", "SDA", "SCL", "A2", "A3", "A4", "A5";
-};
 ```
 
 ### ADCs
