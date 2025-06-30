@@ -17,7 +17,9 @@ _Zephyr_ is the combination of a **real-time operating system, peripheral/system
 
 Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`.
 
-Some criticism arises from Zephyr's complexity. Once such example is that Zephyr adds another layer of configurability with the use of Kconfig (a configuration language that was originally designed to configure the Linux kernel[^kernel-org-kconfig-language]). Firmware behaviour can now be controlled via a combination of Kconfig settings, preprocessor macros and API calls at runtime. The Kconfig is layered in a hierarchical manner and dependencies and overrides can make it difficult to determine how your MCU is being configured.
+Some criticism arises from Zephyr's complexity. Once such example is that Zephyr adds layers of additional configurability with the use of Kconfig (a configuration language that was originally designed to configure the Linux kernel[^kernel-org-kconfig-language]) and the device tree. Firmware behaviour can now be controlled via a combination of Kconfig settings, device tree settings, preprocessor macros and API calls at runtime. The Kconfig is layered in a hierarchical manner and dependencies and overrides can make it difficult to determine how your MCU is being configured.
+
+Another issue is that the Zephyr device tree is very "static" and is designed for a static hardware configuration. While fine for most basic firmware projects, some advanced projects may require dynamic hardware configuration. For example, you may want the same firmware to support different hardware configurations, and need to configure pins/peripherals differently at runtime based of a version number read from flash. Zephyr has no way of "uninitializing" peripherals via it's API, and you typically have to reach around and use the raw hardware registers to do this. An example would be if you wanted to reconfigure an ADC input as a GPIO pin.
 
 The [main repo can be found on GitHub](https://github.com/zephyrproject-rtos/zephyr).
 
@@ -440,6 +442,34 @@ int main() {
     k_thread_create(&myModule.thread, myModule.threadStack, K_THREAD_STACK_SIZEOF(myModule.threadStack), MyThreadFn, NULL, NULL, NULL, 5, 0, K_NO_WAIT);
 }
 ```
+
+This gives us more flexibility as we can embed the stack into another struct and create multiple instances of it as needed. However, it is not truly dynamic as the size of the stack (in the above example, 512 bytes) still has to be known at compile time.
+
+As of June 2025, Zephyr does have experimental support for true dynamic stack allocation using `k_thread_stack_alloc()`. However, I could not get this to work in a basic example running on the `native_sim` board (Linux). The function has the following signature:
+
+```c
+k_thread_stack_t* k_thread_stack_alloc(size_t size, int flags);
+```
+
+The idea is to do use it like this:
+
+```c
+#include <zephyr/kernel.h>
+
+int main() {
+    // Dynamically allocate a stack. Still experimental, did not work for me!
+    k_thread_stack_t* myStack = k_thread_stack_alloc(1024, 0);
+    __ASSERT_NO_MSG(myStack);
+    k_thread_create(&myThread, myStack, 1024, MyThreadFn, NULL, NULL, NULL, 5, 0, K_NO_WAIT);
+}
+```
+
+`k_thread_stack_alloc()` depends on a number of configuration options being set in `prf.conf`. You will likely need:
+
+* `CONFIG_DYNAMIC_THREAD=y`
+* `CONFIG_DYNAMIC_THREAD_PREFER_ALLOC=y` (if you want `k_thread_stack_alloc()` to use k_malloc()`)
+
+Remember to free the stack when you are done with it using `k_thread_stack_free()`.
 
 ### Workqueues
 
@@ -1125,7 +1155,7 @@ You then need to setup a callback:
 ```c
 static struct gpio_callback gpioCallbackData;
 
-void GpioCallback(const struct device* dev, struct gpio_callback* cb, uint32_t pins)
+void GpioCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
 {
     // GPIO interrupt callback
 }
@@ -1221,6 +1251,43 @@ static void GpioCallbackHandler(const struct device* dev, struct gpio_callback* 
 {
     // Can get "user data" from inside the handler function by using the CONTAINER_OF macro
     MyObject* myObject = CONTAINER_OF(cb, MyObject, myCallback);
+}
+```
+
+If using `CONTAINER_OF` in C++ to access a containing class instance you might get a compiler warning:
+
+```text
+warning: 'offsetof' within non-standard-layout type 'MyClass' is conditionally-supported [-Winvalid-offsetof]
+```
+
+In this case, the solution is to create a smaller struct within your class which only contains the gpio_callback and a pointer to `MyClass`. This will ensure it is a standard layout type. Here is a simplified example which shows how to do this:
+
+```c++
+struct GpioCallbackDataAndObject {
+    GpioReal* m_obj;
+    struct gpio_callback m_gpioCallbackData;
+};
+
+class MyClass {
+public:
+  // ... other members ...
+  GpioCallbackDataAndObject m_gpioCallbackDataAndObject;
+};
+
+int main() {
+  MyClass myClass;
+  gpio_pin_interrupt_configure(myGpio.port, myGpio.pin, GPIO_INT_EDGE_TO_ACTIVE);
+  gpio_init_callback(&myClass.m_gpioCallbackDataAndObject.m_gpioCallbackData, &interruptCallback, BIT(myGpio.pin));
+  gpio_add_callback(myGpio.port, &myClass.m_gpioCallbackDataAndObject.m_gpioCallbackData);
+}
+
+static void interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
+{
+    // WARNING: This will be called in a interrupt context.
+    // CONTAINER_OF() won't give the "non-standard layout" warning now since `GpioCallbackDataAndObject` is a standard layout type.
+    GpioCallbackDataAndObject* gpioCallbackDataAndObject = CONTAINER_OF(cb, GpioCallbackDataAndObject, m_gpioCallbackData);
+    MyClass * obj = gpioCallbackDataAndObject->m_obj;
+    // Now we have the object, do something with it!
 }
 ```
 

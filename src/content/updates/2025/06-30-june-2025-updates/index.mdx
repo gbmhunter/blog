@@ -2,7 +2,6 @@
 authors: [gbmhunter]
 date: 2025-06-30
 description: Blog updates during June 2025.
-draft: true
 lastUpdated: 2025-06-30
 tags: []
 title: June 2025 Updates
@@ -11,17 +10,19 @@ type: updates
 
 ## Removed Umami Analytics
 
-The Umami analytics server was costing me about US$6 each month, so I decided to remove it.
+The Umami analytics server ([this post](/programming/website-design/running-umami-on-aws-lightsail/) explains how I set it up) was costing me about US$6 each month, and it was a pain to maintain (it was crash every few months). I figured I got enough value from the time it was running --- I now have an approximate ratio of the actual traffic that is reported via a platform that ad blockers ignore (Umami) vs. that via a platform that gets blocked (Google Analytics). So I decided to remove it. Now I'm back to using Google Analytics.
 
 ## Added Info on Zephyr Bluetooth
 
 Added info on [Zephyr Bluetooth](/programming/operating-systems/zephyr/bluetooth/) to the site.
 
-{/* <Image src={import('./_assets/cpp-callbacks-screenshot.webp')} width="800px" userClass="red-glow"/> */}
+<Image src={import('./_assets/zephyr-bluetooth-screenshot.webp')} width="800px" userClass="red-glow"/>
 
 ## Added Info on LDRs Used In Audio Compressors
 
 Added info on [LDRs](/electronics/components/sensors/light-dependent-resistors-ldrs/) used in older audio compressors (e.g. the Teletronix LA-2A) to the site.
+
+<Image src={import('./_assets/ldr-teletronix-screenshot.webp')} width="800px" userClass="red-glow"/>
 
 ## Added Info on Isolated Voltage Measurement
 
@@ -31,6 +32,8 @@ Added info on using isolated amplifiers to measure voltages which you want to re
 
 Added info on [MMCX connectors](/electronics/components/connectors/rf/#mmcx-connectors) to the [RF Connectors](/electronics/components/connectors/rf/) page.
 
+<Image src={import('./_assets/mmcx-rf-connector-screenshot.webp')} width="800px" userClass="red-glow"/>
+
 ## Added Info on CICD with Code Composer Studio
 
 Added info on [CICD with Code Composer Studio](/programming/integrated-development-environments-ides/code-composer-studio/cicd/) to the site.
@@ -39,9 +42,13 @@ Added info on [CICD with Code Composer Studio](/programming/integrated-developme
 
 Added info on [debugging Zephyr in VSCode](/programming/operating-systems/zephyr/debugging/) to the site.
 
+<Image src={import('./_assets/zephyr-debug-config-screenshot.webp')} width="800px" userClass="red-glow"/>
+
 ## Added Info on 10 position 2x5 1.27mm pitch IDC Connectors
 
 Added info on [10 position 1.27mm pitch IDC connectors](/electronics/components/connectors/idc-connectors/) to the site.
+
+<Image src={import('./_assets/idc-connector-screenshot.webp')} width="800px" userClass="red-glow"/>
 
 ## Added Info on Creating Linkable Zephyr Libraries Using CMake
 
