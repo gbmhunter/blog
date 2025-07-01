@@ -425,6 +425,55 @@ target_link_libraries(my_project PRIVATE etl::etl)
 
 ETL provides a number of containers (e.g. a vector, string, array) that are similar to the C++ STL containers, except they are backed by statically allocated memory and no dynamic allocation occurs.
 
+#### Arrays
+
+ETL provides a `etl::array` which offers a array which has to have a fixed size known at compile time. Below is an example of a `etl::array`:
+
+```c++
+#include <etl/array.h>
+
+int main() {
+    etl::array<uint8_t, 3> myArray; // Declare an array of uint8_t which as 3 elements
+}
+```
+
+`etl::array` provides two main ways of randomly accessing the elements of the array, the `[]` operator and the `.at()` method. The `[]` operator is faster, but does not check if the index is out of bounds. The `.at()` method is slower, but does check if the index is out of bounds and will either assert or throw an exception (depending on how you have configured ETL) if it is.
+
+```c++
+myArray[0] = 10; // Use the [] operator to access the element. Faster, but no bounds checking!
+myArray.at(0) = 10; // Use the .at() method to access the element. Slower, but safer!
+```
+
+I would recommend you use `.at()` by default, and only resort to `[]` if you have to for performance reasons. Another say way to access elements (but not in a random way) is to use iterators, which are explained below.
+
+You can loop over the array elements by using iterators, which further protects you from accidentally accessing an element outside the array bounds.
+
+```c++
+for (auto it = myArray.begin(); it != myArray.end(); ++it)
+{
+    // Do something with the element. "it" is a pointer to the element
+    *it = 10;
+}
+```
+
+<Aside type="note">
+Sometimes an iterator won't work, as you'll need the index of the element in some part of the calculation as well as it's value. In that case use the standard `for (int i = 0; i < myArray.size(); i++)` loop.
+</Aside>
+
+You can call `.size()` to get the number of elements in the array.
+
+You can use `.fill(value)` to set all the elements of the array to a single value.
+
+```c++
+myArray.fill(10);
+```
+
+<Aside type="tip">
+You can't store references in an array (ETL array or otherwise)! This is because references are not objects, and thus cannot be stored in a container (they don't have any memory associated with them). You can store objects or pointers to objects in an array.
+</Aside>
+
+#### Vectors
+
 Below is an example if the `etl::vector` container and how you would use it:
 
 ```c++

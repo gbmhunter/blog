@@ -2,14 +2,17 @@
 authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
-lastUpdated: 2025-04-22
-tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation]
-title: Zephyr
+lastUpdated: 2025-07-01
+tags: [programming, operating systems, OSes, RTOS, Zephyr, installation, guide, Linux, Windows, MacOS, WSL]
+title: The Zephyr Installation Guide
 type: page
 ---
 
-
 Below are some basic Zephyr installation guides for various OSes. Another good read is the official [Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
+
+<Aside type="note">
+Zephyr has updated their installation process significantly since I first created this guide. I have updated the main instructions to use the latest version of Zephyr (v4.0.0). If you are after older installation instructions, see the [Older Guide](#older-guide) section below.
+</Aside>
 
 ## Linux
 
@@ -56,13 +59,40 @@ manifest:
       clone-depth: 1
 ```
 
-Now we can run `west update` to pull down all the required dependencies. This command will take some time (5-15mins) to complete.
+Now we can run `west update` to pull down all the required dependencies. This command will take some time (5-15mins) to complete. It will populate the `external` directory.
+
+```bash
+west update
+```
 
 Now update the Python dependencies:
 
 ```bash
 west packages pip --install
 ```
+
+Install the Zephyr SDK (which is actually the toolchain):
+
+```bash
+west sdk install
+```
+
+Note that the entire SDK is rather large, sitting around 12GB at `v0.17.1` (see <IRef iref="fig-screenshot-showing-the-size-of-the-zephyr-sdk" /> and <IRef iref="fig-west-sdk-download-screenshot" />). You can reduce this by only specifying specific toolchains to install with the `--toolchains` flag. The two I used the most are `arm-none-eabi` (compiling for real MCU) and `x86_64-zephyr-elf` (compiling tests for `native_sim`).
+
+<Image iref="fig-screenshot-showing-the-size-of-the-zephyr-sdk" src={import('./_assets/screenshot-showing-the-size-of-the-zephyr-sdk.webp')} width="800px">A screenshot showing the total size of v0.17.1 of the Zephyr SDK. 12GB!</Image>
+
+```bash
+west sdk install --toolchains arm-zephyr-eabi x86_64-zephyr-elf
+```
+
+<Image iref="fig-west-sdk-download-screenshot" src={import('./_assets/west-sdk-download-screenshot.webp')} width="800px">A screenshot of the Zephyr SDK download progress, showing all the different toolchains that will be downloaded by default.</Image>
+
+You can also specify a specific SDK version to install with the `--version` flag:
+
+```bash
+west sdk install --version 0.17.1
+```
+
 
 ## Older Guide
 
@@ -529,6 +559,8 @@ Instead of adding to `.vscode/c_cpp_properties.json`, if you just have one confi
 If you want more info on Zephyr unit tests and IntelliSense, see the [Tests](#tests) section of this page.
 
 ## Using clangd
+
+`clangd` is championed by some as having better IntelliSense than the default VS Code C/C++ extension. You can get clangd working with Zephyr and VS Code by installing the clangd extension.
 
 <Image src={import('./_assets/clangd-telling-me-i-need-to-add-config-gpio.webp')} width="500px">A screenshot of clangd telling me I need to add CONFIG_GPIO and the drivers are not included.</Image>
 

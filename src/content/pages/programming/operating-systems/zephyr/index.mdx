@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-04-22
-tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation]
+lastUpdated: 2025-07-01
+tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation, stack canaries]
 title: Zephyr
 type: page
 ---
@@ -928,20 +928,31 @@ CONFIG_HEAP_MEM_POOL_SIZE=1024
 
 Zephyr provides an atomic variable API that let's you manipulate simple integers (32-bit integers on a 32-bit architecture, 64-bit integers on a 64-bit architecture) in an atomic manner. This means the API is thread safe and ISR safe, without the need for mutexes. They are a good choice for simple variable manipulation where you don't need the full power of a mutex. Their benefit over a mutex is that they are generally faster to use because they leverage specific processor instructions which are naturally atomic (e.g. writing a variable which is the same size as the architecture's word size) without the need to OS level locks. The atomic API can be accessed by including `#include <zephyr/sys/atomic.h>`.
 
-Use `atomic_set(atomic_t*target, atomic_val_t value)` to set the value of an atomic variable. For example:
+Use `atomic_set(atomic_t* target, atomic_val_t value)` to set the value of an atomic variable. For example:
 
 ```c
 atomic_t myAtomic;
 atomic_set(&myAtomic, 10);
 ```
 
-You can use `atomic_clear(atomic_t*target)` to clear the value of an atomic variable. It also has the benefit of returning the previous value of the variable, which is useful when implementing a counter that is incremented in an ISR and read in a thread. For example:
+Another useful function is `atomic_inc(atomic_t* target)`, which increments the value of the atomic variable by 1.
+
+```c
+atomic_t myAtomic;
+atomic_inc(&myAtomic);
+```
+
+You can also use `atomic_dec(atomic_t* target)` to decrement the value of the atomic variable by 1.
+
+You can use `atomic_clear(atomic_t* target)` to clear the value of an atomic variable. It also has the benefit of returning the previous value of the variable, which is useful when implementing a counter that is incremented in an ISR and read in a thread. For example:
 
 ```c
 atomic_t myCounter;
 // Both read the value and clear it at the same time
 atomic_val_t prevValue = atomic_clear(&myCounter);
 ```
+
+Atomic operations are guaranteed to implement a full memory barrier on all target architectures.[^zephyr-docs-atomic-services]
 
 ## Peripheral APIs
 
@@ -2318,10 +2329,29 @@ CONFIG_FPU=y # Required for printing floating point numbers
 Zephyr supports GCC stack canaries by adding the following to your `prj.conf` file:
 
 ```python
+CONFIG_ENTROPY_GENERATOR=y
+CONFIG_TEST_RANDOM_GENERATOR=y
 CONFIG_STACK_CANARIES=y
 ```
 
-Setting this to `y` will make the compiler add a randomly generated canary value to the end of each functions stack frame. This is checked on function exit. If the canary value is overwritten, the compiler calls `__stack_chk_fail()`, whose Zephyr implementation invokes a fatal stack overflow error.[^zephyr-docs-fatal-errors]
+Setting `CONFIG_STACK_CANARIES` to `y` will make the compiler add a randomly generated canary value to the end of each functions stack frame. This is checked on function exit. If the canary value is overwritten, the compiler calls `__stack_chk_fail()`, whose Zephyr implementation invokes a fatal stack overflow error.[^zephyr-docs-fatal-errors]
+
+`CONFIG_ENTROPY_GENERATOR` and `CONFIG_TEST_RANDOM_GENERATOR` are required dependencies for `CONFIG_STACK_CANARIES`. There is a slight performance penalty for using stack canaries, but I'd recommend enabling them unless you have specific performance reasons not to.
+
+<IRef iref="fig-zephyr-stack-canaries-demo-showing-error-in-terminal" /> shows a screenshot of the Zephyr stack canaries in action. I made a test where I decided to blow up the stack by allocating a large array:
+
+```c
+// Try and blow up the stack
+uint8_t myArray[2000];
+// Do something with it so it is not optimized out
+for (size_t i = 0; i < 2000; i++)
+{
+    myArray[i] = i;
+}
+LOG_INF("myArray[1000] = %d", myArray[1000]);
+```
+
+<Image iref="fig-zephyr-stack-canaries-demo-showing-error-in-terminal" src={import('./_assets/zephyr-stack-canaries-demo-showing-error-in-terminal.webp')} width="700px">A screenshot of the Zephyr stack canaries in action, showing the canaries detecting a stack overflow in my main thread (printed from the shell/terminal).</Image>
 
 ## Contributing to Zephyr
 
@@ -2384,3 +2414,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
 [^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
 [^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
+[^zephyr-docs-atomic-services]: Zephyr (2024, Jan 8). _Docs / Latest » Kernel » Kernel Services » Atomic Services_ [documentation]. Retrieved 2025-07-01, from https://docs.zephyrproject.org/latest/kernel/services/other/atomic.html.
