@@ -8,7 +8,7 @@ title: The Zephyr Installation Guide
 type: page
 ---
 
-Below are some basic Zephyr installation guides for various OSes. Another good read is the official [Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
+Below are some basic Zephyr installation guides for various OSes. Another good read is the official [Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html). Installing Zephyr is not the easiest thing in world, compared to what you might expect from modern package managers such as `npm`, `pip` or `cargo`. But we have to give Zephyr a break because it is complex in the sense that it supports many different architectures and compiler toolchains.
 
 <Aside type="note">
 Zephyr has updated their installation process significantly since I first created this guide. I have updated the main instructions to use the latest version of Zephyr (v4.0.0). If you are after older installation instructions, see the [Older Guide](#older-guide) section below.
@@ -16,15 +16,26 @@ Zephyr has updated their installation process significantly since I first create
 
 ## Linux
 
+Let's create a new directory for the Zephyr project, and then create a Python virtual environment in a `.venv` sub-directory:
+
 ```bash
+mkdir ~/zephyr-project
+cd ~/zephyr-project
 python3 -m venv .venv
 source .venv/bin/activate
+```
+
+Now let's install `west` in the virtual environment:
+
+```bash
 pip install west
 ```
 
-We are not going to now run west init, as it will put zephyr in the project root directory. I prefer to keep all west managed dependencies in a single sub-directory so that it keeps the project root directory clean and is easy to setup `.gitignore` rules for.
+This will make `west` available from the command line, as long as the virtual environment is activated.
 
-Let's create a directory called `.west`, add a file called `config` with the contents:
+We are not going to now run `west init`, as it will put zephyr in the project root directory. I prefer to keep all west managed dependencies in a single sub-directory so that it keeps the project root directory clean and is easy to setup `.gitignore` rules for.
+
+So instead, let's create a directory called `.west`, add a file called `config` with the contents:
 
 ```title=".west/config"
 [manifest]
@@ -59,13 +70,17 @@ manifest:
       clone-depth: 1
 ```
 
-Now we can run `west update` to pull down all the required dependencies. This command will take some time (5-15mins) to complete. It will populate the `external` directory.
+<Aside type="note">
+This example uses the `nrf` port of Zephyr, since I was developing for a nRF52840-based board at the time. You can find the list of ports [here](https://docs.zephyrproject.org/latest/boards/index.html).
+</Aside>
+
+Now we can run `west update` to pull down all the required dependencies. This command will take some time (5-15mins) to complete, so sit back and have a coffee. It will populate the `external` directory with a lot of Git repos.
 
 ```bash
 west update
 ```
 
-Now update the Python dependencies:
+Now update the Python dependencies (in older versions of Zephyr you had to call `pip install -r <path_to_zephyr>/scripts/requirements.txt`):
 
 ```bash
 west packages pip --install
@@ -78,6 +93,8 @@ west sdk install
 ```
 
 Note that the entire SDK is rather large, sitting around 12GB at `v0.17.1` (see <IRef iref="fig-screenshot-showing-the-size-of-the-zephyr-sdk" /> and <IRef iref="fig-west-sdk-download-screenshot" />). You can reduce this by only specifying specific toolchains to install with the `--toolchains` flag. The two I used the most are `arm-none-eabi` (compiling for real MCU) and `x86_64-zephyr-elf` (compiling tests for `native_sim`).
+
+By default on Linux, the Zephyr SDK will be installed to a directory directly under your home directory. For example, `~/zephyr-sdk-0.17.1`.
 
 <Image iref="fig-screenshot-showing-the-size-of-the-zephyr-sdk" src={import('./_assets/screenshot-showing-the-size-of-the-zephyr-sdk.webp')} width="800px">A screenshot showing the total size of v0.17.1 of the Zephyr SDK. 12GB!</Image>
 
@@ -93,6 +110,7 @@ You can also specify a specific SDK version to install with the `--version` flag
 west sdk install --version 0.17.1
 ```
 
+If you have installed multiple versions of the Zephyr SDK, when building you can set the `ZEPHYR_SDK_INSTALL_DIR` environment variable to the path of the SDK you want to use.
 
 ## Older Guide
 

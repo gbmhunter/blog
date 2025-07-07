@@ -1,0 +1,16 @@
+---
+authors: [gbmhunter]
+date: 2025-07-03
+description: Embassy is a Rust framework for building embedded applications.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-07-03
+tags: [programming, operating systems, Embassy, Rust]
+title: Embassy
+type: page
+---
+
+Embassy is a Rust framework for building embedded applications. It leverages async/await for cooperative multitasking. It also supports multiple "executors" for true preemptive multitasking.
+
+<ChildPages />
+
+In my opinion, although `async/await` seems like a great way to write co-operative code, it does force you to write code that only awaits on one thing at once, which is a major gotcha which makes me believe event driven state machines are a better option.

@@ -1,0 +1,160 @@
+---
+authors: [gbmhunter]
+date: 2025-07-07
+description: Event driven state machines are a design pattern for building embedded software.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-07-07
+tags: [programming, design patterns, event driven state machines]
+title: Event Driven State Machines
+type: page
+---
+
+One of my favourite design patterns for embedded software is the event driven hierarchical state machine. I've used many different patterns out there, including super-loops, many threads with sequential steps and blocking, async/await functionality and more. Event driven HSMs offer the following benefits:
+
+* It is easy to write complex logic that needs to check many things and respond accordingly.
+* It is easy to add new requirements.
+* States intuitively map to how we humans think about the problem.
+* You can easily have a lot of complexity in a single thread, keeping in sequential but responsive. 
+
+It has the following design goals:
+
+* Event handlers must not block, i.e. they run to completion. This keeps the state machine responsive.
+* Each state has it's own event handler.
+* States can be children of other states, i.e. a hierarchical state machine. This allows for code reuse and generalization as you can install common event handlers to parent states.
+* Each state machine could run it's own thread, or all state machines could be run sequentially in a single thread. That is not an important part of the design pattern.
+
+Let's take a look at a simple example in C++. This ignores much of the internals of the state machine (which would typically be implemented in a library that you would re-use across projects, e.g. see my [C++ NinjaHSM library on GitHub](https://github.com/gbmhunter/NinjaHSM), and just shows the core idea of what the implementation would look like for a specific application.
+
+```c++
+namespace Events {
+struct ControlRodsUp {};
+struct ControlRodsDown {};
+struct EmergencyStop {};
+using Generic = std::variant<ControlRodsUp, ControlRodsDown, EmergencyStop>;
+}
+
+class StateMachine {
+    void handleEvent(Events::Generic event) {
+        // Logic to dispatch to the correct state handler function...
+    }
+
+    void risingControlRods_Entry() {
+      // Do something
+    }
+
+    void risingControlRods_HandleEvent(Events::Generic event) {
+      if (std::holds_alternative<Events::ControlRodsUp>(event)) {
+        // Do something
+      }
+    }
+}
+
+int main() {
+    StateMachine myStateMachine;
+    while (true) {
+        Events::Generic event = waitForEvent();
+        myStateMachine.handleEvent(event);
+    }
+}
+```
+
+## Downsides
+
+### Complex Sequential Logic Becomes Tedious
+
+I once had to configure a motor controller over I2C. The motor controller had a lot of different settings that needed to be configured, and each one required it's own I2C transaction. I needed to send about 20 commands in total. After filling up the TX buffer with the command you wanted to send, each I2C transaction required waiting (blocking) for command to be send and for the response to be received back. And in between some commands there were extra delays needed to allow the motor controller to do various things. In a app where you allowed blocking and/or async/await, this would have been just (we assume here that `write()` and `read()` are both blocking):
+
+```c++
+i2c.write(motorAdd, cmd1);
+i2c.read(motorAdd, response1);
+thread.sleepMs(100);
+i2c.write(motorAdd, cmd2);
+i2c.read(motorAdd, response2);
+thread.sleepMs(100);
+i2c.write(motorAdd, cmd3);
+i2c.read(motorAdd, response3);
+// ...
+```
+
+This gets tricky in a event driven architecture, as you can't just block if you want the event loop to be responsive and handle other events in the interim. Creating 2 separate states for each command (cmd1_sending, cmd1_receiving, cmd2_sending, cmd2_receiving, etc.) would be tedious! Each handler would have to listen for a send finished and command received event emitted from an I2C interrupt or similar, and then transition to the next state. It would be easy to accidentally transition to the wrong next state.
+
+One solution which prevents you from having so many states is to capture the "where I am up to" in a counter rather than a separate state. The following example shows pseudo code for how this could be done. It assumes that the I2C calls `startWrite()` and `startRead()` are non-blocking and just initiate the transaction. Events are received from an I2C interrupt or similar when they are finished. The `cmdIdx` variable prevents the need to have 20 different states just to configure the motor driver!
+
+```python
+# This would normally be a member variable of the state machine class
+cmdIdx = 0
+
+def stateConfiguringMotorDriver_Entry():
+    cmdIdx = 0
+    # Start the first command
+    i2c.startWrite(motorAdd, cmd1)
+
+def stateConfiguringMotorDriver_HandleEvent(event)
+    if event == I2cResponseReceived:
+        # We've finished sending a command, so start sending the next one
+        cmdIdx += 1
+        if cmdIdx == 1:
+            i2c.startWrite(motorAdd, cmd2)
+        elif cmdIdx == 2:
+            i2c.startWrite(motorAdd, cmd3)
+        # ...
+    elif event == I2cCmdSent:
+        # We've finished sending the command, so initiate the response
+        if cmdIdx == 0:
+            i2c.startRead(motorAdd, response1)
+        elif cmdIdx == 1:
+            i2c.startRead(motorAdd, response2)
+        elif cmdIdx == 2:
+            i2c.startRead(motorAdd, response3)
+        # ...
+```
+
+Another solution would be to use blocking code and just accept that the state machine will not be responsive while the blocking code is running. This may be ok in certain cases. However, even if it is ok now, it might cause problems later. What happens when you want another part of the application to be able to immediately stop the motor driver in the event of an emergency? If the state machine has started configuring the motor driver, your state machine will ignore any `stop` event until the motor driver is fully configured, which is probably unacceptable behaviour.
+
+### Sometimes You Have To Call Libraries That Block
+
+Sometimes you are left with no choice --- you have to call code outside of your control that will block (be it a peripheral driver function, OS call, library call e.t.c.). In this case, you are left with a few options:
+
+1. Move the blocking code into a separate worked thread which is started by the state machine. An event is posted back to the state machine when the blocking code is finished.
+1. Just accept that the state machine will not be responsive while the blocking code is running. This may be ok in certain cases. If you have other code that does need to be responsive, perhaps you could move that into a different state machine in a different thread?
+
+## Async/Await
+
+In my opinion, although `async/await` seems like a great way to write co-operative code, there is a major gotcha which makes me believe event driven state machines are a better option.
+
+I'll try and explain with an example.
+
+Imagine we are writing the code for a nuclear reactor. On start-up of the reactor, we want to raise the control rods for a few seconds to increase the power output. This seems very simple to do in a `async` manner:
+
+```python
+controlRodsUpPin.set(1)
+await timer.sleepMs(2000)
+controlRodsUpPin.set(0)
+```
+
+Simple right? The problem is that real world applications are almost never this simple. Typically, there would be the following requirements:
+
+* When raising the control rods, monitor the temperature of the reactor every 10ms. If it gets to hot, shut down immediately.
+* There is a "emergency stop" button wired into a GPIO. If this pin ever goes active, we also want to shut down immediately.
+
+Now, how do we implement this with the `async` approach? The sequential approach to async makes it really difficult to handle these requirements. How do we await many conditions at once? And if we could, how to we back out of awaiting some of them if others are triggered? This is where I believe `async` is not a good fit, and a event driven state machine works much better.
+
+Continuing with our example, below is pseudo code on how we could implement this with an event driven state machine:
+
+```python
+def controlRodsUp_Entry()
+    stopControlRodsTimer.start(2000)
+    checkTemperatureTimer.start(10)
+
+def controlRodsUp_HandleEvent(event)
+    if event == stopControlRodsTimer.expired()
+        transitionTo(State.RUNNING)
+    elif event == checkTemperatureTimer.expired()
+        temperature = getTemperature()
+        if temperature > 1000:
+            transitionTo(State.EMERGENCY_STOP)
+    elif event == emergencyStopButton.pressed()
+        transitionTo(State.EMERGENCY_STOP)
+```
+
+I hope this example shows how the multiple requirements can be easily implemented with an event driven state machine. Also, adding new requirements is very easy. Just create new events and handle them in the `controlRodsUp_HandleEvent` function.

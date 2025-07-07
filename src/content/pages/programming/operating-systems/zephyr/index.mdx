@@ -313,6 +313,35 @@ Although I could not find it explicitly mentioned anywhere in the Zephyr documen
 
 Be careful with the 32-bit value from `k_cycle_get_32()`. With a fast clock, this could overflow pretty quickly. If you are just interested in the duration between two time points, luckily the maths of subtracting a large unsigned number from a smaller one still gives you the right duration, until of course the later time catches up and passes the same `uint32_t` value the previous time point was at.
 
+### Sleep
+
+You can sleep the current thread with the `k_sleep(timeout_t timeout)` function. This function is typically used in conjunction with the timeout macros such as `K_MSEC()`, `K_SECONDS()` e.t.c to create a timeout:
+
+```c
+// Sleep current thread for 1 second
+k_sleep(K_MSEC(1000));
+```
+
+All `K_MSEC()` style macros sleep for a relative amount of time. If you want to sleep until an absolute time, one option is to use the `k_uptime_get()` function and calculate the relative amount of time to sleep:
+
+```c++
+/**
+ * Sleep until the system time is equal to or greater than the target time.
+ * This is useful in testing when we want to sleep until a specific absolute time,
+ * rather than a relative time as per k_sleep(K_MSEC(...)).
+ */
+void sleepUntilSystemTime(int64_t targetTimeMs)
+{
+    int64_t currentTimeMs = k_uptime_get();
+    int64_t remainingTimeMs = targetTimeMs - currentTimeMs;
+    
+    if (remainingTimeMs > 0) {
+        k_sleep(K_MSEC(remainingTimeMs));
+    }
+}
+```
+
+
 ### Timers
 
 Zephyr _Timers_ are an OS primitive that you can start and then have timeout after a certain duration. If you provide a callback, you can to run things after a fixed duration in the future in either a one-off (one-shot) or continuous manner. If you don't provide a callback, you can still inspect the state of the timer from your application.

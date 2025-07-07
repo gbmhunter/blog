@@ -1,0 +1,193 @@
+---
+authors: [gbmhunter]
+date: 2025-07-03
+description: Embassy is a Rust framework for building embedded applications.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-07-03
+tags: [programming, operating systems, Embassy, Rust]
+title: Embassy
+type: page
+---
+
+This is a tutorial for building an Embassy application for the nRF52 DK, which features a nRF52832 SoC. The build is done in WSL (Windows Subsystem for Linux), but these instructions should work for any Linux distribution.
+
+## Installing Rust and Probe-RS
+
+Before we can build the project, we need to install Rust. This is done with the `rustup` tool:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Press enter when prompted to install it in the default location.
+
+We'll also need to install `probe-rs`. You can try this method:
+
+```bash
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+```
+
+However, I got an error that my version of glibc was too old. So I used this method instead, which builds it from source:
+
+```bash
+cargo install probe-rs-tools --locked
+```
+
+This worked, and gave me the following result:
+
+```bash
+Installed package `probe-rs-tools v0.29.0` (executables `cargo-embed`, `cargo-flash`, `probe-rs`)
+```
+
+We'll also need to install the `thumbv7em-none-eabi` target using `rustup`. Luckily if you try and `cargo build` without this is will tell you how to install it.
+
+```bash
+rustup target add thumbv7em-none-eabi
+```
+
+## Creating a New Rust Project
+
+Create a new Rust project:
+
+```bash
+cargo new nrf52-example
+```
+
+This will create a new directory called `nrf52-example` and populate it  with a `Cargo.toml` file and a `src` directory containing a `main.rs`.
+
+Replace the contents of `main.rs` with the following, which is a basic blinky program for LED1 which is connected to pin `P0.17`.
+
+```rust
+#![no_std]
+#![no_main]
+
+use embassy_executor::Spawner;
+use embassy_nrf::gpio::{Level, Output, OutputDrive};
+use embassy_time::Timer;
+use {defmt_rtt as _, panic_probe as _};
+
+#[embassy_executor::main]
+async fn main(_spawner: Spawner) {
+    let p = embassy_nrf::init(Default::default());
+    let mut led = Output::new(p.P0_17, Level::Low, OutputDrive::Standard);
+
+    loop {
+        led.set_high();
+        Timer::after_millis(300).await;
+        led.set_low();
+        Timer::after_millis(300).await;
+    }
+}
+```
+
+Next, create a file at the path `.cargo/config.toml` with the following contents (this is copied from the [Embassy example config.toml file](https://github.com/embassy-rs/embassy/blob/main/examples/nrf52840/.cargo/config.toml)):
+
+```toml title=".cargo/config.toml"
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-rs run --chip nRF52832_xxAA"
+
+[build]
+target = "thumbv7em-none-eabi"
+
+[env]
+DEFMT_LOG = "trace"
+```
+
+Also create a `memory.x` file with the following contents:
+
+```text title="memory.x"
+MEMORY
+{
+  /* NOTE 1 K = 1 KiBi = 1024 bytes */
+  FLASH : ORIGIN = 0x00000000, LENGTH = 512K
+  RAM : ORIGIN = 0x20000000, LENGTH = 64K
+}
+```
+
+## Installing Dependencies and Building
+
+Although you can add dependencies with `cargo add`, there are quite a few features for some of the dependencies that need adding. The easiest way to do this is to edit the `Cargo.toml` file.
+
+I grabbed the `Cargo.toml` file from the Embassy nRF52840 example, and removed all the `path = ...` statements. It ended up looking like this:
+
+```toml title="Cargo.toml"
+[package]
+edition = "2021"
+name = "nrf52-example"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+embassy-futures = { version = "0.1.0" }
+embassy-sync = { version = "0.7.0", features = ["defmt"] }
+embassy-executor = { version = "0.7.0", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+embassy-time = { version = "0.4.0", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-nrf = { version = "0.3.1", features = ["defmt", "nrf52832", "time-driver-rtc1", "gpiote", "unstable-pac", "time"] }
+embassy-net = { version = "0.7.0", features = ["defmt", "tcp", "dhcpv4", "medium-ethernet"] }
+embassy-usb = { version = "0.4.0", features = ["defmt"] }
+embedded-io = { version = "0.6.0", features = ["defmt-03"]  }
+embedded-io-async = { version = "0.6.1", features = ["defmt-03"] }
+embassy-net-esp-hosted = { version = "0.2.0", features = ["defmt"] }
+embassy-net-enc28j60 = { version = "0.2.0", features = ["defmt"] }
+
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+
+fixed = "1.10.0"
+static_cell = { version = "2" }
+cortex-m = { version = "0.7.6", features = ["inline-asm", "critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+rand = { version = "0.9.0", default-features = false }
+embedded-storage = "0.3.1"
+usbd-hid = "0.8.1"
+serde = { version = "1.0.136", default-features = false }
+embedded-hal = { version = "1.0" }
+embedded-hal-async = { version = "1.0" }
+embedded-hal-bus = { version = "0.1", features = ["async"] }
+num-integer = { version = "0.1.45", default-features = false }
+microfft = "0.5.0"
+
+[profile.release]
+debug = 2
+```
+
+Now that we have all the dependencies listed, we can build the project.
+
+```bash
+cargo build
+```
+
+## Pass-through nRF52 DK USB device to WSL
+
+Using usbipd, I can pass-through the connected nRF52 DK from Windows into WSL. First you have to bind the USB device from a terminal on Windows with admin privileges:
+
+```bash
+usbipd bind -i 1366:1051
+```
+
+You only have to do the bind once. Then you use `usbipd attach` to pass it through. Run this next command from a standard terminal (not one with admin privileges).
+
+```bash
+usbipd attach -w -a -i 1366:1051
+```
+
+The `-w` flag is to attach to WSL, and `-a` is for auto-attach. If it passed through correctly, you should be able to detect it in WSL using `probe-rs list`.
+
+```bash
+gbmhunter@geoff-laptop:~/nrf52-example$ probe-rs list
+The following debug probes were found:
+[0]: J-Link -- 1366:1051:001050376416 (J-Link)
+```
+
+## Flashing the nRF52 DK
+
+We can now flash the nRF52 DK using `cargo run`:
+
+```bash
+cargo run
+```
+
+
+
+
