@@ -2,9 +2,8 @@
 authors: [gbmhunter]
 date: 2025-07-07
 description: Event driven state machines are a design pattern for building embedded software.
-image: ./_assets/cover-image.webp
 lastUpdated: 2025-07-07
-tags: [programming, design patterns, event driven state machines]
+tags: [programming, design patterns, event driven state machines, embedded, NinjaHSM]
 title: Event Driven State Machines
 type: page
 ---
@@ -23,40 +22,43 @@ It has the following design goals:
 * States can be children of other states, i.e. a hierarchical state machine. This allows for code reuse and generalization as you can install common event handlers to parent states.
 * Each state machine could run it's own thread, or all state machines could be run sequentially in a single thread. That is not an important part of the design pattern.
 
-Let's take a look at a simple example in C++. This ignores much of the internals of the state machine (which would typically be implemented in a library that you would re-use across projects, e.g. see my [C++ NinjaHSM library on GitHub](https://github.com/gbmhunter/NinjaHSM), and just shows the core idea of what the implementation would look like for a specific application.
+Let's take a look at a simple example in Python style pseudo code. This ignores much of the internals of the state machine (which would typically be implemented in a library that you would re-use across projects, e.g. see my [C++ NinjaHSM library on GitHub](https://github.com/gbmhunter/NinjaHSM)), and just shows the core idea of what the implementation would look like for a specific application.
 
-```c++
-namespace Events {
-struct ControlRodsUp {};
-struct ControlRodsDown {};
-struct EmergencyStop {};
-using Generic = std::variant<ControlRodsUp, ControlRodsDown, EmergencyStop>;
-}
+```python
+class StateMachine:
+    def handleEvent(event):
+        # Logic to dispatch to the correct state handler function...
 
-class StateMachine {
-    void handleEvent(Events::Generic event) {
-        // Logic to dispatch to the correct state handler function...
-    }
+    def risingControlRods_Entry():
+        # Entry functions for states typically start timers whose expiry events
+        # are used to do things during the state.
+        controlRodsUpTimer.startMs(2000)
+        checkTemperatureTimer.startMs(10)
 
-    void risingControlRods_Entry() {
-      // Do something
-    }
+    def risingControlRods_HandleEvent(event):
+        if event == ControlRodsUpTimerExpired:
+            transitionTo(State.RUNNING)
+        elif event == EmergencyStopButtonPressed:
+            transitionTo(State.EMERGENCY_STOP)
+        elif event == CheckTemperatureTimerExpired:
+            temperature = getTemperature()
+            if temperature > 1000:
+                transitionTo(State.EMERGENCY_STOP)
 
-    void risingControlRods_HandleEvent(Events::Generic event) {
-      if (std::holds_alternative<Events::ControlRodsUp>(event)) {
-        // Do something
-      }
-    }
-}
-
-int main() {
-    StateMachine myStateMachine;
-    while (true) {
-        Events::Generic event = waitForEvent();
-        myStateMachine.handleEvent(event);
-    }
-}
+if __name__ == "__main__":
+    myStateMachine = StateMachine()
+    while True:
+        # waitForEvent() would contain the logic to calculate when the next timer expiry
+        # occurs, and block on a message queue for that long. When the block returns, you
+        # know you have either received an external event or the timer expired (the OS API
+        # will let you check this).
+        event = waitForEvent()
+        myStateMachine.handleEvent(event)
 ```
+
+<Aside type="note">
+I have an example of the logic required to implement an event loop in Zephyr as part of my [ZephyrCppToolkit library in EventThread.hpp](https://github.com/gbmhunter/ZephyrCppToolkit/blob/main/include/ZephyrCppToolkit/Events/EventThread.hpp). This provides a `Timer`, `TimerManager` and `EventThread` class which contains a `waitForEvent()` function.
+</Aside>
 
 ## Downsides
 
@@ -78,7 +80,7 @@ i2c.read(motorAdd, response3);
 
 This gets tricky in a event driven architecture, as you can't just block if you want the event loop to be responsive and handle other events in the interim. Creating 2 separate states for each command (cmd1_sending, cmd1_receiving, cmd2_sending, cmd2_receiving, etc.) would be tedious! Each handler would have to listen for a send finished and command received event emitted from an I2C interrupt or similar, and then transition to the next state. It would be easy to accidentally transition to the wrong next state.
 
-One solution which prevents you from having so many states is to capture the "where I am up to" in a counter rather than a separate state. The following example shows pseudo code for how this could be done. It assumes that the I2C calls `startWrite()` and `startRead()` are non-blocking and just initiate the transaction. Events are received from an I2C interrupt or similar when they are finished. The `cmdIdx` variable prevents the need to have 20 different states just to configure the motor driver!
+One solution which prevents you from having so many states is to capture the "where I am up to" in a counter (stored as part of the state machine's data) rather than a separate state. The following example shows pseudo code for how this could be done. It assumes that the I2C calls `startWrite()` and `startRead()` are non-blocking and just initiate the transaction. Events are received from an I2C interrupt or similar when they are finished. The `cmdIdx` variable prevents the need to have 20 different states just to configure the motor driver!
 
 ```python
 # This would normally be a member variable of the state machine class
@@ -118,43 +120,7 @@ Sometimes you are left with no choice --- you have to call code outside of your 
 1. Move the blocking code into a separate worked thread which is started by the state machine. An event is posted back to the state machine when the blocking code is finished.
 1. Just accept that the state machine will not be responsive while the blocking code is running. This may be ok in certain cases. If you have other code that does need to be responsive, perhaps you could move that into a different state machine in a different thread?
 
-## Async/Await
+## Comparison to Other Approaches
 
-In my opinion, although `async/await` seems like a great way to write co-operative code, there is a major gotcha which makes me believe event driven state machines are a better option.
+Both the traditional "many threads with blocking operations" and async/await approaches suffer from the sequential problem — your code may only block or await for one condition at a time. It becomes tricky to handle multiple conditions at once, which means developers typically resort to waiting for very small amounts of time and then checking "why did I wake up"?
 
-I'll try and explain with an example.
-
-Imagine we are writing the code for a nuclear reactor. On start-up of the reactor, we want to raise the control rods for a few seconds to increase the power output. This seems very simple to do in a `async` manner:
-
-```python
-controlRodsUpPin.set(1)
-await timer.sleepMs(2000)
-controlRodsUpPin.set(0)
-```
-
-Simple right? The problem is that real world applications are almost never this simple. Typically, there would be the following requirements:
-
-* When raising the control rods, monitor the temperature of the reactor every 10ms. If it gets to hot, shut down immediately.
-* There is a "emergency stop" button wired into a GPIO. If this pin ever goes active, we also want to shut down immediately.
-
-Now, how do we implement this with the `async` approach? The sequential approach to async makes it really difficult to handle these requirements. How do we await many conditions at once? And if we could, how to we back out of awaiting some of them if others are triggered? This is where I believe `async` is not a good fit, and a event driven state machine works much better.
-
-Continuing with our example, below is pseudo code on how we could implement this with an event driven state machine:
-
-```python
-def controlRodsUp_Entry()
-    stopControlRodsTimer.start(2000)
-    checkTemperatureTimer.start(10)
-
-def controlRodsUp_HandleEvent(event)
-    if event == stopControlRodsTimer.expired()
-        transitionTo(State.RUNNING)
-    elif event == checkTemperatureTimer.expired()
-        temperature = getTemperature()
-        if temperature > 1000:
-            transitionTo(State.EMERGENCY_STOP)
-    elif event == emergencyStopButton.pressed()
-        transitionTo(State.EMERGENCY_STOP)
-```
-
-I hope this example shows how the multiple requirements can be easily implemented with an event driven state machine. Also, adding new requirements is very easy. Just create new events and handle them in the `controlRodsUp_HandleEvent` function.
