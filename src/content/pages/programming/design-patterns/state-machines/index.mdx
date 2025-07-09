@@ -1,0 +1,31 @@
+---
+authors: [gbmhunter]
+date: 2024-09-11
+lastUpdated: 2025-07-09
+tags: [programming, state machines, control methodology, embedded, NinjaHSM, finite state machines, hierarchical state machines, FSM, HSM]
+title: State Machines
+type: page
+---
+
+State machines are a software design pattern intended to represent your program as a collection of states. The program starts in an initial state, and then due to events, it transitions to new states as appropriate. State machines make it easy to describe the control flow of your program, are readable, and easy to change. They are my go-to design pattern for embedded software!
+
+There are two core types of state machines:
+
+* Finite state machines (FSMs): Non-hierarchical state machines.
+* Hierarchical state machines (HSMs): State machines which can have nested states, i.e. states can be parents and children of other states.
+
+Finite state machines are simpler to implement and work well for simple programs. However, you generally find you can quickly outgrow their capabilities and want to use hierarchical state machines instead. The main benefit from a HSM is that you can move common logic into parent states, and only override the logic in child states when needed. In this sense it is a form of code reuse, and eliminates the somewhat repetitive handling of common events you may encounter if using a FSM.
+
+Sequential logic theory (the subject which involves these state machines) says that if the combination of the inputs and the state which the program is in determines the outputs it is a Mealy state machine. If just the state determines the outputs, then it is a Moore state machine. Usually however I never find myself having to worry about these definitions of what they mean.
+
+For the basics, check out the [A Switch Statement State Machine page](/programming/design-patterns/state-machines/switch/). This shows you how to write a simple state machine using a `switch` statement.
+
+For my favourite way to implement a hierarchical state machine, see the [Event Driven Hierarchical State Machines](/programming/design-patterns/state-machines/event-driven-hierarchical/) page. I have a C++ library called [NinjaHSM](https://github.com/gbmhunter/NinjaHSM) which you can use to implement a HSM in your own embedded firmware projects.
+
+Go to the [A Function Pointer State Machine](/programming/design-patterns/state-machines/function-pointers/) page for a worked example on how to write a state machine using function pointers and a state transition matrix. I don't really like this pattern because you are restricted to "one event must equal one transition" by the state transition table. I much prefer an arbitrary function to handle events which can do whatever logic is required.
+
+There is software out there that lets you convert graphical state machine diagrams into usable code. One popular one is the QP state machine framework and the QM modelling tool ([http://www.state-machine.com/](http://www.state-machine.com/)).
+
+## Child Pages
+
+<ChildPages />

@@ -500,6 +500,75 @@ Notice how both the type (`uint32_t`) and the size of the vector (6) are specifi
 
 One clever thing ETL does it allow you to accept function inputs of the `etl::vector` type without having to also provide the size. This would be a pain, as it would mean a different version of the function for every different sized vector. ETL does this by defining a base class called `etl::ivector` which only required the type as a template parameter. You can pass a `etl::vector` to a function that accepts a `etl::ivector` and it will work fine.
 
+### Strings
+
+ETL provides fixed capacity string classes via `etl::string` and `etl::string_ext`. Unlike `std::string`, `etl::string` does not perform any dynamic memory allocation. The downside is that you need to either provide the max. size as a template parameter (so that `etl::string` can allocate a buffer of that size in it's object at compile time) or provide your own already allocated buffer.
+
+ETL strings are provided via the `etl/string.h` header file.
+
+`etl::string` is a simple string class which contains it's own fixed size array. To create a `etl::string` you need to specify the size of the array as a template parameter, as shown below:
+
+```c++
+#include <etl/string.h>
+
+int main() {
+    etl::string<10> myString;
+}
+```
+
+You also have the ability to provide your own buffer to create a string, using `etl::string_ext`:
+
+```c++
+char buffer[10 + 1]; // +1 for the null terminator
+etl::string_ext<10> myString(buffer, etl::size(buffer));
+```
+
+ETL strings are safe from overflow and other issues typically associated with raw C-style strings (`char *`). ETL strings have an internal flag which records the truncation state. If a string is constructed, assigned or modified in any way that the text contained would have exceeded it's capacity then the truncation flag is set. The truncation flag is also propagated to other strings if it is built up from the originally truncated string, even if the resulting string is not truncated. This is useful behaviour that let's you check if a string is valid or not after many operations. It is similar to how the special float value `NaN` propagates to all other floats involved in a calculation with it.
+
+Sometimes you will have to pass a ETL string to a function that expects a `char *`. Just like with `std::string`, you can use the `.c_str()` method to get a `char *` from an ETL string.
+
+### String Views
+
+ETL provides string views, which are low-cost views into specific parts of a string.
+
+The following example creates a string view from a string with a different start and end position: 
+
+```c++
+etl::string<10> greeting("Hello World");
+etl::string_view view(greeting.begin() + 2, greeting.size() - 4);
+```
+
+### Configuration
+
+You can configure ETL by adding a file called `etl_profile.h` into your project. It is automatically included by the ETL library if it exists (`platform.h` is the file which pulls it in).
+
+ETL uses a trick I hadn't seen before to only include the file if it exists, via a `__has_include` macro as shown below:
+
+```c++ title="platform.h"
+//*************************************
+// Include the user's profile definition.
+#if !defined(ETL_NO_PROFILE_HEADER) && defined(__has_include)
+  #if !__has_include("etl_profile.h")
+    #define ETL_NO_PROFILE_HEADER
+  #endif
+#endif
+
+#if !defined(ETL_NO_PROFILE_HEADER)
+  #include "etl_profile.h"
+#endif
+```
+
+Typically you will want to define this file and at a minimum either add `ETL_LOG_ERRORS` or `ETL_THROW_EXCEPTIONS` (if you allow the use of exceptions on your target platform). Adding `ETL_VERBOSE_ERRORS` is also useful as it adds more information to the error messages such as the file name (but it does use up more flash).
+
+For example, your `etl_profile.h` file might look like this:
+
+```c++ title="etl_profile.h"
+#define ETL_LOG_ERRORS
+#define ETL_VERBOSE_ERRORS
+```
+
+See [https://www.etlcpp.com/macros.html](https://www.etlcpp.com/macros.html) for a full lists of the macros you can define in `etl_profile.h`.
+
 ## More Resources
 
 The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform[^bib-iso-tech-report-cpp-performance].

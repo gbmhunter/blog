@@ -1,12 +1,14 @@
 ---
 authors: [gbmhunter]
 date: 2020-06-25
-description: Info on SD cards.
-lastUpdated: 2022-04-07
+description: SD cards are a type of memory card which use NAND flash memory to store data. Their main benefit over flash ICs is that they a removable and easily connected by a user to a computer.
+lastUpdated: 2025-07-09
 tags: [memory, SD cards, NAND, flash, controllers, SLC, MLC, pSLC, TRIM, wear-levelling, MOSFETs, speed classes]
 title: SD Cards
 type: page
 ---
+
+SD cards are a type of memory card which use NAND flash memory to store data. Their main benefit over flash ICs is that they a removable and easily connected by a user to a computer.
 
 NAND flash is used as the main memory device inside of SD cards. There is also a memory controller IC (typically a microcontroller) which acts as an intermediary between the flash and the connected device reading/writing to/from the memory.
 
@@ -58,9 +60,31 @@ PLC also goes under the names enhanced MLC, superMLC, iSLC, advanced MLC (aMLC),
 
 Examples of pSLC SD cards include the [AF8GUD4A-BBBIM 8GB microSD Class 10 SD card from ATP Electronics](https://www.digikey.com/en/products/detail/atp-electronics-inc/AF8GUD4A-BBBIM/12336488) which as of April 2022 costs around USD$30 in quantities of 10.
 
+## SD Card Holders
+
+SD card holders are used to hold the SD card in place and provide electrical connections from the SD card to a PCB. Most electronics uses the smaller versions of the SD cards, making micro SD card holders very common on PCBs that need some storage.
+
+There are three common types of insertion/removal mechanisms:
+
+* **Hinged lid**: A hinged lid opens and closes around the SD card. The card is inserted onto the front rather than the side. Once the hinged lid is flat against the SD card, it's usually slid slightly upwards or downwards to lock it into place. The reverse actions is followed to remove the SD card.
+* **Push in then push out**: There is a clicking mechanism which allows the SD card to be pushed in until it clicks (you push it in from the side). Then to remove, you push in again and release. A spring loaded mechanism then pushes the SD card out.
+    <Image src={import('./_assets/wurth-elektronik-693071020811-push-in-push-out-micro-sd-card-holder.webp')} width="300px">The Wurth Elektronik 693071020811 push in push uut micro SD card holder.[^digikey-wurth-elektronik-693071020811-product-page]</Image>
+* **Push in then pull out**: These are like the push in, push out style but don't usually have a spring loaded mechanism or any nice tactile click. Rather, you just push it in until it is friction locked into place, and just pull it out to remove.
+
+My favourite type is the push in, push out style due to it's nice tactile feedback and ease of use. It only works if you can tolerate side entry with your PCB/product design. Sometimes front entry is needed, in which case the hinged lid style is the better option.
+
+### Suppliers
+
+DigiKey is a good place to buy SD card holders. Click [here](https://www.digikey.co.nz/en/products/filter/memory-connectors/pc-card-sockets/414?s=N4IgjCBcoKwMwyqAxlAZgQwDYGcCmANCAPZQDaIcA7DPABwgC6RADgC5QgDKbATgJYA7AOYgAvkQC0AJiQhUkPgFdCJciESMx2oA) to see the search results for Micro SD card holders in their Product Index > Connectors, Interconnects > Memory Connectors > PC Card Sockets section.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^bib-sandisk-sd-oem-product-manual]:  https://datasheet.ciiva.com/26837/getdatasheetpartid-335894-26837658.pdf
 [^bib-wikipedia-multi-level-cell]:  https://en.wikipedia.org/wiki/Multi-level_cell
 [^bib-digikey-sd-memory-cards-section]:  https://www.digikey.com/products/en/memory-cards-modules/memory-cards/501
 [^bib-atp-pslc]:  ATP (2020, Nov 11). _The Benefits of Pseudo SLC (pSLC) Flash with Customizable Endurance_. Retrieved 2022-04-06, from https://www.atpinc.com/blog/Pseudo-SLC-benefits-SSD-endurance.
 [^bib-cactus-tech-pslc-overview]:  Cactus Technologies. _CTWP016: An Overview of Pseudo-SLC NAND_. Retrieved 2022-04-07, from https://www.cactus-tech.com/wp-content/uploads/2019/03/An-Overview-of-Pseudo-SLC-NAND.pdf.
 [^bib-sdcard-speed-class]:  SD Association. _Speed Class_. Retrieved 2022-04-07, from https://www.sdcard.org/developers/sd-standard-overview/speed-class/.
+[^digikey-wurth-elektronik-693071020811-product-page]: DigiKey. _Product Index > Connectors, Interconnects > Memory Connectors > PC Card Sockets > Würth Elektronik 693071020811_ [product page]. Retrieved 2025-07-09, from https://www.digikey.co.nz/en/products/detail/w%C3%BCrth-elektronik/693071020811/11627327.

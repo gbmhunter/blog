@@ -18,7 +18,7 @@ One of my favourite design patterns for embedded software is the event driven hi
 It has the following design goals:
 
 * Event handlers must not block, i.e. they run to completion. This keeps the state machine responsive.
-* Each state has it's own event handler.
+* States have to be flexible. Each state is implemented as an object which has a entry, handleEvent and exit function. Using a function to handle events rather than a state transition table makes it much more flexible to add new requirements.
 * States can be children of other states, i.e. a hierarchical state machine. This allows for code reuse and generalization as you can install common event handlers to parent states.
 * Each state machine could run it's own thread, or all state machines could be run sequentially in a single thread. That is not an important part of the design pattern.
 
