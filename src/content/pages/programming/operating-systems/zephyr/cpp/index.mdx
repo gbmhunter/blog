@@ -2,15 +2,17 @@
 authors: [gbmhunter]
 date: 2020-04-19
 description: This guide shows you how to setup and write C++ code for you embedded Zephyr project.
-lastUpdated: 2025-06-14
-tags: [programming, operating systems, RTOS, Zephyr, C++]
+lastUpdated: 2025-07-10
+tags: [programming, operating systems, RTOS, Zephyr, C++, exceptions, expected, microcontrollers, embedded, tutorial, walkthrough]
 title: How to Use C++ With Zephyr
 type: page
 ---
 
-Zephyr has pretty good support for [C++](/programming/languages/c-plus-plus/). All of it's headers are wrapped in `extern C` allowing you to call them easily from C++.
+Zephyr has pretty good support for [C++](/programming/languages/c-plus-plus/).
 
-## Setup
+Not sure if you want to use C++ for embedded development? Check out my article [C++ on Embedded Systems](/programming/languages/c-plus-plus/cpp-on-embedded-systems/) for more information.
+
+## Enabling C++ Support
 
 You can enable support for compiling C++ by adding the following into `prj.conf`:
 
@@ -24,6 +26,8 @@ You can then change `main.c` to `main.cpp`. Remember to update the path in the `
 # Adds the full C++ standard library
 CONFIG_REQUIRES_FULL_LIBCPP=y
 ```
+
+Remember you can call C code from C++, but not the other way around (well -- technically you can, but it general if you are using classes and other C++ stuff you can't). So one migration technique is that once your `main.cpp` file is working, you can upgrade some of your core application code to C++ but leave things like drivers and libraries in C. And of course, you can still access the Zephyr API (which is written in C) from your C++ code. All the Zephyr headers are wrapped in `extern C` allowing you to call them easily from C++.
 
 ### Choosing a C++ Standard
 
@@ -90,6 +94,37 @@ target_link_libraries(app PUBLIC tl::expected)
 ```
 
 This uses `FetchContent` to automatically download the repository and make it available to your project. `EXPECTED_BUILD_PACKAGE` and `EXPECTED_BUILD_TESTS` both need to be set to `OFF` to prevent compiler errors since the Zephyr build environment does not support testing or packaging the library (we just want the header files).
+
+## Exceptions 
+
+Exceptions are disabled by default when you enable C++ support Zephyr. If you try and add a `throw std::runtime_error("test");` to your code, you will get the following compiler error:
+
+```text
+error: exception handling disabled, use '-fexceptions' to enable
+```
+
+You can enable exceptions by adding the following to your `prj.conf` file:
+
+```python title="prj.conf"
+CONFIG_CPP_EXCEPTIONS=y
+```
+
+You can only enable exceptions if you:
+
+* Have enabled C++ with `CONFIG_CPP=y`.
+* Have not enabled `CONFIG_NEWLIB_LIBC_NANO` or `CONFIG_MINIMAL_LIBCPP`.
+
+<Aside type="note">
+You need to enable exceptions via the `prj.conf`. Just adding the compiler flag in your CMakeLists.txt file like so will not work:
+
+```cmake title="CMakeLists.txt"
+target_compile_options(app PRIVATE -fexceptions)
+```
+
+as Zephyr add it's own compiler flag `-fno-exceptions` which will appear after the one you specify.
+</Aside>
+
+Whether or not you want to use C++ exceptions is something you should consider carefully. If my understanding is correct, exceptions will usually use dynamic memory allocation to store the thrown exception. This will forbid exceptions if you have a rule about no dynamic memory allocation or no dynamic memory allocation after initialization.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

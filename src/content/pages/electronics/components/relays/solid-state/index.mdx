@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2012-10-25
 description: Solid-state relays (SRRs) are relays that use don't have any moving mechanical parts involved in the switching. They use semi-conductor devices (normally MOSFETs) to perform the switching instead.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-09-11
-tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw]
+lastUpdated: 2025-07-10
+tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw, zero crossing]
 title: Solid State Relays (SSRs)
 type: page
 ---
@@ -25,4 +25,19 @@ Below is the typical schematic symbol for a solid-state relay. It shows the inpu
 
 <Image src={import('./_assets/ssr-schematic-symbol.webp')} width="300px">The schematic symbol for a SSR.</Image>
 
+## Zero Crossings
+
+You can purchase SSRs which are designed to switch on/off on a mains zero crossing. For example, the Sensata SPF240D25 is designed to turn on at the first zero crossing after the control signal is applied, and to turn off at the first zero crossing after the control signal is removed.[^sensata-spf240d25-ds] This is suitable for resistive loads.
+
+<IRef iref="fig-sensata-spf240d25-internal-wiring-diagram"/> shows the internal wiring diagram. Just like normal SSRs, it uses an opto-coupler (LED and [phototransistor](/electronics/components/sensors/phototransistors/)) to communicate the control signal to the switching circuitry across the isolation barrier. However, rather the the light directly going to the gates of back-to-back MOSFETs, it goes to control circuitry which implements the zero crossing detection and then controls the [SCRs](/electronics/components/transistors/silicon-controlled-rectifiers-scrs/).
+
+<Image iref="fig-sensata-spf240d25-internal-wiring-diagram" src={import('./_assets/sensata-spf240d25-internal-wiring-diagram.webp')} width="500px">The internal wiring diagram for the Sensata SPF240D25.[^sensata-spf240d25-ds]</Image>
+
+They also produce a variant which turns on immediately, and turns off at a zero crossing. This is more suitable for inductive loads.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^panasonic-aqy212g2Sx-ds]: Panasonic. _PhotoMOS - GU SOP 1 Form A - High Capacity - Product Catalog [product catalog]_. Retrieved 2024-09-11, from https://www3.panasonic.biz/ac/cdn/e/control/relay/photomos/catalog/semi_eng_gu1a_aqy21_gs.pdf.
+[^sensata-spf240d25-ds]: Sensata. _SPF SERIES - PCB MOUNT SOLID STATE RELAYS_ [datasheet]. Retrieved 2025-07-10, from https://www.sensata.com/sites/default/files/a/sensata-spf-series-pcb-mount-ssr-datasheet.pdf.

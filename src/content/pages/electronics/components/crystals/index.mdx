@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2012-01-05
 description: Crystals are passive electronics components that can oscillate at very specific frequencies. They are used to create clock signals for digital circuitry. This page covers load capacitance, frequency accuracy and stability, schematic symbols, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-01-30
+lastUpdated: 2025-07-10
 tags: [electronics, components, crystals, MEMS, XTAL, XC, XO, OCXO, frequency, clocks, power consumption, stability, accuracy, ultrasonic baths, turnover temperature]
 title: Crystals
 type: page
@@ -170,7 +170,7 @@ As shown in above, the solution is to place and additional $16{-}22M\Omega$ para
 
 The _negative resistance test_ can be used to find the oscillator load safety margin present on your circuit design. The test is performed by inserting a potentiometer in series between the crystal and the oscillator (which may be inside a microcontroller). You then slowly increase the resistance until you find the point at which the oscillator fails to start-up correctly[^bib-atmel-avr4100].
 
-### Oven-Controlled Crystal Oscillators (OCXOs)
+## Oven-Controlled Crystal Oscillators (OCXOs)
 
 High-performance crystal oscillators are kept with temperature-controlled environments to increase the stability of the oscillator. They are called oven-controlled crystal oscillators (OCXOs).
 
@@ -180,19 +180,27 @@ The crystals are designed to have a _turning-point_, a point of greatest stabili
 
 Peltier devices can be used as the "oven" to keep the crystal's temperature constant.
 
-### Popular Crystal Packages
+Some OCXOs contain double ovens for even better stability. One example is the Taitien NI-10M-3560 shown in <IRef iref="fig-taitien-ni-10m-3560-10mhz-double-oven-ocxo"/>. It is a 10MHz OCXO with a frequency stability of $\pm 0.1ppb$, and an aging performance of $\pm 0.05ppb/day$ or $\pm 10ppb/year$[^digikey-taitien-ni-10m-3560-product-page]
+
+<Image iref="fig-taitien-ni-10m-3560-10mhz-double-oven-ocxo" src={import('./_assets/taitien-ni-10m-3560-10mhz-double-oven-ocxo.webp')} width="300px">A photo of the Taitien NI-10M-3560 10MHz double oven OCXO.[^digikey-taitien-ni-10m-3560-product-page]</Image>
+
+## Popular Crystal Packages
 
 The HC-49/U package is a popular choice for older through-hole crystals.
 
 Newer crystals come in small, custom SMD packages, with typically either 2 or 4 pins (with the 4-pin packages usually have two GND pins).
 
-### Simulation
+## Simulation
 
 Crystal oscillators can be difficult to simulate accurately in most SPICE-based programs[^bib-fast-crystal-oscillator-simulation-methodology]. Most SPICE programs use the Newton-Raphson algorithm for converging to a solution. Unfortunately, the Newton-Raphson algorithm is not suitable for very high Q circuits, of which a crystal resonator is definitely one (Q values of $10,000$ or more!). The time step has to be set so small for accurate simulation of crystal resonator circuits that it can take days of simulation to "start-up" the ceramic resonator (i.e. reach steady-state oscillation from power-on).
 
-### Crystal Component Packages
+## Crystal Component Packages
 
 For info on crystal component packages, see the [Crystal Packages page](/pcb-design/component-packages/crystal-packages).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^bib-cts-app-note-crystal-basics]: https://www.ctscorp.com/wp-content/uploads/Appnote-Crystal-Basics.pdf, retrieved 2021-04-28.
 [^bib-fast-crystal-oscillator-simulation-methodology]: https://designers-guide.org/forum/Attachments/GEHRING_-_Fast_Crystal-Oscillator-Simulation_Methodology.pdf, retrieved 2021-04-28.
@@ -202,3 +210,4 @@ For info on crystal component packages, see the [Crystal Packages page](/pcb-des
 [^bib-atmel-avr4100]: Atmel (2015, Mar). _AVR4100: Selecting and testing 32kHz crystal oscillators for Atmel AVR microcontrollers_. Retrieved 2021-09-12, from http://ww1.microchip.com/downloads/en/appnotes/doc8333.pdf.
 [^bib-st-stm32f10xx4-errata]: ST Microelectronics (2020, April). _STM32F10xx4 STM32F10xx6 Errata sheet: STM32F101x4/6, STM32F102x4/6 and STM32F103x4/6 low-density device limitations_. Retrieved 2022-03-07, from https://www.st.com/resource/en/errata_sheet/es0348-stm32f101x46-stm32f102x46-and-stm32f103x46-lowdensity-device-limitations-stmicroelectronics.pdf. 
 [nxp-pcf85263a-rtc-ds]: NXP (2023, Nov 22). _PCF85263A - Tiny RTC/calendar with alarm function, battery switch-over, time stamp input, and I2C-bus_ [datasheet]. Retrieved 2024-01-25, from https://www.nxp.com/docs/en/data-sheet/PCF85263A.pdf.
+[^digikey-taitien-ni-10m-3560-product-page]: DigiKey. _Product Index > Crystals, Oscillators, Resonators > Oscillators > Taitien NI-10M-3560_ [product page]. Retrieved 2025-07-10, from https://www.digikey.com/en/products/detail/taitien/NI-10M-3560/18153328.
