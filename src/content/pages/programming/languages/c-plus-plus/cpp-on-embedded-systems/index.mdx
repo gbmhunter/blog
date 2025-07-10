@@ -36,7 +36,7 @@ These are explained in more detail in the below sub-sections.
 
 If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to main the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` e.t.c. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
 
-Now your functions are looking something like `Uart_Write(Uart * uart, char * bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+Now your functions are looking something like `Uart_Write(Uart* uart, char* bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
 
 ### Templates
 
@@ -50,7 +50,7 @@ Enums in C can be dangerous. A user of a library function can pass any old integ
 
 Also, all enums share the same scope, so you have to be careful to avoid name collisions! For example, if you want to have two `IDLE` enums for different state machines, you are forced to change the names, e.g. `GPS_IDLE` and `MOTOR_IDLE`.
 
-C++ improves things with the concept of the `enum class`. This is a more strongly typed enum, and the compiler will error if you try and convert between this type and an integer without explicitly doing a cast. The enum values are also scoped to the name of the enum, preventing naming collisions with other enums in your project.
+C++ improves things with the concept of the `enum class`. This is a more strongly typed enum, and the compiler will error if you try and convert between this type and an integer without explicitly doing a cast. The enum values are also scoped to the name of the enum, preventing naming collisions with other enums in your project. This combined with namespaces is a very powerful combination.
 
 The example below shows how C-style enums can be implicitly cast to integers (which can be dangerous), whilst an `enum class` won't.
 
@@ -64,16 +64,16 @@ enum class ECStates { OFF, IDLE, RUNNING };
 enum class ECColors { RED, BLUE, GREEN };
 
 int main() {
-  EStates myEState;
-  myEState = IDLE;
-  if (myEStateState == GREEN) { // Bad idea, but compiles
-    // ...
-  }
+    EStates myEState;
+    myEState = IDLE;
+    if (myEState == GREEN) { // Bad idea, but compiles
+      // ...
+    }
 
-  ECStates myECState = ECStates::IDLE;
-  if (myECState == ECColors::GREEN) { // Bad idea, but yay, won't compile!
-    // ...
-  }
+    ECStates myECState = ECStates::IDLE;
+    if (myECState == ECColors::GREEN) { // Bad idea, but yay, won't compile!
+        // ...
+    }
 }
 ```
 
@@ -85,14 +85,14 @@ The below example shows how C-style enums can cause scoping/naming issues.
 
 ```c++
 enum GpsState {
-  OFF
-  IDLE,
-  SCANNING
+    OFF
+    IDLE,
+    SCANNING
 };
 
 enum MotorState {
-  OFF, // Because of the global scope, this is going to collide with the OFF in GpsState!  
-  RUNNING
+    OFF, // Because of the global scope, this is going to collide with the OFF in GpsState!  
+    RUNNING
 };
 ```
 
@@ -100,14 +100,14 @@ But if we use `enum class` we avoid the naming collision:
 
 ```c++
 enum class GpsState {
-  OFF
-  IDLE,
-  SCANNING
+    OFF
+    IDLE,
+    SCANNING
 };
 
 enum class MotorState {
-  OFF, // This is fine, MotorState::OFF is not going to collide with GpsState::OFF
-  RUNNING
+    OFF, // This is fine, MotorState::OFF is not going to collide with GpsState::OFF
+    RUNNING
 };
 ```
 
@@ -117,7 +117,7 @@ C++ namespaces are a great feature to use to help you organise your code. They a
 
 ```c++
 namespace my_namespace {
-  // All my stuff goes here
+// All my stuff goes here
 }
 ```
 
@@ -140,6 +140,10 @@ myArray.at(3) = 10; // Bounds checking, this will throw an exception
 ```
 
 `std::out_of_range` is thrown if the index is out of bounds.
+
+<Aside type="note">
+Throw an exception you say! But I'm not allowed to use exceptions in my firmware. Fair enough. Luckily there is the [Embedded Template Library (ETL)](https://www.etlcpp.com/) to the rescue. More on this below.
+</Aside>
 
 You also get a useful `.fill()` function, to fill all the elements with a single value:
 
@@ -176,13 +180,18 @@ myArray3 = myArray2; // Compiler error! Different sizes
 
 `new` and `delete` is C++'s answer to C's `malloc()` and `free()` functions. They are improved versions of `malloc()` and `free()`.
 
-My general rule for embedded firmware is, unless otherwise banned from using dynamic memory allocation due to a specific coding standard (e.g. MISRA), **to allow the use of dynamic memory allocation, but only during initialization**. My opinion is that this gives the best of both worlds. The ability to use dynamic memory allocation allows your firmware to be flexible to initialization variables and configuration. Only allowing it an initialization prevents the "memory segmentation" issues that can occur when objects are continually created and deleted from the heap at runtime. 
+My general rule for embedded firmware is, unless otherwise banned from using dynamic memory allocation due to a specific coding standard (e.g. MISRA), **to allow the use of dynamic memory allocation, but only during initialization**. My opinion is that this gives the best of both worlds. The ability to use dynamic memory allocation allows your firmware to be flexible to initialization variables and configuration. Only allowing it an initialization prevents the "memory segmentation" issues that can occur when objects are continually created and deleted from the heap at runtime.
+
+I make sure to avoid memory issues by doing the following:
+* Preferring to embed a object directly as a variable in another class rather than the alternative of storing a pointer to the object, and allocating it with `new` in the constructor. This means I don't have to worry about any accidental null pointers, or forgetting to free the memory. However some times it is not possible to construct the child object in the initializer list of the parent objects constructor, and in that case I fall back to using a pointer.
+* Try to wrap all raw pointers in either a `std::unique_ptr` or `std::shared_ptr` to ensure the memory is automatically freed when the objects go out of scope.
 
 ### Exceptions
 
 Exceptions are powerful, they allow errors to propagate up a stack until you care about catching them, without having to add any code at any of the layers which don't care about the exception. However, they are a problem for most deeply-embedded firmware projects, because:
 
 * Stack unwinding is processor intensive.
+* Correct, exception handling code can be hard to read (vs. return codes). See Raymond Chen's article [Cleaner, more elegant, and harder to recognize](https://devblogs.microsoft.com/oldnewthing/20050114-00/?p=36693).
 
 With exceptions not allowed in embedded firmware, error handling is typically done by returning error codes from functions and checking them every time the function is called. **This may seem like a lot of hassle at first, but is a very common paradigm and forces you to think about the "exceptional" scenarios and how to handle them**. Many more modern languages such as Go and Rust encourage the "return error code, check error code, continue" process over exceptions anyway.
 
@@ -192,7 +201,7 @@ The GCC compiler supports the `-fno-exceptions` flag which disables exceptions.
 
 ### std::string
 
-I would generally recommend against using `std::string` in embedded firmware, due to it's use of dynamic memory allocation at runtime (when using the default allocator).
+I would generally recommend against using `std::string` in embedded firmware, due to it's use of dynamic memory allocation at runtime (when using the default allocator). The embedded template library (ETL) provides a better suited `etl::string` which uses a template parameter to determine the size of the string buffer on the stack at compile time, side stepping the need for dynamic memory allocation.
 
 In embedded C++, `std::string_view` can be used as a safer wrapper around raw NTBS (null-terminated byte strings) without using dynamic memory allocation at runtime.
 
@@ -230,6 +239,10 @@ Runnable code for all this examples can be found at https://replit.com/@gbmhunte
 ### Move All Non-Trivial Code To Init()
 
 One popular way of getting around this problem is to move all non-trivial might-cause-an-error code out of the constructor and into an `Init()` function.
+
+<Aside type="caution">
+This approach goes against RAII and I would recommend against it!
+</Aside>
 
 ```c++
 #include <cstdint>
@@ -280,9 +293,9 @@ Another way to solve the problem is to pass into the constructor a pointer to a 
 
 class TempSensor {
 public:
-  TempSensor(uint8_t i2cAddress, uint8_t & status) {
+  TempSensor(uint8_t i2cAddress, uint8_t& status) {
     // Validate I2C address
-    if (i2cAddress > 127) {      
+    if (i2cAddress > 127) {
       status = 1;
       return;
     }
@@ -302,6 +315,8 @@ int main() {
 }
 ```
 
+Hopefully the caller remembers to check the status variable after constructing the object, and only uses the object if the constructor succeeded.
+
 ### Provide Second Function Or Member Variable To Check If Constructor Worked
 
 The final way we will solve the constructor error problem is to save the constructor success state to the class, and then provide the caller with another function to get that state:
@@ -312,33 +327,33 @@ The final way we will solve the constructor error problem is to save the constru
 
 class TempSensor {
 public:
-  TempSensor(uint8_t i2cAddress) {
-    // Validate I2C address
-    if (i2cAddress > 127) {
-      // Returning here will mean m_initSuccessful will stay false
-      return;
+    TempSensor(uint8_t i2cAddress) {
+        // Validate I2C address
+        if (i2cAddress > 127) {
+            // Returning here will mean m_initSuccessful will stay false
+            return;
+        }
+        m_i2cAddress = i2cAddress;
+        m_initSuccessful = true;
     }
-    m_i2cAddress = i2cAddress;
-    m_initSuccessful = true;
-  }
 
-  bool initSuccessful() {
-    return m_initSuccessful;
-  }
+    bool initSuccessful() {
+        return m_initSuccessful;
+    }
 private:
-  bool m_initSuccessful = false;
-  uint8_t m_i2cAddress;
+    bool m_initSuccessful = false;
+    uint8_t m_i2cAddress;
 };
 
 int main() {
-  TempSensor tempSensor(10);
-  if(!tempSensor.initSuccessful()) {
-    printf("Initialization of temp. sensor failed.");
-  }
+    TempSensor tempSensor(10);
+    if(!tempSensor.initSuccessful()) {
+        printf("Initialization of temp. sensor failed.");
+    }
 }
 ```
 
-The boolean `m_initSuccessful` could be changed to a `uint8_t` if you want to provide the caller with more detailed information as to why the constructor failed.
+The boolean `m_initSuccessful` could be changed to a `uint8_t` if you want to provide the caller with more detailed information as to why the constructor failed. This is very similar to the "pass a status in" approach above.
 
 ## C++ And Interrupts
 
@@ -395,7 +410,7 @@ ETL is popular in the embedded community and as of September 2024 it has 2.1k st
 
 One way of adding ETL to your project is to either copy the repo or add it as a submodule. Once you have done that, you can use CMake's `add_subdirectory()`. The example below shows a `CMakeLists.txt` configuration assuming you have added the ETL repo as a submodule to `lib/etl` and you have your source code under `src/`:
 
-```cmake
+```cmake title="CMakeLists.txt"
 cmake_minimum_required(VERSION 3.22)
 project(my_project)
 
@@ -406,7 +421,7 @@ target_link_libraries(my_project PRIVATE etl::etl)
 
 My favourite way to add ETL is to use CMake's `FetchContent`, which means you don't even have to download the ETL repo manually! The example below shows how to do this:
 
-```cmake
+```cmake title="CMakeLists.txt"
 Include(FetchContent)
 
 FetchContent_Declare(
@@ -574,6 +589,10 @@ See [https://www.etlcpp.com/macros.html](https://www.etlcpp.com/macros.html) for
 The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform[^bib-iso-tech-report-cpp-performance].
 
 [The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^bib-iso-tech-report-cpp-performance]: ISO/IEC (2006, Feb 15). _ISO/IEC TR 18015:2006(E) - Technical Report on C++ Performance_. Retrieved 2022-09-29, from https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf.
 [^cpp-reference-std-array]: cppreference.com. _std::array_. Retrieved 2024-03-15, from https://en.cppreference.com/w/cpp/container/array.
