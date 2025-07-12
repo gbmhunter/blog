@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2014-04-17
 description: A style/feature guide on writing firmware (code for microcontrollers) using C++.
-lastUpdated: 2024-09-04
-tags: [c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers, NTBS, strings, pointers, MISRA, arrays, dynamic memory allocation, new, delete, malloc, free, ETL]
+lastUpdated: 2025-07-12
+tags: [c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers, NTBS, strings, pointers, MISRA, arrays, dynamic memory allocation, new, delete, malloc, free, ETL, RAII, templates, namespaces, testing, virtual functions]
 title: C++ On Embedded Systems
 type: page
 ---
@@ -19,7 +19,8 @@ This page aims to cover many of C++'s features and weigh-in on their suitability
 This is a list of all the C++ features that **you SHOULD USE in most embedded firmware**:
 
 * Classes
-* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size. Also be careful of overusing them, too much templating makes code very unreadable. 
+* RAII
+* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size. Also be careful of overusing them, too much templating makes code very unreadable.
 * Function overloading and default parameters - Makes it easy to extend functions without massive refactors! And provides more flexibility to an API.
 * Enum classes, typesafe typedefs
 * Operator overloading (when done sensibly!)
@@ -29,6 +30,7 @@ This is a list of all the C++ features that **you SHOULD USE in most embedded fi
 * `auto`
 * Smart pointers (`std::unique_ptr`, `std::shared_ptr`)
 * `std::array`
+* Embedded Template Library (ETL)
 
 These are explained in more detail in the below sub-sections.
 
@@ -37,6 +39,52 @@ These are explained in more detail in the below sub-sections.
 If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to main the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` e.t.c. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
 
 Now your functions are looking something like `Uart_Write(Uart* uart, char* bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+
+### RAII
+
+RAII is a programming technique which stands for "Resource Acquisition Is Initialization". Basically, it means you should acquire resources in the constructor of a class (e.g. allocate memory, lock a mutex, open a network connection) and release them in the destructor. This ensures that the resources are always released when the object goes out of scope.
+
+This may not sound like a big deal, but it's actually a very powerful technique which should be utilized to it's fullest extent, especially in embedded firmware. RAII will influence how you design classes and how you structure your code. RAII is enabled in C++ by the fact that all classes have a constructor and destructor which are guaranteed to be called when the object goes in and out of scope. This is not the case in C, in where the closest you can get is to make sure to call `init()` and `deinit()` functions.
+
+A classic example of RAII in the embedded world is to use RAII to make sure mutex locks are always released once the code locking the mutex is finished. To do this, you would create a `MutexLock` class which would lock the mutex in the constructor and unlock it in the destructor. You would then create a `lock()` method on the `Mutex` class which returns a `MutexLock` object. See the below C++ pseudo-code for an example:
+
+```c++
+class MutexLock {
+public:
+  MutexLock(Mutex& mutex) : m_mutex(mutex) {
+    m_mutex.lock();
+  }
+  ~MutexLock() {
+    m_mutex.unlock();
+  }
+};
+
+class Mutex {
+public:
+  MutexLock lock() {
+    return MutexLock(*this);
+  }
+private:
+  void unlock() {
+    // ...
+  }
+};
+
+// Then in your code you can do the following:
+void someFunction() {
+  Mutex mutex;
+  MutexLock mutex.lock();
+  // ...
+} // Mutex is automatically unlocked here
+```
+
+This completely gets rid of the need to manually unlock the mutex in the code. Your function may have many exit points, and you no longer have to remember to unlock the mutex at each one. Also, if you do happen to allow exceptions, the mutex will be unlocked automatically when the exception is thrown.
+
+See the [Mutex and MutexLockGuard class in my ZephyrCppToolkit library](https://github.com/gbmhunter/ZephyrCppToolkit/blob/main/include/ZephyrCppToolkit/Core/Mutex.hpp) for a real world example of this.
+
+Although your real world firmware application may have little concern about cleaning up resources in it's destructor (it normally is designed to just run forever), cleaning up suddenly becomes an important consideration if you are writing unit or integration tests for your firmware. Unit/integration tests are typically a single executable that runs many test functions. Each one of these functions will want to create a small part (unit test) or all of the application (integration test), test something, and clean up leaving no altered global state. This is where RAII comes in really handy. I design my firmware so that the root level `App` class has a destructor which cleans up all of it's contained objects. These child objects make sure they clean up their own resources, and also make sure to clean up their child objects and so on. This can mean the destructors do things like send `Exit` events to any threads and close any connections. I normally don't have to worry about `delete`, since I try to either embed objects directly in other objects, or use smart pointers to manager the memory.
+
+Designed this way, I can just let the `App` object go out of scope at the end of the test function, and all the resources will be cleaned up correctly.
 
 ### Templates
 
@@ -85,7 +133,7 @@ The below example shows how C-style enums can cause scoping/naming issues.
 
 ```c++
 enum GpsState {
-    OFF
+    OFF,
     IDLE,
     SCANNING
 };
@@ -100,7 +148,7 @@ But if we use `enum class` we avoid the naming collision:
 
 ```c++
 enum class GpsState {
-    OFF
+    OFF,
     IDLE,
     SCANNING
 };
@@ -120,6 +168,10 @@ namespace my_namespace {
 // All my stuff goes here
 }
 ```
+
+<Aside type="tip">
+I like to use `snake_case` for namespaces, to keep them visually distinct from types like classes and enums.
+</Aside>
 
 ### std::array
 
@@ -165,6 +217,39 @@ Note this only works with arrays of the same type AND same size.
 std::array<uint8_t, 4> myArray3;
 myArray3 = myArray2; // Compiler error! Different sizes
 ```
+
+### constexpr and Compile-Time Computation
+
+`constexpr` is a keyword which allows you to define a constant value at compile time. This is useful for things like array sizes, or other values which are known at compile time.
+
+`constexpr` should be preferred over `#define` for things like array sizes and other constants, as it is typed and scoped, rather the brute force text replacement nature of `#define`.
+
+```c++
+// Don't do this
+#define ARRAY_SIZE 10
+
+// Do this
+static constexpr size_t arraySize = 10;
+```
+
+`constexpr` can also be used to perform compile-time computations.
+
+### Range Based For Loops
+
+The traditional `for(int x = 0; x < arrayLength; x++)` loop is a pain to write, and is error prone if you get the range wrong (the most common mistake being to accidentally use `x <= arrayLength` instead of `x < arrayLength` which gives out-of-bounds access, woops!).
+
+C++11 introduced the range based for loop which looks normally like this: `for (auto& value : container)`. It is a more elegant way to iterate over something that is "iterable" (has a `begin()` and `end()` method). You should use this instead of the traditional `for` loop every time you are iterating over every element in a container and do not need to know the index.
+
+```c++
+std::array<uint8_t, 3> myArray = {1, 2, 3};
+
+// Range based for loop
+for (auto& value : myArray) {
+  // ...
+}
+```
+
+The most common type to use is `auto&`, which will automatically be a reference to whatever type the container holds.
 
 ## C++ Features That Could Be Used, But Only After Careful Consideration
 
@@ -583,6 +668,29 @@ For example, your `etl_profile.h` file might look like this:
 ```
 
 See [https://www.etlcpp.com/macros.html](https://www.etlcpp.com/macros.html) for a full lists of the macros you can define in `etl_profile.h`.
+
+## Common Pitfalls
+
+While I would recommend using C++ over C for embedded firmware, there are some things to be aware of.
+
+### Accidental Dynamic Memory Allocation
+
+Because more things are hidden behind constructors, templates, operator overloads and polymorphism, it is easy to accidentally call something which will allocate dynamic memory when you don't want it to.
+
+Way to avoid this is to stay clear of the `std` containers unless you know exactly what they do (use the ETL containers instead, they are designed to never call `new`).
+
+### Template Bloat
+
+Given the power of templates to generate code "on the fly", it can be easy to overuse them and suddenly consume far too much flash space with template generated code. Make sure that you are using templates where it makes sense to, and you have carefully considered the alternatives. Sometimes, rather than using templates to make your library class portable to any type, just pass things around as `void *` instead.
+
+### Virtual Function Overhead
+
+Virtual functions make things like testing with mock implementations of peripherals easy. It is worth noting that virtual functions can come with a performance penalty due to the extra layer of indirection (the virtual table pointer). However, this is a rarely an issue, and compilers are pretty good at optimizing virtual functions away in many cases. If you are concerned, profile the code and see if virtual functions are a bottleneck you cannot live with.
+
+If they are problematic, then you have a few options:
+
+* Use compile time polymorphism using templates rather than runtime polymorphism using virtual functions.
+* Use the C style trick of having a shared header file but switching out the `.cpp` implementation file based on what you are compiling for (this only works when you are happy switching out every implementation for a different one, e.g. real implementations vs. mock implementations). You can switch the `.cpp` files either by including the correct one in your build system (e.g. a CMake target), or using preprocessor macros and `#if` statements.
 
 ## More Resources
 
