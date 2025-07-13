@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2022-11-12
 description: An exploration into programming with Rust on microcontrollers.
 image: ./_assets/running-rust-on-microcontrollers.png
-lastUpdated: 2022-12-04
+lastUpdated: 2025-07-13
 tags: [Rust, programming, languages, code, software, firmware, embedded, microcontrollers, RTOS, RTIC, STM32, ESP32, Xtensa, ARM, cargo, cargo flash, svd2rust, Nordic, nRF, rustup, cross-compiling, peripheral access crates, PACs, hardware abstraction layers, HALs, board support packages, BSPs, Tock]
 title: Running Rust on Microcontrollers
 type: page
@@ -13,7 +13,7 @@ Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but
 
 **As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware**. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
 
-<Image src={import('./_assets/ewg-logo-blue-white-on-transparent.png')} width="200px">The logo of Rust's Embedded Devices Working Group[^bib-rust-embedded-working-group-repo].</Image>
+<Image src={import('./_assets/ewg-logo-blue-white-on-transparent.png')} width="200px">The logo of Rust's Embedded Devices Working Group[^rust-embedded-working-group-repo].</Image>
 
 This page aims to be an exploration into running Rust on microcontrollers (what you would consider to be low-level embedded firmware, and not running on a hosted environment such as Linux), covering things such as:
 
@@ -81,7 +81,7 @@ Another thing Rust can do is provide compile-time checks that hardware has been 
 
 > When applied to embedded programs these static checks can be used, for example, to enforce that configuration of I/O interfaces is done properly. For instance, one can design an API where it is only possible to initialize a serial interface by first configuring the pins that will be used by the interface.
 > 
-> One can also statically check that operations, like setting a pin low, can only be performed on correctly configured peripherals. For example, trying to change the output state of a pin configured in floating input mode would raise a compile error. -- The Embedded Rust Book - Static Guarantees[^bib-the-embedded-rust-book]
+> One can also statically check that operations, like setting a pin low, can only be performed on correctly configured peripherals. For example, trying to change the output state of a pin configured in floating input mode would raise a compile error. -- The Embedded Rust Book - Static Guarantees[^the-embedded-rust-book]
 
 Lets explain this with an example. We'll follow the Embedded Rust Book guide as use a GPIO pin (a very basic form of MCU peripheral) as an example, with `into_...()` named functions to convert between the different types.
 
@@ -105,13 +105,13 @@ let output_pin = input_pin.into_enabled_output_pin();
 output_pin.set(true);
 ```
 
-`svd2rust` is a command-line tool that ingests SVD files (a.k.a. `CMSIS-SVD` -- they are files that define register names, addresses and uses, you can think of them as a computer-readable version of the microcontrollers datasheet) and creates Rust PAC crates that expose the peripherals in a type-safe Rust API[^bib-svd2rust-docs]. It currently supports the Cortex-M, MSP430, RISCV and Xtensa LX6 microcontrollers[^bib-svd2rust-docs]. 
+`svd2rust` is a command-line tool that ingests SVD files (a.k.a. `CMSIS-SVD` -- they are files that define register names, addresses and uses, you can think of them as a computer-readable version of the microcontrollers datasheet) and creates Rust PAC crates that expose the peripherals in a type-safe Rust API[^svd2rust-docs]. It currently supports the Cortex-M, MSP430, RISCV and Xtensa LX6 microcontrollers[^svd2rust-docs]. 
 
 ### Traits
 
 Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The [embedded-hal](https://github.com/rust-embedded/embedded-hal) project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL. More on this in the [cargo and Package Structure section](#cargo-and-package-structure).
 
-For example, the `serial::Read` and `Write` traits are defined as[^bib-embedded-hal-serial-traits]:
+For example, the `serial::Read` and `Write` traits are defined as[^embedded-hal-serial-traits]:
 
 ```rust
 pub trait Read<Word> {
@@ -354,7 +354,7 @@ One common pattern in embedded C/C++ firmware is to use the preprocessor to make
 #endif
 ```
 
-This is made possible by the special `__LINE__`, `__FILE__` and `#exp` (where the `#` stringifies the `exp`), and the fact that the macro contents gets plonked in the source code everywhere `assert()` is called. Luckily, you can do the same thing in Rust by utilizing the `line!()`, `file!()` and `stringify!()` macros (which are compiler built-ins)[^bib-rust-lang-docs-macro-std-line].
+This is made possible by the special `__LINE__`, `__FILE__` and `#exp` (where the `#` stringifies the `exp`), and the fact that the macro contents gets plonked in the source code everywhere `assert()` is called. Luckily, you can do the same thing in Rust by utilizing the `line!()`, `file!()` and `stringify!()` macros (which are compiler built-ins)[^rust-lang-docs-macro-std-line].
 
 <Image src={import('./_assets/file-macro-in-rust-compiler-built-in.png')} width="600px">Screenshot of the file! macro source code inside the Rust standard library.</Image>
 
@@ -368,7 +368,7 @@ Rust provides two methods, `core::ptr::write_volatile()` and `core::ptr::read_vo
 
 When considering Rust for an embedded project, you'll be wondering "Is the microcontroller I used supported in Rust?". As there are so many manufacturers and MCU families out there (and a few different architectures), it all depends on exactly what you are using. We'll cover the level of Rust support of some of the popular architectures and MCU families below.
 
-Support for a particular architecture is usually added by running `rustup` (by default `rustup` only installs the standard library for your host platform[^bib-the-rustup-book-cross-compilation]):
+Support for a particular architecture is usually added by running `rustup` (by default `rustup` only installs the standard library for your host platform[^the-rustup-book-cross-compilation]):
 
 ```bash
 $ rustup target add <architecture>
@@ -385,7 +385,7 @@ The ARM Cortex-M CPU architecture is well supported by Rust, so many of the MCU 
 <table>
 <caption>
 
-Table of the supported ARM Cortex-Mx compilation targets for Rust[^bib-the-rustc-book-platform-support] [^bib-arm-processors-cortex-m3] [^bib-arm-processors-cortex-m4].
+Table of the supported ARM Cortex-Mx compilation targets for Rust[^the-rustc-book-platform-support] [^arm-processors-cortex-m3] [^arm-processors-cortex-m4].
 </caption>
 <thead>
 <tr><th>ISA</th>                                                    <th>rustup Target</th></tr>
@@ -406,7 +406,7 @@ cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
 
 <Image src={import('./_assets/cargo-cortex-m-quickstart-project-files.png')} width="800px">The resulting Cortex-M quickstart project creating by running the above cargo command.</Image>
 
-The crate [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) provides a heap allocator for Cortex-M based microcontrollers. The below code example shows how this allocator can be setup as the global allocator (so that standard collections such as `Vec` work) and used within a firmware application[^bib-github-rust-embedded-alloc-cortex-m]:
+The crate [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) provides a heap allocator for Cortex-M based microcontrollers. The below code example shows how this allocator can be setup as the global allocator (so that standard collections such as `Vec` work) and used within a firmware application[^github-rust-embedded-alloc-cortex-m]:
 
 ```rust
 #![no_std]
@@ -458,7 +458,7 @@ RISC-V architecture support in Rust is quite good. Below are the support archite
 <table>
 <caption>
 
-Table of the supported RISC-V compilation targets for Rust[^bib-the-rustc-book-platform-support].
+Table of the supported RISC-V compilation targets for Rust[^the-rustc-book-platform-support].
 </caption>
 <thead>
 <tr><th>ISA</th>                    <th>rustup Target</th></tr>
@@ -507,7 +507,7 @@ There is a great tutorial on getting Rust working on the Arduino Uno (which uses
 
 ### Atmel SAM
 
-The [atsamd-rs/atsamd](https://github.com/atsamd-rs/atsamd) GitHub repo provides various crates for working with Atmel `samd11`, `samd21`, `samd51` and `same5x` based devices using Rust[^bib-github-atsamd-rs-atsamd]. This repo provides PACs (Peripheral Access Crates) and higher level HALs (Hardware Abstraction Layers). The HALs implement traits specified by the embedded-hal project.
+The [atsamd-rs/atsamd](https://github.com/atsamd-rs/atsamd) GitHub repo provides various crates for working with Atmel `samd11`, `samd21`, `samd51` and `same5x` based devices using Rust[^github-atsamd-rs-atsamd]. This repo provides PACs (Peripheral Access Crates) and higher level HALs (Hardware Abstraction Layers). The HALs implement traits specified by the embedded-hal project.
 
 Also included in this repo are BSPs (Board Support Packages) for a number of development boards. They distinguish between _Tier 1_ and _Tier 2_ BSPs, the Tier 1 BSPs are those that are kept up-to-date with the latest version of `atsamd-hal`, whilst the Tier 2 BSPs don't (they might be locked to some past version).
 
@@ -529,7 +529,7 @@ The `esp-rs` organization also provides their own installer, [espup](https://git
 
 ### Nordic nRF
 
-The [nrf-rs/nrf-hal](https://github.com/nrf-rs/nrf-hal) repo provides a Rust HAL for the nRF51, nRF52 and nRF91 families of microcontrollers[^bib-nrf-rs-nrf-hal].
+The [nrf-rs/nrf-hal](https://github.com/nrf-rs/nrf-hal) repo provides a Rust HAL for the nRF51, nRF52 and nRF91 families of microcontrollers[^nrf-rs-nrf-hal].
 
 The default Embedded Rust tutorial now uses the micro:bit v2 (it used to use the STM32F303 Discovery Kit), which happens to have an nRF52 MCU onboard.
 
@@ -539,7 +539,7 @@ The rustup target `riscv32imac-unknown-none-elf` is available to cross-compile f
 
 ### RP2040
 
-The RP2040 is just a single chip rather than a "family", but there are a number of boards you can buy based of this IC. There is a good quality RP2040 provided by the [rp-rs/rp-hal](https://github.com/rp-rs/rp-hal) repo. This repo is organized as a Cargo Workspace which also includes a number of Board Support Crates for development boards that use this chip, including the Raspberry Pi Pico, Adafruit Feather RP2040, Adafruit ItsyBitsy RP2040, Pimoroni Pico Explorer, SolderParty RP2040 Stamp, Sparkfun Pro Micro RP2040, Sparkfun Thing Plus RP2040, and Seeeduino XIAO RP2040[^bib-github-rp-rs-rp-hal].
+The RP2040 is just a single chip rather than a "family", but there are a number of boards you can buy based of this IC. There is a good quality RP2040 provided by the [rp-rs/rp-hal](https://github.com/rp-rs/rp-hal) repo. This repo is organized as a Cargo Workspace which also includes a number of Board Support Crates for development boards that use this chip, including the Raspberry Pi Pico, Adafruit Feather RP2040, Adafruit ItsyBitsy RP2040, Pimoroni Pico Explorer, SolderParty RP2040 Stamp, Sparkfun Pro Micro RP2040, Sparkfun Thing Plus RP2040, and Seeeduino XIAO RP2040[^github-rp-rs-rp-hal].
 
 <Image src={import('./_assets/rp-hal-rust-support-for-the-rp2040-readme-screenshot.png')} width="400px">Screenshot of the rp-rs/rp-hal repo README.</Image>
 
@@ -560,24 +560,20 @@ All I needed to do is hit `F5` -- this built the code, flashed it to the STM32F3
 
 [Knurling](https://github.com/knurling-rs/) is a collection of projects by Ferrous Systems (two of their popular tools include `probe-run` and `defmt`).
 
-[semihosting](https://docs.rust-embedded.org/book/start/semihosting.html) is provided for Cortex-M MCUs via the `cortex-m` crate. semihosting allows you to log debug messages to the host via the attached debugger with no extra cables (e.g. USB-to-UART devices). The disadvantage is that it's slow. A single message can take many many milliseconds depending on the attached debugger you re using. The `panic-semihosting` crate can be also used to provide useful panic messages on the host. ITM is a faster option than semihosting but is only available on Cortex-M3's and higher. RTT could be a even better option (being available on most targets/programmers like semihosting, but being fast like ITM)[^bib-github-issues-rust-embedded-book-discourage-semihosting]. It is mostly platform agnostic and just depends on the debug probe supporting background target memory access. Once enabled you can use the `rprintln!()` macro. I have not used this yet though so can't comment much!
+[semihosting](https://docs.rust-embedded.org/book/start/semihosting.html) is provided for Cortex-M MCUs via the `cortex-m` crate. semihosting allows you to log debug messages to the host via the attached debugger with no extra cables (e.g. USB-to-UART devices). The disadvantage is that it's slow. A single message can take many many milliseconds depending on the attached debugger you re using. The `panic-semihosting` crate can be also used to provide useful panic messages on the host. ITM is a faster option than semihosting but is only available on Cortex-M3's and higher. RTT could be a even better option (being available on most targets/programmers like semihosting, but being fast like ITM)[^github-issues-rust-embedded-book-discourage-semihosting]. It is mostly platform agnostic and just depends on the debug probe supporting background target memory access. Once enabled you can use the `rprintln!()` macro. I have not used this yet though so can't comment much!
 
 ## Rust RTOSes
 
-No language can claim to be suitable for embedded programming without a selection of RTOSes to choose from. Luckily, Rust has some, from Rust wrappers of existing C/C++ RTOSes (such FreeRTOS and RIOT) to RTOSes built from scratch to run on Rust (such as RTIC, Embassy and Tock). Lets review some of the popular options available to Rust developers.
-
-### FreeRTOS Wrappers
-
-* [hashmismatch/freertos.rs](https://github.com/hashmismatch/freertos.rs): Unfortunately this one repo does not look like it has had any active development for a number of years.
-* [lobaro/FreeRTOS-rust](https://github.com/lobaro/FreeRTOS-rust): Actively seeks to improve on `hashmismatch/freertos.rs` and simplify the usage of FreeRTOS from Rust.
+No language can claim to be suitable for embedded programming without a selection of RTOSes to choose from. Luckily, Rust has some, from Rust wrappers of existing C/C++ RTOSes (such as [FreeRTOS](/programming/operating-systems/freertos/), [Zephyr](/programming/operating-systems/zephyr/) and RIOT) to RTOSes built from scratch to run on Rust (such as RTIC, Embassy and Tock). Lets review some of the popular options available to Rust developers.
 
 ### RTIC
 
-RTIC (_Real-Time Interrupt-driven Concurrency_) is an interesting approach to an RTOS that seems to have a decent amount of actively development and community support. All tasks share a single call stack, and deadlock-free execution is guaranteed at compile time.
+RTIC (_Real-Time Interrupt-driven Concurrency_) is an interesting approach to an RTOS that seems to have a decent amount of actively development and community support. All tasks share a single call stack (this is possible due to the run-to-completion model), and deadlock-free execution is guaranteed at compile time.
 
 | Property           | Value
 |--------------------|------------------
 | Scheduling         | Interrupt-based preemptive with priority
+| Native Rust        | Yes
 | Num. Repo Stars    | 1k
 | Num. Repo Commits  | 1.1k
 
@@ -585,13 +581,69 @@ RTIC (_Real-Time Interrupt-driven Concurrency_) is an interesting approach to an
 
 ### Embassy
 
-_Embassy_ primarily supports co-operative multitasking over preemptive scheduling. However, it does let you create multiple executors with different priorities, so you can get preemption if you need it. It leverages the use of Rust's [async/await](https://rust-lang.github.io/async-book/). The scheduler runs all tasks on a single stack. It also provides a suite of libraries such as embassy-net for IP networking, embassy-lora for LoRa networking, embassy-usb for USB devices and embassy-boot for a bootloader.
+<Image src={import('./_assets/embassy-logo.webp')} width="300px"/>
+
+_Embassy_ primarily supports co-operative multitasking over preemptive scheduling. It is named after EMBedded ASYnc.[^github-embassy-homepage] However, it does let you create multiple executors with different priorities, so you can get preemption if you need it. It leverages the use of Rust's [async/await](https://rust-lang.github.io/async-book/). The scheduler runs all tasks in a executor on a single stack, saving stack space compared to a traditional RTOS.
 
 | Property           | Value
 |--------------------|------------------
 | Scheduling         | Co-operative
-| Num. Repo Stars    | 1.2k
-| Num. Repo Commits  | 3.4k
+| Native Rust        | Yes
+| Num. Repo Stars    | 7.1k
+| Num. Repo Commits  | 10.4k
+
+Metrics last updated July 2025.[^github-embassy-homepage]
+
+Here is an example plucked straight from the Embassy homepage:[^github-embassy-homepage]
+
+```rust
+use defmt::info;
+use embassy_executor::Spawner;
+use embassy_time::{Duration, Timer};
+use embassy_nrf::gpio::{AnyPin, Input, Level, Output, OutputDrive, Pin, Pull};
+use embassy_nrf::{Peri, Peripherals};
+
+// Declare async tasks
+#[embassy_executor::task]
+async fn blink(pin: Peri<'static, AnyPin>) {
+    let mut led = Output::new(pin, Level::Low, OutputDrive::Standard);
+
+    loop {
+        // Timekeeping is globally available, no need to mess with hardware timers.
+        led.set_high();
+        Timer::after_millis(150).await;
+        led.set_low();
+        Timer::after_millis(150).await;
+    }
+}
+
+// Main is itself an async task as well.
+#[embassy_executor::main]
+async fn main(spawner: Spawner) {
+    let p = embassy_nrf::init(Default::default());
+
+    // Spawned tasks run in the background, concurrently.
+    spawner.spawn(blink(p.P0_13.into())).unwrap();
+
+    let mut button = Input::new(p.P0_11, Pull::Up);
+    loop {
+        // Asynchronously wait for GPIO events, allowing other tasks
+        // to run, or the core to sleep.
+        button.wait_for_low().await;
+        info!("Button pressed!");
+        button.wait_for_high().await;
+        info!("Button released!");
+    }
+}
+```
+
+It also provides a suite of libraries such as embassy-net for IP networking, embassy-lora for LoRa networking, embassy-usb for USB devices and embassy-boot for a bootloader. Embassy works with `probe-rs` for programming and debugging.
+
+One potential downside is that async/await forces your code to be sequential. I am a big proponent of event driven state machines, which allow for you to handle multiple possible code paths in parallel. I have found that the sequential nature of async/await can be hard to work with writing complex real world embedded firmware that needs to deal with things like timeouts, emergency shutdowns, and other things rather than the default "happy path".
+
+Embassy provides it's own HAL for most microcontrollers, which is different from the approach of many other RTOSes which just use the "default" HAL crate for the microcontroller family.
+
+Check out the [nRF52 DK Embassy Tutorial](/programming/operating-systems/embassy/nrf52-dk-tutorial/) for a step-by-step guide to getting started with Embassy on the nRF52 DK.
 
 ### Tock
 
@@ -602,10 +654,11 @@ _Embassy_ primarily supports co-operative multitasking over preemptive schedulin
 | Property           | Value
 |--------------------|------------------
 | Scheduling         | Preemptive
+| Native Rust        | No
 | Num. Repo Stars    | 4k
 | Num. Repo Commits  | 11k
 
-<Image src={import('./_assets/tock-architecture-diagram.png')} width="700px">Architecture block diagram for the Tock RTOS. Image from the Tock documentation[^bib-tock-tock-design].</Image>
+<Image src={import('./_assets/tock-architecture-diagram.png')} width="500px">Architecture block diagram for the Tock RTOS. Image from the Tock documentation[^tock-tock-design].</Image>
 
 Some of Tock is not completely baked into Rust, for example you have to break out of the Rust ecosystem and call `make` to program the kernel onto your board. Once the kernel is programmed onto your board, you can then use their own `tockloader` program to flash the application code.
 
@@ -616,8 +669,14 @@ Some of Tock is not completely baked into Rust, for example you have to break ou
 | Property           | Value
 |--------------------|------------------
 | Scheduling         | Interrupt-based pre-emptive with priority
+| Native Rust        | Yes
 | Num. Repo Stars    | 361 (drone-core)
 | Num. Repo Commits  | 251 (drone-core)
+
+### FreeRTOS Wrappers
+
+* [hashmismatch/freertos.rs](https://github.com/hashmismatch/freertos.rs): Unfortunately this one repo does not look like it has had any active development for a number of years.
+* [lobaro/FreeRTOS-rust](https://github.com/lobaro/FreeRTOS-rust): Actively seeks to improve on `hashmismatch/freertos.rs` and simplify the usage of FreeRTOS from Rust.
 
 ## Rust Speed and Memory Usage
 
@@ -645,7 +704,7 @@ If you wanted overflow checking even in a `--release` build, you can use the `ch
 1. We can then benefit from GCC's really good optimization (which is distinct from LLVM)
 2. We have another Rust compiler to choose from (which is normally a good thing!) 
 
-> As this is a front-end project, the compiler will gain full access to all of GCC’s internal middle-end optimization passes which are distinct from LLVM. -- GCC Front-End For Rust[^bib-rust-gcc-homepage].
+> As this is a front-end project, the compiler will gain full access to all of GCC’s internal middle-end optimization passes which are distinct from LLVM. -- GCC Front-End For Rust[^rust-gcc-homepage].
 
 There are some interesting benchmarks of Rust against C++ at https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust-gpp.html. Rust is clearly faster in 4 of the benchmarks, C++ is clearly faster in 3 of them, and for the remaining 3 they are basically identical.
 
@@ -669,23 +728,31 @@ The GitHub repo [rust-embedded/awesome-embedded-rust](https://github.com/rust-em
 
 You can have a play around with Rust using an online editor/compiler such as [Replit](https://replit.com/new/rust). Or if you prefer running something locally, install `cargo` and then initialize a new project with `cargo new hello_world --bin` (this will be for running on your computer, not on a microcontroller).
 
-## References
+The website [Are We RTOS Yet?](https://arewertosyet.com/) tracks the progress of RTOSes in Rust.
 
-[^bib-rust-embedded-working-group-repo]: Rust Embedded. _Embedded Devices Working Group (repository)_. GitHub. Retrieved 2022-11-12, from https://github.com/rust-embedded/wg.
-[^bib-the-embedded-rust-book]: Rust Embedded. _The Embedded Rust Book_. Retrieved 2022-11-14, from https://docs.rust-embedded.org/book/. 
-[^bib-svd2rust-docs]: svd2rust. _Crate svd2rust (documentation)_. Retrieved 2022-11-14, from https://docs.rs/svd2rust/latest/svd2rust/.
-[^bib-nrf-rs-nrf-hal]: nrf-rs. _nrf-hal (Git repository)_. Retrieved 2022-11-14, from https://github.com/nrf-rs/nrf-hal.
-[^bib-the-rustup-book-cross-compilation]: rust-lang. _The rustup book: Cross-compilation_. Retrieved 2022-11-14, from https://rust-lang.github.io/rustup/cross-compilation.html.
-[^bib-the-rustc-book-platform-support]: rust-lang. _The rustc book: Platform Support_. Retrieved 2022-11-15, from https://doc.rust-lang.org/nightly/rustc/platform-support.html.
-[^bib-arm-processors-cortex-m3]: ARM Developer. _Processors: Cortex-M3_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M3. 
-[^bib-arm-processors-cortex-m4]: ARM Developer. _Processors: Cortex-M4_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M4. 
+<Image src={import('./_assets/are-we-rtos-yet-stats.webp')} width="600px">Screenshot of the Are We RTOS Yet? website showing the stats for the RTOSes in Rust.[^are-we-rtos-yet-homepage]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+ 
+[^rust-embedded-working-group-repo]: Rust Embedded. _Embedded Devices Working Group (repository)_. GitHub. Retrieved 2022-11-12, from https://github.com/rust-embedded/wg.
+[^the-embedded-rust-book]: Rust Embedded. _The Embedded Rust Book_. Retrieved 2022-11-14, from https://docs.rust-embedded.org/book/. 
+[^svd2rust-docs]: svd2rust. _Crate svd2rust (documentation)_. Retrieved 2022-11-14, from https://docs.rs/svd2rust/latest/svd2rust/.
+[^nrf-rs-nrf-hal]: nrf-rs. _nrf-hal (Git repository)_. Retrieved 2022-11-14, from https://github.com/nrf-rs/nrf-hal.
+[^the-rustup-book-cross-compilation]: rust-lang. _The rustup book: Cross-compilation_. Retrieved 2022-11-14, from https://rust-lang.github.io/rustup/cross-compilation.html.
+[^the-rustc-book-platform-support]: rust-lang. _The rustc book: Platform Support_. Retrieved 2022-11-15, from https://doc.rust-lang.org/nightly/rustc/platform-support.html.
+[^arm-processors-cortex-m3]: ARM Developer. _Processors: Cortex-M3_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M3. 
+[^arm-processors-cortex-m4]: ARM Developer. _Processors: Cortex-M4_. Retrieved 2022-11-15, from https://developer.arm.com/Processors/Cortex-M4. 
 [^wikipedia-rust]: Wikipedia (2022, Nov 11). _Rust (programming language)_. Retrieved 2022-11-19, from https://en.wikipedia.org/wiki/Rust_(programming_language).
-[^bib-embedded-rust-book-portability]: Rust Embedded. _The Embedded Rust Book - Portability_. Retrieved 2022-11-19, from https://docs.rust-embedded.org/book/portability/.
-[^bib-github-atsamd-rs-atsamd]: atsamd-rs. _atsamd & atsame support for Rust (Git repository)_. Retrieved 2022-11-21, from https://github.com/atsamd-rs/atsamd.
-[^bib-tock-tock-design]: Tock (2022, Jul 27). _Tock Design (Markdown documentation)_. Retrieved 2022-11-23, from https://github.com/tock/tock/blob/master/doc/Design.md.
-[^bib-github-rp-rs-rp-hal]: rp-rs GitHub Organization. _Rust support for the "Raspberry Silicon" family of microcontrollers_. Retrieved 2022-11-28, from https://github.com/rp-rs/rp-hal.
-[^bib-rust-lang-docs-macro-std-line]: Rust Language Docs. _Macro std::line_. Retrieved 2022-11-29, from https://doc.rust-lang.org/std/macro.line.html.
-[^bib-github-rust-embedded-alloc-cortex-m]: Rust Embedded. _alloc-cortex-m - A heap allocator for Cortex-M processors (repository)_. Retrieved 2022-11-30, from https://github.com/rust-embedded/alloc-cortex-m.
-[^bib-embedded-hal-serial-traits]: Embedded HAL. _Module embedded_hal::serial (documentation)_. Retrieved 2022-12-05, from https://docs.rs/embedded-hal/latest/embedded_hal/serial/.
-[^bib-github-issues-rust-embedded-book-discourage-semihosting]: rust-embedded/book. _Discourage use of semihosting and mention viable alternatives #257 (GitHub issue)_. Retrieved 2022-12-05, from https://github.com/rust-embedded/book/issues/257.
-[^bib-rust-gcc-homepage]: rust-gcc. _GCC Front-End For Rust - Homepage_. Retrieved 2022-12-11, from https://rust-gcc.github.io/.
+[^embedded-rust-book-portability]: Rust Embedded. _The Embedded Rust Book - Portability_. Retrieved 2022-11-19, from https://docs.rust-embedded.org/book/portability/.
+[^github-atsamd-rs-atsamd]: atsamd-rs. _atsamd & atsame support for Rust (Git repository)_. Retrieved 2022-11-21, from https://github.com/atsamd-rs/atsamd.
+[^tock-tock-design]: Tock (2022, Jul 27). _Tock Design (Markdown documentation)_. Retrieved 2022-11-23, from https://github.com/tock/tock/blob/master/doc/Design.md.
+[^github-rp-rs-rp-hal]: rp-rs GitHub Organization. _Rust support for the "Raspberry Silicon" family of microcontrollers_. Retrieved 2022-11-28, from https://github.com/rp-rs/rp-hal.
+[^rust-lang-docs-macro-std-line]: Rust Language Docs. _Macro std::line_. Retrieved 2022-11-29, from https://doc.rust-lang.org/std/macro.line.html.
+[^github-rust-embedded-alloc-cortex-m]: Rust Embedded. _alloc-cortex-m - A heap allocator for Cortex-M processors (repository)_. Retrieved 2022-11-30, from https://github.com/rust-embedded/alloc-cortex-m.
+[^embedded-hal-serial-traits]: Embedded HAL. _Module embedded_hal::serial (documentation)_. Retrieved 2022-12-05, from https://docs.rs/embedded-hal/latest/embedded_hal/serial/.
+[^github-issues-rust-embedded-book-discourage-semihosting]: rust-embedded/book. _Discourage use of semihosting and mention viable alternatives #257 (GitHub issue)_. Retrieved 2022-12-05, from https://github.com/rust-embedded/book/issues/257.
+[^rust-gcc-homepage]: rust-gcc. _GCC Front-End For Rust - Homepage_. Retrieved 2022-12-11, from https://rust-gcc.github.io/.
+[^github-embassy-homepage]: GitHub. _embassy-rs > embassy_ [Git repository]. Retrieved 2025-07-13, from https://github.com/embassy-rs/embassy.
+[^are-we-rtos-yet-homepage]: Are We RTOS Yet? _Are We RTOS Yet?_ [homepage]. Retrieved 2025-07-13, from https://arewertosyet.com/.

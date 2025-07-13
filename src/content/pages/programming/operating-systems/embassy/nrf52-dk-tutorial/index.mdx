@@ -1,10 +1,10 @@
 ---
 authors: [gbmhunter]
-date: 2025-07-03
-description: Embassy is a Rust framework for building embedded applications.
-lastUpdated: 2025-07-03
-tags: [programming, operating systems, Embassy, Rust]
-title: Embassy
+date: 2025-07-13
+description: A step-by-step guide to building an Embassy application for the nRF52 DK.
+lastUpdated: 2025-07-13
+tags: [programming, operating systems, Embassy, Rust, nRF52 DK, nRF52832, J-Link, probe-rs, usbipd, cargo run, cargo build, cargo flash, cargo embed]
+title: nRF52 DK Embassy Tutorial
 type: page
 ---
 
@@ -92,7 +92,7 @@ target = "thumbv7em-none-eabi"
 DEFMT_LOG = "trace"
 ```
 
-Also create a `memory.x` file with the following contents:
+Also create a `memory.x` file in the project root directory with the following contents:
 
 ```text title="memory.x"
 MEMORY
@@ -102,6 +102,8 @@ MEMORY
   RAM : ORIGIN = 0x20000000, LENGTH = 64K
 }
 ```
+
+`memory.x` is used to tell the linker where to put the code and data in the flash and RAM. This file will change depending on the microcontroller you are using.
 
 ## Installing Dependencies and Building
 
@@ -159,7 +161,7 @@ cargo build
 
 ## Pass-through nRF52 DK USB device to WSL
 
-Using usbipd, I can pass-through the connected nRF52 DK from Windows into WSL. First you have to bind the USB device from a terminal on Windows with admin privileges:
+Plugging the nRF52 DK into my Windows computer, the J-Link based debugger is detected. Using [usbipd](https://github.com/dorssel/usbipd-win), I can pass-through the connected nRF52 DK from Windows into WSL. First you have to bind the USB device from a terminal on Windows with admin privileges:
 
 ```bash
 usbipd bind -i 1366:1051
@@ -181,11 +183,14 @@ The following debug probes were found:
 
 ## Flashing the nRF52 DK
 
-We can now flash the nRF52 DK using `cargo run`:
+Now that we have attached the debugger, we can now flash the nRF52 DK using `cargo run`:
 
 ```bash
 cargo run
 ```
+
+<Image src={import('./_assets/cargo-run-programming-nrf52-dk.webp')} width="900px">Screenshot of the `cargo run` command flashing the nRF52 DK.</Image>
+
 
 
 

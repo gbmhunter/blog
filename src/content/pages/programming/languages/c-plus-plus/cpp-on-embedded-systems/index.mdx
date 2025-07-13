@@ -36,9 +36,21 @@ These are explained in more detail in the below sub-sections.
 
 ### Classes
 
-If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to main the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` e.t.c. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
+If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to maintain the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` e.t.c. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
 
-Now your functions are looking something like `Uart_Write(Uart* uart, char* bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+Now your functions are looking something like `Uart_Write(Uart* uart, char* bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**. But proper classes provide a more readable and maintainable way to do this. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+
+### Polymorphism
+
+Hand-in-hand with classes and inheritance is the concept of polymorphism. Polymorphism is when different child objects can be treated as an object of a common parent type. I have found this most useful in embedded firmware for writing unit and integration tests.
+
+You can define abstract base classes which define the interface for your microcontroller peripherals. Then the real and mock implementations of this can inherit from this and provide the desired functionality. The real class would talk to the actual hardware (either directly to registers or via a HAL/driver). The mock class would just keep track of function calls and store passes in data for verify during testing.
+
+This is called runtime polymorphism, and may have a small overhead due to the virtual table pointer. However, this is rarely an issue, and if it is, you can always use compile time polymorphism instead (or switch out the `.cpp` files based on what you are compiling for). More on this below.
+
+<Aside type="caution">
+Don't go crazy with polymorphism. Be aware that every layer of abstraction adds more complexity when it comes to understanding the code. You can no longer "ctrl-click" on a function call to see where it is implemented (if it is a function call to the interface). Instead, you need to know which child class is being used, and follow that. Use it wisely and make sure to keep the code as readable as possible.
+</Aside>
 
 ### RAII
 
