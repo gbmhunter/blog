@@ -641,6 +641,39 @@ It also provides a suite of libraries such as embassy-net for IP networking, emb
 
 One potential downside is that async/await forces your code to be sequential. I am a big proponent of event driven state machines, which allow for you to handle multiple possible code paths in parallel. I have found that the sequential nature of async/await can be hard to work with writing complex real world embedded firmware that needs to deal with things like timeouts, emergency shutdowns, and other things rather than the default "happy path".
 
+Saying that, Embassy does provide a `select` function that allows you to wait for multiple events (futures) at the same time. Here is an example of how to use it:
+
+```rust title="main.rs"
+#![no_std]
+#![no_main]
+
+use defmt;
+use embassy_executor::Spawner;
+use embassy_nrf::gpio::{AnyPin, Level, Pin, Output, OutputDrive};
+use embassy_time::{Duration, Ticker, Timer};
+use {defmt_rtt as _, panic_probe as _};
+use embassy_futures::select::{select, Either};
+
+#[embassy_executor::main]
+async fn main(spawner: Spawner) {
+    let p = embassy_nrf::init(Default::default());
+
+    spawner.spawn(blink(p.P0_17.degrade())).unwrap();
+
+    defmt::info!("Application has started.");
+
+    let mut ticker1 = Ticker::every(Duration::from_millis(1000));
+    let mut ticker2 = Ticker::every(Duration::from_millis(1200));
+
+    loop {
+        match select(ticker1.next(), ticker2.next()).await {
+            Either::First(_) => defmt::info!("1000ms timer"),
+            Either::Second(_) => defmt::info!("1200ms timer"),
+        }
+    }
+}
+```
+
 Embassy provides it's own HAL for most microcontrollers, which is different from the approach of many other RTOSes which just use the "default" HAL crate for the microcontroller family.
 
 Check out the [nRF52 DK Embassy Tutorial](/programming/operating-systems/embassy/nrf52-dk-tutorial/) for a step-by-step guide to getting started with Embassy on the nRF52 DK.

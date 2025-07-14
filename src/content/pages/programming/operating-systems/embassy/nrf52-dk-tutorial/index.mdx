@@ -54,6 +54,16 @@ cargo new nrf52-example
 
 This will create a new directory called `nrf52-example` and populate it  with a `Cargo.toml` file and a `src` directory containing a `main.rs`.
 
+## Opening the Project in VSCode
+
+This tutorial assumes you are using VSCode, although most IDEs will work similarly. Open the newly created project folder `~/nrf52-example` in VSCode.
+
+Install the [Rust Analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) extension for VSCode. Without this, VS Code will give you syntax highlighting for Rust code, but not much else.
+
+<Image src={import('./_assets/rust-analyzer-extension-screenshot.webp')} width="600px">Screenshot of the Rust Analyzer extension for VSCode.</Image>
+
+## Updating the Files
+
 Replace the contents of `main.rs` with the following, which is a basic blinky program for LED1 which is connected to pin `P0.17`.
 
 ```rust
@@ -79,11 +89,27 @@ async fn main(_spawner: Spawner) {
 }
 ```
 
-Next, create a file at the path `.cargo/config.toml` with the following contents (this is copied from the [Embassy example config.toml file](https://github.com/embassy-rs/embassy/blob/main/examples/nrf52840/.cargo/config.toml)):
+`no_std` is used to tell the compiler not to add or link against the standard Rust library, instead just relying on the core library (which is a subset of the standard library).
+
+`no_main` is used to tell the compiler not to look for a `main` function. A `main` function will still be defined, but this is taken care of us by Embassy.
+
+At this point, `rust-analyzer` should give you the following error:
+
+<Image src={import('./_assets/rust-analyzer-cant-find-crate-for-test-error.webp')} width="600px">Screenshot of the `rust-analyzer` error before modifying the settings.</Image>
+
+To fix this, add the following to you `.vscode/settings.json` file:
+
+```json title=".vscode/settings.json"
+{
+    "rust-analyzer.check.allTargets": false
+}
+```
+
+Next, create a file at the path `.cargo/config.toml` with the following contents (this is mostly copied from the [Embassy example config.toml file](https://github.com/embassy-rs/embassy/blob/main/examples/nrf52840/.cargo/config.toml), but with the `--allow-erase-all` flag added to the `runner` line):
 
 ```toml title=".cargo/config.toml"
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "probe-rs run --chip nRF52832_xxAA"
+runner = "probe-rs run --chip nRF52832_xxAA --allow-erase-all"
 
 [build]
 target = "thumbv7em-none-eabi"
@@ -91,6 +117,8 @@ target = "thumbv7em-none-eabi"
 [env]
 DEFMT_LOG = "trace"
 ```
+
+The `runner =` line tells cargo what to do when you run `cargo run`. This will be used to program the nRF52 DK.
 
 Also create a `memory.x` file in the project root directory with the following contents:
 
@@ -109,7 +137,7 @@ MEMORY
 
 Although you can add dependencies with `cargo add`, there are quite a few features for some of the dependencies that need adding. The easiest way to do this is to edit the `Cargo.toml` file.
 
-I grabbed the `Cargo.toml` file from the Embassy nRF52840 example, and removed all the `path = ...` statements. It ended up looking like this:
+I grabbed the `Cargo.toml` file from the Embassy nRF52840 example, and removed all the `path = ...` statements (it was using relative paths to the dependencies). It ended up looking like this:
 
 ```toml title="Cargo.toml"
 [package]
@@ -191,7 +219,110 @@ cargo run
 
 <Image src={import('./_assets/cargo-run-programming-nrf52-dk.webp')} width="900px">Screenshot of the `cargo run` command flashing the nRF52 DK.</Image>
 
+<Aside type="note">
+You might notice that `cargo run` does not return you to the terminal. This is because is opens up serial communication via RTT so that you can print information. More on this below.
+</Aside>
+
+If you have multiple debuggers attached, `probe-rs` will ask you to select which one to use.
+
+<Image src={import('./_assets/probe-rs-multiple-debuggers-attached-asks-for-selection.webp')} width="800px">Screenshot of `probe-rs` asking you to select which debugger to use.</Image>
+
+The first time I tried to program the nRF52 DK, I got the following error:
+
+```text
+ WARN probe_rs::vendor::nordicsemi::sequences::nrf52: Core is locked. Erase procedure will be started to unlock it.
+Error: Connecting to the chip was unsuccessful.
+
+Caused by:
+    0: An ARM specific error occurred.
+    1: An operation could not be performed because it lacked the permission to do so: erase_all
+```
+
+I managed to fix this by adding the flag `--allow-erase-all` to the `probe-rs run` command in the `.cargo/config.toml` file.
+
+```toml title=".cargo/config.toml"
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-rs run --chip nRF52832_xxAA --allow-erase-all"
+```
+
+<Image src={import('./_assets/probe-rs-lacking-permission-to-erase-all.webp')} width="800px">Screenshot of `probe-rs` lacking permission to erase all.</Image>
 
 
+## Adding Logging
 
+Logging is trivial to add to this project. First, we need to import `defmt` with:
 
+```rust
+use defmt;
+```
+
+And then we can log a info level message with:
+
+```rust
+defmt::info!("Hello, world!");
+```
+
+<Image src={import('./_assets/hello-world-log-from-embassy.webp')} width="800px">The output I get when using `defmt` to log a message.</Image>
+
+## A Slightly More Complex Example
+
+The above example was trivially simple, so let's expand on it a bit. Let's add a second executor, and make that responsible for blinking the LED. We will re-purpose the primary executor to show how to use `select` to wait for multiple events (futures) at the same time.
+
+The basic syntax for `select` is:
+
+```rust
+match select(future1, future2).await {
+    // ...
+}
+```
+
+`select` will return as soon as one of the futures is ready. A `match` statement can then be used to work out what future is ready and handle it appropriately.
+
+<Aside type="note">
+`select` is defined for 2-4 futures with `select`, `select3` and `select4`. If you have more than 4, you can pass in an array of futures instead.
+</Aside>
+
+Update our `main.rs` file to look like this:
+
+```rust title="main.rs"
+#![no_std]
+#![no_main]
+
+use defmt;
+use embassy_executor::Spawner;
+use embassy_nrf::gpio::{AnyPin, Level, Pin, Output, OutputDrive};
+use embassy_time::{Duration, Ticker, Timer};
+use {defmt_rtt as _, panic_probe as _};
+use embassy_futures::select::{select, Either};
+
+#[embassy_executor::main]
+async fn main(spawner: Spawner) {
+    let p = embassy_nrf::init(Default::default());
+
+    spawner.spawn(blink(p.P0_17.degrade())).unwrap();
+
+    defmt::info!("Application has started.");
+
+    let mut ticker1 = Ticker::every(Duration::from_millis(1000));
+    let mut ticker2 = Ticker::every(Duration::from_millis(1200));
+
+    loop {
+        match select(ticker1.next(), ticker2.next()).await {
+            Either::First(_) => defmt::info!("1000ms timer"),
+            Either::Second(_) => defmt::info!("1200ms timer"),
+        }
+    }
+}
+
+#[embassy_executor::task]
+async fn blink(pin: AnyPin) {
+    let mut led = Output::new(pin, Level::Low, OutputDrive::Standard);
+
+    loop {
+        led.set_high();
+        Timer::after_millis(150).await;
+        led.set_low();
+        Timer::after_millis(150).await;
+    }
+}
+```
