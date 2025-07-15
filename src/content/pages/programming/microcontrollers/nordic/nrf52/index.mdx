@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2025-03-03
 description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-06-19
+lastUpdated: 2025-07-15
 tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength, comparators, COMP, SAADC, NFC, NFCT, Zephyr, shell]
 title: nRF52
 type: page
@@ -200,6 +200,16 @@ As of May 2025, Nordic has the following firmware code examples relating to NRC:
 * **NFC - TNEP poller**: Uses the TNEP for polling device library to exchange data using an NFC polling device.
 * **NFC - TNEP tag**: Uses the TNEP for tag device library to exchange data using NFC's TNEP Protocol on an NFC Tag device.
 * **NFC - Writable NDEF message**: Exposes an NDEF message that can be overwritten with any other NDEF message by an NFC device.
+
+## Internal RC Oscillator
+
+To enable the internal RC oscillator, add the following to your `prj.conf` file:
+
+```text
+CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
+```
+
+By default, `CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC_CALIBRATION=y` is set which means the calibration parameters will be used to make the RC oscillator more accurate.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

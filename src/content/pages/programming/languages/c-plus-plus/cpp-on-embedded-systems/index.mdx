@@ -637,6 +637,14 @@ etl::string_ext<10> myString(buffer, etl::size(buffer));
 
 ETL strings are safe from overflow and other issues typically associated with raw C-style strings (`char *`). ETL strings have an internal flag which records the truncation state. If a string is constructed, assigned or modified in any way that the text contained would have exceeded it's capacity then the truncation flag is set. The truncation flag is also propagated to other strings if it is built up from the originally truncated string, even if the resulting string is not truncated. This is useful behaviour that let's you check if a string is valid or not after many operations. It is similar to how the special float value `NaN` propagates to all other floats involved in a calculation with it.
 
+You can format things like integers and floats into a string using the `etl::to_string` function, provided by the `<etl/to_string.h>` header file.
+
+```c++
+etl::string<20> text = "Number is: ";
+etl::to_string(5, text, true); // Make sure to append as to not overwrite "Number is: "
+// String is now "Number is: 5"
+```
+
 Sometimes you will have to pass a ETL string to a function that expects a `char *`. Just like with `std::string`, you can use the `.c_str()` method to get a `char *` from an ETL string.
 
 ### String Views

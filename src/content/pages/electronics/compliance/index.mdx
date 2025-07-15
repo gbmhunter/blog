@@ -1,10 +1,10 @@
 ---
 authors: [gbmhunter]
 date: 2025-02-11
-description: Info on compliance.
-lastUpdated: 2025-02-27
+description: Info on various compliance related matters and standards for embedded systems, involving electronics and firmware.
+lastUpdated: 2025-07-15
 tags: [compliance, IEC 61058-1, IEC 62368-1, standards, IEC 60730-2-7, timers, switches]
-title: Compliance
+title: Compliance and Standards
 type: page
 ---
 
@@ -79,9 +79,36 @@ Energy sources are classified into 3 classes:
 * ES2: Generally, ES2 is considered as a non-hazardous voltage and is expected to supply up to 100W under normal and single fault conditions.
 * ES3: ES3 has no voltage or current limits and is considered hazardous. An example would be 230VAC mains power.
 
+## EN 18031
+
+The European Commission in January 2025 officially listed the EN 18031 series in the Official Journal (OJ) of the European Union under the Radio Equipment Directive (RED). These standards address cybersecurity requirements that will become mandatory from August 1, 2025.[^nemko-cybersecurity-en-18031]
+
+In 2022, cybersecurity requirements were added to RED:
+
+* EN 18031-1, RED 3.3 (d): Protection against network harm and service degradation
+* EN 18031-2, RED 3.3 (e): Safeguards for personal data and user privacy
+* EN 18031-3, RED 3.3 (f): Measures to prevent fraud in radio equipment handling virtual currency
+
+Some of the general mechanisms defined are:[^applus-laboratories-en-18031-understanding-standard]
+
+* **Access Control Mechanism (ACM)**: The equipment shall have appropriate access control mechanisms to manage access to security/network assets and shall ensure only authorize entities have access.
+* **Authentication Mechanism (AUM)**: Authentication Mechanism shall be present for managing access to read, modify or use network function configuration or security parameters.
+* **Secure Update Mechanism (SUM)**: Secure update mechanism is present and new software can be installed with integrity and authenticity.
+* **Secure Storage Mechanism (SSM)**: Secure Storage mechanism shall be present to protect assets for confidentiality and integrity properties.
+* **Secure Communication Mechanism (SCM)**: Secure Communication mechanism shall exist to protect communication of assets and be a secure mechanism to gain integrity, authenticity confidentiality and anti-replay properties.
+* **Resilience Mechanisms (RSM)**: Mitigate effects of DDoS (Denial of Service).
+* **Network Monitoring Mechanism (NMM)**: To detect attacks of DDOs.
+* **Traffic Control Mechanism (TCM)**: Mechanism to detect malicious behavior.
+* **Confidential Cryptographic Keys (CCK)**: Verify the appropriateness of the keys, of the generation mechanisms, preventing static values of the keys.
+* **General Equipment Capabilities (GEC)**: Up-to-date software and hardware with no publicly known exploitable vulnerabilities and limit exposure services via related network interfaces as well as configuration of optional services, exposure of physical interface only when needed.
+* **Cryptography (CRY)**: Best practice cryptography.
+
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^bsi-knowledge-bs-en-iec-61058-1-2018]: BSI Knowledge. _BS EN IEC 61058-1:2018 - TC - Switches for appliances - General requirements_. Retrieved 2025-02-27, from https://knowledge.bsigroup.com/products/switches-for-appliances-general-requirements.
 [^iec-iec-60730-2-7-2015]: IEC. _IEC 60730-2-7:2015 - Automatic electrical controls - Part 2-7: Particular requirements for timers and time switches_ [product page]. Retrieved 2025-02-27, from https://webstore.iec.ch/en/publication/21938.
+[^nemko-cybersecurity-en-18031]: Geir Hørthe (2025, Feb 2). _Cybersecurity in Europe - EN 18031 is now a harmonized standard_ [blog post]. Nemko. Retrieved 2025-07-15, from https://www.nemko.com/blog/cybersecurity-in-europe-en-18031-is-now-a-harmonized-standard.
+[^applus-laboratories-en-18031-understanding-standard]: Applus Laboratories (2024, Dec). _EN 18031: Understanding Standard Common security requirements for radio equipment: Parts 1, 2, and 3_ [pdf]. Retrieved 2025-07-15, from https://www.appluslaboratories.com/en/dam/jcr:0e9f8aaf-1b68-400f-aee5-b86a7895a630/EN18031_Understanding_Standard_NCM.pdf.
