@@ -9,7 +9,7 @@ title: Running Rust on Microcontrollers
 type: page
 ---
 
-Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but is showing great potential for developing embedded firmware**. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. It's aim to improve on some of C/C++'s biggest shortcomings by implementing a **robust ownership model** (which removes entire classes of errors from occurring) is also very much applicable to firmware.
+Rust is a fairly new programming language (born in 2010[^wikipedia-rust]), **but is showing great potential for developing embedded firmware**. It is first and foremost designed to be a systems programming language, which makes it particularly suitable for microcontrollers. Its aim to improve on some of C/C++'s biggest shortcomings by implementing a **robust ownership model** (which removes entire classes of errors from occurring) is also very much applicable to firmware.
 
 **As of 2022, the C and C++ programming languages still remain the de-facto standard for embedded firmware**. However, Rust's role in firmware is looking bright. Rather than firmware being an afterthought, it feels as if Rust has first-tier embedded support. There is an official [Rust Embedded Devices Working Group](https://github.com/rust-embedded/wg) and [The Embedded Rust Book](https://docs.rust-embedded.org/book/). 
 
@@ -155,7 +155,7 @@ fn out_of_bounds(arr: &[i8]) {
 
 If the runtime overhead of bounds checking is a concern for your application, you can get **rid of this overhead however by using an array iterator instead of indexing** (or using `get_unchecked()`). This is in fact the recommended way of accessing an array unless you really have to use an index (some situations do still need to randomly access the array).
 
-You might have also noticed that arrays don't decay to pointers (i.e. loses the dimension information -- `sizeof` now gives you the size of the pointer) as easily as they do in C/C++ (especially when passing into functions). **In Rust you can pass in references to any-sized arrays into a function while still being find it's length by calling `.len()`**, something you cannot do in C/C++ (you can pass arrays in C/C++ without the variable decaying to a pointer, but you have to hardcode the function to a specific array size, this is because the size information is not saved in the array memory layout).
+You might have also noticed that arrays don't decay to pointers (i.e. loses the dimension information -- `sizeof` now gives you the size of the pointer) as easily as they do in C/C++ (especially when passing into functions). **In Rust you can pass in references to any-sized arrays into a function while still being able to find it's length by calling `.len()`**, something you cannot do in C/C++ (you can pass arrays in C/C++ without the variable decaying to a pointer, but you have to hardcode the function to a specific array size, this is because the size information is not saved in the array memory layout).
 
 ```rust
 fn no_decaying_to_pointer(arr: &[i8]) {
@@ -503,7 +503,7 @@ cargo +stable install ravedude
 
 There is a great tutorial on getting Rust working on the Arduino Uno (which uses the ATmega328P microcontroller) at https://blog.logrocket.com/complete-guide-running-rust-arduino/. Getting a blinky Rust project built and programming takes about 5 minutes using that tutorial when developing in the WSL (passing through the Arduino USB device with `usbip`).
 
-<Image src={import('./_assets/screenshot-of-basic-arduino-app-in-rust.png')} width="700px">Screenshot of a bare-bones Arduino app written in Rust (flashing an LED and printing \"Hello\" to the console.</Image>
+<Image src={import('./_assets/screenshot-of-basic-arduino-app-in-rust.png')} width="700px">Screenshot of a bare-bones Arduino app written in Rust (flashing an LED and printing \"Hello\" to the console).</Image>
 
 ### Atmel SAM
 
@@ -561,6 +561,16 @@ All I needed to do is hit `F5` -- this built the code, flashed it to the STM32F3
 [Knurling](https://github.com/knurling-rs/) is a collection of projects by Ferrous Systems (two of their popular tools include `probe-run` and `defmt`).
 
 [semihosting](https://docs.rust-embedded.org/book/start/semihosting.html) is provided for Cortex-M MCUs via the `cortex-m` crate. semihosting allows you to log debug messages to the host via the attached debugger with no extra cables (e.g. USB-to-UART devices). The disadvantage is that it's slow. A single message can take many many milliseconds depending on the attached debugger you re using. The `panic-semihosting` crate can be also used to provide useful panic messages on the host. ITM is a faster option than semihosting but is only available on Cortex-M3's and higher. RTT could be a even better option (being available on most targets/programmers like semihosting, but being fast like ITM)[^github-issues-rust-embedded-book-discourage-semihosting]. It is mostly platform agnostic and just depends on the debug probe supporting background target memory access. Once enabled you can use the `rprintln!()` macro. I have not used this yet though so can't comment much!
+
+### probe-rs
+
+probe-rs is a CLI tool for programming and debugging embedded devices. I used it with the Embassy RTOS example shown on this page and it worked well. It was easily able to find the connected nRF52DK (which shows up as a JLink device), program the MCU and show logs using `defmt`.
+
+### defmt
+
+`defmt` (standing for **deferred formatting**) is a logging framework for resource constrained devices such as microcontrollers. It defers processing of variables to strings to the host machine (i.e. it sends over integers and floats as is, and the host converts them into their string representation), and for constant strings it just sends an index into a pre-saved array of all the string literals.[^ferrous-systems-defmt-homepage]
+
+This does mean however the host needs to know about all the string literals, so it does not make it suitable for sharing with a large user base that will expect a standard serial terminal to work. It is great for debugging though.
 
 ## Rust RTOSes
 
@@ -809,3 +819,4 @@ The website [Are We RTOS Yet?](https://arewertosyet.com/) tracks the progress of
 [^rust-gcc-homepage]: rust-gcc. _GCC Front-End For Rust - Homepage_. Retrieved 2022-12-11, from https://rust-gcc.github.io/.
 [^github-embassy-homepage]: GitHub. _embassy-rs > embassy_ [Git repository]. Retrieved 2025-07-13, from https://github.com/embassy-rs/embassy.
 [^are-we-rtos-yet-homepage]: Are We RTOS Yet? _Are We RTOS Yet?_ [homepage]. Retrieved 2025-07-13, from https://arewertosyet.com/.
+[^ferrous-systems-defmt-homepage]: Ferrous Systems. _defmt_ [documentation]. Retrieved 2025-07-16, from https://defmt.ferrous-systems.com/.
