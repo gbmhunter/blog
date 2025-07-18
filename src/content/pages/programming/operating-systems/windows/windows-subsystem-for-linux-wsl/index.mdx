@@ -47,9 +47,21 @@ If you first enabled/installed WSL a long time ago, you might be running WSL 1. 
 
 ## Passing Through USB Devices
 
-WSL 1 and 2 do not natively support USB pass-through like VirtualBox does. However, there is a popular 3rd party tool called [usbipd-win](https://github.com/dorssel/usbipd-win) which can do the job. There was a update to WSL 2 to allow usbipd-win to work without too much hassle.
+WSL 1 and 2 do not natively support USB pass-through like VirtualBox does. However, there is a popular 3rd party tool called [usbipd-win](https://github.com/dorssel/usbipd-win) which can do the job. There was a update to WSL 2 to allow `usbipd` to work without too much hassle.
 
 > Windows software for sharing locally connected USB devices to other machines, including Hyper-V guests and WSL 2. -- usbipd-win.
+
+The first thing you have to do is "bind" the USB device to `usbipd`. This needs to be done on the Windows host from a command-line with Administrator privileges:
+
+```powershell
+usbipd bind --busid <busid>
+```
+
+You can identify a device either with a `busid` in the form `<number>-<number>` (e.g. `9-4`) or a `hardware-id` in the form `<VID:PID>` (e.g. `0483:df11`).
+
+<Aside type="note">
+I prefer to use the `busid` (which is always unique) rather than the `hardware-id` as I normally have multiple identical USB devices connected (e.g. multiple nRF52 DKs acting as J-Link devices) which all have the same `hardware-id`.
+</Aside>
 
 You might get the error "Loading vhci_hcd failed" when trying to attach a USB device from the Windows host, like shown below:
 
@@ -66,6 +78,12 @@ sudo modprobe vhci_hcd
 ```
 
 And then try to attach the USB device again.
+
+If you want to use the USB device in Windows again, you can use `detach` to detach the device from WSL:
+
+```powershell
+usbipd detach --busid <busid>
+```
 
 ## Installing Chrome on WSL
 
