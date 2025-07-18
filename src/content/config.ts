@@ -1,5 +1,4 @@
 import { z, defineCollection } from 'astro:content';
-import { docsSchema } from '@astrojs/starlight/schema';
 
 //=========================================================
 // PAGES COLLECTION
@@ -69,5 +68,4 @@ export const collections = {
   updates: updatesCollection,
   authors: authorsCollection,
   test: testCollection,
-  docs: defineCollection({ schema: docsSchema() }),
 };
