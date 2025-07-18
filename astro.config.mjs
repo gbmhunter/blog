@@ -24,9 +24,13 @@ export default defineConfig({
         src: './src/assets/logo.jpg',
       },
       favicon: '/favicon.ico',
-      social: {
-        github: 'https://github.com/gbmhunter/blog',
-      },
+      social: [
+        {
+          icon: 'github',
+          href: 'https://github.com/gbmhunter/blog',
+          label: 'GitHub',
+        },
+      ],
       components: {
         Footer: "./src/components/starlight/Footer.astro",
         Head: "./src/components/starlight/Head.astro",
@@ -53,7 +57,6 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    extendDefaultPlugins: true,
     remarkPlugins: [remarkMath],
     rehypePlugins: [
       [

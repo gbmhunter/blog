@@ -3,20 +3,20 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "npx astro dev",
+    "start": "npx astro dev",
+    "build": "npx astro check && npx astro build",
+    "preview": "npx astro preview",
+    "astro": "npx astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/starlight": "^0.28.3",
-    "astro": "^4.15.12",
+    "@astrojs/starlight": "^0.35.0",
+    "astro-expressive-code": "^0.38.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "sharp": "^0.32.5",
-    "typescript": "^5.5.4"
+    "sharp": "^0.33.5",
+    "typescript": "^5.8.0"
   },
   "devDependencies": {
     "astro-vtbot": "^1.8.2",

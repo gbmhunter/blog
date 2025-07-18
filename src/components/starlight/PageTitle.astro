@@ -2,13 +2,13 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 
-const breadcrumbs = Astro.props.breadcrumbs as { label: string, slug: string }[];
+const breadcrumbs = Astro.props.breadcrumbs as { label: string, slug: string }[] | undefined;
 const { slug } = Astro.params;
 ---
 
 <!-- Don't render breadcrumbs if we are on the homepage (i.e. slug is undefined) -->
 {
-  (slug !== undefined) && <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  (slug !== undefined && breadcrumbs && breadcrumbs.length > 0) && <nav aria-label="Breadcrumb" class="breadcrumb-nav">
     <ol>
       {breadcrumbs.map((crumb, index) => (
         <li>

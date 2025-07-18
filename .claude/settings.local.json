@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.astro.build)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(npm view:*)"
+    ],
+    "deny": []
+  }
+}
