@@ -10,7 +10,7 @@ interface Props {
   caption?: string;
 }
 
-const { iref, data, transpose = { enable: false, headerKey: '', topLeftCellText: '' }, caption } = Astro.props as Props;
+const { iref, data, transpose = { enable: false, headerKey: '', topLeftCellText: '' } } = Astro.props as Props;
 
 // Data is an array of objects, where each object represents a row in the table.
 // Each object should have keys that correspond to the table headers.

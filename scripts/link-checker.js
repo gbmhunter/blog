@@ -1,3 +1,4 @@
+// @ts-nocheck
 import blc from 'broken-link-checker';
 
 console.log('Checking links...');
