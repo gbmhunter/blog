@@ -1,14 +1,23 @@
 ---
 authors: [gbmhunter]
 date: 2013-01-08
-description: Blog sub-section on signal processing.
-lastUpdated: 2021-05-27
+description: Signal processing is the study of how to extract information from analogue and digital signals. This includes filtering, correlation, and curve fitting.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-07-19
 tags: [programming, signal processing, filtering, Runge's phenomenon]
 title: Signal Processing
 type: page
 ---
 
 The _Signal Processing_ section of this site covers digital filters (see [Electronics->Circuit Design->Analogue Filters(/electronics/circuit-design/analogue-filters/) for the analogue counterpart), curve fitting, correlation, and signal feature detection.
+
+## Child Pages
+
+<ChildPages />
+
+## Source Code
+
+The open source [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using IIR filters.
 
 The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. The project can be downloaded, compiled in C# Express to produce a .dll, and then included as a resource in your own c# projects so you can then use the functions. I had issues using the DLL, and was getting the error "Could not load file: Strong name validation failed".
 
@@ -17,14 +26,6 @@ To fix this, I needed to use `sn.exe` (a tool provided with Visual Studio and th
 ```text
 C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
 ```
-
-## Child Pages
-
-<ChildPages />
-
-## Source Code
-
-The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using IIR filters.
 
 ## Local Maxima/Minima (aka Peak/Trough) Detection
 
