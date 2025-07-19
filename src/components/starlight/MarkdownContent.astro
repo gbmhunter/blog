@@ -3,27 +3,37 @@ import { getCollection } from 'astro:content';
 import { Image } from "astro:assets";
 import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 
-const customFrontmatter = Astro.props.customFrontmatter as any;
+// Access frontmatter data using the new Starlight v0.33+ approach
+const starlightRoute = Astro.locals.starlightRoute;
+const customFrontmatter = starlightRoute?.customFrontmatter as any;
+
 const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
 let shouldRenderDatesAndAuthors = true;
 let pageAuthors = [] as any[];
-if (customFrontmatter !== undefined) {
+
+if (customFrontmatter !== undefined && customFrontmatter !== null) {
   // Create a new format which will produce dates like "Jan 1, 2022"
   const pageAuthorIds = customFrontmatter.authors;
 
-  let authorsCollection = await getCollection('authors');
+  // Check if authors exist and is an array
+  if (pageAuthorIds && Array.isArray(pageAuthorIds) && pageAuthorIds.length > 0) {
+    let authorsCollection = await getCollection('authors');
 
-  // Filter authorsCollection to only include authors that are in the pageAuthors array
-  pageAuthors = authorsCollection.filter((author) => {
-    // Author ID in collection is the directory name under authors/, so extract this from the "id" field. id field is in the form "author/data" where data comes from the file name data.json
-    const authorId = author.id.split('/')[0];
-    return pageAuthorIds.includes(authorId);
-  });
+    // Filter authorsCollection to only include authors that are in the pageAuthors array
+    pageAuthors = authorsCollection.filter((author) => {
+      // Author ID in collection is the directory name under authors/, so extract this from the "id" field. id field is in the form "author/data" where data comes from the file name data.json
+      const authorId = author.id.split('/')[0];
+      return pageAuthorIds.includes(authorId);
+    });
 
-  // Print warning if an author is not found
-  if (pageAuthors.length === 0) {
-    console.warn(`No authors found for page with author IDs:`, pageAuthorIds);
+    // Print warning if an author is not found
+    if (pageAuthors.length === 0) {
+      console.warn(`No authors found for page with author IDs:`, pageAuthorIds);
+    }
+  } else {
+    console.warn(`No valid authors array found in frontmatter. Authors:`, pageAuthorIds);
+    shouldRenderDatesAndAuthors = false;
   }
 } else {
   console.warn(`No custom frontmatter found for page`);
@@ -31,7 +41,8 @@ if (customFrontmatter !== undefined) {
 }
 
 // Don't render dates and authors if we are on the homepage
-if (Astro.props.slug === '') {
+// Check using the URL pathname  
+if (Astro.url.pathname === '/' || Astro.url.pathname === '') {
   shouldRenderDatesAndAuthors = false;
 }
 
@@ -54,8 +65,16 @@ Only render it if custom frontmatter is defined.
     })}
   </div>
   <div class="page-dates">
-    <div><b>Published On:</b></div> <div>{dateFormat.format(customFrontmatter.date)}</div>
-    <div><b>Last Updated:</b></div> <div>{dateFormat.format(customFrontmatter.lastUpdated)}</div>
+    {customFrontmatter.date && (
+      <>
+        <div><b>Published On:</b></div> <div>{dateFormat.format(customFrontmatter.date)}</div>
+      </>
+    )}
+    {customFrontmatter.lastUpdated && (
+      <>
+        <div><b>Last Updated:</b></div> <div>{dateFormat.format(customFrontmatter.lastUpdated)}</div>
+      </>
+    )}
   </div>
 </div>
 }
