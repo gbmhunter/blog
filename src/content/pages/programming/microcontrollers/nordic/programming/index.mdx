@@ -1,0 +1,34 @@
+---
+authors: [gbmhunter]
+date: 2025-07-20
+description: Test.
+lastUpdated: 2025-07-20
+tags: [programming, microcontrollers]
+title: Programming Nordic MCUs
+type: page
+---
+
+You can program nRF52, nRF54, nRF53, and nRF91 MCUs using the development kits from the same series (or sometimes from a different series). For example, the nRF52-DK can be used to program SoCs from the nRF52 series. I believe the development kits in the nRF91 series can program the nRF91 and nRF52 SoCs (and perhaps the other families too).
+
+To do this, you plug the development kit into the host computer using a USB cable. You then connect the development kit to the target device using the Debug OUT connector, which is a standard 2x5 1.27mm pitch header. It follows the standard ARM SWD pinout. The schematic from the nRF52-DK (it should be either the same or very similar on other development kits) is shown in <IRef iref="fig-debug-out-connector-schematic-on-nrf52-dk" />.
+
+<Image iref="fig-debug-out-connector-schematic-on-nrf52-dk" src={import('./_assets/debug-out-connector-schematic-on-nrf52-dk.webp')} width="900px">Debug Out connector schematic on the nRF52 DK.</Image>
+
+The development kits have a SEGGER J-Link probe built into them (presumably Nordic Semiconductor is licensing the J-Link technology from SEGGER). It's good marketing for SEGGER too since people become familiar with the J-Link brand and then might buy a dedicated J-Link probe (they are expensive but work well).
+
+## Making Sure You Can Only Program External Boards
+
+One annoying issue with using the development kits is that you can easily accidentally start programming the on-board MCU instead of your external board. All it takes is a loose/unplugged programming cable and the J-Link will automatically switch back to programming the on-board MCU. An easy way to prevent this is to short the `SELECT` pin on the "Debug Out" connector to GND, as shown in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-schematics" /> (the red squiggle is the short). This tricks the J-Link into thinking there is always an external MCU connected and making it impossible to program the on-board MCU.
+
+<Image iref="fig-shorting-select-to-gnd-on-nrf52-dk-schematics" src={import('./_assets/shorting-select-to-gnd-on-nrf52-dk-schematics.webp')} width="900px">Shorting select to GND on the nRF52 DK.</Image>
+
+Luckily, there is a `GND` pin adjacent to the `SELECT` pin on the SMD header, at it is easy to short them together with a small solder blob, as shown in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-photo" />.
+
+<Image iref="fig-shorting-select-to-gnd-on-nrf52-dk-photo" src={import('./_assets/shorting-select-to-gnd-on-nrf52-dk-photo.webp')} width="900px">Shorting select to GND on the nRF52 DK.</Image>
+
+While you are doing this, you may also want to bridge `SB32` (which can also be seen in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-photo" />). Bridging this connects the on-board +3.3V to the VDD pin, allowing you to power the target device from the development kit. This can be useful for one cable programming in a production environment. This only works if the current draw of the target device is small.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+

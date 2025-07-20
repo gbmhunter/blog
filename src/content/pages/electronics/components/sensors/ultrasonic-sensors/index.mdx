@@ -153,14 +153,14 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 ## Uses
 
 * Ultrasound modules for tank level measurement. They normally can measure a range of liquids including water, black water, oil, petrol, diesel without any adjustment (liquid type agnostic). Range is typically from 100mm to 4m. Some have focusers made of materials such as glass-reinforced polypropylene to produce narrow beams.
-* Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
+* Ultrasound cleaners are used to clean objects by vibrating the dirt/grease from them. They are commonly used to clean the resin of circuit boards after soldering.
 * High-end wind sensors (anemometers) use ultrasound to measure the wind speed and direction (or more concisely, it's velocity).
 
 <Image src={import('./_assets/3d-sonic-anemometer.jpg')} width="149px">A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.</Image>
-    
-* Similar to anemometers, ultrasonic flowmeters can be used to determine the speed and direction of liquid within pipes.
+
+* Similar to anemometers, ultrasonic flow meters can be used to determine the speed and direction of liquid within pipes.
 * Ultrasonic devices are used in the medical world for getting images of body parts (e.g. an unborn baby). Human tissue attenuates ultrasound by approximately 1dB/cm/MHz.
-  
+
 <Image src={import('./_assets/medical-ultrasonic-sensor-sonosite-c60x.jpg')} width="286px">The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.</Image>
 
 * Parking sensors in vehicles commonly use ultrasound sensors for distance detection.
@@ -169,6 +169,20 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 * Gas leak detection (leaks usually produce a high-frequency sound).
 * Ultrasonic fuel vaporizers. They use ultrasound to vaporize fuel, usually before entering the combustion chamber on a vehicle.
 * Bat detectors. Ultrasonic bat detectors listen for the ultrasonic noises made by bats, and either graph them or convert them to the audible spectrum (heterodyning). The circuit below converts ultrasonic waves into the audible spectrum.
+
+import video from './_assets/lego-mindstorms-explorer-robot-ultrasound.webm';
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <figure style={{ margin: 0 }}>
+    <video controls autoPlay loop width="300">
+      <source src={video} type="video/webm"/>
+      Your browser does not support the video tag.
+    </video>
+    <figcaption style={{ textAlign: "center" }}>
+      Example of an ultrasonic sensor in use on a LEGO Mindstorms robot. The ultrasonic sensor is mounted to a motor so it can swivel from side to side and find a clear path for the robot to explore.
+    </figcaption>
+  </figure>
+</div>
 
 ## Common Outputs For Modules
 

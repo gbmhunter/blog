@@ -101,6 +101,40 @@ Diagrams used to be drawn in _LibreOffice Draw_ and then exported to `.svg` to d
 
 Photos are edited in Affinity Photo. 
 
+### Videos
+
+Videos are best converted to the `.webm` format.
+
+```shell
+ffmpeg -y -i "input-video.mp4" -c:v libvpx-vp9 -crf 35 -b:v 0 -b:a 64k -c:a libopus -vf "scale=450:-1" -row-mt 1 -threads 4 "output-video.webm"
+```
+
+Key parameters:
+
+* -y: Overwrite output file without asking
+* -c:v libvpx-vp9: Use VP9 video codec
+
+This one applies a watermark to the video. But I couldn't not fix a rotation issue in where it looked fine in VLC but was rotated 90 degrees in the browser.
+
+```shell
+ffmpeg -y -i "input-video.mp4" -i
+  "watermark.png" -filter_complex
+  "[0:v]scale=480:854,setsar=1[v];[1:v]scale=80:-1[wm];[v][wm]overlay=W-w-10:H-h-10:
+  enable='gte(t,0)'" -c:v libvpx-vp9 -crf 35 -b:v 0 -b:a 64k -c:a libopus
+  -metadata:s:v rotate=0 -row-mt 1 -threads 4
+  "output-video.webm"
+```
+
+Key parameters:
+
+* -y: Overwrite output file without asking
+* -filter_complex: Combines video scaling and watermark overlay
+* scale=480:854: Resize video to portrait 480x854
+* scale=80:-1: Resize watermark to 80px width (height auto)
+* overlay=W-w-10:H-h-10: Position watermark 10px from bottom-right corner
+* -crf 35: Higher compression for smaller file size
+* -b:a 64k: Lower audio bitrate to save space
+
 ## Statistics
 
 The code to generate blog statistics (e.g. number of visitors, increases since last year) is all contained in the separate repo <https://github.com/gbmhunter/blog-stats> (it needs to be separate because when it runs, it checks out specific commits of this repo).
