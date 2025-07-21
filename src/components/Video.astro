@@ -1,0 +1,45 @@
+---
+/**
+ * Astro component for rendering a video with optional caption. The caption should be entered between the <Video> and </Video> tags.
+ * 
+ * Videos should be stored in the /public/videos/ directory.
+ * 
+ * Props:
+ *   - src: string (required) - The source URL of the video file.
+ *   - width: string|number (required) - The width of the video element.
+ *   - autoplay: boolean (optional, default: false) - Whether the video should autoplay.
+ *   - loop: boolean (optional, default: false) - Whether the video should loop.
+ */
+const { src, width, autoplay=false, loop=false } = Astro.props;
+---
+
+<figure style={{ margin: 0, display: "flex", flexDirection: "column", alignItems: "center" }}>
+  <video controls autoplay={autoplay} loop={loop} width={width}>
+    <source src={src} type="video/webm"/>
+    Your browser does not support the video tag.
+  </video>
+  <figcaption><slot /></figcaption>
+</figure>
+
+<style define:vars={{ width }}>
+
+  :root {
+  }
+
+  :root[data-theme="dark"] {
+    --caption-text-color: #aaa;
+  }
+  
+  figcaption {
+    font-size: 1.0rem;
+    font-style: italic;
+    color: var(--caption-text-color);
+    margin-top: 0.5rem;
+    min-width: 100px; /* Don't make the caption too narrow if image is small */
+    max-width: 100%; /* Make sure caption never exceeds the page width */
+    width: var(--width);
+    text-align: center;
+    overflow-wrap: break-word; /* Makes sure long word like URLs don't overflow */
+  }
+
+</style>
