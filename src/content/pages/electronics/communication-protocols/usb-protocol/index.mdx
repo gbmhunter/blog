@@ -2,13 +2,17 @@
 authors: [gbmhunter]
 date: 2011-09-05
 description: USB (Universal Serial Bus) is a communication protocol for connecting electronic devices together.
-lastUpdated: 2025-05-15
-tags: [electronics, communication protocols, USB, master, slave, encoding, bus, OTG, TPL]
+lastUpdated: 2025-07-22
+tags: [electronics, communication protocols, USB, master, slave, encoding, bus, OTG, TPL, ethernet bridge, LAN7800]
 title: USB Protocol
 type: page
 ---
 
 The Universal Serial Bus (USB) standard defines a collection of connectors, cables and communication protocols to allow digital devices to talk to one another.
+
+## Child Pages
+
+<ChildPages />
 
 ## First, Some Basic Terminology
 
@@ -201,7 +205,7 @@ The most common wiring colour scheme that I've seen is:
 * D+ = Green
 * ID = (does not have wire, pin connected in plug)
 * GND = Black
-* Metal Outside of Connector = Sheilding (no colour)
+* Metal Outside of Connector = Shielding (no colour)
 
 ## Data Lines
 
@@ -245,6 +249,12 @@ The [FTDI FT4222H](http://www.digikey.co.nz/en/product-highlight/f/ftdi/ft4222h-
 
 The [Exar XR21B142x ICs](http://www.digikey.co.nz/en/product-highlight/e/exar-corporation/xr21b1421-24-usb-2-to-uart-bridge-devices) are USB 2.0 to UART interface bridges. 
 
+### Ethernet Bridges
+
+Ethernet to USB bridge ICs are used to convert between USB data packets and Ethernet frames. They manage the ethernet PHY and typically talk via USB to a MCU, acting as a USB connected network interface card.
+
+Microchip manufacturers a number of ethernet bridge ICs starting with the `LAN` prefix. One example is the LAN7800, a USB 3.1 Gen 1 to 10/100/1000 ethernet controller.[^microchip-lan7800-usb-3.1-gen-1-to-10-100-1000-ethernet-controller-ds]
+
 ## Licensed/Trademarked Images
 
 Interestingly enough, the USB trident symbol is not trademarked. This means that manufacturers can put this onto products without having to undergo any USB certification.
@@ -252,3 +262,5 @@ Interestingly enough, the USB trident symbol is not trademarked. This means that
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
+
+[^microchip-lan7800-usb-3.1-gen-1-to-10-100-1000-ethernet-controller-ds]: Microchip (2021). _LAN7800 - SuperSpeed USB 3.1 Gen 1 to 10/100/1000 Ethernet Controller_ [datasheet]. Retrieved 2025-07-22, from https://au.mouser.com/datasheet/2/268/LAN7800_Data_Sheet_DS00001992H-3444498.pdf.

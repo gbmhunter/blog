@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2023-07-07
-description: Data and power roles, standards, communication protocols, schematics and more info about USB power delivery (PD).
-lastUpdated: 2023-07-26
+description: USB Power Delivery (PD) is a protocol and power transfer service designed to work with the USB Type-C connector. It can transfer up to 20V at 5A (240W).
+lastUpdated: 2025-07-23
 tags: [USB, power delivery, PD, sinks, sources, e-marker, Type-C, USB-IF, batteries, charging, STMicroelectronics, Analog Devices]
 title: USB Charging and Power Delivery
 type: page
@@ -64,7 +64,7 @@ Summary of USB maximum voltages, currents and powers for each standard[^ti-prime
 </table>
 
 <Aside type="note">
-According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (i.e. up to 5A) must contain e-marker chips, which identify the cable and it's current handling capabilities[^wikipedia-usb-c].
+According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (i.e. up to 5A) must contain e-marker chips, which identify the cable and it's current handling capabilities.[^wikipedia-usb-c]
 </Aside>
 
 ## Data and Power Roles
@@ -98,7 +98,7 @@ There are some standard definitions in the battery charger spec:
 
 The below image shows the basic electrical wiring for the SDP, DCP and CDP ports defined by the BC 1.2 specification:
 
-<Image src={import('./battery-charging-spec-rev-1.2-different-types-of-ports.webp')} width="800">Diagram showing the basic electrical wiring for the various ports specified by BC 1.2.</Image>
+<Image src={import('./_assets/battery-charging-spec-rev-1.2-different-types-of-ports.webp')} width="800px">Diagram showing the basic electrical wiring for the various ports specified by BC 1.2.</Image>
 
 It's also important to distinguish between the following terms:
 
@@ -110,7 +110,7 @@ The PD needs to determine how much current it can draw from the upstream USB por
 
 The below image shows the internal circuitry in a Charging Downstream Port (CDP).
 
-<Image src={import('./battery-charging-spec-rev-1.2-charging-downstream-port.webp')} width="800">The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP). Numerical values are nominal values, the USB standard instead specifies ranges[^usb-org-battery-charging-v1.2-spec].</Image>
+<Image src={import('./_assets/battery-charging-spec-rev-1.2-charging-downstream-port.webp')} width="800px">The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP). Numerical values are nominal values, the USB standard instead specifies ranges.[^usb-org-battery-charging-v1.2-spec]</Image>
 
 ### USB Power Delivery 1.0
 
@@ -179,11 +179,11 @@ USB PD uses the two CC lines provided in the Type-C connector to perform negotia
 
 The below image is a photo of a USB Type-C plug on the end of a white cable.
 
-<Image src={import('./usb-type-c-plug-photo.jpg')} width="600">Photo of a USB Type-C plug on the end of a cable.</Image>
+<Image src={import('./_assets/usb-type-c-plug-photo.jpg')} width="600px">Photo of a USB Type-C plug on the end of a cable.</Image>
 
 The below image shows the pinout for both the USB Type-C plug and the receptacle.
 
-<Image src={import('./usb-type-c-connector-pinout.webp')} width="800">Pinout for both the USB Type-C plug and receptacle[^wikipedia-usb-c].</Image>
+<Image src={import('./_assets/usb-type-c-connector-pinout.webp')} width="800px">Pinout for both the USB Type-C plug and receptacle.[^wikipedia-usb-c]</Image>
 
 ### USB 2.0 Without PD
 
@@ -191,7 +191,7 @@ Before we dive into PD, let's cover what happens without PD. The most basic powe
 
 The below image shows the basic connections on the CC lines when using USB 2.0 over a Type-C connector.
 
-<Image src={import('./usb2.0-without-pd.webp')} width="800">Basic connection scheme for USB 2.0 without PD over a Type-C connector.</Image>
+<Image src={import('./_assets/usb2.0-without-pd.webp')} width="800px">Basic connection scheme for USB 2.0 without PD over a Type-C connector.</Image>
 
 The value of $R_p$ is how the source/DFP advertises it's current capability. The sink/UFP always has a fixed value for $R_d$ of $5.1k\Omega$. When connected together, they form a voltage-divider. The sink can measure the voltage at the center point and determine the current capability of the source. The below table shows the requirements for $R_p$.
 
@@ -265,23 +265,34 @@ Even though USB 3.0 allows more than 500mA, with just two resistors you can't te
 
 The Analog Devices MAX14747 is a IC which can detect a number of different USB charger types and charge a battery from the USB power source. It supports USB Battery Charger Detection Rev 1.2 but not USB PD. $V_{BAT}$ can range from 0-5.5V so single Li-Po cells are supported. It can be controlled from a MCU via I2C lines.
 
-<Image src={import('./max14747-typical-application-circuit.png')} width="800">Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic].</Image>
+<Image src={import('./_assets/max14747-typical-application-circuit.png')} width="800px">Typical application circuit for the Analog Devices MAX14747 IC.[^analog-devices-max14747-usb-charging-ic]</Image>
 
 ### Standalone USB PD Sink Controller with the STUSB4500
 
 The _STMicroelectronics STUSB4500_ is a USB PD standalone sink controller. Standalone refers to the fact that it has non-volatile programmable memory that is used to configure the device, meaning the STUSB4500 can run by itself without the need for a MCU to be connected to it. The below image shows a 3D render of it in the WLCSP-25 package.
 
-<Image src={import('./stmicroelectronics-stusb4500-3d-render-wlcsp-25.png')} width="200">The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
+<Image src={import('./_assets/stmicroelectronics-stusb4500-3d-render-wlcsp-25.png')} width="200px">The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
 
 Below is a minimal application schematic using the IC act as a USB PD power sink without any connected MCU:
 
-<Image src={import('./stmicroelectronics-stusb4500-minimal-application-schematic.png')} width="900">Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
+<Image src={import('./_assets/stmicroelectronics-stusb4500-minimal-application-schematic.png')} width="900px">Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
 
-### USB Charger Adapter Using The MAX14630
+### Standalone USB PD Source Controller with the STUSB4700
 
-The Analog Devices MAX14630 
+The STMicroelectronics STUSB4700 is a standalone USB PD controller (i.e. PD source). It is compatible with USB Type-C rev 1.2 and USB PD rev 2.0.[^st-stusb4700-usb-pd-controller-ds] <IRef iref="fig-stusb4700-usb-pd-source-flyback-application-example-schematic" /> shows an example application schematic for the STUSB4700 in an isolated flyback converter configuration. This would be a typical design if using this IC to implement a USB wall charger from mains power that is capable of PD.
 
-TODO: Finish this off.
+<Image iref="fig-stusb4700-usb-pd-source-flyback-application-example-schematic" src={import('./_assets/stusb4700-usb-pd-source-flyback-application-example-schematic.webp')} width="1000px">Example application schematic for the STUSB4700 in a isolated flyback converter configuration.</Image>
+
+### USB Charger Adapter Emulator with the MAX14630
+
+The Analog Devices MAX14630 is designed to be used inside dedicated USB charger adapters with a USB Type A connector. It is a charging adapter emulator in the sense that it detects what it connected to it and pretends to charger that is compatible with it. The `CB` input pin determines the mode of operation:
+
+* **Low**: Autodetection 2A charger mode. This mode supports USB Battery Charger (BC) rev 1.2 and Apple 2A compliant devices.
+* **High**: Samsung 2A charger mode. This mode supports Samsung 2A compliant devices.
+
+When in autodetection mode, the MAX14630 monitors the voltages on the `DM` and `DP` lines to determine the type of device attached. When in Samsung mode, the MAX14630 will monitor the `DM` line to detect the presence of a Samsung device.[^analog-devices-max14630-usb-charger-adapter-emulator-ds]
+
+<Image src={import('./_assets/max14630-usb-charger-adapter-emulator-typical-operating-circuit.webp')} width="800px">Typical operating circuit for the Analog Devices MAX14630 as a USB charger adapter emulator.[^analog-devices-max14630-usb-charger-adapter-emulator-ds]</Image>
 
 ## Connectors
 
@@ -289,7 +300,7 @@ Some USB Type-C connectors do not have all 24 pins available, but just enough to
 
 One example is the Molex 2171750001, as shown below:
 
-<Image src={import('./molex-2171750001-type-c-6-lead-connector-photo-and-diagram.webp')} width="600">Photo and diagram of the Molex 2171750001 USB Type-C (6+18 Dummy) connector[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds].</Image>
+<Image src={import('./_assets/molex-2171750001-type-c-6-lead-connector-photo-and-diagram.webp')} width="600">Photo and diagram of the Molex 2171750001 USB Type-C (6+18 Dummy) connector.[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds]</Image>
 
 It has a description in [DigiKey](https://www.digikey.com/en/products/detail/molex/2171750001/13913745) of: "USB-C (USB TYPE-C) USB 2.0 Receptacle Connector 24 (6+18 Dummy) Position Surface Mount, Right Angle; Through Hole". The "6+18 Dummy" means only 6 of the 24 contacts are actually provided as SMD leads to the PCB. These are:
 
@@ -299,6 +310,10 @@ It has a description in [DigiKey](https://www.digikey.com/en/products/detail/mol
 * `A12`, `B12`: GND
 
 Having VBUS, the CC lines and GND gives you all the leads you need to perform either basic power draw or negotiate higher voltages/currents via the CC lines.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^ti-primer-on-usb-pd]: Nate Enos, Brian Gosselin. _A Primer on USB Type-C® and USB Power Delivery Applications and Requirements_ [PDF]. Texas Instruments. Retrieved 2023-07-07, from https://www.ti.com/lit/wp/slyy109b/slyy109b.pdf.
 [^wikipedia-usb-c]: Wikipedia (2023, Jun 29). _USB-C_ [Web Page]. Retrieved 2023-07-07, from https://en.wikipedia.org/wiki/USB-C.
@@ -316,3 +331,5 @@ Having VBUS, the CC lines and GND gives you all the leads you need to perform ei
 [^eaton-usb-charging-and-power-delivery]: Eaton (2023). _USB Charing and Power Delivery_. Retrieved 2023-07-28, from https://tripplite.eaton.com/products/usb-charging.
 [^usb-org-battery-charging-v1.2-spec]: usb.org (2012, Mar 15). _Battery Charging Specification (Including errata and ECNs through March 15, 2012) - Revision 1.2_. Retrieved 2023-07-29, from https://www.usb.org/document-library/battery-charging-v12-spec-and-adopters-agreement.
 [^molex-2171750001-type-c-6-plus-18-dummy-connector-ds]: Molex. _TYPE C 6 PIN TOP MOUNT SMT - Product Customer Drawing_ [Mechanical Drawing]. Retrieved 2023-08-02, from https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/217/217175/2171750001_sd.pdf.
+[^st-stusb4700-usb-pd-controller-ds]: STMicroelectronics (2023, Aug). _STUSB4700 - Stand-alone autonomous USB PD controller with short-to-VBUS protections_ [datasheet]. Retrieved 2025-07-22, from https://www.st.com/content/ccc/resource/technical/document/datasheet/group3/4a/1f/85/85/57/7d/41/b7/DM00356577/files/DM00356577.pdf/jcr:content/translations/en.DM00356577.pdf.
+[^analog-devices-max14630-usb-charger-adapter-emulator-ds]: Analog Devices (2013, Mar). _MAX14630/MAX14632 USB Charger Adapter Emulators_ [datasheet]. Retrieved 2025-07-22, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX14630-MAX14632.pdf.
