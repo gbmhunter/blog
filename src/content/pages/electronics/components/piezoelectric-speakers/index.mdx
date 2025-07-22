@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2012-05-02
 description: The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, mounting considerations, home-made crystals and more info about piezoelectric speakers.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-05-06
+lastUpdated: 2025-07-22
 tags: [piezo, schematic symbols, schematic, frequency response, driver circuit, crystal, nodal mounting, silicone, benders]
 title: Piezoelectric Speakers
 type: page
@@ -36,7 +36,7 @@ Most piezoelectric speakers have a resonant frequency in the range of 2-4kHz, on
 
 ## How To Drive A 2-lead Piezo
 
-An easy and loud way to drive a 2-lead (or pin) piezoelectric speaker is with an [inductor](/electronics/components/inductors/) in parallel with the piezo and a NPN [BJT](/electronics/components/transistors/bipolar-junction-transistors/) acting as a switch, as shown in <IRef iref="piezo-drive-circuit-parallel-inductor" />.
+An easy and loud way to drive a 2-lead (or pin) piezoelectric speaker is with an [inductor](/electronics/components/inductors/) in parallel with the piezo and a NPN [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/) acting as a switch, as shown in <IRef iref="piezo-drive-circuit-parallel-inductor" />.
 
 When the NPN BJT is switched on, the current builds up through the inductor and energy is stored in it's magnetic field. When the transistor is switched off, the inductor creates a large voltage spike which excites the piezo speaker. The piezo can be driven to around 40-60V with a 5V supply. Make sure the BJT has a collector-emitter breakdown voltage high enough to withstand this!
 
@@ -100,5 +100,9 @@ You can easily make crystals with a few common household ingredients. See the [P
 ## Examples
 
 If you want a loud buzzer, then the ABI-D23-RC (Element14 Num: [102-2400](http://nz.element14.com/pro-signal/abi-023-rc/piezo-buzzer-12vdc-leads/dp/1022400)) is a good choice. It runs of 12VDC and has a SPL of 96dBm.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^murata-piezoelectric-sound-components]: Murata (2012, Oct 26). _Piezoelectric Sound Components: Application Manual_. Retrieved 2023-05-09, from https://www.murata.com/~/media/webrenewal/support/library/catalog/products/sound/p15e.ashx.

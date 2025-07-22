@@ -84,7 +84,7 @@ function create_ref_links() {
   // htmlId{} creates a span with the id equal to the text inside the curly braces.
   // Equation IDs must be prefixed with "eqn-" so we can find them
   const equations = markdownContentDiv.querySelectorAll('span[id^="eqn-"]');
-  equations.forEach((equation, index) => {
+  equations.forEach((equation, _) => {
     const equationY = equation.getBoundingClientRect().y;
     // Loop through all elements with the class "eqn-num" and find the one with the same vertical position in the DOM
     // This is so we can find the equation number

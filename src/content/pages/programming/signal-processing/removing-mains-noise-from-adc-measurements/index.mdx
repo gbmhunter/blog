@@ -78,7 +78,7 @@ You can clearly see some really low frequency noise in this sampled signal. This
 
 <Image iref="fig-aliasing-demonstration" src={import('./_assets/mains-noise-simulation/aliasing-demonstration.png')} width="950px">A demonstration of aliasing.</Image>
 
-So now that we are in the digital domain, let's try and filter out the noise. We have to solve this using firmware now, so we will use a simple [EMA filter](/programming/signal-processing/filters/ema-filter) to do this (they are great little filters which don't require a buffer and are cheap to compute). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
+So now that we are in the digital domain, let's try and filter out the noise. We have to solve this using firmware now, so we will use a simple [EMA filter](/programming/signal-processing/digital-filters/exponential-moving-average-ema-filter/) to do this (they are great little filters which don't require a buffer and are cheap to compute). Let's set $\alpha = 0.1$ and see what happens. <IRef iref="fig-filtered-signal" /> shows the signal after filtering.
 
 <Image iref="fig-filtered-signal" src={import('./_assets/mains-noise-simulation/filtered-signal.png')} width="650px">The filtered signal after being passed through an EMA filter.</Image>
 

@@ -37,7 +37,7 @@ We are not going to now run `west init`, as it will put zephyr in the project ro
 
 So instead, let's create a directory called `.west`, add a file called `config` with the contents:
 
-```title=".west/config"
+```text title=".west/config"
 [manifest]
 path = app
 file = west.yml
@@ -53,7 +53,7 @@ The `base = external/zephyr` will tell west to look for the zephyr source code i
 
 Create a `app` directory, and then create a `west.yml` file in it with the following contents:
 
-```title="app/west.yml"
+```text title="app/west.yml"
 manifest:
   self:
     path: app

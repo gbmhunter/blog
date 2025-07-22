@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
-date: 2025-07-20
-description: Test.
+date: 2025-02-11
+description: Information on how to program Nordic Semiconductor MCUs. This includes the hardware probes (nRF development kits and J-Link probes), and software tools (nrfutil and pynrfjprog).
 lastUpdated: 2025-07-20
-tags: [programming, microcontrollers]
+tags: [programming, microcontrollers, Nordic, nrfutil, pynrfjprog, SoC, development kit]
 title: Programming Nordic MCUs
 type: page
 ---
@@ -28,7 +28,76 @@ Luckily, there is a `GND` pin adjacent to the `SELECT` pin on the SMD header, at
 
 While you are doing this, you may also want to bridge `SB32` (which can also be seen in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-photo" />). Bridging this connects the on-board +3.3V to the VDD pin, allowing you to power the target device from the development kit. This can be useful for one cable programming in a production environment. This only works if the current draw of the target device is small.
 
+## nrfutil
+
+nRF Util (`nrfutil`) is a [Python](/programming/languages/python/) library and command line tool for programming and debugging Nordic Semiconductor MCUs.
+
+<Image src={import('./_assets/nrfutil-homepage-screenshot.webp')} width="800px">A screenshot of the nRF Util homepage.[^nordic-semi-nrfutil-homepage]</Image>
+
+### Source Code
+
+It doesn't appear that the up-to-date source code of nRF Util is available. The older repo (`pc-nrfutil`) at https://github.com/NordicSemiconductor/pc-nrfutil was deprecated and marked as archived in Jan 2023.[^nordic-semi-pc-nrfutil-repo]
+
+### Installing Sub-Commands
+
+By default, only a basic subset of the total available nRF Util commands are installed. You can install additional commands based on your specific needs via the `nrfutil install` command. You can use `nrfutil search` to search for installable commands.
+
+For example:
+
+```batch
+$ nrfutil search 91
+Command Installed Latest Status
+91                0.5.0  Not installed
+```
+
+Then to install the `91` command, run:
+
+```batch
+$ nrfutil install 91
+```
+
+### Device Sub-Commands
+
+The nRF Util device sub-command can list, program, recover, erase, and do various operations on Nordic devices. It supports MCUboot and J-Link. Install `device` with:
+
+```batch
+$ nrfutil install device
+```
+
+## pynrfjprog
+
+pynrfjprog is a Python wrapper around the Nordic Semiconductor nrfjprog DLL (dynamic link library). The code is open source and available on [GitHub](https://github.com/NordicSemiconductor/pynrfjprog).
+
+### Installation
+
+To install pynrfjprog, into your Python environment, run the following command:
+
+```bash
+pip install pynrfjprog
+```
+
+As always, it is recommended to use a virtual environment to manage your Python packages.
+
+### Usage
+
+Use `enum_emu_snr()` to enumerate the serial numbers of the connected programmers:
+
+```python
+from pynrfjprog import LowLevel
+
+with LowLevel.API('NRF52') as api:
+    serial_numbers = api.enum_emu_snr()
+    if serial_numbers is None:
+        print("No programmers found")
+    else:
+        print(f"Found {len(serial_numbers)} programmers with serial numbers: {serial_numbers}")
+```
+
+`enum_emu_snr()` returns a list of serial numbers (e.g. `[960095105, 1051285627]`). If no programmers are found, it returns `None`.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
+[^nordic-semi-nrfutil-homepage]: Nordic Semiconductor. _nRF Util_ [website]. Retrieved 2025-05-15, from https://www.nordicsemi.com/Products/Development-tools/nRF-Util.
+[^nordic-semi-pc-nrfutil-repo]: Nordic Semiconductor. _pc-nrfutil_ [GitHub repository]. Retrieved 2025-05-15, from https://github.com/NordicSemiconductor/pc-nrfutil.
