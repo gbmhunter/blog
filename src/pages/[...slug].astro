@@ -91,6 +91,7 @@ export async function getStaticPaths() {
     //================================================================================
     // Main Page Route Creation
     //================================================================================
+    console.log("breadcrumbs", breadcrumbs);
     staticPaths.push({
       params: { slug: pageRoute.slug },
       props: { 
@@ -113,6 +114,9 @@ if (aliasTo) {
   return Astro.redirect(`/${aliasTo}/`);
 }
 
+// Set breadcrumbs in locals for component overrides to access
+Astro.locals.breadcrumbs = breadcrumbs;
+
 const { Content, headings, remarkPluginFrontmatter } = await render();
 const globalMdxComponents = getGlobalMdxComponents();
 ---
@@ -122,7 +126,6 @@ const globalMdxComponents = getGlobalMdxComponents();
   headings={headings}
   sidebar={sidebarData.items as any}
   customFrontmatter={frontmatter}
-  breadcrumbs={breadcrumbs}
 >
   <Content components={globalMdxComponents} /> 
 </StarlightPage>

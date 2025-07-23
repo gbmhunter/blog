@@ -4,7 +4,8 @@
       "WebFetch(domain:docs.astro.build)",
       "Bash(npm install:*)",
       "Bash(rm:*)",
-      "Bash(npm view:*)"
+      "Bash(npm view:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }

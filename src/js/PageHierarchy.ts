@@ -172,6 +172,9 @@ export function convertNodesToSidebarData(node: PageNode) : object {
     items.push(convertNodesToSidebarData(node.children[i]));
   }
 
+  // Sort items alphabetically by label
+  items.sort((a, b) => a.label.localeCompare(b.label));
+
   // If the slug is defined, then this branch node also has a page. Add it
   // to the items array
   if (items.length > 0 && node.label !== 'root') {

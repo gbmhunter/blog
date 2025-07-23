@@ -1,7 +1,7 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 
-const breadcrumbs = Astro.props.breadcrumbs as { label: string, slug: string }[] | undefined;
+const breadcrumbs = Astro.locals.breadcrumbs as { label: string, slug: string }[] | undefined;
 const { slug } = Astro.params;
 ---
 
