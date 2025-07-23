@@ -142,6 +142,16 @@ export function findPageNodeBySlug(slug: string, hierarchy: PageNode): PageNode 
 }
 
 /**
+ * Represents sidebar data for Starlight.
+ */
+interface SidebarData {
+  label: string;
+  link?: string;
+  items?: SidebarData[];
+  collapsed?: boolean;
+}
+
+/**
  * Converts our custom page hierarchy structure into the format that Starlight expects for the sidebar prop.
  * 
  * This function has to change what is returned when Starlight updated to v0.26.0, due to the sidebar data structure 
@@ -149,7 +159,7 @@ export function findPageNodeBySlug(slug: string, hierarchy: PageNode): PageNode 
  * @param node The root PageNode of the page hierarchy to convert to sidebar data.
  * @returns An object that StarlightPage expects for the sidebar prop.
  */
-export function convertNodesToSidebarData(node: PageNode) : object {
+export function convertNodesToSidebarData(node: PageNode) : SidebarData {
   let label;
   // Use node.fileData.title if it exists (title set in frontmatter of .mdx file), otherwise use the node.label (path part)
   if (node.fileData !== null && node.fileData.title !== undefined) {
