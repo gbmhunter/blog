@@ -1,0 +1,996 @@
+---
+authors: [gbmhunter]
+date: 2020-04-19
+description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
+lastUpdated: 2025-07-23
+tags: [programming, operating systems, OSes, RTOS, Zephyr, peripherals, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation, stack canaries]
+title: Zephyr Peripherals
+type: page
+---
+
+Not only does Zephyr provide you with an RTOS, but it also gives you a collection of well defined APIs for interacting with microcontroller peripherals.
+
+The latest documentation for peripheral (UART, SPI, PWM, PIN, e.t.c.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html.
+
+## Hardware Info
+
+The Zephyr Hardware Info API can be used to access the device ID and reset cause of a microcontroller. The reset cause comes from a list of standardised reasons that apply to most microcontrollers such as reset pin, a software reset, a watchdog timer reset, brownout reset, debug event, e.t.c (not all reset causes may be applicable to a particular microcontroller).
+
+`hwinfo_get_reset_cause()` sets a uint32_t with each bit representing a different reason for reset (a bit field). More than 1 bit can be set. Below is a C function which decodes the reset cause bit field returned from `hwinfo_get_reset_cause()` and creates a human-readable string of the reset reason(s) (great for logging).
+
+```c
+#include <stdint.h>
+
+#include <zephyr/drivers/hwinfo.h>
+#include <zephyr/logging/log.h>
+
+typedef struct {
+    uint32_t flag;
+    char name[20]; // Make sure this is as large as the largest name
+} resetCauseFlag_t;
+
+/**
+ * @brief This function logs the reset cause in a human-readable manner, obtained via hwinfo_get_reset_cause().
+ */
+void LogResetCause()
+{
+    uint32_t resetCause;
+    int resetCauseRc = hwinfo_get_reset_cause(&resetCause);
+    __ASSERT_NO_MSG(resetCauseRc == 0);
+
+    resetCauseFlag_t resetCauseFlags[] = {
+        { RESET_PIN, "RESET_PIN" },
+        { RESET_SOFTWARE, "RESET_SOFTWARE" },
+        { RESET_BROWNOUT, "RESET_BROWNOUT" },
+        { RESET_POR, "RESET_POR" },
+        { RESET_WATCHDOG, "RESET_WATCHDOG" },
+        { RESET_DEBUG, "RESET_DEBUG" },
+        { RESET_SECURITY, "RESET_SECURITY" },
+        { RESET_LOW_POWER_WAKE, "RESET_LOW_POWER_WAKE" },
+        { RESET_CPU_LOCKUP, "RESET_CPU_LOCKUP" },
+        { RESET_PARITY, "RESET_PARITY" },
+        { RESET_PLL, "RESET_PLL" },
+        { RESET_CLOCK, "RESET_CLOCK" },
+        { RESET_HARDWARE, "RESET_HARDWARE" },
+        { RESET_USER, "RESET_USER" },
+        { RESET_TEMPERATURE, "RESET_TEMPERATURE" },
+    };
+
+    const uint32_t buffSize = 100;
+    char resetReasonBuffer[buffSize];
+    resetReasonBuffer[0] = '\0'; // Set the initial byte to 0 so that strncat will work correctly
+    uint32_t currLength = 0;
+
+    for(int i = 0; i < sizeof(resetCauseFlags) / sizeof(resetCauseFlag_t); i++)
+    {
+        if(resetCause & resetCauseFlags[i].flag) 
+        {
+            // Append reset cause string to message
+            strncat(resetReasonBuffer, resetCauseFlags[i].name, buffSize - currLength);
+            currLength = strlen(resetReasonBuffer);
+
+            // Add ", " between reasons
+            strncat(resetReasonBuffer, ", ", buffSize - currLength);
+            currLength = strlen(resetReasonBuffer);
+        } 
+    }
+
+    LOG_INF("Reset reason as a bit field: 0x%04X. This means the following flags were set: %s", resetCause, resetReasonBuffer);
+
+    // Clear the reset cause
+    resetCauseRc = hwinfo_clear_reset_cause();
+    __ASSERT_NO_MSG(resetCauseRc == 0);
+}
+```
+
+## GPIO
+
+To setup a single GPIO pin your device tree, you can add the following to your `.dts` file:
+
+```txt
+my_gpio {
+    # Pin 7 in GPIO controller bank 0
+    gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
+};
+```
+
+You can then get access to this GPIO from your C code with:
+
+```c
+const struct gpio_dt_spec myGpio = GPIO_DT_SPEC_GET(DT_PATH(my_gpio), gpios);
+
+bool boolRc = gpio_is_ready_dt(&myGpio);
+__ASSERT_NO_MSG(boolRc);
+```
+
+### GPIO Outputs
+
+You can statically configure your GPIO as an output in your `.dts` file by using `compatible = "gpio-leds";`:
+
+```txt
+/ {
+    gpio_outputs {
+        // It doesn't sound right but we use gpio-leds for general I/O outputs
+        compatible = "gpio-leds";
+
+        my_gpio { 
+          gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
+          label = "My GPIO";
+        };
+    };
+};
+```
+
+<Aside type="note">
+Rather than somewhat misuse `gpio-leds` for general I/O outputs, you could [create your own DTS binding](https://blog.golioth.io/zephyr-for-hardware-engineers-gpio/).
+</Aside>
+
+You can configure a GPIO as an output at runtime (my preferred method, I don't like the device tree!) in C with:
+
+```c
+int intRc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_INACTIVE);
+__ASSERT_NO_MSG(intRc == 0);
+```
+
+The above code gets the device tree spec based of it's path, checks that the GPIO is ready for use (I'm not sure why it wouldn't me, but good practice!) and then configures it as an output. To then set the pin high or low, you use `gpio_pin_set_dt()`:
+
+```c
+int rc = gpio_pin_set_dt(&myGpio, 0); // Set it low
+__ASSERT_NO_MSG(rc == 0);
+
+rc = gpio_pin_set_dt(&myGpio, 1); // Set it high
+__ASSERT_NO_MSG(rc == 0);
+```
+
+`GPIO_OUTPUT_LOW` and `GPIO_OUTPUT_HIGH` both set the physical state of the pin, and do not care if the pin is active high or active low. `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` take into account whether the pin is active high or active low. In the case the pin is active high, setting the pin to a logical level of `INACTIVE` results in a physical `LOW`, and `ACTIVE` is `HIGH`. In the case it is active low, `INACTIVE`
+
+If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
+
+The `gpio_pin_configure_dt()` function can also accept SoC specific flags. Some use cases for SoC specific flags are for configuring things like drive strength and enabling internal pull-up/pull-down [resistors](/electronics/components/resistors/). For example, the following code is used to configure a GPIO pin in the nRF52 SoC family with high drive (when both low or high):
+
+```c
+#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h> // Needed for the NRF_GPIO_DRIVE_H0H1 macro
+
+int rc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_HIGH | NRF_GPIO_DRIVE_H0H1);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+You can read more information about nRF specific flags on the [nRF52 page](/programming/microcontrollers/nordic/nrf52/).
+
+### GPIO Configuration Errors
+
+If you accidentally try and configure a GPIO pin incorrectly, you might get a runtime error like the following (this was printed to the shell):
+
+```text
+ASSERTION FAIL [(cfg->port_pin_mask & (gpio_port_pins_t)(1UL << (pin))) != 0U] @ WEST_TOPDIR/external/zephyr/include/zephyr/drivers/gpio.h:1019
+
+Unsupported pin
+```
+
+This happened to me when I was trying to use a pin that was reserved in the `.dts` file with the `gpio-reserved-ranges` property:
+
+```text
+&gpio0 {
+    status = "okay";
+    gpio-reserved-ranges = <0 2>, <6 1>, <8 3>, <17 7>;
+};
+```
+
+### GPIO Inputs
+
+To read the value of a GPIO input, use `gpio_pin_get_dt()`:
+
+```c
+int rc = gpio_pin_get_dt(&myGpio);
+__ASSERT_NO_MSG(rc >= 0); // 0 or 1 for low/high, negative number for error
+
+if (rc == 0) {
+    LOG_INF("GPIO was low.");
+} else if (rc == 1) {
+    LOG_INF("GPIO was high.");
+}
+```
+
+You can also read the current value of a GPIO output using `gpio_pin_get_dt()`. HOWEVER -- you must make sure to provide the `GPIO_INPUT` flag along with the appropriate output flag when configuring the GPIO pin. For example:
+
+```c
+int rc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_LOW | GPIO_INPUT);
+__ASSERT_NO_MSG(rc == 0);
+
+// Now you can read the value of the GPIO output!
+int value = gpio_pin_get_dt(&myGpio);
+
+```
+
+### GPIO Interrupts
+
+If you want to configure an interrupt for a GPIO pin, you can use `gpio_pin_interrupt_configure_dt()`:
+
+```c
+intRc = gpio_pin_interrupt_configure_dt(&myGpio, GPIO_INT_EDGE_TO_ACTIVE);
+__ASSERT_NO_MSG(intRc == 0);
+```
+
+You then need to setup a callback:
+
+```c
+static struct gpio_callback gpioCallbackData;
+
+void GpioCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
+{
+    // GPIO interrupt callback
+}
+
+int main() {
+    gpio_init_callback(&gpioCallbackData, &GpioCallback, BIT(myGpio.pin));
+    gpio_add_callback(myGpio.port, &gpioCallbackData);
+}
+```
+
+There are many interrupt configuration flags to choose from, including both physical (actual voltage at the pin) and logical (depends on the pin's active high or active low configuration) triggers. For both physical and logical, there are both edge (transition) and level triggers. <IRef iref="tbl-gpio-interrupt-config-flags" /> lists the different flags[^zephyr-docs-gpio-h-file-reference].
+
+<table data-iref="tbl-gpio-interrupt-config-flags">
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Description</th>
+      <th>Physical or Logical</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`GPIO_INT_DISABLE`</td>
+      <td>Disable interrupts for the GPIO pin.</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_EDGE_RISING`</td>
+      <td>Trigger interrupt on rising edge.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_EDGE_FALLING`</td>
+      <td>Trigger interrupt on falling edge.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_EDGE_BOTH`</td>
+      <td>Trigger interrupt on both rising and falling edges.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_LOW`</td>
+      <td>Trigger interrupt when the GPIO pin is low.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_HIGH`</td>
+      <td>Trigger interrupt when the GPIO pin is high.</td>
+      <td>Physical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_TO_INACTIVE`</td>
+      <td>Trigger interrupt when pin changes to inactive (logical level 0).</td>
+      <td>Logical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_TO_ACTIVE`</td>
+      <td>Trigger interrupt when pin changes to active (logical level 1).</td>
+      <td>Logical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_INACTIVE`</td>
+      <td>Trigger interrupt when pin is inactive (logical level 0).</td>
+      <td>Logical</td>
+    </tr>
+    <tr>
+      <td>`GPIO_INT_LEVEL_ACTIVE`</td>
+      <td>Trigger interrupt when pin is active (logical level 1).</td>
+      <td>Logical</td>
+    </tr>
+  </tbody>
+  <caption>GPIO interrupt configuration flags.</caption>
+</table>
+
+See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an example of using a Zephyr GPIO to handle button presses along with debouncing using a delayable work queue.
+
+The interrupt callback object has not provision for storing user data (e.g. a `void *`, so you could pass it the "object" that was associated with the interrupt). However, you can use the `CONTAINER_OF` macro to do almost the same thing, as long as you store the interrupt callback object in the "object". The following example shows how to do this:
+
+```c
+struct {
+    struct gpio_callback myCallback;
+} MyObject;
+
+int main() {
+    MyObject myObject;
+    gpio_pin_interrupt_configure(myGpio.port, myGpio.pin, GPIO_INT_EDGE_TO_ACTIVE);
+    gpio_init_callback(&myObject.myCallback, &GpioCallbackHandler, BIT(myGpio.pin));
+    gpio_add_callback(myGpio.port, &myObject.myCallback);
+}
+
+static void GpioCallbackHandler(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
+{
+    // Can get "user data" from inside the handler function by using the CONTAINER_OF macro
+    MyObject* myObject = CONTAINER_OF(cb, MyObject, myCallback);
+}
+```
+
+If using `CONTAINER_OF` in C++ to access a containing class instance you might get a compiler warning:
+
+```text
+warning: 'offsetof' within non-standard-layout type 'MyClass' is conditionally-supported [-Winvalid-offsetof]
+```
+
+In this case, the solution is to create a smaller struct within your class which only contains the gpio_callback and a pointer to `MyClass`. This will ensure it is a standard layout type. Here is a simplified example which shows how to do this:
+
+```c++
+struct GpioCallbackDataAndObject {
+    GpioReal* m_obj;
+    struct gpio_callback m_gpioCallbackData;
+};
+
+class MyClass {
+public:
+  // ... other members ...
+  GpioCallbackDataAndObject m_gpioCallbackDataAndObject;
+};
+
+int main() {
+  MyClass myClass;
+  gpio_pin_interrupt_configure(myGpio.port, myGpio.pin, GPIO_INT_EDGE_TO_ACTIVE);
+  gpio_init_callback(&myClass.m_gpioCallbackDataAndObject.m_gpioCallbackData, &interruptCallback, BIT(myGpio.pin));
+  gpio_add_callback(myGpio.port, &myClass.m_gpioCallbackDataAndObject.m_gpioCallbackData);
+}
+
+static void interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
+{
+    // WARNING: This will be called in a interrupt context.
+    // CONTAINER_OF() won't give the "non-standard layout" warning now since `GpioCallbackDataAndObject` is a standard layout type.
+    GpioCallbackDataAndObject* gpioCallbackDataAndObject = CONTAINER_OF(cb, GpioCallbackDataAndObject, m_gpioCallbackData);
+    MyClass * obj = gpioCallbackDataAndObject->m_obj;
+    // Now we have the object, do something with it!
+}
+```
+
+### Configuring and Setting GPIO In the Shell
+
+Zephyr has a built-in shell command that can be used for configuring and setting GPIO pins. You can enable it by adding the following to your `prj.conf` file:
+
+```txt
+CONFIG_GPIO_SHELL=y
+```
+
+<Image src={import('./_assets/configuring-gpio-in-the-zephyr-shell.webp')} width="700px">A screenshot showing the Zephyr shell command for configuring GPIO.</Image>
+
+### GPIO Reserved Ranges
+
+You can configure reserved ranges of GPIO pins per bank in your `.dts` file with the `gpio-reserved-ranges` property. For example:
+
+```text
+&gpio0 {
+    status = "okay";
+    gpio-reserved-ranges = <0 2>, <6 1>, <8 3>;
+};
+```
+
+`gpio-reserved-ranges` takes a list of ranges, where each range is a tuple of the start pin and the number of pins to reserve. For example, the above configuration reserves pins 0, 1, 6, 8, 9 and 10.
+
+### GPIO Line Names
+
+You can assign line names to GPIOs in your `.dts` file with the `line-names` property. For example:
+
+```text
+&gpio0 {
+    status = "okay";
+    gpio-line-names = "XL1", "XL2", "AREF", "A0", "A1", "RTS", "TXD",
+        "CTS", "RXD", "NFC1", "NFC2", "BUTTON1", "BUTTON2", "LED1",
+        "LED2", "LED3", "LED4", "QSPI CS", "RESET", "QSPI CLK",
+        "QSPI DIO0", "QSPI DIO1", "QSPI DIO2", "QSPI DIO3","BUTTON3",
+        "BUTTON4", "SDA", "SCL", "A2", "A3", "A4", "A5";
+};
+```
+
+## PWM
+
+For example, looking at `zephyr/dts/arm/nordic/nrf52832.dtsi` and searching for "pwm" we find:
+
+```txt
+/ {
+    soc {
+        pwm0: pwm@4001c000 {
+            compatible = "nordic,nrf-pwm";
+            reg = <0x4001c000 0x1000>;
+            interrupts = <28 NRF_DEFAULT_IRQ_PRIORITY>;
+            status = "disabled";
+            #pwm-cells = <3>;
+        };
+        pwm1: pwm@40021000 {
+            compatible = "nordic,nrf-pwm";
+            reg = <0x40021000 0x1000>;
+            interrupts = <33 NRF_DEFAULT_IRQ_PRIORITY>;
+            status = "disabled";
+            #pwm-cells = <3>;
+        };
+        pwm2: pwm@40022000 {
+            compatible = "nordic,nrf-pwm";
+            reg = <0x40022000 0x1000>;
+            interrupts = <34 NRF_DEFAULT_IRQ_PRIORITY>;
+            status = "disabled";
+            #pwm-cells = <3>;
+        };
+    }
+}
+```
+
+
+
+In your .dts file, we first need to override the `pwm0` with some parameters:
+
+```txt title="my_board.dts"
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_default>;
+    pinctrl-1 = <&pwm0_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+```
+
+Notice how the mapping between the PWM channels and the pins is not directly set here (some examples online directly assign pins here), instead pointing to some structures defined in the pin control file. So then in your pin control file, we need to define the mapping between the PWM channels and the pins. For example:
+
+```txt title="my_board.dtsi"
+&pinctrl {
+    pwm0_default: pwm0_default {
+        group1 {
+            psels = 
+                <NRF_PSEL(PWM_OUT0, 0, 10)>, // Assign pwm0 channel 0 to port 0, pin 10
+                <NRF_PSEL(PWM_OUT1, 0, 5)>, // Assign pwm0 channel 1 to port 0, pin 5
+            nordic,invert;
+        };
+    };
+
+    pwm0_sleep: pwm0_sleep {
+        group1 {
+            psels = 
+                <NRF_PSEL(PWM_OUT0, 0, 10)>, // Assign pwm0 channel 0 to port 0, pin 10
+                <NRF_PSEL(PWM_OUT1, 0, 5)>, // Assign pwm0 channel 1 to port 0, pin 5
+            low-power-enable;
+        };
+    };
+}
+```
+
+```c
+my_pwm_group {
+    compatible = "pwm-leds";
+    status = "okay";
+    my_pwm_pin_1 {
+        // Use pwm peripheral 0 and channel 0 
+        pwms = <&pwm0 0 PWM_MSEC(5) PWM_POLARITY_NORMAL>;
+    };
+    my_pwm_pin_2 {
+        // Use pwm peripheral 0 and channel 1
+        pwms = <&pwm0 1 PWM_MSEC(5) PWM_POLARITY_NORMAL>;
+    };
+};
+```
+
+This defines 3 PWM peripherals.
+
+PWM can be set up with:
+
+```c
+const struct pwm_dt_spec myPwmSpec = PWM_DT_SPEC_GET(DT_PATH(my_pwm_group, my_pwm_pin_1));
+
+boolRc = pwm_is_ready_dt(&myPwmSpec);
+__ASSERT_NO_MSG(boolRc);
+```
+
+And then enabled with:
+
+```c 
+// This will enable the PWM with a period of 1000us and a pulse width of 500us (i.e. 50% duty cycle)
+int intRc = pwm_set_dt(&myPwmSpec, PWM_USEC(1000), PWM_USEC(500));
+__ASSERT_NO_MSG(intRc == 0);
+```
+
+## ADCs
+
+The Zephyr ADC API lets you sample analogue voltages using the MCU's [ADC peripheral(s)](/electronics/components/analogue-to-digital-converters-adcs/).
+
+The Zephyr ADC API is documented [here](https://docs.zephyrproject.org/latest/doxygen/html/group__adc__interface.html).
+
+There are working ADC examples in the Zephyr repo at `samples/drivers/adc/`. As of September 2024, there are two examples:
+
+* `adc_dt`: Basic ADC example.
+* `adc_sequence`: An ADC example showing how to take readings using sequences.
+
+The example below shows how to setup and configure the ADC on a nRF52 device. Some the code, especially the `.dts` file, will be different between MCUs and vendors. The C code should remain similar (or the same!) since Zephyr aims to provide a standard interface across devices.
+
+### prj.conf Configuration
+
+The first thing to do is to add `CONFIG_ADC=y` to your `prj.conf` file:
+
+```python title="prj.conf"
+CONFIG_ADC=y
+```
+
+That's it! The remainder of the configuration is either done in the `.dts` file or in your C code.
+
+### DTS Configuration
+
+First up, you need to enable and configure the ADC in your `.dts` file. For example:
+
+```txt title="my_board.dts"
+/ {
+    zephyr,user {
+        // NOTE: This zephyr,user bit is not needed if you use the ADC_DT_SPEC_STRUCT(DT_NODELABEL(adc), 0) style to
+        // grab the ADC channel spec in your C code.
+        io-channels = <&adc 5>, <&adc 7>;
+    };
+};
+
+&adc {
+    #address-cells = <1>;
+    #size-cells = <0>;
+    status = "okay";
+
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1_4";
+        zephyr,reference = "ADC_REF_VDD_1_4";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,input-positive = <NRF_SAADC_AIN5>;
+        zephyr,resolution = <12>;
+    };
+
+    channel@1 {
+        reg = <1>;
+        zephyr,gain = "ADC_GAIN_1_4";
+        zephyr,reference = "ADC_REF_VDD_1_4";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>; //<ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS,3)>;
+        zephyr,input-positive = <NRF_SAADC_AIN7>;
+        zephyr,resolution = <12>;
+    };
+};
+```
+
+<Aside type="note">
+I have no idea why ADC related config goes under the `zephyr,user` node?!? It's a strange name.
+</Aside>
+
+* `zephyr,gain`: Sets the gain for the ADC. In the nRF52 the following are available:
+  * `ADC_GAIN_1_4`: Sets the gain to 1/4.
+  * `ADC_GAIN_1_6`: Sets the gain to 1/6. This is commonly used with `ADC_REF_INTERNAL` to measure a range from 0 to 3.6V (0.6V * 6 = 3.6V).
+* `zephyr,reference`: Sets the reference voltage for the ADC. In the nRF52 the following are available:
+  * `ADC_REF_INTERNAL`: Sets the reference to the internal 0.6V reference.
+  * `ADC_REF_VDD_1_4`: Sets the reference to 1/4 of the VDD voltage.
+
+This assumes we have two single ended ADC channels connected to pins `AIN5` and `AIN7`.
+
+`ADC_REF_INTERNAL` results in a range of +-0.6V to the ADC core. `ADC_GAIN_1_6` pre-scales the input to 1/6 before applying it to the core.
+
+### C Code
+
+There are a number of ways to grab the ADC channel spec from the `.dts` in your C code. My preferred way is to reference the `adc` node with `DT_NODELABEL(adc)` and use `ADC_DT_SPEC_STRUCT()` to get the spec for a given channel, specifying the channel number as the second argument. If you use this method, you don't actually need the `zephyr,user` node in your `.dts` file.
+
+<Aside type="tip">
+The ADC channel is different from the ADC pin number. Be careful not to confuse the two. The ADC pins you might use are `AIN5` and `AIN7`, but you would typically assign these sequentially to the channels, starting at channel 0 (i.e. channel 0 is `AIN5` and channel 1 is `AIN7`).
+</Aside>
+
+```c
+static struct adc_dt_spec l_myAdcCh0Spec = ADC_DT_SPEC_STRUCT(DT_NODELABEL(adc), 0); // Get 1st channel
+static struct adc_dt_spec l_myAdcCh1Spec = ADC_DT_SPEC_STRUCT(DT_NODELABEL(adc), 1); // Get 2nd channel
+```
+
+<Aside type="tip">
+The `adc_dt_spec` structure represents a single ADC channel, not the entire ADC peripheral.
+</Aside>
+
+I have has some weird experiences with getting the ADC channel spec with:
+
+```c
+static const struct adc_dt_spec adc_channel = ADC_DT_SPEC_GET(DT_PATH(zephyr_user)); // In the case of just a single channel in zephyr,user {}
+```
+
+in where the returned `spec.channel_cfg` was all zeros, indicating is was not set up correctly (and indeed, the `adc_channel_setup_dt()` would fail). I'm not sure why this is.
+
+Then you can do the following to perform a ADC reading:
+
+```c
+bool isReady = adc_is_ready_dt(l_myAdcCh0Spec);
+__ASSERT(isReady, "ADC channel is not ready.");
+
+int rc = adc_channel_setup_dt(l_myAdcCh0Spec);
+__ASSERT(rc == 0, "Could not setup ADC channel. Got adc_channel_setup_dt() return code %d.", rc);
+
+int16_t buf = 0;
+struct adc_sequence sequence = {
+    .buffer = &buf,
+    .buffer_size = sizeof(buf), // Buffer size in bytes, not number of samples
+};
+
+int rc = adc_sequence_init_dt(l_myAdcCh0Spec, &sequence);
+__ASSERT(rc == 0, "Could not initialize sequence. Got adc_sequence_init_dt() return code %d.", rc);
+
+rc = adc_read(l_myAdcCh0Spec->dev, &sequence);
+__ASSERT(rc == 0, "Could not read ADC. Got adc_read() return code %d.", rc);
+
+int32_t val_mv = buf; // Save the raw value to val_mv, as required by adc_raw_to_millivolts_dt()
+rc = adc_raw_to_millivolts_dt(l_myAdcCh0Spec, &val_mv);
+__ASSERT(rc == 0, "Could not convert raw value to mV. Got adc_raw_to_millivolts_dt() return code %d.", rc);
+
+LOG_INF("ADC channel 0 reading: %d mV", val_mv);
+```
+
+#### Iterate Automatically Over All Channels
+
+You can also use Zephyr macros like `DT_FOREACH_PROP_ELEM()` to iterate over all the channels in the `zephyr,user` node. The following C code shows how to do this:
+
+```c
+#include <zephyr/drivers/adc.h>
+
+#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
+    ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
+
+/* Data of ADC io-channels specified in devicetree. */
+static const struct adc_dt_spec adc_channels[] = {
+    DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user), io_channels,
+                 DT_SPEC_AND_COMMA)
+};
+
+int main() {
+    int rc = 0;
+
+    // Configure channels individually prior to sampling.
+    for (size_t i = 0; i < ARRAY_SIZE(adc_channels); i++) {
+        if (!device_is_ready(adc_channels[i].dev)) {
+            LOG_INF("ADC controller device %s not ready\n", adc_channels[i].dev->name);
+            return -1;
+        }
+
+        rc = adc_channel_setup_dt(&adc_channels[i]);
+        if (rc < 0) {
+            LOG_INF("Could not setup channel #%d (%d)\n", i, rc);
+            return -1;
+        }
+    }
+
+    // Call our function to perform a measurement
+    int32_t sample_mV = 0;
+    rc = SampleChannel(0, NULL, &sample_mV);
+    __ASSERT_NO_MSG(rc == 0);
+}
+
+int SampleChannel(uint8_t channelId, int32_t * sample_counts, int32_t * sample_mV)
+{
+    // We are doing just one measurement, so buffer does not need to be an array
+    uint16_t buf; // NOTE: Nordic's driver uses int16_t, see below
+    struct adc_sequence sequence = {
+        .buffer = &buf,
+        // buffer size in bytes, not number of samples
+        .buffer_size = sizeof(buf),
+    };
+
+    int rc;
+    rc = adc_sequence_init_dt(&adc_channels[channelId], &sequence);
+    if (rc)
+    {
+        LOG_ERR("Couldn't configure the ADC sequence. adc_sequence_init_dt() rc: %d.", rc);
+        return -1;
+    }
+
+    // Perform the actual measurements
+    rc = adc_read(adc_channels[channelId].dev, &sequence);
+    if (rc < 0) {
+        LOG_ERR("Could not read value from ADC. adc_read() rc: %d.", rc);
+        return -1;
+    }
+
+    int32_t tempSample_counts = 0;
+    if (adc_channels[channelId].channel_cfg.differential) {
+        tempSample_counts = (int32_t)((int16_t)buf);
+    } else {
+        tempSample_counts = (int32_t)buf;
+    }
+
+    // Save raw value if provided pointer
+    if (sample_counts) {
+        *sample_counts = tempSample_counts;
+    }
+
+    // Convert raw sample_mV to mV, more useful to caller
+    int32_t convertedVoltage_mV = tempSample_counts; // Needs to start of with raw value, function reads then modified it!
+    rc = adc_raw_to_millivolts_dt(&adc_channels[channelId],
+                                   &convertedVoltage_mV);
+    if (rc < 0) {
+        LOG_ERR("Could not convert ADC reading to mV. adc_raw_to_millivolts_dt() rc: %d.", rc);
+        return -1;
+    }
+
+    if (sample_mV) {
+        *sample_mV = convertedVoltage_mV;
+    }
+
+    return 0;
+}
+```
+
+Nordic Semiconductor has a guide on setting the ADC for their nRF MCUs using Zephyr [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-intermediate/lessons/lesson-6-analog-to-digital-converter-adc/topic/exercise-1-interfacing-with-adc-using-zephyr-api/).
+
+<Aside type="caution">
+Nordic's guide uses the `int16_t` type for the ADC buffer, while the Zephyr example uses `uint16_t`. I'm not sure if this is a typo or intentional because their driver works differently.
+</Aside>
+
+## I2C
+
+Your microcontroller file will already define the [I2C](/electronics/communication-protocols/i2c-communication-protocol/) peripherals available (e.g. `i2c0`, `i2c1`, ...). All you have to do is enable them in your `.dts` file with:
+
+```txt
+&i2c0 {
+  status = "okay";
+  pinctrl-0 = <&i2c0_default_alt>;
+  pinctrl-1 = <&i2c0_sleep_alt>;
+  pinctrl-names = "default", "sleep";
+};
+```
+
+And then in the `.dts` file setup `pinctrl` to define `i2c0_default_alt` and `i2c0_sleep_alt` (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs). This defines SDA to use pin 0.0 and SCL to use pin 0.1:
+
+```txt
+&pinctrl {
+  i2c0_default_alt: i2c0_default_alt {
+    group1 {
+      psels = <NRF_PSEL(TWIM_SDA, 0, 0)>,
+        <NRF_PSEL(TWIM_SCL, 0, 1)>;
+    };
+  };
+
+  i2c0_sleep_alt: i2c0_sleep_alt {
+    group1 {
+      psels = <NRF_PSEL(TWIM_SDA, 0, 0)>,
+        <NRF_PSEL(TWIM_SCL, 0, 1)>;
+      low-power-enable;
+    };
+  };
+};
+```
+
+## UART
+
+Your microcontroller file will already define the [UART](/electronics/communication-protocols/uart-communication-protocol/) peripherals available (e.g. `uart0`, `uart1`, ...). You have to do is enable them in your `.dts` file, and provide things like the baud rate:
+
+```txt
+&uart0 {
+  status = "okay";
+  current-speed = <115200>;
+  pinctrl-0 = <&uart0_default>;
+  pinctrl-1 = <&uart0_sleep>;
+  pinctrl-names = "default", "sleep";
+};
+```
+
+And then configure `pinctrl` to define the pins that the UART peripheral uses. The following example configures `uart0` to use pin 1.3 for TX and pin 1.4 for RX (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs):
+
+```txt
+&pinctrl {
+  uart0_default: uart0_default {
+    group1 {
+      psels = <NRF_PSEL(UART_TX, 1, 3)>;
+    };
+    group2 {
+      psels = <NRF_PSEL(UART_RX, 1, 4)>;
+      bias-pull-up;
+    };
+  };
+
+  uart0_sleep: uart0_sleep {
+    group1 {
+      psels = 
+        <NRF_PSEL(UART_TX, 0, 24)>,
+        <NRF_PSEL(UART_RX, 1, 0)>;
+      low-power-enable;
+    };
+  };
+};
+```
+
+## I2S
+
+Your microcontroller file will already define the [I2S](/electronics/communication-protocols/i2s-communication-protocol/) peripherals available (e.g. `i2s0`, `i2s1`, ...). You have to enable them in your `.dts` file with:
+
+```txt
+&i2s0 {
+  status = "okay";
+  pinctrl-0 = <&i2s0_default_alt>;
+  pinctrl-names = "default";
+};
+```
+
+And then in the `pinctrl` peripheral you can configure the pins that `is20` uses. The following example configures `i2s0` to use pin 0.5 for SCK, pin 0.7 for LRCK, pin 0.8 for SDOUT and pin 0.4 for SDIN (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs):
+
+```txt
+i2s0_default_alt: i2s0_default_alt {
+    group1 {
+      psels = 
+        <NRF_PSEL(I2S_SCK_M, 0, 5)>,
+        <NRF_PSEL(I2S_LRCK_M, 0, 7)>,
+        <NRF_PSEL(I2S_SDOUT, 0, 8)>,
+        <NRF_PSEL(I2S_SDIN, 0, 4)>;
+    };
+  };
+```
+
+## Non-Volatile Storage
+
+Zephyr provides an feature rich API for storing things in non-volatile storage (e.g. [flash memory](/electronics/components/memory/flash/)). The NVS API is provided by `#include <zephyr/fs/nvs.h>`. It represents elements as id-data pairs.
+
+To protect against data corruption if power is lost mid-write, the library makes sure there is always one complete copy of the data in flash at all times. The flash area is divided into sectors. Elements are written to the first sector until the sector is full, and then the next sector is prepared for writing (i.e. erased). Many sectors can be "active" at once.[^zephyr-docs-nvs]
+
+<Aside type="note">
+Although different, Zephyr provides a similar service called the _Retention System_ for storing data whilst the device is powered on (i.e. it will persist across resets, but it will NOT persist across power cycles).
+</Aside>
+
+Typically a partition called `storage_partition` is setup in the main flash for the NVS system to use. This can be defined in the board files.
+
+First, you need to mount the NVS file system onto a flash device:
+
+```c
+#define NVS_PARTITION           storage_partition
+#define NVS_PARTITION_DEVICE    FIXED_PARTITION_DEVICE(NVS_PARTITION)
+#define NVS_PARTITION_OFFSET    FIXED_PARTITION_OFFSET(NVS_PARTITION)
+
+int main() {
+    int rc;
+    struct flash_pages_info info;
+    struct nvs_fs fs;
+
+    /* define the nvs file system by settings with:
+      *	sector_size equal to the pagesize,
+      *	3 sectors
+      *	starting at NVS_PARTITION_OFFSET
+      */
+    fs.flash_device = NVS_PARTITION_DEVICE;
+    if (!device_is_ready(fs.flash_device)) {
+        printk("Flash device %s is not ready\n", fs.flash_device->name);
+        return;
+    }
+    fs.offset = NVS_PARTITION_OFFSET;
+    rc = flash_get_page_info_by_offs(fs.flash_device, fs.offset, &info);
+    if (rc) {
+        printk("Unable to get page info\n");
+        return;
+    }
+    fs.sector_size = info.size;
+    fs.sector_count = 3U;
+
+    rc = nvs_mount(&fs);
+    if (rc) {
+        printk("Flash Init failed\n");
+        return;
+    }
+}
+```
+
+### Writing Data
+
+Data can be written to the NVS with the `nvs_write()` function which has the following signature:
+
+```c
+ssize_t nvs_write	(
+    struct nvs_fs * fs,
+    uint16_t id,
+    const void * data,
+    size_t len 
+);
+```
+
+`fs` is the file system object we created above. `id` is a user chosen ID for the data. Think of this as like a path to the file. It is recommended to store each data ID as a constant. It is up to you to make sure they are unique across your application. Below is an example of writing a `MyData` structure to the NVS.
+
+```c
+#define MY_DATA_ID 0 // This is the ID
+
+typedef struct {
+    uint8_t sensorId;
+    uint32_t timestamp;
+    float temperature;
+} MyData;
+
+int main() {
+    MyData myData = {.sensorId = 1, .timestamp = k_uptime_get(), .temperature = 24.5};
+    ssize_t rc = nvs_write(fs, MY_DATA_ID, &myData, sizeof(myData));
+    __ASSERT_NO_MSG(rc == sizeof(myData));
+}
+```
+
+On success, `nvs_write()` will return the number of bytes written. On failure it will return a negative error code as defined by `errno.h`. Some of the more common error codes are:
+
+* `-ENOSPC`: Not enough space on the flash device.
+
+`nvs_write()` also checks the ID and incoming data before a write. If the provided data is identical to the data already in flash, no write is performed. This prevents unnecessary flash wear and improves the speed of the operation.
+
+<Aside type="caution">
+Be aware that a `nvs_write()` call may take a significant amount of time to run (> 10ms) if a new sector needs to be prepared for writing (i.e. erased). I recommend making use of threads to make sure high priority work is not blocked.
+</Aside>
+
+### Reading Data
+
+Data can be read from the NVS with the `nvs_read()` function which has the following signature:
+
+```c
+ssize_t nvs_read(
+    struct nvs_fs * fs,
+    uint16_t id,
+    void * data,
+    size_t len);
+```
+
+It's syntax is very similar to `nvs_write()`. On success, `nvs_read()` will return the number of bytes read. If the return value is larger than the number of bytes requested, this means that more data is available. On error, a negative error code as defined by `errno.h` is returned. Here is an example of reading the `MyData` structure from the NVS.
+
+```c
+MyData myData;
+ssize_t rc = nvs_read(fs, MY_DATA_ID, &myData, sizeof(myData));
+__ASSERT_NO_MSG(rc == sizeof(myData));
+```
+
+### Calculating Free Space
+
+`nvs_calc_free_space()` can be used to calculate the remaining number of bytes that can be still written to the file system.
+
+```c
+ssize_t freeSpace = nvs_calc_free_space(fs);
+__ASSERT_NO_MSG(freeSpace >= 0);
+printk("Free space: %d bytes\n", freeSpace);
+```
+
+On error, `nvs_calc_free_space()` returns a negative error code as defined by `errno.h`.
+
+<Aside type="tip">
+`ssize_t` is made available via `#include <sys/types.h>`.
+</Aside>
+
+An official code example of the NVS can be found at https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c[^github-zephyr-nvs-code-example].
+
+## Bluetooth
+
+Nordic has contributed significantly to the Zephyr Bluetooth API ever since they adopted Zephyr as their official platform for the nRF52, nRF53 and nRF91 MCU families. 
+
+### Update the LE Connection Interval
+
+After you are connected, you can call `bt_conn_le_param_update()` to update the Bluetooth connection interval. This is useful if you want to save power by increasing the connection interval when you don't need to send/receive data as often.
+
+```c
+struct bt_le_conn_param conn_param = { .interval_min = (708), .interval_max = (800), .latency = (0), .timeout = (400), };
+int rc = bt_conn_le_param_update(conn, &conn_param);
+__ASSERT_NO_MSG(rc == 0);
+```
+
+`conn` is a pointer to a `struct bt_conn` which is the connection object. It's assumed you have that handy to pass in! The connection interval is in units of 1.25ms, so the above code sets the connection interval min. to 885ms and the max. to 1000ms. By default the min. and max were set to 15ms and 30ms respectively, so this is a significant slow down and results in good power savings for small battery powered devices. The timeout is in units of 10ms, so the above code sets the timeout to 4s. You can use the helper macro `BT_LE_CONN_PARAM()` to create the `struct bt_le_conn_param` object if you want.
+
+If you are a Bluetooth central device, these settings will take effect. If you a peripheral device, these settings are "suggestions". They are sent to the central device and it is up to the central device to accept them. The central device may reject them or choose other values.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
+[^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
+[^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
+[^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
+[^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.
+[^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.
+[^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-1, from https://www.scaler.com/topics/zephyr-operating-system/.
+[^wikipedia-zephyr-operating-system]: Wikipedia (2023, Oct 20). _Zephyr (operating system)_. Retrieved 2024-02-21, from https://en.wikipedia.org/wiki/Zephyr_(operating_system).
+[^nordic-semi-nrf52-zephyr-support-added]: Nordic Semiconductor (2020, Apr 2). _Nordic Semiconductor now offering broad product line support for its short-range and cellular IoT devices on nRF Connect platform including a suite of development tools and open source nRF Connect SDK_ [blog post]. Retrieved 2024-02-21, from https://www.nordicsemi.com/Nordic-news/2020/04/nordic-now-offering-support-for-its-shortrange-and-cellular-iot-devices-on-nrf-connect-platform.
+[^mind-using-emulators-and-fake-devices-in-zephyr]: Javad Rahamipetroudi (2024, May 22). _Using emulators and fake devices in Zephyr_. Retrieved 2024-10-24, from https://mind.be/using-emulators-and-fake-devices-in-zephyr/.
+[^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
+[^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.
+[^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
+[^dockerhub-zephyr-project-rtos]: Docker Hub. _zephyrprojectrtos_ [user page]. Retrieved 2024-11-26, from https://hub.docker.com/u/zephyrprojectrtos.
+[^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
+[^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
+[^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
+[^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
+[^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
+[^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
+[^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
+[^zephyr-docs-atomic-services]: Zephyr (2024, Jan 8). _Docs / Latest » Kernel » Kernel Services » Atomic Services_ [documentation]. Retrieved 2025-07-01, from https://docs.zephyrproject.org/latest/kernel/services/other/atomic.html.
