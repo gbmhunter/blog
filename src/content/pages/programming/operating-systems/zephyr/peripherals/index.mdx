@@ -968,6 +968,331 @@ __ASSERT_NO_MSG(rc == 0);
 
 If you are a Bluetooth central device, these settings will take effect. If you a peripheral device, these settings are "suggestions". They are sent to the central device and it is up to the central device to accept them. The central device may reject them or choose other values.
 
+## Hardware and Software Watchdog
+
+Zephyr provides a software and hardware based watchdog API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via it's software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
+
+<Aside type="note">
+Why not just use the hardware watchdog? The useful thing about the software watchdog thread is that is provides the ability to independently monitor multiple threads, with different timeouts associated with each thread. It provides a more granularly and control about what you watch and how often you expect each thread to "check in".
+</Aside>
+
+### Hardware Watchdog
+
+To enable the hardware watchdog, first add the following to your `prf.conf`:
+
+```python title="prf.conf"
+CONFIG_WATCHDOG=y
+```
+
+You don't normally need to change anything in your boards `.dts` file, as the watchdog peripheral is usually already enabled (`status = "okay"`) and labeled with `wdt0`. For example, `zephyr/dts/arm/nordic/nrf52840.dtsi` contains the following definition for the hardware watchdog on the [nRF52840 SoC](/programming/microcontrollers/nordic/nrf52/):
+
+```text
+wdt: wdt0: watchdog@40010000 {
+    compatible = "nordic,nrf-wdt";
+    reg = <0x40010000 0x1000>;
+    interrupts = <16 NRF_DEFAULT_IRQ_PRIORITY>;
+    status = "okay";
+};
+```
+
+<Aside type="note">
+Some projects add the alias `watchdog0` to `wdt0` but this is not really needed unless you are writing code that needs to run across a large number of different boards.
+</Aside>
+
+`wdt` is a nodelabel we can grab using `DT_NODELABEL(wdt)`. Next, we need to configure the watchdog in our application code. All of the watchdog types and functions provided by the `#include <zephyr/drivers/watchdog.h>` header file.
+
+Make sure the device is ready:
+
+```c
+bool isWatchdogReady = device_is_ready(l_watchdogSpec);
+__ASSERT(isWatchdogReady, "Watchdog device not ready. device_is_ready() returned: %d.", isWatchdogReady);
+```
+
+Configure the timeout and install it with `wdt_install_timeout()`:
+
+```c
+struct wdt_timeout_cfg wdtConfig = {
+    .window = {
+        .min = 0U,
+        .max = 5000U,
+    },
+    .flags = WDT_FLAG_RESET_SOC // Reset SoC when watchdog timer expires.
+};
+int wdtChannelId = wdt_install_timeout(l_watchdogSpec, &wdtConfig);
+__ASSERT(wdtChannelId >= 0, "Failed to install watchdog timeout. wdt_install_timeout() returned: %d.", wdtChannelId);
+```
+
+`.max` sets the time before the watchdog expires.
+
+Start the watchdog with `wdt_setup()`:
+
+```c
+int wdtSetupRc = wdt_setup(l_watchdogSpec, WDT_OPT_PAUSE_HALTED_BY_DBG);
+__ASSERT(wdtSetupRc == 0, "Failed to setup watchdog. wdt_setup() returned: %d.", wdtSetupRc);
+```
+
+Now your watchdog is setup and running. If you don't do any more, it will reset the device when the timeout expires because you are not feeding it. To feed the watchdog, you can use `wdt_feed()`:
+
+```c
+wdt_feed(l_watchdogSpec, wdtChannelId);
+```
+
+Putting this all together, we get the following code:
+
+```c title="main.c"
+const struct device *const l_watchdogSpec = DEVICE_DT_GET(DT_NODELABEL(wdt));
+
+int main()
+{
+    // Check if the watchdog is ready
+    bool isWatchdogReady = device_is_ready(l_watchdogSpec);
+    __ASSERT(isWatchdogReady, "Watchdog device not ready. device_is_ready() returned: %d.", isWatchdogReady);
+
+    // Configure the watchdog
+    struct wdt_timeout_cfg wdtConfig = {
+        .window = {
+            .min = 0U,
+            .max = 5000U,
+        },
+        .flags = WDT_FLAG_RESET_SOC // Reset SoC when watchdog timer expires.
+    };
+    int wdtChannelId = wdt_install_timeout(l_watchdogSpec, &wdtConfig);
+    __ASSERT(wdtChannelId >= 0, "Failed to install watchdog timeout. wdt_install_timeout() returned: %d.", wdtChannelId);
+
+    // Start the watchdog
+    int wdtSetupRc = wdt_setup(l_watchdogSpec, WDT_OPT_PAUSE_HALTED_BY_DBG);
+    __ASSERT(wdtSetupRc == 0, "Failed to setup watchdog. wdt_setup() returned: %d.", wdtSetupRc);
+}
+```
+
+More hardware watchdog examples can be found in the [Zephyr repo here](https://github.com/zephyrproject-rtos/zephyr/tree/main/samples/drivers/watchdog).
+
+### Software Watchdog
+
+Now let's cover how to use the software watchdog. Firstly, add the following to your `prf.conf`:
+
+```text
+CONFIG_TASK_WDT=y
+```
+
+Notice the "task" in the name. This is the naming scheme Zephyr generally uses for the software watchdog API to distinguish it from the hardware watchdog API.
+
+You'll then need to include the header file that provides the API:
+```c
+#include <zephyr/task_wdt/task_wdt.h>
+```
+
+You then need to enable the watchdog task with `int task_wdt_init(const struct device * hw_wdt)`:
+
+```c
+int wdRc = task_wdt_init(NULL);
+__ASSERT_NO_MSG(wdRc == 0);
+```
+
+<Aside type="tip">
+If you get a `undefined reference to 'task_wdt_init'` error, you likely have forgotten to add `CONFIG_TASK_WDT=y` to your `prf.conf`.
+</Aside>
+
+Passing in `NULL` for `hw_wdt` says you don't want to connect the software watchdog task up with a hardware watchdog. In most real life applications you do want to provide a hardware watchdog, **as the probability of the software watchdog failing is too high to rely solely on it** (whereas a hardware watchdog is very reliable). What does it mean to be "backed" by a hardware watchdog? The Zephyr software watchdog will install a timeout on the hardware watchdog. When I looked at the code, it was using these settings (from `task_wdt.c`):
+
+```c
+struct wdt_timeout_cfg wdt_config;
+
+wdt_config.flags = WDT_FLAG_RESET_SOC;
+wdt_config.window.min = 0U;
+wdt_config.window.max = CONFIG_TASK_WDT_MIN_TIMEOUT + CONFIG_TASK_WDT_HW_FALLBACK_DELAY; // This was = 100 + 20 = 120ms
+wdt_config.callback = NULL;
+
+hw_wdt_dev = hw_wdt;
+hw_wdt_channel = wdt_install_timeout(hw_wdt_dev, &wdt_config);
+```
+
+Notice the hardware watchdog is not started in `task_wdt_init()`. It is started on the first call to `task_wdt_add()`. When is starts it, it provides the option `WDT_OPT_PAUSE_HALTED_BY_DBG`. You don't have any control over changing this option.
+
+<Aside type="warning">
+If you are backing the software watchdog with a hardware watchdog, do not configure (`wdt_install_timeout()`) or start (`wdt_setup()`) the hardware watchdog yourself. The software watchdog will do this for you. If you also try and start it, it will result in errors (negative return codes).
+</Aside>
+
+Although we have initialized the software watchdog, it is not yet doing anything. You need to "install" a new channel with the software watchdog by using `int task_wdt_add(uint32_t reload_period, task_wdt_callback_t callback, void *user_data)`. You then need to regularly feed the channel with `int task_wdt_feed(int channel_id)`, as shown in the below code snippet:
+
+```c
+void my_thread_fn() {
+    // When your thread starts, install a new watchdog timeout for this thread
+    // Passing NULL as second param means system reset handler will be called
+    // if watchdog timer expires
+    int wdtChannelId = task_wdt_add(5000, NULL, NULL);
+    __ASSERT(wdtChannelId >= 0, "Failed to add watchdog channel. task_wdt_add() returned %d.", wdtChannelId);
+
+    while(1) {
+        int rc = task_wdt_feed(wdtChannelId); // Regularly feed the watchdog to prevent system reset
+        __ASSERT(rc == 0, "Failed to feed watchdog. task_wdt_feed() returned %d.", rc);
+        // Sleep for a second before feeding again
+        k_sleep(K_MSEC(1000));
+    }
+}
+```
+
+Make sure you have enough available channels to be able to install timeouts. You can change this in `prf.conf` with `CONFIG_TASK_WDT_CHANNELS`. By default is set to `5`, but can be changed to anything in the range `[2, 100]`.[^zephyr-docs-kconfig-search-wdt-channels]
+
+The following code is a complete example showing watchdog task functionality that can be built for the `native_sim` board (Linux). It sets the watchdog up with a 3s timeout. It feeds the watchdog once a second for 5 seconds, and then pretends there is a bug which locks up the code. The software watchdog successfully resets the device 3 seconds later.
+
+It does not use multiple threads (as a real world application typically would), but just shows watchdog working in the main thread.
+
+```c
+#include <stdio.h>
+
+#include <zephyr/kernel.h>
+#include <zephyr/task_wdt/task_wdt.h>
+
+int main(void) {
+    // Initialize, passing NULL so we are not using a hardware watchdog
+    // (for real applications you normally want a hardware watchdog backing the software one!)
+    int wdRc = task_wdt_init(NULL);
+    __ASSERT_NO_MSG(wdRc == 0);
+
+    // Install a new WDT channel
+    int wdtChannelId = task_wdt_add(3000, NULL, NULL);
+    __ASSERT_NO_MSG(wdtChannelId == 0);
+
+    uint32_t cycleCount = 0;
+
+    while(1) {
+        printf("Feeding watchdog.\n");
+        int rc = task_wdt_feed(wdtChannelId); // Regularly feed the watchdog to prevent system reset
+        __ASSERT_NO_MSG(rc == 0);
+       
+        if (cycleCount == 5) {
+            printf("Oh oh, bug has got this thread stuck!\n");
+            while(1) {
+                // Do nothing, just hang here
+                k_msleep(1000);
+            }
+        }
+
+        cycleCount += 1;
+        // Sleep for a second before cycling around again
+        k_msleep(1000);
+    }
+    return 0;
+}
+```
+
+<Image src={import('./_assets/watchdog-example.png')} width="800px">Running the watchdog example code and seeing it timeout.</Image>
+
+To disable the software watchdog at boot, you can add the following to your `prf.conf`:
+
+```python title="prf.conf"
+CONFIG_WDT_DISABLE_AT_BOOT=y
+```
+
+You can initialize your software watchdog before you hit `main()` using Zephyr's `SYS_INIT()` macro, which allows you to specify functions to be called at different stages of the kernel initialization process before `main()` is called. This can be useful if you can't rely on `main()` being called in all failure cases.
+
+```c
+SYS_INIT(initWatchdog, POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT);
+```
+
+where `initWatchdog` is your function that initializes the watchdog.
+
+When running Zephyr on the `native_sim` board (Linux), a software watchdog timeout will cause the program to exit. If you have not overridden the default handler, the message `sys_arch_reboot called with type 1. Exiting` will be printed to the console (the same message as you get if you call `sys_reboot(SYS_REBOOT_COLD)` directly).
+
+If you ever need to remove a channel, you can use `task_wdt_delete()`:
+
+```c
+int rc = task_wdt_delete(myChannelId);
+__ASSERT(rc == 0, "Failed to delete watchdog channel. task_wdt_delete() returned: %d.", rc);
+```
+
+Removing a channel is useful if you want to be able to test the module the WDT channel is using. Tests will typically create/destroy the module object many times over to test it, and you will run into issues on successive runs of tests if they previous test does not clean up after itself.
+
+#### Providing Your Own Watchdog Handler
+
+When providing `NULL` as the second parameter to `task_wdt_add()`, Zephyr calls the system reset handler. Instead, you can provide you own handler to implement custom functionality. I prefer to provide my own handler, and generally have this handler log an error, wait for a period of time, and then reset the device.
+
+Here is an example of a handler that logs an error, waits for 5 seconds, and then resets the device:
+
+```c
+void watchdogTimeoutHandler(int channel_id, void *user_data)
+{
+    LOG_ERR("Watchdog timeout occurred. channel_id: %d. Resetting MCU in 5s.", channel_id);
+    log_panic(); // Without this the log message will not be printed as we are in interrupt context
+    k_busy_wait(5*1e6); // 5 seconds in microseconds. Can't use k_sleep() as we are in interrupt context!
+    sys_reboot(SYS_REBOOT_COLD);
+}
+```
+
+Note that `log_panic()` needs to be called after the log message otherwise it will never be printed. The handler function gets called in a interrupt context and thus does not allow the logging thread to run. Another effect of being in an interrupt context is that you can't use `k_sleep()` to implement the delay. Instead, you need to use a busy wait like `k_busy_wait();` to implement the delay. If you try and use `k_sleep()` with asserts enabled you will get the following error:
+
+```text
+ASSERTION FAIL [!arch_is_in_isr()] @ WEST_TOPDIR/external/zephyr/kernel/sched.c:1115
+```
+
+#### Nordic nRF Watchdog Example Code
+
+Below is example code showing how to initialize the hardware watchdog for Nordic nRF devices. Firstly, the following is added to your `prf.conf`:
+
+```python title="prf.conf"
+# WDT
+#==============================================================================
+CONFIG_WATCHDOG=y
+CONFIG_WDT_DISABLE_AT_BOOT=y
+CONFIG_TASK_WDT=y
+CONFIG_TASK_WDT_MIN_TIMEOUT=5000
+CONFIG_TASK_WDT_CHANNELS=2
+```
+
+And then in a `.c` file somewhere:
+
+```c file="src/main.c"
+static struct device const * l_watchdog = DEVICE_DT_GET(DT_COMPAT_GET_ANY_STATUS_OKAY(nordic_nrf_wdt));
+
+void initWatchdog()
+{
+    // Watchdog timer
+    if (!device_is_ready(l_watchdog))
+    {
+        LOG_ERR("Hardware watchdog %s is not ready.\n", l_watchdog->name);
+        l_watchdog = NULL;
+        __ASSERT_NO_MSG(0);
+    }
+
+    struct wdt_timeout_cfg wdt_config;
+
+    wdt_config.flags = WDT_FLAG_RESET_SOC;
+    wdt_config.window.min = 0U;
+    wdt_config.window.max = 5000U; // NOTE: Does not actually get used if initialized by board_watchdog.
+    wdt_config.callback = Bsp_HwWatchdogHandler;
+
+    int hwWdtChannel = wdt_install_timeout(l_watchdog, &wdt_config);
+    if(hwWdtChannel == -EBUSY)
+    {
+        // This is ok, and not an error.
+        LOG_INF("hw_wdt already setup. Likely this was setup in the bootloader. %d", hwWdtChannel);
+        return;
+    }
+    else if (hwWdtChannel < 0)
+    {
+        LOG_ERR("hw_wdt install timeout failed: %d", hwWdtChannel);
+        __ASSERT_NO_MSG(0);
+    }
+
+    int ret = wdt_setup(l_watchdog, WDT_OPT_PAUSE_HALTED_BY_DBG);
+    if(ret)
+    {
+        LOG_ERR("Failed to setup watchdog: %d", ret);
+        __ASSERT_NO_MSG(0);
+    }
+    // Let's do a test feed to make sure the watchdog is working
+    ret = wdt_feed(l_watchdog, 0);
+    if(ret)
+    {
+        LOG_ERR("Failed to feed watchdog: %d", ret);
+        __ASSERT_NO_MSG(0);
+    }
+
+    LOG_INF("Watchdog initialized.");
+}
+```
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
