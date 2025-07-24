@@ -175,15 +175,22 @@ export function convertNodesToSidebarData(node: PageNode) : SidebarData {
   }
 
   // Must not be a leaf node
-  // Change from page-name to Page Name
-  const items = [];
-
-  for (let i = 0; i < node.children.length; i++) {
-    items.push(convertNodesToSidebarData(node.children[i]));
+  // Sort children first before converting to sidebar data
+  const isUpdatesSection = node.slug && node.slug.includes('/updates/');
+  
+  let sortedChildren;
+  if (isUpdatesSection) {
+    // Sort by slug to maintain chronological order for updates
+    sortedChildren = [...node.children].sort((a, b) => (a.slug || '').localeCompare(b.slug || ''));
+  } else {
+    // Sort by label (page title) for all other sections
+    sortedChildren = [...node.children].sort((a, b) => a.label.localeCompare(b.label));
   }
 
-  // Sort items alphabetically by label
-  items.sort((a, b) => a.label.localeCompare(b.label));
+  const items = [];
+  for (let i = 0; i < sortedChildren.length; i++) {
+    items.push(convertNodesToSidebarData(sortedChildren[i]));
+  }
 
   // If the slug is defined, then this branch node also has a page. Add it
   // to the items array
