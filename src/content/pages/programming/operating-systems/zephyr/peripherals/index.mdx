@@ -8,9 +8,15 @@ title: Zephyr Peripherals
 type: page
 ---
 
-Not only does Zephyr provide you with an RTOS, but it also gives you a collection of well defined APIs for interacting with microcontroller peripherals.
+Not only does Zephyr provide you with an RTOS, but it also gives you a collection of well defined APIs for interacting with microcontroller peripherals. Zephyr rather appropriately calls these APIs "drivers".
 
-The latest documentation for peripheral (UART, SPI, PWM, PIN, e.t.c.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html.
+This page aims to cover Zephyr's drivers and show examples on how to use them.
+
+The latest documentation for peripherals (UART, SPI, PWM, PIN, e.t.c.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html. Some of Zephyr's own documentation on drivers is great and teaches you by example, and other drivers are not so well written and you have to piece together code snippets littered all over the place. The automated Doxygen generation is pretty decent, but is only really useful once you know the basics -- it doesn't serve as a great intro in a driver's API and how to use it.
+
+<Aside type="note">
+I have a GitHub library called <a href="https://github.com/gbmhunter/ZephyrCppToolkit" target="_blank">ZephyrCppToolkit</a> which provides C++ wrappers over some of Zephyr's peripherals. One of the main design goals was to make it easy to mock the peripherals and test your application on Zephyr's <code>native_sim</code> board (i.e. Linux).
+</Aside>
 
 ## Hardware Info
 
@@ -1051,7 +1057,7 @@ int main()
     // Configure the watchdog
     struct wdt_timeout_cfg wdtConfig = {
         .window = {
-            .min = 0U,
+            .min = 0U, // Don't use a window, just max.
             .max = 5000U,
         },
         .flags = WDT_FLAG_RESET_SOC // Reset SoC when watchdog timer expires.
@@ -1062,8 +1068,21 @@ int main()
     // Start the watchdog
     int wdtSetupRc = wdt_setup(l_watchdogSpec, WDT_OPT_PAUSE_HALTED_BY_DBG);
     __ASSERT(wdtSetupRc == 0, "Failed to setup watchdog. wdt_setup() returned: %d.", wdtSetupRc);
+
+    while(1) {
+        // Feed the watchdog
+        wdt_feed(l_watchdogSpec, wdtChannelId);
+        // Sleep for a second before feeding again
+        k_sleep(K_MSEC(1000));
+    }
 }
 ```
+
+<Aside type="tip">
+The window `.min` is so you can set a lower bound on the time between watchdog feeds. If the firmware feeds the watchdog too quickly, it watchdog will trigger. This is useful to detect things like quick infinite loops or catch issues where the sleep/delay functions are not working as expected.
+
+Not all hardware watchdogs support a window! A watchdog that does support it is typically called a "windowed watchdog". Many safety certified processors have windowed watchdogs. The documentation says `.min` must be set to 0 if the hardware watchdog does not support it.
+</Aside>
 
 More hardware watchdog examples can be found in the [Zephyr repo here](https://github.com/zephyrproject-rtos/zephyr/tree/main/samples/drivers/watchdog).
 
@@ -1095,7 +1114,7 @@ If you get a `undefined reference to 'task_wdt_init'` error, you likely have for
 
 Passing in `NULL` for `hw_wdt` says you don't want to connect the software watchdog task up with a hardware watchdog. In most real life applications you do want to provide a hardware watchdog, **as the probability of the software watchdog failing is too high to rely solely on it** (whereas a hardware watchdog is very reliable). What does it mean to be "backed" by a hardware watchdog? The Zephyr software watchdog will install a timeout on the hardware watchdog. When I looked at the code, it was using these settings (from `task_wdt.c`):
 
-```c
+```c title="task_wdt.c"
 struct wdt_timeout_cfg wdt_config;
 
 wdt_config.flags = WDT_FLAG_RESET_SOC;
@@ -1109,13 +1128,13 @@ hw_wdt_channel = wdt_install_timeout(hw_wdt_dev, &wdt_config);
 
 Notice the hardware watchdog is not started in `task_wdt_init()`. It is started on the first call to `task_wdt_add()`. When is starts it, it provides the option `WDT_OPT_PAUSE_HALTED_BY_DBG`. You don't have any control over changing this option.
 
-<Aside type="warning">
+<Aside type="caution">
 If you are backing the software watchdog with a hardware watchdog, do not configure (`wdt_install_timeout()`) or start (`wdt_setup()`) the hardware watchdog yourself. The software watchdog will do this for you. If you also try and start it, it will result in errors (negative return codes).
 </Aside>
 
 Although we have initialized the software watchdog, it is not yet doing anything. You need to "install" a new channel with the software watchdog by using `int task_wdt_add(uint32_t reload_period, task_wdt_callback_t callback, void *user_data)`. You then need to regularly feed the channel with `int task_wdt_feed(int channel_id)`, as shown in the below code snippet:
 
-```c
+```c++
 void my_thread_fn() {
     // When your thread starts, install a new watchdog timeout for this thread
     // Passing NULL as second param means system reset handler will be called
@@ -1138,7 +1157,7 @@ The following code is a complete example showing watchdog task functionality tha
 
 It does not use multiple threads (as a real world application typically would), but just shows watchdog working in the main thread.
 
-```c
+```c++
 #include <stdio.h>
 
 #include <zephyr/kernel.h>
@@ -1197,7 +1216,7 @@ When running Zephyr on the `native_sim` board (Linux), a software watchdog timeo
 
 If you ever need to remove a channel, you can use `task_wdt_delete()`:
 
-```c
+```c++
 int rc = task_wdt_delete(myChannelId);
 __ASSERT(rc == 0, "Failed to delete watchdog channel. task_wdt_delete() returned: %d.", rc);
 ```
@@ -1210,7 +1229,7 @@ When providing `NULL` as the second parameter to `task_wdt_add()`, Zephyr calls 
 
 Here is an example of a handler that logs an error, waits for 5 seconds, and then resets the device:
 
-```c
+```c++
 void watchdogTimeoutHandler(int channel_id, void *user_data)
 {
     LOG_ERR("Watchdog timeout occurred. channel_id: %d. Resetting MCU in 5s.", channel_id);
@@ -1218,6 +1237,13 @@ void watchdogTimeoutHandler(int channel_id, void *user_data)
     k_busy_wait(5*1e6); // 5 seconds in microseconds. Can't use k_sleep() as we are in interrupt context!
     sys_reboot(SYS_REBOOT_COLD);
 }
+```
+
+Then later on:
+
+```c++
+int wdtChannelId = task_wdt_add(5000, watchdogTimeoutHandler, nullptr);
+__ASSERT(wdtChannelId >= 0, "Failed to add watchdog channel. task_wdt_add() returned %d.", wdtChannelId);
 ```
 
 Note that `log_panic()` needs to be called after the log message otherwise it will never be printed. The handler function gets called in a interrupt context and thus does not allow the logging thread to run. Another effect of being in an interrupt context is that you can't use `k_sleep()` to implement the delay. Instead, you need to use a busy wait like `k_busy_wait();` to implement the delay. If you try and use `k_sleep()` with asserts enabled you will get the following error:
