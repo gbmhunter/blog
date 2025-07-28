@@ -105,7 +105,7 @@ An embedded host has a Standard-A port. An OTG device has a Micro-AB port.
 
 OTG systems present unique power supply challenges to the hardware designer. OTG hosts must be able to provide at least 8mA of current at between 4.4V and 5.25V.
 
-OTG hosts running of a LiPo battery supply can use a 1.5X inductorless charge pump to provide power for Vbus. They typically are limited to providing 100mA to the peripheral.
+OTG hosts running of a LiPo battery supply can use a 1.5X inductor-less charge pump to provide power for Vbus. They typically are limited to providing 100mA to the peripheral.
 
 ## Hardware
 
@@ -119,7 +119,7 @@ USB was not originally designed for low-power applications. However, it can be s
 
 The current required while actually performing a transmission is still quite high. The table below gives you an idea on the currents used when a microcontroller is in different USB transmission modes.
 
-<Image src={import('./_assets/at32uc3-dynamic-usb-power-consumtpion-table.png')} width="743px">Table showing the dynamic USB power consumption of a AT32UC3A3 microcontroller during various USB transmission modes. Image from page 976 of http://www.atmel.com/Images/doc32072.pdf.</Image>
+<Image src={import('./_assets/at32uc3-dynamic-usb-power-consumtpion-table.png')} width="750px">Table showing the dynamic USB power consumption of a AT32UC3A3 microcontroller during various USB transmission modes. Image from page 976 of http://www.atmel.com/Images/doc32072.pdf.</Image>
 
 ## Inrush Currents
 
@@ -136,7 +136,7 @@ A basic way (note basic does not always equal easiest) to limit the inrush curre
 
 This circuit example from FTDI Application Note AN_146 does exactly that:
 
-<Image src={import('./_assets/ftdi-app-note-an-146-limiting-inrush-current-by-slow-mosfet-turn-on.png')} width="518px">Limiting the USB inrush current by slowing down the turn-on of a MOSFET with a RC circuit. Image from http://www.ftdichip.com/Support/Documents/AppNotes/AN_146_USB_Hardware_Design_Guidelines_for_FTDI_ICs.pdf.</Image>
+<Image src={import('./_assets/ftdi-app-note-an-146-limiting-inrush-current-by-slow-mosfet-turn-on.png')} width="500px">Limiting the USB inrush current by slowing down the turn-on of a MOSFET with a RC circuit. Image from http://www.ftdichip.com/Support/Documents/AppNotes/AN_146_USB_Hardware_Design_Guidelines_for_FTDI_ICs.pdf.</Image>
 
 If you prefer a powerful, one component solution, you can get a variety of load switches which also perform inrush-current limiting.
 
@@ -213,21 +213,16 @@ The USB2.0 specification requires that the voltages on D+ and D- are between 0-3
 
 ## Transmission Speeds
 
-## USB2.0
-
-Maximum transmission speed = 400Mbit/s
-
-## USB3.0
-
-Maximum transmission speed = 5Gbit/s
+* USB2.0: Maximum transmission speed = 400Mbit/s
+* USB3.0: Maximum transmission speed = 5Gbit/s
 
 ## Power Draw
 
-## USB2.0
+### USB2.0
 
 An unconfigured device can draw up to 100mA from a USB host (such as a battery charger or light). A configured device can draw up to 500mA (both USB2.0 specs). The power is drawn from VBUS (pin 1), which is nominally 5V. Be warned though that this is unregulated power, and I've seen it as low as 4.5V before.
 
-## USB3.0
+### USB3.0
 
 Maximum current draw is 1.8A, in battery charging mode. This is achieved by shorting the D+ and D- lines together with less than 200Ω of resistance.
 
@@ -255,6 +250,34 @@ Ethernet to USB bridge ICs are used to convert between USB data packets and Ethe
 
 Microchip manufacturers a number of ethernet bridge ICs starting with the `LAN` prefix. One example is the LAN7800, a USB 3.1 Gen 1 to 10/100/1000 ethernet controller.[^microchip-lan7800-usb-3.1-gen-1-to-10-100-1000-ethernet-controller-ds]
 
+## Alternate Modes
+
+Alternate Modes are a way to use the USB C connector for transmitting data which is not defined in the USB specification. The four high-speed lanes (TX1, TCX2, RX1, RX2), two side-band pins (SBU) and five additional pins (for dock, detachable device and permanent-cable applications only) are available for use with alternate modes. The high-speed lanes can be used in any direction, i.e. they are not restricted to the directions imposed by the USB specification. If at least two high-speed lanes are unused by the alternate mode, a USB 3.0/3.1 connection can be created at the same time as the alternate mode. Given alternate modes to not use the D+/D- pins, a USB 2.0 link is always available.[^wikipedia-usb-c]
+
+Alternate mode is configured using vendor-defined messages (VDM) through the configuration channel (CC1 and CC2) pins.
+
+Some alternate modes are:
+
+* Thunderbolt (3 and later)
+* DisplayPort (1.2, 1.4, 2.0)
+* Mobile High-Definition Link (MHL) Alternate Mode
+* HDMI Alternate Mode (not being updated)
+* VirtualLink Alternate Mode (abandoned)
+
+### Thunderbolt
+
+As of Thunderbolt 3 and later, the USB-C connector is the native and only connector for Thunderbolt. Thunderbolt uses the alternate mode of the USB specification. All Thunderbolt 3 controllers support both Thunderbolt Alternate Mode and DisplayPort Alternate Mode. Interestingly, Thunderbolt can encapsulate DisplayPort data, so Thunderbolt has two ways it can send DisplayPort data.[^wikipedia-usb-c]
+
+As of 2023, Intel previewed Thunderbolt 5 which is aligned to the USB4 2.0 specification.[^wikipedia-thunderbolt-interface]
+
+### DisplayPort Over USB
+
+DisplayPort can be used over a USB C connector it what is called DisplayPort Alt Mode. It uses the official alternate mode of the USB specification. VESA (an international nonprofit corporation that you might of heard of via a "VESA mount") published the standard. DisplayPort Alt Mode was the first video and audio standard to be supported over USB C. USB C cables which explicitly support DisplayPort Alt Mode may show a DisplayPort logo (DP) near the connector.[^dell-guide-to-display-port-over-usb-c]
+
+If you have a monitor which has a traditional DisplayPort connector, you can use a USB C to DisplayPort adapter to connect it to a USB C port on your computer.
+
+Thunderbolt 3 controllers are capable of sending DisplayPort data over USB C also. They can either send it directly in Display Port Alt Mode, or they can encapsulate (wrap) it in Thunderbolt Alt Mode.
+
 ## Licensed/Trademarked Images
 
 Interestingly enough, the USB trident symbol is not trademarked. This means that manufacturers can put this onto products without having to undergo any USB certification.
@@ -264,3 +287,6 @@ Interestingly enough, the USB trident symbol is not trademarked. This means that
 {/* ============================================================================================ */}
 
 [^microchip-lan7800-usb-3.1-gen-1-to-10-100-1000-ethernet-controller-ds]: Microchip (2021). _LAN7800 - SuperSpeed USB 3.1 Gen 1 to 10/100/1000 Ethernet Controller_ [datasheet]. Retrieved 2025-07-22, from https://au.mouser.com/datasheet/2/268/LAN7800_Data_Sheet_DS00001992H-3444498.pdf.
+[^wikipedia-usb-c]: Wikipedia (2025, July 26). _USB-C_ [wiki]. Retrieved 2025-07-28, from https://en.wikipedia.org/wiki/USB-C.
+[^wikipedia-thunderbolt-interface]: Wikipedia (2025, July 16). _Thunderbolt (interface)_ [wiki]. Retrieved 2025-07-28, from https://en.wikipedia.org/wiki/Thunderbolt_(interface).
+[^dell-guide-to-display-port-over-usb-c]: Dell. _Support Home > Knowledge Base Article > Guide to DisplayPort over USB-C_ [documentation]. Retrieved 2025-07-28, from https://www.dell.com/support/kbdoc/en-nz/000141328/displayport-over-usb-type-c.
