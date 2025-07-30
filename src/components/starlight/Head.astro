@@ -36,7 +36,6 @@ if (customFrontmatter !== undefined) {
   configureSidebar();
 
   function configureSidebar() {
-    console.log('configureSidebar() called.');
     const sidebarContent = document.getElementsByClassName('sidebar-content')[0];
     const link = sidebarContent.querySelectorAll(`a[href="${location.pathname}"]`)[0];
 
@@ -55,17 +54,13 @@ if (customFrontmatter !== undefined) {
     let currElement = link.closest('details');
     while (true) {
       if (!currElement) {
-        console.log('currElement is null, breaking out of loop.');
         break;
       }
       if (!sidebarContent.contains(currElement)) {
-        console.log('currElement is not in sidebarContent, breaking out of loop.');
         break;
       }
       currElement.setAttribute('open', '');
-      console.log('currElement is in sidebarContent, setting open attribute.');
       currElement = currElement.parentElement!.closest('details');
-      console.log('currElement is now', currElement);
     }
   }
 

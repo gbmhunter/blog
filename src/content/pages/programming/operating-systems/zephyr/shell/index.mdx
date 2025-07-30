@@ -172,6 +172,93 @@ SYS_INIT(LoginInit, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
 
 An example of shell login can be found [here](https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/shell/shell_module/prj_login.conf).
 
+## Using the Shell Over USB CDC ACM
+
+Add the following to your `prj.conf` file to enable the USB device driver:
+
+```python title="prj.conf"
+CONFIG_USB_DEVICE_STACK=y
+CONFIG_USB_DEVICE_PRODUCT="My Product Console"
+CONFIG_USB_DEVICE_VID=0xDEAD
+CONFIG_USB_DEVICE_PID=0xBEEF
+CONFIG_USB_DEVICE_INITIALIZE_AT_BOOT=n
+```
+
+The `CONFIG_USB_DEVICE_PRODUCT` shows up in Windows as the "Bus reported device description" under the device properties in the Device Manager.
+
+<Image src={import('./_assets/usb-serial-cdc-device-in-windows-showing-bus-reported-device-description.webp')} width="400px">A screenshot of a USB serial CDC device in Windows showing the bus reported device description.</Image>
+
+Add the following under `/chosen` in your board's DTS file:
+
+```txt title="my_board.dts"
+/ {
+    chosen {
+        zephyr,console = &cdc_acm_uart0;
+        zephyr,shell-uart = &cdc_acm_uart0;
+    };
+}
+```
+
+Then add the following additional override for `&zephyr_udc0` at the bottom of your board's DTS file:
+
+```txt title="my_board.dts"
+&zephyr_udc0 {
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+}
+```
+
+<Aside type="note">
+The extra information for `&zephyr_udc0` must be placed after the definition of `zephyr_udc0` in your board's DTS file. The definition of `zephyr_udc0` might look something like this (this is from the nRF52840 board):
+
+```txt title="my_board.dts"
+zephyr_udc0: &usbd {
+    compatible = "nordic,nrf-usbd";
+    status = "okay";
+};
+```
+</Aside>
+
+Because we set `CONFIG_USB_DEVICE_INITIALIZE_AT_BOOT=n`, we need to initialize the USB device manually. This can be done in the `main()` function. We'll also then want to send some data to test the USB CDC is working. We'll use the `LOG_INF()` macro to send data to the shell.
+
+```c title="main.c"
+#include <zephyr/logging/log.h>
+#include <zephyr/usb/usb_device.h>
+
+LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
+
+void preSerialFatalError(void) {
+    while (1) {
+        gpio_pin_toggle_dt(&l_userLedGpioSpec);
+        k_msleep(250);
+    }
+}
+
+int main(void)
+{
+    int usbEnableRc = usb_enable(NULL);
+    if (usbEnableRc != 0) {
+        preSerialFatalError();
+    }
+
+    while (1)
+    {
+        LOG_INF("Hello, world!");
+        k_sleep(K_SECONDS(1));
+    }
+    return 0;
+}
+```
+
+<Aside type="note">
+If `usb_enable()` fails for whatever reason, we can't log an error because our logging output is not available! So here we have implemented a `preSerialFatalError()` function which just falls back to something simpler we can assume to be working -- toggling a LED.
+</Aside>
+
+The official example waits for the DTR line to be asserted before sending data. In traditional serial communication, the DTR (data terminal ready) line is driven by Data Terminal Equipment (DTE) such as a computer to data communication equipment (DCE) such as a modem. The DTE uses it to signal it is ready to send data.[^wikipedia-data-terminal-ready]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
+
+[^wikipedia-data-terminal-ready]: Wikipedia (2025, Mar 10). _Data Terminal Ready_ [wiki]. Retrieved 2025-07-30, from https://en.wikipedia.org/wiki/Data_Terminal_Ready.

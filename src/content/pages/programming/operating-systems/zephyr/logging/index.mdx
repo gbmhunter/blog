@@ -141,7 +141,9 @@ The setting tells Zephyr to only wait for 1 log message in the queue before waki
 
 ### C++ Compatibility
 
-In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`.
+In general logging will work just fine in C++. However, there is an issue if trying to log messages from a class which uses templates. The function bodies for templated functions are usually contained with the header file, because the compiler needs to know how to create these. This is a problem for `LOG_MODULE_REGISTER()`. However you can use `LOG_MODULE_DECLARE(<module_name>);` at the beginning of any function in the header file which you want to log from. See the [How to Use C++ With Zephyr](/programming/operating-systems/zephyr/cpp/) page for more details.
+
+I think Zephyr's instance based logging is a bit of a mess and don't really use it. This is unfortunate as it would have paired well with instances of C++ classes.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

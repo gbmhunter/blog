@@ -65,9 +65,37 @@ I tried overriding the limitation to C++20 and use C++23 by providing the compil
 
 At some point when using C++, you are going to want to place logging calls in header files. This is true for any template code (which has to be in the header file) or for any class functions which you can't be bothered defining in a separate `.cpp` file.
 
-You have to add `LOG_MODULE_DECLARE(<module_name>);` to the beginning of any function in the header file which you want to log from.
+You have to add `LOG_MODULE_DECLARE(<module_name>);` to the beginning of any function in the header file which you want to log from. You also have to add `LOG_MODULE_REGISTER(<module_name>)` to one `.cpp` file as shown below:
 
-I think Zephyr's instance based logging is a bit of a mess and don't really use it. This is unfortunate as it would have paired well with instances of C++ classes.
+```c++ title="MyClass.h"
+#include <zephyr/logging/log.h>
+
+class MyClass
+{
+public:
+    void myFunction()
+    {
+        LOG_MODULE_DECLARE(MyClass); // Note how we have to declare the log module before we can use it
+        LOG_INF("Hello, world!");
+    }
+
+    void myOtherFunction()
+    {
+        LOG_MODULE_DECLARE(MyClass); // We have to do this at the start of each function
+        LOG_INF("Hello, again!");
+    }
+};
+```
+
+And then in a `.cpp` file somewhere you have to provide the log module implementation. I would typically do this in a `MyClass.cpp` file. Note you can't just jam all of these implementations into a single file (e.g. in `main.cpp`) as you will get naming collisions.
+
+```c++ title="MyClass.cpp"
+#include "MyClass.h"
+
+LOG_MODULE_REGISTER(MyClass, LOG_LEVEL_INF);
+```
+
+Zephyr also supports instance based logging, where log messages are associated with a specific instance of a class. However, I think Zephyr's instance based logging is a bit of a mess and don't really use it. This is unfortunate as it would have paired well with instances of C++ classes.
 
 ## Expected
 

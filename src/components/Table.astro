@@ -23,7 +23,7 @@ if (transpose.enable) {
 
   // Create a row for each key in the data
   rows = Object.keys(data[0]).filter(key => key !== transpose.headerKey).map(key => {
-    console.log('key', key);
+    // console.log('key', key);
     return [key, ...data.map(row => row[key])];
   });
 } else {

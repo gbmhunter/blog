@@ -727,11 +727,26 @@ Nordic Semiconductor has a guide on setting the ADC for their nRF MCUs using Zep
 Nordic's guide uses the `int16_t` type for the ADC buffer, while the Zephyr example uses `uint16_t`. I'm not sure if this is a typo or intentional because their driver works differently.
 </Aside>
 
-## I2C
+## I2C Controller
+
+Zephyr provides a API for your MCU to act as an I2C controller. A controller (previously called a master) is the device which controls the communications on the bus, which includes initiating transmissions and sending the clock signal. The other type of API provided is the I2C target API, designed for I2C slave devices. The I2C controller API is the most widely used, and the I2C target API is still considered experimental (as of July 2025).
+
+There are two distinct ways to use the Zephyr I2C controller API.
+
+1. **Low-level I2C Bus Comms**: Grab a handle to the I2C peripheral (`struct i2c_dt_spec`) in your C/C++ code. Then you can use a traditional `i2c_read()` and `i2c_write()` functions, providing the address of the device you want to communicate with.
+2. **High-level I2C Device Comms**: This is where you not only define the I2C peripheral in your `.dts` file, but also define the devices on the bus that you want to communicate with. Then in your C/C++ code, you grab handles to these devices and communicate with `read()` and `write()` functions that do not need an address (the bus and address is abstracted away into the Zephyr `.dts` file in your board directory).
+
+### Low-level I2C Bus Comms
+
+Firstly, enable the I2C drivers in your `prj.conf` file:
+
+```python title="prj.conf"
+CONFIG_I2C=y
+```
 
 Your microcontroller file will already define the [I2C](/electronics/communication-protocols/i2c-communication-protocol/) peripherals available (e.g. `i2c0`, `i2c1`, ...). All you have to do is enable them in your `.dts` file with:
 
-```txt
+```text title="my_board.dts"
 &i2c0 {
   status = "okay";
   pinctrl-0 = <&i2c0_default_alt>;
@@ -740,9 +755,9 @@ Your microcontroller file will already define the [I2C](/electronics/communicati
 };
 ```
 
-And then in the `.dts` file setup `pinctrl` to define `i2c0_default_alt` and `i2c0_sleep_alt` (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs). This defines SDA to use pin 0.0 and SCL to use pin 0.1:
+And then in the `.dtsi` file setup `pinctrl` to define `i2c0_default_alt` and `i2c0_sleep_alt` (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs). This defines SDA to use pin `0.0` and SCL to use pin `0.1`:
 
-```txt
+```txt title="my_board-pinctrl.dtsi"
 &pinctrl {
   i2c0_default_alt: i2c0_default_alt {
     group1 {
@@ -760,6 +775,80 @@ And then in the `.dts` file setup `pinctrl` to define `i2c0_default_alt` and `i2
   };
 };
 ```
+
+Then in your C/C++ code, you can grab a handle to the I2C peripheral with:
+
+```c
+#include <zephyr/drivers/i2c.h>
+
+struct device *i2c_dev = device_get_binding(DT_LABEL(DT_NODELABEL(i2c0)));
+```
+
+You can write with `int i2c_write(const struct device *dev, const uint8_t *buf, uint32_t num_bytes, uint16_t addr)`. This writes data synchronously to the bus, and only returns when the write is complete.
+
+<Aside type="note">
+I always get tripped up by the order of the arguments for `i2c_write()`. I would have expected the `addr` argument to go after `dev` and before `buf`.
+</Aside>
+
+
+### Repeated Start
+
+For more complicated transmissions such as a repeated start, you can use the `i2c_transfer()` function rather than `i2c_write()`/`i2c_read()`. It has the following signature:
+
+```c
+int i2c_transfer(
+    const struct device *dev,
+    struct i2c_msg *msgs,
+    uint8_t num_msgs,
+    uint16_t addr
+);
+```
+
+Most of these arguments are self-explanatory. The interesting one is `msgs`, which is an array of `struct i2c_msg` objects. Each `struct i2c_msg` contains:
+
+```c
+struct i2c_msg {
+    /** Data buffer in bytes */
+    uint8_t *buf;
+
+    /** Length of buffer in bytes */
+    uint32_t len;
+
+    /** Flags for this message */
+    uint8_t	flags;
+};
+```
+
+Just like with the basic read/write functions, `buf` is a pointer to the data you want to send or receive. `len` is the length of the data in bytes. `flags` is an OR'd combination of the following flags (bits):
+
+* `I2C_MSG_WRITE`: Set the read/write bit to write in the first byte across the bus. This is the default flag (e.g. `0x00`).
+* `I2C_MSG_READ`: Set the read/write bit to read in the first byte across the bus.
+* `I2C_MSG_STOP`: Send a stop condition after the message.
+* `I2C_MSG_RESTART`: Send a repeated start after the message.
+* `I2C_MSG_ADDR_10_BITS`: Use 10 bit addressing. Not supported by all MCUs.
+
+Note that a stop condition will be sent after the last message in a call to `i2c_transfer()`, regardless of whether you have explicitly set the `I2C_MSG_STOP` flag or not. This is so that the bus is returned in a "clean" state for the next transaction. This makes it impossible to chain multiple calls of `i2c_transfer()` together. Instead you must build all of your messages upfront (more memory!) and make a single call to `i2c_transfer()`. I'm not a huge fan of this design decision, I wish Zephyr gave us a low-level API to send start, stop and repeated start conditions by themselves, along with just sending data. This would be with the understanding it was up to the caller to manage the bus correctly.
+
+### Troubleshooting
+
+#### Need to use the internal driver buffer but its size is insufficient
+
+If you see an error that looks like this:
+
+```text title="log.txt"
+<err> i2c_nrfx_twim: Need to use the internal driver buffer but its size is insufficient (0 + 32 > 16). Adjust the zephyr,concat-buf-size or zephyr,flash-buf-max-size property (the one with greater value) in the "i2c@40003000" node.
+```
+
+Here is what `zephyr,concat-buf-size` and `zephyr,flash-buf-max-size` do:[^github-nrf-connect-sdk-zephyr-nrf-twim-yaml]
+
+* `zephyr,concat-buf-size`: Size of a concatenation buffer that the driver is to use for merging multiple same direction I2C messages that have no RESTART or STOP flag between them (see e.g. the `i2c_burst_write()` function) into one transfer on the bus. This property must be provided when interacting with devices like the SSD1306 display that cannot tolerate a repeated start and address appearing on the bus between message fragments. For many devices a concatenation buffer is not necessary.
+* `zephyr,flash-buf-max-size`: TWIM peripherals cannot perform write transactions from buffers located in flash. If such buffers are expected to be used with a given instance of the TWIM peripheral, this property must be set to the maximum possible size of those buffers, so that the driver can reserve enough space in RAM to copy there the contents of particular buffers before requesting the actual transfers. If this property is not set to a value adequate for a given application, write transactions may fail for buffers that are located in flash, what in turn may cause certain components, like the DPS310 sensor driver, to not work. It is recommended to use the same value for this property and for the `zephyr,concat-buf-size` one, as both these buffering mechanisms can utilize the same space in RAM.
+
+The error message is telling you that the driver needs a larger buffer to store the data you are trying to write. You can increase the size of the buffer by setting the `zephyr,concat-buf-size` and `zephyr,flash-buf-max-size` properties in your `.dts` file.
+
+```txt title="my_board.dts"
+
+
 
 ## UART
 
@@ -824,6 +913,14 @@ i2s0_default_alt: i2s0_default_alt {
         <NRF_PSEL(I2S_SDIN, 0, 4)>;
     };
   };
+```
+
+## USB
+
+Enable the USB device stack with:
+
+```python title="prf.conf"
+CONFIG_USB_DEVICE_STACK=y
 ```
 
 ## Non-Volatile Storage
@@ -1345,3 +1442,4 @@ void initWatchdog()
 [^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
 [^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
 [^zephyr-docs-atomic-services]: Zephyr (2024, Jan 8). _Docs / Latest » Kernel » Kernel Services » Atomic Services_ [documentation]. Retrieved 2025-07-01, from https://docs.zephyrproject.org/latest/kernel/services/other/atomic.html.
+[^github-nrf-connect-sdk-zephyr-nrf-twim-yaml]: GitHub. _nrfconnect - sdk-zephyr/dts/bindings/i2c/nordic,nrf-twim.yaml_ [code]. Retrieved 2025-07-30, from https://github.com/nrfconnect/sdk-zephyr/blob/v2.7.99-ncs1/dts/bindings/i2c/nordic,nrf-twim.yaml.

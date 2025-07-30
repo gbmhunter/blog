@@ -64,7 +64,7 @@ for (const collectionPage of allCollections) {
     isChild = checkIfChild(currPageSlug, collectionPage.slug);
   }
   catch (e) {
-    console.log('Error occured while calling checkIfChild(). currPageSlug:', currPageSlug, 'collectionPage', collectionPage);
+    console.log('Error occurred while calling checkIfChild(). currPageSlug:', currPageSlug, 'collectionPage', collectionPage);
     throw e;
   }
   if (!isChild) {
