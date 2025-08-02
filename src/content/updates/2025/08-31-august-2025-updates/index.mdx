@@ -1,0 +1,16 @@
+---
+authors: [gbmhunter]
+date: 2025-08-31
+description: Blog updates during August 2025.
+draft: true
+lastUpdated: 2025-08-31
+tags: []
+title: August 2025 Updates
+type: updates
+---
+
+## NinjaTerm Now Installable
+
+Since v4, NinjaTerm has been a web app (progressive web app, or PWA, to be exact). It has relied on the Web Serial API to communicate with the serial ports. However, there are some limitations with the Web Serial API, such as the inability to see the device name (e.g. `COM4` on Windows, `/dev/ttyACM0` on Linux, etc.). Also, getting permission to save logs and other things to the file system is trickier with a web app and the sandboxing the browser enforces.
+
+[v5 of NinjaTerm was just released](https://github.com/gbmhunter/NinjaTerm/releases/tag/v5.0.0) in which installable desktop versions are available for Windows and Linux (macOS coming soon). These are based around Electron, which means most of the existing code was kept as is. I just had to migrate the serial port communications and update the build process/CI. The web version will remain available (but will not be updated in the future).
