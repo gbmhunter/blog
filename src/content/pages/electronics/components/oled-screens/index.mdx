@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2012-02-10
 description: OLED screens use miniature organic LEDs to display a pixel based picture. This page covers resolutions, physical sizes, communication methods, driver IC's, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2012-02-10
+lastUpdated: 2025-07-31
 tags: [OLED, screen, resolution, pixel, I2C, communication, driver ICs, Solomon, charge pump]
 title: OLED Screens
 type: page
@@ -35,19 +35,21 @@ The cable to the OLED screen is usually designed to be soldered flat, or bent 18
 
 Most OLED screens are pixel-driven, as opposed to character driven such as some LCD screens. This allows much higher configurability, and also means the screen can be installed in any orientation.
 
-## Driver IC's
+## Driver ICs
 
 The Solomon SSDxxxx IC's are a common choice as a driver IC for an OLED screen. They are usually embedded in the the screen itself (this makes sense, otherwise you would have hundreds of wires to connect up to the screen, one for each row and column), and connected to the external world via a communications protocol such as [SPI](/electronics/communication-protocols/spi-communication-protocol/) or [I2C](/electronics/communication-protocols/i2c-communication-protocol/).
 
-## Solomon SSD1305
+### Solomon SSD1305
 
-Max Resolution: 132x64 pixels  
+Max Resolution: 132x64 pixels
 
 Min Pitch: 45um
 
 Supports up to a 132x64 pixel screen. Similar to the Solomon SSD1306 except it has an internal boost converter (aside from the discrete caps and inductor) that can provide the OLED screen voltage.
 
-## Solomon SSD1306
+### Solomon SSD1306
+
+The SSD1306 is likely the most common driver IC for small OLED screens designed for embedded applications.
 
 Max Resolution: 128x32 pixels  
 
@@ -59,7 +61,7 @@ Just to give you an idea of how graphics data is written to the SSD1306, the GDD
 
 <Image src={import('./_assets/ssd1306-gddram-page-structure.png')} width="550px">The GDDRAM structure (the RAM inside the IC which holds information on the colour of each pixel) of the Solomon SSD1306 IC.</Image>
 
-## VCOMH, It May Not Be What You Think
+### VCOMH, It May Not Be What You Think
 
 OLED screens that use the Solomon SSD1306 usually have a pin labelled VCOMH, which has the pin description shown below.
 
@@ -69,7 +71,7 @@ This can trick you into thinking that you use this pin to set the communication 
 
 ## Driving Both The Charge Pump And Logic Of The Same Supply
 
-You might notice that some OLED's specify a voltage range of 3.3-4.2V for the charge pump and 1.8-3.3V for the logic. And then you would think, well I really wanted to run them of the same supply (one of the main reasons why they would include an internal charge pump, right?), so can I run them from 3.3V? Well, although the charge pump input specifys a minimum of 3.3V, you can actually run it at that or lower, sacrificing a little screen brightness in the process (see the below graph). And the logic circuitry seems to handle 3.3V+- the variation of a normal linear regulator without too much trouble.
+You might notice that some OLED's specify a voltage range of 3.3-4.2V for the charge pump and 1.8-3.3V for the logic. And then you would think, well I really wanted to run them of the same supply (one of the main reasons why they would include an internal charge pump, right?), so can I run them from 3.3V? Well, although the charge pump input specifies a minimum of 3.3V, you can actually run it at that or lower, sacrificing a little screen brightness in the process (see the below graph). And the logic circuitry seems to handle 3.3V+- the variation of a normal linear regulator without too much trouble.
 
 <Image src={import('./_assets/oled-display-brightness-vs-vddb.gif')} width="320px">Graph of OLED brightness vs. VDDB.</Image>
 
@@ -77,7 +79,17 @@ You might notice that some OLED's specify a voltage range of 3.3-4.2V for the ch
 
 Check out the [Installing And Using emWin On A PSoC page](/programming/microcontrollers/psoc/installing-and-using-emwin-on-a-psoc).
 
-## Manufacturers/Distributers
+## Firmware Drivers
+
+The [sparkfun/SparkFun_Qwiic_OLED_Arduino_Library repo on GitHun](https://github.com/sparkfun/SparkFun_Qwiic_OLED_Arduino_Library) contains Arduino based C++ code for driving the SparkFun Qwiic range of OLED screen dev boards. All of these boards use the Solomon SSD1306 IC. It provides common graphics functionality such as drawing pixels, lines, rectangles, filled rectangles, circles, bitmaps, fonts and raster operations.[^github-sparkfun-sparkfun-qwiic-oled-arduino-library]
+
+It has a "dirty rect" feature that only updates parts of the screen that have change based of bounding rectangles. This increases the average update rate of the screen under normal use cases.[^github-sparkfun-sparkfun-qwiic-oled-arduino-library] It can be easily ported from Arduino to other frameworks by replacing the included I2C driver. I ported it to [Zephyr](/programming/operating-systems/zephyr/) and it took a few hours to get it working.
+
+<Video src="/videos/oled-flashing-hello-world-quickly.webm" width="700px" autoplay loop>
+Writing "Hello World" to a random location on an OLED as quickly as I can using the SparkFun Qwiic OLED Arduino Library.
+</Video>
+
+## Manufacturers/Distributors
 
 Manufacturers of OLED screens include:
 
@@ -91,10 +103,16 @@ Manufacturers of OLED screens include:
 * RITEK Group
 * OSD Displays
 
-Distributers of OLED screens include:
+Distributors of OLED screens include:
 
 * [DigiKey](http://www.digikey.com/)
 * [Glyn (NZ based)](https://www.glyn.com/Contact/New-Zealand)
 * [Mouser](http://www.mouser.com)
 * [Braemac (Australian based)](http://www.braemac.com.au/)
 * [Element14](http://www.element14.com/)
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^github-sparkfun-sparkfun-qwiic-oled-arduino-library]: GitHub. _sparkfun/SparkFun_Qwiic_OLED_Arduino_Library_ [code]. Retrieved 2025-07-31, from https://github.com/sparkfun/SparkFun_Qwiic_OLED_Arduino_Library.
