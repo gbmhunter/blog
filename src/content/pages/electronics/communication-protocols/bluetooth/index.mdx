@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-03-06
-tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG]
+lastUpdated: 2025-08-03
+tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK]
 title: Bluetooth
 type: page
 ---
@@ -57,6 +57,8 @@ BLE has 40 channels, compared to Bluetooth Classic which has 79.[^argenox-ble-ad
 
 _Advertising_ is when a BLE peripheral broadcasts packets to any device that wants to listen. Advertising allows a low energy device to sleep most of the time, only waking up periodically for a short amount of time to send a new advertisement packet. Advertising is unidirectional, the peripheral sends out unsolicited data and expects no response. To achieve 2-way communication you have to connect with the BLE peripheral.
 
+_Legacy advertising_ uses three channels from the 2.4GHz radio band, channels 37, 38 and 39. _Extended advertising_ was added in Bluetooth 5.0 and uses all 40 Bluetooth LE channels, resulting in less collisions.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
+
 Advertisement packets give you 31 bytes of data for application specific use.
 
 When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone send the device a _scan request_ packet, the the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process[^argenox-ble-advertising-primer]. 
@@ -79,6 +81,35 @@ See the [Bluetooth section on the Zephyr page](/programming/operating-systems/ze
 Beacons are BLE peripherals that use advertisement exclusively, and do not allow for connections. This is so that the device can always be found and used, if a connection occurs then the peripheral is meant to stop advertising.[^argenox-ble-advertising-primer]
 
 Apple's iBeacon is the most popular beacon standard.
+
+### LE Coded PHY
+
+Bluetooth Low Energy was originally designed to reduce power consumption but offer the same transmission distances as standard Bluetooth (Bluetooth Classic). This is typically around 10-100m range in normal operation conditions (inside a building), and about 50-300m line of sight in optimal conditions. LE Coded PHY (a.k.a. Bluetooth long-range mode) was introduced in Bluetooth 5.0 to extend the range of Bluetooth Low Energy devices to approximately 4x the range of the 1M PHY.[^novel-bits-coded-phy-bluetooths-long-range-feature]
+
+Support for LE Coded PHY is optional, and is not supported by all devices.[^novel-bits-coded-phy-bluetooths-long-range-feature]
+
+With the addition of LE Coded PHY, there are now 3 PHYs available for BLE:
+
+* **LE 1M PHY**: 1 Megasymbols per second. The original BLE PHY introduced in Bluetooth v4.0.
+* **LE 2M PHY**: 2 Megasymbols per second. Introduced in Bluetooth 5.0, doubles the speed of the 1M PHY (approx.). Range is reduce to about 80% of the 1M PHY.[^punch-through-bluetooth-phy-how-it-works] The faster transmission speed was somewhat motivated by the desire to support firmware OTA updates.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
+* **LE Coded PHY**: 1 Megasymbols per second, but with multiple symbols per bit. Introduced in Bluetooth 5.0, extends the range of Bluetooth Low Energy devices to 1km line of sight.
+
+<Aside type="note">
+All Bluetooth PHYs use Gaussian Frequency Shift Keying (GFSK) modulation. This is a form of frequency shift keying (FSK) in where the data pulses are first filtered with a Gaussian filter before being modulated with the carrier frequency. The Gaussian filter smooths out the transitions between the two frequencies, which reduces the amount of energy radiated in the sidebands at the expense of higher intersymbol interference.[^wikipedia-frequency-shift-keying]
+</Aside>
+
+For the LE Coded PHY, data is still sent at 1 Megasymbols per second like in 1M PHY. The key difference is that is uses forward error correction (FEC), and multiple symbols are sent per bit, which gives increases transmission distance at the expense of slower data rates. This redundant information allows the receiver to detect and correct errors in the received data. There are two configurations for LE Coded PHY:
+
+* **S2**: 2 symbols per bit in the payload. Gives a data rate of 500kbps.
+* **S8**: 8 symbols per bit in the payload. Gives a data rate of 125kbps.
+
+8 symbols per bit (S8) is always used for the access header, irrespective of the configuration for the payload.
+
+In many applications, slowing down the transmission speed for increased range is a good trade-off. One downside to consider is the increased power usage. Power usage is approximately proportional to the radio on time, and you'll spend approx. 8 times longer (this ignores things like start-up time) to send a packet with the LE Coded PHY S8 configuration than the standard 1M PHY. Thus 8 times more power is used.
+
+#### Smartphone Support
+
+LE Coded PHY support is optional, and as of August 2025 support on smartphones is limited.[^novel-bits-coded-phy-bluetooths-long-range-feature]
 
 ## Bluetooth Smart Mesh Working Group
 
@@ -147,3 +178,7 @@ The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PC
 [^cypress-cyw20702-bluetooth-transceiver-and-baseband-processor]: Cypress Semiconductor (2016, Nov 23). _CYW20702 - Single-Chip Bluetooth Transceiver and Baseband Processor_ [datasheet]. Retrieved 2025-02-05, from https://www.alldatasheet.com/datasheet-pdf/download/902264/CYPRESS/BCM20702.html.
 [^wikipedia-csr-plc]: Wikipedia (2024, Sep 12). _CSR plc_ [wiki]. Retrieved 2025-02-05, from https://en.wikipedia.org/wiki/CSR_plc.
 [^tonymacx86-tp-link-ub400-not-recognized]: tonymacx86 (2022, Oct 25). _Tp-Link UB400 not being recognized_ [forum post]. Retrieved 2025-02-05, from https://www.tonymacx86.com/threads/tp-link-ub400-not-being-recognized.322815/.
+[^novel-bits-coded-phy-bluetooths-long-range-feature]: Novel Bits (2023, Oct 2). _Coded PHY: Bluetooth's Long Range Feature_. Retrieved 2025-08-03, from https://novelbits.io/bluetooth-long-range-coded-phy/.
+[^punch-through-bluetooth-phy-how-it-works]: Henry Anfang (2019, Dec 31). _Bluetooth PHY - How it Works and How to Leverage it_. Punch Through. Retrieved 2025-08-03, from https://punchthrough.com/crash-course-in-2m-bluetooth-low-energy-phy/.
+[^wikipedia-frequency-shift-keying]: Wikipedia (2024, Jul 31). _Frequency-shift keying_ [wiki]. Retrieved 2025-08-03, from https://en.wikipedia.org/wiki/Frequency-shift_keying.
+[^bluetooth-bluetooth-core-5.0-feature-enhancements]: Martin Woolley (2025, Jan 13). _Bluetooth Core 5.0 Feature Enhancements_. Bluetooth SIG. Retrieved 2025-08-04, from https://www.bluetooth.com/wp-content/uploads/2019/03/Bluetooth_5-FINAL.pdf.
