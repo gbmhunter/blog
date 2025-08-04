@@ -224,9 +224,25 @@ If you are interested in routing between two COM ports **on the same computer**,
 
 There are also USB-to-UART cables for connecting a computer to a UART bus. FTDI is one of the most popular manufacturers of these, and make cables that can both use a Virtual COM port or D2XX drivers. Internally, the cables use FTDI's FT232RQ IC.[^ftdi-usb-to-rs232-range-of-cables-ds] The internal EEPROM can be reprogrammed to change the VID and PID of the device (they default to `0x0403` and `0x6001` respectively).[^ftdi-usb-to-rs232-range-of-cables-ds] Be aware however that if you do this on Windows (and possibly on other OSes too), the FTDI Virtual COM port driver will not automatically pick it up, and you'll have to configure this manually. Also, the EEPROM programming utility FT_PROG won't pick up the device any more!
 
-## Powerline Transceivers
+## ICs
 
-The [SIG60](http://www.yamar.com/sig60.php) is an example of a powerline transceiver.
+### CH9344
+
+The CH9344 is a USB to Quad UART IC in a [LQFP-48 package](/pcb-design/component-packages/qfp-component-package/). It's [USB interface](/electronics/communication-protocols/usb-protocol/) supports USB 2.0. It also provides 12 GPIO pins which can be used for auxiliary functions. UART0 to UART2 have independent voltage rails which can be 1.8V, 2.5V or 3.3V (UART3 is fixed at 3.3V).[^wch-usb-to-quad-uarts-chip-ch9344-ds]
+
+<Image src={import('./_assets/ch9344-usb-to-quad-uart-ic-pinout.webp')} width="800px">The pinout of the CH9344 USB to Quad UART IC.[^wch-usb-to-quad-uarts-chip-ch9344-ds]</Image>
+
+[https://github.com/WCHSoftGroup/ch9344ser_linux](https://github.com/WCHSoftGroup/ch9344ser_linux) is a Linux driver that supports this IC. The driver creates tty devices named `ttyCH9344USBx` in your `/dev` directory.
+
+### WCH CH348
+
+The WCH CH438 is a USB to 8 UART IC. Like the CH9344, the UARTs have independent voltage rails that cna be set to 1.8V, 2.5V or 3.3V. As shown in <IRef iref="fig-ch348-usb-to-8-uart-ic-pinout" />, the IC comes in two different packages. The larger LQFP-100 package provides flow controls pins for every single one of the UARTs.
+
+<Image iref="fig-ch348-usb-to-8-uart-ic-pinout" src={import('./_assets/ch348-usb-to-8-uart-ic-pinout.webp')} width="900px">The pinout of the CH348 USB to 8 UART IC, in the two different package offerings. The CH348Q is a LQFN48 48-pin 7x7mm package and the CH348L is a LQFP100 100-pin 14x14 mm package.[^cnx-software-wch-ch348-8-port-usb-to-serial-chip]</Image>
+
+## Power Line Transceivers
+
+The [SIG60](http://www.yamar.com/sig60.php) is an example of a power line transceiver.
 
 ## Creating A Serial Port Bridge
 
@@ -241,3 +257,5 @@ You can create a rudimentary serial bridge to connect to pieces of software toge
 {/* ============================================================================================ */}
 
 [^ftdi-usb-to-rs232-range-of-cables-ds]: FTDI. _USB to RS232 Serial Converter Range of Cables_ [datasheet]. Retrieved 2025-02-10, from https://ftdichip.com/wp-content/uploads/2023/07/DS_USB_RS232_CABLES.pdf.
+[^wch-usb-to-quad-uarts-chip-ch9344-ds]: WCH. _USB to Quad UARTs Chip CH9344_ [datasheet]. Retrieved 2025-08-04, from https://www.wch-ic.com/downloads/CH9344DS1_PDF.html.
+[^cnx-software-wch-ch348-8-port-usb-to-serial-chip]: Jean-Luc Aufranc (2022, Mar 4). _WCH CH348 is an 8-port USB to serial chip with up to 48 GPIOs_. CNX Software. Retrieved 2025-08-04, from https://www.cnx-software.com/2022/03/04/wch-ch348-8-port-usb-to-serial-chip-with-up-to-48-gpios/.
