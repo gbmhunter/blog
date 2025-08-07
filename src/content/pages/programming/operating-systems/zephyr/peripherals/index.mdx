@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2020-04-19
-description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
-lastUpdated: 2025-07-23
-tags: [programming, operating systems, OSes, RTOS, Zephyr, peripherals, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation, stack canaries]
+description: Zephyr has a collection of well defined APIs for interacting with microcontroller peripherals (drivers). This page covers how to use them.
+lastUpdated: 2025-08-07
+tags: [programming, operating systems, OSes, RTOS, Zephyr, peripherals, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation, stack canaries, nrfx, SAADC]
 title: Zephyr Peripherals
 type: page
 ---
@@ -727,6 +727,138 @@ Nordic Semiconductor has a guide on setting the ADC for their nRF MCUs using Zep
 Nordic's guide uses the `int16_t` type for the ADC buffer, while the Zephyr example uses `uint16_t`. I'm not sure if this is a typo or intentional because their driver works differently.
 </Aside>
 
+### nrfx SAADC Driver
+
+<Aside type="note">
+This section is specific to nRF SoCs.
+</Aside>
+
+Zephyr's ADC driver can work with the SAADC peripheral. However, only basic functionality is provided by the Zephyr ADC API. For example, the Zephyr ADC API does not allow you to setup repeated sampling based on a timer connected with the DPPI/PPI. If you want more functionality than what the Zephyr ADC API provides, you can use the lower level nrfx SAADC driver.
+
+Enable the nrfx SAADC driver in your `prj.conf` file:
+
+```python title="prj.conf"
+CONFIG_NRFX_SAADC=y
+```
+
+```c++
+#include <nrfx_saadc.h>
+
+```
+
+We'll use the `IRQ_CONNECT()` macro to connect the SAADC interrupt to an ISR:
+
+```c++
+IRQ_CONNECT(NRFX_IRQ_NUMBER_GET(NRF_SAADC), IRQ_PRIO_LOWEST, nrfx_saadc_irq_handler, 0, 0);
+```
+
+<Aside type="tip">
+After connecting up a interrupt handler, you might get the compile error `multiple registrations at table_index 7 for irq 7 (0x7)` as shown below:
+
+```text
+gen_isr_tables.py: error: multiple registrations at table_index 7 for irq 7 (0x7)
+Existing handler 0x10e45, new handler 0xc65d
+Has IRQ_CONNECT or IRQ_DIRECT_CONNECT accidentally been invoked on the same irq multiple times?
+```
+
+This is likely because you have the ADC driver still enabled in the Zephyr device tree. You need to make sure it's not being enabled in your `my_board.dts` file. Better still, explicitly disable it with `status = "disabled";` as shown below:
+
+```text title="my_board.dts"
+// ADC disabled - using direct NRFX SAADC driver instead
+&adc {
+    status = "disabled";
+};
+```
+</Aside>
+
+Initialize the SAADC with `nrfx_saadc_init()`:
+
+```c++
+nrfx_err_t status = nrfx_saadc_init(NRFX_SAADC_DEFAULT_CONFIG_IRQ_PRIORITY);
+__ASSERT(status == NRFX_SUCCESS, "SAADC init failed. nrfx_saadc_init() returned %d.", status);
+```
+
+Configure the channel:
+
+```c++
+nrfx_saadc_channel_t saadcChannel = {
+    .channel_config = {
+        .resistor_p = NRF_SAADC_RESISTOR_DISABLED,
+        .resistor_n = NRF_SAADC_RESISTOR_DISABLED,
+        .gain = NRF_SAADC_GAIN1_6,
+        .reference = NRF_SAADC_REFERENCE_INTERNAL,
+        .acq_time = NRF_SAADC_ACQTIME_3US, // Make sure this is fast enough for your sampling frequency. 3us is one of the fastest options.
+        .mode = NRF_SAADC_MODE_DIFFERENTIAL, // Or NRF_SAADC_MODE_SINGLE_ENDED. If set to differential, you need to set the resistor_p and resistor_n fields.
+        .burst = NRF_SAADC_BURST_DISABLED,
+    },
+    .pin_p = NRF_SAADC_INPUT_AIN0,
+    .pin_n = NRF_SAADC_INPUT_AIN1,
+    .channel_index = 0,
+};
+nrfx_err_t channelConfigRc = nrfx_saadc_channel_config(&saadcChannel);
+__ASSERT(channelConfigRc == NRFX_SUCCESS, "SAADC differential channel config failed. nrfx_saadc_channel_config() returned %d.", channelConfigRc);
+```
+
+Now let's set the SAADC to advanced mode using the `nrfx_saadc_advanced_mode_set()` function. We will:
+
+* Prevent continuous mode by setting `start_on_end` to `false`.
+* Set oversampling rate to 16x. This gives us a better SNR. Remember to compensate for this by changing your sampling frequency as needed. The SAADC will sample at the specified sampling frequency, but will only insert 1 reading into the output buffer for every 16 samples. Thus the oversampled frequency is SAMPLE_FREQ / OVERSAMPLING_RATE.
+* Disable burst mode.
+
+```c++
+nrfx_saadc_adv_config_t advConfig = NRFX_SAADC_DEFAULT_ADV_CONFIG;
+advConfig.internal_timer_cc = INTERNAL_TIMER_CC;
+advConfig.start_on_end = false; // Set to true for continuous mode
+advConfig.oversampling = NRF_SAADC_OVERSAMPLE_16X;
+advConfig.burst = NRF_SAADC_BURST_DISABLED;
+
+uint32_t channelMask = nrfx_saadc_channels_configured_get();
+status = nrfx_saadc_advanced_mode_set(channelMask, NRF_SAADC_RESOLUTION_12BIT, &advConfig, adc_saadc_event_handler);
+__ASSERT(status == NRFX_SUCCESS, "SAADC advanced mode set failed. nrfx_saadc_advanced_mode_set() returned %d.", status);
+```
+
+<Aside type="caution">
+If enabling oversampling, make sure you only have one channel configured, as oversampling is performed across all active channels.
+</Aside>
+
+Now we need to provide the SAADC driver with a buffer using `nrfx_saadc_buffer_set()`. We are not using continuous mode which requires double buffering, so we only call `nrfx_saadc_buffer_set()` once.
+
+```c++
+static constexpr size_t NUM_SAMPLES_IN_BUFFER = 10;
+int16_t sampleBuffer[NUM_SAMPLES_IN_BUFFER];
+nrfx_err_t status = nrfx_saadc_buffer_set(static_cast<nrf_saadc_value_t*>(sampleBuffer), NUM_SAMPLES_IN_BUFFER);
+__ASSERT(status == NRFX_SUCCESS, "SAADC buffer set failed. nrfx_saadc_buffer_set() returned %d.", status);
+```
+
+<Aside type="caution">
+The "buffer size" argument to `nrfx_saadc_buffer_set()` is the number of samples in the buffer, not the number of bytes!
+</Aside>
+
+I couldn't find information on what the type of each buffer element should be. I guessed it was `int16_t` given the resolution can go up to 12 bits and can be differential (e.g. negative values are possible) and it seemed to work for me.
+
+The last thing we need to do is start the SAADC with `nrfx_saadc_mode_trigger()`.
+
+```c++
+nrfx_err_t status = nrfx_saadc_mode_trigger();
+__ASSERT(status == NRFX_SUCCESS, "Failed to trigger SAADC mode. nrfx_saadc_mode_trigger() returned %d.", status);
+```
+
+This is a non-blocking function. The signal handler provided to `nrfx_saadc_advanced_mode_set()` will be called when the SAADC has finished sampling with the event `NRFX_SAADC_EVT_DONE`.
+
+#### Offset Calibration
+
+You can start an offset calibration with `nrfx_saadc_offset_calibrate()`. This is recommended before doing any actual measurements. Because we pass in a callback function, this function will not block and will call the callback function when the calibration is complete.
+
+```c++
+// Start offset calibration
+// Because we are passing in a callback function and not nullptr, this function will not block
+nrfx_saadc_offset_calibrate(adc_saadc_event_handler);
+```
+
+Note that the event handler gets called in an interrupt context, so make the logic in the event handler as lightweight as possible (setting flags and deferring work on the data to a thread is a good idea).
+
+nrfx SAADC examples can be found in the Zephyr repo at `modules/hal/nordic/nrfx/samples/src/nrfx_saadc`. The official nrfx SAADC driver documentation can be found [here](https://docs.nordicsemi.com/bundle/ncs-2.7.0/page/nrfx/drivers/saadc/driver.html).
+
 ## I2C Controller
 
 Zephyr provides a API for your MCU to act as an I2C controller. A controller (previously called a master) is the device which controls the communications on the bus, which includes initiating transmissions and sending the clock signal. The other type of API provided is the I2C target API, designed for I2C slave devices. The I2C controller API is the most widely used, and the I2C target API is still considered experimental (as of July 2025).
@@ -846,10 +978,6 @@ Here is what `zephyr,concat-buf-size` and `zephyr,flash-buf-max-size` do:[^githu
 
 The error message is telling you that the driver needs a larger buffer to store the data you are trying to write. You can increase the size of the buffer by setting the `zephyr,concat-buf-size` and `zephyr,flash-buf-max-size` properties in your `.dts` file.
 
-```txt title="my_board.dts"
-
-
-
 ## UART
 
 Your microcontroller file will already define the [UART](/electronics/communication-protocols/uart-communication-protocol/) peripherals available (e.g. `uart0`, `uart1`, ...). You have to do is enable them in your `.dts` file, and provide things like the baud rate:
@@ -917,11 +1045,19 @@ i2s0_default_alt: i2s0_default_alt {
 
 ## USB
 
+### CDC ACM
+
 Enable the USB device stack with:
 
 ```python title="prf.conf"
 CONFIG_USB_DEVICE_STACK=y
 ```
+
+<Aside type="note">
+I encountered stack overflows when enabling both CDC ACM and `CONFIG_NO_OPTIMIZATIONS=y` at the same time.
+
+To fix, I had to add `CONFIG_USB_NRFX_WORK_QUEUE_STACK_SIZE=8192` to my `prj.conf` file.
+</Aside>
 
 ## Non-Volatile Storage
 

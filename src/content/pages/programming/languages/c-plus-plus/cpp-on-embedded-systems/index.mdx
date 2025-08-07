@@ -645,6 +645,14 @@ etl::to_string(5, text, true); // Make sure to append as to not overwrite "Numbe
 // String is now "Number is: 5"
 ```
 
+You can use `etl::format_spec` to control the formatting of the string. This gets passed in as the third argument to an overload of `etl::to_string`. The example below shows how to format a float to 3 decimal places.
+
+```c++
+etl::string<20> text = "The result is ";
+etl::to_string(3.1415, text, etl::format_spec().precision(3), true);
+// 'text' is set to "The result is 3.142"
+```
+
 Sometimes you will have to pass a ETL string to a function that expects a `char *`. Just like with `std::string`, you can use the `.c_str()` method to get a `char *` from an ETL string.
 
 ### String Views

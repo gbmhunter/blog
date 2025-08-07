@@ -85,6 +85,16 @@ If you want to use the USB device in Windows again, you can use `detach` to deta
 usbipd detach --busid <busid>
 ```
 
+### usbipd: error: Loading vhci_hcd failed
+
+After using WSL for a while, I started getting `usbipd: error: Loading vhci_hcd failed.` errors when trying to attach a USB device into WSL (when running the `usbipd attach ...` command). Running `sudo modprobe vhc_hcd` inside WSL fixed the issue. But this was still a pain because I had to run it every time I started up WSL again. To make it persistent, I added `command="modprobe vhci_hcd"` to my `/etc/wsl.conf` inside WSL (which already contained `systemd=true`):
+
+```text title="/etc/wsl.conf"
+[boot]
+systemd=true
+command="modprobe vhci_hcd"
+```
+
 ## Installing Chrome on WSL
 
 You can install Chrome on WSL by running the following command:

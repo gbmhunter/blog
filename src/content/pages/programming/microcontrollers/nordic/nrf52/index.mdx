@@ -157,6 +157,8 @@ Oversampling does not improve over sources of error, such as integral non-linear
 
 The `SAADC` peripheral cannot generate events when the converted value crosses a threshold. If you need this functionality, look at using the comparator peripheral (`COMP`) instead. The same analog input pin cannot be used for both `SAADC` and `COMP` peripherals at the same time.
 
+Zephyr's ADC driver can work with the SAADC peripheral. However, only basic functionality is provided by the Zephyr ADC API. For example, the Zephyr ADC API does not allow you to setup repeated sampling based on a timer connected with the DPPI/PPI. If you want more functionality than what the Zephyr ADC API provides, you can use the lower level [nrfx SAADC driver](/programming/operating-systems/zephyr/peripherals/#nrfx-saadc-driver).
+
 ## Comparator (COMP)
 
 The nRF52 series MCUs have a comparator peripheral called `COMP`. Much like [discrete analogue comparator ICs](/electronics/components/comparators/), this peripheral can be used to compare one input voltage (`VIN+`) against another input voltage (`VIN-`), and can generate events (e.g. raise an interrupt) depending on the result (whether it is higher or lower than the other). `VIN+` can be any of the analog input pins `AIN0-AIN7`. `VIN-` can be any of the analog input pins (differential mode) or from `VREF`, which in turn can be derived from `VDD`, `AIN0-AIN7`, or internal 1.2V, 1.8V or 2.4V references. It's internal block diagram is shown in <IRef iref="fig-comparator-diagram-nrf52" />.

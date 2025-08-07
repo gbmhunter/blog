@@ -226,19 +226,21 @@ There are also USB-to-UART cables for connecting a computer to a UART bus. FTDI 
 
 ## ICs
 
-### CH9344
+### WCH CH9344
 
-The CH9344 is a USB to Quad UART IC in a [LQFP-48 package](/pcb-design/component-packages/qfp-component-package/). It's [USB interface](/electronics/communication-protocols/usb-protocol/) supports USB 2.0. It also provides 12 GPIO pins which can be used for auxiliary functions. UART0 to UART2 have independent voltage rails which can be 1.8V, 2.5V or 3.3V (UART3 is fixed at 3.3V).[^wch-usb-to-quad-uarts-chip-ch9344-ds]
+The WCH CH9344 is a USB to Quad UART IC in a [LQFP-48 package](/pcb-design/component-packages/qfp-component-package/). It's [USB interface](/electronics/communication-protocols/usb-protocol/) supports USB 2.0. It also provides 12 GPIO pins which can be used for auxiliary functions. UART0 to UART2 have independent voltage rails which can be 1.8V, 2.5V or 3.3V (UART3 is fixed at 3.3V).[^wch-usb-to-quad-uarts-chip-ch9344-ds]
 
-<Image src={import('./_assets/ch9344-usb-to-quad-uart-ic-pinout.webp')} width="800px">The pinout of the CH9344 USB to Quad UART IC.[^wch-usb-to-quad-uarts-chip-ch9344-ds]</Image>
+<IRef iref="fig-ch9344-usb-to-quad-uart-ic-pinout"/> shows the pinout of the LQFP-48 IC.
+
+<Image iref="fig-ch9344-usb-to-quad-uart-ic-pinout" src={import('./_assets/ch9344-usb-to-quad-uart-ic-pinout.webp')} width="400px">The pinout of the WCH CH9344 USB to Quad UART IC.[^wch-usb-to-quad-uarts-chip-ch9344-ds]</Image>
 
 [https://github.com/WCHSoftGroup/ch9344ser_linux](https://github.com/WCHSoftGroup/ch9344ser_linux) is a Linux driver that supports this IC. The driver creates tty devices named `ttyCH9344USBx` in your `/dev` directory.
 
 ### WCH CH348
 
-The WCH CH438 is a USB to 8 UART IC. Like the CH9344, the UARTs have independent voltage rails that cna be set to 1.8V, 2.5V or 3.3V. As shown in <IRef iref="fig-ch348-usb-to-8-uart-ic-pinout" />, the IC comes in two different packages. The larger LQFP-100 package provides flow controls pins for every single one of the UARTs.
+The WCH CH438 is a USB to 8 UART IC, similar to the WCH CH9344 USB to 4 UART IC. Like the CH9344, the UARTs have independent voltage rails that cna be set to 1.8V, 2.5V or 3.3V. As shown in <IRef iref="fig-ch348-usb-to-8-uart-ic-pinout" />, the IC comes in two different packages. The larger LQFP-100 package provides flow controls pins for every single one of the UARTs.
 
-<Image iref="fig-ch348-usb-to-8-uart-ic-pinout" src={import('./_assets/ch348-usb-to-8-uart-ic-pinout.webp')} width="900px">The pinout of the CH348 USB to 8 UART IC, in the two different package offerings. The CH348Q is a LQFN48 48-pin 7x7mm package and the CH348L is a LQFP100 100-pin 14x14 mm package.[^cnx-software-wch-ch348-8-port-usb-to-serial-chip]</Image>
+<Image iref="fig-ch348-usb-to-8-uart-ic-pinout" src={import('./_assets/ch348-usb-to-8-uart-ic-pinout.webp')} width="900px">The pinout of the WCH CH348 USB to 8 UART IC, in the two different package offerings. The CH348Q is a LQFN48 48-pin 7x7mm package and the CH348L is a LQFP100 100-pin 14x14 mm package.[^cnx-software-wch-ch348-8-port-usb-to-serial-chip]</Image>
 
 ## Power Line Transceivers
 
