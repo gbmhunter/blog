@@ -81,6 +81,9 @@ for (const collectionPage of allCollections) {
   childPages.push(collectionPage);
 }
 
+// Sort child pages alphabetically by title
+childPages.sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
+
 // console.log(Astro.params); // slug: electronics/circuit-design
 // console.log(Astro.url); // pathaame: /electronics/circuit-design/
 ---
