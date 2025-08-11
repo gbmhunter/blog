@@ -109,6 +109,8 @@ CONFIG_LOG_BUFFER_SIZE=2048
 
 `CONFIG_LOG_BUFFER_SIZE` sets the number of bytes assigned to the circular packet buffer.[^zephyr-docs-logging] Note there is also a maximum size per log message, which is discussed in the [Max Message Size section](#max-message-size).
 
+If you are using the Zephyr shell, `CONFIG_LOG_BUFFER_SIZE` won't be enough by itself to remove those "x messages dropped" warnings. You will also have to set `CONFIG_SHELL_BACKEND_SERIAL_LOG_MESSAGE_QUEUE_SIZE`. This for me defaults to `512` which is quite small -- I ran into the "x messages dropped" warning frequently with this default setting. I bumped it to `2048` in a few projects which got rid of the warning for my use case. I don't know if `CONFIG_LOG_BUFFER_SIZE` is still needed if you set `CONFIG_SHELL_BACKEND_SERIAL_LOG_MESSAGE_QUEUE_SIZE`, but for safety I made both bigger (flash usage was not an issue for me).
+
 ### Max Message Size
 
 Zephyr has a maximum log message size of 2047 bytes. If a message exceeds this size, it will be dropped. As far as I can tell, this is set by `Z_LOG_MSG_MAX_PACKAGE` in `zephyr/subsys/logging/log_msg.c` which is turn set by `#define Z_LOG_MSG_PACKAGE_BITS 11` (2047 is 2^11 - 1). This cannot be changed via a setting in `prj.conf` and thus is a hard limit.
