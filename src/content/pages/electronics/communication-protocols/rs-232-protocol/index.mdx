@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-10-29
 description: Pinout, revisions, flow control, transmission distances, interfaces, driver ICs, and more about the RS-232 communication protocol.
 image: ./_assets/cover-image.webp
-lastUpdated: 2022-03-02
+lastUpdated: 2025-08-26
 tags: [RS-232, serial, UART, DTE, DCE, communication protocol, TX, RX, USB]
 title: RS-232 Protocol
 type: page
@@ -11,19 +11,19 @@ type: page
 
 RS-232 is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is closely related to the [UART communication protocol](/electronics/communication-protocols/uart-communication-protocol/) provided by most microcontrollers, except that RS-232 uses higher-voltage signalling whilst UART is restricted between `VCC` of the microcontroller and `GND`.
 
-|                           |
-|---------------------------|---------------------
-| Drive Type                | Single-ended
-| Num. Wires (excl. GND)    | 2 (TX/RX) or 4 (TX/RX and RTS/CTS)
-| Duplexity                 | Full
-| Connection Topology       | Point-to-point
-| OSI Layers                | Layers 1 (physical) and 2 (data link)
+| Property                  | Value                 |
+|---------------------------|-----------------------|
+| Drive Type                | Single-ended          |
+| Num. Wires (excl. GND)    | 2 (TX/RX) or 4 (TX/RX and RTS/CTS) |
+| Duplexity                 | Full                  |
+| Connection Topology       | Point-to-point        |
+| OSI Layers                | Layers 1 (physical) and 2 (data link) |
 
 RS-232 is commonly used today for a variety of different purposes in embedded systems, incl industrial equipment, test and measurement equipment. RS-232 ports are no longer available on most desktop computers (and certainly not on laptops), but USB-to-RS232 adapters are cheap, popular and easy to use with almost any operating system. Microcontroller UART peripherals are commonly connected to a UART-to-RS232 converter to send data that is going off-board.
 
 ## Pinout
 
-<Image src={import('./_assets/rs232-comm-protocol-male-connector-large-pinout.png')} width="350">The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/.</Image>
+<Image src={import('./_assets/rs232-comm-protocol-male-connector-large-pinout.png')} width="350px">The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/.</Image>
 
 ## Revisions
 
@@ -31,7 +31,44 @@ RS-232 is commonly used today for a variety of different purposes in embedded sy
 * EIA-232-D (1987)
 * EIA/TIA-232-E (1991)
 
-## Flow Control
+## DTE vs DCE
+
+The RS-232 standard defines two types of devices:
+
+1. **DTE** (Data Terminal Equipment): Originally the "terminal" which the user interacted with. It displayed data to the user and accepted keyboard input.
+1. **DCE** (Data Communication Equipment): Originally the "modem" which connected to the telephone line. It sent and received data to and from the telephone line.
+
+DTE and DCEs are not used today in this sense, but it is important to understand the distinction between them because it helps you understand the signals of the RS-232 protocol.
+
+> Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
+
+Most often, manufacturers label the UART pins as DTEs. In this case, you have to swap all connections with their matching line. So TxD of device 1 is connected to RxD of device 2, RxD of device 1 is connected to TxD of device 2, RTS of device 1 is connected to CTS of device 2, etc.
+
+<Aside type="caution">
+Watch out, connecting the TX and RX up the wrong way is a common mistake. I was once routing a PCB that connected a MCU to a cellular modem module using UART. I connected the TX of the MCU to the RX of the modem and vice versa. However, after making some boards I realised this was a mistake -- the manufacturer of the modem had decided their module was a "DCE" and not a "DTE" (fair enough, it is acting as a modem) and had labelled the pins as such. In this case I should have connected the pins without swapping, i.e. the TX of the MCU to the TX of the modem.
+</Aside>
+
+## Control Lines and Flow Control
+
+Aside from the data lines, RS-232 also specifies a number of _control lines_. These days the original use of these control lines between DTE and DCE is all but gone, but they are still used (rather occasionally) for flow control and other basic signalling.
+
+The following tables lists all of the flow control signals (as well as the data signals). The direction is specified from the perspective of the DTE (data terminal equipment). Matching signals are grouped together.
+
+| Signal | Direction | Description | DB-25 Pin | DE-9 Pin |
+|---|---|---|---|---|
+| DTR (Data Terminal Ready) | DTE -> DCE | DTE drives this to indicate to the DCE that it is present. | 5 | 4 |
+| DCD (Data Carrier Detect) | DCE -> DTE | DCE drives this when it is connected to the telephone line. | 8 | 1 |
+| RI (Ring Indicator) | DCE -> DTE | The DCE drives this when it has detected a phone call. Note that there is no matching signal going the other way. | 22 | 9 |
+| RTS (Request To Send) | DTE -> DCE | DTE drives this to tell the DCE to get ready to receive data. | 4 | 7 |
+| CTS (Clear To Send) | DCE -> DTE | Driven by the DCE when it is ready to accept data. | 5 | 8 |
+| TxD (Data Transmit) | DTE -> DCE | The DTE sends data to the DCE over this line. | 2 | 3 |
+| RxD (Data Receive) | DCE -> DTE | The DCE sends data to the DTE over this line. | 3 | 2 |
+| Common Ground (GND) | n/a | The common ground for all signals. | 7 | 5 |
+| Protective Ground (PG) | n/a | The protective ground. This is usually just connected up to the common ground on the PCB. | 1 | n/a |
+
+<Aside type="caution">
+There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!** When opening a terminal program (such as [NinjaTerm](https://ninjaterm.mbedded.ninja/)) and connecting to a MCU over a USB emulated COM port, the computer is typically the DTE and the MCU is the DCE.
+</Aside>
 
 The flow control is a way of detecting when the receiver or transmitter is ready to accept or send new data. The UART protocol provides a few (all optional) methods for flow control:
 
@@ -40,31 +77,15 @@ The flow control is a way of detecting when the receiver or transmitter is ready
 
 ### RTS/CTS
 
-This is done by various additional connections to the standard transmit, receive and ground wires. The two most common are CTS and RTS. Typically, a micro-controller may have one or two UART peripherals that support this feature, while the rest are just basic non-flow control UART's.
+The RTS (Request to Send) and CTS (Clear to Send) signals were originally defined in the RS-232 standard to use with half-duplex modem (one direction at a time) such as the Bell 202. Note that half-duplex refers to the communication between the two DCEs (modems), not between the DTE and DCE (which is always full-duplex because of the TX and RX lines). The DTE asserts the RTS signal when it wants to transmit to the DCE. The DCE (modem) then does some handshaking with the modem on the other end, and once ready, asserts the CTS back to the DTE to grant permission to send data. It is important to realise that this flow control was only for data from the DTE to DCE. There was no similar mechanism in the original spec. to halt the flow of data from the DCE to the DTE.[^wikipedia-rs-232]
+
+In the 1980s modems were increasingly full duplex and there was no need for the original RTS/CTS spec. At this point, they began to be repurposed so that the RTS indicated when the DTE was ready to receive data from the DCE. This was described in the RS-232-E/TIA-232-E standard, which defined a new signal called RTR (Ready to Receive). This used the same pin as RTS (and in doing so, essentially changed the functionality of RTS).[^wikipedia-rs-232]
+
+The use of RTS to signal when the DTE was ready to receive data from the DTE and CLS to do the same but in the opposite direction meant the two signals were now independent of one another and can be considered proper hardware "flow control". Typically, a microcontroller may have one or two UART peripherals that support this feature, while the rest are just basic non-flow control UARTs.
 
 A small amount of power can be extracted from the RTS and CTS lines for powering low-power devices.
 
-The following tables lists all of the flow control signals (as well as the data signals), with respect to the device in question. Matching signals are grouped together.
 
-| Signal | Port Type | Description | DB-25 Pin | DE-9 Pin |
-|---|---|---|---|---|
-| DTR (Data Terminal Ready) | Output | DTE drives this to indicate to the DCE that it is present. | 5 | 4 |
-| DCD (Data Carrier Detect) | Input | DCE drives this when it is connected to the telephone line. | 8 | 1 |
-| RI (Ring Indicator) | Input | The DCE drives this when it has detected a phone call. Note that there is no matching signal going the other way. | 22 | 9 |
-| RTS (Request To Send) | Output | DTE drives this to tell the DCE to get ready to receive data. | 4 | 7 |
-| CTS (Clear To Send) | Input | Driven by the DCE when it is ready to accept data. | 5 | 8 |
-| TxD (Data Transmit) | Output | The DTE sends data to the DCE over this line. | 2 | 3 |
-| RxD (Data Receive) | Input | The DCE sends data to the DTE over this line. | 3 | 2 |
-| Common Ground (GND) | n/a | The common ground for all signals. | 7 | 5 |
-| Protective Ground (PG) | n/a | The protective ground. This is usually just connected up to the common ground on the PCB. | 1 | n/a |
-
-<Aside type="caution">
-There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
-</Aside>
-
-> Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
-
-Most often, manufacturers label the UART pins as DTE's. In this case, you have to swap all connections with their matching line. So TxD of device 1 is connected to RxD of device 2, RxD of device 1 is connected to TxD of device 2, RTS of device 1 is connected to CTS of device 2, e.tc.
 
 ## Transmission Distances
 
@@ -86,7 +107,7 @@ Another example of a RS-232 to CMOS UART converter is the MAX3221IDBE4. It suppo
 
 ### MAX3227
 
-The Maxim MAX3227 is a popular RS-232 line transceiver. It contains 1 driver and 1 receiver as is designed to be driven from CMOS signals (e.g. connected to a microcontroller UART)[^bib-maxim-max32xx-ds]. Texas Instruments produces a drop-in replacement part for the MAX3227, the MAX3227CDBR (the CDBR standing for commercial temp. range, tape and reeled)[^bib-ti-max3227cdbr-ds].
+The Maxim MAX3227 is a popular RS-232 line transceiver. It contains 1 driver and 1 receiver as is designed to be driven from CMOS signals (e.g. connected to a microcontroller UART)[^bib-maxim-max32xx-ds]. Texas Instruments produces a drop-in replacement part for the MAX3227, the MAX3227CDBR (the CDBR standing for commercial temp. range, tape and reeled).[^bib-ti-max3227cdbr-ds]
 
 ## Cheap Discrete-Part RS-232 To TTL Converter
 
@@ -121,3 +142,4 @@ The common pinout for this cable is shown in the table below[^bib-juniper-rj45-t
 [^bib-juniper-rj45-to-db9-adapter]: Juniper (2021, Nov 13). _MX2020 Universal Routing Platform Hardware Guide: RJ-45 to DB-9 Serial Port Adapter Pinout Information_. Retrieved 2022-05-17, from https://www.juniper.net/documentation/us/en/hardware/mx2020/srx4600/topics/concept/port-rj45-db9-adapter-pinout.html.
 [^bib-us-converters-making-db-to-rj45-adapter]: U.S. Converters LLC. _Making a DB to RJ45 adapter_. Retrieved 2022-05-17, from https://www.usconverters.com/downloads/support/db9_rj45_assembeling_guide.pdf.
 [^bib-tripp-lite-rj45-to-db9f-cable-ds]: Tripp Lite. _RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)_. Retrieved 2022-05-17, from https://assets.tripplite.com/product-pdfs/en/p430006.pdf.
+[^wikipedia-rs-232]: Wikipedia (2025, Aug 20). _RS-232_. Retrieved 2025-08-26, from https://en.wikipedia.org/wiki/RS-232.

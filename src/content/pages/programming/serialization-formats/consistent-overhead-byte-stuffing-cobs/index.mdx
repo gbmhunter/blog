@@ -23,7 +23,7 @@ The one problem with using a single byte to store where the next `0x00` arises w
 
 Because we have reserved the pointer value `0xFF`, we can only use the pointer values `0x01` through to `0xFE` to indicate where a real `0x00` is next in the data.
 
-An follow-on effect of this rule is that for a large amount of data containing no `0x00`'s, a `0xFF` pointer byte will be **added after every 254 bytes.** **This is where the _Consistent Overhead_ part of the COBS acronym comes from.** Many other packetization/framing algorithms suffer from the fact that the payload can increase significantly if the data contains the specific probelmatic values (e.g. many algorithms produce a payload which is double the size of the original data!).
+An follow-on effect of this rule is that for a large amount of data containing no `0x00`'s, a `0xFF` pointer byte will be **added after every 254 bytes.** **This is where the _Consistent Overhead_ part of the COBS acronym comes from.** Many other packetization/framing algorithms suffer from the fact that the payload can increase significantly if the data contains the specific problematic values (e.g. many algorithms produce a payload which is double the size of the original data!).
 
 ### Some Examples
 
@@ -46,4 +46,4 @@ One of the quickest ways to understand how COBS work is to look a simple example
 
 ## Source Code
 
-I wrote C++ functions which can peform COBS encoding and decoding as part of an open source serial communications protocol, they can be found at https://github.com/gbmhunter/SerialFiller/blob/master/src/CobsTranscoder.cpp.
+I wrote C++ functions which can perform COBS encoding and decoding as part of an open source serial communications protocol, they can be found at https://github.com/gbmhunter/SerialFiller/blob/master/src/CobsTranscoder.cpp.

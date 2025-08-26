@@ -1,0 +1,37 @@
+---
+authors: [gbmhunter]
+date: 2025-08-20
+description: test
+lastUpdated: 2025-08-20
+tags: [programming, serialization formats, concise binary object representation, CBOR, C++, encoding, decoding, framing]
+title: Concise Binary Object Representation (CBOR)
+type: page
+---
+
+<WarningIsNotes />
+
+Concise Binary Object Representation (CBOR) is a schema-less binary data serialization format which is loosely based on JSON. It is targetted towards embedded systems and other lightweight platforms in where the program memory usage of the encoder and decoder and the size of the encoded data is important.
+
+It is schema-less, meaning that arbitrary encoded CBOR packets can be decoded without any prior knowledge of the data structure. This makes it different to Protobuf which requires a schema. However, there is a associated standard called the CDDL (Concise Data Definition Language) which allows you to define a schema, and tools to validate data against the schema.[^cbor-io-rfc-8610-cddl]
+
+## CDDL
+
+Here is a basic example of a CDDL schema:
+
+```python
+person = {
+  name: tstr,
+  age: uint,
+  address: tstr,
+}
+```
+
+## Further Reading
+
+The [CBOR Book: A Practical Introduction to CBOR](https://cborbook.com/part_1/practical_introduction_to_cbor.html) is a great resource for learning about CBOR.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^cbor-io-rfc-8610-cddl]: H. Birkholz, et al. _Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures_ [standard]. IETF. Retrieved 2025-08-20, from https://datatracker.ietf.org/doc/html/rfc8610.
