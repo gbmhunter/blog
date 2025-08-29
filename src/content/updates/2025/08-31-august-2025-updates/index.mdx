@@ -9,20 +9,59 @@ title: August 2025 Updates
 type: updates
 ---
 
-## NinjaTerm Now Installable
+## NinjaTerm Updates
+
+### NinjaTerm Is Now Installable
 
 Since v4, NinjaTerm has been a web app (progressive web app, or PWA, to be exact). It has relied on the Web Serial API to communicate with the serial ports. However, there are some limitations with the Web Serial API, such as the inability to see the device name (e.g. `COM4` on Windows, `/dev/ttyACM0` on Linux, etc.). Also, getting permission to save logs and other things to the file system is trickier with a web app and the sandboxing the browser enforces.
 
 [v5 of NinjaTerm was just released](https://github.com/gbmhunter/NinjaTerm/releases/tag/v5.0.0) in which installable desktop versions are available for Windows and Linux (macOS coming soon). These are based around Electron, which means most of the existing code was kept as is. I just had to migrate the serial port communications and update the build process/CI. The web version will remain available (but will not be updated in the future).
 
+<Image src={import('./_assets/ninjaterm-much-more-serial-port-info.webp')} width="700px" userClass="red-glow">A screenshot of the port settings view in the new desktop version of NinjaTerm. This highlights the much more detailed serial port information that is now available.</Image>
+
+### Added Advanced Graphing Features
+
+Advanced graphing features have been added to NinjaTerm. This includes the ability for the MCU to send commands to NinjaTerm to create figures, define axis titles and trace labels, and insert/clear data. This is done with in-band ASCII based commands (starting with `$NT:` and ending with `;`) which are extracted from the incoming serial stream. An example of what the incoming data might look like is:
+
+```text
+// Create a figure
+$NT:GPH:ADD_FIG,id=fig1,title="Voltage Monitoring",xlabel="Time [s]",ylabel="Voltage [V]";
+
+// Add a trace to the figure
+$NT:GPH:ADD_TRACE,fig=fig1,id=temp,name="Temperature (°C)",color=#FF4444,xtype=timestamp;
+
+// Add data to the trace
+$NT:GPH:ADD_DATA,trace=temp,data=[25.6,26.1,25.9];
+```
+
+<Image src={import('./_assets/ninjaterm-advanced-graphing-screenshot.webp')} width="700px" userClass="red-glow"/>
+
+### Added Flow Control Support
+
+Flow control support has been added to NinjaTerm. Now on the port settings view you can select from a number of different flow control options.
+
+<Image src={import('./_assets/ninjaterm-flow-control-settings-in-port-view.webp')} width="700px" userClass="red-glow"/>
+
+Also, direct flow control pin toggling and reading of it's state has been added to the right drawer next to the terminal. This lets you toggle pins as needed while the port is open, which is useful when interacting with certain devices.
+
+<Image src={import('./_assets/ninjaterm-flow-control-controls-in-terminal-view.webp')} width="700px" userClass="red-glow"/>
+
 ## Bluetooth Coded PHY
 
 Added a section to the [Bluetooth page](/electronics/communication-protocols/bluetooth) about the Coded PHY, which is a new feature in Bluetooth 5.0.
 
-## USB to Quad UART ICs
+## USB to Quad and Octal UART ICs
 
 Added info on [USB to 4 and 8 UART ICs, such as the CH9344 and CH348](/electronics/communication-protocols/uart-communication-protocol/#ics).
+
+<Image src={import('./_assets/quad-and-octal-uart-ics-screenshot.webp')} width="700px" userClass="red-glow"/>
 
 ## nRF52 SAADC Driver
 
 Added info on the nrfx SAADC driver to the [Zephyr Peripherals](/programming/operating-systems/zephyr/peripherals/#nrfx-saadc-driver) page.
+
+<Image src={import('./_assets/nrf-saadc-driver-screenshot.webp')} width="700px" userClass="red-glow"/>
+
+## MCUboot on Zephyr
+
+Added info on [MCUboot on Zephyr](/programming/operating-systems/zephyr/mcuboot).

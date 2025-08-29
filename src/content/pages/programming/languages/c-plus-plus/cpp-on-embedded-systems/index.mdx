@@ -666,6 +666,38 @@ etl::string<10> greeting("Hello World");
 etl::string_view view(greeting.begin() + 2, greeting.size() - 4);
 ```
 
+### etl::expected
+
+ETL provides a `etl::expected` class which is very similar to the `std::expected` class. As far as I know, the `std::expected` would be perfectly fine to use in an embedded environment (no dynamic allocation, exceptions, e.t.c), but it was only added in C++23, which may not be a viable option for certain embedded projects. Thus `etl::expected` is a good alternative as long as you can use the ETL library. If you do have `std::expected` available, I would recommend using it instead of `etl::expected` for better compatibility with other C++ code.
+
+Just like `std::expected`, `etl::expected` is a great way to return either a value or an error code from a function. In my opinion, it is a cleaner way than the "C way" of returning the error code and having to provide a pointer as a function input to save the result to. It is similar in nature to [Rust's](/programming/languages/rust/) `Return` type.
+
+```c++
+#include <etl/expected.h>
+
+enum class Error {
+  SensorError,
+  CommunicationError,
+};
+
+etl::expected<float, Error> readTemperature() {
+  float temperatureDegC = readTemperatureFromSensor();
+  if (temperatureDegC < 0) {
+    return etl::unexpected(Error::SensorError);
+  }
+  return temperatureDegC;
+}
+
+int main() {
+  auto result = readTemperature();
+  if (result.has_error()) {
+    printf("Error reading temperature: %d\n", result.error());
+  } else {
+    printf("Temperature: %f\n", result.value());
+  }
+}
+```
+
 ### Configuration
 
 You can configure ETL by adding a file called `etl_profile.h` into your project. It is automatically included by the ETL library if it exists (`platform.h` is the file which pulls it in).
