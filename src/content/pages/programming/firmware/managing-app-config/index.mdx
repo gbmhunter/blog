@@ -1,0 +1,143 @@
+---
+authors: [gbmhunter]
+date: 2025-09-03
+lastUpdated: 2025-09-03
+tags: [firmware, config, upgrades]
+title: Managing App Config
+type: page
+---
+
+For this tutorial we'll assume you are using a lower level memory driver that implements the read/write commands, along with adding checksums to ensure the data integrity. This may be a simple key based store or a more complex like a proper file system.
+
+## Basic Single Struct Based Store
+
+The one variable that the application config must always have is a version. This will allow the application to know what version of the config it is using and to upgrade it if necessary.
+
+
+```c++
+struct __attribute__((packed)) AppConfigV1 {
+    uint32_t version;
+    uint8_t myFirstSetting;
+}
+```
+
+## Adding a New Setting
+
+```c++
+struct __attribute__((packed)) AppConfigV2 {
+    uint32_t version;
+    uint8_t myFirstSetting;
+    uint8_t mySecondSetting;
+}
+```
+
+## Upgrading
+
+To help us, let's define a `struct` which just contains the version.
+
+```c++
+struct __attribute__((packed)) AppConfigVersionOnly {
+    uint32_t version;
+}
+```
+
+This will allow us to cast the raw data to the version only struct and get the version.
+
+
+```c++
+void upgradeConfig() {
+    // Make sure maxSize is large enough to hold the largest config version struct
+    const int32_t maxSize = 1000;
+    char[maxSize] data;
+    char[maxSize] tempUpgradedData;
+    readConfig(data);
+
+    // Check if the version is the latest
+    AppConfigVersionOnly* versionOnly = (AppConfigVersionOnly*)data;
+    //===============================================//
+    // VERSION 1 -> 2
+    //===============================================//
+    if (versionOnly->version == 1) {
+        AppConfigV1* config = (AppConfigV1*)data;
+        AppConfigV2* configV2 = (AppConfigV2*)tempUpgradedData;
+        configV2->version = 2;
+        configV2->myFirstSetting = config->myFirstSetting;
+        configV2->mySecondSetting = 0; // Initialize to a sensible default value
+        // Copy back to data
+        memcpy(data, tempUpgradedData, maxSize);
+    }
+
+    // Upgrade complete!
+    writeConfig(data);
+}
+```
+
+And then if we added another new setting:
+
+```c++
+struct __attribute__((packed)) AppConfigV3 {
+    uint32_t version;
+    uint8_t myFirstSetting;
+    uint8_t myThirdSetting; // NOTE: The order! This method allows insertion of new settings anywhere, as long as the version is always the first setting.
+    uint8_t mySecondSetting;
+}
+```
+
+Then our upgrade logic would look like this:
+
+```c++
+void upgradeConfig() {
+    const int32_t maxSize = 1000;
+    char[maxSize] data;
+    char[maxSize] tempUpgradedData;
+    readConfig(data);
+
+    AppConfigVersionOnly* versionOnly = (AppConfigVersionOnly*)data;
+    //===============================================//
+    // VERSION 1 -> 2
+    //===============================================//
+    if (versionOnly->version == 1) {
+        AppConfigV1* config = (AppConfigV1*)data;
+        AppConfigV2* configV2 = (AppConfigV2*)tempUpgradedData;
+        configV2->version = 2;
+        configV2->myFirstSetting = config->myFirstSetting;
+        configV2->mySecondSetting = 0; // Initialize to a sensible default value
+        // Copy to rawData
+        memcpy(data, tempUpgradedData, maxSize);
+    }
+
+    //===============================================//
+    // VERSION 2 -> 3
+    //===============================================//
+    if (versionOnly->version == 2) {
+        AppConfigV2* config = (AppConfigV2*)data;
+        AppConfigV3* configV3 = (AppConfigV3*)tempUpgradedData  ;
+        configV3->version = 3;
+        configV3->myFirstSetting = config->myFirstSetting;
+        configV3->mySecondSetting = config->mySecondSetting;
+        configV3->myThirdSetting = 0; // Initialize to a sensible default value
+        // Copy back to data
+        memcpy(data, tempUpgradedData, maxSize);
+    }
+
+    // Upgrade complete!
+    writeConfig(data);
+}
+```
+
+Hopefully by now you can start to see the pattern emerging during the upgrade process. Upgrade logic is written for each version bump. This logic runs sequentially and in order, and is guaranteed to upgrade any prior version to the latest version by the time the function completes.
+
+
+The downside to this approach is that we need to copy across every setting on every version upgrade. This is because we allowed ourselves to insert new settings anywhere in the struct (as long as the version is always the first setting). This prevents us from doing things like copying the entire struct from one version to the next in one go.
+
+This is a flexible approach as you are not forced to add any "padding" between settings to allow for future growth, and also let's you delete settings just as easily as you can add them.
+
+**Pros:**
+
+- **Flexible:** You can easily add and remove settings from anywhere in the struct, as long as the version is always the first setting.
+- **Easy to read:** The upgrade logic is easy to read and understand.
+
+**Cons:**
+
+- **Verbose:** You need to copy across every setting on every version upgrade. This could get tiresome if there are 100's of settings.
+
