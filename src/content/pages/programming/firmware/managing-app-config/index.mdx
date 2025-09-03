@@ -2,17 +2,36 @@
 authors: [gbmhunter]
 date: 2025-09-03
 lastUpdated: 2025-09-03
-tags: [firmware, config, upgrades]
-title: Managing App Config
+tags: [firmware, config, upgrades, memory, flash, EEPROM, NVS, littlefs, Zephyr, migrations]
+title: Managing App Config In Non-Volatile Memory
 type: page
 ---
 
-For this tutorial we'll assume you are using a lower level memory driver that implements the read/write commands, along with adding checksums to ensure the data integrity. This may be a simple key based store or a more complex like a proper file system.
+<WarningIsNotes />
+
+Many firmware projects require some sort of configuration data to be stored in non-volatile memory (NVM) like [flash](/electronics/components/memory/flash/) or [EEPROM](/electronics/components/memory/eeprom/). This is needed for data that you want to persist across power-loss or reboots. NWM is typically used to store settings for the application, such as:
+
+- **User preferences:** e.g. desired temperature, desired fan speed, etc so they are not lost on power-loss or reboot.
+- **Production line settings:** For example, calibration data for the particular device, or a unique serial number.
+
+There are many different approaches to managing application config. Some of the key concerns that should be considered are:
+
+- **Versioning and Upgrading:** You rarely get the app config data defined right the first time you define it, and product requirements often change. Many products require firmware updates (DFU/bootloaders) to fix bugs and add new features. If you are releasing new firmware that has changed config onto already deployed products (which have a previous version of the app config), you need a safe and reliable way to "upgrade" (or migrate) the configuration data. Configuration data is usually versioned separately from the firmware version. You rarely ever need to downgrade the config (I have never needed to do this myself).
+- **Reliability:** You need to ensure that the config data is not corrupted or lost during firmware updates or power-loss. This is typically achieved by using checksums to ensure the data integrity. This can either be part of your app configuration logic, or abstracted as part of a lower level memory driver/file system.
+- **Writing Defaults:** The first time the application tries to read the config from NVM, it's not going to be there! You need to handle this case and write sensible defaults. One of the easiest approaches is to tie this in with the upgrade logic, and treat no config data as a "version 0" of the config. Then you can upgrade it to the v1 and follow the standard upgrade path.
+
+Lower level memory drivers or file systems that you could use include:
+
+- [Zephyr's NVS Module](https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html): Provides an API to mount a proprietary file system onto a flash device, and provides you with functions such as `nvs_write()` and `nvs_read()` to read and write data stored with a unique `uint16_t` ID. Zephyr's NVS implements CRC-based verification and implements wear leveling.[^zephyr-docs-nvs]
+- [littlefs](https://github.com/littlefs-project/littlefs): A small, fail-safe file system designed for embedded systems. It provides copy-on-write functionality to prevent corruption if the power is lost during writes, and provides wear leveling to prolong the life of flash memory.[^github-littlefs]
+
+The examples on this page assume you are using a lower level memory driver that implements the read/write commands, along with any checksums or other features you may need to ensure data integrity. These examples concern themselves only with the high-level aspects of managing the app config.
 
 ## Basic Single Struct Based Store
 
-The one variable that the application config must always have is a version. This will allow the application to know what version of the config it is using and to upgrade it if necessary.
+One of the most basic approaches to managing app config is to define a single struct that contains all the settings you need. Let's explore this approach in more detail.
 
+The one variable that this application config must always have is a version. This will allow the application to know what version of the config it is using and to upgrade it if necessary. Let's use a toy example in where our first version of the config is very simple, with only one setting 
 
 ```c++
 struct __attribute__((packed)) AppConfigV1 {
@@ -21,7 +40,11 @@ struct __attribute__((packed)) AppConfigV1 {
 }
 ```
 
-## Adding a New Setting
+<Aside type="note">
+We are using the `__attribute__((packed))` directive (supported by GCC and Clang) to ensure that the struct is packed so that the compiler does not add any padding between the settings. This ensures the data structure in memory is exactly as we define it, and will not change if we recompile with a different compiler.
+</Aside>
+
+### Adding a New Setting
 
 ```c++
 struct __attribute__((packed)) AppConfigV2 {
@@ -31,7 +54,7 @@ struct __attribute__((packed)) AppConfigV2 {
 }
 ```
 
-## Upgrading
+### Upgrading
 
 To help us, let's define a `struct` which just contains the version.
 
@@ -41,8 +64,19 @@ struct __attribute__((packed)) AppConfigVersionOnly {
 }
 ```
 
-This will allow us to cast the raw data to the version only struct and get the version.
+This will allow us to cast the raw data to the version only struct and get the version. Let's assume the low-level driver provides the following:
 
+```c++
+/**
+ * Read the object with given ID from NVM into the data buffer.
+ * @param id The ID of the data to read.
+ * @param data The buffer to read the data into.
+ * @return 0 on success, -1 if object with given ID does not exist.
+ */
+int nvmRead(uint16_t id, char* data);
+```
+
+Let's write an `upgradeConfig()` function that will handle the upgrade logic. The idea is to run this every time the firmware boots up on initialization, and this function will always make sure that by the time it returns the stored app configuration is at the latest version, no matter what version it finds stored in NVM (including if it doesn't exist yet!).
 
 ```c++
 void upgradeConfig() {
@@ -50,10 +84,24 @@ void upgradeConfig() {
     const int32_t maxSize = 1000;
     char[maxSize] data;
     char[maxSize] tempUpgradedData;
-    readConfig(data);
+    int nvmReadRc = nvmRead(APP_CONFIG_ID, data);
 
-    // Check if the version is the latest
+    //===============================================//
+    // DOESN'T EXIST -> VERSION 1
+    //===============================================//
+    if (nvmReadRc < 0) {
+        // No config data found, initialize to v1
+        AppConfigV1* config = (AppConfigV1*)tempUpgradedData;
+        config->version = 1;
+        config->myFirstSetting = 0; // Initialize to a sensible default value
+        // Copy back to data
+        memcpy(data, tempUpgradedData, maxSize);
+    }
+
+    // We can safely cast the data at any version to the AppConfigVersionOnly struct
+    // to read the version number.
     AppConfigVersionOnly* versionOnly = (AppConfigVersionOnly*)data;
+
     //===============================================//
     // VERSION 1 -> 2
     //===============================================//
@@ -90,9 +138,24 @@ void upgradeConfig() {
     const int32_t maxSize = 1000;
     char[maxSize] data;
     char[maxSize] tempUpgradedData;
-    readConfig(data);
+    int nvmReadRc = nvmRead(APP_CONFIG_ID, data);
 
+    //===============================================//
+    // DOESN'T EXIST -> VERSION 1
+    //===============================================//
+    if (nvmReadRc < 0) {
+        // No config data found, initialize to v1
+        AppConfigV1* config = (AppConfigV1*)tempUpgradedData;
+        config->version = 1;
+        config->myFirstSetting = 0; // Initialize to a sensible default value
+        // Copy back to data
+        memcpy(data, tempUpgradedData, maxSize);
+    }
+
+    // We can safely cast the data at any version to the AppConfigVersionOnly struct
+    // to read the version number.
     AppConfigVersionOnly* versionOnly = (AppConfigVersionOnly*)data;
+
     //===============================================//
     // VERSION 1 -> 2
     //===============================================//
@@ -127,17 +190,58 @@ void upgradeConfig() {
 
 Hopefully by now you can start to see the pattern emerging during the upgrade process. Upgrade logic is written for each version bump. This logic runs sequentially and in order, and is guaranteed to upgrade any prior version to the latest version by the time the function completes.
 
-
 The downside to this approach is that we need to copy across every setting on every version upgrade. This is because we allowed ourselves to insert new settings anywhere in the struct (as long as the version is always the first setting). This prevents us from doing things like copying the entire struct from one version to the next in one go.
 
 This is a flexible approach as you are not forced to add any "padding" between settings to allow for future growth, and also let's you delete settings just as easily as you can add them.
 
+### Summary
+
 **Pros:**
 
-- **Flexible:** You can easily add and remove settings from anywhere in the struct, as long as the version is always the first setting.
-- **Easy to read:** The upgrade logic is easy to read and understand.
+- **Flexible:** You can easily add and remove settings from anywhere in the struct, as long as the version is always the first setting. The parent struct can contain child structs to nest settings and create a logical hierarchy.
+- **Easy to read:** The upgrade logic is easy to read and understand. Upon reading the config for the first time from flash, you know exactly what version all your data is at, and have a simple and clear upgrade path to get it to the latest version.
+- **Easy to determine size:** Since all of your app config is stored in a single struct, it's easy to determine the size of the config in memory by using `sizeof()`. It's harder to work this out if you have many smaller setting objects stored separately.
 
 **Cons:**
 
 - **Verbose:** You need to copy across every setting on every version upgrade. This could get tiresome if there are 100's of settings.
+- **Performance:** Because we only define a single object to store the entire application config, this could result in a large number of bytes being written if the config changes frequently (especially if the config is large). This could lead to performance issues or increased flash wear. If this is a concern, a better approach would be to split the config into multiple objects which are stored separately in flash.
 
+## Many Smaller Objects In NVM
+
+An alternative to storing all of your app config in a single struct (which may have nested structs -- but there is still just one parent struct for the purposes of reading and writing to memory) is to store many smaller objects in NVM. This eliminates some of the cons mentioned above, in where you have to copy across everything for each version upgrade, and also addresses the performance and flash wear concerns of writing everything whenever the config changes.
+
+The idea is to break up the configuration into structs which make logical sense. You may want a separate struct for each "module" in your application. Or you may go all the way and just save every single setting separately in memory (in this case, you would drop the struct and just read/write the primitive types directly). Here is an example of what this could look like:
+
+```c++
+struct __attribute__((packed)) SerialNumberConfigV1 {
+  uint32_t version;
+  uint64_t serialNumber;
+}
+
+struct __attribute__((packed)) CalibrationConfigV1 {
+  uint32_t version;
+  uint32_t calibrationValueA;
+  uint32_t calibrationValueB;
+}
+```
+
+The settings are now broken into smaller structs which are saved to NVM separately. Each one has it's own version number, and will need it's own upgrade logic.
+
+**Pros:**
+
+- **Separation of concerns:** Different modules of your application can have save and read their own configuration settings separately. There is no need to a central "application config" struct.
+- **Performance:** Since the config is now stored in smaller objects, the amount of data that needs to be written to NVM when any one setting changes is much smaller. This would also result in less flash wear.
+
+**Cons:**
+
+- **Many upgrade paths:** Separate upgrade logic is required per saved struct. An alternative approach would be to save a single app config version by itself in NVM, which represents the version of the entire app config. However, this means you would have to have a central place where the upgrade logic is implemented, negating the separation of concerns benefit mentioned above.
+- **Harder to determine size:** Since the config is now stored in smaller objects, it's harder to determine the total size of the config in memory. You may be running out of space in flash without realizing it!
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^github-littlefs]: GitHub. _littlefs_ [GitHub repository]. Retrieved 2025-09-03, from https://github.com/littlefs-project/littlefs.
+[^zephyr-docs-nvs]: Zephyr Project (2024, Jun 20). _Docs / Latest » OS Services » Storage » Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2025-09-03, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.

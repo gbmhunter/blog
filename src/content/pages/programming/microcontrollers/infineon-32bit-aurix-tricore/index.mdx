@@ -17,4 +17,71 @@ The TC2xx and TC3xx families seem to be the most popular.
 
 As of March 2024, some of the lower end MCUs in this family cost around US$30 in quantities of 250.
 
+## Development Kits
+
+There are a number of development kits available for the AURIX TriCore family. Infineon makes a number of them which include a TFT touchscreen and a TC3xx MCU.
+
+<Image src={import('./_assets/aurix-kit-a2g-tc397-5v-dev-kit-photo-top-and-bottom.webp')} width="1200px">The KIT_A2G_TC397_5V_TFT development kit from Infineon. This contains a AURIX TC397 MCU, a Gigabit Ethernet PHY and a TFT screen. Left: Top side. Right: Bottom side, plugged in with the default firmware running as of September 2025.</Image>
+
+## AURIX Development Studio
+
+_AURIX Development Studio_ is the free and official Integrated Development Environment (IDE) for the TriCore-based AURIX microcontroller family. Unfortunately AURIX Development Studio is only available on Windows.
+
+### Installation
+
+One of the easiest ways to install AURIX Development Studio is to use the Infineon Developer Center Launcher. Download and install the launcher, navigate to "Manage Tools", find the "AURIX Development Studio" entry and click on "Install" (you have to be logged in to download this).
+
+<Image src={import('./_assets/infineon-developer-center-launcher-showing-aurix-development-studio.webp')} width="900px">A screenshot of the Infineon Developer Center Launcher app showing the AURIX Development Studio download.</Image>
+
+<Image src={import('./_assets/installing-aurix-dev-studio-via-standalone-exe.webp')} width="500px">A screenshot of the standalone installer for AURIX Development Studio. I had much better luck with this than trying to install the IDE via the Developer Center Launcher.</Image>
+
+The installer will also ask you if you want to download and install the OneEye dependency, I clicked yes for this. In total, the following will be installed:
+
+- AURIX Development Studio
+- DAS64
+- CDM Driver Package - Bus/D2XX Driver
+- OneEye: Infineon GUI development tool
+
+By default, the IDE will be installed to `C:\Infineon`, e.g. `C:\Infineon\AURIX-Studio-1.10.16`.
+
+### Code Examples
+
+Code examples can be found within AURIX Development Studio by clicking "Import Project". This will load up the "Infineon Code Examples Repository" and display a large number of example projects to get started with.
+
+<Image src={import('./_assets/aurix-code-examples-in-import-project-window.webp')} width="700px">A screenshot of the import project window in AURIX Development Studio.</Image>
+
+### Flashing
+
+Development kits such as the AURIX TFT range already contain an on-board miniWiggler programmer, so all you need to do is connect the dev. board to your computer with a USB cable.
+
+`::Cannot initialize device connection... Exiting` error: 
+
+You can also run the flashing tool from the command line with `.\AURIXFlasher.exe -elf <path/to/elf/file>`:
+
+```cmd
+.\AURIXFlasher.exe -elf 'C:\Users\geoff\AURIX-v1.10.16-workspace\Ethernet_1_KIT_TC397_TFT\TriCore Debug (TASKING)\Ethernet_1_KIT_TC397_TFT.elf'
+```
+
+You can provide `-log <path to write logs to>` to write debug logs to a file when invoking the flashing tool. This can be useful to get extra diagnostics when troubleshooting issues. A relative path will be resolved relative to the current working directory.
+
+```cmd
+.\AURIXFlasher.exe -elf "my_file.elf" -log "logs.txt"
+```
+
+## HighTech Free TriCore Entry Tool Chain
+
+The "HighTec Free TriCore Entry Tool Chain" is the recommended way to develop firmware for the AURIX TriCore family. Unfortunately on Windows is supported. You have to provide your development computers MAC address to download the IDE/toolchain. HighTec offers the following products for the AURIX family:
+
+- PXROS-HR multi-core RTOS (ISO 26262 ASIL D, IEC61508 SIL3 - TÜV certified)
+- C compiler for HSM security module
+- C compiler for GTM/MCS timer module
+- ISO26262 ASIL D Qualification Kit
+- Infineon MCAL or SafeTlib libraries
+
+The `license.lic` file must be placed in `C:\HighTec\licenses`.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^infineon-32-bit-aurix-tricore-microcontroller]: Infineon. _32-bit AURIX™ TriCore™ Microcontroller_ [product page]. Retrieved 2024-03-27, from https://www.infineon.com/cms/en/product/microcontroller/32-bit-tricore-microcontroller/.
