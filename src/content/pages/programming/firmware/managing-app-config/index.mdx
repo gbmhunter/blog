@@ -238,6 +238,12 @@ The settings are now broken into smaller structs which are saved to NVM separate
 - **Many upgrade paths:** Separate upgrade logic is required per saved struct. An alternative approach would be to save a single app config version by itself in NVM, which represents the version of the entire app config. However, this means you would have to have a central place where the upgrade logic is implemented, negating the separation of concerns benefit mentioned above.
 - **Harder to determine size:** Since the config is now stored in smaller objects, it's harder to determine the total size of the config in memory. You may be running out of space in flash without realizing it!
 
+## Random Thoughts
+
+Another procedure worth considering is early power loss detection via voltage monitoring. You can feed the output of a voltage supervisor on your main power input into an GPIO/interrupt in your firmware (or measure the voltage directly with an ADC, but this requires you to poll it fast enough). You can then use this to quickly write app config to NWM before power is lost completely to your MCU's voltage rails. This requires there to be enough energy stored in capacitors on your board to keep the MCU voltage up for long enough (you normally need to keep it up in the milliseconds range). Sometime you will already have enough capacitance due to SMPS output capacitors and other bulk capacitors. A reverse current blocking diode can also help to keep the MCU voltage rail up for long enough.
+
+You shouldn't rely on this technique to prevent data corruption, your memory interface/driver should still implement it's own protection against data corruption (what if the voltage drops quicker than you expect, or what if the MCU is reset due to a different reason?). However, this approach allows you to have a better chance of "up-to-date" data when the firmware reloads, and let's you slow down the number of writes during normal operation (as you can rely on the early power loss detection to complete the write).
+
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

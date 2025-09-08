@@ -38,9 +38,9 @@ One of the easiest ways to install AURIX Development Studio is to use the Infine
 The installer will also ask you if you want to download and install the OneEye dependency, I clicked yes for this. In total, the following will be installed:
 
 - AURIX Development Studio
-- DAS64
+- **DAS64:** The is the "Device Access Server" which allow for programming and debugging of the MCU.
 - CDM Driver Package - Bus/D2XX Driver
-- OneEye: Infineon GUI development tool
+- **OneEye**: Infineon GUI development tool. This will be installed if you selected the checkbox on the previous installation step.
 
 By default, the IDE will be installed to `C:\Infineon`, e.g. `C:\Infineon\AURIX-Studio-1.10.16`.
 
@@ -49,6 +49,16 @@ By default, the IDE will be installed to `C:\Infineon`, e.g. `C:\Infineon\AURIX-
 Code examples can be found within AURIX Development Studio by clicking "Import Project". This will load up the "Infineon Code Examples Repository" and display a large number of example projects to get started with.
 
 <Image src={import('./_assets/aurix-code-examples-in-import-project-window.webp')} width="700px">A screenshot of the import project window in AURIX Development Studio.</Image>
+
+#### Ethernet Example
+
+One example is the `Ethernet_1_KIT_TC397_TFT`, which uses lwIP and sets up the Ethernet interface.
+
+<Image src={import('./_assets/ethernet-example-terminal-output.webp')} width="400px">A screenshot of the serial terminal output for the Ethernet example.</Image>
+
+Once the board is assigned a IP address by the DHCP server, you can connect to it using a tool like PuTTY and create a terminal session across the Ethernet interface.
+
+<Image src={import('./_assets/ethernet-example-terminal-across-ipv4.webp')} width="400px">A screenshot of the terminal output for the Ethernet example across an IPv4 connection (this is different to the debug serial connection shown above). The board echos back any text sent to it.</Image>
 
 ### Flashing
 
