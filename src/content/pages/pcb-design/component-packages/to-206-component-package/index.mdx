@@ -1,10 +1,10 @@
 ---
 authors: [gbmhunter]
 date: 2023-06-12
-description: The TO-206 component package family is a family of large through-hole metal can packages used for things such as transistors. There are variants with 2 to 8 leads.
+description: The TO-206 component package family is a family of large through-hole metal can packages used for things such as transistors, diodes and temperature sensors. There are variants with 2 to 8 leads. They are also known under the older names TO-18, TO-46 and TO-72.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-06-12
-tags: [component packages, PCB design, transistor, TO-18]
+lastUpdated: 2025-09-09
+tags: [component packages, PCB design, transistor, TO-18, TO-46, TO-206, TO-206AA, TO-206AB]
 title: TO-206 Component Package
 type: page
 ---
@@ -13,7 +13,11 @@ The `TO-206` (Transistor Outline Package, Case Style 206) component package is a
 
 Synonyms:
 
+* `H02A`: A 2-lead "TO-46" package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages].
 * `H03C`: What National Semiconductor calls the `TO-206AA`[^ti-metal-can-packages].
+* `H03H`: A 3-lead "TO-46" package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages].
+* `H04A`: A 4-lead "TO-46" package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages].
+* `H04D`: A 4-lead "TO-46" package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages].
 * `TO-18`
 
 Variants:
@@ -28,6 +32,7 @@ Common Uses
 
 * Diodes (`TO-18-2`)
 * Transistors (`TO-18-3`)
+* Infrared thermopile temperature sensors (`TO-206AB`/`TO-46`)
 
 Similar To:
 
@@ -43,6 +48,20 @@ The `TO-206AA` is the most common 3-lead version in the `TO-206` family. It is a
 The dimensions of the `TO-206AA` are shown below:
 
 <Image src={import('./_assets/to-206-aa-to-18-3-lead-ti-h03c-dimensions.png')} width="700px">Dimensions for the TO-206AA (TO-18) component package from National Semiconductor (now Texas Instruments)[^ti-metal-can-packages].</Image>
+
+## TO-206AB (TO-46)
+
+JEDEC classified the TO-46 package as the TO-206AB package.[^wikipedia-to-18] Confusingly, Texas Instruments has a 2-lead, 3-lead and 2x 4-lead packages classified all under the TO-46 name.[^ti-metal-can-packages]
+
+<Image src={import('./_assets/ti-to-46-2-lead-dimensions.webp')} width="500px">Dimensions for the TO-46 2-lead component package from Texas Instruments.[^ti-metal-can-packages]</Image>
+
+<Image src={import('./_assets/ti-to-46-3-lead-dimensions.webp')} width="500px">Dimensions for the TO-46 3-lead component package from Texas Instruments.[^ti-metal-can-packages]</Image>
+
+<Image src={import('./_assets/ti-to-46-4-lead-dimensions.webp')} width="500px">Dimensions for the 2 TO-46 4-lead component packages from Texas Instruments.[^ti-metal-can-packages]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^wikipedia-to-18]: Wikipedia (2021, Nov 19). _TO-18_. Retrieved 2023-06-12, from https://en.wikipedia.org/wiki/TO-18.
 [^ti-metal-can-packages]: National Semiconductor (now Texas Instruments) (1999, Aug). _SNOA033 - Metal,Can,Packages - Metal Can Packages (TO-3/5/8/18/39/46/52/72)_. Retrieved 2023-06-12, from https://www.ti.com/lit/an/snoa033/snoa033.pdf.
