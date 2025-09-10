@@ -1,0 +1,364 @@
+---
+interface Props {
+  iref?: string;
+  data: { [key: string]: string }[];
+  caption?: string;
+  sticky?: boolean;
+  sortable?: boolean;
+  searchable?: boolean;
+}
+
+const {
+  iref,
+  data,
+  caption,
+  sticky = false,
+  sortable = true,
+  searchable = true
+} = Astro.props as Props;
+
+// Generate a unique ID for this table instance
+const tableId = iref || `table-${Math.random().toString(36).substr(2, 9)}`;
+
+// Extract column headers from the first data row
+const columns = data.length > 0 ? Object.keys(data[0]) : [];
+---
+
+{searchable && (
+  <div class="table-search-wrapper">
+    <input 
+      type="text" 
+      id={`search-${tableId}`}
+      class="table-search" 
+      placeholder="Search table..."
+    />
+  </div>
+)}
+
+<div class="table-wrapper" class:list={[{ sticky }]}>
+  <table id={tableId} class="enhanced-table" data-iref={iref}>
+    <thead>
+      <tr>
+        {columns.map((column) => (
+          <th class="sortable-header" data-column={column}>
+            {column}
+            {sortable && <span class="sort-indicator"></span>}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {data.map((row) => (
+        <tr>
+          {columns.map((column) => (
+            <td>{row[column]}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{(caption || Astro.slots.has('caption')) && (
+  <div class="table-caption">
+    {caption && caption}
+    <slot name="caption" />
+  </div>
+)}
+
+<script>
+  import { createTable, getCoreRowModel, getSortedRowModel, getFilteredRowModel } from '@tanstack/table-core';
+
+  class EnhancedTableManager {
+    constructor(tableElement) {
+      this.tableElement = tableElement;
+      this.searchInput = document.getElementById(`search-${tableElement.id}`);
+      this.init();
+    }
+
+    init() {
+      const data = this.extractTableData();
+      const columns = this.createColumnDefs();
+      
+      this.table = createTable({
+        data,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        state: {
+          globalFilter: '',
+          sorting: []
+        },
+        onGlobalFilterChange: (filter) => {
+          this.table.setGlobalFilter(filter);
+          this.renderTable();
+        },
+        onSortingChange: (sorting) => {
+          this.table.setSorting(sorting);
+          this.renderTable();
+        }
+      });
+
+      this.setupEventListeners();
+      this.renderTable();
+    }
+
+    extractTableData() {
+      const tbody = this.tableElement.querySelector('tbody');
+      const rows = tbody.querySelectorAll('tr');
+      const headers = Array.from(this.tableElement.querySelectorAll('thead th')).map(th => 
+        th.textContent.trim()
+      );
+
+      return Array.from(rows).map(row => {
+        const cells = row.querySelectorAll('td');
+        const rowData = {};
+        headers.forEach((header, index) => {
+          rowData[header] = cells[index]?.textContent?.trim() || '';
+        });
+        return rowData;
+      });
+    }
+
+    createColumnDefs() {
+      const headers = Array.from(this.tableElement.querySelectorAll('thead th'));
+      return headers.map(th => ({
+        accessorKey: th.textContent.trim(),
+        header: th.textContent.trim(),
+        cell: info => info.getValue()
+      }));
+    }
+
+    setupEventListeners() {
+      // Search functionality
+      if (this.searchInput) {
+        this.searchInput.addEventListener('input', (e) => {
+          this.table.setGlobalFilter(e.target.value);
+        });
+      }
+
+      // Sorting functionality
+      const headers = this.tableElement.querySelectorAll('thead th.sortable-header');
+      headers.forEach(header => {
+        header.addEventListener('click', () => {
+          const column = header.dataset.column;
+          const currentSorting = this.table.getState().sorting;
+          const existingSort = currentSorting.find(s => s.id === column);
+          
+          let newSorting;
+          if (!existingSort) {
+            newSorting = [{ id: column, desc: false }];
+          } else if (!existingSort.desc) {
+            newSorting = [{ id: column, desc: true }];
+          } else {
+            newSorting = [];
+          }
+          
+          this.table.setSorting(newSorting);
+          this.updateSortIndicators();
+        });
+      });
+    }
+
+    renderTable() {
+      const tbody = this.tableElement.querySelector('tbody');
+      const rows = this.table.getRowModel().rows;
+      
+      tbody.innerHTML = rows.map(row => `
+        <tr>
+          ${row.getVisibleCells().map(cell => `<td>${cell.getValue()}</td>`).join('')}
+        </tr>
+      `).join('');
+    }
+
+    updateSortIndicators() {
+      const headers = this.tableElement.querySelectorAll('thead th.sortable-header');
+      const sorting = this.table.getState().sorting;
+      
+      headers.forEach(header => {
+        const column = header.dataset.column;
+        const sortIndicator = header.querySelector('.sort-indicator');
+        const currentSort = sorting.find(s => s.id === column);
+        
+        if (currentSort) {
+          sortIndicator.textContent = currentSort.desc ? ' ↓' : ' ↑';
+          header.classList.add('sorted');
+        } else {
+          sortIndicator.textContent = '';
+          header.classList.remove('sorted');
+        }
+      });
+    }
+  }
+
+  // Initialize all enhanced tables on the page
+  document.addEventListener('DOMContentLoaded', () => {
+    const enhancedTables = document.querySelectorAll('.enhanced-table');
+    enhancedTables.forEach(table => {
+      new EnhancedTableManager(table);
+    });
+  });
+</script>
+
+<style>
+  .table-search-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .table-search {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: var(--color-bg-input);
+    color: var(--color-text);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .table-wrapper.sticky {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .enhanced-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .enhanced-table th,
+  .enhanced-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .enhanced-table th {
+    background-color: var(--color-bg-secondary);
+    font-weight: 600;
+  }
+
+  .table-wrapper.sticky .enhanced-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .sortable-header {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sortable-header:hover {
+    background-color: var(--color-bg-hover);
+  }
+
+  .sortable-header.sorted {
+    background-color: var(--color-bg-selected);
+  }
+
+  .sort-indicator {
+    margin-left: 0.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .enhanced-table tr:hover {
+    background-color: var(--color-bg-hover-row);
+  }
+
+  .table-caption {
+    caption-side: bottom;
+    font-size: 1.0rem;
+    font-style: italic;
+    color: var(--caption-text-color, #666);
+    margin-top: 0.5rem;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  /* Light mode styles (default) */
+  .table-search {
+    --color-border: #ddd;
+    --color-bg-input: #fff;
+    --color-text: #000;
+  }
+
+  .enhanced-table {
+    --color-bg: #fff;
+    --color-text: #000;
+    --color-border-light: #ddd;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-hover: #e9ecef;
+    --color-bg-selected: #e3f2fd;
+    --color-text-muted: #666;
+    --color-bg-hover-row: #f8f9fa;
+  }
+
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .table-search {
+      --color-border: #444;
+      --color-bg-input: #2a2a2a;
+      --color-text: #e0e0e0;
+    }
+
+    .enhanced-table {
+      --color-bg: #1a1a1a;
+      --color-text: #e0e0e0;
+      --color-border-light: #444;
+      --color-bg-secondary: #2d2d2d;
+      --color-bg-hover: #3a3a3a;
+      --color-bg-selected: #1e3a5f;
+      --color-text-muted: #aaa;
+      --color-bg-hover-row: #2a2a2a;
+    }
+  }
+
+  /* Support for explicit dark class */
+  :global(.dark) .table-search,
+  :global([data-theme="dark"]) .table-search {
+    --color-border: #444;
+    --color-bg-input: #2a2a2a;
+    --color-text: #e0e0e0;
+  }
+
+  :global(.dark) .enhanced-table,
+  :global([data-theme="dark"]) .enhanced-table {
+    --color-bg: #1a1a1a;
+    --color-text: #e0e0e0;
+    --color-border-light: #444;
+    --color-bg-secondary: #2d2d2d;
+    --color-bg-hover: #3a3a3a;
+    --color-bg-selected: #1e3a5f;
+    --color-text-muted: #aaa;
+    --color-bg-hover-row: #2a2a2a;
+  }
+
+  /* Support for explicit light class */
+  :global(.light) .table-search,
+  :global([data-theme="light"]) .table-search {
+    --color-border: #ddd;
+    --color-bg-input: #fff;
+    --color-text: #000;
+  }
+
+  :global(.light) .enhanced-table,
+  :global([data-theme="light"]) .enhanced-table {
+    --color-bg: #fff;
+    --color-text: #000;
+    --color-border-light: #ddd;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-hover: #e9ecef;
+    --color-bg-selected: #e3f2fd;
+    --color-text-muted: #666;
+    --color-bg-hover-row: #f8f9fa;
+  }
+</style>

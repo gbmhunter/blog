@@ -278,6 +278,35 @@ ghi         | jkl
   <caption slot="caption">A table using the `Table` component and the data provided from a Javascript object. There should be a reference at the end of this sentence[^table-ref].</caption>
 </Table>
 
+### Enhanced Table with TanStack Table Features
+
+<IRef iref="tbl-enhanced-tanstack-table" /> is an enhanced table using TanStack Table with sorting, filtering, and sticky headers.
+
+<EnhancedTable
+  iref="tbl-enhanced-tanstack-table"
+  data={[
+    { Component: "Resistor", Value: "10kΩ", Tolerance: "±5%", Package: "0805", Price: "$0.02" },
+    { Component: "Capacitor", Value: "100nF", Tolerance: "±10%", Package: "0603", Price: "$0.03" },
+    { Component: "Inductor", Value: "10μH", Tolerance: "±20%", Package: "1210", Price: "$0.15" },
+    { Component: "LED", Value: "Red", Tolerance: "N/A", Package: "5mm", Price: "$0.10" },
+    { Component: "Transistor", Value: "2N2222", Tolerance: "N/A", Package: "TO-92", Price: "$0.25" },
+    { Component: "IC", Value: "555 Timer", Tolerance: "N/A", Package: "DIP-8", Price: "$0.50" },
+    { Component: "Diode", Value: "1N4148", Tolerance: "N/A", Package: "SOD-123", Price: "$0.05" },
+    { Component: "Crystal", Value: "16MHz", Tolerance: "±20ppm", Package: "HC-49", Price: "$0.30" },
+    { Component: "Oscillator", Value: "32kHz", Tolerance: "±50ppm", Package: "3.2x2.5", Price: "$0.75" },
+    { Component: "Filter", Value: "LC", Tolerance: "±5%", Package: "1206", Price: "$0.12" }
+  ]}
+  caption="Electronic Components with Enhanced Table Features"
+  sticky={true}
+  sortable={true}
+  searchable={true}
+/>
+
+**Features to test:**
+- **Search:** Type "IC" or "10" in the search box above
+- **Sort:** Click column headers to sort (ascending → descending → none)
+- **Sticky headers:** Scroll down to see headers stick to top
+
 A really wide table, which should have a horizontal scroll bar:
 
 Heading 1 | Heading 2

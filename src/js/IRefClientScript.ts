@@ -61,20 +61,44 @@ function create_ref_links() {
   // FIND ALL TABLES
   //============================================================================
   // 1) Prefix table captions with "Table X: "
-  // 2) Add table to found_ref_destinations if iref present
+  // 2) Add table to found_ref_destinations if iref present  
+  // 3) Wrap regular tables in overflow containers for horizontal scrolling
   const tables = markdownContentDiv.querySelectorAll('table');
   tables.forEach((table, index) => {
+    // Handle regular table captions (inside the table)
     const tableCaption = table.querySelector('caption');
     if (tableCaption) {
       // Must set innerHTML and not textContent because the table caption can contain HTML
       tableCaption.innerHTML = `Table ${index + 1}: ` + tableCaption.innerHTML;
     }
+
+    // Handle enhanced table captions (outside the table as .table-caption div)
+    let enhancedTableCaption = null;
+    if (table.classList.contains('enhanced-table')) {
+      // Look for .table-caption div that comes after the table wrapper
+      const tableWrapper = table.closest('.table-wrapper');
+      if (tableWrapper) {
+        enhancedTableCaption = tableWrapper.nextElementSibling;
+        if (enhancedTableCaption && enhancedTableCaption.classList.contains('table-caption')) {
+          enhancedTableCaption.innerHTML = `Table ${index + 1}: ` + enhancedTableCaption.innerHTML;
+        }
+      }
+    }
+
     // If table has an iref, add it to the found_ref_destinations array
     const iref = table.getAttribute('data-iref');
     if (iref) {
       found_iref_destinations[iref] = new RefDestination('table', index, `Table ${index + 1}`);
       // Add id to table so we can link to it
       table.id = iref;
+    }
+
+    // Wrap regular tables (not enhanced tables) in overflow containers for horizontal scrolling
+    if (!table.classList.contains('enhanced-table') && !table.closest('.table-overflow-wrapper')) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-overflow-wrapper';
+      table.parentNode?.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
     }
   });
 

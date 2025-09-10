@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/starlight": "^0.35.0",
+    "@tanstack/table-core": "^8.21.3",
     "astro-expressive-code": "^0.38.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",

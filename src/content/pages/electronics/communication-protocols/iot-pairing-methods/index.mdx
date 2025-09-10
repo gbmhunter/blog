@@ -1,0 +1,47 @@
+---
+authors: [gbmhunter]
+date: 2025-09-10
+description: When you connect a new IoT device to your network, you need to pair it somehow. Many of the devices lack the input method and display to be able to select networks and enter in credentials like you would on a computer or smartphone (e.g. a smart plug may have just a single button for user input), and users want a simple and quick way to pair devices. A few pairing methods are commonly used. This page covers EZ mode and AP mode.
+lastUpdated: 2025-09-10
+tags: [communication protocols, electronics, IoT, pairing, methods, EZ mode, AP mode]
+title: IoT Pairing Methods
+type: page
+---
+
+<WarningIsNotes />
+
+When you connect a new IoT device to your network, you need to pair it somehow. Many of the devices lack the input method and display to be able to select networks and enter in credentials like you would on a computer or smartphone (e.g. a smart plug may have just a single button for user input), and users want a simple and quick way to pair devices. A few pairing methods are commonly used. This page covers EZ mode and AP mode.
+
+## EZ Mode
+
+EZ (Easy) mode work by getting a phone or similar device to broadcast Wi-Fi credentials to the smart device without it being connected on the network.
+
+### How It Works
+
+1. The IoT device puts it's Wi-Fi into "promiscuous" (a.k.a. "sniffer") mode. This allows it to capture all Wi-Fi packets on the channel it is listening on without actually being connected to the network.
+1. The user enters the Wi-Fi SSID and password into the companion smartphone app. The app then encodes the credentials and sends them in UDP broadcast or multicast mode. Interestingly, the credentials are not encoded into the payload of the UDP packet, but are instead encoded into the length of the UDP packet (many packets are sent). This is called "Data in Packet Length" (DPL).[^elttam-tuya-iot-and-ez-mode-pairing] [^petoneer-what-are-the-differences-between-ez-and-ap-modes]
+1. The IoT device captures the credentials and decodes them. Then it switches the Wi-Fi module into the standard mode and connects to the Wi-Fi network.
+
+<Aside type="note">
+"Data in Packet Length" (DPL) is used because the credentials can't be placed into the payload of the UDP packet. The IoT device does not have the pre-shared key to decrypt the encrypted UDP payload. However, the packet length is freely visible by any sniffing device since it's in the MAC layer frame header. The companion smartphone app and IoT device just have to agree on a format to encode the credentials into the packet length.
+</Aside>
+
+EZ modes reliance on UDP packets can sometimes cause issues when there is network congestion or if certain networking rules restrict UDP packets. Both of these result can result in connection failures. Also, AFAK the encoding for the credential in the packet length is by no means cryptographically secure, and it would seem anyone sniffing the network at the same time could capture your Wi-Fi credentials.
+
+## AP Mode
+
+AP (Access Point) mode works by the IoT device creating a temporary Wi-Fi hotspot which the user connects to. The companion smartphone app then sends the Wi-Fi credentials to the IoT device across this temporary network.
+
+### How It Works
+
+1. The IoT device enables a Wi-Fi hotspot.
+1. The user connects navigates to the IoT device's Wi-Fi on their smartphone and connects to it.
+1. The companion smartphone app sends the Wi-Fi credentials to the IoT device across this temporary network.
+1. The IoT device disables the hotspot and connects to the user's main Wi-Fi network using the supplied credentials.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^elttam-tuya-iot-and-ez-mode-pairing]: Mykel Pritchard (2020, Dec 9). _Tuya IoT and EZ Mode Pairing_. Elttam. Retrieved 2025-09-10, from https://www.elttam.com/blog/ez-mode-pairing/.
+[^petoneer-what-are-the-differences-between-ez-and-ap-modes]: Petoneer (2022, Jan 26). _What are the Differences Between EZ and AP modes?_. Retrieved 2025-09-10, from https://blog.petoneer.com/2022/01/26/what-are-the-differences-between-ez-and-ap-modes/.

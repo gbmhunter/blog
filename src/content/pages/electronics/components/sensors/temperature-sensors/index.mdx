@@ -187,83 +187,74 @@ Infrared thermopiles can measure the temperature of an object without coming int
 
 A thermocouple is a temperature sensor that is built from two dissimilar metals that connect together at a junction. The thermocouple generates a voltage proportional a temperature difference between the junction and the other end of the thermocouple due to the [Seebeck Effect](/electronics/circuit-design/thermoelectric-effect/). This voltage can be measured and used to calculate the relative difference in temperature of the junction.
 
-The table below shows the different types of thermocouples and their material composition. Sorted alphabetically by type.
+<IRef iref="tbl-thermocouple-types" /> shows the different types of thermocouples and their material composition. Sorted alphabetically by type.
 
-<table class="sticky">
-<thead>
-<tr>
-<th></th>
-<th colspan="2">Conductor Material</th>
-<th></th>
-</tr>
-<tr>
-<th>Type</th>
-<th width="15%">+ Lead</th>
-<th width="15%">- Lead</th>
-<th>ANSI MC 96.1 Color</th>
-<th>IEC 584-3 Color</th>
-<th>Temperature Range</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Type B</td> {/* Type */}
-<td>Pt 30%, Rh</td> {/* Material, + Lead */}
-<td>Pt</td> {/* Material, - Lead */}
-<td>n/a[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Grey (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>0°C to +1820°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-<tr>
-<td>Type E</td> {/* Type */}
-<td>NiCr</td> {/* Material, + Lead */}
-<td>CuNi</td> {/* Material, - Lead */}
-<td>Purple (+), Red (-)[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Purple (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>-270°C to +1000°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-<tr>
-<td>Type K</td> {/* Type */}
-<td>NiCr</td> {/* Material, + Lead */}
-<td>NiAl</td> {/* Material, - Lead */}
-<td>Yellow (+), Red (-)[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Green (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>-270°C to +1372°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-<tr>
-<td>Type J</td> {/* Type */}
-<td>Fe</td> {/* Material, + Lead */}
-<td>CuNi</td> {/* Material, - Lead */}
-<td>White (+), Red (-)[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Black (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>-210°C to +1200°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-<tr>
-<td>Type N</td> {/* Type */}
-<td>NiCrSi</td> {/* Material, + Lead */}
-<td>NiSiMg</td> {/* Material, - Lead */}
-<td>Orange (+), Red (-)[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Pink (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>-270°C to +1300°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-<tr>
-<td>Type R</td> {/* Type */}
-<td>Pt 13%, Rh</td> {/* Material, + Lead */}
-<td>Pt</td> {/* Material, - Lead */}
-<td>n/a[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Orange (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>-50°C to +1768°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-<tr>
-<td>Type S</td> {/* Type */}
-<td>Pt 10%, Rh</td> {/* Material, + Lead */}
-<td>Pt</td> {/* Material, - Lead */}
-<td>n/a[^blaze-thermocouple-types]</td> {/* ANSI MC 96.1 Color */}
-<td>Orange (+), White (-)[^blaze-thermocouple-types]</td> {/* IEC 584-3 Color */}
-<td>-50°C to +1768°C[^blaze-thermocouple-types]</td> {/* Temperature Range */}
-</tr>
-</tbody>
-</table>
+<EnhancedTable
+  iref="tbl-thermocouple-types"
+  data={[
+    {
+      "Type": "Type B",
+      "+ Lead Material": "Pt 30%, Rh",
+      "- Lead Material": "Pt",
+      "ANSI MC 96.1 Color": "n/a",
+      "IEC 584-3 Color": "Grey (+), White (-)",
+      "Temperature Range": "0°C to +1820°C"
+    },
+    {
+      "Type": "Type E",
+      "+ Lead Material": "NiCr",
+      "- Lead Material": "CuNi", 
+      "ANSI MC 96.1 Color": "Purple (+), Red (-)",
+      "IEC 584-3 Color": "Purple (+), White (-)",
+      "Temperature Range": "-270°C to +1000°C"
+    },
+    {
+      "Type": "Type J",
+      "+ Lead Material": "Fe",
+      "- Lead Material": "CuNi",
+      "ANSI MC 96.1 Color": "White (+), Red (-)",
+      "IEC 584-3 Color": "Black (+), White (-)", 
+      "Temperature Range": "-210°C to +1200°C"
+    },
+    {
+      "Type": "Type K",
+      "+ Lead Material": "NiCr",
+      "- Lead Material": "NiAl",
+      "ANSI MC 96.1 Color": "Yellow (+), Red (-)",
+      "IEC 584-3 Color": "Green (+), White (-)",
+      "Temperature Range": "-270°C to +1372°C"
+    },
+    {
+      "Type": "Type N",
+      "+ Lead Material": "NiCrSi", 
+      "- Lead Material": "NiSiMg",
+      "ANSI MC 96.1 Color": "Orange (+), Red (-)",
+      "IEC 584-3 Color": "Pink (+), White (-)",
+      "Temperature Range": "-270°C to +1300°C"
+    },
+    {
+      "Type": "Type R",
+      "+ Lead Material": "Pt 13%, Rh",
+      "- Lead Material": "Pt",
+      "ANSI MC 96.1 Color": "n/a",
+      "IEC 584-3 Color": "Orange (+), White (-)",
+      "Temperature Range": "-50°C to +1768°C"
+    },
+    {
+      "Type": "Type S", 
+      "+ Lead Material": "Pt 10%, Rh",
+      "- Lead Material": "Pt",
+      "ANSI MC 96.1 Color": "n/a",
+      "IEC 584-3 Color": "Orange (+), White (-)",
+      "Temperature Range": "-50°C to +1768°C"
+    }
+  ]}
+  sticky={true}
+  sortable={true}
+  searchable={false}
+>
+  <caption slot="caption">Types of thermocouples and their material composition, sorted alphabetically by type. Blaze Technical Services "Types of Thermocouples with Temperature Ranges & Color Codes" used for colour codes and temperature ranges.[^blaze-thermocouple-types]</caption>
+</EnhancedTable>
 
 Material legend:
 

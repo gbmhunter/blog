@@ -5,7 +5,12 @@
       "Bash(npm install:*)",
       "Bash(rm:*)",
       "Bash(npm view:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "mcp__browsermcp__browser_navigate",
+      "mcp__browsermcp__browser_press_key",
+      "mcp__browsermcp__browser_click",
+      "mcp__browsermcp__browser_screenshot",
+      "mcp__browsermcp__browser_wait"
     ],
     "deny": []
   }

@@ -129,28 +129,7 @@ Generated from https://starlight.astro.build/guides/css-and-tailwind/
   --sl-color-black: #ffffff;
 }
 
-/* Center tables.
-Tables were defined by default as display: block.
-Not sure if changing this to display: table is going
-to break anything? */
-.sl-markdown-content table {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-caption, .table-caption {
-  caption-side: bottom;
-  font-size: 1.0rem;
-  font-style: italic;
-  color: var(--caption-text-color);
-  margin-top: 0.5rem;
-  min-width: 100px; /* Don't make the caption too narrow if image is small */
-  max-width: 100%; /* Make sure caption never exceeds the page width */
-  width: var(--width);
-  text-align: center;
-  overflow-wrap: break-word; /* Makes sure long word like URLs don't overflow */
-}
 
 .wrappable-row {
   display: flex;
@@ -197,13 +176,50 @@ section.footnotes {
 /* TABLES */
 /* ============================================================================================== */
 
-/* Make wide tables scrollable */
+/* Center tables.
+Tables were defined by default as display: block.
+Not sure if changing this to display: table is going
+to break anything? */
 .sl-markdown-content table {
-  display: block; /* Change from display: table */
-  width: fit-content; /* Because of display: block, this is needed to prevent the table from taking up the full width of the page */
-  max-width: 100%;
-  overflow-x: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+caption, .table-caption {
+  caption-side: bottom;
+  font-size: 1.0rem;
+  font-style: italic;
+  color: var(--caption-text-color);
+  margin-top: 0.5rem;
+  min-width: 100px; /* Don't make the caption too narrow if image is small */
+  max-width: 100%; /* Make sure caption never exceeds the page width */
+  width: var(--width);
+  text-align: center;
+  overflow-wrap: break-word; /* Makes sure long word like URLs don't overflow */
+}
+
+/* Wrap regular tables (not enhanced tables) in a scrollable container */
+.sl-markdown-content table:not(.enhanced-table) {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Add table wrapper for horizontal scrolling - this will be applied by JavaScript */
+.table-overflow-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.table-overflow-wrapper table {
+  margin: 0 auto;
+  width: auto;
+  /* Remove min-width: 100% to allow small tables to size naturally */
+}
+
 
 /* ============================================================================================== */
 /* SIDEBAR MENU */
