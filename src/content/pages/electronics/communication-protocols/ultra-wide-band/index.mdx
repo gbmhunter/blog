@@ -1,0 +1,36 @@
+---
+authors: [gbmhunter]
+date: 2025-09-15
+description: UART (Universal Asynchronous Receiver/Transmitter) is a low-voltage, positive-rail only, microcontroller friendly version of the RS-232 protocol designed for IC to IC communication and short-distance wire-based communications.
+lastUpdated: 2025-09-15
+tags: [communication protocol, ultra-wide band, UWB]
+title: Ultra-wide Band (UWB)
+type: page
+---
+
+Ultra-wide band (UWB) is a communication protocol based of the IEEE 802.15.4a and IEEE 802.15.4z standards.[^qorvo-ultra-wideband] It allows precise time-of-flight measurement of radio signals which can provide 10 cm accuracy distance and location measurements between nodes. It is more accurate than GPS and can work indoors, but requires references ("anchor") nodes to be useful. It's name stems from the fact it uses a wide bandwidth (>500 MHz) when communicating. This allows for transmitting a large amount of signal energy without interfering with existing conventional protocols which are narrowband (e.g. WiFi, Bluetooth, etc.). UWB does not modulate the amplitude, phase and frequency of a carrier signal like a typical RF protocol. Instead, it uses simple time modulation or pulse-position modulation (PPM).[^wikipedia-ultra-wideband]
+
+## DecaWave DW1000A IC
+
+The DecaWave DW1000A IC (now owned by Qorvo) was the first single chip UWB transceiver.[^symmetry-electronics-overview-of-decawave-dw1000a-ic] It was announced in 2013.[^wikipedia-ultra-wideband]
+
+<Image src={import('./_assets/decawave-dw1000a-ic-photo.webp')} width="200px">A photo of the DecaWave DW1000A IC.[^decawave-dw1000a-ic-photo]</Image>
+
+DecaWave, an Irish fabless semiconductor company, was acquired by Qorvo in 2020.[^wikipedia-qorvo]
+
+## AI-Thinker NodeMCU-BU01 UWB Development Board
+
+The AI-Thinker NodeMCU-BU01 UWB development board shown in <IRef iref="fig-ai-thinker-node-mcu-bu01-uwb-dev-board-photo" /> is a popular board for UWB development. It contains a BU01 UWB module and a STM32F103C8T6 microcontroller.[^openelab-ai-thinker-node-mcu-bu01-uwb-dev-board]
+
+<Image iref="fig-ai-thinker-node-mcu-bu01-uwb-dev-board-photo" src={import('./_assets/ai-thinker-node-mcu-bu01-uwb-dev-board-photo.webp')} width="200px">A photo of the AI-Thinker NodeMCU-BU01 UWB development board.[^openelab-ai-thinker-node-mcu-bu01-uwb-dev-board]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^qorvo-ultra-wideband]: Qorvo (2025). _Ultra-Wideband_. Retrieved 2025-09-15, from https://www.qorvo.com/innovation/ultra-wideband.
+[^openelab-ai-thinker-node-mcu-bu01-uwb-dev-board]: OpenELAB (2025). _AI-Thinker NodeMCU-BU01 UWB Development Board_ [product page]. Retrieved 2025-09-15, from https://openelab.io/products/ai-thinker-nodemcu-bu01.
+[^symmetry-electronics-overview-of-decawave-dw1000a-ic]: Michael Venezia (2015, Dec 11) _An Overview of DecaWave's DW1000 UWB Wireless Transceiver for Precise Indoor Positioning_ [blog post]. Symmetry Electronics. Retrieved 2025-09-15, from https://www.symmetryelectronics.com/blog/an-overview-of-decawave-s-dw1000-uwb-wireless-transceiver/.
+[^qorvo-dw1000-ic]: Qorvo (2025). _DW1000 - 3.5 - 6.5 GHz Ultra-Wideband (UWB) Transceiver IC with 1 Antenna Port_ [product page]. Retrieved 2025-09-15, from https://www.qorvo.com/products/p/DW1000.
+[^wikipedia-ultra-wideband]: Wikipedia (2025, Sep 11). _Ultra-wideband_. Retrieved 2025-09-15, from https://en.wikipedia.org/wiki/Ultra-wideband.
+[^wikipedia-qorvo]: Wikipedia (2025, Aug 4). _Qorvo_. Retrieved 2025-09-15, from https://en.wikipedia.org/wiki/Qorvo.

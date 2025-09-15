@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-08-03
-tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK]
+lastUpdated: 2025-09-15
+tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial]
 title: Bluetooth
 type: page
 ---
@@ -152,7 +152,7 @@ Two types of encryption keys:
 
 ### CH9141/CH9143
 
-The CH9141 is a serial-to-Bluetooth BLE bridge IC made by Nanjing Qinheng Microelectronics Co., Ltd. that allows for "transparent" serial communication over Bluetooth. It supports broadcast, host and slave mode.[^wch-ch9141-product-page] It looks like there is not many suppliers for this IC, and much of the information is not in English.
+The CH9141 is a serial-to-Bluetooth BLE bridge IC made by Nanjing Qinheng Microelectronics Co., Ltd. that allows for "transparent" serial communication over Bluetooth. It supports broadcast, host and slave mode.[^wch-ch9141-product-page] It looks like there are not many suppliers for this IC, and much of the information is not in English.
 
 <Image src={import('./_assets/ch9141-ble-bridge-application-diagram.webp')} width="600px">A typical application diagram from the CH9141 BLE bridge IC.[^wch-ch9141-product-page]</Image>
 
@@ -171,6 +171,75 @@ The BCM20702 is a Bluetooth 4.0 processor made by Broadcom that is commonly foun
 ### CSR8510
 
 The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PCs and other devices. It was originally designed by CSR (Cambridge Silicon Radio). CSR was acquired by Qualcomm in 2015.[^wikipedia-csr-plc] Qualcomm has kept the CSR part numbers. It appears the popular TP-Link UB400 Bluetooth dongle uses this chipset.[^tonymacx86-tp-link-ub400-not-recognized]
+
+## Serial Ports over Bluetooth
+
+There are two primary ways to provide a "serial port" over Bluetooth:
+
+- RFCOMM: The RFCOMM protocol is
+
+### RFCOMM
+
+RFCOMM emulates not just the data lines, but also the flow control lines.
+
+<EnhancedTable
+  iref="tbl-rs232-pin-assignments"
+  data={[
+    {
+      "Pin": "102",
+      "Circuit Name": "Signal Common",
+    },
+    {
+      "Pin": "103",
+      "Circuit Name": "Transmit Data (TD)",
+    },
+    {
+      "Pin": "104",
+      "Circuit Name": "Received Data (RD)",
+    },
+    {
+      "Pin": "105",
+      "Circuit Name": "Request to Send (RTS)",
+    },
+    {
+      "Pin": "106",
+      "Circuit Name": "Clear to Send (CTS)",
+    },
+    {
+      "Pin": "107",
+      "Circuit Name": "Data Set Ready (DSR)",
+    },
+    {
+      "Pin": "108",
+      "Circuit Name": "Data Terminal Ready (DTR)",
+    },
+    {
+      "Pin": "109",
+      "Circuit Name": "Data Carrier Detect (CD)",
+    },
+    {
+      "Pin": "125",
+      "Circuit Name": "Ring Indicator (RI)",
+    },
+  ]}
+  sticky={true}
+  sortable={true}
+  searchable={false}
+>
+  <caption slot="caption">RS-232 pin assignments for RFCOMM protocol implementation.</caption>
+</EnhancedTable>
+
+### Libraries and Applications that use Bluetooth Serial
+
+The Android app ["Serial Bluetooth Terminal" by Kai Morich](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en) provides a terminal for your phone to communicate over Bluetooth serial.
+
+<Image src={import('./_assets/android-app-serial-bluetooth-terminal.webp')} width="400px">The Android app "Serial Bluetooth Terminal" available from the Google Play store.</Image>
+
+The ["Web-Bluetooth-Terminal" by loginov-rocks](https://github.com/loginov-rocks/Web-Bluetooth-Terminal) is a web app (PWA to be exact) that runs in your browser and provides a terminal that uses the [Web Bluetooth](https://webbluetoothcg.github.io/web-bluetooth/) API.
+
+<Image src={import('./_assets/loginov-rocks-web-bluetooth-terminal-photo-of-app-on-phone.webp')} width="400px">A image showing the loginov-rocks "Web-Bluetooth-Terminal" app on a phone. Also works on desktop browsers.[^github-loginov-rocks-web-bluetooth-terminal]</Image>
+
+The node.js library [bluetooth-serial-port by eelcocramer] provides 
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -193,3 +262,4 @@ The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PC
 [^wikipedia-frequency-shift-keying]: Wikipedia (2024, Jul 31). _Frequency-shift keying_ [wiki]. Retrieved 2025-08-03, from https://en.wikipedia.org/wiki/Frequency-shift_keying.
 [^bluetooth-bluetooth-core-5.0-feature-enhancements]: Martin Woolley (2025, Jan 13). _Bluetooth Core 5.0 Feature Enhancements_. Bluetooth SIG. Retrieved 2025-08-04, from https://www.bluetooth.com/wp-content/uploads/2019/03/Bluetooth_5-FINAL.pdf.
 [^github-list-of-coded-phy-supported-phones]: GitHub (2020, Mar 15). _NordicSemiconductor > Android-BLE-Library > Issues > List of Coded PHY Supported/Tested Phones #166_ [GitHub issue]. Retrieved 2025-08-09, from https://github.com/NordicSemiconductor/Android-BLE-Library/issues/166.
+[^github-loginov-rocks-web-bluetooth-terminal]: loginov-rocks. _loginov-rocks/Web-Bluetooth-Terminal_ [GitHub repository]. GitHub. Retrieved 2025-09-15, from https://github.com/loginov-rocks/Web-Bluetooth-Terminal.
