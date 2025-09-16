@@ -176,11 +176,12 @@ The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PC
 
 There are two primary ways to provide a "serial port" over Bluetooth:
 
-- RFCOMM: The RFCOMM protocol is
+- SPP over RFCOMM on Bluetooth Classic: Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial stream, but also the flow control lines.
+- The BLE specification does not define a serial port standard. 
 
-### RFCOMM
+### SPP over RFCOMM
 
-RFCOMM emulates not just the data lines, but also the flow control lines.
+Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial data lines (as streams), but also the flow control lines.
 
 <EnhancedTable
   iref="tbl-rs232-pin-assignments"
@@ -229,6 +230,43 @@ RFCOMM emulates not just the data lines, but also the flow control lines.
   <caption slot="caption">RS-232 pin assignments for RFCOMM protocol implementation.</caption>
 </EnhancedTable>
 
+### BLE Serial
+
+Unfortunately, there is no standard specified by the Bluetooth SIG for implementing a virtual serial port over Bluetooth Low Energy (BLE). However, many vendors have implemented their own proprietary protocols for this, and the few of them have become somewhat "industry standard". What this means is to pick a particular service UUID, and within that one characteristic UUID for TX data, and another characteristic UUID for RX data.
+
+One of the most popular implementations is the Nordic Semiconductor "Nordic UART Service" (NUS). The service and characteristic UUIDs are:[^nordic-semiconductor-nordic-uart-service]
+
+- Service UUID: `6E400001-B5A3-F393-E0A9-E50E24DCCA9E` (16-bit offset: `0x0001`)
+- RX Characteristic UUID: `6E400002-B5A3-F393-E0A9-E50E24DCCA9E` (properties: "write", "write without response")
+- TX Characteristic UUID: `6E400003-B5A3-F393-E0A9-E50E24DCCA9E` (properties: "notify")
+
+The Microchip Transparent UART Service is a implementation by Microchip. It uses the following UUIDs:[^microchip-transparent-uart-service-for-bm70]
+
+- Service UUID: `49535343-FE7D-4AE5-8FA9-9FAFD205E455`
+- RX Characteristic UUID: `49535343-8841-43F4-A8D4-ECBE34729BB3` (properties: "write", "write without response")
+- TX Characteristic UUID: `49535343-1E4D-4BD9-BA61-23C647249616` (properties: "notify", "write", "write without response")
+
+Texas Instruments also has an implementation called the TI Serial Port Service (SPS). It uses the following UUIDs:[^ti-serial-port-service]
+
+- Service UUID: `F000C0E0-0451-4000-B000-00000000-0000`
+- Data Characteristic UUID: `F000C0E1-0451-4000-B000-00000000-0000` (properties: "notify", "write")
+- Status Characteristic UUID: `F000C0E2-0451-4000-B000-00000000-0000`
+- Config Characteristic UUID: `F000C0E3-0451-4000-B000-00000000-0000`
+
+The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, e.t.c) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
+
+The status characteristic provides the following information:
+
+- Framing error count
+- Parity error count
+- RF link overrun
+- Number of RX bytes
+- Number of TX bytes
+
+All of these data points are reset to 0 when the status characteristic is read.
+
+BLE v4 messages are limited to 20 bytes. BLE v5 was updated to allow for longer messages, but some software and devices listing themselves as v5 still impose the 20 byte limit.[^forward-computing-and-control-ble-problems]
+
 ### Libraries and Applications that use Bluetooth Serial
 
 The Android app ["Serial Bluetooth Terminal" by Kai Morich](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en) provides a terminal for your phone to communicate over Bluetooth serial.
@@ -239,7 +277,11 @@ The ["Web-Bluetooth-Terminal" by loginov-rocks](https://github.com/loginov-rocks
 
 <Image src={import('./_assets/loginov-rocks-web-bluetooth-terminal-photo-of-app-on-phone.webp')} width="400px">A image showing the loginov-rocks "Web-Bluetooth-Terminal" app on a phone. Also works on desktop browsers.[^github-loginov-rocks-web-bluetooth-terminal]</Image>
 
-The node.js library [bluetooth-serial-port by eelcocramer] provides 
+There are a few Bluetooth-related node.js libraries that provide Bluetooth related functionality:
+
+- [bluetooth-serial-port by eelcocramer]: Provides serial port support for Bluetooth, however as of Sep 2025 it hasn't been updated in 2 years and lists itself as being deprecated. Requires `libbluetooth-dev` on Linux. Requires Visual C++ and it's command-line tools installed on Windows. Requires Python 2.x on all platforms. MacOS support was "temporarily" dropped in `v3.0.0`. 
+- [node-bluetooth by song940](https://www.npmjs.com/package/node-bluetooth): Requires node-gyp to be installed on all platforms, and additionally `libbluetooth-dev` on Linux.
+- [noble](https://www.npmjs.com/package/noble): Provides general BLE support to node.js.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -263,3 +305,7 @@ The node.js library [bluetooth-serial-port by eelcocramer] provides
 [^bluetooth-bluetooth-core-5.0-feature-enhancements]: Martin Woolley (2025, Jan 13). _Bluetooth Core 5.0 Feature Enhancements_. Bluetooth SIG. Retrieved 2025-08-04, from https://www.bluetooth.com/wp-content/uploads/2019/03/Bluetooth_5-FINAL.pdf.
 [^github-list-of-coded-phy-supported-phones]: GitHub (2020, Mar 15). _NordicSemiconductor > Android-BLE-Library > Issues > List of Coded PHY Supported/Tested Phones #166_ [GitHub issue]. Retrieved 2025-08-09, from https://github.com/NordicSemiconductor/Android-BLE-Library/issues/166.
 [^github-loginov-rocks-web-bluetooth-terminal]: loginov-rocks. _loginov-rocks/Web-Bluetooth-Terminal_ [GitHub repository]. GitHub. Retrieved 2025-09-15, from https://github.com/loginov-rocks/Web-Bluetooth-Terminal.
+[^nordic-semiconductor-nordic-uart-service]: Nordic Semiconductor. _Nordic UART Service (NUS)_ [website]. Retrieved 2025-09-16, from https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/libraries/bluetooth/services/nus.html.
+[^forward-computing-and-control-ble-problems]: Matthew Ford (2017, Nov 15). _Bluetooth V4, Bluetooth V5 (BLE) Problems and Solutions for General Purpose Control_ [article]. Forward Computing and Control Pty. Ltd. Retrieved 2025-09-16, from https://www.forward.com.au/pfod/BLE/BLEProblems/index.html.
+[^microchip-transparent-uart-service-for-bm70]: Microchip (2023, Nov 9). _Transparent UART service for BM70/RN4870_ [website]. Retrieved 2025-09-16, from https://developerhelp.microchip.com/xwiki/bin/view/applications/ble/android-development-for-bm70rn4870/transparent-uart-service-for-bm70rn4870/.
+[^ti-serial-port-service]: Texas Instruments (2015). _TI Serial Port Service (SPS) - Service and characteristic description_ [pdf]. Retrieved 2025-09-16, from https://www.ti.com/lit/ug/tidua63/tidua63.pdf.

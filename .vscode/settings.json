@@ -817,6 +817,7 @@
         "lfcsp",
         "lflag",
         "LFSR",
+        "libbluetooth",
         "libboost",
         "LIBCPP",
         "libevent",
