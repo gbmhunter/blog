@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-09-15
-tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial]
+lastUpdated: 2025-09-18
+tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial, L2CAP]
 title: Bluetooth
 type: page
 ---
@@ -44,6 +44,12 @@ An attribute is a piece of labelled and addressable data. A characteristic is a 
 attribute < characteristic < service
 
 Bluetooth 4.0 uses the server/client paradigm.
+
+## L2CAP
+
+L2CAP (Logical Link Control and Adaptation Protocol) is a protocol that provides connection-orientated and connectionless data services to the upper layer protocols. It sits above the HCI layer. It includes features such as multiplexing and data segmentation and reassembly (breaking data into smaller chunks and reassembling them at the other end).[^bluetooth-sig-l2cap-protocol-specification] It is used by both Bluetooth Classic and Bluetooth Low Energy (BLE).
+
+An L2CAP frame always contains a 4-byte header containing a 2-byte length and a 2-byte channel ID.[^stack-overflow-ble-l2cap-layer-segmentation-vs-fragmentation]
 
 ## Bluetooth Low Energy (BLE)
 
@@ -176,12 +182,12 @@ The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PC
 
 There are two primary ways to provide a "serial port" over Bluetooth:
 
-- SPP over RFCOMM on Bluetooth Classic: Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial stream, but also the flow control lines.
-- The BLE specification does not define a serial port standard. 
+- **SPP over RFCOMM on Bluetooth Classic**: Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial stream, but also the flow control lines as defined by the [RS-232 standard](/electronics/communication-protocols/rs-232-protocol/). See below for more details.
+- **BLE**: The BLE specification does not define a serial port standard, but there are many proprietary implementations available. See below for more details.
 
 ### SPP over RFCOMM
 
-Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial data lines (as streams), but also the flow control lines.
+Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. RFCOMM in turn uses [L2CAP](#l2cap). It emulates not just a TX and RX serial data lines (as streams), but also the flow control lines.[^bluetooth-sig-rfcomm-with-ts-07-10-serial-port-emulation] It has good support by many Bluetooth-enabled microcontrollers, dongles and operating systems.
 
 <EnhancedTable
   iref="tbl-rs232-pin-assignments"
@@ -230,6 +236,10 @@ Bluetooth Classic defines a emulated serial port standard called the SPP (Serial
   <caption slot="caption">RS-232 pin assignments for RFCOMM protocol implementation.</caption>
 </EnhancedTable>
 
+<IRef iref="fig-microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm" /> shows how Bluetooth devices that support SPP over RFCOMM can show up in Microsoft Windows. This screenshot was taken in [NinjaTerm](https://ninjaterm.mbedded.ninja/).
+
+<Image iref="fig-microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm" src={import('./_assets/microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm.webp')} width="800px">A screenshot of Microsoft "Standard Serial over Bluetooth link" ports in NinjaTerm.</Image>
+
 ### BLE Serial
 
 Unfortunately, there is no standard specified by the Bluetooth SIG for implementing a virtual serial port over Bluetooth Low Energy (BLE). However, many vendors have implemented their own proprietary protocols for this, and the few of them have become somewhat "industry standard". What this means is to pick a particular service UUID, and within that one characteristic UUID for TX data, and another characteristic UUID for RX data.
@@ -255,7 +265,7 @@ Texas Instruments also has an implementation called the TI Serial Port Service (
 
 The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, e.t.c) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
 
-The status characteristic provides the following information:
+The status characteristic provides the following information:[^ti-serial-port-service]
 
 - Framing error count
 - Parity error count
@@ -309,3 +319,6 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 [^forward-computing-and-control-ble-problems]: Matthew Ford (2017, Nov 15). _Bluetooth V4, Bluetooth V5 (BLE) Problems and Solutions for General Purpose Control_ [article]. Forward Computing and Control Pty. Ltd. Retrieved 2025-09-16, from https://www.forward.com.au/pfod/BLE/BLEProblems/index.html.
 [^microchip-transparent-uart-service-for-bm70]: Microchip (2023, Nov 9). _Transparent UART service for BM70/RN4870_ [website]. Retrieved 2025-09-16, from https://developerhelp.microchip.com/xwiki/bin/view/applications/ble/android-development-for-bm70rn4870/transparent-uart-service-for-bm70rn4870/.
 [^ti-serial-port-service]: Texas Instruments (2015). _TI Serial Port Service (SPS) - Service and characteristic description_ [pdf]. Retrieved 2025-09-16, from https://www.ti.com/lit/ug/tidua63/tidua63.pdf.
+[^bluetooth-sig-rfcomm-with-ts-07-10-serial-port-emulation]: Bluetooth SIG (2003, Jun 5). _RFCOMM with TS 07.10 Serial Port Emulation - v1.1_ [specification]. Retrieved 2025-09-18, from https://www.bluetooth.com/specifications/specs/html/?src=RFCOMM_v1.1/out/en/index-en.html#UUID-d6d80781-0c47-2246-5814-6a44e22f6c27.
+[^bluetooth-sig-l2cap-protocol-specification]: Bluetooth SIG. _Part A. Logical Link Control and Adaptation Protocol Specification_ [specification]. Retrieved 2025-09-18, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/logical-link-control-and-adaptation-protocol-specification.html.
+[^stack-overflow-ble-l2cap-layer-segmentation-vs-fragmentation]: Stack Overflow (2022, May). _BLE L2CAP layer - segmentation vs fragmentation_ [forum post]. Retrieved 2025-09-18, from https://stackoverflow.com/questions/71504272/ble-l2cap-layer-segmentation-vs-fragmentation.
