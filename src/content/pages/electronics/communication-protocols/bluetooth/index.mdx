@@ -178,9 +178,17 @@ The BCM20702 is a Bluetooth 4.0 processor made by Broadcom that is commonly foun
 
 The CSR8510 is a Bluetooth 4.0 single-chip radio and baseband IC designed for PCs and other devices. It was originally designed by CSR (Cambridge Silicon Radio). CSR was acquired by Qualcomm in 2015.[^wikipedia-csr-plc] Qualcomm has kept the CSR part numbers. It appears the popular TP-Link UB400 Bluetooth dongle uses this chipset.[^tonymacx86-tp-link-ub400-not-recognized]
 
+## Modules
+
+### HC-05/HC-06
+
+The HC-05 and HC-06 are Bluetooth modules that are popular in the hobbyist space (e.g. commonly used with Arduinos). The are serial to Bluetooth modules which use the Bluetooth Classic [SPP over RFCOMM protocol](#spp-over-rfcomm). The HC-05 is based of the CSR BC417143 IC.[^shsd-hc-05-datasheet]
+
+<Image src={import('./_assets/hc-05-bluetooth-module-photo.webp')} width="300px">A photo of the HC-05 Bluetooth module.[^electronic-wings-hc-05-module]</Image>
+
 ## Serial Ports over Bluetooth
 
-There are two primary ways to provide a "serial port" over Bluetooth:
+Traditionally, Bluetooth provides specific ways of accessing data in the form of profiles.There are two primary ways to provide a "serial port" over Bluetooth:
 
 - **SPP over RFCOMM on Bluetooth Classic**: Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial stream, but also the flow control lines as defined by the [RS-232 standard](/electronics/communication-protocols/rs-232-protocol/). See below for more details.
 - **BLE**: The BLE specification does not define a serial port standard, but there are many proprietary implementations available. See below for more details.
@@ -240,6 +248,8 @@ Bluetooth Classic defines a emulated serial port standard called the SPP (Serial
 
 <Image iref="fig-microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm" src={import('./_assets/microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm.webp')} width="800px">A screenshot of Microsoft "Standard Serial over Bluetooth link" ports in NinjaTerm.</Image>
 
+The HC-05 and HC-06 Bluetooth modules which are popular in the hobbyist space use SPP over RFCOMM to implement the bi-directional data stream.
+
 ### BLE Serial
 
 Unfortunately, there is no standard specified by the Bluetooth SIG for implementing a virtual serial port over Bluetooth Low Energy (BLE). However, many vendors have implemented their own proprietary protocols for this, and the few of them have become somewhat "industry standard". What this means is to pick a particular service UUID, and within that one characteristic UUID for TX data, and another characteristic UUID for RX data.
@@ -265,7 +275,7 @@ Texas Instruments also has an implementation called the TI Serial Port Service (
 
 The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, e.t.c) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
 
-The status characteristic provides the following information:[^ti-serial-port-service]
+The TI status characteristic provides the following information:[^ti-serial-port-service]
 
 - Framing error count
 - Parity error count
@@ -274,6 +284,19 @@ The status characteristic provides the following information:[^ti-serial-port-se
 - Number of TX bytes
 
 All of these data points are reset to 0 when the status characteristic is read.
+
+u-blox has their own "u-connectXpress" Bluetooth serial port service which uses the following UUIDs:[^ublox-u-connectxpress-bluetooth-serial-port-service]
+
+- Service UUID: `2456E1B926E28F83E744F34F01E9D701`
+- Data Characteristic (FIFO) UUID: `2456E1B926E28F83E744F34F01E9D703` (properties: "indicate", "notify", "write", "write without response")
+- Credits Characteristic UUID: `2456E1B926E28F83E744F34F01E9D704` (properties: "indicate", "notify", "write", "write without response")
+
+Like TI, u-blox uses a single data characteristic for both TX and RX data. The credits characteristic is used for a form of flow control.
+
+Silicon Labs also has their own implementation called "SPP over BLE". It uses the following UUIDs:[^silicon-labs-spp-over-ble]
+
+- Service UUID: `4880C12C-FDCB-4077-8920-A450D7F9B907`
+  - Data Characteristic UUID: `FEC26EC4-6D71-4442-9F81-55BC21D658D6` (properties: "notify", "write no response")
 
 BLE v4 messages are limited to 20 bytes. BLE v5 was updated to allow for longer messages, but some software and devices listing themselves as v5 still impose the 20 byte limit.[^forward-computing-and-control-ble-problems]
 
@@ -291,7 +314,10 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 
 - [bluetooth-serial-port by eelcocramer]: Provides serial port support for Bluetooth, however as of Sep 2025 it hasn't been updated in 2 years and lists itself as being deprecated. Requires `libbluetooth-dev` on Linux. Requires Visual C++ and it's command-line tools installed on Windows. Requires Python 2.x on all platforms. MacOS support was "temporarily" dropped in `v3.0.0`. 
 - [node-bluetooth by song940](https://www.npmjs.com/package/node-bluetooth): Requires node-gyp to be installed on all platforms, and additionally `libbluetooth-dev` on Linux.
-- [noble](https://www.npmjs.com/package/noble): Provides general BLE support to node.js.
+
+#### noble and abandonware/noble
+
+[noble](https://www.npmjs.com/package/noble) provides general BLE support to node.js applications. It supports Windows, Linux, macOS, and FreeBSD.[^noble-ble-library] However, as of Sep 2025, it hasn't been updated in 7 years! There is a fork called [abandonware/noble](https://github.com/abandonware/noble) that is more actively maintained (as of Sep 2025, last commit was 7 months ago).
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -322,3 +348,8 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 [^bluetooth-sig-rfcomm-with-ts-07-10-serial-port-emulation]: Bluetooth SIG (2003, Jun 5). _RFCOMM with TS 07.10 Serial Port Emulation - v1.1_ [specification]. Retrieved 2025-09-18, from https://www.bluetooth.com/specifications/specs/html/?src=RFCOMM_v1.1/out/en/index-en.html#UUID-d6d80781-0c47-2246-5814-6a44e22f6c27.
 [^bluetooth-sig-l2cap-protocol-specification]: Bluetooth SIG. _Part A. Logical Link Control and Adaptation Protocol Specification_ [specification]. Retrieved 2025-09-18, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/logical-link-control-and-adaptation-protocol-specification.html.
 [^stack-overflow-ble-l2cap-layer-segmentation-vs-fragmentation]: Stack Overflow (2022, May). _BLE L2CAP layer - segmentation vs fragmentation_ [forum post]. Retrieved 2025-09-18, from https://stackoverflow.com/questions/71504272/ble-l2cap-layer-segmentation-vs-fragmentation.
+[^shsd-hc-05-datasheet]: Shenzhen SHSD Technology Co.,Ltd. _HC-05 Data Sheet - Bluetooth to Serial Port Module_ [datasheet]. Retrieved 2025-09-19, from https://cdn.awsli.com.br/945/945993/arquivos/HC-05-BOARD.pdf.
+[^electronic-wings-hc-05-module]: ElectronicWings. _Bluetooth Module HC-05 Pinout, AT Commands & Arduino Programming_. Retrieved 2025-09-19, from https://www.electronicwings.com/sensors-modules/bluetooth-module-hc-05-.
+[^noble-ble-library]: noble. _noble/noble_ [GitHub repository]. GitHub. Retrieved 2025-09-19, from https://github.com/noble/noble.
+[^ublox-u-connectxpress-bluetooth-serial-port-service]: u-blox (2021, Nov 29). _u-connectXpress - Bluetooth Low Energy Serial Port Service - Protocol specification_ [pdf]. Retrieved 2025-09-19, from https://content.u-blox.com/sites/default/files/u-connectXpress-LowEnergySerialPortService_ProtocolSpec_UBX-16011192.pdf.
+[^silicon-labs-spp-over-ble]: Silicon Labs. _SPP (Serial Port Profile) over BLE_ [documentation]. Retrieved 2025-09-19, from https://docs.silabs.com/bluetooth/2.13/bluetooth-code-examples-applications/.
