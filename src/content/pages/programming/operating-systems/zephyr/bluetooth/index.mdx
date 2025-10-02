@@ -70,8 +70,65 @@ int main(void)
 The Nordic UART Service (NUS) is a service that allows you to send and receive serial data over Bluetooth. You can enable it with:
 
 ```python title="prj.conf"
-CONFIG_BT_ZEPHYR_NUS=y
+CONFIG_BT=y
+CONFIG_BT_PERIPHERAL=y
+CONFIG_BT_DEVICE_NAME="Nordic_UART_Service"
+CONFIG_BT_MAX_CONN=1
+CONFIG_BT_MAX_PAIRED=1
+
+# Enable the NUS service
+CONFIG_BT_NUS=y
 ```
+
+The following C++ code shows a minimal example that configures a MCU as a Bluetooth peripheral and advertises a Nordic UART Service.
+
+```c++
+#include <bluetooth/services/nus.h>
+#include <zephyr/bluetooth/bluetooth.h>
+
+static void bt_receive_cb(
+    struct bt_conn *conn,
+    const uint8_t *const data,
+    uint16_t len)
+{
+    int err;
+    char addr[BT_ADDR_LE_STR_LEN] = {0};
+
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, ARRAY_SIZE(addr));
+
+    LOG_INF("Received data from: \"%s\".", addr);
+}
+
+static struct bt_nus_cb nus_cb = {
+    .received = bt_receive_cb,
+};
+
+static const struct bt_data ad[] = {
+    BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+    BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
+};
+
+static const struct bt_data sd[] = {
+    BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_UUID_NUS_VAL),
+};
+
+int main(void)
+{
+    int err = bt_enable(NULL);
+    __ASSERT(err == 0, "bt_enable() failed with error %d.", err);
+
+    err = bt_nus_init(&nus_cb);
+    __ASSERT(err == 0, "bt_nus_init() failed with error %d.", err);
+
+    err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_2, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+    __ASSERT(err == 0, "bt_le_adv_start() failed with error %d.", err);
+
+    return 0;
+}
+
+```
+
+<Image src={import('./_assets/nordic-uart-service-showing-up-in-nrf-scanner-app.webp')} width="300px">A screenshot of a MCU advertising a Nordic UART Service showing up in the nRF Scanner app (on Android).</Image>
 
 ## Update the LE Connection Interval
 

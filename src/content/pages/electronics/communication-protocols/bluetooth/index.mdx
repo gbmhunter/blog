@@ -254,24 +254,30 @@ The HC-05 and HC-06 Bluetooth modules which are popular in the hobbyist space us
 
 Unfortunately, there is no standard specified by the Bluetooth SIG for implementing a virtual serial port over Bluetooth Low Energy (BLE). However, many vendors have implemented their own proprietary protocols for this, and the few of them have become somewhat "industry standard". What this means is to pick a particular service UUID, and within that one characteristic UUID for TX data, and another characteristic UUID for RX data.
 
+Hopefully, the device includes the service IDs in it's advertisement packet. This way, a Bluetooth central device which is looking for serial capable peripherals can perform a Bluetooth scan and identify the compatible peripherals without having to connect to them.
+
 One of the most popular implementations is the Nordic Semiconductor "Nordic UART Service" (NUS). The service and characteristic UUIDs are:[^nordic-semiconductor-nordic-uart-service]
 
-- Service UUID: `6E400001-B5A3-F393-E0A9-E50E24DCCA9E` (16-bit offset: `0x0001`)
-- RX Characteristic UUID: `6E400002-B5A3-F393-E0A9-E50E24DCCA9E` (properties: "write", "write without response")
-- TX Characteristic UUID: `6E400003-B5A3-F393-E0A9-E50E24DCCA9E` (properties: "notify")
+- Service UUID: `6e400001-b5a3-f393-e0a9-e50e24dcca9e` (16-bit offset: `0x0001`)
+- RX Characteristic UUID: `6e400002-b5a3-f393-e0a9-e50e24dcca9e` (properties: "write", "write without response")
+- TX Characteristic UUID: `6e400003-b5a3-f393-e0a9-e50e24dcca9e` (properties: "notify")
+
+<Aside type="note">
+Nordic's RX and TX characteristics are labelled with respect to the Bluetooth peripheral. In other words, the RX characteristic is the characteristic that peripheral receives data from (i.e. and so the central device writes to this).
+</Aside>
 
 The Microchip Transparent UART Service is a implementation by Microchip. It uses the following UUIDs:[^microchip-transparent-uart-service-for-bm70]
 
-- Service UUID: `49535343-FE7D-4AE5-8FA9-9FAFD205E455`
-- RX Characteristic UUID: `49535343-8841-43F4-A8D4-ECBE34729BB3` (properties: "write", "write without response")
-- TX Characteristic UUID: `49535343-1E4D-4BD9-BA61-23C647249616` (properties: "notify", "write", "write without response")
+- Service UUID: `49535343-fe7d-4ae5-8fa9-9fafd205e455`
+- RX Characteristic UUID: `49535343-8841-43f4-a8d4-ecbe34729bb3` (properties: "write", "write without response")
+- TX Characteristic UUID: `49535343-1e4d-4bd9-ba61-23c647249616` (properties: "notify", "write", "write without response")
 
 Texas Instruments also has an implementation called the TI Serial Port Service (SPS). It uses the following UUIDs:[^ti-serial-port-service]
 
-- Service UUID: `F000C0E0-0451-4000-B000-00000000-0000`
-- Data Characteristic UUID: `F000C0E1-0451-4000-B000-00000000-0000` (properties: "notify", "write")
-- Status Characteristic UUID: `F000C0E2-0451-4000-B000-00000000-0000`
-- Config Characteristic UUID: `F000C0E3-0451-4000-B000-00000000-0000`
+- Service UUID: `f000c0e0-0451-4000-b000-00000000-0000`
+- Data Characteristic UUID: `f000c0e1-0451-4000-b000-00000000-0000` (properties: "notify", "write")
+- Status Characteristic UUID: `f000c0e2-0451-4000-b000-00000000-0000`
+- Config Characteristic UUID: `f000c0e3-0451-4000-b000-00000000-0000`
 
 The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, e.t.c) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
 
@@ -287,16 +293,16 @@ All of these data points are reset to 0 when the status characteristic is read.
 
 u-blox has their own "u-connectXpress" Bluetooth serial port service which uses the following UUIDs:[^ublox-u-connectxpress-bluetooth-serial-port-service]
 
-- Service UUID: `2456E1B926E28F83E744F34F01E9D701`
-- Data Characteristic (FIFO) UUID: `2456E1B926E28F83E744F34F01E9D703` (properties: "indicate", "notify", "write", "write without response")
-- Credits Characteristic UUID: `2456E1B926E28F83E744F34F01E9D704` (properties: "indicate", "notify", "write", "write without response")
+- Service UUID: `2456e1b926e28f83e744f34f01e9d701`
+- Data Characteristic (FIFO) UUID: `2456e1b926e28f83e744f34f01e9d703` (properties: "indicate", "notify", "write", "write without response")
+- Credits Characteristic UUID: `2456e1b926e28f83e744f34f01e9d704` (properties: "indicate", "notify", "write", "write without response")
 
 Like TI, u-blox uses a single data characteristic for both TX and RX data. The credits characteristic is used for a form of flow control.
 
 Silicon Labs also has their own implementation called "SPP over BLE". It uses the following UUIDs:[^silicon-labs-spp-over-ble]
 
-- Service UUID: `4880C12C-FDCB-4077-8920-A450D7F9B907`
-  - Data Characteristic UUID: `FEC26EC4-6D71-4442-9F81-55BC21D658D6` (properties: "notify", "write no response")
+- Service UUID: `4880c12c-fdcb-4077-8920-a450d7f9b907`
+- Data Characteristic UUID: `fec26ec4-6d71-4442-9f81-55bc21d658d6` (properties: "notify", "write no response")
 
 BLE v4 messages are limited to 20 bytes. BLE v5 was updated to allow for longer messages, but some software and devices listing themselves as v5 still impose the 20 byte limit.[^forward-computing-and-control-ble-problems]
 

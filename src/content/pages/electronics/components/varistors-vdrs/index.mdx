@@ -3,15 +3,17 @@ authors: [gbmhunter]
 date: 2015-11-23
 description: A varistor (VDR) is an electrical component whose resistance depends on the applied voltage. This page contains information on their schematic symbols, how they work, and important parameters.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-09-20
+lastUpdated: 2025-10-02
 tags: [electronics, components, varistors, resistors, VDRs, MOVs, ESD, schematic symbols, surge current, energy rating]
 title: Varistors (VDRs)
 type: page
 ---
 
-A _varistor_ (also known as a voltage-dependent resistor, VDR) is an electrical component whose resistance depends on the applied voltage. As the voltage increases, the resistance of a varistor drops. Their voltage-resistance behaviour is similar to that of a diode, except a varistor exhibits this behaviour with voltages of both polarities (where diodes are a one-way device).
+A _varistor_ (also known as a voltage-dependent resistor, VDR) is an electrical component whose resistance depends on the applied voltage. As the voltage increases, the resistance of a varistor drops. Their voltage-resistance behaviour is similar to that of a diode, except a varistor exhibits this behaviour with voltages of both polarities (where diodes are a one-way device). They are similar to [TVS diodes](/electronics/components/diodes/tvs-diodes/) and [gas discharge tubes (GDTs)](/electronics/components/gas-discharge-tubes-gdts/).
 
-They can also be called MOVs, but is strictly a type of varistor named after it's inclusion of a metal-oxide chemical. Older, silicon carbon (SiC) based varistors are not MOVs, whilst newer zinc oxides (ZnO) ones are. 
+They can also be called MOVs, but is strictly a type of varistor named after it's inclusion of a metal-oxide chemical. Older, silicon carbon (SiC) based varistors are not MOVs, whilst newer zinc oxides (ZnO) ones are. Today most are made from metal oxides.
+
+<Image src={import('./_assets/mov-examples-photo.webp')} width="600px">Images of 3 different types of MOVs.</Image>
 
 They are commonly used as a form of circuit-protection against voltage transients, especially in mains and other high voltage applications. For more information about their use for ESD protection, see the [ESD Protection page](/electronics/circuit-design/esd-protection/).
 
@@ -27,9 +29,19 @@ Common designators used for varistors:
 * `MV`
 * `MOV`
 
-## How They Work
+## How MOVs Work
 
-Zinc oxide varistors are made from a sintered matrix of zinc oxide (ZnO) grains. The grain boundaries behave very similar to semiconductor PN junction. Because the grains are randomly orientated and positioned throughout the varistor, the whole structure can be compared a huge network of diodes connected in various series and parallel configurations (and random polarities)[^bib-eepower].
+Zinc oxide varistors are made from a sintered matrix of zinc oxide (ZnO) grains with other metal oxide additives, sandwiched between two metal plates which act as the electrodes.[^tdk-siov-metal-oxide-varistors-general-technical-information] The zinc oxide grains themselves are highly conductive, while the filler material between the zinc oxide grains is highly resistive. A unique phenomenon occurs at the boundary between two zinc oxide grains. Here, depletion regions form and creates what can be considered as back-to-back zener diodes (using zinc oxide, they have a breakdown voltage of around 3.5V).[^tdk-siov-metal-oxide-varistors-general-technical-information] Because the grains are randomly orientated and positioned throughout the varistor, the whole structure can be compared a huge network of diodes connected in various series and parallel configurations (and random polarities)[^bib-eepower].
+
+<Image src={import('./_assets/mov-internal-structure-many-diodes-schematic.webp')} width="700px">The internal structure of a MOV style varistor, showing many how the zinc oxide grains form many small Zener diodes connected in somewhat random series and parallel configurations.</Image>
+
+This diode superstructure blocks current until a certain voltage, above which point the diodes begin to cross their breakdown voltage and conduct. The resistance of the varistor drops significantly after this point and large amounts of current can flow. This results in the entire varistor acting as a "shunt" and clamping the voltage across it to a safe level during a voltage surge.
+
+<Aside type="note">
+The reason for the breakdown is due to both the Zener effect (a.k.a. electron tunnelling) and avalanche breakdown. Depending on what you read it is either both or mainly the Zener effect.[^jak-electronics-mov-overview]
+</Aside>
+
+The benefit of having many small zener diodes arranged both in series and parallel over a single Zener/TVS diode is that the energy dissipation is spread out over the entire volume of the varistor, rather than being concentrated around the small junction region in a single diode. This is one of the properties which makes MOVs suitable for high-energy transient protection.[^tdk-siov-metal-oxide-varistors-general-technical-information]
 
 In the "normal" varistor region of operation (above the leakage current region and below the upturn region), the voltage and current through the varistor is approximated well by the following equation[^bib-lf-theory]:
 
@@ -47,13 +59,18 @@ $\alpha$ is a device specific constant (more on this below)<br/></p>
 
 $\alpha$ is a "figure of merit" and device specific. The higher the $\alpha$ for more non-linear the varistor, and the better it performs as a voltage clamp. It has a very strong relationship to the composition of the device, and can be somewhat generalized by device makeup:
 
-
 | Composition | $\alpha$
 |-------------|---------------
 | SiC (silicon carbide) | 3-7
 | ZnO (zinc oxide) | 20-50
 
-Varistors degrade when they are subjected to repeated surges.
+Varistors degrade when they are subjected to repeated surges. This is one downside of varistors compared to TVS diodes, which do not degrade.
+
+## Multilayer Varistors
+
+Multilayer varistors have not one but multiple layers of metal oxide. They are typically manufactured into a SMD chip package such as the 0402 and 0603 sizes (imperial).
+
+<Image src={import('./_assets/tdk-multilayer-varistor-cutaway-diagram-smd.webp')} width="300px">A cutaway diagram of a multilayer varistor from TDK.[^tdk-ctvs-ceramic-transient-voltage-suppressors-smd-multilayer-varistors]</Image>
 
 ## Important Parameters
 
@@ -71,12 +88,60 @@ Typically a one-off (non-repetitive) and repetitive pulse energy rating is given
 
 ## Comparison With Other Forms Of Circuit Protection
 
-Varistors are preferred over TVS diodes when the product is price-sensitive, higher surge energy absorption is required, when physical space is not a constraint, or when high operating voltage capability is required.
+[TVS diodes](/electronics/components/diodes/tvs-diodes/) are another common form of over-voltage protection used on circuit boards. They behave in a similar manner to varistors in that their resistance drops as the voltage across them increases. MOVs generally have higher power ratings than TVS diodes. However, TVS diodes can be manufactured to provide much lower clamping voltages (3-12 V) compared to MOVs (which are typically rated for 100-500 V, although you can get low voltage (3-50 V) versions). MOVs degrade with repeated over-voltage events, but TVS diodes do not.
+
+<IRef iref="tbl-tvs-vs-movs" /> has a comparison of TVS diodes and MOVs.
+
+<table data-iref="tbl-tvs-vs-movs" style="width: 600px;">
+  <thead>
+    <tr>
+      <td>Feature</td>
+      <td style="width: 30%">TVS</td>
+      <td style="width: 30%">MOV</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Surge Capability</td>
+      <td class="ok">Ok</td> {/* TVS */}
+      <td class="good">Great</td> {/* MOV */}
+    </tr>
+    <tr>
+      <td>Typical Clamping Voltages</td>
+      <td class="ok">3-400 V</td> {/* TVS */}
+      <td class="ok">3-500 V</td> {/* MOV */}
+    </tr>
+    <tr>
+      <td>Degradation</td>
+      <td class="good">No</td> {/* TVS */}
+      <td class="bad">Yes</td> {/* MOV */}
+    </tr>
+    <tr>
+      <td>Size</td>
+      <td class="good">Small</td> {/* TVS */}
+      <td class="bad">Large (but this does allow them to handle high energies)</td> {/* MOV */}
+    </tr>
+    <tr>
+      <td>Capacitance</td>
+      <td class="good">Low/moderate</td> {/* TVS */}
+      <td class="bad">High (typically 100-2,500 pF)</td> {/* MOV */}
+    </tr>
+  </tbody>
+  <caption>A comparison of TVS diodes and MOVs.</caption>
+</table>
+
+MOVs may be used in tandem with TVS diodes to provide even better protection against over-voltage transients then any one solution alone.
+
+## Further Reading
+
+[TVS Diodes](/electronics/components/diodes/tvs-diodes/) are a lower power alternative (or complement) to a MOV. [Gas Discharge Tubes (GDTs)](/electronics/components/gas-discharge-tubes-gdts/) are a higher power but less precise alternative to a MOV.
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
-[^bib-lf-theory]:  Littelfuse. (1999, July). _Littelfuse Varistors - Basic Properties,
-Terminology and Theory_. Retrieved 2021-07-11, from https://www.littelfuse.com/~/media/electronics_technical/application_notes/varistors/littelfuse_varistors_basic_properties_terminology_and_theory_application_note.pdf
-[^bib-eepower]:  EEPower. _Chapter 3 - Resistor types: Varistor_. Retrieved 2021-07-11, from https://eepower.com/resistor-guide/resistor-types/varistor/#
+[^bib-lf-theory]: Littelfuse. (1999, July). _Littelfuse Varistors - Basic Properties, Terminology and Theory_. Retrieved 2021-07-11, from https://www.littelfuse.com/~/media/electronics_technical/application_notes/varistors/littelfuse_varistors_basic_properties_terminology_and_theory_application_note.pdf
+[^bib-eepower]: EEPower. _Chapter 3 - Resistor types: Varistor_. Retrieved 2021-07-11, from https://eepower.com/resistor-guide/resistor-types/varistor/#
+[^tdk-siov-metal-oxide-varistors-general-technical-information]: TDK (Jan 2018). _SIOV metal oxide varistors - General technical information_. Retrieved 2025-10-02, from https://www.tdk-electronics.tdk.com/download/531268/8954d4a78154a9da5c70a7119fa03e86/siov-general.pdf.
+[^tdk-ctvs-ceramic-transient-voltage-suppressors-smd-multilayer-varistors]: TDK (2025, Jan 29). _CTVS - Ceramic transient voltage suppressors - SMD multilayer varistors (MLVs), automotive E series_. Retrieved 2025-10-02, from https://www.tdk-electronics.tdk.com/inf/75/db/CTVS_14/Automotive_series.pdf.
+[^jak-electronics-mov-overview]: Jak Electronics (2021, Jun 13). _Metal Oxide Varistor (MOV) Overview: Working and Application_. Retrieved 2025-10-02, from https://www.jakelectronics.com/blog/metal-oxide-varistor-mov-overview-working-and-application.
