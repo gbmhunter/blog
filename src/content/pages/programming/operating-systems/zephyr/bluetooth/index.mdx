@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2020-04-19
-description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
-lastUpdated: 2025-06-03
-tags: [programming, operating systems, Zephyr, Bluetooth]
+description: Zephyr provides a comprehensive Bluetooth API for embedded systems. This is largely contributed by Nordic Semiconductor for their nRF52, nRF53, nRF54 and nRF91 MCU families. This page contains information on how to configure a MCU as a Bluetooth peripheral and how to use the Nordic UART Service (NUS), including the Bluetooth NUS shell.
+lastUpdated: 2025-10-03
+tags: [programming, operating systems, Zephyr, Bluetooth, Bluetooth NUS, Nordic UART Service, Bluetooth NUS shell, shells, terminals, NinjaTerm]
 title: Zephyr Bluetooth
 type: page
 ---
@@ -129,6 +129,247 @@ int main(void)
 ```
 
 <Image src={import('./_assets/nordic-uart-service-showing-up-in-nrf-scanner-app.webp')} width="300px">A screenshot of a MCU advertising a Nordic UART Service showing up in the nRF Scanner app (on Android).</Image>
+
+## Bluetooth NUS Shell
+
+Nordic provides an example project which let's you configure the Bluetooth NUS service to use the [Zephyr shell](/programming/operating-systems/zephyr/shell/). This allows you to send and receive shell commands over Bluetooth, as well as view logs (just like a standard serial port based shell).
+
+Update your `prj.conf` file with the configuration shown below. Note that most of the basic Bluetooth configuration remains the same as the basic Bluetooth NUS example above, except we replace `CONFIG_BT_NUS=y` with `CONFIG_SHELL_BT_NUS=y`.
+
+```python title="prj.conf"
+CONFIG_BT=y
+CONFIG_BT_PERIPHERAL=y
+CONFIG_BT_DEVICE_NAME="Nordic_UART_Service"
+CONFIG_BT_MAX_CONN=1
+CONFIG_BT_MAX_PAIRED=1
+
+# Enable the BT NUS shell
+CONFIG_SHELL_BT_NUS=y
+
+# Don't enable this unless you need to debug the NUS shell logic, and watch out for infinite loops (see below)!
+# CONFIG_SHELL_BT_NUS_LOG_LEVEL_DBG=y
+
+# Set the most verbose log level for any logs emitted across the Bluetooth NUS shell. Can also be _ERR, _WRN, _INF or _NONE.
+CONFIG_SHELL_BT_NUS_INIT_LOG_LEVEL_DBG=y
+```
+
+<Aside type="caution">
+There are two different NUS shell related log levels you should be aware of:
+
+1. `CONFIG_SHELL_BT_NUS_LOG_LEVEL_XXX=y`: This sets the compiled in most verbose log level for the logs emitted by the shell logic contained in `nrf/subsys/shell/shell_bt_nus.c`. Most of the time you can not set this (leave it to the default).
+1. `CONFIG_SHELL_BT_NUS_INIT_LOG_LEVEL_XXX=y`: This sets the most verbose log level for any logs emitted across the Bluetooth NUS shell. This is likely the more important log level. By default, it is set to `LOG_MAX_LEVEL`. When I was testing, I found it only printed messages of the `ERR` level by default across the Bluetooth NUS shell.
+
+I advise that you do not set `CONFIG_SHELL_BT_NUS_LOG_LEVEL_XXX` to `_NONE` if you are setting `CONFIG_SHELL_BT_NUS_INIT_LOG_LEVEL_XXX` to anything other than `_NONE`. This is because you run the risk of getting stuck in a infinite loop, where a log message causes the shell logic to emit a log message, which recursively causes another log message, and so on.
+</Aside>
+
+Although you might want to think about increasing the MTU when sending large log messages for efficiency, I have found that can work ok on the default MTU because it is treated like a serial stream (a large log message will be broken up and sent in many smaller Bluetooth packets).
+
+### C++ Example Code
+
+Here is an example of how to setup the Bluetooth NUS shell in a C++ project. Add the following to a `Bluetooth.hpp` file.
+
+<Aside type="note">
+Note that we use the singleton pattern as the NUS shell API callbacks provide no way to provide "user data" (or a context pointer) to contain a pointer to the class instance (Zephyr supports a "user data" parameter for some of their callback APIs, but unfortunately not for the NUS shell). Thus we need a static instance of the `Bluetooth` class that these C style callback functions can access.
+</Aside>
+
+```cpp title="Bluetooth.hpp"
+#pragma once
+
+namespace my_firmware {
+
+class Bluetooth {
+
+public:
+    ~Bluetooth();
+
+    static Bluetooth& getInstance();
+
+    void startAdvertising();
+    void onConnect(struct bt_conn *conn, uint8_t err);
+    void onDisconnect(struct bt_conn *conn, uint8_t reason);
+    void onRecycled();
+
+private:
+    struct bt_conn* m_currentConn = nullptr;
+    Bluetooth();
+};
+
+} // namespace my_firmware
+```
+
+Add the following to a `Bluetooth.cpp` file:
+
+```cpp title="Bluetooth.cpp"
+// 3rd party includes
+#include <bluetooth/services/nus.h>
+#include <shell/shell_bt_nus.h>
+#include <zephyr/bluetooth/bluetooth.h>
+#include <zephyr/bluetooth/hci.h>
+#include <zephyr/logging/log.h>
+
+// Local includes
+#include "Bluetooth.hpp"
+
+LOG_MODULE_REGISTER(Bluetooth, LOG_LEVEL_INF);
+
+namespace my_firmware {
+
+#define DEVICE_NAME CONFIG_BT_DEVICE_NAME
+#define DEVICE_NAME_LEN	(sizeof(DEVICE_NAME) - 1)
+
+static void bt_receive_cb(
+    struct bt_conn *conn,
+    const uint8_t *const data,
+    uint16_t len)
+{
+    int err;
+    char addr[BT_ADDR_LE_STR_LEN] = {0};
+
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, ARRAY_SIZE(addr));
+
+    LOG_INF("Received data from: \"%s\".", addr);
+}
+
+static struct bt_nus_cb nus_cb = {
+    .received = bt_receive_cb,
+};
+
+static const struct bt_data ad[] = {
+    BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+    BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
+};
+
+static const struct bt_data sd[] = {
+    BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_UUID_NUS_VAL),
+};
+
+static void connected(struct bt_conn *conn, uint8_t err)
+{
+    Bluetooth::getInstance().onConnect(conn, err);
+}
+
+static void disconnected(struct bt_conn *conn, uint8_t reason)
+{
+    Bluetooth::getInstance().onDisconnect(conn, reason);
+}
+
+static void recycled_cb(void)
+{
+	Bluetooth::getInstance().onRecycled();
+}
+
+BT_CONN_CB_DEFINE(conn_callbacks) = {
+    .connected        = connected,
+    .disconnected     = disconnected,
+    .recycled         = recycled_cb,
+};
+
+Bluetooth& Bluetooth::getInstance()
+{
+    static Bluetooth instance();
+    return instance;
+}
+
+Bluetooth::Bluetooth() 
+{
+    LOG_INF("Initialising Bluetooth...");
+    int err = bt_enable(NULL);
+    __ASSERT(err == 0, "bt_enable() failed with error %d.", err);
+
+    LOG_INF("Initialising the shell BT NUS service...");
+    err = shell_bt_nus_init();
+    __ASSERT(err == 0, "shell_bt_nus_init() failed with error %d.", err);
+
+    startAdvertising();
+}
+
+Bluetooth::~Bluetooth()
+{
+}
+
+void Bluetooth::startAdvertising()
+{
+    LOG_INF("Starting advertising...");
+    int err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_2, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+    __ASSERT(err == 0, "bt_le_adv_start() failed with error %d.", err);
+}
+
+void Bluetooth::onConnect(struct bt_conn *conn, uint8_t err)
+{
+    char addr[BT_ADDR_LE_STR_LEN];
+
+    if (err) {
+        LOG_ERR("Connection failed, err 0x%02x %s", err, bt_hci_err_to_str(err));
+        return;
+    }
+
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+    LOG_INF("Connected to \"%s\".", addr);
+
+    m_currentConn = bt_conn_ref(conn);
+
+    // Enable the shell through the NUS service
+    shell_bt_nus_enable(conn);
+}
+
+void Bluetooth::onDisconnect(struct bt_conn *conn, uint8_t reason)
+{
+    char addr[BT_ADDR_LE_STR_LEN];
+
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+
+    LOG_INF("Disconnected from \"%s\". Reason: 0x%02x (\"%s\").", addr, reason, bt_hci_err_to_str(reason));
+
+    if (m_currentConn) {
+        bt_conn_unref(m_currentConn);
+        m_currentConn = NULL;
+    }
+
+    shell_bt_nus_disable();
+}
+
+void Bluetooth::onRecycled()
+{
+    LOG_INF("Connection object available from previous conn. Disconnect is complete. Restarting advertising...");
+    startAdvertising();
+}
+
+} // namespace my_firmware
+```
+
+Some of the key functions to note are:
+
+1. `shell_bt_nus_init()`: This initialises the Bluetooth NUS shell. Called in the constructor of the `Bluetooth` class.
+2. `shell_bt_nus_enable()`: This enables the Bluetooth NUS shell. Called in the connect callback.
+3. `shell_bt_nus_disable()`: This disables the Bluetooth NUS shell. Called in the disconnected callback.
+
+Then from your `main.cpp` file:
+
+```cpp title="main.cpp"
+#include <zephyr/kernel.h>
+
+// Local includes
+#include "Bluetooth.hpp"
+
+void main(void)
+{
+    // This will initialise the Bluetooth instance and start the advertising
+    my_firmware::Bluetooth::getInstance();
+
+    while (1) {
+        k_sleep(K_MSEC(1000));
+    }
+}
+```
+
+
+Another example project can be found in the [nrf-sdk GitHub repository](https://github.com/nrfconnect/sdk-nrf/tree/main/samples/bluetooth/shell_bt_nus) (called `shell_bt_nus`).
+
+If you want to connect to this Bluetooth NUS shell peripheral from a computer, you can use the [NinjaTerm](https://ninjaterm.mbedded.ninja/) terminal application. This supports Bluetooth LE as a connection type, and can auto-detect and listen to the popular Bluetooth serial service and characteristic UUIDs such as the Nordic UART Service (NUS).
+
+<Image src={import('./_assets/bluetooth-nus-shell-message-screenshot-ninjaterm.webp')} width="900px">A screenshot of a log message and shell prompt sent across the Bluetooth NUS shell in NinjaTerm.</Image>
+
+Another way to communicate with the peripheral is to use the desktop Python script provided by Nordic, which can be found [here](https://github.com/nrfconnect/sdk-nrf/blob/main/scripts/shell/bt_nus_shell.py).
 
 ## Update the LE Connection Interval
 
