@@ -30,3 +30,5 @@ __pycache__/
 
 # Example CMake C/C++ project build directories
 build/
+
+.claude/settings.local.json

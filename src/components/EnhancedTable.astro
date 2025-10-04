@@ -18,7 +18,7 @@ const {
 } = Astro.props as Props;
 
 // Generate a unique ID for this table instance
-const tableId = iref || `table-${Math.random().toString(36).substr(2, 9)}`;
+const tableId = iref || `table-${Math.random().toString(36).substring(2, 11)}`;
 
 // Extract column headers from the first data row
 const columns = data.length > 0 ? Object.keys(data[0]) : [];
@@ -68,34 +68,56 @@ const columns = data.length > 0 ? Object.keys(data[0]) : [];
 
 <script>
   import { createTable, getCoreRowModel, getSortedRowModel, getFilteredRowModel } from '@tanstack/table-core';
+  import type { Table, ColumnDef, SortingState } from '@tanstack/table-core';
+
+  interface TableRow {
+    [key: string]: string;
+  }
 
   class EnhancedTableManager {
-    constructor(tableElement) {
+    tableElement: HTMLTableElement;
+    searchInput: HTMLInputElement | null;
+    table!: Table<TableRow>;
+
+    constructor(tableElement: HTMLTableElement) {
       this.tableElement = tableElement;
-      this.searchInput = document.getElementById(`search-${tableElement.id}`);
+      this.searchInput = document.getElementById(`search-${tableElement.id}`) as HTMLInputElement | null;
       this.init();
     }
 
     init() {
       const data = this.extractTableData();
       const columns = this.createColumnDefs();
-      
+
+      let state = {
+        globalFilter: '',
+        sorting: [] as SortingState
+      };
+
       this.table = createTable({
         data,
         columns,
+        state,
+        onStateChange: () => {},
+        renderFallbackValue: null,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
-        state: {
-          globalFilter: '',
-          sorting: []
-        },
-        onGlobalFilterChange: (filter) => {
-          this.table.setGlobalFilter(filter);
+        onGlobalFilterChange: (updater) => {
+          state.globalFilter = typeof updater === 'function' ? updater(state.globalFilter) : updater;
+          this.table.setOptions((prev) => ({
+            ...prev,
+            state
+          }));
           this.renderTable();
         },
-        onSortingChange: (sorting) => {
-          this.table.setSorting(sorting);
+        onSortingChange: (updater) => {
+          state.sorting = typeof updater === 'function' ? updater(state.sorting) : updater;
+          this.table.setOptions((prev) => ({
+            ...prev,
+            state
+          }));
+          this.updateSortIndicators();
           this.renderTable();
         }
       });
@@ -104,16 +126,16 @@ const columns = data.length > 0 ? Object.keys(data[0]) : [];
       this.renderTable();
     }
 
-    extractTableData() {
+    extractTableData(): TableRow[] {
       const tbody = this.tableElement.querySelector('tbody');
-      const rows = tbody.querySelectorAll('tr');
-      const headers = Array.from(this.tableElement.querySelectorAll('thead th')).map(th => 
-        th.textContent.trim()
+      const rows = tbody?.querySelectorAll('tr') || [];
+      const headers = Array.from(this.tableElement.querySelectorAll('thead th')).map((th) =>
+        (th as HTMLTableCellElement).textContent?.trim() || ''
       );
 
-      return Array.from(rows).map(row => {
+      return Array.from(rows).map((row: HTMLTableRowElement) => {
         const cells = row.querySelectorAll('td');
-        const rowData = {};
+        const rowData: TableRow = {};
         headers.forEach((header, index) => {
           rowData[header] = cells[index]?.textContent?.trim() || '';
         });
@@ -121,32 +143,36 @@ const columns = data.length > 0 ? Object.keys(data[0]) : [];
       });
     }
 
-    createColumnDefs() {
+    createColumnDefs(): ColumnDef<TableRow>[] {
       const headers = Array.from(this.tableElement.querySelectorAll('thead th'));
-      return headers.map(th => ({
-        accessorKey: th.textContent.trim(),
-        header: th.textContent.trim(),
-        cell: info => info.getValue()
-      }));
+      return headers.map((th) => {
+        const key = (th as HTMLTableCellElement).textContent?.trim() || '';
+        return {
+          accessorKey: key,
+          header: key,
+          id: key
+        };
+      });
     }
 
     setupEventListeners() {
       // Search functionality
       if (this.searchInput) {
-        this.searchInput.addEventListener('input', (e) => {
-          this.table.setGlobalFilter(e.target.value);
+        this.searchInput.addEventListener('input', (e: Event) => {
+          const target = e.target as HTMLInputElement;
+          this.table.setGlobalFilter(target.value);
         });
       }
 
       // Sorting functionality
       const headers = this.tableElement.querySelectorAll('thead th.sortable-header');
-      headers.forEach(header => {
+      headers.forEach((header: Element) => {
         header.addEventListener('click', () => {
-          const column = header.dataset.column;
+          const column = (header as HTMLElement).dataset.column || '';
           const currentSorting = this.table.getState().sorting;
-          const existingSort = currentSorting.find(s => s.id === column);
-          
-          let newSorting;
+          const existingSort = currentSorting.find((s: any) => s.id === column);
+
+          let newSorting: SortingState;
           if (!existingSort) {
             newSorting = [{ id: column, desc: false }];
           } else if (!existingSort.desc) {
@@ -154,37 +180,44 @@ const columns = data.length > 0 ? Object.keys(data[0]) : [];
           } else {
             newSorting = [];
           }
-          
+
           this.table.setSorting(newSorting);
-          this.updateSortIndicators();
         });
       });
     }
 
     renderTable() {
       const tbody = this.tableElement.querySelector('tbody');
+      if (!tbody) return;
+
       const rows = this.table.getRowModel().rows;
-      
-      tbody.innerHTML = rows.map(row => `
-        <tr>
-          ${row.getVisibleCells().map(cell => `<td>${cell.getValue()}</td>`).join('')}
-        </tr>
-      `).join('');
+      const columns = this.table.getAllColumns();
+
+      tbody.innerHTML = rows.map((row: any) => {
+        return `
+          <tr>
+            ${columns.map((column: any) => {
+              const value = row.getValue(column.id);
+              return `<td>${value ?? ''}</td>`;
+            }).join('')}
+          </tr>
+        `;
+      }).join('');
     }
 
     updateSortIndicators() {
       const headers = this.tableElement.querySelectorAll('thead th.sortable-header');
       const sorting = this.table.getState().sorting;
-      
-      headers.forEach(header => {
-        const column = header.dataset.column;
+
+      headers.forEach((header: Element) => {
+        const column = (header as HTMLElement).dataset.column;
         const sortIndicator = header.querySelector('.sort-indicator');
-        const currentSort = sorting.find(s => s.id === column);
-        
-        if (currentSort) {
+        const currentSort = sorting.find((s: any) => s.id === column);
+
+        if (currentSort && sortIndicator) {
           sortIndicator.textContent = currentSort.desc ? ' ↓' : ' ↑';
           header.classList.add('sorted');
-        } else {
+        } else if (sortIndicator) {
           sortIndicator.textContent = '';
           header.classList.remove('sorted');
         }
@@ -195,8 +228,8 @@ const columns = data.length > 0 ? Object.keys(data[0]) : [];
   // Initialize all enhanced tables on the page
   document.addEventListener('DOMContentLoaded', () => {
     const enhancedTables = document.querySelectorAll('.enhanced-table');
-    enhancedTables.forEach(table => {
-      new EnhancedTableManager(table);
+    enhancedTables.forEach((table: Element) => {
+      new EnhancedTableManager(table as HTMLTableElement);
     });
   });
 </script>
