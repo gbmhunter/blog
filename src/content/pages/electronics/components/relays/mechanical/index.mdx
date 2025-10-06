@@ -1,10 +1,10 @@
 ---
 authors: [gbmhunter]
 date: 2012-10-25
-description: Relays are electronic components which can switch a load on and off from an isolated control signal. There are traditional mechanical relays and more modern solid-state relays. This page covers terminology, parameters, contact arrangements, inductive kickback, flyback diodes, latching, common relay packages, supplier links and more.
+description: Mechanical relays are electronic components which can switch a load on and off from an isolated control signal using an electromagnet coil and mechanical actuator. This page covers terminology, parameters, contact arrangements, inductive kickback, flyback diodes, latching, common relay packages, supplier links and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-11-21
-tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw, inductive kickback, wet contacts, dry contacts]
+lastUpdated: 2025-10-06
+tags: [relay, relays, solid state, SSRs, single-pole, double-pole, single-throw, double-throw, inductive kickback, wet contacts, dry contacts, armature, reed]
 title: Mechanical Relays
 type: page
 ---
@@ -216,6 +216,30 @@ You can get DIN mounted relay "sockets" for mounting relays onto DIN rail, as sh
     - For "power relays" (over 2A): https://www.digikey.com/en/products/filter/power-relays-over-2-amps/188
 * TE: http://www.te.com/catalog/relays/menu/en/16453
 
+## Types
+
+### Armature Relays
+
+Armature relays are the most common type of mechanical relay. They have a magnetized armature which is moved by the magnetic field of the coil (electromagnet). The contacts are connected to the armature and make or break the output circuit.
+
+### Reed Relays
+
+Reed relays are a type of relay that used an electromagnet to move a reed switch. The contacts in the reed switch are magnetic and the magnetic field directly moves the contacts. This is what distinguishes them from armature relays, which require a armature to move non-magnetic contacts.[^wikipedia-reed-relay]
+
+<Image src={import('./_assets/different-reed-relay-form-factors.webp')} width="600px">A diagram of various reed relays available to purchase. a) Coto Technology 9091-05-01, b) Coto Technology 9001-05-11, c) Standex-Meder Electronics HE24-1A83-02, d) Celduc Inc. D31A3100, e) Standex-Meder Electronics HI12-1A85.</Image>
+
+Because they do not have an armature, they can switch much faster because the contacts are very light weight. They also typically require less electrical power to operate. Many reed relays seal the reed switch in a thin and long glass tube to protect the contacts from corrosion.[^wikipedia-reed-relay]
+
+Reed relays typically cannot handle as high a current as armature relays, but can typically handle higher voltages (e.g. 1000-10,000 V) due to the glass sealed environment the contacts operate in.
+
+<Image src={import('./_assets/photo-of-2x-meder-mre12-18a5-reed-relays-on-pcb.webp')} width="900px">A photo of two Meder MRE12-18A5 reed relays on a PCB. These relays are quite "beautiful" in the sense that they are not in-cased in a square enclosure and you can see the insides! This PCB was inside a Fluke 5322A "Electrical Safety Tester Calibrator" (test equipment).</Image>
+
+<Aside type="note">
+Reed relays are very similar to reed switches. A reed switch is just a component which contains the magnetic contacts. This needs an external magnetic field to switch. A reed relay adds in a electromagnet coil to drive the switch which forms the relay.
+</Aside>
+
+DigiKey's reed relays category can be found [here](https://www.digikey.com/en/products/filter/reed-relays/964).
+
 ## Product Links
 
 The G5Q/G5LE is a popular range of though-hole PCB mount relays from Omron. The G5Q series can go up to 250VAC at 10A.
@@ -238,3 +262,4 @@ The G5Q/G5LE is a popular range of though-hole PCB mount relays from Omron. The 
 [^durakool-contacts-resistance-vs-contact-pressure]: Durakool. _Contact Resistance Vs Contact Pressure_. Retrieved 2025-01-16, from https://www.durakool.com/media/5bqpde0s/contact-resistance-vs-contact-pressure.pdf.
 [^te-potter-and-brumfield-t9g-series]: TE Connectivity (2023, Dec). _POTTER & BRUMFIELD - T9G SERIES - DC COIL 30A PCB RELAY - GENERAL PURPOSE RELAYS | POWER RELAYS_ [datasheet]. Retrieved 2025-02-20, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=T9G&DocType=Data%20Sheet&DocLang=English&DocFormat=pdf&PartCntxt=CAT-P851-T1.
 [^te-relay-definitions]: TE Connectivity (2018, May). _Automotive, General Purpose and Signal Relays - Definitions_ [technical note]. Retrieved 2025-02-20, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=Definitions_Relays&DocType=SS&DocLang=EN.
+[^wikipedia-reed-relay]: Wikipedia (2025, Jul 20). _Reed relay_. Retrieved 2025-10-06, from https://en.wikipedia.org/wiki/Reed_relay.

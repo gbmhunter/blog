@@ -263,7 +263,7 @@ One of the most popular implementations is the Nordic Semiconductor "Nordic UART
 - TX Characteristic UUID: `6e400003-b5a3-f393-e0a9-e50e24dcca9e` (properties: "notify")
 
 <Aside type="note">
-Nordic's RX and TX characteristics are labelled with respect to the Bluetooth peripheral. In other words, the RX characteristic is the characteristic that peripheral receives data from (i.e. and so the central device writes to this).
+Nordic's RX and TX characteristics are labelled with respect to the Bluetooth peripheral. In other words, the RX characteristic is the characteristic that peripheral receives data from. This means a central device (e.g. computer) would be writing to the RX characteristic and reading from the TX characteristic.
 </Aside>
 
 The Microchip Transparent UART Service is a implementation by Microchip. It uses the following UUIDs:[^microchip-transparent-uart-service-for-bm70]
@@ -293,16 +293,18 @@ All of these data points are reset to 0 when the status characteristic is read.
 
 u-blox has their own "u-connectXpress" Bluetooth serial port service which uses the following UUIDs:[^ublox-u-connectxpress-bluetooth-serial-port-service]
 
-- Service UUID: `2456e1b926e28f83e744f34f01e9d701`
-- Data Characteristic (FIFO) UUID: `2456e1b926e28f83e744f34f01e9d703` (properties: "indicate", "notify", "write", "write without response")
-- Credits Characteristic UUID: `2456e1b926e28f83e744f34f01e9d704` (properties: "indicate", "notify", "write", "write without response")
+- Service UUID: `2456e1b9-26e2-8f83-e744-f34f01e9d701`
+- Data Characteristic (FIFO) UUID: `2456e1b9-26e2-8f83-e744-f34f01e9d703` (properties: "indicate", "notify", "write", "write without response")
+- Credits Characteristic UUID: `2456e1b9-26e2-8f83-e744-f34f01e9d704` (properties: "indicate", "notify", "write", "write without response")
 
 Like TI, u-blox uses a single data characteristic for both TX and RX data. The credits characteristic is used for a form of flow control.
 
 Silicon Labs also has their own implementation called "SPP over BLE". It uses the following UUIDs:[^silicon-labs-spp-over-ble]
 
 - Service UUID: `4880c12c-fdcb-4077-8920-a450d7f9b907`
-- Data Characteristic UUID: `fec26ec4-6d71-4442-9f81-55bc21d658d6` (properties: "notify", "write no response")
+- Data Characteristic UUID: `fec26ec4-6d71-4442-9f81-55bc21d658d6` (properties: "notify", "write without response")
+
+Again, like TI, Silicon Labs uses a single data characteristic for both TX and RX data.
 
 BLE v4 messages are limited to 20 bytes. BLE v5 was updated to allow for longer messages, but some software and devices listing themselves as v5 still impose the 20 byte limit.[^forward-computing-and-control-ble-problems]
 
