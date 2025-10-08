@@ -310,6 +310,10 @@ BLE v4 messages are limited to 20 bytes. BLE v5 was updated to allow for longer 
 
 ### Libraries and Applications that use Bluetooth Serial
 
+If you want to connect to this Bluetooth NUS shell peripheral from a computer, you can use the [NinjaTerm](https://ninjaterm.mbedded.ninja/) terminal application. This supports Bluetooth LE as a connection type, and can auto-detect and listen to the popular Bluetooth serial service and characteristic UUIDs such as the Nordic UART Service (NUS).
+
+<Image src={import('./_assets/bluetooth-nus-shell-message-screenshot-ninjaterm.webp')} width="900px">A screenshot of a log message and shell prompt sent across the Bluetooth NUS shell in NinjaTerm.</Image>
+
 The Android app ["Serial Bluetooth Terminal" by Kai Morich](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en) provides a terminal for your phone to communicate over Bluetooth serial.
 
 <Image src={import('./_assets/android-app-serial-bluetooth-terminal.webp')} width="400px">The Android app "Serial Bluetooth Terminal" available from the Google Play store.</Image>
