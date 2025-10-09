@@ -226,6 +226,22 @@ There are also USB-to-UART cables for connecting a computer to a UART bus. FTDI 
 
 ## ICs
 
+### WCH CH340
+
+The WCH CH340 is a family of popular USB to UART ICs. It supports USB 2.0 and serial baud rates from 50 bps to 2 Mbps.[^wch-usb-to-serial-port-chip-ch340-ds]
+
+There are a number of variants in the CH340 family, denoted by an additional letter suffix to the part number:[^wch-usb-to-serial-port-chip-ch340-ds]
+
+* CH340B: SOP-16. Built-in clock. Contains built-in EEPROM for configuration of serial number and other settings.
+* CH340C: SOP-16. Built-in clock.
+* CH340E: MSOP-10. Built-in clock.
+* CH340G: SOP-16. No built-in clock.
+* CH340K: ESSOP-10. Built-in clock. 3 built-in diodes to prevent the backflow of current when there are independent power supplies.
+* CH340N: SOP-8. Built-in clock.
+* CH340R: SSOP-20. No built-in clock. Reverse polarity TXD and modem signals. Discontinued.
+* CH340T: SSOP-20. No built-in clock.
+* CH340X: MSOP-10. Built-in clock. Like the CH340E, except with improved 5V tolerant IO (+3.3V supply).
+
 ### WCH CH9344
 
 The WCH CH9344 is a USB to Quad UART IC in a [LQFP-48 package](/pcb-design/component-packages/qfp-component-package/). It's [USB interface](/electronics/communication-protocols/usb-protocol/) supports USB 2.0. It also provides 12 GPIO pins which can be used for auxiliary functions. UART0 to UART2 have independent voltage rails which can be 1.8V, 2.5V or 3.3V (UART3 is fixed at 3.3V).[^wch-usb-to-quad-uarts-chip-ch9344-ds]
@@ -261,3 +277,4 @@ You can create a rudimentary serial bridge to connect to pieces of software toge
 [^ftdi-usb-to-rs232-range-of-cables-ds]: FTDI. _USB to RS232 Serial Converter Range of Cables_ [datasheet]. Retrieved 2025-02-10, from https://ftdichip.com/wp-content/uploads/2023/07/DS_USB_RS232_CABLES.pdf.
 [^wch-usb-to-quad-uarts-chip-ch9344-ds]: WCH. _USB to Quad UARTs Chip CH9344_ [datasheet]. Retrieved 2025-08-04, from https://www.wch-ic.com/downloads/CH9344DS1_PDF.html.
 [^cnx-software-wch-ch348-8-port-usb-to-serial-chip]: Jean-Luc Aufranc (2022, Mar 4). _WCH CH348 is an 8-port USB to serial chip with up to 48 GPIOs_. CNX Software. Retrieved 2025-08-04, from https://www.cnx-software.com/2022/03/04/wch-ch348-8-port-usb-to-serial-chip-with-up-to-48-gpios/.
+[^wch-usb-to-serial-port-chip-ch340-ds]: WCH. _USB to Serial Port Chip CH340. Version 3D._ [datasheet]. Retrieved 2025-10-09, from https://www.wch-ic.com/downloads/CH340DS1_PDF.html.

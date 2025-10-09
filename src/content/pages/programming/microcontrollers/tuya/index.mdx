@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2025-10-08
 description: Tuya is a company that provides an IoT platform for developers to build IoT devices focused around the smart home industry.
 lastUpdated: 2025-10-08
-tags: [programming, microcontrollers, Tuya, IoT, WBR3]
+tags: [programming, microcontrollers, Tuya, IoT, WBR3, WiFi, Bluetooth, smart home, cloud, platform]
 title: Tuya
 type: page
 ---
@@ -12,9 +12,17 @@ type: page
 
 Tuya is a company that provides an IoT platform for developers to build IoT devices focused around the smart home industry.
 
+Tuya has two phone apps that you can use to integrate your IoT/smart home device into, the "Tuya" and "SmartLife" apps. They are almost identical.
+
+## Tuya Platform
+
+Tuya provides a web-based platform to setup, design and deploy your IoT product from.
+
 ## WBR3
 
 The WRB3 is a Wi-Fi + Bluetooth MCU module developed by Tuya that integrates into their IoT ecosystem. It uses the KM4 MCU and the W701-VA2-CG RF IC, soldered onto a carrier board with castellated pads for mounting.[^tuya-wbr3-module-datasheet]
+
+Two of the pins are a UART TX and RX for connecting this module to the host MCU. The host MCU is responsible for things such as responding to heartbeat messages, and also initiating a reset of the WiFi and entering pairing mode. This is also a separate UART TX pin (repurposable as a GPIO) for capturing logs from the module.[^tuya-wbr3-module-datasheet]
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
