@@ -1,0 +1,47 @@
+---
+authors: [gbmhunter]
+date: 2025-10-10
+description: How to calibrate sensors.
+lastUpdated: 2025-10-10
+tags: [sensors, calibration]
+title: How To Calibrate Sensors
+type: page
+---
+
+<WarningIsNotes />
+
+Calibrating sensors is a critical step in ensuring the accuracy of your measurements. This page covers how to calibrate sensors.
+
+## One Point Calibration
+
+## Two Point Calibration
+
+## Linear Best Fit
+
+Linear best fit is the method of fitting the data the best you can with a straight line. The straight line is commonly written as $y = ax + b$, where $a$ is the slope and $b$ is the y-intercept. The line is usually fit using the least squares method. This is where we find the line which minimizes the sum of the squared residuals. Minimizes the sum of the squares is not the only way, but is one of the most popular techniques. One reason is that typically a residual that is twice as large as a another residual is more than twice as bad[^libretexts-statistics-fitting-a-line-by-least-squares-regression]. Squaring the residuals penalizes larger residuals more than smaller residuals and gives them more weight.
+
+Requires a source of truth, a reference sensor which you can consider to be the "true" value.
+
+Whilst Excel and other spreadsheet programs can do a linear best fit, I almost always prefer to write up a simple Python script (that creates graphs) as it gives me more control and flexibility. I normally type (or automate) the data into a CSV file during calibration and read that in (Python can also read spreadsheet files if you want to use that instead).
+
+The $R^2$ value is a measure of how well the data fits the line. The closer the $R^2$ value is to 1, the better the fit.
+
+Residuals are the left over variation in the data after accounting for model fit.
+
+$$
+\text{residuals} = \text{data} - \text{model}
+$$
+
+One purpose of residual plots is to identify patterns still apparent in the data even after fitting a model. This may give you some useful insight into how you can further improve the model.
+
+## Polynomial Best Fit
+
+Polynomial best fit is the method of fitting the data the best you can with a polynomial curve. The polynomial curve is commonly written as $y = a_0 + a_1 x + a_2 x^2 + ... + a_n x^n$, where $a_0, a_1, ..., a_n$ are the coefficients of the polynomial.
+
+## Non-Linear Best Fit
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^libretexts-statistics-fitting-a-line-by-least-squares-regression]: David Diez, Christopher Barr, & Mine Çetinkaya-Rundel. _7.3: Fitting a Line by Least Squares Regression_. LibreTexts Statistics. Retrieved 2025-10-10, from https://stats.libretexts.org/Bookshelves/Introductory_Statistics/OpenIntro_Statistics_(Diez_et_al)./07%3A_Introduction_to_Linear_Regression/7.03%3A_Fitting_a_Line_by_Least_Squares_Regression.
