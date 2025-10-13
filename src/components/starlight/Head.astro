@@ -25,10 +25,17 @@ if (customFrontmatter !== undefined) {
 {/* @ts-ignore */}
 <VtbotStarlight>
   <!-- Add image that social media platforms pull when rendering links -->
-   {(customFrontmatter !== undefined) &&
-     <meta property="og:image" content={imageUrl!.href} />
-     <meta name="twitter:image" content={imageUrl!.href} />
-   }
+  {(customFrontmatter !== undefined) &&
+    <meta property="og:image" content={imageUrl!.href} />
+    <meta name="twitter:image" content={imageUrl!.href} />
+  }
+  <!-- Add RSS feed link for RSS autodiscovery (for browsers and other software) -->
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="blog.mbedded.ninja"
+    href={new URL("rss.xml", Astro.site)}
+  />
   <StarlightHead {...Astro.props}><slot /></StarlightHead>
 </VtbotStarlight>
 

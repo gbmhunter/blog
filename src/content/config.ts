@@ -4,12 +4,12 @@ import { z, defineCollection } from 'astro:content';
 // PAGES COLLECTION
 //=========================================================
 const pagesCollection = defineCollection({
-	type: 'content',
+  type: 'content',
   schema: ({image}) => z.object({
     aliases: z.array(z.string()).optional(), // Used to setup dynamic redirects. This is done in [...slug].astro 
     authors: z.array(z.string()),
     date: z.date(),
-	  description: z.string().optional(),
+      description: z.string().optional(),
     draft: z.boolean().default(false),
     image: image().optional(),
     lastUpdated: z.date(),
@@ -22,11 +22,11 @@ const pagesCollection = defineCollection({
 // UPDATES COLLECTION
 //=========================================================
 const updatesCollection = defineCollection({
-	type: 'content', // v2.5.0 and later
+  type: 'content', // v2.5.0 and later
   schema: ({image}) => z.object({
     authors: z.array(z.string()),
     date: z.date(),
-	  description: z.string().optional(),
+      description: z.string().optional(),
     draft: z.boolean().default(false),
     image: image().optional(),
     lastUpdated: z.date(),
@@ -40,7 +40,7 @@ const updatesCollection = defineCollection({
 // AUTHORS COLLECTION
 //=========================================================
 const authorsCollection = defineCollection({
-	type: 'data', // v2.5.0 and later
+  type: 'data', // v2.5.0 and later
   schema: ({image}) => z.object({
     name: z.string(),
     link: z.string(),
@@ -52,9 +52,9 @@ const authorsCollection = defineCollection({
 // TEST COLLECTION
 //=========================================================
 const testCollection = defineCollection({
-	type: 'content', // v2.5.0 and later
+  type: 'content', // v2.5.0 and later
   schema: z.object({
-	  description: z.string().optional(),
+    description: z.string().optional(),
     draft: z.boolean().default(false),
     tags: z.array(z.string()).optional(),
     title: z.string(),
