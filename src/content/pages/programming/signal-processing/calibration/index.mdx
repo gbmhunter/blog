@@ -18,7 +18,7 @@ Calibrating sensors is a critical step in ensuring the accuracy of your measurem
 
 ## Linear Best Fit
 
-Linear best fit is the method of fitting the data the best you can with a straight line. The straight line is commonly written as $y = ax + b$, where $a$ is the slope and $b$ is the y-intercept. The line is usually fit using the least squares method. This is where we find the line which minimizes the sum of the squared residuals. Minimizes the sum of the squares is not the only way, but is one of the most popular techniques. One reason is that typically a residual that is twice as large as a another residual is more than twice as bad[^libretexts-statistics-fitting-a-line-by-least-squares-regression]. Squaring the residuals penalizes larger residuals more than smaller residuals and gives them more weight.
+[Linear best fit](/mathematics/curve-fitting/linear-curve-fitting/) is the method of fitting the data the best you can with a straight line. The straight line is commonly written as $y = ax + b$, where $a$ is the slope and $b$ is the y-intercept. The line is usually fit using the least squares method. This is where we find the line which minimizes the sum of the squared residuals. Minimizes the sum of the squares is not the only way, but is one of the most popular techniques. One reason is that typically a residual that is twice as large as a another residual is more than twice as bad[^libretexts-statistics-fitting-a-line-by-least-squares-regression]. Squaring the residuals penalizes larger residuals more than smaller residuals and gives them more weight.
 
 Requires a source of truth, a reference sensor which you can consider to be the "true" value.
 
@@ -34,11 +34,87 @@ $$
 
 One purpose of residual plots is to identify patterns still apparent in the data even after fitting a model. This may give you some useful insight into how you can further improve the model.
 
+<Aside type="example" title="EXAMPLE: Flow Sensor Calibration">
+Let's calibrate a water flow sensor using a linear best fit. This is a basic hall-effect and impeller based [flow sensor](/electronics/components/sensors/flow-sensors/). It outputs a digital signal which transitions at a rate which is dependent on the flow rate. We measure this frequency with a microcontroller and output the data to serial. We also have a accurate flow meter that we trust as our "source of truth".
+
+The sensor gave us the following data which we have saved to a CSV file:
+
+```csv title="data.csv"
+actual_flow_rate_lpm,measured_frequency_hz
+0,0
+0.46,0
+0.82,0
+0.92,0
+1.05,8.66
+1.23,10
+1.43,15
+1.71,23.00
+2.07,24
+2.39,32.33
+2.86,41.33
+3.49,52.33
+3.90,60.66
+4.74,77.99
+5.44,93.99
+6.10,108.66
+7.10,127
+7.83,142.65
+3.16,48
+1.69,18
+1.00,8.33
+0.80,5.33
+0.70,0
+```
+
+If we plot the data (I used Python), we get the graph shown in <IRef iref="fig-flow-sensor-data" />. $Q$ is the actual flow rate in L/min and $f$ is the measured frequency in Hz.
+
+<Image iref="fig-flow-sensor-data" src={import('./_assets/flow-sensor-calibration/flow-sensor-data.png')} width="800px">A plot of the raw data we obtained from the flow sensor. We will use this to calibrate the sensor by performing a linear best fit.</Image>
+
+Let's fit a linear line to the data (a.k.a linear least squares regression). I used the NumPy `np.polyfit()` function to do this, but almost any programming language and/or statistical software package can do this (see the page [Linear Curve Fitting](/mathematics/curve-fitting/linear-curve-fitting/) for more information on how the line of best fit is calculated).
+
+<Image iref="fig-flow-sensor-calibration" src={import('./_assets/flow-sensor-calibration/flow-sensor-calibration.png')} width="800px">Flow sensor calibration: Frequency vs Flow Rate.</Image>
+
+This gives us the equation $Q = 0.0511f + 0.657$ with an $R^2 = 0.993$.
+
+One thing you'll note is that the flow sensor does not produce any output for very low flow rates. Rather than include this in our linear fit, it is better to exclude them and build logic to assume the flow rate is 0 when the frequency is 0. This would give use a piece wise function:
+
+$$
+\begin{align}
+Q = \begin{cases} 
+0 & \text{if}\ F = 0 \\
+ax + b & \text{if}\ F > 0 
+\end{cases}
+\end{align}
+$$
+
+If we ignore all data points where the frequency is 0, we get the linear best fit shown in <IRef iref="fig-flow-sensor-calibration-nonzero" />.
+
+<Image iref="fig-flow-sensor-calibration-nonzero" src={import('./_assets/flow-sensor-calibration/flow-sensor-calibration-nonzero.png')} width="800px">A linear best fit to the data, excluding all data points where the frequency is 0.</Image>
+
+Now we get a slightly different equation with $Q = 0.0505f + 0.709$ and an improved $R^2 = 0.998$. Done! If we wanting to now use this sensor in some embedded firmware, we might write a function like this to convert our frequency to a flow rate:
+
+```c++
+double calcFlowRateFromFrequency(double frequency) {
+    if (frequency == 0) {
+        return 0;
+    }
+    return 0.0505 * frequency + 0.709;
+}
+```
+
+To make this more robust, you might want to `assert()` that the frequency is not negative, and also perhaps if it is too large (i.e. far outside the bounds of the data used for calibration, where extrapolation is likely to be inaccurate).
+
+</Aside>
+
 ## Polynomial Best Fit
 
 Polynomial best fit is the method of fitting the data the best you can with a polynomial curve. The polynomial curve is commonly written as $y = a_0 + a_1 x + a_2 x^2 + ... + a_n x^n$, where $a_0, a_1, ..., a_n$ are the coefficients of the polynomial.
 
 ## Non-Linear Best Fit
+
+## Further Reading
+
+See the [Linear Curve Fitting page](/mathematics/curve-fitting/linear-curve-fitting/) for more information on linear least squares regression.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
