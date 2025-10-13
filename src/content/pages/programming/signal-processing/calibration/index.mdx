@@ -1,20 +1,30 @@
 ---
 authors: [gbmhunter]
 date: 2025-10-10
-description: How to calibrate sensors.
-lastUpdated: 2025-10-10
-tags: [sensors, calibration]
+description: Information on the different ways to calibrate sensors.
+lastUpdated: 2025-10-14
+tags: [sensors, calibration, linear, polynomial, non-linear, regression, best fit, single point, two point]
 title: How To Calibrate Sensors
 type: page
 ---
 
 <WarningIsNotes />
 
-Calibrating sensors is a critical step in ensuring the accuracy of your measurements. This page covers how to calibrate sensors.
+More often than not, when designing embedded systems, you'll come across the need to calibrate a [sensor](/electronics/components/sensors/). Calibration is required when the sensor output does not directly give you the required measurement (e.g. it gives you a voltage, but you need to convert it to a temperature), or when accuracy is required above and beyond the base (i.e. non calibrated) accuracy that the sensor manufacturer provides. This page covers the different ways to calibrate sensors.
 
-## One Point Calibration
+<Aside type="caution">
+There is a well known adage within the embedded/electrical engineering community: All sensors are temperature sensors, some measure other things as well.
 
-## Two Point Calibration
+This is a good reminder to consider other variables when calibrating sensors, especially temperature! Temperature has a rather annoying property of causing many other measurements to change or sensors to respond differently.
+</Aside>
+
+## Linear One Point Calibration
+
+Linear one point calibration is the simplest form of calibration. It makes the assumption that the sensor is linear and goes through the origin. You are fitting a straight line in the form $y = ax$ (note there is no $+ b$ term, which means the line goes through the origin).
+
+## Linear Two Point Calibration
+
+Linear two point calibration is the next step up from linear one point calibration. It is simple and only requires two points of data. It makes the assumption that the sensor is linear, but does not assume it must go through the origin. We fit a straight line in the form $y = ax + b$ using two points of data, which is just enough to uniquely determine the line.
 
 ## Linear Best Fit
 

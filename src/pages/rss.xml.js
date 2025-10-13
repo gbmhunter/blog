@@ -11,10 +11,8 @@ const parser = new MarkdownIt();
 export async function GET(context) {
   let updatesCollection = await getCollection('updates');
 
-  // Sort the update pages by data.lastUpdated, most recent first
-  updatesCollection = updatesCollection.sort((a, b) => b.data.lastUpdated - a.data.lastUpdated);
-
-  console.log(updatesCollection[0])
+  // Sort the update pages by data.lastUpdated, oldest first
+  updatesCollection = updatesCollection.sort((a, b) => a.data.lastUpdated - b.data.lastUpdated);
   return rss({
     title: 'blog.mbedded.ninja',
     description: 'The embedded engineering site that\'s got your back.',
