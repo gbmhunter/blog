@@ -192,11 +192,11 @@ There are industry-standard connector sizes and pinouts for debugging the Cortex
 
 The 10-pin, 2x5, 1.27mm pitch (0.050") connector is the most common debug connector used with Cortex-based microcontrollers.
 
-<Image src={import('./arm-cortex-10pin-debug-connector-pinout.svg')} width="800px">Standard pinout for the ARM Cortex 10-pin programming connector configured for (A) JTAG and (B) SWD. NC pins are **N**ot **C**onnected (i.e. not used)[^bib-keil-coresight-conn].</Image>
+<Image src={import('./_assets/arm-cortex-10pin-debug-connector-pinout.svg')} width="800px">Standard pinout for the ARM Cortex 10-pin programming connector configured for (A) JTAG and (B) SWD. NC pins are **N**ot **C**onnected (i.e. not used)[^bib-keil-coresight-conn].</Image>
 
 The official connector is the [Samtec FTSH-105-01](https://www.samtec.com/products/ftsh-105-01-l-dv-k), yet luckily these header-style connectors are standardized across manufacturers and almost any 1.27mm 2x5 header-style connector will work.
 
-<Image src={import('./samtec-ftsh-105-01-l-dv-k-2x5-1.27mm-header.png')} width="200px">3D model of the Samtec FTSH-105-01 10-pin 2x5 1.27mm pitch SMD header[^bib-samtec-ftsh-105-01].</Image>
+<Image src={import('./_assets/samtec-ftsh-105-01-l-dv-k-2x5-1.27mm-header.png')} width="200px">3D model of the Samtec FTSH-105-01 10-pin 2x5 1.27mm pitch SMD header[^bib-samtec-ftsh-105-01].</Image>
 
 Sometimes `Pin 7` is removed from the male header, and the female header has a blank position in the same location (i.e. no receptacle). This is to "key" the header so it can't be mated incorrectly. Another way of preventing incorrect mating is to use a keyed shroud.
 
@@ -204,25 +204,25 @@ Sometimes `Pin 7` is removed from the male header, and the female header has a b
 
 ### 14-pin TI Connector
 
-<Image src={import('./14pin-ti-jtag-connector-pinout.svg')} width="500px">Pinout for the TI 14-pin JTAG connector[^bib-segger-ti-14pin][^bib-ti-jtag-conns].</Image>
+<Image src={import('./_assets/14pin-ti-jtag-connector-pinout.svg')} width="500px">Pinout for the TI 14-pin JTAG connector[^bib-segger-ti-14pin][^bib-ti-jtag-conns].</Image>
 
 The `EMU0` and `EMU1` pins can be used for cross-core triggering (e.g. one core halts and signals the other cores to halt)[^bib-ti-jtag-conns]. They are not supported by ARM DSTREAM[^bib-arm-dstream-interface-ref].
 
 The BeagleBoard Rev D and Beagleboard-xM use this connector.
 
-<Image src={import('./beagleboard-photo-jtag-14pin-ti-debug-conn-highlighted.png')} width="600px">Photo highlighting the 14-pin TI style JTAG connector on the BeagleBoard-xM[^bib-beagleboard-xm].</Image>
+<Image src={import('./_assets/beagleboard-photo-jtag-14pin-ti-debug-conn-highlighted.png')} width="600px">Photo highlighting the 14-pin TI style JTAG connector on the BeagleBoard-xM[^bib-beagleboard-xm].</Image>
 
 ### 20-pin ARM "Standard" Debug Connector Pinout
 
 This is the most common 20-pin debug connector pinout for an ARM device.
 
-<Image src={import('./arm-cortex-20pin-arm-standard-debug-connector-pinout.svg')} width="500px">Pinout for the 20-pin \"standard\" ARM debug connector[^bib-keil-coresight-conn].</Image>
+<Image src={import('./_assets/arm-cortex-20pin-arm-standard-debug-connector-pinout.svg')} width="500px">Pinout for the 20-pin \"standard\" ARM debug connector[^bib-keil-coresight-conn].</Image>
 
 NOTE: Pin 2 may be specified as either `VCC (optional)` or `NC` (not connected). In most situations I've seen this as `NC`.
 
 ### 20-pin Cortex Debug + ETM Connector Pinout
 
-<Image src={import('./arm-cortex-20pin-coresight-debug-connector-pinout.svg')} width="500px">Pinout for the \"Cortex Debug + ETM Connector\" 20-pin debug connector[^bib-keil-coresight-conn].</Image>
+<Image src={import('./_assets/arm-cortex-20pin-coresight-debug-connector-pinout.svg')} width="500px">Pinout for the \"Cortex Debug + ETM Connector\" 20-pin debug connector[^bib-keil-coresight-conn].</Image>
 
 Supported by the ULINKPro.
 
