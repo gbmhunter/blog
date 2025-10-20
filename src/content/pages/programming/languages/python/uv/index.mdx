@@ -1,0 +1,29 @@
+---
+authors: [gbmhunter]
+date: 2025-10-20
+description: uv is a popular tool for managing Python environments and dependencies.
+lastUpdated: 2025-10-20
+tags: [programming, programming languages, Python, uv]
+title: uv
+type: page
+---
+
+<WarningIsNotes />
+
+uv is a popular tool from Astral for managing Python environments and dependencies.
+
+## Basic Usage
+
+To create a new uv based project in your current working directory, run the following command:
+
+```bash
+uv init
+```
+
+If you have an existing project that uses a `dependencies.txt` file, you can add all the dependencies into your uv project with:
+
+```bash
+uv add -r requirements.txt
+```
+
+This will add all the dependencies into the `pyproject.toml` file.

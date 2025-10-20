@@ -1,0 +1,72 @@
+---
+authors: [gbmhunter]
+date: 2025-10-17
+description: Electron is a framework for building cross-platform desktop applications using web technologies.
+image: ./_assets/cover-image.webp
+lastUpdated: 2025-10-17
+tags: [electron]
+title: Electron
+type: page
+---
+
+Electron is a framework for building cross-platform desktop applications using web technologies. It is built on top of Chromium and Node.js, and allows you to build desktop applications that can run on Windows, macOS, and Linux.
+
+## macOS Window Closing IPC Issues
+
+On macOS, applications typically behave slightly different to Windows and Linux when the "X" button is clicked. Typically, the window will close but the application will not exit. The application is only closed when the user clicks the "Quit" button in the menu bar. This means that if the user "closes" your application and then re-opens it, the main process will not be restarted, but the renderer process will be. I have found this can cause problems with the main to renderer process IPC (I'm assuming handlers are not re-registered correctly and messages are going to the wrong place).
+
+To fix this, I changed the `window-all-closed` event handler to quit the app if all windows are closed on all platforms. See the code below which leaves the example code in place as a comment for future reference.
+
+```js title="src/main/index.ts"
+// Quit when all windows are closed
+app.on('window-all-closed', () => {
+  // The Electron docs have this follow example:
+  //==============================================================
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  // if (process.platform !== 'darwin') {
+  //   app.quit();
+  // }
+  //==============================================================
+  // However, I saw an issue on macOS where if you clicked the "X" to close the NinjaTerm window (i.e. close the window but don't quit the app), and then re-opened NinjaTerm, the IPC between main and renderer processes would be broken.
+  // So let's quit the app if all windows are closed on all platforms.
+  app.quit();
+});
+```
+
+## macOS Performance Issues
+
+### x64 and Rosetta 2
+
+If running on a Mac computer with Apple Silicon (e.g M1, M2, e.t.c.), you seemingly have the choice of building the application for arm64 (native) or x64. If you build for x64, the Mac will automatically use Rosetta 2 to run the device (Rosetta 2 is a compatibility layer that allows Intel x86 based applications to run on Apple Silicon). However, Electron running under Rosetta 2 is very slow, to the point where it's mostly unusable. Be mindful of this when building for Mac, and prefer the arm64 build.
+
+The disadvantage of building for arm64 is that Apple takes a much harsher stance on non-signed apps. When trying to run a non-signed arm64 app, your Mac will pop-up and tell you the app is damaged (and give you a "move to trash" option)! IMO this is too far, I'm happy with warnings about the app potentially being unsafe, but not falsely telling the user the app is damaged. A x64 app on Mac just gives you a warning about how it is blocked because it might be unsafe. You can allow it by going to System Settings.
+
+### Bugs
+
+A few versions of Electron had serious performance issues on macOS 26 (Tahoe). This was due to Electron using a private "cornerMask" Apple API which on macOS 26 was changed, and started to cause WindowServer GPU load spikes. See [this GitHub issue](https://github.com/electron/electron/pull/48376) for more details.[^github-electron-issue-48311]
+
+This issue was fixed in these Electron versions: `v39.0.0-alpha.7`, `v38.2.0`, `v37.6.0` and `v36.9.2`.[^github-electron-issue-48311]
+
+## Updating Electron
+
+If you update `electron`, sometimes you can get the error:
+
+```text
+Could not detect abi for version 38.3.0 and runtime electron.
+Updating "node-abi" might help solve this issue if it is a new release of electron
+failedTask=build
+stackTrace=Error: Could not detect abi for version 38.3.0 and runtime electron.  Updating "node-abi" might help solve this issue if it is a new release of electron
+```
+
+You can usually fix this by updating `node-abi` to the latest version:
+
+```bash
+npm install node-abi@latest
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^github-electron-issue-48311]: GitHub. _electron/electron: Electron-based apps cause a huge system-wide lag on macOS 26 #48311_ [issue]. Retrieved 2025-10-17, from https://github.com/electron/electron/issues/48311.

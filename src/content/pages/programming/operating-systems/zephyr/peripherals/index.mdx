@@ -730,7 +730,7 @@ Nordic's guide uses the `int16_t` type for the ADC buffer, while the Zephyr exam
 ### nrfx SAADC Driver
 
 <Aside type="note">
-This section is specific to nRF SoCs.
+This section is specific to nRF SoCs. Furthermore this is not strictly a Zephyr driver, but a Nordic Semiconductor driver which could work independently of Zephyr.
 </Aside>
 
 Zephyr's ADC driver can work with the SAADC peripheral. However, only basic functionality is provided by the Zephyr ADC API. For example, the Zephyr ADC API does not allow you to setup repeated sampling based on a timer connected with the DPPI/PPI. If you want more functionality than what the Zephyr ADC API provides, you can use the lower level nrfx SAADC driver.
@@ -741,9 +741,10 @@ Enable the nrfx SAADC driver in your `prj.conf` file:
 CONFIG_NRFX_SAADC=y
 ```
 
+And get access to the API in your C/C++ code by including:
+
 ```c++
 #include <nrfx_saadc.h>
-
 ```
 
 We'll use the `IRQ_CONNECT()` macro to connect the SAADC interrupt to an ISR:
@@ -858,6 +859,13 @@ nrfx_saadc_offset_calibrate(adc_saadc_event_handler);
 Note that the event handler gets called in an interrupt context, so make the logic in the event handler as lightweight as possible (setting flags and deferring work on the data to a thread is a good idea).
 
 nrfx SAADC examples can be found in the Zephyr repo at `modules/hal/nordic/nrfx/samples/src/nrfx_saadc`. The official nrfx SAADC driver documentation can be found [here](https://docs.nordicsemi.com/bundle/ncs-2.7.0/page/nrfx/drivers/saadc/driver.html).
+
+
+#### Identifying Error Codes
+
+All of the nrfx SAADC return codes are of type `nrfx_err_t`. This type is defined in the header file `nrfx_errors.h`.
+
+If you print the return code as an integer, you will find they are quite large (e.g. `195887115`, which is `NRFX_ERROR_BUSY`) as the enum is offset by `NRFX_ERROR_BASE_NUM` (which I love because this is set to `0x0BAD0000` --- note the `BAD` :-D).
 
 ## I2C Controller
 
