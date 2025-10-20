@@ -1308,6 +1308,7 @@
         "PXROS",
         "pygments",
         "pyinstaller",
+        "pylink",
         "pynrfjprog",
         "pyodbc",
         "pyplot",

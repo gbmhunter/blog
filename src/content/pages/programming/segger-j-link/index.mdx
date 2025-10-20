@@ -1,0 +1,38 @@
+---
+authors: [gbmhunter]
+date: 2025-10-20
+lastUpdated: 2025-10-20
+tags: [ARM, programming, microcontrollers, Segger, J-Link]
+title: Segger J-Link
+type: page
+---
+
+<WarningIsNotes />
+
+## Square pylink
+
+`pylink` is a Python library for controlling Segger J-Link devices. It supports:
+
+* SWD
+* RTT
+
+You can install it with:
+
+```bash
+uv add pylink-square
+```
+
+You will also need to install the SEGGER J-Link [Software and Documentation Pack](https://www.segger.com/downloads/jlink). This pack installs SEGGER's C-libraries for interacting with a J-Link. `pylink` contains bindings to call functions in these libraries.
+
+<Aside type="caution">
+The package name is called `pylink-square` and not just `pylink` (this is a different library).
+</Aside>
+
+<Image iref="fig-j-link-new-firmware-version-popup" src={import('./_assets/j-link-new-firmware-version-popup.webp')} width="400px">You might be a pop-up like this when you call jlink.open().</Image>
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^bib-segger-about-rtt]: Segger. _About Real Time Transfer_. Retrieved 2021-11-13, from https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/.
