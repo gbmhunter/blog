@@ -44,25 +44,36 @@ By default, only a basic subset of the total available nRF Util commands are ins
 
 For example:
 
-```batch
-$ nrfutil search 91
+```bash
+nrfutil search 91
 Command Installed Latest Status
 91                0.5.0  Not installed
 ```
 
 Then to install the `91` command, run:
 
-```batch
-$ nrfutil install 91
+```bash
+nrfutil install 91
 ```
 
 ### Device Sub-Commands
 
 The nRF Util device sub-command can list, program, recover, erase, and do various operations on Nordic devices. It supports MCUboot and J-Link. Install `device` with:
 
-```batch
-$ nrfutil install device
+```bash
+nrfutil install device
 ```
+
+Device recovery can be performed with:
+
+```bash
+nrfutil device recover
+```
+
+<Image src={import('./_assets/using-nrf-util-device-recover-terminal-screenshot.webp')} width="600px">Screenshot showing device recovery (without having to erase the device) using the nrfutil device recover command.</Image>
+
+
+The recover command can be run on an already recovered device without error.
 
 ## pynrfjprog
 

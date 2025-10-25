@@ -1,13 +1,14 @@
 ---
 authors: [gbmhunter]
 date: 2025-10-17
-description: Electron is a framework for building cross-platform desktop applications using web technologies.
-image: ./_assets/cover-image.webp
-lastUpdated: 2025-10-17
-tags: [electron]
+description: Electron is a framework for building cross-platform desktop applications using web technologies. This page covers some common issues and tips for using Electron.
+lastUpdated: 2025-10-22
+tags: [Electron, JavaScript, NodeJS, applications, desktop, GUI]
 title: Electron
 type: page
 ---
+
+<WarningIsNotes />
 
 Electron is a framework for building cross-platform desktop applications using web technologies. It is built on top of Chromium and Node.js, and allows you to build desktop applications that can run on Windows, macOS, and Linux.
 
@@ -41,6 +42,14 @@ app.on('window-all-closed', () => {
 If running on a Mac computer with Apple Silicon (e.g M1, M2, e.t.c.), you seemingly have the choice of building the application for arm64 (native) or x64. If you build for x64, the Mac will automatically use Rosetta 2 to run the device (Rosetta 2 is a compatibility layer that allows Intel x86 based applications to run on Apple Silicon). However, Electron running under Rosetta 2 is very slow, to the point where it's mostly unusable. Be mindful of this when building for Mac, and prefer the arm64 build.
 
 The disadvantage of building for arm64 is that Apple takes a much harsher stance on non-signed apps. When trying to run a non-signed arm64 app, your Mac will pop-up and tell you the app is damaged (and give you a "move to trash" option)! IMO this is too far, I'm happy with warnings about the app potentially being unsafe, but not falsely telling the user the app is damaged. A x64 app on Mac just gives you a warning about how it is blocked because it might be unsafe. You can allow it by going to System Settings.
+
+You can disable Gatekeeper for a single application from the terminal with:
+
+```bash
+xattr -dr com.apple.quarantine /path/to/Application.app
+```
+
+The path must be to the application bundle, not just the executable.
 
 ### Bugs
 

@@ -1,13 +1,46 @@
 ---
 authors: [gbmhunter]
 date: 2025-10-20
-lastUpdated: 2025-10-20
-tags: [ARM, programming, microcontrollers, Segger, J-Link]
-title: Segger J-Link
+description: J-Link is a suite of programming and debugging tools from SEGGER. This page covers the J-Link Commander executable, RTOS awareness, and 3rd party libraries for controlling the J-Link software.
+lastUpdated: 2025-10-21
+tags: [ARM, programming, microcontrollers, Segger, J-Link, Python, NodeJS, RTOS]
+title: SEGGER J-Link
 type: page
 ---
 
 <WarningIsNotes />
+
+## JLink Commander Executable
+
+Installing the SEGGER J-Link [Software and Documentation Pack](https://www.segger.com/downloads/jlink) should provide you with a J-Link executable. This is called the "J-Link Commander". On Windows this is named `JLink.exe`, and is typically installed to `C:\Program Files\SEGGER\JLink_V<version>\JLink.exe` (e.g. `C:\Program Files\SEGGER\JLink_V874a\JLink.exe`).
+
+<Aside type="note">
+Multiple versions of the J-Link Software and Documentation Pack can be installed on the same machine.
+</Aside>
+
+Chip names are how J-Link identifies the connected device. For example, for the nRF9151 MCUs from Nordic Semiconductor, the name is `nRF9151_xxCA`.
+
+## RTOS Awareness
+
+The J-Link has built-in RTOS awareness for the following RTOSs:
+
+- ChibiOS
+- embOS
+- [FreeRTOS](/programming/operating-systems/freertos/)
+- [NuttX](/programming/operating-systems/nuttx/)
+- [Zephyr](/programming/operating-systems/zephyr/)
+
+Built-in support allows you to see RTOS specific information in the debugger, such as the thread stacks and state.
+
+Files to support these RTOSs can be found in the `GDBServer` sub-directory under the J-Link Software and Documentation Pack installation directory.
+
+## RTT
+
+Real-Time Transfer (RTT) is a feature of the J-Link that allows you to transfer arbitrary data between the host and the target microcontroller over the SWD or JTAG interface. It works by writing data to a special region of memory on the target microcontroller. The J-Link probe can read this data without interrupting the CPU and can be read a high speeds (> 1MHz). It is supported on ARM Cortex-A/R/M, RISC-V and Renesas RX architectures.[^segger-about-real-time-transfer]
+
+RTT supports multiple communication channels in both directions.[^segger-about-real-time-transfer] Each channel can have a direction (up vs. down), buffer size and flags associated with it.
+
+SEGGER provides an RTT client as part of the J-Link Software and Documentation Pack. It is called `JLinkRTTClient.exe` and is typically installed in the installation directory. When you run the client, it connects to an RTT server running at `localhost:19021`. Before running the client, make sure you have started `JLink.exe` and connected to your target device. This will start up the server which the client will connect to.
 
 ## Square pylink
 
@@ -31,8 +64,14 @@ The package name is called `pylink-square` and not just `pylink` (this is a diff
 <Image iref="fig-j-link-new-firmware-version-popup" src={import('./_assets/j-link-new-firmware-version-popup.webp')} width="400px">You might be a pop-up like this when you call jlink.open().</Image>
 
 
+## PhinCo/node-jlink
+
+PhinCo/node-jlink is a NodeJS driver for the SEGGER J-Link command line tool jlinkexe.[^github-phinco-node-jlink] You will also need to install the SEGGER J-Link [Software and Documentation Pack](https://www.segger.com/downloads/jlink) so that `jlinkexe` is available in your PATH to the driver..
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^bib-segger-about-rtt]: Segger. _About Real Time Transfer_. Retrieved 2021-11-13, from https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/.
+[^github-phinco-node-jlink]: PhinCo. _PhinCo/node-jlink_ [repository]. GitHub. Retrieved 2025-10-21, from https://github.com/PhinCo/node-jlink.
+[^segger-j-link-commander]: SEGGER. _J-Link Commander_. Retrieved 2025-10-22, from https://kb.segger.com/J-Link_Comm
+[^segger-about-real-time-transfer]: SEGGER. _Real Time Transfer (RTT)_. Retrieved 2025-10-23, from https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/.
