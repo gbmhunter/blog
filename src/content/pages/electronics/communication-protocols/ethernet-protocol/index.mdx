@@ -48,7 +48,7 @@ Designed for automotive and IoT applications.
 
 ### 10BASE-T1S
 
-Designed for automotive and IoT applications. Allows for a multidrop architecture.
+Designed for automotive and IoT applications. Allows for a multi-drop architecture.
 
 ## Ethernet Jacks
 
@@ -122,6 +122,101 @@ PoE++ is also known as 4PPoE. UPoE is an acronym for _Ultra Power over Ethernet_
 
 Signature resistance of 25kR.
 
+## Single Pair Ethernet (SPE)
+
+Single Pair Ethernet (SPE) is a version of Ethernet which uses a single twisted pair. Coupled with PoDL (Power over Data Lines), it is impressive that a single twisted pair can be both used to send bi-directional data (~10Mbps) and power (~50W) over the same cable!
+
+Bi-directional data over the same pair works by each side cancelling out their own sent signal.
+
+<table>
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th colspan="2">Standard</th>
+            <th>Speed</th>
+            <th colspan="2">Max. Distance</th>
+            <th>Symbol Rate</th>
+            <th>BER</th>
+            <th>Duplex</th>
+            <th>PoDL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">2019</td> {/* Year */}
+            <td rowspan="2">802.3cg</td> {/* Standard */}
+            <td>10BASE-T1S</td> 
+            <td rowspan="2">10 Mbit/s</td> {/* Speed */}
+            <td>25 m</td>
+            <td>UTP</td> {/* Max. Distance */}
+            <td>12.5 MHz</td> {/* Symbol Rate */}
+            <td>1 x 10<sup>-9</sup></td> {/* BER */}
+            <td>HD</td> {/* Duplex */}
+            <td>No</td> {/* PoDL */}
+        </tr>
+        <tr>
+            <td>10BASE-T1L</td> {/* Standard */}
+            <td>1000 m</td>
+            <td>STP</td> {/* Max. Distance */}
+            <td>7.5 MHz</td> {/* Symbol Rate */}
+            <td rowspan="8">1 x 10<sup>-10</sup></td> {/* BER */}
+            <td rowspan="8">FD</td> {/* Duplex */}
+            <td rowspan="8">Yes</td> {/* PoDL */}
+        </tr>
+        <tr>
+            <td rowspan="2">2015</td> {/* Year */}
+            <td rowspan="2">802.3bw</td> {/* Standard */}
+            <td rowspan="2">100BASE-T1</td> {/* Standard */}
+            <td rowspan="2">100 Mbit/s</td> {/* Speed */}
+            <td>15 m</td>
+            <td>UTP</td> {/* Max. Distance */}
+            <td rowspan="2">66.6 MHz</td> {/* Symbol Rate */}
+        </tr>
+        <tr>
+            <td>25 m</td> {/* Max. Distance */}
+            <td>STP</td>
+        </tr>
+        <tr>
+          <td rowspan="2">2016</td> {/* Year */}
+          <td rowspan="2">802.3bp</td> {/* Standard (1)*/}
+          <td rowspan="2">1000BASE-T1</td> {/* Standard (2)*/}
+          <td rowspan="2">1000 Mbit/s</td> {/* Speed */}
+          <td>15 m</td> {/* Max. Distance (1) */}
+          <td>Type A</td> {/* Max. Distance (2) */}
+          <td rowspan="2">750 MHz</td> {/* Symbol Rate */}
+        </tr>
+        <tr>
+          <td>40 m</td> {/* Max. Distance (2) */}
+          <td>Type B</td> {/* Max. Distance (2) */}
+        </tr>
+
+        <tr>
+          <td rowspan="3">2020</td> {/* Year */}
+          <td rowspan="3">802.3ch</ td> {/* Standard (1) */}
+          <td>2.5GBASE-T1</td> {/* Standard (2) */}
+          <td>2.5 Gbit/s</td> {/* Speed */}
+          <td rowspan="3">15 m</td> {/* Max. Distance */}
+          <td rowspan="3">STP</td> {/* Max. Distance (2) */}
+          <td>1.4 GHz</td> {/* Symbol Rate */}
+        </tr>
+        <tr>
+          <td>5GBASE-T1</td> {/* Standard (2) */}
+          <td>5 Gbit/s</td> {/* Speed */}
+          <td>2.8 GHz</td> {/* Symbol Rate */}
+        </tr>
+        <tr>
+          <td>10GBASE-T1</td> {/* Standard (2) */}
+          <td>10 Gbit/s</td> {/* Speed */}
+          <td>5.6 GHz</td> {/* Symbol Rate */}
+        </tr>
+    </tbody>
+  <caption>A summary of the Single Pair Ethernet (SPE) standards.[^wurth-rd041-design-of-spoe-system]</caption>
+</table>
+
+### PoDL
+
+For convenience, the standard allows the DC voltage to applied in either direction by the power source. This means that the receiver requires a rectifier (or similar) to support reverse polarity.[^electric-ui-deep-dive-single-pair-ethernet]
+
 ## EtherCAT
 
 EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
@@ -152,6 +247,12 @@ The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker c
 
 ### Microchip LAN867x Family
 
-Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-T1S, 10BASE-T1S], allowing a multidrop architecture of "at least 8 nodes and a minimum 25m of length".
+Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-T1S, 10BASE-T1S], allowing a multi-drop architecture of "at least 8 nodes and a minimum 25m of length".
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^lwip-homepage]: lwIP. _Homepage_. Retrieved 2024-08-13, from https://savannah.nongnu.org/projects/lwip/.
+[^electric-ui-deep-dive-single-pair-ethernet]: Electric UI. _A deep dive into Single Pair Ethernet_. Retrieved 2025-10-28, from https://electricui.com/blog/spe-sensor-node.
+[^wurth-rd041-design-of-spoe-system]: Wurth Elektronik. _Reference Design RD041 - Design of a Single Pair Ethernet System with Power over Data Lines (SPoE)_. Retrieved 2025-10-28, from https://www.we-online.com/files/pdf1/rd041b_design-of-a-single-pair-ethernet-system-with-power-over-data-lines-spoe-v1.pdf.
