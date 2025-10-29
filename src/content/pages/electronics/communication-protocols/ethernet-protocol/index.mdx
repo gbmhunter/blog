@@ -38,6 +38,8 @@ The _PHY_ is the circuitry which drives the magnetics.
 
 ## Standards
 
+Many of the IEEE standards are in a form similar to `10BASE-T`. In this example, the `10` represents a throughput of 10 Mbps, `BASE` is because it uses baseband transmission (the twisted pairs can transmit frequencies all the way down to DC), and the `T` indicates the transmission medium used.[^wikipedia-baseband]
+
 ### 10BASE-T
 
 Used Cat 3 cable.
@@ -129,102 +131,168 @@ Single Pair Ethernet (SPE) is a version of Ethernet which uses a single twisted 
 Bi-directional data over the same pair works by each side cancelling out their own sent signal.
 
 <table>
-    <thead>
-        <tr>
-            <th>Year</th>
-            <th colspan="2">Standard</th>
-            <th>Speed</th>
-            <th colspan="2">Max. Distance</th>
-            <th>Symbol Rate</th>
-            <th>BER</th>
-            <th>Duplex</th>
-            <th>PoDL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan="2">2019</td> {/* Year */}
-            <td rowspan="2">802.3cg</td> {/* Standard */}
-            <td>10BASE-T1S</td> 
-            <td rowspan="2">10 Mbit/s</td> {/* Speed */}
-            <td>25 m</td>
-            <td>UTP</td> {/* Max. Distance */}
-            <td>12.5 MHz</td> {/* Symbol Rate */}
-            <td>1 x 10<sup>-9</sup></td> {/* BER */}
-            <td>HD</td> {/* Duplex */}
-            <td>No</td> {/* PoDL */}
-        </tr>
-        <tr>
-            <td>10BASE-T1L</td> {/* Standard */}
-            <td>1000 m</td>
-            <td>STP</td> {/* Max. Distance */}
-            <td>7.5 MHz</td> {/* Symbol Rate */}
-            <td rowspan="8">1 x 10<sup>-10</sup></td> {/* BER */}
-            <td rowspan="8">FD</td> {/* Duplex */}
-            <td rowspan="8">Yes</td> {/* PoDL */}
-        </tr>
-        <tr>
-            <td rowspan="2">2015</td> {/* Year */}
-            <td rowspan="2">802.3bw</td> {/* Standard */}
-            <td rowspan="2">100BASE-T1</td> {/* Standard */}
-            <td rowspan="2">100 Mbit/s</td> {/* Speed */}
-            <td>15 m</td>
-            <td>UTP</td> {/* Max. Distance */}
-            <td rowspan="2">66.6 MHz</td> {/* Symbol Rate */}
-        </tr>
-        <tr>
-            <td>25 m</td> {/* Max. Distance */}
-            <td>STP</td>
-        </tr>
-        <tr>
-          <td rowspan="2">2016</td> {/* Year */}
-          <td rowspan="2">802.3bp</td> {/* Standard (1)*/}
-          <td rowspan="2">1000BASE-T1</td> {/* Standard (2)*/}
-          <td rowspan="2">1000 Mbit/s</td> {/* Speed */}
-          <td>15 m</td> {/* Max. Distance (1) */}
-          <td>Type A</td> {/* Max. Distance (2) */}
-          <td rowspan="2">750 MHz</td> {/* Symbol Rate */}
-        </tr>
-        <tr>
-          <td>40 m</td> {/* Max. Distance (2) */}
-          <td>Type B</td> {/* Max. Distance (2) */}
-        </tr>
-
-        <tr>
-          <td rowspan="3">2020</td> {/* Year */}
-          <td rowspan="3">802.3ch</ td> {/* Standard (1) */}
-          <td>2.5GBASE-T1</td> {/* Standard (2) */}
-          <td>2.5 Gbit/s</td> {/* Speed */}
-          <td rowspan="3">15 m</td> {/* Max. Distance */}
-          <td rowspan="3">STP</td> {/* Max. Distance (2) */}
-          <td>1.4 GHz</td> {/* Symbol Rate */}
-        </tr>
-        <tr>
-          <td>5GBASE-T1</td> {/* Standard (2) */}
-          <td>5 Gbit/s</td> {/* Speed */}
-          <td>2.8 GHz</td> {/* Symbol Rate */}
-        </tr>
-        <tr>
-          <td>10GBASE-T1</td> {/* Standard (2) */}
-          <td>10 Gbit/s</td> {/* Speed */}
-          <td>5.6 GHz</td> {/* Symbol Rate */}
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th colspan="2">Standard</th>
+      <th>Speed</th>
+      <th colspan="2">Max. Distance</th>
+      <th>Symbol Rate</th>
+      <th>BER</th>
+      <th>Duplex</th>
+      <th>PoDL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">2019</td> {/* Year */}
+      <td rowspan="2">IEEE 802.3cg</td> {/* Standard */}
+      <td>10BASE-T1S</td> 
+      <td rowspan="2">10 Mbit/s</td> {/* Speed */}
+      <td>25 m</td>
+      <td>UTP</td> {/* Max. Distance */}
+      <td>12.5 MHz</td> {/* Symbol Rate */}
+      <td>1 x 10<sup>-9</sup></td> {/* BER */}
+      <td>HD</td> {/* Duplex */}
+      <td>No</td> {/* PoDL */}
+    </tr>
+    <tr>
+      <td>10BASE-T1L</td> {/* Standard */}
+      <td>1000 m</td>
+      <td>STP</td> {/* Max. Distance */}
+      <td>7.5 MHz</td> {/* Symbol Rate */}
+      <td rowspan="8">1 x 10<sup>-10</sup></td> {/* BER */}
+      <td rowspan="8">FD</td> {/* Duplex */}
+      <td rowspan="8">Yes</td> {/* PoDL */}
+    </tr>
+    <tr>
+      <td rowspan="2">2015</td> {/* Year */}
+      <td rowspan="2">IEEE 802.3bw</td> {/* Standard */}
+      <td rowspan="2">100BASE-T1</td> {/* Standard */}
+      <td rowspan="2">100 Mbit/s</td> {/* Speed */}
+      <td>15 m</td>
+      <td>UTP</td> {/* Max. Distance */}
+      <td rowspan="2">66.6 MHz</td> {/* Symbol Rate */}
+    </tr>
+    <tr>
+      <td>25 m</td> {/* Max. Distance */}
+      <td>STP</td>
+    </tr>
+    <tr>
+    <td rowspan="2">2016</td> {/* Year */}
+    <td rowspan="2">IEEE 802.3bp</td> {/* Standard (1)*/}
+    <td rowspan="2">1000BASE-T1</td> {/* Standard (2)*/}
+    <td rowspan="2">1000 Mbit/s</td> {/* Speed */}
+    <td>15 m</td> {/* Max. Distance (1) */}
+    <td>Type A</td> {/* Max. Distance (2) */}
+    <td rowspan="2">750 MHz</td> {/* Symbol Rate */}
+    </tr>
+    <tr>
+      <td>40 m</td> {/* Max. Distance (2) */}
+      <td>Type B</td> {/* Max. Distance (2) */}
+    </tr>
+    <tr>
+      <td rowspan="3">2020</td> {/* Year */}
+      <td rowspan="3">IEEE 802.3ch</ td> {/* Standard (1) */}
+      <td>2.5GBASE-T1</td> {/* Standard (2) */}
+      <td>2.5 Gbit/s</td> {/* Speed */}
+      <td rowspan="3">15 m</td> {/* Max. Distance */}
+      <td rowspan="3">STP</td> {/* Max. Distance (2) */}
+      <td>1.4 GHz</td> {/* Symbol Rate */}
+    </tr>
+    <tr>
+      <td>5GBASE-T1</td> {/* Standard (2) */}
+      <td>5 Gbit/s</td> {/* Speed */}
+      <td>2.8 GHz</td> {/* Symbol Rate */}
+    </tr>
+    <tr>
+      <td>10GBASE-T1</td> {/* Standard (2) */}
+      <td>10 Gbit/s</td> {/* Speed */}
+      <td>5.6 GHz</td> {/* Symbol Rate */}
+    </tr>
+  </tbody>
   <caption>A summary of the Single Pair Ethernet (SPE) standards.[^wurth-rd041-design-of-spoe-system]</caption>
 </table>
 
-### PoDL
+### Power over Data Lines (PoDL)
 
-For convenience, the standard allows the DC voltage to applied in either direction by the power source. This means that the receiver requires a rectifier (or similar) to support reverse polarity.[^electric-ui-deep-dive-single-pair-ethernet]
+Power over Data Lines (PoDL) is the name given to the trick of powering devices over single pair ethernet by injecting a DC voltage and superimposing it with the signal onto the single twisted pair cable. The IEEE 802.3bu-2016 amendment first introduced PoDL for SPE standards 100BASE-T1 and 1000BASE-T1. It is now defined for all SPE standards including 100BASE-T1, 1000BASE-T1, 2.5GBASE-T1, 5GBASE-T1 and 10GBASE-T1.[^wikipedia-power-over-ethernet]
+
+<Aside type="note">
+PoDL is not only defined for single pair Ethernet, but also for multi-pair. In a multi-pair setup, the power is applied between single conductors in different pairs.[^wikipedia-power-over-ethernet]
+</Aside>
+
+The standard names a device which provides power as Power Sourcing Equipment (PSE) and a device which consumes power as the Powered Device (PD).[^wurth-rd041-design-of-spoe-system]
+
+<IRef iref="fig-spe-with-podl-diagram"/> is a schematic showing the core component used to build a SPE with PoDL system.
+
+<Image iref="fig-spe-with-podl-diagram" src={import('./_assets/spe-with-podl-diagram.webp')} width="1000px">A schematic showing the core components used in a Single Pair Ethernet (SPE) system with Power over Data Lines (PoDL). Design based of example from Wurth Elektronik.[^wurth-rd041-design-of-spoe-system]</Image>
+
+When PSE wants to provide power to a PD device, it first attempts to detect a PD device, and then classify it using a process called SCCP.[^electric-ui-deep-dive-single-pair-ethernet] The protocol also uses Cable Resistance Measurement (CRM) to assess the quality of the connection.[^wurth-rd041-design-of-spoe-system]
+
+For convenience, the standard allows the DC voltage to applied in either direction by the power sourcing equipment. This means that the receiver requires a rectifier (or similar) to support reverse polarity.[^electric-ui-deep-dive-single-pair-ethernet]
+
+import myText from './data.csv?raw'; // Import as raw text
+
+{myText}
+
+<EnhancedTable
+  data={[
+    { 
+      "Class Num": "0",
+      "Class Name": "12V unregulated",
+      "V_PSE(max)": "18 V",
+      "V_PSE(min)": "6 V",
+      "I_PI(max)": "101 mA",
+      "P_PD(max)": "0.5 W",
+      "V_PD(min)": "4.94 V",
+      "Cable": "-",
+      "Cable Length": "-",
+    },
+    { 
+      "Class Num": "1",
+      "Class Name": "12V unregulated",
+      "V_PSE(max)": "18 V",
+      "V_PSE(min)": "6 V",
+      "I_PI(max)": "227 mA",
+      "P_PD(max)": "1 W",
+      "V_PD(min)": "4.41 V",
+      "Cable": "-",
+      "Cable Length": "-",
+    },
+    { 
+      "Class Num": "2",
+      "Class Name": "12V regulated",
+      "V_PSE(max)": "18 V",
+      "V_PSE(min)": "14.4 V",
+      "I_PI(max)": "249 mA",
+      "P_PD(max)": "3 W",
+      "V_PD(min)": "12 V",
+      "Cable": "-",
+      "Cable Length": "-",
+    },
+    { 
+      "Class Num": "3",
+      "Class Name": "12V regulated",
+      "V_PSE(max)": "18 V",
+      "V_PSE(min)": "14.4 V",
+      "I_PI(max)": "249 mA",
+      "P_PD(max)": "3 W",
+      "V_PD(min)": "12 V",
+      "Cable": "-",
+      "Cable Length": "-",
+    },
+  ]}
+/>
 
 ## EtherCAT
 
 EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
 
-. Each device is daisy chained to the next via Ethernet cable.
-. The master emits a Ethernet frame (telegram).
-. Each slave device reads the data addressed to it "on the fly", and inserts it's own data into the frame "on the fly".
-. Propagation times between slaves are only limited by hardware propagation delays.
+- Each device is daisy chained to the next via Ethernet cable.
+- The master emits a Ethernet frame (telegram).
+- Each slave device reads the data addressed to it "on the fly", and inserts it's own data into the frame "on the fly".
+- Propagation times between slaves are only limited by hardware propagation delays.
 
 The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC is used. However, whilst the slave node use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
 
@@ -256,3 +324,5 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-
 [^lwip-homepage]: lwIP. _Homepage_. Retrieved 2024-08-13, from https://savannah.nongnu.org/projects/lwip/.
 [^electric-ui-deep-dive-single-pair-ethernet]: Electric UI. _A deep dive into Single Pair Ethernet_. Retrieved 2025-10-28, from https://electricui.com/blog/spe-sensor-node.
 [^wurth-rd041-design-of-spoe-system]: Wurth Elektronik. _Reference Design RD041 - Design of a Single Pair Ethernet System with Power over Data Lines (SPoE)_. Retrieved 2025-10-28, from https://www.we-online.com/files/pdf1/rd041b_design-of-a-single-pair-ethernet-system-with-power-over-data-lines-spoe-v1.pdf.
+[^wikipedia-power-over-ethernet]: Wikipedia (2025, Oct 25). _Power over Ethernet_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Power_over_Ethernet.
+[^wikipedia-baseband]: Wikipedia (2025, May 11). _Baseband_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Baseband.
