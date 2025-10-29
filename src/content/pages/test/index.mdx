@@ -307,6 +307,14 @@ ghi         | jkl
 - **Sort:** Click column headers to sort (ascending → descending → none)
 - **Sticky headers:** Scroll down to see headers stick to top
 
+<IRef iref="tbl-podl-classes"/> is an enhanced table powered with imported CSV data. Also, there should be a reference in the table caption.
+
+import podlClasses from './_assets/podl-classes.csv?raw'; // Import as raw text
+
+<EnhancedTable iref="tbl-podl-classes" csv={podlClasses} searchable={false}>
+  <caption slot="caption">A summary of the different PoDL classes.[^table-ref]</caption>
+</EnhancedTable>
+
 A really wide table, which should have a horizontal scroll bar:
 
 Heading 1 | Heading 2

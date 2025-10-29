@@ -234,7 +234,13 @@ For convenience, the standard allows the DC voltage to applied in either directi
 
 import podlClasses from './_assets/podl-classes.csv?raw'; // Import as raw text
 
-<EnhancedTable csv={podlClasses}/>
+<IRef iref="tbl-podl-classes" /> is a summary of the different PoDL classes defined in the IEEE standards and the various voltages, currents and powers supported by each class.
+
+<EnhancedTable iref="tbl-podl-classes" csv={podlClasses} searchable={false}>
+  <caption slot="caption">A summary of the different PoDL classes.[^wurth-rd041-design-of-spoe-system]</caption>
+</EnhancedTable>
+
+Class 15 provides the highest power output at 52 W.
 
 ## EtherCAT
 
