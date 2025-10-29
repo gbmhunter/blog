@@ -232,58 +232,9 @@ When PSE wants to provide power to a PD device, it first attempts to detect a PD
 
 For convenience, the standard allows the DC voltage to applied in either direction by the power sourcing equipment. This means that the receiver requires a rectifier (or similar) to support reverse polarity.[^electric-ui-deep-dive-single-pair-ethernet]
 
-import myText from './data.csv?raw'; // Import as raw text
+import podlClasses from './_assets/podl-classes.csv?raw'; // Import as raw text
 
-{myText}
-
-<EnhancedTable
-  data={[
-    { 
-      "Class Num": "0",
-      "Class Name": "12V unregulated",
-      "V_PSE(max)": "18 V",
-      "V_PSE(min)": "6 V",
-      "I_PI(max)": "101 mA",
-      "P_PD(max)": "0.5 W",
-      "V_PD(min)": "4.94 V",
-      "Cable": "-",
-      "Cable Length": "-",
-    },
-    { 
-      "Class Num": "1",
-      "Class Name": "12V unregulated",
-      "V_PSE(max)": "18 V",
-      "V_PSE(min)": "6 V",
-      "I_PI(max)": "227 mA",
-      "P_PD(max)": "1 W",
-      "V_PD(min)": "4.41 V",
-      "Cable": "-",
-      "Cable Length": "-",
-    },
-    { 
-      "Class Num": "2",
-      "Class Name": "12V regulated",
-      "V_PSE(max)": "18 V",
-      "V_PSE(min)": "14.4 V",
-      "I_PI(max)": "249 mA",
-      "P_PD(max)": "3 W",
-      "V_PD(min)": "12 V",
-      "Cable": "-",
-      "Cable Length": "-",
-    },
-    { 
-      "Class Num": "3",
-      "Class Name": "12V regulated",
-      "V_PSE(max)": "18 V",
-      "V_PSE(min)": "14.4 V",
-      "I_PI(max)": "249 mA",
-      "P_PD(max)": "3 W",
-      "V_PD(min)": "12 V",
-      "Cable": "-",
-      "Cable Length": "-",
-    },
-  ]}
-/>
+<EnhancedTable csv={podlClasses}/>
 
 ## EtherCAT
 

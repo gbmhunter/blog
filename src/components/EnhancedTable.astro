@@ -1,7 +1,8 @@
 ---
 interface Props {
   iref?: string;
-  data: { [key: string]: string }[];
+  data?: { [key: string]: string }[];
+  csv?: string;
   caption?: string;
   sticky?: boolean;
   sortable?: boolean;
@@ -10,12 +11,50 @@ interface Props {
 
 const {
   iref,
-  data,
+  data: propData,
+  csv,
   caption,
   sticky = false,
   sortable = true,
   searchable = true
 } = Astro.props as Props;
+
+// CSV parsing function
+function parseCSV(csvText: string): { [key: string]: string }[] {
+  if (!csvText || typeof csvText !== 'string') {
+    console.warn('EnhancedTable: CSV text is empty or not a string');
+    return [];
+  }
+
+  const lines = csvText.trim().split('\n').filter(line => line.trim());
+  if (lines.length < 2) {
+    console.warn('EnhancedTable: CSV must have at least 2 lines (header + data)');
+    return [];
+  }
+
+  // Parse headers
+  const headers = lines[0].split(',').map(h => h.trim());
+
+  // Parse data rows
+  return lines.slice(1).map(line => {
+    const values = line.split(',').map(v => v.trim());
+    const row: { [key: string]: string } = {};
+    headers.forEach((header, index) => {
+      row[header] = values[index] || '';
+    });
+    return row;
+  });
+}
+
+// Determine data source: CSV takes precedence over data prop
+let data: { [key: string]: string }[] = [];
+if (csv) {
+  data = parseCSV(csv);
+} else if (propData && Array.isArray(propData)) {
+  data = propData;
+} else {
+  console.warn('EnhancedTable: No valid data or csv prop provided');
+}
 
 // Generate a unique ID for this table instance
 const tableId = iref || `table-${Math.random().toString(36).substring(2, 11)}`;
