@@ -38,7 +38,7 @@ The _PHY_ is the circuitry which drives the magnetics.
 
 ## Standards
 
-Many of the IEEE standards are in a form similar to `10BASE-T`. In this example, the `10` represents a throughput of 10 Mbps, `BASE` is because it uses baseband transmission (the twisted pairs can transmit frequencies all the way down to DC), and the `T` indicates the transmission medium used.[^wikipedia-baseband]
+Many of the IEEE standards are in a form similar to `10BASE-T`. In this example, the `10` represents a throughput of 10 Mbps, `BASE` is because it uses baseband transmission (the twisted pairs can transmit frequencies all the way down to DC), and the `T` indicates the transmission medium used.[^wikipedia-baseband] G is added to the throughput to indicate Gbps, e.g. `5GBASE-T` is a throughput of 5 Gbps.
 
 ### 10BASE-T
 
@@ -242,6 +242,16 @@ import podlClasses from './_assets/podl-classes.csv?raw'; // Import as raw text
 
 Class 15 provides the highest power output at 52 W.
 
+#### PoDL Detection Phase
+
+The detection phase is when the PSE tried to detect a PD device. The PSE sources a constant current between 9 and 16 mA with an open-loop voltage of 4.75 and 5.5 V. The PSE measures the voltage across the cable. If it is between 4.05 and 4.7 V the PSE concludes that a valid PD device is present.[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]
+
+#### PoDL Classification Phase
+
+Classification is done after detection and is when the PSE classifies the PD device into a specific class. This is done using a simple low speed one-wire protocol called SCCP. It is a pull-up, drive low protocol similar to I2C but with just the one wire. PSE provides the pull-up via a current source. Both the PSE and the PD can drive the line low by switching a transistor to ground.
+
+Every SCCP transaction begins with the PSE driving the line low. If the PSE is transmitting, it drives it low to a set period of time. Different low durations determine whether a 0 or a 1 is sent. If the PD is transmitting, the PSE still drives the line low initially but then the PD takes over and holds it low for a set duration to determine a 0 or 1. Each bit is defined to take within 2.7 and 3.3 ms. If we assume the average of 3 ms, this makes the bandwidth a rather slow 333 bps. This is slow enough for MCUs to directly implement in firmware (i.e. no dedicated hardware peripheral required).[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse] 
+
 ## EtherCAT
 
 EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
@@ -283,3 +293,4 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-
 [^wurth-rd041-design-of-spoe-system]: Wurth Elektronik. _Reference Design RD041 - Design of a Single Pair Ethernet System with Power over Data Lines (SPoE)_. Retrieved 2025-10-28, from https://www.we-online.com/files/pdf1/rd041b_design-of-a-single-pair-ethernet-system-with-power-over-data-lines-spoe-v1.pdf.
 [^wikipedia-power-over-ethernet]: Wikipedia (2025, Oct 25). _Power over Ethernet_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Power_over_Ethernet.
 [^wikipedia-baseband]: Wikipedia (2025, May 11). _Baseband_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Baseband.
+[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]: Steffen Graf (2021, Nov). _How to Implement an IEEE 802.3cg or 802.3bu Compliant PoDL PSE_. Texas Instruments. Retrieved 2025-10-29, from https://www.ti.com/lit/ab/snla395/snla395.pdf.

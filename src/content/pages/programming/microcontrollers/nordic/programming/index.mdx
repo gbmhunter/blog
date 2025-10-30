@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2025-02-11
 description: Information on how to program Nordic Semiconductor MCUs. This includes the hardware probes (nRF development kits and J-Link probes), and software tools (nrfutil and pynrfjprog).
-lastUpdated: 2025-07-20
-tags: [programming, microcontrollers, Nordic, nrfutil, pynrfjprog, SoC, development kit]
+lastUpdated: 2025-10-30
+tags: [programming, microcontrollers, Nordic, nrfutil, pynrfjprog, SoC, development kit, J-Link, SEGGER]
 title: Programming Nordic MCUs
 type: page
 ---
@@ -18,7 +18,7 @@ The development kits have a SEGGER J-Link probe built into them (presumably Nord
 
 ## Making Sure You Can Only Program External Boards
 
-One annoying issue with using the development kits is that you can easily accidentally start programming the on-board MCU instead of your external board. All it takes is a loose/unplugged programming cable and the J-Link will automatically switch back to programming the on-board MCU. An easy way to prevent this is to short the `SELECT` pin on the "Debug Out" connector to GND, as shown in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-schematics" /> (the red squiggle is the short). This tricks the J-Link into thinking there is always an external MCU connected and making it impossible to program the on-board MCU.
+One annoying issue with using the Nordic development kits for programming is that you can easily accidentally start programming the on-board MCU instead of your external board. All it takes is a loose/unplugged programming cable and the J-Link will automatically switch back to programming the on-board MCU. An easy way to prevent this is to short the `SELECT` pin on the "Debug Out" connector to GND, as shown in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-schematics" /> (the red squiggle is the short). This tricks the J-Link into thinking there is always an external MCU connected and making it impossible to program the on-board MCU.
 
 <Image iref="fig-shorting-select-to-gnd-on-nrf52-dk-schematics" src={import('./_assets/shorting-select-to-gnd-on-nrf52-dk-schematics.webp')} width="900px">Shorting select to GND on the nRF52 DK.</Image>
 
@@ -27,6 +27,8 @@ Luckily, there is a `GND` pin adjacent to the `SELECT` pin on the SMD header, at
 <Image iref="fig-shorting-select-to-gnd-on-nrf52-dk-photo" src={import('./_assets/shorting-select-to-gnd-on-nrf52-dk-photo.webp')} width="900px">Shorting select to GND on the nRF52 DK.</Image>
 
 While you are doing this, you may also want to bridge `SB32` (which can also be seen in <IRef iref="fig-shorting-select-to-gnd-on-nrf52-dk-photo" />). Bridging this connects the on-board +3.3V to the VDD pin, allowing you to power the target device from the development kit. This can be useful for one cable programming in a production environment. This only works if the current draw of the target device is small.
+
+Also note that some nRF development kits such as the nRF9160-DK have two on-board MCUs that can be programmed (typically a nRF52 and a nRF91). A DIP switch selects the one the J-Link will program (if nothing is connected to the external programming connector).
 
 ## nrfutil
 
@@ -64,6 +66,24 @@ The nRF Util device sub-command can list, program, recover, erase, and do variou
 nrfutil install device
 ```
 
+You can list information about a device with `nrfutil device device-info`:
+
+```bash
+$ nrfutil device device-info
+serial_number: 000960036306
+        boardVersion: PCA10090
+        deviceFamily: NRF91_FAMILY
+        deviceVersion: NRF9151_xxAA_REV3
+        jlinkObFirmwareVersion: J-Link OB-K22-NordicSemi compiled Jul  8 2025 10:15:22
+        protectionStatus: NRFDL_PROTECTION_STATUS_NONE
+```
+
+This lists things such as the MCU device family (and version, which is like the family, but more specific) and the protection status.
+
+<Aside type="caution">
+I connected different MCUs to the programmer and they all reported the same serial number. This makes me believe that this is the serial number of the programmer itself, rather than the MCU!
+</Aside>
+
 Device recovery can be performed with:
 
 ```bash
@@ -72,8 +92,7 @@ nrfutil device recover
 
 <Image src={import('./_assets/using-nrf-util-device-recover-terminal-screenshot.webp')} width="600px">Screenshot showing device recovery (without having to erase the device) using the nrfutil device recover command.</Image>
 
-
-The recover command can be run on an already recovered device without error.
+`nrfutil device recover` can be successfully run on an already recovered device. Once recovered, you should be able to verify it worked by running `nrfutil device device-info` and checking that the protection status is `NRFDL_PROTECTION_STATUS_NONE`.
 
 ## pynrfjprog
 
