@@ -38,7 +38,7 @@ The _PHY_ is the circuitry which drives the magnetics.
 
 ## Standards
 
-Many of the IEEE standards are in a form similar to `10BASE-T`. In this example, the `10` represents a throughput of 10 Mbps, `BASE` is because it uses baseband transmission (the twisted pairs can transmit frequencies all the way down to DC), and the `T` indicates the transmission medium used.[^wikipedia-baseband] G is added to the throughput to indicate Gbps, e.g. `5GBASE-T` is a throughput of 5 Gbps.
+Many of the IEEE Ethernet standards are in a form similar to `10BASE-T`. In this example, the `10` represents a throughput of 10 Mbps, `BASE` is because it uses baseband transmission (the twisted pairs can transmit frequencies all the way down to DC), and the `T` indicates the transmission medium used.[^wikipedia-baseband] G is added to the throughput to indicate Gbps, e.g. `5GBASE-T` is a throughput of 5 Gbps.
 
 ### 10BASE-T
 
@@ -130,6 +130,8 @@ Single Pair Ethernet (SPE) is a version of Ethernet which uses a single twisted 
 
 Bi-directional data over the same pair works by each side cancelling out their own sent signal.
 
+All SPE standards have `-T1` in their name, since the `1` refers to a single twisted pair.
+
 <table>
   <thead>
     <tr>
@@ -214,6 +216,12 @@ Bi-directional data over the same pair works by each side cancelling out their o
   <caption>A summary of the Single Pair Ethernet (SPE) standards.[^wurth-rd041-design-of-spoe-system]</caption>
 </table>
 
+### Automotive Ethernet
+
+Automotive Ethernet (formerly called BroadR-Reach or OABR (Open Alliance BroadR-Reach)) can be thought of as a subgroup of SPE. It uses the same single twisted pair cable, but defines additional high-level protocols on top of the SPE protocol.[^vector-difference-between-automotive-and-standard-ethernet-technologies]
+
+It is a popular choice for automotive applications which is gaining momentum against the more traditional [CAN bus](/electronics/communication-protocols/can-protocol/) for the backbone of the vehicle network.
+
 ### Power over Data Lines (PoDL)
 
 Power over Data Lines (PoDL) is the name given to the trick of powering devices over single pair ethernet by injecting a DC voltage and superimposing it with the signal onto the single twisted pair cable. The IEEE 802.3bu-2016 amendment first introduced PoDL for SPE standards 100BASE-T1 and 1000BASE-T1. It is now defined for all SPE standards including 100BASE-T1, 1000BASE-T1, 2.5GBASE-T1, 5GBASE-T1 and 10GBASE-T1.[^wikipedia-power-over-ethernet]
@@ -227,6 +235,8 @@ The standard names a device which provides power as Power Sourcing Equipment (PS
 <IRef iref="fig-spe-with-podl-diagram"/> is a schematic showing the core component used to build a SPE with PoDL system.
 
 <Image iref="fig-spe-with-podl-diagram" src={import('./_assets/spe-with-podl-diagram.webp')} width="1000px">A schematic showing the core components used in a Single Pair Ethernet (SPE) system with Power over Data Lines (PoDL). Design based of example from Wurth Elektronik.[^wurth-rd041-design-of-spoe-system]</Image>
+
+Conventional IEEE 802.3 multipair Ethernet (including PoE) requires galvanic isolation from the chassis ground. According to IEEE 802.3bu (PoDL) and IEEE 802.3cg (SPoE) standards, PSE/PDs must provide at least 1 MΩ (@ 5 V ± 20%) isolation between all accessible external conductors and the interface (MDI).[^wurth-rd041-design-of-spoe-system]
 
 When PSE wants to provide power to a PD device, it first attempts to detect a PD device, and then classify it using a process called SCCP.[^electric-ui-deep-dive-single-pair-ethernet] The protocol also uses Cable Resistance Measurement (CRM) to assess the quality of the connection.[^wurth-rd041-design-of-spoe-system]
 
@@ -294,3 +304,4 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-
 [^wikipedia-power-over-ethernet]: Wikipedia (2025, Oct 25). _Power over Ethernet_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Power_over_Ethernet.
 [^wikipedia-baseband]: Wikipedia (2025, May 11). _Baseband_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Baseband.
 [^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]: Steffen Graf (2021, Nov). _How to Implement an IEEE 802.3cg or 802.3bu Compliant PoDL PSE_. Texas Instruments. Retrieved 2025-10-29, from https://www.ti.com/lit/ab/snla395/snla395.pdf.
+[^vector-difference-between-automotive-and-standard-ethernet-technologies]: Vector (2023-03-21). _Difference between Automotive and Standard Ethernet Technologies_ [KnowledgeBase article]. Retrieved 2025-11-02, from https://support.vector.com/kb?id=kb_article_view&sysparm_article=KB0013990&sys_kb_id=97ff00263b67eed0c1dc1d24c3e45aff&spa=1.

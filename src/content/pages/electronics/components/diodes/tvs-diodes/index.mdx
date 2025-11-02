@@ -17,13 +17,13 @@ They come in either _uni-directional_ or _bi-directional_ flavours. Uni-directio
 
 ## Schematic Symbol
 
-<Image src={import('./_assets/tvs-diode-schematic-symbol.webp')} width="400">My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol.</Image>
+<Image src={import('./_assets/tvs-diode-schematic-symbol.webp')} width="400px">My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol.</Image>
 
 ## Arrays
 
 TVS diodes can be grouped into IC packages called arrays. A typical schematic symbol for a diode array is shown below.
 
-<Image src={import('./_assets/schematic-symbol-esd-diode-array.png')} width="300">The schematic symbol of a diode array, with a common anode connection.</Image>
+<Image src={import('./_assets/schematic-symbol-esd-diode-array.png')} width="300px">The schematic symbol of a diode array, with a common anode connection.</Image>
 
 ## Important Parameters
 
@@ -48,13 +48,13 @@ The maximum power the TVS diode can dissipate, for a specified time period. Typi
 
 This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
 
-Vishay uses the symbol $V_{WM}$ to denote the standoff voltage[^vishay-xld5a24ca-ds].
+Vishay uses the symbol $V_{WM}$ to denote the standoff voltage.[^vishay-xld5a24ca-ds]
 
 ### Leakage Current
 
 The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. Be warned, the leakage current of TVS diodes which have low voltage stand-offs (e.g. &lt;10V), can have large leakage currents! A 5V stand-off TVS diode typically has a reverse-leakage current of around 500uA, but TVS diodes with a stand-off voltage of 10V or higher have a reverse-leakage of 1uA or less. Note that at low stand-off voltages, the leakage current of a bi-directional diode can be double that of a uni-directional diode for the same stand-off voltage.
 
-<Image src={import('./_assets/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png')} width="1182">Leakage currents of TVS diodes with low stand-off voltages.</Image>
+<Image src={import('./_assets/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png')} width="1000px">Leakage currents of TVS diodes with low stand-off voltages.</Image>
 
 For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 
@@ -64,7 +64,7 @@ Unusually, TVS diodes. along with a fuse or other current-limiting device, can a
 
 They are especially suited to this role (when considering other diodes) as the are usually built to dissipate large amounts of heat.
 
-<Image src={import('./_assets/tvs-diode-for-reverse-polarity-protection.png')} width="700">A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection.</Image>
+<Image src={import('./_assets/tvs-diode-for-reverse-polarity-protection.png')} width="700px">A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection.</Image>
 
 In the schematic above, the **fuse will quickly blow** if the power supply is connected to the input connector the wrong way around.
 
@@ -74,13 +74,21 @@ There are a family of TVS diodes called low-capacitance (or ultra-low) TVS diode
 
 This low capacitance is achieved by adding a forward-biased general purpose diode in series with the usual reverse-biased TVS (zener-style diode). The schematic symbol for a low-capacitance TVS diode is shown below:
 
-<Image src={import('./_assets/internal-schematic-of-low-capacitance-tvs-diode-annotated.png')} width="500">The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.</Image>
+<Image src={import('./_assets/internal-schematic-of-low-capacitance-tvs-diode-annotated.png')} width="500px">The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.</Image>
 
 The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
 
+## Reducing TVS Capacitance Manually
+
+High power TVS diodes have a significant amount of capacitance. For example, the Wurth Elektronik 824541361 is a 36V 1500W TVS diode with a capacitance of approx. 700pF at 24V. This can be too high for some applications in where you are protecting high-speed data lines. And there may be no single TVS diode component option which provides both the high power absorption and low capacitance you require. In this case, one trick is to add standard general purpose diodes in series with the TVS diode. <IRef iref="fig-manual-low-capacitance-tvs-trick-on-wurth-elektronik-spe-with-podl" /> shows this trick being used (see red circled components) to reduce the capacitance of TVS diode in a Single Pair Ethernet (SPE) system with Power over Data Lines (PoDL).
+
+<Image iref="fig-manual-low-capacitance-tvs-trick-on-wurth-elektronik-spe-with-podl" src={import('./_assets/manual-low-capacitance-tvs-trick-on-wurth-elektronik-spe-with-podl.webp')} width="1000px">A schematic of a [Ethernet SPE with PoDL system](/electronics/communication-protocols/ethernet-protocol#power-over-data-lines-podl) showing general purpose "steering diodes" added to TVS diodes to reduce the effective capacitance.[^wurth-rd041-design-of-spoe-system]</Image>
+
+The low capacitance of the general purpose diode when in series with the TVS diode makes the total capacitance much lower (assuming the GP diode has a much lower capacitance, the total capacitance will only be slightly higher than the capacitance of general purpose diode itself due to the [law of series capacitance](/electronics/components/capacitors/#capacitors-in-series)).
+
 ## Snapback Type TVS Diodes
 
-Snapback TVS diodes are a type of TVS diode in which the clamping voltage right after triggering is less than the trigger voltage (a form of foldback). This is to provider a harder "turn-on" characteristic and results in the voltage not creeping as far above the reverse standoff voltage than with a conventional TVS. Snapback can either be _shallow_ or _deep_, depending on the application. Shallow snapback can be achieved with a standard TVS diode connected in parallel with a BJT. Deep snapback can be achieved with a self-triggering thyristor circuit[^semtech-tvs-just-a-diode-part-2].
+Snapback TVS diodes are a type of TVS diode in which the clamping voltage right after triggering is less than the trigger voltage (a form of foldback). This is to provider a harder "turn-on" characteristic and results in the voltage not creeping as far above the reverse standoff voltage than with a conventional TVS. Snapback can either be _shallow_ or _deep_, depending on the application. Shallow snapback can be achieved with a standard TVS diode connected in parallel with a BJT. Deep snapback can be achieved with a self-triggering thyristor circuit.[^semtech-tvs-just-a-diode-part-2]
 
 <Image src={import('./_assets/vishay-snapback-tvs-typical-vi-curve-vs-standard-tvs.png')} width="900px">Excerpt from Vishay document showing the V/I curve of a snapback TVS vs. a conventional TVS[^vishay-did-you-know-snapback].</Image>
 
@@ -95,14 +103,14 @@ Load-dump TVS diodes are designed to protect systems when the alternator is runn
 **Why does this happen?** When the battery is very flat, the alternator is generating a large amount of current to charge the battery. When the battery is suddenly disconnected, the load on the alternator suddenly decreases. The field windings which are used to regulate the alternators output current have a significant inductance to them. Because of this inductance, the control circuitry cannot reduce the field winding current fast enough, the alternator starts producing too much energy and thus a large voltage spike occurs on the output[^wikipedia-load-dump].
 
 <Aside type="tip">
-The alternators main windings also have an inductance, which when the current is suddenly reduced also contributes to the output voltage spike (this might have been your first guess as to why the spike occurs in the first place). However, it's contribution is the voltage spike is far less than that due to the field windings[^wikipedia-load-dump].  
+The alternators main windings also have an inductance, which when the current is suddenly reduced also contributes to the output voltage spike (this might have been your first guess as to why the spike occurs in the first place). However, it's contribution is the voltage spike is far less than that due to the field windings.[^wikipedia-load-dump]
 </Aside>
 
-A "standard" load-dump surge which TVS diodes can be rated to (and products tested against) is defined in ISO16750-2[^diodes-inc-load-dump-tvs-series-ds].
+A "standard" load-dump surge which TVS diodes can be rated to (and products tested against) is defined in ISO16750-2.[^diodes-inc-load-dump-tvs-series-ds]
 
-ISO7637-2 is an older standard which defines only 1 pulse. ISO16750-2 is a newer standard which 10 pulses in 10 minutes. It also defines a higher Us and larger voltage range[^littelfuse-load-dump-standard].
+ISO7637-2 is an older standard which defines only 1 pulse. ISO16750-2 is a newer standard which 10 pulses in 10 minutes. It also defines a higher Us and larger voltage range.[^littelfuse-load-dump-standard]
 
-<Image src={import('./_assets/iso7637-unsuppressed-load-dump-pulse-5.webp')} width="700">The unsuppressed load dump pulse (pulse 5) from ISO-7637-2:2004[^ti-snva681a-load-dump-protection].</Image>
+<Image src={import('./_assets/iso7637-unsuppressed-load-dump-pulse-5.webp')} width="700px">The unsuppressed load dump pulse (pulse 5) from ISO-7637-2:2004.[^ti-snva681a-load-dump-protection]</Image>
 
 ## Special-Purpose TVS Diodes
 
@@ -110,9 +118,13 @@ ISO7637-2 is an older standard which defines only 1 pulse. ISO16750-2 is a newer
 
 TVS diodes built specifically for protecting RS-485 communication protocol bus lines are bi-directional and have two different hold-off voltages to meet the RS-485 spec. They normally include the character sequence "SM712" in their part name (e.g. SM712-02HTG by Littelfuse and SM712-TP by Micro Commerical).
 
-<Image src={import('./_assets/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png')} width="500">The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf.</Image>
+<Image src={import('./_assets/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png')} width="500px">The pinout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf.</Image>
 
 More information on these diodes can be found in the [Specialised TVS Diodes section on the RS-485 Protocol page](/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^semtech-tvs-just-a-diode-part-2]: Bill Russell (2020, Mar 18). _TVS? It’s Just a Diode, Right? Part Two_. Semtech. Retrieved 2023-05-30, from https://blog.semtech.com/tvs-its-just-a-diode-right-part-two.
 [^vishay-did-you-know-snapback]: Vishay (2022). _Did you know? - Industry-first Snapback Type XClampR™ TVS_. Retrieved 2023-05-30, from https://www.vishay.com/docs/48799/ms26900578_did_you_know-xclampr_tvs.pdf.
@@ -121,3 +133,4 @@ More information on these diodes can be found in the [Specialised TVS Diodes sec
 [^littelfuse-load-dump-standard]: Littelfuse. _TVS Diodes to Meet Automotive Load Dump Standard_. Retrieved 2024-08-06, from https://m.littelfuse.com/~/media/electronics/application_notes/littelfuse_tvs_diode_meet_automotive_load_dump_standard_application_note.pdf.pdf.
 [^wikipedia-load-dump]. Wikipedia (2023, Dec 4). _Load dump_. Retrieved 2024-08-07, from https://en.wikipedia.org/wiki/Load_dump.
 [^ti-snva681a-load-dump-protection]: Atul Singh (2015, Mar). _SNVA681A - Application Report - Load Dump and Cranking Protection for Automotive Backlight LED Power Supply_. Texas Instruments. Retrieved 2024-08-07, from https://www.ti.com/lit/an/snva681a/snva681a.pdf.
+[^wurth-rd041-design-of-spoe-system]: Wurth Elektronik. _Reference Design RD041 - Design of a Single Pair Ethernet System with Power over Data Lines (SPoE)_. Retrieved 2025-10-28, from https://www.we-online.com/files/pdf1/rd041b_design-of-a-single-pair-ethernet-system-with-power-over-data-lines-spoe-v1.pdf.

@@ -94,6 +94,16 @@ nrfutil device recover
 
 `nrfutil device recover` can be successfully run on an already recovered device. Once recovered, you should be able to verify it worked by running `nrfutil device device-info` and checking that the protection status is `NRFDL_PROTECTION_STATUS_NONE`.
 
+You can reset the MCU by running `nrfutil device reset`. This command supports a `--reset-kind` flag which specifies what kind of reset to perform. The following values are supported:
+
+- `RESET_DEFAULT`: Selects a predefined reset kind based on the device family. For nRF54H and nRF92 this is `RESET_HARD`, for all others it is `RESET_SYSTEM`.
+- `RESET_SYSTEM`: Trigger an ARM system reset by setting the `SYSRESETREQ` bit in the `AIRCR` register of the CPU. On devices with the Secure Domain firmware (SecDom FW), this is supported only on the secure core.
+- `RESET_HARD`: Trigger a hard reset over the CTRL-AP. This is supported only for devices with the CTRL-AP implementation that has this functionality.
+- `RESET_SOFT`: Trigger a soft reset over the CTRL-AP. This is supported only for devices with the CTRL-AP implementation that has this functionality.
+- `RESET_DEBUG` (deprecated): Alias for `RESET_SOFT`. This option is deprecated and will be removed in a future version.
+- `RESET_PIN`: Trigger a pin reset by toggling the reset pin.
+- `RESET_VIA_SECDOM`: Send a reset command over ADAC to the SecDom FW. The SecDom FW handles the reset of other domains and defines how this process is carried out. The SecDom is not reset as part of this process. This option is supported on devices with the SecDom FW.
+
 ## pynrfjprog
 
 pynrfjprog is a Python wrapper around the Nordic Semiconductor nrfjprog DLL (dynamic link library). The code is open source and available on [GitHub](https://github.com/NordicSemiconductor/pynrfjprog).

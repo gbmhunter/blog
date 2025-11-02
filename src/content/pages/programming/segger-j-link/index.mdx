@@ -42,6 +42,14 @@ RTT supports multiple communication channels in both directions.[^segger-about-r
 
 SEGGER provides an RTT client as part of the J-Link Software and Documentation Pack. It is called `JLinkRTTClient.exe` and is typically installed in the installation directory. When you run the client, it connects to an RTT server running at `localhost:19021`. Before running the client, make sure you have started `JLink.exe` and connected to your target device. This will start up the server which the client will connect to.
 
+<Image iref="fig-screenshot-of-connection-with-segger-jlink-rtt-client" src={import('./_assets/screenshot-of-connection-with-segger-jlink-rtt-client.webp')} width="800px">Screenshot of a RTT connection in Windows with the SEGGER J-Link RTT client.</Image>
+
+By default, the JLink client will echo data back to the screen. This can be disabled by providing the command line option `-LocalEcho Off`:
+
+```bash
+JLinkRTTClient.exe -LocalEcho Off
+```
+
 ## Square pylink
 
 `pylink` is a Python library for controlling Segger J-Link devices. It supports:
