@@ -38,9 +38,11 @@ Files to support these RTOSs can be found in the `GDBServer` sub-directory under
 
 Real-Time Transfer (RTT) is a feature of the J-Link that allows you to transfer arbitrary data between the host and the target microcontroller over the SWD or JTAG interface. It works by writing data to a special region of memory on the target microcontroller. The J-Link probe can read this data without interrupting the CPU and can be read a high speeds (> 1MHz). It is supported on ARM Cortex-A/R/M, RISC-V and Renesas RX architectures.[^segger-about-real-time-transfer]
 
-RTT supports multiple communication channels in both directions.[^segger-about-real-time-transfer] Each channel can have a direction (up vs. down), buffer size and flags associated with it.
+<Image iref="fig-comparison-of-rtt-swo-and-semihosting" src={import('./_assets/comparison-of-rtt-swo-and-semihosting.png')} width="500px">Comparison of RTT, SWO and Semihosting speeds when outputting 82 characters from a MCU to a host computer. Data from SEGGER's J-Link RTT Client documentation.[^segger-knowledge-base-rtt]</Image>
 
-SEGGER provides an RTT client as part of the J-Link Software and Documentation Pack. It is called `JLinkRTTClient.exe` and is typically installed in the installation directory. When you run the client, it connects to an RTT server running at `localhost:19021`. Before running the client, make sure you have started `JLink.exe` and connected to your target device. This will start up the server which the client will connect to.
+RTT supports multiple communication channels in both directions.[^segger-about-real-time-transfer] Each channel can have a direction (up vs. down), buffer size and flags associated with it. Up channels are used to send data from the target MCU to the host computer, and down channels are used to send data from the host computer to the target MCU. This is always the case, i.e. the naming convention does NOT change with respect to the device you are writing software for (as opposed to say UART, where the naming of RX and TX depends on which device you are talking about).
+
+SEGGER provides two tools to view RTT data on your computer. A command line RTT client called `JLinkRTTClient.exe` and a GUI RTT client called `J-Link RTT Viewer`. Both of these are provided as part of the J-Link Software and Documentation Pack. When you run the client, it connects to an RTT server running at `localhost:19021`. Before running the client, make sure you have started `JLink.exe` and connected to your target device. This will start up the server which the client will connect to.
 
 <Image iref="fig-screenshot-of-connection-with-segger-jlink-rtt-client" src={import('./_assets/screenshot-of-connection-with-segger-jlink-rtt-client.webp')} width="800px">Screenshot of a RTT connection in Windows with the SEGGER J-Link RTT client.</Image>
 
@@ -49,6 +51,8 @@ By default, the JLink client will echo data back to the screen. This can be disa
 ```bash
 JLinkRTTClient.exe -LocalEcho Off
 ```
+
+J-Scope, a data visualization tool by SEGGER that can graph MCU data uses RTT as one of it's two communication channel options (SEGGER's High-Speed Sampling or HSS is the other option). J-Scope automatically reads memory on the target MCU and graphs the data in real-time.[^segger-j-scope-real-time-data-visualization]
 
 ## Square pylink
 
@@ -83,3 +87,5 @@ PhinCo/node-jlink is a NodeJS driver for the SEGGER J-Link command line tool jli
 [^github-phinco-node-jlink]: PhinCo. _PhinCo/node-jlink_ [repository]. GitHub. Retrieved 2025-10-21, from https://github.com/PhinCo/node-jlink.
 [^segger-j-link-commander]: SEGGER. _J-Link Commander_. Retrieved 2025-10-22, from https://kb.segger.com/J-Link_Comm
 [^segger-about-real-time-transfer]: SEGGER. _Real Time Transfer (RTT)_. Retrieved 2025-10-23, from https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/.
+[^segger-j-scope-real-time-data-visualization]: SEGGER. _J-Scope - Real-time data visualization_. Retrieved 2025-11-03, from https://www.segger.com/products/debug-probes/j-link/tools/j-scope/.
+[^segger-knowledge-base-rtt]: SEGGER. _RTT_ [knowledge base article]. Retrieved 2025-11-03, from https://kb.segger.com/RTT.
