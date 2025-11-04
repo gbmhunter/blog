@@ -38,7 +38,9 @@ Files to support these RTOSs can be found in the `GDBServer` sub-directory under
 
 Real-Time Transfer (RTT) is a feature of the J-Link that allows you to transfer arbitrary data between the host and the target microcontroller over the SWD or JTAG interface. It works by writing data to a special region of memory on the target microcontroller. The J-Link probe can read this data without interrupting the CPU and can be read a high speeds (> 1MHz). It is supported on ARM Cortex-A/R/M, RISC-V and Renesas RX architectures.[^segger-about-real-time-transfer]
 
-<Image iref="fig-comparison-of-rtt-swo-and-semihosting" src={import('./_assets/comparison-of-rtt-swo-and-semihosting.png')} width="500px">Comparison of RTT, SWO and Semihosting speeds when outputting 82 characters from a MCU to a host computer. Data from SEGGER's J-Link RTT Client documentation.[^segger-knowledge-base-rtt]</Image>
+<IRef iref="fig-comparison-of-rtt-swo-and-semihosting"/> shows the speeds of outputting 82 characters from a MCU to a host computer using RTT, SWO and semihosting (semihosting is when the target CPU is halted and put under control of the debug host for a period of time to perform some action, e.g. read memory). Note the logarithmic y-axis!
+
+<Image iref="fig-comparison-of-rtt-swo-and-semihosting" src={import('./_assets/comparison-of-rtt-swo-and-semihosting.png')} width="500px">Comparison of RTT, SWO and semihosting speeds when outputting 82 characters from a MCU to a host computer. Data from SEGGER's J-Link RTT Client documentation.[^segger-knowledge-base-rtt]</Image>
 
 RTT supports multiple communication channels in both directions.[^segger-about-real-time-transfer] Each channel can have a direction (up vs. down), buffer size and flags associated with it. Up channels are used to send data from the target MCU to the host computer, and down channels are used to send data from the host computer to the target MCU. This is always the case, i.e. the naming convention does NOT change with respect to the device you are writing software for (as opposed to say UART, where the naming of RX and TX depends on which device you are talking about).
 
