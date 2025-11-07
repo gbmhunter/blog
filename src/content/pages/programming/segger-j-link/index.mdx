@@ -20,6 +20,9 @@ Multiple versions of the J-Link Software and Documentation Pack can be installed
 
 Chip names are how J-Link identifies the connected device. For example, for the nRF9151 MCUs from Nordic Semiconductor, the name is `nRF9151_xxCA`.
 
+<Aside type="tip">
+If you get the warning: `Identified core does not match configuration. (Found: Cortex-M4, Configured: Cortex-M33)` while connecting, it might mean you have connected to the wrong device! This is a common occurrence when using nRF development boards to program other nRF MCUs, as the development board has it's own target MCU which will be selected if the external one cannot be found.
+</Aside>
 ## RTOS Awareness
 
 The J-Link has built-in RTOS awareness for the following RTOSs:

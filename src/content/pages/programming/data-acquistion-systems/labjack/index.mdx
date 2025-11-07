@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2024-08-30
 description: LabJack is a company that produces data acquisition systems (DAQs).
-lastUpdated: 2024-08-30
-tags: [programming, data acquisition systems, DAQs, LabJack, U6]
+lastUpdated: 2025-11-05
+tags: [programming, data acquisition systems, DAQs, LabJack, U6, Python, LabJackPython, Exodriver, LJM]
 title: LabJack
 type: page
 ---
@@ -12,7 +12,19 @@ type: page
 
 LabJack is a company that produces data acquisition systems (DAQs).
 
-Python is one of the best supported languages to interface to the LabJack devices, followed by C and C++. Python is supported by most devices on most operating systems (e.g. Windows, Linux, macOS).
+## Drivers
+
+LabJack provides drivers for a variety of operating systems and CPU architectures. The following table shows the drivers for each LabJack model, categorized by operating system.[^labjack-exodriver-downloads]
+
+| LabJack Model | Windows | Linux | macOS |
+| ------------- | ------- | ----- | ----- |
+| U3, U6, UE9   | UD library | Exodriver | Exodriver |
+| U12           | U12 Windows Installer | ljacklm | ljacklm |
+| T4, T7        | LJM library | LJM library | LJM library |
+
+`ljacklm` is a higher level library that requires Exodriver.
+
+LabJack also maintains the Python library called [LabJackPython](https://support.labjack.com/docs/labjackpython-for-ud-exodriver-u12-windows-mac-lin). It is cross-platform and runs on Windows, Linux and macOS. It uses the UD and U12 drivers on Windows, and the Exodriver on Linux and macOS. It doesn't support the T4 and T7 which require the LJM library. For that, use the [Python_LJM library](https://support.labjack.com/docs/python-for-ljm-windows-mac-linux).
 
 ## LabJack U6
 
@@ -29,4 +41,9 @@ The following bit numbers are used to specify the digital I/O:
 
 Using pin numbers 20-22 in the API will not work. Instead, you have to use the corresponding `CIOx` bit numbers 16-18.
 
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^labjack-u6-ds-digital-io]: LabJack. _Support and Documentation / Datasheets / U6 Datasheet / 2 - Hardware Description [U6 Datasheet]_. Retrieved 2024-08-30, from https://support.labjack.com/docs/2-8-digital-i-o-u6-datasheet.
+[^labjack-exodriver-downloads]: LabJack. _Exodriver Downloads (for UD-series Linux and macOS support)_. Retrieved 2025-11-05, from https://support.labjack.com/docs/exodriver-downloads-for-ud-series-linux-and-macos-.

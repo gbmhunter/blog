@@ -128,7 +128,9 @@ Signature resistance of 25kR.
 
 Single Pair Ethernet (SPE) is a version of Ethernet which uses a single twisted pair. Coupled with PoDL (Power over Data Lines), it is impressive that a single twisted pair can be both used to send bi-directional data (~10Mbps) and power (~50W) over the same cable!
 
-Bi-directional data over the same pair works by each side cancelling out their own sent signal.
+Bi-directional data over the same pair works by the principle of superposition. Each side has echo cancellation which is used by their receiver to cancel out their own transmitted signal, leaving behind the component of the waveform which was sent from the other side.[^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]
+
+<Image iref="fig-ti-block-diagram-showing-simplified-spe-echo-cancellation" src={import('./_assets/ti-block-diagram-showing-simplified-spe-echo-cancellation.webp')} width="900px">A block diagram by Texas Instruments showing how echo cancellation works (simplified).[^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]</Image>
 
 All SPE standards have `-T1` in their name, since the `1` refers to a single twisted pair.
 
@@ -262,6 +264,16 @@ Classification is done after detection and is when the PSE classifies the PD dev
 
 Every SCCP transaction begins with the PSE driving the line low. If the PSE is transmitting, it drives it low to a set period of time. Different low durations determine whether a 0 or a 1 is sent. If the PD is transmitting, the PSE still drives the line low initially but then the PD takes over and holds it low for a set duration to determine a 0 or 1. Each bit is defined to take within 2.7 and 3.3 ms. If we assume the average of 3 ms, this makes the bandwidth a rather slow 333 bps. This is slow enough for MCUs to directly implement in firmware (i.e. no dedicated hardware peripheral required).[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse] 
 
+### Example ICs
+
+### DP83TC Family
+
+The Texas Instruments DP83TC is a family of ethernet PHY ICs.
+
+For example, the DP83TC813S-Q1 is a 100BASE-T1 PHY in a [VQFN-28 package](/pcb-design/component-packages/qfn-component-package/). It supports either MII, RGMII, RMII, or SGMII interfaces with the host MCU. <IRef iref="fig-ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic" /> shows a simplified application schematic for the DP83TC813S-Q1.
+
+<Image iref="fig-ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic" src={import('./_assets/ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic.webp')} width="600px">Simplified application schematic for the Texas Instruments DP83TC813S-Q1 100BASE-T1 PHY.[^ti-dp83tc813x-q1-100base-t1-phy-datasheet]</Image>
+
 ## EtherCAT
 
 EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
@@ -305,3 +317,5 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-
 [^wikipedia-baseband]: Wikipedia (2025, May 11). _Baseband_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Baseband.
 [^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]: Steffen Graf (2021, Nov). _How to Implement an IEEE 802.3cg or 802.3bu Compliant PoDL PSE_. Texas Instruments. Retrieved 2025-10-29, from https://www.ti.com/lit/ab/snla395/snla395.pdf.
 [^vector-difference-between-automotive-and-standard-ethernet-technologies]: Vector (2023-03-21). _Difference between Automotive and Standard Ethernet Technologies_ [KnowledgeBase article]. Retrieved 2025-11-02, from https://support.vector.com/kb?id=kb_article_view&sysparm_article=KB0013990&sys_kb_id=97ff00263b67eed0c1dc1d24c3e45aff&spa=1.
+[^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]: Donovan Porter (2018, Apr). _100BASE-T1 Ethernet: the evolution of automotive networking_. Texas Instruments. Retrieved 2025-11-05, from https://www.ti.com/lit/wp/szzy009/szzy009.pdf.
+[^ti-dp83tc813x-q1-100base-t1-phy-datasheet]: Texas Instruments (2022, May). _SNLS676 - DP83TC813x-Q1 TC-10 Compliant Small Form Factor 100BASE-T1 Automotive Ethernet PHY_ [datasheet]. Retrieved 2025-11-05, from https://www.ti.com/lit/ds/symlink/dp83tc813s-q1.pdf.
