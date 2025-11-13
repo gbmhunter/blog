@@ -331,6 +331,16 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 
 [noble](https://www.npmjs.com/package/noble) provides general BLE support to node.js applications. It supports Windows, Linux, macOS, and FreeBSD.[^noble-ble-library] However, as of Sep 2025, it hasn't been updated in 7 years! There is a fork called [abandonware/noble](https://github.com/abandonware/noble) that is more actively maintained (as of Sep 2025, last commit was 7 months ago).
 
+## Bluetooth Dongles
+
+### BleuIO
+
+BleuIO produces a range of Bluetooth dongles specifically designed for engineering and development of Bluetooth applications. Instead of relying on the operating system's Bluetooth API, they provide their own API for interacting with the Bluetooth hardware. This gives the user more features and a consistent interface across different operating systems. For example, in Windows it can be difficult to specify what Bluetooth device to use when many are available. The Python library Bleak let's you specify an adapter, but this parameter is ignored on Windows. You can interface with the dongles via either AT commands (over a USB CDC serial port) or via provided Python/Javascript libraries (I presume the libraries utilize the AT commands also). 
+
+<Image src={import('./_assets/bleuio-products-and-pricing.webp')} width="800px">A screenshot from the BlueIO website showing their products and pricing, as of Nov 2025.[^blueio-homepage]</Image>
+
+The BleuIO dongles are purchasable either from their website of through third party resellers such as DigiKey.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -365,3 +375,4 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 [^noble-ble-library]: noble. _noble/noble_ [GitHub repository]. GitHub. Retrieved 2025-09-19, from https://github.com/noble/noble.
 [^ublox-u-connectxpress-bluetooth-serial-port-service]: u-blox (2021, Nov 29). _u-connectXpress - Bluetooth Low Energy Serial Port Service - Protocol specification_ [pdf]. Retrieved 2025-09-19, from https://content.u-blox.com/sites/default/files/u-connectXpress-LowEnergySerialPortService_ProtocolSpec_UBX-16011192.pdf.
 [^silicon-labs-spp-over-ble]: Silicon Labs. _SPP (Serial Port Profile) over BLE_ [documentation]. Retrieved 2025-09-19, from https://docs.silabs.com/bluetooth/2.13/bluetooth-code-examples-applications/.
+[^blueio-homepage]: BlueIO. _Homepage_ [website]. Retrieved 2025-11-11, from https://www.blueio.com/.

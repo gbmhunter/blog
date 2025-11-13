@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2024-10-15
 description: The ESP32 is a series of low-cost, low-power SoC microcontrollers designed by Espressif Systems.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-17
-tags: [programming, microcontrollers, Espressif, ESP32]
+lastUpdated: 2025-11-10
+tags: [programming, microcontrollers, Espressif, ESP32, ESP32-C6, Wi-Fi 6, Bluetooth 5 LE, Thread, Zigbee, RISC-V]
 title: ESP32
 type: page
 ---
@@ -45,6 +45,39 @@ add_custom_command(
 
 Be aware that the shell command may make the project platform dependent. You could couple this with `if(CMAKE_HOST_WIN32)` style conditionals to run OS specific commands. You can see where the target `gen_project_binary` is defined in the ESP-IDF code [here](https://github.com/espressif/esp-idf/blob/v5.3.1/components/esptool_py/project_include.cmake#L146). `app` is another valid target you could use to run commands on.
 
+## esptool
+
+esptool is a Python based open-source tool for programming and otherwise interacting with a range of Espressif SoCs. It is cross-platform and supports Windows, macOS and Linux.[^github-espressif-esptool] It can be used as a command-line tool (the most common way) or as a Python library.
+
+<Image src={import('./_assets/esptool-terminal-output.webp')} width="700px">A screenshot of the terminal output from esptool.</Image>
+
+There are alternatives to esptool for different languages:
+
+- [esptool.js](https://github.com/espressif/esptool-js): A JavaScript port of esptool that can work both in Node.js and in the browser (it used the [Web Serial API](https://wicg.github.io/serial/) to work in the browser).
+- [espflash](https://github.com/esp-rs/espflash): A Rust port of esptool.
+
+## ESP32-C6
+
+The ESP32-C6 is a SoC by Espressif Systems designing for wireless connectivity. It supports Wi-Fi 6, Bluetooth 5 LE, Thread and Zigbee. It contains two cores - a high performance (HP) 32-bit RISC-V core at up to 160 MHz, and a low power (LP) 32-bit RISC-V core at up to 20 MHz. It comes in a QFN-40 or QFN-32 package.[^espressif-esp-32-c6]
+
+The ESP32-C6 is available as either a standalone IC or as a module (which provides things such as auxiliary components and an antenna). As of November 2025, there was four modules available:
+
+1. ESP32-C6-MINI-1
+1. ESP32-C6-MINI-1U
+1. ESP32-C6-WROOM-1
+1. ESP32-C6-WROOM-1U
+
+The modules with the `U` suffix have an IPEX antenna connector instead of an internal PCB antenna.
+
+The ESP32-C6 has a "USB-Serial-JTAG" peripheral which can be used to program the device over USB. Note that it cannot be used for general purpose USB communication, it is only for programming the device and debugging (e.g. logs). If connected to a computer via USB, it will enumerate as a serial device and a USB JTAG/serial debug unit. The VID will be `0x303A` (Espressif uses this for all their products). The PID will likely be `0x1001` or close to this.[^espressif-usb-serial-jtag-peripheral-introduction]
+
+When connected to a computer running Windows, it will enumerate as two different devices in the Device Manager:[^espressif-usb-serial-jtag-peripheral-introduction]
+
+1. COMx under "Ports (COM & LPT)".
+1. USB JTAG/serial debug unit under "Universal Serial Bus devices".
+
+By default, the USB-Serial-JTAG peripheral is enabled. It can be disabled in firmware if wished so that you can use the D+/D- pins for something else such as GPIO. But if you do this, you will loose the ability to program via USB. There is a boot control pin which can be used to enter boot mode if USB is unavailable.[^espressif-usb-serial-jtag-peripheral-introduction]
+
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
@@ -53,3 +86,6 @@ Be aware that the shell command may make the project platform dependent. You cou
 [^espressif-esp-idf-freertos]: Espressif Systems. _ESP-IDF - API Reference > System API > FreeRTOS_ [documentation]. Retrieved 2024-10-15, from https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/freertos.html.
 [^dockerhub-espressif-idf]: dockerhub. _espressif/idf_ [docker image]. Retrieved 2024-10-15, from https://hub.docker.com/r/espressif/idf.
 [^espressif-esptool-flasher-stub]: Espressif Systems. _esptool.py > Flasher Stub_ [documentation]. Retrieved 2024-10-18, from https://docs.espressif.com/projects/esptool/en/latest/esp32s3/esptool/flasher-stub.html.
+[^espressif-esp-32-c6]: Espressif Systems. _Hardware > ESP32-C > ESP32-C6_ [product page]. Retrieved 2025-11-10, from https://www.espressif.com/en/products/socs/esp32-c6.
+[^espressif-usb-serial-jtag-peripheral-introduction]: Espressif Systems. _USB Host & Device > USB Host & Device > USB-Serial-JTAG Peripheral Introduction_ [documentation]. Retrieved 2025-11-10, from https://docs.espressif.com/projects/esp-iot-solution/en/latest/usb/usb_overview/usb_serial_jtag.html.
+[^github-espressif-esptool]: Espressif Systems. _espressif/esptool_ [GitHub repository]. Retrieved 2025-11-10, from https://github.com/espressif/esptool.
