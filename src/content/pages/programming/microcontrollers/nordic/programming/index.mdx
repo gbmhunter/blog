@@ -104,6 +104,23 @@ You can reset the MCU by running `nrfutil device reset`. This command supports a
 - `RESET_PIN`: Trigger a pin reset by toggling the reset pin.
 - `RESET_VIA_SECDOM`: Send a reset command over ADAC to the SecDom FW. The SecDom FW handles the reset of other domains and defines how this process is carried out. The SecDom is not reset as part of this process. This option is supported on devices with the SecDom FW.
 
+Devices can be programmed with the `nrfutil device program` command:
+
+```bash
+nrfutil device program --firmware <my_firmware_file>
+```
+
+The SWD clock speed can be specified with the `--swd-clock-frequency` option (in kHz). In my scenario the clock speed was apparently already at the maximum allowed of 2 MHz. Trying to set it higher (e.g. 5 MHz) resulted in an error.
+
+```bash
+nrfutil.exe device program --firmware C:\mfw_nrf91x1_2.0.2.zip --swd-clock-frequency 5000
+[00:00:00] ------   0% [1/3 960036306] Failed, SWD clock speed exceeds maximum of 2000 kHz
+Error: One or more program tasks failed:
+ * 960036306: SWD clock speed exceeds maximum of 2000 kHz (Generic)
+```
+
+Setting it as `--swd-clock-frequency 2000` worked, but the programming was not any faster than it was by default (approx. 30s to program the modem firmware).
+
 ## pynrfjprog
 
 pynrfjprog is a Python wrapper around the Nordic Semiconductor nrfjprog DLL (dynamic link library). The code is open source and available on [GitHub](https://github.com/NordicSemiconductor/pynrfjprog).

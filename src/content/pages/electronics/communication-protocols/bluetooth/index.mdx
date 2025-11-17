@@ -335,11 +335,25 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 
 ### BleuIO
 
-BleuIO produces a range of Bluetooth dongles specifically designed for engineering and development of Bluetooth applications. Instead of relying on the operating system's Bluetooth API, they provide their own API for interacting with the Bluetooth hardware. This gives the user more features and a consistent interface across different operating systems. For example, in Windows it can be difficult to specify what Bluetooth device to use when many are available. The Python library Bleak let's you specify an adapter, but this parameter is ignored on Windows. You can interface with the dongles via either AT commands (over a USB CDC serial port) or via provided Python/Javascript libraries (I presume the libraries utilize the AT commands also). 
+BleuIO produces a range of Bluetooth dongles specifically designed for engineering and development of Bluetooth applications.
 
 <Image src={import('./_assets/bleuio-products-and-pricing.webp')} width="800px">A screenshot from the BlueIO website showing their products and pricing, as of Nov 2025.[^blueio-homepage]</Image>
 
+Instead of relying on the operating system's Bluetooth API, they provide their own API for interacting with the Bluetooth hardware. This gives the user more features and a consistent interface across different operating systems. For example, Windows only allows for one Bluetooth radio to be active at a time (via the OS Bluetooth stack).[^microsoft-windows-drivers-bluetooth-faq]. Just having one Bluetooth radio is not an issue if you use BleuIO since the dongles don't utilize the Windows Bluetooth stack. The Python library Bleak let's you specify an adapter, but this parameter is ignored on Windows. You can interface with the dongles via either AT commands (over a USB CDC serial port) or via provided Python/Javascript libraries (I presume the libraries utilize the AT commands also). 
+
+<Image src={import('./_assets/bt-scan-from-python-using-bleuio-dongle.webp')} width="800px">A screenshot of a Python script scanning for Bluetooth devices using a BleuIO dongle.</Image>
+
 The BleuIO dongles are purchasable either from their website of through third party resellers such as DigiKey.
+
+## OS Support for Bluetooth
+
+### Windows
+
+Windows only allows for one Bluetooth radio (adapter) to be active at a time (via the OS Bluetooth stack).[^microsoft-windows-drivers-bluetooth-faq] If you have multiple Bluetooth adapters (including built-in ones or dongles) and want to switch between them manually, you typically need to enable and disable Bluetooth devices from the Device Manager. Dongles that don't use the Windows Bluetooth stack (e.g. [BleuIO](#bleuio)) are not affected by this limitation.
+
+Windows supports AFH (adaptive frequency hopping) for Bluetooth devices, but is disabled by default. A registry key needs to be written to first to enable AFH. This enables a "shared spectrum model" in where Windows can tell Bluetooth adapters which channels to avoid as to prevent interference with Wi-Fi.[^microsoft-windows-drivers-bluetooth-faq]
+
+Windows also allows Bluetooth mouse and keyboard devices to wake up Windows from sleep (S3) or hibernate (S4) system power states. For this to work, the Bluetooth device must be self-powered.[^microsoft-windows-drivers-bluetooth-faq]
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -376,3 +390,4 @@ The BleuIO dongles are purchasable either from their website of through third pa
 [^ublox-u-connectxpress-bluetooth-serial-port-service]: u-blox (2021, Nov 29). _u-connectXpress - Bluetooth Low Energy Serial Port Service - Protocol specification_ [pdf]. Retrieved 2025-09-19, from https://content.u-blox.com/sites/default/files/u-connectXpress-LowEnergySerialPortService_ProtocolSpec_UBX-16011192.pdf.
 [^silicon-labs-spp-over-ble]: Silicon Labs. _SPP (Serial Port Profile) over BLE_ [documentation]. Retrieved 2025-09-19, from https://docs.silabs.com/bluetooth/2.13/bluetooth-code-examples-applications/.
 [^blueio-homepage]: BlueIO. _Homepage_ [website]. Retrieved 2025-11-11, from https://www.blueio.com/.
+[^microsoft-windows-drivers-bluetooth-faq]: Microsoft. _Learn > Windows > Windows Drivers > Bluetooth FAQ_. Retrieved 2025-11-14, from https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-faq.
