@@ -16,15 +16,15 @@ See the [IMU page](/electronics/components/sensors/inertial-measurement-units-im
 
 ## PCB Mounting
 
-Like gyroscopes and magnetometers, accelerometers have to be orientated precisely on a PCB to return accurate readings. Luckily, most SMD packages used these days for accelerometers (such as the QFN and LGA package) have nice self-aligning properties during the reflow soldering process (due to the surface tension of the solder paste).
+Like gyroscopes and magnetometers, accelerometers have to be orientated precisely on a PCB to return accurate readings. Luckily, most SMD packages used these days for accelerometers (such as the QFN and LGA package) have nice self-aligning properties during the reflow soldering process (partly due to the surface tension of the solder paste).
 
 ## Examples
 
 ### ST Microelectronics LIS2DH12
 
-The ST Microelectronics LIS2DH12 is a "ultra-low power" 3-axis accelerometer. It's unique selling point is that it can consume just 2 uA of current at 2.5V with a 1 Hz sampling rate. It has ±2g/±4g/±8g/16g selectable full scale ranges and can communicate via SPI or I2C interface. It is available in a LGA-12 package.[^st-microelectronics-lis2dh12-datasheet]
+The ST Microelectronics LIS2DH12 is a "ultra-low power" 3-axis accelerometer. It's unique selling point is that it can consume just 2 uA of current at 2.5V with a 1 Hz sampling rate. It has ±2g/±4g/±8g/±16g selectable full scale ranges and can communicate via a [SPI](/electronics/communication-protocols/spi-communication-protocol/) or [I2C](/electronics/communication-protocols/i2c-communication-protocol/) interface. It is available in a LGA-12 package.[^st-microelectronics-lis2dh12-datasheet]
 
-<Image src={import('./_assets/datasheet-screenshot-of-st-microelectronics-lis2dh12-ultra-low-power-accelerometer.webp')} width="800px">A screenshot of the datasheet for the ST Microelectronics LIS2DH12 ultra-low power accelerometer.[^st-microelectronics-lis2dh12-datasheet]</Image>
+<Image src={import('./_assets/datasheet-screenshot-of-st-microelectronics-lis2dh12-ultra-low-power-accelerometer.webp')} width="600px">A screenshot of the datasheet for the ST Microelectronics LIS2DH12 ultra-low power accelerometer.[^st-microelectronics-lis2dh12-datasheet]</Image>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
