@@ -124,7 +124,11 @@ def test_program_device():
 
 ### Save Test Results to a Database
 
-It is a good idea to save the test r
+It is a good idea to save the test results somewhere. It can be a simple as writing to a local CSV/json file, or saving to a cloud-hosted database. Cloud hosted databases are not that hard to set up these days (e.g. Supabase makes it really easy, and is backed by Postgresql), so I would recommend doing that unless you have a strong reason to keep it local (perhaps SQLite could be a good option if you want to keep it local, but a little more organized than just dumping to text).
+
+Using a database also allows you to easily query the data later from another location, and makes it easy to support multiple test jigs. Permissions on the database can be locked down to only allow the test jig to insert or update new records (update is needed if you want to re-run devices through the test jig and update the provisioned device record).
+
+If using a database, I would recommend having at least two tables: one for the test attempts and one for the provisioned devices (devices which pass all the tests and are good to go in production).
 
 Test attempt table columns:
 
@@ -132,6 +136,7 @@ Test attempt table columns:
 - `serial_number`: The serial number of the device being tested. This could be any form of unique identifier, such as a MAC address, MCU serial number, or one programmed onto the device yourself.
 - `test_result`: Either `PASSED` or `FAILED`.
 - `test_steps`: A JSON array of the steps that were taken during the test. Because each test step could contain arbitrary data, it's usually better to not structure this data and just accept JSON. Each test step could contain information such as a unique name (`e.g. CHECK_TEMPERATURE`) and a short message (e.g. `"Read back temperature of 25.3°C. Lower limit: 24.0°C, Upper limit: 26.0°C."`).
+- `tester_id`: The unique identifier of the test jig that was used to test the device. Typically read from a config file by the test jig software.
 - `timestamp`: The timestamp of the test attempt.
 - `logs`: A JSON array of the logs from the test attempt. You may only want to save the logs if the test failed as the logs are usually quite verbose and could quickly consume your storage space.
 
@@ -139,6 +144,9 @@ Only devices which pass all the tests are added to the provisioned devices table
 
 - `id`: Unique incrementing integer that can identify a provisioned device.
 - `serial_number`: The serial number of the device being tested. This could be any form of unique identifier, such as a MAC address, MCU serial number, or one programmed onto the device yourself.
+- `pcb_version`: The version of the PCB that was tested.
+- `firmware_version`: The version of the firmware that was programmed onto the device (if applicable). For more complex devices, there may be multiple firmware versions (e.g. bootloader, application, multiple MCUs, e.t.c.). I would recommend storing each one as a separate column.
+- `tester_id`: The unique identifier of the test jig that was used to test the device. Typically read from a config file by the test jig software.
 - `created`: The timestamp of the creation of the provisioned device record.
 - `last_updated`: The timestamp of the last update to the provisioned device record.
 
@@ -146,6 +154,17 @@ Note that while the test jig only needs to insert new records into the test atte
 
 - During development, you will be writing the Python code and running the tests again and again on the same device
 - During production, you may want to test a previously provisioned device if you change something, improve a test, or are just not sure about it's testing state.
+
+### Test Step Parallelism
+
+If your test steps take a significant amount of time, you may want to consider running some of them in parallel. Obviously this would only apply to test steps that are independent of each other (e.g. a test step that needs to reset the MCU cannot really be run at the same time as a test step that needs to communicate with it).
+
+Test step parallelism can be achieved using the built-in threading library in Python. Note that Python threads are not true parallelism due to the GIL (Global Interpreter Lock), but they are fine for this use case because the test steps are typically IO bound, not CPU bound.
+
+If you are providing the tester with a command-line interface, watch out for threads messing up with Ctrl-C (terminate the program) behaviour. Ctrl-C is only caught in the main thread, and if you have other threads currently running parallel test steps, the program will not exit as expected. Two options to fix this are:
+
+- Make the worker threads daemon threads, so that they are automatically terminated when the main thread exits.
+- Catch the Ctrl-C signal in the main thread and then use a `threading.Event` to signal to the worker threads to exit. You have to make sure the worker threads periodically check the event and exit if it is signaled.
 
 ## Suppliers
 

@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2014-12-11
 description: Accelerometers are devices that measure their acceleration and convert it into a analogue or digital signal.
-lastUpdated: 2025-11-17
+lastUpdated: 2025-11-26
 tags: [sensors, accelerometers, ICs, low power]
 title: Accelerometers
 type: page
@@ -10,9 +10,34 @@ type: page
 
 <WarningIsNotes />
 
-Accelerometers are MEMS (micro electro-mechanical devices) that measure their acceleration. They are normally 3-axis devices that return a reading for the x, y and z axis accelerations.
+Accelerometers are that measure their acceleration.
+
+Many IC based accelerators are MEMS (micro electro-mechanical devices). These are normally 3-axis devices that return a reading for the x, y and z axis accelerations.
 
 See the [IMU page](/electronics/components/sensors/inertial-measurement-units-imus) for monolithic components which include accelerometers with other MEMS sensors.
+
+## Spring Accelerometers
+
+A soft spring with a metal rod going through the middle of it can act as a really basic accelerometer. These are often called vibration or shock sensors. Then the device is subject to enough acceleration in a direction perpendicular to the spring axis, the spring will bend enough to make contact with the conductive rod and close the circuit. 
+
+<Image src={import('./_assets/spring-accelerometer-in-yoyo.webp')} width="600px">A cheap spring accelerometer in a NED.com yo-yo, used to flash some LED lights when the yo-yo is spinning fast. You can see the rod going through the middle of the spring.</Image>
+
+## MEMS Accelerometers
+
+They way MEMS sensors are constructed is quite interesting. Here is a description of the internal MEMS sensor from the ST Microelectronics LIS2DH12 datasheet:
+
+> A proprietary process is used to create a surface micromachined accelerometer. The
+technology processes suspended silicon structures which are attached to the substrate in a
+few points called anchors and are free to move in the direction of the sensed acceleration.
+To be compatible with traditional packaging techniques, a cap is placed on top of the
+sensing element to avoid blocking the moving parts during the molding phase of the plastic
+encapsulation.
+>
+> When an acceleration is applied to the sensor, the proof mass displaces from its nominal
+position, causing an imbalance in the capacitive half-bridge. This imbalance is measured
+using charge integration in response to a voltage pulse applied to the capacitor.
+At steady state the nominal value of the capacitors are a few pF and when an acceleration is
+applied, the maximum variation of the capacitive load is in the fF range. -- ST Microelectronics LIS2DH12 datasheet[^st-microelectronics-lis2dh12-datasheet]:
 
 ## PCB Mounting
 
@@ -26,8 +51,15 @@ The ST Microelectronics LIS2DH12 is a "ultra-low power" 3-axis accelerometer. It
 
 <Image src={import('./_assets/datasheet-screenshot-of-st-microelectronics-lis2dh12-ultra-low-power-accelerometer.webp')} width="600px">A screenshot of the datasheet for the ST Microelectronics LIS2DH12 ultra-low power accelerometer.[^st-microelectronics-lis2dh12-datasheet]</Image>
 
+The datasheet for the LIS2DH12 does not describe how the various interrupt types (e.g. `THRESHOLD_1`, `THRESHOLD_2`, and `CLICK`) work. Better descriptions can be found in the [LIS3DH: MEMS digital output motion sensor ultra-low-power high-performance 3-axis “nano” accelerometer](https://www.st.com/resource/en/application_note/cd00290365.pdf) application note.[^st-microelectronics-lis3dh-application-note] The `CLICK` detection works by looking for acceleration that goes above a certain threshold then drops again within a specified time window. There is support for "single" click and "double" click detection.
+
+<Image src={import('./_assets/single-and-double-click-detection-accelerometer.webp')} width="600px">A graph showing how the single and double click detection works in the LIS3DH accelerometer.[^st-microelectronics-lis3dh-application-note]</Image>
+
+The LIS2DH12 also has a high-pass filter which can be used to remove the DC component of the signal. This can be useful to remove the effects of gravity. It has a adjustable cutoff frequency which can be set from 0.002 to 100 Hz depending on the register configuration and the sampling rate.[^st-microelectronics-lis3dh-application-note]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^st-microelectronics-lis2dh12-datasheet]: ST Microelectronics (2017, May). _LIS2DH12 - MEMS digital output motion sensor: ultra-low-power high-performance 3-axis "femto" accelerometer_ [datasheet]. Retrieved 2025-11-17, from https://www.st.com/resource/en/datasheet/lis2dh12.pdf.
+[^st-microelectronics-lis3dh-application-note]: ST Microelectronics (2017, Jun). _LIS3DH: MEMS digital output motion sensor ultra-low-power high-performance 3-axis “nano” accelerometer_ [application note]. Retrieved 2025-11-26, from https://www.st.com/resource/en/application_note/cd00290365.pdf.
