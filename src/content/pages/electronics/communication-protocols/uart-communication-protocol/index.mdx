@@ -226,6 +226,12 @@ There are also USB-to-UART cables for connecting a computer to a UART bus. FTDI 
 
 ## ICs
 
+### FTDI FT232RNQ
+
+The FTDI FT232RNQ is a USB to UART IC in a [QFN-32](/pcb-design/component-packages/qfn-component-package/) or SSOP-28 package. It supports USB 2.0 Full Speed (12 Mbps) and data rates up to 3 Mbaud. It also has 4 GPIO pins which can be controlled from the USB host for auxiliary functions. It supports I/O voltages from 1.8 to 5.5 V.[^ftdi-ft232rnq-product-page]
+
+See the [Controlling FTDI Devices](/programming/ftdi/) page for more information on how to control these devices from software such as Python and the `pyftdi` library.
+
 ### WCH CH340
 
 The WCH (a.k.a. Nanjing Qinheng Microelectronics) CH340 is a family of popular USB to UART ICs. It supports USB 2.0 and serial baud rates from 50 bps to 2 Mbps.[^wch-usb-to-serial-port-chip-ch340-ds]
@@ -278,3 +284,4 @@ You can create a rudimentary serial bridge to connect to pieces of software toge
 [^wch-usb-to-quad-uarts-chip-ch9344-ds]: WCH. _USB to Quad UARTs Chip CH9344_ [datasheet]. Retrieved 2025-08-04, from https://www.wch-ic.com/downloads/CH9344DS1_PDF.html.
 [^cnx-software-wch-ch348-8-port-usb-to-serial-chip]: Jean-Luc Aufranc (2022, Mar 4). _WCH CH348 is an 8-port USB to serial chip with up to 48 GPIOs_. CNX Software. Retrieved 2025-08-04, from https://www.cnx-software.com/2022/03/04/wch-ch348-8-port-usb-to-serial-chip-with-up-to-48-gpios/.
 [^wch-usb-to-serial-port-chip-ch340-ds]: WCH. _USB to Serial Port Chip CH340. Version 3D._ [datasheet]. Retrieved 2025-10-09, from https://www.wch-ic.com/downloads/CH340DS1_PDF.html.
+[^ftdi-ft232rnq-product-page]: FTDI Devices. _Products >  FT232RNQ_ [product page]. Retrieved 2025-12-02, from https://ftdichip.com/products/ft232rnq/.

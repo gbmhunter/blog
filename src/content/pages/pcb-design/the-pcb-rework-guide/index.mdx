@@ -1,8 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2024-12-06
-lastUpdated: 2024-12-06
-tags: [PCBs, rework, guide]
+description: It is never soon before you make your next mistake when designing a PCB. This guide covers how to rework (bodge) PCBs to get them into proper working order! 
+lastUpdated: 2025-12-01
+tags: [PCBs, rework, guide, cutting tracks, magnifying lamp, scalpel, soldering iron, Kapton tape, flux, isopropyl alcohol]
 title: The PCB Rework Guide
 type: page
 ---
@@ -79,3 +80,13 @@ Be careful, this is such a thing as too much rework. After many heat cycles and 
 * Oxidization makes it harder for the solder to flow, resulting in cold/dry joints (flux goes a long way to fixing this).
 
 <Image iref="fig-qfn-footprint-damage-from-too-much-rework" src={import('./_assets/qfn-footprint-damage-from-too-much-rework.webp')} width="600px">A QFN footprint that has been damaged from too much rework.</Image>
+
+## Cutting Tracks
+
+You might need to cut tracks on a PCB to change the routing of a net. If the track is on the bottom or top layer of the PCB (and not underneath a component), not too short and not spaced too closely to other tracks, you can normally cut them quite easily with a sharp knife or scalpel.
+
+<Image iref="fig-cutting-a-pcb-track-with-scalpel" src={import('./_assets/cutting-a-pcb-track-with-scalpel.webp')} width="1000px">A PCB track that has been cut with a scalpel (also shown).</Image>
+
+You won't be able to cut it in a single stroke, so you need to make a series of cuts. Think of it sort of like scratching of the surface. You will first cut through the soldermask and see shiny copper. Then with some more cutting you should a change in the texture as you hit the fibreglass substrate underneath. Inspect that you have cut through the entire track with a magnifying glass, or use a continuity tester if possible.
+
+If the track is on an inner layer, there is no really good way to cut it! If there is no critical copper directly above or below it in the stack-up, you could try drilling a hole through the entire PCB to break the connection. It is hard to locate the drill bit correctly, and you run the risk of creating shorts between layers if some of the copper is not cut cleanly and shears down the side of the hole. Drilling out a via to break a connection is another option.

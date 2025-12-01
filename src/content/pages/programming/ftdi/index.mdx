@@ -1,0 +1,59 @@
+---
+authors: [gbmhunter]
+date: 2025-12-02
+lastUpdated: 2025-12-02
+tags: [FTDI, Python, firmware]
+title: Controlling FTDI Devices
+type: page
+---
+
+## Using Python and pyftdi
+
+### Configuring Windows Drivers
+
+When you connect one of these up to a Windows computer for the first time, it will enumerate as a virtual COM port as shown in <IRef iref="fig-ftdi-ic-enumerating-as-a-virtual-com-port" />.
+
+<Image iref="fig-ftdi-ic-enumerating-as-a-virtual-com-port" src={import('./_assets/ftdi-ic-enumerating-as-a-virtual-com-port.webp')} width="600px">A screenshot of the FTDI FT232RNQ enumerating as a virtual COM port when connected to a Windows computer.</Image>
+
+If you want to control the device from software such as Python, using the FTDI library, you may need to change the driver which is associated with the device. You can use Zadig to easily do this. Make sure you click "List all devices" in Zadig to see the FTDI device, as shown in <IRef iref="fig-listing-all-devices-in-zadig" />.
+
+<Image iref="fig-listing-all-devices-in-zadig" src={import('./_assets/listing-all-devices-in-zadig.webp')} width="500px">Make sure you click "List all devices" in Zadig to see the FTDI device.</Image>
+
+Then select the FTDI device from the drop-down menu, as shown in <IRef iref="fig-selecting-ft232r-usb-uart-in-zadig" />.
+
+<Image iref="fig-selecting-ft232r-usb-uart-in-zadig" src={import('./_assets/selecting-ft232r-usb-uart-in-zadig.webp')} width="500px">Select the FTDI FT232RNQ in Zadig.</Image>
+
+You should now see the current driver, which should be "FTDIBUS" by default. Change this to "libusb-win32" as shown in <IRef iref="fig-changing-from-ftdibus-to-libusb-win32-driver-in-zadig" />. Then click "Replace Driver" to apply the change.
+
+<Image iref="fig-changing-from-ftdibus-to-libusb-win32-driver-in-zadig" src={import('./_assets/changing-from-ftdibus-to-libusb-win32-driver-in-zadig.webp')} width="500px">Change the driver from "FTDIBUS" to "libusb-win32" in Zadig.</Image>
+
+Once you do that, if you go back to the Device Manager, you should now see the FTDI device enumerating as a "libusb-win32" device as shown in <IRef iref="fig-ftdi-device-in-device-manager-as-libusb-win32-device" />.
+
+<Image iref="fig-ftdi-device-in-device-manager-as-libusb-win32-device" src={import('./_assets/ftdi-device-in-device-manager-as-libusb-win32-device.webp')} width="600px">The FTDI device enumerating as a "libusb-win32" device in the Device Manager.</Image>
+
+### Configuring Linux Drivers
+
+#### Device Has No langid Permissions Error 
+
+When calling `Ftdi.list_devices()` on Linux, you might get the exception: The device has no langid (permission issue, no string descriptors supported or device error)
+
+If this is the case, you can add a udev rule to give all users permissions to access FTDI devices. Create the following file:
+
+```text title="/etc/udev/rules.d/99-ftdi.rules"
+# udev rules for FTDI devices
+# This allows users to access FTDI USB devices without root privileges
+# FTDI vendor ID is 0x0403
+
+# FT232R and other FTDI devices
+# Use permissions 666 so that no GROUP has to be defined
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", MODE="0666"
+```
+
+Reload udev rules with:
+
+```bash
+udevadm control --reload-rules
+udevadm trigger
+```
+
+And then unplug and plug the FTDI device back in.

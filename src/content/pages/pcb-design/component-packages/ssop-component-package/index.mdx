@@ -1,0 +1,57 @@
+---
+authors: [gbmhunter]
+date: 2025-12-02
+description: SSOP is a family of SMD component packages with gull-wing leads. They can have both varying pitches and body widths.
+lastUpdated: 2025-12-02
+tags: [component packages, PCB design, SSOP, shrink small-outline package]
+title: SSOP Component Package
+type: page
+---
+
+SSOP (_Shrink Small Outline Package_) is a family of plastic, SMD IC component packages with gull-wing leads.[^madpcb-glossary-ssop] They can have both varying pitches and body widths.
+
+<Image src={import('./_assets/3d-render-of-ssop-24-4x8.74mm-package-ams-osram.webp')} width="300px">A 3D render of the SSOP-24 4x8.74mm package from AMS-OSRAM.</Image>
+
+Synonyms:
+
+- DB: The Texas Instrument code for the SSOP-16 5.3x6.2mm body package.[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]
+- DBQ: The Texas Instrument code for the SSOP-16 3.9x4.9 mm body package.[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]
+
+Pitch:[^madpcb-glossary-ssop]
+
+- 0.635mm (unusual pitch used by Texas Instruments for their SSOP-16 3.9x4.9 mm body package (DBQ))[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]
+- 0.65mm (most common pitch)
+- 0.80mm (rare)
+- 1.27mm (rare)
+
+The SSOP package can come in a few different body widths:
+
+- 3.9 mm[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]
+- 4.4 mm[^nisshinbo-njm062c-low-power-jfet-op-amp-datasheet]
+- 5.3 mm[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]
+
+Solderability: Reflow is most suitable. O.K. to solder by hand by an experienced user. Care must be taken to avoid solder bridges between the legs of the IC.
+
+Common Uses:
+
+- Logic ICs in the 74 series.
+
+Similar To:
+
+- [SOP](/pcb-design/component-packages/sop-component-package/): SOP has a larger pitch and is used for things such as optical isolators.
+- [TSSOP](): TSSOP is usually thinner with a height of around 1.2 mm, compared to the approx. 2.0 mm height of the SSOP package.
+
+## SSOP-16, 0.65 mm Pitch, 5.3x6.2 mm Body (DB)
+
+The SSOP-16 with a 5.3x6.2mm body is shown in <IRef iref="fig-ti-ssop-16-db0016a-package-dimensions"/>. 
+
+<Image iref="fig-ti-ssop-16-db0016a-package-dimensions" src={import('./_assets/ti-ssop-16-db0016a-package-dimensions.webp')} width="800px">The dimensions for the Texas Instruments SSOP-16 DB component package.[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]</Image>
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^madpcb-glossary-ssop]: MADPCB. _Glossary > SSOP_. Retrieved 2025-12-02, from https://www.madpcb.com/glossary/ssop.
+[^ti-sn74cbt3251-1-of-8-fet-multiplexer-and-demultiplexer-datasheet]: Texas Instruments (2015, Dec). _SN74CBT3251 - 1-of-8 FET Multiplexer and Demultiplexer_ [datasheet]. Retrieved 2025-12-02, from https://www.ti.com/lit/ds/symlink/sn74cbt3251.pdf.
+[^nisshinbo-njm062c-low-power-jfet-op-amp-datasheet]: Nisshinbo Microdevices. _NJM062C/064C NJM062CA/064CA - Low Power J-FET Input Operational Amplifiers_ [datasheet]. Retrieved 2025-12-02, from https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM062C_NJM062CA_NJM064C_NJM064CA_E.pdf.
