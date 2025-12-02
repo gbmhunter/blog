@@ -194,7 +194,11 @@ Routing USB traces takes some thought because of the high speed the signals trav
 
 ## The Connectors
 
-Non-assembled USB plugs are much rarer than USB receptacles. I think this is because the USB protocol is not meant to be broken, so there is no reason with the many available pre-build USB cables for sale that you would ever need to build your own. But they do exist! Molex makes a mini type B plug (part number 47014-0008) that you can use to make custom USB cables (see the Non-Standard Uses section below).
+<IRef iref="fig-different-pcb-mounting-orientations-for-usb-c-connectors" /> shows the different PCB mounting orientations for USB C connectors. Note the presence of mechanical pins (pins not used for a electronic signal) on the connectors (usually four). These are used to prevent the connector from being torn off the PCB when cables are plugged in and out.
+
+<Image iref="fig-different-pcb-mounting-orientations-for-usb-c-connectors" src={import('./_assets/different-pcb-mounting-orientations-for-usb-c-connectors.webp')} width="800px">Different PCB mounting orientations for USB C connectors. These particular ones are manufactured by GCT.[^gct-usb-3.0-type-c-connectors]</Image>
+
+Non-assembled USB plugs are much rarer than USB receptacles. I think this is because the USB protocol is not meant to be "abused", so there is no reason with the many available pre-build USB cables for sale that you would ever need to build your own. But they do exist! Molex makes a mini type B plug (part number 47014-0008) that you can use to make custom USB cables (see the Non-Standard Uses section below).
 
 ## Wiring Scheme
 
@@ -290,3 +294,4 @@ Interestingly enough, the USB trident symbol is not trademarked. This means that
 [^wikipedia-usb-c]: Wikipedia (2025, July 26). _USB-C_ [wiki]. Retrieved 2025-07-28, from https://en.wikipedia.org/wiki/USB-C.
 [^wikipedia-thunderbolt-interface]: Wikipedia (2025, July 16). _Thunderbolt (interface)_ [wiki]. Retrieved 2025-07-28, from https://en.wikipedia.org/wiki/Thunderbolt_(interface).
 [^dell-guide-to-display-port-over-usb-c]: Dell. _Support Home > Knowledge Base Article > Guide to DisplayPort over USB-C_ [documentation]. Retrieved 2025-07-28, from https://www.dell.com/support/kbdoc/en-nz/000141328/displayport-over-usb-type-c.
+[^gct-usb-3.0-type-c-connectors]: GCT. _GCT USB 3.0 Type C Connectors_ [article]. Retrieved 2025-12-03, from https://nz.mouser.com/new/gct/gct-usb-3-0-type-c-connectors/.
