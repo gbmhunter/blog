@@ -1,0 +1,33 @@
+---
+authors: [gbmhunter]
+date: 2025-12-05
+description: The MSP430 is a family of microcontrollers manufactured by Texas Instruments.
+lastUpdated: 2025-12-12
+tags: [programming, microcontrollers, Texas Instruments, MSP430, bootloader, BSL, MCU, IDE, Code Composer Studio, CCS, IAR, Energia]
+title: MSP430
+type: page
+---
+
+The MSP430 is a popular family of microcontrollers manufactured by Texas Instruments. They were first introduced in 1992 and had a strong focus on ultra low-power operation.[^edn-the-most-popular-mcus-ever]
+
+The MSP430 family has it's own 16-bit RISC CPU architecture (i.e. it does not use a 3rd party CPU architecture from a company such as ARM).
+
+Firmware for the MSP430 can be developed in TI's own [Code Composer Studio (CCS)](/programming/integrated-development-environments-ides/code-composer-studio/) IDE. A number of other IDEs also support the MSP430, including IAR and Energia (a port of Arduino to the MSP430 architecture).
+
+## The MSP430 Bootloader (BSL)
+
+The MSP430 has a bootloader provided by TI called the BSL (the acronym comes from it's former name, the Boot Strap Loader).[^ti-msp430-flash-devices-bootloader-user-guide] The BSL is burnt into read-only memory in most (but not all!) of the MSP430 range of microcontrollers. It is not available in the F20xx, G2xx0, G2xx1, G2xx2, or I20xx family devices.[^wikipedia-ti-msp430]
+
+<Image src={import('./_assets/msp430-bsl-bootloader-summary-table.webp')} width="1000px">A table summarising BSL support across the different MCUs in the MSP430 family.[^ti-msp430-flash-devices-bootloader-user-guide]</Image>
+
+BSL supports a number of different transport layers, including [UART](/electronics/communication-protocols/uart-communication-protocol/) (the most popular), [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [SPI](/electronics/communication-protocols/spi-communication-protocol/) and [USB](/electronics/communication-protocols/usb-protocol/).
+
+The start the bootloader, a BSL entry sequence must be applied to dedicated pins. After that, a synchronization character followed by a data frame is used to communicate with the bootloader. The synchronization character (SYNC) is `0x80`. The bootloader uses this to calculate internal timing parameters. BSL sends back `DATA_ACK = 0x90` to acknowledge the `SYNC`[^ti-msp430-flash-devices-bootloader-user-guide]
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^ti-msp430-flash-devices-bootloader-user-guide]: Texas Instruments (2010, Jul). _User's Guide - MSP430 Flash Devices Bootloader (BSL)_. Retrieved 2025-12-05, from https://www.ti.com/lit/ug/slau319af/slau319af.pdf.
+[^wikipedia-ti-msp430]: Wikipedia (2025, Nov 11). _TI MSP430_ [wiki]. Retrieved 2025-12-08, from https://en.wikipedia.org/wiki/TI_MSP430. 
+[^edn-the-most-popular-mcus-ever]: Stephen Evanczuk (2013, Aug 20). _Slideshow: The most-popular MCUs ever_. Electronic Design Network (EDN). Retrieved 2025-12-08, from https://www.edn.com/slideshow-the-most-popular-mcus-ever/.

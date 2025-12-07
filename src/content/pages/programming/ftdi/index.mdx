@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2025-12-02
-lastUpdated: 2025-12-02
-tags: [FTDI, Python, firmware]
+lastUpdated: 2025-12-05
+tags: [FTDI, Python, firmware, pyftdi, programming, CBUS, GPIO]
 title: Controlling FTDI Devices
 type: page
 ---
@@ -33,6 +33,8 @@ Once you do that, if you go back to the Device Manager, you should now see the F
 
 ### Configuring Linux Drivers
 
+I have found `pyftdi` to work well in the [Windows Subsystem for Linux (WSL)](/programming/operating-systems/windows/windows-subsystem-for-linux-wsl/). `usbipd` manages to pass in the FTDI USB devices easily, and you don't have to re-assign the driver like you do in Windows. 
+
 #### Device Has No langid Permissions Error 
 
 When calling `Ftdi.list_devices()` on Linux, you might get the exception: The device has no langid (permission issue, no string descriptors supported or device error)
@@ -57,3 +59,78 @@ udevadm trigger
 ```
 
 And then unplug and plug the FTDI device back in.
+
+### Configuring the CBUS GPIO Pins
+
+Below is an example of how to configure 2 CBUS pins as GPIO using the `pyftdi` library (one output and one input).
+
+```python
+# Open FTDI device
+self.ftdi = Ftdi()
+
+# open_from_url() requires string in the form "ftdi://ftdi:232:BK00835X/1"
+self.ftdi.open_from_url(self.device_url)
+
+if not self.ftdi.has_cbus:
+    raise RuntimeError("FTDI device does not support CBUS.")
+
+# Initialize EEPROM settings
+self.eeprom = FtdiEeprom()
+self.eeprom.open(self.device_url)
+
+# Configure 2 CBUS pins as GPIO
+self.eeprom.set_property('cbus_func_0', 'GPIO')
+self.eeprom.set_property('cbus_func_1', 'GPIO')
+
+# Commit EEPROM settings
+self.eeprom.commit(dry_run=False)
+
+# Configure CBUS GPIO
+# CBUS1 = Input
+# CBUS0 = Output
+self.ftdi.set_bitmode(0, Ftdi.BitMode.CBUS)
+self.ftdi.set_cbus_direction(0b0011, 0b0001) # 0b0011 selects the GPIO pins we want to change, 0b0001 sets 0 as output, 1 as input
+```
+
+### list_devices() Bug
+
+`Ftdi.list_devices()` has a bug (in `pyftdi v0.57.1`) where it struggles when devices are connected or disconnected after start up. I have found this bug to be present in both the Windows and Linux versions of the library. The following script demonstrates the bug:
+
+```python title="list_devices_bug.py"
+import time
+from pyftdi.ftdi import Ftdi
+
+while True:
+    try:
+        devices = Ftdi.list_devices()
+        print(f"Devices: {devices}")
+    except Exception as e:
+        print(f"Error: {e}")
+    time.sleep(1)
+```
+
+Run the script and then plug in the FTDI device. You should see the following output:
+
+```text
+Devices: [(UsbDeviceDescriptor(vid=1027, pid=24577, bus=1, address=5, sn='BK008364', index=None, description='FT232R USB UART'), 1)]
+```
+
+Then remove the FTDI device and you get the following, indicating that `list_devices()` is raising an exception:
+
+```text
+Error: [Errno 19] No such device (it may have been disconnected)
+```
+
+**UPDATE**
+
+I have discovered that this issue can be fixed by calling `UsbTools.flush_cache()` (`UsbTools` is a class provided by the `pyftdi` library) before calling `Ftdi.list_devices()`. For example:
+
+```python title="list_devices_bug.py"
+from pyftdi.ftdi import Ftdi
+from pyftdi.usbtools import UsbTools
+
+UsbTools.flush_cache() # Fixes bugs with list_devices() when devices are connected or disconnected after start up
+devices = Ftdi.list_devices()
+```
+
+So presumably this means it's a caching bug, which aligns well with the symptoms.
