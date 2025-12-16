@@ -13,7 +13,7 @@ The Fourier transform is an operation which can transform a signal that is descr
 
 > Fourier theorem states that a periodic function f(x) which is reasonably continuous may be expressed as the sum of a series of sine or cosine terms (called the Fourier series), each of which has specific amplitude and phase coefficients known as Fourier coefficients.[^fourier-theorem]
 
-<Image src={import('./1d-fourier-transform.png')} width="700px">The 1D FFT of a waveform made from two sinusoids.</Image>
+<Image src={import('./_assets/1d-fourier-transform.png')} width="700px">The 1D FFT of a waveform made from two sinusoids.</Image>
 
 The finite signal in time has a continuous signal in frequency, and vice versa, a continuous signal in time has a finite signal in frequency.
 
@@ -133,17 +133,21 @@ The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) pr
 
  Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as $|F(u,v)|$, the phase as $\phi F(u,v) $
 
-<Image src={import('./sinusoidal.gif')} width="850px">A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
+<Image src={import('./_assets/sinusoidal.gif')} width="850px">A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
 
-<Image src={import('./square_wave.gif')} width="850px">A square-waved (striped) image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
+<Image src={import('./_assets/square_wave.gif')} width="850px">A square-waved (striped) image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
 
 ## Code Libraries
 
-The opensource [Math.Net Numerics library](http://numerics.mathdotnet.com/) contains C# FFT code built for the .NET framework.
+The open source [Math.Net Numerics library](http://numerics.mathdotnet.com/) contains C# FFT code built for the .NET framework.
 
 ## External Resources
 
 [The Fourier Transform series on The Mobile Studio](http://www.themobilestudio.net/the-fourier-transform-part-1) must be one of the best online resources if you are looking into learning more about the Fourier Transform. It is a very detailed yet well explained step-by-step tutorial!
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
 
 [^fourier-wikipedia]: [https://en.wikipedia.org/wiki/Fourier_transform](https://en.wikipedia.org/wiki/Fourier_transform)
 [^fourier-theorem]: [https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html](https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html)

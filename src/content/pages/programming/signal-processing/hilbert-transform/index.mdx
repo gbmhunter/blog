@@ -1,0 +1,35 @@
+---
+authors: [gbmhunter]
+date: 2025-12-16
+description: A tutorial on the Hilbert Transform.
+lastUpdated: 2025-12-16
+tags: [programming, signal processing, Hilbert transform, Cauchy kernel, analytic signal]
+title: Hilbert Transform
+type: page
+---
+
+The Hilbert transform is a operation that applies a phase shift of either $90^\circ$ or $-90^\circ$ to a signal in the frequency domain. Positive frequency components get shifted by $-90^\circ$ and negative frequency components get shifted by $+90^\circ$. The Hilbert transform is used in signal processing to make a number of calculations convenient and is part of the process to find the [analytic signal](/programming/signal-processing/analytic-signal/). One use case for the Hilbert transform is to find the envelope of a signal that has been amplitude modulated (i.e. demodulation -- extract the message signal from the combined message + carrier signal).
+
+The Hilbert transform is used to create an analytic signal, which is a signal comprising of the original function and it's Hilbert transform.[^wikipedia-analytic-signal] 
+
+The Hilbert transform of $u$ can be thought of as the [convolution](/programming/signal-processing/convolution/) of $u(t)$ with the function $h(t) = \dfrac{1}{\pi t}$. This function $h(t) = \dfrac{1}{\pi t}$ is known as the Cauchy kernel.[^wikipedia-hilbert-transform]
+
+<IRef iref="fig-original-signal-vs-hilbert-transform" /> shows a frequency and amplitude changing signal (commonly known as a chirp) and its Hilbert transform. Note how the phase of the Hilbert transform is clearly shifted by $-90^\circ$ compared to the original signal (it makes the two look like quadrature signals).
+
+<Image iref="fig-original-signal-vs-hilbert-transform" src={import('./_assets/original-signal-vs-hilbert-transform.png')} width="700px">Time domain and frequency domain plots of a frequency and amplitude changing signal (commonly known as a chirp) and its Hilbert transform.</Image>
+
+## Python
+
+The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilbert()` function to compute the Hilbert transform of a signal.[^scipy-hilbert-docs]
+
+<Aside type="tip">
+`scipy.signal.hilbert()` is named confusingly. It actually returns the analytic signal, not just the Hilbert transform. To get just the Hilbert transform, you need to take the imaginary part of the analytic signal, which is `np.imag(scipy.signal.hilbert(signal))` (assuming you are using NumPy). The documentation states this: "FFT-based computation of the analytic signal".[^scipy-hilbert-docs]
+</Aside>
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^wikipedia-hilbert-transform]: Wikipedia (2025, Nov 13). _Hilbert transform_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Hilbert_transform.
+[^wikipedia-analytic-signal]: Wikipedia (2025, Sep 18). _Analytic signal_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Analytic_signal.
+[^scipy-hilbert-docs]: SciPy. _SciPy API > Signal processing (scipy.signal) > hilbert_. Retrieved 2025-12-17, from https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.hilbert.html.

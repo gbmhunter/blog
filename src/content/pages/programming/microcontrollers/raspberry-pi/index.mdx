@@ -1,16 +1,26 @@
 ---
 authors: [gbmhunter]
 date: 2013-03-23
-lastUpdated: 2019-08-10
-tags: [programming, microcontrollers, RaspberryPi, omxplayer, mp3, sound]
+description: The Raspberry Pi is a family of popular single-board computers (SBCs) originally designed by the Raspberry Pi Foundation.
+lastUpdated: 2025-12-09
+tags: [programming, microcontrollers, Raspberry Pi, omxplayer, mp3, sound, Raspberry Pi Connect]
 title: RaspberryPi
 type: page
 ---
 
-The RaspberryPi is a family of cheap, fully-functional micro-computers.
+The Raspberry Pi is a family of popular single-board computers (SBCs) originally designed by the [Raspberry Pi Foundation](https://www.raspberrypi.com).
 
+<Image src={import('./_assets/raspberry-pi-5-photo.webp')} width="500px">A photo of the Raspberry Pi 5.</Image>
 
 ## Quick Setup
+
+### Raspberry Pi Imager
+
+The Raspberry Pi Imager is a desktop GUI tool that allows you to easily write operating system images from a Raspberry Pi to an SD card. It runs on Windows, macOS and Linux. As of December 2025 it is the recommended way to write OS images to an SD card and is at version 2.0.2.
+
+<Image src={import('./_assets/raspberry-pi-imager-v2.0.0-write-complete.webp')} width="600px">A screenshot of the Raspberry Pi Imager v2.0.0 after successfully writing an OS image to an SD card.</Image>
+
+### Older Setup Methods
 
 [www.raspberrypi.com](https://www.raspberrypi.com) has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
 
@@ -181,7 +191,15 @@ You can log into a RaspberryPi from another computer using SSH. Type the followi
 ssh 192.168.1.100 -l pi
 ```
 
-where you replace 192.168.1.100 with the IP address of the RaspberryPi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
+where you replace 192.168.1.100 with the IP address of the Raspberry Pi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
+
+## Raspberry Pi Connect
+
+Raspberry Pi Connect is a remote control tool for the Raspberry Pi that allows you to control the Raspberry Pi from another computer using a web browser. It supports both screen sharing and terminal access. It is provided by the Raspberry Pi Foundation and is free for personal use (you can also setup Organisations which give you unlimited users for US$0.50 per device per month as of December 2025). You can setup Raspberry Pi Connect when you create an image using the Raspberry Pi Imager. This will create an auth key that will be used for authentication.
+
+<Image src={import('./_assets/raspberry-pi-connect-screen-share.webp')} width="800px">A screenshot of the Raspberry Pi Connect screen share feature.</Image>
+
+If you only want terminal access, SSH from a local terminal is usually a better option that Raspberry Pi Connect because the native terminal experience is better than using a web browser terminal. But Raspberry Pi Connect is still a great tool for quick terminal access (as doesn't require you to remember any credentials except your login to Raspberry Pi Connect).
 
 ## Useful Packages To Install
 
@@ -221,13 +239,13 @@ sudo cp -r node-v0.10.2-linux-arm-pi/* /opt/node
 
 Then Node.js has to be added to your `PATH` variable, to do this, type
 
-```sh    
+```sh
 nano /etc/profile
 ```
 
 And add the following lines before the export variable
 
-```sh    
+```sh
 ...
 NODE_JS_HOME="/opt/node"
 PATH="$PATH:$NODE_JS_HOME/bin"
@@ -237,7 +255,7 @@ export PATH
 
 This [great tutorial on the Kitware blog](http://www.kitware.com/blog/home/post/433) easily explains how to remotely access the RPi using nodejs. Once you have installed Node.js, it also pays to install npm (node package manager), by typing:
 
-```sh    
+```sh
 sudo apt-get install npm
 ```
 

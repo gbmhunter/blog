@@ -1,0 +1,54 @@
+---
+authors: [gbmhunter]
+date: 2025-12-17
+description: A tutorial on the Analytic Signal.
+lastUpdated: 2025-12-17
+tags: [programming, signal processing, Hilbert transform, analytic signal]
+title: Analytic Signal
+type: page
+---
+
+An analytic signal is a complex-valued function that has no negative frequency components. It is created by taking the Hilbert transform of a real-valued function and then adding the original function with the imaginary number multiplied by the Hilbert transform.
+
+One way to calculate the analytic signal $s_a(t)$ of a real-valued function $s(t)$ is:
+
+$$
+s_a(t) = s(t) + j\ \text{Hilbert}(s(t))
+$$
+
+<div className="centered">
+  where:<br/>
+  $s_a(t)$ is the computed analytic signal<br/>
+  $s(t)$ is the original real-valued function<br/>
+  $j$ is the imaginary number ($j = \sqrt{-1}$), also seen as $i$ in maths ($j$ is used in electronics as to not get $i$ confused with current)<br/>
+  $\text{Hilbert}(s(t))$ is the Hilbert transform of $s(t)$<br/>
+</div>
+
+The above equation is in the time domain. You can also calculate the analytic signal in the frequency domain $S_a(f)$ using the following equation:
+
+$$
+S_a(f) = 2u(f)S(f)
+$$
+
+<div className="centered">
+  where:<br/>
+  $S_a(f)$ is the computed analytic signal in the frequency domain<br/>
+  $S(f)$ is the original real-valued function in the frequency domain<br/>
+  $u(f)$ is the Heaviside step function<br/>
+</div>
+
+This equation shows that, in the frequency domain, the analytic signal is calculated simply by:
+
+1. Removing all the negative frequency components
+2. Doubling the magnitude of the positive frequency components
+
+## Python
+
+The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilbert()` function to compute the Hilbert transform of a signal.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^wikipedia-hilbert-transform]: Wikipedia (2025, Nov 13). _Hilbert transform_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Hilbert_transform.
+[^wikipedia-analytic-signal]: Wikipedia (2025, Sep 18). _Analytic signal_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Analytic_signal.
