@@ -8,12 +8,18 @@ title: Analytic Signal
 type: page
 ---
 
-An analytic signal is a complex-valued function that has no negative frequency components. It is created by taking the Hilbert transform of a real-valued function and then adding the original function with the imaginary number multiplied by the Hilbert transform.
+An analytic signal is a complex-valued function that has no negative frequency components. It is created by taking the Hilbert transform of a real-valued function and then adding the original function with the imaginary number multiplied by the [Hilbert transform](/programming/signal-processing/hilbert-transform/).
+
+The analytic signal is useful in signal processing because it can be used to calculate various features of a signal at different points in time, such as the instantaneous amplitude, frequency and phase of a signal. It can aid in the demodulation of amplitude modulated signals.
+
+## Calculation
 
 One way to calculate the analytic signal $s_a(t)$ of a real-valued function $s(t)$ is:
 
 $$
+\begin{align}
 s_a(t) = s(t) + j\ \text{Hilbert}(s(t))
+\end{align}
 $$
 
 <div className="centered">
@@ -24,10 +30,14 @@ $$
   $\text{Hilbert}(s(t))$ is the Hilbert transform of $s(t)$<br/>
 </div>
 
+Because we enforce the condition that the original function be real-valued, you can easily go backwards from the analytic signal to the original real-valued function by discarding the imaginary part.
+
 The above equation is in the time domain. You can also calculate the analytic signal in the frequency domain $S_a(f)$ using the following equation:
 
 $$
+\begin{align}
 S_a(f) = 2u(f)S(f)
+\end{align}
 $$
 
 <div className="centered">
@@ -42,9 +52,59 @@ This equation shows that, in the frequency domain, the analytic signal is calcul
 1. Removing all the negative frequency components
 2. Doubling the magnitude of the positive frequency components
 
+## Instantaneous Amplitude, Frequency and Phase
+
+One thing the analytic signal is useful for is finding the instantaneous amplitude, frequency and phase of a signal.
+
+<Aside type="tip">
+It's important to understand that "instantaneous" refers to the concept that, at any specific point of time, you can characterise the signal by a single amplitude, frequency and phase. This is useful in signal processing to detect features of the signal at different points in time.
+</Aside>
+
+The instantaneous amplitude $s_m(t)$ is found by taking the magnitude of the analytic signal (remembering that the analytic signal is a complex number and the magnitude is the distance from the origin to the complex number on the complex plane):
+
+$$
+\begin{align}
+s_m(t) = |s_a(t)|
+\end{align}
+$$
+
+The instantaneous phase $\theta(t)$ of the signal is found by taking the argument of the analytic signal (remembering that the analytic signal is a complex number, and the argument is the angle from the positive x-axis to the line connecting the origin to the complex number on the complex plane):[^wikipedia-analytic-signal]
+
+$$
+\begin{align}
+\theta(t) = \arg [s_a(t)]
+\end{align}
+$$
+
+The instantaneous angular frequency $\omega(t)$ of the signal is found by taking the derivative of the unwrapped instantaneous phase with respect to time:[^wikipedia-analytic-signal]
+
+$$
+\begin{align}
+\omega(t) = \frac{d}{dt} \theta(t)
+\end{align}
+$$
+
+Converting from angular frequency to Hertz gives us the instantaneous frequency $f(t)$:[^wikipedia-analytic-signal]
+
+$$
+\begin{align}
+f(t) = \frac{1}{2\pi} \omega(t)
+\end{align}
+$$
+
+<IRef iref="fig-chirp-and-analytic-signal" /> shows a frequency and amplitude changing signal (commonly known as a chirp) and its analytic signal. The signal I created for analysis was a chirp which starts at 5 Hz and linearly ramps to 30 Hz over 1 second. The amplitude of the chirp is also varying. It first begins to exponentially rise until $t = 0.3 s$, and then exponentially falls at a slower rate until the end.
+
+You can see how the instantaneous amplitude calculated from the analytic signal closely follows the original amplitude envelope and how it can be a useful way to demodulate amplitude modulated signals. Also useful is the calculated instantaneous phase and frequency. Note how the calculated  instantaneous frequency closely matches the theoretical frequency is used to create the chirp in the first place, except for just after $t = 0 s$.
+
+<Image iref="fig-chirp-and-analytic-signal" src={import('./_assets/chirp-and-analytic-signal.png')} width="800px">Time domain and frequency domain plots of a frequency and amplitude changing signal (commonly known as a chirp) and its analytic signal.</Image>
+
 ## Python
 
-The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilbert()` function to compute the Hilbert transform of a signal.
+The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilbert()` function to compute the analytic function of a signal.[^scipy-hilbert-docs]
+
+<Aside type="tip">
+`scipy.signal.hilbert()` is named confusingly. It actually returns the analytic signal, not just the Hilbert transform. If you just wanted the Hilbert transform, you need to take the imaginary part of the returned analytic signal, which is `np.imag(scipy.signal.hilbert(signal))` (assuming you are using NumPy).[^scipy-hilbert-docs]
+</Aside>
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
@@ -52,3 +112,4 @@ The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilber
 
 [^wikipedia-hilbert-transform]: Wikipedia (2025, Nov 13). _Hilbert transform_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Hilbert_transform.
 [^wikipedia-analytic-signal]: Wikipedia (2025, Sep 18). _Analytic signal_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Analytic_signal.
+[^scipy-hilbert-docs]: SciPy. _SciPy API > Signal processing (scipy.signal) > hilbert_. Retrieved 2025-12-17, from https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.hilbert.html.

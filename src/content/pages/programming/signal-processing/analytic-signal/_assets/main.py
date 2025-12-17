@@ -2,7 +2,6 @@ from pathlib import Path
 
 import numpy as np
 from scipy.signal import hilbert
-from scipy.fft import fft, fftfreq
 import matplotlib.pyplot as plt
 
 SCRIPT_DIR = Path(__file__).parent
@@ -42,52 +41,38 @@ signal = amplitude_envelope * np.sin(phase)
 analytic_signal: np.ndarray = hilbert(signal)  # type: ignore
 hilbert_transform = np.imag(analytic_signal)
 
-# Calculate FFTs for frequency domain comparison
-signal_fft = fft(signal)
-hilbert_fft = fft(hilbert_transform)
-frequencies = fftfreq(len(signal), 1/fs)
-
-# Only plot positive frequencies
-positive_freq_mask = frequencies >= 0
-frequencies_plot = frequencies[positive_freq_mask]  # type: ignore
-signal_fft_plot = np.abs(signal_fft[positive_freq_mask])  # type: ignore
-hilbert_fft_plot = np.abs(hilbert_fft[positive_freq_mask])  # type: ignore
-
-# Calculate phase in frequency domain
-signal_phase = np.unwrap(np.angle(signal_fft[positive_freq_mask]))  # type: ignore
-hilbert_phase = np.unwrap(np.angle(hilbert_fft[positive_freq_mask]))  # type: ignore
+# Calculate instantaneous frequency and phase from analytic signal
+phase_analytic = np.unwrap(np.angle(analytic_signal))
+instantaneous_frequency_analytic = np.gradient(phase_analytic, t) / (2.0 * np.pi)
 
 # Create time domain comparison plot
-fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 14))
+fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 12))
 
 # Time domain plot
-ax1.plot(t, signal, label='Original Signal', linewidth=2, alpha=0.8)
-ax1.plot(t, hilbert_transform, label='Hilbert Transform', linewidth=2, alpha=0.8, linestyle='--')
-ax1.plot(t, amplitude_envelope, label='Magnitude of Analytic Signal', linewidth=1.5, alpha=0.6, linestyle=':')
+ax1.plot(t, signal, label='Original signal', linewidth=2, alpha=0.8)
+# ax1.plot(t, hilbert_transform, label='Hilbert Transform', linewidth=2, alpha=0.8, linestyle='--')
+ax1.plot(t, amplitude_envelope, label='Instantaneous amplitude calculated from analytic signal', linewidth=1.5, alpha=0.6, linestyle='-', color='red')
 ax1.legend()
 ax1.set_xlabel('Time [s]')
 ax1.set_ylabel('Amplitude')
-ax1.set_title('Time Domain: Original Signal vs Hilbert Transform')
+ax1.set_title('Signal and instantaneous amplitude calculated from analytic signal')
 ax1.grid(True, alpha=0.3)
 
-# Frequency domain plot
-ax2.plot(frequencies_plot, signal_fft_plot, label='Original Signal', linewidth=2, alpha=0.8)
-ax2.plot(frequencies_plot, hilbert_fft_plot, label='Hilbert Transform', linewidth=2, alpha=0.8, linestyle='--')
+# Phase plot
+ax2.plot(t, phase_analytic, label='Instantaneous phase calculated from analytic signal', linewidth=2, alpha=0.8, color='purple')
 ax2.legend()
-ax2.set_xlabel('Frequency [Hz]')
-ax2.set_ylabel('Magnitude')
-ax2.set_title('Frequency Domain: Magnitude of Original Signal vs Hilbert Transform')
-ax2.set_xlim(0, 50)  # Focus on relevant frequency range
+ax2.set_xlabel('Time [s]')
+ax2.set_ylabel('Phase [rad]')
+ax2.set_title('Instantaneous phase')
 ax2.grid(True, alpha=0.3)
 
-# Phase plot
-ax3.plot(frequencies_plot, signal_phase, label='Original Signal', linewidth=2, alpha=0.8)
-ax3.plot(frequencies_plot, hilbert_phase, label='Hilbert Transform', linewidth=2, alpha=0.8, linestyle='--')
+# Instantaneous frequency plot
+ax3.plot(t, instantaneous_frequency_analytic, label='Instantaneous frequency calculated from analytic signal', linewidth=2, alpha=0.8, color='green')
+ax3.plot(t, instantaneous_frequency, label='Theoretical frequency', linewidth=1.5, alpha=0.6, linestyle='--', color='red')
 ax3.legend()
-ax3.set_xlabel('Frequency [Hz]')
-ax3.set_ylabel('Phase [rad]')
-ax3.set_title('Frequency Domain: Phase of Original Signal vs Hilbert Transform')
-ax3.set_xlim(0, 50)  # Focus on relevant frequency range
+ax3.set_xlabel('Time [s]')
+ax3.set_ylabel('Frequency [Hz]')
+ax3.set_title('Instantaneous Frequency')
 ax3.grid(True, alpha=0.3)
 
 plt.tight_layout()
