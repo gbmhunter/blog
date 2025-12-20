@@ -38,7 +38,9 @@ You might be tempted to use a unit test library to structure the software. Howev
 
 Write each test as it's own function. This allows you to write a generic `def run_test(test_function)` function that can perform common tasks prior and just after running each test step (such as checking whether the test passed or failed, logging the result, and measuring the time taken to run the test). This also allows you to restructure the ordering of the tests easily or make different combinations of tests steps into different complete test sequences.
 
-You may be tempted to gather the test functions into a List and then loop through them to run, as shown below:
+### Test Functions as a List
+
+Any easy way to run the tests is to gather them into a List and then loop through them to run, as shown below:
 
 ```python
 list_of_tests [
@@ -55,7 +57,51 @@ for test in list_of_tests:
   test()
 ```
 
-I don't recommend this approach, as it makes it very difficult to add conditional logic to the running of the tests. For example, you may only want to run the `test_configure_device` test if you detect during the connection test that it is not already configured. Instead:
+This works well if you have fixed set of tests that are always run in the same order, and there typically is no conditional logic to the running of the tests.
+
+### Creating a Test Step Class
+
+You may want to create a `TestStep` class which can hold a bit more information about each test step, rather than just the function to call. This extra data could include the name of the test step and the number of attempts to try before giving up.
+
+```python
+class TestStep:
+    def __init__(self, name: str, function: Callable, max_attempts: int = 1):
+        self.name = name
+        self.function = function
+        self.max_attempts = max_attempts
+```
+
+Then you could build up a list of test steps and then loop through them to run, like this:
+
+```python
+# Your test steps are defined here...
+test_steps = [
+    TestStep("Program Device", test_program_device, max_attempts=3),
+    TestStep("Connect via Serial", test_connect_via_serial, max_attempts=2),
+    TestStep("Configure Device", test_configure_device, max_attempts=2),
+    TestStep("Check Temperature", test_check_temperature, max_attempts=1),
+    TestStep("Write Serial Number", test_write_serial_number, max_attempts=2),
+    TestStep("Save Results to Database", test_save_results_to_database, max_attempts=1),
+]
+
+# Then when you want to run the tests:
+for test_step in test_steps:
+    for attempt in range(test_step.max_attempts):
+        try:
+            test_step.function()
+            logger.info(f"Test step {test_step.name} passed on attempt {attempt + 1}")
+            break
+        except Exception as e:
+              logger.warning(f"Test step {test_step.name} did not pass on attempt {attempt + 1}: {e}")
+            if attempt == test_step.max_attempts - 1:
+                logger.error(f"Test step {test_step.name} exhausted all attempts ({attempt + 1}). Failing the test.")
+```
+
+### Conditional Logic
+
+If you need to run tests conditionally or in different orders that depends on runtime conditions (e.g. you may only want to run the `test_configure_device` test if you detect during the connection test that it is not already configured), the list based approach above will not work well. Instead, you will usually want to use a function that can be called to run the tests.
+
+A better approach in this case to just call the test functions from a "parent" test sequence function. You may also want to make a wrapper function that can be called from the parent to run each test, as to re-use some common logic like catching exceptions from the test function and treating that as a failure.
 
 ```python
 def run_tests():
@@ -71,42 +117,42 @@ def run_tests():
 
 The number of failure modes when doing production line testing can be quite high, and the modes themselves hard to predict. For this reason, it is important to log everything. This gives the tester the best ability to diagnose, categorise and fix the problem (the fixing may occur later by someone else, or not at all if the cost to repair is too high compared to the cost of the device).
 
-If writing the software in Python, you can use the built-in logging library (`import logging`) to log messages. I like to write a helper function that configures each logger in a standard way. This example below uses the 3rd party `colorlog` library to add coloured output to the logs (if the output is a "tty like" terminal, not a file).
+If writing the software in Python, you can use the built-in logging library (`import logging`) to log messages. You can setup a handler on the root logger (child log messages will propagate up to the root logger and also be emitted by the handler) to format the logs in your desired way.
 
-```python title="logging_helper.py"
+```python title="main.py"
 import logging
 import colorlog
 
-def get_logger(name: str) -> logging.Logger:
-    logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
-    
-    # Create a colored stream handler
-    handler = colorlog.StreamHandler()
-    
-    # Configure the formatter with colors
-    # Orange for warnings, red for errors
-    formatter = colorlog.ColoredFormatter(
-        '%(log_color)s%(asctime)s - %(levelname)s - %(name)s:%(lineno)d - %(message)s',
-        log_colors={
-            'DEBUG': 'cyan',
-            'INFO': 'white',
-            'WARNING': 'yellow',  # Yellow/orange for warnings
-            'ERROR': 'red',       # Red for errors
-            'CRITICAL': 'red,bg_white',
-        }
-    )
-    
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    return logger
+# Setup root logger, all child loggers will propagate up to the root logger and be emitted by the handler attached to this.
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.INFO)
+
+# Create a colored stream handler
+handler = colorlog.StreamHandler()
+
+# Configure the formatter with colors
+# Orange for warnings, red for errors
+formatter = colorlog.ColoredFormatter(
+    '%(log_color)s%(asctime)s - %(levelname)s - %(name)s:%(lineno)d - %(message)s',
+    log_colors={
+        'DEBUG': 'cyan',
+        'INFO': 'white',
+        'WARNING': 'yellow',  # Yellow/orange for warnings
+        'ERROR': 'red',       # Red for errors
+        'CRITICAL': 'red,bg_white',
+    }
+)
+
+handler.setFormatter(formatter)
+root_logger.addHandler(handler)
 ```
 
-And then in your other files you would use `get_logger()` like this:
+Then in other files:
 
-```python title="main.py"
-from logging_helper import get_logger
-logger = get_logger(Path(__file__).name)
+```python title="my_other_file.py"
+import logging
+
+logger = logging.getLogger(__name__)
 
 def test_program_device():
     logger.info("Programming device...")
@@ -165,6 +211,22 @@ If you are providing the tester with a command-line interface, watch out for thr
 
 - Make the worker threads daemon threads, so that they are automatically terminated when the main thread exits.
 - Catch the Ctrl-C signal in the main thread and then use a `threading.Event` to signal to the worker threads to exit. You have to make sure the worker threads periodically check the event and exit if it is signaled.
+
+## Debugging at Production Time
+
+Test jigs are commonly sent to the factory that is assembling the PCBs so that they can be tested at the same place they are assembled. This saves time and money if there are production problems by catching them early. This also allows the PCB to be directly installed into the product assuming it passes the tests.
+
+Always consider how you are going to inspect and fix issues with the test fixture at production time. I recommend connecting the test jig to the internet via Ethernet cable (more reliable than WiFi, and does not require authentication) assuming the factory will allow this (any competent factory will be able to sandbox your test jig so it has access to the internet via an Ethernet cable into their switch/router, but not the rest of the factory's network).
+
+If you can rely on having an internet connection, then SSH and desktop sharing software are two great tools to debug and diagnose issues with the test jig at production time.
+
+### The Great Chinese Firewall
+
+If the test jig is going to be deployed in China, you will need to consider the Great Chinese Firewall. This usually blocks encrypted traffic to and from China. This means things like VPNs and being able to SSH into the test jig are not normally possible. Tunnels and reverse proxies (in where the test jig reaches out to a server, and you connect to the test fixture by also reaching out to the server) are not likely to work either. Cloud services like AWS, Azure, and Google Cloud are usually blocked (important if you were planning on hosting a test jig database on on of those). However these services can offer China regions which do work (and sometime replication from within China region to outside) -- with the caveat that they normally require different accounts to the rest of the world.
+
+## Certificates
+
+Sometimes the device you are testing will require a certificate and/or key to be programmed onto it. This is usually for authentication so that other services (such as a cloud server) can authenticate the device at runtime.
 
 ## Suppliers
 

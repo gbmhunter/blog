@@ -1,8 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2025-12-02
-lastUpdated: 2025-12-05
-tags: [FTDI, Python, firmware, pyftdi, programming, CBUS, GPIO]
+description: A guide on how to control FTDI devices using Python and the pyftdi library.
+lastUpdated: 2025-12-19
+tags: [FTDI, Python, firmware, pyftdi, programming, CBUS, GPIO, serial ports, pyserial]
 title: Controlling FTDI Devices
 type: page
 ---
@@ -62,35 +63,50 @@ And then unplug and plug the FTDI device back in.
 
 ### Configuring the CBUS GPIO Pins
 
+FTDI ICs can contain general purpose GPIO pins which can be controlled from the USB host. These are called CBUS pins. For example, the FTDI FT232RNQ has 5 CBUS pins `CBUS0` to `CBUS4`, as shown in <IRef iref="fig-cbus-pins-on-a-ftdi-ic" />.
+
+<Image iref="fig-cbus-pins-on-a-ftdi-ic" src={import('./_assets/cbus-pins-on-a-ftdi-ic.webp')} width="400px">A schematic showing the CBUS pins on a FTDI IC.</Image>
+
 Below is an example of how to configure 2 CBUS pins as GPIO using the `pyftdi` library (one output and one input).
 
 ```python
 # Open FTDI device
-self.ftdi = Ftdi()
+ftdi = Ftdi()
 
 # open_from_url() requires string in the form "ftdi://ftdi:232:BK00835X/1"
-self.ftdi.open_from_url(self.device_url)
+ftdi.open_from_url(self.device_url)
 
-if not self.ftdi.has_cbus:
+if not ftdi.has_cbus:
     raise RuntimeError("FTDI device does not support CBUS.")
 
 # Initialize EEPROM settings
-self.eeprom = FtdiEeprom()
-self.eeprom.open(self.device_url)
+eeprom = FtdiEeprom()
+eeprom.open(self.device_url)
 
 # Configure 2 CBUS pins as GPIO
-self.eeprom.set_property('cbus_func_0', 'GPIO')
-self.eeprom.set_property('cbus_func_1', 'GPIO')
+eeprom.set_property('cbus_func_0', 'GPIO')
+eeprom.set_property('cbus_func_1', 'GPIO')
 
 # Commit EEPROM settings
-self.eeprom.commit(dry_run=False)
+eeprom.commit(dry_run=False)
 
 # Configure CBUS GPIO
 # CBUS1 = Input
 # CBUS0 = Output
-self.ftdi.set_bitmode(0, Ftdi.BitMode.CBUS)
-self.ftdi.set_cbus_direction(0b0011, 0b0001) # 0b0011 selects the GPIO pins we want to change, 0b0001 sets 0 as output, 1 as input
+ftdi.set_bitmode(0, Ftdi.BitMode.CBUS)
+ftdi.set_cbus_direction(0b0011, 0b0001) # 0b0011 selects the GPIO pins we want to change, 0b0001 sets 0 as output, 1 as input
 ```
+
+Then you can set outputs with the `ftdi.set_cbus_gpio()` method. For example:
+
+```python
+ftdi.set_cbus_gpio(0b00001) # Set CBUS0 high, everything else low
+ftdi.set_cbus_gpio(0b00010) # Set CBUS1 high, everything else low
+```
+
+<Aside type="tip">
+Remember that you are setting every pin at the same time. To set pins independently, save the current state of the pins locally and use bitwise `|= 0b....` or `&= ~0b....` to just change individual pins.
+</Aside>
 
 ### list_devices() Bug
 
@@ -134,3 +150,18 @@ devices = Ftdi.list_devices()
 ```
 
 So presumably this means it's a caching bug, which aligns well with the symptoms.
+
+### Using the Serial Port
+
+When using `pyftdi`, you can get access to the serial port using the `pyftdi.serialext.serial_for_url()` function. `pyftdi` does not define it's own serial API, but leverages the popular `pyserial` API. `serial_for_url()` returns a `pyserial.Serial` object, from which point you can use the standard `pyserial` API to send and receive data. For example:
+
+```python
+# Open a serial port on the first FTDI device interface (/1) @ 115200 baud
+port: pyserial.Serial = pyftdi.serialext.serial_for_url('ftdi://ftdi:2232h/1', baudrate=115200)
+
+# Send bytes
+port.write(b'Hello World')
+
+# Receive bytes
+data = port.read(1024)
+```

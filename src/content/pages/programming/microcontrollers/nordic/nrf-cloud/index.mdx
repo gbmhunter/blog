@@ -1,0 +1,35 @@
+---
+authors: [gbmhunter]
+date: 2025-12-19
+description: nRF Cloud is a cloud service provided by Nordic Semiconductor that allows you manage your nRF devices.
+lastUpdated: 2025-12-19
+tags: [programming, microcontrollers, nRF, Nordic, programming, cloud, nRF Cloud, Memfault]
+title: nRF Cloud
+type: page
+---
+
+<WarningIsNotes />
+
+nRF Cloud is a cloud service provided by Nordic Semiconductor that allows you manage your nRF devices.
+
+<Image src={import('./_assets/screenshot-of-a-device-in-nrf-cloud.webp')} width="800px">A screenshot of a device in nRF Cloud. In this particular case, it was a nRF9160-DK programmed with the Asset Tracker v2 example firmware.</Image>
+
+## History
+
+Nordic Semiconductor acquired a competing cloud management service called [Memfault](/programming/firmware/memfault/) in June 2025.[^nordic-semi-memfault-acquisition] Since then, it appears that parts of Memfault have been integrated into nRF Cloud.
+
+## Secure Identity
+
+Every nRF91x1 device has a unique private key written to during Nordics SoC manufacturing process. Nordic Semiconductor stores the public key in it's nRF Cloud Identity Service database. This private key can never be read or changed for the entire lifetime of the device (even a complete erase will not touch it). It provides a useful way of securely identifying the device to other systems such as cloud platforms using the ECDSA signature scheme. The SoC can use the private key to sign a message that is verified by the cloud.[^nordic-semi-nrf-cloud-identity-service]
+
+<Image src={import('./_assets/diagram-of-nrf-cloud-identity-service-process.webp')} width="600px">A diagram of the nRF Cloud Identity Service process.[^nordic-semi-nrf-cloud-identity-service]</Image>
+
+
+nRF91x1 devices and use the private identity key to sign JWT (JSON Web Tokens) when connecting to cloud services.
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^nordic-semi-memfault-acquisition]: Nordic Semiconductor (2025, Jun 24). _Nordic Semiconductor acquires Memfault, launches the first complete chip-to-cloud platform for lifecycle management of connected products_ [press release]. Retrieved 2025-12-19, from https://www.nordicsemi.com/Nordic-news/2025/06/Nordic-Semiconductor-acquires-Memfault.
+[^nordic-semi-nrf-cloud-identity-service]: Nordic Semiconductor (2025, Dec 16). _nRF Cloud Identity Service_ [documentation]. Retrieved 2025-12-19, from https://docs.nordicsemi.com/bundle/nrf-cloud/page/SecurityServices/IdentityService/IdentityOverview.html.

@@ -30,7 +30,7 @@ $$
   $\text{Hilbert}(s(t))$ is the Hilbert transform of $s(t)$<br/>
 </div>
 
-Because we enforce the condition that the original function be real-valued, you can easily go backwards from the analytic signal to the original real-valued function by discarding the imaginary part.
+Because we enforce the condition that the original function be real-valued (i.e. have no imaginary components), you can easily go backwards from the analytic signal to the original real-valued function by discarding the imaginary part.
 
 The above equation is in the time domain. You can also calculate the analytic signal in the frequency domain $S_a(f)$ using the following equation:
 
@@ -57,7 +57,7 @@ This equation shows that, in the frequency domain, the analytic signal is calcul
 One thing the analytic signal is useful for is finding the instantaneous amplitude, frequency and phase of a signal.
 
 <Aside type="tip">
-It's important to understand that "instantaneous" refers to the concept that, at any specific point of time, you can characterise the signal by a single amplitude, frequency and phase. This is useful in signal processing to detect features of the signal at different points in time.
+It's important to understand that "instantaneous" refers to the concept that, at any specific point of time, you can characterise the signal by a single amplitude, frequency and phase. This only works well for narrowband signals -- signals in where all the energy is concentrated in a narrow band of frequencies. This is true for AM modulated signals in where all the energy is concentrated around the carrier frequency.[^stanford-uni-analytic-signals-and-hilbert-transform-filters]
 </Aside>
 
 The instantaneous amplitude $s_m(t)$ is found by taking the magnitude of the analytic signal (remembering that the analytic signal is a complex number and the magnitude is the distance from the origin to the complex number on the complex plane):
@@ -76,7 +76,7 @@ $$
 \end{align}
 $$
 
-The instantaneous angular frequency $\omega(t)$ of the signal is found by taking the derivative of the unwrapped instantaneous phase with respect to time:[^wikipedia-analytic-signal]
+The instantaneous angular frequency $\omega(t)$ of the signal is found by taking the derivative of the unwrapped instantaneous phase with respect to time (i.e. it is the rate of change of phase):[^wikipedia-analytic-signal]
 
 $$
 \begin{align}
@@ -98,6 +98,12 @@ You can see how the instantaneous amplitude calculated from the analytic signal 
 
 <Image iref="fig-chirp-and-analytic-signal" src={import('./_assets/chirp-and-analytic-signal.png')} width="800px">Time domain and frequency domain plots of a frequency and amplitude changing signal (commonly known as a chirp) and its analytic signal.</Image>
 
+## When Instantaneous Frequency Doesn't Work Well
+
+Calculating the instantaneous frequency does not work well with wideband signals. Let's take a look at an example. Let's make a signal of a C major triad from three sine waves at 261.63 Hz, 329.63 Hz and 392.00 Hz (C4 -- middle C, E4, G4). Then let's calculate the analytic signal and the instantaneous frequency. <IRef iref="fig-widely-varying-instantaneous-frequency" /> shows the results. Note how the calculated instantaneous frequency jumps all over the place, including going down to -4000 Hz! This is due to destructive interference between the three sine waves causing the amplitude of the signal to go close to zero at certain points in time. At these times, small movements can cause large changes in the angle in the complex plane (large phase changes) resulting in large changes in the instantaneous frequency (which is the derivative of the phase).
+
+<Image iref="fig-widely-varying-instantaneous-frequency" src={import('./_assets/widely-varying-instantaneous-frequency.png')} width="800px">Time domain and frequency domain plots of a signal with widely varying instantaneous frequency.</Image>
+
 ## Python
 
 The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilbert()` function to compute the analytic function of a signal.[^scipy-hilbert-docs]
@@ -113,3 +119,4 @@ The Python library [SciPy](https://scipy.org/) provides the `scipy.signal.hilber
 [^wikipedia-hilbert-transform]: Wikipedia (2025, Nov 13). _Hilbert transform_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Hilbert_transform.
 [^wikipedia-analytic-signal]: Wikipedia (2025, Sep 18). _Analytic signal_. Retrieved 2025-12-16, from https://en.wikipedia.org/wiki/Analytic_signal.
 [^scipy-hilbert-docs]: SciPy. _SciPy API > Signal processing (scipy.signal) > hilbert_. Retrieved 2025-12-17, from https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.hilbert.html.
+[^stanford-uni-analytic-signals-and-hilbert-transform-filters]: Julius O. Smith III (2024, Apr 2). _Analytic Signals and Hilbert Transform Filters_. Stanford University. Retrieved 2025-12-17, from https://ccrma.stanford.edu/~jos/st/Analytic_Signals_Hilbert_Transform.html.

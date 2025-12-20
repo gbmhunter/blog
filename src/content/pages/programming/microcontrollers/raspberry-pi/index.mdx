@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2013-03-23
 description: The Raspberry Pi is a family of popular single-board computers (SBCs) originally designed by the Raspberry Pi Foundation.
-lastUpdated: 2025-12-09
-tags: [programming, microcontrollers, Raspberry Pi, omxplayer, mp3, sound, Raspberry Pi Connect]
+lastUpdated: 2025-12-19
+tags: [programming, microcontrollers, Raspberry Pi, omxplayer, mp3, sound, Raspberry Pi Connect, cases, enclosures]
 title: RaspberryPi
 type: page
 ---
@@ -11,6 +11,16 @@ type: page
 The Raspberry Pi is a family of popular single-board computers (SBCs) originally designed by the [Raspberry Pi Foundation](https://www.raspberrypi.com).
 
 <Image src={import('./_assets/raspberry-pi-5-photo.webp')} width="500px">A photo of the Raspberry Pi 5.</Image>
+
+## Cases
+
+The Raspberry Pi 5 has an official case which contains a small heatsink and fan for active cooling of the CPU. The case is available in red/white or black. It snaps together easily and provides access to all the common features.
+
+<Image src={import('./_assets/official-raspberry-pi-5-case.webp')} width="600px">The official Raspberry Pi 5 case.[^this-pi-hut-raspberry-pi-5-case]</Image>
+
+In Sep 2025, a new M.2 hat called the "M.2 HAT+ Compact" was released which is compatible with the official enclosure. This hat is a more compact version of the original M.2 hat, which supports 2230-format (30mm long) M.@ PCI express cards.[^rpi-m2-hat-compact-on-sale-now] This hat is great for installing NVMe drives which offer better performance and reliability for the boot file system than the SD card slot or a USB thumb drive.
+
+<Image src={import('./_assets/raspberry-pi-m.2-hat-plus-compact-bare-and-in-enclosure.webp')} width="900px">Photos of the official Raspberry Pi "M.2 HAT+ Compact" hat. Left is the bare hat, right is the hat in the official enclosure.[^the-pi-hut-m2-hat-plus-compact]</Image>
 
 ## Quick Setup
 
@@ -179,9 +189,8 @@ Assuming you have an internet connection, run:
 
 ```sh
 sudo apt-get update
-
 sudo apt-get upgrade
-```   
+```
 
 ## SSH
 
@@ -191,7 +200,7 @@ You can log into a RaspberryPi from another computer using SSH. Type the followi
 ssh 192.168.1.100 -l pi
 ```
 
-where you replace 192.168.1.100 with the IP address of the Raspberry Pi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
+where you replace 192.168.1.100 with the IP address of the Raspberry Pi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag `-l pi` tells SSH to login with the username `pi`, not the default username of the calling terminal.
 
 ## Raspberry Pi Connect
 
@@ -203,8 +212,8 @@ If you only want terminal access, SSH from a local terminal is usually a better 
 
 ## Useful Packages To Install
 
-```sh    
-# GIT repo engine
+```sh
+# git to manage git repositories
 sudo apt-get install git
 
 ## Advanced make-like compiler
@@ -285,3 +294,11 @@ QW Home Automation
 
 Website: [http://qwhomeautomation.com/](http://qwhomeautomation.com/)
 Works with [Insteon products](http://www.insteon.com).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^rpi-m2-hat-compact-on-sale-now]: Eben Upton (2025, Sep 22). _News > M.2 HAT+ Compact on sale now at $15_ [news]. Raspberry Pi. Retrieved 2025-12-19, from https://www.raspberrypi.com/news/m-2-hat-compact-on-sale-now-at-15/.
+[^the-pi-hut-m2-hat-plus-compact]: The Pi Hut. _Raspberry Pi M.2 HAT+ Compact_ [product page]. Retrieved 2025-12-19, from https://thepihut.com/products/raspberry-pi-m-2-hat-compact.
+[^this-pi-hut-raspberry-pi-5-case]: The Pi Hut. _Raspberry Pi 5 Case_ [product page]. Retrieved 2025-12-19, from https://thepihut.com/products/raspberry-pi-5-case.
