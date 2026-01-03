@@ -9,63 +9,29 @@ title: Happy New Year 2026
 type: updates
 ---
 
-2024 saw 505k (505,000) page views for [blog.mbedded.ninja](https://blog.mbedded.ninja)! This was up from 436k last year, an increase of 69k or 16%. <IRef iref="fig-stats-graphs" /> shows the page views and other key stats per year.
+2024 saw 282k (282,000) page views for [blog.mbedded.ninja](https://blog.mbedded.ninja). This is down from 505k last year, a decrease of 223k or 44%. <IRef iref="fig-stats-graphs" /> shows the page views and other key stats per year.
 
-<Image iref="fig-stats-graphs" src={import('./_assets/stats-graphs.png')} width="900px">Graphs of page views and content up to the end of 2024.</Image>
+<Image iref="fig-stats-graphs" src={import('./_assets/stats-graphs.png')} width="900px">Graphs of page views and content up to the end of 2025.</Image>
 
-[NinjaTerm](https://ninjaterm.mbedded.ninja/) went through 11 releases from [v4.12.1](https://github.com/gbmhunter/NinjaTerm/releases/tag/v4.12.1) to [v4.19.0](https://github.com/gbmhunter/NinjaTerm/releases/tag/v4.19.0). Some significant features were added, after it got turned into a PWA just before the start of 2024. It has 75 stars on [GitHub](https://github.com/gbmhunter/NinjaTerm) and had 3.1k page views (as reported by Google Analytics).
+[NinjaTerm](https://ninjaterm.mbedded.ninja/) went through 11 releases from [v4.19.0](https://github.com/gbmhunter/NinjaTerm/releases/tag/v4.19.0) to [v5.8.2](https://github.com/gbmhunter/NinjaTerm/releases/tag/v5.8.2) during 2025. This includes the jump to v5 which is a major change from being a web app to an Electron-based desktop app. It has 101 stars on [GitHub](https://github.com/gbmhunter/NinjaTerm) and the app was started (based of the custom `app_start` event in Google Analytics) 3.2k times (since v5.0.0 was released).
 
-[NinjaCalc](https://ninjacalc.mbedded.ninja/) went through 2 releases from [v3.5.2](https://github.com/gbmhunter/NinjaCalc/releases/tag/v3.5.2) to [v3.5.4](https://github.com/gbmhunter/NinjaCalc/releases/tag/v3.5.4). These were minor releases which just fixed a broken URL and added the Umami analytics functionality. It has 30 stars on [GitHub](https://github.com/gbmhunter/NinjaCalc) and had 52k page views (as reported by Google Analytics).
-
-[CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial) went through 1 release from [v2.8.1](https://github.com/gbmhunter/CppLinuxSerial/releases/tag/v2.8.1) to [v2.8.2](https://github.com/gbmhunter/CppLinuxSerial/releases/tag/v2.8.2). This added changes to the CMake build system to allow `add_subdirectory()` to work correctly. It has 387 stars on [GitHub](https://github.com/gbmhunter/CppLinuxSerial).
-
-Blog page views were based on a combination of [Umami](/programming/website-design/running-umami-on-aws-lightsail/) and Google Analytics. Umami was used were data was available due to it not being blocked by ad blockers, otherwise Google Analytics was used. Google Analytics values were adjusted to "Umami" values based on the average difference between the two. The average difference was calculated over all months that both were available. <IRef iref="tbl-2024-page-views" /> shows the page views for each month from the different analytics services. These were used to create <IRef iref="fig-stats-graphs" />.
-
-<table data-iref="tbl-2024-page-views">
-  <thead>
-    <tr>
-      <th>Month</th>
-      <th>Umami</th>
-      <th>Google Analytics</th>
-      <th>Umami (interpolated)</th>
-    </tr>
-  </thead>
-  <tbody>
-    {/* MTH            UMAMI          GA              UMAMI (interpolated) */}
-    <tr><td>Jan</td>   <td>n/a</td>   <td>41k</td>   <td>54k</td> </tr>
-    <tr><td>Feb</td>   <td>n/a</td>   <td>42k</td>   <td>55k</td> </tr>
-    <tr><td>Mar</td>   <td>n/a</td>   <td>33k</td>   <td>43k</td> </tr>
-    <tr><td>Apr</td>   <td>40k</td>   <td>30k</td>   <td>40k</td> </tr>
-    <tr><td>May</td>   <td>40k</td>   <td>30k</td>   <td>40k</td> </tr>
-    <tr><td>Jun</td>   <td>36k</td>   <td>32k</td>   <td>36k</td> </tr>
-    <tr><td>Jul</td>   <td>39k</td>   <td>33k</td>   <td>39k</td> </tr>
-    <tr><td>Aug</td>   <td>n/a</td>   <td>28k</td>   <td>37k</td> </tr>
-    <tr><td>Sep</td>   <td>n/a</td>   <td>26k</td>   <td>34k</td> </tr>
-    <tr><td>Oct</td>   <td>47k</td>   <td>30k</td>   <td>47k</td> </tr>
-    <tr><td>Nov</td>   <td>44k</td>   <td>37k</td>   <td>44k</td> </tr>
-    <tr><td>Dec</td>   <td>36k</td>   <td>24k</td>   <td>36k</td> </tr>
-    <tr><td>Total</td> <td>n/a</td>   <td>386k</td>  <td>505k</td> </tr>
-  </tbody>
-  <caption>The blog page views for each month from the different analytics services.</caption>
-</table>
-
-For all months in which data was available for both, Umami reported 282k views, and Google Analytics reported 216k views. Umami is 31% higher than Google Analytics.
+[NinjaCalc](https://ninjacalc.mbedded.ninja/) went through no new releases in 2025. It has 34 stars on [GitHub](https://github.com/gbmhunter/NinjaCalc) and had 51k page views (as reported by Google Analytics).
 
 ## Most Popular Blog Pages
 
 <IRef iref="fig-engagement-pages-and-screens" /> shows the top 10 most popular pages, ranked by number of page views.
 
-<Image iref="fig-engagement-pages-and-screens" src={import('./_assets/engagement-pages-and-screens.webp')} width="800px">The top 10 most visited pages of 2024.</Image>
+<Image iref="fig-engagement-pages-and-screens" src={import('./_assets/engagement-pages-and-screens.webp')} width="800px">The top 10 most visited pages of 2025.</Image>
 
 ## Blog Acquisition
 
-<IRef iref="fig-traffic-acquisition" /> shows the top 7 sources of acquisition traffic in 2024. As usual, most of the traffic was from organic search (e.g. Google search engine).
+<IRef iref="fig-traffic-acquisition" /> shows the top 7 sources of acquisition traffic in 2025. As usual, most of the traffic was from organic search (e.g. Google search engine).
 
-<Image iref="fig-traffic-acquisition" src={import('./_assets/traffic-acquisition.webp')} width="500px">Top 5 sources of acquisition traffic in 2024.</Image>
+<Image iref="fig-traffic-acquisition" src={import('./_assets/traffic-acquisition.webp')} width="500px">Top 5 sources of acquisition traffic in 2025.</Image>
 
 ## Blog Word, Page and Image Counts
 
-At the end of 2024 the site had 704k words, up from 639k words last year (an increase of 65k). These words were spread over 1313 pages (up from 1221 pages last year), and included 3,222 images (an decrease of 1,296 from 4,518 images images last year). Even though many new images were added last year, the total dropped because I purged all of the redundant images that were still hanging around in the `public/` directory from when the site was migrated away from Wordpress.
+At the end of 2025 the site had 794k words, up from 704k words last year (an increase of 90k). These words were spread over 1382 pages (up from 1313 pages last year), and included 3,222 images (an decrease of 1,296 from 3,222 images images last year).
 
 ## Achievements in 2024
 
