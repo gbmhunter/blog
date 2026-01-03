@@ -9,7 +9,7 @@ title: Happy New Year 2026
 type: updates
 ---
 
-2024 saw 282k (282,000) page views for [blog.mbedded.ninja](https://blog.mbedded.ninja). This is down from 505k last year, a decrease of 223k or 44%. <IRef iref="fig-stats-graphs" /> shows the page views and other key stats per year.
+2025 saw 282k (282,000) page views for [blog.mbedded.ninja](https://blog.mbedded.ninja). This is down from 505k last year, a decrease of 223k or 44%. That's quite the drop! AI is the likely culprit, with less people visiting the site due to just using AI to answer technical embedded engineering questions, and AI powered search summaries (i.e. the one Google uses) which means the user does not need to visit the site. <IRef iref="fig-stats-graphs" /> shows the page views and other key stats per year.
 
 <Image iref="fig-stats-graphs" src={import('./_assets/stats-graphs.png')} width="900px">Graphs of page views and content up to the end of 2025.</Image>
 
@@ -31,19 +31,13 @@ type: updates
 
 ## Blog Word, Page and Image Counts
 
-At the end of 2025 the site had 794k words, up from 704k words last year (an increase of 90k). These words were spread over 1382 pages (up from 1313 pages last year), and included 3,222 images (an decrease of 1,296 from 3,222 images images last year).
+At the end of 2025 the site had 794k words, up from 704k words last year (an increase of 90k). These words were spread over 1382 pages (up from 1313 pages last year), and included 4,042 images (an increase of 820 from 3,222 images images last year). Note that I discovered a bug in the stats calculation code which was excluding `.webp` images from the total image count. I fixed this for the 2025 year, so the increase from last year will be inflated due to missed images in years prior.
 
-## Achievements in 2024
+## Achievements in 2025
 
-* The blog was migrated from Hugo to Astro.js. I'm really happy with the change, as Astro.js component syntax is much clearer than Hugo's, and Astro.js lets me use React components if needed (I use React on a number of other projects).
-* I fully embraced the `.webp` image format (which has great compression size), and almost all new raster images are now in this format. `.svg` is still used for vector images.
-* Site-wide search was added to the blog. This became easier to implement after the migration to Astro.js.
-* Added a "cover image" feature to each page. Each page can now have a cover image assigned to it (a piece of metadata in the frontmatter). This cover image is used in the parent page's "child pages" section to display beside the page description. It is also used for the social media preview image.
-* Added figure, table and equation numbering support (I had this in Hugo, but lost it when migrating to Astro.js).
-* NinjaTerm got heaps of new features added, after it got turned into a PWA just before the start of 2024.
+* NinjaTerm got a major update to v5, which is a major change from being a web app to an Electron-based desktop app. This allows for a more feature rich app as it is no longer restricted by the browser's sandbox. This has allowed for improvements such as showing the user more serial port information, adding serial over BLE support, serial over socket support, and more.
 
-## Plans For The 2025 Year
+## Plans For The 2026 Year
 
 * Add more content to the blog (as always!).
 * Keep adding features to [NinjaTerm](https://ninjaterm.mbedded.ninja/).
-* Make sure CppLinuxSerial can work with CMake's `FetchContent` feature (it's an easy way to include external dependencies).
