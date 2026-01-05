@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2026-01-04
-description: Information on the different ways to calibrate sensors.
+description: An introduction to chirp signals, including their mathematical formulation and applications in signal processing, radar, and communications.
 lastUpdated: 2026-01-04
 tags: [chirps]
 title: Chirps
@@ -22,9 +22,58 @@ $$
 
 <IRef iref="fig-basic-chirp-signal" /> shows a plot of this basic chirp signal.
 
-<Image iref="fig-basic-chirp-signal" src={import('./_assets/basic-chirp-signal.png')} width="700px">A plot showing a basic chirp signal using the equation $y(t) = \sin(t^2)$.</Image>
+<Image iref="fig-basic-chirp-signal" src={import('./_assets/basic-chirp-signal.png')} width="700px">A plot showing a basic chirp signal using the equation $x(t) = \sin(t^2)$.</Image>
 
-Chirp signals are often used in radar and communication systems. The low power RF communication protocol LoRa uses chirp signals (specifically, a proprietary form of chirp spread spectrum in where each symbol has a different starting frequency) to encode information.[^wikipedia-lora]
+Chirp signals are often used in radar and communication systems due to their favorable properties, such as constant amplitude, good autocorrelation properties, and resistance to Doppler shifts. The low power RF communication protocol LoRa uses chirp signals (specifically, a proprietary form of chirp spread spectrum where each symbol has a different starting frequency) to encode information.[^wikipedia-lora]
+
+## Basic Equations
+
+These basic equations are applicable to most chirp signals including the linear chirps. These equations will be used in the following sections as needed.
+
+A chirp signal $x(t)$ can be described by the following equation:
+
+$$
+\begin{align}
+x(t) = \sin(\phi(t))
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$x(t)$ is the chirp signal at time $t$<br/>
+$\phi(t)$ is the phase at time $t$, in $rad$<br/></p>
+
+Angular frequency $\omega(t)$ is the rate of change of phase $\phi(t)$. Thus:
+
+$$
+\begin{align}
+\omega(t) = \frac{d\phi(t)}{dt}
+\end{align}
+$$
+
+Rewriting this in terms of $\phi(t)$ gives:
+
+$$
+\begin{align}
+\phi(t) = \phi_0 + \int_0^t \omega(\tau) d\tau
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$\phi_0$ is the initial phase at time $t = 0$, in $rad$ (we need to add this because the definite integral only gives us the change in phase from 0 to $t$, not the absolute phase at time $t$)<br/></p>
+
+<Aside type="note">
+What's this new $\tau$ (tau) variable, and how is it different from $t$? $\tau$ is a dummy variable of integration. $t$ is the specific moment in which you want to know $\phi(t)$, while $\tau$ is a placeholder which "sweeps" through all times from $0$ up to $t$ as part of the integration.
+</Aside>
+
+And since $\omega(t) = 2\pi f(t)$, we can write:
+
+$$
+\begin{align}
+\phi(t) = \phi_0 + 2\pi \int_0^t f(\tau) d\tau
+\end{align}
+$$
+
+This equation will be useful to convert from frequency to phase so that we can create the equation for the chirp signal $x(t)$.
 
 ## Linear Chirps
 
@@ -46,9 +95,9 @@ The phase equation $\phi(t)$ for any oscillating signal is always the integral o
 
 $$
 \begin{align}
-\phi(t) &= \phi_0 + 2\pi \int_0^t f(\tau) d\tau \\
-          &= \phi_0 + 2\pi \int_0^t (f_0 + c\tau) d\tau \\
-          &= \phi_0 + 2\pi \left( \frac{c}{2}t^2 + f_0t \right) \\
+\phi(t) &= \phi_0 + 2\pi \int_0^t f(\tau) d\tau \nonumber \\
+        &= \phi_0 + 2\pi \int_0^t (f_0 + c\tau) d\tau \nonumber \\
+        &= \phi_0 + 2\pi \left( \frac{c}{2}t^2 + f_0t \right) \\
 \end{align}
 $$
 
@@ -56,11 +105,37 @@ Now that we have the phase equation, we can write the equation for the linear ch
 
 $$
 \begin{align}
-x(t) &= \sin(\phi(t)) \\
+x(t) &= \sin(\phi(t)) \nonumber \\
      &= \sin\left( \phi_0 + 2\pi \left[ \frac{c}{2}t^2 + f_0t \right] \right) \\
 \end{align}
 $$
 
+<p className="centered">where:<br/>
+$\phi_0$ is the starting phase at time $t = 0$, in $rad$<br/></p>
+
+<Aside type="example">
+Let's create a linear chirp with the following parameters:
+
+- Starting frequency: $f_0 = 1\ \text{kHz}$
+- Rate of change of frequency: $c = 100\ \text{kHzs}^{-1}$
+- Initial phase: $\phi_0 = 0\ \text{rad}$
+
+This would give us the following equation for the signal $x(t)$:
+
+$$
+\begin{align}
+x(t) &= \sin\left( 0 + 2\pi \left[ \frac{100 \text{kHzs}^{-1}}{2}t^2 + 1 \text{kHz} \cdot t \right] \right) \nonumber \\
+     &= \sin\left( 2\pi \left[ 50\text{kHzs}^{-1} \cdot t^2 + 1\text{kHz} \cdot t \right] \right) \\
+\end{align}
+$$
+
+<IRef iref="fig-linear-chirp-signal" /> shows a plot of this linear chirp signal for the first 20 milliseconds.
+
+<Image iref="fig-linear-chirp-signal" src={import('./_assets/linear-chirp-signal.png')} width="700px">A plot showing a linear chirp signal using the equation $x(t) = \sin\left( 2\pi \left[ 50\text{kHzs}^{-1} \cdot t^2 + 1\text{kHz} \cdot t \right] \right)$.</Image>
+
+
+
+</Aside>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
