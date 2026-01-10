@@ -7,6 +7,7 @@ SCRIPT_DIR = Path(__file__).parent
 def main():
     create_basic_chirp_plot()
     create_linear_chirp_plot()
+    create_linear_chirp_spectrogram()
 
 
 def create_basic_chirp_plot():
@@ -35,6 +36,61 @@ def create_linear_chirp_plot():
     ax.set_title('Linear Chirp Signal')
     plt.tight_layout()
     plt.savefig(SCRIPT_DIR / 'linear-chirp-signal.png')
+
+
+def create_linear_chirp_spectrogram():
+    # Parameters: f_0 = 1 kHz, c = 100 kHz/s, phi_0 = 0 rad
+    f_0 = 1e3
+    c = 1e5
+    phi_0 = 0
+    
+    # Create signal with higher sampling rate for better spectrogram resolution
+    duration = 20e-3  # 20 ms
+    sample_rate = 100e3  # 100 kHz sampling rate
+    num_samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, num_samples)
+    
+    # Generate linear chirp signal
+    x = np.sin(phi_0 + 2*np.pi*(c/2*t**2 + f_0*t))
+    
+    # Pad signal at beginning and end to avoid edge effects in spectrogram
+    # NFFT=512 means window is 512/100000 = 5.12ms
+    # Pad with full window on each side to ensure complete coverage
+    nfft = 512
+    pad_samples = nfft  # Use full window for padding
+    x_padded = np.pad(x, (pad_samples, pad_samples), mode='constant', constant_values=0)
+    
+    # Create spectrogram - specgram plots automatically, get the data
+    fig, ax = plt.subplots(figsize=(10, 6))
+    Pxx, freqs, bins, im = ax.specgram(x_padded, Fs=sample_rate, NFFT=nfft, noverlap=256, cmap='viridis')
+    
+    # Adjust bins to account for padding - shift time back by pad duration
+    pad_duration = pad_samples / sample_rate
+    bins_adjusted = bins - pad_duration
+    
+    # Clear the axis and replot with correct units
+    ax.clear()
+    # bins are in seconds, convert to ms; freqs are in Hz, convert to kHz
+    bins_ms = bins_adjusted * 1e3
+    freqs_khz = freqs / 1e3
+    # Add small epsilon to avoid log(0) warnings
+    im = ax.pcolormesh(bins_ms, freqs_khz, 10*np.log10(Pxx + 1e-10), shading='gouraud', cmap='viridis')
+    
+    ax.set_xlabel('Time [ms]')
+    ax.set_ylabel('Frequency [kHz]')
+    ax.set_title('Linear Chirp Signal Spectrogram')
+    ax.set_xlim((0, 20))  # Show full 20 ms range
+    ax.set_ylim((0, 3))  # Show 0 to 3 kHz range
+    
+    # Add colorbar
+    cbar = plt.colorbar(im, ax=ax)
+    cbar.set_label('Power Spectral Density [dB]')
+    
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'linear-chirp-spectrogram.png', dpi=150)
+    plt.close()
+
+    
 
 if __name__ == "__main__":
     main()
