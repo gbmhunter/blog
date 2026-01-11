@@ -53,16 +53,25 @@ def create_linear_chirp_spectrogram():
     # Generate linear chirp signal
     x = np.sin(phi_0 + 2*np.pi*(c/2*t**2 + f_0*t))
     
-    # Pad signal at beginning and end to avoid edge effects in spectrogram
+    # Pad signal at beginning and end to fill the entire spectrogram
     # NFFT=512 means window is 512/100000 = 5.12ms
-    # Pad with full window on each side to ensure complete coverage
+    # Pad with full window on each side to ensure coverage from 0 to 20ms
     nfft = 512
     pad_samples = nfft  # Use full window for padding
-    x_padded = np.pad(x, (pad_samples, pad_samples), mode='constant', constant_values=0)
     
-    # Create spectrogram - specgram plots automatically, get the data
+    # Extend the time array for the padded samples
+    t_pad_start = np.linspace(-pad_samples/sample_rate, 0, pad_samples, endpoint=False)
+    t_pad_end = np.linspace(duration, duration + pad_samples/sample_rate, pad_samples, endpoint=False)
+    t_extended = np.concatenate([t_pad_start, t, t_pad_end])
+    
+    # Generate chirp for padded regions too (extrapolate the chirp signal)
+    x_pad_start = np.sin(phi_0 + 2*np.pi*(c/2*t_pad_start**2 + f_0*t_pad_start))
+    x_pad_end = np.sin(phi_0 + 2*np.pi*(c/2*t_pad_end**2 + f_0*t_pad_end))
+    x_padded = np.concatenate([x_pad_start, x, x_pad_end])
+    
+    # Create spectrogram
     fig, ax = plt.subplots(figsize=(10, 6))
-    Pxx, freqs, bins, im = ax.specgram(x_padded, Fs=sample_rate, NFFT=nfft, noverlap=256, cmap='viridis')
+    Pxx, freqs, bins, im = ax.specgram(x_padded, Fs=sample_rate, NFFT=nfft, noverlap=nfft//2, cmap='viridis')
     
     # Adjust bins to account for padding - shift time back by pad duration
     pad_duration = pad_samples / sample_rate

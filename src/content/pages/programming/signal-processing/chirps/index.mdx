@@ -135,7 +135,7 @@ $$
 
 <IRef iref="fig-linear-chirp-spectrogram" /> shows a spectrogram of the same linear chirp signal. A spectrogram displays how the frequency content of a signal changes over time, with time on the horizontal axis, frequency on the vertical axis, and power spectral density shown as color intensity. The linear increase in frequency over time is clearly visible as a diagonal line from 1 kHz at $t = 0$ to 3 kHz at $t = 20\ \text{ms}$.
 
-<Image iref="fig-linear-chirp-spectrogram" src={import('./_assets/linear-chirp-spectrogram.png')} width="700px">A spectrogram showing the frequency content of the linear chirp signal over time. The diagonal line shows the linear increase in frequency from 1 kHz to 3 kHz over 20 milliseconds.</Image>
+<Image iref="fig-linear-chirp-spectrogram" src={import('./_assets/linear-chirp-spectrogram.png')} width="700px">A spectrogram showing the frequency content of the linear chirp signal over time. The diagonal line shows the linear increase in frequency from 1 kHz to 3 kHz over 20 milliseconds. The signal was sampled at 100 kHz. Each spectrogram window (bin) contains 512 samples (5.12ms @ 100 kHz). The signal was padded at the beginning and end (with an extrapolated chirp signal, not just zeros) to there was no blank areas on the left and right.</Image>
 
 </Aside>
 
