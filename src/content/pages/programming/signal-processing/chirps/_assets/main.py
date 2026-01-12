@@ -8,6 +8,7 @@ def main():
     create_basic_chirp_plot()
     create_linear_chirp_plot()
     create_linear_chirp_spectrogram()
+    create_exponential_chirp_plot()
     create_exponential_chirp_plot_and_spectrogram()
 
 
@@ -101,6 +102,33 @@ def create_linear_chirp_spectrogram():
     plt.close()
 
 
+def create_exponential_chirp_plot():
+    """
+    Create a simple exponential chirp plot for the intro section.
+    Using simple parameters to demonstrate the concept.
+    """
+    fig, ax = plt.subplots(figsize=(10, 5))
+    
+    # Simple parameters for demonstration
+    f_0 = 1e3       # Initial frequency: 1 kHz
+    k = 8           # Frequency ratio
+    T = 20e-3       # Time interval: 20 ms
+    phi_0 = 0       # Initial phase: 0 rad
+    
+    # Generate signal
+    t = np.linspace(0, T, 10000)
+    phase = phi_0 + 2*np.pi*f_0 * (T * (k**(t/T) - 1) / np.log(k))
+    x = np.sin(phase)
+    
+    ax.plot(t*1e3, x)
+    ax.set_xlabel('Time t [ms]')
+    ax.set_ylabel('Chirp Signal x(t)')
+    ax.set_title('Exponential Chirp Signal')
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'exponential-chirp-signal.png')
+    plt.close()
+
+
 def create_exponential_chirp_plot_and_spectrogram():
     """
     Create both waveform plot and spectrogram for an exponential chirp.
@@ -113,9 +141,9 @@ def create_exponential_chirp_plot_and_spectrogram():
     T = 20e-3       # Time interval: 20 ms
     phi_0 = 0       # Initial phase: 0 rad
     
-    # Create signal with high sampling rate
+    # Create signal with very high sampling rate for better spectrogram resolution
     duration = T
-    sample_rate = 100e3  # 100 kHz sampling rate
+    sample_rate = 500e3  # 500 kHz sampling rate (5x higher than before)
     num_samples = int(sample_rate * duration)
     t = np.linspace(0, duration, num_samples)
     
@@ -129,13 +157,14 @@ def create_exponential_chirp_plot_and_spectrogram():
     ax.plot(t*1e3, x)
     ax.set_xlabel('Time t [ms]')
     ax.set_ylabel('Chirp Signal x(t)')
-    ax.set_title('Exponential Chirp Signal')
+    ax.set_title('Exponential Chirp Signal (Example)')
     plt.tight_layout()
-    plt.savefig(SCRIPT_DIR / 'exponential-chirp-signal.png')
+    plt.savefig(SCRIPT_DIR / 'example-exponential-chirp-signal.png')
     plt.close()
     
     # Create spectrogram with padding (same approach as linear chirp)
-    nfft = 512
+    # With 500 kHz sampling: NFFT=2048 gives ~244 Hz freq resolution and 4.1ms window
+    nfft = 2048
     pad_samples = nfft
     
     # Extend the time array for the padded samples
@@ -152,7 +181,8 @@ def create_exponential_chirp_plot_and_spectrogram():
     
     # Create spectrogram
     fig, ax = plt.subplots(figsize=(10, 6))
-    Pxx, freqs, bins, im = ax.specgram(x_padded, Fs=sample_rate, NFFT=nfft, noverlap=nfft//2, cmap='viridis')
+    # Use 75% overlap for good time-frequency resolution balance
+    Pxx, freqs, bins, im = ax.specgram(x_padded, Fs=sample_rate, NFFT=nfft, noverlap=int(nfft*0.75), cmap='viridis')
     
     # Adjust bins to account for padding
     pad_duration = pad_samples / sample_rate
@@ -166,7 +196,7 @@ def create_exponential_chirp_plot_and_spectrogram():
     
     ax.set_xlabel('Time [ms]')
     ax.set_ylabel('Frequency [kHz]')
-    ax.set_title('Exponential Chirp Signal Spectrogram')
+    ax.set_title('Exponential Chirp Signal Spectrogram (Example)')
     ax.set_xlim((0, 20))  # Show full 20 ms range
     ax.set_ylim((0, 10))  # Show 0 to 10 kHz range (to see full sweep to 8 kHz)
     
@@ -175,7 +205,7 @@ def create_exponential_chirp_plot_and_spectrogram():
     cbar.set_label('Power Spectral Density [dB]')
     
     plt.tight_layout()
-    plt.savefig(SCRIPT_DIR / 'exponential-chirp-spectrogram.png', dpi=150)
+    plt.savefig(SCRIPT_DIR / 'example-exponential-chirp-spectrogram.png', dpi=150)
     plt.close()
 
 

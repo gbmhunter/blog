@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2026-01-04
-description: An introduction to chirp signals, including their mathematical formulation and applications in signal processing, radar, and communications.
-lastUpdated: 2026-01-04
-tags: [chirps]
+description: An introduction to chirp signals, including their mathematical formulation and applications in signal processing, radar, and communications. Includes examples of linear and exponential chirps.
+lastUpdated: 2026-01-12
+tags: [chirps, linear, exponential, waveforms, spectrograms, fourier transforms, LoRa, radar]
 title: Chirps
 type: page
 ---
@@ -24,7 +24,7 @@ $$
 
 <Image iref="fig-basic-chirp-signal" src={import('./_assets/basic-chirp-signal.png')} width="700px">A plot showing a basic chirp signal using the equation $x(t) = \sin(t^2)$.</Image>
 
-Chirp signals are often used in radar and communication systems due to their favorable properties, such as constant amplitude, good autocorrelation properties, and resistance to Doppler shifts. The low power RF communication protocol LoRa uses chirp signals (specifically, a proprietary form of chirp spread spectrum where each symbol has a different starting frequency) to encode information.[^wikipedia-lora]
+Chirp signals are often used in radar and communication systems due to their favourable properties, such as constant amplitude, good autocorrelation properties, and resistance to Doppler shifts. The low power RF communication protocol LoRa uses chirp signals (specifically, a proprietary form of chirp spread spectrum where each symbol has a different starting frequency) to encode information.[^wikipedia-lora]
 
 ## Basic Equations
 
@@ -143,6 +143,10 @@ $$
 
 An exponential chirp (also called a geometric chirp) is a chirp in which the frequency changes exponentially over time. This means for any two points in time $t_1$ and $t_2$ where the time interval $T (\Delta t = t_2 - t_1)$ is kept constant, the frequency ratio $\frac{f(t_2)}{f(t_1)}$ is also kept constant.
 
+<IRef iref="fig-exponential-chirp-signal" /> shows a plot of an exponential chirp signal.
+
+<Image iref="fig-exponential-chirp-signal" src={import('./_assets/exponential-chirp-signal.png')} width="700px">A plot showing an exponential chirp signal. This chirp starts at 1 kHz and exponentially increases to 8 kHz after 20 milliseconds.</Image>
+
 The frequency $f(t)$ of an exponential chirp is given by the following equation:[^wikipedia-chirp]
 
 $$
@@ -187,6 +191,33 @@ x(t) &= \sin(\phi(t)) \nonumber \\
      &= \sin\left( \phi_0 + 2\pi f_0 \left[ \frac{T(k^\frac{t}{T} - 1)}{ln(k)} \right] \right)
 \end{align}
 $$
+
+<Aside type="example">
+Let's create an exponential chirp with the following parameters:
+
+- Initial frequency: $f_0 = 1\ \text{kHz}$
+- End frequency: $f_1 = 8\ \text{kHz}$ (this gives a frequency ratio $k = \frac{f_1}{f_0} = 8$)
+- Time interval: $T = 20\ \text{ms}$
+- Initial phase: $\phi_0 = 0\ \text{rad}$
+
+This would give us the following equation for the signal $x(t)$:
+
+$$
+\begin{align}
+x(t) &= \sin\left( 0 + 2\pi \left[ \frac{20\ \text{ms}(8^\frac{t}{20\ \text{ms}} - 1)}{ln(8)} \right] \right) \nonumber \\
+     &= \sin\left( 2\pi \left[ \frac{20\ \text{ms}(8^\frac{t}{20\ \text{ms}} - 1)}{ln(8)} \right] \right) \\
+\end{align}
+$$
+
+If we plot this, we get the waveform shown in <IRef iref="fig-example-exponential-chirp-signal" />.
+
+<Image iref="fig-example-exponential-chirp-signal" src={import('./_assets/example-exponential-chirp-signal.png')} width="700px">A plot showing an exponential chirp signal using the equation $x(t) = \sin\left( 2\pi \left[ \frac{20\ \text{ms}(8^\frac{t}{20\ \text{ms}} - 1)}{ln(8)} \right] \right)$.</Image>
+
+<IRef iref="fig-example-exponential-chirp-spectrogram" /> shows a spectrogram of the same exponential chirp signal.
+
+<Image iref="fig-example-exponential-chirp-spectrogram" src={import('./_assets/example-exponential-chirp-spectrogram.png')} width="700px">A spectrogram showing the frequency content of the exponential chirp signal over time. The signal was sampled at 500 kHz. Each spectrogram window (bin) contains 2048 samples (4.096ms @ 500 kHz). The signal was padded at the beginning and end (with an extrapolated chirp signal, not just zeros) to there was no blank areas on the left and right.</Image>
+
+</Aside>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
