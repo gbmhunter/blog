@@ -8,6 +8,7 @@ def main():
     create_basic_chirp_plot()
     create_linear_chirp_plot()
     create_linear_chirp_spectrogram()
+    create_exponential_chirp_plot_and_spectrogram()
 
 
 def create_basic_chirp_plot():
@@ -99,7 +100,84 @@ def create_linear_chirp_spectrogram():
     plt.savefig(SCRIPT_DIR / 'linear-chirp-spectrogram.png', dpi=150)
     plt.close()
 
+
+def create_exponential_chirp_plot_and_spectrogram():
+    """
+    Create both waveform plot and spectrogram for an exponential chirp.
+    Using parameters: f_0 = 1 kHz, k = 8 (frequency ratio), T = 20 ms, phi_0 = 0 rad
+    This will sweep from 1 kHz to 8 kHz over 20 ms.
+    """
+    # Parameters
+    f_0 = 1e3       # Initial frequency: 1 kHz
+    k = 8           # Frequency ratio (f_1/f_0)
+    T = 20e-3       # Time interval: 20 ms
+    phi_0 = 0       # Initial phase: 0 rad
     
+    # Create signal with high sampling rate
+    duration = T
+    sample_rate = 100e3  # 100 kHz sampling rate
+    num_samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, num_samples)
+    
+    # Generate exponential chirp signal using the phase equation:
+    # phi(t) = phi_0 + 2*pi*f_0 * [T*(k^(t/T) - 1) / ln(k)]
+    phase = phi_0 + 2*np.pi*f_0 * (T * (k**(t/T) - 1) / np.log(k))
+    x = np.sin(phase)
+    
+    # Create waveform plot
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(t*1e3, x)
+    ax.set_xlabel('Time t [ms]')
+    ax.set_ylabel('Chirp Signal x(t)')
+    ax.set_title('Exponential Chirp Signal')
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'exponential-chirp-signal.png')
+    plt.close()
+    
+    # Create spectrogram with padding (same approach as linear chirp)
+    nfft = 512
+    pad_samples = nfft
+    
+    # Extend the time array for the padded samples
+    t_pad_start = np.linspace(-pad_samples/sample_rate, 0, pad_samples, endpoint=False)
+    t_pad_end = np.linspace(duration, duration + pad_samples/sample_rate, pad_samples, endpoint=False)
+    t_extended = np.concatenate([t_pad_start, t, t_pad_end])
+    
+    # Generate exponential chirp for padded regions too (extrapolate)
+    phase_pad_start = phi_0 + 2*np.pi*f_0 * (T * (k**(t_pad_start/T) - 1) / np.log(k))
+    phase_pad_end = phi_0 + 2*np.pi*f_0 * (T * (k**(t_pad_end/T) - 1) / np.log(k))
+    x_pad_start = np.sin(phase_pad_start)
+    x_pad_end = np.sin(phase_pad_end)
+    x_padded = np.concatenate([x_pad_start, x, x_pad_end])
+    
+    # Create spectrogram
+    fig, ax = plt.subplots(figsize=(10, 6))
+    Pxx, freqs, bins, im = ax.specgram(x_padded, Fs=sample_rate, NFFT=nfft, noverlap=nfft//2, cmap='viridis')
+    
+    # Adjust bins to account for padding
+    pad_duration = pad_samples / sample_rate
+    bins_adjusted = bins - pad_duration
+    
+    # Clear and replot with correct units
+    ax.clear()
+    bins_ms = bins_adjusted * 1e3
+    freqs_khz = freqs / 1e3
+    im = ax.pcolormesh(bins_ms, freqs_khz, 10*np.log10(Pxx + 1e-10), shading='gouraud', cmap='viridis')
+    
+    ax.set_xlabel('Time [ms]')
+    ax.set_ylabel('Frequency [kHz]')
+    ax.set_title('Exponential Chirp Signal Spectrogram')
+    ax.set_xlim((0, 20))  # Show full 20 ms range
+    ax.set_ylim((0, 10))  # Show 0 to 10 kHz range (to see full sweep to 8 kHz)
+    
+    # Add colorbar
+    cbar = plt.colorbar(im, ax=ax)
+    cbar.set_label('Power Spectral Density [dB]')
+    
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'exponential-chirp-spectrogram.png', dpi=150)
+    plt.close()
+
 
 if __name__ == "__main__":
     main()
