@@ -77,7 +77,7 @@ This equation will be useful to convert from frequency to phase so that we can c
 
 ## Linear Chirps
 
-A linear chirp is a chirp in which the frequency changes linearly over time. Thus:
+A linear chirp is a chirp in which the frequency changes linearly over time. Thus:[^wikipedia-chirp]
 
 $$
 \begin{align}
@@ -139,8 +139,58 @@ $$
 
 </Aside>
 
+## Exponential Chirps
+
+An exponential chirp (also called a geometric chirp) is a chirp in which the frequency changes exponentially over time. This means for any two points in time $t_1$ and $t_2$ where the time interval $T (\Delta t = t_2 - t_1)$ is kept constant, the frequency ratio $\frac{f(t_2)}{f(t_1)}$ is also kept constant.
+
+The frequency $f(t)$ of an exponential chirp is given by the following equation:[^wikipedia-chirp]
+
+$$
+\begin{align}
+f(t) = f_0 k^{\frac{t}{T}}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$f(t)$ is the frequency at time $t$, in $Hz$<br/>
+$f_0$ is the initial frequency at time $t = 0$, in $Hz$<br/>
+$k$ is the frequency ratio, a constant<br/>
+$T$ is the time interval between the two points in time, in $s$<br/></p>
+
+The frequency ratio $k$ is given by the following equation:
+
+$$
+\begin{align}
+k = \frac{f_1}{f_0}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$f_1$ is the frequency at time $t_1$, in $Hz$<br/>
+$f_0$ is the initial frequency at time $t = 0$, in $Hz$<br/></p>
+
+We can write the phase equation $\phi(t)$ by integrating the frequency equation:
+
+$$
+\begin{align}
+\phi(t) &= \phi_0 + 2\pi \int_0^t f(\tau) d\tau \nonumber \\
+        &= \phi_0 + 2\pi \int_0^t f_0 k^{\frac{\tau}{T}} d\tau \nonumber \\
+        &= \phi_0 + 2\pi f_0 \left[ \frac{T(k^\frac{t}{T} - 1)}{ln(k)} \right]
+\end{align}
+$$
+
+To get the equation for the exponential chirp signal $x(t)$, we substitute this equation for phase into $x(t) = \sin(\phi(t))$.
+
+$$
+\begin{align}
+x(t) &= \sin(\phi(t)) \nonumber \\
+     &= \sin\left( \phi_0 + 2\pi f_0 \left[ \frac{T(k^\frac{t}{T} - 1)}{ln(k)} \right] \right)
+\end{align}
+$$
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^wikipedia-lora]: Wikipedia (2025, Dec 10). _LoRa_ [wiki]. Retrieved 2026-01-04, from https://en.wikipedia.org/wiki/LoRa.
+[^wikipedia-chirp]: Wikipedia (2025, Sep 3). _Chirp_ [wiki]. Retrieved 2026-01-12, from https://en.wikipedia.org/wiki/Chirp.
