@@ -1,0 +1,38 @@
+---
+authors: [gbmhunter]
+date: 2026-01-14
+lastUpdated: 2026-01-14
+tags: [power management, ics, PMICs, voltage regulators, voltage supervisors, reset ics, voltage detectors]
+title: Power Management ICs
+type: page
+---
+
+_Power management ICs_ (PMICs) are integrated circuits that are used to manage power in a circuit. They are commonly used to manage power on small devices which contain rechargeable battery power. They may contain power regulation circuitry such as linear regulators or buck/boost converters. 
+
+## Examples
+
+### Nordic Semiconductor nPM1100
+
+The nPM1100 by Nordic Semiconductor is a PMIC which can manage power for a device that contains a Li-ion battery which is rechargeable via USB. It is aimed to work in low-power devices (1-50 uA average current) with a MCU from the nRF range (but can just as easily work with any other downstream device). 
+
+<Image src={import('./_assets/npm1100-internal-block-diagram.webp')} width="800px">An internal block diagram of the Nordic Semiconductor nPM1100 power management IC.[^nordic-semi-npm1100-product-spec]</Image>
+
+It can charge the battery from USB with a configurable charge current from 20 mA to 400 mA, and supply up to 150 mA to the downstream devices. It contains a buck converter which is efficient down to 1 uA loads (it can automatically switch between PWM and hysteretic operation modes). Typical quiescent current is 800 uA.[^nordic-semi-npm1100-product-spec]
+
+There are three known errata for revision 2 of the nPM1100 IC:[^nordic-semi-npm1100-errata]
+
+- Inserting USB causes VSYS voltage to undershoot in some cases.
+- Battery charging gets stuck if battery pack over discharge protection is active when USB is connected.
+- Battery charging gets stuck in some cases if battery pack contains a PCM (Protection Circuit Module) which adds an additional diode voltage drop when over discharge protection is active.  
+
+Links:
+
+- [Datasheet](https://docs-be.nordicsemi.com/bundle/ps_npm1100/page/nPM1100_PS_v1.5.pdf)
+- [Errata](https://docs.nordicsemi.com/bundle/errata_nPM1100_Rev2/page/ERR/nPM1100/Rev2/latest/err_100.html)
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nordic-semi-npm1100-product-spec]: Nordic Semiconductor (2025, Feb 5). _nPM1100 Product Specification v1.5_ [datasheet]. Retrieved 2026-01-14, from https://docs-be.nordicsemi.com/bundle/ps_npm1100/page/nPM1100_PS_v1.5.pdf.
+[^nordic-semi-npm1100-errata]: Nordic Semiconductor (2023, May 24). _nPM1100 Revision 2 Errata v1.3_. Retrieved 2026-01-14, from https://docs.nordicsemi.com/bundle/errata_nPM1100_Rev2/page/ERR/nPM1100/Rev2/latest/err_100.html.

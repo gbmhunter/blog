@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2026-01-04
 description: An introduction to chirp signals, including their mathematical formulation and applications in signal processing, radar, and communications. Includes examples of linear and exponential chirps.
-lastUpdated: 2026-01-12
+lastUpdated: 2026-01-14
 tags: [chirps, linear, exponential, waveforms, spectrograms, fourier transforms, LoRa, radar]
 title: Chirps
 type: page
@@ -11,6 +11,8 @@ type: page
 <WarningIsNotes />
 
 A chirp is a signal whose frequency changes over time. Up chirps are signals whose frequency increases over time, and down chirps are signals whose frequency decreases over time. The frequency change can be linear (if the rate of change is not mentioned, it can be assumed to be linear), exponential, or some other function.
+
+Chirps are present in many natural and man-made systems. Animals such as birds, frogs and whales create audible chirps, and bats use chirps in the ultrasonic range for echolocation. Chirps are also present in music ("glissando").[^patrick-flandrin-time-frequency-and-chirps]
 
 The simplest chirp signal can be created by squaring the time variable in a normal sinusoidal signal, for example:
 
@@ -219,9 +221,29 @@ If we plot this, we get the waveform shown in <IRef iref="fig-example-exponentia
 
 </Aside>
 
+## Hyperbolic Chirps
+
+Hyperbolic chirps are used in radar and wideband active sonar systems as a way of minimizing degradation of matched filter processing when the source and target are moving with respect to each other.[^aus-department-of-defence-calcs-of-sound-scattering-hyperbolic-chirps] [^wikipedia-chirp]
+
+The frequency $f(t)$ of a hyperbolic chirp is given by the following equation:[^wikipedia-chirp]
+
+$$
+\begin{align}
+f(t) = \frac{f_0 f_1 T}{(f_0 - f_1)t + f_1 T}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$f(t)$ is the frequency at time $t$, in $Hz$<br/>
+$f_0$ is the initial frequency at time $t = 0$, in $Hz$<br/>
+$f_1$ is the final frequency at time $t = T$, in $Hz$<br/>
+$T$ is the time interval between the two points in time, in $s$<br/></p>
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^wikipedia-lora]: Wikipedia (2025, Dec 10). _LoRa_ [wiki]. Retrieved 2026-01-04, from https://en.wikipedia.org/wiki/LoRa.
 [^wikipedia-chirp]: Wikipedia (2025, Sep 3). _Chirp_ [wiki]. Retrieved 2026-01-12, from https://en.wikipedia.org/wiki/Chirp.
+[^patrick-flandrin-time-frequency-and-chirps]: Patrick Flandrin. _Time-frequency and chirps_. Ecole Normale Superieure de Lyon. Retrieved 2026-01-14, from https://perso.ens-lyon.fr/patrick.flandrin/SPIE01_PF.pdf.
+[^aus-department-of-defence-calcs-of-sound-scattering-hyperbolic-chirps]: Mark Readhead. _Calculations of the Sound Scattering of Hyperbolic Frequency Modulated Chirped Pulses from Fluid-filled Spherical Shell Sonar Targets_. Australian Department of Defence. Retrieved 2026-01-14, from https://apps.dtic.mil/sti/pdfs/ADA523424.pdf.
