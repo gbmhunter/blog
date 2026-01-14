@@ -225,6 +225,23 @@ If we plot this, we get the waveform shown in <IRef iref="fig-example-exponentia
 
 Hyperbolic chirps are used in radar and wideband active sonar systems as a way of minimizing degradation of matched filter processing when the source and target are moving with respect to each other.[^aus-department-of-defence-calcs-of-sound-scattering-hyperbolic-chirps] [^wikipedia-chirp]
 
+<Aside type="tip">
+
+A matched filter is when you look for the sent signal in the received signal. You do this by correlating the received signal with the sent signal. You will get a sharp peak in the correlation when the signals correlate, telling you a reflection has been received.
+
+When the target is moving relative to the source, the received signal will be Doppler shifted. This means that the chirp will have:
+
+- All chirp frequencies will be shifted up or down
+- The time scale of the chirp will be stretched or compressed
+
+It's this time scale stretching/compressing that messes with the correlation. It will spread out your correlation peak into a smoother "bump", reducing your ability to detect the reflection.
+
+The neat thing about hyperbolic chirps is that when they are Doppler shifted, it still looks like a frequency shifted version of itself because of the unique mathematical properties of the hyperbolic function. This means you can still get excellent matched filter response by just adjusting for frequency shift.
+
+<IRef iref="fig-hyperbolic-chirp-signal" /> shows a plot of a hyperbolic chirp signal.
+
+<Image iref="fig-hyperbolic-chirp-signal" src={import('./_assets/hyperbolic-chirp-signal.png')} width="700px">A plot showing a hyperbolic chirp signal. This chirp starts at 1 kHz and hyperbolically increases to 8 kHz after 20 milliseconds.</Image>
+
 The frequency $f(t)$ of a hyperbolic chirp is given by the following equation:[^wikipedia-chirp]
 
 $$
@@ -238,6 +255,57 @@ $f(t)$ is the frequency at time $t$, in $Hz$<br/>
 $f_0$ is the initial frequency at time $t = 0$, in $Hz$<br/>
 $f_1$ is the final frequency at time $t = T$, in $Hz$<br/>
 $T$ is the time interval between the two points in time, in $s$<br/></p>
+
+We can integrate the frequency equation to get the phase equation $\phi(t)$:[^wikipedia-chirp]
+
+$$
+\begin{align}
+\phi(t) &= \phi_0 + 2\pi \int_0^t f(\tau) d\tau \nonumber \\
+        &= \phi_0 + 2\pi \int_0^t \frac{f_0 f_1 T}{(f_0 - f_1)\tau + f_1 T} d\tau \nonumber \\
+        &= \phi_0 + 2\pi \frac{-f_0 f_1 T}{f_1 - f_0} \ln \left( 1 - \frac{f_1 - f_0}{f_1 T}t \right)
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$\phi(t)$ is the phase at time $t$, in $rad$<br/>
+$\phi_0$ is the initial phase at time $t = 0$, in $rad$<br/></p>
+
+To get the equation for the hyperbolic chirp signal $x(t)$, we substitute this equation for phase into $x(t) = \sin(\phi(t))$.
+
+$$
+\begin{align}
+x(t) &= \sin(\phi(t)) \nonumber \\
+     &= \sin\left( \phi_0 + 2\pi \frac{-f_0 f_1 T}{f_1 - f_0} \ln \left( 1 - \frac{f_1 - f_0}{f_1 T}t \right) \right)
+\end{align}
+$$
+
+<Aside type="example">
+
+Let's create a hyperbolic chirp with the following parameters:
+
+- Initial frequency: $f_0 = 1\ \text{kHz}$
+- End frequency: $f_1 = 8\ \text{kHz}$
+- Time interval: $T = 20\ \text{ms}$
+- Initial phase: $\phi_0 = 0\ \text{rad}$
+
+This would give us the following equation for the signal $x(t)$:
+
+$$
+\begin{align}
+x(t) &= \sin\left( 0 + 2\pi \frac{-1\ \text{kHz} \cdot 8\ \text{kHz} \cdot 20\ \text{ms}}{8\ \text{kHz} - 1\ \text{kHz}} \ln \left( 1 - \frac{8\ \text{kHz} - 1\ \text{kHz}}{8\ \text{kHz} \cdot 20\ \text{ms}}t \right) \right) \nonumber \\
+     &= \sin\left( -143.62 \ln (1 - 43.75 t) \right)
+\end{align}
+$$
+
+If we plot this, we get the waveform shown in <IRef iref="fig-example-hyperbolic-chirp-signal" />.
+
+<Image iref="fig-example-hyperbolic-chirp-signal" src={import('./_assets/example-hyperbolic-chirp-signal.png')} width="700px">A plot showing a hyperbolic chirp signal using the equation $x(t) = \sin\left( -143.62 \ln (1 - 43.75 t) \right)$.</Image>
+
+<IRef iref="fig-example-hyperbolic-chirp-spectrogram" /> shows a spectrogram of the same hyperbolic chirp signal.
+
+<Image iref="fig-example-hyperbolic-chirp-spectrogram" src={import('./_assets/example-hyperbolic-chirp-spectrogram.png')} width="700px">A spectrogram showing the frequency content of the hyperbolic chirp signal over time. The signal was sampled at 500 kHz. Each spectrogram window (bin) contains 2048 samples (4.096ms @ 500 kHz). The signal was padded with extrapolated values at the start, but with zeroes at the end due to the inability to calculate $\ln$ for negative numbers.</Image>
+
+</Aside>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
