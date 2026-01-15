@@ -309,6 +309,56 @@ If we plot this, we get the waveform shown in <IRef iref="fig-example-hyperbolic
 
 </Aside>
 
+### Doppler Tolerance and Matched Filter Performance
+
+One of the most important properties of hyperbolic chirps is their **Doppler tolerance**. In radar and sonar systems, when a signal reflects off a moving target, the received signal undergoes a Doppler shift. This shift not only changes the frequency content but also compresses or stretches the signal in time.
+
+Mathematically, if the transmitted signal is $s(t)$, the received signal from a moving target is:
+
+$$
+\begin{align}
+r(t) = s(\alpha t)
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$\alpha$ is the time-scaling factor due to Doppler effect<br/></p>
+
+For a two-way propagation system (a.k.a. pulse-echo -- like active sonar or radar), the time-scaling factor $\alpha$ is given by the following equation:
+
+$$
+\begin{align}
+\alpha = 1 + \frac{2v}{c}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$\alpha$ is the time-scaling factor due to Doppler effect<br/>
+$v$ is the relative velocity between source and target, in $m/s$<br/>
+$c$ is the speed of wave propagation (speed of light for radar, speed of sound for sonar), in $m/s$<br/></p>
+
+The factor of 2 in the above equation comes from the fact it is a round-trip (the signal gets distorted on the way out and back).
+
+<Aside type="note">
+The Doppler effect is much more significant in sonar than radar because sound travels ~200,000x slower than light in air. A 37 m/s target produces $\alpha \approx 1.05$ in sonar but only $\alpha \approx 1.00000025$ in radar.
+</Aside>
+
+A **matched filter** is a signal processing technique where the received signal is correlated with a copy of the transmitted signal to detect the presence and timing of echoes. The output produces a sharp peak when the signals align, indicating a detection.
+
+The key problem is that when the received signal is time-scaled by $\alpha$, it no longer perfectly matches the template signal. For linear chirps, this mismatch causes the matched filter output to:
+- Reduce in peak amplitude (harder to detect)
+- Spread out in time (reduced range resolution)
+
+Hyperbolic chirps have a special property: when time-scaled, they remain hyperbolic chirps (just with different effective parameters). This means the Doppler-shifted signal still correlates well with the original, maintaining a sharp peak in the matched filter output.
+
+<IRef iref="fig-doppler-matched-filter-comparison" /> shows a side-by-side comparison of matched filter outputs for linear and hyperbolic chirps, both with and without Doppler shift ($\alpha = 1.05$, representing approximately 5% time compression). The negative time lag for the peaks in the doppler shifted waveforms is due to the signal being compressed in time -- the received signal "finishes early" and the correlation maximum shift to where the compressed signal best aligns with the original.
+
+<Image iref="fig-doppler-matched-filter-comparison" src={import('./_assets/doppler-matched-filter-comparison.png')} width="900px">Side-by-side comparison of matched filter outputs for linear (left) and hyperbolic (right) chirps. The blue solid line shows the ideal case with no Doppler shift, while the red dashed line shows the response when the received signal is Doppler-shifted by $\alpha = 1.05$. Notice how the linear chirp's peak is significantly reduced and broadened, while the hyperbolic chirp maintains a much sharper peak.</Image>
+
+<IRef iref="fig-doppler-tolerance-overlay" /> provides a direct overlay comparison of just the Doppler-shifted responses, making the difference even clearer. The linear chirps correlation peak only hits a peak normalized correlation value of 0.31, whilst the hyperbolic chirp hits a peak of 0.88!
+
+<Image iref="fig-doppler-tolerance-overlay" src={import('./_assets/doppler-tolerance-overlay.png')} width="700px">Direct comparison of matched filter responses for Doppler-shifted linear and hyperbolic chirps ($\alpha = 1.05$). The hyperbolic chirp maintains a significantly higher and sharper correlation peak compared to the linear chirp, demonstrating its superior Doppler tolerance.</Image>
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}

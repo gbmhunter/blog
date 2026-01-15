@@ -12,6 +12,7 @@ def main():
     create_exponential_chirp_plot_and_spectrogram()
     create_hyperbolic_chirp_plot()
     create_example_hyperbolic_chirp_plot_and_spectrogram()
+    create_doppler_matched_filter_comparison()
 
 
 def create_basic_chirp_plot():
@@ -320,6 +321,165 @@ def create_example_hyperbolic_chirp_plot_and_spectrogram():
     plt.tight_layout()
     plt.savefig(SCRIPT_DIR / 'example-hyperbolic-chirp-spectrogram.png', dpi=150)
     plt.close()
+
+
+def create_doppler_matched_filter_comparison():
+    """
+    Create comparison plots showing matched filter response for linear vs hyperbolic
+    chirps under Doppler shift. Demonstrates the Doppler tolerance of hyperbolic chirps.
+    
+    Uses ~5% time scaling (alpha = 1.05) to simulate Doppler effect from a moving target.
+    """
+    from scipy import signal as scipy_signal
+    
+    # Common parameters for both chirps
+    f_0 = 1e3       # Initial frequency: 1 kHz
+    f_1 = 8e3       # Final frequency: 8 kHz
+    T = 20e-3       # Duration: 20 ms
+    phi_0 = 0       # Initial phase: 0 rad
+    
+    # Doppler scaling factor (5% time compression = target approaching)
+    # For radar: alpha = 1 + 2v/c, so alpha=1.05 corresponds to v ≈ 7500 km/s (extreme for EM)
+    # For sonar: alpha = 1 + v/c, so alpha=1.05 corresponds to v ≈ 75 m/s (fast boat/torpedo)
+    alpha = 1.05
+    
+    # High sample rate for good resolution
+    sample_rate = 500e3  # 500 kHz
+    num_samples = int(sample_rate * T)
+    t = np.linspace(0, T, num_samples)
+    
+    # ==========================================================================
+    # Generate Linear Chirps
+    # ==========================================================================
+    # Linear chirp: f(t) = f_0 + c*t where c = (f_1 - f_0) / T
+    c_linear = (f_1 - f_0) / T
+    
+    # Original linear chirp
+    phase_linear = phi_0 + 2*np.pi * (c_linear/2 * t**2 + f_0 * t)
+    x_linear = np.sin(phase_linear)
+    
+    # Doppler-shifted linear chirp: s(alpha * t)
+    # This is equivalent to compressing the time axis
+    phase_linear_doppler = phi_0 + 2*np.pi * (c_linear/2 * (alpha*t)**2 + f_0 * (alpha*t))
+    x_linear_doppler = np.sin(phase_linear_doppler)
+    # Truncate to original duration (signal ends earlier due to compression)
+    
+    # ==========================================================================
+    # Generate Hyperbolic Chirps
+    # ==========================================================================
+    # Hyperbolic chirp phase: phi(t) = phi_0 + 2*pi * (-f_0*f_1*T)/(f_1-f_0) * ln(1 - (f_1-f_0)/(f_1*T)*t)
+    
+    # Original hyperbolic chirp
+    phase_hyper = phi_0 + 2*np.pi * (-f_0 * f_1 * T) / (f_1 - f_0) * np.log(1 - (f_1 - f_0)/(f_1*T)*t)
+    x_hyper = np.sin(phase_hyper)
+    
+    # Doppler-shifted hyperbolic chirp: s(alpha * t)
+    # Need to be careful with the log argument staying positive
+    t_scaled = alpha * t
+    # Only compute where the argument is positive
+    valid_mask = (1 - (f_1 - f_0)/(f_1*T)*t_scaled) > 0
+    x_hyper_doppler = np.zeros_like(t)
+    phase_hyper_doppler = phi_0 + 2*np.pi * (-f_0 * f_1 * T) / (f_1 - f_0) * np.log(1 - (f_1 - f_0)/(f_1*T)*t_scaled[valid_mask])
+    x_hyper_doppler[valid_mask] = np.sin(phase_hyper_doppler)
+    
+    # ==========================================================================
+    # Compute Matched Filter Outputs (Cross-correlation)
+    # ==========================================================================
+    # Matched filter = cross-correlation of received signal with transmitted template
+    
+    # For linear chirp
+    corr_linear_orig = scipy_signal.correlate(x_linear, x_linear, mode='full')
+    corr_linear_doppler = scipy_signal.correlate(x_linear_doppler, x_linear, mode='full')
+    
+    # For hyperbolic chirp
+    corr_hyper_orig = scipy_signal.correlate(x_hyper, x_hyper, mode='full')
+    corr_hyper_doppler = scipy_signal.correlate(x_hyper_doppler, x_hyper, mode='full')
+    
+    # Normalize all correlations to have peak of 1 (using original chirp's peak as reference)
+    corr_linear_orig_norm = corr_linear_orig / np.max(np.abs(corr_linear_orig))
+    corr_linear_doppler_norm = corr_linear_doppler / np.max(np.abs(corr_linear_orig))
+    corr_hyper_orig_norm = corr_hyper_orig / np.max(np.abs(corr_hyper_orig))
+    corr_hyper_doppler_norm = corr_hyper_doppler / np.max(np.abs(corr_hyper_orig))
+    
+    # Time axis for correlation (centered at zero)
+    corr_len = len(corr_linear_orig)
+    lag_samples = np.arange(corr_len) - (corr_len - 1) // 2
+    lag_ms = lag_samples / sample_rate * 1e3
+    
+    # ==========================================================================
+    # Create Side-by-Side Comparison Plot
+    # ==========================================================================
+    _, axes = plt.subplots(1, 2, figsize=(14, 5))
+    
+    # Plot range for detail view (±2 ms around peak)
+    plot_range = np.abs(lag_ms) <= 2
+    
+    # Left plot: Linear chirp matched filter
+    ax1 = axes[0]
+    ax1.plot(lag_ms[plot_range], corr_linear_orig_norm[plot_range], 
+             'b-', linewidth=1.5, label='No Doppler shift')
+    ax1.plot(lag_ms[plot_range], corr_linear_doppler_norm[plot_range], 
+             'r--', linewidth=1.5, label=f'Doppler shifted (α={alpha})')
+    ax1.set_xlabel('Time Lag [ms]')
+    ax1.set_ylabel('Normalized Correlation')
+    ax1.set_title('Linear Chirp Matched Filter Output')
+    ax1.legend(loc='upper right')
+    ax1.grid(True, alpha=0.3)
+    ax1.set_ylim((-0.3, 1.05))
+    
+    # Right plot: Hyperbolic chirp matched filter
+    ax2 = axes[1]
+    ax2.plot(lag_ms[plot_range], corr_hyper_orig_norm[plot_range], 
+             'b-', linewidth=1.5, label='No Doppler shift')
+    ax2.plot(lag_ms[plot_range], corr_hyper_doppler_norm[plot_range], 
+             'r--', linewidth=1.5, label=f'Doppler shifted (α={alpha})')
+    ax2.set_xlabel('Time Lag [ms]')
+    ax2.set_ylabel('Normalized Correlation')
+    ax2.set_title('Hyperbolic Chirp Matched Filter Output')
+    ax2.legend(loc='upper right')
+    ax2.grid(True, alpha=0.3)
+    ax2.set_ylim((-0.3, 1.05))
+    
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'doppler-matched-filter-comparison.png', dpi=150)
+    plt.close()
+    
+    # ==========================================================================
+    # Create Overlay Plot for Direct Comparison
+    # ==========================================================================
+    _, ax = plt.subplots(figsize=(10, 6))
+    
+    # Plot range (±2 ms)
+    plot_range_narrow = np.abs(lag_ms) <= 2
+    
+    ax.plot(lag_ms[plot_range_narrow], corr_linear_doppler_norm[plot_range_narrow], 
+            'r-', linewidth=2, label='Linear chirp (Doppler shifted)')
+    ax.plot(lag_ms[plot_range_narrow], corr_hyper_doppler_norm[plot_range_narrow], 
+            'b-', linewidth=2, label='Hyperbolic chirp (Doppler shifted)')
+    
+    ax.set_xlabel('Time Lag [ms]')
+    ax.set_ylabel('Normalized Correlation')
+    ax.set_title(f'Matched Filter Response Comparison (Doppler α={alpha})')
+    ax.legend(loc='upper right')
+    ax.grid(True, alpha=0.3)
+    ax.set_ylim((-0.3, 1.05))
+    
+    # Add annotation showing peak values
+    linear_peak = np.max(corr_linear_doppler_norm)
+    hyper_peak = np.max(corr_hyper_doppler_norm)
+    ax.annotate(f'Linear peak: {linear_peak:.2f}', xy=(0.02, 0.92), xycoords='axes fraction',
+                fontsize=10, color='red')
+    ax.annotate(f'Hyperbolic peak: {hyper_peak:.2f}', xy=(0.02, 0.85), xycoords='axes fraction',
+                fontsize=10, color='blue')
+    
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'doppler-tolerance-overlay.png', dpi=150)
+    plt.close()
+    
+    # Print some statistics
+    print(f"Linear chirp peak correlation under Doppler: {linear_peak:.3f}")
+    print(f"Hyperbolic chirp peak correlation under Doppler: {hyper_peak:.3f}")
+    print(f"Hyperbolic advantage: {(hyper_peak/linear_peak - 1)*100:.1f}% higher peak")
 
 
 if __name__ == "__main__":
