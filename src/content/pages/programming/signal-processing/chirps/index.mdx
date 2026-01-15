@@ -343,6 +343,10 @@ The factor of 2 in the above equation comes from the fact it is a round-trip (th
 The Doppler effect is much more significant in sonar than radar because sound travels ~200,000x slower than light in air. A 37 m/s target produces $\alpha \approx 1.05$ in sonar but only $\alpha \approx 1.00000025$ in radar.
 </Aside>
 
+<IRef iref="fig-doppler-waveform-comparison" /> shows a side-by-side comparison of the original and Doppler-shifted waveforms. This zooms into the first 5 milliseconds to show the difference more clearly.
+
+<Image iref="fig-doppler-waveform-comparison" src={import('./_assets/doppler-waveform-comparison.png')} width="900px">Side-by-side comparison of the original and Doppler-shifted waveforms.</Image>
+
 A **matched filter** is a signal processing technique where the received signal is correlated with a copy of the transmitted signal to detect the presence and timing of echoes. The output produces a sharp peak when the signals align, indicating a detection.
 
 The key problem is that when the received signal is time-scaled by $\alpha$, it no longer perfectly matches the template signal. For linear chirps, this mismatch causes the matched filter output to:

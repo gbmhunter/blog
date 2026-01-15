@@ -476,6 +476,43 @@ def create_doppler_matched_filter_comparison():
     plt.savefig(SCRIPT_DIR / 'doppler-tolerance-overlay.png', dpi=150)
     plt.close()
     
+    # ==========================================================================
+    # Create Waveform Comparison Plot (Original vs Doppler-shifted)
+    # ==========================================================================
+    _, axes = plt.subplots(1, 2, figsize=(14, 5))
+    
+    # Zoom into a portion of the waveform
+    t_ms = t * 1e3
+    zoom_mask = (t_ms >= 0) & (t_ms <= 5)
+    
+    # Left plot: Linear chirp waveforms
+    ax1 = axes[0]
+    ax1.plot(t_ms[zoom_mask], x_linear[zoom_mask], 
+             'b-', linewidth=1.5, label='Original', alpha=0.8)
+    ax1.plot(t_ms[zoom_mask], x_linear_doppler[zoom_mask], 
+             'r--', linewidth=1.5, label=f'Doppler shifted (α={alpha})', alpha=0.8)
+    ax1.set_xlabel('Time [ms]')
+    ax1.set_ylabel('Amplitude')
+    ax1.set_title('Linear Chirp Waveforms')
+    ax1.legend(loc='upper right')
+    ax1.grid(True, alpha=0.3)
+    
+    # Right plot: Hyperbolic chirp waveforms
+    ax2 = axes[1]
+    ax2.plot(t_ms[zoom_mask], x_hyper[zoom_mask], 
+             'b-', linewidth=1.5, label='Original', alpha=0.8)
+    ax2.plot(t_ms[zoom_mask], x_hyper_doppler[zoom_mask], 
+             'r--', linewidth=1.5, label=f'Doppler shifted (α={alpha})', alpha=0.8)
+    ax2.set_xlabel('Time [ms]')
+    ax2.set_ylabel('Amplitude')
+    ax2.set_title('Hyperbolic Chirp Waveforms')
+    ax2.legend(loc='upper right')
+    ax2.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'doppler-waveform-comparison.png', dpi=150)
+    plt.close()
+    
     # Print some statistics
     print(f"Linear chirp peak correlation under Doppler: {linear_peak:.3f}")
     print(f"Hyperbolic chirp peak correlation under Doppler: {hyper_peak:.3f}")
