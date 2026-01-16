@@ -213,6 +213,58 @@ CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
 
 By default, `CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC_CALIBRATION=y` is set which means the calibration parameters will be used to make the RC oscillator more accurate.
 
+## Quad Serial Peripheral Interface (QSPI)
+
+The QSPI peripheral is designed to communicate with external SPI flash memory ICs. It supports single, dual and quad lane SPI buses with a 2-32MHz clock speed. It supports Execute-In-Place (XIP) to allow the CPU to directly execute code from flash memory. <IRef iref="fig-nrf52-qspi-block-diagram" /> shows the internal block diagram of the QSPI peripheral.
+
+<Image iref="fig-nrf52-qspi-block-diagram" src={import('./_assets/nrf52-qspi-block-diagram.webp')} width="400px">The internal block diagram of the QSPI peripheral on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+The QSPI peripheral supports a deep power-down mode (DPM) to minimize current consumption when the QSPI peripheral is not in use.
+
+<Aside type="note">
+The Zephyr QSPI driver does not implement PM device power states. This means that the following WILL NOT WORK correctly to set the QSPI pins into high-impedance state when sleeping (note the use of `low-power-enable`):[^nordic-semi-devzone-unable-to-pull-spi-miso-line-down]
+
+```txt title="pinctrl.dtsi"
+&pinctrl {
+    spi0_default: spi0_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 26)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 25)>,
+                <NRF_PSEL(SPIM_MISO, 0, 27)>;
+        };
+    };
+
+    spi0_sleep: spi0_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 26)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 25)>,
+                <NRF_PSEL(SPIM_MISO, 0, 27)>;
+                low-power-enable;
+        };
+    };
+}
+```
+
+If you use the above code, you make get excess power consumption when sleeping due to the `MISO` pin floating and being in an indeterminate digital state (which causes both the N-channel and P-channel MOSFETs that form the input buffer to be partially on, causing shoot-through current to flow directly from VCC to GND).
+
+Instead, you need to separate the pins into two groups, and make sure the `MISO` pin is in a defined state when sleeping by using `bias-pull-up` or `bias-pull-down`:
+
+```txt title="pinctrl.dtsi"
+&pinctrl {
+    spi0_default: spi0_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 26)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 25)>;
+        };
+        group2 {
+            psels = <NRF_PSEL(SPIM_MISO, 0, 27)>;
+            bias-pull-up;
+        };
+    };
+};
+```
+</Aside>
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -221,3 +273,5 @@ By default, `CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC_CALIBRATION=y` is set which mean
 [^nordic-semi-nrf52840-datasheet]: Nordic Semiconductor (2024, Oct 1). _nRF52840 - Product Specification - v1.11_ [datasheet]. Retrieved 2025-03-03, from https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html.
 [^zephyr-docs-nrf-specific-gpio-flags]: Zephyr Project (2025, Mar 3). _Device Driver APIs > GPIO Driver APIs > nRF-specific GPIO Flags_ [documentation]. Retrieved 2025-03-03, from https://docs.zephyrproject.org/apidoc/latest/group__gpio__interface__nrf.html.
 [^nordic-semi-nrf-connect-sdk-nfc-samples]: Nordic Semiconductor (2025, May 7). _nRF Connect SDK - latest > Samples > NFC samples_ [documentation]. Retrieved 2025-05-08, from https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/nfc.html.
+[^nordic-semi-devzone-unable-to-pull-spi-miso-line-down]: Alex_S@Aperia, 
+Vidar Berg. _Unable to pull SPI MISO line down via device tree configuration_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-01-16, from https://devzone.nordicsemi.com/f/nordic-q-a/113908/unable-to-pull-spi-miso-line-down-via-device-tree-configuration.

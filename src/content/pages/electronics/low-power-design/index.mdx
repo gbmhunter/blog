@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2024-02-08
 description: Low power design tips for embedded systems.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-02-09
-tags: [low power, MCU, firmware, SMPS]
+lastUpdated: 2025-01-16
+tags: [low power, MCU, firmware, SMPS, ADC, resistor divider, digital inputs, GPIO, power measurement]
 title: Low Power Design
 type: page
 ---
@@ -58,6 +58,24 @@ The [Zephyr OS](/programming/operating-systems/zephyr/) combined with [Nordic ch
 ## Compile For Speed, Not Code Size
 
 As mentioned above, for low power operation you want to spend as much time sleeping as possible. Another way to achieve that goal is to tell your [compiler](/programming/compilers/) to optimize for speed rather than code size. In [GCC](/programming/compilers/gcc/) and other similar compilers this is done by using the `-O3` flag when compiling.
+
+## Make Sure Digital Inputs Are In Defined States
+
+Indeterminate (floating or otherwise not either high are low) voltages on digital [CMOS](/electronics/circuit-design/logic-families/) inputs can cause the input circuitry to draw significant current. This is because a voltage in the middle of the range partially turns on both the N-channel and P-channel MOSFETs that form the input buffer. This causes shoot-through current to flow directly from VCC to GND.
+
+Make sure that all of your digital inputs will be in defined states during sleep. This can be done by adding pull-up or pull-down resistors to the inputs. Add a pull-up resistor if the default pin state is HIGH, and a pull-down resistor if the default pin state is LOW so that you are not drawing extra current.
+
+Another way to fix this is to change the pin to an analog input (via firmware) during sleep. This will disconnect the CMOS input buffer and allows you to keep the pin floating if needed.
+
+<Aside type="note">
+
+I have personally seen a circuit which was meant to draw 6uA of current when sleeping actually draw 120uA because the SPI MISO line from the external flash was not pulled high or low. When the flash IC was put to sleep (i.e. it's chip select deactivated), the flash IC stopped driving the MISO line and it started floating. This caused the input GPIO buffer on the MCU to draw significant current.
+
+The fix was a 100k pull-up resistor on the MISO line.
+
+This problem was hard to diagnose since it was intermittent and depending on what voltage the MISO line floated to. Placing your hand near or on the floating traces would change the current (this is a good way to find floating traces!).
+
+</Aside>
 
 ## Measuring Power Consumption
 

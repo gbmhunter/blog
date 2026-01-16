@@ -229,14 +229,7 @@ Hyperbolic chirps are used in radar and wideband active sonar systems as a way o
 
 A matched filter is when you look for the sent signal in the received signal. You do this by correlating the received signal with the sent signal. You will get a sharp peak in the correlation when the signals correlate, telling you a reflection has been received.
 
-When the target is moving relative to the source, the received signal will be Doppler shifted. This means that the chirp will have:
-
-- All chirp frequencies will be shifted up or down
-- The time scale of the chirp will be stretched or compressed
-
-It's this time scale stretching/compressing that messes with the correlation. It will spread out your correlation peak into a smoother "bump", reducing your ability to detect the reflection.
-
-The neat thing about hyperbolic chirps is that when they are Doppler shifted, it still looks like a frequency shifted version of itself because of the unique mathematical properties of the hyperbolic function. This means you can still get excellent matched filter response by just adjusting for frequency shift.
+Hyperbolic chirps correlate well with the original signal even after being doppler shifted. See the [Doppler Tolerance and Matched Filter Performance](#doppler-tolerance-and-matched-filter-performance) section for more details.
 
 </Aside>
 
@@ -349,11 +342,11 @@ The Doppler effect is much more significant in sonar than radar because sound tr
 
 A **matched filter** is a signal processing technique where the received signal is correlated with a copy of the transmitted signal to detect the presence and timing of echoes. The output produces a sharp peak when the signals align, indicating a detection.
 
-The key problem is that when the received signal is time-scaled by $\alpha$, it no longer perfectly matches the template signal. For linear chirps, this mismatch causes the matched filter output to:
-- Reduce in peak amplitude (harder to detect)
+The key problem is that when the received signal is doppler shifted, it gets scaled with respect to time. For linear chirps, this means that the received signal will only match the original signal at a single instant, as the received signal is sweeping through frequencies at a faster/slower rate. This means the correlation peak will be:
+- Reduced in peak amplitude (harder to detect)
 - Spread out in time (reduced range resolution)
 
-Hyperbolic chirps have a special property: when time-scaled, they remain hyperbolic chirps (just with different effective parameters). This means the Doppler-shifted signal still correlates well with the original, maintaining a sharp peak in the matched filter output.
+Hyperbolic chirps have a special property: when time-scaled, they are equivalent to a time-shifted version of the original signal. This means the Doppler-shifted signal still correlates well with the original (just with a shifted started point), maintaining a sharp peak in the matched filter output.
 
 <IRef iref="fig-doppler-matched-filter-comparison" /> shows a side-by-side comparison of matched filter outputs for linear and hyperbolic chirps, both with and without Doppler shift ($\alpha = 1.05$, representing approximately 5% time compression). The negative time lag for the peaks in the doppler shifted waveforms is due to the signal being compressed in time -- the received signal "finishes early" and the correlation maximum shift to where the compressed signal best aligns with the original.
 

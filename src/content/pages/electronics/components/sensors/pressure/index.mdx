@@ -1,0 +1,30 @@
+---
+authors: [gbmhunter]
+date: 2025-01-16
+description: Pressure sensors measure the pressure of a fluid or gas.
+lastUpdated: 2025-01-16
+tags: [pressure sensors, sensors]
+title: Pressure Sensors
+type: page
+---
+
+Pressure sensors measure the pressure of a fluid or gas.
+
+## Examples
+
+### Honeywell ABP2 Series
+
+The Honeywell ABP2 series is a family of board-mount pressure sensors. There are both through-hole and SMD versions. They detect pressure using piezoresistive silicon and offer both analogue and digital output options (digital versions support either the [I2C](/electronics/communication-protocols/i2c-communication-protocol) or [SPI](/electronics/communication-protocols/spi-communication-protocol) bus protocols). Options exist to both measure gas and liquid (there is an additional gel coating added to the liquid versions).[^honeywell-abp2-product-page]
+
+<Image src={import('./_assets/photo-of-abp2-variants.webp')} width="600px">A photo of the various variants of the Honeywell ABP2 series pressure sensors.[^honeywell-abp2-datasheet]</Image>
+
+You have to be careful when both soldering and handling these sensors. They are particularly sensitive to over-heating (the plastic parts and/or sealant can melt) during soldering. The plastic barb can also be torn of the rest of the component easily it too much torque/force is applied from the connected hose.
+
+<Image src={import('./_assets/photo-of-abp2-air-pressure-sensors-on-pcb.webp')} width="600px">A photo of 3 Honeywell ABP2LAN air pressure sensors mounted on a PCB. Two are connected to hoses (with some sealant applied), one is not.</Image>
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^honeywell-abp2-product-page]: Honeywell. _Basic ABP2 Series Board Mount Pressure Sensor_ [product page]. Retrieved 2025-01-16, from https://automation.honeywell.com/us/en/products/sensing-solutions/sensors/pressure-sensors/board-mount-pressure-amplified/basic-abp2-series-board-mount-pressure-sensor.
+[^honeywell-abp2-datasheet]: Honeywell (2025, Oct). _ABP2 SERIES - Board Mount Pressure Sensors_ [datasheet]. Retrieved 2025-01-16, from https://prod-edam.honeywell.com/content/dam/honeywell-edam/sps/siot/en-au/products/sensors/pressure-sensors/board-mount-pressure-sensors/basic-abp2-series/documents/sps-siot-abp2-series-datasheet-32350268-en.pdf.
