@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-03
-lastUpdated: 2024-01-15
+lastUpdated: 2026-01-19
 tags: [electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP, WS2812, RGB]
 title: SPI Communication Protocol
 type: page
@@ -205,6 +205,14 @@ int main() {
 
 ```
 
+## SPI in Low Power Design
+
+Some SPI slaves will be explicitly designed for low power operation and provide low power modes of operation. Make sure that all SPI digital inputs are in valid logic states (HIGH or LOW) during sleep, otherwise the input buffers will draw current due to shoot-through current (which can be typically 50-1000uA).
+
+This includes the lines from the master to the slave (SCK and MOSI, these are inputs w.r.t. to the slave) and from the slave to the master (MISO, this is an input w.r.t. to the master). The slave(s) will not typically drive the MISO line during sleep, so make sure you connect a high valued (e.g. 100kΩ to 1MΩ) pull-down or pull-up resistor to the MISO line to keep it in a valid logic state during sleep.
+
+More information on this can be found in the [low power design](/electronics/low-power-design/) page.
+
 ## Non-Standard Uses
 
 ### WS2812 RGB LEDs
@@ -230,6 +238,10 @@ The mSPI bus is a modification of the SPI bus that enforces that the comms proto
 ### RapidS
 
 The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologies](http://www.adestotech.com/). It is commonly present on memory chips such as EEPROM and Flash memory ICs. The RapidS serial interface is SPI compatible for frequencies up to 33MHz. The RapidS protocol is different to the Rapid8 protocol, which is a **parallel interface**.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^bib-microchip-mcp4xxxx-dpot-ds]: Microchip (2008). _Microchip MCP413X/415X/423X/425X: 7/8-Bit Single/Dual SPI Digital POT with Volatile Memory (datasheet)_. Retrieved 2022-06-02, from https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/22060b.pdf.
 [^bib-nxp-fxos8700cq-ds]: NXP (2017, Apr 25). _FXOS8700CQ 6-axis sensor with integrated linear accelerometer and magnetometer_. Retrieved 2022-06-02, from https://www.nxp.com/docs/en/data-sheet/FXOS8700CQ.pdf.
