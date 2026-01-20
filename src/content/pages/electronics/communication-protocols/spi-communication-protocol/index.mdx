@@ -1,13 +1,13 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-03
-lastUpdated: 2026-01-19
-tags: [electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP, WS2812, RGB]
+lastUpdated: 2026-01-20
+tags: [electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP, WS2812, RGB, low power]
 title: SPI Communication Protocol
 type: page
 ---
 
-SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams (typical rates up to 10-24Mbps[^bib-totalphase-single-dual-quad-spi]) between devices on the same PCB. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
+SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams (typical rates up to 10-24Mbps[^totalphase-single-dual-quad-spi]) between devices on the same PCB. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 
 <Image src={import('./_assets/spi-basic-master-slave-diagram.webp')} width="600">The basic connections needed between an SPI master and a single SPI slave.</Image>
 
@@ -45,7 +45,7 @@ One limitation with SPI is that the master has to **initiate** all communication
 
 **No specific termination** is needed on SPI connections. Long connections (many metres or more) and high data rates (>10Mhz) may require standard termination procedures to prevent reflections.
 
-Arduino has moved away from master/slave terminology (supported by an [OSHWA resolution](https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names)) and now uses the following _controller/peripheral_ terminology for SPI[^bib-arduino-spi]:
+Arduino has moved away from master/slave terminology (supported by an [OSHWA resolution](https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names)) and now uses the following _controller/peripheral_ terminology for SPI:[^arduino-spi]
 
 Old (Master/Slave)          | New (Controller/Peripheral)
 ----------------------------|---------
@@ -72,7 +72,7 @@ The clock polarity (CPOL) determines whether the idle state of the clock signal 
 
 The clock phase (CPHA) determines whether data is captured/sent on the rising or falling edge. **If CPHA = 0, then data is sampled on the first clock edge. If CPHA = 1, then data is sampled on the second clock edge.** This is true no matter what the clock polarity (CPOL) is set to, and applies both to the master and all the slaves. Note that if CPHA = 0, then data must be setup before the first clock edge. If CPHA = 1, then the devices have the initial clock edge to shift data onto the lines, in preparation for sampling on the second clock edge.
 
-The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers, as well as what is used for the Arduino SPI API[^bib-arduino-spi]:
+The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers, as well as what is used for the Arduino SPI API:[^arduino-spi]
 
 SPI Mode | Clock Polarity (CPOL) | Clock Phase (CPHA) | Which Clock Edge Is Used To Sample/Shift?
 ---------|-----------------------|--------------------|--------------------------------------------------------------
@@ -103,7 +103,7 @@ Many devices do not support all four SPI modes. It is common (especially for sla
 
 To give you an example of what it means for firmware, below is a screenshot of the SPI modes table from the [Microchip SAM D21 MCU datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf). We are lucky in this case, the SAMD21 microcontroller supports all four modes of operation. 
 
-<Image src={import('./_assets/microchip-sam-d21-spi-transfer-modes-table.png')} width="800">Screenshot of the SPI modes table from the Microchip SAM D21 datasheet[^bib-microchip-samd21-datasheet].</Image>
+<Image src={import('./_assets/microchip-sam-d21-spi-transfer-modes-table.png')} width="800">Screenshot of the SPI modes table from the Microchip SAM D21 datasheet.[^microchip-samd21-datasheet]</Image>
 
 ### Can A Single Master Support Multiple SPI Modes On The Same Bus?
 
@@ -131,7 +131,7 @@ Some devices that support daisy chaining are Microchips MCP42xxx digital potenti
 
 Some slave devices only support _point-to-point_ SPI communication. This means that there can **only be one master on the bus, and also only one slave** (the device which supports point-to-point SPI). The Freescale (now NXP) `FXOS8700CQ` magnetometer is one such example.
 
-<Image src={import('./_assets/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.png')} width="745">The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the 'point-to-point' SPI protocol[^bib-nxp-fxos8700cq-ds].</Image>
+<Image src={import('./_assets/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.png')} width="745">The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the 'point-to-point' SPI protocol.[^nxp-fxos8700cq-ds]</Image>
 
 ## Dedicated Chip Select Pins
 
@@ -147,13 +147,13 @@ On STM32 microcontrollers this pin is called `NSS` (which stands for _not slave 
 
 Some low-pin count packaged ICs use shared MOSI/MISO lines. One such example is some of the DPOTs in the Microchip MCP4XXX family. The 8-pin potentiometer variants such as the MCP4131 contain a single MOSI/MISO pin (called SDI/SDO). This obviously prevents data from being transmitted in both directions at the same time. If connecting such a device up to a normal hardware SPI peripheral, a resistor is needed to prevent driver contention (as shown in the below image) when the MCP4131 sends data back to the microcontroller. If you are bit-banging the SPI communications, you can smartly turn the host controller output into an input at the right clock edge to receive data and eliminate the need for the resistor.
 
-<Image src={import('./_assets/microchip-mcp41x1-dpot-spi-connections.png')} width="600">Schematics from the MCP4XXX DPOT datasheet showing to connect the shared MOSI/MISO pin (called SDI/SDO) to a SPI bus and SPI host[^bib-microchip-mcp4xxxx-dpot-ds].</Image>
+<Image src={import('./_assets/microchip-mcp41x1-dpot-spi-connections.png')} width="600">Schematics from the MCP4XXX DPOT datasheet showing to connect the shared MOSI/MISO pin (called SDI/SDO) to a SPI bus and SPI host.[^microchip-mcp4xxxx-dpot-ds]</Image>
 
 The datasheet says exactly when the SDI will be turned into an SDO and data sent back:
 
 > The 8-lead Single Potentiometer devices are pin limited so the SDO pin is multiplexed with the SDI pin
 (SDI/SDO pin). After the Address/Command (first 6-bits) are received, If a valid Read command has been
-requested, the SDO pin starts driving the requested read data onto the SDI/SDO pin[^bib-microchip-mcp4xxxx-dpot-ds].
+requested, the SDO pin starts driving the requested read data onto the SDI/SDO pin.[^microchip-mcp4xxxx-dpot-ds]
 
 ## Dual And Quad SPI
 
@@ -167,7 +167,7 @@ QSPI takes this idea even further and adds two additional bi-directional data li
 
 With the four data lines in QSPI, **a single byte can be sent in two clock cycles** (4 bits per clock cycle). QSPI is commonly used for external NOR flash memory. Examples include the [Cypress S79FS01GS 1 Gbit, 1.8 V Dual-Quad Serial Peripheral Interface with Multi-I/O Flash](https://www.infineon.com/dgdl/Infineon-S79FS01GS_1_Gbit_1.8_V_Dual-Quad_Serial_Peripheral_Interface_with_Multi-I_O_Flash-DataSheet-v03_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee7dd5970c3). Chips that support QSPI usually also support Dual SPI.
 
-<Image src={import('./_assets/infineon-s25fs128s-qspi-flash-connection-diagram.png')} width="500">Wiring diagram for the Infineon S25FS128S QSPI flash IC[^bib-infineon-s25fs128s-ds].</Image>
+<Image src={import('./_assets/infineon-s25fs128s-qspi-flash-connection-diagram.png')} width="500">Wiring diagram for the Infineon S25FS128S QSPI flash IC.[^infineon-s25fs128s-ds]</Image>
 
 ## Execute-In-Place (XIP)
 
@@ -219,9 +219,9 @@ More information on this can be found in the [low power design](/electronics/low
 
 Microcontroller SPI peripherals are commonly used to generate the data to talk to long strings of WS2812 RGB LEDs. The WS2812 RGB LEDs feature a custom 1-wire communications protocol. There is no clock line, only a single data line. Each bit is a fixed width, and a 0 is communicated with the line staying HIGH for a particular amount of time during the bit, and then transitioning low. A 1 is communicated by the voltage staying HIGH for slightly longer during the bit before transitioning to 0. This "return to zero (RTZ)" scheme allows the clock to be easily recovered from the data.
 
-<Image src={import('./_assets/ws2812b-comms-protocol-info.webp')} width="900">Data showing how the WS2812 RGB LED communication protocol relies of the timings of HIGH and LOW parts of a bit to determine a 0 or 1[^worldsemi-ws2812b-rgb-led-ds].</Image>
+<Image src={import('./_assets/ws2812b-comms-protocol-info.webp')} width="900">Data showing how the WS2812 RGB LED communication protocol relies of the timings of HIGH and LOW parts of a bit to determine a 0 or 1.[^worldsemi-ws2812b-rgb-led-ds]</Image>
 
-Depending on the MCU, generating these timings by "bit-banging" could be difficult because of the fast baud rate and HIGH/LOW timing requirements. However, an SPI peripheral running at a faster bit rate can be used to generate the data relatively easily. One option is to set the SPI speed so there are three SPI bits for every WS2812 bit. The SPI bit period can be set to `0.4us`, so that three bits takes `1.2us`. Then you can send the SPI bit pattern `100` for a WS2812 `0` and a `110` for a WS2812 `1`[^controllers-tech-ws2812-leds-using-spi]. Using 8 SPI bits per WS2812 bit is another approach[^hackster-neopixel-ws2812b-driver].
+Depending on the MCU, generating these timings by "bit-banging" could be difficult because of the fast baud rate and HIGH/LOW timing requirements. However, an SPI peripheral running at a faster bit rate can be used to generate the data relatively easily. One option is to set the SPI speed so there are three SPI bits for every WS2812 bit. The SPI bit period can be set to `0.4us`, so that three bits takes `1.2us`. Then you can send the SPI bit pattern `100` for a WS2812 `0` and a `110` for a WS2812 `1`[^controllers-tech-ws2812-leds-using-spi]. Using 8 SPI bits per WS2812 bit is another approach.[^hackster-neopixel-ws2812b-driver]
 
 In all of these cases, only the MOSI output on the SPI peripheral is used. SCLK and MISO are not used.
 
@@ -229,7 +229,7 @@ In all of these cases, only the MOSI output on the SPI peripheral is used. SCLK 
 
 ### Microwire (uWire)
 
-The Microwire protocol is older than the SPI protocol, and began life as a protocol used by National Semiconductors in their COPS processor family[^bib-scienceprog-microwire-compared]. It is generally equivalent to SPI when `CPOL = 0` and `CPHA = 0`[^bib-microchip-forums-spi-3-wire-microwire]. The wires are called `SO`, `SI` and `SK`[^bib-ti-an-452-microwire].
+The Microwire protocol is older than the SPI protocol, and began life as a protocol used by National Semiconductors in their COPS processor family.[^scienceprog-microwire-compared] It is generally equivalent to SPI when `CPOL = 0` and `CPHA = 0`.[^microchip-forums-spi-3-wire-microwire] The wires are called `SO`, `SI` and `SK`.[^ti-an-452-microwire]
 
 ### mSPI (mini-SPI)
 
@@ -243,15 +243,15 @@ The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologi
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^bib-microchip-mcp4xxxx-dpot-ds]: Microchip (2008). _Microchip MCP413X/415X/423X/425X: 7/8-Bit Single/Dual SPI Digital POT with Volatile Memory (datasheet)_. Retrieved 2022-06-02, from https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/22060b.pdf.
-[^bib-nxp-fxos8700cq-ds]: NXP (2017, Apr 25). _FXOS8700CQ 6-axis sensor with integrated linear accelerometer and magnetometer_. Retrieved 2022-06-02, from https://www.nxp.com/docs/en/data-sheet/FXOS8700CQ.pdf.
-[^bib-microchip-forums-spi-3-wire-microwire]: Microchip Forum (2006, Nov 13). _Differences between SPI, 3-Wire and Microwire_. Retrieved 2022-06-02, from https://www.microchip.com/forums/m202051.aspx.
-[^bib-scienceprog-microwire-compared]: ScienceProg. _Microwire compared to SPI and I2C_. Retrieved 2022-06-02, from https://scienceprog.com/microwire-compared-to-spi-and-i2c/.
-[^bib-ti-an-452-microwire]: Texas Instruments (1992, Jan). _AN-452: MICROWIRE Serial Interface_. Retrieved 2022-06-02, from https://www.ti.com/lit/an/snoa743/snoa743.pdf.
-[^bib-arduino-spi]: Arduino. _Arduino & Serial Peripheral Interface (SPI)_. Retrieved 2022-06-25, from https://docs.arduino.cc/learn/communication/spi.
-[^bib-totalphase-single-dual-quad-spi]: Kathleen Chan. _What are the Differences of Single vs Dual vs Quad SPI?_. TotalPhase. Retrieved 2022-06-25, from https://www.totalphase.com/blog/2020/05/what-are-the-differences-of-single-vs-dual-vs-quad-spi/.
-[^bib-infineon-s25fs128s-ds]: Infineon (2019, Nov 22). _S25FS128S/S25FS256S: 1.8 V, Serial Peripheral Interface with Multi-I/O, MirrorBit® Non-Volatile Flash (datasheet)_. Retrieved 2022-06-26, from https://www.infineon.com/dgdl/Infineon-S25FS128S_S25FS256S_1.8_V_Serial_Peripheral_Interface_with_Multi-I_O_MirrorBit(R)_Non-Volatile_Flash-DataSheet-v14_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ed6b5ab5758. 
-[^bib-microchip-samd21-datasheet]: Microchip (2021). _SAM D21/DA1 Family: Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-10-10, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
+[^microchip-mcp4xxxx-dpot-ds]: Microchip (2008). _Microchip MCP413X/415X/423X/425X: 7/8-Bit Single/Dual SPI Digital POT with Volatile Memory (datasheet)_. Retrieved 2022-06-02, from https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/22060b.pdf.
+[^nxp-fxos8700cq-ds]: NXP (2017, Apr 25). _FXOS8700CQ 6-axis sensor with integrated linear accelerometer and magnetometer_. Retrieved 2022-06-02, from https://www.nxp.com/docs/en/data-sheet/FXOS8700CQ.pdf.
+[^microchip-forums-spi-3-wire-microwire]: Microchip Forum (2006, Nov 13). _Differences between SPI, 3-Wire and Microwire_. Retrieved 2022-06-02, from https://www.microchip.com/forums/m202051.aspx.
+[^scienceprog-microwire-compared]: ScienceProg. _Microwire compared to SPI and I2C_. Retrieved 2022-06-02, from https://scienceprog.com/microwire-compared-to-spi-and-i2c/.
+[^ti-an-452-microwire]: Texas Instruments (1992, Jan). _AN-452: MICROWIRE Serial Interface_. Retrieved 2022-06-02, from https://www.ti.com/lit/an/snoa743/snoa743.pdf.
+[^arduino-spi]: Arduino. _Arduino & Serial Peripheral Interface (SPI)_. Retrieved 2022-06-25, from https://docs.arduino.cc/learn/communication/spi.
+[^totalphase-single-dual-quad-spi]: Kathleen Chan. _What are the Differences of Single vs Dual vs Quad SPI?_. TotalPhase. Retrieved 2022-06-25, from https://www.totalphase.com/blog/2020/05/what-are-the-differences-of-single-vs-dual-vs-quad-spi/.
+[^infineon-s25fs128s-ds]: Infineon (2019, Nov 22). _S25FS128S/S25FS256S: 1.8 V, Serial Peripheral Interface with Multi-I/O, MirrorBit® Non-Volatile Flash (datasheet)_. Retrieved 2022-06-26, from https://www.infineon.com/dgdl/Infineon-S25FS128S_S25FS256S_1.8_V_Serial_Peripheral_Interface_with_Multi-I_O_MirrorBit(R)_Non-Volatile_Flash-DataSheet-v14_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ed6b5ab5758. 
+[^microchip-samd21-datasheet]: Microchip (2021). _SAM D21/DA1 Family: Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-10-10, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
 [^worldsemi-ws2812b-rgb-led-ds]: Worldsemi. _WS2812B - Intelligent control LED integrated light source_ [datasheet]. Adafruit. Retrieved 2024-01-15, from https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf.
 [^controllers-tech-ws2812-leds-using-spi]: Controllerstech. _WS2812 LEDs using SPI_. Retrieved 2024-01-15, from https://controllerstech.com/ws2812-leds-using-spi/.
 [^hackster-neopixel-ws2812b-driver]: Rudra Lad. _NeoPixel WS2812b SPI driver with Ada on STM32F4 Discovery_. Hackster. Retrieved 2024-01-16, from https://www.hackster.io/RVLAD/neopixel-ws2812b-spi-driver-with-ada-on-stm32f4-discovery-d330ea.

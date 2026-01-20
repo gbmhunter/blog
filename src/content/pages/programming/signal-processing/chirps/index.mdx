@@ -8,11 +8,9 @@ title: Chirps
 type: page
 ---
 
-<WarningIsNotes />
-
 A chirp is a signal whose frequency changes over time. Up chirps are signals whose frequency increases over time, and down chirps are signals whose frequency decreases over time. The frequency change can be linear (if the rate of change is not mentioned, it can be assumed to be linear), exponential, or some other function.
 
-Chirps are present in many natural and man-made systems. Animals such as birds, frogs and whales create audible chirps, and bats use chirps in the ultrasonic range for echolocation. Chirps are also present in music ("glissando").[^patrick-flandrin-time-frequency-and-chirps]
+Chirps are present in many natural and man-made systems. Animals such as birds, frogs and whales create audible chirps, and bats use chirps in the ultrasonic range for echolocation. Chirps are used in radar and sonar systems to detect and track targets. Chirps are also present in music, e.g. the "glissando".[^patrick-flandrin-time-frequency-and-chirps]
 
 The simplest chirp signal can be created by squaring the time variable in a normal sinusoidal signal, for example:
 
@@ -22,7 +20,7 @@ x(t) = \sin(t^2)
 \end{align}
 $$
 
-<IRef iref="fig-basic-chirp-signal" /> shows a plot of this basic chirp signal.
+<IRef iref="fig-basic-chirp-signal" /> shows a plot of this basic chirp signal $x(t)$. This happens to be a linear chirp, in that the frequency increases linearly over time (more on this in the [Linear Chirps](#linear-chirps) section).
 
 <Image iref="fig-basic-chirp-signal" src={import('./_assets/basic-chirp-signal.png')} width="700px">A plot showing a basic chirp signal using the equation $x(t) = \sin(t^2)$.</Image>
 
@@ -250,6 +248,10 @@ $f(t)$ is the frequency at time $t$, in $Hz$<br/>
 $f_0$ is the initial frequency at time $t = 0$, in $Hz$<br/>
 $f_1$ is the final frequency at time $t = T$, in $Hz$<br/>
 $T$ is the time interval between the two points in time, in $s$<br/></p>
+
+<Aside type="note">
+Why is this function hyperbolic? The standard "unit" equation for a hyperbola is $x^2 - y^2 = 1$. However, a subset of hyperbolas called "rectangular hyperbolas" have the equation $xy = k$, where $k$ is a constant. This can be rewritten as $y = \frac{k}{x}$, which is in the same form as the frequency equation above (except for additional constants).
+</Aside>
 
 We can integrate the frequency equation to get the phase equation $\phi(t)$:[^wikipedia-chirp]
 
