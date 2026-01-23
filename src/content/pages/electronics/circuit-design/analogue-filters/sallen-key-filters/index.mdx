@@ -9,7 +9,7 @@ title: Sallen-Key Filters
 type: page
 ---
 
-The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters topologies**[^bib-analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name. It is a _filter topology_, and defines the components and connections between them to realize a 2nd order filter. Various [filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) such as Butterworth, Bessel and Chebyshev can be implemented using the Sallen-Key topology.
+The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters topologies**[^analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name. It is a _filter topology_, and defines the components and connections between them to realize a 2nd order filter. Various [filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) such as Butterworth, Bessel and Chebyshev can be implemented using the Sallen-Key topology.
 
 <div style={{display: "flex"}}>
   <Image src={import('./_assets/low-pass-variable-gain-sallen-key-filter-schematic.png')} width="400">The schematic for a variable-gain low-pass Sallen-Key filter.</Image>
@@ -18,13 +18,13 @@ The Sallen-Key filter is one of the **most popular active 2nd-order analogue fil
 
 The Sallen-Key filter has **low _component spread_** (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers.
 
-The **performance of a Sallen-Key filters does not depend that much on the performance of the op-amp**. This is because the op-amp is used as an amplifier, rather than an integrator, which minimizes the gain-bandwidth requirements of the op-amp[^bib-analog-devices-ch8-analog-filters]. However there are high-frequency limitations to the Sallen-Key filter, which are explained in more detail below.
+The **performance of a Sallen-Key filters does not depend that much on the performance of the op-amp**. This is because the op-amp is used as an amplifier, rather than an integrator, which minimizes the gain-bandwidth requirements of the op-amp[^analog-devices-ch8-analog-filters]. However there are high-frequency limitations to the Sallen-Key filter, which are explained in more detail below.
 
 One disadvantage of the Sallen-Key filter is that the **Q of the filter is very sensitive to component variations**, which can be a problem, especially for high-Q filter sections.
 
 The Sallen-Key filter is closely related to a _voltage-controlled voltage source (VCVS)_ filter. Some literature makes the **distinction of a Sallen-Key filter having unity gain, and the VCVS filter including non-unity gain** by connecting a resistor divider from the output to the inverting terminal of the op-amp. However we will consider them one and the same for the purpose of analysis, as the unity-gain version is a special subtype of the generalized variable-gain version.
 
-Another popular alternative to the Sallen-Key topology is the Multiple Feedback (MFB) topology[^bib-ti-active-low-pass-filter-design].
+Another popular alternative to the Sallen-Key topology is the Multiple Feedback (MFB) topology[^ti-active-low-pass-filter-design].
 
 I do a bit of music production, I was interested to find that the Ableton Live Auto Filter has an option called MS2 which is based on the Sallen-Key topology (it is modelled on the filters used in a famous semi-modular Japanese monosynth[^ableton-live-audio-effect-reference]). <IRef iref="fig-ms2-sallen-key-filter-in-ableton" /> shows a screenshot of the filter in Ableton.
 
@@ -44,7 +44,7 @@ I do a bit of music production, I was interested to find that the Ableton Live A
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
 </Aside>
 
-The generalized transfer function for a 2nd-order low-pass filter is[^bib-analog-devices-ch8-analog-filters] [^bib-gary-tuttle-second-order-filters]:
+The generalized transfer function for a 2nd-order low-pass filter is[^analog-devices-ch8-analog-filters] [^gary-tuttle-second-order-filters]:
 
 $$
 \begin{align}
@@ -62,7 +62,7 @@ $s = j\omega$<br/></p>
 For any general 2nd-order filter, the characteristic frequency $\omega_0$ is not necessarily equal to the cut-off frequency. Also, $\frac{1}{Q}$ is sometimes written as $\alpha$.
 </Aside>
 
-Written in the same form as the general equation above, the transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
+Written in the same form as the general equation above, the transfer function for a 2nd-order low-pass Sallen-Key filter is[^analog-devices-ch8-analog-filters]:
 
 $$
 \begin{align}
@@ -379,7 +379,7 @@ You can arrive at a high-pass Sallen-Key filter by switching the positions of th
 
 <Image iref="fig-high-pass-variable-gain-sallen-key-filter-schematic" src={import('./_assets/high-pass-variable-gain-sallen-key-filter-schematic.png')} width="600">Schematic of a variable-gain high-pass Sallen-Key filter.</Image>
 
-The general form of the transfer function for a second order high-pass filter is[^bib-analog-devices-ch8-analog-filters]:
+The general form of the transfer function for a second order high-pass filter is[^analog-devices-ch8-analog-filters]:
 
 $$
 \begin{align}
@@ -387,7 +387,7 @@ H(s) = \frac{Ks^2}{s^2 + \alpha \omega_0 s + \omega_0^2} \\
 \end{align}
 $$
 
-Using Ohm's law and Kirchhoff's current/voltage laws, we can write the equivalent transfer function for a variable-gain high-pass Sallen-Key filter, in terms of the resistances and capacitances[^bib-analog-devices-ch8-analog-filters]:
+Using Ohm's law and Kirchhoff's current/voltage laws, we can write the equivalent transfer function for a variable-gain high-pass Sallen-Key filter, in terms of the resistances and capacitances[^analog-devices-ch8-analog-filters]:
 
 $$
 \begin{align}
@@ -395,7 +395,7 @@ H(s) &= \frac{Ks^2}{s^2 + \left( \dfrac{\frac{C_2}{R_2} + \frac{C_1}{R_2} + (1-K
 \end{align}
 $$
 
-If you are using the unity-gain op-amp (no $R_3$ or $R_4$), the transfer function simplifies to[^bib-ti-2nd-order-sallen-key-high-pass]:
+If you are using the unity-gain op-amp (no $R_3$ or $R_4$), the transfer function simplifies to[^ti-2nd-order-sallen-key-high-pass]:
 
 $$
 \begin{align}
@@ -567,11 +567,11 @@ You can a practical example of this frequency limitation with the high-pass Sall
 
 The [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm) has some good Sallen-Key filter calculators, including 2nd and 3rd-order low-pass and high-pass calculators.
 
-<Image src={import('./_assets/okawa-sallen-key-filter-calculators-screenshot.png')} width="500">Screenshot of the Sallen-Key filter calculators offered by the [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm)[^bib-okawa-filter-design-and-analysis].</Image>
+<Image src={import('./_assets/okawa-sallen-key-filter-calculators-screenshot.png')} width="500">Screenshot of the Sallen-Key filter calculators offered by the [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm)[^okawa-filter-design-and-analysis].</Image>
 
 The Texas Instruments [Filter Design Tool](https://webench.ti.com/filter-design-tool/filter-type) is a web-based tool that supports the Sallen-Key topology. You firstly enter in the desired characteristics of your filter (e.g. low-pass, cut-off frequency, amount of rejection in stop band, tuning, e.t.c) and then can select Sallen-Key as a topology to implement the filter with.
 
-<Image src={import('./_assets/ti-filter-design-tool-screenshot.png')} width="700">Screenshot of the Filter Design Tool from Texas Instruments[^bib-ti-filter-design-tool].</Image>
+<Image src={import('./_assets/ti-filter-design-tool-screenshot.png')} width="700">Screenshot of the Filter Design Tool from Texas Instruments[^ti-filter-design-tool].</Image>
 
 ## Further Reading
 
@@ -585,11 +585,11 @@ See the [Filter Tunings page](/electronics/circuit-design/analogue-filters/filte
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
-[^bib-analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
-[^bib-ti-2nd-order-sallen-key-high-pass]: Texas Instruments (2021, Jun). _SBOA225: Single-supply, 2nd-order, Sallen-Key high-pass filter circuit_. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sboa225/sboa225.pdf.
-[^bib-ti-active-low-pass-filter-design]: Jim Karki (2002, Sep). _SLOA049B: Active Low-Pass Filter Design_. Texas Instruments. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sloa049b/sloa049b.pdf.
-[^bib-ti-analysis-of-sallen-key-arch]: James Karki (1999, Jul). _SLOA024B: Analysis of the Sallen-Key Architecture (Application Report)_. Texas Instruments. Retrieved 2022-09-22, from https://www.ti.com/lit/an/sloa024b/sloa024b.pdf.
-[^bib-ti-filter-design-tool]: Texas Instruments. _Filter Design Tool (web application)_. Retrieved 2022-09-29, from https://webench.ti.com/filter-design-tool/filter-type.
-[^bib-okawa-filter-design-and-analysis]: OKAWA Electric Design. _Filter Design and Analysis (web application)_. Retrieved 2022-09-29, from http://sim.okawa-denshi.jp/en/Fkeisan.htm.
-[^bib-gary-tuttle-second-order-filters]: Gary Tuttle. _EE 230: Second-order Filters (lecture slides)_. Retrieved 2022-10-01, from http://tuttle.merc.iastate.edu/ee230/topics/filters/second_order_intro.pdf.
+[^analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
+[^ti-2nd-order-sallen-key-high-pass]: Texas Instruments (2021, Jun). _SBOA225: Single-supply, 2nd-order, Sallen-Key high-pass filter circuit_. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sboa225/sboa225.pdf.
+[^ti-active-low-pass-filter-design]: Jim Karki (2002, Sep). _SLOA049B: Active Low-Pass Filter Design_. Texas Instruments. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sloa049b/sloa049b.pdf.
+[^ti-analysis-of-sallen-key-arch]: James Karki (1999, Jul). _SLOA024B: Analysis of the Sallen-Key Architecture (Application Report)_. Texas Instruments. Retrieved 2022-09-22, from https://www.ti.com/lit/an/sloa024b/sloa024b.pdf.
+[^ti-filter-design-tool]: Texas Instruments. _Filter Design Tool (web application)_. Retrieved 2022-09-29, from https://webench.ti.com/filter-design-tool/filter-type.
+[^okawa-filter-design-and-analysis]: OKAWA Electric Design. _Filter Design and Analysis (web application)_. Retrieved 2022-09-29, from http://sim.okawa-denshi.jp/en/Fkeisan.htm.
+[^gary-tuttle-second-order-filters]: Gary Tuttle. _EE 230: Second-order Filters (lecture slides)_. Retrieved 2022-10-01, from http://tuttle.merc.iastate.edu/ee230/topics/filters/second_order_intro.pdf.
 [^ableton-live-audio-effect-reference]: Ableton. _Live Manual - 24. Live Audio Effect Reference_. Retrieved 2026-01-24, from https://www.ableton.com/en/live-manual/11/live-audio-effect-reference/.
