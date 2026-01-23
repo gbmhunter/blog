@@ -1,0 +1,18 @@
+---
+authors: [gbmhunter]
+date: 2026-01-21
+lastUpdated: 2026-01-21
+tags: [power management, ics, PMICs, protection circuit modules, PCM, protection circuits, batteries]
+title: Protection Circuit Modules (PCMs)
+type: page
+---
+
+<WarningIsNotes />
+
+_Protection circuit modules_ (PCMs -- easily confused with Pulse Code Modulation) are integrated circuits that are used to protect rechargeable batteries such as those with [lithium-ion](/electronics/components/batteries/lithium-ion/) and lithium-polymer chemistries. PCMs typically contain monitoring circuitry to detect over-discharge, over-charge and over-current conditions. They either have internal [MOSFETs](/electronics/components/transistors/mosfets/) to connect/disconnect the battery from the load, or expose pins to connect to external MOSFETs. They are normally small ICs in a [SOT-23-6](/pcb-design/component-packages/sot-23-component-package/) package or similar. They are normally packaged alongside the MOSFETs (if MOSFETs need to be supplied separately) on a small PCB inside the battery (i.e. right next to the cell terminals).
+
+When the over-discharge mode is activated, some PCMs will not turn on one of the MOSFETs when the battery is charging, but instead relying on the MOSFETs internal body diode to conduct and charge the battery. Once the battery voltage reaches a high enough voltage, the PCM will exit over-discharge mode and turn on the MOSFET, removing the body diode from the charge path. This results in an immediate 0.6-1.2V drop. This drop can confuse some battery charge ICs and cause them to behave incorrectly (such as the [Nordic Semiconductor nPM1100](/electronics/components/power-management-ics/#nordic-semiconductor-npm1100)).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}

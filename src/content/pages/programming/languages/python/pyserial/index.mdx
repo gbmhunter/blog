@@ -1,0 +1,84 @@
+---
+authors: [gbmhunter]
+date: 2026-01-23
+lastUpdated: 2026-01-23
+tags: [programming, programming languages, Python, pySerial, serial, ports, communication, UART, SPI, I2C]
+title: pySerial
+type: page
+---
+
+<WarningIsNotes />
+
+pySerial is a popular Python library for serial port communication. It is cross-platform and supports Windows, macOS, Linux and BSD.[^pyserial-docs-homepage]
+
+## Installation
+
+Install pySerial using a package manager such as `pip` or `uv`. For example, to install using `uv`:
+
+```bash
+uv add pySerial
+```
+
+## Listing Available Serial Ports
+
+To list the available serial ports, you can use the `serial.tools.list_ports.comports()` function. For example:
+
+```python
+import serial.tools.list_ports
+ports = serial.tools.list_ports.comports()
+for port in ports:
+    print(port.device)
+```
+
+<Aside type="caution">
+The pySerial documentation warns that this function may not work correctly on all platforms. I have personally found no issues using it on both Windows and Linux.[^pyserial-docs-short-intro]
+</Aside>
+
+## Opening a Serial Port
+
+To open a serial port, you can use the `serial.Serial()` constructor. For example:
+
+```python
+import serial
+ser = serial.Serial('/dev/ttyUSB0')
+```
+
+<Aside type="note">
+On Windows the port name is typically something like `COM3`, `COM8`, etc.
+</Aside>
+
+The `serial.Serial()` constructor takes a number of arguments, including the port name, baud rate, timeout, e.t.c. The most common arguments are:
+
+- `port`: The port name to open.
+- `baudrate`: The baud rate to use.
+- `timeout`: The timeout in seconds.
+
+If you don't specify a port name, pySerial will create a port object that is in the closed state, and you'll need to manually open it using the `open()` method.
+
+## Reading and Writing to a Serial Port
+
+To read from a serial port, you can use the `read()` method. For example:
+
+```python
+data = ser.read(100)
+```
+
+This reads up to 100 bytes from the serial port.
+
+## Examples
+
+### Quick Write Example
+
+```python
+import serial
+ser = serial.Serial('/dev/ttyUSB0')  # open serial port
+ser.write(b'hello')     # write a string
+ser.close()             # close port
+```
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^pyserial-docs-homepage]: pySerial. _pySerial Documentation - Homepage_. Retrieved 2026-01-23, from https://pyserial.readthedocs.io/en/latest/.
+[^pyserial-docs-short-intro]: pySerial. _pySerial Documentation - Short Introduction_. Retrieved 2026-01-23, from https://pyserial.readthedocs.io/en/latest/shortintro.html.
