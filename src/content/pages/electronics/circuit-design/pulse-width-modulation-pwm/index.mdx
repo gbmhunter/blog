@@ -30,17 +30,24 @@ One example is the STM32 advanced motor control timers which are present in many
 
 ## Dithering
 
-Some PWM peripherals support dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discreet duty cycle values to give the appearance of a higher resolution PWM. The output PWM is then the average of the two duty cycle values. You do not need to strictly alternate between the two values (which would only give you an equivalent of twice the resolution) -- instead you can spend more PWM cycles at one duty cycle than the other (e.g. 3 duty cycles at 50%, and then 1 duty cycle at 51% would give you can equivalent duty cycle of 50.25%).
+Some PWM peripherals support dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discreet duty cycle values to give the appearance of a higher resolution PWM. The output PWM is then the average of the two duty cycle values. You do not need to strictly alternate between the two values (which would only give you an equivalent of twice the resolution) -- instead you can spend more PWM cycles at one duty cycle than the other (e.g. 3 duty cycles at 52%, and then 1 duty cycle at 53% would give you can equivalent duty cycle of 52.25%).
+
+<IRef iref="fig-pwm-dithering-comparison" /> shows how you could use 4 value dithering to achieve a better accuracy to the desired duty cycle of 52.3%. The top figure shows a standard PWM signal which only has 100 different duty cycle values, and so the closest it can get to 52.3% is 52%. The bottom figure shows a dithered PWM signal which can achieve an average duty cycle of 52.25%.
+
+<Image iref="fig-pwm-dithering-comparison" src={import('./_assets/pwm-dithering-comparison.png')} width="900px">A comparison of a standard PWM signal and a dithered PWM signal.</Image>
 
 Most PWM peripherals support this by providing a way to pass a sequence of duty cycles values in which the peripheral will automatically iterate through. They usually have the option of automatically repeating the sequence, or firing an interrupt so that CPU can load the next sequence.
 
 A sequence of 2^n values will give you additional resolution of n bits. For example, a sequence of 16 dithered values with give you 4 bits of additional resolution.
 
+<Aside type="caution">
+Increasing the length of the dithering sequence does not always improve the accuracy! It will in general (for random desired duty cycles), but for specific target duty cycles, longer sequences can make it worse! Take the example above again, in where we want to achieve a duty cycle of 52.3%. The dithered sequence of 4 values gives us an average duty cycle of 52.25%. However if we only use a sequence of 3 values, we can actually get closer to the target with a average duty cycle of 52.33%!
+</Aside>
+
 <Aside type="example">
 You have a PWM peripheral that runs of a 16 MHz clock. You are running the PWM at 100kHz. How many different duty cycle values are possible without any additional dithering, and then how many are possible with a dithering sequence of 16 values?
 
-There are $16 MHz / 100 kHz = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering. With a dithering sequence of 16 values, you can get 160 * 16 = 2560 different duty cycle values.
-
+There are $\dfrac{16 \text{ MHz}}{100 \text{ kHz}} = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering (which might not be enough resolution for your application). With a dithering sequence of 16 values, you can an extra 16 values in-between each of the 160 duty cycle values, giving you $160 * 16 = 2560$ different duty cycle values.
 </Aside>
 
 ## A Warning About PWM And Oscilloscopes
