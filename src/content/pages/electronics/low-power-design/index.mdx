@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2024-02-08
 description: Low power design tips for embedded systems.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-01-16
+lastUpdated: 2026-01-26
 tags: [low power, MCU, firmware, SMPS, ADC, resistor divider, digital inputs, GPIO, power measurement]
 title: Low Power Design
 type: page
@@ -61,20 +61,22 @@ As mentioned above, for low power operation you want to spend as much time sleep
 
 ## Make Sure Digital Inputs Are In Defined States
 
-Indeterminate (floating or otherwise not either high are low) voltages on digital [CMOS](/electronics/circuit-design/logic-families/) inputs can cause the input circuitry to draw significant current. This is because a voltage in the middle of the range partially turns on both the N-channel and P-channel MOSFETs that form the input buffer. This causes shoot-through current to flow directly from VCC to GND.
+Indeterminate (floating or otherwise not either high are low) voltages on digital [CMOS](/electronics/circuit-design/logic-families/) inputs that are connected to the internal input buffers can cause the input circuitry to draw significant current. This is because a voltage in the middle of the range partially turns on both the N-channel and P-channel MOSFETs that form the input buffer. This causes shoot-through current to flow directly from VCC to GND.
 
-Make sure that all of your digital inputs will be in defined states during sleep. This can be done by adding pull-up or pull-down resistors to the inputs. Add a pull-up resistor if the default pin state is HIGH, and a pull-down resistor if the default pin state is LOW so that you are not drawing extra current.
+To fix this, make sure you do one of the following:
 
-Another way to fix this is to change the pin to an analog input (via firmware) during sleep. This will disconnect the CMOS input buffer and allows you to keep the pin floating if needed.
+- Make sure that all digital inputs that are connected to the internal input buffers will be in defined states during sleep. This can be done by adding pull-up or pull-down resistors to the inputs. Add a pull-up resistor if the default pin state is HIGH, and a pull-down resistor if the default pin state is LOW so that you are not drawing extra current.
+- Disconnected the input pin from the internal input buffer if your microcontroller supports it.
+- Change the pin to an analog input (via firmware) during sleep. This achieves the same end result of disconnecting the CMOS input buffer and allows you to keep the pin floating if needed.
+
+<Image src={import('./_assets/nrf52-gpio-pin-internal-diagram-showing-input-buffer-disable.webp')} width="900px">A diagram of the internal input buffer of an nRF52 GPIO pin, with the circuitry to disable the input buffer highlighted.[^nordic-semi-nrf52840-datasheet]</Image>
 
 <Aside type="note">
-
 I have personally seen a circuit which was meant to draw 6uA of current when sleeping actually draw 120uA because the SPI MISO line from the external flash was not pulled high or low. When the flash IC was put to sleep (i.e. it's chip select deactivated), the flash IC stopped driving the MISO line and it started floating. This caused the input GPIO buffer on the MCU to draw significant current.
 
 The fix was a 100k pull-up resistor on the MISO line.
 
 This problem was hard to diagnose since it was intermittent and depending on what voltage the MISO line floated to. Placing your hand near or on the floating traces would change the current (this is a good way to find floating traces!).
-
 </Aside>
 
 ## Measuring Power Consumption
@@ -85,4 +87,10 @@ One of the difficulties of measuring low power circuits is that you often need a
 
 <Image src={import('./_assets/nrf-power-profiler-screenshot-showing-typical-low-power-mcu-with-spikes.png')} width="1000px">A screenshot of the nRF Power Profiler showing the current consumption of a typical low-power MCU circuit using Bluetooth LE. The idle current consumption is approx. 7uA, and current spikes up to approx. 10mA during Bluetooth transmissions, resulting in an average current of 120uA. Note the logarithmic Y-axis.</Image>
 
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^nordic-measuring-lithium-batt-voltage-with-nrf52]: Ole Bauck (2016, May 23). _Measuring Lithium battery voltage with nRF52_. Nordic Semiconductor. Retrieved 2024-02-10, from https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/measuring-lithium-battery-voltage-with-nrf52.
+[^nordic-semi-nrf52840-datasheet]: Nordic Semiconductor (2024, Oct 1). _nRF52840 - Product Specification - v1.11_ [datasheet]. Retrieved 2026-01-26, from https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html.
+

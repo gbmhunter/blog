@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2012-10-04
 description: Info on PWM peripherals, including operating modes and complementary outputs.
-lastUpdated: 2024-07-11
+lastUpdated: 2025-01-29
 tags: [electronics, circuit design, pulse width modulation, PWM, motor control, h-bridge, dead-time, complementary outputs, edge-aligned, centre-aligned]
 title: Pulse Width Modulation (PWM)
 type: page
@@ -22,18 +22,37 @@ Centre-aligned PWM is good for motor control as it generates fewer harmonics in 
 
 ## Complementary Outputs
 
-Some PWM peripherals have a complemntary output feature. This is one PWM timer in hardware controls two output pins. One pin is the normal PWM signal, the other is the inverse of this. Complementary outputs are useful for driving H-bridges and other motor control circuits. Usually these peripherals will also support an adjustable programmable dead-time to prevent shoot-through.
+Some PWM peripherals have a complementary output feature. This is one PWM timer in hardware controls two output pins. One pin is the normal PWM signal, the other is the inverse of this. Complementary outputs are useful for driving H-bridges and other motor control circuits. Usually these peripherals will also support an adjustable programmable dead-time to prevent shoot-through.
 
 <Image src={import('./_assets/diagram-showing-pwm-deadtime-stm32.webp')} width="500px">Diagram showing how deadtime is applied to the standard and complementary PWM signals to prevent shoot-through.</Image>
 
-One example is the STM32 advanced motor control timers which are present in many of the STM32 MCU families including the STM32G series[^st-an4013-intro-to-timers-for-stm32-mcus].
+One example is the STM32 advanced motor control timers which are present in many of the STM32 MCU families including the STM32G series.[^st-an4013-intro-to-timers-for-stm32-mcus]
+
+## Dithering
+
+Some PWM peripherals support dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discreet duty cycle values to give the appearance of a higher resolution PWM. The output PWM is then the average of the two duty cycle values. You do not need to strictly alternate between the two values (which would only give you an equivalent of twice the resolution) -- instead you can spend more PWM cycles at one duty cycle than the other (e.g. 3 duty cycles at 50%, and then 1 duty cycle at 51% would give you can equivalent duty cycle of 50.25%).
+
+Most PWM peripherals support this by providing a way to pass a sequence of duty cycles values in which the peripheral will automatically iterate through. They usually have the option of automatically repeating the sequence, or firing an interrupt so that CPU can load the next sequence.
+
+A sequence of 2^n values will give you additional resolution of n bits. For example, a sequence of 16 dithered values with give you 4 bits of additional resolution.
+
+<Aside type="example">
+You have a PWM peripheral that runs of a 16 MHz clock. You are running the PWM at 100kHz. How many different duty cycle values are possible without any additional dithering, and then how many are possible with a dithering sequence of 16 values?
+
+There are $16 MHz / 100 kHz = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering. With a dithering sequence of 16 values, you can get 160 * 16 = 2560 different duty cycle values.
+
+</Aside>
 
 ## A Warning About PWM And Oscilloscopes
 
 When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
 
-<Image src={import('./_assets/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg')} width="1200">An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).</Image>
+<Image src={import('./_assets/oscilloscope-aliasing-pwm-output-appearing-to-turn-on-off.jpg')} width="900px">An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).</Image>
 
 While your PWM could actually be doing this, more often than not what you are seeing is an **artefact caused by the digital sampling of the oscilloscope**. The following picture shows a 15kHz PWM signal appearing to stop and start every 10ms or so. I can assure you that the PWM signal is fine, it is the Rigol 100MHz oscilloscope showing the wrong thing.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^st-an4013-intro-to-timers-for-stm32-mcus]: STMicroelectronics. _AN4013 - Application note - Introduction to timers for STM32 MCUs_. Retrieved 2024-07-11, from https://www.st.com/resource/en/application_note/an4013-introduction-to-timers-for-stm32-mcus-stmicroelectronics.pdf.

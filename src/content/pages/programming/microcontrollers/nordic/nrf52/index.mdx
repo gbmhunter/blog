@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2025-03-03
 description: The nRF52 series is a family of SoCs by Nordic Semiconductor. Two of their core features are Bluetooth and low-energy operation.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-07-15
+lastUpdated: 2026-01-26
 tags: [programming, microcontrollers, Nordic, nRF52, Bluetooth, BLE, Bluetooth mesh, Thread, Zigbee, ANT, ARM Cortex-M4, GPIO, drive strength, comparators, COMP, SAADC, NFC, NFCT, Zephyr, shell]
 title: nRF52
 type: page
@@ -128,6 +128,10 @@ int main() {
 <Aside type="tip">
 You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
 </Aside>
+
+### Pull-up/Pull-down Resistors
+
+Every GPIO pin on the nRF52 has configurable internal pull-up and pull-down resistors. Both the pull-up and pull-down resistors have a typical value of 13kΩ, with a min. of 11kΩ and a max. of 15kΩ. The pull-up and pull-down resistors can be enabled or disabled individually per pin.[^nordic-semi-nrf52840-datasheet]
 
 ### Use the NFC Pins
 
@@ -264,6 +268,49 @@ Instead, you need to separate the pins into two groups, and make sure the `MISO`
 };
 ```
 </Aside>
+
+## Pulse Width Modulation (PWM)
+
+The nRF52 MCU series has a pulse width modulation (PWM) peripheral that can be used to generate PWM signals. It can be used to control the brightness of LEDs, the speed of motors, and other applications.
+
+```c
+// Disable PWM0 first
+NRF_PWM0->ENABLE = 0;
+
+// Configure pin routing
+NRF_PWM0->PSEL.OUT[0] = 10;  // P0.10
+NRF_PWM0->PSEL.OUT[1] = 9;   // P0.9
+NRF_PWM0->PSEL.OUT[2] = 0xFFFFFFFF;  // Disconnect channel 2
+NRF_PWM0->PSEL.OUT[3] = 0xFFFFFFFF;  // Disconnect channel 3
+
+// Configure PWM parameters
+NRF_PWM0->PRESCALER = 0;  // 16MHz / 2^0 = 16MHz clock
+NRF_PWM0->COUNTERTOP = 160;  // 16MHz / 160 = 100kHz PWM frequency
+NRF_PWM0->MODE = 0;  // UP counter mode
+NRF_PWM0->DECODER = 0;  // Individual decoding, grouped loading, 16-bit values
+NRF_PWM0->LOOP = 0;  // Loop disabled (continuous)
+
+pwm_buffer[0] = 160;  // P0.10 - 100% duty (full on)
+pwm_buffer[1] = 136;  // P0.9 - 85% duty
+
+// Configure sequence 0
+NRF_PWM0->SEQ[0].PTR = (uint32_t)pwm_buffer;
+NRF_PWM0->SEQ[0].CNT = 2;  // 2 values (P0.10, P0.9)
+NRF_PWM0->SEQ[0].REFRESH = 0;
+NRF_PWM0->SEQ[0].ENDDELAY = 0;
+
+// Enable PWM0
+NRF_PWM0->ENABLE = 1;
+
+// Start PWM sequence
+NRF_PWM0->TASKS_SEQSTART[0] = 1;
+```
+
+### Dithering
+
+The nRF52 PWM peripheral supports temporal dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discreet duty cycle values (on a cycle-by-cycle basis) to give the appearance of a higher resolution PWM. This is achieved by using the sequence feature in the PWM peripheral (which can be used for more than just dithering).
+
+From testing, it appears you can't loop continuously around over a single sequence, you always need to setup and use the two sequence registers. 
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
