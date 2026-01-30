@@ -147,6 +147,54 @@ def generate_dithered_pwm(
         signal.extend(period)
     return np.array(signal)
 
+def plot_pwm_basic_diagram() -> None:
+    """Create a basic PWM diagram suitable for the introduction on the PWM page."""
+    duty_cycle = 0.25
+    num_periods = 3
+    samples_per_period = 200
+    v_high = 1.0
+    v_low = 0.0
+
+    # Build one period: on for duty_cycle, off for (1 - duty_cycle)
+    t_period = np.linspace(0, 1, samples_per_period, endpoint=False)
+    one_period = np.where(t_period < duty_cycle, v_high, v_low)
+    t_full = np.linspace(0, num_periods, num_periods * samples_per_period, endpoint=False)
+    signal = np.tile(one_period, num_periods)
+
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.plot(t_full, signal, color='#2E86AB', linewidth=2)
+    ax.set_ylim(v_low - 0.15, v_high + 0.15)
+    ax.set_xlim(-0.05, num_periods + 0.05)
+    ax.set_xlabel('Time [µs]', fontsize=11)
+    ax.set_ylabel('Voltage [V]', fontsize=11)
+    ax.set_title('Pulse Width Modulation (PWM) Signal', fontsize=12, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+    ax.set_yticks([v_low, v_high])
+    ax.set_yticklabels(['Low', 'High'])
+
+    # Label showing duty cycle
+    ax.text(0.98, 0.95, f'Duty cycle = {duty_cycle:.0%}', transform=ax.transAxes,
+            fontsize=11, ha='right', va='top',
+            bbox=dict(boxstyle='round', facecolor='white', edgecolor='gray', alpha=0.9))
+
+    # Annotate period and on-time for the first period
+    ax.annotate(
+        '', xy=(1, -0.08), xytext=(0, -0.08),
+        arrowprops=dict(arrowstyle='<->', color='black', lw=1.5)
+    )
+    ax.text(0.5, -0.14, 'Period (T)', ha='center', fontsize=10)
+    ax.annotate(
+        '', xy=(duty_cycle, -0.08), xytext=(0, -0.08),
+        arrowprops=dict(arrowstyle='<->', color='#A23B72', lw=1.5)
+    )
+    ax.text(duty_cycle / 2, -0.14, 'On time', ha='center', fontsize=10, color='#A23B72')
+
+    plt.tight_layout()
+    output_path = Path(__file__).parent / 'pwm-basic-diagram.png'
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    print(f'Saved: {output_path}')
+    plt.close()
+
 def plot_pwm_dithering_comparison() -> None:
     """Create a plot comparing standard PWM with dithered PWM."""
     
@@ -231,9 +279,11 @@ def plot_pwm_dithering_comparison() -> None:
 
 def main() -> None:
     """Generate all plots and demonstrations."""
+    # Basic PWM diagram for introduction
+    print("Generating PWM basic diagram...")
+    plot_pwm_basic_diagram()
     # Demonstrate dithering sequence generation
     demonstrate_dithering_sequence_generation()
-    
     # Generate plots
     print("\nGenerating PWM dithering plots...")
     plot_pwm_dithering_comparison()

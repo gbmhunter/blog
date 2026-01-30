@@ -8,6 +8,12 @@ title: Pulse Width Modulation (PWM)
 type: page
 ---
 
+Pulse width modulation (PWM) is a form of digital signal modulation in where the duty cycle of a square wave is varied (modulated) by another signal. It is commonly used to control things such as the brightness of [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/), the speeds of [motors](/electronics/components/motors/), and the output voltage of [switch-mode power supplies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/).
+
+<Image iref="fig-pwm-basic-diagram" src={import('./_assets/pwm-basic-diagram.png')} width="900px">A diagram showing the basic parameters of PWM.</Image>
+
+Almost all [microcontrollers](/programming/microcontrollers/) will have at least one PWM peripheral, which is a hardware block that generates a PWM signal under control of the CPU and firmware.
+
 ## Operating Modes
 
 PWM hardware peripherals may not support every one these modes.
@@ -24,7 +30,7 @@ Centre-aligned PWM is good for motor control as it generates fewer harmonics in 
 
 Some PWM peripherals have a complementary output feature. This is one PWM timer in hardware controls two output pins. One pin is the normal PWM signal, the other is the inverse of this. Complementary outputs are useful for driving H-bridges and other motor control circuits. Usually these peripherals will also support an adjustable programmable dead-time to prevent shoot-through.
 
-<Image src={import('./_assets/diagram-showing-pwm-deadtime-stm32.webp')} width="500px">Diagram showing how deadtime is applied to the standard and complementary PWM signals to prevent shoot-through.</Image>
+<Image src={import('./_assets/diagram-showing-pwm-deadtime-stm32.webp')} width="500px">Diagram showing how dead-time is applied to the standard and complementary PWM signals to prevent shoot-through.</Image>
 
 One example is the STM32 advanced motor control timers which are present in many of the STM32 MCU families including the STM32G series.[^st-an4013-intro-to-timers-for-stm32-mcus]
 
@@ -115,7 +121,7 @@ In this example, I decided to represent the duty cycle as a number of clock cycl
    
 5. Done!
 
-Here's Python code that implements this:
+Below is Python code that generates an arbitrary dithering sequence.
 
 ```python
 from typing import List, Tuple
@@ -182,7 +188,7 @@ print(f"Achieved: {achieved:.4%} = {achieved_clock_cycles:.2f} clock cycles")
 #         Achieved: 23.5938% = 37.75 clock cycles
 ```
 
-As shown in the caution above, you can try different sequence lengths to find the one that gets you closest to your target duty cycle!
+You should be able to port this code to a microcontroller programming language of your choice (C, C++, Rust, e.t.c). I have made no attempt to make it as efficient as possible, and so for high performance applications you may need to optimise it (there is likely more optimum ways to calculate the dithering sequence).
 
 ## A Warning About PWM And Oscilloscopes
 
