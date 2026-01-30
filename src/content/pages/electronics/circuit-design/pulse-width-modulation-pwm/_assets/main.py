@@ -163,7 +163,7 @@ def plot_pwm_basic_diagram() -> None:
 
     fig, ax = plt.subplots(figsize=(10, 4))
     ax.plot(t_full, signal, color='#2E86AB', linewidth=2)
-    ax.set_ylim(v_low - 0.15, v_high + 0.15)
+    ax.set_ylim(v_low - 0.32, v_high + 0.15)
     ax.set_xlim(-0.05, num_periods + 0.05)
     ax.set_xlabel('Time [µs]', fontsize=11)
     ax.set_ylabel('Voltage [V]', fontsize=11)
@@ -177,17 +177,23 @@ def plot_pwm_basic_diagram() -> None:
             fontsize=11, ha='right', va='top',
             bbox=dict(boxstyle='round', facecolor='white', edgecolor='gray', alpha=0.9))
 
-    # Annotate period and on-time for the first period
-    ax.annotate(
-        '', xy=(1, -0.08), xytext=(0, -0.08),
-        arrowprops=dict(arrowstyle='<->', color='black', lw=1.5)
-    )
-    ax.text(0.5, -0.14, 'Period (T)', ha='center', fontsize=10)
+    # Annotate on-time, off-time and period for the first period (on/off time above, period below)
+    # Arrows and labels are spaced so text sits clearly below each arrow
     ax.annotate(
         '', xy=(duty_cycle, -0.08), xytext=(0, -0.08),
         arrowprops=dict(arrowstyle='<->', color='#A23B72', lw=1.5)
     )
-    ax.text(duty_cycle / 2, -0.14, 'On time', ha='center', fontsize=10, color='#A23B72')
+    ax.text(duty_cycle / 2, -0.15, 'On time', ha='center', fontsize=10, color='#A23B72')
+    ax.annotate(
+        '', xy=(1, -0.08), xytext=(duty_cycle, -0.08),
+        arrowprops=dict(arrowstyle='<->', color='#2E86AB', lw=1.5)
+    )
+    ax.text((duty_cycle + 1) / 2, -0.15, 'Off time', ha='center', fontsize=10, color='#2E86AB')
+    ax.annotate(
+        '', xy=(1, -0.20), xytext=(0, -0.20),
+        arrowprops=dict(arrowstyle='<->', color='black', lw=1.5)
+    )
+    ax.text(0.5, -0.27, 'Period (T)', ha='center', fontsize=10)
 
     plt.tight_layout()
     output_path = Path(__file__).parent / 'pwm-basic-diagram.png'
