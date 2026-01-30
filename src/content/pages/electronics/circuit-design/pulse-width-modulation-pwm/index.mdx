@@ -41,14 +41,148 @@ Most PWM peripherals support this by providing a way to pass a sequence of duty 
 A sequence of 2^n values will give you additional resolution of n bits. For example, a sequence of 16 dithered values with give you 4 bits of additional resolution.
 
 <Aside type="caution">
-Increasing the length of the dithering sequence does not always improve the accuracy! It will in general (for random desired duty cycles), but for specific target duty cycles, longer sequences can make it worse! Take the example above again, in where we want to achieve a duty cycle of 52.3%. The dithered sequence of 4 values gives us an average duty cycle of 52.25%. However if we only use a sequence of 3 values, we can actually get closer to the target with a average duty cycle of 52.33%!
+Increasing the length of the dithering sequence does not always improve the accuracy! It will in general (for random desired duty cycles), but for specific target duty cycles, longer sequences can make it worse! Take the example above again, in where we want to achieve a duty cycle of 52.3%. The best we can do with a dithered sequence of 4 values is an average duty cycle of 52.25% (3 at 52%, 1 at 53%). However if we only use a sequence of 3 values, we can actually get closer to the target with a average duty cycle of 52.33% (2 at 52%, 1 at 53%)!
 </Aside>
 
 <Aside type="example">
 You have a PWM peripheral that runs of a 16 MHz clock. You are running the PWM at 100kHz. How many different duty cycle values are possible without any additional dithering, and then how many are possible with a dithering sequence of 16 values?
 
-There are $\dfrac{16 \text{ MHz}}{100 \text{ kHz}} = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering (which might not be enough resolution for your application). With a dithering sequence of 16 values, you can an extra 16 values in-between each of the 160 duty cycle values, giving you $160 * 16 = 2560$ different duty cycle values.
+There are $\dfrac{16 \text{ MHz}}{100 \text{ kHz}} = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering (which might not be enough resolution for your application). With a dithering sequence of 16 values, you effectively multiply the resolution by 16, giving you $160 \times 16 = 2560$ different duty cycle values.
 </Aside>
+
+### Creating a Dithering Sequence
+
+To create a dithering sequence, you need to determine how many periods should be at each of the two adjacent duty cycle values. Here's the algorithm:
+
+1. **Identify the two adjacent duty cycle counts**: If you want a duty cycle of 23.6% and you have 160 clock cycles per PWM period (e.g. a 16 MHz clock feeding a PWM running at 100kHz), then you have a base resolution of $\dfrac{1}{160} = 0.00625$.
+
+    The target duty cycle (in clock cycles) is then $\dfrac{0.236}{0.00625} = 37.76$.
+
+    The lower duty cycle value (in clock cycles) is just the floor of this: $\text{floor}(37.76) = 37$.
+
+    The upper duty cycle value (in clock cycles) is then $37 + 1 = 38$.
+
+<Aside type="note">
+In this example, I decided to represent the duty cycle as a number of clock cycles, rather than as a percentage. Although it doesn't matter which one you use, calculating the clock cycles matches closer to real life in which you will be writing this number directly to a register in the PWM peripheral.
+</Aside>
+
+2. **Calculate the number of upper and lower values in your sequence**: You need $k$ periods at the upper value (38 clock cycles) and $(N - k)$ periods at the lower value (37 clock cycles), where $N$ is the sequence length.
+
+     You can calculate $k$ using the following equation:
+     
+     $$
+     \begin{align}
+     k = \text{round}\left(\dfrac{\text{target} - \text{lower}}{\text{upper} - \text{lower}} \times N\right)
+     \end{align}
+     $$
+
+     So for our example with a sequence length of $N = 16$, we have:
+
+     $$
+     \begin{align}
+     k &= \text{round}\left(\dfrac{37.76 - 37}{38 - 37} \times 16\right) \nonumber \\
+       &= \text{round}(0.76 \times 16) \nonumber \\
+       &= \text{round}(12.16) \nonumber \\
+       &= 12 \nonumber \\
+     \end{align}
+     $$
+     
+     This means we need 12 periods at 38 clock cycles and 4 periods at 37 clock cycles.
+
+4. **Create the sequence**: We now need to create the sequence of duty cycle values. Rather than grouping all the upper values together, we need to distribute them evenly throughout the sequence for the best performance. This is achieved by using a [Bresenham's Line style algorithm](/programming/algorithms-and-data-structures/bresenhams-line-algorithm/).
+
+   The algorithm is as follows:
+   
+   1. Start with a counter set to half the sequence length.
+   2. For each value in the sequence, decrement the counter by the number of upper values.
+   3. If the counter is less than 0, append an upper value to the sequence and increment the counter by the sequence length.
+   4. Otherwise, append a lower value to the sequence.
+   5. Repeat until the sequence is complete.
+
+   So for our example, we start with a counter set to half the sequence length: $\dfrac{16}{2} = 8$.
+   
+   **Iteration 1:** Decrement the counter: $8 - 12 = -4$. Since $-4 < 0$, append upper value (38). Increment counter: $-4 + 16 = 12$. Sequence: `[38]`
+   
+   **Iteration 2:** Decrement the counter: $12 - 12 = 0$. Since $0 \not< 0$, append lower value (37). Sequence: `[38, 37]`
+   
+   **Iteration 3:** Decrement the counter: $0 - 12 = -12$. Since $-12 < 0$, append upper value (38). Increment counter: $-12 + 16 = 4$. Sequence: `[38, 37, 38]`
+   
+   **Iteration 4:** Decrement the counter: $4 - 12 = -8$. Since $-8 < 0$, append upper value (38). Increment counter: $-8 + 16 = 8$. Sequence: `[38, 37, 38, 38]`
+   
+   Continuing this pattern for all 16 iterations gives us the final sequence: `[38, 37, 38, 38, 38, 37, 38, 38, 38, 37, 38, 38, 38, 37, 38, 38]`
+   
+   This sequence has 12 upper values (38) and 4 lower values (37), evenly distributed throughout.
+   
+5. Done!
+
+Here's Python code that implements this:
+
+```python
+from typing import List, Tuple
+import numpy as np
+
+def generate_dithering_sequence(
+    target_duty_cycle: float,
+    base_resolution: float,
+    sequence_length: int
+) -> Tuple[List[float], float]:
+    """
+    Generate a dithering sequence to achieve a target duty cycle.
+    
+    Args:
+        target_duty_cycle: Desired duty cycle as a fraction (e.g., 0.236 for 23.6%)
+        base_resolution: Base PWM resolution (e.g., 1/160 = 0.00625 for 160 clock cycles per period)
+        sequence_length: Length of dithering sequence (e.g., 16)
+    
+    Returns:
+        sequence: List of duty cycle values (as fractions)
+        achieved_average: Actual average duty cycle achieved (as a fraction).
+    """
+    # Find the two adjacent duty cycle values
+    lower_value = np.floor(target_duty_cycle / base_resolution) * base_resolution
+    upper_value = lower_value + base_resolution
+    
+    # Calculate how many of each value we need
+    num_upper = round((target_duty_cycle - lower_value) * sequence_length / base_resolution)
+    num_lower = sequence_length - num_upper
+    
+    # Create sequence with evenly distributed upper values
+    sequence = []
+    error = sequence_length / 2  # Bresenham-like algorithm for even distribution
+    
+    for i in range(sequence_length):
+        error -= num_upper
+        if error < 0:
+            sequence.append(upper_value)
+            error += sequence_length
+        else:
+            sequence.append(lower_value)
+    
+    achieved_average = float(np.mean(sequence))
+    return sequence, achieved_average
+
+# Example: 16 MHz clock, 100 kHz PWM, target 23.6% duty cycle
+clock_freq = 16e6  # 16 MHz
+pwm_freq = 100e3   # 100 kHz
+clocks_per_period = int(clock_freq / pwm_freq)  # 160 clock cycles
+base_resolution = 1.0 / clocks_per_period  # 1/160 = 0.00625
+
+target_duty_cycle = 0.236  # 23.6%
+target_clock_cycles = target_duty_cycle * clocks_per_period  # 37.76 clock cycles
+
+sequence, achieved = generate_dithering_sequence(target_duty_cycle, base_resolution, 16)
+sequence_clock_cycles = [int(x * clocks_per_period) for x in sequence]
+achieved_clock_cycles = achieved * clocks_per_period
+
+print(f"Target: {target_duty_cycle:.1%} = {target_clock_cycles:.2f} clock cycles")
+print(f"Sequence (clock cycles): {sequence_clock_cycles}")
+print(f"Achieved: {achieved:.4%} = {achieved_clock_cycles:.2f} clock cycles")
+# Output: Target: 23.6% = 37.76 clock cycles
+#         Sequence (clock cycles): [38, 37, 38, 38, 38, 37, 38, 38, 38, 37, 38, 38, 38, 37, 38, 38]
+#         Achieved: 23.5938% = 37.75 clock cycles
+```
+
+As shown in the caution above, you can try different sequence lengths to find the one that gets you closest to your target duty cycle!
 
 ## A Warning About PWM And Oscilloscopes
 

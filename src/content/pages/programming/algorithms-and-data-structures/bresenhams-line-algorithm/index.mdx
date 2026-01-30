@@ -1,13 +1,13 @@
 ---
 authors: [gbmhunter]
 date: 2019-01-03
-lastUpdated: 2019-01-03
+lastUpdated: 2026-01-30
 tags: [algorithms, code, software, programming, data structures]
 title: Bresenham's Line Algorithm
 type: page
 ---
 
-Bresenham's line algorithm is way of drawing a line between two points, $A$ and $B$ on a computer screen of pixels. While this is somewhat trivial to do with floating point arithmetic, the key idea in Bresenham's line algorithm is to avoid expensive floating point arithmetic, and use integer maths only. This algorithm was invented at a time when floating-point units (FPUs) in CPUs where a lot rarer than they are today. It still has application in todays world for GPUs and other devices where FPUs are not available.
+Bresenham's line algorithm is way of drawing a line between two points, $A$ and $B$ on a computer screen of pixels. While this is somewhat trivial to do with floating point arithmetic, the key idea in Bresenham's line algorithm is to avoid expensive floating point arithmetic, and use integer maths only. This algorithm was invented at a time when floating-point units (FPUs) in CPUs where a lot rarer than they are today. It still has application in today's world for GPUs and other devices where FPUs are not available.
 
 To simplify the problem, we will look at drawing a line where:
 
@@ -18,7 +18,7 @@ Although we make these simplifications to explain the algorithm, Bresenham's lin
 
 We start at the start pixel, $ x_k,\;y_k $, and we increase $x$ by 1. Then we decide on whether $y$ needs to increase by 1, or remain at $y$. We make this decision based on whether the pixel $ x_k + 1,\;y_k $ or the pixel $ x_k + 1,\;y_k + 1$ is closest to the line.
 
-<Image src={import('./bresenham-selecting-next-pixel.png')} width="700px">Choosing the next pixel when drawing a line. Each grid point is the center of a pixel. The blue dot is the previously selected pixel that has been drawn. We have to choose the next pixel from the two possible orange options.</Image>
+<Image src={import('./_assets/bresenham-selecting-next-pixel.png')} width="700px">Choosing the next pixel when drawing a line. Each grid point is the center of a pixel. The blue dot is the previously selected pixel that has been drawn. We have to choose the next pixel from the two possible orange options.</Image>
 
 So in the example above, we would want to choose the pixel where we increment $y$ by 1, as you can see it is closer to the line. To work this out in code, we keep track of the amount of accumulated error between the line and the chosen pixels (error in the vertical, or y, direction only). If the error becomes larger than 0.5, we know that the $y_{k+1}$ pixel is closer to the line than the $y_k$ pixel, and we increment $y$ by 1.
 
@@ -26,10 +26,10 @@ The below python code shows this by example:
 
 ```python
 def draw_line_tracking_error(x_start, y_start, x_end, y_end):
-    slope = (y_end - y_start)/(x_end - x_start) 
+    slope = (y_end - y_start)/(x_end - x_start)
     error = 0
     curr_y = y_start
-    for x in range(x_start, x_end + 1):       
+    for x in range(x_start, x_end + 1):
         draw_pixel(x, curr_y)
         # Now we just keep track of the error,
         # and if it is > 0.5, increment y
@@ -44,17 +44,29 @@ Note we are still using float-point arithmetic. There are further optimizations 
 
 Remember that the error ($\epsilon$) + the slope ($ \frac{\Delta y}{\Delta x} $) must be less than 0.5 for `y` to not be incremented:
 
-<div>$$\epsilon + \frac{\Delta y}{\Delta x} < 0.5$$</div>
+$$
+\begin{align}
+\epsilon + \frac{\Delta y}{\Delta x} < 0.5
+\end{align}
+$$
 
 Consider the above equation the "check" we will do to see if we increment `y` (the `if` statement). We want to get rid of all possible non-integer values from this equation. The two non-integer values are the slope, and the `0.5`. Let's manipulate this equation to remove them.
 
 First, we multiply everything by $\Delta x $ to get rid of the fraction:
 
-<div>$$\epsilon \Delta x + \Delta y < 0.5 \Delta x$$</div>
+$$
+\begin{align}
+\epsilon \Delta x + \Delta y < 0.5 \Delta x
+\end{align}
+$$
 
 We can then multiply everything by 2 to get rid of last float, the `0.5`:
 
-<div>$$2 \epsilon \Delta x + 2 \Delta y < \Delta x$$</div>
+$$
+\begin{align}
+2 \epsilon \Delta x + 2 \Delta y < \Delta x
+\end{align}
+$$
 
 Tada! The above equation only contains integers. We can implement this check in code as shown below:
 
@@ -70,35 +82,39 @@ def draw_line_bresenham(x_start, y_start, x_end, y_end):
     # Note that the initial error does not start at zero!
     error = 2*dy - dx    
     y = y_start
-    for x in range(x_start, x_end + 1):       
+    for x in range(x_start, x_end + 1):
         print(f'x = {x}, y = {y}')
         
         # If error integer is > 0, we need to increment y and
         # update error
         if error >= 0:
             y += 1
-            error -= 2*dx            
+            error -= 2*dx
         
         error += 2*dy
 ```
 
 If the programming language supports it, you can perform the `*2` multiplication above with a left-shift (a good compiler will probably optimize this for you anyway).
 
-<Image src={import('./bresenham-pixels-shaded.png')} width="700px">A line drawn using Bresenham's line algorithm.</Image>
+<Image src={import('./_assets/bresenham-pixels-shaded.png')} width="700px">A line drawn using Bresenham's line algorithm.</Image>
 
 It also helps to see Bresenham's line algorithm in action on a larger line:
 
-<Image src={import('./bresenham-large-line.png')} width="700px">A line drawn using Bresenham's line algorithm.</Image>
+<Image src={import('./_assets/bresenham-large-line.png')} width="700px">A line drawn using Bresenham's line algorithm.</Image>
 
-For comparison, if we don't care about using floating point arithmetic (and we don't want to use Brehenham's line algorithm), we can just use the simple method below:
+For comparison, if we don't care about using floating point arithmetic (and we don't want to use Bresenham's line algorithm), we can just use the simple method below:
 
 ```python
 def draw_line_simple(x_start, y_start, x_end, y_end):
-    slope = (y_end - y_start)/(x_end - x_start)    
+    slope = (y_end - y_start)/(x_end - x_start)
     
-    for x in range(x_start, x_end + 1):        
+    for x in range(x_start, x_end + 1):
         # Works but is "slow", floating point addition/multiplication on every pixel increment
         y_true = slope*(x - x_start) + x_start
         y_pixel = round(y_true)
         draw_pixel(x, y_pixel)
 ```
+
+## Further Reading
+
+[PWM dithering sequence generation](/electronics/circuit-design/pulse-width-modulation-pwm/#dithering) uses a similar algorithm to generate the duty cycles values for the dithering sequence. This increases the effective resolution of the PWM.

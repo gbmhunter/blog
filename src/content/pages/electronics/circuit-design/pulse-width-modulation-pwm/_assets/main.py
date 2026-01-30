@@ -2,11 +2,127 @@
 Generate plots demonstrating PWM dithering.
 """
 
+from typing import List, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
 
-def generate_pwm_signal(duty_cycle, num_periods, samples_per_period=100):
+def generate_dithering_sequence(
+    target_duty_cycle: float,
+    base_resolution: float,
+    sequence_length: int
+) -> Tuple[List[float], float]:
+    """
+    Generate a dithering sequence to achieve a target duty cycle.
+    
+    Args:
+        target_duty_cycle: The desired duty cycle as a fraction (e.g., 0.523 for 52.3%)
+        base_resolution: The resolution of the base PWM (e.g., 0.01 for 1% steps)
+        sequence_length: The length of the dithering sequence (e.g., 4)
+    
+    Returns:
+        sequence: List of duty cycle values in the dithering sequence
+        achieved_average: The actual average duty cycle achieved
+    """
+    # Find the two adjacent duty cycle values
+    lower_value = np.floor(target_duty_cycle / base_resolution) * base_resolution
+    upper_value = lower_value + base_resolution
+    
+    # Calculate how many of each value we need
+    # We want: (num_lower * lower_value + num_upper * upper_value) / sequence_length ≈ target
+    # Where: num_lower + num_upper = sequence_length
+    # Solving: num_upper = (target - lower_value) * sequence_length / base_resolution
+    num_upper_exact = (target_duty_cycle - lower_value) * sequence_length / base_resolution
+    num_upper = round(num_upper_exact)
+    num_lower = sequence_length - num_upper
+    
+    # Create the sequence with evenly distributed upper values
+    # This gives better performance than clustering them together
+    if num_upper == 0:
+        sequence = [lower_value] * sequence_length
+    elif num_upper == sequence_length:
+        sequence = [upper_value] * sequence_length
+    else:
+        # Distribute upper values evenly using a Bresenham-like algorithm
+        sequence = []
+        error = sequence_length / 2
+        upper_remaining = num_upper
+        
+        for i in range(sequence_length):
+            error -= num_upper
+            if error < 0:
+                sequence.append(upper_value)
+                error += sequence_length
+                upper_remaining -= 1
+            else:
+                sequence.append(lower_value)
+    
+    achieved_average = float(np.mean(sequence))
+    
+    return sequence, achieved_average
+
+def demonstrate_dithering_sequence_generation() -> None:
+    """Demonstrate how to generate dithering sequences using clock cycles."""
+    print("\n" + "="*70)
+    print("PWM DITHERING SEQUENCE GENERATION")
+    print("="*70)
+    
+    # Example 1: 16 MHz clock, 100 kHz PWM, target 23.6% duty cycle
+    print("\nExample 1: Achieve 23.6% duty cycle")
+    print("-" * 70)
+    clock_freq = 16e6  # 16 MHz
+    pwm_freq = 100e3   # 100 kHz
+    clocks_per_period = int(clock_freq / pwm_freq)  # 160 clock cycles
+    base_resolution = 1.0 / clocks_per_period  # 1/160 = 0.00625
+    
+    target_duty_cycle = 0.236  # 23.6%
+    target_clock_cycles = target_duty_cycle * clocks_per_period  # 37.76 clock cycles
+    
+    print(f"Clock frequency: {clock_freq/1e6:.0f} MHz")
+    print(f"PWM frequency: {pwm_freq/1e3:.0f} kHz")
+    print(f"Clock cycles per period: {clocks_per_period}")
+    print(f"Base resolution: 1/{clocks_per_period} = {base_resolution:.6f}")
+    print(f"Target duty cycle: {target_duty_cycle:.1%} = {target_clock_cycles:.2f} clock cycles")
+    
+    for seq_len in [3, 4, 5, 8, 16]:
+        sequence, achieved = generate_dithering_sequence(target_duty_cycle, base_resolution, seq_len)
+        achieved_clock_cycles = achieved * clocks_per_period
+        error_cycles = abs(achieved_clock_cycles - target_clock_cycles)
+        print(f"\nSequence length {seq_len}:")
+        # Convert sequence to clock cycles for display
+        sequence_cycles = [int(x * clocks_per_period) for x in sequence]
+        print(f"  Sequence (clock cycles): {sequence_cycles}")
+        print(f"  Achieved: {achieved:.4%} = {achieved_clock_cycles:.2f} clock cycles")
+        print(f"  Error: {error_cycles:.2f} clock cycles")
+    
+    # Example 2: Different target - 52.3% duty cycle
+    print("\n" + "="*70)
+    print("\nExample 2: Achieve 52.3% duty cycle")
+    print("-" * 70)
+    print(f"Using same PWM setup: {clocks_per_period} clock cycles per period")
+    
+    target_duty_cycle = 0.523  # 52.3%
+    target_clock_cycles = target_duty_cycle * clocks_per_period  # 83.68 clock cycles
+    
+    print(f"Target duty cycle: {target_duty_cycle:.1%} = {target_clock_cycles:.2f} clock cycles")
+    
+    for seq_len in [4, 5, 8, 16]:
+        sequence, achieved = generate_dithering_sequence(target_duty_cycle, base_resolution, seq_len)
+        achieved_clock_cycles = achieved * clocks_per_period
+        error_cycles = abs(achieved_clock_cycles - target_clock_cycles)
+        print(f"\nSequence length {seq_len}:")
+        sequence_cycles = [int(x * clocks_per_period) for x in sequence]
+        print(f"  Sequence (clock cycles): {sequence_cycles}")
+        print(f"  Achieved: {achieved:.4%} = {achieved_clock_cycles:.2f} clock cycles")
+        print(f"  Error: {error_cycles:.2f} clock cycles")
+    
+    print("\n" + "="*70)
+
+def generate_pwm_signal(
+    duty_cycle: float,
+    num_periods: int,
+    samples_per_period: int = 100
+) -> np.ndarray:
     """Generate a PWM signal with given duty cycle."""
     signal = []
     for _ in range(num_periods):
@@ -17,7 +133,10 @@ def generate_pwm_signal(duty_cycle, num_periods, samples_per_period=100):
         signal.extend(period)
     return np.array(signal)
 
-def generate_dithered_pwm(duty_cycles, samples_per_period=100):
+def generate_dithered_pwm(
+    duty_cycles: List[float],
+    samples_per_period: int = 100
+) -> np.ndarray:
     """Generate a dithered PWM signal from a sequence of duty cycles."""
     signal = []
     for duty_cycle in duty_cycles:
@@ -28,7 +147,7 @@ def generate_dithered_pwm(duty_cycles, samples_per_period=100):
         signal.extend(period)
     return np.array(signal)
 
-def plot_pwm_dithering_comparison():
+def plot_pwm_dithering_comparison() -> None:
     """Create a plot comparing standard PWM with dithered PWM."""
     
     # Parameters
@@ -110,9 +229,13 @@ def plot_pwm_dithering_comparison():
     print(f'Saved: {output_path}')
     plt.close()
 
-def main():
-    """Generate all plots."""
-    print("Generating PWM dithering plots...")
+def main() -> None:
+    """Generate all plots and demonstrations."""
+    # Demonstrate dithering sequence generation
+    demonstrate_dithering_sequence_generation()
+    
+    # Generate plots
+    print("\nGenerating PWM dithering plots...")
     plot_pwm_dithering_comparison()
     print("Done!")
 

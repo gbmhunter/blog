@@ -306,11 +306,29 @@ NRF_PWM0->ENABLE = 1;
 NRF_PWM0->TASKS_SEQSTART[0] = 1;
 ```
 
+### Pin Configuration
+
+Before configuring the pin in the PWM peripheral, the Nordic documentation states that you should configure the pin in the GPIO peripheral first.
+
+```c
+// Configure P0.10 as GPIO output, always HIGH
+NRF_P0->PIN_CNF[10] = (1 << 0) | (0 << 1);  // DIR=output, INPUT=disconnect
+NRF_P0->OUTSET = (1 << 10);  // Set P0.10 HIGH
+```
+
+> The idle state of a pin is defined by the OUT register in the GPIO module, to ensure that the pins used by
+> the PWM module are driven correctly. If PWM generation is stopped by triggering a STOP task, the PWM
+> module itself is temporarily disabled or the device temporarily enters System OFF. This configuration must
+> be retained in the GPIO for the selected pins (I/Os) for as long as the PWM module is supposed to be
+> connected to an external PWM circuit.[^nordic-semi-nrf52840-datasheet]
+
 ### Dithering
 
 The nRF52 PWM peripheral supports temporal dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discreet duty cycle values (on a cycle-by-cycle basis) to give the appearance of a higher resolution PWM. This is achieved by using the sequence feature in the PWM peripheral (which can be used for more than just dithering).
 
-From testing, it appears you can't loop continuously around over a single sequence, you always need to setup and use the two sequence registers. 
+From testing, it appears you can't loop continuously around over a single sequence, you always need to setup and use the two sequence registers.
+
+For more information on dithering, see the [PWM dithering](/electronics/circuit-design/pulse-width-modulation-pwm/#dithering) section.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -320,5 +338,4 @@ From testing, it appears you can't loop continuously around over a single sequen
 [^nordic-semi-nrf52840-datasheet]: Nordic Semiconductor (2024, Oct 1). _nRF52840 - Product Specification - v1.11_ [datasheet]. Retrieved 2025-03-03, from https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html.
 [^zephyr-docs-nrf-specific-gpio-flags]: Zephyr Project (2025, Mar 3). _Device Driver APIs > GPIO Driver APIs > nRF-specific GPIO Flags_ [documentation]. Retrieved 2025-03-03, from https://docs.zephyrproject.org/apidoc/latest/group__gpio__interface__nrf.html.
 [^nordic-semi-nrf-connect-sdk-nfc-samples]: Nordic Semiconductor (2025, May 7). _nRF Connect SDK - latest > Samples > NFC samples_ [documentation]. Retrieved 2025-05-08, from https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/nfc.html.
-[^nordic-semi-devzone-unable-to-pull-spi-miso-line-down]: Alex_S@Aperia, 
-Vidar Berg. _Unable to pull SPI MISO line down via device tree configuration_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-01-16, from https://devzone.nordicsemi.com/f/nordic-q-a/113908/unable-to-pull-spi-miso-line-down-via-device-tree-configuration.
+[^nordic-semi-devzone-unable-to-pull-spi-miso-line-down]: Alex_S@Aperia, Vidar Berg. _Unable to pull SPI MISO line down via device tree configuration_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-01-16, from https://devzone.nordicsemi.com/f/nordic-q-a/113908/unable-to-pull-spi-miso-line-down-via-device-tree-configuration.
