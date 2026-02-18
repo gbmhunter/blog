@@ -26,13 +26,19 @@ The nRF52 series supports the following wireless protocols with it's RF radio:[^
 
 The nRF52840 is likely the most popular MCU in the series and is the most advanced variant in terms of features.[^nordic-semi-nrf52840-product-page] It has a 64MHz Cortex-M4 CPU with FPU, 1MB flash and 256kB RAM.
 
-The nRF52 series has good support for using the [Zephyr framework](/programming/operating-systems/zephyr/) to develop the firmware, as is officially backed by Nordic Semiconductor. Zephyr provides a RTOS, peripheral drivers and utility API. There are many project examples and guides available for using Zephyr with the nRF52.
+The nRF52 series has good support for using the [Zephyr framework](/programming/operating-systems/zephyr/) to develop the firmware, and is officially backed by Nordic Semiconductor. Zephyr provides a RTOS, peripheral drivers and utility API. There are many project examples and guides available for using Zephyr with the nRF52. Nordic also provides header files/defines if you want to perform direct register level access to the peripherals.
+
+<Aside type="tip">
+Many of the register level access shown in code samples below uses register defines from `nrf52_bitfields.h`.
+</Aside>
 
 ## GPIO Pins
 
-<IRef iref="fig-nrf52-gpio-port-pin-internal-architecture" /> shows the internal architecture of a GPIO pin on the nRF52 series MCU.
+The nRF52 GPIO peripheral is responsible for managing the input and output of digital signals to and from the GPIO pins.<IRef iref="fig-nrf52-gpio-port-pin-internal-architecture" /> shows the internal architecture of a GPIO pin on the nRF52 series MCU.
 
 <Image iref="fig-nrf52-gpio-port-pin-internal-architecture" src={import('./_assets/nrf52-gpio-port-pin-internal-architecture.webp')} width="1000px">The internal architecture of a GPIO pin on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+Each MCU has one or more GPIO ports, and each port can support up to 32 GPIO pins.
 
 ### GPIO Drive Strength
 
@@ -102,6 +108,57 @@ The GPIO pins can be configured in two different drive strengths, standard drive
   <caption>GPIO pin output current limits.[^nordic-semi-nrf52840-datasheet]</caption>
 </table>
 
+Each pin is configured via the `PIN_CNF` register. There is a `PIN_CNF` register for every pin, available via the `NRF_P[n]` register (where `n` can be in the range 0-31). The following things can be configured:
+
+- Direction (i.e. input or output)
+- Drive strength (this includes settings for wired-and and wired-or buses)
+- Enabling of pull-up/pull-down resistors
+- Pin sensing
+- Input buffer disconnect
+- Analogue input (only supported for specific analogue capable pins)
+
+The `PIN_CNF` registers are retained registers which mean they retain their values in the lowest power mode, System OFF. By default, all pins are configured as inputs but with their input buffer disabled (i.e. they are floating, and you can't read them from firmware without first enabling the input buffer).
+
+### Input Pins
+
+To read the state of pin `P0.4`:
+
+```c
+uint32_t pin_state = (NRF_P0->IN >> 4) & 1UL; // Read the state of P0.4
+```
+
+### Output Pins
+
+To configure a pin as an output, set the direction to output and the input to disconnect:
+
+```c
+NRF_P0->PIN_CNF[10] = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) |
+                      (GPIO_PIN_CNF_INPUT_Disconnect << GPIO_PIN_CNF_INPUT_Pos);
+```
+
+For output pins, write `1` to the `OUTSET` to set the pin high, and write a `1` to the `OUTCLR` to set the pin low.
+
+```c
+NRF_P0->OUTSET = (1 << 10); // Set P0.10 high
+NRF_P0->OUTCLR = (1 << 10); // Set P0.10 low
+```
+
+Or alternatively, you can write to the `OUT` register to set all output pin states in one go:
+
+```c
+NRF_P0->OUT = (1 << 10) | (1 << 13); // Set P0.10 and P0.13 high, everything else low
+```
+
+Be careful as `OUT` sets all pins. If you only want to modify the state of some, you will have to read their current value first and use `|=` or `&=~` to set or clear the bits (a.k.a read-modify-write). `OUTSET` and `OUTCLR` are generally preferred over `OUT` as you don't need to read the current state of other pins to just set or clear a single pin.
+
+<Aside type="note">
+Reading either `OUTSET` or `OUTCLR` will read the contents of the `OUT` register.
+</Aside>
+
+### Sense and Detect
+
+The nRF52 GPIO peripheral supports a configurable sense and detect feature which can be used to latch a register bit when the port peripheral detects a pin in a specific state. The latch is only cleared when the CPU clears it.
+
 When using the [Zephyr framework](/programming/operating-systems/zephyr/) for writing firmware, Zephyr provides nRF specific GPIO flags for controlling the drive strength. The drive strength is individually configurable for both a logic low and a logic high output. This is done with the following macros, which set the upper 8 bits of the `gpio_dt_flags_t` struct:[^zephyr-docs-nrf-specific-gpio-flags]
 
 * `NRF_GPIO_DRIVE_S0`: Logic low, standard drive
@@ -163,6 +220,44 @@ The `SAADC` peripheral cannot generate events when the converted value crosses a
 
 Zephyr's ADC driver can work with the SAADC peripheral. However, only basic functionality is provided by the Zephyr ADC API. For example, the Zephyr ADC API does not allow you to setup repeated sampling based on a timer connected with the DPPI/PPI. If you want more functionality than what the Zephyr ADC API provides, you can use the lower level [nrfx SAADC driver](/programming/operating-systems/zephyr/peripherals/#nrfx-saadc-driver).
 
+A SAADC has a configurable acquisition time, which sets how long the input is connected to the ADC's internal sample and hold capacitor. Inputs with a higher source impedance will require longer acquisition times to let the capacitor fully charge (and settle) to the input voltage. Acquisition times can be set using the `ACQTIME` register. The `TACQ` field in the `CH[n].CONFIG` register sets the acquisition time. The supported acquisition times are:[^nordic-semi-nrf52840-datasheet]
+
+<table>
+  <thead>
+    <tr>
+      <th>TACQ [µs]</th>
+      <th>Maximum Source Resistance [kΩ]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>800</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Comparator (COMP)
 
 The nRF52 series MCUs have a comparator peripheral called `COMP`. Much like [discrete analogue comparator ICs](/electronics/components/comparators/), this peripheral can be used to compare one input voltage (`VIN+`) against another input voltage (`VIN-`), and can generate events (e.g. raise an interrupt) depending on the result (whether it is higher or lower than the other). `VIN+` can be any of the analog input pins `AIN0-AIN7`. `VIN-` can be any of the analog input pins (differential mode) or from `VREF`, which in turn can be derived from `VDD`, `AIN0-AIN7`, or internal 1.2V, 1.8V or 2.4V references. It's internal block diagram is shown in <IRef iref="fig-comparator-diagram-nrf52" />.
@@ -211,7 +306,7 @@ As of May 2025, Nordic has the following firmware code examples relating to NRC:
 
 To enable the internal RC oscillator, add the following to your `prj.conf` file:
 
-```text
+```python
 CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
 ```
 
@@ -273,15 +368,53 @@ Instead, you need to separate the pins into two groups, and make sure the `MISO`
 
 The nRF52 MCU series has a pulse width modulation (PWM) peripheral that can be used to generate PWM signals. It can be used to control the brightness of LEDs, the speed of motors, and other applications.
 
-```c
-// Disable PWM0 first
-NRF_PWM0->ENABLE = 0;
+Firstly, it is recommended to setup the pin routing with `PSEL.OUT[n]` prior to enabling the PWM with the `ENABLE` register. This is to ensure the pins are in the correct state when the PWM is enabled. Each PWM peripheral has 4 output channels which can be routed to any of the GPIO pins.
 
+```c
+NRF_PWM0->PSEL.OUT[0] = 10;  // P0.10
+NRF_PWM0->PSEL.OUT[1] = 0xFFFFFFFF;  // Disconnect channel 1
+NRF_PWM0->PSEL.OUT[2] = 0xFFFFFFFF;  // Disconnect channel 2
+NRF_PWM0->PSEL.OUT[3] = 0xFFFFFFFF;  // Disconnect channel 3
+```
+
+Then enable the peripheral with the `ENABLE` register:
+
+```c
+NRF_PWM0->ENABLE = PWM_ENABLE_ENABLE_Enabled << PWM_ENABLE_ENABLE_Pos;
+```
+
+Then you can set the operating mode of the wave counter with the `MODE` register. The different modes are:
+
+- `Up` (default): The wave counter counts up from 0 to the `COUNTERTOP` value. Generates edge-aligned duty cycles.
+- `UpAndDown`: The wave counter counts up from 0 to the `COUNTERTOP` value, and then down to 0. Generates center-aligned duty cycles.
+
+For example, to set the operating mode to `Up`:
+
+```c
+NRF_PWM0->MODE = (PWM_MODE_UPDOWN_Up << PWM_MODE_UPDOWN_Pos);
+```
+
+Use the `COUNTERTOP` register to set the maximum value the pulse generator counts to. This, along with `PRESCALER` to set the PWM clock frequency, is how you set the PWM frequency. The value written to this has to be in the range [3, 32767]. It defaults to 0x3FF. For example, to set the PWM frequency to 100kHz when the `PRESCALER` is 0:
+
+```c
+NRF_PWM0->COUNTERTOP = 160;  // Assuming PRESCALER is 0, then the PWM frequency is 16MHz / 160 = 100kHz
+```
+
+`COUNTERTOP` can be safely written to at any time. It is sampled following a `START` task.
+
+Use the `SHORTS` register to make certain events automatically trigger tasks. Note that the chaining of sequence 1 after sequence 0 is implicit.
+
+`PTR` is where you write a pointer to the buffer you want the PWM to read out duty cycles (and potentially also PWM period) from. The buffer must be word aligned (i.e. 4 byte aligned since it's a 32-bit architecture). Each element in the buffer is a 16-bit value. The MSB sets the polarity of the output. `0` is `RisingEdge` and `1` is `FallingEdge`. This is in reference to the edge which occurs when the counter equals the duty cycle value in the `PTR` buffer. If you are driving an output that is active high, you probably want to set the MSB to `1` so that the duty cycle sets how long the output is high for in a period, rather than how long it is low for.
+
+```c
 // Configure pin routing
 NRF_PWM0->PSEL.OUT[0] = 10;  // P0.10
 NRF_PWM0->PSEL.OUT[1] = 9;   // P0.9
 NRF_PWM0->PSEL.OUT[2] = 0xFFFFFFFF;  // Disconnect channel 2
 NRF_PWM0->PSEL.OUT[3] = 0xFFFFFFFF;  // Disconnect channel 3
+
+// Enable PWM0
+NRF_PWM0->ENABLE = PWM_ENABLE_ENABLE_Enabled << PWM_ENABLE_ENABLE_Pos;
 
 // Configure PWM parameters
 NRF_PWM0->PRESCALER = 0;  // 16MHz / 2^0 = 16MHz clock
@@ -299,8 +432,7 @@ NRF_PWM0->SEQ[0].CNT = 2;  // 2 values (P0.10, P0.9)
 NRF_PWM0->SEQ[0].REFRESH = 0;
 NRF_PWM0->SEQ[0].ENDDELAY = 0;
 
-// Enable PWM0
-NRF_PWM0->ENABLE = 1;
+
 
 // Start PWM sequence
 NRF_PWM0->TASKS_SEQSTART[0] = 1;
@@ -329,6 +461,67 @@ The nRF52 PWM peripheral supports temporal dithering to artificially increase th
 From testing, it appears you can't loop continuously around over a single sequence, you always need to setup and use the two sequence registers.
 
 For more information on dithering, see the [PWM dithering](/electronics/circuit-design/pulse-width-modulation-pwm/#dithering) section.
+
+### Jumping From Bootloader to Application
+
+Sometimes you may need to initialize a PWM peripheral in the bootloader and leave it running when jumping to the application. This will work as long as you make sure there is not initialization code in the app which resets the peripheral, and also that the buffer you pass to the peripheral (via the `PTR` register) is not overwritten by the application. To prevent the buffer from being overwritten, you typically have to reserve some RAM which is shared between the bootloader and the application and is not part of the bootloader/application heap/stack.
+
+## Timer/Counter (TIMER)
+
+The nRF52 series MCUs have a standard timer/counter peripheral called `TIMER`. This peripheral can be used to generate interrupts and events based on a timer counter compare value. They are useful for generating periodic events (e.g. a system tick) and for measuring time intervals.
+
+Write a `1` to the `TASKS_START` register to start the timer/counter:
+
+```c
+NRF_TIMER0->TASKS_START = 1;
+```
+
+Write a `1` to the `TASKS_STOP` register to stop the timer/counter:
+
+```c
+NRF_TIMER0->TASKS_STOP = 1;
+```
+
+## Watchdog Timer (WDT)
+
+The nRF52 series MCUs have a watchdog timer peripheral called `WDT`. This peripheral can be used to reset the MCU if it becomes unresponsive. WDT always uses a 32.678 kHz clock source. It will automatically enable the internal 32.678 kHz RC oscillator as long as no other 32.678 kHz clock source is generating the 32.678 kHz system clock.
+
+The WDT peripheral does not have an `ENABLE` register like many of the other peripherals.
+
+Here the bare minimum needed to configure and start the WDT:
+
+```c
+NRF_WDT->CRV = 32678*10 - 1; // 10s timeout (32.678kHz WDT clock)
+NRF_WDT->TASKS_START = 1;
+```
+
+Without doing anything more, the WDT will reset the MCU 10 seconds after calling `NRF_WDT->TASKS_START = 1;`.
+
+To prevent the watchdog from resetting the MCU, you need to feed it by writing a special value to the reload request register. The value is `0x6E524635`.
+
+```c
+NRF_WDT->RR[0] = 0x6E524635;
+```
+
+The `RR[0]` register is the only reload request register enabled by default. There are eight in total that can be enabled. The watchdog only reloads it's counter value when all enabled reload request registers have been written to. This enables you to implement a more complex watchdog mechanism by having different threads write to different reload request registers. If any thread fails to perform it's reload request, the watchdog will reset the MCU. For more than 8 threads, you can implement a software watchdog which is responsible for monitoring the threads and writing to the single reload request register if all threads are ok.
+
+The `RREN` register can be used to enable and disable reload request registers:
+
+```c
+NRF_WDT->RREN = (1 << 0) | (1 << 1) | (1 << 2); // Enable reload request registers 0, 1 and 2
+```
+
+The `CONFIG` register can be used to configure whether the WDT is paused in sleep and when the CPU is halted by the debugger. By default the WDT is not paused in sleep and is paused by the debugger.
+
+```c
+NRF_WDT->CONFIG = (1 << 0) | (1 << 1); // Pause in sleep, pause by debugger
+```
+
+The watchdog must be configured before it is started. This means you must setup the `CRV`, `RREN` and `CONFIG` registers as desired before calling `NRF_WDT->TASKS_START = 1;`. After starting the watchdog, these configuration registers cannot be changed (this is to prevent the watchdog from accidentally being disabled by malformed code that just happens to write to those memory addresses). The only way to reconfigure a watchdog once started is to reset. The reset source must be a watchdog reset, pin reset, brownout reset or power on reset. CPU lockup, soft reset (a software reset -- setting the `SYSRESETREQ` bit of the application interrupt and reset control register (AIRCR register)) and wakeup from System OFF mode do not reset the watchdog.
+
+<Image src={import('./_assets/nrf52-wdt-reset-sources.webp')} width="800px">The reset sources of the WDT peripheral on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+You can use the `INTENSET` register to enable the `TIMEOUT` interrupt. This interrupt is triggered when the watchdog timer expires. If the timeout event is enabled, the WDT peripheral delays the MCU reset by two 32.678 kHz clock cycles to give you a small window of time to react to the event in firmware before the reset. It appears that unlike the main configuration registers, the interrupt can be configured after the watchdog has started (which make sense as you cannot disable the watchdog by enabling the interrupt -- only delay the reset by a small amount).
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

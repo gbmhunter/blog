@@ -1335,6 +1335,16 @@ If tring to print a float using `%f` in any printf style functions (or log macro
 CONFIG_FPU=y # Required for printing floating point numbers
 ```
 
+### too few arguments in invocation of macro "Z_FOR_LOOP_1" 
+
+With certain older versions of Zephyr, you might get the following IntelliSense error when using macros such as `LOG_INF()` with only one argument (e.g. `LOG_INF("Hello, world!")`):
+
+```text
+too few arguments in invocation of macro "Z_FOR_LOOP_1" 
+```
+
+This is a known issue and has been fixed in newer versions of Zephyr. It builds fine, but IntelliSense (e.g. VS Code with the Cpp Tools Extension Pack) gets confused and gives you red squiggles under the macros. As far as I know there is no workaround except to update to newer versions of Zephyr.[^github-zephyr-too-few-arguments-in-invocation-of-macro]
+
 ## Fatal Errors
 
 Zephyr supports GCC stack canaries by adding the following to your `prj.conf` file:
@@ -1426,3 +1436,4 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 [^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
 [^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
 [^zephyr-docs-atomic-services]: Zephyr (2024, Jan 8). _Docs / Latest » Kernel » Kernel Services » Atomic Services_ [documentation]. Retrieved 2025-07-01, from https://docs.zephyrproject.org/latest/kernel/services/other/atomic.html.
+[^github-zephyr-too-few-arguments-in-invocation-of-macro]: GitHub. _zephyrproject-rtos/zephyr: too few arguments in invocation of macro "Z_FOR_LOOP_1" #62460_ [issue]. Retrieved 2026-02-18, from https://github.com/zephyrproject-rtos/zephyr/issues/62460.

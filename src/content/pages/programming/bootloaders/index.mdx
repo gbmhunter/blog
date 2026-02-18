@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2015-01-09
 description: A bootloader is a program in a computer or microcontroller which runs before the main application. It is typically responsible for configuring basic hardware, booting the main application and also performing application updates.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-08-16
-tags: [bootloaders, MCUboot Zephyr, firmware, microcontroller, memory, updates]
+lastUpdated: 2026-02-10
+tags: [bootloaders, MCUboot Zephyr, firmware, microcontroller, memory, updates, DFU]
 title: Bootloaders
 type: page
 ---
@@ -13,9 +13,10 @@ type: page
 
 A _bootloader_ is a program in a computers memory that runs before the main application. In an embedded context, it is typically responsible for:
 
-* Configuring up basic hardware (most of the hardware configuration is left to the main application, the bootloader would typically just configure the clocks it needs and perhaps the watchdog)
-* Loading the main app into memory
-* Executing the main app (typically a "jump" instruction which goes to a predefined memory address)
+* Configuring basic hardware (most of the hardware configuration is left to the main application, the bootloader would typically just configure the clocks it needs and perhaps the watchdog)
+* Loading the main app into memory if not already in the correct place for execution (e.g. from external flash into main memory)
+* Verifying the integrity of the main app (e.g. using a checksum or hash)
+* Executing the main app (typically by disabling interrupts and then executing a "jump" instruction which goes to a predefined memory address)
 * Updating the main app (this is optional, and if this functionality is required, it may be included in the bootloader or in the application depending on the chosen topology).
 
 They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include UART, RS-232, I2C, CAN, Ethernet, WiFi or Bluetooth. 
@@ -76,6 +77,16 @@ TODO: Add info here.
 
 A golden image is a firmware application with minimal support for firmware updating. If updating over-the-air (OTA), than this image must include basic wireless comms support. It is usually stored either in external flash or in a protected area of the microcontrollers internal memory. It is loaded by the bootloader if the main application is faulty, and in that sense, it is a backup application which is guaranteed to work.
 
+## Overwriting Bootloaders
+
+Typically, you design a bootloader and the start of a project and plan to never have to update it. But sometimes plans change (or bugs are found) and you will need to update the bootloader. You can usually do this by bootloading on a version of the application which includes code to update the bootloader (e.g. write to the bootloader's memory space in flash to update it). You have to be careful when doing this, as if the bootloader update process gets interrupted or corrupted for any reason, you generally end up bricking your device.
+
+You can bundle the bootloader code you want to write inside the application. In C/C++, this can be done by using 
+
+## Enabling Watchdogs
+
+It is good practise to enable the hardware watchdog as soon as possible in the MCU boot process, which means early in the bootloader. If you wait until the application starts before enabling the watchdog, you might get occasionally stuck in the bootloader with no automatic ability to reset. When passing of control from the bootloader to the application, the watchdog remains active. Design your timeouts so that it gives the application enough time to initialize and start feeding the watchdog so you don't inadvertently reset during the transition process. Luckily, jumping to the application is usually quick, as it typically involves disabling interrupts and then executing a "jump" instruction to the start of the application.
+
 ## Zynq 7000 Boot Sequence
 
 BootROM is the first thing that executes. BootROM runs on the first A9 processor core on the Zynq. The second A9 executes a "wait for event" (WFE) instruction.[^amd-bootgen-user-guide]
@@ -93,9 +104,9 @@ The BootROM expects the boot images to be in a specific format as defined by AMD
 
 Confusingly, AMD uses an "image" to refer to two different things. A "boot image" is the entire structure defined above. This "boot image" can contain multiple images, which are defined as pieces of data that have been extracted by Bootgen from files (e.g. the ELF files, bitstream, data files) when creating the boot image. For example, the FSBL is an image, as is the main application[^amd-bootgen-user-guide]. Each image inside the overall boot image can contain one or more partitions. One use case for this is because an ELF file can contain multiple loadable sections -- each one of these sections becomes a partition.
 
-<Image src={import('./_assets/zynq-7000-boot-image-layout.webp')} width="700px">The layout of a boot image that would be typically written to QSPI flash connected to a Zynq 7000 SoC. The Zynq 7000 BootROM knows how to read this and load the FSBL[^amd-bootgen-user-guide].</Image>
+<Image src={import('./_assets/zynq-7000-boot-image-layout.webp')} width="700px">The layout of a boot image that would be typically written to QSPI flash connected to a Zynq 7000 SoC. The Zynq 7000 BootROM knows how to read this and load the FSBL.[^amd-bootgen-user-guide]</Image>
 
-There is a method for the FSBL (or other applications running post-BootROM) to make the BootROM boot a different boot image. This is done by the FSBL writing to `devcfg.MULTIBOOT_ADDR` and then performing a software system reset[^amd-zynq-7000-trm]. The is useful for example if the FSBL detects that the main application is corrupt and there is a secondary/backup boot image available (or rollback to a previously stable version).
+There is a method for the FSBL (or other applications running post-BootROM) to make the BootROM boot a different boot image. This is done by the FSBL writing to `devcfg.MULTIBOOT_ADDR` and then performing a software system reset.[^amd-zynq-7000-trm] The is useful for example if the FSBL detects that the main application is corrupt and there is a secondary/backup boot image available (or rollback to a previously stable version).
 
 ## Bootloader Libraries
 

@@ -14,6 +14,12 @@ Pulse width modulation (PWM) is a form of digital signal modulation in where the
 
 Almost all [microcontrollers](/programming/microcontrollers/) will have at least one PWM peripheral, which is a hardware block that generates a PWM signal under control of the CPU and firmware.
 
+## Frequency and Duty Cycle
+
+The frequency of the PWM signal is the number of complete cycles per second. This is normally controlled by a register in the PWM peripheral. You write to the register and this sets the number of PWM clock cycles per period (when the clock counter reaches the value, the counter resets back to 0).
+
+The duty cycle is the percentage of the time the signal is on (active) compared to the total period of the signal. Again, it is usually controlled by a register. The peripheral compares the clock counter value with this value, and when they are equal the output is toggled. The output is reset back to the default state at the start of the next period, beginning the cycle again.
+
 ## Operating Modes
 
 PWM hardware peripherals may not support every one these modes.
