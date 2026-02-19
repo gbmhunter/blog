@@ -222,14 +222,13 @@ $$
 
 This form of the equation can be useful to calculate the delay (aka the time $t$), that the RC circuit will provide before something happens.
 
-### Building A VDAC From An ADC And Low-pass RC Filter
+### Building A VDAC From An PWM Signal And Low-pass RC Filter
 
 **Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a [PWM signal](/electronics/circuit-design/pulse-width-modulation-pwm).** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
 
 ### Low-Pass LC Filter
 
 The basic low-pass LC filter consists of a single inductor and capacitor.
-
 
 <Image src={import('./_assets/low-pass-lc-filter-schematic.svg')} width="550">A basic schematic of a low-pass LC filter.</Image>
 

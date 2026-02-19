@@ -196,6 +196,12 @@ print(f"Achieved: {achieved:.4%} = {achieved_clock_cycles:.2f} clock cycles")
 
 You should be able to port this code to a microcontroller programming language of your choice (C, C++, Rust, e.t.c). I have made no attempt to make it as efficient as possible, and so for high performance applications you may need to optimise it (there is likely more optimum ways to calculate the dithering sequence).
 
+## Creating a DAC From a PWM Signal
+
+You can create rudimentary digital-to-analogue converters (DACs) using a PWM peripheral and a [low-pass analogue filter](/electronics/circuit-design/analogue-filters/) (e.g. a low-pass RC filter). This is because the low-pass filter will produce the average voltage of the PWM signal (provided the cut-off frequency is much lower than the PWM frequency), and you can use the duty cycle to directly control the average voltage linearly from 0V to the supply voltage.
+
+This can be a useful trick when you are running short on true DAC peripherals on your microcontroller. You can also use a PWM peripheral to directly communicate an analogue value to a signal analyzer or oscilloscope. I have configured a PWM peripheral to output a duty cycle which was always 10x a measured voltage. For example, if the measured voltage was 1.23V, the PWM duty cycle would be set to 12.3%. I then connected this PWM output to a Saleae logic analyzer which was able to give me instant duty cycle readout at any point in the waveform (therefore instantly telling me the voltage without any complex mental maths). This is a great alternative to debug logs over a serial port for high speed measurements.
+
 ## A Warning About PWM And Oscilloscopes
 
 When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
