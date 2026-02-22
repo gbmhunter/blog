@@ -470,17 +470,25 @@ Sometimes you may need to initialize a PWM peripheral in the bootloader and leav
 
 The nRF52 series MCUs have a standard timer/counter peripheral called `TIMER`. This peripheral can be used to generate interrupts and events based on a timer counter compare value. They are useful for generating periodic events (e.g. a system tick) and for measuring time intervals.
 
-Write a `1` to the `TASKS_START` register to start the timer/counter:
+<Image src={import('./_assets/nrf52-timer-peripheral-diagram.webp')} width="500px">The internal block diagram of the TIMER peripheral on the nRF52 series MCU.[^nordic-semi-nrf52840-datasheet]</Image>
+
+Unlike peripherals such as the `PWM`, the `TIMER` does not have an `ENABLE` register. Write a `1` to the `TASKS_START` register to start the timer/counter:
 
 ```c
 NRF_TIMER0->TASKS_START = 1;
 ```
 
-Write a `1` to the `TASKS_STOP` register to stop the timer/counter:
+Write a `1` to the `TASKS_STOP` register to stop the timer/counter (but make sure to note the errata below!):
 
 ```c
 NRF_TIMER0->TASKS_STOP = 1;
 ```
+
+<Aside type="note">
+The `TIMER` has an errata in where `TASKS_STOP` leads to increased current consumption (in my case it was about 6uA more than expected). The errata recommends to call `TASKS_SHUTDOWN` after `TASKS_STOP` or in replacement to it to avoid the increased current consumption. It's interesting to note that `TASKS_SHUTDOWN` is listed as deprecated in the nRF52 MCU datasheets.[^nordic-semi-nrf52832-errata]
+
+<Image src={import('./_assets/timer-errata-high-current-consumption-when-using-timer-stop-task-only.webp')} width="500px">The errata for the `TIMER` peripheral on the nRF52 series MCU.[^nordic-semi-nrf52832-errata]</Image>
+</Aside>
 
 ## Watchdog Timer (WDT)
 
@@ -532,3 +540,4 @@ You can use the `INTENSET` register to enable the `TIMEOUT` interrupt. This inte
 [^zephyr-docs-nrf-specific-gpio-flags]: Zephyr Project (2025, Mar 3). _Device Driver APIs > GPIO Driver APIs > nRF-specific GPIO Flags_ [documentation]. Retrieved 2025-03-03, from https://docs.zephyrproject.org/apidoc/latest/group__gpio__interface__nrf.html.
 [^nordic-semi-nrf-connect-sdk-nfc-samples]: Nordic Semiconductor (2025, May 7). _nRF Connect SDK - latest > Samples > NFC samples_ [documentation]. Retrieved 2025-05-08, from https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/nfc.html.
 [^nordic-semi-devzone-unable-to-pull-spi-miso-line-down]: Alex_S@Aperia, Vidar Berg. _Unable to pull SPI MISO line down via device tree configuration_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-01-16, from https://devzone.nordicsemi.com/f/nordic-q-a/113908/unable-to-pull-spi-miso-line-down-via-device-tree-configuration.
+[^nordic-semi-nrf52832-errata]: Nordic Semiconductor (2024, Mar 4). _nRF52832 Revision 3 Errata_. Retrieved 2026-02-20, from https://docs.nordicsemi.com/bundle/errata_nRF52832_Rev3/page/ERR/nRF52832/Rev3/latest/err_832.html.
