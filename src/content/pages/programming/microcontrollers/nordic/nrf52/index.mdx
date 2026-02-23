@@ -119,33 +119,6 @@ Each pin is configured via the `PIN_CNF` register. There is a `PIN_CNF` register
 
 The `PIN_CNF` registers are retained registers which mean they retain their values in the lowest power mode, System OFF. By default, all pins are configured as inputs but with their input buffer disabled (i.e. they are floating, and you can't read them from firmware without first enabling the input buffer).
 
-When using the [Zephyr framework](/programming/operating-systems/zephyr/) for writing firmware, Zephyr provides nRF specific GPIO flags for controlling the drive strength. The drive strength is individually configurable for both a logic low and a logic high output. This is done with the following macros, which set the upper 8 bits of the `gpio_dt_flags_t` struct:[^zephyr-docs-nrf-specific-gpio-flags]
-
-* `NRF_GPIO_DRIVE_S0`: Logic low, standard drive
-* `NRF_GPIO_DRIVE_H0`: Logic low, high drive
-* `NRF_GPIO_DRIVE_S1`: Logic high, standard drive
-* `NRF_GPIO_DRIVE_H1`: Logic high, high drive
-
-These flags are defined in the Zephyr repo under `zephyr/include/zephyr/dt-bindings/gpio/nordic-nrf-gpio.h`. For example, the following code is used to configure a GPIO pin with high drive in both directions using the `gpio_pin_configure_dt()` function:
-
-```c
-#include <zephyr/drivers/gpio.h>
-#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h> // Needed for the NRF_GPIO_DRIVE_H0H1 macro
-
-// Update the PATH according to your .dts file(s)
-const struct gpio_dt_spec l_myGpio = GPIO_DT_SPEC_GET(DT_PATH(outputs, myGpio), gpios);
-
-int main() {
-    // Configure the GPIO pin as output, defaulting to low, with high drive in both directions. Other flags can be ORed in here too as needed.
-    int intRc = gpio_pin_configure_dt(&l_myGpio, GPIO_OUTPUT_INACTIVE | NRF_GPIO_DRIVE_H0H1);
-    __ASSERT_NO_MSG(intRc == 0);
-}
-```
-
-<Aside type="tip">
-You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan of the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
-</Aside>
-
 ### Input Pins
 
 To read the state of pin `P0.4`:
@@ -180,6 +153,33 @@ Be careful as `OUT` sets all pins. If you only want to modify the state of some,
 
 <Aside type="note">
 Reading either `OUTSET` or `OUTCLR` will read the contents of the `OUT` register.
+</Aside>
+
+When using the [Zephyr framework](/programming/operating-systems/zephyr/) for writing firmware, Zephyr provides nRF specific GPIO flags for controlling the drive strength. The drive strength is individually configurable for both a logic low and a logic high output. This is done with the following macros, which set the upper 8 bits of the `gpio_dt_flags_t` struct:[^zephyr-docs-nrf-specific-gpio-flags]
+
+* `NRF_GPIO_DRIVE_S0`: Logic low, standard drive
+* `NRF_GPIO_DRIVE_H0`: Logic low, high drive
+* `NRF_GPIO_DRIVE_S1`: Logic high, standard drive
+* `NRF_GPIO_DRIVE_H1`: Logic high, high drive
+
+These flags are defined in the Zephyr repo under `zephyr/include/zephyr/dt-bindings/gpio/nordic-nrf-gpio.h`. For example, the following code is used to configure a GPIO pin with high drive in both directions using the `gpio_pin_configure_dt()` function:
+
+```c
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h> // Needed for the NRF_GPIO_DRIVE_H0H1 macro
+
+// Update the PATH according to your .dts file(s)
+const struct gpio_dt_spec l_myGpio = GPIO_DT_SPEC_GET(DT_PATH(outputs, myGpio), gpios);
+
+int main() {
+    // Configure the GPIO pin as output, defaulting to low, with high drive in both directions. Other flags can be ORed in here too as needed.
+    int intRc = gpio_pin_configure_dt(&l_myGpio, GPIO_OUTPUT_INACTIVE | NRF_GPIO_DRIVE_H0H1);
+    __ASSERT_NO_MSG(intRc == 0);
+}
+```
+
+<Aside type="tip">
+You can alternatively configure the drive strength in the `.dts` file directly. But I am not a fan of the Zephyr device tree and prefer to keep as much of the configuration in the C/C++ code instead.
 </Aside>
 
 ### Sense and Detect
