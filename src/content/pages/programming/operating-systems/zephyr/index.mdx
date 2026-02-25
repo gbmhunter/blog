@@ -1310,7 +1310,7 @@ west zephyr-export
 
 ### ModuleNotFoundError: No module named 'elftools'
 
-The error:
+The no `elftools` module error is a common error that can occur:
 
 ```text
 Traceback (most recent call last):
@@ -1321,10 +1321,16 @@ ModuleNotFoundError: No module named 'elftools'
 
 <Image src={import('./_assets/error-no-module-named-elftools.png')} width="700px">Screenshot of the error \"No module named 'elftools'\".</Image>
 
-can occur if you have forgotten to install the additional Zephyr dependencies into your Python environment (which can happen if you delete the existing virtual environment and recreate it). This can be fixed by running the following command, assuming you have activated the Python virtual environment if relevant:
+This can occur if you have forgotten to install the additional Zephyr dependencies into your Python environment (which can happen if you delete the existing virtual environment and recreate it). This can be fixed by running the following command, assuming you have activated the Python virtual environment if relevant:
 
 ```shell
 pip install -r ./zephyr/scripts/requirements.txt
+```
+
+UPDATE: The `west` command (as of `v4.1.0`) can now install the additional Zephyr dependencies for you. Run the following command from the west workspace directory:
+
+```bash
+west packages pip --install
 ```
 
 ### Printing Floats Results in *float*
