@@ -59,6 +59,21 @@ The [Zephyr OS](/programming/operating-systems/zephyr/) combined with [Nordic ch
 
 As mentioned above, for low power operation you want to spend as much time sleeping as possible. Another way to achieve that goal is to tell your [compiler](/programming/compilers/) to optimize for speed rather than code size. In [GCC](/programming/compilers/gcc/) and other similar compilers this is done by using the `-O3` flag when compiling.
 
+## Executing Code from RAM Instead of Flash
+
+Program code it typically executed from flash memory. However, since RAM is just a different memory address, there is generally no reason why code cannot be executed from RAM, as long as you copy the code to RAM on startup and setup the linker correctly. Executing code from RAM can provide two avenues for power savings:
+
+- Executing from RAM is typically faster than flash, reducing the time the MCU is awake before it sleeps again.
+- Executing from RAM can allow flash memory to be disabled (if your MCU supports this) to save power.
+
+These options are not mutually exclusive, i.e. you may execute from RAM and see benefits from faster execution AND lower power consumption from the flash controller.
+
+I have heard of this technique being used on ST Microelectronics STM32U5 and WCH MCUs.
+
+<Aside type="tip">
+Executing from RAM may also be useful in bootloaders to update flash -- you can't execute from code that you're in the process of modifying!
+</Aside>
+
 ## Make Sure Digital Inputs Are In Defined States
 
 Indeterminate (floating or otherwise not either high are low) voltages on digital [CMOS](/electronics/circuit-design/logic-families/) inputs that are connected to the internal input buffers can cause the input circuitry to draw significant current. This is because a voltage in the middle of the range partially turns on both the N-channel and P-channel MOSFETs that form the input buffer. This causes shoot-through current to flow directly from VCC to GND.
