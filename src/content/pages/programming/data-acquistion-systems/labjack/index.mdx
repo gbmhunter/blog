@@ -26,6 +26,40 @@ LabJack provides drivers for a variety of operating systems and CPU architecture
 
 LabJack also maintains the Python library called [LabJackPython](https://support.labjack.com/docs/labjackpython-for-ud-exodriver-u12-windows-mac-lin). It is cross-platform and runs on Windows, Linux and macOS. It uses the UD and U12 drivers on Windows, and the Exodriver on Linux and macOS. It doesn't support the T4 and T7 which require the LJM library. For that, use the [Python_LJM library](https://support.labjack.com/docs/python-for-ljm-windows-mac-linux).
 
+For documentation on the LabJackPython, it is recommended that you read the docstrings in the source code.
+
+## LabJack U3
+
+The LabJack U3 comes in a low voltage (U3-LV) and high voltage (U3-HV) version. This refers to the analogue input voltage range. The U3-LV has a $0-2.4V$ or $0-3.6V$ analogue input voltage range, while the U3-HV has a $\pm 10V$ or $- 10 / +20V$ analogue input voltage range.[^labjack-u3-product-page]
+
+All of the digital I/O pins on the U3 have 3 possible states: input, output-high and output-low. When configured as an input, there is always a $100k\Omega$ pull-up resistor connected to 3.3V. When configured as an output, the pin is either connected to 3.3V or GND through a small series resistor.
+
+<Aside type="tip">
+Because of the $100k\Omega$ pull-up resistor, it can be hard to tell the difference between a input and a high output signal (especially when the input is not being driven by an external source). One way to tell the difference when debugging is to connect another $100k\Omega$ resistor to the input pin and ground. If the pin is an input, the voltage should drop to about half of 3.3V (1.65V). If the pin is a high output, the voltage should stay at 3.3V.
+</Aside>
+
+Here is a Python example showing basic control of a U3 using the `LabJackPython` library.
+
+```python
+import u3
+
+# Create a U3 device object. By default, autoOpen=True which means the first U3 will be found and opened automatically.
+device = u3.U3()
+# Set pin high. NOTE: This also sets the pin as an output
+# EIO0 is pin 8. Mapping is:
+# 0 - 7   = FIO0 - FIO7
+# 8 - 15  = EIO0 - EIO7
+# 16 - 19 = CIO0 - CIO3
+device.setDOState(8, 1)
+```
+
+If you want to open a specific U3, you can pass `autoOpen=False` to the `U3()` constructor and then pass in the serial number to `open()`:
+
+```python
+device = u3.U3(autoOpen = False)
+device.open(serial = 320095789) # Open specific U3
+```
+
 ## LabJack U6
 
 The LabJack U6 has 20 digital I/O. The pins MIO0-MIO2 are multiplexed with the CIO0-CIO2 pins[^labjack-u6-ds-digital-io].
@@ -47,3 +81,4 @@ Using pin numbers 20-22 in the API will not work. Instead, you have to use the c
 
 [^labjack-u6-ds-digital-io]: LabJack. _Support and Documentation / Datasheets / U6 Datasheet / 2 - Hardware Description [U6 Datasheet]_. Retrieved 2024-08-30, from https://support.labjack.com/docs/2-8-digital-i-o-u6-datasheet.
 [^labjack-exodriver-downloads]: LabJack. _Exodriver Downloads (for UD-series Linux and macOS support)_. Retrieved 2025-11-05, from https://support.labjack.com/docs/exodriver-downloads-for-ud-series-linux-and-macos-.
+[^labjack-u3-product-page]: LabJack. _LabJack U3-HV Product Page_. Retrieved 2026-03-11, from https://labjack.com/products/u3-hv.

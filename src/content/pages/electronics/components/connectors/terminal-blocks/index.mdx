@@ -116,15 +116,57 @@ Ceramic (also called _porcelain_) terminal blocks were used before plastic ones 
 
 <Image src={import('./_assets/20150109-ceramic-terminal-block.jpg')} width="400">A ceramic terminal block.</Image>
 
-## DIN Mount Terminal Blocks
+## DIN Mounted Terminal Blocks
 
 DIN mount terminal blocks are terminal blocks that are designed to be mounted onto a DIN rail. They are typically used in industrial applications such as in control panels/cabinets and switch boards.
+
+### Special Earth Terminal Blocks
+
+There are special earth terminal blocks available that also connect the terminals to the DIN rail. <IRef iref="fig-earth-din-mounted-terminal-block-with-din-connection-highlighted" /> shows how the connection to the DIN rail is made. This normally means don't have to earth the DIN rail mounting plate with a separate lug which is saves time and space.
+
+<div style="display: flex; gap: 10px; justify-content: center;">
+<Image src={import('./_assets/phoenix-contact-3209594-clipline-pt-earth-terminal-block.webp')} width="300px">A Phoenix Contact 3209594 from the CLIPLINE PT series. It accepts four wires (shown with one wire inserted, ferrule crimped to wire end).</Image>
+<Image iref="fig-earth-din-mounted-terminal-block-with-din-connection-highlighted" src={import('./_assets/earth-din-mounted-terminal-block-with-din-connection-highlighted.webp')} width="300px">A special DIN rail mounted earth terminal block with the earth connection to the rail highlighted. This is the Phoenix Contact 3209594 from the CLIPLINE PT series. It accepts four wires.</Image>
+</div>
 
 ### Examples
 
 #### Phoenix Contact CLIPLINE Series
 
-- CLIPLINE PT: Terminals insert in the top of the terminal block.
-- CLIPLINE PTV: Terminals insert in the sides of the terminal block.
+The Phoenix Contact CLIPLINE series is a popular series of DIN mount terminal blocks stocked by DigiKey and others.
 
-- 3209510: 12-26 AWG black feed thru terminal block.
+- CLIPLINE PT: Terminals insert in the top of the terminal block. Useful for horizontally space constrained applications. Not so tidy for wiring compared to terminals that exit out the sides, as the wires can't directly go into trunking.
+- CLIPLINE PTV: Terminals insert in the sides of the terminal block. Tidy compared to vertical entry as the wires can directly go into trunking.
+
+Example products from the CLIPLINE series:
+
+<table>
+  <thead>
+    <tr>
+      <th>Part Number</th>
+      <th>Image</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>3209510</td>
+        <td></td>
+        <td>12-26 AWG black feed thru terminal block.</td>
+      </tr>
+      <tr>
+        <td>3209594</td>
+        <td><Image src={import('./_assets/phoenix-contact-3209594-clipline-pt-earth-terminal-block.webp')} width="100px"/></td>
+        <td>12-26 AWG earth terminal block. 4 top entry terminals. Electrically connects terminals to the DIN rail.</td>
+      </tr>
+      <tr>
+        <td>3022218 (CLIPFIX 35)</td>
+        <td><Image src={import('./_assets/phoenix-contact-3022218-clipfix-35-end-bracket-photo.webp')} width="100px"/></td>
+        <td>End brackets for preventing things from sliding down the DIN rail. They grip firmly onto the rail with small metal grippers embedded into the plastic bracket. According to DigiKey these are from the PLUSCON family but work with the CLIPLINE series.</td>
+      </tr>
+  </tbody>
+</table>
+
+#### Conta-Clip Terminals
+
+I was not as happy with Conta-Clip terminals compared to the Phoenix Contact CLIPLINE series. It was harder to push ferruled wires into the spring-based terminal blocks, and the comb connectors were not as tidy. 
