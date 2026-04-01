@@ -1,0 +1,75 @@
+---
+authors: [gbmhunter]
+date: 2026-04-01
+description: PFF, PSF and PSS are Allegro MicroSystems package names used for certain through-hole integrated current sensors.
+image: ./_assets/cover-image.webp
+lastUpdated: 2026-04-01
+tags: [component packages, PCB design, PFF, PSF, leadform, Allegro, current sensor, CB package, through-hole]
+title: PFF, PSF and PSS Leadform Component Packages
+type: page
+---
+
+`PFF`, `PSF` and `PSS` are package names used by [Allegro MicroSystems](https://www.allegromicro.com/) for certain **through-hole** integrated current sensors. Their formal names are `CB-PFF`, `CB-PSF` and `CB-PSS` respectively. This package features large, low-resistance leads for the sensed current path, making them suitable for sensing high currents. They all share the same body dimensions, but have differing lead styles.
+
+<Image src={import('./_assets/pff-psf-pss-leadform-package-photos.webp')} width="500px">Photos of the PFF, PSF and PSS leadform packages.[^allegro-acs758xcb-ds]</Image>
+
+The letters appear as a **suffix in the ordering part number** (for example devices in the ACS756 family use strings such as `...-PFF-T` or `...-PSF-T`[^allegro-acs756-ds]).
+
+| Code | Signal leads | Primary (current) terminals |
+|------|----------------|---------------------------|
+| **PFF** | Formed (bent) | Formed (bent) |
+| **PSF** | Formed (bent) | Straight |
+| **PSS** | Straight | Straight |
+
+## Choosing Between PFF, PSF and PSS
+
+* **PFF** — Use when you want **formed** leads on both the low-power signal pins and the **IP+ / IP−** primary path so the whole device drops into a through-hole footprint with a consistent lead style.
+* **PSF** — Use when you want **formed** signal leads for the PCB but **straight** primary terminals—for example to mate with a bus bar, weld, or other mechanical arrangement on the high-current path, while still using plated through-holes for VCC, GND, and output.
+* **PSS** — Use when you want **straight** leads on both the signal pins and the primary terminals. This is useful if the device is not going to be soldered onto a PCB at all, but mounted next to the high-current path and wires connected to the signal leads.
+
+## PFF Leadform
+
+The PFF leadform package has all of it's leads bent (both signal and current leads). Slightly off topic, but I immediately thought of the "Licker" monster from the Resident Evil series when I saw the PFF package.
+
+<div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
+<Image src={import('./_assets/pff-leadform-photo.webp')} width="200px">A photo of the PFF leadform package.[^allegro-acs756-ds]</Image>
+<Image src={import('./_assets/resident-evil-licker.webp')} width="300px">A render of a "Licker" monster from the Resident Evil series. Do you see the resemblance?</Image>
+</div>
+
+Synonyms:
+
+- 5-CB Formed Leads, PFF: DigiKey
+
+The dimensions and recommended footprint of the PFF are shown in <IRef iref="fig-pff-leadform-dimensions" />.
+
+<Image iref="fig-pff-leadform-dimensions" src={import('./_assets/pff-leadform-dimensions.webp')} width="500px">Dimensions of the PFF leadform.[^allegro-acs756-ds]</Image>
+
+## PSF Leadform
+
+The PSF leadform package has it's signal leads bent, but it's current leads are straight. This is to allow the current leads to connect to a bus bar or similar mechanical arrangement that is not necessarily part of the PCB.
+
+The dimensions and recommended footprint of the PSF are shown in <IRef iref="fig-psf-leadform-dimensions-and-recommended-footprint" />.
+
+<Image iref="fig-psf-leadform-dimensions-and-recommended-footprint" src={import('./_assets/psf-leadform-dimensions-and-recommended-footprint.webp')} width="500px">Dimensions and recommended footprint for the PSF leadform.[^allegro-acs758xcb-ds]</Image>
+
+## PSS Leadform
+
+The PSS leadform package has all of it's leads straight. The dimensions of the PSS are shown in <IRef iref="fig-pss-leadform-package-dimensions" /> (there is no recommended footprint since it's not meant to be soldered to a PCB).
+
+<Image iref="fig-pss-leadform-package-dimensions" src={import('./_assets/pss-leadform-package-dimensions.webp')} width="500px">Dimensions for the PSS leadform.[^allegro-acs758xcb-ds]</Image>
+
+## PCB Layout Notes
+
+Allegro's drawings recommend **perimeter through-holes** around the current lead pads as shown in <IRef iref="fig-pff-leadform-perimeter-vias" />. These are presumably for mechanical integrity.[^allegro-acs756-ds] Follow the **PCB layout reference drawing** in the datasheet for the package you are using.
+
+<Image iref="fig-pff-leadform-perimeter-vias" src={import('./_assets/pff-leadform-perimeter-vias.webp')} width="500px">A drawing of the PFF leadform PCB footprint highlighting the recommended perimeter vias.[^allegro-acs756-ds]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^allegro-package-designators]: Allegro MicroSystems (2021, Aug 18). _Product Information - Allegro Package Designations (PUB26013, Rev. 8)_ [pdf]. Allegro MicroSystems. Retrieved 2026-04-01, from https://www.allegromicro.com/-/media/files/packaging/package-designators.pdf.
+[^allegro-acs756-ds]: Allegro MicroSystems. _ACS756 - Fully Integrated, Hall Effect-Based Linear Current Sensor IC with 3 kVRMS Voltage Isolation and a Low-Resistance Current Conductor (ACS756-DS, Rev. 3)_ [datasheet]. Allegro MicroSystems. Retrieved 2026-04-01, from https://docs.rs-online.com/dad1/0900766b80d885f7.pdf.
+[^homemade-circuits-50a-high-current-sensor]: Swagatam. _50A High Current Sensor IC ACS758: Circuit Diagram_ [article]. Homemade Circuits. Retrieved 2026-04-01, from https://www.homemade-circuits.com/50a-high-current-sensor-ic-acs758-circuit-diagram/.
+[^allegro-acs758xcb-ds]: Allegro MicroSystems. _ACS758xCB - Thermally Enhanced, Fully Integrated, Hall-Effect-Based
+Linear Current Sensor IC with 100 µΩ Current Conductor_ [datasheet]. Allegro MicroSystems. Retrieved 2026-04-01, from https://www.allegromicro.com/~/media/files/datasheets/acs758-datasheet.pdf.
