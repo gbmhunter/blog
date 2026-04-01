@@ -82,9 +82,9 @@ _SWD_ (**S**ingle **W**ire **D**ebug) is a two-wire programming/debugging interf
   </thead>
   <tbody>
     <tr>
-        <td>SWCLK</td>
+        <td>SWDCLK</td>
         <td>Output</td>
-        <td>Clock output to target device. Frequency selection is up to the host to decide, up to about 60MHz in practice[^bib-kudelski-swd].</td>
+        <td>Clock output to target device. Frequency selection is up to the host to decide, up to about 60MHz in practice.[^bib-kudelski-swd]</td>
     </tr>
     <tr>
         <td>SWDIO</td>
@@ -122,20 +122,35 @@ Whilst officially just a 2-wire interface, it is commonly bundled with 1-2 other
   </tbody>
 </table>
 
-`SWCLK`, `SWDIO` and `SWO` should be pulled high by approx. $10k\Omega$ so that they remain in a stable state when not driven[^bib-arm-dstream-swd-conn].
+`SWDCLK`, `SWDIO` and `SWO` should be pulled high by approx. $10k\Omega$ so that they remain in a stable state when not driven[^bib-arm-dstream-swd-conn].
+
+<Aside type="note">
+The official ARM specification uses the terms `SWDCLK` and `SWDIO`. You will see some authors drop the `D` from `SWDCLK` and use `SWCLK`, while Nordic Semiconductor drops the `L` from `SWDCLK` and uses `SWDCK` instead.
+</Aside>
 
 SWD uses a bus called _DAP_ (Debug Access Port). On this bus there is one master, the DP (Debug Port, typically a USB dongle when programming microcontrollers), and one or more slaves called APs (Access Ports). There are three different Debug Ports[^bib-kudelski-swd]:
 
-. JTAG Debug Port (JTAG-DP): Uses the standard JTAG interface.
-. Serial Wire Debug Port (SW-DP): Uses the SWD protocol.
-. Serial Wire / JTAG Debug Port (SWJ-DP): A combination of the previous two, this port can either use SWD or JTAG to access the DAP bus. The `TCK` and `TMS` JTAG signals are re-used for the SWD `SWCLK` and `SWDIO` signals.
+- JTAG Debug Port (JTAG-DP): Uses the standard JTAG interface.
+- Serial Wire Debug Port (SW-DP): Uses the SWD protocol.
+- Serial Wire / JTAG Debug Port (SWJ-DP): A combination of the previous two, this port can either use SWD or JTAG to access the DAP bus. The `TCK` and `TMS` JTAG signals are re-used for the SWD `SWCLK` and `SWDIO` signals.
 
 ARM specifies the following two Access Ports:
 
-. Memory Access Port (MEM-AP): Provides access to core memory and registers.
-. JTAG Access Port (JTAG-AP): Provides access to a JTAG chain from the DAP.
+- Memory Access Port (MEM-AP): Provides access to core memory and registers.
+- JTAG Access Port (JTAG-AP): Provides access to a JTAG chain from the DAP.
 
-WARNING: Not all microcontrollers connect `SWCLK`/`SWDIO` up to the main VDD voltage domain. For example, in STM32F07x/04x devices, the `SWCLK` and `SWDIO` pins are supplied by the `VDDIO2` domain, so make sure to connect the right pins up to `VTREG`.
+<Aside type="caution">
+Not all microcontrollers connect `SWDCLK`/`SWDIO` up to the main VDD voltage domain. For example, in STM32F07x/04x devices, the `SWDCLK` and `SWDIO` pins are supplied by the `VDDIO2` domain, so make sure to connect the right pins up to `VTREG`.
+</Aside>
+
+SWD communication begins with a line reset, in where the DP generates 50+ clock cycles on `SWDCLK` which driving `SWDIO` high (as shown in <IRef iref="fig-swd-line-reset-and-idcode-traces" />). This gets the AP state machine into a known state for further communication.
+
+<Image iref="fig-swd-line-reset-and-idcode-traces" src={import('./_assets/swd-line-reset-and-idcode-traces.webp')} width="900px">A capture of the SWDCLK (top) and SWDIO (bottom) traces during a line reset and IDCODE request. The line reset is the first 50+ clock cycles on `SWDCLK` which drives `SWDCLK` high. The IDCODE is the next 32 bits on `SWDIO`.</Image>
+
+If a MCU is not working for some reason (not connected properly, dead, etc.), your first sign of failure will usually be when if fails to ACK the IDCODE request from the DP. <IRef iref="fig-swd-mcu-working-and-not-working-comparison" /> shows a comparison of a working MCU (top) and a not working MCU (bottom) during a line reset and IDCODE request. The working MCU ACKs the IDCODE request from the DP, while the not working MCU does not.
+
+<Image iref="fig-swd-mcu-working-and-not-working-comparison" src={import('./_assets/swd-mcu-working-and-not-working-comparison.webp')} width="900px">A comparison of a working MCU (top) and a not working MCU (bottom) during a line reset and IDCODE request.</Image>
+
 
 ### SWV
 

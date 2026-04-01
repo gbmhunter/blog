@@ -170,13 +170,15 @@ def test_program_device():
 
 ### Save Test Results to a Database
 
-It is a good idea to save the test results somewhere. It can be a simple as writing to a local CSV/json file, or saving to a cloud-hosted database. Cloud hosted databases are not that hard to set up these days (e.g. Supabase makes it really easy, and is backed by Postgresql), so I would recommend doing that unless you have a strong reason to keep it local (perhaps SQLite could be a good option if you want to keep it local, but a little more organized than just dumping to text).
+The best way to troubleshoot the test process is to build up a a database of test results and analytics. 
 
-Using a database also allows you to easily query the data later from another location, and makes it easy to support multiple test jigs. Permissions on the database can be locked down to only allow the test jig to insert or update new records (update is needed if you want to re-run devices through the test jig and update the provisioned device record).
+It can be a simple as writing to a local CSV/json file, or saving to a cloud-hosted database. Cloud hosted databases are not that hard to set up these days (especially with AI help), so I would recommend doing that unless you have a strong reason to keep it local (perhaps SQLite could be a good option if you want to keep it local, but a little more organized than just dumping to text).
+
+Using a database (like PostgreSQL) also allows you to easily query the data later from another location, and makes it easy to support multiple test jigs. Permissions on the database can be locked down to only allow the test jig to insert or update records (update is needed if you want to re-run devices through the test jig and update the provisioned device record, this can be sometimes combined into a single UPSERT operation).
 
 If using a database, I would recommend having at least two tables: one for the test attempts and one for the provisioned devices (devices which pass all the tests and are good to go in production).
 
-Test attempt table columns:
+Here is an example of what your test attempt table columns might look like (customize as you see fit for your needs):
 
 - `id`: Unique incrementing integer that can identify a test attempt.
 - `serial_number`: The serial number of the device being tested. This could be any form of unique identifier, such as a MAC address, MCU serial number, or one programmed onto the device yourself.
@@ -201,16 +203,28 @@ Note that while the test jig only needs to insert new records into the test atte
 - During development, you will be writing the Python code and running the tests again and again on the same device
 - During production, you may want to test a previously provisioned device if you change something, improve a test, or are just not sure about it's testing state.
 
+### Assigning Unique Serial Numbers
+
+PostgresSQL databases have a special object called a "sequence" that can be used to generate unique serial numbers. A sequence is a database object that generates unique numerical values, even when accessed concurrently from multiple connections (they are typically used to generate a unique identifier for a primary key in a table). This makes it easy to generate a serial number without having to implement locking and concurrency control in the database API yourself.
+
 ### Test Step Parallelism
 
 If your test steps take a significant amount of time, you may want to consider running some of them in parallel. Obviously this would only apply to test steps that are independent of each other (e.g. a test step that needs to reset the MCU cannot really be run at the same time as a test step that needs to communicate with it).
 
-Test step parallelism can be achieved using the built-in threading library in Python. Note that Python threads are not true parallelism due to the GIL (Global Interpreter Lock), but they are fine for this use case because the test steps are typically IO bound, not CPU bound.
+Test step parallelism can be achieved using the built-in threading library in Python (or asyncio if you are using that style of asynchronous programming). Note that Python threads are not true parallelism due to the GIL (Global Interpreter Lock), but they are fine for this use case because the test steps are typically IO bound, not CPU bound.
 
 If you are providing the tester with a command-line interface, watch out for threads messing up with Ctrl-C (terminate the program) behaviour. Ctrl-C is only caught in the main thread, and if you have other threads currently running parallel test steps, the program will not exit as expected. Two options to fix this are:
 
 - Make the worker threads daemon threads, so that they are automatically terminated when the main thread exits.
 - Catch the Ctrl-C signal in the main thread and then use a `threading.Event` to signal to the worker threads to exit. You have to make sure the worker threads periodically check the event and exit if it is signaled.
+
+## Analytics
+
+One of the most commonly used test metrics in industrial test monitoring is the _First Pass Yield_ (FPY). This is the percentage of devices that pass all the tests on the first attempt. It is a simple metric to calculate and can be used to track the quality of the test process over time.
+
+Another interesting metric is the _Process Capability Index_ (Cpk). This is a measure of how well an individual measurement stays within it's limits.
+
+Both of these metrics are easy to calculate if you are saving test data to a database.
 
 ## Debugging at Production Time
 
@@ -220,13 +234,23 @@ Always consider how you are going to inspect and fix issues with the test fixtur
 
 If you can rely on having an internet connection, then SSH and desktop sharing software are two great tools to debug and diagnose issues with the test jig at production time.
 
-### The Great Chinese Firewall
+## The Great Chinese Firewall
 
 If the test jig is going to be deployed in China, you will need to consider the Great Chinese Firewall. This usually blocks encrypted traffic to and from China. This means things like VPNs and being able to SSH into the test jig are not normally possible. Tunnels and reverse proxies (in where the test jig reaches out to a server, and you connect to the test fixture by also reaching out to the server) are not likely to work either. Cloud services like AWS, Azure, and Google Cloud are usually blocked (important if you were planning on hosting a test jig database on on of those). However these services can offer China regions which do work (and sometime replication from within China region to outside) -- with the caveat that they normally require different accounts to the rest of the world.
+
+The firewall can prevent your test jig from connecting to the testing database (assuming you have one). One solution to this is to put a HTTP REST API server in front of the database so that the test jig can connect to the API server instead. The firewall usually let's through this traffic (even when it's https, i.e. encrypted). This has the added benefit of giving you greater control over data access and security, at the expense of extra complexity (now you have to manage the API server and keep it up to date with the database schema).
 
 ## Certificates
 
 Sometimes the device you are testing will require a certificate and/or key to be programmed onto it. This is usually for authentication so that other services (such as a cloud server) can authenticate the device at runtime.
+
+## OpenHTF and TofuPilot
+
+OpenHTF (Open Hardware Testing Framework) is an open-source Python framework for testing hardware. It was originally developed at Google.[^openhtf-homepage] It provides a framework for structuring tests into Phases and running them in sequence.
+
+<Image src={import('./_assets/openhtf-homepage-screenshot.webp')} width="800px">A screenshot of the OpenHTF homepage as of March 2026.[^openhtf-homepage]</Image>
+
+TofuPilot is a commercial offering built on top of OpenHTF which provides web-based databases and dashboards and for logging and analysing test results. It has tight integration with OpenHTF, although supports other test frameworks such as pytest and custom test functions.[^tofupilot-homepage]
 
 ## Suppliers
 
@@ -236,3 +260,10 @@ An Australian-based company that design and manufacture test jigs.
 
 INGUN Manual Test Fixture MA 160
 YouTube: https://www.youtube.com/watch?v=NeKGzh2sa1k
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^openhtf-homepage]: OpenHTF. _OpenHTF - Homepage_. Retrieved 2026-03-24, from https://www.openhtf.com/.
+[^tofupilot-homepage]: TofuPilot. _TofuPilot - Homepage_. Retrieved 2026-03-24, from https://www.tofupilot.com/.
