@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2026-04-01
 description: PFF, PSF and PSS are Allegro MicroSystems package names used for certain through-hole integrated current sensors.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-04-01
-tags: [component packages, PCB design, PFF, PSF, leadform, Allegro, current sensor, CB package, through-hole]
+lastUpdated: 2026-04-02
+tags: [component packages, PCB design, PFF, PSF, PSS, leadform, Allegro, current sensor, CB package, through-hole]
 title: PFF, PSF and PSS Leadform Component Packages
 type: page
 ---
@@ -29,7 +29,7 @@ The letters appear as a **suffix in the ordering part number** (for example devi
 
 ## PFF Leadform
 
-The PFF leadform package has all of it's leads bent (both signal and current leads). Slightly off topic, but I immediately thought of the "Licker" monster from the Resident Evil series when I saw the PFF package.
+The PFF leadform package has all of it's leads bent (both signal and current leads). It appears to be the most common package of the three. Slightly off topic, but I immediately thought of the "Licker" monster from the Resident Evil series when I saw the PFF package.
 
 <div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
 <Image src={import('./_assets/pff-leadform-photo.webp')} width="200px">A photo of the PFF leadform package.[^allegro-acs756-ds]</Image>
@@ -48,13 +48,19 @@ The dimensions and recommended footprint of the PFF are shown in <IRef iref="fig
 
 The PSF leadform package has it's signal leads bent, but it's current leads are straight. This is to allow the current leads to connect to a bus bar or similar mechanical arrangement that is not necessarily part of the PCB.
 
+<Image src={import('./_assets/psf-leadform-photo.webp')} width="200px">A photo of the PSF leadform package.[^allegro-acs758xcb-ds]</Image>
+
 The dimensions and recommended footprint of the PSF are shown in <IRef iref="fig-psf-leadform-dimensions-and-recommended-footprint" />.
 
 <Image iref="fig-psf-leadform-dimensions-and-recommended-footprint" src={import('./_assets/psf-leadform-dimensions-and-recommended-footprint.webp')} width="500px">Dimensions and recommended footprint for the PSF leadform.[^allegro-acs758xcb-ds]</Image>
 
 ## PSS Leadform
 
-The PSS leadform package has all of it's leads straight. The dimensions of the PSS are shown in <IRef iref="fig-pss-leadform-package-dimensions" /> (there is no recommended footprint since it's not meant to be soldered to a PCB).
+The PSS leadform package has straight leads on both the signal and current paths.
+
+<Image src={import('./_assets/pss-leadform-photo.webp')} width="200px">A photo of the PSS leadform package.[^allegro-acs758xcb-ds]</Image>
+
+The dimensions of the PSS are shown in <IRef iref="fig-pss-leadform-package-dimensions" /> (there is no recommended footprint since it's not meant to be soldered to a PCB).
 
 <Image iref="fig-pss-leadform-package-dimensions" src={import('./_assets/pss-leadform-package-dimensions.webp')} width="500px">Dimensions for the PSS leadform.[^allegro-acs758xcb-ds]</Image>
 

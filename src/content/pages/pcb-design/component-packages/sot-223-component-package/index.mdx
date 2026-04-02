@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-08
 description: SOT-223 is a family of SMD component packages with gull-wing leads on one side and a tab on the other side. It is commonly used for medium-power discrete semiconductor components and basic ICs such as linear regulators.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-12-14
+lastUpdated: 2026-04-02
 tags: [component packages, PCB design, SOT-223, DCQ, DCY, MP04A, PG-SOT-223-4, TO-261-4, R-PDSO-G6, footprint, land pattern, PCBs, dimensions, linear regulator]
 title: SOT-223 Component Package
 type: page
@@ -61,33 +61,33 @@ Texas Instruments gives the following thermal resistance data for the SOT-223-3 
       <th style={{ width: '150px' }}>Value</th>
     </tr>
   </thead>
-<tbody >
-<tr >
-<td >Junction-to-ambient thermal resistance</td>
-<td >$R_{\theta JA}$</td>
-<td >$64.2^{\circ}C/W$</td>
-</tr>
-<tr >
-<td >Junction-to-case (top) thermal resistance</td>
-<td >$R_{\theta JC(top)}$</td>
-<td >$46.8^{\circ}C/W$</td>
-</tr>
-<tr >
-<td >Junction-to-board thermal resistance</td>
-<td >$R_{\theta JB}$</td>
-<td >$13.3^{\circ}C/W$</td>
-</tr>
-<tr >
-<td >Junction-to-top characterisation parameter</td>
-<td >$R_{\psi JT}$</td>
-<td >$6.3^{\circ}C/W$</td>
-</tr>
-<tr >
-<td >Junction-to-board characterisation parameter</td>
-<td >$R_{\psi JB}$</td>
-<td >$13.2^{\circ}C/W$</td>
-</tr>
-</tbody>
+  <tbody >
+    <tr >
+      <td >Junction-to-ambient thermal resistance</td>
+      <td >$R_{\theta JA}$</td>
+      <td >$64.2^{\circ}C/W$</td>
+    </tr>
+    <tr >
+      <td >Junction-to-case (top) thermal resistance</td>
+      <td >$R_{\theta JC(top)}$</td>
+      <td >$46.8^{\circ}C/W$</td>
+    </tr>
+    <tr >
+      <td >Junction-to-board thermal resistance</td>
+      <td >$R_{\theta JB}$</td>
+      <td >$13.3^{\circ}C/W$</td>
+    </tr>
+    <tr >
+      <td >Junction-to-top characterisation parameter</td>
+      <td >$R_{\psi JT}$</td>
+      <td >$6.3^{\circ}C/W$</td>
+    </tr>
+    <tr >
+      <td >Junction-to-board characterisation parameter</td>
+      <td >$R_{\psi JB}$</td>
+      <td >$13.2^{\circ}C/W$</td>
+    </tr>
+  </tbody>
 </table>
 
 All of the parameters in the above table were measured with the SOT-223-3 package soldered to a _JEDEC standard high-K profile, JESD 51-7, 2s2p four layer board with 2-oz copper_. The copper pad was soldered to the thermal land pattern.
@@ -114,6 +114,8 @@ This variant can be confused with the three pin and one pad variant (SOT-223-3) 
 
 ## SOT-223-5
 
+<Image src={import('./_assets/sot-223-5-3d-render.webp')} width="250px">A 3D render of the SOT-223-5 component package.[^rs-microchip-mcp1824t-lin-reg]</Image>
+
 ### Synonyms
 
 * DCQ: Texas Instruments.
@@ -123,25 +125,26 @@ This variant can be confused with the three pin and one pad variant (SOT-223-3) 
 
 Below are the dimensions of the SOT-223-5 package as specified by Texas Instruments.
 
-<Image src={import('./_assets/sot-223-5-component-package-dimensions-ti.png')} width="695px">The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/sot-223-5-component-package-dimensions-ti.png')} width="400px">The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/.</Image>
 
 ### Footprint (Land Pattern)
 
 Below is the recommended footprint (land pattern) for the SOT-223-5 component package as specified by Texas Instruments.
 
-<Image src={import('./_assets/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png')} width="858px">A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png')} width="500px">A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/.</Image>
 
 ### Thermal Resistance
 
 Below is a graph showing the thermal resistance of the SOT-223-5 package with varying copper area.
 
-<Image src={import('./_assets/sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png')} width="1059px">Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/.</Image>
+<Image src={import('./_assets/sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png')} width="700px">Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/.</Image>
 
 As you can see, as the copper area increases, the thermal resistance decreases asymptotically to around $55^{\circ}{\rm C}/W$.
 
 ## Similar To
 
 * [SOT-23](/pcb-design/component-packages/sot-23-component-package/)
+* [SOT-23F](/pcb-design/component-packages/sot-23f-component-package/)
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -152,3 +155,4 @@ As you can see, as the copper area increases, the thermal resistance decreases a
 [^infineon-bts3205n-low-side-power-switch-ds]: Infineon. _HITFET - BTS3205N - Smart Low-Side Power Switch_. Retrieved 2024-04-19, from https://www.infineon.com/dgdl/Infineon-BTS3205N-DS-v01_01-en.pdf?fileId=db3a30431ed1d7b2011f4ba4f81d5ec6.
 [^topline-to261-sot223]: TopLine. _TO261 - SOT223 - JEDEC TO-261AA Package - TopLine Dummy Component_. Retrieved 2024-04-19, from https://www.topline.tv/TO261.html.
 [^analog-devices-sot-223]: Analog Devices. _3-Lead Small Outline Transistor Package [SOT-223] - (KC-3)_. Retrieved 2024-04-19, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/sot_223kc/kc_3.pdf.
+[^rs-microchip-mcp1824t-lin-reg]: RS. _Microchip MCP1824T-ADJE/DC, 1-Channel Low Dropout Voltage, Voltage Regulator, 300 mA, 5 V, SOT-223 5-Pin_ [product page]. Retrieved 2026-04-02, from https://nz.rs-online.com/web/p/voltage-regulators/0649492P.

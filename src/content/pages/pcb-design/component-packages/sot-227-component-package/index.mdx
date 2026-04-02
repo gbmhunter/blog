@@ -1,0 +1,43 @@
+---
+authors: [gbmhunter]
+date: 2026-04-02
+description: SOT-227 is a high-power package with M4 screw terminals. It is used by companies such as Vishay and IXYS for high-voltage and high-current diodes.
+image: ./_assets/cover-image.webp
+lastUpdated: 2026-04-02
+tags: [component packages, PCB design, SOT-227]
+title: SOT-227 Component Package
+type: page
+---
+
+SOT-227 is a high-power package with M4 screw terminals. It is used by companies such as Vishay and IXYS for diodes (an example rating is a 1200V, 140A diode). In many cases, all four electrical terminals are isolated from the backside (which is designed to be bonded to a heatsink).
+
+<Image src={import('./_assets/sot-227-photo.webp')} width="300px">A photo of the SOT-227 component package.[^digikey-skis300-200-product-page]</Image>
+
+## Synonyms
+
+- `ISOTOP`: Microsemi's package name.[^microsemi-mounting-considerations-for-the-sot-227-package]
+- `SOT-227-4, miniBLOC`: DigiKey's package name.
+- `minibloc`: IXYS's package name.[^ixys-dsep2x91-03a-diode-ds]
+- `SOT-227B`: IXYS's package name (the `B` might be referring to either "backside", "bonded" or perhaps the second revision of the package, just like Vishay's "Generation 2" dimensions).[^ixys-dsep2x91-03a-diode-ds]
+
+## Dimensions
+
+The dimensions of the Vishay SOT-227 component package are shown in <IRef iref="fig-sot-227-vishay-gen-2-dimensions" />. Note these are specified as the "Generation 2" dimensions (I'm not sure what Generation 1 dimensions are).
+
+<Image iref="fig-sot-227-vishay-gen-2-dimensions" src={import('./_assets/sot-227-vishay-gen-2-dimensions.webp')} width="500px">The dimensions of the SOT-227 component package from Vishay.[^vishay-sot-227-gen-2-dimensions]</Image>
+
+## Thermal Resistance
+
+To pick on a specific example in the SOT-227 package, the Vishay VS-HFA140FA120 HEXFRED 140A ultrafast soft recovery diode has a junction-to-case thermal resistance of $R_{\theta JC} = 0.35^{\circ}C/W$ (max.) when one of the legs is conducting, and $R_{\theta JC} = 0.175^{\circ}C/W$ (max.) when both legs are conducting. It has a very low case-to-heatsink thermal resistance of $R_{\theta CS} = 0.05^{\circ}C/W$ (typ.).[^vishay-vs-hfa140fa120-hexfred-140a-ultrafast-soft-recovery-diode-ds]
+
+Microsemi's application note [Mounting Considerations for the SOT-227 Package](https://ww1.microchip.com/downloads/aemDocuments/documents/PPM/ApplicationNotes/ApplicationNotes/1818_a.pdf) provides some in-depth information on the thermal performance of the SOT-227 package.[^microsemi-mounting-considerations-for-the-sot-227-package]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^digikey-skis300-200-product-page]: DigiKey. _SMC Diode Solutions SKIS300-200_ [product page]. Retrieved 2026-04-02, from https://www.digikey.com/en/products/detail/smc-diode-solutions/SKIS300-200/25595415.
+[^vishay-sot-227-gen-2-dimensions]: Vishay. _Outline Dimensions - SOT-227 Generation 2_. Retrieved 2026-04-02, from https://www.vishay.com/docs/95423/sot-227g2.pdf.
+[^vishay-vs-hfa140fa120-hexfred-140a-ultrafast-soft-recovery-diode-ds]: Vishay. _VS-HFA140FA120 HEXFRED 140A ultrafast soft recovery diode_ [datasheet]. Retrieved 2026-04-02, from https://www.vishay.com/docs/94746/vs-hfa140fa120.pdf.
+[^ixys-dsep2x91-03a-diode-ds]: IXYS (2016). _DSEP2x91-03A - High Performance Fast Recovery Diode, Low Loss and Soft Recovery, Parallel legs_ [datasheet]. Retrieved 2026-04-02, from https://docs.rs-online.com/b2d3/0900766b815b2c64.pdf.
+[^microsemi-mounting-considerations-for-the-sot-227-package]: Microsemi. _Application Note 1818 - Mounting Considerations for the SOT-227 Package_ [application note]. Retrieved 2026-04-02, from https://ww1.microchip.com/downloads/aemDocuments/documents/PPM/ApplicationNotes/ApplicationNotes/1818_a.pdf.
