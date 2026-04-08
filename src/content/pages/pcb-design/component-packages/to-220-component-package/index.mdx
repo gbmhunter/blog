@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-04-06
 description: TO-220 is a popular family of through-hole component packages which are commonly used for power transistors, voltage regulators, and other power electronics components.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-04-21
+lastUpdated: 2026-04-08
 tags: [component packages, PCB design, transistors, transistor outline, TO-220, TO-220AB, TO-220-3, TO-220NIS, JEDEC, TO-220-7, TO-220-7C, Power Integrations]
 title: TO-220 Component Package
 type: page
@@ -52,7 +52,7 @@ The tab is commonly connected electrically to one of the legs, and sometimes iso
 
 ## TO-220-5 (SOT-263B)
 
-The TO-220-5 (also known as SOT-263B[^bib-to-220-5]) is a 5 leg variant of the TO-220 package.
+The TO-220-5 (also known as SOT-263B[^to-220-5]) is a 5 leg variant of the TO-220 package.
 
 <Image src={import('./_assets/to-220-5-component-package-3d-model.jpg')} width="300px">3D model of the TO-220-5 (SOT-263B) component package. Image from https://assets.nexperia.com/documents/outline-drawing/SOT263B.pdf.</Image>
 
@@ -64,16 +64,16 @@ The `TO-220-7` is a name used for a 7-pin variant of the `TO-220` family. It com
 
 Synonyms:
 
-* `T7` (Analog Devices)[^bib-analog-devices-to-220-7]
-* `NDZ` (Texas Instruments)[^bib-ti-lm2673-ds]
+- `T7` (Analog Devices)[^analog-devices-to-220-7]
+- `NDZ` (Texas Instruments)[^ti-lm2673-ds]
 
-<Image src={import('./_assets/to-220-7-analog-devices-t7-package-dimensions.png')} width="700px">Dimensions of the TO-220-7 (T7) package from Analog Devices[^bib-analog-devices-to-220-7].</Image>
+<Image src={import('./_assets/to-220-7-analog-devices-t7-package-dimensions.png')} width="700px">Dimensions of the TO-220-7 (T7) package from Analog Devices[^analog-devices-to-220-7].</Image>
 
 ## TO-220-7C
 
-The `TO-220-7C` is a variant of the `TO-220` family that is used by Power Integrations[^bib-power-int-top254-258-ds]. Interestingly, it is missing the 6th lead and the leads are formed (bent) into 3 rows rather than just 2 as with the `TO-220-7`.
+The `TO-220-7C` is a variant of the `TO-220` family that is used by Power Integrations[^power-int-top254-258-ds]. Interestingly, it is missing the 6th lead and the leads are formed (bent) into 3 rows rather than just 2 as with the `TO-220-7`.
 
-<Image src={import('./_assets/power-integrations-to-220-7c-package-dimensions.png')} width="700px">Dimensions of the TO-220-7C package from Power Integrations[^bib-power-int-top254-258-ds].</Image>
+<Image src={import('./_assets/power-integrations-to-220-7c-package-dimensions.png')} width="700px">Dimensions of the TO-220-7C package from Power Integrations[^power-int-top254-258-ds].</Image>
 
 ## TO-220AA
 
@@ -91,9 +91,9 @@ TO-220F generally refers to the 3-pin version, although sometimes it may be call
 
 ### Synonyms
 
-* SOT-186A[^nxp-sot-186a]
-* TO-220F[^nxp-sot-186a]
-* TO-220F-3
+- SOT-186A[^nxp-sot-186a]
+- TO-220F[^nxp-sot-186a]
+- TO-220F-3
 
 ### Dimensions
 
@@ -113,11 +113,16 @@ The TO-220FM is a variant of the TO-220 package which is identical to the [TO-22
 
 ## Similar To
 
-* [TO-273AA (Super TO-220)](/pcb-design/component-packages/to-273aa-component-package/): The TO-273AA is like the TO-220, but with a clip-mounted design rather than screw-mounted. Sometimes called the "Super TO-220".
+- [TO-126](/pcb-design/component-packages/to-126-component-package/): A 3 lead through-hole package which looks similar to the TO-220.
+- [TO-273AA (Super TO-220)](/pcb-design/component-packages/to-273aa-component-package/): The TO-273AA is like the TO-220, but with a clip-mounted design rather than screw-mounted. Sometimes called the "Super TO-220".
 
-[^bib-cs306am]: Retrieved 2019-04-30, from https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf.
-[^bib-to-220-5]: Retrieved 2019-04-30, from https://www.nexperia.com/packages/SOT263B.html.
-[^bib-analog-devices-to-220-7]: Analog Devices. _T7 Package - 7-Lead Plastic TO-220 (Standard) - (Reference LTC DWG # 05-08-1422)_. Retrieved 2023-06-06, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_7_05-08-1422.pdf.
-[^bib-ti-lm2673-ds]: Texas Instruments (2000, Apr). _LM2673 SIMPLE SWITCHER® 3-A Step-Down Voltage Regulator With Adjustable Current Limit (datasheet)_. Retrieved 2023-06-06, from https://www.ti.com/lit/ds/symlink/lm2673.pdf.
-[^bib-power-int-top254-258-ds]: Power Integrations (2007, Sep). _TOP254-258 - TOPSwitch-HX Family (datasheet)_. Retrieved 2023-06-06, from https://www.farnell.com/datasheets/5793.pdf.
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^cs306am]: Retrieved 2019-04-30, from https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf.
+[^to-220-5]: Retrieved 2019-04-30, from https://www.nexperia.com/packages/SOT263B.html.
+[^analog-devices-to-220-7]: Analog Devices. _T7 Package - 7-Lead Plastic TO-220 (Standard) - (Reference LTC DWG # 05-08-1422)_. Retrieved 2023-06-06, from https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_7_05-08-1422.pdf.
+[^ti-lm2673-ds]: Texas Instruments (2000, Apr). _LM2673 SIMPLE SWITCHER® 3-A Step-Down Voltage Regulator With Adjustable Current Limit (datasheet)_. Retrieved 2023-06-06, from https://www.ti.com/lit/ds/symlink/lm2673.pdf.
+[^power-int-top254-258-ds]: Power Integrations (2007, Sep). _TOP254-258 - TOPSwitch-HX Family (datasheet)_. Retrieved 2023-06-06, from https://www.farnell.com/datasheets/5793.pdf.
 [^nxp-sot-186a]: NXP (2016,Feb 8). _SOT186A - plastic single-ended package; isolated heatsink mounted; 1 mounting hole; 3-lead TO-220 "full pack"_. Retrieved 2024-04-21, from https://www.nxp.com/docs/en/package-information/SOT186A.pdf.
