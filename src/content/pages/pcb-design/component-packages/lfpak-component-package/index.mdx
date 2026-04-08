@@ -1,0 +1,158 @@
+---
+authors: [gbmhunter]
+date: 2026-04-07
+lastUpdated: 2026-04-08
+tags: [component packages, PCB design, LFPAK, MOSFETs, Power-SO8, LFPAK56, LFPAK56E, LFPAK33, LFPAK56D, LFPAK88, Nexperia]
+title: LFPAK Component Package
+type: page
+---
+
+LFPAK is a family of surface-mount power packages primarily used for power MOSFETs. It was originally developed by Nexperia (the first LFPAK, the LFPAK56 was released in 2002[^wevolver-how-lfpak-revolutionized-an-industry]) as a higher performance alternative to the DPAK/D2PAK packages. Rather than internal bond wires it uses a large copper clip, which reduces package electrical and thermal resistance. It appears that the package is still exclusively used by Nexperia.
+
+<Image src={import('./_assets/dpak-vs-lfpak-nexperia-the-history-of-lfpak-youtube.webp')} width="600px">A screenshot from a Nexperia video comparing the DPAK/D2PAK and LFPAK packages.[^nexperia-the-history-of-lfpak]</Image>
+
+The LFPAK packages were released in the following order:
+
+- LFPAK56: Released in 2002.
+- LFPAK56E: Released in 2008.
+- LFPAK33: Released in 2010.
+- LFPAK56D: Released in 2011.
+- LFPAK88 (SOT-1235): Released in 2019. Quoted as providing 2x higher continuous power rating compared to the [D2PAK package](/pcb-design/component-packages/to-263-component-package/).
+
+## LFPAK33
+
+<Image src={import('./_assets/lfpak33-3d-render.webp')} width="300px">A 3D render of the LFPAK33 (SOT-1210) package.[^nexperia-lfpak33-mosfets]</Image>
+
+LFPAK33 is a small package in the LFPAK family, with a footprint of 3.3 x 3.3 mm. It allows for max. continuous MOSFET drain currents of about 70 A.[^nxp-power-mosfet-selection-guide] Also known as the SOT-1210.[^nxp-sot1210]
+
+### Dimensions
+
+| Property         | Value          |
+| ---------------- | -------------- |
+| Leads            | 8              |
+| Pitch            | 0.65 mm        |
+| Body Length (D)  | 2.6 mm         |
+| Body Width (E)   | 3.3 mm         |
+| Body Height      | 0.9 mm         |
+| Footprint        | 3.3 x 3.3 mm   |
+| Footprint Area   | 10.89 mm²      |
+
+<Image src={import('./_assets/lfpak33-dimensions.webp')} width="600px">The dimensions of the LFPAK33 (SOT-1210) package.[^nexperia-buk7m10-40e-mosfet-ds]</Image>
+
+### Similar To
+
+The following packages from other manufacturers can all be soldered onto a common PCB footprint:[^nxp-power-mosfet-selection-guide]
+
+- AOS DFN3.3x3.3
+- EMC EDFN 3x3
+- Fairchild MLP08S
+- Fairchild PQFN08B
+- Infineon TSDSON-8
+- On Semi Micro8 Leadless
+- Vishay PowerPak 1212-8
+
+Diodes Inc has a similar package called the PowerDI3333. There is a published footprint by Diodes Inc (shown below) that is compatible with both the LFPAK33 and PowerDI3333 packages.[^diodes-inc-lfpak33-powerdi3333-compatible-footprint] It may also be compatible with the other packages listed above.
+
+<Image src={import('./_assets/combined-lfpak33-powerdi-3333-footprint-diodes-inc.webp')} width="600px">A combined footprint for the LFPAK33 and PowerDI3333 packages, published by Diodes Inc.[^diodes-inc-lfpak33-powerdi3333-compatible-footprint]</Image>
+
+## LFPAK56
+
+The LFPAK56 package was the first package released in the LFPAK family.[^wevolver-how-lfpak-revolutionized-an-industry]. It also called the SOT-669.[^nxp-sot669] It is commonly classed in a group of similar packages called Power-SO8. This includes other packages such as the Vishay PowerPAK SO8 and Infineon Super SO8 (see the Similar To section for more details). It allows for max. continuous MOSFET drain currents of about 100 A.[^nxp-power-mosfet-selection-guide]
+
+<Image src={import('./_assets/lfpak56-3d-render.webp')} width="300px">A 3D render of the LFPAK56 (Power-SO8) package.</Image>
+
+The LFPAK56 package offers significant PCB space savings compared to the DPAK/D2PAK packages, as shown in <IRef iref="fig-dpak-d2pak-vs-lfpak56-nexperia" />.
+
+<Image iref="fig-dpak-d2pak-vs-lfpak56-nexperia" src={import('./_assets/dpak-d2pak-vs-lfpak56-nexperia.webp')} width="600px">A comparison between the DPAK/D2PAK packages and the LFPAK56 package.[^nexperia-lfpak56-mosfets]</Image>
+
+### Dimensions
+
+Values are nominal or typical body dimensions from Nexperia SOT669 unless noted. The package is rated for **4** terminations (n2); the PCB footprint follows a **5 x 6 mm** Power-SO8 style land pattern.[^nexperia-sot669-package-info]
+
+| Property            | Value          |
+| ------------------- | -------------- |
+| Leads               | 4              |
+| Pitch               | 1.27 mm        |
+| Body Length (D)     | 3.95 mm        |
+| Body Width (E)      | 4.9 mm         |
+| Seated Height (A)   | 1.1 mm         |
+| Footprint           | 5 x 6 mm       |
+| Footprint Area      | 30 mm²         |
+
+The dimensions of the LFPAK56 package are shown in <IRef iref="fig-lfpak56-dimensions" />.
+
+<Image iref="fig-lfpak56-dimensions" src={import('./_assets/lfpak56-dimensions.webp')} width="600px">The dimensions of the LFPAK56 package.[^nexperia-sot669-package-info]</Image>
+
+### Footprint
+
+The recommended footprint for the LFPAK56 package is shown in <IRef iref="fig-lfpak56-footprint" />.
+
+<Image iref="fig-lfpak56-footprint" src={import('./_assets/lfpak56-footprint.webp')} width="600px">The footprint of the LFPAK56 package.[^nexperia-sot669-package-info]</Image>
+
+### Similar To
+
+The LFPAK56 is similar to the packages listed below. All of the below packages can be soldered onto a common PCB footprint.[^nxp-power-mosfet-selection-guide]
+
+- Fairchild Power 56
+- Infineon Super SO8
+- NEC HVSON-8
+- On Semi DFN6
+- STM PowerFlat 6x5
+- [Vishay PowerPAK SO8](/pcb-design/component-packages/powerpak-so8-component-package/): The PowerPAK SO8 is a Vishay package that is commonly classed as "footprint compatible" with the LFPAK56 package.
+
+## LFPAK56E
+
+LFPAK56E is an enhanced version of the LFPAK56 package, with an optimized lead frame and package design which results in an improved $R_{DS(on)}$ and power density improvement of up to 30%.[^eepower-superjunction-fets-in-lfpak56e-packages]
+
+## LFPAK88
+
+<Image src={import('./_assets/lfpak88-3d-render.webp')} width="300px">A 3D render of the LFPAK88 (SOT-1235) package.[^avnet-nexperia-lfpak88-mosfets]</Image>
+
+Also known as the SOT-1235.[^nexperia-PSMN1R3-80SSF-n-ch-mosfet-ds]
+
+### Dimensions
+
+Values are nominal or typical body dimensions from Nexperia SOT1235 unless noted.[^nexperia-sot1235-package-info]
+
+| Property         | Value          |
+| ---------------- | -------------- |
+| Leads            | 4              |
+| Pitch            | 2 mm           |
+| Body Length (D)  | 6.3 mm         |
+| Body Width (E)   | 8 mm           |
+| Body Height      | 1.6 mm         |
+| Footprint        | 9.4 x 9.2 mm   |
+| Footprint Area   | 86.48 mm²      |
+
+<Image src={import('./_assets/lfpak88-dimensions-nexperia.webp')} width="600px">The dimensions of the LFPAK88 (SOT-1235) package from Nexperia.[^nexperia-PSMN1R3-80SSF-n-ch-mosfet-ds]</Image>
+
+### Footprint
+
+The recommended footprint for the LFPAK88 package is shown in <IRef iref="fig-lfpak88-recommend-footprint" />.
+
+<Image iref="fig-lfpak88-recommend-footprint" src={import('./_assets/lfpak88-recommend-footprint.webp')} width="600px">The recommended footprint for the LFPAK88 package.[^nexperia-sot1235-package-info]</Image>
+
+## Similar To
+
+- [DPAK](/pcb-design/component-packages/dpak-component-package/): The DPAK is an older and less performant alternative to the LFPAK package.
+- [D2PAK](/pcb-design/component-packages/to-263-component-package/): The D2PAK is an older, larger alternative to the LFPAK package.
+- [PowerDI3333](/pcb-design/component-packages/powerdi3333-component-package/): 
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nexperia-the-history-of-lfpak]: Nexperia (2022, Nov 9). _The History of LFPAK_ [video]. Retrieved 2026-04-07, from https://www.youtube.com/watch?v=4-ryhf00YYw.
+[^wevolver-how-lfpak-revolutionized-an-industry]: Mark Smith (2023, Jan 4). _A story of innovation: How LFPAK revolutionized an industry_ [article]. Wevolver. Retrieved 2026-04-07, from https://www.wevolver.com/article/a-story-of-innovation-how-lfpak-revolutionized-an-industry.
+[^nexperia-PSMN1R3-80SSF-n-ch-mosfet-ds]: Nexperia (2025, Apr 7). _PSMN1R3-80SSF - NextPower 80 V, 1.2 mOhm, 335 Amp, N-channel MOSFET in LFPAK88 package_ [datasheet]. Retrieved 2026-04-08, from https://assets.nexperia.com/documents/data-sheet/PSMN1R3-80SSF.pdf.
+[^nexperia-lfpak56-mosfets]: Nexperia. _LFPAK56 MOSFETs_ [article]. Retrieved 2026-04-08, from https://www.nexperia.com/products/mosfets/family/lfpak56-mosfets.
+[^eepower-superjunction-fets-in-lfpak56e-packages]: Paul Shepard (2017, Sep 19). _Superjunction FETs in LFPAK56/56E Packages Reduce RDS(on) up to 30%_ [article]. EE Power. Retrieved 2026-04-08, from https://eepower.com/new-industry-products/superjunction-fets-in-lfpak5656e-package-reduce-rdson-up-to-30/#.
+[^nxp-sot669]: NXP. _SOT669: LFPAK56; Power-SO8_ [package information]. Retrieved 2026-04-08, from https://www.nxp.com/packages/SOT669.
+[^avnet-nexperia-lfpak88-mosfets]: Avnet Silica. _Nexperia LFPAK88 MOSFETs_. Retrieved 2026-04-08, from https://my.avnet.com/silica/products/new-products/npi/nexperia/lfpak88-mosfets/.
+[^nxp-sot1210]: NXP. _SOT1210: LFPAK33 - Plastic, single ended surface mounted package (LFPAK33); 8 leads; 0.65 mm pitch; 2.7 mm x 3.4 mm x 0.9 mm body_ [package information]. Retrieved 2026-04-08, from https://www.nxp.com/packages/SOT1210.html.
+[^nexperia-lfpak33-mosfets]: Nexperia. _LFPAK33 MOSFETs_ [article]. Retrieved 2026-04-08, from https://www.nexperia.com/products/mosfets/automotive-mosfets/family/lfpak33.
+[^nexperia-buk7m10-40e-mosfet-ds]: Nexperia (2016, Sep 19). _BUK7M10-40E - N-channel 40 V, 10 mΩ standard level MOSFET in LFPAK33_ [datasheet]. Retrieved 2026-04-08, from https://assets.nexperia.com/documents/data-sheet/BUK7M10-40E.pdf.
+[^diodes-inc-lfpak33-powerdi3333-compatible-footprint]: Naveed Chowdhury (2024, Jan). _AN1183 - LFPAK33/PowerDI3333 Compatible Footprint_ [application note]. Retrieved 2026-04-08, from https://www.diodes.com/assets/App-Note-Files/PD3333-LFPAK33-Universal-Footprint-Application-Note.pdf?v=5.
+[^nxp-power-mosfet-selection-guide]: NXP (2014, Jul). _Power MOSFET Selection Guide_. Retrieved 2026-04-08, from https://www.nxp.com/docs/en/product-selector-guide/75017590.pdf.
+[^nexperia-sot1235-package-info]: Nexperia (2022, May 30). _SOT1235 - plastic, single-ended surface-mounted package (LFPAK88); 4 leads; 2 mm pitch; 8 mm x 8 mm x 1.6 mm body_ [package information]. Retrieved 2026-04-08, from https://assets.nexperia.com/documents/package-information/SOT1235.pdf.
+[^nexperia-sot669-package-info]: Nexperia (2025, Mar 20). _SOT669 - plastic, single-ended surface-mounted package; 4 terminals_ [package information]. Retrieved 2026-04-08, from https://assets.nexperia.com/documents/package-information/SOT669.pdf.

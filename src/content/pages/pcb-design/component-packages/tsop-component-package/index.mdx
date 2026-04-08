@@ -1,0 +1,50 @@
+---
+authors: [gbmhunter]
+date: 2026-04-07
+lastUpdated: 2026-04-07
+tags: [component packages, PCB design, transistor, TSOP, thin scale small-outline package, HTSSOP]
+title: TSOP Component Package
+type: page
+---
+
+TSOP (_Thin Small Outline Package_) is a family of surface-mount molded IC packages with gull-wing leads. They are very thin (with a height of approx. 1 mm) and have pitches from approx. 0.50 - 1.20 mm.[^wikipedia-tsop]
+
+TSOP comes in two variants:[^wikipedia-tsop]
+
+- Type I (TSOP1): Pins are on the shorter side of the package.
+- Type II (TSOP2): Pins are on the longer side of the package.
+
+The Type II package appears to be the more common variant. Unfortunately, many manufacturers do not distinguish between the two types in the package name. 
+
+<div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+<Image src={import('./_assets/tsop-48-type-1-3d-render.webp')} width="300px">A 3D render of the TSOP-48 (Type I) component package of the Micron Technology MT29F1G08ABAFAWP-AAT:F flash memory.[^digikey-micron-tech-mt29f1g08abafawp-aat-f-flash-memory]</Image>
+<Image src={import('./_assets/tsop-type-2-44-pin-everspin-tech-mr2a16a-mram-memory.webp')} width="300px">A photo of the Everspin Technologies MR2A16A MRAM memory in the TSOP-44 (Type II) component package.[^everspin-technologies-mr2a16a-mram-memory-datasheet]</Image>
+</div>
+
+TSOP pin counts are usually between 20 and 56.
+
+Synonyms:
+
+* TSOP-2: Type II TSOP package.
+
+## Examples
+
+TSOP1-48: Body width (between the two edges with leads) is 18.40 mm (0.724"). Body length is 12.20 mm (0.480"). Pitch is 0.50 mm (0.0197").
+TSOP2-44: Body width (between the two edges with leads) is 10.16 mm (0.400"). Body length is 18.81 mm (0.741"). Pitch is 0.80 mm (0.0315").
+
+## Common Uses
+
+TSOP is a very popular package for memory ICs.
+
+## Similar To
+
+- [SOIC (small outline integrated circuit)](/pcb-design/component-packages/soic-component-package/): SOIC is another plastic, gull-wing, two-row SMD component package. However, SOIC is used for a wider range of devices (e.g. general purpose logic, small ICs), and almost always has a 1.27 mm pitch, compared to the variable pitches of TSOP package family. SOIC packages typically have fewer pins, generally between 4 and 28.
+- [TSSOP (thin shrink small outline package)](/pcb-design/component-packages/tssop-component-package/): Thinner and smaller than TSOP for the same lead count. Some TSSOP packages have an exposed pad for heatsinking.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wikipedia-tsop]: Wikipedia (2025, Sep 6). _Thin small outline package_. Retrieved 2026-04-07, from https://en.wikipedia.org/wiki/Thin_small_outline_package.
+[^everspin-technologies-mr2a16a-mram-memory-datasheet]: Everspin Technologies (2018). _MR2A16A - 256K x 16 MRAM Memory_ [datasheet]. Retrieved 2026-04-07, from https://www.everspin.com/file/156628/download.
+[^digikey-micron-tech-mt29f1g08abafawp-aat-f-flash-memory]: DigiKey. _Micron Technology Inc. MT29F1G08ABAFAWP-AAT:F_ [product page]. Retrieved 2026-04-07, from https://www.digikey.co.nz/en/products/detail/micron-technology-inc/MT29F1G08ABAFAWP-AAT:F/11591678.
