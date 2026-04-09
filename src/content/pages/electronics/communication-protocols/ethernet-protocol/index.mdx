@@ -266,13 +266,25 @@ Every SCCP transaction begins with the PSE driving the line low. If the PSE is t
 
 ### Example ICs
 
-### DP83TC Family
+#### DP83TC Family
 
 The Texas Instruments DP83TC is a family of ethernet PHY ICs.
 
 For example, the DP83TC813S-Q1 is a 100BASE-T1 PHY in a [VQFN-28 package](/pcb-design/component-packages/qfn-component-package/). It supports either MII, RGMII, RMII, or SGMII interfaces with the host MCU. <IRef iref="fig-ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic" /> shows a simplified application schematic for the DP83TC813S-Q1.
 
 <Image iref="fig-ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic" src={import('./_assets/ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic.webp')} width="600px">Simplified application schematic for the Texas Instruments DP83TC813S-Q1 100BASE-T1 PHY.[^ti-dp83tc813x-q1-100base-t1-phy-datasheet]</Image>
+
+### Conversion Modules
+
+The Microchip EV02N47A is a conversion module which converts 100BASE-TX (standard ethernet) to 100BASE-T1 (single pair ethernet). It provides a conventional RJ45 jack for the 100BASE-TX side and a 2 port terminal block for the 100BASE-T1 side. The 100BASE-T1 is driven by an onboard LAN8770M transceiver.
+
+<Image src={import('./_assets/microchip-ev02n47a-lan8770-converter-board-photo.webp')} width="400px">Photo of the Microchip EV02N47A LAN8770M converter board.[^digikey-microchip-ev02n47a-lan8770-converter-board-product-page]</Image>
+
+A block diagram showing the high-level architecture of the Microchip EV02N47A LAN8770M converter board is shown below. The two Ethernet transceivers are connected via MII.
+
+<Image src={import('./_assets/microchip-ev02n47a-block-diagram.webp')} width="700px">A block diagram showing the high-level architecture of the Microchip EV02N47A LAN8770M converter board.[^microchip-ev02n47a-lan8770-converter-board-ds]</Image>
+
+No configuration is required for the converter board to pass traffic through the two interfaces at 100 Mbps. However, a configuration tool is provided to set LAN8770M registers if custom configuration is required. The software talks via serial to the on-board PIC microcontroller that enumerates as a CDC class serial port.[^microchip-ev02n47a-lan8770-converter-board-ds]
 
 ## EtherCAT
 
@@ -319,3 +331,5 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-
 [^vector-difference-between-automotive-and-standard-ethernet-technologies]: Vector (2023-03-21). _Difference between Automotive and Standard Ethernet Technologies_ [KnowledgeBase article]. Retrieved 2025-11-02, from https://support.vector.com/kb?id=kb_article_view&sysparm_article=KB0013990&sys_kb_id=97ff00263b67eed0c1dc1d24c3e45aff&spa=1.
 [^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]: Donovan Porter (2018, Apr). _100BASE-T1 Ethernet: the evolution of automotive networking_. Texas Instruments. Retrieved 2025-11-05, from https://www.ti.com/lit/wp/szzy009/szzy009.pdf.
 [^ti-dp83tc813x-q1-100base-t1-phy-datasheet]: Texas Instruments (2022, May). _SNLS676 - DP83TC813x-Q1 TC-10 Compliant Small Form Factor 100BASE-T1 Automotive Ethernet PHY_ [datasheet]. Retrieved 2025-11-05, from https://www.ti.com/lit/ds/symlink/dp83tc813s-q1.pdf.
+[^digikey-microchip-ev02n47a-lan8770-converter-board-product-page]: Microchip. _Microchip Technology EV02N47A_ [product page]. DigiKey. Retrieved 2026-04-09, from https://www.digikey.co.nz/en/products/detail/microchip-technology/EV02N47A/13175052.
+[^microchip-ev02n47a-lan8770-converter-board-ds]: Microchip. _EVB-LAN8770M_MC - Evaluation Board User's Guide_ [datasheet]. Retrieved 2026-04-09, from https://ww1.microchip.com/downloads/en/DeviceDoc/EVB-LAN8770M-MC-Eval-Board-User-Guide-50002979A.pdf.
