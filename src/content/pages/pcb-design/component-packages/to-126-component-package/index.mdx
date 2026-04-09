@@ -1,22 +1,25 @@
 ---
 authors: [gbmhunter]
 date: 2026-04-08
-description: Temp
-lastUpdated: 2026-04-08
-tags: [component packages, PCB design, TO-126, SOT-186]
+description: Info on the TO-126 (TO-225AA, SOT-32) through-hole component package, including dimensions, thermal characteristics, heatsink mounting, and applications.
+lastUpdated: 2026-04-09
+tags: [component packages, PCB design, TO-126, SOT-32]
 title: TO-126 Component Package
 type: page
 ---
 
-TO-126 (JEDEC: Transistor Outline Package, Case Style 126) is a 3 lead through-hole component package commonly used for transistors. The package is rectangular with a hole in the middle for bonding to a heatsink. It is most easily recognized apart from similar packages by the three small indentations on the circumference of the central hole.
+TO-126 (JEDEC: Transistor Outline Package, Case Style 126) is a 3 lead through-hole component package commonly used for medium-power transistors. The package is rectangular with a hole in the middle for bonding to a heatsink. It is most easily recognized apart from similar packages by the three small indentations on the circumference of the central hole.
 
 <Image src={import('./_assets/to-126-photo.webp')} width="400px">A photo of the TO-126 component package.</Image>
+
+It normally has a metallic back for good thermal bonding to the heatsink. Care has to be taken with electrical isolation as the back is usually electrically connected to one of the leads.
 
 ## Synonyms
 
 - 12A3: The DIN name as per DIN 41869.[^wikipedia-to-216]
 - A56: The IEC name as per IEC 60191.[^wikipedia-to-216]
-- SOT-32: Name used by onsemi.[^onsemi-bd135-npn-transistor-ds]
+- KT-27: The Russian GOST 18472-88 name.[^handwiki-to-126]
+- SOT-32: Name used by NXP and onsemi.[^nxp-sot32-package][^onsemi-bd135-npn-transistor-ds]
 - TO-225AA: The name in the updated JEDEC outline system.[^wikipedia-to-216]
 
 ## Dimensions
@@ -25,9 +28,35 @@ The dimensions of the TO-126 component package from onsemi are shown below.[^ons
 
 <Image src={import('./_assets/to-126-dimensions.webp')} width="600px">The dimensions of the TO-126 component package from onsemi.[^onsemi-bd135-npn-transistor-ds]</Image>
 
+The body is approximately 11 mm (H) × 8 mm (W) × 3.25 mm (T), making it significantly smaller than the [TO-220](/pcb-design/component-packages/to-220-component-package/).[^eesemi-to126]
+
+## Thermal Characteristics
+
+The TO-126 is a medium-power package, positioned between the small-signal [TO-92](/pcb-design/component-packages/to-92-component-package/) and the larger [TO-220](/pcb-design/component-packages/to-220-component-package/). For a typical device in this package (e.g. onsemi's BD139):[^onsemi-bd135-npn-transistor-ds]
+
+- Junction-to-case thermal resistance ($R_{\theta JC}$): 10 °C/W (max)
+- Junction-to-ambient thermal resistance ($R_{\theta JA}$): 100 °C/W (max, free air)
+- Maximum power dissipation: 12.5 W at Tc = 25°C, 1.25 W in free air with no heatsink
+
+These values are inferior to the TO-220, which typically achieves 1-4 °C/W junction-to-case.
+
+## Heatsink Mounting
+
+The central mounting hole accepts an **M3 screw** to fix the package to a heatsink.[^eevblog-to126-heatsink-mounting] In BJT devices the metal backing is electrically connected to the **collector** pin, so a bare metal heatsink in contact with the backing will also be at the collector voltage — a short-circuit risk if the heatsink touches other circuitry.
+
+For electrically isolated mounting, an insulating washer (mica or silicone pad) and thermal compound should be used between the package and the heatsink, along with a plastic shoulder washer to insulate the screw shank from the heatsink hole.[^eevblog-to126-heatsink-mounting] onsemi's AN1040 application note covers mounting considerations for this package in detail.[^onsemi-an1040-mounting]
+
+## Applications
+
+Common applications include:
+
+- **Audio amplifier driver stages**: Complementary NPN/PNP pairs such as BD135/BD136, BD137/BD138, and BD139/BD140 are classic examples.[^st-bd135-datasheet]
+- **Darlington transistors**: Devices such as the BD681/BD682 for relay driving, motor control, and high-load switching.
+- **Power switching**: Relay and solenoid drivers, battery chargers.
+
 ## Similar To
 
-- [TO-220](/pcb-design/component-packages/to-220-component-package/): A very popular through-hole package which looks similar to the TO-126.
+- [TO-220](/pcb-design/component-packages/to-220-component-package/): A very popular through-hole package which looks similar to the TO-126. The TO-220 has a larger body (approx. 15.9 mm x 10.4 mm x 4.6 mm), better thermal performance (~1-4 °C/W junction-to-case vs ~10 °C/W for TO-126), and can dissipate significantly more power when mounted to a heatsink.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -35,3 +64,9 @@ The dimensions of the TO-126 component package from onsemi are shown below.[^ons
 
 [^wikipedia-to-216]: Wikipedia (2024, Oct 21). _TO-126_ [wiki]. Retrieved 2026-04-08, from https://en.wikipedia.org/wiki/TO-126.
 [^onsemi-bd135-npn-transistor-ds]: onsemi (2017, Nov). _BD135 / 137 / 139 - NPN Epitaxial Silicon Transistor_ [datasheet]. Retrieved 2026-04-08, from https://www.onsemi.com/pdf/datasheet/bd139-d.pdf.
+[^handwiki-to-126]: HandWiki. _Engineering:TO-126_ [wiki]. Retrieved 2026-04-09, from https://handwiki.org/wiki/Engineering:TO-126.
+[^nxp-sot32-package]: NXP Semiconductors. _SOT32: TO-126 Single-ended Flange Mount_ [package page]. Retrieved 2026-04-09, from https://www.nxp.com/packages/SOT32.html.
+[^eesemi-to126]: EESemi. _TO-126 Package_. Retrieved 2026-04-09, from https://eesemi.com/to126.htm.
+[^eevblog-to126-heatsink-mounting]: EEVBlog (2013). _How to fix TO-126 (a.k.a. SOT-32 a.k.a. TO-225AA) to heatsink without shorting_ [forum post]. Retrieved 2026-04-09, from https://www.eevblog.com/forum/beginners/how-to-fix-to-126-(a-k-a-sot-32-a-k-a-to-225aa)-to-heatsink-without-shorting/.
+[^onsemi-an1040-mounting]: onsemi. _AN1040: Mounting Considerations for Power Semiconductors_ [application note]. Retrieved 2026-04-09, from https://www.onsemi.com/pub/Collateral/AN1040-D.PDF.
+[^st-bd135-datasheet]: STMicroelectronics (2008, May). _BD135 - BD136 / BD137 - BD138 / BD139 - BD140: Complementary low voltage transistor_ [datasheet]. Retrieved 2026-04-09, from https://www.st.com/resource/en/datasheet/bd135.pdf.

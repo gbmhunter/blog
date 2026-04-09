@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2015-11-22
 description: Logic analysers are electronic tools which analyse digital signals.
-lastUpdated: 2025-11-07
-tags: [electronics, tools, logic analysers, Saleae, DreamSourceLab]
+lastUpdated: 2026-04-09
+tags: [electronics, tools, logic analysers, Saleae, DreamSourceLab, Digilent, Analog Discovery Pro, Waveforms]
 title: Logic Analysers
 type: page
 ---
@@ -28,8 +28,30 @@ DreamSourceLab provides the _DSView_ software for viewing the digital signals fr
 
 Whilst a setup `.exe` is provided for Windows and a `.dmg` for MacOS, no pre-built executables are provided for Linux, and you have to build yourself from the source code. Easy instructions are provided in the `INSTALL` text file.
 
+## Digilent Analog Discovery Pro
+
+The Digilent Analog Discovery Pro is a family of mixed-signal oscilloscopes (MSOs). They feature a traditional oscilloscope, digital multimeter, programmable power supplies, waveform generator, logic analyzer data logger and general purpose I/O. The devices pair with the Waveforms GUI software to provide a complete solution for signal acquisition, analysis and control. Scripting capabilities are also available in a number of languages such as Python.
+
+<Image src={import('./_assets/photo-of-digilent-analog-discovery-pro-5490.webp')} width="400px">A photo of the Digilent Analog Discovery Pro ADP5490.[^digilent-analog-discovery-pro-5000-series-reference-manual]</Image>
+
+There are the following series within the Analog Discovery Pro family (prices as of April 2026):
+
+- 2000 series: Priced US$750 - 2,500. Entry range.
+- 3000 series: Priced US$900 - 1,500. Mid-range.
+- 5000 series. High-end product line. Priced US$3,500 - 7,000. Only supported on Windows.[^digilent-analog-discovery-pro-5000-series-reference-manual]
+  - ADP5250: 100 MHz, 500 MS/s, 2-channel. End-of-life.
+  - ADP5470: 350 MHz, 1.5 GS/s, 4-channel. US$3,500.
+  - ADP5490: 500 MHz, 2.0 GS/s, 4-channel.
+
+The Waveforms GUI software is built using Qt (yay, not an Electron app!) and appears to be performant.
+
+<Image src={import('./_assets/capturing-sinewave-on-oscilloscope-in-digilent-waveforms.webp')} width="700px">A screenshot of the oscilloscope tool in the Digilent Waveforms software.</Image>
+
+One let down of at least the 5470 model is that the oscilloscope doesn't appear to support a continuous streaming mode (this is something the Saleae logic analysers and MSOs support well). You are stuck with either setting large buffer sizes and waiting for the buffer to fill up (it only renders the captured data once the buffer is full), or using the logger tool which has a maximum sampling rate of 10 samples per second. 
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^saleae-logic-mso-ds]: Saleae. _Technical Data Sheet - Logic MSO_ [datasheet]. Retrieved 2025-11-07, from https://downloads.saleae.com/specs/logic_mso_data_sheet.pdf.
+[^digilent-analog-discovery-pro-5000-series-reference-manual]: Digilent. _Analog Discovery Pro 5000 Series Reference Manual_. Retrieved 2026-04-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-5000-series/reference-manual.
