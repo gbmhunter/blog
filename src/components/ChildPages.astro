@@ -81,8 +81,13 @@ for (const collectionPage of allCollections) {
   childPages.push(collectionPage);
 }
 
-// Sort child pages alphabetically by title
-childPages.sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
+// Sort chronologically (oldest first) in the updates section, alphabetically elsewhere
+const isUpdatesSection = currPageSlug?.startsWith('updates');
+if (isUpdatesSection) {
+  childPages.sort((a: any, b: any) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+} else {
+  childPages.sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
+}
 
 // console.log(Astro.params); // slug: electronics/circuit-design
 // console.log(Astro.url); // pathaame: /electronics/circuit-design/
