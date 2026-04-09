@@ -13,7 +13,11 @@ type: page
 
 ## History
 
-Originally, ethernet used a single coax cable (10base2).
+Ethernet is largely considered invented by Bob Metcalfe and David Briggs in 1973 at Xerox PARC. The name "Ethernet" comes from the concept of the aether -- a medium once thought to carry light waves. It was inspired by ALOHAnet, a network designed in the late 1960s at the University of Hawaii.[^wikipedia-ethernet]
+
+`10BASE5` ("Thicknet") was built with yellow coax cable approx. 9.5 mm in diameter. The name comes from the fact it was 10 Mbps and the cable could be up to 500 m long. Nodes tapped into in with a vampire tap, a clamp with a needle that pierced the cable without cutting it. `10BASE2` ("Thinnet") was a thinner, cheaper coax cable terminated with BNC connectors.
+
+<Image src={import('./_assets/10base5-vampire-tap-photo.webp')} width="400px">A photo of a 10BASE5 vampire tap.[^uni-of-helsinki-cabletron-vampire-tap]</Image>
 
 ## Components
 
@@ -27,8 +31,8 @@ Magnetics are part of the Ethernet specification for all xBASE-T networks (which
 
 There are two options for magnetics, either:
 
-. Buy a ethernet magnetics component for your PCB.
-. Buy a jack (connector) which already has the magnetics integrated into it. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
+- Buy a ethernet magnetics component for your PCB.
+- Buy a jack (connector) which already has the magnetics integrated into it. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
 
 ### Physical Layer (PHY)
 
@@ -197,7 +201,7 @@ All SPE standards have `-T1` in their name, since the `1` refers to a single twi
     </tr>
     <tr>
       <td rowspan="3">2020</td> {/* Year */}
-      <td rowspan="3">IEEE 802.3ch</ td> {/* Standard (1) */}
+      <td rowspan="3">IEEE 802.3ch</td> {/* Standard (1) */}
       <td>2.5GBASE-T1</td> {/* Standard (2) */}
       <td>2.5 Gbit/s</td> {/* Speed */}
       <td rowspan="3">15 m</td> {/* Max. Distance */}
@@ -288,18 +292,18 @@ No configuration is required for the converter board to pass traffic through the
 
 ## EtherCAT
 
-EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
+EtherCAT is a communication protocol with its physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
 
 - Each device is daisy chained to the next via Ethernet cable.
 - The master emits a Ethernet frame (telegram).
-- Each slave device reads the data addressed to it "on the fly", and inserts it's own data into the frame "on the fly".
+- Each slave device reads the data addressed to it "on the fly", and inserts its own data into the frame "on the fly".
 - Propagation times between slaves are only limited by hardware propagation delays.
 
 The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC is used. However, whilst the slave node use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
 
 ## lwIP
 
-lwIP is a BSD-licensed implementation of the TCP/IP protocol suite with a focus on small resource (RAM and flash memory) usage. It is designed for embedded systems, and requires only 10's of kB of free RAM and 40kB's of ROM (e.gc. flash)[^lwip-homepage].
+lwIP is a BSD-licensed implementation of the TCP/IP protocol suite with a focus on small resource (RAM and flash memory) usage. It is designed for embedded systems, and requires only 10's of kB of free RAM and 40kB's of ROM (e.g. flash)[^lwip-homepage].
 
 It has support for IP, IPv6, UDP, TCP, ARP, PPPoE and more[^lwip-homepage].
 
@@ -307,7 +311,7 @@ It has support for IP, IPv6, UDP, TCP, ARP, PPPoE and more[^lwip-homepage].
 
 ### WIZnet W5xxx Family
 
-The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker community. This family of ICs is used by the Arduino Ethernet board are Arduino Ethernet Shield.
+The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker community. This family of ICs is used by the Arduino Ethernet board and the Arduino Ethernet Shield.
 
 * W5200: This chip implements the PHY, the TCP/IP stack (fully hardwired), and the 10/100 MAC Ethernet MAC, in a QFN-48 package. It uses the [SPI Protocol](/electronics/communication-protocols/spi-communication-protocol/) to talk to a microcontroller. It's power save features include power-down mode and WOL (wake on LAN). It runs of 3.3V but has 5V I/O tolerance.
 * [W5500](https://www.wiznet.io/product-item/w5500/): Supports up to 8 independent sockets (i.e. 8 different connections to different ports). Contains a 10BaseT/100BaseTX PHY. Like the W5200 is runs of 3.3V but has 5V I/O tolerance.
@@ -316,7 +320,7 @@ The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker c
 
 ### Microchip LAN867x Family
 
-Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-T1S, 10BASE-T1S], allowing a multi-drop architecture of "at least 8 nodes and a minimum 25m of length".
+Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use 10BASE-T1S, allowing a multi-drop architecture of "at least 8 nodes and a minimum 25m of length".
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -333,3 +337,5 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use [^10BASE-
 [^ti-dp83tc813x-q1-100base-t1-phy-datasheet]: Texas Instruments (2022, May). _SNLS676 - DP83TC813x-Q1 TC-10 Compliant Small Form Factor 100BASE-T1 Automotive Ethernet PHY_ [datasheet]. Retrieved 2025-11-05, from https://www.ti.com/lit/ds/symlink/dp83tc813s-q1.pdf.
 [^digikey-microchip-ev02n47a-lan8770-converter-board-product-page]: Microchip. _Microchip Technology EV02N47A_ [product page]. DigiKey. Retrieved 2026-04-09, from https://www.digikey.co.nz/en/products/detail/microchip-technology/EV02N47A/13175052.
 [^microchip-ev02n47a-lan8770-converter-board-ds]: Microchip. _EVB-LAN8770M_MC - Evaluation Board User's Guide_ [datasheet]. Retrieved 2026-04-09, from https://ww1.microchip.com/downloads/en/DeviceDoc/EVB-LAN8770M-MC-Eval-Board-User-Guide-50002979A.pdf.
+[^wikipedia-ethernet]: Wikipedia (2026, Mar 16). _Ethernet_ [wiki]. Retrieved 2026-04-09, from https://en.wikipedia.org/wiki/Ethernet.
+[^uni-of-helsinki-cabletron-vampire-tap]: Matthew Millman (2012). _Cabletron 10BASE5 Ethernet transceiver with AMP vampire tap_. University of Helsinki. Retrieved 2026-04-09, from https://www.cs.helsinki.fi/u/kutvonen/index_files/ethernet.html.
