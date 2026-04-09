@@ -268,6 +268,18 @@ caption, .table-caption {
   color: var(--sl-color-gray-2);
 }
 
+/* Active state for group header links (when the parent page itself is the current page).
+   Must be unlayered and more specific than .group-label .large to win the cascade. */
+.group-label a.group-link[aria-current='page'],
+.group-label a.group-link[aria-current='page']:hover,
+.group-label a.group-link[aria-current='page']:focus {
+  color: var(--sl-color-text-invert);
+  background-color: var(--sl-color-text-accent);
+  border-radius: 0.25rem;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+
 .sidebar-pane a {
   font-size: var(--sl-text-body-sm);
 }

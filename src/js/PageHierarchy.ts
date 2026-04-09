@@ -192,16 +192,16 @@ export function convertNodesToSidebarData(node: PageNode) : SidebarData {
     items.push(convertNodesToSidebarData(sortedChildren[i]));
   }
 
-  // If the slug is defined, then this branch node also has a page. Add it
-  // to the items array
-  if (items.length > 0 && node.label !== 'root') {
-    // Insert Overview page at the top
-    // so it is shown as the first item
-    // in the UI
-    items.unshift({ label: '[Overview]', link: node.slug });
+  // If this non-root branch node has its own page, encode the slug into the label
+  // using a null-byte separator so the sidebar component can render the group header
+  // as a navigable link. We encode in the label string because Starlight's strict
+  // schema validation strips any extra properties from group objects.
+  let finalLabel = label;
+  if (node.label !== 'root' && node.slug) {
+    finalLabel = `${label}\x00${node.slug}`;
   }
 
   // Make sure that all branch nodes are collapsed by default. Client side
   // script will expand the relevant ones so the current page is visible in the menu.
-  return { label, items, collapsed: true };
+  return { label: finalLabel, items, collapsed: true };
 }

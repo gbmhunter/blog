@@ -36,6 +36,7 @@ export default defineConfig({
         Head: "./src/components/starlight/Head.astro",
         MarkdownContent: './src/components/starlight/MarkdownContent.astro',
         PageTitle: './src/components/starlight/PageTitle.astro',
+        Sidebar: './src/components/starlight/Sidebar.astro',
         SkipLink: './src/components/starlight/SkipLink.astro', // Google Analytics is added in here
         SocialIcons: './src/components/starlight/SocialIcons.astro',
       },  
