@@ -1,0 +1,78 @@
+---
+authors: [gbmhunter]
+date: 2026-04-13
+description: Barrel jack connectors are commonly used for DC power connections. This page covers their sizes, pinout, PCB footprints, and more.
+lastUpdated: 2026-04-13
+tags: [electronics, connectors, electronic components, barrel jacks, DC power, coaxial power connectors, 5.5mm, 2.1mm, 2.5mm, centre positive, centre negative]
+title: Barrel Jacks
+type: page
+---
+
+_Barrel jack connectors_ (a.k.a. _coaxial power connectors_[^wikipedia-coaxial-power-connector] or _DC power connectors_) are cylindrical two-contact connectors commonly used to supply DC power to all sorts of general purpose and specialised electronic devices. They consist of a hollow cylindrical outer contact (sleeve) and a central pin contact.
+
+## Sizes
+
+Barrel jacks are defined by two dimensions: the **outer diameter (OD)** of the sleeve and the **inner diameter (ID)** of the central pin. The most common combinations are (sorted by OD, then ID):
+
+| Outer Diameter (mm) | Inner Diameter (mm) | Common Use                                                |
+|---------------------|---------------------|-----------------------------------------------------------|
+| 3.5                 | 1.3                 | Smaller, used on compact/portable devices.                |
+| 5.5                 | 2.1                 | Most popular. Used by many Arduino boards, wall adapters. |
+| 5.5                 | 2.5                 | Similar to 5.5/2.1 but with a slightly larger pin.        |
+| 6.3                 | 3.0                 | Larger, used for higher-current applications.             |
+
+The 5.5mm OD / 2.1mm ID is by far the most prevalent in hobby electronics and commercial DC power supplies. 5.5/2.5 is not as common but presumably chosen if slightly higher current capabilities and/or ruggedness is required.
+
+<Aside type="caution">
+The 5.5/2.1 and 5.5/2.5 connectors look nearly identical and can be confused easily — it is worth verifying the pin diameter before assuming compatibility. A 2.1mm plug will fit loosely in a 2.5mm jack and may cause intermittent contact, but a 2.5mm plug will not fit into a 2.1mm jack at all, as the centre pin is too large for the socket.
+</Aside>
+
+## Polarity
+
+Barrel jack connectors are not polarised by the physical connector itself, so the polarity convention must be agreed upon between the plug and jack. The two conventions are:
+
+* **Centre positive**: The central pin is the positive supply rail, and the outer sleeve is ground. This is by far the most common convention.
+* **Centre negative**: The outer sleeve is the positive supply rail, and the central pin is ground. Uncommon.
+
+Most wall-wart power adapters and development boards (e.g. Arduino Uno) use centre positive. It is important to verify polarity before connecting a power source to a device, as reversing the polarity can damage or destroy electronics.
+
+## Gender
+
+As with most coaxial style connectors, the gender of a barrel jack connector is determined by the shape of the inner contact.
+
+- Male: The inner contact is a pin.
+- Female: The inner contact is a socket.
+
+## PCB Footprints
+
+Barrel jacks are available in through-hole (THT) and surface-mount (SMT) variants:
+
+* **Through-hole**: Provides a robust mechanical connection to the PCB. Common for panel-mount or board-edge mounting.
+* **Surface-mount**: Lower profile and suitable for automated assembly, but provides less mechanical strain relief.
+
+## Current and Voltage Ratings
+
+Typical barrel jack connectors are rated for:
+
+* **Voltage**: 12-24 VDC (some rated up to 48V)[^wikipedia-coaxial-power-connector]
+* **Current**: 2-5 A, depending on the contact material and construction[^same-sky-pj-002a][^same-sky-pj-036ah-smt-tr-datasheet]
+
+For higher-current applications (> 5 A), barrel jacks are generally not appropriate and alternatives such as T Plugs, XT30/XT60 connectors or Anderson Powerpole connectors should be considered.
+
+## Locking Variants
+
+Standard barrel jacks have no locking mechanism and can be pulled out accidentally. Locking variants are available that add a threaded collar or snap-lock to retain the plug. These are used in industrial or harsh-environment applications where accidental disconnection is unacceptable.
+
+## Waterproofing
+
+DC barrel jacks are not designed generally designed to be waterproof. However, one example of waterproofing I have seen is on a Tapo security camera, in where a silicone washer was provided with the connectors. The washer is slid over the sleeve of the female connector. When they are mated, the washer is compressed between the two connectors, creating a seal as shown below. Presumably this will make a reasonable seal against light rain or mist, but is not designed for submersion.
+
+<Image src={import('./_assets/waterproofing-barrel-jack-with-silicone-washer-tapo-camera.webp')} width="900px">A photo of a barrel jack connection which has been "waterproofed" with a silicone washer. This was the power connector for a Tapo security camera.</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wikipedia-coaxial-power-connector]: Wikipedia (2026, Mar 26). _Coaxial power connector_ [wiki]. Retrieved 2026-04-13, from https://en.wikipedia.org/wiki/Coaxial_power_connector.
+[^same-sky-pj-002a]: Same Sky. _PJ-002A | Jacks | DC Power Connectors_ [product page]. Retrieved 2026-04-13, from https://www.sameskydevices.com/product/interconnect/connectors/dc-power-connectors/jacks/pj-002a.
+[^same-sky-pj-036ah-smt-tr-datasheet]: Same Sky (2025, Sep 30). _PJ-036AH-SMT-TR - DC Power Jack_ [datasheet]. Retrieved 2026-04-13, from https://www.sameskydevices.com/product/resource/pj-036ah-smt-tr.pdf.
