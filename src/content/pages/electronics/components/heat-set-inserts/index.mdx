@@ -1,0 +1,80 @@
+---
+authors: [gbmhunter]
+date: 2026-04-16
+description: Heat set inserts are threaded metal inserts that are pressed into thermoplastic parts using heat, providing strong and durable threads for screw fasteners.
+image: ./_assets/cover-image.webp
+lastUpdated: 2026-04-16
+tags: [heat set inserts, threaded inserts, 3D printing, fasteners, soldering iron, brass, M2, M3, M4, thermoplastic]
+title: Heat Set Inserts
+type: page
+---
+
+Heat set inserts (also called _heat staking inserts_ or _threaded heat inserts_) are small metal (typically brass) threaded inserts designed to be pressed into thermoplastic material using heat. They create strong and durable threaded holes in plastic parts, and are generally considered to be a better alternative to tapping threads directly into plastic (one exception may be for single insert applications in where the screw is only tightened up once, never giving the chance for the plastic thread to strip).
+
+<Image src={import('./_assets/range-of-heat-set-inserts.webp')} width="200px">A photo showing a range of different sized heat set inserts.</Image>
+
+## How They Work
+
+A heat set insert is placed at the entrance of a pre-drilled or molded hole in a thermoplastic part. A soldering iron (or dedicated heat set tip) is then pressed against the insert, heating it until the surrounding plastic softens. The insert is then pushed flush with (or slightly below) the surface. As the plastic cools, it re-solidifies around the knurled outer surface of the insert, locking it in place mechanically.
+
+The result is a threaded hole that can accept a standard machine screw (e.g. M2, M3, M4) and withstand repeated assembly and disassembly without stripping.
+
+## Common Materials
+
+Most heat set inserts are made from **brass**, which offers:
+
+- Good thermal conductivity (helps the insert heat evenly)
+- Corrosion resistance
+- Sufficient hardness for most plastic fastening applications
+
+Copper is another common material for inserts (e.g. the Multicomp Pro Threaded Inserts range uses copper). Stainless steel inserts are also available for higher-strength applications, though they are less common.
+
+## Compatible Plastics
+
+Heat set inserts work best with thermoplastics that soften when heated. Common compatible plastics include:
+
+- **PLA** — very common in 3D printing, works well
+- **ABS** — works well, slightly more forgiving due to higher melt temperature
+- **PETG** — works well
+- **Nylon (PA)** — works, but requires care due to its tendency to absorb moisture
+- **PC (Polycarbonate)** — works, requires higher temperatures
+
+Heat set inserts do not work with thermoset plastics (e.g. epoxy, bakelite) as they do not soften when reheated.
+
+## Sizing
+
+Heat set inserts are sized by the thread they accept (M2, M2.5, M3, M4, M5, etc.) and their length. The hole in the plastic should be sized to the insert's outer diameter — typically a few tenths of a millimetre smaller to ensure a tight fit. Consult the manufacturer's datasheet for the recommended hole diameter.
+
+## Installation Tips
+
+- Use a **dedicated heat set tip** for your soldering iron for best results. These tips have a flat, slightly recessed end that pilots the insert and keeps it perpendicular.
+- Set the soldering iron to around **200-230°C** for PLA, higher for ABS or PC.
+- Apply **gentle, consistent downward pressure** — let the heat do the work. Forcing the insert in too quickly can cause the plastic to fold rather than flow cleanly around the knurls.
+- Insert to **slightly below flush** to ensure a flat mating surface for the screw head or mating part.
+- Allow the part to **cool before applying load** — the plastic needs to re-solidify around the insert for full holding strength.
+
+<Aside type="caution">
+Getting melted plastic into the inside thread of the insert can give you really bad day. It will jam up the thread and you will not be able to insert the screw. Take care to make sure the plastic does not flow into the inside of the insert when pushing it into the plastic!
+</Aside>
+
+## Insert Tools
+
+Insert tools (like the one shown below) can help you push the insert into the plastic in a easier, more reliable way (compared to just holding a soldering iron in your hand).
+
+<Image src={import('./_assets/heat-set-insert-tool-aliexpress-evie-store-photo.webp')} width="500px">A photo of a heat set insert tool from Aliexpress (Evie Store).[^aliexpress-evie-store-heat-set-inserts-tool]</Image>
+
+## Example Parts
+
+### TR Fastenings Heat-Sert Range
+
+The TR Fastenings Heat-Sert range includes headed and unheaded (headed refers to a small ring at the top which sits flush with the plastic surface) inserts in a range of diameters from M2 to M8 (with M3 to M6 being the commonly stocked options).
+
+<Image src={import('./_assets/tr-fastenings-heat-sert-photo-and-dimensions.webp')} width="700px">A photo and dimensions of the various parts in the TR Fastenings Heat-Sert family.[^tr-fastenings-heat-sert-datasheet]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^aliexpress-evie-store-heat-set-inserts-tool]: Evie Store. _Heat Set Inserts Tool M2 M3 M4 M5 Brass Threaded Insert Nut Digital Soldering Iron for 3D Printing Plastic PCB Welding Press Nut_ [product page]. AliExpress. Retrieved 2026-04-16, from https://www.aliexpress.com/item/1005009170943928.html.
+[^tr-fastenings-heat-sert-datasheet]: TR Fastenings. _Heat-Sert Unheaded (UHBRHE) Headed (HDBRHE)_ [datasheet]. Retrieved 2026-04-16, from https://www.farnell.com/datasheets/1908097.pdf.
+

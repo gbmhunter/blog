@@ -28,9 +28,34 @@ LabJack also maintains the Python library called [LabJackPython](https://support
 
 For documentation on the LabJackPython, it is recommended that you read the docstrings in the source code.
 
+### Installing Exodriver on Linux
+
+Make sure you have `build-essential` and `libusb-1.0-0-dev` installed:
+
+```bash
+sudo apt install -y build-essential libusb-1.0-0-dev
+```
+
+Clone the Exodriver repository:
+
+```bash
+git clone https://github.com/labjack/exodriver.git
+```
+
+`cd` into the repository and run the install script:
+
+```bash
+cd exodriver
+./install.sh
+```
+
+The build/install should only take seconds to complete.
+
+<Image src={import('./_assets/exodriver-being-installed-on-linux.webp')} width="500px">The terminal output while installing Exodriver on Linux.</Image>
+
 ## LabJack U3
 
-The LabJack U3 comes in a low voltage (U3-LV) and high voltage (U3-HV) version. This refers to the analogue input voltage range. The U3-LV has a $0-2.4V$ or $0-3.6V$ analogue input voltage range, while the U3-HV has a $\pm 10V$ or $- 10 / +20V$ analogue input voltage range.[^labjack-u3-product-page]
+The LabJack U3 comes in a low voltage (U3-LV) and high voltage (U3-HV) version. The LV/HV refers to the analogue input voltage range. The U3-LV has a $0-2.4V$ or $0-3.6V$ analogue input voltage range, while the U3-HV has a $\pm 10V$ or $- 10 / +20V$ analogue input voltage range.[^labjack-u3-product-page]
 
 All of the digital I/O pins on the U3 have 3 possible states: input, output-high and output-low. When configured as an input, there is always a $100k\Omega$ pull-up resistor connected to 3.3V. When configured as an output, the pin is either connected to 3.3V or GND through a small series resistor.
 

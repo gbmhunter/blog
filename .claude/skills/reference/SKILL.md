@@ -13,14 +13,20 @@ Look at the conversation context to determine which `.mdx` file is currently bei
 
 ## Step 2: Fetch the URL
 
-Use WebFetch on the provided URL. Extract:
+Use the Chrome browser tools (NOT WebFetch) to navigate to the URL and extract the page content. This avoids bot-blocking that WebFetch often triggers. Steps:
+
+1. Call `mcp__claude-in-chrome__tabs_context_mcp` (with `createIfEmpty: true`) to get a tab ID.
+2. Call `mcp__claude-in-chrome__navigate` to navigate to the URL.
+3. Call `mcp__claude-in-chrome__get_page_text` to read the page content.
+
+Extract from the page:
 - **Title** — the page's main title (use the `<title>` tag or `<h1>` as a fallback)
 - **Author** — the author's name if present (look for bylines, meta tags, or a clear "by X" attribution)
 - **Publication date** — if present (look for publish dates, `<time>` tags, or meta tags)
 - **Publisher/Site name** — the organisation or site name (look for the site's logo text, `og:site_name`, or the domain name as a last resort)
 - **Content type** — what kind of page it is (see type guide below)
 
-If the page redirects, follow the redirect and fetch from the final URL.
+If the page redirects, follow the redirect. The final URL shown after navigation is the canonical URL to use in the reference.
 
 ## Step 3: Determine the content type tag
 
@@ -100,7 +106,7 @@ Use the Edit tool to make the insertion. After editing, confirm to the user what
 
 ## Edge cases
 
-- **Can't fetch the URL** (paywalled, auth required, etc.): Tell the user what information you need — title, author, date, publisher — and construct the reference from what they provide.
+- **Can't fetch the URL** (paywalled, auth required, Chrome not available, etc.): Tell the user what information you need — title, author, date, publisher — and construct the reference from what they provide.
 - **Duplicate key**: If the same key already exists in the file, append `-2` (or `-3`, etc.) to make it unique.
 - **Wikipedia pages**: The author is always "Wikipedia", the date is the page's last edited date (shown in the footer), and the type is `[wiki]`.
 - **GitHub repos**: Author is the repo owner username, title is `owner/repo-name`, type is `[GitHub repository]`, no publication date.

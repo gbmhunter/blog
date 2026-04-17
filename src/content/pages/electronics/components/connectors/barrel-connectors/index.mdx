@@ -1,0 +1,178 @@
+---
+authors: [gbmhunter]
+date: 2026-04-13
+description: Barrel connectors are commonly used for DC power connections. This page covers their sizes, pinout, PCB footprints, and more.
+lastUpdated: 2026-04-14
+tags: [electronics, connectors, electronic components, barrel connectors, barrel jacks, DC power, coaxial power connectors, 5.5mm, 2.1mm, 2.5mm, centre positive, centre negative]
+title: Barrel Connectors
+type: page
+---
+
+_Barrel connectors_ (a.k.a. _coaxial power connectors_[^wikipedia-coaxial-power-connector] or _DC power connectors_) are cylindrical two-contact connectors commonly used to supply DC power to all sorts of general purpose and specialised electronic devices. They consist of a hollow cylindrical outer contact (sleeve) and a central pin contact. The female side is commonly called a _barrel jack_ and the male side a _barrel plug_.
+
+<div style={{ display: 'flex', flexDirection: 'row', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
+<Image src={import('./_assets/photo-of-inline-barrel-plug-and-jack-multicomp-pro.webp')} width="400px">A photo of the inline barrel plug and jack connector from Multicomp Pro.[^element14-multicomp-pro-jr8306-1-5m]</Image>
+<Image src={import('./_assets/photo-of-dyson-vacuum-cleaner-barrel-connector.webp')} width="200px">A photo of the barrel connector used on a battery powered Dyson vacuum cleaner. This connects from the base unit to the vacuum cleaner for charging.</Image>
+</div>
+
+## Sizes
+
+Barrel connectors are defined by two dimensions: the **outer diameter (OD)** of the sleeve and the **inner diameter (ID)** of the central pin. The most common combinations are (sorted by OD, then ID):
+
+<table>
+  <thead>
+    <tr>
+      <th>Outer Diameter (mm)</th>
+      <th>Inner Diameter (mm)</th>
+      <th>Standard</th>
+      <th>Common Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2.35</td>
+      <td>0.70</td>
+      <td>EIAJ-01</td>
+      <td>Very small. Older Nokia phones, Bluetooth headsets. Rated 0-3.15 V.</td>
+    </tr>
+    <tr>
+      <td>3.5</td>
+      <td>1.3</td>
+      <td>-</td>
+      <td>Compact/portable devices, lower voltages and currents.</td>
+    </tr>
+    <tr>
+      <td>3.5</td>
+      <td>1.35</td>
+      <td>-</td>
+      <td>Common alternative to 3.5/1.3. Canon camera chargers (e.g. CA-570), some Alcatel phones.</td>
+    </tr>
+    <tr>
+      <td>4.0</td>
+      <td>1.70</td>
+      <td>EIAJ-02</td>
+      <td>Sony PSP charger, some Lenovo adapters. Rated 3.15-6.3 V.</td>
+    </tr>
+    <tr>
+      <td>4.75</td>
+      <td>1.70</td>
+      <td>EIAJ-03</td>
+      <td>Various portable electronics. Rated 6.3-10.5 V.</td>
+    </tr>
+    <tr>
+      <td>5.5</td>
+      <td>2.1</td>
+      <td>IEC 60130-10 Type A</td>
+      <td>Most popular barrel connector. Used on many wall adapters, guitar effect pedals, Arduino boards, etc.</td>
+    </tr>
+    <tr>
+      <td>5.5</td>
+      <td>2.5</td>
+      <td>IEC 60130-10 Type A</td>
+      <td>Similar to 5.5/2.1 but with a slightly larger pin. Miniware TS100 soldering iron. Defined in the same standard as the 5.5/2.1.</td>
+    </tr>
+    <tr>
+      <td>5.5</td>
+      <td>3.3</td>
+      <td>EIAJ-04</td>
+      <td>Less common. Some specialised devices. Rated 10.5-13.5 V.</td>
+    </tr>
+    <tr>
+      <td>6.0</td>
+      <td>2.1</td>
+      <td>IEC 60130-10 Type B</td>
+      <td>Less common variant of the 5.5/2.1 family.</td>
+    </tr>
+    <tr>
+      <td>6.3</td>
+      <td>3.1</td>
+      <td>IEC 60130-10 Type D</td>
+      <td>Larger, higher-current applications.</td>
+    </tr>
+    <tr>
+      <td>6.5</td>
+      <td>4.3</td>
+      <td>EIAJ-05</td>
+      <td>Sony laptop computers, scanning radios. Rated 13.5-18 V.</td>
+    </tr>
+    <tr>
+      <td>7.4</td>
+      <td>5.0</td>
+      <td>-</td>
+      <td>Used on many (e.g. HP, Dell, Asus, Sony) laptop computers. Used on Dyson handheld vacuum cleaners. Some have a third contact, a 1.4mm "smart pin" used for digital communication between laptop and charger for communicating voltage/current capabilities.</td>
+    </tr>
+  </tbody>
+</table>
+
+The 5.5mm OD / 2.1mm ID is by far the most prevalent in hobby electronics and commercial DC power supplies. 5.5/2.5 is not as common but presumably chosen if slightly higher current capabilities and/or ruggedness is required. The EIAJ standard (EIAJ RC-5320A) defines five plug sizes each associated with a specific voltage range, while IEC 60130-10 defines several types by OD/ID only.[^wikipedia-coaxial-power-connector] Many more obscure sizes exist — a comprehensive listing can be found on the Wikipedia coaxial power connector article.[^wikipedia-coaxial-power-connector]
+
+<Aside type="caution">
+The 5.5/2.1 and 5.5/2.5 connectors look nearly identical and can be confused easily — it is worth verifying the pin diameter before assuming compatibility. A 2.1mm plug will fit loosely in a 2.5mm jack and may cause intermittent contact, but a 2.5mm plug will not fit into a 2.1mm jack at all, as the centre pin is too large for the socket.
+</Aside>
+
+## Polarity
+
+Barrel connectors are not polarised by the physical connector itself, so the polarity convention must be agreed upon between the plug and jack. The two conventions are:
+
+* **Centre positive**: The central pin is the positive supply rail, and the outer sleeve is ground. This is by far the most common convention.
+* **Centre negative**: The outer sleeve is the positive supply rail, and the central pin is ground. Uncommon.
+
+Most wall-wart power adapters and development boards (e.g. Arduino Uno) use centre positive. It is important to verify polarity before connecting a power source to a device, as reversing the polarity can damage or destroy electronics.
+
+## Gender
+
+As with most coaxial style connectors, the gender of a barrel connector is determined by the shape of the inner contact.
+
+- Plug (male): The inner contact is a pin.
+- Jack (female): The inner contact is a socket.
+
+<Aside type="tip">
+The term "barrel jack" is sometimes used to refer not just to the female connector, but to entire family of barrel connectors including the plug.
+</Aside>
+
+## PCB Footprints
+
+Barrel connectors are available in through-hole (THT) and surface-mount (SMT) variants:
+
+* **Through-hole**: Provides a robust mechanical connection to the PCB. Common for panel-mount or board-edge mounting.
+* **Surface-mount**: Lower profile and suitable for automated assembly, but provides less mechanical strain relief.
+
+## Current and Voltage Ratings
+
+Typical barrel connectors are rated for:
+
+* **Voltage**: 12-24 VDC (some rated up to 48V)[^wikipedia-coaxial-power-connector]
+* **Current**: 2-5 A, depending on the contact material and construction[^same-sky-pj-002a][^same-sky-pj-036ah-smt-tr-datasheet]
+
+For higher-current applications (> 5 A), barrel connectors are generally not appropriate and alternatives such as T Plugs, XT30/XT60 connectors or Anderson Powerpole connectors should be considered.
+
+## Locking Variants
+
+Standard barrel connectors have no locking mechanism and can be pulled out accidentally. Locking variants are available that add a threaded collar or snap-lock to retain the plug. These are used in industrial or harsh-environment applications where accidental disconnection is unacceptable.
+
+## Waterproofing
+
+DC barrel connectors are not generally designed to be waterproof. However, one example of waterproofing I have seen is on a Tapo security camera, in where a silicone washer was provided with the connectors. The washer is slid over the sleeve of the female connector. When they are mated, the washer is compressed between the two connectors, creating a seal as shown below. Presumably this will make a reasonable seal against light rain or mist, but is not designed for submersion.
+
+<Image src={import('./_assets/waterproofing-barrel-jack-with-silicone-washer-tapo-camera.webp')} width="900px">A photo of a barrel jack connection which has been "waterproofed" with a silicone washer. This was the power connector for a Tapo security camera.</Image>
+
+## Barrel To Terminal Block
+
+Barrel to terminal block adapters are available which provide a barrel connector and 2 position terminal block in one connector. These are useful for prototyping and quick one-off projects due to their versatility.
+
+<div style={{ display: 'flex', flexDirection: 'row', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
+  <Image src={import('./_assets/barrel-plug-to-terminal-block-rs-pro.webp')} width="300px">A photo of the barrel plug to terminal block adapter from RS Pro.[^rs-pro-810-4605-straight-dc-socket]</Image>
+  <Image src={import('./_assets/barrel-jack-to-terminal-block-mindkits.webp')} width="300px">A photo of the barrel jack to terminal block adapter from MindKits.[^mindkits-barrel-jack-to-terminal-block]</Image>
+</div>
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wikipedia-coaxial-power-connector]: Wikipedia (2026, Mar 26). _Coaxial power connector_ [wiki]. Retrieved 2026-04-13, from https://en.wikipedia.org/wiki/Coaxial_power_connector.
+[^same-sky-pj-002a]: Same Sky. _PJ-002A | Jacks | DC Power Connectors_ [product page]. Retrieved 2026-04-13, from https://www.sameskydevices.com/product/interconnect/connectors/dc-power-connectors/jacks/pj-002a.
+[^same-sky-pj-036ah-smt-tr-datasheet]: Same Sky (2025, Sep 30). _PJ-036AH-SMT-TR - DC Power Jack_ [datasheet]. Retrieved 2026-04-13, from https://www.sameskydevices.com/product/resource/pj-036ah-smt-tr.pdf.
+[^element14-multicomp-pro-jr8306-1-5m]: Multicomp Pro. _JR8306-1.5M - Barrel Power Cord, 2.1mm Barrel Plug to 2.1mm Barrel Jack, 4.9 ft, 1.5 m, Black_ [product page]. Element14. Retrieved 2026-04-14, from https://nz.element14.com/multicomp-pro/jr8306-1-5m/power-cord-barrel-plug-jack-1/dp/1209175.
+[^rs-pro-810-4605-straight-dc-socket]: RS PRO. _Straight DC Socket 1A, 16 V, Cable, Nickel Plated_ [product page]. RS. Retrieved 2026-04-14, from https://nz.rs-online.com/web/p/dc-power-connectors/8104605.
+[^mindkits-barrel-jack-to-terminal-block]: MindKits. _DC Barrel Jack Adapter - Male_ [product page]. MindKits. Retrieved 2026-04-14, from https://www.mindkits.co.nz/store/p/7455-DC-Barrel-Jack-Adapter-Male.aspx.
