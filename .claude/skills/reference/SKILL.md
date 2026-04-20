@@ -66,7 +66,7 @@ Rules:
 - Author and date are omitted if unknown — don't guess or fabricate them
 - Omit the date from the author field if only the year is known, e.g. `Silicon Labs (2015).`
 - Month abbreviations: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-- The retrieved date is today: **2026-04-13**
+- The retrieved date is today (see the current date in the conversation context)
 - Omit `[type]` for standard articles/blog posts
 - End the line with a period
 
@@ -107,6 +107,12 @@ Use the Edit tool to make the insertion. After editing, confirm to the user what
 ## Edge cases
 
 - **Can't fetch the URL** (paywalled, auth required, Chrome not available, etc.): Tell the user what information you need — title, author, date, publisher — and construct the reference from what they provide.
+- **No URL available** (e.g. a PDF received via email, a document otherwise shared privately): replace the `from https://...` portion with `on file with author`. The full ending becomes `Retrieved YYYY-MM-DD, on file with author.` Example:
+
+  ```
+  [^fujifilm-prescale-llw-instruction-manual]: Fujifilm (2017). _Prescale LLW Instruction Manual_ [instruction manual]. Retrieved 2026-04-20, on file with author.
+  ```
+
 - **Duplicate key**: If the same key already exists in the file, append `-2` (or `-3`, etc.) to make it unique.
 - **Wikipedia pages**: The author is always "Wikipedia", the date is the page's last edited date (shown in the footer), and the type is `[wiki]`.
 - **GitHub repos**: Author is the repo owner username, title is `owner/repo-name`, type is `[GitHub repository]`, no publication date.
