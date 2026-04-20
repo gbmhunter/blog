@@ -1,14 +1,42 @@
 ---
 authors: [gbmhunter]
 date: 2025-01-16
-description: Pressure sensors measure the pressure of a fluid or gas.
-lastUpdated: 2025-01-16
-tags: [pressure sensors, sensors]
+description: Pressure sensors measure the pressure against a surface. They can be used to measure the pressure of a gas, fluid or solid.
+lastUpdated: 2026-04-20
+tags: [pressure sensors, sensors, pressure sensing film, Fujifilm, Prescale]
 title: Pressure Sensors
 type: page
 ---
 
-Pressure sensors measure the pressure of a fluid or gas.
+Pressure sensors measure the pressure against a surface. They can be used to measure the pressure of a gas, fluid or solid.
+
+## Pressure Sensing Film
+
+Pressure sensing film is a material which permanently changes colour based on applied pressure. The only manufacturer I am aware of that makes this is Fujifilm with their "Prescale" brand. The film contains microcapsules of colour-forming material. When broken under pressure, they react with colour-developing material, causing the film to change from white to a magenta colour (as shown in the image below). The colour intensity (which is referred to as the colour density) is proportional to the pressure applied.
+
+<Image src={import('./_assets/fujifilm-prescale-how-it-works.webp')} width="700px">How Prescale pressure sensing film works.[^fujifilm-visual-material-solutions]</Image>
+
+There are the following products in the Prescale range:[^fujifilm-prescale-film]
+
+| Product (code) | Pressure range | Type | Roll-type Product Size | Sheet-type Product Size |
+|----------------|----------------|------|------------------------|-------------------------|
+| Ultra extreme low pressure (5LW) | 0.006-0.05 MPa | Dual-sheet | 320 mm x 2 m | - |
+| Extreme low pressure (4LW) | 0.05-0.2 MPa | Dual-sheet | 320 mm x 3 m | - |
+| Ultra super low pressure (LLLW) | 0.2 - 0.6 MPa | Dual-sheet | 270 mm x 5 m | 270 x 200 mm (5 sheets) |
+| Super low pressure (LLW) | 0.5 - 2.5 MPa | Dual-sheet | 270 mm x 6 m | 270 x 200 mm (5 sheets) |
+| Low pressure (LW) | 2.5 - 10 MPa | Dual-sheet | 270 mm x 10 m | 270 x 200 mm (5 sheets) |
+| Medium pressure (MW) | 10 - 50 MPa | Dual-sheet | 270 mm x 10 m | - |
+| Medium pressure (MS) | 10 - 50 MPa | Mono-sheet | 270 mm x 10 m | 270 x 200 mm (5 sheets) |
+| Higher pressure (HS) | 50 - 130 MPa | Mono-sheet | 270 mm x 10 m | 270 x 200 mm (5 sheets) |
+| Super high pressure (HHS) | 130 - 300 MPa | Mono-sheet | 270 mm x 10 m | 270 x 200 mm (5 sheets) |
+
+All of the dual-sheet product codes end in `W` and all of the mono-sheet product codes end in `S`. The dual-sheet products come with an A film and a C film. The A film contains the colour-forming material (microcapsules) and the C film is coated with a colour-developing material. The coated sides of these films must be facing each other. When getting an intuitive sense for pressures, it's useful to remember that $1\,\text{MPa} = 1\,\text{N/mm}^2 = 10\,\text{kgf/cm}^2$.
+
+To convert from colour density to pressure, charts are given which provide a mapping at various temperature and humidity conditions. The film is quite sensitive to both temperature and humidity, so it is important to take these into account when using the charts.
+
+<Image src={import('./_assets/prescale-llw-instruction-manual-charts.webp')} width="900px">Charts for converting from colour density to pressure for the LLW Prescale film.[^fujifilm-prescale-llw-instruction-manual]</Image>
+
+There is also special film in the Prescale range for operating at high temperatures (180 - 220°C). It appears that it is only available in the LLW pressure range (0.5 - 2.5 MPa).[^fujifilm-visual-material-solutions]
 
 ## Examples
 
@@ -28,3 +56,6 @@ You have to be careful when both soldering and handling these sensors. They are 
 
 [^honeywell-abp2-product-page]: Honeywell. _Basic ABP2 Series Board Mount Pressure Sensor_ [product page]. Retrieved 2025-01-16, from https://automation.honeywell.com/us/en/products/sensing-solutions/sensors/pressure-sensors/board-mount-pressure-amplified/basic-abp2-series-board-mount-pressure-sensor.
 [^honeywell-abp2-datasheet]: Honeywell (2025, Oct). _ABP2 SERIES - Board Mount Pressure Sensors_ [datasheet]. Retrieved 2025-01-16, from https://prod-edam.honeywell.com/content/dam/honeywell-edam/sps/siot/en-au/products/sensors/pressure-sensors/board-mount-pressure-sensors/basic-abp2-series/documents/sps-siot-abp2-series-datasheet-32350268-en.pdf.
+[^fujifilm-prescale-film]: Fujifilm. _Prescale - Pressure measurement film_ [product page]. Fujifilm New Zealand. Retrieved 2026-04-20, from https://www.fujifilm.com/nz/en/business/inspection/measurement-film/ps.
+[^fujifilm-visual-material-solutions]: Fujifilm (2022). _Visual Material Solutions - Measuring pressure, heat or UV light easily with each film._ [product catalog]. Retrieved 2026-04-20, on file with author.
+[^fujifilm-prescale-llw-instruction-manual]: Fujifilm (2017). _Prescale LLW Instruction Manual_ [instruction manual]. Retrieved 2026-04-20, on file with author.
