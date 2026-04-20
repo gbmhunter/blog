@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2024-09-25
-description: Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light) at the expense of a slower response time. This page covers how they work, schematic symbols, important parameters, circuits, applications, suppliers,and more.
+description: Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light) at the expense of a slower response time. This page covers how they work, schematic symbols, important parameters, circuits, applications, suppliers, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-09-26
+lastUpdated: 2026-04-20
 tags: [phototransistors, transistors, BJT, optical isolators, optocouplers, sensors, optics, photodiodes]
 title: Phototransistors
 type: page
@@ -11,7 +11,7 @@ type: page
 
 Phototransistors are transistors which can be used to detect light. They are similar to photodiodes, but are more sensitive (i.e. have a higher output current for a given amount of light). Their downside is that they have a slower response time compared to photodiodes.
 
-<Image iref="photos-of-phototransistors" src={import('./_assets/photos-of-phototransistors.webp')} width="600px">Some examples of phototransistors. a) A Lite-On Inc. LTR-4206E in a through-hole T1 package[^digikey-lite-on-ltr-4206e], b) An Everlight Electronics PT11-21C/L41/TR8 in a SMD 1206 chip package[^digikey-everlight-pt11-21c-l41-tr8]. Images not to scale. The purple looking lens of a) is a good indicator that the phototransistor operates in the infrared spectrum (these lenses filter out visible light).</Image>
+<Image iref="photos-of-phototransistors" src={import('./_assets/photos-of-phototransistors.webp')} width="600px">Some examples of phototransistors. a) A Lite-On Inc. LTR-4206E in a through-hole T1 package[^digikey-lite-on-ltr-4206e], b) An Everlight Electronics PT11-21C/L41/TR8 in a SMD 1206 chip package[^digikey-everlight-pt11-21c-l41-tr8]. Images not to scale. The purple-looking lens of a) is a good indicator that the phototransistor operates in the infrared spectrum (these lenses filter out visible light).</Image>
 
 ## Schematic Symbol
 
@@ -25,7 +25,7 @@ Notice that it looks very similar to the BJT schematic symbol, except the base p
 
 A phototransistor is a [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/) but with the base driven from a light-sensitive photodiode rather than electrically from another part of the circuit.
 
-The base-collector junction of a phototransistor is exposed to light (usually via a transparent window on the package). When photos hit the base-collector junction (in the depletion region), they create electron-hole pairs. The generated current is passed through the base to the emitter. The transistor amplifies this base-to-emitter current due to it's current gain $h_{FE}$, creating a much larger collector-to-emitter current.
+The base-collector junction of a phototransistor is exposed to light (usually via a transparent window on the package). When photons hit the base-collector junction (in the depletion region), they create electron-hole pairs. The generated current is passed through the base to the emitter. The transistor amplifies this base-to-emitter current due to its current gain $h_{FE}$, creating a much larger collector-to-emitter current.
 
 If the emitter pin of a phototransistor is not used, the connection from the base to collector acts just like a photodiode[^wikipedia-photodiode].
 
@@ -41,11 +41,11 @@ The collector dark current is the current that flows through the collector-emitt
 
 * Symbol: $I_{CA}$
 
-The collector light current is the current that flows through the collector-emitter junction when a set amount of light shines on the phototransistor. It is typically in the range of $1-20mA$ and is specified at a particular light irradiance ($mW/cm^2$), light wavelength ($nm$), and collector-emitter voltage ($V_{CE}$ in $V$).
+The collector light current is the current that flows through the collector-emitter junction when a set amount of light shines on the phototransistor. It is typically in the range of $1\text{-}20\,\text{mA}$ and is specified at a particular light irradiance ($\text{mW/cm}^2$), light wavelength ($\text{nm}$), and collector-emitter voltage ($V_{CE}$ in $\text{V}$).
 
 You can compare collector light currents to get some idea of the phototransistor's sensitivity.
 
-For example, the Vishay VEMT2000X01 has an $I_{CA}$ of $6mA$ (typical) at $1mW/cm^2$, $950nm$, and $V_{CE} = 5V$[^vishay-vemt2000x01-ds].
+For example, the Vishay VEMT2000X01 has an $I_{CA}$ of $6\,\text{mA}$ (typical) at $1\,\text{mW/cm}^2$, $950\,\text{nm}$, and $V_{CE} = 5\,\text{V}$[^vishay-vemt2000x01-ds].
 
 ## Circuits
 
@@ -55,9 +55,9 @@ One of the most basic phototransistor circuits can be made simply with a phototr
 
 Sometimes you won't have such a nice on/off light source to deal with, and will want to measure varying degrees of light intensity. To do this, you can route the output of this circuit to a microcontroller's [ADC](/electronics/components/analogue-to-digital-converters-adcs/) and measure the analogue voltage.
 
-Resistor $R_1$ sets the gain of the phototransistor. The larger the resistor, the larger the voltage drop across it for a given current through the phototransistor. A higher resistance means a higher gain (increased sensitivity to light), but also increases the noise and results in the circuit saturating (the output getting to about 0V) at a lower light level.  Choosing an appropriate value for $R_1$ is normally a case of trial and error until you find the right balance between sensitivity, noise, and saturation level.
+Resistor $R_1$ sets the gain of the phototransistor. The larger the resistor, the larger the voltage drop across it for a given current through the phototransistor. A higher resistance means a higher gain (increased sensitivity to light), but also increases the noise and results in the circuit saturating (the output getting to about 0V) at a lower light level. Choosing an appropriate value for $R_1$ is normally a case of trial and error until you find the right balance between sensitivity, noise, and saturation level.
 
-<IRef iref="phototransistor-response-to-led" /> shows the response of a Wurth Electronics 1541201NC3060 phototransistor to a light source. The yellow trace represents the LED control signal, where HIGH is OFF and LOW is ON. The blue trace represents the phototransistor output. $R_1$ is $150k\Omega$. The horizontal time grid is $200us$ per division, so this is a short pulse. You can see the phototransistor output taking time to respond. This is due to the parasitic capacitance on the output and the low drive strength of the phototransistor. If we left the LED on, the output would eventually settle.
+<IRef iref="phototransistor-response-to-led" /> shows the response of a Wurth Electronics 1541201NC3060 phototransistor to a light source. The yellow trace represents the LED control signal, where HIGH is OFF and LOW is ON. The blue trace represents the phototransistor output. $R_1$ is $150\,\text{k}\Omega$. The horizontal time grid is $200\,\mu\text{s}$ per division, so this is a short pulse. You can see the phototransistor output taking time to respond. This is due to the parasitic capacitance on the output and the low drive strength of the phototransistor. If we left the LED on, the output would eventually settle.
 
 <Image iref="phototransistor-response-to-led" src={import('./_assets/phototransistor-response-to-led.webp')} width="800px">An oscilloscope trace showing the response of a phototransistor to a light source.</Image>
 
@@ -65,7 +65,7 @@ Resistor $R_1$ sets the gain of the phototransistor. The larger the resistor, th
 
 Phototransistors are used in a variety of applications, including:
 
-* [Optocouplers](/electronics/components/optocouplers/): They are a core component in a optocoupler, used on the receiving side to detect the light emitted by the LED on the transmitting side.
+* [Optocouplers](/electronics/components/optocouplers/): They are a core component in an optocoupler, used on the receiving side to detect the light emitted by the LED on the transmitting side.
 * Detecting environmental light levels.
 * Presence detection.
 
