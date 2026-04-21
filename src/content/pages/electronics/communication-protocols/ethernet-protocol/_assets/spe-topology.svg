@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 440" preserveAspectRatio="xMidYMid meet">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .block-label { font-size: 42px; font-weight: bold; fill: white; text-anchor: middle; }
+    .signal-label { font-size: 24px; font-weight: bold; fill: #1a7fc7; text-anchor: middle; }
+    .interface-label { font-size: 20px; fill: #000; text-anchor: middle; }
+    .callout-title { font-size: 22px; font-weight: bold; fill: #1a7fc7; text-anchor: middle; }
+    .callout-body { font-size: 18px; fill: #555; text-anchor: middle; font-style: italic; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#000"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#1a7fc7"/>
+    </marker>
+  </defs>
+
+  <!-- ========= LEFT SIDE ========= -->
+
+  <!-- Left MAC -->
+  <rect x="40" y="150" width="150" height="160" rx="12" fill="#f4a742" stroke="#333" stroke-width="2"/>
+  <text x="115" y="245" class="block-label">MAC</text>
+
+  <!-- TX arrow: MAC -> PHY -->
+  <line x1="195" y1="195" x2="355" y2="195" stroke="#000" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="275" y="183" class="signal-label">TX</text>
+
+  <!-- RX arrow: PHY -> MAC -->
+  <line x1="355" y1="265" x2="195" y2="265" stroke="#000" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="275" y="290" class="signal-label">RX</text>
+
+  <!-- Left PHY -->
+  <rect x="360" y="150" width="150" height="160" rx="12" fill="#f4a742" stroke="#333" stroke-width="2"/>
+  <text x="435" y="245" class="block-label">PHY</text>
+
+  <!-- Left MAC interface label -->
+  <line x1="115" y1="310" x2="115" y2="340" stroke="#000" stroke-width="1.5"/>
+  <text x="115" y="368" class="interface-label">Standard IEEE 802.3</text>
+  <text x="115" y="392" class="interface-label">MAC Interface</text>
+
+  <!-- Left Magnetics (transformer) -->
+  <g transform="translate(510, 0)">
+    <!-- Input wires from PHY -->
+    <line x1="0" y1="210" x2="20" y2="210" stroke="#000" stroke-width="2"/>
+    <line x1="0" y1="250" x2="20" y2="250" stroke="#000" stroke-width="2"/>
+    <!-- Left coil: bumps up on top wire -->
+    <path d="M 20 210 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <!-- Left coil: bumps down on bottom wire -->
+    <path d="M 20 250 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <!-- Core -->
+    <line x1="66" y1="195" x2="66" y2="265" stroke="#000" stroke-width="2"/>
+    <line x1="74" y1="195" x2="74" y2="265" stroke="#000" stroke-width="2"/>
+    <!-- Right coil: bumps up on top wire -->
+    <path d="M 80 210 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <!-- Right coil: bumps down on bottom wire -->
+    <path d="M 80 250 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <!-- Output wires to cable -->
+    <line x1="120" y1="210" x2="150" y2="210" stroke="#000" stroke-width="2"/>
+    <line x1="120" y1="250" x2="150" y2="250" stroke="#000" stroke-width="2"/>
+  </g>
+
+  <!-- ========= TWISTED PAIR CABLE ========= -->
+  <!-- Wire 1: starts top at (660, 210), sinusoidal period=80 -->
+  <path d="M 660 210
+           C 680 210 680 250 700 250
+           C 720 250 720 210 740 210
+           C 760 210 760 250 780 250
+           C 800 250 800 210 820 210
+           C 840 210 840 250 860 250
+           C 880 250 880 210 900 210
+           C 920 210 920 250 940 250
+           C 960 250 960 210 980 210
+           C 1000 210 1000 250 1020 250
+           C 1040 250 1040 210 1060 210
+           C 1080 210 1080 250 1100 250
+           C 1120 250 1120 210 1140 210"
+        fill="none" stroke="#000" stroke-width="2.5"/>
+  <!-- Wire 2: starts bottom at (660, 250), opposite phase -->
+  <path d="M 660 250
+           C 680 250 680 210 700 210
+           C 720 210 720 250 740 250
+           C 760 250 760 210 780 210
+           C 800 210 800 250 820 250
+           C 840 250 840 210 860 210
+           C 880 210 880 250 900 250
+           C 920 250 920 210 940 210
+           C 960 210 960 250 980 250
+           C 1000 250 1000 210 1020 210
+           C 1040 210 1040 250 1060 250
+           C 1080 250 1080 210 1100 210
+           C 1120 210 1120 250 1140 250"
+        fill="none" stroke="#000" stroke-width="2.5"/>
+
+  <!-- Bi-directional data arrows above/below cable -->
+  <line x1="740" y1="175" x2="1060" y2="175" stroke="#1a7fc7" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <line x1="1060" y1="285" x2="740" y2="285" stroke="#1a7fc7" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="900" y="165" class="signal-label">Data</text>
+  <text x="900" y="310" class="signal-label">Data</text>
+
+  <!-- ========= RIGHT MAGNETICS ========= -->
+  <g transform="translate(1140, 0)">
+    <line x1="0" y1="210" x2="30" y2="210" stroke="#000" stroke-width="2"/>
+    <line x1="0" y1="250" x2="30" y2="250" stroke="#000" stroke-width="2"/>
+    <path d="M 30 210 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <path d="M 30 250 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <line x1="76" y1="195" x2="76" y2="265" stroke="#000" stroke-width="2"/>
+    <line x1="84" y1="195" x2="84" y2="265" stroke="#000" stroke-width="2"/>
+    <path d="M 90 210 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0 q 5 -14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <path d="M 90 250 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0 q 5 14 10 0" fill="none" stroke="#000" stroke-width="2"/>
+    <line x1="130" y1="210" x2="150" y2="210" stroke="#000" stroke-width="2"/>
+    <line x1="130" y1="250" x2="150" y2="250" stroke="#000" stroke-width="2"/>
+  </g>
+
+  <!-- ========= RIGHT SIDE ========= -->
+
+  <!-- Right PHY -->
+  <rect x="1290" y="150" width="150" height="160" rx="12" fill="#f4a742" stroke="#333" stroke-width="2"/>
+  <text x="1365" y="245" class="block-label">PHY</text>
+
+  <!-- TX arrow: MAC -> PHY (on right, goes left) -->
+  <line x1="1605" y1="195" x2="1445" y2="195" stroke="#000" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1525" y="183" class="signal-label">TX</text>
+
+  <!-- RX arrow: PHY -> MAC (on right, goes right) -->
+  <line x1="1445" y1="265" x2="1605" y2="265" stroke="#000" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1525" y="290" class="signal-label">RX</text>
+
+  <!-- Right MAC -->
+  <rect x="1610" y="150" width="150" height="160" rx="12" fill="#f4a742" stroke="#333" stroke-width="2"/>
+  <text x="1685" y="245" class="block-label">MAC</text>
+
+  <!-- Right MAC interface label -->
+  <line x1="1685" y1="310" x2="1685" y2="340" stroke="#000" stroke-width="1.5"/>
+  <text x="1685" y="368" class="interface-label">Standard IEEE 802.3</text>
+  <text x="1685" y="392" class="interface-label">MAC Interface</text>
+
+  <!-- ========= CALLOUT: Magnetics are optional ========= -->
+  <text x="900" y="55" class="callout-title">Magnetics are optional</text>
+  <text x="900" y="85" class="callout-body">AC-coupling capacitors may be used instead (common in automotive 100BASE-T1)</text>
+  <!-- Dashed arrow fanning out to left magnetics -->
+  <line x1="800" y1="100" x2="585" y2="190" stroke="#1a7fc7" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrow-blue)"/>
+  <!-- Dashed arrow fanning out to right magnetics -->
+  <line x1="1000" y1="100" x2="1215" y2="190" stroke="#1a7fc7" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrow-blue)"/>
+
+</svg>

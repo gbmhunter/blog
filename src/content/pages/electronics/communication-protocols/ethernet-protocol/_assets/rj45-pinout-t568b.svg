@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .title { font-size: 44px; font-weight: bold; fill: #000; text-anchor: middle; }
+    .subtitle { font-size: 34px; font-weight: 600; fill: #000; text-anchor: middle; }
+    .pin-number { font-size: 16px; font-weight: bold; fill: #000; text-anchor: middle; }
+    .legend-text { font-size: 20px; fill: #000; }
+  </style>
+
+  <!-- Title -->
+  <text x="400" y="80" class="title">RJ45 Pinout</text>
+  <text x="400" y="130" class="subtitle">T-568B</text>
+
+  <!-- Pin number labels -->
+  <text x="260" y="180" class="pin-number">1</text>
+  <text x="300" y="180" class="pin-number">2</text>
+  <text x="340" y="180" class="pin-number">3</text>
+  <text x="380" y="180" class="pin-number">4</text>
+  <text x="420" y="180" class="pin-number">5</text>
+  <text x="460" y="180" class="pin-number">6</text>
+  <text x="500" y="180" class="pin-number">7</text>
+  <text x="540" y="180" class="pin-number">8</text>
+
+  <!-- Gold pin contacts (top row) -->
+  <rect x="245" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="285" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="325" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="365" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="405" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="445" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="485" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+  <rect x="525" y="195" width="30" height="50" fill="#e0a73a" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Horizontal divider between pins and wires -->
+  <line x1="240" y1="248" x2="560" y2="248" stroke="#333" stroke-width="2"/>
+
+  <!-- ============================================
+       Colored wire strands below the pins.
+       Each wire is 30 wide, extends y=250 to y=530.
+       Striped wires: white base with 5 colored horizontal stripes.
+       ============================================ -->
+
+  <!-- Pin 1: White/Orange -->
+  <rect x="245" y="250" width="30" height="280" fill="#fff" stroke="#333" stroke-width="1"/>
+  <rect x="245" y="275" width="30" height="15" fill="#e89940"/>
+  <rect x="245" y="325" width="30" height="15" fill="#e89940"/>
+  <rect x="245" y="375" width="30" height="15" fill="#e89940"/>
+  <rect x="245" y="425" width="30" height="15" fill="#e89940"/>
+  <rect x="245" y="475" width="30" height="15" fill="#e89940"/>
+
+  <!-- Pin 2: Orange (solid) -->
+  <rect x="285" y="250" width="30" height="280" fill="#e89940" stroke="#333" stroke-width="1"/>
+
+  <!-- Pin 3: White/Green -->
+  <rect x="325" y="250" width="30" height="280" fill="#fff" stroke="#333" stroke-width="1"/>
+  <rect x="325" y="275" width="30" height="15" fill="#3aa655"/>
+  <rect x="325" y="325" width="30" height="15" fill="#3aa655"/>
+  <rect x="325" y="375" width="30" height="15" fill="#3aa655"/>
+  <rect x="325" y="425" width="30" height="15" fill="#3aa655"/>
+  <rect x="325" y="475" width="30" height="15" fill="#3aa655"/>
+
+  <!-- Pin 4: Blue (solid) -->
+  <rect x="365" y="250" width="30" height="280" fill="#3a78b5" stroke="#333" stroke-width="1"/>
+
+  <!-- Pin 5: White/Blue -->
+  <rect x="405" y="250" width="30" height="280" fill="#fff" stroke="#333" stroke-width="1"/>
+  <rect x="405" y="275" width="30" height="15" fill="#3a78b5"/>
+  <rect x="405" y="325" width="30" height="15" fill="#3a78b5"/>
+  <rect x="405" y="375" width="30" height="15" fill="#3a78b5"/>
+  <rect x="405" y="425" width="30" height="15" fill="#3a78b5"/>
+  <rect x="405" y="475" width="30" height="15" fill="#3a78b5"/>
+
+  <!-- Pin 6: Green (solid) -->
+  <rect x="445" y="250" width="30" height="280" fill="#3aa655" stroke="#333" stroke-width="1"/>
+
+  <!-- Pin 7: White/Brown -->
+  <rect x="485" y="250" width="30" height="280" fill="#fff" stroke="#333" stroke-width="1"/>
+  <rect x="485" y="275" width="30" height="15" fill="#8b5a2b"/>
+  <rect x="485" y="325" width="30" height="15" fill="#8b5a2b"/>
+  <rect x="485" y="375" width="30" height="15" fill="#8b5a2b"/>
+  <rect x="485" y="425" width="30" height="15" fill="#8b5a2b"/>
+  <rect x="485" y="475" width="30" height="15" fill="#8b5a2b"/>
+
+  <!-- Pin 8: Brown (solid) -->
+  <rect x="525" y="250" width="30" height="280" fill="#8b5a2b" stroke="#333" stroke-width="1"/>
+
+  <!-- Cable jacket (blue boot) -->
+  <rect x="190" y="530" width="420" height="105" fill="#2e67a8" stroke="#1a4878" stroke-width="2"/>
+  <!-- Strain-relief band near the top of the jacket -->
+  <rect x="190" y="542" width="420" height="10" fill="#1a4878"/>
+
+  <!-- Legend box -->
+  <rect x="150" y="665" width="500" height="125" fill="#fff" stroke="#333" stroke-width="1.5" rx="4"/>
+  <!-- Column 1 -->
+  <text x="180" y="700" class="legend-text">1. White/Orange</text>
+  <text x="180" y="728" class="legend-text">2. Orange</text>
+  <text x="180" y="756" class="legend-text">3. White/Green</text>
+  <text x="180" y="784" class="legend-text">4. Blue</text>
+  <!-- Column 2 -->
+  <text x="420" y="700" class="legend-text">5. White/Blue</text>
+  <text x="420" y="728" class="legend-text">6. Green</text>
+  <text x="420" y="756" class="legend-text">7. White/Brown</text>
+  <text x="420" y="784" class="legend-text">8. Brown</text>
+</svg>

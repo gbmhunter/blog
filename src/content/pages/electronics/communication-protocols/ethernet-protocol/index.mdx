@@ -25,6 +25,13 @@ In 1980, the first standardized (and commercialized) version of Ethernet, `10BAS
 
 RJ45 jack. Technically it's not actually an RJ45 connector, but an 8P8C (8 position, 8 contacts) connector. RJ45 is actually a now defunct 2 wire connector designed for modems. These days, RJ45 is effectively slang for all ethernet style connectors. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
 
+There are two common pinouts for the RJ45 connector:
+
+- T568A: 
+- T568B: 
+
+<Image iref="fig-rj45-pinout-t568b" src={import('./_assets/rj45-pinout-t568b.svg')} width="500px">The T568B wiring pinout for an RJ45 (8P8C) connector.</Image>
+
 ### Magnetics
 
 Magnetics are part of the Ethernet specification for all xBASE-T networks (which includes pretty much every Ethernet PHY standard except for the first StarLAN-1, StarLAN-10 and LattisNet).
@@ -222,6 +229,60 @@ All SPE standards have `-T1` in their name, since the `1` refers to a single twi
   <caption>A summary of the Single Pair Ethernet (SPE) standards.[^wurth-rd041-design-of-spoe-system]</caption>
 </table>
 
+<Image iref="fig-spe-topology" src={import('./_assets/spe-topology.svg')} width="900px">Topology of a Single Pair Ethernet (SPE) link. Standard IEEE 802.3 MAC interfaces on both ends connect through SPE specific PHYs and magnetics (magnetics are optional, capacitive coupling may be used instead) to a single twisted pair, carrying full-duplex bi-directional traffic.</Image>
+
+In SPE, each node in the bi-directional link must be configured as either the master or slave. This is a PHY level role that is needed so that the echo cancellation can be correctly implemented. The master provides the clock reference and transmits it using its local oscillator. The slave recovers the clock from the master's signal and uses that clock to time its own transmissions. For 100BASE-T1, these roles have to be manually configured (usually by a jumper, DIP switch or register setting on the PHY on each end). 1000BASE-T1 and newer standards have added auto-negotiation to determine the role of each node automatically at connection time.
+
+Below is a schematic of a 100BASE-T1 PHY on the Microchip EV02N47A LAN8770M converter board (PHY part circled in red). You can see magnetics are not used here, but instead capacitive coupling (the only inductor looking thing is a common mode choke). C19 and C20 are the two small (100nF) blocking capacitors. You do lose galvanic isolation with capacitive coupling, but it makes the design simpler, smaller and cheaper.
+
+<Image iref="fig-100base-t1-phy-schematic" src={import('./_assets/100base-t1-phy-schematic.webp')} width="800px">Schematic of the 100BASE-T1 PHY on the Microchip EV02N47A LAN8770M converter board.[^microchip-ev02n47a-lan8770-converter-board-ds]</Image>
+
+### PAM3
+
+PAM3 is a pulse amplitude modulation scheme which uses three different voltage levels to encode data. It is used by the mid-range SPE standards 10BASE-T1L, 100BASE-T1 and 1000BASE-T1. Each PAM symbol is represented by one of three voltage levels:
+
+- **+1V**: a positive voltage relative to the common-mode level.
+- **0V**: zero differential voltage.
+- **-1V**: a negative voltage relative to the common-mode level.
+
+<Aside type="note">
+The actual voltage amplitudes vary by standard. 100BASE-T1 transmits at roughly ±1 V on the line (2 V peak-to-peak differential), while 10BASE-T1L drives harder to cope with its longer reach.
+</Aside>
+
+Each PAM3 symbol carries $\log_2(3) \approx 1.585$ bits of information. In practice, standards layer a whole-bit encoding on top of the raw symbols — 100BASE-T1 uses **3B2T**, which maps 3 binary bits onto 2 ternary symbols (an effective 1.5 bits per symbol).
+
+PAM3 sits between NRZ (binary, 1 bit per symbol) and PAM4 (quaternary, 2 bits per symbol) in the trade-off between symbol rate and noise margin. Compared to NRZ, PAM3 roughly halves the symbol rate needed for a given data rate, at the cost of a tighter noise margin per level — each level has half the voltage headroom before it gets confused with its neighbour. Going further to PAM4 halves the symbol rate again but is more sensitive to noise and crosstalk, which is why it only becomes worthwhile at multi-gigabit speeds.
+
+### 100BASE-T1 Link Start-up and Handshaking
+
+When 100BASE-T1 devices are powered up, they need to go through a start-up/training process. During this process, the master and slave can be in one of the following states:[^teledyne-lecroy-fundamentals-of-100base-t1-ethernet]
+
+- SEND_Z: The transmission of all zeros (called zero-codes).
+- SEND_I: The transmission of PAM3 idle signals.
+- SEND_N: The transmission of PAM3 data or idle signals.
+
+The following process is used to start up the link:[^teledyne-lecroy-fundamentals-of-100base-t1-ethernet]
+
+1. Master SEND_Z, slave SEND_Z
+
+    Both master and slave start by transmitting all zeros (SEND_Z).
+
+1. Master SEND_I, slave SEND_Z
+
+    The master transmits PAM3 idle signals (SEND_I) while the slave transmits all zeros (SEND_Z). This allows the master to train its echo canceller, while the slave synchronizes to the master's clock, locks its scrambler and adjusts its signal conditioning.
+
+1. Master SEND_I, slave SEND_I
+
+    The slave then transitions from SEND_Z to SEND_I. The master stays in SEND_I mode. This allows the slave to train its echo canceller, while the master locks its scrambler and adjusts its signal conditioning.
+
+1. Setting status
+
+    The master and slave set status flags. If these statuses are validated, then both master and slave switch to SEND_N. If any statuses fail, the link startup process resets.
+
+<Aside type="note">
+This startup process is relevant to 100BASE-T1 only. Other T1 standards have different start-up procedures.
+</Aside>
+
 ### Automotive Ethernet
 
 Automotive Ethernet (formerly called BroadR-Reach or OABR (Open Alliance BroadR-Reach)) can be thought of as a subgroup of SPE. It uses the same single twisted pair cable, but defines additional high-level protocols on top of the SPE protocol.[^vector-difference-between-automotive-and-standard-ethernet-technologies]
@@ -339,3 +400,4 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use 10BASE-T1
 [^microchip-ev02n47a-lan8770-converter-board-ds]: Microchip. _EVB-LAN8770M_MC - Evaluation Board User's Guide_ [datasheet]. Retrieved 2026-04-09, from https://ww1.microchip.com/downloads/en/DeviceDoc/EVB-LAN8770M-MC-Eval-Board-User-Guide-50002979A.pdf.
 [^wikipedia-ethernet]: Wikipedia (2026, Mar 16). _Ethernet_ [wiki]. Retrieved 2026-04-09, from https://en.wikipedia.org/wiki/Ethernet.
 [^uni-of-helsinki-cabletron-vampire-tap]: Matthew Millman (2012). _Cabletron 10BASE5 Ethernet transceiver with AMP vampire tap_. University of Helsinki. Retrieved 2026-04-09, from https://www.cs.helsinki.fi/u/kutvonen/index_files/ethernet.html.
+[^teledyne-lecroy-fundamentals-of-100base-t1-ethernet]: Teledyne LeCroy (2020, Jul 30). _Fundamentals of 100Base-T1 Ethernet_ [application note]. Retrieved 2026-04-21, from https://www.teledynelecroy.com/doc/100base-t1-ethernet-appnote.
