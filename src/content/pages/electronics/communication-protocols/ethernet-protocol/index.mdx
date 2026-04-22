@@ -249,7 +249,7 @@ PAM3 is a pulse amplitude modulation scheme which uses three different voltage l
 The actual voltage amplitudes vary by standard. 100BASE-T1 transmits at roughly ±1 V on the line (2 V peak-to-peak differential), while 10BASE-T1L drives harder to cope with its longer reach.
 </Aside>
 
-Each PAM3 symbol carries $\log_2(3) \approx 1.585$ bits of information. In practice, standards layer a whole-bit encoding on top of the raw symbols — 100BASE-T1 uses **3B2T**, which maps 3 binary bits onto 2 ternary symbols (an effective 1.5 bits per symbol).
+Each PAM3 symbol carries $\log_2(3) \approx 1.585$ bits of information. In practice, standards layer a whole-bit encoding on top of the raw symbols — 100BASE-T1 uses **3B2T**, which maps 3 binary bits onto 2 ternary symbols (an effective 1.5 bits per symbol). These two ternary symbols which represent 3 bits of data are called a code group.[^teledyne-lecroy-fundamentals-of-100base-t1-ethernet]
 
 PAM3 sits between NRZ (binary, 1 bit per symbol) and PAM4 (quaternary, 2 bits per symbol) in the trade-off between symbol rate and noise margin. Compared to NRZ, PAM3 roughly halves the symbol rate needed for a given data rate, at the cost of a tighter noise margin per level — each level has half the voltage headroom before it gets confused with its neighbour. Going further to PAM4 halves the symbol rate again but is more sensitive to noise and crosstalk, which is why it only becomes worthwhile at multi-gigabit speeds.
 

@@ -1,0 +1,39 @@
+---
+authors: [gbmhunter]
+date: 2026-04-22
+description: Load cells are sensors that measure force or weight.
+lastUpdated: 2026-04-22
+tags: [electronics, components, load cells, strain gauge load cells]
+title: Load Cells
+type: page
+---
+
+<WarningIsNotes />
+
+Load cells are sensors that measure force or weight. They contain sensitive strain gauges attached to a substrate such as a metal beam. An applied force causes small deformations in the substrate which in turn changes the resistance of the strain gauge. This change in [resistance](/electronics/components/resistors/) is measured with a [Wheatstone bridge circuit](/electronics/circuit-design/wheatstone-bridges/) and converted to a digital signal using an ADC. Knowing the sensitivity of the strain gauge (typically $0.5-2\,mV/V$ for the cell's rated capacity), this voltage is converted to a force or weight. They can easily measure both tension and compression.
+
+## Load Cell Types
+
+- S-beam
+- Canister
+
+## Amplifier ICs
+
+- HX711
+- NAU7802
+- ADS1232
+
+## Handheld Meters
+
+### YB21 Handheld Meter (AliExpress)
+
+YB21 is a cheap handheld load cell meter designed to be connected to four-wire external load cells (i.e. it does not have an internal load cell). Price is approximately US$120 in 2026.[^aliexpress-yb21-handheld-strain-gauge-signal-converter]
+
+<Image src={import('./_assets/yb21-handheld-load-cell-meter-photo.webp')} width="300px">Photo of the YB21 handheld load cell meter.[^aliexpress-yb21-handheld-strain-gauge-signal-converter]</Image>
+
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^aliexpress-yb21-handheld-strain-gauge-signal-converter]: AliExpress. _YB21 Handheld Signal Converter for Strain Gauge Load Cell, 4-Wire Input, 5V Excitation, IP65 Panel Resolution, Built-in Battery_ [product page]. Retrieved 2026-04-22, from https://www.aliexpress.com/item/1005011789209958.html.
