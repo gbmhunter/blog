@@ -1,27 +1,113 @@
 ---
 authors: [gbmhunter]
 date: 2026-04-22
-description: Load cells are sensors that measure force or weight.
-lastUpdated: 2026-04-22
-tags: [electronics, components, load cells, strain gauge load cells]
+description: Load cells are sensors that measure force or weight. They convert a mechanical force into an electrical signal.
+lastUpdated: 2026-04-23
+tags: [electronics, components, load cells, strain gauge load cells, single-point, platform, Wheatstone bridge, 4 wire, weight, force, tension, compression, canister, pancake, universal, low-profile]
 title: Load Cells
 type: page
 ---
 
 <WarningIsNotes />
 
-Load cells are sensors that measure force or weight. They contain sensitive strain gauges attached to a substrate such as a metal beam. An applied force causes small deformations in the substrate which in turn changes the resistance of the strain gauge. This change in [resistance](/electronics/components/resistors/) is measured with a [Wheatstone bridge circuit](/electronics/circuit-design/wheatstone-bridges/) and converted to a digital signal using an ADC. Knowing the sensitivity of the strain gauge (typically $0.5-2\,mV/V$ for the cell's rated capacity), this voltage is converted to a force or weight. They can easily measure both tension and compression.
+Load cells are sensors that measure force or weight. They contain sensitive strain gauges attached to a substrate such as a metal beam. An applied force causes small deformations in the substrate which in turn changes the resistance of the strain gauge. This change in [resistance](/electronics/components/resistors/) is measured with a [Wheatstone bridge circuit](/electronics/circuit-design/wheatstone-bridges/) and converted to a digital signal using an ADC. Knowing the sensitivity of the strain gauge (typically $0.5-2\,\text{mV/V}$ for the cell's rated capacity), this voltage is converted to a force or weight. They can easily measure both tension and compression.
 
 ## Load Cell Types
 
-- S-beam
-- Canister
+### Single-point (platform)
+
+Single-point (a.k.a platform) load cells are designed to measure force correctly with off-center loads, which makes them suitable for applications such as electronic scales and weighing stations. They are normally made from a metal bar with a precisely cut out hollow section. The geometry of the hollow section is the key to the cell's ability to measure off-center loads.
+
+<Image src={import('./_assets/siemens-siwarex-wl-single-point-load-cell-10kg-photo.webp')} width="200px">A photo of the Siemens SIWAREX WL single-point load cell.[^siemens-siwarex-wl-10kg-single-point-load-cell]</Image>
+
+### Canister
+
+Canister (a.k.a compression-only, pancake, universal or low-profile) load cells are cylindrical in shape. They are typically compression only and do not measure tension. They come in a range of rated weights all the way from 1 kg up to many tonnes.
+
+<Image src={import('./_assets/rs-pro-20kg-load-cell-204-2772-photo.webp')} width="200px">A photo of the RS Pro 20 kg canister load cell.[^rs-pro-20kg-load-cell-204-2772]</Image>
+
+### S-type
+
+S-type load cells are shaped like an "S" or a "Z". The S shape is chosen (rather than just a straight metal bar) to:
+
+- Improve the sensitivity: An S flexes much more under forces than a straight bar would, due to the S experiencing bending rather than just axial compression or extension.
+- Cross-axis rejection: An S is stiff in every direction except the measurement axis, which makes it less sensitive to forces applied in other directions. A straight bar would be sensitive to forces applied in all directions and measure them as "weight".
+
+<Image src={import('./_assets/kobastar-s-type-load-cell-stk-series-photo.webp')} width="200px">A photo of a S-type load cell from Kobastar.[^kobastar-stk-s-type-load-cell]</Image>
+
+## Load Cell Wiring
+
+4 wire Wheatstone bridge load cells typically have the connection and wire colours shown in the table below. The colours are some what of a de-facto standard used by a majority of load cell manufacturers.
+
+<table>
+  <thead>
+    <tr>
+      <th>Wire Color</th>
+      <th>Wire Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ backgroundColor: '#d94444', color: '#fff' }}>Red</td>
+      <td>Excitation +</td>
+    </tr>
+    <tr>
+      <td style={{ backgroundColor: '#000', color: '#fff' }}>Black</td>
+      <td>Excitation -</td>
+    </tr>
+    <tr>
+      <td style={{ backgroundColor: '#3aa655', color: '#fff' }}>Green</td>
+      <td>Signal +</td>
+    </tr>
+    <tr>
+      <td style={{ backgroundColor: '#fff', color: '#000' }}>White</td>
+      <td>Signal -</td>
+    </tr>
+    <tr>
+      <td style={{ backgroundColor: '#f1c40f', color: '#000' }}>Yellow</td>
+      <td>Shield</td>
+    </tr>
+  </tbody>
+</table>
+
+Excitation + and - are the supply voltage for the Wheatstone bridge and signal + and - are the output where the differential voltage appears. Some load cells may have a shield wire.
 
 ## Amplifier ICs
 
-- HX711
-- NAU7802
-- ADS1232
+### AVIA Semiconductor HX711
+
+The HX711 is a load cell amplifier IC popular in the hobbyist and DIY electronics community. It's analogue front-end contains a 2-to-1 multiplexer, PGA (programmable gain amplifier) and a 24-bit ADC. It provides a custom (but simple) digital interface to a microcontroller for reading the ADC measurements and configuring the IC. It comes in a SOP-16 SMD component package (AFAK this is the only package it's available in). This SOP-16 is a synonym for the [SOIC-16 package](/pcb-design/component-packages/soic-component-package/) with a 1.27 mm pitch and body width of 3.9 mm.
+
+<div style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+  <Image src={import('./_assets/hx711-ic-pinout.webp')} width="400px">Pinout of the AVIA Semiconductor HX711.[^avia-hx711-ds]</Image>
+  <Image src={import('./_assets/avia-hx711-typical-application-block-diagram.webp')} width="500px">Typical application block diagram of the AVIA Semiconductor HX711.[^avia-hx711-ds]</Image>
+</div>
+
+The external PNP transistor is used to provide a stable $V_{CC}$ and excitation voltage to the load cell. I assume it was made off circuit as so the heat generated from it would not affect the load cell measurement circuitry.
+
+The two wire digital interface uses the `DOUT` and `PD_SCK` pins. It is not I2C nor SPI, but a simple custom protocol.
+
+1. When a reading is not ready, `DOUT` is high. `PD_SCK` should be driven low by the MCU.
+1. `DOUT` goes low when a reading is ready.
+1. The MCU then pulses `PD_SCK`. Every positive edge of `PD_SCK` makes the HX711 output the next bit of the 24-bit ADC reading (MSB first).
+1. The 25th positive `PD_SCK` edge makes the HX711 drive `DOUT` high again.
+1. The MCU then keeps driving `PD_SCK` for 1-3 more edges to set the MUX input channel and PGA gain for the next conversion. The following table shows the number of `PD_SCK` pulses (total pulses, including the 24 to shift out the ADC reading) required for each combination.[^avia-hx711-ds]
+
+| PD_SCK Pulses | Input channel | Gain |
+|---------------|---------------|------|
+| 25            | A             | 128  |
+| 26            | B             | 32   |
+| 27            | A             | 64   |
+
+<Aside type="note">
+By default, the HX711 is configured to use channel A and a gain of 128.[^avia-hx711-ds]
+</Aside>
+
+The minimum `PD_SCK` low and high time is specified as $0.2\,\text{us}$ in the datasheet.[^avia-hx711-ds] This limits the maximum frequency of the `PD_SCK` signal to $2.5\,\text{MHz}$. `PD_SCK` can also be used to reset the IC and/or put it into a sleep state. When `PD_SCK` is low, the IC is in normal operation. When `PD_SCK` is held high for longer than $60\,\text{us}$, the IC enters power down mode.[^avia-hx711-ds]
+
+Many hobbyist and DIY electronics supplies sell dev. boards for the HX711. The SparkFun HX711 breakout board is shown below. This has separate digital and analogue power supply pins for reducing measurement noise. It accepts standard 4-wire Wheatstone bridge load cell connections.
+
+<Image src={import('./_assets/sparkfun-hx711-breakout-board-photo.webp')} width="700px">A photo of the SparkFun HX711 breakout board.[^sparkfun-hx711-breakout-board]</Image>
 
 ## Handheld Meters
 
@@ -31,9 +117,15 @@ YB21 is a cheap handheld load cell meter designed to be connected to four-wire e
 
 <Image src={import('./_assets/yb21-handheld-load-cell-meter-photo.webp')} width="300px">Photo of the YB21 handheld load cell meter.[^aliexpress-yb21-handheld-strain-gauge-signal-converter]</Image>
 
-
 {/* ======================================================================== */}
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
 [^aliexpress-yb21-handheld-strain-gauge-signal-converter]: AliExpress. _YB21 Handheld Signal Converter for Strain Gauge Load Cell, 4-Wire Input, 5V Excitation, IP65 Panel Resolution, Built-in Battery_ [product page]. Retrieved 2026-04-22, from https://www.aliexpress.com/item/1005011789209958.html.
+[^avia-hx711-ds]: Avia Semiconductor. _HX711 - 24-Bit Analog-to-Digital Converter (ADC) for Weigh Scales_ [datasheet]. Retrieved 2026-04-23, from https://www.lcsc.com/datasheet/C43656.pdf.
+[^sparkfun-hx711-breakout-board]: SparkFun Electronics. _SparkFun Load Cell Amplifier - HX711_ [product page]. Retrieved 2026-04-23, from https://www.sparkfun.com/sparkfun-load-cell-amplifier-hx711.html.
+[^flintec-what-is-a-single-point-load-cell]: Flintec. _What is a Single Point Load Cell?_. Retrieved 2026-04-23, from https://www.flintec.com/learn/weight-sensor/load-cell/single-point.
+[^rs-pro-20kg-load-cell-204-2772]: RS PRO. _RS PRO Load Cell, 20kg Range, Compression Measure_ [product page]. RS Components. Retrieved 2026-04-23, from https://nz.rs-online.com/web/p/strain-gauges/2042772.
+[^siemens-siwarex-wl-10kg-single-point-load-cell]: Siemens. _Siemens SIWAREX WL Series Single Point Load Cell, 10kg Range, Compression Measure_ [product page]. RS Components. Retrieved 2026-04-23, from https://nz.rs-online.com/web/p/strain-gauges/1873266.
+[^kobastar-stk-s-type-load-cell]: Kobastar. _STK S Type Loadcell_ [product page]. Retrieved 2026-04-23, from https://kobastar.com/en/product-details/stk-s-type-loadcell/.
+
