@@ -7,6 +7,8 @@ title: Checksums
 type: page
 ---
 
+<ChildPages />
+
 ## Fletcher's Checksum
 
 Fletcher's checksum is a simple checksum algorithm that is used to detect errors in data transmission. It was developed by John G. Fletcher at Lawrence Livermore Labs in the late 1970s.[^wikipedia-fletchers-checksum] It was aimed to be an improvement over simple add-and-modulo checksums which are insensitive to block reordering. The key idea is that rather than have a single checksum value, a second value is added and sent along with the data. This value is the sum of the running totals of the first sum. This makes it sensitive to block reordering, as once a block is applied it is then reapplied to the second sum on every block thereafter.
@@ -16,11 +18,17 @@ Fletcher's checksum is a simple checksum algorithm that is used to detect errors
 Fletcher-16 is where the data is divided into 8-bit blocks (bytes). The sums are calculated modulo 255. Two 8-bit sums are calculated which are combined into a 16-bit Fletcher checksum. The second sum is usually the one that shifted by 8 bits (i.e. multiplied by 256) and added to the first sum. 
 
 <Aside type="note">
-You may wonder why modulus 255 was chosen instead of modulus 256. Fletcher considered both in his original paper.[^fletcher-arithmetic-checksum-serial-transmissions] It was decided that 255 was a better choice because it gave better error detection. The reason is that 256's smallest prime factor is 2, whereas 255's is 3 — and the smallest prime factor of the modulus determines the worst-case cycle length when sending a constant byte. So mod 256's worst case (cycle of 2) is shorter than mod 255's worst case (cycle of 3)."
+You may wonder why modulus 255 was chosen instead of modulus 256. Fletcher considered both in his original paper[^fletcher-arithmetic-checksum-serial-transmissions], and Nakassis later summarised the trade-off explicitly[^nakassis-fletchers-error-detection-algorithm]. Any modulus larger than 256 produces residues that don't fit in a single byte (so some messages can't be encoded), and any modulus smaller than 256 (other than 255) makes pairs of byte values indistinguishable in the sum. That narrows the meaningful choice to 255 vs 256.
 
-For example, if you were sending many 128's and using mod 256, the checksum would follow this pattern: 0, 128, 0, 128, 0, 128, 0, 128, ... This only uses 2 of the possible 256 checksum values, resulting in very poor error detection.
+ISO chose 255. The reason is **better error detection**: Nakassis reports that with mod 256, roughly 1 in 85 two-bit errors goes undetected; with mod 255, only 1 in 4080 — about a 48x improvement. The underlying mechanism is that mod $2^n$ is just truncation, so any error pattern that affects bits beyond the $n$-th position of the running sum is invisible. Mod $2^n - 1$ has carries from the high bits wrap back into the low bits, so every bit position contributes to the final sum. (This is the same property that makes ones'-complement arithmetic the basis of TCP and IP checksums.)
 
-Using mod 255, the checksum would follow this pattern: 0, 128, 1, 129, 2, 130, 3, 131, ... This uses all 255 possible checksum values, resulting in better error detection. Note that 255 still has similar issues, just fewer of them. 255 is 3 * 5 * 17. Long sequences of 85 would follow this pattern: 0, 85, 170, 0, 85, 170, ..., only using 3 of the possible 255 checksum values.
+The cost of choosing mod 255 is a real, acknowledged weakness: input byte values `0x00` and `0xFF` become indistinguishable to the checksum, since adding 255 mod 255 is the same as adding 0. Nakassis turns this into a feature in one specific way — because you can always pick non-zero check bytes, an all-zero pair of trailing check octets can serve as a sentinel for "no checksum present".
+
+A visual way to see the carry-loss problem: when sending a stream of identical bytes, the running sum cycles through values determined by $\gcd(M, b)$ (greatest common divisor). With mod 256 sending many `0x80` (128), the sum cycles through just 2 values: `0, 128, 0, 128, ...`. With mod 255 the same stream cycles through all 255 values: `0, 128, 1, 129, 2, 130, 3, 131, ...`. Mod 255 isn't immune — sending many `0x55` (85) cycles through only 3 values: `0, 85, 170, 0, 85, 170, ...` — but its worst case (3) is still better than mod 256's worst case (2).
+
+Nakassis's overall verdict is more measured than the ISO choice suggests: "Some, but not all, of the detection properties are better when M=255... neither option emerges clearly superior to the other." On the VAX-11 he benchmarks, the speed difference between the two is also negligible. ISO presumably went with 255 for the two-bit error detection bonus, and that's the convention that has stuck.
+
+<Image src={import('./_assets/comparison-table-of-fletchers-vs-crc-error-detection.webp')} width="800px">Error detection comparison between Fletcher's checksum and CRC error detection. Taken from Anastase Nakassis's paper.[^nakassis-fletchers-error-detection-algorithm]</Image>
 </Aside>
 
 Sometimes a further step is taken in where a second checksum is calculated which is chosen so that the global checksum (the checksum over all bytes including the checksum itself) is zero. If this is desired, the second checksum can be calculated as:

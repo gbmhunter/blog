@@ -7,13 +7,130 @@ title: CRCs (Cyclic Redundancy Checks)
 type: page
 ---
 
-CRCs (Cyclic Redundancy Checks) are a type of checksum that is used to detect errors in data transmission. It is based on polynomial division.
+CRCs (Cyclic Redundancy Checks) are a type of [checksum](/programming/checksums/) that is used to detect errors in data transmission. It is based on modulo-2 polynomial (GF(2)) division.
 
-> "Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.
+> "Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.[^ross-williams-painless-guide-to-crc]
 
-## Generator Polynomial
+## How They Work
 
-The hexadecimal representation of the polynomial is what you end up exclusively-ORing the data with when writing the CRC software algorithm.
+The general idea behind a CRC is to treat the input data as one huge number, divide it by another fixed number, and make the remainder from this division the checksum. It turns out that division (as long as the divisor is about as big as the checksum) is good at creating "chaos" in the checksum, meaning that small changes in the input data will result in a large change in the checksum.
+
+Imagine the data `[0x05, 0xB8]`. Pretend we have an 8-bit checksum and our divider is `0xFA`. We can treat the data as the single number `0x05B8` (concatenating the bytes together). We can then divide `0x05B8` by `0xFA` and get a remainder of `0x6B`. This is our checksum. This is obviously easy to do with simple CPU arithmetic when the data is just two bytes. However, when the data is much larger, it becomes more difficult to do this in a single operation. Instead, we can use long division to "iterate" through the data one byte at a time.
+
+Doing it the long division way on our data `[0x05, 0xB8]` with our divider `0xFA` would look like this:
+
+Instead of the numbers being treated as positive integers, CRCs treat them as polynomials (this includes the dividend (data), divisor, and remainder). This is done by treating the bit string whose bits are the coefficients of the polynomial. For example, our divisor of `0xFA` is `0b11111010`, which in polynomial form is $1x^7 + 1x^6 + 1x^5 + 1x^4 + 1x^3 + 0x^2 + 1x^1 + 0x^0$ which simplifies to $x^7 + x^6 + x^5 + x^4 + x^3 + x$.
+
+But how does division work with polynomials rather than numbers? This is where is gets a bit weird, and the $GF(2)$ field (Galois field of two elements) comes into play. The rule is decided that the polynomial arithmetic will be all modulo 2. This is essentially the same as binary arithmetic with no carry.
+
+### Addition and Subtraction
+
+Addition without carry is the same as XOR. For example:
+
+```text
+ 1001
++1010
+-----
+ 0011
+```
+
+Subtraction is the same as addition.
+
+### Multiplication
+
+For multiplication, the cleanest way to see what's going on is to do it on the polynomials first. As an example, `1011` is $x^3 + x + 1$ and `1010` is $x^3 + x$. Multiplying them out the ordinary way:
+
+$$
+\begin{aligned}
+(x^3 + x + 1)(x^3 + x) &= x^6 + x^4 + x^4 + x^2 + x^3 + x \\
+&= x^6 + 2x^4 + x^3 + x^2 + x
+\end{aligned}
+$$
+
+The $2x^4$ term has a coefficient of 2, but coefficients live in GF(2) where $2 \equiv 0$, so that whole term vanishes:
+
+$$
+x^6 + x^3 + x^2 + x
+$$
+
+Reading off the coefficients gives the bit string `1001110`.
+
+Doing the same thing directly on the binary representation, multiplication becomes "for every set bit at position $i$ in the multiplier, XOR a copy of the multiplicand shifted left by $i$." Laid out as long multiplication:
+
+```text
+   1011
+ x 1010
+ ------
+   0000   (bit 0 of 1010 = 0)
+  1011    (bit 1 of 1010 = 1, shifted left 1)
+ 0000     (bit 2 of 1010 = 0)
+1011      (bit 3 of 1010 = 1, shifted left 3)
+-------
+1021110   (column-wise sums — the 2 at bit position 4 is the same 2 as in the $2x^4$ coefficient above)
+1001110   (after mod 2 collapses the 2 to 0)
+```
+
+The column-overlap at bit position 4 (where the shift-by-1 and shift-by-3 partials both contribute a `1`) is exactly the source of the $2x^4$ term in the polynomial form. The mod-2 rule kills it in either representation, so the two methods agree on the final answer `1001110`.
+
+### Division
+
+Now let's explore division. We'll do it as polynomials first, then binary. As a small example, let's divide `1101001` by `1001` — that is, $x^6 + x^5 + x^3 + 1$ by $x^3 + 1$.
+
+In polynomial form, long division works just like ordinary algebra. The leading term of the quotient is whatever cancels the leading term of the dividend.
+
+Step 1: $\frac{x^6}{x^3} = x^3$, so the first quotient term is $x^3$. Multiply back: $x^3 \cdot (x^3 + 1) = x^6 + x^3$. Subtract from the dividend:
+
+$$
+(x^6 + x^5 + x^3 + 1) - (x^6 + x^3) = x^5 + 1
+$$
+
+Remember that subtraction in GF(2) is the same as addition, so the $x^6$ and $x^3$ terms each cancel against their counterparts.
+
+Step 2: $\frac{x^5}{x^3} = x^2$, so the next quotient term is $x^2$. Multiply: $x^2 \cdot (x^3 + 1) = x^5 + x^2$. Subtract:
+
+$$
+(x^5 + 1) - (x^5 + x^2) = x^2 + 1
+$$
+
+The remainder $x^2 + 1$ has degree 2, less than the divisor's degree 3, so we are done. The quotient is $x^3 + x^2$ and the remainder is $x^2 + 1$.
+
+In binary, the same idea works directly with bit-shifts and XORs. Here's `1101001 ÷ 1001` laid out in the standard long-division form:
+
+```text
+          1100 (quotient)
+      ________
+1001 ) 1101001 (divider | dividend)
+       1001..,
+       ----..,
+        1000.,
+        1001.,
+        ----.,
+         0010,
+         0000,
+         ----,
+          0101
+          0000
+          ----
+           101 (remainder)
+```
+
+(`,` represents unprocessed "1"'s in the dividend, `.` represents unprocessed "0"'s in the dividend)
+
+At each step, look at the leftmost bit of the working window: if it's `1`, we subtract the divisor from the dividend by XORing in the divisor (`1001`); if it's `0`, XOR in `0000` instead (a no-op kept for layout regularity — see iterations 3 and 4, which are the bit-by-bit version's way of saying "the polynomial division would have already stopped"). Then shift the window one column to the right, bringing in the next bit of the dividend. The `,` and `.` placeholders to the right stand for original-dividend bits not yet pulled into the window — `,` represents a `1`, `.` represents a `0`.
+
+<Aside type="tip">
+GF(2) polynomial division is a bit weird, 1000 is subtracted by a seemingly bigger 1001 and there is a remainder! There is not really a notion of bigger and smaller numbers in GF(2) except for the position of the leading bit (the degree of the polynomial).
+</Aside>
+
+The quotient `1100` ($x^3 + x^2$) and remainder `101` ($x^2 + 1$) match the polynomial result above. **For CRC purposes the quotient is discarded — only the remainder matters.** **Taking the remainder of polynomial division is exactly how a CRC is computed.** The dividend is the message with $r$ zero bits appended (where $r$ is the degree of the generator polynomial), and the divisor is the generator.
+
+## The Generator Polynomial
+
+Now that we have a basic understanding of CRC maths, what is the generator polynomial? This is a hexadecimal representation of the divider polynomial used in the CRC calculation.  is what you end up exclusively-ORing the data with when writing the CRC software algorithm.
+
+
+
+The polynomial $x^3 + x + 1$ can be represented as the bit string `0b1011`, which in hex is `0xB`. However, the leading one is always dropped from the hex representation by convention. So it would be presented as `0b11` or `0x3`. This is useful because it allows the polynomial to be represented in the same number of bits as the width of the CRC algorithm.
 
 ## Start Value
 
@@ -39,42 +156,43 @@ When checking a CRC, rather than recalculating the CRC for the message and compa
 
 Note that this does in no way try and be an exhaustive list. Sites like [CRC RevEng - Catalogue of parameterized CRC algorithms](http://reveng.sourceforge.net/crc-catalogue/all.htm) and [Prof. Koopman's CRC Polynomial Zoo](https://users.ece.cmu.edu/~koopman/crc/notes.html) have great detailed lists of CRC algorithms.
 
-## CRC-8-ATM
+The following algorithms are parameterized following the convention used by Dr Ross Williams in his [A Painless Guide To CRC Error Detection Algorithms](http://www.ross.net/crc/download/crc_v3.txt) paper:[^ross-williams-painless-guide-to-crc]
 
-It uses the generator polynomial:
+- Name: The name of the CRC algorithm.
+- Width: The width of the CRC in bits. This is always one less than the width of the polynomial.
+- Poly: The polynomial of the CRC algorithm.
+- Init: The initial value of the CRC algorithm before any input data is processed.
+- RefIn: Whether the input is reflected. If `false`, input bytes are treated as bit 7 being the most significant bit and bit 0 being the least significant bit. If `true` the input is reflected first so that all the bits are reversed in order.
+- RefOut: Whether the output is reflected. If `false`, the output is fed directly into the XOR function after running through input data. If `true`, the output is reflected first so that all the bits are reversed in order (similar to RefIn).
+- XorOut: This is the value that the result is finally XORed with before being returned as the final CRC value.
+- Check: The check value of the CRC algorithm. This is not strictly part of the CRC algorithm definition, but is included to make it easier to verify the CRC algorithm. It is the resulting CRC value from feeding in the ASCII string `"123456789"`.
 
-$$
-x^{8} + x^{2} + x + 1
-$$
+## CRC-8/I-432-1
 
-It can be represented by the following hexadecimal numbers:
-
-Normal: 0x
+| Property      | Value         |
+|---------------|---------------|
+| Name          | CRC-8/I-432-1 |
+| Width         | 8 bits        |
+| Poly          | 0x07          |
+| Init          | 0x00          |
+| RefIn         | No            |
+| RefOut        | No            |
+| XorOut        | 0x55          |
+| Check         | 0xa1          |
 
 ## CRC-16 (CCITT-FALSE)
 
-<table ><tbody ><tr >
-<td >Aliases</td>
-<td>
-    <ul>
-        <li>CRC-16</li>
-        <li>CCITT-FALSE</li>
-    </ul></td></tr><tr >
-<td >Width</td>
-<td >16 bits</td>
-</tr><tr >
-<td >Polynomial</td>
-<td >0x1021</td>
-</tr><tr >
-<td >Initial Value</td>
-<td >0x0000</td>
-</tr><tr >
-<td > </td>
-<td > </td>
-</tr><tr >
-<td > </td>
-<td > </td>
-</tr></tbody></table>
+| Property      | Value           |
+|---------------|-----------------|
+| Name          | CRC-16/IBM-3740 |
+| Width         | 16 bits         |
+| Poly          | 0x1021          |
+| Init          | 0xffff          |
+| RefIn         | No              |
+| RefOut        | No              |
+| XorOut        | 0x0000          |
+| Check         | 0x29b1          |
+
 
 CRC-16-CCITT was first used by IBM in it's SDLC data link protocol. It is also known as just CRC-CCITT (it always uses a 16-bit CRC checksum).
 
@@ -101,9 +219,10 @@ Koopman: 0x8810
 
 [http://reveng.sourceforge.net/crc-catalogue/16.htm](http://reveng.sourceforge.net/crc-catalogue/16.htm) is a great webpage catalogue of many 16-bit CRC algorithms.
 
-[A Painless Guide To CRC Error Detection Algorithms](http://www.ross.net/crc/download/crc_v3.txt) is an old (1993), sore-on-the eyes (pure text article) but great in-depth introduction to CRC algorithms.
+[A Painless Guide To CRC Error Detection Algorithms](http://www.ross.net/crc/download/crc_v3.txt) is an old (1993), sore-on-the eyes (pure text article) but great in-depth introduction to CRC algorithms.[^ross-williams-painless-guide-to-crc]
 
 {/* =========================================================================================== */}
 {/* REFERENCES */}
 {/* =========================================================================================== */}
 
+[^ross-williams-painless-guide-to-crc]: Ross N. Williams (1993, Aug 19). _A Painless Guide To CRC Error Detection Algorithms_. Rocksoft Pty Ltd. Retrieved 2026-04-29, from http://www.ross.net/crc/download/crc_v3.txt.
