@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2016-06-07
-lastUpdated: 2026-04-28
+lastUpdated: 2026-04-30
 tags: [CRC, cyclic redundancy check, generator polynomial, calculator, NinjaCalc, CRC-8-ATM, CRC-16, XModem, Kermit]
 title: CRCs (Cyclic Redundancy Checks)
 type: page
@@ -25,7 +25,7 @@ Doing it the long division way on our data `[0x05, 0xB8]` with our divider `0xFA
 
 Instead of the numbers being treated as positive integers, CRCs treat them as polynomials (this includes the dividend (data), divisor, and remainder). This is done by treating the bit string whose bits are the coefficients of the polynomial. For example, our divisor of `0xFA` is `0b11111010`, which in polynomial form is $1x^7 + 1x^6 + 1x^5 + 1x^4 + 1x^3 + 0x^2 + 1x^1 + 0x^0$ which simplifies to $x^7 + x^6 + x^5 + x^4 + x^3 + x$.
 
-But how does division work with polynomials rather than numbers? This is where is gets a bit weird, and the $GF(2)$ field (Galois field of two elements) comes into play. The rule is decided that the polynomial arithmetic will be all modulo 2. This is essentially the same as binary arithmetic with no carry.
+But how does division work with polynomials rather than numbers? This is where it gets a bit weird, and the $GF(2)$ field (Galois field of two elements) comes into play. The rule is decided that the polynomial arithmetic will be all modulo 2. This is essentially the same as binary arithmetic with no carry.
 
 ### Addition and Subtraction
 
@@ -185,7 +185,7 @@ Next, the CRC value is appended to the data (taking the place of those zero bits
 11010011011 (data + crc)
 ```
 
-When the receiver gets the data, it needs to check if the message is valid. To do this, it could split the message into the original data and the CRC value and do the same CRC calculation on the original data. If the calculated CRC value matches the CRC value embedded in the message then the message is valid. However, there is a trick which makes things simpler. Rather than spitting the message up, the receiver can just calculate the CRC of the entire message (including the CRC value embedded into it by the sender). If the calculated CRC value is 0, the message is valid. Why does this work? This is because we added the remainder onto the data. Remember in $GF(2)$ arithmetic, addition is the same as subtraction. So it's the same as subtracting the remainder from the data. If you subtract the remainder, you are left with a number which perfectly divides by the polynomial and gives 0 remainder, hence a CRC value of 0.
+When the receiver gets the data, it needs to check if the message is valid. To do this, it could split the message into the original data and the CRC value and do the same CRC calculation on the original data. If the calculated CRC value matches the CRC value embedded in the message then the message is valid. However, there is a trick which makes things simpler. Rather than splitting the message up, the receiver can just calculate the CRC of the entire message (including the CRC value embedded into it by the sender). If the calculated CRC value is 0, the message is valid. Why does this work? This is because we added the remainder onto the data. Remember in $GF(2)$ arithmetic, addition is the same as subtraction. So it's the same as subtracting the remainder from the data. If you subtract the remainder, you are left with a number which perfectly divides by the polynomial and gives 0 remainder, hence a CRC value of 0.
 
 <Aside type="note">
 This receiver CRC value being 0 is true as long as the XorOut value of the algorithm is 0 (this is explained below). If XorOut is not 0, then the remainder that the receiver calculates (a.k.a. the residual) may be non-zero. In either case, you check that your calculated CRC value matches the residual to make sure the message is valid.
@@ -201,23 +201,23 @@ $$
 T + E
 $$
 
-where $E$ is the error pattern and $+$ is CRC addition (XOR). The received divides $T + E$ by $G$. We know that (mod is the same thing as remainder):
+where $E$ is the error pattern and $+$ is CRC addition (XOR). The receiver divides $T + E$ by $G$. We know that (mod is the same thing as remainder):
 
 $$
-T mod G = 0
+T \bmod G = 0
 $$
 
 So thus:
 
 $$
-(T + E) mod G = E mod G
+(T + E) \bmod G = E \bmod G
 $$
 
 Any corruption that just so happens to make $E$ a multiple of $G$ will go undetected by the receiver. So we want to choose a polynomial $G$ whose multiples are not anything like the kind of error patterns we are likely to see during transmission.
 
 ### Single Bit Errors
 
-Single bit errors are where $E$ would be things like `1000`, `0100`, `0010`, and `0001`. This means a single bit has been flipped in the message. In polynomial form this would be $E = x^i$ where $i$ is an integer. These are easy to detect, as we just need to make sure that $G$ has at least two bits set to 1. Any non-zero multiple of $G$ will also have at least two bits set to 1, and thus $G$ will never divide by $E$ and leave no remainder.
+Single bit errors are where $E$ would be things like `1000`, `0100`, `0010`, and `0001`. This means a single bit has been flipped in the message. In polynomial form this would be $E = x^i$ where $i$ is an integer. These are easy to detect, as we just need to make sure that $G$ has at least two bits set to 1. Any non-zero multiple of $G$ will also have at least two bits set to 1, and thus $G$ will never divide $E$ evenly.
 
 For example, if $G$ was `101`, then in polynomial form $G = x^2 + 1$. There is no way to divide $E = x^i$ by $G$ and leave no remainder as the only things that divide $E = x^i$ cleanly are $x^j$ where $j \le i$.
 
@@ -234,23 +234,23 @@ All errors with an odd numbers of bits can be detected by making sure the polyno
 
 ### Burst Errors
 
-All burst errors up to a certain length can be detected by making sure the polynomial $G$ has it's lowest bit set to 1.[^ross-williams-painless-guide-to-crc]
+All burst errors up to a certain length can be detected by making sure the polynomial $G$ has its lowest bit set to 1.[^ross-williams-painless-guide-to-crc]
 
 ### Summary
 
-There is no one "best" polynomial to choose. There are certainly some that are bad choices and there are some which a better choices for certain applications. There are "best" polynomials with regards to specific Hamming distance properties, but these assume the data is effected by low, constantly random, bit errors.[^koopman-best-crc-polynomials] This is usually not the case in practice, bit errors tend to occur in bursts and may effect a sequence of bits all in the same direction.
+There is no one "best" polynomial to choose. There are certainly some that are bad choices and there are some which a better choices for certain applications. There are "best" polynomials with regards to specific Hamming distance properties, but these assume the data is affected by low, constant, random, independent bit errors.[^koopman-best-crc-polynomials] This is usually not the case in practice, bit errors tend to occur in bursts and may affect a sequence of bits all in the same direction.
 
 ## Implementing a CRC Algorithm in Software
 
 The key things we have to do is CRC division. We can't just use the normal division instruction all CPUs have since:
 
 1. We are using mod 2 arithmetic (a.k.a. GF(2), CRC arithmetic), not regular division.
-1. The number we are dividing is the entire message, would could be many bytes, kBs, MBs long. Most CPUs/standard libraries/compilers only support numbers up to 8 or 16 bytes (64 or 128 bits).
+1. The number we are dividing is the entire message, which could be many bytes, kBs, MBs long. Most CPUs/standard libraries/compilers only support numbers up to 8 or 16 bytes (64 or 128 bits).
 
-So we have to implement our own CRC division algorithm. The simplest way to to repeat in code the long division algorithm we used above. We can do this by:
+So we have to implement our own CRC division algorithm. The simplest way is to repeat in code the long division algorithm we used above. We can do this by:
 
 1. Creating a variable which represents the in-progress remainder. The variable's width is the *degree* of the generator polynomial — i.e. one less than the polynomial's bit-width. For polynomial `1011` (4 bits, degree 3), the variable is 3 bits, starting at `000`.
-1. Shift the variable left by 1 bit. On the low end, shift in the next bit of the augmented message (the message with the zero bits appended). The MSB of the message is taken first (i.e. the top most bit of the highest byte). The bit that falls off the high end of the variable is the "popped" bit.
+1. Shift the variable left by 1 bit. On the low end, shift in the next bit of the augmented message (the message with the zero bits appended). The MSB of the message is taken first (i.e. the topmost bit of the highest byte). The bit that falls off the high end of the variable is the "popped" bit.
 1. If the popped bit was a 1, XOR the variable with the generator polynomial *minus its leading 1* (the same form discussed earlier — for `1011`, that's `011`).
 
 <Aside type="example">
@@ -336,7 +336,7 @@ The most popular non-zero initial value is just all `f`'s, e.g. `0xffff` for a 1
 
 ## Processor Support
 
-Some processors have dedicated instructions for CRC calculations. Some Intel processors have the `SSE4.2` instruction set (Streaming SIMD Extensions 4.2) which includes the `CRC32` instruction. This was first introduced in the Nehalem microarchitecture.[^wikipedia-cyclic-redundancy-check] This accumulates a CRC32C (Castagnoli) value using the polynomial `0x1EDC6F41`.[^wikipedia-sse4] AArch62 architecture provides hardware acceleration for the CRC-32 and CRC-32C algorithms.[^wikipedia-cyclic-redundancy-check]
+Some processors have dedicated instructions for CRC calculations. Some Intel processors have the `SSE4.2` instruction set (Streaming SIMD Extensions 4.2) which includes the `CRC32` instruction. This was first introduced in the Nehalem microarchitecture.[^wikipedia-cyclic-redundancy-check] This accumulates a CRC32C (Castagnoli) value using the polynomial `0x1EDC6F41`.[^wikipedia-sse4] AArch64 architecture provides hardware acceleration for the CRC-32 and CRC-32C algorithms.[^wikipedia-cyclic-redundancy-check]
 
 ## Some Common CRC Algorithms
 
@@ -350,9 +350,9 @@ The following algorithms are parameterized following the convention used by Dr R
 - **Init**: The initial value of the CRC algorithm before any input data is processed. 
 - **RefIn**: Whether the input is reflected (bits are swapped around their center, e.g. `11001010` reflected becomes `01010011`). If `false`, input bytes are treated as bit 7 being the most significant bit and bit 0 being the least significant bit. If `true` the input is reflected first so that all the bits are reversed in order.
 - **RefOut**: Whether the output is reflected. If `false`, the output is fed directly into the XOR function after running through input data. If `true`, the output is reflected first so that all the bits are reversed in order (similar to RefIn).
-- **XorOut**: This is the value that the result is finally XORed with before being returned as the final CRC value. This effects the residue and can make it non-zero.
+- **XorOut**: This is the value that the result is finally XORed with before being returned as the final CRC value. This affects the residue and can make it non-zero.
 - **Check**: The check value of the CRC algorithm. This is not strictly part of the CRC algorithm definition, but is included to make it easier to verify the CRC algorithm. It is the resulting CRC value from feeding in the ASCII string `"123456789"`.
-- **Residue**: The value you get when the receiver runs the CRC algorithm over the entire message included the appended CRC value. This would normally be 0 except some have non-zero XOR out values. These make the final "residue" some constant value that may or may not be 0. If the XorOut is 0, then the residue is 0. The residue is what the receiver checks it's calculated CRC value against to make sure it is valid.
+- **Residue**: The value you get when the receiver runs the CRC algorithm over the entire message including the appended CRC value. This would normally be 0, but algorithms with a non-zero XorOut produce a non-zero residue (a constant determined by the XorOut and polynomial). If the XorOut is 0, the residue is 0. The residue is what the receiver checks its calculated CRC value against to confirm the message is valid.
 
 ### CRC-8/BLUETOOTH
 
@@ -368,7 +368,7 @@ The following algorithms are parameterized following the convention used by Dr R
 | Check         | 0x26          |
 | Residue       | 0x00          |
 
-The CRC-8/BLUETOOTH CRC is used in the [Bluetooth](/electronics/communication-protocols/bluetooth/) header error correction (HEC).[^reveng-crc-catalogue]
+The CRC-8/BLUETOOTH CRC is used in the [Bluetooth](/electronics/communication-protocols/bluetooth/) header error check (HEC).[^reveng-crc-catalogue]
 
 ### CRC-8/I-432-1
 
@@ -417,7 +417,7 @@ This checksum is used in Maxim [1-Wire](/electronics/communication-protocols/1-w
 | Residue       | 0x0000          |
 
 
-CRC-16-CCITT was first used by IBM in it's SDLC data link protocol. It is also known as just CRC-CCITT (it always uses a 16-bit CRC checksum).
+CRC-16-CCITT was first used by IBM in its SDLC data link protocol. It is also known as just CRC-CCITT (it always uses a 16-bit CRC checksum).
 
 However, CRC-16-CCITT are not all the same. There are a few common variants of the CRC-16-CCITT in use:
 
@@ -452,7 +452,7 @@ Koopman: 0x8810
 | Check         | 0xcbf43926      |
 | Residue       | 0xdebb20e3      |
 
-CRC-32/ISO-HDLC is one of the most common 32-bit CRC algorithms. It is also known as CRC-32, CRC-32/ADCCP, CRC-32/V-42, CRC-32/XZ and PKZIP. HDLC is defined in ISO/IEC 13239. Ethernet uses this in it's frame check sequence (FCS).[^wikipedia-cyclic-redundancy-check]
+CRC-32/ISO-HDLC is one of the most common 32-bit CRC algorithms. It is also known as CRC-32, CRC-32/ADCCP, CRC-32/V-42, CRC-32/XZ and PKZIP. HDLC is defined in ISO/IEC 13239. Ethernet uses this in its frame check sequence (FCS).[^wikipedia-cyclic-redundancy-check]
 
 ## External Resources
 
