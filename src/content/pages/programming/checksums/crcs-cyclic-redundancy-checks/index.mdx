@@ -15,12 +15,23 @@ CRCs (Cyclic Redundancy Checks) are a type of [checksum](/programming/checksums/
 
 The general idea behind a CRC is to treat the input data as one huge number, divide it by another fixed number, and make the remainder from this division the checksum. It turns out that division (as long as the divisor is about as big as the checksum) is good at creating "chaos" in the checksum, meaning that small changes in the input data will result in a large change in the checksum.
 
-Imagine the data `[0x05, 0xB8]`. Pretend we have an 8-bit checksum and our divider is `0xFA`. We can treat the data as the single number `0x05B8` (concatenating the bytes together). We can then divide `0x05B8` by `0xFA` and get a remainder of `0x6B`. This is our checksum. This is obviously easy to do with simple CPU arithmetic when the data is just two bytes. However, when the data is much larger, it becomes more difficult to do this in a single operation. Instead, we can use long division to "iterate" through the data one byte at a time.
+Imagine the data `[0x05, 0xB8]`. Pretend our divider is `0x05`. We can treat the data as the single number `0x05B8` (concatenating the bytes together). We can then divide `0x05B8` by `0x05` and get a remainder of `0x04`. This is our checksum. This is obviously easy to do with simple CPU arithmetic when the data is just two bytes. However, when the data is much larger, it becomes more difficult to do this in a single operation. Instead, we can use long division to "iterate" through the data one bit at a time.
 
-Doing it the long division way on our data `[0x05, 0xB8]` with our divider `0xFA` would look like this:
+Doing it the long division way on our data `[0x05, 0xB8]` with our divider `0x05` would look like this:
 
 ```text
-
+          0b100100100
+        _____________
+0b101 ) 0b10110111000
+        0b10100000000   (0b101 << 8 = 1280)
+        -------------
+        0b00010111000   (= 184)
+        0b00010100000   (0b101 << 5 = 160)
+        -------------
+        0b00000011000   (= 24)
+        0b00000010100   (0b101 << 2 = 20, also note a borrow happens here)
+        -------------
+        0b00000000100   (= 4 = remainder)
 ```
 
 Instead of the numbers being treated as positive integers, CRCs treat them as polynomials (this includes the dividend (data), divisor, and remainder). This is done by treating the bit string whose bits are the coefficients of the polynomial. For example, our divisor of `0xFA` is `0b11111010`, which in polynomial form is $1x^7 + 1x^6 + 1x^5 + 1x^4 + 1x^3 + 0x^2 + 1x^1 + 0x^0$ which simplifies to $x^7 + x^6 + x^5 + x^4 + x^3 + x$.
