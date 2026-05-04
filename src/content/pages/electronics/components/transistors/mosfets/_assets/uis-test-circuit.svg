@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #000; }
+    .label { font-size: 24px; font-weight: bold; }
+    .sub { font-size: 16px; font-weight: bold; }
+    .note { font-size: 18px; fill: #555; font-style: italic; }
+  </style>
+
+  <!-- ====== TOP RAIL: V_DD+  ->  L  ->  DUT drain ====== -->
+  <line x1="120" y1="100" x2="320" y2="100" stroke="#000" stroke-width="2"/>
+  <!-- Inductor L: 4 arched bumps -->
+  <path d="M 320 100 q 15 -28 30 0 q 15 -28 30 0 q 15 -28 30 0 q 15 -28 30 0" fill="none" stroke="#000" stroke-width="2"/>
+  <text x="380" y="60" text-anchor="middle" class="label">L</text>
+  <line x1="440" y1="100" x2="650" y2="100" stroke="#000" stroke-width="2"/>
+  <!-- Vertical wire down to DUT drain -->
+  <line x1="650" y1="100" x2="650" y2="245" stroke="#000" stroke-width="2"/>
+  <!-- Node dot at drain corner -->
+  <circle cx="650" cy="100" r="4" fill="#000"/>
+
+  <!-- ====== V_DD BATTERY (cell stack) ====== -->
+  <line x1="120" y1="100" x2="120" y2="225" stroke="#000" stroke-width="2"/>
+  <line x1="100" y1="225" x2="140" y2="225" stroke="#000" stroke-width="3"/>
+  <line x1="110" y1="240" x2="130" y2="240" stroke="#000" stroke-width="3"/>
+  <line x1="100" y1="255" x2="140" y2="255" stroke="#000" stroke-width="3"/>
+  <line x1="110" y1="270" x2="130" y2="270" stroke="#000" stroke-width="3"/>
+  <line x1="120" y1="270" x2="120" y2="500" stroke="#000" stroke-width="2"/>
+  <text x="80" y="252" text-anchor="end" class="label">V</text>
+  <text x="84" y="262" class="sub">DD</text>
+  <text x="148" y="232" class="sub">+</text>
+  <text x="148" y="280" class="sub">−</text>
+
+  <!-- ====== MOSFET (DUT) ====== -->
+  <!-- Drain stub -->
+  <line x1="650" y1="245" x2="650" y2="280" stroke="#000" stroke-width="2"/>
+  <line x1="650" y1="280" x2="615" y2="280" stroke="#000" stroke-width="2"/>
+  <!-- Channel: three short segments (enhancement-mode) -->
+  <line x1="613" y1="270" x2="613" y2="290" stroke="#000" stroke-width="3"/>
+  <line x1="613" y1="305" x2="613" y2="325" stroke="#000" stroke-width="3"/>
+  <line x1="613" y1="340" x2="613" y2="360" stroke="#000" stroke-width="3"/>
+  <!-- Substrate / source-to-channel tap -->
+  <line x1="613" y1="315" x2="650" y2="315" stroke="#000" stroke-width="2"/>
+  <line x1="650" y1="315" x2="650" y2="350" stroke="#000" stroke-width="2"/>
+  <!-- N-channel arrow (points inward toward channel on the substrate tap) -->
+  <path d="M 638 315 L 626 309 L 626 321 z" fill="#000"/>
+  <!-- Source horizontal -->
+  <line x1="613" y1="350" x2="650" y2="350" stroke="#000" stroke-width="2"/>
+  <!-- Source pin down to ground rail -->
+  <line x1="650" y1="350" x2="650" y2="500" stroke="#000" stroke-width="2"/>
+  <!-- Gate vertical bar (offset from channel) -->
+  <line x1="603" y1="270" x2="603" y2="360" stroke="#000" stroke-width="2"/>
+  <!-- Gate horizontal lead -->
+  <line x1="603" y1="315" x2="500" y2="315" stroke="#000" stroke-width="2"/>
+
+  <!-- DUT callout -->
+  <text x="730" y="305" class="label">DUT</text>
+  <text x="730" y="330" class="note">(MOSFET)</text>
+  <!-- Connector line from DUT label down to symbol -->
+  <line x1="725" y1="315" x2="675" y2="315" stroke="#555" stroke-width="1.5"/>
+
+  <!-- ====== GATE RESISTOR R_G (zigzag) ====== -->
+  <path d="M 500 315 L 488 305 L 472 325 L 456 305 L 440 325 L 424 305 L 408 325 L 396 315"
+        fill="none" stroke="#000" stroke-width="2"/>
+  <text x="448" y="290" text-anchor="middle" class="label">R</text>
+  <text x="461" y="298" class="sub">G</text>
+  <line x1="396" y1="315" x2="290" y2="315" stroke="#000" stroke-width="2"/>
+
+  <!-- ====== V_GS PULSE SOURCE ====== -->
+  <circle cx="260" cy="315" r="30" fill="none" stroke="#000" stroke-width="2"/>
+  <!-- Pulse waveform inside the circle -->
+  <path d="M 240 325 L 250 325 L 250 305 L 263 305 L 263 325 L 273 325 L 273 305 L 280 305"
+        fill="none" stroke="#000" stroke-width="1.8"/>
+  <text x="260" y="378" text-anchor="middle" class="label">V</text>
+  <text x="277" y="386" class="sub">GS</text>
+  <text x="260" y="408" text-anchor="middle" class="note">(pulse)</text>
+  <!-- V_GS bottom terminal to ground rail -->
+  <line x1="230" y1="315" x2="180" y2="315" stroke="#000" stroke-width="2"/>
+  <line x1="180" y1="315" x2="180" y2="500" stroke="#000" stroke-width="2"/>
+
+  <!-- ====== GROUND RAIL ====== -->
+  <line x1="120" y1="500" x2="650" y2="500" stroke="#000" stroke-width="2"/>
+  <!-- Junction dots -->
+  <circle cx="120" cy="500" r="4" fill="#000"/>
+  <circle cx="180" cy="500" r="4" fill="#000"/>
+  <circle cx="650" cy="500" r="4" fill="#000"/>
+  <!-- Ground symbol -->
+  <line x1="385" y1="500" x2="385" y2="520" stroke="#000" stroke-width="2"/>
+  <line x1="360" y1="520" x2="410" y2="520" stroke="#000" stroke-width="3"/>
+  <line x1="368" y1="530" x2="402" y2="530" stroke="#000" stroke-width="3"/>
+  <line x1="376" y1="540" x2="394" y2="540" stroke="#000" stroke-width="3"/>
+
+</svg>
