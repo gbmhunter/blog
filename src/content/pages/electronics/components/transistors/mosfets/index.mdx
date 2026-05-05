@@ -45,7 +45,7 @@ The easiest way to show the difference between enhancement and depletion-mode MO
 
 <Image src={import('./_assets/vgs-vs-id-enhancement-and-depletion-mode.svg')} width="700">Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data).</Image>
 
-The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when $V_{GS}$ is around $-4V$ and is well and truly on when $V_{GS}$ gets to $0V$. In comparison, the enhancement-mode MOSFET is fully off when $V_{GS} = 0V$, and takes around $+3V$ before it starts conducting. 
+The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when $V_{GS}$ is around $-4\,\text{V}$ and is well and truly on when $V_{GS}$ gets to $0\,\text{V}$. In comparison, the enhancement-mode MOSFET is fully off when $V_{GS} = 0\,\text{V}$, and takes around $+3\,\text{V}$ before it starts conducting. 
 
 Depletion-mode MOSFETs are used for:
 
@@ -69,7 +69,7 @@ This style is commonly used when drawing MOSFETs as part of logic gates and othe
 
 ### CMOS 4-pin MOSFETS
 
-MOSFETs inside ICs do not normally have the substrate connected to the source, and are instead drawn as four pin devices, of which the **additional fourth pin is connected to the substrate** (a.k.a. _four-port MOSFETs_). When using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-logic-cmos), N-channel MOSFETs are typically connected to the negative voltage rail (e.g. $0V$), and P-channel MOSFETs connected to the positive voltage rail (e.g. $V_{DD}$). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected. Also, because the source-to-substrate is not shorted out, the MOSFET now has two internal back-to-back diodes, rather than just the one, and can block current in both directions.
+MOSFETs inside ICs do not normally have the substrate connected to the source, and are instead drawn as four pin devices, of which the **additional fourth pin is connected to the substrate** (a.k.a. _four-port MOSFETs_). When using [CMOS technology](/electronics/circuit-design/digital-logic/gates/#complementary-metal-oxide-semiconductor-logic-cmos), N-channel MOSFETs are typically connected to the negative voltage rail (e.g. $0\,\text{V}$), and P-channel MOSFETs connected to the positive voltage rail (e.g. $V_{DD}$). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected. Also, because the source-to-substrate is not shorted out, the MOSFET now has two internal back-to-back diodes, rather than just the one, and can block current in both directions.
 
 ICs such as [voltage-level translators](/electronics/components/voltage-level-translation/) and [analogue switches](/electronics/components/analogue-switches-transmission-gates/) use this substrate connection to their advantage (especially the part about blocking current in both directions).
 
@@ -83,7 +83,7 @@ Sorted by alphabetical order, including subscripts.
 
 ### Rds(on)
 
-$R_{DS(on)}$ is the _on-state drain-source resistance_. This is the resistance between drain and source when the MOSFET is turned on with a strong gate drive and low $V_{DS}$ (hence in the linear, Ohmic region of operation). The on resistance is usually around $1-10\Omega$ for smaller MOSFETs, and can be as low as $1m\Omega$ for larger power MOSFETs. $R_{DS(on)}$ rises rapidly with the maximum drain-source voltage rating of the MOSFET. For conventional silicon MOSFETs, on resistance scales as roughly $V_{DS(max)}^2.5$ (the so called "silicon limit" or "1D-limit").[^mdpi-mosfet-beyond-1d-limit] For this reason BJTs or IGBTs (which both have a BJT like output) are instead preferred for high-voltage high-current applications, when the voltage starts to exceed 400V. Superjuncion, SiC and GaN MOSFETs may avoid this tradeoff.
+$R_{DS(on)}$ is the _on-state drain-source resistance_. This is the resistance between drain and source when the MOSFET is turned on with a strong gate drive and low $V_{DS}$ (hence in the linear, Ohmic region of operation). The on resistance is usually around $1\text{-}10\,\Omega$ for smaller MOSFETs, and can be as low as $1\,\text{m}\Omega$ for larger power MOSFETs. $R_{DS(on)}$ rises rapidly with the maximum drain-source voltage rating of the MOSFET. For conventional silicon MOSFETs, on resistance scales as roughly $V_{DS(max)}^{2.5}$ (the so called "silicon limit" or "1D-limit").[^mdpi-mosfet-beyond-1d-limit] For this reason BJTs or IGBTs (which both have a BJT like output) are instead preferred for high-voltage high-current applications, when the voltage starts to exceed $400\,\text{V}$. Superjuncion, SiC and GaN MOSFETs may avoid this tradeoff.
 
 ### Vds(max)
 
@@ -91,17 +91,17 @@ $V_{DS(max)}$ is the _maximum drain-source voltage_. It is the maximum allowed v
 
 ### Vgs(max)
 
-$V_{GS(max)}$ is the _absolute maximum gate-source voltage_ (aka _gate-source breakdown voltage_). Voltages above this may irreversibly destroy the MOSFET. This is due to the very thin gate-oxide layer (100nm thick, or less!) that separates the gate from the MOSFET channel, which is easily destroyed by a "high" voltage. This can be called _oxide breakdown_. $V_{GS(max)}$ is very commonly $\pm 20V$ for a huge variety of MOSFET families.
+$V_{GS(max)}$ is the _absolute maximum gate-source voltage_ (aka _gate-source breakdown voltage_). Voltages above this may irreversibly destroy the MOSFET. This is due to the very thin gate-oxide layer ($100\,\text{nm}$ thick, or less!) that separates the gate from the MOSFET channel, which is easily destroyed by a "high" voltage. This can be called _oxide breakdown_. $V_{GS(max)}$ is very commonly $\pm 20\,\text{V}$ for a huge variety of MOSFET families.
 
 Because of the very high impedance of the gate pin, MOSFET devices are very sensitive to static electricity. Especially so when not soldered into any circuitry. It does not take much charge on the gate to exceed the max. gate-source voltage and destroy the MOSFET. Anti-static precautions are recommended when handling individual MOSFETs (i.e. anti-static mats, discharge wrist straps).
 
 ### Vgs(th)
 
-$V_{GS(th)}$ is the _gate-source threshold voltage_ (or just _threshold voltage_). The voltage between the gate-source at which the MOSFET begins to turn on. The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet. Typically is is a certain drain current, e.g. $1uA$.
+$V_{GS(th)}$ is the _gate-source threshold voltage_ (or just _threshold voltage_). The voltage between the gate-source at which the MOSFET begins to turn on. The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet. Typically is is a certain drain current, e.g. $1\,\mu\text{A}$.
 
 ## How To Use Them?
 
-The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If significantly more than $V_{GS(th)}$ is applied to the gate, the MOSFET will fully turn on (conduct current), and the load will get power.
+The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given $0\,\text{V}$ (aka connected to ground), the switch will be off. If significantly more than $V_{GS(th)}$ is applied to the gate, the MOSFET will fully turn on (conduct current), and the load will get power.
 
 P-channels work in a similar manner to N-channels, the difference being that a negative $V_{GS}$ has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to $V_{CC}$, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to $V_{CC}$ to turn it off.
 
@@ -117,15 +117,15 @@ The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and c
 
 ## Leakage Current
 
-Leakage current is an important parameter to consider when you are using the MOSFET for switching on-and-off other circuitry in a low power design. MOSFET have both a gate-to-source and a drain-to-source leakage current. Typically the drain-to-source leakage current is 10x greater than the gate-to-source leakage current. The drain-to-source leakage current increases greatly with an increase in temperature. Typical values at 25°C are $100nA$ for the gate-to-source leakage current and $1uA$ for the drain-to-source leakage current.
+Leakage current is an important parameter to consider when you are using the MOSFET for switching on-and-off other circuitry in a low power design. MOSFET have both a gate-to-source and a drain-to-source leakage current. Typically the drain-to-source leakage current is 10x greater than the gate-to-source leakage current. The drain-to-source leakage current increases greatly with an increase in temperature. Typical values at $25\,^\circ\text{C}$ are $100\,\text{nA}$ for the gate-to-source leakage current and $1\,\mu\text{A}$ for the drain-to-source leakage current.
 
-If you need lower leakage currents than what you can achieve with a MOSFET, try using a J-FET. They have typical leakage currents of $1-10nA$.
+If you need lower leakage currents than what you can achieve with a MOSFET, try using a J-FET. They have typical leakage currents of $1\text{-}10\,\text{nA}$.
 
 ## Failure Modes
 
 There are three ways in which a MOSFET can generally fail:
 
-* Gate punch-through: Occurs when a large voltage spike appears on the gate that exceeds the maximum gate-source voltage (typically 10-20V). It punches a hole in the weak oxide layer.
+* Gate punch-through: Occurs when a large voltage spike appears on the gate that exceeds the maximum gate-source voltage (typically $10\text{-}20\,\text{V}$). It punches a hole in the weak oxide layer.
 * The drain-source voltage exceeds the rated maximum
 * Overheating
 
@@ -157,7 +157,7 @@ The DMOS (_Double-Diffused MOSFET_) was first developed in 1969[^semantic-schola
 
 ### FinFETs
 
-FinFETs are multi-fin FETs which overcome issues once MOSFETs approach very small sizes (such as 22nm).
+FinFETs are multi-fin FETs which overcome issues once MOSFETs approach very small sizes (such as $22\,\text{nm}$).
 
 <Image src={import('./_assets/3d-model-of-the-structure-of-a-multi-fin-finfet.png')} width="600">The 3D structure of a multi-fin MOSFET (FinFET).</Image>
 
@@ -183,7 +183,7 @@ Trench MOSFETs give a very low $ R_{DS(on)} $ per unit silicon area.
 
 _Gallium Nitride_ (GaN) MOSFETs switch much faster than traditional silicon MOSFETs[^ti-gan-ics], resulting in lower switch losses in power electronics and higher-frequency operation (higher-frequency operation also allows for smaller inductors and capacitors). This is because they have much smaller gate capacitances than their silicon counterpart[^infineon-gan-hemt].
 
-One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MOSFET with an integrated driver, protection and error reporting. The driver supports switching speeds of up to 150V/ns[^ti-lmg352xr030-q1-ds].
+One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MOSFET with an integrated driver, protection and error reporting. The driver supports switching speeds of up to $150\,\text{V/ns}$[^ti-lmg352xr030-q1-ds].
 
 <div class="wrappable-row">
 <Image src={import('./_assets/lmg3525r030-q1-ti-gan-fet-3d-render.png')} width="200px">3D render of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds].</Image>
@@ -196,7 +196,7 @@ One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MO
 
 MOSFETs can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/load-switches/). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
-Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown below, this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
+Some MOSFETs designed for switching loads support logic-level inputs (e.g. $+3.3\,\text{V}$ or $+5.0\,\text{V}$ from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown below, this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
 
 <Image src={import('./_assets/dmn61d8l-7-mosfet-internal-schematic.png')} width="600">Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated[^dinc-dmn61d8l-ds].</Image>
 
@@ -227,30 +227,30 @@ An interesting use for [depletion-mode MOSFETs](#depletion-mode) is a **simple b
 
 <Image src={import('./_assets/depletion-mode-mosfet-current-limiter.webp')} width="600">Schematic of a bi-directional current limiter made from two depletion mode MOSFETs and a resistor.</Image>
 
-The circuit above utilizes the **depletion-mode MOSFETs unique feature of being on when the gate-source voltage is 0V**. The circuit works like this:
+The circuit above utilizes the **depletion-mode MOSFETs unique feature of being on when the gate-source voltage is $0\,\text{V}$**. The circuit works like this:
 
-1. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs $V_{GS}$ is 0V. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value $R_S$.
+1. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs $V_{GS}$ is $0\,\text{V}$. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value $R_S$.
 1. As current begins to flow from left-to-right, a voltage drop begins to appear across $R_S$. This creates a negative $V_{GS}$ for $Q1$ and a positive $V_{GS}$ for $Q2$. We can ignore the positive $V_{GS}$ as this only serves to turn $Q2$ a little more (note that even if $Q2$ wasn't on, its internal body diode would conduct anyway). However the negative $V_{GS}$ on $Q1$ is important!
-1. As the current reaches a certain value, $V_{GS}$ across $Q1$ will become negative enough to reach its $V_{GS(th)}$ (which is between -2.1V and -1V for the BSP149[^infineon-bsp149-ds]). At this point it will begin turning $Q1$ off, $Q1$ will begin to drop voltage across it and hence limit the current of the circuit.
+1. As the current reaches a certain value, $V_{GS}$ across $Q1$ will become negative enough to reach its $V_{GS(th)}$ (which is between $-2.1\,\text{V}$ and $-1\,\text{V}$ for the BSP149[^infineon-bsp149-ds]). At this point it will begin turning $Q1$ off, $Q1$ will begin to drop voltage across it and hence limit the current of the circuit.
 1. Because of the symmetry this circuit works in exactly the same way if current is flowing in the other direction (right-to-left), but with the roles of $Q1$ and $Q2$ reversed.
 
 #### Worked Example of the Bi-directional Current Limiter
 
-The figure above shows two BSP149 MOSFETs and an $R_S = 1k\Omega$.
+The figure above shows two BSP149 MOSFETs and an $R_S = 1\,\text{k}\Omega$.
 
-From the datasheet of the BSP149, $V_{GS(th)}$ is between -2.1V and -1V[^infineon-bsp149-ds]. Unfortunately $V_{GS(th)}$ is never a well defined parameter, so we'll just pick a value in the middle of $V_{GS(th)} = -1.5V$.
+From the datasheet of the BSP149, $V_{GS(th)}$ is between $-2.1\,\text{V}$ and $-1\,\text{V}$[^infineon-bsp149-ds]. Unfortunately $V_{GS(th)}$ is never a well defined parameter, so we'll just pick a value in the middle of $V_{GS(th)} = -1.5\,\text{V}$.
 
 This means that the circuit should limit the current to approximately:
 
 $$
 \begin{align}
 I_{LIM} &= \frac{\left| V_{GS(th)} \right|}{R_S} \\
-        &= \frac{\left| -1.5V\right| }{1k\Omega} \\
-        &= 1.5mA \\
+        &= \frac{\left| -1.5\,\text{V} \right|}{1\,\text{k}\Omega} \\
+        &= 1.5\,\text{mA} \\
 \end{align}
 $$
 
-Because you can get depletion-mode MOSFETs with a maximum $V_{DS}$ rating of 200-1000V, this circuit is an excellent candidate for protecting the input of something that could expect either a high positive or negative voltage.
+Because you can get depletion-mode MOSFETs with a maximum $V_{DS}$ rating of $200\text{-}1000\,\text{V}$, this circuit is an excellent candidate for protecting the input of something that could expect either a high positive or negative voltage.
 
 TIP: Because of the part-to-part uncertainty in $V_{GS(th)}$, this circuit is suitable for crude current-limiting (e.g. for circuit protection) but not for designing an accurate current sink/source. 
 
@@ -280,7 +280,7 @@ There are other types of specialty MOSFETs which have even more pins, such as cu
 
 The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, $V_{TH}$ is affected by the voltage difference between the substrate and source, $V_{SB}$. Because the source-to-body voltage can affect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_. For a N-channel MOSFET, as the substrate becomes more negative than the source, the threshold voltage of the MOSFET is increased.
 
-Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning $V_{SB} = 0V$. This prevents any body effect from occurring.
+Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning $V_{SB} = 0\,\text{V}$. This prevents any body effect from occurring.
 
 For a N-channel MOSFET, the threshold voltage is affected by the body effect as governed by the following equation[^wikipedia-threshold-voltage]:
 
@@ -349,24 +349,58 @@ The [IXTN660N04T4](https://www.littelfuse.com/~/media/electronics/datasheets/dis
 
 ## Avalanche Rated MOSFETs
 
-Avalanche in a MOSFET is when $V_{DS}$ exceeds the breakdown voltage and the drain-body PN junction (body diode) enters reverse breakdown via impact ionization. The voltage field is strong enough that carriers are accelerated to a point where they can knock more carriers loose, creating a chain reaction. Avalanche most commonly occurs at switch off of a MOSFET -- parasitic inductance in the circuit can cause a large voltage spike as the current abrutly stops (remember: V = L * di/dt).
+Avalanche in a MOSFET is when $V_{DS}$ exceeds the breakdown voltage $V_{(BR)DSS}$ ($BR$ is breakdown, $DSS$ is drain-source with gate shorted to source) and the drain-body PN junction (body diode) enters reverse breakdown via impact ionization (see below image). The voltage field is strong enough that carriers are accelerated to a point where they can knock more carriers loose, creating a chain reaction. Avalanche most commonly occurs at switch off of a MOSFET -- parasitic inductance in the circuit can cause a large voltage spike as the current abrutly stops (remember: V = L * di/dt).
+
+<Image src={import('./_assets/avalanche-current-basic-diagram-of-current-through-body-diode.webp')} width="400px"/>
 
 All MOSFETs can experience avalanche breakdown, but only some are designed to be able to survive it, and are further rated for a specific number of avalanche cycles.
 
-The most common metric is the single-shot Unclamped Inductive Switching (UIS) energy ($E_{DS(AL)S}$). Below is a circuit diagrams of the standard Unclamped Inductive Switching (UIS) test circuit used to measure MOSFET avalanche ruggedness ($Q1$). The pulse generator applies a gate voltage and turns $Q1$ on long enough to ramp the inductor current up to a target value, then switches it off; the inductor forces the drain voltage up into avalanche, and the MOSFET dissipates the energy.
+<Aside type="note">
+On datasheets, $V_{(BR)DSS}$, $BV_{DSS}$ or just $BV$ may be used to represent the avalanche breakdown voltage. This voltage is typically defined at the voltage when the avalanche current reaches $250\,\mu\text{A}$ or $1\,\text{mA}$ and the junction temperature $T_J = 25\,^\circ\text{C}$.[^onsemi-and90158-mosfet-avalanche-operation]
+</Aside>
 
-<Image iref="fig-uis-test-circuit" src={import('./_assets/unclamped-inductive-load-test-circuit-simple.webp')} width="500px">A circuit diagram of the standard Unclamped Inductive Switching (UIS) test circuit.</Image>
+The most common metric is the single-shot Unclamped Inductive Switching (UIS) energy ($E_{DS(AL)S}$). This can also be called the Unclamped Inductive Load (UIL).[^onsemi-and90158-mosfet-avalanche-operation] Below is a circuit diagrams of the standard Unclamped Inductive Switching (UIS) test circuit used to measure MOSFET avalanche ruggedness ($Q1$).[^onsemi-and90158-mosfet-avalanche-operation] The pulse generator applies a gate voltage and turns $Q1$ on long enough to ramp the inductor current up to a target value, then switches it off; the inductor forces the drain voltage up into avalanche, and the MOSFET dissipates the energy.
+
+<Image src={import('./_assets/unclamped-inductive-load-test-circuit-simple.webp')} width="500px">A circuit diagram of the standard Unclamped Inductive Switching (UIS) test circuit.</Image>
+
+This circuit produces the voltage and current waveforms shown below. The gate is driven high at $t = 0\,\text{s}$. The current in the inductor ($I_d$) then begins to ramp up linealy due to a constant voltage ($V_{DD}$) being applied to it. At $t = 100\,\text{us}$, the gate is driven low. The inductor wants to keep the current flowing, and so the voltage at $V_D$ rises until the MOSFET enters avalanche and begins to conduct. The avalance voltage ($V_{av}$) is relatively constant at $50\,\text{V}$ during this period. Again, because of the constant voltage across the inductor, the current through it falls linearly back to $0\,\text{A}$. There is a bit of ringing in the tail of $V_{av}$ due to a resonant tank formed by the inductance and any parasitic capacitance (e.g. in the MOSFET). This ringing quickly decays to the steady state value of $V_{DD}$ (the MOSFET is blocking the supply), which was $2.5\,\text{V}$ in this illustration.
+
+The plot on the right shows the power through and energy dissipated by the MOSFET during avalanche. Because of the fixed $V_{av}$ across the MOSFET and the linear current drop, the power also drops linearly down to $0\,\text{W}$ ($P = V_{av} \times I_d$). The energy dissipated through the MOSFET as heat is just the integral of the power over time.
+
+<Image src={import('./_assets/unclamped-inductive-load-test-circuit-waveforms.png')} width="1000px">Voltage and current waveforms through the MOSFET during avalanche caused by the simple UIS test circuit.</Image>
+
+The breakdown voltage $V_{BR}$ is typically:[^nexperia-an10273-avalanche-ruggedness]
+
+$$
+\begin{align}
+V_{BR} = 1.3 V_{(BR)DSS}
+\end{align}
+$$
 
 There are single-shot and repetitive avalanche events:[^nexperia-an10273-avalanche-ruggedness]
 
 - **Single-shot avalanche events**: Avalanche events that occur due to fault conditions in a circuit. Avalanche operation is not intended nor repetitive.
 - **Repetitive avalanche events**: Avalanche is an intended mode of the MOSFET to enter into as part of the circuit design. The number of allowed events is a function of the avalanche energy. 
 
-The failure mechanism for a single-shot avalanche event in a power MOSFRT
+The failure mode for power MOSFETs due to single-shot avalanche events is due to the junction temperature $T_J$ exceeding it's maximum rating. 
+
 
 ### Avalanche Rated MOSFET Examples
 
-Nexperia's ASFET range are designed for automotive solenoid switching and have guaranteed avalanche performance, tested up to a billion cycles.[^nexperia-asfets-repetitive-avalanche]
+Nexperia's ASFET (Application Specific repetitive avalanche silicon technology) range are designed for automotive solenoid switching and have guaranteed avalanche performance, tested up to a billion cycles.[^nexperia-asfets-repetitive-avalanche]
+
+For example, the Nexperia BUK9K35-60RA is a dual N-channel MOSFET in a LFPAK56D package. It is rated for:[^nexperia-buk9k35-60ra-ds]
+
+- $E_{DS(AL)S,max} = 19.5\,\text{mJ}$ (non-repetitive drain-source avalanche energy)
+- $E_{DS(AL)R,max} = 28.6\,\text{mJ}$ (repetitive drain-source avalanche energy)
+
+<Image src={import('./_assets/avalanche-nexperia-buk9k13-60ra-product-screenshot.webp')} width="600px">Product screenshot of the Nexperia BUK9K13-60RA (dual avalanche rated MOSFET).[^nexperia-buk9k13-60ra]</Image>
+
+You might be wondering why the single-shot avalanche energy is lower than the repetitive avalanche energy. This is because the two values are measured under very different conditions. The single-shot avalanche energy specifies $I_D = 22\,\text{A}$, while the repetitive avalanche energy specifies $I_D = 0.73\,\text{A}$.[^nexperia-buk9k35-60ra-ds]
+
+The below plots show the maximum avalanche current vs. the avalanche time and the max. number of avalanche events vs. the avalanche energy for the Nexperia BUK9K35-60RA (both for repetitive avalanche events).
+
+<Image src={import('./_assets/avalanche-nexperia-buk9k35-60ra-current-vs-time-and-events-vs-energy.webp')} width="900px">Plots from the Nexperia BUK9K35-60RA datasheet showing avalanche current vs. time and events vs. energy (both for repetitive avalanche events).[^nexperia-buk9k35-60ra-ds]</Image>
 
 ### Reducing the Risk of Avalanche Breakdown
 
@@ -377,7 +411,7 @@ Two ways to reduce the risk of avalanche breakdown are:
 
 ## Manufacturer Part Number Families
 
-* **2N7002**: N-channel, 60V, 300mA MOSFET from a variety of manufacturers. 
+* **2N7002**: N-channel, $60\,\text{V}$, $300\,\text{mA}$ MOSFET from a variety of manufacturers. 
 
 ## Part Recommendations
 
@@ -391,7 +425,7 @@ Link to DigiKey's (US) MOSFET selection (single/discrete): https://www.digikey.c
 * Supplier Part Number: 108-1483
 * Supplier Price: NZ$0.29 (1), NZ$0.25 (100)
 
-The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the work horse for most of my projects. It has an RDS(on) of only 35mOhm and is rated for a current of 5.4A. The maximum drain source voltage is 30V, making it suitable for most embedded, low voltage applications. Also in the `PMV` range is the `PMV90ENER`.
+The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the work horse for most of my projects. It has an $R_{DS(on)}$ of only $35\,\text{m}\Omega$ and is rated for a current of $5.4\,\text{A}$. The maximum drain source voltage is $30\,\text{V}$, making it suitable for most embedded, low voltage applications. Also in the `PMV` range is the `PMV90ENER`.
 
 ### DMN3731U - N-Ch
 
@@ -401,7 +435,7 @@ The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the 
 * Suppliers:
   * [DigiKey, 31-DMN3731U-7CT-ND, NZ$0.19 (100)](https://www.digikey.co.nz/en/products/detail/diodes-incorporated/DMN3731U-7/10295271)
 
-With an max. $R_{DS(ON)}$ of $560m\Omega$ when $V_{GS} = 2.5V$, this N-channel MOSFET can be directly connected to GPIO lines on a +3.3V MCU. 
+With an max. $R_{DS(ON)}$ of $560\,\text{m}\Omega$ when $V_{GS} = 2.5\,\text{V}$, this N-channel MOSFET can be directly connected to GPIO lines on a $+3.3\,\text{V}$ MCU. 
 
 ## MOSFET Safe Operating Areas
 
@@ -409,7 +443,7 @@ With an max. $R_{DS(ON)}$ of $560m\Omega$ when $V_{GS} = 2.5V$, this N-channel M
 
 A MOSFET's SOA (_Safe Operating Area_) is usually shown as a graph in the datasheet. The SOA graph shows which combinations of drain-source voltages and drain currents are safe and which will likely damage the MOSFET. The graph takes into account steady-state operating conditions (i.e. infinite DC current) and also pulse operation. Different areas are provided for current pulses of different lengths. SOA graphs are particular important to understand for hot-swap circuits.
 
-Transient thermal impedance plot. This is a plot which shows how the effective thermal impedance of the MOSFET changes with a time-limited pulse of power (voltage x current). The thermal impedance reduces as the pulse period becomes shorter and shorter (these graphs usually show the change between 1us and 1s). 
+Transient thermal impedance plot. This is a plot which shows how the effective thermal impedance of the MOSFET changes with a time-limited pulse of power (voltage x current). The thermal impedance reduces as the pulse period becomes shorter and shorter (these graphs usually show the change between $1\,\mu\text{s}$ and $1\,\text{s}$). 
 
 For moderate $V_{DS}$ voltages, manufacturers determine the lines on the SOA plot from the transient thermal impedance plot.
 
@@ -425,7 +459,7 @@ The below image shows a MOSFETs SOA diagram:
 
 1. Rds(on) Limit: When $V_{DS}$ is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, $R_{DS(on)}$. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
 1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
-1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds its maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
+1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds its maximum value (typically between $100\text{-}200\,^\circ\text{C}$). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
 1. Thermal Instability: Thermal instability occurs at lower $V_{GS}$ voltages[^infineon-mosfet-safe-operating-diagram].
 1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET experiences "breakdown" and stops working correctly. This puts a hard upper-limit on the $V_{DS}$ voltage, shown by the far right vertical line on the SOA graph.
 
@@ -454,3 +488,6 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^mdpi-mosfet-beyond-1d-limit]: Meng Zhang, Baikui Li, Jin Wei (2020, Jun 5). _New Power MOSFET with Beyond-1D-Limit RSP-BV Trade-Off and Superior Reverse Recovery Characteristics_. MDPI Materials. Retrieved 2026-05-04, from https://www.mdpi.com/1996-1944/13/11/2581.
 [^nexperia-asfets-repetitive-avalanche]: Nexperia. _Automotive ASFETs for Repetitive Avalanche_ [product page]. Retrieved 2026-05-04, from https://www.nexperia.com/products/mosfets/application-specific-mosfets/asfets-for-motor-control/automotive-asfets-for-repetitive-avalanche.
 [^nexperia-an10273-avalanche-ruggedness]: Nexperia (2026, Feb 12). _AN10273: Power MOSFET single-shot and repetitive avalanche ruggedness rating_ [pdf]. Retrieved 2026-05-04, from https://assets.nexperia.com/documents/application-note/AN10273.pdf.
+[^onsemi-and90158-mosfet-avalanche-operation]: onsemi (2023, May). _AND90158/D: Understanding Power MOSFET Avalanche Operation and Associated UIS (UIL) Data Sheet Ratings_ [pdf]. Retrieved 2026-05-05, from https://www.onsemi.com/download/application-notes/pdf/and90158-d.pdf.
+[^nexperia-buk9k35-60ra-ds]: Nexperia (2020, Dec 2). _BUK9K35-60RA: Dual N-channel 60 V, 35 mΩ logic level MOSFET in LFPAK56D using Repetitive Avalanche technology_ [datasheet]. Retrieved 2026-05-05, from https://assets.nexperia.com/documents/data-sheet/BUK9K35-60RA.pdf.
+[^nexperia-buk9k13-60ra]: Nexperia. _BUK9K13-60RA: Dual N-channel 60 V, 12.5 mΩ logic level MOSFET in LFPAK56D using Repetitive Avalanche technology_ [product page]. Retrieved 2026-05-05, from https://www.nexperia.com/product/BUK9K13-60RA.
