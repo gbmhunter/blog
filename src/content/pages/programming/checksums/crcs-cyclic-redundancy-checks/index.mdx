@@ -38,6 +38,10 @@ Instead of the numbers being treated as positive integers, CRCs treat them as po
 
 But how does division work with polynomials rather than numbers? This is where it gets a bit weird, and the $GF(2)$ field (Galois field of two elements) comes into play. The rule is decided that the polynomial arithmetic will be all modulo 2. This is essentially the same as binary arithmetic with no carry.
 
+<Aside type="tip">
+In basic terms, a _field_ in mathematics is an algrebraic system in which the operations of addition, subtraction, multiplication, and division can be performed.[^ramabadran-gaitonde-tutorial-crc-computations]
+</Aside>
+
 ### Addition and Subtraction
 
 Addition without carry is the same as XOR. For example:
@@ -115,13 +119,13 @@ In binary, the same idea works directly with bit-shifts and XORs. Here's `110100
           1100 (quotient)
       ________
 1001 ) 1101001 (divider | dividend)
-       1001..,
-       ----..,
-        1000.,
-        1001.,
-        ----.,
-         0010,
-         0000,
+       1001
+       -------
+        100001
+        1001
+        ------
+         00101
+         0000
          ----,
           0101
           0000
@@ -129,9 +133,9 @@ In binary, the same idea works directly with bit-shifts and XORs. Here's `110100
            101 (remainder)
 ```
 
-(`,` represents unprocessed "1"'s in the dividend, `.` represents unprocessed "0"'s in the dividend)
+What is happening above? At each step, look at the leftmost bit of the working window: if it's `1`, we subtract the divisor from the dividend by XORing in the divisor (`1001`); if it's `0`, XOR in `0000` instead (a no-op kept for layout regularity — see iterations 3 and 4, which are the bit-by-bit version's way of saying "the polynomial division would have already stopped"). Then shift the window one column to the right, bringing in the next bit of the dividend.
 
-At each step, look at the leftmost bit of the working window: if it's `1`, we subtract the divisor from the dividend by XORing in the divisor (`1001`); if it's `0`, XOR in `0000` instead (a no-op kept for layout regularity — see iterations 3 and 4, which are the bit-by-bit version's way of saying "the polynomial division would have already stopped"). Then shift the window one column to the right, bringing in the next bit of the dividend. The `,` and `.` placeholders to the right stand for original-dividend bits not yet pulled into the window — `,` represents a `1`, `.` represents a `0`.
+In future examples we will skip all the no-op XOR with 0000 steps for brevity. And we also skip writing down the quotient — no one cares about this in CRC calculations.
 
 <Aside type="tip">
 GF(2) polynomial division is a bit weird, 1000 is subtracted by a seemingly bigger 1001 and there is a remainder! There is not really a notion of bigger and smaller numbers in GF(2) except for the position of the leading bit (the degree of the polynomial).
@@ -264,6 +268,8 @@ So we have to implement our own CRC division algorithm. The simplest way is to r
 1. Shift the variable left by 1 bit. On the low end, shift in the next bit of the augmented message (the message with the zero bits appended). The MSB of the message is taken first (i.e. the topmost bit of the highest byte). The bit that falls off the high end of the variable is the "popped" bit.
 1. If the popped bit was a 1, XOR the variable with the generator polynomial *minus its leading 1* (the same form discussed earlier — for `1011`, that's `011`).
 
+This method is essentially the same as the CRC hardware implementation using a LFSR (Linear Feedback Shift Register).
+
 <Aside type="example">
 Calculate the CRC for the data `11010011` using the polynomial `1011` using the simple software implementation described above.
 
@@ -333,11 +339,50 @@ Variable is now `011`.
 The final variable is `011`, which is the CRC for the data `0b11010011` using the polynomial `0b1011`. This matches the long-division remainder computed earlier.
 </Aside>
 
+## A Faster Software Implementation
+
+The above implementation is basic, but slow. It has to iterate over every bit in the message individually. To speed this up, we ideally want a way of operating on bytes (or multiple bytes) at a time. This is possible by using the "table" method. For the purposes of an example, let's assume we are using a CRC polynomial with a width of 32 bits (4 bytes).
+
+Now our register will be 32 bits wide as shown in the diagram below.
+
+<Image src={import('./_assets/table-crc-4-byte-register-diagram.webp')} width="800px">Diagram of the 32-bit register for a 4-byte CRC polynomial.</Image>
+
+Let's assume the top byte 3 has register values:
+
+```text
+r7 r6 r5 r4 r3 r2 r1 r0
+```
+
+In the next iteration, `r7` will determine whether the poly is XORed into the entire register. If `r7` is 1, then the poly is XORed into the entire register. If the top 8 bits of the poly are `p7 p6 p5 p4 p3 p2 p1 p0`, then the register will have this value:
+
+```text
+        r6 r5 r4 r3 r2 r1 r0 ??
++ r7 * (p7 p6 p5 p4 p3 p2 p1 p0)
+```
+
+Where `+` is XOR and `*` is multiplication (the multiplication makes sure the poly is only XORed if `r7` is `1`, otherwise it's just an XOR with all 0's, i.e. a no-op).
+
+The new top bit, which controls what happens in the next iteration, is now `r6 + r7 * p7`. Generalising: after 8 shift-and-XOR iterations, every bit in the register is some fixed XOR combination of the original 8 top bits and the (constant) poly bits. The poly never changes, so the **only** input to that 8-iteration result is the top byte of the register. With $2^8 = 256$ possible top-byte values, we can precompute the answer for every one of them and store the results in a 256-entry table of 32-bit XOR masks.
+
+To build the table: for each $i$ from 0 to 255, load the register with $i$ in the top byte, run the bit-by-bit algorithm for 8 iterations, and store the resulting register value as `table[i]`.
+
+Now the inner loop processes one byte per iteration. Here is Python pseudo-code for the calculation:
+
+```python
+while augmented_msg_bytes_remaining:
+    top_byte = register >> 24                    # Extract top byte
+    register = (register << 8) & 0xFFFFFFFF      # Shift up by one byte
+    register |= next_augmented_msg_byte          # Bring new byte in at bottom
+    register ^= table[top_byte]                  # Apply precomputed XOR
+```
+
+This is roughly 8x faster than the bit-by-bit version. Variants like _slice-by-4_ and _slice-by-8_ use multiple tables in parallel for further speedups, and modern x86 (`SSE4.2 CRC32` instruction) and ARM64 hardware-accelerate this further.
+
 ## Initial Values
 
 So far we have been assuming that the initial value of the CRC residual variable is initialized to 0. This is not always the case. Many CRC algorithms start with a non-zero initial value. Why? There is quite a problem with CRC algorithms that start with all 0s - the CRC value does not change with any leading zero bits, and thus cannot detect errors if 0 bits are missing/added. This type of error can be quite common in practise, and many CRC algorithm start with a non-zero init value to compensate. I would always prefer to select an algorithm with a non-zero init value unless there is a very good reason to use a 0 init value.
 
-The most popular non-zero initial value is just all `f`'s, e.g. `0xffff` for a 16-bit CRC. 
+The most popular non-zero initial value is just all `f`'s, e.g. `0xffff` for a 16-bit CRC.
 
 ## CRC Calculators
 
@@ -439,13 +484,15 @@ However, CRC-16-CCITT are not all the same. There are a few common variants of t
 
 All of the CRC-CCITT variants use the following generator polynomial:
 
-<div>$$ x^{16} + x^{12} + x^{5} + 1 $$</div>
+$$
+x^{16} + x^{12} + x^{5} + 1
+$$
 
 It can be represented by the following hexadecimal numbers:
 
 ```
-Normal: 0x1021  
-Reverse: 0x8408  
+Normal: 0x1021
+Reverse: 0x8408
 Koopman: 0x8810
 ```
 
@@ -480,3 +527,4 @@ CRC-32/ISO-HDLC is one of the most common 32-bit CRC algorithms. It is also know
 [^reveng-crc-catalogue]: Greg Cook (2024, Dec 11). _Catalogue of parametrised CRC algorithms_. CRC RevEng. Retrieved 2026-04-30, from https://reveng.sourceforge.io/crc-catalogue/all.htm.
 [^koopman-best-crc-polynomials]: Philip Koopman (2024, Feb 25). _Best CRC Polynomials_. Carnegie Mellon University. Retrieved 2026-04-30, from https://users.ece.cmu.edu/~koopman/crc/.
 [^wikipedia-sse4]: Wikipedia (2026, Jan 16). _SSE4_ [wiki]. Retrieved 2026-04-30, from https://en.wikipedia.org/wiki/SSE4.
+[^ramabadran-gaitonde-tutorial-crc-computations]: Tenkasi V. Ramabadran, Sunil S. Gaitonde (1988, Jul). _A tutorial on CRC computations_ [pdf]. IEEE Micro, Vol. 8, Issue 4, pp. 62-75. Retrieved 2026-05-06, from https://people.cs.pitt.edu/~znati/Courses/WANs/Dir-Rel/related/TutorialCRCImplement.pdf.
