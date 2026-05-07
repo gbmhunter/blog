@@ -13,7 +13,14 @@
             "strings": "off",
             "other": "off"
         },
-        "editor.suggestOnTriggerCharacters": false
+        "editor.suggestOnTriggerCharacters": false,
+        "editor.inlineSuggest.enabled": true
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": true,
+        "mdx": true,
+        "plaintext": true
     },
     "cSpell.language": "en-GB",	
     "cSpell.words": [
@@ -209,6 +216,7 @@
         "CANCrocodile",
         "capacitorguide",
         "Carsem",
+        "Carta",
         "Cascode",
         "casio",
         "Castagnoli",
@@ -303,6 +311,8 @@
         "CONFIG_NEWLIB_LIBC_NANO",
         "conn",
         "constexpr",
+        "CONSWD001-SMD",
+        "CONSWF001-SMD",
         "contactlessly",
         "containerd",
         "contourpy",
@@ -435,6 +445,7 @@
         "Ducu",
         "duoh",
         "Durakool",
+        "DYHW",
         "E-Paper",
         "EABI",
         "eabihf",
@@ -458,6 +469,7 @@
         "EFTPOS",
         "egrep",
         "eiaj",
+        "Eink",
         "EIRP",
         "EKPE",
         "EKPG",
@@ -836,6 +848,7 @@
         "Jumo",
         "Jupyter",
         "Jupyter's",
+        "Kaleido",
         "Kalman",
         "Kann",
         "Karki",
@@ -2003,6 +2016,7 @@
         "VTREG",
         "vundle",
         "Wanptek",
+        "Waveshare",
         "WDFN",
         "webhost",
         "webp",
