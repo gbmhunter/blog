@@ -19,6 +19,71 @@ Antennas are an electronic device which converts between electrical energy and e
 | ----------- | ---------------- |
 | VSWR        | VSWR is an initialism for "**Voltage Standing Wave Ratio**". The bandwidth of an antenna is usually defined as the range of frequencies at which VSWR is less than 2. |
 
+## Gain
+
+The _gain_ of an antenna is a measure of an antenna's radiation efficiency (how well it converts electrical power into radio waves) and directivity (how focused the radiation intensity is in a particular direction).
+
+Gain is defined as: The ratio of radiation intensity in a given direction to the radiation intensity that would be produced by an isotropic radiator (a theoretical antenna that radiates equally in all directions) with the same input power. As an equation:
+
+$$
+G = \frac{U_{ant}}{U_{iso}}
+$$
+
+Where:
+
+- $G$ is the gain (unitless)
+- $U_{ant}$ is the radiation intensity of the antenna in a given direction (W/sr)
+- $U_{iso}$ is the radiation intensity of an isotropic radiator with the same input power (W/sr)
+
+Key points to note:
+
+- The definition states "with the same input power". This means it takes into account the radiation efficiency of the antenna — the divisor is an isotropic radiator that took all of the input electrical power and converted it into radiation.
+- Gain is specified in a given direction. If no direction is specified, it is usually assumed to be the maximum gain (the gain in the direction of maximum radiation intensity).
+
+The image below illustrates how the gain of an antenna is calculated. Let's assume we have an antenna with a single main lobe that points to the right. The radiation pattern is shown by the multi-coloured (orange/yellow) surface. Also drawn is a reference isotropic antenna with the same input power (electrical power going into the antenna) and 100% efficiency, shown as the blue sphere. The gain for the antenna is calculated along the direction of maximum gain. In this example, $U_{ant} = 2.51$ and $U_{iso} = 1$.
+
+The gain is given by:
+
+$$
+\begin{align*}
+G &= \frac{U_{ant}}{U_{iso}} \\
+&= \frac{2.51}{1} \\
+&= 2.51
+\end{align*}
+$$
+
+Converting to $\text{dBi}$:
+
+$$
+\begin{align*}
+G_{\text{dBi}} &= 10 \log_{10}(G) \\
+&= 10 \log_{10}(2.51) \\
+&= 4.0 \text{ dBi}
+\end{align*}
+$$
+
+<Aside type="tip">
+$\text{dBi}$ is a common unit for gain, which stands for "decibels relative to isotropic". It is calculated as $10 \log_{10}(G)$, where $G$ is the gain as a unitless ratio.
+</Aside>
+
+<Image src={import('./_assets/antenna-gain-3d.png')} width="800px">3D radiation pattern (orange/yellow lobe) of a directional antenna alongside an isotropic reference (blue sphere) of the same input power, illustrating how antenna gain $G$ is calculated</Image>
+
+<Aside type="note">
+The 3D surfaces in the above image represent it's radiation pattern surface. For any point on the surface, the radial distance from the antenna origin to the surface is proportional to the radiation intensity in that direction. This is not the same thing as a surface which represents equal radiation intensity (although it happens to be the same shape for the isotropic antenna).
+
+The average distance from the origin to the antenna surface is $\eta$ times the radius of the isotropic sphere, where $\eta$ is the radiation efficiency of the antenna.
+</Aside>
+
+Gain can also be defined as the product of the antenna's directivity and its radiation efficiency:
+
+$$
+G = D \cdot \eta
+$$
+
+Where:
+- $D$ is the directivity (unitless)
+- $\eta$ is the radiation efficiency (unitless, between 0 and 1)
+
 ## Dipoles
 
 The voltage in a dipole is maximum at the ends, and 0 at the middle. The current is the opposite, with the maximum being in the middle, and being 0 at both ends.
