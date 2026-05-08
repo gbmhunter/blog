@@ -40,15 +40,25 @@ Key points to note:
 - The definition states "with the same input power". This means it takes into account the radiation efficiency of the antenna — the divisor is an isotropic radiator that took all of the input electrical power and converted it into radiation.
 - Gain is specified in a given direction. If no direction is specified, it is usually assumed to be the maximum gain (the gain in the direction of maximum radiation intensity).
 
-The image below illustrates how the gain of an antenna is calculated. Let's assume we have an antenna with a single main lobe that points to the right. The radiation pattern is shown by the multi-coloured (orange/yellow) surface. Also drawn is a reference isotropic antenna with the same input power (electrical power going into the antenna) and 100% efficiency, shown as the blue sphere. The gain for the antenna is calculated along the direction of maximum gain. In this example, $U_{ant} = 2.51$ and $U_{iso} = 1$.
+The image below illustrates how the gain of an antenna is calculated. Let's assume we have an antenna with a single main lobe that points to the right and an input power of $P_{in} = 2\,\text{W}$. The radiation pattern is shown by the multi-coloured (orange/yellow) surface. Also drawn is a reference isotropic antenna with the same input power (electrical power going into the antenna) and 100% efficiency, shown as the blue sphere.
 
-The gain is given by:
+The radiation intensity of the isotropic reference is the same in every direction and equal to the input power spread evenly over the full $4\pi$ steradians of the sphere:
+
+$$
+\begin{align*}
+U_{iso} &= \frac{P_{in}}{4\pi} \\
+&= \frac{2\,\text{W}}{4\pi\,\text{sr}} \\
+&\approx 0.16\,\text{W/sr}
+\end{align*}
+$$
+
+The directional antenna concentrates radiation into a main lobe. In this example, the peak intensity in the direction of maximum gain works out to $U_{ant} \approx 0.40\,\text{W/sr}$ (which already accounts for the antenna's efficiency $\eta \approx 0.42$). This value would usually be measured in a specialized laboratory setting. The gain is then:
 
 $$
 \begin{align*}
 G &= \frac{U_{ant}}{U_{iso}} \\
-&= \frac{2.51}{1} \\
-&= 2.51
+&= \frac{0.40\,\text{W/sr}}{0.16\,\text{W/sr}} \\
+&\approx 2.51
 \end{align*}
 $$
 

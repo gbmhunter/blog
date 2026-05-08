@@ -39,9 +39,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 TARGET_GAIN_DBI = 4.0  # desired peak gain (sets the antenna efficiency)
 N = 2                  # cos^n(theta) shape parameter (higher = narrower lobe)
 RES = 121              # mesh resolution per axis
+P_INPUT_W = 2.0        # antenna input power (W) — sets the absolute W/sr scale
 
 # Efficiency derived from target gain. G = 2 * eta * (n + 1) so eta = G/(2(n+1)).
 ETA = (10 ** (TARGET_GAIN_DBI / 10)) / (2 * (N + 1))
+
+# Isotropic reference intensity for the chosen input power: U_iso = P_in / (4 pi).
+U_ISO = P_INPUT_W / (4.0 * np.pi)
 
 
 def directional_pattern(theta: np.ndarray, eta: float, n: int) -> np.ndarray:
@@ -87,18 +91,20 @@ def main():
     phi_1d = np.linspace(0, 2 * np.pi, RES)
     theta, phi = np.meshgrid(theta_1d, phi_1d, indexing="ij")
 
-    # Isotropic reference: unit sphere.
-    iso_r = np.ones_like(theta)
+    # Isotropic reference: a sphere of constant intensity U_iso.
+    iso_r = np.full_like(theta, U_ISO)
     iso_x, iso_y, iso_z = sph_to_cart(iso_r, theta, phi)
 
-    # Directional pattern, computed with the lobe along +z, then rotated 90°
-    # about the y-axis so the lobe points along +x (better aspect ratio for
-    # an inline figure).
-    dir_r = directional_pattern(theta, ETA, N)
+    # Directional pattern, computed with the lobe along +z (in normalized
+    # units where U_iso = 1), then scaled to W/sr and rotated 90° about the
+    # y-axis so the lobe points along +x (better aspect ratio for an inline
+    # figure).
+    dir_r = directional_pattern(theta, ETA, N) * U_ISO
     _x, _y, _z = sph_to_cart(dir_r, theta, phi)
     dir_x, dir_y, dir_z = _z, _y, -_x
 
-    peak_gain = dir_r.max()  # linear gain G
+    peak_intensity = dir_r.max()  # peak U_ant in W/sr
+    peak_gain = peak_intensity / U_ISO  # linear gain G
     gain_dbi = 10.0 * np.log10(peak_gain)
 
     # ----- Plot ---------------------------------------------------------------
@@ -119,42 +125,42 @@ def main():
         color="#2c4f9e", linewidth=0.5, alpha=0.6,
     )
 
-    # Reference line marking the +x axis up to peak gain — visualises the
-    # gain ratio (sphere radius = 1, peak lobe extends to G).
-    ax.plot([0, peak_gain], [0, 0], [0, 0], color="black",
+    # Reference line marking the +x axis up to peak intensity — visualises
+    # the gain ratio (sphere radius = U_iso, peak lobe extends to U_ant).
+    ax.plot([0, peak_intensity], [0, 0], [0, 0], color="black",
             linewidth=0.8, linestyle="--", alpha=0.6)
 
     # Mark the two intensities that define the gain equation:
     #   G = U_antenna(peak direction) / U_isotropic
-    # Numerator: lobe surface point along +x at radius = peak_gain.
-    # Denominator: isotropic surface point along +x at radius = 1 — this point
-    # sits *inside* the translucent lobe, so we make it extra prominent
+    # Numerator: lobe surface point along +x at radius = U_ant.
+    # Denominator: isotropic surface point along +x at radius = U_iso — this
+    # point sits *inside* the translucent lobe, so we make it extra prominent
     # (large size, white outline) and use a leader line out to a clear area.
-    ax.scatter(peak_gain, 0, 0, color="#b22222", s=70,  # type: ignore[arg-type]
+    ax.scatter(peak_intensity, 0, 0, color="#b22222", s=70,  # type: ignore[arg-type]
                edgecolors="white", linewidths=1.2, zorder=10)
-    ax.scatter(1.0, 0, 0, color="#1f4ec9", s=110,  # type: ignore[arg-type]
+    ax.scatter(U_ISO, 0, 0, color="#1f4ec9", s=110,  # type: ignore[arg-type]
                edgecolors="white", linewidths=1.5, zorder=20)
 
     # Leader line + label for U_iso, pulled out below the diagram so it is
     # readable despite the lobe surrounding the point.
-    iso_label_xyz = (1.0, 0.0, -1.25)
-    ax.plot([1, iso_label_xyz[0]], [0, iso_label_xyz[1]],
+    iso_label_xyz = (U_ISO, 0.0, -peak_intensity * 0.5)
+    ax.plot([U_ISO, iso_label_xyz[0]], [0, iso_label_xyz[1]],
             [0, iso_label_xyz[2]],
             color="#1f4ec9", linewidth=0.9, zorder=15)
     ax.text(*iso_label_xyz,
-            "$U_\\mathrm{iso}$ = 1",
+            f"$U_\\mathrm{{iso}}$ = {U_ISO:.2f} W/sr",
             color="#1f4ec9", fontsize=10, ha="center", va="top",
             fontweight="bold",
             bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
                       edgecolor="#1f4ec9", alpha=0.95))
 
     # Leader line + boxed label for U_ant, matching U_iso's treatment.
-    ant_label_xyz = (peak_gain, 0.0, 1.25)
-    ax.plot([peak_gain, ant_label_xyz[0]], [0, ant_label_xyz[1]],
+    ant_label_xyz = (peak_intensity, 0.0, peak_intensity * 0.5)
+    ax.plot([peak_intensity, ant_label_xyz[0]], [0, ant_label_xyz[1]],
             [0, ant_label_xyz[2]],
             color="#b22222", linewidth=0.9, zorder=15)
     ax.text(*ant_label_xyz,
-            f"$U_\\mathrm{{ant}}$ = {peak_gain:.2f}",
+            f"$U_\\mathrm{{ant}}$ = {peak_intensity:.2f} W/sr",
             color="#b22222", fontsize=10, ha="center", va="bottom",
             fontweight="bold",
             bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
@@ -163,7 +169,9 @@ def main():
     # collide with the 3D axis labels.
     ax.text2D(
         0.98, 0.92,
+        f"$P_\\mathrm{{in}}$ = {P_INPUT_W:.0f} W\n"
         f"$G = U_\\mathrm{{ant}} / U_\\mathrm{{iso}}$\n"
+        f"≈ {peak_intensity:.2f} / {U_ISO:.2f}\n"
         f"≈ {peak_gain:.2f}  ({gain_dbi:.1f} dBi)",
         transform=ax.transAxes,
         color="black", fontsize=10,
@@ -174,7 +182,7 @@ def main():
 
     # Directional lobe as a translucent colored surface plus a wireframe,
     # matching the isotropic sphere's treatment.
-    norm = Normalize(0.0, peak_gain)
+    norm = Normalize(0.0, peak_intensity)
     facecolors = PLASMA(norm(dir_r))
     facecolors[..., -1] = 0.30  # apply alpha to RGBA face colors
     ax.plot_surface(
@@ -190,13 +198,15 @@ def main():
     )
 
     # Antenna marker at the origin (a thin vertical bar along the lobe axis).
-    ax.plot([0, 0], [0, 0], [-0.25, 0.25], color="black", linewidth=2.5)
+    marker_h = peak_intensity * 0.10
+    ax.plot([0, 0], [0, 0], [-marker_h, marker_h], color="black",
+            linewidth=2.5)
 
     # Axes / framing. Lobe runs along +x, so give x a wide range and keep
     # y and z just large enough to fit the sphere and the lobe's transverse
     # extent — preserves the wide aspect ratio of the figure.
-    x_lo, x_hi = -1.5, peak_gain * 1.2
-    yz_lim = max(peak_gain * 0.45, 1.5)
+    x_lo, x_hi = -peak_intensity * 0.6, peak_intensity * 1.2
+    yz_lim = peak_intensity * 0.6
     ax.set_xlim(x_lo, x_hi)
     ax.set_ylim(-yz_lim, yz_lim)
     ax.set_zlim(-yz_lim, yz_lim)
@@ -208,7 +218,9 @@ def main():
 
     legend_elems = [
         Line2D([0], [0], color="#888888", lw=2,
-               label="Isotropic reference (same input power, 100% efficient)"),
+               label=(f"Isotropic reference  "
+                      f"($P_\\mathrm{{in}}$ = {P_INPUT_W:.0f} W, "
+                      f"100% efficient)")),
         Line2D([0], [0], color=PLASMA(0.7), lw=8,
                label=(f"Directional antenna  "
                       f"(η = {ETA:.2f},  peak gain ≈ {gain_dbi:.1f} dBi)")),
