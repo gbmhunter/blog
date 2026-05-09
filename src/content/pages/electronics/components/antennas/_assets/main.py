@@ -86,7 +86,28 @@ def trim_bottom_whitespace(png_path: Path, padding_px: int = 4) -> None:
     img.crop((0, 0, arr.shape[1], new_height)).save(png_path)
 
 
-def main():
+def whip_pattern(theta: np.ndarray) -> np.ndarray:
+    """Half-wave dipole / quarter-wave whip radiation intensity pattern.
+
+    Azimuthally symmetric (no phi dependence). Peak normalized to 1 along
+    theta = pi/2 (perpendicular to the antenna axis); zero along the axis
+    (theta = 0 and theta = pi). Uses the standard half-wave dipole formula
+
+        F(theta) = cos(pi/2 * cos(theta)) / sin(theta)
+
+    and returns U(theta) = F(theta)^2 with the 0/0 limits at the poles
+    handled explicitly.
+    """
+    sin_theta = np.sin(theta)
+    eps = 1e-10
+    safe_sin = np.where(sin_theta < eps, eps, sin_theta)
+    f = np.cos(np.pi / 2.0 * np.cos(theta)) / safe_sin
+    u = f * f
+    return np.where(sin_theta < eps, 0.0, u)
+
+
+def generate_gain_plot():
+    """Generate the gain-vs-isotropic comparison diagram."""
     theta_1d = np.linspace(0, np.pi, RES)
     phi_1d = np.linspace(0, 2 * np.pi, RES)
     theta, phi = np.meshgrid(theta_1d, phi_1d, indexing="ij")
@@ -243,8 +264,131 @@ def main():
     # by post-processing the PNG: find the lowest row containing a non-white
     # pixel, then crop a few pixels below it.
     trim_bottom_whitespace(png_path, padding_px=4)
+    plt.close(fig)
     print(f"Saved {png_path.name} in {SCRIPT_DIR}")
-    print(f"Linear peak gain G = {peak_gain:.3f}  ({gain_dbi:.2f} dBi)")
+    print(f"  Linear peak gain G = {peak_gain:.3f}  ({gain_dbi:.2f} dBi)")
+
+
+def generate_whip_plot():
+    """Generate the whip antenna toroidal radiation pattern diagram.
+
+    The whip is modelled as a half-wave dipole / quarter-wave monopole over
+    a perfect ground plane. Pattern is azimuthally symmetric with nulls
+    along the antenna axis (vertical, +z) and peak intensity perpendicular
+    to it.
+    """
+    theta_1d = np.linspace(0, np.pi, RES)
+    phi_1d = np.linspace(0, 2 * np.pi, RES)
+    theta, phi = np.meshgrid(theta_1d, phi_1d, indexing="ij")
+
+    r = whip_pattern(theta)
+    x, y, z = sph_to_cart(r, theta, phi)
+
+    fig = plt.figure(figsize=(8, 7), dpi=150)
+    ax = cast(Axes3D, fig.add_subplot(111, projection="3d"))
+
+    norm = Normalize(0.0, r.max())
+    facecolors = PLASMA(norm(r))
+    facecolors[..., -1] = 0.55
+    ax.plot_surface(
+        x, y, z,
+        facecolors=facecolors,
+        rstride=1, cstride=1,
+        linewidth=0, antialiased=True, shade=False,
+    )
+    ax.plot_wireframe(
+        x, y, z,
+        rstride=8, cstride=8,
+        color="#a4392a", linewidth=0.4, alpha=0.55,
+    )
+
+    # Whip antenna drawn through the centre of the torus to convey that the
+    # pattern is from a distributed radiator centred on the antenna (rather
+    # than appearing to come from a single point at the base). For a quarter-
+    # wave monopole over a ground plane, the image current makes the
+    # effective radiating structure a centred dipole, so the pattern is
+    # mathematically centred on the antenna's midpoint.
+    whip_half = 0.5
+    ax.plot([0, 0], [0, 0], [-whip_half, whip_half],
+            color="black", linewidth=3.5)
+    ax.text(0, 0, whip_half + 0.08, "whip\nantenna",
+            color="black", fontsize=9, ha="center", va="bottom")
+
+    # Dotted axis-extension lines past each end of the antenna, 50% of the
+    # antenna length on each side, to make the antenna axis visible.
+    axis_ext = whip_half  # 50% of full antenna length (= whip_half * 2 * 0.5)
+    ax.plot([0, 0], [0, 0], [whip_half, whip_half + axis_ext],
+            color="black", linewidth=0.8, linestyle=":", alpha=0.7)
+    ax.plot([0, 0], [0, 0], [-whip_half - axis_ext, -whip_half],
+            color="black", linewidth=0.8, linestyle=":", alpha=0.7)
+
+    lim = 1.1
+    ax.set_xlim(-lim, lim)
+    ax.set_ylim(-lim, lim)
+    ax.set_zlim(-lim, 1.2)
+    ax.set_box_aspect((1, 1, 1))
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_zlabel("z")
+    ax.view_init(elev=18, azim=35)
+
+    ax.set_title(
+        "Whip antenna radiation pattern (donut/torus)\n"
+        "Antenna axis along z; peak radiation perpendicular to axis, zero radiation along axis",
+        fontsize=12,
+    )
+
+    # Annotate peak (perpendicular to axis) and null (along axis) using
+    # ax.annotate with axes-relative coordinates so the labels render on top
+    # of the 3D surface regardless of view angle. The arrow target is
+    # computed by manually projecting a 3D point through the 3D axes' proj
+    # matrix into 2D axes coords. Must be done AFTER view_init / set_xlim
+    # etc. and after a draw pass so the projection matrix is final.
+    from mpl_toolkits.mplot3d import proj3d
+    fig.canvas.draw()
+
+    def to_axes_coords(x: float, y: float, z: float) -> tuple[float, float]:
+        x2, y2, _ = proj3d.proj_transform(x, y, z, ax.get_proj())
+        display_xy = ax.transData.transform((x2, y2))
+        ax_xy = ax.transAxes.inverted().transform(display_xy)
+        return float(ax_xy[0]), float(ax_xy[1])
+
+    # Peak point on the torus equator (z = 0, on the plane through the
+    # antenna's midpoint). x = 0, y = 1 places the endpoint on the +y face
+    # of the torus where r(theta = pi/2) = 1.
+    ax.annotate(
+        "peak\n(perpendicular to axis)",
+        xy=to_axes_coords(0.0, 1.0, 0.0), xycoords=ax.transAxes,
+        xytext=(0.92, 0.62), textcoords=ax.transAxes,
+        ha="center", va="center", fontsize=9, fontweight="bold",
+        color="#7a1010",
+        bbox=dict(boxstyle="round,pad=0.25", facecolor="white",
+                  edgecolor="#7a1010", alpha=0.95),
+        arrowprops=dict(arrowstyle="-", color="#7a1010", lw=0.9),
+    )
+
+    ax.annotate(
+        "null\n(along axis)",
+        xy=to_axes_coords(0.0, 0.0, -0.65), xycoords=ax.transAxes,
+        xytext=(0.28, 0.30), textcoords=ax.transAxes,
+        ha="center", va="center", fontsize=9, fontweight="bold",
+        color="#1f4ec9",
+        bbox=dict(boxstyle="round,pad=0.25", facecolor="white",
+                  edgecolor="#1f4ec9", alpha=0.95),
+        arrowprops=dict(arrowstyle="-", color="#1f4ec9", lw=0.9),
+    )
+
+    fig.subplots_adjust(left=0, right=1, top=0.95, bottom=0.0)
+    png_path = SCRIPT_DIR / "whip-antenna-radiation-pattern-simple.png"
+    fig.savefig(png_path, dpi=150, bbox_inches="tight", pad_inches=0.10)
+    trim_bottom_whitespace(png_path, padding_px=4)
+    plt.close(fig)
+    print(f"Saved {png_path.name} in {SCRIPT_DIR}")
+
+
+def main():
+    generate_gain_plot()
+    generate_whip_plot()
 
 
 if __name__ == "__main__":
