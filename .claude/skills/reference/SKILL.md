@@ -13,18 +13,36 @@ Look at the conversation context to determine which `.mdx` file is currently bei
 
 ## Step 2: Fetch the URL
 
-Use the Chrome browser tools (NOT WebFetch) to navigate to the URL and extract the page content. This avoids bot-blocking that WebFetch often triggers. Steps:
+**For HTML pages**, use the Chrome browser tools (NOT WebFetch) to navigate and extract content. This avoids bot-blocking that WebFetch often triggers:
 
 1. Call `mcp__claude-in-chrome__tabs_context_mcp` (with `createIfEmpty: true`) to get a tab ID.
 2. Call `mcp__claude-in-chrome__navigate` to navigate to the URL.
 3. Call `mcp__claude-in-chrome__get_page_text` to read the page content.
 
-Extract from the page:
-- **Title** — the page's main title (use the `<title>` tag or `<h1>` as a fallback)
-- **Author** — the author's name if present (look for bylines, meta tags, or a clear "by X" attribution)
-- **Publication date** — if present (look for publish dates, `<time>` tags, or meta tags)
-- **Publisher/Site name** — the organisation or site name (look for the site's logo text, `og:site_name`, or the domain name as a last resort)
-- **Content type** — what kind of page it is (see type guide below)
+**For PDF URLs** (URL ends in `.pdf`, or browser navigation says the page is a PDF/canvas with no extractable text), download and extract instead. The browser's `get_page_text` returns "No text content found" for PDFs:
+
+1. Download the PDF to a temp file (PowerShell):
+   ```powershell
+   Invoke-WebRequest -Uri "<URL>" -OutFile "$env:TEMP\<filename>.pdf" -UseBasicParsing
+   ```
+2. Extract text with pypdf via `uv run` (handles owner-password-protected PDFs by decrypting with empty password — common for vendor datasheets):
+   ```powershell
+   uv run --with pypdf python -c @"
+   from pypdf import PdfReader
+   r = PdfReader(r'$env:TEMP\<filename>.pdf')
+   if r.is_encrypted:
+       r.decrypt('')
+   print(r.pages[0].extract_text()[:2000])
+   "@
+   ```
+3. The first page typically contains the title, part number, revision date, and publisher.
+
+Extract from whichever source you used:
+- **Title** — the page's main title (use the `<title>` tag, `<h1>`, or PDF first-page heading)
+- **Author** — the author's name if present (bylines, meta tags, or a clear "by X" attribution)
+- **Publication date** — if present (`<time>` tags, meta tags, or "REVISED" / "Rev." dates on PDFs)
+- **Publisher/Site name** — the organisation or site name (`og:site_name`, PDF footer, or domain name)
+- **Content type** — see type guide below
 
 If the page redirects, follow the redirect. The final URL shown after navigation is the canonical URL to use in the reference.
 
@@ -107,6 +125,7 @@ Use the Edit tool to make the insertion. After editing, confirm to the user what
 ## Edge cases
 
 - **Can't fetch the URL** (paywalled, auth required, Chrome not available, etc.): Tell the user what information you need — title, author, date, publisher — and construct the reference from what they provide.
+- **PDF with a real user-password** (pypdf's `decrypt('')` returns 0 / fails): Treat as un-fetchable and ask the user for title/date.
 - **No URL available** (e.g. a PDF received via email, a document otherwise shared privately): replace the `from https://...` portion with `on file with author`. The full ending becomes `Retrieved YYYY-MM-DD, on file with author.` Example:
 
   ```

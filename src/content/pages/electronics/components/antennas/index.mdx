@@ -13,12 +13,6 @@ Antennas are an electronic device which converts between electrical energy and e
 
 <Image src={import('./_assets/rf-antenna-with-sma-connection.jpg')} width="300px">A standard 1-3GHz RF antenna with an SMA connection.</Image>
 
-## Terminology
-
-| Term        | Description      |
-| ----------- | ---------------- |
-| VSWR        | VSWR is an initialism for "**Voltage Standing Wave Ratio**". The bandwidth of an antenna is usually defined as the range of frequencies at which VSWR is less than 2. |
-
 ## Gain
 
 The _gain_ of an antenna is a measure of an antenna's radiation efficiency (how well it converts electrical power into radio waves) and directivity (how focused the radiation intensity is in a particular direction).
@@ -79,9 +73,9 @@ $\text{dBi}$ is a common unit for gain, which stands for "decibels relative to i
 <Image src={import('./_assets/antenna-gain-3d.png')} width="800px">3D radiation pattern (orange/yellow lobe) of a directional antenna alongside an isotropic reference (blue sphere) of the same input power, illustrating how antenna gain $G$ is calculated</Image>
 
 <Aside type="note">
-The 3D surfaces in the above image represent it's radiation pattern surface. For any point on the surface, the radial distance from the antenna origin to the surface is proportional to the radiation intensity in that direction. This is not the same thing as a surface which represents equal radiation intensity (although it happens to be the same shape for the isotropic antenna).
+The 3D surfaces in the above image represent its radiation pattern surface. For any point on the surface, the radial distance from the antenna origin to the surface is proportional to the radiation intensity in that direction. This is not the same thing as a surface which represents equal radiation intensity (although it happens to be the same shape for the isotropic antenna).
 
-The average distance from the origin to the antenna surface is $\eta$ times the radius of the isotropic sphere, where $\eta$ is the radiation efficiency of the antenna.
+The average distance from the origin to the antenna surface is $\eta$ times the radius of the isotropic sphere, where $\eta$ is the radiation efficiency of the antenna. This is because integrating $U$ over the sphere gives us the total radiated power, which is $\eta$ times the input power.
 
 Also, because we are stating intensity in units of W/sr, the radial distance from the antenna that we measure this does not matter. The steradian (solid angle) nicely takes care of this!
 </Aside>
@@ -96,15 +90,27 @@ Where:
 - $D$ is the directivity (unitless)
 - $\eta$ is the radiation efficiency (unitless, between 0 and 1)
 
+## Impedance Matching
+
+Some forms of antenna such as chip and PCB antennas sometimes require impedance matching to achieve good performance.
+
 ## Dipoles
 
 The voltage in a dipole is maximum at the ends, and 0 at the middle. The current is the opposite, with the maximum being in the middle, and being 0 at both ends.
 
 ## PCB Antennas
 
+PCB antennas are antennas that are made directly from copper traces on a printed circuit board (PCB). They are very low cost (i.e. no extra BOM cost beyond the PCB itself) and can be made relatively small (but not as small as chip antennas).
+
+<Image src={import('./_assets/pcb-antenna-nordic-semi-nrf52-top-layer.webp')} width="300px">The PCB antenna on the Nordic Semiconductor nRF52 DK (dev. kit). Shown is the Gerber file data for the top copper layer and silkscreen. The antenna is the upside down "L" on the right-hand side of the PCB.[^nordic-semi-nrf52-dk-hardware-files]</Image>
+
 You have to consider the placement of other components surrounding the PCB antenna. The following diagram shows the minimum recommended clearances between a PCB antenna and other components.
 
 <Image src={import('./_assets/typical-minimum-component-clearances-from-pcb-antenna.png')} width="800px">The minimum recommended clearances between a PCB antenna and other components. Image from http://www.antenova-m2m.com/resources/literature.</Image>
+
+PCB antennas don't have to be made of rigid materials, they can also be made in flex PCB form. Below is the Nordic Semiconductor RFID antenna that is provided with many of their development kits.
+
+<Image src={import('./_assets/pcb-antenna-nordic-semi-flex-rfid.webp')} width="400px">A flex PCB antenna for RFID made by Nordic Semiconductor. Top is the Gerber file data for the top copper layer, bottom is a photo of the physical antenna.</Image>
 
 ## Dome/Puck Antennas
 
@@ -112,7 +118,7 @@ Dome (a.k.a puck) antennas are a type of enclosed antenna designed for use outsi
 
 Many of the dome style antennas utilise the NMO mount shown in <IRef iref="fig-antenna-next-to-nmo-mount"/>. NMO stands for "New Motorola Mount" and was a standard mount developed by Motorola for their land mobile radio antennas. It is still popular for robust external antenna connections, especially for vehicles.[^digikey-tech-forum-nmo-connectors-mounting]
 
-<Image iref="fig-antenna-next-to-nmo-mount" src={import('./_assets/antenna-next-to-nmo-mount.webp')} width="300px">An Laird Connectivity antenna next to a NMO mount.[^digikey-tech-forum-nmo-connectors-mounting]</Image>
+<Image iref="fig-antenna-next-to-nmo-mount" src={import('./_assets/antenna-next-to-nmo-mount.webp')} width="300px">A Laird Connectivity antenna next to a NMO mount.[^digikey-tech-forum-nmo-connectors-mounting]</Image>
 
 Many of the antennas designed for cellular communication support a range of frequency bands. For example, the Laird Connectivity TRA6927M3PW-001 4G/3G antenna simultaneously supports the 698-960MHz and 1700-2700MHz bands.[^laird-connectivity-tra6927m3pw-001-ds]
 
@@ -144,16 +150,43 @@ Some rubber ducky antennas have a built-in counterpoise to act as the "other hal
 
 One example is the TE Connectivity ANT-2.4-CW-RCT-SS antenna. It is designed for 2.4 GHz applications and has an internal counterpoise.[^te-connectivity-ant-2-4-cw-rct-ss]
 
+## Chip Antennas
+
+Chip antennas are antennas that are packaged in the familiar SMD chip form factor (e.g. 0603, 0805, 1206). They are very small and are soldered directly onto a PCB. They are typically omnidirectional (well, close enough) and have low gain (usually around -2 to 3 dBi).
+
+<Image src={import('./_assets/chip-antennas-photo-of-selection-of-wurth-parts.webp')} width="400px">A photo showing a selection of Wurth chip antennas.[^wurth-74889302450-smt-antenna]</Image>
+
+Most chip antennas are monopoles which require a ground plane with specific geometry to work correctly. It is important to follow the recommended copper plane and keep-out areas specified in the datasheet to ensure proper antenna performance, as chip antennas can be very sensitive to small changes.
+
+<Image src={import('./_assets/chip-antenna-johanson-2450at18a0100001e-test-board-layout.webp')} width="800px">The layout of the test board for the Johanson Technology 2450AT18A0100001E 2.4 GHz chip antenna.[^johanson-2450at18a100e-aec-ds]</Image>
+
+Low temperature co-fired ceramic (LTCC) technology can be used to create chip antennas with multiple layers of circuitry.[^johanson-antenna-handbook]
+
+Some chip antennas are Planar Inverted-F Antennas (PIFAs).
+
+Johanson Technology offer chip antennas from 433 Mhz in 9820 size up to 20 GHz in EIA 0402 size.[^johanson-antenna-handbook] They state that it is not economical to make chip antennas for frequencies below 433 MHz due to the large size required.
+
+## Stamped Metal
+
+Stamped metal antennas are made by stamping a sheet of metal into the desired shape. They are very cheap to produce and can be small (but not as small as chip antennas).
+
+<Image src={import('./_assets/stamped-metal-antenna-abracon-pro-ob-440-3d-model.webp')} width="400px">A 3D model of the Abracon PRO-OB-440 2.4 GHz stamped metal antenna. This uses PIFA technology, and works best when the antenna is mounted on the edge of a PCB with the ground pins in a corner of the PCB.[^abracon-pro-ob-440-ds]</Image>
+
 ## Shorting Antennas
 
-Note that shorting out an antenna is not an effective way of stopping it from communicating. At RF frequencies, a direct short with a piece of wire is no longer a direct short, and can for example, appear inductive. This means the antenna can still work, and sometime make it perform better! I have shorted out cellular modem antennas before with pliers and the signal strength increased!
+Note that shorting out an antenna is not an effective way of stopping it from communicating. At RF, a direct short with a piece of wire is no longer a direct short, and can for example, appear inductive. This means the antenna can still work, and sometimes make it perform better. I have shorted out cellular modem antennas before with pliers and the signal strength increased!
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^laird-connectivity-tra6927m3pw-001-ds]: Laird Connectivity. _TRA6927M3PW-001 - 4G/3G Multiband Phantom Antenna_ [datasheet]. Retrieved 2025-04-09, from https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-06/ANT-DS-TRA6927M3%200619_0.pdf
+[^laird-connectivity-tra6927m3pw-001-ds]: Laird Connectivity. _TRA6927M3PW-001 - 4G/3G Multiband Phantom Antenna_ [datasheet]. Retrieved 2025-04-09, from https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-06/ANT-DS-TRA6927M3%200619_0.pdf.
 [^digikey-tech-forum-nmo-connectors-mounting]: Digikey TechForum (2017, Oct). _NMO Connectors / Mounting_ [forum post]. Retrieved 2025-04-09, from https://forum.digikey.com/t/nmo-connectors-mounting/593/1.
 [^taoglas-olympian-ii-5g-4g-g45-a-201111-ds]: Taoglas. _Olympian II 5G/4G (G45.A.201111)_ [datasheet]. Retrieved 2025-04-09, from https://www.farnell.com/datasheets/3676759.pdf.
 [^te-connectivity-ant-2-4-cw-rct-ss]: TE Connectivity. _ANT-2.4-CW-RCT-SS_ [product page]. Retrieved 2026-05-09, from https://www.te.com/en/product-L9000032-01.html.
 [^wikipedia-rubber-ducky-antenna]: Wikipedia. _Rubber ducky antenna_ [wiki]. Retrieved 2026-05-09, from https://en.wikipedia.org/wiki/Rubber_ducky_antenna.
+[^johanson-antenna-handbook]: Johanson Technology. _Understanding Chip Antennas Handbook — High Frequency Ceramic Solution_ [handbook]. Retrieved 2026-05-10, from https://www.johansontechnology.com/docs/4565/johanson-antenna-handbook.pdf.
+[^abracon-pro-ob-440-ds]: Abracon (2022, Nov 1). _PRO-OB-440 OnBoard 2.4 GHz SMD Antenna_ [datasheet]. Retrieved 2026-05-11, from https://abracon.com/datasheets/PRO-OB-440.pdf.
+[^johanson-2450at18a100e-aec-ds]: Johanson Technology (2017, Dec 22). _Mini 2.45 GHz Antenna, AEC-Q200 Qualified (P/N 2450AT18A100E-AEC)_ [datasheet]. Retrieved 2026-05-11, from https://www.johansontechnology.com/docs/1129/2450AT18A100E-AEC_tCZ7Fpd.pdf.
+[^wurth-74889302450-smt-antenna]: Wurth Elektronik. _74889302450 Internal SMT Antenna_ [product page]. RS Components. Retrieved 2026-05-11, from https://nz.rs-online.com/web/p/smt-antennas/2389593.
+[^nordic-semi-nrf52-dk-hardware-files]: Nordic Semiconductor. _nRF52 DK Hardware Files_. Retrieved 2026-05-11, from https://www.nordicsemi.com/Products/Development-hardware/nRF52-DK/Download.
