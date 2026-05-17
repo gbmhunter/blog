@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2013-10-30
 description: Antennas are an electronic device which converts between electrical energy and electromagnetic waves. They are commonly used for transmitting and receiving radio frequency (RF) signals and can be used for communication and measurement applications.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-04-09
-tags: [antennas, design, terminology, dipoles, RF, PCBs, dome, puck, external, Taoglas, Laird Connectivity, whip, rubber ducky, monopole, counterpoise]
+lastUpdated: 2025-05-12
+tags: [antennas, design, terminology, dipoles, RF, PCBs, dome, puck, external, Taoglas, Laird Connectivity, whip, rubber ducky, monopole, counterpoise, stamped metal, chip, PIFA, LTCC]
 title: Antennas
 type: page
 ---
@@ -70,7 +70,7 @@ $$
 $\text{dBi}$ is a common unit for gain, which stands for "decibels relative to isotropic". It is calculated as $10 \log_{10}(G)$, where $G$ is the gain as a unitless ratio.
 </Aside>
 
-<Image src={import('./_assets/antenna-gain-3d.png')} width="800px">3D radiation pattern (orange/yellow lobe) of a directional antenna alongside an isotropic reference (blue sphere) of the same input power, illustrating how antenna gain $G$ is calculated</Image>
+<Image src={import('./_assets/antenna-gain-3d.png')} width="800px">3D radiation pattern (orange/yellow lobe) of a directional antenna alongside an isotropic reference (blue sphere) of the same input power, illustrating how antenna gain $G$ is calculated.</Image>
 
 <Aside type="note">
 The 3D surfaces in the above image represent its radiation pattern surface. For any point on the surface, the radial distance from the antenna origin to the surface is proportional to the radiation intensity in that direction. This is not the same thing as a surface which represents equal radiation intensity (although it happens to be the same shape for the isotropic antenna).
@@ -92,25 +92,35 @@ Where:
 
 ## Impedance Matching
 
-Some forms of antenna such as chip and PCB antennas sometimes require impedance matching to achieve good performance.
+Some forms of antenna such as chip and PCB antennas sometimes require impedance matching to achieve good performance. Impedance matching is the process of designing the feed line and matching network to make sure the feed line matches the impedance of the antenna. Impedance mismatches can lead to reflections of the signal back towards the source, which can cause a reduction in the power delivered to the antenna and a decrease in the antenna's performance.
 
-## Dipoles
+### Dipoles
 
-The voltage in a dipole is maximum at the ends, and 0 at the middle. The current is the opposite, with the maximum being in the middle, and being 0 at both ends.
+Dipole antennas consist of two conductive elements that are typically of equal length and are fed at the center.
 
-## PCB Antennas
+### Monopoles
 
-PCB antennas are antennas that are made directly from copper traces on a printed circuit board (PCB). They are very low cost (i.e. no extra BOM cost beyond the PCB itself) and can be made relatively small (but not as small as chip antennas).
+Monopoles only contain one conductive element, and use a ground plane to act as the "other half" of the antenna (all antennas need two conductive elements to radiate). A $\lambda/4$ monopole has another $\lambda/4$ image in the ground plane, which makes it electrically equivalent to a $\lambda/2$ dipole. This is why a quarter-wave monopole is often used as an antenna design, since it can achieve similar performance to a half-wave dipole while being physically smaller.
 
-<Image src={import('./_assets/pcb-antenna-nordic-semi-nrf52-top-layer.webp')} width="300px">The PCB antenna on the Nordic Semiconductor nRF52 DK (dev. kit). Shown is the Gerber file data for the top copper layer and silkscreen. The antenna is the upside down "L" on the right-hand side of the PCB.[^nordic-semi-nrf52-dk-hardware-files]</Image>
+<Aside type="note">
+The "ground plane" doesn't actually need to be the earth ground, it can be any conductive surface. It situations where earth or the ground plane of a PCB are not suitable, counterpoises can be used to provide the necessary "other half" of the antenna.
+</Aside>
 
-You have to consider the placement of other components surrounding the PCB antenna. The following diagram shows the minimum recommended clearances between a PCB antenna and other components.
+Monopoles are naturally unbalanced and can be fed directly from a coaxial feed line. This is normally a benefit over dipoles, which require a balun to feed them from an unbalanced coaxial feed line. They are usually smaller than a dipole of the same frequency, since they only require one conductive element.
+
+## PCB Trace Antennas
+
+PCB trace antennas are antennas that are made directly from copper traces on a printed circuit board (PCB). They are very low cost (i.e. no extra BOM cost beyond the PCB itself) and can be made relatively small (but not as small as chip antennas).
+
+<Image src={import('./_assets/pcb-antenna-nordic-semi-nrf52-top-layer.webp')} width="300px">The PCB trace antenna on the Nordic Semiconductor nRF52 DK (dev. kit). Shown is the Gerber file data for the top copper layer and silkscreen. The antenna is the upside down "L" on the right-hand side of the PCB.[^nordic-semi-nrf52-dk-hardware-files]</Image>
+
+You have to consider the placement of other components surrounding the PCB trace antenna. The following diagram shows the minimum recommended clearances between a PCB trace antenna and other components.
 
 <Image src={import('./_assets/typical-minimum-component-clearances-from-pcb-antenna.png')} width="800px">The minimum recommended clearances between a PCB antenna and other components. Image from http://www.antenova-m2m.com/resources/literature.</Image>
 
-PCB antennas don't have to be made of rigid materials, they can also be made in flex PCB form. Below is the Nordic Semiconductor RFID antenna that is provided with many of their development kits.
+PCB trace antennas don't have to be made of rigid materials, they can also be made in flex PCB form. Below is the Nordic Semiconductor RFID antenna that is provided with many of their development kits.
 
-<Image src={import('./_assets/pcb-antenna-nordic-semi-flex-rfid.webp')} width="400px">A flex PCB antenna for RFID made by Nordic Semiconductor. Top is the Gerber file data for the top copper layer, bottom is a photo of the physical antenna.</Image>
+<Image src={import('./_assets/pcb-antenna-nordic-semi-flex-rfid.webp')} width="400px">A flex PCB trace antenna for RFID made by Nordic Semiconductor. Top is the Gerber file data for the top copper layer, bottom is a photo of the physical antenna.</Image>
 
 ## Dome/Puck Antennas
 
@@ -142,7 +152,7 @@ Whip antennas radiate equally in all directions perpendicular to the axis of the
 
 ## Rubber Ducky Antennas
 
-Rubber ducky antennas are a compact monopole antenna that are physically shorter than a quarter wavelength and feature a helical coil. Because they are shorter than a quarter wavelength, they require inductance to make them resonate at the desired frequency. Rather than base loading them which a discrete inductor (a.k.a a base loaded whip antenna), a rubber ducky incorporates a helical coil into the antenna itself to provide the necessary inductance. This reduces the need for a separate inductor, and gives better performance since the inductance is distributed along the antenna's length.[^wikipedia-rubber-ducky-antenna]
+Rubber ducky antennas are a compact monopole antenna that are physically shorter than a quarter wavelength and feature a helical coil. Because they are shorter than a quarter wavelength, they require inductance to make them resonate at the desired frequency. Rather than base loading them with a discrete inductor (a.k.a. a base loaded whip antenna), a rubber ducky incorporates a helical coil into the antenna itself to provide the necessary inductance. This reduces the need for a separate inductor, and gives better performance since the inductance is distributed along the antenna's length.[^wikipedia-rubber-ducky-antenna]
 
 ### Internal Counterpoise
 
@@ -164,13 +174,13 @@ Low temperature co-fired ceramic (LTCC) technology can be used to create chip an
 
 Some chip antennas are Planar Inverted-F Antennas (PIFAs).
 
-Johanson Technology offer chip antennas from 433 Mhz in 9820 size up to 20 GHz in EIA 0402 size.[^johanson-antenna-handbook] They state that it is not economical to make chip antennas for frequencies below 433 MHz due to the large size required.
+Johanson Technology offer chip antennas from 433 MHz in 9820 size up to 20 GHz in EIA 0402 size.[^johanson-antenna-handbook] They state that it is not economical to make chip antennas for frequencies below 433 MHz due to the large size required.
 
-## Stamped Metal
+## Stamped Metal Antennas
 
 Stamped metal antennas are made by stamping a sheet of metal into the desired shape. They are very cheap to produce and can be small (but not as small as chip antennas).
 
-<Image src={import('./_assets/stamped-metal-antenna-abracon-pro-ob-440-3d-model.webp')} width="400px">A 3D model of the Abracon PRO-OB-440 2.4 GHz stamped metal antenna. This uses PIFA technology, and works best when the antenna is mounted on the edge of a PCB with the ground pins in a corner of the PCB.[^abracon-pro-ob-440-ds]</Image>
+<Image src={import('./_assets/stamped-metal-antenna-abracon-pro-ob-440-3d-model.webp')} width="400px">A 3D model of the Abracon PRO-OB-440 2.4 GHz stamped metal antenna. It's a PIFA design, and works best when the antenna is mounted on the edge of a PCB with the ground pins in a corner of the PCB.[^abracon-pro-ob-440-ds]</Image>
 
 ## Shorting Antennas
 
