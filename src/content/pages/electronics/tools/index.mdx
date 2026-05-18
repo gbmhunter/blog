@@ -118,12 +118,12 @@ The Digilent Analog Discovery Pro 3000 series is an combined benchtop oscillosco
 
 <div style={{ display: 'flex' }}>
 
-<Image src={import('./_assets/digilent-analog-discovery-pro-adp3450-photo.png')} width="400px">A photo of the Analog Discovery Pro ADP3450[^bib-digilent-adp3450-ref-manual].</Image>
+<Image src={import('./_assets/digilent-analog-discovery-pro-adp3450-photo.png')} width="400px">A photo of the Analog Discovery Pro ADP3450[^digilent-adp3450-ref-manual].</Image>
 
-<Image src={import('./_assets/digilent-analog-discovery-pro-adp5250-photo.png')} width="400px">A photo of the Analog Discovery Pro ADP5250[^bib-digilent-adp5250-ref-manual].</Image>
+<Image src={import('./_assets/digilent-analog-discovery-pro-adp5250-photo.png')} width="400px">A photo of the Analog Discovery Pro ADP5250[^digilent-adp5250-ref-manual].</Image>
 </div>
 
-The oscilloscope in the ADP3x50 has a bandwidth of 55MHz. Not as great as the 100MHz you usually get with low-end dedicated oscilloscopes, but still good enough for most general-purpose work. The max. sample rate is 1Msps The WaveForms SDK can be used to control the Analog Discovery Pro via software. Supported languages include C++, C# and Python[^bib-digilent-analog-discovery-pro-ref-manual].
+The oscilloscope in the ADP3x50 has a bandwidth of 55MHz. Not as great as the 100MHz you usually get with low-end dedicated oscilloscopes, but still good enough for most general-purpose work. The max. sample rate is 1Msps The WaveForms SDK can be used to control the Analog Discovery Pro via software. Supported languages include C++, C# and Python[^digilent-analog-discovery-pro-ref-manual].
 
 * `471-040`: ADP3450, 4ch, with BNC probes.
 * `410-394`: ADP3450, 4ch, without BNC probes.
@@ -184,7 +184,7 @@ A LISN performs the following functions:
 * Provides a well-known impedance to the power input of the DUT.
 * Prevents high-frequency noise from the power supply entering into the DUT, making the measurements of the DUT seem worse than they actually are (isolation of the power supply).
 
-A "50uH" LISN is a common choice, which provides impedance control down to 10kHz. Below 10kHz, impedance control is difficult[^bib-mil-std-461e].
+A "50uH" LISN is a common choice, which provides impedance control down to 10kHz. Below 10kHz, impedance control is difficult[^mil-std-461e].
 
 MIL-STD-461E mandates the use of LISNs to control the impedance of power sources for many of it's measurement procedures:
 
@@ -195,7 +195,7 @@ MIL-STD-461E mandates the use of LISNs to control the impedance of power sources
 
 ### CISPR 25
 
-CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz[^bib-cispr-25]. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a $5uH$ LISN when performing EMI measurements, is one of the main reasons you will see $5uH$ LISN devices available for purchase.
+CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz[^cispr-25]. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a $5uH$ LISN when performing EMI measurements, is one of the main reasons you will see $5uH$ LISN devices available for purchase.
 
 The TexBox TBOH01 (5uH LISN) is a LISN designed to be compliant with CISPR 25, and retails for around US$250.
 
@@ -274,7 +274,7 @@ In the context of hand-held thermal cameras, 80x80 is a small number of pixels, 
 
 ### Parameters
 
-NETD: _Noise Equivalent Temperature Difference_: This is the minimum temperature difference that is resolvable by the camera. You could think of this as the _sensitivity_. It is bad practise to refer to this as the resolution as this will get confused with the pixel (spatial) resolution. NETD of thermal cameras is typically between 100-500mk (100-500m°C). The NETD is measure by pointing the camera at a very stable and uniform black body at a specific temperature. The NETD is the standard deviation of the varying pixel values recorded by the camera over a specific period of time[^bib-movitherm-netd].
+NETD: _Noise Equivalent Temperature Difference_: This is the minimum temperature difference that is resolvable by the camera. You could think of this as the _sensitivity_. It is bad practise to refer to this as the resolution as this will get confused with the pixel (spatial) resolution. NETD of thermal cameras is typically between 100-500mk (100-500m°C). The NETD is measure by pointing the camera at a very stable and uniform black body at a specific temperature. The NETD is the standard deviation of the varying pixel values recorded by the camera over a specific period of time[^movitherm-netd].
 
 ### Brands
 
@@ -555,11 +555,23 @@ During the soldering process fumes are released. The amount of fumes increases d
 
 It is generally not a good thing to inhale these fumes on a long term basis. Fume extractors can be used to remove the fumes safely.
 
-[^bib-movitherm-netd]: MoviTHERM. _What is NETD in a Thermal Camera?_. Retrieved 2020-09-03, from https://movitherm.com/knowledgebase/netd-thermal-camera/.
-[^bib-mil-std-461e]: Department of Defense (1999, August 20). _MIL-STD-461E: Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment_. Quick Search. Retrieved 2021-06-30, from https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=35789
-[^bib-cispr-25]: IEC (2016). _Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers_. Retrieved 2021-07-02, from https://webstore.iec.ch/publication/26122.
-[^bib-digilent-adp3450-ref-manual]: Digilent. _Analog Discovery Pro (ADP3450/ADP3250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-3x50/reference-manual.
-[^bib-digilent-adp5250-ref-manual]: Digilent. _Analog Discovery Pro (ADP5250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-5250/reference-manual.
+## Cables
+
+I recommend have a variety of banana plug and crocodile clip cables on hand for development. Stackable banana cables are great as you can plug multiple male plugs into a single female socket. This is great for things like power supplies in where you may need to feed 3.3V to 5 different places.
+
+<Image src={import('./_assets/heaps-of-stackable-banana-plug-cables.webp')} width="800px">One can never have too many stackable banana plug cables. Or can you?</Image>
+
+I recommend making a few custom banana to ferrule cables. Get a banana to banana cable, cut one end off, and crimp a ferrule on the end. This then allows you to connect from lab equipment such as power supplies and DC loads straight into lever nut connectors (i.e. WAGO connectors). Then use lever connectors (because they are quick, support many-to-many connections, and it's easier to add a ferrule to any old wire than it is to solder on a banana socket) for the rest of your interconnects between various power rails, grounds, sensors and other wiring.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^movitherm-netd]: MoviTHERM. _What is NETD in a Thermal Camera?_. Retrieved 2020-09-03, from https://movitherm.com/knowledgebase/netd-thermal-camera/.
+[^mil-std-461e]: Department of Defense (1999, August 20). _MIL-STD-461E: Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment_. Quick Search. Retrieved 2021-06-30, from https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=35789
+[^cispr-25]: IEC (2016). _Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers_. Retrieved 2021-07-02, from https://webstore.iec.ch/publication/26122.
+[^digilent-adp3450-ref-manual]: Digilent. _Analog Discovery Pro (ADP3450/ADP3250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-3x50/reference-manual.
+[^digilent-adp5250-ref-manual]: Digilent. _Analog Discovery Pro (ADP5250) Reference Manual_. Retrieved 2022-08-09, from https://digilent.com/reference/test-and-measurement/analog-discovery-pro-5250/reference-manual.
 [^aliexpress-wanptek-30v-10a-psu]: Wanptek. _Wanptek Programmable DC Power Supply WPS3010H Laboratory Maintenance Workbench 30V 10A Voltage Current Regulator AC 220V 110V_. AliExpress. Retrieved 2023-12-29, from https://www.aliexpress.com/item/1005003151034729.html.
 [^wikipedia-extra-low-voltage]: Wikipedia (2023, Dec 12). _Extra-low voltage_. Retrieved 2023-12-29, from https://en.wikipedia.org/wiki/Extra-low_voltage.
 [^element14-tenma-72-2925]: Element14. _TENMA 72-2925 - Bench Power Supply, Digital Control , Adjustable, 1 Output, 0V, 30V, 0A, 10A_ [Product Page]. Retrieved 2023-12-29, from https://nz.element14.com/tenma/72-2925/dc-power-supply-1-ch-30v-10a-prog/dp/254306301.
