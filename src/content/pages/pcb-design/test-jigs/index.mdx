@@ -228,6 +228,12 @@ Another interesting metric is the _Process Capability Index_ (Cpk). This is a me
 
 Both of these metrics are easy to calculate if you are saving test data to a database.
 
+The following metrics can be useful on a testing dashboard. All are captured within a user selectable time window so that you can see how things are trending over time.
+
+- FPY (first pass yield).
+- Failures by test step.
+- Table of test run failures, where clicking a row takes you a page with data on that specific test failure (e.g. captured log output).
+
 ## Debugging at Production Time
 
 Test jigs are commonly sent to the factory that is assembling the PCBs so that they can be tested at the same place they are assembled. This saves time and money if there are production problems by catching them early. This also allows the PCB to be directly installed into the product assuming it passes the tests.
@@ -236,15 +242,19 @@ Always consider how you are going to inspect and fix issues with the test fixtur
 
 If you can rely on having an internet connection, then SSH and desktop sharing software are two great tools to debug and diagnose issues with the test jig at production time.
 
+Creating a testing dashboard (assuming you have a testing server) that can display test results and aggregate statistics is a really useful tool for improving the production process.
+
 ## The Great Chinese Firewall
 
 If the test jig is going to be deployed in China, you will need to consider the Great Chinese Firewall. This usually blocks encrypted traffic to and from China. This means things like VPNs and being able to SSH into the test jig are not normally possible. Tunnels and reverse proxies (in where the test jig reaches out to a server, and you connect to the test fixture by also reaching out to the server) are not likely to work either. Cloud services like AWS, Azure, and Google Cloud are usually blocked (important if you were planning on hosting a test jig database on on of those). However these services can offer China regions which do work (and sometime replication from within China region to outside) -- with the caveat that they normally require different accounts to the rest of the world.
 
-The firewall can prevent your test jig from connecting to the testing database (assuming you have one). One solution to this is to put a HTTP REST API server in front of the database so that the test jig can connect to the API server instead. The firewall usually let's through this traffic (even when it's https, i.e. encrypted). This has the added benefit of giving you greater control over data access and security, at the expense of extra complexity (now you have to manage the API server and keep it up to date with the database schema).
+The firewall can prevent your test jig from connecting to the testing database (assuming you have one). One solution to this is to put a HTTPS REST API server in front of the database so that the test jig can connect to the API server instead. The firewall usually let's through this traffic (even when it's https, i.e. encrypted). This has the added benefit of giving you greater control over data access and security, at the expense of extra complexity (now you have to manage the API server and keep it up to date with the database schema).
 
 ## Certificates
 
 Sometimes the device you are testing will require a certificate and/or key to be programmed onto it. This is usually for authentication so that other services (such as a cloud server) can authenticate the device at runtime.
+
+You can have the test jig generated the certificates, but this means storing the intermediate signing key on the test jig itself. This could be a security concern depending on where the test jig is being physically used. One alternative is to add a certificate signing API to the test jig server. That way the test jig does not need to hold the signing key. Instead, it sends a certificate signing request (CSR) to the test jig server with the relevant DUT information. The server has the intermediate signing key and create the device certificate and key. These are sent back to the test jig which then programs them onto the device.
 
 ## OpenHTF and TofuPilot
 

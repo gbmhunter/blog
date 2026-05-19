@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-09-18
+lastUpdated: 2026-05-19
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial, L2CAP]
 title: Bluetooth
 type: page
@@ -359,9 +359,53 @@ Windows also allows Bluetooth mouse and keyboard devices to wake up Windows from
 
 ### Nordic Semiconductor nRF21540
 
-The nRF21540 is a range extender IC for Bluetooth.
+The nRF21540 is a range extender FEM (front-end module) IC for 2.4 GHz RF communications, specifically targetted towards Bluetooth. 
+
+Below is a picture of the contents of the nRF21540 DB (development bundle). It contains two boards:
+
+1. **nRF51540 EK**: An analogue nRF21540-only dev. board in which you can pass RF in and out.
+1. **nRF21540 DK**: A board with both a nRF52840 SoC and nRF21540 integrated together for fast single-board development.
+
+The analogue board is good if you have your own custom 2.4 GHz signal you want to amplify, while the integrated dev. board is if you want an all-in-one rapid prototyping solution.
+
+Nordic has added support for this board in the Nordic nRF SDK (which builds on the Zephyr SDK) as the target `nrf21540dk/nrf52840` (nrf21540dk_nrf52840 on older NCS).
 
 <Image src={import('./_assets/nrf21540-development-bundle-whats-in-the-box-photo.webp')} width="800px">What's in the box of the nRF21540 development bundle.</Image>
+
+There is an "Bluetooth: Throughput" example which acts as a good starting point for development with the nRF21540 DK. When testing with two development kits you can configure one as Central and one as a Peripheral. Below is an example of the output you get from the Central shell:
+
+```text
+==== Starting throughput test ====
+PHY update pending
+Connection parameters update pending
+Connection parameters updated.
+ interval: 320, latency: 0, timeout: 1000
+LE PHY updated: TX PHY LE 2M, RX PHY LE 2M
+LE Data length update pending
+Frame space update pending
+LE data len updated: TX (len: 251 time: 2120) RX (len: 251 time: 2120)
+The test is in progress and will require around 20 seconds to complete.
+Frame space updated: frame space 150 us, PHYs 0x0000, spacing types 0x0000
+ 
+Done
+[local] sent 3256110 bytes (3179 KB) in 20002 ms at 1302 kbps
+[peer] received 3256110 bytes (3179 KB) in 6578 GATT writes at 1319187 bps
+```
+
+The preferred PHY can be set via the shell with the `config phy <preferred_phy>` command:
+
+```shell
+uart:~$ config phy
+phy - Configure connection interval
+Subcommands:
+  1M        : Set preferred PHY to 1Mbps
+  2M        : Set preferred PHY to 2Mbps
+  coded_s2  : Set preferred PHY to Coded S2
+  coded_s8  : Set preferred PHY to Coded S8
+```
+
+For example, to test Coded S8 PHY run `config phy coded_s8`.
+
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
