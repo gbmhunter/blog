@@ -83,22 +83,47 @@ const METRIC_PREFIXES = {
   k: 1e3, K: 1e3, M: 1e6, G: 1e9, T: 1e12,
 };
 
-// Parse "10.3k", "1M", "470R", "4.7", "2.2 kΩ" into a number of ohms.
+const PREFIX_LIST = 'm, R, k, M, G';
+
+// Parse "10.3k", "1M", "470R", "4.7", "2.2 kΩ" into { value, error }.
+// On success returns { value: <ohms>, error: null }. On failure returns
+// { value: NaN, error: '<human-readable reason>' }.
 export function parseResistance(text) {
-  if (typeof text !== 'string') return NaN;
+  if (typeof text !== 'string' || text.trim() === '') {
+    return { value: NaN, error: 'Enter a resistance value.' };
+  }
   const cleaned = text.replace(/Ω/g, '').replace(/ohms?/gi, '').trim();
-  // Match number then optional prefix. Allow "4R7" / "4k7" notation too.
-  const rkNotation = cleaned.match(/^(\d+)\s*([pnuµμmRrkKMGT])\s*(\d+)$/);
+
+  // "4R7" / "2k2" notation: digits, prefix letter, digits.
+  const rkNotation = cleaned.match(/^(\d+)\s*([A-Za-zµμ])\s*(\d+)$/);
   if (rkNotation) {
     const [, intPart, prefix, fracPart] = rkNotation;
-    const multiplier = METRIC_PREFIXES[prefix] ?? 1;
-    return parseFloat(`${intPart}.${fracPart}`) * multiplier;
+    if (!(prefix in METRIC_PREFIXES)) {
+      return { value: NaN, error: `Unknown unit "${prefix}" — use one of: ${PREFIX_LIST}.` };
+    }
+    const multiplier = METRIC_PREFIXES[prefix];
+    const v = parseFloat(`${intPart}.${fracPart}`) * multiplier;
+    return v > 0 ? { value: v, error: null } : { value: NaN, error: 'Resistance must be greater than zero.' };
   }
-  const standard = cleaned.match(/^([+-]?\d*\.?\d+(?:[eE][+-]?\d+)?)\s*([pnuµμmRrkKMGT]?)$/);
-  if (!standard) return NaN;
+
+  // Standard: optional sign, number, optional single-letter prefix.
+  const standard = cleaned.match(/^([+-]?\d*\.?\d+(?:[eE][+-]?\d+)?)\s*([A-Za-zµμ]*)$/);
+  if (!standard) {
+    return { value: NaN, error: `Couldn't parse "${text}" as a resistance. Try formats like 4.7k, 470, 2M2 or 0.1.` };
+  }
   const [, num, prefix] = standard;
-  const multiplier = METRIC_PREFIXES[prefix] ?? 1;
-  return parseFloat(num) * multiplier;
+  if (prefix && !(prefix in METRIC_PREFIXES)) {
+    return { value: NaN, error: `Unknown unit "${prefix}" — use one of: ${PREFIX_LIST}.` };
+  }
+  const multiplier = prefix ? METRIC_PREFIXES[prefix] : 1;
+  const v = parseFloat(num) * multiplier;
+  if (!Number.isFinite(v)) {
+    return { value: NaN, error: `Couldn't parse "${text}" as a number.` };
+  }
+  if (v <= 0) {
+    return { value: NaN, error: 'Resistance must be greater than zero.' };
+  }
+  return { value: v, error: null };
 }
 
 // Format a resistance in ohms with the most appropriate metric prefix.

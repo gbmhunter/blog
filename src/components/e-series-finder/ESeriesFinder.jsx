@@ -33,8 +33,8 @@ function ResultCells({ value, desired }) {
 
 export default function ESeriesFinder() {
   const [text, setText] = useState('10.3k');
-  const desired = parseResistance(text);
-  const valid = Number.isFinite(desired) && desired > 0;
+  const { value: desired, error: parseError } = parseResistance(text);
+  const valid = parseError === null;
 
   const rows = useMemo(() => {
     if (!valid) return [];
@@ -66,9 +66,7 @@ export default function ESeriesFinder() {
         Accepts metric prefixes (k, M, G) and R/Ω suffixes. Examples: <code>4.7k</code>, <code>470</code>, <code>2M2</code>, <code>0.1</code>.
       </div>
       {!valid && (
-        <div class="e-series-finder__field-error">
-          Enter a positive resistance value.
-        </div>
+        <div class="e-series-finder__field-error">{parseError}</div>
       )}
 
       {valid && (

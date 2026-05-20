@@ -54,7 +54,7 @@
 }
 
 .ble-adv-decoder__byte-budget--over {
-  color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
   font-weight: 600;
 }
 
@@ -65,7 +65,7 @@
   border-left: 3px solid var(--sl-color-accent);
   border-radius: 0.25rem;
   font-size: 0.8rem;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent-high);
 }
 
 .ble-adv-decoder__errors ul { margin: 0; padding-left: 1.25rem; }
@@ -206,7 +206,7 @@
 
 .ble-adv-decoder__field-error {
   font-size: 0.8rem;
-  color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
   margin-top: 0.25rem;
 }
 

@@ -114,8 +114,17 @@ The site has light + dark mode. Reference these variables (defined in `src/style
 | `--sl-color-bg-nav`       | Widget container background              |
 | `--sl-color-text`         | Body text                                |
 | `--sl-color-gray-2..5`    | Borders, muted text                      |
-| `--sl-color-accent`       | **Primary action** colour (brand red) — buttons, error highlights. **Do NOT use `--sl-color-red`** — the brand colour for this site IS red, so the accent variable IS the red. |
+| `--sl-color-accent-low`   | Subtle accent-tinted background (very dark red in dark mode, light pink in light mode). Use sparingly for highlight surfaces. |
+| `--sl-color-accent`       | **Primary action** surface colour (mid-tone brand red, ~`#c60e00`). Use as the background of solid call-to-action buttons and as the visible border/border-left of alert boxes. **Do NOT use this for error text on dark surfaces — it lacks contrast.** |
+| `--sl-color-accent-high`  | **Error and warning TEXT** colour. Light pink (`#feb3a6`) in dark mode, dark red (`#640300`) in light mode — high contrast in both themes. Use for error messages, over-budget indicators, validation warnings. |
 | `--__sl-font-mono`        | Monospace font stack for hex / code      |
+
+**Rule of thumb for the red trio:**
+
+- Solid action button background → `--sl-color-accent`
+- Alert-box border or 15% background tint → `--sl-color-accent`
+- Error / warning text content → **always** `--sl-color-accent-high`
+- **Never** use `--sl-color-red` — the brand IS red, so use the accent variables (per [[feedback-local-vs-global-mdx-components]] convention this site uses brand-red as its primary accent).
 
 ### Use a CSS container query, not a viewport media query
 

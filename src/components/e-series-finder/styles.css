@@ -50,7 +50,7 @@
 
 .e-series-finder__field-error {
   font-size: 0.85rem;
-  color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
   margin-top: 0.5rem;
 }
 
