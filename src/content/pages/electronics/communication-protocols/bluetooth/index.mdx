@@ -9,6 +9,8 @@ title: Bluetooth
 type: page
 ---
 
+import BleAdvDecoder from 'src/components/ble-adv-decoder/BleAdvDecoder.jsx';
+
 <WarningIsNotes />
 
 <Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300">The Bluetooth icon/logo.</Image>
@@ -59,6 +61,26 @@ _Bluetooth Low Energy_ (BLE) is a Bluetooth protocol specifically designed for c
 
 BLE has 40 channels, compared to Bluetooth Classic which has 79.[^argenox-ble-advertising-primer]
 
+### UUIDs
+
+UUIDs are 128-bit (16 byte) numbers which are used to identify BLE services and characteristics. To avoid sending 16 bytes over the air all the time, the BLE specification defines a UUID base that forms the first 12 bytes of the UUID, leaving 4 bytes remaining to be specified by the application.
+
+The base is:[^argenox-ble-advertising-primer]
+
+```text
+XXXXXXXX-0000-1000-8000-00805F9B34FB
+```
+
+The top 32 bits (4 bytes) of the UUID is then decided by the application. Most designs take this further and only specify a 16-bit UUID. In that case, the bottom 16 bits remain `0`. This is supported by the BLE spec. For example, if we defined a 16-bit service UUID of `0x1234`, this would represent the following 128 bit UUID:
+
+```text
+00001234-0000-1000-8000-00805F9B34FB
+```
+
+<Aside type="note">
+You don't have to use the BLE base UUID if you don't want to.
+</Aside>
+
 ### Advertising
 
 _Advertising_ is when a BLE peripheral broadcasts packets to any device that wants to listen. Advertising allows a low energy device to sleep most of the time, only waking up periodically for a short amount of time to send a new advertisement packet. Advertising is unidirectional, the peripheral sends out unsolicited data and expects no response. To achieve 2-way communication you have to connect with the BLE peripheral.
@@ -68,6 +90,20 @@ _Legacy advertising_ uses three channels from the 2.4GHz radio band, channels 37
 Advertisement packets give you 31 bytes of data for application specific use.
 
 When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone send the device a _scan request_ packet, the the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process[^argenox-ble-advertising-primer]. 
+
+Property | ID | Description |
+|--------|----|-------------------|
+Flags | 0x01 | 
+Complete List of 16-bit Service UUIDs | 0x03 |
+Shortened Local Name | 0x08 | A shortened version of the complete local name. A shortened name should only contain contiguous characters from the start of the full name.[^bluetooth-sig-data-types-specification] |
+Complete Local Name | 0x09 | The human readable name of the device. A user would typically see this name when scanning for devices on their mobile phone. |
+Manufacturer Specific Data |  | A place for custom data that doesn't fit in any of the other specified types. This field is commonly used. |
+
+### Advertising Encoder/Decoder
+
+Below is an interactive BLE advertising packet decoder/builder. Paste a raw payload hex string to see the AD structures broken out, or build one up using the structure editor on the right — the two views stay in sync.
+
+<BleAdvDecoder client:load />
 
 ### Connections
 
@@ -443,3 +479,4 @@ For example, to test Coded S8 PHY run `config phy coded_s8`.
 [^silicon-labs-spp-over-ble]: Silicon Labs. _SPP (Serial Port Profile) over BLE_ [documentation]. Retrieved 2025-09-19, from https://docs.silabs.com/bluetooth/2.13/bluetooth-code-examples-applications/.
 [^blueio-homepage]: BlueIO. _Homepage_ [website]. Retrieved 2025-11-11, from https://www.blueio.com/.
 [^microsoft-windows-drivers-bluetooth-faq]: Microsoft. _Learn > Windows > Windows Drivers > Bluetooth FAQ_. Retrieved 2025-11-14, from https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-faq.
+[^bluetooth-sig-data-types-specification]: Bluetooth SIG. _Part A. Data Types Specification_ [specification]. Retrieved 2026-05-20, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/CSS_v11/out/en/supplement-to-the-bluetooth-core-specification/data-types-specification.html.

@@ -9,6 +9,8 @@ title: Resistors
 type: page
 ---
 
+import ESeriesFinder from 'src/components/e-series-finder/ESeriesFinder.jsx';
+
 _Resistors_ are a passive electronic components that **restrict the flow of current when a voltage is applied across them**. They dissipate the energy lost as heat. Given their simplicity, usefulness and low price of manufacture, they are typically the most commonly used electronic component in any circuit design.
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
@@ -67,9 +69,9 @@ $$
 \end{align}
 $$
 
-This relationship is shown in <IRef iref="resistors-in-parallel-equivalence-with-equation" />.
+This relationship is shown in in the below image.
 
-<Image iref="resistors-in-parallel-equivalence-with-equation" src={import('./_assets/resistors-in-parallel-equivalence-with-equation.webp')} width="700px">Two resistors in parallel can be treated as one resistor using the shown equation.</Image>
+<Image src={import('./_assets/resistors-in-parallel-equivalence-with-equation.webp')} width="700px">Two resistors in parallel can be treated as one resistor using the shown equation.</Image>
 
 One quick equation you can remember that works as long as you **only have two resistors in parallel** is:
 
@@ -89,9 +91,9 @@ R_{total} = R1 + R2
 \end{align}
 $$
 
-This is shown in <IRef iref="resistors-in-series-equivalence-with-equation" />.
+This is shown in the below image.
 
-<Image iref="resistors-in-series-equivalence-with-equation" src={import('./_assets/resistors-in-series-equivalence-with-equation.webp')} width="700px">Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.</Image>
+<Image src={import('./_assets/resistors-in-series-equivalence-with-equation.webp')} width="700px">Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.</Image>
 
 This can be generalized to $n$ number of resistors in series simply as:
 
@@ -180,7 +182,7 @@ The Thevenin resistance is sometimes called the output resistance or impedance $
 
 Calculate how long the capacitor in the below image will take to charge to 90% it's final voltage.
 
-<Image src={import('./_assets/resistor-divider-charging-a-capacitor-example-1.webp')} width="400">Schematic of a capacitor being charged through a resistor divider. How long will it take to charge?</Image>
+<Image src={import('./_assets/resistor-divider-charging-a-capacitor-example-1.webp')} width="400px">Schematic of a capacitor being charged through a resistor divider. How long will it take to charge?</Image>
 
 Convert the circuit into it's Thevenin equivalent.
 
@@ -269,7 +271,7 @@ With the advent of SMD resistors, the difference in price between 1% and 5% resi
 
 **The short answer. No.** 2x $1k\Omega$ 1% resistors in series is the equivalent to 1x $2k\Omega$ 1% resistor.
 
-**The long answer.** You will never get a worse tolerance by putting two resistors in series or parallel. BUT, you may get a better distribution of values, depending on the distribution of the original resistors. If you assume (and this is a bad assumption) that the resistor values followed a Gaussian distribution, then the resulting distribution is a better Gaussian distribution (skinnier/smaller deviation). If the original resistors had a flat distribution, the resulting distribution is a triangle shape.
+**The long answer.** You will never get a worse tolerance by putting two resistors in series or parallel. BUT, you may get a better distribution of values, depending on the distribution of the original resistors. If you assume (and this might be a bad assumption) that the resistor values followed a Gaussian distribution, then the resulting distribution is a better Gaussian distribution (skinnier/smaller deviation). If the original resistors had a flat distribution, the resulting distribution is a triangle shape.
 
 However, the distribution of resistor values could be any number of shapes. For example, the manufacturer might make heaps of 5% $1k\Omega$ resistors, which are then measured. If the resistance falls within 1% of $1k\Omega$, then they are made into 1% resistors. This would leave the 5% resistor bin with a double peak, with a valley right in the middle of the distribution.
 
@@ -326,9 +328,11 @@ For any E-series range, this pattern is applied for every decade of resistance, 
 
 <Image src={import('./_assets/yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png')} width="900px">Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page].</Image>
 
-[The NinjaCalc Standard Resistance Finder calculator](https://ninjacalc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
+### E Series Resistance Finder
 
-<Image src={import('./_assets/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png')} width="550">NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance).</Image>
+Use the interactive finder below to look up the closest preferred value (and the closest equal-or-lower / equal-or-higher value) for each E series for a given desired resistance.
+
+<ESeriesFinder client:load />
 
 See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number) for more information on these series.
 

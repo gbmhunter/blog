@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import astroExpressiveCode from 'astro-expressive-code';
+import preact from "@astrojs/preact";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
@@ -8,6 +9,7 @@ import rehypeKatex from "rehype-katex";
 export default defineConfig({
   site: 'https://blog.mbedded.ninja', // This enables the sitemap generation
   integrations: [
+    preact(),
     astroExpressiveCode({
       // You can optionally override the plugin's default settings here
       frames: {
