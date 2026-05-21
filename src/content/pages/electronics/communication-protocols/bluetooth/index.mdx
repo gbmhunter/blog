@@ -91,13 +91,92 @@ Advertisement packets give you 31 bytes of data for application specific use.
 
 When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone send the device a _scan request_ packet, the the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process[^argenox-ble-advertising-primer]. 
 
-Property | ID | Description |
-|--------|----|-------------------|
-Flags | 0x01 | 
-Complete List of 16-bit Service UUIDs | 0x03 |
-Shortened Local Name | 0x08 | A shortened version of the complete local name. A shortened name should only contain contiguous characters from the start of the full name.[^bluetooth-sig-data-types-specification] |
-Complete Local Name | 0x09 | The human readable name of the device. A user would typically see this name when scanning for devices on their mobile phone. |
-Manufacturer Specific Data |  | A place for custom data that doesn't fit in any of the other specified types. This field is commonly used. |
+Below is a table of the most popular "common data types". These are defined in Bluetooth SIG - Assigned Numbers - Section 2.3 - Common Data Types.[^bluetooth-sig-assigned-numbers]
+
+<table>
+  <thead>
+    <tr>
+      <th>AD Type</th>
+      <th>ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Flags</td>
+      <td>0x01</td>
+      <td>A single-octet bit-field indicating discoverability (LE Limited / LE General Discoverable Mode) and BR/EDR support (e.g. <code>BR/EDR Not Supported</code>). Required when the advertisement is connectable.</td>
+    </tr>
+    <tr>
+      <td>Incomplete List of 16-bit Service UUIDs</td>
+      <td>0x02</td>
+      <td>Some, but not all, of the 16-bit (SIG-assigned) Service UUIDs supported by the device.</td>
+    </tr>
+    <tr>
+      <td>Complete List of 16-bit Service UUIDs</td>
+      <td>0x03</td>
+      <td>Every 16-bit (SIG-assigned) Service UUID supported by the device.</td>
+    </tr>
+    <tr>
+      <td>Incomplete List of 32-bit Service UUIDs</td>
+      <td>0x04</td>
+      <td>Some, but not all, of the 32-bit Service UUIDs supported by the device. 32-bit UUIDs are rarely seen in practice.</td>
+    </tr>
+    <tr>
+      <td>Complete List of 32-bit Service UUIDs</td>
+      <td>0x05</td>
+      <td>Every 32-bit Service UUID supported by the device.</td>
+    </tr>
+    <tr>
+      <td>Incomplete List of 128-bit Service UUIDs</td>
+      <td>0x06</td>
+      <td>Some, but not all, of the 128-bit (custom) Service UUIDs supported by the device.</td>
+    </tr>
+    <tr>
+      <td>Complete List of 128-bit Service UUIDs</td>
+      <td>0x07</td>
+      <td>Every 128-bit (custom) Service UUID supported by the device. Used when the device exposes vendor-defined services that don't have a 16-bit SIG-assigned UUID.</td>
+    </tr>
+    <tr>
+      <td>Shortened Local Name</td>
+      <td>0x08</td>
+      <td>
+
+      A shortened version of the complete local name. A shortened name should only contain contiguous characters from the start of the full name.[^bluetooth-sig-data-types-specification]
+
+      </td>
+    </tr>
+    <tr>
+      <td>Complete Local Name</td>
+      <td>0x09</td>
+      <td>The human readable name of the device. A user would typically see this name when scanning for devices on their mobile phone.</td>
+    </tr>
+    <tr>
+      <td>TX Power Level</td>
+      <td>0x0A</td>
+      <td>The transmitted power level of the advertising packet, encoded as a signed 8-bit value in dBm. Lets a scanner estimate path loss (and therefore approximate distance) by comparing this value to the measured RSSI.</td>
+    </tr>
+    <tr>
+      <td>Service Data &mdash; 16-bit UUID</td>
+      <td>0x16</td>
+      <td>A 16-bit Service UUID followed by arbitrary service-specific data bytes. Commonly used by beacon formats like Eddystone, and by SIG-assigned services such as the Battery Service to broadcast a state of charge.</td>
+    </tr>
+    <tr>
+      <td>Appearance</td>
+      <td>0x19</td>
+      <td>A 16-bit enumerated value describing the external appearance / device category (e.g. generic phone, heart rate sensor, computer mouse). Lets the central pick an appropriate icon before connecting.</td>
+    </tr>
+    <tr>
+      <td>Manufacturer Specific Data</td>
+      <td>0xFF</td>
+      <td>A 16-bit company identifier followed by arbitrary vendor-defined bytes. Used heavily in practice &mdash; Apple iBeacon, Microsoft Swift Pair and most proprietary advertising payloads live here.</td>
+    </tr>
+  </tbody>
+</table>
+
+<Aside type="note">
+In the above table, any time it mentions "Service UUIDs" it should technically say "Service or Service Class UUIDs".[^bluetooth-sig-data-types-specification]
+</Aside>
 
 ### Advertising Encoder/Decoder
 
@@ -480,3 +559,4 @@ For example, to test Coded S8 PHY run `config phy coded_s8`.
 [^blueio-homepage]: BlueIO. _Homepage_ [website]. Retrieved 2025-11-11, from https://www.blueio.com/.
 [^microsoft-windows-drivers-bluetooth-faq]: Microsoft. _Learn > Windows > Windows Drivers > Bluetooth FAQ_. Retrieved 2025-11-14, from https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-faq.
 [^bluetooth-sig-data-types-specification]: Bluetooth SIG. _Part A. Data Types Specification_ [specification]. Retrieved 2026-05-20, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/CSS_v11/out/en/supplement-to-the-bluetooth-core-specification/data-types-specification.html.
+[^bluetooth-sig-assigned-numbers]: Bluetooth SIG (2026, May 19). _Assigned Numbers_ [specification]. Retrieved 2026-05-21, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/Assigned_Numbers.pdf.

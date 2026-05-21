@@ -9,6 +9,9 @@ title: Capacitors
 type: page
 ---
 
+import ParallelCapacitance from 'src/components/parallel-capacitance/ParallelCapacitance.jsx';
+import SeriesCapacitance from 'src/components/series-capacitance/SeriesCapacitance.jsx';
+
 Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric in-between, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCBs.
 
 **The mechanical equivalent of a capacitor is a spring**. The larger the capacitance, the stronger the spring. This is using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) mechanical equivalent.
@@ -501,6 +504,10 @@ That is, in parallel, *the total equivalent capacitance is the sum of the indivi
 
 One of the benefits of connecting many capacitors in parallel rather than using one large capacitor is that you will usually get a lower ESR (equivalent series resistance).
 
+Use the calculator below to find the total capacitance of two or more capacitors in parallel. Each input accepts metric prefixes (e.g. <code>10u</code>, <code>100n</code>, <code>4.7p</code>).
+
+<ParallelCapacitance client:load />
+
 ### Capacitors In Series
 
 Capacitors in series with each other can be treated as one capacitor with a capacitance:
@@ -532,6 +539,10 @@ This is illustrated in <IRef iref="capacitors-in-series" />.
 <Image iref="capacitors-in-series" src={import('./_assets/capacitors-in-series.webp')} width="800">Diagram showing the equivalent capacitance from two capacitors connected in series.</Image>
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*. **Capacitors in series behave in the same way as resistors in parallel.**
+
+Use the calculator below to find the total capacitance of two or more capacitors in series. Each input accepts metric prefixes (e.g. <code>10u</code>, <code>100n</code>, <code>4.7p</code>).
+
+<SeriesCapacitance client:load />
 
 One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a *charge imbalance*, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. $1M\Omega$) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
 

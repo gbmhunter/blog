@@ -1,0 +1,263 @@
+---
+authors: [gbmhunter]
+date: 2026-05-21
+description: An overview of the radio frequency (RF) spectrum regulations that govern unlicensed wireless devices, including per-region regulatory bodies (FCC, ETSI, ACMA, MIC, ISED), per-band EIRP and conducted power limits, duty cycle restrictions, channel plans, and the underlying standards (FCC Part 15, EN 300 220, AS/NZS 4268, etc.). Used as a central reference by the band-specific and component pages on this blog.
+lastUpdated: 2026-05-21
+tags: [compliance, RF, regulations, EIRP, ERP, ISM, FCC, ETSI, ACMA, MIC, ISED, Part 15, EN 300 220, RED, spectrum, duty cycle, channel plan]
+title: RF Spectrum Regulations
+type: page
+---
+
+import EirpComplianceMap from 'src/components/eirp-compliance-map/EirpComplianceMap.jsx';
+
+Any device that intentionally radiates radio frequency (RF) energy is subject to **regulation** in every jurisdiction it is sold or operated in. The regulatory bodies define which frequency bands are available for what purposes, the maximum transmit power, the modulation requirements, and various other rules a device must follow before it can be legally marketed.
+
+This page is intended as a **central reference** for the most commonly-cited limits. The band-specific pages on this site (e.g. [Sub-GHz ISM Bands](/electronics/communication-protocols/sub-ghz-ism-bands/)) link here rather than duplicating the full tables.
+
+<Aside type="caution">
+This page is a summary. Always consult the **authoritative regulation** (FCC Part 15, EN 300 220, AS/NZS 4268, etc.) and any regional certification body before designing a product for sale. Numbers here may be outdated or simplified.
+</Aside>
+
+## Regulatory Bodies
+
+Different jurisdictions have different regulatory authorities. The most commonly encountered are:
+
+<table>
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Authority</th>
+      <th>Key Standards / Rules</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>United States</td>
+      <td>FCC (Federal Communications Commission)</td>
+      <td>FCC Part 15 (especially 15.231, 15.247, 15.249)</td>
+    </tr>
+    <tr>
+      <td>European Union</td>
+      <td>National authorities under ETSI harmonised standards</td>
+      <td>RED (Radio Equipment Directive 2014/53/EU), EN 300 220 (sub-GHz), EN 300 328 (2.4 GHz), EN 301 893 (5 GHz)</td>
+    </tr>
+    <tr>
+      <td>United Kingdom</td>
+      <td>Ofcom</td>
+      <td>IR 2030 Interface Requirement (mirrors the EU harmonised standards post-Brexit)</td>
+    </tr>
+    <tr>
+      <td>Australia</td>
+      <td>ACMA (Australian Communications and Media Authority)</td>
+      <td>Radiocommunications (Low Interference Potential Devices — "LIPD") Class Licence, AS/NZS 4268</td>
+    </tr>
+    <tr>
+      <td>New Zealand</td>
+      <td>RSM (Radio Spectrum Management, Ministry of Business, Innovation and Employment)</td>
+      <td>General User Radio Licence (GURL) — Short Range Devices, AS/NZS 4268</td>
+    </tr>
+    <tr>
+      <td>Canada</td>
+      <td>ISED (Innovation, Science and Economic Development Canada)</td>
+      <td>RSS-210, RSS-247</td>
+    </tr>
+    <tr>
+      <td>Japan</td>
+      <td>MIC (Ministry of Internal Affairs and Communications)</td>
+      <td>ARIB STD-T108 (920 MHz band), ARIB STD-T66 (2.4 GHz), Radio Law Article 4</td>
+    </tr>
+  </tbody>
+</table>
+
+## Key Terms
+
+* **EIRP** (_Equivalent Isotropically Radiated Power_) — the power that an isotropic antenna would need to radiate to produce the peak power density of the actual transmitter + antenna combination. EIRP = P<sub>conducted</sub> × G<sub>antenna</sub> (or in dB: EIRP<sub>dBm</sub> = P<sub>dBm</sub> + G<sub>dBi</sub>). Most modern regulations specify EIRP rather than conducted power.
+* **ERP** (_Effective Radiated Power_) — older term, referenced to a half-wave dipole instead of an isotropic radiator. ERP = EIRP − 2.15 dB.
+* **Conducted power** — the RF power measured at the transmitter output port, before the antenna. FCC Part 15 often specifies conducted power separately from the maximum antenna gain.
+* **Duty cycle** — the fraction of time a transmitter may be on the air during a fixed observation window (typically 1 hour). Heavily used in EU regulations for sub-GHz bands.
+* **LBT** (_Listen Before Talk_) — the transmitter must verify the channel is clear before transmitting. Often an alternative to duty cycle restrictions.
+* **AFA** (_Adaptive Frequency Agility_) — the transmitter must hop between channels to share the spectrum (used by 2.4 GHz Bluetooth/Wi-Fi co-existence rules).
+* **FHSS** (_Frequency-Hopping Spread Spectrum_) and **DSSS** (_Direct-Sequence Spread Spectrum_) — modulation styles that some regulatory regimes treat as a category, sometimes with relaxed power limits (e.g. FCC Part 15.247).
+
+## EIRP Compliance Map
+
+Enter your transmitter conducted power and antenna gain below, then pick a protocol (or specify a custom frequency). The map will colour each regulatory region green if your EIRP is within the legal limit, or red if it exceeds it. Grey regions are not allocated for unlicensed use of the chosen band; the regions in light grey are outside the scope of this page.
+
+<EirpComplianceMap client:load />
+
+## Summary Table
+
+The table below consolidates the headline limits for each (band, region) combination. The per-band sections that follow give more detail and the exact sub-band breakdowns where applicable.
+
+<Aside type="caution">
+"Max EIRP" figures are the **typical headline limit** for the most common digital-modulation / spread-spectrum use case in each band. Many bands have sub-bands with different limits, and many regions have higher allowances for specific modulation schemes or LBT/DFS-compliant equipment. Always check the actual standard.
+</Aside>
+
+<table>
+  <thead>
+    <tr>
+      <th>Band</th>
+      <th>Region</th>
+      <th>Max EIRP</th>
+      <th>Conditions</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan="6">315 MHz</td>
+      <td>US</td>
+      <td>~−1 dBm (≈ 100 µV/m @ 3 m field strength)</td>
+      <td>"Periodic operation" only (FCC Part 15.231) — short bursts, no continuous Tx</td>
+      <td>Car key fobs, garage remotes</td>
+    </tr>
+    <tr><td>EU / UK</td><td colSpan="3">Not allocated for unlicensed ISM use.</td></tr>
+    <tr><td>AU</td><td colSpan="3">Not allocated for unlicensed ISM use.</td></tr>
+    <tr><td>NZ</td><td colSpan="3">Not allocated for unlicensed ISM use.</td></tr>
+    <tr><td>CA</td><td>Similar to US (RSS-210)</td><td>Periodic operation rules apply</td><td></td></tr>
+    <tr><td>JP</td><td colSpan="3">Not allocated for unlicensed ISM use.</td></tr>
+    <tr>
+      <td rowSpan="7">433 MHz (433.05 – 434.79 MHz)</td>
+      <td>EU</td>
+      <td>10 dBm (10 mW)</td>
+      <td>10% duty cycle</td>
+      <td>EN 300 220-2; sub-band rules apply</td>
+    </tr>
+    <tr><td>UK</td><td>10 dBm</td><td>10% duty cycle</td><td>Ofcom IR 2030 mirrors EU</td></tr>
+    <tr><td>US</td><td>Restrictive narrowband only</td><td>FCC Part 15.231/15.249 limits</td><td>Not an ISM band in US</td></tr>
+    <tr><td>AU</td><td>14 dBm (25 mW)</td><td>—</td><td>LIPD Class Licence; 915 MHz preferred locally</td></tr>
+    <tr><td>NZ</td><td>14 dBm (25 mW)</td><td>—</td><td>RSM GURL mirrors AU</td></tr>
+    <tr><td>CA</td><td colSpan="3">Restrictive — similar to US.</td></tr>
+    <tr><td>JP</td><td colSpan="3">Not allocated for unlicensed ISM use.</td></tr>
+    <tr>
+      <td rowSpan="7">868 MHz (863 – 870 MHz)</td>
+      <td>EU</td>
+      <td>14 dBm (25 mW) in most sub-bands</td>
+      <td>1% duty cycle (most sub-bands)</td>
+      <td>EN 300 220-2; 27 dBm + 10% DC in 869.4–869.65 MHz; 7 dBm + 100% DC in 869.7–870 MHz</td>
+    </tr>
+    <tr><td>UK</td><td>Same as EU</td><td>Same as EU</td><td>Ofcom IR 2030 mirrors EU</td></tr>
+    <tr><td>US</td><td colSpan="3">Not available (overlaps with cellular allocations).</td></tr>
+    <tr><td>CA</td><td colSpan="3">Not available.</td></tr>
+    <tr><td>AU</td><td colSpan="3">Not available (overlaps with GSM-900 / LTE band 8).</td></tr>
+    <tr><td>NZ</td><td colSpan="3">Not available.</td></tr>
+    <tr><td>JP</td><td colSpan="3">Use the 920 MHz band (ARIB STD-T108) instead.</td></tr>
+    <tr>
+      <td rowSpan="7">915 MHz (902 – 928 MHz)</td>
+      <td>US</td>
+      <td>36 dBm effective (1 W conducted into 6 dBi antenna)</td>
+      <td>FHSS or digital modulation (Part 15.247); higher antenna gain trades against conducted power</td>
+      <td>Primary "US ISM" sub-GHz band</td>
+    </tr>
+    <tr><td>CA</td><td>Same as US</td><td>RSS-247</td><td></td></tr>
+    <tr><td>AU</td><td>30 dBm (1 W EIRP) in 915 – 928 MHz</td><td>Digital modulation / spread spectrum</td><td>902–915 MHz allocated to other services locally</td></tr>
+    <tr><td>NZ</td><td>30 dBm (1 W EIRP) in 921 – 928 MHz</td><td>Digital modulation / spread spectrum</td><td>Primary local sub-GHz IoT band</td></tr>
+    <tr><td>JP</td><td>~24 dBm (250 mW) in 920 – 928 MHz</td><td>ARIB STD-T108, channel and LBT rules</td><td>Japanese sub-GHz IoT band</td></tr>
+    <tr><td>EU</td><td colSpan="3">Not available (cellular allocations).</td></tr>
+    <tr><td>UK</td><td colSpan="3">Not available.</td></tr>
+    <tr>
+      <td rowSpan="7">2.4 GHz (2400 – 2483.5 MHz)</td>
+      <td>EU</td>
+      <td>
+      
+20 dBm (100 mW)[^etsi-en-300-328-wideband-2-4-ghz]
+
+</td>
+      <td>Adaptive equipment requirements (EN 300 328)</td>
+      <td>Wi-Fi, Bluetooth, ZigBee</td>
+    </tr>
+    <tr><td>UK</td><td>20 dBm</td><td>Same as EU</td><td></td></tr>
+    <tr><td>US</td><td>~36 dBm typical Wi-Fi (1 W conducted)</td><td>FCC Part 15.247; antenna gain rules</td><td>Point-to-point links allow higher EIRP</td></tr>
+    <tr><td>CA</td><td>Same as US</td><td>RSS-247</td><td></td></tr>
+    <tr><td>AU</td><td>36 dBm (4 W EIRP)</td><td>Spread spectrum / digital modulation</td><td>LIPD Class Licence; more permissive than EU</td></tr>
+    <tr><td>NZ</td><td>36 dBm (4 W EIRP)</td><td>Spread spectrum / digital modulation</td><td>RSM GURL mirrors AU</td></tr>
+    <tr><td>JP</td><td>10 dBm/MHz density limit</td><td>ARIB STD-T66, per-mode caps</td><td></td></tr>
+    <tr>
+      <td rowSpan="7">5 GHz (U-NII)</td>
+      <td>US</td>
+      <td>23 – 36 dBm depending on sub-band</td>
+      <td>DFS required in U-NII-2; TPC; indoor-only restrictions in some sub-bands</td>
+      <td>U-NII-1/2A/2C/3/4 split (FCC Part 15 Subpart E)</td>
+    </tr>
+    <tr><td>EU</td><td>23 dBm (200 mW) in 5150–5350 MHz; 30 dBm (1 W) in 5470–5725 MHz</td><td>5150–5350 indoor only; DFS + TPC in 5470–5725</td><td>EN 301 893</td></tr>
+    <tr><td>UK</td><td>Same as EU</td><td>Same as EU</td><td></td></tr>
+    <tr><td>AU</td><td>23 dBm (200 mW) in 5150–5350; up to 36 dBm (4 W EIRP) in 5725–5875 for outdoor point-to-point</td><td>Indoor-only / DFS rules per sub-band</td><td>LIPD Class Licence</td></tr>
+    <tr><td>NZ</td><td>Mirrors AU</td><td>Mirrors AU</td><td>RSM GURL</td></tr>
+    <tr><td>CA</td><td>Similar to US</td><td>RSS-247 / RSS-210</td><td></td></tr>
+    <tr><td>JP</td><td>Different sub-band split</td><td>—</td><td>Consult Japanese authority for specifics</td></tr>
+  </tbody>
+</table>
+
+## Band Summaries
+
+### 315 MHz (Region 2)
+
+Primarily used in North America and parts of Asia for car key fobs and short-range remote controls.
+
+* **US (FCC Part 15.231)** — very low power, intermittent transmission only, restrictions on duty cycle. Typically used for "periodic operation" devices.
+* Not generally available as an ISM band in EU.
+* **AU / NZ** — not generally allocated for unlicensed ISM use; this band is used by other services.
+
+### 433 MHz (Region 1 ISM)
+
+The 433.05 - 434.79 MHz band.
+
+* **EU (EN 300 220)** — typical EIRP limit of 10 dBm (10 mW), 10% duty cycle. There are several sub-bands with varying rules.
+* **US** — not an ISM band per se; some narrowband operation possible under FCC Part 15.231 / 15.249 with restrictive limits.
+* **AU (ACMA LIPD Class Licence)** — 433.05 - 434.79 MHz available for general-purpose telemetry and remote control up to ~25 mW EIRP. Devices used here are commonly imported but the 915 MHz band is preferred locally because of more available spectrum.
+* **NZ (RSM General User Radio Licence — Short Range Devices)** — broadly mirrors the ACMA LIPD class licence with similar power limits. The limit is 14 dBm EIRP. In NZ, significantly more power (30/36 dBm) is allowed for the 915 MHz band.[^nz-gazette-gurl-short-range-devices-2022]
+
+Pieces of still wire are commonly
+
+### 868 MHz (Region 1)
+
+The 863 - 870 MHz European sub-GHz band, split into several sub-bands by EN 300 220:
+
+* **Most sub-bands**: 14 dBm EIRP (25 mW), 1% duty cycle.
+* **869.4 - 869.65 MHz**: 27 dBm EIRP (500 mW), 10% duty cycle.
+* **869.7 - 870 MHz**: 7 dBm EIRP (5 mW), 100% duty cycle.
+
+Full sub-band breakdown is in EN 300 220-2.
+
+* **AU / NZ** — not available for unlicensed sub-GHz operation; this part of the spectrum is allocated to other services (GSM-900 / LTE band 8 overlap).
+
+### 915 MHz (Region 2)
+
+915 MHz covers the 902 - 928 MHz band. This is the North American and Australasia counterpart to the EU 868 MHz.
+
+* **US (FCC Part 15.247)** — for FHSS or digital modulation systems: up to **30 dBm (1 W) conducted** with up to 6 dBi antenna gain (higher gain allowed if conducted power is reduced 1 dB for every dB over 6 dBi). EIRP cap effectively 36 dBm for most cases.
+* **AU (ACMA LIPD Class Licence)** — 915 - 928 MHz sub-band is available for digital modulation / spread-spectrum devices at up to **1 W EIRP**. This is the main "Australian LoRaWAN" / sub-GHz IoT band (AU915 / AU923 LoRa plans). The lower part of the band (902 - 915 MHz) is allocated to other services.
+* **NZ (RSM GURL — Short Range Devices)** — 921 - 928 MHz is the most-used sub-band locally, with similar 1 W EIRP allowance for digital modulation. The full 915 - 928 MHz range is broadly available under the relevant GURL. 30 dBm is allowed for non FHSS devices, 36 dBm allowed for FHSS devices.[^nz-gazette-gurl-short-range-devices-2022]
+* **Not available in EU** for unlicensed operation (overlaps with GSM-900 / LTE band 8).
+
+### 2.4 GHz (Worldwide ISM)
+
+The 2400 - 2483.5 MHz band — used by Wi-Fi, Bluetooth, ZigBee, and most consumer wireless.
+
+* **EU (EN 300 328)** — 20 dBm EIRP (100 mW) for most modulations; adaptive equipment requirements apply.[^etsi-en-300-328-wideband-2-4-ghz]
+* **US (FCC Part 15.247)** — up to 30 dBm (1 W) conducted, plus antenna gain rules.
+* **JP (ARIB STD-T66)** — 10 dBm/MHz spectrum power density limit, various per-mode caps.
+* **AU (ACMA LIPD Class Licence)** — up to **36 dBm EIRP** for spread-spectrum / digital-modulation devices in the full 2400 - 2483.5 MHz band, which is more permissive than EU.
+* **NZ (RSM GURL)** — broadly mirrors AU at up to 36 dBm EIRP.[^nz-gazette-gurl-short-range-devices-2022]
+
+### 5 GHz (Worldwide ISM/U-NII)
+
+A more fragmented band, split into multiple sub-bands (U-NII-1 / 2A / 2C / 3 / 4) with different power limits and DFS (_Dynamic Frequency Selection_) requirements to avoid weather radar interference.
+
+* **US (FCC Part 15 Subpart E)** — U-NII-1 through U-NII-4, with EIRP limits ranging from 250 mW to 4 W depending on sub-band and use case (indoor vs outdoor).
+* **EU (EN 301 893)** — 5150 - 5350 MHz (indoor only, 200 mW EIRP), 5470 - 5725 MHz (1 W EIRP with DFS / TPC required).
+* **AU (ACMA LIPD Class Licence)** — 5150 - 5350 MHz (indoor only, 200 mW EIRP), 5470 - 5725 MHz (with DFS), 5725 - 5875 MHz (up to 4 W EIRP for outdoor point-to-point links).
+* **NZ (RSM GURL)** — broadly mirrors AU.
+
+## See Also
+
+* [Sub-GHz ISM Bands](/electronics/communication-protocols/sub-ghz-ism-bands/) — uses of the 315 / 433 / 868 / 915 MHz bands.
+* [Antennas](/electronics/components/antennas/) — gain, EIRP and antenna design considerations.
+* [Electromagnetic Compatibility (EMC)](/electronics/compliance/electromagnetic-compatibility-emc/) — the broader compliance framework.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^nz-gazette-gurl-short-range-devices-2022]: New Zealand Gazette (2022, Aug 1). _Radiocommunications Regulations (General User Radio Licence for Short Range Devices) Notice 2022_ [notice]. Retrieved 2026-05-21, from https://gazette.govt.nz/notice/id/2022-go3100.
+[^etsi-en-300-328-wideband-2-4-ghz]: ETSI (2019, Jul). _EN 300 328 V2.2.2 — Wideband transmission systems; Data transmission equipment operating in the 2,4 GHz band; Harmonised Standard for access to radio spectrum_ [specification]. Retrieved 2026-05-22, from https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf.

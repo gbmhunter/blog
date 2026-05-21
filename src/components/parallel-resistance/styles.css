@@ -1,0 +1,122 @@
+.parallel-resistance {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+  max-width: 32rem;
+}
+
+.parallel-resistance__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.parallel-resistance *,
+.parallel-resistance *::before,
+.parallel-resistance *::after {
+  /* Reset Starlight's sibling-margin prose rule (`* + *`), which would otherwise
+     push siblings inside the widget (rows, input wrappers, etc.) down by ~16px. */
+  margin-top: 0;
+}
+
+.parallel-resistance__row {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.parallel-resistance__row-label {
+  align-self: center;
+  font-weight: 600;
+  color: var(--sl-color-text);
+  text-align: right;
+}
+
+.parallel-resistance__row-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.parallel-resistance__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+}
+
+.parallel-resistance__input--error {
+  border-color: var(--sl-color-accent);
+}
+
+.parallel-resistance__row-error {
+  font-size: 0.78rem;
+  color: var(--sl-color-accent-high);
+}
+
+.parallel-resistance__remove {
+  box-sizing: border-box;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.parallel-resistance__remove:hover:not(:disabled) {
+  background: var(--sl-color-gray-6);
+}
+
+.parallel-resistance__remove:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.parallel-resistance__add {
+  margin-top: 0.6rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--sl-color-accent);
+  background: var(--sl-color-accent);
+  color: var(--sl-color-white);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.parallel-resistance__total {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sl-color-gray-5);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.parallel-resistance__total-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+}
+
+.parallel-resistance__total-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  color: var(--sl-color-accent-high);
+  font-size: 1.05rem;
+}

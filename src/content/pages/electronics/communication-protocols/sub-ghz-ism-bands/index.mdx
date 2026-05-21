@@ -1,0 +1,91 @@
+---
+authors: [gbmhunter]
+date: 2026-05-21
+description: The unlicensed sub-GHz ISM (Industrial, Scientific and Medical) bands — primarily 315 MHz, 433 MHz, 868 MHz and 915 MHz — are heavily used for long-range, low-data-rate wireless communication including remote controls, garage door openers, weather stations, RC links, smart-home devices and LoRa modules. This page covers the regional allocations, common use cases, modulation methods and typical chips and modules.
+lastUpdated: 2026-05-21
+tags: [communication protocol, sub-GHz, ISM, 315 MHz, 433 MHz, 868 MHz, 915 MHz, RF, OOK, FSK, LoRa, remote control, garage opener, weather station]
+title: Sub-GHz ISM Bands
+type: page
+---
+
+The **sub-GHz ISM** (_Industrial, Scientific and Medical_) bands are a collection of unlicensed radio bands below 1 GHz that are widely used for short-to-medium-range, low-data-rate wireless communication. Compared to the 2.4 GHz ISM band used by Wi-Fi and Bluetooth, sub-GHz bands can offer:
+
+* **Longer range** at a given transmit power.
+* **Better penetration** through walls, foliage and other obstacles.
+* **Less congestion** — fewer devices and protocols are crammed into the spectrum.
+
+The cored trade-off with 2.4 GHz is **much lower available bandwidth**, which limits the data rate. As a result they are typically used for telemetry, control, beacons, and sensor networks rather than high-throughput links.
+
+## Regional Allocations
+
+Different regions use different sub-GHz bands due to local regulation. The most commonly seen are:
+
+| Band     | Region           | Common Uses                                                         |
+|----------|------------------|---------------------------------------------------------------------|
+| 315 MHz  | North America, Asia | Car key fobs, garage door openers, simple remote controls           |
+| 433 MHz  | Worldwide (Region 1 ISM, also widely used elsewhere) | Remote controls, weather stations, hobbyist RF links, LoRa (EU)     |
+| 868 MHz  | Europe / Region 1 | LoRaWAN (EU), Z-Wave (EU), Sigfox (EU), Wireless M-Bus              |
+| 915 MHz  | North America, Australia, NZ | LoRaWAN (US/AU), Z-Wave (US), 802.15.4 sub-GHz, ZigBee                 |
+
+Each region also has specific **duty cycle** and **maximum transmit power** restrictions that protocols must comply with — e.g. the EU 868 MHz band is split into sub-bands with limits ranging from 0.1% to 10% duty cycle and EIRP up to 25 mW (14 dBm) in most sub-bands. See [RF Spectrum Regulations](/electronics/compliance/rf-spectrum-regulations/) for the full per-band, per-region breakdown.
+
+## 433 MHz
+
+The 433.05 - 434.79 MHz band is one of the most popular hobbyist and consumer RF bands worldwide. It is widely used for:
+
+* Garage door openers and gate remotes
+* Cheap wireless doorbells and PIR sensors
+* Weather stations (e.g. La Crosse, Oregon Scientific)
+* Hobbyist RF modules (the ubiquitous "433 MHz transmitter/receiver" pairs sold for a few dollars)
+* RC car/aircraft control links (less common than 2.4 GHz today)
+* LoRa modules tuned to the 433 MHz band
+
+In Europe the band has a 10% duty cycle limit and 10 mW (10 dBm) EIRP cap, which is why many protocols send short, infrequent bursts rather than maintain continuous links.
+
+## 868 MHz
+
+The 863 - 870 MHz European sub-GHz band is split into several sub-bands with different power and duty cycle rules. Major uses include:
+
+* **LoRaWAN** (EU868 plan) — the most popular long-range low-power WAN technology in Europe.
+* **Z-Wave** (EU variant, 868.42 MHz) — smart home mesh networking.
+* **Sigfox** — narrowband ultra-low-power IoT (now mostly migrated or shut down in many regions).
+* **Wireless M-Bus** — utility meter reading.
+
+## 915 MHz
+
+The 902 - 928 MHz band is the North American (and Australia/NZ) counterpart to 868 MHz. Major uses include:
+
+* **LoRaWAN** (US915 / AU915 plans).
+* **Z-Wave** (US variant, 908.42 MHz).
+* **IEEE 802.15.4 sub-GHz PHYs**, including ZigBee on sub-GHz.
+
+## Modulation Methods
+
+Because the available bandwidth is low and the regulatory rules are strict, sub-GHz radios overwhelmingly use simple, robust modulation:
+
+* **OOK** (_On-Off Keying_) — the carrier is switched fully on or off to encode bits. Used by almost all cheap 433 MHz remote modules. Cheap to implement but susceptible to in-band interference.
+* **ASK** (_Amplitude-Shift Keying_) — generalisation of OOK with more than two amplitude levels (rarely used at this level).
+* **FSK / GFSK** (_Frequency-Shift Keying_, optionally _Gaussian_-filtered) — bits are encoded as small frequency shifts of the carrier. More robust than OOK in noisy environments; used by most "modern" sub-GHz radios (Si4xxx, CC1101, RFM69, etc.).
+* **LoRa Chirp Spread Spectrum** — proprietary Semtech modulation where each symbol is a frequency chirp. Trades bandwidth efficiency for very high link budget (sensitivity down to ~-148 dBm at SF12), enabling kilometre-scale links at sub-mW transmit powers.
+
+## Common Chips and Modules
+
+Some of the chips you'll encounter most often when working in these bands:
+
+* **Semtech SX127x / SX126x** — the canonical LoRa transceivers, covering 137-1020 MHz with LoRa CSS, (G)FSK and OOK modes. Used in essentially every LoRa-capable module on the market (RFM95W, E22, Heltec, etc.).
+* **Texas Instruments CC1101 / CC1120** — popular general-purpose sub-GHz transceivers with (G)FSK, OOK, MSK and 4-FSK modulation.
+* **Silicon Labs Si4432 / Si4463 / EFR32FG** — sub-GHz transceivers and SoCs. The Si4432 is the chip on the well-known HopeRF RFM2x modules.
+* **HopeRF RFM69 / RFM95** — cheap pre-certified module families that dominate the hobbyist sub-GHz space. Adafruit has a number of boards based around this module.
+* **Microchip MRF89XA / ATA8520** — sub-GHz transceivers, the ATA8520 being a popular Sigfox modem.
+
+## Antennas
+
+At sub-GHz frequencies the wavelength is significantly longer than at 2.4 GHz, which has practical consequences for [antenna design](/electronics/components/antennas/):
+
+* λ at 433 MHz ≈ 69 cm → quarter-wave whip ≈ 17 cm.
+* λ at 868 MHz ≈ 35 cm → quarter-wave whip ≈ 8.6 cm.
+* λ at 915 MHz ≈ 33 cm → quarter-wave whip ≈ 8.2 cm.
+
+Compare this to 2.4 GHz which has a quarter-wave whip length of 3.1 cm and you can see that the antennas are significantly larger.
+
+This makes electrically small antennas (chip antennas, PCB trace antennas, helical antennas) much more challenging to design with good efficiency at sub-GHz than at 2.4 GHz, and is one reason these bands are dominated by external whip antennas, ducky antennas and helical springs.

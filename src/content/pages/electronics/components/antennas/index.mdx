@@ -9,6 +9,8 @@ title: Antennas
 type: page
 ---
 
+import GainConverter from 'src/components/gain-converter/GainConverter.jsx';
+
 Antennas are an electronic device which converts between electrical energy and electromagnetic waves. They are commonly used for transmitting and receiving radio frequency (RF) signals and can be used for communication and measurement applications.
 
 <Image src={import('./_assets/rf-antenna-with-sma-connection.jpg')} width="300px">A standard 1-3GHz RF antenna with an SMA connection.</Image>
@@ -89,6 +91,12 @@ $$
 Where:
 - $D$ is the directivity (unitless)
 - $\eta$ is the radiation efficiency (unitless, between 0 and 1)
+
+### Power Unit Converter
+
+Use the converter below to switch between common RF power units. Edit any field and the rest update automatically.
+
+<GainConverter client:load />
 
 ## Impedance Matching
 
@@ -189,6 +197,24 @@ Stamped metal antennas are made by stamping a sheet of metal into the desired sh
 ## Shorting Antennas
 
 Note that shorting out an antenna is not an effective way of stopping it from communicating. At RF, a direct short with a piece of wire is no longer a direct short, and can for example, appear inductive. This means the antenna can still work, and sometimes make it perform better. I have shorted out cellular modem antennas before with pliers and the signal strength increased!
+
+## The Friis Transmission Equation and Free-Space Path Loss (FSPL)
+
+The Friis transmission equation calculates the received power $P_r$ based on the transmitted power $P_t$, antenna gains, signal wavelength and distance:
+
+$$
+\begin{equation}
+P_r = P_t G_t G_r \left( \frac{\lambda}{4 \pi d} \right)^2
+\end{equation}
+$$
+
+where:
+- $P_r$ is the received power in Watts
+- $P_t$ is the transmitted power in Watts
+- $G_t$ is the transmitted antenna gain (no unit)
+- $G_r$ is the receiver antenna gain (no unit)
+- $\lambda$ is the wavelength of the signal in meters
+- $d$ is the distance between transmitter and receiver in meters
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

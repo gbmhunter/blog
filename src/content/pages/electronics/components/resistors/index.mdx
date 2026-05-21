@@ -10,6 +10,9 @@ type: page
 ---
 
 import ESeriesFinder from 'src/components/e-series-finder/ESeriesFinder.jsx';
+import ParallelResistance from 'src/components/parallel-resistance/ParallelResistance.jsx';
+import SeriesResistance from 'src/components/series-resistance/SeriesResistance.jsx';
+import ResistorDivider from 'src/components/resistor-divider/ResistorDivider.jsx';
 
 _Resistors_ are a passive electronic components that **restrict the flow of current when a voltage is applied across them**. They dissipate the energy lost as heat. Given their simplicity, usefulness and low price of manufacture, they are typically the most commonly used electronic component in any circuit design.
 
@@ -81,6 +84,10 @@ R_{total} &= \frac{R1R2}{R1 + R2}
 \end{align}
 $$
 
+Use the calculator below to find the total resistance of two or more resistors in parallel. Each input accepts metric prefixes (e.g. <code>10k</code>, <code>2M2</code>, <code>470R</code>).
+
+<ParallelResistance client:load />
+
 ### Resistors In Series
 
 When two resistors are connected in series, the total equivalent resistance is equal to the sum of individual resistances.
@@ -102,6 +109,10 @@ $$
 R_{total} = \sum_{i=1}^{n} R_i
 \end{align}
 $$
+
+Use the calculator below to find the total resistance of two or more resistors in series. Each input accepts metric prefixes (e.g. <code>10k</code>, <code>2M2</code>, <code>470R</code>).
+
+<SeriesResistance client:load />
 
 ### Network Analysis
 
@@ -152,6 +163,10 @@ R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \nonumber \\
 R2 &= \frac{V_{OUT}}{V_{IN} - V_{OUT}} R1 \\
 \end{align}
 $$
+
+Use the calculator below to solve a resistor divider for any one parameter given the other three. Select the parameter to compute with the radio button on its row; the remaining rows become inputs. Voltage and resistance inputs both accept metric prefixes (e.g. <code>5V</code>, <code>3.3</code>, <code>10k</code>, <code>2M2</code>).
+
+<ResistorDivider client:load />
 
 ### Thevenin Equivalent Circuit
 

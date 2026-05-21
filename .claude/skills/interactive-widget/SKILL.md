@@ -184,7 +184,38 @@ Native `<select>` and `<button>` elements have different intrinsic heights. When
 }
 ```
 
-## Step 7: State & input patterns
+## Step 7: Shared utilities — don't re-invent
+
+Before writing helper code, check `src/js/` for existing utilities that match your need. Reuse beats duplication.
+
+Current shared utilities:
+
+### `src/js/metric-prefix.js`
+
+Unit-agnostic parsing + formatting for values with SI prefixes. Use this whenever your widget takes a human-typed value with a unit (resistance, capacitance, inductance, voltage, current, frequency, time, etc.).
+
+```js
+import { parseValueWithPrefix, formatValueWithPrefix } from 'src/js/metric-prefix.js';
+
+// Parsing
+const { value, error } = parseValueWithPrefix(text, {
+  units: ['F', 'farad', 'farads'],   // unit strings to strip from input
+  rNotation: false,                  // set true for resistors (allows "470R", "4R7")
+  allowZero: false,
+  allowNegative: false,
+});
+
+// Formatting
+formatValueWithPrefix(value, 'F');   // → "4.7 µF"
+```
+
+Supports both standard form (`4.7k`, `2.2M`) and "RK-shorthand" (`2k2`, `4n7`, `4R7`). Returns `{ value, error }` from the parser so widgets can surface specific validation messages.
+
+Reference usage: `src/components/e-series-finder/finder.js` and `src/components/parallel-resistance/calc.js` both thin-wrap it (~3 lines each) to provide `parseResistance` / `formatResistance`.
+
+**When to add to this list:** if you write a helper in a widget folder that another widget would benefit from, lift it into `src/js/` and update both call sites + this section. Don't pre-extract speculative shared code — wait for the second use case.
+
+## Step 8: State & input patterns
 
 ### Two-way sync (e.g. hex ↔ structured editor)
 
@@ -248,7 +279,7 @@ Parse the input text into `{ valid, invalid }` parts. Show `invalid` parts in a 
 
 Strip `0x` / `0X` prefixes, dashes, whitespace, and other separators before parsing hex. Users paste hex in many formats — `02010606`, `0x02 0x01 0x06`, `02:01:06:06` should all work.
 
-## Step 8: Verification
+## Step 9: Verification
 
 After implementing, run:
 
@@ -273,7 +304,7 @@ For UI verification, run `npx astro dev` and use Chrome browser tools to visit t
 
 3. **Theme** — Toggle light/dark mode in Starlight and confirm colours track (this is automatic if you used the CSS variables).
 
-## Step 9: Memory
+## Step 10: Memory
 
 If you encounter a new gotcha not covered above (a Starlight CSS conflict, a Preact-specific bug, a missing variable, etc.), update this `SKILL.md` so the next widget benefits. Skills are repo-scoped and checked in — improvements help every future session.
 

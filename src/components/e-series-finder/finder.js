@@ -1,6 +1,8 @@
 // E-series resistor preferred values. Logic ported from NinjaCalc's
 // StandardResistanceFinder (utils/standard-resistance-finder.js).
 
+import { parseValueWithPrefix, formatValueWithPrefix } from 'src/js/metric-prefix.js';
+
 const E24 = [
   100, 110, 120, 130, 150, 160, 180, 200, 220, 240, 270, 300,
   330, 360, 390, 430, 470, 510, 560, 620, 680, 750, 820, 910, 1000,
@@ -77,81 +79,11 @@ export function findPreferredValue(desiredResistance, eSeries, method) {
   return matched * scale;
 }
 
-const METRIC_PREFIXES = {
-  p: 1e-12, n: 1e-9, u: 1e-6, µ: 1e-6, μ: 1e-6, m: 1e-3,
-  R: 1, r: 1, '': 1,
-  k: 1e3, K: 1e3, M: 1e6, G: 1e9, T: 1e12,
-};
+export const parseResistance = (text) =>
+  parseValueWithPrefix(text, { units: ['Ω', 'ohm', 'ohms'], rNotation: true });
 
-const PREFIX_LIST = 'm, R, k, M, G';
-
-// Parse "10.3k", "1M", "470R", "4.7", "2.2 kΩ" into { value, error }.
-// On success returns { value: <ohms>, error: null }. On failure returns
-// { value: NaN, error: '<human-readable reason>' }.
-export function parseResistance(text) {
-  if (typeof text !== 'string' || text.trim() === '') {
-    return { value: NaN, error: 'Enter a resistance value.' };
-  }
-  const cleaned = text.replace(/Ω/g, '').replace(/ohms?/gi, '').trim();
-
-  // "4R7" / "2k2" notation: digits, prefix letter, digits.
-  const rkNotation = cleaned.match(/^(\d+)\s*([A-Za-zµμ])\s*(\d+)$/);
-  if (rkNotation) {
-    const [, intPart, prefix, fracPart] = rkNotation;
-    if (!(prefix in METRIC_PREFIXES)) {
-      return { value: NaN, error: `Unknown unit "${prefix}" — use one of: ${PREFIX_LIST}.` };
-    }
-    const multiplier = METRIC_PREFIXES[prefix];
-    const v = parseFloat(`${intPart}.${fracPart}`) * multiplier;
-    return v > 0 ? { value: v, error: null } : { value: NaN, error: 'Resistance must be greater than zero.' };
-  }
-
-  // Standard: optional sign, number, optional single-letter prefix.
-  const standard = cleaned.match(/^([+-]?\d*\.?\d+(?:[eE][+-]?\d+)?)\s*([A-Za-zµμ]*)$/);
-  if (!standard) {
-    return { value: NaN, error: `Couldn't parse "${text}" as a resistance. Try formats like 4.7k, 470, 2M2 or 0.1.` };
-  }
-  const [, num, prefix] = standard;
-  if (prefix && !(prefix in METRIC_PREFIXES)) {
-    return { value: NaN, error: `Unknown unit "${prefix}" — use one of: ${PREFIX_LIST}.` };
-  }
-  const multiplier = prefix ? METRIC_PREFIXES[prefix] : 1;
-  const v = parseFloat(num) * multiplier;
-  if (!Number.isFinite(v)) {
-    return { value: NaN, error: `Couldn't parse "${text}" as a number.` };
-  }
-  if (v <= 0) {
-    return { value: NaN, error: 'Resistance must be greater than zero.' };
-  }
-  return { value: v, error: null };
-}
-
-// Format a resistance in ohms with the most appropriate metric prefix.
-export function formatResistance(ohms, sigFigs = 4) {
-  if (!Number.isFinite(ohms)) return '—';
-  if (ohms === 0) return '0 Ω';
-  const prefixes = [
-    { factor: 1e9,  symbol: 'GΩ' },
-    { factor: 1e6,  symbol: 'MΩ' },
-    { factor: 1e3,  symbol: 'kΩ' },
-    { factor: 1,    symbol: 'Ω'  },
-    { factor: 1e-3, symbol: 'mΩ' },
-  ];
-  for (const p of prefixes) {
-    if (Math.abs(ohms) >= p.factor) {
-      const v = ohms / p.factor;
-      return `${trimNumber(v, sigFigs)} ${p.symbol}`;
-    }
-  }
-  return `${trimNumber(ohms, sigFigs)} Ω`;
-}
-
-function trimNumber(v, sigFigs) {
-  if (v === 0) return '0';
-  const order = Math.floor(Math.log10(Math.abs(v)));
-  const decimals = Math.max(0, sigFigs - 1 - order);
-  return parseFloat(v.toFixed(decimals)).toString();
-}
+export const formatResistance = (ohms, sigFigs = 4) =>
+  formatValueWithPrefix(ohms, 'Ω', { sigFigs });
 
 export function percentError(actual, desired) {
   if (!Number.isFinite(actual) || !Number.isFinite(desired) || desired === 0) return NaN;

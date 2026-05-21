@@ -16,13 +16,16 @@
     "@astrojs/starlight": "^0.35.0",
     "@tanstack/table-core": "^8.21.3",
     "astro-expressive-code": "^0.38.0",
+    "d3-geo": "^3.1.1",
     "markdown-it": "^14.1.0",
     "preact": "^10.29.2",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "sanitize-html": "^2.17.0",
     "sharp": "^0.33.5",
-    "typescript": "^5.8.0"
+    "topojson-client": "^3.1.0",
+    "typescript": "^5.8.0",
+    "world-atlas": "^2.0.2"
   },
   "devDependencies": {
     "astro-vtbot": "^1.8.2",
