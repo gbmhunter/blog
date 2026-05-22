@@ -85,6 +85,10 @@ Enter your transmitter conducted power and antenna gain below, then pick a proto
 
 <EirpComplianceMap client:load />
 
+<Aside type="caution">
+The widget uses each region's FHSS / spread-spectrum EIRP allowance (which is what every built-in protocol — Wi-Fi, Bluetooth, BLE, ZigBee, LoRa — qualifies for). Narrowband or non-frequency-hopping modulations may be capped lower in some regions (e.g. NZ 2.4 GHz drops from 36 dBm to 30 dBm for non-FHSS digital modulation, and some EU sub-bands have lower limits for narrowband). Note also that a green region only means the **regulatory** EIRP ceiling is met under the most permissive conditions for that band — your specific stack may not qualify. The most common gotcha: EN 300 328 only allows +20 dBm in the EU when the device implements "adaptivity" (frequency hopping across ≥ 15 channels + collision avoidance); non-adaptive equipment is capped at +10 dBm.[^dewine-labs-bluetooth-tx-power-regulations] Always cross-check the chip / module's regional certifications.
+</Aside>
+
 ## Summary Table
 
 The table below consolidates the headline limits for each (band, region) combination. The per-band sections that follow give more detail and the exact sub-band breakdowns where applicable.
@@ -163,14 +167,14 @@ The table below consolidates the headline limits for each (band, region) combina
 20 dBm (100 mW)[^etsi-en-300-328-wideband-2-4-ghz]
 
 </td>
-      <td>Adaptive equipment requirements (EN 300 328)</td>
-      <td>Wi-Fi, Bluetooth, ZigBee</td>
+      <td>Same 20 dBm limit applies to both FHSS (Classic Bluetooth) and wideband (Wi-Fi, BLE 1M/2M PHY) modes; 10 dBm/MHz PSD cap; adaptive equipment requirements</td>
+      <td>Wi-Fi, Bluetooth, ZigBee. <strong>Not 10 dBm</strong> — that's a chip-vendor SKU cert ceiling, not the regulatory limit</td>
     </tr>
     <tr><td>UK</td><td>20 dBm</td><td>Same as EU</td><td></td></tr>
     <tr><td>US</td><td>~36 dBm typical Wi-Fi (1 W conducted)</td><td>FCC Part 15.247; antenna gain rules</td><td>Point-to-point links allow higher EIRP</td></tr>
     <tr><td>CA</td><td>Same as US</td><td>RSS-247</td><td></td></tr>
     <tr><td>AU</td><td>36 dBm (4 W EIRP)</td><td>Spread spectrum / digital modulation</td><td>LIPD Class Licence; more permissive than EU</td></tr>
-    <tr><td>NZ</td><td>36 dBm (4 W EIRP)</td><td>Spread spectrum / digital modulation</td><td>RSM GURL mirrors AU</td></tr>
+    <tr><td>NZ</td><td>36 dBm FHSS / 30 dBm non-FHSS digital modulation</td><td>FHSS condition required for the 36 dBm allowance (covers Classic Bluetooth and BLE)</td><td>RSM GURL</td></tr>
     <tr><td>JP</td><td>10 dBm/MHz density limit</td><td>ARIB STD-T66, per-mode caps</td><td></td></tr>
     <tr>
       <td rowSpan="7">5 GHz (U-NII)</td>
@@ -234,11 +238,19 @@ Full sub-band breakdown is in EN 300 220-2.
 
 The 2400 - 2483.5 MHz band — used by Wi-Fi, Bluetooth, ZigBee, and most consumer wireless.
 
-* **EU (EN 300 328)** — 20 dBm EIRP (100 mW) for most modulations; adaptive equipment requirements apply.[^etsi-en-300-328-wideband-2-4-ghz]
+* **EU (EN 300 328)** — **20 dBm EIRP (100 mW)** for both FHSS equipment (e.g. Classic Bluetooth) and wideband modulation (e.g. Wi-Fi, BLE 1M / 2M PHY). The standard literally says _"The RF output power for FHSS equipment shall be equal to or less than 20 dBm."_ A 10 dBm/MHz spectral power density cap also applies. Critically, the +20 dBm allowance only applies to **adaptive equipment** (frequency hopping across ≥ 15 channels with collision avoidance / LBT); non-adaptive equipment is capped at **+10 dBm EIRP**.[^etsi-en-300-328-wideband-2-4-ghz][^dewine-labs-bluetooth-tx-power-regulations]
 * **US (FCC Part 15.247)** — up to 30 dBm (1 W) conducted, plus antenna gain rules.
 * **JP (ARIB STD-T66)** — 10 dBm/MHz spectrum power density limit, various per-mode caps.
 * **AU (ACMA LIPD Class Licence)** — up to **36 dBm EIRP** for spread-spectrum / digital-modulation devices in the full 2400 - 2483.5 MHz band, which is more permissive than EU.
-* **NZ (RSM GURL)** — broadly mirrors AU at up to 36 dBm EIRP.[^nz-gazette-gurl-short-range-devices-2022]
+* **NZ (RSM GURL — General Conditions, Bands marked FHSS / digital modulation)** — up to **36 dBm EIRP (6 dBW)** for FHSS devices (which includes Classic Bluetooth and BLE under the relevant interpretation); 30 dBm for non-FHSS digital modulation. The 36 dBm allowance is subject to a specific FHSS condition in the GURL — devices without frequency-hopping fall under the lower limit.[^nz-gazette-gurl-short-range-devices-2022]
+
+<Aside type="caution">
+You'll sometimes see claims online that **EU Bluetooth is limited to +10 dBm, not +20 dBm**. The actual rule under EN 300 328 is: **+20 dBm EIRP is only available to devices that implement "adaptivity"** — frequency hopping across at least 15 channels combined with collision avoidance (e.g. Listen-Before-Talk).[^dewine-labs-bluetooth-tx-power-regulations] Devices that don't implement adaptivity are capped at **+10 dBm EIRP**.
+
+A consequence is that vendors who don't implement adaptive FHSS in their BLE stacks default to +10 dBm in EU — Nordic Semiconductor's own range-extender documentation shows ETSI (EU) capped at +10 dBm for 1 / 2 Mbps Bluetooth LE while FCC (US) is capped at +20 dBm.[^nordic-range-extenders-tx-power-limits] The nRF21540 front-end module saturates at +20 dBm output, so it's the soft cap there too.
+
+Note also that **BLE Coded PHY** (the long-range S=2 / S=8 modes) has a narrower occupied bandwidth than 1M / 2M PHY. Depending on the symbol rate and interpretation, it may not meet the wideband definition under EN 300 328 and could fall under a stricter narrowband limit. This is the most common real gotcha when designing for high-power long-range BLE in the EU.
+</Aside>
 
 ### 5 GHz (Worldwide ISM/U-NII)
 
@@ -261,3 +273,5 @@ A more fragmented band, split into multiple sub-bands (U-NII-1 / 2A / 2C / 3 / 4
 
 [^nz-gazette-gurl-short-range-devices-2022]: New Zealand Gazette (2022, Aug 1). _Radiocommunications Regulations (General User Radio Licence for Short Range Devices) Notice 2022_ [notice]. Retrieved 2026-05-21, from https://gazette.govt.nz/notice/id/2022-go3100.
 [^etsi-en-300-328-wideband-2-4-ghz]: ETSI (2019, Jul). _EN 300 328 V2.2.2 — Wideband transmission systems; Data transmission equipment operating in the 2,4 GHz band; Harmonised Standard for access to radio spectrum_ [specification]. Retrieved 2026-05-22, from https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf.
+[^dewine-labs-bluetooth-tx-power-regulations]: Michael Spörk (2025, Feb 6). _Boosting Bluetooth Range: Understanding TX Power Regulations in the EU & US_. Dewine Labs. Retrieved 2026-05-22, from https://dewinelabs.com/boosting-bluetooth-range-understanding-tx-power-regulations-in-the-eu-us/.
+[^nordic-range-extenders-tx-power-limits]: Nordic Semiconductor. _Range Extenders — Maximum regulatory TX output power_ [product page]. Retrieved 2026-05-22, from https://www.nordicsemi.com/Products/Wireless/Range-extenders#txPowerLimits.
