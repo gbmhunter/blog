@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke="#c60e00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- Lead from left -->
+  <line x1="4" y1="48" x2="14" y2="48"/>
+  <!-- First resistor (zigzag) -->
+  <polyline points="14,48 18,40 24,56 30,40 36,56 42,40 44,48"/>
+  <!-- Connector between resistors -->
+  <line x1="44" y1="48" x2="52" y2="48"/>
+  <!-- Second resistor -->
+  <polyline points="52,48 54,40 60,56 66,40 72,56 78,40 82,48"/>
+  <!-- Lead to right -->
+  <line x1="82" y1="48" x2="92" y2="48"/>
+</svg>

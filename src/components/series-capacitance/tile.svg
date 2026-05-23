@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke="#c60e00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- Left lead -->
+  <line x1="4" y1="48" x2="22" y2="48"/>
+  <!-- First capacitor plates -->
+  <line x1="22" y1="34" x2="22" y2="62"/>
+  <line x1="30" y1="34" x2="30" y2="62"/>
+  <!-- Middle connector -->
+  <line x1="30" y1="48" x2="66" y2="48"/>
+  <!-- Second capacitor plates -->
+  <line x1="66" y1="34" x2="66" y2="62"/>
+  <line x1="74" y1="34" x2="74" y2="62"/>
+  <!-- Right lead -->
+  <line x1="74" y1="48" x2="92" y2="48"/>
+</svg>

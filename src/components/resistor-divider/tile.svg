@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke="#c60e00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- V_in node at top -->
+  <line x1="48" y1="6" x2="48" y2="16"/>
+  <circle cx="48" cy="6" r="3" fill="#c60e00" stroke="none"/>
+  <!-- R1 (top resistor) -->
+  <polyline points="48,16 42,20 54,26 42,32 54,38 42,44 48,48"/>
+  <!-- V_out tap -->
+  <line x1="48" y1="48" x2="74" y2="48"/>
+  <circle cx="78" cy="48" r="3" fill="#c60e00" stroke="none"/>
+  <!-- R2 (bottom resistor) -->
+  <polyline points="48,48 42,52 54,58 42,64 54,70 42,76 48,80"/>
+  <!-- Ground symbol -->
+  <line x1="48" y1="80" x2="48" y2="84"/>
+  <line x1="40" y1="84" x2="56" y2="84"/>
+  <line x1="43" y1="88" x2="53" y2="88"/>
+  <line x1="46" y1="92" x2="50" y2="92"/>
+</svg>
