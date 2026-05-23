@@ -184,7 +184,6 @@ export default function CalculatorIndex() {
                 <img src={c.tile} alt="" loading="lazy" />
               </div>
               <div class="calc-index__card-body">
-                <div class="calc-index__card-category">{c.categoryPath.join(' — ')}</div>
                 <div class="calc-index__card-title">{c.title}</div>
                 <div class="calc-index__card-desc">{c.description}</div>
               </div>
