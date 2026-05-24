@@ -1,4 +1,4 @@
-import tile from './tile.png?url';
+import tile from './tile.webp?url';
 
 export const catalog = {
   id: 'ohms-law',
