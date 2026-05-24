@@ -193,3 +193,65 @@ There is a DNS A record for `umami.mbedded.ninja` which points to the AWS Lights
 The "SSL/TLS encryption mode" in Cloudflare has to be changed from the default of "Flexible" to "Full (strict)" for https to Umami to work correctly:
 
 <img src="static/images/readme/cloudfare-changing-ssl-from-flexible-to-full-strict.png" width="900"/>
+
+## Calculator widgets
+
+Each subfolder here is a self-contained interactive calculator embedded somewhere on the blog. The `/calculators/` index page (`src/content/pages/calculators/index.mdx`) aggregates them all into a searchable card grid via `src/components/calculator-index/`.
+
+For the **widget code structure and Astro / Preact conventions**, see `.claude/skills/interactive-widget/SKILL.md`. The notes below are specifically about the **tile icons** shown on each card in the catalog and on each widget folder.
+
+### Folder layout (per calculator)
+
+```
+src/components/calculators/<calculator-name>/
+├── <CalculatorName>.jsx     # main Preact component
+├── calc.js                  # pure logic / parsers
+├── catalog.js               # metadata for the calculator index
+├── styles.css               # scoped CSS for the widget
+└── tile.svg                 # icon shown on the calculator index card
+```
+
+### Tile icon guidelines
+
+#### Format
+
+- **File format:** `.svg` (vector, scales cleanly, small file size).
+- **File name:** `tile.svg` inside the widget folder.
+- **`viewBox`:** `0 0 96 96` (a square canvas, even number for clean math).
+- **Always include explicit `width="96"` and `height="96"` attributes** on the root `<svg>` — browsers loading SVGs via `<img src="...">` need intrinsic dimensions, or `naturalWidth` reports 0 and `aspect-ratio` fallbacks have to kick in.
+- **Avoid `<defs>` with `<radialGradient>` or other internal references** — when the SVG is rendered via `<img>` (which is how the index card renders tiles), browsers restrict internal references for security reasons and the icon can fail to render. Stick to flat fills + strokes. A `<linearGradient>` is OK if you must; radial gradients are the ones that broke.
+
+#### Colours
+
+Use this palette consistently:
+
+| Hex         | Role                             | Notes                                                              |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| **`#c60e00`** | Primary accent (brand red)     | Matches `--sl-color-accent` (dark mode `#c60e00` / light `#c90e00`). Use for the focal stroke/fill — the element that makes the icon recognisably "ours". |
+| `#6b7280`   | Secondary gray                   | Mid-tone gray for context elements (rails, gridlines, secondary labels). Tailwind's `gray-500`. |
+| `#5b6472` / `#4b5563` | Tertiary gray                | Slightly darker / cooler gray for subtle structure (latitude lines, frame outlines). |
+| `#1f2937` / `#27313f` | Filled disc / panel backgrounds | Dark slate fill for things like the globe disc on the EIRP map tile. Works on both light + dark themes since the surrounding card background is itself dark in both. |
+| `#cbd5e1` / `#9ca3af` | Light text on dark fills    | For monospace bytes inside the `#1f2937` packet cells on the BLE tile. |
+| `#2d9d4f`   | "Compliant" green                | Only used for status indicators that mean "OK / under limit". Mirrors the EIRP widget's `--eirp-fill-compliant`. |
+| `#c93030`   | "Exceeds" red                    | Only used for status indicators that mean "over limit". Slightly brighter / more orange than the brand red so the two can be distinguished on the EIRP tile where both appear. |
+
+**Rule of thumb:** if an element conveys the calculator's identity or its primary action, paint it `#c60e00`. If it provides context (labels, frames, grids), use a gray. Only reach for the status colours (`#2d9d4f` / `#c93030`) if the calculator itself uses them.
+
+#### Composition
+
+- **96 × 96 canvas, but leave breathing room** — keep meaningful content roughly within the inner 80 × 80 area so the icon doesn't crowd the card padding.
+- **Two zones often work well:** a "what is this" element occupying the top ~60% (e.g. BT rune, globe, schematic symbol) and a "what does it do" element in the bottom ~40% (e.g. packet bytes, equivalence stack, color band).
+- **Use monospace text sparingly** — `font-family="ui-monospace, SFMono-Regular, monospace"` matches the rest of the blog's code styling. Reserve text for things like hex bytes, unit labels, or numeric examples that reinforce what the calculator computes.
+- **Stroke widths 3–6 px** at 96 × 96 read well at the card display size (~144 px). Thinner strokes get spindly; thicker ones look chunky.
+
+#### Concept
+
+The icon should evoke **what the calculator does**, not just the domain it lives in. A few good examples currently in the tree:
+
+- `gain-converter/tile.svg` — `1 W = 30 dBm = 0 dBW` equivalence stack. Reads instantly as "unit conversion" rather than "RF in general".
+- `eirp-compliance-map/tile.svg` — globe with green and red pins. Reads instantly as "per-region compliance" rather than "globe".
+- `ble-adv-decoder/tile.svg` — Bluetooth rune + three hex byte cells. Communicates both "Bluetooth" and "packet decoder".
+- `resistor-divider/tile.svg` — schematic of the actual two-resistor divider with input, tap and ground. Reads as the literal circuit being analysed.
+
+If the existing reference for a domain (schematic symbol, well-known logo, recognised diagram) is iconic, lean into it.
+
