@@ -1,10 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke="#c60e00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
-  <!-- Top rail -->
-  <line x1="8" y1="24" x2="88" y2="24"/>
-  <!-- Bottom rail -->
-  <line x1="8" y1="72" x2="88" y2="72"/>
-  <!-- Left resistor (zigzag from top rail to bottom rail) -->
-  <polyline points="28,24 24,30 34,36 24,42 34,48 24,54 34,60 24,66 28,72"/>
-  <!-- Right resistor -->
-  <polyline points="68,24 64,30 74,36 64,42 74,48 64,54 74,60 64,66 68,72"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="resistor-american-short" transform="matrix(-0.247851,-3.0353e-17,3.0353e-17,-0.247851,118.729,165.095)">
+        <path d="M354.331,377.953L354.331,401.575L330.709,413.386L377.953,437.008L330.709,460.63L377.953,484.252L330.709,507.874L377.953,531.496L354.331,543.307L354.331,566.929" style="fill:none;stroke:rgb(198,14,0);stroke-width:10.97px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,1.46263,0)">
+        <path d="M6.277,24.581L86.798,24.581" style="fill:none;stroke:rgb(198,14,0);stroke-width:2.85px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,1.46263,46.8379)">
+        <path d="M6.277,24.581L86.798,24.581" style="fill:none;stroke:rgb(198,14,0);stroke-width:2.85px;"/>
+    </g>
+    <g id="resistor-american-short1" serif:id="resistor-american-short" transform="matrix(-0.247851,-3.0353e-17,3.0353e-17,-0.247851,153.065,165.095)">
+        <path d="M354.331,377.953L354.331,401.575L330.709,413.386L377.953,437.008L330.709,460.63L377.953,484.252L330.709,507.874L377.953,531.496L354.331,543.307L354.331,566.929" style="fill:none;stroke:rgb(198,14,0);stroke-width:10.97px;"/>
+    </g>
 </svg>

@@ -1,6 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke="#c60e00" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
-  <!-- Stylised Bluetooth rune -->
-  <path d="M 38 16 L 38 80 M 38 16 L 62 36 L 38 48 M 38 48 L 62 60 L 38 80"/>
-  <!-- Hex byte hint at bottom -->
-  <text x="48" y="92" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#6b7280" stroke="none">02 01 06</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(3.5836,0,0,3.5836,48,43.0032)">
+        <g transform="matrix(1,0,0,1,-12,-12)">
+            <path d="M11.25,21.65L11.25,13.8L6.4,18.65L5.35,17.6L10.95,12L5.35,6.4L6.4,5.35L11.25,10.2L11.25,2.35L12,2.35L17.35,7.7L13.05,12L17.35,16.3L12,21.65L11.25,21.65ZM12.75,10.2L15.25,7.7L12.75,5.25L12.75,10.2ZM12.75,18.75L15.25,16.3L12.75,13.8L12.75,18.75Z" style="fill:rgb(198,14,0);fill-rule:nonzero;"/>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,-3.71091,0.856012)">
+        <g transform="matrix(11,0,0,11,97.7439,89.0552)">
+        </g>
+        <text x="5.812px" y="89.055px" style="font-family:'ArialMonoAlt', 'Arial Alt. Mono For Brady', monospace;font-size:11px;fill:rgb(198,14,0);">02 F3 7A 44 FE</text>
+    </g>
 </svg>

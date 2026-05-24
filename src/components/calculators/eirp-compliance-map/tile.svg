@@ -1,13 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Globe outline -->
-  <circle cx="48" cy="56" r="26" stroke="#6b7280" stroke-width="3" fill="none"/>
-  <!-- Latitude lines -->
-  <ellipse cx="48" cy="56" rx="26" ry="10" stroke="#6b7280" stroke-width="2" fill="none"/>
-  <!-- Longitude line -->
-  <ellipse cx="48" cy="56" rx="10" ry="26" stroke="#6b7280" stroke-width="2" fill="none"/>
-  <!-- Antenna mast -->
-  <line x1="48" y1="8" x2="48" y2="30" stroke="#c60e00" stroke-width="4"/>
-  <!-- Radiation arcs -->
-  <path d="M 36 22 Q 48 16 60 22" stroke="#c60e00" stroke-width="3" fill="none"/>
-  <path d="M 30 28 Q 48 18 66 28" stroke="#c60e00" stroke-width="3" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Globe disc -->
+  <circle cx="48" cy="48" r="38" fill="#27313f" stroke="#6b7280" stroke-width="1.5"/>
+
+  <!-- Equator + tropic lines -->
+  <ellipse cx="48" cy="48" rx="38" ry="10" stroke="#5b6472" stroke-width="1" fill="none" opacity="0.7"/>
+  <ellipse cx="48" cy="48" rx="38" ry="24" stroke="#5b6472" stroke-width="0.8" fill="none" opacity="0.45"/>
+
+  <!-- Prime meridian + two side longitudes -->
+  <ellipse cx="48" cy="48" rx="10" ry="38" stroke="#5b6472" stroke-width="1" fill="none" opacity="0.7"/>
+  <ellipse cx="48" cy="48" rx="26" ry="38" stroke="#5b6472" stroke-width="0.8" fill="none" opacity="0.45"/>
+
+  <!-- Regulatory pins. Greens match the widget's "compliant" colour, reds
+       match "exceeds". White ring around each pin keeps them visible against
+       the grid lines. -->
+  <!-- North America -->
+  <circle cx="26" cy="38" r="5" fill="#2d9d4f" stroke="#fff" stroke-width="1.2"/>
+  <!-- Europe (over the limit) -->
+  <circle cx="50" cy="32" r="5" fill="#c93030" stroke="#fff" stroke-width="1.2"/>
+  <!-- East Asia -->
+  <circle cx="70" cy="40" r="5" fill="#2d9d4f" stroke="#fff" stroke-width="1.2"/>
+  <!-- Australia -->
+  <circle cx="64" cy="64" r="5" fill="#2d9d4f" stroke="#fff" stroke-width="1.2"/>
+  <!-- South America (over the limit) -->
+  <circle cx="34" cy="66" r="5" fill="#c93030" stroke="#fff" stroke-width="1.2"/>
 </svg>

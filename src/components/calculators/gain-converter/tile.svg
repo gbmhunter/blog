@@ -1,13 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Sine wave (small / quiet) -->
-  <path d="M 8 64 Q 16 60 24 64 Q 32 68 40 64" stroke="#6b7280" stroke-width="3" fill="none"/>
-  <!-- Larger sine wave (amplified) -->
-  <path d="M 48 64 Q 56 40 64 64 Q 72 88 80 64 Q 86 50 90 64" stroke="#c60e00" stroke-width="4" fill="none"/>
-  <!-- Arrow between -->
-  <line x1="42" y1="64" x2="50" y2="64" stroke="#c60e00" stroke-width="3"/>
-  <polyline points="48,60 52,64 48,68" stroke="#c60e00" stroke-width="3" fill="none"/>
-  <!-- dB label top -->
-  <text x="48" y="22" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" font-weight="700" fill="#c60e00" stroke="none">dBm</text>
-  <!-- Lower label -->
-  <text x="48" y="36" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#6b7280" stroke="none">⇌ W ⇌ dBW</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Equivalence stack: 1 W = 30 dBm = 0 dBW. Same RF power expressed in
+       three different units — the literal concept of a unit converter. -->
+
+  <text x="48" y="22" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="17" font-weight="700" fill="#c60e00">1 W</text>
+
+  <!-- Equals sign (two parallel bars) -->
+  <line x1="40" y1="33" x2="56" y2="33" stroke="#6b7280" stroke-width="2.5"/>
+  <line x1="40" y1="40" x2="56" y2="40" stroke="#6b7280" stroke-width="2.5"/>
+
+  <text x="48" y="58" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="17" font-weight="700" fill="#c60e00">30 dBm</text>
+
+  <line x1="40" y1="69" x2="56" y2="69" stroke="#6b7280" stroke-width="2.5"/>
+  <line x1="40" y1="76" x2="56" y2="76" stroke="#6b7280" stroke-width="2.5"/>
+
+  <text x="48" y="94" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="17" font-weight="700" fill="#c60e00">0 dBW</text>
 </svg>
