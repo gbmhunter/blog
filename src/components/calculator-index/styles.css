@@ -190,17 +190,26 @@
   align-items: center;
   justify-content: center;
   background: var(--sl-color-bg);
-  padding: 1.25rem;
+  padding: 0.6rem;
   border-bottom: 1px solid var(--sl-color-gray-5);
-  aspect-ratio: 2 / 1;
+  /* Fixed height instead of an aspect-ratio so every tile is the same size
+     regardless of card width or content. The image inside is centred by the
+     flex alignment above. */
+  height: 10rem;
 }
 
 .calc-index__card-tile img {
-  width: 80%;
-  max-width: 9rem;
-  aspect-ratio: 1 / 1;
-  height: auto;
+  /* Every tile gets the SAME visual slot (the full content box of the
+     card-tile container). `width/height: 100%` makes the <img> element
+     occupy that slot, and `object-fit: contain` scales the actual image
+     content up (or down) to fit while preserving its intrinsic aspect ratio.
+     Square SVGs render as squares centred in the slot; wide raster images
+     render proportionally wider — both growing to fill whatever dimension
+     they can, no matter their natural pixel size. */
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .calc-index__card-body {
@@ -222,5 +231,15 @@
   font-size: 0.85rem;
   color: var(--sl-color-gray-2);
   line-height: 1.4;
-  flex: 1;
+  /* Truncate long descriptions to 3 lines with an ellipsis. The `flex: 1`
+     that used to sit here would stretch the element past the clamp height
+     when the card-body grew, letting a 4th line peek out under the ellipsis.
+     The explicit `max-height` belt-and-braces the clamp so the element box
+     can never exceed 3 line-heights even in flex contexts. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  max-height: calc(3 * 1.4em);
 }

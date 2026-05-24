@@ -7,6 +7,8 @@ title: CRCs (Cyclic Redundancy Checks)
 type: page
 ---
 
+import CrcCalculator from 'src/components/calculators/crc-calculator/CrcCalculator.jsx';
+
 CRCs (Cyclic Redundancy Checks) are a type of [checksum](/programming/checksums/) that is used to detect errors in data transmission. It is based on modulo-2 polynomial (GF(2)) division.
 
 > "Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.[^ross-williams-painless-guide-to-crc]
@@ -384,11 +386,11 @@ So far we have been assuming that the initial value of the CRC residual variable
 
 The most popular non-zero initial value is just all `f`'s, e.g. `0xffff` for a 16-bit CRC.
 
-## CRC Calculators
+## CRC Calculator
 
-[NinjaCalc has a CRC calculator](https://ninjacalc.mbedded.ninja/calculators/software/crc-calculator) which allows you to calculate the CRC value for ASCII or hex data, using either common pre-loaded CRC algorithms or your own custom algorithm.
+Use the calculator below to compute the CRC of arbitrary data against any of 40 pre-defined CRC algorithms — from CRC-3/ROHC up to CRC-64. Switch between ASCII / UTF-8 and hex input via the Format radio buttons. Expand "Algorithm parameters" to see the polynomial, init / XOR-out values and check value for the selected algorithm.
 
-<Image src={import('./_assets/ninja-calc-crc-calculator-example.gif')} width="1000px">Example usage of the CRC Calculator within NinjaCalc (https://ninjacalc.mbedded.ninja/calculators/software/crc-calculator).</Image>
+<CrcCalculator client:load />
 
 ## Processor Support
 
