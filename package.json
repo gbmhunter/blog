@@ -29,7 +29,6 @@
     "world-atlas": "^2.0.2"
   },
   "devDependencies": {
-    "astro-vtbot": "^1.8.2",
     "broken-link-checker": "^0.7.8"
   }
 }

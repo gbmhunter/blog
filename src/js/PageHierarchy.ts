@@ -177,11 +177,21 @@ export function convertNodesToSidebarData(node: PageNode) : SidebarData {
   // Must not be a leaf node
   // Sort children first before converting to sidebar data
   const isUpdatesSection = node.slug && node.slug.includes('/updates/');
-  
+  const isRoot = node.label === 'root';
+
   let sortedChildren;
   if (isUpdatesSection) {
     // Sort by slug to maintain chronological order for updates
     sortedChildren = [...node.children].sort((a, b) => (a.slug || '').localeCompare(b.slug || ''));
+  } else if (isRoot) {
+    // Top-level sidebar: alphabetical, except 'calculators' is pinned to the
+    // bottom (it's a feature index, not a topic section, so it belongs after
+    // the content categories — specifically below 'updates').
+    sortedChildren = [...node.children].sort((a, b) => {
+      if (a.label === 'calculators') return 1;
+      if (b.label === 'calculators') return -1;
+      return a.label.localeCompare(b.label);
+    });
   } else {
     // Sort by label (page title) for all other sections
     sortedChildren = [...node.children].sort((a, b) => a.label.localeCompare(b.label));
