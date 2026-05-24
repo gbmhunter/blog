@@ -1,133 +1,182 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
-import uPlot from 'uplot';
-import 'uplot/dist/uPlot.min.css';
+import { useEffect, useRef } from 'preact/hooks';
+import {
+  Chart,
+  LinearScale,
+  LogarithmicScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+  Title,
+  ScatterController,
+} from 'chart.js';
 import './plot2d.css';
 
+// Register only the chart.js modules we actually use. Tree-shaking trims the
+// rest from the bundle.
+Chart.register(
+  LinearScale,
+  LogarithmicScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+  Title,
+  ScatterController,
+);
+
 /**
- * Thin Preact wrapper around uPlot for 2D engineering charts (line/scatter,
- * frequency responses, time-domain signals, etc.). uPlot is ~40 KB so we
- * import it directly — Astro will only bundle it into pages that use this
- * widget.
+ * Thin Preact wrapper around Chart.js for 2D engineering charts (line/scatter,
+ * frequency responses, time-domain signals, etc.). Picked over uPlot because
+ * Chart.js animates data updates smoothly out of the box, which is what
+ * calculator widgets with sliders want.
  *
  * Props
- *   title       — optional title shown above the chart
+ *   title       — optional chart title
  *   xLabel      — x-axis label
  *   yLabel      — y-axis label
  *   series      — Array<{ label, data: Array<{x,y}>, color }>
- *   height      — px (default 220)
+ *   height      — px (default 240)
  *   xLog, yLog  — boolean, optional log axes
  *   yMin, yMax  — optional fixed y range (otherwise auto-scaled)
  *
- * Theme: colours are read from Starlight CSS variables at mount time. If the
- * user toggles light/dark mode the chart redraws on next prop update — good
- * enough for now.
+ * Theme: colours are read from Starlight CSS variables on every redraw so
+ * axis labels and gridlines stay readable in both light and dark modes.
  */
 export default function Plot2d({
   title,
   xLabel,
   yLabel,
   series,
-  height = 220,
+  height = 240,
   xLog = false,
   yLog = false,
   yMin,
   yMax,
 }) {
-  const wrapRef = useRef(null);
-  const uRef = useRef(null);
-  const [width, setWidth] = useState(0);
+  const canvasRef = useRef(null);
+  const chartRef = useRef(null);
 
-  // Resize observer so the chart re-renders when the container width changes
-  // (e.g. browser resize, sidebar toggle, container query).
+  // Create the chart once on mount.
   useEffect(() => {
-    if (!wrapRef.current) return;
-    const ro = new ResizeObserver((entries) => {
-      const w = Math.max(200, Math.floor(entries[0].contentRect.width));
-      setWidth(w);
+    if (!canvasRef.current) return;
+    const { text, grid } = readThemeColors(canvasRef.current);
+
+    chartRef.current = new Chart(canvasRef.current, {
+      type: 'scatter',
+      data: { datasets: buildDatasets(series) },
+      options: buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, grid, showLegend: series.length > 1 }),
     });
-    ro.observe(wrapRef.current);
-    return () => ro.disconnect();
-  }, []);
-
-  // Build / update the chart whenever the data, dimensions, or scales change.
-  useEffect(() => {
-    if (!wrapRef.current || width === 0) return;
-
-    // uPlot wants data as [xValues, ySeries1, ySeries2, ...].
-    // We assume all series share the same x grid (or close to it) — use the
-    // first series' x values as the canonical x axis. For the frequency-
-    // response case where x values differ per series this is fine because
-    // uPlot interpolates linearly between samples.
-    const xValues = series[0]?.data.map((p) => p.x) ?? [];
-    const yArrays = series.map((s) => s.data.map((p) => p.y));
-    const data = [xValues, ...yArrays];
-
-    // Resolve theme colors. Read CSS vars once per draw — cheap enough.
-    const cs = getComputedStyle(wrapRef.current);
-    const text = cs.getPropertyValue('--sl-color-text').trim() || '#222';
-    const gray5 = cs.getPropertyValue('--sl-color-gray-5').trim() || '#ccc';
-
-    const opts = {
-      width,
-      height,
-      title,
-      cursor: { drag: { x: false, y: false } },
-      scales: {
-        x: xLog ? { distr: 3, log: 10 } : { time: false },
-        y: {
-          ...(yLog ? { distr: 3, log: 10 } : {}),
-          ...(yMin !== undefined || yMax !== undefined
-            ? { range: () => [yMin ?? null, yMax ?? null] }
-            : {}),
-        },
-      },
-      axes: [
-        {
-          label: xLabel,
-          stroke: text,
-          grid: { stroke: gray5, width: 0.5 },
-          ticks: { stroke: gray5, width: 0.5 },
-          labelFont: '12px ui-sans-serif, system-ui, sans-serif',
-          font: '11px ui-sans-serif, system-ui, sans-serif',
-        },
-        {
-          label: yLabel,
-          stroke: text,
-          grid: { stroke: gray5, width: 0.5 },
-          ticks: { stroke: gray5, width: 0.5 },
-          labelFont: '12px ui-sans-serif, system-ui, sans-serif',
-          font: '11px ui-sans-serif, system-ui, sans-serif',
-          size: 56,
-        },
-      ],
-      series: [
-        { label: xLabel || 'x' },           // x-series placeholder
-        ...series.map((s) => ({
-          label: s.label,
-          stroke: s.color,
-          width: 1.5,
-          points: { show: false },
-        })),
-      ],
-      legend: {
-        show: series.length > 1,
-        live: false,
-      },
-    };
-
-    if (uRef.current) {
-      uRef.current.destroy();
-      uRef.current = null;
-    }
-    uRef.current = new uPlot(opts, data, wrapRef.current);
 
     return () => {
-      if (uRef.current) {
-        uRef.current.destroy();
-        uRef.current = null;
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
       }
     };
-  }, [width, height, title, xLabel, yLabel, series, xLog, yLog, yMin, yMax]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return <div ref={wrapRef} class="plot2d" style={{ height: `${height + 50}px` }} />;
+  // Update data + options when props change. Chart.js animates the transition.
+  useEffect(() => {
+    const c = chartRef.current;
+    if (!c || !canvasRef.current) return;
+    const { text, grid } = readThemeColors(canvasRef.current);
+
+    // IMPORTANT: mutate the existing datasets in place instead of replacing
+    // the array. Chart.js identifies datasets by reference — if we swap them
+    // out it treats the new data as a fresh chart and animates each line in
+    // from the baseline (y = 0) instead of tweening point-by-point from the
+    // previous values to the new ones.
+    series.forEach((s, i) => {
+      const existing = c.data.datasets[i];
+      if (existing) {
+        existing.data = s.data;
+        existing.label = s.label;
+        existing.borderColor = s.color;
+        existing.backgroundColor = s.color;
+      } else {
+        c.data.datasets.push(buildDataset(s));
+      }
+    });
+    // Trim if series count shrank.
+    while (c.data.datasets.length > series.length) c.data.datasets.pop();
+
+    c.options = buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, grid, showLegend: series.length > 1 });
+    c.update();
+  }, [series, title, xLabel, yLabel, xLog, yLog, yMin, yMax]);
+
+  return (
+    <div class="plot2d" style={{ height: `${height}px` }}>
+      <canvas ref={canvasRef} />
+    </div>
+  );
+}
+
+function readThemeColors(el) {
+  const cs = getComputedStyle(el);
+  return {
+    text: cs.getPropertyValue('--sl-color-text').trim() || '#222',
+    grid: cs.getPropertyValue('--sl-color-gray-5').trim() || '#ccc',
+  };
+}
+
+function buildDataset(s) {
+  return {
+    label: s.label,
+    data: s.data,
+    borderColor: s.color,
+    backgroundColor: s.color,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 1.5,
+    tension: 0,
+  };
+}
+
+function buildDatasets(series) {
+  return series.map(buildDataset);
+}
+
+function buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, grid, showLegend }) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 300 },
+    interaction: { mode: 'nearest', intersect: false, axis: 'x' },
+    scales: {
+      x: {
+        type: xLog ? 'logarithmic' : 'linear',
+        title: { display: !!xLabel, text: xLabel, color: text, font: { size: 12 } },
+        ticks: { color: text, font: { size: 11 } },
+        grid: { color: grid, lineWidth: 0.5 },
+      },
+      y: {
+        type: yLog ? 'logarithmic' : 'linear',
+        title: { display: !!yLabel, text: yLabel, color: text, font: { size: 12 } },
+        ticks: { color: text, font: { size: 11 } },
+        grid: { color: grid, lineWidth: 0.5 },
+        min: yMin,
+        max: yMax,
+      },
+    },
+    plugins: {
+      title: {
+        display: !!title,
+        text: title,
+        color: text,
+        font: { size: 13, weight: 'bold' },
+        padding: { bottom: 6 },
+      },
+      legend: {
+        display: showLegend,
+        labels: { color: text, font: { size: 12 }, boxWidth: 16, boxHeight: 2 },
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: (${ctx.parsed.x.toPrecision(4)}, ${ctx.parsed.y.toPrecision(4)})`,
+        },
+      },
+    },
+  };
 }

@@ -1,35 +1,19 @@
-/* Container for a uPlot 2D chart. The chart itself is sized by uPlot via
-   width/height props; this wrapper just provides background + border for the
-   chart area to sit against. */
+/* Container for a Chart.js 2D chart. Chart.js draws into a <canvas> that
+   fills this wrapper; `position: relative` is required for Chart.js's
+   responsive sizing. */
 
 .plot2d {
+  position: relative;
   width: 100%;
   background: var(--sl-color-bg);
   border: 1px solid var(--sl-color-gray-5);
   border-radius: 0.3rem;
-  padding: 0.4rem;
+  padding: 0.5rem 0.6rem;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
-/* Make uPlot's title, axis labels and legend pick up Starlight text colour. */
-.plot2d .u-title {
-  color: var(--sl-color-text);
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.2rem;
-}
-
-.plot2d .u-legend {
-  color: var(--sl-color-text);
-  font-size: 0.78rem;
-}
-
-.plot2d .u-legend .u-marker {
-  border-radius: 2px;
-}
-
-/* The default uPlot background is white — match Starlight's bg colour. */
-.plot2d .u-wrap {
-  background: transparent;
+.plot2d canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
