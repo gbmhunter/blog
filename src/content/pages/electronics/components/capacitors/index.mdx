@@ -9,6 +9,7 @@ title: Capacitors
 type: page
 ---
 
+import CapacitorCharge from 'src/components/calculators/capacitor-charge/CapacitorCharge.jsx';
 import ParallelCapacitance from 'src/components/calculators/parallel-capacitance/ParallelCapacitance.jsx';
 import SeriesCapacitance from 'src/components/calculators/series-capacitance/SeriesCapacitance.jsx';
 
@@ -563,7 +564,11 @@ $Q$ = charge stored in plates (Coulombs)<br/>
 $C$ = capacitance (Farads)<br/>
 $V$ = voltage (Volts)<br/></p>
 
-If using this formula, see the Capacitor Charge Calculator.
+#### Capacitor Charge Calculator
+
+Use the calculator below to solve $Q = CV$ for any one of charge, capacitance or voltage given the other two. Inputs accept metric prefixes (e.g. `5u`, `4.7n`, `100`).
+
+<CapacitorCharge client:load />
 
 ### Energy
 

@@ -9,6 +9,8 @@ title: Light-emitting Diodes (LEDs)
 type: page
 ---
 
+import LedResistor from 'src/components/calculators/led-resistor/LedResistor.jsx';
+
 _Light-emitting diodes_ (LEDs) are basic active (non-linear) electronic components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet).
 
 <Image src={import('./_assets/red-led-5mm-th-diffused.jpg')} width="250px">A diffused-lens, red, 5mm through-hole LED.</Image>
@@ -247,6 +249,12 @@ $R$ is the resistance required in series of LED to limit current, in $\Omega$<br
 $V_{dd}$ = supply voltage driving the LED (typ. 3.3, 5, 12V), in $V$<br/>
 $V_{led,f}$ = forward voltage drop of the led (typ. 2.0V), in $V$<br/>
 $I_{led}$ = required current through the led (typ. 5-20mA), in $A$<br/></p>
+
+### LED Current-Limiting Resistor Calculator
+
+Use the calculator below to work out the series resistor needed to drive an LED at a desired current. Pick a colour to use a typical forward voltage from the table above, or select <em>Custom</em> to enter your own $V_F$. The required resistance is calculated using Ohm's law, $R = (V_{dd} - V_F) / I_{LED}$, and the resistor power dissipation as $P_R = (V_{dd} - V_F) \cdot I_{LED}$. Inputs accept metric prefixes (e.g. `5`, `20m`, `3.3V`).
+
+<LedResistor client:load />
 
 ## Reverse Mounting
 

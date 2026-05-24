@@ -8,6 +8,8 @@ title: Windowed Moving Average Filters
 type: page
 ---
 
+import MovingAverageFilter from 'src/components/calculators/moving-average-filter/MovingAverageFilter.jsx';
+
 _Windowed moving average filters_ are a family of filters which have a finite impulse response (FIR). They all use a finite-length window of data points to calculate the averaged output. The easiest moving average filter to understand is the _Simple Moving Average_ (SMA) filter (also called a **box-car filter**), which uses a window in where all the inputs values are weighted equally (coefficients are equal). Other moving average filters include the _Windowed Exponential Moving Average_ (EMA) filter, with exponentially-weighted coefficients.
 
 <Aside type="note">
@@ -178,6 +180,12 @@ For interest, let's have a look at how increasing the window size effects the fr
 <Image src={import('./sma-freq-response-various-window-sizes.png')} width="500px">Plot showing what effect an increasing window size has on the frequency response (magnitude) of a SMA filter.</Image>
 
 As expected, increasing the window size decreases the cut-off frequency and also improves the roll-off. However, for a left-handed (casual) SMA filter, it also significantly increases the phase shift (or time delay!), so normally a trade-off has to be made.
+
+### Moving Average Filter Designer
+
+Use the interactive designer below to explore how the window size and sampling frequency change the SMA's output and frequency response.
+
+<MovingAverageFilter client:load />
 
 ### Cutoff Frequency
 

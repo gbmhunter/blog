@@ -8,6 +8,8 @@ title: Pads, Vias And Holes
 type: page
 ---
 
+import ViaCurrentIpc2221a from 'src/components/calculators/via-current-ipc2221a/ViaCurrentIpc2221a.jsx';
+
 ## Holes
 
 Holes in PCBs are typically used to mount through-hole components (their main use), and to provide places to secure the board mechanically. Holes are typically plated (which makes them identical to vias), but non-plated also have their uses (e.g. mounting or connector location holes). Holes with copper rings have to obey the minimum annular ring size clearance. Most PCB manufacturers will have a pricing regime that is dependent on the smallest hole size used, the total number of holes, and also the number of different hole sizes.
@@ -26,9 +28,11 @@ Vias are simply the name given to plated holes which are used to connect to trac
 
 The above rule-of thumb stems from the fact that when a via wall is unrolled into a 2D track shape, it would be $\pi \cdot d$ wide ($c = 2\pi r$), where $\pi$ is approximately equal to 3. This assumes that the via wall is the same thickness as the copper track (e.g. 32um or 1oz. copper)). This does not take into account the difference between an external track and a via which is surrounded by PCB material. Since PCB material is more thermally conductive than air, this rule is on the safe side.
 
-NinjaCalc (which can be used for free from [here](http://gbmhunter.github.io/NinjaCalc/)) has a via current calculator.
+#### Via Current Calculator
 
-<Image src={import('./ninja-calc-via-current-ipc-2221a-calculator-screenshot.png')} width="890px">A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc.</Image>
+Use the calculator below to find the IPC-2221A maximum current, cross-sectional area, electrical resistance and thermal resistance of a via.
+
+<ViaCurrentIpc2221a client:load />
 
 ### Drilling Out Vias
 

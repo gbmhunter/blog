@@ -8,6 +8,8 @@ title: Temperature Sensors
 type: page
 ---
 
+import NtcThermistor from 'src/components/calculators/ntc-thermistor/NtcThermistor.jsx';
+
 Temperature sensors are electronic transducers which measure the temperature of the nearby body (which in many cases is the temperature sensor itself) and then converts it into either a analogue or digital electrical signal.
 
 <Image src={import('./_assets/schematic-icon-for-temperature-sensor.png')} width="350px">A schematic icon for a temperature sensor.</Image>
@@ -124,7 +126,11 @@ $$
 \end{align}
 $$
 
-The free embedded-engineering calculator app, [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
+#### NTC Thermistor Calculator
+
+Use the calculator below to solve the Beta equation for any one of $\beta$, $R_0$, $T_0$, $R$ or $T$ given the other four.
+
+<NtcThermistor client:load />
 
 ### Steinhart-Hart Equation
 

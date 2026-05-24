@@ -1,0 +1,130 @@
+.led-resistor {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+  max-width: 36rem;
+}
+
+.led-resistor *,
+.led-resistor *::before,
+.led-resistor *::after {
+  margin-top: 0;
+}
+
+.led-resistor__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+
+.led-resistor__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.led-resistor__row {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.led-resistor__label {
+  align-self: center;
+  font-weight: 600;
+  color: var(--sl-color-text);
+  text-align: right;
+}
+
+.led-resistor__input-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.led-resistor__input,
+.led-resistor__select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+}
+
+.led-resistor__select {
+  font-family: inherit;
+}
+
+.led-resistor__input--error {
+  border-color: var(--sl-color-accent);
+}
+
+.led-resistor__input-error {
+  font-size: 0.78rem;
+  color: var(--sl-color-accent-high);
+}
+
+.led-resistor__readonly {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px dashed var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+}
+
+.led-resistor__readonly-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  color: var(--sl-color-gray-2);
+}
+
+.led-resistor__output {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px dashed var(--sl-color-accent);
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+}
+
+.led-resistor__output-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  color: var(--sl-color-accent-high);
+  font-size: 0.95rem;
+}
+
+.led-resistor__output-error {
+  font-size: 0.8rem;
+  color: var(--sl-color-accent-high);
+}
+
+.led-resistor__output-empty {
+  color: var(--sl-color-gray-3);
+  font-style: italic;
+}
+
+.led-resistor__note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+}
+
+.led-resistor__note strong {
+  color: var(--sl-color-text);
+  font-style: normal;
+}

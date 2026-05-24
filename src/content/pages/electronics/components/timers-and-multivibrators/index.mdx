@@ -9,6 +9,8 @@ title: Timers And Multivibrators
 type: page
 ---
 
+import Timer555Astable from 'src/components/calculators/timer-555-astable/Timer555Astable.jsx';
+
 _Multivibrators_ are 2-state electronic circuits used to make simple waveforms, oscillators and timers.
 
 There are three main types of multivibrator:
@@ -89,9 +91,11 @@ f = \frac{1}{T}
 \end{align}
 $$
 
-{/* ### Astable 555 Timer Calculator */}
+### Astable 555 Timer Calculator
 
-{/* {{% calculator id="electronics/ics/555-timer-astable-rt-rb-c" style="width: 800px; height: 400px;" %}} */}
+Use the calculator below to find the two timing resistors ($R_1$, $R_2$) and the on/off times needed to run a 555 in astable mode at a given output frequency, duty cycle and timing capacitor. The duty cycle must be greater than 50% — to get a lower duty cycle, run an inverter on the output.
+
+<Timer555Astable client:load />
 
 {/* ======================================================================== */}
 {/* REFERENCES */}

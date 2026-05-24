@@ -8,6 +8,9 @@ title: Buck Converters
 type: page
 ---
 
+import BuckConverter from 'src/components/calculators/buck-converter/BuckConverter.jsx';
+import Mp4558 from 'src/components/calculators/mp4558-design-tool/Mp4558.jsx';
+
 _Buck converters_ are a particular topology of [switch-mode power supply](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (SMPSs) that use a switching element, diode (or second switch), inductor and capacitor to convert an input voltage into a **lower** output voltage.
 
 <Image src={import('./_assets/buck-converter-basic-schematic.svg')} width="600">The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown).</Image>
@@ -192,9 +195,17 @@ These equations assume a constant load. Load transients (fluctuations in the loa
 
 ## Buck Converter Calculator
 
-NinjaCalc has an online [buck converter calculator](https://ninjacalc.mbedded.ninja/calculators/electronics/smps/buck-converter). 
+Use the generic buck-converter design helper below to compute the duty cycle and required inductance from the supply/output voltages, diode and switch drops, switching frequency, output current and acceptable inductor ripple.
 
-<Image src={import('./_assets/ninja-calc-buck-converter-calculator-screenshot.png')} width="950">A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0).</Image>
+<BuckConverter client:load />
+
+## MP4558 Design Tool
+
+The [MP4558](https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP4558/) is a buck converter IC from Monolithic Power Systems. The calculator below applies the design equations directly from its datasheet to size the frequency-setting resistor, feedback divider, inductor and capacitors for your target output voltage, switching frequency and load. The internal feedback reference voltage is $V_{FB} = 0.8\,V$.
+
+Pick your switching frequency, set the bottom feedback resistor ($R_2$) to a value you'd actually like to use (typically $10\,k\Omega$), and the tool computes everything else.
+
+<Mp4558 client:load />
 
 ## Synchronous Rectification
 

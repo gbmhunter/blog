@@ -10,6 +10,7 @@ type: page
 ---
 
 import ESeriesFinder from 'src/components/calculators/e-series-finder/ESeriesFinder.jsx';
+import OhmsLaw from 'src/components/calculators/ohms-law/OhmsLaw.jsx';
 import ParallelResistance from 'src/components/calculators/parallel-resistance/ParallelResistance.jsx';
 import SeriesResistance from 'src/components/calculators/series-resistance/SeriesResistance.jsx';
 import ResistorDivider from 'src/components/calculators/resistor-divider/ResistorDivider.jsx';
@@ -41,6 +42,27 @@ The most commonly-used resistor schematic symbols are shown in <IRef iref="schem
 <Image iref="schematic-symbols-amer-euro-resistors" src={import('./_assets/schematic-symbols-amer-euro-resistors.png')} width="500">The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols.</Image>
 
 See the [Potentiometers And Rheostats page](/electronics/components/potentiometers-and-rheostats/) for more schematic symbols related to resistors.
+
+## Ohm's Law
+
+The fundamental relationship between voltage, current and resistance is given by Ohm's law:
+
+$$
+\begin{align}
+V = IR
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$V$ is the voltage across the resistor, in $V$<br/>
+$I$ is the current through the resistor, in $A$<br/>
+$R$ is the resistance of the resistor, in $\Omega$<br/></p>
+
+### Ohm's Law Calculator
+
+Use the calculator below to solve $V = IR$ for any one of voltage, current or resistance given the other two. Inputs accept metric prefixes (e.g. `12`, `1m`, `4k7`).
+
+<OhmsLaw client:load />
 
 ## Resistors In Series And In Parallel
 

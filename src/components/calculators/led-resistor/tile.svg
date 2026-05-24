@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" stroke-linecap="round" stroke-linejoin="round">
+  <!-- LED in series with a current-limiting resistor. The literal circuit
+       that the calculator solves. Resistor on the left (zig-zag), LED on the
+       right (triangle + bar + emission arrows). -->
+
+  <!-- Wire from V_cc on top-left into resistor -->
+  <line x1="10" y1="48" x2="20" y2="48" stroke="#6b7280" stroke-width="3"/>
+
+  <!-- Resistor (zig-zag) -->
+  <polyline points="20,48 24,40 30,56 36,40 42,56 46,48"
+            fill="none" stroke="#6b7280" stroke-width="3"/>
+
+  <!-- Wire between resistor and LED -->
+  <line x1="46" y1="48" x2="56" y2="48" stroke="#6b7280" stroke-width="3"/>
+
+  <!-- LED triangle (anode → cathode pointing right) -->
+  <polygon points="56,38 56,58 72,48" fill="#c60e00" stroke="#c60e00" stroke-width="2"/>
+
+  <!-- LED cathode bar -->
+  <line x1="72" y1="38" x2="72" y2="58" stroke="#c60e00" stroke-width="3"/>
+
+  <!-- Wire out of LED -->
+  <line x1="72" y1="48" x2="86" y2="48" stroke="#6b7280" stroke-width="3"/>
+
+  <!-- LED emission arrows (two diagonal arrows up-right) -->
+  <line x1="60" y1="32" x2="68" y2="22" stroke="#c60e00" stroke-width="2.5"/>
+  <polyline points="68,22 68,28 62,22" fill="none" stroke="#c60e00" stroke-width="2.5"/>
+  <line x1="66" y1="32" x2="74" y2="22" stroke="#c60e00" stroke-width="2.5"/>
+  <polyline points="74,22 74,28 68,22" fill="none" stroke="#c60e00" stroke-width="2.5"/>
+
+  <!-- "R = ?" label below -->
+  <text x="33" y="82" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="14" font-weight="700" fill="#c60e00">R = ?</text>
+</svg>

@@ -8,6 +8,8 @@ title: Rotation Matrices
 type: page
 ---
 
+import Rotations3d from 'src/components/calculators/3d-rotations/Rotations3d.jsx';
+
 Rotation matrices are matrices which are used to describe the **rotation of a rigid body from one orientation to another**.
 
 In $\mathbb{R3}$ they form a 3x3 matrix.
@@ -102,6 +104,12 @@ Whilst converting a rotation expressed as Euler angles is relatively trivial (se
 ### Javascript
 
 THREE.js has a `Euler` class with the function `.setFromRotationMatrix()` which can convert a rotation matrix to Euler angles. The supported Euler angle orders are `XYZ`, `YZX`, `ZXY`, `XZY`, `YXZ`, `ZYX`, and it only supports _intrinsic_ rotations.
+
+## Rotation Converter
+
+Use the converter below to translate a 3D rotation between angle-axis, quaternion, rotation matrix and intrinsic Euler angles. Pick the radio button next to the form you want to enter; the other forms are computed.
+
+<Rotations3d client:load />
 
 ## Further Reading
 

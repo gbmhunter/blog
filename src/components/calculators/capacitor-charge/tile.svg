@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Capacitor symbol on top (two parallel plates with leads), Q=CV equation below.
+       Reads as "the calculator for the fundamental capacitor charge relation". -->
+
+  <!-- Top lead -->
+  <line x1="48" y1="10" x2="48" y2="26" stroke="#6b7280" stroke-width="3"/>
+  <!-- + plate -->
+  <line x1="30" y1="28" x2="66" y2="28" stroke="#c60e00" stroke-width="5"/>
+  <!-- + sign -->
+  <text x="24" y="26" text-anchor="end" font-family="ui-monospace, SFMono-Regular, monospace" font-size="14" font-weight="700" fill="#6b7280">+</text>
+  <!-- - plate -->
+  <line x1="30" y1="40" x2="66" y2="40" stroke="#c60e00" stroke-width="5"/>
+  <!-- - sign -->
+  <text x="24" y="44" text-anchor="end" font-family="ui-monospace, SFMono-Regular, monospace" font-size="14" font-weight="700" fill="#6b7280">−</text>
+  <!-- Bottom lead -->
+  <line x1="48" y1="42" x2="48" y2="58" stroke="#6b7280" stroke-width="3"/>
+
+  <!-- Q = CV equation -->
+  <text x="48" y="84" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="20" font-weight="700" fill="#c60e00">Q = CV</text>
+</svg>

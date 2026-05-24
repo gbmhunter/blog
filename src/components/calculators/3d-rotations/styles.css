@@ -1,0 +1,201 @@
+.rotations3d {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+  /* No max-width — the widget fills its containing prose column so the
+     visualisation has room to breathe. */
+}
+
+.rotations3d *,
+.rotations3d *::before,
+.rotations3d *::after {
+  margin-top: 0;
+}
+
+.rotations3d__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+.rotations3d__plot {
+  width: 100%;
+  height: 360px;
+  margin: 0.8rem 0 1rem 0;
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.4rem;
+}
+
+/* Taller plot when there's enough horizontal room. */
+@container (min-width: 44rem) {
+  .rotations3d__plot {
+    height: 500px;
+  }
+}
+
+.rotations3d__plot-error {
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border: 1px dashed var(--sl-color-accent);
+  border-radius: 0.4rem;
+  color: var(--sl-color-accent-high);
+  font-size: 0.85rem;
+}
+
+.rotations3d__controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.rotations3d__controls .calc-form__select {
+  width: auto;
+  height: 1.8rem;
+  font-size: 0.85rem;
+}
+
+/* ============================================================ */
+/* INPUT BLOCKS                                                 */
+/* ============================================================ */
+
+.rotations3d__blocks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+@container (min-width: 32rem) {
+  .rotations3d__blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 56rem) {
+  .rotations3d__blocks {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.rotations3d__block {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.rotations3d__block--selected {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 6%, transparent);
+}
+
+.rotations3d__block-head label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.rotations3d__block-title {
+  font-weight: 700;
+  color: var(--sl-color-text);
+}
+
+.rotations3d__block-body {
+  padding-top: 0.3rem;
+  padding-left: 1.3rem;
+}
+
+.rotations3d__row {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0.4rem;
+  align-items: center;
+  margin: 0.15rem 0;
+}
+
+.rotations3d__label {
+  font-weight: 600;
+  text-align: right;
+  color: var(--sl-color-text);
+}
+
+.rotations3d__input-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.rotations3d__input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 1.8rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+}
+
+.rotations3d__input:disabled {
+  background: color-mix(in srgb, var(--sl-color-text) 4%, transparent);
+  color: var(--sl-color-gray-2);
+}
+
+.rotations3d__suffix {
+  color: var(--sl-color-gray-2);
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.rotations3d__matrix {
+  border-collapse: separate;
+  border-spacing: 0.25rem;
+  width: 100%;
+}
+
+.rotations3d__matrix td {
+  padding: 0;
+}
+
+.rotations3d__matrix .rotations3d__input {
+  width: 100%;
+  min-width: 2rem;
+  font-size: 0.8rem;
+  padding: 0 0.3rem;
+}
+
+.rotations3d__msg {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-2);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rotations3d__btn {
+  height: 1.6rem;
+  padding: 0 0.6rem;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-white);
+  border: 1px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.rotations3d__btn:hover {
+  filter: brightness(1.08);
+}

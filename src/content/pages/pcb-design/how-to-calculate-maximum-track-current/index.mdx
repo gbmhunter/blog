@@ -7,6 +7,9 @@ title: How To Calculate Maximum Track Current
 type: page
 ---
 
+import TrackCurrentIpc2152 from 'src/components/calculators/track-current-ipc2152/TrackCurrentIpc2152.jsx';
+import TrackCurrentIpc2221a from 'src/components/calculators/track-current-ipc2221a/TrackCurrentIpc2221a.jsx';
+
 All tracks (a.k.a. traces) on a PCB have a maximum current limit. For most of the PCB routing process, the PCB designer does not have to worry about this, as most tracks are far larger than than they need to be to carry the tiny currents associated with digital and analogue signals (i.e. the track width is limited by manufacturing tolerances rather than the maximum current it can take).
 
 However, the track current limits do sometimes play an important rule when it comes to sizing power supply traces, motor driver circuitry, mains power circuitry and other tracks which take relatively high current.
@@ -80,11 +83,15 @@ import ipc_2152_universal_chart from './_assets/ipc-2152-universal-chart.png'
 
 ### That's Hard Work, Can It Be Any Easier?
 
-Glad you asked! NinjaCalc includes IPC-2221A and IPC-2152 track current calculators (remember, use IPC-2152 wherever possible!).
+Glad you asked! Use one of the calculators below — IPC-2152 wherever possible, falling back to the simpler IPC-2221A if you don't have the substrate and plane-proximity data.
 
-You can get to the IPC-2221A calculator directly by going to https://ninjacalc.mbedded.ninja/calculators/electronics/pcb-design/track-current-ipc2221a.
+#### Track Current IPC-2152 Calculator
 
-You can get to the IPC-2152 calculator directly by going to https://ninjacalc.mbedded.ninja/calculators/electronics/pcb-design/track-current-ipc2152.
+<TrackCurrentIpc2152 client:load />
+
+#### Track Current IPC-2221A Calculator
+
+<TrackCurrentIpc2221a client:load />
 
 ## External Resources
 

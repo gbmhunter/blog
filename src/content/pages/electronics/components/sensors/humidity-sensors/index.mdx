@@ -7,6 +7,8 @@ title: Humidity Sensors
 type: page
 ---
 
+import DewPointMagnus from 'src/components/calculators/dew-point-magnus/DewPointMagnus.jsx';
+
 ## Types
 
 Humidity sensors can either contain just the humidity sensing component (which means they usually just have two leads), or they may also contain signal processing circuits. The ones which also contain circuitry have an analogue (usually 3 pin) or digital output (can have many pins, 8 is a common number).
@@ -36,6 +38,11 @@ The _dew point_ is the point at which the atmosphere has to be **cooled down** t
 ## The Magnus Equation
 
 The Magnus equation is an approximation to calculate the dew point from the actual air temperature and relative humidity. It is a useful equation to use when you have a sensor IC which measures both temperature and relative humidity.
+
+### Dew Point Calculator
+
+<DewPointMagnus client:load />
+
 
 First we find an intermediary value called gamma ($\gamma$):
 

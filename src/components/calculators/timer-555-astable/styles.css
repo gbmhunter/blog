@@ -1,0 +1,117 @@
+.timer-555 {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+  max-width: 36rem;
+}
+
+.timer-555 *,
+.timer-555 *::before,
+.timer-555 *::after {
+  margin-top: 0;
+}
+
+.timer-555__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+
+.timer-555__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.timer-555__row {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.timer-555__label {
+  align-self: center;
+  font-weight: 600;
+  color: var(--sl-color-text);
+  text-align: right;
+}
+
+.timer-555__input-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timer-555__input-with-suffix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.timer-555__suffix {
+  position: absolute;
+  right: 0.6rem;
+  color: var(--sl-color-gray-2);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.timer-555__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+}
+
+.timer-555__input-with-suffix .timer-555__input {
+  padding-right: 1.8rem;
+}
+
+.timer-555__input--error {
+  border-color: var(--sl-color-accent);
+}
+
+.timer-555__input-error {
+  font-size: 0.78rem;
+  color: var(--sl-color-accent-high);
+}
+
+.timer-555__output {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px dashed var(--sl-color-accent);
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+}
+
+.timer-555__output-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  color: var(--sl-color-accent-high);
+  font-size: 0.95rem;
+}
+
+.timer-555__output-error {
+  font-size: 0.8rem;
+  color: var(--sl-color-accent-high);
+}
+
+.timer-555__output-empty {
+  color: var(--sl-color-gray-3);
+  font-style: italic;
+}

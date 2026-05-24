@@ -9,6 +9,8 @@ title: Analogue Filters
 type: page
 ---
 
+import LowPassRcFilter from 'src/components/calculators/low-pass-rc-filter/LowPassRcFilter.jsx';
+
 The page covers the design and analysis of analogue filters. It includes a discussion on passive and active filters, low-pass and high-pass filters, and first and second-order filters. There are also dedicated child pages that cover Sallen-Key and voltage-controlled voltage-source (VCVS) filters.
 
 ## Child Pages
@@ -82,6 +84,12 @@ As usual, the choice of $R$ and $C$ is a design decision which involves trade-of
 * A resistance which is too large increases the output impedance of the filter, resulting in distortions if too much load is applied to $V_{out}$. It also increases the noise susceptibility of the circuit.
 
 Typically, a resistance between $1k\Omega$ and $100k\Omega$ is used. Then the capacitance is chosen to give the desired cut-off frequency.
+
+#### Low-Pass RC Filter Cutoff Calculator
+
+Use the calculator below to solve $f_c = 1/(2\pi RC)$ for any one of $R$, $C$ or $f_c$ given the other two. Inputs accept metric prefixes (e.g. `10k`, `2.2n`, `7.23k`).
+
+<LowPassRcFilter client:load />
 
 #### Frequency Response
 

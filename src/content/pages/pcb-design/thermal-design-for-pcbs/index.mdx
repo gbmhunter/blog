@@ -8,6 +8,8 @@ title: Thermal Design For PCBs
 type: page
 ---
 
+import ViaThermalResistance from 'src/components/calculators/via-thermal-resistance/ViaThermalResistance.jsx';
+
 The resistor model is commonly used to calculate basic PCB operating temperatures.
 
 ## What Is Thermal Conductivity?
@@ -148,7 +150,14 @@ $$
 
 ## The Thermal Resistance Of A Via
 
-Thermal vias are a very common way of dissipating heat away from an IC or other component. They are normally placed in and around the thermal pad of a component package. However, via-in-pads cause solder wicking issue. During the soldering process, both gravity and surface tension can push molten solder down the barrel of a via, sucking solder away from the pad. This can leave a pad which is under-soldered and a dry joint. Unfortunately, you cannot even rely on the solder wicking to completely "plug" a via, which would be advantageous in certain circumstances (it would decrease the thermal resistance of the vias). Instead, the via barrel typically only gets partially filled and has "voids" of air.
+Thermal vias are a very common way of dissipating heat away from an IC or other component.
+
+### Via Thermal Resistance Calculator
+
+Use the calculator below to find the top-to-bottom thermal resistance of a single via, modelled as a hollow copper cylinder.
+
+<ViaThermalResistance client:load />
+ They are normally placed in and around the thermal pad of a component package. However, via-in-pads cause solder wicking issue. During the soldering process, both gravity and surface tension can push molten solder down the barrel of a via, sucking solder away from the pad. This can leave a pad which is under-soldered and a dry joint. Unfortunately, you cannot even rely on the solder wicking to completely "plug" a via, which would be advantageous in certain circumstances (it would decrease the thermal resistance of the vias). Instead, the via barrel typically only gets partially filled and has "voids" of air.
 
 There are a few ways to prevent wicking:
 

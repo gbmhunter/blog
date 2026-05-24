@@ -9,6 +9,8 @@ title: Cables
 type: page
 ---
 
+import WireGauge from 'src/components/calculators/wire-gauge/WireGauge.jsx';
+
 Cables are an important design consideration for most electrical designs and installations. They typically provide power and data (although wireless transmission is becoming more common for data transmission) to and between electronic.
 
 ## Child Pages
@@ -194,6 +196,31 @@ Cables are an important design consideration for most electrical designs and ins
 </tr>
 </tbody>
 </table>
+
+## Wire Gauge Selection
+
+Picking the right gauge wire is a trade-off between cost (thicker wire costs more) and the voltage drop across the cable (thinner wire drops more voltage at the same current). The required cross-sectional area for a given DC current and acceptable voltage drop comes from Ohm's law combined with the conductor's resistivity:
+
+$$
+\begin{align}
+A = \frac{\rho \cdot L \cdot I}{V_{drop}}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$A$ is the cross-sectional area of the conductor, in $m^2$<br/>
+$\rho$ is the resistivity of the conductor (e.g. $1.68 \times 10^{-8}\ \Omega \cdot m$ for copper), in $\Omega \cdot m$<br/>
+$L$ is the length of the cable, in $m$<br/>
+$I$ is the current through the cable, in $A$<br/>
+$V_{drop}$ is the acceptable voltage drop across the full length, in $V$<br/></p>
+
+Converting the area to a diameter ($d = \sqrt{4A/\pi}$) and then to an AWG gauge using $n = 36 - 39\frac{\log(d/0.127\text{mm})}{\log 92}$ gives the wire gauge to specify. Round down (smaller AWG number = thicker wire) for a safety margin.
+
+### Wire Gauge Calculator
+
+Use the calculator below to find the minimum AWG gauge needed for your application. It assumes DC current and does not account for skin effect or thermal effects from $I^2 R$ heating in the cable.
+
+<WireGauge client:load />
 
 ## Standards
 
