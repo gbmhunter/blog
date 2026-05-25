@@ -67,28 +67,43 @@ export default function Mp4558() {
       </div>
 
       <div class="mp4558__rows">
-        <InputRow label={<>f<sub>sw</sub></>}        value={fSwText}        onInput={setFSwText}        placeholder="500k" suffix="Hz"   parsed={fSw}/>
-        <InputRow label={<>V<sub>out</sub></>}       value={vOutText}       onInput={setVOutText}       placeholder="3.3"  suffix="V"    parsed={vOut}/>
-        <InputRow label={<>R<sub>2</sub></>}          value={r2Text}         onInput={setR2Text}         placeholder="10k"  suffix="Ω"    parsed={r2}/>
-        <InputRow label={<>I<sub>load</sub></>}      value={iLoadText}      onInput={setILoadText}      placeholder="1"    suffix="A"    parsed={iLoad}/>
-        <InputRow label={<>ΔI<sub>L</sub></>}        value={ripplePctText}  onInput={setRipplePctText}  placeholder="30"   suffix="%"    parsed={ripplePct}/>
-        <InputRow label={<>V<sub>in</sub></>}        value={vInText}        onInput={setVInText}        placeholder="36"   suffix="V"    parsed={vIn}/>
-        <InputRow label={<>C<sub>in</sub></>}        value={cInText}        onInput={setCInText}        placeholder="10u"  suffix="F"    parsed={cIn}/>
-        <InputRow label={<>C<sub>out</sub></>}       value={cOutText}       onInput={setCOutText}       placeholder="33u"  suffix="F"    parsed={cOut}/>
-        <InputRow label={<>R<sub>ESR</sub></>}       value={rEsrText}       onInput={setREsrText}       placeholder="10m"  suffix="Ω"    parsed={rEsr}/>
+        <InputRow label={<>f<sub>sw</sub></>}    value={fSwText}       onInput={setFSwText}       placeholder="500k" suffix="Hz" parsed={fSw}
+          help="The desired switching frequency."/>
+        <InputRow label={<>V<sub>out</sub></>}   value={vOutText}      onInput={setVOutText}      placeholder="3.3"  suffix="V"  parsed={vOut}
+          help="The desired output voltage."/>
+        <InputRow label={<>R<sub>2</sub></>}     value={r2Text}        onInput={setR2Text}        placeholder="10k"  suffix="Ω"  parsed={r2}
+          help="The resistance of the bottom resistor in the feedback divider that sets the output voltage."/>
+        <InputRow label={<>I<sub>load</sub></>}  value={iLoadText}     onInput={setILoadText}     placeholder="1"    suffix="A"  parsed={iLoad}
+          help="The average load current."/>
+        <InputRow label={<>ΔI<sub>L</sub></>}    value={ripplePctText} onInput={setRipplePctText} placeholder="30"   suffix="%"  parsed={ripplePct}
+          help="The allowable inductor ripple current, as a percentage of the average load current. Normally set to around 30%."/>
+        <InputRow label={<>V<sub>in</sub></>}    value={vInText}       onInput={setVInText}       placeholder="36"   suffix="V"  parsed={vIn}
+          help="The input voltage."/>
+        <InputRow label={<>C<sub>in</sub></>}    value={cInText}       onInput={setCInText}       placeholder="10u"  suffix="F"  parsed={cIn}
+          help="The capacitance on the input. A larger input capacitance results in lower input voltage ripple."/>
+        <InputRow label={<>C<sub>out</sub></>}   value={cOutText}      onInput={setCOutText}      placeholder="33u"  suffix="F"  parsed={cOut}
+          help="The capacitance on the output. A larger output capacitance results in lower output voltage ripple."/>
+        <InputRow label={<>R<sub>ESR</sub></>}   value={rEsrText}      onInput={setREsrText}      placeholder="10m"  suffix="Ω"  parsed={rEsr}
+          help="The ESR (equivalent series resistance) of the output capacitor. A larger ESR results in larger output voltage ripple."/>
 
-        <OutputRow label={<>R<sub>freq</sub></>}      value={computed.rFreq}      format={formatResistance} error={computed.error}/>
-        <OutputRow label={<>R<sub>1</sub></>}         value={computed.r1}         format={formatResistance} error={computed.error}/>
-        <OutputRow label="L"                          value={computed.inductance} format={formatInductance} error={computed.error}/>
-        <OutputRow label={<>I<sub>L,peak</sub></>}    value={computed.iLPeak}     format={formatCurrent}    error={computed.error}/>
-        <OutputRow label={<>ΔV<sub>in</sub></>}       value={computed.vInRipple}  format={formatVoltage}    error={computed.error}/>
-        <OutputRow label={<>ΔV<sub>out</sub></>}      value={computed.vOutRipple} format={formatVoltage}    error={computed.error}/>
+        <OutputRow label={<>R<sub>freq</sub></>}    value={computed.rFreq}      format={formatResistance} error={computed.error}
+          help="Resistance needed for the resistor that sets the switching frequency."/>
+        <OutputRow label={<>R<sub>1</sub></>}       value={computed.r1}         format={formatResistance} error={computed.error}
+          help="The resistance of the top resistor in the feedback divider that sets the output voltage."/>
+        <OutputRow label="L"                        value={computed.inductance} format={formatInductance} error={computed.error}
+          help="The required inductance of the inductor."/>
+        <OutputRow label={<>I<sub>L,peak</sub></>}  value={computed.iLPeak}     format={formatCurrent}    error={computed.error}
+          help="The peak current through the inductor. Make sure the inductor's saturation current is above this value."/>
+        <OutputRow label={<>ΔV<sub>in</sub></>}     value={computed.vInRipple}  format={formatVoltage}    error={computed.error}
+          help="The input ripple voltage."/>
+        <OutputRow label={<>ΔV<sub>out</sub></>}    value={computed.vOutRipple} format={formatVoltage}    error={computed.error}
+          help="The output ripple voltage. Lower it by increasing the output capacitance, decreasing the output capacitor's ESR, or increasing the switching frequency."/>
       </div>
     </div>
   );
 }
 
-function InputRow({ label, value, onInput, placeholder, suffix, parsed }) {
+function InputRow({ label, value, onInput, placeholder, suffix, parsed, help }) {
   return (
     <div class="mp4558__row">
       <span class="mp4558__label">{label}</span>
@@ -100,6 +115,7 @@ function InputRow({ label, value, onInput, placeholder, suffix, parsed }) {
             onInput={(e) => onInput(e.currentTarget.value)}
             placeholder={placeholder}
             spellcheck={false}
+            title={help}
             class={parsed.error
               ? 'mp4558__input mp4558__input--error'
               : 'mp4558__input'}
@@ -108,23 +124,27 @@ function InputRow({ label, value, onInput, placeholder, suffix, parsed }) {
         </div>
         {parsed.error && <div class="mp4558__input-error">{parsed.error}</div>}
       </div>
+      {help && <div class="mp4558__help">{help}</div>}
     </div>
   );
 }
 
-function OutputRow({ label, value, format, error }) {
+function OutputRow({ label, value, format, error, help }) {
   return (
     <div class="mp4558__row">
       <span class="mp4558__label">{label}</span>
-      <div class="mp4558__output">
-        {error ? (
-          <span class="mp4558__output-error">{error}</span>
-        ) : Number.isFinite(value) ? (
-          <span class="mp4558__output-value">{format(value)}</span>
-        ) : (
-          <span class="mp4558__output-empty">—</span>
-        )}
+      <div class="mp4558__input-cell">
+        <div class="mp4558__output">
+          {error ? (
+            <span class="mp4558__output-error">{error}</span>
+          ) : Number.isFinite(value) ? (
+            <span class="mp4558__output-value">{format(value)}</span>
+          ) : (
+            <span class="mp4558__output-empty">—</span>
+          )}
+        </div>
       </div>
+      {help && <div class="mp4558__help">{help}</div>}
     </div>
   );
 }

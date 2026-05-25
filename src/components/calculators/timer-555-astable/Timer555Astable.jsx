@@ -48,6 +48,7 @@ export default function Timer555Astable() {
           placeholder="10k"
           suffix="Hz"
           parsed={frequency}
+          help="The desired frequency of the 555 output waveform."
         />
         <InputRow
           label="Duty"
@@ -56,6 +57,7 @@ export default function Timer555Astable() {
           placeholder="60"
           suffix="%"
           parsed={duty}
+          help="The desired duty cycle. Because of the design of the 555, this must be greater than 50%. Use an inverter on the output for lower duty cycles."
         />
         <InputRow
           label="C"
@@ -64,19 +66,25 @@ export default function Timer555Astable() {
           placeholder="10n"
           suffix="F"
           parsed={capacitance}
+          help="The capacitance of the timing capacitor connected to the 555."
         />
 
-        <OutputRow label="T"                              value={computed.period}    format={formatTime}        error={computed.error} />
-        <OutputRow label={<>t<sub>H</sub></>}            value={computed.timeHigh}  format={formatTime}        error={computed.error} />
-        <OutputRow label={<>t<sub>L</sub></>}            value={computed.timeLow}   format={formatTime}        error={computed.error} />
-        <OutputRow label={<>R<sub>1</sub></>}            value={computed.r1}        format={formatResistance}  error={computed.error} />
-        <OutputRow label={<>R<sub>2</sub></>}            value={computed.r2}        format={formatResistance}  error={computed.error} />
+        <OutputRow label="T"                   value={computed.period}    format={formatTime}        error={computed.error}
+          help="The period of the output waveform, T = 1/f." />
+        <OutputRow label={<>t<sub>H</sub></>}  value={computed.timeHigh}  format={formatTime}        error={computed.error}
+          help="The time the output is high in each period." />
+        <OutputRow label={<>t<sub>L</sub></>}  value={computed.timeLow}   format={formatTime}        error={computed.error}
+          help="The time the output is low in each period." />
+        <OutputRow label={<>R<sub>1</sub></>}  value={computed.r1}        format={formatResistance}  error={computed.error}
+          help="The top timing resistor (between V_cc and the discharge pin)." />
+        <OutputRow label={<>R<sub>2</sub></>}  value={computed.r2}        format={formatResistance}  error={computed.error}
+          help="The middle timing resistor (between the discharge pin and the threshold pin)." />
       </div>
     </div>
   );
 }
 
-function InputRow({ label, value, onInput, placeholder, suffix, parsed }) {
+function InputRow({ label, value, onInput, placeholder, suffix, parsed, help }) {
   return (
     <div class="timer-555__row">
       <span class="timer-555__label">{label}</span>
@@ -88,6 +96,7 @@ function InputRow({ label, value, onInput, placeholder, suffix, parsed }) {
             onInput={(e) => onInput(e.currentTarget.value)}
             placeholder={placeholder}
             spellcheck={false}
+            title={help}
             class={parsed.error
               ? 'timer-555__input timer-555__input--error'
               : 'timer-555__input'}
@@ -96,23 +105,27 @@ function InputRow({ label, value, onInput, placeholder, suffix, parsed }) {
         </div>
         {parsed.error && <div class="timer-555__input-error">{parsed.error}</div>}
       </div>
+      {help && <div class="timer-555__help">{help}</div>}
     </div>
   );
 }
 
-function OutputRow({ label, value, format, error }) {
+function OutputRow({ label, value, format, error, help }) {
   return (
     <div class="timer-555__row">
       <span class="timer-555__label">{label}</span>
-      <div class="timer-555__output">
-        {error ? (
-          <span class="timer-555__output-error">{error}</span>
-        ) : Number.isFinite(value) ? (
-          <span class="timer-555__output-value">{format(value)}</span>
-        ) : (
-          <span class="timer-555__output-empty">—</span>
-        )}
+      <div class="timer-555__input-cell">
+        <div class="timer-555__output">
+          {error ? (
+            <span class="timer-555__output-error">{error}</span>
+          ) : Number.isFinite(value) ? (
+            <span class="timer-555__output-value">{format(value)}</span>
+          ) : (
+            <span class="timer-555__output-empty">—</span>
+          )}
+        </div>
       </div>
+      {help && <div class="timer-555__help">{help}</div>}
     </div>
   );
 }

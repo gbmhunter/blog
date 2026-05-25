@@ -1,1 +1,27 @@
 @import url('../_shared/calc-form.css');
+
+/* Side-by-side value input + unit-select dropdown for the temperature rows
+   (T_0 and T). The input flexes; the select shrinks to its content. */
+.ntc__value-with-unit {
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.ntc__value-with-unit .calc-form__input,
+.ntc__value-with-unit .calc-form__output {
+  flex: 1;
+  min-width: 0;
+}
+
+.ntc__unit-select {
+  box-sizing: border-box;
+  height: 2rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: inherit;
+  font-size: 0.85rem;
+}

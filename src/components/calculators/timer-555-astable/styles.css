@@ -6,7 +6,6 @@
   background: var(--sl-color-bg-nav);
   font-size: 0.9rem;
   container-type: inline-size;
-  max-width: 36rem;
 }
 
 .timer-555 *,
@@ -33,6 +32,15 @@
   grid-template-columns: 4rem 1fr;
   gap: 0.6rem;
   align-items: start;
+}
+
+@container (min-width: 36rem) {
+  .timer-555__row {
+    grid-template-columns: 4rem minmax(0, 14rem) minmax(0, 1fr);
+  }
+  .timer-555__help {
+    align-self: center;
+  }
 }
 
 .timer-555__label {
@@ -87,6 +95,20 @@
 .timer-555__input-error {
   font-size: 0.78rem;
   color: var(--sl-color-accent-high);
+}
+
+.timer-555__help {
+  font-size: 0.75rem;
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+  line-height: 1.3;
+  grid-column: 1 / -1;
+}
+
+@container (min-width: 36rem) {
+  .timer-555__help {
+    grid-column: auto;
+  }
 }
 
 .timer-555__output {

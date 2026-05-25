@@ -111,6 +111,7 @@ export default function WireGauge() {
               ))}
             </select>
           </div>
+          <div class="wire-gauge__help">The material of the conductor.</div>
         </div>
 
         {/* Resistivity: input when Custom, read-only output otherwise */}
@@ -125,6 +126,7 @@ export default function WireGauge() {
                   onInput={(e) => setCustomResistivityText(e.currentTarget.value)}
                   placeholder="1.68e-8"
                   spellcheck={false}
+                  title='The resistivity of the conductor. Set the material to "Custom" to edit this value.'
                   class={customResistivity.error
                     ? 'wire-gauge__input wire-gauge__input--error'
                     : 'wire-gauge__input'}
@@ -136,36 +138,49 @@ export default function WireGauge() {
               )}
             </div>
           ) : (
-            <div class="wire-gauge__readonly">
-              <span class="wire-gauge__readonly-value">{formatResistivity(resistivity)}</span>
+            <div class="wire-gauge__input-cell">
+              <div class="wire-gauge__readonly">
+                <span class="wire-gauge__readonly-value">{formatResistivity(resistivity)}</span>
+              </div>
             </div>
           )}
+          <div class="wire-gauge__help">
+            {isCustom
+              ? 'The resistivity of the conductor. Set the material to "Custom" to edit this value.'
+              : 'The resistivity of the selected conductor material. Set the material to "Custom" to edit this value.'}
+          </div>
         </div>
 
         {/* Outputs */}
         <div class="wire-gauge__row">
           <span class="wire-gauge__label">A</span>
-          <div class="wire-gauge__output">
-            {computed.error ? (
-              <span class="wire-gauge__output-error">{computed.error}</span>
-            ) : Number.isFinite(computed.crossSectionalAreaM2) ? (
-              <span class="wire-gauge__output-value">{formatAreaMm2(computed.crossSectionalAreaM2)}</span>
-            ) : (
-              <span class="wire-gauge__output-empty">—</span>
-            )}
+          <div class="wire-gauge__input-cell">
+            <div class="wire-gauge__output">
+              {computed.error ? (
+                <span class="wire-gauge__output-error">{computed.error}</span>
+              ) : Number.isFinite(computed.crossSectionalAreaM2) ? (
+                <span class="wire-gauge__output-value">{formatAreaMm2(computed.crossSectionalAreaM2)}</span>
+              ) : (
+                <span class="wire-gauge__output-empty">—</span>
+              )}
+            </div>
           </div>
+          <div class="wire-gauge__help">The required cross-sectional area of the conductor in the cable.</div>
         </div>
         <div class="wire-gauge__row">
           <span class="wire-gauge__label">Gauge</span>
-          <div class="wire-gauge__output">
-            {computed.error ? (
-              <span class="wire-gauge__output-error">{computed.error}</span>
-            ) : Number.isFinite(computed.awg) ? (
-              <span class="wire-gauge__output-value">{formatAwg(computed.awg)}</span>
-            ) : (
-              <span class="wire-gauge__output-empty">—</span>
-            )}
+          <div class="wire-gauge__input-cell">
+            <div class="wire-gauge__output">
+              {computed.error ? (
+                <span class="wire-gauge__output-error">{computed.error}</span>
+              ) : Number.isFinite(computed.awg) ? (
+                <span class="wire-gauge__output-value">{formatAwg(computed.awg)}</span>
+              ) : (
+                <span class="wire-gauge__output-empty">—</span>
+              )}
+            </div>
           </div>
+          <div class="wire-gauge__help">The maximum AWG gauge of the cable. The calculated value is rounded down to the nearest integer (lower AWG = thicker wire = more safety margin).</div>
         </div>
       </div>
     </div>
@@ -193,6 +208,7 @@ function InputRow({ label, help, value, onInput, placeholder, suffix, parsed }) 
         </div>
         {parsed.error && <div class="wire-gauge__input-error">{parsed.error}</div>}
       </div>
+      {help && <div class="wire-gauge__help">{help}</div>}
     </div>
   );
 }

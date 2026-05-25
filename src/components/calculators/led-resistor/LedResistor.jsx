@@ -60,6 +60,7 @@ export default function LedResistor() {
                 onInput={(e) => setSupplyVoltageText(e.currentTarget.value)}
                 placeholder="3.3"
                 spellcheck={false}
+                title="The supply voltage driving the LED. Often a battery, power supply rail or microcontroller pin."
                 class={supplyParsed.error
                   ? 'led-resistor__input led-resistor__input--error'
                   : 'led-resistor__input'}
@@ -68,6 +69,7 @@ export default function LedResistor() {
             </div>
             {supplyParsed.error && <div class="led-resistor__input-error">{supplyParsed.error}</div>}
           </div>
+          <div class="led-resistor__help">The supply voltage driving the LED. Often a battery, power supply rail or microcontroller pin.</div>
         </div>
 
         {/* LED colour */}
@@ -84,6 +86,7 @@ export default function LedResistor() {
               ))}
             </select>
           </div>
+          <div class="led-resistor__help">The colour of the LED. Sets the forward voltage drop. These are approximate, and don't account for the slight V_F change with drive current. Pick "Custom" to enter your own V_F.</div>
         </div>
 
         {/* Forward voltage (read-only when colour selected, editable when Custom) */}
@@ -98,6 +101,7 @@ export default function LedResistor() {
                   onInput={(e) => setCustomVfText(e.currentTarget.value)}
                   placeholder="2.0"
                   spellcheck={false}
+                  title="The forward voltage drop across the LED, at the desired drive current."
                   class={customVfParsed.error
                     ? 'led-resistor__input led-resistor__input--error'
                     : 'led-resistor__input'}
@@ -109,10 +113,17 @@ export default function LedResistor() {
               )}
             </div>
           ) : (
-            <div class="led-resistor__readonly">
-              <span class="led-resistor__readonly-value">{formatVoltage(forwardVoltage)}</span>
+            <div class="led-resistor__input-cell">
+              <div class="led-resistor__readonly">
+                <span class="led-resistor__readonly-value">{formatVoltage(forwardVoltage)}</span>
+              </div>
             </div>
           )}
+          <div class="led-resistor__help">
+            {isCustom
+              ? 'The forward voltage drop across the LED, at the desired drive current.'
+              : 'Typical forward voltage for the selected colour. Pick "Custom" to override.'}
+          </div>
         </div>
 
         {/* LED current */}
@@ -126,6 +137,7 @@ export default function LedResistor() {
                 onInput={(e) => setLedCurrentText(e.currentTarget.value)}
                 placeholder="20m"
                 spellcheck={false}
+                title="The desired LED drive current. Typical indicator LEDs run at 5–20 mA."
                 class={ledCurrentParsed.error
                   ? 'led-resistor__input led-resistor__input--error'
                   : 'led-resistor__input'}
@@ -136,34 +148,41 @@ export default function LedResistor() {
               <div class="led-resistor__input-error">{ledCurrentParsed.error}</div>
             )}
           </div>
+          <div class="led-resistor__help">The desired LED drive current. Typical indicator LEDs run at 5–20 mA.</div>
         </div>
 
         {/* Series resistance (output) */}
         <div class="led-resistor__row">
           <span class="led-resistor__label">R</span>
-          <div class="led-resistor__output">
-            {computed.error ? (
-              <span class="led-resistor__output-error">{computed.error}</span>
-            ) : Number.isFinite(computed.resistance) ? (
-              <span class="led-resistor__output-value">{formatResistance(computed.resistance)}</span>
-            ) : (
-              <span class="led-resistor__output-empty">—</span>
-            )}
+          <div class="led-resistor__input-cell">
+            <div class="led-resistor__output">
+              {computed.error ? (
+                <span class="led-resistor__output-error">{computed.error}</span>
+              ) : Number.isFinite(computed.resistance) ? (
+                <span class="led-resistor__output-value">{formatResistance(computed.resistance)}</span>
+              ) : (
+                <span class="led-resistor__output-empty">—</span>
+              )}
+            </div>
           </div>
+          <div class="led-resistor__help">The series resistance required to get the desired drive current.</div>
         </div>
 
         {/* Resistor power dissipation (output) */}
         <div class="led-resistor__row">
           <span class="led-resistor__label">P<sub>R</sub></span>
-          <div class="led-resistor__output">
-            {computed.error ? (
-              <span class="led-resistor__output-error">{computed.error}</span>
-            ) : Number.isFinite(computed.power) ? (
-              <span class="led-resistor__output-value">{formatPower(computed.power)}</span>
-            ) : (
-              <span class="led-resistor__output-empty">—</span>
-            )}
+          <div class="led-resistor__input-cell">
+            <div class="led-resistor__output">
+              {computed.error ? (
+                <span class="led-resistor__output-error">{computed.error}</span>
+              ) : Number.isFinite(computed.power) ? (
+                <span class="led-resistor__output-value">{formatPower(computed.power)}</span>
+              ) : (
+                <span class="led-resistor__output-empty">—</span>
+              )}
+            </div>
           </div>
+          <div class="led-resistor__help">The continuous power the resistor will dissipate. Make sure the part is rated at least this. For 3.3–12 V supplies at 1–20 mA, 0603/0805/1206 SMD parts are usually fine without heatsinking.</div>
         </div>
       </div>
 

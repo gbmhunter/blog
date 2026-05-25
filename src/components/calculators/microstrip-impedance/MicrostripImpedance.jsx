@@ -42,9 +42,12 @@ export default function MicrostripImpedance() {
       </div>
 
       <div class="microstrip__rows">
-        <LengthRow label="w"        state={w} setState={setW} parsed={wParsed} placeholder="0.2"/>
-        <LengthRow label="t"        state={t} setState={setT} parsed={tParsed} placeholder="35"/>
-        <LengthRow label="h"        state={h} setState={setH} parsed={hParsed} placeholder="1.6"/>
+        <LengthRow label="w" state={w} setState={setW} parsed={wParsed} placeholder="0.2"
+          help="The width of the track (microstrip). Usually measured in mm or mils."/>
+        <LengthRow label="t" state={t} setState={setT} parsed={tParsed} placeholder="35"
+          help="The thickness of the track (microstrip) — the same as the copper weight of the layer it's on. Usually measured in µm or oz./sq foot."/>
+        <LengthRow label="h" state={h} setState={setH} parsed={hParsed} placeholder="1.6"
+          help="The thickness of the substrate — the distance between the track and the plane below it. ≈ 1.6 mm on a standard 2-layer PCB; much smaller between adjacent layers on a high-density board."/>
 
         <div class="microstrip__row">
           <span class="microstrip__label">ε<sub>r</sub></span>
@@ -55,45 +58,50 @@ export default function MicrostripImpedance() {
               onInput={(e) => setERText(e.currentTarget.value)}
               placeholder="4.0"
               spellcheck={false}
+              title="The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7."
               class={eRParsed.error
                 ? 'microstrip__input microstrip__input--error'
                 : 'microstrip__input'}
             />
             {eRParsed.error && <div class="microstrip__input-error">{eRParsed.error}</div>}
           </div>
+          <div class="microstrip__help">The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.</div>
         </div>
 
         <div class="microstrip__row">
           <span class="microstrip__label">Z</span>
-          <div class="microstrip__output-cell">
-            <div class="microstrip__output">
-              {computed.error ? (
-                <span class="microstrip__output-error">{computed.error}</span>
-              ) : Number.isFinite(computed.impedance) ? (
-                <span class="microstrip__output-value">
-                  {formatInUnit(computed.impedance, getUnit(IMPEDANCE_UNITS, zUnit))}
-                </span>
-              ) : (
-                <span class="microstrip__output-empty">—</span>
-              )}
+          <div class="microstrip__input-cell">
+            <div class="microstrip__output-cell">
+              <div class="microstrip__output">
+                {computed.error ? (
+                  <span class="microstrip__output-error">{computed.error}</span>
+                ) : Number.isFinite(computed.impedance) ? (
+                  <span class="microstrip__output-value">
+                    {formatInUnit(computed.impedance, getUnit(IMPEDANCE_UNITS, zUnit))}
+                  </span>
+                ) : (
+                  <span class="microstrip__output-empty">—</span>
+                )}
+              </div>
+              <select
+                class="microstrip__unit-select"
+                value={zUnit}
+                onChange={(e) => setZUnit(e.currentTarget.value)}
+              >
+                {IMPEDANCE_UNITS.map((u) => (
+                  <option key={u.label} value={u.label}>{u.label}</option>
+                ))}
+              </select>
             </div>
-            <select
-              class="microstrip__unit-select"
-              value={zUnit}
-              onChange={(e) => setZUnit(e.currentTarget.value)}
-            >
-              {IMPEDANCE_UNITS.map((u) => (
-                <option key={u.label} value={u.label}>{u.label}</option>
-              ))}
-            </select>
           </div>
+          <div class="microstrip__help">The calculated characteristic impedance of the microstrip. Needs to match the impedance at each end so RF reflections don't occur. Typically 20–150 Ω.</div>
         </div>
       </div>
     </div>
   );
 }
 
-function LengthRow({ label, state, setState, parsed, placeholder }) {
+function LengthRow({ label, state, setState, parsed, placeholder, help }) {
   return (
     <div class="microstrip__row">
       <span class="microstrip__label">{label}</span>
@@ -105,6 +113,7 @@ function LengthRow({ label, state, setState, parsed, placeholder }) {
             onInput={(e) => setState({ ...state, text: e.currentTarget.value })}
             placeholder={placeholder}
             spellcheck={false}
+            title={help}
             class={parsed.error
               ? 'microstrip__input microstrip__input--error'
               : 'microstrip__input'}
@@ -121,6 +130,7 @@ function LengthRow({ label, state, setState, parsed, placeholder }) {
         </div>
         {parsed.error && <div class="microstrip__input-error">{parsed.error}</div>}
       </div>
+      {help && <div class="microstrip__help">{help}</div>}
     </div>
   );
 }

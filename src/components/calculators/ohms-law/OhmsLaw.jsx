@@ -11,9 +11,9 @@ import {
 import './styles.css';
 
 const VARS = {
-  voltage:    { label: 'V', parse: parseVoltage,    format: formatVoltage,    placeholder: '12', suffix: 'V' },
-  current:    { label: 'I', parse: parseCurrent,    format: formatCurrent,    placeholder: '1',  suffix: 'A' },
-  resistance: { label: 'R', parse: parseResistance, format: formatResistance, placeholder: '12', suffix: 'Ω' },
+  voltage:    { label: 'V', parse: parseVoltage,    format: formatVoltage,    placeholder: '12', suffix: 'V', help: 'The voltage across the resistor.' },
+  current:    { label: 'I', parse: parseCurrent,    format: formatCurrent,    placeholder: '1',  suffix: 'A', help: 'The current through the resistor.' },
+  resistance: { label: 'R', parse: parseResistance, format: formatResistance, placeholder: '12', suffix: 'Ω', help: 'The resistance of the resistor.' },
 };
 
 const ORDER = ['voltage', 'current', 'resistance'];
@@ -65,14 +65,16 @@ export default function OhmsLaw() {
               </label>
               <span class="ohms-law__label">{v.label}</span>
               {isTarget ? (
-                <div class="ohms-law__output">
-                  {computed.error ? (
-                    <span class="ohms-law__output-error">{computed.error}</span>
-                  ) : Number.isFinite(computed.value) ? (
-                    <span class="ohms-law__output-value">{v.format(computed.value)}</span>
-                  ) : (
-                    <span class="ohms-law__output-empty">—</span>
-                  )}
+                <div class="ohms-law__input-cell">
+                  <div class="ohms-law__output">
+                    {computed.error ? (
+                      <span class="ohms-law__output-error">{computed.error}</span>
+                    ) : Number.isFinite(computed.value) ? (
+                      <span class="ohms-law__output-value">{v.format(computed.value)}</span>
+                    ) : (
+                      <span class="ohms-law__output-empty">—</span>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <div class="ohms-law__input-cell">
@@ -83,6 +85,7 @@ export default function OhmsLaw() {
                       onInput={(e) => setValue(key, e.currentTarget.value)}
                       placeholder={v.placeholder}
                       spellcheck={false}
+                      title={v.help}
                       class={error ? 'ohms-law__input ohms-law__input--error' : 'ohms-law__input'}
                     />
                     {v.suffix && <span class="ohms-law__suffix">{v.suffix}</span>}
@@ -90,6 +93,7 @@ export default function OhmsLaw() {
                   {error && <div class="ohms-law__input-error">{error}</div>}
                 </div>
               )}
+              {v.help && <div class="ohms-law__help">{v.help}</div>}
             </div>
           );
         })}

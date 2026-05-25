@@ -19,6 +19,11 @@ const PLACEHOLDERS = {
 const SUFFIXES = {
   airTemp: '°C', relativeHumidity: '%', dewPoint: '°C',
 };
+const HELPS = {
+  airTemp: 'The temperature of the air. Must be the same temperature at which the relative humidity was measured.',
+  relativeHumidity: 'The relative humidity of the air, as a percentage of the total amount of water the air could hold at the current temperature.',
+  dewPoint: 'If the air is cooled to the dew-point temperature, condensation starts to form. May be below the freezing point of water.',
+};
 
 export default function DewPointMagnus() {
   const [values, setValues] = useState({ airTemp: '25', relativeHumidity: '50', dewPoint: '14.0' });
@@ -70,14 +75,16 @@ export default function DewPointMagnus() {
               </label>
               <span class="calc-form__label">{LABELS[key]}</span>
               {isTarget ? (
-                <div class="calc-form__output">
-                  {computed.error ? (
-                    <span class="calc-form__output-error">{computed.error}</span>
-                  ) : Number.isFinite(computed.value) ? (
-                    <span class="calc-form__output-value">{formatFor(key)(computed.value)}</span>
-                  ) : (
-                    <span class="calc-form__output-empty">—</span>
-                  )}
+                <div class="calc-form__input-cell">
+                  <div class="calc-form__output">
+                    {computed.error ? (
+                      <span class="calc-form__output-error">{computed.error}</span>
+                    ) : Number.isFinite(computed.value) ? (
+                      <span class="calc-form__output-value">{formatFor(key)(computed.value)}</span>
+                    ) : (
+                      <span class="calc-form__output-empty">—</span>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <div class="calc-form__input-cell">
@@ -88,6 +95,7 @@ export default function DewPointMagnus() {
                       onInput={(e) => setValue(key, e.currentTarget.value)}
                       placeholder={PLACEHOLDERS[key]}
                       spellcheck={false}
+                      title={HELPS[key]}
                       class={parsed.error ? 'calc-form__input calc-form__input--error' : 'calc-form__input'}
                     />
                     <span class="calc-form__suffix">{SUFFIXES[key]}</span>
@@ -95,11 +103,14 @@ export default function DewPointMagnus() {
                   {parsed.error && <div class="calc-form__input-error">{parsed.error}</div>}
                 </div>
               )}
+              <div class="calc-form__help">{HELPS[key]}</div>
             </div>
           );
         })}
-        <InputRow label="b" value={bText} onInput={setBText} placeholder="17.625" parsed={b}/>
-        <InputRow label="c" value={cText} onInput={setCText} placeholder="243.04" suffix="°C" parsed={c}/>
+        <InputRow label="b" value={bText} onInput={setBText} placeholder="17.625" parsed={b}
+          help="The b coefficient of the Magnus equation."/>
+        <InputRow label="c" value={cText} onInput={setCText} placeholder="243.04" suffix="°C" parsed={c}
+          help="The c coefficient of the Magnus equation."/>
       </div>
     </div>
   );

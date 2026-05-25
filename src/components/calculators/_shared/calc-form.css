@@ -10,7 +10,8 @@
   background: var(--sl-color-bg-nav);
   font-size: 0.9rem;
   container-type: inline-size;
-  max-width: 36rem;
+  /* No max-width — fill the available prose column so the help-text column
+     query (min-width: 36rem) can actually fire. */
 }
 
 .calc-form *,
@@ -49,6 +50,29 @@
 
 .calc-form__row--radio {
   grid-template-columns: 1.5rem 3rem 1fr;
+}
+
+/* Narrow containers: help wraps to a new row. Span the full row width so the
+   text uses every column available (otherwise grid auto-placement drops it
+   into column 1 which is only 1.5rem wide for radio rows, producing a tower
+   of single-word lines). */
+.calc-form__help {
+  grid-column: 1 / -1;
+}
+
+/* Wide containers: promote each row to an extra column and flow help into it
+   to the right of the input instead of stacking below. */
+@container (min-width: 36rem) {
+  .calc-form__row {
+    grid-template-columns: 5rem minmax(0, 18rem) minmax(0, 1fr);
+  }
+  .calc-form__row--radio {
+    grid-template-columns: 1.5rem 3rem minmax(0, 18rem) minmax(0, 1fr);
+  }
+  .calc-form__help {
+    grid-column: auto;
+    align-self: center;
+  }
 }
 
 .calc-form__radio {
@@ -120,6 +144,13 @@
 .calc-form__input-error {
   font-size: 0.78rem;
   color: var(--sl-color-accent-high);
+}
+
+.calc-form__help {
+  font-size: 0.75rem;
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+  line-height: 1.3;
 }
 
 .calc-form__readonly {

@@ -37,17 +37,27 @@ export default function ViaCurrentIpc2221a() {
         (401.8 W/m·K) match typical plated copper values.
       </div>
       <div class="calc-form__rows">
-        <InputRow label={<>d<sub>via</sub></>}             value={diaText}     onInput={setDiaText}      placeholder="1mm" parsed={dia}/>
-        <InputRow label={<>t<sub>plating</sub></>}        value={platingText}  onInput={setPlatingText} placeholder="20um" parsed={plating}/>
-        <InputRow label={<>l<sub>via</sub></>}            value={lenText}      onInput={setLenText}     placeholder="1.6mm" parsed={len}/>
-        <InputRow label={<>ΔT</>}                         value={tempText}     onInput={setTempText}    placeholder="40" suffix="°C" parsed={tempRise}/>
-        <InputRow label={<>ρ</>}                          value={rhoText}      onInput={setRhoText}     placeholder="19e-9" suffix="Ω·m" parsed={rho}/>
-        <InputRow label="κ"                                value={kText}        onInput={setKText}       placeholder="401.8" suffix="W/m·K" parsed={k}/>
+        <InputRow label={<>d<sub>via</sub></>}      value={diaText}     onInput={setDiaText}     placeholder="1mm"   parsed={dia}
+          help="The finished hole diameter of the via — not the drilled hole diameter, as the via is then plated."/>
+        <InputRow label={<>t<sub>plating</sub></>}  value={platingText} onInput={setPlatingText} placeholder="20um"  parsed={plating}
+          help="The plating thickness of the via walls. Not the same as the copper plane thickness. Typically 20 µm, occasionally 25 µm."/>
+        <InputRow label={<>l<sub>via</sub></>}      value={lenText}     onInput={setLenText}     placeholder="1.6mm" parsed={len}
+          help="The length of the via — the distance between the copper planes the via starts and ends on. For a 2-layer 1.6 mm PCB, the via length is 1.6 mm."/>
+        <InputRow label={<>ΔT</>}                   value={tempText}    onInput={setTempText}    placeholder="40"    suffix="°C" parsed={tempRise}
+          help="The maximum temperature rise above ambient you are allowing for the via. A rule of thumb is 10–40 °C."/>
+        <InputRow label={<>ρ</>}                    value={rhoText}     onInput={setRhoText}     placeholder="19e-9" suffix="Ω·m" parsed={rho}
+          help="The resistivity of the plated copper the via is made from."/>
+        <InputRow label="κ"                         value={kText}       onInput={setKText}       placeholder="401.8" suffix="W/m·K" parsed={k}
+          help="The specific thermal conductivity, k, of the plated copper the via is made from."/>
 
-        <OutputRow label="A"                               value={r.area}          format={formatArea}       error={r.error}/>
-        <OutputRow label="R"                               value={r.electricalR}   format={formatResistance} error={r.error}/>
-        <OutputRow label={<>R<sub>θ</sub></>}             value={r.thermalR}      format={formatThermalR}   error={r.error}/>
-        <OutputRow label={<>I<sub>max</sub></>}           value={r.currentLimit}  format={formatCurrent}    error={r.error}/>
+        <OutputRow label="A"                        value={r.area}          format={formatArea}       error={r.error}
+          help="The cross-sectional area of the via (looking top-down onto it)."/>
+        <OutputRow label="R"                        value={r.electricalR}   format={formatResistance} error={r.error}
+          help="The electrical resistance of the via, measured from its top surface to its bottom surface."/>
+        <OutputRow label={<>R<sub>θ</sub></>}       value={r.thermalR}      format={formatThermalR}   error={r.error}
+          help="The thermal resistance of the via."/>
+        <OutputRow label={<>I<sub>max</sub></>}     value={r.currentLimit}  format={formatCurrent}    error={r.error}
+          help="The maximum current the via can take before it rises to the specified temperature above ambient."/>
       </div>
     </div>
   );

@@ -27,12 +27,17 @@ export default function TrackCurrentIpc2221a() {
         less accurate. Length inputs accept metric prefixes (e.g. <code>35um</code>).
       </div>
       <div class="calc-form__rows">
-        <InputRow label="I"                                  value={currentText}        onInput={setCurrentText}        placeholder="1"  suffix="A" parsed={current}/>
-        <InputRow label={<>ΔT</>}                            value={tempRiseText}       onInput={setTempRiseText}       placeholder="40" suffix="°C" parsed={tempRise}/>
-        <InputRow label={<>t<sub>track</sub></>}             value={trackThicknessText} onInput={setTrackThicknessText} placeholder="35um" parsed={trackThickness}/>
-        <SelectRow label="Layer"                             value={layer}              options={['External','Internal']} onChange={setLayer}/>
+        <InputRow label="I"                       value={currentText}        onInput={setCurrentText}        placeholder="1"  suffix="A" parsed={current}
+          help="The current you want the PCB track to be able to handle."/>
+        <InputRow label={<>ΔT</>}                 value={tempRiseText}       onInput={setTempRiseText}       placeholder="40" suffix="°C" parsed={tempRise}
+          help="The maximum desired temperature rise due to the current flowing through the track. 20–40 °C is a common value."/>
+        <InputRow label={<>t<sub>track</sub></>}  value={trackThicknessText} onInput={setTrackThicknessText} placeholder="35um" parsed={trackThickness}
+          help="The thickness (height) of the track — equal to the copper-layer thickness (a.k.a. copper weight). Common values are 17.5 µm (0.5 oz) or 35 µm (1 oz)."/>
+        <SelectRow label="Layer"                  value={layer}              options={['External','Internal']} onChange={setLayer}
+          help='If the track is on the top or bottom copper layer of the PCB, set this to "External". For a buried inner-layer track, set to "Internal".'/>
 
-        <OutputRow label={<>w<sub>min</sub></>}              value={r.width}           format={formatLength} error={r.error}/>
+        <OutputRow label={<>w<sub>min</sub></>}   value={r.width}            format={formatLength} error={r.error}
+          help="The minimum track width needed to carry the specified current without exceeding the given temperature rise."/>
       </div>
     </div>
   );
