@@ -521,6 +521,36 @@ Subcommands:
 
 For example, to test Coded S8 PHY run `config phy coded_s8`.
 
+## Regulations
+
+The most crucial regulation that most engineers will find them concerned with is the transmit power of the Bluetooth signal. The transmit power is usually adjustable in firmware -- not only to meet local regulations but also to optimize power and limit range on purpose (sometimes limiting range on purpose is useful -- imagine if your credit card tap-to-pay worked from a kilometer away!).
+
+In the EU, ETSI EN 300 328 limits Bluetooth transmission power to:[^dewine-labs-bluetooth-tx-power-regulations]
+
+- 20 dBm EIRP if the device uses adaptive frequency hopping spread spectrum (adaptive FHSS) techniques
+- 10 dBm EIRP if it doesn't
+
+<Aside type="tip">
+All dBm values are equivalent isotropic radiated power (EIRP). See the [Antennas page](/electronics/components/antennas/) for more info on this term.
+</Aside>
+
+To implement adaptive FHSS, the device must:
+
+- Hop across at least 15 different channels
+- Detect and avoid channels in use by other devices
+
+### USA
+
+In the USA the transmission power is more permissive, with the FCC limits Bluetooth transmission power to +30 dBm but PSD (power spectral density) must be below 8 dBm / 3kHz if no adaptive FHSS is implemented. There are two channels with exceptions:[^dewine-labs-bluetooth-tx-power-regulations]
+
+- Bluetooth Channel 37 is limited to 18 dBm.
+- Bluetooth Channel 38 is limited to 15.3 dBm.
+
+For 1 Mbps, 2 Mbps and 500 kbps Coded PHY, devices can use 30 dBm transmit power. 125 kbps coded PHY doesn't meet the 8 dBm / 3 kHz PSD requirement, and TX power is capped at 14 dBm.[^silicon-labs-tx-power-limitations-etsi-fcc]
+
+If the device has adaptive FHSS, then the PSD restrictions go away.[^silicon-labs-tx-power-limitations-etsi-fcc]
+
+See the [RF Spectrum Regulations page](/electronics/compliance/rf-spectrum-regulations/) for more information.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -560,3 +590,5 @@ For example, to test Coded S8 PHY run `config phy coded_s8`.
 [^microsoft-windows-drivers-bluetooth-faq]: Microsoft. _Learn > Windows > Windows Drivers > Bluetooth FAQ_. Retrieved 2025-11-14, from https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-faq.
 [^bluetooth-sig-data-types-specification]: Bluetooth SIG. _Part A. Data Types Specification_ [specification]. Retrieved 2026-05-20, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/CSS_v11/out/en/supplement-to-the-bluetooth-core-specification/data-types-specification.html.
 [^bluetooth-sig-assigned-numbers]: Bluetooth SIG (2026, May 19). _Assigned Numbers_ [specification]. Retrieved 2026-05-21, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/Assigned_Numbers.pdf.
+[^dewine-labs-bluetooth-tx-power-regulations]: Michael Spörk (2025, Feb 6). _Boosting Bluetooth Range: Understanding TX Power Regulations in the EU & US_. Dewine Labs. Retrieved 2026-05-22, from https://dewinelabs.com/boosting-bluetooth-range-understanding-tx-power-regulations-in-the-eu-us/.
+[^silicon-labs-tx-power-limitations-etsi-fcc]: Silicon Labs. _TX Power Limitations for Regulatory Compliance (ETSI, FCC)_ [documentation]. Retrieved 2026-05-25, from https://docs.silabs.com/bluetooth/5.0/bluetooth-general-system-and-performance/tx-power-limitations-for-regulatory-compliance-etsi-fcc.

@@ -11,9 +11,9 @@ import {
 import './styles.css';
 
 const VARS = {
-  resistance:  { label: 'R',                  parse: parseResistance,  format: formatResistance,  placeholder: '10k' },
-  capacitance: { label: 'C',                  parse: parseCapacitance, format: formatCapacitance, placeholder: '2.2n' },
-  frequency:   { label: <>f<sub>c</sub></>,   parse: parseFrequency,   format: formatFrequency,   placeholder: '7.23k' },
+  resistance:  { label: 'R',                  parse: parseResistance,  format: formatResistance,  placeholder: '10k',   suffix: 'Ω' },
+  capacitance: { label: 'C',                  parse: parseCapacitance, format: formatCapacitance, placeholder: '2.2n',  suffix: 'F' },
+  frequency:   { label: <>f<sub>c</sub></>,   parse: parseFrequency,   format: formatFrequency,   placeholder: '7.23k', suffix: 'Hz' },
 };
 
 const ORDER = ['resistance', 'capacitance', 'frequency'];
@@ -77,14 +77,17 @@ export default function LowPassRcFilter() {
                 </div>
               ) : (
                 <div class="low-pass-rc__input-cell">
-                  <input
-                    type="text"
-                    value={values[key]}
-                    onInput={(e) => setValue(key, e.currentTarget.value)}
-                    placeholder={v.placeholder}
-                    spellcheck={false}
-                    class={error ? 'low-pass-rc__input low-pass-rc__input--error' : 'low-pass-rc__input'}
-                  />
+                  <div class="low-pass-rc__input-with-suffix">
+                    <input
+                      type="text"
+                      value={values[key]}
+                      onInput={(e) => setValue(key, e.currentTarget.value)}
+                      placeholder={v.placeholder}
+                      spellcheck={false}
+                      class={error ? 'low-pass-rc__input low-pass-rc__input--error' : 'low-pass-rc__input'}
+                    />
+                    {v.suffix && <span class="low-pass-rc__suffix">{v.suffix}</span>}
+                  </div>
                   {error && <div class="low-pass-rc__input-error">{error}</div>}
                 </div>
               )}

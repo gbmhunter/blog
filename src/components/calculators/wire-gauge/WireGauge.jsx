@@ -65,7 +65,8 @@ export default function WireGauge() {
           help="Source voltage applied to the cable."
           value={voltageText}
           onInput={setVoltageText}
-          placeholder="12V"
+          placeholder="12"
+          suffix="V"
           parsed={voltage}
         />
         <InputRow
@@ -91,7 +92,8 @@ export default function WireGauge() {
           help="Current the wire must carry."
           value={currentText}
           onInput={setCurrentText}
-          placeholder="10A"
+          placeholder="10"
+          suffix="A"
           parsed={current}
         />
 
@@ -116,16 +118,19 @@ export default function WireGauge() {
           <span class="wire-gauge__label">ρ</span>
           {isCustom ? (
             <div class="wire-gauge__input-cell">
-              <input
-                type="text"
-                value={customResistivityText}
-                onInput={(e) => setCustomResistivityText(e.currentTarget.value)}
-                placeholder="1.68e-8"
-                spellcheck={false}
-                class={customResistivity.error
-                  ? 'wire-gauge__input wire-gauge__input--error'
-                  : 'wire-gauge__input'}
-              />
+              <div class="wire-gauge__input-with-suffix">
+                <input
+                  type="text"
+                  value={customResistivityText}
+                  onInput={(e) => setCustomResistivityText(e.currentTarget.value)}
+                  placeholder="1.68e-8"
+                  spellcheck={false}
+                  class={customResistivity.error
+                    ? 'wire-gauge__input wire-gauge__input--error'
+                    : 'wire-gauge__input'}
+                />
+                <span class="wire-gauge__suffix">Ω·m</span>
+              </div>
               {customResistivity.error && (
                 <div class="wire-gauge__input-error">{customResistivity.error}</div>
               )}

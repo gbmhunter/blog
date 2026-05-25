@@ -1,14 +1,40 @@
-import { parseValueWithPrefix, formatValueWithPrefix } from 'src/js/metric-prefix.js';
+// Unit tables for the dropdowns. Each entry: { label, multiplier_to_SI }.
+// E.g. "mm" → 1e-3 means the user-typed value gets multiplied by 1e-3 to get
+// metres.
+export const LENGTH_UNITS = [
+  { label: 'um', multiplier: 1e-6 },
+  { label: 'mm', multiplier: 1e-3 },
+];
 
-// Dimensions are entered with explicit "m" units; the metric-prefix parser
-// strips the unit and gives back the SI value (so "0.2mm" → 0.0002, "35um" → 3.5e-5).
-export const parseLength = (text) =>
-  parseValueWithPrefix(text, { units: ['m', 'meters', 'metres', 'meter', 'metre'] });
+export const IMPEDANCE_UNITS = [
+  { label: 'mΩ', multiplier: 1e-3 },
+  { label: 'Ω',  multiplier: 1e0 },
+  { label: 'kΩ', multiplier: 1e3 },
+  { label: 'MΩ', multiplier: 1e6 },
+];
 
-// Dielectric constant is a unit-less number.
-export const parseDielectric = (text) => parseValueWithPrefix(text, { units: [] });
+export function getUnit(table, label) {
+  return table.find((u) => u.label === label) ?? table[0];
+}
 
-export const formatImpedance = (v, sigFigs = 4) => formatValueWithPrefix(v, 'Ω', { sigFigs });
+// Parse a plain (positive) decimal number. No prefix / unit handling — the
+// unit comes from the dropdown, so the input is just the bare magnitude.
+export function parseNumber(text) {
+  const s = String(text ?? '').trim();
+  if (s === '') return { value: NaN, error: 'Empty' };
+  const v = Number(s);
+  if (!Number.isFinite(v)) return { value: NaN, error: 'Not a number' };
+  if (v < 0) return { value: NaN, error: 'Must be non-negative' };
+  return { value: v, error: null };
+}
+
+// Format an impedance value in the given output unit, returning the magnitude
+// number (formatted to sigFigs) and the unit label.
+export function formatInUnit(siValue, unit, sigFigs = 4) {
+  if (!Number.isFinite(siValue)) return '—';
+  const v = siValue / unit.multiplier;
+  return `${v.toPrecision(sigFigs)} ${unit.label}`;
+}
 
 // Compute the characteristic impedance of a microstrip using the equations
 // from http://www.rfcafe.com/references/electrical/microstrip-eq.htm:

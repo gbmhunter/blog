@@ -13,7 +13,7 @@ export default function BuckConverter() {
   const [vDText, setVDText] = useState('0.5');
   const [vSwText, setVSwText] = useState('0.1');
   const [fSwText, setFSwText] = useState('1M');
-  const [iOutText, setIOutText] = useState('1A');
+  const [iOutText, setIOutText] = useState('1');
   const [rippleText, setRippleText] = useState('30');
 
   const vIn = useMemo(() => parseVoltage(vInText), [vInText]);
@@ -43,8 +43,8 @@ export default function BuckConverter() {
         <InputRow label={<>V<sub>out</sub></>}             value={vOutText}   onInput={setVOutText}   placeholder="3.3"   suffix="V" parsed={vOut}/>
         <InputRow label={<>V<sub>D</sub></>}               value={vDText}     onInput={setVDText}     placeholder="0.5"   suffix="V" parsed={vD}/>
         <InputRow label={<>V<sub>SW</sub></>}              value={vSwText}    onInput={setVSwText}    placeholder="0.1"   suffix="V" parsed={vSw}/>
-        <InputRow label={<>f<sub>SW</sub></>}              value={fSwText}    onInput={setFSwText}    placeholder="1M"    parsed={fSw}/>
-        <InputRow label={<>I<sub>out</sub></>}             value={iOutText}   onInput={setIOutText}   placeholder="1A"    parsed={iOut}/>
+        <InputRow label={<>f<sub>SW</sub></>}              value={fSwText}    onInput={setFSwText}    placeholder="1M"    suffix="Hz" parsed={fSw}/>
+        <InputRow label={<>I<sub>out</sub></>}             value={iOutText}   onInput={setIOutText}   placeholder="1"     suffix="A" parsed={iOut}/>
         <InputRow label={<>ΔI<sub>L</sub></>}              value={rippleText} onInput={setRippleText} placeholder="30"    suffix="%" parsed={ripple}/>
 
         <OutputRow label="D"                                value={r.duty}        format={formatPercent}    error={r.error}/>

@@ -11,9 +11,9 @@ import {
 import './styles.css';
 
 const VARS = {
-  charge:      { label: <>Q</>, parse: parseCharge,      format: formatCharge,      placeholder: '5u' },
-  capacitance: { label: <>C</>, parse: parseCapacitance, format: formatCapacitance, placeholder: '4u' },
-  voltage:     { label: <>V</>, parse: parseVoltage,     format: formatVoltage,     placeholder: '100' },
+  charge:      { label: <>Q</>, parse: parseCharge,      format: formatCharge,      placeholder: '5u', suffix: 'C' },
+  capacitance: { label: <>C</>, parse: parseCapacitance, format: formatCapacitance, placeholder: '4u', suffix: 'F' },
+  voltage:     { label: <>V</>, parse: parseVoltage,     format: formatVoltage,     placeholder: '100', suffix: 'V' },
 };
 
 const ORDER = ['charge', 'capacitance', 'voltage'];
@@ -76,14 +76,17 @@ export default function CapacitorCharge() {
                 </div>
               ) : (
                 <div class="capacitor-charge__input-cell">
-                  <input
-                    type="text"
-                    value={values[key]}
-                    onInput={(e) => setValue(key, e.currentTarget.value)}
-                    placeholder={v.placeholder}
-                    spellcheck={false}
-                    class={error ? 'capacitor-charge__input capacitor-charge__input--error' : 'capacitor-charge__input'}
-                  />
+                  <div class="capacitor-charge__input-with-suffix">
+                    <input
+                      type="text"
+                      value={values[key]}
+                      onInput={(e) => setValue(key, e.currentTarget.value)}
+                      placeholder={v.placeholder}
+                      spellcheck={false}
+                      class={error ? 'capacitor-charge__input capacitor-charge__input--error' : 'capacitor-charge__input'}
+                    />
+                    {v.suffix && <span class="capacitor-charge__suffix">{v.suffix}</span>}
+                  </div>
                   {error && <div class="capacitor-charge__input-error">{error}</div>}
                 </div>
               )}

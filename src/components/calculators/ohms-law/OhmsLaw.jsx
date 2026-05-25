@@ -11,15 +11,15 @@ import {
 import './styles.css';
 
 const VARS = {
-  voltage:    { label: 'V', parse: parseVoltage,    format: formatVoltage,    placeholder: '12V' },
-  current:    { label: 'I', parse: parseCurrent,    format: formatCurrent,    placeholder: '1A' },
-  resistance: { label: 'R', parse: parseResistance, format: formatResistance, placeholder: '12' },
+  voltage:    { label: 'V', parse: parseVoltage,    format: formatVoltage,    placeholder: '12', suffix: 'V' },
+  current:    { label: 'I', parse: parseCurrent,    format: formatCurrent,    placeholder: '1',  suffix: 'A' },
+  resistance: { label: 'R', parse: parseResistance, format: formatResistance, placeholder: '12', suffix: 'Ω' },
 };
 
 const ORDER = ['voltage', 'current', 'resistance'];
 
 export default function OhmsLaw() {
-  const [values, setValues] = useState({ voltage: '12V', current: '1A', resistance: '12' });
+  const [values, setValues] = useState({ voltage: '12', current: '1', resistance: '12' });
   const [target, setTarget] = useState('resistance');
 
   const parsed = useMemo(() => {
@@ -76,14 +76,17 @@ export default function OhmsLaw() {
                 </div>
               ) : (
                 <div class="ohms-law__input-cell">
-                  <input
-                    type="text"
-                    value={values[key]}
-                    onInput={(e) => setValue(key, e.currentTarget.value)}
-                    placeholder={v.placeholder}
-                    spellcheck={false}
-                    class={error ? 'ohms-law__input ohms-law__input--error' : 'ohms-law__input'}
-                  />
+                  <div class="ohms-law__input-with-suffix">
+                    <input
+                      type="text"
+                      value={values[key]}
+                      onInput={(e) => setValue(key, e.currentTarget.value)}
+                      placeholder={v.placeholder}
+                      spellcheck={false}
+                      class={error ? 'ohms-law__input ohms-law__input--error' : 'ohms-law__input'}
+                    />
+                    {v.suffix && <span class="ohms-law__suffix">{v.suffix}</span>}
+                  </div>
                   {error && <div class="ohms-law__input-error">{error}</div>}
                 </div>
               )}

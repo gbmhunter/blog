@@ -10,16 +10,16 @@ import './styles.css';
 
 // Variable definitions: id, display name (HTML), parser, formatter, hint text.
 const VARS = {
-  vin:  { id: 'vin',  label: <>V<sub>IN</sub></>,  parse: parseVoltage,    format: formatVoltage,    placeholder: '5V' },
-  r1:   { id: 'r1',   label: <>R<sub>1</sub></>,   parse: parseResistance, format: formatResistance, placeholder: '10k' },
-  r2:   { id: 'r2',   label: <>R<sub>2</sub></>,   parse: parseResistance, format: formatResistance, placeholder: '10k' },
-  vout: { id: 'vout', label: <>V<sub>OUT</sub></>, parse: parseVoltage,    format: formatVoltage,    placeholder: '2.5V' },
+  vin:  { id: 'vin',  label: <>V<sub>IN</sub></>,  parse: parseVoltage,    format: formatVoltage,    placeholder: '5',   suffix: 'V' },
+  r1:   { id: 'r1',   label: <>R<sub>1</sub></>,   parse: parseResistance, format: formatResistance, placeholder: '10k', suffix: 'Ω' },
+  r2:   { id: 'r2',   label: <>R<sub>2</sub></>,   parse: parseResistance, format: formatResistance, placeholder: '10k', suffix: 'Ω' },
+  vout: { id: 'vout', label: <>V<sub>OUT</sub></>, parse: parseVoltage,    format: formatVoltage,    placeholder: '2.5', suffix: 'V' },
 };
 
 const ORDER = ['vin', 'r1', 'r2', 'vout'];
 
 export default function ResistorDivider() {
-  const [values, setValues] = useState({ vin: '5V', r1: '10k', r2: '10k', vout: '2.5V' });
+  const [values, setValues] = useState({ vin: '5', r1: '10k', r2: '10k', vout: '2.5' });
   const [target, setTarget] = useState('vout');
 
   // Parse every input (we'll only use the 3 that aren't the target).
@@ -77,14 +77,17 @@ export default function ResistorDivider() {
                 </div>
               ) : (
                 <div class="resistor-divider__input-cell">
-                  <input
-                    type="text"
-                    value={values[key]}
-                    onInput={(e) => setValue(key, e.currentTarget.value)}
-                    placeholder={v.placeholder}
-                    spellcheck={false}
-                    class={error ? 'resistor-divider__input resistor-divider__input--error' : 'resistor-divider__input'}
-                  />
+                  <div class="resistor-divider__input-with-suffix">
+                    <input
+                      type="text"
+                      value={values[key]}
+                      onInput={(e) => setValue(key, e.currentTarget.value)}
+                      placeholder={v.placeholder}
+                      spellcheck={false}
+                      class={error ? 'resistor-divider__input resistor-divider__input--error' : 'resistor-divider__input'}
+                    />
+                    {v.suffix && <span class="resistor-divider__suffix">{v.suffix}</span>}
+                  </div>
                   {error && <div class="resistor-divider__input-error">{error}</div>}
                 </div>
               )}

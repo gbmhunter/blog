@@ -67,15 +67,15 @@ export default function Mp4558() {
       </div>
 
       <div class="mp4558__rows">
-        <InputRow label={<>f<sub>sw</sub></>}        value={fSwText}        onInput={setFSwText}        placeholder="500k" parsed={fSw}/>
-        <InputRow label={<>V<sub>out</sub></>}       value={vOutText}       onInput={setVOutText}       placeholder="3.3"  parsed={vOut}/>
-        <InputRow label={<>R<sub>2</sub></>}          value={r2Text}         onInput={setR2Text}         placeholder="10k"  parsed={r2}/>
-        <InputRow label={<>I<sub>load</sub></>}      value={iLoadText}      onInput={setILoadText}      placeholder="1"    parsed={iLoad}/>
-        <InputRow label={<>ΔI<sub>L</sub></>}        value={ripplePctText}  onInput={setRipplePctText}  placeholder="30"   suffix="%" parsed={ripplePct}/>
-        <InputRow label={<>V<sub>in</sub></>}        value={vInText}        onInput={setVInText}        placeholder="36"   parsed={vIn}/>
-        <InputRow label={<>C<sub>in</sub></>}        value={cInText}        onInput={setCInText}        placeholder="10u"  parsed={cIn}/>
-        <InputRow label={<>C<sub>out</sub></>}       value={cOutText}       onInput={setCOutText}       placeholder="33u"  parsed={cOut}/>
-        <InputRow label={<>R<sub>ESR</sub></>}       value={rEsrText}       onInput={setREsrText}       placeholder="10m"  parsed={rEsr}/>
+        <InputRow label={<>f<sub>sw</sub></>}        value={fSwText}        onInput={setFSwText}        placeholder="500k" suffix="Hz"   parsed={fSw}/>
+        <InputRow label={<>V<sub>out</sub></>}       value={vOutText}       onInput={setVOutText}       placeholder="3.3"  suffix="V"    parsed={vOut}/>
+        <InputRow label={<>R<sub>2</sub></>}          value={r2Text}         onInput={setR2Text}         placeholder="10k"  suffix="Ω"    parsed={r2}/>
+        <InputRow label={<>I<sub>load</sub></>}      value={iLoadText}      onInput={setILoadText}      placeholder="1"    suffix="A"    parsed={iLoad}/>
+        <InputRow label={<>ΔI<sub>L</sub></>}        value={ripplePctText}  onInput={setRipplePctText}  placeholder="30"   suffix="%"    parsed={ripplePct}/>
+        <InputRow label={<>V<sub>in</sub></>}        value={vInText}        onInput={setVInText}        placeholder="36"   suffix="V"    parsed={vIn}/>
+        <InputRow label={<>C<sub>in</sub></>}        value={cInText}        onInput={setCInText}        placeholder="10u"  suffix="F"    parsed={cIn}/>
+        <InputRow label={<>C<sub>out</sub></>}       value={cOutText}       onInput={setCOutText}       placeholder="33u"  suffix="F"    parsed={cOut}/>
+        <InputRow label={<>R<sub>ESR</sub></>}       value={rEsrText}       onInput={setREsrText}       placeholder="10m"  suffix="Ω"    parsed={rEsr}/>
 
         <OutputRow label={<>R<sub>freq</sub></>}      value={computed.rFreq}      format={formatResistance} error={computed.error}/>
         <OutputRow label={<>R<sub>1</sub></>}         value={computed.r1}         format={formatResistance} error={computed.error}/>

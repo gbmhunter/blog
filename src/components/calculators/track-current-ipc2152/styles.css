@@ -1,1 +1,14 @@
 @import url('../_shared/calc-form.css');
+
+/* Divider between the main output (minimum track width) and the intermediate
+   modifier outputs. Mirrors the "Intermediate Variables" heading in NinjaCalc. */
+.track-2152__divider {
+  margin: 0.6rem 0 0.2rem 0;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--sl-color-gray-5);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--sl-color-gray-2);
+  text-align: center;
+}

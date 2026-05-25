@@ -46,6 +46,7 @@ export default function Timer555Astable() {
           value={frequencyText}
           onInput={setFrequencyText}
           placeholder="10k"
+          suffix="Hz"
           parsed={frequency}
         />
         <InputRow
@@ -61,6 +62,7 @@ export default function Timer555Astable() {
           value={capacitanceText}
           onInput={setCapacitanceText}
           placeholder="10n"
+          suffix="F"
           parsed={capacitance}
         />
 

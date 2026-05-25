@@ -27,7 +27,7 @@ export default function TrackCurrentIpc2221a() {
         less accurate. Length inputs accept metric prefixes (e.g. <code>35um</code>).
       </div>
       <div class="calc-form__rows">
-        <InputRow label="I"                                  value={currentText}        onInput={setCurrentText}        placeholder="1A" parsed={current}/>
+        <InputRow label="I"                                  value={currentText}        onInput={setCurrentText}        placeholder="1"  suffix="A" parsed={current}/>
         <InputRow label={<>ΔT</>}                            value={tempRiseText}       onInput={setTempRiseText}       placeholder="40" suffix="°C" parsed={tempRise}/>
         <InputRow label={<>t<sub>track</sub></>}             value={trackThicknessText} onInput={setTrackThicknessText} placeholder="35um" parsed={trackThickness}/>
         <SelectRow label="Layer"                             value={layer}              options={['External','Internal']} onChange={setLayer}/>

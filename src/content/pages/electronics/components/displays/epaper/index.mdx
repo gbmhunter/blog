@@ -14,6 +14,12 @@ E-Paper (electronic paper) displays are . They are sometimes called EPDs (E-Pape
 
 E-Paper displays either come raw (no driver board) or with a driver board.
 
+## Driver or Driverless
+
+E-Paper displays are typically either sold with the driver IC included in the screen, or without it (it which can you have to connect up a suitable driver IC yourself). Note that even the driverless E-Paper displays still have driver circuitry inside them, typically the gate and source driver (which are connected to the pixel array).[^gitlab-zephray-glider] Driverless displays typically have a large pin connector (30-70 pins). For example the E-Ink EC113TC1 E-Paper display has a 50-pin FPC connector!
+
+The IT8951 AM type EPD Timing Controller is a popular timing controller IC for E-Paper displays. It comes in a 128-pin [QFP package](/pcb-design/component-packages/qfp-component-package/).[^ite-it8951] It works with large EPDs up to 2048x2048.[^gitlab-zephray-glider]
+
 ## Manufacturers
 
 ### E Ink 
@@ -100,3 +106,5 @@ AUO Display manufacturers the HiRaso family of ChLCDs.
 [^iris-optronics-full-color-chlcd]: IRIS Optronics. _Full Color Cholesteric Liquid Crystal Display (ChLCD) e-Paper Module_ [product page]. Retrieved 2026-05-18, from https://iris-opt.com/en/products/full-color-chlcd/.
 [^iris-optronics-company-introduction]: IRIS Optronics. _Company Introduction_. Retrieved 2026-05-18, from https://iris-opt.com/en/about-iris/company-introduction/.
 [^auo-display-plus-hiraso-display-technology]: AUO Display Plus. _HiRaso Display Technology_ [product page]. Retrieved 2026-05-18, from https://www.auodplus.com/en-global/technology/HiRaso_display_technology.
+[^ite-it8951]: ITE. _IT8951_ [product page]. Retrieved 2026-05-25, from https://www.ite.com.tw/en/product/cate5/IT8951.
+[^gitlab-zephray-glider]: zephray. _zephray/glider_ [GitLab repository]. GitLab. Retrieved 2026-05-25, from https://gitlab.com/zephray/glider.

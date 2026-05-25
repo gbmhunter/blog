@@ -74,6 +74,25 @@
   font-size: 0.9rem;
 }
 
+.resistor-divider__input-with-suffix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.resistor-divider__input-with-suffix .resistor-divider__input {
+  padding-right: 1.8rem;
+}
+
+.resistor-divider__suffix {
+  position: absolute;
+  right: 0.6rem;
+  color: var(--sl-color-gray-2);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
 .resistor-divider__input--error {
   border-color: var(--sl-color-accent);
 }

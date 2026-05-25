@@ -10,9 +10,9 @@ const TARGETS = ['beta', 'refR', 'refT', 'R', 'T'];
 
 const VARS = {
   beta: { label: 'β',                  parse: parseUnitless,   format: formatUnitless,    suffix: '',  placeholder: '3950' },
-  refR: { label: <>R<sub>0</sub></>,   parse: parseResistance, format: formatResistance,  suffix: '',  placeholder: '10k' },
+  refR: { label: <>R<sub>0</sub></>,   parse: parseResistance, format: formatResistance,  suffix: 'Ω', placeholder: '10k' },
   refT: { label: <>T<sub>0</sub></>,   parse: parseTempK,      format: formatTempK,       suffix: 'K', placeholder: '298.15' },
-  R:    { label: 'R',                  parse: parseResistance, format: formatResistance,  suffix: '',  placeholder: '17.625k' },
+  R:    { label: 'R',                  parse: parseResistance, format: formatResistance,  suffix: 'Ω', placeholder: '17.625k' },
   T:    { label: 'T',                  parse: parseTempK,      format: formatTempK,       suffix: 'K', placeholder: '288.15' },
 };
 

@@ -1,4 +1,4 @@
-import tile from './tile.svg?url';
+import tile from './tile.jpg?url';
 
 export const catalog = {
   id: 'led-resistor',

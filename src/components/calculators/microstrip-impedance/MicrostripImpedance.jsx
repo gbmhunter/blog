@@ -1,60 +1,91 @@
 import { useState, useMemo } from 'preact/hooks';
 import {
-  parseLength,
-  parseDielectric,
-  formatImpedance,
+  LENGTH_UNITS, IMPEDANCE_UNITS, getUnit,
+  parseNumber, formatInUnit,
   computeMicrostripImpedance,
 } from './calc.js';
 import './styles.css';
 
 export default function MicrostripImpedance() {
-  const [wText, setWText] = useState('0.2mm');
-  const [tText, setTText] = useState('35um');
-  const [hText, setHText] = useState('1.6mm');
+  // Each length input keeps a numeric magnitude (text) and a unit label
+  // (matches NinjaCalc's per-row unit dropdown). Conversion to SI happens
+  // when we feed the values to computeMicrostripImpedance.
+  const [w, setW] = useState({ text: '0.2', unit: 'mm' });
+  const [t, setT] = useState({ text: '35',  unit: 'um' });
+  const [h, setH] = useState({ text: '1.6', unit: 'mm' });
   const [eRText, setERText] = useState('4.0');
+  const [zUnit, setZUnit] = useState('Ω');
 
-  const w = useMemo(() => parseLength(wText), [wText]);
-  const t = useMemo(() => parseLength(tText), [tText]);
-  const h = useMemo(() => parseLength(hText), [hText]);
-  const eR = useMemo(() => parseDielectric(eRText), [eRText]);
+  const wParsed = useMemo(() => parseNumber(w.text),  [w.text]);
+  const tParsed = useMemo(() => parseNumber(t.text),  [t.text]);
+  const hParsed = useMemo(() => parseNumber(h.text),  [h.text]);
+  const eRParsed = useMemo(() => parseNumber(eRText), [eRText]);
 
-  const allValid =
-    w.error === null && t.error === null && h.error === null && eR.error === null;
+  const allValid = [wParsed, tParsed, hParsed, eRParsed].every((p) => p.error === null);
 
   let computed = { impedance: NaN, eEff: NaN, error: null };
   if (allValid) {
     computed = computeMicrostripImpedance({
-      trackWidth: w.value,
-      trackThickness: t.value,
-      substrateHeight: h.value,
-      dielectric: eR.value,
+      trackWidth:      wParsed.value * getUnit(LENGTH_UNITS, w.unit).multiplier,
+      trackThickness:  tParsed.value * getUnit(LENGTH_UNITS, t.unit).multiplier,
+      substrateHeight: hParsed.value * getUnit(LENGTH_UNITS, h.unit).multiplier,
+      dielectric:      eRParsed.value,
     });
   }
 
   return (
     <div class="microstrip">
       <div class="microstrip__legend">
-        Enter the track width, track (copper) thickness, substrate thickness and substrate dielectric
-        constant. The calculator returns the characteristic impedance using the rfcafe approximation.
-        Dimensions accept metric prefixes — e.g. <code>0.2mm</code>, <code>35um</code>.
+        Enter the track width, copper thickness, substrate thickness and substrate dielectric constant.
+        Pick the unit for each dimension from the dropdown. The calculator returns the characteristic
+        impedance using the rfcafe approximation.
       </div>
 
       <div class="microstrip__rows">
-        <InputRow label="w"          value={wText}   onInput={setWText}   placeholder="0.2mm" parsed={w}/>
-        <InputRow label="t"          value={tText}   onInput={setTText}   placeholder="35um"  parsed={t}/>
-        <InputRow label="h"          value={hText}   onInput={setHText}   placeholder="1.6mm" parsed={h}/>
-        <InputRow label={<>ε<sub>r</sub></>} value={eRText}  onInput={setERText}  placeholder="4.0"   parsed={eR}/>
+        <LengthRow label="w"        state={w} setState={setW} parsed={wParsed} placeholder="0.2"/>
+        <LengthRow label="t"        state={t} setState={setT} parsed={tParsed} placeholder="35"/>
+        <LengthRow label="h"        state={h} setState={setH} parsed={hParsed} placeholder="1.6"/>
+
+        <div class="microstrip__row">
+          <span class="microstrip__label">ε<sub>r</sub></span>
+          <div class="microstrip__input-cell">
+            <input
+              type="text"
+              value={eRText}
+              onInput={(e) => setERText(e.currentTarget.value)}
+              placeholder="4.0"
+              spellcheck={false}
+              class={eRParsed.error
+                ? 'microstrip__input microstrip__input--error'
+                : 'microstrip__input'}
+            />
+            {eRParsed.error && <div class="microstrip__input-error">{eRParsed.error}</div>}
+          </div>
+        </div>
 
         <div class="microstrip__row">
           <span class="microstrip__label">Z</span>
-          <div class="microstrip__output">
-            {computed.error ? (
-              <span class="microstrip__output-error">{computed.error}</span>
-            ) : Number.isFinite(computed.impedance) ? (
-              <span class="microstrip__output-value">{formatImpedance(computed.impedance)}</span>
-            ) : (
-              <span class="microstrip__output-empty">—</span>
-            )}
+          <div class="microstrip__output-cell">
+            <div class="microstrip__output">
+              {computed.error ? (
+                <span class="microstrip__output-error">{computed.error}</span>
+              ) : Number.isFinite(computed.impedance) ? (
+                <span class="microstrip__output-value">
+                  {formatInUnit(computed.impedance, getUnit(IMPEDANCE_UNITS, zUnit))}
+                </span>
+              ) : (
+                <span class="microstrip__output-empty">—</span>
+              )}
+            </div>
+            <select
+              class="microstrip__unit-select"
+              value={zUnit}
+              onChange={(e) => setZUnit(e.currentTarget.value)}
+            >
+              {IMPEDANCE_UNITS.map((u) => (
+                <option key={u.label} value={u.label}>{u.label}</option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
@@ -62,21 +93,32 @@ export default function MicrostripImpedance() {
   );
 }
 
-function InputRow({ label, value, onInput, placeholder, parsed }) {
+function LengthRow({ label, state, setState, parsed, placeholder }) {
   return (
     <div class="microstrip__row">
       <span class="microstrip__label">{label}</span>
       <div class="microstrip__input-cell">
-        <input
-          type="text"
-          value={value}
-          onInput={(e) => onInput(e.currentTarget.value)}
-          placeholder={placeholder}
-          spellcheck={false}
-          class={parsed.error
-            ? 'microstrip__input microstrip__input--error'
-            : 'microstrip__input'}
-        />
+        <div class="microstrip__input-with-unit">
+          <input
+            type="text"
+            value={state.text}
+            onInput={(e) => setState({ ...state, text: e.currentTarget.value })}
+            placeholder={placeholder}
+            spellcheck={false}
+            class={parsed.error
+              ? 'microstrip__input microstrip__input--error'
+              : 'microstrip__input'}
+          />
+          <select
+            class="microstrip__unit-select"
+            value={state.unit}
+            onChange={(e) => setState({ ...state, unit: e.currentTarget.value })}
+          >
+            {LENGTH_UNITS.map((u) => (
+              <option key={u.label} value={u.label}>{u.label}</option>
+            ))}
+          </select>
+        </div>
         {parsed.error && <div class="microstrip__input-error">{parsed.error}</div>}
       </div>
     </div>

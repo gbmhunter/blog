@@ -51,7 +51,7 @@ export default function TrackCurrentIpc2152() {
         substrate thermal conductivity. Length inputs accept metric prefixes (e.g. <code>35um</code>, <code>1.6mm</code>).
       </div>
       <div class="calc-form__rows">
-        <InputRow label="I"                                  value={currentText}        onInput={setCurrentText}        placeholder="1A"   parsed={current}/>
+        <InputRow label="I"                                  value={currentText}        onInput={setCurrentText}        placeholder="1"    suffix="A" parsed={current}/>
         <InputRow label={<>ΔT</>}                            value={tempRiseText}       onInput={setTempRiseText}       placeholder="40"   suffix="°C" parsed={tempRise}/>
         <InputRow label={<>t<sub>track</sub></>}             value={trackThicknessText} onInput={setTrackThicknessText} placeholder="35um" parsed={trackThickness}/>
         <InputRow label={<>t<sub>board</sub></>}             value={boardThicknessText} onInput={setBoardThicknessText} placeholder="1.6mm" parsed={boardThickness}/>
@@ -62,11 +62,15 @@ export default function TrackCurrentIpc2152() {
         <InputRow label={<>κ</>}                              value={thermalCondText}    onInput={setThermalCondText}    placeholder="0.20" suffix="W/m·K" parsed={thermalCond}/>
 
         <OutputRow label={<>w<sub>min</sub></>}              value={r.minTrackWidth}            format={formatLength}  error={r.error}/>
-        <OutputRow label="Area"                              value={r.adjustedArea}             format={formatArea}    error={r.error}/>
+
+        <div class="track-2152__divider">Intermediate values</div>
+
+        <OutputRow label="A unadj."                          value={r.unadjustedArea}           format={formatArea}    error={r.error}/>
         <OutputRow label="t mod"                             value={r.trackThicknessModifier}   format={formatRatio}   error={r.error}/>
         <OutputRow label="board mod"                         value={r.boardThicknessModifier}   format={formatRatio}   error={r.error}/>
         <OutputRow label="plane mod"                         value={r.planeProximityModifier}   format={formatRatio}   error={r.error}/>
         <OutputRow label="κ mod"                             value={r.thermalConductivityModifier} format={formatRatio} error={r.error}/>
+        <OutputRow label="A adj."                            value={r.adjustedArea}             format={formatArea}    error={r.error}/>
       </div>
     </div>
   );

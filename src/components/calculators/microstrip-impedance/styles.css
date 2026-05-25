@@ -69,6 +69,41 @@
   font-size: 0.9rem;
 }
 
+/* Combined value-input + unit-dropdown layout for length rows. */
+.microstrip__input-with-unit {
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.microstrip__input-with-unit .microstrip__input {
+  flex: 1;
+  min-width: 0;
+}
+
+.microstrip__unit-select {
+  box-sizing: border-box;
+  height: 2rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+/* Output cell: result box + unit dropdown side by side. */
+.microstrip__output-cell {
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.microstrip__output-cell .microstrip__output {
+  flex: 1;
+}
+
 .microstrip__input--error {
   border-color: var(--sl-color-accent);
 }

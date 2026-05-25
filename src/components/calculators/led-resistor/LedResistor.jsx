@@ -12,9 +12,9 @@ import {
 import './styles.css';
 
 export default function LedResistor() {
-  const [supplyVoltageText, setSupplyVoltageText] = useState('3.3V');
+  const [supplyVoltageText, setSupplyVoltageText] = useState('3.3');
   const [colour, setColour] = useState('Red');
-  const [customVfText, setCustomVfText] = useState('2.0V');
+  const [customVfText, setCustomVfText] = useState('2.0');
   const [ledCurrentText, setLedCurrentText] = useState('20m');
 
   const supplyParsed = useMemo(() => parseVoltage(supplyVoltageText), [supplyVoltageText]);
@@ -53,16 +53,19 @@ export default function LedResistor() {
         <div class="led-resistor__row">
           <span class="led-resistor__label">V<sub>CC</sub></span>
           <div class="led-resistor__input-cell">
-            <input
-              type="text"
-              value={supplyVoltageText}
-              onInput={(e) => setSupplyVoltageText(e.currentTarget.value)}
-              placeholder="3.3V"
-              spellcheck={false}
-              class={supplyParsed.error
-                ? 'led-resistor__input led-resistor__input--error'
-                : 'led-resistor__input'}
-            />
+            <div class="led-resistor__input-with-suffix">
+              <input
+                type="text"
+                value={supplyVoltageText}
+                onInput={(e) => setSupplyVoltageText(e.currentTarget.value)}
+                placeholder="3.3"
+                spellcheck={false}
+                class={supplyParsed.error
+                  ? 'led-resistor__input led-resistor__input--error'
+                  : 'led-resistor__input'}
+              />
+              <span class="led-resistor__suffix">V</span>
+            </div>
             {supplyParsed.error && <div class="led-resistor__input-error">{supplyParsed.error}</div>}
           </div>
         </div>
@@ -88,16 +91,19 @@ export default function LedResistor() {
           <span class="led-resistor__label">V<sub>F</sub></span>
           {isCustom ? (
             <div class="led-resistor__input-cell">
-              <input
-                type="text"
-                value={customVfText}
-                onInput={(e) => setCustomVfText(e.currentTarget.value)}
-                placeholder="2.0V"
-                spellcheck={false}
-                class={customVfParsed.error
-                  ? 'led-resistor__input led-resistor__input--error'
-                  : 'led-resistor__input'}
-              />
+              <div class="led-resistor__input-with-suffix">
+                <input
+                  type="text"
+                  value={customVfText}
+                  onInput={(e) => setCustomVfText(e.currentTarget.value)}
+                  placeholder="2.0"
+                  spellcheck={false}
+                  class={customVfParsed.error
+                    ? 'led-resistor__input led-resistor__input--error'
+                    : 'led-resistor__input'}
+                />
+                <span class="led-resistor__suffix">V</span>
+              </div>
               {customVfParsed.error && (
                 <div class="led-resistor__input-error">{customVfParsed.error}</div>
               )}
@@ -113,16 +119,19 @@ export default function LedResistor() {
         <div class="led-resistor__row">
           <span class="led-resistor__label">I<sub>LED</sub></span>
           <div class="led-resistor__input-cell">
-            <input
-              type="text"
-              value={ledCurrentText}
-              onInput={(e) => setLedCurrentText(e.currentTarget.value)}
-              placeholder="20m"
-              spellcheck={false}
-              class={ledCurrentParsed.error
-                ? 'led-resistor__input led-resistor__input--error'
-                : 'led-resistor__input'}
-            />
+            <div class="led-resistor__input-with-suffix">
+              <input
+                type="text"
+                value={ledCurrentText}
+                onInput={(e) => setLedCurrentText(e.currentTarget.value)}
+                placeholder="20m"
+                spellcheck={false}
+                class={ledCurrentParsed.error
+                  ? 'led-resistor__input led-resistor__input--error'
+                  : 'led-resistor__input'}
+              />
+              <span class="led-resistor__suffix">A</span>
+            </div>
             {ledCurrentParsed.error && (
               <div class="led-resistor__input-error">{ledCurrentParsed.error}</div>
             )}

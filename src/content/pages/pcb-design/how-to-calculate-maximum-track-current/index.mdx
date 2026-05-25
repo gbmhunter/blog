@@ -51,6 +51,10 @@ The current in assumed to be constant (DC). However, you can use the RMS value f
 
 The temperature of the PCB material should NEVER exceed the relative thermal index (RTI) of the material. This is defined in UL746B as the temperature at which 50% of the materials properties are retained after 100,000 hours.
 
+### IPC-2221A Track Current Calculator
+
+<TrackCurrentIpc2221a client:load />
+
 ## IPC-2152
 
 The second standard, IPC-2152, is a much newer standard. It has a more technical and presumably accurate method for calculating the maximum track current.
@@ -81,17 +85,29 @@ import ipc_2152_universal_chart from './_assets/ipc-2152-universal-chart.png'
 
 1. The adjusted cross-sectional area
 
-### That's Hard Work, Can It Be Any Easier?
-
-Glad you asked! Use one of the calculators below — IPC-2152 wherever possible, falling back to the simpler IPC-2221A if you don't have the substrate and plane-proximity data.
-
-#### Track Current IPC-2152 Calculator
+### IPC-2152 Track Current Calculator
 
 <TrackCurrentIpc2152 client:load />
 
-#### Track Current IPC-2221A Calculator
+The calculator uses equations built from the data provided in the IPC-2152 graphs. Data points were extracted from the graphs using [WebPlotDigitizer](http://arohatgi.info/WebPlotDigitizer/) (a great program by-the-way). Suitable trend lines were then fitted. In the case of the three-variable graphs, trend lines were fitted to the coefficients of the first set of trend lines.
 
-<TrackCurrentIpc2221a client:load />
+The accuracy of the calculator (w.r.t. the IPC-2152 graphs) is quite high within the range of data provided by these graphs. Outside of that, extrapolation can become inaccurate quickly because some modifiers use 5th-order polynomials to model the data (this was the best choice). Other graphs were modelled with power equations of the form $y = Ax^B$ and are likely to be more accurate when extrapolated.
+
+Below is an example of the trend-line fitting process. This image shows the "Copper Thickness Modifier" data from IPC-2152, along with 5th-order polynomials fitted to each data set. The data for the 3 oz. copper weight is a horizontal line at $y = 1$ by definition.
+
+<Image src={import('./_assets/ipc-2152-copper-thickness-modifier-graph-with-trendlines.png')} width="500px">Copper-thickness modifier data from IPC-2152 with 5th-order polynomials fitted to each copper weight.</Image>
+
+The coefficients of the above trend lines were then plotted against copper weight (a.k.a. track thickness). The graph below shows coefficient $C_5$ (the coefficient in front of $x^5$) against copper weight. These had their own trend lines fitted. Note that there are only four data points and the fitted trend line is a third-degree polynomial, which is guaranteed to fit the data perfectly. This is probably the most dangerous part of the "discrete graphed data sets to continuous equations" conversion.
+
+<Image src={import('./_assets/ipc-2152-copper-thickness-modifier-copper-weight-versus-c5-graph.png')} width="500px">Coefficient C5 of the fitted 5th-order polynomial plotted against copper weight, with its own third-degree polynomial fit.</Image>
+
+The current is assumed to be constant (DC). However, you can use the RMS value for a pulsed current as long as the pulses are fast enough.
+
+The temperature of the PCB material should NEVER exceed the _relative thermal index_ (RTI) of the material. This is defined in UL746B as the temperature at which 50% of the material's properties are retained after 100,000 hours.
+
+Remember this calculator does not take into account other nearby heat sources.
+
+IPC-2152 is designed to supersede the older IPC-2221A standard. It produces a more accurate track-width calculation, but requires more variables. If you don't have all of those inputs (board thickness, plane proximity, substrate thermal conductivity), fall back to the IPC-2221A calculator below.
 
 ## External Resources
 
