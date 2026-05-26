@@ -66,11 +66,19 @@ Disadvantages:
 
 ### How ChLCDs Work
 
+Cholesteric refers so molecules which arrange themselves in a certain direction in a layer, and then when these layers are stacked on-top of each other, the direction of each layer slowly rotates to form a helix. The name cholesteric comes from cholesterol, as this behaviour was first observed in derivatives of cholesterol.[^wikipedia-cholesteric-liquid-crystal]
+
+<Image src={import('./_assets/cholesteric-liquid-crystal-helix-diagram.svg')} width="500px">In a cholesteric liquid crystal, the rod-shaped molecules in each layer all point in the same direction, but that direction rotates from one layer to the next. The distance over which the orientation completes a full 360° rotation is called the *pitch*, $p$.</Image>
+
+The helical pitch $p$ of the molecules can be adjusted to either transmit or reflect specific wavelengths of light.
+
 ChLCDs contain three liquid crystal layers, red, green and blue. Pixels on each layer can be controlled via electrical signals which alter the local electric field around a pixel. Different voltages align the crystals in different ways which changes the optical properties of the layer. The three textures are:
 
 - Planar texture
 - Focal conic texture
 - Homeotropic texture: The rod-like crystals align perpendicular to the substrate. This allows the light to pass through the layer. If all RGB layers are in this state, the pixel shows the background substrate colour (typically black).[^iris-optronics-how-chlcd-works]
+
+The full colour spectrum is achieved via the well-used additive principle of the three primary colours from the three layers.
 
 Solar panels can also be placed behind all of the colour layers. If the colour layers are designed to pass infrared light, then a ChLCD can be used as both a display and a power source.[^iris-optronics-how-chlcd-works]
 

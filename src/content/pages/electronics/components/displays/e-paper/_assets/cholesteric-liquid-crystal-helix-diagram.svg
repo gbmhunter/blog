@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 95 440 465" width="440" height="465">
+  <title>Cholesteric liquid crystal helical layer structure</title>
+
+  <!-- ====================================================== -->
+  <!--  TRUE ISOMETRIC PROJECTION                              -->
+  <!--                                                         -->
+  <!--  Each layer is a horizontal square (100 × 100 in 3D)    -->
+  <!--  shown in isometric view. The in-plane basis vectors    -->
+  <!--  project as:                                            -->
+  <!--    3D u → 2D ( 0.707, −0.408)                           -->
+  <!--    3D v → 2D (−0.707, −0.408)                           -->
+  <!--  So a 100-side square renders as a diamond with         -->
+  <!--  corners at front (0, 0), right (71, −41),              -->
+  <!--  back (0, −82), left (−71, −41).                        -->
+  <!--                                                         -->
+  <!--  Layers use a semi-transparent fill (≈10% alpha) so the -->
+  <!--  back edges of layers further down show through the     -->
+  <!--  layers above them.                                     -->
+  <!--                                                         -->
+  <!--  Rod-shaped molecules (3D direction (cos θ, sin θ, 0))  -->
+  <!--  are foreshortened by the isometric projection. The     -->
+  <!--  factor depends on θ: 0.577 (θ = 45°, 225°),            -->
+  <!--  0.816 (θ = 0°, 90°, 180°, 270°), 1.0 (θ = 135°, 315°). -->
+  <!-- ====================================================== -->
+
+  <defs>
+    <!-- Reusable rod glyph. transform="rotate(2D_angle) scale(factor, 1)"
+         applied at each call site to orient and foreshorten the rod. -->
+    <rect id="rod" x="-18" y="-2.5" width="36" height="5" rx="2.5"
+          fill="#c60e00" stroke="#6b0500" stroke-width="0.6"/>
+    <!-- Reusable diamond shape (one layer). -->
+    <polygon id="layer" points="0,0 71,-41 0,-82 -71,-41"
+             fill="rgba(198,14,0,0.10)" stroke="#6b7280" stroke-width="1"/>
+  </defs>
+
+  <!-- ====================================================== -->
+  <!--  LAYERS, drawn bottom (closest to ground) up so each    -->
+  <!--  upper layer is rendered on top of the layers below.    -->
+  <!--  Because the upper layers' fill is semi-transparent,    -->
+  <!--  the back edges of the layers underneath remain visible -->
+  <!--  through them.                                          -->
+  <!-- ====================================================== -->
+
+  <!--  Layer 0 — θ = 0°   (factor 0.816, 2D angle −30°)  -->
+  <g transform="translate(220, 460)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(-30) scale(0.816, 1)"/>
+  </g>
+
+  <!--  Layer 1 — θ = 45°  (factor 0.577, 2D angle −90°)  -->
+  <g transform="translate(220, 427)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(-90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(-90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(-90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(-90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(-90) scale(0.577, 1)"/>
+  </g>
+
+  <!--  Layer 2 — θ = 90°  (factor 0.816, 2D angle −150°)  -->
+  <g transform="translate(220, 394)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(-150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(-150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(-150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(-150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(-150) scale(0.816, 1)"/>
+  </g>
+
+  <!--  Layer 3 — θ = 135° (factor 1.0,  2D angle 180°)  -->
+  <g transform="translate(220, 361)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(180) scale(1, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(180) scale(1, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(180) scale(1, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(180) scale(1, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(180) scale(1, 1)"/>
+  </g>
+
+  <!--  Layer 4 — θ = 180° (factor 0.816, 2D angle 150°)  -->
+  <g transform="translate(220, 328)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(150) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(150) scale(0.816, 1)"/>
+  </g>
+
+  <!--  Layer 5 — θ = 225° (factor 0.577, 2D angle 90°)  -->
+  <g transform="translate(220, 295)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(90) scale(0.577, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(90) scale(0.577, 1)"/>
+  </g>
+
+  <!--  Layer 6 — θ = 270° (factor 0.816, 2D angle 30°)  -->
+  <g transform="translate(220, 262)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(30) scale(0.816, 1)"/>
+  </g>
+
+  <!--  Layer 7 — θ = 315° (factor 1.0,  2D angle 0°)  -->
+  <g transform="translate(220, 229)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(0) scale(1, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(0) scale(1, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(0) scale(1, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(0) scale(1, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(0) scale(1, 1)"/>
+  </g>
+
+  <!--  Layer 8 — θ = 360° (factor 0.816, 2D angle −30°)  -->
+  <!--  Same orientation as layer 0; marks the end of one pitch.  -->
+  <g transform="translate(220, 196)">
+    <use href="#layer"/>
+    <use href="#rod" transform="translate(0,    -40.8) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -24.5) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(28.3, -40.8) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(0,    -57.1) rotate(-30) scale(0.816, 1)"/>
+    <use href="#rod" transform="translate(-28.3,-40.8) rotate(-30) scale(0.816, 1)"/>
+  </g>
+
+  <!-- ====================================================== -->
+  <!--  PITCH DIMENSION ARROW                                 -->
+  <!--  Spans from the front corner of layer 0 to the front   -->
+  <!--  corner of layer 8 — one full helical pitch.            -->
+  <!-- ====================================================== -->
+
+  <g transform="translate(360, 196)" stroke="#4b5563" fill="#4b5563">
+    <line x1="-4" y1="0"   x2="20" y2="0"   stroke-width="1.5"/>
+    <line x1="-4" y1="264" x2="20" y2="264" stroke-width="1.5"/>
+    <line x1="8"  y1="0"   x2="8"  y2="264" stroke-width="1.5"/>
+    <polygon points="8,0   4,12  12,12"/>
+    <polygon points="8,264 4,252 12,252"/>
+    <text x="22" y="128" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="18" fill="#222">p</text>
+    <text x="22" y="144" font-size="11">pitch</text>
+    <text x="22" y="158" font-size="11">(one full</text>
+    <text x="22" y="172" font-size="11">rotation)</text>
+  </g>
+
+  <!-- ====================================================== -->
+  <!--  ANGLE LABELS (left side)                              -->
+  <!-- ====================================================== -->
+
+  <g font-size="11" fill="#4b5563" text-anchor="end">
+    <text x="100" y="200">360°</text>
+    <text x="100" y="332">180°</text>
+    <text x="100" y="464">0°</text>
+  </g>
+
+  <!-- ====================================================== -->
+  <!--  CAPTION                                               -->
+  <!-- ====================================================== -->
+
+  <text x="220" y="510" text-anchor="middle" font-size="13" fill="#222">
+    Each square layer is shown in isometric view; rod-shaped molecules within
+  </text>
+  <text x="220" y="528" text-anchor="middle" font-size="13" fill="#222">
+    each layer all point in one direction, which rotates between layers.
+  </text>
+</svg>
