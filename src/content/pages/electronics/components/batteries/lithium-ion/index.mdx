@@ -1,14 +1,15 @@
 ---
 authors: [gbmhunter]
 date: 2023-07-31
-lastUpdated: 2023-07-31
+description: Lithium-ion (or li-ion) is a popular chemistry for a rechargeable battery that uses the recombination of Lithium ions with their missing electrons to generate electricity.
+lastUpdated: 2026-05-26
 title: Lithium-ion Batteries
 type: page
 ---
 
 <WarningIsNotes />
 
-A lithium-ion (or li-ion) battery is a rechargeable battery that uses the recombination of Lithium ions with their missing electron to generate electricity, and the reverse of this process to recharge[^wikipedia-lithium-ion-battery].
+A lithium-ion (or li-ion) battery is a rechargeable battery that uses the recombination of Lithium ions with their missing electrons to generate electricity, and the reverse of this process to recharge.[^wikipedia-lithium-ion-battery]
 
 Lithium-ion batteries can be considered a family of battery technologies including:
 
@@ -53,19 +54,25 @@ The below table shows some of the basic properties of Lithium-ion batteries:
 
 ## Self Discharge
 
-Lithium-ion batteries have a self-discharge rate which is 10 times less than NiMH batteries[^ti-li-ion-battery-charger-jeita-compliance].
+Lithium-ion batteries experience about 1-5% of self-discharge per month. This means that they loose 1-5% of their remaining energy each month, even when there is no external power draw. Note that it is a percentage of their **remaining** energy, not a percentage of their maximum energy. This means the energy loss follows an exponential decay.
+
+<Image src={import('./_assets/lithium-ion-self-discharge-vs-time.svg')} width="640">State of charge over time for a lithium-ion battery starting at 100 %, plotted for 1 %, 3 % and 5 % monthly self-discharge rates. Because each month's loss is a percentage of the *remaining* charge, the decay is exponential ($SoC(t) = 100 \cdot (1 - r)^t$).</Image>
+
+For a quality battery, the percentage is often quoted around 1-2% per month. You also have to take into account any battery protection circuitry which adds additional discharge current (this is usually a fixed current draw rather than an exponentially decaying drop).[^bonnen-batteries-lithium-self-discharge]
+
+Lithium-ion batteries have a better self-discharge rather than other common rechargeable chemistries. NiMH has a self-discharge rate about ten times higher than Lithium-ion.[^ti-li-ion-battery-charger-jeita-compliance]
 
 ## Charging
 
 The common way to charge a Lithium-ion battery is to follow these steps:
 
 1. The pre-charge stage, which is only applicable if the battery is really flat (less than 2.8V). The battery is charged with a constant-current, usually 10% of current used in the next stage (sometimes called the fast charge).
-1. Charge the battery with a constant current (CC), at a rate of around 0.5-1C[^battery-university-bu-409-charging-li-ion].
+1. Charge the battery with a constant current (CC), at a rate of around 0.5-1C.[^battery-university-bu-409-charging-li-ion]
 1. Once the battery reaches a certain voltage (typically 3.9-4.2V), we switch from CC charging to CV charging. We maintain this voltage while the current begins to decrease.
 1. Stop charging once the current drops to approximately 0.1C. 
 
 <Aside type="caution">
-It is not healthy to store a Lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to be provide the best lifetime[^battery-university-bu-702-how-to-store-batteries]. 
+It is not healthy to store a Lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to be provide the best lifetime.[^battery-university-bu-702-how-to-store-batteries]
 </Aside>
 
 1C is the current required to drain the battery in 1 hour, e.g. for a 500mAh battery, 1C is 500mA. Most battery charger ICs will automatically perform the above steps for you.
@@ -87,7 +94,12 @@ Four phases:
 
 The `RT9485` has an on-board MCU.
 
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^ti-li-ion-battery-charger-jeita-compliance]: Jinrong Qian (2010). _Li-ion battery-charger solutions for JEITA compliance_. Texas Instruments. Retrieved 2023-07-31, from https://www.ti.com/lit/an/slyt365/slyt365.pdf.
 [^wikipedia-lithium-ion-battery]: Wikipedia (2023, Jul 27). _Lithium-ion battery_. Retrieved 2023-07-31, from https://en.wikipedia.org/wiki/Lithium-ion_battery.
 [^battery-university-bu-409-charging-li-ion]: Battery University (2021, Oct 25). _BU-409: Charging Lithium-ion_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-409-charging-lithium-ion.
 [^battery-university-bu-702-how-to-store-batteries]: Battery University (2021, Oct 21). _BU-702: How to Store Batteries_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-702-how-to-store-batteries.
+[^bonnen-batteries-lithium-self-discharge]: Bonnen Batteries. _Lithium Battery Self-Discharge Explained: What Engineers and Buyers Must Know_. Retrieved 2026-05-26, from https://www.bonnenbatteries.com/lithium-battery-self-discharge-explained-what-engineers-and-buyers-must-know/.
