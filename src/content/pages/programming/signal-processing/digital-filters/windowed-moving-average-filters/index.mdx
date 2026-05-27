@@ -13,7 +13,7 @@ import MovingAverageFilter from 'src/components/calculators/moving-average-filte
 _Windowed moving average filters_ are a family of filters which have a finite impulse response (FIR). They all use a finite-length window of data points to calculate the averaged output. The easiest moving average filter to understand is the _Simple Moving Average_ (SMA) filter (also called a **box-car filter**), which uses a window in where all the inputs values are weighted equally (coefficients are equal). Other moving average filters include the _Windowed Exponential Moving Average_ (EMA) filter, with exponentially-weighted coefficients.
 
 <Aside type="note">
-"Exponential Moving Average" can also refer to a non-windowed IIR filter, so we are explicit can call this the "Windowed Exponential Moving Average" filter.
+"Exponential Moving Average" can also refer to a non-windowed IIR filter, so we are explicit and call this the "Windowed Exponential Moving Average" filter.
 </Aside>
 
 ## Terminology
@@ -24,13 +24,13 @@ First off, some terminology.
 
 * Symbol: $N$
 
-The _window size_ is number of data points used in a moving average filter. $M$ is another letter commonly used to represent the same thing.
+The _window size_ is the number of data points used in a moving average filter. $M$ is another letter commonly used to represent the same thing.
 
 ### Normalized Frequency (F)
 
 * Symbol: $F$
 
-The normalised frequency, with units $Hz/sample$. This describes an frequency component in a filter relative to the sampling frequency (e.g. a normalized frequency $F$ of 0.1 means there are 10 samples per cycle. The signal is at Nyquist when $F=0.5$. This is a frequency in the discrete time-domain. Do not confuse with $f$ which is a frequency in the continuous time-domain.
+The normalised frequency, with units $cycles/sample$. This describes a frequency component in a filter relative to the sampling frequency (e.g. a normalized frequency $F$ of 0.1 means there are 10 samples per cycle). The signal is at Nyquist when $F=0.5$. This is a frequency in the discrete time-domain. Do not confuse with $f$ which is a frequency in the continuous time-domain.
 
 To convert from a standard frequency $f$ to a normalized frequency $F$, use the equation:
 
@@ -41,7 +41,7 @@ F = \frac{f}{f_s}
 $$
 
 <p className="centered">where:<br/>
-$ F $ is the normalized frequency, in $Hz/sample$<br/>
+$ F $ is the normalized frequency, in $cycles/sample$<br/>
 $ f $ is the standard frequency, in $ Hz $<br/>
 $ f_s $ is the sample rate, in $ Hz $<br/></p>
 
@@ -59,7 +59,7 @@ The sample frequency of a waveform, measured in the continuous time-domain. This
 
 ## Simple Moving Average Filter
 
-The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one of the most commonly used digital filters (or averaging device), due to it's simplicity and ease of use. Although SMA filters are simple, they are first equal (there are other filters that perform as good as, but not better) **at reducing random noise whilst retaining a sharp step response**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to separate one band of frequencies from another[^analog-devices-dsp-book-ch15].
+The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one of the most commonly used digital filters (or averaging device), due to it's simplicity and ease of use. Although SMA filters are simple, they are tied for best (other filters perform as well, but none better) **at reducing random noise whilst retaining a sharp step response**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to separate one band of frequencies from another[^analog-devices-dsp-book-ch15].
 
 The following plot shows the effect of a SMA filter. The data used is New Zealand's national average temperature (data from https://data.mfe.govt.nz/table/89453-new-zealands-national-temperature-19092016/):
 
@@ -116,13 +116,13 @@ y[9] = \frac{x[11] + x[10] + x[9] + x[8] + x[7]}{5}
 \end{align}
 $$
 
-Symmetric simple moving averages require $N$ to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_)**. Most SMA filters used on stock market data use a left-handed filter so that it is real-time.
+Symmetric simple moving averages require $N$ to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-causal_)**. Most SMA filters used on stock market data use a left-handed filter so that it is real-time.
 
-When treating a simple moving average filter as a FIR, the coefficients are all equal. The order of the filter is 1 less than the value you divide each value by. The coefficients are given by the following equation:
+When treating a simple moving average filter as a FIR, the coefficients are all equal. There are $N$ coefficients (one per point in the window), and the filter order is $N - 1$. Each coefficient is:
 
 $$
 \begin{align}
-b_i = \frac{1}{N + 1}
+b_i = \frac{1}{N}
 \end{align}
 $$
 
@@ -179,7 +179,7 @@ For interest, let's have a look at how increasing the window size effects the fr
 
 <Image src={import('./sma-freq-response-various-window-sizes.png')} width="500px">Plot showing what effect an increasing window size has on the frequency response (magnitude) of a SMA filter.</Image>
 
-As expected, increasing the window size decreases the cut-off frequency and also improves the roll-off. However, for a left-handed (casual) SMA filter, it also significantly increases the phase shift (or time delay!), so normally a trade-off has to be made.
+As expected, increasing the window size decreases the cut-off frequency and also improves the roll-off. However, for a left-handed (causal) SMA filter, it also significantly increases the phase shift (or time delay!), so normally a trade-off has to be made.
 
 ### Moving Average Filter Designer
 
@@ -278,7 +278,7 @@ y[9] = y[8] + \frac{1}{5}(x[9] - x[4])
 \end{align}
 $$
 
-This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large. Whilst this dependence on previous output ($y[9]$ depends on $y[8]$) makes it look like an IIR filter, this recursion trick does not change the SMAs behaviour, and it still an FIR filter (once the input flies "past" the end of the window, it has no bearing on the output).
+This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large. Whilst this dependence on previous output ($y[9]$ depends on $y[8]$) makes it look like an IIR filter, this recursion trick does not change the SMAs behaviour, and it's still an FIR filter (once the input flies "past" the end of the window, it has no bearing on the output).
 
 <Aside type="note">
 The simple moving average filter is the only such window-based filter which can be speed up with this recursion trick. Other forms like exponential, Gaussian and Blackman moving averages have to use computationally expensive convolution.
@@ -337,8 +337,8 @@ def sma_example_code():
 
     for idx, input in enumerate(inputs):
         # Use recursive SMA algorithm
-        moving_average = moving_average + 
-            (1/window_length)*(input - window[curr_pos])
+        moving_average = (moving_average
+            + (1/window_length)*(input - window[curr_pos]))
 
         # Save new input into window at correct position (overwrite oldest)
         window[curr_pos] = input
@@ -448,7 +448,7 @@ TODO: Add more info.
 
 ## A Comparison Of The Popular Window Shapes
 
-Stuck on what window shape to use? If a simple moving average won't suffice in it's simplicity, it might then depend on the frequency response you are after. Popular window shapes and their frequency responses are shown below. All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
+Stuck on what window shape to use? If a simple moving average won't suffice in its simplicity, it might then depend on the frequency response you are after. Popular window shapes and their frequency responses are shown below. All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
 
 The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
 
