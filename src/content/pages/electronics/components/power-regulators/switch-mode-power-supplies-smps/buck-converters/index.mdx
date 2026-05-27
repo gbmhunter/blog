@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2015-03-24
 description: Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters.
-lastUpdated: 2023-07-15
+lastUpdated: 2026-05-27
 tags: [electronics, components, power regulators, SMPS, buck converter, power electronics, inductor, capacitor, regulation, control methods, constant frequency, current-mode, SNVA555, PCM, peak current mode, CCM, constant current mode]
 title: Buck Converters
 type: page
@@ -19,7 +19,7 @@ To learn more about EMI/EMC considerations regarding buck converters, see the [E
 
 ## How A Buck Converter Works
 
-The output voltage of a buck converter is purely determined by the input voltage $V_{IN}$ and the percentage of time that the switch spend on during each switching cycle, $D$:
+The output voltage of a buck converter is purely determined by the input voltage $V_{IN}$ and the percentage of time that the switch spends in the on-state during each switching cycle, $D$:
 
 $$
 \begin{align}
@@ -37,7 +37,7 @@ $$
 
 <p className="centered">where:<br/>
 $t_{on}$ is the on time of the switch, in seconds<br/>
-$T$ is the switching frequency, in seconds ($t_{on} + t_{off}$)<br/></p>
+$T$ is the switching period, in seconds ($t_{on} + t_{off}$)<br/></p>
 
 <Aside type="note">
 The simple equation showing $V_{OUT}$ is only dependent on $V_{IN}$ and $D$ is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor) AND the inductor is in continuous conduction (i.e. current never drops to 0). In the real world there are always parasitics, however this equation is still a good first approximation to help understand how it works.
@@ -65,11 +65,11 @@ This analysis method of realizing the average voltage across the inductor must b
 
 When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
-<Image src={import('./_assets/buck-converter-schematic-current-path-ton.svg')} width="500">Current path when the switch is **closed** (during $t_{on}$ ).</Image>
+<Image src={import('./_assets/buck-converter-schematic-current-path-ton.svg')} width="500px">Current path when the switch is **closed** (during $t_{on}$ ).</Image>
 
 When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing $D1$, as shown below:
 
-<Image src={import('./_assets/buck-converter-schematic-current-path-toff.svg')} width="500">Current path when the switch is **open** (during $t_{off}$).</Image>
+<Image src={import('./_assets/buck-converter-schematic-current-path-toff.svg')} width="500px">Current path when the switch is **open** (during $t_{off}$).</Image>
 
 $C1$ (which is also called $C_{OUT}$) is to reduce the voltage ripple at the output/load.
 
@@ -123,32 +123,30 @@ Hysteretic control has the benefit of being extremely fast to respond to transie
 
 You can use the following equations to select the inductor for a buck converter.
 
-Since the inductor is in series with the input, the average inductor current is also equal to the average input current. So we can use the conversation of energy (energy in = energy out) to find the average inductor current using:
+In a buck converter the inductor is in series with the output, so the average inductor current is equal to the average output current:
 
 $$
 \begin{align}
-I_L = I_{OUT} \frac{V_{OUT}}{\eta V_{IN}}
+I_L = I_{OUT}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$I_{OUT}$ is the output current of the buck regulator (pick your maximum)<br/></p>
+
+Then, calculate the value of inductance required with:[^ti-slva477b-basic-calc-buck-power-stage]
+
+$$
+\begin{align}
+L = \frac{V_{OUT} (V_{IN} - V_{OUT})}{\Delta I_L \cdot f \cdot V_{IN}}
 \end{align}
 $$
 
 <p className="centered">where:<br/>
 $V_{IN}$ is the input voltage to the buck regulator<br/>
 $V_{OUT}$ is the output voltage of the buck regulator<br/>
-$I_{OUT}$ is the output current of the buck regulator (pick your maximum)<br/>
-$\eta$ is the efficiency, typically $0.9$ (i.e. 90%)[^ti-slva477b-basic-calc-buck-power-stage]<br/></p>
-
-Then, calculate the value of inductance required with:
-
-$$
-\begin{align}
-L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}}
-\end{align}
-$$
-
-<p className="centered">where:<br/>
 $\Delta I_L$ = the desired ripple current in the inductor<br/>
-$f$ = the switching frequency<br/>
-and everything else as mentioned previously<br/></p>
+$f$ = the switching frequency<br/></p>
 
 The ripple current is typically chosen to be 20-40% of the average current[^ti-slva477b-basic-calc-buck-power-stage]. If we choose 30%, then we can calculate $\Delta I_L$ with:
 
@@ -162,32 +160,33 @@ $$
 Aside from making sure the inductor you pick has at least the inductance calculated above, you also want to make sure that the peak inductor current is less than the inductor's _saturation current_ (otherwise it will stop storing energy in it's magnetic field and stop behaving like an inductor), and the average current is less than the inductor's _rated current_ (otherwise it will overheat).
 </Aside>
 
-## Capacitor Selection
+### Capacitor Selection
 
-The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and it's ESR (equivalent series resistance). The output capacitance of a boost converter can be found using the following equation.
+The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and its ESR (equivalent series resistance). The minimum output capacitance for a buck converter can be found using:[^ti-slva477b-basic-calc-buck-power-stage]
 
 $$
 \begin{align}
-C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}}
+C_{min} = \dfrac{\Delta I_L}{8 f \Delta V}
 \end{align}
 $$
 
 <p className="centered">where:<br/>
+$\Delta I_L$ = the inductor ripple current (from above)<br/>
 $\Delta V$ = the maximum desired output voltage ripple<br/>
-and everything else as mentioned previously<br/></p>
+$f$ = the switching frequency<br/></p>
 
-The actual ripple will be slightly larger than this due to the ESR of the capacitor.
+The actual ripple will be slightly larger than this due to the ESR of the capacitor. The output capacitor carries the inductor ripple current, so the ESR contributes an additional ripple voltage of:
 
 $$
 \begin{align}
-\Delta V_{ESR} = I_O R_{ESR}
+\Delta V_{ESR} = \Delta I_L R_{ESR}
 \end{align}
 $$
 
 <p className="centered">where:<br/>
 $R_{ESR}$ = the parasitic series resistance of the output capacitor<br/></p>
 
-The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. 
+The total output ripple is the sum of the ripple caused by the capacitance, and the ripple caused by the ESR. 
 
 <Aside type="note">
 These equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
@@ -209,7 +208,7 @@ Pick your switching frequency, set the bottom feedback resistor ($R_2$) to a val
 
 ## Synchronous Rectification
 
-When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
+When using a P-channel MOSFET for synchronous rectification, its body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
 
 ## EMC
 
@@ -221,11 +220,15 @@ The input current "hot loop" of a buck converter is the most important part to w
 
 Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter modules in 2015. One of the most impressive features is that this includes the inductor (external capacitors are still required). One example is the LMZ20502, which can provide up to 2A of current with an input voltage range of 2.7-5.5V and a output voltage range of 0.8-3.6V.
 
-<Image src={import('./_assets/photo-of-lmz20502-buck-converter.jpg')} width="306">A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/.</Image>
+<Image src={import('./_assets/photo-of-lmz20502-buck-converter.jpg')} width="300px">A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/.</Image>
 
 Notice how most of the volume on the module is taken up the chip inductor (the big brown thing that dominates most of the image). The dimensions of the package are shown in the diagram below.
 
-<Image src={import('./_assets/microsip-component-package-dimensions.png')} width="500">The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf.</Image>
+<Image src={import('./_assets/microsip-component-package-dimensions.png')} width="500px">The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf.</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^bib-microsemi-v-i-mode]: Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control.
 [^ti-slva477b-basic-calc-buck-power-stage]: Brigitte Hauke (2015, Aug). _Basic Calculation of a Buck Converter's Power Stage_ [Application Report]. Texas Instruments. Retrieved 2023-06-20, from https://www.ti.com/lit/an/slva477b/slva477b.pdf.
