@@ -2,23 +2,58 @@
 authors: [gbmhunter]
 date: 2015-03-24
 description: Control methods, component selection, equations, operation modes, schematics, examples and more info on boost converters.
-lastUpdated: 2023-07-15
+lastUpdated: 2026-05-27
 tags: [electronics, components, power regulators, SMPS, boost converter, power electronics, inductor, capacitor, regulation, control methods, constant frequency, current-mode, SNVA555, PCM, peak current mode, CCM, constant current mode]
 title: Boost Converters
 type: page
 ---
 
+_Boost converters_ (also called _step-up converters_) are a particular topology of [switch-mode power supply](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (SMPS) that use a switching element, inductor, diode (or second switch) and capacitor to convert an input voltage into a **higher** (or equal) output voltage.
+
+To learn more about EMI/EMC considerations regarding boost converters, see the [EMC Design Guidelines page](/electronics/compliance/electromagnetic-compatibility-emc/emc-design-guidelines/).
+
 ## Schematics
 
-Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage $V_{in}$ into a higher or equal output voltage $V_{out}$.
+Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage $V_{IN}$ into a higher or equal output voltage $V_{OUT}$.
 
 <Image src={import('./_assets/boost-converter-basic-schematic.svg')} width="600">The basic schematic of a boost converter. SW1 is typically a MOSFET switched by control logic (not shown).</Image>
+
+## How A Boost Converter Works
+
+For an ideal boost converter (no component losses, operating in continuous conduction) the output voltage is determined purely by the input voltage and the duty cycle $D$:
+
+$$
+\begin{align}
+V_{OUT} = \frac{V_{IN}}{1 - D}
+\end{align}
+$$
+
+$D$ is the duty cycle (the fraction of each switching cycle the switch is on) and varies from $0$ to $1$. Since $1 - D \leq 1$, the output is always greater than or equal to the input — the converter can only step the voltage **up**.
+
+<Aside type="note">
+As with the buck converter, this simple relationship only holds for ideal components and continuous conduction (the inductor current never falls to 0). The [duty cycle equation in the design procedure below](#duty-cycle) folds the real-world losses into an efficiency term $\eta$.
+</Aside>
+
+The same **"the average voltage across the inductor must be 0 over an entire switching cycle"** argument used for the [buck converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/#how-a-buck-converter-works) gives us this equation:
+
+1. When the switch is closed ($t_{on}$), the inductor is connected directly across the input, so the voltage across it is $V_{IN}$. The inductor current ramps up, storing energy in its magnetic field.
+1. When the switch opens ($t_{off}$), the inductor current is forced through the diode to the output. The voltage across the inductor is now $V_{IN} - V_{OUT}$ (negative, since $V_{OUT} > V_{IN}$), so the current ramps back down. The inductor delivers its stored energy to the output **in series with the input source**, which is how the output reaches a higher voltage than the input.
+1. Setting the average (integral) of the inductor voltage over the whole cycle to 0:
+    $$
+    \begin{align}
+    V_{IN} t_{on} + (V_{IN} - V_{OUT}) t_{off} &= 0 \nonumber \\
+    V_{IN}(t_{on} + t_{off}) &= V_{OUT} \, t_{off} \nonumber \\
+    V_{OUT} &= V_{IN} \frac{t_{on} + t_{off}}{t_{off}} \nonumber \\
+            &= \frac{V_{IN}}{1 - D} \nonumber
+    \end{align}
+    $$
+    using $D = \frac{t_{on}}{T}$ and therefore $\frac{t_{off}}{T} = 1 - D$.
 
 ## Design Procedure
 
 ### Duty Cycle
 
-The duty cycle for a boost converter is given by:
+The duty cycle for a boost converter is given by:[^ti-slva372-boost-power-stage]
 
 $$
 \begin{align}
@@ -34,11 +69,11 @@ The inductance can be determined using:
 
 $$
 \begin{align}
-L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L})
+L = (\frac{V_{IN}}{V_{OUT}})^2 \cdot (\frac{V_{OUT} - V_{IN}}{I_{OUT} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L})
 \end{align}
 $$
 
-You don't know $ I_L $ or $ \Delta I_L $ yet, but the trick is here to assume a maximum inductor ripple current $ \Delta I_L $ as a percentage of the average inductor current, $ I_L $. A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
+You don't know $ I_L $ or $ \Delta I_L $ yet, but the trick is here to assume a maximum inductor ripple current $ \Delta I_L $ as a percentage of the average inductor current, $ I_L $. A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM). Thus,
 
 $$
 \begin{align}
@@ -50,11 +85,31 @@ Now the equation for the inductance becomes:
 
 $$
 \begin{align}
-L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta }{0.35})
+L = (\frac{V_{IN}}{V_{OUT}})^2 \cdot (\frac{V_{OUT} - V_{IN}}{I_{OUT} \cdot f_s}) \cdot (\frac{\eta }{0.35})
 \end{align}
 $$
 
 which can be solved as we know all of the variables.
+
+### Output Capacitor
+
+During $t_{on}$ the diode is reverse-biased and the load is supplied **entirely by the output capacitor**. This makes the capacitor's job harder than in a buck converter — it sees a pulsed current rather than the inductor's smooth triangular ripple, so both the RMS ripple current and the resulting output voltage ripple are larger.
+
+The minimum output capacitance for a target output voltage ripple $\Delta V_{OUT}$ is:[^ti-slva372-boost-power-stage]
+
+$$
+\begin{align}
+C_{OUT(min)} = \frac{I_{OUT} \cdot D}{f_s \cdot \Delta V_{OUT}}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$I_{OUT}$ is the output current<br/>
+$D$ is the duty cycle<br/>
+$f_s$ is the switching frequency<br/>
+$\Delta V_{OUT}$ is the maximum desired output voltage ripple<br/></p>
+
+As with the buck converter, the capacitor's ESR adds further ripple on top of this. Because the boost output capacitor also carries significant RMS ripple current, check the capacitor's ripple-current rating, not just its capacitance and voltage rating.
 
 ### Output Current
 
@@ -68,7 +123,7 @@ $$
 
 ### Diode Selection
 
-The maximum reverse voltage of the diode must be at least equal to the output voltage of the boost converter. This is because diode sees the full load voltage when the switch is closed (in a reverse-biased setup).
+The maximum reverse voltage of the diode must be at least equal to the output voltage of the boost converter. This is because the diode sees the full output voltage in reverse when the switch is closed.
 
 ## PCB Routing
 
@@ -82,11 +137,11 @@ Also, if the converter is in DCM and the load current suddenly increases, the ou
 
 ## Turning Off/Disabling
 
-While most boost controllers have an enable/disable pin, this doesn't actually disconnect the input from output, as the switching device is not in series with input and output, as it is in a buck Converter. Thus if you need the load completely disconnected from the input, you will need to add something like a P-Channel MOSFET or load switch to the front-end of the boost converter.
+While most boost controllers have an enable/disable pin, this doesn't actually disconnect the input from output, as the switching device is not in series with input and output, as it is in a buck converter. Thus if you need the load completely disconnected from the input, you will need to add something like a P-Channel MOSFET or load switch to the front-end of the boost converter.
 
 ## Start-up vs. Runtime Minimum Input Voltage Requirements
 
-Some boost converters have differing start-up and runtime minimum input voltage requirements. Typically, the boost converter requires a higher minimum input voltage to start (e.g. 18V), but once running, can run of a lower voltage (e.g. 500mV).
+Some boost converters have differing start-up and runtime minimum input voltage requirements. Typically, the boost converter requires a higher minimum input voltage to start (e.g. 18V), but once running, can run off a lower voltage (e.g. 500mV).
 
 ## Bypass
 
@@ -98,7 +153,7 @@ One gotcha: The "max. current" rating that a manufacturer will provide with a bo
 
 ## Compensation Loop
 
-The compensation loop is part of the feedback mechanism. The below diagram shows a current-mode controlled boost converter with a transconductance amplifier ($ g_m $) providing the feedback.
+The compensation loop is part of the feedback mechanism.[^ti-slva452-compensating-boost] The below diagram shows a current-mode controlled boost converter with a transconductance amplifier ($ g_m $) providing the feedback.
 
 <Image src={import('./_assets/simplified-diagram-current-mode-boost-converter-with-gm-amplifier.png')} width="550">A simplified diagram of a current-mode boost converter with a transconductance amplifier (gm). Image from Texas Instruments Application Report SLVA452 - Compensating the Current-Mode-Controlled Boost Converter.</Image>
 
@@ -108,7 +163,7 @@ External compensation can be added if the manufacturer provides a compensation p
 
 <Image src={import('./_assets/compensation-components-for-tps61087evm-boost-converter-annotated.png')} width="870">The external loop compensation components for the TPS61087 boost regulator. Image from the Texas Instruments TPS61087EVM User's Guide with annotations.</Image>
 
-A resistance between 5-100kR and a capacitance between 1-10nF is typical. A higher resistance corresponds to a faster response time. A lower capacitance corresponds to a higher phase margin.
+A resistance between 5–100 kΩ and a capacitance between 1–10 nF is typical. A higher resistance corresponds to a faster response time. A lower capacitance corresponds to a higher phase margin.
 
 ## Down Conversion
 
@@ -125,3 +180,10 @@ Typically, boost ICs with an internal switch (a converter) can support lower inp
 ## EMC
 
 The output current loop "hot loop" of a boost converter is the most important part to worry about when it comes to EMC. See the [EMC Design Guidelines page](/electronics/compliance/electromagnetic-compatibility-emc/emc-design-guidelines/) for more information.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ti-slva372-boost-power-stage]: Brigitte Hauke. _Basic Calculation of a Boost Converter's Power Stage_ [Application Report]. Texas Instruments. Retrieved 2026-05-27, from https://www.ti.com/lit/an/slva372c/slva372c.pdf.
+[^ti-slva452-compensating-boost]: Texas Instruments. _Compensating the Current-Mode-Controlled Boost Converter (SLVA452)_ [Application Report]. Retrieved 2026-05-27, from https://www.ti.com/lit/an/slva452/slva452.pdf.
