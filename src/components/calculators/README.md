@@ -25,15 +25,15 @@ Two formats are supported. **SVG is preferred** — sharper, smaller, and theme-
 **SVG (preferred):**
 
 - **File name:** `tile.svg` inside the widget folder.
-- **`viewBox`:** `0 0 96 96` (a square canvas, even number for clean math).
-- **Always include explicit `width="96"` and `height="96"` attributes** on the root `<svg>` — browsers loading SVGs via `<img src="...">` need intrinsic dimensions, or `naturalWidth` reports 0 and `aspect-ratio` fallbacks have to kick in.
+- **`viewBox`:** `0 0 150 100` — a **3:2 landscape canvas**, which matches the recommended raster ratio below and reads better in the card than a square. (Older tiles use a square `0 0 96 96` viewBox and still work — they're just letterboxed; see note on the card slot below.)
+- **Always include explicit `width` and `height` attributes** on the root `<svg>` (e.g. `width="150" height="100"`) — browsers loading SVGs via `<img src="...">` need intrinsic dimensions, or `naturalWidth` reports 0 and `aspect-ratio` fallbacks have to kick in.
 - **Avoid `<defs>` with `<radialGradient>` or other internal references** — when the SVG is rendered via `<img>` (which is how the index card renders tiles), browsers restrict internal references for security reasons and the icon can fail to render. Stick to flat fills + strokes. A `<linearGradient>` is OK if you must; radial gradients are the ones that broke.
 
 **Raster (PNG, JPG, WebP):**
 
 - **File name:** `tile.png` (or `.jpg`, `.webp`) inside the widget folder.
-- **Recommended size:** at least 200 × 200 px. The card displays the tile at ~144 px wide on a typical screen — 2× that is enough for high-DPI displays.
-- **Aspect ratio:** any. The card slot is square and `object-fit: contain` letterboxes non-square images, so wide screenshots / banners work fine.
+- **Recommended size:** **900 × 600 px (3:2 landscape).** The card displays the tile at ~144 px wide on a typical screen, so 900 px wide is comfortably past 2× for crisp high-DPI rendering. 600 × 400 is the practical minimum.
+- **Aspect ratio:** **3:2 landscape is preferred** — it reads as a tidy landscape image and is the ratio the rest of the tiles are moving towards. Other ratios still work (see the card-slot note below); they're just letterboxed rather than cropped, so nothing is clipped.
 - **Background:** transparent (PNG / WebP) is preferred so the image blends with the card background in both light and dark themes. JPGs always have a background; in that case use a neutral colour that works on both themes (a mid-gray or pure white usually).
 - **File size:** target < 50 KB. Optimise with [Squoosh](https://squoosh.app/) or similar if needed.
 
@@ -44,6 +44,12 @@ import tile from './tile.svg?url';  // or './tile.png?url', './tile.webp?url', e
 ```
 
 Without `?url`, Astro returns a component factory for SVGs and a metadata object for raster — neither works as a plain `<img src>` value.
+
+### The card slot (why 3:2, and why off-ratio still works)
+
+On the `/calculators/` index, each tile is rendered inside a **fixed-height slot** (`.calc-index__card-tile`, currently `height: 10rem`) with `object-fit: contain`. The fixed height is deliberate: it guarantees every card's title and description start at the same vertical position regardless of the image. The slot height is **not** tied to the image aspect ratio (an earlier attempt to use `aspect-ratio: 3 / 2` on the slot broke that alignment, because the slot height then varied with card width).
+
+Because the slot is a fixed height and `contain` never crops, a 3:2 image renders as a centred landscape image with thin letterbox bars top and bottom — which still looks like a clean landscape tile. Authoring at 3:2 keeps all tiles visually consistent; off-ratio images are tolerated but will letterbox more.
 
 ### Colours (SVG only)
 
@@ -63,10 +69,10 @@ Use this palette consistently:
 
 ### Composition
 
-- **96 × 96 canvas (SVG) or any square-ish raster, but leave breathing room** — keep meaningful content roughly within the inner 80 × 80 area so the icon doesn't crowd the card padding.
-- **Two zones often work well:** a "what is this" element occupying the top ~60% (e.g. BT rune, globe, schematic symbol) and a "what does it do" element in the bottom ~40% (e.g. packet bytes, equivalence stack, color band).
+- **3:2 canvas (150 × 100 SVG, or 900 × 600 raster), but leave breathing room** — keep meaningful content roughly within the inner ~90% so the icon doesn't crowd the card padding.
+- **Two zones often work well:** a "what is this" element (e.g. BT rune, globe, schematic symbol) and a "what does it do" element (e.g. packet bytes, equivalence stack, color band) — side by side reads naturally on the 3:2 landscape canvas.
 - **Use monospace text sparingly** — `font-family="ui-monospace, SFMono-Regular, monospace"` matches the rest of the blog's code styling. Reserve text for things like hex bytes, unit labels, or numeric examples that reinforce what the calculator computes.
-- **Stroke widths 3–6 px** at 96 × 96 read well at the card display size (~144 px). Thinner strokes get spindly; thicker ones look chunky.
+- **Stroke widths ~3–6 px** (relative to a 150 × 100 viewBox) read well at the card display size (~144 px wide). Thinner strokes get spindly; thicker ones look chunky.
 
 ### Concept
 

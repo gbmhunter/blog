@@ -192,20 +192,18 @@
   background: var(--sl-color-bg);
   padding: 0.6rem;
   border-bottom: 1px solid var(--sl-color-gray-5);
-  /* Fixed height instead of an aspect-ratio so every tile is the same size
-     regardless of card width or content. The image inside is centred by the
-     flex alignment above. */
+  /* Fixed height so every tile occupies the exact same vertical space,
+     regardless of card width or image aspect ratio. This keeps the card title
+     and description starting at the same vertical position across all cards.
+     The image inside is scaled to fit (see below), never the container. */
   height: 10rem;
 }
 
 .calc-index__card-tile img {
-  /* Every tile gets the SAME visual slot (the full content box of the
-     card-tile container). `width/height: 100%` makes the <img> element
-     occupy that slot, and `object-fit: contain` scales the actual image
-     content up (or down) to fit while preserving its intrinsic aspect ratio.
-     Square SVGs render as squares centred in the slot; wide raster images
-     render proportionally wider — both growing to fill whatever dimension
-     they can, no matter their natural pixel size. */
+  /* `object-fit: contain` scales the image up/down to fit the fixed slot while
+     preserving its intrinsic aspect ratio. A 3:2 source renders as a centred
+     landscape image; square / tall / wide sources are letterboxed rather than
+     cropped, so no icon content is ever clipped. */
   display: block;
   width: 100%;
   height: 100%;
