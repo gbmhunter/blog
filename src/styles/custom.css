@@ -268,6 +268,16 @@ caption, .table-caption {
   color: var(--sl-color-gray-2);
 }
 
+/* Top-level leaf links (e.g. the "Calculators" page) aren't wrapped in a
+   .group-label, so the rule above doesn't reach them and they'd keep the bold
+   white .large style — making them stand out from the other (non-bold) top-level
+   items. Match them to the group-label appearance. The active page is excluded
+   so its highlighted state is preserved. */
+.sidebar-pane .top-level > li > a.large:not([aria-current='page']) {
+  font-weight: inherit;
+  color: var(--sl-color-gray-2);
+}
+
 /* Active state for group header links (when the parent page itself is the current page).
    Background goes on the full <summary> row (matching leaf node style) via :has().
    Must be unlayered and more specific than .group-label .large to win the cascade. */

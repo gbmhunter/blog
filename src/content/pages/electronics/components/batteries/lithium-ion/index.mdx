@@ -1,15 +1,16 @@
 ---
 authors: [gbmhunter]
 date: 2023-07-31
-description: Lithium-ion (or li-ion) is a popular chemistry for a rechargeable battery that uses the recombination of Lithium ions with their missing electrons to generate electricity.
+description: Lithium-ion (or li-ion) is a popular chemistry for a rechargeable battery that uses the intercalation of lithium ions between anode and cathode to generate electricity.
 lastUpdated: 2026-05-26
+tags: ["lithium", "self-discharge", "ions", "batteries", "state-of-charge", "charging"]
 title: Lithium-ion Batteries
 type: page
 ---
 
 <WarningIsNotes />
 
-A lithium-ion (or li-ion) battery is a rechargeable battery that uses the recombination of Lithium ions with their missing electrons to generate electricity, and the reverse of this process to recharge.[^wikipedia-lithium-ion-battery]
+A lithium-ion (or li-ion) battery is a rechargeable battery that uses the intercalation of lithium ions between anode and cathode to generate electricity, and the reverse of this process to recharge.[^wikipedia-lithium-ion-battery] They are nominally around 3.6-3.7 V per cell, with full charge being reached at about 4.2 V and a flat battery dropping to 3.0 V.
 
 Lithium-ion batteries can be considered a family of battery technologies including:
 
@@ -17,10 +18,10 @@ Lithium-ion batteries can be considered a family of battery technologies includi
 1. Lithium polymer
 1. Lithium-iron phosphate
 
-The below table shows some of the basic properties of Lithium-ion batteries:
+The below table shows some of the basic properties of lithium-ion batteries:
 
 <table>
-  <caption>Some of the basic properties of Lithium-ion batteries.</caption>
+  <caption>Some of the basic properties of lithium-ion batteries.</caption>
   <thead>
     <tr><th>Property</th>           <th>Value</th></tr>
   </thead>
@@ -29,7 +30,7 @@ The below table shows some of the basic properties of Lithium-ion batteries:
     <td>Specific energy</td>
     <td>
 
-100-265Wh/kg (0.360-0.954MJ/kg)[^wikipedia-lithium-ion-battery]
+100-265 Wh/kg (0.360-0.954 MJ/kg)[^wikipedia-lithium-ion-battery]
 
     </td>
     </tr>
@@ -37,7 +38,7 @@ The below table shows some of the basic properties of Lithium-ion batteries:
     <td>Energy density</td>
     <td>
     
-250-693Wh/L (0.90-2.49MJ/kg)[^wikipedia-lithium-ion-battery]
+250-693 Wh/L (0.90-2.49 MJ/kg)[^wikipedia-lithium-ion-battery]
 
     </td>
     </tr>
@@ -45,7 +46,7 @@ The below table shows some of the basic properties of Lithium-ion batteries:
     <td>Specific power</td>
     <td>
 
-250-340W/kg[^wikipedia-lithium-ion-battery]
+250-340 W/kg[^wikipedia-lithium-ion-battery]
 
   </td>
   </tr>
@@ -54,17 +55,17 @@ The below table shows some of the basic properties of Lithium-ion batteries:
 
 ## Self Discharge
 
-Lithium-ion batteries experience about 1-5% of self-discharge per month. This means that they loose 1-5% of their remaining energy each month, even when there is no external power draw. Note that it is a percentage of their **remaining** energy, not a percentage of their maximum energy. This means the energy loss follows an exponential decay.
+Lithium-ion batteries experience about 1-5% of self-discharge per month. This means that they lose 1-5% of their remaining energy each month, even when there is no external power draw. Note that it is a percentage of their **remaining** energy, not a percentage of their maximum energy. Assuming no other circuitry is drawing current (even battery protection ICs!), this means the battery state-of-charge decays exponentially over time.
 
 <Image src={import('./_assets/lithium-ion-self-discharge-vs-time.svg')} width="640">State of charge over time for a lithium-ion battery starting at 100 %, plotted for 1 %, 3 % and 5 % monthly self-discharge rates. Because each month's loss is a percentage of the *remaining* charge, the decay is exponential ($SoC(t) = 100 \cdot (1 - r)^t$).</Image>
 
 For a quality battery, the percentage is often quoted around 1-2% per month. You also have to take into account any battery protection circuitry which adds additional discharge current (this is usually a fixed current draw rather than an exponentially decaying drop).[^bonnen-batteries-lithium-self-discharge]
 
-Lithium-ion batteries have a better self-discharge rather than other common rechargeable chemistries. NiMH has a self-discharge rate about ten times higher than Lithium-ion.[^ti-li-ion-battery-charger-jeita-compliance]
+Lithium-ion batteries have a better self-discharge rate than other common rechargeable chemistries. For example, conventional NiMH (nickel metal-hydride) batteries have a self-discharge rate of about 30% per month![^wikipedia-self-discharge]
 
 ## Charging
 
-The common way to charge a Lithium-ion battery is to follow these steps:
+The common way to charge a lithium-ion battery is to follow these steps:
 
 1. The pre-charge stage, which is only applicable if the battery is really flat (less than 2.8V). The battery is charged with a constant-current, usually 10% of current used in the next stage (sometimes called the fast charge).
 1. Charge the battery with a constant current (CC), at a rate of around 0.5-1C.[^battery-university-bu-409-charging-li-ion]
@@ -72,12 +73,20 @@ The common way to charge a Lithium-ion battery is to follow these steps:
 1. Stop charging once the current drops to approximately 0.1C. 
 
 <Aside type="caution">
-It is not healthy to store a Lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to be provide the best lifetime.[^battery-university-bu-702-how-to-store-batteries]
+It is not healthy to store a lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to provide the best lifetime.[^battery-university-bu-702-how-to-store-batteries]
 </Aside>
 
 1C is the current required to drain the battery in 1 hour, e.g. for a 500mAh battery, 1C is 500mA. Most battery charger ICs will automatically perform the above steps for you.
 
-Pre-charge can also been confused with the pre-charge step that occurs in the manufacturing process after the cells have been filled with electrolytes.
+Pre-charge can also be confused with the pre-charge step that occurs in the manufacturing process after the cells have been filled with electrolytes.
+
+## Protection Circuit Modules (PCMs)
+
+[Protection circuit modules](/electronics/components/power-management-ics/pcms/) (PCMs -- not to be confused with Pulse Code Modulation) are circuits designed to protect Lithium batteries (and other chemistries) from overcharge, over-discharge and over current conditions. They normally feature a analogue switch (i.e. two back-to-back [MOSFETs](/electronics/components/transistors/mosfets/)) to disconnect the load from the battery cell during a fault condition. They reconnect the load after the fault condition is removed and/or after a certain duration.
+
+As shown in the image below, they are commonly integrated into the battery itself, so that the cell is protected from the moment it leaves the factory floor.
+
+<Image src={import('./_assets/li-ion-battery-highlighting-exposed-pcm.webp')} width="700px">A photo of a small 500 mAh 3.7 V lithium-ion battery with the kapton tape removed and the PCM exposed (right battery). The PCM consists of three components, one PCM IC and two MOSFETs (connected back-to-back to be able to disconnect the cell in both directions).</Image>
 
 ### TI's BQ Range
 
@@ -103,3 +112,4 @@ The `RT9485` has an on-board MCU.
 [^battery-university-bu-409-charging-li-ion]: Battery University (2021, Oct 25). _BU-409: Charging Lithium-ion_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-409-charging-lithium-ion.
 [^battery-university-bu-702-how-to-store-batteries]: Battery University (2021, Oct 21). _BU-702: How to Store Batteries_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-702-how-to-store-batteries.
 [^bonnen-batteries-lithium-self-discharge]: Bonnen Batteries. _Lithium Battery Self-Discharge Explained: What Engineers and Buyers Must Know_. Retrieved 2026-05-26, from https://www.bonnenbatteries.com/lithium-battery-self-discharge-explained-what-engineers-and-buyers-must-know/.
+[^wikipedia-self-discharge]: Wikipedia. _Self-discharge_ [wiki]. Retrieved 2026-05-27, from https://en.wikipedia.org/wiki/Self-discharge.

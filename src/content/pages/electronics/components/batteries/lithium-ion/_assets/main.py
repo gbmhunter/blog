@@ -23,8 +23,8 @@ SCRIPT_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
 
 
 def main():
-    # Time axis in months — 0 to 36 months (3 years).
-    t = np.linspace(0, 36, 361)  # 0.1-month resolution → smooth curve
+    # Time axis in months — 0 to 60 months (5 years).
+    t = np.linspace(0, 60, 601)  # 0.1-month resolution → smooth curve
 
     # (rate, label, color) per series.
     # Colours match the brand red / amber-yellow / green palette used in the
@@ -45,9 +45,9 @@ def main():
     ax.set_ylabel('State of charge (%)')
     ax.set_title('Lithium-ion battery self-discharge')
 
-    ax.set_xlim(0, 36)
+    ax.set_xlim(0, 60)
     ax.set_ylim(0, 100)
-    ax.set_xticks(np.arange(0, 37, 6))
+    ax.set_xticks(np.arange(0, 61, 6))
     ax.set_yticks(np.arange(0, 101, 20))
     ax.grid(which='both', color='#d1d5db', linewidth=0.5)
 
