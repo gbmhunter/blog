@@ -35,6 +35,28 @@
   border-radius: 0.2em;
 }
 
+.calc-form__toolbar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+.calc-form__toggle {
+  cursor: pointer;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+
+.calc-form__toggle:hover {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
 .calc-form__rows {
   display: flex;
   flex-direction: column;
@@ -116,7 +138,8 @@
 }
 
 .calc-form__input,
-.calc-form__select {
+.calc-form__select,
+.calc-form__unit-select {
   box-sizing: border-box;
   width: 100%;
   height: 2rem;
@@ -137,6 +160,37 @@
   font-family: inherit;
 }
 
+/* Input + unit dropdown side by side (length inputs that offer a choice of
+   units instead of metric prefixes). */
+.calc-form__input-with-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.calc-form__input-with-unit .calc-form__input {
+  flex: 1;
+  min-width: 0;
+}
+
+.calc-form__unit-select {
+  width: auto;
+  flex: 0 0 auto;
+  font-family: inherit;
+}
+
+/* Output value + unit dropdown side by side. */
+.calc-form__output-with-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.calc-form__output-with-unit .calc-form__output {
+  flex: 1;
+  min-width: 0;
+}
+
 .calc-form__input--error {
   border-color: var(--sl-color-accent);
 }
@@ -144,6 +198,30 @@
 .calc-form__input-error {
   font-size: 0.78rem;
   color: var(--sl-color-accent-high);
+}
+
+/* Extrapolation warning: value is outside the range the source data covers, so
+   the result is less reliable. Amber, distinct from the red parse-error state.
+   Uses the theme's orange token so it adapts to light/dark mode. */
+.calc-form__input--warning {
+  border-color: var(--sl-color-orange);
+  background: color-mix(in srgb, var(--sl-color-orange) 12%, var(--sl-color-bg));
+}
+
+.calc-form__input-warning {
+  font-size: 0.78rem;
+  color: var(--sl-color-orange-high);
+  line-height: 1.3;
+}
+
+/* Caption under the main output flagging that the result relied on
+   extrapolation (any input out of range). Auto-placed into the input column
+   (sits next to an empty label cell). */
+.calc-form__output-note {
+  align-self: center;
+  font-size: 0.78rem;
+  color: var(--sl-color-orange-high);
+  line-height: 1.3;
 }
 
 .calc-form__help {

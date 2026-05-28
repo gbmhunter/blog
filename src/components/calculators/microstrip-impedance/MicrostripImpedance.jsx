@@ -2,6 +2,7 @@ import { useState, useMemo } from 'preact/hooks';
 import {
   LENGTH_UNITS, IMPEDANCE_UNITS, getUnit,
   parseNumber, formatInUnit,
+  RANGE_WARNINGS, rangeWarning,
   computeMicrostripImpedance,
 } from './calc.js';
 import './styles.css';
@@ -21,14 +22,24 @@ export default function MicrostripImpedance() {
   const hParsed = useMemo(() => parseNumber(h.text),  [h.text]);
   const eRParsed = useMemo(() => parseNumber(eRText), [eRText]);
 
+  // Convert to SI once — used for both the calculation and the range warnings.
+  const wSI = wParsed.value * getUnit(LENGTH_UNITS, w.unit).multiplier;
+  const tSI = tParsed.value * getUnit(LENGTH_UNITS, t.unit).multiplier;
+  const hSI = hParsed.value * getUnit(LENGTH_UNITS, h.unit).multiplier;
+
+  const wWarn = rangeWarning(RANGE_WARNINGS.trackWidth, wSI);
+  const tWarn = rangeWarning(RANGE_WARNINGS.trackThickness, tSI);
+  const hWarn = rangeWarning(RANGE_WARNINGS.substrateHeight, hSI);
+  const eRWarn = rangeWarning(RANGE_WARNINGS.dielectric, eRParsed.value);
+
   const allValid = [wParsed, tParsed, hParsed, eRParsed].every((p) => p.error === null);
 
   let computed = { impedance: NaN, eEff: NaN, error: null };
   if (allValid) {
     computed = computeMicrostripImpedance({
-      trackWidth:      wParsed.value * getUnit(LENGTH_UNITS, w.unit).multiplier,
-      trackThickness:  tParsed.value * getUnit(LENGTH_UNITS, t.unit).multiplier,
-      substrateHeight: hParsed.value * getUnit(LENGTH_UNITS, h.unit).multiplier,
+      trackWidth:      wSI,
+      trackThickness:  tSI,
+      substrateHeight: hSI,
       dielectric:      eRParsed.value,
     });
   }
@@ -42,11 +53,11 @@ export default function MicrostripImpedance() {
       </div>
 
       <div class="microstrip__rows">
-        <LengthRow label="w" state={w} setState={setW} parsed={wParsed} placeholder="0.2"
+        <LengthRow label="w" state={w} setState={setW} parsed={wParsed} placeholder="0.2" warning={wWarn}
           help="The width of the track (microstrip). Usually measured in mm or mils."/>
-        <LengthRow label="t" state={t} setState={setT} parsed={tParsed} placeholder="35"
+        <LengthRow label="t" state={t} setState={setT} parsed={tParsed} placeholder="35" warning={tWarn}
           help="The thickness of the track (microstrip) — the same as the copper weight of the layer it's on. Usually measured in µm or oz./sq foot."/>
-        <LengthRow label="h" state={h} setState={setH} parsed={hParsed} placeholder="1.6"
+        <LengthRow label="h" state={h} setState={setH} parsed={hParsed} placeholder="1.6" warning={hWarn}
           help="The thickness of the substrate — the distance between the track and the plane below it. ≈ 1.6 mm on a standard 2-layer PCB; much smaller between adjacent layers on a high-density board."/>
 
         <div class="microstrip__row">
@@ -58,12 +69,13 @@ export default function MicrostripImpedance() {
               onInput={(e) => setERText(e.currentTarget.value)}
               placeholder="4.0"
               spellcheck={false}
-              title="The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7."
-              class={eRParsed.error
-                ? 'microstrip__input microstrip__input--error'
-                : 'microstrip__input'}
+              title={!eRParsed.error && eRWarn
+                ? `The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.\n\nWARNING: ${eRWarn}`
+                : 'The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.'}
+              class={inputClass(eRParsed, eRWarn)}
             />
             {eRParsed.error && <div class="microstrip__input-error">{eRParsed.error}</div>}
+            {!eRParsed.error && eRWarn && <div class="microstrip__input-warning">{eRWarn}</div>}
           </div>
           <div class="microstrip__help">The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.</div>
         </div>
@@ -101,7 +113,8 @@ export default function MicrostripImpedance() {
   );
 }
 
-function LengthRow({ label, state, setState, parsed, placeholder, help }) {
+function LengthRow({ label, state, setState, parsed, placeholder, help, warning }) {
+  const showWarning = !parsed.error && warning;
   return (
     <div class="microstrip__row">
       <span class="microstrip__label">{label}</span>
@@ -113,10 +126,8 @@ function LengthRow({ label, state, setState, parsed, placeholder, help }) {
             onInput={(e) => setState({ ...state, text: e.currentTarget.value })}
             placeholder={placeholder}
             spellcheck={false}
-            title={help}
-            class={parsed.error
-              ? 'microstrip__input microstrip__input--error'
-              : 'microstrip__input'}
+            title={showWarning ? `${help}\n\nWARNING: ${warning}` : help}
+            class={inputClass(parsed, warning)}
           />
           <select
             class="microstrip__unit-select"
@@ -129,8 +140,17 @@ function LengthRow({ label, state, setState, parsed, placeholder, help }) {
           </select>
         </div>
         {parsed.error && <div class="microstrip__input-error">{parsed.error}</div>}
+        {showWarning && <div class="microstrip__input-warning">{warning}</div>}
       </div>
       {help && <div class="microstrip__help">{help}</div>}
     </div>
   );
+}
+
+// Input class: a parse error (red) wins over a range warning (amber), which
+// wins over the default.
+function inputClass(parsed, warning) {
+  if (parsed.error) return 'microstrip__input microstrip__input--error';
+  if (warning) return 'microstrip__input microstrip__input--warning';
+  return 'microstrip__input';
 }

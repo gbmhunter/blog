@@ -1,1 +1,7 @@
 @import url('../_shared/calc-form.css');
+
+/* Inline "amber" word in the legend, coloured to match the warning highlight. */
+.track-2221a__warn-text {
+  color: var(--sl-color-orange-high);
+  font-weight: 600;
+}

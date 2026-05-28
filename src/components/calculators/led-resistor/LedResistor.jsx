@@ -24,11 +24,30 @@ export default function LedResistor() {
   const isCustom = colour === 'Custom';
   // When a colour is selected, forward voltage is fixed from the table (read-only output).
   const forwardVoltage = isCustom ? customVfParsed.value : LED_FORWARD_VOLTAGES[colour];
-  const forwardVoltageError = isCustom ? customVfParsed.error : null;
+  const forwardVoltageParseError = isCustom ? customVfParsed.error : null;
+
+  // Cross-field check: V_F must be less than the supply voltage, otherwise the
+  // LED can't be driven (the series resistance would be ≤ 0). Surface this on
+  // the V_F row.
+  const vfCrossError = supplyParsed.error === null
+    && forwardVoltageParseError === null
+    && Number.isFinite(forwardVoltage)
+    && forwardVoltage >= supplyParsed.value
+    ? 'V_F must be less than the supply voltage — the LED can\'t be driven from this supply.'
+    : null;
+
+  // Merge the cross-field error into the custom V_F parsed state so the input
+  // gets the red border and inline message via its existing error handling.
+  const customVfMerged = customVfParsed.error
+    ? customVfParsed
+    : vfCrossError
+      ? { value: customVfParsed.value, error: vfCrossError }
+      : customVfParsed;
 
   const allInputsValid =
     supplyParsed.error === null &&
-    forwardVoltageError === null &&
+    forwardVoltageParseError === null &&
+    vfCrossError === null &&
     ledCurrentParsed.error === null &&
     Number.isFinite(forwardVoltage);
 
@@ -102,21 +121,24 @@ export default function LedResistor() {
                   placeholder="2.0"
                   spellcheck={false}
                   title="The forward voltage drop across the LED, at the desired drive current."
-                  class={customVfParsed.error
+                  class={customVfMerged.error
                     ? 'led-resistor__input led-resistor__input--error'
                     : 'led-resistor__input'}
                 />
                 <span class="led-resistor__suffix">V</span>
               </div>
-              {customVfParsed.error && (
-                <div class="led-resistor__input-error">{customVfParsed.error}</div>
+              {customVfMerged.error && (
+                <div class="led-resistor__input-error">{customVfMerged.error}</div>
               )}
             </div>
           ) : (
             <div class="led-resistor__input-cell">
-              <div class="led-resistor__readonly">
+              <div class={vfCrossError ? 'led-resistor__readonly led-resistor__readonly--error' : 'led-resistor__readonly'}>
                 <span class="led-resistor__readonly-value">{formatVoltage(forwardVoltage)}</span>
               </div>
+              {vfCrossError && (
+                <div class="led-resistor__input-error">{vfCrossError}</div>
+              )}
             </div>
           )}
           <div class="led-resistor__help">

@@ -126,6 +126,13 @@
   background: var(--sl-color-bg);
 }
 
+/* Readonly V_F cell flagged red when the LED's forward voltage exceeds the
+   supply voltage (cross-field validation error). */
+.led-resistor__readonly--error {
+  border-color: var(--sl-color-accent);
+  border-style: solid;
+}
+
 .led-resistor__readonly-value {
   font-family: var(--__sl-font-mono, ui-monospace, monospace);
   color: var(--sl-color-gray-2);

@@ -29,9 +29,28 @@ export default function ResistorDivider() {
     return out;
   }, [values]);
 
-  // Validate the 3 known inputs.
-  const knownErrors = ORDER.filter((k) => k !== target).map((k) => ({ key: k, error: parsed[k].error }));
-  const allKnownValid = knownErrors.every((e) => e.error === null);
+  // Cross-field check: a passive resistor divider can't step up, so V_OUT must
+  // be less than V_IN. Only enforce this when BOTH V_IN and V_OUT are inputs
+  // (i.e. you're solving for R1 or R2). When solving for V_IN or V_OUT, the
+  // calculation handles consistency itself.
+  const voutCrossError =
+    target !== 'vin' && target !== 'vout'
+      && parsed.vin.error === null && parsed.vout.error === null
+      && parsed.vout.value >= parsed.vin.value
+        ? 'V_OUT must be less than V_IN — a passive resistor divider can\'t step up.'
+        : null;
+
+  // Effective per-field error: parse error first, cross-field error second.
+  const effectiveErrors = {
+    vin: parsed.vin.error,
+    r1: parsed.r1.error,
+    r2: parsed.r2.error,
+    vout: parsed.vout.error || voutCrossError,
+  };
+
+  // Validate the 3 known inputs (using the effective error, which includes the
+  // cross-field check above).
+  const allKnownValid = ORDER.filter((k) => k !== target).every((k) => effectiveErrors[k] === null);
 
   let computed = { value: NaN, error: null };
   if (allKnownValid) {
@@ -53,7 +72,7 @@ export default function ResistorDivider() {
         {ORDER.map((key) => {
           const v = VARS[key];
           const isTarget = key === target;
-          const { error } = parsed[key];
+          const error = effectiveErrors[key];
           return (
             <div class="resistor-divider__row" key={key}>
               <label class="resistor-divider__radio">

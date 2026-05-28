@@ -37,7 +37,7 @@ As with the buck converter, this simple relationship only holds for ideal compon
 The same **"the average voltage across the inductor must be 0 over an entire switching cycle"** argument used for the [buck converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/#how-a-buck-converter-works) gives us this equation:
 
 1. When the switch is closed ($t_{on}$), the inductor is connected directly across the input, so the voltage across it is $V_{IN}$. The inductor current ramps up, storing energy in its magnetic field.
-1. When the switch opens ($t_{off}$), the inductor current is forced through the diode to the output. The voltage across the inductor is now $V_{IN} - V_{OUT}$ (negative, since $V_{OUT} > V_{IN}$), so the current ramps back down. The inductor delivers its stored energy to the output **in series with the input source**, which is how the output reaches a higher voltage than the input.
+1. When the switch opens ($t_{off}$), the inductor current can't stop instantly, so it keeps flowing through the only path available: from the input, through the inductor and diode and into the output. To maintain this current, the inductor reverses its voltage polarity (its switch-node end swings above the input). The output voltage sits at approx. $V_{IN} + V_L$.
 1. Setting the average (integral) of the inductor voltage over the whole cycle to 0:
     $$
     \begin{align}
@@ -48,6 +48,10 @@ The same **"the average voltage across the inductor must be 0 over an entire swi
     \end{align}
     $$
     using $D = \frac{t_{on}}{T}$ and therefore $\frac{t_{off}}{T} = 1 - D$.
+
+<Aside type="note">
+During the time the switch is off the input is still delivering energy to the output (its the input and inductor in series providing the energy). This is unlike a buck converter, in which the input only delivers energy when the switch is on.
+</Aside>
 
 ## Design Procedure
 

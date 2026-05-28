@@ -17,6 +17,27 @@ export function getUnit(table, label) {
   return table.find((u) => u.label === label) ?? table[0];
 }
 
+// Typical ranges for the microstrip approximation (all bounds in SI units, the
+// dielectric is unit-less). Outside these the rfcafe formula is being pushed
+// past usual PCB geometries, so we warn that the result is less reliable.
+// Limits and wording ported from NinjaCalc.
+export const RANGE_WARNINGS = {
+  trackWidth:      { max: 10e-3,    over: 'This is a wide track. Results may not be as accurate.' },
+  trackThickness:  { max: 355.6e-6, over: 'This is a very large track thickness (most are below 355.6 µm / 10 oz). Results may not be as accurate.' },
+  substrateHeight: { max: 2e-3,     over: 'This is a very large substrate thickness (typically 1.6 mm or less). Results may not be as accurate.' },
+  dielectric:      { max: 20,       over: 'This is a very large dielectric constant (typically around 3–6). Results may not be as accurate.' },
+};
+
+// Return a warning string if `value` (SI, or unit-less for the dielectric)
+// falls outside `spec`'s range, else null. Non-finite yields no warning (a
+// parse error takes precedence in the UI).
+export function rangeWarning(spec, value) {
+  if (!spec || !Number.isFinite(value)) return null;
+  if (spec.min != null && value < spec.min) return spec.under;
+  if (spec.max != null && value > spec.max) return spec.over;
+  return null;
+}
+
 // Parse a plain (positive) decimal number. No prefix / unit handling — the
 // unit comes from the dropdown, so the input is just the bare magnitude.
 export function parseNumber(text) {

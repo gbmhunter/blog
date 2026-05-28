@@ -24,7 +24,20 @@ export default function BuckConverter() {
   const iOut = useMemo(() => parseCurrent(iOutText), [iOutText]);
   const ripple = useMemo(() => parsePercent(rippleText), [rippleText]);
 
-  const allValid = [vIn, vOut, vD, vSw, fSw, iOut, ripple].every((p) => p.error === null);
+  // A ripple above ~50% of the average current is generally too high for
+  // sensible buck operation (the inductor current would approach discontinuous
+  // mode). Soft warning, ported from NinjaCalc.
+  const rippleWarn = ripple.error === null && ripple.value > 50
+    ? 'The inductor ripple current should be less than 50% of the output current for sensible operation.'
+    : null;
+
+  // Cross-field error: a buck converter can only step the voltage down.
+  const vOutCrossError = vIn.error === null && vOut.error === null && vOut.value > vIn.value
+    ? 'V_out must be less than or equal to V_in — a buck converter can only step the voltage down.'
+    : null;
+  const vOutMerged = vOut.error ? vOut : vOutCrossError ? { value: vOut.value, error: vOutCrossError } : vOut;
+
+  const allValid = [vIn, vOutMerged, vD, vSw, fSw, iOut, ripple].every((p) => p.error === null);
   let r = { duty: NaN, inductance: NaN, error: null };
   if (allValid) r = computeBuck({
     vIn: vIn.value, vOut: vOut.value, vD: vD.value, vSw: vSw.value,
@@ -41,7 +54,7 @@ export default function BuckConverter() {
       <div class="calc-form__rows">
         <InputRow label={<>V<sub>in</sub></>}    value={vInText}    onInput={setVInText}    placeholder="12"  suffix="V" parsed={vIn}
           help="The voltage provided to the input of the buck converter. Usually from a DC power supply or battery."/>
-        <InputRow label={<>V<sub>out</sub></>}   value={vOutText}   onInput={setVOutText}   placeholder="3.3" suffix="V" parsed={vOut}
+        <InputRow label={<>V<sub>out</sub></>}   value={vOutText}   onInput={setVOutText}   placeholder="3.3" suffix="V" parsed={vOutMerged}
           help="The output voltage of the buck converter. Must be lower than V_in."/>
         <InputRow label={<>V<sub>D</sub></>}     value={vDText}     onInput={setVDText}     placeholder="0.5" suffix="V" parsed={vD}
           help="The forward voltage drop across the diode when fully conducting. For synchronous converters (active MOSFET rectifier), use 0 or the MOSFET's V_DS(on)."/>
@@ -51,7 +64,7 @@ export default function BuckConverter() {
           help="The switching frequency of the transistor (or other switching element)."/>
         <InputRow label={<>I<sub>out</sub></>}   value={iOutText}   onInput={setIOutText}   placeholder="1"   suffix="A" parsed={iOut}
           help="The average (DC) output current of the buck converter. Note: this is usually higher than the input current."/>
-        <InputRow label={<>ΔI<sub>L</sub></>}    value={rippleText} onInput={setRippleText} placeholder="30"  suffix="%" parsed={ripple}
+        <InputRow label={<>ΔI<sub>L</sub></>}    value={rippleText} onInput={setRippleText} placeholder="30"  suffix="%" parsed={ripple} warning={rippleWarn}
           help="The peak-to-peak inductor ripple current as a percentage of the average output current. Typically 10–30% for good operation."/>
 
         <OutputRow label="D"                     value={r.duty}        format={formatPercent}    error={r.error}

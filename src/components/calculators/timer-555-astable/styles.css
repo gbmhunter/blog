@@ -97,6 +97,19 @@
   color: var(--sl-color-accent-high);
 }
 
+/* Out-of-typical-range warning: amber, distinct from the red parse-error state.
+   Theme-aware so it adapts to light/dark mode. */
+.timer-555__input--warning {
+  border-color: var(--sl-color-orange);
+  background: color-mix(in srgb, var(--sl-color-orange) 12%, var(--sl-color-bg));
+}
+
+.timer-555__input-warning {
+  font-size: 0.78rem;
+  color: var(--sl-color-orange-high);
+  line-height: 1.3;
+}
+
 .timer-555__help {
   font-size: 0.75rem;
   color: var(--sl-color-gray-2);

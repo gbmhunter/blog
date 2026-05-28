@@ -12,3 +12,10 @@
   color: var(--sl-color-gray-2);
   text-align: center;
 }
+
+/* Inline "amber" word in the legend, coloured to match the warning highlight. */
+.track-2152__warn-text {
+  color: var(--sl-color-orange-high);
+  font-weight: 600;
+  font-style: normal;
+}
