@@ -56,7 +56,7 @@ For analogue switch ICs with more than one switch, the amount of channel-to-chan
 - The proximity of the other channel traces creating capacitance.
 - The capacitance between the pins on the switching MOSFETs inside the IC.
 
-Most analogue switches will specify the amount of cross-talk in dB at a particular frequency. Most are in the -60 to -80 dB range at 50 MHz. When crosstalk is specified in dB, it uses the following equation:[^renesas-an18-switching-analog-signals]
+Most analogue switches will specify the amount of cross-talk in dB at a particular frequency. Most are in the -60 to -80 dB range at 10 - 100 MHz. When crosstalk is specified in dB, it uses the following equation:[^renesas-an18-switching-analog-signals]
 
 $$
 dB_{\text{crosstalk}} = 20\log_{10}\!\left(\frac{V_{\text{victim}}}{V_{\text{aggressor}}}\right)
@@ -67,6 +67,12 @@ where:
 - $V_{\text{victim}}$ is the voltage measured on the victim line at the crosstalk test frequency.
 
 Both should be measured the same way (both peak, both RMS, etc.) — the dB ratio means the scale cancels.
+
+<Image src={import('./_assets/diodes-inc-pi5a23157-analogue-switch-channel-crosstalk-highlighted.webp')} width="700px">A screenshot from the Diodes Inc PI5A23157 datasheet highlighting the specified crosstalk value.[^diodes-pi5a23157-ds]</Image>
+
+An example of a test circuit used to measure crosstalk is shown below.
+
+<Image src={import('./_assets/crosstalk-diodes-inc-pi5a23157-test-circuit.webp')} width="700px">A screenshot from the Diodes Inc PI5A23157 datasheet showing the test circuit they used to measure crosstalk.[^diodes-pi5a23157-ds]</Image>
 
 ## Off-Isolation
 
@@ -125,3 +131,4 @@ The [Maxim DS3690](https://www.analog.com/media/en/technical-documentation/data-
 [^intersil-isl43l410-ds]: Intersil (2014, Nov 17). _ISL43L410: Ultra Low ON-Resistance, Low Voltage, Single Supply, DPDT Analog Switch_ [datasheet]. Retrieved 2026-05-28, from https://www.mouser.com/catalog/specsheets/intersil_fn6090.pdf.
 [^maxim-ds3690-ds]: Maxim (2007, Oct). _3.3V 26-Channel, Three-Stateable Transmission Gate_. Retrieved 2023-04-22, from https://www.analog.com/media/en/technical-documentation/data-sheets/DS3690T-DS3690TTRL.pdf.
 [^renesas-an18-switching-analog-signals]: Renesas (1999, Apr 23). _AN-18: Switching Analog Signals_ [application note]. Retrieved 2026-05-28, from https://www.renesas.com/en/document/apn/18-switching-analog-signals.
+[^diodes-pi5a23157-ds]: Diodes Incorporated (2022, Mar 10). _PI5A23157: Low Voltage Dual SPDT Analog Switch_ [datasheet]. Retrieved 2026-05-29, from https://www.diodes.com/datasheet/download/PI5A23157.pdf.
