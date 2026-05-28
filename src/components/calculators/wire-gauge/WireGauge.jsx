@@ -12,6 +12,7 @@ import {
   formatAwg,
   computeWireGauge,
 } from './calc.js';
+import { InputRow } from '../_shared/FormRows.jsx';
 import './styles.css';
 
 export default function WireGauge() {
@@ -52,14 +53,14 @@ export default function WireGauge() {
   }
 
   return (
-    <div class="wire-gauge">
-      <div class="wire-gauge__legend">
+    <div class="calc-form">
+      <div class="calc-form__legend">
         Find the minimum AWG gauge wire needed to carry a given DC current with no more than the
         specified voltage drop across the cable length. DC only — does not consider skin effect or
         thermal effects.
       </div>
 
-      <div class="wire-gauge__rows">
+      <div class="calc-form__rows">
         <InputRow
           label={<>V<sub>source</sub></>}
           help="Source voltage applied to the cable."
@@ -98,11 +99,11 @@ export default function WireGauge() {
         />
 
         {/* Conductor material */}
-        <div class="wire-gauge__row">
-          <span class="wire-gauge__label">Material</span>
-          <div class="wire-gauge__input-cell">
+        <div class="calc-form__row">
+          <span class="calc-form__label">Material</span>
+          <div class="calc-form__input-cell">
             <select
-              class="wire-gauge__select"
+              class="calc-form__select"
               value={material}
               onChange={(e) => setMaterial(e.currentTarget.value)}
             >
@@ -111,15 +112,15 @@ export default function WireGauge() {
               ))}
             </select>
           </div>
-          <div class="wire-gauge__help">The material of the conductor.</div>
+          <div class="calc-form__help">The material of the conductor.</div>
         </div>
 
         {/* Resistivity: input when Custom, read-only output otherwise */}
-        <div class="wire-gauge__row">
-          <span class="wire-gauge__label">ρ</span>
+        <div class="calc-form__row">
+          <span class="calc-form__label">ρ</span>
           {isCustom ? (
-            <div class="wire-gauge__input-cell">
-              <div class="wire-gauge__input-with-suffix">
+            <div class="calc-form__input-cell">
+              <div class="calc-form__input-with-suffix">
                 <input
                   type="text"
                   value={customResistivityText}
@@ -128,23 +129,23 @@ export default function WireGauge() {
                   spellcheck={false}
                   title='The resistivity of the conductor. Set the material to "Custom" to edit this value.'
                   class={customResistivity.error
-                    ? 'wire-gauge__input wire-gauge__input--error'
-                    : 'wire-gauge__input'}
+                    ? 'calc-form__input calc-form__input--error'
+                    : 'calc-form__input'}
                 />
-                <span class="wire-gauge__suffix">Ω·m</span>
+                <span class="calc-form__suffix">Ω·m</span>
               </div>
               {customResistivity.error && (
-                <div class="wire-gauge__input-error">{customResistivity.error}</div>
+                <div class="calc-form__input-error">{customResistivity.error}</div>
               )}
             </div>
           ) : (
-            <div class="wire-gauge__input-cell">
-              <div class="wire-gauge__readonly">
-                <span class="wire-gauge__readonly-value">{formatResistivity(resistivity)}</span>
+            <div class="calc-form__input-cell">
+              <div class="calc-form__readonly">
+                <span class="calc-form__readonly-value">{formatResistivity(resistivity)}</span>
               </div>
             </div>
           )}
-          <div class="wire-gauge__help">
+          <div class="calc-form__help">
             {isCustom
               ? 'The resistivity of the conductor. Set the material to "Custom" to edit this value.'
               : 'The resistivity of the selected conductor material. Set the material to "Custom" to edit this value.'}
@@ -152,63 +153,38 @@ export default function WireGauge() {
         </div>
 
         {/* Outputs */}
-        <div class="wire-gauge__row">
-          <span class="wire-gauge__label">A</span>
-          <div class="wire-gauge__input-cell">
-            <div class="wire-gauge__output">
+        <div class="calc-form__row">
+          <span class="calc-form__label">A</span>
+          <div class="calc-form__input-cell">
+            <div class="calc-form__output">
               {computed.error ? (
-                <span class="wire-gauge__output-error">{computed.error}</span>
+                <span class="calc-form__output-error">{computed.error}</span>
               ) : Number.isFinite(computed.crossSectionalAreaM2) ? (
-                <span class="wire-gauge__output-value">{formatAreaMm2(computed.crossSectionalAreaM2)}</span>
+                <span class="calc-form__output-value">{formatAreaMm2(computed.crossSectionalAreaM2)}</span>
               ) : (
-                <span class="wire-gauge__output-empty">—</span>
+                <span class="calc-form__output-empty">—</span>
               )}
             </div>
           </div>
-          <div class="wire-gauge__help">The required cross-sectional area of the conductor in the cable.</div>
+          <div class="calc-form__help">The required cross-sectional area of the conductor in the cable.</div>
         </div>
-        <div class="wire-gauge__row">
-          <span class="wire-gauge__label">Gauge</span>
-          <div class="wire-gauge__input-cell">
-            <div class="wire-gauge__output">
+        <div class="calc-form__row">
+          <span class="calc-form__label">Gauge</span>
+          <div class="calc-form__input-cell">
+            <div class="calc-form__output">
               {computed.error ? (
-                <span class="wire-gauge__output-error">{computed.error}</span>
+                <span class="calc-form__output-error">{computed.error}</span>
               ) : Number.isFinite(computed.awg) ? (
-                <span class="wire-gauge__output-value">{formatAwg(computed.awg)}</span>
+                <span class="calc-form__output-value">{formatAwg(computed.awg)}</span>
               ) : (
-                <span class="wire-gauge__output-empty">—</span>
+                <span class="calc-form__output-empty">—</span>
               )}
             </div>
           </div>
-          <div class="wire-gauge__help">The maximum AWG gauge of the cable. The calculated value is rounded down to the nearest integer (lower AWG = thicker wire = more safety margin).</div>
+          <div class="calc-form__help">The maximum AWG gauge of the cable. The calculated value is rounded down to the nearest integer (lower AWG = thicker wire = more safety margin).</div>
         </div>
       </div>
     </div>
   );
 }
 
-function InputRow({ label, help, value, onInput, placeholder, suffix, parsed }) {
-  return (
-    <div class="wire-gauge__row">
-      <span class="wire-gauge__label">{label}</span>
-      <div class="wire-gauge__input-cell">
-        <div class="wire-gauge__input-with-suffix">
-          <input
-            type="text"
-            value={value}
-            onInput={(e) => onInput(e.currentTarget.value)}
-            placeholder={placeholder}
-            spellcheck={false}
-            title={help}
-            class={parsed.error
-              ? 'wire-gauge__input wire-gauge__input--error'
-              : 'wire-gauge__input'}
-          />
-          {suffix && <span class="wire-gauge__suffix">{suffix}</span>}
-        </div>
-        {parsed.error && <div class="wire-gauge__input-error">{parsed.error}</div>}
-      </div>
-      {help && <div class="wire-gauge__help">{help}</div>}
-    </div>
-  );
-}

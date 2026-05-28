@@ -66,16 +66,16 @@ export default function ResistorDivider() {
   const setValue = (key, text) => setValues((prev) => ({ ...prev, [key]: text }));
 
   return (
-    <div class="resistor-divider">
-      <div class="resistor-divider__legend">Select the parameter you want to compute (the other three are inputs).</div>
-      <div class="resistor-divider__rows">
+    <div class="calc-form">
+      <div class="calc-form__legend">Select the parameter you want to compute (the other three are inputs).</div>
+      <div class="calc-form__rows">
         {ORDER.map((key) => {
           const v = VARS[key];
           const isTarget = key === target;
           const error = effectiveErrors[key];
           return (
-            <div class="resistor-divider__row" key={key}>
-              <label class="resistor-divider__radio">
+            <div class="calc-form__row calc-form__row--radio" key={key}>
+              <label class="calc-form__radio">
                 <input
                   type="radio"
                   name="resistor-divider-target"
@@ -83,31 +83,31 @@ export default function ResistorDivider() {
                   onChange={() => setTarget(key)}
                 />
               </label>
-              <span class="resistor-divider__label">{v.label}</span>
+              <span class="calc-form__label">{v.label}</span>
               {isTarget ? (
-                <div class="resistor-divider__output">
+                <div class="calc-form__output">
                   {computed.error ? (
-                    <span class="resistor-divider__output-error">{computed.error}</span>
+                    <span class="calc-form__output-error">{computed.error}</span>
                   ) : Number.isFinite(computed.value) ? (
-                    <span class="resistor-divider__output-value">{v.format(computed.value)}</span>
+                    <span class="calc-form__output-value">{v.format(computed.value)}</span>
                   ) : (
-                    <span class="resistor-divider__output-empty">—</span>
+                    <span class="calc-form__output-empty">—</span>
                   )}
                 </div>
               ) : (
-                <div class="resistor-divider__input-cell">
-                  <div class="resistor-divider__input-with-suffix">
+                <div class="calc-form__input-cell">
+                  <div class="calc-form__input-with-suffix">
                     <input
                       type="text"
                       value={values[key]}
                       onInput={(e) => setValue(key, e.currentTarget.value)}
                       placeholder={v.placeholder}
                       spellcheck={false}
-                      class={error ? 'resistor-divider__input resistor-divider__input--error' : 'resistor-divider__input'}
+                      class={error ? 'calc-form__input calc-form__input--error' : 'calc-form__input'}
                     />
-                    {v.suffix && <span class="resistor-divider__suffix">{v.suffix}</span>}
+                    {v.suffix && <span class="calc-form__suffix">{v.suffix}</span>}
                   </div>
-                  {error && <div class="resistor-divider__input-error">{error}</div>}
+                  {error && <div class="calc-form__input-error">{error}</div>}
                 </div>
               )}
             </div>

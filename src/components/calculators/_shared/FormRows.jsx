@@ -77,12 +77,13 @@ export function UnitInputRow({ label, value, onInput, unit, onUnitChange, units,
   );
 }
 
-export function OutputRow({ label, value, format, error, help }) {
+export function OutputRow({ label, value, format, error, help, warning }) {
+  const showWarning = !error && warning;
   return (
     <div class="calc-form__row">
       <span class="calc-form__label">{label}</span>
       <div class="calc-form__input-cell">
-        <div class="calc-form__output">
+        <div class={showWarning ? 'calc-form__output calc-form__output--warning' : 'calc-form__output'}>
           {error ? (
             <span class="calc-form__output-error">{error}</span>
           ) : Number.isFinite(value) ? (
@@ -91,20 +92,22 @@ export function OutputRow({ label, value, format, error, help }) {
             <span class="calc-form__output-empty">—</span>
           )}
         </div>
+        {showWarning && <div class="calc-form__input-warning">{warning}</div>}
       </div>
       {help && <div class="calc-form__help">{help}</div>}
     </div>
   );
 }
 
-export function UnitOutputRow({ label, value, units, unit, onUnitChange, error, help, sigFigs = 4 }) {
+export function UnitOutputRow({ label, value, units, unit, onUnitChange, error, help, warning, sigFigs = 4 }) {
   const u = units.find((x) => x.label === unit) ?? units[0];
+  const showWarning = !error && warning;
   return (
     <div class="calc-form__row">
       <span class="calc-form__label">{label}</span>
       <div class="calc-form__input-cell">
         <div class="calc-form__output-with-unit">
-          <div class="calc-form__output">
+          <div class={showWarning ? 'calc-form__output calc-form__output--warning' : 'calc-form__output'}>
             {error ? (
               <span class="calc-form__output-error">{error}</span>
             ) : Number.isFinite(value) ? (
@@ -123,6 +126,7 @@ export function UnitOutputRow({ label, value, units, unit, onUnitChange, error, 
             ))}
           </select>
         </div>
+        {showWarning && <div class="calc-form__input-warning">{warning}</div>}
       </div>
       {help && <div class="calc-form__help">{help}</div>}
     </div>

@@ -12,6 +12,7 @@ import {
   formatInductance,
   computeMp4558,
 } from './calc.js';
+import { InputRow, OutputRow } from '../_shared/FormRows.jsx';
 import './styles.css';
 
 export default function Mp4558() {
@@ -57,8 +58,8 @@ export default function Mp4558() {
   }
 
   return (
-    <div class="mp4558">
-      <div class="mp4558__legend">
+    <div class="calc-form">
+      <div class="calc-form__legend">
         Enter the switching frequency, output voltage, bottom feedback resistor (R<sub>2</sub>),
         average load current, allowable inductor ripple current, input voltage, input and output
         capacitances, and output capacitor ESR. Outputs the frequency-setting resistor (R<sub>freq</sub>),
@@ -66,7 +67,7 @@ export default function Mp4558() {
         output ripple voltages. All equations are taken straight from the MP4558 datasheet.
       </div>
 
-      <div class="mp4558__rows">
+      <div class="calc-form__rows">
         <InputRow label={<>f<sub>sw</sub></>}    value={fSwText}       onInput={setFSwText}       placeholder="500k" suffix="Hz" parsed={fSw}
           help="The desired switching frequency."/>
         <InputRow label={<>V<sub>out</sub></>}   value={vOutText}      onInput={setVOutText}      placeholder="3.3"  suffix="V"  parsed={vOut}
@@ -103,48 +104,3 @@ export default function Mp4558() {
   );
 }
 
-function InputRow({ label, value, onInput, placeholder, suffix, parsed, help }) {
-  return (
-    <div class="mp4558__row">
-      <span class="mp4558__label">{label}</span>
-      <div class="mp4558__input-cell">
-        <div class="mp4558__input-with-suffix">
-          <input
-            type="text"
-            value={value}
-            onInput={(e) => onInput(e.currentTarget.value)}
-            placeholder={placeholder}
-            spellcheck={false}
-            title={help}
-            class={parsed.error
-              ? 'mp4558__input mp4558__input--error'
-              : 'mp4558__input'}
-          />
-          {suffix && <span class="mp4558__suffix">{suffix}</span>}
-        </div>
-        {parsed.error && <div class="mp4558__input-error">{parsed.error}</div>}
-      </div>
-      {help && <div class="mp4558__help">{help}</div>}
-    </div>
-  );
-}
-
-function OutputRow({ label, value, format, error, help }) {
-  return (
-    <div class="mp4558__row">
-      <span class="mp4558__label">{label}</span>
-      <div class="mp4558__input-cell">
-        <div class="mp4558__output">
-          {error ? (
-            <span class="mp4558__output-error">{error}</span>
-          ) : Number.isFinite(value) ? (
-            <span class="mp4558__output-value">{format(value)}</span>
-          ) : (
-            <span class="mp4558__output-empty">—</span>
-          )}
-        </div>
-      </div>
-      {help && <div class="mp4558__help">{help}</div>}
-    </div>
-  );
-}

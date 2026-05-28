@@ -241,31 +241,65 @@
   background: var(--sl-color-bg);
 }
 
+/* Readonly cell flagged red when a cross-field validation error applies to it
+   (e.g. preset-V_F LED whose forward voltage exceeds the supply). */
+.calc-form__readonly--error {
+  border-color: var(--sl-color-accent);
+  border-style: solid;
+}
+
 .calc-form__readonly-value {
   font-family: var(--__sl-font-mono, ui-monospace, monospace);
   color: var(--sl-color-gray-2);
 }
 
+/* Small italic caption below the form (e.g. "make sure your resistor is rated
+   for at least X watts"). Generic enough for any calc. */
+.calc-form__note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+}
+
+.calc-form__note strong {
+  color: var(--sl-color-text);
+  font-style: normal;
+}
+
+/* Output box: neutral so it can't be confused with the red error state on
+   inputs. Dashed border indicates "this is computed, not editable"; the muted
+   gray background sets it apart from input boxes without competing with the
+   error palette. */
 .calc-form__output {
   display: flex;
   align-items: center;
   height: 2rem;
   padding: 0 0.6rem;
-  border: 1px dashed var(--sl-color-accent);
+  border: 1px dashed var(--sl-color-gray-4);
   border-radius: 0.25rem;
-  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  background: color-mix(in srgb, var(--sl-color-text) 6%, transparent);
 }
 
 .calc-form__output-value {
   font-family: var(--__sl-font-mono, ui-monospace, monospace);
   font-weight: 700;
-  color: var(--sl-color-accent-high);
+  color: var(--sl-color-text);
   font-size: 0.95rem;
 }
 
+/* Errors *inside* the output box stay red — they ARE errors (the compute
+   function couldn't produce a result for this output). */
 .calc-form__output-error {
   font-size: 0.8rem;
   color: var(--sl-color-accent-high);
+}
+
+/* Output is well outside what's physically practical (e.g. a 555 timer R1/R2
+   in the GΩ range). Amber border, matching the input warning state. */
+.calc-form__output--warning {
+  border-color: var(--sl-color-orange);
+  background: color-mix(in srgb, var(--sl-color-orange) 12%, var(--sl-color-bg));
 }
 
 .calc-form__output-empty {

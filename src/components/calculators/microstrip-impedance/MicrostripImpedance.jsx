@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'preact/hooks';
 import {
   LENGTH_UNITS, IMPEDANCE_UNITS, getUnit,
-  parseNumber, formatInUnit,
+  parseNumber,
   RANGE_WARNINGS, rangeWarning,
   computeMicrostripImpedance,
 } from './calc.js';
+import { InputRow, UnitInputRow, UnitOutputRow } from '../_shared/FormRows.jsx';
 import './styles.css';
 
 export default function MicrostripImpedance() {
@@ -44,113 +45,59 @@ export default function MicrostripImpedance() {
     });
   }
 
+  // Helper to bridge the {text, unit} state shape to UnitInputRow's separate
+  // value/unit/onInput/onUnitChange props.
+  const lengthRow = (label, state, setState, parsed, warning, placeholder, help) => (
+    <UnitInputRow
+      label={label}
+      value={state.text}
+      onInput={(text) => setState({ ...state, text })}
+      unit={state.unit}
+      onUnitChange={(unit) => setState({ ...state, unit })}
+      units={LENGTH_UNITS}
+      parsed={parsed}
+      warning={warning}
+      placeholder={placeholder}
+      help={help}
+    />
+  );
+
   return (
-    <div class="microstrip">
-      <div class="microstrip__legend">
+    <div class="calc-form">
+      <div class="calc-form__legend">
         Enter the track width, copper thickness, substrate thickness and substrate dielectric constant.
         Pick the unit for each dimension from the dropdown. The calculator returns the characteristic
         impedance using the rfcafe approximation.
       </div>
 
-      <div class="microstrip__rows">
-        <LengthRow label="w" state={w} setState={setW} parsed={wParsed} placeholder="0.2" warning={wWarn}
-          help="The width of the track (microstrip). Usually measured in mm or mils."/>
-        <LengthRow label="t" state={t} setState={setT} parsed={tParsed} placeholder="35" warning={tWarn}
-          help="The thickness of the track (microstrip) — the same as the copper weight of the layer it's on. Usually measured in µm or oz./sq foot."/>
-        <LengthRow label="h" state={h} setState={setH} parsed={hParsed} placeholder="1.6" warning={hWarn}
-          help="The thickness of the substrate — the distance between the track and the plane below it. ≈ 1.6 mm on a standard 2-layer PCB; much smaller between adjacent layers on a high-density board."/>
+      <div class="calc-form__rows">
+        {lengthRow('w', w, setW, wParsed, wWarn, '0.2',
+          'The width of the track (microstrip). Usually measured in mm or mils.')}
+        {lengthRow('t', t, setT, tParsed, tWarn, '35',
+          "The thickness of the track (microstrip) — the same as the copper weight of the layer it's on. Usually measured in µm or oz./sq foot.")}
+        {lengthRow('h', h, setH, hParsed, hWarn, '1.6',
+          'The thickness of the substrate — the distance between the track and the plane below it. ≈ 1.6 mm on a standard 2-layer PCB; much smaller between adjacent layers on a high-density board.')}
 
-        <div class="microstrip__row">
-          <span class="microstrip__label">ε<sub>r</sub></span>
-          <div class="microstrip__input-cell">
-            <input
-              type="text"
-              value={eRText}
-              onInput={(e) => setERText(e.currentTarget.value)}
-              placeholder="4.0"
-              spellcheck={false}
-              title={!eRParsed.error && eRWarn
-                ? `The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.\n\nWARNING: ${eRWarn}`
-                : 'The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.'}
-              class={inputClass(eRParsed, eRWarn)}
-            />
-            {eRParsed.error && <div class="microstrip__input-error">{eRParsed.error}</div>}
-            {!eRParsed.error && eRWarn && <div class="microstrip__input-warning">{eRWarn}</div>}
-          </div>
-          <div class="microstrip__help">The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7.</div>
-        </div>
+        <InputRow
+          label={<>ε<sub>r</sub></>}
+          value={eRText}
+          onInput={setERText}
+          placeholder="4.0"
+          parsed={eRParsed}
+          warning={eRWarn}
+          help="The dielectric of the substrate. For standard FR-4 PCB material this is around 4–4.7."
+        />
 
-        <div class="microstrip__row">
-          <span class="microstrip__label">Z</span>
-          <div class="microstrip__input-cell">
-            <div class="microstrip__output-cell">
-              <div class="microstrip__output">
-                {computed.error ? (
-                  <span class="microstrip__output-error">{computed.error}</span>
-                ) : Number.isFinite(computed.impedance) ? (
-                  <span class="microstrip__output-value">
-                    {formatInUnit(computed.impedance, getUnit(IMPEDANCE_UNITS, zUnit))}
-                  </span>
-                ) : (
-                  <span class="microstrip__output-empty">—</span>
-                )}
-              </div>
-              <select
-                class="microstrip__unit-select"
-                value={zUnit}
-                onChange={(e) => setZUnit(e.currentTarget.value)}
-              >
-                {IMPEDANCE_UNITS.map((u) => (
-                  <option key={u.label} value={u.label}>{u.label}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div class="microstrip__help">The calculated characteristic impedance of the microstrip. Needs to match the impedance at each end so RF reflections don't occur. Typically 20–150 Ω.</div>
-        </div>
+        <UnitOutputRow
+          label="Z"
+          value={computed.impedance}
+          units={IMPEDANCE_UNITS}
+          unit={zUnit}
+          onUnitChange={setZUnit}
+          error={computed.error}
+          help="The calculated characteristic impedance of the microstrip. Needs to match the impedance at each end so RF reflections don't occur. Typically 20–150 Ω."
+        />
       </div>
     </div>
   );
-}
-
-function LengthRow({ label, state, setState, parsed, placeholder, help, warning }) {
-  const showWarning = !parsed.error && warning;
-  return (
-    <div class="microstrip__row">
-      <span class="microstrip__label">{label}</span>
-      <div class="microstrip__input-cell">
-        <div class="microstrip__input-with-unit">
-          <input
-            type="text"
-            value={state.text}
-            onInput={(e) => setState({ ...state, text: e.currentTarget.value })}
-            placeholder={placeholder}
-            spellcheck={false}
-            title={showWarning ? `${help}\n\nWARNING: ${warning}` : help}
-            class={inputClass(parsed, warning)}
-          />
-          <select
-            class="microstrip__unit-select"
-            value={state.unit}
-            onChange={(e) => setState({ ...state, unit: e.currentTarget.value })}
-          >
-            {LENGTH_UNITS.map((u) => (
-              <option key={u.label} value={u.label}>{u.label}</option>
-            ))}
-          </select>
-        </div>
-        {parsed.error && <div class="microstrip__input-error">{parsed.error}</div>}
-        {showWarning && <div class="microstrip__input-warning">{warning}</div>}
-      </div>
-      {help && <div class="microstrip__help">{help}</div>}
-    </div>
-  );
-}
-
-// Input class: a parse error (red) wins over a range warning (amber), which
-// wins over the default.
-function inputClass(parsed, warning) {
-  if (parsed.error) return 'microstrip__input microstrip__input--error';
-  if (warning) return 'microstrip__input microstrip__input--warning';
-  return 'microstrip__input';
 }

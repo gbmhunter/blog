@@ -44,18 +44,18 @@ export default function CapacitorCharge() {
   const setValue = (key, text) => setValues((prev) => ({ ...prev, [key]: text }));
 
   return (
-    <div class="capacitor-charge">
-      <div class="capacitor-charge__legend">
+    <div class="calc-form">
+      <div class="calc-form__legend">
         Select the parameter you want to compute (the other two are inputs). Solves <em>Q = CV</em>.
       </div>
-      <div class="capacitor-charge__rows">
+      <div class="calc-form__rows">
         {ORDER.map((key) => {
           const v = VARS[key];
           const isTarget = key === target;
           const { error } = parsed[key];
           return (
-            <div class="capacitor-charge__row" key={key}>
-              <label class="capacitor-charge__radio">
+            <div class="calc-form__row calc-form__row--radio" key={key}>
+              <label class="calc-form__radio">
                 <input
                   type="radio"
                   name="capacitor-charge-target"
@@ -63,31 +63,31 @@ export default function CapacitorCharge() {
                   onChange={() => setTarget(key)}
                 />
               </label>
-              <span class="capacitor-charge__label">{v.label}</span>
+              <span class="calc-form__label">{v.label}</span>
               {isTarget ? (
-                <div class="capacitor-charge__output">
+                <div class="calc-form__output">
                   {computed.error ? (
-                    <span class="capacitor-charge__output-error">{computed.error}</span>
+                    <span class="calc-form__output-error">{computed.error}</span>
                   ) : Number.isFinite(computed.value) ? (
-                    <span class="capacitor-charge__output-value">{v.format(computed.value)}</span>
+                    <span class="calc-form__output-value">{v.format(computed.value)}</span>
                   ) : (
-                    <span class="capacitor-charge__output-empty">—</span>
+                    <span class="calc-form__output-empty">—</span>
                   )}
                 </div>
               ) : (
-                <div class="capacitor-charge__input-cell">
-                  <div class="capacitor-charge__input-with-suffix">
+                <div class="calc-form__input-cell">
+                  <div class="calc-form__input-with-suffix">
                     <input
                       type="text"
                       value={values[key]}
                       onInput={(e) => setValue(key, e.currentTarget.value)}
                       placeholder={v.placeholder}
                       spellcheck={false}
-                      class={error ? 'capacitor-charge__input capacitor-charge__input--error' : 'capacitor-charge__input'}
+                      class={error ? 'calc-form__input calc-form__input--error' : 'calc-form__input'}
                     />
-                    {v.suffix && <span class="capacitor-charge__suffix">{v.suffix}</span>}
+                    {v.suffix && <span class="calc-form__suffix">{v.suffix}</span>}
                   </div>
-                  {error && <div class="capacitor-charge__input-error">{error}</div>}
+                  {error && <div class="calc-form__input-error">{error}</div>}
                 </div>
               )}
             </div>
