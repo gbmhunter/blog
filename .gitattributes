@@ -1,0 +1,59 @@
+# Store every text file with LF line endings in the repository, regardless of
+# the contributor's OS. Git will auto-detect text vs. binary for everything
+# not explicitly tagged below.
+#
+# To apply this to files already in the index, run `git add --renormalize .`
+# once and commit the resulting changes.
+
+* text=auto eol=lf
+
+# Common binary formats — list explicitly so git never tries to munge them.
+# Images
+*.webp  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.bmp   binary
+*.tif   binary
+*.tiff  binary
+*.psd   binary
+*.xcf   binary
+# Documents / archives
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.tar   binary
+*.7z    binary
+*.xls   binary
+*.xlsx  binary
+*.xlsm  binary
+*.xlsb  binary
+*.doc   binary
+*.docx  binary
+# Fonts
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+*.otf   binary
+# Media
+*.mp4   binary
+*.webm  binary
+*.mov   binary
+*.mp3   binary
+*.wav   binary
+# Design / CAD source files
+*.afdesign  binary
+*.afphoto   binary
+*.aftemplate binary
+*.odg       binary
+*.FCStd     binary
+# Compiled / runtime artefacts
+*.pyc   binary
+*.exe   binary
+*.dll   binary
+*.so    binary
+*.dylib binary
+*.bin   binary
