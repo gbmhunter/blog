@@ -3,6 +3,7 @@
 // exports a `catalog` constant, then import it here.
 
 import { catalog as bleAdvDecoder } from '../calculators/ble-adv-decoder/catalog.js';
+import { catalog as boostConverter } from '../calculators/boost-converter/catalog.js';
 import { catalog as buckConverter } from '../calculators/buck-converter/catalog.js';
 import { catalog as capacitorCharge } from '../calculators/capacitor-charge/catalog.js';
 import { catalog as crcCalculator } from '../calculators/crc-calculator/catalog.js';
@@ -32,6 +33,7 @@ import { catalog as wireGauge } from '../calculators/wire-gauge/catalog.js';
 
 export const CATALOGS = [
   bleAdvDecoder,
+  boostConverter,
   buckConverter,
   capacitorCharge,
   crcCalculator,

@@ -8,6 +8,8 @@ title: Boost Converters
 type: page
 ---
 
+import BoostConverter from 'src/components/calculators/boost-converter/BoostConverter.jsx';
+
 _Boost converters_ (also called _step-up converters_) are a particular topology of [switch-mode power supply](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (SMPS) that use a switching element, inductor, diode (or second switch) and capacitor to convert an input voltage into a **higher** (or equal) output voltage.
 
 To learn more about EMI/EMC considerations regarding boost converters, see the [EMC Design Guidelines page](/electronics/compliance/electromagnetic-compatibility-emc/emc-design-guidelines/).
@@ -128,6 +130,12 @@ $$
 ### Diode Selection
 
 The maximum reverse voltage of the diode must be at least equal to the output voltage of the boost converter. This is because the diode sees the full output voltage in reverse when the switch is closed.
+
+## Boost Converter Calculator
+
+Use the generic boost-converter design helper below to compute the duty cycle, average and peak inductor current, and required inductance from the supply/output voltages, diode and switch drops, switching frequency, output current and acceptable inductor ripple.
+
+<BoostConverter client:load />
 
 ## PCB Routing
 
