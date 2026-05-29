@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2017-06-24
 description: A walk-through on how to configure serial ports correctly in Linux.
 image: ./_assets/linux-serial-ports-using-c-cpp.png
-lastUpdated: 2023-12-16
+lastUpdated: 2026-05-29
 tags: [Linux, serial ports, termios, files, unix, tty, devices, configurations, C, C++, examples, getty, Arduino, code, USB, serial, data, flow control, VMIN, VTIME]
 title: Linux Serial Ports Using C/C++
 type: page
@@ -25,7 +25,7 @@ Common names are:
 
 <Image src={import('./_assets/linux-dev-dir-ttyacm0-arduino-serial.png')} width="600px">A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACM0.</Image>
 
-**To write to a serial port, you write to the file. To read from a serial port, you read from the file.** Of course, this allows you to send/receive data, but how do you set the serial port parameters such as baud rate, parity, e.t.c? This is set by a special `tty` configuration `struct`.
+**To write to a serial port, you write to the file. To read from a serial port, you read from the file.** Of course, this allows you to send/receive data, but how do you set the serial port parameters such as baud rate, parity, etc.? This is set by a special `tty` configuration `struct`.
 
 ## Basic Setup In C
 
@@ -49,12 +49,13 @@ First we want to include a few things:
 
 Then we want to open the serial port device (which appears as a file under `/dev/`), saving the file descriptor that is returned by `open()`:
 
-```c 
+```c
 int serial_port = open("/dev/ttyUSB0", O_RDWR);
 
 // Check for errors
 if (serial_port < 0) {
     printf("Error %i from open: %s\n", errno, strerror(errno));
+    return 1;
 }
 ```
 
@@ -84,7 +85,7 @@ struct termios tty;
 
 // Read in existing settings, and handle any error
 // NOTE: This is important! POSIX states that the struct passed to tcsetattr()
-// must have been initialized with a call to tcgetattr() overwise behaviour
+// must have been initialized with a call to tcgetattr() otherwise behaviour
 // is undefined
 if(tcgetattr(serial_port, &tty) != 0) {
     printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
@@ -128,7 +129,7 @@ tty.c_cflag |= CSTOPB;  // Set stop field, two stop bits used in communication
 
 ### Number Of Bits Per Byte
 
-The `CS<number>` fields set how many data bits are transmitted per byte across the serial port. The most common setting here is 8 (`CS8`). Definitely use this if you are unsure, I have never used a serial port before which didn't use 8 (but they do exist). You must clear all of the size bits before setting any of them with `&= ~CSIZE`.
+The `CS<number>` fields set how many data bits are transmitted per byte across the serial port. The most common setting here is 8 (`CS8`) — definitely use this if you are unsure. I have never used a serial port that didn't use 8 (but they do exist). You must clear all of the size bits before setting any of them with `&= ~CSIZE`.
 
 ```c
 tty.c_cflag &= ~CSIZE; // Clear all the size bits, then use one of the statements below
@@ -232,7 +233,7 @@ Both `VMIN` and `VTIME` can be 0 or a positive number. Let's explore the differe
 
 **VMIN > 0, VTIME = 0**: This will make `read()` always wait for `VMIN` bytes before returning. `read()` could block indefinitely if not enough bytes are received.
 
-**VMIN = 0, VTIME > 0**: This is a blocking read of any number of chars with a maximum timeout (given by `VTIME`). `read()` will block until either any amount of data is available, or the timeout occurs. If when the first byte is available, there are also more bytes available in the input buffer, these will be returned at the same time as well. This happens to be my favourite mode (and the one I use the most).  
+**VMIN = 0, VTIME > 0**: This is a blocking read of any number of chars with a maximum timeout (given by `VTIME`). `read()` will block until either any amount of data is available, or the timeout occurs. If when the first byte is available, there are also more bytes available in the input buffer, these will be returned at the same time as well. This happens to be my favourite mode (and the one I use the most).
 
 **VMIN > 0, VTIME > 0**: In this mode, `read()` will block until either `VMIN` characters have been received, or `VTIME` has elapsed between characters. `VTIME` is called an "inter-character" timer in this mode. Note that the timeout for `VTIME` does not begin until the first character is received, and is reset every time a successive character is received[^sco-group-non-canonical-mode-input-processing].
 
@@ -261,13 +262,20 @@ cfsetispeed(&tty, B9600);
 cfsetospeed(&tty, B9600);
 ```
 
-If you want to remain UNIX compliant, the baud rate must be chosen from one of the following:
+If you want to remain POSIX compliant, the baud rate must be chosen from one of the following:
 
 ```c
-B0,  B50,  B75,  B110,  B134,  B150,  B200, B300, B600, B1200, B1800, B2400, B4800, B9600, B19200, B38400, B57600, B115200, B230400, B460800
+B0, B50, B75, B110, B134, B150, B200, B300, B600,
+B1200, B1800, B2400, B4800, B9600, B19200, B38400
 ```
 
-Some implementation of Linux provide a helper function `cfsetspeed()` which sets both the input and output speeds at the same time:
+Linux and most BSD systems also provide higher-rate extensions outside POSIX (and a few even higher rates beyond these — `B500000`, `B921600`, `B1000000`, etc., on recent Linux kernels):
+
+```c
+B57600, B115200, B230400, B460800
+```
+
+Some implementations of Linux provide a helper function `cfsetspeed()` which sets both the input and output speeds at the same time:
 
 ```c
 cfsetspeed(&tty, B9600);
@@ -277,19 +285,21 @@ cfsetspeed(&tty, B9600);
 
 As you are now fully aware that configuring a Linux serial port is no trivial matter, you're probably unfazed to learn that setting custom baud rates is just as difficult. There is **no portable way of doing this, so be prepared to experiment** with the following code examples to find out what works on your target system.
 
-**GNU/Linux Method**
+**Integer-to-`cfsetispeed()` (BSD-style termios only — does NOT work on glibc Linux)**
 
-If you are compiling with the GNU C library, you can forgo the standard enumerations above just specify an integer baud rate directly to `cfsetispeed()` and `cfsetospeed()`, e.g.:
+On some BSD-derived systems, `speed_t` is defined as the literal baud-rate integer (so `B9600` is `#define`d to `9600`), and `cfsetispeed()` / `cfsetospeed()` accept arbitrary integers directly:
 
 ```c
-// Specifying a custom baud rate when using GNU C
+// Works on BSD-style termios where speed_t == baud rate
 cfsetispeed(&tty, 104560);
 cfsetospeed(&tty, 104560);
 ```
 
-**termios2 Method**
+This **does not work on modern glibc Linux**, where the `B...` macros are opaque speed codes (e.g. `B9600` is the value `13`, not `9600`). Passing a raw baud rate stores the wrong value in `c_ispeed` / `c_ospeed`, and the subsequent `tcsetattr()` will reject it with `EINVAL`. On Linux, use the `termios2` method below.
 
-This method relied on using a `termios2` struct, which is like a `termios` struct but with sightly more functionality. I'm unsure on exactly what UNIX systems `termios2` is defined on, but if it is, it is usually defined in `termbits.h` (it was on the Xubuntu 18.04 with GCC system I was doing these tests on):
+**termios2 Method (the right way on Linux)**
+
+This method relies on using a `termios2` struct, which is like a `termios` struct but with slightly more functionality. I'm unsure on exactly what UNIX systems `termios2` is defined on, but if it is, it is usually defined in `termbits.h` (it was on the Xubuntu 18.04 with GCC system I was doing these tests on):
 
 ```c
 struct termios2 {
@@ -304,7 +314,7 @@ struct termios2 {
 };
 ```
 
-Which is very similar to plain old `termios`, except with the addition of the `c_ispeed` and `c_ospeed`. We can use these to directly set a custom baud rate! We can pretty much set everything other than the baud rate in exactly the same manner as we could for `termios`, except for the reading/writing of the terminal attributes to and from the file descriptor --- instead of using `tcgetattr()` and `tcsetattr()` we have to use `ioctl()`.
+This struct is very similar to plain old `termios`, except with the addition of `c_ispeed` and `c_ospeed`. We can use these to directly set a custom baud rate! We can pretty much set everything other than the baud rate in exactly the same manner as we could for `termios`, except for the reading/writing of the terminal attributes to and from the file descriptor --- instead of using `tcgetattr()` and `tcsetattr()` we have to use `ioctl()`.
 
 Let's first update our includes, we have to remove `termios.h` and add the following:
 
@@ -325,15 +335,17 @@ ioctl(fd, TCGETS2, &tty);
 // ...
 // ...
 
-// Set custom baud rate
+// Set custom baud rate. The kernel-documented approach is:
+//   1. Clear the speed bits in c_cflag (CBAUD)
+//   2. Set BOTHER, telling the driver "use c_ispeed / c_ospeed for the rate"
+//   3. Write the actual baud rate (in bits/s) to c_ispeed and c_ospeed.
 tty.c_cflag &= ~CBAUD;
-tty.c_cflag |= CBAUDEX;
-// On the internet there is also talk of using the "BOTHER" macro here:
-// tty.c_cflag |= BOTHER;
-// I never had any luck with it, so omitting in favour of using
-// CBAUDEX
+tty.c_cflag |= BOTHER;
 tty.c_ispeed = 123456; // What a custom baud rate!
 tty.c_ospeed = 123456;
+// If BOTHER isn't defined on your system (very old kernels, some
+// embedded toolchains), `tty.c_cflag |= CBAUDEX;` is sometimes used
+// as a fallback — but BOTHER is the right answer on any modern Linux.
 
 // Write terminal settings to file descriptor
 ioctl(serial_port, TCSETS2, &tty);
@@ -388,7 +400,7 @@ int n = read(serial_port, &read_buf, sizeof(read_buf));
 
 ## Closing
 
-This is a simple as:
+This is as simple as:
 
 ```c
 close(serial_port);
@@ -408,15 +420,22 @@ close(serial_port);
 #include <unistd.h> // write(), read(), close()
 
 int main() {
-  // Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
+  // Open the serial port. Change device path as needed (currently set to a standard FTDI USB-UART cable type device)
   int serial_port = open("/dev/ttyUSB0", O_RDWR);
+
+  // Check for errors
+  if (serial_port < 0) {
+      printf("Error %i from open: %s\n", errno, strerror(errno));
+      return 1;
+  }
 
   // Create new termios struct, we call it 'tty' for convention
   struct termios tty;
 
   // Read in existing settings, and handle any error
-  if(tcgetattr(serial_port, &tty) != 0) {
+  if (tcgetattr(serial_port, &tty) != 0) {
       printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
+      close(serial_port);
       return 1;
   }
 
@@ -450,6 +469,7 @@ int main() {
   // Save tty settings, also checking for error
   if (tcsetattr(serial_port, TCSANOW, &tty) != 0) {
       printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
+      close(serial_port);
       return 1;
   }
 
@@ -470,9 +490,10 @@ int main() {
   // settings above, specifically VMIN and VTIME
   int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
 
-  // n is the number of bytes read. n may be 0 if no bytes were received, and can also be -1 to signal an error.
+  // num_bytes is the number of bytes read. It may be 0 if no bytes were received, and can also be -1 to signal an error.
   if (num_bytes < 0) {
       printf("Error reading: %s", strerror(errno));
+      close(serial_port);
       return 1;
   }
 
@@ -482,10 +503,8 @@ int main() {
 
   close(serial_port);
   return 0; // success
-};
+}
 ```
-
-**For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).**
 
 ## Issues With Getty
 
@@ -548,7 +567,7 @@ The provided pointer to integer `bytes` gets written by the `ioctl()` function w
 
 ## Changing Terminal Settings Are System Wide
 
-Although getting and setting terminal settings are done with a file descriptor, **the settings apply to the terminal device itself and will effect all other system applications** that are using or going to use the terminal. This also means that terminal setting changes are persistent after the file descriptor is closed, and even after the application that changed the settings is terminated[^gnu-terminal-mode-functions].
+Although getting and setting terminal settings are done with a file descriptor, **the settings apply to the terminal device itself and will affect all other system applications** that are using or going to use the terminal. This also means that terminal setting changes are persistent after the file descriptor is closed, and even after the application that changed the settings is terminated[^gnu-terminal-mode-functions].
 
 ## Examples
 
@@ -556,9 +575,9 @@ For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSe
 
 ## External Resources
 
-See [http://www.gnu.org/software/libc/manual/html_node/Terminal-Modes.html](http://www.gnu.org/software/libc/manual/html_node/Terminal-Modes.html) for the official specifications of the `termios` struct configuration parameters.
+See [GNU C Library – Terminal Modes](https://www.gnu.org/software/libc/manual/html_node/Terminal-Modes.html) for the official specifications of the `termios` struct configuration parameters.
 
-[^gnu-terminal-mode-functions]: http://www.gnu.org/software/libc/manual/html_node/Mode-Functions.html.
+[^gnu-terminal-mode-functions]: Free Software Foundation. _Mode Functions — The GNU C Library Reference Manual_. Retrieved 2023-12-16, from https://www.gnu.org/software/libc/manual/html_node/Mode-Functions.html.
 [^sweet-serial-posix]: Michael R. Sweet (1999). _Serial Programming Guide for POSIX Operating Systems_. Retrieved 2022-02-12, from https://www.cmrr.umn.edu/~strupp/serial.html.
 [^sco-group-non-canonical-mode-input-processing]: The SCO Group Inc (2005). _Non-canonical mode input processing_. Retrieved 2023-12-16, from http://osr600doc.sco.com/en/SDK_sysprog/TDC_Non-CanonicalModeInProc.html.
 [^man7-org-read2-linux-manual-page]: Michael Kerrisk (2023, Jun 24). _read(2) — Linux manual page_. Retrieved 2023-12-16, from https://man7.org/linux/man-pages/man2/read.2.html.
