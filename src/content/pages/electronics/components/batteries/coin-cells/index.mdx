@@ -2,14 +2,14 @@
 authors: [gbmhunter]
 date: 2011-09-05
 description: Coin cell batteries (a.k.a. buttons cells or watch batteries) are a small, low energy and low power battery that can power small devices. They are commonly used in small, low-power consumer electronics such as calculators, remotes, and key fobs. They are also fitted to PCBs as backup batteries for things like real-time clocks (RTCs).
-lastUpdated: 2025-05-15
+lastUpdated: 2026-05-30
 title: Coin Cell Batteries
 type: page
 ---
 
 <WarningIsNotes />
 
-### Overview
+## Overview
 
 Button cells are also known as coin cells or watch batteries.
 
@@ -19,9 +19,16 @@ The insulated top cap of a button cell is the negative terminal, the base is the
 
 ## Internal Resistance
 
-The internal resistance of a coin cell battery starts of at a rather large 10Ω. This then rapidly increases as the batteries energy is consumed. Where high pulse currents are needed, coin cell batteries can be used in conjunction with high-valued capacitors.
+The internal resistance of a coin cell battery is rather large. For example, a fresh CR2032 typically has an initial internal resistance of $\approx 10Ω$. This then rapidly increases as the battery's energy is consumed. Where high pulse currents are needed, coin cell batteries can be used in conjunction with high-valued capacitors.
 
 A rule of thumb for coin cell batteries is that 10mA is the maximum current draw.
+
+The internal resistance can be a better metric for the state-of-charge (SoC) than the cell voltage. Microcontrollers can measure this by:
+
+1. Measuring the battery voltage with no load (or very little load)
+1. Connecting a known large load and measuring the battery voltage again.
+1. By looking at the voltage drop, the internal resistance can be calculated.
+1. Use this to estimate the SoC.
 
 ## Technologies
 
@@ -31,7 +38,50 @@ Silver cells have a very stable output voltage over the lifespan of the battery.
 
 ## Common Types
 
-CR2032. CR2025.
+Most coin cells follow the IEC 60086 naming convention, where the part number encodes both the chemistry and the physical dimensions.[^wikipedia-battery-nomenclature] Taking the ubiquitous **CR2032** as an example:
+
+* **C**: The chemistry. `C` denotes lithium manganese dioxide (LiMnO₂). Other common prefixes are `B` (lithium carbon monofluoride), `L` (alkaline manganese dioxide) and `S` (silver oxide).
+* **R**: The shape. `R` means round (cylindrical). There is also `F` for flat (layer built), `P` for prismatic and `S` for square (or rectangular or prismatic).[^wikipedia-battery-nomenclature]
+* **20**: The diameter in millimetres (20mm).
+* **32**: The height in tenths of a millimetre (3.2mm).
+
+So a CR2032 is a 20mm diameter, 3.2mm tall lithium cell, while a CR2025 is the same diameter but thinner at 2.5mm.
+
+The first letter identifies the electrochemical system, which also implies a nominal voltage. The full set of IEC chemistry codes is given below (the negative electrode is referred to first):[^wikipedia-battery-nomenclature]
+
+| Letter code | Negative electrode | Electrolyte                       | Positive electrode                       | Nominal voltage (V) | Max. open-circuit voltage (V) | Main article             |
+|-------------|--------------------|-----------------------------------|------------------------------------------|---------------------|-------------------------------|--------------------------|
+| (none)      | Zinc               | Ammonium chloride, Zinc chloride  | Manganese dioxide                        | 1.5                 | 1.725                         | Zinc-carbon battery      |
+| A           | Zinc               | Ammonium chloride, Zinc chloride  | Oxygen                                   | 1.4                 | 1.55                          | Zinc-air battery         |
+| B           | Lithium            | Organic electrolyte               | Carbon monofluoride                      | 3.0                 | 3.7                           | Lithium battery          |
+| C           | Lithium            | Organic electrolyte               | Manganese dioxide                        | 3.0                 | 3.7                           |                          |
+| E           | Lithium            | Non-aqueous inorganic electrolyte | Thionyl chloride                         | 3.6                 | 3.9                           |                          |
+| F           | Lithium            | Organic electrolyte               | Iron disulfide                           | 1.5                 | 1.83                          |                          |
+| G           | Lithium            | Organic electrolyte               | Copper(II) oxide                         | 1.5                 | 2.3                           |                          |
+| L           | Zinc               | Alkali metal hydroxide            | Manganese dioxide                        | 1.5                 | 1.65                          | Alkaline battery         |
+| M (withdrawn) | Zinc             | Alkali metal hydroxide            | Mercuric oxide                           | 1.35                |                               | Mercury battery          |
+| N (withdrawn) | Zinc             | Alkali metal hydroxide            | Mercuric oxide, manganese dioxide        | 1.4                 |                               |                          |
+| P           | Zinc               | Alkali metal hydroxide            | Oxygen                                   | 1.4                 | 1.68                          | Zinc-air battery         |
+| S           | Zinc               | Alkali metal hydroxide            | Silver oxide                             | 1.55                | 1.63                          | Silver-oxide battery     |
+| Z           | Zinc               | Alkali metal hydroxide            | Manganese dioxide, nickel oxyhydroxide   | 1.5                 | 1.78                          | Nickel oxyhydroxide battery |
+
+Lithium coin cells (`CR`/`BR` prefixes) have a nominal voltage of 3.0V, whereas silver oxide (`SR`) and alkaline (`LR`) cells are around 1.55V and 1.5V respectively. The table below lists some of the most common types:[^wikipedia-battery-nomenclature]
+
+| Type   | Chemistry      | Diameter (mm) | Height (mm) | Nominal Voltage (V) | Typical Capacity (mAh) |
+|--------|----------------|---------------|-------------|---------------------|------------------------|
+| CR1216 | Lithium        | 12.5          | 1.6         | 3.0                 | 25                     |
+| CR1620 | Lithium        | 16.0          | 2.0         | 3.0                 | 75                     |
+| CR1632 | Lithium        | 16.0          | 3.2         | 3.0                 | 120                    |
+| CR2016 | Lithium        | 20.0          | 1.6         | 3.0                 | 90                     |
+| CR2025 | Lithium        | 20.0          | 2.5         | 3.0                 | 165                    |
+| CR2032 | Lithium        | 20.0          | 3.2         | 3.0                 | 225                    |
+| CR2450 | Lithium        | 24.5          | 5.0         | 3.0                 | 620                    |
+| LR44   | Alkaline       | 11.6          | 5.4         | 1.5                 | 110                    |
+| SR44   | Silver oxide   | 11.6          | 5.4         | 1.55                | 165                    |
+
+Note that the older alkaline (`LR`) and silver oxide (`SR`) "button" cells used in watches and small devices (e.g. LR44/SR44) do not follow the dimensional numbering scheme — their numbers are arbitrary type designators.
+
+By far the most common coin cell in consumer electronics and on PCBs is the **CR2032**.
 
 ## PCB Mounting
 
@@ -55,8 +105,15 @@ According to Duracell, the most dangerous sizes are:
 
 (i.e. all the button cells with a 20mm diameter)[^duracell-power-safer].
 
+Some coin cells also have a dye added that colours a child's mouth blue when ingested (to give you critical evidence you need to get them to the hospital fast).
+
+In 2026, Energizer launched a new coin cell that was encased in a titanium alloy metal rather than the traditional stainless steel. This change prevents the burning that occurs in the digestive trap when a coin cell is swallowed.[^abc-news-new-battery-prevent-child-deaths] This arrived at the same time that Apple was facing a lot of criticism for their AirTag, which is a very compact device that uses a CR2032 and deemed a chocking and burn risk.[^appleinsider-energizer-ultimate-child-shield]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^duracell-power-safer]: Duracell. _Duracell Power Safer - The only Lithium Coin battery with bitter taste to prevent ingestion._. Retrieved 2024-04-28, from https://www.duracell-me.com/technology/lithium-coin-battery-safety/.
+[^duracell-power-safer]: Duracell. _Duracell Power Safer - The only Lithium Coin Battery With Bitter Taste to Prevent Ingestion_ [website]. Retrieved 2024-04-28, from https://www.duracell-me.com/technology/lithium-coin-battery-safety/.
+[^wikipedia-battery-nomenclature]: Wikipedia (2025, Jul 17). _Battery nomenclature_ [wiki]. Retrieved 2026-05-30, from https://en.wikipedia.org/wiki/Battery_nomenclature.
+[^abc-news-new-battery-prevent-child-deaths]: Yi-Jin Yu (2026, May 6). _New battery aims to prevent some child deaths. Is it the solution?_. ABC News. Retrieved 2026-05-30, from https://abcnews.com/GMA/Family/new-battery-aims-prevent-child-deaths-solution/story?id=132670770.
+[^appleinsider-energizer-ultimate-child-shield]: Malcolm Owen (2026, May 6). _Energizer's Ultimate Child Shield batteries minimizes burns if your child swallows an AirTag battery_. AppleInsider. Retrieved 2026-05-30, from https://appleinsider.com/articles/26/05/06/energizers-ultimate-child-shield-batteries-minimizes-burns-if-your-child-swallows-an-airtag-battery.
