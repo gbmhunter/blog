@@ -36,7 +36,9 @@ if (customFrontmatter !== undefined && customFrontmatter !== null) {
     shouldRenderDatesAndAuthors = false;
   }
 } else {
-  console.warn(`No custom frontmatter found for page`);
+  // Pages without custom frontmatter (the homepage, Starlight's built-in 404,
+  // and other non-content routes) legitimately have no authors/dates banner to
+  // render, so this is an expected case — don't log a warning for it.
   shouldRenderDatesAndAuthors = false;
 }
 
