@@ -198,7 +198,7 @@ The "SSL/TLS encryption mode" in Cloudflare has to be changed from the default o
 
 Each subfolder under `src/components/calculators/` is a self-contained interactive calculator embedded somewhere on the blog. The `/calculators/` index page (`src/content/pages/calculators/index.mdx`) aggregates them all into a searchable card grid via `src/components/calculator-index/`.
 
-For the **widget code structure and Astro / Preact conventions**, see `.claude/skills/interactive-widget/SKILL.md`.
+For the **widget code structure and Astro / Preact conventions**, see `.claude/skills/calculator/SKILL.md`.
 
 ### Folder layout (per calculator)
 

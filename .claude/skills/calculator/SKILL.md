@@ -1,11 +1,13 @@
 ---
-name: interactive-widget
-description: Create an interactive client-side widget (decoder, builder, calculator, visualiser, simulator, etc.) and embed it in a blog .mdx page. Use this skill whenever the user asks to add an interactive component, widget, "playground", or any UI element that needs to react to user input on a blog page. Establishes the Preact + container-query pattern used by the BLE Advertising Decoder so future widgets follow the same conventions.
+name: calculator
+description: Create an interactive client-side calculator (also called a widget — decoder, builder, calculator, visualiser, simulator, etc.), embed it in a blog .mdx page, and register it on the /calculators/ index. Use this skill whenever the user asks to add an interactive component, calculator, widget, "playground", or any UI element that needs to react to user input on a blog page. Establishes the Preact + container-query pattern used by the existing calculators so new ones follow the same conventions.
 ---
 
-# Interactive Widget Skill
+# Calculator (Interactive Widget) Skill
 
-When the user asks to add an interactive widget (something with state and inputs — not a static SVG, image, or `.astro` server-render-only component), follow this pattern.
+On this website, interactive client-side widgets are called **calculators** and are listed on the `/calculators/` index page. Building one is not complete until it is registered there (Step 5b).
+
+When the user asks to add an interactive calculator/widget (something with state and inputs — not a static SVG, image, or `.astro` server-render-only component), follow this pattern.
 
 ## Step 1: Decide whether a widget is even needed
 
@@ -58,13 +60,15 @@ Add it if it isn't there.
 
 ## Step 4: Create the widget folder
 
-Place every widget under its own folder in `src/components/`:
+Place every widget (called a **calculator** on the website — see `/calculators/`) under its own folder in `src/components/calculators/`:
 
 ```
-src/components/<widget-name>/
+src/components/calculators/<widget-name>/
   <WidgetName>.jsx        # main Preact component
   parser.js / helpers.js  # pure logic (if non-trivial)
   styles.css              # scoped CSS (imported by the .jsx)
+  catalog.js              # index entry — REQUIRED (see Step 5b)
+  tile.webp               # index thumbnail — REQUIRED (see Step 5b)
 ```
 
 Keep logic out of the JSX file when it grows past ~50 lines — pure functions in sibling `.js` files are easier to reason about and test.
@@ -89,18 +93,57 @@ In the target `.mdx` file:
 title: ...
 ---
 
-import WidgetName from 'src/components/widget-name/WidgetName.jsx';
+import WidgetName from 'src/components/calculators/widget-name/WidgetName.jsx';
 
 <!-- prose -->
 
 <WidgetName client:load />
 ```
 
+Place the widget under a `## Heading` — the heading's slug is the anchor you'll point the catalog entry's `href` at (Step 5b).
+
 ### Hydration directive: use `client:load`, not `client:visible`
 
 `client:visible` looks attractive (defer hydration until scrolled into view), but the `astro-island` wrapper renders as `display: contents` and therefore has a zero-size bounding box. IntersectionObserver never fires, so the component **never hydrates** — it renders the SSR HTML forever and looks broken.
 
 `client:load` is the safe default. Preact's runtime is small enough that eager hydration is fine.
+
+## Step 5b: Register it on the `/calculators/` index — **always do this**
+
+Every interactive widget on this site is a "calculator" and **must** appear on the `/calculators/` index page. This is not optional — a widget that isn't registered is effectively undiscoverable. Skipping it is the most common omission, so treat it as part of "done".
+
+Two required files in the widget folder, plus one import:
+
+1. **`tile.webp`** — a thumbnail for the index card. The tile slot is `10rem` tall with `object-fit: contain`; a ~3:2 landscape source (e.g. 300×200) looks best. A small screenshot of the widget or its characteristic chart works well. (The user often supplies this; ask if it's missing rather than inventing a raster image — though an SVG tile imported via `?url` is a valid fallback.)
+
+2. **`catalog.js`** — exports a `catalog` constant:
+
+   ```js
+   import tile from './tile.webp?url';
+
+   export const catalog = {
+     id: 'my-widget',                       // unique kebab-case id
+     title: 'My widget designer',
+     description: 'One or two sentences describing what it does (shown on the card and searched).',
+     href: '/path/to/page/#heading-slug',   // page URL + the Step 5 heading's slug
+     categoryPath: ['Software', 'Signal processing'],  // breadcrumb the index groups by
+     tags: ['DSP', 'filter', '...'],         // extra search terms
+     tile,
+   };
+   ```
+
+   - `href` is the **full page path plus the `#slug`** of the heading the widget sits under. GitHub-style slug: lowercase, spaces → hyphens, punctuation stripped (e.g. "Interactive EMA Filter Explorer" → `#interactive-ema-filter-explorer`).
+   - `categoryPath` controls which filter chips the card appears under. Reuse an existing path (grep the other `catalog.js` files) so you don't fragment categories — DSP widgets use `['Software', 'Signal processing']`.
+
+3. **Register it** in `src/components/calculator-index/catalogs.js` — add both the `import` and the array entry, keeping the existing alphabetical-by-folder order:
+
+   ```js
+   import { catalog as myWidget } from '../calculators/my-widget/catalog.js';
+   // ...and in the CATALOGS array:
+   myWidget,
+   ```
+
+After this, the card shows on `/calculators/` and is searchable. Verify in Step 9.
 
 ## Step 6: Styling conventions
 
@@ -303,6 +346,7 @@ For UI verification, run `npx astro dev` and use Chrome browser tools to visit t
    ```
 
 3. **Theme** — Toggle light/dark mode in Starlight and confirm colours track (this is automatic if you used the CSS variables).
+4. **Index registration** — visit `/calculators/`, confirm the new card appears with its tile, and that searching its title/tags surfaces it. If the card is missing, you skipped Step 5b. A clean `astro build` does **not** prove registration — `astro check` passes even when `catalog.js` is never imported into `catalogs.js`.
 
 ## Step 10: Memory
 
@@ -310,4 +354,4 @@ If you encounter a new gotcha not covered above (a Starlight CSS conflict, a Pre
 
 ## Reference implementation
 
-`src/components/ble-adv-decoder/` is the canonical example for this pattern — copy its layout for new widgets and adapt the editors / parsers / styling.
+`src/components/calculators/ble-adv-decoder/` is the canonical example for this pattern — copy its layout for new widgets and adapt the editors / parsers / styling. For a chart-based widget (Chart.js via the shared `_shared/Plot2d.jsx`) plus the catalog wiring, `src/components/calculators/ema-filter/` is a good reference.

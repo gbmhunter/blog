@@ -2,15 +2,17 @@
 authors: [gbmhunter]
 date: 2014-02-26
 description: Equations, graphs and more info on IIR exponential moving average (EMA) filters.
-lastUpdated: 2024-04-11
+lastUpdated: 2026-05-31
 tags: [EMA, exponential, filters, recursive, frequency response, impulse response, initialization, priming, microcontroller, embedded, IIR, firmware, C++, C, digital signal processing, DSP]
 title: Exponential Moving Average (EMA) Filters
 type: page
 ---
 
+import EmaFilter from 'src/components/calculators/ema-filter/EmaFilter.jsx';
+
 The _exponential moving average_ (EMA) filter is a **discrete, low-pass, infinite-impulse response (IIR) filter**. It **places more weight on recent data by discounting old data in an exponential fashion**, and behaves similarly to the **discrete first-order low-pass RC filter**.
 
-Unlike a [simple moving average (SMA) filter](/programming/signal-processing/digital-filters/windowed-moving-average-filters/), most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
+Unlike a [simple moving average (SMA) filter](/programming/signal-processing/digital-filters/windowed-moving-average-filters/), most EMA filters are not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter where the coefficients are weighted exponentially.
 
 <Aside type="tip">
 The EMA filter is my personal go-to filter if I ever want to do some basic filtering on a microcontroller. It's fast, memory efficient, and easy to implement.
@@ -31,9 +33,9 @@ $$
     $ x $ is the input<br/>
     $ \alpha $ is a constant which sets the cutoff frequency (a value between $0$ and $1$)<br/></p>
 
-Notice that the calculation does not require the storage of past values of $x$ and only the previous value of $y$, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
+Notice that the calculation does not require the storage of past values of $x$ and only the previous value of $y$, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed. If you are really tight on cycles, you can rearrange the difference equation into the algebraically-equivalent form $y[i] = y[i-1] + \alpha (x[i] - y[i-1])$, which needs just one addition, one subtraction, and a single multiplication.
 
-The constant $ \alpha $ determines how aggressive the filter is. It can vary between $0$ and $1$ (inclusive). As $ \alpha \to 0 $, the filter gets more and more aggressive, until at $ \alpha = 0 $, where the input has no effect on the output (if the filter started like this, then the output would stay at $0$). As $ \alpha \to 1 $, the filter lets more of the raw input through at less filtered data, until at $ \alpha = 1 $, where the filter is not "filtering" at all (pass-through from input to output).
+The constant $ \alpha $ determines how aggressive the filter is. It can vary between $0$ and $1$ (inclusive). As $ \alpha \to 0 $, the filter gets more and more aggressive, until at $ \alpha = 0 $, where the input has no effect on the output (if the filter started like this, then the output would stay at $0$). As $ \alpha \to 1 $, the filter lets more of the raw input through, resulting in less filtered data, until at $ \alpha = 1 $, where the filter is not "filtering" at all (pass-through from input to output).
 
 The filter is called _exponential_ because the weighted contribution of previous inputs decreases exponentially the further the input is away in time. This can be seen in the difference equation if we substitute in previous inputs:
 
@@ -45,9 +47,13 @@ y[i] &= \alpha \cdot x[i] + (1 - \alpha) \cdot (\alpha \cdot x[i-1] + (1 - \alph
      &(\alpha \cdot x[i-2] + (1 - \alpha) \cdot y[i-3])) \nonumber \\
 ... \nonumber \\
 \label{eq:ema-sum}
-y[i] &= \alpha \sum_{k=0}^n (1-\alpha)^k x[n-k] \\
+y[i] &= \alpha \sum_{k=0}^i (1-\alpha)^k x[i-k] \\
 \end{align}
 $$
+
+<Aside type="tip">
+Strictly, this finite expansion also carries a residual term $(1 - \alpha)^{i+1} \, y[-1]$ from the filter's initial value. Since $|1 - \alpha| < 1$, this term shrinks with every sample and vanishes as $i \to \infty$, so it has been dropped above.
+</Aside>
 
 The following code implements a basic EMA filter in C++, suitable for microcontrollers and other embedded devices:
 
@@ -111,7 +117,7 @@ When setting `alpha=0.5` and hardcoding all input to `1.0` (which means a step c
 This example can be modified and run at https://replit.com/@gbmhunter/cpp-ema-filter.
 
 <Aside type="caution">
-In the code example above, you could replace the `double` types with integer types if you wanted fast operation and didn't have an FPU. However, be mindful of the loss of precision that occurs, especially if you are using a small $\alpha$ value. A small $alpha$ results in a very small contribution from the input. This contribution ($\alpha \cdot x_i$) could end up rounding to zero if using an integer, resulting in the output being stuck at zero.
+In the code example above, you could replace the `double` types with integer types if you wanted fast operation and didn't have an FPU. However, be mindful of the loss of precision that occurs, especially if you are using a small $\alpha$ value. A small $\alpha$ results in a very small contribution from the input. This contribution ($\alpha \cdot x_i$) could end up rounding to zero if using an integer, resulting in the output being stuck at zero.
 </Aside>
 
 ## Frequency Response
@@ -128,7 +134,7 @@ And then take the Z transform of it:
 
 $$
 \begin{align}
-Y(z) = aX(z) + (1 - \alpha) z^{-1} Y(z)
+Y(z) = \alpha X(z) + (1 - \alpha) z^{-1} Y(z)
 \end{align}
 $$
 
@@ -141,7 +147,7 @@ H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
 \end{align}
 $$
 
-This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with $\alpha=0.25$. The x-axis frequency is the normalized frequency, in units $Hz/sample$, which makes the plot applicable for any sampling frequency.
+This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with $\alpha=0.25$. The x-axis frequency is the normalized frequency, in units of $cycles/sample$, which makes the plot applicable for any sampling frequency.
 
 <Image src={import('./_assets/ema-bode-plot.png')} width="800px">Bode plot showing the magnitude and phase of an EMA filter with $ \alpha=0.25 $.</Image>
 
@@ -174,6 +180,12 @@ $$
 \end{align}
 $$
 
+## Interactive EMA Filter Explorer
+
+The widget below lets you explore both sides of the EMA filter at once. Drag $\alpha$ and watch how it trades smoothing against responsiveness in the **Time domain** tab, then switch to the **Frequency response (Bode)** tab to see the same $\alpha$ shape the magnitude and phase response. Push $\alpha$ above $0.82843$ and the -3dB cut-off marker disappears, illustrating the "no valid cut-off before Nyquist" condition derived above.
+
+<EmaFilter client:load />
+
 ## Impulse Response
 
 The discrete unit sample function is defined as:
@@ -192,15 +204,15 @@ If we use this as our input into $Eq.\ \ref{eq:ema-sum}$:
 
 $$
 \begin{align}
-y[i] &= \alpha \sum_{k=0}^n (1-\alpha)^k \delta[n-k] \\
+y[i] &= \alpha \sum_{k=0}^i (1-\alpha)^k \delta[i-k] \\
 \end{align}
 $$
 
-Given the unit sample function is 0 at most points, the only sum term that matters is when $k = n$, so we can simplify this to:
+Given the unit sample function is 0 at most points, the only sum term that matters is when $k = i$, so we can simplify this to:
 
 $$
 \begin{align}
-y[i] &= \alpha (1-\alpha)^n \\
+y[i] &= \alpha (1-\alpha)^i \\
 \end{align}
 $$
 
@@ -220,7 +232,7 @@ When initializing the filter, the initial value of $y$ is important. If you set 
 
 Here is an example of the C++ class from above but reworked to include priming:
 
-```c++
+```cpp
 class EmaFilterWithPriming
 {
 public:

@@ -1,0 +1,211 @@
+.ema-filter {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+}
+
+.ema-filter *,
+.ema-filter *::before,
+.ema-filter *::after {
+  margin-top: 0;
+}
+
+.ema-filter__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+/* ---- Controls ---- */
+.ema-filter__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.ema-filter__control {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.ema-filter__control-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+  text-align: right;
+}
+
+.ema-filter__control-body {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ema-filter__control-body input[type='range'] {
+  flex: 1;
+  max-width: 260px;
+}
+
+.ema-filter__num {
+  box-sizing: border-box;
+  width: 4.5rem;
+  height: 1.8rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+}
+
+.ema-filter__num--wide {
+  width: 6rem;
+}
+
+.ema-filter__unit {
+  color: var(--sl-color-gray-2);
+  font-size: 0.85rem;
+}
+
+/* ---- Readouts ---- */
+.ema-filter__readouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.ema-filter__readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+  flex: 1;
+  min-width: 12rem;
+}
+
+.ema-filter__readout-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+}
+
+.ema-filter__readout-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.95rem;
+  color: var(--sl-color-text);
+}
+
+.ema-filter__muted {
+  color: var(--sl-color-gray-2);
+  font-size: 0.8rem;
+}
+
+.ema-filter__warn {
+  color: var(--sl-color-accent-high);
+  font-weight: 600;
+}
+
+/* ---- Tabs ---- */
+.ema-filter__tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  margin-bottom: 0.8rem;
+}
+
+.ema-filter__tab {
+  box-sizing: border-box;
+  appearance: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: transparent;
+  color: var(--sl-color-gray-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  border-radius: 0.35rem 0.35rem 0 0;
+  margin-bottom: -1px;
+}
+
+.ema-filter__tab:hover {
+  color: var(--sl-color-text);
+}
+
+.ema-filter__tab--active {
+  color: var(--sl-color-text);
+  background: var(--sl-color-bg);
+  border-color: var(--sl-color-gray-5);
+  border-bottom-color: var(--sl-color-bg);
+}
+
+/* ---- Signal selector chips ---- */
+.ema-filter__signal-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.ema-filter__signal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ema-filter__chip {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.ema-filter__chip:hover {
+  border-color: var(--sl-color-gray-4);
+}
+
+.ema-filter__chip--active {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+}
+
+.ema-filter__signal-params {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0.6rem;
+}
+
+/* ---- Charts & notes ---- */
+.ema-filter__chart {
+  margin: 0.8rem 0;
+}
+
+.ema-filter__note {
+  font-size: 0.82rem;
+  color: var(--sl-color-text);
+  background: var(--sl-color-accent-low);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.4rem;
+}

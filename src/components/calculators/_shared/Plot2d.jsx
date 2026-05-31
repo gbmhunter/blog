@@ -95,6 +95,8 @@ export default function Plot2d({
         existing.label = s.label;
         existing.borderColor = s.color;
         existing.backgroundColor = s.color;
+        existing.borderDash = s.dash || [];
+        existing.borderWidth = s.width ?? 1.5;
       } else {
         c.data.datasets.push(buildDataset(s));
       }
@@ -129,7 +131,9 @@ function buildDataset(s) {
     backgroundColor: s.color,
     showLine: true,
     pointRadius: 0,
-    borderWidth: 1.5,
+    borderWidth: s.width ?? 1.5,
+    // Optional dashed reference lines (e.g. a -3 dB threshold). Solid by default.
+    borderDash: s.dash || [],
     tension: 0,
   };
 }

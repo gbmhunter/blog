@@ -10,6 +10,7 @@ import { catalog as crcCalculator } from '../calculators/crc-calculator/catalog.
 import { catalog as dewPointMagnus } from '../calculators/dew-point-magnus/catalog.js';
 import { catalog as eSeriesFinder } from '../calculators/e-series-finder/catalog.js';
 import { catalog as eirpComplianceMap } from '../calculators/eirp-compliance-map/catalog.js';
+import { catalog as emaFilter } from '../calculators/ema-filter/catalog.js';
 import { catalog as gainConverter } from '../calculators/gain-converter/catalog.js';
 import { catalog as ledResistor } from '../calculators/led-resistor/catalog.js';
 import { catalog as lowPassRcFilter } from '../calculators/low-pass-rc-filter/catalog.js';
@@ -40,6 +41,7 @@ export const CATALOGS = [
   dewPointMagnus,
   eSeriesFinder,
   eirpComplianceMap,
+  emaFilter,
   gainConverter,
   ledResistor,
   lowPassRcFilter,
