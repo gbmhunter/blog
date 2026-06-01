@@ -377,9 +377,9 @@ We can see the effect of an increasing output impedance at high frequencies in b
 
 ## High-Pass Sallen-Key Filter
 
-You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the schematic in <IRef iref="fig-high-pass-variable-gain-sallen-key-filter-schematic" />.
+You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the schematic below:
 
-<Image iref="fig-high-pass-variable-gain-sallen-key-filter-schematic" src={import('./_assets/high-pass-variable-gain-sallen-key-filter-schematic.png')} width="600">Schematic of a variable-gain high-pass Sallen-Key filter.</Image>
+<Image src={import('./_assets/high-pass-variable-gain-sallen-key-filter-schematic.webp')} width="600">Schematic of a variable-gain high-pass Sallen-Key filter.</Image>
 
 The general form of the transfer function for a second order high-pass filter is[^analog-devices-ch8-analog-filters]:
 
@@ -513,9 +513,9 @@ Inputs:
     \end{align}
     $$
 
-1. Done! The finished schematic ready for simulating is shown in <IRef iref="fig-high-pass-sallen-key-fc2khz-q0.8-k4-schematic" />.
+1. Done! The finished schematic ready for simulating is shown below:
 
-    <Image iref="fig-high-pass-sallen-key-fc2khz-q0.8-k4-schematic" src={import('./_assets/high-pass-sallen-key-fc2khz-q0.8-k4/schematic.png')} width="600">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
+    <Image src={import('./_assets/high-pass-sallen-key-fc2khz-q0.8-k4/high-pass-variable-gain-sallen-key-filter-schematic-example.webp')} width="600">The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter.</Image>
     
     And the simulated bode plot in <IRef iref="fig-high-pass-sallen-key-fc2khz-q0.8-k4-bode-plot" />.
 

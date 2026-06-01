@@ -7,24 +7,21 @@ import { docsSchema } from '@astrojs/starlight/schema';
 // This site renders every page through Starlight's <StarlightPage> component
 // (see src/pages/[...slug].astro) using the custom `pages`/`updates`
 // collections below. Starlight's internals still call getCollection('docs')
-// and getEntry('docs', ...) when building route data, so the `docs` collection
-// must be *defined* — otherwise the dev server logs:
-//   "The collection "docs" does not exist or is empty..."
-//   "The collection "docs" does not exist. Please ensure it is defined..."
-// We keep no docs pages, so instead of Starlight's directory-globbing
-// docsLoader() (which warns "No files found matching glob" on an empty dir) we
-// register the collection with a no-op loader that yields zero entries.
+// and getEntry('docs', ...), so we define a `docs` collection with a no-op
+// loader that yields zero entries (we have no docs pages).
+//
+// NOTE: this loader deliberately does NOT touch the data store. A previous
+// version ran store.set()+store.delete() on every load to silence the dev
+// warning "The collection "docs" does not exist or is empty...". But that
+// added a second content-store write on every hot-reload which, on Windows,
+// raced with the reloading page's own .astro/content-*.mjs + data-store.json
+// write — the tmp->rename then failed with EPERM/ENOENT, corrupting the store
+// so every collection read as "empty" and the page tree collapsed (404s). We
+// accept the harmless empty-collection dev warning instead of that churn.
 const docsCollection = defineCollection({
   loader: {
     name: 'empty-docs-loader',
-    // Touch the store so the `docs` collection is registered (otherwise
-    // getCollection('docs') warns "does not exist or is empty"), then remove
-    // the entry so Starlight generates zero doc routes (a real entry crashes
-    // Starlight's sidebar navigation builder).
-    load: async ({ store }) => {
-      store.set({ id: '__init__', data: { title: '__init__' } });
-      store.delete('__init__');
-    },
+    load: async () => {},
   },
   schema: docsSchema(),
 });
