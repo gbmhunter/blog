@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" font-family="system-ui, sans-serif">
+  <rect width="300" height="200" fill="#1b1b1f"/>
+  <!-- axes -->
+  <line x1="40" y1="20" x2="40" y2="165" stroke="#555" stroke-width="1.5"/>
+  <line x1="40" y1="165" x2="280" y2="165" stroke="#555" stroke-width="1.5"/>
+  <!-- gridlines -->
+  <g stroke="#333" stroke-width="1">
+    <line x1="100" y1="20" x2="100" y2="165"/>
+    <line x1="160" y1="20" x2="160" y2="165"/>
+    <line x1="220" y1="20" x2="220" y2="165"/>
+    <line x1="40" y1="60" x2="280" y2="60"/>
+    <line x1="40" y1="110" x2="280" y2="110"/>
+  </g>
+  <!-- 2nd-order low-pass response with Q peaking (flat pass-band, resonant bump, -40 dB/decade roll-off) -->
+  <path d="M40 70 L120 70 Q150 70 158 48 Q165 40 175 70 Q185 100 210 130 L280 158"
+        fill="none" stroke="#c60e00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- cutoff marker -->
+  <line x1="165" y1="20" x2="165" y2="165" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="170" y="32" fill="#2563eb" font-size="13">f_c</text>
+  <text x="48" y="16" fill="#ccc" font-size="12">|H| [dB]</text>
+  <text x="240" y="182" fill="#ccc" font-size="12">freq</text>
+  <text x="150" y="196" fill="#e8a0a0" font-size="13" text-anchor="middle" font-weight="bold">Sallen-Key designer</text>
+</svg>

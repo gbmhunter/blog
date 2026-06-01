@@ -23,6 +23,7 @@ import { catalog as parallelCapacitance } from '../calculators/parallel-capacita
 import { catalog as parallelResistance } from '../calculators/parallel-resistance/catalog.js';
 import { catalog as resistorDivider } from '../calculators/resistor-divider/catalog.js';
 import { catalog as rotations3d } from '../calculators/3d-rotations/catalog.js';
+import { catalog as sallenKeyDesigner } from '../calculators/sallen-key-designer/catalog.js';
 import { catalog as seriesCapacitance } from '../calculators/series-capacitance/catalog.js';
 import { catalog as seriesResistance } from '../calculators/series-resistance/catalog.js';
 import { catalog as timer555Astable } from '../calculators/timer-555-astable/catalog.js';
@@ -54,6 +55,7 @@ export const CATALOGS = [
   parallelResistance,
   resistorDivider,
   rotations3d,
+  sallenKeyDesigner,
   seriesCapacitance,
   seriesResistance,
   timer555Astable,

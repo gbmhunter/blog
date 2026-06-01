@@ -1,0 +1,314 @@
+.sk-designer {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+}
+
+.sk-designer *,
+.sk-designer *::before,
+.sk-designer *::after {
+  margin-top: 0;
+}
+
+.sk-designer__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.9rem;
+  font-style: italic;
+}
+
+/* ---- Toggles ---- */
+.sk-designer__toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.sk-designer__chips {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.sk-designer__chip {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.8rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.sk-designer__chip:hover {
+  border-color: var(--sl-color-gray-4);
+}
+
+.sk-designer__chip--active {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+}
+
+/* ---- Two-column layout ---- */
+.sk-designer__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 0.4rem;
+}
+
+@container (min-width: 34rem) {
+  .sk-designer__columns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.sk-designer__columns > * {
+  margin-top: 0;
+}
+
+.sk-designer__panel {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.4rem;
+  background: var(--sl-color-bg);
+  padding: 0.8rem;
+}
+
+.sk-designer__panel-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+  margin: 0 0 0.7rem;
+  font-weight: 700;
+}
+
+.sk-designer__panel-title--spaced {
+  margin-top: 1rem;
+}
+
+/* ---- Input rows ---- */
+.sk-designer__row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: start;
+  margin-bottom: 0.6rem;
+}
+
+.sk-designer__row-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+  text-align: right;
+  padding-top: 0.35rem;
+}
+
+.sk-designer__row-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sk-designer__field {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 2rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg-nav);
+  overflow: hidden;
+}
+
+.sk-designer__field--error {
+  border-color: var(--sl-color-accent-high);
+}
+
+.sk-designer__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  padding: 0 0.5rem;
+  height: 100%;
+}
+
+.sk-designer__input:focus {
+  outline: none;
+}
+
+.sk-designer__suffix {
+  padding: 0 0.5rem;
+  color: var(--sl-color-gray-2);
+  font-size: 0.8rem;
+  border-left: 1px solid var(--sl-color-gray-5);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.sk-designer__field-error {
+  color: var(--sl-color-accent-high);
+  font-size: 0.72rem;
+}
+
+.sk-designer__field-hint {
+  color: var(--sl-color-gray-3);
+  font-size: 0.72rem;
+}
+
+.sk-designer__select {
+  box-sizing: border-box;
+  height: 2rem;
+  width: 100%;
+  padding: 0 0.5rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg-nav);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+}
+
+.sk-designer__unity {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--sl-color-text);
+  margin-top: 0.4rem;
+  cursor: pointer;
+}
+
+.sk-designer__unity input {
+  margin: 0;
+}
+
+/* ---- Readouts ---- */
+.sk-designer__readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg-nav);
+  margin-bottom: 0.5rem;
+}
+
+.sk-designer__readout-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+}
+
+.sk-designer__readout-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.95rem;
+  color: var(--sl-color-text);
+}
+
+.sk-designer__muted {
+  color: var(--sl-color-gray-2);
+  font-size: 0.8rem;
+}
+
+.sk-designer__tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--sl-color-accent);
+  border-radius: 0.7rem;
+  padding: 0.05rem 0.5rem;
+  vertical-align: middle;
+}
+
+/* ---- Component rows (design output) ---- */
+.sk-designer__comp {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) 1rem minmax(0, 1.2fr);
+  align-items: baseline;
+  gap: 0.35rem;
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.82rem;
+  padding: 0.18rem 0;
+}
+
+.sk-designer__comp-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+}
+
+.sk-designer__comp-ideal {
+  color: var(--sl-color-gray-2);
+  text-align: right;
+}
+
+.sk-designer__comp-arrow {
+  color: var(--sl-color-gray-3);
+  text-align: center;
+}
+
+.sk-designer__comp-chosen {
+  color: var(--sl-color-text);
+  font-weight: 600;
+}
+
+/* ---- Notes ---- */
+.sk-designer__note {
+  font-size: 0.82rem;
+  color: var(--sl-color-text);
+  background: var(--sl-color-accent-low);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.sk-designer__note--warn {
+  color: var(--sl-color-accent-high);
+}
+
+/* ---- Charts ---- */
+.sk-designer__chart {
+  margin: 0.8rem 0 0;
+}
+
+/* ---- Schematic ---- */
+.sk-schem {
+  margin: 0 0 0.9rem;
+  padding: 0 0 0.7rem;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  color: var(--sl-color-text);
+}
+
+.sk-schem img {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+}
+
+.sk-schem__cap {
+  margin: 0.4rem 0 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+}
