@@ -25,7 +25,7 @@ export default function SallenKeyDesigner() {
   // --- Design-mode inputs (spec → component) --------------------------------
   const [dUnity, setDUnity] = useState(false);
   const [series, setSeries] = useState('E96');
-  const [d, setD] = useState({ fc: '1k', Q: '0.707', K: '2', C: '10n' });
+  const [d, setD] = useState({ fc: '1k', Q: '0.5', K: '2', C: '10n' });
   const setDField = (k, v) => setD((p) => ({ ...p, [k]: v }));
 
   // ==========================================================================
@@ -174,7 +174,7 @@ function DesignInputs({ d, setDField, unity, setUnity, errors, series, setSeries
       <TextRow label={<>Cut-off f<sub>c</sub></>} value={d.fc} onInput={(v) => setDField('fc', v)}
         suffix="Hz" placeholder="1k" error={errors.fc.error} />
       <TextRow label="Quality factor Q" value={d.Q} onInput={(v) => setDField('Q', v)}
-        placeholder="0.707" error={errors.Q.error} />
+        placeholder="0.5" error={errors.Q.error} />
       {!unity && (
         <TextRow label="Pass-band gain K" value={d.K} onInput={(v) => setDField('K', v)}
           placeholder="2" error={errors.K.error} />
