@@ -2,8 +2,8 @@
 authors: [gbmhunter]
 date: 2026-05-21
 description: The unlicensed sub-GHz ISM (Industrial, Scientific and Medical) bands — primarily 315 MHz, 433 MHz, 868 MHz and 915 MHz — are heavily used for long-range, low-data-rate wireless communication including remote controls, garage door openers, weather stations, RC links, smart-home devices and LoRa modules. This page covers the regional allocations, common use cases, modulation methods and typical chips and modules.
-lastUpdated: 2026-05-21
-tags: [communication protocol, sub-GHz, ISM, 315 MHz, 433 MHz, 868 MHz, 915 MHz, RF, OOK, FSK, LoRa, remote control, garage opener, weather station]
+lastUpdated: 2026-06-02
+tags: [communication protocol, sub-GHz, ISM, 315 MHz, 433 MHz, 868 MHz, 915 MHz, RF, OOK, FSK, LoRa, remote control, garage opener, weather station, Adafruit]
 title: Sub-GHz ISM Bands
 type: page
 ---
@@ -78,9 +78,27 @@ Some of the chips you'll encounter most often when working in these bands:
 * **HopeRF RFM69 / RFM95** — cheap pre-certified module families that dominate the hobbyist sub-GHz space. Adafruit has a number of boards based around this module.
 * **Microchip MRF89XA / ATA8520** — sub-GHz transceivers, the ATA8520 being a popular Sigfox modem.
 
+### HopeRF RFM69
+
+The HopeRF RFM69 is a very popular, cheap RF transceiver capable of operating in the 433, 868 and 915 MHz radio bands.[^hoperf-rfm69-ism-transceiver-module] It has selectable TX power levels from -18 to +13 dBm in 1 dBm increments. It has a packet engine with CRC-16, AES-128 and a 66-byte FIFO. It comes as a 19.7 x 16 mm PCB module with castellated edges, designed to be soldered onto a PCB and connected to a microcontroller.
+
+<Image src={import('./_assets/rfm69-module-photo-on-adafruit-feather.webp')} width="600px">Photo of the RFM69 module soldered onto a Adafruit M0 Feather board.</Image>
+
+<Image src={import('./_assets/rfm69-simplified-internal-block-diagram.webp')} width="600px">Simplified internal block diagram of the RFM69, showing the receiver, transmitter, frequency synthesis and control blocks around the SPI-accessible packet engine and FIFO.[^hoperf-rfm69-ism-transceiver-module] Apologies for the poor resolution, this is how it was presented in the original datasheet!</Image>
+
+The RFM69 may be damaged if transmission is attempted and there is no antenna connected. The power reflects back into the IC, causing excessive heat and voltage stress to the internal drive circuitry.
+
+### Adafruit 3176/3177
+
+The Adafruit 3176 and 3177 are examples of dev. boards that include the RFM69. These are controlled via a SAMD21 microcontroller.
+
+<Image src={import('./_assets/adafruit-433-and-915-feather-boards-photo.webp')} width="900px">A photo of pairs of Adafruit Feather 433 MHz (left) and 868/915 MHz (right) boards. Simple quarter-wave solid-core wire antennas have been soldered onto them. Note the antennas for the 433 MHz are about twice as long as the antennas for 915 MHz (165 vs. 78 mm).</Image>
+
+These boards have Arduino support and can be easily controlled with the RadioHead library.
+
 ## Antennas
 
-At sub-GHz frequencies the wavelength is significantly longer than at 2.4 GHz, which has practical consequences for [antenna design](/electronics/components/antennas/):
+At sub-GHz frequencies the wavelength is significantly longer than at 2.4 GHz, which has practical consequences for [antenna design](/electronics/components/antennas/). Here are the idealized free-space quarter-wave antenna lengths:
 
 * λ at 433 MHz ≈ 69 cm → quarter-wave whip ≈ 17 cm.
 * λ at 868 MHz ≈ 35 cm → quarter-wave whip ≈ 8.6 cm.
@@ -89,3 +107,16 @@ At sub-GHz frequencies the wavelength is significantly longer than at 2.4 GHz, w
 Compare this to 2.4 GHz which has a quarter-wave whip length of 3.1 cm and you can see that the antennas are significantly larger.
 
 This makes electrically small antennas (chip antennas, PCB trace antennas, helical antennas) much more challenging to design with good efficiency at sub-GHz than at 2.4 GHz, and is one reason these bands are dominated by external whip antennas, ducky antennas and helical springs.
+
+<Aside type="tip">
+Stated above are the idealised free-space lengths. If you are making a quarter-wave whip antenna, the length to cut the wire will be shorter than this (by about 5%). This is due to the *velocity factor* — signals propagate slightly slower than the free-space speed of light along the wire — combined with end effects, which together make a physical wire electrically "longer" than its mechanical length.
+
+As a practical example, Adafruit recommend cutting simple wire whips to **165 mm** at 433 MHz, **82 mm** at 868 MHz and **78 mm** at 915 MHz for their Feather radio boards.[^adafruit-feather-radio-antenna] Each is about 95% of the corresponding idealised quarter-wave length above.
+</Aside>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^hoperf-rfm69-ism-transceiver-module]: HopeRF. _RFM69 ISM Transceiver Module V1.0_ [datasheet]. Retrieved 2026-06-02, from https://www.hoperf.com/uploads/RFM69Specification_1695352239.pdf.
+[^adafruit-feather-radio-antenna]: Adafruit (2023, Jun 21). _Adafruit Feather 32u4 with LoRa Radio Module - Antenna Options_. Retrieved 2026-06-02, from https://learn.adafruit.com/adafruit-feather-32u4-radio-with-lora-radio-module/antenna-options.

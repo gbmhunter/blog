@@ -2,13 +2,13 @@
 authors: [gbmhunter]
 date: 2011-09-12
 description: UART (Universal Asynchronous Receiver/Transmitter) is a low-voltage, positive-rail only, microcontroller friendly version of the RS-232 protocol designed for IC to IC communication and short-distance wire-based communications.
-lastUpdated: 2025-02-10
+lastUpdated: 2026-06-02
 tags: [UART, communication protocol, USART, microcontroller, serial, 8n1, universal asynchronous, receiver, transmitter, RX, TX, backfeeding, IOFF, synchronization, parity, stop bits, start bit, frame]
 title: UART Communication Protocol
 type: page
 ---
 
-UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microcontroller friendly equivalent of the RS-232 digital data transmission protocol with origins dating back to the 1960's. It is universal in the sense the timing, voltages, flow control and error checking can be configured.
+UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microcontroller friendly equivalent of the RS-232 digital data transmission protocol with origins dating back to the 1960's. It is universal in the sense that the timing, voltages, flow control and error checking can be configured.
 
 | Parameter              | Value
 |------------------------|-----------------------
@@ -19,7 +19,7 @@ UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microco
 | OSI Layers             | Layers 1 (physical) and 2 (data link)
 
 
-**It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of it's low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](/electronics/communication-protocols/rs-232-protocol) (higher voltages) or [RS-485](/electronics/communication-protocols/rs-485-protocol) (differential signalling) when communication occurs over any significant cable length or in a noisy environment.
+**It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of its low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](/electronics/communication-protocols/rs-232-protocol) (higher voltages) or [RS-485](/electronics/communication-protocols/rs-485-protocol) (differential signalling) when communication occurs over any significant cable length or in a noisy environment.
 
 ## Terminology
 
@@ -43,7 +43,7 @@ For example, some common baud rates and their corresponding bit periods are:
 
 ### Start Bit
 
-The first bit in a UART frame. Always just one bit period wide. The receiver uses the falling (first) edge of the start bit to synchronize it's sampling clock, the first data bit will be sample 1.5bit periods after this transition.
+The first bit in a UART frame. Always just one bit period wide. The receiver uses the falling (first) edge of the start bit to synchronize it's sampling clock, the first data bit will be sampled 1.5 bit periods after this transition.
 
 ### Stop Bit
 
@@ -51,13 +51,13 @@ The last bit (or bits) in a UART frame. There can be 1, 1.5 or 2 stop bits, with
 
 ## UART Frame Structure
 
-UART sends data in groups of 5, 6, 7 or 8 bits at a time across the bus (typically 8, to equal a single byte) in what is called a _UART frame_. The bus idles "high" when no data is sent. To indicate the start of a frame, the transmitter drives the line low for one bit period, this is called the _start bit_. The receiver synchronizes it's incoming bit sampling clock with the falling edge of the start bit. The start bit lasts for one bit period, and which point the transmitter sends the bits of data by driving the line either high or low. This is then followed by an optional _parity bit_ (which is commonly excluded). Then this is followed by 1, 1.5 or 2 _stop bits_.
+UART sends data in groups of 5, 6, 7 or 8 bits at a time across the bus (typically 8, to equal a single byte) in what is called a _UART frame_. The bus idles "high" when no data is sent. To indicate the start of a frame, the transmitter drives the line low for one bit period, this is called the _start bit_. The receiver synchronizes its incoming bit sampling clock with the falling edge of the start bit. The start bit lasts for one bit period, at which point the transmitter sends the bits of data by driving the line either high or low. This is then followed by an optional _parity bit_ (which is commonly excluded). Then this is followed by 1, 1.5 or 2 _stop bits_.
 
 The figure below shows what a UART frame would look like when configured in the popular '8n1' configuration (8 bits, no parity, 1 stop bit):
 
 <Image src={import('./_assets/uart-example-byte-waveform-8n1.png')} width="800px">Drawing showing the basic frame structure of a byte sent across a UART bus in the popular '8n1' configuration (8 bits, no parity, 1 stop bit).</Image>
 
-UART has no say in what the data means, it is up to the application code to make sense of one these bits of data mean and to group them into larger data structures.
+UART has no say in what the data means, it is up to the application code to make sense of what these bits of data mean and to group them into larger data structures.
 
 You might be wondering, why ever have more than 1 stop bit? The answer is that multiple stop bits can be useful to delay the next frame if the receiver needs a little more time to process the current frame.
 
@@ -69,7 +69,7 @@ The long history of RS-232 like serial communication means that UART is synonymo
 
 * CMOS UART
 * RS-232
-* RS-423 (differential)
+* RS-422 (differential)
 * RS-485 (differential)
 * DMX512 (commonly used to control stage lighting and effects)
 * MIDI
@@ -82,13 +82,15 @@ Generally, if someone uses the term UART with no additional context, they are re
 
 UART is a protocol that has no one single recognizable connector. Because it is commonly used in conjunction with RS-232 or RS-485 protocols, the D subminiature connectors are commonly associated with the UART protocol. However, because UART is a very common microcontroller peripheral and can be used for short, permanent on-PCB communications between microcontroller and 3rd party device, it is also commonly implemented without any connector at all (pin-to-pin on PCB), or is routed from microcontroller directly to 0.1" header pins for things such as debugging (a debug UART is very common on embedded devices).
 
-WARNING: There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
+<Aside type="caution">
+Confusion about how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
+</Aside>
 
 ## Transmission Speeds
 
 UART, by today's standards, is a slow transmission protocol. However, it is still fast enough for tons of applications. The commonly supported baud rate speeds are:
 
-* 600, 1200, 3400, 4800, 9600, 14400, 19200, 28800, 38400, 56000, 57600, 115200, 128000, 256000, 460800, 921600
+- 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 56000, 57600, 115200, 128000, 256000, 460800, 921600
 
 I have had basically no issues using speeds up to 460800 baud in embedded systems (either talking to another embedded system, or to a computer through a virtual COM port). However, 921600 baud has not worked for me in some situations.
 
@@ -116,7 +118,7 @@ You may notice when sending lots of characters across a UART that some appear to
 
 ## Synchronization
 
-Synchronization problems can arise if data is sent continuously (i.e. with no idle time between blocks of data) from a UART transmitter and the receiver boots up in the middle of the transmission (or otherwise gets reset or loses where it thinks it was). In this case, the receiver may not be able to correctly distinguish the start bit from any of the other bits, as the start and end bits have the same bit width as the data. The receiver may produce incorrect data or signal framing errors until there is enough idle time to "reset" it's internal state and correctly wait for the next start bit.
+Synchronization problems can arise if data is sent continuously (i.e. with no idle time between blocks of data) from a UART transmitter and the receiver boots up in the middle of the transmission (or otherwise gets reset or loses where it thinks it was). In this case, the receiver may not be able to correctly distinguish the start bit from any of the other bits, as the start and end bits have the same bit width as the data. The receiver may produce incorrect data or signal framing errors until there is enough idle time to "reset" its internal state and correctly wait for the next start bit.
 
 <Aside type="caution">
 Because of these synchronization issues, it's advisable to add occasional pauses (idle time) between blocks of data if they do not happen naturally. 
@@ -126,7 +128,7 @@ Because of these synchronization issues, it's advisable to add occasional pauses
 
 The _break signal_ is not a character, but a **special signal which can be sent from transmitter to receiver to indicate an event**.
 
-The transmitter sends a break signal by **driving it's TX line low for a period longer than one frame**. There are two types of breaks, short breaks and long breaks. A short break is when the TX line is driven low for a period of between 1 and 2 frame lengths, and a long break is when it is driven low for a period of more than 2 frame lengths.
+The transmitter sends a break signal by **driving its TX line low for a period longer than one frame**. There are two types of breaks, short breaks and long breaks. A short break is when the TX line is driven low for a period of between 1 and 2 frame lengths, and a long break is when it is driven low for a period of more than 2 frame lengths.
 
 ## Higher-Level Protocols
 
@@ -134,13 +136,13 @@ Do you need a higher-level communication protocol that works over a UART connect
 
 ## Backfeeding Through UART
 
-When using UARTs on microcontrollers, be careful about _backfeeding_ (a.k.a _backpowering_) devices through the `TX` line! If a microcontroller loses it's power rails during normal operation, the `TX` line connected to the microcontrollers `RX` can keep it's `VCC` afloat by conducting through the internal ESD diodes (remember that in the idle state, the TX line is driven high).
+When using UARTs on microcontrollers, be careful about _backfeeding_ (a.k.a _backpowering_) devices through the `TX` line! If a microcontroller loses its power rails during normal operation, the `TX` line connected to the microcontroller's `RX` can keep its `VCC` afloat by conducting through the internal ESD diodes (remember that in the idle state, the TX line is driven high).
 
 <Aside type="caution">
 A common scenario for this to occur is debug UARTs, in where an FTDI cable or similar is connected to a UART port on a microcontroller for debugging. During debugging you disconnect power from the microcontroller in an attempt to reset it, only to discover it's being kept alive by the backfeeding through the FTDI's TX pin.
 </Aside>
 
-[Voltage-level translator ICs](/electronics/components/voltage-level-translation/) are one way to fix this problem. You have make sure they are of the type which make the I/O pins $A$ and $B$ high-impedance when there is $0V$ on one or more of the $V_{CC}$ pins. The below image shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART:
+[Voltage-level translator ICs](/electronics/components/voltage-level-translation/) are one way to fix this problem. You have to make sure they are of the type which make the I/O pins $A$ and $B$ high-impedance when there is $0V$ on one or more of the $V_{CC}$ pins. The below image shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART:
 
 <Image src={import('./_assets/voltage-translator-to-prevent-uart-backfeeding.png')} width="800px">Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed.</Image>
 
@@ -148,7 +150,7 @@ Rather than a voltage-level translating IC, a buffer IC with $I_{OFF}$ functiona
 
 ## Pull-up Resistors On TX Lines
 
-Spurious garbage can be sent along along a microcontrollers UART TX line when the microcontroller resets. When microcontrollers reset, all of their GPIO pins typically default back to high-impedance inputs. This will cause the voltage on the TX line, typically idling HIGH, to collapse and signal `LOW`. The UART receiver on the other end of the bus could interpret this as data and give to nonsensical garbage. As shown in the below image, a solution to this is to add a pull-up resistor to $V_{CC}$, which keeps the TX line HIGH when the microcontroller resets.
+Spurious garbage can be sent along a microcontroller's UART TX line when the microcontroller resets. When microcontrollers reset, all of their GPIO pins typically default back to high-impedance inputs. This will cause the voltage on the TX line, typically idling HIGH, to collapse and signal `LOW`. The UART receiver on the other end of the bus could interpret this as data and give nonsensical garbage. As shown in the below image, a solution to this is to add a pull-up resistor to $V_{CC}$, which keeps the TX line HIGH when the microcontroller resets.
 
 <Image src={import('./_assets/pull-up-on-uart-tx-line.png')} width="500px">A 10kΩ pull-up resistor added to the UART TX line (TX w.r.t to the MCU) from a MCU to prevent spurious data being sent when the MCU resets or otherwise disables the UART peripheral via firmware.</Image>
 
@@ -162,7 +164,7 @@ Of course, you might have to apply this to the RX line also, as this is a TX lin
 
 Website: [http://realterm.sourceforge.net/](http://realterm.sourceforge.net/)
 
-A easy to use and powerful terminal program for Windows. Stolen from the website, it's description is:
+A easy to use and powerful terminal program for Windows. Stolen from the website, its description is:
 
 > a terminal program specially designed for capturing, controlling and debugging binary and other difficult data streams. It is far better for debugging comms than Hyperterminal. It has no support for dialing modems, BBS etc - that is what hyperterminal does.
 
@@ -178,7 +180,7 @@ I have noticed a few bugs with RealTerm, especially when it comes to changing th
 
 Website: [https://sites.google.com/site/terminalbpp/](https://sites.google.com/site/terminalbpp/)
 
-A simple and tidy Windows terminal program. Personally, it doesn't get the same amount of respect as RealTerm because of it's simplicity and slightly buggy nature. When decoding into hex, the program can hang if your receiving large amounts of data. It can also hang if you disable the COM port while it is still connected.
+A simple and tidy Windows terminal program. Personally, it doesn't get the same amount of respect as RealTerm because of its simplicity and slightly buggy nature. When decoding into hex, the program can hang if you're receiving large amounts of data. It can also hang if you disable the COM port while it is still connected.
 
 <Image src={import('./_assets/terminal-v1-9b-by-bray-window.jpg')} width="800px">A screenshot of 'Terminal by Br@y' in action.</Image>
 
@@ -188,7 +190,7 @@ Website: [http://www.chiark.greenend.org.uk/~sgtatham/putty/](http://www.chiark.
 
 > PuTTY is a free implementation of Telnet and SSH for Windows and Unix platforms, along with an xterm terminal emulator.
 
-If your running windows, PuTTY is a very handy application to have if you want to emulate the command-line style interface of a UNIX-like system. Although the debugging and capturing features are not as good as say, RealTerm, it offers character-by-character input and proper response to pressing 'special' keys such as enter (which RealTerm doesn't allow, instead you have to enter a string and then press send). This may sound like a very small difference, but this feature does come in useful! I find it very handy when using FreeRTOS and the CLI (command-line interface) extension, which allows you to communicate from a pc to a embedded system using a command-line style interface (as in the picture to the right).
+If you're running Windows, PuTTY is a very handy application to have if you want to emulate the command-line style interface of a UNIX-like system. Although the debugging and capturing features are not as good as say, RealTerm, it offers character-by-character input and proper response to pressing 'special' keys such as enter (which RealTerm doesn't allow, instead you have to enter a string and then press send). This may sound like a very small difference, but this feature does come in useful! I find it very handy when using FreeRTOS and the CLI (command-line interface) extension, which allows you to communicate from a pc to a embedded system using a command-line style interface (as in the picture to the right).
 
 <Image src={import('./_assets/putty-terminal-screenshot-with-settings-window.png')} width="800px">A screenshot of the PuTTy application in action, along with the settings window.</Image>
 
@@ -202,7 +204,7 @@ I have discovered one bug in PuTTY...if it receives a large number of characters
 
 ## Radiation Hardening
 
-Some UART protocols have radiation tolerant devices, such as the [DRS4485](http://www.aeroflex.com/ams/pagesproduct/datasheets/4485.pdf), an Dual RS-485 Interface Transceiver made by Aeroflex.
+Some UART protocols have radiation tolerant devices, such as the DRS4485, a Dual RS-485 Interface Transceiver made by Aeroflex.[^aeroflex-drs4485-dual-rs485-interface-transceiver]
 
 ## RS-232
 
@@ -212,11 +214,11 @@ For more information, see the [RS-232 page](/electronics/communication-protocols
 
 ## RS-485
 
-RS-482 is another very common protocol that UART is converted to and from. It is usually chosen over RS-232 when longer distances and/or larger noise immunity is needed. For more information, see the [RS-485 page](/electronics/communication-protocols/rs-485-protocol).
+RS-485 is another very common protocol that UART is converted to and from. It is usually chosen over RS-232 when longer distances and/or larger noise immunity is needed. For more information, see the [RS-485 page](/electronics/communication-protocols/rs-485-protocol).
 
 ## Cables
 
-You can get null-terminated USB-to-USB serial port emulator cables. These are awesome for transferring data between two computers (or any 2-USB host devices) without reverting to a true USB-to-USB A cable (which requires use of a more complicated protocol).
+You can get null-modem USB-to-USB serial port emulator cables. These are awesome for transferring data between two computers (or any 2-USB host devices) without reverting to a true USB-to-USB A cable (which requires use of a more complicated protocol).
 
 FTDI makes one such cable called the [USB to USB cable](http://www.ftdichip.com/Products/Cables/USBtoUSB.htm).
 
@@ -262,13 +264,9 @@ The WCH CH9344 is a USB to Quad UART IC in a [LQFP-48 package](/pcb-design/compo
 
 ### WCH CH348
 
-The WCH CH438 is a USB to 8 UART IC, similar to the WCH CH9344 USB to 4 UART IC. Like the CH9344, the UARTs have independent voltage rails that cna be set to 1.8V, 2.5V or 3.3V. As shown in <IRef iref="fig-ch348-usb-to-8-uart-ic-pinout" />, the IC comes in two different packages. The larger LQFP-100 package provides flow controls pins for every single one of the UARTs.
+The WCH CH348 is a USB to 8 UART IC, similar to the WCH CH9344 USB to 4 UART IC. Like the CH9344, the UARTs have independent voltage rails that can be set to 1.8V, 2.5V or 3.3V. As shown in <IRef iref="fig-ch348-usb-to-8-uart-ic-pinout" />, the IC comes in two different packages. The larger LQFP-100 package provides flow controls pins for every single one of the UARTs.
 
-<Image iref="fig-ch348-usb-to-8-uart-ic-pinout" src={import('./_assets/ch348-usb-to-8-uart-ic-pinout.webp')} width="900px">The pinout of the WCH CH348 USB to 8 UART IC, in the two different package offerings. The CH348Q is a LQFN48 48-pin 7x7mm package and the CH348L is a LQFP100 100-pin 14x14 mm package.[^cnx-software-wch-ch348-8-port-usb-to-serial-chip]</Image>
-
-## Power Line Transceivers
-
-The [SIG60](http://www.yamar.com/sig60.php) is an example of a power line transceiver.
+<Image iref="fig-ch348-usb-to-8-uart-ic-pinout" src={import('./_assets/ch348-usb-to-8-uart-ic-pinout.webp')} width="900px">The pinout of the WCH CH348 USB to 8 UART IC, in the two different package offerings. The CH348Q is a QFN-48 48-pin 7x7mm package and the CH348L is a LQFP-100 100-pin 14x14 mm package.[^cnx-software-wch-ch348-8-port-usb-to-serial-chip]</Image>
 
 ## Creating A Serial Port Bridge
 
@@ -287,3 +285,4 @@ You can create a rudimentary serial bridge to connect to pieces of software toge
 [^cnx-software-wch-ch348-8-port-usb-to-serial-chip]: Jean-Luc Aufranc (2022, Mar 4). _WCH CH348 is an 8-port USB to serial chip with up to 48 GPIOs_. CNX Software. Retrieved 2025-08-04, from https://www.cnx-software.com/2022/03/04/wch-ch348-8-port-usb-to-serial-chip-with-up-to-48-gpios/.
 [^wch-usb-to-serial-port-chip-ch340-ds]: WCH. _USB to Serial Port Chip CH340. Version 3D._ [datasheet]. Retrieved 2025-10-09, from https://www.wch-ic.com/downloads/CH340DS1_PDF.html.
 [^ftdi-ft232rnq-product-page]: FTDI Devices. _Products >  FT232RNQ_ [product page]. Retrieved 2025-12-02, from https://ftdichip.com/products/ft232rnq/.
+[^aeroflex-drs4485-dual-rs485-interface-transceiver]: Aeroflex (2010, May 27). _DRS4485 Dual RS485 Interface Transceiver_ [datasheet]. Retrieved 2026-06-02, from https://pdf.datasheet.live/datasheets-1/aeroflex_%5Bcolorado_springs%5D/DRS4485-S.pdf.

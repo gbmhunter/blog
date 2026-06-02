@@ -120,7 +120,20 @@ def run_capture(preset_name, preset_width):
         fill="black", stipple="gray50", outline="",
     )
 
-    st = {"x0": 0, "y0": 0, "x1": 0, "y1": 0, "rect": None, "win": None, "result": None}
+    st = {"x0": 0, "y0": 0, "x1": 0, "y1": 0, "rect": None, "win": None,
+          "vline": None, "hline": None, "result": None}
+
+    # ---- crosshair that tracks the cursor (eases corner alignment) -------------
+    def update_crosshair(e):
+        if st["vline"] is None:
+            st["vline"] = canvas.create_line(0, 0, 0, 0, fill="#00e5ff", width=1)
+            st["hline"] = canvas.create_line(0, 0, 0, 0, fill="#00e5ff", width=1)
+        canvas.coords(st["vline"], e.x, 0, e.x, screenshot.height)
+        canvas.coords(st["hline"], 0, e.y, screenshot.width, e.y)
+        canvas.tag_raise(st["vline"])
+        canvas.tag_raise(st["hline"])
+        if st["win"] is not None:  # keep the panel above the crosshair
+            canvas.tag_raise(st["win"])
 
     # ---- control panel (built once, shown after a selection is made) ----------
     panel = tk.Frame(root, bg="#222222", bd=2, relief="solid", padx=12, pady=10)
@@ -209,10 +222,12 @@ def run_capture(preset_name, preset_width):
             canvas.delete(st["rect"])
         st["x0"], st["y0"] = e.x, e.y
         st["rect"] = canvas.create_rectangle(e.x, e.y, e.x, e.y, outline="red", width=2)
+        update_crosshair(e)
 
     def on_drag(e):
         st["x1"], st["y1"] = e.x, e.y
         canvas.coords(st["rect"], st["x0"], st["y0"], e.x, e.y)
+        update_crosshair(e)
 
     def on_release(e):
         st["x1"], st["y1"] = e.x, e.y
@@ -227,6 +242,7 @@ def run_capture(preset_name, preset_width):
     canvas.bind("<ButtonPress-1>", on_press)
     canvas.bind("<B1-Motion>", on_drag)
     canvas.bind("<ButtonRelease-1>", on_release)
+    canvas.bind("<Motion>", update_crosshair)
     root.bind("<Return>", do_save)
     root.bind("<Escape>", do_cancel)
 
