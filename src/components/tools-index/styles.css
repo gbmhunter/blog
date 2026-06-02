@@ -1,10 +1,10 @@
-.calc-index {
+.tools-index {
   container-type: inline-size;
 }
 
-.calc-index *,
-.calc-index *::before,
-.calc-index *::after {
+.tools-index *,
+.tools-index *::before,
+.tools-index *::after {
   /* Reset Starlight's prose sibling-margin rule inside the widget. */
   margin-top: 0;
 }
@@ -13,26 +13,26 @@
 /* FILTER BAR                                                   */
 /* ============================================================ */
 
-.calc-index__filters {
+.tools-index__filters {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
   margin: 1rem 0;
 }
 
-.calc-index__filter-row {
+.tools-index__filter-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
   align-items: center;
 }
 
-.calc-index__filter-row[data-depth="1"] {
+.tools-index__filter-row[data-depth="1"] {
   padding-left: 0.6rem;
   border-left: 2px solid var(--sl-color-gray-5);
 }
 
-.calc-index__chip {
+.tools-index__chip {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -48,22 +48,22 @@
   white-space: nowrap;
 }
 
-.calc-index__chip:hover {
+.tools-index__chip:hover {
   border-color: var(--sl-color-accent);
   color: var(--sl-color-accent-high);
 }
 
-.calc-index__chip--selected {
+.tools-index__chip--selected {
   background: var(--sl-color-accent);
   border-color: var(--sl-color-accent);
   color: var(--sl-color-white);
 }
 
-.calc-index__chip--selected:hover {
+.tools-index__chip--selected:hover {
   color: var(--sl-color-white);
 }
 
-.calc-index__chip-count {
+.tools-index__chip-count {
   font-size: 0.7rem;
   background: color-mix(in srgb, var(--sl-color-text) 12%, transparent);
   padding: 0.02rem 0.45rem;
@@ -71,7 +71,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-.calc-index__chip--selected .calc-index__chip-count {
+.tools-index__chip--selected .tools-index__chip-count {
   background: rgba(255, 255, 255, 0.25);
   color: var(--sl-color-white);
 }
@@ -80,14 +80,14 @@
 /* SEARCH                                                       */
 /* ============================================================ */
 
-.calc-index__search-row {
+.tools-index__search-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.calc-index__search {
+.tools-index__search {
   flex: 1;
   box-sizing: border-box;
   height: 2.6rem;
@@ -100,26 +100,26 @@
   font-family: inherit;
 }
 
-.calc-index__search:focus {
+.tools-index__search:focus {
   outline: none;
   border-color: var(--sl-color-accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
 }
 
-.calc-index__count {
+.tools-index__count {
   font-size: 0.85rem;
   color: var(--sl-color-gray-2);
   white-space: nowrap;
 }
 
-.calc-index__empty {
+.tools-index__empty {
   padding: 2rem;
   text-align: center;
   color: var(--sl-color-gray-2);
   font-style: italic;
 }
 
-.calc-index__clear {
+.tools-index__clear {
   margin-left: 0.4rem;
   background: transparent;
   border: 1px solid var(--sl-color-accent);
@@ -132,7 +132,7 @@
   font-style: normal;
 }
 
-.calc-index__clear:hover {
+.tools-index__clear:hover {
   background: color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
 }
 
@@ -140,20 +140,20 @@
 /* GRID                                                         */
 /* ============================================================ */
 
-.calc-index__grid {
+.tools-index__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
 @container (min-width: 28rem) {
-  .calc-index__grid {
+  .tools-index__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @container (min-width: 48rem) {
-  .calc-index__grid {
+  .tools-index__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -162,7 +162,7 @@
 /* CARD                                                         */
 /* ============================================================ */
 
-.calc-index__card {
+.tools-index__card {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--sl-color-gray-5);
@@ -173,19 +173,19 @@
   overflow: hidden;
   transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
   /* Card add / remove / reorder animation is wired up via @formkit/auto-animate
-     in CalculatorIndex.jsx — it attaches a MutationObserver to the grid and
+     in ToolsIndex.jsx — it attaches a MutationObserver to the grid and
      does FLIP-style position interpolation + fade in/out automatically. No
      view-transition CSS needed. */
 }
 
-.calc-index__card:hover {
+.tools-index__card:hover {
   border-color: var(--sl-color-accent);
   transform: translateY(-2px);
   box-shadow: 0 4px 14px color-mix(in srgb, var(--sl-color-accent) 18%, transparent);
   text-decoration: none;
 }
 
-.calc-index__card-tile {
+.tools-index__card-tile {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,7 +199,7 @@
   height: 10rem;
 }
 
-.calc-index__card-tile img {
+.tools-index__card-tile img {
   /* `object-fit: contain` scales the image up/down to fit the fixed slot while
      preserving its intrinsic aspect ratio. A 3:2 source renders as a centred
      landscape image; square / tall / wide sources are letterboxed rather than
@@ -210,7 +210,7 @@
   object-fit: contain;
 }
 
-.calc-index__card-body {
+.tools-index__card-body {
   padding: 0.85rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
@@ -218,14 +218,14 @@
   flex: 1;
 }
 
-.calc-index__card-title {
+.tools-index__card-title {
   font-size: 1.02rem;
   font-weight: 700;
   color: var(--sl-color-accent-high);
   line-height: 1.25;
 }
 
-.calc-index__card-desc {
+.tools-index__card-desc {
   font-size: 0.85rem;
   color: var(--sl-color-gray-2);
   line-height: 1.4;

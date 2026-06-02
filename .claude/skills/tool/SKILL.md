@@ -1,11 +1,11 @@
 ---
-name: calculator
-description: Create an interactive client-side calculator (also called a widget — decoder, builder, calculator, visualiser, simulator, etc.), embed it in a blog .mdx page, and register it on the /calculators/ index. Use this skill whenever the user asks to add an interactive component, calculator, widget, "playground", or any UI element that needs to react to user input on a blog page. Establishes the Preact + container-query pattern used by the existing calculators so new ones follow the same conventions.
+name: tool
+description: Create an interactive client-side tool (also called a widget — calculator, decoder, builder, visualiser, simulator, designer, etc.), embed it in a blog .mdx page, and register it on the /tools/ index. Use this skill whenever the user asks to add an interactive component, calculator, widget, "playground", or any UI element that needs to react to user input on a blog page. Establishes the Preact + container-query pattern used by the existing tools so new ones follow the same conventions.
 ---
 
-# Calculator (Interactive Widget) Skill
+# Tool (Interactive Widget) Skill
 
-On this website, interactive client-side widgets are called **calculators** and are listed on the `/calculators/` index page. Building one is not complete until it is registered there (Step 5b).
+On this website, interactive client-side widgets are collectively called **tools** (they may be calculators, designers, decoders, visualisers, etc.) and are listed on the `/tools/` index page. Building one is not complete until it is registered there (Step 5b).
 
 When the user asks to add an interactive calculator/widget (something with state and inputs — not a static SVG, image, or `.astro` server-render-only component), follow this pattern.
 
@@ -60,10 +60,10 @@ Add it if it isn't there.
 
 ## Step 4: Create the widget folder
 
-Place every widget (called a **calculator** on the website — see `/calculators/`) under its own folder in `src/components/calculators/`:
+Place every widget (a **tool** on the website — see `/tools/`) under its own folder in `src/components/tools/`:
 
 ```
-src/components/calculators/<widget-name>/
+src/components/tools/<widget-name>/
   <WidgetName>.jsx        # main Preact component
   parser.js / helpers.js  # pure logic (if non-trivial)
   styles.css              # scoped CSS (imported by the .jsx)
@@ -93,7 +93,7 @@ In the target `.mdx` file:
 title: ...
 ---
 
-import WidgetName from 'src/components/calculators/widget-name/WidgetName.jsx';
+import WidgetName from 'src/components/tools/widget-name/WidgetName.jsx';
 
 <!-- prose -->
 
@@ -108,9 +108,9 @@ Place the widget under a `## Heading` — the heading's slug is the anchor you'l
 
 `client:load` is the safe default. Preact's runtime is small enough that eager hydration is fine.
 
-## Step 5b: Register it on the `/calculators/` index — **always do this**
+## Step 5b: Register it on the `/tools/` index — **always do this**
 
-Every interactive widget on this site is a "calculator" and **must** appear on the `/calculators/` index page. This is not optional — a widget that isn't registered is effectively undiscoverable. Skipping it is the most common omission, so treat it as part of "done".
+Every interactive widget on this site is a "tool" and **must** appear on the `/tools/` index page. This is not optional — a widget that isn't registered is effectively undiscoverable. Skipping it is the most common omission, so treat it as part of "done".
 
 Two required files in the widget folder, plus one import:
 
@@ -135,15 +135,15 @@ Two required files in the widget folder, plus one import:
    - `href` is the **full page path plus the `#slug`** of the heading the widget sits under. GitHub-style slug: lowercase, spaces → hyphens, punctuation stripped (e.g. "Interactive EMA Filter Explorer" → `#interactive-ema-filter-explorer`).
    - `categoryPath` controls which filter chips the card appears under. Reuse an existing path (grep the other `catalog.js` files) so you don't fragment categories — DSP widgets use `['Software', 'Signal processing']`.
 
-3. **Register it** in `src/components/calculator-index/catalogs.js` — add both the `import` and the array entry, keeping the existing alphabetical-by-folder order:
+3. **Register it** in `src/components/tools-index/catalogs.js` — add both the `import` and the array entry, keeping the existing alphabetical-by-folder order:
 
    ```js
-   import { catalog as myWidget } from '../calculators/my-widget/catalog.js';
+   import { catalog as myWidget } from '../tools/my-widget/catalog.js';
    // ...and in the CATALOGS array:
    myWidget,
    ```
 
-After this, the card shows on `/calculators/` and is searchable. Verify in Step 9.
+After this, the card shows on `/tools/` and is searchable. Verify in Step 9.
 
 ## Step 6: Styling conventions
 
@@ -346,7 +346,7 @@ For UI verification, run `npx astro dev` and use Chrome browser tools to visit t
    ```
 
 3. **Theme** — Toggle light/dark mode in Starlight and confirm colours track (this is automatic if you used the CSS variables).
-4. **Index registration** — visit `/calculators/`, confirm the new card appears with its tile, and that searching its title/tags surfaces it. If the card is missing, you skipped Step 5b. A clean `astro build` does **not** prove registration — `astro check` passes even when `catalog.js` is never imported into `catalogs.js`.
+4. **Index registration** — visit `/tools/`, confirm the new card appears with its tile, and that searching its title/tags surfaces it. If the card is missing, you skipped Step 5b. A clean `astro build` does **not** prove registration — `astro check` passes even when `catalog.js` is never imported into `catalogs.js`.
 
 ## Step 10: Memory
 
@@ -354,4 +354,4 @@ If you encounter a new gotcha not covered above (a Starlight CSS conflict, a Pre
 
 ## Reference implementation
 
-`src/components/calculators/ble-adv-decoder/` is the canonical example for this pattern — copy its layout for new widgets and adapt the editors / parsers / styling. For a chart-based widget (Chart.js via the shared `_shared/Plot2d.jsx`) plus the catalog wiring, `src/components/calculators/ema-filter/` is a good reference.
+`src/components/tools/ble-adv-decoder/` is the canonical example for this pattern — copy its layout for new widgets and adapt the editors / parsers / styling. For a chart-based widget (Chart.js via the shared `_shared/Plot2d.jsx`) plus the catalog wiring, `src/components/tools/ema-filter/` is a good reference.

@@ -184,12 +184,12 @@ export function convertNodesToSidebarData(node: PageNode) : SidebarData {
     // Sort by slug to maintain chronological order for updates
     sortedChildren = [...node.children].sort((a, b) => (a.slug || '').localeCompare(b.slug || ''));
   } else if (isRoot) {
-    // Top-level sidebar: alphabetical, except 'calculators' is pinned to the
+    // Top-level sidebar: alphabetical, except 'tools' is pinned to the
     // bottom (it's a feature index, not a topic section, so it belongs after
     // the content categories — specifically below 'updates').
     sortedChildren = [...node.children].sort((a, b) => {
-      if (a.label === 'calculators') return 1;
-      if (b.label === 'calculators') return -1;
+      if (a.label === 'tools') return 1;
+      if (b.label === 'tools') return -1;
       return a.label.localeCompare(b.label);
     });
   } else {

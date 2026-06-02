@@ -268,7 +268,7 @@ caption, .table-caption {
   color: var(--sl-color-gray-2);
 }
 
-/* Top-level leaf links (e.g. the "Calculators" page) aren't wrapped in a
+/* Top-level leaf links (e.g. the "Tools" page) aren't wrapped in a
    .group-label, so the rule above doesn't reach them and they'd keep the bold
    white .large style — making them stand out from the other (non-bold) top-level
    items. Match them to the group-label appearance. The active page is excluded

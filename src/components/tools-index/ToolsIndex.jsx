@@ -13,7 +13,7 @@ const SEARCH_INDEX = CATALOGS.map((c) => ({
 // ---------- category tree ----------
 
 function buildTree(catalogs) {
-  const root = { name: 'All calculators', path: [], count: catalogs.length, children: new Map() };
+  const root = { name: 'All tools', path: [], count: catalogs.length, children: new Map() };
   for (const c of catalogs) {
     let node = root;
     for (let i = 0; i < c.categoryPath.length; i++) {
@@ -64,18 +64,18 @@ function Chip({ label, count, selected, onClick }) {
   return (
     <button
       type="button"
-      class={`calc-index__chip${selected ? ' calc-index__chip--selected' : ''}`}
+      class={`tools-index__chip${selected ? ' tools-index__chip--selected' : ''}`}
       onClick={onClick}
     >
-      <span class="calc-index__chip-label">{label}</span>
-      <span class="calc-index__chip-count">{count}</span>
+      <span class="tools-index__chip-label">{label}</span>
+      <span class="tools-index__chip-count">{count}</span>
     </button>
   );
 }
 
 // ---------- main ----------
 
-export default function CalculatorIndex() {
+export default function ToolsIndex() {
   const [query, setQuery] = useState('');
   const [selectedPath, setSelectedPath] = useState([]); // [] = no filter
   const gridRef = useRef(null);
@@ -111,11 +111,11 @@ export default function CalculatorIndex() {
   }, [query, selectedPath]);
 
   return (
-    <div class="calc-index">
+    <div class="tools-index">
       {/* ============ FILTER BAR ============ */}
-      <div class="calc-index__filters" aria-label="Filter by category" ref={filtersRef}>
+      <div class="tools-index__filters" aria-label="Filter by category" ref={filtersRef}>
         {rows.map((row) => (
-          <div key={row.depth} class="calc-index__filter-row" data-depth={row.depth}>
+          <div key={row.depth} class="tools-index__filter-row" data-depth={row.depth}>
             {row.depth === 0 ? (
               <Chip
                 label="All"
@@ -145,30 +145,30 @@ export default function CalculatorIndex() {
       </div>
 
       {/* ============ SEARCH + GRID ============ */}
-      <div class="calc-index__search-row">
+      <div class="tools-index__search-row">
         <input
           type="search"
-          class="calc-index__search"
+          class="tools-index__search"
           value={query}
           onInput={(e) => setQuery(e.currentTarget.value)}
-          placeholder="Search calculators…"
+          placeholder="Search tools…"
           spellcheck={false}
           autoComplete="off"
         />
-        <span class="calc-index__count">
+        <span class="tools-index__count">
           {filtered.length} of {CATALOGS.length}
         </span>
       </div>
 
       {filtered.length === 0 ? (
-        <div class="calc-index__empty">
-          No calculators match the current filter.
+        <div class="tools-index__empty">
+          No tools match the current filter.
           {(query !== '' || selectedPath.length > 0) && (
             <>
               {' '}
               <button
                 type="button"
-                class="calc-index__clear"
+                class="tools-index__clear"
                 onClick={() => { setQuery(''); setSelectedPath([]); }}
               >
                 Clear filters
@@ -177,15 +177,15 @@ export default function CalculatorIndex() {
           )}
         </div>
       ) : (
-        <div class="calc-index__grid" ref={gridRef}>
+        <div class="tools-index__grid" ref={gridRef}>
           {filtered.map((c) => (
-            <a key={c.id} href={c.href} class="calc-index__card">
-              <div class="calc-index__card-tile">
+            <a key={c.id} href={c.href} class="tools-index__card">
+              <div class="tools-index__card-tile">
                 <img src={c.tile} alt="" loading="lazy" />
               </div>
-              <div class="calc-index__card-body">
-                <div class="calc-index__card-title">{c.title}</div>
-                <div class="calc-index__card-desc">{c.description}</div>
+              <div class="tools-index__card-body">
+                <div class="tools-index__card-title">{c.title}</div>
+                <div class="tools-index__card-desc">{c.description}</div>
               </div>
             </a>
           ))}

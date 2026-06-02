@@ -196,14 +196,14 @@ The "SSL/TLS encryption mode" in Cloudflare has to be changed from the default o
 
 ## Calculator widgets
 
-Each subfolder under `src/components/calculators/` is a self-contained interactive calculator embedded somewhere on the blog. The `/calculators/` index page (`src/content/pages/calculators/index.mdx`) aggregates them all into a searchable card grid via `src/components/calculator-index/`.
+Each subfolder under `src/components/tools/` is a self-contained interactive tool (calculator, designer, decoder, visualiser, …) embedded somewhere on the blog. The `/tools/` index page (`src/content/pages/tools/index.mdx`) aggregates them all into a searchable card grid via `src/components/tools-index/`. (The `calculators`/`tools-index` folder names are historical — the user-facing collection is "Tools".)
 
-For the **widget code structure and Astro / Preact conventions**, see `.claude/skills/calculator/SKILL.md`.
+For the **widget code structure and Astro / Preact conventions**, see `.claude/skills/tool/SKILL.md`.
 
 ### Folder layout (per calculator)
 
 ```
-src/components/calculators/<calculator-name>/
+src/components/tools/<calculator-name>/
 ├── <CalculatorName>.jsx     # main Preact component
 ├── calc.js                  # pure logic / parsers
 ├── catalog.js               # metadata for the calculator index
@@ -244,7 +244,7 @@ Without `?url`, Astro returns a component factory for SVGs and a metadata object
 
 #### The card slot (why 3:2, and why off-ratio still works)
 
-On the `/calculators/` index, each tile is rendered inside a **fixed-height slot** (`.calc-index__card-tile`, currently `height: 10rem`) with `object-fit: contain`. The fixed height is deliberate: it guarantees every card's title and description start at the same vertical position regardless of the image. The slot height is **not** tied to the image aspect ratio (an earlier attempt to use `aspect-ratio: 3 / 2` on the slot broke that alignment, because the slot height then varied with card width).
+On the `/tools/` index, each tile is rendered inside a **fixed-height slot** (`.tools-index__card-tile`, currently `height: 10rem`) with `object-fit: contain`. The fixed height is deliberate: it guarantees every card's title and description start at the same vertical position regardless of the image. The slot height is **not** tied to the image aspect ratio (an earlier attempt to use `aspect-ratio: 3 / 2` on the slot broke that alignment, because the slot height then varied with card width).
 
 Because the slot is a fixed height and `contain` never crops, a 3:2 image renders as a centred landscape image with thin letterbox bars top and bottom — which still looks like a clean landscape tile. Authoring at 3:2 keeps all tiles visually consistent; off-ratio images are tolerated but will letterbox more.
 
