@@ -9,6 +9,8 @@ title: Batteries
 type: page
 ---
 
+import BatteryLife from 'src/components/tools/battery-life/BatteryLife.jsx';
+
 If you want a small battery for powering a low energy product or keeping a real-time clock (RTC) running, have a look at [coin cells](/electronics/components/batteries/coin-cells/).
 
 If you want a standard rechargeable battery for an electronics product, check out [Lithium-ion batteries](/electronics\/components/batteries/lithium-ion/).
@@ -16,6 +18,14 @@ If you want a standard rechargeable battery for an electronics product, check ou
 ## Child Pages
 
 <ChildPages />
+
+## Battery Lifetime Calculator
+
+The calculator below estimates how long a battery will last for a given load. It works by simulating the battery month-by-month: each month it first removes the self-discharge (a percentage of the **remaining** charge — see [self-discharge](/electronics/components/batteries/lithium-ion/#self-discharge)), then subtracts the charge consumed by the load and the protection circuit module (PCM). The battery is considered flat once the usable capacity has been consumed.
+
+The load is modelled as a duty-cycled device with an *active* current and a *sleep* current — set the duty cycle to 0% if your load just draws a single constant current (enter it as the sleep current). Temperature scales the self-discharge rate (it roughly doubles for every 10 °C above 25 °C), and the end-of-life capacity lets you model an aged cell.
+
+<BatteryLife client:load />
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

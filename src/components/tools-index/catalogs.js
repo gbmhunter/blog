@@ -2,6 +2,7 @@
 // the /tools/ index, create a `catalog.js` in its widget folder that
 // exports a `catalog` constant, then import it here.
 
+import { catalog as batteryLife } from '../tools/battery-life/catalog.js';
 import { catalog as bleAdvDecoder } from '../tools/ble-adv-decoder/catalog.js';
 import { catalog as boostConverter } from '../tools/boost-converter/catalog.js';
 import { catalog as buckConverter } from '../tools/buck-converter/catalog.js';
@@ -34,6 +35,7 @@ import { catalog as viaThermalResistance } from '../tools/via-thermal-resistance
 import { catalog as wireGauge } from '../tools/wire-gauge/catalog.js';
 
 export const CATALOGS = [
+  batteryLife,
   bleAdvDecoder,
   boostConverter,
   buckConverter,

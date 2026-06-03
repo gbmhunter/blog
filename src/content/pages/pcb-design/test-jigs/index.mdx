@@ -230,9 +230,14 @@ Both of these metrics are easy to calculate if you are saving test data to a dat
 
 The following metrics can be useful on a testing dashboard. All are captured within a user selectable time window so that you can see how things are trending over time.
 
+Summaries:
+
 - FPY (first pass yield).
 - Failures by test step.
-- Table of test run failures, where clicking a row takes you a page with data on that specific test failure (e.g. captured log output).
+
+It's also important to be able to drill down into individual tests if needed. A page dedicated to showing individual test runs (a table in where each row is a test run, latest first, paginated to 50 or so at once works well). Provide inputs to filter tests by failing or passing, start and end date ranges, test step name e.t.c.
+
+Clicking on a test run in the table should take you a page with data on that specific test (e.g. pass/fail, run time, captured log output).
 
 ## Debugging at Production Time
 

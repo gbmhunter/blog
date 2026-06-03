@@ -1,0 +1,132 @@
+@import url('../_shared/calc-form.css');
+
+.battery-life__results {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sl-color-gray-5);
+}
+
+.battery-life__results--invalid {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--sl-color-accent-high);
+}
+
+/* Headline lifetime number. */
+.battery-life__headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.9rem;
+}
+
+.battery-life__headline-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+}
+
+.battery-life__headline-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sl-color-text);
+  line-height: 1.1;
+}
+
+.battery-life__warning {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--sl-color-orange-high);
+  line-height: 1.3;
+}
+
+/* Stacked breakdown bar. */
+.battery-life__breakdown {
+  margin-top: 1rem;
+}
+
+.battery-life__bar {
+  display: flex;
+  width: 100%;
+  height: 1.4rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-gray-5);
+}
+
+.battery-life__seg {
+  height: 100%;
+  transition: width 0.15s ease;
+}
+
+.battery-life__seg--load { background: var(--sl-color-blue); }
+.battery-life__seg--pcm  { background: var(--sl-color-gray-3); }
+.battery-life__seg--self { background: var(--sl-color-orange); }
+
+.battery-life__legend {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-2);
+}
+
+.battery-life__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.battery-life__swatch {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 0.15rem;
+  flex: 0 0 auto;
+}
+
+.battery-life__swatch--load { background: var(--sl-color-blue); }
+.battery-life__swatch--pcm  { background: var(--sl-color-gray-3); }
+.battery-life__swatch--self { background: var(--sl-color-orange); }
+
+/* Secondary stats grid. */
+.battery-life__stats {
+  margin: 1rem 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.4rem 1rem;
+}
+
+@container (min-width: 28rem) {
+  .battery-life__stats {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.battery-life__stats > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dotted var(--sl-color-gray-5);
+}
+
+.battery-life__stats dt {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+}
+
+.battery-life__stats dd {
+  margin: 0;
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sl-color-text);
+  white-space: nowrap;
+}
