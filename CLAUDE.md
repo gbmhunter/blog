@@ -1,3 +1,13 @@
+# Units in LaTeX/KaTeX equations
+
+When writing units inside KaTeX math (`$...$` or `$$...$$`), use the `\unit{}` macro instead of wrapping them in `\text{}`. It is defined in `astro.config.mjs` (in the `rehypeKatex` `macros` block) as `\,\mathrm{#1}`, so it renders the unit upright and automatically prepends a thin space between the value and the unit.
+
+* Write `50\unit{kHz}`, not `50 \text{kHz}` or `50\text{kHz}`.
+* Don't add a manual space before it — `\unit` supplies the thin space (e.g. `15.7\unit{m\Omega}` renders "15.7 mΩ").
+* For a bare unit label not following a number (e.g. defining a quantity), use `\mathrm{...}` directly to avoid the leading space.
+
+# References
+
 If I ask you to create a reference from a URL. It should be in the form:
 
 [^reference-key]: Author (year, month day). _Title_ [type]. Site/Publisher. Retrieved 2025-09-18, from https://www.site.com/path/to/page.

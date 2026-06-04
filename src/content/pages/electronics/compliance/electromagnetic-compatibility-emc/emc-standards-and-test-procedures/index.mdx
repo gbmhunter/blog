@@ -73,11 +73,11 @@ Reminder: To convert from dBuV to uV, use the equation:
 $$
 \begin{align}
 \large
-uV = 10^{\frac{dBuV}{20}} \cdot 1uV
+\mathrm{uV} = 10^{\frac{\mathrm{dBuV}}{20}} \cdot 1\unit{uV}
 \end{align}
 $$
 
-For example, $79dBuV = 8913uV = 8.9mV$.
+For example, $79\unit{dBuV} = 8913\unit{uV} = 8.9\unit{mV}$.
 </Aside>
 
 For everything but Class A devices (i.e. Class B, it's the only other class), the following conductive limits apply:
@@ -268,6 +268,19 @@ For mains AC powered DUTs, it depends on how many phases and the configuration o
 <Image src={import('./_assets/textbox-lisn-wiring-diagram-for-ac-three-phase-delta.png')} width="250px">LISN wiring setup for measuring a three-phase (delta) AC powered DUT.</Image>
 <Image src={import('./_assets/textbox-lisn-wiring-diagram-for-ac-three-phase-star.png')} width="250px">LISN wiring setup for measuring a three-phase (star) AC powered DUT.</Image>
 </div>
+
+#### How do LISNs Work?
+
+At the heart of the LISN is the $50\unit{uH}$ inductor. It sits in the main power path between SOURCE and DUT. The impedance of an inductor is given by:
+
+$$
+Z_L = 2\pi f L
+$$
+
+At 50 Hz the impedance of this inductor is tiny ($Z_L = 2\pi \cdot 50\unit{Hz} \cdot 50\unit{uH} = 15.7\unit{m\Omega}$) and the inductor acts like a piece of wire -- passing the mains power from `SOURCE` to `DUT`. Across the conducted emissions band (150kHz to 30MHz) however, its impedance climbs from around $47\unit{\Omega}$ (comparable to the $50\unit{\Omega}$ of the spectrum analyzer) up to almost $10\unit{k\Omega}$ (effectively an open circuit), isolating the DUT from the supply so that the DUTs conducted noise is forced into the measurement port rather than back into the mains.
+
+<Image src={import('./_assets/lisn-inductor-impedance-vs-frequency.png')} width="700px">The impedance of the LISN's 50µH series inductor vs. frequency, showing the 50Hz mains point and the 150kHz-30MHz conducted emissions band.</Image>
+
 
 **Why are some LISNs 50uH and others 5uH?**
 

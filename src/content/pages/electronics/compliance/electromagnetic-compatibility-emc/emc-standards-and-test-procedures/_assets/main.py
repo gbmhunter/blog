@@ -9,6 +9,50 @@ SCRIPT_DIR = Path(__file__).parent
 def main():
     plot_fcc15_unintentional_radiators_conductive()
     plot_cispr11_conductive_limits()
+    plot_lisn_inductor_impedance()
+
+def plot_lisn_inductor_impedance():
+    """Impedance of the 50uH LISN series inductor vs. frequency, highlighting
+    the 50Hz mains point and the 150kHz-30MHz conducted-emissions band."""
+    L = 50e-6  # 50uH series inductor
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    fig.suptitle('50µH LISN Inductor\nImpedance vs. Frequency')
+
+    # Sweep from below mains to above the measurement band
+    freq_Hz = np.logspace(1, 8, 1000)  # 10Hz to 100MHz
+    impedance_ohms = 2 * np.pi * freq_Hz * L
+    ax.plot(freq_Hz, impedance_ohms, color='tab:blue', zorder=3)
+
+    # Highlight the 150kHz-30MHz conducted-emissions measurement band
+    ax.axvspan(150e3, 30e6, color='tab:orange', alpha=0.2,
+               label='Conducted emissions band\n(150kHz - 30MHz)')
+
+    # Highlight the 50Hz mains frequency
+    z_50hz = 2 * np.pi * 50 * L
+    ax.axvline(50, color='tab:green', linestyle='--',
+               label=f'50Hz mains (Z ≈ {z_50hz*1e3:.1f} mΩ)')
+    ax.plot(50, z_50hz, 'o', color='tab:green', zorder=4)
+
+    # Annotate the impedance at the band edges
+    for f in (150e3, 30e6):
+        z = 2 * np.pi * f * L
+        ax.plot(f, z, 'o', color='tab:orange', zorder=4)
+        ax.annotate(f'{z:.0f} Ω', xy=(f, z), xytext=(0, 8),
+                    textcoords='offset points', ha='center', fontsize=8)
+
+    # Log for both frequency and impedance (each spans many decades)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ax.set_xlabel('Frequency [Hz]')
+    ax.set_ylabel('Impedance |Z| [Ω]')
+    ax.legend(loc='upper left')
+    ax.grid(which='both', axis='x')
+    ax.grid(which='both', axis='y')
+
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'lisn-inductor-impedance-vs-frequency.png')
 
 def plot_fcc15_unintentional_radiators_conductive():
     fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(10, 5))
