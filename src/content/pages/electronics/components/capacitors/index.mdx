@@ -696,9 +696,17 @@ where $f$ is the frequency of the signal and $C$ is the capacitance. Because $f$
 
 For example, a $1\unit{uF}$ capacitor has a reactance of $X_C = \frac{1}{2\pi \cdot 100\unit{kHz} \cdot 1\unit{uF}} = 1.6\unit{\Omega}$ at $100\unit{kHz}$, but $159\unit{\Omega}$ at $1\unit{kHz}$.
 
-### Real Capacitors
+### ESR and ESL
 
-The formula above is for an _ideal_ capacitor. A real capacitor also has parasitic elements. The first two that are usually considered are the [equivalent series resistance](#equivalent-series-resistance-esr) ($\mathrm{ESR}$) and _equivalent series inductance_ ($\mathrm{ESL}$) -- the latter arising from the capacitor's leads, electrodes and internal geometry. The impedance under this model is:
+The formula above is for an _ideal_ capacitor. A real capacitor also has parasitic elements. The first two that are usually considered are the [equivalent series resistance](#equivalent-series-resistance-esr) ($\mathrm{ESR}$) and _equivalent series inductance_ ($\mathrm{ESL}$) -- the latter arising from the capacitor's leads, electrodes and internal geometry. They are modelled as elements in series with the capacitor as shown below:
+
+<Image src={import('./_assets/esr-esl-capacitor-schematic.webp')} width="500px">Schematic showing the capacitor model with added ESR and ESL (both in series, as their names suggest).</Image>
+
+<Aside type="tip">
+Sometimes ESR is labelled $R_P$ and ESL $L_P$ ($P$ for parasitic).
+</Aside>
+
+The impedance under this model is:
 
 $$
 Z = \mathrm{ESR} + j\left(2\pi f \cdot \mathrm{ESL} - \frac{1}{2\pi f C}\right)
@@ -710,7 +718,11 @@ $$
 |Z| = \sqrt{\mathrm{ESR}^2 + \left(2\pi f \cdot \mathrm{ESL} - \frac{1}{2\pi f C}\right)^2}
 $$
 
-This gives the characteristic "V-shaped" impedance curve. There are three regions:
+This gives the characteristic "V-shaped" impedance curve as shown below:
+
+<Image src={import('./_assets/capacitor-impedance-vs-frequency.png')} width="800px">The impedance magnitude of a real 1µF ceramic capacitor (ESR = 20 mΩ, ESL = 0.8 nH) vs. frequency. The capacitive region falls at -20 dB/decade, bottoms out at the ESR at the self-resonant frequency (SRF), then rises in the inductive region. The ideal reactance $X_C$ is shown dashed.</Image>
+
+There are three regions:
 
 * **Capacitive region (low frequency):** The $\frac{1}{2\pi f C}$ term dominates and the impedance falls with frequency at $-20\unit{dB}$/decade, just like the ideal reactance.
 * **Self-resonant frequency (SRF):** At one particular frequency the inductive and capacitive reactances cancel ($2\pi f \cdot \mathrm{ESL} = \frac{1}{2\pi f C}$), leaving only the $\mathrm{ESR}$. This is the point of minimum impedance, given by:
