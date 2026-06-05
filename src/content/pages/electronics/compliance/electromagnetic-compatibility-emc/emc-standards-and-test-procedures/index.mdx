@@ -318,6 +318,10 @@ It is sized at $1\unit{k\Omega}$ so that it is significantly higher than the $50
 
 A LISN inductance of 50 µH represents the inductance of power distribution wiring running for approximately 50m, which is a good approximation for most mains powered devices. Automobile standards usually specify a LISN inductance of 5uH because this more closely represents the inductance in the power wires in a car[^analog-ic-tips-emi-comparison].
 
+### Injecting Noise
+
+There is nothing special inside a LISN which makes it one-way only, this means that you can also use a LISN to inject noise into a DUT to measure it's noise immunity. Saying that, LISNs are not the best tool for this job. If possible, it's recommended to use a coupling/decoupling network (CDN) to do this instead.[^transient-specialists-what-are-lisns]
+
 ## Attenuators
 
 _Attenuators_ are devices which reduce the power of a signal without distorting the waveform. A note, for what is little-more than a well-tuned and shielded resistor divider, RF-rated attenuators can be expensive (US$100+)!
@@ -365,3 +369,4 @@ The [Academy of EMC: EMC Standards web page](https://www.academyofemc.com/emc-st
 [^globalspec-en-55011]: GlobalSpec. _CENELEC - EN 55011: Industrial, scientific and medical equipment - Radio-frequency disturbance characteristics - Limits and methods of measurement_. Retrieved 2022-07-27, from https://standards.globalspec.com/std/14375876/en-55011.
 [^atlas-what-is-quasi-peak]: Atlas Compliance And Engineering. _What is Quasi Peak_. Retrieved 2022-07-27, from https://atlasce.com/services/emissions-testing/what-is-quasi-peak/.
 [^wikipedia-lisn]: Wikipedia (2026, Mar 29). _Line Impedance Stabilization Network_ [wiki]. Retrieved 2026-06-05, from https://en.wikipedia.org/wiki/Line_Impedance_Stabilization_Network.
+[^transient-specialists-what-are-lisns]: Transient Specialists (2022, Jan 4). _What are Line Impedance Stabilization Networks (LISNs)?_. Retrieved 2026-06-05, from https://transientspecialists.com/blogs/blog/line-impedance-stabilization-networks-lisns-what-are-they.
