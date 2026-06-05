@@ -6,6 +6,16 @@ When writing units inside KaTeX math (`$...$` or `$$...$$`), use the `\unit{}` m
 * Don't add a manual space before it — `\unit` supplies the thin space (e.g. `15.7\unit{m\Omega}` renders "15.7 mΩ").
 * For a bare unit label not following a number (e.g. defining a quantity), use `\mathrm{...}` directly to avoid the leading space.
 
+# Multiplication in LaTeX/KaTeX equations
+
+Use `\cdot` as the default explicit multiplication operator (e.g. `2\pi \cdot 50\unit{Hz} \cdot 50\unit{uH}`). Reserve `\times` for:
+
+* Scientific notation, e.g. `6.02 \times 10^{23}`.
+* Vector cross products, e.g. `\vec{a} \times \vec{b}` (`\cdot` means the dot product).
+* Dimensions / Cartesian products, e.g. "a 3 × 4 matrix", `\mathbb{R} \times \mathbb{R}`.
+
+For tightly-bound products, prefer juxtaposition with no operator at all (e.g. `2\pi f L`, `IR`).
+
 # References
 
 If I ask you to create a reference from a URL. It should be in the form:

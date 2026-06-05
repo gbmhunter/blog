@@ -28,9 +28,25 @@ const globalMdxComponents = getGlobalMdxComponents();
 }
 
 <style is:global>
+/* Render each update as a card so individual posts are visually distinct from
+   one another in the recent-updates feed. */
+.update {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem 1.25rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--sl-color-gray-6);
+}
+
+/* The post title is the first element in the card; remove its default top
+   margin so it sits flush with the card's top padding. */
+.update > h3:first-child {
+  margin-top: 0;
+}
+
 /* Make the headings inside the update content smaller than they would be if displayed on their own page.
-This is to make it look correct when they are part of the recent updates section on the homepage. 
-We don't expect anything other than h2 and h3's to be used. 
+This is to make it look correct when they are part of the recent updates section on the homepage.
+We don't expect anything other than h2 and h3's to be used.
 Style needs to be global because we are selecting elements within child components. */
 .update-content h2 {
   font-size: 1.5rem;

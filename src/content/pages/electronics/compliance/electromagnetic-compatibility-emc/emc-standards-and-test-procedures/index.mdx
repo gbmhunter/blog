@@ -25,13 +25,13 @@ EMC testing involves spectrometers, antennas, radio frequency cabling/connectors
 
 Part 15 is a section of the document _Title 47 of the Code of Federal Regulations_ titled _Radio Frequency Devices_ (47 CFR § 15), written by the FCC. It sets out standards for the amount of electromagnetic emissions an _unlicensed_ device can emit. It is available for free online at https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15.
 
-The FCC defines the following types of radiators[^bib-fcc-equipment-authorization-rf-device]:
+The FCC defines the following types of radiators[^fcc-equipment-authorization-rf-device]:
 
 * **Incidental radiator:** A device that is designed not to use or generate any signals over 9kHz and cause radio interference. Things such as AC/DC motors and mechanical switches fall into this category. Covered in Part 15, Subpart A
 * **Unintentional radiator:** A device which contains signals between 9kHz-3THz but does not intentionally radiate the signals. Pretty much all digital circuitry these days will contains signals in the band, e.g. a microcontroller running at a clock speed of 8MHz. Covered in Part 15, Subparts B and G.
 * **Intentional radiator:** A device which has been designed to emit electromagnetic radiation, e.g. a Bluetooth device. Covered in Part 15, Subpart C through F and H.
 
-The FCC also groups devices into two classes[^bib-sunfire-fcc-part-15]:
+The FCC also groups devices into two classes[^sunfire-fcc-part-15]:
 
 * **Class A**: Devices used in industrial or commercial settings which are not marketed for use in a residential house or by the general public. Not as restrictive as Class B.
 * **Class B**: Devices marketed for primary use in a residential environment and for general use by the public. _Class B_ has more restrictive conductive and radiated limits the device must meet.
@@ -168,7 +168,7 @@ Instead of these radiative limits above, the FCC allows you to use the CISPR 22 
 
 _CISPR 11_ is a EMC standard that specifies conducted and radiated RF emission limits for industrial, scientific and medical (ISM) equipment. It was originally published in 1975, with the 6th edition coming out in 2015. _EN 55011_ is an international standard which is largely based of CISPR 11.
 
-The following table lists the conducted EMC limits for Class A devices (by Group) under the CISPR 11 standard[^bib-ti-conducted-emi-for-psus]:
+The following table lists the conducted EMC limits for Class A devices (by Group) under the CISPR 11 standard[^ti-conducted-emi-for-psus]:
 
 <table>
   <thead>
@@ -226,22 +226,22 @@ The above data is visualized in the below graphs:
 
 _CISPR 25_ is a very popular standard that provides limits and measurement techniques for EMC compliance. It's full name is "Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers". The standard gets a lot of attention because it is one that applies to the automotive industry.
 
-Most CISPR standards specify conducted EMC limits up to 30MHz, however CISPR 25 specified limits up to 108MHz[^bib-ti-conducted-emi-for-psus].
+Most CISPR standards specify conducted EMC limits up to 30MHz, however CISPR 25 specified limits up to 108MHz[^ti-conducted-emi-for-psus].
 
 ### EN 55011
 
-_EN 55011_ is an international EMC emissions standards for ISM equipment produced by CENELEC, the European Committee for Electrotechnical Standardization. It is largely based of CISPR 11[^bib-celec-en-55011-cispr-11]. As of July 2022, the latest version was released in April 2016[^bib-globalspec-en-55011]. [BS EN 55011:2016+A2:2021](https://www.standards.govt.nz/shop/bs-en-550112016-a22021/) is the equivalent standard for New Zealand.
+_EN 55011_ is an international EMC emissions standards for ISM equipment produced by CENELEC, the European Committee for Electrotechnical Standardization. It is largely based of CISPR 11[^celec-en-55011-cispr-11]. As of July 2022, the latest version was released in April 2016[^globalspec-en-55011]. [BS EN 55011:2016+A2:2021](https://www.standards.govt.nz/shop/bs-en-550112016-a22021/) is the equivalent standard for New Zealand.
 ## Pre-compliance Testing
 
 Because official compliance testing is generally expensive, in-house _pre-compliance_ testing is a popular way of gaining confidence the DUT will pass once it is submitted for official testing.
 
 ### Software
 
-The [TekBox EMCview software](https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/) can control the spectrum analyzer to do multiple sweeps across the frequency range, collate the data, and display the results with comparison/thresholds for the popular EMC standards. It currently supports a range of spectrum analysers from Rigol, Siglent, R&S and others[^bib-tekbox-emcview].
+The [TekBox EMCview software](https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/) can control the spectrum analyzer to do multiple sweeps across the frequency range, collate the data, and display the results with comparison/thresholds for the popular EMC standards. It currently supports a range of spectrum analysers from Rigol, Siglent, R&S and others[^tekbox-emcview].
 
-<Image src={import('./_assets/tekbox-emcview-screenshot.png')} width="700">Screenshot of the Texbox EMCview software[^bib-tekbox-emcview]. Image © 2021, Texbox.</Image>
+<Image src={import('./_assets/tekbox-emcview-screenshot.png')} width="700">Screenshot of the Texbox EMCview software[^tekbox-emcview]. Image © 2021, Texbox.</Image>
 
-### LISNs
+## LISNs
 
 A _line-impedance stabilization network_ is a vital piece of equipment when performing EMC tests.
 
@@ -269,34 +269,66 @@ For mains AC powered DUTs, it depends on how many phases and the configuration o
 <Image src={import('./_assets/textbox-lisn-wiring-diagram-for-ac-three-phase-star.png')} width="250px">LISN wiring setup for measuring a three-phase (star) AC powered DUT.</Image>
 </div>
 
-#### How do LISNs Work?
+### How do LISNs Work?
 
-At the heart of the LISN is the $50\unit{uH}$ inductor. It sits in the main power path between SOURCE and DUT. The impedance of an inductor is given by:
+To understand how LISNs work, let's look at the relatively simple 50µH/50Ω LISN schematic from MIL-STD-461E standard shown below:
+
+<Image src={import('./_assets/mil-std-461e-lisn-schematic.webp')} width="600px">A simplified internal schematic of a 50µH/50Ω LISN, as given in MIL-STD-461E.[^wikipedia-lisn]</Image>
+
+#### Inductor (Power Path)
+
+At the heart of the LISN is the $50\unit{uH}$ inductor. It sits in the main power path between SOURCE and DUT. The reactance of an inductor is given by:
 
 $$
-Z_L = 2\pi f L
+X_L = 2\pi f L
 $$
 
-At 50 Hz the impedance of this inductor is tiny ($Z_L = 2\pi \cdot 50\unit{Hz} \cdot 50\unit{uH} = 15.7\unit{m\Omega}$) and the inductor acts like a piece of wire -- passing the mains power from `SOURCE` to `DUT`. Across the conducted emissions band (150kHz to 30MHz) however, its impedance climbs from around $47\unit{\Omega}$ (comparable to the $50\unit{\Omega}$ of the spectrum analyzer) up to almost $10\unit{k\Omega}$ (effectively an open circuit), isolating the DUT from the supply so that the DUTs conducted noise is forced into the measurement port rather than back into the mains.
+At 50 Hz the reactance of this inductor is tiny ($X_L = 2\pi \cdot 50\unit{Hz} \cdot 50\unit{uH} = 15.7\unit{m\Omega}$) and the inductor acts like a piece of wire -- passing the mains power from `SOURCE` to `DUT`. Across the conducted emissions band (150kHz to 30MHz) however, its reactance climbs from around $47\unit{\Omega}$ (comparable to the $50\unit{\Omega}$ of the spectrum analyzer) up to almost $10\unit{k\Omega}$ (effectively an open circuit), isolating the DUT from the supply so that the DUT's conducted noise is forced into the measurement port rather than back into the mains.
 
-<Image src={import('./_assets/lisn-inductor-impedance-vs-frequency.png')} width="700px">The impedance of the LISN's 50µH series inductor vs. frequency, showing the 50Hz mains point and the 150kHz-30MHz conducted emissions band.</Image>
+<Image src={import('./_assets/lisn-inductor-reactance-vs-frequency.png')} width="700px">The reactance of the LISN's 50µH series inductor vs. frequency, showing the 50Hz mains point and the 150kHz-30MHz conducted emissions band.</Image>
 
+#### C1 and R1 (Source-Side Filter)
 
-**Why are some LISNs 50uH and others 5uH?**
+$C_1$ and $R_1$ compose the source-side filter. $C_1=8\unit{uF}$ is a near short at RF. It's reactance is given by:
 
-A LISN inductance of 50 µH represents the inductance of power distribution wiring running for approximately 50m, which is a good approximation for most mains powered devices. Automobile standards usually specify a LISN inductance of 5uH because this more closely represents the inductance in the power wires in a car[^bib-analog-ic-tips-emi-comparison].
+$$
+X_C = \frac{1}{2\pi fC}
+$$
 
-### Attenuators
+At $150\unit{kHz}$ this is $X_C = \frac{1}{2\pi \cdot 150\unit{kHz} \cdot 8\unit{uF}} = 0.13\unit{\Omega}$, and shunts any noise on the incoming mains to ground, preventing it from affecting the measurement on the DUT side. $R_1=5\unit{\Omega}$ is a damping element to prevent ringing from the resonant tank formed by $L_1$ and $C_1$.
+
+If you had a perfect noise-free mains this source-side filter would not be needed.
+
+#### C2 (Coupling/DC-Blocking Capacitor)
+
+$C_2$ is an AC noise coupling and DC blocking capacitor for the RF port. At RF it is low reactance (at $150\unit{kHz}$ it is $X_C = \frac{1}{2\pi f C} = \frac{1}{2\pi \cdot 150\unit{kHz} \cdot 250\unit{nF}} = 4.2\unit{\Omega}$) and getting even lower at higher frequencies. So it passes the DUT's conductive noise through to the `RF-OUT` port.
+
+At DC and 50 Hz frequencies however, $C_2$ has high reactance and essentially blocks the signal ($X_C = 12.7\unit{k\Omega}$ at $50\unit{Hz}$). This is the primary protection preventing the mains from killing your spectrum analyzer. Remember that the input impedance of a spectrum analyzer is $50\unit{\Omega}$, and so $230\unit{VAC}$ will divide down across the $12.7\unit{k\Omega}$ and $50\unit{\Omega}$ in series, giving only $0.90\unit{V_{RMS}}$ at the input of the spectrum analyzer.
+
+#### R2 (Bleeder and DC Return)
+
+$R_2 = 1\unit{k\Omega}$ is a bleeder and DC return path resistor. It:
+
+- Gives the measurement node (`RF-OUT`) a defined DC potential when the spectrum analyzer is not connected (otherwise the leg of $C_2$ would just be floating).
+- Discharges $C_2$ when the spectrum analyzer is not connected.
+
+It is sized at $1\unit{k\Omega}$ so that it is significantly higher than the $50\unit{\Omega}$ input impedance of the spectrum analyzer. This is so it draws almost no current in comparison and therefore does not "steal" any of the signal away from the spectrum analyzer.
+
+#### Why are some LISNs 50uH and others 5uH?
+
+A LISN inductance of 50 µH represents the inductance of power distribution wiring running for approximately 50m, which is a good approximation for most mains powered devices. Automobile standards usually specify a LISN inductance of 5uH because this more closely represents the inductance in the power wires in a car[^analog-ic-tips-emi-comparison].
+
+## Attenuators
 
 _Attenuators_ are devices which reduce the power of a signal without distorting the waveform. A note, for what is little-more than a well-tuned and shielded resistor divider, RF-rated attenuators can be expensive (US$100+)!
 
-### Transient Limiters
+## Transient Limiters
 
 _Transient limiters_ are another level of protection to a spectrum analyzer above and beyond what a simple attenuator can provide. They are commonly used whilst performing conducted EMI measurements using a LISN. `10dB` of flat in-band attenuation is common, across a frequency range of 9kHz to 30MHz. Maximum input is typically somewhere between +-10-20V DC at 2-5W of continuous power. N-type connectors are typically provided for the input and output.
 
-<Image src={import('./_assets/lit-930a-transient-limiter-freq-response.png')} width="600px">Frequency response of the LIT-930A transient limiter by Com-Power[^bib-com-power-lit-930a-ds]. Graph shows a flat 10dB attenuation across the pass-band between 9kHz and 30MHz. Image © Com-Power.</Image>
+<Image src={import('./_assets/lit-930a-transient-limiter-freq-response.png')} width="600px">Frequency response of the LIT-930A transient limiter by Com-Power[^com-power-lit-930a-ds]. Graph shows a flat 10dB attenuation across the pass-band between 9kHz and 30MHz. Image © Com-Power.</Image>
 
-### Interesting Real World EMC Measurements
+## Interesting Real World EMC Measurements
 
 Below is a plot showing some real world EMC measurements done on a PCB design. Measurements were done on the "OLD" design first and we found that it failed according to the FCC Part 15 Class A specifications. We then revised the PCB design, reducing the current loops on the switch-mode PSUs (of which there were four of) and adding EMC filters (capacitors and inductors) to the input. We then performed EMC measurements on this "NEW" design.
 
@@ -312,7 +344,7 @@ These were all pre-compliance EMC tests, and not done by an approved testing age
 
 ## Peak, Quasi-Peak And Averages
 
-_Quasi-peak_ detection is when the frequency components of a signal are weighted according to their repetition rate[^bib-atlas-what-is-quasi-peak]. Many spectrum analyzers allow you to scan in this "mode". Quasi-peak scans impact the frequency components that are not continuous (e.g. the noise generated by a SMPS that is operating in burst mode and transition between periods of switching and no-switching). Quasi-peak measurements are always equal to or less than the peak measurement. Most EMC standards specify quasi-peak limits rather than peak limits (e.g. FCC Part 15, or CISPR 11). However, because quasi-peak scans on a spectrum analyzer take more time than a peak (it has to sample for longer because of the specific "charge" and "discharge" time constants), many people perform EMC measurements first on "peak" mode, and only perform a quasi-peak scan if the peak fails.
+_Quasi-peak_ detection is when the frequency components of a signal are weighted according to their repetition rate[^atlas-what-is-quasi-peak]. Many spectrum analyzers allow you to scan in this "mode". Quasi-peak scans impact the frequency components that are not continuous (e.g. the noise generated by a SMPS that is operating in burst mode and transition between periods of switching and no-switching). Quasi-peak measurements are always equal to or less than the peak measurement. Most EMC standards specify quasi-peak limits rather than peak limits (e.g. FCC Part 15, or CISPR 11). However, because quasi-peak scans on a spectrum analyzer take more time than a peak (it has to sample for longer because of the specific "charge" and "discharge" time constants), many people perform EMC measurements first on "peak" mode, and only perform a quasi-peak scan if the peak fails.
 
 ## Further Reading
 
@@ -322,13 +354,14 @@ The [Academy of EMC: EMC Standards web page](https://www.academyofemc.com/emc-st
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^bib-com-power-lit-930a-ds]: Com-Power. _Transient Limiters: LIT-153A and LIT-930A (Datasheet)_. Retrieved 2021-11-11, from https://www.com-power.com/uploads/pdf/LIT-930A-1.pdf.
-[^bib-tekbox-emcview]: Texbox. _EMVView PC Software For EMC Pre-Compliance Testing_. Retrieved 2021-11-11, from https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/.
-[^bib-fcc-equipment-authorization-rf-device]: FCC. _Equipment Authorization – RF Device_. Retrieved 2022-06-03, from https://www.fcc.gov/oet/ea/rfdevice.
-[^bib-sunfire-fcc-part-15]: Tim Payne. _What Is FCC Part 15 Testing?_. Sunfire Testing. Retrieved 2022-06-03, from https://sunfiretesting.com/What-Is-FCC-Part-15-Testing/.
-[^bib-tekbox-tbl5016-1-manual]: TekBox. _TBL5016-1: 50µH Line Impedance Stabilisation Network (manual)_. Retrieved 2022-07-18, from https://www.tekbox.com/product/TBL5016-1_LISN-Manual.pdf.
-[^bib-analog-ic-tips-emi-comparison]: Timothy Hegarty (2021, April 2). _A comparison of EMI test setups and specifications for automotive, industrial and defense applications, part 1: conducted emissions_. Analog IC Tips. Retrieved 2022-07-18, from https://www.analogictips.com/a-comparison-of-emi-test-setups-and-specifications-for-automotive-industrial-and-defense-applications-part-1-conducted-emissions/.
-[^bib-ti-conducted-emi-for-psus]: Timothy Hegarty (2018, Feb). _An overview of conducted EMI specifications for power supplies_. Texas Instruments. Retrieved 2022-07-27, from https://www.ti.com/lit/wp/slyy136/slyy136.pdf.
-[^bib-celec-en-55011-cispr-11]: CElectronics. _EN 55011 CISPR 11: Industrial, scientific and medical (ISM) radio-frequency equipment – Electromagnetic disturbance characteristics – Limits and methods of measurement._. Retrieved 2022-07-27, from https://celectronics.com/training/learning/method/EN55011.html.
-[^bib-globalspec-en-55011]: GlobalSpec. _CENELEC - EN 55011: Industrial, scientific and medical equipment - Radio-frequency disturbance characteristics - Limits and methods of measurement_. Retrieved 2022-07-27, from https://standards.globalspec.com/std/14375876/en-55011.
-[^bib-atlas-what-is-quasi-peak]: Atlas Compliance And Engineering. _What is Quasi Peak_. Retrieved 2022-07-27, from https://atlasce.com/services/emissions-testing/what-is-quasi-peak/.
+[^com-power-lit-930a-ds]: Com-Power. _Transient Limiters: LIT-153A and LIT-930A (Datasheet)_. Retrieved 2021-11-11, from https://www.com-power.com/uploads/pdf/LIT-930A-1.pdf.
+[^tekbox-emcview]: Texbox. _EMVView PC Software For EMC Pre-Compliance Testing_. Retrieved 2021-11-11, from https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/.
+[^fcc-equipment-authorization-rf-device]: FCC. _Equipment Authorization – RF Device_. Retrieved 2022-06-03, from https://www.fcc.gov/oet/ea/rfdevice.
+[^sunfire-fcc-part-15]: Tim Payne. _What Is FCC Part 15 Testing?_. Sunfire Testing. Retrieved 2022-06-03, from https://sunfiretesting.com/What-Is-FCC-Part-15-Testing/.
+[^tekbox-tbl5016-1-manual]: TekBox. _TBL5016-1: 50µH Line Impedance Stabilisation Network (manual)_. Retrieved 2022-07-18, from https://www.tekbox.com/product/TBL5016-1_LISN-Manual.pdf.
+[^analog-ic-tips-emi-comparison]: Timothy Hegarty (2021, April 2). _A comparison of EMI test setups and specifications for automotive, industrial and defense applications, part 1: conducted emissions_. Analog IC Tips. Retrieved 2022-07-18, from https://www.analogictips.com/a-comparison-of-emi-test-setups-and-specifications-for-automotive-industrial-and-defense-applications-part-1-conducted-emissions/.
+[^ti-conducted-emi-for-psus]: Timothy Hegarty (2018, Feb). _An overview of conducted EMI specifications for power supplies_. Texas Instruments. Retrieved 2022-07-27, from https://www.ti.com/lit/wp/slyy136/slyy136.pdf.
+[^celec-en-55011-cispr-11]: CElectronics. _EN 55011 CISPR 11: Industrial, scientific and medical (ISM) radio-frequency equipment – Electromagnetic disturbance characteristics – Limits and methods of measurement._. Retrieved 2022-07-27, from https://celectronics.com/training/learning/method/EN55011.html.
+[^globalspec-en-55011]: GlobalSpec. _CENELEC - EN 55011: Industrial, scientific and medical equipment - Radio-frequency disturbance characteristics - Limits and methods of measurement_. Retrieved 2022-07-27, from https://standards.globalspec.com/std/14375876/en-55011.
+[^atlas-what-is-quasi-peak]: Atlas Compliance And Engineering. _What is Quasi Peak_. Retrieved 2022-07-27, from https://atlasce.com/services/emissions-testing/what-is-quasi-peak/.
+[^wikipedia-lisn]: Wikipedia (2026, Mar 29). _Line Impedance Stabilization Network_ [wiki]. Retrieved 2026-06-05, from https://en.wikipedia.org/wiki/Line_Impedance_Stabilization_Network.

@@ -45,6 +45,78 @@
 }
 
 /* ============================================================================================== */
+/* HEADINGS */
+/* ============================================================================================== */
+
+/* Auto-number content headings (h2-h4) and give each level a categorically
+   distinct look, so when you land mid-page it's always clear how deep a heading
+   sits. E.g. "1.4.3  R2 (Bleeder and DC Return)" reads unambiguously as a
+   3rd-level subheading without having to scroll up to find its parent.
+
+   Scoped to .sl-markdown-content so the page title (h1), the sidebar, the
+   "On this page" ToC, and the footnotes heading are left untouched. custom.css
+   is loaded after Starlight's own styles, so these win the cascade. */
+
+.sl-markdown-content {
+  counter-reset: h2counter h3counter h4counter;
+}
+
+.sl-markdown-content h2 { counter-increment: h2counter; counter-reset: h3counter h4counter; }
+.sl-markdown-content h3 { counter-increment: h3counter; counter-reset: h4counter; }
+.sl-markdown-content h4 { counter-increment: h4counter; }
+
+/* The number prefix. \2002 is an en-space separating the number from the title. */
+.sl-markdown-content h2::before {
+  content: counter(h2counter) ".\2002";
+  color: var(--sl-color-text-accent);
+  font-variant: normal;
+}
+.sl-markdown-content h3::before {
+  content: counter(h2counter) "." counter(h3counter) "\2002";
+  color: var(--sl-color-text-accent);
+}
+.sl-markdown-content h4::before {
+  content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) "\2002";
+  color: var(--sl-color-text-accent);
+  font-variant: normal;
+}
+
+/* Level-specific treatment for extra contrast between adjacent levels:
+   - h2: a bottom rule strongly separates each top-level section.
+   - h4: small-caps + letter-spacing makes the deepest level read as a "label",
+     categorically different from the h3 above it (not just slightly smaller). */
+.sl-markdown-content h2 {
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  padding-bottom: 0.2em;
+}
+.sl-markdown-content h4 {
+  font-variant: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--sl-color-gray-2);
+}
+
+/* Don't number the auto-generated "Footnotes" heading at the bottom of the page. */
+.sl-markdown-content .footnotes h2::before {
+  content: none;
+}
+
+/* The homepage "recent updates" list (RecentUpdates.astro) renders many posts
+   inline, each with its own headings. Section numbering and the per-level
+   treatment make no sense there (and counters would run on across all the
+   posts), so neutralise them inside each .update block. Placed after the rules
+   above so it wins on equal specificity. */
+.update :is(h2, h3, h4)::before {
+  content: none;
+}
+.update :is(h2, h3, h4) {
+  border-bottom: none;
+  padding-bottom: 0;
+  font-variant: normal;
+  letter-spacing: normal;
+  color: inherit;
+}
+
+/* ============================================================================================== */
 /* MATHS */
 /* ============================================================================================== */
 
