@@ -53,6 +53,8 @@ export default function Plot2d({
   yLog = false,
   yMin,
   yMax,
+  xTickFormat,
+  yTickFormat,
 }) {
   const canvasRef = useRef(null);
   const chartRef = useRef(null);
@@ -65,7 +67,7 @@ export default function Plot2d({
     chartRef.current = new Chart(canvasRef.current, {
       type: 'scatter',
       data: { datasets: buildDatasets(series) },
-      options: buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, grid, showLegend: series.length > 1 }),
+      options: buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend: series.length > 1 }),
     });
 
     return () => {
@@ -104,9 +106,9 @@ export default function Plot2d({
     // Trim if series count shrank.
     while (c.data.datasets.length > series.length) c.data.datasets.pop();
 
-    c.options = buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, grid, showLegend: series.length > 1 });
+    c.options = buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend: series.length > 1 });
     c.update();
-  }, [series, title, xLabel, yLabel, xLog, yLog, yMin, yMax]);
+  }, [series, title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat]);
 
   return (
     <div class="plot2d" style={{ height: `${height}px` }}>
@@ -142,7 +144,16 @@ function buildDatasets(series) {
   return series.map(buildDataset);
 }
 
-function buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, grid, showLegend }) {
+// Axis tick styling. When a `format` fn is supplied, each tick value is run
+// through it (e.g. to render metric-prefixed labels like "1M", "10m"); the
+// raw `value` is passed, not Chart.js's pre-formatted string.
+function tickConfig(text, format) {
+  const cfg = { color: text, font: { size: 11 } };
+  if (format) cfg.callback = (value) => format(value);
+  return cfg;
+}
+
+function buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend }) {
   return {
     responsive: true,
     maintainAspectRatio: false,
@@ -152,13 +163,13 @@ function buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, text, gri
       x: {
         type: xLog ? 'logarithmic' : 'linear',
         title: { display: !!xLabel, text: xLabel, color: text, font: { size: 12 } },
-        ticks: { color: text, font: { size: 11 } },
+        ticks: tickConfig(text, xTickFormat),
         grid: { color: grid, lineWidth: 0.5 },
       },
       y: {
         type: yLog ? 'logarithmic' : 'linear',
         title: { display: !!yLabel, text: yLabel, color: text, font: { size: 12 } },
-        ticks: { color: text, font: { size: 11 } },
+        ticks: tickConfig(text, yTickFormat),
         grid: { color: grid, lineWidth: 0.5 },
         min: yMin,
         max: yMax,

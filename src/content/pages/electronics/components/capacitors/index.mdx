@@ -10,6 +10,7 @@ type: page
 ---
 
 import CapacitorCharge from 'src/components/tools/capacitor-charge/CapacitorCharge.jsx';
+import CapacitorImpedance from 'src/components/tools/capacitor-impedance/CapacitorImpedance.jsx';
 import ParallelCapacitance from 'src/components/tools/parallel-capacitance/ParallelCapacitance.jsx';
 import SeriesCapacitance from 'src/components/tools/series-capacitance/SeriesCapacitance.jsx';
 
@@ -683,6 +684,51 @@ Electrolytic capacitors typically have a large ESR of 0.1-5Ω (there are special
 
 Since the ESR is proportional to the capacitor's plate area, for a similar capacitor designs, the ESR decreases with increasing capacitance.
 
+## Reactance and Impedance
+
+The opposition a capacitor presents to an alternating current is called its _reactance_, $X_C$. Unlike a resistor, this opposition depends on frequency:
+
+$$
+X_C = \frac{1}{2\pi f C}
+$$
+
+where $f$ is the frequency of the signal and $C$ is the capacitance. Because $f$ is in the denominator, the reactance is large at low frequencies (a capacitor blocks DC, where $f = 0$ gives infinite reactance) and small at high frequencies (it readily passes high-frequency AC). This frequency dependence is what makes capacitors useful for [decoupling](#decoupling) and [mains line filters](#mains-line-filters) -- they present a low impedance to high-frequency noise, shunting it to ground.
+
+For example, a $1\unit{uF}$ capacitor has a reactance of $X_C = \frac{1}{2\pi \cdot 100\unit{kHz} \cdot 1\unit{uF}} = 1.6\unit{\Omega}$ at $100\unit{kHz}$, but $159\unit{\Omega}$ at $1\unit{kHz}$.
+
+### Real Capacitors
+
+The formula above is for an _ideal_ capacitor. A real capacitor also has parasitic elements. The first two that are usually considered are the [equivalent series resistance](#equivalent-series-resistance-esr) ($\mathrm{ESR}$) and _equivalent series inductance_ ($\mathrm{ESL}$) -- the latter arising from the capacitor's leads, electrodes and internal geometry. The impedance under this model is:
+
+$$
+Z = \mathrm{ESR} + j\left(2\pi f \cdot \mathrm{ESL} - \frac{1}{2\pi f C}\right)
+$$
+
+and its magnitude:[^rohm-bypass-capacitor-impedance]
+
+$$
+|Z| = \sqrt{\mathrm{ESR}^2 + \left(2\pi f \cdot \mathrm{ESL} - \frac{1}{2\pi f C}\right)^2}
+$$
+
+This gives the characteristic "V-shaped" impedance curve. There are three regions:
+
+* **Capacitive region (low frequency):** The $\frac{1}{2\pi f C}$ term dominates and the impedance falls with frequency at $-20\unit{dB}$/decade, just like the ideal reactance.
+* **Self-resonant frequency (SRF):** At one particular frequency the inductive and capacitive reactances cancel ($2\pi f \cdot \mathrm{ESL} = \frac{1}{2\pi f C}$), leaving only the $\mathrm{ESR}$. This is the point of minimum impedance, given by:
+
+$$
+f_{\mathrm{SRF}} = \frac{1}{2\pi \sqrt{\mathrm{ESL} \cdot C}}
+$$
+
+* **Inductive region (high frequency):** Above the SRF the $2\pi f \cdot \mathrm{ESL}$ term dominates and the impedance _rises_ with frequency -- the capacitor behaves like an inductor!
+
+### Capacitor Impedance Calculator
+
+Use the calculator below to compute a capacitor's reactance and impedance at a given frequency, and to see this V-shaped curve for your own values. Enter a capacitance and frequency, and optionally the parasitic ESR and ESL (leave them blank for an ideal capacitor):
+
+<CapacitorImpedance client:load />
+
+The practical takeaway is that a capacitor only behaves like a capacitor _below_ its self-resonant frequency. Smaller packages have lower $\mathrm{ESL}$ and therefore a higher SRF, which is why high-frequency decoupling uses small (e.g. 0402 or smaller) ceramic capacitors, and why several different capacitance values are often placed in parallel -- each covers a different part of the frequency spectrum.
+
 ## Leakage Currents
 
 Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current $I_{abs}$, and the intrinsic leakage current $I_{il}$.
@@ -1159,3 +1205,4 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [^kemet-heres-what-makes-mlcc-dielectrics-different]: (2019, April 4). _Here’s What Makes MLCC Dielectrics Different_ [Article]. Retrieved 2023-07-13, from https://www.kemet.com/en/us/technical-resources/heres-what-makes-mlcc-dielectrics-different.html.
 [^tutorials-point-difference-between-dielectric-constant-and-permittivity]: Vineet Nanda (2023-04-18). _Difference Between Dielectric Constant and Permittivity_ [Article]. TutorialsPoint. Retrieved 2023-07-13, from https://www.tutorialspoint.com/difference-between-dielectric-constant-and-permittivity.
 [^wikipedia-relative-permittivity]: Wikipedia (2023, April 19). _Relative permittivity_ [Encylopedia Entry]. Retrieved 2023-07-13, from https://en.wikipedia.org/wiki/Relative_permittivity.
+[^rohm-bypass-capacitor-impedance]: ROHM Co., Ltd. (2020, Sep). _Impedance Characteristics of Bypass Capacitor_ [application note]. Retrieved 2026-06-05, from https://fscdn.rohm.com/en/products/databook/applinote/common/bypass_capacitor_impedance_characteristics_an-e.pdf.
