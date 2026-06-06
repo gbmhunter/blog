@@ -7,6 +7,7 @@ import { catalog as bleAdvDecoder } from '../tools/ble-adv-decoder/catalog.js';
 import { catalog as boostConverter } from '../tools/boost-converter/catalog.js';
 import { catalog as buckConverter } from '../tools/buck-converter/catalog.js';
 import { catalog as capacitorCharge } from '../tools/capacitor-charge/catalog.js';
+import { catalog as capacitorEnergy } from '../tools/capacitor-energy/catalog.js';
 import { catalog as capacitorImpedance } from '../tools/capacitor-impedance/catalog.js';
 import { catalog as crcCalculator } from '../tools/crc-calculator/catalog.js';
 import { catalog as dewPointMagnus } from '../tools/dew-point-magnus/catalog.js';
@@ -41,6 +42,7 @@ export const CATALOGS = [
   boostConverter,
   buckConverter,
   capacitorCharge,
+  capacitorEnergy,
   capacitorImpedance,
   crcCalculator,
   dewPointMagnus,

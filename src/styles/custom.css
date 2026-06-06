@@ -57,8 +57,12 @@
    "On this page" ToC, and the footnotes heading are left untouched. custom.css
    is loaded after Starlight's own styles, so these win the cascade. */
 
+/* Only the top-level (h2) counter is reset at the container. Each level resets
+   the level below it. Resetting h3counter/h4counter here too would double-reset
+   them (container + h2), which makes the engine keep using the container's
+   instance — so they'd count globally instead of restarting under each h2. */
 .sl-markdown-content {
-  counter-reset: h2counter h3counter h4counter;
+  counter-reset: h2counter;
 }
 
 .sl-markdown-content h2 { counter-increment: h2counter; counter-reset: h3counter h4counter; }

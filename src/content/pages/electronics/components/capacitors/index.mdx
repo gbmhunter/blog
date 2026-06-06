@@ -3,13 +3,14 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: An introduction to capacitors, a fundamental component used in circuit design. A walk-through of the different types, properties, uses and capacitor equations.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-07-13
+lastUpdated: 2026-06-06
 tags: [capacitor, cap, components, schematic symbols, circuit, ceramic, electrolytics, tantalums, packages, film, feedthrough, decoupling, MFC, X5R, X7R, C0G, NP0, singing capacitors, piezoelectric, Class I, Class II, Class III, audible noise, dielectrics, bending flex, FT-CAP, capacitance multipliers]
 title: Capacitors
 type: page
 ---
 
 import CapacitorCharge from 'src/components/tools/capacitor-charge/CapacitorCharge.jsx';
+import CapacitorEnergy from 'src/components/tools/capacitor-energy/CapacitorEnergy.jsx';
 import CapacitorImpedance from 'src/components/tools/capacitor-impedance/CapacitorImpedance.jsx';
 import ParallelCapacitance from 'src/components/tools/parallel-capacitance/ParallelCapacitance.jsx';
 import SeriesCapacitance from 'src/components/tools/series-capacitance/SeriesCapacitance.jsx';
@@ -543,9 +544,7 @@ Use the calculator below to find the total capacitance of two or more capacitors
 
 One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a *charge imbalance*, which could cause a single capacitor to take more than its fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor (e.g. $1M\Omega$) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
 
-## Formulas
-
-### Charge
+## Charge
 
 The charge stored on the plates of a capacitor is related to the voltage and capacitance by:
 
@@ -560,13 +559,13 @@ $Q$ = charge stored in plates (Coulombs)<br/>
 $C$ = capacitance (Farads)<br/>
 $V$ = voltage (Volts)<br/></p>
 
-#### Capacitor Charge Calculator
+### Capacitor Charge Calculator
 
 Use the calculator below to solve $Q = CV$ for any one of charge, capacitance or voltage given the other two. Inputs accept metric prefixes (e.g. `5u`, `4.7n`, `100`).
 
 <CapacitorCharge client:load />
 
-### Energy
+## Energy
 
 The energy stored in a capacitor is:
 
@@ -583,7 +582,13 @@ $V$ = voltage across the capacitor (Volts)<br/></p>
 
 As shown by the equation, the energy stored in a capacitor is related to both the capacitance and voltage of the capacitor. A typical 100nF, 6.5V capacitor can store 2.11uJ. Not much huh! If you are really considering capacitors for their energy storage capabilities, you must look at supercapacitors, which have typical values of 100F and 2.5V (as of 2011). This gives 313J of energy, which is a useful amount for powering something.
 
-### Force
+### Capacitor Energy Calculator
+
+Use the calculator below to solve $E = \frac{1}{2}CV^2$ for any one of energy, capacitance or voltage given the other two. Inputs accept metric prefixes (e.g. `2.11u`, `100n`, `6.5`).
+
+<CapacitorEnergy client:load />
+
+## Force
 
 The force exerted on the two parallel plates of a capacitor is:
 
@@ -599,6 +604,26 @@ $\epsilon_0$ = the permittivity of free space<br/>
 $A$ = overlapping area of the two plates, in meters squared<br/>
 $V$ = voltage across the capacitor, in Volts<br/>
 $d$ = separation distance between the two plates, in meters<br/></p>
+
+## Capacitance of Shapes
+
+Different shaped conductors have different capacitances. For basic shapes there a simple well-known formulas for calculating their capacitance, including shapes like parallel plates (the traditional capacitor), discs and spheres.
+
+### Parallel Plate Capacitance
+
+The capacitance of two parallel plates is approximately
+
+$$
+\begin{align}
+C = \epsilon_r \epsilon_0\frac{A}{d}
+\end{align}
+$$
+
+<p className="centered">where:<br/>
+$\epsilon_0$ is the electric constant ($8.854 \times 10^{-12}Fm^{-1}$)<br/>
+$\epsilon_r$ is the relative permittivity of the material between the plates [no units]<br/>
+$A$ is the overlapping surface area of the parallel plates $[m^2]$<br/>
+$d$ is the distance between the plates $[m]$<br/></p>
 
 ### Single Disc Capacitance
 
@@ -634,22 +659,6 @@ $C$ = capacitance [$F$]<br/>
 $\epsilon_0$ is the permittivity of free space, approx. $8.85 \times 10^{-12}Fm^{-1}$<br/>
 $\epsilon_r$ is the relative permittivity ($1$ for a vacuum)<br/>
 $r$ is the radius of sphere [$m$]<br/></p>
-
-### Parallel Plate Capacitance
-
-The capacitance of two parallel plates is approximately
-
-$$
-\begin{align}
-C = \epsilon_r \epsilon_0\frac{A}{d}
-\end{align}
-$$
-
-<p className="centered">where:<br/>
-$\epsilon_0$ is the electric constant ($8.854 \times 10^{-12}Fm^{-1}$)<br/>
-$\epsilon_r$ is the relative permittivity of the material between the plates [no units]<br/>
-$A$ is the overlapping surface area of the parallel plates $[m^2]$<br/>
-$d$ is the distance between the plates $[m]$<br/></p>
 
 ### Concentric Cylinder Capacitance
 
