@@ -21,6 +21,7 @@ def metric_prefix(value, _pos=None):
 
 def main():
     plot_capacitor_impedance_vs_frequency()
+    plot_parallel_capacitor_impedance()
 
 def plot_capacitor_impedance_vs_frequency():
     """Annotated impedance magnitude of a real (non-ideal) capacitor vs.
@@ -86,6 +87,52 @@ def plot_capacitor_impedance_vs_frequency():
 
     plt.tight_layout()
     plt.savefig(SCRIPT_DIR / 'capacitor-impedance-vs-frequency.png')
+
+def plot_parallel_capacitor_impedance():
+    """Impedance of several different-value MLCCs in parallel, showing the broad
+    low-impedance band achieved and the anti-resonance peaks that appear between
+    each pair of self-resonant frequencies. Typical X5R/X7R values per package."""
+    caps = [
+        {'name': '10µF (0805)',  'C': 10e-6,  'ESR': 2e-3,  'ESL': 0.9e-9, 'color': 'tab:blue'},
+        {'name': '1µF (0603)',   'C': 1e-6,   'ESR': 8e-3,  'ESL': 0.6e-9, 'color': 'tab:green'},
+        {'name': '100nF (0402)', 'C': 100e-9, 'ESR': 30e-3, 'ESL': 0.5e-9, 'color': 'tab:purple'},
+        {'name': '10nF (0402)',  'C': 10e-9,  'ESR': 80e-3, 'ESL': 0.5e-9, 'color': 'tab:orange'},
+    ]
+
+    freq = np.logspace(3, 9, 4000)  # 1kHz to 1GHz
+    w = 2 * np.pi * freq
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    fig.suptitle('Different-Value MLCCs in Parallel\nImpedance Magnitude vs. Frequency')
+    ax.set_axisbelow(True)
+
+    # Each capacitor's complex impedance; sum admittances for the parallel combo.
+    admittance = np.zeros_like(freq, dtype=complex)
+    for cap in caps:
+        Z = cap['ESR'] + 1j * (w * cap['ESL'] - 1.0 / (w * cap['C']))
+        admittance += 1.0 / Z
+        ax.plot(freq, np.abs(Z), color=cap['color'], linewidth=1, linestyle='--',
+                alpha=0.7, label=f"{cap['name']} alone", zorder=2)
+
+    Z_parallel = 1.0 / admittance
+    ax.plot(freq, np.abs(Z_parallel), color='#c60e00', linewidth=3,
+            label='All four in parallel', zorder=4)
+
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.xaxis.set_major_formatter(FuncFormatter(metric_prefix))
+    ax.yaxis.set_major_formatter(FuncFormatter(metric_prefix))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ax.yaxis.set_minor_formatter(NullFormatter())
+    ax.set_xlabel('Frequency [Hz]')
+    ax.set_ylabel('Impedance |Z| [Ω]')
+    ax.set_ylim(1e-3, 1e3)
+    ax.legend(loc='upper center', ncol=2, fontsize=9)
+    ax.grid(which='major', color='#9a9a9a', linewidth=0.7, alpha=0.9)
+    ax.grid(which='minor', color='#bcbcbc', linewidth=0.5, alpha=0.8)
+
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'parallel-capacitor-impedance-vs-frequency.png')
 
 if __name__ == '__main__':
     main()

@@ -743,6 +743,35 @@ Use the calculator below to compute a capacitor's reactance and impedance at a g
 
 The practical takeaway is that a capacitor only behaves like a capacitor _below_ its self-resonant frequency. Smaller packages have lower $\mathrm{ESL}$ and therefore a higher SRF, which is why high-frequency decoupling uses small (e.g. 0402 or smaller) ceramic capacitors, and why several different capacitance values are often placed in parallel -- each covers a different part of the frequency spectrum.
 
+### Paralleling Capacitors Of Different Values
+
+A single capacitor only achieves a low impedance near its self-resonant frequency. A widely-used decoupling technique (you'll often see this next to the supply pins of high-frequency ICs) is to place several capacitors of different values in parallel -- a large one to cover the low frequencies and progressively smaller ones for the higher frequencies -- so that at any given frequency, *something* in the network is presenting a low impedance.
+
+Capacitors in parallel combine like any other parallel impedances (their admittances add):
+
+$$
+Z_{parallel} = \frac{1}{\sum_i \frac{1}{Z_i}}
+$$
+
+The table below lists typical values for a range of X5R/X7R SMD MLCCs.
+
+| Capacitance | Package | ESR | ESL | Self-resonant freq. |
+|---|---|---|---|---|
+| 10µF | 0805 | 2mΩ | 0.9nH | ≈1.7MHz |
+| 1µF | 0603 | 8mΩ | 0.6nH | ≈6.5MHz |
+| 100nF | 0402 | 30mΩ | 0.5nH | ≈22MHz |
+| 10nF | 0402 | 80mΩ | 0.5nH | ≈71MHz |
+
+Placing all four in parallel gives the combined impedance shown in the image below:
+
+<Image src={import('./_assets/parallel-capacitor-impedance-vs-frequency.png')} width="800px">The impedance of a $10\unit{\mu F}$, $1\unit{\mu F}$, $100\unit{nF}$ and $10\unit{nF}$ MLCC in parallel (bold red), compared to each capacitor on its own (dashed). Each capacitor dominates near its own self-resonant frequency, and the combination keeps the impedance low (tens of mΩ) across a broad band from roughly $1\unit{MHz}$ to past $100\unit{MHz}$.</Image>
+
+The combined curve broadly follows the _lower envelope_ of the individual curves -- the effective impedance stays low across a far wider frequency range than any single capacitor could manage on its own.
+
+<Aside type="caution">
+Paralleling different values isn't a free lunch. In the band between each pair of self-resonant frequencies, the larger capacitor is already inductive while the smaller one is still capacitive, forming a parallel LC tank. This creates **anti-resonance peaks** where the combined impedance rises back up and can exceed what a single capacitor would do (for example, the bump at about $4\unit{MHz}$ in the plot above goes higher than the $10\unit{\mu F}$ cap alone). This is the same phenomenon whereby a parallel LC tank rises to an (ideally) infinite impedance at resonance. For this reason, spreading values across many decades can actually be worse than using several capacitors of the _same_ value, whose self-resonant frequencies coincide and so lower the impedance without introducing anti-resonance[^rohm-bypass-capacitor-impedance].
+</Aside>
+
 ## Leakage Currents
 
 Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current $I_{abs}$, and the intrinsic leakage current $I_{il}$.
