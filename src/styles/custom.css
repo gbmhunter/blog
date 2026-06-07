@@ -129,6 +129,18 @@
   margin-top: 0px !important;
 }
 
+/* KaTeX renders all math at 1.21em by default, which makes inline equations sit
+   noticeably larger than the surrounding body text and stand out. Bring inline
+   math down to ~body size so it merges into the prose. Variables stay in the
+   conventional serif math-italic. Display equations are restored to KaTeX's
+   larger default below (the two-class selector wins on specificity). */
+.katex {
+  font-size: 1.05em;
+}
+.katex-display .katex {
+  font-size: 1.21em;
+}
+
 .katex-html {
     /* display: none; */
   /* Adding a tiny bit of margin here fixes the bug where scroll bars appear on all equations if 
