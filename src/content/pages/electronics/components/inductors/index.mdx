@@ -15,7 +15,7 @@ Inductors are passive, 2 pin electronic components which **store energy as a mag
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a [transformer](/electronics/components/transformers).
+Two inductances which are in close proximity can couple with each other; this is called **mutual inductance**. This is the basic principle behind a [transformer](/electronics/components/transformers).
 
 Inductors are used in many things, including:
 
@@ -27,7 +27,7 @@ Inductors are used in many things, including:
 
 ## How They Work
 
-When current is flowing through an inductor, some electrical energy is converted and stored as magnetic energy in the inductors magnetic field. Inductors like staying at a constant current, and they "actively resist" current changes. They do this by generating a voltage across their terminals which resists the change in current.
+When current is flowing through an inductor, some electrical energy is converted and stored as magnetic energy in the inductor's magnetic field. Inductors like staying at a constant current, and they "actively resist" current changes. They do this by generating a voltage across their terminals which resists the change in current.
 
 The defining equation relating the voltage, inductance and change in current is:
 
@@ -41,14 +41,14 @@ $L$ is the inductance of the inductor<br/>
 $\frac{di}{dt}$ is the instantaneous change in current through the inductor<br/></p>
 
 <Aside type="example">
-If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit, your inductors magnetic core would saturate, or your inductor will start to overheat.
+If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit, your inductor's magnetic core would saturate, or your inductor will start to overheat.
 </Aside>
 
 ## Schematic Symbols and Designator
 
-There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. <IRef iref="fig-schematic-symbols-of-inductors" /> shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
+There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, etc. The image below shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
 
-<Image iref="fig-schematic-symbols-of-inductors" src={import('./_assets/schematic-symbols-of-inductors.png')} width="500px">Schematic symbols for a range of the basic inductor sub-families.</Image>
+<Image src={import('./_assets/schematic-symbols-of-inductors.png')} width="500px">Schematic symbols for a range of the basic inductor sub-families.</Image>
 
 ## Important Parameters
 
@@ -57,7 +57,7 @@ There are a few common schematic symbols for an inductor. `L` is almost always u
 * Symbol: $L$
 * Units: Henries (or Henrys)[^bib-wiktionary-henry] ($H$)
 
-The main thing you care about! The _inductance_ determines the relationship between the rate of change in current through the inductor and the inductors voltage. It determines the voltage the inductor will generate in response to a specific rate of current change. This parameter is used to calculate it's impedance, for a given frequency.
+The main thing you care about! The _inductance_ determines the relationship between the rate of change in current through the inductor and the inductor's voltage. It determines the voltage the inductor will generate in response to a specific rate of current change. This parameter is used to calculate its impedance, for a given frequency.
 
 ### K-factor
 
@@ -68,40 +68,20 @@ The _K-factor_ (a.k.a.) _coupling coefficient_ is a fractional value of the amou
 * Symbol: $DCR$
 * Units: Ohms ($\Omega$)
 
-The _DC resistance_ is the resistance of the inductor's coil of wire, measured at DC. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter. For a fixed volume, a larger valued inductor usually has a higher DCR as it has a larger number of thinner guage turns.
+The _DC resistance_ is the resistance of the inductor's coil of wire, measured at DC. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter. For a fixed volume, a larger valued inductor usually has a higher DCR as it has a larger number of thinner gauge turns.
 
 Typical DC resistances range from $10m\Omega$ to $10\Omega$. 
-
-### Saturation Current
-
-* Symbol: $I_{sat}$
-* Units: Amps ($A$)
-
-The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor (it's not a sudden point, but rather defined as when the inductance drops to a fixed percentage of it's nominal value). Above this point, the magnetic field does not increase proportionally with the current (the core is "saturated"), and the apparent inductance of the inductor is decreasing. This also means that above the saturation current the current will rise/fall much faster, which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
-
-For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. <IRef iref="fig-inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11" /> shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
-
-<Image iref="fig-inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11" src={import('./_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png')} width="500px">Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds].</Image>
-
-Typical saturation currents range from 10-100mA's for small inductors, up to 1-10A for larger PCB mount inductors.
-
-### Rated current
-
-* Symbol: $I_{rated}$
-* Units: Amps ($A$)
-
-The _rated current_ is typically given as the amount of average current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C. Inductors can usually handle current peaks above the _rated current_ as long as the average is still less.
 
 ### Self-resonant Frequency
 
 * Symbol: $SRF$
 * Units: Megahertz ($MHz$)
 
-The _self-resonant frequency_ of an inductor is the frequency at which the parasitic capacitance of the inductor resonates with the inductance, resulting in a very high impedance (e.g. open circuit)[^bib-everythingrf-self-resonant-frequency]. The inductor stops behaving like a inductor above the self-resonant frequency.
+The _self-resonant frequency_ of an inductor is the frequency at which the parasitic capacitance of the inductor resonates with the inductance, resulting in a very high impedance (e.g. open circuit)[^bib-everythingrf-self-resonant-frequency]. The inductor stops behaving like an inductor above the self-resonant frequency.
 
-The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance $L$ spikes at about 75MHz:
+The plot below shows the inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance $L$ spikes at about 75MHz:
 
-<Image iref="fig-self-resonant-frequency" src={import('./_assets/self-resonant-frequency.png')} width="600px">Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF).</Image>
+<Image src={import('./_assets/self-resonant-frequency.png')} width="600px">Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF).</Image>
 
 The equation for the SRF is[^bib-coilcraft-measuring-srf]:
 
@@ -116,7 +96,7 @@ $L$ is the inductance in Henries<br/>
 $C$ is the parasitic capacitance, in Farads<br/>
 $SRF$ is the self-resonant frequency, in Hertz<br/></p>
 
-The main contributor to the parasitic capacitance is the distributed capacitance between each coil windings.
+The main contributor to the parasitic capacitance is the distributed capacitance between the coil windings.
 
 ## Types Of Inductors
 
@@ -142,12 +122,12 @@ Air-cored inductors represent any inductor which contains no ferromagnetic mater
 
 **Advantages**
 
-* Unlike a ferro-magnetic cored inductor, an air-cored inductors **inductance does not vary with the amount current that is flowing with it**. Ferromagnetic cores work fine up until a point at which they **saturate**.
+* Unlike a ferro-magnetic cored inductor, an air-cored inductor's **inductance does not vary with the amount of current flowing through it**. Ferromagnetic cores work fine up until a point at which they **saturate**.
 * Air-cores do not have any iron losses. This advantage becomes more significant with increasing frequency.
 
 **Disadvantages**
 
-* Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
+* Air-cored inductors have to have more and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
 * Air-cored inductors radiate more electromagnetic fields over a wider area, and also pick up more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
 
 ## Ferrite Beads
@@ -158,7 +138,7 @@ See the [Ferrite Beads page](/electronics/components/ferrite-beads).
 
 ### Air Core
 
-Air core is used to describe any inductor which does not use a magnetic material for it's core (so they may in fact, have something other than air for their core). Used in low inductance, RF applications because they lack any magnetic core to boost their inductance, but at the same time benefit from smaller core losses which can be significant in the RF spectrum. Go to the Air-Cored Inductors section for more info.
+Air core is used to describe any inductor which does not use a magnetic material for its core (so they may in fact, have something other than air for their core). Used in low inductance, RF applications because they lack any magnetic core to boost their inductance, but at the same time benefit from smaller core losses which can be significant in the RF spectrum. Go to the Air-Cored Inductors section for more info.
 
 ### Powdered Ferrite Core
 
@@ -166,15 +146,15 @@ The powder is compressed into blocks before using (but don't confuse these with 
 
 ### Solid Iron (or Steel) Core
 
-Used in low resistance, high inductance applications. Has a higher saturation current than air-cored inductors, but lower one than powdered iron cores.
+Used in low resistance, high inductance applications. It saturates more readily (has a lower saturation current) than a powdered iron core.
 
 ### Powdered Iron Core
 
-Powered iron core inductors have a _distributed air gap_, which gives them a higher saturation current then solid iron cored inductors.
+Powdered iron core inductors have a _distributed air gap_, which gives them a higher saturation current than solid iron cored inductors.
 
 ### Metal Composite
 
-While ferrite cored inductors seem to have similar current ratings (based of thermal performance) as their saturation current, metal composite inductors typically have a saturation current between 1-2x their current rating (e.g. a current rating of 3A, and a saturation current between 3-6A).
+While ferrite cored inductors seem to have similar current ratings (based on thermal performance) as their saturation current, metal composite inductors typically have a saturation current between 1-2x their current rating (e.g. a current rating of 3A, and a saturation current between 3-6A).
 
 ## Inductors In Series And In Parallel
 
@@ -186,7 +166,7 @@ When two inductors are connected in parallel, the equivalent total inductance fo
 
 $$
 \begin{align}
-L_{total} = \dfrac{1}{\dfrac{1}{L1} + \dfrac{1}{L2}}
+L_{total} = \dfrac{1}{\dfrac{1}{L_1} + \dfrac{1}{L_2}}
 \end{align}
 $$
 
@@ -194,13 +174,13 @@ It is usually easier to remember this equation as:
 
 $$
 \begin{align}
-\dfrac{1}{L_{total}} = \dfrac{1}{L1} + \dfrac{1}{L2}
+\dfrac{1}{L_{total}} = \dfrac{1}{L_1} + \dfrac{1}{L_2}
 \end{align}
 $$
 
-<IRef iref="fig-inductors-in-parallel-with-equation" /> shows this:
+The image below shows this:
 
-<Image iref="fig-inductors-in-parallel-with-equation" src={import('./_assets/inductors-in-parallel-with-equation.png')} width="600px">Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.</Image>
+<Image src={import('./_assets/inductors-in-parallel-with-equation.png')} width="600px">Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.</Image>
 
 ### Inductors In Series
 
@@ -208,13 +188,13 @@ The equivalent inductance of two inductors connected in series is the sum of the
 
 $$
 \begin{align}
-L_{total} = L1 + L2
+L_{total} = L_1 + L_2
 \end{align}
 $$
 
-<IRef iref="fig-inductors-in-series-with-equation" /> shows this:
+The image below shows this:
 
-<Image iref="fig-inductors-in-series-with-equation" src={import('./_assets/inductor-in-series-with-equation.png')} width="600px">Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances.</Image>
+<Image src={import('./_assets/inductor-in-series-with-equation.png')} width="600px">Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances.</Image>
 
 ## The Energy Stored In An Inductor
 
@@ -231,7 +211,7 @@ $E$ is the energy stored in the inductor, in Joules $J$<br/>
 $L$ is the inductance of the inductor, in Henries $H$<br/>
 $I$ is the current flowing through the inductor, in Amps $A$<br/></p>
 
-This equation is only valid when the inductor is operating in it's linear region, that is, before the current reaches the point where the magnetic field begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
+This equation is only valid when the inductor is operating in its linear region, that is, before the current reaches the point where the magnetic field begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
 
 ## The Impedance Of An Inductor
 
@@ -241,7 +221,7 @@ An ideal inductor (no parasitic elements) has an impedance $Z_L$ given by:
 
 $$
 \begin{align}
-Z_L = 2\pi fL
+Z_L = j2\pi fL
 \end{align}
 $$
 
@@ -251,7 +231,7 @@ $ f $ = frequency of analysis, in Hertz ($ Hz $)<br/>
 $ L $ = inductance of inductor, in Henries ($ H $)<br/></p>
 
 <Aside type="note">
-Sometimes $X_L$ is used instead of $Z_L$. $X$ represents reactance (purely imaginary), whilst $Z$ is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. $X_L = Z_L$.
+Sometimes $X_L$ is used instead of $Z_L$. $X$ represents reactance (purely imaginary), whilst $Z$ is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the impedance is purely imaginary**, so its magnitude equals the reactance, i.e. $|Z_L| = X_L = 2\pi f L$.
 </Aside>
 
 This shows that the impedance goes up as the frequency goes up. At DC levels, the inductor has no impedance and acts like a short-circuit, while at high frequencies the inductor approaches an open-circuit.
@@ -260,7 +240,7 @@ You may also see this written as:
 
 $$
 \begin{align}
-Z_L = \omega L
+Z_L = j\omega L
 \end{align}
 $$
 
@@ -268,7 +248,7 @@ $$
 $ \omega $ = radian frequency (rad/s) (which is equal to $ 2\pi f $)<br/></p>
 
 <Aside type="note">
-Impedance, although measured in Ohms, is **not the same as resistance**. A resistance converts the energy into heat, the impedance of the inductor however cause the energy to be stored in it's magnetic field, which is returned to the circuit when the current falls.
+Impedance, although measured in Ohms, is **not the same as resistance**. A resistance converts the energy into heat, the impedance of the inductor however causes the energy to be stored in its magnetic field, which is returned to the circuit when the current falls.
 </Aside>
 
 For a more accurate but complex model, see the Parasitic Model section.
@@ -291,7 +271,7 @@ $ L $ = inductance of inductor ($ H $)<br/>
 $ R_S $ = parasitic series resistance ($ \Omega $)<br/>
 $ C_P $ = parasitic parallel capacitance ($ F $)<br/></p>
 
-The main parasitic components are the series resistance ($ R_S $) and the parallel capacitance ($ C_P $). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
+The main parasitic components are the series resistance ($ R_S $) and the parallel capacitance ($ C_P $). The series resistance arises from the resistance of the coil of wire which makes up the inductor. The thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. These small capacitors can be lumped together and form the parallel capacitance.
 
 This model is a pretty good representation for most simulation purposes, and gives that characteristic decrease in performance (non-inductor-like behaviour) at high-frequencies.
 
@@ -302,59 +282,49 @@ Typical values might be:
 * $ R_S = 10\,m\Omega $
 * $ C_P = 10\,pF $.
 
-## Inductor Networks
-
-### Inductors In Parallel
-
-Inductors in parallel behave just like resistors in parallel.
-
-$$
-\begin{align}
-\frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N}
-\end{align}
-$$
-
-### Inductors In Series
-
-Inductors in series behave just like resistors in series.
-
-$$
-\begin{align}
-L_{eq} = L_1 + L_2 + \ldots + L_n
-\end{align}
-$$
-
 ## Inductor Kickback
 
-Inductor kickback is when an inductor the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFETs, destroy other sensitive circuitry, and give people dangerous shocks.
+Inductor kickback is when the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFETs, destroy other sensitive circuitry, and give people dangerous shocks.
 
-A more technical way of looking a kickback is by analysing the [voltage-inductance equation](#how-they-work). From this is should be obvious that the inductors voltage is proportional to the change in current. Making an inductor open-circuit is creating a very large change in current, and hence it produces a very large voltage spike.
+A more technical way of looking at kickback is by analysing the [voltage-inductance equation](#how-they-work). From this it should be obvious that the inductor's voltage is proportional to the change in current. Making an inductor open-circuit is creating a very large change in current, and hence it produces a very large voltage spike.
 
 Inductor kickback is a significant design issue when using [relays](/electronics/components/relays) or [motors](/electronics/components/motors).
 
 ## Saturation Current
 
-Inductors only behave like inductors over a **limited current range**. As the current continues to increase, the apparent inductance of the inductor decreased. Above a certain current, they become what is called saturated. 
+* Symbol: $I_{sat}$
+* Units: Amps ($A$)
+
+Inductors only behave like inductors over a **limited current range**. The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor. It is not a sudden point, but rather defined as when the inductance drops to a fixed percentage of its nominal value. Above this point the magnetic field does not increase proportionally with the current (the core is "saturated"), the apparent inductance decreases, and the current rises and falls much faster -- which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
 
 > Saturation is the state reached when an increase in applied external magnetizing field H cannot increase the magnetization of the material any further.
 
-<IRef iref="fig-inductance-vs-current-graph-wurth-7447789003-3.3uh" /> shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
+For example, Vishay Dale specifies the saturation current for its IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (its rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The image below shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family, which has a saturation current of 4.5A.
 
-<Image iref="fig-inductance-vs-current-graph-wurth-7447789003-3.3uh" src={import('./_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png')} width="502px">Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.</Image>
+<Image src={import('./_assets/inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png')} width="500px">Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds].</Image>
 
-As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
+The image below shows another typical inductance vs. current curve, this time for a ferrite core SMD inductor that could be used on a 3A SMPS design (the Wurth 7447789003, a 3.3uH inductor with a specified saturation current of 4.2A). Notice how once the current increases beyond this point, the inductance drops off rapidly.
+
+<Image src={import('./_assets/inductance-vs-current-graph-wurth-7447789003-3.3uh.png')} width="502px">Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.</Image>
+
+Typical saturation currents range from 10-100mA for small inductors, up to 1-10A for larger PCB mount inductors.
+
+As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until it reaches a limit determined only by the DC resistance of the windings.
 
 Reaching saturation is not always a bad thing. Saturation is desirable in self-switching power supplies, timing circuits and blocked oscillators, and saturable-core transformers (e.g. arc welding). It is not desirable in typical SMPS, or power/signal transformers.
 
 ## Rated Current
 
-The rated current of an inductor is the maximum DC current allowed before the inductor gets"too hot". "Too hot" is usually defined as a certain temperature rise above ambient (e.g. $ 40^{\circ}C $) when the inductor is mounted using a standard footprint on a standard PCB; again, both defined by the manufacturer. 
+* Symbol: $I_{rated}$
+* Units: Amps ($A$)
+
+The _rated current_ is the maximum average DC current allowed before the inductor gets "too hot". "Too hot" is usually defined as a fixed temperature rise above ambient (e.g. $40^{\circ}C$) due to resistive losses in the copper winding, measured when the inductor is mounted using a standard footprint on a standard PCB (both defined by the manufacturer). Inductors can usually handle current peaks above the rated current, as long as the average is still less.
 
 ## Saturation Current vs. Rated Current
 
 There are usually two maximum current ratings on an inductor's datasheet, the saturation current and the rated current.
 
-Confusing? The most simple Simon design approach is to pick the lower maximum current of the two and treat that as the maximum current allowed through the inductor. A seasoned inductor sensei will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed this for brief periods of time, as long as the saturation current is not exceeded (disclaimer: in some cases, even exceeding the saturation current limit is o.k. or even desirable, but see the Saturation Current section for more info on this.
+Confusing? The simplest design approach is to pick the lower of the two maximum currents and treat that as the maximum allowed through the inductor. A seasoned designer will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed it for brief periods of time, as long as the saturation current is not exceeded (in some cases, even exceeding the saturation current limit is o.k. or even desirable -- see the Saturation Current section for more info).
 
 ## How To Measure Inductance In An Electronics Lab
 
@@ -372,15 +342,15 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1 V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
-    <Image iref="fig-inductor-measurement-with-sig-gen-and-oscilloscope-01" src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png')} width="500px" />
+    <Image src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-01.png')} width="500px" />
 
     <Aside type="tip">
     If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.
     </Aside>
 
-1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like <IRef iref="fig-inductor-measurement-with-sig-gen-and-oscilloscope-02" />:
+1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like the image below:
 
-    <Image iref="fig-inductor-measurement-with-sig-gen-and-oscilloscope-02" src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-02.png')} width="600px" />
+    <Image src={import('./_assets/inductor-measurement-with-sig-gen-and-oscilloscope-02.png')} width="600px" />
 
 1. Adjust the frequency of the signal generator until the peak-to-peak voltage across the inductor is half the measured open-circuit peak-to-peak voltage.
 
@@ -403,7 +373,7 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 **How It Works**
 
-The internal resistance of the signal generator $50\,\Omega$ and the inductance form a voltage divider. The impedance of the resistor stays constant at $50\,\Omega$ no matter the frequency, but the impedance of the inductor does change with frequency ($Z_L = X_L = \omega L$). You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
+The internal resistance of the signal generator $50\,\Omega$ and the inductance form a voltage divider. The impedance of the resistor stays constant at $50\,\Omega$ no matter the frequency, but the impedance of the inductor does change with frequency ($|Z_L| = X_L = \omega L$). You vary the frequency until the voltage at the mid-point of the voltage divider is half the source voltage. Note that this is **not** the point at which the two impedances are equal -- because the resistor and inductor impedances add in quadrature (they are 90° out of phase), the half-voltage condition actually occurs when $\omega L = R/\sqrt{3}$, as the derivation below shows.
 
 We arrive at the equation for the inductance by using the voltage-divider rule for a complex circuit:
 
@@ -441,7 +411,7 @@ $$
 \end{align}
 $$
 
-We've got it to a point where it is as about as simple as you can write it! Next up, let's substitute $\left| \frac{V_{SCOPE}}{V_{SIG}} \right|$ with $\frac{1}{2}$), as this was the condition we were tweaking the frequency for (peak-to-peak voltage measured across inductor by the oscilloscope was half the peak-to-peak voltage generated by the signal generator).
+We've got it to a point where it is as about as simple as you can write it! Next up, let's substitute $\left| \frac{V_{SCOPE}}{V_{SIG}} \right|$ with $\frac{1}{2}$, as this was the condition we were tweaking the frequency for (peak-to-peak voltage measured across inductor by the oscilloscope was half the peak-to-peak voltage generated by the signal generator).
 
 $$
 \begin{align}
@@ -475,6 +445,6 @@ Unfortunately for the PCB designer, almost all SMD inductor packages are non-sta
 
 [^bib-dos4ever-meas-unknown-inductors]: Ronald Dekker. _A Simple Method to Measure Unknown Inductors_. DOS4Ever. Retrieved 2022-07-06, from https://www.dos4ever.com/inductor/inductor.html.
 [^bib-wiktionary-henry]: Wiktionary. _henry_. Retrieved 2022-07-10, from https://en.wiktionary.org/wiki/henry.
-[^bib-vishay-ihlp1212bz11-ds]: Vishay Dale. _IHLP-1212BZ-11: IHLP Commercial Inductors, Low DCR Series (datasheet). Retrieved 2022-07-11, from https://www.vishay.com/docs/34289/lp12bz11.pdf.
+[^bib-vishay-ihlp1212bz11-ds]: Vishay Dale. _IHLP-1212BZ-11: IHLP Commercial Inductors, Low DCR Series_ [datasheet]. Retrieved 2022-07-11, from https://www.vishay.com/docs/34289/lp12bz11.pdf.
 [^bib-everythingrf-self-resonant-frequency]: everythingRF. _What is Self Resonant Frequency (SRF) in Inductors?_. Retrieved 2022-07-11, from https://www.everythingrf.com/community/what-is-self-resonant-frequency.
 [^bib-coilcraft-measuring-srf]: Coilcraft (2003, Sep 16). _Document 363-1: Measuring Self Resonant Frequency_. Retrieved 2022-07-11, from https://www.coilcraft.com/getmedia/8ef1bd18-d092-40e8-a3c8-929bec6adfc9/doc363_measuringsrf.pdf.
