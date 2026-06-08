@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2022-08-06
 description: Info about current mirrors.
 image: ./_assets/cover-image.webp
-lastUpdated: 2022-08-06
+lastUpdated: 2026-06-08
 tags: [electronics, components, current mirrors]
 title: Current Mirrors
 type: page
@@ -35,7 +35,7 @@ The main current error in the basic BJT current mirror circuit is because the ba
 
 ## Buffered Feedback Current Mirror
 
-As mentioned above, one of the main problems with the basic current mirror is that the bases of `Q1` and `Q2` "suck" away some of the input current. To improve on this, we can add another NPN BJT on the input side to "buffer" the base of `Q1`/`Q2`. Now only $\frac{1}{101} * \frac{2}{101} = \frac{3}{10201}$ of the current is diverted away. This is called the _buffered feedback current mirror_, or _emitter follower augmented mirror_[^bib-analog-devices-current-mirror].
+As mentioned above, one of the main problems with the basic current mirror is that the bases of `Q1` and `Q2` "suck" away some of the input current. To improve on this, we can add another NPN BJT on the input side to "buffer" the base of `Q1`/`Q2`. Now only $\frac{1}{101} * \frac{2}{101} = \frac{3}{10201}$ of the current is diverted away. This is called the _buffered feedback current mirror_, or _emitter follower augmented mirror_[^analog-devices-current-mirror].
 
 <Image src={import('./_assets/buffered-bjt-current-mirror.png')} width="400px">Schematic of a buffered BJT current mirror.</Image>
 
@@ -43,4 +43,8 @@ Below is a simulation of the buffered feedback current mirror. Notice now the th
 
 <CircuitJs data="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKABcKAWTkFPPCmBS9+UcCAYwEfYihRDICbGmL4o0QrmybihTpEJhChZFQAmdAGYBDAK4AbNuwoYTfAYTXuxEBp2jautqQ2AjE2HjYPDCaITp6BkYmYHAgFjYOTgBKgsJCAghCILpiVPrUVJXQCCwATrngng1gsj7wLADuDSjlhcIoCCaQnd2D3RjCw10I3CIFrnNQLADmDbg8fSDKlUurngLrIPtbaKUs2Bi0RfnNTRCVLDnHPVTPaju9peo1F69e5c8JuIHhxNi8uDxwVRfNhoHh9BgwNhiGAZgYesQkFIZHIFEoVGoUuYrHZHCMZpDRBTeGMpt1etdWsMctS5BtZi1JmJPjspCwgA" />
 
-[^bib-analog-devices-current-mirror]: Analog Devices (2021, Sep 17). _Chapter 11: The Current Mirror_. Retrieved 2022-08-06, from https://wiki.analog.com/university/courses/electronics/text/chapter-11.
+{/* =========================================================================================== */}
+{/* REFERENCES */}
+{/* =========================================================================================== */}
+
+[^analog-devices-current-mirror]: Analog Devices (2021, Sep 17). _Chapter 11: The Current Mirror_. Retrieved 2022-08-06, from https://wiki.analog.com/university/courses/electronics/text/chapter-11.

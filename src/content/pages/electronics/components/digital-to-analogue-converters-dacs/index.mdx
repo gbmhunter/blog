@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-11-03
 description: Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs).
 image: ./_assets/cover-image.webp
-lastUpdated: 2021-01-21
+lastUpdated: 2026-06-08
 tags: [electronics, components, digital-to-analogue converters, DACs, string DAC, MDAC, R2R, R-2R, Kelvin divider, voltage switching DAC, delta-sigma, unipolar, single-supply, bipolar, ppm, voltage references, monotonic, monotonicity, multiplying DAC, TUE, total unadjusted error, differential non-linearity, DNL, glitches, glitch energy]
 title: Digital-to-Analogue Converters (DACs)
 type: page
@@ -18,7 +18,7 @@ When looking for a DAC for your next project, you might stumble across a few dif
 * String DAC (Kelvin Divider DAC)
 * R-2R DAC (Voltage Switching DAC)
 * Multiplying DAC (MDAC)
-* Sigma-Delta
+* Delta-Sigma
 
 **Any of these architectures can be _unipolar_ or _bipolar_**. _Unipolar_ (a.k.a. _single supply_) DACs only convert digital values into either positive or negative values, while _bipolar_ DACs can output both negative and positive output values.
 
@@ -26,7 +26,7 @@ We will discuss these further in the following sections.
 
 ### String DAC (Kelvin Divider)
 
-The string DAC (a.k.a Kelvin divider DAC) is the the easiest DAC design to understand, and is just a string of equal-valued resistors from $V_{REF}$ to $GND$, with taps off each junction to the output.
+The string DAC (a.k.a Kelvin divider DAC) is the easiest DAC design to understand, and is just a string of equal-valued resistors from $V_{REF}$ to $GND$, with taps off each junction to the output.
 
 <Image src={import('./_assets/dac-architecture-string.svg')} width="600px">The internal architecture of a string DAC.</Image>
 
@@ -41,11 +41,11 @@ A string DAC is very dependent on well matched resistors to achieve good lineari
 
 ### R-2R DAC (Voltage Switching DAC)
 
-R-2R (or R-2R ladder) allows for many outputs.
+The R-2R (or R-2R ladder) architecture achieves high resolution using only two resistor values ($R$ and $2R$), needing far fewer resistors than a string DAC of the same bit count.
 
 <Image src={import('./_assets/r-2r-dac-architecture.webp')} width="1000px">The internal architecture of a R-2R DAC.</Image>
 
-A $n$ bit R-2R DAC requires $2N$ resistors[^analog-mt015-basic-dac-architectures].
+A $n$ bit R-2R DAC requires $2n$ resistors[^analog-mt015-basic-dac-architectures].
 
 A R-2R DAC can have large glitch errors, due to timing differences in the switches which connect junctions to either $V_{REF}$ or $GND$.  
 
@@ -64,7 +64,7 @@ Delta-Sigma (or Sigma-Delta) DACs provide the highest precision DACs compared to
 
 ## Voltage References
 
-**The voltage reference is a very important piece of a DAC circuit**. The voltage reference provides the full-scale voltage that the DAC will output (or a fixed multiplier of the full-scale output if there is an output buffer with multiplier). It is important to consider the accuracy of the voltage reference over temperature changes. Typically an error in $ppm/°C$ is provided, with a value of $10-100ppm/°C$ being normal.
+**The voltage reference is a very important piece of a DAC circuit**. The voltage reference provides the full-scale voltage that the DAC will output (or a fixed multiplier of the full-scale output if there is an output buffer with multiplier). It is important to consider the accuracy of the voltage reference over temperature changes. Typically an error in $\mathrm{ppm/^\circ C}$ is provided, with a value of $10\text{–}100\unit{ppm/^\circ C}$ being normal.
 
 ### Internal Voltage References
 
@@ -80,7 +80,7 @@ Most DACs have a requirement for the external voltage reference to be no less th
 
 ### Resolution
 
-This is normally given as the number of bits. This determines what the smallest output step change will be in-response to the smallest digital code change (and change in the LSB). For example, a 10-bit DAC will have 2^10=1024 steps, an so the smallest output step change will be 1/1024 of the reference voltage. Not to be confused with _accuracy_.
+This is normally given as the number of bits. This determines what the smallest output step change will be in-response to the smallest digital code change (and change in the LSB). For example, a 10-bit DAC will have 2^10=1024 steps, and so the smallest output step change will be 1/1024 of the reference voltage. Not to be confused with _accuracy_.
 
 ### Monotonicity
 
@@ -92,7 +92,7 @@ Voltage when the DAC is instructed to output 0V (the zero code). Typically 0.5-1
 
 ### Offset Error
 
-The different between the ideal output and measured output at the lowest possible voltage. For a unipolar DAC the lowest possible voltage is 0V, so this is the same as the _zero code error_. For a bipolar DAC, this will be the most negative voltage and different from the _zero code error_.
+The difference between the ideal output and measured output at the lowest possible voltage. For a unipolar DAC the lowest possible voltage is 0V, so this is the same as the _zero code error_. For a bipolar DAC, this will be the most negative voltage and different from the _zero code error_.
 
 ### Output Power-Up Voltage
 
@@ -138,7 +138,7 @@ The differential non-linearity for any step is given by:
 
 $$
 \begin{align}
-DNL(i) = \frac{V_{out}(i + 1) - V_{out}(i)}{ideal LSB output} - 1
+DNL(i) = \frac{V_{out}(i + 1) - V_{out}(i)}{\text{ideal LSB output}} - 1
 \end{align}
 $$
 
@@ -146,7 +146,7 @@ And then the value given on the datasheet is just the maximum $DNL$ across the w
 
 $$
 \begin{align}
-DNL_{max} = max (\sum_{i=0}^{i=n-1} DNL(i))
+DNL_{max} = \max_{i} \left( |DNL(i)| \right)
 \end{align}
 $$
 
@@ -174,11 +174,17 @@ Another way to reduce the glitch energy is to add a external track/hold amplifie
 
 ## Manufacturer Part Families
 
-* **AD**: Range of DACs by Analog Devices
-  * **AD7**: 
+* **AD5**: Analog Devices' main range of DACs (the `AD7` prefix is mostly used for their ADCs).
+  * **AD5683**: 16-bit, single-channel, buffered voltage-output DAC with SPI interface.
 * **LTC**: Range of DACs by Linear Technology (now owned by Analog Devices).
-  * **LTC2664**: Precision reference DAC.
+  * **LTC2664**: Quad 12-/16-bit voltage-output DAC with integrated reference.
+* **DAC**: Texas Instruments' range of DACs.
+  * **DAC7678**: 12-bit, octal-channel, voltage-output DAC with internal reference.
 
-[^analog-mt015-basic-dac-architectures]: https://www.analog.com/media/ru/training-seminars/tutorials/MT-015.pdf, retrieved 2020-11-03.
-[^maxim-deglitching-techniques-for-high-voltage-r-2r-dacs]: https://www.maximintegrated.com/en/design/technical-documents/app-notes/5/583.html, retrieved 2021-01-21.
-[^ti-dac7678-datasheet]: https://www.ti.com/lit/ds/symlink/dac7678.pdf, retrieved 2021-01-29.
+{/* =========================================================================================== */}
+{/* REFERENCES */}
+{/* =========================================================================================== */}
+
+[^analog-mt015-basic-dac-architectures]: Walt Kester. _MT-015 Tutorial: Basic DAC Architectures II: Binary DACs_ [tutorial]. Analog Devices. Retrieved 2020-11-03, from https://www.analog.com/media/ru/training-seminars/tutorials/MT-015.pdf.
+[^maxim-deglitching-techniques-for-high-voltage-r-2r-dacs]: Maxim Integrated. _Application Note 583: Deglitching Techniques for High-Voltage R-2R DACs_ [application note]. Analog Devices. Retrieved 2021-01-21, from https://www.analog.com/en/technical-articles/deglitching-techniques-for-highvoltage-r2r-dacs.html.
+[^ti-dac7678-datasheet]: Texas Instruments. _DAC7678: 12-Bit, Octal Channel, Ultra-Low Glitch, Voltage Output Digital-to-Analog Converter with 2.5V, 2ppm/°C Internal Reference_ [datasheet]. Texas Instruments. Retrieved 2021-01-29, from https://www.ti.com/lit/ds/symlink/dac7678.pdf.

@@ -3,27 +3,27 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: The internal design, communication protocols, uses, and design considerations of digital potentiometers (DPOTs).
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-08-25
+lastUpdated: 2026-06-08
 tags: [electronics, components, DPOT, digital potentiometer, resistor, resistance, rheostat, communication, I2C, SPI, potentiometer, wiper, microcontroller]
 title: Digital Potentiometers (DPOTs)
 type: page
 ---
 
-A DPOT is a device which has a **variable [resistance](/electronics/components/resistors/) which can be controlled digitally** through some kind of communication protocol (such as [I2C](/electronics/communication-protocols/i2c-communication-protocol) or [SPI](/electronics/communication-protocols/spi-communication-protocol)). They essentially behave like a [potentiometer](/electronics/components/potentiometers-and-rheostats/) that can be controlled with a [microcontroller](/programming/microcontrollers/) rather than requiring human input.
+A DPOT is a device which has a **variable [resistance](/electronics/components/resistors/) which can be controlled digitally** through some kind of communication protocol (such as [I²C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/)). They essentially behave like a [potentiometer](/electronics/components/potentiometers-and-rheostats/) that can be controlled with a [microcontroller](/programming/microcontrollers/) rather than requiring human input.
 
 ## Internal Design
 
-A DPOT usually is made from a string of closely matched, equal valued resistors. At each junction an [analog switch (transmission gate)](/electronics/components/analogue-switches-transmission-gates/) can control weather or not the junction is connected to the wiper. The analog switches are controlled over the digital communication bus, usually from a microcontroller writing to a register on the DPOT. A DPOT's memory can either be _volatile_, where the set resistance information is lost on power down, or _non-volatile_ where the DPOT retains the information for the next time it powers up.
+A DPOT is usually made from a string of closely matched, equal valued resistors. At each junction an [analog switch (transmission gate)](/electronics/components/analogue-switches-transmission-gates/) can control whether or not the junction is connected to the wiper. The analog switches are controlled over the digital communication bus, usually from a microcontroller writing to a register on the DPOT. A DPOT's memory can either be _volatile_, where the set resistance information is lost on power down, or _non-volatile_ where the DPOT retains the information for the next time it powers up.
 
-<Image src={import('./_assets/basic-dpot-design-using-r-ladder-and-mosfets.webp')} width="500px">Schematic showing the internal design of a DPOT using a resistor ladder and MOSFETs.</Image>
+<Image src={import('./_assets/basic-dpot-design-using-r-ladder-and-mosfets.webp')} width="500px">Schematic showing the internal design of a DPOT using a resistor ladder and MOSFETs (acting as analogue switches).</Image>
 
 **There are two variants on the DPOT design, the _potentiometer_ configuration and the _rheostat_ configuration**. The potentiometer configuration provides three pins to the resistor, one connected to each end of the resistor network and one connected to the wiper. The rheostat version has only one pin connected to one of the ends, and one pin for the wiper. Manufacturers usually make a rheostat version because it saves a pin, allowing for a smaller package, since some applications don't require all three connections of a potentiometer. A rheostat behaves like a variable resistance.
 
-DPOT resistances typically vary from 1kΩ to 1MΩ.
+DPOT resistances typically vary from $1\unit{k\Omega}$ to $1\unit{M\Omega}$.
 
 ## Communication
 
-Most DPOT's use either the SPI or I²C communication protocol to control the wiper's resistance values, as well as to read back the current value and any error messages. When using SPI, the DPOT acts as a slave.
+Most DPOTs use either the SPI or I²C communication protocol to control the wiper's resistance values, as well as to read back the current value and any error messages. When using SPI, the DPOT acts as a slave.
 
 ## Datasheet Specifications
 
@@ -31,13 +31,13 @@ Most DPOT's use either the SPI or I²C communication protocol to control the wip
   * Linear
   * Logarithmic
   * Reverse Logarithmic
-* Wiper Resistance: Typically 50-200Ω. Note that this is a significant amount of resistance (ideally the wiper would have 0 resistance) and for some applications cannot be ignored. 
+* Wiper Resistance: Typically $50-200\unit{\Omega}$. Note that this is a significant amount of resistance (ideally the wiper would have 0 resistance) and for some applications cannot be ignored.
 
 ## Uses
 
 * Dynamically controlling the DC gain of an amplifier (by replacing one or both of the gain resistors with a DPOT)
-* Producing a controllable high impedance voltage output (for using as a reference voltage, comparison voltage, e.t.c)
-* Balancing a wheatstone bridge
+* Producing a controllable high impedance voltage output (for using as a reference voltage, comparison voltage, etc.)
+* Balancing a Wheatstone bridge
 * Small-scale current control (typically a few milliamps or less)
 
 ## Design Considerations
@@ -50,9 +50,13 @@ Digital potentiometers usually have a poor total resistance tolerance, usually a
 
 ## Manufacturer Part Numbers
 
-* **MCP4**: Family of DPOTs from Microchip. An Arduino library for driving these ICs can be found at https://github.com/jmalloc/arduino-mcp4xxx.
+* **MCP4**: Family of DPOTs from Microchip. An [Arduino library for driving these ICs](https://github.com/jmalloc/arduino-mcp4xxx) is available on GitHub.
 * **TPL0401**: DPOT from Texas Instruments.
 
 ## Suppliers
 
-Link to DigiKey's digital potentiometer section: https://www.digikey.com/en/products/filter/data-acquisition-digital-potentiometers/717
+[DigiKey's digital potentiometer section](https://www.digikey.com/en/products/filter/data-acquisition-digital-potentiometers/717).
+
+{/* =========================================================================================== */}
+{/* REFERENCES */}
+{/* =========================================================================================== */}

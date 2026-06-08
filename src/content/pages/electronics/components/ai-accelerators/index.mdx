@@ -1,0 +1,49 @@
+---
+authors: [gbmhunter]
+date: 2026-06-08
+description: Info on AI accelerators (neural processing units, NPUs) such as the Hailo-8L.
+lastUpdated: 2026-06-08
+tags: [electronics, components, AI accelerators, NPU, neural processing unit, Hailo, Hailo-8L, machine learning, inference, TOPS]
+title: AI Accelerators
+type: page
+---
+
+<WarningIsNotes />
+
+AI accelerators (also called _neural processing units_, NPUs, or _AI co-processors_) are integrated circuits designed to run machine-learning inference workloads (e.g. neural networks) far more efficiently than a general-purpose CPU. They are commonly paired with a host processor, offloading the heavy matrix/tensor maths involved in running a model. Performance is often quoted in _TOPS_ (tera-operations per second).
+
+Neural networks work by having many layers of "neurons". The value of each neuron in each layer is calculated by:
+
+1. Taking a linear weighted sum of all the neurons in the layer before it: $z = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b$, where $b$ is a _bias_ term.
+1. Applying a non-linear activation function: $y = \phi(z)$ where $\phi$ might be something like $\max(0, z)$ (output the value if the value is positive, otherwise 0, a.k.a. ReLU).
+
+<Aside type="tip">
+If the activation function were
+ not applied, the entire neural network could be collapsed down into a single layer (a combination of linear operations is still just a linear operation). The activation function gives each layer non-linearity, allowing the network to approximate complex, non-linear functions.
+</Aside>
+
+The most computationally intensive part of running a neural network are the weighted-sum calculations. These can be easily done with matrix multiplications. An AI accelerator has dedicated hardware that is optimised for these matrix operations.
+
+## Hailo-8L
+
+The Hailo-8L is an entry-level AI accelerator from Hailo, delivering up to 13 TOPS. It is widely used in edge-AI and computer-vision applications (for example, on the Raspberry Pi AI Kit). It is designed to run neural networks.
+
+<Image src={import('./_assets/hailo-8l-package-photo-front-and-back.webp')} width="200px">Photo of the Hailo-8L BGA package.[^hailo-hailo-8l-entry-level-ai-accelerator]</Image>
+
+The Hailo-8L contains the following components[^hailo-hailo-8l-datasheet]:
+
+- NPU: Up to 13 TOPS.
+- MCU: Dual ARM Cortex-M4 processors running at 200 MHz. 640 kB SRAM. FPU and MPU.
+- 4-lane PCI express Gen3 endpoint with integrated PHY (this is designed to be connected to the host processor)
+- 2 UART interfaces.
+- 4 I2C interfaces.
+- Quad SPI interface (for external flash devices)
+
+<Image src={import('./_assets/hailo-8l-internal-architecture-block-diagram.webp')} width="800px">A block diagram of the components inside the Hailo-8L AI accelerator.[^hailo-hailo-8l-datasheet]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^hailo-hailo-8l-datasheet]: Hailo (2026, Apr). _Hailo-8L Datasheet_ [datasheet]. Retrieved 2026-06-08, from https://hailo.ai/hailo-files/hailo-8l-industrial-datasheet-en/.
+[^hailo-hailo-8l-entry-level-ai-accelerator]: Hailo. _Hailo-8L Entry-Level AI Accelerator_ [product page]. Retrieved 2026-06-08, from https://hailo.ai/products/ai-accelerators/hailo-8l-ai-accelerator-for-ai-light-applications/.
