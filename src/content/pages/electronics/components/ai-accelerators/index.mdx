@@ -14,7 +14,7 @@ AI accelerators (also called _neural processing units_, NPUs, or _AI co-processo
 
 Neural networks work by having many layers of "neurons". The value of each neuron in each layer is calculated by:
 
-1. Taking a linear weighted sum of all the neurons in the layer before it: $z = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b$, where $b$ is a _bias_ term.
+1. Taking a linear weighted sum of all the neurons in the layer before it: $z = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b$, where $b$ is a _bias_ term (assuming a dense network in where a neuron connects to every neuron in the previous layer)
 1. Applying a non-linear activation function: $y = \phi(z)$ where $\phi$ might be something like $\max(0, z)$ (output the value if the value is positive, otherwise 0, a.k.a. ReLU).
 
 <Aside type="tip">
@@ -39,7 +39,11 @@ The Hailo-8L contains the following components[^hailo-hailo-8l-datasheet]:
 - 4 I2C interfaces.
 - Quad SPI interface (for external flash devices)
 
-<Image src={import('./_assets/hailo-8l-internal-architecture-block-diagram.webp')} width="800px">A block diagram of the components inside the Hailo-8L AI accelerator.[^hailo-hailo-8l-datasheet]</Image>
+<Image src={import('./_assets/hailo-8l-internal-architecture-block-diagram.webp')} width="700px">A block diagram of the components inside the Hailo-8L AI accelerator.[^hailo-hailo-8l-datasheet]</Image>
+
+It is designed to be connected to a host processor via the PCIe link as shown below.
+
+<Image src={import('./_assets/hailo-8l-typical-usage-block-diagram-with-host-processor.webp')} width="500px">Typical usage block diagram showing the Hailo-8L connected to a host processor via its PCIe link.[^hailo-hailo-8l-datasheet]</Image>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

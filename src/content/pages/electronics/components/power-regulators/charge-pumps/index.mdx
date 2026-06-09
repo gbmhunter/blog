@@ -8,17 +8,17 @@ title: Charge Pumps
 type: page
 ---
 
-A _charge pump_ (also known as a _Dickson charge pump_, _switched capacitor_ circuit, _voltage multiplier_, or _voltage splitter_ when halving the input voltage) is a voltage-converting circuit that **uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another**. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage. However, they can also be configured to reduce the input voltage (buck) or invert it.
+A _charge pump_ (also known as a _Dickson charge pump_, _switched capacitor_ circuit, _voltage multiplier_, or _voltage splitter_ when halving the input voltage) is a voltage-converting circuit that **uses capacitors, diodes, and an oscillating switch to move charge from one capacitor to another**. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage. However, they can also be configured to reduce the input voltage (buck) or invert it.
 
 The basic principle of a charge pump is to **charge capacitors individually (in parallel) from the input voltage, and then connect them in series to provide a higher output voltage**. Whilst this can be done manually or mechanically, almost every practical charge pump circuit uses electronic switches (diodes, MOSFETs, e.t.c) to change between series and parallel connectivity.
 
 Charge Pump                         | Boost Converter
 ------------------------------------|-------------------
-Efficient at low power (&lt;10mA)   | Efficient at high power (>100mA)
+Efficient at low power (&lt;10mA)   | Efficient at high power (&gt;100mA)
 Simple circuit, low component count | Complex control, high count/bulky components
 Low noise                           | High noise
 
-A single capacitor/diode configuration (with additional smoothing capacitor on the output) **doubles the input voltage**. Multiple elements can be connected together to create larger voltage increases. Basic charge pumps that double/half the input voltage are called _unregulated_ charge pumps. There are also more advanced _regulated_ charge pumps, which provide a fixed output voltage over a range of input voltages.
+A single capacitor/diode configuration (with additional smoothing capacitor on the output) **doubles the input voltage**. Multiple elements can be connected together to create larger voltage increases. Basic charge pumps that double/halve the input voltage are called _unregulated_ charge pumps. There are also more advanced _regulated_ charge pumps, which provide a fixed output voltage over a range of input voltages.
 
 _Marx generators_ are similar to charge pumps except they use spark gaps instead of diodes as the switching elements. Marx generators are typically used for high voltage/high power applications.
 
@@ -44,12 +44,10 @@ MOSFETs can be wired to behave like a diode and are sometimes used instead of Sc
 
 This is the most basic type of charge pump. We'll go through each step of the process to show how exactly charge is moved around to have the effect of doubling the input voltage. This concept of "shunting around" charge (hence the _pump_ part in the name) is the key concept of any charge pump topology.
 
-1. When voltage is first applied to the circuit, $V_{in}$ provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops D1 and D2.
-1. Then the pulse in transitions from 0V to 5V. Because C1 is already charged to 4.7V, and this 5V appears on the capacitors negative lead, it "pushes" the top lead of C1 up to 9.7V. This then causes a current from C1, through D2, into C2, charging it up past 5V.
-1. The pulse then transitions back to 0V, and the cycle begins again with C1 charing back up to 5V (remember that it would of dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
-1. After enough cycles, the output voltage an C2 stabilizes to $2*V_{in} - 2V_f$.
-
-<Image src={import('./_assets/charge-pump-voltage-doubler-schematic.png')} width="700px">The basic schematic for a voltage doubling charge pump circuit.</Image>
+1. When voltage is first applied to the circuit, $V_{in}$ provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops across D1 and D2.
+1. Then the pulse input transitions from 0V to 5V. Because C1 is already charged to 4.7V, and this 5V appears on the capacitors negative lead, it "pushes" the top lead of C1 up to 9.7V. This then causes a current from C1, through D2, into C2, charging it up past 5V.
+1. The pulse then transitions back to 0V, and the cycle begins again with C1 charging back up to 5V (remember that it would have dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
+1. After enough cycles, the output voltage on C2 stabilizes to $2V_{in} - 2V_f$.
 
 To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngspice. The simulation files can be downloaded below:
 
@@ -61,27 +59,27 @@ The following KiCad schematics were used to perform the simulation:
 
 <Image src={import('./_assets/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-schematics.png')} width="800px">The schematics for the voltage-doubling charge pump simulation.</Image>
 
-The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to it's steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which effects the stabilization time and output current capacity.
+The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to its steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which affects the stabilization time and output current capacity.
 
 <Image src={import('./_assets/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-plot.png')} width="600px">A plot of the simulation results for the above voltage doubling charge pump circuit.</Image>
 
 **Output Impedance**
 
-Charge pumps can be used as voltage sources, although **normally only for light loads are they generally have significant output impedance** (compared to linear regulators and SMPS). In general, the output impedance for a charge pump can be calculated by[^electronics-se-charge-pump-output-res]:
+Charge pumps can be used as voltage sources, although **normally only for light loads, as they generally have significant output impedance** (compared to linear regulators and SMPS). In general, the output impedance for a charge pump can be calculated by[^electronics-se-charge-pump-output-res]:
 
 $$
 \begin{align}
-Z_{out} = \frac{N}{f*C} \\
+Z_{out} = \frac{N}{fC} \\
 \end{align}
 $$
 
 <p className="centered">where:<br/>
 $Z_{out}$ is the output resistance, in Ohms [$\Omega$]<br/>
 $N$ is the number of stages, excluding the last "tank" capacitor<br/>
-$f$ is the switching frequency, in Hertz [$Hz$]<br/>
-$C$ is the capacitance of each stage, assuming they all have the same value, in Farads [$F$]<br/></p>
+$f$ is the switching frequency, in Hertz [$\mathrm{Hz}$]<br/>
+$C$ is the capacitance of each stage, assuming they all have the same value, in Farads [$\mathrm{F}$]<br/></p>
 
-For more information on how this equation is derived, see the  [Switched Capacitor Circuits page](/electronics/circuit-design/switched-capacitor-circuits/).
+For more information on how this equation is derived, see the [Switched Capacitor Circuits page](/electronics/circuit-design/switched-capacitor-circuits/).
 
 Let's compare what this equation says compared to a simulation. Below is the schematic of a Micro-Cap +3.3V voltage-doubling charge pump simulation. The input is driven with a 10kHz +3.3V square wave.
 
@@ -93,16 +91,16 @@ The equation predicts the output impedance to be:
 
 $$
 \begin{align}
-Z_{out} &= \frac{1}{5kHz*1uF} \nonumber \\
-        &= 200\Omega \\
+Z_{out} &= \frac{1}{10\unit{kHz} \cdot 1\unit{uF}} \nonumber \\
+        &= 100\unit{\Omega} \\
 \end{align}
 $$
 
-To find the output impedance, I found the output voltage under no load, and the output voltage and current with a $100\Omega$ load. Both of these were done using Transient-style simulations.
+To find the output impedance, I found the output voltage under no load, and the output voltage and current with a $100\unit{\Omega}$ load. Both of these were done using transient-style simulations.
 
-At no load, $V_{source} = 5.98V$.
+At no load, $V_{source} = 5.98\unit{V}$.
 
-With $R_{load} = 100\Omega$, $V_{load} = 2.23V$.
+With $R_{load} = 100\unit{\Omega}$, $V_{load} = 2.23\unit{V}$.
 
 Thus we can find the output resistance using the resistor divider equation:
 
@@ -116,13 +114,13 @@ Re-arrange for $Z_{out}$:
 
 $$
 \begin{align}
-Z_{out} &= \left(\frac{V_{source}}{V_{load}} - 1\right)*R_{load} \nonumber \\
-    &= \left(\frac{5.98V}{2.23V} - 1\right) * 100\Omega \nonumber \\
-    &= 168\Omega
+Z_{out} &= \left(\frac{V_{source}}{V_{load}} - 1\right) \cdot R_{load} \nonumber \\
+    &= \left(\frac{5.98\unit{V}}{2.23\unit{V}} - 1\right) \cdot 100\unit{\Omega} \nonumber \\
+    &= 168\unit{\Omega}
 \end{align}
 $$
 
-So $200\Omega$ predicted by the equation and $168\Omega$ measured in the simulation. Sort of close! I'm guessing some of the differences could be explained by simulation non-idealities such as the diodes and parasitic elements. 
+So $100\unit{\Omega}$ predicted by the equation and $168\unit{\Omega}$ measured in the simulation. The measured value is higher, which is exactly what we'd expect: the $\frac{N}{fC}$ equation gives the _ideal_ output impedance (the "slow-switching limit"), accounting only for the charge transferred per cycle. It ignores the real losses in the circuit --- the diode forward voltage drops, the diode series resistance, and capacitor ESR --- all of which add to the output impedance. So the equation should be treated as a lower bound, with the real value sitting somewhat above it.
 
 ### Voltage Inverting Charge Pump
 
@@ -132,13 +130,13 @@ Notice how while the voltage doubling charge pump requires two inputs ($V_{in}$ 
 
 The simulation results:
 
-<Image src={import('./_assets/charge-pump-inverter/charge-pump-inverter-simulation-results.png')} width="600px">A schematic for a voltage-inverting charge pump.</Image>
+<Image src={import('./_assets/charge-pump-inverter/charge-pump-inverter-simulation-results.png')} width="600px">The simulation results for a voltage-inverting charge pump.</Image>
 
 ## History
 
 The _Greinacher voltage multiplier_ (a.k.a. _half-wave doubler_) was invented by Swiss physicist Heinrich Greinacher in 1919[^edn-capacitive-voltage-conversion].
 
-John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980)[^justia-patents-john-f-dickson]. It is very similar to the Greinacher doubler except it runs of an DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
+John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980)[^justia-patents-john-f-dickson]. It is very similar to the Greinacher doubler except it runs off a DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
 
 <Image src={import('./_assets/john-f-dickson-patent-charge-pump-schematic.png')} width="600px">A schematic from John F. Dickson's 1978 charge pump patent. Image from https://patentimages.storage.googleapis.com/d5/27/b7/321211f48454c8/US4214174.pdf, retrieved 2020-12-14.</Image>
 
@@ -154,7 +152,7 @@ Special charge pumps exist that only produce a very small negative voltage (e.g.
 
 ### LED Drivers
 
-Some LED drivers feature charge pumps to boost the supply voltage to a proper level to drive the LEDs. Charge pumps are usually feature in low power (20mA per channel) LED drivers, that may need to boost say, a +3.3V supply to +4.5V to drive an LED with the correct current. The [NCP1840 8-Channel Charge-Pump I2C LED Driver by On Semiconductor](http://www.onsemi.com/PowerSolutions/product.do?id=NCP1840) is one such example.
+Some LED drivers feature charge pumps to boost the supply voltage to a proper level to drive the LEDs. Charge pumps are usually featured in low power (20mA per channel) LED drivers, that may need to boost say, a +3.3V supply to +4.5V to drive an LED with the correct current. The [NCP1840 8-Channel Charge-Pump I2C LED Driver by On Semiconductor](http://www.onsemi.com/PowerSolutions/product.do?id=NCP1840) is one such example.
 
 ### MOSFET Gates
 
@@ -164,9 +162,13 @@ The most common way to overcome this problem is to use a small charge pump circu
 
 ### RS-232
 
-The RS-232 standard mandates 5-15V $V_{OH}$ and $V_{OL}$ levels. Because most modern day circuits are powered by +3.3 or +5V, charge pumps are commonly used to provide these higher voltage levels. Early RS-232 transceivers used unregulated charge pumps (which just doubled the input voltage), whilst more modern transceivers use regulated charge pumps which provide stable RS-232 logic levels over a range over input voltages.
+The RS-232 standard mandates 5-15V $V_{OH}$ and $V_{OL}$ levels. Because most modern day circuits are powered by +3.3 or +5V, charge pumps are commonly used to provide these higher voltage levels. Early RS-232 transceivers used unregulated charge pumps (which just doubled the input voltage), whilst more modern transceivers use regulated charge pumps which provide stable RS-232 logic levels over a range of input voltages.
 
-[^edn-capacitive-voltage-conversion]: https://www.edn.com/capacitive-voltage-conversion-aka-the-charge-pump/, retrieved 2020-12-08.
-[^sipex-charge-pump-caps-for-rs-232]: https://www.maxlinear.com/appnote/ani-19_selectingchargepumpcaps_072406_d.pdf, retrieved 2020-12-14.
-[^justia-patents-john-f-dickson]: https://patents.justia.com/inventor/john-f-dickson, retrieved 2020-12-14.
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^edn-capacitive-voltage-conversion]: Jeff Sorensen (2020, Jun 30). _Capacitive voltage conversion, aka the charge pump_ [article]. EDN. Retrieved 2020-12-08, from https://www.edn.com/capacitive-voltage-conversion-aka-the-charge-pump/.
+[^sipex-charge-pump-caps-for-rs-232]: Sipex Corporation (2006, Jul 24). _ANI-19: Selecting Charge Pump Capacitors_ [application note]. Sipex Corporation. Retrieved 2020-12-14, from https://www.maxlinear.com/appnote/ani-19_selectingchargepumpcaps_072406_d.pdf.
+[^justia-patents-john-f-dickson]: Justia. _John F. Dickson Inventor Patents_ [patent search]. Justia Patents. Retrieved 2020-12-14, from https://patents.justia.com/inventor/john-f-dickson.
 [^electronics-se-charge-pump-output-res]: StackExchange: Electrical Engineering. _Charge pump output resistance_. Retrieved 2022-09-14, from https://electronics.stackexchange.com/questions/136860/charge-pump-output-resistance.

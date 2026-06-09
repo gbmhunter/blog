@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2020-06-19
 description: Info about the STM32 range of microcontrollers.
-lastUpdated: 2022-08-09
+lastUpdated: 2026-06-09
 tags: [programming, microcontrollers, STM32, STM32F0, Cortex-M0, ARM, STM32CubeIDE, Nucleo, STM32WLEx, LoRa, LoRaWAN, ST-LINK/V2, virtual COM ports, VCPs, LoRaWAN, STLINK-V3, STLINK-V3SET, isolation]
 title: STM32 Microcontrollers
 type: page
@@ -30,7 +30,7 @@ _ST-LINK/V1_ is deprecated.
 
 ### ST-LINK/V2
 
-The _ST-LINK/V2_ is an in-circuit programmer and debugger for the STM8 and STM32 families of microcontrollers. It supports the SWIM (Single Wire Interface Module, for STM8 only)[^bib-st-swim], SWD (Single Wire Debug) and JTAG programming protocols. 
+The _ST-LINK/V2_ is an in-circuit programmer and debugger for the STM8 and STM32 families of microcontrollers. It supports the SWIM (Single Wire Interface Module, for STM8 only)[^st-swim], SWD (Single Wire Debug) and JTAG programming protocols. 
 
 ### ST-LINK/V2-ISOL
 
@@ -40,19 +40,19 @@ The _ST-LINK/V2-ISOL_ is similar in functionality to the ST-LINK/V2 but with add
 
 Designed to supersede the ST-LINK/V2 family of programmers. Comes in three flavours:
 
-* **STLINK-V3SET**: The "standard" programmer that comes with an enclosure. The main module board is the MB1441. Optional adapter boards can be attached to it for extra functionality[^bib-st-um2448-stlink-v3set].
+* **STLINK-V3SET**: The "standard" programmer that comes with an enclosure. The main module board is the MB1441. Optional adapter boards can be attached to it for extra functionality[^st-um2448-stlink-v3set].
 * **STLINK-V3MINI**: A miniature form of the programming, that comes as a bare PCB. Much cheaper than the STLINK-V3SET.
 * **STLINK-V3MODS**: A programmer on a castellated-edged PCB module, designed to be soldered onto a PCB containing the microcontroller to be programmed.
 
 All have 1 or more virtual comm ports (VCPs) and mass-storage device emulation for drag-and-drop flash programming.
 
-<Image src={import('./stlink-v3set-st-microelectronics-programmer-photo.png')} width="500">A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND.</Image>
+<Image src={import('./_assets/stlink-v3set-st-microelectronics-programmer-photo.png')} width="500">A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND.</Image>
 
 **STDC14 Connector**
 
 The `STDC14` pinout/connector was introduced in STLINK-V3. This is a 14-pin 2x7 1.27mm pitch header-style connector. The middle 10-pins copy the standard 10-pin ARM Cortex programming connector. 2 on one end add UART TX/RX, and the other two on the other end are reserved.
 
-The pinout for the STDC14 connector is shown the below table[^bib-st-um2448-stlink-v3set]:
+The pinout for the STDC14 connector is shown the below table[^st-um2448-stlink-v3set]:
 
 <table>
   <thead>
@@ -69,7 +69,7 @@ The pinout for the STDC14 connector is shown the below table[^bib-st-um2448-stli
   </tbody>
 </table>
 
-The [TagConnect TC2070-IDC-050 or TC2070-IDC-NL-050 cables](https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3) can be used with the STLINK-V3 and it's STDC14 connector to provide connector-less pogo-pin style programming[^bib-tagconnect-stlink-v3].
+The [TagConnect TC2070-IDC-050 or TC2070-IDC-NL-050 cables](https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3) can be used with the STLINK-V3 and it's STDC14 connector to provide connector-less pogo-pin style programming[^tagconnect-stlink-v3].
 
 ### NUCLEO Development Kits
 
@@ -100,7 +100,7 @@ Or as the following inputs:
 
 Reference schematic for the STM32F030 (just power, clock and programming):
 
-<Image src={import('./stm32f030-reference-schematic.png')} width="800">The reference schematic for the STM32F030 microcontroller. Image from https://www.st.com/resource/en/application_note/dm00089834-getting-started-with-stm32f030xx-and-stm32f070xx-series-hardware-development-stmicroelectronics.pdf.</Image>
+<Image src={import('./_assets/stm32f030-reference-schematic.png')} width="800px">The reference schematic for the STM32F030 microcontroller. Image from https://www.st.com/resource/en/application_note/dm00089834-getting-started-with-stm32f030xx-and-stm32f070xx-series-hardware-development-stmicroelectronics.pdf.</Image>
 
 ## STM32F1
 
@@ -115,7 +115,7 @@ To develop with STM32F1 microcontrollers you will need two PDFs, the specific "d
 
 ## STM32G
 
-The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family either uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline) for the `G0` or the Cortex-M4F for the `G4`[^bib-wp-stm32].
+The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family either uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline) for the `G0` or the Cortex-M4F for the `G4`[^wp-stm32].
 
 ### STM32G0
 
@@ -130,6 +130,25 @@ Family of mixed-signal microcontrollers, which include both DSP and FPU instruct
 * STM32G4x3: _Performance line:_ General-purpose microcontrollers with the maximum number of analogue peripherals.
 * STM32G4x4: _Hi-resolution line:_ Features a high-resolution timer and complex waveform builder plus event handler for digital power conversion.
 
+## STM32N6
+
+STM32N6 is a series of STM32 MCUs with dedicated hardware for running edge AI. They feature an Arm Cortex-M55 running at 800 MHz and a NPU (neural processing unit) running at 1 GHz and capable of 0.6 TOPS (tera operations per second). The NPU is the ST Neural-ART accelerator.[^st-stm32n6-series]
+
+The STM32N6 directly supports image processing pipelines with a built-in MIPI CSI-2 interface and H264 hardware encoder.[^st-stm32n6-series] It has a hexa-SPI and FMC bus for fast communication with external memory.
+
+The STM32N6 is further sub-divided into the following "lines":
+
+- STM32N6x7: _AI line_: Has a NPU (Neural-ART Accelerator). This is labelled "with AI acceleration".
+- STM32N6x5: _General purpose line_: Does not have a NPU.
+
+Within these two lines some have HW cryptography units while others do not.
+
+There are two primary development kits for the STM32N6. The comprehensive STM32N6570-DK contains a camera, LCD screen and touch panel, USB, Ethernet, microphone and 1 Gbit SPI flash memory. It features the STM32N657X0H3Q MCU.
+
+The other dev kit is the NUCLEO-N657X0-Q which is structured like STs other Nucleo dev. kits. It contains the STM32N657X0 MCU and provides a great way to test out the STM32N6 series of MCUs. It includes features such as: user buttons and LEDs, Ethernet, MIPI20 connector, M.2 key A serial memory connector and a CAN FD header.[^st-nucleo-n657x0-q] Unlike STM32N6570-DK, it does not come with a camera and LCD touch screen.
+
+<Image src={import('./_assets/nucleo-n657x0-q-dev-board-photo.webp')} width="300px">A photo of the NUCLEO-N657X0-Q dev. board featuring a STM32N6 MCU.[^st-nucleo-n657x0-q]</Image>
+
 ## STM32WLEx
 
 The `STM32WLEx` is a family of "SoC" microcontrollers featuring a `STM32L4` coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).
@@ -138,7 +157,9 @@ The `STM32WLEx` is a family of "SoC" microcontrollers featuring a `STM32L4` coup
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^bib-st-swim]:  ST Microelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
-[^bib-wp-stm32]:  Wikipedia (last edited 2021, Aug 31). _STM32_. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
-[^bib-st-um2448-stlink-v3set]: ST Microelectronics (2021, Dec). _UM2448 User manual: STLINK-V3SET debugger/programmer for STM8 and STM32_. Retrieved 2022-08-09, from https://www.st.com/en/development-tools/stlink-v3set.html#documentation.
-[^bib-tagconnect-stlink-v3]: TagConnect. _Tag-Connect Solutions for Debuggers & Programmers: ST-Link-V3 Cable Selection_. Retrieved 2022-08-09, from https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3.
+[^st-swim]:  ST Microelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
+[^wp-stm32]:  Wikipedia (last edited 2021, Aug 31). _STM32_. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
+[^st-um2448-stlink-v3set]: ST Microelectronics (2021, Dec). _UM2448 User manual: STLINK-V3SET debugger/programmer for STM8 and STM32_. Retrieved 2022-08-09, from https://www.st.com/en/development-tools/stlink-v3set.html#documentation.
+[^tagconnect-stlink-v3]: TagConnect. _Tag-Connect Solutions for Debuggers & Programmers: ST-Link-V3 Cable Selection_. Retrieved 2022-08-09, from https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3.
+[^st-stm32n6-series]: STMicroelectronics. _STM32N6 Series_ [product page]. Retrieved 2026-06-09, from https://www.st.com/en/microcontrollers-microprocessors/stm32n6-series.html.
+[^st-nucleo-n657x0-q]: STMicroelectronics. _NUCLEO-N657X0-Q - STM32 Nucleo-144 development board with STM32N657X0 MCU, SMPS, supports Arduino, and ST morpho connectivity_ [product page]. Retrieved 2026-06-09, from https://www.st.com/en/evaluation-tools/nucleo-n657x0-q.html.
