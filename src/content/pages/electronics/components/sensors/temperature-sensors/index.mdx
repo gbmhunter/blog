@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2012-11-08
 description: Temperature sensors are electronic transducers which measure the temperature of the nearby body (which in many cases is the temperature sensor itself) and converts it into either a analogue or digital electrical signal. This page covers linear active temperature sensors, NTC thermistors, digital temperature sensors, thermostats, infrared thermopiles, thermocouples, composite sensors and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-09-09
+lastUpdated: 2026-06-11
 title: Temperature Sensors
 type: page
 ---
@@ -47,18 +47,18 @@ NTCs are used for smaller, but more accurate temperature ranges such as measurin
 The temperature accuracy of a thermistor can be calculated (at the reference temperature) by dividing the percentage resistance tolerance at 25°C (or whatever the reference temperature is) by the thermistor's temperature coefficient, $\alpha$.
 
 $$
-\begin{align}
+\begin{align*}
 \text{accuracy (at T)} = \frac{\text{resistance tolerance (at T)}}{\alpha\text{ (at T)}}
-\end{align}
+\end{align*}
 $$
 
 For example, the [Vishay NTCALUG03A103GC](http://www.digikey.com/product-detail/en/vishay-bc-components/NTCALUG03A103GC/BC2381-ND/2230709) has a resistance tolerance of $\pm 2%$ and $\alpha_{25} = \pm 4.39%$. Therefore:
 
 $$
-\begin{align}
+\begin{align*}
 \text{accuracy}_{25} &= \frac{2\%}{4.39} \\
 &= 0.46%
-\end{align}
+\end{align*}
 $$
 
 ### Self Heating
@@ -66,9 +66,9 @@ $$
 A NTC thermistor, like any other resistor, dissipates energy as heat when current flows through it. The power dissipation, $P_{NTC}$ in a NTC thermistor is:
 
 $$
-\begin{align}
+\begin{align*}
 P_{NTC} = I^2 * R
-\end{align}
+\end{align*}
 $$
 
 <p className="centered">where:<br/>
@@ -86,45 +86,104 @@ To make sure self-heating doesn't affect your temperature measurements, make sur
 
 The Beta equation or Beta formula is a empirical equation used to work out the temperature from the measured resistance of a NTC thermistor.
 
-It uses a single material constant, $\beta$, which is also known as the _coefficient of temperature sensitivity_. The equation is an exponential approximation of the relationship between resistance and temperature in the form:
+It uses a single material constant, $\beta$, which is also known as the _coefficient of temperature sensitivity_. $\beta$ has units of Kelvin (this is needed to make the exponent in the equation below dimensionless), with most NTC thermistors having a $\beta$ somewhere between $3000\unit{K}$ and $5000\unit{K}$. The equation is an exponential approximation of the relationship between resistance and temperature in the form:
 
 $$
-\begin{align}
+\begin{align*}
 R(T) = R(T_0)e^{\beta(\frac{1}{T} - \frac{1}{T_0})}
-\end{align}
+\end{align*}
 $$
 
 <p className="centered">where:<br/>
 $R(T)$ is the actual resistance, in Ohms, at the actual temperature $T$<br/>
 $R(T_0)$ is the reference resistance, in Ohms, at the reference temperature $T_0$<br/>
 $T$ is the actual temperature, in Kelvin<br/>
-$T_0$ is the reference temperature, in Kelvin<br/></p>
+$T_0$ is the reference temperature, in Kelvin<br/>
+$\beta$ is the Beta coefficient, in Kelvin<br/></p>
 
 At best, the accuracy of the Beta equation approaches $\pm 1%$ between $0-100^{\circ}C$, and not more than $\pm 5%$ other the NTC thermistor's entire temperature range.
 
 $\beta$ can be calculated when you have both the temperature and resistance  of the thermistor at two different operating points. $\beta$ can be calculated as follows:
 
 $$
-\begin{align}
+\begin{align*}
 \beta = \frac{ln(R_1) - ln(R_2)}{\frac{1}{T_1} - \frac{1}{T_2}}
-\end{align}
+\end{align*}
 $$
 
 Or, written another way:
 
 $$
-\begin{align}
+\begin{align*}
 \beta = \frac{T_1 * T_2}{T_2 - T1}ln(\frac{R_1}{R_2})
-\end{align}
+\end{align*}
 $$
+
+This is exactly how manufacturers derive the $\beta$ value quoted on a datasheet -- they measure the resistance at two temperatures and plug both points into the equation above. Because the Beta equation is only an approximation, the value you get depends on which two temperatures are used, so datasheets usually state the pair as a subscript: $\beta_{25/50} = 4120\unit{K}$ means $\beta$ was derived from resistances measured at $25^{\circ}C$ and $50^{\circ}C$. Common pairs are $\beta_{25/50}$, $\beta_{25/85}$ and $\beta_{25/100}$, and the same thermistor will have slightly different values for each. For best accuracy, use the $\beta$ characterized over the temperature range closest to the one you are measuring, and when comparing thermistors, try and make sure the $\beta$ values are quoted over the same temperature pair.
 
 Re-arranged so that we can calculate a temperature from a measured resistance, and using the terminology $R_0$ and $T_0$ instead of $R_2$ and $T_2$, we get the following equation:
 
 $$
-\begin{align}
+\begin{align*}
 \frac{1}{T} = \frac{1}{T_0} + \frac{1}{\beta}ln(\frac{R}{R_0}) 
-\end{align}
+\end{align*}
 $$
+
+<Aside type="example">
+
+You have a NTC thermistor with the following properties from its datasheet:
+
+- Resistance: $14.05\unit{k\Omega}$ at $55^{\circ}C$
+- Resistance tolerance: $\pm 3\%$
+- B value: $4120\unit{K}$ at $25/50^{\circ}C$
+- B value tolerance: $\pm 2\%$
+
+You measure a resistance of $60\unit{k\Omega}$. What is the nominal temperature, and what are the worst case min. and max. temperatures (assuming no other error sources)?
+
+**Nominal temperature**
+
+Using the re-arranged Beta equation above with $R_0 = 14.05\unit{k\Omega}$, $T_0 = 55^{\circ}C = 328.15\unit{K}$ and $\beta = 4120\unit{K}$:
+
+$$
+\begin{align*}
+\frac{1}{T} &= \frac{1}{328.15\unit{K}} + \frac{1}{4120\unit{K}}\ln\left(\frac{60\unit{k\Omega}}{14.05\unit{k\Omega}}\right) \\
+            &= 3.0474\times 10^{-3}\unit{K^{-1}} + 3.5236\times 10^{-4}\unit{K^{-1}} \\
+            &= 3.3997\times 10^{-3}\unit{K^{-1}} \\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+T &= 294.14\unit{K} \\
+  &= 21.0^{\circ}C \\
+\end{align*}
+$$
+
+**Worst case min. and max. temperatures**
+
+The worst cases occur when both tolerances push the temperature in the same direction. Because our measured resistance is higher than the reference resistance (i.e. we are below $T_0$), the warmest reading comes from the thermistor whose $R_0$ and $\beta$ are both at their maximums, and the coldest from both at their minimums.
+
+Max: with $R_0 = 14.05\unit{k\Omega} \cdot 1.03 = 14.47\unit{k\Omega}$ and $\beta = 4120\unit{K} \cdot 1.02 = 4202\unit{K}$:
+
+$$
+\begin{align*}
+\frac{1}{T} &= \frac{1}{328.15\unit{K}} + \frac{1}{4202\unit{K}}\ln\left(\frac{60\unit{k\Omega}}{14.47\unit{k\Omega}}\right) \\
+T &= 295.35\unit{K} = 22.2^{\circ}C \\
+\end{align*}
+$$
+
+Min: with $R_0 = 14.05\unit{k\Omega} \cdot 0.97 = 13.63\unit{k\Omega}$ and $\beta = 4120\unit{K} \cdot 0.98 = 4038\unit{K}$:
+
+$$
+\begin{align*}
+\frac{1}{T} &= \frac{1}{328.15\unit{K}} + \frac{1}{4038\unit{K}}\ln\left(\frac{60\unit{k\Omega}}{13.63\unit{k\Omega}}\right) \\
+T &= 292.87\unit{K} = 19.7^{\circ}C \\
+\end{align*}
+$$
+
+So the nominal temperature is $21.0^{\circ}C$, with a worst case range of $19.7^{\circ}C$ to $22.2^{\circ}C$ (approx. $+1.2/{-}1.3^{\circ}C$). Note that this is the worst case (arithmetic) stacking of the two tolerances -- if they are independent, a statistical (root sum square) combination would give a tighter estimate at what the bounds would be expected to be. Taking the sum is still valid for answering what is the absolute worst case (however vanishingly unlikely).
+
+</Aside>
 
 #### NTC Thermistor Calculator
 
@@ -139,9 +198,9 @@ The Steinhart-Hart is a complex but highly accurate way of modelling the relatio
 The Steinhart-Hart equation is:
 
 $$
-\begin{align}
+\begin{align*}
 \frac{1}{T} = A + Bln(R) + C(ln(R))^3
-\end{align}
+\end{align*}
 $$
 
 <p className="centered">where:<br/>

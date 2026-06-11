@@ -3,13 +3,13 @@ authors: [gbmhunter]
 date: 2011-09-03
 description: A tutorial on the I2C communication protocol.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-09
+lastUpdated: 2026-06-10
 tags: [I2C, communication protocol, bus, serial, microcontroller, open-collector, data, transceiver, TX, RX, SCL, SDA]
 title: I2C Communication Protocol
 type: page
 ---
 
-The I²C (_Inter-Integrated Circuit_, but pronounced _I-2-C_, and also spelt I2C) bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex, synchronous protocol which requires 2 wires (4 if you include power and ground). It uses device addressing (typically 7-bit) to indicate the recipient of the data. Arbitration is achieved via use of open-drain or open-collector outputs for the SCL and SDA lines (except for uncommon Ultra-fast mode, which uses push-pull drivers). It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple controllers through software protocols.
+The I²C (_Inter-Integrated Circuit_, but pronounced _I-2-C_, and also spelt I2C) bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex, synchronous protocol which requires 2 wires (4 if you include power and ground). It uses device addressing (typically 7-bit) to indicate the recipient of the data. Arbitration is achieved via use of open-drain or open-collector outputs for the SCL and SDA lines (except for uncommon Ultra-fast mode, which uses push-pull drivers). It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C supports multiple controllers on the same bus, with bus arbitration built into the protocol thanks to the open-drain topology.
 
 <Image src={import('./_assets/i2c-logo.gif')} width="200px">The I2C logo.</Image>
 
@@ -29,7 +29,7 @@ The revision history of the official I2C-bus specification (NXP document UM10204
 | v1.0     | 1992       | Version 1.0 of the I2C-bus specification.
 | v2.0     | 1998       | Updated with high bus speeds and low voltages.
 | v2.1     | 2000       | Version 2.1 of the I2C-bus specification.
-| v3      | 2007-06-19 | Fast-mode Plus was introduced to meet this need by increasing drive strength by as much as 10x and increasing the data rate to 1Mbit/s while maintaining downward compatibility to Fast-mode and Standard-mode speeds and software commands.
+| v3      | 2007-06-19 | Added Fast-mode Plus (Fm+), increasing drive strength by as much as 10x and the data rate to 1Mbit/s while remaining downward compatible with Fast-mode and Standard-mode.
 | v4      | 2012-02-13 | User manual Rev. 4.
 | v5      | 2012-10-09 | User manual; fifth release.
 | v6      | 2014-04-04 | User manual; sixth release.<br/>Modifications:<br/>• Figure 41 updated (recalculated)<br/>• Figure 42 updated (recalculated)
@@ -53,12 +53,12 @@ As of v7 of the I2C specification (released 2021), NXP renamed the bus roles fro
 
 | Name | Flow | Description
 |------|------|-------------
-| SCL (sometimes called SCK) | Controller drives, targets listen | Clock
+| SCL (sometimes called SCK) | Controller drives (targets may hold it low to clock stretch) | Clock
 | SDA | Bi-directional | Data
 
 ## Pull-Up Resistors
 
-The I2C bus uses open-drain (or open-collector if BJTs are used rather than MOSFETs) drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential to return the bus to the passive voltage state. 0V is considered low and either +3.3V or +5.0V are common "high" voltages.
+The I2C bus uses open-drain (or open-collector if BJTs are used rather than MOSFETs) drivers to allow for **compatibility** between chips that run off different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential to return the bus to the passive voltage state. 0V is considered low and either +3.3V or +5.0V are common "high" voltages.
 
 <Image src={import('./_assets/i2c-pull-up-resistors.png')} width="488">I2C pull-up resistors.</Image>
 
@@ -83,11 +83,11 @@ R_{P, min} = \frac{V_{CC} - 0.4\unit{V}}{3\unit{mA}}
 \end{align}
 $$
 
-Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance $ C_{BUS} $, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above $ V_{IH} = 0.7V_{CC} $ must be considered logic high by all devices.
+Because of I2C's open-collector topology, it is **solely the pull-up resistor's duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance $ C_{BUS} $, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above $ V_{IH} = 0.7V_{CC} $ must be considered logic high by all devices.
 
 $$
 \begin{align}
-R_{P, max} = \frac{T_R}{0.847298C_{BUS}}
+R_{P, max} = \frac{T_R}{0.8473C_{BUS}}
 \end{align}
 $$
 
@@ -123,8 +123,8 @@ Because the data is clocked, there is almost no minimum speed (unless the device
 | Standard               | 100kbit/s     | 400pF                   | Open drain
 | Fast-mode (Fm)         | 400kbit/s     | 400pF                   | Open drain
 | Fast-mode Plus (Fm+)   | 1Mbit/s       | 550pF                   | Open drain
-| High-speed mode (Hs)   | 1.7Mbit/s     | 400pF                   | Open drain
-| High-speed (Hs)        | 3.4Mbit/s     | 100pF                   | Open drain
+| High-speed mode (Hs)   | 1.7Mbit/s     | 400pF                   | Open drain + controller current source
+| High-speed mode (Hs)   | 3.4Mbit/s     | 100pF                   | Open drain + controller current source
 | Ultra-fast mode (UFm)  | 5Mbit/s       | n/a                     | Push-pull[^i2c-bus-ufm]
 
 ### Standard
@@ -137,13 +137,13 @@ Fast mode is a mode of operation for the I2C bus that allows devices to communic
 
 ### Fast Mode Plus (Fm+)
 
-Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to communicate at speeds of up to 1MHz. It was introduced by Philips Semiconductors (which is now NXP) in April 2006. It is occasionally used for I2C devices which require high data throughput.
+Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to communicate at speeds of up to 1MHz. It was introduced by Philips Semiconductors (which is now NXP) in April 2006, and was incorporated into v3 of the I2C specification in 2007. It is occasionally used for I2C devices which require high data throughput.
 
 ### High-Speed (Hs)
 
-The high-speed mode allows for communication rates of up to 3.4MHz, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communication protocol](/electronics/communication-protocols/spi-communication-protocol)) seems to be the preferred way of doing things at >1Mbps). One of the key differences between all other speed modes and high-speed mode is the **current sourcing** capabilities of the controller device in Hs mode. This allows the **controller to inject current onto the I2C lines to drive them high** faster than what pull-up resistors on their own would allow.
+The high-speed mode allows for communication rates of up to 3.4MHz, which makes it the fastest bidirectional I2C mode available (only the unidirectional Ultra-fast mode is faster). It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communication protocol](/electronics/communication-protocols/spi-communication-protocol)) seems to be the preferred way of doing things at >1Mbps). One of the key differences between all other speed modes and high-speed mode is the **current sourcing** capabilities of the controller device in Hs mode. This allows the **controller to inject current onto the I2C lines to drive them high** faster than what pull-up resistors on their own would allow.
 
-Also, the clock signal has a high to low ratio of 1:2, which is different to the ratio of 1:1 for all other modes.
+Also, the clock signal in Hs mode has a nominal high to low ratio of 1:2 (the other modes do not mandate a fixed ratio).
 
 ### Ultra-fast Mode (UFm)
 
@@ -155,21 +155,21 @@ Ultra-fast mode is almost primarily used for LED drivers, for example the [PCU96
 
 There are variants on the I2C bus, defined and implemented by various manufactures. These include:
 
-* SMBus - The System Management Bus. Only works with a single target. Uses less current, but operates at a lower speed.
-* PMBus - Extends the SMBus functionality
-* IPMB - The Intelligent Platform Management Bus
-* TWI - The Two-Wire Interface. A name used by some vendors (including ATMEL), to describe a I2C bus (exactly identical).
-* ACCESS.bus
-* DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol to send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
+- SMBus - The System Management Bus, defined by Intel and common on PC motherboards. Compared to I2C it has tighter electrical limits, a 100kHz maximum speed (raised to 1MHz in SMBus 3.0), and a clock-low timeout which prevents a stuck bus.
+- PMBus - Extends the SMBus functionality
+- IPMB - The Intelligent Platform Management Bus
+- TWI - The Two-Wire Interface. A name used by some vendors (including ATMEL), to describe a I2C bus (exactly identical).
+- ACCESS.bus
+- DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol to send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
 
 ## I2C Applications And Uses In Industry
 
-* Automotive (although the CAN/LIN bus is more popular in automotive environments due to the higher noise resistance)
-* Consumer
-* Industrial (ethernet is also popular for industrial control)
-* Mobile
-* Telecom/networking
-* Radio/T.V.
+- Automotive (although the CAN/LIN bus is more popular in automotive environments due to the higher noise resistance)
+- Consumer
+- Industrial (ethernet is also popular for industrial control)
+- Mobile
+- Telecom/networking
+- Radio/T.V.
 
 <Image src={import('./_assets/typical-application-schematic-for-i2c-io-expander.png')} width="400px">A typical application schematic for an I2C I/O expander.</Image>
 
@@ -187,19 +187,29 @@ The _start condition_ is a HIGH to LOW transition on the SDA line while SCL is H
 
 The address byte comes after the start condition. This is a sequence of 8 bits that identifies to which device on the I2C bus the controller wishes to communicate with. The first 7 bits are the _address_ of the target device, and the last bit determines whether a read or write operation will be performed. The SDA line is always driven by the controller.
 
+### ACK/NACK Bit
+
+Every byte (whether it is the address byte or a data byte) is followed by a ninth bit called the _acknowledge_ (ACK) bit. During the ninth clock pulse (which, like all clock pulses, is generated by the controller), the transmitter of the byte releases SDA and the receiver takes over. If the receiver pulls SDA low, this is an ACK. If the receiver leaves SDA high (i.e. the line stays pulled up), this is a NACK (not-acknowledge). The meaning depends on the context:
+
+- **After the address byte:** the addressed target pulls SDA low to acknowledge its presence on the bus. If no target responds, SDA stays high and the controller sees a NACK — this is what happens if the target is missing, unpowered, held in reset, or the wrong address was used (see the waveform captures in the [Typical I2C Operation](#typical-i2c-operation) section for an example).
+- **After a data byte during a write:** the target ACKs each byte it successfully receives. A NACK indicates the target cannot accept the data (or any more of it), and the controller should respond with a STOP or repeated START.
+- **After a data byte during a read:** the roles swap — the controller is now the receiver, and ACKs each byte to request more data from the target. The controller deliberately NACKs the **final** byte to tell the target to release SDA, and then issues the STOP condition.
+
+Note that because the bus is pulled high by default, a NACK requires no action from anyone — which is why an absent or unresponsive device automatically produces one.
+
 ### Data Bytes
 
 The data bytes follow the address byte. These bytes represent the actual information being transferred between the controller and target devices. The number of data bytes that can be transferred within one message frame is determined by the specific requirements of the device and the controller. If the controller indicated a write operation in the address byte, the controller drives the SDA line during the data bytes. If the controller specified a READ operation, the addressed target drives the SDA line.
 
 The meaning and context of the data bytes is not defined in the I2C standard. This is left to the higher level layers in the "stack", i.e. the microcontroller and target device IC manufacturers.
 
-However, there is a common protocol that is widely used, where the first data byte sent or received after the address byte during a WRITE operation is frequently a register address inside the target device. Following data byte is then used to write new data to that register in memory. Subsequent data bytes write to next highest register address and so on (i.e. the register pointer automatically increments by 1 on each write). Conversely, during a READ operation, a WRITE phase is first undertaken to set the register address, followed by a repeated START condition (without a STOP), and then a READ operation to retrieve the data at the selected register address. This process allows for easy access and manipulation of target devices, including changing their settings, reading out status, and controlling them.
+However, there is a common protocol that is widely used, where the first data byte sent or received after the address byte during a WRITE operation is frequently a register address inside the target device. The following data byte is then used to write new data to that register in memory. Subsequent data bytes write to the next highest register address and so on (i.e. the register pointer automatically increments by 1 on each write). Conversely, during a READ operation, a WRITE phase is first undertaken to set the register address, followed by a repeated START condition (without a STOP), and then a READ operation to retrieve the data at the selected register address. This process allows for easy access and manipulation of target devices, including changing their settings, reading out status, and controlling them.
 
 ### Stop Condition
 
-The _stop condition_ is a LOW to HIGH transition on the SDA line while SCL is HIGH. It is similar to the start byte except it's a positive going edge rather than a negative one.
+The _stop condition_ is a LOW to HIGH transition on the SDA line while SCL is HIGH. It is similar to the start condition except it's a positive going edge rather than a negative one.
 
-## Complex Addresses
+## Addressing
 
 All I2C target devices must have an address. This address is used by the controller to select which device to talk with. Standard addresses are 7 bits long, with a 10-bit extension being rather uncommon. In the case of a 7-bit address, it is left shifted by one and packed into the first byte which is sent across the I2C bus by the controller (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
 
@@ -258,7 +268,7 @@ The 10-bit addressing scheme has been to designed so that it can work on a bus a
 
 <Image src={import('./_assets/i2c-buffer-ic-example.jpg')} width="800px">An example from a NXP application note showing how their P82B96 I2C-bus buffering IC can utilise buffering and twisted pairs to increase the I2C communication distance.</Image>
 
-If you are following the I2C spec, the transmission distance is usually limited to a few metres due the max line capacitance rated at 400pF. Speaking from personal experience, when trying to get I2C to work through long cables, cross-talk is usually the problem which stops the communications from working. The cross-capacitance between the SCL and SDA lines results in the signals mixing together, and often your start condition won't work because the SDA line being pulled low will couple into the SCL and pull that low too, invalidating the transmission. Slowing down the transition speeds could help this (aka drive strength), but the rise /fall times is typically limited to a maximum of 300ns.
+If you are following the I2C spec, the transmission distance is usually limited to a few metres due to the max line capacitance rated at 400pF. Speaking from personal experience, when trying to get I2C to work through long cables, cross-talk is usually the problem which stops the communications from working. The cross-capacitance between the SCL and SDA lines results in the signals mixing together, and often your start condition won't work because the SDA line being pulled low will couple into the SCL and pull that low too, invalidating the transmission. Slowing down the transition speeds could help this (aka drive strength), but the rise/fall times are typically limited to a maximum of 300ns.
 
 The picture below shows how cross-coupling can introduce noise onto the SDA and SCL lines when using long cables. This shows SCL (yellow) and SDA (blue) over an 8m ethernet cable.
 
@@ -268,11 +278,11 @@ The picture below shows how cross-coupling can introduce noise onto the SDA and 
 
 I have had very good results with using twisted-pair cabling along with the P82B96 buffer IC to extend the length of the I2C bus. With the SDA and SCL lines connected to wires in different pairs, and then either power or ground connected to the other wire in each pair, I have managed to transmit I2C at 50kHz through a 30m cable. Make sure power and ground are decoupled well at each end with 100nF ceramic capacitors. Using a data/clock line and either power or ground in a twisted pair couples them tightly together, and reduces the amount of emissions that couple onto other wires in the cable. Cat5e ethernet cable can be used (although you only use 2 of the 4 pairs if following the above example).
 
-The picture below shows the difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCK (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace.
+The picture below shows the difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCL (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace.
 
-<Image src={import('./_assets/i2c-long-cable-ground-no-ground.jpg')} width="350px">The difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCK (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace. This was over a 20m ethernet cable.</Image>
+<Image src={import('./_assets/i2c-long-cable-ground-no-ground.jpg')} width="350px">The difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCL (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace. This was over a 20m ethernet cable.</Image>
 
-The I2C transmission distance can also be extended by using I2C buffer IC's. These chips buffer the inputs and provide high output drive signals useful for sending down long cables. Some also support RX/TX splitting (sending the RX and TX signals from the SDA down separate lines to increase transmission times), as well as differential line driving). Buffering the I2C lines introduces a 'lock-up' problem, in which if the bus is driven low, the receiver will keep it low even after the sender has released it. To stop this from happening, manufacturers cleverly introduced two 'logic-low' levels, which both conform to the logic-low of the I2C standard. Typically anything below 0.5V is counted as a true 'low' (which is propagated through the buffer), while anything between 0.5V and 0.9V is a buffer-generated low which is not propagated.
+The I2C transmission distance can also be extended by using I2C buffer ICs. These chips buffer the inputs and provide high output drive signals useful for sending down long cables. Some also support RX/TX splitting (sending the RX and TX signals from the SDA down separate lines to increase transmission distances), as well as differential line driving. Buffering the I2C lines introduces a 'lock-up' problem, in which if the bus is driven low, the receiver will keep it low even after the sender has released it. To stop this from happening, manufacturers cleverly introduced two 'logic-low' levels, which both conform to the logic-low of the I2C standard. Typically anything below 0.5V is counted as a true 'low' (which is propagated through the buffer), while anything between 0.5V and 0.9V is a buffer-generated low which is not propagated.
 
 The transmission distance could also be extended by using I2C controllers or bridges that convert the comm protocol into another (e.g. UART) before sending. But this is kinda cheating, isn't it?
 
@@ -280,33 +290,33 @@ If you follow by example, Nintendo's Wii hand controller is a good example of a 
 
 ## Rise-time Accelerators
 
-Rise-time accelerators, such as those used on the [NXP PCA9507 2-wire Serial Bus Extender](http://www.nxp.com/documents/data_sheet/PCA9507.pdf), can be used to extend the length of an I2C bus. They work by intelligently detecting when the bus voltage is rising (being pulled up by the pull-up resistors), and then injecting current to shorten the time it takes for the bus to reach a logic high voltage level. The current injector is then quickly turned off, allowing the I2C line to be pulled low again.
+Rise-time accelerators, such as those used on the [NXP PCA9507 2-wire Serial Bus Extender](https://www.nxp.com/docs/en/data-sheet/PCA9507.pdf), can be used to extend the length of an I2C bus. They work by intelligently detecting when the bus voltage is rising (being pulled up by the pull-up resistors), and then injecting current to shorten the time it takes for the bus to reach a logic high voltage level. The current injector is then quickly turned off, allowing the I2C line to be pulled low again.
 
 ## Hot-Swapping
 
 ### Precharging
 
-A clever I2C trick for hot-swapping capability is to pre-charge the bus lines, as used on the [NXP PCA9511 Hot-swappable I2C Bus Buffer](http://www.marutsu.co.jp/contents/shop/marutsu/datasheet/PCA9511.pdf) (this also features rise-time accelerators). During insertion (assuming this chip is on a hot-swappable device which uses I2C), the bus lines are pre-charged to about 1V, which limits the worst-case capacitive disturbances on insertion due the I2C lines being a different voltage levels.
+A clever I2C trick for hot-swapping capability is to pre-charge the bus lines, as used on the [NXP PCA9511 Hot-swappable I2C Bus Buffer](https://www.nxp.com/docs/en/data-sheet/PCA9511A.pdf) (this also features rise-time accelerators). During insertion (assuming this chip is on a hot-swappable device which uses I2C), the bus lines are pre-charged to about 1V, which limits the worst-case capacitive disturbances on insertion due to the I2C lines being at different voltage levels.
 
 ## Clock Stretching
 
 A target device can indicate that it is not ready to receive new data by holding the clock line (SCL) low. This tells the controller to wait until the clock line is high before sending more data.
 
-## Complimentary/Useful I2C Devices
+## Complementary/Useful I2C Devices
 
-* I/O Expanders - Used for trace reduction and routing simplification. Basically an IC with digital ports that can be turned on or off through I2C communication. Used to compliment processors with limited I/O, and drive port-hungry peripherals such as keypads (you can also get dedicated I2C keypad controllers)
-* I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts 
-* USB-to-I2c Bridges - These provide a interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
+- I/O Expanders - Used for trace reduction and routing simplification. Basically an IC with digital ports that can be turned on or off through I2C communication. Used to complement processors with limited I/O, and drive port-hungry peripherals such as keypads (you can also get dedicated I2C keypad controllers)
+- I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts 
+- USB-to-I2C Bridges - These provide an interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](https://ftdichip.com/wp-content/uploads/2020/08/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
   
 <Image src={import('./_assets/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg')} width="265">The C232HM-DDHSL-0 FTDI USB-to-MPSSE cable. Creates a bridge between your computer and a number of serial comm protocols such as SPI, I2C and UART.</Image>
 
 ## Typical I2C Operation
 
-I2C is typically used to configure and talk to digital sensor IC's in an embedded environment. IC's such as accelerometers, capacitive sensors, digital thermometers usually have an I2c protocol for configuration and/or data transfer.
+I2C is typically used to configure and talk to digital sensor ICs in an embedded environment. ICs such as accelerometers, capacitive sensors, digital thermometers usually have an I2C protocol for configuration and/or data transfer.
 
-<Image src={import('./_assets/typical-i2c-waveform.jpg')} width="483">A typical I2C waveform. The top waveform is the clock (SCK), and the bottom waveform is the data (SDA). This shows a controller trying to communicate with the target, but the target does not acknowledge (the ninth bit is high).</Image>
+<Image src={import('./_assets/typical-i2c-waveform.jpg')} width="483">A typical I2C waveform. The top waveform is the clock (SCL), and the bottom waveform is the data (SDA). This shows a controller trying to communicate with the target, but the target does not acknowledge (the ninth bit is high).</Image>
 
-Typically, the IC has a 7-bit address which is right-shifted by 1 and the read/write bit is the LSB. If the IC detects its address, it issues an acknowledge. The second word (which may or may not be a byte, this depends on the size of the registers on the chip, typically 1 or 2 bytes) sent by the controller over I2C writes to an address pointer, this determines what register is going to be read to/written from. This is always a write operation.
+Typically, the IC has a 7-bit address which is left-shifted by 1 and the read/write bit is the LSB. If the IC detects its address, it issues an acknowledge. The second word (which may or may not be a byte, this depends on the size of the registers on the chip, typically 1 or 2 bytes) sent by the controller over I2C writes to an address pointer, this determines what register is going to be read to/written from. This is always a write operation.
 
 At this point, **if the controller is performing a write**, the controller's third word will write to the register pointed to by the address pointer (which was sent as the second word). The address pointer is automatically incremented by one at this point, allowing the controller to write consecutive registers all at once without having to do separate I2C transmissions.
 
@@ -320,7 +330,7 @@ The following image shows an I2C target that is not responding. Notice the absen
 
 ## Stuck I2C Buses
 
-It is possible for I2C communications between a microcontroller and target device to become unsynchronized and cause the bus to hang. If the microcontroller gets reset (or noise corrupts the lines) during a read phase whilst the target device was driving SDA low, the target will continue driving SDA low indefinitely and will prevent the controller from emitting any start controls. The easiest way to fix this is to reset the target if there is an external way of resetting it (e.g. a separate reset line or killing it's power supply). 
+It is possible for I2C communications between a microcontroller and target device to become unsynchronized and cause the bus to hang. If the microcontroller gets reset (or noise corrupts the lines) during a read phase whilst the target device was driving SDA low, the target will continue driving SDA low indefinitely and will prevent the controller from emitting any start controls. The easiest way to fix this is to reset the target if there is an external way of resetting it (e.g. a separate reset line or killing its power supply). 
 
 If this is not possible, another way to recover the bus is to perform the following actions, as mentioned by Philips Semiconductors in the _I2C Manual_[^phillips-semiconductors-an10216-i2c-manual]:
 
@@ -345,35 +355,35 @@ I try to use SPI or UART over I2C (if the option exists, and there are no other 
 
 ## Microcontroller/SBC Support
 
-**I2C is a very popular protocol and is supported by most microcontrollers**. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
+**I2C is a very popular protocol and is supported by most microcontrollers**. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI), [PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
 
-Many SBC (single board computers) also have I2C support. The popular RaspberryPi SBC has one I2C peripheral which is brought out to the header on the PCB[^pinout-rpi].
+Many SBCs (single board computers) also have I2C support. The popular Raspberry Pi SBC has one I2C peripheral which is brought out to the header on the PCB[^pinout-rpi].
 
 ### I2C Programmable Analog And Digital Noise Filters
 
 Some microcontrollers provide programmable analog and/or digital noise filters for their I2C peripherals.
 
-An example of a microcontroller that provides both analog and digital filters is the STM32F0 range by STmicroelectronics.
+An example of a microcontroller that provides both analog and digital filters is the STM32F0 range by STMicroelectronics.
 
 ### SCL Spike Filters
 
-The I2C specification requires that I2C devices ignore any high signal on the SCL wire that lasts less than 50ns. This specification is not universally implemented, typically because in most cases it does not effect operation. However, the [I3C communication protocol](/electronics/communication-protocols/i3c-communication-protocol/) uses this feature for some of it's _high data rate_ (HDR) modes which allow I2C targets with spike filters to co-exist on the bus while the HDR transmission takes places between two I3C devices.
+The I2C specification requires that I2C devices ignore any high signal on the SCL wire that lasts less than 50ns. This specification is not universally implemented, typically because in most cases it does not affect operation. However, the [I3C communication protocol](/electronics/communication-protocols/i3c-communication-protocol/) uses this feature for some of its _high data rate_ (HDR) modes which allow I2C targets with spike filters to co-exist on the bus while the HDR transmission takes places between two I3C devices.
 
 ## Alternatives To I2C
 
-A popular alternative to I2C which is also used for intra-board communication is the [SPI bus](/electronics/communication-protocols/spi-communication-protocol/). [I3C](/electronics/communication-protocols/i3c-communication-protocol/) is less widely used but "improvement" on I2C in terms of baud rate, features and power usage.
+A popular alternative to I2C which is also used for intra-board communication is the [SPI bus](/electronics/communication-protocols/spi-communication-protocol/). [I3C](/electronics/communication-protocols/i3c-communication-protocol/) is less widely used but is an improvement on I2C in terms of baud rate, features and power usage.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^pinout-rpi]: Philip Howard. _I2C - Inter Integrated Circuit_. pinout.xyz. Retrieved 2021-11-23, from https://pinout.xyz/pinout/i2c.
-[^elec-se-hdmi-and-i2c]: . "Turbo J" (2014, Aug 4). _HDMI and I2C_. StackExchange: Electrical Engineering. Retrieved 2021-11-24, from https://electronics.stackexchange.com/questions/123957/hdmi-and-i-2-c.
-[^ken-shirriff-vga-i2c]: Ken Shirriff. _Reading a VGA monitor's configuration data with I2C and a PocketBeagle_. Retrieved 2011-11-24, from http://www.righto.com/2018/03/reading-vga-monitors-configuration-data.html.
-[^patent-i2c]: US Philips Corp (1981, Nov 2). _Two-wire bus-system comprising a clock wire and a data wire for interconnecting a number of stations_. Retrieved 2011-11-24, from https://patents.google.com/patent/US4689740A/en.
+[^elec-se-hdmi-and-i2c]: "Turbo J" (2014, Aug 4). _HDMI and I2C_. StackExchange: Electrical Engineering. Retrieved 2021-11-24, from https://electronics.stackexchange.com/questions/123957/hdmi-and-i-2-c.
+[^ken-shirriff-vga-i2c]: Ken Shirriff. _Reading a VGA monitor's configuration data with I2C and a PocketBeagle_. Retrieved 2021-11-24, from http://www.righto.com/2018/03/reading-vga-monitors-configuration-data.html.
+[^patent-i2c]: US Philips Corp (1981, Nov 2). _Two-wire bus-system comprising a clock wire and a data wire for interconnecting a number of stations_. Retrieved 2021-11-24, from https://patents.google.com/patent/US4689740A/en.
 [^i2c-bus-ufm]: I2C BUS. _Ultra Fast Mode UFm_. Retrieved 2021-11-24, from https://www.i2c-bus.org/ultra-fast-mode-ufm/.
-[^ti-ads1100-adc]: Texas Instruments (formally Burr-Brown) (2003). _ADS1100: Self-Calibrating, 16-Bit Analog-to-Digital Converter (datasheet)_. Retrieved 2022-01-07, from https://www.ti.com/symlink/ads1100.pdf.
-[^ti-ina226-power-mon]:  Texas Instruments (2011, Jun). _INA226 High-Side or Low-Side Measurement, Bi-Directional Current and Power Monitor with I2C Compatible Interface (datasheet)_. Retrieved 2022-01-07, from https://www.ti.com/lit/ds/symlink/ina226.pdf.
+[^ti-ads1100-adc]: Texas Instruments (formerly Burr-Brown) (2003). _ADS1100: Self-Calibrating, 16-Bit Analog-to-Digital Converter_ [datasheet]. Retrieved 2022-01-07, from https://www.ti.com/symlink/ads1100.pdf.
+[^ti-ina226-power-mon]: Texas Instruments (2011, Jun). _INA226 High-Side or Low-Side Measurement, Bi-Directional Current and Power Monitor with I2C Compatible Interface_ [datasheet]. Retrieved 2022-01-07, from https://www.ti.com/lit/ds/symlink/ina226.pdf.
 [^nordic-semi-twi-twim-peripheral-driver-config]: Nordic Semiconductor. _TWI/TWIM peripheral driver - legacy layer configuration_ [Documentation]. Retrieved 2023-09-12, from https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.0.0%2Fgroup__nrf__drv__twi__config.html.
 [^forward-computing-and-control-i2c-clear-bus]: Matthew Ford (2022, Nov 12). _Reliable Startup for I2C Battery Backed RTC. Why theArduino Wire library is not enough._ [Article]. Forward Computing and Control Pty. Ltd. Retrieved 2023-09-12, from https://www.forward.com.au/pfod/ArduinoProgramming/I2C_ClearBus/index.html.
 [^phillips-semiconductors-an10216-i2c-manual]: Philips Semiconductors (now NXP). _AN10216-01 - I2C Manual_. Retrieved 2023-09-12, from https://www.nxp.com/docs/en/application-note/AN10216.pdf.
