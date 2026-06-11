@@ -18,6 +18,8 @@ SVG is the right format for this blog because:
 
 Do NOT use Excalidraw (`.excalidraw`), Mermaid, or Affinity Designer (`.afdesign`) for new diagrams, even if the user seems agnostic. If there's a specific reason SVG won't work (e.g. the user explicitly asks for a whiteboard-style sketch), raise it with the user first.
 
+**Exception — data/function plots**: graphs that plot data or mathematical functions (curves, frequency responses, waveforms, fitted lines through points) should use the `plot` skill (Python + matplotlib saved to `_assets/main.py`) instead of hand-authored SVG.
+
 ## Step 1: Identify the target file
 
 Look at recent Read/Edit tool calls to determine which `.mdx` file is currently being edited. If it's not clear, ask the user.

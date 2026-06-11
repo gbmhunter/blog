@@ -121,6 +121,10 @@ $$
 
 This is exactly how manufacturers derive the $\beta$ value quoted on a datasheet -- they measure the resistance at two temperatures and plug both points into the equation above. Because the Beta equation is only an approximation, the value you get depends on which two temperatures are used, so datasheets usually state the pair as a subscript: $\beta_{25/50} = 4120\unit{K}$ means $\beta$ was derived from resistances measured at $25^{\circ}C$ and $50^{\circ}C$. Common pairs are $\beta_{25/50}$, $\beta_{25/85}$ and $\beta_{25/100}$, and the same thermistor will have slightly different values for each. For best accuracy, use the $\beta$ characterized over the temperature range closest to the one you are measuring, and when comparing thermistors, try and make sure the $\beta$ values are quoted over the same temperature pair.
 
+The graph below shows a Beta curve fitted through two measured points at $25^{\circ}C$ and $50^{\circ}C$, giving $\beta_{25/50} = 4120\unit{K}$ (the same thermistor used in the example further down this page). Note the strongly non-linear (exponential-style) drop in resistance as the temperature rises.
+
+<Image src={import('./_assets/ntc-beta-curve-two-point-fit.png')} width="700px">A Beta curve with $\beta_{25/50} = 4120\unit{K}$ fitted through two measured resistance/temperature points at $25^{\circ}C$ and $50^{\circ}C$.</Image>
+
 Re-arranged so that we can calculate a temperature from a measured resistance, and using the terminology $R_0$ and $T_0$ instead of $R_2$ and $T_2$, we get the following equation:
 
 $$
@@ -128,6 +132,8 @@ $$
 \frac{1}{T} = \frac{1}{T_0} + \frac{1}{\beta}ln(\frac{R}{R_0}) 
 \end{align*}
 $$
+
+This is the actual equation you would end up using in embedded firmware if you were measuring a NTC thermistor and wanting to calculate the temperature. $\beta$, $T_0$ and $R_0$ would be hardcoded constants derived from the sensor's datasheet.
 
 <Aside type="example">
 
