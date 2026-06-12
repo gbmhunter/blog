@@ -1,19 +1,30 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "matplotlib",
+#     "numpy",
+#     "pandas",
+#     "scipy",
+# ]
+# ///
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy.fft import fft, fftshift
 import pandas as pd
+import scipy.optimize
 import scipy.signal
 
 SCRIPT_DIR = Path(__file__).parent
 
 
 def main():
-    # nzs_national_yearly_temp_plot()
+    nzs_national_yearly_temp_plot()
     # sine_wave_with_noise_plot()
     # sma_example_code()
     # sma_mag_and_phase_plots()
-    sma_freq_response_varied_window_sizes()
+    # sma_freq_response_varied_window_sizes()
     # windowed_moving_average_accumulated_error()
     # create_window_comparison_plots()
 
@@ -31,8 +42,8 @@ def nzs_national_yearly_temp_plot():
     ax.plot(df['Year'], df['Temperature_degrees_celcius'], alpha=0.5, label='Raw')
     ax.plot(df['Year'], df['SMA_5'], label='SMA_5')
     ax.plot(df['Year'], df['SMA_20'], label='SMA_20')
-    ax.set_xlabel('Temperature [$^{\circ}C$]')
-    ax.set_ylabel('Year')
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Temperature [$^{\circ}C$]')
     ax.set_title('NZs National Yearly Average Temperatures With SMAs')
     ax.grid()
     ax.legend()
@@ -282,7 +293,7 @@ def create_window_comparison_plots():
     ax.set_ylabel('Weight')
     ax.legend()
     plt.tight_layout()
-    plt.savefig('window-comparison-shapes.png')
+    plt.savefig(SCRIPT_DIR / 'window-comparison-shapes.png')
 
     fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
     ax = axes[0][0]
