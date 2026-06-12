@@ -1,0 +1,259 @@
+.fourier-explorer {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+}
+
+.fourier-explorer *,
+.fourier-explorer *::before,
+.fourier-explorer *::after {
+  margin-top: 0;
+}
+
+.fourier-explorer__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+.fourier-explorer__control-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+}
+
+/* ---- Chip rows (signal type, magnitude scale) ---- */
+.fourier-explorer__chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.fourier-explorer__scale-row {
+  margin-top: 0.4rem;
+}
+
+.fourier-explorer__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.fourier-explorer__chip {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.fourier-explorer__chip:hover {
+  border-color: var(--sl-color-gray-4);
+}
+
+.fourier-explorer__chip--active {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+}
+
+/* ---- Component signal rows ---- */
+.fourier-explorer__signals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.fourier-explorer__signal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.3rem 0.8rem;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+}
+
+@container (min-width: 38rem) {
+  .fourier-explorer__signal {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+  }
+}
+
+.fourier-explorer__signal--off {
+  opacity: 0.55;
+}
+
+.fourier-explorer__signal-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fourier-explorer__signal-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.fourier-explorer__signal-head select {
+  box-sizing: border-box;
+  height: 1.8rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.85rem;
+}
+
+.fourier-explorer__signal-params {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.3rem 0.8rem;
+}
+
+@container (min-width: 38rem) {
+  .fourier-explorer__signal-params {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+}
+
+/* ---- Sliders ---- */
+.fourier-explorer__slider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.fourier-explorer__slider-label {
+  font-weight: 600;
+  color: var(--sl-color-gray-2);
+  white-space: nowrap;
+}
+
+.fourier-explorer__slider input[type='range'] {
+  flex: 1;
+  min-width: 3rem;
+}
+
+.fourier-explorer__slider-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.8rem;
+  color: var(--sl-color-text);
+  min-width: 4.2rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---- Noise / sampling control groups ---- */
+.fourier-explorer__noise {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.4rem 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+@container (min-width: 38rem) {
+  .fourier-explorer__noise {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.fourier-explorer__sampling {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem 1.2rem;
+  margin-bottom: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--sl-color-gray-5);
+}
+
+@container (min-width: 38rem) {
+  .fourier-explorer__sampling {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+}
+
+.fourier-explorer__select-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fourier-explorer__select-row select {
+  box-sizing: border-box;
+  height: 1.8rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.85rem;
+}
+
+/* ---- Readouts ---- */
+.fourier-explorer__readouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.fourier-explorer__readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+  flex: 1;
+  min-width: 9rem;
+}
+
+.fourier-explorer__readout-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+}
+
+.fourier-explorer__readout-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.95rem;
+  color: var(--sl-color-text);
+}
+
+/* ---- Charts & notes ---- */
+.fourier-explorer__chart {
+  margin: 0.8rem 0;
+}
+
+.fourier-explorer__note {
+  font-size: 0.82rem;
+  color: var(--sl-color-text);
+  background: var(--sl-color-accent-low);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}

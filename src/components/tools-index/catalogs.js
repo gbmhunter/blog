@@ -14,6 +14,7 @@ import { catalog as dewPointMagnus } from '../tools/dew-point-magnus/catalog.js'
 import { catalog as eSeriesFinder } from '../tools/e-series-finder/catalog.js';
 import { catalog as eirpComplianceMap } from '../tools/eirp-compliance-map/catalog.js';
 import { catalog as emaFilter } from '../tools/ema-filter/catalog.js';
+import { catalog as fourierExplorer } from '../tools/fourier-explorer/catalog.js';
 import { catalog as gainConverter } from '../tools/gain-converter/catalog.js';
 import { catalog as ledResistor } from '../tools/led-resistor/catalog.js';
 import { catalog as lowPassRcFilter } from '../tools/low-pass-rc-filter/catalog.js';
@@ -49,6 +50,7 @@ export const CATALOGS = [
   eSeriesFinder,
   eirpComplianceMap,
   emaFilter,
+  fourierExplorer,
   gainConverter,
   ledResistor,
   lowPassRcFilter,

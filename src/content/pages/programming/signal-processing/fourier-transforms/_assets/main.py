@@ -20,8 +20,8 @@ def create_2d_transform():
     Ts = 1/Fs # sampling interval (s)
 
     t_array = np.arange(0, 1, Ts)
-    # f(t) = sin(5*2pi*t)
-    ft_array = np.sin(5*2*np.pi*t_array) + 0.5*np.sin(10*2*np.pi*t_array)
+    # x(t) = sin(5*2pi*t) + sin(10*2pi*t)
+    ft_array = np.sin(5*2*np.pi*t_array) + np.sin(10*2*np.pi*t_array)
 
     n = len(ft_array) # number of samples
     k = np.arange(0, n)
@@ -38,12 +38,12 @@ def create_2d_transform():
 
     fig, ax = plt.subplots(2, 1)
 
-    ax[0].plot(t_array, ft_array, label='$f(t) = sin(5* 2\pi t) + sin(10* 2\pi t)$')
+    ax[0].plot(t_array, ft_array, label='$x(t) = sin(5 \cdot 2\pi t) + sin(10 \cdot 2\pi t)$')
     ax[0].legend()
     ax[0].set_xlabel('$t(s)$')
-    ax[0].set_ylabel('$f(t)$')
+    ax[0].set_ylabel('$x(t)$')
 
-    ax[1].plot(frq, np.abs(Ft_array), label='F(t)', color='C1')
+    ax[1].plot(frq, np.abs(Ft_array), label='$|X(f)|$', color='C1')
     ax[1].legend()
     ax[1].set_xlabel('$f(Hz)$')
     ax[1].set_ylabel('$Magnitude$')

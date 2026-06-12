@@ -3,80 +3,116 @@ alias: [fast-fourier-transforms-ffts]
 authors: [gbmhunter]
 date: 2018-06-02
 description: A tutorial on Fourier Transforms, including Fast Fourier Transforms (FFTs).
-lastUpdated: 2019-06-08
+lastUpdated: 2026-06-12
 tags: [programming, signal processing, Fourier Transforms, Fast Fourier Transforms, FFTs, time domain, frequency domain]
 title: Fourier Transforms
 type: page
 ---
 
-The Fourier transform is an operation which can transform a signal that is described in the time-domain (i.e. x-axis is time), into a signal that is described in the frequency-domain (the x-axis is frequency).
+import FourierExplorer from 'src/components/tools/fourier-explorer/FourierExplorer.jsx';
+
+The Fourier transform is an operation which can transform a signal that is described in the time-domain (i.e. x-axis is time), into a signal that is described in the frequency-domain (the x-axis is frequency).[^fourier-wikipedia]
 
 > Fourier theorem states that a periodic function f(x) which is reasonably continuous may be expressed as the sum of a series of sine or cosine terms (called the Fourier series), each of which has specific amplitude and phase coefficients known as Fourier coefficients.[^fourier-theorem]
 
 <Image src={import('./_assets/1d-fourier-transform.png')} width="700px">The 1D FFT of a waveform made from two sinusoids.</Image>
 
-The finite signal in time has a continuous signal in frequency, and vice versa, a continuous signal in time has a finite signal in frequency.
+A signal that is periodic in time has a discrete spectrum in frequency, and vice versa, a signal that is discrete in time has a periodic spectrum in frequency.
 
-The Fourier transform can be thought of as a rotation of 90 around the time-frequency domain. In this sense, four applications of the Fourier transform should result in the original signal.
+The Fourier transform can be thought of as a rotation of 90° around the time-frequency domain. In this sense, four applications of the Fourier transform should result in the original signal.
 
 There are four common Fourier transformations, which are described below:
 
-### Continuous-Time Fourier Transform (CTFT)
+## Continuous-Time Fourier Transform (CTFT)
 
 The Continuous-Time Fourier Transform (CTFT) is also commonly known just as _the_ Fourier Transform. There is a definition of the equation which converts a signal in time to a signal in frequency, which is called the _forward transform_, and one which goes from the frequency domain back to the time domain (it undoes the forward transform) called the _inverse transform_.
 
-Note that the variable $t$ (the _independent variable_) does no have to necessarily represent time. However, when it does (e.g. units in seconds), then the _transform variable_ $f$ represents frequency (e.g. Hertz). All of the equations below will use `t` and `f` since time and frequency are the most common units used with the Fourier transform.
+Note that the variable $t$ (the _independent variable_) does not have to necessarily represent time. However, when it does (e.g. units in seconds), then the _transform variable_ $f$ represents frequency (e.g. Hertz). All of the equations below will use $t$ and $f$ since time and frequency are the most common quantities used with the Fourier transform. The time-domain signal is written as $x(t)$ and its transform as $X(f)$ to avoid confusing the function with the frequency variable $f$.
 
 Forward:
 
-$$ F(f) = \int_{-\infty}^{\infty} f(t) e^{-j2\pi ft} dt $$
+$$
+\begin{align*}
+X(f) = \int_{-\infty}^{\infty} x(t) e^{-j2\pi ft} dt
+\end{align*}
+$$
 
 Inverse:
 
-$$ f(t) = \int_{-\infty}^{\infty} F(f)e^{i2\pi ft} df $$
+$$
+\begin{align*}
+x(t) = \int_{-\infty}^{\infty} X(f)e^{j2\pi ft} df
+\end{align*}
+$$
 
-### Continuous-Time Fourier Series (CTFS)
+## Continuous-Time Fourier Series (CTFS)
 
 Forward:
 
-$$ F_n = \frac{1}{T_0} \int_{-\frac{T_0}{2}}^{\frac{T_0}{2}} f(t) e^{\frac{-j2\pi nt}{T_0}}dt $$
+$$
+\begin{align*}
+X_n = \frac{1}{T_0} \int_{-\frac{T_0}{2}}^{\frac{T_0}{2}} x(t) e^{\frac{-j2\pi nt}{T_0}}dt
+\end{align*}
+$$
 
 Inverse:
 
-$$ x(t) = \sum_{n=-\infty}^{\infty} F_n e^{\frac{j 2\pi nt}{T_0}} $$
+$$
+\begin{align*}
+x(t) = \sum_{n=-\infty}^{\infty} X_n e^{\frac{j 2\pi nt}{T_0}}
+\end{align*}
+$$
 
-### Discrete-time Fourier Transform (DTFT)
+## Discrete-Time Fourier Transform (DTFT)
 
-The DTFT of a discrete time serious produces a frequency signal that is continuous and periodic.
+The DTFT of a discrete time series produces a frequency signal that is continuous and periodic.
 
 Forward:
 
-$$ F(e^{j\omega}) = \sum_{n=-\infty}^{\infty} f(nT)e^{-j2\pi fnT} $$
+$$
+\begin{align*}
+X(f) = \sum_{n=-\infty}^{\infty} x(nT)e^{-j2\pi fnT}
+\end{align*}
+$$
 
 Inverse:
 
-$$ f(nT) = \int_{-\frac{1}{2T}}^{\frac{1}{2T}} F(e^{j\omega})e^{j2\pi fnT} df $$
+$$
+\begin{align*}
+x(nT) = T \int_{-\frac{1}{2T}}^{\frac{1}{2T}} X(f)e^{j2\pi fnT} df
+\end{align*}
+$$
 
-### Discrete Fourier Transform (DFT)
+## Discrete Fourier Transform (DFT)
 
 Forward:
 
-$$ F(\frac{k}{NT}) = \sum_{n=0}^{N-1} f(nT)e^{\frac{-j2\pi nk}{N}} $$
+$$
+\begin{align*}
+X(\frac{k}{NT}) = \sum_{n=0}^{N-1} x(nT)e^{\frac{-j2\pi nk}{N}}
+\end{align*}
+$$
 
 Inverse:
 
-$$ f(nT) = \frac{1}{N} \sum_{k=0}^{N-1}F\frac{k}{NT}e^{\frac{i2\pi nk}{N}} $$
+$$
+\begin{align*}
+x(nT) = \frac{1}{N} \sum_{k=0}^{N-1}X(\frac{k}{NT})e^{\frac{j2\pi nk}{N}}
+\end{align*}
+$$
 
 ## The Fast Fourier Transform (FFT)
 
-A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from $ \mathcal{O}(n^2) $ to $ \mathcal{O}(n\log{n}) $. This speed increase means that the FFT is very popular in signal processing applications.
+A fast Fourier transform is a way of calculating the DFT (discrete Fourier transform) of a signal. A Fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast Fourier transform differentiates itself from a standard Fourier transform by factorizing the DFT matrix into a product of sparse (mostly zero) factors. This action reduces the complexity of the DFT algorithm from $ \mathcal{O}(n^2) $ to $ \mathcal{O}(n\log{n}) $. This speed increase means that the FFT is very popular in signal processing applications.
 
 ### Bin Size
 
 The width of each bin (in Hertz) is equal to:
 
 $$
-f_{bin-width} = f_s / N_{bins}
+\begin{align*}
+f_{\text{bin width}} = f_s / N_{bins}
+\end{align*}
 $$
 
 <p className="centered">    where:<br/>
@@ -87,13 +123,13 @@ The bins of interest are those from $ 0 $ to $ \frac{N_{bins}}{2} $.
 
 ### Sampling Rate
 
-By the Nyquist-Shannon sampling theorem, if the sampling rate is say, 10kHz, then the maximum captured frequency content will be 5kHz. This is true when using FFTs.
+By the Nyquist-Shannon sampling theorem, if the sampling rate is say, 10 kHz, then the maximum captured frequency content will be 5 kHz. This is true when using FFTs.
 
 However, sampling just at the Nyquist rate does not give you great data. As a rule-of-thumb, if you want to accurately find the frequencies present in a signal with a reasonably low number of samples, the sample rate should be about 10x the maximum frequency of interest.
 
 ### Number of Samples
 
-FFT algorithms require a number of samples which is equal to an integer power of two (e.g. 2, 4, 8, 16, ...).
+Radix-2 FFT algorithms require a number of samples which is equal to an integer power of two (e.g. 2, 4, 8, 16, ...). Mixed-radix FFT algorithms can handle other sample counts, but powers of two are generally the fastest.
 
 ### Frequency vs. Temporal Resolution
 
@@ -101,41 +137,63 @@ There is always a trade-off between frequency and temporal (time based) resoluti
 
 ### Windowing
 
-A FFT samples a waveform to a finite length (you don't/can't measure the signal for time negative infinity to positive infinity) in what is called the window. An FFT algorithm also assumes the signal within the window repeats forever. With most real-world signals, this will result in discontinuities at the edges of the window (the only time this does not happen is if the signal repeats itself, and the window happens to contain an exact integer number of cycles).
+An FFT samples a waveform to a finite length (you don't/can't measure the signal for time negative infinity to positive infinity) in what is called the window. An FFT algorithm also assumes the signal within the window repeats forever. With most real-world signals, this will result in discontinuities at the edges of the window (the only time this does not happen is if the signal repeats itself, and the window happens to contain an exact integer number of cycles).
 
-If nothing is done to the edges of the window, you will get significant **spectral leakage**. One way to reduce the spectral leakage is to perform windowing, in where the signal is faded in and out in the first few/last few samples.
+If nothing is done to the edges of the window, you will get significant **spectral leakage**. One way to reduce the spectral leakage is to perform windowing, where the signal is faded in and out in the first few/last few samples.
+
+## Interactive Fourier Transform Explorer
+
+The tool below lets you build a time-domain signal from up to three component signals — each one individually set to a sine, square, triangle, sawtooth or pulse waveform — and see the FFT magnitude spectrum of their sum update live. Things to try:
+
+- Drag a signal's frequency past the dashed Nyquist line and watch the peak fold back into the spectrum (aliasing).
+- Pick a frequency that does not land exactly on a bin and watch spectral leakage smear the peak with the default _Rectangular_ window, then switch to _Hann_ to clean it up (most visible on the dB scale).
+- Change the number of samples $N$ and watch the bin width $f_s/N$ readout — more samples means finer frequency resolution but a longer window.
+- Switch a signal between the waveform types to see their classic harmonic signatures (e.g. a square wave only contains odd harmonics, falling off as $1/n$).
+- Set Signal 1 to a square wave and Signal 2 to a sine at three times its frequency — the sine peak lands exactly on the square wave's third harmonic.
+- Change a signal's phase $\varphi$ — the time-domain waveform shifts but the magnitude spectrum does not change at all.
+
+<FourierExplorer client:load />
 
 ## The 2D Fourier Transform And Images
 
 Because most images are stored digitally, the _Discrete Fourier Transform_ (DFT) is used.
 
-Taking an standard input image which is in the spatial domain, the 2D DFT converts the image into the frequency domain. Each pixel in the output image represents a particular frequency in the input spatial domain image.
+Taking a standard input image which is in the spatial domain, the 2D DFT converts the image into the frequency domain. Each pixel in the output image represents a particular frequency in the input spatial domain image.
 
-The number of frequencies in the image is equal to the number of pixels in the image. Obviously, this means that the frequency domain image will the same size as the spatial domain image.
+The number of frequencies in the image is equal to the number of pixels in the image. Obviously, this means that the frequency domain image will be the same size as the spatial domain image.
 
 The definition of the 2D Fourier transform (continuous):
 
-$$ \mathcal{F}(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) e^{-j2\pi(ux + vy)} dx\,dy $$
+$$
+\begin{align*}
+\mathcal{F}(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) e^{-j2\pi(ux + vy)} dx\,dy
+\end{align*}
+$$
 
 Converted into a 2D discrete Fourier transform, the equation becomes:
 
-$$ \mathcal{F}(k, l) = \sum_{i=0}^{N-1} \sum_{i=0}^{N-1} f(i,j) e^{-i2\pi (\frac{ki}{M} + \frac{lj}{N})} $$
+$$
+\begin{align*}
+\mathcal{F}(k, l) = \sum_{m=0}^{N-1} \sum_{n=0}^{N-1} f(m,n) e^{-j2\pi (\frac{km}{N} + \frac{ln}{N})}
+\end{align*}
+$$
 
 <p className="centered">  where:<br/>
-  $ f(i, j) $ is the image in the spatial domain</p>
+  $ f(m, n) $ is the $N \times N$ image in the spatial domain<br/>
+  $ k, l $ are the frequency domain indices, from $0$ to $N-1$</p>
 
-The basis functions are sine and cosine waves with increasing frequencies. $\mathcal{F}(0, 0)$ represents the DC component in the image (the average brightness), all the way up to $\mathcal{F}(N-1, N-1)$ which represents the highest frequency in the image. Note that $\mathcal{F}(0, 0)$ is usually shifted to be in the center of the frequency domain image.
+The basis functions are sine and cosine waves with increasing frequencies. $\mathcal{F}(0, 0)$ represents the DC component in the image (the average brightness), all the way up to $\mathcal{F}(\frac{N}{2}, \frac{N}{2})$ which represents the highest frequency in the image. Note that $\mathcal{F}(0, 0)$ is usually shifted to be in the center of the frequency domain image.
 
 The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) produces a complex-valued image in the frequency domain. Obviously, we can't view an image made of complex numbers. What we can do is display the frequency domain image as two images, either:
 
- * 1 image contains the real part of the complex number, the other image displays the imaginary part
- * 1 image displays the magnitude, the other image displays the phase (the _argument_ of the complex number)
+- 1 image contains the real part of the complex number, the other image displays the imaginary part
+- 1 image displays the magnitude, the other image displays the phase (the _argument_ of the complex number)
 
- Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as $|F(u,v)|$, the phase as $\phi F(u,v) $
+Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as $|F(u,v)|$, the phase as $\Phi(u,v)$.
 
-<Image src={import('./_assets/sinusoidal.gif')} width="850px">A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
+<Image src={import('./_assets/sinusoidal.gif')} width="850px">A sinusoidal image in the spatial domain and its corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
 
-<Image src={import('./_assets/square_wave.gif')} width="850px">A square-waved (striped) image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
+<Image src={import('./_assets/square_wave.gif')} width="850px">A square-waved (striped) image in the spatial domain and its corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px.</Image>
 
 ## Code Libraries
 
@@ -149,5 +207,5 @@ The open source [Math.Net Numerics library](http://numerics.mathdotnet.com/) con
 {/* REFERENCES */}
 {/* ======================================================================== */}
 
-[^fourier-wikipedia]: [https://en.wikipedia.org/wiki/Fourier_transform](https://en.wikipedia.org/wiki/Fourier_transform)
-[^fourier-theorem]: [https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html](https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html)
+[^fourier-wikipedia]: Wikipedia. _Fourier transform_ [wiki]. Retrieved 2026-06-12, from https://en.wikipedia.org/wiki/Fourier_transform.
+[^fourier-theorem]: Barry Truax. _Handbook for Acoustic Ecology - Fourier Theorem_ [website]. Simon Fraser University. Retrieved 2026-06-12, from https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html.
