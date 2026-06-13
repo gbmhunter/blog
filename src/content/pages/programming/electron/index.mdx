@@ -39,7 +39,7 @@ app.on('window-all-closed', () => {
 
 ### x64 and Rosetta 2
 
-If running on a Mac computer with Apple Silicon (e.g M1, M2, e.t.c.), you seemingly have the choice of building the application for arm64 (native) or x64. If you build for x64, the Mac will automatically use Rosetta 2 to run the device (Rosetta 2 is a compatibility layer that allows Intel x86 based applications to run on Apple Silicon). However, Electron running under Rosetta 2 is very slow, to the point where it's mostly unusable. Be mindful of this when building for Mac, and prefer the arm64 build.
+If running on a Mac computer with Apple Silicon (e.g M1, M2, etc.), you seemingly have the choice of building the application for arm64 (native) or x64. If you build for x64, the Mac will automatically use Rosetta 2 to run the device (Rosetta 2 is a compatibility layer that allows Intel x86 based applications to run on Apple Silicon). However, Electron running under Rosetta 2 is very slow, to the point where it's mostly unusable. Be mindful of this when building for Mac, and prefer the arm64 build.
 
 The disadvantage of building for arm64 is that Apple takes a much harsher stance on non-signed apps. When trying to run a non-signed arm64 app, your Mac will pop-up and tell you the app is damaged (and give you a "move to trash" option)! IMO this is too far, I'm happy with warnings about the app potentially being unsafe, but not falsely telling the user the app is damaged. A x64 app on Mac just gives you a warning about how it is blocked because it might be unsafe. You can allow it by going to System Settings.
 

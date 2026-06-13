@@ -292,7 +292,7 @@ A _ring oscillator_ (a.k.a. _RO_) is an electronic oscillator made up of a **cha
 
 <Image src={import('./_assets/ring-oscillator-triple/simulation.png')} width="700px">KiCad schematic of a three stage ring oscillator (ready for simulation).</Image>
 
-I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](/misc/oscillators/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/e.t.c inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
+I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](/misc/oscillators/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/etc. inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
 
 I then looked harder around the internet and found the `MyHCU04` SPICE model [posted on Google Groups by the late Jim Thompson](https://groups.google.com/g/sci.electronics.basics/c/k93fFgwnw-s?pli=1):
 

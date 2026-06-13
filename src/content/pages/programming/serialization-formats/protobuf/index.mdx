@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2016-12-08
 description: protobuf is an open-source, multi-language library from Google for serialising/deserialising data. Native + 3rd party support allows protobuf to be used in embedded systems.
 image: ./_assets/cover-image.webp
-lastUpdated: 2019-02-08
+lastUpdated: 2026-06-13
 tags: [protobuf, serialization, data, messaging, protocol, C++, Python, Java, CMake]
 title: protobuf
 type: page
@@ -13,7 +13,7 @@ _**protobuf**_ is an open-source, multi-language library from Google for seriali
 
 <Image src={import('./_assets/google-protobuf-logo.png')} width="300px">Icon for Google's protobuf library.</Image>
 
-It is designed as an efficient, **language agnostic** way of sending data over messaging protocols such as TCP/UDP, or UART/SPI/I2C e.t.c.
+It is designed as an efficient, **language agnostic** way of sending data over messaging protocols such as TCP/UDP, or UART/SPI/I2C etc.
 
 Source code and downloads can be found at [https://github.com/google/protobuf](https://github.com/google/protobuf).
 
@@ -29,7 +29,7 @@ An advantage of this is that they are programming language agnostic, i.e. you ca
 
 ## Valid Scalar (Primitive) Types
 
-Messages defines in .proto files can be composed of variables which have scalar (primitive) types, as well as variables which are of another message type (e.g. nested types).
+Messages defined in .proto files can be composed of variables which have scalar (primitive) types, as well as variables which are of another message type (e.g. nested types).
 
 The valid scalar types are:
 
@@ -37,25 +37,25 @@ Type        | Description
 ------------|------------------------------------------------------------------------------------
 `int32`     | Uses variable length encoding, but inefficient at encoding negative numbers.
 `int64`     | Uses variable length encoding, but inefficient at encoding negative numbers.
-`uint32`    |
-`uint64`    |
-`sint32`    |
-`sint64`    |
-`fixed32`   |
-`fixed64`   |
-`sfixed32`  | Always 32 bytes.
-`sfixed64`  | Always 64 bytes.
+`uint32`    | Uses variable length encoding.
+`uint64`    | Uses variable length encoding.
+`sint32`    | Uses variable length encoding with ZigZag encoding, efficient at encoding negative numbers.
+`sint64`    | Uses variable length encoding with ZigZag encoding, efficient at encoding negative numbers.
+`fixed32`   | Always 4 bytes.
+`fixed64`   | Always 8 bytes.
+`sfixed32`  | Always 4 bytes.
+`sfixed64`  | Always 8 bytes.
 `float`     | 32-bit floating-point number.
 `double`    | 64-bit floating-point number.
 `bool`      |
 `string`    | A string can contain UTF-8 or 7-bit ASCII encoded text.
 `bytes`     | An arbitrary sequence of bytes.
 
-Each one of these scalar types maps to a correspond type your language of choice. See [https://developers.google.com/protocol-buffers/docs/proto#scalar](https://developers.google.com/protocol-buffers/docs/proto#scalar) for more details.
+Each one of these scalar types maps to a corresponding type in your language of choice. See [https://developers.google.com/protocol-buffers/docs/proto#scalar](https://developers.google.com/protocol-buffers/docs/proto#scalar) for more details.
 
 ## Reading From A Protobuf
 
-## C++
+### C++
 
 For each field in your message, protobuf provides a function that will return a const reference to the value.
 
@@ -66,7 +66,7 @@ std::cout << "x = " << myMessage.x() << std::endl;
 
 ## Writing To A Protobuf
 
-## C++
+### C++
 
 Protobuf messages can be modified in many different ways.
 
@@ -80,7 +80,7 @@ For each non-primitive field in your message (e.g. another message type), protob
 
 ```c++    
 Header header;
-myMsg.set_allocated_header(&header)
+myMsg.set_allocated_header(&header);
 ```
 
 To modify the fields of header, you need to use the `mutable_<field_name>()` function call. e.g.
@@ -109,7 +109,7 @@ std::string dataAsString = read(...);
 myProtobufObject.ParseFromString(dataAsString);
 ```
 
-Of course, once serialized into a string, you can **send the data over a serial communications protocol**, save it to file, send over a websocket e.t.c, before deserializing at the other end!
+Of course, once serialized into a string, you can **send the data over a serial communications protocol**, save it to file, send over a websocket etc., before deserializing at the other end!
 
 **Do you need a library for sending serial data** to/from a communication bus like UART, SPI or I2C? I recommend you have a look at [SerialFiller](https://github.com/gbmhunter/SerialFiller), a C++ serial publish/subscribe based communication protocol by myself (shameless plug).
 

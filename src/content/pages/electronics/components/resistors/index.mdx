@@ -28,7 +28,7 @@ Resistors are used for a huge number of purposes, including:
 * **Current limiting**: Power an LED from a fixed voltage rail.
 * **Op-amp gain/feedback configuration**: Resistors (along with the occasional capacitor) are used to set the gain/feedback of op-amps. 
 * **Impedance matching**
-* **Current measuring**: Resistors convert a current into a voltage, which is easily measurable by op-amps/ADCs/e.t.c.
+* **Current measuring**: Resistors convert a current into a voltage, which is easily measurable by op-amps/ADCs/etc.
 * **GPIO/communication bus pull-up/pull-downs**: To drive nets into passive states, for example to keep the gate tied to source so it's always OFF unless driven on. Also to drive communication bus lines into passive states, especially buses that use arbitration (e.g. I2C, CAN bus).
 
 ## Child Pages
@@ -171,7 +171,7 @@ $$
 The input voltage "divides" itself across the resistors proportionally based on relative resistances. The more resistance of any one resistor, the greater amount of voltage that will drop across it. You can easily reach the above equation by applying Ohm's law to the circuit.
 
 <Aside type="tip">
-The above equation **only holds true** when the input voltage source is of sufficiently low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
+The above equation **only holds true** when the input voltage source is of sufficiently low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, etc.).
 </Aside>
 
 During circuit design, you will encounter times when you have three knowns from the equation above but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with $V_{IN}$ and $R1$ being able to be simplified slightly):
@@ -320,7 +320,7 @@ For non-repetitive, high precision values, you can actually tweak a resistors va
 
 ## The E Series
 
-Practically all resistors follow an _E series_, a **scale of predefined resistances** that have standardised by IEC 60063. This type of sequence is called [preferred numbers](https://en.wikipedia.org/wiki/Preferred_number). Common E series are the E12, E24, E48, E96 and E192 series. The series divides the numbers between 1 and 10 into 12, 24, 48, e.t.c steps. The steps are chosen so that maximum relative error between any resistance you want and the closest resistance in the series is fixed (i.e. constant).
+Practically all resistors follow an _E series_, a **scale of predefined resistances** that have standardised by IEC 60063. This type of sequence is called [preferred numbers](https://en.wikipedia.org/wiki/Preferred_number). Common E series are the E12, E24, E48, E96 and E192 series. The series divides the numbers between 1 and 10 into 12, 24, 48, etc. steps. The steps are chosen so that maximum relative error between any resistance you want and the closest resistance in the series is fixed (i.e. constant).
 
 Simply, this means that each series guarantees you will be able to find a resistor that equals the resistance you need within a **fixed maximum percentage error**.
 
@@ -391,11 +391,11 @@ Metal film resistors are the most popular resistor in today's market. They have 
 
 #### Thick Metal Film
 
-Thick film is the most common type of metal film resistor. Most 1% and 5% SMD chip package resistors (0402, 0603, e.t.c) use thick film technology.
+Thick film is the most common type of metal film resistor. Most 1% and 5% SMD chip package resistors (0402, 0603, etc.) use thick film technology.
 
 #### Thin Metal Film
 
-Most 0.1% SMD chip package resistors (0402, 0603, e.t.c) use thin film technology. Thin film resistors can be split into two sub-categories, commercial thin-film and precision thin-film.
+Most 0.1% SMD chip package resistors (0402, 0603, etc.) use thin film technology. Thin film resistors can be split into two sub-categories, commercial thin-film and precision thin-film.
 
 ### Metal Foil
 

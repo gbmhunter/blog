@@ -32,9 +32,9 @@ Let's explore some of Rust's language features and how they are applicable to em
 
 ### Ownership
 
-One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, e.t.c.). **These benefits that Rust provides are just as applicable to embedded firmware as they are to software.**
+One of the core differences between Rust and C/C++ is that Rust implements a robust ownership model into the programming language. This prevents many memory-related bugs that can occur in C/C++ (think memory leaks, dangling pointers, etc.). **These benefits that Rust provides are just as applicable to embedded firmware as they are to software.**
 
-For anything but basic primitive data types that live on the stack (primitive data types include `u32`, `bool`, `f64`, e.t.c), Rust will move data when the assignment operator is used, rather than perform a copy. The following example shows how the compiler enforces that only one variable may own a piece of data at once.
+For anything but basic primitive data types that live on the stack (primitive data types include `u32`, `bool`, `f64`, etc.), Rust will move data when the assignment operator is used, rather than perform a copy. The following example shows how the compiler enforces that only one variable may own a piece of data at once.
 
 ```rust
 let s1 = String::from("hello"); // Create complex data type which involves the use of the heap
@@ -52,7 +52,7 @@ Rather than transfer ownership, Rust also lets you "borrow" data via references.
 
 ### Peripheral Access
 
-**A big part of writing firmware is interacting with peripherals (GPIO, UART, USB, DMA, e.t.c.).** Most peripherals are memory mapped -- i.e. you read/write to "magic" memory addresses to control the peripheral. The standard way of accessing peripherals in Rust is to use a Peripheral Access Crate or PAC. More likely than not, there will already be a PAC for the particular microcontroller you are using.
+**A big part of writing firmware is interacting with peripherals (GPIO, UART, USB, DMA, etc.).** Most peripherals are memory mapped -- i.e. you read/write to "magic" memory addresses to control the peripheral. The standard way of accessing peripherals in Rust is to use a Peripheral Access Crate or PAC. More likely than not, there will already be a PAC for the particular microcontroller you are using.
 
 For example, the `cortex_m` crate provides access to the peripherals that are shared across all Cortex-M devices (e.g. the NVIC interrupts, SysTick). You can "claim" the peripherals by calling `take().unwrap()`:
 
@@ -70,7 +70,7 @@ nvic.enable(Interrupt::TIM2);
 
 Note that a singleton pattern is employed -- you can only call `take()` once and have it return `Some<T>`. The next time it will return `None` and then calling `unwrap()` will cause a panic. You would typically `take()` at the start of your high-level `main()` or `App` class.
 
-The other peripherals that aren't part of the Cortex-M architecture (such as UARTs, timers, PWMs, e.t.c.) are normally found in a different crate for your particular microcontroller. For example, if I was using a STM32F30x microcontroller, I would add the appropriate PAC crate and then be able to write: 
+The other peripherals that aren't part of the Cortex-M architecture (such as UARTs, timers, PWMs, etc.) are normally found in a different crate for your particular microcontroller. For example, if I was using a STM32F30x microcontroller, I would add the appropriate PAC crate and then be able to write: 
 
 ```rust
 let mut peripherals = stm32f30x::Peripherals::take().unwrap(); // Again, will work only once!
@@ -109,7 +109,7 @@ output_pin.set(true);
 
 ### Traits
 
-Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The [embedded-hal](https://github.com/rust-embedded/embedded-hal) project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, e.t.c. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL. More on this in the [cargo and Package Structure section](#cargo-and-package-structure).
+Rust supports ad-hoc polymorphism via its concept of _traits_. As a really basic example, both float and integer types implement the `Add` trait because they can be added. The [embedded-hal](https://github.com/rust-embedded/embedded-hal) project leverages traits by defining traits for things such as GPIO pins (input and output), UART, I2C, SPI, ADC, etc. These generic interfaces can be used by the application code, and underneath the vendor specific drivers implement the correct functionality for each particular microcontroller. This is very similar to how virtual interface classes in C++ are used to create a portable HAL. More on this in the [cargo and Package Structure section](#cargo-and-package-structure).
 
 For example, the `serial::Read` and `Write` traits are defined as[^embedded-hal-serial-traits]:
 
@@ -167,7 +167,7 @@ fn no_decaying_to_pointer(arr: &[i8]) {
 
 ### Concurrency
 
-Concurrency is something you have to concern yourself about in embedded firmware when it comes to interrupts and multiple threads/cores (e.g. running a RTOS). One of the first times you'll encounter concurrency concerns is when updating variables from within an interrupt. In C/C++, the use of `volatile` and critical sections is generally the way the problem is solved. When using multiple threads, RTOS primitives such as mutexes/queues/e.t.c are used to prevent data corruption.
+Concurrency is something you have to concern yourself about in embedded firmware when it comes to interrupts and multiple threads/cores (e.g. running a RTOS). One of the first times you'll encounter concurrency concerns is when updating variables from within an interrupt. In C/C++, the use of `volatile` and critical sections is generally the way the problem is solved. When using multiple threads, RTOS primitives such as mutexes/queues/etc. are used to prevent data corruption.
 
 In Rust, you can also use critical sections to prevent data races in interrupts.
 
@@ -273,11 +273,11 @@ let num_bytes = match uart_write_bytes(&data) {
 
 ### no_std
 
-One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which **does not contain any APIs which assume/require the use of an operating system**. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, e.t.c) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
+One of the reasons Rust feels like it has first-tier embedded support is the standardized `#![no_std]` crate-level attribute. This attribute indicates the crate will link to the `core-crate` instead of the `std-crate`. The `core-crate` is a subset of the `std-crate` which **does not contain any APIs which assume/require the use of an operating system**. This `no_std` is a perfect fit for bare-metal or custom RTOS environments. It provides the basic features such as primitives (floats, strings, slices, etc.) and generic processor features such as atomic operations and SIMD instructions. However, it does not provide any API to create things such as threads, file-system access, or the ability to make system calls.
 
 Another thing you don't get with `no_std` is the initialization which sets up stack overflow protection and spawns a thread to call `main()`. So in embedded `no_std` development you define which function you want as your "main". 
 
-`no_std` also means that by default, you don't get any way to dynamically allocate memory on the heap. This might seem strange at first, because in embedded C development you typically have `malloc()/free()` and friends, and in C++ you have `new/delete`. No dynamic memory allocations means that you can't use any objects that rely on it (dynamic arrays or strings), and it Rust these are called collections (`Vec`, `Box`, `BTreeMap`, e.t.c). In some cases having no dynamic memory allocation in firmware is fine (and in-fact preferable or required...e.g. MISRA). However there are some good use cases for dynamic memory allocation (my general rule for non life-threatening applications is to allow it, but only during initialization). Luckily you can enable it as long as their is a suitable allocator for your microcontroller architecture. For example, the [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) crate provides a custom allocator for the Cortex-M architecture. You can then also use the standard Rust collections (but be careful with them!).
+`no_std` also means that by default, you don't get any way to dynamically allocate memory on the heap. This might seem strange at first, because in embedded C development you typically have `malloc()/free()` and friends, and in C++ you have `new/delete`. No dynamic memory allocations means that you can't use any objects that rely on it (dynamic arrays or strings), and it Rust these are called collections (`Vec`, `Box`, `BTreeMap`, etc.). In some cases having no dynamic memory allocation in firmware is fine (and in-fact preferable or required...e.g. MISRA). However there are some good use cases for dynamic memory allocation (my general rule for non life-threatening applications is to allow it, but only during initialization). Luckily you can enable it as long as their is a suitable allocator for your microcontroller architecture. For example, the [alloc-cortex-m](https://github.com/rust-embedded/alloc-cortex-m) crate provides a custom allocator for the Cortex-M architecture. You can then also use the standard Rust collections (but be careful with them!).
 
 `no_std` also means you have to define what `panic` does. In embedded development, you are not allowed to return from the panic function, as it is forced to have the signature `fn(&PanicInfo) -> !`. There are a few 3rd party crates you can include which useful for panicking in embedded firmware:
 
@@ -313,7 +313,7 @@ Another nice thing about cargo and embedded is that the community seems to have 
 
 * **Peripheral Access Crates (PACs):** Contains the minimal naming of memory-mapped registers that control microcontroller peripherals.
 * **Architecture Support Crate:** Contains APIs to control the CPU and peripherals that are shared across a CPU architecture (e.g. API for controlling interrupts, system ticks).
-* **Hardware Abstraction Layers (HALs):** Wraps up the PAC registers into easy-to-use peripheral APIs such as `uart.init()`, `uart.write_byte()`, `adc.read_value()`, e.t.c. Although not unique to Rust, we might expect better standardization of the HALs in Rust because of `embedded-hal`'s effort to keep it consistent across MCU families. In C/C++, the API of the HAL is usually unique to either the MCU family (STM32, SAMD, e.t.c) or the framework (Arduino, mbed, e.t.c).
+* **Hardware Abstraction Layers (HALs):** Wraps up the PAC registers into easy-to-use peripheral APIs such as `uart.init()`, `uart.write_byte()`, `adc.read_value()`, etc. Although not unique to Rust, we might expect better standardization of the HALs in Rust because of `embedded-hal`'s effort to keep it consistent across MCU families. In C/C++, the API of the HAL is usually unique to either the MCU family (STM32, SAMD, etc.) or the framework (Arduino, mbed, etc.).
 * **Board Support Crate:** This crate is built for a specific PCB project that contains the microcontroller. The Board Support Crate uses the HAL and creates appropriately named instances of HAL objects according to how the MCU is connected to the physical world. It's an optional extra crate that is a good idea if you are designing a board to be used by many people for many different proposes. For a single-use project, the extra overhead of creating a board support crate might not be worth it, and instead you can bundle this code inside the Application.
 * **Real-time Operating System (RTOS):** Just like in C/C++ firmware development, you can also get RTOSes for Rust. Some of these are ports/wrappers of C/C++ RTOSes like FreeRTOS, and others a developed-from-scratch RTOSes for Rust. Using a RTOS is completely optional, and usually makes sense for larger, complex firmware applications.
 * **Application:** The final layer of any firmware project, this contains the high-level business logic. The application layer generally reaches down and makes calls to the RTOS (if present) and HAL layer.
@@ -324,7 +324,7 @@ This structure is shown in the image below:
 
 ### cargo Features
 
-It is common in embedded firmware to want to be able to include/exclude blocks of code based on conditionals (e.g. `DEBUG` vs. `PRODUCTION`, or `ENABLE_LARGE_LUT_ARRAY`) for reasons such as freeing up memory usage by removing debug strings in production builds or including architecture specific code depending on the compile target (so you can target more than one microcontroller with the same code base). In C/C++ land, this is commonly implemented using preprocessor directives (`#ifdef`, e.t.c). However, there in no preprocessor in Rust. The idiomatic way to solve this problem in Rust is to use [Cargo features](https://doc.rust-lang.org/cargo/reference/features.html#the-features-section).
+It is common in embedded firmware to want to be able to include/exclude blocks of code based on conditionals (e.g. `DEBUG` vs. `PRODUCTION`, or `ENABLE_LARGE_LUT_ARRAY`) for reasons such as freeing up memory usage by removing debug strings in production builds or including architecture specific code depending on the compile target (so you can target more than one microcontroller with the same code base). In C/C++ land, this is commonly implemented using preprocessor directives (`#ifdef`, etc.). However, there in no preprocessor in Rust. The idiomatic way to solve this problem in Rust is to use [Cargo features](https://doc.rust-lang.org/cargo/reference/features.html#the-features-section).
 
 All Cargo features have to defined under `[features]` in the `Cargo.toml`. For example:
 

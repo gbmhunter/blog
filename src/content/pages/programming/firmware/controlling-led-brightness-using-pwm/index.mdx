@@ -220,7 +220,7 @@ def createCieLightnessToPwmDutyLut(numLightnessValues, pwmBits, filename: str):
         file.write('\n};\n')
 ```
 
-Below is the same LUT, but with the output rounded to the closest integer (i.e. add +0.5, then cast the float to an int). This might give better results? At first I thought so, but then I realized that there will be less 0's, more 1's, and then a monotonic decrease in frequency of 2's, 3's, e.t.c. Because of this skewing of the 0's I'm not sure it's the right approach.
+Below is the same LUT, but with the output rounded to the closest integer (i.e. add +0.5, then cast the float to an int). This might give better results? At first I thought so, but then I realized that there will be less 0's, more 1's, and then a monotonic decrease in frequency of 2's, 3's, etc. Because of this skewing of the 0's I'm not sure it's the right approach.
 
 ```c
 const uint8_t CIE_LIGHTNESS_TO_PWM_LUT_256_IN_8BIT_OUT[] = {

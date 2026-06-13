@@ -9,7 +9,7 @@ title: C++ Callbacks (and giving member functions to C-style callbacks)
 type: page
 ---
 
-Callbacks are functions (or more generally --- any object that is callable) which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing. They are useful for eliminating dependencies between modules, and are used for example for libraries to call your application code.
+Callbacks are functions (or more generally --- any object that is callable) which are passed to other functions (or modules, libraries etc.) that then call the function at their choosing. They are useful for eliminating dependencies between modules, and are used for example for libraries to call your application code.
 
 <Image src={import('./_assets/callback.png')} width="500px"/>
 
@@ -320,7 +320,7 @@ int main()
 }
 ```
 
-Although `std::function` is nice because it can be used to call pretty much anything (static functions, member functions, lambdas, e.t.c.), I'm not a big fan of using `std::bind` as it:
+Although `std::function` is nice because it can be used to call pretty much anything (static functions, member functions, lambdas, etc.), I'm not a big fan of using `std::bind` as it:
 
 * Seems to always require dynamic memory allocation on creation of the `std::function` object (not when calling it though!).
 * Is really slow to call (see the benchmarking section below).

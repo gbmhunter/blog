@@ -104,7 +104,7 @@ _start:
     ... more code here ...
 ```
 
-Now, printing `Hello, world!` requires the use of a Linux system call to print the text to `stdout` (specifically, `sys_write`). We will use the Linux fastcall convention which allows us to put the input arguments into registers, rather than on the stack. The system call number is placed in `eax`, and the arguments in the successive registers `ebx`, `ecx`, e.t.c. The function number for `sys_write` is `4` (<a href="https://syscalls.kernelgrok.com/">see here</a>). We need to place the file we wish to write to in `ebx`, a pointer to the message (`char *`) in `ecx`, and the number of characters in `edx`.
+Now, printing `Hello, world!` requires the use of a Linux system call to print the text to `stdout` (specifically, `sys_write`). We will use the Linux fastcall convention which allows us to put the input arguments into registers, rather than on the stack. The system call number is placed in `eax`, and the arguments in the successive registers `ebx`, `ecx`, etc. The function number for `sys_write` is `4` (<a href="https://syscalls.kernelgrok.com/">see here</a>). We need to place the file we wish to write to in `ebx`, a pointer to the message (`char *`) in `ecx`, and the number of characters in `edx`.
 
 ```asm
 section .text

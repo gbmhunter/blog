@@ -12,7 +12,7 @@ A library is a collection of functions and data that can be compiled in to anoth
 
 ## Using the INTERFACE Library Type
 
-I've had luck using the CMake `INTERFACE` library type to create libraries using Zephyr. An `INTERFACE` does not build a library artifact (e.g. static library file) but rather provides a collection of source files, header files, compile rules e.t.c that other projects can "link against" (which just means incorporate --- since there is nothing to link).
+I've had luck using the CMake `INTERFACE` library type to create libraries using Zephyr. An `INTERFACE` does not build a library artifact (e.g. static library file) but rather provides a collection of source files, header files, compile rules etc. that other projects can "link against" (which just means incorporate --- since there is nothing to link).
 
 This shows an example of the libraries `CMakeLists.txt` file.
 

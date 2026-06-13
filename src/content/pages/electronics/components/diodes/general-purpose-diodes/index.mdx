@@ -17,7 +17,7 @@ General purpose diodes are just what they say they are -- simple diodes with no 
 
 On schematics, general purpose diodes use the reference designator `D` (as do almost all types of diodes) and use the following symbol (most other types of diodes DO NOT use this symbol, they use slightly adjusted versions).
 
-<Image src={import('./_assets/general-purpose-diode-schematic-symbol.svg')} width="300px">The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Current can only flow from anode to cathode, but not the other way around. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.</Image>
+<Image src={import('./_assets/general-purpose-diode-schematic-symbol.svg')} width="300px">The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Current can only flow from anode to cathode, but not the other way around. Most other types of diodes (Schottky, Zener, etc.) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.</Image>
 
 <Aside type="tip">
 A handy mnemonic for remembering the polarity of a diode is to remember that the triangle in the symbol points in the direction of "forward" current (current when the diode is forward conducting).
@@ -97,7 +97,7 @@ The short answer: No!
 
 The slightly longer answer...
 
-Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg (called a ballast). They should be identical in resistance and have to drop at least $0.3\text{–}0.4\unit{V}$ (when the diode has a nominal voltage drop of around $0.7\unit{V}$) to be effective.
+Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, etc., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg (called a ballast). They should be identical in resistance and have to drop at least $0.3\text{–}0.4\unit{V}$ (when the diode has a nominal voltage drop of around $0.7\unit{V}$) to be effective.
 
 ### Bridge Rectifiers
 

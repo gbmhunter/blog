@@ -326,7 +326,7 @@ You can see a full working example of this code on GitHub at [gbmhunter/c-inheri
 
 You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style.
 
-The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component `CyUart1`, then you would be given functions such as `CyUart1_Start()`, `CyUart2_Read()`, e.t.c). This functions are not written in an OO-style.
+The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component `CyUart1`, then you would be given functions such as `CyUart1_Start()`, `CyUart2_Read()`, etc.). This functions are not written in an OO-style.
 
 The solution I propose is to create your own object-orientated UART driver, which wraps provides an interface from the imperative-style PSoC UART functions to the rest of your OO code.
 

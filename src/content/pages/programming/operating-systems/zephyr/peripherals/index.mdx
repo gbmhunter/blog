@@ -12,7 +12,7 @@ Not only does Zephyr provide you with an RTOS, but it also gives you a collectio
 
 This page aims to cover Zephyr's drivers and show examples on how to use them.
 
-The latest documentation for peripherals (UART, SPI, PWM, PIN, e.t.c.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html. Some of Zephyr's own documentation on drivers is great and teaches you by example, and other drivers are not so well written and you have to piece together code snippets littered all over the place. The automated Doxygen generation is pretty decent, but is only really useful once you know the basics -- it doesn't serve as a great intro in a driver's API and how to use it.
+The latest documentation for peripherals (UART, SPI, PWM, PIN, etc.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html. Some of Zephyr's own documentation on drivers is great and teaches you by example, and other drivers are not so well written and you have to piece together code snippets littered all over the place. The automated Doxygen generation is pretty decent, but is only really useful once you know the basics -- it doesn't serve as a great intro in a driver's API and how to use it.
 
 <Aside type="note">
 I have a GitHub library called <a href="https://github.com/gbmhunter/ZephyrCppToolkit" target="_blank">ZephyrCppToolkit</a> which provides C++ wrappers over some of Zephyr's peripherals. One of the main design goals was to make it easy to mock the peripherals and test your application on Zephyr's <code>native_sim</code> board (i.e. Linux).
@@ -20,7 +20,7 @@ I have a GitHub library called <a href="https://github.com/gbmhunter/ZephyrCppTo
 
 ## Hardware Info
 
-The Zephyr Hardware Info API can be used to access the device ID and reset cause of a microcontroller. The reset cause comes from a list of standardised reasons that apply to most microcontrollers such as reset pin, a software reset, a watchdog timer reset, brownout reset, debug event, e.t.c (not all reset causes may be applicable to a particular microcontroller).
+The Zephyr Hardware Info API can be used to access the device ID and reset cause of a microcontroller. The reset cause comes from a list of standardised reasons that apply to most microcontrollers such as reset pin, a software reset, a watchdog timer reset, brownout reset, debug event, etc. (not all reset causes may be applicable to a particular microcontroller).
 
 `hwinfo_get_reset_cause()` sets a uint32_t with each bit representing a different reason for reset (a bit field). More than 1 bit can be set. Below is a C function which decodes the reset cause bit field returned from `hwinfo_get_reset_cause()` and creates a human-readable string of the reset reason(s) (great for logging).
 

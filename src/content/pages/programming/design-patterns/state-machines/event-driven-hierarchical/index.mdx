@@ -115,7 +115,7 @@ Another solution would be to use blocking code and just accept that the state ma
 
 ### Sometimes You Have To Call Libraries That Block
 
-Sometimes you are left with no choice --- you have to call code outside of your control that will block (be it a peripheral driver function, OS call, library call e.t.c.). In this case, you are left with a few options:
+Sometimes you are left with no choice --- you have to call code outside of your control that will block (be it a peripheral driver function, OS call, library call etc.). In this case, you are left with a few options:
 
 1. Move the blocking code into a separate worked thread which is started by the state machine. An event is posted back to the state machine when the blocking code is finished.
 1. Just accept that the state machine will not be responsive while the blocking code is running. This may be ok in certain cases. If you have other code that does need to be responsive, perhaps you could move that into a different state machine in a different thread?

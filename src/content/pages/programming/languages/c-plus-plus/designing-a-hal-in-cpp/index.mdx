@@ -7,7 +7,7 @@ title: Designing a HAL in C++
 type: page
 ---
 
-Using C++ for an embedded system? Great! At some point you might find yourself needing (or wanting) to implement a HAL (Hardware Abstraction Layer) atop of your hardware peripherals (e.g. for the uninitiated, a HAL typically includes things like GPIO drivers, UART drivers, e.t.c.). Why? Perhaps there is not one provided by your MCU vendor (although this is rare these days), or perhaps the existing one doesn't work well (unfortunately not as rare), or perhaps it doesn't easily provide the ability to mock it for testing (very common). You might have specific requirements on what you want the HAL to be able to do. Vendor provided or framework provided HAL layers can be hard to test.
+Using C++ for an embedded system? Great! At some point you might find yourself needing (or wanting) to implement a HAL (Hardware Abstraction Layer) atop of your hardware peripherals (e.g. for the uninitiated, a HAL typically includes things like GPIO drivers, UART drivers, etc.). Why? Perhaps there is not one provided by your MCU vendor (although this is rare these days), or perhaps the existing one doesn't work well (unfortunately not as rare), or perhaps it doesn't easily provide the ability to mock it for testing (very common). You might have specific requirements on what you want the HAL to be able to do. Vendor provided or framework provided HAL layers can be hard to test.
 
 Objectives:
 

@@ -38,7 +38,7 @@ Any time a variable may be changed outside the flow of control of a piece of cod
 
 What `volatile` **should not be** used for:
 
-* Guaranteeing thread safe access of a shared variable between two threads. `volatile` provides some, but not all of the guarantees required for thread safe access. Other threading objects such as memory barriers, mutexes e.t.c are required, but these also provide the guarantees that `volatile` does, so `volatile` is not needed in this use case.
+* Guaranteeing thread safe access of a shared variable between two threads. `volatile` provides some, but not all of the guarantees required for thread safe access. Other threading objects such as memory barriers, mutexes etc. are required, but these also provide the guarantees that `volatile` does, so `volatile` is not needed in this use case.
 
 ## The Use Of volatile With Buffers 
 

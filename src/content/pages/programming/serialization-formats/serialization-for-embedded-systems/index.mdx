@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2024-04-24
 description: When sending data between two microcontrollers (or between a microcontroller and a computer/server, e.g. IoT), you'll need some method of serializing and deserializing the data. This page details one such method leveraging the protobuf standard and the Nanopb library.
-lastUpdated: 2024-10-10
+lastUpdated: 2026-06-13
 tags: [serialization, protobuf, Nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters, options]
 title: Serialization for Embedded Systems
 type: page
@@ -28,7 +28,7 @@ protobuf is a schema-based binary serialization format developed by Google. It i
 1. A compiler that takes the `.proto` file and generates objects representing each message in the target language.
 1. A runtime library that provides functions to serialize and deserialize messages.
 
-Protobuf serializes each variable in a message into a tag (a unique variable ID) and the variable value. Providing a tag for each variable in a message might seem like a waste. Why not just send them in order and get rid of all the bytes that the tags take up? The reason is to allow for both forwards and backwards compatibility when the message format changes. The ids allow newer code to receive an old message and create default values for variables that are not present, and older code to receive a new message and just ignore variables that it doesn't know about. It also allows for optional variables and for the ability to just not send the variable if it's set to it's default value.
+Protobuf serializes each variable in a message into a tag (a unique variable ID) and the variable value. Providing a tag for each variable in a message might seem like a waste. Why not just send them in order and get rid of all the bytes that the tags take up? The reason is to allow for both forwards and backwards compatibility when the message format changes. The ids allow newer code to receive an old message and create default values for variables that are not present, and older code to receive a new message and just ignore variables that it doesn't know about. It also allows for optional variables and for the ability to just not send the variable if it's set to its default value.
 
 Let's look at a basic example to see how protobuf works. Here is a simple `.proto` file:
 
@@ -56,9 +56,9 @@ Value Encoded Msg.
 
 protobuf supports a lot of nice types like `string` which is useful in the embedded world for serializing arbitrary length `char *`. It also supports `bytes` which is useful for serializing binary data. It also supports `repeated` which is useful for serializing arbitrary length arrays of other types.
 
-One of it's downsides for embedded systems is the lack of small variable types. It provides `uint32` and `bytes` type (array of bytes), but no `uint8`, `uint16` or bit fields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using Nanopb, by default `uint32`s, will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, Nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use smaller type (presumably an error is thrown during decoding if Nanopb received an encoded number that doesn't fit in the smaller type).
+One of its downsides for embedded systems is the lack of small variable types. It provides `uint32` and `bytes` type (array of bytes), but no `uint8`, `uint16` or bit fields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using Nanopb, by default `uint32`s, will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, Nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use a smaller type (presumably an error is thrown during decoding if Nanopb received an encoded number that doesn't fit in the smaller type).
 
-If the lack of smaller types is a show stopper for you, have a look at [bitproto](https://bitproto.readthedocs.io/en/latest/) (more on this in the [Alternatives](#alternatives) section).
+If the lack of smaller types is a show stopper for you, have a look at [bitproto](https://bitproto.readthedocs.io/en/latest/)[^bitproto-homepage] (more on this in the [Alternatives](#alternatives) section).
 
 protobuf knows how to decode a sequence of received bytes into a message as long as you know:
 
@@ -67,22 +67,22 @@ protobuf knows how to decode a sequence of received bytes into a message as long
 
 This leaves you with two problems if you are sending the encoded bytes in a stream-like fashion, i.e. across a UART:
 
-1. How do you know the type of the message, if you want to send more that one type of message?
+1. How do you know the type of the message, if you want to send more than one type of message?
 1. How do you know when one message ends and the next one starts?
 
 ## Protobuf Defaults
 
 protobuf does not send message fields that are set to their default value. In `proto3` there is no ability to set a user-defined default value (there were good reasons for this, relating to portability across multiple languages). Instead, protobuf uses the following default values:
 
-* `uint32`, `int32`, `sint32`, `fixed32`, `sfixed32`: 0
-* `bool`: false
-* `string`, `bytes`, `repeated`: Array with 0 elements
-* `Enum`: First value in the enum (which is always 0 in proto3).
-* `Message`: Language-specific representation of `null`
+- `uint32`, `int32`, `sint32`, `fixed32`, `sfixed32`: 0
+- `bool`: false
+- `string`, `bytes`, `repeated`: Array with 0 elements
+- `Enum`: First value in the enum (which is always 0 in proto3).
+- `Message`: Language-specific representation of `null`
 
-Because of this, you have to be careful when considering basing logic around the "presence" of fields in the message. By default, for all field types except `Message` (i.e. all _scalar_ types), you **cannot distinguish between a field that was set to it's default value and a field that was not assigned to at all**. You can detect the presence of `Message` because it will be set to `null` if not assigned to (as per above).
+Because of this, you have to be careful when considering basing logic around the "presence" of fields in the message. By default, for all field types except `Message` (i.e. all _scalar_ types), you **cannot distinguish between a field that was set to its default value and a field that was not assigned to at all**. You can detect the presence of `Message` because it will be set to `null` if not assigned to (as per above).
 
-protobuf provides an `optional` modifier if you do need to detect presence of scalar types. In this case, protobuf will send the field if it is set to it's default value. How the encoder works out that the field was set is language specific. On the receiving/decoding side, protobuf provide an language specific API to check if the field was set or not, as well as it's value.
+protobuf provides an `optional` modifier if you do need to detect presence of scalar types. In this case, protobuf will send the field if it is set to its default value. How the encoder works out that the field was set is language specific. On the receiving/decoding side, protobuf provides a language-specific API to check if the field was set or not, as well as its value.
 
 ## The Message Type
 
@@ -151,9 +151,9 @@ For example, you could pick the end-of-packet delimiter to be `0xFE` (it's a goo
 
 Then during encoding:
 
-* Every time we come across the end-of-packet delimiter `0xFE`, replace it with `0xFC 0x00`.
-* Every time we come across the start-of-packet delimiter `0xFD`, replace it with `0xFC 0x01`.
-* Every time we come across the escape character `0xFC`, replace it with `0xFC 0x02` (this is escaping the escape character).
+- Every time we come across the end-of-packet delimiter `0xFE`, replace it with `0xFC 0x00`.
+- Every time we come across the start-of-packet delimiter `0xFD`, replace it with `0xFC 0x01`.
+- Every time we come across the escape character `0xFC`, replace it with `0xFC 0x02` (this is escaping the escape character).
 
 Now we have a message which is guaranteed to have no `0xFE` nor `0xFD` bytes in it, as we can safely prefix and suffix these bytes to the message as unique start-of-packet and end-of-packet identifiers.
 
@@ -176,7 +176,7 @@ And then framed:
 0xFD 0x08 0xFC 0x00 0x01 0xFC 0x02 0xAA 0xFE
 ```
 
-This is what the sender send across the communication channel, e.g. UART, SPI, etc.
+This is what the sender sends across the communication channel, e.g. UART, SPI, etc.
 
 What does the receiver do? The receiver throws away bytes until it receives a start-of-packet delimiter. Then it buffers received bytes until it receives an end-of-packet delimiter. Then it performs the reverse of the escaping process to get the original protobuf encoded message. This can then be decoded with protobuf if you used the `oneof` method above.
 
@@ -200,7 +200,7 @@ import "nanopb.proto";
 
 ### Nanopb Options
 
-Nanopb provides a number of special options you can specify in the `.proto` file which are used to avoid dynamic memory allocation (or the need for callbacks, and to reduce the memory footprint of the structs by allowing sizes smaller than 32-bits) and allow Nanopb to generate fixed sized structs for holding message data. These additional options don't prevent you from compiling the `.proto` file for Python e.t.c with the official compiler, but you do have make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language[^nanopb-api-reference].
+Nanopb provides a number of special options you can specify in the `.proto` file which are used to avoid dynamic memory allocation (or the need for callbacks, and to reduce the memory footprint of the structs by allowing sizes smaller than 32-bits) and allow Nanopb to generate fixed sized structs for holding message data. These additional options don't prevent you from compiling the `.proto` file for Python etc. with the official compiler, but you do have to make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language[^nanopb-api-reference].
 
 Installing nanopb also provides a version of `protoc` (the official protobuf compiler) that you can use.
 
@@ -217,10 +217,10 @@ message Image {
 nanopb will generate a struct with 256 bytes for the `data` field:
 
 ```c
-typedef PB_BYTES_ARRAY_T(256) BinaryData_data_t;
-typedef struct _BinaryDataSet {
-    BinaryData_data_t data;
-} BinaryData;
+typedef PB_BYTES_ARRAY_T(256) Image_data_t;
+typedef struct _Image {
+    Image_data_t data;
+} Image;
 ```
 
 #### max_count for repeated
@@ -232,8 +232,8 @@ You can use `max_count` to specify the maximum number of elements in a repeated 
  * Represents a single x,y cartesian point.
  */
 message Point {
-    float x = 1; // x coordinate, in the rang [0, 1].
-    float y = 2; // y coordinate, in the rang [0, 1].
+    float x = 1; // x coordinate, in the range [0, 1].
+    float y = 2; // y coordinate, in the range [0, 1].
 }
 
 message PointsArray {
@@ -245,8 +245,8 @@ nanopb will generate a struct with 10 elements for the `points` field, along wit
 
 ```c
 typedef struct _Point {
-    uint32_t x; /* x coordinate, in the rang [0, 1]. */
-    uint32_t y; /* y coordinate, in the rang [0, 1]. */
+    float x; /* x coordinate, in the range [0, 1]. */
+    float y; /* y coordinate, in the range [0, 1]. */
 } Point;
 
 typedef struct _PointsArray {
@@ -268,7 +268,7 @@ message HelloMsg {
 nanopb will generate a struct with a `char` array of length 41 for the `text` field (+1 to allow for the null terminator):
 
 ```c
-typedef struct _HelloMsgSet {
+typedef struct _HelloMsg {
     char text[41];
 } HelloMsg;
 ```
@@ -277,7 +277,7 @@ No length is needed because the string length is determined by the null characte
 
 #### int_size
 
-You can use the Nanopb option `int_size` with `IS_8`, `IS_16`, e.t.c to specify the exact size of integer fields in the struct. The standard `.proto` syntax doesn't allow you to specify a smaller integer type than 32-bits (note though that it does compress small integers stored in these fields to a smaller number of bytes when sending them over the wire). This allows you to specify a smaller integer type in the generated struct, which is useful for saving on precious RAM on your MCU, especially for repeated fields.
+You can use the Nanopb option `int_size` with `IS_8`, `IS_16`, etc. to specify the exact size of integer fields in the struct. The standard `.proto` syntax doesn't allow you to specify a smaller integer type than 32-bits (note though that it does compress small integers stored in these fields to a smaller number of bytes when sending them over the wire). This allows you to specify a smaller integer type in the generated struct, which is useful for saving on precious RAM on your MCU, especially for repeated fields.
 
 ```proto
 import "nanopb.proto";
@@ -288,15 +288,15 @@ message Frame {
 }
 ```
 
-When using `IS_8`, `IS_16`, e.t.c, the "sign-ness" of the integer type is preserved based on the original type (e.g. `uint32` vs. `int32`).
+When using `IS_8`, `IS_16`, etc., the "sign-ness" of the integer type is preserved based on the original type (e.g. `uint32` vs. `int32`).
 
 The supported types for the `int_size` option are:
 
-* `IS_DEFAULT`: Defaults to 32-bit or 64-bit depending on the protobuf type.
-* `IS_8`: `uint8_t` or `int8_t`.
-* `IS_16`: `uint16_t` or `int16_t`.
-* `IS_32`: `uint32_t` or `int32_t`.
-* `IS_64`: `uint64_t` or `int64_t`.
+- `IS_DEFAULT`: Defaults to 32-bit or 64-bit depending on the protobuf type.
+- `IS_8`: `uint8_t` or `int8_t`.
+- `IS_16`: `uint16_t` or `int16_t`.
+- `IS_32`: `uint32_t` or `int32_t`.
+- `IS_64`: `uint64_t` or `int64_t`.
 
 ## Generating Python Code
 

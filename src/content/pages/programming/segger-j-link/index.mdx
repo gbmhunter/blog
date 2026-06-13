@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2025-10-20
 description: J-Link is a suite of programming and debugging tools from SEGGER. This page covers the J-Link Commander executable, RTOS awareness, and 3rd party libraries for controlling the J-Link software.
-lastUpdated: 2025-10-21
+lastUpdated: 2026-06-13
 tags: [ARM, programming, microcontrollers, Segger, J-Link, Python, NodeJS, RTOS]
 title: SEGGER J-Link
 type: page
@@ -10,7 +10,7 @@ type: page
 
 <WarningIsNotes />
 
-## JLink Commander Executable
+## J-Link Commander Executable
 
 Installing the SEGGER J-Link [Software and Documentation Pack](https://www.segger.com/downloads/jlink) should provide you with a J-Link executable. This is called the "J-Link Commander". On Windows this is named `JLink.exe`, and is typically installed to `C:\Program Files\SEGGER\JLink_V<version>\JLink.exe` (e.g. `C:\Program Files\SEGGER\JLink_V874a\JLink.exe`).
 
@@ -21,7 +21,7 @@ Multiple versions of the J-Link Software and Documentation Pack can be installed
 Chip names are how J-Link identifies the connected device. For example, for the nRF9151 MCUs from Nordic Semiconductor, the name is `nRF9151_xxCA`.
 
 <Aside type="tip">
-If you get the warning: `Identified core does not match configuration. (Found: Cortex-M4, Configured: Cortex-M33)` while connecting, it might mean you have connected to the wrong device! This is a common occurrence when using nRF development boards to program other nRF MCUs, as the development board has it's own target MCU which will be selected if the external one cannot be found.
+If you get the warning: `Identified core does not match configuration. (Found: Cortex-M4, Configured: Cortex-M33)` while connecting, it might mean you have connected to the wrong device! This is a common occurrence when using nRF development boards to program other nRF MCUs, as the development board has its own target MCU which will be selected if the external one cannot be found.
 </Aside>
 
 ## RTOS Awareness
@@ -40,19 +40,19 @@ Files to support these RTOSs can be found in the `GDBServer` sub-directory under
 
 ## RTT
 
-Real-Time Transfer (RTT) is a feature of the J-Link that allows you to transfer arbitrary data between the host and the target microcontroller over the SWD or JTAG interface. It works by writing data to a special region of memory on the target microcontroller. The J-Link probe can read this data without interrupting the CPU and can be read a high speeds (> 1MHz). It is supported on ARM Cortex-A/R/M, RISC-V and Renesas RX architectures.[^segger-about-real-time-transfer]
+Real-Time Transfer (RTT) is a feature of the J-Link that allows you to transfer arbitrary data between the host and the target microcontroller over the SWD or JTAG interface. It works by writing data to a special region of memory on the target microcontroller. The J-Link probe can read this data without interrupting the CPU and can be read at high speeds (> 1 MHz). It is supported on ARM Cortex-A/R/M, RISC-V and Renesas RX architectures.[^segger-about-real-time-transfer]
 
-It can be a useful alternative to a traditional debug UART serial port, as it removes the need for a separate cable, allowing you to flash, debug and receive serial logs all other the same 6-pin/10-pin (typical pin numbers, yours may be different) debug connector. One significant downside to RTT is that you need to know the device family that you are connecting with before you can connect to it, e.g. `nRF52832_xxAA` when connecting to an nRF52832 MCU. This device name can be a pain to remember and/or hunt down.
+It can be a useful alternative to a traditional debug UART serial port, as it removes the need for a separate cable, allowing you to flash, debug and receive serial logs all over the same 6-pin/10-pin (typical pin numbers, yours may be different) debug connector. One significant downside to RTT is that you need to know the device family that you are connecting with before you can connect to it, e.g. `nRF52832_xxAA` when connecting to an nRF52832 MCU. This device name can be a pain to remember and/or hunt down.
 
-<IRef iref="fig-comparison-of-rtt-swo-and-semihosting"/> shows the speeds of outputting 82 characters from a MCU to a host computer using RTT, SWO and semihosting (semihosting is when the target CPU is halted and put under control of the debug host for a period of time to perform some action, e.g. read memory). Note the logarithmic y-axis!
+The figure below shows the speeds of outputting 82 characters from an MCU to a host computer using RTT, SWO and semihosting (semihosting is when the target CPU is halted and put under control of the debug host for a period of time to perform some action, e.g. read memory). Note the logarithmic y-axis!
 
-<Image iref="fig-comparison-of-rtt-swo-and-semihosting" src={import('./_assets/comparison-of-rtt-swo-and-semihosting.png')} width="500px">Comparison of RTT, SWO and semihosting speeds when outputting 82 characters from a MCU to a host computer. Data from SEGGER's J-Link RTT Client documentation.[^segger-knowledge-base-rtt]</Image>
+<Image src={import('./_assets/comparison-of-rtt-swo-and-semihosting.png')} width="500px">Comparison of RTT, SWO and semihosting speeds when outputting 82 characters from an MCU to a host computer. Data from SEGGER's J-Link RTT Client documentation.[^segger-knowledge-base-rtt]</Image>
 
 RTT supports multiple communication channels in both directions.[^segger-about-real-time-transfer] Each channel can have a direction (up vs. down), buffer size and flags associated with it. Up channels are used to send data from the target MCU to the host computer, and down channels are used to send data from the host computer to the target MCU. This is always the case, i.e. the naming convention does NOT change with respect to the device you are writing software for (as opposed to say UART, where the naming of RX and TX depends on which device you are talking about).
 
 SEGGER provides two tools to view RTT data on your computer. A command line RTT client called `JLinkRTTClient.exe` and a GUI RTT client called `J-Link RTT Viewer`. Both of these are provided as part of the J-Link Software and Documentation Pack. When you run the client, it connects to an RTT server running at `localhost:19021`. Before running the client, make sure you have started `JLink.exe` and connected to your target device. This will start up the server which the client will connect to.
 
-<Image iref="fig-screenshot-of-connection-with-segger-jlink-rtt-client" src={import('./_assets/screenshot-of-connection-with-segger-jlink-rtt-client.webp')} width="800px">Screenshot of a RTT connection in Windows with the SEGGER J-Link RTT client.</Image>
+<Image src={import('./_assets/screenshot-of-connection-with-segger-jlink-rtt-client.webp')} width="800px">Screenshot of a RTT connection in Windows with the SEGGER J-Link RTT client.</Image>
 
 By default, the JLink client will echo data back to the screen. This can be disabled by providing the command line option `-LocalEcho Off`:
 
@@ -60,7 +60,7 @@ By default, the JLink client will echo data back to the screen. This can be disa
 JLinkRTTClient.exe -LocalEcho Off
 ```
 
-J-Scope, a data visualization tool by SEGGER that can graph MCU data uses RTT as one of it's two communication channel options (SEGGER's High-Speed Sampling or HSS is the other option). J-Scope automatically reads memory on the target MCU and graphs the data in real-time.[^segger-j-scope-real-time-data-visualization]
+J-Scope, a data visualization tool by SEGGER that can graph MCU data uses RTT as one of its two communication channel options (SEGGER's High-Speed Sampling or HSS is the other option). J-Scope automatically reads memory on the target MCU and graphs the data in real-time.[^segger-j-scope-real-time-data-visualization]
 
 The channel can be configured from a RTT client by sending a Telnet command string within the first 100 ms. For example, to configure channel 5, send the following over the socket to the RTT server:[^segger-j-link-rtt-telnet-channel]
 
@@ -70,16 +70,16 @@ $$SEGGER_TELNET_ConfigStr=RTTCh;5$$
 
 This config string can also be used to control block address and control block address ranges if desired.
 
-[NinjaTerm](https://ninjaterm.mbedded.ninja/) supports RTT as a connection type, allowing you to connect to a MCU via RTT and view data (e.g. printf() output/logs) from the MCU.
+[NinjaTerm](https://ninjaterm.mbedded.ninja/) supports RTT as a connection type, allowing you to connect to an MCU via RTT and view data (e.g. printf() output/logs) from the MCU.
 
 <Image src={import('./_assets/ninjaterm-logo-and-name.png')} width="300px"/>
 
-## Square pylink
+## pylink-square
 
 `pylink` is a Python library for controlling Segger J-Link devices. It supports:
 
-* SWD
-* RTT
+- SWD
+- RTT
 
 You can install it with:
 
@@ -93,19 +93,18 @@ You will also need to install the SEGGER J-Link [Software and Documentation Pack
 The package name is called `pylink-square` and not just `pylink` (this is a different library).
 </Aside>
 
-<Image iref="fig-j-link-new-firmware-version-popup" src={import('./_assets/j-link-new-firmware-version-popup.webp')} width="400px">You might be a pop-up like this when you call jlink.open().</Image>
+<Image src={import('./_assets/j-link-new-firmware-version-popup.webp')} width="400px">You might see a pop-up like this when you call jlink.open().</Image>
 
 
 ## PhinCo/node-jlink
 
-PhinCo/node-jlink is a NodeJS driver for the SEGGER J-Link command line tool jlinkexe.[^github-phinco-node-jlink] You will also need to install the SEGGER J-Link [Software and Documentation Pack](https://www.segger.com/downloads/jlink) so that `jlinkexe` is available in your PATH to the driver..
+PhinCo/node-jlink is a NodeJS driver for the SEGGER J-Link command line tool jlinkexe.[^github-phinco-node-jlink] You will also need to install the SEGGER J-Link [Software and Documentation Pack](https://www.segger.com/downloads/jlink) so that `jlinkexe` is available in your PATH to the driver.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^github-phinco-node-jlink]: PhinCo. _PhinCo/node-jlink_ [repository]. GitHub. Retrieved 2025-10-21, from https://github.com/PhinCo/node-jlink.
-[^segger-j-link-commander]: SEGGER. _J-Link Commander_. Retrieved 2025-10-22, from https://kb.segger.com/J-Link_Comm
 [^segger-about-real-time-transfer]: SEGGER. _Real Time Transfer (RTT)_. Retrieved 2025-10-23, from https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/.
 [^segger-j-scope-real-time-data-visualization]: SEGGER. _J-Scope - Real-time data visualization_. Retrieved 2025-11-03, from https://www.segger.com/products/debug-probes/j-link/tools/j-scope/.
 [^segger-knowledge-base-rtt]: SEGGER. _RTT_ [knowledge base article]. Retrieved 2025-11-03, from https://kb.segger.com/RTT.

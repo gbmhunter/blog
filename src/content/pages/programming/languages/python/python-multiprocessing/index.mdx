@@ -15,7 +15,7 @@ Multiprocessing is especially important in Python due to the GIL (Global Interpr
 The following differences must be remembered:
 * It is much harder/slower to share data when using multiprocessing than with multithreading. The Python `multiprocessing` library supports the somewhat simple passing of data between the parent and child processes, however it requires all objects to be serializable (which puts a restriction on what data can be shared). Sharing data between child processes requires the use of OS objects such as pipes or queues.
 * New processes use more OS resources than new threads.
-* Child processes do not crash the main process if they throw an exception/seg fault e.t.c, resulting in a more resiliant application than when using multithreading.
+* Child processes do not crash the main process if they throw an exception/seg fault etc., resulting in a more resiliant application than when using multithreading.
 
 ## Multiprocessing Pools
 

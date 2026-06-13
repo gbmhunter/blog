@@ -304,7 +304,7 @@ KiCad comes with example simulation circuits located at `<KiCad installation dir
 There are a few schematic symbol parameters which have dedicated purposes for SPICE simulations. I've tried to list as many as I've encountered below:
 
 * `Fieldname`: Typically `Value`, pointing to the `Value` symbol property. Think of this as a symbol property pointer?
-* `Spice_Primitive`: This determines the _element type_ (ngspice nomenclature) `R` for resistors, `C` for capacitors, `D` for diodes, `X` for subcircuits (anything that is built out of many primitives, i.e. ICs), e.t.c. See the below table for a list of all the supported primitives.
+* `Spice_Primitive`: This determines the _element type_ (ngspice nomenclature) `R` for resistors, `C` for capacitors, `D` for diodes, `X` for subcircuits (anything that is built out of many primitives, i.e. ICs), etc. See the below table for a list of all the supported primitives.
 * `Spice_Model`: Only needed when `Spice_Primitive = X`.
 * `Spice_Lib_File`: Filename (not full path) of SPICE library component that belongs to this symbol, e.g. `ad8051.lib`. Clicking `Edit Spice Model` should bring up a dialogue box with the text from the `.lib` file.
   * The path can be either relative or absolute. If relative, it can be relative to the same directory as the `.sch` file containing the component. Use forward-slashes in the path as these work on all major platforms (even Windows).
@@ -631,7 +631,7 @@ Error: there aren't any circuits loaded.
 
 <Image src={import('./_assets/kicad-simulation-there-are-duplicate-components-error.png')} width="300px">Screenshot of the 'There are duplicate components' simulation error in KiCad.</Image>
 
-This error usually arises if you have not assigned unique designators to all components. Perhaps there are still `R?`, `C?` e.t.c designators on the schematic? Or multiple instances of properly labelled components, such as two `R1`'s. The best way to fix this is just to reset and re-annotate the schematics.
+This error usually arises if you have not assigned unique designators to all components. Perhaps there are still `R?`, `C?` etc. designators on the schematic? Or multiple instances of properly labelled components, such as two `R1`'s. The best way to fix this is just to reset and re-annotate the schematics.
 
 #### You need to select the simulation settings first
 

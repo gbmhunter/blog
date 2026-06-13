@@ -190,7 +190,7 @@ for i in range(n):
             print('hello')
 ```
 
-Naturally, we could keep going forever explaining poorer and poorer complexities ($ n^4 $, $ n^5 $, e.t.c), but I think by now you understand the concept, and these higher complexities are rarely seen in real software algorithms.
+Naturally, we could keep going forever explaining poorer and poorer complexities ($ n^4 $, $ n^5 $, etc.), but I think by now you understand the concept, and these higher complexities are rarely seen in real software algorithms.
 
 ### 2^n Time
 
@@ -224,7 +224,7 @@ In formal terms:
 
 > Amortized complexity is the total expense per operation, evaluated over a sequence of operations.
 
-For example, take the example of adding a value to an array. The array starts of being able to hold one value, and it's size is doubled every time we run out of space. When we add a value, it normally doesn't need resizing, which is $\mathcal{O}(1)$. But when adding the 1st, 2nd, 4th, 8th, 16th, e.t.c value, we need to resize the array. This takes $\mathcal{O}(n)$. The probability of having to resize the array is $ \frac{1}{n} $. This gives an amortized complexity of $ \frac{\mathcal{O}(n)}{n} = \mathcal{O}(1) $.
+For example, take the example of adding a value to an array. The array starts of being able to hold one value, and it's size is doubled every time we run out of space. When we add a value, it normally doesn't need resizing, which is $\mathcal{O}(1)$. But when adding the 1st, 2nd, 4th, 8th, 16th, etc. value, we need to resize the array. This takes $\mathcal{O}(n)$. The probability of having to resize the array is $ \frac{1}{n} $. This gives an amortized complexity of $ \frac{\mathcal{O}(n)}{n} = \mathcal{O}(1) $.
 
 :::warning
 Amortized complexity is not the same thing as average complexity.

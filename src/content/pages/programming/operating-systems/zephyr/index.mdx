@@ -315,7 +315,7 @@ Be careful with the 32-bit value from `k_cycle_get_32()`. With a fast clock, thi
 
 ### Sleep
 
-You can sleep the current thread with the `k_sleep(timeout_t timeout)` function. This function is typically used in conjunction with the timeout macros such as `K_MSEC()`, `K_SECONDS()` e.t.c to create a timeout:
+You can sleep the current thread with the `k_sleep(timeout_t timeout)` function. This function is typically used in conjunction with the timeout macros such as `K_MSEC()`, `K_SECONDS()` etc. to create a timeout:
 
 ```c
 // Sleep current thread for 1 second
@@ -969,7 +969,7 @@ There is a template test project located at `zephyr/samples/subsys/testsuite/int
 
 Twister is Zephyrs test runner tool. It is a command-line tool that collects tests, builds the test application and runs it. The best way to access it is via a subcommand of `west`, i.e. `west twister`.
 
-Twister dumps it's build output into a directory called `twister-out`. If `twister-out` already exists (i.e. twister has already been run before) then it will rename the existing directory to `twister-out1`, `twister-out2`, e.t.c. Part of the build output are the test reports. These are JUnit style XML reports that can be read by CI tools such as GitHub Actions, GitLab, Jenkins, etc. See the [Setting Up CI for Zephyr Projects](#setting-up-ci-for-zephyr-projects) section for more information.
+Twister dumps it's build output into a directory called `twister-out`. If `twister-out` already exists (i.e. twister has already been run before) then it will rename the existing directory to `twister-out1`, `twister-out2`, etc. Part of the build output are the test reports. These are JUnit style XML reports that can be read by CI tools such as GitHub Actions, GitLab, Jenkins, etc. See the [Setting Up CI for Zephyr Projects](#setting-up-ci-for-zephyr-projects) section for more information.
 
 ### Adding Native Unit Tests To Your Application
 

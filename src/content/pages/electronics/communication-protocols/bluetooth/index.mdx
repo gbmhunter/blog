@@ -394,7 +394,7 @@ Texas Instruments also has an implementation called the TI Serial Port Service (
 - Status Characteristic UUID: `f000c0e2-0451-4000-b000-00000000-0000`
 - Config Characteristic UUID: `f000c0e3-0451-4000-b000-00000000-0000`
 
-The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, e.t.c) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
+The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, etc.) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
 
 The TI status characteristic provides the following information:[^ti-serial-port-service]
 

@@ -30,7 +30,7 @@ Another point worth considering when using pogo pins is that you will not be tes
 
 You typically need to control the test jig to perform the testing. While you could use a microcontroller to do this, it is generally a better idea to use a operating system such as Windows or Linux. This allows you to easily develop the software in a language such as Python, connect to external databases to records the results, and use a variety of tools to help you debug and test the software. If parts of the testing required real-time control that a general purpose OS is not capable of, you can complement the OS with a microcontroller to do the real time aspects.
 
-Python is a great language for this as it's quick to write, has a large library of tools for interfacing with embedded devices (e.g. serial ports, programmers, I/O boards, e.t.c.) and is easy to debug.
+Python is a great language for this as it's quick to write, has a large library of tools for interfacing with embedded devices (e.g. serial ports, programmers, I/O boards, etc.) and is easy to debug.
 
 You might be tempted to use a unit test library to structure the software. However, unit test software is designed to run small tests that are independent and isolated from each other. This does not fit end-of-production line testing, as many of the tests require strict ordering and depend on other tests passing. For example, you can't really test much prior to programming the device. Then configuration and other communication may have to occur before the main tests.
 
@@ -195,7 +195,7 @@ Only devices which pass all the tests are added to the provisioned devices table
 - `id`: Unique incrementing integer that can identify a provisioned device.
 - `serial_number`: The serial number of the device being tested. This could be any form of unique identifier, such as a MAC address, MCU serial number, or one programmed onto the device yourself.
 - `pcb_version`: The version of the PCB that was tested.
-- `firmware_version`: The version of the firmware that was programmed onto the device (if applicable). For more complex devices, there may be multiple firmware versions (e.g. bootloader, application, multiple MCUs, e.t.c.). I would recommend storing each one as a separate column.
+- `firmware_version`: The version of the firmware that was programmed onto the device (if applicable). For more complex devices, there may be multiple firmware versions (e.g. bootloader, application, multiple MCUs, etc.). I would recommend storing each one as a separate column.
 - `tester_id`: The unique identifier of the test jig that was used to test the device. Typically read from a config file by the test jig software.
 - `created`: The timestamp of the creation of the provisioned device record.
 - `last_updated`: The timestamp of the last update to the provisioned device record.
@@ -235,7 +235,7 @@ Summaries:
 - FPY (first pass yield).
 - Failures by test step.
 
-It's also important to be able to drill down into individual tests if needed. A page dedicated to showing individual test runs (a table in where each row is a test run, latest first, paginated to 50 or so at once works well). Provide inputs to filter tests by failing or passing, start and end date ranges, test step name e.t.c.
+It's also important to be able to drill down into individual tests if needed. A page dedicated to showing individual test runs (a table in where each row is a test run, latest first, paginated to 50 or so at once works well). Provide inputs to filter tests by failing or passing, start and end date ranges, test step name etc.
 
 Clicking on a test run in the table should take you a page with data on that specific test (e.g. pass/fail, run time, captured log output).
 

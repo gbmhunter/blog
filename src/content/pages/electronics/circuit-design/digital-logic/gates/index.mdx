@@ -13,7 +13,7 @@ Logic gate inputs are normally labelled as a single letter, starting with `A` (e
 
 There are a few different standards used to draw logic gates on schematics:
 
-* *MIL-STD-806B* (Graphic Symbols For Logic Diagrams): This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
+* *MIL-STD-806B* (Graphic Symbols For Logic Diagrams): This most commonly used symbols for basic and/or/xor etc. gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
 * *IEC 60617* (ANSI/IEEE Std 91-1984): All the gates are IC-like rectangles with symbols inside to denote the function. NOT logic is shown with a _flag_ on the pin rather than a _bubble_. Not as easy too quickly identify the gate as MIL-STD-806B, and not as widely used.
 * *DIN 40700-24* (Graphical Symbols; Components For Precision Engineering Devices, Especially Clocks): Ever rarer than the MIL-STD-806B or IEC 60617 symbols, these are rarely seen. The 1976 Edition was released in June 1976. DIN symbols on this page are referenced to https://de.wikipedia.org/wiki/Logikgatter#Typen_von_Logikgattern_und_Symbolik.
 
@@ -223,7 +223,7 @@ You can also make a XOR gate exclusively from NOR gates, as shown in the below i
 
 <Image src={import('./_assets/xor-gate-made-from-nors.svg')} width="600">A XOR gate made exclusively from NOR gates.</Image>
 
-Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, e.t.c? **So in general, a XOR gate with more than 2 inputs is ill-defined.** However, there are a few other names used for logic that performs some of these functions:
+Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs, that same cannot be said for a XOR gate. Should the output be TRUE only if exactly one input is TRUE? Should the output be TRUE if at least 1 but not all of the inputs are TRUE? Or should the output be TRUE if one input is TRUE, FALSE for 2 inputs TRUE, TRUE again for 3 inputs TRUE, etc.? **So in general, a XOR gate with more than 2 inputs is ill-defined.** However, there are a few other names used for logic that performs some of these functions:
 
 1. *Output TRUE only if 1 and only 1 input is TRUE*. This is called a _one-hot detector_. However, this is rarely seen in practise.
 1. *Output TRUE only if an odd number of inputs are TRUE*. This is called a _parity generator_ or _modulo-2 adder_.

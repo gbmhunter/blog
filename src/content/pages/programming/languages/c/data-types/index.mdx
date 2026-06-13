@@ -22,7 +22,7 @@ The C programming languages supports the following basic data types:
 Some of these types can be prefixed with the modifiers `short` and `long`, which change the size of the data type, and the modifiers `signed` and `unsigned` which change whether a number can stored negative numbers or not (in this case, the size of the type does not change, but the range of numbers it can represent does). Every other data type/structure is made up from a combination of these basic data types and the modifiers.
 
 <Aside type="caution">
-It is strongly recommended that you don't use the numeric data types which can vary in size such as `int`, and instead use fixed-width data types such as `uint8_t`, `int32_t`, e.t.c. This increases the portability of your code and increases the readability (it makes it very obvious to a reader of each integer variable's capacity). These fixed-width types are almost always specified by architecture specific headers which essentially `typedef` to the correct `int`/`long int`/e.t.c for that architecture.
+It is strongly recommended that you don't use the numeric data types which can vary in size such as `int`, and instead use fixed-width data types such as `uint8_t`, `int32_t`, etc. This increases the portability of your code and increases the readability (it makes it very obvious to a reader of each integer variable's capacity). These fixed-width types are almost always specified by architecture specific headers which essentially `typedef` to the correct `int`/`long int`/etc. for that architecture.
 </Aside>
 
 The fixed-width data types are usually defined in `stdint.h`. These include:
@@ -53,7 +53,7 @@ uint128_t
 
 ## Fixed-width Integral Types
 
-The problem with using `int` and all of it's derivatives (`short int`, `long int`, `long long int`, e.t.c) is that the width of the integer is platform specific. It is normally the same width as the platforms bus, but at least 16-bits. It is also called the natural width. For example, on an 8-bit system, an `int` will be 16 bits wide (remember, the C standard specifies it can't be less than 16 bits). On a 16-bit platform, it will usually be 16 bits, 32 bits for a 32-bit platform, 64 bits for a 64-bit platform, and so on, you get the idea!
+The problem with using `int` and all of it's derivatives (`short int`, `long int`, `long long int`, etc.) is that the width of the integer is platform specific. It is normally the same width as the platforms bus, but at least 16-bits. It is also called the natural width. For example, on an 8-bit system, an `int` will be 16 bits wide (remember, the C standard specifies it can't be less than 16 bits). On a 16-bit platform, it will usually be 16 bits, 32 bits for a 32-bit platform, 64 bits for a 64-bit platform, and so on, you get the idea!
 
 To write portable code, it is usually better to use fixed-width integral types.
 

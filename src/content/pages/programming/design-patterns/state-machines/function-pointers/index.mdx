@@ -130,7 +130,7 @@ This could be mitigated by saving the state enumeration in the array also, and i
 
 The state functions are the functions which are called when the current state and event matches a pair in the state transition matrix. While the rest of the state machine controls the high-level flow, the state functions are the guts of the state machine and are the functions which actually DO THINGS.
 
-These state functions below are only really stubs, and don't do much. Real life state functions might toggle GPIO pins, send bytes of data over UART, e.t.c.
+These state functions below are only really stubs, and don't do much. Real life state functions might toggle GPIO pins, send bytes of data over UART, etc.
 
 ```c    
 void Led_Init() {
