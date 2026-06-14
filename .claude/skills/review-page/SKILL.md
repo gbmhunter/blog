@@ -99,6 +99,7 @@ Also check:
 
 - **Unused definitions** — every `[^key]:` at the bottom must be cited somewhere in the body.
 - **Undefined citations** — every `[^key]` in the body must have a definition.
+- **Inline citation placement** — an inline `[^key]` reference must come *after* the full stop at the end of the sentence, not before it. E.g. `This sentence is referenced.[^my-ref]`, not `This sentence is referenced[^my-ref].`
 
 ### Frontmatter and structure
 
