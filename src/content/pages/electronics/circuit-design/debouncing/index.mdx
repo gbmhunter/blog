@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2013-08-02
 description: Debouncing is the technique of removing multiple state changes from a device such as a switch caused when mechanical contacts touch. This page covers schematics, waveforms, hardware vs. firmware debouncing and more info.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-07-02
+lastUpdated: 2026-06-14
 tags: [buttons, debouncing, hardware, firmware, schematics, Schmitt trigger, Ganssle, switch]
 title: Debouncing
 type: page
@@ -11,31 +11,39 @@ type: page
 
 <WarningIsNotes />
 
-_Debouncing_ is the technique of detecting and removing multiple state changes from a hardware device (most commonly a push-button switch) caused when the mechanical contacts touch. Because of tiny imperfections in switch contacts, as the contacts come together and make a conductive circuit, the actual resistance jumps up and down multiple times in quick succession (this is the bouncing). Although the human eye cannot see this when a light is turned on in a house, this bouncing can cause problems for logic which is expecting a single state tradition (e.g. a microcontroller which is counting button presses).
+_Debouncing_ is the technique of detecting and removing multiple state changes from a hardware device (most commonly a push-button switch) caused when the mechanical contacts touch. Because of tiny imperfections in a [switch's](/electronics/components/switches/) contacts, as the contacts come together and make a conductive circuit, the actual resistance jumps up and down multiple times in quick succession (this is the bouncing). Although the human eye cannot see this when a light is turned on in a house, this bouncing can cause problems for logic which is expecting a single state transition (e.g. a microcontroller which is counting button presses).
 
-<Image src={import('./_assets/example-switch-waveform-needs-debouncing.webp')} width="600">An example output from a button press, which needs debouncing.</Image>
+<Image src={import('./_assets/example-switch-waveform-needs-debouncing.webp')} width="600px">An example output from a button press, which needs debouncing.</Image>
 
 You might have encountered a cheap electronic device before which didn't perform debouncing, and noticed when pressing buttons the device would behave erratically. Sometimes pressing down once will scroll through multiple items, or pressing "back" will jump through multiple menus (Puhui T-962 Reflow Oven, I'm looking at you).
 
 Debouncing has also been adopted as a software term to describe functions which are only called once even though the user may click the button multiple times (or to delay a function after user input[^free-code-camp-debounce-how-to-delay-a-javascript-function]). A classic example is a "Pay Now" button when buying something online.
 
-The amount the time it takes for a switch to stabilize is highly dependent on the type of switch and how it is actuated, but if designing a filter you have to start somewhere right? **A general rule-of-thumb is to allow the switch 20ms to settle** when switching between on and off (in either direction). However, some switches have been seen to take 150ms[^ganssle-guide-to-debouncing]!
+The amount of time it takes for a switch to stabilize is highly dependent on the type of switch and how it is actuated, but if designing a filter you have to start somewhere right? **A general rule-of-thumb is to allow the switch 20 ms to settle** when switching between on and off (in either direction). However, some switches have been seen to take 150 ms[^ganssle-guide-to-debouncing]!
 
 ## Hardware Debouncing
 
-_Hardware debouncing_ is about using passive components and simple logic to debounce switch presses. Before the advent of plentiful microcontrollers and lots of code space and capabilities, hardware debouncing was the common way of solving debouncing. These days I would recommend firmware based debouncing if possible, but sometimes you will have to revert to hardware debouncing when you don't have the option of using a microcontroller. 
+_Hardware debouncing_ is about using passive components and simple logic to debounce switch presses. Before the advent of plentiful microcontrollers and lots of code space and capabilities, hardware debouncing was the common way of solving debouncing. These days I would recommend firmware based debouncing if possible, but sometimes you will have to revert to hardware debouncing when you don't have the option of using a microcontroller.
 
 One simple way is to use a RC circuit with a Schmitt inverter:
 
-<Image src={import('./_assets/rc-debouncing-circuit.webp')} width="600">A simple RC debouncing circuit.</Image>
+<Image src={import('./_assets/rc-debouncing-circuit.webp')} width="600px">A simple RC debouncing circuit.</Image>
 
 Schmitt behaviour is needed on the inverter otherwise the bouncing which causes the RC charging/discharging waveform to wobble could cause the inverter output to toggle back and forth, rendering the circuit useless.
 
 The following diagram shows how this RC debouncing circuit works:
 
-<Image src={import('./_assets/rc-debouncing-waveforms.webp')} width="900">RC debouncing waveforms.</Image>
+<Image src={import('./_assets/rc-debouncing-waveforms.webp')} width="900px">RC debouncing waveforms.</Image>
 
-One problem with this approach is asymmetric charging and discharging times, due to the capacitor being discharged through only $R1$ but charged back up through $R1$ and $R2$. This difference can be minimized by making $R2$ much larger than $R1$ ($R2 >> R1$) or by adding in a by-pass diode (see below).
+One problem with this approach is asymmetric charging and discharging times, due to the [capacitor](/electronics/components/capacitors/) being discharged through only $R2$ but charged back up through $R1$ and $R2$. This difference can be minimized by making $R2$ much larger than $R1$ ($R2 >> R1$) or by adding a by-pass diode. The by-pass diode approach is shown in the schematic below:
+
+<Image src={import('./_assets/rc-debouncing-circuit-with-diode.webp')} width="600px">The RC debouncing circuit with a by-pass diode $D1$ added across $R2$ to decouple the charge and discharge time constants.</Image>
+
+The diode $D1$ is placed in parallel with $R2$, with its anode on the $v_{SW}$ side and its cathode on the $v_{RC}$ side. When the capacitor charges (switch open), current flows from $V_{CC}$ through $R1$ and forward-biases $D1$, bypassing $R2$ — so the charge path is effectively just $R1$ ($\tau_{charge} \approx R1 \cdot C1$). When the capacitor discharges (switch closed), $D1$ is reverse-biased and off, so the discharge still occurs through $R2$ ($\tau_{discharge} = R2 \cdot C1$). This decouples the two [time constants](/electronics/circuit-design/rc-charging-circuits/), letting you set $R1$ and $R2$ so that the charge and discharge times match (or tune each delay independently).
+
+The trade-off is that the diode's forward voltage drop (around $0.7\unit{V}$ for a [silicon diode](/electronics/components/diodes/general-purpose-diodes/)) slightly lowers the voltage the capacitor charges towards, which nudges the timing of the Schmitt inverter threshold crossing. A [Schottky diode](/electronics/components/diodes/schottky-diodes/) reduces this drop.
+
+This same RC/Schmitt trigger arrangement — along with the asymmetric-delay problem and a two-RC technique for making the delays symmetric — is covered in more detail on the [Delays](/electronics/circuit-design/delays/) page.
 
 Another way to get around debouncing issues is to use a double-throw switch, and connect both sides of the throw (one side of the pole) through pull-up resistors to a microcontroller. Connect the other side of the pole to ground. The microcontroller can then monitor both pins and detect a switch state only when one pin goes high and then the other goes low.
 

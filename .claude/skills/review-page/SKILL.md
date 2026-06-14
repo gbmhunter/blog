@@ -65,6 +65,23 @@ Bullet point lists must use `- `, not `* `.
 
 Use plain above/below prose ("The schematic below shows...", "...is shown below"), NOT `<IRef>` components or `iref=`/`data-iref` attributes. Flag any iref usage.
 
+### Internal links to related site pages
+
+Two parts — validate the links that exist, and suggest relevant ones that are missing.
+
+**Validate existing internal links** (`/electronics/...`, or absolute `https://blog.mbedded.ninja/...`):
+
+- The target page exists under `src/content/pages/` (map the URL path to a directory containing an `index.mdx`). Flag broken links as bugs.
+- The link ends with a trailing `/` (e.g. `/electronics/components/`, not `/electronics/components`).
+- The anchor text matches what the target page is actually about (don't link "capacitor" to the resistors page).
+
+**Suggest relevant missing links** — the site is a densely cross-linked engineering reference, so pages should link to related material:
+
+- Identify the key concepts, components, and techniques the page mentions (e.g. on a debouncing page: switches, capacitors, resistors, Schmitt triggers, RC charging, delay circuits, diode types).
+- Search `src/content/pages/` for pages covering those concepts (grep titles/headings, or list likely directories under `components/` and `circuit-design/`). Confirm each candidate genuinely covers the concept — open it if unsure; a single passing mention in a table cell is not enough to justify a link.
+- Propose linking the **first meaningful mention** of each concept in the prose, with the concept word(s) as the anchor text. Link a concept once, not every occurrence, and don't link so heavily it becomes noise — a page on the specific technique being discussed is higher value than a generic component page (capacitors/resistors).
+- List each suggestion with the proposed anchor text, target URL (trailing slash), and the page it points to, so the user can accept or decline.
+
 ### References (footnotes)
 
 Every footnote definition at the bottom of the page must follow:
@@ -87,9 +104,7 @@ Also check:
 
 - `description`, `tags`, `title`, `date` present and sensible; `image` path exists.
 - If the review leads to edits being applied, `lastUpdated` should be bumped to today's date.
-- Internal links (`/electronics/...`) point at pages that exist under `src/content/pages/`.
-- Internal links to other pages must end with a trailing `/`, e.g. `/electronics/components/`, not `/electronics/components`.
-- Heading capitalization and structure consistent with the rest of the page.
+- Heading capitalization and structure consistent with the rest of the page. (Internal-link validation is covered under "Internal links to related site pages" above.)
 
 ## Step 3: Report
 
@@ -97,8 +112,8 @@ Group findings by severity, with `file:line` references:
 
 1. **Bugs / technical issues** — wrong math, rendering-breaking KaTeX, contradictions, broken links, unused/undefined references.
 2. **Typos / grammar**.
-3. **Style compliance** — `\unit{}`, `\cdot`, px widths, iref usage, reference format.
-4. **Minor / optional** — suggestions that improve the page but aren't errors.
+3. **Style compliance** — `\unit{}`, `\cdot`, px widths, iref usage, reference format, trailing-slash internal links.
+4. **Minor / optional** — suggestions that improve the page but aren't errors, including suggested links to related site pages.
 
 State explicitly which numerical results you verified. End by offering to apply the fixes.
 
