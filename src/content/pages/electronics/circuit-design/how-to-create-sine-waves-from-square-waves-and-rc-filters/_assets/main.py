@@ -1,25 +1,32 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "pandas",
+#     "matplotlib",
+#     "numpy",
+#     "scipy",
+# ]
+# ///
+
 from pathlib import Path
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy import signal
 import scipy.fft
-
-import util
 
 SCRIPT_DIR = Path(__file__).parent
 
 def main():
-    # create_square_wave_fft_plot()
-    # create_vin_vout_plot()
-    # create_freq_response_plot()
+    create_square_wave_fft_plot()
+    create_vin_vout_plot()
+    create_freq_response_plot()
     create_thd_plots()
 
 def create_square_wave_fft_plot():
-    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.TNO'    
+    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.TNO'
 
-    df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])
+    df = pd.read_csv(micro_cap_output_path, sep=r'\s+', skiprows=[0, 1, 3])
 
     time = df['T']
     square_wave = df['v(IN)']
@@ -49,14 +56,13 @@ def create_square_wave_fft_plot():
     ax.set_xlim(0, 100)
     ax.grid()
 
-    util.add_watermark_to_fig(fig)
     fig.tight_layout()
     plt.savefig(SCRIPT_DIR / 'sim-four-stage-rc-filter-fft-of-input-plot.png')
 
 def create_vin_vout_plot():
-    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.TNO'    
+    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.TNO'
 
-    df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])    
+    df = pd.read_csv(micro_cap_output_path, sep=r'\s+', skiprows=[0, 1, 3])
 
     fig, axes = plt.subplots(ncols=1, nrows=5, figsize=(8, 15))
     ax = axes[0]
@@ -95,14 +101,13 @@ def create_vin_vout_plot():
     ax.set_title('$V_{OUT4}$')
     ax.grid()
 
-    util.add_watermark_to_fig(fig)
     fig.tight_layout()
     plt.savefig(SCRIPT_DIR / 'sim-four-stage-rc-filter-output-plot.png')
 
 def create_freq_response_plot():
-    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.ANO'    
+    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.ANO'
 
-    df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])    
+    df = pd.read_csv(micro_cap_output_path, sep=r'\s+', skiprows=[0, 1, 3])
 
     fig, axes = plt.subplots(ncols=1, nrows=2, figsize=(8, 8))
 
@@ -117,37 +122,36 @@ def create_freq_response_plot():
     for idx in range(4):
         i = idx + 1
         ax = axes[0]
-        ax.plot(df['F'], df[f'dB(v(OUT{i})/v(IN))'], label=f'OUT{i}', color=colors[idx])  
+        ax.plot(df['F'], df[f'dB(v(OUT{i})/v(IN))'], label=f'OUT{i}', color=colors[idx])
 
         ax = axes[1]
         ax.plot(df['F'], df[f'ph(v(OUT{i})/v(IN))'], label=f'OUT{i}', color=colors[idx])
 
     ax = axes[0]
     ax.axvline(10e3, label='Fundamental frequency (10kHz)', color='#040bd4', linestyle='--')
-    ax.axvline(30e3, label='1st harmonic (30kHz)', color='#d404cd', linestyle='--')
+    ax.axvline(30e3, label='3rd harmonic (30kHz)', color='#d404cd', linestyle='--')
     ax.set_xlabel('$Frequency\ [Hz]$')
-    ax.set_ylabel('$Gain\ [dB]$')      
+    ax.set_ylabel('$Gain\ [dB]$')
     ax.set_xscale('log')
     ax.grid()
     ax.legend()
 
     ax = axes[1]
     ax.axvline(10e3, label='Fundamental frequency (10kHz)', color='#040bd4', linestyle='--')
-    ax.axvline(30e3, label='1st harmonic (30kHz)', color='#d404cd', linestyle='--')
+    ax.axvline(30e3, label='3rd harmonic (30kHz)', color='#d404cd', linestyle='--')
     ax.set_xlabel('$Frequency\ [Hz]$')
     ax.set_ylabel('$Phase\ [\circ]$')
     ax.set_xscale('log')
     ax.grid()
     ax.legend()
 
-    util.add_watermark_to_fig(fig)
     fig.tight_layout()
     plt.savefig(SCRIPT_DIR / 'sim-four-stage-rc-filter-bode-plot.png')
 
 def create_thd_plots():
-    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.TNO'    
+    micro_cap_output_path = SCRIPT_DIR / 'sim-four-stage-rc-filter.TNO'
 
-    df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])
+    df = pd.read_csv(micro_cap_output_path, sep=r'\s+', skiprows=[0, 1, 3])
 
     fig, axes = plt.subplots(ncols=2, nrows=5, figsize=(12, 20))
 
@@ -195,7 +199,7 @@ def create_thd_plots():
         # Now calculate THD
         fft_mag = (1.0/num_samples) * np.abs(sqaure_wave_fft)
         mask = xf >= 20e3
-        fft_mag_harmonics = fft_mag[mask] 
+        fft_mag_harmonics = fft_mag[mask]
 
         # Convert peaks to RMS
         fft_mag_harmonics_rms = fft_mag_harmonics / np.sqrt(2)
@@ -219,8 +223,7 @@ def create_thd_plots():
 
     for i in range(5):
         calculate_for_one(config_datas[i], axes[i][0], axes[i][1])
-    
-    util.add_watermark_to_fig(fig)
+
     fig.tight_layout()
     plt.savefig(SCRIPT_DIR / 'sim-four-stage-rc-filter-thd.png')
 
@@ -236,7 +239,6 @@ def create_thd_plots():
     thds = np.array(thds)
     ax.bar(bar_names, thds*1e2)
     ax.set_ylabel('THD [%]')
-    util.add_watermark_to_fig(fig)
     fig.tight_layout()
     plt.savefig(SCRIPT_DIR / 'sim-four-stage-rc-filter-thd-bar-plot.png')
 
