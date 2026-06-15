@@ -2,15 +2,15 @@
 authors: [gbmhunter]
 date: 2012-10-04
 description: Info on PWM peripherals, including operating modes and complementary outputs.
-lastUpdated: 2025-01-29
+lastUpdated: 2026-06-15
 tags: [electronics, circuit design, pulse width modulation, PWM, motor control, h-bridge, dead-time, complementary outputs, edge-aligned, centre-aligned]
 title: Pulse Width Modulation (PWM)
 type: page
 ---
 
-Pulse width modulation (PWM) is a form of digital signal modulation in where the duty cycle of a square wave is varied (modulated) by another signal. It is commonly used to control things such as the brightness of [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/), the speeds of [motors](/electronics/components/motors/), and the output voltage of [switch-mode power supplies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/).
+Pulse width modulation (PWM) is a form of digital signal modulation in which the duty cycle of a square wave is varied (modulated) by another signal. It is commonly used to control things such as the brightness of [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/), the speeds of [motors](/electronics/components/motors/), and the output voltage of [switch-mode power supplies](/electronics/components/power-regulators/switch-mode-power-supplies-smps/).
 
-<Image iref="fig-pwm-basic-diagram" src={import('./_assets/pwm-basic-diagram.png')} width="900px">A diagram showing the basic parameters of PWM.</Image>
+<Image src={import('./_assets/pwm-basic-diagram.png')} width="900px">A diagram showing the basic parameters of PWM.</Image>
 
 Almost all [microcontrollers](/programming/microcontrollers/) will have at least one PWM peripheral, which is a hardware block that generates a PWM signal under control of the CPU and firmware.
 
@@ -22,19 +22,19 @@ The duty cycle is the percentage of the time the signal is on (active) compared 
 
 ## Operating Modes
 
-PWM hardware peripherals may not support every one these modes.
+PWM hardware peripherals may not support every one of these modes.
 
 ### Edge-Aligned (aka Asymmetric)
 
-**Edge-aligned, the most common (and usually the default) operating mode for a PWM peripheral, is when one edge of the switching from on/off is aligned with the edge of of the PWM period.** In it's most basic form it is simple to implement, requiring a counter, and two registers, one for resetting the counter (which determines the PWM period), and another for comparing with the count value, and switching the output if it's greater than/less than/some logical expression (this sets the duty cycle).
+**Edge-aligned, the most common (and usually the default) operating mode for a PWM peripheral, is when one edge of the switching from on/off is aligned with the edge of the PWM period.** In its most basic form it is simple to implement, requiring a counter, and two registers, one for resetting the counter (which determines the PWM period), and another for comparing with the count value, and switching the output if it's greater than/less than/some logical expression (this sets the duty cycle).
 
 ### Centre-Aligned (aka Symmetric)
 
-Centre-aligned PWM is good for motor control as it generates fewer harmonics in the output voltage and current than asymmetric PWM. Some centre-aligned PWM hardware peripherals implement this by using a counter which changes direction every cycle. It counts up for the first cycle, down for the second, and then repeats. Doing this **effectively reduces the PWM frequency by 2**. So to arrive back at the same PWM frequency as when in asymmetric mode, you have to half the period (in terms of clock cycles). This reduces your duty cycle resolution.
+Centre-aligned PWM is good for motor control as it generates fewer harmonics in the output voltage and current than asymmetric PWM. Some centre-aligned PWM hardware peripherals implement this by using a counter which changes direction every cycle. It counts up for the first cycle, down for the second, and then repeats. Doing this **effectively reduces the PWM frequency by 2**. So to arrive back at the same PWM frequency as when in asymmetric mode, you have to halve the period (in terms of clock cycles). This reduces your duty cycle resolution.
 
 ## Complementary Outputs
 
-Some PWM peripherals have a complementary output feature. This is one PWM timer in hardware controls two output pins. One pin is the normal PWM signal, the other is the inverse of this. Complementary outputs are useful for driving H-bridges and other motor control circuits. Usually these peripherals will also support an adjustable programmable dead-time to prevent shoot-through.
+Some PWM peripherals have a complementary output feature. This is where one PWM timer in hardware controls two output pins. One pin is the normal PWM signal, the other is the inverse of this. Complementary outputs are useful for driving [H-bridges](/electronics/components/h-bridges/) and other motor control circuits. Usually these peripherals will also support an adjustable programmable dead-time to prevent shoot-through.
 
 <Image src={import('./_assets/diagram-showing-pwm-deadtime-stm32.webp')} width="500px">Diagram showing how dead-time is applied to the standard and complementary PWM signals to prevent shoot-through.</Image>
 
@@ -42,24 +42,24 @@ One example is the STM32 advanced motor control timers which are present in many
 
 ## Dithering
 
-Some PWM peripherals support dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discreet duty cycle values to give the appearance of a higher resolution PWM. The output PWM is then the average of the two duty cycle values. You do not need to strictly alternate between the two values (which would only give you an equivalent of twice the resolution) -- instead you can spend more PWM cycles at one duty cycle than the other (e.g. 3 duty cycles at 52%, and then 1 duty cycle at 53% would give you can equivalent duty cycle of 52.25%).
+Some PWM peripherals support dithering to artificially increase the resolution of the PWM. This is where you vary the duty cycle between two adjacent discrete duty cycle values to give the appearance of a higher resolution PWM. The output PWM is then the average of the two duty cycle values. You do not need to strictly alternate between the two values (which would only give you an equivalent of twice the resolution) -- instead you can spend more PWM cycles at one duty cycle than the other (e.g. 3 duty cycles at 52%, and then 1 duty cycle at 53% would give you an equivalent duty cycle of 52.25%).
 
-<IRef iref="fig-pwm-dithering-comparison" /> shows how you could use 4 value dithering to achieve a better accuracy to the desired duty cycle of 52.3%. The top figure shows a standard PWM signal which only has 100 different duty cycle values, and so the closest it can get to 52.3% is 52%. The bottom figure shows a dithered PWM signal which can achieve an average duty cycle of 52.25%.
+The comparison below shows how you could use 4 value dithering to achieve a better accuracy to the desired duty cycle of 52.3%. The top figure shows a standard PWM signal which only has 100 different duty cycle values, and so the closest it can get to 52.3% is 52%. The bottom figure shows a dithered PWM signal which can achieve an average duty cycle of 52.25%.
 
-<Image iref="fig-pwm-dithering-comparison" src={import('./_assets/pwm-dithering-comparison.png')} width="900px">A comparison of a standard PWM signal and a dithered PWM signal.</Image>
+<Image src={import('./_assets/pwm-dithering-comparison.png')} width="900px">A comparison of a standard PWM signal and a dithered PWM signal.</Image>
 
 Most PWM peripherals support this by providing a way to pass a sequence of duty cycles values in which the peripheral will automatically iterate through. They usually have the option of automatically repeating the sequence, or firing an interrupt so that CPU can load the next sequence.
 
-A sequence of 2^n values will give you additional resolution of n bits. For example, a sequence of 16 dithered values with give you 4 bits of additional resolution.
+A sequence of 2^n values will give you additional resolution of n bits. For example, a sequence of 16 dithered values will give you 4 bits of additional resolution.
 
 <Aside type="caution">
 Increasing the length of the dithering sequence does not always improve the accuracy! It will in general (for random desired duty cycles), but for specific target duty cycles, longer sequences can make it worse! Take the example above again, in where we want to achieve a duty cycle of 52.3%. The best we can do with a dithered sequence of 4 values is an average duty cycle of 52.25% (3 at 52%, 1 at 53%). However if we only use a sequence of 3 values, we can actually get closer to the target with a average duty cycle of 52.33% (2 at 52%, 1 at 53%)!
 </Aside>
 
 <Aside type="example">
-You have a PWM peripheral that runs of a 16 MHz clock. You are running the PWM at 100kHz. How many different duty cycle values are possible without any additional dithering, and then how many are possible with a dithering sequence of 16 values?
+You have a PWM peripheral that runs off a 16 MHz clock. You are running the PWM at 100 kHz. How many different duty cycle values are possible without any additional dithering, and then how many are possible with a dithering sequence of 16 values?
 
-There are $\dfrac{16 \text{ MHz}}{100 \text{ kHz}} = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering (which might not be enough resolution for your application). With a dithering sequence of 16 values, you effectively multiply the resolution by 16, giving you $160 \times 16 = 2560$ different duty cycle values.
+There are $\dfrac{16\unit{MHz}}{100\unit{kHz}} = 160$ clock cycles per PWM period and so 160 different duty cycle values are possible without any additional dithering (which might not be enough resolution for your application). With a dithering sequence of 16 values, you effectively multiply the resolution by 16, giving you $160 \cdot 16 = 2560$ different duty cycle values.
 </Aside>
 
 ### Creating a Dithering Sequence
@@ -83,33 +83,33 @@ In this example, I decided to represent the duty cycle as a number of clock cycl
      You can calculate $k$ using the following equation:
      
      $$
-     \begin{align}
-     k = \text{round}\left(\dfrac{\text{target} - \text{lower}}{\text{upper} - \text{lower}} \times N\right)
-     \end{align}
+     \begin{align*}
+     k = \text{round}\left(\dfrac{\text{target} - \text{lower}}{\text{upper} - \text{lower}} \cdot N\right)
+     \end{align*}
      $$
 
      So for our example with a sequence length of $N = 16$, we have:
 
      $$
-     \begin{align}
-     k &= \text{round}\left(\dfrac{37.76 - 37}{38 - 37} \times 16\right) \nonumber \\
-       &= \text{round}(0.76 \times 16) \nonumber \\
-       &= \text{round}(12.16) \nonumber \\
-       &= 12 \nonumber \\
-     \end{align}
+     \begin{align*}
+     k &= \text{round}\left(\dfrac{37.76 - 37}{38 - 37} \cdot 16\right) \\
+       &= \text{round}(0.76 \cdot 16) \\
+       &= \text{round}(12.16) \\
+       &= 12 \\
+     \end{align*}
      $$
      
      This means we need 12 periods at 38 clock cycles and 4 periods at 37 clock cycles.
 
-4. **Create the sequence**: We now need to create the sequence of duty cycle values. Rather than grouping all the upper values together, we need to distribute them evenly throughout the sequence for the best performance. This is achieved by using a [Bresenham's Line style algorithm](/programming/algorithms-and-data-structures/bresenhams-line-algorithm/).
+3. **Create the sequence**: We now need to create the sequence of duty cycle values. Rather than grouping all the upper values together, we need to distribute them evenly throughout the sequence for the best performance. This is achieved by using a [Bresenham's Line style algorithm](/programming/algorithms-and-data-structures/bresenhams-line-algorithm/).
 
    The algorithm is as follows:
    
    1. Start with a counter set to half the sequence length.
-   2. For each value in the sequence, decrement the counter by the number of upper values.
-   3. If the counter is less than 0, append an upper value to the sequence and increment the counter by the sequence length.
-   4. Otherwise, append a lower value to the sequence.
-   5. Repeat until the sequence is complete.
+   1. For each value in the sequence, decrement the counter by the number of upper values.
+   1. If the counter is less than 0, append an upper value to the sequence and increment the counter by the sequence length.
+   1. Otherwise, append a lower value to the sequence.
+   1. Repeat until the sequence is complete.
 
    So for our example, we start with a counter set to half the sequence length: $\dfrac{16}{2} = 8$.
    
@@ -125,7 +125,7 @@ In this example, I decided to represent the duty cycle as a number of clock cycl
    
    This sequence has 12 upper values (38) and 4 lower values (37), evenly distributed throughout.
    
-5. Done!
+4. Done!
 
 Below is Python code that generates an arbitrary dithering sequence.
 
@@ -194,24 +194,24 @@ print(f"Achieved: {achieved:.4%} = {achieved_clock_cycles:.2f} clock cycles")
 #         Achieved: 23.5938% = 37.75 clock cycles
 ```
 
-You should be able to port this code to a microcontroller programming language of your choice (C, C++, Rust, etc.). I have made no attempt to make it as efficient as possible, and so for high performance applications you may need to optimise it (there is likely more optimum ways to calculate the dithering sequence).
+You should be able to port this code to a microcontroller programming language of your choice (C, C++, Rust, etc.). I have made no attempt to make it as efficient as possible, and so for high performance applications you may need to optimise it (there are likely more optimal ways to calculate the dithering sequence).
 
 ## Creating a DAC From a PWM Signal
 
-You can create rudimentary digital-to-analogue converters (DACs) using a PWM peripheral and a [low-pass analogue filter](/electronics/circuit-design/analogue-filters/) (e.g. a low-pass RC filter). This is because the low-pass filter will produce the average voltage of the PWM signal (provided the cut-off frequency is much lower than the PWM frequency), and you can use the duty cycle to directly control the average voltage linearly from 0V to the supply voltage.
+You can create rudimentary [digital-to-analogue converters (DACs)](/electronics/components/digital-to-analogue-converters-dacs/) using a PWM peripheral and a [low-pass analogue filter](/electronics/circuit-design/analogue-filters/) (e.g. a low-pass RC filter). This is because the low-pass filter will produce the average voltage of the PWM signal (provided the cut-off frequency is much lower than the PWM frequency), and you can use the duty cycle to directly control the average voltage linearly from 0V to the supply voltage.
 
 This can be a useful trick when you are running short on true DAC peripherals on your microcontroller. You can also use a PWM peripheral to directly communicate an analogue value to a signal analyzer or oscilloscope. I have configured a PWM peripheral to output a duty cycle which was always 10x a measured voltage. For example, if the measured voltage was 1.23V, the PWM duty cycle would be set to 12.3%. I then connected this PWM output to a Saleae logic analyzer which was able to give me instant duty cycle readout at any point in the waveform (therefore instantly telling me the voltage without any complex mental maths). This is a great alternative to debug logs over a serial port for high speed measurements.
 
 ## A Warning About PWM And Oscilloscopes
 
-When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
+When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and the oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
 
-<Image src={import('./_assets/oscilloscope-aliasing-pwm-output-appearing-to-turn-on-off.jpg')} width="900px">An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).</Image>
+<Image src={import('./_assets/oscilloscope-aliasing-pwm-output-appearing-to-turn-on-off.jpg')} width="900px">An oscilloscope aliasing problem which appears to show that the 15 kHz PWM signal turning on and off (in reality it is continuous).</Image>
 
-While your PWM could actually be doing this, more often than not what you are seeing is an **artefact caused by the digital sampling of the oscilloscope**. The following picture shows a 15kHz PWM signal appearing to stop and start every 10ms or so. I can assure you that the PWM signal is fine, it is the Rigol 100MHz oscilloscope showing the wrong thing.
+While your PWM could actually be doing this, more often than not what you are seeing is an **artefact caused by the digital sampling of the oscilloscope**. The following picture shows a 15 kHz PWM signal appearing to stop and start every 10 ms or so. I can assure you that the PWM signal is fine, it is the Rigol 100 MHz oscilloscope showing the wrong thing.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^st-an4013-intro-to-timers-for-stm32-mcus]: STMicroelectronics. _AN4013 - Application note - Introduction to timers for STM32 MCUs_. Retrieved 2024-07-11, from https://www.st.com/resource/en/application_note/an4013-introduction-to-timers-for-stm32-mcus-stmicroelectronics.pdf.
+[^st-an4013-intro-to-timers-for-stm32-mcus]: STMicroelectronics. _AN4013 - Introduction to timers for STM32 MCUs_ [application note]. Retrieved 2024-07-11, from https://www.st.com/resource/en/application_note/an4013-introduction-to-timers-for-stm32-mcus-stmicroelectronics.pdf.
