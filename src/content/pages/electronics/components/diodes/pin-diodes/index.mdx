@@ -1,9 +1,9 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-05
-description: PIN diodes are semiconductor diodes with a wide un-doped intrinsic region between the typical p-type an n-type regions.
+description: PIN diodes are semiconductor diodes with a wide un-doped intrinsic region between the typical p-type and n-type regions.
 image: ./_assets/cover-image.webp
-lastUpdated: 2022-07-16
+lastUpdated: 2026-06-16
 tags: [electronics, diodes, components, PIN]
 title: PIN Diodes
 type: page
@@ -11,36 +11,38 @@ type: page
 
 A PIN diode is a semiconductor diode with a wide un-doped intrinsic semiconductor region between a p-type and n-type semiconductor region (hence the name PIN).
 
-<Image src={import('./_assets/pin-diode-photo-small.jpg')} width="200">A photo of a small, through-hole PIN diode.</Image>
+<Image src={import('./_assets/pin-diode-photo-small.jpg')} width="200px">A photo of a small, through-hole PIN diode.</Image>
 
-A "normal" PN diode has a very small intrinsic region, which is good when you wish to use the diode as a standard rectifier. The PIN diodes wide intrinsic region makes it an inferior rectifier, but makes it suitable for[^bib-wikip-pin-diode]:
+A "normal" PN [diode](/electronics/components/diodes/) has a very small intrinsic region, which is good when you wish to use the diode as a standard rectifier. The PIN diode's wide intrinsic region makes it an inferior rectifier, but makes it suitable for[^wikip-pin-diode]:
 
-* Attenuators
-* Fast switches
-* Photodetectors (when used in a reversed-biased state)
+- Attenuators
+- Fast switches
+- [Photodetectors](/electronics/components/diodes/photodiodes/) (when used in a reversed-biased state)
 
 ## Important Parameters
 
 ### Dark Current
 
-* Symbol: $I_D$
-* Units: $nA$
+- Symbol: $I_D$
+- Units: $\mathrm{nA}$
 
-Typically in the 0.1-5nA range.
+Typically in the $0.1$–$5\unit{nA}$ range.
 
 ### Extinction Ratio
 
 ### Field of View
 
-* Symbol: FoV
+- Symbol: FoV
 
 ### Output Rise Time
 
-* Symbol: $t_r$
-* Units: $s$
+- Symbol: $t_r$
+- Units: $\mathrm{s}$
 
 ### Responsivity
-* Symbol: $A/W$
+
+- Symbol: $R$
+- Units: $\mathrm{A/W}$
 
 PIN diodes are normally operated in the reverse bias state.
 
@@ -48,12 +50,16 @@ Because of their good light-to-current linearity, they are commonly connected to
 
 ## RF Applications
 
-PIN diodes act as almost perfect resistors in the RF and microwave frequencies[^bib-wikip-pin-diode]. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
+PIN diodes act as almost perfect resistors in the RF and microwave frequencies[^wikip-pin-diode]. The resistance these AC waveforms see is dependent on the DC bias current flowing through the diode.
 
-Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about $100m\Omega$ to $10k\Omega$.
+Because the PIN diode's RF resistance is dependent on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about $100\unit{m\Omega}$ to $10\unit{k\Omega}$.
 
 ## Reverse Recovery Time
 
 PIN diodes have a very poor reverse recovery time.
 
-[^bib-wikip-pin-diode]:  Wikipedia. _PIN diode_. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wikip-pin-diode]: Wikipedia. _PIN diode_ [wiki]. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.

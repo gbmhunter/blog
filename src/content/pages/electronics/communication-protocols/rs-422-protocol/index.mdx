@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2022-02-05
 description: Standards, transmission distances, baud rates, transceivers, high-level protocols and more info about the RS-422 communication protocol.
-lastUpdated: 2022-02-05
+lastUpdated: 2026-06-16
 tags: [RS-422, TIA-422, EIA-422, communication protocols, transmitters, receivers, data, bus, serial, nodes]
 title: RS-422 Protocol
 type: page
@@ -10,14 +10,17 @@ type: page
 
 <WarningIsNotes />
 
-_RS-422_ (a.k.a. TIA/EIA-422) is a serial, differential communication protocol used for transmitting data. RS-422 uses 2 wires for transmitting and 2 wires for receiving for full-duplex communication. 1 driver and up to 10 receivers can be connected per twisted pair, which is called _simplex multidrop_[^bib-ti-rs-422-rs-485] (unlike RS-485, which is differential and allows for multiple drivers). It is closely related to the less popular RS-423 protocol. It is also related to the [RS-232](/electronics/communication-protocols/rs-232-protocol/) (single-ended) and [RS-485](/electronics/communication-protocols/rs-485-protocol/) (differential) communication protocols.
+_RS-422_ (a.k.a. TIA/EIA-422) is a serial, differential communication protocol used for transmitting data. RS-422 uses 2 wires for transmitting and 2 wires for receiving for full-duplex communication. 1 driver and up to 10 receivers can be connected per twisted pair, which is called _simplex multidrop_ (unlike RS-485, which is differential and allows for multiple drivers).[^ti-rs-422-rs-485] It is closely related to the less popular RS-423 protocol. It is also related to the popular [RS-232](/electronics/communication-protocols/rs-232-protocol/) (single-ended) and [RS-485](/electronics/communication-protocols/rs-485-protocol/) (differential) communication protocols.
 
-| Speed  | Max. Distance
-|--------|-----------------------
-| 10kbps | 1200m[^bib-wp-rs-422]
-| 10Mbps | 10m
+## Speed and Cable Length
 
-The maximum allowed differential voltage is \(\pm 6.0V\)[^bib-wp-rs-422].
+Data rates up to 10 Mbit/s can be achieved with cables up to 12 meters in length. Longer cables can be used at the expense of slower transmission speeds. No maximum cable length is specified in the standard, but the annex. provides a chart which shows lengths up to 1200 m (1.2 km) with a speed of 90 kbit/s.
+
+The relationship between the maximum data rate and cable length is shown in the graph below. The data from this graph is taken from RS-422 Annex A.1.[^wp-rs-422]
+
+<Image src={import('./_assets/data-rate-vs-cable-length.png')} width="700px">The maximum RS-422 cable length as a function of data rate. The length is flat at around 1200 m for low data rates up to a knee at roughly 90 kbit/s, then falls off as the data rate increases, reaching 12 m at 10 Mbit/s.</Image>
+
+The maximum allowed differential voltage is $\pm 6.0\unit{V}$.[^wp-rs-422]
 
 A _mark_ (binary 1) is transmitted with a negative differential voltage, a _space_ (binary 0) is transmitted with a positive differential voltage. This is the same terminology and "inverse" polarity as RS-232 and RS-485.
 
@@ -27,9 +30,9 @@ The [DE-9](/electronics/components/connectors/d-subminiature-d-sub-connectors/) 
 
 ### DE-9 (DB-9)
 
-<Image src={import('./_assets/dsub-db-9-female-male-photo-pin-numbers.png')} width="500">Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors.</Image>
+<Image src={import('./_assets/dsub-db-9-female-male-photo-pin-numbers.png')} width="500px">Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors.</Image>
 
-The industry standard pinout for RS-422 in a DE-9 connector is shown in the table below[^bib-active-experts-rs422-pinout].
+The industry standard pinout for RS-422 in a DE-9 connector is shown in the table below.[^active-experts-rs422-pinout]
 
 <table>
     <thead>
@@ -92,9 +95,9 @@ The industry standard pinout for RS-422 in a DE-9 connector is shown in the tabl
 
 The [D-Subminiature DB-25 connector](/electronics/components/connectors/d-subminiature-d-sub-connectors/) is another popular choice for carrying RS-422 signals.
 
-<Image src={import('./_assets/dsub-db-25-pin-numbers.png')} width="500">Pin numbers for the male DB-25 connector, looking at the \"front\" of the connector which mates with the female part.</Image>
+<Image src={import('./_assets/dsub-db-25-pin-numbers.png')} width="500px">Pin numbers for the male DB-25 connector, looking at the \"front\" of the connector which mates with the female part.</Image>
 
-Industry standard pinout for RS-422 on a DB-25 connector[^bib-sweet-serial-posix]:
+Industry standard pinout for RS-422 on a DB-25 connector[^sweet-serial-posix]:
 
 <table>
     <thead>
@@ -137,7 +140,7 @@ Industry standard pinout for RS-422 on a DB-25 connector[^bib-sweet-serial-posix
             <td>RTS-</td>
             <td>Request to send -</td>
             <td>17</td>
-            <td>CLK+</td>
+            <td>CLK-</td>
             <td>Receiver clock -</td>
         </tr>
         <tr>
@@ -199,7 +202,7 @@ Industry standard pinout for RS-422 on a DB-25 connector[^bib-sweet-serial-posix
         <tr>
             <td>12</td>
             <td>DCD+</td>
-            <td>Data carrier detect</td>
+            <td>Data carrier detect +</td>
             <td>25</td>
             <td>CLK+</td>
             <td>Receiver clock +</td>
@@ -207,7 +210,7 @@ Industry standard pinout for RS-422 on a DB-25 connector[^bib-sweet-serial-posix
         <tr>
             <td>13</td>
             <td>CTS+</td>
-            <td>Clear to send</td>
+            <td>Clear to send +</td>
             <td></td>
             <td></td>
             <td></td>
@@ -252,7 +255,11 @@ Many RS-422 transceivers also support RS-485.
     </tbody>
 </table>
 
-[^bib-wp-rs-422]: Wikipedia (2022, Jan 25). _RS-422_. Retrieved 2022-02-05, from https://en.wikipedia.org/wiki/RS-422.
-[^bib-active-experts-rs422-pinout]: ActiveXperts. _RS422 Serial Port Connector Pin Layout_. Retrieved 2022-02-06, from https://www.activexperts.com/serial-port-component/tutorials/pinout422/.
-[^bib-ti-rs-422-rs-485]: Manny Soltero, Jing Zhang, Chris Cockril (2002, Jun). _SLLA070D: RS-422 and RS-485 Standards Overview and System Configurations (Application Report)_. Retrieved 2022-02-06, from https://www.ti.com/lit/an/slla070d/slla070d.pdf.
-[^bib-sweet-serial-posix]: Michael R. Sweet (1999). _Serial Programming Guide for POSIX Operating Systems_. Retrieved 2022-02-12, from https://www.cmrr.umn.edu/~strupp/serial.html.
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wp-rs-422]: Wikipedia (2022, Jan 25). _RS-422_. Retrieved 2022-02-05, from https://en.wikipedia.org/wiki/RS-422.
+[^active-experts-rs422-pinout]: ActiveXperts. _RS422 Serial Port Connector Pin Layout_. Retrieved 2022-02-06, from https://www.activexperts.com/serial-port-component/tutorials/pinout422/.
+[^ti-rs-422-rs-485]: Manny Soltero, Jing Zhang, Chris Cockril (2002, Jun). _SLLA070D: RS-422 and RS-485 Standards Overview and System Configurations (Application Report)_. Retrieved 2022-02-06, from https://www.ti.com/lit/an/slla070d/slla070d.pdf.
+[^sweet-serial-posix]: Michael R. Sweet (1999). _Serial Programming Guide for POSIX Operating Systems_. Retrieved 2022-02-12, from https://www.cmrr.umn.edu/~strupp/serial.html.

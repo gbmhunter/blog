@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2022-01-09
 description: Schematics, advantages/disadvantages, and uses of various current source/sink circuits.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-01-31
+lastUpdated: 2026-06-16
 tags: [electronics, components, current sources, current sinks, bjts, transistors, op-amps, current mirrors]
 title: Current Sources And Sinks
 type: page
@@ -13,13 +13,13 @@ _Current sources_ and _current sinks_ are electronic circuits which allow a fixe
 
 Uses of current sources:
 
-* Driving [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/) (especially high power LEDs).
-* Biasing other circuit elements (e.g. providing a stable bias current for a [transistor](/electronics/components/transistors/) stage).
-* Charging [capacitors](/electronics/components/capacitors/) to provide a linear increase in voltage across it (e.g. to make a sawtooth or triangular waveform).
+- Driving [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/) (especially high power LEDs).
+- Biasing other circuit elements (e.g. providing a stable bias current for a [transistor](/electronics/components/transistors/) stage).
+- Charging [capacitors](/electronics/components/capacitors/) to provide a linear increase in voltage across it (e.g. to make a sawtooth or triangular waveform).
 
 Current sources are very common in circuit design, and as such are usually drawn using schematic symbols as shown below. An independent current source is one which has a predetermined fixed set current. A _controlled_ (or _dependent_) current source is one which is determined by another measurable value in the circuit, usually a voltage (e.g. $I_{source} = kV_{\text{somewhere else}}$). You may have seen a controlled current source symbol in the small-signal model for a BJT. Many analogue IC functional diagrams will show current sources with these symbols, hiding the discrete components they are made from.
 
-<Image src={import('./_assets/curr-source-symbols.webp')} width="400">Popular schematics symbols to represent current sources.</Image>
+<Image src={import('./_assets/curr-source-symbols.webp')} width="400px">Popular schematics symbols to represent current sources.</Image>
 
 The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current falls out of regulation. 
 
@@ -29,7 +29,7 @@ Current sources may either provide power into a circuit (like a power supply), o
 
 Below shows one of the popular methods for constructing a current source from a [Zener diode](/electronics/components/diodes/zener-diodes/) and [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/).
 
-<Image src={import('./_assets/zener-diode-bjt-current-source-schematic.png')} width="400">Schematic of a Zener diode + BJT current source.</Image>
+<Image src={import('./_assets/zener-diode-bjt-current-source-schematic.png')} width="400px">Schematic of a Zener diode + BJT current source.</Image>
 
 ### How It Works
 
@@ -41,9 +41,9 @@ Below shows one of the popular methods for constructing a current source from a 
 The current through the load is given by:
 
 $$
-\begin{align}
+\begin{align*}
 I_{load} = \frac{V_Z - 0.7\unit{V}}{R_E}
-\end{align}
+\end{align*}
 $$
 
 <p className="centered">where:<br/>
@@ -57,11 +57,11 @@ The _constant-current_ diode (a.k.a _JFET current source_, _current-limiting dio
 
 Below shows the schematic for a constant-current diode:
 
-<Image src={import('./_assets/constant-current-diode-schematic.png')} width="350">Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!</Image>
+<Image src={import('./_assets/constant-current-diode-schematic.png')} width="350px">Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!</Image>
 
 ### How It Works
 
-The constant-current diode works by using the resistor $R_S$ to negatively bias the N-channel JFET at a specific operating point. At this operating point the current from drain to source (and consequentially the load) will be relatively constant[^elec-tut-fet-current-source].
+The constant-current diode works by using the resistor $R_S$ to negatively bias the N-channel JFET at a specific operating point. At this operating point the current from drain to source (and consequentially the load) will be relatively constant.[^elec-tut-fet-current-source]
 
 <Aside type="tip">
 Because of the typically large $R_S > 100\unit{\Omega}$ this circuit is only suitable for making low-power current sources up to the $10\unit{mA}-100\unit{mA}$ range. Also, because of the large uncertainty in $V_{GS(off)}$ (e.g. for the 2N5457, the datasheet says it is somewhere between $-0.5\unit{V}$ and $-6.0\unit{V}$![^onsemi-2n5457-ds]), these don't make very accurate current sources (without trimming). But they are stable!
@@ -73,11 +73,11 @@ Because of the typically large $R_S > 100\unit{\Omega}$ this circuit is only sui
 
 1. You then calculate the required gate-source voltage[^vishay-an103-jfet-constant-current-source]:
     $$
-    \begin{align}
-    V_{GS} = V_{GS(off)} \left[ 1 - (\frac{I_D}{I_{DSS}})^{1/k} \right]
-    \end{align}
+    \begin{align*}
+    V_{GS} = V_{GS(off)} \left[ 1 - \left(\frac{I_D}{I_{DSS}}\right)^{1/k} \right]
+    \end{align*}
     $$
-    <p class="centered">where:<br/>
+    <p className="centered">where:<br/>
     $V_{GS}$ is the gate-source voltage required to bias the JFET at the correct current, in $\mathrm{V}$<br/>
     $V_{GS(off)}$ is the gate-source cutoff voltage, a parameter you can get from the JFETs datasheet, in $\mathrm{V}$<br/>
     $I_D$ is the current you want the current source to drive at, in $\mathrm{A}$<br/>
@@ -86,10 +86,9 @@ Because of the typically large $R_S > 100\unit{\Omega}$ this circuit is only sui
 
 1. You can then find the value of $R_S$ with:
     $$
-    \begin{align}
-    \label{eq:rs-vgs-id}
+    \begin{align*}
     R_S = \frac{|V_{GS}|}{I_D}
-    \end{align}
+    \end{align*}
     $$
 
 <Aside type="example" title="Example: 1.0mA Constant-Current Diode">
@@ -99,30 +98,30 @@ Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll ch
 From the [OnSemi 2N5457 datasheet](https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf), we get the following values:
 
 $$
-\begin{align}
+\begin{align*}
 I_{DSS} &= 3.0\unit{mA}\ \text{(typ)} \\
 V_{GS(off)} &= -6.0\unit{V}\ \text{(max)} \\
-\end{align}
+\end{align*}
 $$
 
 Plugging these values into the JFET Vgs equation we can work out the required gate-source voltage (with the common assumption that $k = 2$):
 
 $$
-\begin{align}
-V_{GS} &= V_{GS(off)} \left[ 1 - (\frac{I_D}{I_{DSS}})^{1/k} \right] \nonumber \\
-       &= -6.0\unit{V} \left[ 1 - (\frac{1.0\unit{mA}}{3.0\unit{mA}})^{1/2} \right] \nonumber \\
+\begin{align*}
+V_{GS} &= V_{GS(off)} \left[ 1 - \left(\frac{I_D}{I_{DSS}}\right)^{1/k} \right] \\
+       &= -6.0\unit{V} \left[ 1 - \left(\frac{1.0\unit{mA}}{3.0\unit{mA}}\right)^{1/2} \right] \\
        &= -2.54\unit{V}
-\end{align}
+\end{align*}
 $$
 
-Knowing the current $I_D$ through the resistor and the voltage $V_{GS}$ across it, we can find the resistance using $Eq.\ \ref{eq:rs-vgs-id}$:
+Knowing the current $I_D$ through the resistor and the voltage $V_{GS}$ across it, we can find the resistance using $R_S = \frac{|V_{GS}|}{I_D}$:
 
 $$
-\begin{align}
-R_S &= \frac{|V_{GS}|}{I_D} \nonumber \\
-    &= \frac{|-2.54\unit{V}|}{1.0\unit{mA}} \nonumber \\
+\begin{align*}
+R_S &= \frac{|V_{GS}|}{I_D} \\
+    &= \frac{|-2.54\unit{V}|}{1.0\unit{mA}} \\
     &= 2.54\unit{k\Omega} \\
-\end{align}
+\end{align*}
 $$
 
 Done!
@@ -145,44 +144,44 @@ TODO: Add info.
 
 The following schematic shows such a device which can control between $0-1\unit{A}$ through the load (shown as $R_{load}$):
 
-<Image src={import('./_assets/current-sink/op-amp-current-sink-schematic.png')} width="700">Schematic of a basic op-amp based current sink.</Image>
+<Image src={import('./_assets/current-sink/op-amp-current-sink-schematic.png')} width="700px">Schematic of a basic op-amp based current sink.</Image>
 
 You set the desired load current by providing a voltage to $V_{in}$. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
 
 $$
-\begin{align}
+\begin{align*}
 I_{load} = \frac{V_{in}}{R_{sense}}
-\end{align}
+\end{align*}
 $$
 
 The circuit works like this:
 
 1. Desired voltage to set current is provided to $V_{in}$ which is applied to the positive input of the op-amp, $V_{op+}$.
 1. The op-amp will then drive its output high in an attempt to bring its $V_{op-}$ to the same voltage.
-1. As the op-amp raises the voltage on its output, this is connected to the gate of the MOSFET, which will begin to turn it on.
+1. As the op-amp raises the voltage on its output, this is connected to the gate of the [MOSFET](/electronics/components/transistors/mosfets/), which will begin to turn it on.
 1. As the MOSFET turns on, current begins to flow through the load and sense resistor, $R_{sense}$.
 1. The op-amp will keep turning the MOSFET on until the voltage drop across $R_{sense}$ is equal to $V_{in}$, meaning $V_{op-}$ is the same as $V_{op+}$.
 1. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation $ I_{load} = \frac{V_{in}}{R_{sense}} $.
 
 Things to note:
 
-* The op-amp is powered here with a slightly negative voltage rail on its $V_{SS}$ pin. This is so that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at $V_{op+}$ and $V_{op-}$ are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at $0\unit{V}$.
-* The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by $P = I^2 R$ at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in its active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation $P = VI$ to determine the power dissipation in the MOSFET.
-* The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. See below to recommended compensation circuitry to add to the basic schematic to make the design more stable.
+- The op-amp is powered here with a slightly negative voltage rail on its $V_{SS}$ pin. This is so that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at $V_{op+}$ and $V_{op-}$ are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at $0\unit{V}$.
+- The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by $P = I^2 R$ at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in its active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation $P = VI$ to determine the power dissipation in the MOSFET.
+- The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. See below to recommended compensation circuitry to add to the basic schematic to make the design more stable.
 
 **Current Sinking Accuracy**
 
-The accuracy of the current sink primarily depends of three aspects:
+The accuracy of the current sink primarily depends on three aspects:
 
-* The input offset voltage of the op-amp.
-* The accuracy of the DAC (or other voltage source) providing the voltage to $V_{in}$.
-* The tolerance of the current-sense resistor.
+- The input offset voltage of the op-amp.
+- The accuracy of the DAC (or other voltage source) providing the voltage to $V_{in}$.
+- The tolerance of the current-sense resistor.
 
 **MOSFET Gate Capacitance Compensation**
 
 The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
 
-<Image src={import('./_assets/lt1492-voltage-controlled-current-sink.png')} width="500">A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^linear-lt1492-ds].</Image>
+<Image src={import('./_assets/lt1492-voltage-controlled-current-sink.png')} width="500px">A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^linear-lt1492-ds].</Image>
 
 See this Electronics Stack Exchange thread for more information on op-amp stability with capacitive loads.[^stack-exchange-stability-problem-unity-gain-opamp]
 
@@ -190,9 +189,9 @@ See this Electronics Stack Exchange thread for more information on op-amp stabil
 {/* REFERENCES */}
 {/* =========================================================================================== */}
 
-[^centralsemi-curr-limiting-diode]:  Central Semiconductor Corp.. _What is a Current Limiting Diode?_. Retrieved 2022-01-11, from https://www.centralsemi.com/pdfs/selection/leaded/what_is_a_cld.pdf.
-[^vishay-an103-jfet-constant-current-source]:  Siliconix (now Vishay) (1997, Mar 10). _AN103: The FET Constant-Current Source/Limiter_. Retrieved 2021-04-29, from https://www.vishay.com/docs/70596/70596.pdf.
-[^elec-tut-fet-current-source]:  Electronics Tutorials. _FET Current Source_. Retrieved 2022-01-11, from https://www.electronics-tutorials.ws/transistor/fet-current-source.html.
-[^onsemi-2n5457-ds]:  On Semiconductor (now On Semi) (2010, Feb). _2N5457, 2N5458 JFETs: General Purpose N−Channel − Depletion (datasheet)_. Retrieved 2022-01-11, from https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf.
-[^linear-lt1492-ds]:  Linear Technology. _LT1492/LT1493: 5MHz, 3V/µs, Low Power Single Supply, Dual and Quad Precision Op Amps (datasheet)_. Retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf.
+[^centralsemi-curr-limiting-diode]: Central Semiconductor Corp. _What is a Current Limiting Diode?_. Retrieved 2022-01-11, from https://www.centralsemi.com/pdfs/selection/leaded/what_is_a_cld.pdf.
+[^vishay-an103-jfet-constant-current-source]: Siliconix (now Vishay) (1997, Mar 10). _AN103: The FET Constant-Current Source/Limiter_ [application note]. Retrieved 2021-04-29, from https://www.vishay.com/docs/70596/70596.pdf.
+[^elec-tut-fet-current-source]: Electronics Tutorials. _FET Current Source_. Retrieved 2022-01-11, from https://www.electronics-tutorials.ws/transistor/fet-current-source.html.
+[^onsemi-2n5457-ds]: On Semiconductor (now On Semi) (2010, Feb). _2N5457, 2N5458 JFETs: General Purpose N−Channel − Depletion_ [datasheet]. Retrieved 2022-01-11, from https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf.
+[^linear-lt1492-ds]: Linear Technology. _LT1492/LT1493: 5MHz, 3V/µs, Low Power Single Supply, Dual and Quad Precision Op Amps_ [datasheet]. Retrieved 2020-12-25, from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf.
 [^stack-exchange-stability-problem-unity-gain-opamp]: Electronics Stack Exchange (2013, May 16). _Stability problem in unity gain opamp_ [forum post]. Retrieved 2026-06-08, from https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp.

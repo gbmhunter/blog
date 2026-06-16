@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2015-10-19
 description: Standards, transmission distances, baud rates, transceivers, high-level protocols and more info about the RS-485 communication protocol.
-lastUpdated: 2024-10-10
+lastUpdated: 2026-06-16
 tags: [RS-485, communication protocols, transmitters, receivers, data, bus, serial, nodes, SAE J1708, transmission distances, PROFIBUS, Process Field Bus, PNO, PI, FDL, Fieldbus, sleep modes]
 title: RS-485 Protocol
 type: page
@@ -23,9 +23,9 @@ Duplexity       | Half-duplex
 Max. Data Rate  | 10Mbps
 Max. Bus Length | 1.22km (@ 100kbps)
 
-It is not commonly used for intra-board communication (i.e. between two devices on the same PCB) because in these scenarios there is normally no need for the noise immunity and transmission distances RS-485 provides, and communication protocols such as UART, SPI and I2C are more prevalent.
+It is not commonly used for intra-board communication (i.e. between two devices on the same PCB) because in these scenarios there is normally no need for the noise immunity and transmission distances RS-485 provides, and communication protocols such as [UART](/electronics/communication-protocols/uart-communication-protocol/), [SPI](/electronics/communication-protocols/spi-communication-protocol/) and [I2C](/electronics/communication-protocols/i2c-communication-protocol/) are more prevalent.
 
-A common and cheap way to implement RS-485 are to use half-duplex transceivers. Examples are the SP485 (cheap), or the SP4082 (slightly more expensive, but with slew-rate limiting and ESD protection).
+A common and cheap way to implement RS-485 is to use half-duplex transceivers. Examples are the SP485 (cheap), or the SP4082 (slightly more expensive, but with slew-rate limiting and ESD protection).
 
 Some of the receivers have slew-rate limiting to reduce emissions, at the cost of having a lower maximum data rate (typically around 250kbps). Some also have built-in human body ESD protection (15kV), so you don't have to add external TVS diodes (which normally validates the increase in price you pay for the chips with this feature).
 
@@ -45,7 +45,7 @@ A distance of 1.22km (4000 feet) is achievable at a data rate of 100kbps.
 
 ## Baud Rate
 
-RS-485 transceivers usually top out at about 50-100Mbps.
+RS-485 transceivers usually top out at about 10-50Mbps.
 
 ## Node Count
 
@@ -89,7 +89,7 @@ RS-485 introduces the term unit load. A unit load is a specified load impedance 
 
 The TIA/EIA 485 standard does not specifically state what the characteristic impedance of the twisted-pair cable should be, nor the value of the termination resistors. However, it does provide recommendations, and states that the twisted-pair cable should have a characteristic impedance of $120\Omega$ whenever possible.
 
-This implies that $120\Omega$ termination resistors should be used with this twisted-pair cable. Termination resistors of 120R connected between the two differential lines work well at reducing reflections along long cables.
+This implies that $120\Omega$ termination resistors should be used with this twisted-pair cable. Termination resistors of $120\Omega$ connected between the two differential lines work well at reducing reflections along long cables.
 
 ## Receiver Hysteresis
 
@@ -97,9 +97,9 @@ Receiver hysteresis is normally around 80mV.
 
 ## Standard Pinout
 
-There is somewhat of a standard pinout for RS-485 transceivers in 8-pin component packages. <IRef iref="tbl-rs-485-transceiver-pinout" /> lists this pinout.
+There is somewhat of a standard pinout for RS-485 transceivers in 8-pin component packages. The table below lists this pinout.
 
-<table data-iref="tbl-rs-485-transceiver-pinout">
+<table>
   <thead>
     <tr>
       <th>Pin Number</th>
@@ -149,24 +149,24 @@ There is somewhat of a standard pinout for RS-485 transceivers in 8-pin componen
       <td>Supply voltage.</td>
     </tr>
   </tbody>
-  <caption>Pinout for an typical 8-pin RS-485 transceiver component.</caption>
+  <caption>Pinout for a typical 8-pin RS-485 transceiver component.</caption>
 </table>
 
-8-pin packages that RS-485 transceivers come include DIP-8, SOIC-8, TSSOP-8 and MSOP-8. Example transceivers that follow this "standard" include the [Texas Instruments DS485](http://www.ti.com/lit/ds/symlink/ds485.pdf), [Linear Technology LTC1480](http://cds.linear.com/docs/en/datasheet/1480fa.pdf).
+8-pin packages that RS-485 transceivers come in include DIP-8, SOIC-8, TSSOP-8 and MSOP-8. Example transceivers that follow this "standard" include the [Texas Instruments DS485](http://www.ti.com/lit/ds/symlink/ds485.pdf) and [Linear Technology LTC1480](http://cds.linear.com/docs/en/datasheet/1480fa.pdf).
 
 ## Higher-Level Protocols
 
 Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/gbmhunter/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
-[PROFIBUS](/electronics/communication-protocols/profibus-protocol) can use RS-485 as it's physical layer.
+[PROFIBUS](/electronics/communication-protocols/profibus-protocol/) can use RS-485 as its physical layer.
 
 ## Differential Voltage Specs
 
 The RS-485 specification states that the transmitter must produce a differential voltage of **at least ±1.5V** when loaded, and the receiver must receive a differential voltage of **at least ±200mV**.
 
-The waveform in <IRef iref="fig-typical-rs-485-a-b-waveforms-during-communication" /> shows the voltage on the A and B nets of a RS-485 bus when operating normally at 115200 baud.
+The waveform below shows the voltage on the A and B nets of a RS-485 bus when operating normally at 115200 baud.
 
-<Image iref="fig-typical-rs-485-a-b-waveforms-during-communication" src={import('./_assets/typical-rs-485-a-b-waveforms-during-communication.png')} width="800px">The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud.</Image>
+<Image src={import('./_assets/typical-rs-485-a-b-waveforms-during-communication.png')} width="800px">The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operation. This was operating at 115200 baud.</Image>
 
 The standard also states that the driver is not allowed to produce a differential voltage of more than ±6V.
 
@@ -178,25 +178,25 @@ Most transceivers can withstand a constant single-ended voltage of around ±15V 
 
 Dedicated TVS diode components exist for voltage-spike suppression on RS-485 data lines.
 
-They usually are a bidirectional TVS diode (or diode array) with asymmetric breakdown voltages, that match the maximum voltage specifications of +12V and -7V for RS-485 data lines.
+They usually are a bidirectional [TVS diode](/electronics/components/diodes/tvs-diodes/) (or diode array) with asymmetric breakdown voltages, that match the maximum voltage specifications of +12V and -7V for RS-485 data lines.
 
 The +12V and -7V limits arise from the section of the RS-485 spec which states that up to a 7V ground difference is allowed between any two devices on a RS-485 bus. This, coupled with the spec that allows a single-ended voltage range of 0-5V to be applied to either of the bus nets, gives a possible voltage range of +12V (7V + 5V) to -7V (-7V + 0V).
 
-One such example is the Semtech SM712 diode array. <IRef iref="fig-sm712-tvs-diode-array-designed-for-rs-485-data-lines" /> shows the internal schematic of the component.
+One such example is the Semtech SM712 diode array. The figure below shows the internal schematic of the component.
 
-<Image iref="fig-sm712-tvs-diode-array-designed-for-rs-485-data-lines" src={import('./_assets/sm712-tvs-diode-array-designed-for-rs-485-data-lines.png')} width="300px">The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/.</Image>
+<Image src={import('./_assets/sm712-tvs-diode-array-designed-for-rs-485-data-lines.png')} width="300px">The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/.</Image>
 
 ## Sleep Modes
 
-Some RS-485 transceivers support sleep modes. For example, the National Semiconductor DS36C279 enters a sleep mode when both the driver and receiver are disabled (600ns after both are disabled). In sleep mode, the quiescent current is reduced to 10uA (max.)[^national-semiconductor-ds36c279-ds].
+Some RS-485 transceivers support sleep modes. For example, the National Semiconductor DS36C279 enters a sleep mode when both the driver and receiver are disabled (600ns after both are disabled). In sleep mode, the quiescent current is reduced to 10uA (max.).[^national-semiconductor-ds36c279-ds]
 
 ## SAE J1708
 
-SAE J1708 is a communications protocol standard introduced by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](/electronics/communication-protocols/can-protocol) is usually used instead of SAE J1708.
+SAE J1708 is a communications protocol standard introduced by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](/electronics/communication-protocols/can-protocol/) is usually used instead of SAE J1708.
 
 The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired for open collector operation. Transmission of bits is done through controlling the driver enable pin of the transceiver (rather than using the data in (DI) pin, which is used during normal RS-485 operation).
 
-<Image src={import('./_assets/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png')} width="800px">A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf.</Image>
+<Image src={import('./_assets/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png')} width="800px">A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adapted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf.</Image>
 
 The receiver is always enabled (RE* pin connected to ground) so that the bus state can be checked on every attempted write of a bit. The bus state needs to be compared with the intended write bit, if they are different, another node is also writing on the bus and this bus has lost arbitration.
 
@@ -208,11 +208,11 @@ This configuration means you will no longer be RS-485 compliant.
 
 ## Fail Safe Biasing
 
-In the standard configuration, the RS-485 bus is in an undefined state when there are no active transmitters[^ti-an-1057-ten-ways-to-bullet-proof-rs-485]. This can be a problem in certain scenarios.
+In the standard configuration, the RS-485 bus is in an undefined state when there are no active transmitters.[^ti-an-1057-ten-ways-to-bullet-proof-rs-485] This can be a problem in certain scenarios.
 
 ## RS-485 vs CAN Bus
 
-The RS-485 and CAN bus are both protocols that tick many of the same boxes when you are thinking about a multi-drop, differential communications protocol for a application. So which one should you use?
+The RS-485 and CAN bus are both protocols that tick many of the same boxes when you are thinking about a multi-drop, differential communications protocol for an application. So which one should you use?
 
 RS-485 does not have built-in arbitration, while CAN does (it's built into the CAN peripherals that typically reside inside MCUs). Using a CAN bus, you get arbitration and error detection "for free", in the sense that you don't have to implement it yourself. With RS-485, you either have to implement a protocol that side-steps arbitration (i.e. designate one device as a master that decides when other nodes can transmit), or implement arbitration yourself in the application layer. This means that you need to keep the RX on while the TX is on, and inside the application check to see if they agree with each other. If not, a collision has occurred and you need to implement logic to handle this.
 
@@ -220,11 +220,11 @@ The error detection built into the CAN bus protocol means that nodes will automa
 
 Although both buses don't specify how the "data" is structured (it's up to the application layer to define this), CAN does specify the structure of an ID field which is sent at the start of every message. This field is used for arbitration, and most applications also use this field to include the ID of the sender and/or receiver. The CAN bus also puts a limit on the max. number of bytes per message, being 8 for standard messages and 64 for extended messages. RS-485 does not have a max. limit on the number of bytes per message (nor does it have a concept of a message, you could just stream bytes continuously if you want).
 
-Due to the extra complexity of a CAN peripheral, using a CAN bus will typically be most expensive than using a RS-485 bus. This might be a consideration for high-volume, cost-sensitive products.
+Due to the extra complexity of a CAN peripheral, using a CAN bus will typically be more expensive than using a RS-485 bus. This might be a consideration for high-volume, cost-sensitive products.
 
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 {/* REFERENCES */}
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 
 [^national-semiconductor-ds36c279-ds]: National Semiconductor (2000, Jul). _DS36C279 - Low Power EIA-RS-485 Transceiver with Sleep Mode_ [datasheet]. Retrieved 2024-10-10, from https://www.farnell.com/datasheets/309392.pdf.
-[^ti-an-1057-ten-ways-to-bullet-proof-rs-485]: Texas Instruments (2013, Apr). _AN-1057: AN-1057 Ten Ways to Bulletproof RS-485 Interfaces_. Retrieved 2024-10-10, from https://www.ti.com/lit/an/snla049b/snla049b.pdf.
+[^ti-an-1057-ten-ways-to-bullet-proof-rs-485]: Texas Instruments (2013, Apr). _AN-1057: Ten Ways to Bulletproof RS-485 Interfaces_ [application note]. Retrieved 2024-10-10, from https://www.ti.com/lit/an/snla049b/snla049b.pdf.
