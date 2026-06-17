@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2013-05-29
 description: Heatsinks are used to conduct heat away from electronic components.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-07-18
+lastUpdated: 2026-06-17
 tags: [heatsinks, circuit design, components, overheating, thermal, temperature, packages, pads, interfaces, thermal interfaces]
 title: Heatsinks And Thermal Interfaces
 type: page
@@ -15,15 +15,15 @@ Heatsinks are used in circuit design to conduct heat away from a component faste
 
 <Image src={import('./_assets/typical-to-220-heatsink-with-fins.jpg')} width="411px">A typical TO-220 heatsink with fins. Image from www.digikey.com.</Image>
 
-Typical components that require heatsinking are high current [linear regulators](/electronics/components/power-regulators), MOSFETs on [H-bridges](/electronics/components/h-bridges/), power amplifier BJTs and [MOSFETs](/electronics/components/transistors/mosfets), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
+Typical components that require heatsinking are high current [linear regulators](/electronics/components/power-regulators/linear-regulators/), MOSFETs on [H-bridges](/electronics/components/h-bridges/), power amplifier [BJTs](/electronics/components/transistors/bipolar-junction-transistors-bjts/) and [MOSFETs](/electronics/components/transistors/mosfets/), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
 
-Their heatsinking capability is rated with a thermal resistance, which has the units $ ^{\circ} C / W $. Common packages that heatsinks are made for include [TO-220](/pcb-design/component-packages/to-220-component-package), [SOT-223](/pcb-design/component-packages/sot-23-component-package).
+Their heatsinking capability is rated with a thermal resistance, which has the units $\mathrm{^{\circ}C/W}$. Common packages that heatsinks are made for include [TO-220](/pcb-design/component-packages/to-220-component-package/) and [SOT-223](/pcb-design/component-packages/sot-223-component-package/).
 
 You can get heatsinks with twisted fins, which gives better cooling due to increased air turbulence and convection flow.
 
-Phase change compounds can be used as thermal pads. Phase change compounds are designed to be solid at room temperature but become liquid at the operating temperature, which gives a better bond between the component and heatsink, lowering it's thermal resistance.
+Phase change compounds can be used as thermal pads. Phase change compounds are designed to be solid at room temperature but become liquid at the operating temperature, which gives a better bond between the component and heatsink, lowering its thermal resistance.
 
-For more information on thermal resistances, see the [Thermal Management page](/electronics/circuit-design/thermal-management).
+For more information on thermal resistances, see the [Thermal Management page](/electronics/circuit-design/thermal-management/).
 
 ### Where Does The Heat Go?
 
@@ -33,7 +33,7 @@ The following diagram is a thermal analysis of a SMD MOSFET mounted to a PCB.
 
 ### List Of Component Package Thermal Resistances
 
-See the [Component Packages page](/pcb-design/component-packages). This has many of the common component packages and their thermal resistances.
+See the [Component Packages page](/pcb-design/component-packages/). This has many of the common component packages and their thermal resistances.
 
 ### Forced Convection
 
@@ -43,7 +43,7 @@ The following image shows two graphs combined into one, the thermal performance 
 
 ### Packages
 
-There is no standard package for heatsinks and the pitch for their support pins, although some more common pin spacings exist (such as 25.4mm (1inch) etc.).
+There is no standard package for heatsinks and the pitch for their support pins, although some more common pin spacings exist (such as 25.4mm (1 inch) etc.).
 
 <Image src={import('./_assets/to-220-pcb-mount-heatsink-hs22-technical-drawing.png')} width="1364px">The technical drawing of a typical TO-220 heatsink. Image from www.digikey.com, retrieved 2013-05-29.</Image>
 
@@ -51,8 +51,8 @@ There is no standard package for heatsinks and the pitch for their support pins,
 
 Two packaging types:
 
-* Pad
-* Roll
+- Pad
+- Roll
 
 The thermal interface material may be filled with ceramic particles to improve thermal conductivity.
 
