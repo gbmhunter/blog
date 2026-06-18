@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-18
+lastUpdated: 2026-06-19
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial, L2CAP]
 title: Bluetooth
 type: page
@@ -190,18 +190,28 @@ A BLE connection is an ongoing, bi-directional data link established between a C
 
 #### Connection Parameters
 
-Bluetooth BLE has the following connection parameters:[^nordic-devzone-supervision-timeout]
+Bluetooth BLE has the following modifiable connection parameters:[^nordic-devzone-supervision-timeout]
 
-- **Connection interval**: This is the interval between connection attempts in milliseconds. It must be in the range 7.5ms to 4s.[^silicon-labs-optimizing-current-ble] It is typically specified in units of 1.25ms. The Peripheral can actually request two parameters, a connection interval min and connection interval max. The Central device then uses this info to choose what is actually used (more on this below).
-- **Slave latency:** This specifies the number of connection intervals the peripheral can skip when it has no data to send.[^silicon-labs-optimizing-current-ble] This must be in the range of 0-499 intervals. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect on the Peripheral side as increasing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send. For example, if the connection interval is 30 ms and the slave latency is 4, the slave just needs to wake up every 4 + 1 = 5th connection attempts (150 ms) to respond to Central.
-- **Connection supervision timeout:** This is specified in milliseconds and must be in the range of 100 ms to 32000 ms (32.0 s) and must be in intervals of 10 ms. There is also a further constraint listed below. If no packets have been received in this time, the connection is considered lost.
+**Connection interval**
 
-The connection supervision timeout must obey the following constraint:[^nordic-devzone-supervision-timeout]
+This is the interval between connection attempts in milliseconds. It must be in the range 7.5ms to 4s.[^silicon-labs-optimizing-current-ble] It is typically specified in units of 1.25ms. The Peripheral can actually request two parameters, a connection interval min and connection interval max. The Central device then uses this info to choose what is actually used (more on this below).
+
+**Slave latency**
+
+This specifies the number of connection intervals the peripheral can skip when it has no data to send.[^silicon-labs-optimizing-current-ble] This must be in the range of 0-499 intervals. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect on the Peripheral side as increasing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send. For example, if the connection interval is 30 ms and the slave latency is 4, the slave just needs to wake up every 4 + 1 = 5th connection attempts (150 ms) to respond to Central.
+
+**Connection supervision timeout**
+
+This determines how long each side waits since the last valid packet before assuming the connection is lost. This is to drop connections due to non-planned for events, e.g. if devices go out-of-range, get too much interference, or run out of battery. This is specified in milliseconds and must be in the range of 100 ms to 32000 ms (32.0 s) and must be in intervals of 10 ms. The connection supervision timeout must also obey the following additional constraint:[^nordic-devzone-supervision-timeout]
 
 - Core Spec 4.0 / 4.1: `connSupervisionTimeout > (1 + connSlaveLatency) * connInterval`
 - Core Spec 4.2+: `connSupervisionTimeout > (1 + connSlaveLatency) * connInterval * 2`
 
 Why the addition of the `* 2` in Core Spec 4.2+? My guess is that prior to Core Spec 4.2+, the connection supervision timeout was allowed to be set to something just over the bare minimum of what is essentially one effective response interval if the Peripheral didn't have anything to send (the Peripheral had to legally respond every `(1 + connSlaveLatency)` connection intervals). One missed connection event, e.g. a corrupted packet or RF interference could then cause the timeout and the connection to be dropped. Adding in the `* 2` gives another full effective communication interval as a buffer against this issue.
+
+Both Central and Peripheral monitor the link and start a timer once the connection is established. Each time a valid packet is received, the timer is reset. If the timer expires, the connection is considered lost. At this point nothing is sent over the link. The controller then raises an `HCI Disconnection Complete` event to its host with reason code `0x08` &mdash; "Connection Timeout".
+
+This timeout is different to the fixed 6-connection-event establishment timeout that is used when making the connection. Also note that this differs from a graceful disconnect (when one side intentionally ends the connection). In a graceful disconnect, the node sends an `LL_TERMINATE_IND` control PDU over the air (a packet is actually transmitted over the air) and the peer learns this immediately.
 
 <Aside type="example">
 
@@ -223,7 +233,7 @@ Note that these are the constraints set by the BLE standard. Operating systems c
 These connection settings are controlled by the Central device. However, the Peripheral can suggest connection parameters to the Central device. The Central device can choose to accept or reject them (or use different parameters). This is the reason a min. and a max. are given for the connection interval, it allows the peripheral to suggest a range and gives the Central device some flexibility in choosing the connection parameters.
 
 <Aside type="tip">
-If you are writing the code to control the Peripheral and cannot tolerate the wrong connection parameters set by Central (e.g. you are running of a battery and a low connection interval and/or slave latency would drain too much power) then your only practical option is to drop the connection after it has been made (via a form of "on connection" callback from the BLE library) and you can see that your parameter request has been ignored.
+If you are writing the code to control the Peripheral and cannot tolerate the wrong connection parameters set by Central (e.g. you are running off a battery and a low connection interval and/or slave latency would drain too much power), then your only practical option is to drop the connection after it has been made (via a form of "on connection" callback from the BLE library) once you can see that your parameter request has been ignored.
 </Aside>
 
 See the [Zephyr page](/programming/operating-systems/zephyr/) for information on how to set these connection parameters on MCUs running the Zephyr RTOS.
@@ -249,7 +259,7 @@ A subtle but important point for application developers: even though the connect
     - `CONNECTION_PRIORITY_LOW_POWER`: 100&ndash;125 ms, peripheral latency 2.
 
     (A `CONNECTION_PRIORITY_DCK` mode also exists, for digital car keys.) The supervision timeout is fixed by the stack (around 20 s) regardless of priority. Note that these are AOSP defaults and a phone manufacturer can override them via a resource overlay.
-- **Windows (WinRT):** Before Windows 10 version 2004 (build 19041), apps had no control and Windows chose the parameters automatically. Since then, the `BluetoothLEPreferredConnectionParameters` API lets an app pick one of three presets: `ThroughputOptimized`, `PowerOptimized` or `Balanced` and apply it via `BluetoothLEDevice.RequestPreferredConnectionParameters()`.[^microsoft-ble-preferred-connection-parameters] There is no way to specify arbitrary custom values, and Microsoft does not publish the exact interval/latency/timeout numbers behind each preset.
+- **Windows (WinRT):** Before Windows 10 version 2004 (build 19041), apps had no control and Windows chose the parameters automatically. Since then, the `BluetoothLEPreferredConnectionParameters` API lets an app pick one of three presets &mdash; `ThroughputOptimized`, `PowerOptimized` or `Balanced` &mdash; and apply it via `BluetoothLEDevice.RequestPreferredConnectionParameters()`.[^microsoft-ble-preferred-connection-parameters] There is no way to specify arbitrary custom values, and Microsoft does not publish the exact interval/latency/timeout numbers behind each preset.
 - **Linux (BlueZ):** The parameters used when the adapter initiates a connection come from adapter-wide defaults in debugfs (which require root to change): `conn_min_interval`, `conn_max_interval`, `conn_latency` and `supervision_timeout` under `/sys/kernel/debug/bluetooth/hci0/`. The kernel defaults are 30 ms, 50 ms, 0 and 420 ms respectively.[^linux-kernel-hci-core] BlueZ honours a Peripheral-initiated update request while acting as Central, with the Central retaining the final say.
 
 So taking into account all of this, if you need specific connection timing (e.g. low latency or low power), the most portable place to drive it is the Peripheral's firmware which can request appropriate parameters. On iOS in particular that is the _only_ way to influence them. 
