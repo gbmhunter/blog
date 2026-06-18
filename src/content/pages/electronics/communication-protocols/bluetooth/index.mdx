@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-05-19
+lastUpdated: 2026-06-18
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial, L2CAP]
 title: Bluetooth
 type: page
@@ -13,12 +13,12 @@ import BleAdvDecoder from 'src/components/tools/ble-adv-decoder/BleAdvDecoder.js
 
 <WarningIsNotes />
 
-<Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300">The Bluetooth icon/logo.</Image>
+<Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300px">The Bluetooth icon/logo.</Image>
 
-Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interests Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards.[^wikipedia-bluetooth-sig] The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
+Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interest Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards.[^wikipedia-bluetooth-sig] The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
 
 <Aside type="tip">
-Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and and cellular industries with a short-range wireless link.[^sig-origin-of-name]
+Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmark and Norway in 958. He had a dead tooth that was blue/grey in colour, and hence his nickname "Bluetooth". The protocol was named after him because the wireless standard was intended to unite PC and cellular industries with a short-range wireless link.[^sig-origin-of-name]
 </Aside>
 
 ## Child Pages
@@ -27,7 +27,7 @@ Bluetooth was named after King Harald “Bluetooth” Gormsson who united Denmar
 
 ## Piconet And Scatternets
 
-A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in a inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state.[^wikipedia-piconet]
+A _Piconet_ is the term used for a small Bluetooth network with 1 master device connected to up to 7 active slave devices. Up to 255 more slave devices may be connected to the master but in an inactive or "parked" state. Active slaves can be parked to bring parked devices into the active state.[^wikipedia-piconet]
 
 Both active and parked slaves in a Piconet are time-synchronized to the master so that RF contention does not occur (they implement a Time Division Multiple Access (TDMA) network).
 
@@ -41,7 +41,7 @@ This is a bluetooth standard which supports the streaming of audio between bluet
 
 In 2010, the Bluetooth Core Specification version 4.0 was released. This included Bluetooth Low Energy (BLE), which is now more commonly known as Bluetooth Smart. Bluetooth Smart specifies a hub-and-spoke connection model (with broadcast support), but no mesh topology.
 
-An attribute is a piece of labelled and addressable data. A characteristic is a group of attributes, and a service is a group of attributes.
+An attribute is a piece of labelled and addressable data. A characteristic is a group of attributes, and a service is a group of characteristics.
 
 attribute < characteristic < service
 
@@ -85,11 +85,11 @@ You don't have to use the BLE base UUID if you don't want to.
 
 _Advertising_ is when a BLE peripheral broadcasts packets to any device that wants to listen. Advertising allows a low energy device to sleep most of the time, only waking up periodically for a short amount of time to send a new advertisement packet. Advertising is unidirectional, the peripheral sends out unsolicited data and expects no response. To achieve 2-way communication you have to connect with the BLE peripheral.
 
-_Legacy advertising_ uses three channels from the 2.4GHz radio band, channels 37, 38 and 39. _Extended advertising_ was added in Bluetooth 5.0 and uses all 40 Bluetooth LE channels, resulting in less collisions.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
+_Legacy advertising_ uses three channels from the 2.4GHz radio band, channels 37, 38 and 39. _Extended advertising_ was added in Bluetooth 5.0 and uses all 40 Bluetooth LE channels, resulting in fewer collisions.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
 
 Advertisement packets give you 31 bytes of data for application specific use.
 
-When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone send the device a _scan request_ packet, the the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process[^argenox-ble-advertising-primer]. 
+When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone sends the device a _scan request_ packet, then the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process.[^argenox-ble-advertising-primer]
 
 Below is a table of the most popular "common data types". These are defined in Bluetooth SIG - Assigned Numbers - Section 2.3 - Common Data Types.[^bluetooth-sig-assigned-numbers]
 
@@ -186,16 +186,78 @@ Below is an interactive BLE advertising packet decoder/builder. Paste a raw payl
 
 ### Connections
 
-Connection settings:
+A BLE connection is an ongoing, bi-directional data link established between a Central (e.g. PC or phone) and Peripheral device (e.g. electronics sensor or smart watch). Unlike advertising, which is a one-way broadcast on the advertising channels (37, 38, and 39), a connection carries data in both directions. The Central initiates the connection by responding to a Peripheral's connectable advertisement. Once connected, the two devices hop together across the 37 data channels using adaptive frequency hopping. They exchange data in periodic bursts called _connection events_. Both sides can sleep between connection events, which is one of the reasons BLE is so power efficient. The exchanges are time-synchronized so they know exactly when to wake up in the exchange windows.
 
-* Connection interval (min): 7.5ms to 4s.[^silicon-labs-optimizing-current-ble] Typically specified in units of 1.25ms.
-* Connection interval (max): 7.5ms to 4s. Typically specified in units of 1.25ms.
-* Latency: This is the latency of the peripheral. It allows the peripheral to skip N connection intervals if it doesn't have any data to send(i.e. not respond).[^silicon-labs-optimizing-current-ble] The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect as reducing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send.
-* Timeout: If no packets have been received in this time, the connection is considered lost.
+#### Connection Parameters
+
+Bluetooth BLE has the following connection parameters:[^nordic-devzone-supervision-timeout]
+
+- **Connection interval**: This is the interval between connection attempts in milliseconds. It must be in the range 7.5ms to 4s.[^silicon-labs-optimizing-current-ble] It is typically specified in units of 1.25ms. The Peripheral can actually request two parameters, a connection interval min and connection interval max. The Central device then uses this info to choose what is actually used (more on this below).
+- **Slave latency:** This specifies the number of connection intervals the peripheral can skip when it has no data to send.[^silicon-labs-optimizing-current-ble] This must be in the range of 0-499 intervals. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect on the Peripheral side as increasing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send. For example, if the connection interval is 30 ms and the slave latency is 4, the slave just needs to wake up every 4 + 1 = 5th connection attempts (150 ms) to respond to Central.
+- **Connection supervision timeout:** This is specified in milliseconds and must be in the range of 100 ms to 32000 ms (32.0 s) and must be in intervals of 10 ms. There is also a further constraint listed below. If no packets have been received in this time, the connection is considered lost.
+
+The connection supervision timeout must obey the following constraint:[^nordic-devzone-supervision-timeout]
+
+- Core Spec 4.0 / 4.1: `connSupervisionTimeout > (1 + connSlaveLatency) * connInterval`
+- Core Spec 4.2+: `connSupervisionTimeout > (1 + connSlaveLatency) * connInterval * 2`
+
+Why the addition of the `* 2` in Core Spec 4.2+? My guess is that prior to Core Spec 4.2+, the connection supervision timeout was allowed to be set to something just over the bare minimum of what is essentially one effective response interval if the Peripheral didn't have anything to send (the Peripheral had to legally respond every `(1 + connSlaveLatency)` connection intervals). One missed connection event, e.g. a corrupted packet or RF interference could then cause the timeout and the connection to be dropped. Adding in the `* 2` gives another full effective communication interval as a buffer against this issue.
+
+<Aside type="example">
+
+For example, let's assume a connection interval of 50 ms and a slave latency of 3. This means:
+
+$$
+\begin{align*}
+\text{connSupervisionTimeout} &> (1 + 3) \cdot 50\unit{ms} \cdot 2 \\
+                       &> 400\unit{ms}
+\end{align*}
+$$
+
+Given the connection supervision timeout has to be larger than 400 ms, and can only be in multiples of 10 ms, the smallest it can be set to is 410 ms.
+
+</Aside>
+
+Note that these are the constraints set by the BLE standard. Operating systems can and normally do impose additional constraints on these parameters, more on this below.
 
 These connection settings are controlled by the Central device. However, the Peripheral can suggest connection parameters to the Central device. The Central device can choose to accept or reject them (or use different parameters). This is the reason a min. and a max. are given for the connection interval, it allows the peripheral to suggest a range and gives the Central device some flexibility in choosing the connection parameters.
 
-See the [Bluetooth section on the Zephyr page](/programming/operating-systems/zephyr/#bluetooth) for information on how to set these connection parameters on MCUs running the Zephyr RTOS.
+<Aside type="tip">
+If you are writing the code to control the Peripheral and cannot tolerate the wrong connection parameters set by Central (e.g. you are running of a battery and a low connection interval and/or slave latency would drain too much power) then your only practical option is to drop the connection after it has been made (via a form of "on connection" callback from the BLE library) and you can see that your parameter request has been ignored.
+</Aside>
+
+See the [Zephyr page](/programming/operating-systems/zephyr/) for information on how to set these connection parameters on MCUs running the Zephyr RTOS.
+
+Once connected, the Central can discover the Peripheral's GATT services and characteristics. It can then read, write or subscribe to notifications on them. The application layer uses these services and characteristics to exchange data.
+
+#### Setting Connection Parameters from a Central App
+
+A subtle but important point for application developers: even though the connection parameters are set by the Central, an app running as Central usually has surprisingly little direct control over them. The normal model is that the Peripheral _requests_ its desired parameters by sending an _L2CAP Connection Parameter Update Request_ (or, on Bluetooth 4.1+, an equivalent Link Layer connection parameter request), and the operating system running the Central (not the app) then accepts or rejects them. What an app developer can actually set, and the ranges allowed, varies significantly by platform:
+
+- **iOS and macOS (CoreBluetooth):** There is _no_ public API for a Central app to set or request the connection interval, peripheral latency or supervision timeout, the Peripheral must request them. iOS/macOS then enforce Apple's rules from the _Accessory Design Guidelines_, and a request is rejected unless it satisfies all of the following:[^apple-accessory-design-guidelines] [^apple-qa1931]
+    - Connection interval min ≥ 15 ms, and a multiple of 15 ms.
+    - Interval min + 15 ms ≤ interval max (unless both equal 15 ms).
+    - Peripheral latency ≤ 30.
+    - Supervision timeout between 2 s and 6 s.
+    - Interval max × (peripheral latency + 1) ≤ 2 s.
+    - Interval max × (peripheral latency + 1) × 3 < supervision timeout.
+
+    So the effective minimum connection interval on Apple devices is 15 ms (not the 7.5 ms spec minimum), and some devices will scale a requested 15 ms up to 30 ms. The one exception is a connection that includes the BLE HID service, where an interval down to 11.25 ms is allowed.
+- **Android (Central app):** An app cannot set raw parameter values. Its only lever is `BluetoothGatt.requestConnectionPriority()`, which takes one of a few preset priorities.[^android-bluetoothgatt-reference] The AOSP (Android Open Source Project) default intervals each priority maps to are:[^aosp-gatt-connection-priority-config]
+    - `CONNECTION_PRIORITY_HIGH`: 11.25&ndash;15 ms, peripheral latency 0.
+    - `CONNECTION_PRIORITY_BALANCED` (the default): 30&ndash;50 ms, peripheral latency 0.
+    - `CONNECTION_PRIORITY_LOW_POWER`: 100&ndash;125 ms, peripheral latency 2.
+
+    (A `CONNECTION_PRIORITY_DCK` mode also exists, for digital car keys.) The supervision timeout is fixed by the stack (around 20 s) regardless of priority. Note that these are AOSP defaults and a phone manufacturer can override them via a resource overlay.
+- **Windows (WinRT):** Before Windows 10 version 2004 (build 19041), apps had no control and Windows chose the parameters automatically. Since then, the `BluetoothLEPreferredConnectionParameters` API lets an app pick one of three presets: `ThroughputOptimized`, `PowerOptimized` or `Balanced` and apply it via `BluetoothLEDevice.RequestPreferredConnectionParameters()`.[^microsoft-ble-preferred-connection-parameters] There is no way to specify arbitrary custom values, and Microsoft does not publish the exact interval/latency/timeout numbers behind each preset.
+- **Linux (BlueZ):** The parameters used when the adapter initiates a connection come from adapter-wide defaults in debugfs (which require root to change): `conn_min_interval`, `conn_max_interval`, `conn_latency` and `supervision_timeout` under `/sys/kernel/debug/bluetooth/hci0/`. The kernel defaults are 30 ms, 50 ms, 0 and 420 ms respectively.[^linux-kernel-hci-core] BlueZ honours a Peripheral-initiated update request while acting as Central, with the Central retaining the final say.
+
+So taking into account all of this, if you need specific connection timing (e.g. low latency or low power), the most portable place to drive it is the Peripheral's firmware which can request appropriate parameters. On iOS in particular that is the _only_ way to influence them. 
+
+<Aside type="tip">
+If you do need more control on the Central side over the exact connection parameters, and you're running on a standard OS, you might need to resort to Bluetooth dongles like the [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) or the [BlueIO module](https://www.bleuio.com/). These get around this issue by providing their own Bluetooth radio and custom API that lets you control the parameters.
+</Aside>
+
 
 ### Beacons
 
@@ -205,24 +267,24 @@ Apple's iBeacon is the most popular beacon standard.
 
 ### LE Coded PHY
 
-Bluetooth Low Energy was originally designed to reduce power consumption but offer the same transmission distances as standard Bluetooth (Bluetooth Classic). This is typically around 10-100m range in normal operation conditions (inside a building), and about 50-300m line of sight in optimal conditions. LE Coded PHY (a.k.a. Bluetooth long-range mode) was introduced in Bluetooth 5.0 to extend the range of Bluetooth Low Energy devices to approximately 4x the range of the 1M PHY.[^novel-bits-coded-phy-bluetooths-long-range-feature]
+Bluetooth Low Energy was originally designed to reduce power consumption but offer the same transmission distances as standard Bluetooth (Bluetooth Classic). This is typically around 10-100 m range in normal operation conditions (inside a building), and about 50-300 m line of sight in optimal conditions. LE Coded PHY (a.k.a. Bluetooth long-range mode) was introduced in Bluetooth 5.0 to extend the range of Bluetooth Low Energy devices to approximately 4x the range of the 1M PHY.[^novel-bits-coded-phy-bluetooths-long-range-feature]
 
 Support for LE Coded PHY is optional, and is not supported by all devices.[^novel-bits-coded-phy-bluetooths-long-range-feature]
 
 With the addition of LE Coded PHY, there are now 3 PHYs available for BLE:
 
-* **LE 1M PHY**: 1 Megasymbols per second. The original BLE PHY introduced in Bluetooth v4.0.
-* **LE 2M PHY**: 2 Megasymbols per second. Introduced in Bluetooth 5.0, doubles the speed of the 1M PHY (approx.). Range is reduce to about 80% of the 1M PHY.[^punch-through-bluetooth-phy-how-it-works] The faster transmission speed was somewhat motivated by the desire to support firmware OTA updates.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
-* **LE Coded PHY**: 1 Megasymbols per second, but with multiple symbols per bit. Introduced in Bluetooth 5.0, extends the range of Bluetooth Low Energy devices to 1km line of sight.
+- **LE 1M PHY**: 1 Megasymbols per second. The original BLE PHY introduced in Bluetooth v4.0.
+- **LE 2M PHY**: 2 Megasymbols per second. Introduced in Bluetooth 5.0, doubles the speed of the 1M PHY (approx.). Range is reduced to about 80% of the 1M PHY.[^punch-through-bluetooth-phy-how-it-works] The faster transmission speed was somewhat motivated by the desire to support firmware OTA updates.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
+- **LE Coded PHY**: 1 Megasymbols per second, but with multiple symbols per bit. Introduced in Bluetooth 5.0, extends the range of Bluetooth Low Energy devices to 1km line of sight.
 
 <Aside type="note">
 All Bluetooth PHYs use Gaussian Frequency Shift Keying (GFSK) modulation. This is a form of frequency shift keying (FSK) in where the data pulses are first filtered with a Gaussian filter before being modulated with the carrier frequency. The Gaussian filter smooths out the transitions between the two frequencies, which reduces the amount of energy radiated in the sidebands at the expense of higher intersymbol interference.[^wikipedia-frequency-shift-keying]
 </Aside>
 
-For the LE Coded PHY, data is still sent at 1 Megasymbols per second like in 1M PHY. The key difference is that is uses forward error correction (FEC), and multiple symbols are sent per bit, which gives increases transmission distance at the expense of slower data rates. This redundant information allows the receiver to detect and correct errors in the received data. There are two configurations for LE Coded PHY:
+For the LE Coded PHY, data is still sent at 1 Megasymbols per second like in 1M PHY. The key difference is that it uses forward error correction (FEC), and multiple symbols are sent per bit, which increases transmission distance at the expense of slower data rates. This redundant information allows the receiver to detect and correct errors in the received data. There are two configurations for LE Coded PHY:
 
-* **S2**: 2 symbols per bit in the payload. Gives a data rate of 500kbps.
-* **S8**: 8 symbols per bit in the payload. Gives a data rate of 125kbps.
+- **S2**: 2 symbols per bit in the payload. Gives a data rate of 500 kbps.
+- **S8**: 8 symbols per bit in the payload. Gives a data rate of 125 kbps.
 
 8 symbols per bit (S8) is always used for the access header, irrespective of the configuration for the payload.
 
@@ -234,33 +296,33 @@ LE Coded PHY support is optional, and as of August 2025 support on smartphones i
 
 Information on the internet reports the following phones support LE Coded PHY:
 
-* Google Pixel 4 (but device needs to advertise on LE 1M to be found first, so useless for long range applications!)[^github-list-of-coded-phy-supported-phones]
-* OnePlus 7 and above[^github-list-of-coded-phy-supported-phones]
-* Samsung Galaxy A8[^github-list-of-coded-phy-supported-phones]
-* Samsung Galaxy Tab A7[^github-list-of-coded-phy-supported-phones]
-* Samsung S10+[^github-list-of-coded-phy-supported-phones]
-* Samsung S20[^github-list-of-coded-phy-supported-phones]
-* Xiaomi Poco X3[^github-list-of-coded-phy-supported-phones]
+- Google Pixel 4 (but device needs to advertise on LE 1M to be found first, so useless for long range applications!)[^github-list-of-coded-phy-supported-phones]
+- OnePlus 7 and above[^github-list-of-coded-phy-supported-phones]
+- Samsung Galaxy A8[^github-list-of-coded-phy-supported-phones]
+- Samsung Galaxy Tab A7[^github-list-of-coded-phy-supported-phones]
+- Samsung S10+[^github-list-of-coded-phy-supported-phones]
+- Samsung S20[^github-list-of-coded-phy-supported-phones]
+- Xiaomi Poco X3[^github-list-of-coded-phy-supported-phones]
 
 ## Bluetooth Smart Mesh Working Group
 
 In 2017, a set of three specifications were released by the Bluetooth SIG:
 
-* Mesh Profile
-* Mesh Model
-* Mesh Device Properties
+- Mesh Profile
+- Mesh Model
+- Mesh Device Properties
 
-These specifications allowed Bluetooth devices to form a mesh network. Mesh Profiles use Bluetooth LE for it's underlying radio communications, and as such Mesh Profiles work with Bluetooth 4.2 and Bluetooth 5 devices.
+These specifications allowed Bluetooth devices to form a mesh network. Mesh Profiles use Bluetooth LE for its underlying radio communications, and as such Mesh Profiles work with Bluetooth 4.2 and Bluetooth 5 devices.
 
 Bluetooth Mesh data packets can be up to 384 bytes.
 
 ### Packet Delivery
 
-Packets are not routed in a Bluetooth mesh, but instead use _flooding_. Packets are not sent through a particular sequence of nodes to reach the destination, nor are routing tables kept by any of the nodes. Instead, nodes can be designated as _relays_ receive the message and re-broadcast it to everyone in range. Any relays receiving this will then re-broadcast it again, and so on. Nodes keep track of the packet ID so that they do not re-transmit a message they have already received and transmitted before. This method of _flooding_ is intended to keep the network simple and resilient to node failure. If nodes acted as routers, their failure might have a significant impact on the network.[^sig-intro-to-mesh-part-2]
+Packets are not routed in a Bluetooth mesh, but instead use _flooding_. Packets are not sent through a particular sequence of nodes to reach the destination, nor are routing tables kept by any of the nodes. Instead, nodes can be designated as _relays_ which receive the message and re-broadcast it to everyone in range. Any relays receiving this will then re-broadcast it again, and so on. Nodes keep track of the packet ID so that they do not re-transmit a message they have already received and transmitted before. This method of _flooding_ is intended to keep the network simple and resilient to node failure. If nodes acted as routers, their failure might have a significant impact on the network.[^sig-intro-to-mesh-part-2]
 
 ### Latencies
 
-Bluetooth mesh latency depends on the payload size, number of nodes (incl. number of relays) and the connection topology. You can expect round-trip latencies of around 50ms for packets with an 8 byte payload that go through 3 hops[^silicon-labs-bluetooth-mesh-performance]. Silicon Labs has a great application note, [AN1137: Bluetooth Mesh Network Performance](https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf) which goes into mesh latencies in more detail.
+Bluetooth mesh latency depends on the payload size, number of nodes (incl. number of relays) and the connection topology. You can expect round-trip latencies of around 50ms for packets with an 8 byte payload that go through 3 hops.[^silicon-labs-bluetooth-mesh-performance] Silicon Labs has a great application note, [AN1137: Bluetooth Mesh Network Performance](https://www.silabs.com/documents/public/application-notes/an1137-bluetooth-mesh-network-performance.pdf) which goes into mesh latencies in more detail.
 
 ### Encryption
 
@@ -285,9 +347,9 @@ Bluetooth chipsets are ICs that contain a Bluetooth transceiver and processor th
 
 The BCM20702 is a Bluetooth 4.0 processor made by Broadcom that is commonly found in Bluetooth USB dongles. Sometime on or before 2016, Cypress Semiconductor acquired the part number/IP and renamed it the CYW20702. There is not much information online about the original Broadcom BCM20702, but there is a [datasheet for the Cypress part](https://www.alldatasheet.com/datasheet-pdf/download/902264/CYPRESS/BCM20702.html).
 
-<IRef iref="fig-cyw20702-internal-block-diagram" /> shows the internal block diagram of the CYW20702 IC.
+The block diagram below shows the internal architecture of the CYW20702 IC.
 
-<Image iref="fig-cyw20702-internal-block-diagram" src={import('./_assets/cyw20702-internal-block-diagram.webp')} width="400px">An internal block diagram of the CYW20702 Bluetooth transceiver and baseband processor.[^cypress-cyw20702-bluetooth-transceiver-and-baseband-processor]</Image>
+<Image src={import('./_assets/cyw20702-internal-block-diagram.webp')} width="400px">An internal block diagram of the CYW20702 Bluetooth transceiver and baseband processor.[^cypress-cyw20702-bluetooth-transceiver-and-baseband-processor]</Image>
 
 ### CSR8510
 
@@ -303,17 +365,16 @@ The HC-05 and HC-06 are Bluetooth modules that are popular in the hobbyist space
 
 ## Serial Ports over Bluetooth
 
-Traditionally, Bluetooth provides specific ways of accessing data in the form of profiles.There are two primary ways to provide a "serial port" over Bluetooth:
+Traditionally, Bluetooth provides specific ways of accessing data in the form of profiles. There are two primary ways to provide a "serial port" over Bluetooth:
 
-- **SPP over RFCOMM on Bluetooth Classic**: Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial stream, but also the flow control lines as defined by the [RS-232 standard](/electronics/communication-protocols/rs-232-protocol/). See below for more details.
+- **SPP over RFCOMM on Bluetooth Classic**: Bluetooth Classic defines an emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. It emulates not just a TX and RX serial stream, but also the flow control lines as defined by the [RS-232 standard](/electronics/communication-protocols/rs-232-protocol/). See below for more details.
 - **BLE**: The BLE specification does not define a serial port standard, but there are many proprietary implementations available. See below for more details.
 
 ### SPP over RFCOMM
 
-Bluetooth Classic defines a emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. RFCOMM in turn uses [L2CAP](#l2cap). It emulates not just a TX and RX serial data lines (as streams), but also the flow control lines.[^bluetooth-sig-rfcomm-with-ts-07-10-serial-port-emulation] It has good support by many Bluetooth-enabled microcontrollers, dongles and operating systems.
+Bluetooth Classic defines an emulated serial port standard called the SPP (Serial Port Profile) which uses RFCOMM. RFCOMM in turn uses [L2CAP](#l2cap). It emulates not just a TX and RX serial data lines (as streams), but also the flow control lines.[^bluetooth-sig-rfcomm-with-ts-07-10-serial-port-emulation] It has good support by many Bluetooth-enabled microcontrollers, dongles and operating systems.
 
 <EnhancedTable
-  iref="tbl-rs232-pin-assignments"
   data={[
     {
       "Pin": "102",
@@ -359,17 +420,17 @@ Bluetooth Classic defines a emulated serial port standard called the SPP (Serial
   <caption slot="caption">RS-232 pin assignments for RFCOMM protocol implementation.</caption>
 </EnhancedTable>
 
-<IRef iref="fig-microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm" /> shows how Bluetooth devices that support SPP over RFCOMM can show up in Microsoft Windows. This screenshot was taken in [NinjaTerm](https://ninjaterm.mbedded.ninja/).
+The screenshot below shows how Bluetooth devices that support SPP over RFCOMM can show up in Microsoft Windows. This screenshot was taken in [NinjaTerm](https://ninjaterm.mbedded.ninja/).
 
-<Image iref="fig-microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm" src={import('./_assets/microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm.webp')} width="800px">A screenshot of Microsoft "Standard Serial over Bluetooth link" ports in NinjaTerm.</Image>
+<Image src={import('./_assets/microsoft-standard-serial-over-bluetooth-link-ports-screenshot-in-ninjaterm.webp')} width="800px">A screenshot of Microsoft "Standard Serial over Bluetooth link" ports in NinjaTerm.</Image>
 
 The HC-05 and HC-06 Bluetooth modules which are popular in the hobbyist space use SPP over RFCOMM to implement the bi-directional data stream.
 
 ### BLE Serial
 
-Unfortunately, there is no standard specified by the Bluetooth SIG for implementing a virtual serial port over Bluetooth Low Energy (BLE). However, many vendors have implemented their own proprietary protocols for this, and the few of them have become somewhat "industry standard". What this means is to pick a particular service UUID, and within that one characteristic UUID for TX data, and another characteristic UUID for RX data.
+Unfortunately, there is no standard specified by the Bluetooth SIG for implementing a virtual serial port over Bluetooth Low Energy (BLE). However, many vendors have implemented their own proprietary protocols for this, and a few of them have become somewhat "industry standard". What this means is to pick a particular service UUID, and within that one characteristic UUID for TX data, and another characteristic UUID for RX data.
 
-Hopefully, the device includes the service IDs in it's advertisement packet. This way, a Bluetooth central device which is looking for serial capable peripherals can perform a Bluetooth scan and identify the compatible peripherals without having to connect to them.
+Hopefully, the device includes the service IDs in its advertisement packet. This way, a Bluetooth central device which is looking for serial capable peripherals can perform a Bluetooth scan and identify the compatible peripherals without having to connect to them.
 
 One of the most popular implementations is the Nordic Semiconductor "Nordic UART Service" (NUS). The service and characteristic UUIDs are:[^nordic-semiconductor-nordic-uart-service]
 
@@ -389,10 +450,10 @@ The Microchip Transparent UART Service is a implementation by Microchip. It uses
 
 Texas Instruments also has an implementation called the TI Serial Port Service (SPS). It uses the following UUIDs:[^ti-serial-port-service]
 
-- Service UUID: `f000c0e0-0451-4000-b000-00000000-0000`
-- Data Characteristic UUID: `f000c0e1-0451-4000-b000-00000000-0000` (properties: "notify", "write")
-- Status Characteristic UUID: `f000c0e2-0451-4000-b000-00000000-0000`
-- Config Characteristic UUID: `f000c0e3-0451-4000-b000-00000000-0000`
+- Service UUID: `f000c0e0-0451-4000-b000-000000000000`
+- Data Characteristic UUID: `f000c0e1-0451-4000-b000-000000000000` (properties: "notify", "write")
+- Status Characteristic UUID: `f000c0e2-0451-4000-b000-000000000000`
+- Config Characteristic UUID: `f000c0e3-0451-4000-b000-000000000000`
 
 The TI SPS implementation is a little different from Nordics and Microchips in that there is a single data characteristic for both TX and RX data, and additional information is sent via the status and config characteristics. It is designed so that you can actually configure a real serial port (i.e. one needing settings like baud rate, parity, stop bits, etc.) on the BLE peripheral over BLE from a phone/computer (BLE central device). In this sense the peripheral can be considered a bridge.
 
@@ -439,7 +500,7 @@ The ["Web-Bluetooth-Terminal" by loginov-rocks](https://github.com/loginov-rocks
 
 There are a few Bluetooth-related node.js libraries that provide Bluetooth related functionality:
 
-- [bluetooth-serial-port by eelcocramer]: Provides serial port support for Bluetooth, however as of Sep 2025 it hasn't been updated in 2 years and lists itself as being deprecated. Requires `libbluetooth-dev` on Linux. Requires Visual C++ and it's command-line tools installed on Windows. Requires Python 2.x on all platforms. MacOS support was "temporarily" dropped in `v3.0.0`. 
+- [bluetooth-serial-port by eelcocramer](https://www.npmjs.com/package/bluetooth-serial-port): Provides serial port support for Bluetooth, however as of Sep 2025 it hasn't been updated in 2 years and lists itself as being deprecated. Requires `libbluetooth-dev` on Linux. Requires Visual C++ and its command-line tools installed on Windows. Requires Python 2.x on all platforms. MacOS support was "temporarily" dropped in `v3.0.0`.
 - [node-bluetooth by song940](https://www.npmjs.com/package/node-bluetooth): Requires node-gyp to be installed on all platforms, and additionally `libbluetooth-dev` on Linux.
 
 #### noble and abandonware/noble
@@ -452,13 +513,13 @@ There are a few Bluetooth-related node.js libraries that provide Bluetooth relat
 
 BleuIO produces a range of Bluetooth dongles specifically designed for engineering and development of Bluetooth applications.
 
-<Image src={import('./_assets/bleuio-products-and-pricing.webp')} width="800px">A screenshot from the BlueIO website showing their products and pricing, as of Nov 2025.[^blueio-homepage]</Image>
+<Image src={import('./_assets/bleuio-products-and-pricing.webp')} width="800px">A screenshot from the BleuIO website showing their products and pricing, as of Nov 2025.[^blueio-homepage]</Image>
 
-Instead of relying on the operating system's Bluetooth API, they provide their own API for interacting with the Bluetooth hardware. This gives the user more features and a consistent interface across different operating systems. For example, Windows only allows for one Bluetooth radio to be active at a time (via the OS Bluetooth stack).[^microsoft-windows-drivers-bluetooth-faq]. Just having one Bluetooth radio is not an issue if you use BleuIO since the dongles don't utilize the Windows Bluetooth stack. The Python library Bleak let's you specify an adapter, but this parameter is ignored on Windows. You can interface with the dongles via either AT commands (over a USB CDC serial port) or via provided Python/Javascript libraries (I presume the libraries utilize the AT commands also). 
+Instead of relying on the operating system's Bluetooth API, they provide their own API for interacting with the Bluetooth hardware. This gives the user more features and a consistent interface across different operating systems. For example, Windows only allows for one Bluetooth radio to be active at a time (via the OS Bluetooth stack).[^microsoft-windows-drivers-bluetooth-faq] Just having one Bluetooth radio is not an issue if you use BleuIO since the dongles don't utilize the Windows Bluetooth stack. The Python library Bleak lets you specify an adapter, but this parameter is ignored on Windows. You can interface with the dongles via either AT commands (over a USB CDC serial port) or via provided Python/Javascript libraries (I presume the libraries utilize the AT commands also). 
 
 <Image src={import('./_assets/bt-scan-from-python-using-bleuio-dongle.webp')} width="800px">A screenshot of a Python script scanning for Bluetooth devices using a BleuIO dongle.</Image>
 
-The BleuIO dongles are purchasable either from their website of through third party resellers such as DigiKey.
+The BleuIO dongles are purchasable either from their website or through third party resellers such as DigiKey.
 
 ## OS Support for Bluetooth
 
@@ -474,11 +535,11 @@ Windows also allows Bluetooth mouse and keyboard devices to wake up Windows from
 
 ### Nordic Semiconductor nRF21540
 
-The nRF21540 is a range extender FEM (front-end module) IC for 2.4 GHz RF communications, specifically targetted towards Bluetooth. 
+The nRF21540 is a range extender FEM (front-end module) IC for 2.4 GHz RF communications, specifically targeted towards Bluetooth.
 
 Below is a picture of the contents of the nRF21540 DB (development bundle). It contains two boards:
 
-1. **nRF51540 EK**: An analogue nRF21540-only dev. board in which you can pass RF in and out.
+1. **nRF21540 EK**: An analogue nRF21540-only dev. board in which you can pass RF in and out.
 1. **nRF21540 DK**: A board with both a nRF52840 SoC and nRF21540 integrated together for fast single-board development.
 
 The analogue board is good if you have your own custom 2.4 GHz signal you want to amplify, while the integrated dev. board is if you want an all-in-one rapid prototyping solution.
@@ -523,7 +584,7 @@ For example, to test Coded S8 PHY run `config phy coded_s8`.
 
 ## Regulations
 
-The most crucial regulation that most engineers will find them concerned with is the transmit power of the Bluetooth signal. The transmit power is usually adjustable in firmware -- not only to meet local regulations but also to optimize power and limit range on purpose (sometimes limiting range on purpose is useful -- imagine if your credit card tap-to-pay worked from a kilometer away!).
+The most crucial regulation that most engineers will find themselves concerned with is the transmit power of the Bluetooth signal. The transmit power is usually adjustable in firmware -- not only to meet local regulations but also to optimize power and limit range on purpose (sometimes limiting range on purpose is useful -- imagine if your credit card tap-to-pay worked from a kilometer away!).
 
 In the EU, ETSI EN 300 328 limits Bluetooth transmission power to:[^dewine-labs-bluetooth-tx-power-regulations]
 
@@ -541,7 +602,7 @@ To implement adaptive FHSS, the device must:
 
 ### USA
 
-In the USA the transmission power is more permissive, with the FCC limits Bluetooth transmission power to +30 dBm but PSD (power spectral density) must be below 8 dBm / 3kHz if no adaptive FHSS is implemented. There are two channels with exceptions:[^dewine-labs-bluetooth-tx-power-regulations]
+In the USA the transmission power is more permissive, with the FCC limiting Bluetooth transmission power to +30 dBm but PSD (power spectral density) must be below 8 dBm / 3 kHz if no adaptive FHSS is implemented. There are two channels with exceptions:[^dewine-labs-bluetooth-tx-power-regulations]
 
 - Bluetooth Channel 37 is limited to 18 dBm.
 - Bluetooth Channel 38 is limited to 15.3 dBm.
@@ -586,9 +647,16 @@ See the [RF Spectrum Regulations page](/electronics/compliance/rf-spectrum-regul
 [^noble-ble-library]: noble. _noble/noble_ [GitHub repository]. GitHub. Retrieved 2025-09-19, from https://github.com/noble/noble.
 [^ublox-u-connectxpress-bluetooth-serial-port-service]: u-blox (2021, Nov 29). _u-connectXpress - Bluetooth Low Energy Serial Port Service - Protocol specification_ [pdf]. Retrieved 2025-09-19, from https://content.u-blox.com/sites/default/files/u-connectXpress-LowEnergySerialPortService_ProtocolSpec_UBX-16011192.pdf.
 [^silicon-labs-spp-over-ble]: Silicon Labs. _SPP (Serial Port Profile) over BLE_ [documentation]. Retrieved 2025-09-19, from https://docs.silabs.com/bluetooth/2.13/bluetooth-code-examples-applications/.
-[^blueio-homepage]: BlueIO. _Homepage_ [website]. Retrieved 2025-11-11, from https://www.blueio.com/.
+[^blueio-homepage]: BleuIO. _Homepage_ [website]. Retrieved 2025-11-11, from https://www.bleuio.com/.
 [^microsoft-windows-drivers-bluetooth-faq]: Microsoft. _Learn > Windows > Windows Drivers > Bluetooth FAQ_. Retrieved 2025-11-14, from https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-faq.
 [^bluetooth-sig-data-types-specification]: Bluetooth SIG. _Part A. Data Types Specification_ [specification]. Retrieved 2026-05-20, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/CSS_v11/out/en/supplement-to-the-bluetooth-core-specification/data-types-specification.html.
 [^bluetooth-sig-assigned-numbers]: Bluetooth SIG (2026, May 19). _Assigned Numbers_ [specification]. Retrieved 2026-05-21, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/Assigned_Numbers.pdf.
 [^dewine-labs-bluetooth-tx-power-regulations]: Michael Spörk (2025, Feb 6). _Boosting Bluetooth Range: Understanding TX Power Regulations in the EU & US_. Dewine Labs. Retrieved 2026-05-22, from https://dewinelabs.com/boosting-bluetooth-range-understanding-tx-power-regulations-in-the-eu-us/.
 [^silicon-labs-tx-power-limitations-etsi-fcc]: Silicon Labs. _TX Power Limitations for Regulatory Compliance (ETSI, FCC)_ [documentation]. Retrieved 2026-05-25, from https://docs.silabs.com/bluetooth/5.0/bluetooth-general-system-and-performance/tx-power-limitations-for-regulatory-compliance-etsi-fcc.
+[^nordic-devzone-supervision-timeout]: Nordic DevZone. _A question about the Supervision Timeout_ [forum post]. Retrieved 2026-06-18, from https://devzone.nordicsemi.com/f/nordic-q-a/14454/a-question-about-the-supervision-timeout.
+[^apple-accessory-design-guidelines]: Apple Inc. _Accessory Design Guidelines for Apple Devices (Release R29)_ [guidelines]. Retrieved 2026-06-18, from https://developer.apple.com/accessories/Accessory-Design-Guidelines.pdf.
+[^apple-qa1931]: Apple Inc. (2017, Sep 26). _QA1931: Using the correct Bluetooth Low Energy Advertising and Connection Parameters for a stable connection_ [technical Q&A]. Retrieved 2026-06-18, from https://developer.apple.com/library/archive/qa/qa1931/_index.html.
+[^android-bluetoothgatt-reference]: Android Developers. _BluetoothGatt_ [API reference]. Retrieved 2026-06-18, from https://developer.android.com/reference/android/bluetooth/BluetoothGatt.
+[^aosp-gatt-connection-priority-config]: Android Open Source Project. _platform/packages/apps/Bluetooth: res/values/config.xml_ [source code]. Retrieved 2026-06-18, from https://android.googlesource.com/platform/packages/apps/Bluetooth/+/d65009d%5E!/res/values/config.xml.
+[^microsoft-ble-preferred-connection-parameters]: Microsoft (2025, Nov 21). _BluetoothLEPreferredConnectionParameters Class_ [API reference]. Retrieved 2026-06-18, from https://learn.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.bluetoothlepreferredconnectionparameters.
+[^linux-kernel-hci-core]: Linux kernel. _net/bluetooth/hci_core.c_ [source code]. Retrieved 2026-06-18, from https://github.com/torvalds/linux/blob/master/net/bluetooth/hci_core.c.

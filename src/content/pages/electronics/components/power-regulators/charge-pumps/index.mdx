@@ -2,15 +2,15 @@
 authors: [gbmhunter]
 date: 2014-12-01
 description: Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS).
-lastUpdated: 2022-09-14
+lastUpdated: 2026-06-18
 tags: [electronics, components, power supplies, charge pumps, SMPS, switch-mode power supplies, op-amps, MOSFETs, voltage doublers, diodes, schottky, capacitors, reservoir capacitor, Dickson charge pump]
 title: Charge Pumps
 type: page
 ---
 
-A _charge pump_ (also known as a _Dickson charge pump_, _switched capacitor_ circuit, _voltage multiplier_, or _voltage splitter_ when halving the input voltage) is a voltage-converting circuit that **uses capacitors, diodes, and an oscillating switch to move charge from one capacitor to another**. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage. However, they can also be configured to reduce the input voltage (buck) or invert it.
+A _charge pump_ (also known as a _Dickson charge pump_, _switched capacitor_ circuit, _voltage multiplier_, or _voltage splitter_ when halving the input voltage) is a voltage-converting circuit that **uses [capacitors](/electronics/components/capacitors/), diodes, and an oscillating switch to move charge from one capacitor to another**. Like a [boost converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/boost-converters/), charge pumps are typically used to produce an output voltage which is higher than the input voltage. However, they can also be configured to reduce the input voltage (buck) or invert it.
 
-The basic principle of a charge pump is to **charge capacitors individually (in parallel) from the input voltage, and then connect them in series to provide a higher output voltage**. Whilst this can be done manually or mechanically, almost every practical charge pump circuit uses electronic switches (diodes, MOSFETs, etc.) to change between series and parallel connectivity.
+The basic principle of a charge pump is to **charge capacitors individually (in parallel) from the input voltage, and then connect them in series to provide a higher output voltage**. Whilst this can be done manually or mechanically, almost every practical charge pump circuit uses electronic switches (diodes, [MOSFETs](/electronics/components/transistors/mosfets/), etc.) to change between series and parallel connectivity.
 
 Charge Pump                         | Boost Converter
 ------------------------------------|-------------------
@@ -26,11 +26,11 @@ Charge pumps are very closely related to [Switched-Capacitor Circuits](/electron
 
 ## How It Works
 
-In charge pump designs in which both legs of the capacitor are switched to different parts of the circuit at the same time, the capacitors are called _flying capacitors_, named because both their leads are for a brief moment in time disconnected from the circuit. The capacitor connected across the output load is called the _reservoir capacitor_, _storage capacitor_ or _load capacitor_[^sipex-charge-pump-caps-for-rs-232].
+In charge pump designs in which both legs of the capacitor are switched to different parts of the circuit at the same time, the capacitors are called _flying capacitors_, named because both their leads are for a brief moment in time disconnected from the circuit. The capacitor connected across the output load is called the _reservoir capacitor_, _storage capacitor_ or _load capacitor_.[^sipex-charge-pump-caps-for-rs-232]
 
 <Image src={import('./_assets/charge-pump-voltage-doubler-schematic.png')} width="700px">The basic schematic for a voltage doubling charge pump circuit.</Image>
 
-Schottky diodes are preferred because of their low forward voltage drop and higher switching speeds.
+[Schottky diodes](/electronics/components/diodes/schottky-diodes/) are preferred because of their low forward voltage drop and higher switching speeds.
 
 Larger reservoir capacitances result in longer start-up times, but result in less voltage ripple.
 
@@ -47,13 +47,13 @@ This is the most basic type of charge pump. We'll go through each step of the pr
 1. When voltage is first applied to the circuit, $V_{in}$ provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops across D1 and D2.
 1. Then the pulse input transitions from 0V to 5V. Because C1 is already charged to 4.7V, and this 5V appears on the capacitors negative lead, it "pushes" the top lead of C1 up to 9.7V. This then causes a current from C1, through D2, into C2, charging it up past 5V.
 1. The pulse then transitions back to 0V, and the cycle begins again with C1 charging back up to 5V (remember that it would have dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
-1. After enough cycles, the output voltage on C2 stabilizes to $2V_{in} - 2V_f$.
+1. After enough cycles, the output voltage on C2 stabilizes to $2V_{in} - 2V_f$. Note that $V_f$ here is the forward drop at the actual operating current, not the low-current 300mV figure quoted above --- under load the drop is larger, which is why the simulation below settles closer to 8.7V than the 9.4V the 300mV figure would suggest.
 
 To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngspice. The simulation files can be downloaded below:
 
-* <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation.sch" download>KiCad Schematics</a>
-* <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-rescue.lib" download>KiCad Symbol Library</a>
-* <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/1n5817.lib" download>1N5817 SPICE model</a>
+- <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation.sch" download>KiCad Schematics</a>
+- <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-rescue.lib" download>KiCad Symbol Library</a>
+- <a href="/misc/charge-pumps/charge-pump-voltage-doubler-simulation/1n5817.lib" download>1N5817 SPICE model</a>
 
 The following KiCad schematics were used to perform the simulation:
 
@@ -68,9 +68,9 @@ The below figure shows the behaviour of the voltage doubling charge pump. Notice
 Charge pumps can be used as voltage sources, although **normally only for light loads, as they generally have significant output impedance** (compared to linear regulators and SMPS). In general, the output impedance for a charge pump can be calculated by[^electronics-se-charge-pump-output-res]:
 
 $$
-\begin{align}
-Z_{out} = \frac{N}{fC} \\
-\end{align}
+\begin{align*}
+Z_{out} = \frac{N}{fC}
+\end{align*}
 $$
 
 <p className="centered">where:<br/>
@@ -90,10 +90,10 @@ Let's compare what this equation says compared to a simulation. Below is the sch
 The equation predicts the output impedance to be:
 
 $$
-\begin{align}
-Z_{out} &= \frac{1}{10\unit{kHz} \cdot 1\unit{uF}} \nonumber \\
-        &= 100\unit{\Omega} \\
-\end{align}
+\begin{align*}
+Z_{out} &= \frac{1}{10\unit{kHz} \cdot 1\unit{uF}} \\
+        &= 100\unit{\Omega}
+\end{align*}
 $$
 
 To find the output impedance, I found the output voltage under no load, and the output voltage and current with a $100\unit{\Omega}$ load. Both of these were done using transient-style simulations.
@@ -105,19 +105,19 @@ With $R_{load} = 100\unit{\Omega}$, $V_{load} = 2.23\unit{V}$.
 Thus we can find the output resistance using the resistor divider equation:
 
 $$
-\begin{align}
-V_{load} &= \frac{R_{load}}{Z_{out} + R_{load}} \\
-\end{align}
+\begin{align*}
+V_{load} &= \frac{R_{load}}{Z_{out} + R_{load}} \cdot V_{source}
+\end{align*}
 $$
 
 Re-arrange for $Z_{out}$:
 
 $$
-\begin{align}
-Z_{out} &= \left(\frac{V_{source}}{V_{load}} - 1\right) \cdot R_{load} \nonumber \\
-    &= \left(\frac{5.98\unit{V}}{2.23\unit{V}} - 1\right) \cdot 100\unit{\Omega} \nonumber \\
+\begin{align*}
+Z_{out} &= \left(\frac{V_{source}}{V_{load}} - 1\right) \cdot R_{load} \\
+    &= \left(\frac{5.98\unit{V}}{2.23\unit{V}} - 1\right) \cdot 100\unit{\Omega} \\
     &= 168\unit{\Omega}
-\end{align}
+\end{align*}
 $$
 
 So $100\unit{\Omega}$ predicted by the equation and $168\unit{\Omega}$ measured in the simulation. The measured value is higher, which is exactly what we'd expect: the $\frac{N}{fC}$ equation gives the _ideal_ output impedance (the "slow-switching limit"), accounting only for the charge transferred per cycle. It ignores the real losses in the circuit --- the diode forward voltage drops, the diode series resistance, and capacitor ESR --- all of which add to the output impedance. So the equation should be treated as a lower bound, with the real value sitting somewhat above it.
@@ -134,9 +134,9 @@ The simulation results:
 
 ## History
 
-The _Greinacher voltage multiplier_ (a.k.a. _half-wave doubler_) was invented by Swiss physicist Heinrich Greinacher in 1919[^edn-capacitive-voltage-conversion].
+The _Greinacher voltage multiplier_ (a.k.a. _half-wave doubler_) was invented by Swiss physicist Heinrich Greinacher in 1919.[^edn-capacitive-voltage-conversion]
 
-John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980)[^justia-patents-john-f-dickson]. It is very similar to the Greinacher doubler except it runs off a DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
+John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980).[^justia-patents-john-f-dickson] It is very similar to the Greinacher doubler except it runs off a DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
 
 <Image src={import('./_assets/john-f-dickson-patent-charge-pump-schematic.png')} width="600px">A schematic from John F. Dickson's 1978 charge pump patent. Image from https://patentimages.storage.googleapis.com/d5/27/b7/321211f48454c8/US4214174.pdf, retrieved 2020-12-14.</Image>
 
@@ -146,7 +146,7 @@ John F. Dickson patented what is known as the "Dickson charge pump" in the late 
 
 Charge pumps can be used to provide the negative voltage to op-amps. They suit this application since op-amp power supplies typically require little current (1-20mA), and can generate the negative voltage from the main, higher-current, positive power source.
 
-Special charge pumps exist that only produce a very small negative voltage (e.g. -250mV), for providing the negative power supply to rail-to-rail "single-supply" op-amps so that they can output a true 0V. [More on this on the Op-amps page.](/electronics/components/op-amps#rail-to-rail-op-amps)
+Special charge pumps exist that only produce a very small negative voltage (e.g. -250mV), for providing the negative power supply to rail-to-rail "single-supply" op-amps so that they can output a true 0V. [More on this on the Op-amps page.](/electronics/components/op-amps/#rail-to-rail-op-amps)
 
 <Image src={import('./_assets/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png')} width="409px">The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.</Image>
 
@@ -171,4 +171,4 @@ The RS-232 standard mandates 5-15V $V_{OH}$ and $V_{OL}$ levels. Because most mo
 [^edn-capacitive-voltage-conversion]: Jeff Sorensen (2020, Jun 30). _Capacitive voltage conversion, aka the charge pump_ [article]. EDN. Retrieved 2020-12-08, from https://www.edn.com/capacitive-voltage-conversion-aka-the-charge-pump/.
 [^sipex-charge-pump-caps-for-rs-232]: Sipex Corporation (2006, Jul 24). _ANI-19: Selecting Charge Pump Capacitors_ [application note]. Sipex Corporation. Retrieved 2020-12-14, from https://www.maxlinear.com/appnote/ani-19_selectingchargepumpcaps_072406_d.pdf.
 [^justia-patents-john-f-dickson]: Justia. _John F. Dickson Inventor Patents_ [patent search]. Justia Patents. Retrieved 2020-12-14, from https://patents.justia.com/inventor/john-f-dickson.
-[^electronics-se-charge-pump-output-res]: StackExchange: Electrical Engineering. _Charge pump output resistance_. Retrieved 2022-09-14, from https://electronics.stackexchange.com/questions/136860/charge-pump-output-resistance.
+[^electronics-se-charge-pump-output-res]: StackExchange: Electrical Engineering. _Charge pump output resistance_ [forum post]. Retrieved 2022-09-14, from https://electronics.stackexchange.com/questions/136860/charge-pump-output-resistance.
