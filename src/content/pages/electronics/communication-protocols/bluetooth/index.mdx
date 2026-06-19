@@ -91,6 +91,10 @@ Advertisement packets give you 31 bytes of data for application specific use.
 
 When a phone or other connecting device sees advertisement packets from a BLE peripheral, it can request more information with a _scan request_. The phone sends the device a _scan request_ packet, then the device responds with a _scan response_ packet. Both Android and iPhone devices automatically emit a scan request packet when they discover a new device as part of the Bluetooth scanning process.[^argenox-ble-advertising-primer]
 
+The timeline below shows this in action: a Peripheral advertising with `ADV_IND` packets across the three advertising channels each interval, a Central scanning it (`SCAN_REQ`/`SCAN_RSP`), and finally a Central establishing a connection with a `CONNECT_IND`.
+
+<Image src={import('./_assets/ble-advertising-timing-diagram.svg')} width="900px">A BLE advertising and scanning timeline. The Peripheral broadcasts `ADV_IND` advertisements on each of the three advertising channels (37, 38 and 39) once per advertising interval, switching to receive after each one to listen for a response. A scanning Central can reply with a `SCAN_REQ` (answered by a `SCAN_RSP`), or with a `CONNECT_IND` to start a connection.</Image>
+
 Below is a table of the most popular "common data types". These are defined in Bluetooth SIG - Assigned Numbers - Section 2.3 - Common Data Types.[^bluetooth-sig-assigned-numbers]
 
 <table>
