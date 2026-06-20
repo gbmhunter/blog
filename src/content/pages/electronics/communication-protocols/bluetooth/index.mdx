@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-19
+lastUpdated: 2026-06-20
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial, L2CAP]
 title: Bluetooth
 type: page
@@ -191,6 +191,10 @@ Below is an interactive BLE advertising packet decoder/builder. Paste a raw payl
 ### Connections
 
 A BLE connection is an ongoing, bi-directional data link established between a Central (e.g. PC or phone) and Peripheral device (e.g. electronics sensor or smart watch). Unlike advertising, which is a one-way broadcast on the advertising channels (37, 38, and 39), a connection carries data in both directions. The Central initiates the connection by responding to a Peripheral's connectable advertisement. Once connected, the two devices hop together across the 37 data channels using adaptive frequency hopping. They exchange data in periodic bursts called _connection events_. Both sides can sleep between connection events, which is one of the reasons BLE is so power efficient. The exchanges are time-synchronized so they know exactly when to wake up in the exchange windows.
+
+During each connection event the Central transmits first and the Peripheral replies one `T_IFS` (150 µs) later. The start of an event is called the _anchor point_, and consecutive anchor points are spaced one connection interval apart. If neither side has data, they still exchange short "keep-alive" packets each event; if a side has more to send, it sets the _More Data_ (MD) bit and the two keep exchanging packets within the same event.
+
+<Image src={import('./_assets/ble-connection-packet-timing-diagram.svg')} width="900px">BLE connection events. The Central transmits at each anchor point and the Peripheral replies one `T_IFS` (150 µs) later. When neither side has data, empty packets are exchanged to keep the connection alive (which also resets each side's supervision timer). With a slave latency of 1 the Peripheral may skip a connection event entirely, and multiple packets can be sent each way within a single event while the _More Data_ (MD) bit is set.</Image>
 
 #### Connection Parameters
 
