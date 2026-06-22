@@ -11,8 +11,6 @@ type: page
 
 import BleAdvDecoder from 'src/components/tools/ble-adv-decoder/BleAdvDecoder.jsx';
 
-<WarningIsNotes />
-
 <Image src={import('./_assets/bluetooth-4-0-icon.jpg')} width="300px">The Bluetooth icon/logo.</Image>
 
 Bluetooth is a collection of short range wireless communication protocols. The Bluetooth _Special Interest Group_ (SIG) was founded in 1998 and oversees the development of Bluetooth standards.[^wikipedia-bluetooth-sig] The original Bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
@@ -55,11 +53,24 @@ An L2CAP frame always contains a 4-byte header containing a 2-byte length and a 
 
 ## Bluetooth Low Energy (BLE)
 
-_Bluetooth Low Energy_ (BLE) is a Bluetooth protocol specifically designed for communication on low power devices that need to run for months or years of small batteries. Active BLE connections can be maintained by a MCU with approx. 4-20uA of average current (depends on a lot of things, including connections settings and transmission power).
+_Bluetooth Low Energy_ (BLE) is a Bluetooth protocol specifically designed for communication on low power devices that need to run for months or years of small batteries. Active BLE connections can be maintained by a MCU with approx. 4–20uA of average current (depends on a lot of things, including connections settings and transmission power).
 
 ### Channels
 
 BLE has 40 channels, compared to Bluetooth Classic which has 79.[^argenox-ble-advertising-primer]
+
+### Packet Structure
+
+Every BLE packet, whether it carries an advertisement or connection data, uses the same link-layer format on air: a _preamble_, an _access address_, the _PDU_ (the actual payload), and a _CRC_.[^bluetooth-sig-link-layer-specification]
+
+<Image src={import('./_assets/ble-packet-structure.svg')} width="800px">The on-air structure of a BLE (uncoded PHY) packet. The PDU is the part that carries the payload; its header holds the _PDU Type_ field that identifies the packet as an `ADV_IND`, `SCAN_REQ`, and so on.</Image>
+
+- **Preamble (1 byte):** A fixed, alternating bit pattern (`0xAA` or `0x55`) the receiver uses for automatic gain control and bit-timing synchronisation. It is 2 bytes on the [LE 2M PHY](#le-coded-phy).
+- **Access Address (4 bytes):** Identifies the packet's logical link. All advertising packets share the same fixed access address `0x8E89BED6`; each connection is assigned its own randomly-generated access address when it is set up, so connected devices ignore packets that aren't theirs.
+- **PDU (Protocol Data Unit, 2–257 bytes):** The payload &mdash; a 2-byte header plus 0–255 bytes of data. The header's _PDU Type_ field is what makes a packet an `ADV_IND`, `SCAN_REQ`, etc. (see the [Advertising](#advertising) section for the common PDU types). Legacy advertising payloads are at most 37 bytes; the LE Data Length Extension allows larger PDUs on a connection.
+- **CRC (3 bytes):** A 24-bit cyclic redundancy check computed over the PDU, for error detection. The generator polynomial is $x^{24} + x^{10} + x^9 + x^6 + x^4 + x^3 + x + 1$ (`0x65B`).[^bluetooth-sig-link-layer-specification] It is seeded with a fixed `0x555555` for advertising packets, and with a random per-connection value (sent in the `CONNECT_IND`) for data packets. See the [CRCs (cyclic redundancy checks)](/programming/checksums/crcs-cyclic-redundancy-checks/) page for more on how CRCs work.
+
+On the [LE Coded PHY](#le-coded-phy) the packet additionally carries coding-indicator and terminator fields used by the forward error correction.
 
 ### UUIDs
 
@@ -85,7 +96,7 @@ You don't have to use the BLE base UUID if you don't want to.
 
 _Advertising_ is when a BLE peripheral broadcasts packets to any device that wants to listen. Advertising allows a low energy device to sleep most of the time, only waking up periodically for a short amount of time to send a new advertisement packet. Advertising is unidirectional, the peripheral sends out unsolicited data and expects no response. To achieve 2-way communication you have to connect with the BLE peripheral.
 
-_Legacy advertising_ uses three channels from the 2.4GHz radio band, channels 37, 38 and 39. _Extended advertising_ was added in Bluetooth 5.0 and uses all 40 Bluetooth LE channels, resulting in fewer collisions.[^bluetooth-bluetooth-core-5.0-feature-enhancements]
+_Legacy advertising_ uses three channels from the 2.4GHz radio band, channels 37, 38 and 39. _Extended advertising_ was added in Bluetooth 5.0 and uses all 40 Bluetooth LE channels, resulting in fewer collisions.[^bluetooth-bluetooth-core-5.0-feature-enhancements] Each sent advertisement adds a random 0–10 ms delay to avoid persistent collisions.
 
 Advertisement packets give you 31 bytes of data for application specific use.
 
@@ -94,6 +105,133 @@ When a phone or other connecting device sees advertisement packets from a BLE pe
 The timeline below shows this in action: a Peripheral advertising with `ADV_IND` packets across the three advertising channels each interval, a Central scanning it (`SCAN_REQ`/`SCAN_RSP`), and finally a Central establishing a connection with a `CONNECT_IND`.
 
 <Image src={import('./_assets/ble-advertising-timing-diagram.svg')} width="900px">A BLE advertising and scanning timeline. The Peripheral broadcasts `ADV_IND` advertisements on each of the three advertising channels (37, 38 and 39) once per advertising interval, switching to receive after each one to listen for a response. A scanning Central can reply with a `SCAN_REQ` (answered by a `SCAN_RSP`), or with a `CONNECT_IND` to start a connection.</Image>
+
+The named items above (`ADV_IND`, `SCAN_REQ`, and so on) are _PDU (Protocol Data Unit) types_, not strictly "packets" (although they are often called as such, and normally the distinction does not matter). Strictly, the PDU is the payload of the [packet structure](#packet-structure) described above, and its header carries a _PDU Type_ field (this is the field Wireshark labels "PDU Type"). The suffixes follow the usual telecom naming convention: `_REQ` is a request, `_RSP` is a response, and `_IND` is an _indication_ (an unsolicited broadcast that isn't a reply to anything). The table below summarises the common advertising physical channel PDU types.
+
+<table>
+  <colgroup>
+    <col style="width: 12rem" />
+    <col style="width: 8rem" />
+    <col style="width: 7rem" />
+    <col />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>PDU Type</th>
+      <th>Legacy / Extended</th>
+      <th>Sent by</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ADV_IND</code></td>
+      <td>Legacy</td>
+      <td>Peripheral</td>
+      <td>Connectable, scannable, undirected advertising. The general-purpose advertisement, any device may scan it for more data or connect to it.</td>
+    </tr>
+    <tr>
+      <td><code>ADV_DIRECT_IND</code></td>
+      <td>Legacy</td>
+      <td>Peripheral</td>
+      <td>Connectable, directed advertising aimed at one specific, already-known Central. Used for fast reconnection; carries no advertising data.</td>
+    </tr>
+    <tr>
+      <td><code>ADV_NONCONN_IND</code></td>
+      <td>Legacy</td>
+      <td>Peripheral</td>
+      <td>Non-connectable, non-scannable undirected advertising. A one-way broadcast (e.g. beacons) that can be neither connected to nor scanned.</td>
+    </tr>
+    <tr>
+      <td><code>ADV_SCAN_IND</code></td>
+      <td>Legacy</td>
+      <td>Peripheral</td>
+      <td>Scannable but non-connectable undirected advertising. Can't be connected to, but a scanner can request extra data with a <code>SCAN_REQ</code>.</td>
+    </tr>
+    <tr>
+      <td><code>SCAN_REQ</code></td>
+      <td>Legacy</td>
+      <td>Central</td>
+      <td>Sent by a scanner (during active scanning) to ask an advertiser for additional data.</td>
+    </tr>
+    <tr>
+      <td><code>SCAN_RSP</code></td>
+      <td>Legacy</td>
+      <td>Peripheral</td>
+      <td>The advertiser's reply to a <code>SCAN_REQ</code>, carrying a further 31 bytes of advertising data.</td>
+    </tr>
+    <tr>
+      <td><code>CONNECT_IND</code></td>
+      <td>Legacy</td>
+      <td>Central</td>
+      <td>Sent by an initiator to establish a connection with the advertiser, carrying the connection parameters. Named <code>CONNECT_REQ</code> before Core Spec 5.0.</td>
+    </tr>
+    <tr>
+      <td><code>ADV_EXT_IND</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>Extended advertising (Bluetooth 5.0). A small PDU on the primary channels (37/38/39) that points to an <code>AUX_ADV_IND</code> on a secondary (data) channel, where the real payload lives.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_ADV_IND</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>Carries the extended advertising payload on a secondary channel. Referenced by an <code>ADV_EXT_IND</code>, and (for periodic advertising) holds the <code>SyncInfo</code> pointing to the periodic train.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_SCAN_REQ</code></td>
+      <td>Extended</td>
+      <td>Central</td>
+      <td>Scan request sent on a secondary channel. The extended-advertising equivalent of <code>SCAN_REQ</code>.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_SCAN_RSP</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>The advertiser's scan response on a secondary channel, replying to an <code>AUX_SCAN_REQ</code>.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_CONNECT_REQ</code></td>
+      <td>Extended</td>
+      <td>Central</td>
+      <td>Connection request sent on a secondary channel to connect to an extended advertiser. The extended-advertising equivalent of <code>CONNECT_IND</code>.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_CONNECT_RSP</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>The advertiser's acknowledgement of an <code>AUX_CONNECT_REQ</code>, confirming the connection on a secondary channel. This PDU is new to extended advertising and has no legacy equivalent.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_SYNC_IND</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>A periodic advertising PDU, sent at the fixed periodic interval on the data channels and carrying the periodic advertising data.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_SYNC_SUBEVENT_IND</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>A Periodic Advertising with Responses (PAwR, Bluetooth 5.4) PDU. Carries the data for one subevent of a PAwR train and opens the response slots in which synced devices may reply.</td>
+    </tr>
+    <tr>
+      <td><code>AUX_SYNC_SUBEVENT_RSP</code></td>
+      <td>Extended</td>
+      <td>Central</td>
+      <td>The reply a synced device sends back in a PAwR subevent's response slot.This is what makes periodic advertising bidirectional (e.g. for Electronic Shelf Labels).</td>
+    </tr>
+    <tr>
+      <td><code>AUX_CHAIN_IND</code></td>
+      <td>Extended</td>
+      <td>Peripheral</td>
+      <td>A continuation PDU that chains additional advertising data when it doesn't fit in a single packet.</td>
+    </tr>
+  </tbody>
+</table>
+
+<Aside type="note">
+The Bluetooth Core Specification reserves the terms _legacy advertising PDU_ and _extended advertising PDU_ for the broadcast advertising PDUs only: `ADV_IND`, `ADV_DIRECT_IND`, `ADV_NONCONN_IND` and `ADV_SCAN_IND` are legacy, while `ADV_EXT_IND` and the `AUX_*` advertising PDUs are extended. The scan and connect PDUs (`SCAN_REQ`, `SCAN_RSP`, `CONNECT_IND` and their `AUX_` equivalents) are strictly _scanning_ and _initiating_ PDUs; the table groups each under the advertising mode it is used in.[^bluetooth-sig-link-layer-specification]
+</Aside>
 
 Below is a table of the most popular "common data types". These are defined in Bluetooth SIG - Assigned Numbers - Section 2.3 - Common Data Types.[^bluetooth-sig-assigned-numbers]
 
@@ -206,7 +344,7 @@ This is the interval between connection attempts in milliseconds. It must be in 
 
 **Slave latency**
 
-This specifies the number of connection intervals the peripheral can skip when it has no data to send.[^silicon-labs-optimizing-current-ble] This must be in the range of 0-499 intervals. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect on the Peripheral side as increasing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send. For example, if the connection interval is 30 ms and the slave latency is 4, the slave just needs to wake up every 4 + 1 = 5th connection attempts (150 ms) to respond to Central.
+This specifies the number of connection intervals the peripheral can skip when it has no data to send.[^silicon-labs-optimizing-current-ble] This must be in the range of 0–499 intervals. The Central device must still poll the peripheral on every connection interval. This has a similar power saving effect on the Peripheral side as increasing the connection interval, except with the added benefit that fast connection intervals can be used when the Peripheral has data to send. For example, if the connection interval is 30 ms and the slave latency is 4, the slave just needs to wake up every 4 + 1 = 5th connection attempts (150 ms) to respond to Central.
 
 **Connection supervision timeout**
 
@@ -262,9 +400,9 @@ A subtle but important point for application developers: even though the connect
 
     So the effective minimum connection interval on Apple devices is 15 ms (not the 7.5 ms spec minimum), and some devices will scale a requested 15 ms up to 30 ms. The one exception is a connection that includes the BLE HID service, where an interval down to 11.25 ms is allowed.
 - **Android (Central app):** An app cannot set raw parameter values. Its only lever is `BluetoothGatt.requestConnectionPriority()`, which takes one of a few preset priorities.[^android-bluetoothgatt-reference] The AOSP (Android Open Source Project) default intervals each priority maps to are:[^aosp-gatt-connection-priority-config]
-    - `CONNECTION_PRIORITY_HIGH`: 11.25&ndash;15 ms, peripheral latency 0.
-    - `CONNECTION_PRIORITY_BALANCED` (the default): 30&ndash;50 ms, peripheral latency 0.
-    - `CONNECTION_PRIORITY_LOW_POWER`: 100&ndash;125 ms, peripheral latency 2.
+    - `CONNECTION_PRIORITY_HIGH`: 11.25–15 ms, peripheral latency 0.
+    - `CONNECTION_PRIORITY_BALANCED` (the default): 30–50 ms, peripheral latency 0.
+    - `CONNECTION_PRIORITY_LOW_POWER`: 100–125 ms, peripheral latency 2.
 
     (A `CONNECTION_PRIORITY_DCK` mode also exists, for digital car keys.) The supervision timeout is fixed by the stack (around 20 s) regardless of priority. Note that these are AOSP defaults and a phone manufacturer can override them via a resource overlay.
 - **Windows (WinRT):** Before Windows 10 version 2004 (build 19041), apps had no control and Windows chose the parameters automatically. Since then, the `BluetoothLEPreferredConnectionParameters` API lets an app pick one of three presets &mdash; `ThroughputOptimized`, `PowerOptimized` or `Balanced` &mdash; and apply it via `BluetoothLEDevice.RequestPreferredConnectionParameters()`.[^microsoft-ble-preferred-connection-parameters] There is no way to specify arbitrary custom values, and Microsoft does not publish the exact interval/latency/timeout numbers behind each preset.
@@ -285,7 +423,7 @@ Apple's iBeacon is the most popular beacon standard.
 
 ### LE Coded PHY
 
-Bluetooth Low Energy was originally designed to reduce power consumption but offer the same transmission distances as standard Bluetooth (Bluetooth Classic). This is typically around 10-100 m range in normal operation conditions (inside a building), and about 50-300 m line of sight in optimal conditions. LE Coded PHY (a.k.a. Bluetooth long-range mode) was introduced in Bluetooth 5.0 to extend the range of Bluetooth Low Energy devices to approximately 4x the range of the 1M PHY.[^novel-bits-coded-phy-bluetooths-long-range-feature]
+Bluetooth Low Energy was originally designed to reduce power consumption but offer the same transmission distances as standard Bluetooth (Bluetooth Classic). This is typically around 10–100 m range in normal operation conditions (inside a building), and about 50–300 m line of sight in optimal conditions. LE Coded PHY (a.k.a. Bluetooth long-range mode) was introduced in Bluetooth 5.0 to extend the range of Bluetooth Low Energy devices to approximately 4x the range of the 1M PHY.[^novel-bits-coded-phy-bluetooths-long-range-feature]
 
 Support for LE Coded PHY is optional, and is not supported by all devices.[^novel-bits-coded-phy-bluetooths-long-range-feature]
 
@@ -321,6 +459,37 @@ Information on the internet reports the following phones support LE Coded PHY:
 - Samsung S10+[^github-list-of-coded-phy-supported-phones]
 - Samsung S20[^github-list-of-coded-phy-supported-phones]
 - Xiaomi Poco X3[^github-list-of-coded-phy-supported-phones]
+
+### Periodic Advertising
+
+Periodic advertising was added in Bluetooth 5.0 to allow for a low-power, connectionless one-to-many communication architecture. It is a connectionless broadcast mode where an advertiser sends advertising packets at a fixed, deterministic interval that scanners can synchronise to. This means the scanners knows exactly when and on what channel the next packet will arrive, and can keep it's radio off for the rest of the time. It is purely unidirectional (no responses).[^silicon-labs-periodic-advertising]
+
+Standard advertising (even when extended) is deliberately non-deterministic, as each advertising event adds a random delay (`advDelay`) of 0–10 ms to avoid persistent collisions. This is fine for discovery, but to catch repeated advertisements the receiver has to scan continuously, which is power hungry, and there is no way to broadcast to multiple listeners.
+
+**How It Works**
+
+1. The advertiser sends `ADV_EXT_IND` (legacy advertisements) on the primary advertising channels (37, 38 and 39), which points to an `AUX_ADV_IND` (extended advertisements) on a data channel.[^silicon-labs-periodic-advertising]
+1. The `AUX_ADV_IND` contains a `SyncInfo` field which contains the timing and channel-hopping parameters of the periodic advertisements. The `AUX_ADV_IND` is part of extended advertising, so extended advertising is normally enabled by default when using periodic advertising.
+1. The actual periodic data is in `AUX_SYNC_IND` packets that are sent of the data channels at the fixed periodic advertising interval.
+1. A receiver uses the `SyncInfo` field to work out the sync parameters, then just listens at the scheduled anchor points for the `AUX_SYNC_IND` packets.
+
+The periodic advertising interval is specified in units of 1.25 ms, ranging from 7.5 ms up to about 81.92 s. 
+
+Advertisers periodically send new `AUX_ADV_IND` packets so that new scanners can synchronise to the data stream or existing scanners can resume a lost sync.[^silicon-labs-periodic-advertising]
+
+### Periodic Advertising Sync Transfer
+
+Bluetooth 5.1 advanced the periodic advertising of 5.0 with the addition of periodic advertising sync transfer (PAST). The is where one device and pass sync info to another so it doesn't have to find it itself with a scan.[^bluetooth-sig-periodic-advertising-sync-transfer]
+
+### LE Audio / Auracast Broadcast Audio
+
+Bluetooth 5.2 added LE audio / Auracast Broadcast Audio with Broadcast Isochronous Streams so that many receivers can sync to the same audio broadcast.
+
+### Periodic Advertising with Responses
+
+Periodic Advertising with Responses (PAwR) was added in Bluetooth 5.4. This is where response slots where added to periodic advertising, making them bi-directional.
+
+This mode is designed to support hundreds to thousands of energy-constrained devices simultaneously. One popular use case is Electronic Shelf Labels (ESL).
 
 ## Bluetooth Smart Mesh Working Group
 
@@ -678,3 +847,6 @@ See the [RF Spectrum Regulations page](/electronics/compliance/rf-spectrum-regul
 [^aosp-gatt-connection-priority-config]: Android Open Source Project. _platform/packages/apps/Bluetooth: res/values/config.xml_ [source code]. Retrieved 2026-06-18, from https://android.googlesource.com/platform/packages/apps/Bluetooth/+/d65009d%5E!/res/values/config.xml.
 [^microsoft-ble-preferred-connection-parameters]: Microsoft (2025, Nov 21). _BluetoothLEPreferredConnectionParameters Class_ [API reference]. Retrieved 2026-06-18, from https://learn.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.bluetoothlepreferredconnectionparameters.
 [^linux-kernel-hci-core]: Linux kernel. _net/bluetooth/hci_core.c_ [source code]. Retrieved 2026-06-18, from https://github.com/torvalds/linux/blob/master/net/bluetooth/hci_core.c.
+[^bluetooth-sig-periodic-advertising-sync-transfer]: Kai Ren (2019, Feb 28). _What you need to know about Periodic Advertising Sync Transfer_. Bluetooth SIG. Retrieved 2026-06-20, from https://www.bluetooth.com/blog/periodic-advertising-sync-transfer/.
+[^silicon-labs-periodic-advertising]: Silicon Labs. _Periodic Advertising_ [documentation]. Retrieved 2026-06-20, from https://docs.silabs.com/bluetooth/latest/bluetooth-fundamentals-advertising-scanning/periodic-advertising.
+[^bluetooth-sig-link-layer-specification]: Bluetooth SIG. _Part B. Link Layer Specification_ [specification]. Retrieved 2026-06-20, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/low-energy-controller/link-layer-specification.html.

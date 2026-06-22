@@ -294,6 +294,14 @@ to break anything? */
   line-height: 1.4;
 }
 
+/* Inline code in table cells. The theme sizes <code> with --sl-text-code (the
+   larger body size), so it doesn't shrink with the smaller table text. Pin it to
+   the table text size so code matches the surrounding cell text. */
+.sl-markdown-content table th code,
+.sl-markdown-content table td code {
+  font-size: var(--sl-text-sm);
+}
+
 /* Zebra striping - opt-in by adding class="striped" to table */
 .sl-markdown-content table.striped tbody tr:nth-child(odd) {
   background-color: var(--sl-color-gray-6);

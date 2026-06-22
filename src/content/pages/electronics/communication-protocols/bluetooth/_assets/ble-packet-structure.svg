@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 310" preserveAspectRatio="xMidYMid meet">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .field { font-size: 19px; font-weight: bold; fill: #ffffff; text-anchor: middle; }
+    .field-dark { font-size: 19px; font-weight: bold; fill: #1f2d3d; text-anchor: middle; }
+    .sub { font-size: 13px; fill: #ffeede; text-anchor: middle; }
+    .size { font-size: 15px; fill: #1f2d3d; text-anchor: middle; }
+  </style>
+
+  <!-- ========= TOP ROW: the packet ========= -->
+  <rect x="50"  y="60" width="110" height="64" rx="4" fill="#3465A4" stroke="#1f2d3d" stroke-width="1.5"/>
+  <text x="105" y="98" class="field">Preamble</text>
+  <text x="105" y="146" class="size">1 byte</text>
+
+  <rect x="160" y="60" width="180" height="64" rx="4" fill="#3465A4" stroke="#1f2d3d" stroke-width="1.5"/>
+  <text x="250" y="98" class="field">Access Address</text>
+  <text x="250" y="146" class="size">4 bytes</text>
+
+  <rect x="340" y="60" width="290" height="64" rx="4" fill="#EA7500" stroke="#1f2d3d" stroke-width="1.5"/>
+  <text x="485" y="98" class="field">PDU</text>
+  <text x="485" y="146" class="size">2–257 bytes</text>
+
+  <rect x="630" y="60" width="110" height="64" rx="4" fill="#3465A4" stroke="#1f2d3d" stroke-width="1.5"/>
+  <text x="685" y="98" class="field">CRC</text>
+  <text x="685" y="146" class="size">3 bytes</text>
+
+  <!-- ========= ZOOM LINES from PDU to breakdown ========= -->
+  <line x1="340" y1="124" x2="200" y2="206" stroke="#9aa6b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="630" y1="124" x2="730" y2="206" stroke="#9aa6b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- ========= BOTTOM ROW: PDU breakdown ========= -->
+  <rect x="200" y="206" width="150" height="60" rx="4" fill="#EA7500" stroke="#1f2d3d" stroke-width="1.5"/>
+  <text x="275" y="234" class="field">Header</text>
+  <text x="275" y="254" class="sub">(holds PDU Type)</text>
+  <text x="275" y="288" class="size">2 bytes</text>
+
+  <rect x="350" y="206" width="380" height="60" rx="4" fill="#fbe3c7" stroke="#EA7500" stroke-width="1.5"/>
+  <text x="540" y="240" class="field-dark">Payload</text>
+  <text x="540" y="288" class="size">0–255 bytes</text>
+</svg>

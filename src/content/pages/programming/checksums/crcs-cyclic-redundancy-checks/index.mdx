@@ -1,8 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2016-06-07
-lastUpdated: 2026-04-30
-tags: [CRC, cyclic redundancy check, generator polynomial, calculator, NinjaCalc, CRC-8-ATM, CRC-16, XModem, Kermit]
+lastUpdated: 2026-06-20
+tags: [CRC, cyclic redundancy check, generator polynomial, calculator, NinjaCalc, CRC-8-ATM, CRC-16, CRC-24, BLE, Bluetooth, XModem, Kermit]
 title: CRCs (Cyclic Redundancy Checks)
 type: page
 ---
@@ -497,6 +497,28 @@ Normal: 0x1021
 Reverse: 0x8408
 Koopman: 0x8810
 ```
+
+### CRC-24/BLE
+
+| Property      | Value           |
+|---------------|-----------------|
+| Name          | CRC-24/BLE      |
+| Width         | 24              |
+| Poly          | 0x00065b        |
+| Init          | 0x555555        |
+| RefIn         | True            |
+| RefOut        | True            |
+| XorOut        | 0x000000        |
+| Check         | 0xc25a56        |
+| Residue       | 0x000000        |
+
+This is the 24-bit CRC used in the [Bluetooth Low Energy link-layer packet](/electronics/communication-protocols/bluetooth/#packet-structure), computed over the PDU. The generator polynomial is:
+
+$$
+x^{24} + x^{10} + x^9 + x^6 + x^4 + x^3 + x + 1
+$$
+
+The `Init` of `0x555555` applies to advertising-channel packets. For connection (data-channel) packets the init is instead a random per-connection value (`CRCInit`) chosen by the initiator at connection setup, so the fixed catalogue entry above describes only the advertising case.[^reveng-crc-catalogue]
 
 ### CRC-32/ISO-HDLC
 

@@ -3,7 +3,7 @@ aliases: [/electronics/components/displays/e-paper]
 authors: [gbmhunter]
 date: 2026-05-06
 description: Bistable displays such as E-Paper (electrophoretic) displays, cholesteric liquid crystal displays (ChLCDs) and zenithal bistable displays (ZBDs) only need power to change the image, not to retain it. This page covers how they work, common driver ICs, manufacturers, and more.
-lastUpdated: 2026-06-10
+lastUpdated: 2026-06-22
 tags: [bistable displays, epaper, e-paper, electronic paper, e-ink, displays, screens, EPDs, Pervasive Displays, Waveshare, cholesteric liquid crystal displays, ChLCDs, zenithal bistable displays, ZBDs]
 title: Bistable Displays
 type: page
@@ -15,15 +15,21 @@ Bistable displays only require electrical power to change the image being shown 
 
 ## E-Paper Displays
 
-E-Paper (electronic paper) displays are the most well-known family of bistable displays. They reflect incoming light rather than rely of self-illumination. They are sometimes called EPDs (E-Paper Displays), Active Matrix Electrophoretic Displays (AMEPDs) or electrophoretic displays.
-
-E-Paper displays either come raw (no driver board) or with a driver board.
+E-Paper displays are the most well-known family of bistable displays. They reflect incoming light rather than rely of self-illumination. They are sometimes called EPDs (E-Paper Displays), Active Matrix Electrophoretic Displays (AMEPDs) or electrophoretic displays.
 
 ### Driver or Driverless
 
-E-Paper displays are typically either sold with the driver IC included in the screen, or without it (it which can you have to connect up a suitable driver IC yourself). Note that even the driverless E-Paper displays still have driver circuitry inside them, typically the gate and source driver (which are connected to the pixel array).[^gitlab-zephray-glider] Driverless displays typically have a large pin connector (30-70 pins). For example the E-Ink EC113TC1 E-Paper display has a 50-pin FPC connector!
+E-Paper displays are typically either sold with the driver IC included in the screen, or without it (it which can you have to connect up a suitable driver circuitry yourself). Note that even the driverless E-Paper displays still have driver circuitry inside them, typically the gate and source driver (which are connected to the pixel array).[^gitlab-zephray-glider] Driverless displays typically have a large pin connector (30-70 pins). For example the E-Ink EC113TC1 E-Paper display has a 50-pin FPC connector! Driverless displays require significant additional circuitry to work: power management circuitry to generate a range of different voltages that the screen requires, plus a TCON (timing controller) to convert a framebuffer into the appropriate gate/source waveforms.
 
-The IT8951 AM type EPD Timing Controller is a popular timing controller IC for E-Paper displays. It comes in a 128-pin [QFP package](/pcb-design/component-packages/qfp-component-package/).[^ite-it8951] It works with large EPDs up to 2048x2048.[^gitlab-zephray-glider]
+Just to give you an idea of the voltage rail requirements here is an example of the different voltages required, taken from the TPS65185x PMIC datasheet:[^ti-tps65185-datasheet]
+
+- `VPOS`: 15 V, 120 mA
+- `VNEG`: -15 V, 120 mA
+- `VDDH`: 22 V, 15 mA
+- `VEE`: -20 V, 15 mA
+- `VCOM`: Adjustable, 0 to -5.11 V
+
+The IT8951 AM type EPD Timing Controller (TCON) is a popular timing controller IC for E-Paper displays. It comes in a 128-pin [QFP package](/pcb-design/component-packages/qfp-component-package/).[^ite-it8951] It works with large EPDs up to 2048x2048.[^gitlab-zephray-glider] The TCON is responsible for converting the framebuffer into clocked gate and source driver waveforms expected by the gate and source drivers. It compensates from temperature by applying waveform LUTs based on a temperature sensor near the screen.
 
 ### Manufacturers
 
@@ -162,3 +168,4 @@ ZBD is rather unique in that there seems to be only the one supplier, New Vision
 [^retail-times-zbd-rebrands-as-displaydata]: Fiona Briggs (2014, Jan 17). _ZBD rebrands as Displaydata and launches new graphic electronic shelf-edge labels (ESL)_ [news article]. Retail Times. Retrieved 2026-06-10 (via archive.org, original URL is now dead), from https://web.archive.org/web/20200222224804/http://www.retailtimes.co.uk/zbd-rebrands-displaydata-launches-new-graphic-electronic-shelf-edge-labels-esl/.
 [^display-daily-zbd-journey-via-esls-to-custom]: Bob Raikes (2022, Aug 1). _ZBD's Journey via ESLs to Custom_ [article]. Display Daily. Retrieved 2026-06-10, from https://displaydaily.com/zbd-s-journey-via-esls-to-custom/.
 [^display-daily-new-vision-display-acquires-zbd]: New Vision Display (2019, Sep 20). _New Vision Display Acquires ZBD LCD Technology and Malvern, UK Facility_ [press release]. Display Daily. Retrieved 2026-06-10, from https://www.displaydaily.com/article/press-releases/new-vision-display-acquires-zbd-lcd-technology-and-malvern-uk-facility.
+[^ti-tps65185-datasheet]: Texas Instruments (2017, Sep). _TPS65185x PMIC for E Ink Vizplex Enabled Electronic Paper Display_ [datasheet]. Retrieved 2026-06-20, from https://www.ti.com/lit/ds/symlink/tps65185.pdf.
