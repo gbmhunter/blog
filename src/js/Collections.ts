@@ -42,11 +42,12 @@ export async function getUpdatesCollection(): Promise<any[]> {
 /**
  * Returns all updates pages which are suitable for displaying on the homepage. Excludes
  * any pages in the updates collection which are either:
- * - Drafts
+ * - Drafts (only excluded in production builds; drafts ARE shown when running the dev
+ *   server, so they can be previewed on the homepage before publishing)
  * - Index pages for each year (i.e. type !== 'updates')
  * @returns A list of updates pages which are suitable for displaying on the homepage.
  */
 export async function getValidUpdatesPages(): Promise<any[]> {
   let updatesCollection = await getUpdatesCollection();
-  return updatesCollection.filter((page) => (page.data.type === 'updates') && (page.data.draft === false));
+  return updatesCollection.filter((page) => (page.data.type === 'updates') && (import.meta.env.DEV || page.data.draft === false));
 }
