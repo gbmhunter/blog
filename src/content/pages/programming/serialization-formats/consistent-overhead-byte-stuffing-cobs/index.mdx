@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-07-27
 description: The encoding and decoding process for packetizing (framing) data using Consistent Overhead Byte Stuffing (COBS).
 image: ./_assets/consistent-overhead-byte-stuffing-cobs.png
-lastUpdated: 2026-06-25
+lastUpdated: 2026-06-26
 tags: [programming, serialization formats, consistent overhead byte stuffing, COBS, C++, encoding, decoding, packetizing, framing]
 title: Consistent Overhead Byte Stuffing (COBS)
 type: page
@@ -11,7 +11,7 @@ type: page
 
 import CobsTool from 'src/components/tools/cobs-encoder/CobsTool.jsx';
 
-_Consistent overhead byte stuffing_ (COBS) is an encoding algorithm for framing serial data which provides a **consistent, guaranteed maximum overhead per quanta of data** (i.e. fixed amount of overhead per `n` bytes of data). Framing allows the use of a special byte value which can be used to mark the end of the packet, so that a decoder on the other end of a serial communication bus/network can reliably split up one packet from the next and decode the data. It is one of many [serialization formats](/programming/serialization-formats/a-comparison-of-serialization-formats/) used in embedded systems.
+_Consistent overhead byte stuffing_ (COBS) is a byte-stuffing algorithm for framing serial data which provides a **consistent, guaranteed maximum overhead per quanta of data** (i.e. fixed amount of overhead per `n` bytes of data). Framing allows the use of a special byte value which can be used to mark the end of the packet, so that a decoder on the other end of a serial communication bus/network can reliably split up one packet from the next and decode the data. It is commonly paired with one of the many [serialization formats](/programming/serialization-formats/a-comparison-of-serialization-formats/) (e.g. [Protocol Buffers](/programming/serialization-formats/protobuf/), MessagePack, [CBOR](/programming/serialization-formats/cbor/), plain C `struct`) used in embedded systems to send data over a serial link.
 
 ## The Encoding/Decoding Process
 
@@ -21,7 +21,7 @@ COBS encoding produces an output stream of bytes in the range `[1, 255]` (i.e. c
 
 ### Dealing With 255 Bytes
 
-The one problem with using a single byte to store where the next `0x00` arises when the next `0x00` is more than 255 bytes away. It should now be obvious why, as a single byte cannot store a number higher than `255` (`0xFF`). So a special thing happens when this occurs --- if you encounter a "pointer" byte with `0xFF`, it doesn't mean the next `0x00` is 255 bytes away, it means that there were no `0x00`'s in the next *254* bytes, and that the 255th byte will contain the next pointer.
+The one problem with using a single byte to store the distance to the next `0x00` arises when the next `0x00` is more than 255 bytes away. It should now be obvious why, as a single byte cannot store a number higher than `255` (`0xFF`). So a special thing happens when this occurs --- if you encounter a "pointer" byte with `0xFF`, it doesn't mean the next `0x00` is 255 bytes away, it means that there were no `0x00`'s in the next *254* bytes, and that the 255th byte will contain the next pointer.
 
 Because we have reserved the pointer value `0xFF`, we can only use the pointer values `0x01` through to `0xFE` to indicate where a real `0x00` is next in the data.
 
@@ -46,6 +46,57 @@ One of the quickest ways to understand how COBS works is to look at some simple 
   </tbody>
 </table>
 
+## Comparing Overhead With Traditional (Escape-Based) Byte Stuffing
+
+COBS is itself a form of _byte stuffing_ (the "BS" in its name) --- the general technique of transforming a payload so a reserved delimiter value can never appear inside it. A popular alternative is **escape-based** byte stuffing, as used by SLIP (Serial Line Internet Protocol) --- the same scheme also underlies PPP and KISS.[^rfc-1055-slip] SLIP reserves an `END` byte (`0xC0`) to mark the end of a frame, and an `ESC` byte (`0xDB`) to escape any `END` or `ESC` that appears in the payload. Each occurrence of one of these two byte values in the data is replaced by a two-byte escape sequence.
+
+The trade-off between the two schemes is starkest in their worst and average cases. Let the payload be $n$ bytes, with each byte value in `[0, 255]` equally likely. So a given byte is zero with probability $p = \frac{1}{256}$ and non-zero with probability $q = \frac{255}{256}$.
+
+### Worst Case
+
+**SLIP:** if every payload byte happens to be `0xC0` or `0xDB`, every byte expands to two and the frame **doubles in size (100% overhead)**. This unbounded blow-up is exactly the problem COBS was designed to solve.
+
+**COBS:** the overhead is one byte per block of up to 254 non-zero bytes, i.e. $\lceil n/254 \rceil$ bytes.[^cobs-paper] That is **at most about 0.39% (1 byte per 254)**, which is much better than SLIP-based byte stuffing.
+
+<Aside type="note">
+The $\lceil \; \rceil$ symbols denote the _ceiling function_, which rounds its argument **up** to the nearest integer (e.g. $\lceil 4.03 \rceil = 5$). The matching $\lfloor \; \rfloor$ symbols denote the _floor function_, which rounds **down**.
+</Aside>
+
+### Average Case (Uniformly Random Data)
+
+**SLIP:** two of the 256 byte values must be escaped, each adding one byte, so the expected overhead per payload byte is
+
+$$
+r_{\text{SLIP}} = \frac{2}{256} = \frac{1}{128} \approx 0.78\%
+$$
+
+**COBS:** extra bytes appear only when a run of 254 non-zero bytes occurs. The probability of such a run is $q^{254} \approx 0.37$, and the expected overhead per payload byte works out to
+
+$$
+r_{\text{COBS}} = \frac{p \cdot q^{254}}{1 - q^{254}} \approx 0.23\%
+$$
+
+The derivation: each COBS block consumes $\min(G,\, 254)$ data bytes, where $G$ is the distance to the next zero, and contributes one byte of overhead only when it is a forced 254-byte split (which happens with probability $q^{254}$).
+
+### Putting Numbers On It
+
+Both schemes also need a fixed delimiter to mark the frame boundary: COBS appends a single `0x00`, and SLIP sends an `END` byte at the end of the frame (many implementations also send a second `END` at the *start* to flush line noise).[^rfc-1055-slip] This is a constant cost that does not scale with $n$ (so the per-byte rates above ignore it) but it is included in the totals below.
+
+For a 1500-byte payload (a typical Ethernet MTU, the example used in the original COBS paper),[^cobs-paper] counting one delimiter byte per frame:
+
+| Scheme             | Worst-case overhead | Average overhead (random data) |
+| ------------------ | ------------------- | ------------------------------ |
+| SLIP byte stuffing | 1501 bytes (~100%)  | ~13 bytes (0.85%)              |
+| COBS               | 7 bytes (0.47%)     | ~4.4 bytes (0.30%)             |
+
+COBS wins on both counts, but the decisive difference is the worst case: SLIP can double your data, whereas COBS guarantees the overhead stays under half a percent no matter what the payload contains.
+
+### Why Does This Matter?
+
+In embedded systems, microcontrollers are usually quite memory constrained. Typically, when implementing a communications protocol, you have to allocate a buffer for the maximum size of the payload you expect to receive. You will normally be thinking about payload size in terms of unencoded data you want to send (i.e. the size of the message structs defining your data, or the size of protobuf messages, etc.). But the buffer has to hold the encoded data. If your framing scheme can double the size of the payload, your buffer must be twice as big also (to guarantee it can hold the worst-case scenario). For a 1 kB max. message size this is a 2 kB buffer. These buffers can quickly consume the limited RAM available on a microcontroller.
+
+COBS provides a solution to this issue by guaranteeing a maximum overhead of 1 byte per 254 bytes of data. So for a 1 kB max. message size, the buffer only needs to be $1024 + \lceil 1024 / 254 \rceil + 1 = 1030$ bytes (payload, plus worst-case stuffing, plus the delimiter), which is a huge saving in RAM.
+
 ## COBS Encoder/Decoder
 
 The interactive tool below encodes raw bytes into a COBS frame (appending the `0x00` delimiter), or decodes a COBS frame back to the original data. Enter the bytes as hex, separators like spaces, commas, colons and `0x` prefixes are all accepted.
@@ -55,3 +106,10 @@ The interactive tool below encodes raw bytes into a COBS frame (appending the `0
 ## Source Code
 
 I wrote C++ functions which can perform COBS encoding and decoding as part of an open source serial communications protocol, they can be found in [CobsTranscoder.cpp in the SerialFiller repo](https://github.com/gbmhunter/SerialFiller/blob/master/src/CobsTranscoder.cpp).
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^cobs-paper]: Stuart Cheshire & Mary Baker (1999, Apr). _Consistent Overhead Byte Stuffing_ [paper]. IEEE/ACM Transactions on Networking. Retrieved 2026-06-26, from http://www.stuartcheshire.org/papers/COBSforToN.pdf.
+[^rfc-1055-slip]: J. Romkey (1988, Jun). _RFC 1055: A Nonstandard for Transmission of IP Datagrams over Serial Lines (SLIP)_ [RFC]. IETF. Retrieved 2026-06-26, from https://www.rfc-editor.org/rfc/rfc1055.
