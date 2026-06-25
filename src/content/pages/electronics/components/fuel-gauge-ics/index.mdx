@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2026-06-24
 description: Fuel gauge ICs (a.k.a. gas gauges, coulomb counters or battery state-of-charge ICs) estimate how much charge is left in a battery and report it to a microcontroller. This page covers the gauging methods (voltage-based, coulomb counting and impedance tracking), key parameters such as state-of-charge (SoC) and state-of-health (SoH), and example ICs from TI and Analog Devices/Maxim.
-lastUpdated: 2026-06-24
+lastUpdated: 2026-06-25
 tags: [fuel gauge, gas gauge, coulomb counter, state of charge, SoC, state of health, SoH, battery management, BMS, ICs, batteries]
 title: Fuel Gauge ICs
 type: page
@@ -10,7 +10,7 @@ type: page
 
 <WarningIsNotes />
 
-_Fuel gauge ICs_ (also called _gas gauges_, _coulomb counters_ or _battery state-of-charge ICs_) are integrated circuits that estimate how much usable charge is left in a battery and report it to a microcontroller (usually over [I2C](/electronics/communication-protocols/i2c-communication-protocol/), SMBus or [1-Wire](/electronics/communication-protocols/1-wire/)). They are the "fuel gauge" for a battery-powered product — turning the messy, non-linear, temperature- and age-dependent behaviour of a cell into a simple _state-of-charge_ (SoC) percentage and a remaining-capacity estimate in mAh.
+_Fuel gauge ICs_ (also called _gas gauges_, _coulomb counters_ or _battery state-of-charge ICs_) are integrated circuits that estimate how much usable charge is left in a battery and report it to a microcontroller (usually over [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [SMBus](/electronics/communication-protocols/smbus-communication-protocol/) or [1-Wire](/electronics/communication-protocols/1-wire-protocol/)). They are the "fuel gauge" for a battery-powered product — turning the messy, non-linear, temperature- and age-dependent behaviour of a cell into a simple _state-of-charge_ (SoC) percentage and a remaining-capacity estimate in mAh.
 
 It is worth being clear about what a fuel gauge IC is **not**:
 
@@ -33,21 +33,21 @@ You might think you can read a battery's state-of-charge straight from its termi
 
 ### Voltage-Based (OCV Lookup)
 
-The simplest method is to just measure the batteries voltage, then convert this into an approximate SoC using a lookup table or curve. It needs no external sense resistor and draws very little current, but is rather inaccurate due to:
+The simplest method is to just measure the battery's voltage, then convert this into an approximate SoC using a lookup table or curve. It needs no external sense resistor and draws very little current, but is rather inaccurate due to:
 
-- The mapping from voltage to SoC becomes very imprecise for chemistries with flat discharge curves (during the middle part of the discharge cycle, the voltage changes very little as the battery discharges)
+- The mapping from voltage to SoC becomes very imprecise for chemistries with flat discharge curves (during the middle part of the discharge cycle, the voltage changes very little as the battery discharges).
 - The terminal voltage is affected by load (internal resistance effects), temperature and age, so the same voltage can correspond to very different SoC values in different conditions.
 
-This good new is that this method normally does not require a dedicated fuel gauge IC — you can just measure the voltage with an ADC you already have in your microcontroller.
+The good news is that this method normally does not require a dedicated fuel gauge IC — you can just measure the voltage with an ADC you already have in your microcontroller.
 
 A resistor divider is normally needed to step down the battery voltage to the ADC's input range. For power constrained designs the resistor divider resistances should be as high as possible (e.g. MΩ range) to minimise the current drawn from the battery, but this makes the measurement more susceptible to noise (and takes longer to charge up the ADC's internal capacitance).
 
-<Aside type="example" title="MOSFET Switches for Voltage-Based Gauging">
+<Aside type="example" title="Sizing a Voltage Divider for ADC Measurement">
 Design a simple circuit to crudely estimate the SoC of a single-cell Li-ion battery by measuring its voltage with an ADC. The ADC has an internal reference voltage of $2.0\unit{V}$. The battery voltage can be up to $4.2\unit{V}$ when fully charged, so we need a resistor divider to step this down to the ADC's input range. Make sure the leakage current is no more than 2 uA.
 
 ---
 
-We need to make sure the maximum battery voltage (4.2 V) is stepped down to less than the ADC's reference voltage (2.0 V). Let's make $V_{out} = 1.8\unit{V}$ at $V_{BAT} = 4.2\unit{V}$ to give some headroom (well, the closest we can using E96 series resistors -- this is one of the reasons we give ourselves headroom!). The other constraint is that the leakage through the divider must be no more than 2 uA at $V_{BAT} = 4.2\unit{V}$.
+We need to make sure the maximum battery voltage (4.2 V) is stepped down to less than the ADC's reference voltage (2.0 V). Let's make $V_{out} = 1.8\unit{V}$ at $V_{BAT} = 4.2\unit{V}$ to give some headroom (well, the closest we can get using E96 series resistors -- this is one of the reasons we give ourselves headroom!). The other constraint is that the leakage through the divider must be no more than 2 uA at $V_{BAT} = 4.2\unit{V}$.
 
 Solve the voltage divider equation for $R_1$ and $R_2$:
 
@@ -57,39 +57,39 @@ V_{out} &= V_{BAT} \cdot \frac{R_2}{R_1 + R_2} \\
 1.8\unit{V} &= 4.2\unit{V} \cdot \frac{R_2}{R_1 + R_2} \\
 \frac{R_2}{R_1 + R_2} &= \frac{1.8\unit{V}}{4.2\unit{V}} \\
 &= 0.4286 \\
-R_1 &= \frac{1 - 0.4286}{0.4286} \\
-R_2 &= 1.333 R_2
+\frac{R_1}{R_2} &= \frac{1 - 0.4286}{0.4286} = 1.333 \\
+R_1 &= 1.333 R_2
 \end{aligned}
 $$
 
 Now solve the current constraint:
 
 $$
-\begin{align}
+\begin{align*}
 I = \frac{V_{BAT}}{R_1 + R_2} \leq 2\unit{\mu A} \\
 R_1 + R_2 \geq \frac{4.2\unit{V}}{2\unit{\mu A}} = 2.1\unit{M\Omega}
-\end{align}
+\end{align*}
 $$
 
 Substituting $R_1 = 1.333 R_2$:
 
 $$
-\begin{align}
+\begin{align*}
 1.333 R_2 + R_2 &\geq 2.1\unit{M\Omega} \\
 2.333 R_2 &\geq 2.1\unit{M\Omega} \\
 R_2 &\geq 900\unit{k\Omega} \\
-\end{align}
+\end{align*}
 $$
 
 Using the [E Series Resistance Finder tool](/electronics/components/resistors/#e-series-resistance-finder), we pick the closest value for $R_2$ in the E96 series that is $\geq 900\unit{k\Omega}$. This is $R_2 = 909\unit{k\Omega}$. Then we can calculate $R_1$:
 
 $$
-\begin{align}
+\begin{align*}
 R_1 &= 1.333 R_2 \\
     &= 1.333 \cdot 909\unit{k\Omega} \\
-    &= 1.21\unit{M\Omega} \\
+    &= 1.212\unit{M\Omega} \\
     &= 1.21\unit{M\Omega} \text{ (E96 value)}
-\end{align}
+\end{align*}
 $$
 
 So we can choose $R_1 = 1.21\unit{M\Omega}$ and $R_2 = 909\unit{k\Omega}$ to meet the voltage and current constraints.
@@ -98,11 +98,21 @@ So we can choose $R_1 = 1.21\unit{M\Omega}$ and $R_2 = 909\unit{k\Omega}$ to mee
 
 </Aside>
 
-Sometimes a N-channel MOSFET is used to disconnect the resistor divider when not measuring, to eliminate this current draw. However, if $V_{BAT}$ is greater than the $V_{DD}$ of the MCU, when the MOSFET is off the ADC input's internal ESD clamp diode can be forward biased, which re-introduces leakage current and can damage the pin. In this case, a high-side P-channel MOSFET may be needed, with an N-channel to drive its gate. 
+Sometimes a N-channel MOSFET is used to disconnect the resistor divider when not measuring, to eliminate this current draw. This is shown in the schematic below. The gate of the MOSFET $Q_1$ is driven by a GPIO pin on the microcontroller, which is driven high when a measurement is needed and low otherwise. $R_3$ is a pull-down resistor to ensure the MOSFET is off when the GPIO is tri-stated (e.g. during MCU reset).
+
+<Image src={import('./_assets/simple-battery-voltage-resistor-divider-with-n-ch-mosfet.svg')} width="500px">A simple battery voltage measurement circuit with a high-value resistor divider and an N-channel MOSFET to disconnect the divider when not measuring.</Image>
+
+You will normally need to add a small delay in firmware between enabling the MOSFET and taking the ADC measurement, to allow the ADC's internal sample-and-hold capacitor to charge up through the high-value resistor divider. The required delay depends on the ADC's input impedance and the values of $R_1$ and $R_2$, and is typically up to a few milliseconds.
+
+<Aside type="caution">
+Note that if $V_{BAT}$ is greater than the MCU's $V_{DD}$, the ADC input's internal ESD clamp diode can be forward biased when the MOSFET is off, which re-introduces leakage current and can damage the pin. In this case, a high-side P-channel MOSFET may be needed, with an N-channel to drive its gate.
+</Aside>
 
 ### Voltage-Based With Cell Modelling
 
-An improvement on basic voltage based estimation is to also model the cell dynamics. Modern voltage-based gauges (e.g. Analog Devices' ModelGauge) improve on naïve OCV lookup by modelling the cell's dynamics to correct for load and relaxation.
+An improvement on basic voltage-based estimation is to also model the cell dynamics. Modern voltage-based gauge ICs (e.g. Analog Devices' ModelGauge) improve on naive OCV lookup by modelling the cell's dynamics to correct for load and relaxation. An example of how one of these ICs would be used is shown in the below schematic. These are more accurate than simple OCV lookup, but not as accurate as those which use a current-sense resistor and perform coulomb counting.
+
+<Image src={import('./_assets/battery-fuel-gauge-voltage-only.svg')} width="600px">A pseudo-schematic showing how a voltage-based fuel gauge IC (no current-sense resistor/coulomb counting) would be used. It measures the battery voltage and uses a model of the cell's behaviour to estimate the state-of-charge (SoC). It communicates with a microcontroller over I2C.</Image>
 
 ### Coulomb Counting
 
@@ -130,6 +140,8 @@ The MAX17048 is a low-power single-cell fuel gauge that uses Analog Devices' (fo
 
 <Image src={import('./_assets/max17048-fuel-gauge-internal-block-diagram.webp')} width="400px">Internal block diagram of the MAX17048 fuel gauge IC. It estimates the battery SoC purely from voltage measurements using an internal model of the cell's behaviour.[^adi-max17048-ds]</Image>
 
+The MAX17049 is the same as the MAX17048 but works with two Lithium cells in series.[^adi-max17048-ds]
+
 ### Analog Devices MAX17055
 
 The MAX17055 is an advanced coulomb-counting + modelling fuel gauge IC from Analog Devices. It uses the _ModelGauge m5 EZ_ algorithm, which combines coulomb counting with cell modelling (via a low-value external sense resistor) to get the short-term accuracy of coulomb counting and the long-term robustness of voltage-based modelling. The quoted accuracy from the datasheet is that over 300 different batteries, 97% of the tests had a SoC error of less than 3% after the first cycle.[^adi-max17055-ds]
@@ -142,7 +154,7 @@ It supports the following Lithium chemistries:[^adi-max17055-ds]
 - Lithium NCR or NCA cells: `ModelID = 2`.
 - Lithium iron-phosphate: `ModelID = 6`. The datasheet claims that LiFePO4 is a challenging chemistry and custom characterisation is recommended.
 
-<Image src={import('./_assets/max17055-fuel-gauge-ic-internal-block-diagram.webp')} width="600px">Internal block diagram of the MAX17055 fuel gauge IC. It feed battery voltage, temperature and current measurements into a model/algorithm (called the ModelGauge m5 EZ) to accurately predict the battery SoC.[^adi-max17055-ds]</Image>
+<Image src={import('./_assets/max17055-fuel-gauge-ic-internal-block-diagram.webp')} width="600px">Internal block diagram of the MAX17055 fuel gauge IC. It feeds battery voltage, temperature and current measurements into a model/algorithm (called the ModelGauge m5 EZ) to accurately predict the battery SoC.[^adi-max17055-ds]</Image>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

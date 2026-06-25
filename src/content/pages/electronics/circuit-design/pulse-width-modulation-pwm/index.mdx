@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2012-10-04
 description: Info on PWM peripherals, including operating modes and complementary outputs.
-lastUpdated: 2026-06-15
+lastUpdated: 2026-06-25
 tags: [electronics, circuit design, pulse width modulation, PWM, motor control, h-bridge, dead-time, complementary outputs, edge-aligned, centre-aligned]
 title: Pulse Width Modulation (PWM)
 type: page
@@ -201,6 +201,58 @@ You should be able to port this code to a microcontroller programming language o
 You can create rudimentary [digital-to-analogue converters (DACs)](/electronics/components/digital-to-analogue-converters-dacs/) using a PWM peripheral and a [low-pass analogue filter](/electronics/circuit-design/analogue-filters/) (e.g. a low-pass RC filter). This is because the low-pass filter will produce the average voltage of the PWM signal (provided the cut-off frequency is much lower than the PWM frequency), and you can use the duty cycle to directly control the average voltage linearly from 0V to the supply voltage.
 
 This can be a useful trick when you are running short on true DAC peripherals on your microcontroller. You can also use a PWM peripheral to directly communicate an analogue value to a signal analyzer or oscilloscope. I have configured a PWM peripheral to output a duty cycle which was always 10x a measured voltage. For example, if the measured voltage was 1.23V, the PWM duty cycle would be set to 12.3%. I then connected this PWM output to a Saleae logic analyzer which was able to give me instant duty cycle readout at any point in the waveform (therefore instantly telling me the voltage without any complex mental maths). This is a great alternative to debug logs over a serial port for high speed measurements.
+
+## PWM Delivers More Heat Than The Average Suggests
+
+A common mental trap is to assume a PWM signal is equivalent to a DC signal at the same _average_ voltage. For some quantities this is true, e.g. the brightness of an [LED](/electronics/components/diodes/light-emitting-diodes-leds/), the average torque of a [motor](/electronics/components/motors/), or the output of the [DAC](#creating-a-dac-from-a-pwm-signal) above all track the average. But for **power dissipation in a resistive load it is not true**, because power depends on the **RMS** (root-mean-square) value, not the average.
+
+Consider a resistor $R$ driven two ways, both with the same 5V _average_:
+
+- **5V DC** (no PWM): 
+
+    $$
+    \begin{align*}
+    P_{DC} &= \dfrac{V^2}{R}\\
+           &= \dfrac{(5\unit{V})^2}{R}\\
+           &= \dfrac{25}{R}
+    \end{align*}
+    $$
+
+- **10V at 50% duty cycle**: the average is still 5V, but the RMS is higher. For a square wave switching between $V_{pk}$ and $0$ at duty cycle $D$:
+
+    $$
+    \begin{align*}
+    V_{rms} &= \sqrt{D \cdot V_{pk}^2 + (1 - D) \cdot 0^2} \\ 
+    &= V_{pk}\sqrt{D}\\
+    &= 10\unit{V} \cdot \sqrt{0.5}\\
+    &\approx 7.07\unit{V}
+    \end{align*}
+    $$
+
+    giving:
+    
+    $$
+    \begin{align*}
+    P_{PWM} &= \dfrac{V_{rms}^2}{R}\\
+            &= \dfrac{50}{R}
+    \end{align*}
+    $$
+
+So the PWM-driven resistor dissipates **twice** the power and heats up correspondingly more, despite having the identical average voltage. The intuition is that during the "on" portion it's driven at the full 10V, dissipating $\frac{(10\unit{V})^2}{R} = \frac{100}{R}$ (four times the DC case), and it does that for half the time, therefore averaging to $\frac{50}{R}$. Squaring _before_ averaging is what makes the high-voltage bursts dominate.
+
+<Aside type="tip">
+For a resistor it doesn't matter whether we talk about the same average voltage or the same average current, they grow and shrink proportionally. Because a resistor is ohmic ($i = v/R$ at every instant) and averaging is linear, $I_{avg} = V_{avg}/R$, so matching one automatically matches the other (here both drives have a $5\unit{V}$ average and a $5/R$ average current).
+</Aside>
+
+In general, the ratio of PWM power to the power of a DC signal at the same average is:
+
+$$
+\begin{align*}
+\frac{P_{PWM}}{P_{DC}} = \frac{V_{rms}^2}{V_{avg}^2} = \frac{D \cdot V_{pk}^2}{(D \cdot V_{pk})^2} = \frac{1}{D}
+\end{align*}
+$$
+
+This penalty grows as the duty cycle shrinks. It's an important consideration whenever PWM drives a resistive or partly-resistive load — a notable real-world example is [driving a Peltier device](/electronics/components/peltiers-thermoelectric-coolers/#why-raw-pwm-hurts-a-peltier), where the extra RMS heating from raw PWM directly degrades the cooling performance.
 
 ## A Warning About PWM And Oscilloscopes
 

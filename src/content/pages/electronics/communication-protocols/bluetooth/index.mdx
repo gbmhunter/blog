@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-03
 description: Bluetooth is a collection of short range wireless communication protocols, including Bluetooth Classic and Bluetooth Low Energy (BLE). This page covers standards, low energy (BLE), configurations, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-20
+lastUpdated: 2026-06-25
 tags: [communication protocol, Bluetooth, mesh, network, Bluetooth 4.0, hops, flooding, packets, messages, encryption, latencies, Silicon Labs, nodes, routing, Bluetooth SIG, Coded PHY, long range, 1M PHY, 2M PHY, frequency shift keying, FSK, GFSK, serial, L2CAP]
 title: Bluetooth
 type: page
@@ -414,6 +414,36 @@ So taking into account all of this, if you need specific connection timing (e.g.
 If you do need more control on the Central side over the exact connection parameters, and you're running on a standard OS, you might need to resort to Bluetooth dongles like the [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) or the [BlueIO module](https://www.bleuio.com/). These get around this issue by providing their own Bluetooth radio and custom API that lets you control the parameters.
 </Aside>
 
+
+### Security: Pairing, Bonding and LE Secure Connections
+
+BLE security is established through _pairing_. This is the process where two devices exchange their security capabilities and generate the keys used to encrypt and authenticate the link. Pairing happens in three phases:[^bluetooth-sig-pairing-feature-exchange]
+
+1. **Feature exchange**: The two devices swap their security requirements and I/O capabilities (whether they have a display, a keyboard, yes/no buttons, etc.) via a _Pairing Request_ / _Pairing Response_. This is what determines which association model (see below) is used.
+1. **Key generation / authentication**: The devices authenticate each other and generate a shared key. This is the phase that differs between LE Legacy Pairing and LE Secure Connections.
+1. **Key distribution**: The devices distribute and store additional keys (e.g. the keys needed to resolve a private resolvable address) so the link can be re-established and re-encrypted in future without pairing again. Storing the keys for later reuse like this is called _bonding_.
+
+#### LE Legacy Pairing vs. LE Secure Connections (LESC)
+
+There are two methods for the key generation phase, and which one is used depends on what both devices support:
+
+- **LE Legacy Pairing** (Bluetooth 4.0&ndash;4.1): A _Short-Term Key_ (STK) is derived from a _Temporary Key_ (TK), where the TK is `0` (for Just Works), a 6-digit passkey, or out-of-band data. The key agreement is weak &mdash; a passive eavesdropper who captures the pairing exchange over the air can recover the keys and decrypt all subsequent traffic (the open-source tool _Crackle_ famously demonstrated this).[^github-mikeryan-crackle] Legacy pairing therefore offers **no protection against passive eavesdropping**.
+- **LE Secure Connections (LESC)** (Bluetooth 4.2+): Introduced in 2014, LESC uses _Elliptic-Curve Diffie&ndash;Hellman_ (ECDH) key agreement on the NIST P-256 curve, with FIPS-approved algorithms (AES-CMAC and P-256).[^bluetooth-sig-pairing-feature-exchange] The two devices exchange ECDH public keys over the air and each independently computes a shared secret, from which the _Long-Term Key_ (LTK) is derived. Crucially, an attacker who captures the entire over-the-air exchange still cannot compute the shared secret, so LESC defeats passive eavesdropping even when the "Just Works" model is used.
+
+Both devices must support LESC for it to be used; if either side only supports legacy pairing, the connection falls back to LE Legacy Pairing. For this reason, security-conscious designs can refuse to bond unless LESC is negotiated.
+
+#### Association Models
+
+The _association model_ (the specific method used to authenticate the pairing) is selected automatically from the two devices' I/O capabilities and their man-in-the-middle (MITM) protection requirements. There are four:[^bluetooth-sig-le-secure-connections-numeric-comparison]
+
+- **Just Works**: No user interaction. Provides an encrypted link but **no MITM protection** (although under LESC it still resists passive eavesdropping). Used when at least one device lacks a display and input.
+- **Passkey Entry**: A 6-digit passkey is displayed on one device and entered on the other (or pre-shared). Provides MITM protection.
+- **Numeric Comparison**: New to LESC (not available in legacy pairing). Both devices independently compute and display a 6-digit value, and the user confirms they match with a simple yes/no.[^bluetooth-sig-le-secure-connections-numeric-comparison] This gives MITM protection while only requiring yes/no buttons rather than a full numeric keypad.
+- **Out Of Band (OOB)**: The pairing data is exchanged over a separate channel (e.g. NFC). The level of MITM protection depends on the security of that OOB channel.
+
+<Aside type="note">
+"Just Works" is extremely common on simple peripherals (sensors, beacons-with-a-connection, etc.) because they have no display or keypad. Remember that it gives you an encrypted link but does **not** authenticate the peer. An active man-in-the-middle can still insert itself during pairing. If you need MITM protection, the device needs enough I/O to support Passkey Entry, Numeric Comparison or a robust OOB method.
+</Aside>
 
 ### Beacons
 
@@ -856,3 +886,6 @@ See the [RF Spectrum Regulations page](/electronics/compliance/rf-spectrum-regul
 [^bluetooth-sig-periodic-advertising-sync-transfer]: Kai Ren (2019, Feb 28). _What you need to know about Periodic Advertising Sync Transfer_. Bluetooth SIG. Retrieved 2026-06-20, from https://www.bluetooth.com/blog/periodic-advertising-sync-transfer/.
 [^silicon-labs-periodic-advertising]: Silicon Labs. _Periodic Advertising_ [documentation]. Retrieved 2026-06-20, from https://docs.silabs.com/bluetooth/latest/bluetooth-fundamentals-advertising-scanning/periodic-advertising.
 [^bluetooth-sig-link-layer-specification]: Bluetooth SIG. _Part B. Link Layer Specification_ [specification]. Retrieved 2026-06-20, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/low-energy-controller/link-layer-specification.html.
+[^bluetooth-sig-pairing-feature-exchange]: Kai Ren (2016, Mar 29). _Bluetooth Pairing Feature Exchange_ [blog]. Bluetooth SIG. Retrieved 2026-06-25, from https://www.bluetooth.com/blog/bluetooth-pairing-part-1-pairing-feature-exchange/.
+[^bluetooth-sig-le-secure-connections-numeric-comparison]: Kai Ren (2017, Jan 19). _Bluetooth LE Secure Connections – Numeric Comparison_ [blog]. Bluetooth SIG. Retrieved 2026-06-25, from https://www.bluetooth.com/blog/bluetooth-pairing-part-4/.
+[^github-mikeryan-crackle]: Mike Ryan. _mikeryan/crackle_ [GitHub repository]. GitHub. Retrieved 2026-06-25, from https://github.com/mikeryan/crackle.

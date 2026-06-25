@@ -9,6 +9,7 @@ import { catalog as buckConverter } from '../tools/buck-converter/catalog.js';
 import { catalog as capacitorCharge } from '../tools/capacitor-charge/catalog.js';
 import { catalog as capacitorEnergy } from '../tools/capacitor-energy/catalog.js';
 import { catalog as capacitorImpedance } from '../tools/capacitor-impedance/catalog.js';
+import { catalog as cobsEncoder } from '../tools/cobs-encoder/catalog.js';
 import { catalog as crcCalculator } from '../tools/crc-calculator/catalog.js';
 import { catalog as dewPointMagnus } from '../tools/dew-point-magnus/catalog.js';
 import { catalog as eSeriesFinder } from '../tools/e-series-finder/catalog.js';
@@ -45,6 +46,7 @@ export const CATALOGS = [
   capacitorCharge,
   capacitorEnergy,
   capacitorImpedance,
+  cobsEncoder,
   crcCalculator,
   dewPointMagnus,
   eSeriesFinder,

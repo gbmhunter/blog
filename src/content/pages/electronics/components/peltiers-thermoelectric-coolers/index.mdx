@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-10-13
 description: Construction, important parameters, examples and more info on Peltier devices (thermoelectric coolers).
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-17
+lastUpdated: 2026-06-25
 tags: [Peltier, thermoelectric, PWM, components, electronics]
 title: Peltiers (Thermoelectric Coolers)
 type: page
@@ -19,7 +19,7 @@ The Peltier effect was discovered by Jean Charles Athanase Peltier in 1834.
 
 ## Uses
 
-Peltiers are used in things such as:
+Peltier devices are used in things such as:
 
 - Portable fridges/freezers (especially when powered from 12V)
 - Electronic temperature stabilisers (e.g. CPU cooler)
@@ -29,7 +29,7 @@ Peltiers are used in things such as:
 
 ## Construction
 
-Most Peltiers consist of many small semiconductor junctions, joined together in an array, and connected between two thermally conductive, white ceramic plates.
+Most Peltier devices consist of many small semiconductor junctions, joined together in an array, and connected between two thermally conductive, white ceramic plates.
 
 ## Important Parameters
 
@@ -37,21 +37,21 @@ Most Peltiers consist of many small semiconductor junctions, joined together in 
 
 The maximum heat transfer (also known as $Q_{max}$, or maximum work), is the **maximum amount of energy per second** that the Peltier device can **move** from the cold side to the hot side. It is measured in Watts ($\mathrm{W}$).
 
-This always occurs when the **temperature differential** between the hot and cold sides is 0°C. (i.e. at the same temperature). Obviously, for any real-life operating Peltier, this is impossible. The larger the temperature differential, the less heat can be moved across the plates.
+This always occurs when the **temperature differential** between the hot and cold sides is 0°C. (i.e. at the same temperature). Obviously, for any real-life operating Peltier device, this is impossible. The larger the temperature differential, the less heat can be moved across the plates.
 
-$Q_{max}$ is also dependent on the **absolute temperature** of the plates. As the absolute temperature rises, $Q_{max}$ also increases. The absolute temperature that $Q_{max}$ is measured at is usually specified on the Peltier's datasheet. The absolute temperature of the hot side is usually given ($T_H$). Since $Q_{max}$ is given for when both sides are at the same temperature, this is also equal to the temperature of the cold side.
+$Q_{max}$ is also dependent on the **absolute temperature** of the plates. As the absolute temperature rises, $Q_{max}$ also increases. The absolute temperature that $Q_{max}$ is measured at is usually specified on the Peltier device's datasheet. The absolute temperature of the hot side is usually given ($T_H$). Since $Q_{max}$ is given for when both sides are at the same temperature, this is also equal to the temperature of the cold side.
 
 It is important to NOT confuse the heat transfer $Q$ with the input power $P$.
 
 ### Max. Temp Differential
 
-The maximum temperature differential ($\Delta T_{max}$) is the maximum temperature difference that the Peltier can produce between the hot and cold sides. It happens to be the point at which $Q_{max} = 0$ (remember that the maximum heat transfer decreases with increasing temp. differential). It also occurs when the Peltier is being driven at maximum voltage and current.
+The maximum temperature differential ($\Delta T_{max}$) is the maximum temperature difference that the Peltier device can produce between the hot and cold sides. It happens to be the point at which $Q_{max} = 0$ (remember that the maximum heat transfer decreases with increasing temp. differential). It also occurs when the Peltier device is being driven at maximum voltage and current.
 
 For all practical designs $\Delta T_{max}$ is a theoretical upper limit, you will never be able to achieve this temperature differential.
 
 ### Max. Operating Temp
 
-The maximum operating temperature ($T_{max}$) is the maximum temperature any part of the Peltier is allowed to reach. Naturally this is the maximum temperature of the hot side.
+The maximum operating temperature ($T_{max}$) is the maximum temperature any part of the Peltier device is allowed to reach. Naturally this is the maximum temperature of the hot side.
 
 Do NOT confuse this with the maximum temperature differential, $\Delta T_{max}$.
 
@@ -59,12 +59,62 @@ Be very careful not to exceed the maximum operating temperature! Among other thi
 
 ## How Should I Drive One Of These?
 
-If you want simple on/off control and the hot/cold sides don't need to switch, then you can control a peltier with a single mechanical [switch](/electronics/components/switches/), [relay](/electronics/components/relays/), or [transistor](/electronics/components/transistors/) (e.g. [MOSFET](/electronics/components/transistors/mosfets/)).
+If you want simple on/off control and the hot/cold sides don't need to switch, then you can control a Peltier device with a single mechanical [switch](/electronics/components/switches/), [relay](/electronics/components/relays/), or [transistor](/electronics/components/transistors/) (e.g. [MOSFET](/electronics/components/transistors/mosfets/)).
 
-If you want tighter control over the power, you can [PWM](/electronics/circuit-design/pulse-width-modulation-pwm/) a transistor to provide varying power from a constant DC source.
+If you want tighter control over the power, you can use [PWM](/electronics/circuit-design/pulse-width-modulation-pwm/) with an LC filter to smooth out the voltage. However, **don't connect raw, unfiltered PWM directly to the Peltier device**, as this can cause excessive heating due to the RMS current (which is responsible for parasitic Joule heating) being higher than the average current (see [Why Raw PWM Hurts A Peltier](#why-raw-pwm-hurts-a-peltier) below).
 
 If you want full control over the heat direction (i.e. which side is hot/cold), then you will need an [H-bridge](/electronics/components/h-bridges/) setup (similar to what is used to control stepper motors).
 
+## Why Raw PWM Hurts A Peltier
+
+It's tempting to drive a Peltier device by connecting a PWM signal straight to a transistor and switching the full supply across the device. This works, but it's inefficient and reduces the achievable cooling. The reason comes down to the fact that the two competing effects inside a Peltier device scale differently with current.
+
+The useful heat pumped from the cold side is proportional to the **average** current:
+
+$$
+\begin{align*}
+Q_{peltier} \propto I_{avg}
+\end{align*}
+$$
+
+But the parasitic Joule heating ($I^2 R$, half of which leaks back to the cold side and works against you) is proportional to the **RMS** current squared:
+
+$$
+\begin{align*}
+Q_{joule} \propto I_{rms}^2
+\end{align*}
+$$
+
+For a PWM waveform at duty cycle $D$ switching between $I_{pk}$ and $0$:
+
+$$
+\begin{align*}
+I_{avg} &= D \cdot I_{pk} \\
+I_{rms}^2 &= D \cdot I_{pk}^2
+\end{align*}
+$$
+
+Taking the ratio of the RMS heating term to what you'd get from smooth DC delivering the same average current:
+
+$$
+\begin{align*}
+\frac{I_{rms}^2}{I_{avg}^2} = \frac{1}{D} \ge 1
+\end{align*}
+$$
+
+So for the same *average* (cooling) current, raw PWM dumps more $I^2 R$ heat into the device than smooth DC by a factor of $1/D$ (so it's worse at smaller duty cycles). That extra internal heating directly eats into the net cooling and lowers the achievable $\Delta T_{max}$. Note that increasing the PWM frequency does **not** fix this; the device responds to the actual current waveform, so the RMS penalty persists no matter how fast you switch.
+
+This is borne out experimentally. Texas Instruments ran a head-to-head test driving a Peltier module with $1\unit{A}$ of constant current versus unfiltered PWM (a $2\unit{A}$ peak, 50% duty cycle waveform giving the same $1\unit{A}$ average, at $20\unit{kHz}$). The constant-current drive achieved a temperature differential $8.1\unit{°C}$ greater than the PWM drive, making it 39.2% more efficient, and they concluded that "constant current drive is definitively preferred over PWM drive".[^bib-ti-driving-peltier-efficiency-aging] Note this matches the maths above: at $D = 0.5$ the RMS heating term is $1/D = 2$ times larger than for smooth DC at the same average current.
+
+The accepted practice is to keep the **current ripple below ~10%** — TEC module manufacturers publish similar guidance, with Ferrotec recommending a maximum of 10% (preferred less than 5%) and Marlow noting that a ripple factor of less than 10% results in less than 1% degradation in $\Delta T$.[^bib-meerstetter-peltier-efficiency] You achieve this by following the PWM stage with an **LC filter** so the Peltier sees near-DC current — exactly the same reasoning as for a [buck converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/). With proper filtering, PWM is an efficient and perfectly valid way to drive a Peltier, and is how most modern bidirectional TEC drivers work (a PWM H-bridge followed by an LC filter).
+
 ## Examples
 
-Many non-branded, cheap Peltier modules use the part number _TEC1-127xx_, where _xx_ can be things like _03_ or _05_ (e.g. _TEC1-12703_, _TEC1-12705_). Be warned though, Peltiers with identical part numbers in this style can have widely varying parameter values.
+Many non-branded, cheap Peltier modules use the part number _TEC1-127xx_, where _xx_ can be things like _03_ or _05_ (e.g. _TEC1-12703_, _TEC1-12705_). Be warned though, Peltier devices with identical part numbers in this style can have widely varying parameter values.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^bib-ti-driving-peltier-efficiency-aging]: Olivier Mellin, Florent Muret (2020, Jan). _Driving a Peltier Element (TEC): Efficiency and Aging_ [application report]. Texas Instruments. Retrieved 2026-06-25, from https://www.ti.com/lit/an/slua979a/slua979a.pdf.
+[^bib-meerstetter-peltier-efficiency]: Meerstetter Engineering GmbH. _Peltier Element Efficiency_ [website]. Retrieved 2026-06-25, from https://www.meerstetter.ch/customer-center/compendium/71-peltier-element-efficiency.

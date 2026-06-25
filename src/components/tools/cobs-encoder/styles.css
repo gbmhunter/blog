@@ -1,0 +1,112 @@
+.cobs-tool {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+}
+
+.cobs-tool h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sl-color-text);
+}
+
+.cobs-tool__modes {
+  display: inline-flex;
+  gap: 0;
+  margin-bottom: 1rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.cobs-tool__mode {
+  box-sizing: border-box;
+  height: 2rem;
+  padding: 0 1rem;
+  margin: 0;
+  border: none;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.cobs-tool__mode + .cobs-tool__mode {
+  border-left: 1px solid var(--sl-color-gray-5);
+}
+
+.cobs-tool__mode--active {
+  background: var(--sl-color-accent);
+  color: var(--sl-color-white);
+}
+
+.cobs-tool__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.cobs-tool__columns > * {
+  /* Starlight adds margin-top to sibling block elements; reset so headings align. */
+  margin-top: 0;
+}
+
+@container (min-width: 34rem) {
+  .cobs-tool__columns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.cobs-tool__io {
+  display: block;
+  vertical-align: top;
+  width: 100%;
+  min-height: 9rem;
+  padding: 0.5rem;
+  font-family: var(--__sl-font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.85rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  resize: vertical;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+
+.cobs-tool__io--output {
+  white-space: pre-wrap;
+  overflow-y: auto;
+}
+
+.cobs-tool__placeholder {
+  color: var(--sl-color-gray-3);
+}
+
+.cobs-tool__count {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+}
+
+.cobs-tool__errors {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--sl-color-accent-high);
+}
+
+.cobs-tool__errors ul {
+  margin: 0.25rem 0 0 0;
+  padding-left: 1.25rem;
+}
