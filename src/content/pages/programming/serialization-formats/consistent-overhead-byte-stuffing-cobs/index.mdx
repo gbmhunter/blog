@@ -93,13 +93,15 @@ COBS wins on both counts, but the decisive difference is the worst case: SLIP ca
 
 ### Why Does This Matter?
 
-In embedded systems, microcontrollers are usually quite memory constrained. Typically, when implementing a communications protocol, you have to allocate a buffer for the maximum size of the payload you expect to receive. You will normally be thinking about payload size in terms of unencoded data you want to send (i.e. the size of the message structs defining your data, or the size of protobuf messages, etc.). But the buffer has to hold the encoded data. If your framing scheme can double the size of the payload, your buffer must be twice as big also (to guarantee it can hold the worst-case scenario). For a 1 kB max. message size this is a 2 kB buffer. These buffers can quickly consume the limited RAM available on a microcontroller.
+In embedded systems, microcontrollers are usually quite memory constrained. Typically, when implementing a communications protocol, you have to allocate a buffer for the maximum size of the payload you expect to receive. You will normally be thinking about payload size in terms of unencoded data you want to send (i.e. the size of the message structs defining your data, or the size of protobuf messages, etc.). But the buffer has to hold the encoded data. If your framing scheme can double the size of the payload, your buffer must be twice as big also (to guarantee it can hold the worst-case scenario). For a 1 kB max. payload size this is a 2 kB buffer. These buffers can quickly consume the limited RAM available on a microcontroller.
 
-COBS provides a solution to this issue by guaranteeing a maximum overhead of 1 byte per 254 bytes of data. So for a 1 kB max. message size, the buffer only needs to be $1024 + \lceil 1024 / 254 \rceil + 1 = 1030$ bytes (payload, plus worst-case stuffing, plus the delimiter), which is a huge saving in RAM.
+COBS provides a solution to this issue by guaranteeing a maximum overhead of 1 byte per 254 bytes of data. So for a 1 kB max. payload size, the buffer only needs to be $1024 + \lceil 1024 / 254 \rceil + 1 = 1030$ bytes (payload, plus worst-case stuffing, plus the delimiter), which is a huge saving in RAM.
 
 ## COBS Encoder/Decoder
 
 The interactive tool below encodes raw bytes into a COBS frame (appending the `0x00` delimiter), or decodes a COBS frame back to the original data. Enter the bytes as hex, separators like spaces, commas, colons and `0x` prefixes are all accepted.
+
+Also, use the "Buffer size" mode to calculate the maximum encoded size for a given max. payload size, which is useful for allocating buffers in embedded systems.
 
 <CobsTool client:load />
 

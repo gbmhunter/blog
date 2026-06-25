@@ -10,6 +10,7 @@ const EXAMPLES = {
 export default function CobsTool() {
   const [mode, setMode] = useState('encode');
   const [input, setInput] = useState(EXAMPLES.encode);
+  const [maxSize, setMaxSize] = useState('1024');
 
   const { bytes: inputBytes, errors: parseErrors } = parseHex(input);
 
@@ -31,13 +32,23 @@ export default function CobsTool() {
   const switchMode = (next) => {
     if (next === mode) return;
     setMode(next);
-    // Re-seed the input with that mode's example only if the box still holds
-    // the other mode's example (so we don't clobber the user's own data).
-    setInput((cur) => (cur.trim() === EXAMPLES[mode] ? EXAMPLES[next] : cur));
+    // Re-seed the hex input with that mode's example only if the box still holds
+    // the other mode's example (so we don't clobber the user's own data). The
+    // buffer-size mode has no hex example, so skip re-seeding for it.
+    if (EXAMPLES[mode] && EXAMPLES[next]) {
+      setInput((cur) => (cur.trim() === EXAMPLES[mode] ? EXAMPLES[next] : cur));
+    }
   };
 
   const inLabel = mode === 'encode' ? 'Raw data (hex)' : 'COBS frame (hex)';
   const outLabel = mode === 'encode' ? 'COBS frame (hex)' : 'Decoded data (hex)';
+
+  // Buffer-size mode: worst-case encoded size for an n-byte max message is
+  // n + ceil(n / 254) stuffing bytes + 1 delimiter byte.
+  const n = Math.floor(Number(maxSize));
+  const maxSizeValid = maxSize.trim() !== '' && Number.isFinite(n) && n >= 0;
+  const stuffing = maxSizeValid ? Math.ceil(n / 254) : 0;
+  const bufferSize = maxSizeValid ? n + stuffing + 1 : 0;
 
   return (
     <div class="cobs-tool">
@@ -54,8 +65,47 @@ export default function CobsTool() {
         >
           Decode
         </button>
+        <button
+          class={`cobs-tool__mode${mode === 'buffer' ? ' cobs-tool__mode--active' : ''}`}
+          onClick={() => switchMode('buffer')}
+        >
+          Buffer size
+        </button>
       </div>
 
+      {mode === 'buffer' ? (
+        <div class="cobs-tool__buffer">
+          <h4>Max. payload size (bytes)</h4>
+          <input
+            type="number"
+            min="0"
+            step="1"
+            class="cobs-tool__num"
+            value={maxSize}
+            onInput={(e) => setMaxSize(e.currentTarget.value)}
+            placeholder="e.g. 1024"
+          />
+          <p class="cobs-tool__buffer-help">
+            The worst-case COBS frame for an <var>n</var>-byte payload needs{' '}
+            <var>n</var> + ⌈<var>n</var>/254⌉ stuffing bytes + 1 delimiter byte. Size your
+            receive/transmit buffer to this so it can always hold an encoded frame.
+          </p>
+          {maxSizeValid ? (
+            <>
+              <div class="cobs-tool__buffer-result">
+                Required buffer: <strong>{bufferSize.toLocaleString()} bytes</strong>
+              </div>
+              <div class="cobs-tool__buffer-breakdown">
+                {n.toLocaleString()} (payload) + {stuffing.toLocaleString()} (worst-case stuffing) + 1 (delimiter)
+              </div>
+            </>
+          ) : (
+            <div class="cobs-tool__buffer-result cobs-tool__placeholder">
+              Enter a non-negative whole number.
+            </div>
+          )}
+        </div>
+      ) : (
       <div class="cobs-tool__columns">
         <div>
           <h4>{inLabel}</h4>
@@ -80,8 +130,9 @@ export default function CobsTool() {
           </div>
         </div>
       </div>
+      )}
 
-      {errors.length > 0 && (
+      {errors.length > 0 && mode !== 'buffer' && (
         <div class="cobs-tool__errors">
           <strong>Notes:</strong>
           <ul>{errors.map((e, i) => <li key={i}>{e}</li>)}</ul>

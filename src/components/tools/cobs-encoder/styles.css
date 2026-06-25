@@ -96,6 +96,49 @@
   color: var(--sl-color-gray-2);
 }
 
+.cobs-tool__buffer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cobs-tool__num {
+  width: 100%;
+  max-width: 12rem;
+  padding: 0.5rem;
+  font-family: var(--__sl-font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.9rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  box-sizing: border-box;
+}
+
+.cobs-tool__buffer-help {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+}
+
+.cobs-tool__buffer-help var {
+  font-style: italic;
+}
+
+.cobs-tool__buffer-result {
+  font-size: 1rem;
+}
+
+.cobs-tool__buffer-result strong {
+  color: var(--sl-color-accent-high);
+}
+
+.cobs-tool__buffer-breakdown {
+  font-family: var(--__sl-font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+}
+
 .cobs-tool__errors {
   margin-top: 0.75rem;
   padding: 0.5rem;
