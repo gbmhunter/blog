@@ -13,7 +13,7 @@ type: page
 
 <Image src={import('./_assets/umami-dashboard-showing-analytics-for-blog.png')} width="900px">The Umami dashboard showing the page views and visitor count for this blog.</Image>
 
-This page details how to get Umami setup and running on an AWS Lightsail server instance. AWS Lightsail is a simple and cheap way of hosting servers that don't need to do much processing. Lightsail costs around US$3.50 to $5.00/month for the small size instances that Umami can run on (for small to medium sized sites) using IPv6 only.
+This page details how to get Umami setup and running on an AWS Lightsail server instance. AWS Lightsail is a simple and cheap way of hosting servers that don't need to do much processing. Lightsail costs around US\$3.50 to \$5.00/month for the small size instances that Umami can run on (for small to medium sized sites) using IPv6 only.
 
 Credit goes to the Digital Ocean's tutorial at https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04 for showing me how to do this for the first time. This tutorial expands on Digital Ocean's by adding Lightsail specific information, DNS information, and updating some parts for relevance in 2024 (e.g. we now have `docker compose` rather than `docker-compose`).
 
@@ -37,7 +37,7 @@ Don't lose your private key, you can't re-download it from the Lightsail console
 
 Select the _Networking Type_. As of March 2024, Amazon is about to charge more for servers that have IPv4 addresses. IPv6 only should work fine -- except that IPv6 doesn't work for cloning projects of GitHub, nor some docker-based commands which fetch data from remotes. What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. So let's continue with an instance which has both an IPv4 and IPv6 address -- select `Dual stack` for the Networking Type as shown below.
 
-Select a size. Umami does not take many resources to run. However I had issues with the memory capped at 512MB, so I picked the 1GB RAM/40GB SSD size (as of March 2024, US$5.00/month). Let me know if you get is running successfully on smaller resources!
+Select a size. Umami does not take many resources to run. However I had issues with the memory capped at 512MB, so I picked the 1GB RAM/40GB SSD size (as of March 2024, US\$5.00/month). Let me know if you get is running successfully on smaller resources!
 
 <Image src={import('./_assets/choosing-dual-stack-and-size-lightsail.png')} width="700px">Choosing the networking type and size of the Lightsail instance.</Image>
 
