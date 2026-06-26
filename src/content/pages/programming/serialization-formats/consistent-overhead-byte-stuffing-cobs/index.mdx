@@ -91,6 +91,10 @@ For a 1500-byte payload (a typical Ethernet MTU, the example used in the origina
 
 COBS wins on both counts, but the decisive difference is the worst case: SLIP can double your data, whereas COBS guarantees the overhead stays under half a percent no matter what the payload contains.
 
+The graph below plots the overhead (as a percentage of the payload) against payload size for both schemes, in both the worst and average cases. Note the log-log axes &mdash; SLIP's worst case hugs 100% regardless of size, while COBS's worst case falls away to its ~0.39% asymptote (the sawtooth is the integer stepping of the $\lceil n/254 \rceil$ stuffing bytes).
+
+<Image src={import('./_assets/cobs-vs-slip-overhead.png')} width="700px">Encoding overhead of COBS vs SLIP byte stuffing as a function of payload size, in the worst case and the average case (uniformly random data). One frame delimiter byte is included in every total.</Image>
+
 ### Why Does This Matter?
 
 In embedded systems, microcontrollers are usually quite memory constrained. Typically, when implementing a communications protocol, you have to allocate a buffer for the maximum size of the payload you expect to receive. You will normally be thinking about payload size in terms of unencoded data you want to send (i.e. the size of the message structs defining your data, or the size of protobuf messages, etc.). But the buffer has to hold the encoded data. If your framing scheme can double the size of the payload, your buffer must be twice as big also (to guarantee it can hold the worst-case scenario). For a 1 kB max. payload size this is a 2 kB buffer. These buffers can quickly consume the limited RAM available on a microcontroller.

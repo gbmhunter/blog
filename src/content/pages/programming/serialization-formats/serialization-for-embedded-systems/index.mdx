@@ -17,7 +17,7 @@ Is it better to use a schema-based serialization format or a schemaless one for 
 1. It allows for the creation of structs or classes in the embedded code that match the schema, which can be used to serialize and deserialize messages. Without these schema created structs it can be hard to represent the data without dynamic memory allocation (which is avoided at runtime in many embedded systems).
 2. The schema provides a way of defining and documenting your "API" for the messages that are sent between devices. In typed languages this can improve the developer experience because your message types can be objects containing the message fields. The types, variable names and comments in the `.proto` file(s) can also serve as the documentation of the API (you can also create proper documentation from `.proto` files, e.g. see the GitHub repo [pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)).
 
-Schema based serialization formats include [protobuf](/programming/serialization-formats/protobuf/), Cap'n Proto, and FlatBuffers. Schemaless serialization formats include [JSON](/programming/serialization-formats/jason/), CBOR, and MessagePack.
+Schema based serialization formats include [protobuf](/programming/serialization-formats/protobuf/), Cap'n Proto, and FlatBuffers. Schemaless serialization formats include [JSON](/programming/serialization-formats/json/), CBOR, and MessagePack.
 
 ## protobuf
 

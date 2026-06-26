@@ -2,13 +2,13 @@
 authors: [gbmhunter]
 date: 2013-10-02
 image: ./_assets/cover-image.webp
-lastUpdated: 2019-01-04
+lastUpdated: 2026-06-26
 tags: [JSON, serialization, configuration, data, file, Javascript, object notation]
 title: JSON
 type: page
 ---
 
-JSON (JavaScript object notation) is a way of describing data that follows the syntax for creating an object in JavaScript. It is commonly used to pass messages across the internet, as an alternative to XML.
+JSON (JavaScript Object Notation) is a way of describing data that follows the syntax for creating an object in JavaScript. It is commonly used to pass messages across the internet, as an alternative to XML.
 
 JSON files have the file extension .json.
 
@@ -22,28 +22,30 @@ Unfortunately, there is no special syntax to add comments into a JSON file (some
 
 Below is an example of a comment inside a JSON file:
 
-```json 
-{"employees":[
-    {"firstName":"John", "lastName":"Doe"},
-    {"firstName":"Anna", "lastName":"Smith"},
-    "_comment": "Peter Jones may be removed from this array at some point", 
-    {"firstName":"Peter", "lastName":"Jones"}
-]}
+```json
+{
+    "_comment": "Peter Jones may be removed from this list at some point",
+    "employees":[
+        {"firstName":"John", "lastName":"Doe"},
+        {"firstName":"Anna", "lastName":"Smith"},
+        {"firstName":"Peter", "lastName":"Jones"}
+    ]
+}
 ```
 
-You can have multiple comments with the same `"_comment"`  identifier (this is called a key), this does not break any strict rules.
+Note that the fake `"_comment"` key has to be added inside an object (`{ }`), not directly inside an array (`[ ]`) — a bare `"key": "value"` pair is not valid as an array element. You can have multiple comments with the same `"_comment"` identifier (this is called a key), this does not break any strict rules.
 
 ## Libraries
 
-Many open-source libraries exists for encoding/decoding JSON data.
+Many open-source libraries exist for encoding/decoding JSON data.
 
 [Jansson](https://github.com/akheron/jansson) is a C-library for encoding/decoding JSON data, and is designed to run on embedded systems (it compiles for PSoC ICs with no problems).
 
 ## jq
 
-`jq` is a command-line tool for inspecting/running queries on JSON data. For example, you can pass it a .json file, and print out the number keys in an object, print out the number of elements in an array, search for keys, etc.
+`jq` is a command-line tool for inspecting/running queries on JSON data. For example, you can pass it a .json file, and print out the number of keys in an object, print out the number of elements in an array, search for keys, etc.
 
-Website: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)
+Website: [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/)
 
 For example, let's say we had the following file:
 
@@ -61,10 +63,10 @@ For example, let's say we had the following file:
 }
 ```
 
-Print out entire contents of file (not that much use):
+Print out entire contents of file (not very useful):
 
 ```sh
-$ cat data.json | jq `.`
+$ cat data.json | jq '.'
 {
   "my_array": [
     "a",
@@ -81,7 +83,7 @@ $ cat data.json | jq `.`
 Print out the key names of the root object, as an array:
 
 ```sh
-$ cat data.json | jq `keys`
+$ cat data.json | jq 'keys'
 [
   "my_array",
   "my_obj"
