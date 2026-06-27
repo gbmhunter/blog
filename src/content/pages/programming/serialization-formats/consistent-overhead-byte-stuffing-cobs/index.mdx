@@ -91,7 +91,7 @@ For a 1500-byte payload (a typical Ethernet MTU, the example used in the origina
 
 COBS wins on both counts, but the decisive difference is the worst case: SLIP can double your data, whereas COBS guarantees the overhead stays under half a percent no matter what the payload contains.
 
-The graph below plots the overhead (as a percentage of the payload) against payload size for both schemes, in both the worst and average cases. Note the log-log axes &mdash; SLIP's worst case hugs 100% regardless of size, while COBS's worst case falls away to its ~0.39% asymptote (the sawtooth is the integer stepping of the $\lceil n/254 \rceil$ stuffing bytes).
+The graph below plots the overhead (as a percentage of the payload) against payload size for both schemes, in both the worst and average cases. Note the log-log axes! SLIP's worst case trends to 100% regardless of size, while COBS's worst case falls away to its ~0.39% asymptote (the sawtooth is the integer stepping of the $\lceil n/254 \rceil$ stuffing bytes).
 
 <Image src={import('./_assets/cobs-vs-slip-overhead.png')} width="700px">Encoding overhead of COBS vs SLIP byte stuffing as a function of payload size, in the worst case and the average case (uniformly random data). One frame delimiter byte is included in every total.</Image>
 
@@ -113,9 +113,21 @@ Also, use the "Buffer size" mode to calculate the maximum encoded size for a giv
 
 I wrote C++ functions which can perform COBS encoding and decoding as part of an open source serial communications protocol, they can be found in [CobsTranscoder.cpp in the SerialFiller repo](https://github.com/gbmhunter/SerialFiller/blob/master/src/CobsTranscoder.cpp).
 
+## History and Usage
+
+In 1997/1999 there was an attempt to standardize COBS as an alternative to HDLC framing in PPP (Point-to-Point Protocol), specifically because HDLC's worst-case overhead can double the frame size. It was submitted as an [IETF internet draft](https://datatracker.ietf.org/doc/html/draft-ietf-pppext-cobs-00), but never progressed to an RFC and therefore was never standardized for PPP.[^ietf-ppp-cobs-draft]
+
+In Rust the `postcard` and `postcard-rpc` libraries use COBS for framing. `postcard` is a embedded serialization framework and remote procedure call (RPC) system.
+
+Espressif's ESPP library for ESP32 comes with a COBS module.[^espressif-espp-cobs] Kirale (a Thread/802.15.4 vendor) uses COBS for their serial host interface.[^kiraletech-kitools] Cyphal, a communication protocol used in aerospace, drones and robotics uses COBS framing for its serial transport (UART, RS-232/422, USB CDC ACM, and TCP).[^opencyphal-specification]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^cobs-paper]: Stuart Cheshire & Mary Baker (1999, Apr). _Consistent Overhead Byte Stuffing_ [paper]. IEEE/ACM Transactions on Networking. Retrieved 2026-06-26, from http://www.stuartcheshire.org/papers/COBSforToN.pdf.
 [^rfc-1055-slip]: J. Romkey (1988, Jun). _RFC 1055: A Nonstandard for Transmission of IP Datagrams over Serial Lines (SLIP)_ [RFC]. IETF. Retrieved 2026-06-26, from https://www.rfc-editor.org/rfc/rfc1055.
+[^ietf-ppp-cobs-draft]: James D. Carlson, Stuart Cheshire & Mary Baker (1997, Nov). _PPP Consistent Overhead Byte Stuffing (COBS)_ [specification]. IETF. Retrieved 2026-06-27, from https://datatracker.ietf.org/doc/html/draft-ietf-pppext-cobs-00.
+[^opencyphal-specification]: OpenCyphal Development Team (2025, May 16). _Cyphal Specification v1.0_ [specification]. Retrieved 2026-06-27, from https://specification.opencyphal.org/Cyphal_Specification.pdf.
+[^espressif-espp-cobs]: Espressif Systems. _COBS (Consistent Overhead Byte Stuffing) Component for ESP-IDF_ [product page]. Retrieved 2026-06-27, from https://components.espressif.com/components/espp/cobs/versions/1.1.3/readme.
+[^kiraletech-kitools]: KiraleTech. _KiraleTech/KiTools_ [GitHub repository]. GitHub. Retrieved 2026-06-27, from https://github.com/KiraleTech/KiTools.

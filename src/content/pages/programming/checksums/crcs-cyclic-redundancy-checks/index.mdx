@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2016-06-07
-lastUpdated: 2026-06-20
+lastUpdated: 2026-06-27
 tags: [CRC, cyclic redundancy check, generator polynomial, calculator, NinjaCalc, CRC-8-ATM, CRC-16, CRC-24, BLE, Bluetooth, XModem, Kermit]
 title: CRCs (Cyclic Redundancy Checks)
 type: page
@@ -498,6 +498,10 @@ Reverse: 0x8408
 Koopman: 0x8810
 ```
 
+<Aside type="note">
+The Cyphal protocol uses this exact variant (which it calls CRC-16/CCITT-FALSE) to protect its serial transport frame header. It relies on the zero-residue property to validate the header: "_Application of the CRC function to the entire header shall yield zero, otherwise the header is malformed._"[^opencyphal-specification]
+</Aside>
+
 ### CRC-24/BLE
 
 | Property      | Value           |
@@ -536,6 +540,26 @@ The `Init` of `0x555555` applies to advertising-channel packets. For connection 
 
 CRC-32/ISO-HDLC is one of the most common 32-bit CRC algorithms. It is also known as CRC-32, CRC-32/ADCCP, CRC-32/V-42, CRC-32/XZ and PKZIP. HDLC is defined in ISO/IEC 13239. Ethernet uses this in its frame check sequence (FCS).[^wikipedia-cyclic-redundancy-check]
 
+### CRC-32C (Castagnoli)
+
+| Property      | Value           |
+|---------------|-----------------|
+| Name          | CRC-32/ISCSI    |
+| Width         | 32              |
+| Poly          | 0x1edc6f41      |
+| Init          | 0xffffffff      |
+| RefIn         | True            |
+| RefOut        | True            |
+| XorOut        | 0xffffffff      |
+| Check         | 0xe3069283      |
+| Residue       | 0xb798b438      |
+
+CRC-32C uses a different polynomial (`0x1edc6f41`) to CRC-32/ISO-HDLC, chosen by Castagnoli et al. for its better error-detection performance. It is also known as CRC-32/ISCSI, CRC-32/BASE91-C and CRC-32/CASTAGNOLI. It is widely hardware-accelerated --- Intel's `SSE4.2` `CRC32` instruction and AArch64 both compute it directly (see [Processor Support](#processor-support) above).[^wikipedia-cyclic-redundancy-check][^wikipedia-sse4]
+
+<Aside type="note">
+The Cyphal protocol uses CRC-32C to protect its serial transport payload, serialized in little-endian byte order. Note that, unlike the header CRC, "_The transfer CRC function is applied to the entire transfer payload and only transfer payload (header not included)._"[^opencyphal-specification]
+</Aside>
+
 ## External Resources
 
 [http://reveng.sourceforge.net/crc-catalogue/16.htm](http://reveng.sourceforge.net/crc-catalogue/16.htm) is a great webpage catalogue of many 16-bit CRC algorithms.
@@ -552,3 +576,4 @@ CRC-32/ISO-HDLC is one of the most common 32-bit CRC algorithms. It is also know
 [^koopman-best-crc-polynomials]: Philip Koopman (2024, Feb 25). _Best CRC Polynomials_. Carnegie Mellon University. Retrieved 2026-04-30, from https://users.ece.cmu.edu/~koopman/crc/.
 [^wikipedia-sse4]: Wikipedia (2026, Jan 16). _SSE4_ [wiki]. Retrieved 2026-04-30, from https://en.wikipedia.org/wiki/SSE4.
 [^ramabadran-gaitonde-tutorial-crc-computations]: Tenkasi V. Ramabadran, Sunil S. Gaitonde (1988, Jul). _A tutorial on CRC computations_ [pdf]. IEEE Micro, Vol. 8, Issue 4, pp. 62-75. Retrieved 2026-05-06, from https://people.cs.pitt.edu/~znati/Courses/WANs/Dir-Rel/related/TutorialCRCImplement.pdf.
+[^opencyphal-specification]: OpenCyphal Development Team (2025, May 16). _Cyphal Specification v1.0_ [specification]. Retrieved 2026-06-27, from https://specification.opencyphal.org/Cyphal_Specification.pdf.

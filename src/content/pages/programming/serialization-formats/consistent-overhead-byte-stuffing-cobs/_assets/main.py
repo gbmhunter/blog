@@ -14,6 +14,11 @@ def format_bytes(value, _pos):
     return f'{value / 1000:g} kB'
 
 
+def format_percent(value, _pos):
+    """Format an overhead value as a percentage, e.g. '1%', '10%', '100%'."""
+    return f'{value:g}%'
+
+
 def main():
     create_cobs_vs_slip_overhead()
 
@@ -43,8 +48,9 @@ def create_cobs_vs_slip_overhead():
     ax.set_xscale('log')
     ax.set_yscale('log')
     ax.xaxis.set_major_formatter(FuncFormatter(format_bytes))
+    ax.yaxis.set_major_formatter(FuncFormatter(format_percent))
     ax.set_xlabel('Payload size')
-    ax.set_ylabel('Encoding overhead [% of payload]')
+    ax.set_ylabel('Encoding overhead (% of payload)')
     ax.set_title('COBS vs SLIP encoding overhead')
     ax.grid(True, which='both', alpha=0.4)
     ax.legend()
