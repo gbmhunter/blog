@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2023-07-31
 description: Lithium-ion (or li-ion) is a popular chemistry for a rechargeable battery that uses the intercalation of lithium ions between anode and cathode to generate electricity.
-lastUpdated: 2026-05-26
+lastUpdated: 2026-06-29
 tags: ["lithium", "self-discharge", "ions", "batteries", "state-of-charge", "charging"]
 title: Lithium-ion Batteries
 type: page
@@ -38,7 +38,7 @@ The below table shows some of the basic properties of lithium-ion batteries:
     <td>Energy density</td>
     <td>
     
-250-693 Wh/L (0.90-2.49 MJ/kg)[^wikipedia-lithium-ion-battery]
+250-693 Wh/L (0.90-2.49 MJ/L)[^wikipedia-lithium-ion-battery]
 
     </td>
     </tr>
@@ -57,11 +57,13 @@ The below table shows some of the basic properties of lithium-ion batteries:
 
 Lithium-ion batteries experience about 1-5% of self-discharge per month. This means that they lose 1-5% of their remaining energy each month, even when there is no external power draw. Note that it is a percentage of their **remaining** energy, not a percentage of their maximum energy. Assuming no other circuitry is drawing current (even battery protection ICs!), this means the battery state-of-charge decays exponentially over time.
 
-<Image src={import('./_assets/lithium-ion-self-discharge-vs-time.svg')} width="640">State of charge over time for a lithium-ion battery starting at 100 %, plotted for 1 %, 3 % and 5 % monthly self-discharge rates. Because each month's loss is a percentage of the *remaining* charge, the decay is exponential ($SoC(t) = 100 \cdot (1 - r)^t$).</Image>
+<Image src={import('./_assets/lithium-ion-self-discharge-vs-time.svg')} width="640px">State of charge over time for a lithium-ion battery starting at 100 %, plotted for 1 %, 3 % and 5 % monthly self-discharge rates. Because each month's loss is a percentage of the *remaining* charge, the decay is exponential ($SoC(t) = 100 \cdot (1 - r)^t$).</Image>
 
 For a quality battery, the percentage is often quoted around 1-2% per month. You also have to take into account any battery protection circuitry which adds additional discharge current (this is usually a fixed current draw rather than an exponentially decaying drop).[^bonnen-batteries-lithium-self-discharge]
 
 Lithium-ion batteries have a better self-discharge rate than other common rechargeable chemistries. For example, conventional NiMH (nickel metal-hydride) batteries have a self-discharge rate of about 30% per month![^wikipedia-self-discharge]
+
+The parent [Batteries page](/electronics/components/batteries/) has a battery lifetime calculator that can be used to estimate the state-of-charge of a Li-ion battery after a certain number of months, taking into account self-discharge and other factors.
 
 ## Charging
 
@@ -82,7 +84,7 @@ Pre-charge can also be confused with the pre-charge step that occurs in the manu
 
 ## Protection Circuit Modules (PCMs)
 
-[Protection circuit modules](/electronics/components/power-management-ics/pcms/) (PCMs -- not to be confused with Pulse Code Modulation) are circuits designed to protect Lithium batteries (and other chemistries) from overcharge, over-discharge and over current conditions. They normally feature a analogue switch (i.e. two back-to-back [MOSFETs](/electronics/components/transistors/mosfets/)) to disconnect the load from the battery cell during a fault condition. They reconnect the load after the fault condition is removed and/or after a certain duration.
+[Protection circuit modules](/electronics/components/power-management-ics/pcms/) (PCMs -- not to be confused with Pulse Code Modulation) are circuits designed to protect Lithium batteries (and other chemistries) from overcharge, over-discharge and over current conditions. They normally feature an analogue switch (i.e. two back-to-back [MOSFETs](/electronics/components/transistors/mosfets/)) to disconnect the load from the battery cell during a fault condition. They reconnect the load after the fault condition is removed and/or after a certain duration.
 
 As shown in the image below, they are commonly integrated into the battery itself, so that the cell is protected from the moment it leaves the factory floor.
 
@@ -103,11 +105,50 @@ Four phases:
 
 The `RT9485` has an on-board MCU.
 
+## Cell Sizing Codes
+
+Li-ion prismatic (a.k.a. pouch) cells are often sold with a code that indicates their size. For example, a cell with the code `8050150` has the following dimensions:
+
+```text
+ 8050150
+└┘└─┘└─┘
+ │  │  └── length:    150 mm
+ │  └───── width:      50 mm
+ └──────── thickness:    8 mm  (specified in millimeters, not tenths of a millimeter!)
+```
+
+You can roughly estimate the capacity of a pouch cell from these numbers by first finding the volume, and then multiplying by a typical energy density of $260\unit{Wh/L}$ (or $0.26\unit{Wh/cm^3}$):
+
+$$
+\begin{align*}
+V &= 8\unit{mm} \cdot 50\unit{mm} \cdot 150\unit{mm} \\
+  &= 60,000\unit{mm^3} \\
+  &= 60\unit{cm^3}
+\end{align*}
+$$
+
+Then we multiply by the energy density to get total energy in $\mathrm{Wh}$:
+
+$$
+\begin{align*}
+E &= 60\unit{cm^3} \cdot 0.26\unit{Wh/cm^3} \\
+  &= 15.6\unit{Wh}
+\end{align*}
+$$
+
+We can also calculate the approximate capacity in mAh by using the rule-of-thumb of $70-80\unit{mAh/cm^3}$:
+
+$$
+\begin{align*}
+C &= 60\unit{cm^3} \cdot 70\unit{mAh/cm^3} \\
+  &= 4,200\unit{mAh}
+\end{align*}
+$$
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^ti-li-ion-battery-charger-jeita-compliance]: Jinrong Qian (2010). _Li-ion battery-charger solutions for JEITA compliance_. Texas Instruments. Retrieved 2023-07-31, from https://www.ti.com/lit/an/slyt365/slyt365.pdf.
 [^wikipedia-lithium-ion-battery]: Wikipedia (2023, Jul 27). _Lithium-ion battery_. Retrieved 2023-07-31, from https://en.wikipedia.org/wiki/Lithium-ion_battery.
 [^battery-university-bu-409-charging-li-ion]: Battery University (2021, Oct 25). _BU-409: Charging Lithium-ion_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-409-charging-lithium-ion.
 [^battery-university-bu-702-how-to-store-batteries]: Battery University (2021, Oct 21). _BU-702: How to Store Batteries_. Retrieved 2023-08-13, from https://batteryuniversity.com/article/bu-702-how-to-store-batteries.

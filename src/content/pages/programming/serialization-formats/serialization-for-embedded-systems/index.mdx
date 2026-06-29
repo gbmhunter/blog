@@ -2,13 +2,13 @@
 authors: [gbmhunter]
 date: 2024-04-24
 description: When sending data between two microcontrollers (or between a microcontroller and a computer/server, e.g. IoT), you'll need some method of serializing and deserializing the data. This page details one such method leveraging the protobuf standard and the Nanopb library.
-lastUpdated: 2026-06-13
+lastUpdated: 2026-06-29
 tags: [serialization, protobuf, Nanopb, embedded systems, microcontrollers, schemas, packets, messages, framing, escaping, delimiters, options]
 title: Serialization for Embedded Systems
 type: page
 ---
 
-This page details a way (one of many!) of serializing messages for embedded systems. The method described here is based on Google's [protobuf](/programming/serialization-formats/protobuf/) serialization format along with additional escaping and framing to allow for the data to be streamed across a communication channel like [UART](/electronics/communication-protocols/uart-communication-protocol/), [SPI](/electronics/communication-protocols/spi-communication-protocol/), a WebSocket or any other "byte stream" style communication.
+This page details a way (one of many!) of serializing messages for embedded systems. The method described here is based on Google's [protobuf](/programming/serialization-formats/protobuf/) serialization format along with additional byte stuffing and framing to allow for the data to be streamed across a communication channel like [UART](/electronics/communication-protocols/uart-communication-protocol/), [SPI](/electronics/communication-protocols/spi-communication-protocol/), a WebSocket or any other "byte stream" style communication.
 
 ## Schema vs. Schemaless Serialization
 
@@ -56,7 +56,7 @@ Value Encoded Msg.
 
 protobuf supports a lot of nice types like `string` which is useful in the embedded world for serializing arbitrary length `char *`. It also supports `bytes` which is useful for serializing binary data. It also supports `repeated` which is useful for serializing arbitrary length arrays of other types.
 
-One of its downsides for embedded systems is the lack of small variable types. It provides `uint32` and `bytes` type (array of bytes), but no `uint8`, `uint16` or bit fields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using Nanopb, by default `uint32`s, will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, Nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use a smaller type (presumably an error is thrown during decoding if Nanopb received an encoded number that doesn't fit in the smaller type).
+One of its downsides for embedded systems is the lack of small variable types. It provides `uint32` and `bytes` type (array of bytes), but no `uint8`, `uint16` or bit fields! It does do clever serialization though and will encode small `uint32` numbers in less than 4 bytes (as we saw above). However, we still lack the expressiveness of smaller types. And when using Nanopb, by default `uint32`s will all map to `uint32_t` in the generated structs, which may be a memory issue for some users. Luckily, Nanopb provides a way of specifying smaller types in the .proto file, so that the resulting structs use a smaller type (presumably an error is thrown during decoding if Nanopb received an encoded number that doesn't fit in the smaller type).
 
 If the lack of smaller types is a show stopper for you, have a look at [bitproto](https://bitproto.readthedocs.io/en/latest/)[^bitproto-homepage] (more on this in the [Alternatives](#alternatives) section).
 
@@ -143,9 +143,13 @@ Behind the scenes, protobuf will encode an ID for each possible message in the o
 
 One further benefit from the wrapped message approach is that you can add additional generic fields to the wrapper message which will then be added to all messages. For example, this could be useful for holding things such as a timestamp or CRC checksum.
 
-## Escaping and Framing
+## Framing and Byte Stuffing
 
-protobuf does not provide a way to determine when one message ends and the next one starts. Again, this is a problem if you want to send messages in a stream-like fashion. The solution to this is to further process the protobuf-encoded message by adding a specific end-of-packet delimiter. You then have to make sure to escape all occurrences of the delimiter in the message. This is called "escaping and framing".
+protobuf does not provide a way to determine when one message ends and the next one starts. Again, this is a problem if you want to send messages in a stream-like fashion (e.g. send them through a serial link). The solution to this is to further process the protobuf-encoded message by adding a specific end-of-packet delimiter. But the problem is then you have to make sure the rest of the message contains no occurrences of the chosen delimiter. Removing these occurrences is called _byte stuffing_. One way to do byte stuffing is with _escaping_, another is with COBS (Consistent Overhead Byte Stuffing).
+
+If you don't have any personal preference, I recommend you use COBS. COBS is explained in detail in the [COBS](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/) page. Below we will illustrate how escaping works:
+
+### Escaping
 
 For example, you could pick the end-of-packet delimiter to be `0xFE` (it's a good idea to avoid commonly occurring bytes like `0x00` or `0xFF` so that you don't have to escape as many bytes). We will also pick a start-of-packet delimiter. This is not mandatory, but allows us to throw away bytes easily for example if we connect to the other device half-way through a packet. Let's use `0xFD`. We also need to pick an escape character, let's choose `0xFC`.
 
@@ -180,11 +184,112 @@ This is what the sender sends across the communication channel, e.g. UART, SPI, 
 
 What does the receiver do? The receiver throws away bytes until it receives a start-of-packet delimiter. Then it buffers received bytes until it receives an end-of-packet delimiter. Then it performs the reverse of the escaping process to get the original protobuf encoded message. This can then be decoded with protobuf if you used the `oneof` method above.
 
-If you decided to use the enum method to determine the message type, you would need to add the message type to the start of the encoded protobuf message before the escaping and framing process. You would then unpack this during decoding and calling the correct decode function based on the message type. Another thing you may want to do is add a CRC checksum. This would be added to the header similarly to the message type, and ideally be calculated over the protobuf encoded message and the message type enum (if used).
+If you decided to use the enum method to determine the message type, you would need to add the message type to the start of the encoded protobuf message before the escaping and framing process. You would then unpack this during decoding and calling the correct decode function based on the message type. Another thing you may want to do is add a [CRC checksum](/programming/checksums/crcs-cyclic-redundancy-checks/). This would be added to the header similarly to the message type, and ideally be calculated over the protobuf encoded message and the message type enum (if used).
 
 <Aside type="tip">
-If you are worried about how many extra bytes the escaping might add, take a look at [COBS (Constant Overhead Byte Stuffing)](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/). It's a clever method of escaping and framing which has a maximum escaping overhead of 1 byte per 254 bytes of data.
+If you are worried about how many extra bytes the escaping might add, take a look at [COBS (Consistent Overhead Byte Stuffing)](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/). It's a clever byte-stuffing scheme which has a maximum overhead of 1 byte per 254 bytes of data.
 </Aside>
+
+## Adding an RPC Layer
+
+Everything up to this point gives us a way to reliably send a self-contained message from one device to another. This is fine and is all you need for a large number of applications. But sometimes  what you really want is to _call a function_ on the remote device and get a result back, e.g. "read this sensor", "set this config value", "start a calibration". This is what a Remote Procedure Call (RPC) layer provides: it makes calling a function on a remote device look (almost) like calling a local one.
+
+As mentioned in [The Message Type](#the-message-type) section, the heavyweight option here is [gRPC](https://grpc.io/), which is built directly on top of protobuf. It's a poor fit for low-level embedded systems though, as the server and client are quite heavy (it relies on HTTP/2 and dynamic memory allocation). There are embedded-orientated RPC libraries like [eRPC](https://github.com/EmbeddedRPC/erpc) which generate client stubs and server shims from an IDL file, but they are not as well supported across higher-level languages as protobuf is.
+
+<Aside type="tip">
+If you want a battle-tested framework rather than rolling your own, take a look at [Pigweed's pw_rpc](https://pigweed.dev/pw_rpc/). It's Google's low-code-size embedded RPC system, designed to run with static (no dynamic) memory allocation, and it generates directly from your `.proto` files using either Nanopb or `pw_protobuf` as the backend. It supports unary _and_ streaming calls, multiplexes calls over transport-agnostic "channels", and ships clients for C++, Python, TypeScript, Java and JavaScript. The main trade-offs are that the device side is C++ (not C), and it's happiest inside the broader Pigweed ecosystem and build tooling (i.e. Bazel). However examples for other development environments such as [Zephyr](/programming/operating-systems/zephyr/) do exist.[^pigweed-pw-rpc]
+</Aside>
+
+The good news is that a lightweight RPC layer can be hand-rolled on top of the `oneof` wrapper message and framing we've already built up, usually with only a modest amount of code. There are three things you need to add:
+
+1. **Request/response correlation.** Add a `request_id` field to your wrapper message, and fold the response messages into the same `oneof`. The caller remembers each `request_id` it has sent and which are still outstanding ("pending"). When a response frame arrives, the caller matches its `request_id` against the pending list to work out which call it belongs to. This is what allows you to have more than one call in-flight at once without getting the replies mixed up. This is a natural extension of the "add generic fields to the wrapper message" idea from the [oneof Method](#the-oneof-method) section.
+1. **A dispatch table on the callee.** When a request message decodes, switch on the `oneof` case, call the matching handler function, build the response message with the _same_ `request_id`, and send it back through the same framing pipeline.
+1. **Caller-side ergonomics and failure handling.** A stub function (e.g. `add(a, b)`) that builds the request, sends it, and waits for (or is called back with) the result. Crucially, this layer must handle the failure modes that don't exist for local function calls.
+
+Here is what the wrapper message might look like, extended for RPC:
+
+```proto
+message RpcEnvelope {
+  uint32 request_id = 1;
+  oneof body {
+    // Requests.
+    AddRequest        add_request        = 2;
+    GetStatusRequest  get_status_request = 3;
+    // Responses.
+    AddResponse       add_response       = 10;
+    GetStatusResponse get_status_response = 11;
+    ErrorResponse     error              = 12;
+  }
+}
+```
+
+The most important things to get right are the failure modes, because these are what distinguish a remote call from a local one:
+
+- **Timeouts.** The remote device might never answer (it could have reset, or the response frame could have been dropped or failed its CRC check). A local function call can't time out, but a remote one must — otherwise the caller blocks forever.
+- **Errors.** A dedicated `ErrorResponse` lets the callee report problems like "unknown method", "invalid arguments" or "busy" back to the caller.
+- **Concurrency.** The `request_id` makes it safe to have multiple outstanding requests at once.
+
+### Symmetric (Peer-to-Peer) RPC
+
+The terms "client/server" and "caller/callee" make it sound like one device is in charge and the other just answers. That's a common arrangement (e.g. a PC host driving a device), but it's not a requirement. **Client and server are roles per-call, not per-device.** In a lot of embedded device-to-device links neither side is really more important than the other, and both want to call functions on the other. RPC handles this fine — you just let each device be _both_ a caller and a callee at the same time.
+
+That means each device needs:
+
+- A **dispatch table** (so it can service incoming requests), _and_
+- A **pending-request table** (so it can match incoming responses to the requests it sent).
+
+The single piece of glue that makes this work is being able to tell, for any incoming envelope, whether it's a **request** (and therefore to run it through the dispatch table) or a **response** (and therefore to match it against the pending table). The `oneof` case already tells you this — `add_request` is a request, `add_response` is a response — so no extra field is strictly needed. If you'd rather not infer it from the message type, add an explicit `bool is_request` (or a direction enum) to the envelope.
+
+One subtlety with `request_id`: when both sides allocate ids independently, the two devices can easily pick the _same_ id at the same time. This is not a problem as long as each device only ever matches a response against **its own** outgoing requests (i.e. the pending table is local to each device, and you never try to share a single id space across the link). Device A's request `#5` and device B's request `#5` are completely unrelated — each is resolved by the device that sent it. If you find the symmetry confusing to reason about, a common trick is to namespace the id with the originator (e.g. top bit = "who sent it"), but it usually isn't necessary.
+
+### RPC on a Shared (One-to-Many) Bus
+
+So far we've assumed a point-to-point link, where every byte you send goes to the one device you're talking to. Many low-level buses aren't like that, e.g. [RS-485](/electronics/communication-protocols/rs-485-protocol/), CAN and I²C are all _multi-drop_, where every node hears every frame. RPC still works on these buses; it just needs one more thing: **addressing**.
+
+Add a destination address (and usually a source address too) to the wrapper message `RpcEnvelope`:
+
+```proto
+message RpcEnvelope {
+  uint32 dst_addr   = 1; // Which node this frame is for.
+  uint32 src_addr   = 2; // Which node sent it.
+  uint32 request_id = 3;
+  oneof body {
+    // ... requests and responses as before ...
+  }
+}
+```
+
+With addressing in place, most of the RPC layer is unchanged:
+
+- **Unicast call.** The caller sets `dst_addr` to the node it wants. _Every_ node on the bus receives the frame, but each one checks `dst_addr` against its own address and drops the frame if it isn't a match. The targeted node dispatches the request and sends a response back with `dst_addr` set to the original sender's address. From the RPC layer's point of view this is identical to a point-to-point call — the bus is just acting as a filter.
+- **Correlation must be keyed by peer.** A `request_id` is no longer unique on its own, because node 3 and node 5 could each have a request `#7` in flight to you at the same time. So the pending-request table has to be keyed by **(peer address, request_id)**, not `request_id` alone.
+
+The part that is kinda weird in RPC is **broadcast** (sending a message to all nodes). A request sent to a broadcast address has no single responder, so it does not fit the RPC model of "just like calling a function" (which node's response is the return value?). There are a few ways to handle this:
+
+1. **Make broadcasts fire-and-forget.** No response is expected and nothing is added to the pending-request table — it's a one-way command, e.g. "everyone, sync your clocks now". You give up the return value in exchange for one-to-many delivery. This is really just the plain one-way messaging from earlier in this page, sent to a broadcast address.
+1. **Iterate unicast calls.** If you actually need an answer from many nodes, poll each node with its own unicast call in turn. The RPC model stays intact (each call returns one value), at the cost of one round-trip per node.
+1. **Broadcast and collect (scatter-gather).** If collisions are handled by a lower layer in the comms stack — either by bus arbitration (CAN), or by giving each node an assigned reply time-slot so the responses don't talk over each other, then a single broadcast request _can_ gather many responses. This works, but note it bends the "calling a function" mental model: the return value is no longer a single result, it's a **collection of (node → result) pairs** (i.e. it would have to return something like an array or map). The RPC layer keeps one pending-request entry for the broadcast and appends each arriving response to it instead of resolving and discarding the entry on the first reply.
+
+   The catch with scatter-gather is knowing **when you're done**. With a unicast call, one response means the call is complete. With a broadcast, there's no inherent "last" response, so you need one of:
+   - A **known roster** of nodes expected to answer, so you can complete the call once all of them have replied (and flag the ones that didn't as timed-out, a per-node version of the normal RPC timeout).
+   - A plain **collection timeout**: gather whatever responds within a fixed window and return that. Simpler, but you can't tell "node absent" from "node slow".
+
+Finally, watch out for **who is allowed to talk**, because the physical bus often dictates this and it can undo the symmetric peer-to-peer model from the previous section:
+
+- On a half-duplex master/slave bus (classic RS-485, Modbus-style), only the master may _initiate_ a transaction, and a slave may transmit _only_ when addressed and _only_ as a response — exactly one device drives the line at a time. A slave therefore can't make an unsolicited RPC call; the best it can do is set a flag that the master picks up on its next poll.
+- On a bus with built-in arbitration (CAN), any node can initiate at any time, so symmetric RPC works (both sides can initiate calls). This generally gives you more flexibility in the comms layer and reduces the amount of polling you have to do.
+
+### Is RPC a Good Idea for Embedded Systems?
+
+It depends on the kind of traffic. RPC is a great fit for one-to-one links where one side needs to control/command the other. For example, a host (PC, phone or gateway) sends commands and queries like "read sensor", "set config" or "start calibration". The request/response model maps perfectly onto this, and the host side gets clean stub functions to work with. If you already have the `oneof` wrapper in place, adding RPC on top is cheap.
+
+It's a poor fit in a few cases, where plain one-way messaging (as described in the rest of this page) is the better choice:
+
+- **High-rate telemetry or streaming** (e.g. continuous sensor data or log streams). These are fire-and-forget _events_, not calls. RPC's correlation and waiting semantics add overhead and buy you nothing.
+- **Hard real-time paths.** Blocking on a remote call would stall your control loop. On embedded systems you should make RPC _asynchronous_ (callbacks or a state machine) rather than synchronous-blocking, unless the call is on a non-critical task/thread.
+- **Severely constrained MCUs.** The pending-request table, timeout timers and per-call buffers all cost RAM. Usually this is small, but it's not free.
+
+In practice, many systems run _both_: a lightweight async RPC layer for commands, and plain one-way messages for telemetry — all sharing the same framing layer.
 
 ## Nanopb
 
@@ -200,7 +305,7 @@ import "nanopb.proto";
 
 ### Nanopb Options
 
-Nanopb provides a number of special options you can specify in the `.proto` file which are used to avoid dynamic memory allocation (or the need for callbacks, and to reduce the memory footprint of the structs by allowing sizes smaller than 32-bits) and allow Nanopb to generate fixed sized structs for holding message data. These additional options don't prevent you from compiling the `.proto` file for Python etc. with the official compiler, but you do have to make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language[^nanopb-api-reference].
+Nanopb provides a number of special options you can specify in the `.proto` file which are used to avoid dynamic memory allocation (or the need for callbacks, and to reduce the memory footprint of the structs by allowing sizes smaller than 32-bits) and allow Nanopb to generate fixed sized structs for holding message data. These additional options don't prevent you from compiling the `.proto` file for Python etc. with the official compiler, but you do have to make sure `nanopb.proto` is importable even if these options are going to be ignored for this target language.[^nanopb-api-reference]
 
 Installing nanopb also provides a version of `protoc` (the official protobuf compiler) that you can use.
 
@@ -300,9 +405,9 @@ The supported types for the `int_size` option are:
 
 ## Generating Python Code
 
-The Python code generated by the official protobuf compiler is awful. It embeds a giant string into a Python file which generates code at runtime. This means no nice messages classes that you can inspect or be leveraged by Intellisense in a IDE.
+The Python code generated by the official protobuf compiler is awful. It embeds a giant string into a Python file which generates code at runtime. This means no nice message classes that you can inspect or be leveraged by Intellisense in an IDE.
 
-Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://github.com/danielgtaylor/python-betterproto) is a popular one with 1.4k stars as of May 2024[^danielgtaylor-python-betterproto]. It generates Python message classes (data classes, to be specific) from your `.proto` files. It also supports gRPC (not very useful for embedded).
+Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://github.com/danielgtaylor/python-betterproto) is a popular one with 1.4k stars as of May 2024.[^danielgtaylor-python-betterproto] It generates Python message classes (data classes, to be specific) from your `.proto` files. It also supports gRPC (not very useful for embedded).
 
 ## Alternatives
 
@@ -316,10 +421,11 @@ Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://gith
 
 See the [protobuf page](/programming/serialization-formats/protobuf/) for general information on protobuf.
 
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 {/* REFERENCES */}
-{/* ======================================================================== */}
+{/* ============================================================================================ */}
 
-[^bitproto-homepage]: bitproto. _Homepage_. Retrieved 2024-04-24, from https://bitproto.readthedocs.io/en/latest/.
-[^danielgtaylor-python-betterproto]: Daniel G. Taylor. _python-betterproto_ [repo]. Retrieved 2024-05-02, from https://github.com/danielgtaylor/python-betterproto.
+[^bitproto-homepage]: bitproto. _Homepage_ [documentation]. Retrieved 2024-04-24, from https://bitproto.readthedocs.io/en/latest/.
+[^danielgtaylor-python-betterproto]: Daniel G. Taylor. _danielgtaylor/python-betterproto_ [GitHub repository]. Retrieved 2024-05-02, from https://github.com/danielgtaylor/python-betterproto.
 [^nanopb-api-reference]: Petteri Aimonen. _Nanopb: API reference_ [documentation]. Retrieved 2024-10-10, from https://jpa.kapsi.fi/nanopb/docs/reference.html.
+[^pigweed-pw-rpc]: Pigweed. _pw_rpc_ [documentation]. Retrieved 2026-06-29, from https://pigweed.dev/pw_rpc/.

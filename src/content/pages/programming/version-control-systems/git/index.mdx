@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2014-02-08
 description: Git is a very popular version control system (VCS) used for software and firmware development.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-01-22
+lastUpdated: 2026-06-29
 tags: [programming, version control systems, VCS, git, amend, fixup, squash, history, commits, vim, merge-base, diff, bisect, cherry-pick, stat, ssh]
 title: Git
 type: page
@@ -65,19 +65,19 @@ When force pushing, make sure you are pushing to the right branch, as this comma
 
 The `--fixup` option to `git commit` allows you to add commits which can be automatically squashed into a commit of your choice when rebasing.
 
-The following command will add an staged changes to a special `fixup` commit.
+The following command will add the staged changes to a special `fixup` commit.
 
 ```sh
 $ git commit --fixup a4b5f
 ```
 
-When using `--fixup`, you do not specify a commit message. **The commit message is created for you**, and will start with `!fixup`, followed by a space and then the message of the commit the fixup points to.
+When using `--fixup`, you do not specify a commit message. **The commit message is created for you**, and will start with `fixup!`, followed by a space and then the message of the commit the fixup points to.
 
 <Aside type="caution">
-Just like `--amend`, `--fixup` will also **modifies the git history** (once you rebase). You should `fixup` commits on private (local) branches, and never on public branches. Fixing up commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
+Just like `--amend`, `--fixup` will also **modify the git history** (once you rebase). You should `fixup` commits on private (local) branches, and never on public branches. Fixing up commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
 </Aside>
 
-`--fixup` behaves slightly different to `--amend`, one of the main differences is that you can rewrite any commit in the current history, not just the last one as you can with `--amend`. `--fixup` is a great tool for keeping your git history clean when making small bug fixes and improvements to already committed features on a development branch. This is best shown with an example:
+`--fixup` behaves slightly differently to `--amend`, one of the main differences is that you can rewrite any commit in the current history, not just the last one as you can with `--amend`. `--fixup` is a great tool for keeping your git history clean when making small bug fixes and improvements to already committed features on a development branch. This is best shown with an example:
 
 ```sh
 $ git commit -m "My feature 1."
@@ -93,10 +93,10 @@ $ git commit --fixup af82c
 # Time to clean-up before submitting merge request. All commits
 # flagged as fixup will automatically be set to be squashed into
 # the feature commit you specified.
-$ git rebase -i --autosquash 8f82c^
+$ git rebase -i --autosquash af82c^
 ```
 
-In the `rebase` command above, `8f82c^` was used to say "I want to rebase off the commit BEFORE `8f82c`. Note all these hashes are shortened versions of the full hash, which will as long as there are no hash collisions (with 5 characters, it's unlikely there will be for a small number of commits).
+In the `rebase` command above, `af82c^` was used to say "I want to rebase off the commit BEFORE `af82c`. Note all these hashes are shortened versions of the full hash, which will work as long as there are no hash collisions (with 5 characters, it's unlikely there will be for a small number of commits).
 
 You can permanently change your `git` settings so that you don't have to add `--autosquash` every time you do a rebase:
 
@@ -112,10 +112,10 @@ The default log message size can be quite verbose. To condense each log message 
 $ git log --oneline -10
 ```
 
-To include information on what files where changed in each commit, add the `--stat` option:
+To include information on what files were changed in each commit, add the `--stat` option:
 
 ```sh
-git log --stat
+$ git log --stat
 ```
 
 ## git reflog
@@ -126,7 +126,7 @@ git log --stat
 Think of `git reflog` as the undo history of your repo.
 </Aside>
 
-The purpose of `git reflog` is to provide a fail-safe incase you do a `git` operation that would otherwise wipe your data. `git reflog` allows you to:
+The purpose of `git reflog` is to provide a fail-safe in case you do a `git` operation that would otherwise wipe your data. `git reflog` allows you to:
 
 - Recover from commits made on a detached `HEAD`
 - Fix a non-bare `push`
@@ -151,7 +151,7 @@ Run the following command to set `vim` as the default text editor for `git`:
 $ git config --global core.editor "vim"
 ```
 
-Now `vim` should load whenever git wants to present you with an editor, e.g. when calling  `git commit` without the `-m`.
+Now `vim` should load whenever git wants to present you with an editor, e.g. when calling `git commit` without the `-m`.
 
 ## git bisect
 
@@ -169,7 +169,7 @@ Where `BAD_COMMIT` is the hash of a commit which is known to be bad (fails the t
 
 `git bisect` can be completely automated by providing a command to `git bisect run`. 
 
-```
+```sh
 $ git bisect run <command>
 ```
 
@@ -199,9 +199,7 @@ $ git cherry-pick my-changes
 $ python test_program.py
 ```
 
-DO NOT leave the repo status in a state other than what git bisect had configured it in.
-
-Bisecting, a merge base must be tested.
+If you do apply custom changes like this, make sure your script resets the repo back to the exact state `git bisect` had configured before it returns &mdash; do not leave the repo in any other state, or the bisection results will be unreliable.
 
 To give you an indication on the number of commits involved in the bisection, you can manually print out a tidy list of all the commits between `A` and `B` with:
 
@@ -211,7 +209,7 @@ $ git log --oneline SHA_A ^SHA_B
 
 ## Force With Lease
 
-"Force pushing" with git is common when you are working on a branch and using `git commit --amend` and `git rebase` to keep your commit history clean and rebase of master. However, `git push -f` can have disastrous consequences if someone else has pushed changes to the branch that you don't have in your local copy.
+"Force pushing" with git is common when you are working on a branch and using `git commit --amend` and `git rebase` to keep your commit history clean and rebase off master. However, `git push -f` can have disastrous consequences if someone else has pushed changes to the branch that you don't have in your local copy.
 
 To mitigate this, you can use the `--force-with-lease` option:
 
@@ -237,10 +235,10 @@ Once you have worked on your branch for a while, you may find that you want to g
 $ git diff my-branch master
 ```
 
-The problem with the above command is that if other changes have made their way onto `master` since you branched of it, these will also be displayed in the diff along with the changes you have made on your branch. What you really want to do is display the diff between the `HEAD` of your branch and `master` at the point you branch of it. This is called the `merge-base`. You can find the `merge-base` commit hash with:
+The problem with the above command is that if other changes have made their way onto `master` since you branched off it, these will also be displayed in the diff along with the changes you have made on your branch. What you really want to do is display the diff between the `HEAD` of your branch and `master` at the point you branched off it. This is called the `merge-base`. You can find the `merge-base` commit hash with:
 
 ```bash
-$ git merge-base master
+$ git merge-base master my-branch
 ```
 
 However, git has special syntax which allows you to perform a comparison with the `merge-base` in a much simpler way using the triple dot `...`:
@@ -269,9 +267,9 @@ This can be an issue if you use `ssh` for authentication. One way around this is
 
 ```bash
 # For GitHub
-git config url.git@github.com/.insteadOf https://github.com/
+git config url."git@github.com:".insteadOf https://github.com/
 # For GitLab
-git config url.git@gitlab.com/.insteadOf https://gitlab.com/
+git config url."git@gitlab.com:".insteadOf https://gitlab.com/
 ```
 
 This only applies the changes locally, i.e. none of this info saved with the repo.

@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-07-01
+lastUpdated: 2026-06-29
 tags: [programming, operating systems, OSes, RTOS, Zephyr, Zephyr SDK, west, Python, CMake, HAL, bit field, reset reason, shell, module, workqueues, threads, non-volatile storage, NVS, install, toolchain, ARM, Linux, workspace, west, application, polling API, logging, C, device tree, DTS, Bluetooth, I2S, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation, stack canaries]
 title: Zephyr
 type: page
@@ -11,11 +11,11 @@ type: page
 
 ## Overview
 
-_Zephyr_ is the combination of a **real-time operating system, peripheral/system API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
+_Zephyr_ is the combination of a **real-time operating system, peripheral/system API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. It is part of the Linux Foundation.
 
 <Image src={import('./_assets/zephyr-project-logo.webp')} width="500px">The Zephyr Project logo.</Image>
 
-Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`.
+Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a [STM32](/programming/microcontrollers/stm32/) and nRF53 MCU). It also features an integrated build system called `west`.
 
 Some criticism arises from Zephyr's complexity. Once such example is that Zephyr adds layers of additional configurability with the use of Kconfig (a configuration language that was originally designed to configure the Linux kernel[^kernel-org-kconfig-language]) and the device tree. Firmware behaviour can now be controlled via a combination of Kconfig settings, device tree settings, preprocessor macros and API calls at runtime. The Kconfig is layered in a hierarchical manner and dependencies and overrides can make it difficult to determine how your MCU is being configured.
 
@@ -39,11 +39,11 @@ Zephyr is also a platform supported by the [PlatformIO](/programming/integrated-
 
 Examples of some of the HALs (which are installed under `<project root dir>/modules/hal/`) supported by Zephyr:
 
-* ST
-* STM32
-* NXP
-* Atmel
-* Microchip
+- ST
+- STM32
+- NXP
+- Atmel
+- Microchip
 
 ## Supported Boards
 
@@ -100,9 +100,9 @@ void nsi_exit(int status);
 
 The `native_sim` board supports the following APIs (among others):
 
-* GPIO (mocked)
-* Watchdog
-* Timers
+- GPIO (mocked)
+- Watchdog
+- Timers
 
 ## Programming
 
@@ -118,9 +118,9 @@ I got the following error when the target board was not powered up (when program
 FATAL ERROR: command exited with status 1: /opt/SEGGER/JLink_V794i/JLinkExe -nogui 1 -if swd -speed 4000 -device nrf52840_xxaa -CommanderScript /tmp/tmp48nqgzxijlink/runner.jlink -nogui 1
 ```
 
-Sometimes the MCU you are programming may not be recognized by JLink (if using the `--runner jlink` option). You may get the pop-up shown in <IRef iref="fig-j-link-unknown-device-nrf9151-pop-up" />. This happened to me when I was programming the newish [nRF9151 SoCs](/programming/microcontrollers/nordic/nrf91/) from a nRF9161 DK using JLink v7.94i (presumably JLink v7.94i was not new enough to support the nRF9151).
+Sometimes the MCU you are programming may not be recognized by JLink (if using the `--runner jlink` option). You may get the pop-up shown below. This happened to me when I was programming the newish [nRF9151 SoCs](/programming/microcontrollers/nordic/nrf91/) from a nRF9161 DK using JLink v7.94i (presumably JLink v7.94i was not new enough to support the nRF9151).
 
-<Image iref="fig-j-link-unknown-device-nrf9151-pop-up" src={import('./_assets/j-link-unknown-device-nrf9151-pop-up.webp')} width="700px" />
+<Image src={import('./_assets/j-link-unknown-device-nrf9151-pop-up.webp')} width="700px">The JLink "Unknown device" pop-up shown when programming a nRF9151 with a JLink version that does not yet recognize it.</Image>
 
 If this happens, and you know that there is a recognized device which will work, you can click OK and a modal will show in which you can select the device. This gets old fast though when programming the SoC during development. Instead, you can specify the SoC with the `--device` option. In the above example, I knew pretending to be the `nRF9160` worked ok, so I could use:
 
@@ -168,7 +168,7 @@ In C, to grab a node from the device tree you can use:
 
 **By path**
 
-Use `DT_PATH()` to get the node from a fully quality path from the root node. e.g `DT_PATH(soc, serial_12340000)`. Note that non alphanumeric characters in the devicetree are converted to `_`, including hyphens and at symbols.
+Use `DT_PATH()` to get the node from a fully qualified path from the root node. e.g `DT_PATH(soc, serial_12340000)`. Note that non alphanumeric characters in the devicetree are converted to `_`, including hyphens and at symbols.
 
 Do not use camel case when naming nodes, as `DT_PATH()` cannot work with these.
 
@@ -198,7 +198,7 @@ When you perform a build, a final, merged device tree gets generated at `build/z
 
 ### Silencing Spurious Duplicate Unit Address Warnings
 
-Sometimes when building Zephyr projects you can get "duplicate unit-address" warnings which are false positives. These are emitted by the `dtc` (devicetree compiler). This happens for example with the nRF52 SoC, where different Zephyr "peripherals" do share the same memory address.
+Sometimes when building Zephyr projects you can get "duplicate unit-address" warnings which are false positives. These are emitted by the `dtc` (devicetree compiler). This happens for example with the [nRF52](/programming/microcontrollers/nordic/nrf52/) SoC, where different Zephyr "peripherals" do share the same memory address.
 
 For example, when building for a custom board that uses the nRF52 SoC, I got the following warning:
 
@@ -363,7 +363,7 @@ void MyHandlerFn(struct k_timer * timer)
 }
 
 // Initialize it with an expiry function, but no stop function
-void k_timer_init(&myTimer, &MyHandlerFn, NULL);
+k_timer_init(&myTimer, &MyHandlerFn, NULL);
 ```
 
 `expiryFn` and `stopFn` are both optional and can be `NULL` if you don't want anything to be called when the timer expires or stops.
@@ -378,7 +378,7 @@ You can then start a timer with `void k_timer_start(struct k_timer * timer, k_ti
 
 ```c
 // Start the timer 
-k_timer_start(struct k_timer * myTimer, K_MSEC(1000), K_NO_WAIT);
+k_timer_start(&myTimer, K_MSEC(1000), K_NO_WAIT);
 ```
 
 
@@ -493,10 +493,10 @@ int main() {
 }
 ```
 
-`k_thread_stack_alloc()` depends on a number of configuration options being set in `prf.conf`. You will likely need:
+`k_thread_stack_alloc()` depends on a number of configuration options being set in `prj.conf`. You will likely need:
 
-* `CONFIG_DYNAMIC_THREAD=y`
-* `CONFIG_DYNAMIC_THREAD_PREFER_ALLOC=y` (if you want `k_thread_stack_alloc()` to use k_malloc()`)
+- `CONFIG_DYNAMIC_THREAD=y`
+- `CONFIG_DYNAMIC_THREAD_PREFER_ALLOC=y` (if you want `k_thread_stack_alloc()` to use `k_malloc()`)
 
 Remember to free the stack when you are done with it using `k_thread_stack_free()`.
 
@@ -557,7 +557,7 @@ k_work_queue_start(&myWorkQueue,
 
 ### Mutexes
 
-A Zephyr mutex is a kernel primitive that **allows multiple threads to safely access a shared resource by ensuring mutually exclusive access**. It is provides the same functionality as mutexes in most other operating systems.
+A Zephyr mutex is a kernel primitive that **allows multiple threads to safely access a shared resource by ensuring mutually exclusive access**. It provides the same functionality as mutexes in most other operating systems.
 
 First you need to define and initialize the mutex:
 
@@ -602,7 +602,7 @@ k_mutex_unlock(&myMutex);
 You must not unlock a mutex that has not been locked, and you must remember to unlock just as many times as you locked before any other thread can lock the mutex again. Be careful with unlocking in functions that have many exit points. A useful feature in [C++](/programming/languages/c-plus-plus/) (and many other languages) is the ability to turn a mutex into an object, and it's destructor is guaranteed to be called on function exit no matter how it exits (you don't need to unlock yourself!). Unfortunately C does not have this functionality.
 </Aside>
 
-Zephyr **mutexes support _reentrant locking_[^zephyr-docs-mutexes]**. This means that a thread is allowed to lock a mutex more than once. This is a useful feature that allows **a thread to lock the mutex more than once**. The same thread must unlock the mutex just as many times before it can be used by another thread. A common use of this pattern is if you have a shared resource that can be accessed via an API. You can lock the mutex inside the API functions themselves so that they are individually guaranteed to be exclusive, but also allow the caller access to the mutex so they can lock it if they want to chain together multiple API calls in one single "atomic" operation. 
+Zephyr **mutexes support _reentrant locking_[^zephyr-docs-mutexes]**. This means that a thread is allowed to lock a mutex more than once without deadlocking on itself. The same thread must unlock the mutex just as many times before it can be used by another thread. A common use of this pattern is if you have a shared resource that can be accessed via an API. You can lock the mutex inside the API functions themselves so that they are individually guaranteed to be exclusive, but also allow the caller access to the mutex so they can lock it if they want to chain together multiple API calls in one single "atomic" operation. 
 
 <Aside type="caution">
 Mutex objects should not be used from within ISRs[^zephyr-docs-mutexes]. Neither locking or unlocking from ISRs is supported. If you want to perform cross-thread communication from an ISR, use a semaphore instead.
@@ -620,15 +620,15 @@ Zephyr provides support for standard C library `assert()` function as well as pr
 
 This will help during debugging. Was `x` just one more than 3 (i.e. `4`), or was it something crazy like 1000? This can tell you about the reason for the failure.
 
-`ASSERT_NO_MSG()` can be used if you don't want to have to provide a message. This is useful when the condition by itself is enough to provide a helpful debug message. This is normally the case when checking booleans, or for non-null pointers. For example:
+`__ASSERT_NO_MSG()` can be used if you don't want to have to provide a message. This is useful when the condition by itself is enough to provide a helpful debug message. This is normally the case when checking booleans, or for non-null pointers. For example:
 
 ```c
-ASSERT_NO_MSG(heaterIsOn);
-ASSERT_NO_MSG(thePointerYouPassedIn);
+__ASSERT_NO_MSG(heaterIsOn);
+__ASSERT_NO_MSG(thePointerYouPassedIn);
 ```
 
 <Aside type="note">
-You don't have to write `ASSERT_NO_MSG(thePointerYouPassedIn != NULL)` since C/C++ guarantees that checking the "truthiness" of a pointer will return `true` only if the pointer is not `NULL`.
+You don't have to write `__ASSERT_NO_MSG(thePointerYouPassedIn != NULL)` since C/C++ guarantees that checking the "truthiness" of a pointer will return `true` only if the pointer is not `NULL`.
 </Aside>
 
 ### Semaphores
@@ -651,7 +651,7 @@ Semaphores can be used with the Polling API to wait to multiple conditions simul
 
 Zephyr's _Polling API_ lets you wait (block) on multiple events at the same time, e.g. block waiting one of two or more semaphore to become available, or until either a semaphore is available or FIFO has data in it.
 
-You first have to enable the polling API by adding the following into your `prf.conf`:
+You first have to enable the polling API by adding the following into your `prj.conf`:
 
 ```text
 CONFIG_POLL=y
@@ -770,9 +770,9 @@ and the output is:
 
 ### Memory Allocation
 
-Zephyr provides `k_malloc()` and `k_free()` for dynamic memory allocation of a shared block of heap memory. To use these (and have them defined) you need to add the following to your `prf.conf`:
+Zephyr provides `k_malloc()` and `k_free()` for dynamic memory allocation of a shared block of heap memory. To use these (and have them defined) you need to add the following to your `prj.conf`:
 
-```python title="prf.conf"
+```python title="prj.conf"
 # Required for k_malloc()
 CONFIG_HEAP_MEM_POOL_SIZE=1024
 ```
@@ -874,9 +874,9 @@ Zephyr has pretty good support for [C++](/programming/languages/c-plus-plus/). A
 
 Zephyr does not support the following C++ features:
 
-* **No dynamic memory allocation support via `new` or `delete`.** Dynamic memory allocation in the embedded land is a contentious subject, but it's nice to have, especially if you just allow dynamic allocation at initialization time.
-* **No RTTI (run-time type information).** This is not really an issue for embedded development as it's commonly disabled anyway.
-* **No support for exceptions**. This is not really an issue for embedded development as it's commonly disabled anyway.
+- **No dynamic memory allocation support via `new` or `delete`.** Dynamic memory allocation in the embedded land is a contentious subject, but it's nice to have, especially if you just allow dynamic allocation at initialization time.
+- **No RTTI (run-time type information).** This is not really an issue for embedded development as it's commonly disabled anyway.
+- **No support for exceptions**. This is not really an issue for embedded development as it's commonly disabled anyway.
 
 You can enable support for compiling C++ by adding the following into `prj.conf`:
 
@@ -912,17 +912,17 @@ C:/my-project/zephyr/subsys/debug/thread_analyzer.c:75
 
 ## Reducing Flash and RAM Usage in Zephyr
 
-Zephyr-based applications can get large, in part due to the powerful features it provides out-of-the-box. Just things like using logging throughout your code can increase flash usage significantly, due to every call saving the log message (before substitution takes place at runtime) as a string literal in ROM. This can easily use up many "kB" of space. If you weren't using float printing before hand, this call also bring in float formatting functionality. Similarly, all `ASSERT()` style macros save the file name and line number of the assert as a string literal in ROM. However these are quite useful, even in production, so think carefully before disabling them.
+Zephyr-based applications can get large, in part due to the powerful features it provides out-of-the-box. Just things like using logging throughout your code can increase flash usage significantly, due to every call saving the log message (before substitution takes place at runtime) as a string literal in ROM. This can easily use up many "kB" of space. If you weren't using float printing beforehand, this call also brings in float formatting functionality. Similarly, all `ASSERT()` style macros save the file name and line number of the assert as a string literal in ROM. However these are quite useful, even in production, so think carefully before disabling them.
 
 `CONFIG_SIZE_OPTIMIZATIONS=y` can be set in `prj.conf` to reduce the flash size. One thing this does is set the compiler flag `-Os` which tells the compiler to optimize for size, not speed or debug ability.
 
-On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prf.conf` resulted in a flash size reduction from 421kB to 330kB!
+On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `prj.conf` resulted in a flash size reduction from 421kB to 330kB!
 
 You can execute the `west` command with `-t ram_report` to make Zephyr generate and print a table of RAM usage to the terminal.
 
 <Image src={import('./_assets/zephyr-ram-report-output-screenshot.png')} width="500px">A screenshot of the output produce by the `west build -t ram_report` command.</Image>
 
-puncover can be used to visualize the memory usage via a web GUI. Install puncover in the projects Python virtual environment:
+puncover can be used to visualize the memory usage via a web GUI. Install puncover in the projects [Python](/programming/languages/python/) virtual environment:
 
 ```shell
 # Activate python environment if needed, then
@@ -973,7 +973,7 @@ Twister dumps it's build output into a directory called `twister-out`. If `twist
 
 ### Adding Native Unit Tests To Your Application
 
-Let's assume you have a workspace application at `~/zephyr-project/app/` and want to add unit tests to it using Zephyr and ztest. We'll run the tests on the `native_sim` board so that we can
+Let's assume you have a workspace application at `~/zephyr-project/app/` and want to add unit tests to it using Zephyr and ztest. We'll run the tests on the `native_sim` board so that we can run them directly on the host machine without needing real hardware.
 
 Let's create a directory called `tests` under `app`, and then copy all of the files from `~/zephyr-project/zephyr/samples/subsys/testsuite/integration` into this new `tests` directory.
 
@@ -1162,17 +1162,17 @@ ZTEST_F(my_suite, test_example)
 
 ## Setting Up CI for Zephyr Projects
 
-The Zephyr Project provides a Docker container that is suitable for CI pipelines. The images can be found on Docker Hub [here](https://hub.docker.com/r/zephyrprojectrtos/ci) (they are also on GitHub's container registry). <IRef iref="fig-zephyr-docker-images-on-docker-hub" /> shows a screenshot of some of the available images as of November 2024. Note the images are quite large, with some of them being around 4GB in size!
+The Zephyr Project provides a [Docker](/programming/virtual-machines-and-containers/docker/) container that is suitable for CI pipelines. The images can be found on Docker Hub [here](https://hub.docker.com/r/zephyrprojectrtos/ci) (they are also on GitHub's container registry). The screenshot below shows some of the available images as of November 2024. Note the images are quite large, with some of them being around 4GB in size!
 
-<Image id="fig-zephyr-docker-images-on-docker-hub" src={import('./_assets/zephyr-docker-images-on-docker-hub.webp')} width="1000px">The Zephyr Docker images on Docker Hub.[^dockerhub-zephyr-project-rtos]</Image>
+<Image src={import('./_assets/zephyr-docker-images-on-docker-hub.webp')} width="1000px">The Zephyr Docker images on Docker Hub.[^dockerhub-zephyr-project-rtos]</Image>
 
 Some of the images are:[^github-zephyrproject-rtos-docker-image]
 
-* **ci-base**: Minimal image with just the basic installed. No toolchains installed.
-* **ci**: Contains the Zephyr SDK, west and other things you would typically need to CI use.
-* **zephyr-build**: Like the `ci` image, but with additional developer tools installed.
+- **ci-base**: Minimal image with just the basic installed. No toolchains installed.
+- **ci**: Contains the Zephyr SDK, west and other things you would typically need to CI use.
+- **zephyr-build**: Like the `ci` image, but with additional developer tools installed.
 
-If you need to customize the container further, you can extend the image by making your own Dockerfile. Use `FROM zephyrprojectrtos/ci:v0.27.4` and then you own additional `RUN` commands. For example:
+If you need to customize the container further, you can extend the image by making your own Dockerfile. Use `FROM zephyrprojectrtos/ci:v0.27.4` and then your own additional `RUN` commands. For example:
 
 ```text
 FROM zephyrprojectrtos/ci:v0.27.4
@@ -1205,9 +1205,9 @@ my_job:
         junit: $CI_PROJECT_DIR/twister-out/twister_report.xml
 ```
 
-GitLab will display the test results in a merge request, as shown in <IRef iref="fig-gitlab-test-summary-in-merge-request" />.
+GitLab will display the test results in a merge request, as shown below.
 
-<Image iref="fig-gitlab-test-summary-in-merge-request" src={import('./_assets/gitlab-test-summary-in-merge-request.webp')} width="600px">The Zephyr twister test results displayed in a GitLab merge request.</Image>
+<Image src={import('./_assets/gitlab-test-summary-in-merge-request.webp')} width="600px">The Zephyr twister test results displayed in a GitLab merge request.</Image>
 
 ## Distributing Zephyr Libraries
 
@@ -1333,9 +1333,9 @@ UPDATE: The `west` command (as of `v4.1.0`) can now install the additional Zephy
 west packages pip --install
 ```
 
-### Printing Floats Results in *float*
+### Printing Floats Results in `*float*`
 
-If tring to print a float using `%f` in any printf style functions (or log macros) results in the output `*float*`, it's likely you need to enable floating-point print support with `CONFIG_FPU=y` in `prj.conf`:
+If trying to print a float using `%f` in any printf style functions (or log macros) results in the output `*float*`, it's likely you need to enable floating-point print support with `CONFIG_FPU=y` in `prj.conf`:
 
 ```python
 CONFIG_FPU=y # Required for printing floating point numbers
@@ -1365,7 +1365,7 @@ Setting `CONFIG_STACK_CANARIES` to `y` will make the compiler add a randomly gen
 
 `CONFIG_ENTROPY_GENERATOR` and `CONFIG_TEST_RANDOM_GENERATOR` are required dependencies for `CONFIG_STACK_CANARIES`. There is a slight performance penalty for using stack canaries, but I'd recommend enabling them unless you have specific performance reasons not to.
 
-<IRef iref="fig-zephyr-stack-canaries-demo-showing-error-in-terminal" /> shows a screenshot of the Zephyr stack canaries in action. I made a test where I decided to blow up the stack by allocating a large array:
+The screenshot below shows the Zephyr stack canaries in action. I made a test where I decided to blow up the stack by allocating a large array:
 
 ```c
 // Try and blow up the stack
@@ -1378,7 +1378,7 @@ for (size_t i = 0; i < 2000; i++)
 LOG_INF("myArray[1000] = %d", myArray[1000]);
 ```
 
-<Image iref="fig-zephyr-stack-canaries-demo-showing-error-in-terminal" src={import('./_assets/zephyr-stack-canaries-demo-showing-error-in-terminal.webp')} width="700px">A screenshot of the Zephyr stack canaries in action, showing the canaries detecting a stack overflow in my main thread (printed from the shell/terminal).</Image>
+<Image src={import('./_assets/zephyr-stack-canaries-demo-showing-error-in-terminal.webp')} width="700px">A screenshot of the Zephyr stack canaries in action, showing the canaries detecting a stack overflow in my main thread (printed from the shell/terminal).</Image>
 
 ## Contributing to Zephyr
 
@@ -1386,7 +1386,7 @@ As an open-source project, Zephyr welcomes contributions from the community. Zep
 
 The recommended way to begin to make changes is by first forking the [Zephyr repository on GitHub](https://github.com/zephyrproject-rtos/zephyr) to your own GitHub account. Then clone the forked repository to your local machine and create a new branch for your changes. Once you have made changes, commit these and push them to your forked repository. Then create a pull request in your forked repository (when you click "New pull request" in your forked repo, it will automatically set the base to the `main` branch of the Zephyr repository).
 
-One requirement is that a "Signed-off-by" line is added to each commit message. This is so that the Developer Certificate of Origin (DCO) process is followed. This can be done by adding the `-s` option to your `git commit` command, e.g.:[^zephyr-docs-contribution-guidelines]
+One requirement is that a "Signed-off-by" line is added to each commit message. This is so that the Developer Certificate of Origin (DCO) process is followed. This can be done by adding the `-s` option to your [`git`](/programming/version-control-systems/git/) `commit` command, e.g.:[^zephyr-docs-contribution-guidelines]
 
 ```shell
 git commit -s
@@ -1402,15 +1402,15 @@ Commit message description.
 Signed-off-by: Foo Bar <foo.bar@example.com>
 ```
 
-The Zephyr repo on GitHub has extensive CI workflows that run before a PR is allowed to be merged into the `main` branch. <IRef iref="zephyr-pr-github-ci-workflows-screenshot" /> shows a screenshot of the CI workflows.
+The Zephyr repo on GitHub has extensive CI workflows that run before a PR is allowed to be merged into the `main` branch. The screenshot below shows the CI workflows.
 
-<Image iref="zephyr-pr-github-ci-workflows-screenshot" src={import('./_assets/zephyr-pr-github-ci-workflows-screenshot.webp')} width="600px">Screenshot of the Zephyr PR GitHub CI workflows.</Image>
+<Image src={import('./_assets/zephyr-pr-github-ci-workflows-screenshot.webp')} width="600px">Screenshot of the Zephyr PR GitHub CI workflows.</Image>
 
 ## History
 
 In February 2016, Wind River (the same company the makes VxWorks, one of the leading commercial RTOSes for safety critical systems) donated the Rocket OS kernel to the Linux Foundation and Zephyr was born.[^wikipedia-zephyr-operating-system] [^scalar-zephyr-operating-system] Rocket still existed in parallel as a commercial version of Zephyr.
 
-[Nordic](/programming/microcontrollers/nordic/) chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, [nRF53](/programming/microcontrollers/nordic/nrf53/) and nRF92 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020.[^nordic-semi-nrf52-zephyr-support-added]
+[Nordic](/programming/microcontrollers/nordic/) chose to move from their nRF5 platform to Zephyr as the officially supported development environment for their nRF52, [nRF53](/programming/microcontrollers/nordic/nrf53/) and nRF91 MCU/SoC families. Zephyr support for the nRF52 family was added around April 2020.[^nordic-semi-nrf52-zephyr-support-added]
 
 ## Other Resources
 
@@ -1420,26 +1420,18 @@ Check out the [Zephyr Discord channel](https://discord.com/channels/720317445772
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
 [^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
 [^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
-[^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
 [^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.
-[^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.
-[^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-1, from https://www.scaler.com/topics/zephyr-operating-system/.
+[^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-01, from https://www.scaler.com/topics/zephyr-operating-system/.
 [^wikipedia-zephyr-operating-system]: Wikipedia (2023, Oct 20). _Zephyr (operating system)_. Retrieved 2024-02-21, from https://en.wikipedia.org/wiki/Zephyr_(operating_system).
 [^nordic-semi-nrf52-zephyr-support-added]: Nordic Semiconductor (2020, Apr 2). _Nordic Semiconductor now offering broad product line support for its short-range and cellular IoT devices on nRF Connect platform including a suite of development tools and open source nRF Connect SDK_ [blog post]. Retrieved 2024-02-21, from https://www.nordicsemi.com/Nordic-news/2020/04/nordic-now-offering-support-for-its-shortrange-and-cellular-iot-devices-on-nrf-connect-platform.
 [^mind-using-emulators-and-fake-devices-in-zephyr]: Javad Rahamipetroudi (2024, May 22). _Using emulators and fake devices in Zephyr_. Retrieved 2024-10-24, from https://mind.be/using-emulators-and-fake-devices-in-zephyr/.
-[^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
-[^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.
-[^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
 [^dockerhub-zephyr-project-rtos]: Docker Hub. _zephyrprojectrtos_ [user page]. Retrieved 2024-11-26, from https://hub.docker.com/u/zephyrprojectrtos.
 [^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
-[^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
-[^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
 [^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
 [^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
-[^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
+[^zephyr-docs-thread-stack-apis]: Zephyr (2025, Feb 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
 [^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
 [^zephyr-docs-atomic-services]: Zephyr (2024, Jan 8). _Docs / Latest » Kernel » Kernel Services » Atomic Services_ [documentation]. Retrieved 2025-07-01, from https://docs.zephyrproject.org/latest/kernel/services/other/atomic.html.
 [^github-zephyr-too-few-arguments-in-invocation-of-macro]: GitHub. _zephyrproject-rtos/zephyr: too few arguments in invocation of macro "Z_FOR_LOOP_1" #62460_ [issue]. Retrieved 2026-02-18, from https://github.com/zephyrproject-rtos/zephyr/issues/62460.

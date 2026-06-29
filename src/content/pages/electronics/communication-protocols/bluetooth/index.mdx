@@ -513,13 +513,21 @@ Bluetooth 5.1 advanced the periodic advertising of 5.0 with the addition of peri
 
 ### LE Audio / Auracast Broadcast Audio
 
-Bluetooth 5.2 added LE audio / Auracast Broadcast Audio with Broadcast Isochronous Streams so that many receivers can sync to the same audio broadcast.
+Bluetooth 5.2 added LE audio / Auracast Broadcast Audio with Broadcast Isochronous Streams so that many receivers can sync to the same audio broadcast. This allows applications such as sharing TV audio with friends/family and tuning into specific broadcasts in public spaces.[^bluetooth-sig-consumer-audio-auracast]
+
+Android 16 added Auracast support to the OS.[^bluetooth-sig-consumer-audio-auracast] Android TV 14 added support so that TVs can broadcast audio to multiple receivers.
 
 ### Periodic Advertising with Responses
 
 Periodic Advertising with Responses (PAwR) was added in Bluetooth 5.4. This is where response slots where added to periodic advertising, making them bi-directional.
 
 This mode is designed to support hundreds to thousands of energy-constrained devices simultaneously. One popular use case is Electronic Shelf Labels (ESL).
+
+### Shorter Connection Intervals (SCI)
+
+Bluetooth Core 6.2 added Shorter Connection Intervals (SCI) to BLE. Standard BLE allows for a minimum connection interval of 7.5 ms ($\approx 133\unit{Hz}$). SCI allows for a much smaller minimum connection interval of 375 us ($\approx 2667\unit{Hz}$). One of the core motivations for this is to support high-speed, low-latency applications such as gaming controllers which are normally expected to run at 1000 Hz or faster. This will hopefully reduce the need for proprietary RF protocols and their custom dongles for gaming peripherals.[^bluetooth-sig-shorter-connection-intervals] Other applications might include VR/AR headsets and real-time industrial sensing.
+
+Nordic Semiconductor was a core contributor to the SCI feature.[^bluetooth-sig-shorter-connection-intervals] Connection Subrating is a mandatory requirement for SCI.
 
 ## Bluetooth Smart Mesh Working Group
 
@@ -807,7 +815,7 @@ For example, to test Coded S8 PHY run `config phy coded_s8`.
 
 ## Regulations
 
-The most crucial regulation that most engineers will find themselves concerned with is the transmit power of the Bluetooth signal. The transmit power is usually adjustable in firmware -- not only to meet local regulations but also to optimize power and limit range on purpose (sometimes limiting range on purpose is useful -- imagine if your credit card tap-to-pay worked from a kilometer away!).
+The most crucial regulation that most engineers will find themselves concerned with is the transmit power of the Bluetooth signal. The transmit power is usually adjustable in firmware -- not only to meet local regulations but also to optimize power and limit range on purpose (sometimes limiting range on purpose is useful -- imagine if your credit card tap-to-pay worked from a kilometre away!).
 
 In the EU, ETSI EN 300 328 limits Bluetooth transmission power to:[^dewine-labs-bluetooth-tx-power-regulations]
 
@@ -889,3 +897,5 @@ See the [RF Spectrum Regulations page](/electronics/compliance/rf-spectrum-regul
 [^bluetooth-sig-pairing-feature-exchange]: Kai Ren (2016, Mar 29). _Bluetooth Pairing Feature Exchange_ [blog]. Bluetooth SIG. Retrieved 2026-06-25, from https://www.bluetooth.com/blog/bluetooth-pairing-part-1-pairing-feature-exchange/.
 [^bluetooth-sig-le-secure-connections-numeric-comparison]: Kai Ren (2017, Jan 19). _Bluetooth LE Secure Connections – Numeric Comparison_ [blog]. Bluetooth SIG. Retrieved 2026-06-25, from https://www.bluetooth.com/blog/bluetooth-pairing-part-4/.
 [^github-mikeryan-crackle]: Mike Ryan. _mikeryan/crackle_ [GitHub repository]. GitHub. Retrieved 2026-06-25, from https://github.com/mikeryan/crackle.
+[^bluetooth-sig-shorter-connection-intervals]: Avi Negrin (2026, May 1). _How Bluetooth Shorter Connection Intervals will impact the next generation of wireless innovations_. Bluetooth SIG. Retrieved 2026-06-29, from https://www.bluetooth.com/blog/how-bluetooth-shorter-connection-intervals-will-impact-the-next-generation-of-wireless-innovations/.
+[^bluetooth-sig-consumer-audio-auracast]: Henry Wong (2026, Jun 12). _Consumer audio is going all in on Auracast broadcast audio: Are you keeping up?_. Bluetooth SIG. Retrieved 2026-06-29, from https://www.bluetooth.com/blog/consumer-audio-is-going-all-in-on-auracast-broadcast-audio-are-you-keeping-up/.
