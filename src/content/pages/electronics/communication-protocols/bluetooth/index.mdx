@@ -70,6 +70,20 @@ Every BLE packet, whether it carries an advertisement or connection data, uses t
 - **PDU (Protocol Data Unit, 2–257 bytes):** The payload &mdash; a 2-byte header plus 0–255 bytes of data. The header's _PDU Type_ field is what makes a packet an `ADV_IND`, `SCAN_REQ`, etc. (see the [Advertising](#advertising) section for the common PDU types). Legacy advertising payloads are at most 37 bytes; the LE Data Length Extension allows larger PDUs on a connection.
 - **CRC (3 bytes):** A 24-bit cyclic redundancy check computed over the PDU, for error detection. The generator polynomial is $x^{24} + x^{10} + x^9 + x^6 + x^4 + x^3 + x + 1$ (`0x65B`).[^bluetooth-sig-link-layer-specification] It is seeded with a fixed `0x555555` for advertising packets, and with a random per-connection value (sent in the `CONNECT_IND`) for data packets. See the [CRCs (cyclic redundancy checks)](/programming/checksums/crcs-cyclic-redundancy-checks/) page for more on how CRCs work.
 
+Before a packet is transmitted, its **PDU and CRC are whitened** (also called data randomisation or scrambling). The combined PDU + CRC bitstream is XORed with the output of a 7-bit linear-feedback shift register using the polynomial $x^7 + x^4 + 1$, seeded from the channel index the packet is sent on. This breaks up long runs of identical bits, which would otherwise create a DC bias and make the receiver's clock recovery and automatic gain control harder. The preamble and access address are deliberately left un-whitened so they stay recognisable for synchronisation. The receiver applies the identical LFSR to recover the original data. Note that whitening is purely for signal integrity &mdash; it is not encryption and provides no security.[^bluetooth-sig-link-layer-specification]
+
+<Aside type="note">
+You might wonder: Why whiten, compared to bit-stuffing?
+
+Other protocols such as CAN and USB use _bit-stuffing_ to break up long runs of identical bits (e.g. USB inserts a 0 after 6 consecutive 1s). However, this has several disadvantages for BLE:
+
+- Bit stuffing changes the length of the data, which wreaks havoc on Bluetooth's precise timing/scheduling requirements.
+- Bit stuffing doesn't remove the DC bias, while whitening converts the input data into a pseudorandom stream with a roughly 50/50 distribution of 0s and 1s.
+- Because the LFSR is seeded with the channel index, the whitening pattern is different on each channel. This means that if whitening on one channel just happened to perform poorly, it would work better when the controller hops to the next channel. Bit-stuffing would re-produce the same pattern on every channel.
+
+One downside to whitening is that it can't guarantee bounded run lengths of 1's or 0's. It becomes very unlikely, but runs of all 1's and all 0's are still possible with pathological inputs. Bit-stuffing gives hard guarantees.
+</Aside>
+
 On the [LE Coded PHY](#le-coded-phy) the packet additionally carries coding-indicator and terminator fields used by the forward error correction.
 
 ### UUIDs
@@ -523,11 +537,76 @@ Periodic Advertising with Responses (PAwR) was added in Bluetooth 5.4. This is w
 
 This mode is designed to support hundreds to thousands of energy-constrained devices simultaneously. One popular use case is Electronic Shelf Labels (ESL).
 
+### Connection Subrating
+
+_Connection subrating_ was added in Bluetooth 5.3 to allow the peripheral to listen on only a subset of connection events (a _subrate_ of the underlying connection interval).[^ti-bluetooth-core-5.3-updates] Connection subrating was introduced to solve the problem of latency when changing from slow to faster connection intervals. It takes at least six connection events (i.e. six connection intervals if slave latency = 0) to negotiate a new connection interval. If the connection interval was long (e.g. 1 second), and the peripheral wanted to update this to 10 ms, it would take at least 6 seconds to negotiate this change. This wait can be unacceptable in many applications. 
+
+Connection subrating works like this:
+
+1. You establish a connection for a short underlying connection interval (e.g. 10 ms).
+1. You agree to a subrate factor $N$. The peripheral is only required to listen on every $N$th connection event, called the **subrating anchor points**. Its wake-up interval becomes $N \cdot \text{connInterval}$, allowing it to sleep for longer and save power.
+1. The moment any side has data, the link can immediately start communicating at the fast connection interval and run at the fast rate. The connection events between the anchor points are called the **continuation events**.
+
+<Aside type="note">
+How does connection subrating differ from the pre-existing slave latency feature? Slave latency allows the peripheral to skip connection events, but the central still has to send a packet at every connection event. With connection subrating, the skipping agreement applies to both sides, so it saves power on the central also. Also, it gets around the six-connection-event negotiation delay that is present when changing connection intervals, so it allows for fast and energy efficient changes in communication rates as both ends see fit.
+
+The trade-off is that now peripheral-to-central transmissions have the same $N \cdot \text{connInterval}$ communication delay as central-to-peripheral (it's symmetrical). With slave latency, the peripheral could at any point decide it wants to send something and send it at the next connection event.
+</Aside>
+
 ### Shorter Connection Intervals (SCI)
 
-Bluetooth Core 6.2 added Shorter Connection Intervals (SCI) to BLE. Standard BLE allows for a minimum connection interval of 7.5 ms ($\approx 133\unit{Hz}$). SCI allows for a much smaller minimum connection interval of 375 us ($\approx 2667\unit{Hz}$). One of the core motivations for this is to support high-speed, low-latency applications such as gaming controllers which are normally expected to run at 1000 Hz or faster. This will hopefully reduce the need for proprietary RF protocols and their custom dongles for gaming peripherals.[^bluetooth-sig-shorter-connection-intervals] Other applications might include VR/AR headsets and real-time industrial sensing.
+Bluetooth Core 6.2 added Shorter Connection Intervals (SCI) to BLE. Standard BLE allows for a minimum connection interval of 7.5 ms ($\approx 133\unit{Hz}$).[^logitech-bluetooth-shorter-connection-intervals] SCI allows for a much smaller minimum connection interval of 375 µs ($\approx 2667\unit{Hz}$). One of the core motivations for this is to support high-speed, low-latency applications such as gaming controllers which are normally expected to run at 1000 Hz or faster. This will hopefully reduce the need for proprietary RF protocols and their custom dongles for gaming peripherals.[^bluetooth-sig-shorter-connection-intervals] Other applications might include VR/AR headsets and real-time industrial sensing.
 
-Nordic Semiconductor was a core contributor to the SCI feature.[^bluetooth-sig-shorter-connection-intervals] Connection Subrating is a mandatory requirement for SCI.
+Nordic Semiconductor (manufacturer of Bluetooth-capable MCUs) and Logitech (manufacturer of gaming peripherals) were both contributors to the SCI feature.[^bluetooth-sig-shorter-connection-intervals] [^logitech-bluetooth-shorter-connection-intervals]
+
+SCI names the range from 375 µs to 4.0 seconds (with a resolution of 125 µs) the _Extended ConnInterval Values_ (ECV). Two subset ranges are defined:[^nordic-whats-new-in-bluetooth-core-6-2]
+
+- **Rounded ConnInterval Values** (RCV): All values of the ECV (from 375 µs to 4.0 s) that are multiples of 1250 µs.
+- **Baseline ConnInterval Values** (BCV): All values of the RCV that are greater or equal to 7.5 ms (i.e. from 7.5 ms to 4.0 s with a resolution of 1250 µs).
+
+<Aside type="note">
+The RCV does not start at 375 µs and then increase in increments of 1250 µs. Instead, it is all values in the range of $[375\unit{\mu s}, 4.0\unit{s}]$ that are multiples of 1250 µs. This means the first few values in the range are 1.25 ms, 2.5 ms, 3.75 ms, and so on.
+</Aside>
+
+If a Bluetooth controller supports SCI, it must support all values from the RCV. Optionally, it can also support any other values from the ECV. If the controller DOES NOT support SCI, it only needs to support the values from the BCV.[^nordic-whats-new-in-bluetooth-core-6-2] When a connection is created, the connection interval must be in the BCV range. Once connected, the connection interval can be changed on either side with:
+
+- Peripheral: The peripheral uses a Connection Rate Request.
+- Central: Central uses a Connection Rate Indication.
+
+A controller that supports SCI must also support connection subrating (which was introduced in Bluetooth 5.3).[^nordic-whats-new-in-bluetooth-core-6-2] [^ti-bluetooth-core-5.3-updates] It should also support Frame Space Update (FSU) to optimise the time between adjacent transmissions.
+
+The existing `LL_CONNECTION_UPDATE_IND` PDU was not flexible enough for SCI, so Bluetooth Core 6.2 introduces two new link-layer PDUs for connection rate negotiation:[^novel-bits-shorter-connection-intervals-nrf54l15]
+
+- `LL_CONNECTION_RATE_REQ`: Sent by the Peripheral to request new timing parameters. This includes the acceptable interval range, subrate factors, slave latency, continuation number, timeout, preferred periodicity and up to four candidate anchor offsets.
+- `LL_CONNECTION_RATE_IND`: Sent by Central to confirm and apply the new timing parameters. This PDU contains the exact interval, window offset, and event count that the new parameters will take effect.
+
+**What is achievable in practice?**
+
+Although the spec. goes down to 375 µs connection intervals, in practice many devices cannot achieve this due to processing time, e.g. the time it takes to process the data in the Bluetooth stack. Nordic Semiconductor can achieve the following minimum connection intervals on its MCUs:[^novel-bits-shorter-connection-intervals-nrf54l15]
+
+Platform | Minimum Supported Connection Interval
+--- | ---
+nRF54L Series | 750 µs
+nRF52, 53, 54H Series | 875 µs
+
+### LE Flushable ACL Data
+
+With the advent of SCI, connection events (and data transfer) can happen at sub-millisecond intervals. Stale data can become a problem. Imagine a gaming mouse which is sending back position data, and some interference occurs which causes a few packets to back up in the "to send" queue. The oldest packets start to become irrelevant as new data is added to the queue. Bluetooth Core 6.2 adds a new feature called _LE Flushable ACL Data_ which allows the host to mark certain data as "flushable" and provide a flush timeout. This means that if the data's first transmission does not occur within the flush timeout, it can be dropped instead of being sent late.
+
+<Aside type="tip">
+An important point is the wording here: "first transmission does not occur within the flush timeout". Once a transmission starts, the data is no longer flushable. This means that if a packet is sent, but the ACK is lost and it has to be retransmitted, it will not be dropped even if the flush timeout has expired. The flush timeout only applies to data waiting in the queue behind the currently in-flight packet.
+</Aside>
+
+### Frame Space Update (FSU)
+
+Bluetooth Core 6.0 made the frame space time between adjacent transmissions configurable. Before this, the frame space (`T_IFS` or inter-frame space) was fixed at 150 µs. This is the time between the end of one packet and the start of the next packet. This was fine when the minimum connection interval was 7.5 ms, but with SCI and sub-millisecond connection intervals, this fixed frame space can become a significant overhead. Frame space update allows the frame space to be negotiated to intervals less or greater than 150 us. The range is from a microseconds all the way up to 10 ms.[^argenox-ble-advertising-primer]
+
+Two new link-layer PDUs were added to support this:[^argenox-ble-advertising-primer] [^bluetooth-sig-link-layer-specification-core-6-0]
+
+- `LL_FRAME_SPACE_REQ`: Sent by a Controller to request a new frame space interval. Controller sends a minimum and maximum frame space value in microseconds. There is also a `Spacing_Types` bit-field which sets what types this value should apply to. Op code `0x3B`.
+- `LL_FRAME_SPACE_RSP`: Sent by another Controller to confirm and apply the new frame space interval. Op code `0x3C`.
+
+Note that because the spec mentions Controller and not Central/Peripheral for the FSU, I can only assume that either role can request a frame space update, and the other role can accept or reject it.
 
 ## Bluetooth Smart Mesh Working Group
 
@@ -899,3 +978,9 @@ See the [RF Spectrum Regulations page](/electronics/compliance/rf-spectrum-regul
 [^github-mikeryan-crackle]: Mike Ryan. _mikeryan/crackle_ [GitHub repository]. GitHub. Retrieved 2026-06-25, from https://github.com/mikeryan/crackle.
 [^bluetooth-sig-shorter-connection-intervals]: Avi Negrin (2026, May 1). _How Bluetooth Shorter Connection Intervals will impact the next generation of wireless innovations_. Bluetooth SIG. Retrieved 2026-06-29, from https://www.bluetooth.com/blog/how-bluetooth-shorter-connection-intervals-will-impact-the-next-generation-of-wireless-innovations/.
 [^bluetooth-sig-consumer-audio-auracast]: Henry Wong (2026, Jun 12). _Consumer audio is going all in on Auracast broadcast audio: Are you keeping up?_. Bluetooth SIG. Retrieved 2026-06-29, from https://www.bluetooth.com/blog/consumer-audio-is-going-all-in-on-auracast-broadcast-audio-are-you-keeping-up/.
+[^logitech-bluetooth-shorter-connection-intervals]: Niclas Granqvist and Alfredo Perez (2026, Feb 10). _Bluetooth Shorter Connection Intervals: Paving the Way for Bluetooth Innovation_. Logitech. Retrieved 2026-06-30, from https://www.logitech.com/blog/2026/02/10/bluetooth-shorter-connection-intervals-paving-the-way-for-bluetooth-innovation/.
+[^nordic-whats-new-in-bluetooth-core-6-2]: Joel Kauppo (2025, Nov 5). _What's new in Bluetooth Core 6.2: An overview_. Nordic Semiconductor. Retrieved 2026-06-30, from https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/whats-new-in-bluetooth-core-6-2-an-overview.
+[^ti-bluetooth-core-5.3-updates]: Nathan Block. _The 3 Updates Application Developers Need to Know about Bluetooth Core Specification Version 5.3_. Texas Instruments. Retrieved 2026-06-30, from https://www.ti.com/document-viewer/lit/html/SSZT113.
+[^novel-bits-shorter-connection-intervals-nrf54l15]: Novel Bits (2025, Dec 16). _Bluetooth LE Shorter Connection Intervals: A Hands-On Guide with the nRF54L15_. Retrieved 2026-06-30, from https://novelbits.io/ble-shorter-connection-intervals-hands-on-nrf54l15/.
+[^argenox-bluetooth-6-0-adopted]: Argenox (2024, Sep 5). _Bluetooth 6.0 Adopted_. Retrieved 2026-06-30, from https://argenox.com/blog/bluetooth-6-0-adopted.
+[^bluetooth-sig-link-layer-specification-core-6-0]: Bluetooth SIG. _Part B. Link Layer Specification_ [specification]. Retrieved 2026-06-30, from https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/low-energy-controller/link-layer-specification.html.
