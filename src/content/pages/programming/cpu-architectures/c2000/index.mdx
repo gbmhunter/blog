@@ -7,42 +7,21 @@ title: C2000
 type: page
 ---
 
-<p>The C2000 is a processor architecture by Texas Instruments. It features in a range of TI microcontroller families
-  including the Piccolo and Delfino range.</p>
+The C2000 is a processor architecture by Texas Instruments. It features in a range of TI microcontroller families including the Piccolo and Delfino range.
 
-<h2>Specs</h2>
+## Specs
 
-<table>
-  <thead>
-    <tr>
-      <th>Specification</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Bus Size</td>
-      <td>32-bit</td>
-    </tr>
-    <tr>
-      <td>Floating Point Unit (FPU)</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>Frequency Range</td>
-      <td>40-300MHz</td>
-    </tr>
-    <tr>
-      <td>RAM</td>
-      <td>5-516kB</td>
-    </tr>
-  </tbody>
-</table>
+| Specification             | Value    |
+| ------------------------- | -------- |
+| Bus Size                  | 32-bit   |
+| Floating Point Unit (FPU) | Yes      |
+| Frequency Range           | 40-300MHz |
+| RAM                       | 5-516kB  |
 
-<p>The C2000 has a math-optimised core and is designed for high-performance real-time operations.</p>
+The C2000 has a math-optimised core and is designed for high-performance real-time operations.
 
-<h2>The Size Of A Byte</h2>
+## The Size Of A Byte
 
-<b>TLDR: The size of a byte on the C2000 is 16 bits.</b>
+**TLDR: The size of a byte on the C2000 is 16 bits.**
 
-<p>The C2000 is somewhat unusual in that the smallest addressable memory unit is 16-bits. The C standard specifies that <code>sizeof</code> must return the number of bytes required to store an object, and it also stipulates that size(char) must equal 1. Because chars are stored in 16 byte memory locations (to make them separately addressable), this means that the size of a byte on the C2000 architecture is 16 bits!</p>
+The C2000 is somewhat unusual in that the smallest addressable memory unit is 16-bits. The C standard specifies that `sizeof` must return the number of bytes required to store an object, and it also stipulates that `sizeof(char)` must equal 1. Because chars are stored in 16-bit memory locations (to make them separately addressable), this means that the size of a byte on the C2000 architecture is 16 bits!

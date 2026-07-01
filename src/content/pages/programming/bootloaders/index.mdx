@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-01-09
 description: A bootloader is a program in a computer or microcontroller which runs before the main application. It is typically responsible for configuring basic hardware, booting the main application and also performing application updates.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-02-10
+lastUpdated: 2026-07-01
 tags: [bootloaders, MCUboot Zephyr, firmware, microcontroller, memory, updates, DFU]
 title: Bootloaders
 type: page
@@ -13,13 +13,13 @@ type: page
 
 A _bootloader_ is a program in a computer's memory that runs before the main application. In an embedded context, it is typically responsible for:
 
-* Configuring basic hardware (most of the hardware configuration is left to the main application, the bootloader would typically just configure the clocks it needs and perhaps the watchdog)
-* Loading the main app into memory if not already in the correct place for execution (e.g. from external flash into main memory)
-* Verifying the integrity of the main app (e.g. using a checksum or hash)
-* Executing the main app (typically by disabling interrupts and then executing a "jump" instruction which goes to a predefined memory address)
-* Updating the main app (this is optional, and if this functionality is required, it may be included in the bootloader or in the application depending on the chosen topology).
+- Configuring basic hardware (most of the hardware configuration is left to the main application, the bootloader would typically just configure the clocks it needs and perhaps the watchdog)
+- Loading the main app into memory if not already in the correct place for execution (e.g. from external flash into main memory)
+- Verifying the integrity of the main app (e.g. using a [checksum or hash](/programming/checksums/))
+- Executing the main app (typically by disabling interrupts and then executing a "jump" instruction which goes to a predefined memory address)
+- Updating the main app (this is optional, and if this functionality is required, it may be included in the bootloader or in the application depending on the chosen topology).
 
-They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include UART, RS-232, I2C, CAN, Ethernet, WiFi or Bluetooth. 
+They are commonly added to microcontrollers to update the main firmware application. Bootloaders will use a communication protocol/transport to "download" new firmware from a host computer (e.g. laptop via cable, or server on the internet). Common transports include [UART](/electronics/communication-protocols/uart-communication-protocol/), [RS-232](/electronics/communication-protocols/rs-232-protocol/), [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [CAN](/electronics/communication-protocols/can-protocol/), [Ethernet](/electronics/communication-protocols/ethernet-protocol/), WiFi or [Bluetooth](/electronics/communication-protocols/bluetooth/).
 
 The bootloader will typically verify the downloaded image using a checksum or hash before allowing the new version of firmware to run. The bootloader can either then force a reset and boot into the new application, or allow it to happen at a more convenient time in the future. The bootloader can also enforce that the application "checks in" and states it's ok (typically once initialization is complete) otherwise it will fall back to the previous version.
 
@@ -33,13 +33,13 @@ Bootloaders are typically the first thing that is run whenever the microcontroll
 
 The image below shows what the memory layout might look like for a microcontroller using a basic bootloader. The _Reset Vector_ is the first instruction executed by the microcontroller on start-up. This is typically located at memory address `0x0000 0000` (the Intel 8086 processor is a notable exception). The reset vector usually contains a "goto" (jump) instruction that tells the CPU to jump to the bootloader's entry point. The bootloader will then execute. The bootloader could then initialise a transport to download new firmware, e.g. over UART. It then might wait for a message for a fixed amount of time. After 10s the chance to download firmware passes, and then the bootloader jumps to the start of the application executable.
 
-<Image src={import('./_assets/basic-bootloader-memory-map.webp')} width="700px">A basic example showing the layout of a microcontrollers memory when a bootloader is used.</Image>
+<Image src={import('./_assets/basic-bootloader-memory-map.svg')} width="700px">A basic example showing the layout of a microcontroller's memory when a bootloader is used.</Image>
 
 ## Erase Cycles
 
-[Flash memory](/electronics/components/memory/#flash) has a limited number of erase cycles, and you have to be careful you do not exceed this number during the lifetime of the device.
+[Flash memory](/electronics/components/memory/) has a limited number of erase cycles, and you have to be careful you do not exceed this number during the lifetime of the device.
 
-Typical erase cycle limits for NOR flash are 10k to 100k erases. This should not be a problem for most applications that only erase/write flash during a new version as part of the bootloader process. Be careful however if you are writing to flash during normal operation also, such as updating configuration data/settings that you want to persist across power-loss or reboots.
+Typical erase cycle limits for NOR flash are 10k to 100k erases. This should not be a problem for most applications that only erase/write flash during a new firmware version as part of the bootloader process. Be careful however if you are writing to flash during normal operation also, such as updating configuration data/settings that you want to persist across power-loss or reboots.
 
 ## Multiple Application Images
 
@@ -57,12 +57,12 @@ The scratch area must be large enough to hold the largest sector that is going t
 
 <Image src={import('./_assets/swap-move-algorithm-mcuboot.webp')} width="900px">Illustration of the swap-move algorithm to swap two firmware images using just a single extra erase sector in slot 0.</Image>
 
-* **a):** All of the segments in slot 0 are moved one segment up, starting by copying segment 3 into the empty sector, then segment 2 into where segment 3 used to be, etc. This moves the empty segment to the start of slot 0.
-* **b)**: The first segment of slot 1 is moved down to the empty segment.
-* **c)**: The first segment of slot 0 is moved up to where the first segment of slot 1 used to be.
-* **d)**: The process repeats **b)** and **c)** now with the second segments of each slot.
-* **e)**: This continues until...
-* **f)**: All segments have been swapped over and the empty segment is back at the end of slot 0. Job done! Note that the contents of each slot have been swapped. I've kept the old names for each slot to highlight the fact they have moved. Technically speaking though, slot 0 is still in the same place, it just now has the contents of what used to be in slot 1.
+- **a):** All of the segments in slot 0 are moved one segment up, starting by copying segment 3 into the empty sector, then segment 2 into where segment 3 used to be, etc. This moves the empty segment to the start of slot 0.
+- **b)**: The first segment of slot 1 is moved down to the empty segment.
+- **c)**: The first segment of slot 0 is moved up to where the first segment of slot 1 used to be.
+- **d)**: The process repeats **b)** and **c)** now with the second segments of each slot.
+- **e)**: This continues until...
+- **f)**: All segments have been swapped over and the empty segment is back at the end of slot 0. Job done! Note that the contents of each slot have been swapped. I've kept the old names for each slot to highlight the fact they have moved. Technically speaking though, slot 0 is still in the same place, it just now has the contents of what used to be in slot 1.
 
 <Aside type="note">
 To illustrate examples clearly, we only show a small number of segments. In reality, each firmware image will consume a much larger number of segments.
@@ -80,7 +80,7 @@ A golden image is a firmware application with minimal support for firmware updat
 
 ## Overwriting Bootloaders
 
-Typically, you design a bootloader and the start of a project and plan to never have to update it. But sometimes plans change (or bugs are found) and you will need to update the bootloader. You can usually do this by bootloading on a version of the application which includes code to update the bootloader (e.g. write to the bootloader's memory space in flash to update it). You have to be careful when doing this, as if the bootloader update process gets interrupted or corrupted for any reason, you generally end up bricking your device.
+Typically, you design a bootloader at the start of a project and plan to never have to update it. But sometimes plans change (or bugs are found) and you will need to update the bootloader. You can usually do this by bootloading on a version of the application which includes code to update the bootloader (e.g. write to the bootloader's memory space in flash to update it). You have to be careful when doing this, as if the bootloader update process gets interrupted or corrupted for any reason, you generally end up bricking your device.
 
 You can bundle the bootloader code you want to write inside the application. In C/C++, this can be done by using `objcopy` to copy contents from a `.bin` file into a `.o` which can be linked into your application build process.
 
@@ -117,7 +117,7 @@ void access_binary_data(void) {
 
 ## Enabling Watchdogs
 
-It is good practice to enable the hardware watchdog as soon as possible in the MCU boot process, which means early in the bootloader. If you wait until the application starts before enabling the watchdog, you might get occasionally stuck in the bootloader with no automatic ability to reset. When passing of control from the bootloader to the application, the watchdog remains active. Design your timeouts so that it gives the application enough time to initialize and start feeding the watchdog so you don't inadvertently reset during the transition process. Luckily, jumping to the application is usually quick, as it typically involves disabling interrupts and then executing a "jump" instruction to the start of the application.
+It is good practice to enable the hardware [watchdog](/programming/mcu-peripherals/watchdogs/) as soon as possible in the MCU boot process, which means early in the bootloader. If you wait until the application starts before enabling the watchdog, you might get occasionally stuck in the bootloader with no automatic ability to reset. When passing of control from the bootloader to the application, the watchdog remains active. Design your timeouts so that it gives the application enough time to initialize and start feeding the watchdog so you don't inadvertently reset during the transition process. Luckily, jumping to the application is usually quick, as it typically involves disabling interrupts and then executing a "jump" instruction to the start of the application.
 
 ## Zynq 7000 Boot Sequence
 
@@ -150,14 +150,14 @@ MCUboot is a popular, open-source, secure bootloader for 32-bit microcontrollers
 
 It currently supports the following frameworks/OSes:
 
-* [Zephyr](/programming/operating-systems/zephyr/)
-* [Apache Mynewt](https://mynewt.apache.org/)
-* [Apache NuttX](https://nuttx.apache.org/)
-* [RIOT](https://www.riot-os.org/)
-* Mbed OS
-* Espressif
-* Cypress/Infineon
-* Simulator (primarily for testing the upgrade code and badly timed resets - written in Rust[^mcuboot-sim-readme])
+- [Zephyr](/programming/operating-systems/zephyr/)
+- [Apache Mynewt](https://mynewt.apache.org/)
+- [Apache NuttX](https://nuttx.apache.org/)
+- [RIOT](https://www.riot-os.org/)
+- Mbed OS
+- Espressif
+- Cypress/Infineon
+- Simulator (primarily for testing the upgrade code and badly timed resets - written in Rust[^mcuboot-sim-readme])
 
 The MCUboot implementation for Zephyr supports Bluetooth bootloading. The Nordic nRF app can be used to bootload during development.
 
@@ -165,12 +165,12 @@ The MCUboot implementation for Zephyr supports Bluetooth bootloading. The Nordic
 
 On start-up, MCUboot inspects the images in each of the slots to work out what type of swap to perform (if any). It decides to do one of the following:[^mcuboot-doc-design]
 
-* `BOOT_SWAP_TYPE_NONE`: This is the usual or "no upgrade" process, in which MCUboot boots the primary image.
-* `BOOT_SWAP_TYPE_TEST`: Swaps the images and then boots the new primary image, but reverts back to the old image on the next reset. This will involve MCUboot swapping back the images on the next reset.
-* `BOOT_SWAP_TYPE_PERM`: Swaps the images and then boots the new primary image.
-* `BOOT_SWAP_TYPE_REVERT`: A previous test swap was not made permanent.
-* `BOOT_SWAP_TYPE_FAIL`: The swap failed.
-* `BOOT_SWAP_TYPE_PANIC`: An unrecoverable error occurred while swapping.
+- `BOOT_SWAP_TYPE_NONE`: This is the usual or "no upgrade" process, in which MCUboot boots the primary image.
+- `BOOT_SWAP_TYPE_TEST`: Swaps the images and then boots the new primary image, but reverts back to the old image on the next reset. This will involve MCUboot swapping back the images on the next reset.
+- `BOOT_SWAP_TYPE_PERM`: Swaps the images and then boots the new primary image.
+- `BOOT_SWAP_TYPE_REVERT`: A previous test swap was not made permanent.
+- `BOOT_SWAP_TYPE_FAIL`: The swap failed.
+- `BOOT_SWAP_TYPE_PANIC`: An unrecoverable error occurred while swapping.
 
 #### Magic Number
 

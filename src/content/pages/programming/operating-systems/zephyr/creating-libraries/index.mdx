@@ -2,19 +2,19 @@
 authors: [gbmhunter]
 date: 2025-06-23
 description: This guide shows you how to create firmware libraries that use Zephyr that can be linked to other Zephyr applications.
-lastUpdated: 2025-06-23
+lastUpdated: 2026-07-01
 tags: [programming, operating systems, RTOS, Zephyr, C++, libraries, CMake, west, linker, compiling, interface, submodules]
 title: How to Create Linkable Zephyr Libraries Using CMake
 type: page
 ---
 
-A library is a collection of functions and data that can be compiled in to another program, rather than a program itself. Libraries are useful for sharing code between multiple projects. However, most Zephyr code examples online show you how to create a Zephyr application, but not how to create a library that uses Zephyr, that can then be linked to other Zephyr applications.
+A library is a collection of functions and data that can be compiled in to another program, rather than a program itself. Libraries are useful for sharing code between multiple projects. However, most [Zephyr](/programming/operating-systems/zephyr/) code examples online show you how to create a Zephyr application, but not how to create a library that uses Zephyr, that can then be linked to other Zephyr applications.
 
 ## Using the INTERFACE Library Type
 
-I've had luck using the CMake `INTERFACE` library type to create libraries using Zephyr. An `INTERFACE` does not build a library artifact (e.g. static library file) but rather provides a collection of source files, header files, compile rules etc. that other projects can "link against" (which just means incorporate --- since there is nothing to link).
+I've had luck using the [CMake](/programming/build-systems-and-package-managers/cmake/) `INTERFACE` library type to create libraries using Zephyr. An `INTERFACE` does not build a library artifact (e.g. static library file) but rather provides a collection of source files, header files, compile rules etc. that other projects can "link against" (which just means incorporate --- since there is nothing to link).
 
-This shows an example of the libraries `CMakeLists.txt` file.
+This shows an example of the library's `CMakeLists.txt` file.
 
 ```cmake title="my_library/CMakeLists.txt"
 cmake_minimum_required(VERSION 3.20.0)
@@ -52,6 +52,7 @@ This can then be consumed by another Zephyr project. For example, let's pretend 
 ```cmake title="my_app/CMakeLists.txt"
 cmake_minimum_required(VERSION 3.20.0)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+include(FetchContent)
 FetchContent_Declare(MyLibrary
     GIT_REPOSITORY https://github.com/gbmhunter/MyLibrary.git
     GIT_TAG 1.0.0 # This can be a hash, tag or branch.

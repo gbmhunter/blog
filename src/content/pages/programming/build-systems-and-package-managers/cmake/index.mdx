@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2016-12-07
 description: CMake is a cross-platform tool for building applications. It is commonly used with C and C++. The program is configured through CMakeLists.txt files, which typically reside in the source directories of the corresponding code. This section covers the CMake basics, external projects, finding packages, installing, OS specific code, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-17
+lastUpdated: 2026-07-01
 tags: [CMake]
 title: cmake
 type: page
@@ -13,7 +13,7 @@ type: page
 
 <Image src={import('./_assets/cmake-logo.webp')} width="400px">The CMake logo[^kitware-cmake-homepage].</Image>
 
-The output of cmake is standard build/project files (e.g. Makefiles if targeting GNU make). These build files are then run using the standard build command to generate the final build files.
+The output of cmake is standard build/project files (e.g. Makefiles if targeting GNU [make](/programming/makefiles/)). These build files are then run using the standard build command to generate the final binaries/executables.
 
 ## Child Pages
 
@@ -21,19 +21,19 @@ The output of cmake is standard build/project files (e.g. Makefiles if targeting
 
 ## Quick Syntax Overview
 
-One thing that cmake does different from other "languages" is enforce that all variables passed into a function are linked by naming, rather than their order.
+One thing that cmake does differently from other "languages" is enforce that all variables passed into a function are linked by naming, rather than their order.
 
 ## Popular Generators (Build Systems)
 
 cmake is commonly used to generate build files for:
 
-* make
-* Apple's XCode
-* Eclipse
-* Microsoft Visual Studio
-* Ninja
+- make
+- Apple's XCode
+- Eclipse
+- Microsoft Visual Studio
+- Ninja
 
-cmake calls it's specific modules that convert cmake code into these various build systems **generators**.
+cmake calls the modules that convert cmake code into these various build systems **generators**.
 
 ## Setting Variables
 
@@ -43,7 +43,7 @@ Variables can be created and assigned in cmake with the `set()` function. e.g.
 set(SOURCES foo.cpp)
 ```
 
-This created a new variable called `SOURCES`.
+This creates a new variable called `SOURCES`.
 
 `set()` may also be used to make a list variable. Each element in the list should be separated with a space.
 
@@ -89,7 +89,7 @@ The library name must be a new name which is unique in the project. `target_link
 
 Once libraries have been added with `add_library()`, they need to be linked. This is normally done with `target_link_libraries()` or just `link_libraries()` (the former option is preferred).
 
-`link_libraries()` causes all proceeding targets in the `CMakeLists.txt` to be linked to this library.
+`link_libraries()` causes all subsequent targets in the `CMakeLists.txt` to be linked to this library.
 
 ## Copying Files
 
@@ -102,7 +102,7 @@ file(COPY files... DESTINATION <dir>)
 You can specify glob or regex patterns to copy only certain files. The following example will only copy header files (`.h`):
 
 ```cmake
-install(DIRECTORY src/ DESTINATION include/myproj
+file(COPY src/ DESTINATION include/myproj
 FILES_MATCHING PATTERN "*.h")
 ```
 
@@ -111,12 +111,12 @@ FILES_MATCHING PATTERN "*.h")
 Preprocessor definitions can be added by using the following cmake command:
     
 ```cmake
-add_definitions(-DMY_DEF_1 -DMY_DEF2)
+add_definitions(-DMY_DEF_1 -DMY_DEF_2)
 ```
 
 The `add_definitions` command can actually be used to add any compiler flags, but is intended for adding definitions (flags that begin with `-D`) only.
 
-This command add the flags to all sources in the current directory and below.
+This command adds the flags to all sources in the current directory and below.
 
 ## add_custom_target()
 
@@ -124,7 +124,7 @@ Custom targets are always built. Because there is no output file, they are consi
 
 ## add_custom_command()
 
-`add_custom_command()` is used specify how to make the defined OUTPUT files, based on command-line(s) COMMAND.
+`add_custom_command()` is used to specify how to make the defined OUTPUT files, based on command-line(s) COMMAND.
 
 `add_custom_target()` is commonly used at the same time as `add_custom_command()`.
 
@@ -161,7 +161,7 @@ $ cmake ..
 $ make
 ```
 
-This is of course assuming an out-of-source build setup (the recommended approach!). This standard way of building is used by [OpenCV](http://opencv.org/).
+This is of course assuming an out-of-source build setup (the recommended approach!). This standard way of building is used by [OpenCV](https://opencv.org/).
 
 ## Running OS Specific Code
 

@@ -1,45 +1,27 @@
 ---
 authors: [gbmhunter]
 date: 2019-01-29
-lastUpdated: 2019-01-29
+lastUpdated: 2026-07-01
 tags: [associative array, map, symbol table, dictionary]
 title: Associative Arrays
+description: An associative array (also known as a map, symbol table or dictionary) and how hash tables implement one.
 type: page
 ---
 
-<h2>Overview</h2>
+## Overview
 
-<p>An associative array can also be known as a <i>map</i>, <i>symbol table</i> or <i>dictionary</i>.</p>
+An associative array can also be known as a _map_, _symbol table_ or _dictionary_.
 
-<h2>Hash Tables</h2>
+## Hash Tables
 
-<p>A hash table is a type of associative array where a hash is calculated from a given key, and the key's value is stored at the memory address pointed to by the key's hash.</p>
+A hash table is a type of associative array where a [hash](/programming/hashes/) is calculated from a given key, and the key's value is stored at the memory address pointed to by the key's hash.
 
-<h3>Complexity</h3>
+### Complexity
 
-<table>
-    <thead>
-        <tr>
-            <th>Lookup</th>
-            <th>Average Case</th>
-            <th>Worst Case</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Lookup</td>
-            <td>$ \mathcal{O}(1) $</td>
-            <td>$ \mathcal{O}(n) $</td>
-        </tr>
-        <tr>
-            <td>Insertion</td>
-            <td>$ \mathcal{O}(1) $</td>
-            <td>$ \mathcal{O}(n) $</td>
-        </tr>
-        <tr>
-            <td>Deletion</td>
-            <td>$ \mathcal{O}(1) $</td>
-            <td>$ \mathcal{O}(n) $</td>
-        </tr>
-    </tbody>
-</table>
+The table below shows the [time complexity](/programming/algorithms-and-data-structures/algorithm-time-complexity/) of common hash table operations. The worst case occurs when all keys hash to the same bucket, degrading lookups to a linear scan.
+
+| Operation | Average Case        | Worst Case          |
+| --------- | ------------------- | ------------------- |
+| Lookup    | $ \mathcal{O}(1) $  | $ \mathcal{O}(n) $  |
+| Insertion | $ \mathcal{O}(1) $  | $ \mathcal{O}(n) $  |
+| Deletion  | $ \mathcal{O}(1) $  | $ \mathcal{O}(n) $  |

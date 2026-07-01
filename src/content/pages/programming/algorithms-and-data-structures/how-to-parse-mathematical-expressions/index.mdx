@@ -2,13 +2,13 @@
 authors: [gbmhunter]
 date: 2019-07-07
 description: A walkthrough on how to parse a mathematical expression. Covers grammar, lexers, parsers, RPN, infix and postfix notation, ASTs and more.
-lastUpdated: 2019-08-23
-tags: [programming, data structures, algorithms, code, software, extended Backus-Naur form, EBNF, recursive decent parsers, RPN, parsers, grammar, lexers, evaluators, abstract syntax trees, AST, infix notation, postfix notation]
+lastUpdated: 2026-07-01
+tags: [programming, data structures, algorithms, code, software, extended Backus-Naur form, EBNF, recursive descent parsers, RPN, parsers, grammar, lexers, evaluators, abstract syntax trees, AST, infix notation, postfix notation]
 title: How To Parse Mathematical Expressions
 type: page
 ---
 
-This aim of this tutorial is to introduce the concept of parsing instructions expressed as text into executable code. This serves as a basis for working with machine readable languages (e.g. compilers, JSON deserialization and mathematical expression evaluators). This page will use examples for evaluating basic mathematical expressions.
+The aim of this tutorial is to introduce the concept of parsing instructions expressed as text into executable code. This serves as a basis for working with machine readable languages (e.g. compilers, JSON deserialization and mathematical expression evaluators). This page will use examples for evaluating basic mathematical expressions.
 
 ## Input Notation
 
@@ -29,18 +29,18 @@ Reverse polish notation (RPN) is an alternative notation to _infix notation_. It
 The same expression above (`y = 5 * (x + 2)`), but in RPN is:
 
 ```text
-y = 5 x 2 + 2 ^ *
+y = 5 x 2 + *
 ```
 
-RPN does not require the use of parenthesis to preserve the correct order of operations. RPN can linearize a tree data-structure, which can have memory benefits.
+RPN does not require the use of parentheses to preserve the correct order of operations. RPN can linearize a tree data-structure, which can have memory benefits.
 
-You may have noticed the some older calculators don't work as you're "used to". This could be because they use RPN! The Hewlett-Packard HP-48 graphic calculator presented RPN to the user (no infix notation was allowed!).
+You may have noticed that some older calculators don't work as you're "used to". This could be because they use RPN! The Hewlett-Packard HP-48 graphic calculator presented RPN to the user (no infix notation was allowed!).
 
 ## Sequence of Events
 
 Lexer: Converts the grammar (which is the input, i.e. mathematical expression as a string) into a sequence of tokens. Less formally, it can also be called a tokenizer.
 
-Parser: Reads the tokens outputted from the lexer and parses them into a structure such as RPN or AST. It reshapes the tokens into a structure according to rules such as operator preceedance.
+Parser: Reads the tokens outputted from the lexer and parses them into a structure such as RPN or AST. It reshapes the tokens into a structure according to rules such as operator precedence.
 
 Evaluator: Processes the output of the parser, and produces the result the user wants to see. In the case of an AST, the evaluator will typically perform a depth-first evaluation of all the nodes in the AST (which is easily performed with recursion).
 
@@ -48,9 +48,9 @@ Evaluator: Processes the output of the parser, and produces the result the user 
 
 Context-free grammars are the most common.
 
-Grammar is a way of formally describing the structure of a language. You can call grammar the _language of languages_. Grammar is usually written as a sequence of _rules_. Each rule has two parts, a _name_, and an _expansion_ of the name. The expansion shows what the name can built from. The idea of rules is to describe the syntax as a hierarchy, starting at the broad structure of the language and then breaking it down into smaller and smaller components. The _name_ can also be called a _non-terminal symbol_. This refers to the fact that it just an intermediary representation and will be expanded into smaller components. Things such as a `number` are called _terminal symbols_.
+Grammar is a way of formally describing the structure of a language. You can call grammar the _language of languages_. Grammar is usually written as a sequence of _rules_. Each rule has two parts, a _name_, and an _expansion_ of the name. The expansion shows what the name can be built from. The idea of rules is to describe the syntax as a hierarchy, starting at the broad structure of the language and then breaking it down into smaller and smaller components. The _name_ can also be called a _non-terminal symbol_. This refers to the fact that it is just an intermediary representation and will be expanded into smaller components. Things such as a `number` are called _terminal symbols_.
 
-We will use a simple calculator program as an example. The calculator allows you to type in _expressions_. Each _expression_ is built from two _terms_, which are added together. We will 
+We will use a simple calculator program as an example. The calculator allows you to type in _expressions_. Each _expression_ is built from two _terms_, which are added together.
 
 ```text
 expr -> term + term
@@ -58,7 +58,7 @@ term -> factor * factor
 factor -> number
 ```
 
-Of course, the basic syntax above is fairly limiting. While our calculator would accept `2*3 + 4*5`, it wouldn't accept `2*3 + 4*5 + 6*7` as it only allows for exactly two terms (and exactly two factors in each term). We also couldn't type `2*3 - 4*5` as it only allows for addition! We need a way of grouping multiple operators together `+` and`-`, and expressing that an expression can be composed of any number of terms added together. We will improve the functionality of our calculator when we look at Extended Backus-Naur Form (EBNF) below.
+Of course, the basic syntax above is fairly limiting. While our calculator would accept `2*3 + 4*5`, it wouldn't accept `2*3 + 4*5 + 6*7` as it only allows for exactly two terms (and exactly two factors in each term). We also couldn't type `2*3 - 4*5` as it only allows for addition! We need a way of grouping multiple operators together `+` and `-`, and expressing that an expression can be composed of any number of terms added together. We will improve the functionality of our calculator when we look at Extended Backus-Naur Form (EBNF) below.
 
 ### Extended Backus-Naur Form (EBNF)
 
@@ -97,7 +97,7 @@ We can use round braces `(` and `)` to group things together. The below example 
 
 Now we can write things such as `1 - 2` and `1 + 2 - 3`.
 
-Lets now expand the calculators functionality so that we can also multiply! 
+Let's now expand the calculator's functionality so that we can also multiply!
 
 ```text
 <expr>   := <term> {("+" | "-") <term>}
@@ -134,9 +134,9 @@ Putting all of this together, the complete grammar for our calculator now become
 <factor> := number
 ```
 
-## A Recursive Decent Parser (RPN)
+## A Recursive Descent Parser (RDP)
 
-A _Recursive Descent Parser_ (RPN) is a type of parser which uses function recursion as a primary technique for parsing expressions. One of the main benefits of RPNs is that their design closely matches the structure of EBNF grammar syntax.
+A _Recursive Descent Parser_ (RDP) is a type of parser which uses function recursion as a primary technique for parsing expressions. One of the main benefits of RDPs is that their design closely matches the structure of EBNF grammar syntax.
 
 ## External Resources
 

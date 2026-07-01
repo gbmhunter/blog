@@ -40,7 +40,7 @@ def main():
     # ===========================================================================
     p_collisions_exact = []
     for serial_num in num_of_serial_nums:
-        p_collision = calc_p_of_collision_approx(serial_num, 32)
+        p_collision = calc_p_of_collision_exact_np(serial_num, 32)
         p_collisions_exact.append(p_collision)
     fig, ax = plt.subplots()
     ax.plot(num_of_serial_nums, p_collisions, label='Approximate')
@@ -116,7 +116,7 @@ def calc_p_of_collision_approx(num_of_serial_nums, num_of_bits):
     """
     # From https://en.wikipedia.org/wiki/Birthday_problem and
     # https://stackoverflow.com/questions/62664761/probability-of-hash-collision
-    return 1 - math.exp(-((float(num_of_serial_nums)*float(num_of_serial_nums - 1)) / (2*(2 ** (float(num_of_bits) + 1)))))
+    return 1 - math.exp(-((float(num_of_serial_nums)*float(num_of_serial_nums - 1)) / (2*(2 ** float(num_of_bits)))))
 
 if __name__ == "__main__":
     main()

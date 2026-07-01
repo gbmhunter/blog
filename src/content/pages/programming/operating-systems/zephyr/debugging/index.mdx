@@ -2,15 +2,15 @@
 authors: [gbmhunter]
 date: 2025-06-12
 description: A tutorial on how to setup debugging when using the Zephyr RTOS.
-lastUpdated: 2025-06-13
+lastUpdated: 2026-07-02
 tags: [programming, operating systems, Zephyr, debugging, WSL, VSCode, JLink, usbipd, nRF, nRF52, OpenOCD, pyOCD]
 title: How To Setup Debugging in VSCode For Zephyr
 type: page
 ---
 
-Although you can get far with just using Zephyr's powerful logging system for debugging, in certain situations it's much more useful to have a step-by-step debugger. This page will show you how to setup debugging in VSCode for Zephyr. This page will show you how to setup "RTOS aware" debugging, in where you can see the state and stack of every Zephyr thread.
+Although you can get far with just using Zephyr's powerful [logging system](/programming/operating-systems/zephyr/logging/) for debugging, in certain situations it's much more useful to have a step-by-step debugger. This page will show you how to setup debugging in VSCode for Zephyr. This page will show you how to setup "RTOS aware" debugging, in where you can see the state and stack of every Zephyr thread.
 
-For this tutorial, we'll pick a nRF52 SoC as our target, and pretend we are developing within WSL2 (Windows Subsystem for Linux 2, essentially a Linux VM running on Windows). However, the steps should be transferable to other MCUs and operating systems without to much difficulty.
+For this tutorial, we'll pick a nRF52 SoC as our target, and pretend we are developing within WSL2 (Windows Subsystem for Linux 2, essentially a Linux VM running on Windows). However, the steps should be transferable to other MCUs and operating systems without too much difficulty.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ All three of the paths below require the VSCode `cortex-debug` extension to be i
 
 ## Using JLink
 
-Using JLink was my default choice since the nRF52 development boards I use as a programmer already come with an emulated JLink, and it has what I've been using for basic programming using the command `west flash --runner jlink` for some time. If you've been using Windows, this is also probably what you have been using via Nordic's nRF Connect for Desktop tools.
+Using JLink was my default choice since the nRF52 development boards I use as a programmer already come with an emulated JLink, and it's what I've been using for basic programming using the command `west flash --runner jlink` for some time. If you've been using Windows, this is also probably what you have been using via Nordic's nRF Connect for Desktop tools.
 
 Another reason for defaulting with the JLink option is that I somewhat naively assume it is the fastest, given I'm using a JLink debugger probe.
 
@@ -41,14 +41,14 @@ Luckily, when you install JLink you also get some "RTOS aware" libraries that yo
 /opt/SEGGER/JLink_V794i/GDBServer/
 ```
 
-The one we are after is `RTOSPlugin_Zephyr.so`, this the full path is `/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so`.
+The one we are after is `RTOSPlugin_Zephyr.so`, so the full path is `/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so`.
 
 ### launch.json
 
-To allows us to use VSCode's "Run and Debug" feature, we need to create a `launch.json` file telling it how to debug our Zephyr application. Each one of these configurations will show up as an option in the "Run and Debug" menu in VSCode. We'll define a:
+To allow us to use VSCode's "Run and Debug" feature, we need to create a `launch.json` file telling it how to debug our Zephyr application. Each one of these configurations will show up as an option in the "Run and Debug" menu in VSCode. We'll define a:
 
-* **Launch**: Builds, programs and starts the debugger.
-* **Attach**: Attaches to an already running Zephyr application. Useful if you've already caught a hard to reproduce bug (e.g. an assert fires which halts the system) or you otherwise don't want to reset the device. Once you've attached you can hit pause and inspect the state of the system, including the state of all the threads.
+- **Launch**: Builds, programs and starts the debugger.
+- **Attach**: Attaches to an already running Zephyr application. Useful if you've already caught a hard to reproduce bug (e.g. an assert fires which halts the system) or you otherwise don't want to reset the device. Once you've attached you can hit pause and inspect the state of the system, including the state of all the threads.
 
 Here is our `launch.json` file:
 
@@ -80,23 +80,23 @@ Here is our `launch.json` file:
             "runToEntryPoint": "main",
             "servertype": "jlink",
             "gdbPath": "/home/gbmhunter/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
-            "rtos": "/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so",
-        },
+            "rtos": "/opt/SEGGER/JLink_V794i/GDBServer/RTOSPlugin_Zephyr.so"
+        }
     ]
 }
 ```
 
 The key things to define are:
 
-* `name`: The name of the configuration. This is what will show up in the "Run and Debug" menu in VSCode.
-* `device`: The device we are debugging.
-* `cwd`: The working directory.
-* `executable`: The path to the ELF file we want to debug. By default Zephyr put this at `build/app/zephyr/zephyr.elf`. I note that in a prior version of Zephyr this was `build/zephyr/zephyr.elf`. This project had all the app source code under `app/`. You might have to update this for your specific project.
-* `request`: Whether we are launching or attaching to the debugger.
-* `type`: The type of debugger we are using.
-* `servertype`: This can be `jlink`, `openocd` or `pyocd`.
-* `gdbPath`: The path to the GDB executable. This is inside the Zephyr SDK, which is installed separate from the project.
-* `rtos`: The path to the RTOS plugin for JLink. This is important for the "RTOS aware" debugging. Without this, we only get information for the current thread.
+- `name`: The name of the configuration. This is what will show up in the "Run and Debug" menu in VSCode.
+- `device`: The device we are debugging.
+- `cwd`: The working directory.
+- `executable`: The path to the ELF file we want to debug. By default Zephyr put this at `build/app/zephyr/zephyr.elf`. I note that in a prior version of Zephyr this was `build/zephyr/zephyr.elf`. This project had all the app source code under `app/`. You might have to update this for your specific project.
+- `request`: Whether we are launching or attaching to the debugger.
+- `type`: The type of debugger we are using.
+- `servertype`: This can be `jlink`, `openocd` or `pyocd`.
+- `gdbPath`: The path to the GDB executable. This is inside the Zephyr SDK, which is installed separate from the project.
+- `rtos`: The path to the RTOS plugin for JLink. This is important for the "RTOS aware" debugging. Without this, we only get information for the current thread.
 
 <Aside type="note">
 I wanted to commit this file to the repository since it can be used by other developers. You'll notice however there are hardcoded paths to my Zephyr SDK and JLink installation. I couldn't figure out a nice way of fixing this. You can use environment variables in `launch.json` in the format `${env:MY_ENV_VAR}`, but the problem is that these have to be set prior to VSCode starting, and can't be pulled in from a `.env` file local to this repo. I didn't want to force other people to have to define system wide environment variables, because typically we would be working on multiple projects with different SDKs. If you have a solution, please let me know!
@@ -108,7 +108,7 @@ Instead of JLink, we can set the `servertype` to `openocd` and use the `openocd`
 
 ## Using pyOCD
 
-Instead of JLink or OpenOCD, we can use pyOCD to debug our Zephyr application. I had success making this "RTOS aware". 
+Instead of JLink or OpenOCD, we can use pyOCD to debug our Zephyr application. I had success making this "RTOS aware".
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2025-09-03
-lastUpdated: 2025-09-03
+lastUpdated: 2026-07-01
 tags: [firmware, config, upgrades, memory, flash, EEPROM, NVS, littlefs, Zephyr, migrations]
 title: Managing App Config In Non-Volatile Memory
 type: page
@@ -9,15 +9,15 @@ type: page
 
 <WarningIsNotes />
 
-Many firmware projects require some sort of configuration data to be stored in non-volatile memory (NVM) like [flash](/electronics/components/memory/flash/) or [EEPROM](/electronics/components/memory/eeprom/). This is needed for data that you want to persist across power-loss or reboots. NWM is typically used to store settings for the application, such as:
+Many firmware projects require some sort of configuration data to be stored in non-volatile memory (NVM) like [flash](/electronics/components/memory/flash/) or [EEPROM](/electronics/components/memory/eeprom/). This is needed for data that you want to persist across power-loss or reboots. NVM is typically used to store settings for the application, such as:
 
 - **User preferences:** e.g. desired temperature, desired fan speed, etc so they are not lost on power-loss or reboot.
-- **Production line settings:** For example, calibration data for the particular device, or a unique serial number.
+- **Production line settings:** For example, calibration data for the particular device, or a unique [serial number](/programming/firmware/choosing-serial-numbers-for-embedded-products/).
 
 There are many different approaches to managing application config. Some of the key concerns that should be considered are:
 
-- **Versioning and Upgrading:** You rarely get the app config data defined right the first time you define it, and product requirements often change. Many products require firmware updates (DFU/bootloaders) to fix bugs and add new features. If you are releasing new firmware that has changed config onto already deployed products (which have a previous version of the app config), you need a safe and reliable way to "upgrade" (or migrate) the configuration data. Configuration data is usually versioned separately from the firmware version. You rarely ever need to downgrade the config (I have never needed to do this myself).
-- **Reliability:** You need to ensure that the config data is not corrupted or lost during firmware updates or power-loss. This is typically achieved by using checksums to ensure the data integrity. This can either be part of your app configuration logic, or abstracted as part of a lower level memory driver/file system.
+- **Versioning and Upgrading:** You rarely get the app config data defined right the first time you define it, and product requirements often change. Many products require firmware updates (DFU/[bootloaders](/programming/bootloaders/)) to fix bugs and add new features. If you are releasing new firmware that has changed config onto already deployed products (which have a previous version of the app config), you need a safe and reliable way to "upgrade" (or migrate) the configuration data. Configuration data is usually versioned separately from the firmware version. You rarely ever need to downgrade the config (I have never needed to do this myself).
+- **Reliability:** You need to ensure that the config data is not corrupted or lost during firmware updates or power-loss. This is typically achieved by using [checksums](/programming/checksums/crcs-cyclic-redundancy-checks/) to ensure the data integrity. This can either be part of your app configuration logic, or abstracted as part of a lower level memory driver/file system.
 - **Writing Defaults:** The first time the application tries to read the config from NVM, it's not going to be there! You need to handle this case and write sensible defaults. One of the easiest approaches is to tie this in with the upgrade logic, and treat no config data as a "version 0" of the config. Then you can upgrade it to the v1 and follow the standard upgrade path.
 
 Lower level memory drivers or file systems that you could use include:
@@ -31,13 +31,13 @@ The examples on this page assume you are using a lower level memory driver that 
 
 One of the most basic approaches to managing app config is to define a single struct that contains all the settings you need. Let's explore this approach in more detail.
 
-The one variable that this application config must always have is a version. This will allow the application to know what version of the config it is using and to upgrade it if necessary. Let's use a toy example in where our first version of the config is very simple, with only one setting 
+The one variable that this application config must always have is a version. This will allow the application to know what version of the config it is using and to upgrade it if necessary. Let's use a toy example in where our first version of the config is very simple, with only one setting.
 
 ```c++
 struct __attribute__((packed)) AppConfigV1 {
     uint32_t version;
     uint8_t myFirstSetting;
-}
+};
 ```
 
 <Aside type="note">
@@ -51,7 +51,7 @@ struct __attribute__((packed)) AppConfigV2 {
     uint32_t version;
     uint8_t myFirstSetting;
     uint8_t mySecondSetting;
-}
+};
 ```
 
 ### Upgrading
@@ -61,7 +61,7 @@ To help us, let's define a `struct` which just contains the version.
 ```c++
 struct __attribute__((packed)) AppConfigVersionOnly {
     uint32_t version;
-}
+};
 ```
 
 This will allow us to cast the raw data to the version only struct and get the version. Let's assume the low-level driver provides the following:
@@ -82,8 +82,8 @@ Let's write an `upgradeConfig()` function that will handle the upgrade logic. Th
 void upgradeConfig() {
     // Make sure maxSize is large enough to hold the largest config version struct
     const int32_t maxSize = 1000;
-    char[maxSize] data;
-    char[maxSize] tempUpgradedData;
+    char data[maxSize];
+    char tempUpgradedData[maxSize];
     int nvmReadRc = nvmRead(APP_CONFIG_ID, data);
 
     //===============================================//
@@ -128,7 +128,7 @@ struct __attribute__((packed)) AppConfigV3 {
     uint8_t myFirstSetting;
     uint8_t myThirdSetting; // NOTE: The order! This method allows insertion of new settings anywhere, as long as the version is always the first setting.
     uint8_t mySecondSetting;
-}
+};
 ```
 
 Then our upgrade logic would look like this:
@@ -136,8 +136,8 @@ Then our upgrade logic would look like this:
 ```c++
 void upgradeConfig() {
     const int32_t maxSize = 1000;
-    char[maxSize] data;
-    char[maxSize] tempUpgradedData;
+    char data[maxSize];
+    char tempUpgradedData[maxSize];
     int nvmReadRc = nvmRead(APP_CONFIG_ID, data);
 
     //===============================================//
@@ -165,7 +165,7 @@ void upgradeConfig() {
         configV2->version = 2;
         configV2->myFirstSetting = config->myFirstSetting;
         configV2->mySecondSetting = 0; // Initialize to a sensible default value
-        // Copy to rawData
+        // Copy back to data
         memcpy(data, tempUpgradedData, maxSize);
     }
 
@@ -174,7 +174,7 @@ void upgradeConfig() {
     //===============================================//
     if (versionOnly->version == 2) {
         AppConfigV2* config = (AppConfigV2*)data;
-        AppConfigV3* configV3 = (AppConfigV3*)tempUpgradedData  ;
+        AppConfigV3* configV3 = (AppConfigV3*)tempUpgradedData;
         configV3->version = 3;
         configV3->myFirstSetting = config->myFirstSetting;
         configV3->mySecondSetting = config->mySecondSetting;
@@ -192,7 +192,7 @@ Hopefully by now you can start to see the pattern emerging during the upgrade pr
 
 The downside to this approach is that we need to copy across every setting on every version upgrade. This is because we allowed ourselves to insert new settings anywhere in the struct (as long as the version is always the first setting). This prevents us from doing things like copying the entire struct from one version to the next in one go.
 
-This is a flexible approach as you are not forced to add any "padding" between settings to allow for future growth, and also let's you delete settings just as easily as you can add them.
+This is a flexible approach as you are not forced to add any "padding" between settings to allow for future growth, and also lets you delete settings just as easily as you can add them.
 
 ### Summary
 
@@ -217,20 +217,20 @@ The idea is to break up the configuration into structs which make logical sense.
 struct __attribute__((packed)) SerialNumberConfigV1 {
   uint32_t version;
   uint64_t serialNumber;
-}
+};
 
 struct __attribute__((packed)) CalibrationConfigV1 {
   uint32_t version;
   uint32_t calibrationValueA;
   uint32_t calibrationValueB;
-}
+};
 ```
 
-The settings are now broken into smaller structs which are saved to NVM separately. Each one has it's own version number, and will need it's own upgrade logic.
+The settings are now broken into smaller structs which are saved to NVM separately. Each one has its own version number, and will need its own upgrade logic.
 
 **Pros:**
 
-- **Separation of concerns:** Different modules of your application can have save and read their own configuration settings separately. There is no need to a central "application config" struct.
+- **Separation of concerns:** Different modules of your application can save and read their own configuration settings separately. There is no need for a central "application config" struct.
 - **Performance:** Since the config is now stored in smaller objects, the amount of data that needs to be written to NVM when any one setting changes is much smaller. This would also result in less flash wear.
 
 **Cons:**
@@ -240,9 +240,9 @@ The settings are now broken into smaller structs which are saved to NVM separate
 
 ## Random Thoughts
 
-Another procedure worth considering is early power loss detection via voltage monitoring. You can feed the output of a voltage supervisor on your main power input into an GPIO/interrupt in your firmware (or measure the voltage directly with an ADC, but this requires you to poll it fast enough). You can then use this to quickly write app config to NWM before power is lost completely to your MCU's voltage rails. This requires there to be enough energy stored in capacitors on your board to keep the MCU voltage up for long enough (you normally need to keep it up in the milliseconds range). Sometime you will already have enough capacitance due to SMPS output capacitors and other bulk capacitors. A reverse current blocking diode can also help to keep the MCU voltage rail up for long enough.
+Another procedure worth considering is early power loss detection via voltage monitoring. You can feed the output of a voltage supervisor on your main power input into a GPIO/interrupt in your firmware (or measure the voltage directly with an ADC, but this requires you to poll it fast enough). You can then use this to quickly write app config to NVM before power is lost completely to your MCU's voltage rails. This requires there to be enough energy stored in capacitors on your board to keep the MCU voltage up for long enough (you normally need to keep it up in the milliseconds range). Sometimes you will already have enough capacitance due to SMPS output capacitors and other bulk capacitors. A reverse current blocking diode can also help to keep the MCU voltage rail up for long enough.
 
-You shouldn't rely on this technique to prevent data corruption, your memory interface/driver should still implement it's own protection against data corruption (what if the voltage drops quicker than you expect, or what if the MCU is reset due to a different reason?). However, this approach allows you to have a better chance of "up-to-date" data when the firmware reloads, and let's you slow down the number of writes during normal operation (as you can rely on the early power loss detection to complete the write).
+You shouldn't rely on this technique to prevent data corruption, your memory interface/driver should still implement its own protection against data corruption (what if the voltage drops quicker than you expect, or what if the MCU is reset due to a different reason?). However, this approach allows you to have a better chance of "up-to-date" data when the firmware reloads, and lets you slow down the number of writes during normal operation (as you can rely on the early power loss detection to complete the write).
 
 
 {/* ============================================================================================ */}

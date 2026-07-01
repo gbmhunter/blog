@@ -2,13 +2,13 @@
 authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr provides a comprehensive Bluetooth API for embedded systems. This is largely contributed by Nordic Semiconductor for their nRF52, nRF53, nRF54 and nRF91 MCU families. This page contains information on how to configure a MCU as a Bluetooth peripheral and how to use the Nordic UART Service (NUS), including the Bluetooth NUS shell.
-lastUpdated: 2025-10-03
+lastUpdated: 2026-07-01
 tags: [programming, operating systems, Zephyr, Bluetooth, Bluetooth NUS, Nordic UART Service, Bluetooth NUS shell, shells, terminals, NinjaTerm]
 title: Zephyr Bluetooth
 type: page
 ---
 
-Nordic has contributed significantly to the Zephyr Bluetooth API ever since they adopted Zephyr as their official platform for the nRF52, nRF53 and nRF91 MCU families. 
+Nordic has contributed significantly to the [Bluetooth](/electronics/communication-protocols/bluetooth/) API in Zephyr ever since they adopted Zephyr as their official platform for the nRF52, nRF53, nRF54 and nRF91 MCU families. 
 
 To enable Bluetooth in your Zephyr project, you need to enable the Bluetooth subsystem in your `prj.conf` file with `CONFIG_BT=y`.
 
@@ -20,7 +20,7 @@ CONFIG_BT=y
 
 ### Peripheral
 
-Most Zephyr-based Bluetooth applications will act as a peripheral. A peripheral is a Bluetooth device that both advertising and allows connections. Enabling the peripheral role is done by setting the `CONFIG_BT_PERIPHERAL` configuration option.
+Most Zephyr-based Bluetooth applications will act as a peripheral. A peripheral is a Bluetooth device that both advertises and allows connections. Enabling the peripheral role is done by setting the `CONFIG_BT_PERIPHERAL` configuration option.
 
 ```python title="prj.conf"
 CONFIG_BT_PERIPHERAL=y
@@ -82,7 +82,7 @@ CONFIG_BT_NUS=y
 
 The following C++ code shows a minimal example that configures a MCU as a Bluetooth peripheral and advertises a Nordic UART Service.
 
-```c++
+```cpp
 #include <bluetooth/services/nus.h>
 #include <zephyr/bluetooth/bluetooth.h>
 
@@ -132,7 +132,7 @@ int main(void)
 
 ## Bluetooth NUS Shell
 
-Nordic provides an example project which let's you configure the Bluetooth NUS service to use the [Zephyr shell](/programming/operating-systems/zephyr/shell/). This allows you to send and receive shell commands over Bluetooth, as well as view logs (just like a standard serial port based shell).
+Nordic provides an example project which lets you configure the Bluetooth NUS service to use the [Zephyr shell](/programming/operating-systems/zephyr/shell/). This allows you to send and receive shell commands over Bluetooth, as well as view logs (just like a standard serial port based shell).
 
 Update your `prj.conf` file with the configuration shown below. Note that most of the basic Bluetooth configuration remains the same as the basic Bluetooth NUS example above, except we replace `CONFIG_BT_NUS=y` with `CONFIG_SHELL_BT_NUS=y`.
 
@@ -162,7 +162,7 @@ There are two different NUS shell related log levels you should be aware of:
 I advise that you do not set `CONFIG_SHELL_BT_NUS_LOG_LEVEL_XXX` to `_NONE` if you are setting `CONFIG_SHELL_BT_NUS_INIT_LOG_LEVEL_XXX` to anything other than `_NONE`. This is because you run the risk of getting stuck in a infinite loop, where a log message causes the shell logic to emit a log message, which recursively causes another log message, and so on.
 </Aside>
 
-Although you might want to think about increasing the MTU when sending large log messages for efficiency, I have found that can work ok on the default MTU because it is treated like a serial stream (a large log message will be broken up and sent in many smaller Bluetooth packets).
+Although you might want to think about increasing the MTU when sending large log messages for efficiency, I have found that it can work ok on the default MTU because it is treated like a serial stream (a large log message will be broken up and sent in many smaller Bluetooth packets).
 
 ### C++ Example Code
 
@@ -266,7 +266,7 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
 
 Bluetooth& Bluetooth::getInstance()
 {
-    static Bluetooth instance();
+    static Bluetooth instance;
     return instance;
 }
 
@@ -351,7 +351,7 @@ Then from your `main.cpp` file:
 // Local includes
 #include "Bluetooth.hpp"
 
-void main(void)
+int main(void)
 {
     // This will initialise the Bluetooth instance and start the advertising
     my_firmware::Bluetooth::getInstance();
@@ -364,7 +364,7 @@ void main(void)
 
 Another example project can be found in the [nrf-sdk GitHub repository](https://github.com/nrfconnect/sdk-nrf/tree/main/samples/bluetooth/shell_bt_nus) (called `shell_bt_nus`).
 
-If you want to connect to this Bluetooth NUS shell peripheral from a computer, you can use the [NinjaTerm](https://ninjaterm.mbedded.ninja/) terminal application. This supports Bluetooth LE as a connection type, and can auto-detect and listen to the popular Bluetooth serial service and characteristic UUIDs such as the Nordic UART Service (NUS).
+If you want to connect to this Bluetooth NUS shell peripheral from a computer, you can use the [NinjaTerm](https://ninjaterm.mbedded.ninja/) terminal application. This supports [Bluetooth LE](/electronics/communication-protocols/bluetooth/bluetooth-low-energy/) as a connection type, and can auto-detect and listen to the popular Bluetooth serial service and characteristic UUIDs such as the Nordic UART Service (NUS).
 
 <Image src={import('./_assets/bluetooth-nus-shell-message-screenshot-ninjaterm.webp')} width="900px">A screenshot of a log message and shell prompt sent across the Bluetooth NUS shell in NinjaTerm.</Image>
 
@@ -382,7 +382,7 @@ __ASSERT_NO_MSG(rc == 0);
 
 `conn` is a pointer to a `struct bt_conn` which is the connection object. It's assumed you have that handy to pass in! The connection interval is in units of 1.25ms, so the above code sets the connection interval min. to 885ms and the max. to 1000ms. By default the min. and max were set to 15ms and 30ms respectively, so this is a significant slow down and results in good power savings for small battery powered devices. The timeout is in units of 10ms, so the above code sets the timeout to 4s. You can use the helper macro `BT_LE_CONN_PARAM()` to create the `struct bt_le_conn_param` object if you want.
 
-If you are a Bluetooth central device, these settings will take effect. If you a peripheral device, these settings are "suggestions". They are sent to the central device and it is up to the central device to accept them. The central device may reject them or choose other values.
+If you are a Bluetooth central device, these settings will take effect. If you are a peripheral device, these settings are "suggestions". They are sent to the central device and it is up to the central device to accept them. The central device may reject them or choose other values.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
