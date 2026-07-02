@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2012-01-05
 description: Crystals are passive electronics components that can oscillate at very specific frequencies. They are used to create clock signals for digital circuitry. This page covers load capacitance, frequency accuracy and stability, schematic symbols, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-08
+lastUpdated: 2026-07-02
 tags: [electronics, components, crystals, MEMS, XTAL, XC, XO, OCXO, frequency, clocks, power consumption, stability, accuracy, ultrasonic baths, turnover temperature]
 title: Crystals
 type: page
@@ -53,9 +53,8 @@ $$
 
 The series and parallel resonant frequencies are usually very close together. Crystals below 30MHz are operated at a frequency somewhere between the series and parallel resonant frequencies[^atmel-avr4100].
 
-## Important Parameters
 
-### Quality Factor
+## Quality Factor
 
 The quality factor for crystal oscillators is extremely large, typically 10,000 or greater. This is due to the very low series resistance (typically around $5\unit{\Omega}$).
 
@@ -71,6 +70,12 @@ $$
 <p className="centered">where:<br/>
 $X_L$ is the reactance of the inductor.<br/>
 $R$ is the equivalent series resistance of the crystal.<br/></p>
+
+## Start-up Time
+
+The following oscilloscope capture shows a 32 MHz crystal starting-up. I captured the driven leg of the crystal from the MCU. It is not clear at exactly what point the MCU considers the crystal to be "started up" and stable, but is likely in the range of 200 us - 2 ms. We are zoomed out too far to see the individual cycles, but we can see the envelope of the oscillation.
+
+<Image src={import('./_assets/32-mhz-crystal-starting-up-500us.webp')} width="700px">A scope capture of a 32 MHz crystal starting up. This is probing the driven leg of the crystal from the MCU. The time scale is 100 µs/division. Vertical scale is 200 mV/division.</Image>
 
 ## 32.768kHz Crystals
 

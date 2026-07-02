@@ -1,17 +1,17 @@
 ---
 authors: [gbmhunter]
 date: 2020-04-19
-description: Zephyr is an open source RTOS, system/peripheral API and build system for embedded systems. This page covers installation, API usage and more.
-lastUpdated: 2025-07-24
-tags: [programming, operating systems, OSes, RTOS, Zephyr, installation, guide, Linux, Windows, MacOS, WSL]
+description: Installation guides for the Zephyr RTOS on Linux, Windows and WSL, including west workspace setup, SDK/toolchain installation and getting VS Code IntelliSense working.
+lastUpdated: 2026-07-02
+tags: [programming, operating systems, OSes, RTOS, Zephyr, installation, guide, Linux, Windows, WSL]
 title: The Zephyr Installation Guide
 type: page
 ---
 
-Below are some basic Zephyr installation guides for various OSes. Another good read is the official [Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html). Installing Zephyr is not the easiest thing in world, compared to what you might expect from modern package managers such as `npm`, `pip` or `cargo`. But we have to give Zephyr a break because it is complex in the sense that it supports many different architectures and compiler toolchains.
+Below are some basic [Zephyr](/programming/operating-systems/zephyr/) installation guides for various OSes. Another good read is the official [Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html). Installing Zephyr is not the easiest thing in the world, compared to what you might expect from modern package managers such as `npm`, `pip` or `cargo`. But we have to give Zephyr a break because it is complex in the sense that it supports many different architectures and compiler toolchains.
 
 <Aside type="note">
-Zephyr has updated their installation process significantly since I first created this guide. I have updated the main instructions to use the latest version of Zephyr (v4.0.0). If you are after older installation instructions, see the [Older Guide](#older-guide) section below.
+Zephyr has updated their installation process significantly since I first created this guide. I have updated the main instructions to use the latest version of Zephyr (v4.0.0). Note that the example manifest below pins nRF Connect SDK (sdk-nrf) v3.0.1 — that is an nRF Connect SDK version, not a Zephyr version (it is based on Zephyr v4). If you are after older installation instructions, see the [Older Guide](#older-guide) section below.
 </Aside>
 
 ## Linux
@@ -33,7 +33,7 @@ pip install west
 
 This will make `west` available from the command line, as long as the virtual environment is activated.
 
-We are not going to now run `west init`, as it will put zephyr in the project root directory. I prefer to keep all west managed dependencies in a single sub-directory so that it keeps the project root directory clean and is easy to setup `.gitignore` rules for.
+We are not going to run `west init`, as it will put zephyr in the project root directory. I prefer to keep all west managed dependencies in a single sub-directory so that it keeps the project root directory clean and is easy to set up `.gitignore` rules for.
 
 So instead, let's create a directory called `.west`, add a file called `config` with the contents:
 
@@ -51,7 +51,7 @@ base = external/zephyr
 
 The `base = external/zephyr` will tell west to look for the zephyr source code in the `external/zephyr` directory. All of the other dependencies that are pulled down when you run `west update` will also go in the `external` directory alongside the `zephyr` directory.
 
-Create a `app` directory, and then create a `west.yml` file in it with the following contents:
+Create an `app` directory, and then create a `west.yml` file in it with the following contents:
 
 ```text title="app/west.yml"
 manifest:
@@ -71,7 +71,7 @@ manifest:
 ```
 
 <Aside type="note">
-This example uses the `nrf` port of Zephyr, since I was developing for a nRF52840-based board at the time. You can find the list of ports [here](https://docs.zephyrproject.org/latest/boards/index.html).
+This example uses the `nrf` port of Zephyr, since I was developing for a nRF52840-based board at the time. You can find the list of ports [here](https://docs.zephyrproject.org/latest/boards/index.html). If you want to define your own board, see [Adding a Custom Board to Zephyr](/programming/operating-systems/zephyr/adding-a-custom-board/).
 </Aside>
 
 Now we can run `west update` to pull down all the required dependencies. This command will take some time (5-15mins) to complete, so sit back and have a coffee. It will populate the `external` directory with a lot of Git repos.
@@ -92,17 +92,17 @@ Install the Zephyr SDK (which is actually the toolchain):
 west sdk install
 ```
 
-Note that the entire SDK is rather large, sitting around 12GB at `v0.17.1` (see <IRef iref="fig-screenshot-showing-the-size-of-the-zephyr-sdk" /> and <IRef iref="fig-west-sdk-download-screenshot" />). You can reduce this by only specifying specific toolchains to install with the `--toolchains` flag. The two I used the most are `arm-none-eabi` (compiling for real MCU) and `x86_64-zephyr-elf` (compiling tests for `native_sim`).
+Note that the entire SDK is rather large, sitting around 12GB at `v0.17.1` (see the screenshots below). You can reduce this by only specifying specific toolchains to install with the `--toolchains` flag. The two I used the most are `arm-zephyr-eabi` (compiling for real MCU) and `x86_64-zephyr-elf` (compiling tests for `native_sim`).
 
 By default on Linux, the Zephyr SDK will be installed to a directory directly under your home directory. For example, `~/zephyr-sdk-0.17.1`.
 
-<Image iref="fig-screenshot-showing-the-size-of-the-zephyr-sdk" src={import('./_assets/screenshot-showing-the-size-of-the-zephyr-sdk.webp')} width="800px">A screenshot showing the total size of v0.17.1 of the Zephyr SDK. 12GB!</Image>
+<Image src={import('./_assets/screenshot-showing-the-size-of-the-zephyr-sdk.webp')} width="800px">A screenshot showing the total size of v0.17.1 of the Zephyr SDK. 12GB!</Image>
 
 ```bash
 west sdk install --toolchains arm-zephyr-eabi x86_64-zephyr-elf
 ```
 
-<Image iref="fig-west-sdk-download-screenshot" src={import('./_assets/west-sdk-download-screenshot.webp')} width="800px">A screenshot of the Zephyr SDK download progress, showing all the different toolchains that will be downloaded by default.</Image>
+<Image src={import('./_assets/west-sdk-download-screenshot.webp')} width="800px">A screenshot of the Zephyr SDK download progress, showing all the different toolchains that will be downloaded by default.</Image>
 
 You can also specify a specific SDK version to install with the `--version` flag:
 
@@ -114,7 +114,7 @@ If you have installed multiple versions of the Zephyr SDK, when building you can
 
 ## Older Guide
 
-I think this applied Zephyr prior to v4. In `v4` they added commands such as `west sdk install` and `west packages pip --install` to make installation easier.
+I think this applied to Zephyr prior to v4. In v4 they added commands such as `west sdk install` and `west packages pip --install` to make installation easier.
 
 ### Windows
 
@@ -201,7 +201,7 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
     HKEY_CURRENT_USER\Software\Kitware\CMake\Packages\ZephyrUnittest
     ```
 
-1. Download and install the GNU Arm Embedded Toolchain from https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads. By default it will want to be installed on your system at `C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2020-q4-major>`, but don't let it! Zephyr does not like spaces in the path, so install it to a path which has none. I chose `C:\gnu-arm-embedded-toolchain\10-2020-q4-major\`:
+1. Download and install the GNU Arm Embedded Toolchain from https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads. By default it will want to be installed on your system at `C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2020-q4-major`, but don't let it! Zephyr does not like spaces in the path, so install it to a path which has none. I chose `C:\gnu-arm-embedded-toolchain\10-2020-q4-major\`:
 
 1. Setup environment variables:
 
@@ -210,7 +210,11 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
     set GNUARMEMB_TOOLCHAIN_PATH=C:\gnu-arm-embedded-toolchain\10-2020-q4-major
     ```
 
-1. Install the Python dependencies that Zephyr
+1. Install the Python dependencies that Zephyr needs:
+
+    ```cmd
+    > pip install -r zephyr\scripts\requirements.txt
+    ```
 
 1. Build the application! For this example I will be using the ST NUCLEO F070RB development board. Note that you can't build this from the project root directory, first you have to change into the `zephyr` subdirectory:
 
@@ -251,7 +255,7 @@ Make sure to use a command-prompt and not PowerShell, as PowerShell does not pla
 
 ### Ubuntu/WSL
 
-Follow these instructions to setup/install Zephyr on UNIX like systems, including Ubuntu and WSL. Use of `apt` assumes you are running a Debian like system.
+Follow these instructions to set up/install Zephyr on UNIX like systems, including Ubuntu and WSL. Use of `apt` assumes you are running a Debian like system.
 
 1. Firstly, install system dependencies:
 
@@ -271,7 +275,7 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.4/zephyr-sdk-0.16.4_linux-x86_64.tar.xz
     ```
 
-    This file is over 1GB in size, so make sure you have space! There is also a _minimal release_ which doesn't come with all the toolchains, but instead let's you select and download the ones you needed.
+    This file is over 1GB in size, so make sure you have space! There is also a _minimal release_ which doesn't come with all the toolchains, but instead lets you select and download the ones you need.
 
     <Aside type="caution">
     Arguably a bit of a naming gaffe, but the Zephyr SDK does not actually contain the Zephyr source code (the Zephyr source code is pulled into the west workspace when you run `west update`). It contains toolchains for all of Zephyr's supported architectures. I would have thought "Zephyr Toolchain" or similar would have been a better name!
@@ -292,7 +296,7 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     ./setup.sh
     ```
 
-1. Install `udev` rules, which let's you program most boards as a regular user (serial port permissions):
+1. Install `udev` rules, which lets you program most boards as a regular user (serial port permissions):
 
     ```sh
     sudo cp ~/zephyr-sdk-0.16.4/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
@@ -320,7 +324,7 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     west init .
     ```
 
-    This creates a directory called `.west` inside the current working directory. Inside `.west` another directory called `manifest-tmp`.
+    This creates a directory called `.west` inside the current working directory. Inside `.west` is another directory called `manifest-tmp`.
 
 1. Update:
 
@@ -357,11 +361,11 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     west build -p auto -b nucleo_f070rb samples/basic/blinky
     ```
 
-1. Make sure the dev. kit is plugged into the computer, and then flash the application onto the dev kit (remember we were using the NUCLEO-F070RB for this example):
+1. Make sure the dev kit is plugged into the computer, and then flash the application onto the dev kit (remember we were using the NUCLEO-F070RB for this example):
 
     ```sh
     west flash
-    ````
+    ```
 
 <Aside type="note">
 Both `west init` and `west update` can take some time to run (2-5mins each).
@@ -373,7 +377,7 @@ If you don't have a dev. board, you could always test out Zephyr by building it 
 west build -p auto -b native_sim samples/basic/blinky
 ```
 
-The build executable is at `./zephyr/build/zephyr/zephyr.exe` (even though the extension is `.exe`, it is compiled for Linux not Windows). Of course, there is no basic LED we can blink when running on Linux, but it is mocked for us and instead prints to `stdout`:
+The built executable is at `./zephyr/build/zephyr/zephyr.exe` (even though the extension is `.exe`, it is compiled for Linux not Windows). Of course, there is no basic LED we can blink when running on Linux, but it is mocked for us and instead prints to `stdout`:
 
 ```sh
 ~/zephyr-project/zephyr/build/zephyr$ ./zephyr.exe 
@@ -389,9 +393,9 @@ LED state: ON
 
 ## Creating An Application
 
-Once you've followed the installation instructions, you should be able to build and flash _repository_ applications that are contained with the Zephyr repo (e.g. blinky). But what if you want to develop your own application? This is were is pays to understand the three different application types:
+Once you've followed the installation instructions, you should be able to build and flash _repository_ applications that are contained within the Zephyr repo (e.g. blinky). But what if you want to develop your own application? This is where it pays to understand the three different application types:
 
-* **Repository Application:** An application contained with the Zephyr repository itself (inside the `zephyr/` directory in the workspace you created above). Typically these are example projects under `samples/` like "Hello, world!" and "blinky". In the directory structure below, `hello_world` is a repository application.
+- **Repository Application:** An application contained within the Zephyr repository itself (inside the `zephyr/` directory in the workspace you created above). Typically these are example projects under `samples/` like "Hello, world!" and "blinky". In the directory structure below, `hello_world` is a repository application.
     ```text
     zephyr-project/
     ├─── .west/
@@ -406,7 +410,7 @@ Once you've followed the installation instructions, you should be able to build 
         ├── tests/
         └── ...
     ```
-* **Workspace Application:** An application that is within the west workspace, but not within the zephyr repository (`zephyr/`). This is the way I recommended you create an application if you're learning! In the directory structure below, `app` is a workspace application:
+- **Workspace Application:** An application that is within the west workspace, but not within the zephyr repository (`zephyr/`). This is the way I recommended you create an application if you're learning! In the directory structure below, `app` is a workspace application:
     ```text
     <home>/
     ├─── zephyr-project/
@@ -421,7 +425,7 @@ Once you've followed the installation instructions, you should be able to build 
     │     ├── modules/
     │     └── ...
     ```
-* **Freestanding Application:** An application that is not within the west workspace, i.e. stored somewhere else entirely on your disk. In the directory structure below, `app` is a freestanding application:
+- **Freestanding Application:** An application that is not within the west workspace, i.e. stored somewhere else entirely on your disk. In the directory structure below, `app` is a freestanding application:
     ```text
     <home>/
     ├─── zephyr-project/
@@ -449,7 +453,7 @@ mkdir app
 cd app
 ```
 
-Now create a file called `CMakeLists.txt` with the follow context:
+Now create a file called `CMakeLists.txt` with the following contents:
 
 ```cmake title="app/CMakeLists.txt"
 cmake_minimum_required(VERSION 3.20.0)
@@ -462,7 +466,7 @@ target_sources(app PRIVATE src/main.c)
 
 Create an empty `prj.conf` inside this `app` directory. It needs to exist, but you don't need anything in it for now.
 
-The last thing you need to create a directory called `src` to store all the source code, and then create a file in it called `main.c` with the following contents.
+The last thing you need to do is create a directory called `src` to store all the source code, and then create a file in it called `main.c` with the following contents.
 
 ```c title="app/src/main.c"
 #include <stdio.h>
@@ -494,7 +498,7 @@ Your basic app is done! Your file structure should look like this:
 │     └── ...
 ```
 
-To build and run, first `cd` back into the west workspace at `~/zephyr-project/`. The run this at the command-line:
+To build and run, first `cd` back into the west workspace at `~/zephyr-project/`. Then run this at the command-line:
 
 ```bash
 west build -b native_sim ./app
@@ -516,11 +520,11 @@ Hello, world!
 
 ## Getting VSCode IntelliSense Working
 
-The most effective way of getting VS Code's IntelliSense working well with Zephyr is to use the "compile_commands" method as described below. I've found this to be much more effective than trying to provide include paths.
+The most effective way of getting VS Code's IntelliSense working well with Zephyr is to use the "compile_commands" method as described below. Once you have IntelliSense working, you might also want to [setup debugging in VSCode for Zephyr](/programming/operating-systems/zephyr/debugging/). I've found this to be much more effective than trying to provide include paths.
 
-Add the following to your `.west/config` file:
+Add the following to your `.west/config` file (if you followed the Linux guide above, your `.west/config` already includes this):
 
-```
+```ini
 [build]
 cmake-args = -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ```
@@ -543,9 +547,9 @@ Add the following to your `.vscode/c_cpp_properties.json` file:
 
 This will tell VS Code to use the `compile_commands.json` file for IntelliSense. The above snippet assumes your build directory is `build/`. Change this as needed.
 
-Rebuild your project from scratch. A `compile_commands.json` should be generated in your build directory. Thus will be picked up by VSCode's Intellisense and should fix any include errors you have!
+Rebuild your project from scratch. A `compile_commands.json` should be generated in your build directory. This will be picked up by VSCode's Intellisense and should fix any include errors you have!
 
-If you are working on multiple apps with one west workspace, you can separate configurations for each. The following example sets up two configurations, one for the application and one for it's ztest unit tests that are in a `tests/` sub-directory, and with a build folder set to `build-tests`:
+If you are working on multiple apps with one west workspace, you can separate configurations for each. The following example sets up two configurations, one for the application and one for its [ztest unit tests](/programming/operating-systems/zephyr/#tests) that are in a `tests/` sub-directory, and with a build folder set to `build-tests`:
 
 ```json
 {
@@ -574,7 +578,7 @@ Instead of adding to `.vscode/c_cpp_properties.json`, if you just have one confi
 }
 ```
 
-If you want more info on Zephyr unit tests and IntelliSense, see the [Tests](#tests) section of this page.
+If you want more info on Zephyr unit tests and IntelliSense, see the [Tests](/programming/operating-systems/zephyr/#tests) section of the main Zephyr page.
 
 ## Using clangd
 
@@ -591,25 +595,3 @@ I haven't had much luck moving a West workspace on Linux. After moving, the `wes
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
-
-[^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
-[^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
-[^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
-[^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
-[^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.
-[^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.
-[^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-1, from https://www.scaler.com/topics/zephyr-operating-system/.
-[^wikipedia-zephyr-operating-system]: Wikipedia (2023, Oct 20). _Zephyr (operating system)_. Retrieved 2024-02-21, from https://en.wikipedia.org/wiki/Zephyr_(operating_system).
-[^nordic-semi-nrf52-zephyr-support-added]: Nordic Semiconductor (2020, Apr 2). _Nordic Semiconductor now offering broad product line support for its short-range and cellular IoT devices on nRF Connect platform including a suite of development tools and open source nRF Connect SDK_ [blog post]. Retrieved 2024-02-21, from https://www.nordicsemi.com/Nordic-news/2020/04/nordic-now-offering-support-for-its-shortrange-and-cellular-iot-devices-on-nrf-connect-platform.
-[^mind-using-emulators-and-fake-devices-in-zephyr]: Javad Rahamipetroudi (2024, May 22). _Using emulators and fake devices in Zephyr_. Retrieved 2024-10-24, from https://mind.be/using-emulators-and-fake-devices-in-zephyr/.
-[^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
-[^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.
-[^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
-[^dockerhub-zephyr-project-rtos]: Docker Hub. _zephyrprojectrtos_ [user page]. Retrieved 2024-11-26, from https://hub.docker.com/u/zephyrprojectrtos.
-[^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
-[^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
-[^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
-[^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
-[^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
-[^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
-[^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.

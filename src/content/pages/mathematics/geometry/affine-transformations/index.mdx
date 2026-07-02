@@ -1,28 +1,32 @@
 ---
 authors: [gbmhunter]
 date: 2017-11-14
-lastUpdated: 2017-11-14
+description: An introduction to affine transformations, including the transformation matrix, translation, scaling, rotation, and shearing using homogeneous coordinates.
+lastUpdated: 2026-07-02
+tags: [affine transformations, geometry, matrices, rotation, translation, scaling, shearing, homogeneous coordinates]
 title: Affine Transformations
 type: page
 ---
 
 An affine transformation is a function between two different coordinate systems (or affine spaces) which preserves certain properties. These properties include:
 
-* Points (points that exists in the first coordinate system will exist in the second coordinate system)
-* Straight lines (lines that are straight in the first coordinate system are straight in the second)
-* Parallelism (lines that are parallel in the first coordinate system are parallel in the second)
+- Points (points that exist in the first coordinate system will exist in the second coordinate system)
+- Straight lines (lines that are straight in the first coordinate system are straight in the second)
+- Parallelism (lines that are parallel in the first coordinate system are parallel in the second)
 
 An affine transformation can encompass the following "basic" modifications:
 
-* Translation
-* Reflection
-* Scaling
-* Rotation
-* Shearing
+- Translation
+- Reflection
+- Scaling
+- Rotation
+- Shearing
+
+Affine transformations are a special case of the more general [projective transformations](/mathematics/geometry/projective-transformations/).
 
 ## The Transformation Matrix
 
-A 2D affine transformation matrix is always in the form:
+A 2D affine [transformation matrix](/mathematics/matrices/) is always in the form:
 
 $$
 M = \begin{bmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{bmatrix}
@@ -34,7 +38,7 @@ $$
 \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{bmatrix}\begin{bmatrix}x\\y\\1\end{bmatrix}
 $$
 
-Note how one more matrix dimension is used than the dimension of the space you wish to apply the affine transformation to. This is so that translation transformations can be performed.
+Note how one more matrix dimension is used than the dimension of the space you wish to apply the affine transformation to (this representation is known as _homogeneous coordinates_). This is so that translation transformations can be performed.
 
 ## Translation
 
@@ -54,40 +58,40 @@ $$
 
 ## Rotation
 
-A 2D counter-clockwise rotation can be described by the following equation:
+A [2D counter-clockwise rotation](/mathematics/geometry/2d-coordinate-rotation/) can be described by the following equation:
 
 $$
-\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
 $$
 
 Note that the above equation performs rotation around the origin. To perform rotation around an arbitrary point, first translate the point to the origin, perform the rotation, and then translate back.
 
-3D rotation can be divided into 3 rotations around each of the axis:
+3D rotation can be decomposed into 3 rotations around each of the axes (see the [Rotation Matrices page](/mathematics/geometry/rotation-matrices/) for more info, and the [Euler Angles page](/mathematics/geometry/euler-angles/) for how these are combined):
 
 $$
-R_x = \begin{bmatrix}1&0&0\\0&cos\theta&-sin\theta\\0&sin\theta&cos\theta\end{bmatrix}
-$$
-
-$$
-R_y = \begin{bmatrix}cos\theta&0&sin\theta\\0&1&0\\-sin\theta&0&cos\theta\end{bmatrix}
+R_x = \begin{bmatrix}1&0&0\\0&\cos\theta&-\sin\theta\\0&\sin\theta&\cos\theta\end{bmatrix}
 $$
 
 $$
-R_z = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix}
+R_y = \begin{bmatrix}\cos\theta&0&\sin\theta\\0&1&0\\-\sin\theta&0&\cos\theta\end{bmatrix}
+$$
+
+$$
+R_z = \begin{bmatrix}\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\0&0&1\end{bmatrix}
 $$
 
 ## Shearing
 
-A x direction shear (a shearing along x that is proportional to y):
+An x direction shear (a shearing along x that is proportional to y):
 
 $$
-\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&0\\\lambda&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&\lambda&0\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
 $$
 
 A y direction shear (a shearing along y that is proportional to x):
 
 $$
-\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&\lambda&0\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
+\begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&0\\\lambda&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}
 $$
 
 ## Combining Transformations

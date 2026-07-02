@@ -1,0 +1,57 @@
+---
+authors: [gbmhunter]
+date: 2026-07-02
+description: LED matrix displays (a.k.a. LED dot matrix displays) are grids of LEDs used to show text, symbols and low-resolution images. This page covers how they work, multiplexed scanning, driver ICs such as the MAX7219 and HT16K33, addressable RGB matrices, and HUB75 panels.
+lastUpdated: 2026-07-02
+tags: [LED matrix displays, LED dot matrix displays, displays, LEDs, MAX7219, HT16K33, WS2812, NeoPixel, HUB75, multiplexing, charlieplexing, Yoto]
+title: LED Matrix Displays
+type: page
+---
+
+LED matrix displays (also called LED dot matrix displays) are displays made from a 2D grid of [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/), with each LED acting as one pixel. Because the resolution is usually low (common sizes are 8x8, 16x16 and 32x32), they are used to show text, symbols, simple animations and low-resolution "pixel art" rather than detailed images. Unlike [LCDs](/electronics/components/displays/lcd-screens/) and [electrophoretic displays](/electronics/components/displays/bistable-displays/), every pixel is self-emissive, which gives them high brightness, wide viewing angles and good visibility in the dark. They are found in scrolling message signs, clocks, audio spectrum displays, bus/train destination boards and consumer products such as the Yoto kids audio player (which uses a 16x16 RGB LED matrix to show pixel-art icons).[^yoto-player-product-page]
+
+<Image src={import('./_assets/yoto-led-pixel-display-photo-full-size-and-mini.webp')} width="700px">A photo of the Yoto full-size player (left) and mini player (right). Both show their pixel displays in action.</Image>
+
+## How They Work
+
+The simplest way to drive a grid of LEDs would be to wire each one to its own microcontroller pin, but this doesn't scale — an 8x8 matrix would need 64 pins. Instead, the LEDs in a matrix are wired in rows and columns. In a _row-cathode_ arrangement, all of the anodes in a column are connected together and all of the cathodes in a row are connected together (or vice versa for _row-anode_). An $N \times M$ matrix then only needs $N + M$ connections, e.g. 16 pins for an 8x8 matrix instead of 64.
+
+The trade-off is that you can no longer turn on an arbitrary pattern of LEDs all at once, since the LEDs share row and column lines. The solution is **multiplexed scanning**: the driver turns on one row at a time, sets the column lines to the pattern for that row, then moves on to the next row. If this scan is repeated fast enough (a full-frame refresh rate of $\geq 100\unit{Hz}$ is a good starting point), persistence of vision makes the image appear steady to the human eye. Slower refresh rates can produce visible flicker, especially in peripheral vision, and any refresh rate can show up as banding or strobing when the display is filmed with a camera.
+
+Because each row is only on for $1/N$ of the time (its _duty cycle_), the peak current through each LED must be roughly $N$ times higher than the desired average current to achieve the same apparent brightness. LEDs are usually rated for much higher peak pulse currents than continuous currents, so this works, but it is why dedicated matrix driver ICs with constant-current outputs are preferred over bare microcontroller pins for anything beyond a small hobby matrix.
+
+**[Charlieplexing](/electronics/components/diodes/light-emitting-diodes-leds/#charlieplexing)** is a related technique that exploits the tri-state capability of microcontroller pins to drive $n(n-1)$ LEDs from only $n$ pins. It reduces pin count even further, but the duty cycle per LED is worse and the wiring is harder to reason about, so it tends to be used for small indicator arrays rather than full displays.
+
+## Driver ICs
+
+Dedicated driver ICs handle the scanning, constant-current drive and brightness control, and present a simple serial interface ([SPI](/electronics/communication-protocols/spi-communication-protocol/) or [I2C](/electronics/communication-protocols/i2c-communication-protocol/)) to the host microcontroller.
+
+Popular examples include:
+
+- **MAX7219/MAX7221 (Analog Devices, previously Maxim)**: Probably the most well-known hobbyist LED matrix driver. It drives an 8x8 monochrome matrix (or 8 seven-segment digits) with a SPI-compatible serial interface, contains an 8x8 static RAM to hold the display data, and sets the segment current with a single external resistor. Devices can be daisy-chained to build longer displays, which is why chains of 8x8 MAX7219 modules are a common way to build scrolling text signs.[^analog-max7219-datasheet]
+- **HT16K33 (Holtek)**: An I2C driver that can scan up to a 16x8 matrix, with built-in RAM and a key-scan function. It is used on many small "backpack" matrix boards such as Adafruit's 8x8 matrix backpacks.[^holtek-ht16k33-datasheet]
+- **IS31FL37xx family (Lumissil, previously ISSI)**: I2C matrix drivers with per-LED PWM brightness control (e.g. the IS31FL3731 drives 144 LEDs with 8-bit PWM each), enabling smooth fades and greyscale effects rather than simple on/off pixels.
+
+## Addressable RGB Matrices
+
+Many modern LED matrix displays, particularly RGB ones, do away with the row/column scanning approach entirely and instead use **addressable LEDs** such as the [WS2812B](/electronics/components/diodes/light-emitting-diodes-leds/#rgb-leds) (commonly known by Adafruit's brand name _NeoPixel_) or the SK6812. Each LED package contains its own driver IC and is connected in a single long daisy-chain — the matrix is electrically just a strip of addressable LEDs zig-zagged into a grid. Each pixel holds its own 24-bit colour value, so no scanning is needed and there is no flicker.[^worldsemi-ws2812b-datasheet]
+
+The main design considerations with addressable matrices are:
+
+- **Power**: each WS2812B can draw up to about $60\unit{mA}$ at full white, so a 16x16 matrix can theoretically draw over $15\unit{A}$. In practice firmware limits the overall brightness, but the power supply and PCB traces/wiring must be sized carefully.
+- **Data timing**: the single-wire protocol has strict timing requirements (an $800\unit{kHz}$ bit stream), which is usually met with [hardware peripherals (SPI, PIO, RMT etc.)](/electronics/communication-protocols/spi-communication-protocol/#ws2812-rgb-leds) rather than bit-banging.
+- **Mapping**: because the chain is usually laid out in a serpentine (zig-zag) pattern, the firmware must map $(x, y)$ pixel coordinates to the correct index in the chain.
+
+## HUB75 Panels
+
+Larger RGB panels (32x32, 64x32, 64x64 and up) used for video walls and signage typically use the **HUB75** interface. These panels are scanned matrices: they contain shift-register/latch driver ICs on the back, and the host must continuously clock in row data and step through the row-address lines (labelled A, B, C and up to E, depending on the panel's scan rate) to refresh the display. Colour depth is achieved by repeatedly re-scanning the panel with binary-coded modulation, so the host needs to sustain a high pixel clock — this is commonly done with an FPGA, or a microcontroller with DMA and plenty of spare CPU time (dedicated driver boards exist for the Raspberry Pi and ESP32).[^adafruit-rgb-led-matrix-guide] The reward is that HUB75 panels are much cheaper per pixel than addressable-LED matrices and can be tiled edge-to-edge into large video displays.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^analog-max7219-datasheet]: Analog Devices. _MAX7219/MAX7221 Serially Interfaced, 8-Digit LED Display Drivers_ [datasheet]. Retrieved 2026-07-02, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX7219-MAX7221.pdf.
+[^holtek-ht16k33-datasheet]: Holtek. _HT16K33 RAM Mapping 16x8 LED Controller Driver with keyscan_ [datasheet]. Retrieved 2026-07-02, from https://www.holtek.com/webapi/116711/HT16K33Av102.pdf.
+[^worldsemi-ws2812b-datasheet]: Worldsemi. _WS2812B Intelligent control LED integrated light source_ [datasheet]. Retrieved 2026-07-02, from https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf.
+[^yoto-player-product-page]: Yoto. _Yoto Player_ [product page]. Retrieved 2026-07-02, from https://us.yotoplay.com/products/yoto-player.
+[^adafruit-rgb-led-matrix-guide]: Phillip Burgess. _32x16 and 32x32 RGB LED Matrix_ [guide]. Adafruit. Retrieved 2026-07-02, from https://learn.adafruit.com/32x16-32x32-rgb-led-matrix.
