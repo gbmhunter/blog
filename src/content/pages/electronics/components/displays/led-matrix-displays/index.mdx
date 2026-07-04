@@ -2,13 +2,18 @@
 authors: [gbmhunter]
 date: 2026-07-02
 description: LED matrix displays (a.k.a. LED dot matrix displays) are grids of LEDs used to show text, symbols and low-resolution images. This page covers how they work, multiplexed scanning, driver ICs such as the MAX7219 and HT16K33, addressable RGB matrices, and HUB75 panels.
-lastUpdated: 2026-07-02
+image: ./_assets/cover-image.webp
+lastUpdated: 2026-07-03
 tags: [LED matrix displays, LED dot matrix displays, displays, LEDs, MAX7219, HT16K33, WS2812, NeoPixel, HUB75, multiplexing, charlieplexing, Yoto]
 title: LED Matrix Displays
 type: page
 ---
 
-LED matrix displays (also called LED dot matrix displays) are displays made from a 2D grid of [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/), with each LED acting as one pixel. Because the resolution is usually low (common sizes are 8x8, 16x16 and 32x32), they are used to show text, symbols, simple animations and low-resolution "pixel art" rather than detailed images. Unlike [LCDs](/electronics/components/displays/lcd-screens/) and [electrophoretic displays](/electronics/components/displays/bistable-displays/), every pixel is self-emissive, which gives them high brightness, wide viewing angles and good visibility in the dark. They are found in scrolling message signs, clocks, audio spectrum displays, bus/train destination boards and consumer products such as the Yoto kids audio player (which uses a 16x16 RGB LED matrix to show pixel-art icons).[^yoto-player-product-page]
+LED matrix displays (also called LED dot matrix displays) are displays made from a 2D grid of [LEDs](/electronics/components/diodes/light-emitting-diodes-leds/), with each LED acting as one pixel. Because the resolution is usually low (common sizes are 8x8, 16x16 and 32x32), they are used to show text, symbols, simple animations and low-resolution "pixel art" rather than detailed images.
+
+<Image src={import('./_assets/lite-on-inc-ltp-757kr-led-matrix-5x7-photo.webp')} width="300px">A photo of a small Lite-On Inc. LTP-757KR 5x7 LED matrix. The LEDs are arranged in a grid, in a "common anode row, common cathode column" configuration.[^digikey-lite-on-ltp-757kr]</Image>
+
+Unlike [LCDs](/electronics/components/displays/lcd-screens/) and [electrophoretic displays](/electronics/components/displays/bistable-displays/), every pixel is self-emissive, which gives them high brightness, wide viewing angles and good visibility in the dark. They are found in scrolling message signs, clocks, audio spectrum displays, bus/train destination boards and consumer products such as the Yoto kids audio player (which uses a 16x16 RGB LED matrix to show pixel-art icons).[^yoto-player-product-page]
 
 <Image src={import('./_assets/yoto-led-pixel-display-photo-full-size-and-mini.webp')} width="700px">A photo of the Yoto full-size player (left) and mini player (right). Both show their pixel displays in action.</Image>
 
@@ -16,7 +21,11 @@ LED matrix displays (also called LED dot matrix displays) are displays made from
 
 The simplest way to drive a grid of LEDs would be to wire each one to its own microcontroller pin, but this doesn't scale — an 8x8 matrix would need 64 pins. Instead, the LEDs in a matrix are wired in rows and columns. In a _row-cathode_ arrangement, all of the anodes in a column are connected together and all of the cathodes in a row are connected together (or vice versa for _row-anode_). An $N \times M$ matrix then only needs $N + M$ connections, e.g. 16 pins for an 8x8 matrix instead of 64.
 
-The trade-off is that you can no longer turn on an arbitrary pattern of LEDs all at once, since the LEDs share row and column lines. The solution is **multiplexed scanning**: the driver turns on one row at a time, sets the column lines to the pattern for that row, then moves on to the next row. If this scan is repeated fast enough (a full-frame refresh rate of $\geq 100\unit{Hz}$ is a good starting point), persistence of vision makes the image appear steady to the human eye. Slower refresh rates can produce visible flicker, especially in peripheral vision, and any refresh rate can show up as banding or strobing when the display is filmed with a camera.
+<Image src={import('./_assets/led-matrix-common-row-anode-and-common-row-cathode-schematic.svg')} width="800px">Schematic of a 4x4 LED matrix in both common-row anode (left) and common-row cathode (right) arrangements. The anodes (or cathodes) of each row are connected together, and the cathodes (or anodes) of each column are connected together. This reduces the number of pins needed to drive the matrix from 16 to 8.</Image>
+
+The trade-off is that you can no longer turn on an arbitrary pattern of LEDs all at once, since the LEDs share row and column lines. The solution is **multiplexed scanning**: the driver turns on one row at a time, sets the column lines to the pattern for that row, then moves on to the next row. This is illustrated in the diagram below. If this scan is repeated fast enough (a full-frame refresh rate of $\geq 100\unit{Hz}$ is a good starting point), persistence of vision makes the image appear steady to the human eye. Slower refresh rates can produce visible flicker, especially in peripheral vision, and any refresh rate can show up as banding or strobing when the display is filmed with a camera.
+
+<Image src={import('./_assets/led-matrix-driving-one-row-at-a-time.svg')} width="600px">A diagram illustrating how a multiplexed LED matrix is driven one row at a time. Row A is driven high (the red line,which makes the anodes of all the LEDs on that row positive), and then columns are driven low as desired to light the appropriate LEDs on row A (the black lines on column 1, 3 and 4).</Image>
 
 Because each row is only on for $1/N$ of the time (its _duty cycle_), the peak current through each LED must be roughly $N$ times higher than the desired average current to achieve the same apparent brightness. LEDs are usually rated for much higher peak pulse currents than continuous currents, so this works, but it is why dedicated matrix driver ICs with constant-current outputs are preferred over bare microcontroller pins for anything beyond a small hobby matrix.
 
@@ -55,3 +64,4 @@ Larger RGB panels (32x32, 64x32, 64x64 and up) used for video walls and signage 
 [^worldsemi-ws2812b-datasheet]: Worldsemi. _WS2812B Intelligent control LED integrated light source_ [datasheet]. Retrieved 2026-07-02, from https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf.
 [^yoto-player-product-page]: Yoto. _Yoto Player_ [product page]. Retrieved 2026-07-02, from https://us.yotoplay.com/products/yoto-player.
 [^adafruit-rgb-led-matrix-guide]: Phillip Burgess. _32x16 and 32x32 RGB LED Matrix_ [guide]. Adafruit. Retrieved 2026-07-02, from https://learn.adafruit.com/32x16-32x32-rgb-led-matrix.
+[^digikey-lite-on-ltp-757kr]: DigiKey. _LTP-757KR Lite-On Inc. | LED Dot Matrix and Cluster_ [product page]. Retrieved 2026-07-03, from https://www.digikey.co.nz/en/products/detail/liteon/LTP-757KR/408228.

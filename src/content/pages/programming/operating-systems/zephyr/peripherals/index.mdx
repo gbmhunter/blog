@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2020-04-19
 description: Zephyr has a collection of well defined APIs for interacting with microcontroller peripherals (drivers). This page covers how to use them.
-lastUpdated: 2025-08-07
+lastUpdated: 2026-07-04
 tags: [programming, operating systems, OSes, RTOS, Zephyr, peripherals, UART, SPI, I2C, GPIO, PWM, ADC, DAC, QEMU, simulation, stack canaries, nrfx, SAADC]
 title: Zephyr Peripherals
 type: page
@@ -12,7 +12,7 @@ Not only does Zephyr provide you with an RTOS, but it also gives you a collectio
 
 This page aims to cover Zephyr's drivers and show examples on how to use them.
 
-The latest documentation for peripherals (UART, SPI, PWM, PIN, etc.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html. Some of Zephyr's own documentation on drivers is great and teaches you by example, and other drivers are not so well written and you have to piece together code snippets littered all over the place. The automated Doxygen generation is pretty decent, but is only really useful once you know the basics -- it doesn't serve as a great intro in a driver's API and how to use it.
+The latest documentation for peripherals (UART, SPI, PWM, PIN, etc.) APIs can be found at https://docs.zephyrproject.org/latest/reference/peripherals/index.html. Some of Zephyr's own documentation on drivers is great and teaches you by example, and other drivers are not so well written and you have to piece together code snippets littered all over the place. The automated Doxygen generation is pretty decent, but is only really useful once you know the basics -- it doesn't serve as a great intro to a driver's API and how to use it.
 
 <Aside type="note">
 I have a GitHub library called <a href="https://github.com/gbmhunter/ZephyrCppToolkit" target="_blank">ZephyrCppToolkit</a> which provides C++ wrappers over some of Zephyr's peripherals. One of the main design goals was to make it easy to mock the peripherals and test your application on Zephyr's <code>native_sim</code> board (i.e. Linux).
@@ -72,11 +72,11 @@ void LogResetCause()
         if(resetCause & resetCauseFlags[i].flag) 
         {
             // Append reset cause string to message
-            strncat(resetReasonBuffer, resetCauseFlags[i].name, buffSize - currLength);
+            strncat(resetReasonBuffer, resetCauseFlags[i].name, buffSize - currLength - 1);
             currLength = strlen(resetReasonBuffer);
 
             // Add ", " between reasons
-            strncat(resetReasonBuffer, ", ", buffSize - currLength);
+            strncat(resetReasonBuffer, ", ", buffSize - currLength - 1);
             currLength = strlen(resetReasonBuffer);
         } 
     }
@@ -95,7 +95,7 @@ To setup a single GPIO pin your device tree, you can add the following to your `
 
 ```txt
 my_gpio {
-    # Pin 7 in GPIO controller bank 0
+    // Pin 7 in GPIO controller bank 0
     gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
 };
 ```
@@ -138,7 +138,7 @@ int intRc = gpio_pin_configure_dt(&myGpio, GPIO_OUTPUT_INACTIVE);
 __ASSERT_NO_MSG(intRc == 0);
 ```
 
-The above code gets the device tree spec based of it's path, checks that the GPIO is ready for use (I'm not sure why it wouldn't me, but good practice!) and then configures it as an output. To then set the pin high or low, you use `gpio_pin_set_dt()`:
+The above code gets the device tree spec based off its path, checks that the GPIO is ready for use (I'm not sure why it wouldn't be, but good practice!) and then configures it as an output. To then set the pin high or low, you use `gpio_pin_set_dt()`:
 
 ```c
 int rc = gpio_pin_set_dt(&myGpio, 0); // Set it low
@@ -148,7 +148,7 @@ rc = gpio_pin_set_dt(&myGpio, 1); // Set it high
 __ASSERT_NO_MSG(rc == 0);
 ```
 
-`GPIO_OUTPUT_LOW` and `GPIO_OUTPUT_HIGH` both set the physical state of the pin, and do not care if the pin is active high or active low. `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` take into account whether the pin is active high or active low. In the case the pin is active high, setting the pin to a logical level of `INACTIVE` results in a physical `LOW`, and `ACTIVE` is `HIGH`. In the case it is active low, `INACTIVE`
+`GPIO_OUTPUT_LOW` and `GPIO_OUTPUT_HIGH` both set the physical state of the pin, and do not care if the pin is active high or active low. `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` take into account whether the pin is active high or active low. In the case the pin is active high, setting the pin to a logical level of `INACTIVE` results in a physical `LOW`, and `ACTIVE` is `HIGH`. In the case it is active low, `INACTIVE` results in a physical `HIGH`, and `ACTIVE` results in a physical `LOW`.
 
 If you are using a Nordic MCU with NFC pins (e.g. `NFC1`, `NFC2`) make sure to disable NFC with `CONFIG_NFCT_PINS_AS_GPIOS=y` in your `prj.conf` if you want to use these pins for GPIO (or anything else for that matter, including PWM).
 
@@ -233,9 +233,9 @@ int main() {
 }
 ```
 
-There are many interrupt configuration flags to choose from, including both physical (actual voltage at the pin) and logical (depends on the pin's active high or active low configuration) triggers. For both physical and logical, there are both edge (transition) and level triggers. <IRef iref="tbl-gpio-interrupt-config-flags" /> lists the different flags[^zephyr-docs-gpio-h-file-reference].
+There are many interrupt configuration flags to choose from, including both physical (actual voltage at the pin) and logical (depends on the pin's active high or active low configuration) triggers. For both physical and logical, there are both edge (transition) and level triggers. The table below lists the different flags[^zephyr-docs-gpio-h-file-reference].
 
-<table data-iref="tbl-gpio-interrupt-config-flags">
+<table>
   <thead>
     <tr>
       <th>Flag</th>
@@ -275,12 +275,12 @@ There are many interrupt configuration flags to choose from, including both phys
       <td>Physical</td>
     </tr>
     <tr>
-      <td>`GPIO_INT_LEVEL_TO_INACTIVE`</td>
+      <td>`GPIO_INT_EDGE_TO_INACTIVE`</td>
       <td>Trigger interrupt when pin changes to inactive (logical level 0).</td>
       <td>Logical</td>
     </tr>
     <tr>
-      <td>`GPIO_INT_LEVEL_TO_ACTIVE`</td>
+      <td>`GPIO_INT_EDGE_TO_ACTIVE`</td>
       <td>Trigger interrupt when pin changes to active (logical level 1).</td>
       <td>Logical</td>
     </tr>
@@ -300,12 +300,14 @@ There are many interrupt configuration flags to choose from, including both phys
 
 See https://github.com/ubieda/zephyr_button_debouncing/tree/master for an example of using a Zephyr GPIO to handle button presses along with debouncing using a delayable work queue.
 
-The interrupt callback object has not provision for storing user data (e.g. a `void *`, so you could pass it the "object" that was associated with the interrupt). However, you can use the `CONTAINER_OF` macro to do almost the same thing, as long as you store the interrupt callback object in the "object". The following example shows how to do this:
+The interrupt callback object has no provision for storing user data (e.g. a `void *` that you could use to pass in the "object" associated with the interrupt). However, you can use the `CONTAINER_OF` macro to do almost the same thing, as long as you store the interrupt callback object in the "object". The following example shows how to do this:
 
 ```c
-struct {
+typedef struct {
     struct gpio_callback myCallback;
 } MyObject;
+
+static void GpioCallbackHandler(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins);
 
 int main() {
     MyObject myObject;
@@ -350,7 +352,7 @@ int main() {
 
 static void interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
 {
-    // WARNING: This will be called in a interrupt context.
+    // WARNING: This will be called in an interrupt context.
     // CONTAINER_OF() won't give the "non-standard layout" warning now since `GpioCallbackDataAndObject` is a standard layout type.
     GpioCallbackDataAndObject* gpioCallbackDataAndObject = CONTAINER_OF(cb, GpioCallbackDataAndObject, m_gpioCallbackData);
     MyClass * obj = gpioCallbackDataAndObject->m_obj;
@@ -441,7 +443,7 @@ In your .dts file, we first need to override the `pwm0` with some parameters:
 };
 ```
 
-Notice how the mapping between the PWM channels and the pins is not directly set here (some examples online directly assign pins here), instead pointing to some structures defined in the pin control file. So then in your pin control file, we need to define the mapping between the PWM channels and the pins. For example:
+Notice how the mapping between the [PWM](/electronics/circuit-design/pulse-width-modulation-pwm/) channels and the pins is not directly set here (some examples online directly assign pins here), instead pointing to some structures defined in the pin control file. So then in your pin control file, we need to define the mapping between the PWM channels and the pins. For example:
 
 ```txt title="my_board.dtsi"
 &pinctrl {
@@ -449,7 +451,7 @@ Notice how the mapping between the PWM channels and the pins is not directly set
         group1 {
             psels = 
                 <NRF_PSEL(PWM_OUT0, 0, 10)>, // Assign pwm0 channel 0 to port 0, pin 10
-                <NRF_PSEL(PWM_OUT1, 0, 5)>, // Assign pwm0 channel 1 to port 0, pin 5
+                <NRF_PSEL(PWM_OUT1, 0, 5)>; // Assign pwm0 channel 1 to port 0, pin 5
             nordic,invert;
         };
     };
@@ -458,14 +460,16 @@ Notice how the mapping between the PWM channels and the pins is not directly set
         group1 {
             psels = 
                 <NRF_PSEL(PWM_OUT0, 0, 10)>, // Assign pwm0 channel 0 to port 0, pin 10
-                <NRF_PSEL(PWM_OUT1, 0, 5)>, // Assign pwm0 channel 1 to port 0, pin 5
+                <NRF_PSEL(PWM_OUT1, 0, 5)>; // Assign pwm0 channel 1 to port 0, pin 5
             low-power-enable;
         };
     };
 }
 ```
 
-```c
+Then define the PWM devices in your `.dts` file using the `pwm-leds` compatible:
+
+```txt title="my_board.dts"
 my_pwm_group {
     compatible = "pwm-leds";
     status = "okay";
@@ -480,14 +484,14 @@ my_pwm_group {
 };
 ```
 
-This defines 3 PWM peripherals.
+This defines two PWM devices, both using the `pwm0` peripheral.
 
 PWM can be set up with:
 
 ```c
 const struct pwm_dt_spec myPwmSpec = PWM_DT_SPEC_GET(DT_PATH(my_pwm_group, my_pwm_pin_1));
 
-boolRc = pwm_is_ready_dt(&myPwmSpec);
+bool boolRc = pwm_is_ready_dt(&myPwmSpec);
 __ASSERT_NO_MSG(boolRc);
 ```
 
@@ -507,10 +511,10 @@ The Zephyr ADC API is documented [here](https://docs.zephyrproject.org/latest/do
 
 There are working ADC examples in the Zephyr repo at `samples/drivers/adc/`. As of September 2024, there are two examples:
 
-* `adc_dt`: Basic ADC example.
-* `adc_sequence`: An ADC example showing how to take readings using sequences.
+- `adc_dt`: Basic ADC example.
+- `adc_sequence`: An ADC example showing how to take readings using sequences.
 
-The example below shows how to setup and configure the ADC on a nRF52 device. Some the code, especially the `.dts` file, will be different between MCUs and vendors. The C code should remain similar (or the same!) since Zephyr aims to provide a standard interface across devices.
+The example below shows how to setup and configure the ADC on a nRF52 device. Some of the code, especially the `.dts` file, will be different between MCUs and vendors. The C code should remain similar (or the same!) since Zephyr aims to provide a standard interface across devices.
 
 ### prj.conf Configuration
 
@@ -531,7 +535,7 @@ First up, you need to enable and configure the ADC in your `.dts` file. For exam
     zephyr,user {
         // NOTE: This zephyr,user bit is not needed if you use the ADC_DT_SPEC_STRUCT(DT_NODELABEL(adc), 0) style to
         // grab the ADC channel spec in your C code.
-        io-channels = <&adc 5>, <&adc 7>;
+        io-channels = <&adc 0>, <&adc 1>;
     };
 };
 
@@ -564,12 +568,12 @@ First up, you need to enable and configure the ADC in your `.dts` file. For exam
 I have no idea why ADC related config goes under the `zephyr,user` node?!? It's a strange name.
 </Aside>
 
-* `zephyr,gain`: Sets the gain for the ADC. In the nRF52 the following are available:
-  * `ADC_GAIN_1_4`: Sets the gain to 1/4.
-  * `ADC_GAIN_1_6`: Sets the gain to 1/6. This is commonly used with `ADC_REF_INTERNAL` to measure a range from 0 to 3.6V (0.6V * 6 = 3.6V).
-* `zephyr,reference`: Sets the reference voltage for the ADC. In the nRF52 the following are available:
-  * `ADC_REF_INTERNAL`: Sets the reference to the internal 0.6V reference.
-  * `ADC_REF_VDD_1_4`: Sets the reference to 1/4 of the VDD voltage.
+- `zephyr,gain`: Sets the gain for the ADC. In the nRF52 the following are available:
+  - `ADC_GAIN_1_4`: Sets the gain to 1/4.
+  - `ADC_GAIN_1_6`: Sets the gain to 1/6. This is commonly used with `ADC_REF_INTERNAL` to measure a range from 0 to 3.6V (0.6V * 6 = 3.6V).
+- `zephyr,reference`: Sets the reference voltage for the ADC. In the nRF52 the following are available:
+  - `ADC_REF_INTERNAL`: Sets the reference to the internal 0.6V reference.
+  - `ADC_REF_VDD_1_4`: Sets the reference to 1/4 of the VDD voltage.
 
 This assumes we have two single ended ADC channels connected to pins `AIN5` and `AIN7`.
 
@@ -592,21 +596,21 @@ static struct adc_dt_spec l_myAdcCh1Spec = ADC_DT_SPEC_STRUCT(DT_NODELABEL(adc),
 The `adc_dt_spec` structure represents a single ADC channel, not the entire ADC peripheral.
 </Aside>
 
-I have has some weird experiences with getting the ADC channel spec with:
+I have had some weird experiences with getting the ADC channel spec with:
 
 ```c
 static const struct adc_dt_spec adc_channel = ADC_DT_SPEC_GET(DT_PATH(zephyr_user)); // In the case of just a single channel in zephyr,user {}
 ```
 
-in where the returned `spec.channel_cfg` was all zeros, indicating is was not set up correctly (and indeed, the `adc_channel_setup_dt()` would fail). I'm not sure why this is.
+in where the returned `spec.channel_cfg` was all zeros, indicating it was not set up correctly (and indeed, the `adc_channel_setup_dt()` would fail). I'm not sure why this is.
 
 Then you can do the following to perform a ADC reading:
 
 ```c
-bool isReady = adc_is_ready_dt(l_myAdcCh0Spec);
+bool isReady = adc_is_ready_dt(&l_myAdcCh0Spec);
 __ASSERT(isReady, "ADC channel is not ready.");
 
-int rc = adc_channel_setup_dt(l_myAdcCh0Spec);
+int rc = adc_channel_setup_dt(&l_myAdcCh0Spec);
 __ASSERT(rc == 0, "Could not setup ADC channel. Got adc_channel_setup_dt() return code %d.", rc);
 
 int16_t buf = 0;
@@ -615,14 +619,14 @@ struct adc_sequence sequence = {
     .buffer_size = sizeof(buf), // Buffer size in bytes, not number of samples
 };
 
-int rc = adc_sequence_init_dt(l_myAdcCh0Spec, &sequence);
+rc = adc_sequence_init_dt(&l_myAdcCh0Spec, &sequence);
 __ASSERT(rc == 0, "Could not initialize sequence. Got adc_sequence_init_dt() return code %d.", rc);
 
-rc = adc_read(l_myAdcCh0Spec->dev, &sequence);
+rc = adc_read(l_myAdcCh0Spec.dev, &sequence);
 __ASSERT(rc == 0, "Could not read ADC. Got adc_read() return code %d.", rc);
 
 int32_t val_mv = buf; // Save the raw value to val_mv, as required by adc_raw_to_millivolts_dt()
-rc = adc_raw_to_millivolts_dt(l_myAdcCh0Spec, &val_mv);
+rc = adc_raw_to_millivolts_dt(&l_myAdcCh0Spec, &val_mv);
 __ASSERT(rc == 0, "Could not convert raw value to mV. Got adc_raw_to_millivolts_dt() return code %d.", rc);
 
 LOG_INF("ADC channel 0 reading: %d mV", val_mv);
@@ -705,7 +709,7 @@ int SampleChannel(uint8_t channelId, int32_t * sample_counts, int32_t * sample_m
     }
 
     // Convert raw sample_mV to mV, more useful to caller
-    int32_t convertedVoltage_mV = tempSample_counts; // Needs to start of with raw value, function reads then modified it!
+    int32_t convertedVoltage_mV = tempSample_counts; // Needs to start off with the raw value, the function reads then modifies it!
     rc = adc_raw_to_millivolts_dt(&adc_channels[channelId],
                                    &convertedVoltage_mV);
     if (rc < 0) {
@@ -802,13 +806,13 @@ __ASSERT(channelConfigRc == NRFX_SUCCESS, "SAADC differential channel config fai
 
 Now let's set the SAADC to advanced mode using the `nrfx_saadc_advanced_mode_set()` function. We will:
 
-* Prevent continuous mode by setting `start_on_end` to `false`.
-* Set oversampling rate to 16x. This gives us a better SNR. Remember to compensate for this by changing your sampling frequency as needed. The SAADC will sample at the specified sampling frequency, but will only insert 1 reading into the output buffer for every 16 samples. Thus the oversampled frequency is SAMPLE_FREQ / OVERSAMPLING_RATE.
-* Disable burst mode.
+- Prevent continuous mode by setting `start_on_end` to `false`.
+- Set oversampling rate to 16x. This gives us a better SNR. Remember to compensate for this by changing your sampling frequency as needed. The SAADC will sample at the specified sampling frequency, but will only insert 1 reading into the output buffer for every 16 samples. Thus the oversampled frequency is SAMPLE_FREQ / OVERSAMPLING_RATE.
+- Disable burst mode.
 
 ```c++
 nrfx_saadc_adv_config_t advConfig = NRFX_SAADC_DEFAULT_ADV_CONFIG;
-advConfig.internal_timer_cc = INTERNAL_TIMER_CC;
+advConfig.internal_timer_cc = INTERNAL_TIMER_CC; // Your CC value for the SAADC internal timer (sets the sampling rate). Set to 0 if not using the internal timer.
 advConfig.start_on_end = false; // Set to true for continuous mode
 advConfig.oversampling = NRF_SAADC_OVERSAMPLE_16X;
 advConfig.burst = NRF_SAADC_BURST_DISABLED;
@@ -874,7 +878,7 @@ Zephyr provides a API for your MCU to act as an I2C controller. A controller (pr
 There are two distinct ways to use the Zephyr I2C controller API.
 
 1. **Low-level I2C Bus Comms**: Grab a handle to the I2C peripheral (`struct i2c_dt_spec`) in your C/C++ code. Then you can use a traditional `i2c_read()` and `i2c_write()` functions, providing the address of the device you want to communicate with.
-2. **High-level I2C Device Comms**: This is where you not only define the I2C peripheral in your `.dts` file, but also define the devices on the bus that you want to communicate with. Then in your C/C++ code, you grab handles to these devices and communicate with `read()` and `write()` functions that do not need an address (the bus and address is abstracted away into the Zephyr `.dts` file in your board directory).
+2. **High-level I2C Device Comms**: This is where you not only define the I2C peripheral in your `.dts` file, but also define the devices on the bus that you want to communicate with. Then in your C/C++ code, you grab handles to these devices and communicate with `read()` and `write()` functions that do not need an address (the bus and address are abstracted away into the Zephyr `.dts` file in your board directory).
 
 ### Low-level I2C Bus Comms
 
@@ -921,7 +925,7 @@ Then in your C/C++ code, you can grab a handle to the I2C peripheral with:
 ```c
 #include <zephyr/drivers/i2c.h>
 
-struct device *i2c_dev = device_get_binding(DT_LABEL(DT_NODELABEL(i2c0)));
+const struct device *i2c_dev = DEVICE_DT_GET(DT_NODELABEL(i2c0));
 ```
 
 You can write with `int i2c_write(const struct device *dev, const uint8_t *buf, uint32_t num_bytes, uint16_t addr)`. This writes data synchronously to the bus, and only returns when the write is complete.
@@ -961,11 +965,11 @@ struct i2c_msg {
 
 Just like with the basic read/write functions, `buf` is a pointer to the data you want to send or receive. `len` is the length of the data in bytes. `flags` is an OR'd combination of the following flags (bits):
 
-* `I2C_MSG_WRITE`: Set the read/write bit to write in the first byte across the bus. This is the default flag (e.g. `0x00`).
-* `I2C_MSG_READ`: Set the read/write bit to read in the first byte across the bus.
-* `I2C_MSG_STOP`: Send a stop condition after the message.
-* `I2C_MSG_RESTART`: Send a repeated start after the message.
-* `I2C_MSG_ADDR_10_BITS`: Use 10 bit addressing. Not supported by all MCUs.
+- `I2C_MSG_WRITE`: Set the read/write bit to write in the first byte across the bus. This is the default flag (e.g. `0x00`).
+- `I2C_MSG_READ`: Set the read/write bit to read in the first byte across the bus.
+- `I2C_MSG_STOP`: Send a stop condition after the message.
+- `I2C_MSG_RESTART`: Send a repeated start after the message.
+- `I2C_MSG_ADDR_10_BITS`: Use 10 bit addressing. Not supported by all MCUs.
 
 Note that a stop condition will be sent after the last message in a call to `i2c_transfer()`, regardless of whether you have explicitly set the `I2C_MSG_STOP` flag or not. This is so that the bus is returned in a "clean" state for the next transaction. This makes it impossible to chain multiple calls of `i2c_transfer()` together. Instead you must build all of your messages upfront (more memory!) and make a single call to `i2c_transfer()`. I'm not a huge fan of this design decision, I wish Zephyr gave us a low-level API to send start, stop and repeated start conditions by themselves, along with just sending data. This would be with the understanding it was up to the caller to manage the bus correctly.
 
@@ -981,14 +985,14 @@ If you see an error that looks like this:
 
 Here is what `zephyr,concat-buf-size` and `zephyr,flash-buf-max-size` do:[^github-nrf-connect-sdk-zephyr-nrf-twim-yaml]
 
-* `zephyr,concat-buf-size`: Size of a concatenation buffer that the driver is to use for merging multiple same direction I2C messages that have no RESTART or STOP flag between them (see e.g. the `i2c_burst_write()` function) into one transfer on the bus. This property must be provided when interacting with devices like the SSD1306 display that cannot tolerate a repeated start and address appearing on the bus between message fragments. For many devices a concatenation buffer is not necessary.
-* `zephyr,flash-buf-max-size`: TWIM peripherals cannot perform write transactions from buffers located in flash. If such buffers are expected to be used with a given instance of the TWIM peripheral, this property must be set to the maximum possible size of those buffers, so that the driver can reserve enough space in RAM to copy there the contents of particular buffers before requesting the actual transfers. If this property is not set to a value adequate for a given application, write transactions may fail for buffers that are located in flash, what in turn may cause certain components, like the DPS310 sensor driver, to not work. It is recommended to use the same value for this property and for the `zephyr,concat-buf-size` one, as both these buffering mechanisms can utilize the same space in RAM.
+- `zephyr,concat-buf-size`: Size of a concatenation buffer that the driver is to use for merging multiple same direction I2C messages that have no RESTART or STOP flag between them (see e.g. the `i2c_burst_write()` function) into one transfer on the bus. This property must be provided when interacting with devices like the SSD1306 display that cannot tolerate a repeated start and address appearing on the bus between message fragments. For many devices a concatenation buffer is not necessary.
+- `zephyr,flash-buf-max-size`: TWIM peripherals cannot perform write transactions from buffers located in flash. If such buffers are expected to be used with a given instance of the TWIM peripheral, this property must be set to the maximum possible size of those buffers, so that the driver can reserve enough space in RAM to copy there the contents of particular buffers before requesting the actual transfers. If this property is not set to a value adequate for a given application, write transactions may fail for buffers that are located in flash, what in turn may cause certain components, like the DPS310 sensor driver, to not work. It is recommended to use the same value for this property and for the `zephyr,concat-buf-size` one, as both these buffering mechanisms can utilize the same space in RAM.
 
 The error message is telling you that the driver needs a larger buffer to store the data you are trying to write. You can increase the size of the buffer by setting the `zephyr,concat-buf-size` and `zephyr,flash-buf-max-size` properties in your `.dts` file.
 
 ## UART
 
-Your microcontroller file will already define the [UART](/electronics/communication-protocols/uart-communication-protocol/) peripherals available (e.g. `uart0`, `uart1`, ...). You have to do is enable them in your `.dts` file, and provide things like the baud rate:
+Your microcontroller file will already define the [UART](/electronics/communication-protocols/uart-communication-protocol/) peripherals available (e.g. `uart0`, `uart1`, ...). All you have to do is enable them in your `.dts` file, and provide things like the baud rate:
 
 ```txt
 &uart0 {
@@ -1037,7 +1041,7 @@ Your microcontroller file will already define the [I2S](/electronics/communicati
 };
 ```
 
-And then in the `pinctrl` peripheral you can configure the pins that `is20` uses. The following example configures `i2s0` to use pin 0.5 for SCK, pin 0.7 for LRCK, pin 0.8 for SDOUT and pin 0.4 for SDIN (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs):
+And then in the `pinctrl` peripheral you can configure the pins that `i2s0` uses. The following example configures `i2s0` to use pin 0.5 for SCK, pin 0.7 for LRCK, pin 0.8 for SDOUT and pin 0.4 for SDIN (NOTE: this code includes nRF specific macros, this will be different on other vendor's MCUs):
 
 ```txt
 i2s0_default_alt: i2s0_default_alt {
@@ -1055,9 +1059,9 @@ i2s0_default_alt: i2s0_default_alt {
 
 ### CDC ACM
 
-Enable the USB device stack with:
+Enable the [USB](/electronics/communication-protocols/usb-protocol/) device stack with:
 
-```python title="prf.conf"
+```python title="prj.conf"
 CONFIG_USB_DEVICE_STACK=y
 ```
 
@@ -1069,7 +1073,7 @@ To fix, I had to add `CONFIG_USB_NRFX_WORK_QUEUE_STACK_SIZE=8192` to my `prj.con
 
 ## Non-Volatile Storage
 
-Zephyr provides an feature rich API for storing things in non-volatile storage (e.g. [flash memory](/electronics/components/memory/flash/)). The NVS API is provided by `#include <zephyr/fs/nvs.h>`. It represents elements as id-data pairs.
+Zephyr provides a feature-rich API for storing things in non-volatile storage (e.g. [flash memory](/electronics/components/memory/flash/)). The NVS API is provided by `#include <zephyr/fs/nvs.h>`. It represents elements as id-data pairs.
 
 To protect against data corruption if power is lost mid-write, the library makes sure there is always one complete copy of the data in flash at all times. The flash area is divided into sectors. Elements are written to the first sector until the sector is full, and then the next sector is prepared for writing (i.e. erased). Many sectors can be "active" at once.[^zephyr-docs-nvs]
 
@@ -1099,13 +1103,13 @@ int main() {
     fs.flash_device = NVS_PARTITION_DEVICE;
     if (!device_is_ready(fs.flash_device)) {
         printk("Flash device %s is not ready\n", fs.flash_device->name);
-        return;
+        return -1;
     }
     fs.offset = NVS_PARTITION_OFFSET;
     rc = flash_get_page_info_by_offs(fs.flash_device, fs.offset, &info);
     if (rc) {
         printk("Unable to get page info\n");
-        return;
+        return -1;
     }
     fs.sector_size = info.size;
     fs.sector_count = 3U;
@@ -1113,7 +1117,7 @@ int main() {
     rc = nvs_mount(&fs);
     if (rc) {
         printk("Flash Init failed\n");
-        return;
+        return -1;
     }
 }
 ```
@@ -1144,14 +1148,14 @@ typedef struct {
 
 int main() {
     MyData myData = {.sensorId = 1, .timestamp = k_uptime_get(), .temperature = 24.5};
-    ssize_t rc = nvs_write(fs, MY_DATA_ID, &myData, sizeof(myData));
+    ssize_t rc = nvs_write(&fs, MY_DATA_ID, &myData, sizeof(myData));
     __ASSERT_NO_MSG(rc == sizeof(myData));
 }
 ```
 
 On success, `nvs_write()` will return the number of bytes written. On failure it will return a negative error code as defined by `errno.h`. Some of the more common error codes are:
 
-* `-ENOSPC`: Not enough space on the flash device.
+- `-ENOSPC`: Not enough space on the flash device.
 
 `nvs_write()` also checks the ID and incoming data before a write. If the provided data is identical to the data already in flash, no write is performed. This prevents unnecessary flash wear and improves the speed of the operation.
 
@@ -1171,11 +1175,11 @@ ssize_t nvs_read(
     size_t len);
 ```
 
-It's syntax is very similar to `nvs_write()`. On success, `nvs_read()` will return the number of bytes read. If the return value is larger than the number of bytes requested, this means that more data is available. On error, a negative error code as defined by `errno.h` is returned. Here is an example of reading the `MyData` structure from the NVS.
+Its syntax is very similar to `nvs_write()`. On success, `nvs_read()` will return the number of bytes read. If the return value is larger than the number of bytes requested, this means that more data is available. On error, a negative error code as defined by `errno.h` is returned. Here is an example of reading the `MyData` structure from the NVS.
 
 ```c
 MyData myData;
-ssize_t rc = nvs_read(fs, MY_DATA_ID, &myData, sizeof(myData));
+ssize_t rc = nvs_read(&fs, MY_DATA_ID, &myData, sizeof(myData));
 __ASSERT_NO_MSG(rc == sizeof(myData));
 ```
 
@@ -1184,7 +1188,7 @@ __ASSERT_NO_MSG(rc == sizeof(myData));
 `nvs_calc_free_space()` can be used to calculate the remaining number of bytes that can be still written to the file system.
 
 ```c
-ssize_t freeSpace = nvs_calc_free_space(fs);
+ssize_t freeSpace = nvs_calc_free_space(&fs);
 __ASSERT_NO_MSG(freeSpace >= 0);
 printk("Free space: %d bytes\n", freeSpace);
 ```
@@ -1199,7 +1203,7 @@ An official code example of the NVS can be found at https://github.com/zephyrpro
 
 ## Bluetooth
 
-Nordic has contributed significantly to the Zephyr Bluetooth API ever since they adopted Zephyr as their official platform for the nRF52, nRF53 and nRF91 MCU families. 
+Nordic has contributed significantly to the Zephyr [Bluetooth](/electronics/communication-protocols/bluetooth/) API ever since they adopted Zephyr as their official platform for the nRF52, nRF53 and nRF91 MCU families. 
 
 ### Update the LE Connection Interval
 
@@ -1217,17 +1221,17 @@ If you are a Bluetooth central device, these settings will take effect. If you a
 
 ## Hardware and Software Watchdog
 
-Zephyr provides a software and hardware based watchdog API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via it's software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
+Zephyr provides a software and hardware based [watchdog](/programming/mcu-peripherals/watchdogs/) API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via its software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
 
 <Aside type="note">
-Why not just use the hardware watchdog? The useful thing about the software watchdog thread is that is provides the ability to independently monitor multiple threads, with different timeouts associated with each thread. It provides a more granularly and control about what you watch and how often you expect each thread to "check in".
+Why not just use the hardware watchdog? The useful thing about the software watchdog thread is that it provides the ability to independently monitor multiple threads, with different timeouts associated with each thread. It provides more granularity and control over what you watch and how often you expect each thread to "check in".
 </Aside>
 
 ### Hardware Watchdog
 
-To enable the hardware watchdog, first add the following to your `prf.conf`:
+To enable the hardware watchdog, first add the following to your `prj.conf`:
 
-```python title="prf.conf"
+```python title="prj.conf"
 CONFIG_WATCHDOG=y
 ```
 
@@ -1320,7 +1324,7 @@ int main()
 ```
 
 <Aside type="tip">
-The window `.min` is so you can set a lower bound on the time between watchdog feeds. If the firmware feeds the watchdog too quickly, it watchdog will trigger. This is useful to detect things like quick infinite loops or catch issues where the sleep/delay functions are not working as expected.
+The window `.min` is so you can set a lower bound on the time between watchdog feeds. If the firmware feeds the watchdog too quickly, the watchdog will trigger. This is useful to detect things like quick infinite loops or catch issues where the sleep/delay functions are not working as expected.
 
 Not all hardware watchdogs support a window! A watchdog that does support it is typically called a "windowed watchdog". Many safety certified processors have windowed watchdogs. The documentation says `.min` must be set to 0 if the hardware watchdog does not support it.
 </Aside>
@@ -1329,7 +1333,7 @@ More hardware watchdog examples can be found in the [Zephyr repo here](https://g
 
 ### Software Watchdog
 
-Now let's cover how to use the software watchdog. Firstly, add the following to your `prf.conf`:
+Now let's cover how to use the software watchdog. Firstly, add the following to your `prj.conf`:
 
 ```text
 CONFIG_TASK_WDT=y
@@ -1350,7 +1354,7 @@ __ASSERT_NO_MSG(wdRc == 0);
 ```
 
 <Aside type="tip">
-If you get a `undefined reference to 'task_wdt_init'` error, you likely have forgotten to add `CONFIG_TASK_WDT=y` to your `prf.conf`.
+If you get a `undefined reference to 'task_wdt_init'` error, you likely have forgotten to add `CONFIG_TASK_WDT=y` to your `prj.conf`.
 </Aside>
 
 Passing in `NULL` for `hw_wdt` says you don't want to connect the software watchdog task up with a hardware watchdog. In most real life applications you do want to provide a hardware watchdog, **as the probability of the software watchdog failing is too high to rely solely on it** (whereas a hardware watchdog is very reliable). What does it mean to be "backed" by a hardware watchdog? The Zephyr software watchdog will install a timeout on the hardware watchdog. When I looked at the code, it was using these settings (from `task_wdt.c`):
@@ -1367,7 +1371,7 @@ hw_wdt_dev = hw_wdt;
 hw_wdt_channel = wdt_install_timeout(hw_wdt_dev, &wdt_config);
 ```
 
-Notice the hardware watchdog is not started in `task_wdt_init()`. It is started on the first call to `task_wdt_add()`. When is starts it, it provides the option `WDT_OPT_PAUSE_HALTED_BY_DBG`. You don't have any control over changing this option.
+Notice the hardware watchdog is not started in `task_wdt_init()`. It is started on the first call to `task_wdt_add()`. When it starts it, it provides the option `WDT_OPT_PAUSE_HALTED_BY_DBG`. You don't have any control over changing this option.
 
 <Aside type="caution">
 If you are backing the software watchdog with a hardware watchdog, do not configure (`wdt_install_timeout()`) or start (`wdt_setup()`) the hardware watchdog yourself. The software watchdog will do this for you. If you also try and start it, it will result in errors (negative return codes).
@@ -1392,7 +1396,7 @@ void my_thread_fn() {
 }
 ```
 
-Make sure you have enough available channels to be able to install timeouts. You can change this in `prf.conf` with `CONFIG_TASK_WDT_CHANNELS`. By default is set to `5`, but can be changed to anything in the range `[2, 100]`.[^zephyr-docs-kconfig-search-wdt-channels]
+Make sure you have enough available channels to be able to install timeouts. You can change this in `prj.conf` with `CONFIG_TASK_WDT_CHANNELS`. By default is set to `5`, but can be changed to anything in the range `[2, 100]`.[^zephyr-docs-kconfig-search-wdt-channels]
 
 The following code is a complete example showing watchdog task functionality that can be built for the `native_sim` board (Linux). It sets the watchdog up with a 3s timeout. It feeds the watchdog once a second for 5 seconds, and then pretends there is a bug which locks up the code. The software watchdog successfully resets the device 3 seconds later.
 
@@ -1439,9 +1443,9 @@ int main(void) {
 
 <Image src={import('./_assets/watchdog-example.png')} width="800px">Running the watchdog example code and seeing it timeout.</Image>
 
-To disable the software watchdog at boot, you can add the following to your `prf.conf`:
+To disable the software watchdog at boot, you can add the following to your `prj.conf`:
 
-```python title="prf.conf"
+```python title="prj.conf"
 CONFIG_WDT_DISABLE_AT_BOOT=y
 ```
 
@@ -1466,7 +1470,7 @@ Removing a channel is useful if you want to be able to test the module the WDT c
 
 #### Providing Your Own Watchdog Handler
 
-When providing `NULL` as the second parameter to `task_wdt_add()`, Zephyr calls the system reset handler. Instead, you can provide you own handler to implement custom functionality. I prefer to provide my own handler, and generally have this handler log an error, wait for a period of time, and then reset the device.
+When providing `NULL` as the second parameter to `task_wdt_add()`, Zephyr calls the system reset handler. Instead, you can provide your own handler to implement custom functionality. I prefer to provide my own handler, and generally have this handler log an error, wait for a period of time, and then reset the device.
 
 Here is an example of a handler that logs an error, waits for 5 seconds, and then resets the device:
 
@@ -1487,7 +1491,7 @@ int wdtChannelId = task_wdt_add(5000, watchdogTimeoutHandler, nullptr);
 __ASSERT(wdtChannelId >= 0, "Failed to add watchdog channel. task_wdt_add() returned %d.", wdtChannelId);
 ```
 
-Note that `log_panic()` needs to be called after the log message otherwise it will never be printed. The handler function gets called in a interrupt context and thus does not allow the logging thread to run. Another effect of being in an interrupt context is that you can't use `k_sleep()` to implement the delay. Instead, you need to use a busy wait like `k_busy_wait();` to implement the delay. If you try and use `k_sleep()` with asserts enabled you will get the following error:
+Note that `log_panic()` needs to be called after the log message otherwise it will never be printed. The handler function gets called in an interrupt context and thus does not allow the logging thread to run. Another effect of being in an interrupt context is that you can't use `k_sleep()` to implement the delay. Instead, you need to use a busy wait like `k_busy_wait();` to implement the delay. If you try and use `k_sleep()` with asserts enabled you will get the following error:
 
 ```text
 ASSERTION FAIL [!arch_is_in_isr()] @ WEST_TOPDIR/external/zephyr/kernel/sched.c:1115
@@ -1495,9 +1499,9 @@ ASSERTION FAIL [!arch_is_in_isr()] @ WEST_TOPDIR/external/zephyr/kernel/sched.c:
 
 #### Nordic nRF Watchdog Example Code
 
-Below is example code showing how to initialize the hardware watchdog for Nordic nRF devices. Firstly, the following is added to your `prf.conf`:
+Below is example code showing how to initialize the hardware watchdog for Nordic nRF devices. Firstly, the following is added to your `prj.conf`:
 
-```python title="prf.conf"
+```python title="prj.conf"
 # WDT
 #==============================================================================
 CONFIG_WATCHDOG=y
@@ -1565,25 +1569,7 @@ void initWatchdog()
 {/* ============================================================================================ */}
 
 [^github-zephyr-nvs-code-example]: Zephyr. _zephyrproject-rtos/zephyr zephyr/samples/subsys/nvs/src/main.c_ [code example]. GitHub. Retrieved 2024-01-10, from https://github.com/zephyrproject-rtos/zephyr/blob/main/samples/subsys/nvs/src/main.c.
-[^zephyr-docs-workqueue]: Zephyr. _Docs / Latest -> Kernel -> Kernel Services -> Workqueue Threads_ [documentation]. Zephyr Docs. Retrieved 2024-01-10, from https://docs.zephyrproject.org/latest/kernel/services/threads/workqueue.html.
-[^kernel-org-kconfig-language]: Kernel.org. _Kconfig Language_ [documentation]. Retrieved 2024-10-12, from https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html.
 [^zephyr-docs-kconfig-search-wdt-channels]: Zephyr (2024, Jan 16). _Kconfig Search - CONFIG_TASK_WDT_CHANNELS_ [documentation]. Zephyr Docs. Retrieved 2024-01-17, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_TASK_WDT_CHANNELS.
-[^zephyr-docs-mutexes]: Zephyr (2023, Nov 7). _Mutexes_ [documentation]. Retrieved 2024-02-14, from https://docs.zephyrproject.org/latest/kernel/services/synchronization/mutexes.html.
-[^zephyr-docs-logging]: Zephyr (2024, Feb 19). _Logging_ [documentation]. Retrieved 2024-02-19, from https://docs.zephyrproject.org/latest/services/logging/index.html.
-[^scalar-zephyr-operating-system]: Scaler. _Scaler Topics - How does the Zephyr Operating System Work?_. Retrieved 2024-02-1, from https://www.scaler.com/topics/zephyr-operating-system/.
-[^wikipedia-zephyr-operating-system]: Wikipedia (2023, Oct 20). _Zephyr (operating system)_. Retrieved 2024-02-21, from https://en.wikipedia.org/wiki/Zephyr_(operating_system).
-[^nordic-semi-nrf52-zephyr-support-added]: Nordic Semiconductor (2020, Apr 2). _Nordic Semiconductor now offering broad product line support for its short-range and cellular IoT devices on nRF Connect platform including a suite of development tools and open source nRF Connect SDK_ [blog post]. Retrieved 2024-02-21, from https://www.nordicsemi.com/Nordic-news/2020/04/nordic-now-offering-support-for-its-shortrange-and-cellular-iot-devices-on-nrf-connect-platform.
-[^mind-using-emulators-and-fake-devices-in-zephyr]: Javad Rahamipetroudi (2024, May 22). _Using emulators and fake devices in Zephyr_. Retrieved 2024-10-24, from https://mind.be/using-emulators-and-fake-devices-in-zephyr/.
-[^zephyr-docs-smf]: Zephyr (2024, Apr 21). _State Machine Framework_ [documentation]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/services/smf/index.html.
-[^zephyr-release-notes-v2-7-0]: Zephyr. _Releases > Zephyr 2.7.0_ [release notes]. Retrieved 2024-11-11, from https://docs.zephyrproject.org/latest/releases/release-notes-2.7.html.
 [^zephyr-docs-gpio-h-file-reference]: Zephyr. _gpio.h File Reference_ [documentation]. Retrieved 2024-11-12, from https://docs.zephyrproject.org/apidoc/latest/drivers_2gpio_8h.html.
-[^dockerhub-zephyr-project-rtos]: Docker Hub. _zephyrprojectrtos_ [user page]. Retrieved 2024-11-26, from https://hub.docker.com/u/zephyrprojectrtos.
-[^github-zephyrproject-rtos-docker-image]: GitHub. _zephyrproject-rtos/docker-image_ [repository]. Retrieved 2024-11-26, from https://github.com/zephyrproject-rtos/docker-image.
-[^zephyr-docs-kconfig-log-trigger-threshold]: Zephyr (2022, Jan 12). _Kconfig Search > CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD_ [documentation]. Retrieved 2024-11-27, from https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_PROCESS_TRIGGER_THRESHOLD.
 [^zephyr-docs-nvs]: Zephyr (2024, Jul 20). _Docs / Latest > OS Services > Storage > Non-Volatile Storage (NVS)_ [documentation]. Retrieved 2024-12-19, from https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html.
-[^zephyr-docs-contribution-guidelines]: Zephyr (2024, Dec 26). _Docs / Latest > Contributing to Zephyr > Contribution Guidelines_ [documentation]. Retrieved 2025-01-14, from https://docs.zephyrproject.org/latest/contribute/guidelines.html.
-[^nordic-dev-zone-custom-board-duplicate-unit-address-warning]: Nordic Semiconductor DevZone. _Custom Board with nRF5340 produces build warning: Warning (unique_unit_address_if_enabled)_ [forum post]. Retrieved 2025-01-22, from https://devzone.nordicsemi.com/f/nordic-q-a/96780/custom-board-with-nrf5340-produces-build-warning-warning-unique_unit_address_if_enabled
-[^zephyr-docs-thread-stack-apis]: Zephyr (2025, Tue 25). _Thread Stack APIs_ [documentation]. Retrieved 2025-02-25, from https://docs.zephyrproject.org/apidoc/latest/group__thread__stack__api.html.
-[^zephyr-docs-fatal-errors]: Zephyr (2025, Mar 17). _Docs / Latest » Kernel » Kernel Services » Fatal Errors_ [documentation]. Retrieved 2025-04-29, from https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html.
-[^zephyr-docs-atomic-services]: Zephyr (2024, Jan 8). _Docs / Latest » Kernel » Kernel Services » Atomic Services_ [documentation]. Retrieved 2025-07-01, from https://docs.zephyrproject.org/latest/kernel/services/other/atomic.html.
 [^github-nrf-connect-sdk-zephyr-nrf-twim-yaml]: GitHub. _nrfconnect - sdk-zephyr/dts/bindings/i2c/nordic,nrf-twim.yaml_ [code]. Retrieved 2025-07-30, from https://github.com/nrfconnect/sdk-zephyr/blob/v2.7.99-ncs1/dts/bindings/i2c/nordic,nrf-twim.yaml.

@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2013-02-24
 description: Transformation ratios, power equivalence, mutual inductance, coupling coefficients, non-ideal transformer losses and more info on transformers.
 image: ./_assets/cover-image.webp
-lastUpdated: 2020-05-06
+lastUpdated: 2026-07-04
 tags: [electronics, components, transformers, coupling coefficients, resistive losses, hysteresis, flyback transformers, switching transformers, SMPS transformers, inductors]
 title: Transformers
 type: page
@@ -37,17 +37,17 @@ $$
 
 ## Mutual Inductance
 
-In general, the number of mutual inductances that a transformer with N windings has is:
+In general, the number of [mutual inductances](/electronics/components/inductors/) that a transformer with N windings has is:
 
 $$
 \frac{N \cdot (N-1)}{2}
 $$
 
-Notice that the number of mutual inductances grows with $N^2$.
+Notice that the number of mutual inductances grows quadratically with $N$.
 
 ## Coupling Coefficient
 
-The coupling coefficient is usually denoted K. It is used extensively in SPICE simulations ([see Linear Technology: Using Transformers in LTspice/SwitcherCAD III by Mike Engelhardt](http://cds.linear.com/docs/en/lt-journal/LTMag-V16N3-23-LTspice_Transformers-MikeEngelhardt.pdf)). The leakage inductance can be calculated from the coupling coefficient using the following formula:
+The coupling coefficient is usually denoted K. It is used extensively in [SPICE simulations](/electronics/general/circuit-simulation/spice-simulation/).[^engelhardt-using-transformers-in-ltspice] The leakage inductance (referred to the winding with inductance $L_{wind}$) can be calculated from the coupling coefficient using the following formula:
 
 $$
 L_{leakage} = L_{wind} \cdot (1 - K^2)
@@ -75,7 +75,7 @@ Remember that transformers work with an AC voltage/current. The tiny magnetic do
 
 The hysteresis loss can be seen on the BH (flux-density vs. field strength) curve.
 
-<Image src={import('./_assets/transformer-graph-explaining-hysteresis-losses.jpg')} width="609px">Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.</Image>
+<Image src={import('./_assets/transformer-graph-explaining-hysteresis-losses.jpg')} width="609px">Graph explaining the hysteresis losses in a transformer.[^ecetutorials-transformer-losses]</Image>
 
 ### Eddy Current Losses
 
@@ -83,8 +83,12 @@ Because the core is conductive, it too gets an EMF generated in it, just like th
 
 ## Flyback Transformers
 
-_Flyback transformers_ are transformers used in the construction of a boost converter. They are also known as _switching transformers_ or _SMPS transformers_. Because of the way they operate, current does not flow in the primary and secondary windings at the same time. For this reason, it is conceptually appropriate to consider a _flyback transfer_ as _two parallel inductors_, rather than a true transformer. 
+_Flyback transformers_ are transformers used in the construction of a [flyback converter](/electronics/components/power-regulators/isolated-switch-mode-power-supplies/), an isolated topology derived from the [buck-boost converter](/electronics/components/power-regulators/switch-mode-power-supplies-smps/). They are also known as _switching transformers_ or _SMPS transformers_. Because of the way they operate, current does not flow in the primary and secondary windings at the same time. For this reason, it is conceptually appropriate to consider a _flyback transformer_ as _two coupled inductors_, rather than a true transformer.
 
-<Image src={import('./_assets/typical-flyback-schematic.png')} width="600px">Schematic of a boost converter using a flyback transformer. Image from https://www.coilcraft.com/edu/flyback_transformer.cfm.</Image>
+<Image src={import('./_assets/typical-flyback-schematic.png')} width="600px">Schematic of a flyback converter using a flyback transformer.[^coilcraft-guide-to-flyback-transformers]</Image>
 
-Examples of flyback transformers can be found on [DigiKey under their Transformers->Switching Converter, SMPS Transformers section](https://www.digikey.com/products/en/transformers/switching-converter-smps-transformers/168).
+Examples of flyback transformers can be found on [DigiKey under their Transformers->Switching Converter, SMPS Transformers section](https://www.digikey.com/en/products/filter/switching-converter-smps-transformers/168).
+
+[^engelhardt-using-transformers-in-ltspice]: Mike Engelhardt (2006, Sep). _Using Transformers in LTspice/SwitcherCAD III_ [magazine article]. Linear Technology Magazine. Retrieved 2026-07-04, from http://web.archive.org/web/20180127150233/http://cds.linear.com/docs/en/lt-journal/LTMag-V16N3-23-LTspice_Transformers-MikeEngelhardt.pdf.
+[^ecetutorials-transformer-losses]: ECE Tutorials. _Losses in transformer_ [article]. Retrieved 2026-07-04, from http://ecetutorials.com/.
+[^coilcraft-guide-to-flyback-transformers]: Coilcraft. _A Guide to Flyback Transformers_ [article]. Retrieved 2026-07-04, from https://www.coilcraft.com/en-us/edu/series/a-guide-to-flyback-transformers/.
