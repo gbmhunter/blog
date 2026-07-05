@@ -1,19 +1,20 @@
 ---
 authors: [gbmhunter]
 date: 2013-03-18
-lastUpdated: 2024-01-31
+description: A tutorial on C strings, including null termination, string literals, copying, concatenating, printf() and converting between strings and numbers.
+lastUpdated: 2026-07-05
 tags: [programming, programming languages, C, strings, ASCII, char, special characters, itoa(), sprintf(), snprintf(), atoi()]
 title: String Manipulation in C
 type: page
 ---
 
-The page teaches you how to work with strings in the C programming language. If you are used to higher level languages such as Python or Javascript, you'll quickly discover that C does not have some of the "nice" string manipulation features such as string concatenation with `+` (e.g. `str1 + str2`), no easy `.length()` property (although there is a function for that, `strlen()`) nor things like a built in regex engine. It doesn't really even have the concept of a string type, just "pointer to char" (`char*`) (some would argue that for all intents and purposes that is a string type).
+The page teaches you how to work with strings in the C programming language. If you are used to higher level languages such as Python or Javascript, you'll quickly discover that C does not have some of the "nice" string manipulation features such as string concatenation with `+` (e.g. `str1 + str2`), no easy `.length()` property (although there is a function for that, `strlen()`) nor things like a built in regex engine. It doesn't really even have the concept of a string type, just "[pointer to char](/programming/languages/c/pointers/)" (`char*`) (some would argue that for all intents and purposes that is a string type).
 
 ## What Are Strings In C?
 
-Strings in C are represented by either a pointer to char `char* myStr` or array of char `char myStr[10]`. What is laid out in memory is a series of byte sized ASCII encoded characters, terminated by the null character (`'\0'` or `0x00`).
+Strings in C are represented by either a pointer to char `char* myStr` or [array of char](/programming/languages/c/arrays/) `char myStr[10]`. What is laid out in memory is a series of byte sized ASCII encoded characters, terminated by the null character (`'\0'` or `0x00`).
 
-Say we wanted to store the string "Hello". We could write `char* myStr = "Hello";`. If the compiler decided to plonk this at memory address `0x01` (I avoided `0x00` since that invalid -- it's the null pointer) then the memory would look like this:
+Say we wanted to store the string "Hello". We could write `char* myStr = "Hello";`. If the compiler decided to plonk this at memory address `0x01` (I avoided `0x00` since that is invalid -- it's the null pointer) then the memory would look like this:
 
 ```text
 Memory address | Value | ASCII
@@ -27,7 +28,7 @@ Memory address | Value | ASCII
 0x07           |       |
 ```
 
-But this is not all, the memory above is used just to create the literal `"Hello"`. What also is created is the variable `myStr`, which points to the first character in this string. Let's assume the compile decides to plonk this at memory address `0x08`, then your memory will look like this.
+But this is not all, the memory above is used just to create the literal `"Hello"`. What also is created is the variable `myStr`, which points to the first character in this string. Let's assume the compiler decides to plonk this at memory address `0x08`, then your memory will look like this (simplified for illustration -- on a real 64-bit architecture the pointer itself would occupy 8 bytes).
 
 ```text
 Memory address | Value | ASCII
@@ -44,7 +45,7 @@ Memory address | Value | ASCII
 
 Whenever you pass your string variable `myStr` to functions, this `0x01` value is what is passed in. String functions, aware of the type (it's a pointer to char), know to increment through memory until they hit the null char when they want to do operations on the string.
 
-One thing C does differently to a lot of other languages is it's choice of using null to determine the end of the string, rather than reserving some bytes at the start of the character array for holding it's length. To find the length of the string you have to iterate through the bytes until you find `0x00`, which is what `strlen()` does (more on this below).
+One thing C does differently to a lot of other languages is its choice of using null to determine the end of the string, rather than reserving some bytes at the start of the character array for holding its length. To find the length of the string you have to iterate through the bytes until you find `0x00`, which is what `strlen()` does (more on this below).
 
 ## Different Ways Of Creating Strings
 
@@ -61,14 +62,14 @@ char myStr2[] = "abc"; // Creating a string literal and assigning it to any arra
                        // (the size is inferred from the right-hand side of the equation)
 ```
 
-These two ways are mostly equivalent, BUT you must remember that `myStr2` is an array with a known size (at compile time), whilst `myStr1` is just a pointer to a char. Thus, `sizeof()` is going to behave differently.
+These two ways are mostly equivalent, BUT you must remember that `myStr2` is an array with a known size (at compile time), whilst `myStr` is just a pointer to a char. Thus, `sizeof()` is going to behave differently.
 
-When compiled for a 64-bit architecture, `sizeof(myStr1)` returns 8, the number of bytes required for the pointer `myStr1` which points to the memory address of the `a` in `"abc"`; However, `sizeof(myStr2)` returns 4, the number of bytes in the array `myStr2` which consists of `['a', 'b', 'c', '\0']`. This difference is bound to trip you up at some point, so be aware of this difference.
+When compiled for a 64-bit architecture, `sizeof(myStr)` returns 8, the number of bytes required for the pointer `myStr` which points to the memory address of the `a` in `"abc"`; However, `sizeof(myStr2)` returns 4, the number of bytes in the array `myStr2` which consists of `['a', 'b', 'c', '\0']`. This difference is bound to trip you up at some point, so be aware of this difference.
 
 <Aside type="tip">
-Most of the time you will be passing strings into functions, and if you use the `char myStr[]` style syntax, the compiler will have no idea what size the array of chars is (you could call it with with a `char str[10]` from one function and a `char str[20]` from another). The array will "decay" to the same thing as `char* myStr`, and sizeof will return the size of a pointer (unless the function is designed to only ever taking a string of a certain size, e.g. `char myStr[10]`, but that is a very odd use case).
+Most of the time you will be passing strings into functions, and if you use the `char myStr[]` style syntax, the compiler will have no idea what size the array of chars is (you could call it with a `char str[10]` from one function and a `char str[20]` from another). The array will "decay" to the same thing as `char* myStr`, and sizeof will return the size of a pointer (unless the function is designed to only ever take a string of a certain size, e.g. `char myStr[10]`, but that is a very odd use case).
 
-Thus you can't use `sizeof()` to work out how big your string is. You have two options. Ever use `strlen()` to get the number of characters in the string, or if you are interested in just how many valid characters there are in the string but how big the array is, **you'll have to pass the size into the function also**. Passing the size of the string array is very common practise in C applications (as with any array, not just for strings), and after a while it will become second nature.
+Thus you can't use `sizeof()` to work out how big your string is. You have two options. Either use `strlen()` to get the number of characters in the string, or if you are interested in not just how many valid characters there are in the string but how big the array is, **you'll have to pass the size into the function also**. Passing the size of the string array is very common practice in C applications (as with any array, not just for strings), and after a while it will become second nature.
 </Aside>
 
 
@@ -79,7 +80,7 @@ char myEmptyString[50];
 ```
 
 <Aside type="caution">
-`char myEmptyString[50];` inside a function will not initialize any of the bytes (it will however if it's outside of a function and on the heap). This means it will not be a well-defined string, and may or may not have a null character in it depending on what the memory happens to be. For example:
+`char myEmptyString[50];` inside a function will not initialize any of the bytes (it will however be zero-initialized if it's declared outside of a function, since it then has static storage duration and is placed in the [.bss section](/programming/languages/c/bss-section/)). This means it will not be a well-defined string, and may or may not have a null character in it depending on what the memory happens to be. For example:
 
 ```c
 int main() {
@@ -113,7 +114,7 @@ int main() {
 
 ## Char vs. String
 
-In C, `'a'` and `"A"` are completely different types (as opposed to say, Javascript, in where you can swap `"` for `'` and it doesn't change anything). `'a'` is a single character, whilst `"A"` is a string literal (which is an array of characters). You can't do this:
+In C, `'A'` and `"A"` are completely different types (as opposed to say, Javascript, where you can swap `"` for `'` and it doesn't change anything). `'A'` is a single character, whilst `"A"` is a string literal (which is an array of characters). You can't do this:
 
 ```c
 char myChar = "A"; // This is wrong!
@@ -130,9 +131,13 @@ char* myString = "A"; // This is also correct!
 It then makes sense that to set an individual character in a string, you can use the `'` notation:
 
 ```c
-char* myString = "Hello";
+char myString[] = "Hello";
 myString[0] = 'h'; // Sets the first character to 'h', now it's "hello"
 ```
+
+<Aside type="caution">
+Note the use of `char myString[]` and not `char* myString` above. Modifying a string through a `char*` that points at a string literal is undefined behaviour -- string literals are typically placed in read-only memory, and writing to one will usually crash your program. Assigning the literal to an array instead copies the characters into writable memory.
+</Aside>
 
 A `char` literal does not get a null character appended to the end of it, it is just a single byte.
 
@@ -140,11 +145,11 @@ A `char` literal does not get a null character appended to the end of it, it is 
 
 ### Null Character
 
-The null character (represented by `'\0'` , `0x00` , or a constant defined as `NULL`) is used to terminate strings and arrays (essentially the same thing anyway). Most string-based commands will automatically insert the null character at the end of a string, while memory commands won't. Special care has to be taken to make sure the memory set aside for a string can accommodate the null character (when talking in bytes, the number of ASCII characters + 1).
+The null character (represented by `'\0'` or `0x00`, and sometimes called `NUL` -- not to be confused with `NULL`, which is the null *pointer* constant) is used to terminate strings. Most string-based commands will automatically insert the null character at the end of a string, while memory commands won't. Special care has to be taken to make sure the memory set aside for a string can accommodate the null character (when talking in bytes, the number of ASCII characters + 1).
 
 ### Carriage Return And New Line
 
-These two characters are used to being a new line of text. If you take the names literally, the carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days.
+These two characters are used to begin a new line of text. If you take the names literally, the carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days.
 
 In Linux style systems, only the new line character is used to begin a new line of text. In Windows, both the carriage return and new line characters are used. For embedded systems, I've seen either preference used (probably depending on what development OS the writer was using!). Most terminal programs support both approaches. The carriage return is inserted into code using `\r`, and a new line using `\n`. In Windows, the standard order is to write the carriage return first, and then the new line `\r\n`.
 
@@ -194,7 +199,7 @@ Special characters can be added to strings using the escape character `\` follow
       <td>
 `\ddd`
 </td>
-      <td>Ascii char representing the three octal chars 'ddd'. Note that \0 is a special case of this more generic notation</td>
+      <td>Ascii char represented by one to three octal digits 'ddd'. Note that \0 is a special case of this more generic notation</td>
       <td>n/a</td>
     </tr>
     <tr>
@@ -231,7 +236,7 @@ Typically, both the carriage return and new line characters are used for making 
 
 ## Finding The Length
 
-Use the `strlen()` function provided by 
+Use the `strlen()` function provided by `string.h`:
 
 ```c
 #include <stdio.h>
@@ -239,7 +244,7 @@ Use the `strlen()` function provided by
 
 int main() {
   char my_string[] = "Hello"; 
-  print("%z\n", strlen(my_string));
+  printf("%zu\n", strlen(my_string));
   return 0;
 }
 // Prints "5"
@@ -247,10 +252,27 @@ int main() {
 
 ## Copying
 
-`strcpy()` is a standard library function for copying the contents of one C string to another.
+`strcpy()` is a standard library function (from `string.h`) for copying the contents of one C string to another. It copies characters from the source string into the destination buffer until (and including) the null character. It is up to you to make sure the destination buffer is large enough -- if it isn't, you get a buffer overflow.
 
 ```c
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    char src[] = "Hello";
+    char dest[10]; // Must be large enough to hold "Hello" plus the null character
+    strcpy(dest, src);
+    printf("%s\n", dest); // Prints "Hello"
+    return 0;
+}
+```
+
+A safer alternative is `strncpy(dest, src, n)`, which will never write more than `n` bytes to the destination. Beware of its one big gotcha though: if `src` doesn't fit, `dest` is **not** null-terminated, so it's common practice to manually set the last byte to `'\0'` afterwards:
+
+```c
+char dest[10];
+strncpy(dest, src, sizeof(dest));
+dest[sizeof(dest) - 1] = '\0'; // Guarantee null termination
 ```
 
 <Aside type="note">
@@ -267,24 +289,32 @@ is the equivalent to the standard library function `strcpy(p, q)`!
 
 ## Concatenating
 
-Unlike many higher level languages, you cannot just concatenate C "strings" together like so: `my_string_1 + my_string_2` (remember, they are just arrays of characters!). Instead you have to use the `strcat()` function:
+Unlike many higher level languages, you cannot just concatenate C "strings" together like so: `my_string_1 + my_string_2` (remember, they are just arrays of characters!). Instead you have to use the `strcat()` function (from `string.h`), which appends a copy of the source string onto the end of the destination string. As with `strcpy()`, it is up to you to make sure the destination buffer is large enough to hold the combined result:
 
 ```c
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    char dest[20] = "Hello"; // Must be large enough to hold "Hello World" plus the null character
+    strcat(dest, " World");
+    printf("%s\n", dest); // Prints "Hello World"
+    return 0;
+}
 ```
 
 
 ## printf (and variants)
 
-`printf()` and it's variants such as `sprintf()` are some of the most common "something to string" functions. They can be used to convert signed integers, unsigned integers, floats, doubles and other types to strings. They can also be used to print already formatted strings, and/or concatenate existing strings together. They also support formatting options, which allow you to control how the numbers are displayed (e.g. number of decimal places, padding, display number as hex, etc.).
+`printf()` and its variants such as `sprintf()` are some of the most common "something to string" functions. They can be used to convert signed integers, unsigned integers, floats, doubles and other types to strings. They can also be used to print already formatted strings, and/or concatenate existing strings together. They also support formatting options, which allow you to control how the numbers are displayed (e.g. number of decimal places, padding, display number as hex, etc.).
 
 <Aside type="note">
-`printf` stands for "print formatted"[^wikipedia-printf].
+`printf` stands for "print formatted".[^wikipedia-printf]
 </Aside>
 
 ### printf()
 
-`printf()` is the most commonly used string output function. It is a variadic function (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
+`printf()` is the most commonly used string output function. It is a [variadic function](/programming/languages/c/variadic-functions/) (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
 
 On most mainstream operating systems such as Linux, MacOS and Windows, calling `printf()` will send the formatted string to the terminal (if the application was invoked from a terminal). On an embedded system there is no "standard output", but increasingly on more modern embedded systems `printf()` is routed to a default debug serial port.
 
@@ -315,7 +345,7 @@ For example, the RTOS/framework [Zephyr](/programming/operating-systems/zephyr/)
 
 ### Conversion Specifiers
 
-Conversion specifiers determine how `printf(`) interprets the input variables and displays their value as a string. Conversion specifiers are added in the input string after the `%` character (optional format specifiers may be added between the `%` symbol and the conversion specifier).
+Conversion specifiers determine how `printf()` interprets the input variables and displays their value as a string. Conversion specifiers are added in the input string after the `%` character (optional format specifiers may be added between the `%` symbol and the conversion specifier).
 
 Although the basic behaviour is defined in the ANSI standard, the exact implementation of `printf()` is likely to vary slightly between C libraries.
 
@@ -356,12 +386,12 @@ printf("%c", 103);  // Also prints "g"
 </td>
 <td>
 
-Prints a signed integer (whose exact width is implementation-specific, usually 16 or 32-bit). There is no difference between `%d` and `%i` when used for output, but when used for input with `scanf()`, `%i` will interpret a number as octal is preceded with a `0`, and hexadecimal if preceded with a `0x`.
+Prints a signed integer (whose exact width is implementation-specific, usually 16 or 32-bit). There is no difference between `%d` and `%i` when used for output, but when used for input with `scanf()`, `%i` will interpret a number as octal if preceded with a `0`, and hexadecimal if preceded with a `0x`.
 </td>
 <td>
 
 ```c
-printf("%i", -34); // Prints "-34"`
+printf("%i", -34); // Prints "-34"
 ```
 </td>
 </tr>
@@ -378,7 +408,7 @@ printf("%i", -34); // Prints "-34"`
 <td>
 
 ```c
-printf("%u", 456); // Prints "456"`
+printf("%u", 456); // Prints "456"
 ```
 </td>
 </tr>
@@ -395,7 +425,7 @@ printf("%u", 456); // Prints "456"`
 <td>
 
 ```c
-`printf("%s", "This is a string"); // Prints "This is a string"`
+printf("%s", "This is a string"); // Prints "This is a string"
 ```
 </td>
 </tr>
@@ -432,12 +462,13 @@ printf("0x%X", 10); // Prints "0xA", have to add the 0x your self with %x/%X
 </td>
 <td>
 
-Prints a float (or double). All floats are converted to doubles anyway via default argument promotions. `%f` prints infinite as NaN as `inf`, `infinity` and `nan`, whilst `%F` prints them as `INF`, `INFINITY` and `NAN`.
+Prints a float (or double). All floats are converted to doubles anyway via default argument promotions. `%f` prints infinity and NaN as `inf` (or `infinity`) and `nan`, whilst `%F` prints them as `INF` (or `INFINITY`) and `NAN`. The default precision is 6 decimal places.
 </td>
 <td>
 
 ```c
-printf("%f", 2.345); // Prints "2.345"
+printf("%f", 2.345); // Prints "2.345000" (default precision is 6)
+printf("%.2f", 2.345); // Prints "2.35"
 ```
 </td>
 </tr>
@@ -478,7 +509,7 @@ For portability, you can use the `z` format specifier when you want to print a v
 // Portable way of printing a size_t number,
 // using the 'z' modifier.
 // (which sizeof() returns)
-printf("Size of int = %zi.\r\n", sizeof(int));
+printf("Size of int = %zu.\r\n", sizeof(int));
 ```
 
 This was introduced in ISO C99. `Z` (upper-case `z`) was a GNU extension predating this standard addition and should not be used in new code.
@@ -489,7 +520,7 @@ This was introduced in ISO C99. `Z` (upper-case `z`) was a GNU extension predati
 
 `snprintf()` is a safer version of `sprintf()` (I recommend always using the safer "n" style `printf()` functions) which takes an additional argument which specifies the size of the buffer. This prevents buffer overflows. If the buffer is not large enough to hold the formatted string, the string will be truncated to fit the buffer.
 
-An example of `snprintf()` (notice the use of `sizeof()` to pass the size of the buffer into the function, this prevents overruns if the formatted string is larger than the bugger):
+An example of `snprintf()` (notice the use of `sizeof()` to pass the size of the buffer into the function, this prevents overruns if the formatted string is larger than the buffer):
 
 ```c
 char stringBuff[100] = {0}; // Create buffer for snprintf() to write to. Init. to 0 is not strictly needed here.
@@ -507,31 +538,32 @@ In the Keil C51 compiler, the `b` or `B` length specifier is used to tell `sprin
 snprintf(txBuffer, sizeof(txBuffer), "Float to 2dp: %.2f", float1);
 
 // Print a 8-bit number in the Keil C51 compiler, using the length specifier 'b' ('B' can be used also)
-uint8 eightBitNum = 23;
+uint8_t eightBitNum = 23;
 sprintf(txBuffer, "This is an 8-bit number: %bu", eightBitNum);
 ```
 
 ## itoa()
 
-**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header[^wikibooks-itoa]. It is not part of the C++ standard either[^cplusplus-itoa].
+**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header.[^wikibooks-itoa] It is not part of the C++ standard either.[^cplusplus-itoa]
 
-`iota()` is typically defined as:
+`itoa()` is typically defined as:
 
 ```c
 char* itoa(int value, char* str, int base);
 ```
 
-The radix is generally limited to octal (8), decimal (10) or hexadecimal (16)[^ibm-zos-docs-itoa].
+The radix is generally limited to octal (8), decimal (10) or hexadecimal (16).[^ibm-zos-docs-itoa]
 
 Usage:
 
 ```c
+#include <stdio.h>
 #include <stdlib.h>
 int main() {
     int number = 436;
     char buffer[10];
     itoa(number, buffer, 10);
-    printf(buffer); // Prints 436
+    printf("%s", buffer); // Prints 436
 }
 ```
 
@@ -543,7 +575,7 @@ int main() {
 
 ### atof()
 
-`atof()` is a historic way of converting a string to a double-precision float (yes, even though the function has `f` in it's name, it actually returns a `double`).
+`atof()` is a historic way of converting a string to a double-precision float (yes, even though the function has `f` in its name, it actually returns a `double`).
 
 A significant disadvantage with `atof()` is that you cannot distinguish between the text input `"0.0"` and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example, it can't tell the difference between `"0.0"` and `"poos"`:
 
@@ -562,19 +594,26 @@ There is a better alternative `strtod()`, which fixes both of the problems descr
 This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number. Newer versions of C/C++ also provide `strtof()` which performs the same function but returns a `float` rather than a `double`.
 
 ```c
-double ConvertStringToDouble(char* input) {
-    char* input = "34.56";
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/// Converts a string to a double. Returns true on success, false if the
+/// input did not start with a valid number. The converted number is
+/// written to output.
+bool ConvertStringToDouble(const char* input, double* output) {
     char* numEnd;
 
     // Do the conversion
-    double output = strtod(input, &numEnd);
+    *output = strtod(input, &numEnd);
 
     // Bounds checking
-    if(numEnd == input)
-    {
+    if (numEnd == input) {
         printf("Error: Input to strtod was not a valid number.\r\n");
         return false;
     }
+
+    return true;
 }
 ```
 
@@ -586,7 +625,7 @@ double ConvertStringToDouble(char* input) {
 
 `strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
-`getopt()` is a standard function for finding command-line arguments passed into `main()` as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/misc/string-manipulation-in-c/getopt.zip) (taken from GCC gLibC v2.17).
+`getopt()` is a standard function for finding command-line arguments passed into `main()` as an array of strings (see the [Processing Command-Line Input page](/programming/languages/c/processing-command-line-input/) for an in-depth guide). It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/misc/string-manipulation-in-c/getopt.zip) (taken from GCC gLibC v2.17).
 
 ## Converting a Version String to Numbers
 
@@ -606,8 +645,9 @@ The following C code shows a function `VersionStringToNumbers()` which can do th
  * @brief Converts a version string in the form "1.2.3" into numbers.
  *
  * @param[in] version A null-terminated string of the form "1.2.3". The
- *    major number must be in the range [0, 255]. The patch number must
- *    be in the range [0, 65536]. There must not be a "v" at the start.
+ *    major and minor numbers must be in the range [0, 255]. The patch
+ *    number must be in the range [0, 65535]. There must not be a "v" at
+ *    the start.
  * @param[out] major The converted major version number.
  * @param[out] minor The converted minor version number.
  * @param[out] patch The converted patch version number.
@@ -712,11 +752,13 @@ int main(void) {
 }
 ```
 
-You can test this code live at https://replit.com/@gbmhunter/c-version-string-to-numbers.
+You can test this code live at [https://replit.com/@gbmhunter/c-version-string-to-numbers](https://replit.com/@gbmhunter/c-version-string-to-numbers).
 
-## References
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
-[^wikipedia-printf]: Wikipedia (2023, Aug 23). _printf_. Retrieved 2023-12-25, from https://en.wikipedia.org/wiki/Printf.
-[^wikibooks-itoa]: Wikibooks (2020, Apr 16). _C Programming/stdlib.h/itoa_. Retrieved 2023-12-26, from https://en.wikibooks.org/wiki/C_Programming/stdlib.h/itoa.
-[^ibm-zos-docs-itoa]: IBM (2021). _z/OS Docs - itoa() - Convert int into a string_. Retrieved 2023-12-26, from https://www.ibm.com/docs/en/zos/2.1.0?topic=functions-itoa-convert-int-into-string.
-[^cplusplus-itoa]: cplusplus.com (2023). _function - itoa_. Retrieved 2023-12-26, from https://cplusplus.com/reference/cstdlib/itoa/.
+[^wikipedia-printf]: Wikipedia (2023, Aug 23). _printf_ [wiki]. Retrieved 2023-12-25, from https://en.wikipedia.org/wiki/Printf.
+[^wikibooks-itoa]: Wikibooks (2020, Apr 16). _C Programming/stdlib.h/itoa_ [wiki]. Retrieved 2023-12-26, from https://en.wikibooks.org/wiki/C_Programming/stdlib.h/itoa.
+[^ibm-zos-docs-itoa]: IBM (2021). _z/OS Docs - itoa() - Convert int into a string_ [documentation]. Retrieved 2023-12-26, from https://www.ibm.com/docs/en/zos/2.1.0?topic=functions-itoa-convert-int-into-string.
+[^cplusplus-itoa]: cplusplus.com (2023). _function - itoa_ [documentation]. Retrieved 2023-12-26, from https://cplusplus.com/reference/cstdlib/itoa/.

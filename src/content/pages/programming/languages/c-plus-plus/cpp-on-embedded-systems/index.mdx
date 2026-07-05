@@ -2,13 +2,13 @@
 authors: [gbmhunter]
 date: 2014-04-17
 description: A style/feature guide on writing firmware (code for microcontrollers) using C++.
-lastUpdated: 2025-07-12
+lastUpdated: 2026-07-05
 tags: [c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers, NTBS, strings, pointers, MISRA, arrays, dynamic memory allocation, new, delete, malloc, free, ETL, RAII, templates, namespaces, testing, virtual functions]
 title: C++ On Embedded Systems
 type: page
 ---
 
-One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is -- "it depends". Also, the concept on what an embedded system various between people and companies. You can use most C++ features on high-level embedded devices that are running a full-blown OS such as Linux. What this page refers to is "deeply" embedded systems -- systems which are running "bare metal" (no OS) or with an RTOS on a microcontroller. Memory is normally very constrained, typical flash memory sizes are between 16-256kB, and RAM between 2-64kB. The CPU clock speed might be anywhere from 8 to 250MHz, with typically a single core.
+One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is -- "it depends". Also, the concept of what an embedded system is varies between people and companies. You can use most C++ features on high-level embedded devices that are running a full-blown OS such as Linux. What this page refers to is "deeply" embedded systems -- systems which are running "bare metal" (no OS) or with an RTOS on a microcontroller. Memory is normally very constrained, typical flash memory sizes are between 16-256kB, and RAM between 2-64kB. The CPU clock speed might be anywhere from 8 to 250MHz, with typically a single core.
 
 **I believe you can carefully select a subset of the C++ language which provides most of the benefits of OO-based design, but does not incur any significant performance hits for the target embedded system**.
 
@@ -18,33 +18,33 @@ This page aims to cover many of C++'s features and weigh-in on their suitability
 
 This is a list of all the C++ features that **you SHOULD USE in most embedded firmware**:
 
-* Classes
-* RAII
-* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size. Also be careful of overusing them, too much templating makes code very unreadable.
-* Function overloading and default parameters - Makes it easy to extend functions without massive refactors! And provides more flexibility to an API.
-* Enum classes, typesafe typedefs
-* Operator overloading (when done sensibly!)
-* References (they are just safer pointers that can't be null!)
-* Namespaces (no overhead)
-* Inheritance 
-* `auto`
-* Smart pointers (`std::unique_ptr`, `std::shared_ptr`)
-* `std::array`
-* Embedded Template Library (ETL)
+- [Classes](/programming/languages/c-plus-plus/classes/)
+- RAII
+- Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size. Also be careful of overusing them, too much templating makes code very unreadable.
+- Function overloading and default parameters - Makes it easy to extend functions without massive refactors! And provides more flexibility to an API.
+- Enum classes, typesafe typedefs
+- [Operator overloading](/programming/languages/c-plus-plus/operator-overloading/) (when done sensibly!)
+- [References](/programming/languages/c-plus-plus/references/) (they are just safer pointers that can't be null!)
+- [Namespaces](/programming/languages/c-plus-plus/namespaces/) (no overhead)
+- [Inheritance](/programming/languages/c-plus-plus/inheritance/)
+- [`auto`](/programming/languages/c-plus-plus/auto-specifier/)
+- [Smart pointers](/programming/languages/c-plus-plus/smart-pointers/) (`std::unique_ptr`, `std::shared_ptr`)
+- `std::array`
+- Embedded Template Library (ETL)
 
 These are explained in more detail in the below sub-sections.
 
 ### Classes
 
-If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to maintain the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` etc. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
+If you've ever done a C-based embedded project and had multiple instances of a peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to maintain the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` etc. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
 
 Now your functions are looking something like `Uart_Write(Uart* uart, char* bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**. But proper classes provide a more readable and maintainable way to do this. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
 
 ### Polymorphism
 
-Hand-in-hand with classes and inheritance is the concept of polymorphism. Polymorphism is when different child objects can be treated as an object of a common parent type. I have found this most useful in embedded firmware for writing unit and integration tests.
+Hand-in-hand with classes and inheritance is the concept of polymorphism. Polymorphism is when different child objects can be treated as an object of a common parent type. I have found this most useful in embedded firmware for writing [unit and integration tests](/programming/languages/c-plus-plus/unit-testing-and-mocking/).
 
-You can define abstract base classes which define the interface for your microcontroller peripherals. Then the real and mock implementations of this can inherit from this and provide the desired functionality. The real class would talk to the actual hardware (either directly to registers or via a HAL/driver). The mock class would just keep track of function calls and store passes in data for verify during testing.
+You can define abstract base classes which define the interface for your microcontroller peripherals. Then the real and mock implementations of this can inherit from this and provide the desired functionality. The real class would talk to the actual hardware (either directly to registers or via a [HAL](/programming/languages/c-plus-plus/designing-a-hal-in-cpp/)/driver). The mock class would just keep track of function calls and store passed-in data for verification during testing.
 
 This is called runtime polymorphism, and may have a small overhead due to the virtual table pointer. However, this is rarely an issue, and if it is, you can always use compile time polymorphism instead (or switch out the `.cpp` files based on what you are compiling for). More on this below.
 
@@ -56,7 +56,7 @@ Don't go crazy with polymorphism. Be aware that every layer of abstraction adds 
 
 RAII is a programming technique which stands for "Resource Acquisition Is Initialization". Basically, it means you should acquire resources in the constructor of a class (e.g. allocate memory, lock a mutex, open a network connection) and release them in the destructor. This ensures that the resources are always released when the object goes out of scope.
 
-This may not sound like a big deal, but it's actually a very powerful technique which should be utilized to it's fullest extent, especially in embedded firmware. RAII will influence how you design classes and how you structure your code. RAII is enabled in C++ by the fact that all classes have a constructor and destructor which are guaranteed to be called when the object goes in and out of scope. This is not the case in C, in where the closest you can get is to make sure to call `init()` and `deinit()` functions.
+This may not sound like a big deal, but it's actually a very powerful technique which should be utilized to its fullest extent, especially in embedded firmware. RAII will influence how you design classes and how you structure your code. RAII is enabled in C++ by the fact that all classes have a constructor and destructor which are guaranteed to be called when the object goes in and out of scope. This is not the case in C, where the closest you can get is to make sure to call `init()` and `deinit()` functions.
 
 A classic example of RAII in the embedded world is to use RAII to make sure mutex locks are always released once the code locking the mutex is finished. To do this, you would create a `MutexLock` class which would lock the mutex in the constructor and unlock it in the destructor. You would then create a `lock()` method on the `Mutex` class which returns a `MutexLock` object. See the below C++ pseudo-code for an example:
 
@@ -64,20 +64,26 @@ A classic example of RAII in the embedded world is to use RAII to make sure mute
 class MutexLock {
 public:
   MutexLock(Mutex& mutex) : m_mutex(mutex) {
-    m_mutex.lock();
+    m_mutex.lockInternal();
   }
   ~MutexLock() {
-    m_mutex.unlock();
+    m_mutex.unlockInternal();
   }
+private:
+  Mutex& m_mutex;
 };
 
 class Mutex {
+  friend class MutexLock;
 public:
   MutexLock lock() {
     return MutexLock(*this);
   }
 private:
-  void unlock() {
+  void lockInternal() {
+    // ...
+  }
+  void unlockInternal() {
     // ...
   }
 };
@@ -85,7 +91,7 @@ private:
 // Then in your code you can do the following:
 void someFunction() {
   Mutex mutex;
-  MutexLock mutex.lock();
+  MutexLock lock = mutex.lock();
   // ...
 } // Mutex is automatically unlocked here
 ```
@@ -94,7 +100,7 @@ This completely gets rid of the need to manually unlock the mutex in the code. Y
 
 See the [Mutex and MutexLockGuard class in my ZephyrCppToolkit library](https://github.com/gbmhunter/ZephyrCppToolkit/blob/main/include/ZephyrCppToolkit/Core/Mutex.hpp) for a real world example of this.
 
-Although your real world firmware application may have little concern about cleaning up resources in it's destructor (it normally is designed to just run forever), cleaning up suddenly becomes an important consideration if you are writing unit or integration tests for your firmware. Unit/integration tests are typically a single executable that runs many test functions. Each one of these functions will want to create a small part (unit test) or all of the application (integration test), test something, and clean up leaving no altered global state. This is where RAII comes in really handy. I design my firmware so that the root level `App` class has a destructor which cleans up all of it's contained objects. These child objects make sure they clean up their own resources, and also make sure to clean up their child objects and so on. This can mean the destructors do things like send `Exit` events to any threads and close any connections. I normally don't have to worry about `delete`, since I try to either embed objects directly in other objects, or use smart pointers to manager the memory.
+Although your real world firmware application may have little concern about cleaning up resources in its destructor (it normally is designed to just run forever), cleaning up suddenly becomes an important consideration if you are writing unit or integration tests for your firmware. Unit/integration tests are typically a single executable that runs many test functions. Each one of these functions will want to create a small part (unit test) or all of the application (integration test), test something, and clean up leaving no altered global state. This is where RAII comes in really handy. I design my firmware so that the root level `App` class has a destructor which cleans up all of its contained objects. These child objects make sure they clean up their own resources, and also make sure to clean up their child objects and so on. This can mean the destructors do things like send `Exit` events to any threads and close any connections. I normally don't have to worry about `delete`, since I try to either embed objects directly in other objects, or use smart pointers to manage the memory.
 
 Designed this way, I can just let the `App` object go out of scope at the end of the test function, and all the resources will be cleaned up correctly.
 
@@ -102,11 +108,11 @@ Designed this way, I can just let the `App` object go out of scope at the end of
 
 Templates allow you to create slightly different versions of classes that use different types at compile time.
 
-Be careful not to overuse templates. When used too heavily they can make code very hard to read. Just to show how far you can take templating and metaprogrmming, someone wrote an entire [compile-time ray tracer](https://github.com/phresnel/metatrace). Just because you can, doesn't mean you should 😊.
+Be careful not to overuse templates. When used too heavily they can make code very hard to read. Just to show how far you can take templating and metaprogramming, someone wrote an entire [compile-time ray tracer](https://github.com/phresnel/metatrace). Just because you can, doesn't mean you should 😊.
 
-### Enums Classes
+### Enum Classes
 
-Enums in C can be dangerous. A user of a library function can pass any old integer value as a parameter into a function which takes an enum. The compiler will not complain, however at runtime the provided value could be completely out-of-range and cause unexpected bugs.
+[Enums in C](/programming/languages/c/enumerations/) can be dangerous. A user of a library function can pass any old integer value as a parameter into a function which takes an enum. The compiler will not complain, however at runtime the provided value could be completely out-of-range and cause unexpected bugs.
 
 Also, all enums share the same scope, so you have to be careful to avoid name collisions! For example, if you want to have two `IDLE` enums for different state machines, you are forced to change the names, e.g. `GPS_IDLE` and `MOTOR_IDLE`.
 
@@ -173,7 +179,7 @@ enum class MotorState {
 
 ### Namespaces
 
-C++ namespaces are a great feature to use to help you organise your code. They allow you to organize your code into logical scoped groups and prevent naming collisions. This is especially important when writing libraries, as from the library writers perspective, they have no control over the naming of everything else in the projects it will be used in, and from the library users perspective, they really don't want to be diving into library code to change things to fix naming collisions if at all possible. 
+C++ namespaces are a great feature to use to help you organise your code. They allow you to organize your code into logical scoped groups and prevent naming collisions. This is especially important when writing libraries, as from the library writer's perspective, they have no control over the naming of everything else in the projects it will be used in, and from the library user's perspective, they really don't want to be diving into library code to change things to fix naming collisions if at all possible. 
 
 ```c++
 namespace my_namespace {
@@ -187,7 +193,7 @@ I like to use `snake_case` for namespaces, to keep them visually distinct from t
 
 ### std::array
 
-`std::array` is a wrapper around a C-style array that provides more safety around it's usage. Unlike in C, it does not decay to a pointer to the element type automatically[^cpp-reference-std-array].
+`std::array` is a wrapper around a C-style array that provides more safety around its usage. Unlike in C, it does not decay to a pointer to the element type automatically.[^cpp-reference-std-array]
 
 If you use the `[]` operator to access the elements, it behaves the same as in C, with no bounds checking:
 
@@ -216,12 +222,13 @@ You also get a useful `.fill()` function, to fill all the elements with a single
 myArray.fill(0);
 ```
 
-Another useful feature if that you can copy an entire array by just using the `=` operator:
+Another useful feature is that you can copy an entire array by just using the `=` operator:
 
 ```c++
 std::array<uint8_t, 3> myArray1 = {1, 2, 3};
 std::array<uint8_t, 3> myArray2;
 myArray2 = myArray1;
+```
 
 Note this only works with arrays of the same type AND same size.
 
@@ -234,7 +241,7 @@ myArray3 = myArray2; // Compiler error! Different sizes
 
 `constexpr` is a keyword which allows you to define a constant value at compile time. This is useful for things like array sizes, or other values which are known at compile time.
 
-`constexpr` should be preferred over `#define` for things like array sizes and other constants, as it is typed and scoped, rather the brute force text replacement nature of `#define`.
+`constexpr` should be preferred over `#define` for things like array sizes and other constants, as it is typed and scoped, rather than the brute force text replacement nature of `#define`.
 
 ```c++
 // Don't do this
@@ -250,7 +257,7 @@ static constexpr size_t arraySize = 10;
 
 The traditional `for(int x = 0; x < arrayLength; x++)` loop is a pain to write, and is error prone if you get the range wrong (the most common mistake being to accidentally use `x <= arrayLength` instead of `x < arrayLength` which gives out-of-bounds access, woops!).
 
-C++11 introduced the range based for loop which looks normally like this: `for (auto& value : container)`. It is a more elegant way to iterate over something that is "iterable" (has a `begin()` and `end()` method). You should use this instead of the traditional `for` loop every time you are iterating over every element in a container and do not need to know the index.
+C++11 introduced the range based for loop which normally looks like this: `for (auto& value : container)`. It is a more elegant way to iterate over something that is "iterable" (has a `begin()` and `end()` method). You should use this instead of the traditional `for` loop every time you are iterating over every element in a container and do not need to know the index.
 
 ```c++
 std::array<uint8_t, 3> myArray = {1, 2, 3};
@@ -265,30 +272,31 @@ The most common type to use is `auto&`, which will automatically be a reference 
 
 ## C++ Features That Could Be Used, But Only After Careful Consideration
 
-* `new/delete`
-* Virtual Methods
-* RTTI
-* Exceptions
-* `std::string`
-* `std::vector`
-* Boost
+- `new/delete`
+- [Virtual Methods](/programming/languages/c-plus-plus/virtual-methods/)
+- RTTI
+- [Exceptions](/programming/languages/c-plus-plus/exceptions/)
+- [`std::string`](/programming/languages/c-plus-plus/strings/)
+- `std::vector`
+- [Boost](/programming/languages/c-plus-plus/boost-libraries/)
 
 ### new/delete
 
-`new` and `delete` is C++'s answer to C's `malloc()` and `free()` functions. They are improved versions of `malloc()` and `free()`.
+`new` and `delete` is C++'s answer to C's [`malloc()` and `free()`](/programming/languages/c/dynamic-memory-allocation/) functions. They are improved versions of `malloc()` and `free()`.
 
-My general rule for embedded firmware is, unless otherwise banned from using dynamic memory allocation due to a specific coding standard (e.g. MISRA), **to allow the use of dynamic memory allocation, but only during initialization**. My opinion is that this gives the best of both worlds. The ability to use dynamic memory allocation allows your firmware to be flexible to initialization variables and configuration. Only allowing it an initialization prevents the "memory segmentation" issues that can occur when objects are continually created and deleted from the heap at runtime.
+My general rule for embedded firmware is, unless otherwise banned from using dynamic memory allocation due to a specific coding standard (e.g. MISRA), **to allow the use of dynamic memory allocation, but only during initialization**. My opinion is that this gives the best of both worlds. The ability to use dynamic memory allocation allows your firmware to be flexible to initialization variables and configuration. Only allowing it at initialization prevents the "memory fragmentation" issues that can occur when objects are continually created and deleted from the heap at runtime.
 
 I make sure to avoid memory issues by doing the following:
-* Preferring to embed a object directly as a variable in another class rather than the alternative of storing a pointer to the object, and allocating it with `new` in the constructor. This means I don't have to worry about any accidental null pointers, or forgetting to free the memory. However some times it is not possible to construct the child object in the initializer list of the parent objects constructor, and in that case I fall back to using a pointer.
-* Try to wrap all raw pointers in either a `std::unique_ptr` or `std::shared_ptr` to ensure the memory is automatically freed when the objects go out of scope.
+
+- Preferring to embed an object directly as a variable in another class rather than the alternative of storing a pointer to the object, and allocating it with `new` in the constructor. This means I don't have to worry about any accidental null pointers, or forgetting to free the memory. However sometimes it is not possible to construct the child object in the initializer list of the parent object's constructor, and in that case I fall back to using a pointer.
+- Try to wrap all raw pointers in either a `std::unique_ptr` or `std::shared_ptr` to ensure the memory is automatically freed when the objects go out of scope.
 
 ### Exceptions
 
 Exceptions are powerful, they allow errors to propagate up a stack until you care about catching them, without having to add any code at any of the layers which don't care about the exception. However, they are a problem for most deeply-embedded firmware projects, because:
 
-* Stack unwinding is processor intensive.
-* Correct, exception handling code can be hard to read (vs. return codes). See Raymond Chen's article [Cleaner, more elegant, and harder to recognize](https://devblogs.microsoft.com/oldnewthing/20050114-00/?p=36693).
+- Stack unwinding is processor intensive.
+- Correct exception handling code can be hard to read (vs. return codes). See Raymond Chen's article [Cleaner, more elegant, and harder to recognize](https://devblogs.microsoft.com/oldnewthing/20050114-00/?p=36693).
 
 With exceptions not allowed in embedded firmware, error handling is typically done by returning error codes from functions and checking them every time the function is called. **This may seem like a lot of hassle at first, but is a very common paradigm and forces you to think about the "exceptional" scenarios and how to handle them**. Many more modern languages such as Go and Rust encourage the "return error code, check error code, continue" process over exceptions anyway.
 
@@ -298,13 +306,13 @@ The GCC compiler supports the `-fno-exceptions` flag which disables exceptions.
 
 ### std::string
 
-I would generally recommend against using `std::string` in embedded firmware, due to it's use of dynamic memory allocation at runtime (when using the default allocator). The embedded template library (ETL) provides a better suited `etl::string` which uses a template parameter to determine the size of the string buffer on the stack at compile time, side stepping the need for dynamic memory allocation.
+I would generally recommend against using `std::string` in embedded firmware, due to its use of dynamic memory allocation at runtime (when using the default allocator). The embedded template library (ETL) provides a better suited `etl::string` which uses a template parameter to determine the size of the string buffer on the stack at compile time, side stepping the need for dynamic memory allocation.
 
 In embedded C++, `std::string_view` can be used as a safer wrapper around raw NTBS (null-terminated byte strings) without using dynamic memory allocation at runtime.
 
 ## Handling Errors In Constructors
 
-One issue when writing classes in firmware is the **difficulty in signalling back to the caller when an error occurs in a C++ class constructor**. The standard function approach of returning a error number does not work as you are not allowed a return value from C++ constructors. When developing C++ applications running on a full-blown OS, the standard way to deal with it is to throw an exception. In an embedded application where you are not allowed to use exceptions, this is obviously not an option. For example, consider the following example class:
+One issue when writing classes in firmware is the **difficulty in signalling back to the caller when an error occurs in a C++ class constructor**. The standard function approach of returning an error number does not work as you are not allowed a return value from C++ constructors. When developing C++ applications running on a full-blown OS, the standard way to deal with it is to throw an exception. In an embedded application where you are not allowed to use exceptions, this is obviously not an option. For example, consider the following example class:
 
 ```c++
 #include <cstdint>
@@ -327,10 +335,10 @@ int main() {
 }
 ```
 
-You want to check in the constructor if the caller has provided a valid I2C address (one with the range 0-127). There are a few ways you can signal this fault back to the caller, and we'll discuss these now.
+You want to check in the constructor if the caller has provided a valid I2C address (one within the range 0-127). There are a few ways you can signal this fault back to the caller, and we'll discuss these now.
 
 <Aside type="note">
-Runnable code for all this examples can be found at https://replit.com/@gbmhunter/cpp-handling-constructor-errors.
+Runnable code for all these examples can be found at [https://replit.com/@gbmhunter/cpp-handling-constructor-errors](https://replit.com/@gbmhunter/cpp-handling-constructor-errors).
 </Aside>
 
 ### Move All Non-Trivial Code To Init()
@@ -378,7 +386,7 @@ You might want to make sure the caller does not forget to call the `Init()` func
 
 Using an `Init()` function also **opens up the possibility of the caller being able to re-initialize the class without having to delete this object and construct a new one**. This may or may not be beneficial for a particular application!
 
-One downside to this approach is that the caller has to remember to call `Init()` before they can use any of the classes other functions. Also, adding the `m_isInitialized` check is more code that you have to add to every member function.
+One downside to this approach is that the caller has to remember to call `Init()` before they can use any of the class's other functions. Also, adding the `m_isInitialized` check is more code that you have to add to every member function.
 
 ### Pass In Status Pointer To Constructor
 
@@ -454,7 +462,7 @@ The boolean `m_initSuccessful` could be changed to a `uint8_t` if you want to pr
 
 ## C++ And Interrupts
 
-There is a few things to be aware of when using C++ for embedded firmware projects that use interrupts and interrupt service routines (ISRs):
+There are a few things to be aware of when using C++ for embedded firmware projects that use interrupts and interrupt service routines (ISRs):
 
 ### C++ Mangling The ISR Name
 
@@ -470,7 +478,7 @@ extern "C" {
 }
 ```
 
-If you didn't wrap `SPI1_IRQHandler(void)` in `extern "C"`, it's compiled name would be something like `AbXllGSPI1_IRQHandler(void)`. This would not get picked up by the linker, and because in the startup code there is a default (fall-back) IRQ function defined with `__weak`, you wouldn't even get a error saying the function is missing!
+If you didn't wrap `SPI1_IRQHandler(void)` in `extern "C"`, its compiled name would be something like `AbXllGSPI1_IRQHandler(void)`. This would not get picked up by the linker, and because in the startup code there is a default (fall-back) IRQ function defined with `__weak`, you wouldn't even get an error saying the function is missing!
 
 You won't have this problem if the platform you use provides a function to "register" ISRs, as you'll be passing the mangled name to the register function anyway:
 
@@ -497,11 +505,11 @@ ISRs typically have a strict function type signature -- no input variables and n
 
 ## The Embedded Template Library (ETL)
 
-The [Embedded Template Library (ETL)](https://www.etlcpp.com/) is an popular open-source, MIT licensed C++ library which is designed to complement (and in cases replace) parts of the C++ STL (Standard Template Library) to provide a standard library which is useful in embedded environments[^etl-homepage]. One of the main problems with the STL from an embedded perspective is the use of dynamic memory allocation built into the use of the STL containers (e.g. `std::vector` and `std::string`). Dynamic memory allocation is used in these containers to provide powerful and flexible containers that work well when running on a full-blown OS, but the indeterministic nature and fragmentation of dynamic memory allocation usually makes these STL containers unsuitable for embedded systems.
+The [Embedded Template Library (ETL)](https://www.etlcpp.com/) is a popular open-source, MIT licensed C++ library which is designed to complement (and in some cases replace) parts of the C++ STL (Standard Template Library) to provide a standard library which is useful in embedded environments.[^etl-homepage] One of the main problems with the STL from an embedded perspective is the use of dynamic memory allocation built into the use of the STL containers (e.g. `std::vector` and `std::string`). Dynamic memory allocation is used in these containers to provide powerful and flexible containers that work well when running on a full-blown OS, but the indeterministic nature and fragmentation of dynamic memory allocation usually makes these STL containers unsuitable for embedded systems.
 
 The ETL provides a set of alternative containers that are statically allocated, and thus do not use dynamic memory allocation.
 
-ETL is popular in the embedded community and as of September 2024 it has 2.1k stars on GitHub[^etl-github]. [CMake](/programming/build-systems-and-package-managers/cmake/) is used to build the library[^etl-homepage].
+ETL is popular in the embedded community and as of September 2024 it has 2.1k stars on GitHub.[^etl-github] [CMake](/programming/build-systems-and-package-managers/cmake/) is used to build the library.[^etl-homepage]
 
 ### Installation
 
@@ -539,13 +547,13 @@ ETL provides a number of containers (e.g. a vector, string, array) that are simi
 
 #### Arrays
 
-ETL provides a `etl::array` which offers a array which has to have a fixed size known at compile time. Below is an example of a `etl::array`:
+ETL provides a `etl::array` which offers an array with a fixed size known at compile time. Below is an example of a `etl::array`:
 
 ```c++
 #include <etl/array.h>
 
 int main() {
-    etl::array<uint8_t, 3> myArray; // Declare an array of uint8_t which as 3 elements
+    etl::array<uint8_t, 3> myArray; // Declare an array of uint8_t which has 3 elements
 }
 ```
 
@@ -556,7 +564,7 @@ myArray[0] = 10; // Use the [] operator to access the element. Faster, but no bo
 myArray.at(0) = 10; // Use the .at() method to access the element. Slower, but safer!
 ```
 
-I would recommend you use `.at()` by default, and only resort to `[]` if you have to for performance reasons. Another say way to access elements (but not in a random way) is to use iterators, which are explained below.
+I would recommend you use `.at()` by default, and only resort to `[]` if you have to for performance reasons. Another safe way to access elements (but not in a random way) is to use iterators, which are explained below.
 
 You can loop over the array elements by using iterators, which further protects you from accidentally accessing an element outside the array bounds.
 
@@ -569,7 +577,7 @@ for (auto it = myArray.begin(); it != myArray.end(); ++it)
 ```
 
 <Aside type="note">
-Sometimes an iterator won't work, as you'll need the index of the element in some part of the calculation as well as it's value. In that case use the standard `for (int i = 0; i < myArray.size(); i++)` loop.
+Sometimes an iterator won't work, as you'll need the index of the element in some part of the calculation as well as its value. In that case use the standard `for (int i = 0; i < myArray.size(); i++)` loop.
 </Aside>
 
 You can call `.size()` to get the number of elements in the array.
@@ -586,7 +594,7 @@ You can't store references in an array (ETL array or otherwise)! This is because
 
 #### Vectors
 
-Below is an example if the `etl::vector` container and how you would use it:
+Below is an example of the `etl::vector` container and how you would use it:
 
 ```c++
 #include <iostream>
@@ -610,15 +618,15 @@ int main() {
 
 Notice how both the type (`uint32_t`) and the size of the vector (6) are specified in the template arguments when creating the vector. This allows space for 6 elements to be allocated on the stack (inside `main()` at that point in time). This in comparison with `std::vector` in which only the type is specified, and the buffer to hold the element is dynamically allocated (and resized!) on the heap at runtime.
 
-One clever thing ETL does it allow you to accept function inputs of the `etl::vector` type without having to also provide the size. This would be a pain, as it would mean a different version of the function for every different sized vector. ETL does this by defining a base class called `etl::ivector` which only required the type as a template parameter. You can pass a `etl::vector` to a function that accepts a `etl::ivector` and it will work fine.
+One clever thing ETL does is allow you to accept function inputs of the `etl::vector` type without having to also provide the size. This would be a pain, as it would mean a different version of the function for every different sized vector. ETL does this by defining a base class called `etl::ivector` which only requires the type as a template parameter. You can pass a `etl::vector` to a function that accepts a `etl::ivector` and it will work fine.
 
-### Strings
+#### Strings
 
-ETL provides fixed capacity string classes via `etl::string` and `etl::string_ext`. Unlike `std::string`, `etl::string` does not perform any dynamic memory allocation. The downside is that you need to either provide the max. size as a template parameter (so that `etl::string` can allocate a buffer of that size in it's object at compile time) or provide your own already allocated buffer.
+ETL provides fixed capacity string classes via `etl::string` and `etl::string_ext`. Unlike `std::string`, `etl::string` does not perform any dynamic memory allocation. The downside is that you need to either provide the max. size as a template parameter (so that `etl::string` can allocate a buffer of that size in its object at compile time) or provide your own already allocated buffer.
 
 ETL strings are provided via the `etl/string.h` header file.
 
-`etl::string` is a simple string class which contains it's own fixed size array. To create a `etl::string` you need to specify the size of the array as a template parameter, as shown below:
+`etl::string` is a simple string class which contains its own fixed size array. To create a `etl::string` you need to specify the size of the array as a template parameter, as shown below:
 
 ```c++
 #include <etl/string.h>
@@ -632,10 +640,10 @@ You also have the ability to provide your own buffer to create a string, using `
 
 ```c++
 char buffer[10 + 1]; // +1 for the null terminator
-etl::string_ext<10> myString(buffer, etl::size(buffer));
+etl::string_ext myString(buffer, etl::size(buffer));
 ```
 
-ETL strings are safe from overflow and other issues typically associated with raw C-style strings (`char *`). ETL strings have an internal flag which records the truncation state. If a string is constructed, assigned or modified in any way that the text contained would have exceeded it's capacity then the truncation flag is set. The truncation flag is also propagated to other strings if it is built up from the originally truncated string, even if the resulting string is not truncated. This is useful behaviour that let's you check if a string is valid or not after many operations. It is similar to how the special float value `NaN` propagates to all other floats involved in a calculation with it.
+ETL strings are safe from overflow and other issues typically associated with raw C-style strings (`char *`). ETL strings have an internal flag which records the truncation state. If a string is constructed, assigned or modified in any way that the text contained would have exceeded its capacity then the truncation flag is set. The truncation flag is also propagated to other strings if it is built up from the originally truncated string, even if the resulting string is not truncated. This is useful behaviour that lets you check if a string is valid or not after many operations. It is similar to how the special float value `NaN` propagates to all other floats involved in a calculation with it.
 
 You can format things like integers and floats into a string using the `etl::to_string` function, provided by the `<etl/to_string.h>` header file.
 
@@ -655,14 +663,14 @@ etl::to_string(3.1415, text, etl::format_spec().precision(3), true);
 
 Sometimes you will have to pass a ETL string to a function that expects a `char *`. Just like with `std::string`, you can use the `.c_str()` method to get a `char *` from an ETL string.
 
-### String Views
+#### String Views
 
 ETL provides string views, which are low-cost views into specific parts of a string.
 
 The following example creates a string view from a string with a different start and end position: 
 
 ```c++
-etl::string<10> greeting("Hello World");
+etl::string<11> greeting("Hello World");
 etl::string_view view(greeting.begin() + 2, greeting.size() - 4);
 ```
 
@@ -670,7 +678,7 @@ etl::string_view view(greeting.begin() + 2, greeting.size() - 4);
 
 ETL provides a `etl::expected` class which is very similar to the `std::expected` class. As far as I know, the `std::expected` would be perfectly fine to use in an embedded environment (no dynamic allocation, exceptions, etc.), but it was only added in C++23, which may not be a viable option for certain embedded projects. Thus `etl::expected` is a good alternative as long as you can use the ETL library. If you do have `std::expected` available, I would recommend using it instead of `etl::expected` for better compatibility with other C++ code.
 
-Just like `std::expected`, `etl::expected` is a great way to return either a value or an error code from a function. In my opinion, it is a cleaner way than the "C way" of returning the error code and having to provide a pointer as a function input to save the result to. It is similar in nature to [Rust's](/programming/languages/rust/) `Return` type.
+Just like `std::expected`, `etl::expected` is a great way to return either a value or an error code from a function. In my opinion, it is a cleaner way than the "C way" of returning the error code and having to provide a pointer as a function input to save the result to. It is similar in nature to [Rust's](/programming/languages/rust/) `Result` type.
 
 ```c++
 #include <etl/expected.h>
@@ -690,8 +698,8 @@ etl::expected<float, Error> readTemperature() {
 
 int main() {
   auto result = readTemperature();
-  if (result.has_error()) {
-    printf("Error reading temperature: %d\n", result.error());
+  if (!result.has_value()) {
+    printf("Error reading temperature: %d\n", static_cast<int>(result.error()));
   } else {
     printf("Temperature: %f\n", result.value());
   }
@@ -749,12 +757,12 @@ Virtual functions make things like testing with mock implementations of peripher
 
 If they are problematic, then you have a few options:
 
-* Use compile time polymorphism using templates rather than runtime polymorphism using virtual functions.
-* Use the C style trick of having a shared header file but switching out the `.cpp` implementation file based on what you are compiling for (this only works when you are happy switching out every implementation for a different one, e.g. real implementations vs. mock implementations). You can switch the `.cpp` files either by including the correct one in your build system (e.g. a CMake target), or using preprocessor macros and `#if` statements.
+- Use compile time polymorphism using templates rather than runtime polymorphism using virtual functions.
+- Use the C style trick of having a shared header file but switching out the `.cpp` implementation file based on what you are compiling for (this only works when you are happy switching out every implementation for a different one, e.g. real implementations vs. mock implementations). You can switch the `.cpp` files either by including the correct one in your build system (e.g. a CMake target), or using preprocessor macros and `#if` statements.
 
 ## More Resources
 
-The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform[^bib-iso-tech-report-cpp-performance].
+The document "[Technical Report on C++ Performance](https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform.[^bib-iso-tech-report-cpp-performance]
 
 [The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
 
@@ -762,7 +770,7 @@ The document "[Technical Performance on C++ Performance](http://www.open-std.org
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^bib-iso-tech-report-cpp-performance]: ISO/IEC (2006, Feb 15). _ISO/IEC TR 18015:2006(E) - Technical Report on C++ Performance_. Retrieved 2022-09-29, from https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf.
-[^cpp-reference-std-array]: cppreference.com. _std::array_. Retrieved 2024-03-15, from https://en.cppreference.com/w/cpp/container/array.
-[^etl-homepage]: Embedded Template Library (ETL). _Embedded Template Library [homepage]_. Retrieved 2024-09-03, from https://www.etlcpp.com/.
-[^etl-github]: Embedded Template Library (ETL). _Embedded Template Library [GitHub repo]_. Retrieved 2024-09-03, from https://github.com/ETLCPP/etl.
+[^bib-iso-tech-report-cpp-performance]: ISO/IEC (2006, Feb 15). _ISO/IEC TR 18015:2006(E) - Technical Report on C++ Performance_ [technical report]. Retrieved 2022-09-29, from https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf.
+[^cpp-reference-std-array]: cppreference.com. _std::array_ [website]. Retrieved 2024-03-15, from https://en.cppreference.com/w/cpp/container/array.
+[^etl-homepage]: Embedded Template Library (ETL). _Embedded Template Library_ [homepage]. Retrieved 2024-09-03, from https://www.etlcpp.com/.
+[^etl-github]: Embedded Template Library (ETL). _Embedded Template Library_ [GitHub repo]. Retrieved 2024-09-03, from https://github.com/ETLCPP/etl.
