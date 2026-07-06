@@ -1,14 +1,16 @@
 ---
 authors: [gbmhunter]
 date: 2014-11-13
-description: A tutorial on quaternions, including calculators to convert between quaternions, rotation matrices and axis-angle notations.
-lastUpdated: 2019-10-14
+description: A tutorial on quaternions, including a calculator to convert between quaternions, rotation matrices, Euler angles and axis-angle notation.
+lastUpdated: 2026-07-07
 tags: [quaternion, matrix, rotation, complex, SLERP, interpolation, Euler, angle, RPY, gimbal lock, attitude, orientation, vector, calculator, conversion]
 title: Quaternions
 type: page
 ---
 
-A quaternion (pronounced _qwa-ter-ne-ion_) is a complex-number like system which contains three imaginary components and one real component. Arguably, the most useful quaternions is a subset of all quaternions called **unit quaternions** (or **versors**), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.
+import Rotations3d from 'src/components/tools/3d-rotations/Rotations3d.jsx';
+
+A quaternion (pronounced _kwo-TER-nee-on_) is a complex-number-like system which contains three imaginary components and one real component. Arguably, the most useful quaternions are a subset of all quaternions called **unit quaternions** (or **versors**), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.
 
 ## Defining Equation And Identities
 
@@ -29,7 +31,7 @@ $$
 \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1
 $$
 
-From these rule above, you can determine some identities:
+From the rules above, you can determine some identities:
 
 $$
 \mathbf{ijk} = -1
@@ -56,17 +58,17 @@ $$
 The same process can be applied the other way around and also to $\mathbf{j}$ and $\mathbf{k}$ resulting in the following six identities:
 
 $$
-\begin{align}
+\begin{align*}
   \mathbf{i} &= \mathbf{jk} \\
   \mathbf{j} &= -\mathbf{ik} \\
   \mathbf{k} &= \mathbf{ij} \\
   \mathbf{-i} &= \mathbf{kj} \\
   \mathbf{-j} &= -\mathbf{ki} \\
   \mathbf{-k} &= \mathbf{ji} \\
-\end{align}
+\end{align*}
 $$
 
-<p>These identities are used to <b>simplify terms when applying the product rule to quaternion multiplication</b>.</p>
+These identities are used to **simplify terms when applying the product rule to quaternion multiplication**.
 
 ## Quaternion Conjugates
 
@@ -76,9 +78,9 @@ $$
 \mathbf{\bar{q}} = w - x\mathbf{i} - y\mathbf{j} - z\mathbf{k}
 $$
 
-All you need to do is multiple all of the imaginary terms by $ -1 $. The conjugate can also be denoted by $ \mathbf{q*} $ or $ \mathbf{q^T} $. However $ \mathbf{\bar{q}} $ is the preferred choice on this site.
+All you need to do is multiply all of the imaginary terms by $ -1 $. The conjugate can also be denoted by $ \mathbf{q}^* $ or (by analogy with the matrix transpose) $ \mathbf{q}^T $. However $ \mathbf{\bar{q}} $ is the preferred choice on this site.
 
-The conjugate of a unit quaternion is the same as it's inverse.
+The conjugate of a unit quaternion is the same as its inverse.
 
 ## Pure/Vector Quaternions
 
@@ -106,7 +108,7 @@ $$
 w^2 + x^2 + y^2 + z^2 = 1
 $$
 
-Interestingly, all rotations in 3D space (which is called the 3D rotation group, or $\mathbf{SO(3)}$)` can be represented by the unit quaternions (which is a sub-set of all quaternions). In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!
+Interestingly, all rotations in 3D space (which is called the 3D rotation group, or $SO(3)$) can be represented by the unit quaternions (which are a subset of all quaternions). Note that the unit quaternions *double cover* the rotations — $\mathbf{q}$ and $-\mathbf{q}$ represent the same rotation. In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!
 
 ## Representation In Software/Programming
 
@@ -116,7 +118,7 @@ $$
 \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix}
 $$
 
-in where the coefficients are stored in an array and the quaternion units are implied by position.
+where the coefficients are stored in an array and the quaternion units are implied by position.
 
 It is important to note that **although it is common to represent a quaternion with vector-like syntax, it is definitely not a vector** (in the mathematical sense of the word). For one, quaternion multiplication does not follow the dot or cross-product multiplication rules that vectors do.
 
@@ -124,12 +126,12 @@ It is important to note that **although it is common to represent a quaternion w
 
 There are a number of different ways to describe rotations. These include:
 
-* Axis-angle representation
-* Euler angles (roll, pitch, yaw)
-* Rotation matrices
-* Quaternions
+- Axis-angle representation
+- [Euler angles (roll, pitch, yaw)](/mathematics/geometry/euler-angles/)
+- [Rotation matrices](/mathematics/geometry/rotation-matrices/)
+- Quaternions
 
-Why choose Quaternions? One reason is that Quaternions do not suffer from the _gimbal lock_ that Euler angles do. This also is related to the fact that they are differentiable (i.e. very small changes in rotation cause very small changes in the quaternion values), which allows for smooth interpolation, important for many use cases including 3D animation. They are also more compact with only four numbers need to be stored than a 9 number rotation matrix. Quaternions are also easily converted into the angle-axis representation and back again.
+Why choose quaternions? One reason is that quaternions do not suffer from the _gimbal lock_ that Euler angles do. This also is related to the fact that they are differentiable (i.e. very small changes in rotation cause very small changes in the quaternion values), which allows for smooth interpolation, important for many use cases including 3D animation. They are also more compact, with only four numbers needing to be stored compared to the nine of a rotation matrix. Quaternions are also easily converted into the angle-axis representation and back again.
   
   
 ## Rotating A Vector
@@ -137,24 +139,24 @@ Why choose Quaternions? One reason is that Quaternions do not suffer from the _g
 You can rotate a vector $v$ in 3D space to $v'$ with:
 
 $$
-\begin{bmatrix}0\\v'\end{bmatrix} = q \begin{bmatrix}0\\v\end{bmatrix}q'
+\begin{bmatrix}0\\v'\end{bmatrix} = q \begin{bmatrix}0\\v\end{bmatrix}\bar{q}
 $$
 
-Because the vector is squashed between the quaternion and it's conjugate, this is sometimes referred to as the "sandwich product". The multiplications can be done by the basic product rule, or more easily using the _Hamilton product_.
+Because the vector is squashed between the quaternion and its conjugate, this is sometimes referred to as the "sandwich product". The multiplications can be done by the basic product rule, or more easily using the _Hamilton product_.
 
-Lets assume we have the vector:
+Let's assume we have the vector:
 
 $$
 v = \begin{bmatrix}1\\0\\0\end{bmatrix}
 $$
 
-And we want to rotate it with the quaternion>
+And we want to rotate it with the quaternion:
 
 $$
-q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix}
+q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0\end{bmatrix}
 $$
 
-This quaternion just so happens to be a rotation of $90$ around the y-axis>
+This quaternion just so happens to be a rotation of $90^{\circ}$ around the Y axis.
 
 We turn the vector into a vector quaternion by adding a fourth value of 0 (which is the $w$):
 
@@ -166,33 +168,43 @@ Combine into:
 
 $$
   v' = 
-  \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix}
+  \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0\end{bmatrix}
   \begin{bmatrix}0\\1\\0\\0\end{bmatrix}
-  \begin{bmatrix}\sqrt{0.5} \\ 0 \\ -\sqrt{0.5} \\ 0]\end{bmatrix}
+  \begin{bmatrix}\sqrt{0.5} \\ 0 \\ -\sqrt{0.5} \\ 0\end{bmatrix}
 $$
 
 To calculate the multiplication of two quaternions, you can use the Hamilton product. If you have the equation:
 
 $$
-q3 = q1*q2
+q3 = q1 \, q2
 $$
 
 where each quaternion is composed in the following manner:
 
 $$
-q1 = q1_w + q1_x \mathbf{i} + q1_y \mathbf{y} + q1_z \mathbf{z}
+q1 = q1_w + q1_x \mathbf{i} + q1_y \mathbf{j} + q1_z \mathbf{k}
 $$
 
 then using the Hamilton product, the values of each component in $q3$ are:
 
 $$
-  q3_w = q1_w q2_w - q1_x q2_x - q1_y q2_y - q1_z q2_z \\
-  q3_x = q1_x q2_w + q1_w q2_x - q1_z q2_y + q1_y q2_z \\
-  q3_y = q1_y q2_w + q1_z q2_x + q1_w q2_y - q1_x q2_z \\
-  q3_x = q1_z q2_w - q1_y q2_x + q1_x q2_y + q1_w q2_z
+\begin{align*}
+  q3_w &= q1_w q2_w - q1_x q2_x - q1_y q2_y - q1_z q2_z \\
+  q3_x &= q1_x q2_w + q1_w q2_x - q1_z q2_y + q1_y q2_z \\
+  q3_y &= q1_y q2_w + q1_z q2_x + q1_w q2_y - q1_x q2_z \\
+  q3_z &= q1_z q2_w - q1_y q2_x + q1_x q2_y + q1_w q2_z
+\end{align*}
 $$
 
-You can also rotate a vector $\vec{v}$ by a quaternion $q$ by decomposing the quaternion into it's scalar part $w$ and it's vector part $\vec{r}$:
+Applying the Hamilton product twice to our example above (first to combine $q$ and the vector quaternion, and then to combine that result with $\bar{q}$) gives:
+
+$$
+v' = \begin{bmatrix}0\\0\\0\\-1\end{bmatrix}
+$$
+
+Dropping the $w$ component, our rotated vector is $(0, 0, -1)$ — exactly what we'd expect when rotating the X unit vector $90^{\circ}$ around the Y axis.
+
+You can also rotate a vector $\vec{v}$ by a quaternion $q$ by decomposing the quaternion into its scalar part $w$ and its vector part $\vec{r}$:
 
 $$
 \mathbf{q} = (w, \vec{r})
@@ -209,7 +221,7 @@ $$
 
 ## Rotation Matrix
 
-You can calculate a 3x3 rotation matrix from a quaternion. This is useful if you want to express the rotation as a matrix instead of a quaternion, but comes at the expense of having to store 9 numbers rather than 4!
+You can calculate a 3×3 [rotation matrix](/mathematics/geometry/rotation-matrices/) from a quaternion. This is useful if you want to express the rotation as a matrix instead of a quaternion, but comes at the expense of having to store 9 numbers rather than 4! See the conversion section below for the equation.
 
 ## Combining Rotations
 
@@ -221,7 +233,7 @@ $$
 R_C = R_B R_A
 $$
 
-Remember that **quaternion multiplication is not associative**, so the ordering of $ R_A $ and $ R_B $ is important.
+Remember that **quaternion multiplication is not commutative**, so the ordering of $ R_A $ and $ R_B $ is important.
 
 ## Some Useful Quaternions
 
@@ -239,39 +251,39 @@ Remember that **quaternion multiplication is not associative**, so the ordering 
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [0, 1, 0, 0] $$</td>
-            <td>Rotation of 180 around X axis.</td>
+            <td>Rotation of 180° around the X axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [0, 0, 1, 0] $$</td>
-            <td>Rotation of 180 around Y axis.</td>
+            <td>Rotation of 180° around the Y axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [0, 0, 0, 1] $$</td>
-            <td>Rotation of 180 around Z axis.</td>
+            <td>Rotation of 180° around the Z axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [\sqrt{0.5}, \sqrt{0.5}, 0, 0] $$</td>
-            <td>Rotation of 90 around X axis.</td>
+            <td>Rotation of 90° around the X axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, \sqrt{0.5}, 0] $$</td>
-            <td>Rotation of 90 around Y axis.</td>
+            <td>Rotation of 90° around the Y axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, 0, \sqrt{0.5}] $$</td>
-            <td>Rotation of 90 around Z axis.</td>
+            <td>Rotation of 90° around the Z axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [\sqrt{0.5}, -\sqrt{0.5}, 0, 0] $$</td>
-            <td>Rotation of -90 around X axis.</td>
+            <td>Rotation of -90° around the X axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, -\sqrt{0.5}, 0] $$</td>
-            <td>Rotation of -90 around Y axis.</td>
+            <td>Rotation of -90° around the Y axis.</td>
         </tr>
         <tr>
             <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, 0, -\sqrt{0.5}] $$</td>
-            <td>Rotation of -90 around Z axis.</td>
+            <td>Rotation of -90° around the Z axis.</td>
         </tr>
     </tbody>
 </table>
@@ -282,9 +294,9 @@ Remember that **quaternion multiplication is not associative**, so the ordering 
 
 SLERP is shorthand for *spherical linear interpolation*. It is commonly used with quaternions to produce a smooth rotation of a 3D body from one orientation to another. Performing SLERP on two quaternions produces a smooth, continuous rotation with a constant angular velocity around a fixed rotation axis (the first quaternion describes the starting rotation, the second quaternion describes the end rotation).
 
-SLERP does not work well when the two quaternions are too similar. In this case it is safer to just perform linear interpolation on all four values quaternion values independently (making sure to normalize the resulting quaternion before using it).
+SLERP does not work well when the two quaternions are too similar. In this case it is safer to just perform linear interpolation on all four quaternion values independently (making sure to normalize the resulting quaternion before using it).
 
-The following Python code example demonstrates the SLERP algorithm on a pair of quaternions [^wikipedia]:
+The following Python code example demonstrates the SLERP algorithm on a pair of quaternions.[^wikipedia-slerp]
 
 ```python
 import numpy as np
@@ -315,11 +327,9 @@ def slerp(v0, v1, t_array):
     return (s0[:,np.newaxis] * v0[np.newaxis,:]) + (s1[:,np.newaxis] * v1[np.newaxis,:])
 ```
 
-<p><a href="https://en.wikipedia.org/wiki/Slerp">https://en.wikipedia.org/wiki/Slerp</a> has some code examples in Python and C++ that perform SLERP on quaternions.</p>
-
 ## Conversion From Axis-Angle Form To Quaternion
 
-A rotation in axis-angle form:
+A rotation in axis-angle form (where the axis is a unit vector):
 
 $$
 axis = \begin{bmatrix}a_x\\a_y\\a_z\end{bmatrix} \quad angle = \theta
@@ -355,4 +365,14 @@ $$
 \end{bmatrix}
 $$
 
-[^wikipedia]: https://en.wikipedia.org/wiki/Slerp
+## Rotation Converter
+
+Use the converter below to translate a 3D rotation between angle-axis, quaternion, rotation matrix and intrinsic Euler angles. Pick the radio button next to the form you want to enter; the other forms are computed.
+
+<Rotations3d client:load />
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wikipedia-slerp]: Wikipedia. _Slerp_ [wiki]. Retrieved 2026-07-07, from https://en.wikipedia.org/wiki/Slerp.

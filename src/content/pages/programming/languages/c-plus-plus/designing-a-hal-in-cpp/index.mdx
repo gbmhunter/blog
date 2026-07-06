@@ -1,21 +1,21 @@
 ---
 authors: [gbmhunter]
 date: 2024-12-02
-lastUpdated: 2024-12-16
+lastUpdated: 2026-07-06
 tags: [C++, programming, dynamic polymorphism, static polymorphism, concepts, templates, CRTP, firmware, GPIO, HAL, hardware abstraction layer]
 title: Designing a HAL in C++
 type: page
 ---
 
-Using C++ for an embedded system? Great! At some point you might find yourself needing (or wanting) to implement a HAL (Hardware Abstraction Layer) atop of your hardware peripherals (e.g. for the uninitiated, a HAL typically includes things like GPIO drivers, UART drivers, etc.). Why? Perhaps there is not one provided by your MCU vendor (although this is rare these days), or perhaps the existing one doesn't work well (unfortunately not as rare), or perhaps it doesn't easily provide the ability to mock it for testing (very common). You might have specific requirements on what you want the HAL to be able to do. Vendor provided or framework provided HAL layers can be hard to test.
+Using [C++ for an embedded system](/programming/languages/c-plus-plus/cpp-on-embedded-systems/)? Great! At some point you might find yourself needing (or wanting) to implement a HAL (Hardware Abstraction Layer) atop your hardware peripherals (e.g. for the uninitiated, a HAL typically includes things like GPIO drivers, UART drivers, etc.). Why? Perhaps there is not one provided by your MCU vendor (although this is rare these days), or perhaps the existing one doesn't work well (unfortunately not as rare), or perhaps it doesn't easily provide the ability to [mock it for testing](/programming/languages/c-plus-plus/unit-testing-and-mocking/) (very common). You might have specific requirements on what you want the HAL to be able to do. Vendor provided or framework provided HAL layers can be hard to test.
 
 Objectives:
 
-* Provides an appropriate level of abstraction.
-* Must be easy to mock and run on Linux.
-* Must be easy to support different hardware platforms.
-* Must provide a nice developer experience.
-* Must be easy to understand.
+- Provides an appropriate level of abstraction.
+- Must be easy to mock and run on Linux.
+- Must be easy to support different hardware platforms.
+- Must provide a nice developer experience.
+- Must be easy to understand.
 
 We will use a simple GPIO HAL driver as our example when we look at different ways to implement a HAL in C++. We'll be mostly focusing on ways that we can write the HAL so that we can run our firmware on both real hardware and on a Linux machine with the hardware mocked.
 
@@ -39,7 +39,7 @@ CppUMock can work in tandem with some of the other methods described here, such 
 
 ## Inheritance and Virtual Methods
 
-Inheritance and virtual methods allow us to implement runtime polymorphism as a way to create real and mock implementations of the HAL. The process goes like this:
+[Inheritance](/programming/languages/c-plus-plus/inheritance/) and [virtual methods](/programming/languages/c-plus-plus/virtual-methods/) allow us to implement runtime polymorphism as a way to create real and mock implementations of the HAL. The process goes like this:
 
 1. Define a base class which will act as your interface. Name it something like `GpioBase`. Define virtual methods for the interface, such as `void set(uint8_t value)` and `uint8_t get()`.
 1. The generic parts of your app will get passed a pointer to a `GpioBase` object.
@@ -48,7 +48,7 @@ Inheritance and virtual methods allow us to implement runtime polymorphism as a 
 1. Pass these into the generic part of your app, as a `GpioBase*`.
 
 <Aside type="tip">
-Although implementing inheritance and virtual methods is more suited to a OO-first language such as C++, it is still possible to do in C. If you want to seen an example on how to do this in C, see the [Object-Orientated C page](/programming/languages/c/object-orientated-c/).
+Although implementing inheritance and virtual methods is more suited to an OO-first language such as C++, it is still possible to do in C. If you want to see an example on how to do this in C, see the [Object-Orientated C page](/programming/languages/c/object-orientated-c/).
 </Aside>
 
 Let's start by defining a base class:
@@ -98,7 +98,7 @@ public:
 
 In `GpioFake`, we don't include/depend on any hardware specific headers, i.e. we want to be able to run this code on Linux. We could make `set()` just print like in the example here, or you could increment a counter to check that `set()` was indeed called (you could add `counter` as a member variable to `GpioFake`).
 
-Now we can write an app class which doesn't care if it's using a real or fake GPIO. Do this we make it accept a reference to a `GpioBase` object rather than any specific implementation. Note that this means it can only call methods which are defined in `GpioBase`, but this is what we want, as this defines the interface.
+Now we can write an app class which doesn't care if it's using a real or fake GPIO. To do this, we make it accept a reference to a `GpioBase` object rather than any specific implementation. Note that this means it can only call methods which are defined in `GpioBase`, but this is what we want, as this defines the interface.
 
 ```c++ title="App.hpp"
 #include "GpioBase.hpp"
@@ -116,7 +116,7 @@ private:
 };
 ```
 
-Our rudimentary `App` class just sets the GPIO pin high, but this enough to demonstrate the concept.
+Our rudimentary `App` class just sets the GPIO pin high, but this is enough to demonstrate the concept.
 
 We can tie this all together with the following `main()` function below:
 
@@ -166,10 +166,28 @@ public:
 };
 ```
 
-Then in `main()`, we can create a `Hal` object, and pass it into the App:
+Then in `main()`, we can create a `Hal` object, populate it with the appropriate GPIO objects for the platform we are targeting, and pass it into the App (whose constructor would now take a `Hal&` instead of a `GpioBase&`):
 
-```c++ title="virtual-methods/main.cpp"
+```c++ title="main.cpp"
+#include "App.hpp"
+#include "GpioReal.hpp"
+#include "Hal.hpp"
 
+int main() {
+    GpioReal gpio1;
+    GpioReal gpio2;
+    // ...and so on for the other GPIOs
+
+    Hal hal;
+    hal.gpio1 = &gpio1;
+    hal.gpio2 = &gpio2;
+    // ...and so on for the other GPIOs
+
+    App app(hal);
+    app.run();
+
+    return 0;
+}
 ```
 
 ## Static Polymorphism via Templates
@@ -184,6 +202,8 @@ Static polymorphism aims to implement the lookup at compile time, rather than at
 Let's start by defining a base class:
 
 ```c++ title="templates/GpioBase.hpp"
+namespace templates {
+
 template <typename T>
 class GpioBase {
 public:
@@ -194,6 +214,8 @@ public:
         static_cast<T*>(this)->set(value);
     }
 };
+
+} // namespace templates
 ```
 
 Let's now create a derived class for a real GPIO:
@@ -219,7 +241,7 @@ public:
 ```
 
 <Aside type="note">
-Note how we change the name of the function in the derived class. This is a good idea, because if you don't you can quickly get into recursion in the base class when it calls `static_cast<T*>(this)->set(value);`. This will likely lead to a stack blow out and possibly a segmentation fault.
+Note that the derived class defines a function with the same name as the base class — the derived `set()` _shadows_ the base class method, which is why the `static_cast<T*>(this)->set(value);` call in the base class resolves to the derived implementation. Be careful though: if you forget to implement `set()` in the derived class, the base class method calls itself and you get infinite recursion. This will likely lead to a stack blow out and possibly a segmentation fault. One way to avoid this pitfall is to give the function in the derived class a different name (e.g. `set_impl()`), as we do in the concepts examples below.
 </Aside>
 
 And a similarly derived class for a fake GPIO:
@@ -227,15 +249,19 @@ And a similarly derived class for a fake GPIO:
 ```c++ title="templates/GpioFake.hpp"
 #include "GpioBase.hpp"
 
+namespace templates {
+
 class GpioFake : public GpioBase<GpioFake> {
 public:
     void set(uint8_t value) {
         printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
     }
 };
+
+} // namespace templates
 ```
 
-We can demonstrate this with the following `main()` function below. C++17 or later is required for template parameter deduction.
+We can demonstrate this with the following `main()` function below. C++17 or later is required for class template argument deduction (CTAD).
 
 ```c++ title="templates/main.cpp"
 #include <cstdio>
@@ -245,7 +271,6 @@ We can demonstrate this with the following `main()` function below. C++17 or lat
 #include "templates/GpioReal.hpp"
 
 namespace tpl = templates;
-namespace vm = virtual_methods;
 
 int main() {
     // If we were in the real main()
@@ -275,7 +300,7 @@ void templates::GpioFake::set(uint8_t)() called with value: 1
 
 Notice how we get the same polymorphism capabilities as we did with virtual methods, but these operations are performed at compile time and there should be no additional runtime overhead.
 
-Because the casting of `this` to a pointer to `T` is going to be very common in a large base class, we can add a helper method called `self()` to make this easier (I saw this idea on StackOverflow[^stackoverflow-confusion-around-crtp-static-polymorphism]):
+Because the casting of `this` to a pointer to `T` is going to be very common in a large base class, we can add a helper method called `self()` to make this easier (I saw this idea on Stack Overflow):[^stackoverflow-confusion-around-crtp-static-polymorphism]
 
 ```c++
 template <typename T>
@@ -294,12 +319,11 @@ public:
 
 ## C++ Concepts
 
-C++ concepts allow us to expand on the idea of using templates to implement static polymorphism. They allow us to enforce the derived classes implement the required methods, just as `virtual my_func() = 0` enforces this for dynamic polymorphism.
+C++ concepts allow us to expand on the idea of using templates to implement static polymorphism. They allow us to enforce that the derived classes implement the required methods, just as `virtual my_func() = 0` enforces this for dynamic polymorphism.
 
-Without concepts, in the above template example, the only thing the compiler will enforce is that the derived class has a `set()` method and tha it can be passed a `uint8_t`. If you happened to define the derived function as `void set(int32_t value)`, it would still work fine. Likewise, if you added a return value and defined it as `bool set(int32_t value)`, it would still be happy. You can start to see how the enforcement of the API of the derived class are loose. Concepts can help tighten this up!
+Without concepts, in the above template example, the only thing the compiler will enforce is that the derived class has a `set()` method and that it can be passed a `uint8_t`. If you happened to define the derived function as `void set(int32_t value)`, it would still work fine. Likewise, if you added a return value and defined it as `bool set(int32_t value)`, it would still be happy. You can start to see how the enforcement of the API of the derived class is loose. Concepts can help tighten this up!
 
-[Roger Booth](https://medium.com/@rogerbooth/using-the-crtp-and-c-20-concepts-to-enforce-contracts-for-static-polymorphism-a27d93111a75
-) shows a way of using concepts along with inheritance to provide better compiler errors. However, you do have to define the functions in the base class, even though you have already defined them in the concept, and will also have to define them in the derived classes.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism] Thomas Sedlmair shows a method which doesn't involve inheritance, and also gets around the hassle of having to define the functions in the base class.[^coding-with-thomas-crtp-and-concepts] Will will compare both of the methods below.
+[Roger Booth](https://medium.com/@rogerbooth/using-the-crtp-and-c-20-concepts-to-enforce-contracts-for-static-polymorphism-a27d93111a75) shows a way of using concepts along with inheritance to provide better compiler errors. However, you do have to define the functions in the base class, even though you have already defined them in the concept, and will also have to define them in the derived classes.[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism] Thomas Sedlmair shows a method which doesn't involve inheritance, and also gets around the hassle of having to define the functions in the base class.[^coding-with-thomas-crtp-and-concepts] We will compare both of the methods below.
 
 ### Concepts with Inheritance
 
@@ -445,6 +469,22 @@ using GpioReal = GpioBase<GpioRealImpl>;
 
 Note that `Impl` is added to the end of the class name, because we don't end up using that class in other code, we will use the alias `GpioReal` instead.
 
+And a similarly defined fake GPIO:
+
+```c++ title="concepts/GpioFake.hpp"
+#include "GpioBase.hpp"
+
+class GpioFakeImpl {
+public:
+    void set(uint8_t value) {
+        printf("%s() called with value: %d\n", __PRETTY_FUNCTION__, value);
+    }
+
+};
+
+using GpioFake = GpioBase<GpioFakeImpl>;
+```
+
 Our `App.hpp` can be identical to the one we used for the non-concept template example above:
 
 ```c++ title="concepts/App.hpp"
@@ -494,23 +534,23 @@ int main() {
 
 So we have looked at a number of different ways to implement a HAL in C++ for an embedded system. Dynamic polymorphism via inheritance and virtual methods feels the most natural and easiest to understand, however has the runtime burden of a `vtable` lookup. Whether or not that is a concern for your HAL implementation is something you must decide.
 
-We can achieve static polymorphism via templates and the CRTP, which eliminates the runtime overhead of virtual methods. Given for a HAL on an embedded system all the types would be known at compile time, losing runtime polymorphism is not a big deal. The biggest downside is that the code feels a little more clunky to write, and you don't get the automatic "you have forgot to implement this method" compile time error that `virtual my_func() = 0` provides.
+We can achieve static polymorphism via templates and the CRTP, which eliminates the runtime overhead of virtual methods. Given for a HAL on an embedded system all the types would be known at compile time, losing runtime polymorphism is not a big deal. The biggest downside is that the code feels a little more clunky to write, and you don't get the automatic "you have forgotten to implement this method" compile time error that `virtual my_func() = 0` provides.
 
 C++ concepts go some way to improving the developer experience of static polymorphism.
 
-Some other languages like Rust default to compile time polymorphism (this is provided by Rust's Traits and Generics). In Rust, the compile time polymorphism feels much more natural and terse than in C++ (Rust also provided dynamic polymorphism via Trait objects and the `dyn` keyword).[^matt-oswalt-polymorphism-in-rust]
+Some other languages like [Rust](/programming/languages/rust/) default to compile time polymorphism (this is provided by Rust's Traits and Generics). In Rust, the compile time polymorphism feels much more natural and terse than in C++ (Rust also provided dynamic polymorphism via Trait objects and the `dyn` keyword).[^matt-oswalt-polymorphism-in-rust]
 
 Implementing a HAL you can easily mock on top of an existing HAL (e.g. any of the runtime or template polymorphism examples above, assuming the existing HAL does not support this) induces a maintenance burden. It's worth keeping this in mind when you consider whether it is worth it. If you feel that this is not worth it, the swapping out of `.cpp` files method or using a method to override existing functions might be the best choice for you.
 
 ## Further Reading
 
-[GuillaumeDua/cpp_legacy_inheritance_vs_std_variant.md](https://gist.github.com/GuillaumeDua/0239fda353264b67ddcb39b5d9a01105) is a good overview of standard dynamic polymorphism vs. static polymorphism via CRTP. It covers best practises for base classes such as making the constructor private and make the base class a `friend` of it's derived class. It also covers the use of `std::variant` and `std::visit` to create containers which can hold any of the derived types.
+[GuillaumeDua/cpp_legacy_inheritance_vs_std_variant.md](https://gist.github.com/GuillaumeDua/0239fda353264b67ddcb39b5d9a01105) is a good overview of standard dynamic polymorphism vs. static polymorphism via CRTP. It covers best practices for base classes such as making the constructor private and making the base class a `friend` of its derived class. It also covers the use of `std::variant` and `std::visit` to create containers which can hold any of the derived types.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism]: Roger Booth (2024, Feb 2). _Using the CRTP and C++20 Concepts to Enforce Contracts for Static Polymorphism_. Medium. Retrieved 2024-12-03, from https://medium.com/@rogerbooth/using-the-crtp-and-c-20-concepts-to-enforce-contracts-for-static-polymorphism-a27d93111a75
-[^coding-with-thomas-crtp-and-concepts]: Thomas Sedlmair (2024, Sep 24). _[C++] Static, Dynamic Polymorphism, CRTP and C++20’s Concepts_. Coding with Thomas. Retrieved 2024-12-03, from https://www.codingwiththomas.com/blog/c-static-dynamic-polymorphism-crtp-and-c20s-concepts.
-[^stackoverflow-confusion-around-crtp-static-polymorphism]: StackOverflow (2021, Jan 11). _Confusion about CRTP static polymorphism_ [forum post]. Retrieved 2024-12-04, from https://stackoverflow.com/questions/43821541/confusion-about-crtp-static-polymorphism.
+[^medium-using-crtp-and-cpp20-concepts-for-static-polymorphism]: Roger Booth (2024, Feb 2). _Using the CRTP and C++20 Concepts to Enforce Contracts for Static Polymorphism_ [blog post]. Medium. Retrieved 2024-12-03, from https://medium.com/@rogerbooth/using-the-crtp-and-c-20-concepts-to-enforce-contracts-for-static-polymorphism-a27d93111a75.
+[^coding-with-thomas-crtp-and-concepts]: Thomas Sedlmair (2024, Sep 24). _[C++] Static, Dynamic Polymorphism, CRTP and C++20’s Concepts_ [blog post]. Coding with Thomas. Retrieved 2024-12-03, from https://www.codingwiththomas.com/blog/c-static-dynamic-polymorphism-crtp-and-c20s-concepts.
+[^stackoverflow-confusion-around-crtp-static-polymorphism]: Stack Overflow (2021, Jan 11). _Confusion about CRTP static polymorphism_ [forum post]. Retrieved 2024-12-04, from https://stackoverflow.com/questions/43821541/confusion-about-crtp-static-polymorphism.
 [^matt-oswalt-polymorphism-in-rust]: Matt Oswalt (2021, Jun 22). _Polymorphism in Rust_ [blog post]. Retrieved 2024-12-04, from https://oswalt.dev/2021/06/polymorphism-in-rust/.

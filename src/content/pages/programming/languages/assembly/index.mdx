@@ -2,15 +2,15 @@
 authors: [gbmhunter]
 date: 2013-06-28
 description: A step-by-step tutorial on writing a basic Hello, World program in assembly.
-lastUpdated: 2025-04-21
+lastUpdated: 2026-07-06
 tags: [assembly, "hello, world", Intel, AT&T, NASM, gcc, printf, compilers, tutorials]
 title: Assembly
 type: page
 ---
 
-If you are writing assembly for ARM processors, make sure to check out the [GNU ARM Assembler Quick Reference](http://bel.gsi.de/scripts/gnu-arm-assy-quick-ref.pdf).
+If you are writing assembly for ARM processors, make sure to check out the [GNU ARM Assembler Quick Reference](https://www.ic.unicamp.br/~celio/mc404-2014/docs/gnu-arm-directives.pdf).
 
-<Image src={import('./_assets/assembly-code-example.png')} width="481px">An example of assembly code from the glibc library (an optimised memcpy() function).</Image>
+<Image src={import('./_assets/assembly-code-example.png')} width="481px">An example of assembly code from the glibc library (an optimised memset() function, written in IA-64/Itanium assembly).</Image>
 
 ## Intel vs. AT&T Syntax
 
@@ -40,7 +40,7 @@ This page will use Intel syntax unless otherwise specified.
 
 ## NASM
 
-The NASM assembly language is a very popular language that works on the x86 and x86-64 architectures. It has similar syntax to Intel's x86/x86-64 assembly, but it designed to be more "user friendly".
+The NASM assembly language is a very popular language that works on the x86 and x86-64 architectures. It has similar syntax to Intel's x86/x86-64 assembly, but it is designed to be more "user friendly".
 
 ### Compiling NASM Assembly
 
@@ -50,7 +50,7 @@ You can download the NASM compiler for Ubuntu and other Debian-like systems with
 $ sudo apt install nasm
 ```
 
-To compile a NASM <code>.asm</code> file, first convert it to an object file with the nasm program:
+To compile a NASM `.asm` file, first convert it to an object file with the nasm program:
 
 ```bash
 $ nasm -f elf test.asm
@@ -61,7 +61,7 @@ OR for a 64-bit object file:
 ```bash
 $ nasm -f elf64 test.asm
 ```
-This will produce an object file called `myfile.o`.
+This will produce an object file called `test.o`.
 
 <Aside type="note">
 Not all assembly instructions are supported for both 32-bits and 64-bits.
@@ -70,7 +70,7 @@ Not all assembly instructions are supported for both 32-bits and 64-bits.
 You then have two options for linking:
 
 1. Use the linker program `ld`.
-2. Use `gcc`. This automatically links against the C standard library for you.
+2. Use [gcc](/programming/compilers/gcc/). This automatically links against the C standard library for you.
 
 Using gcc:
 
@@ -90,10 +90,10 @@ $ gcc -m64 test.o -o test
 
 This Hello, World example will be as bare-bones as possible, and will not even use the `printf()` function call (instead it will make a Linux system call directly).
 
-First, we need a `.section text` to tell the compiler that this is our executable code.
+First, we need a `section .text` to tell the assembler that this is our executable code.
 
 ```asm
-.section text
+section .text
 ```
 
 We then need to define an entry point for our program:
@@ -104,7 +104,7 @@ _start:
     ... more code here ...
 ```
 
-Now, printing `Hello, world!` requires the use of a Linux system call to print the text to `stdout` (specifically, `sys_write`). We will use the Linux fastcall convention which allows us to put the input arguments into registers, rather than on the stack. The system call number is placed in `eax`, and the arguments in the successive registers `ebx`, `ecx`, etc. The function number for `sys_write` is `4` (<a href="https://syscalls.kernelgrok.com/">see here</a>). We need to place the file we wish to write to in `ebx`, a pointer to the message (`char *`) in `ecx`, and the number of characters in `edx`.
+Now, printing `Hello, world!` requires the use of a Linux system call to print the text to `stdout` (specifically, `sys_write`). We will use the Linux 32-bit system call convention, which allows us to put the input arguments into registers, rather than on the stack. The system call number is placed in `eax`, and the arguments in the successive registers `ebx`, `ecx`, etc. The function number for `sys_write` is `4` (<a href="https://syscalls.kernelgrok.com/">see here</a>). We need to place the file we wish to write to in `ebx`, a pointer to the message (`char *`) in `ecx`, and the number of characters in `edx`.
 
 ```asm
 section .text
@@ -116,9 +116,9 @@ _start:
     mov eax, 4
 ```
 
-Note that I have assigned the registers in reverse order (starting at edx and going to eax). This is not necessary (any order would work), however this practise stems from the sequence required making a system call by pushing to the stack instead, in where this order is important. I just kept the same practise for good readability.
+Note that I have assigned the registers in reverse order (starting at edx and going to eax). This is not necessary (any order would work), however this practice stems from the sequence required when making a system call by pushing to the stack instead, where this order is important. I just kept the same practice for good readability.
 
-So, now we need to place the message in memory somewhere, and also find out it's size, so we can fill in `<pointer to msg>` and `<msg size>`. We can create a data section just for this purpose:
+So, now we need to place the message in memory somewhere, and also find out its size, so we can fill in `<pointer to msg>` and `<msg size>`. We can create a data section just for this purpose:
 
 ```asm
 section .text
@@ -133,9 +133,9 @@ section .data
     len equ $ - msg        ; Calculate the length of the string (note, this does not store anything in memory)
 ```
 
-`db` is a NASM instruction which stands for define bytes. It defines a sequence of bytes in memory. `equ` just tells the compiler to calculate the length of the message and save it to `len` (called a symbol), which can then be used in the code (it does not save the value to memory, it is similar to `#define` in C).
+`db` is a NASM instruction which stands for define bytes. It defines a sequence of bytes in memory. `equ` just tells the compiler to calculate the length of the message and save it to `len` (called a symbol), which can then be used in the code (it does not save the value to memory, it is similar to `#define` in [C](/programming/languages/c/)).
 
-Lets use the new `msg` variable in our code:
+Let's use the new `msg` variable in our code:
 
 ```asm
 section .text
@@ -177,7 +177,7 @@ _start:
     mov ebx, 1   ; File descriptor 1 is stdout
     mov eax, 4   ; System call 4 is sys_write
     int 0x80     ; sys call
-    mov ebx, 0   ; Return code of o.k.
+    mov ebx, 0   ; Return code of 0 (OK)
     mov eax, 1   ; sys_exit function number
     int 0x80     ; sys call
 section .data
@@ -189,7 +189,7 @@ All done! Run this code online at [https://www.tutorialspoint.com/tpcg.php?p=qjM
 
 ### Hello World With printf()
 
-Because we want to know use a standard library function, we are going to take a slightly different approach.
+Because we want to now use a standard library function, we are going to take a slightly different approach.
 
 Create a `test.asm` file with the following contents:
 
@@ -228,11 +228,11 @@ Hello, world!
 
 ### x86 Register Names
 
-Knowing a little history about the x86 architecture helps to understand the naming of the registers. Initially it was 16-bits, and registers had names like `ax`, `bx`, `cx`, `dx`, etc. Then it was upgraded to 32-bits. The existing register names were kept as is, but new 32-bit register names were added which are prefixed with `e`. For example, `eax` is the 32-bit accumulator register. `ax` is the 16-bit accumulator register, and uses the lower 2 bytes of `eax`. The same process happened again when it was later extended to 64-bits, with the addition of `r` prefixes (e.g. `rax`).
+Knowing a little history about the [x86 architecture](/programming/cpu-architectures/) helps to understand the naming of the registers. Initially it was 16-bits, and registers had names like `ax`, `bx`, `cx`, `dx`, etc. Then it was upgraded to 32-bits. The existing register names were kept as is, but new 32-bit register names were added which are prefixed with `e`. For example, `eax` is the 32-bit accumulator register. `ax` is the 16-bit accumulator register, and uses the lower 2 bytes of `eax`. The same process happened again when it was later extended to 64-bits, with the addition of `r` prefixes (e.g. `rax`).
 
-<IRef iref="tbl-x86-registers" /> lists the x86 registers.[^stackoverflow-assembly-registers-in64-bit-architecture]
+The table below lists the x86 registers.[^stackoverflow-assembly-registers-in64-bit-architecture]
 
-<table data-iref="tbl-x86-registers">
+<table>
   <thead>
     <tr>
       <th>64-bit</th>
@@ -303,9 +303,9 @@ Knowing a little history about the x86 architecture helps to understand the nami
   <caption>x86 register names.</caption>
 </table>
 
-In x86 language, a byte is 8-bits, a word is 16-bits, a double word is 32-bits, and a quad word is 64-bits. This terminology remains the same across 16-bit, 32-bit and 64-bit x86 architectures. All of the 8-bit registers listed in <IRef iref="tbl-x86-registers" /> access either the lower or higher 8-bits of the corresponding 16-bit register. For example, `ah` accesses the higher 8-bits of the `ax` register and `al` accesses the lower 8-bits.
+In x86 language, a byte is 8-bits, a word is 16-bits, a double word is 32-bits, and a quad word is 64-bits. This terminology remains the same across 16-bit, 32-bit and 64-bit x86 architectures. The `ah`/`al`-style 8-bit registers listed in the table above access either the higher or lower 8 bits of the corresponding 16-bit register. For example, `ah` accesses the higher 8 bits of the `ax` register and `al` accesses the lower 8 bits. In contrast, `spl`, `bpl`, `sil` and `dil` access only the lower 8 bits of their corresponding 16-bit registers, and are only available in 64-bit mode.
 
-#### rsp and rdb
+#### rsp and rbp
 
 `rsp` is the stack pointer register. The stack grows downwards, which means as it gets larger, the stack pointer register address gets smaller (i.e. closer to 0). `push` decrements `rsp` (and copies the operand onto the top of the stack) and `pop` copies the top of the stack into the operand and increments `rsp` (makes the stack smaller). It is also valid to manipulate `rsp` directly rather than using `push`/`pop`. For example, you can use `sub rsp, 8` to make the stack smaller by 8 bytes.
 
@@ -357,14 +357,14 @@ square(int):
 ```
 
 Note that:
-* `edi` destination index.
-* `esi` source index.
-* `rsp` is the stack pointer. `push` decrements `rsp` and copies the operand onto the top of the stack. `pop` copies the top of the stack into the operand and increments `rsp`.
-* `rdp` points to the base of the current stack frame.
+- `edi` is the destination index.
+- `esi` is the source index.
+- `rsp` is the stack pointer. `push` decrements `rsp` and copies the operand onto the top of the stack. `pop` copies the top of the stack into the operand and increments `rsp`.
+- `rbp` points to the base of the current stack frame.
 
-1. `push rdp` saves the address of the previous stack frame base pointer (which is currently in `rbp`) onto the stack. This is preserving the callers base pointer so it can be restored just before the callee returns (i.e. `pop rbp`).
+1. `push rbp` saves the address of the previous stack frame base pointer (which is currently in `rbp`) onto the stack. This is preserving the caller's base pointer so it can be restored just before the callee returns (i.e. `pop rbp`).
 1. `mov rbp, rsp` saves `rsp` into `rbp` to create a new stack frame. Now, `rbp` serves as a stable reference point for accessing local variables and arguments within this function's stack frame.
-1. `mov DWORD PTR [rbp-4], edi` copies the value of `edi` (the first argument) into the memory location `[rbp-4]`. According to the System V AMD64 calling convention, the first integer/pointer argument passed to a function is placed in the rdi register. `edi` refers to the lower 32 bits of the `rdi` register. Since the function takes an int (32 bits), the value is in `edi`. At higher optimization levels this operation may not be needed.
+1. `mov DWORD PTR [rbp-4], edi` copies the value of `edi` (the first argument) into the memory location `[rbp-4]`. According to the System V AMD64 calling convention, the first integer/pointer argument passed to a function is placed in the rdi register. `edi` refers to the lower 32 bits of the `rdi` register. Since the function takes an int (32 bits), the value is in `edi`. At [higher optimisation levels](/programming/compilers/gcc/gcc-compiler-optimisation-levels/) this operation may not be needed.
 1. `mov eax, DWORD PTR [rbp-4]` copies the value of `[rbp-4]` into `eax`.
 1. `imul eax, eax` multiplies the value of `eax` by itself and stores the result back in `eax`. `eax` happens to be the register the caller expects the result to be stored in, so this does not need to be moved anywhere.
 1. `pop rbp` restores the previous stack frame base pointer.
@@ -375,5 +375,5 @@ Note that:
 {/* ============================================================================================ */}
 
 [^stackoverflow-assembly-registers-in64-bit-architecture]: StackOverflow. _Assembly registers in 64-bit architecture_ [forum post]. Retrieved 2025-04-22, from https://stackoverflow.com/questions/20637569/assembly-registers-in-64-bit-architecture.
-[^wikipedia-x86-calling-conventions]: Wikipedia (2025, Mar 19). _x86 calling conventions_. Retrieved 2025-04-22, from https://en.wikipedia.org/wiki/X86_calling_conventions.
+[^wikipedia-x86-calling-conventions]: Wikipedia (2025, Mar 19). _x86 calling conventions_ [wiki]. Retrieved 2025-04-22, from https://en.wikipedia.org/wiki/X86_calling_conventions.
 [^stackoverflow-limitations-of-intel-vs-att-syntax]: StackOverflow (2021, Jan 22). _Limitations of Intel Assembly Syntax Compared to AT&T_ [forum post]. Retrieved 2025-04-23, from https://stackoverflow.com/questions/972602/limitations-of-intel-assembly-syntax-compared-to-att.

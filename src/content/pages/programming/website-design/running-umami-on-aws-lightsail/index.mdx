@@ -1,7 +1,8 @@
 ---
 authors: [gbmhunter]
 date: 2024-03-24
-lastUpdated: 2024-06-01
+description: A tutorial on how to self-host the Umami analytics platform on an AWS Lightsail server instance, including Docker, nginx, https with Let's Encrypt, Cloudflare DNS setup, and migrating to IPv6 only.
+lastUpdated: 2026-07-06
 tags: [Lightsail, Umami, analytics, server, AWS, https, docker, nginx, SSL, Google Analytics]
 title: Running Umami on AWS Lightsail
 type: page
@@ -13,9 +14,9 @@ type: page
 
 <Image src={import('./_assets/umami-dashboard-showing-analytics-for-blog.png')} width="900px">The Umami dashboard showing the page views and visitor count for this blog.</Image>
 
-This page details how to get Umami setup and running on an AWS Lightsail server instance. AWS Lightsail is a simple and cheap way of hosting servers that don't need to do much processing. Lightsail costs around US\$3.50 to \$5.00/month for the small size instances that Umami can run on (for small to medium sized sites) using IPv6 only.
+This page details how to get Umami setup and running on an [AWS](/programming/cloud/aws/) Lightsail server instance. AWS Lightsail is a simple and cheap way of hosting servers that don't need to do much processing. Lightsail costs around US\$3.50 to \$5.00/month for the small size instances that Umami can run on (for small to medium sized sites) using IPv6 only.
 
-Credit goes to the Digital Ocean's tutorial at https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04 for showing me how to do this for the first time. This tutorial expands on Digital Ocean's by adding Lightsail specific information, DNS information, and updating some parts for relevance in 2024 (e.g. we now have `docker compose` rather than `docker-compose`).
+Credit goes to Digital Ocean's tutorial at https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04 for showing me how to do this for the first time. This tutorial expands on Digital Ocean's by adding Lightsail specific information, DNS information, and updating some parts for relevance in 2024 (e.g. we now have `docker compose` rather than `docker-compose`).
 
 ## Spinning Up Lightsail Server in AWS
 
@@ -25,7 +26,7 @@ This assumes you have an AWS account. If you don't, go and sign up now! Then log
 
 Firstly, choose an "Instance Location". You can pick something close to where most of your users are, but in the end it doesn't matter much!
 
-Then under "Select a blueprint", click "Operating System (OS) only". Select Ubuntu 22.04 as shown in below. You could choose a different Linux OS, like AWS Linux, but the commands will be different (e.g. you'll have to use `yum` instead of `apt`) and the nginx config files structure won't be setup to use `sites-available`/`sites-enabled` (slightly different ways of doing things).
+Then under "Select a blueprint", click "Operating System (OS) only". Select Ubuntu 22.04 as shown below. You could choose a different Linux OS, like AWS Linux, but the commands will be different (e.g. you'll have to use `yum` instead of `apt`) and the nginx config files structure won't be setup to use `sites-available`/`sites-enabled` (slightly different ways of doing things).
 
 <Image src={import('./_assets/picking-ubuntu-22-04-in-lightsail.png')} width="800px">Picking Ubuntu 22.04 LTS as the OS in Lightsail.</Image>
 
@@ -35,27 +36,27 @@ Then select or create a keypair to authenticate with this server. If creating a 
 Don't lose your private key, you can't re-download it from the Lightsail console!
 </Aside>
 
-Select the _Networking Type_. As of March 2024, Amazon is about to charge more for servers that have IPv4 addresses. IPv6 only should work fine -- except that IPv6 doesn't work for cloning projects of GitHub, nor some docker-based commands which fetch data from remotes. What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. So let's continue with an instance which has both an IPv4 and IPv6 address -- select `Dual stack` for the Networking Type as shown below.
+Select the _Networking Type_. As of March 2024, Amazon is about to charge more for servers that have IPv4 addresses. IPv6 only should work fine -- except that IPv6 doesn't work for cloning projects off GitHub, nor some docker-based commands which fetch data from remotes. What we can do though is perform all of the setup with a public IPv4 address, and then once we are complete, create a Snapshot, and create a new instance from the Snapshot that is IPv6 only. So let's continue with an instance which has both an IPv4 and IPv6 address -- select `Dual stack` for the Networking Type as shown below.
 
-Select a size. Umami does not take many resources to run. However I had issues with the memory capped at 512MB, so I picked the 1GB RAM/40GB SSD size (as of March 2024, US\$5.00/month). Let me know if you get is running successfully on smaller resources!
+Select a size. Umami does not take many resources to run. However I had issues with the memory capped at 512MB, so I picked the 1GB RAM/40GB SSD size (as of March 2024, US\$5.00/month). Let me know if you get it running successfully on smaller resources!
 
 <Image src={import('./_assets/choosing-dual-stack-and-size-lightsail.png')} width="700px">Choosing the networking type and size of the Lightsail instance.</Image>
 
 Choose an instance name to easily identify this Lightsail instance in the future, e.g. `Umami-Ubuntu-IPv4-1GB`. It's completely up to you and what you want to call it.
 
-Click `Create Instance` and your server will be spun up!
+Click `Create instance` and your server will be spun up!
 
 ## Add a Rule For Https
 
-Once your Lightsail instance has spun up, click on the `Networking" tab under your Lightsail instance, and then add a IPv4 firewall rule allowing https traffic as shown below:
+Once your Lightsail instance has spun up, click on the `Networking` tab under your Lightsail instance, and then add an IPv4 firewall rule allowing https traffic as shown below:
 
-<Image src={import('./_assets/ipv4-https-firewall-rule-in-lightsail.png')} width="700px">Adding a IPv4 firewall to allow https traffic in Lightsail.</Image>
+<Image src={import('./_assets/ipv4-https-firewall-rule-in-lightsail.png')} width="700px">Adding an IPv4 firewall rule to allow https traffic in Lightsail.</Image>
 
 This will come in useful later when we force traffic to use `https` only.
 
 ## Create a DNS A Record
 
-Now you need to create a DNS A Record that points your subdomain `umami.my-domain.com` to the IP address of the Lightsail instance you just created.
+Now you need to create a [DNS](/programming/website-design/domain-name-servers-dns/) A Record that points your subdomain `umami.my-domain.com` to the IP address of the Lightsail instance you just created.
 
 I use Cloudflare, so the image below shows a screenshot of myself setting up the A record through the Cloudflare control panel. It should be similar with most other DNS providers.
 
@@ -63,12 +64,12 @@ I use Cloudflare, so the image below shows a screenshot of myself setting up the
 
 ## Installing Umami
 
-**Connect via your Lightsail instance via ssh.** You can use the in-browser terminal if you want, but I much prefer a proper terminal-based session (e.g. from Windows Terminal, bash on Linux, etc.) for better responsiveness and copy/paste support.
+**Connect to your Lightsail instance via ssh.** You can use the in-browser terminal if you want, but I much prefer a proper terminal-based session (e.g. from Windows Terminal, bash on Linux, etc.) for better responsiveness and copy/paste support.
 
 I had problems using the subdomain to connect, so **I just used the IP address directly**. The IP address is shown on the main page for the Lightsail instance. You will need the private key that you setup/selected when you created the Lightsail instance above, which you can pass in to `ssh` using the `-i` option:
 
 ```shell
-ssh -i ~/.ssh/private-key.pem ubuntu@34.207.322.232
+ssh -i ~/.ssh/private-key.pem ubuntu@34.201.248.159
 ```
 
 `cd` into the `/opt` directory, this is where we will put the Umami source code:
@@ -80,7 +81,7 @@ cd /opt
 Clone the Umami repo:
 
 ```shell
-sudo git clone https://github.com/mikecao/umami.git
+sudo git clone https://github.com/umami-software/umami.git
 ```
 
 `cd` into the new directory:
@@ -98,7 +99,7 @@ sudo nano docker-compose.yml
 Find the following section:
 
 ```yaml
-ports:
+    ports:
       - "3000:3000"
 ```
 
@@ -113,7 +114,7 @@ Save these changes and exit `nano`. We can't yet run Umami because we don't have
 
 ## Install Docker
 
-We'll need to install docker so we can actually run Umami. I grabbed these instructions from https://docs.docker.com/engine/install/ubuntu/. Add Docker's `apt` repository:
+We'll need to install [Docker](/programming/virtual-machines-and-containers/docker/) so we can actually run Umami. I grabbed these instructions from https://docs.docker.com/engine/install/ubuntu/. Add Docker's `apt` repository:
 
 ```shell
 # Add Docker's official GPG key:
@@ -163,7 +164,7 @@ This will make a request to your localhost at port `3000`. If it's working, you 
 
 ## Configure Umami to Start On Boot
 
-You'll likely want to configure the docker command above to run on boot. That way, if your server ever restarts for any reason, your server will start up and run without manually having to ssh into the server and start it manually.
+You'll likely want to configure the docker command above to run on boot. That way, if your server ever restarts for any reason, your server will start up and run without you having to ssh into the server and start it manually.
 
 To do this, first create a new file in `/etc/init.d/` called `start-umami.sh` with the following contents:
 
@@ -227,7 +228,7 @@ sudo ln -s /etc/nginx/sites-available/umami.conf /etc/nginx/sites-enabled/
 ```
 
 <Aside type="tip">
-If you chose a something other than Ubuntu to run Umami on, you might not have the `sites-enabled` and `site-available` directories. If this is you, search online on how to add nginx configuration for your particular OS (it's not tricky).
+If you chose something other than Ubuntu to run Umami on, you might not have the `sites-enabled` and `sites-available` directories. If this is you, search online on how to add nginx configuration for your particular OS (it's not tricky).
 </Aside>
 
 Now that we've modified the config file, reload nginx:
@@ -306,11 +307,11 @@ Certbot will automatically renew the certificates before they expire.
 
 That's it, you should now be able to use `https`! To test, type `https://umami.my-domain.com` into your browser, and you should be able to get to the same login screen that we got to previously.
 
-## CloudFlare Adjustments
+## Cloudflare Adjustments
 
 My Cloudflare account defaulted to the SSL/TLS encryption mode set to "Flexible". As soon as I ran the Let's Encrypt step above, I couldn't get access to Umami through `https` due to a "Too many redirects" error. To fix this, I had to go to the Cloudflare dashboard, click on `SSL/TLS` -> `Overview` and change the Encryption mode from "Flexible" to "Full (strict)" as shown below:
 
-<Image src={import('./_assets/change-ssl-settings-in-cloudflare-from-flexible-to-full-strict.png')} width="900px">Screenshot of me changing the SSL settings in CloudFlar from Flexible to Full (strict) so that https will work without getting the \"too many redirects\" error.</Image>
+<Image src={import('./_assets/change-ssl-settings-in-cloudflare-from-flexible-to-full-strict.png')} width="900px">Screenshot of me changing the SSL settings in Cloudflare from Flexible to Full (strict) so that https will work without getting the \"too many redirects\" error.</Image>
 
 This might be very Cloudflare specific -- if you are using another DNS provider you might not have to change any setting similar to this.
 
@@ -322,7 +323,7 @@ First, create a snapshot of the existing server in AWS Lightsail as shown below:
 
 <Image src={import('./_assets/create-snapshot-in-lightsail.png')} width="700px">Creating a snapshot of the Umami instance in preparation for moving to IPv6 only.</Image>
 
-Once the snapshot has been created, you can click the three vertical ellipses next to it and click "Create new instance". From there, you will be able to select an IPv6 only setup. Note you can also change the instance size here, but you cannot choose a smaller size, presumably because you can't easily make disks smaller (even if you are not using all of the available space).
+Once the snapshot has been created, you can click the vertical ellipsis (three dots) next to it and click "Create new instance". From there, you will be able to select an IPv6 only setup. Note you can also change the instance size here, but you cannot choose a smaller size, presumably because you can't easily make disks smaller (even if you are not using all of the available space).
 
 Now when you ssh into the server, the command will look something like this:
 
@@ -330,7 +331,7 @@ Now when you ssh into the server, the command will look something like this:
 ssh -i my-private-key.pem ubuntu@2600:1f18:4f08:c400:f26a:6a5:e85c:2420
 ```
 
-Create a AAAA record with your DNS provider that points your domain to the servers IPv6 address. Remove the existing A record that pointed to the IPv4 instance.
+Create an AAAA record with your DNS provider that points your domain to the server's IPv6 address. Remove the existing A record that pointed to the IPv4 instance.
 
 All done! You should now be able to get to the Umami dashboard by going to `umami.my-domain.com`.
 
@@ -350,7 +351,7 @@ Another thing that is worth mentioning is that you probably want to disable the 
 
 <Image src={import('./_assets/localhost-being-the-top-referrer-in-umami.png')} width="600px">Oh oh! Umami is running when developing, and clocking up many page visits.</Image>
 
-How exactly you do this depends on what framework your site runs on/in. I'll give you a few examples which may be useful for your application. This blog uses Hugo, so I can use the following guard in my `baseof.html` file:
+How exactly you do this depends on what framework your site runs on/in. I'll give you a few examples which may be useful for your application. This blog used to run on [Hugo](/programming/website-design/static-website-generators/hugo/) (it has since migrated to Astro), in which I could use the following guard in my `baseof.html` file:
 
 ```html
 {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
@@ -358,7 +359,7 @@ How exactly you do this depends on what framework your site runs on/in. I'll giv
 {{ end }}
 ```
 
-[NinjaTerm](https://ninjaterm.mbedded.ninja/) runs on React, so I used the following in my `index.tsx` file:
+[NinjaTerm](https://ninjaterm.mbedded.ninja/) runs on [React](/programming/website-design/user-interface-libraries/react/), so I used the following in my `index.tsx` file:
 
 ```js
 if (import.meta.env.PROD) {
@@ -372,9 +373,9 @@ if (import.meta.env.PROD) {
 }
 ```
 
-Note that the NinjaTerm example above uses Javascript in inject the equivalent script tag into the head of the HTML document if the production environment variable evaluates to `true`.
+Note that the NinjaTerm example above uses JavaScript to inject the equivalent script tag into the head of the HTML document if the production environment variable evaluates to `true`.
 
-UPDATE: The above way to only include the script if `import.meta.env.PROD` is true works great -- except if you start making Umami API calls to track things like events. If you need to do this, you'd have to guard every call with a check to make sure `window.umami` is defined, which can get repetitive and feels like bad design. The better approach is to always include the script in the `head`, but set `umami.disabled` to `1` in local storage in dev. environments[^umami-docs-track-events]. Umami does not send analytics in this case, but the API is still available.
+UPDATE: The above way to only include the script if `import.meta.env.PROD` is true works great -- except if you start making Umami API calls to track things like events. If you need to do this, you'd have to guard every call with a check to make sure `window.umami` is defined, which can get repetitive and feels like bad design. The better approach is to always include the script in the `head`, but set `umami.disabled` to `1` in local storage in dev. environments.[^umami-docs-track-events] Umami does not send analytics in this case, but the API is still available.
 
 Here is an example:
 

@@ -1,33 +1,32 @@
 ---
 authors: [gbmhunter]
 date: 2016-02-04
-lastUpdated: 2016-02-04
+description: How to write object-orientated (OO) style code in C, including encapsulation, methods, constructors, inheritance and polymorphism, with a worked GPIO driver example for making embedded code testable.
+lastUpdated: 2026-07-06
 tags: [C, programming, object-orientated]
 title: Object-Orientated C
 type: page
 ---
 
-Although C is not generally thought of as an object-orientated language, it's flexibility does allow **object-orientated style code** to be written, albeit with slightly more verbose syntax than a "object-orientated" language such as C++. Why would you want to do this? Well, there are a number of reasons:
+Although C is not generally thought of as an object-orientated language, its flexibility does allow **object-orientated style code** to be written, albeit with slightly more verbose syntax than an "object-orientated" language such as C++. Why would you want to do this? Well, there are a number of reasons:
 
-* **Organization**: We humans tend to think of the world in terms of objects and their interactions. Writing code in the same style can make it easier to understand. It helps bundle data and functions that operate on that data into the same files, making them easier to maintain.
-* **Testing**: Inheritance along with dependency injection can allow you to write code which is easier to test (more on this below).
-* **Flexibility**: Writing code in an object-orientated style naturally makes it easy to create many instances of objects, which can be harder in imperative languages when you rely on file local or global variables.
-* **Clear Data Ownership**: Using an OO style means your are more likely to bundle data into `structs` and less likely to rely on file local or global variables that are defined outside of any function in a `.c` file. This is a good thing. File local or global data makes it harder to understand what happens when functions are called, and makes it easier to introduce bugs such as multiple threads accessing the same data without synchronisation. When data is bundled into objects, you are forced to pass the object around to all functions that need it, making developers aware of what data is used where.
+- **Organization**: We humans tend to think of the world in terms of objects and their interactions. Writing code in the same style can make it easier to understand. It helps bundle data and functions that operate on that data into the same files, making them easier to maintain.
+- **Testing**: Inheritance along with dependency injection can allow you to write code which is easier to test (more on this below).
+- **Flexibility**: Writing code in an object-orientated style naturally makes it easy to create many instances of objects, which can be harder in imperative languages when you rely on file local or global variables.
+- **Clear Data Ownership**: Using an OO style means you are more likely to bundle data into `structs` and less likely to rely on file local or global variables that are defined outside of any function in a `.c` file. This is a good thing. File local or global data makes it harder to understand what happens when functions are called, and makes it easier to introduce bugs such as multiple threads accessing the same data without synchronisation. When data is bundled into objects, you are forced to pass the object around to all functions that need it, making developers aware of what data is used where.
 
 Object-orientated code is a broad term for a number of different coding ideas. These include:
 
-* _Encapsulation_. An object encapsulates all of it's data and functions (called methods in the object-orientated world).
-* _Abstraction_. The user of an object can only see and use it's public interface, and has no knowledge of it's internal workings.
-* _Polymorphism_.
-* _Inheritance_.
+- _Encapsulation_. An object encapsulates all of its data and functions (called methods in the object-orientated world).
+- _Abstraction_. The user of an object can only see and use its public interface, and has no knowledge of its internal workings.
+- _Polymorphism_.
+- _Inheritance_.
 
-The above points can be implemented in C with varying levels of success and simplicity. 
-
-Also miss out on compiler-enforced encapsulation and abstraction.
+The above points can be implemented in C with varying levels of success and simplicity. You also miss out on compiler-enforced encapsulation and abstraction.
 
 ## Defining the Basic Object
 
-In C, _structures_ (`typedef struct`) can be used to represent an "object". Below is C code which defines a very simple object, which only holds data and contains no functions. Think of a `struct` in C being the equivalent of a `class` in dedicated OO-languages.
+In C, [_structures_](/programming/languages/c/structures/) (`typedef struct`) can be used to represent an "object". Below is C code which defines a very simple object, which only holds data and contains no functions. Think of a `struct` in C being the equivalent of a `class` in dedicated OO-languages.
 
 ```c
 typedef struct {
@@ -39,10 +38,11 @@ typedef struct {
 We would then create an instance of our object with the code:
 
 ```c 
-void main () {
+int main(void) {
     ComplexNum myComplexNum;
     myComplexNum.real = 3.4;
     myComplexNum.imag = 5.7;
+    return 0;
 }
 ```
 
@@ -60,33 +60,34 @@ double ComplexNum_GetMagnitude(ComplexNum const * obj) {
 }
 ```
 
-The first (and only, in this case) argument passed into this "method" is a pointer to instance of a `ComplexNum` object that you wish to operate on. **All non-static methods of an object will have this as their first argument.**
+The first (and only, in this case) argument passed into this "method" is a pointer to an instance of a `ComplexNum` object that you wish to operate on. **All non-static methods of an object will have this as their first argument.**
 
 <Aside type="caution">
-It's wise not to use the variable name `this` to pass in the object, as it is a reserved word in C++[^uni-of-missouri-cpp-reserved-words].
+It's wise not to use the variable name `this` to pass in the object, as it is a reserved word in C++.[^uni-of-missouri-cpp-reserved-words]
 </Aside>
 
 ## Wait, What About A Constructor?
 
-In OO-universe, a constructor is a special method which is run automatically when a new instance of an object is created. Unfortunately, in C, there is no way to enforce a method to run upon creation of our `struct` object (o.k., yes you could wrap the creation of a struct inside a macro which also called a method).
+In the OO universe, a constructor is a special method which is run automatically when a new instance of an object is created. Unfortunately, in C, there is no way to enforce a method to run upon creation of our `struct` object (o.k., yes you could wrap the creation of a struct inside a [macro](/programming/languages/c/preprocessor/) which also called a method).
 
 A simple way to have constructor-like behaviour is to create an `Init()` method.
 
 ```c
-void ComplexNum_Init(complexNum_t * obj) {
+void ComplexNum_Init(ComplexNum * obj) {
     obj->real = 0.0;
     obj->imag = 0.0;
 }
 ```
 
-The downside of this is that we have to remember to call it every time we create a new `complexNum_t` object.
+The downside of this is that we have to remember to call it every time we create a new `ComplexNum` object.
     
 ```c
-void main() {
-    complexNum_t myComplexNum;
+int main(void) {
+    ComplexNum myComplexNum;
     // We have to remember to call the "constructor"
     // If we forget, bad things could happen
     ComplexNum_Init(&myComplexNum);
+    return 0;
 }
 ```
 
@@ -94,19 +95,21 @@ void main() {
 
 Inheritance is the ability to define a new object/class which is a modified (extended) version of an existing object/class. Inheritance allows polymorphism, which is the ability to treat different objects in a similar way. One great use case for inheritance/polymorphism for embedded C is to make code testable. Inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (which is done on real hardware through special memory mapped registers).
 
-<IRef iref="fig-gpio-inheritance-diagram" /> shows how the basic inheritance structure for our example GPIO driver.
+The diagram below shows the basic inheritance structure for our example GPIO driver.
 
-<Image iref="fig-gpio-inheritance-diagram" src={import('./_assets/gpio-inheritance-diagram.svg')} width="600px">A diagram showing how inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (through special memory mapped registers).</Image>
+<Image src={import('./_assets/gpio-inheritance-diagram.svg')} width="600px">A diagram showing how inheritance can be used to abstract hardware specific implementations out from code you want to test on, say Linux, which doesn't have access to GPIO and other hardware peripherals (through special memory mapped registers).</Image>
 
-<IRef iref="fig-gpio-real-vs-testing-swimlane-diagram" /> shows how the real application and testing application would start-up, create the appropriate GPIO object and pass it to the module.
+The swimlane diagram below shows how the real application and testing application would start-up, create the appropriate GPIO object and pass it to the module.
 
-<Image iref="fig-gpio-real-vs-testing-swimlane-diagram" src={import('./_assets/gpio-real-vs-testing-swimlane-diagram.svg')} width="700px">A swimlane diagram showing the difference between real hardware and a testing environment.</Image>
+<Image src={import('./_assets/gpio-real-vs-testing-swimlane-diagram.svg')} width="700px">A swimlane diagram showing the difference between real hardware and a testing environment.</Image>
 
-Notice how the module does not depends on either child class, meaning that it run both on a real hardware or in a testing environment on Linux just fine. A different `main()` function, is used to the build the embedded application compared to the testing application. This allows each to create an instance of their respective GPIO class. This GPIO instance is then passed to the module (this is known as dependency injection). When passing it, you can either just pass the `.base` portion of the `struct`, or cast the entire `struct` to the base class type (this works because the `.base` portion is the first member of the `struct`). The module will then call `get()` and `set()`, which due to polymorphism, will call different functions depending on whether it is a `GpioReal` or `GpioTest` instance.
+Notice how the module does not depend on either child class, meaning that it runs on either real hardware or in a testing environment on Linux just fine. A different `main()` function is used to build the embedded application compared to the testing application. This allows each to create an instance of their respective GPIO class. This GPIO instance is then passed to the module (this is known as dependency injection). When passing it, you can either just pass the `.base` portion of the `struct`, or cast the entire `struct` to the base class type (this works because the `.base` portion is the first member of the `struct`). The module will then call `get()` and `set()`, which due to polymorphism, will call different functions depending on whether it is a `GpioReal` or `GpioFake` instance.
 
 We begin by defining the base "class" (a `struct` because we are using C) in `GpioBase.h`:
 
 ```c title="GpioBase.h"
+#include <stdint.h>
+
 // Forward declaration
 typedef struct GpioBase GpioBase;
 
@@ -118,9 +121,12 @@ struct GpioBase {
 void GpioBase_Init(GpioBase *self);
 ```
 
-Since we are planning on using this as an interface, we don't actually want anyone every creating an instance of `GpioBase` (it exists solely to be extended from to make child classes). So we don't actually need to define a constructor for it, nor any `set()` or `get()` methods. However, I did create a constructor, just to be consistent across all "classes". I did however make sure that `assert()`'s are raised if the base class methods are called.
+Since we are planning on using this as an interface, we don't actually want anyone ever creating an instance of `GpioBase` (it exists solely to be extended from to make child classes). So we don't actually need to define a constructor for it, nor any `set()` or `get()` methods. However, I did create a constructor, just to be consistent across all "classes". I did however make sure that [`assert()`](/programming/languages/c/assertions-assert/)'s are raised if the base class methods are called.
 
 ```c title="GpioBase.c"
+#include <assert.h>
+#include <stdio.h>
+
 #include "GpioBase.h"
 
 // Private function declarations
@@ -154,11 +160,11 @@ typedef struct {
     uint32_t pinNumber;
 } GpioReal;
 
-void GpioReal_init(GpioReal *self, uint32_t pinNumber);
+void GpioReal_Init(GpioReal *self, uint32_t pinNumber);
 ```
 
 <Aside type="tip">
-The base class has to be a named member in the child class struct (named `base` in this case). This is ok, but does mean that we have to type `self->base` when calling methods on the base class. Luckily, there is a compiler flag which we can use (`-fms-extension`) which we can use to embed the base struct directly into the child struct. More on this below.
+The base class has to be a named member in the child class struct (named `base` in this case). This is ok, but does mean that we have to type `self->base` when calling methods on the base class. Luckily, there is a compiler flag (`-fms-extensions`) which we can use to embed the base struct directly into the child struct. More on this below.
 </Aside>
 
 Notice how we have added a new member to the `struct`, `pinNumber`. This is needed because this class will need to pass the pin number when calling the hardware-specific GPIO driver functions. We have also declared a constructor function for this class.
@@ -171,7 +177,7 @@ We can then define the methods for this class in `GpioReal.c`:
 void GpioReal_set(GpioBase *self, uint8_t value);
 uint8_t GpioReal_get(GpioBase *self);
 
-void GpioReal_init(GpioReal *self, uint32_t pinNumber) {
+void GpioReal_Init(GpioReal *self, uint32_t pinNumber) {
     // Initialize the base class
     GpioBase_Init(&self->base);
     // Override the set and get methods
@@ -195,9 +201,9 @@ uint8_t GpioReal_get(GpioBase *self) {
 }
 ```
 
-Note how the first thing we do in the `set()` and `get()` methods is to cast the `self` pointer from the base type to the child type. We can safely do this because we know that the `self` pointer passed in will always be of the type of the child class (since it must have been initialized with a constructor function from that class). Casting it gives us access to the child class members, which we would need to get hardware specific data so we can make the right HAL calls (or direct register manipulation if you're feeling up to it!).
+Note how the first thing we do in the `set()` and `get()` methods is to cast the `self` pointer from the base type to the child type. We can safely do this because we know that the `self` pointer passed in will always be of the type of the child class (since it must have been initialized with a constructor function from that class). Casting it gives us access to the child class members, which we would need to get hardware specific data so we can make the right [HAL](/programming/languages/c-plus-plus/designing-a-hal-in-cpp/) calls (or direct register manipulation if you're feeling up to it!).
 
-For a more real-world example, let's pretend you were writing a `GpioReal` class for running on the [Zephyr framework/RTOS](/programming/operating-systems/zephyr/). You would likely want to make the `GpioReal_init()` take in a pointer to the Zephyr GPIO device from the device tree (`struct gpio_dt_spec`) and save it to the GpioReal `struct`. You could then make the appropriate call in the `set()` method (`gpio_pin_set_dt(&self->gpioDtSpec, value)`), and similarly in the `get()` method (`return gpio_pin_get_dt(&self->gpioDtSpec)`).
+For a more real-world example, let's pretend you were writing a `GpioReal` class for running on the [Zephyr framework/RTOS](/programming/operating-systems/zephyr/). You would likely want to make the `GpioReal_Init()` take in a pointer to the Zephyr GPIO device from the device tree (`struct gpio_dt_spec`) and save it to the GpioReal `struct`. You could then make the appropriate call in the `set()` method (`gpio_pin_set_dt(&self->gpioDtSpec, value)`), and similarly in the `get()` method (`return gpio_pin_get_dt(&self->gpioDtSpec)`).
 
 Now we've finished our `GpioReal` class, let's write the `GpioFake` class in `GpioFake.h` and `GpioFake.c`.
 
@@ -211,7 +217,7 @@ typedef struct {
     uint32_t numGetCalls;
 } GpioFake;
 
-void GpioFake_init(GpioFake *self);
+void GpioFake_Init(GpioFake *self);
 ```
 
 Note that we extend the class with a new variable, `state`, which keeps track of the GPIO state, since we don't have any hardware to do this for us. We also add two variables to keep track of how many times the `set()` and `get()` methods are called.
@@ -224,7 +230,7 @@ And now the implementation of the methods:
 void GpioFake_set(GpioBase *self, uint8_t value);
 uint8_t GpioFake_get(GpioBase *self);
 
-void GpioFake_init(GpioFake *self) {
+void GpioFake_Init(GpioFake *self) {
     // Initialize the base class
     GpioBase_Init(&self->base);
     // Override the set and get methods
@@ -258,9 +264,9 @@ And our trifecta of `Gpio` classes is complete! We can now use them.
 #include "GpioFake.h"
 #include "GpioReal.h"
 
-// This function accepts either a GpioReal or a GpioTest!
+// This function accepts either a GpioReal or a GpioFake!
 // This function does not depend on any specific GPIO nor hardware calls
-// (i.e. it could be in it's own file and not import GpioReal.h or GpioTest.h)
+// (i.e. it could be in its own file and not import GpioReal.h or GpioFake.h)
 void functionWhichAcceptsAnyGpio(GpioBase *gpio) {
     // Set the GPIO
     gpio->set(gpio, 1);
@@ -270,21 +276,21 @@ void functionWhichAcceptsAnyGpio(GpioBase *gpio) {
 }
 
 int main() {
-    // Create a instance of GpioReal. 13 is the pin number.
+    // Create an instance of GpioReal. 13 is the pin number.
     GpioReal gpioReal;
-    GpioReal_init(&gpioReal, 13);
+    GpioReal_Init(&gpioReal, 13);
     functionWhichAcceptsAnyGpio(&gpioReal.base);
 
-    // Create a instance of GpioFake
+    // Create an instance of GpioFake
     GpioFake gpioFake;
-    GpioFake_init(&gpioFake);
+    GpioFake_Init(&gpioFake);
     functionWhichAcceptsAnyGpio(&gpioFake.base);
 
     return 0;
 }
 ```
 
-Notice that `functionWhichAcceptsAnyGpio()` accepts and operates on the `GpioBase` interface. This function is an example of how you can write code that will work on both the real embedded hardware and a Linux testing environment. This function could be in it's own file and not import `GpioReal.h` nor `GpioFake.h`. Depending on what child class is passed in, different `set()` and `get()` methods will be called (this is polymorphism).
+Notice that `functionWhichAcceptsAnyGpio()` accepts and operates on the `GpioBase` interface. This function is an example of how you can write code that will work on both the real embedded hardware and a Linux testing environment. This function could be in its own file and not import `GpioReal.h` nor `GpioFake.h`. Depending on what child class is passed in, different `set()` and `get()` methods will be called (this is polymorphism).
 
 This is the output from running the code:
 
@@ -300,7 +306,7 @@ Fake GPIO get() called. This is where you would keep track how many times the GP
 
 As mentioned above, the base class has to be a named member in the child class struct (named `base` in this case). This is ok, but does mean that we have to type `self->base` when calling methods on the base class.
 
-If you want to get around this, add the `-fms-extension` compiler flag. Luckily this flag is supported by most compilers, including GCC (the flag stands for "Microsoft extensions", and this embedding feature was first done by Microsoft). This will allow you to write:
+If you want to get around this, add the `-fms-extensions` compiler flag. This flag is supported by both GCC and Clang (the flag stands for "Microsoft extensions", and this embedding feature was first done by Microsoft — MSVC supports it out of the box). This will allow you to write:
 
 ```c
 typedef struct {
@@ -309,11 +315,11 @@ typedef struct {
 } GpioReal;
 ```
 
-To embed the base class, you write out the type, but do not give it a name. With the `-fms-extension` flag, you can then access the base class methods directly on the child class instance:
+To embed the base class, you write out the type, but do not give it a name. With the `-fms-extensions` flag, you can then access the base class methods directly on the child class instance. Note that because the base class member no longer has a name, we can't write `&self->base` any more — instead we cast the child pointer to the base type (which is valid because the base class is the first member of the child struct):
 
 ```c
-void GpioReal_init(GpioReal *self, uint32_t pinNumber) {
-    GpioBase_Init(&self->base);
+void GpioReal_Init(GpioReal *self, uint32_t pinNumber) {
+    GpioBase_Init((GpioBase *)self);
     self->set = GpioReal_set; // No base prefix needed!
     self->get = GpioReal_get; // No base prefix needed!
     self->pinNumber = pinNumber;
@@ -324,13 +330,13 @@ You can see a full working example of this code on GitHub at [gbmhunter/c-inheri
 
 ## Interfacing To Imperative Code
 
-You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style.
+You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style?
 
-The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component `CyUart1`, then you would be given functions such as `CyUart1_Start()`, `CyUart2_Read()`, etc.). This functions are not written in an OO-style.
+The example I will use is based around the [PSoC family of microcontrollers](/programming/microcontrollers/psoc/). When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component `CyUart1`, then you would be given functions such as `CyUart1_Start()`, `CyUart1_Read()`, etc.). These functions are not written in an OO-style.
 
-The solution I propose is to create your own object-orientated UART driver, which wraps provides an interface from the imperative-style PSoC UART functions to the rest of your OO code.
+The solution I propose is to create your own object-orientated UART driver, which provides an interface from the imperative-style PSoC UART functions to the rest of your OO code.
 
-Here is an complete, working example:
+Here is a complete, working example:
 
 ```c
 #include <stdio.h>
@@ -338,19 +344,20 @@ Here is an complete, working example:
 
 //========== MOCK CYPRESS API FOR UART ================//
 
-void CyUart1_Start() {
+void CyUart1_Start(void) {
     printf("CyUart1_Start() called.\r\n");
 }
 
-void CyUart1_Stop() {
+void CyUart1_Stop(void) {
     printf("CyUart1_Stop() called.\r\n");
 }
 
-void CyUart1_Read() {
+uint8_t CyUart1_Read(void) {
     printf("CyUart1_Read() called.\r\n");
+    return 0;
 }
 
-void CyUart1_Write() {
+void CyUart1_Write(uint8_t byte) {
     printf("CyUart1_Write() called.\r\n");
 }
 
@@ -419,4 +426,4 @@ int main(void) {
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^uni-of-missouri-cpp-reserved-words]: University of Missouri-St. Louis. _C++ Reserved Words_. Retrieved 2024-11-11, from https://www.umsl.edu/~lawtonb/224/oview2a.html.
+[^uni-of-missouri-cpp-reserved-words]: University of Missouri-St. Louis. _C++ Reserved Words_ [website]. Retrieved 2024-11-11, from https://www.umsl.edu/~lawtonb/224/oview2a.html.

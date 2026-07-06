@@ -312,6 +312,38 @@ CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
 
 By default, `CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC_CALIBRATION=y` is set which means the calibration parameters will be used to make the RC oscillator more accurate.
 
+## Clocks
+
+The nRF52 has a clock peripheral which is responsible for managing the internal and external clocks. It contains one high-frequency clock `HFCLK` and one low-frequency clock `LFCLK`.
+
+<Image src={import('./_assets/nrf52-clock-internal-block-diagram.svg')} width="800px">The internal block diagram of the clock peripheral on the nRF52 series MCU.[^nordic-semi-nrf52805-product-spec-clock]</Image>
+
+### High-Frequency Clock
+
+The high-frequency clock is used to drive the CPU `HCLK64M`, radio and peripherals. It runs at a fixed 64 MHz. It can be sourced from either:
+
+- `HFINT`: **An internal RC oscillator.** Imprecise, but cheap and low power. The accuracy is $\lt \pm 1.5\%$ (typical) and $\lt \pm 8\%$ (maximum).[^nordic-semi-nrf52805-product-spec-clock]
+- `HFXO`: **An external 32 MHz crystal oscillator.** Precise, but more expensive and higher power. Mandatory if using the radio.
+
+The HFCLK provides the following clocks to the system:
+
+- `HCLK64M`: 64 MHz clock for the CPU.
+- `PCLK1M`: 1 MHz clock for the peripherals.
+- `PCLK16M`: 16 MHz clock for the peripherals.
+- `PCLK32M`: 32 MHz clock for the peripherals.
+
+If using an external 32 MHz crystal for `HFCLK`, this is connected along with the correct valued load capacitors to pins `XC1` and `XC2`. Although it doesn't matter which pin is which when creating a schematic, pin `XC1` is the input pin, pin `XC2` is the drive (output) pin of the internal oscillator driver circuitry. This info can be useful to know if you want to probe the crystal to see if (and when) it's working. I would recommend probing the drive pin (`XC2`) since this is less likely to be affected by the oscilloscope probe capacitance (also use x10 mode if you can!). This is the same convention used for the low-frequency crystal oscillator pins (`XL1` input, `XL2` output).[^nordic-semi-devzone-xl1-and-xl2-xc1-and-xc2]
+
+### Low-Frequency Clock
+
+The low-frequency clock runs at 32.768 kHz and is used for timekeeping (2^15 ticks per second). It can be sourced from:
+
+- **LFRC: An internal RC oscillator**: Imprecise, but cheap and low power. The accuracy is $\pm 2\%$ ($20,000\unit{ppm}) if un-calibrated, and $\pm 500\unit{ppm}$ if calibrated.[^nordic-semi-nrf52805-product-spec-clock]
+- **LFXO: An external 32.768 kHz crystal**: Good for low-power designs that need precise timekeeping.
+- **LFSYNT: The HFCLK**: You can derive the LFCLK directly from the 64 MHz HFCLK. This is good if you don't need low-power operation and want to save the cost/space of a 32.768 kHz crystal.
+
+If using the internal RC oscillator `LFRC`, it can be calibrated against the `HFCLK` to improve its accuracy. This is done by starting a `CAL` task on the LFCLK peripheral.[^nordic-semi-nrf52805-product-spec-clock] The specification of $\pm 500\unit{ppm}$ was under the condition that `CAL` was performed every 8 seconds, so it appears you have to re-calibrate often to maintain accuracy.
+
 ## Quad Serial Peripheral Interface (QSPI)
 
 The QSPI peripheral is designed to communicate with external SPI flash memory ICs. It supports single, dual and quad lane SPI buses with a 2-32MHz clock speed. It supports Execute-In-Place (XIP) to allow the CPU to directly execute code from flash memory. <IRef iref="fig-nrf52-qspi-block-diagram" /> shows the internal block diagram of the QSPI peripheral.
@@ -539,3 +571,5 @@ You can use the `INTENSET` register to enable the `TIMEOUT` interrupt. This inte
 [^nordic-semi-nrf-connect-sdk-nfc-samples]: Nordic Semiconductor (2025, May 7). _nRF Connect SDK - latest > Samples > NFC samples_ [documentation]. Retrieved 2025-05-08, from https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/nfc.html.
 [^nordic-semi-devzone-unable-to-pull-spi-miso-line-down]: Alex_S@Aperia, Vidar Berg. _Unable to pull SPI MISO line down via device tree configuration_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-01-16, from https://devzone.nordicsemi.com/f/nordic-q-a/113908/unable-to-pull-spi-miso-line-down-via-device-tree-configuration.
 [^nordic-semi-nrf52832-errata]: Nordic Semiconductor (2024, Mar 4). _nRF52832 Revision 3 Errata_. Retrieved 2026-02-20, from https://docs.nordicsemi.com/bundle/errata_nRF52832_Rev3/page/ERR/nRF52832/Rev3/latest/err_832.html.
+[^nordic-semi-devzone-xl1-and-xl2-xc1-and-xc2]: stone.xiang (2019, Jan 20). _XL1 and XL2, XC1 and XC2_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-07-06, from https://devzone.nordicsemi.com/f/nordic-q-a/42767/xl1-and-xl2-xc1-and-xc2.
+[^nordic-semi-nrf52805-product-spec-clock]: Nordic Semiconductor (2026, Jun 3). _nRF52805 Product Specification: CLOCK — Clock control_ [datasheet]. Retrieved 2026-07-06, from https://docs.nordicsemi.com/r/bundle/ps_nrf52805/page/clock.html.

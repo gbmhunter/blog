@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2013-04-08
 description: Ethernet is a group of wired communication standards that support LAN and WAN. This page covers connectors, magnetics, physical layer, MAC, standards, PoE, EtherCAT, popular chips, lwIP and more about the Ethernet protocol.
 image: ./_assets/cover-image.webp
-lastUpdated: 2021-08-24
+lastUpdated: 2026-07-06
 tags: [electronics, communication protocols, ethernet, internet, IP, PHY, MAC, Arduino, shield, integrated connector modules, ICMs, lwIP]
 title: Ethernet Protocol
 type: page
@@ -13,9 +13,9 @@ type: page
 
 ## History
 
-Ethernet is largely considered invented by Bob Metcalfe and David Boggs in 1973 at Xerox's Palo Alto Research Center (PARC). The name "Ethernet" comes from the concept of the aether -- a medium once thought to carry light waves. It was inspired by ALOHAnet, a network designed in the late 1960s at the University of Hawaii.[^wikipedia-ethernet] The system that Bob and David setup in 1973 connected local computers together at Xerox.
+Ethernet is largely considered invented by Bob Metcalfe and David Boggs in 1973 at Xerox's Palo Alto Research Center (PARC). The name "Ethernet" comes from the concept of the aether -- a medium once thought to carry light waves. It was inspired by ALOHAnet, a network designed in the late 1960s at the University of Hawaii.[^wikipedia-ethernet] The system that Bob and David set up in 1973 connected local computers together at Xerox.
 
-In 1980, the first standardized (and commercialized) version of Ethernet, `10BASE5` ("Thicknet") was released (called the DIX standard, made bu DEC, Intel and Xerox). IEEE then ratified it as 802.3 in 1983. It was built with stiff yellow coax cable approx. 9.5 mm in diameter. The name comes from the fact it was 10 Mbps and the cable could be up to 500 m long. Nodes were attached with N connectors or tapped into in with a vampire tap, a clamp with a needle that pierced the cable without cutting it. `10BASE2` ("Thinnet") was a thinner, cheaper coax cable terminated with BNC connectors.
+In 1980, the first standardized (and commercialized) version of Ethernet, `10BASE5` ("Thicknet") was released (called the DIX standard, made by DEC, Intel and Xerox). IEEE then ratified it as 802.3 in 1983. It was built with stiff yellow coax cable approx. 9.5 mm in diameter. The name comes from the fact it was 10 Mbps and the cable could be up to 500 m long. Nodes were attached with N connectors or tapped into with a vampire tap, a clamp with a needle that pierced the cable without cutting it. `10BASE2` ("Thinnet") was a thinner, cheaper coax cable terminated with BNC connectors.
 
 <Image src={import('./_assets/10base5-vampire-tap-photo.webp')} width="400px">A photo of a 10BASE5 vampire tap.[^uni-of-helsinki-cabletron-vampire-tap]</Image>
 
@@ -23,14 +23,16 @@ In 1980, the first standardized (and commercialized) version of Ethernet, `10BAS
 
 ### Connector
 
-RJ45 jack. Technically it's not actually an RJ45 connector, but an 8P8C (8 position, 8 contacts) connector. RJ45 is actually a now defunct 2 wire connector designed for modems. These days, RJ45 is effectively slang for all ethernet style connectors. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
+RJ45 jack. Technically it's not actually an RJ45 connector, but an 8P8C (8 position, 8 contacts) connector. RJ45 is actually a now defunct 2 wire connector designed for modems. These days, RJ45 is effectively slang for all Ethernet style connectors. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
 
 There are two common pinouts for the RJ45 connector:
 
-- T568A: 
-- T568B: 
+- T568A: white/green, green, white/orange, blue, white/blue, orange, white/brown, brown.
+- T568B: white/orange, orange, white/green, blue, white/blue, green, white/brown, brown.
 
-<Image iref="fig-rj45-pinout-t568b" src={import('./_assets/rj45-pinout-t568b.svg')} width="500px">The T568B wiring pinout for an RJ45 (8P8C) connector.</Image>
+The T568B pinout is shown below.
+
+<Image src={import('./_assets/rj45-pinout-t568b.svg')} width="500px">The T568B wiring pinout for an RJ45 (8P8C) connector.</Image>
 
 ### Magnetics
 
@@ -38,7 +40,7 @@ Magnetics are part of the Ethernet specification for all xBASE-T networks (which
 
 There are two options for magnetics, either:
 
-- Buy a ethernet magnetics component for your PCB.
+- Buy an Ethernet magnetics component for your PCB.
 - Buy a jack (connector) which already has the magnetics integrated into it. Connectors which integrate the magnetics are called _integrated connector modules_ (ICMs).
 
 ### Physical Layer (PHY)
@@ -46,6 +48,8 @@ There are two options for magnetics, either:
 The _PHY_ is the circuitry which drives the magnetics.
 
 ### MAC
+
+The _MAC_ (Media Access Control) handles framing, addressing and error checking. It is usually integrated into the microcontroller or SoC, and talks to the PHY over an interface such as MII, RMII, RGMII or SGMII.
 
 ## Standards
 
@@ -57,7 +61,7 @@ Used Cat 3 cable.
 
 ### 10BASE-T1L
 
-Designed for automotive and IoT applications.
+Designed for long-reach (up to 1000 m) industrial, process and building automation applications.
 
 ### 10BASE-T1S
 
@@ -65,17 +69,17 @@ Designed for automotive and IoT applications. Allows for a multi-drop architectu
 
 ## Ethernet Jacks
 
-Some ethernet jacks come with the magnetics already in-built, saving you the trouble of including them yourself on the mounted-to PCB
+Some Ethernet jacks come with the magnetics already in-built, saving you the trouble of including them yourself on the mounted-to PCB.
 
 ## Power Over Ethernet (PoE)
 
-_Power over Ethernet_ (PoE) is the term used to describe ethernet cables/systems that also provide a power source over the same cable as the data. Typically 44-57VDC (48V is a common choice) is passed over one or more of the twisted pairs in most ethernet cables. Data and power can be transmitted along the same twisted pairs as long as proper transformer-based extraction (center-tapped isolation transformers) of the AC data signal and DC power is used. The early PoE standards could provide around 10W of power, but the newer standards allow up to approx. 75W.
+_Power over Ethernet_ (PoE) is the term used to describe Ethernet cables/systems that also provide a power source over the same cable as the data. Typically 44-57VDC (48V is a common choice) is passed over one or more of the twisted pairs in most Ethernet cables. Data and power can be transmitted along the same twisted pairs as long as proper transformer-based extraction (center-tapped isolation transformers) of the AC data signal and DC power is used. The early PoE standards could provide around 13W of power to the powered device, but the newer standards allow up to approx. 71W.
 
-_Power sourcing equipment_ (PSE) are the devices that provide power onto the ethernet bus. The _powered device_ (PD) is the device on the other end of the cable which is consuming the power. The PDs can be up to 100m away from the PSE (as defined by the existing Ethernet standard, this is unchanged with the introduction PoE).
+_Power sourcing equipment_ (PSE) are the devices that provide power onto the Ethernet bus. The _powered device_ (PD) is the device on the other end of the cable which is consuming the power. The PDs can be up to 100m away from the PSE (as defined by the existing Ethernet standard, this is unchanged with the introduction of PoE).
 
 A _PoE injector_ is a stand-alone device used to add ("inject") DC power into an existing Ethernet cable.
 
-The _assured power_ is the amount of power available to the powered device at the end of cable. This is less than the power outputted by the PSE due to the energy lost in the impedance of the cabling.
+The _assured power_ is the amount of power available to the powered device at the end of the cable. This is less than the power outputted by the PSE due to the energy lost in the impedance of the cabling.
 
 <table>
     <thead>
@@ -111,7 +115,7 @@ The _assured power_ is the amount of power available to the powered device at th
         <tr>
             <td>PoE++ (UPoE)</td>
             <td>IEEE 802.3bt (Type 3)</td>
-            <td></td>
+            <td>2018</td>
             <td>51 W</td>
             <td>60 W</td>
             <td>4-pair</td>
@@ -120,7 +124,7 @@ The _assured power_ is the amount of power available to the powered device at th
         <tr>
             <td>PoE++</td>
             <td>IEEE 802.3bt (Type 4)</td>
-            <td></td>
+            <td>2018</td>
             <td>71.3 W</td>
             <td>100 W</td>
             <td>4-pair</td>
@@ -131,9 +135,9 @@ The _assured power_ is the amount of power available to the powered device at th
 
 PoE++ is also known as 4PPoE. UPoE is an acronym for _Ultra Power over Ethernet_.
 
-<Image src={import('./_assets/ltc4267-poe-regulator-typical-application.png')} width="600">Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf.</Image>
+<Image src={import('./_assets/ltc4267-poe-regulator-typical-application.png')} width="600px">Typical application schematic for the Analog Devices LTC4267 PoE regulator IC.[^analog-devices-ltc4267-ds]</Image>
 
-Signature resistance of 25kR.
+During the detection phase, the PSE looks for a 25kΩ signature resistance presented by the PD to confirm that a valid PD is connected before applying full power.
 
 ## Single Pair Ethernet (SPE)
 
@@ -141,7 +145,7 @@ Single Pair Ethernet (SPE) is a version of Ethernet which uses a single twisted 
 
 Bi-directional data over the same pair works by the principle of superposition. Each side has echo cancellation which is used by their receiver to cancel out their own transmitted signal, leaving behind the component of the waveform which was sent from the other side.[^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]
 
-<Image iref="fig-ti-block-diagram-showing-simplified-spe-echo-cancellation" src={import('./_assets/ti-block-diagram-showing-simplified-spe-echo-cancellation.webp')} width="900px">A block diagram by Texas Instruments showing how echo cancellation works (simplified).[^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]</Image>
+<Image src={import('./_assets/ti-block-diagram-showing-simplified-spe-echo-cancellation.webp')} width="900px">A block diagram by Texas Instruments showing how echo cancellation works (simplified).[^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]</Image>
 
 All SPE standards have `-T1` in their name, since the `1` refers to a single twisted pair.
 
@@ -229,13 +233,13 @@ All SPE standards have `-T1` in their name, since the `1` refers to a single twi
   <caption>A summary of the Single Pair Ethernet (SPE) standards.[^wurth-rd041-design-of-spoe-system]</caption>
 </table>
 
-<Image iref="fig-spe-topology" src={import('./_assets/spe-topology.svg')} width="900px">Topology of a Single Pair Ethernet (SPE) link. Standard IEEE 802.3 MAC interfaces on both ends connect through SPE specific PHYs and magnetics (magnetics are optional, capacitive coupling may be used instead) to a single twisted pair, carrying full-duplex bi-directional traffic.</Image>
+<Image src={import('./_assets/spe-topology.svg')} width="900px">Topology of a Single Pair Ethernet (SPE) link. Standard IEEE 802.3 MAC interfaces on both ends connect through SPE specific PHYs and magnetics (magnetics are optional, capacitive coupling may be used instead) to a single twisted pair, carrying full-duplex bi-directional traffic.</Image>
 
 In SPE, each node in the bi-directional link must be configured as either the master or slave. This is a PHY level role that is needed so that the echo cancellation can be correctly implemented. The master provides the clock reference and transmits it using its local oscillator. The slave recovers the clock from the master's signal and uses that clock to time its own transmissions. For 100BASE-T1, these roles have to be manually configured (usually by a jumper, DIP switch or register setting on the PHY on each end). 1000BASE-T1 and newer standards have added auto-negotiation to determine the role of each node automatically at connection time.
 
-Below is a schematic of a 100BASE-T1 PHY on the Microchip EV02N47A LAN8770M converter board (PHY part circled in red). You can see magnetics are not used here, but instead capacitive coupling (the only inductor looking thing is a common mode choke). C19 and C20 are the two small (100nF) blocking capacitors. You do lose galvanic isolation with capacitive coupling, but it makes the design simpler, smaller and cheaper.
+Below is a schematic of a 100BASE-T1 PHY on the Microchip EV02N47A LAN8770M converter board (PHY part circled in red). You can see magnetics are not used here, but instead capacitive coupling (the only inductor looking thing is a [common mode choke](/electronics/components/common-mode-chokes/)). C19 and C21 are the two small (100nF) blocking capacitors. You do lose galvanic isolation with capacitive coupling, but it makes the design simpler, smaller and cheaper.
 
-<Image iref="fig-100base-t1-phy-schematic" src={import('./_assets/100base-t1-phy-schematic.webp')} width="800px">Schematic of the 100BASE-T1 PHY on the Microchip EV02N47A LAN8770M converter board.[^microchip-ev02n47a-lan8770-converter-board-ds]</Image>
+<Image src={import('./_assets/100base-t1-phy-schematic.webp')} width="800px">Schematic of the 100BASE-T1 PHY on the Microchip EV02N47A LAN8770M converter board.[^microchip-ev02n47a-lan8770-converter-board-ds]</Image>
 
 ### PAM3
 
@@ -291,7 +295,7 @@ It is a popular choice for automotive applications which is gaining momentum aga
 
 ### Power over Data Lines (PoDL)
 
-Power over Data Lines (PoDL) is the name given to the trick of powering devices over single pair ethernet by injecting a DC voltage and superimposing it with the signal onto the single twisted pair cable. The IEEE 802.3bu-2016 amendment first introduced PoDL for SPE standards 100BASE-T1 and 1000BASE-T1. It is now defined for all SPE standards including 100BASE-T1, 1000BASE-T1, 2.5GBASE-T1, 5GBASE-T1 and 10GBASE-T1.[^wikipedia-power-over-ethernet]
+Power over Data Lines (PoDL) is the name given to the trick of powering devices over single pair Ethernet by injecting a DC voltage and superimposing it with the signal onto the single twisted pair cable. The IEEE 802.3bu-2016 amendment first introduced PoDL for SPE standards 100BASE-T1 and 1000BASE-T1. It is now defined for all SPE standards including 100BASE-T1, 1000BASE-T1, 2.5GBASE-T1, 5GBASE-T1 and 10GBASE-T1.[^wikipedia-power-over-ethernet]
 
 <Aside type="note">
 PoDL is not only defined for single pair Ethernet, but also for multi-pair. In a multi-pair setup, the power is applied between single conductors in different pairs.[^wikipedia-power-over-ethernet]
@@ -299,21 +303,21 @@ PoDL is not only defined for single pair Ethernet, but also for multi-pair. In a
 
 The standard names a device which provides power as Power Sourcing Equipment (PSE) and a device which consumes power as the Powered Device (PD).[^wurth-rd041-design-of-spoe-system]
 
-<IRef iref="fig-spe-with-podl-diagram"/> is a schematic showing the core component used to build a SPE with PoDL system.
+Below is a schematic showing the core components used to build a SPE with PoDL system.
 
-<Image iref="fig-spe-with-podl-diagram" src={import('./_assets/spe-with-podl-diagram.webp')} width="1000px">A schematic showing the core components used in a Single Pair Ethernet (SPE) system with Power over Data Lines (PoDL). Design based of example from Wurth Elektronik.[^wurth-rd041-design-of-spoe-system]</Image>
+<Image src={import('./_assets/spe-with-podl-diagram.webp')} width="1000px">A schematic showing the core components used in a Single Pair Ethernet (SPE) system with Power over Data Lines (PoDL). Design based off an example from Wurth Elektronik.[^wurth-rd041-design-of-spoe-system]</Image>
 
 Conventional IEEE 802.3 multipair Ethernet (including PoE) requires galvanic isolation from the chassis ground. According to IEEE 802.3bu (PoDL) and IEEE 802.3cg (SPoE) standards, PSE/PDs must provide at least 1 MΩ (@ 5 V ± 20%) isolation between all accessible external conductors and the interface (MDI).[^wurth-rd041-design-of-spoe-system]
 
 When PSE wants to provide power to a PD device, it first attempts to detect a PD device, and then classify it using a process called SCCP.[^electric-ui-deep-dive-single-pair-ethernet] The protocol also uses Cable Resistance Measurement (CRM) to assess the quality of the connection.[^wurth-rd041-design-of-spoe-system]
 
-For convenience, the standard allows the DC voltage to applied in either direction by the power sourcing equipment. This means that the receiver requires a rectifier (or similar) to support reverse polarity.[^electric-ui-deep-dive-single-pair-ethernet]
+For convenience, the standard allows the DC voltage to be applied in either direction by the power sourcing equipment. This means that the receiver requires a rectifier (or similar) to support reverse polarity.[^electric-ui-deep-dive-single-pair-ethernet]
 
 import podlClasses from './_assets/podl-classes.csv?raw'; // Import as raw text
 
-<IRef iref="tbl-podl-classes" /> is a summary of the different PoDL classes defined in the IEEE standards and the various voltages, currents and powers supported by each class.
+Below is a summary of the different PoDL classes defined in the IEEE standards and the various voltages, currents and powers supported by each class.
 
-<EnhancedTable iref="tbl-podl-classes" csv={podlClasses} searchable={false}>
+<EnhancedTable csv={podlClasses} searchable={false}>
   <caption slot="caption">A summary of the different PoDL classes.[^wurth-rd041-design-of-spoe-system]</caption>
 </EnhancedTable>
 
@@ -321,27 +325,27 @@ Class 15 provides the highest power output at 52 W.
 
 #### PoDL Detection Phase
 
-The detection phase is when the PSE tried to detect a PD device. The PSE sources a constant current between 9 and 16 mA with an open-loop voltage of 4.75 and 5.5 V. The PSE measures the voltage across the cable. If it is between 4.05 and 4.7 V the PSE concludes that a valid PD device is present.[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]
+The detection phase is when the PSE tries to detect a PD device. The PSE sources a constant current between 9 and 16 mA with an open-loop voltage of between 4.75 and 5.5 V. The PSE measures the voltage across the cable. If it is between 4.05 and 4.7 V the PSE concludes that a valid PD device is present.[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]
 
 #### PoDL Classification Phase
 
-Classification is done after detection and is when the PSE classifies the PD device into a specific class. This is done using a simple low speed one-wire protocol called SCCP. It is a pull-up, drive low protocol similar to I2C but with just the one wire. PSE provides the pull-up via a current source. Both the PSE and the PD can drive the line low by switching a transistor to ground.
+Classification is done after detection and is when the PSE classifies the PD device into a specific class. This is done using a simple low speed one-wire protocol called SCCP. It is a pull-up, drive low protocol similar to [I2C](/electronics/communication-protocols/i2c-communication-protocol/) but with just the one wire. PSE provides the pull-up via a current source. Both the PSE and the PD can drive the line low by switching a transistor to ground.
 
-Every SCCP transaction begins with the PSE driving the line low. If the PSE is transmitting, it drives it low to a set period of time. Different low durations determine whether a 0 or a 1 is sent. If the PD is transmitting, the PSE still drives the line low initially but then the PD takes over and holds it low for a set duration to determine a 0 or 1. Each bit is defined to take within 2.7 and 3.3 ms. If we assume the average of 3 ms, this makes the bandwidth a rather slow 333 bps. This is slow enough for MCUs to directly implement in firmware (i.e. no dedicated hardware peripheral required).[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse] 
+Every SCCP transaction begins with the PSE driving the line low. If the PSE is transmitting, it drives it low for a set period of time. Different low durations determine whether a 0 or a 1 is sent. If the PD is transmitting, the PSE still drives the line low initially but then the PD takes over and holds it low for a set duration to determine a 0 or 1. Each bit is defined to take between 2.7 and 3.3 ms. If we assume the average of 3 ms, this makes the bandwidth a rather slow 333 bps. This is slow enough for MCUs to directly implement in firmware (i.e. no dedicated hardware peripheral required).[^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]
 
 ### Example ICs
 
 #### DP83TC Family
 
-The Texas Instruments DP83TC is a family of ethernet PHY ICs.
+The Texas Instruments DP83TC is a family of Ethernet PHY ICs.
 
-For example, the DP83TC813S-Q1 is a 100BASE-T1 PHY in a [VQFN-28 package](/pcb-design/component-packages/qfn-component-package/). It supports either MII, RGMII, RMII, or SGMII interfaces with the host MCU. <IRef iref="fig-ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic" /> shows a simplified application schematic for the DP83TC813S-Q1.
+For example, the DP83TC813S-Q1 is a 100BASE-T1 PHY in a [VQFN-28 package](/pcb-design/component-packages/qfn-component-package/). It supports either MII, RGMII, RMII, or SGMII interfaces with the host MCU. A simplified application schematic for the DP83TC813S-Q1 is shown below.
 
-<Image iref="fig-ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic" src={import('./_assets/ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic.webp')} width="600px">Simplified application schematic for the Texas Instruments DP83TC813S-Q1 100BASE-T1 PHY.[^ti-dp83tc813x-q1-100base-t1-phy-datasheet]</Image>
+<Image src={import('./_assets/ti-dp83tc813s-q1-100base-t1-phy-simplified-application-schematic.webp')} width="600px">Simplified application schematic for the Texas Instruments DP83TC813S-Q1 100BASE-T1 PHY.[^ti-dp83tc813x-q1-100base-t1-phy-datasheet]</Image>
 
 ### Conversion Modules
 
-The Microchip EV02N47A is a conversion module which converts 100BASE-TX (standard ethernet) to 100BASE-T1 (single pair ethernet). It provides a conventional RJ45 jack for the 100BASE-TX side and a 2 port terminal block for the 100BASE-T1 side. The 100BASE-T1 is driven by an onboard LAN8770M transceiver.
+The Microchip EV02N47A is a conversion module which converts 100BASE-TX (standard Ethernet) to 100BASE-T1 (single pair Ethernet). It provides a conventional RJ45 jack for the 100BASE-TX side and a 2 port terminal block for the 100BASE-T1 side. The 100BASE-T1 is driven by an onboard LAN8770M transceiver.
 
 <Image src={import('./_assets/microchip-ev02n47a-lan8770-converter-board-photo.webp')} width="400px">Photo of the Microchip EV02N47A LAN8770M converter board.[^digikey-microchip-ev02n47a-lan8770-converter-board-product-page]</Image>
 
@@ -353,35 +357,35 @@ No configuration is required for the converter board to pass traffic through the
 
 ## EtherCAT
 
-EtherCAT is a communication protocol with its physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
+EtherCAT is a communication protocol with its physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there. It uses a novel technique where:
 
 - Each device is daisy chained to the next via Ethernet cable.
-- The master emits a Ethernet frame (telegram).
+- The master emits an Ethernet frame (telegram).
 - Each slave device reads the data addressed to it "on the fly", and inserts its own data into the frame "on the fly".
 - Propagation times between slaves are only limited by hardware propagation delays.
 
-The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC is used. However, whilst the slave node use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
+The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC are used. However, whilst the slave nodes use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
 
 ## lwIP
 
-lwIP is a BSD-licensed implementation of the TCP/IP protocol suite with a focus on small resource (RAM and flash memory) usage. It is designed for embedded systems, and requires only 10's of kB of free RAM and 40kB's of ROM (e.g. flash)[^lwip-homepage].
+lwIP is a BSD-licensed implementation of the TCP/IP protocol suite with a focus on small resource (RAM and flash memory) usage. It is designed for embedded systems, and requires only tens of kB of free RAM and around 40kB of ROM (e.g. flash).[^lwip-homepage]
 
-It has support for IP, IPv6, UDP, TCP, ARP, PPPoE and more[^lwip-homepage].
+It has support for IP, IPv6, UDP, TCP, ARP, PPPoE and more.[^lwip-homepage]
 
 ## Popular Chips
 
 ### WIZnet W5xxx Family
 
-The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker community. This family of ICs is used by the Arduino Ethernet board and the Arduino Ethernet Shield.
+The WIZnet W5xxx family of serial-to-Ethernet ICs is very popular in the maker community. This family of ICs is used by the Arduino Ethernet board and the Arduino Ethernet Shield.
 
-* W5200: This chip implements the PHY, the TCP/IP stack (fully hardwired), and the 10/100 MAC Ethernet MAC, in a QFN-48 package. It uses the [SPI Protocol](/electronics/communication-protocols/spi-communication-protocol/) to talk to a microcontroller. It's power save features include power-down mode and WOL (wake on LAN). It runs of 3.3V but has 5V I/O tolerance.
-* [W5500](https://www.wiznet.io/product-item/w5500/): Supports up to 8 independent sockets (i.e. 8 different connections to different ports). Contains a 10BaseT/100BaseTX PHY. Like the W5200 is runs of 3.3V but has 5V I/O tolerance.
+- W5200: This chip implements the PHY, the TCP/IP stack (fully hardwired), and the 10/100 Ethernet MAC, in a QFN-48 package. It uses the [SPI Protocol](/electronics/communication-protocols/spi-communication-protocol/) to talk to a microcontroller. Its power save features include power-down mode and WOL (wake on LAN). It runs off 3.3V but has 5V I/O tolerance.
+- [W5500](https://www.wiznet.io/product-item/w5500/): Supports up to 8 independent sockets (i.e. 8 different connections to different ports). Contains a 10BaseT/100BaseTX PHY. Like the W5200 it runs off 3.3V but has 5V I/O tolerance.
 
-<Image src={import('./_assets/wiznet-w5500-ic-photo.jpg')} width="200">Image of the WIZnet W5500 serial-to-ethernet IC. Image from https://www.wiznet.io/product-item/w5500/.</Image>
+<Image src={import('./_assets/wiznet-w5500-ic-photo.jpg')} width="200px">Image of the WIZnet W5500 serial-to-Ethernet IC.[^wiznet-w5500-product-page]</Image>
 
 ### Microchip LAN867x Family
 
-Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use 10BASE-T1S, allowing a multi-drop architecture of "at least 8 nodes and a minimum 25m of length".
+Microchip's LAN8670, LAN8671 and LAN8672 are Ethernet PHY ICs that use 10BASE-T1S, allowing a multi-drop architecture of "at least 8 nodes and a minimum 25m of length".
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -393,7 +397,7 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use 10BASE-T1
 [^wikipedia-power-over-ethernet]: Wikipedia (2025, Oct 25). _Power over Ethernet_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Power_over_Ethernet.
 [^wikipedia-baseband]: Wikipedia (2025, May 11). _Baseband_ [wiki]. Retrieved 2025-10-29, from https://en.wikipedia.org/wiki/Baseband.
 [^ti-how-to-implement-an-ieee-802cg-or-bu-compliant-podl-pse]: Steffen Graf (2021, Nov). _How to Implement an IEEE 802.3cg or 802.3bu Compliant PoDL PSE_. Texas Instruments. Retrieved 2025-10-29, from https://www.ti.com/lit/ab/snla395/snla395.pdf.
-[^vector-difference-between-automotive-and-standard-ethernet-technologies]: Vector (2023-03-21). _Difference between Automotive and Standard Ethernet Technologies_ [KnowledgeBase article]. Retrieved 2025-11-02, from https://support.vector.com/kb?id=kb_article_view&sysparm_article=KB0013990&sys_kb_id=97ff00263b67eed0c1dc1d24c3e45aff&spa=1.
+[^vector-difference-between-automotive-and-standard-ethernet-technologies]: Vector (2023, Mar 21). _Difference between Automotive and Standard Ethernet Technologies_ [KnowledgeBase article]. Retrieved 2025-11-02, from https://support.vector.com/kb?id=kb_article_view&sysparm_article=KB0013990&sys_kb_id=97ff00263b67eed0c1dc1d24c3e45aff&spa=1.
 [^ti-100base-t1-ethernet-the-evolution-of-automotive-networking]: Donovan Porter (2018, Apr). _100BASE-T1 Ethernet: the evolution of automotive networking_. Texas Instruments. Retrieved 2025-11-05, from https://www.ti.com/lit/wp/szzy009/szzy009.pdf.
 [^ti-dp83tc813x-q1-100base-t1-phy-datasheet]: Texas Instruments (2022, May). _SNLS676 - DP83TC813x-Q1 TC-10 Compliant Small Form Factor 100BASE-T1 Automotive Ethernet PHY_ [datasheet]. Retrieved 2025-11-05, from https://www.ti.com/lit/ds/symlink/dp83tc813s-q1.pdf.
 [^digikey-microchip-ev02n47a-lan8770-converter-board-product-page]: Microchip. _Microchip Technology EV02N47A_ [product page]. DigiKey. Retrieved 2026-04-09, from https://www.digikey.co.nz/en/products/detail/microchip-technology/EV02N47A/13175052.
@@ -401,3 +405,5 @@ Microchip's LAN8670, LAN8671 and LAN8672 are ethernet PHY ICs that use 10BASE-T1
 [^wikipedia-ethernet]: Wikipedia (2026, Mar 16). _Ethernet_ [wiki]. Retrieved 2026-04-09, from https://en.wikipedia.org/wiki/Ethernet.
 [^uni-of-helsinki-cabletron-vampire-tap]: Matthew Millman (2012). _Cabletron 10BASE5 Ethernet transceiver with AMP vampire tap_. University of Helsinki. Retrieved 2026-04-09, from https://www.cs.helsinki.fi/u/kutvonen/index_files/ethernet.html.
 [^teledyne-lecroy-fundamentals-of-100base-t1-ethernet]: Teledyne LeCroy (2020, Jul 30). _Fundamentals of 100Base-T1 Ethernet_ [application note]. Retrieved 2026-04-21, from https://www.teledynelecroy.com/doc/100base-t1-ethernet-appnote.
+[^analog-devices-ltc4267-ds]: Analog Devices. _LTC4267 - Power over Ethernet IEEE 802.3af PD Interface with Integrated Switching Regulator_ [datasheet]. Retrieved 2021-08-26, from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf.
+[^wiznet-w5500-product-page]: WIZnet. _W5500_ [product page]. Retrieved 2026-07-06, from https://www.wiznet.io/product-item/w5500/.

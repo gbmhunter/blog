@@ -37,7 +37,7 @@
         <text x="143.622px" y="618.714px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">pass to <tspan x="217.153px 231.382px " y="618.714px 618.714px ">Ap</tspan>p</text>
     </g>
     <g transform="matrix(1,0,0,1,-128.504,-161.081)">
-        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Create a GpioT<tspan x="287.101px 298.966px " y="574.651px 574.651px ">es</tspan>t</text>
+        <text x="143.622px" y="574.651px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Create a GpioFake</text>
         <text x="143.622px" y="596.683px" style="font-family:'ArialMT', 'Arial';font-size:21.333px;fill:rgb(234,117,0);">Cast to GpioBase and</text>
         <g transform="matrix(21.3333,0,0,21.3333,255.112,618.714)">
         </g>

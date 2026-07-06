@@ -39,7 +39,7 @@ Popular examples include:
 
 - **MAX7219/MAX7221 (Analog Devices, previously Maxim)**: Probably the most well-known hobbyist LED matrix driver. It drives an 8x8 monochrome matrix (or 8 seven-segment digits) with a SPI-compatible serial interface, contains an 8x8 static RAM to hold the display data, and sets the segment current with a single external resistor. Devices can be daisy-chained to build longer displays, which is why chains of 8x8 MAX7219 modules are a common way to build scrolling text signs.[^analog-max7219-datasheet]
 - **HT16K33 (Holtek)**: An I2C driver that can scan up to a 16x8 matrix, with built-in RAM and a key-scan function. It is used on many small "backpack" matrix boards such as Adafruit's 8x8 matrix backpacks.[^holtek-ht16k33-datasheet]
-- **IS31FL37xx family (Lumissil, previously ISSI)**: I2C matrix drivers with per-LED PWM brightness control (e.g. the IS31FL3731 drives 144 LEDs with 8-bit PWM each), enabling smooth fades and greyscale effects rather than simple on/off pixels.
+- **IS31FL37xx family (Lumissil, previously ISSI)**: I2C matrix drivers with per-LED PWM brightness control (e.g. the IS31FL3731 drives 144 LEDs with 8-bit PWM each), enabling smooth fades and greyscale effects rather than simple on/off pixels.[^issi-is31fl3731-datasheet]
 
 ## Addressable RGB Matrices
 
@@ -65,3 +65,4 @@ Larger RGB panels (32x32, 64x32, 64x64 and up) used for video walls and signage 
 [^yoto-player-product-page]: Yoto. _Yoto Player_ [product page]. Retrieved 2026-07-02, from https://us.yotoplay.com/products/yoto-player.
 [^adafruit-rgb-led-matrix-guide]: Phillip Burgess. _32x16 and 32x32 RGB LED Matrix_ [guide]. Adafruit. Retrieved 2026-07-02, from https://learn.adafruit.com/32x16-32x32-rgb-led-matrix.
 [^digikey-lite-on-ltp-757kr]: DigiKey. _LTP-757KR Lite-On Inc. | LED Dot Matrix and Cluster_ [product page]. Retrieved 2026-07-03, from https://www.digikey.co.nz/en/products/detail/liteon/LTP-757KR/408228.
+[^issi-is31fl3731-datasheet]: Integrated Silicon Solution, Inc. (2013, Apr 22). _IS31FL3731 Audio Modulated Matrix LED Driver_ [datasheet]. Retrieved 2026-07-06, from https://www.mouser.com/pdfDocs/31FL3731-258525.pdf.
