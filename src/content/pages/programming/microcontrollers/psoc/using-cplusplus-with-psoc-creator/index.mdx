@@ -183,7 +183,7 @@ C++ code can be debugged using the MiniProg3 and the in-built debugging faciliti
 
 ## Interrupts
 
-A useful feature about interrupts on the PSoC is that you can create one schematically, and then pass in a callback function for the interrupt using the auto-generated API `Interrupt_StartEx(&CallbackFunction);`. However, this poses a problem if you are creating a class, and want the interrupt to call one of the classes functions. C++ will not allow you to take the address of the member function (as a single parameter, although you can have method callbacks if you store both the object and a method reference, see the project [slotmachine-cpp](https://github.com/gbmhunter/slotmachine-cpp)). One way to get around this is to declare your class interrupt callback functions as static  as shown in the following code.
+A useful feature about interrupts on the PSoC is that you can create one schematically, and then pass in a callback function for the interrupt using the auto-generated API `Interrupt_StartEx(&CallbackFunction);`. However, this poses a problem if you are creating a class, and want the interrupt to call one of the classes functions. C++ will not allow you to take the address of the member function (as a single parameter, although you can have method callbacks if you store both the object and a method reference, see the project [slotmachine-cpp](https://github.com/gbmhunter/slotmachine-cpp)). One way to get around this is to declare your class interrupt callback functions as static as shown in the following code.
 
 ```c
 // Assumes ISR component is added on schematic called

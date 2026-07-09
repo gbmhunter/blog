@@ -15,14 +15,14 @@ The _nRF52 Series_ is a family of SoCs by [Nordic Semiconductor](/programming/mi
 
 The nRF52 series supports the following wireless protocols with its RF radio:[^nordic-semi-nrf52840-product-page]
 
-* [Bluetooth 5.4](/electronics/communication-protocols/bluetooth/)
-* Bluetooth LE
-* Bluetooth mesh
-* Thread 
-* Zigbee
-* Other 802.15.4 (LR-WPAN) protocols
-* ANT
-* 2.4GHz proprietary protocols
+- [Bluetooth 5.4](/electronics/communication-protocols/bluetooth/)
+- Bluetooth LE
+- Bluetooth mesh
+- Thread 
+- Zigbee
+- Other 802.15.4 (LR-WPAN) protocols
+- ANT
+- 2.4GHz proprietary protocols
 
 The nRF52840 is likely the most popular MCU in the series and is the most advanced variant in terms of features.[^nordic-semi-nrf52840-product-page] It has a 64MHz Cortex-M4 CPU with FPU, 1MB flash and 256kB RAM.
 
@@ -157,10 +157,10 @@ Reading either `OUTSET` or `OUTCLR` will read the contents of the `OUT` register
 
 When using the [Zephyr framework](/programming/operating-systems/zephyr/) for writing firmware, Zephyr provides nRF specific GPIO flags for controlling the drive strength. The drive strength is individually configurable for both a logic low and a logic high output. This is done with the following macros, which set the upper 8 bits of the `gpio_dt_flags_t` struct:[^zephyr-docs-nrf-specific-gpio-flags]
 
-* `NRF_GPIO_DRIVE_S0`: Logic low, standard drive
-* `NRF_GPIO_DRIVE_H0`: Logic low, high drive
-* `NRF_GPIO_DRIVE_S1`: Logic high, standard drive
-* `NRF_GPIO_DRIVE_H1`: Logic high, high drive
+- `NRF_GPIO_DRIVE_S0`: Logic low, standard drive
+- `NRF_GPIO_DRIVE_H0`: Logic low, high drive
+- `NRF_GPIO_DRIVE_S1`: Logic high, standard drive
+- `NRF_GPIO_DRIVE_H1`: Logic high, high drive
 
 These flags are defined in the Zephyr repo under `zephyr/include/zephyr/dt-bindings/gpio/nordic-nrf-gpio.h`. For example, the following code is used to configure a GPIO pin with high drive in both directions using the `gpio_pin_configure_dt()` function:
 
@@ -266,10 +266,10 @@ The nRF52 series MCUs have a comparator peripheral called `COMP`. Much like [dis
 
 Events can be generated from:[^nordic-semi-nrf52840-datasheet]
 
-* `UP` on `VIN-` > `VIN+`
-* `DOWN` on `VIN-` < `VIN+`
-* `CROSS` on `VIN-` crossing `VIN+`
-* `READY` event when core and internal reference are ready.
+- `UP` on `VIN-` > `VIN+`
+- `DOWN` on `VIN-` < `VIN+`
+- `CROSS` on `VIN-` crossing `VIN+`
+- `READY` event when core and internal reference are ready.
 
 These built-in events make comparator great for simple analogue change detection. The ADC peripheral (`SAADC`) does not have these events, so if using an ADC instead you would need to continuously poll the ADC result and compare it using CPU time (which would both be higher power and a potential waste of CPU processing time).
 
@@ -277,9 +277,9 @@ The comparator peripheral has configurable hysteresis to prevent false events du
 
 The comparator peripheral has different speed modes, which also determine the power consumption. The speed modes are set using the `MODE` register. The different modes are:
 
-* Low-power mode
-* Normal mode
-* High-speed mode
+- Low-power mode
+- Normal mode
+- High-speed mode
 
 ## Near Field Communication Tag (NFCT)
 
@@ -293,14 +293,14 @@ The NFCT peripheral uses EasyDMA for the reading and writing of data packets to 
 
 As of May 2025, Nordic has the following firmware code examples relating to NFC:[^nordic-semi-nrf-connect-sdk-nfc-samples]
 
-* **NFC - Launch App**: Launches an app on a polling smartphone.
-* **NFC - Text record**: Exposes a text record to polling devices.
-* **NFC - Shell**: Runs the shell interface with the NFC T4T ISO-DEP transport layer. It uses the NFC shell transport library.
-* **NFC - System OFF**: Wakes the MCU up from System OFF mode when it detects an NFC field.
-* **NFC - Tag reader**: Makes the MCU a tag reader which can interact with a NFC-A tag.
-* **NFC - TNEP poller**: Uses the TNEP for polling device library to exchange data using an NFC polling device.
-* **NFC - TNEP tag**: Uses the TNEP for tag device library to exchange data using NFC's TNEP Protocol on an NFC Tag device.
-* **NFC - Writable NDEF message**: Exposes an NDEF message that can be overwritten with any other NDEF message by an NFC device.
+- **NFC - Launch App**: Launches an app on a polling smartphone.
+- **NFC - Text record**: Exposes a text record to polling devices.
+- **NFC - Shell**: Runs the shell interface with the NFC T4T ISO-DEP transport layer. It uses the NFC shell transport library.
+- **NFC - System OFF**: Wakes the MCU up from System OFF mode when it detects an NFC field.
+- **NFC - Tag reader**: Makes the MCU a tag reader which can interact with a NFC-A tag.
+- **NFC - TNEP poller**: Uses the TNEP for polling device library to exchange data using an NFC polling device.
+- **NFC - TNEP tag**: Uses the TNEP for tag device library to exchange data using NFC's TNEP Protocol on an NFC Tag device.
+- **NFC - Writable NDEF message**: Exposes an NDEF message that can be overwritten with any other NDEF message by an NFC device.
 
 ## Internal RC Oscillator
 
@@ -323,7 +323,7 @@ The nRF52 has a clock peripheral which is responsible for managing the internal 
 The high-frequency clock is used to drive the CPU `HCLK64M`, radio and peripherals. It runs at a fixed 64 MHz. It can be sourced from either:
 
 - `HFINT`: **An internal RC oscillator.** Imprecise, but cheap and low power. The accuracy is $\lt \pm 1.5\%$ (typical) and $\lt \pm 8\%$ (maximum).[^nordic-semi-nrf52805-product-spec-clock]
-- `HFXO`: **An external 32 MHz crystal oscillator.** Precise, but more expensive and higher power. Mandatory if using the radio.
+- `HFXO`: **An external 32 MHz crystal oscillator.** Precise, but more expensive and higher power. Mandatory if using the radio (the internal RC oscillator is just not accurate enough)
 
 The HFCLK provides the following clocks to the system:
 
@@ -332,17 +332,26 @@ The HFCLK provides the following clocks to the system:
 - `PCLK16M`: 16 MHz clock for the peripherals.
 - `PCLK32M`: 32 MHz clock for the peripherals.
 
+The HFCLK controller automatically turns on/off clocks as requested by various system components (e.g. the CPU and peripherals). This is to allow for mostly automatic power saving.[^nordic-semi-nrf52840-product-spec-clock]
+
 If using an external 32 MHz crystal for `HFCLK`, this is connected along with the correct valued load capacitors to pins `XC1` and `XC2`. Although it doesn't matter which pin is which when creating a schematic, pin `XC1` is the input pin, pin `XC2` is the drive (output) pin of the internal oscillator driver circuitry. This info can be useful to know if you want to probe the crystal to see if (and when) it's working. I would recommend probing the drive pin (`XC2`) since this is less likely to be affected by the oscilloscope probe capacitance (also use x10 mode if you can!). This is the same convention used for the low-frequency crystal oscillator pins (`XL1` input, `XL2` output).[^nordic-semi-devzone-xl1-and-xl2-xc1-and-xc2]
 
 ### Low-Frequency Clock
 
 The low-frequency clock runs at 32.768 kHz and is used for timekeeping (2^15 ticks per second). It can be sourced from:
 
-- **LFRC: An internal RC oscillator**: Imprecise, but cheap and low power. The accuracy is $\pm 2\%$ ($20,000\unit{ppm}) if un-calibrated, and $\pm 500\unit{ppm}$ if calibrated.[^nordic-semi-nrf52805-product-spec-clock]
+- **LFRC: An internal RC oscillator**: Imprecise, but cheap and low power. The accuracy is $\pm 2\%$ ($20,000\unit{ppm}$) if un-calibrated, and $\pm 500\unit{ppm}$ if calibrated.[^nordic-semi-nrf52805-product-spec-clock]
 - **LFXO: An external 32.768 kHz crystal**: Good for low-power designs that need precise timekeeping.
 - **LFSYNT: The HFCLK**: You can derive the LFCLK directly from the 64 MHz HFCLK. This is good if you don't need low-power operation and want to save the cost/space of a 32.768 kHz crystal.
 
 If using the internal RC oscillator `LFRC`, it can be calibrated against the `HFCLK` to improve its accuracy. This is done by starting a `CAL` task on the LFCLK peripheral.[^nordic-semi-nrf52805-product-spec-clock] The specification of $\pm 500\unit{ppm}$ was under the condition that `CAL` was performed every 8 seconds, so it appears you have to re-calibrate often to maintain accuracy.
+
+The internal RC oscillator also has two power modes, allowing the user to trade off between power consumption and accuracy. The two modes are:[^nordic-semi-nrf52840-product-spec-clock]
+
+- **Normal mode**: The RC oscillator is running at full power and has the best accuracy.
+- **Ultra-low power (ULP) mode**: The RC oscillator is running at lower power and has worse accuracy
+
+These modes are configured in the `LFRCMODE` register.
 
 ## Quad Serial Peripheral Interface (QSPI)
 
@@ -561,6 +570,103 @@ The watchdog must be configured before it is started. This means you must setup 
 
 You can use the `INTENSET` register to enable the `TIMEOUT` interrupt. This interrupt is triggered when the watchdog timer expires. If the timeout event is enabled, the WDT peripheral delays the MCU reset by two 32.768 kHz clock cycles to give you a small window of time to react to the event in firmware before the reset. It appears that unlike the main configuration registers, the interrupt can be configured after the watchdog has started (which make sense as you cannot disable the watchdog by enabling the interrupt -- only delay the reset by a small amount).
 
+## APPROTECT
+
+The nRF series of MCUs have a security feature called APPROTECT (Access Port Protection, not "app protect" -- although it can be thought of that way!). APPROTECT locks down the debug access port, preventing people from reading or modifying the firmware on the MCU. This is useful for protecting your intellectual property and preventing reverse engineering of your firmware. The downside is that you lose debug capabilities. A typical use case is to enable APPROTECT in production firmware, but disable it in development firmware.
+
+APPROTECT relies on a non-volatile memory (NVM) register called `UICR.APPROTECT` (UICR = User Information Configuration Register).[^nordic-semi-nrf52840-product-spec-uicr] The `UICR.APPROTECT` register is located at address offset `0x208` and has a reset value of `0xFFFFFFFF`. It contains a single field `A` (named `PALL`) occupying bits `[7:0]`, which enables or disables access port protection. The enumerated values it accepts are shown below.[^nordic-semi-nrf52840-product-spec-uicr]
+
+<table>
+  <thead>
+    <tr>
+      <th>Value ID</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Enabled</td>
+      <td>`0x00`</td>
+      <td>Enable APPROTECT. Not needed with newer silicon revisions, as APPROTECT is enabled by default with the value of `0xFF`.</td>
+    </tr>
+    <tr>
+      <td>HwDisabled</td>
+      <td>`0x5A`</td>
+      <td>Hardware disable of access port protection for devices where access port protection is controlled by hardware and software. For newer nRF52 silicon revisions, this value must be used if you want to disable APPROTECT.</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>`0xFF`</td>
+      <td>Hardware disable of access port protection for devices where access port protection is controlled by hardware. Note that on newer revisions of silicon, this doesn't actually disable APPROTECT, and this is essentially the same as Enabled.</td>
+    </tr>
+  </tbody>
+  <caption>The enumerated values for the `A` (`PALL`) field of the `UICR.APPROTECT` register on the nRF52840.[^nordic-semi-nrf52840-product-spec-uicr]</caption>
+</table>
+
+To ensure protection, APPROTECT is enabled by default (at least on newer silicon revisions) when the MCU boots. This is by nature due to the default state of the `UICR.APPROTECT` register being `0xFF...`; anything other than `0x5A` is considered enabled. If you want to unlock the debug access port, you need to write `HwDisabled` to the `UICR.APPROTECT` register. But this doesn't do the unlocking itself, it only says "I give the firmware permission to disable APPROTECT." Then, firmware has to also run the `APPROTECT.DISABLE` task to disable APPROTECT.
+
+The `nrfutil device program` command has an optional `--recover` flag. If provided, the programmer will write `HwDisabled` to the `UICR.APPROTECT` register and program a small firmware image that runs the `APPROTECT.DISABLE` task at startup.[^nordic-semi-devzone-improved-approtect]
+
+### Unlocking a Device
+
+To unlock a MCU which has APPROTECT enabled, you need to do the following:
+
+1. Issue a CTRL-AP ERASEALL command. This erases all of flash memory, and then enables the debug access port. Access to the debug AP will persist until the next reset.
+1. Write firmware to the MCU which writes `HwDisabled` to the `UICR.APPROTECT` register and runs the `APPROTECT.DISABLE` task at startup.
+1. Reset the MCU to run the firmware which disables APPROTECT.
+
+<Aside type="note">
+It's important to note that the CTRL-AP ERASEALL command only unlocks the debug access port until the next reset. If you erase all flash, and then reset the MCU before programming on firmware that disables APPROTECT, the debug access port will be locked again.
+</Aside>
+
+CTRL-AP (Control Access Port) access is allowed by the debugger even if `APPROTECT` is enabled. CTRL-AP only allows for a small set of commands to be run:
+
+- Reset (read/write)
+- Erase all (write)
+- Erase all status (read)
+- `APPROTECT` status (read)
+- CTRL-AP identification register (IDR) (read)
+
+Nordics nRF5 SDK automatically does runs the `APPROTECT.DISABLE` task at startup if the `UICR.APPROTECT` register is set to `HwDisabled`. This means that in firmware, all you need to do is correctly set the `UICR.APPROTECT` register depending on whether you want the debug access port to be enabled or disabled. The below code snippet does this:[^nordic-semi-devzone-improved-approtect]
+
+```c
+#ifdef ENABLE_APPROTECT
+	if ((NRF_UICR->APPROTECT & UICR_APPROTECT_PALL_Msk) !=
+		(UICR_APPROTECT_PALL_Enabled << UICR_APPROTECT_PALL_Pos)) {
+
+        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen;
+        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+
+        NRF_UICR->APPROTECT = ((NRF_UICR->APPROTECT & ~((uint32_t)UICR_APPROTECT_PALL_Msk)) |
+		    (UICR_APPROTECT_PALL_Enabled << UICR_APPROTECT_PALL_Pos));
+
+        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren;
+        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+   	}
+#else
+	if ((NRF_UICR->APPROTECT & UICR_APPROTECT_PALL_Msk) !=
+		(UICR_APPROTECT_PALL_HwDisabled << UICR_APPROTECT_PALL_Pos)) {
+
+        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen;
+        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+
+        NRF_UICR->APPROTECT = ((NRF_UICR->APPROTECT & ~((uint32_t)UICR_APPROTECT_PALL_Msk)) |
+		    (UICR_APPROTECT_PALL_HwDisabled << UICR_APPROTECT_PALL_Pos));
+
+        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren;
+        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+	}
+#endif
+```
+
+### Fault Injection Vulnerability
+
+Early silicon revisions of the nRF52 MCUs were vulnerable to physical fault-injection attacks (voltage glitching). Because of this, APPROTECT has been upgraded in later silicon revisions across most if not all nRF52 MCUs. The exact revision depends on the exact part number in the nRF52 family. For example, for the nRF52840 the fault injection vulnerability improvements were added in revision 3 silicon.[^nordic-semi-devzone-improved-approtect][^aaron-christophel-bypass-approtect-power-glitching]
+
+- **Old revisions**: APPROTECT was purely managed at the hardware level through the `UICR.APPROTECT` register. `0xFF` meant disabled and since the register defaulted to this, APPROTECT was disabled by default.
+- **New revisions**: APPROTECT uses both hardware and firmware to prevent fault-injection attacks. The default value of `UICR.APPROTECT` (`0xFF`, Disabled) is now considered enabled, and to disable APPROTECT you must write `0x5A` (HwDisabled) to the register and then run the `APPROTECT.DISABLE` task in firmware.
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -573,3 +679,7 @@ You can use the `INTENSET` register to enable the `TIMEOUT` interrupt. This inte
 [^nordic-semi-nrf52832-errata]: Nordic Semiconductor (2024, Mar 4). _nRF52832 Revision 3 Errata_. Retrieved 2026-02-20, from https://docs.nordicsemi.com/bundle/errata_nRF52832_Rev3/page/ERR/nRF52832/Rev3/latest/err_832.html.
 [^nordic-semi-devzone-xl1-and-xl2-xc1-and-xc2]: stone.xiang (2019, Jan 20). _XL1 and XL2, XC1 and XC2_ [forum post]. Nordic Semiconductor DevZone. Retrieved 2026-07-06, from https://devzone.nordicsemi.com/f/nordic-q-a/42767/xl1-and-xl2-xc1-and-xc2.
 [^nordic-semi-nrf52805-product-spec-clock]: Nordic Semiconductor (2026, Jun 3). _nRF52805 Product Specification: CLOCK — Clock control_ [datasheet]. Retrieved 2026-07-06, from https://docs.nordicsemi.com/r/bundle/ps_nrf52805/page/clock.html.
+[^nordic-semi-nrf52840-product-spec-clock]: Nordic Semiconductor. _nRF52840 Product Specification: CLOCK — Clock control_ [datasheet]. Retrieved 2026-07-07, from https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/clock.html.
+[^nordic-semi-devzone-improved-approtect]: Daniel Veilleux (2022, Feb 5). _Working with the nRF52 Series' improved APPROTECT_. Nordic Semiconductor DevZone. Retrieved 2026-07-07, from https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/working-with-the-nrf52-series-improved-approtect.
+[^nordic-semi-nrf52840-product-spec-uicr]: Nordic Semiconductor. _nRF52840 Product Specification: UICR — User information configuration registers_ [datasheet]. Retrieved 2026-07-07, from https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/uicr.html.
+[^aaron-christophel-bypass-approtect-power-glitching]: Aaron Christophel (2021, Jun 24). _HowTo bypass APPROTECT of nRF52832 or nRF52840 with ESP32 Power glitching_ [video]. YouTube. Retrieved 2026-07-07, from https://www.youtube.com/watch?v=tMPD0kBG_So.

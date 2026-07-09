@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2026-07-02
 description: LED matrix displays (a.k.a. LED dot matrix displays) are grids of LEDs used to show text, symbols and low-resolution images. This page covers how they work, multiplexed scanning, driver ICs such as the MAX7219 and HT16K33, addressable RGB matrices, and HUB75 panels.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-07-03
+lastUpdated: 2026-07-07
 tags: [LED matrix displays, LED dot matrix displays, displays, LEDs, MAX7219, HT16K33, WS2812, NeoPixel, HUB75, multiplexing, charlieplexing, Yoto]
 title: LED Matrix Displays
 type: page
@@ -54,6 +54,110 @@ The main design considerations with addressable matrices are:
 ## HUB75 Panels
 
 Larger RGB panels (32x32, 64x32, 64x64 and up) used for video walls and signage typically use the **HUB75** interface. These panels are scanned matrices: they contain shift-register/latch driver ICs on the back, and the host must continuously clock in row data and step through the row-address lines (labelled A, B, C and up to E, depending on the panel's scan rate) to refresh the display. Colour depth is achieved by repeatedly re-scanning the panel with binary-coded modulation, so the host needs to sustain a high pixel clock — this is commonly done with an FPGA, or a microcontroller with DMA and plenty of spare CPU time (dedicated driver boards exist for the Raspberry Pi and ESP32).[^adafruit-rgb-led-matrix-guide] The reward is that HUB75 panels are much cheaper per pixel than addressable-LED matrices and can be tiled edge-to-edge into large video displays.
+
+The below image shows the pinout of the standardized HUB75 connector. This is the male 2x8 IDC header.
+
+<Aside type="tip">
+Some sources number the two data channels from 0 instead of 1 — R0/G0/B0 for the top half and R1/G1/B1 for the bottom half. This is just a naming difference; the pinout is the same.
+</Aside>
+
+<Image src={import('./_assets/hub75-connector-pinout.svg')} width="200px">The pinout of a HUB75 connector.</Image>
+
+Below is a table describing the pin numbers, signal names and descriptions on the HUB75 connector.
+
+<table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>Signal</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>R1</td>
+      <td>Red data for the top half of the panel</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>G1</td>
+      <td>Green data for the top half of the panel</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>B1</td>
+      <td>Blue data for the top half of the panel</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>GND</td>
+      <td>Ground</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>R2</td>
+      <td>Red data for the bottom half of the panel</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>G2</td>
+      <td>Green data for the bottom half of the panel</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>B2</td>
+      <td>Blue data for the bottom half of the panel</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>E</td>
+      <td>Row address bit 4. Only used on 1/32-scan panels (e.g. 64x64) — on lower scan-rate panels this pin is ground</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>A</td>
+      <td>Row address bit 0</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>B</td>
+      <td>Row address bit 1</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>C</td>
+      <td>Row address bit 2</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>D</td>
+      <td>Row address bit 3. Not used on 1/8-scan panels (e.g. 32x16)</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>CLK</td>
+      <td>Clock. Pixel data on R1/G1/B1/R2/G2/B2 is shifted into the panel's shift registers on each clock edge</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>LAT</td>
+      <td>Latch (a.k.a. strobe, STB). Transfers the shifted-in row data to the output drivers</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>OE</td>
+      <td>Output enable (active low). Blanks the display, e.g. whilst switching row addresses</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>GND</td>
+      <td>Ground</td>
+    </tr>
+  </tbody>
+</table>
+
+Note that the connector carries no power. HUB75 panels have a separate high-current 5V power connector, as the logic connector could not handle the many amps a large panel can draw.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

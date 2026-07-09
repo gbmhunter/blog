@@ -1,0 +1,408 @@
+.pid-msd {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+}
+
+.pid-msd *,
+.pid-msd *::before,
+.pid-msd *::after {
+  margin-top: 0;
+}
+
+.pid-msd__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+/* ---- Setpoint mode selector (chips) ---- */
+.pid-msd__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pid-msd__chip {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.pid-msd__chip:hover {
+  border-color: var(--sl-color-gray-4);
+}
+
+.pid-msd__chip--active {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+}
+
+/* ---- Stage (animation + controls) ---- */
+.pid-msd__stage {
+  margin-bottom: 0.8rem;
+}
+
+.pid-msd__hint {
+  font-size: 0.82rem;
+  color: var(--sl-color-text);
+  background: var(--sl-color-accent-low);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.pid-msd__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  color: var(--sl-color-text);
+  overflow: hidden;   /* clip the mass/spring when they fly off-scale */
+}
+
+.pid-msd__ground,
+.pid-msd__wall {
+  stroke: none;
+}
+
+.pid-msd__wall {
+  fill: var(--sl-color-gray-5);
+}
+
+.pid-msd__ground {
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.5;
+}
+
+.pid-msd__hatch {
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1;
+}
+
+.pid-msd__equilib {
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.pid-msd__setpoint {
+  stroke: #2563eb;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+}
+
+.pid-msd__axis-label {
+  fill: var(--sl-color-gray-2);
+  font-size: 10px;
+}
+
+.pid-msd__setpoint-label {
+  fill: #2563eb;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.pid-msd__part-label {
+  fill: var(--sl-color-gray-2);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.pid-msd__spring {
+  fill: none;
+  stroke: var(--sl-color-gray-2);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.pid-msd__rod {
+  stroke: var(--sl-color-gray-2);
+  stroke-width: 2;
+}
+
+.pid-msd__damper-body {
+  fill: none;
+  stroke: var(--sl-color-gray-2);
+  stroke-width: 2;
+}
+
+.pid-msd__piston {
+  stroke: var(--sl-color-gray-2);
+  stroke-width: 4;
+}
+
+.pid-msd__mass {
+  fill: var(--sl-color-accent);
+  stroke: var(--sl-color-accent-high);
+  stroke-width: 1.5;
+}
+
+.pid-msd__mass-label {
+  fill: #fff;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Control-force arrow = PID output acting on the mass */
+.pid-msd__force line {
+  stroke: var(--sl-color-orange, #f0a63c);
+  stroke-width: 3;
+}
+
+.pid-msd__force polygon {
+  fill: var(--sl-color-orange, #f0a63c);
+}
+
+.pid-msd__force text {
+  fill: var(--sl-color-orange, #f0a63c);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* ---- Animation + readouts (two columns) ---- */
+.pid-msd__viz {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: stretch;
+  margin-bottom: 0.8rem;
+}
+
+.pid-msd__viz > * {
+  margin-top: 0;
+}
+
+/* The animation keeps its natural (aspect-ratio) height; it drives the row. */
+.pid-msd__svg {
+  align-self: start;
+}
+
+/* ---- Readouts: a wrapping row on narrow screens ---- */
+.pid-msd__readouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pid-msd__readout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.1rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+  flex: 1 1 7rem;
+  min-width: 0;
+}
+
+/* ---- Two-column layout: readouts become a side panel that fills the
+        animation's height, the three boxes sharing it evenly ---- */
+@container (min-width: 30rem) {
+  .pid-msd__viz {
+    grid-template-columns: minmax(0, 1fr) 9rem;
+  }
+  .pid-msd__readouts {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+  .pid-msd__readout {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+}
+
+.pid-msd__readout-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+}
+
+.pid-msd__readout-value {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.95rem;
+  color: var(--sl-color-text);
+}
+
+/* ---- Buttons ---- */
+.pid-msd__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.pid-msd__btn {
+  box-sizing: border-box;
+  appearance: none;
+  height: 2.1rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pid-msd__btn:hover {
+  border-color: var(--sl-color-gray-4);
+}
+
+.pid-msd__btn--primary {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+  min-width: 5rem;
+}
+
+.pid-msd__warn-box {
+  font-size: 0.82rem;
+  color: var(--sl-color-accent-high);
+  background: var(--sl-color-accent-low);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.25rem;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.4rem;
+}
+
+/* ---- Plot ---- */
+.pid-msd__plot {
+  margin: 0.8rem 0;
+}
+
+/* ---- Controls ---- */
+.pid-msd__controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@container (min-width: 34rem) {
+  .pid-msd__controls {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.pid-msd__control-group {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  padding: 0.7rem;
+  background: var(--sl-color-bg);
+}
+
+.pid-msd__group-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-2);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+/* System preset buttons (sit above the Controller / Plant boxes) */
+.pid-msd__presets-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.pid-msd__presets-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+}
+
+.pid-msd__presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pid-msd__preset-btn {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.28rem 0.55rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.pid-msd__preset-btn:hover {
+  border-color: var(--sl-color-gray-4);
+  background: var(--sl-color-accent-low);
+}
+
+.pid-msd__control {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.pid-msd__control:last-child {
+  margin-bottom: 0;
+}
+
+.pid-msd__control-label {
+  font-weight: 600;
+  color: var(--sl-color-text);
+  text-align: right;
+}
+
+.pid-msd__control-body {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pid-msd__control-body input[type='range'] {
+  flex: 1;
+  min-width: 0;
+}
+
+.pid-msd__num {
+  box-sizing: border-box;
+  width: 4.2rem;
+  height: 1.8rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+}
+
+.pid-msd__unit {
+  color: var(--sl-color-gray-2);
+  font-size: 0.78rem;
+  min-width: 2.8rem;
+}

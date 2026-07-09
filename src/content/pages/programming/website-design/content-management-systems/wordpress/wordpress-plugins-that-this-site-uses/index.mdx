@@ -1,11 +1,13 @@
 ---
 authors: [gbmhunter]
 date: 2013-02-23
-lastUpdated: 2013-02-23
+lastUpdated: 2026-07-08
 tags: [Wordpress, plugins]
 title: Wordpress Plugins That This Site Uses
 type: page
 ---
+
+NOTE: This site moved away from Wordpress in approx. 2019 (to Hugo, and now Astro), so this page is now out of date and no longer relevant.
 
 ## Add Descendants As Menu Items
 
@@ -13,9 +15,9 @@ Site: [http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-
 
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/add-descendants-as-submenu-items/](http://wordpress.org/extend/plugins/add-descendants-as-submenu-items/)
 
-This is a great plugin which gets rid of huge menu setups in the admin area of Wordpress. The Wordpress menu layout is far from ideal, and when it comes to big menu's, the whole things can crash, delete items, or refuse to add any more.
+This is a great plugin which gets rid of huge menu setups in the admin area of Wordpress. The Wordpress menu layout is far from ideal, and when it comes to big menus, the whole thing can crash, delete items, or refuse to add any more.
 
-One improvement I desired was to have the functionality to only add children as menu items, and not grandchildren or further. I managed to do this by editing a section of the code in the plugins php file, add-descendants-as-menu-items.php.
+One improvement I desired was to have the functionality to only add children as menu items, and not grandchildren or further. I managed to do this by editing a section of the code in the plugin's php file, add-descendants-as-menu-items.php.
 
 In the function add_children_to_menu, I made the following change:
 
@@ -33,7 +35,7 @@ case 'post_type':
     $children = get_pages('child_of='.$item->object_id.'&parent='.$item->object_id);
 ```
 
-The code change was based of [this forum discussion](http://wordpress.org/support/topic/get_pages-how-to-disable-grandchildren?replies=6).
+The code change was based off [this forum discussion](http://wordpress.org/support/topic/get_pages-how-to-disable-grandchildren?replies=6).
 
 ## Breadcrumb NavXT
 
@@ -52,9 +54,9 @@ This plugin is great for automated and continuous checking of hyperlinks through
 
 <Image src={import('./_assets/wordpress-plugin-broken-link-checker-sends-you-email.png')} width="650px">The 'Broken Link Checker' plugin sends you an email when it detects a NEW broken link.</Image>
 
-What is also powerful about this feature is that you can edit a broken hyperlink from within the plugin admin pages, AND, you only have to edit it once for all occurances on your site (and it will automatically update all pages/posts to reflect this).
+What is also powerful about this feature is that you can edit a broken hyperlink from within the plugin admin pages, AND, you only have to edit it once for all occurrences on your site (and it will automatically update all pages/posts to reflect this).
 
-<Image src={import('./_assets/wordpress-plugin-broken-link-checker-edit-url.png')} width="650px">You only have to edit a broken hyperlink once for all ocurrances of it on your site.</Image>
+<Image src={import('./_assets/wordpress-plugin-broken-link-checker-edit-url.png')} width="650px">You only have to edit a broken hyperlink once for all occurrences of it on your site.</Image>
 
 ## Cimy Image Rotator
 
@@ -118,7 +120,7 @@ The plugin itself stores uploaded image in the rather badly placed folder `<_wor
 Site: [https://github.com/aramk/crayon-syntax-highlighter](https://github.com/aramk/crayon-syntax-highlighter)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/crayon-syntax-highlighter/](http://wordpress.org/extend/plugins/crayon-syntax-highlighter/)
 
-In my opinion, Crayon Syntax Highlighter is the best code highlighter for Wordpress. I have tried a few (including Syntax Highlighter Evolved), but none offer the power, flexibility, and ease of use as Crayon does. One of the great features of Crayon is that it has it's own code editor, which is loadable from the standard visual post/page editor in Wordpress. Crayon's editor allows you to input code and select the settings, without having the standard editor strip tags, change the formatting, convert/ignore tabs/spaces, and generally mess up the code.
+In my opinion, Crayon Syntax Highlighter is the best code highlighter for Wordpress. I have tried a few (including Syntax Highlighter Evolved), but none offer the power, flexibility, and ease of use as Crayon does. One of the great features of Crayon is that it has its own code editor, which is loadable from the standard visual post/page editor in Wordpress. Crayon's editor allows you to input code and select the settings, without having the standard editor strip tags, change the formatting, convert/ignore tabs/spaces, and generally mess up the code.
 
 I had to add a few custom CSS rules to get Crayon to work properly with the Motion theme (as I have to do with most syntax highlighters). Some of Motion's CSS adds pesky shadows to the presented code. Here is the CSS I added to the Motion child theme to remove the shadowing. Conveniently, the code below also serves as an example of Crayon :-).
 
@@ -141,27 +143,27 @@ and colours them correctly */
 Site: [http://www.designchemical.com/blog/index.php/wordpress-plugins/wordpress-plugin-jquery-drop-down-mega-menu-widget/](http://www.designchemical.com/blog/index.php/wordpress-plugins/wordpress-plugin-jquery-drop-down-mega-menu-widget/)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/jquery-mega-menu/](http://wordpress.org/extend/plugins/jquery-mega-menu/)
 
-Jquery Mega Menu is used for the large drop-down menu on this site (the main form of navigation). The include code is added to the header.php file of the motion child theme (rather than added as a widget, which it also supports). This plugin is slightly confusing as it goes under different names and their are other similarly named plugins.
+Jquery Mega Menu is used for the large drop-down menu on this site (the main form of navigation). The include code is added to the header.php file of the motion child theme (rather than added as a widget, which it also supports). This plugin is slightly confusing as it goes under different names and there are other similarly named plugins.
 
-I had to modify one of the plug-ins CSS files directly to customize the appearance. The CSS file is overwritten when the plugin is updated, so this file (grey.css) has to be replaced every time the plug-in is updated.
+I had to modify one of the plug-in's CSS files directly to customize the appearance. The CSS file is overwritten when the plugin is updated, so this file (grey.css) has to be replaced every time the plug-in is updated.
 
 ## NextGEN Gallery
 
 Site: [http://www.nextgen-gallery.com/](http://www.nextgen-gallery.com/)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/nextgen-gallery/](http://wordpress.org/extend/plugins/nextgen-gallery/)
 
-I use NextGEN gallery for managing all of the images on this site (there are over a 1000!). It is great for organising a large number of images as it features quick drag-n-drop, multiple file upload, galleries, a visual editor plugin for inserting the shortcodes into your pages/posts, and more!
+I use NextGEN gallery for managing all of the images on this site (there are over 1000!). It is great for organising a large number of images as it features quick drag-n-drop, multiple file upload, galleries, a visual editor plugin for inserting the shortcodes into your pages/posts, and more!
 
-One of it's disadvantages is that the inbuilt media manager in Wordpress has better styling features (it has this variable sized mosaic mode which makes image thumbnails look amazing). I don't use the built in media manager however, as it currently lacks poor image sorting abilities (having 1000+ images would make it messy). Also, when editing a post/page, it displays an image as shortcode, rather than the image itself, like the built-in media manager does.
+One of its disadvantages is that the inbuilt media manager in Wordpress has better styling features (it has this variable sized mosaic mode which makes image thumbnails look amazing). I don't use the built in media manager however, as it has poor image sorting abilities (having 1000+ images would make it messy). Also, when editing a post/page, it displays an image as shortcode, rather than the image itself, like the built-in media manager does.
 
 It also isn't that good at handling single images. It has no built-in caption support for single images, although you can make your own templates to add this feature (see below). I have noticed that uploading big images in NextGEN (e.g. 2500x2500 pixels), can cause php memory overruns when trying to load a page the image is added to.
 
 I have also added some custom CSS in the motion child theme to:
 
-* Round the corners on the image thumbnails ([tutorial here](http://www.nextgen-gallery.com/rounded-corners/))
-* Add a shadow to the image thumbnails ([tutorial here](http://www.nextgen-gallery.com/shadows/))
-* Make the image thumbnails fade on mouse hover ([tutorial here](http://www.nextgen-gallery.com/fade-hover/))
-* Added a "template" that adds a caption to single images
+- Round the corners on the image thumbnails ([tutorial here](http://www.nextgen-gallery.com/rounded-corners/))
+- Add a shadow to the image thumbnails ([tutorial here](http://www.nextgen-gallery.com/shadows/))
+- Make the image thumbnails fade on mouse hover ([tutorial here](http://www.nextgen-gallery.com/fade-hover/))
+- Added a "template" that adds a caption to single images
 
 The CSS is shown in the code below:
 
@@ -194,7 +196,7 @@ making them round and have a shadow */
 
 ## Adding A Caption To A Single Image
 
-Navigate to the NextGEN plugin folder. Create a new file in /nextgen-gallery/view called singlepic-caption.php (which is loosly based of singlepic.php). Add the following code to your file. This code is a little complicated, because to create a border around the image, it first has to work out the actual dimensions of the image, which **are not** those passed into the function.
+Navigate to the NextGEN plugin folder. Create a new file in /nextgen-gallery/view called singlepic-caption.php (which is loosely based off singlepic.php). Add the following code to your file. This code is a little complicated, because to create a border around the image, it first has to work out the actual dimensions of the image, which **are not** those passed into the function.
 
 ```php
 <?php 

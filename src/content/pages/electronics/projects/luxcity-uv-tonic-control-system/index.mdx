@@ -1,26 +1,27 @@
 ---
 authors: [gbmhunter]
 date: 2012-09-28
-lastUpdated: 2012-09-28
-tags: [projects, Luxcity, UV, tonic, control systems, FreeTronics, relays, solenoids, Arduino, Vixen, C, firmware]
+description: The design and build of a control system to sequence 64 relays and 62 solenoid valves, pumping UV-reactive tonic water through pipes for the Luxcity 2012 event in Christchurch. Uses an Arduino Uno, Freetronics relay driver shields, and the Vixen light sequencing software.
+lastUpdated: 2026-07-07
+tags: [projects, Luxcity, UV, tonic, control systems, Freetronics, relays, solenoids, Arduino, Vixen, C, firmware]
 title: Luxcity UV Tonic Control System
 type: page
 ---
 
-* Project Start Date: 2012-09-27  
-* Project Completion: 2012-10-21
-* Status: Complete
+- Project Start Date: 2012-09-27
+- Project Completion: 2012-10-21
+- Status: Complete
 
 ## The Challenge
 
 <Image src={import('./_assets/luxcity-tonic-logo-small.png')} width="320px">The Luxcity Tonic logo.</Image>
 
-To design and build a sequencing control system for 64 solenoids that controls a mixture of UV tonic and air into a manifold of pipes to be pumped around a structure. This was for a team participating in the Luxcity Project ([http://stajegrouparchitects.wordpress.com/](http://stajegrouparchitects.wordpress.com/)), or news articles
+To design and build a sequencing control system for 64 solenoids that controls a mixture of UV tonic and air into a manifold of pipes to be pumped around a structure. This was for a team participating in the Luxcity Project ([http://stajegrouparchitects.wordpress.com/](http://stajegrouparchitects.wordpress.com/)). See also these news articles:
 
-* [http://events.nzherald.co.nz/2012/luxcity/christchurch-city/christchurch](http://events.nzherald.co.nz/2012/luxcity/christchurch-city/christchurch))
-* [http://www.stuff.co.nz/the-press/news/7805643/City-to-take-shape-for-one-night](http://www.stuff.co.nz/the-press/news/7805643/City-to-take-shape-for-one-night)
+- [http://events.nzherald.co.nz/2012/luxcity/christchurch-city/christchurch](http://events.nzherald.co.nz/2012/luxcity/christchurch-city/christchurch)
+- [http://www.stuff.co.nz/the-press/news/7805643/City-to-take-shape-for-one-night](http://www.stuff.co.nz/the-press/news/7805643/City-to-take-shape-for-one-night)
 
-or the Luxcity event page itself (http://www.luxcity.co.nz/, **as of Dec 2017, website dead**)
+or the Luxcity event page itself ([http://www.luxcity.co.nz/](http://www.luxcity.co.nz/), **as of Dec 2017, website dead**)
 
 or the Luxcity page on EventFinder ([http://www.eventfinder.co.nz/2012/luxcity/christchurch-city/christchurch](http://www.eventfinder.co.nz/2012/luxcity/christchurch-city/christchurch))
 
@@ -28,110 +29,110 @@ or the Luxcity page on EventFinder ([http://www.eventfinder.co.nz/2012/luxcity/c
 
 **EDIT 2012-10-30:**
 
-Post-event there have been another news article:
+Post-event there has been another news article:
 
-* [http://www.listener.co.nz/commentary/letter-from-christchurch/luxcity-2012-a-hopeful-makeshift-magical-glow/](http://www.listener.co.nz/commentary/letter-from-christchurch/luxcity-2012-a-hopeful-makeshift-magical-glow/)
+- [http://www.listener.co.nz/commentary/letter-from-christchurch/luxcity-2012-a-hopeful-makeshift-magical-glow/](http://www.listener.co.nz/commentary/letter-from-christchurch/luxcity-2012-a-hopeful-makeshift-magical-glow/)
 
 ## Repository
 
-The repo for this project can be found on [BitBucket](https://bitbucket.org/) at [https://bitbucket.org/gbmhunter/luxcity-tonic-uv-control-system](https://bitbucket.org/gbmhunter/luxcity-tonic-uv-control-system). It contains the firmware and datasheets.
+The repo for this project can be found on GitHub at [https://github.com/gbmhunter/LuxcityTonicUVControlSystem](https://github.com/gbmhunter/LuxcityTonicUVControlSystem). It contains the firmware and datasheets.
 
 ## The Hardware
 
-## 8x FreeTronics 8-Channel Relay Driver Shields
+### 8x Freetronics 8-Channel Relay Driver Shields
 
 <Image src={import('./_assets/arduino-8-ch-relay-channel-02.jpg')} width="250px">The Freetronics 8-channel relay driver shield for the Arduino.</Image>
 
-* Manufacturer: [Freetronics](http://www.freetronics.com/)  
-* Store URL: http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield
-* Datasheet: https://github.com/freetronics/RelayDriverShield8/blob/master/RelayDriverShield8.pdf
-* Supplier: NiceGear
+- Manufacturer: [Freetronics](http://www.freetronics.com/)  
+- Store URL: http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield
+- Datasheet: https://github.com/freetronics/RelayDriverShield8/blob/master/RelayDriverShield8.pdf
+- Supplier: NiceGear
 
-The I2C controlled shield provides 8 outputs that can drive standard relays. Being I2C controlled, it only uses 2-pins of the Ardunio. Luckily, the I2C address settings are 3-bit, meaning I could just control all 8 from a single I2C line. The boards feature the MCP23017 I2C expander IC ([datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/21952b.pdf)).
+The [I2C](/electronics/communication-protocols/i2c-communication-protocol/) controlled shield provides 8 outputs that can drive standard [relays](/electronics/components/relays/). Being I2C controlled, it only uses 2 pins of the Arduino. Luckily, the I2C address settings are 3-bit, meaning I could just control all 8 from a single I2C line. The boards feature the MCP23017 I2C expander IC ([datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/21952b.pdf)).
 
 <Image src={import('./_assets/freetronics-relay-driver-schematic-snapshot-of-1-channel.png')} width="500px">Part of the schematics for the Freetronics 8-channel relay driver shield showing one channel.</Image>
 
-## 64x SPDT 12V Relays
+### 64x SPDT 12V Relays
 
 <Image src={import('./_assets/64-12v-relays.jpg')} width="500px">64 12V relays.</Image>
 
-* Manufacturer: Zhejiang Dongya Electric Co. Ltd.
-* Supplier: [NiceGear](http://nicegear.co.nz/)
-* Supplier Link: http://nicegear.co.nz/components/relay-spdt-sealed/
-* Datasheet: [click here](http://www.sparkfun.com/datasheets/Components/General/JZC-11F-05VDC-1Z%20EN.pdf)
-* Rated Coil Load: 12V @ 37.5mA  
-* Coil Resistance: 320Ω  
-* Minimum Coil Load: 5V @ 10mA
-* Operate Time: 20ms
-* Release Time: 10ms
+- Manufacturer: Zhejiang Dongya Electric Co. Ltd.
+- Supplier: [NiceGear](http://nicegear.co.nz/)
+- Supplier Link: http://nicegear.co.nz/components/relay-spdt-sealed/
+- Datasheet: [click here](http://www.sparkfun.com/datasheets/Components/General/JZC-11F-05VDC-1Z%20EN.pdf)
+- Rated Coil Load: 12V @ 37.5mA  
+- Coil Resistance: 320Ω  
+- Minimum Coil Load: 5V @ 10mA
+- Operate Time: 20ms
+- Release Time: 10ms
 
-64 relays are needed to control the 62 tonic water/air solenoid valves (plus 2 spare). Since there was 64 of them, they needed to be cheap. These ones were brought for around NZ\$3 each.
+64 relays are needed to control the 62 tonic water/air solenoid valves (plus 2 spare). Since there were 64 of them, they needed to be cheap. These ones were bought for around NZ\$3 each.
 
-## 62x 12V Solenoid Valves
+### 62x 12V Solenoid Valves
 
 <Image src={import('./_assets/12v-solenoid-valve-02.jpg')} width="320px">A 12V solenoid valve. 62 of these were used to control the flow of UV-reactive tonic water or air through the pipes.</Image>
 
-* Manufacturer: HR Products
-* Supplier: HR Products
-* Datasheet: ~~http://www.hrproducts.com.au/resources/Valves%20MV%20Series/MV80.pdf~~ (**as of Dec 2017, URL unavailable**)  
-* Operating Voltage: 12V  
-* Inrush Current: 320mA  
-* Holding Current: 260mA  
-* Power Consumption: 8W  
-* Minimum Operating Pressure: 20kPA  
-* Maximum Operating Pressure: 1250kPA
+- Manufacturer: HR Products
+- Supplier: HR Products
+- Datasheet: ~~http://www.hrproducts.com.au/resources/Valves%20MV%20Series/MV80.pdf~~ (**as of Dec 2017, URL unavailable**)  
+- Operating Voltage: 12V  
+- Inrush Current: 320mA  
+- Holding Current: 260mA  
+- Power Consumption: 8W  
+- Minimum Operating Pressure: 20kPa  
+- Maximum Operating Pressure: 1250kPa
 
-62 solenoids are needed to either allow tonic or air to flow into one of the 31 pipes. When I first received them, I had a horrible feeling as I blew in one end and the solenoid let air through with some resistance. This was until I realised that they have a minimum operating pressure of 20kPA.
+62 solenoids are needed to either allow tonic or air to flow into one of the 31 pipes. When I first received them, I had a horrible feeling as I blew in one end and the solenoid let air through with some resistance. This was until I realised that they have a minimum operating pressure of 20kPa.
 
-<Image src={import('./_assets/solenoid-minimum-operating-pressure.png')} width="500px"></Image>
+<Image src={import('./_assets/solenoid-minimum-operating-pressure.png')} width="500px">The solenoid valve datasheet showing the minimum operating pressure of 20kPa.</Image>
 
-## 1x Arduino Uno
+### 1x Arduino Uno
 
-* Manufacturer: [Arduino](http://arduino.cc/en/)
-* Supplier: [NiceGear](http://nicegear.co.nz/)
-* Supplier Link: ([click here](http://nicegear.co.nz/arduino-boards/arduino-uno/))
+- Manufacturer: [Arduino](http://arduino.cc/en/)
+- Supplier: [NiceGear](http://nicegear.co.nz/)
+- Supplier Link: ([click here](http://nicegear.co.nz/arduino-boards/arduino-uno/))
 
 I decided to use the Arduino development environment for speed, simplicity, and pre-existing hardware/firmware. The USB cable was able to provide enough power to turn on all 64 relay lights and the LCD screen (including backlight), without causing an over-current fault.
 
-## 2x Power Supplies
+### 2x Power Supplies
 
 <Image src={import('./_assets/twin-power-supplies.jpg')} width="320px">Twin 500W power supplies to turn on up to half of the relays and solenoids all at once.</Image>
 
-* Manufacturer: EnerMax
-* Product: TomaHawk2 500W ATX2.2 PSU
-* Supplier: [MightyApe](http://www.mightyape.co.nz/)
-* Product Page: [click here](http://www.mightyape.co.nz/product/ENERMAX-TOMAHAWK2-500W-ATX22-PSU/19760193/)
-* Total Continuous Rated Power: 500W  
-* Output Voltages: 12Vx2, 5V, 3.3V, -12V
+- Manufacturer: EnerMax
+- Product: TomaHawk2 500W ATX2.2 PSU
+- Supplier: [MightyApe](http://www.mightyape.co.nz/)
+- Product Page: [click here](http://www.mightyape.co.nz/product/ENERMAX-TOMAHAWK2-500W-ATX22-PSU/19760193/)
+- Total Continuous Rated Power: 500W  
+- Output Voltages: 12Vx2, 5V, 3.3V, -12V
 
 A PSU is needed to power the 64 relays and solenoids. This gave me a scare when I first received it, as it was 'apparently' not working. After some research I discovered that I needed to short out the green wire on the main connector to ground before the PSU would turn on.
 
 They quote that there are two +12V supplies, but when using a multimeter, there was no resistance between any of the +12V wires, so either a) they are lying, or b) the two +12V outputs are connected together internally.
 
-## 1x Arduino LCD Screen Shield
+### 1x Arduino LCD Screen Shield
 
 <Image src={import('./_assets/arduino-lcd-shield-02.jpg')} width="320px">The Freetronics LCD shield for the Arduino. This was used to display running information to the user.</Image>
 
-* Manufacturer: [Freetronics](http://www.freetronics.com/)
-* Supplier: [NiceGear](http://nicegear.co.nz/)
-* Product Page: ([click here](http://nicegear.co.nz/arduino-shields/freetronics-lcd-keypad-shield/))
+- Manufacturer: [Freetronics](http://www.freetronics.com/)
+- Supplier: [NiceGear](http://nicegear.co.nz/)
+- Product Page: ([click here](http://nicegear.co.nz/arduino-shields/freetronics-lcd-keypad-shield/))
 
 It just so happened that the relay driver shields are mount-compatible with the LCD screen shield, as the driver shields only use analog pins 4 and 5 for I2C communication, and the LCD screen only uses digital I/O.
 
-The LCD screen was one of easiest parts of this project to setup. Built in libraries for controlling an LCD are included in the Arduino IDE. It literally took about 5 minutes to get this working (see below).
+The LCD screen was one of the easiest parts of this project to set up. Built-in libraries for controlling an LCD are included in the Arduino IDE. It literally took about 5 minutes to get this working (see below).
 
 ## Vixen Software
 
 <Image src={import('./_assets/vixen-software-logo.jpg')} width="300px">The Vixen software logo. Image from http://www.vixenlights.com.</Image>
 
-* URL: [http://www.vixenlights.com/](http://www.vixenlights.com/)
-* License: Closed-source, free to use.
+- URL: [http://www.vixenlights.com/](http://www.vixenlights.com/)
+- License: Closed-source, free to use.
 
 Vixen is a free PC-based sequencer designed for controlling lights. Although not open-source, it is very versatile, being built upon the .NET framework, and provides an API to build your own input/output plugins.
 
-To get around the problem with Vixen not outputting cells with an intensity of 0 (the firmware can't recognise what output value is for what channel unless all 64 are output in the correct order), I made the minimum allowable intensity equal to 1, so that Vixen outputs a value for every cell at every time step, and the firmware looks for a non-one value.
+To get around the problem with Vixen not outputting cells with an intensity of 0 (the firmware can't recognise what output value is for what channel unless all 64 are output in the correct order), I made the minimum allowable intensity equal to 1, so that Vixen outputs a value for every cell at every time step. The firmware then only turns a relay on when it sees an intensity of 255.
 
-<Image src={import('./_assets/vixen-screenshot-tonic-test-sequence.png')} width="600px"></Image>
+<Image src={import('./_assets/vixen-screenshot-tonic-test-sequence.png')} width="600px">A screenshot of the Vixen software with the tonic test sequence loaded.</Image>
 
 ## Construction
 
@@ -139,9 +140,9 @@ The hardware! (just after arrival).
 
 <Image src={import('./_assets/luxcity-tonic-hardware.jpg')} width="600px">The hardware for the Luxcity Tonic project (just after it arrived).</Image>
 
-The relay boards and LCD were stacked ontop of each other.
+The relay boards and LCD were stacked on top of each other.
 
-<Image src={import('./_assets/arduino-and-relay-shield-stack-vertical.jpg')} width="600px">A Ardunio stack with the Uno (at bottom), 8 relay shields, and an LCD shield on-top.</Image>
+<Image src={import('./_assets/arduino-and-relay-shield-stack-vertical.jpg')} width="600px">An Arduino stack with the Uno (at bottom), 8 relay shields, and an LCD shield on top.</Image>
 
 Wiring up the relay boards.
 
@@ -163,7 +164,7 @@ The 62 solenoid valves.
 
 <Image src={import('./_assets/solenoids-in-a-box.jpg')} width="600px">All of the 62 solenoids, in a box.</Image>
 
-After testing a solenoid valve with the system, the comms between the computer and Arduino dropped out when the solenoid was turned off. I realised that although the relay shield boards had protection diodes, I still needed to add some to the solenoid's (on the relay outputs), as this inductive kickback was coupling into the digital system. Luckily I had a string of 1N4003 diodes on hand...
+After testing a solenoid valve with the system, the comms between the computer and Arduino dropped out when the solenoid was turned off. I realised that although the relay shield boards had protection [diodes](/electronics/components/diodes/), I still needed to add some to the solenoids (on the relay outputs), as this inductive kickback was coupling into the digital system. Luckily I had a string of 1N4003 diodes on hand...
 
 <Image src={import('./_assets/string-of-diodes.jpg')} width="600px">String of diodes for quenching the inductive kick of the solenoids.</Image>
 
@@ -171,9 +172,9 @@ The Arduino, relay control boards, and the relay board, semi-assembled.
 
 <Image src={import('./_assets/arduino-and-relays-semi-assembled.jpg')} width="600px">The Arduino and relays semi-assembled.</Image>
 
-The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point.
+The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids were turned on, the board got considerably warm around the PSU entry point.
 
-<Image src={import('./_assets/finished-soldering-the-prototype-board.jpg')} width="600px">The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point.</Image>
+<Image src={import('./_assets/finished-soldering-the-prototype-board.jpg')} width="600px">The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids were turned on, the board got considerably warm around the PSU entry point.</Image>
 
 Wiring up the solenoids, as they need to have a 2m cable reach. I'm going through 100m cable rolls like it's Christmas.
 
@@ -199,7 +200,7 @@ The LCD screen working. This part was a breeze, it was an Arduino capable LCD sh
 
 <Image src={import('./_assets/lcd-screen-tonic-active.jpg')} width="600px">The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working.</Image>
 
-The solenoids were numbered so sequencing would become confusing when out in the field.
+The solenoids were numbered so sequencing wouldn't become confusing when out in the field.
 
 <Image src={import('./_assets/solenoid-number-3.jpg')} width="600px">Numbering the solenoids...</Image>
 
@@ -209,11 +210,11 @@ Testing the complete system the night before it's due to be used.
 
 The Vixen software sequence used to test the solenoids. Each solenoid is turned on for 1 second in sequential order.
 
-<Image src={import('./_assets/vixen-screenshot-tonic-test-sequence.png')} width="600px"></Image>
+<Image src={import('./_assets/vixen-screenshot-tonic-test-sequence.png')} width="600px">The Vixen software sequence used to test the solenoids. Each solenoid is turned on for 1 second in sequential order.</Image>
 
 The settings to configure the 'Generic Serial' output plugin in Vixen.
 
-<Image src={import('./_assets/vixen-tonic-generic-serial-output-plugin-settings.png')} width="600px"></Image>
+<Image src={import('./_assets/vixen-tonic-generic-serial-output-plugin-settings.png')} width="600px">The settings used to configure the 'Generic Serial' output plugin in Vixen.</Image>
 
 ## Onsite
 
@@ -221,10 +222,10 @@ The manifold with the solenoids in place, being assembled on-site.
 
 <Image src={import('./_assets/manifold-with-solenoids-in-place.jpg')} width="600px">The manifold with the solenoids in place, being assembled on-site.</Image>
 
-Carrying the water tank for the gin and tonic drinks down the road to the the construction site.
+Carrying the water tank for the gin and tonic drinks down the road to the construction site.
 
 
-<Image src={import('./_assets/carrying-tank-down-road.jpg')} width="600px">Carrying the water tank for the gin and tonic drinks down the road to the the construction site.</Image>
+<Image src={import('./_assets/carrying-tank-down-road.jpg')} width="600px">Carrying the water tank for the gin and tonic drinks down the road to the construction site.</Image>
 
 The tensioned cable structure being hoisted into the air by the crane.
 
@@ -246,13 +247,13 @@ Some of the other structures at the Luxcity event.
 
 <Image src={import('./_assets/altitude-02.jpg')} width="600px">A view of Altitude from the centre.</Image>
 
-<Image src={import('./_assets/scary-tree.jpg')} width="600px"></Image>
+<Image src={import('./_assets/scary-tree.jpg')} width="600px">A scary-looking tree at the Luxcity event.</Image>
 
 ## Firmware
 
-I firstly considered DMX Control (as described in a FreakLabs tutorial at http://freaklabs.org/index.php/Tutorials/Software/Light-Sequencing-and-Decoding-DMX-with-an-Arduino.html, **as of Dec 2017, URL unavailable**), but this required hacking the Ardunio software platform (specifically, the HardwareSerial.cpp file) to get the UART to work correctly. I found it more elegant to use the Vixen output plugin 'Generic Serial' instead, as this worked without any hacking.
+I firstly considered DMX Control (as described in a FreakLabs tutorial at http://freaklabs.org/index.php/Tutorials/Software/Light-Sequencing-and-Decoding-DMX-with-an-Arduino.html, **as of Dec 2017, URL unavailable**), but this required hacking the Arduino software platform (specifically, the HardwareSerial.cpp file) to get the UART to work correctly. I found it more elegant to use the Vixen output plugin 'Generic Serial' instead, as this worked without any hacking.
 
-The firmware can be found in the project repo under 'src' on [BitBucket](https://bitbucket.org/) at [https://bitbucket.org/gbmhunter/luxcity-tonic-uv-control-system](https://bitbucket.org/gbmhunter/luxcity-tonic-uv-control-system). Since there wasn't much to it (one file of around 320 lines or so, I have also shown it below. Note that changes may of been made to the src after this code below was posted, so always use the repo on BitBucket if you want to get the most recent code.
+The firmware can be found in the project repo under 'src' on GitHub at [https://github.com/gbmhunter/LuxcityTonicUVControlSystem](https://github.com/gbmhunter/LuxcityTonicUVControlSystem). Since there wasn't much to it (one file of around 320 lines or so), I have also shown it below. Note that changes may have been made to the src after this code below was posted, so always use the repo on GitHub if you want to get the most recent code.
 
 ```c    
 //!
@@ -274,7 +275,7 @@ The firmware can be found in the project repo under 'src' on [BitBucket](https:/
 //!    <b>License:               </b> GPLv3            \n
 //!    <b>Documentation Format:  </b> Doxygen          \n
 //!
-//!  Vixen must be confired with the 'Generic Serial' output, at 56700 baud, and to send the
+//!  Vixen must be configured with the 'Generic Serial' output, at 57600 baud, and to send the
 //!  end character 'n'. Vixen must have 64 channels. Firmware will turn channel x relay on when
 //!  the Vixen intensity for that channel is set to 255, otherwise off.
 
@@ -571,6 +572,6 @@ inputStringPos = 0;
 
 // EOF
 ```
-# Gallery
+## Gallery
 
 {/* {{< gallery dir="images/electronics-luxcityuvtoniccontrolsystem" />}} */}

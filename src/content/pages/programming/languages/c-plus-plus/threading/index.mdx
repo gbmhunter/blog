@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2017-05-08
-lastUpdated: 2017-05-08
+lastUpdated: 2026-07-08
 tags: [C++, threading]
 title: Threading
 type: page
@@ -9,7 +9,7 @@ type: page
 
 ## Condition Variables
 
-`std::condition_variable`, from `#include <condition_variable>` is a **synchronization object used for inter-thread notification**. Note that two additional shared variables need to be used alongside a condition variable to achieve thread-to-thread notification, a mutex and a boolean (a.k.a a _condition flag_).
+`std::condition_variable`, from `#include <condition_variable>` is a **synchronization object used for inter-thread notification**. Note that two additional shared variables need to be used alongside a condition variable to achieve thread-to-thread notification, a mutex and a boolean (a.k.a. a _condition flag_).
 
 ```c++    
 #include <condition_variable>
@@ -122,7 +122,7 @@ Semaphore semaphore;
 
 void Worker() {
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-    semaphore.Notify()
+    semaphore.Notify();
 }
 
 int main() {
@@ -178,10 +178,10 @@ public:
     int GetCount() const {
         return count_;
     }
-}
+};
 ```
 
-What happens when you want to call `GetCount()` from multiple threads? You may reach into your concurrency toolbox at pull out a `std::mutex`:
+What happens when you want to call `GetCount()` from multiple threads? You may reach into your concurrency toolbox and pull out a `std::mutex`:
 
 ```c++    
 class MyClass {
@@ -192,10 +192,10 @@ public:
     }
 private:
     std::mutex mutex_;
-}
+};
 ```
 
-The problem with this is that locking a mutex is not a const operation, and the above code won't compile. A solution is to declare `mutex_` as mutable:
+The problem with this is that locking a mutex is not a [const](/programming/languages/c-plus-plus/const-correctness/) operation, and the above code won't compile. A solution is to declare `mutex_` as mutable:
 
 ```c++    
 class MyClass {
@@ -206,14 +206,14 @@ public:
     }
 private:
     mutable std::mutex mutex_;
-}
+};
 ```
 
 This is one of the few use cases were the `mutable` keyword should be used.
 
 ## Threads
 
-`std::thread` has been in the C++ language since C++11. It's introduction standardized the way threads are used in C++, as before this time platform-specific implementations were the only option (e.g. `pthread` for POSIX systems).
+`std::thread` has been in the C++ language since C++11. Its introduction standardized the way threads are used in C++, as before this time platform-specific implementations were the only option (e.g. `pthread` for POSIX systems).
 
 **A Basic Example**
 
@@ -224,14 +224,14 @@ This is one of the few use cases were the `mutable` keyword should be used.
 
 // The function we want to execute on the new thread.
 void task1() {
-    cout << "Thread says hello!" << endl;
+    std::cout << "Thread says hello!" << std::endl;
 }
 
 int main() {
     // Constructs the new thread (and runs it). This does not block the current thread.
     std::thread myThread(task1);
 
-    // This makes the main thread wait for the new thread to finish (return from the task1() function. This means the main() thread gets "blocked" until the thread finishes.
+    // This makes the main thread wait for the new thread to finish (return from the task1() function). This means the main() thread gets "blocked" until the thread finishes.
     myThread.join();
 }
 ```
@@ -259,7 +259,7 @@ int main() {
 
 **Priorities**
 
-**Unfortunately, as of C++14, there is not standardized way of setting/modifying thread priorities**. If you are used to using a low-level OS such as FreeRTOS you may be surprised that this functionality is not included. But this should not come as a surprise if you consider the history of the C/C++ standards. For such a long time both considered threading to be a implementation specific issue that should not handled by the standard. It was only starting with C++11 that the standard introduced the concept of a `std::thread`, eliminating the need for platform specific code for creating basic threads.
+**Unfortunately, as of C++14, there is no standardized way of setting/modifying thread priorities**. If you are used to using a low-level OS such as FreeRTOS you may be surprised that this functionality is not included. But this should not come as a surprise if you consider the history of the C/C++ standards. For such a long time both considered threading to be an implementation-specific issue that should not be handled by the standard. It was only starting with C++11 that the standard introduced the concept of a `std::thread`, eliminating the need for platform specific code for creating basic threads.
 
 However, it's not all bad news! You can **still manage thread priorities for common operating systems such as Linux and Windows via the use of** `thread.native_handle()`. This function **hopefully** returns a pointer to the native thread object, (e.g. a pthread in Linux) which can be then used with OS-specific API to set the priority.
 
@@ -280,7 +280,7 @@ void SetPriority(std::thread& thread, int policy, int priority) {
 ```
 
 <Aside type="caution">
-This is not platform independent code!**
+This is not platform-independent code!
 </Aside>
 
 **Common Errors**
@@ -303,7 +303,7 @@ You can fix this by making sure you call `join()` for all threads created by the
 
 When dealing with a multi-threaded design, concurrency issues arise. One way to deal with this is to use an **_Actor model_**, where each **thread waits for incoming commands that arrive on a command queue**.
 
-The below example uses a `std::shared_ptr<void>` as the data type. This is to allow a different data type to be passed for each command (or no data at all). The neat thing about this is that data can be cast to this type and passed on the queue, and will still be destroyed safely when there are no more references to it. The disadvantage to this approach is that you must remember and cast back to the appropriate data type for each different command.
+The below example uses a [`std::shared_ptr<void>`](/programming/languages/c-plus-plus/smart-pointers/) as the data type. This is to allow a different data type to be passed for each command (or no data at all). The neat thing about this is that data can be [cast](/programming/languages/c-plus-plus/special-casts/) to this type and passed on the queue, and will still be destroyed safely when there are no more references to it. The disadvantage to this approach is that you must remember and cast back to the appropriate data type for each different command.
 
 ```c++    
 #include <iostream>
@@ -370,7 +370,7 @@ Note that the above code uses a `ThreadSafeQueue` class, which is not part of `s
 
 ## Futures And Promises
 
-The `std::future` and `std::promise` objects allow a thread to wait for data to be returned from process occurring another thread.
+The `std::future` and `std::promise` objects allow a thread to wait for data to be returned from a process occurring on another thread.
 
 See [https://wandbox.org/permlink/gAq8i3HMcPMe6AMS](https://wandbox.org/permlink/gAq8i3HMcPMe6AMS).
 

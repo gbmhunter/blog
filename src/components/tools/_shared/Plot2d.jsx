@@ -38,7 +38,13 @@ Chart.register(
  *   series      — Array<{ label, data: Array<{x,y}>, color }>
  *   height      — px (default 240)
  *   xLog, yLog  — boolean, optional log axes
+ *   xMin, xMax  — optional fixed x range (otherwise auto-scaled). Handy for a
+ *                 live streaming plot: fix the window so the trace draws in
+ *                 without the axis rescaling every frame.
  *   yMin, yMax  — optional fixed y range (otherwise auto-scaled)
+ *   animated    — tween data updates (default true). Set false for live
+ *                 streaming plots that update every frame, where the 300 ms
+ *                 tween would otherwise lag behind and look wobbly.
  *
  * Theme: colours are read from Starlight CSS variables on every redraw so
  * axis labels and gridlines stay readable in both light and dark modes.
@@ -51,10 +57,13 @@ export default function Plot2d({
   height = 240,
   xLog = false,
   yLog = false,
+  xMin,
+  xMax,
   yMin,
   yMax,
   xTickFormat,
   yTickFormat,
+  animated = true,
 }) {
   const canvasRef = useRef(null);
   const chartRef = useRef(null);
@@ -67,7 +76,7 @@ export default function Plot2d({
     chartRef.current = new Chart(canvasRef.current, {
       type: 'scatter',
       data: { datasets: buildDatasets(series) },
-      options: buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend: series.length > 1 }),
+      options: buildOptions({ title, xLabel, yLabel, xLog, yLog, xMin, xMax, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend: series.length > 1, animated }),
     });
 
     return () => {
@@ -106,9 +115,9 @@ export default function Plot2d({
     // Trim if series count shrank.
     while (c.data.datasets.length > series.length) c.data.datasets.pop();
 
-    c.options = buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend: series.length > 1 });
+    c.options = buildOptions({ title, xLabel, yLabel, xLog, yLog, xMin, xMax, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend: series.length > 1, animated });
     c.update();
-  }, [series, title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat]);
+  }, [series, title, xLabel, yLabel, xLog, yLog, xMin, xMax, yMin, yMax, xTickFormat, yTickFormat, animated]);
 
   return (
     <div class="plot2d" style={{ height: `${height}px` }}>
@@ -153,11 +162,11 @@ function tickConfig(text, format) {
   return cfg;
 }
 
-function buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend }) {
+function buildOptions({ title, xLabel, yLabel, xLog, yLog, xMin, xMax, yMin, yMax, xTickFormat, yTickFormat, text, grid, showLegend, animated = true }) {
   return {
     responsive: true,
     maintainAspectRatio: false,
-    animation: { duration: 300 },
+    animation: animated ? { duration: 300 } : false,
     interaction: { mode: 'nearest', intersect: false, axis: 'x' },
     scales: {
       x: {
@@ -165,6 +174,8 @@ function buildOptions({ title, xLabel, yLabel, xLog, yLog, yMin, yMax, xTickForm
         title: { display: !!xLabel, text: xLabel, color: text, font: { size: 12 } },
         ticks: tickConfig(text, xTickFormat),
         grid: { color: grid, lineWidth: 0.5 },
+        min: xMin,
+        max: xMax,
       },
       y: {
         type: yLog ? 'logarithmic' : 'linear',

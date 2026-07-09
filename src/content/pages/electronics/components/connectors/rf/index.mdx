@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2011-09-05
 description: RF connectors are connectors designed to pass high-frequency signals with minimal reflection and attenuation.
-lastUpdated: 2025-06-10
+lastUpdated: 2026-07-08
 image: ./_assets/cover-image.webp
 tags: [electronics, connectors, RF, MMCX, SMA, BNC, U.FL, MCX, impedance, high frequency]
 title: RF Connectors
@@ -13,22 +13,22 @@ RF connectors are connectors specifically designed to carry high-frequency signa
 
 ## BNC Connectors
 
-BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed for RF signals. It is named after it's **B**ayonet locking mechanism and it's inventors, Paul **N**eill and Carl **C**oncelman. It is "standardized" in MIL-STD-348A[^everyspec-mil-std-348a].
+BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed for RF signals. It is named after its **B**ayonet locking mechanism and its inventors, Paul **N**eill and Carl **C**oncelman. It is "standardized" in MIL-STD-348A[^everyspec-mil-std-348a].
 
 <Image src={import('./_assets/bnc-connectors-on-oscilloscope.jpg')} width="700px">Four BNC connectors on the front of a Keysight InfiniiVision DSOX2024A oscilloscope to connect the probes to.</Image>
 
 ### Specifications
 
-* **Passband:** 0-4GHz
-* **Impedance:** $50\,\Omega$ (standard) or $75\,\Omega$ (video).
+- **Passband:** 0-4GHz
+- **Impedance:** $50\unit{\Omega}$ (standard) or $75\unit{\Omega}$ (video).
 
 ### Uses 
 
 They were originally designed for military use, but are now commonly used for a variety of RF applications including:
 
-* **Oscilloscope probes:** Used for lower frequency oscilloscope probes (0-200MHz). The top-end modern oscilloscopes tend to have proprietary connections to the probes, with added pins for extra functionality.
-* **Analog video signals**
-* **Radio antennas**
+- **Oscilloscope probes:** Used for lower frequency oscilloscope probes (0-200MHz). The top-end modern oscilloscopes tend to have proprietary connections to the probes, with added pins for extra functionality.
+- **Analog video signals**
+- **Radio antennas**
 
 <Image src={import('./_assets/bnc-adapter-edited.jpg')} width="300px">Photo of a BNC adapter, showing the male BNC connector.</Image>
 
@@ -38,11 +38,11 @@ The USSR version of the BNC connector is called the SR connector. However, the c
 
 Also known as UMC or XFL connectors.
 
-<Image src={import('./_assets/ufl-connector-photo.png')} width="350">A photo of a male, SMD mount UFL connector. Image from www.digikey.com.</Image>
+<Image src={import('./_assets/ufl-connector-photo.png')} width="350px">A photo of a male, SMD mount UFL connector. Image from www.digikey.com.</Image>
 
 ### Schematic Symbol
 
-There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
+There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with something that visually resembles the actual connector part, as shown below:
 
 <Image src={import('./_assets/ufl-umc-umcc-rf-connector-schematic-symbol.png')} width="510px">A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.</Image>
 
@@ -50,14 +50,14 @@ The height of the male SMD connector can vary, but something around 1.2mm is com
 
 ## SMA Connectors
 
-SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) $50\,\Omega$ RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between $0-16\,GHz$, although some specialized versions extends in the $30{+}\,GHz$ territory[^amphenolrf-sma].
+SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) $50\unit{\Omega}$ RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between $0\text{–}16\unit{GHz}$, although some specialized versions extend into the $30{+}\unit{GHz}$ territory[^amphenolrf-sma].
 
 <Image src={import('./_assets/sma-male-and-female-next-to-each-other-edited.jpg')} width="700px">One male and one female inline (connector to cable) SMA connector next to each other.</Image>
 
 The original SMA connectors were developed in the 1960s[^reichelt-sma-rpsma].
 
-* Standard Male SMA connector: Central **0.9 mm diameter pin** surrounded by a barrel with **inside** threads.
-* Standard Female SMA connector: Central **sleeve** (made from the di-electric) surrounded by a barrel with **outside** threads.
+- Standard Male SMA connector: Central **0.9 mm diameter pin** surrounded by a barrel with **inside** threads.
+- Standard Female SMA connector: Central **sleeve** (made from the di-electric) surrounded by a barrel with **outside** threads.
 
 <Image src={import('./_assets/sma-cable-edited.jpg')} width="700px">A coaxial cable with SMA connectors at both ends.</Image>
 
@@ -65,19 +65,19 @@ The original SMA connectors were developed in the 1960s[^reichelt-sma-rpsma].
 
 Be wary, there are two additional variations (aside from the normal SMA connector) of SMA connectors which are hard to recognise on first glance.
 
-_Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between the male and female parts. Also known as _RP-SMA_ or _R-SMA_. _Reverse-polarity_ was designed  to prevent the unauthorized connection of a antenna with a larger gain to WiFi equipment[^reichelt-sma-rpsma], to distinguish them from cellular equipment involving LTE/GSM/UMTS which was utilizing the standard SMA connector. These days, RP-SMA connectors are now commonplace, somewhat defeating the protection through obscurity. However in general, standard SMA connectors are still used for cellular applications whilst RP-SMA for WiFi/WLAN.
+_Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between the male and female parts. Also known as _RP-SMA_ or _R-SMA_. _Reverse-polarity_ was designed to prevent the unauthorized connection of an antenna with a larger gain to WiFi equipment[^reichelt-sma-rpsma], to distinguish them from cellular equipment involving LTE/GSM/UMTS which was utilizing the standard SMA connector. These days, RP-SMA connectors are now commonplace, somewhat defeating the protection through obscurity. However in general, standard SMA connectors are still used for cellular applications whilst RP-SMA for WiFi/WLAN.
 
 There are also _reverse-thread_ (RT) SMA connectors which have the threads in the opposite direction to the standard SMA connectors. One such example is the Pasternack "RT SMA Male Connector Crimp/Solder Attachment for RG55, RG141, RG142, RG223, RG400"[^pasternack-rt-sma-male-connector].
 
 ## N Connectors
 
-_N connectors_ (a.k.a. N-type or Type N connectors) are a larger type of threaded RF connector. It was one of the first connectors capable of carrying microwave frequency signals (originally at about 1 GHz). It was invented in the 1940s by Paul Neill of Bell Labs and the connected is named after him.[^wikipedia-n-connector]
+_N connectors_ (a.k.a. N-type or Type N connectors) are a larger type of threaded RF connector. It was one of the first connectors capable of carrying microwave frequency signals (originally at about 1 GHz). It was invented in the 1940s by Paul Neill of Bell Labs and the connector is named after him.[^wikipedia-n-connector]
 
-<Image src={import('./_assets/n-connector-close-up-edited.jpg')} width="300px">Close-up of a N Connector.</Image>
+<Image src={import('./_assets/n-connector-close-up-edited.jpg')} width="300px">Close-up of an N Connector.</Image>
 
 ## MMCX Connectors
 
-Micro-miniature coaxial (MMCX) connectors are a RF connector type similar to MCX (micro coaxial) but smaller. They allow signals from DC to about 6 GHz. It was developed by Huber+Suhner in the 1990s (the creators of the original MCX connector).
+Micro-miniature coaxial (MMCX) connectors are an RF connector type similar to MCX (micro coaxial) but smaller. They allow signals from DC to about 6 GHz. It was developed by Huber+Suhner in the 1990s (the creators of the original MCX connector).[^renhotecrf-guide-to-mmcx-connectors]
 
 <table style={{width: '600px'}}>
   <thead>
@@ -120,7 +120,7 @@ They fasten with a lock snap mechanism (no threads) which allows them to be easi
 
 MMCX connectors are smaller than SMA connectors, but larger than U.FL.
 
-There are plug (male) and jack (female) genders of this connector. As usual, the gender is determined by the shape of the conductive part of the antenna. In a plug it has a protruding pin, and in a jack it has a receiving socket.
+There are plug (male) and jack (female) genders of this connector. As usual, the gender is determined by the shape of the conductive part of the connector. In a plug it has a protruding pin, and in a jack it has a receiving socket.
 
 Like the MCX connector, the MMCX conforms to the European CECC 22000 specification.[^amphenolrf-mmcx-connectors]
 

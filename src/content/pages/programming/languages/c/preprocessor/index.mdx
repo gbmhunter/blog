@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2011-09-07
-lastUpdated: 2020-04-13
+lastUpdated: 2026-07-07
 tags: [programming, languages, C, preprocessor, macros, syntax, code, embedded, microcontroller, variadic, stringification]
 title: The C Preprocessor
 type: page
@@ -9,7 +9,7 @@ type: page
 
 Preprocessor directives (also known as precompiler directives) are pieces of code that are executed by the pre-compiler. The directives themselves do not appear in the final assembly files, but they are really useful for defining values for replacement through-out the code (e.g. a centralised place to define a constant that is used many times throughout the code), or to include/exclude blocks of code depending on the configuration you want.
 
-They are also used to clever assert and debug messages which can be built to automatically report the filename and line number of the code.
+They are also used to create clever assert and debug messages which can be built to automatically report the filename and line number of the code.
 
 ## General Syntax
 
@@ -23,19 +23,19 @@ There are two basic types of macros, object-style macros, and function-style mac
 
 ## Object-Style Macros
 
-The general syntax for a object-style macro is:
+The general syntax for an object-style macro is:
 
 ```c
 #define <identifier>
 ```
 
-The first syntax layout just defines a identifier to be present. This doesn't do much on it's own, but can be used to control the outcome of conditional preprocessor directives (which are explained below). A typical example would be:
+The first syntax layout just defines an identifier to be present. This doesn't do much on its own, but can be used to control the outcome of conditional preprocessor directives (which are explained below). A typical example would be:
 
 ```c
 #define PWM_FREQ_50KHZ
 ```
 
-One would assume this states that the PWM frequency needs to be set to 50kHz, and could co the inclusion of another block of code which configures a PWM module to run at 50kHz.
+One would assume this states that the PWM frequency needs to be set to 50kHz, and could cause the inclusion of another block of code which configures a PWM module to run at 50kHz.
 
 The second object-style macro syntax offers a replacement variable. Anywhere in the code that the preprocessor finds the `<identifier>`, it will replace it with the `<replacement>`.
 
@@ -52,11 +52,11 @@ uint8 x = 0;
 while(x < NUM_OF_COUNTS)
 {
     // x will be incremented NUM_OF_COUNTS times
-    x++
+    x++;
 }
 ```
 
-During a build sequence, before the code reaches the compiler, the preprocessor will replace and instances of `NUM_OF_COUNTS` with the variable 12.
+During a build sequence, before the code reaches the compiler, the preprocessor will replace all instances of `NUM_OF_COUNTS` with the value 12.
 
 ## Function-Style Macros
 
@@ -76,7 +76,7 @@ The preprocessor will replace it with `2*2`.
 
 ## Variadic Macros
 
-The C preprocessor allows variadic macros, just like the C compiler allows for variadic functions. The variable-length parameters are encapsulated within the variable `__VA_ARGS__`, and you indicate in a macro that you want it to be variadic with ....
+The C preprocessor allows variadic macros, just like the C compiler allows for [variadic functions](/programming/languages/c/variadic-functions/). The variable-length parameters are encapsulated within the variable `__VA_ARGS__`, and you indicate in a macro that you want it to be variadic with `...`.
 
 ```c
 #define eprintf(...) fprintf (stderr, __VA_ARGS__)
@@ -105,7 +105,7 @@ uint32_t myNumber = 16;
 Main_SendDebugMsg("My number = %u.\r\n", myNumber);
 ```
 
-Variadic macros were added as part of the C99 standard. The GCC compiler had supported them long before this standard was introduced, but only in the format args....
+Variadic macros were added as part of the [C99 standard](/programming/languages/c/standards-and-versions/). The GCC compiler had supported them long before this standard was introduced, but only in the format `args...`.
 
 The example below uses a variadic macro along with the special macros `__FILE__` and `__LINE__` to create a powerful debug message printer (very useful on embedded platforms).
 
@@ -114,7 +114,7 @@ The example below uses a variadic macro along with the special macros `__FILE__`
     { \
         char temp[100]; \
         snprintf(temp, sizeof(temp), __FILE__ ", %u: ", __LINE__); \
-        UartDebug_PutString(temp); \		
+        UartDebug_PutString(temp); \
         snprintf(temp, sizeof(temp), __VA_ARGS__); \
         UartDebug_PutString(temp); \
         UartDebug_PutString("\r\n"); \
@@ -129,14 +129,14 @@ The `UartDebug_PutString()` function in the code above is part of the hardware a
 
 _Stringification_ is the process of turning macros into C-style strings.
 
-You can make the preprocessor replace a macro with a string by prefixing the macro name with the # character.
+You can make the preprocessor turn a macro argument into a string by prefixing the parameter with the `#` character inside a function-style macro. Note that the `#` operator only works on a parameter of a function-style macro — it cannot be applied to an object-style macro or arbitrary text.
 
 ```c    
-#define REPLACEMENT_STRING This is a message
-
 // Note the use of the '#' character to get the preprocessor
-// to replace with a string
-char* msg = #REPLACEMENT_STRING;
+// to turn the argument into a string
+#define STRINGIFY(tok) #tok
+
+char* msg = STRINGIFY(This is a message);
 
 // This ends up as (this is what the compiler sees)
 char* msg = "This is a message";
@@ -157,7 +157,7 @@ The example below uses two function-like macros. This allows the stringification
 
 uint32_t aNum = 378;
 
-printf("This is an " STR(PF_UINT32_T) ".", sNum);
+printf("This is an " STR(PF_UINT32_T) ".", aNum);
 ```
 
 ## Conditional Statements (#if, #else, ...)
@@ -191,7 +191,7 @@ A general formatting rule I follow with `#if` statements is that I only indent t
 
 ## Commenting Blocks Of Code
 
-You can use #if statements for commenting out sections of code. This is useful is you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in it's body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. `#if 0` is a great alternative.
+You can use #if statements for commenting out sections of code. This is useful if you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in its body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. `#if 0` is a great alternative.
     
 ```c
 #if 0
@@ -228,7 +228,7 @@ I make no rule about where `#include` should be called from, and although some p
 
 **The order in which #include files are added can be important.** If one header file depends on types (enums, structures) that are defined in other header files, if the header file with the definition is not included first, the compiler may not recognise it (it won't, unless the header file requiring the definitions includes the header file with the definition as mentioned above).
 
-Watch out for circular inclusions! This is when you have one header file that depends on a second, and the second also depends on the first. This can be fixed by doing **forward declarations**.
+Watch out for circular inclusions! This is when you have one header file that depends on a second, and the second also depends on the first. This can be fixed by doing **forward declarations** or by adding [header guards](/programming/languages/c/header-guards/).
 
 ## Warnings And Errors (#warning, #error)
 
@@ -269,7 +269,7 @@ You can use these keywords to make up "groups" of messages, for example, a **TOD
 TODO(Remember to fix this)
 ```
 
-prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix this’`
+prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix this'`
 
 ## File Names And Line Numbers
 

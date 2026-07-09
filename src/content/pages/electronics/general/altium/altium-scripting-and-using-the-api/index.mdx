@@ -1,15 +1,15 @@
 ---
 authors: [gbmhunter]
 date: 2012-02-15
-lastUpdated: 2012-02-15
+lastUpdated: 2026-07-07
 tags: [Altium, PCB design, electronics]
 title: Altium Scripting And Using The API
 type: page
 ---
 
-Altium supports the ability to wire and run scripts, pieces of code which can perform repetitive tasks or tasks which would otherwise take along time for a person to do and speed up the PCB design process. Altium supports [DelphiScript](/programming/languages/delphi) (.pas), EnableBasic, [VBScript](/programming/languages/vbscript), [JavaScript](/programming/languages/javascript/), and TCL scripting language sets.
+Altium supports the ability to write and run scripts, pieces of code which can perform repetitive tasks or tasks which would otherwise take a long time for a person to do and speed up the PCB design process. Altium supports [DelphiScript](/programming/languages/delphi/) (.pas), EnableBasic, [VBScript](/programming/languages/vbscript/), [JavaScript](/programming/languages/javascript/), and TCL scripting language sets.
 
-From my personal wonders it seems that [Delphi](/programming/languages/delphi) and VBScript are the two most popular ([Delphi](/programming/languages/delphi) being the one most of Altium's own examples are written in, and [VBScript](/programming/languages/vbscript) being the one that many 3rd parties have used). My personal favourite is [VBScript](/programming/languages/vbscript), due to it's simplicity (while not lacking any power).
+From my personal wanderings it seems that [Delphi](/programming/languages/delphi/) and VBScript are the two most popular ([Delphi](/programming/languages/delphi/) being the one most of Altium's own examples are written in, and [VBScript](/programming/languages/vbscript/) being the one that many 3rd parties have used). My personal favourite is [VBScript](/programming/languages/vbscript/), due to its simplicity (while not lacking any power).
 
 ## Where To Download Scripts From
 
@@ -17,21 +17,21 @@ Lots of third-party scripts can be downloaded from the Google Code Project, foun
 
 Unfortunately, the original scripts that used to be included with Altium disappeared from Altium Designer 10. I've uploaded a zip of all these scripts that can be downloaded [here](/misc/altium-scripting-and-using-the-api/The-Original-Altium-Scripts-All-Languages.zip).
 
-Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/gbmhunter/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCBs before being sent of for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
+Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/gbmhunter/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCBs before being sent off for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
 
 ## How To Write Your Own Scripts
 
-Below are tips and code examples to write your own Altium scripts. I prefer [VBScript](/programming/languages/vbscript) (which to me personally was one of the easiest to grasp coming from a C/C++/C# background, and seems to be one of the widely supported languages), however most are written in [Delphi Script](/programming/languages/delphi).
+Below are tips and code examples to write your own Altium scripts. I prefer [VBScript](/programming/languages/vbscript/) (which to me personally was one of the easiest to grasp coming from a C/C++/C# background, and seems to be one of the widely supported languages), however most are written in [Delphi Script](/programming/languages/delphi/).
 
-If you want to learn more about these scripting languages, check out the [VBScript page](/programming/languages/vbscript) or the [Delphi page](/programming/languages/delphi).
+If you want to learn more about these scripting languages, check out the [VBScript page](/programming/languages/vbscript/) or the [Delphi page](/programming/languages/delphi/).
 
-A word of caution, when writing/testing scripts (and running downloaded scripts for the first time), **always test them on a non-valuable PCB project (or similar)** incase the script does not work as expected! Buggy/rouge scripts can cause Altium to lock-up/crash, stop the undo from working (until you restart Altium), stop you from being able to save from that point onwards (again until you restart Altium), among other things! You do not want to lose your precious work!
+A word of caution, when writing/testing scripts (and running downloaded scripts for the first time), **always test them on a non-valuable PCB project (or similar)** in case the script does not work as expected! Buggy/rogue scripts can cause Altium to lock-up/crash, stop the undo from working (until you restart Altium), stop you from being able to save from that point onwards (again until you restart Altium), among other things! You do not want to lose your precious work!
 
-More than likely, you will need to use the internet to get familiar with the scripting language of choice. Remember, if using VBScript, make sure you search for VBScript tutorials, not just "Visual Basic", as you will more than likely get the wrong language and you code won't work (VBScript is different to Visual Basic).
+More than likely, you will need to use the internet to get familiar with the scripting language of choice. Remember, if using VBScript, make sure you search for VBScript tutorials, not just "Visual Basic", as you will more than likely get the wrong language and your code won't work (VBScript is different to Visual Basic).
 
 ## The Basics
 
-## Exiting
+### Exiting
 
 The command
 
@@ -41,7 +41,7 @@ exit
 
 quits the current script and returns the user back to Altium.
 
-## Message Box
+### Message Box
 
 You can use the function `ShowMessage()` to display to the user a message box with simple text. An example in Delphi:
    
@@ -62,7 +62,7 @@ Sub HelloWorldExample()
 End Sub
 ```
 
-## The Hello World Example
+### The Hello World Example
 
 In Altium, click _File->New->Script Files->VB Script Unit_. Altium should open a new, blank script file. Then type in the following code:
 
@@ -87,11 +87,11 @@ end;
 
 Notice the **differences** between the two languages, VBScript requires only an end identifier but Delphi requires both a begin and end identifier. VBScript delimits strings with the `"` character, while Delphi uses the `'` character.
 
-## Looping
+### Looping
 
-Looping indefinitely (e.g. while true then...) WILL lock up Altium, forcing you to forcibly close it, and loosing all un-saved work. All make sure to save your work before running scripts!
+Looping indefinitely (e.g. while true then...) WILL lock up Altium, forcing you to forcibly close it, and losing all un-saved work. Always make sure to save your work before running scripts!
 
-## Conversion From A String
+### Conversion From A String
 
 Altium provides a set of functions for converting strings to other data types. These include functions like StrToFloat(). 
 
@@ -99,7 +99,7 @@ However, I recommend that you **do not** use these, but use the **built-in ones*
 
 For example, if using VBScript, the `CDbl()` function converts all numbers that pass the `IsNumeric()` test, while the Altium-provided `StrToFloat()` will fail on things like `"2-"` (which passes `IsNumeric()`), and throws an exception, potentially crashing your application.
 
-## Best Practices
+### Best Practices
 
 Before we get too serious, here are some best practices (stipulated by no-one except myself).
 
@@ -123,9 +123,9 @@ These apply if you are VBScript:
 
 ## Project-Related API
 
-This sections covers code non-specific to either the schematics or PCB.
+This section covers code non-specific to either the schematics or PCB.
 
-## Obtaining The Current Project
+### Obtaining The Current Project
 
 Projects are represented as `IProject` objects. To get the currently active project, you can use the `DM_FocusedProject` function on an `IWorkspace` object, as shown in the following Delphi example:
     
@@ -140,9 +140,9 @@ begin
 end;
 ```
 
-## Informing Altium That You've Changed Things
+### Informing Altium That You've Changed Things
 
-Everytime you modify something with an Altium script, you should inform Altium that you have done so, so that things like undo/redo work correctly and Altium knows that the file needs saving. This is done through the `RobotManager.SendMessage()` procedure, which is a member of both the `SchServer` and `PCBServer objects`.
+Everytime you modify something with an Altium script, you should inform Altium that you have done so, so that things like undo/redo work correctly and Altium knows that the file needs saving. This is done through the `RobotManager.SendMessage()` procedure, which is a member of both the `SchServer` and `PCBServer` objects.
 
 The following code examples show the `RobotManager` being used for schematic operations.
     
@@ -161,13 +161,13 @@ Call SchServer.RobotManager.SendMessage(AnObject.I_ObjectAddress, c_BroadCast, S
 
 I have experienced issues with calling `RobotManager.SendMessage()` before, resulting it taking a long time (about 2s per call), displaying the infamous "Please wait a moment" dialogue box, and not seeming to have any effect. I am not sure what caused this, as this procedure is used in many scripts available on the web.
 
-## Mathematics
+### Mathematics
 
 It won't be long before you'll end up doing something like trigonometry in Altium scripts to work out the placement of objects onto a PCB. This kind of thing is not really dependent on Altium but more on the provided mathematics libraries that come with the scripting language you are using.
 
 Check out the [VBScript page](/programming/languages/vbscript) to find out how to use the `sin()` and `cos()` family of functions, how to get a value for Pi, and more! All these are applicable to Altium scripts.
 
-## Catching Exceptions
+### Catching Exceptions
 
 Usually, if you do something that throws an exception, the script will halt at the line which threw the exception, and you can probe the in-scope variables to find their values and other useful debugging information.
 
@@ -181,7 +181,7 @@ You get into some nasty situations where Altium will "lock-up", if an unhandled 
 
 The schematic server (SchServer) is the root object for all script usage within schematics.
 
-## Getting The Current Schematic
+### Getting The Current Schematic
 
 Two of the most common ways to get an object to the current schematic is to use either `SCHServer.GetCurrentSchDocument()` or `SCHServer.GetSchDocumentByPath()`, as shown in the examples below.
 
@@ -197,7 +197,7 @@ If schematic Is Nothing Then
 End If
 ```
 
-## Looping Through All Schematics In A Project
+### Looping Through All Schematics In A Project
 
 This example shows how you can safely loop through all schematics in a project. Put code to run on each schematic where shown. Note that the **project must be compiled** for this to work! Otherwise the iterator may only get some or none of the schematic documents. This is because `SchServer.GetSchDocumentByPath()` only retrieves open documents. Compiling a project loads the documents into memory, which counts as being 'open', even though you may not be able to see the schematic tab.
 
@@ -245,9 +245,9 @@ For DocNum = 0 To PcbProject.DM_LogicalDocumentCount - 1
 Next ' For docNum = 0 To pcbProject.DM_LogicalDocumentCount - 1
 ```
 
-## Compiling The Project
+### Compiling The Project
 
-Compiling the project can be done programmatically and is necessary precursor for a number of other scripts to work (e.g. iterating through all the schematics in the project, they cannot be found until the project is compiled). This code example assumes you already have retrieved the IProject interface object from the workspace interface
+Compiling the project can be done programmatically and is a necessary precursor for a number of other scripts to work (e.g. iterating through all the schematics in the project, they cannot be found until the project is compiled). This code example assumes you already have retrieved the IProject interface object from the workspace interface.
 
 ```
 // Compile project
@@ -274,7 +274,7 @@ begin
 end;
 ```
 
-## Refreshing The Schematic
+### Refreshing The Schematic
 
 Use the following command to refresh the screen:
 
@@ -282,11 +282,11 @@ Use the following command to refresh the screen:
 CurrentSheet.GraphicallyInvalidate
 ```
 
-## Auto-complete Tip
+### Auto-complete Tip
 
 Press _Ctrl-Space_ to bring up the auto-complete help at any time. This is very useful when writing scripts for Altium, and results in you having to do a lot less of searching through code reference guides!
 
-## Special Strings
+### Special Strings
 
 Special strings are text strings which get converted when presenting certain output. The following special strings are available:
    
@@ -315,7 +315,7 @@ Special strings are text strings which get converted when presenting certain out
 
 Special strings are the reason why most objects are provided with two string properties, `UnderlyingString` and `ConvertedString`. `UnderlyingString` contains the raw text of a string, while `ConvertedString` contains the text once all special strings have been converted into the appropriate output.
 
-## Regex
+### Regex
 
 If using VBScript, you can easily use the built-in regex engine to use regex with Altium scripts.
    
@@ -332,7 +332,7 @@ If regex.Test(component.Designator.Text) Then
 End If
 ```
 
-## GUI Design
+### GUI Design
 
 The Altium scripting language lets you design graphical user interfaces (GUIs) for your scripts. Each script file has the option of having an associated form which can be displayed from a function call.
 
@@ -340,7 +340,7 @@ The Altium scripting language lets you design graphical user interfaces (GUIs) f
 The script engine will automatically remove empty event handler functions (e.g. a function that is called when the user clicks the button) on file save. It also will prompt you to delete event handler function calls that point to functions that no longer exist.
 </Aside>
 
-## TForm
+#### TForm
 
 The TForm object is the main window, the parent UI object which holds all of the other UI objects for the window inside it.
 
@@ -361,33 +361,33 @@ End Sub
 
 Note that there is a minimum window size to Altium script forms which keeps the minimise, maximise and close buttons just visible. Setting the `Height` and `Width` parameters to values below this minimum threshold has no effect.
 
-## TRadioGroup
+#### TRadioGroup
 
-`TRadioGroup` controls are useful for when you have multiple "sets" of radio buttons on one UI. They allow multiple radio buttons to be selected (from different groups of course), without all other on the UI being deselected.
+`TRadioGroup` controls are useful for when you have multiple "sets" of radio buttons on one UI. They allow multiple radio buttons to be selected (from different groups of course), without all others on the UI being deselected.
 
 <Image src={import('./_assets/altium-script-radio-group-example-screenshot.png')} width="890px">Adding a TRadioGroup control to an Altium script UI.</Image>
 
 Individual radio buttons are added to a radio group through the Items property, in where you add a new radio button on a new line.
 
-The selected radio button in a group is controlled via the TRadioGroups ItemIndex property. This property can the read or written. This property corresponds to the line number of the corresponding radio button entry in the Items property (0-based count).
+The selected radio button in a group is controlled via the TRadioGroups ItemIndex property. This property can then be read or written. This property corresponds to the line number of the corresponding radio button entry in the Items property (0-based count).
 
-The [DeleteSchematicParameters,vbs script in the AltiumScriptCentral](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/Tools/DeleteSchematicParameters.vbs) project makes use of the TRadioGroup control.
+The [DeleteSchematicParameters.vbs script in the AltiumScriptCentral](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/Tools/DeleteSchematicParameters.vbs) project makes use of the TRadioGroup control.
 
 ## Bugs
 
-## A Command Is Currently Active, Cannot Save
+### A Command Is Currently Active, Cannot Save
 
-You can get the following error when trying to save if you haven't called PCBServer.PostProcess an equal number of times as PCBServer.PostProcess. So far, if this does occur, I haven't worked out how to save the document (all changes since the last save are lost!).
+You can get the following error when trying to save if you haven't called PCBServer.PostProcess an equal number of times as PCBServer.PreProcess. So far, if this does occur, I haven't worked out how to save the document (all changes since the last save are lost!).
 
-<Image src={import('./_assets/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png')} width="800px">You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess.</Image>
+<Image src={import('./_assets/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png')} width="800px">You might get this error in Altium when trying to save because you have run a script which hasn't called PCBServer.PostProcess an equal number of times as PCBServer.PreProcess.</Image>
 
 See the Undo section for information.
 
-## Access Violation When Using Some Of The Arc's Properties
+### Access Violation When Using Some Of The Arc's Properties
 
-When trying to define a arc using any of `StartX`, `StartY`, `EndX`, or `EndY` causes an access violation within `AltiumComponents.bpl`. A workaround to this is to define the arc using the centre, radius, and start/stop angle parameters.
+When trying to define an arc using any of `StartX`, `StartY`, `EndX`, or `EndY` causes an access violation within `AltiumComponents.bpl`. A workaround to this is to define the arc using the centre, radius, and start/stop angle parameters.
 
-## Variables Not Being Syntax Highlighted
+### Variables Not Being Syntax Highlighted
 
 The syntax highlighting in the code editor doesn't highlight variables in some cases. It seems to happen after you copy and paste bits of code around and the syntax highlighter algorithm gets confused about what's a variable and what's not. If you define more than one variable in a single statement, e.g.
    
@@ -400,9 +400,9 @@ begin
 
 `track1` will be coloured as a variable, while `track2` will look like normal text. Normally closing and re-opening the file you are editing in Altium will fix this.
 
-## Some PCB OBjects Properties Cannot Be Set Directly, Even Though They Are Visable Through The AutoComplete Menu
+### Some PCB Objects Properties Cannot Be Set Directly, Even Though They Are Visible Through The AutoComplete Menu
 
-For example. you cannot set a pads soldermask and pastemask expansion values (useful if you want to remove them all together) using the properties `pad.SolderMaskExpansion` and `pad.PasteMaskExpansion`. The only way I have found to do this is to create a pad cache, set the expansion values for the cache, and then assign the cache to the pad as per the following example.
+For example, you cannot set a pad's soldermask and pastemask expansion values (useful if you want to remove them all together) using the properties `pad.SolderMaskExpansion` and `pad.PasteMaskExpansion`. The only way I have found to do this is to create a pad cache, set the expansion values for the cache, and then assign the cache to the pad as per the following example.
 
 ```text
 procedure SetPadExpansionValues();
@@ -412,7 +412,7 @@ var
 begin
    pad := PCBServer.PCBObjectFactory(ePadObject, eNoDimension, eCreate_Default);
 
-   // Use a pad cache to set the soldermask and paste mask expansion values to large negative numbers (to remove them alltogether)
+   // Use a pad cache to set the soldermask and paste mask expansion values to large negative numbers (to remove them altogether)
    padCache := Pad.GetState_Cache;
    padCache.SolderMaskExpansion := MilsToCoord(-99);
    padCache.SolderMaskExpansionValid := eCacheManual;
@@ -424,10 +424,10 @@ begin
 end;
 ```
 
-## Undo Is Not Working Correctly
+### Undo Is Not Working Correctly
 
 Make sure that you call `PCBServer.PreProcess` and `PCBServer.PostProcess` correctly! (see the Undo section for more details).
 
-##  External Resources
+## External Resources
 
-Checkout [CA Idiots blog](http://caidiot.blogspot.co.nz/)
+Check out [CA Idiots blog](http://caidiot.blogspot.co.nz/)

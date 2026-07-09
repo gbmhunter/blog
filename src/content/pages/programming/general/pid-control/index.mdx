@@ -8,6 +8,8 @@ title: PID Control
 type: page
 ---
 
+import PidMsdVisualizer from 'src/components/tools/pid-msd-visualizer/PidMsdVisualizer.jsx';
+
 _PID control_ (a.k.a. three-term control[^wikipedia-pid]) is a control technique using feedback that is very common in industrial applications. It is a good technique to use when you have a desired set-point for a process (system) to be in, and are able to control this with one variable. If your application doesn't need this level of sophistication, a simpler [on-off controller](/electronics/components/on-off-controllers/) may suffice. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to calculate the output needed to control the process.
 
 There are a few different PID topologies, including:
@@ -39,7 +41,7 @@ $$
 <p className="centered">	where:<br/>
   $e(t)$ is the error<br/>
   $r(t)$ is the set-point (SP)<br/>
-	$y(t)$ is the process value (PV)<br/>
+    $y(t)$ is the process value (PV)<br/>
   and everything else as previously mentioned<br/></p>
 
 <Aside type="example">
@@ -66,12 +68,12 @@ $$
 
 <p className="centered">	where:<br/>
   $u(t)$ is the calculated control value (CV)<br/>
-	$e(t)$ is the error<br/>
+    $e(t)$ is the error<br/>
   $t$ is the current time<br/>
   $\tau$ is the variable of integration (takes on values from time=0 to time=t)<br/>
-	$K_p$ is the proportional gain<br/>
-	$K_i$ is the integral gain<br/>
-	$K_d$ is the derivative gain<br/></p>
+    $K_p$ is the proportional gain<br/>
+    $K_i$ is the integral gain<br/>
+    $K_d$ is the derivative gain<br/></p>
 
 <Aside type="tip">
 Notice that standard $t$ is used for the current time, and $\tau$ (tau) is used for the integration.
@@ -95,7 +97,7 @@ u_{k} = K_{p}e_{k} + K_{i}T\sum\limits_{i=0}^k e_{i} + K_{d}\frac{(e_{k} - e_{k-
 $$
 
 <p className="centered">	where:<br/>
-	$T$ is the time period between samples<br/></p>
+    $T$ is the time period between samples<br/></p>
 
 This equation is suitable for implementing in code. There also exists the Z transformation of the equation, but this obscures the physical meaning of the parameters used in the controller.
 
@@ -114,8 +116,8 @@ u(t) = K_{p} \left( e(t) + \frac{1}{T_i}\int e(\tau) d\tau + T_d \frac{d}{dt}e(t
 $$
 
 <p className="centered">	where:<br/>
-	$T_i$ is the integral time<br/>
-	$T_d$ is the derivative time<br/></p>
+    $T_i$ is the integral time<br/>
+    $T_d$ is the derivative time<br/></p>
 
 The _integral time_ $T_i$ refers to a scenario in where the error starts at 0, and then jumps to some fixed value. The proportional term will provide an immediate and fixed response, whilst the integral term will begin at 0 and slowly accumulate. **The integral time is the amount of time it takes for the integral term to equal the proportional term.**
 
@@ -329,15 +331,21 @@ The mass $m$ is $1\unit{kg}$. The spring has a spring constant, $k$, which is $2
 
 We can model the system using Newton's equation:
 
-$$ F = ma $$
+$$
+F = ma
+$$
 
 Summing up the forces on the mass $m$ gives:
 
-$$ F_{ext} - F_{spring} - F_{damper} = m\ddot{x} $$
+$$
+F_{ext} - F_{spring} - F_{damper} = m\ddot{x}
+$$
 
 Substituting in the equations for the spring and damper give:
 
-$$ F_{ext} - kx - c\dot{x} = m\ddot{x} $$
+$$
+F_{ext} - kx - c\dot{x} = m\ddot{x}
+$$
 
 <p className="centered">where:<br/>
 $x$ is the displacement<br/>
@@ -354,23 +362,33 @@ We can simulate this system in code by discretizing the system into small time s
 
 1. Calculate the force exerted by the spring and damper.
 
-	$$ F_{spring} = kx $$
+    $$
+    F_{spring} = kx
+    $$
 
- 	$$ F_{damper} = c\dot{x} $$
+    $$
+    F_{damper} = c\dot{x}
+    $$
 
 1. Determine the output of the PID controller $F_{ext}$, providing it the setpoint and "measured" displacement (which starts at 0, and then gets re-calculated at each time step as below).
 
 1. Calculate the acceleration for this time step:
 
-	$$ \ddot{x} = \frac{F_{ext} - F_{spring} - F_{damper}}{m} $$
+    $$
+    \ddot{x} = \frac{F_{ext} - F_{spring} - F_{damper}}{m}
+    $$
 
 1. Calculate the change in velocity and displacement for this time step:  
 
-	$$ \Delta{\dot{x}} = \ddot{x} \Delta{T} $$
+    $$
+    \Delta{\dot{x}} = \ddot{x} \Delta{T}
+    $$
 
-	$$ \Delta{x} = \dot{x} \Delta{T} $$
+    $$
+    \Delta{x} = \dot{x} \Delta{T}
+    $$
    
-	**Note that these are changes in velocity and displacement, so to calculate the current velocity and displacement you add this change to the stored velocity/displacement state.**
+    **Note that these are changes in velocity and displacement, so to calculate the current velocity and displacement you add this change to the stored velocity/displacement state.**
 
 1. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. $F_{spring}$ and $F_{damper}$ will be calculated for the next time step using these updated velocity and displacement values.
 
@@ -408,6 +426,12 @@ I'm not claiming to have just stumbled across coefficients that seemed to work w
 
 If you are interested in the Python code that was used to perform this simulation, see [here](/misc/pid-control/main.py).
 
+## Spring Mass Damper PID Visualizer
+
+The tool below lets you experiment with this spring-mass-damper system interactively. By default there is a step change in the set point every 2 seconds. Try playing with the P, I and D gains and see how it changes things!
+
+<PidMsdVisualizer client:load />
+
 ## Firmware Modules
 
 If you are looking for PID code for an embedded system, check out my [Pid project on GitHub (CP3id)](https://github.com/gbmhunter/CP3id). It is written in C++ and designed to be portable enough to run on many embedded systems, as well as Linux.
@@ -424,7 +448,9 @@ If you are looking for PID code for an embedded system, check out my [Pid projec
 
 <Image src={import('./_assets/pid-tuner-screenshot.png')} width="900px">Screenshot of the PID tuning app at pidtuner.com.[^pid-tuner-dot-com-homepage]</Image>
 
-## References
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
 [^wikipedia-pid]: Wikipedia (2022, Mar 30). _PID controller_ [wiki]. Retrieved 2022-05-07, from https://en.wikipedia.org/wiki/PID_controller.
 [^incatools-feedforward-pid-controllers]: Pramit Patodi (2020, Jul 14). _Benefits in feedforward in PID controllers_ [Blog Post]. IncaTools. Retrieved 2023-06-22, from http://blog.incatools.com/benefits-feedforward-pid-controllers.

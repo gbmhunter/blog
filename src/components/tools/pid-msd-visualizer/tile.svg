@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <rect width="300" height="200" fill="#1b1b1f"/>
+
+  <!-- ground -->
+  <line x1="0" y1="120" x2="300" y2="120" stroke="#4b4b52" stroke-width="2"/>
+
+  <!-- wall -->
+  <rect x="14" y="40" width="12" height="80" fill="#4b4b52"/>
+
+  <!-- spring (zig-zag) -->
+  <polyline points="26,64 40,64 50,52 62,76 74,52 86,76 98,52 110,64 124,64"
+            fill="none" stroke="#9ca3af" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- damper -->
+  <line x1="26" y1="98" x2="60" y2="98" stroke="#9ca3af" stroke-width="2.5"/>
+  <rect x="52" y="88" width="26" height="20" fill="none" stroke="#9ca3af" stroke-width="2.5"/>
+  <line x1="72" y1="98" x2="124" y2="98" stroke="#9ca3af" stroke-width="2.5"/>
+
+  <!-- mass -->
+  <rect x="124" y="66" width="52" height="54" rx="4" fill="#c60e00" stroke="#feb3a6" stroke-width="2"/>
+  <text x="150" y="100" text-anchor="middle" fill="#fff" font-family="Georgia, serif"
+        font-style="italic" font-size="22" font-weight="700">m</text>
+
+  <!-- step response curve -->
+  <line x1="20" y1="176" x2="288" y2="176" stroke="#4b4b52" stroke-width="1.5"/>
+  <line x1="20" y1="140" x2="288" y2="140" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <path d="M20,176 L120,176 C150,120 175,128 200,140 C225,150 250,140 288,140"
+        fill="none" stroke="#c60e00" stroke-width="2.5"/>
+</svg>

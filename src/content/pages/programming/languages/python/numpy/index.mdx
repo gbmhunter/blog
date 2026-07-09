@@ -2,15 +2,17 @@
 authors: [gbmhunter]
 date: 2018-06-25
 description: A tutorial on how to use Numpy, a popular library for Python that provides powerful array/matrix manipulation.
-lastUpdated: 2021-05-27
+lastUpdated: 2026-07-07
 tags: [programming, programming languages, Python, Numpy, array, axis, computation, dimension, np, example, code, tutorial, slicing, indexing]
 title: Numpy
 type: page
 ---
 
+NumPy is a popular library for [Python](/programming/languages/python/) that provides a powerful N-dimensional array object and fast numerical routines to operate on it. It forms the foundation of much of the scientific Python ecosystem, including [SciPy](/programming/languages/python/scipy/) and [Matplotlib](/programming/languages/python/matplotlib/).
+
 ## The Array
 
-The main object that you throw around in NumPy is called a multidimensional array. Typically you store numbers in it. Each "dimension" is called an axes. For example, a single co-ordinate in 3D space could be stored as:
+The main object that you throw around in NumPy is called a multidimensional array. Typically you store numbers in it. Each "dimension" is called an axis. For example, a single co-ordinate in 3D space could be stored as:
 
 ```python
 V = [2, 4, 3]
@@ -18,7 +20,7 @@ V = [2, 4, 3]
 
 This has one axis (one dimension).
 
-A 2D rotation transformation could be described with:
+A 2x3 matrix could be described with:
 
 ```python
 R = [
@@ -37,14 +39,14 @@ NumPy arrays can be created with standard Python lists:
 >>> import numpy as np
 >>> a = np.array([2,1,5])
 >>> a
-array([2, 5, 1])
+array([2, 1, 5])
 ```
 
 If we wanted to create a 2 axis array we could pass in a list of lists:
 
 ```python
 >>> import numpy as np
->>> a = np.array([[1,2,3],[4,5,6])
+>>> a = np.array([[1,2,3],[4,5,6]])
 >>> a
 array([[1, 2, 3],
         [4, 5, 6]])
@@ -66,13 +68,14 @@ array([[1., 1., 1.],
 An array with 1's on the diagonal:
 
 ```python
+>>> a = np.eye(3)
 >>> a
 array([[1., 0., 0.],
         [0., 1., 0.],
         [0., 0., 1.]])
 ```
 
-Another really useful way of creating arrays is with `np.arange()`. This does exactly what is says, it creates an array with a range of values:
+Another really useful way of creating arrays is with `np.arange()`. This does exactly what it says, it creates an array with a range of values:
 
 ```python
 >>> np.arange(4)
@@ -98,7 +101,7 @@ The difference between `np.arange()` and `np.linspace()` is subtle but important
 
 ### Indexing And Reading/Writing
 
-NumPy arrays have one index per axis, forming a tuple. The indexed are zero-indexed, like all sensible languages/libraries :-D.
+NumPy arrays have one index per axis, forming a tuple. The indices are zero-indexed, like all sensible languages/libraries :-D.
 
 Reading from a 1 axis array:
 
@@ -196,12 +199,12 @@ Some of the real power of slicing is seen when you slice multidimensional arrays
 `my_array[:, 0]` tells Numpy to make a slice using all elements from the 1st axis (`:`), and only the first element from the second axis (`0`). An example of this slice is shown below:
 
 ```python
-my_array = np.array([[1, 2, 3], [4, 5, 6])
+my_array = np.array([[1, 2, 3], [4, 5, 6]])
 my_slice = my_array[:, 0] # Take all from 1st axis, and element 0 from second axis
-# my_slice = array([1], [4])
+# my_slice = array([1, 4])
 ```
 
-Note that `:` is the same as `0:<len - 1>`, and captures all data.
+Note that `:` is the same as `0:<len>` (the stop index is exclusive), and captures all data.
 
 This is commonly used to extract columns from data. For example, if you had the following array of x, y pairs:
 
@@ -215,8 +218,8 @@ You could extract all the x values and all the y values with:
 x_values = xy_pairs[:, 0]
 y_values = xy_pairs[:, 1]
 
-# x_values = array([[1], [3], [5], [7]])
-# y_values = array([[2], [4], [6], [8]])
+# x_values = array([1, 3, 5, 7])
+# y_values = array([2, 4, 6, 8])
 ```
 
 You can also use this to extract "rows" from an array:
@@ -240,7 +243,7 @@ my_slice = data[3:8:2] # Slice from 3 to 8, with a step size of 2
 
 ## Stacking
 
-Stacking is used to join arrays along a _new_ axis. A classic example of this would be if you had two separate arrays of x and y values, and you wanted to to combine them into a single array of (x, y) coordinate pairs.
+Stacking is used to join arrays along a _new_ axis. A classic example of this would be if you had two separate arrays of x and y values, and you wanted to combine them into a single array of (x, y) coordinate pairs.
 
 ```python
 x_vals = np.array([ 1, 2, 3, 4])
@@ -256,24 +259,24 @@ coords = np.stack([x_vals, y_vals], axis=1)
 
 ## Concatenation
 
-If you want to start of with an empty array and add values to it in a loop, you can use concatenate, but you have to `reshape` your empty array first to make sure it has the right dimensions:
+If you want to start off with an empty array and add values to it in a loop, you can use concatenate, but you have to `reshape` your empty array first to make sure it has the right dimensions:
 
 ```python
 data = np.array([]).reshape(0,3) # This reshape() call is important!
-for i in range(3)
-  np.concatenate([data, np.array([[ i*1, i*2, i*3]])])
+for i in range(3):
+  data = np.concatenate([data, np.array([[ i*1, i*2, i*3]])])
 print(data)
 ```
 
 ## Reading A CSV File
 
-You can use Numpy's `genfromtxt()` method to read in CSV files and convert the data into a Numpy array:
+You can use Numpy's `genfromtxt()` method to read in CSV files and convert the data into a Numpy array (for more full-featured CSV handling, see [Pandas](/programming/languages/python/pandas/) and its `read_csv()` function):
 
 ```python
 data = np.genfromtxt('my_file.csv', delimiter=',')
 ```
 
-Each line will be a different element in axis 1 of the array. Each CSV value on a line will be a different element in axis 2 of the array.
+Each line will be a different element in axis 0 of the array. Each CSV value on a line will be a different element in axis 1 of the array.
 
 For example, if your CSV looked like:
 
@@ -306,10 +309,10 @@ Time (s), Depth (m), Width (m)
 
 ## Functions
 
-**dot()**
+**np.dot()**
 
 ```python
-np.dot(a, b, out=none)
+np.dot(a, b, out=None)
 ```
 
 Dot product of two arrays.
@@ -344,12 +347,10 @@ You can use the `np.ma.masked_equal()` function to create a masked array from a 
 import numpy as np
 standard_array = np.arange(4)
 print(standard_array)
-# stdout: array([0, 1, 2, 3])
+# stdout: [0 1 2 3]
 masked_array = np.ma.masked_equal(standard_array, 2)
 print(masked_array)
-# stdout: masked_array(data=[0, 1, --, 3],
-#           mask=[False, False,  True, False],
-#           fill_value=2)
+# stdout: [0 1 -- 3]
 ```
 
 ### Checking If An Array Is Masked
@@ -370,7 +371,7 @@ print(np.ma.is_masked(masked_array))
 
 ### Removing Masked Values From An Array
 
-You can trim down an array and remove all masked values by using the `compressed()` function that belong to an `ndarray`:
+You can trim down an array and remove all masked values by using the `compressed()` function that belongs to a `MaskedArray`:
 
 ```python
 masked_array = np.ma.masked_equal([1, 2, 3, 4], 2)
@@ -383,7 +384,7 @@ print(no_masked_values)
 
 ### Invalid Number
 
-For example, running `np.mean([])` using Python 3.7 and a up-to-date version of Numpy will produce the following:
+For example, running `np.mean([])` using Python 3.7 and an up-to-date version of Numpy will produce the following:
 
 ```python
 >>> import numpy as np
@@ -395,9 +396,9 @@ For example, running `np.mean([])` using Python 3.7 and a up-to-date version of 
 nan
 ```
 
-Not how this is not an exception. Numpy prints a warning stating that you are trying to calculate a mean of an empty slice, as well as that there is an invalid value, but continues execution and returns `nan`. These warnings are usually helpful in debugging problems with the data you are providing, but in some cases you will want to silence the warnings as the data is as expected.
+Note how this is not an exception. Numpy prints a warning stating that you are trying to calculate a mean of an empty slice, as well as that there is an invalid value, but continues execution and returns `nan`. These warnings are usually helpful in debugging problems with the data you are providing, but in some cases you will want to silence the warnings as the data is as expected.
 
-The safest way to suppress Numpy warnings is to use the `np.errstate` context manager, which only changes the warning state while the content is active. However, this has some problems...
+The safest way to suppress Numpy warnings is to use the `np.errstate` context manager, which only changes the warning state while the context is active. However, this has some problems...
 
 ```python
 with np.errstate(invalid='ignore'):
@@ -408,7 +409,7 @@ with np.errstate(invalid='ignore'):
 # Warnings are back to normal here
 ```
 
-However, the problem with this is that it will silence the `RuntimeWarning: invalid value encountered in double_scalars` warning, BUT NOT the `RuntimeWarning: Mean of empty slice.` warning. A better approach is to use the `warnings` module (which is shipped with Python), however this comes at the expense of silencing a larger group of warnings (what if a `RuntimeWarning` was emitted here for a different reason?):
+The problem is that it will silence the `RuntimeWarning: invalid value encountered in double_scalars` warning, BUT NOT the `RuntimeWarning: Mean of empty slice.` warning. A better approach is to use the `warnings` module (which is shipped with Python), however this comes at the expense of silencing a larger group of warnings (what if a `RuntimeWarning` was emitted here for a different reason?):
 
 ```python
 import warnings
@@ -420,7 +421,7 @@ with warnings.catch_warnings():
     np.mean([])
 ```
 
-If you want to convert all warnings into exceptions, you can use the following code. This is particular dangerous as in applies to all code after this call.
+If you want to convert all warnings into exceptions, you can use the following code. This is particularly dangerous as it applies to all code after this call.
 
 ```python
 np.seterr(all='raise')
@@ -440,7 +441,7 @@ will cause Numpy to print:
 
 ```text
 <ipython-input-6-186705c1cfef>:3: RuntimeWarning: divide by zero encountered in true_divide
-  a/b
+  c = a / b
 ```
 
 These warnings can be temporarily silenced with the `with np.errstate(divide='ignore')` context manager:

@@ -322,6 +322,41 @@ Parse the input text into `{ valid, invalid }` parts. Show `invalid` parts in a 
 
 Strip `0x` / `0X` prefixes, dashes, whitespace, and other separators before parsing hex. Users paste hex in many formats — `02010606`, `0x02 0x01 0x06`, `02:01:06:06` should all work.
 
+### Real-time animation (`requestAnimationFrame` + SVG) + live streaming plot
+
+For widgets that animate a physical system over time (a moving mass, a rotating vector), run a **live integrator in an rAF loop**: keep the simulation state in refs, step the physics forward each frame off wall-clock elapsed time, and push samples to a rolling buffer. Bump a `tick` state each frame to re-render the SVG + plot. Keeping state in refs (not state) avoids re-running the effect every frame.
+
+```jsx
+const stateRef = useRef(makeState());     // mutated in place by the loop
+const bufRef = useRef([]);                 // rolling [{t, ...}] history
+const accRef = useRef(0), lastRef = useRef(0);
+const [tick, setTick] = useState(0);       // forces a re-render per frame
+const liveRef = useRef({});
+liveRef.current = { ...params };           // latest values the loop reads (no stale closures)
+
+useEffect(() => {
+  if (!running) return;
+  lastRef.current = 0; accRef.current = 0;
+  let raf;
+  const loop = (now) => {
+    if (!lastRef.current) lastRef.current = now;
+    let dt = (now - lastRef.current) / 1000; lastRef.current = now;
+    if (dt > 0.1) dt = 0.1;                 // clamp after a tab switch (avoid spiral of death)
+    accRef.current += dt;
+    while (accRef.current >= DT) { stepPlant(stateRef.current, liveRef.current, DT); accRef.current -= DT; }
+    setTick((t) => t + 1);
+    raf = requestAnimationFrame(loop);
+  };
+  raf = requestAnimationFrame(loop);
+  return () => cancelAnimationFrame(raf);   // cancel on pause AND unmount
+}, [running]);                              // deps only [running]; the loop reads liveRef for the rest
+```
+
+- **Fixed-`DT` accumulator**: step physics in fixed `DT` increments (`while (acc >= DT)`), decoupling stability from frame rate. Drive off wall-clock elapsed time.
+- **Live plot**: feed the rolling buffer (downsampled to ~240 pts) to `Plot2d` with `animated={false}` (no 300 ms tween on a per-frame update) and a fixed `xMin`/`xMax` window so the trace draws in without the axis rescaling every frame. Use **grow-only** y-bounds (track lower AND upper — negative excursions/overshoot clip otherwise) so the axis doesn't jitter.
+- Render the animated element as an `<svg>` whose positions derive from `stateRef.current`. For a spring, draw a zig-zag polyline from wall→mass so it stretches; for a damper, draw a **fixed cylinder with a piston plate that slides inside it** as the mass moves (reads as motion far better than a static box) plus a rod to the mass. Style strokes/fills with Starlight CSS variables so light/dark track.
+- Reference implementation: `src/components/tools/pid-msd-visualizer/` (one live loop serves step / alternating / manual setpoint modes).
+
 ## Step 9: Verification
 
 After implementing, run:
@@ -354,4 +389,4 @@ If you encounter a new gotcha not covered above (a Starlight CSS conflict, a Pre
 
 ## Reference implementation
 
-`src/components/tools/ble-adv-decoder/` is the canonical example for this pattern — copy its layout for new widgets and adapt the editors / parsers / styling. For a chart-based widget (Chart.js via the shared `_shared/Plot2d.jsx`) plus the catalog wiring, `src/components/tools/ema-filter/` is a good reference.
+`src/components/tools/ble-adv-decoder/` is the canonical example for this pattern — copy its layout for new widgets and adapt the editors / parsers / styling. For a chart-based widget (Chart.js via the shared `_shared/Plot2d.jsx`) plus the catalog wiring, `src/components/tools/ema-filter/` is a good reference. For a widget that combines a live `Plot2d` chart with a `requestAnimationFrame`-driven SVG animation, see `src/components/tools/pid-msd-visualizer/`.

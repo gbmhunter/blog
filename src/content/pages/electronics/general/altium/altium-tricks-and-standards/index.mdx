@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2011-09-05
 description: Helpful hints, tricks and standardized ways of doing things to make using Altium Designer easier.
-lastUpdated: 2018-12-29
+lastUpdated: 2026-07-07
 tags: [Altium, PCBs, CAD, footprints, components, rules, layers, vias, nets, datasheets, resistors, capacitors, PcbDoc, PcbPrj, AD, schematic]
 title: Altium Tricks And Standards
 type: page
@@ -16,7 +16,7 @@ It pays to have some basic standards/protocols when working with Altium, otherwi
 
 _Rule: Keep schematic snap when designing symbols to DXP defaults._
 
-This is because most schematic symbol libraries use this setting, and if you don't, using other peoples symbols don't connect properly. I recommend you use a snap that is a multiple of 5mill. This only applies when placing the pins, you can choose whatever you want for the rest of the symbol! I regularly use 1mill snap for designing graphics for the symbol.
+This is because most schematic symbol libraries use this setting, and if you don't, using other people's symbols don't connect properly. I recommend you use a snap that is a multiple of 5mill. This only applies when placing the pins, you can choose whatever you want for the rest of the symbol! I regularly use 1mill snap for designing graphics for the symbol.
 
 If you don't get the snap right, it is really hard to connect pins up on the schematic, and Altium will produce "Component off grid" warnings when compiling. An overload of these can mask any true mistake where a component is not connected to the intended net.
 
@@ -46,7 +46,7 @@ This is caused by Altium's _Automatically Remove Loops_ function removing vias a
 
 ## Version Control Systems
 
-If you are using Mercurial source control software for you Altium project, here is a recommended [Mercurial Ignore File](/programming/version-control-systems/mercurial/ignore-files/mercurial-ignore-file-for-altium-designer/) to prevent the un-necessary files from being put under version control.
+If you are using Mercurial source control software for your Altium project, here is a recommended [Mercurial Ignore File](/programming/version-control-systems/mercurial/ignore-files/mercurial-ignore-file-for-altium-designer/) to prevent the unnecessary files from being put under version control.
 
 ## The Board Shape
 
@@ -54,10 +54,10 @@ Altium allows close integration between the mechanical and electrical design wit
 
 ## PCB Layer Standards
 
-These conform to the default layers that Altium's IPC Footprint Wizard automatically uses for certain parts of a component. Some of the layers are paired, so that Altium automatically switches the objects on these layers when the component is changed from top layer to bottom layer and vise versa.
+These conform to the default layers that Altium's IPC Footprint Wizard automatically uses for certain parts of a component. Some of the layers are paired, so that Altium automatically switches the objects on these layers when the component is changed from top layer to bottom layer and vice versa.
 
 <Aside type="note">
-Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanical 11/12 (the dimension layers) are not chosen by Altium , but rather just personal preferences.
+Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanical 11/12 (the dimension layers) are not chosen by Altium, but rather just personal preferences.
 </Aside>
 
 <table>
@@ -115,11 +115,11 @@ The pairing of the mechanical layers is done as shown below.
 
 I find that when using many Altium layers, the default colour scheme can get very confusing. To make things simple to understand, I like using a '**hot and cold**' colour scheme.
 
-All layers related to the top side (Top Layer, Top Overlay, Top Paste, Top Solder, Top Dimensions, Top Component Outlines/3D Bodies, and Top Courtyard are all chosen to be hot colours, while conversely all the bottom side layers are chosen to be cold colours.
+All layers related to the top side (Top Layer, Top Overlay, Top Paste, Top Solder, Top Dimensions, Top Component Outlines/3D Bodies, and Top Courtyard) are all chosen to be hot colours, while conversely all the bottom side layers are chosen to be cold colours.
 
 <Image src={import('./_assets/example-of-hot-and-cold-altium-pcb-layer-colours-annotated.png')} width="1341px">An example showing the use of 'hot' and 'cold' PCB layer colours in Altium to help distinguish between top and bottom associated objects.</Image>
 
-The file [TransparentHotColdPcbViewConfig v1.0.config_2dsimple](/docs/TransparentHotColdPcbViewConfig v1.0.config_2dsimple) and loaded into Altium to setup the colour scheme as mentioned above.
+The file [TransparentHotColdPcbViewConfig v1.0.config_2dsimple](/docs/TransparentHotColdPcbViewConfig v1.0.config_2dsimple) can be downloaded and loaded into Altium to set up the colour scheme as mentioned above.
 
 ## PCB Symbol Naming Convention
 
@@ -127,13 +127,13 @@ A good idea is to follow Altium's PCB symbol naming convention, which can be dow
 
 ## Component Description Standards
 
-The component description is commonly used to convey all the important parameters of the component that that are vital for the BOM. For example, the description of a capacitor might indicate that it's a capacitor, the type of capacitor, the package size, the temperature coefficient, tolerance, voltage and capacitance in a short hand notation.
+The component description is commonly used to convey all the important parameters of the component that are vital for the BOM. For example, the description of a capacitor might indicate that it's a capacitor, the type of capacitor, the package size, the temperature coefficient, tolerance, voltage and capacitance in a short hand notation.
 
 The idea is that the "Description" field will be added to the BOM, and it will be solely responsible for describing the part to whatever detail is necessary.
 
-It is useful to use the component description for this purpose to make the BOM easy to understand and use. Because each type of component has its own unique set of parameters, If all these values where included in their own separate parameter fields, the BOM would become large, full of empty fields (e.g. a resistor typically does not have a temperature coefficient) and unnecessarily messy.
+It is useful to use the component description for this purpose to make the BOM easy to understand and use. Because each type of component has its own unique set of parameters, if all these values were included in their own separate parameter fields, the BOM would become large, full of empty fields (e.g. a resistor typically does not have a temperature coefficient) and unnecessarily messy.
 
-I use the following notation for the description field. The parameters are listed in short-hand from most generic to least generic (this allows for good grouping when sorting alphanumerically). The symbol reference is set the manufacturer's part number, as this has to be a unique field.
+I use the following notation for the description field. The parameters are listed in short-hand from most generic to least generic (this allows for good grouping when sorting alphanumerically). The symbol reference is set to the manufacturer's part number, as this has to be a unique field.
 
 ## Capacitor Labelling
 
@@ -210,7 +210,7 @@ These special component parameters are called **component links**, and follow th
     </tbody>
 </table>
 
-This can be **repeated for as many component links as you wish**. The URL can be any valid path (i.e. the path to a file on your computer/server, or to a website URL). They can be added to both schematic library component parameters, and component library parameters which will the be released to a vault. The component links get added to the **References** sub-menu when you right-click on the component in the Altium schematic editor.
+This can be **repeated for as many component links as you wish**. The URL can be any valid path (i.e. the path to a file on your computer/server, or to a website URL). They can be added to both schematic library component parameters, and component library parameters which will then be released to a vault. The component links get added to the **References** sub-menu when you right-click on the component in the Altium schematic editor.
 
 For example, I would add these component parameters to a buffer IC:
 
@@ -263,7 +263,7 @@ To add pads to a pad class, first take note of the component the pad is part of 
 
 <Image src={import('./_assets/altium-adding-pads-to-the-direct-connect-pad-class.png')} width="720px">Adding pads to the new 'DirectConnect' pad class.</Image>
 
-We now need to make a direct connect rule for all pads in this pad class. Click close, and now click _Design->Rules_. Add a new "Polygon Connect Style" rule. Select "Advanced (Query)" for the first object match, and then enter InPadClass('DirectConnect') into the "Full Query" window. Change the Connect Style to "Direct Connect".
+We now need to make a direct connect [rule](/electronics/general/altium/altium-rules/) for all pads in this pad class. Click close, and now click _Design->Rules_. Add a new "Polygon Connect Style" rule. Select "Advanced (Query)" for the first object match, and then enter InPadClass('DirectConnect') into the "Full Query" window. Change the Connect Style to "Direct Connect".
 
 <Image src={import('./_assets/altium-making-new-direct-conect-rule-for-pad-class.png')} width="772px">Making a new 'Direct Connect' rule for the pad class.</Image>
 
@@ -272,18 +272,18 @@ Save and exit the Rules dialogue, and rebuild your polygons. Done! You should no
 If all the pads that you are wanting to direct connect are located in the same area, you may want to use a PCB "room" object to envelop all the pads instead of adding each pad to a pad class. Another disadvantage of the pad class trick is that this direct connection information will be **lost if you change the designator** (or worse still, will be assigned to completely wrong pads who just happen to have the same name as the old ones).
 
 <Aside type="note">
-Direct connect rules can also be added to specific pins on the schematic, through the pin editor menu for a selected component. However, as of Altium v15.1, this feature seems buggy, and causes basic (as vital) features like _Compile_ and _Update Changes To PCB_ to crash from that point on.
+Direct connect rules can also be added to specific pins on the schematic, through the pin editor menu for a selected component. However, as of Altium v15.1, this feature seems buggy, and causes basic (and vital) features like _Compile_ and _Update Changes To PCB_ to crash from that point on.
 </Aside>
 
 ## Opening Internet Links In External Web Browser
 
-By default, Altium tries to open internet links in it's own internal browser. It's no surprise that because Altium is a EDA tool and not a dedicated browser, it's not the best at displaying web pages. Thankfully, you can force Altium to use your default external web browser by navigating to _DXP->Preferences->System->View_ and checking the "Open internet links in external Web browser" option.
+By default, Altium tries to open internet links in its own internal browser. It's no surprise that because Altium is an EDA tool and not a dedicated browser, it's not the best at displaying web pages. Thankfully, you can force Altium to use your default external web browser by navigating to _DXP->Preferences->System->View_ and checking the "Open internet links in external Web browser" option.
 
 <Image src={import('./_assets/altium-settings-open-internet-links-in-external-web-browser-annotated.png')} width="390px">Checking 'Open internet links in external web browser' will stop Altium from trying to open them.</Image>
 
 ## Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard
 
-The Altium footprint wizard **automatically adds vias** to the exposed pad of component package footprints such as QFN. Although it is recommended to have thermal vias conducting heat away from the exposed pad to the other PCB layers, it causes problems when these vias are added to the footprint, because of the **inflexibility** to change them during the PCB design stage. Without unlocking the primitives of the footprint (which I **do not** recommend you do unless absolutely needed), there is no way to modify these vias during the PCB design. You may wish to move them to allow for nets to pass underneath the component footprint on another layer, you may wish to add more for better thermal properties, or you may wish to remove them altogether because it recommends for that specific chip to leave the thermal pad unconnected.
+The Altium footprint wizard **automatically adds vias** to the exposed pad of component package footprints such as [QFN](/pcb-design/component-packages/qfn-component-package/). Although it is recommended to have thermal vias conducting heat away from the exposed pad to the other PCB layers, it causes problems when these vias are added to the footprint, because of the **inflexibility** to change them during the PCB design stage. Without unlocking the primitives of the footprint (which I **do not** recommend you do unless absolutely needed), there is no way to modify these vias during the PCB design. You may wish to move them to allow for nets to pass underneath the component footprint on another layer, you may wish to add more for better thermal properties, or you may wish to remove them altogether because it recommends for that specific chip to leave the thermal pad unconnected.
 
 For these reasons, I recommend that you **delete** these automatically added vias from all affected component footprints, and instead add vias as needed during the PCB routing stage of the design process.
 

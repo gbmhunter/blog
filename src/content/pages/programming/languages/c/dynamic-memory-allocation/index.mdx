@@ -2,21 +2,21 @@
 authors: [gbmhunter]
 date: 2013-03-18
 description: A beginners tutorial on memory allocation in C (malloc(), free(), etc.) for embedded systems.
-lastUpdated: 2021-03-29
+lastUpdated: 2026-07-08
 tags: [programming, C, C++, dynamic memory allocation, memory, allocation, malloc(), realloc, calloc(), alloca(), free(), MISRA, memory pools, stack, heap, GCC, static allocation, memory leak]
 title: Dynamic Memory Allocation
 type: page
 ---
 
-Dynamic memory allocation is the process of assigning space for variables at run time. This is done automatically for function-scope variables which are put onto the stack when they are defined, but dynamic memory allocation usually refers to the process of using one of the malloc-family functions to manually allocate space of the heap.
+Dynamic memory allocation is the process of assigning space for variables at run time. This is done automatically for function-scope variables which are put onto the stack when they are defined, but dynamic memory allocation usually refers to the process of using one of the malloc-family functions to manually allocate space on the heap and return a [pointer](/programming/languages/c/pointers/) to it.
 
-The biggest risk with dynamic memory allocation is forgetting to free the memory after your finished with it. This can quickly lead to you running out of memory as more and more spaces in memory are assigned to the same variable (this is called a memory leak).
+The biggest risk with dynamic memory allocation is forgetting to free the memory after you're finished with it. This can quickly lead to you running out of memory as more and more spaces in memory are assigned to the same variable (this is called a memory leak).
 
 The malloc-family of functions include `malloc()`, `calloc()`, `realloc()` and `free()`. Most C-programming IDEs link to a standard library with these functions. They are used by including `stdlib.h` into your project. These functions are also available in C++.
 
 ## Thread-Safety
 
-The thread-safety of the memory functions listed below is implementation dependant. This means that their **safety when used in systems with threads (or tasks) is not guaranteed**. This normally is the case when you are running an operating system. The danger is especially relevant for memory functions on embedded systems running operating systems, as while memory functions on computers would be written with threading in mind, this is not the case for embedded systems.
+The thread-safety of the memory functions listed below is implementation dependent. This means that their **safety when used in systems with threads (or tasks) is not guaranteed**. This normally is the case when you are running an operating system. The danger is especially relevant for memory functions on embedded systems running operating systems, as while memory functions on computers would be written with threading in mind, this is not the case for embedded systems.
 
 The best thing to do is to wrap the functions in thread safe procedures (such as a scheduler suspender call), or write your own thread safe versions from scratch.
 
@@ -28,7 +28,7 @@ The best thing to do is to wrap the functions in thread safe procedures (such as
 void* malloc(size_t size);
 ```
 
-`malloc()` always returns a `void*` pointer, **so it has to be cast into the desired pointer type.**
+`malloc()` always returns a `void*` pointer. In C++ this **must** be cast into the desired pointer type. In C the cast is optional (the `void*` converts implicitly) and is often discouraged, as an explicit cast can mask a missing `#include <stdlib.h>`.
 
 Memory allocated in this fashion **persists until it is freed** (it is placed on the heap). This means that unlike local variables, it will persist even after the function that called `malloc()` has ended. This can lead to **memory leaks** if you are not careful and keep track of all of your allocated variables. **C does not have any garbage collection.**
 
@@ -42,8 +42,10 @@ void DynamicMemoryAllocation() {
     // (because this is dynamic memory allocation!!!)
     uint8_t numDoubleElements = 8;
 
-    // The safe way of creating an array dynamically.
-    double *dynamicArray = (double*)malloc(numDoubleElements * sizeof(dynamicArray));
+    // The safe way of creating an array dynamically. Note the use of
+    // sizeof(*dynamicArray) (the size of a double, i.e. the element type),
+    // NOT sizeof(dynamicArray) (which would give the size of the pointer).
+    double *dynamicArray = (double*)malloc(numDoubleElements * sizeof(*dynamicArray));
 
     // Now you can use dynamicArray just like a normal array
     dynamicArray[0] = 4;
@@ -68,7 +70,7 @@ You must consider that if `realloc()` cannot allocate enough memory at the end o
 
 ## alloca()
 
-`alloca()` is used to allocate memory on the stack, not the heap. Unlike the `malloc()`-family of functions, memory allocated by `alloca()` is automatically de-allocated when the function returns to the caller. It also has the benefit of not causing memory fragmentation. However, it can cause stack overflows if you assign too much memory, it does not check to see whether the operation is safe before it goes ahead an assigns the memory. For this reason it is not recommended for variables larger than a couple of hundred bytes (this is platform dependant).
+`alloca()` is used to allocate memory on the stack, not the heap. Unlike the `malloc()`-family of functions, memory allocated by `alloca()` is automatically de-allocated when the function returns to the caller. It also has the benefit of not causing memory fragmentation. However, it can cause stack overflows if you assign too much memory, it does not check to see whether the operation is safe before it goes ahead and assigns the memory. For this reason it is not recommended for variables larger than a couple of hundred bytes (this is platform dependent).
 
 The function declaration:
 
@@ -93,11 +95,11 @@ int main() {
 }
 ```
 
-`alloca()` is used in the GNU glibc function `getopt()` (used for command-line option processing).
+`alloca()` is used in the GNU glibc function `getopt()` (used for [command-line option processing](/programming/languages/c/processing-command-line-input/)).
 
 ## Appending An Element To An Array
 
-When using dynamic memory allocation, you commonly want to add a new element to the end of an array that had been dynamically allocated yourself, and initialise it to 0. This can be done with clever use of the realloc() and memset() functions. The code below shows a function which can does this for you. This essentially increase the array size by 1.
+When using dynamic memory allocation, you commonly want to add a new element to the end of an array that had been dynamically allocated yourself, and initialise it to 0. This can be done with clever use of the realloc() and memset() functions. The code below shows a function which does this for you. This essentially increases the array size by 1.
 
 ```c    
 //! @brief	Dynamically appends a new element onto the end of an array.
@@ -114,7 +116,7 @@ void* AppendNewArrayElement(void* arrayStart, uint32_t currNumElements, uint32_t
     char* arrayStartChar = (char*)arrayStart;
     // Set to 0
     memset(arrayStartChar + (currNumElements*sizeOfElement), '\0', sizeOfElement);
-    // Return pointer to the start of array (realloc() could of changed this)
+    // Return pointer to the start of array (realloc() could have changed this)
     return arrayStart;
 }
 ```
@@ -125,9 +127,9 @@ And why it can be a bad idea.
 
 Memory allocation is usually treated with great caution on embedded systems, with many embedded design standards or companies banning the use of it outright. Why is this? 
 
-1. **The first reason is that memory allocation can fail**. There is no guarantee that a call to `malloc()` will be successful. The spec says that if `malloc()` cannot find enough space to satisfy the memory request, it will return `NULL`. What should you do when `malloc()` returns `NULL`? For most applications running on desktops/servers, this will just mean the application will terminate, which could cause some annoyance for the users/customers of the application. However, if your embedded code is controlling the thrust of a rocket's engines, and your call to `malloc()` fails just after launch, the consequences could be much worse. Even if you can guarantee that there always be enough bytes of memory available for the worse-case scenario, you cannot guarantee that there will be enough in a contiguous block of memory, due to memory fragmentation (as memory is allocated and deallocated, it becomes fragmented).
+1. **The first reason is that memory allocation can fail**. There is no guarantee that a call to `malloc()` will be successful. The spec says that if `malloc()` cannot find enough space to satisfy the memory request, it will return `NULL`. What should you do when `malloc()` returns `NULL`? For most applications running on desktops/servers, this will just mean the application will terminate, which could cause some annoyance for the users/customers of the application. However, if your embedded code is controlling the thrust of a rocket's engines, and your call to `malloc()` fails just after launch, the consequences could be much worse. Even if you can guarantee that there will always be enough bytes of memory available for the worst-case scenario, you cannot guarantee that there will be enough in a contiguous block of memory, due to memory fragmentation (as memory is allocated and deallocated, it becomes fragmented).
 
-2. **The second reason is that dynamic allocation introduces a whole new category of bugs**. You can now accidentally cause memory leaks. You can now forget to initialize the memory your just allocated before reading from it. You called `free()` twice by accident and now have undefined behaviour. 
+2. **The second reason is that dynamic allocation introduces a whole new category of bugs**. You can now accidentally cause memory leaks. You can now forget to initialize the memory you just allocated before reading from it. You called `free()` twice by accident and now have undefined behaviour. 
 
 3. **The third reason is that memory allocation is non-deterministic.** You do not know how long `malloc()` is going to take to allocate you memory, which could be unacceptable for hard real-time applications.
 
@@ -135,8 +137,8 @@ C programming standards such as MISRA ban memory allocation outright.
 
 Banning memory allocation does restrict the flexibility of the application (e.g. you can no longer have a data type which represents an arbitrary length string). However, the following workarounds are used in embedded applications:
 
-1) **Static allocation**. Chunks of memory can be allocated statically (at compile time). You typically allocate enough memory for your worst-case runtime scenario. For example, you could allocate `500 bytes` for your receive buffer, and because of the protocol used, you know that you will never need more than that.
-2) **Memory pools**. A memory pool is a block of memory that is allocated statically. The pool is divided up into pieces which can be "dynamically assigned" at runtime. This gives the the application most of the benefits of dynamic memory allocation but you always know how many blocks you have left in the pool, the request for memory is deterministic, and you do not suffer from fragmentation.
+1. **Static allocation**. Chunks of memory can be allocated statically (at compile time). You typically allocate enough memory for your worst-case runtime scenario. For example, you could allocate `500 bytes` for your receive buffer, and because of the protocol used, you know that you will never need more than that.
+2. **Memory pools**. A memory pool is a block of memory that is allocated statically. The pool is divided up into pieces which can be "dynamically assigned" at runtime. This gives the application most of the benefits of dynamic memory allocation but you always know how many blocks you have left in the pool, the request for memory is deterministic, and you do not suffer from fragmentation.
 
 ## Overriding The Default Implementation Of malloc()
 

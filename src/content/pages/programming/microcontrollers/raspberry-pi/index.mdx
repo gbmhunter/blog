@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2013-03-23
 description: The Raspberry Pi is a family of popular single-board computers (SBCs) originally designed by the Raspberry Pi Foundation.
-lastUpdated: 2025-12-19
+lastUpdated: 2026-07-08
 tags: [programming, microcontrollers, Raspberry Pi, omxplayer, mp3, sound, Raspberry Pi Connect, cases, enclosures]
 title: RaspberryPi
 type: page
@@ -18,7 +18,7 @@ The Raspberry Pi 5 has an official case which contains a small heatsink and fan 
 
 <Image src={import('./_assets/official-raspberry-pi-5-case.webp')} width="600px">The official Raspberry Pi 5 case.[^this-pi-hut-raspberry-pi-5-case]</Image>
 
-In Sep 2025, a new M.2 hat called the "M.2 HAT+ Compact" was released which is compatible with the official enclosure. This hat is a more compact version of the original M.2 hat, which supports 2230-format (30mm long) M.@ PCI express cards.[^rpi-m2-hat-compact-on-sale-now] This hat is great for installing NVMe drives which offer better performance and reliability for the boot file system than the SD card slot or a USB thumb drive.
+In Sep 2025, a new M.2 hat called the "M.2 HAT+ Compact" was released which is compatible with the official enclosure. This hat is a more compact version of the original M.2 hat, which supports 2230-format (30mm long) M.2 PCI express cards.[^rpi-m2-hat-compact-on-sale-now] This hat is great for installing NVMe drives which offer better performance and reliability for the boot file system than the SD card slot or a USB thumb drive.
 
 <Image src={import('./_assets/raspberry-pi-m.2-hat-plus-compact-bare-and-in-enclosure.webp')} width="900px">Photos of the official Raspberry Pi "M.2 HAT+ Compact" hat. Left is the bare hat, right is the hat in the official enclosure.[^the-pi-hut-m2-hat-plus-compact]</Image>
 
@@ -32,7 +32,7 @@ The Raspberry Pi Imager is a desktop GUI tool that allows you to easily write op
 
 ### Older Setup Methods
 
-[www.raspberrypi.com](https://www.raspberrypi.com) has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
+[www.raspberrypi.com](https://www.raspberrypi.com) has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and you're good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
 
 At the bare minimum, you'll also need a USB keyboard, mouse (hard-outs may be able to forgo this) and either an HDMI or composite screen.
 
@@ -61,7 +61,7 @@ A list of some of the supported operating systems and downloads for them can be 
 
 ### Occidentalis
 
-A port of the Raspian OS by Adafruit industries which makes the OS more hacker friendly. It provides hardware SPI and I2C support, Realtek RTL8188CUS WiFi support (a common chipset used in USB WiFi modules).
+A port of the Raspbian OS by Adafruit industries which makes the OS more hacker friendly. It provides hardware SPI and I2C support, Realtek RTL8188CUS WiFi support (a common chipset used in USB WiFi modules).
 
 ### Pidora
 
@@ -69,7 +69,7 @@ URL: [http://pidora.ca/](http://pidora.ca/)
 
 Pidora is a mod of Fedora for the RPi.
 
-### Raspian
+### Raspbian
 
 URL: [http://www.raspbian.org/](http://www.raspbian.org/)
 
@@ -87,7 +87,7 @@ The nano text editor comes pre-installed, type `nano` to load it.
 
 URL: [https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
 
-A version of the RISC OS (a operating system dating back to 1987 for 32-bit ARM chips) for the RPi.
+A version of the RISC OS (an operating system dating back to 1987 for 32-bit ARM chips) for the RPi.
 
 ## Music Orientated
 
@@ -161,17 +161,17 @@ There is an [official RPi store](http://store.raspberrypi.com/projects) that off
 
 ## Video Output
 
-The RPi has two native video outputs, HDMI, and RCA/composite. **You cannot use both at the same time. **Converting any of these two to VGA is rather expensive.
+The RPi has two native video outputs, HDMI, and RCA/composite. **You cannot use both at the same time.** Converting any of these two to VGA is rather expensive.
 
 ## DSI
 
-The RaspberryPi also has a DSI output connector (the 15-pin connector that is not on the edge of the board), which is a high-speed, differential, serial point-to-point bus designed by the mobile industry to connect a host controller up to a graphics display device (normally an LCD screen). However, it is very difficult to use these on the RaspberryPi, as the pins are controller by the GPU, which is controlled by closed software written by Broadcom. I don't know of anyone who has managed to connect anything to this 15-pin connector!
+The RaspberryPi also has a DSI output connector (the 15-pin connector that is not on the edge of the board), which is a high-speed, differential, serial point-to-point bus designed by the mobile industry to connect a host controller up to a graphics display device (normally an LCD screen). However, it is very difficult to use these on the RaspberryPi, as the pins are controlled by the GPU, which is controlled by closed software written by Broadcom. I don't know of anyone who has managed to connect anything to this 15-pin connector!
 
 ## Controlling The GPIO
 
 [Understanding Outputs](http://www.thebox.myzen.co.uk/Raspberry/Understanding_Outputs.html) explains the GPIO pins on the RaspberryPi really well.
 
-Check out the [Quick2wire Python API repo](https://github.com/quick2wire/quick2wire-python-api), this allows to to control the RPi's GPIO from a python script.
+Check out the [Quick2wire Python API repo](https://github.com/quick2wire/quick2wire-python-api), this allows you to control the RPi's GPIO from a python script.
 
 There is also the [pi-gpio module](https://npmjs.org/package/pi-gpio) for controlling GPIO with [nodejs](/programming/website-design/nodejs/). Good for when you are wanting to control the RPi GPIO from across a network (remotely).
 
@@ -208,7 +208,7 @@ Raspberry Pi Connect is a remote control tool for the Raspberry Pi that allows y
 
 <Image src={import('./_assets/raspberry-pi-connect-screen-share.webp')} width="800px">A screenshot of the Raspberry Pi Connect screen share feature.</Image>
 
-If you only want terminal access, SSH from a local terminal is usually a better option that Raspberry Pi Connect because the native terminal experience is better than using a web browser terminal. But Raspberry Pi Connect is still a great tool for quick terminal access (as doesn't require you to remember any credentials except your login to Raspberry Pi Connect).
+If you only want terminal access, SSH from a local terminal is usually a better option than Raspberry Pi Connect because the native terminal experience is better than using a web browser terminal. But Raspberry Pi Connect is still a great tool for quick terminal access (as it doesn't require you to remember any credentials except your login to Raspberry Pi Connect).
 
 ## Useful Packages To Install
 
@@ -235,7 +235,7 @@ sudo apt-get install libboost-dev libboost-program-options-dev libboost-thread-d
 
 ## Node.js
 
-Node.js will work with the hard-float version of Raspian Wheezy. It takes aggggeeeesss to compile from the source code, but luckily, there is a pre-compiled binary available for the ARM processor which will work on the RaspberryPi.
+Node.js will work with the hard-float version of Raspbian Wheezy. It takes aggggeeeesss to compile from the source code, but luckily, there is a pre-compiled binary available for the ARM processor which will work on the RaspberryPi.
 
 You can install Node.js on Wheezy by just typing `sudo apt-get install nodejs`. See below for the harder way.
 

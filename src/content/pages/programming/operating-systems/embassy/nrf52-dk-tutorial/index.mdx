@@ -2,17 +2,17 @@
 authors: [gbmhunter]
 date: 2025-07-13
 description: A step-by-step guide to building an Embassy application for the nRF52 DK.
-lastUpdated: 2025-07-13
+lastUpdated: 2026-07-08
 tags: [programming, operating systems, Embassy, Rust, nRF52 DK, nRF52832, J-Link, probe-rs, usbipd, cargo run, cargo build, cargo flash, cargo embed]
 title: nRF52 DK Embassy Tutorial
 type: page
 ---
 
-This is a tutorial for building an Embassy application for the nRF52 DK, which features a nRF52832 SoC. The build is done in WSL (Windows Subsystem for Linux), but these instructions should work for any Linux distribution.
+This is a tutorial for building an Embassy application for the nRF52 DK, which features a [nRF52832 SoC](/programming/microcontrollers/nordic/nrf52/). The build is done in [WSL (Windows Subsystem for Linux)](/programming/operating-systems/windows/windows-subsystem-for-linux-wsl/), but these instructions should work for any Linux distribution.
 
 ## Installing Rust and Probe-RS
 
-Before we can build the project, we need to install Rust. This is done with the `rustup` tool:
+Before we can build the project, we need to install [Rust](/programming/languages/rust/). This is done with the `rustup` tool:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -38,7 +38,7 @@ This worked, and gave me the following result:
 Installed package `probe-rs-tools v0.29.0` (executables `cargo-embed`, `cargo-flash`, `probe-rs`)
 ```
 
-We'll also need to install the `thumbv7em-none-eabi` target using `rustup`. Luckily if you try and `cargo build` without this is will tell you how to install it.
+We'll also need to install the `thumbv7em-none-eabi` target using `rustup`. Luckily if you try and `cargo build` without this it will tell you how to install it.
 
 ```bash
 rustup target add thumbv7em-none-eabi
@@ -52,7 +52,7 @@ Create a new Rust project:
 cargo new nrf52-example
 ```
 
-This will create a new directory called `nrf52-example` and populate it  with a `Cargo.toml` file and a `src` directory containing a `main.rs`.
+This will create a new directory called `nrf52-example` and populate it with a `Cargo.toml` file and a `src` directory containing a `main.rs`.
 
 ## Opening the Project in VSCode
 
@@ -91,7 +91,7 @@ async fn main(_spawner: Spawner) {
 
 `no_std` is used to tell the compiler not to add or link against the standard Rust library, instead just relying on the core library (which is a subset of the standard library).
 
-`no_main` is used to tell the compiler not to look for a `main` function. A `main` function will still be defined, but this is taken care of us by Embassy.
+`no_main` is used to tell the compiler not to look for a `main` function. A `main` function will still be defined, but this is taken care of for us by Embassy.
 
 At this point, `rust-analyzer` should give you the following error:
 
@@ -189,7 +189,7 @@ cargo build
 
 ## Pass-through nRF52 DK USB device to WSL
 
-Plugging the nRF52 DK into my Windows computer, the J-Link based debugger is detected. Using [usbipd](https://github.com/dorssel/usbipd-win), I can pass-through the connected nRF52 DK from Windows into WSL. First you have to bind the USB device from a terminal on Windows with admin privileges:
+Plugging the nRF52 DK into my Windows computer, the [J-Link based debugger](/programming/segger-j-link/) is detected. Using [usbipd](https://github.com/dorssel/usbipd-win), I can pass-through the connected nRF52 DK from Windows into WSL. First you have to bind the USB device from a terminal on Windows with admin privileges:
 
 ```bash
 usbipd bind -i 1366:1051
@@ -220,7 +220,7 @@ cargo run
 <Image src={import('./_assets/cargo-run-programming-nrf52-dk.webp')} width="900px">Screenshot of the `cargo run` command flashing the nRF52 DK.</Image>
 
 <Aside type="note">
-You might notice that `cargo run` does not return you to the terminal. This is because is opens up serial communication via RTT so that you can print information. More on this below.
+You might notice that `cargo run` does not return you to the terminal. This is because it opens up serial communication via RTT so that you can print information. More on this below.
 </Aside>
 
 If you have multiple debuggers attached, `probe-rs` will ask you to select which one to use.

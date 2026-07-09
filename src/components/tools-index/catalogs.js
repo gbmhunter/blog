@@ -26,6 +26,7 @@ import { catalog as ntcThermistor } from '../tools/ntc-thermistor/catalog.js';
 import { catalog as ohmsLaw } from '../tools/ohms-law/catalog.js';
 import { catalog as parallelCapacitance } from '../tools/parallel-capacitance/catalog.js';
 import { catalog as parallelResistance } from '../tools/parallel-resistance/catalog.js';
+import { catalog as pidMsdVisualizer } from '../tools/pid-msd-visualizer/catalog.js';
 import { catalog as resistorDivider } from '../tools/resistor-divider/catalog.js';
 import { catalog as rotations3d } from '../tools/3d-rotations/catalog.js';
 import { catalog as sallenKeyDesigner } from '../tools/sallen-key-designer/catalog.js';
@@ -63,6 +64,7 @@ export const CATALOGS = [
   ohmsLaw,
   parallelCapacitance,
   parallelResistance,
+  pidMsdVisualizer,
   resistorDivider,
   rotations3d,
   sallenKeyDesigner,
