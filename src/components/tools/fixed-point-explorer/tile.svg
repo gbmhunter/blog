@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <rect width="300" height="200" fill="#1b1b1f"/>
+  <text x="150" y="34" text-anchor="middle" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="16">Q4.4  ·  6.5</text>
+
+  <!-- bit cells: 0110 . 1000 -->
+  <g font-family="ui-monospace, monospace" font-size="20" text-anchor="middle">
+    <!-- integer nibble -->
+    <g>
+      <rect x="34"  y="70" width="30" height="46" rx="4" fill="#2b2b30" stroke="#4b4b52"/>
+      <rect x="68"  y="70" width="30" height="46" rx="4" fill="#c60e00" stroke="#c60e00"/>
+      <rect x="102" y="70" width="30" height="46" rx="4" fill="#c60e00" stroke="#c60e00"/>
+      <rect x="136" y="70" width="30" height="46" rx="4" fill="#2b2b30" stroke="#4b4b52"/>
+      <text x="49"  y="101" fill="#9ca3af">0</text>
+      <text x="83"  y="101" fill="#fff">1</text>
+      <text x="117" y="101" fill="#fff">1</text>
+      <text x="151" y="101" fill="#9ca3af">0</text>
+    </g>
+    <!-- radix point -->
+    <text x="176" y="106" fill="#fff" font-size="26" font-weight="700">.</text>
+    <!-- fractional nibble -->
+    <g>
+      <rect x="186" y="70" width="30" height="46" rx="4" fill="#2563eb" stroke="#2563eb"/>
+      <rect x="220" y="70" width="30" height="46" rx="4" fill="#2b2b30" stroke="#2563eb"/>
+      <rect x="254" y="70" width="30" height="46" rx="4" fill="#2b2b30" stroke="#2563eb"/>
+      <rect x="254" y="70" width="0"  height="46"/>
+      <text x="201" y="101" fill="#fff">1</text>
+      <text x="235" y="101" fill="#9ca3af">0</text>
+      <text x="269" y="101" fill="#9ca3af">0</text>
+    </g>
+  </g>
+
+  <!-- labels under groups -->
+  <text x="100" y="140" text-anchor="middle" fill="#8b8b92" font-family="ui-monospace, monospace" font-size="12">integer</text>
+  <text x="222" y="140" text-anchor="middle" fill="#5b8bef" font-family="ui-monospace, monospace" font-size="12">fraction</text>
+
+  <text x="150" y="176" text-anchor="middle" fill="#c60e00" font-family="ui-monospace, monospace" font-size="15">0x68</text>
+</svg>

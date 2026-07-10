@@ -7,6 +7,8 @@ title: Fixed Point Mathematics
 type: page
 ---
 
+import FixedPointExplorer from 'src/components/tools/fixed-point-explorer/FixedPointExplorer.jsx';
+
 Fixed-point mathematics is a method for representing numbers on a binary computer architecture. It allows the storage of numbers with decimal points, similar to the float and double, but with the benefit of requiring less computation time. The trade-off is lower precision and flexibility.
 
 If you think about it, normal integers are just a special case of a fixed-point number where the decimal point is to the right of the least-significant bit. A 32-bit unsigned integer (`uint32_t`), would be `fp(32, 0)`. It is common to use the bit-width of the architecture as the default fixed-point length, as the architecture has native support for manipulating these variables (commonly 32-bit on the more powerful embedded microcontrollers).
@@ -17,7 +19,9 @@ Most programming languages and hardware that code runs on does not have native s
 
 Q is a number format used to describe fixed-point numbers. It uses the form:
 
-<div>$$ Qi.f $$</div>
+$$
+Qi.f
+$$
 
 <p className="centered">where:<br/>
 $i$ = number of integer bits<br/>
@@ -50,7 +54,9 @@ uint16_t fp1 = (uint16_t)(6.5 * (float)(1 << 12));
 
 The range of an unsigned fixed-point number with $i$ bits for the integer and $f$ bits for the decimal parts is:
 
-<div>$$ 0 \textrm{ to } (2^i -1) + 2^{-f} \cdot (2^{f} - 1) $$</div>
+$$
+0 \textrm{ to } (2^i -1) + 2^{-f} \cdot (2^{f} - 1)
+$$
 
 For example, an 8-bit fixed-point number with 5 bits for the integer and 3 bits for the fractional part (Q5.3) would have a range from 0 to 31.875.
 
@@ -58,7 +64,9 @@ For example, an 8-bit fixed-point number with 5 bits for the integer and 3 bits 
 
 The range for a signed fixed-point number is given by:
 
-<div>$$ -2^{i-1} \textrm{ to } (2^{i-1} -1) + 2^{-f} \cdot (2^{f} - 1) $$</div>
+$$
+-2^{i-1} \textrm{ to } (2^{i-1} -1) + 2^{-f} \cdot (2^{f} - 1)
+$$
 
 For example, an 8-bit fixed-point number with $5$ bits for the integer and $3$ bits for the fractional part ($Q5.3$) would have a range from $-16$ to $15.875$.
 
@@ -66,9 +74,17 @@ For example, an 8-bit fixed-point number with $5$ bits for the integer and $3$ b
 
 The precision of a fixed-point number is determined solely by the number of fractional bits. The precision is equal to:
 
-<div>$$ 2^{-f} $$</div>
+$$
+2^{-f}
+$$
 
 For example, the precision of a $Q3.5$ fixed-point number would be $2^{-5} = 0.03125$. The precision of a $Q8.0$ number (no fractional bits) would be $ 2^{-0} = 1$, as expected.
+
+## Interactive Fixed-Point Explorer
+
+Use the tool below to see how a real number is encoded in fixed-point format. Choose the number of integer and fractional bits and whether it's signed, then type a value (or click individual bits to flip them) and watch the stored integer, hex/binary representation, quantized value and quantization error update.
+
+<FixedPointExplorer client:load />
 
 ## Converting To Fixed-Point
 
