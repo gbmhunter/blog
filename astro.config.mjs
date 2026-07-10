@@ -59,6 +59,17 @@ export default defineConfig({
       ],
     }),
   ],
+  vite: {
+    optimizeDeps: {
+      // Pre-bundle deps that are only imported by a single lazily-hydrated island.
+      // The /tools/ index (ToolsIndex.jsx) imports @formkit/auto-animate, which is
+      // used nowhere else. Without this, Vite discovers it on the first visit to
+      // /tools/, re-optimizes deps, and the island's in-flight dynamic import fails
+      // with a 504 "Outdated Optimize Dep" / "Failed to fetch dynamically imported
+      // module". Listing it here optimizes it at startup and avoids that race.
+      include: ['@formkit/auto-animate'],
+    },
+  },
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [

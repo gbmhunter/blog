@@ -8,6 +8,8 @@ title: What Are Transfer Functions, Poles, And Zeroes?
 type: page
 ---
 
+import PoleZeroExplorer from 'src/components/tools/pole-zero-explorer/PoleZeroExplorer.jsx';
+
 _Transfer functions_ are a way of describing the frequency and phase response of a LTI (linear time invariant) system. The system can be anything with a measurable input and output, e.g. mechanical spring/mass/dampers, electronic RLC circuits, etc. This page will put an emphasis on **electrical transfer functions in the continuous-time domain**.
 
 ## The Laplace Domain
@@ -160,6 +162,12 @@ Poles and zeroes are plotted in an _Argand diagram_ in what is called a _pole-ze
 Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are building an oscillator, poles in the right-hand half of the plane (having a positive real component) are a bad thing, as they represent an instability.
 
 <Image src={import('./_assets/poles-graph.png')} width="900px">Argand diagram showing how the location of poles (no zeroes shown) on a pole-zero plot shows how components of the system respond to transients (i.e. impulses).</Image>
+
+## Interactive Pole-Zero Explorer
+
+The tool below lets you build a transfer function by dragging poles and zeroes around the s-plane, and see the resulting Bode plot (magnitude and phase) and time-domain response (step and impulse) update live. Try dragging the complex pole pair towards the imaginary axis to make the system more oscillatory, or into the right-half plane to make it unstable.
+
+<PoleZeroExplorer client:load />
 
 ## Group Delay
 

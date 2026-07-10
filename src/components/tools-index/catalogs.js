@@ -27,6 +27,7 @@ import { catalog as ohmsLaw } from '../tools/ohms-law/catalog.js';
 import { catalog as parallelCapacitance } from '../tools/parallel-capacitance/catalog.js';
 import { catalog as parallelResistance } from '../tools/parallel-resistance/catalog.js';
 import { catalog as pidMsdVisualizer } from '../tools/pid-msd-visualizer/catalog.js';
+import { catalog as poleZeroExplorer } from '../tools/pole-zero-explorer/catalog.js';
 import { catalog as resistorDivider } from '../tools/resistor-divider/catalog.js';
 import { catalog as rotations3d } from '../tools/3d-rotations/catalog.js';
 import { catalog as sallenKeyDesigner } from '../tools/sallen-key-designer/catalog.js';
@@ -65,6 +66,7 @@ export const CATALOGS = [
   parallelCapacitance,
   parallelResistance,
   pidMsdVisualizer,
+  poleZeroExplorer,
   resistorDivider,
   rotations3d,
   sallenKeyDesigner,

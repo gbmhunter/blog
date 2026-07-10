@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <rect width="300" height="200" fill="#1b1b1f"/>
+
+  <!-- s-plane grid -->
+  <g stroke="#3a3a40" stroke-width="1">
+    <line x1="30" y1="30" x2="30" y2="170"/>
+    <line x1="80" y1="30" x2="80" y2="170"/>
+    <line x1="130" y1="30" x2="130" y2="170"/>
+    <line x1="180" y1="30" x2="180" y2="170"/>
+    <line x1="30" y1="60" x2="180" y2="60"/>
+    <line x1="30" y1="100" x2="180" y2="100"/>
+    <line x1="30" y1="140" x2="180" y2="140"/>
+  </g>
+  <!-- axes -->
+  <g stroke="#6b6b72" stroke-width="1.5">
+    <line x1="30" y1="100" x2="188" y2="100"/>
+    <line x1="130" y1="26" x2="130" y2="174"/>
+  </g>
+  <text x="192" y="104" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="11">Re</text>
+  <text x="134" y="24" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="11">Im</text>
+
+  <!-- poles (red ✕), a complex conjugate pair -->
+  <g stroke="#c60e00" stroke-width="3" stroke-linecap="round">
+    <line x1="66" y1="56" x2="78" y2="68"/><line x1="78" y1="56" x2="66" y2="68"/>
+    <line x1="66" y1="132" x2="78" y2="144"/><line x1="78" y1="132" x2="66" y2="144"/>
+  </g>
+  <!-- zero (blue ○) -->
+  <circle cx="100" cy="100" r="7" fill="none" stroke="#2563eb" stroke-width="3"/>
+
+  <!-- a bode-like magnitude curve on the right -->
+  <path d="M210,60 L232,60 C244,60 246,58 252,72 C258,92 268,120 288,150"
+        fill="none" stroke="#c60e00" stroke-width="2.5"/>
+</svg>

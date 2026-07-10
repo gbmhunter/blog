@@ -357,6 +357,31 @@ useEffect(() => {
 - Render the animated element as an `<svg>` whose positions derive from `stateRef.current`. For a spring, draw a zig-zag polyline from wall→mass so it stretches; for a damper, draw a **fixed cylinder with a piston plate that slides inside it** as the mass moves (reads as motion far better than a static box) plus a rod to the mass. Style strokes/fills with Starlight CSS variables so light/dark track.
 - Reference implementation: `src/components/tools/pid-msd-visualizer/` (one live loop serves step / alternating / manual setpoint modes).
 
+### Draggable markers on an SVG plane (pointer events)
+
+For tools where the user drags handles around a 2-D plane (poles/zeros on an s-plane, control points, etc.), use pointer events with capture rather than mouse events:
+
+```jsx
+const svgRef = useRef(null);
+const dragRef = useRef(null);              // {id, ...} of the handle being dragged
+
+const toCoord = (e) => {                    // client px → data coords
+  const r = svgRef.current.getBoundingClientRect();
+  const px = ((e.clientX - r.left) / r.width) * VIEW_W;   // VIEW_W = viewBox width
+  const py = ((e.clientY - r.top) / r.height) * VIEW_H;
+  return { x: pxToDataX(px), y: pxToDataY(py) };
+};
+const onDown = (id) => (e) => { e.preventDefault(); dragRef.current = { id };
+  try { svgRef.current.setPointerCapture(e.pointerId); } catch {} };
+// onPointerMove / onPointerUp go on the <svg> (capture routes events there even off-marker)
+```
+
+- `setPointerCapture` on the `<svg>` keeps move/up events flowing even when the cursor leaves the handle — no window listeners needed.
+- Add `touch-action: none` to the SVG in CSS so touch-drag doesn't scroll the page.
+- Give each handle a **transparent hit circle** (r≈10) behind the visible glyph so it's easy to grab.
+- Map with `getBoundingClientRect` (the viewBox scales linearly to the rendered box); keep the plane isotropic (equal data-span per axis) if angles/circles must look right.
+- Reference implementation: `src/components/tools/pole-zero-explorer/` (drag poles/zeros; a conjugate marker shares the dragged handle's id so it mirrors automatically).
+
 ## Step 9: Verification
 
 After implementing, run:
