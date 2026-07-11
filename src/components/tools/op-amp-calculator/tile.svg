@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <rect width="300" height="200" fill="#1b1b1f"/>
+
+  <!-- op-amp triangle -->
+  <polygon points="120,60 120,140 200,100" fill="#232329" stroke="#e5e5e5" stroke-width="2.5"/>
+  <text x="132" y="86" fill="#e5e5e5" font-family="ui-monospace, monospace" font-size="18" font-weight="700">−</text>
+  <text x="132" y="122" fill="#e5e5e5" font-family="ui-monospace, monospace" font-size="16" font-weight="700">+</text>
+
+  <!-- + input -->
+  <line x1="60" y1="115" x2="120" y2="115" stroke="#9ca3af" stroke-width="2"/>
+  <!-- feedback Rf over top -->
+  <line x1="95" y1="80" x2="95" y2="42" stroke="#9ca3af" stroke-width="2"/>
+  <rect x="110" y="34" width="70" height="16" rx="3" fill="#1b1b1f" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="95" y1="42" x2="110" y2="42" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="180" y1="42" x2="230" y2="42" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="230" y1="42" x2="230" y2="100" stroke="#9ca3af" stroke-width="2"/>
+  <text x="145" y="30" fill="#c60e00" font-family="ui-monospace, monospace" font-size="13" text-anchor="middle">Rf</text>
+  <!-- Ri to ground -->
+  <line x1="95" y1="80" x2="95" y2="120" stroke="#9ca3af" stroke-width="2"/>
+  <rect x="87" y="120" width="16" height="40" rx="3" fill="#1b1b1f" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="95" y1="160" x2="95" y2="172" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="82" y1="172" x2="108" y2="172" stroke="#9ca3af" stroke-width="2"/>
+  <text x="112" y="145" fill="#c60e00" font-family="ui-monospace, monospace" font-size="13">Ri</text>
+
+  <!-- output -->
+  <line x1="200" y1="100" x2="230" y2="100" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="230" y1="100" x2="270" y2="100" stroke="#9ca3af" stroke-width="2"/>
+
+  <text x="150" y="192" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="15" text-anchor="middle">Av = 1 + Rf/Ri</text>
+</svg>

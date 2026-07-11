@@ -25,6 +25,7 @@ import { catalog as movingAverageFilter } from '../tools/moving-average-filter/c
 import { catalog as mp4558DesignTool } from '../tools/mp4558-design-tool/catalog.js';
 import { catalog as ntcThermistor } from '../tools/ntc-thermistor/catalog.js';
 import { catalog as ohmsLaw } from '../tools/ohms-law/catalog.js';
+import { catalog as opAmpCalculator } from '../tools/op-amp-calculator/catalog.js';
 import { catalog as parallelCapacitance } from '../tools/parallel-capacitance/catalog.js';
 import { catalog as parallelResistance } from '../tools/parallel-resistance/catalog.js';
 import { catalog as pidMsdVisualizer } from '../tools/pid-msd-visualizer/catalog.js';
@@ -65,6 +66,7 @@ export const CATALOGS = [
   mp4558DesignTool,
   ntcThermistor,
   ohmsLaw,
+  opAmpCalculator,
   parallelCapacitance,
   parallelResistance,
   pidMsdVisualizer,

@@ -9,6 +9,8 @@ title: Op-Amps
 type: page
 ---
 
+import OpAmpCalculator from 'src/components/tools/op-amp-calculator/OpAmpCalculator.jsx';
+
 At its most basic level, an _operational amplifier_ (op-amp) is an **analogue integrated circuit which acts as a voltage-amplifier with very high gain**.
 
 An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manipulate the op-amp to act as a current amplifier or perform "mathematical" operations on signals.
@@ -32,6 +34,12 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 - Pre-amplifiers (amplifiers with an input voltage of $10\unit{mV}$ or less)
 - Analogue mathematical operations (differentiators, integrators, summer, subtracters, etc.)
 - Voltage to current (transconductance) and current to voltage conversions (transimpedance)
+
+## Interactive Op-Amp Configuration Calculator
+
+The tool below lets you calculate the gain and output voltage for the most common op-amp configurations. Choose a configuration, enter the resistor values and input voltage(s), and the schematic and results update live. The individual topologies are explained in detail in the sections that follow.
+
+<OpAmpCalculator client:load />
 
 ## Op-Amp Topologies
 
@@ -140,9 +148,9 @@ And below are the simulation results for the above schematic:
 
 A difference (a.k.a _differential_ or _subtractive_) amplifier is an op-amp circuit which amplifies the voltage difference between two electrical signals. It is the mathematical equivalent of subtraction with some additional gain. The schematic is shown below:
 
-<Image src={import('./_assets/differential-amplifier-schematic.svg')} width="700px">An op-amp configured as a differential amplifier.</Image>
+<Image src={import('./_assets/difference-amplifier-schematic.svg')} width="700px">An op-amp configured as a differential amplifier.</Image>
 
-The output voltage is given by the equation[^electronics-tutorials-ws-the-differential-amplifier]:
+The output voltage is given by the equation:[^electronics-tutorials-ws-the-differential-amplifier]
 
 $$
 \begin{align*}

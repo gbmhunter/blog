@@ -1,0 +1,134 @@
+.opa {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: var(--sl-color-bg-nav);
+  font-size: 0.9rem;
+  container-type: inline-size;
+}
+
+.opa *, .opa *::before, .opa *::after { margin-top: 0; }
+
+.opa__legend {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+.opa__legend code {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85em;
+}
+
+/* config selector */
+.opa__configs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; }
+.opa__chip {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.opa__chip:hover { border-color: var(--sl-color-gray-4); }
+.opa__chip--active { background: var(--sl-color-accent); border-color: var(--sl-color-accent); color: #fff; }
+
+/* layout */
+.opa__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.opa__main > * { margin-top: 0; }
+@container (min-width: 34rem) {
+  .opa__main { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); }
+}
+
+/* Fixed schematic area: SVGs of any aspect ratio scale to fit inside it. */
+.opa__schematic {
+  height: 15rem;
+  box-sizing: border-box;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+  padding: 0.3rem;
+  overflow: hidden;
+}
+/* inline fallback: viewBox + default preserveAspectRatio fits it to the box */
+.opa__svg { display: block; width: 100%; height: 100%; color: var(--sl-color-text); }
+/* supplied SVGs: scale to the largest size that fits (aspect preserved), on a
+   white backdrop in both light and dark mode. */
+.opa__schematic-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 0.25rem;
+}
+
+/* schematic elements */
+.opa__tri { fill: var(--sl-color-bg-nav); stroke: var(--sl-color-text); stroke-width: 1.6; }
+.opa__pin { fill: var(--sl-color-text); font-size: 13px; font-weight: 700; }
+.opa__wire { fill: none; stroke: var(--sl-color-gray-2); stroke-width: 1.4; }
+.opa__node { fill: var(--sl-color-text); }
+.opa__res { fill: var(--sl-color-bg); stroke: var(--sl-color-gray-2); stroke-width: 1.4; }
+.opa__res-label { fill: var(--sl-color-text); font-size: 11px; }
+.opa__res-val { fill: var(--sl-color-accent-high); font-size: 9.5px; font-family: var(--__sl-font-mono, ui-monospace, monospace); }
+.opa__gnd line { stroke: var(--sl-color-gray-2); stroke-width: 1.4; }
+.opa__term { fill: var(--sl-color-text); font-size: 12px; font-weight: 600; }
+.opa__sub { font-size: 8px; }
+
+/* inputs */
+.opa__panel { display: flex; flex-direction: column; gap: 0.9rem; }
+.opa__inputs { display: flex; flex-direction: column; gap: 0.6rem; }
+.opa__field { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 0.5rem; align-items: center; }
+.opa__field-label { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 0.5rem; }
+.opa__sym { font-weight: 700; color: var(--sl-color-text); }
+.opa__field-desc { font-size: 0.78rem; color: var(--sl-color-gray-2); }
+.opa__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.3rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+}
+.opa__input--err { border-color: var(--sl-color-accent); }
+.opa__unit { color: var(--sl-color-gray-2); font-size: 0.85rem; }
+.opa__err { grid-column: 1 / -1; color: var(--sl-color-accent-high); font-size: 0.75rem; }
+
+/* results */
+.opa__results { display: flex; flex-direction: column; gap: 0.6rem; }
+.opa__eq {
+  font-size: 0.85rem;
+  color: var(--sl-color-text);
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  padding: 0.5rem 0.7rem;
+  overflow-x: auto;
+}
+.opa__readouts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.opa__readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.35rem;
+  background: var(--sl-color-bg);
+  flex: 1 1 9rem;
+}
+.opa__readout-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--sl-color-gray-2); }
+.opa__readout-value { font-family: var(--__sl-font-mono, ui-monospace, monospace); font-size: 0.95rem; color: var(--sl-color-text); }
+.opa__muted { color: var(--sl-color-gray-2); font-size: 0.85em; }
