@@ -58,24 +58,32 @@ export default function OpAmpCalculator() {
         {/* inputs + results */}
         <div class="opa__panel">
           <div class="opa__inputs">
-            {cfg.fields.map((f) => {
-              const meta = FIELD_META[f];
+            {['V', 'R'].map((kind) => {
+              const group = cfg.fields.filter((f) => FIELD_META[f].kind === kind);
+              if (group.length === 0) return null;
               return (
-                <div class="opa__field" key={f}>
-                  <label class="opa__field-label" for={`opa-${f}`}>
-                    <Sym main={meta.main} sub={meta.sub} />
-                    <span class="opa__field-desc">{meta.label}</span>
-                  </label>
-                  <input
-                    id={`opa-${f}`}
-                    class={'opa__input' + (parsed.errors[f] ? ' opa__input--err' : '')}
-                    type="text"
-                    value={vals[f]}
-                    onInput={setField(f)}
-                    placeholder={meta.kind === 'R' ? 'e.g. 10k' : 'e.g. 1'}
-                  />
-                  <span class="opa__unit">{meta.kind === 'R' ? 'Ω' : 'V'}</span>
-                  {parsed.errors[f] && <span class="opa__err">{parsed.errors[f]}</span>}
+                <div class="opa__field-grid" key={kind}>
+                  {group.map((f) => {
+                    const meta = FIELD_META[f];
+                    return (
+                      <div class="opa__field" key={f}>
+                        <label class="opa__field-label" for={`opa-${f}`}>
+                          <Sym main={meta.main} sub={meta.sub} />
+                          <span class="opa__field-desc">{meta.label}</span>
+                        </label>
+                        <input
+                          id={`opa-${f}`}
+                          class={'opa__input' + (parsed.errors[f] ? ' opa__input--err' : '')}
+                          type="text"
+                          value={vals[f]}
+                          onInput={setField(f)}
+                          placeholder={meta.kind === 'R' ? 'e.g. 10k' : 'e.g. 1'}
+                        />
+                        <span class="opa__unit">{meta.kind === 'R' ? 'Ω' : 'V'}</span>
+                        {parsed.errors[f] && <span class="opa__err">{parsed.errors[f]}</span>}
+                      </div>
+                    );
+                  })}
                 </div>
               );
             })}
@@ -107,7 +115,7 @@ function GainEquation({ cfg, p, result }) {
     return <>A<sub>v</sub> = 1 + R<sub>f</sub> / R<sub>i</sub> = 1 + {fmtR(p.Rf)} / {fmtR(p.Ri)} = <strong>{g}</strong></>;
   }
   if (cfg === 'inv') {
-    return <>A<sub>v</sub> = −R<sub>f</sub> / R<sub>in</sub> = −{fmtR(p.Rf)} / {fmtR(p.Rin)} = <strong>{g}</strong></>;
+    return <>A<sub>v</sub> = −R<sub>f</sub> / R<sub>i</sub> = −{fmtR(p.Rf)} / {fmtR(p.Rin)} = <strong>{g}</strong></>;
   }
   if (cfg === 'buffer') {
     return <>A<sub>v</sub> = 1 &nbsp;(V<sub>out</sub> = V<sub>in</sub>)</>;
@@ -223,7 +231,7 @@ function Inv({ vals }) {
       {/* Rin from Vin to node A */}
       <Term x={34} y={IN_MINUS_Y - 8} main="V" sub="in" anchor="start" />
       <Wire pts={`40,${IN_MINUS_Y} 70,${IN_MINUS_Y}`} />
-      <Res x1={70} y1={IN_MINUS_Y} x2={150} y2={IN_MINUS_Y} main="R" sub="in" val={fmtR(parseR(vals.Rin).value)} />
+      <Res x1={70} y1={IN_MINUS_Y} x2={150} y2={IN_MINUS_Y} main="R" sub="i" val={fmtR(parseR(vals.Rin).value)} />
       <Wire pts={`150,${IN_MINUS_Y} ${TRI_LEFT},${IN_MINUS_Y}`} />
       <Node x={170} y={IN_MINUS_Y} />
       {/* Rf feedback */}

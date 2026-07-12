@@ -15,6 +15,10 @@ At its most basic level, an _operational amplifier_ (op-amp) is an **analogue in
 
 An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manipulate the op-amp to act as a current amplifier or perform "mathematical" operations on signals.
 
+<Aside type="tip">
+This page uses lowercase variables (with lowercase subscripts) for time-varying signals such as $v_{in}$ and $v_{out}$. Uppercase variables are used for DC values, bias points, RMS or phasor amplitudes.
+</Aside>
+
 ## Schematic Symbol
 
 An op-amp is commonly drawn on schematics as:
@@ -47,18 +51,15 @@ The tool below lets you calculate the gain and output voltage for the most commo
 
 A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp. The schematic is shown below:
 
-<Image src={import('./_assets/voltage-follower-buffer-schematic.webp')} width="500px">An op-amp configured as a voltage follower (aka buffer).</Image>
+<Image src={import('./_assets/voltage-follower-schematic.svg')} width="500px">An op-amp configured as a voltage follower (aka buffer).</Image>
 
 The output voltage for a voltage follower is just simply:
 
 $$
-\begin{align}
-\label{eq:buffer-vout-eq-vin}
-v_{out} &= v_{in}
-\end{align}
+v_{out} = v_{in}
 $$
 
-As shown in Eq $\ref{eq:buffer-vout-eq-vin}$, the output voltage is the same as the input voltage. Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
+As shown above, the output voltage is the same as the input voltage. Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
 <Aside type="example">
 
@@ -192,20 +193,17 @@ An _integration amplifier_ performs mathematical integration on the input signal
 
 <Image src={import('./_assets/integration-amplifier-schematic-ideal.svg')} width="500px">An op-amp configured as an ideal integrator.</Image>
 
-Eq. $\ref{eq:vout-vin-ideal-integrator}$ shows the relationship between input and output voltage.
+The below equation shows the relationship between input and output voltage:
 
 $$
-\begin{align}
-\label{eq:vout-vin-ideal-integrator}
 v_{out} = -\frac{1}{R_i C} \int_0^t v_{in}\ dt
-\end{align}
 $$
 
 **However, this circuit is normally not practical in real world situations**. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
 
 A way to fix this problem is to insert a high-valued feedback resistor, $R_f$, to limit the DC gain, as well as a resistor, $R_{bias}$, on the non-inverting input terminal to compensate for the input bias current.
 
-<Image src={import('./_assets/integration-amplifier-schematic-non-ideal.svg')} width="430px">An op-amp configured as a non-ideal (real world) integrator, with feedback resistor $R_f$ to slowly remove DC offset and $R_{bias}$ to compensate for input bias current.</Image>
+<Image src={import('./_assets/integration-amplifier-schematic-non-ideal.svg')} width="600px">An op-amp configured as a non-ideal (real world) integrator, with feedback resistor $R_f$ to slowly remove DC offset and $R_{bias}$ to compensate for input bias current.</Image>
 
 $$
 \begin{align*}

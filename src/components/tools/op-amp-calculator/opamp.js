@@ -18,7 +18,7 @@ export const fmtV = (v) => formatValueWithPrefix(v, 'V');
 export const FIELD_META = {
   Rf: { kind: 'R', main: 'R', sub: 'f', label: 'Feedback resistor', def: '10k' },
   Ri: { kind: 'R', main: 'R', sub: 'i', label: 'Ground-leg resistor', def: '1k' },
-  Rin: { kind: 'R', main: 'R', sub: 'in', label: 'Input resistor', def: '1k' },
+  Rin: { kind: 'R', main: 'R', sub: 'i', label: 'Input resistor', def: '1k' },
   R1: { kind: 'R', main: 'R', sub: '1', label: 'Input resistors', def: '1k' },
   R2: { kind: 'R', main: 'R', sub: '2', label: 'Feedback / ground resistors', def: '10k' },
   Vin: { kind: 'V', main: 'V', sub: 'in', label: 'Input voltage', def: '1' },
@@ -28,11 +28,11 @@ export const FIELD_META = {
 
 export const CONFIGS = [
   {
-    key: 'noninv', label: 'Non-inverting', fields: ['Vin', 'Rf', 'Ri'],
+    key: 'noninv', label: 'Non-inverting', fields: ['Vin', 'Ri', 'Rf'],
     compute: (p) => { const gain = 1 + p.Rf / p.Ri; return { gain, vout: gain * p.Vin }; },
   },
   {
-    key: 'inv', label: 'Inverting', fields: ['Vin', 'Rf', 'Rin'],
+    key: 'inv', label: 'Inverting', fields: ['Vin', 'Rin', 'Rf'],
     compute: (p) => { const gain = -p.Rf / p.Rin; return { gain, vout: gain * p.Vin }; },
   },
   {
