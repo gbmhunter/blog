@@ -39,12 +39,6 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 - Analogue mathematical operations (differentiators, integrators, summer, subtracters, etc.)
 - Voltage to current (transconductance) and current to voltage conversions (transimpedance)
 
-## Interactive Op-Amp Configuration Calculator
-
-The tool below lets you calculate the gain and output voltage for the most common op-amp configurations. Choose a configuration, enter the resistor values and input voltage(s), and the schematic and results update live. The individual topologies are explained in detail in the sections that follow.
-
-<OpAmpCalculator client:load />
-
 ## Op-Amp Topologies
 
 ### Voltage Followers (a.k.a. Buffers)
@@ -529,6 +523,12 @@ $$
 The basic op-amp based _sample and hold_ circuit is an extension of the ideal diode circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
 
 <Image src={import('./_assets/sample-and-hold.webp')} width="600px">Basic op-amp based sample-and-hold circuit.</Image>
+
+## Interactive Op-Amp Configuration Calculator
+
+Now that the individual topologies have been covered above, the tool below lets you calculate the gain and output voltage for the most common op-amp configurations. Choose a configuration, enter the resistor values and input voltage(s), and the schematic and results update live.
+
+<OpAmpCalculator client:load />
 
 ## Important Variables
 
