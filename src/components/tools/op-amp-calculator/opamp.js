@@ -21,9 +21,9 @@ export const FIELD_META = {
   Rin: { kind: 'R', main: 'R', sub: 'i', label: 'Input resistor', def: '1k' },
   R1: { kind: 'R', main: 'R', sub: '1', label: 'Input resistors', def: '1k' },
   R2: { kind: 'R', main: 'R', sub: '2', label: 'Feedback / ground resistors', def: '10k' },
-  Vin: { kind: 'V', main: 'V', sub: 'in', label: 'Input voltage', def: '1' },
-  V1: { kind: 'V', main: 'V', sub: '1', label: 'Input voltage', def: '1' },
-  V2: { kind: 'V', main: 'V', sub: '2', label: 'Input voltage', def: '2' },
+  Vin: { kind: 'V', main: 'v', sub: 'in', label: 'Input voltage', def: '1' },
+  V1: { kind: 'V', main: 'v', sub: '1', label: 'Input voltage', def: '1' },
+  V2: { kind: 'V', main: 'v', sub: '2', label: 'Input voltage', def: '2' },
 };
 
 export const CONFIGS = [

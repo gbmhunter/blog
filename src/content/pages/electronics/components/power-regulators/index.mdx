@@ -3,15 +3,15 @@ authors: [gbmhunter]
 date: 2012-08-20
 description: Power regulators aim to convert input voltages and currents into different output voltages and currents. This section covers SMPS, linear regulators, charge pumps, voltage references and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2023-04-24
+lastUpdated: 2026-07-13
 tags: [power, regulator, linear, buck, boost, DC/DC, converter, topology, SEPIC, current sharing]
 title: Power Regulators
 type: page
 ---
 
-Power regulators aim to **convert input voltages and currents into different output voltages and currents**. There are many different ways of doing this, an each design has its benefits and advantages. The important parameters of all types of power regulators are efficiency, power levels, versatility, accuracy, noise, size and complexity.
+Power regulators aim to **convert input voltages and currents into different output voltages and currents**. There are many different ways of doing this, and each design has its benefits and disadvantages. The important parameters of all types of power regulators are efficiency, power levels, versatility, accuracy, noise, size and complexity.
 
-If you want to drop low-to-medium voltage DC (3-60V) down to a lower DC voltage, and you don't require large currents (&lt;1A), can dissipate a large amount of heat easily or want low-noise voltage rails, look at the [Linear Regulators page](/electronics/components/power-regulators/linear-regulators/). If you want to do the same thing but do want large currents and/or want it to be efficient, or are wanting to increase the voltage, have a look at the [Switch-Mode Power Supplies (SMPS) page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/). If you also need isolation, have a look at the [Isolated Switch-Mode Power Supplies page](/electronics/components/power-regulators/isolated-switch-mode-power-supplies/).
+If you want to drop low-to-medium voltage DC (3-60V) down to a lower DC voltage, and you only need small currents (&lt;1A), can easily dissipate the resulting heat, or want low-noise voltage rails, look at the [Linear Regulators page](/electronics/components/power-regulators/linear-regulators/). If you want to do the same thing but do want large currents and/or want it to be efficient, or are wanting to increase the voltage, have a look at the [Switch-Mode Power Supplies (SMPS) page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/). If you also need isolation, have a look at the [Isolated Switch-Mode Power Supplies page](/electronics/components/power-regulators/isolated-switch-mode-power-supplies/).
 
 If you want to increase the voltage and have really low current requirements, [Charge Pumps](/electronics/components/power-regulators/charge-pumps/) might be what you're after. If you want to convert 110-240VAC mains straight down to 3-24V low-voltage DC, have a look at the [Off-line Switchers page](/electronics/components/power-regulators/off-line-switchers/).
 
@@ -35,15 +35,15 @@ If you want to increase the voltage and have really low current requirements, [C
         </tr>
         <tr>
           <td>Controller</td>
-          <td>A power conversion device that requires a external switch (typically a MOSFET).</td>
+          <td>A power conversion device that requires an external switch (typically a MOSFET).</td>
         </tr>
         <tr>
           <td>Converter</td>
           <td>A power conversion device that has an integrated switch (typically a MOSFET).</td>
         </tr>
         <tr>
-          <td>Cuk converter</td>
-          <td>A DC/DC converter topology which converts an input voltage into either a **higher** or **lower** output voltage. A Cuk converters output voltage is opposite in polarity to it's input voltage (which is a disadvantage in most cases).</td>
+          <td>Ćuk converter</td>
+          <td>A DC/DC converter topology which converts an input voltage into either a **higher** or **lower** output voltage. A Ćuk converter's output voltage is opposite in polarity to its input voltage (which is a disadvantage in most cases).</td>
         </tr>
         <tr>
           <td>Down Conversion</td>
@@ -51,7 +51,7 @@ If you want to increase the voltage and have really low current requirements, [C
         </tr>
         <tr>
           <td>Ripple</td>
-          <td>Used when talking about voltages and currents, it is the **absolute or percentage change in voltage or current** (max - min) over an operating cycle. You typically don't want more than 20% ripple current through an inductor (w.r.t. it's average current).</td>
+          <td>Used when talking about voltages and currents, it is the **absolute or percentage change in voltage or current** (max - min) over an operating cycle. You typically don't want more than 20% ripple current through an inductor (w.r.t. its average current).</td>
         </tr>
         <tr>
           <td>SEPIC</td>
@@ -59,7 +59,7 @@ If you want to increase the voltage and have really low current requirements, [C
         </tr>
         <tr>
           <td>Synchronous rectification</td>
-          <td>When the diode in a simple DC/DC converter is replaced with a switched MOSFET to improve efficiencies. Synchronous rectification allows DC/DC converter to climb above 90% efficiency in ideal situations.</td>
+          <td>When the diode in a simple DC/DC converter is replaced with a switched MOSFET to improve efficiencies. Synchronous rectification allows a DC/DC converter to climb above 90% efficiency in ideal situations.</td>
         </tr>
         <tr>
           <td>Topology</td>
@@ -114,7 +114,7 @@ If you want to increase the voltage and have really low current requirements, [C
     <li>High EMI</li>
   </ul>
 </td>
-<td>Uses an inductor, capacitor and switching element to reduce the input voltage. The alternative method to a buck converter for reducing the input voltage is a linear voltage regulator. Very high efficiencies in some cases due to the absence resistive power losses.</td>
+<td>Uses an [inductor](/electronics/components/inductors/), [capacitor](/electronics/components/capacitors/) and switching element to reduce the input voltage. The alternative method to a buck converter for reducing the input voltage is a linear voltage regulator. Very high efficiencies in some cases due to the absence of resistive power losses.</td>
 <td><Image src={import('./_assets/ptma401120-dcdc-converter-module-from-ti.png')} width="160px">The PTMA401120 DC/DC converter module from Texas Instruments. This can convert anything from 36 to 72V down to 12V with a 1A output.</Image></td>
 </tr>
 <tr>
@@ -167,7 +167,7 @@ If you want to increase the voltage and have really low current requirements, [C
 <li>Fixed output voltages</li>
 </ul>
 </td>
-<td >Uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another, and in the process, increasing the voltage on the second cap. Normally the voltage is doubled, and multiple elements can be connected together to create larger voltage increases.</td>
+<td >Uses capacitors, [diodes](/electronics/components/diodes/), and an oscillating switch to move charge from one capacitor to another, and in the process, increasing the voltage on the second cap. Normally the voltage is doubled, and multiple elements can be connected together to create larger voltage increases.</td>
 <td></td>
 </tr>
 <tr>
@@ -192,7 +192,7 @@ If you want to increase the voltage and have really low current requirements, [C
 
 ## DC/DC Converters And Controllers
 
-<Image src={import('./_assets/recom-acdc-converter.jpg')} width="200px">A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA.</Image>
+<Image src={import('./_assets/recom-acdc-converter.jpg')} width="200px">A Recom AC/DC converter module that can take 100-240VAC as its input and outputs 12V at up to 83mA.</Image>
 
 DC/DC converters and controllers are ICs which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/transistors/mosfets/)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
 
@@ -214,13 +214,13 @@ DC/DC converters can extend their efficient operating current range by enabling 
 
 ## Current Sharing
 
-You can balance current-sharing between two similar power supplies by adding in-line resistance to each of power supply outputs, before connecting them together. Normally power resistors are required (>= 5W), and resistances between 1mΩ and 1Ω are used. Basically, you want to choose the largest resistance that at maximum current won't overheat, and won't drop to much voltage so that the load does not operate correctly. I have used this technique successfully for the [Luxcity UV Tonic project](/electronics/projects/luxcity-uv-tonic-control-system) to current-share between two computer power supplies that were driving the 64 solenoids.
+You can balance current-sharing between two similar power supplies by adding in-line resistance to each of power supply outputs, before connecting them together. Normally power resistors are required (>= 5W), and resistances between 1mΩ and 1Ω are used. Basically, you want to choose the largest resistance that at maximum current won't overheat, and won't drop too much voltage so that the load does not operate correctly. I have used this technique successfully for the [Luxcity UV Tonic project](/electronics/projects/luxcity-uv-tonic-control-system/) to current-share between two computer power supplies that were driving the 64 solenoids.
 
 A great technical article on current sharing can be found at http://powerpartners-inc.com/wp-content/uploads/2018/08/Load_Sharing_Considerations.pdf.
 
 ## Buck-Boost Converter
 
-A buck-boost power converter is a power supply which can produce an output voltage which can be both higher or lower than the input voltage. A buck-boost converter is similar to a SEPIC converter. Buck-boosts are not used unless an output voltage which could be both lower and higher than the input voltage is specifically required, as usually a sole buck or boost converter is cheaper, has a lower part count, and is more efficient. Maxim claims that a boost with linear regulator instead of a buck circuit can out perform a buck/boost in certain applications.
+A buck-boost power converter is a power supply which can produce an output voltage which can be both higher or lower than the input voltage. A buck-boost converter is similar to a SEPIC converter. Buck-boosts are not used unless an output voltage which could be both lower and higher than the input voltage is specifically required, as usually a sole buck or boost converter is cheaper, has a lower part count, and is more efficient. Maxim claims that a boost with linear regulator instead of a buck circuit can outperform a buck/boost in certain applications.
 
 ## Joule Thieves
 

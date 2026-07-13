@@ -2,27 +2,27 @@
 authors: [gbmhunter]
 date: 2019-09-16
 description: An introduction to asynchronous programming in Python, including async/await, coroutines, event loops, queues, tasks and more.
-lastUpdated: 2021-04-13
+lastUpdated: 2026-07-13
 tags: [Python, programming, programming languages, software, async, await, asyncio, coroutines, event loops, asynchronous programming, asynchronous, IO bound, CPU bound, queues, yield, generators, tasks]
 title: An Introduction To Asynchronous Programming In Python
 type: page
 ---
 
-Asynchronous programming is a software paradigm which involves scheduling many small _tasks_ that are invoked when events occurs. It is also known as _event-driven programming_. It is an alternative (although it can also be a complement) to both _multi-threading_ and _multiprocessing_. Asynchronous programming is well suited to tasks which are _IO bound_ and not _CPU bound_. It is well suited for IO bound applications because it allows other tasks to occurs while one task is blocked, waiting on some external process to complete. Because control is only given up explicitly with the `await` keyword, you do not have to worry about common multi-threading issues such as data contention. It is not well suited to CPU bound applications because it does not make use of multiple cores/CPUs.
+Asynchronous programming is a software paradigm which involves scheduling many small _tasks_ that are invoked when events occur. It is also known as _event-driven programming_. It is an alternative (although it can also be a complement) to both _multi-threading_ and _multiprocessing_. Asynchronous programming is well suited to tasks which are _IO bound_ and not _CPU bound_. It is well suited for IO bound applications because it allows other tasks to occur while one task is blocked, waiting on some external process to complete. Because control is only given up explicitly with the `await` keyword, you do not have to worry about common multi-threading issues such as data contention. It is not well suited to CPU bound applications because it does not make use of multiple cores/CPUs.
 
-Two core parts of Pythons asynchronous capabilities a provided through the `await` and `async` keywords. The rest of the functionality is largely supplied by the `asyncio` library. The `asyncio` library **provides event loops and functions to create, run and await tasks**. Event loops are the "runners" of asynchronous functions (these functions are officially called _coroutines_). They keep track of all the coroutines which are currently blocked waiting for an event, and continue these coroutines from where they left off once the event occurs.
+Two core parts of Python's asynchronous capabilities are provided through the `await` and `async` keywords. The rest of the functionality is largely supplied by the `asyncio` library. The `asyncio` library **provides event loops and functions to create, run and await tasks**. Event loops are the "runners" of asynchronous functions (these functions are officially called _coroutines_). They keep track of all the coroutines which are currently blocked waiting for an event, and continue these coroutines from where they left off once the event occurs.
 
-<Image src={import('./python-event-loop.png')} width="400px"></Image>
+<Image src={import('./_assets/python-event-loop.png')} width="400px" />
 
 When you wait for an event with the `await` keyword, Python can save the state of the function (i.e. the value of all the _local variables_, and the point of execution), and return to the active event loop. In the active event loop, the application can respond to other events while it is waiting. Once the specific event you waited on occurs, Python restores the state of the function and returns execution to that exact point is was saved at (they are very similar to _Python generators_).
 
 Python's style of **asynchronous programming goes a long way to prevent _call-back hell_**. _Call-back hell_ was a common problem in Javascript (and many other languages) before the use of `futures` and `promises` became popular. It occurred because the only way to perform asynchronous programming was to provide callbacks (lambda functions). These nested within each other, broke the flow of the code, and severely hindered the readability of the software.
 
-However smart are flexible asynchronous programming may be, synchronous programming is still the bread-and-butter of the Python language. Unfortunately, the two don't mix that well (you can't `await` a synchronous function --- and forgetting to await an asynchronous function will just return a `coroutine` object). You can think of synchronous Python and asynchronous Python as two separate programming styles, and **most of your libraries have to be specifically designed to work with the style you are using**.
+However smart and flexible asynchronous programming may be, synchronous programming is still the bread-and-butter of the Python language. Unfortunately, the two don't mix that well (you can't `await` a synchronous function --- and forgetting to await an asynchronous function will just return a `coroutine` object). You can think of synchronous Python and asynchronous Python as two separate programming styles, and **most of your libraries have to be specifically designed to work with the style you are using**.
 
 ## What Is A Coroutine?
 
-A coroutine is a Python function that has the keyword `await` before the `def`, e.g.:
+A coroutine is a Python function that has the keyword `async` before the `def`, e.g.:
 
 ```py
 async def my_coroutine():
@@ -51,7 +51,7 @@ async def my_coroutine_2():
   await my_coroutine_1() # This time, 'Hello' will be printed
 ```
 
-So now you a probably thinking, since the parent function, and the parent's parent function, and the parent's parent's parent function all have to defined with `async` to be able to use `await`...where does it stop? What if my `main()` is not `async`? And even if that was, how would I call it? This is where the `asyncio` library comes into play.
+So now you are probably thinking, since the parent function, and the parent's parent function, and the parent's parent's parent function all have to defined with `async` to be able to use `await`...where does it stop? What if my `main()` is not `async`? And even if that was, how would I call it? This is where the `asyncio` library comes into play.
 
 **So actually, I lied, you can actually call an `async` function from a non-`async` function**, but you have to use `asyncio` to do so. The simplest way is to use `asyncio.run()`, which takes a coroutine, runs it in a new event loop, and then returns. 
 
@@ -64,14 +64,14 @@ async def my_coroutine():
 
 def main(): # NOTE: main() is not async!
   # We can call an async function from a non-async function by using the asyncio library
-  asyncio.run(my_coroutine)
+  asyncio.run(my_coroutine())
 
 if __name__ == '__main__':
   main()
 ```
 
 <Aside type="note">
-`asyncio.run()` is only available is Python v3.7 or higher.
+`asyncio.run()` is only available in Python v3.7 or higher.
 </Aside>
 
 If you forget to await all coroutines, Python will print the warning:
@@ -109,7 +109,7 @@ However, remember that we can always pass control over to the event loop from sy
 
 ```python
 def main():
-  asyncio.run(my_coroutine) # Passes control to the event loop, which will run my_coroutine, and then return control to here.
+  asyncio.run(my_coroutine()) # Passes control to the event loop, which will run my_coroutine, and then return control to here.
 ```
 
 ## Creating A Worker Model
@@ -223,7 +223,7 @@ The following example shows how tasks will be scheduled to run immediately, and 
 import asyncio
 
 async def wait_and_print(time_to_wait):
-    asyncio.sleep(time_to_wait)
+    await asyncio.sleep(time_to_wait)
     print(f'Hello after {time_to_wait}s')
 
 async def main():

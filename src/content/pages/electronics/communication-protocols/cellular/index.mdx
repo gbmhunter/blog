@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2024-10-01
 description: Cellular communication protocols are those involving cellular networks. This includes GSM, CDMA, LTE, LTE Cat-M1, and NB-IoT.
 image: ./_assets/cover-image.webp
-lastUpdated: 2024-10-02
+lastUpdated: 2026-07-13
 tags: [communication protocols, cellular, LTE, IoT, bands, nRF9160, LPWAN, NB-IoT, LTE Cat NB1, LTE Cat NB2, asset tracking, industrial IoT, smart meters, 4G, 5G]
 title: Cellular Communication Protocols
 type: page
@@ -11,23 +11,22 @@ type: page
 
 <WarningIsNotes />
 
-LPWAN (Low Power Wide Area Network) is a term used to describe a group of cellular communication protocols designed to support IoT devices. This includes the LTE Cat-M1 and NB-IoT standards. The general idea is that these protocols support low power, low bandwidth, low cost communication between cell sites and many simple low power (e.g. battery, solar) embedded devices such as MCUs and their cellular modems.
+LPWAN (Low Power Wide Area Network) is a term used to describe a group of cellular communication protocols designed to support IoT devices. This includes the LTE Cat-M1 and NB-IoT standards. The general idea is that these protocols support low power, low bandwidth, low cost communication between cell sites and many simple low power (e.g. battery, solar) embedded devices such as MCUs and their [cellular modems](/electronics/components/cellular-modems/).
 
 Applications for LPWAN include:
 
-* Smart water/gas/electricity meters
-* Environmental monitoring (e.g. water quality, air quality, temperature)
-* Smart cities (e.g. smart bins, street lights, parking and metering)
-* Asset tracking (e.g. cars, trucks, trailers, shipping containers)
-* Industrial IoT (e.g. machinery, equipment)
-* Agricultural IoT (e.g. livestock, soil, weather)
+- Smart water/gas/electricity meters
+- Environmental monitoring (e.g. water quality, air quality, temperature)
+- Smart cities (e.g. smart bins, street lights, parking and metering)
+- Asset tracking (e.g. cars, trucks, trailers, shipping containers)
+- Industrial IoT (e.g. machinery, equipment)
+- Agricultural IoT (e.g. livestock, soil, weather)
 
-LTE (Long Term Evolution) is a term used to describe the fourth generation (4G) cellular networks designed to replace 3G. LTE Cat-M1 and NB-IoT are two variants of LTE designed for IoT devices. Even though they were introduces as part of 4G, both LTE Cat-M and NB-IoT will continue to evolve with newer 5G standards.
+LTE (Long Term Evolution) is a term used to describe the fourth generation (4G) cellular networks designed to replace 3G. LTE Cat-M1 and NB-IoT are two variants of LTE designed for IoT devices. Even though they were introduced as part of 4G, both LTE Cat-M and NB-IoT will continue to evolve with newer 5G standards.
 
-<IRef iref="lpwan-standards-comparison" /> compares some of the key metrics across many of the popular LPWAN standards.
+The table below compares some of the key metrics across many of the popular LPWAN standards.
 
 <Table
-  iref="lpwan-standards-comparison"
   data={
     [
       {
@@ -77,29 +76,29 @@ LTE Cat-M1 is a cellular communication protocol designed for IoT devices. It is 
 
 LTE uses categories to classify the capabilities of devices, where Cat 1 devices support download speeds of 10 Mbps and Cat 4 150 Mbps. Cat M1 supports up to 1 Mbps.
 
-Cat-M1 uses a bandwidth of 1.4 MHz. This is narrow compared to other LTE variants, which allows for more devices to be connected to a cell site on the same frequency band. A typical LTE cell site can support 10x as many Cat-M1 devices compared to regular LTE devices[^twilio-lte-cat-m-for-iot-devices]. This makes it ideal from the cellular providers perspective for IoT devices that are densely deployed.
+A typical LTE cell site can support 10x as many Cat-M1 devices compared to regular LTE devices[^twilio-lte-cat-m-for-iot-devices]. This makes it ideal from the cellular provider's perspective for IoT devices that are densely deployed.
 
 ### Coverage
 
-Cat-M1 is not at widely deployed as regular LTE. However, as of 2024 it has good coverage in many countries. <IRef iref="gsma-mobile-iot-deployment-map" /> shows the coverage of LTE-M and NB-IoT across the globe.
+Cat-M1 is not as widely deployed as regular LTE. However, as of 2024 it has good coverage in many countries. The map below shows the coverage of LTE-M and NB-IoT across the globe.
 
-<Image iref="gsma-mobile-iot-deployment-map" src={import('./_assets/gsma-mobile-iot-deployment-map.webp')} width="800px">A world map showing where LTE-M and NB-IoT networks have been deployed[^gsma-mobile-iot-deployment-map].</Image>
+<Image src={import('./_assets/gsma-mobile-iot-deployment-map.webp')} width="800px">A world map showing where LTE-M and NB-IoT networks have been deployed[^gsma-mobile-iot-deployment-map].</Image>
 
 ### Power Consumption
 
 Cat M1 reduces the power consumption of devices with two features regular LTE does not support:
 
-* Power saving mode (PSM)
-* Extended Discontinuous Reception (eDRX)
+- Power saving mode (PSM)
+- Extended Discontinuous Reception (eDRX)
 
 Cat-M1 has a power saving mode (PSM) that allows the devices to sleep for extended periods of time, reducing power consumption. Devices can negotiate an extended sleep period (hours or days) with the network. If any traffic arrives for the device while it is in sleep mode, the network buffers the data until the device wakes up (becomes ACTIVE)[^twilio-lte-cat-m-for-iot-devices].
 
-eDRX (Extended Discontinuous Reception) also allows for further power savings for IoT devices. Phones don't normally have a continuous connection with the cell site. Instead, they frequently connect and check for new data every 2.56 seconds (typically). Between these connections, the devices cellular modem is in a low-power sleep state.
+eDRX (Extended Discontinuous Reception) also allows for further power savings for IoT devices. Phones don't normally have a continuous connection with the cell site. Instead, they frequently connect and check for new data every 2.56 seconds (typically). Between these connections, the device's cellular modem is in a low-power sleep state.
 
 eDRX allow for the device to negotiate longer sleep periods with the network. They can negotiate two parameters:
 
-* PTW (amount of time the device is reachable for in each cycle) between 1.28 and 20.48 s
-* eDRX cycle (amount of time the device is unreachable for in each cycle) up to 48 mins
+- PTW (amount of time the device is reachable for in each cycle) between 1.28 and 20.48 s
+- eDRX cycle (amount of time the device is unreachable for in each cycle) up to ~44 mins
 
 The **Paging Time Window** (PTW) is the amount of time the device is reachable for in each cycle. The **eDRX cycle** is the amount of time the device is unreachable for in each cycle. Together they sum to form the **Page Cycle Length** (PCL).
 
@@ -107,14 +106,14 @@ The **Paging Time Window** (PTW) is the amount of time the device is reachable f
 
 Cat-M1 is designed to operate in the frequency bands specified in section 5.5E in 3GPP TS 36.101, which include[^eseye-frequency-bands]:
 
-* FDD (half duplex and full-duplex) bands - 1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 18, 19, 20, 21, 24, 25, 26, 27, 28, 31, 66, 71, 72, 73, 74, 85, 87 and 88
-* TDD bands - 39, 40, 41, 42 and 43
+- FDD (half duplex and full-duplex) bands - 1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 18, 19, 20, 21, 24, 25, 26, 27, 28, 31, 66, 71, 72, 73, 74, 85, 87 and 88
+- TDD bands - 39, 40, 41, 42 and 43
 
 ### Modem Support
 
-The [Nordic](/programming/microcontrollers/nordic/) nRF9160 SiP (System in Package) supports Cat-M1 (as well as NB-IoT). It has a quoted current consumption of eDRX @ 81.92s: 18 µA in Cat-M1, 37 µA in Cat-NB1 (UICC included[^nordic-nrf9160-product-spec].
+The [Nordic](/programming/microcontrollers/nordic/) nRF9160 SiP (System in Package) supports Cat-M1 (as well as NB-IoT). It has a quoted current consumption of eDRX @ 81.92s: 18 µA in Cat-M1, 37 µA in Cat-NB1 (UICC included).[^nordic-nrf9160-product-spec]
 
-<Image iref="nordic-nrf9160-sip" src={import('./_assets/nrf9160-sip-photo.webp')} width="300px">A close-up photo of the nRF9160 SiP from Nordic Semiconductor[^nordic-nrf9160].</Image>
+<Image src={import('./_assets/nrf9160-sip-photo.webp')} width="300px">A close-up photo of the nRF9160 SiP from Nordic Semiconductor[^nordic-nrf9160].</Image>
 
 ## NB-IoT
 
@@ -124,54 +123,50 @@ Unlike Cat-M1, NB-IoT does not support cellular tower handovers. This means that
 
 There are two NB-IoT standards[^haltian-nb1-vs-nb2]:
 
-* **LTE Cat NB1**: Standardized in 3GPP Release 13.
-* **LTE Cat NB2**: Standardized in 3GPP Release 14. LTE Cat NB2 is a newer standard which improves on LTE Cat NB1, increasing the data rates, adding support for lower transmit powers and adding positioning support.
+- **LTE Cat NB1**: Standardized in 3GPP Release 13.
+- **LTE Cat NB2**: Standardized in 3GPP Release 14. LTE Cat NB2 is a newer standard which improves on LTE Cat NB1, increasing the data rates, adding support for lower transmit powers and adding positioning support.
 
-<IRef iref="lte-cat-nb-comparison" /> compares some of the key metrics of the two NB-IoT standards.
+The table below compares some of the key metrics of the two NB-IoT standards.
 
-<table data-iref="lte-cat-nb-comparison">
-  <thead>
-    <tr>
-      <th>Feature</th>
-      <th>LTE Cat NB1</th>
-      <th>LTE Cat NB2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Bandwidth</td>
-      <td>180kHz</td>
-      <td>180kHz</td>
-    </tr>
-    <tr>
-      <td>Max. downlink data rate</td>
-      <td>26 kbps</td>
-      <td>80/127 kbps (1HARQ/2HARQ)</td>
-    </tr>
-    <tr>
-      <td>Max. uplink data rate</td>
-      <td>62 kbps</td>
-      <td>105/159 kbps (1HARQ/2HARQ)</td>
-    </tr>
-    <tr>
-      <td>Positioning</td>
-      <td>Cell ID</td>
-      <td>OTDOA, E-CID</td>
-    </tr>
-    <tr>
-      <td>Max. transmission power</td>
-      <td>20, 23 dBm</td>
-      <td>14, 20, 23 dBm</td>
-    </tr>
-  </tbody>
-  <caption>Comparison of LTE Cat NB1 and LTE Cat NB2 features.</caption>
-</table>
+<Table
+  data={
+    [
+      {
+        "Feature": "Bandwidth",
+        "LTE Cat NB1": "180 kHz",
+        "LTE Cat NB2": "180 kHz",
+      },
+      {
+        "Feature": "Max. downlink data rate",
+        "LTE Cat NB1": "26 kbps",
+        "LTE Cat NB2": "80/127 kbps (1HARQ/2HARQ)",
+      },
+      {
+        "Feature": "Max. uplink data rate",
+        "LTE Cat NB1": "62 kbps",
+        "LTE Cat NB2": "105/159 kbps (1HARQ/2HARQ)",
+      },
+      {
+        "Feature": "Positioning",
+        "LTE Cat NB1": "Cell ID",
+        "LTE Cat NB2": "OTDOA, E-CID",
+      },
+      {
+        "Feature": "Max. transmission power",
+        "LTE Cat NB1": "20, 23 dBm",
+        "LTE Cat NB2": "14, 20, 23 dBm",
+      }
+    ]
+  }
+>
+  <caption slot="caption">Comparison of LTE Cat NB1 and LTE Cat NB2 features.</caption>
+</Table>
 
 The addition of the lower 14 dBm transmit power in Cat NB2 allows for devices with smaller batteries and thus smaller overall form factors to use the network.
 
 ## Antennas
 
-Wide band cellular antennas are designed to work with the wide range of frequencies used by cellular networks. A common range supported is from about 600-800MHz up to 5G (5GHz).
+Wide band cellular [antennas](/electronics/components/antennas/) are designed to work with the wide range of frequencies used by cellular networks. A common range supported is from about 600-800MHz up to 5G (5GHz).
 
 ### Examples
 
@@ -179,19 +174,19 @@ Wide band cellular antennas are designed to work with the wide range of frequenc
 
 The Linx Technologies ANT-5GW-SPS1 Series is an external panel mount puck-style multiband antenna. It supports:[^linx-technologies-ant-5gw-sps1-series-ds]
 
-* 5G
-* LTE
-* LTE-M
-* NB-IoT
-* 433 MHz, 868 MHz, and 915 MHz LPWA
+- 5G
+- LTE
+- LTE-M
+- NB-IoT
+- 433 MHz, 868 MHz, and 915 MHz [LPWA](/electronics/communication-protocols/sub-ghz-ism-bands/)
 
 It is a ground-plane independent dipole antenna so it can be mounted on metallic and non-metallic surfaces.
 
-<Image iref="fig-linx-technologies-ant-5gw-sps1-series-panel-mount-cellular-antenna" src={import('./_assets/linx-technologies-ant-5gw-sps1-series-panel-mount-cellular-antenna.webp')} width="300px">A panel mount antenna from Linx Technologies.[^linx-technologies-ant-5gw-sps1-series-ds]</Image>
+<Image src={import('./_assets/linx-technologies-ant-5gw-sps1-series-panel-mount-cellular-antenna.webp')} width="300px">A panel mount antenna from Linx Technologies.[^linx-technologies-ant-5gw-sps1-series-ds]</Image>
 
-<IRef iref="fig-linx-technologies-ant-5gw-sps1-series-band-specs" /> shows the band (frequency) specifications for the Linx Technologies ANT-5GW-SPS1 Series antenna.
+The image below shows the band (frequency) specifications for the Linx Technologies ANT-5GW-SPS1 Series antenna.
 
-<Image iref="fig-linx-technologies-ant-5gw-sps1-series-band-specs" src={import('./_assets/linx-technologies-ant-5gw-sps1-series-band-specs.webp')} width="1000px">The band specifications for the Linx Technologies ANT-5GW-SPS1 Series antenna.[^linx-technologies-ant-5gw-sps1-series-ds]</Image>
+<Image src={import('./_assets/linx-technologies-ant-5gw-sps1-series-band-specs.webp')} width="1000px">The band specifications for the Linx Technologies ANT-5GW-SPS1 Series antenna.[^linx-technologies-ant-5gw-sps1-series-ds]</Image>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -206,5 +201,4 @@ It is a ground-plane independent dipole antenna so it can be mounted on metallic
 [^nordic-nrf9160]: Nordic Semiconductor. _Products > nRF9160_ [product page]. Retrieved 2024-10-02, from https://www.nordicsemi.com/Products/nRF9160.
 [^onomondo-lte-explainer]: Michael Bosson (2023, Mar 3). _LTE explainer: LTE Cat 1, LTE Cat 1bis, LTE-M, and NB-IoT_. Onomondo. Retrieved 2024-10-02, from https://onomondo.com/blog/lte-standards-for-iot-comparison/.
 [^wikipedia-narrowband-iot]: Wikipedia (2024, Apr 1). _Narrowband IoT_. Retrieved 2024-10-02, from https://en.wikipedia.org/wiki/Narrowband_IoT.
-[^linx-technologies-ant-5gw-sps1-series-ds]: Linx Technologies. _ANT-5GW-SPS1 SERIES - Panel Mount 5G/LTE Antenna_ [datasheet]. Retrieved 2025-06-09, from 
-https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=ANT-5GW-SPS1_SERIES&DocType=Data+Sheet&DocLang=English&DocFormat=pdf&PartCntxt=ANT-5GW-SPS1-1.
+[^linx-technologies-ant-5gw-sps1-series-ds]: Linx Technologies. _ANT-5GW-SPS1 SERIES - Panel Mount 5G/LTE Antenna_ [datasheet]. Retrieved 2025-06-09, from https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=ANT-5GW-SPS1_SERIES&DocType=Data+Sheet&DocLang=English&DocFormat=pdf&PartCntxt=ANT-5GW-SPS1-1.

@@ -132,5 +132,7 @@
   flex: 1 1 9rem;
 }
 .opa__readout-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--sl-color-gray-2); }
+/* math variable inside an (otherwise uppercased) label — keep its real case + italics */
+.opa__var { text-transform: none; font-style: italic; }
 .opa__readout-value { font-family: var(--__sl-font-mono, ui-monospace, monospace); font-size: 0.95rem; color: var(--sl-color-text); }
 .opa__muted { color: var(--sl-color-gray-2); font-size: 0.85em; }

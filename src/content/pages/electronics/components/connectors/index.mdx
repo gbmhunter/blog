@@ -3,15 +3,15 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: Connectors electronically connect things like PCBs to wires, or PCBs to PCBs. This section covers terminology, types, manufacturers, common usages and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2021-12-03
+lastUpdated: 2026-07-13
 tags: [electronics, connectors, electronic components, circular connectors, pogo, TagConnect, spring-loaded, socket, plug, crimp, plating, contacts, IDC, insulation displacement connectors, terminal blocks, DE-9, DB-9, DB-25, headers, IEC 60320]
 title: Connectors
 type: page
 ---
 
-Electrical _connectors_ are physical devices to electrically connect things together. Not only are they used in the traditional sense to connect a wire to a board (board usually means PCB), but there is a huge number of types to connect wires to wires, boards to boards, wires to panels (panel mount), breakouts, and more. There are specialty connectors for RF (radio frequency), high current and high voltage. Connectors can also be characterized by their shape, for example the popular M8/M12 circular connectors.
+Electrical _connectors_ are physical devices to electrically connect things together. Not only are they used in the traditional sense to connect a [wire to a board](/electronics/components/connectors/wire-to-board/) (board usually means PCB), but there is a huge number of types to connect wires to wires, boards to boards, wires to panels (panel mount), breakouts, and more. There are specialty connectors for [RF (radio frequency)](/electronics/components/connectors/rf/), high current and high voltage. Connectors can also be characterized by their shape, for example the popular M8/M12 [circular connectors](/electronics/components/connectors/mx-circular-connectors/).
 
-<Image src={import('./_assets/jst-ph-connector-photo.png')} width="300">Photo of the W2B (wire-to-board) PH 2.0mm pitch connector from JST[^bib-jst-ph-conn].</Image>
+<Image src={import('./_assets/jst-ph-connector-photo.png')} width="300px">Photo of the W2B (wire-to-board) PH 2.0mm pitch connector from JST[^bib-jst-ph-conn].</Image>
 
 This page will hopefully explain the various types of connectors you can purchase and when they should be used in electronic/embedded projects. 
 
@@ -39,6 +39,7 @@ This page will hopefully explain the various types of connectors you can purchas
             <td>Card edge (inc. latching)</td>
             <td>Yes, but not always for all parts in a connector family. (Step, IGES, Parasolid)</td>
             <td>3</td>
+            <td>?</td>
         </tr>
         <tr>
             <td>Harting</td>
@@ -46,6 +47,7 @@ This page will hopefully explain the various types of connectors you can purchas
             <td>Card edge</td>
             <td>Yes (Step)</td>
             <td>5</td>
+            <td>?</td>
         </tr>
         <tr>
             <td>Hirose</td>
@@ -53,6 +55,7 @@ This page will hopefully explain the various types of connectors you can purchas
             <td>High-end circular</td>
             <td>Yes, after providing your paid-for email address. (Step)</td>
             <td>5</td>
+            <td>?</td>
         </tr>
         <tr>
             <td>Molex</td>
@@ -100,6 +103,7 @@ Rugged circular.
             <td>Backplane</td>
             <td>?</td>
             <td>6</td>
+            <td>?</td>
         </tr>
     </tbody>
 </table>
@@ -110,21 +114,21 @@ Many connectors come to at least two plating options, either tin or gold. Gold i
 
 There is the 50:50:50 rule (taken from www.connector.com, as of **Dec 2017, link no longer alive**) when it comes to deciding which plating to choose. The rule says that tin is the best choice if:
 
-* You have less than 50 contacts (due to the mating force getting too large)
-* The connector will experience 50 or less mating cycles
-* You can live with 50mOhms of contact resistance over time
+- You have less than 50 contacts (due to the mating force getting too large)
+- The connector will experience 50 or less mating cycles
+- You can live with 50mOhms of contact resistance over time
 
 Selecting gold tinned contacts can add a good US\$0.50 or more to the price of the connector.
 
 Mixing the two plating metals is not recommended! The corrosion rate is greatly increased when two dissimilar metals come into contact with each other (this is due to the difference in the metal's electrode potentials, which is +1.5V for gold, and only +0.15V for tin).
 
-<Image src={import('./_assets/gold-and-tin-plated-contacts.jpg')} width="500">You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/</Image>
+<Image src={import('./_assets/gold-and-tin-plated-contacts.jpg')} width="500px">You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/</Image>
 
 ## Telecom Connectors
 
 ### BT Connector
 
-The connector called the "BT" connector (which is an acronym for the British Telecom connector) is commonly used through out houses in many countries (including the U.K. and New Zealand) to plug into a  Telecom jack that is mounted on the wall. It's proper name is the BS6312 431A plug. You can get cheap BT to RJ-11 adapters.
+The connector called the "BT" connector (which is an acronym for the British Telecom connector) is commonly used through out houses in many countries (including the U.K. and New Zealand) to plug into a  Telecom jack that is mounted on the wall. Its proper name is the BS6312 431A plug. You can get cheap BT to RJ-11 adapters.
 
 ## Contactless Connectors
 
@@ -132,19 +136,19 @@ Contactless connectors is the name given to connectors which don't require a phy
 
 This is still a relatively new field compared to other forms of connectors, and unit prices are still very high.
 
-TE Connectivity make a range under the family name [ARISO](http://www.digikey.co.nz/en/product-highlight/t/te-connectivity-amp/ariso-contactless-connectivity). They are capable to transmitting up to 12W of power at 24VDC.
+TE Connectivity make a range under the family name [ARISO](http://www.digikey.co.nz/en/product-highlight/t/te-connectivity-amp/ariso-contactless-connectivity). They are capable of transmitting up to 12W of power at 24VDC.
 
-<Image src={import('./_assets/te-connectivity-ariso-m30-contactless-connector-pair-photo.png')} width="640">A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com.</Image>
+<Image src={import('./_assets/te-connectivity-ariso-m30-contactless-connector-pair-photo.png')} width="640px">A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com.</Image>
 
 ## Barrier Strips
 
-_Barrier strips_ (a.k.a. _barrier blocks_) are rows of screw-based electrical clamps designed to connect wires together. They are very similar to [^_terminal_blocks, terminal blocks], however they generally provide better protection than terminal blocks against loose of frayed wire ends shorting out against adjacent positions. They are also generally rated for higher current/voltage applications than terminal blocks (300-600V, 10-30A ratings are common), and consequentially usually larger (pitches of 8-12mm).
+_Barrier strips_ (a.k.a. _barrier blocks_) are rows of screw-based electrical clamps designed to connect wires together. They are very similar to [terminal blocks](/electronics/components/connectors/terminal-blocks/), however they generally provide better protection than terminal blocks against loose or frayed wire ends shorting out against adjacent positions. They are also generally rated for higher current/voltage applications than terminal blocks (300-600V, 10-30A ratings are common), and consequentially usually larger (pitches of 8-12mm).
 
-<Image src={import('./_assets/molex-0387700104-barrier-strip-photo.png')} width="400">Photo of a 4 circuit 9.53mm (0.375") pitch barrier strip by Molex (part number: 0387700104). Image retrieved 2021-10-07, from https://www.digikey.com/en/products/detail/molex/0387700104/362488.</Image>
+<Image src={import('./_assets/molex-0387700104-barrier-strip-photo.png')} width="400px">Photo of a 4 circuit 9.53mm (0.375") pitch barrier strip by Molex (part number: 0387700104). Image retrieved 2021-10-07, from https://www.digikey.com/en/products/detail/molex/0387700104/362488.</Image>
 
 Whilst terminal blocks don't usually have an exposed metal that can easily short out against neighbouring parts, barrier strips are open on the top face (to allow for the connection of lugs). If the exposed conductors are a problem, you can purchase some barrier strips that come with insulating covers. The covers are usually see-through and made of plastic.
 
-<Image src={import('./_assets/barrier-strips-forks-coloured-glarks.png')} width="400">Photo of covered barrier strips, combs and wire forks. Image retrieved 2021-10-07, from https://www.amazon.com/Glarks-Positions-Terminals-Pre-Insulated-Insulated/dp/B07Y217129/.</Image>
+<Image src={import('./_assets/barrier-strips-forks-coloured-glarks.png')} width="400px">Photo of covered barrier strips, combs and wire forks. Image retrieved 2021-10-07, from https://www.amazon.com/Glarks-Positions-Terminals-Pre-Insulated-Insulated/dp/B07Y217129/.</Image>
 
 Barrier strips can be found on DigiKey at https://www.digikey.com/en/products/filter/terminal-blocks-barrier-blocks/368.
 
@@ -158,7 +162,7 @@ Board-to-board-connectors which connect PCBs ontop of one another are called _me
 
 ### Wire-to-Board (WTB) Support
 
-Some board-to-board connector families are have wire-to-board support, with a special wire-crimped inline receptacle which mates with the PCB-mounted connector that works with both the board-to-board and wire-to-board connectors.
+Some board-to-board connector families have wire-to-board support, with a special wire-crimped inline receptacle which mates with the PCB-mounted connector that works with both the board-to-board and wire-to-board connectors.
 
 The Hirose DF-59 family is a set of board-to-board/board-to-wire connectors. The special feature about this family is the "floating" contact which allows up to 0.5mm of mis-alignment between the boards.
 
@@ -182,7 +186,7 @@ Card-edge connectors are very susceptible to board warping and board thickness e
 
 <Image src={import('./_assets/edge-connector-gold-fingers-and-bevel.png')} width="445px">Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors.</Image>
 
-The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown).
+The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown/).
 
 <Image src={import('./_assets/pcb-card-edge-connector-example-from-cavro-xl-3000.jpg')} width="1200px">An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump.</Image>
 
@@ -202,11 +206,11 @@ In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from
 
 ## Identifying Connectors
 
-Unlike most other electrical components, most connector manufacturers do not append any letter codes in the part numbers for connectors, rather they are just a long sequence of numbers. This can make part recognition very confusing (e.g. when you see an IC with "74" in it's part name, you instantly think of digital logic). A standard way to indicate pin 1 on a connector PCB footprint is to make the copper pad surrounding the pin 1 hole to be a different shape than the rest (e.g. square, while all the others are round).
+Unlike most other electrical components, most connector manufacturers do not append any letter codes in the part numbers for connectors, rather they are just a long sequence of numbers. This can make part recognition very confusing (e.g. when you see an IC with "74" in its part name, you instantly think of digital logic). A standard way to indicate pin 1 on a connector PCB footprint is to make the copper pad surrounding the pin 1 hole to be a different shape than the rest (e.g. square, while all the others are round).
 
-The website https://connectorbook.com/identification.html is a great tool to help you identify unknown connectors. If guides you through a series of questions which narrows down the connector you are looking at.
+The website https://connectorbook.com/identification.html is a great tool to help you identify unknown connectors. It guides you through a series of questions which narrows down the connector you are looking at.
 
-<Image src={import('./_assets/identifying-a-w2b-connector-on-connector-book.png')} width="700px">Identifying a W2B (wire-to-board) connector with the help connectorbook.com[^bib-connector-book].</Image>
+<Image src={import('./_assets/identifying-a-w2b-connector-on-connector-book.png')} width="700px">Identifying a W2B (wire-to-board) connector with the help of connectorbook.com[^bib-connector-book].</Image>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

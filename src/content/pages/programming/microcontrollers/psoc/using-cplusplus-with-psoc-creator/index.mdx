@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2013-04-03
-lastUpdated: 2013-04-03
+lastUpdated: 2026-07-13
 tags: [C++, PSoC, PSoC Creator, C, IDEs, gcc, g++, microcontroller, new, delete, vtable, nothrow]
 title: Using C++ With PSoC Creator
 type: page
@@ -9,7 +9,7 @@ type: page
 
 With a few hacks, you can compile C++ with the [PSoC Creator IDE](http://www.cypress.com/?id=2494) and run C++ code on PSoC microcontrollers!
 
-For more information about C++, check out the pages under Programming->Languages->C++.
+For more information about C++, check out the pages under [Programming->Languages->C++](/programming/languages/c-plus-plus/).
 
 ## Using "-x c++"
 
@@ -47,7 +47,7 @@ int main() {
 
 ## Wrapping External C Code
 
-Wrap `extern C{< C code goes here>}` around all C header includes or global C functions (including `device.h`), that don't have inbuilt protection. This is to provide C linkage. You don't have to do this for standard C libraries, they all have this protection built into them.
+Wrap `extern "C" { <C code goes here> }` around all C header includes or global C functions (including `device.h`), that don't have inbuilt protection. This is to provide C linkage. You don't have to do this for standard C libraries, they all have this protection built into them.
 
 The following code shows an example.
 
@@ -85,7 +85,7 @@ void operator delete(void* ptr) {
 }
 ```
 
-If your dealing with dynamically-allocated arrays, you'll also want to declare these:
+If you're dealing with dynamically-allocated arrays, you'll also want to declare these:
 
 ```c    
 void * operator new[](size_t size) { 
@@ -100,7 +100,7 @@ void operator delete[](void * ptr)
 
 ## Preventing Exceptions
 
-You'll notice that if you are trying to use your own versions of `new` and `delete`, you will get a error from the linker saying undefined reference to `__gxx_personality_v0`.
+You'll notice that if you are trying to use your own versions of `new` and `delete`, you will get an error from the linker saying undefined reference to `__gxx_personality_v0`.
 
 <Image src={import('./_assets/cplusplus-linker-error-undefined-reference-to-gxx-personality.png')} width="600px">Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error.</Image>
 
@@ -108,11 +108,11 @@ and/or the reported error from PSoC Creator saying `undefined reference to __cxa
 
 <Image src={import('./_assets/c-linker-error-undefined-reference-to-cxa-end-cleanup.png')} width="600px">Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __cxa_end_cleanup' linker error.</Image>
 
-To prevent this, you have the to include the build flag `-fno-exceptions` to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "compilers", then "Command Line", and enter `-fno-excpetions` to the "Custom Flags" field.
+To prevent this, you have to include the build flag `-fno-exceptions` to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "compilers", then "Command Line", and enter `-fno-exceptions` to the "Custom Flags" field.
 
 <Image src={import('./_assets/psoc-creator-build-settings-to-use-new-delete-fno-exceptions.png')} width="800px">Add the custom compile flag '-fno-exceptions' flag via the 'Build Settings' menu in PSoC Creator.</Image>
 
-Incase you didn't want to globally disable exceptions, you can disable exceptions for the new operator on a case-by-case basis by using the `nothrow` keyword. For example:
+In case you didn't want to globally disable [exceptions](/programming/languages/c-plus-plus/exceptions/), you can disable exceptions for the new operator on a case-by-case basis by using the `nothrow` keyword. For example:
 
 ```c++
 // Using nothrow to prevent an exception being thrown if the memory allocation of 2000 bytes fails
@@ -123,7 +123,7 @@ When using the `nothrow` keyword, new will return `NULL` if the memory allocatio
 
 ## Virtual Functions
 
-If you get the linker error `undefined reference to "__cxa_pure_virtual"`, it's probably because you are trying to use virtual functions (it's related to the vtable). Use the compiler flag `-fno-rtti` to suppress this error.
+If you get the linker error `undefined reference to "__cxa_pure_virtual"`, it's probably because you are trying to use [virtual functions](/programming/languages/c-plus-plus/virtual-methods/) (it's related to the vtable). Use the compiler flag `-fno-rtti` to suppress this error.
 
 An alternative is to provide the missing function, as shown below:
     
@@ -139,7 +139,7 @@ Because it's only the linker that looks for this function, you can normally get 
 
 ## Guard Acquire And Guard Release Errors
 
-If you get the error `undefined reference to '__cxa_guard_aquire'` and/or `undefined reference to '__cxa_guard_release'`, it's because C++ is looking for a few functions which implement thread safety for static variables. You usually get this error while initialising static variables/classes which are inside functions (statics that are global to the file will not cause this error).
+If you get the error `undefined reference to '__cxa_guard_acquire'` and/or `undefined reference to '__cxa_guard_release'`, it's because C++ is looking for a few functions which implement thread safety for static variables. You usually get this error while initialising static variables/classes which are inside functions (statics that are global to the file will not cause this error).
 
 To prevent this error, add the compile flag `-fno-threadsafe-statics` to the build options for that C++ file. Note that you must make sure that the static is only used in one thread (or provide your own locks to make it thread-safe)!
 
@@ -148,12 +148,12 @@ To provide your own locks, you need to complete function definitions and declara
 ```c++
 __extension__ typedef int __guard __attribute__((mode (__DI__))); 
 
-// Definitions
+// Declarations
 extern "C" int __cxa_guard_acquire(__guard *); 
 extern "C" void __cxa_guard_release (__guard *); 
 extern "C" void __cxa_guard_abort (__guard *); 
 
-// Declarations
+// Definitions
 int __cxa_guard_acquire(__guard *g) {return !*(char *)(g);}; 
 void __cxa_guard_release (__guard *g) {*(char *)g = 1;}; 
 void __cxa_guard_abort (__guard *) {}; 
@@ -165,7 +165,7 @@ Because it's only the linker that looks for these functions, you can normally ge
 
 The standard C++ library contains many powerful utilities, however, most of these come at the expense of using plenty of code/RAM space, as well as potentially using exceptions (I have not got exceptions to work correctly on a PSoC device).
 
-For example, including `<iostream>` can cause your memory to instantly overflow. I assume this is probably because of advanced features such a locale support. Upon removing the include, the memory usage didn't shrink back to normal until I did a clean build.
+For example, including `<iostream>` can cause your memory to instantly overflow. I assume this is probably because of advanced features such as locale support. Upon removing the include, the memory usage didn't shrink back to normal until I did a clean build.
 
 Because of this, I almost use no standard C++ library features for embedded firmware. Instead, I have written a number of firmware modules which emulate the most useful standard C++ library features (such as strings, vectors, etc.) but are suitable for running on microcontrollers. You can download the modules from the [MToolkit repository on GitHub](https://github.com/gbmhunter/MToolkit).
 
@@ -183,7 +183,7 @@ C++ code can be debugged using the MiniProg3 and the in-built debugging faciliti
 
 ## Interrupts
 
-A useful feature about interrupts on the PSoC is that you can create one schematically, and then pass in a callback function for the interrupt using the auto-generated API `Interrupt_StartEx(&CallbackFunction);`. However, this poses a problem if you are creating a class, and want the interrupt to call one of the classes functions. C++ will not allow you to take the address of the member function (as a single parameter, although you can have method callbacks if you store both the object and a method reference, see the project [slotmachine-cpp](https://github.com/gbmhunter/slotmachine-cpp)). One way to get around this is to declare your class interrupt callback functions as static as shown in the following code.
+A useful feature about interrupts on the PSoC is that you can create one schematically, and then pass in a callback function for the interrupt using the auto-generated API `Interrupt_StartEx(&CallbackFunction);`. However, this poses a problem if you are creating a class, and want the interrupt to call one of the class's functions. C++ will not allow you to take the address of the member function (as a single parameter, although you can have method callbacks if you store both the object and a method reference, see the project [slotmachine-cpp](https://github.com/gbmhunter/slotmachine-cpp)). One way to get around this is to declare your class interrupt callback functions as static as shown in the following code.
 
 ```c
 // Assumes ISR component is added on schematic called
@@ -194,7 +194,7 @@ class VoltageMeas {
     public:
         // Function prototype of ISR callback function AdcDone
         static CY_ISR_PROTO(AdcDone);
-}
+};
 
 // ISR callback function definition
 // Notice you can still wrap function
@@ -204,7 +204,7 @@ CY_ISR(VoltageMeas::AdcDone) {
     // Do interrupt stuff...
 }
 
-main() {
+int main() {
     VoltageMeas voltMeas;
 
     // Since AdcDone() is static, this next line
@@ -217,15 +217,15 @@ Note that if you start creating multiple objects of classes with these static in
 
 ## Compiling/Linking With arm-none-eabi-g++.exe
 
-I have also experimented with building with the C++ compiler/linker directly (as opposed to the `-c c++` method). Why would we want to do this? There are differences between building with the GCC compiler and `-x c++` compared to building directly with `arm-none-eabi-g++.exe`. I believe most of the differences (if not all) are because in the first case, the C-linker is used, while in the latter case, the C++-linker is used. Without using the C++ linker, we can't use virtual methods or exceptions in our code (note: all PSoC code with exceptions compiles fine with G++, I haven't got it to actually work without crashing a PSoC microcontroller yet).
+I have also experimented with building with the C++ compiler/linker directly (as opposed to the `-x c++` method). Why would we want to do this? There are differences between building with the GCC compiler and `-x c++` compared to building directly with `arm-none-eabi-g++.exe`. I believe most of the differences (if not all) are because in the first case, the C-linker is used, while in the latter case, the C++-linker is used. Without using the C++ linker, we can't use virtual methods or exceptions in our code (note: all PSoC code with exceptions compiles fine with G++, I haven't got it to actually work without crashing a PSoC microcontroller yet).
 
-This is not easy, as unfortunately, PSoC creator is hard coded to call `arm-none-eabi-gcc.exe`, no matter what GCC/ARM toolchain you point it too. However, I have found that you can get around this by renaming `arm-none-eabi-g++.exe` to `arm-none-eabi-gcc.exe`.
+This is not easy, as unfortunately, PSoC creator is hard coded to call `arm-none-eabi-gcc.exe`, no matter what GCC/ARM toolchain you point it to. However, I have found that you can get around this by renaming `arm-none-eabi-g++.exe` to `arm-none-eabi-gcc.exe`.
 
 These files are located in `C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\gnu_cs\arm\4.7.3\bin` (or similar) if you are on a modern Windows machine and using the default toolchain. Before you rename `arm-none-eabi-g++.exe`, rename the pre-existing `arm-none-eabi-gcc.exe` so that you won't overwrite it.
 
 Building with `arm-none-eabi-g++.exe` seems to get rid of the thread-safe static function definitions missing errors, exception function missing errors, and allows you to use virtual functions. This highlights the differences between building with the GCC compiler and `-x c++` compared to building directly with `arm-none-eabi-g++.exe`.
 
-## Questions I Still Don't Have An Answer Too...
+## Questions I Still Don't Have An Answer To...
 
 Can we use exceptions with the PSoC microcontroller? Yes, I know they can be resource intensive, but none-the-less it would be interesting to know if it were possible. If you have had any luck with exceptions, please leave a comment below!
 

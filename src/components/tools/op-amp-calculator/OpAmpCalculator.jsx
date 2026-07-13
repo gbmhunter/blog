@@ -92,11 +92,11 @@ export default function OpAmpCalculator() {
           <div class="opa__results">
             <div class="opa__eq"><GainEquation cfg={cfgKey} p={parsed.values} result={result} /></div>
             <div class="opa__readouts">
-              <Readout label={cfgKey === 'diff' ? 'Differential gain' : 'Gain (Aᵥ)'}>
+              <Readout label={cfgKey === 'diff' ? 'Differential gain' : <>Gain (<span class="opa__var">A<sub>v</sub></span>)</>}>
                 {result ? `${fmtNum(result.gain)} V/V` : '—'}
                 {gainDb !== null && <span class="opa__muted"> ({gainDb.toFixed(1)} dB)</span>}
               </Readout>
-              <Readout label="Output voltage (Vout)">
+              <Readout label={<>Output voltage (<span class="opa__var">v<sub>out</sub></span>)</>}>
                 {result ? fmtV(result.vout) : '—'}
               </Readout>
             </div>
@@ -118,10 +118,10 @@ function GainEquation({ cfg, p, result }) {
     return <>A<sub>v</sub> = −R<sub>f</sub> / R<sub>i</sub> = −{fmtR(p.Rf)} / {fmtR(p.Rin)} = <strong>{g}</strong></>;
   }
   if (cfg === 'buffer') {
-    return <>A<sub>v</sub> = 1 &nbsp;(V<sub>out</sub> = V<sub>in</sub>)</>;
+    return <>A<sub>v</sub> = 1 &nbsp;(v<sub>out</sub> = v<sub>in</sub>)</>;
   }
   // difference
-  return <>V<sub>out</sub> = (R<sub>2</sub> / R<sub>1</sub>)(V<sub>2</sub> − V<sub>1</sub>) = {g} × ({fmtV(p.V2)} − {fmtV(p.V1)}) = <strong>{fmtV(result.vout)}</strong></>;
+  return <>v<sub>out</sub> = (R<sub>2</sub> / R<sub>1</sub>)(v<sub>2</sub> − v<sub>1</sub>) = {g} × ({fmtV(p.V2)} − {fmtV(p.V1)}) = <strong>{fmtV(result.vout)}</strong></>;
 }
 
 function Sym({ main, sub }) {
@@ -182,7 +182,7 @@ function InlineSchematic({ cfg, vals }) {
       {/* output + Vout label (shared) */}
       <Wire pts={`${OUT_X},${OUT_Y} 372,${OUT_Y}`} />
       <Node x={OUT_X} y={OUT_Y} />
-      <Term x={366} y={OUT_Y - 8} main="V" sub="out" anchor="end" />
+      <Term x={366} y={OUT_Y - 8} main="v" sub="out" anchor="end" />
     </svg>
   );
 }
@@ -205,7 +205,7 @@ function NonInv({ vals }) {
     <g>
       {/* + input from Vin */}
       <Wire pts={`115,${IN_PLUS_Y} ${TRI_LEFT},${IN_PLUS_Y}`} />
-      <Term x={109} y={IN_PLUS_Y - 8} main="V" sub="in" anchor="end" />
+      <Term x={109} y={IN_PLUS_Y - 8} main="v" sub="in" anchor="end" />
       {/* − input node runs left to the divider */}
       <Wire pts={`60,${IN_MINUS_Y} ${TRI_LEFT},${IN_MINUS_Y}`} />
       <Node x={170} y={IN_MINUS_Y} />
@@ -229,7 +229,7 @@ function Inv({ vals }) {
       <Wire pts={`${TRI_LEFT},${IN_PLUS_Y} 170,${IN_PLUS_Y} 170,178`} />
       <Gnd x={170} y={178} />
       {/* Rin from Vin to node A */}
-      <Term x={34} y={IN_MINUS_Y - 8} main="V" sub="in" anchor="start" />
+      <Term x={34} y={IN_MINUS_Y - 8} main="v" sub="in" anchor="start" />
       <Wire pts={`40,${IN_MINUS_Y} 70,${IN_MINUS_Y}`} />
       <Res x1={70} y1={IN_MINUS_Y} x2={150} y2={IN_MINUS_Y} main="R" sub="i" val={fmtR(parseR(vals.Rin).value)} />
       <Wire pts={`150,${IN_MINUS_Y} ${TRI_LEFT},${IN_MINUS_Y}`} />
@@ -247,7 +247,7 @@ function Buffer() {
     <g>
       {/* + input from Vin */}
       <Wire pts={`60,${IN_PLUS_Y} ${TRI_LEFT},${IN_PLUS_Y}`} />
-      <Term x={54} y={IN_PLUS_Y - 8} main="V" sub="in" anchor="end" />
+      <Term x={54} y={IN_PLUS_Y - 8} main="v" sub="in" anchor="end" />
       {/* direct feedback: output to − input */}
       <Wire pts={`${OUT_X},${OUT_Y} ${OUT_X},58 170,58 170,${IN_MINUS_Y} ${TRI_LEFT},${IN_MINUS_Y}`} />
       <Node x={OUT_X} y={OUT_Y} />
@@ -259,7 +259,7 @@ function Diff({ vals }) {
   return (
     <g>
       {/* − leg: V1 through R1 to node A, R2 feedback */}
-      <Term x={34} y={IN_MINUS_Y - 8} main="V" sub="1" anchor="start" />
+      <Term x={34} y={IN_MINUS_Y - 8} main="v" sub="1" anchor="start" />
       <Wire pts={`40,${IN_MINUS_Y} 70,${IN_MINUS_Y}`} />
       <Res x1={70} y1={IN_MINUS_Y} x2={150} y2={IN_MINUS_Y} main="R" sub="1" val={fmtR(parseR(vals.R1).value)} />
       <Wire pts={`150,${IN_MINUS_Y} ${TRI_LEFT},${IN_MINUS_Y}`} />
@@ -268,7 +268,7 @@ function Diff({ vals }) {
       <Res x1={170} y1={55} x2={OUT_X} y2={55} main="R" sub="2" val={fmtR(parseR(vals.R2).value)} />
       <Wire pts={`${OUT_X},55 ${OUT_X},${OUT_Y}`} />
       {/* + leg: V2 through R1 to node B, R2 to ground */}
-      <Term x={34} y={IN_PLUS_Y + 16} main="V" sub="2" anchor="start" />
+      <Term x={34} y={IN_PLUS_Y + 16} main="v" sub="2" anchor="start" />
       <Wire pts={`40,${IN_PLUS_Y} 70,${IN_PLUS_Y}`} />
       <Res x1={70} y1={IN_PLUS_Y} x2={150} y2={IN_PLUS_Y} main="R" sub="1" val={fmtR(parseR(vals.R1).value)} />
       <Wire pts={`150,${IN_PLUS_Y} ${TRI_LEFT},${IN_PLUS_Y}`} />

@@ -3,13 +3,13 @@ authors: [gbmhunter]
 date: 2013-10-13
 description: Acronyms, power supplies, SIM cards, RF bands, software and more info about cellular modems.
 image: ./_assets/cover-image.webp
-lastUpdated: 2014-12-02
+lastUpdated: 2026-07-13
 tags: [cellular modems, SIM cards, GSM, bands]
 title: Cellular Modems
 type: page
 ---
 
-Most embedded modems are designed to communicate to a microcontroller over a [UART interface](/electronics/communication-protocols/uart-communication-protocol/). Some cellular modems also have embedded GPS decoders.
+Most embedded modems are designed to communicate to a microcontroller over a [UART interface](/electronics/communication-protocols/uart-communication-protocol/). Some cellular modems also have embedded [GPS decoders](/electronics/components/gnss-gps-modules/).
 
 ## Child Pages
 
@@ -55,7 +55,7 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </tr>
 <tr >
 <td >3GPP2</td>
-<td >An initialism for the 3rd Generation Partnership Project 2. The projects goal was to make a globally applicable 3G cellular system within the scope the ITU's IMT-2000 project.</td>
+<td >An initialism for the 3rd Generation Partnership Project 2. The project's goal was to make a globally applicable 3G cellular system within the scope of the ITU's IMT-2000 project.</td>
 </tr>
 <tr >
 <td >4G</td>
@@ -64,11 +64,11 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </tr>
 <tr >
 <td >A-GPS</td>
-<td >An acronym for Assited GPS.</td>
+<td >An acronym for Assisted GPS.</td>
 </tr>
 <tr >
 <td >Antenna Diversity</td>
-<td >When a cellular modem has more than one antenna. This is to increase the chances of getting a good single when the modem is in any one position.</td>
+<td >When a cellular modem has more than one antenna. This is to increase the chances of getting a good signal when the modem is in any one position.</td>
 </tr>
 <tr>
 <td >CDMA</td>
@@ -84,7 +84,7 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </tr>
 <tr id="EDGE" >
 <td >EDGE</td>
-<td >An initialism for "enhanced data rates for GSM evolution". It is a cellular technology is a backward-compatible extension of GSM that speeds up data transmission rates.</td>
+<td >An initialism for "enhanced data rates for GSM evolution". It is a cellular technology that is a backward-compatible extension of GSM that speeds up data transmission rates.</td>
 </tr>
 <tr >
 <td >EGPRS</td>
@@ -100,7 +100,7 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </tr>
 <tr >
 <td >GSM</td>
-<td >GSM is an initialism for "**Global System for Mobile Communications**". It is a standard defined by ETSI describing the 2G, 3G and 4G protocols.</td>
+<td >GSM is an initialism for "**Global System for Mobile Communications**". It is the 2G digital cellular standard originally defined by ETSI (later maintained by 3GPP, from which the 3G/UMTS and 4G/LTE standards evolved).</td>
 </tr>
 <tr id="HSDPA" >
 <td >HSDPA</td>
@@ -144,7 +144,7 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </tr>
 <tr id="NMT" >
 <td >NMT</td>
-<td >NMT is an initialism for "**Nordic Mobile Telephony**" (when translated to English). It is used to refer to the first analog cellular telephone systems, also called 1G systems (this was backwards named after 2G systems came out). Two bands existed, the NMT-450 and NMT-900.</td>
+<td >NMT is an initialism for "**Nordic Mobile Telephony**" (when translated to English). It is used to refer to the first analogue cellular telephone systems, also called 1G systems (this was backwards named after 2G systems came out). Two bands existed, the NMT-450 and NMT-900.</td>
 </tr>
 <tr >
 <td >PCS</td>
@@ -160,7 +160,7 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </tr>
 <tr >
 <td >SMS</td>
-<td >SMS is an initialism for "**short message servie**".</td>
+<td >SMS is an initialism for "**short message service**".</td>
 </tr>
 <tr >
 <td >Turbo 3G</td>
@@ -180,9 +180,9 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 
 ## Power Supply
 
-Most embedded cellular modems run of a supply voltage of +3.8V. Linear regulators are preferred over switching regulators as they typically have lower dropout and voltage ripple. It a switching regulator is to be used, it is preferable to use one that operates at 500kHz or above, so that it can respond to the current pulses quickly and prevent the voltage dropping to far.
+Most embedded cellular modems run off a supply voltage of +3.8V. Linear regulators are preferred over switching regulators (see [Power Regulators](/electronics/components/power-regulators/)) as they typically have lower dropout and voltage ripple. If a switching regulator is to be used, it is preferable to use one that operates at 500kHz or above, so that it can respond to the current pulses quickly and prevent the voltage dropping too far.
 
-A single cell Li-ion battery can also be used to power a +3.8V modem directly (with no regulator), as their voltage range falls within that acceptable for the modem. No other battery technology can be used (e.g. 4V Pb, Ni-MH or Ni-Cad) as their operating voltages either exceed or drop below that allowed by the modem.
+A single cell Li-ion [battery](/electronics/components/batteries/) can also be used to power a +3.8V modem directly (with no regulator), as their voltage range falls within that acceptable for the modem. No other battery technology can be used (e.g. 4V Pb, Ni-MH or Ni-Cad) as their operating voltages either exceed or drop below that allowed by the modem.
 
 ## Rough Figures
 
@@ -237,7 +237,7 @@ Listed below are the common pins that you need to connect from the SIM card (tec
 <tbody>
 <tr >
 <td >SIMCLK</td>
-<td >Outut</td>
+<td >Output</td>
 <td >The modem provides a clock signal to the SIM card through this pin.</td>
 </tr>
 <tr >
@@ -265,31 +265,33 @@ Listed below are the common pins that you need to connect from the SIM card (tec
 
 ## PCB Layout And Antenna Routing
 
-This is the most important part of the product design!
+This is the most important part of the product design! See the [Antennas](/electronics/components/antennas/) page for more information.
 
 The characteristic impedance is typically around 50Ω. The maximum allowed signal loss is normally around 0.3dB.
 
 ## Supported Bands
 
-## GSM
+### GSM
 
 GSM900/GSM1800
 
 The GSM band is designed so that data is sent not continuously but in bursts at a rate of around 216Hz. This results in large pulse currents that can be as high as 1.5-2.0A.
 
-## Bands By Country
+### Bands By Country
 
 Countries sorted by alphabetical order, networks sorted by technology and frequency.
 
 <table>
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Supported Bands</th>
+        </tr>
+    </thead>
 <tbody >
 <tr >
-Country
-Supported Bands
-</tr>
-<tr >
 <td >Brazil</td>
-<td >GSM-1900, GSM-2100</td>
+<td >GSM-1900, UMTS-2100</td>
 </tr>
 <tr >
 <td >Canada</td>
@@ -326,8 +328,8 @@ Supported Bands
 <td >United States</td>
 <td>
 <ul>
-<li>GSM-850 (AT&amp;T Mobility, Verizon Wireless)</li>
-<li>GSM-1900 (Sprint Corporation, T-Mobile US (Metro PCS))</li>
+<li>GSM-850 (AT&amp;T Mobility)</li>
+<li>GSM-1900 (AT&amp;T Mobility, T-Mobile US (Metro PCS))</li>
 </ul>
 </td>
 </tr>
@@ -350,4 +352,4 @@ The Simcom SIM900 is a very cheap and common place cellular modem, seen in plent
 
 ## Design Notes
 
-* [Telit HE910](/electronics/components/cellular-modems/he910-design-notes)
+- [Telit HE910](/electronics/components/cellular-modems/he910-design-notes/)

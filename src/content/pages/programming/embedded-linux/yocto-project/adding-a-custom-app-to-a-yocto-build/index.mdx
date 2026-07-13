@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2017-04-23
 description: A step-by-step tutorial on how to add you own custom app (program) to a Yocto build.
-lastUpdated: 2018-12-29
+lastUpdated: 2026-07-13
 tags: [Yocto, custom, build, embedded, Linux, program, app, 'hello, world', layer, Makefile, license, bblayers, poky, QEMU]
 title: How To Add A Custom App To A Yocto Build
 type: page
@@ -16,11 +16,11 @@ Firstly, we need a basic application that we can then add to a Yocto build. Let'
 
 We need to create the following files:
 
-* HelloWorld.c
-* HelloWorld.h
-* LICENSE
-* configure.ac
-* Makefile.am
+- HelloWorld.c
+- HelloWorld.h
+- LICENSE
+- configure.ac
+- Makefile.am
 
 These will be added to a git repository and pushed to GitHub (no folder structure, all these files will be added to the root repository directory).
 
@@ -131,7 +131,7 @@ Notice in the `Makefile.am` file that we add `helloworld` to the `bin_PROGRAMS` 
 Commit all these files into a git repository. If you want the Yocto layer to download the files automatically, this repository needs to be placed on a server, so I used GitHub.
 
 <Aside type="note">
-During development, you may not want to have to commit everytime you wish to build your code. See the bottom of this page on how achieve this.
+During development, you may not want to have to commit every time you wish to build your code. See the bottom of this page on how to achieve this.
 </Aside>
 
 The code for this example app is located at [https://github.com/gbmhunter/YoctoHelloWorldApp](https://github.com/gbmhunter/YoctoHelloWorldApp).
@@ -150,7 +150,7 @@ Now `cd` into this new directory and create a new folder called `conf`.
 
 ```sh    
 ~/poky$ cd meta-example
-~/poky/meta-example$ mkdir conf=
+~/poky/meta-example$ mkdir conf
 ```
 
 The config folder holds configuration data about the layer. `cd` into this directory and create a new file called `layer.conf`:
@@ -194,7 +194,7 @@ This `HelloWorld` folder is going to contain a file which says that the HelloWor
 ~/poky/meta-example/recipes-example/HelloWorld$ touch HelloWorld_1.0.bb
 ```
 
-This `HelloWorld_1.0.bb` is a BitBake file which points to the location that the HelloWorld app is stored (in our case, GitHub). It contains the following code:
+This `HelloWorld_1.0.bb` is a [BitBake](/programming/embedded-linux/yocto-project/bitbake/) file (also called a [recipe](/programming/embedded-linux/yocto-project/yocto-recipes/)) which points to the location that the HelloWorld app is stored (in our case, GitHub). It contains the following code:
 
 ```text
 #
@@ -221,7 +221,7 @@ inherit autotools
 PARALLEL_MAKE = ""
 ```
 
-The first thing to note is `SRC_URL`. This points to where the HelloWorld application lives. Notice the `git://` at the start, this is slightly different to the URL you would use to push/pull using SSH or HTML.
+The first thing to note is `SRC_URI`. This points to where the HelloWorld application lives. Notice the `git://` at the start, this is slightly different to the URL you would use to push/pull using SSH or HTTPS.
 
 Also note `SRCREV`. This points to the SHA of the commit you wish to use when building. Remember to update this if you push new commits to the repo!
 
@@ -272,7 +272,7 @@ BBLAYERS ?= " \
 
 ## Build Time
 
-`cd` back to `~/poky/build/`. We can now start the build process by running:
+`cd` back to `~/poky/build/`. We can now start the [build process](/programming/embedded-linux/yocto-project/building-yocto/) by running:
 
 ```sh    
 ~/poky/build$ bitbake core-image-minimal
@@ -282,7 +282,7 @@ This should take a few hours to complete when running it the first time!
 
 ## Run Linux Build And Test Custom App
 
-Now you have built a Linux image with your custom application added, lets run the Linux image in QEMU and test that the application is present and runs correctly.
+Now you have built a Linux image with your custom application added, let's run the Linux image in QEMU and test that the application is present and runs correctly.
 
 Use the following command to start QEMU:
 
@@ -297,4 +297,5 @@ root@qemux86:~# helloworld
 Hello, World...
 root@qemux86:~#
 ```
+
 All done! You have added your own custom app to a Yocto build!

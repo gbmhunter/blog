@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps).
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-17
+lastUpdated: 2026-07-13
 tags: [op-amps, schematic symbols, analogue, analog, operational amplifiers, inverting, buffers, non-inverting, components, gain, voltage followers, offset nulling, input offset voltages, instrumentation amplifiers, capacitive loading, current sources, quiescent currents, GBW, slew rates, negative impedance converters, NICs, summing amplifiers, level shifting]
 title: Op-Amps
 type: page
@@ -90,7 +90,7 @@ $$
 Notice the $1$ in the gain equation? This means that no matter what you set the resistors $R_f$ and $R_i$ to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
 
 <Aside type="caution">
-There is no one common convention for labelling these feedback resistors. Sometimes they are called $R_i$ and $R_f$, other times $R_1$ and $R_2$ (with either resistor being $R_1$)
+There is no one common convention for labelling these feedback resistors. Sometimes they are called $R_i$ and $R_f$, other times $R_1$ and $R_2$ (with either resistor being $R_1$).
 </Aside>
 
 <Aside type="example">
@@ -133,7 +133,7 @@ The negative sign is to show that the output is the inverse polarity of the inpu
 
 <Aside type="example">
 
-**Simulation example for a an inverting amplifier.**
+**Simulation example for an inverting amplifier.**
 
 Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how it requires a negative voltage power supply.
 
@@ -215,7 +215,104 @@ $$
 
 ### Differentiator Amplifiers
 
-TODO: Add content here.
+A differentiator amplifier performs the mathematical operation of differentiation on the input signal -- its output voltage is proportional to the rate of change of the input voltage. The below schematic shows an **ideal** op-amp based differentiator.
+
+<Image src={import('./_assets/differentiator-amplifier-basic-schematic.svg')} width="500px">A schematic of an op-amp configured as a differentiator amplifier.</Image>
+
+<Aside type="tip">
+Do not confuse a _differentiator amplifier_ with a _differential amplifier_. A differentiator amplifier performs the mathematical operation of differentiation, whereas a differential amplifier amplifies the difference between two input signals.
+</Aside>
+
+The circuit is similar to the basic [integration amplifier](#integration-amplifiers), except the [capacitor](/electronics/components/capacitors/) and resistor have swapped places. The below equation shows the relationship between input and output voltage:
+
+$$
+v_{out} = - R_f C \frac{dv_{in}}{dt}
+$$
+
+Like the basic integration amplifier, the basic differentiator amplifier circuit is not practical in real world situations. The differentiator amplifier has a very high gain at high frequencies, which can cause the op-amp to become unstable. You also want to add a low-pass cut-off to reject high-frequency noise. To do this, resistor $R_i$ and capacitor $C_f$ are added. This is shown in the schematic below:
+
+<Image src={import('./_assets/differentiator-amplifier-advanced-schematic.svg')} width="600px">A schematic of an op-amp configured as a differentiator amplifier with additional circuitry to limit high frequency gain.</Image>
+
+At high frequencies, capacitor $C_i$ acts as a short circuit (but $C_f$ does not, assuming the cut-off frequency of $R_f C_f$ is higher than that of $R_i C_i$), and the input resistor $R_i$ limits the gain of the amplifier to $-R_f/R_i$ (just like an [inverting amplifier](#inverting-amplifiers)). At even higher frequencies, $C_f$ will start to dominate, rolling off the gain at $-20\unit{dB/decade}$, which rejects high-frequency noise.
+
+The response is shaped by two corner frequencies, one set by the input network $R_i C_i$ and the other by the feedback network $R_f C_f$:
+
+$$
+\begin{align*}
+f_1 &= \frac{1}{2\pi R_i C_i} \\
+f_2 &= \frac{1}{2\pi R_f C_f}
+\end{align*}
+$$
+
+The components are chosen so that $f_1 < f_2$ (equivalently $R_i C_i > R_f C_f$), which splits the response into three regions:
+
+- **Below $f_1$:** the circuit acts as a differentiator. The gain rises at $+20\unit{dB/decade}$, following the ideal relationship $|A| = 2\pi f R_f C_i$.
+- **Between $f_1$ and $f_2$:** the gain is flat at $-R_f / R_i$, behaving like an inverting amplifier. This is the region that tames the high-frequency gain and keeps the op-amp stable.
+- **Above $f_2$:** $C_f$ dominates the feedback path and the gain rolls off at $-20\unit{dB/decade}$.
+
+You should place your signal of interest well below $f_1$ so that it sits in the differentiating region. The Bode plot below shows these three regions for the practical differentiator:
+
+<Image src={import('./_assets/differentiator-amplifier-bode-plot-general.png')} width="700px">The frequency response (Bode magnitude plot) of a practical op-amp differentiator. Below $f_1$ the circuit differentiates (gain rising at $+20\unit{dB/decade}$), between $f_1$ and $f_2$ the gain is flat at $-R_f/R_i$, and above $f_2$ it rolls off at $-20\unit{dB/decade}$.</Image>
+
+Before designing one, it helps to see what a differentiator actually does to a signal. The plots below show the ideal (inverting) output for three common input waveforms:
+
+- A **sine wave** differentiates into another sinusoid shifted by a quarter of a cycle (a cosine), inverted by the differentiator's negative sign.
+- A **triangle wave** is made up of constant-slope ramps whose sign alternates every half cycle, so it differentiates into a **square wave**.
+- A **square wave** is flat except at its edges, where it changes almost instantaneously -- so its derivative is a train of sharp **spikes** (ideally impulses), one at each transition and alternating in sign.
+
+<Image src={import('./_assets/differentiator-input-output-waveforms.png')} width="600px">The response of an ideal, inverting differentiator to common input waveforms. The outputs are normalised, since the true output amplitude depends on $R_f C$ and the signal frequency.</Image>
+
+<Aside type="example">
+
+**Design example: a differentiator for signals up to 10 kHz.**
+
+Design a differentiator with the following requirements:
+
+- Differentiates signals up to $10\unit{kHz}$ (i.e. $f_1 = 10\unit{kHz}$).
+- Rolls off after $120\unit{kHz}$ (i.e. $f_2 = 120\unit{kHz}$), to keep the op-amp stable and reject high-frequency noise.
+- Accepts input signals up to $\pm 1\unit{V}$.
+- Uses the full $\pm 10\unit{V}$ output swing of the op-amp.
+
+First, set the differentiation limit $f_1$ with the input network. Pick a convenient capacitor value $C_i = 10\unit{nF}$ and solve for $R_i$:
+
+$$
+\begin{align*}
+R_i = \frac{1}{2\pi f_1 C_i} = \frac{1}{2\pi \cdot 10\unit{kHz} \cdot 10\unit{nF}} = 1.59\unit{k\Omega}
+\end{align*}
+$$
+
+Next, choose the mid-band gain. This flat-region gain scales the differentiated output, so we pick it to make the most of the op-amp's output swing: the fastest signal we expect to differentiate -- a full-scale $\pm 1\unit{V}$ input near the top of the band ($10\unit{kHz}$) -- should drive the output to the full $\pm 10\unit{V}$ without clipping. A gain of $10$ achieves exactly this ($\pm 1\unit{V} \to \pm 10\unit{V}$), which fixes $R_f$:
+
+$$
+\begin{align*}
+R_f = 10 R_i = 15.9\unit{k\Omega}
+\end{align*}
+$$
+
+Finally, set the roll-off corner $f_2$ with the feedback capacitor $C_f$:
+
+$$
+\begin{align*}
+C_f = \frac{1}{2\pi f_2 R_f} = \frac{1}{2\pi \cdot 120\unit{kHz} \cdot 15.9\unit{k\Omega}} = 83\unit{pF}
+\end{align*}
+$$
+
+Because $f_1 < f_2$, the design is valid. It differentiates below $10\unit{kHz}$, is flat at a gain of $-10$ ($20\unit{dB}$) in between, and rolls off above $120\unit{kHz}$. The resulting frequency response is shown below.
+
+<Image src={import('./_assets/differentiator-amplifier-bode-plot-example.png')} width="700px">The frequency response of the example differentiator ($R_i = 1.59\unit{k\Omega}$, $C_i = 10\unit{nF}$, $R_f = 15.9\unit{k\Omega}$, $C_f = 83\unit{pF}$): it differentiates below $f_1 = 10\unit{kHz}$, is flat at $20\unit{dB}$ in the mid-band, and rolls off above $f_2 \approx 120\unit{kHz}$.</Image>
+
+</Aside>
+
+**Practical Uses**
+
+Differentiators are used in applications such as:
+
+- Edge detection
+- Rate-of-change measurement of a sensed quantity:
+  - Velocity from position (or acceleration from velocity)
+  - Rate-of-change alarms
+- Implementing a [PID controller](/programming/general/pid-control/) in analogue electronics (the "D" in PID is differentiation)
+- Waveform generation / shaping (e.g. triangle to square, square to impulse)
 
 ### Transconductance Amplifiers
 
@@ -229,7 +326,7 @@ One disadvantage with this design is that the current output is not ground refer
 
 ### Transimpedance Amplifiers
 
-See the [Photodiodes page](/electronics/components/diodes/photodiodes/) for information on how to design a transimpedance amplifier to convert a photodiodes output current signal into a voltage.
+See the [Photodiodes page](/electronics/components/diodes/photodiodes/) for information on how to design a transimpedance amplifier to convert a photodiode's output current signal into a voltage.
 
 ### Current Sources
 
@@ -249,7 +346,7 @@ Summing amplifiers are used for things such as:
 
 #### Inverting Summing Amplifier
 
-The below schematic shows a inverting summing amplifier with three inputs.
+The below schematic shows an inverting summing amplifier with three inputs.
 
 <Image src={import('./_assets/summing-amplifier-inverting.webp')} width="500px">A summing amplifier with three inputs.</Image>
 
@@ -266,40 +363,36 @@ $$
 The inverting input of the amplifier is at "virtual ground". 
 
 $$
-\begin{align}
-\label{eq:if-eq-v1-ri-v2-ri-v3-ri}
-i_f  &= - \left(\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}\right) \\
-\end{align}
+\begin{align*}
+i_f  &= - \left(\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}\right)
+\end{align*}
 $$
 
-Again, because the inverting input is at $0V$, the voltage $v_{out}$ is just:
+Again, because the inverting input is at $0\unit{V}$, the voltage $v_{out}$ is just:
 
 $$
-\begin{align}
-\label{eq:vout-eq-if-rf}
+\begin{align*}
 v_{out} &= i_f R_f 
-\end{align}
+\end{align*}
 $$
 
-Substitute Eq. $\ref{eq:if-eq-v1-ri-v2-ri-v3-ri}$ into Eq. $\ref{eq:vout-eq-if-rf}$, and then simplify a little:
+Substitute the expression for $i_f$ into $v_{out} = i_f R_f$, and then simplify a little:
 
 $$
-\begin{align}
-v_{out} &= - \left(\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}\right) R_f \nonumber \\
-        \label{eq:inv-sum-amp-gain-eq}
-        &= - \frac{R_f}{R_i} (v_1 + v_2 + v_3) \\
-\end{align}
+\begin{align*}
+v_{out} &= - \left(\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}\right) R_f \\
+        &= - \frac{R_f}{R_i} (v_1 + v_2 + v_3)
+\end{align*}
 $$
 
-And there we have it! Eq. $\ref{eq:inv-sum-amp-gain-eq}$ shows how the circuit works as an inverting summing amplifier for three input voltages $v_1$, $v_2$, and $v_3$. Note that aside from summing, the inverting summing amplifier also applies the negative gain $- \frac{R_f}{R_i}$, just like a standard [inverting amplifier](#inverting-amplifiers). You can make $R_f$ equal to $R_i$ if you don't want any gain, but you can't avoid the inverting part. If you don't want it to invert (perhaps you're using a single-sided supply?), then take a look at the [non-inverting summing amplifier](#non-inverting-summing-amplifier).
+And there we have it! The equation above shows how the circuit works as an inverting summing amplifier for three input voltages $v_1$, $v_2$, and $v_3$. Note that aside from summing, the inverting summing amplifier also applies the negative gain $- \frac{R_f}{R_i}$, just like a standard [inverting amplifier](#inverting-amplifiers). You can make $R_f$ equal to $R_i$ if you don't want any gain, but you can't avoid the inverting part. If you don't want it to invert (perhaps you're using a single-sided supply?), then take a look at the [non-inverting summing amplifier](#non-inverting-summing-amplifier).
 
 Whilst common, the resistors $R_i$ do not need to be equal. If they are **not equal, the circuit above is called a _scaling summing amplifier_**. Each input voltage is scaled by a value determined by its input resistance before being summed together.
 
 $$
-\begin{align}
-\label{eq:inv-scaling-sum-amp-gain-eq}
+\begin{align*}
 v_{out} &= - R_f \left(\frac{v_1}{R_1} + \frac{v_2}{R_2} + \frac{v_3}{R_3}\right)
-\end{align}
+\end{align*}
 $$
 
 #### Non-inverting Summing Amplifier
@@ -375,7 +468,7 @@ $$
 
 Notice the $3$. This scaling factor is equal to the number of inputs the non-inverting summing amplifier has, so remember that the scaling factor changes if you add/remove inputs! 
 
-WARNING: Unused inputs into a inverting summing amplifier can be left floating. **Unused inputs into a non-inverting amplifier CANNOT be left floating**, they need to be tied to ground (0V).
+WARNING: Unused inputs into an inverting summing amplifier can be left floating. **Unused inputs into a non-inverting summing amplifier CANNOT be left floating**, they need to be tied to ground (0V).
 
 ### Level Shifters
 
@@ -397,7 +490,7 @@ The below schematic shows an op-amp based level shifter which converts a $\pm 5.
 
 #### Basic Ideal Diode/Rectifier
 
-An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_[^superdiode], _precision rectifier_, or _half/full-wave rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
+An op-amp can be combined with a regular [diode](/electronics/components/diodes/) to make an "ideal diode" (also called a _superdiode_[^superdiode], _precision rectifier_, or _half/full-wave rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
 
 - You have to rectify a signal with precision (the forward voltage drop across the diode is unacceptable).
 - You have to rectify a small signal, whose amplitude is less than a forward diode drop.
@@ -412,11 +505,11 @@ The below graph shows the response of the basic ideal diode circuit.
 
 The ideal diode is only ideal up to a point. It is now limited by the bandwidth and max. slew rate of the op-amp, which is typically much lower than that of a basic diode! There is also an issue with slew rates with the above circuit. As soon as $v_{in}$ goes negative, the op-amp will "saturate" and swing its output to the maximum negative voltage. This will cause some delay on the output (limited by the slew rate) when the input once again goes positive.
 
-TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky diode for a quick-and-easy speed improvement (Schottky diodes have faster switching speeds).
+TIP: The standard diode in the ideal diode circuit can be replaced by a [Schottky diode](/electronics/components/diodes/schottky-diodes/) for a quick-and-easy speed improvement (Schottky diodes have faster switching speeds).
 
 #### Improved Half-wave Rectifier
 
-The below schematic shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle[^microchip-op-amp-rectifiers]. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
+The below schematic shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle.[^microchip-op-amp-rectifiers] Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
 
 <Image src={import('./_assets/ideal-diode-improved-inverting.webp')} width="700px">An improved ideal diode/half-wave rectifier.</Image>
 
@@ -458,17 +551,17 @@ A non-zero input offset voltage results in gain errors between the input and out
 - $10\unit{uV}-200\unit{uV}$ for the best "ultra" low input offset voltage op-amps.
 - $< 1\unit{uV}$ for chopper-stabilized (auto-zero) op-amps.
 
-For example, the general purpose LM324 has a typical input offset voltage of $2\unit{mV}$ and a maximum of $3\unit{mV}$, at $T_A = 25\,^{\circ}\mathrm{C}$[^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a $V_{OS}$ in the range of $50-200\unit{uV}$. For example, the OPAx196 family of op-amps has a max. $V_{IO}$ of $100\unit{uV}$[^ti-opax196-datasheet].
+For example, the general purpose LM324 has a typical input offset voltage of $2\unit{mV}$ and a maximum of $3\unit{mV}$, at $T_A = 25\,^{\circ}\mathrm{C}$.[^ti-lm234-datasheet] "Low" input offset voltage op-amps will have a $V_{OS}$ in the range of $50-200\unit{uV}$. For example, the OPAx196 family of op-amps has a max. $V_{IO}$ of $100\unit{uV}$.[^ti-opax196-datasheet]
 
-Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typically have the lowest input offset voltage, followed by CMOS and the BiFET op-amps[^ti-app-report-input-offset-voltage].
+Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typically have the lowest input offset voltage, followed by CMOS and the BiFET op-amps.[^ti-app-report-input-offset-voltage]
 
 #### Input Offset Voltage Drift
 
-The _input offset voltage_ varies with both temperature and time (drift). The variation with temperature is usually represented by $T_C V_{OS}$ (I've also seen $\Delta V_{IO}/\Delta T$ used[^onsemi-lm324]). Typical temperature drift for precision op-amps is in the range of $1-10\unit{uV/^{\circ}C}$[^analog-devices-input-offset-voltage]. The venerable LM324 has a $T_C V_{OS} = 7\unit{uV/^{\circ}C}$ (max)[^onsemi-lm324].
+The _input offset voltage_ varies with both temperature and time (drift). The variation with temperature is usually represented by $T_C V_{OS}$ (I've also seen $\Delta V_{IO}/\Delta T$ used[^onsemi-lm324]). Typical temperature drift for precision op-amps is in the range of $1-10\unit{uV/^{\circ}C}$.[^analog-devices-input-offset-voltage] The venerable LM324 has a $T_C V_{OS} = 7\unit{uV/^{\circ}C}$ (max).[^onsemi-lm324]
 
 The change of input offset voltage with time is called aging. Aging is normally specified in $\mathrm{uV/1000\,hours}$. But since aging is a physical process that follows the "random walk pattern" (Brownian motion), it is more accurate to describe it proportional to the square root of elapsed time.
 
-Some op-amps are trimmed by the manufacturer after the op-amp is packaged. Performing trimming after packaging prevents any production-line effects from affecting the input offset voltage. One such example is the family of AD8601, AD8602 and AD8604 op-amps from Analog Devices (they call it _DigiTrim_). The offset is trimmed with a special digital code using no extra pins (i.e. reuses existing op-amp pins). Once programmed, poly-silicon fuses are blown to permanently set the trim values[^analog-devices-input-offset-voltage].
+Some op-amps are trimmed by the manufacturer after the op-amp is packaged. Performing trimming after packaging prevents any production-line effects from affecting the input offset voltage. One such example is the family of AD8601, AD8602 and AD8604 op-amps from Analog Devices (they call it _DigiTrim_). The offset is trimmed with a special digital code using no extra pins (i.e. reuses existing op-amp pins). Once programmed, poly-silicon fuses are blown to permanently set the trim values.[^analog-devices-input-offset-voltage]
 
 #### Trimming Input Offset Voltage
 
@@ -476,22 +569,21 @@ If your op-amp lacks a dedicated trim pin, you can make your own trimming circui
 
 <Image src={import('./_assets/input-offset-voltage-trimming-inverting.svg')} width="700px">A popular way of performing external input offset voltage trimming with a inverting op-amp.</Image>
 
-The maximum input offset voltage you can compensate for with this circuit is given by Eq $\ref{eq:trim-inverting-offset}$[^analog-devices-input-offset-voltage].
+The maximum input offset voltage you can compensate for with this circuit is given by the equation below.[^analog-devices-input-offset-voltage]
 
 $$
-\begin{align}
-\label{eq:trim-inverting-offset}
+\begin{align*}
 V_{offset} =  \pm\left(1 + \frac{R2}{R1}\right) \left(\frac{R_P}{R_P + R3}\right) V_R
-\end{align}
+\end{align*}
 $$
 
 ### Input Bias Current (Ib+ and Ib-)
 
-The _input bias current_ $I_{B+}$ and $I_{B-}$ describe the currents that flow in and out of the op-amps input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from $1-10\unit{nA}$. Special "low input bias current" op-amps can have much lower values. For example, the [Texas Instruments OPA396](https://www.ti.com/lit/ds/symlink/opa396.pdf) has a typ. $I_B = \pm 10\unit{fA}$ at $25\,^{\circ}\mathrm{C}$! This increases to approx. $\pm 4\unit{pA}$ across its entire temperature range (typical)[^ti-opa396-datasheet].
+The _input bias current_ $I_{B+}$ and $I_{B-}$ describe the currents that flow in and out of the op-amp's input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from $1-10\unit{nA}$. Special "low input bias current" op-amps can have much lower values. For example, the [Texas Instruments OPA396](https://www.ti.com/lit/ds/symlink/opa396.pdf) has a typ. $I_B = \pm 10\unit{fA}$ at $25\,^{\circ}\mathrm{C}$! This increases to approx. $\pm 4\unit{pA}$ across its entire temperature range (typical).[^ti-opa396-datasheet]
 
-The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will approximately double with every $10\,^{\circ}\mathrm{C}$ rise in temperature[^analog-devices-input-bias-current] [^analog-devices-precision-photodiode].
+The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will approximately double with every $10\,^{\circ}\mathrm{C}$ rise in temperature.[^analog-devices-input-bias-current] [^analog-devices-precision-photodiode]
 
-**Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amps inputs**. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors. Finding an op-amp with a low input bias current can be important for a high sensitivity transimpedance amplifier, such as one connected to a photodiode.
+**Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amp's inputs**. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors. Finding an op-amp with a low input bias current can be important for a high sensitivity transimpedance amplifier, such as one connected to a photodiode.
 
 <Aside type="caution">
 Do not confuse the input bias current with the input offset current (although they are related). The _input offset current_ $I_{OS}$ is the difference between the input bias current at the `+` pin and the `-` pin.
@@ -507,7 +599,7 @@ The gain-bandwidth product (initialised as _GBWP_, _GBW_, _GBP_ or _GB_) is an i
 
 Hence if the gain bandwidth of a particular op-amp is $1\unit{MHz}$, and the gain is 10, the maximum frequency that the op-amp can operate linearly at (still provide a gain of 10) is at $100\unit{kHz}$. Or if the gain was set to 100, then the maximum frequency is $10\unit{kHz}$. **This also means that an op-amp acts as a low-pass filter, as the gain drops for very high frequencies.** Likewise for a GBW of $1\unit{MHz}$, if the gain was just 1 (i.e. acting as a buffer/follower), then it should be able to operate up to frequencies of $1\unit{MHz}$.
 
-An example of an ultra-high gain bandwidth is $1700\unit{MHz}$, which are present in 'Wideband CFB" op-amps, designed for applications such as RGB line drivers (such as the OPA695). A 'normal' GBW can be anywhere between $100\unit{kHz}$ and $10\unit{MHz}$. A low gain-bandwidth is around $1\unit{kHz}$ (reminiscent of less advanced, older op-amps). **Remember gain is unit-less (V/V), so gain bandwidth is expressed as a frequency only.** Not realising this can be confusing! The GBW product is closely related to the [slew rate](#slew-rate).
+An example of an ultra-high gain bandwidth is $1700\unit{MHz}$, which are present in 'Wideband CFB' op-amps, designed for applications such as RGB line drivers (such as the OPA695). A 'normal' GBW can be anywhere between $100\unit{kHz}$ and $10\unit{MHz}$. A low gain-bandwidth is around $1\unit{kHz}$ (reminiscent of less advanced, older op-amps). **Remember gain is unit-less (V/V), so gain bandwidth is expressed as a frequency only.** Not realising this can be confusing! The GBW product is closely related to the [slew rate](#slew-rate).
 
 ### High Level Output Voltage
 
@@ -523,9 +615,9 @@ The _slew rate_ of an op-amp defines the **maximum rate the output voltage can c
 
 Op-amps have a limited output slew rate due to an internal compensation capacitor combined with a finite output drive current. Charging a capacitive output with a constant current (a good approximation) gives a linear increase in voltage (recall that the equation relating voltage to current for a capacitor is $i = C \frac{dV}{dt}$).
 
-The plot below shows how the non-infinite slew rate of an op-amp distorts the shape of an input square-wave "pulse". The slew rate of $0.4\unit{V/us}$ (which is not particularly good by any standard) of the "jellybean" LM324 op-amp was used in this plot[^ti-lm324-datasheet].
+The plot below shows how the non-infinite slew rate of an op-amp distorts the shape of an input square-wave "pulse". The slew rate of $0.4\unit{V/us}$ (which is not particularly good by any standard) of the "jellybean" LM324 op-amp was used in this plot.[^ti-lm324-datasheet]
 
-<Image src={import('./_assets/slew-rate-distortion-diagram-square-wave.png')} width="500px">Plot showing the effect of an op-amp's slew rate on an input square wave. Slew rate was chosen to be equal to the LM324's of $0.4\unit{V/us}$[^ti-lm324-datasheet].</Image>
+<Image src={import('./_assets/slew-rate-distortion-diagram-square-wave.png')} width="500px">Plot showing the effect of an op-amp's slew rate on an input square wave. Slew rate was chosen to be equal to the LM324's of $0.4\unit{V/us}$.[^ti-lm324-datasheet]</Image>
 
 The **max. slew rate of an op-amp limits the amplitude of output waveforms it can produce at high frequencies without distortion**. This parameter usually increases as the GBW of the op-amp increases. Higher slew rate op-amps also tend to have higher quiescent currents.
 
@@ -608,9 +700,9 @@ Quiescent currents for standard op-amps are typically between $1.5-4\unit{mA}$. 
 
 ## Cascading Op-Amps
 
-Cascading op-amps is concept when the output of one op-amp is connected to the input of another. There can be an arbitrary number of op-amps in the cascade, but usual limits are 3-4.
+Cascading op-amps is a concept where the output of one op-amp is connected to the input of another. There can be an arbitrary number of op-amps in the cascade, but usual limits are 3-4.
 
-For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth**, as each individual op-amp now can operate at a lower gain and therefore has a larger bandwidth as defined by the gain-bandwidth product. Note though that each additional op-amp added to increase the bandwidth gives diminishing returns. Also important to note that op-amp bandwidth is defined as the -3dB gain points. Hence the bandwidth does not stay the same (total bandwidth gets smaller) when two identical op-amps are cascaded, as these will now the -6dB points. A practical limit for fixed-total-gain increased-bandwidth cascading is about 3-4 op-amps.
+For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth**, as each individual op-amp now can operate at a lower gain and therefore has a larger bandwidth as defined by the gain-bandwidth product. Note though that each additional op-amp added to increase the bandwidth gives diminishing returns. Also important to note that op-amp bandwidth is defined as the -3 dB gain points. Hence the bandwidth does not stay the same (total bandwidth gets smaller) when two identical op-amps are cascaded, as these will now be the -6 dB points. A practical limit for fixed-total-gain increased-bandwidth cascading is about 3-4 op-amps.
 
 ### The Gain
 
@@ -659,7 +751,7 @@ General purpose op-amps typically have parameters in the following ranges:
 
 ### Rail-to-Rail Op-Amps
 
-A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the one or more  of the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** ($V_{OL}$) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about $100-200\unit{mV}$ above ground at normal load currents.
+A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to one or more of the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** ($V_{OL}$) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about $100-200\unit{mV}$ above ground at normal load currents.
 
 <Aside type="caution">
 "_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
@@ -675,7 +767,7 @@ _Micropower_ is a termed used for extremely low quiescent current op-amps that a
 
 ### Instrumentation Amplifiers
 
-Instrumentation amplifiers are analogue voltage amplifier circuits that, although drawn with the same symbol as an op-amp, are typically made up internally from three op-amps (and passives). You can either make an instrumentation amplifier out of discrete op-amps or purchase a instrumentation amplifier IC which contains all the op-amps within the same chip.
+Instrumentation amplifiers are analogue voltage amplifier circuits that, although drawn with the same symbol as an op-amp, are typically made up internally from three op-amps (and passives). You can either make an instrumentation amplifier out of discrete op-amps or purchase an instrumentation amplifier IC which contains all the op-amps within the same chip.
 
 ## Manufacturer Part Number Families
 
@@ -854,80 +946,73 @@ Skip this section if you are not interested in the maths.
 To prove $Z_{IN} = -Z$, we need to find the input current at inverting terminal, and then use $Z_{IN} = \frac{V}{I_{IN}}$. The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance $Z$ is going to be:
 
 $$
-\begin{align}
-\label{vzeqv}
+\begin{align*}
 V_Z = V
-\end{align}
+\end{align*}
 $$
 
 Using Ohm's law, the current through the impedance $Z$ is therefore:
 
 $$
-\begin{align}
+\begin{align*}
 I_Z = \frac{V}{Z}
-\end{align}
+\end{align*}
 $$
 
 Because there is no current going into the inverting terminal of the op-amp, this current $I_Z$ must also be flowing through $R2$:
 
 $$
-\begin{align}
-\label{i-r2}
+\begin{align*}
 I_{R2} = \frac{V}{Z}
-\end{align}
+\end{align*}
 $$
 
 Now knowing the voltage at the inverting terminal and the current through $R2$ we can write an equation for the voltage at the output of the op-amp:
 
 $$
-\begin{align}
-\label{vout-eq}
+\begin{align*}
 V_{OUT} &= V_Z + V_{R2} \\
         &= V_Z + I_{R2} \cdot R \\
-        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in \ref{vzeqv} and \ref{i-r2}}
-\end{align}
+        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in $V_Z = V$ and $I_{R2} = \frac{V}{Z}$}
+\end{align*}
 $$
 
 Now that we know the voltage on both sides of $R1$ we can find the voltage across it:
 
 $$
-\begin{align}
-\label{v-r1}
+\begin{align*}
 V_{R1} &= V_{OUT} - V                   &\\
-       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in \ref{vout-eq}} \\
+       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in $V_{OUT}$} \\
        &= \frac{V}{Z} \cdot R           & &\text{Simplifying}
-\end{align}
+\end{align*}
 $$
 
 Now we know the voltage across $R1$ we can find the current going through it using Ohm's law:
 
 $$
-\begin{align}
-\label{eqn:i-r1}
+\begin{align*}
 I_{R1} &= \frac{V_{R1}}{R}                &\\
-       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{v-r1}} \\
+       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in $V_{R1}$} \\
        &= \frac{V}{Z}                     & &\text{Simplifying}
-\end{align}
+\end{align*}
 $$
 
 Because the voltage on the right-hand side of $R1$ is higher, this current is flowing right-to-left. Since no current flows into the inverting terminal of the op-amp, this also must be current flowing "out" of the input terminal. Thus:
 
 $$
-\begin{align}
-\label{i-in}
+\begin{align*}
 I_{IN} = -\frac{V}{Z}
-\end{align}
+\end{align*}
 $$
 
 Knowing the input current and voltage, we can finally write an equation for $Z_{IN}$:
 
 $$
-\begin{align}
-\label{eqn:z_in}
+\begin{align*}
 Z_{IN} &= \frac{V_{IN}}{I_{IN}}       & &\text{Ohms law} \\
-       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in \ref{i-in}} \\
-       &= -Z                          & &\text{Simplifying} \\
-\end{align}
+       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in $I_{IN}$} \\
+       &= -Z                          & &\text{Simplifying}
+\end{align*}
 $$
 
 Proof complete!
