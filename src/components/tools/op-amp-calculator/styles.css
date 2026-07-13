@@ -120,6 +120,14 @@
   padding: 0.5rem 0.7rem;
   overflow-x: auto;
 }
+.opa__warn {
+  font-size: 0.8rem;
+  color: var(--sl-color-accent-high);
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-accent);
+  border-radius: 0.35rem;
+  padding: 0.5rem 0.7rem;
+}
 .opa__readouts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .opa__readout {
   display: flex;

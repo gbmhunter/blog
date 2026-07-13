@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'preact/hooks';
-import { CONFIGS, FIELD_META, parseR, parseV, fmtR, fmtV } from './opamp.js';
+import { CONFIGS, FIELD_META, KIND_UNIT, KIND_PLACEHOLDER, parseR, parseV, parseC, parseF, fmtR, fmtV, fmtC, fmtF } from './opamp.js';
 import './styles.css';
 
 const DEFAULTS = Object.fromEntries(Object.entries(FIELD_META).map(([k, m]) => [k, m.def]));
@@ -14,9 +14,10 @@ export default function OpAmpCalculator() {
   const parsed = useMemo(() => {
     const out = {};
     const errors = {};
+    const PARSERS = { R: parseR, V: parseV, C: parseC, F: parseF };
     for (const f of cfg.fields) {
       const meta = FIELD_META[f];
-      const { value, error } = meta.kind === 'R' ? parseR(vals[f]) : parseV(vals[f]);
+      const { value, error } = PARSERS[meta.kind](vals[f]);
       out[f] = value;
       if (error) errors[f] = error;
     }
@@ -35,7 +36,9 @@ export default function OpAmpCalculator() {
       <div class="opa__legend">
         Pick an op-amp configuration, enter the resistor values and input voltage(s), and see the
         gain, the output voltage and a live schematic. Assumes an ideal op-amp (and matched resistors
-        for the difference amplifier). Resistors accept metric prefixes (e.g. <code>10k</code>, <code>4k7</code>).
+        for the difference amplifier). Values accept metric prefixes (e.g. <code>10k</code>, <code>4k7</code>,
+        {' '}<code>10n</code>, <code>1M</code>). The differentiators are frequency-dependent, so enter a signal
+        frequency; the gain and output shown are the magnitude for a sine at that frequency.
       </div>
 
       {/* config selector */}
@@ -58,7 +61,7 @@ export default function OpAmpCalculator() {
         {/* inputs + results */}
         <div class="opa__panel">
           <div class="opa__inputs">
-            {['V', 'R'].map((kind) => {
+            {['V', 'F', 'R', 'C'].map((kind) => {
               const group = cfg.fields.filter((f) => FIELD_META[f].kind === kind);
               if (group.length === 0) return null;
               return (
@@ -77,9 +80,9 @@ export default function OpAmpCalculator() {
                           type="text"
                           value={vals[f]}
                           onInput={setField(f)}
-                          placeholder={meta.kind === 'R' ? 'e.g. 10k' : 'e.g. 1'}
+                          placeholder={KIND_PLACEHOLDER[meta.kind]}
                         />
-                        <span class="opa__unit">{meta.kind === 'R' ? 'Ω' : 'V'}</span>
+                        <span class="opa__unit">{KIND_UNIT[meta.kind]}</span>
                         {parsed.errors[f] && <span class="opa__err">{parsed.errors[f]}</span>}
                       </div>
                     );
@@ -91,14 +94,43 @@ export default function OpAmpCalculator() {
 
           <div class="opa__results">
             <div class="opa__eq"><GainEquation cfg={cfgKey} p={parsed.values} result={result} /></div>
+            {result && cfgKey === 'diffpractical' && !result.valid && (
+              <div class="opa__warn">
+                For a practical differentiator you need <span class="opa__var">f<sub>1</sub></span> &lt; <span class="opa__var">f<sub>2</sub></span> (i.e.
+                {' '}<span class="opa__var">R<sub>i</sub>C<sub>i</sub></span> &gt; <span class="opa__var">R<sub>f</sub>C<sub>f</sub></span>). Increase the input time constant or decrease the feedback one.
+              </div>
+            )}
             <div class="opa__readouts">
-              <Readout label={cfgKey === 'diff' ? 'Differential gain' : <>Gain (<span class="opa__var">A<sub>v</sub></span>)</>}>
+              <Readout label={
+                cfg.freqDomain ? <>Gain at <span class="opa__var">f</span> (<span class="opa__var">|A|</span>)</>
+                : cfgKey === 'diff' ? 'Differential gain'
+                : <>Gain (<span class="opa__var">A<sub>v</sub></span>)</>
+              }>
                 {result ? `${fmtNum(result.gain)} V/V` : '—'}
                 {gainDb !== null && <span class="opa__muted"> ({gainDb.toFixed(1)} dB)</span>}
               </Readout>
-              <Readout label={<>Output voltage (<span class="opa__var">v<sub>out</sub></span>)</>}>
+              <Readout label={cfg.freqDomain
+                ? <>Output amplitude (<span class="opa__var">v̂<sub>out</sub></span>)</>
+                : <>Output voltage (<span class="opa__var">v<sub>out</sub></span>)</>}>
                 {result ? fmtV(result.vout) : '—'}
               </Readout>
+              {cfgKey === 'diffpractical' && (
+                <>
+                  <Readout label={<>Lower corner (<span class="opa__var">f<sub>1</sub></span>)</>}>
+                    {result ? fmtF(result.f1) : '—'}
+                  </Readout>
+                  <Readout label={<>Upper corner (<span class="opa__var">f<sub>2</sub></span>)</>}>
+                    {result ? fmtF(result.f2) : '—'}
+                  </Readout>
+                  <Readout label={<>Mid-band gain (<span class="opa__var">R<sub>f</sub>/R<sub>i</sub></span>)</>}>
+                    {result ? `${fmtNum(result.midGain)} V/V` : '—'}
+                    {result && <span class="opa__muted"> ({(20 * Math.log10(result.midGain)).toFixed(1)} dB)</span>}
+                  </Readout>
+                  <Readout label="Operating region">
+                    {result ? result.region : '—'}
+                  </Readout>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -119,6 +151,12 @@ function GainEquation({ cfg, p, result }) {
   }
   if (cfg === 'buffer') {
     return <>A<sub>v</sub> = 1 &nbsp;(v<sub>out</sub> = v<sub>in</sub>)</>;
+  }
+  if (cfg === 'diffbasic') {
+    return <>|A| = 2πf R<sub>f</sub> C = 2π · {fmtF(p.freq)} · {fmtR(p.Rf)} · {fmtC(p.C)} = <strong>{g}</strong> V/V &nbsp;(v<sub>out</sub> = −R<sub>f</sub> C · dv<sub>in</sub>/dt)</>;
+  }
+  if (cfg === 'diffpractical') {
+    return <>|A(f)| = 2πf R<sub>f</sub> C<sub>i</sub> / √[(1 + (f/f<sub>1</sub>)²)(1 + (f/f<sub>2</sub>)²)] = <strong>{g}</strong> V/V &nbsp;at f = {fmtF(p.freq)}</>;
   }
   // difference
   return <>v<sub>out</sub> = (R<sub>2</sub> / R<sub>1</sub>)(v<sub>2</sub> − v<sub>1</sub>) = {g} × ({fmtV(p.V2)} − {fmtV(p.V1)}) = <strong>{fmtV(result.vout)}</strong></>;
@@ -152,6 +190,8 @@ const SVG_FILE = {
   inv: 'inverting-amplifier-schematic.svg',
   buffer: 'voltage-follower-schematic.svg',
   diff: 'difference-amplifier-schematic.svg',
+  diffbasic: 'differentiator-amplifier-basic-schematic.svg',
+  diffpractical: 'differentiator-amplifier-practical-schematic.svg',
 };
 const SCHEMATIC_URLS = import.meta.glob('./*-schematic.svg', { eager: true, query: '?url', import: 'default' });
 
