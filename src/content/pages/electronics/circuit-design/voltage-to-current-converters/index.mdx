@@ -14,33 +14,92 @@ Many of these circuit designs use op-amps. Please see the [Op-Amp page](/electro
 
 ## Howland Current Source
 
-The Howland current source is an op-amp based voltage-to-current converter.
+The Howland current source is an op-amp based constant current sink/source. The basic Howland current source schematic is shown below.
 
-For the circuit to work correctly, three pairs of resistors have to be equal:
+<Image src={import('./_assets/howland-current-source-basic.svg')} width="400px">A schematic of the basic Howland current source.</Image>
 
-$$
-\begin{align}
-R_1 = R_3, R_2 = R_4, R_S = R_{S'}
-\end{align}
-$$
+### How It Works
 
-Given the resistor equations above are satisfied, the load current is given by the following equation:
+First, we'll annotate the schematic with some labels:
 
-$$
-\begin{align}
-I_{LOAD} = \frac{V_{IN}}{R_S}(\frac{R_2 + R_S}{R_1})
-\end{align}
-$$
+<Image src={import('./_assets/howland-current-source-basic-annotated.svg')} width="400px">The basic Howland current source schematic, annotated with labels.</Image>
 
-The output impedance is given by the equation (note that this does not depend on the above resistor equality equations to be satisfied):
+Appling Kirchhoff's Current Law (KCL) and Ohm's Law to the circuit, we get:
 
 $$
-\begin{align}
-Z_{OUT} = \frac{R_3 R_{S'}(R_1 + R_2)}{R_1 (R_4 + R_S) - R_3 (R_2 + R_{S'})}
-\end{align}
+\begin{align*}
+I_L &= I_1 + I_2 \\
+    &= \frac{V_I - V_L}{R_1} + \frac{V_A - V_L}{R_2}
+\end{align*}
 $$
+
+We also can form a relationship between the voltage at the op-amps non-inverting input $V_L$ and the op-amps output voltage $V_A$. We can see that it forms a non-inverting amplifier with a gain of $1 + R_4 / R_3$:
+
+$$
+V_A = V_L \left(1 + \frac{R_4}{R_3}\right)
+$$
+
+Now we substitute the expression for $V_A$ directly into the KCL equation and simplify. Notice that in the $R_2$ term the $V_L$ contributions cancel, leaving just $V_L \frac{R_4}{R_3}$, after which we group the $V_L$ terms:
+
+$$
+\begin{align*}
+I_L &= \frac{V_I - V_L}{R_1} + \frac{V_A - V_L}{R_2} \\
+    &= \frac{V_I - V_L}{R_1} + \frac{V_L \left(1 + \frac{R_4}{R_3}\right) - V_L}{R_2} \\
+    &= \frac{V_I - V_L}{R_1} + \frac{V_L \frac{R_4}{R_3}}{R_2} \\
+    &= \frac{V_I}{R_1} - \frac{V_L}{R_1} + \frac{V_L R_4}{R_2 R_3} \\
+    &= \frac{V_I}{R_1} - V_L \left(\frac{1}{R_1} - \frac{R_4}{R_2 R_3}\right)
+\end{align*}
+$$
+
+This separates the output current into a driven term and a load-dependent term:
+
+$$
+I_L = A V_I - \frac{V_L}{R_o}
+$$
+
+where $A = \frac{1}{R_1}$ is the transconductance gain and $R_o$ is the output resistance the circuit presents to the load:
+
+$$
+R_o = \left(\frac{1}{R_1} - \frac{R_4}{R_2 R_3}\right)^{-1} = \frac{R_1 R_2 R_3}{R_2 R_3 - R_1 R_4}
+$$
+
+The trick here is to realize we can make the load current independent of the load voltage $V_L$ by driving $R_o$ to infinity (this drives the term $-\frac{V_L}{R_o} \to 0$). This requires balancing the bridge so that the denominator $R_2 R_3 - R_1 R_4$ goes to zero.
+
+The easy way to do this is to make $R_1 = R_3$ and $R_2 = R_4$, which satisfies $R_2 R_3 = R_1 R_4$ automatically:
+
+$$
+R_1 = R_3, \quad R_2 = R_4
+$$
+
+### Setting The Output Current
+
+With the bridge balanced, the load-dependent term drops out and the output current depends only on the input voltage and $R_1$:
+
+$$
+I_L = A V_I = \frac{V_I}{R_1}
+$$
+
+So there are two knobs for setting the current. $R_1$ fixes the transconductance gain $A = \frac{1}{R_1}$ (the amps-per-volt), and the input voltage $V_I$ then sets the operating point along that slope. Note that $R_2$ (and its match $R_4$) does not appear in this expression — once the bridge is balanced it affects the output compliance and impedance, but not the current.
+
+For example, to source $20\unit{mA}$ from a $10\unit{V}$ input, we need:
+
+$$
+R_1 = \frac{V_I}{I_L} = \frac{10\unit{V}}{20\unit{mA}} = 500\unit{\Omega}
+$$
+
+and, to keep the bridge balanced, $R_3 = R_1 = 500\unit{\Omega}$. Keep in mind that the op-amp output $V_A$ must stay within its linear range — if the load voltage $V_L$ climbs high enough to saturate the op-amp, the source can no longer maintain the set current.
 
 The Howland current source is commonly used to build a [4-20mA current-loop transmitter](/electronics/communication-protocols/4-20ma-current-loops).
+
+### Weaknesses
+
+One weaknesses of the basic Howland current source is that it is sensitive to resistor tolerances in the balanced bridge. If the resistors are not well matched, the output current will depend on the load voltage $V_L$ and the output resistance $R_o$ will be finite. This can be mitigated by using precision resistors or trimming the resistors to balance the bridge.[^ti-an-1515-comprehensive-study-of-the-howland-current-pump]
+
+### History
+
+The "Basic Howland Current Pump" was invented by Prof. Bradford Howland in 1962 when working for MIT. It was first published in January 1964 in the "Lightning Empiricist", Volume 12, Number 1.[^ti-an-1515-comprehensive-study-of-the-howland-current-pump] [^philbrick-lightning-empiricist-v12-n1]
+
+<Image src={import('./_assets/howland-circuit-from-the-lightning-empiricist.webp')} width="500px">The Howland current source as published in the Lightning Empiricist, Volume 12, Number 1, January 1964.[^philbrick-lightning-empiricist-v12-n1]</Image>
 
 ## Pre-built ICs
 
@@ -62,3 +121,10 @@ Then select the filtering options:
 
 * Type: _Current Transmitter_
 * Input Type: _Voltage_
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ti-an-1515-comprehensive-study-of-the-howland-current-pump]: Texas Instruments (2013, Apr). _AN-1515 A Comprehensive Study of the Howland Current Pump_ [application note]. Retrieved 2026-07-14, from https://www.ti.com/lit/an/snoa474a/snoa474a.pdf.
+[^philbrick-lightning-empiricist-v12-n1]: George A. Philbrick Researches (1964, Jan). _The Lightning Empiricist, Volume 12, Number 1_ [periodical]. Retrieved 2026-07-14, from http://www.philbrickarchive.org/1964-1_v12_no1_the_lightning_empiricist.htm.

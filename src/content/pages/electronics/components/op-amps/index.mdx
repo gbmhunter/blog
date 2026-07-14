@@ -312,7 +312,13 @@ Differentiators are used in applications such as:
 
 A _transconductance amplifier_ is an op-amp topology which is used to **convert a voltage into a current**. Coincidentally, it is also known as a _voltage-to-current converter_.
 
+<Aside type="note">
+Why "transconductance"? The gain of this amplifier is the ratio of its output current to its input voltage, $g_m = i_L / v_{in}$. Current-over-voltage is _conductance_ (the reciprocal of resistance), which has units of siemens ($\mathrm{S}$). The "trans-" prefix (Latin for "across") signals that the output is measured at a different port to the input — the same naming convention gives us the _transimpedance_ amplifier (current in, voltage out) and the transconductance $g_m$ of a transistor.
+</Aside>
+
 A basic transconductance amplifier can be built with an op-amp in a non-inverting configuration.
+
+<Image iref="fig-transconductance-amplifier-schematic" src={import('./_assets/transconductance-amplifier-schematic.svg')} width="600px">A basic transconductance amplifier (voltage-to-current converter). The load $R_L$ sits in the feedback path in series with the sense resistor $R_{sense}$, which forces the load current to be $i_L = v_{in} / R_{sense}$, independent of the load resistance.</Image>
 
 A transconductance amplifier is useful for creating an industry standard $4-20\unit{mA}$ (or $0-20\unit{mA}$) current-loop signal. The input voltage can come from something like a potentiometer or microcontroller (coupled with either using a VDAC peripheral or PWM/RC-filter technique to create a variable voltage).
 

@@ -1,7 +1,7 @@
 ---
 authors: [gbmhunter]
 date: 2015-10-04
-lastUpdated: 2015-10-04
+lastUpdated: 2026-07-14
 tags: [electric blanket, project, smart phone, IoT]
 title: Autoelectric Blanket
 type: page
@@ -21,19 +21,19 @@ To design a smart phone controlled electric blanket.
 <tbody >
 <tr >
 <td >RaspberryPi, Type B</td>
-<td >$65</td>
+<td >\$65</td>
 </tr>
 <tr >
 <td >Micro-SD Card, 8GB, Class 10 (with regular SD card adaptor)</td>
-<td >$21</td>
+<td >\$21</td>
 </tr>
 <tr >
 <td >USB Wi-Fi Module, N</td>
-<td >$30</td>
+<td >\$30</td>
 </tr>
 <tr >
 <td >Solid-state Relay D4825</td>
-<td >$16</td>
+<td >\$16</td>
 </tr>
 <tr>
 <td>Electric Blanket</td>
@@ -41,19 +41,19 @@ To design a smart phone controlled electric blanket.
 </tr>
 <tr>
 <td>RaspberryPi Prototyping PCB, Adafruit</td>
-<td>$30</td>
+<td>\$30</td>
 </tr>
 <tr>
-<td>240VAC-12VDC Buck Converter</td>
-<td>$18</td>
+<td>240VAC-12VDC <a href="/electronics/components/power-regulators/switch-mode-power-supplies-smps/buck-converters/">Buck Converter</a></td>
+<td>\$18</td>
 </tr>
 <tr>
   <td>12V-to-5V Regulator</td>
-  <td>$2.50</td>
+  <td>\$2.50</td>
 </tr>
 <tr>
   <td><b>TOTAL</b></td>
-  <td>$182.50</td>
+  <td>\$182.50</td>
 </tr>
 </tbody>
 </table>
@@ -72,13 +72,13 @@ I installed geany (`sudo apt-get install geany`), to get a better code editor th
 
 ## List Of Installed Programs
 
-* node
-* express (node extension)
-* ddclient - Manager for dynamic DNS service
+- node
+- express (node extension)
+- ddclient - Manager for dynamic DNS service
 
 ## Controlling GPIO
 
-The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privileges).
+The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for a long time, until I realised I had to run the node module using `sudo node server.js` (with administrator privileges).
 
 <Image src={import('./_assets/simple-led-connected-to-raspberry-pi-gpio.jpg')} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
 
@@ -104,7 +104,7 @@ The server checks to see if it can resolve the address www.google.com every 5 se
 
 I discovered rsync was one of the best ways of enabling me write code on my Windows computer, and then transfer it to the RaspberryPi quickly and easily for running.
 
-I used the following command when currently in the repo directory on my PC (note the `.` after `--delete` ,this is important!):
+I used the following command when currently in the repo directory on my PC (note the `.` after `--delete`, this is important!):
 
 ```sh
 rsync -arvz --delete . pi@192.168.1.51:~/autoeb
@@ -143,7 +143,7 @@ To do this I first had to setup the RaspberryPi so it has a fixed IP. Depending 
 1. Set up a fixed IP purely on the router, using the RaspberryPi's MAC address. This is the easy way!
 2. Set up a fixed IP on the RaspberryPi. This is harder!
 
-To make the RaspberryPi request a fixed IP (option 2), you have to modify it's network interface settings.
+To make the RaspberryPi request a fixed IP (option 2), you have to modify its network interface settings.
 
 The file /etc/network/interfaces contains a list of the present network adaptors and their basic settings.
 
@@ -186,13 +186,13 @@ The Pololu ([http://www.pololu.com/catalog/product/2120](http://www.pololu.com/c
 
 Maybe a 12V to 5V cigarette lighter USB power port will work?
 
-The solid-state relay didn't have a decent datasheet, although what looks like an exact replica was found ([http://nz.mouser.com/ProductDetail/Crydom/D4825/?qs=sGAEpiMZZMtq49AUx5G3778uEJUSSwFqduP38LjrRb0%3d](http://nz.mouser.com/ProductDetail/Crydom/D4825/?qs=sGAEpiMZZMtq49AUx5G3778uEJUSSwFqduP38LjrRb0%3d)). It shares the same code, D4825.
+The [solid-state relay](/electronics/components/relays/solid-state/) didn't have a decent datasheet, although what looks like an exact replica was found ([http://nz.mouser.com/ProductDetail/Crydom/D4825/?qs=sGAEpiMZZMtq49AUx5G3778uEJUSSwFqduP38LjrRb0%3d](http://nz.mouser.com/ProductDetail/Crydom/D4825/?qs=sGAEpiMZZMtq49AUx5G3778uEJUSSwFqduP38LjrRb0%3d)). It shares the same code, D4825.
 
-Although I should of been able to just drive the relay directly from a RaspberryPi GPIO, I choose to use a MOSFET to instead switch it to the +5V rail. I used a TO-92 package (cause it was easy to solder to the prototyping board) BS170"D27Z N-Channel MOSFET.
+Although I should have been able to just drive the relay directly from a RaspberryPi GPIO, I chose to use a [MOSFET](/electronics/components/transistors/mosfets/) to instead switch it to the +5V rail. I used a TO-92 package (cause it was easy to solder to the prototyping board) BS170 N-Channel MOSFET.
 
 The switch has a 1kR resistor in series and a 50kR resistor pulling the GPIO pin to ground. The 1kR is to stop any damaging currents if the GPIO pin is accidentally turned into an output.
 
-I had an issue with a energy-saving light flickering about once per second when the relay was not meant to be turned on.
+I had an issue with an energy-saving light flickering about once per second when the relay was not meant to be turned on.
 
 Measured wire resistances:
 

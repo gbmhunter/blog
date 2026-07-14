@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2012-11-21
 description: Cables carry one or more electrical signals between two systems. This section contains insulation materials, cable types, standards, mutual capacitance and more info.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-07-23
+lastUpdated: 2026-07-14
 tags: [cable, computer cable, material, insulation, ETFE, mPPE, PDVF, NEC, UNITRONIC, PROFIBUS, mutual capacitance, capacitance, screens, screening, shielding, shields, Faraday cage]
 title: Cables
 type: page
@@ -11,7 +11,7 @@ type: page
 
 import WireGauge from 'src/components/tools/wire-gauge/WireGauge.jsx';
 
-Cables are an important design consideration for most electrical designs and installations. They typically provide power and data (although wireless transmission is becoming more common for data transmission) to and between electronic.
+Cables are an important design consideration for most electrical designs and installations. They typically provide power and data (although wireless transmission is becoming more common for data transmission) to and between electronic systems.
 
 ## Child Pages
 
@@ -199,22 +199,22 @@ Cables are an important design consideration for most electrical designs and ins
 
 ## Wire Gauge Selection
 
-Picking the right gauge wire is a trade-off between cost (thicker wire costs more) and the voltage drop across the cable (thinner wire drops more voltage at the same current). The required cross-sectional area for a given DC current and acceptable voltage drop comes from Ohm's law combined with the conductor's resistivity:
+Picking the right gauge wire is a trade-off between cost (thicker wire costs more) and the voltage drop across the cable (thinner wire drops more voltage at the same current). The required cross-sectional area for a given DC current and acceptable voltage drop comes from Ohm's law combined with the conductor's [resistivity](/electronics/components/resistors/):
 
 $$
-\begin{align}
+\begin{align*}
 A = \frac{\rho \cdot L \cdot I}{V_{drop}}
-\end{align}
+\end{align*}
 $$
 
 <p className="centered">where:<br/>
-$A$ is the cross-sectional area of the conductor, in $m^2$<br/>
-$\rho$ is the resistivity of the conductor (e.g. $1.68 \times 10^{-8}\ \Omega \cdot m$ for copper), in $\Omega \cdot m$<br/>
-$L$ is the length of the cable, in $m$<br/>
-$I$ is the current through the cable, in $A$<br/>
-$V_{drop}$ is the acceptable voltage drop across the full length, in $V$<br/></p>
+$A$ is the cross-sectional area of the conductor, in $\mathrm{m^2}$<br/>
+$\rho$ is the resistivity of the conductor (e.g. $1.68 \times 10^{-8}\unit{\Omega \cdot m}$ for copper), in $\mathrm{\Omega \cdot m}$<br/>
+$L$ is the length of the cable, in $\mathrm{m}$<br/>
+$I$ is the current through the cable, in $\mathrm{A}$<br/>
+$V_{drop}$ is the acceptable voltage drop across the full length, in $\mathrm{V}$<br/></p>
 
-Converting the area to a diameter ($d = \sqrt{4A/\pi}$) and then to an AWG gauge using $n = 36 - 39\frac{\log(d/0.127\text{mm})}{\log 92}$ gives the wire gauge to specify. Round down (smaller AWG number = thicker wire) for a safety margin.
+Converting the area to a diameter ($d = \sqrt{4A/\pi}$) and then to an AWG gauge using $n = 36 - 39\frac{\log(d/0.127\unit{mm})}{\log 92}$ gives the wire gauge to specify. Round down (smaller AWG number = thicker wire) for a safety margin.
 
 ### Wire Gauge Calculator
 
@@ -230,7 +230,7 @@ The _National Electrical Code_ (NEC) is an American standards body which defines
 
 NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fibre optic) and a suffix indicating the type of flame test it has passed and where it can be installed.
 
-<Image src={import('./_assets/nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png')} width="790">A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/.</Image>
+<Image src={import('./_assets/nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png')} width="790px">A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/.</Image>
 
 ## Computer Cable
 
@@ -248,99 +248,95 @@ UL2464 is a loose standard defining some of the properties of computer cable, ma
 
 Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2.
 
-* Stranded, bare or tinned copper conductor
-* Colour-coded SR-PVC insulation
-* Cores cabled under aluminum mylar shield
-* Tinned or bare copper stranded drain wire
-* Tinned or bare copper wire braid shield up to 95% coverage
-* Lead free PVC jacket
-* Passes UL VW-1SC & CSA FT1 vertical flame test
+- Stranded, bare or tinned copper conductor
+- Colour-coded SR-PVC insulation
+- Cores cabled under aluminium mylar shield
+- Tinned or bare copper stranded drain wire
+- Tinned or bare copper wire braid shield up to 95% coverage
+- Lead free PVC jacket
+- Passes UL VW-1SC & CSA FT1 vertical flame test
 
 Features Specifications: UL2464 Double Shielded Computer Cables
 
-* Rated temperature: 80°C
-* Rated voltage: 300V
+- Rated temperature: 80°C
+- Rated voltage: 300V
 
 Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2
 
-* Stranded, bare or tinned copper conductor
-* Colour-coded SR-PVC insulation
-* Cores cabled under aluminum mylar shield
-* Tinned or bare copper stranded drain wire
-* Tinned or bare copper wire braid shield up to 95% coverage
-* Lead free PVC jacket
-* Passes UL VW-1SC & CSA FT1 vertical flame test
+- Stranded, bare or tinned copper conductor
+- Colour-coded SR-PVC insulation
+- Cores cabled under aluminium mylar shield
+- Tinned or bare copper stranded drain wire
+- Tinned or bare copper wire braid shield up to 95% coverage
+- Lead free PVC jacket
+- Passes UL VW-1SC & CSA FT1 vertical flame test
 
 Common Colours In UL2464 Cable:
 
-* Black
-* Brown
-* Red
-* Orange
-* Yellow
-* Green
-* Blue
-* Purple
-* Gray
-* White
-* Pink
-* Light Green
-* Black-White
+- Black
+- Brown
+- Red
+- Orange
+- Yellow
+- Green
+- Blue
+- Purple
+- Gray
+- White
+- Pink
+- Light Green
+- Black-White
 
 Common Colours For 12 Core Cable:
 
-* Black
-* Yellow
-* Red
-* Blue
-* Green
-* Yellow
-* White
-* Brown
-* Violet
-* Orange
-* Pink
-* Light Green
-* Grey
+- Black
+- Yellow
+- Red
+- Blue
+- Green
+- Yellow
+- White
+- Brown
+- Violet
+- Orange
+- Pink
+- Light Green
+- Grey
 
 ## Combined Power/Data Cable
 
 Combined power/data cable refers to cable which makes special provision for carrying both moderate/large amounts of power and data through the same cable. All cables can carry "power" and data, but this category refers to two specific cases:
 
-* The cable contains cores of different gauges, with the large gauge for carrying moderate to large amounts of power, and the smaller gauge for data.
-* The cable contains both shielded, twisted pairs and non-shielded, non-twisted power cores.
+- The cable contains cores of different gauges, with the large gauge for carrying moderate to large amounts of power, and the smaller gauge for data.
+- The cable contains both shielded, twisted pairs and non-shielded, non-twisted power cores.
 
 Some examples of combined power/data cables include:
 
-* Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm2 power cores and 1x2x0.64mm2 twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.
-
-## Mutual Capacitance
-
-For cables with screening, typically a conductor-to-conductor and conductor-to-screen capacitance is given. The conductor-to-conductor capacitance is typically 80-140nF and the conductor-to-screen capacitance is typically 100-180nF (slightly higher than the conductor-to-conductor capacitance). 
+- Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm² power cores and 1x2x0.64mm² twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.
 
 ## Screens
 
-Cables (or specific cores within a cable) may be _screened_ (a.k.a. _shielded_) to prevent electromagnetic radiation from both entering and exiting the cores within the cable. There are two primary ways to screen a cable:
+Cables (or specific cores within a cable) may be _screened_ (a.k.a. _shielded_) to prevent electromagnetic radiation from both entering and exiting the cores within the cable. See [RF shields](/electronics/components/rf-shields/) and [common-mode chokes](/electronics/components/common-mode-chokes/) for related noise-mitigation techniques. There are two primary ways to screen a cable:
 
-* **Copper braid**: Braided strands of copper (or other conductive material, such as Aluminium) form the Faraday cage.
-* **Copper foil**: A continuous flexible, thin sheet of copper of other conductive material is wrapped around the cables to form the Faraday cage.
+- **Copper braid**: Braided strands of copper (or other conductive material, such as aluminium) form the Faraday cage.
+- **Copper foil**: A continuous flexible, thin sheet of copper or other conductive material is wrapped around the cables to form the Faraday cage.
 
 The shield must be grounded (with respect to the signals/EMI) to be effective.
 
 ## Cable Glands
 
-Cable glands are strain-relief and weather-proofing glands which allow cables to be passed through enclosure walls.
+Cable glands are strain-relief and weather-proofing glands which allow cables to be passed through enclosure walls. They pass through [enclosures](/electronics/components/enclosures/) and are often paired with [connectors](/electronics/components/connectors/) on the inside.
 
-<Image src={import('./_assets/cable-glands-three-sizes.jpg')} width="500">Three sizes of cable gland.</Image>
+<Image src={import('./_assets/cable-glands-three-sizes.jpg')} width="500px">Three sizes of cable gland.</Image>
 
-<Image src={import('./_assets/cable-gland-multi-cable-edited.jpg')} width="300">A single large cable gland which contains a grommet which allows 8 cables to pass through.</Image>
+<Image src={import('./_assets/cable-gland-multi-cable-edited.jpg')} width="300px">A single large cable gland which contains a grommet which allows 8 cables to pass through.</Image>
 
-<Image src={import('./_assets/metal-cable-gland.jpg')} width="200">Metal cable glands are available if you need stronger support. Note however metal is not strictly better...plastic is better for chemical/corrosion resistance!</Image>
+<Image src={import('./_assets/metal-cable-gland.jpg')} width="200px">Metal cable glands are available if you need stronger support. Note however metal is not strictly better...plastic is better for chemical/corrosion resistance!</Image>
 
-## Protecting Lose Ends
+## Protecting Loose Ends
 
 Sometimes you might have to cut a cable and leave some of the individual wires unconnected. One risk with this is that the exposed metal right on the end of the wire can touch other wires and/or neighbouring conductive materials (circuitry, enclosures, etc.) and cause problems.
 
-One way to fix this is to add small pieces of heat-shrink to the ends of the wires, as shown in <IRef iref="fig-wires-with-exposed-ends-vs-heatshrink-to-prevent-shorts-photo" />. The heat-shrink is slipped over so that half of it is on the end of the wire, and then heated. You have to get tight fitting heat-shrink so that it grips the wire well and doesn't slip off during use.
+One way to fix this is to add small pieces of heat-shrink to the ends of the wires, as shown in the photo below. The heat-shrink is slipped over so that half of it is on the end of the wire, and then heated. You have to get tight fitting heat-shrink so that it grips the wire well and doesn't slip off during use.
 
-<Image iref="fig-wires-with-exposed-ends-vs-heatshrink-to-prevent-shorts-photo" src={import('./_assets/wires-with-exposed-ends-vs-heatshrink-to-prevent-shorts-photo.webp')} width="800px">Wires with exposed ends vs those with added heat-shrink to prevent shorts.</Image>
+<Image src={import('./_assets/wires-with-exposed-ends-vs-heatshrink-to-prevent-shorts-photo.webp')} width="800px">Wires with exposed ends vs those with added heat-shrink to prevent shorts.</Image>
