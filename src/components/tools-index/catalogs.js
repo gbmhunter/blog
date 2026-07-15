@@ -11,6 +11,7 @@ import { catalog as capacitorEnergy } from '../tools/capacitor-energy/catalog.js
 import { catalog as capacitorImpedance } from '../tools/capacitor-impedance/catalog.js';
 import { catalog as cobsEncoder } from '../tools/cobs-encoder/catalog.js';
 import { catalog as crcCalculator } from '../tools/crc-calculator/catalog.js';
+import { catalog as currentSourceResistor } from '../tools/current-source-resistor/catalog.js';
 import { catalog as dewPointMagnus } from '../tools/dew-point-magnus/catalog.js';
 import { catalog as eSeriesFinder } from '../tools/e-series-finder/catalog.js';
 import { catalog as eirpComplianceMap } from '../tools/eirp-compliance-map/catalog.js';
@@ -52,6 +53,7 @@ export const CATALOGS = [
   capacitorImpedance,
   cobsEncoder,
   crcCalculator,
+  currentSourceResistor,
   dewPointMagnus,
   eSeriesFinder,
   eirpComplianceMap,

@@ -1,0 +1,20 @@
+@import url('../_shared/calc-form.css');
+
+/* Preset toolbar: let the buttons wrap on narrow containers and align the
+   leading label with them. */
+.current-source-resistor__presets {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.current-source-resistor__presets-label {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-right: 0.1rem;
+}
+
+.current-source-resistor__preset-sub {
+  color: var(--sl-color-gray-3);
+  font-size: 0.72rem;
+}
