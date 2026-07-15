@@ -1,0 +1,199 @@
+---
+authors: [gbmhunter]
+date: 2022-01-09
+description: Discrete transistor current sources — the Zener diode + BJT current source and the JFET constant-current diode.
+lastUpdated: 2026-07-15
+tags: [electronics, components, current sources, current sinks, bjts, jfets, transistors, constant-current diode]
+title: Discrete Current Sources
+type: page
+---
+
+_Discrete current sources_ are constant-current circuits built from just a transistor and a handful of passive components (e.g. no op-amp or other more "advanced" circuitry). They set a fixed current and are commonly used for biasing and simple LED drives. This page covers two popular discrete designs: the Zener diode + BJT source and the JFET constant-current diode.
+
+For the general concept of current sources and sinks (compliance, schematic symbols, independent vs. controlled sources) see the parent [Current Sources And Sinks](/electronics/components/current-sources-and-sinks/) page.
+
+## Zener Diode And BJT Current Source
+
+Below shows one of the popular methods for constructing a current source from a [Zener diode](/electronics/components/diodes/zener-diodes/) and [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/).
+
+<Image src={import('./_assets/zener-diode-bjt-current-source-schematic.png')} width="400px">Schematic of a Zener diode + BJT current source.</Image>
+
+### How It Works
+
+1. The Zener diode $D1$, biased into its voltage regulation range with resistor $R1$, maintains a steady voltage $V_B$ at the base of the BJT transistor.
+1. Using the rule that there is a $0.7\unit{V}$ drop across the base-emitter junction of a BJT, this puts a fixed voltage at the emitter also.
+1. Since this means there is a fixed voltage across $R_E$, this means by Ohm's law there is a fixed current through $R_E$.
+1. Because most of the current supplied to the emitter of a BJT comes from the collector (only about $1/100$th to $1/800$th of the current comes from the base, depending on the gain $h_{FE}$ of the BJT), this means there is a fixed current through $R_{load}$ also!
+
+The current through the load is given by:
+
+$$
+\begin{align*}
+I_{load} = \frac{V_Z - 0.7\unit{V}}{R_E}
+\end{align*}
+$$
+
+<p className="centered">where:<br/>
+$V_Z$ is the voltage of the Zener diode in $\mathrm{V}$<br/>
+$R_E$ is the resistance of resistor $R_E$ in $\mathrm{\Omega}$<br/>
+$I_{load}$ is the resulting current through the load resistor, in $\mathrm{A}$<br/></p>
+
+## Constant-Current Diode (JFET Current Source)
+
+The _constant-current_ diode (a.k.a _JFET current source_, _current-limiting diode_ (CLD), or _regulating diode_[^centralsemi-curr-limiting-diode]) is a very simple current source made from a [JFET](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/) and optional resistor.
+
+Below shows the schematic for a constant-current diode:
+
+<Image src={import('./_assets/constant-current-diode-schematic.png')} width="350px">Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!</Image>
+
+### How It Works
+
+The constant-current diode works by using the resistor $R_S$ to negatively bias the N-channel JFET at a specific operating point. At this operating point the current from drain to source (and consequentially the load) will be relatively constant.[^elec-tut-fet-current-source]
+
+<Aside type="tip">
+Because of the typically large $R_S > 100\unit{\Omega}$ this circuit is only suitable for making low-power current sources up to the $10\unit{mA}-100\unit{mA}$ range. Also, because of the large uncertainty in $V_{GS(off)}$ (e.g. for the 2N5457, the datasheet says it is somewhere between $-0.5\unit{V}$ and $-6.0\unit{V}$![^onsemi-2n5457-ds]), these don't make very accurate current sources (without trimming). But they are stable!
+</Aside>
+
+### How To Calculate The Value Of The Resistor $R_S$
+
+1. Decide on what N-channel JFET you are going to use and your desired constant current, $I_D$.
+
+1. You then calculate the required gate-source voltage[^vishay-an103-jfet-constant-current-source]:
+    $$
+    \begin{align*}
+    V_{GS} = V_{GS(off)} \left[ 1 - \left(\frac{I_D}{I_{DSS}}\right)^{1/k} \right]
+    \end{align*}
+    $$
+    <p className="centered">where:<br/>
+    $V_{GS}$ is the gate-source voltage required to bias the JFET at the correct current, in $\mathrm{V}$<br/>
+    $V_{GS(off)}$ is the gate-source cutoff voltage, a parameter you can get from the JFETs datasheet, in $\mathrm{V}$<br/>
+    $I_D$ is the current you want the current source to drive at, in $\mathrm{A}$<br/>
+    $I_{DSS}$ is the zero gate-source drain current, a parameter you can get from the JFETs datasheet, in $\mathrm{A}$<br/>
+    $k$ is the conduction parameter for the JFET, and depends on the device geometry. This is not normally mentioned in the datasheet, however for this equation you can generally assume it to be $2$.<br/></p>
+
+1. You can then find the value of $R_S$ with:
+    $$
+    \begin{align*}
+    R_S = \frac{|V_{GS}|}{I_D}
+    \end{align*}
+    $$
+
+<Aside type="example" title="Example: 1.0mA Constant-Current Diode">
+
+Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a constant current $I_D$ of $1.0\unit{mA}$.
+
+From the [OnSemi 2N5457 datasheet](https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf), we get the following values:
+
+$$
+\begin{align*}
+I_{DSS} &= 3.0\unit{mA}\ \text{(typ)} \\
+V_{GS(off)} &= -6.0\unit{V}\ \text{(max)} \\
+\end{align*}
+$$
+
+Plugging these values into the JFET Vgs equation we can work out the required gate-source voltage (with the common assumption that $k = 2$):
+
+$$
+\begin{align*}
+V_{GS} &= V_{GS(off)} \left[ 1 - \left(\frac{I_D}{I_{DSS}}\right)^{1/k} \right] \\
+       &= -6.0\unit{V} \left[ 1 - \left(\frac{1.0\unit{mA}}{3.0\unit{mA}}\right)^{1/2} \right] \\
+       &= -2.54\unit{V}
+\end{align*}
+$$
+
+Knowing the current $I_D$ through the resistor and the voltage $V_{GS}$ across it, we can find the resistance using $R_S = \frac{|V_{GS}|}{I_D}$:
+
+$$
+\begin{align*}
+R_S &= \frac{|V_{GS}|}{I_D} \\
+    &= \frac{|-2.54\unit{V}|}{1.0\unit{mA}} \\
+    &= 2.54\unit{k\Omega} \\
+\end{align*}
+$$
+
+Done!
+
+The resistor $R_S$ can be replaced with a [potentiometer](/electronics/components/potentiometers-and-rheostats/) to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
+
+</Aside>
+
+An important parameter determining the accuracy/stability of a constant-current diode is the [output conductance](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/#output-conductance) $g_{oss}$ of the JFET. This is the ratio of change in $I_D$ to change in $V_{DS}$. This is a measure of how stable the constant-current source will be to changes in the voltage across it, which occur if either the supply voltage or load resistance changes. The lower the $g_{oss}$ the better (an ideal current source would have $g_{oss} = 0$, which is the equivalent to a resistance of $\infty$).
+
+For more great reading on the constant-current diode, see the Vishay/Siliconix application note AN103.[^vishay-an103-jfet-constant-current-source]
+
+## Depletion-Mode MOSFET Current Source
+
+A _depletion-mode_ MOSFET can be turned into a two-terminal constant-current source in exactly the same way as the JFET constant-current diode above. Unlike the far more common _enhancement-mode_ MOSFET (which needs a gate-source voltage above a threshold before it conducts), a depletion-mode MOSFET is _normally on_ — it conducts at $V_{GS} = 0\unit{V}$. This means it can be self-biased with a single source resistor, just like the JFET.
+
+The attraction over a JFET is voltage and power headroom. Where JFET constant-current diodes top out around $100\unit{V}$ and $100\unit{mA}$, depletion-mode MOSFETs built for this job go much higher. The classic part is the Supertex (now Microchip) [DN2540](https://www.microchip.com/en-us/product/DN2540), a $400\unit{V}$, $500\unit{mA}$ device[^supertex-dn2540-ds]; the LND150 pushes the voltage rating higher still. These are widely used for high-voltage LED strings, vacuum-tube plate loads, and high-voltage startup/bleeder supplies.
+
+<Image src={import('./_assets/depletion-mode-mosfet-current-source.webp')} width="400px">Schematic of a depletion-mode MOSFET constant-current source.</Image>
+
+### How It Works
+
+Self-biasing works identically to the [constant-current diode](#constant-current-diode-jfet-current-source): the source resistor $R_S$ develops a voltage as the drain current flows through it, and because the gate is tied to the bottom of $R_S$ this appears as a _negative_ gate-source voltage. As the current rises, $V_{GS}$ becomes more negative and pinches the channel back, settling at a constant operating current.
+
+### How To Calculate The Value Of The Resistor $R_S$
+
+The depletion MOSFET follows the same square-law relationship as the JFET, so the design steps are identical:
+
+1. Choose your depletion-mode MOSFET and desired constant current, $I_D$.
+
+1. Calculate the required gate-source voltage:
+    $$
+    \begin{align*}
+    V_{GS} = V_{GS(off)} \left[ 1 - \left(\frac{I_D}{I_{DSS}}\right)^{1/k} \right]
+    \end{align*}
+    $$
+    where the parameters mean the same as in the JFET section above ($V_{GS(off)}$ is the gate-source cutoff voltage, $I_{DSS}$ the zero-gate-voltage drain current, and $k \approx 2$).
+
+1. Find $R_S$ with:
+    $$
+    \begin{align*}
+    R_S = \frac{|V_{GS}|}{I_D}
+    \end{align*}
+    $$
+
+<Aside type="example" title="Example: 10mA Current Source With The DN2540">
+
+Let's set a constant current of $I_D = 10\unit{mA}$ using the DN2540. From the datasheet[^supertex-dn2540-ds]:
+
+$$
+\begin{align*}
+I_{DSS}    &= 150\unit{mA}\ \text{(min, at } V_{GS} = 0\unit{V}) \\
+V_{GS(off)} &= -1.5\unit{V} \ \text{to} \ -3.5\unit{V} \\
+\end{align*}
+$$
+
+Note that $V_{GS(off)}$ is only specified as a _range_, not a single value — this is typical for depletion MOSFETs and has a big effect on the result. Solving the square-law for $V_{GS}$ (with $k = 2$):
+
+$$
+\begin{align*}
+V_{GS} &= V_{GS(off)} \left[ 1 - \left(\frac{I_D}{I_{DSS}}\right)^{1/2} \right] \\
+       &= V_{GS(off)} \left[ 1 - \left(\frac{10\unit{mA}}{150\unit{mA}}\right)^{1/2} \right] \\
+       &= 0.742 \cdot V_{GS(off)}
+\end{align*}
+$$
+
+Evaluating $R_S = \frac{|V_{GS}|}{I_D}$ at both ends of the $V_{GS(off)}$ range:
+
+$$
+\begin{align*}
+R_S\big|_{V_{GS(off)} = -1.5\unit{V}} &= \frac{0.742 \cdot 1.5\unit{V}}{10\unit{mA}} = 111\unit{\Omega} \\
+R_S\big|_{V_{GS(off)} = -3.5\unit{V}} &= \frac{0.742 \cdot 3.5\unit{V}}{10\unit{mA}} = 260\unit{\Omega} \\
+\end{align*}
+$$
+
+So depending on the individual device, $R_S$ needs to be anywhere from about $110\unit{\Omega}$ to $260\unit{\Omega}$ — a greater than 2:1 spread! This is why, for anything needing accuracy, you fix a value near the middle and put a [trimmer potentiometer](/electronics/components/potentiometers-and-rheostats/) in series, then set the current by measurement. The cutoff voltage also drifts with temperature (about $4.5\unit{mV/^\circ C}$ for the DN2540[^supertex-dn2540-ds]), so the current is not rock-steady over temperature either.
+
+</Aside>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^centralsemi-curr-limiting-diode]: Central Semiconductor Corp. _What is a Current Limiting Diode?_. Retrieved 2022-01-11, from https://www.centralsemi.com/pdfs/selection/leaded/what_is_a_cld.pdf.
+[^vishay-an103-jfet-constant-current-source]: Siliconix (now Vishay) (1997, Mar 10). _AN103: The FET Constant-Current Source/Limiter_ [application note]. Retrieved 2021-04-29, from https://www.vishay.com/docs/70596/70596.pdf.
+[^elec-tut-fet-current-source]: Electronics Tutorials. _FET Current Source_. Retrieved 2022-01-11, from https://www.electronics-tutorials.ws/transistor/fet-current-source.html.
+[^onsemi-2n5457-ds]: On Semiconductor (now On Semi) (2010, Feb). _2N5457, 2N5458 JFETs: General Purpose N−Channel − Depletion_ [datasheet]. Retrieved 2022-01-11, from https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf.
+[^supertex-dn2540-ds]: Supertex (now Microchip). _DN2535/DN2540 N-Channel Depletion-Mode Vertical DMOS FETs_ [datasheet]. Retrieved 2026-07-15, from https://cdn-reichelt.de/documents/datenblatt/A200/DN240N5-G-STEX.pdf.

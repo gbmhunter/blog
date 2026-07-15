@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2011-09-03
 description: Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, avalanche and more info about MOSFETs.
-lastUpdated: 2026-06-25
+lastUpdated: 2026-07-15
 tags: [MOSFETs, transistors, field-effect transistors, metal oxide semiconductors, schematics, electronics, switches, inverters, H-bridges, half-bridges, switch-mode, substrate bias effect, floating-gate MOSFETs, FGMOS, EEPROM, flash memory, drain, source, gate, split-gate, SOA diagram, safe operating area, thermal limits, Spirito effect, common-source amplifier, HEMT, avalanche]
 title: MOSFETs
 type: page
@@ -45,13 +45,24 @@ The easiest way to show the difference between enhancement and depletion-mode MO
 
 <Image src={import('./_assets/vgs-vs-id-enhancement-and-depletion-mode.svg')} width="700px">Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based on real data).</Image>
 
-The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when $V_{GS}$ is around $-4\unit{V}$ and is well and truly on when $V_{GS}$ gets to $0\unit{V}$. In comparison, the enhancement-mode MOSFET is fully off when $V_{GS} = 0\unit{V}$, and takes around $+3\unit{V}$ before it starts conducting. 
+The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when $V_{GS}$ is around $-4\unit{V}$ and is well and truly on when $V_{GS}$ gets to $0\unit{V}$. In comparison, the enhancement-mode MOSFET is fully off when $V_{GS} = 0\unit{V}$, and takes around $+3\unit{V}$ before it starts conducting. **This means that a depletion-mode MOSFET is a "normally-on" device**, and requires a negative voltage on it's gate to turn it off.
 
 Depletion-mode MOSFETs are used for:
 
 - [Bi-directional current limiting circuits](#bi-directional-current-limiter) (which can also withstand high voltages)
 - Current sinks/sources
 - Attaching onto the input of a linear regulator to allow it to run off high voltages (or protect it from ESD).[^ixys-dep-mode-mosfet-applications]
+
+#### Popular Depletion-Mode Parts
+
+Depletion-mode MOSFETs are a niche product, and the market is dominated by a handful of high-voltage N-channel parts originally from Supertex (now Microchip). The two most common are the DN2540[^supertex-dn2540-ds] and the LND150[^supertex-lnd150-ds], compared below:
+
+| Part | $BV_{DSS}$ | $I_D$ (continuous) | $I_{DSS}$ (at $V_{GS} = 0\unit{V}$) | $V_{GS(off)}$ |
+|---|---|---|---|---|
+| DN2540 | $400\unit{V}$ | $500\unit{mA}$ | $150\unit{mA}$ (min) | $-1.5\unit{V}$ to $-3.5\unit{V}$ |
+| LND150 | $500\unit{V}$ | $30\unit{mA}$ | $\approx 1.5\unit{mA}$ (typ) | $-1.0\unit{V}$ to $-3.0\unit{V}$ |
+
+Both are _normally-on_ devices designed for high-voltage duty: [constant-current sources](/electronics/components/current-sources-and-sinks/discrete-current-sources/#depletion-mode-mosfet-current-source), normally-on and fail-safe switches, and providing a high-voltage front-end for a linear regulator.
 
 ### Alternate Style #1: Arrows
 
@@ -481,6 +492,8 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^dinc-dmn61d8l-ds]: Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
 [^infineon-bsp149-ds]: Infineon (2012, Nov 28). _BSP149: SIPMOS Small-Signal-Transistor_. Retrieved 2022-01-07, from https://www.infineon.com/dgdl/Infineon-BSP149-DS-v02_01-en.pdf?fileId=db3a30433c1a8752013c1fcbb815397c.
 [^ixys-dep-mode-mosfet-applications]: IXYS (2014, Mar 10). _AN-500: Depletion-Mode Power MOSFETs and Applications_. Retrieved 2022-01-07, from https://www.ixysic.com/home/pdfs.nsf/www/AN-500.pdf/$file/AN-500.pdf. 
+[^supertex-dn2540-ds]: Supertex (now Microchip). _DN2535/DN2540 N-Channel Depletion-Mode Vertical DMOS FETs_ [datasheet]. Retrieved 2026-07-15, from https://cdn-reichelt.de/documents/datenblatt/A200/DN240N5-G-STEX.pdf.
+[^supertex-lnd150-ds]: Supertex. _LND150 N-Channel Depletion-Mode DMOS FET_ [datasheet]. Retrieved 2026-07-15, from https://media.tubetown.net/info/datenblaetter/silicon/LND150.pdf.
 [^ti-gan-ics]: Texas Instruments. _Power management > Gallium nitride (GaN) ICs (product page)_. Retrieved 2022-05-17, from https://www.ti.com/power-management/gallium-nitride/overview.html.
 [^infineon-gan-hemt]: Infineon (2022). _GaN HEMT â€“ Gallium Nitride Transistor (product page)_. Retrieved 2022-05-17, from https://www.infineon.com/cms/en/product/power/gan-hemt-gallium-nitride-transistor/.
 [^ti-lmg352xr030-q1-ds]: Texas Instruments (2021, Jun). _LMG352xR030-Q1 650-V 30-mâ„¦ GaN FET with Integrated Driver, Protection, and Temperature Reporting (datasheet)_. Retrieved 2022-05-17, from https://www.ti.com/lit/ds/symlink/lmg3525r030-q1.pdf.

@@ -16,6 +16,39 @@ Use `\cdot` as the default explicit multiplication operator (e.g. `2\pi \cdot 50
 
 For tightly-bound products, prefer juxtaposition with no operator at all (e.g. `2\pi f L`, `IR`).
 
+# KaTeX gotchas (beyond units/multiplication above)
+
+- Display equations must use `\begin{align*}` … `\end{align*}`, never `\begin{align}` (this site has no equation numbering). With `align*` you never need `\nonumber`.
+- Put each `$$` delimiter on its own line. A single-line `$$ eq $$` renders inline/left-aligned instead of as a centered display block.
+- Escape currency dollar signs as `\$` (e.g. `\$65`, `US\$1.28`). An unescaped `$` pairs with the next `$` as inline math and can break the build.
+- The `\unit{}` macro only works inside `$...$` / `$$...$$` (dollar) math — its braces break under `\(...\)` / `\[...\]` delimiters.
+- Multi-character sub/superscripts need braces: `$V_{BE}$`, not `$V_BE$`. A bare `%` inside math is a comment character — write `\%`.
+
+# Images and diagrams
+
+- `<Image>` `width` must include the `px` unit: `width="600px"`, not `width="600"`.
+- Diagrams are authored in Affinity Designer and exported as **webp raster** (chosen over SVG to avoid font-embedding issues). Export at ~2–3× the on-page display width (≈1000px+ for a 400px slot) so they stay crisp on HiDPI/scaled displays — Astro keeps the source pixels rather than downscaling, so a too-small source looks blurry on the page but sharp when clicked.
+  - If ever exporting SVG instead: SVGs are `<img>`-embedded (see `src/components/Image.astro`), so page CSS/webfonts don't reach inside them — use "export text as curves" so glyphs become font-independent vector paths.
+- Refer to figures/tables with plain "below"/"above" prose ("the schematic below shows…"), NOT `<IRef>` components or `iref=`/`data-iref` attributes.
+- Bullet lists in content use `- `, not `* `.
+
+# MDX components
+
+- A component used on a single page: import it locally in that page.
+- A component used across many pages: register it in `src/components/GlobalMdxComponents.ts`.
+
+# Monthly updates pages
+
+- Images under `src/content/updates/` get NO caption and `userClass="red-glow"`.
+
+# Dev workflow and gotchas
+
+- Don't run a full `astro build` during dev — it's slow. Use `astro check` or the running dev server; content-only changes need no build.
+- Target the already-running dev server at `localhost:4321`; don't spawn a new one.
+- On Windows, `git mv` on a content directory can fail with "Permission denied" while the dev server's file watcher or the IDE holds a handle. Workaround: `Move-Item` in PowerShell, then `git add -A` (git still detects the rename).
+- Adding references: ST (st.com) datasheets block WebFetch and Microchip download links often redirect to an HTML stub. Fall back to a mirror (reichelt CDN, Mouser, alldatasheet) or the Chrome plugin, and never fabricate datasheet figures.
+- Commits: never add `Co-Authored-By` or other AI-attribution trailers.
+
 # References
 
 If I ask you to create a reference from a URL. It should be in the form:

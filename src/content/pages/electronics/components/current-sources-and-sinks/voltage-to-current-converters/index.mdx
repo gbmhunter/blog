@@ -1,8 +1,9 @@
 ---
+aliases: [/electronics/circuit-design/voltage-to-current-converters/]
 authors: [gbmhunter]
 date: 2016-05-31
 description: Howland current sources, pre-built ICs and more info on voltage-to-current converters.
-lastUpdated: 2016-05-31
+lastUpdated: 2026-07-15
 tags: [voltage, current, converter, Howland, current source]
 title: Voltage-To-Current Converters
 type: page
@@ -101,6 +102,53 @@ The "Basic Howland Current Pump" was invented by Prof. Bradford Howland in 1962 
 
 <Image src={import('./_assets/howland-circuit-from-the-lightning-empiricist.webp')} width="500px">The Howland current source as published in the Lightning Empiricist, Volume 12, Number 1, January 1964.[^philbrick-lightning-empiricist-v12-n1]</Image>
 
+## Op-amp Current Sink
+
+An op-amp, a [MOSFET](/electronics/components/transistors/mosfets/) and a sense resistor make a simple and accurate voltage-controlled current sink. Like the Howland source above it converts an input voltage into a proportional output current, but here the load is referenced to the positive supply rail (making it a current _sink_ rather than a ground-referenced source).
+
+The following schematic shows such a device which can control between $0-1\unit{A}$ through the load (shown as $R_{load}$):
+
+<Image src={import('./_assets/current-sink/op-amp-current-sink-schematic.png')} width="700px">Schematic of a basic op-amp based current sink.</Image>
+
+You set the desired load current by providing a voltage to $V_{in}$. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
+
+$$
+\begin{align*}
+I_{load} = \frac{V_{in}}{R_{sense}}
+\end{align*}
+$$
+
+The circuit works like this:
+
+1. Desired voltage to set current is provided to $V_{in}$ which is applied to the positive input of the op-amp, $V_{op+}$.
+1. The op-amp will then drive its output high in an attempt to bring its $V_{op-}$ to the same voltage.
+1. As the op-amp raises the voltage on its output, this is connected to the gate of the [MOSFET](/electronics/components/transistors/mosfets/), which will begin to turn it on.
+1. As the MOSFET turns on, current begins to flow through the load and sense resistor, $R_{sense}$.
+1. The op-amp will keep turning the MOSFET on until the voltage drop across $R_{sense}$ is equal to $V_{in}$, meaning $V_{op-}$ is the same as $V_{op+}$.
+1. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation $ I_{load} = \frac{V_{in}}{R_{sense}} $.
+
+Things to note:
+
+- The op-amp is powered here with a slightly negative voltage rail on its $V_{SS}$ pin. This is so that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at $V_{op+}$ and $V_{op-}$ are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at $0\unit{V}$.
+- The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by $P = I^2 R$ at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in its active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation $P = VI$ to determine the power dissipation in the MOSFET.
+- The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. See below to recommended compensation circuitry to add to the basic schematic to make the design more stable.
+
+**Current Sinking Accuracy**
+
+The accuracy of the current sink primarily depends on three aspects:
+
+- The input offset voltage of the op-amp.
+- The accuracy of the DAC (or other voltage source) providing the voltage to $V_{in}$.
+- The tolerance of the current-sense resistor.
+
+**MOSFET Gate Capacitance Compensation**
+
+The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
+
+<Image src={import('./_assets/lt1492-voltage-controlled-current-sink.png')} width="500px">A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^linear-lt1492-ds].</Image>
+
+See this Electronics Stack Exchange thread for more information on op-amp stability with capacitive loads.[^stack-exchange-stability-problem-unity-gain-opamp]
+
 ## Pre-built ICs
 
 ### XTR111
@@ -128,3 +176,5 @@ Then select the filtering options:
 
 [^ti-an-1515-comprehensive-study-of-the-howland-current-pump]: Texas Instruments (2013, Apr). _AN-1515 A Comprehensive Study of the Howland Current Pump_ [application note]. Retrieved 2026-07-14, from https://www.ti.com/lit/an/snoa474a/snoa474a.pdf.
 [^philbrick-lightning-empiricist-v12-n1]: George A. Philbrick Researches (1964, Jan). _The Lightning Empiricist, Volume 12, Number 1_ [periodical]. Retrieved 2026-07-14, from http://www.philbrickarchive.org/1964-1_v12_no1_the_lightning_empiricist.htm.
+[^linear-lt1492-ds]: Linear Technology. _LT1492/LT1493: 5MHz, 3V/µs, Low Power Single Supply, Dual and Quad Precision Op Amps_ [datasheet]. Retrieved 2020-12-25, from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf.
+[^stack-exchange-stability-problem-unity-gain-opamp]: Electronics Stack Exchange (2013, May 16). _Stability problem in unity gain opamp_ [forum post]. Retrieved 2026-06-08, from https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp.

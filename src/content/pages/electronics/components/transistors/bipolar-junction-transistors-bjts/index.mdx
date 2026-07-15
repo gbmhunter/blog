@@ -12,7 +12,7 @@ Bipolar junction transistors (BJTs) are 3 legged active electrical semiconductor
 
 BJT transistors were the second type of transistor to be mass produced (superseding the Type-A transistor), at first in very large quantities.[^bib-pbs-evolution-of-tran]
 
-They are used for making things such as amplifiers, switches, [linear regulators](/electronics/components/power-regulators/linear-regulators/), [current mirrors](/electronics/components/current-mirrors/) and digital logic.
+They are used for making things such as amplifiers, switches, [linear regulators](/electronics/components/power-regulators/linear-regulators/), [current mirrors](/electronics/components/current-sources-and-sinks/current-mirrors/) and digital logic.
 
 ## Types
 
@@ -275,7 +275,7 @@ $$
 
 ### Constant-Current Sink
 
-BJTs can be configured to sink a relatively constant amount of current which is independent of the output-side voltage. This can be a useful way of driving an [LED](/electronics/components/diodes/light-emitting-diodes-leds/) from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations where high precision is not the name of the game. If you want high precision, your best bet is to build a [current-sink from an op-amp](/electronics/components/current-sources-and-sinks/#op-amp-current-sink).
+BJTs can be configured to sink a relatively constant amount of current which is independent of the output-side voltage. This can be a useful way of driving an [LED](/electronics/components/diodes/light-emitting-diodes-leds/) from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations where high precision is not the name of the game. If you want high precision, your best bet is to build a [current-sink from an op-amp](/electronics/components/current-sources-and-sinks/voltage-to-current-converters/#op-amp-current-sink).
 
 <Image src={import('./_assets/constant-current-bjt-based-led-driver.png')} width="300px">The simulation schematic for a constant-current BJT-based LED driver.</Image>
 
@@ -371,7 +371,7 @@ A _current mirror_ is a current-copying circuit where the current in one BJT is 
 
 </Aside>
 
-For more info, see the [Current Mirrors page](/electronics/components/current-mirrors/).
+For more info, see the [Current Mirrors page](/electronics/components/current-sources-and-sinks/current-mirrors/).
 
 ### Capacitance Multipliers
 
