@@ -1,0 +1,98 @@
+---
+authors: [gbmhunter]
+date: 2026-07-16
+description: eMMC (embedded MultiMediaCard) is managed NAND flash — a NAND die plus a flash controller in a single soldered-down BGA package. This page covers the interface, speed modes, partitions and how it compares to SD cards, raw NAND and UFS.
+lastUpdated: 2026-07-16
+tags: [memory, eMMC, MMC, NAND, flash, managed NAND, HS400, RPMB, UFS, JEDEC]
+title: eMMC
+type: page
+---
+
+_eMMC_ (short for _embedded MultiMediaCard_) is a form of _managed NAND flash_ that is similar to an SD card (except soldered down). It is a [NAND flash](/electronics/components/memory/flash/) die combined with a flash controller inside a single soldered-down BGA package. The controller handles wear-levelling, error correction (ECC) and bad-block management internally, and presents a simple block-addressable interface to the host. This makes eMMC easy to use as memory. From the host's point of view it behaves much like a small, non-removable hard drive.
+
+It is standardised by JEDEC under the _JESD84_ series of standards.[^jedec-emmc] These standards define not just the electrical protocol but also the physical package (almost always a BGA) and the pinout.
+
+## eMMC Is A Soldered-Down SD Card (Almost)
+
+The quickest way to understand eMMC is by comparison to an [SD card](/electronics/components/memory/sd-cards/). Both are _managed NAND_: NAND flash plus a controller doing the same housekeeping (wear-levelling, ECC, bad-block management). The differences are mostly about packaging and interface:
+
+- eMMC is a **soldered-down BGA package**, not a removable card. This gives it better shock/vibration resistance and a smaller footprint, at the cost of not being user-replaceable.
+- eMMC and SD both descend from the original **MMC (MultiMediaCard)** standard. SD branched off and added its own features; eMMC kept evolving the embedded side.
+- Because the same NAND-management concepts apply, most of what is on the [SD Cards](/electronics/components/memory/sd-cards/) page — [multi-level cells (SLC/MLC/TLC)](/electronics/components/memory/sd-cards/#multi-level-cells-mlcs), [pSLC](/electronics/components/memory/sd-cards/#pseudo-single-level-cell-pslc), [wear-levelling](/electronics/components/memory/sd-cards/#wear-levelling) and TRIM — applies equally to eMMC.
+
+## The Interface
+
+eMMC uses a parallel bus consisting of a clock, a bidirectional command line, and a data bus that can be 1, 4 or 8 bits wide. The 8-bit data bus (only available because it is soldered down, not squeezed into a card connector) is one of the key throughput advantages over an SD card.
+
+Over the various revisions of the standard, several speed modes have been added:[^bpm-micro-mastering-emmc]
+
+| Speed mode | Bus | Clock | Peak throughput | Introduced |
+|---|---|---|---|---|
+| Legacy | SDR | $26\unit{MHz}$ | ~$26\unit{MB/s}$ | MMC |
+| High Speed SDR | SDR | $52\unit{MHz}$ | ~$52\unit{MB/s}$ | eMMC 4.x |
+| High Speed DDR | DDR | $52\unit{MHz}$ | ~$104\unit{MB/s}$ | eMMC 4.4 |
+| HS200 | SDR | $200\unit{MHz}$ | ~$200\unit{MB/s}$ | eMMC 4.5 |
+| HS400 | DDR | $200\unit{MHz}$ | ~$400\unit{MB/s}$ | eMMC 5.0 |
+
+HS400 achieves its $400\unit{MB/s}$ by running the 8-bit bus in double-data-rate (DDR) mode at $200\unit{MHz}$. DDR is when data is transferred on both the rising and falling clock edges. This means the worst case fundamental frequency of the data (a repeating pattern of `0101...`) is the same as the clock. eMMC 5.1 later added _command queuing_ (CQ), which lets the host issue multiple commands without waiting for each to complete, improving random-access performance.
+
+<Aside type="tip">
+The quoted speeds do not account for the overhead of the protocol and the time it takes to either store written data or to retrieve data for returning back to the host. The throughput of actual data seen by the host will be lower than the peak throughput listed in the table.[^bpm-micro-mastering-emmc]
+</Aside>
+
+I/O is typically run at $1.8\unit{V}$ for the high-speed modes (with $3.3\unit{V}$ supported for legacy compatibility).
+
+## Partitions
+
+Unlike a raw flash chip or a simple SD card, an eMMC device presents several distinct hardware-level partitions:
+
+- **User data area**: the main bulk storage, where the filesystem lives.
+- **Boot partitions**: two small dedicated partitions that a host SoC's boot ROM can read from directly at power-up, before the main OS is running. This is heavily used in embedded Linux boards.
+- **RPMB (Replay Protected Memory Block)**: a small partition with authenticated, replay-protected access, used for storing security-sensitive data such as keys or rollback counters.
+- **General purpose partitions**: up to four optional partitions the host can configure for its own use.
+
+## Packaging
+
+eMMC is essentially **always a BGA** package. Unusually, the eMMC standard specifies the mechanical package and ballout itself (not just the electrical protocol), so a compliant device is a ball grid array by definition. The variation between parts is in ball count and body size rather than package family:
+
+- **153-ball and 169-ball FBGA**, both in an $11.5 \times 13\unit{mm}$ body — by far the most common.
+- **100-ball FBGA** — a smaller footprint used by some parts.
+- A handful of other ball counts and pitches appear across vendors, but they are all BGA variants.
+
+You won't find eMMC in a leaded package (SOIC, TSOP, QFN) or through-hole. The high-speed parallel bus — HS400 runs DDR at $200\unit{MHz}$ on an 8-bit bus — together with the power and ground distribution it needs, makes a ball grid array the only practical choice. This is different from plain SPI/QSPI [NOR/NAND flash](/electronics/components/memory/flash/), which is commonly available in SOIC, WSON and TSOP packages.
+
+Adapter boards that carry a BGA eMMC and break it out to an SD-card edge or a header do exist, but that is a small PCB with an eMMC on it, not a different chip package.
+
+## Comparison To Other Storage
+
+| | Raw NAND | eMMC | SD Card | UFS |
+|---|---|---|---|---|
+| Controller | None (host manages) | On-package | On-card | On-package |
+| Removable | No | No (soldered) | Yes | No (soldered) |
+| Interface | Parallel NAND | Parallel (up to 8-bit) | Parallel (up to 4-bit) | Serial (M-PHY, full-duplex) |
+| Host complexity | High (needs FTL + ECC) | Low | Low | Low |
+| Typical peak speed | Varies | ~$400\unit{MB/s}$ (HS400) | ~$100\unit{MB/s}$+ (UHS) | $1\unit{GB/s}$+ |
+
+- **Raw NAND** is _unmanaged_ — the host processor must run a flash translation layer (FTL) and do its own ECC and wear-levelling in software (e.g. via UBI/UBIFS on Linux). eMMC moves all of that into the package.
+- **UFS (Universal Flash Storage)** is the modern successor to eMMC. Instead of a parallel bus it uses a high-speed serial link (M-PHY) that is full-duplex and supports command queuing natively, reaching much higher throughput. UFS has largely replaced eMMC in high-end phones, while eMMC remains popular in cost-sensitive and embedded designs.
+
+## Common Uses
+
+eMMC is extremely common in cost-sensitive and space-constrained embedded systems: older and mid-range smartphones and tablets, single-board computers, automotive infotainment, and IoT devices. For example, the [BeagleBone](/programming/microcontrollers/beaglebone/) uses on-board eMMC pre-loaded with a Linux image, so the board can boot without an SD card inserted.
+
+## Examples
+
+### Raspberry Pi CM5
+
+The Raspberry Pi Compute Module 5 (CM5) uses eMMC for its main non-volatile storage. The CM5 comes in a number of variants with either 0, 16, 32 or 64 GB of eMMC (the 0 GB version is called the CM5Lite).[^raspberry-pi-compute-module-5] The photo below shows a Samsung Electronics KLMAG1JETD 16 GB eMMC 5.1 IC on the bottom side of a CM5 board:
+
+<Image src={import('./_assets/photo-of-emmc-on-rpi-cm5.webp')} width="600px">Photo highlighting the eMMC on the bottom-side of a Raspberry Pi Compute Module 5 (CM5). This particular IC is the Samsung Electronics KLMAG1JETD, which is a 16 GB eMMC 5.1 IC. It is capable of ~$400\unit{MB/s}$.</Image>
+
+{/* ======================================================================== */}
+{/* REFERENCES */}
+{/* ======================================================================== */}
+
+[^jedec-emmc]: JEDEC. _e.MMC_ [standards page]. Retrieved 2026-07-16, from https://www.jedec.org/standards-documents/technology-focus-areas/flash-memory-ssds-ufs-emmc/e-mmc.
+[^bpm-micro-mastering-emmc]: Scott Bronstad (2017, Aug 3). _Mastering eMMC Device Programming_ [white paper]. BPM Microsystems. Retrieved 2026-07-17, from https://www.bpmmicro.com/mastering-emmc-device-programming/.
+[^raspberry-pi-compute-module-5]: Raspberry Pi. _Raspberry Pi Compute Module 5_ [product page]. Retrieved 2026-07-17, from https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032.
+[^raspberry-pi-cm5-datasheet]: Raspberry Pi (2026, Jun 8). _Raspberry Pi Compute Module 5 Datasheet_ [datasheet]. Retrieved 2026-07-17, from https://pip-assets.raspberrypi.com/categories/944-raspberry-pi-compute-module-5/documents/RP-008180-DS-7-cm5-datasheet.pdf.
