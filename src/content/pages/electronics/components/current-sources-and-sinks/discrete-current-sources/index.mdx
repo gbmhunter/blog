@@ -50,6 +50,42 @@ This works because there is $1.4\unit{V}$ across $D1$ and $D2$. There is a drop 
 
 The exact value of $R1$ does not matter, as long as there is enough current to properly forward bias the diodes but not too much to overheat them.
 
+## Two-BJT Current Sink
+
+The two-transistor current sink (also called the _two-transistor current limiter_) is another popular discrete current source. Unlike the Zener and double-diode designs above, this circuit does not use Zeners or diodes as a voltage reference. Instead, it uses a second BJT to limit the current through the first BJT. It has the advantage of being able to work down to very low voltage and uses two of the same component (the BJTs).
+
+<Image src={import('./_assets/two-bjt-current-sink-schematic.webp')} width="400px">Schematic of a two-BJT current sink.</Image>
+
+### How It Works
+
+$Q1$ is the pass transistor that carries the load current, and $R1$ feeds base current into it from the top rail. The sense resistor $R_{sense}$ sits in $Q1$'s emitter, so the entire load current flows through it. The clever part is $Q2$: its base-emitter junction is connected directly across $R_{sense}$, and its collector is tied to $Q1$'s base.
+
+The loop regulates itself against $Q2$'s base-emitter voltage:
+
+1. As the load current rises, the voltage across $R_{sense}$ rises with it.
+1. When that voltage reaches $Q2$'s turn-on threshold (≈$0.7\unit{V}$), $Q2$ begins to conduct.
+1. $Q2$ pulls $Q1$'s base voltage down, stealing base drive from $Q1$ and throttling it back.
+1. The loop settles at the point where $R_{sense}$ drops almost exactly ≈$0.7\unit{V}$.
+
+The load current is therefore set by the sense resistor and a single base-emitter voltage:
+
+$$
+\begin{align*}
+I_{load} = \frac{V_{BE(Q2)}}{R_{sense}} \approx \frac{0.7\unit{V}}{R_{sense}}
+\end{align*}
+$$
+
+<p className="centered">where:<br/>
+$V_{BE(Q2)}$ is the base-emitter voltage of $Q2$, in $\mathrm{V}$<br/>
+$R_{sense}$ is the resistance of the sense resistor, in $\mathrm{\Omega}$<br/>
+$I_{load}$ is the resulting current through the load, in $\mathrm{A}$<br/></p>
+
+Because the reference is a single, well-defined $V_{BE}$ rather than a loosely-toleranced Zener voltage, the absolute accuracy is reasonable. However, $V_{BE}$ drifts by about $-2\unit{mV/^\circ C}$, so the current has a positive temperature coefficient (roughly $+0.3\unit{\%/^\circ C}$ for a $0.7\unit{V}$ sense drop).
+
+What makes the two-BJT topology notable is that it is likely the most commonly used circuit purely as a _current limiter_: it normally passes current freely and only intervenes on overload, e.g. a short-circuit protection front-end on power supplies.
+
+<Image src={import('./_assets/ua723-internal-block-diagram-highlighting-current-limit-bjts.webp')} width="800px">The µA723 voltage regulator IC uses a similar circuit to limit the current. The two transistors are highlighted in red. The BJT on the left "steals" base drive from the series pass BJT once a certain voltage is reached, set by a externally provided sense resistor (so it is adjustable).[^ti-ua723-datasheet]</Image>
+
 ## Constant-Current Diode (JFET Current Source)
 
 The _constant-current_ diode (a.k.a _JFET current source_, _current-limiting diode_ (CLD), or _regulating diode_[^centralsemi-curr-limiting-diode]) is a very simple current source made from a [JFET](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/) and optional resistor.
@@ -231,3 +267,4 @@ The calculator below sizes $R_S$ for either device type. Enter the datasheet $I_
 [^elec-tut-fet-current-source]: Electronics Tutorials. _FET Current Source_. Retrieved 2022-01-11, from https://www.electronics-tutorials.ws/transistor/fet-current-source.html.
 [^onsemi-2n5457-ds]: On Semiconductor (now On Semi) (2010, Feb). _2N5457, 2N5458 JFETs: General Purpose N−Channel − Depletion_ [datasheet]. Retrieved 2022-01-11, from https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf.
 [^supertex-dn2540-ds]: Supertex (now Microchip). _DN2535/DN2540 N-Channel Depletion-Mode Vertical DMOS FETs_ [datasheet]. Retrieved 2026-07-15, from https://cdn-reichelt.de/documents/datenblatt/A200/DN240N5-G-STEX.pdf.
+[^ti-ua723-datasheet]: Texas Instruments (1999, Jul). _µA723 Precision Voltage Regulators_ [datasheet]. Retrieved 2026-07-18, from https://www.ti.com/lit/ds/symlink/ua723.pdf.

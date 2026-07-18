@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2022-01-09
 description: Schematics, advantages/disadvantages, and uses of various current source/sink circuits.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-07-15
+lastUpdated: 2026-07-18
 tags: [electronics, components, current sources, current sinks, bjts, transistors, op-amps, current mirrors]
 title: Current Sources And Sinks
 type: page
@@ -24,6 +24,67 @@ Current sources are very common in circuit design, and as such are usually drawn
 The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current falls out of regulation. 
 
 Current sources may either provide power into a circuit (like a power supply), or require external power to operate.
+
+## Output Impedance
+
+The quality of a current source is measured by its _output impedance_ $Z_{out}$. This is how much the output current changes when the voltage across the source changes. It is defined as:
+
+$$
+\begin{align*}
+Z_{out} = \frac{\Delta V}{\Delta I}
+\end{align*}
+$$
+
+An _ideal_ current source outputs the same current no matter the voltage across it, so $\Delta I = 0$ and $Z_{out} = \infty$. A real current source has some finite (but hopefully very large) output impedance (the higher the better). For a JFET constant-current diode, for example, the output impedance is the inverse of the [output conductance](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/#output-conductance) $g_{oss}$, i.e. $Z_{out} = 1/g_{oss}$.
+
+### Measuring Output Impedance (Two-Point DC Method)
+
+Because $Z_{out} = \Delta V / \Delta I$, you can measure it by deliberately changing the voltage across the source and seeing how much the current moves:
+
+1. Connect the source to a load and make sure it is operating **within its compliance range**.
+1. Measure the output current $I_1$ at output voltage $V_1$ (e.g. set by a known load resistor).
+1. Change the load resistor (or supply voltage) so the voltage across the source shifts to $V_2$, and measure the new current $I_2$.
+1. Calculate the output impedance:
+    $$
+    \begin{align*}
+    Z_{out} = \left| \frac{V_2 - V_1}{I_2 - I_1} \right|
+    \end{align*}
+    $$
+
+For a real source the delivered current always moves _opposite_ to the voltage. You raise the voltage and the current droops, lower it and the current rises. So $\Delta V$ and $\Delta I$ always have opposite signs and their ratio comes out negative, whichever point you happen to label 1 or 2. We take the magnitude, since that sign only reflects the direction of the change, not a physically negative impedance.
+
+<Aside type="tip">
+Why measure the current directly instead of just calculating it from $I = V/R$? Because you are trying to detect a _tiny_ change in current! A "1%" resistor can be off by $\pm 1\%$, which can give an uncertainty many times larger than the change you are trying to resolve. Calculating $I$ from the nominal resistance would let that tolerance completely swamp the signal.
+
+You could measure your resistor with a precise ohmmeter, but resistors change value with temperature. Measuring the current directly side-steps all these issues and gives you a good result.
+</Aside>
+
+For a better result, take several points across the compliance range and plot $I$ against $V$. The slope of that line is $1/Z_{out}$, so a nearly flat line means a high output impedance (a good current source).
+
+A few practical points to watch:
+
+- **Stay inside the compliance range.** If you push the voltage past the compliance limit, the source falls out of regulation and you end up measuring the load and supply instead — which looks like a deceptively low impedance.
+- **High-impedance sources need sensitive current measurement.** A good source can be many $\mathrm{M\Omega}$, so the current change for a few volts of $\Delta V$ is tiny. Use as large a $\Delta V$ as compliance allows, and a low-noise current measurement (benchtop voltmeters work well here).
+- **Watch for thermal drift.** Slow measurements let self-heating and temperature drift shift the current, masquerading as (or swamping) the true impedance. Take readings reasonably quickly, or let the circuit settle at each point.
+
+<Aside type="example">
+We want to measure the output impedance of a current source.
+
+We connect a $1\unit{k\Omega}$ load resistor and measure the output voltage across it as $V_1 = 4.983\unit{V}$. Because the resistor is only 1% precision, we also measure the current at $I_1 = 4.996\unit{mA}$.
+
+We know the current source works well up to $10\unit{V}$. To get the best delta, we pick a resistor that will give us close to $10\unit{V}$. So we pick a $2\unit{k\Omega}$ resistor and measure the voltage across it as $V_2 = 9.974\unit{V}$, and the current as $I_2 = 4.985\unit{mA}$.
+
+Note that the current has dropped slightly (from $4.996\unit{mA}$ to $4.985\unit{mA}$) as the voltage across the source increased — exactly what we expect from a real source with finite output impedance. We can now calculate that impedance:
+
+$$
+\begin{align*}
+Z_{out} &= \left| \frac{V_2 - V_1}{I_2 - I_1} \right| \\
+&= \left| \frac{9.974\unit{V} - 4.983\unit{V}}{4.985\unit{mA} - 4.996\unit{mA}} \right| \\
+&= \left| \frac{4.991\unit{V}}{-0.011\unit{mA}} \right| \\
+&= 454\unit{k\Omega}
+\end{align*}
+$$
+</Aside>
 
 ## Child Pages
 
