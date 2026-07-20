@@ -1,5 +1,15 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
+import { glob } from 'astro/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
+
+// NOTE: Astro 6 migration — this file replaces the legacy src/content/config.ts.
+// The legacy `type: 'content'`/`type: 'data'` collections were removed in Astro 6,
+// so every collection now uses an explicit content-layer loader. The glob loader's
+// default id uses the same slug computation as the legacy API (strips a trailing
+// "/index", slugifies path segments), so entry.id === the old entry.slug.
+// A thin compat shim in src/js/Collections.ts re-attaches `slug` and `render()`
+// to entries for downstream code (PageHierarchy, ChildPages, [...slug].astro).
 
 //=========================================================
 // DOCS COLLECTION
@@ -30,9 +40,11 @@ const docsCollection = defineCollection({
 // PAGES COLLECTION
 //=========================================================
 const pagesCollection = defineCollection({
-  type: 'content',
+  // The negations replicate the legacy collections behavior of ignoring any
+  // file or directory whose name starts with "_" (e.g. the _assets/ dirs).
+  loader: glob({ pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'], base: './src/content/pages' }),
   schema: ({image}) => z.object({
-    aliases: z.array(z.string()).optional(), // Used to setup dynamic redirects. This is done in [...slug].astro 
+    aliases: z.array(z.string()).optional(), // Used to setup dynamic redirects. This is done in [...slug].astro
     authors: z.array(z.string()),
     date: z.date(),
       description: z.string().optional(),
@@ -48,7 +60,7 @@ const pagesCollection = defineCollection({
 // UPDATES COLLECTION
 //=========================================================
 const updatesCollection = defineCollection({
-  type: 'content', // v2.5.0 and later
+  loader: glob({ pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'], base: './src/content/updates' }),
   schema: ({image}) => z.object({
     authors: z.array(z.string()),
     date: z.date(),
@@ -65,8 +77,11 @@ const updatesCollection = defineCollection({
 //=========================================================
 // AUTHORS COLLECTION
 //=========================================================
+// Each author is a directory under src/content/authors/ containing a data.json.
+// The glob loader produces ids like "gbmhunter/data" — MarkdownContent.astro
+// extracts the author id with id.split('/')[0], same as with the legacy API.
 const authorsCollection = defineCollection({
-  type: 'data', // v2.5.0 and later
+  loader: glob({ pattern: '**/data.json', base: './src/content/authors' }),
   schema: ({image}) => z.object({
     name: z.string(),
     link: z.string(),
@@ -78,7 +93,7 @@ const authorsCollection = defineCollection({
 // TEST COLLECTION
 //=========================================================
 const testCollection = defineCollection({
-  type: 'content', // v2.5.0 and later
+  loader: glob({ pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'], base: './src/content/test' }),
   schema: z.object({
     description: z.string().optional(),
     draft: z.boolean().default(false),

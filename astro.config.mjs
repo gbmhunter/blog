@@ -71,6 +71,13 @@ export default defineConfig({
     },
   },
   markdown: {
+    // NOTE (Astro 6): top-level markdown.remarkPlugins/rehypePlugins are
+    // deprecated in favor of `processor: unified({...})`, BUT @astrojs/mdx 5.x
+    // (bundled by Starlight 0.39) only inherits plugins from the top-level
+    // options — moving them into a unified() processor silently drops
+    // remark-math/rehype-katex from every .mdx page (acorn then chokes on raw
+    // `$...\unit{}...$` as a JSX expression). Keep the deprecated form until
+    // the Astro 7 / mdx 6 upgrade handles `processor` properly.
     remarkPlugins: [remarkMath],
     rehypePlugins: [
       [

@@ -1,4 +1,20 @@
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+
+/**
+ * Compat shim for the Astro 6+ content layer: entries no longer carry a `slug`
+ * property or a `.render()` method (removed with the legacy collections API).
+ * Downstream code (PageHierarchy, ChildPages, RecentUpdates, [...slug].astro)
+ * still uses both, so re-attach them here in one place. The glob loader's
+ * default id uses the same slug computation as the legacy API, so `id` is
+ * identical to the old `slug`. Edits entries in-place and returns the array.
+ */
+function addLegacySlugAndRender(entries: any[]): any[] {
+  for (const entry of entries) {
+    entry.slug = entry.id;
+    entry.render = () => render(entry);
+  }
+  return entries;
+}
 
 /**
  * Fixes the slugs of the updates collection. Edits them in-place.
@@ -7,7 +23,6 @@ import { getCollection } from 'astro:content';
 export function correctUpdatesSlugs(updatesCollection: any[]) {
   for (let update of updatesCollection) {
     if (update.slug === 'index') {
-      update.id = 'updates/index.mdx'
       update.slug = 'updates';
     } else {
       update.slug = 'updates/' + update.slug;
@@ -16,7 +31,7 @@ export function correctUpdatesSlugs(updatesCollection: any[]) {
 }
 
 export async function getAllCollections(): Promise<any[]> {
-  let pagesCollection = await getCollection('pages');
+  let pagesCollection = addLegacySlugAndRender(await getCollection('pages'));
 
   // All pages in the updates collection will have a slug prefixed with "updates/"
   let updatesCollection = await getUpdatesCollection();
@@ -29,7 +44,7 @@ export async function getAllCollections(): Promise<any[]> {
 
 export async function getUpdatesCollection(): Promise<any[]> {
   // All pages in the updates collection will have a slug prefixed with "updates/"
-  let updatesCollection = await getCollection('updates');
+  let updatesCollection = addLegacySlugAndRender(await getCollection('updates'));
 
   // Filter out draft pages if in production with import.meta.env.PROD
   if (import.meta.env.PROD) {
