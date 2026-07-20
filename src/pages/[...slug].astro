@@ -1,37 +1,19 @@
 ---
 // @ts-nocheck
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
 
-import { getRoutablePages, getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug } from 'src/js/PageHierarchy';
-import { correctUpdatesSlugs, getAllCollections } from 'src/js/Collections';
+import { getPageHierarchy, convertNodesToSidebarData, findPageNodeBySlug } from 'src/js/PageHierarchy';
+import { getAllRoutes } from 'src/js/Collections';
 import { getGlobalMdxComponents } from 'src/js/GlobalMdxComponents'
 
 export async function getStaticPaths() {
 
-  // let pagesCollection = await getCollection('pages');
-  // pagesCollection = [];
+  const routes = await getAllRoutes();
 
-  // All pages in the updates collection will have a slug prefixed with "updates/"
-  // let updatesCollection = await getCollection('updates');
-  // correctUpdatesSlugs(updatesCollection);
-
-  // Merge the updates collection into the pages collection
-  // const combinedCollection = (pagesCollection as any).concat(updatesCollection);
-
-  let combinedCollection = await getAllCollections();
-
-  // Uncomment this line if you want to test code logic with a smaller collection
-  // let pagesCollection = await getCollection('test');
-  
-  // Trim down to first 10
-  // combinedCollection = combinedCollection.slice(0, 2);
-
-  // Convert the collection into a hierarchy of pages, where each page
+  // Convert the routes into a hierarchy of pages, where each page
   // is represented as a node with potential children nodes.
-  
-  const routablePages = getRoutablePages(combinedCollection);
-  const pageHierarchy = getPageHierarchy(routablePages);
+  const pageHierarchy = getPageHierarchy(routes);
   const sidebarData = convertNodesToSidebarData(pageHierarchy);
 
   class BreadcrumbItem {
@@ -45,18 +27,17 @@ export async function getStaticPaths() {
   }
 
   let staticPaths = [];
-  for (let pageRoute of routablePages) {
+  for (const route of routes) {
 
-    // These slugs do not have a leading / nor a trailing /
-    if (pageRoute.slug === 'index') {
-      pageRoute.slug = undefined;
-    }
+    // These slugs do not have a leading / nor a trailing /. The root index
+    // page has the slug "index", which maps to the root route (params.slug
+    // must be undefined for it).
+    const slug = route.slug === 'index' ? undefined : route.slug;
 
     //================================================================================
     // Breadcrumb Generation
     //================================================================================
-    const pageNode = findPageNodeBySlug(pageRoute.slug, pageHierarchy);
-    // console.log('Used slug:', pageRoute.slug, 'to find page node:', pageNode);
+    const pageNode = findPageNodeBySlug(slug, pageHierarchy);
 
     // Generate breadcrumb trail for the page
     let breadcrumbs: BreadcrumbItem[] = [];
@@ -65,23 +46,22 @@ export async function getStaticPaths() {
       breadcrumbs.unshift(new BreadcrumbItem(currentNode.fileData?.title || currentNode.label, currentNode.slug || ''));
       currentNode = currentNode.parent;
     }
-    // // Add home page as the first breadcrumb
+    // Add home page as the first breadcrumb
     breadcrumbs.unshift(new BreadcrumbItem('Home', '/'));
 
     //================================================================================
     // Page Aliases
     //================================================================================
     // Need to create additional paths if the page contains aliases in it's frontmatter
-    const aliases = pageRoute.data.aliases;
+    const aliases = route.entry.data.aliases;
     if (aliases) {
       for (let alias of aliases) {
         staticPaths.push({
           params: { slug: alias },
-          props: { 
-            aliasTo: pageRoute.slug,
+          props: {
+            aliasTo: slug,
             // Nothing more is needed for the alias page
-            frontmatter: undefined,
-            render: undefined,
+            entry: undefined,
             sidebarData: undefined,
           },
         });
@@ -92,11 +72,10 @@ export async function getStaticPaths() {
     // Main Page Route Creation
     //================================================================================
     staticPaths.push({
-      params: { slug: pageRoute.slug },
-      props: { 
+      params: { slug },
+      props: {
         aliasTo: undefined,
-        frontmatter: pageRoute.data,
-        render: pageRoute.render,
+        entry: route.entry,
         sidebarData: sidebarData,
         breadcrumbs: breadcrumbs,
       },
@@ -106,7 +85,7 @@ export async function getStaticPaths() {
   return staticPaths;
 }
 
-const { aliasTo, frontmatter, render, sidebarData, breadcrumbs } = Astro.props;
+const { aliasTo, entry, sidebarData, breadcrumbs } = Astro.props;
 
 // Check if this page is an alias, and if so, redirect before attempting to render page
 if (aliasTo) {
@@ -116,15 +95,15 @@ if (aliasTo) {
 // Set breadcrumbs in locals for component overrides to access
 Astro.locals.breadcrumbs = breadcrumbs;
 
-const { Content, headings, remarkPluginFrontmatter } = await render();
+const { Content, headings } = await render(entry);
 const globalMdxComponents = getGlobalMdxComponents();
 ---
 <!-- Any unsupported entries will be stripped from the frontmatter. Can add new props though! -->
-<StarlightPage 
-  frontmatter={{ ...frontmatter }}
+<StarlightPage
+  frontmatter={{ ...entry.data }}
   headings={headings}
   sidebar={sidebarData.items as any}
-  customFrontmatter={frontmatter}
+  customFrontmatter={entry.data}
 >
-  <Content components={globalMdxComponents} /> 
+  <Content components={globalMdxComponents} />
 </StarlightPage>

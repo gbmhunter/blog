@@ -1,27 +1,29 @@
 ---
 /* This component is used to display a number of the most recent updates pages on the homepage. */
+import { render } from 'astro:content'
+
 import { getValidUpdatesPages } from 'src/js/Collections'
 import { getGlobalMdxComponents } from 'src/js/GlobalMdxComponents'
 
 const NUM_OF_PAGES_TO_SHOW = 12;
 let updates = await getValidUpdatesPages();
 // Sort by date, most recent first
-updates = updates.sort((a, b) => b.data.date - a.data.date)
+updates = updates.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 updates = updates.slice(0, NUM_OF_PAGES_TO_SHOW)
 
-for (let update of updates) {
-  update.Content = (await update.render()).Content
-}
+const updatesWithContent = await Promise.all(
+  updates.map(async (entry) => ({ entry, Content: (await render(entry)).Content }))
+);
 
 const globalMdxComponents = getGlobalMdxComponents();
 ---
 
 {
-  updates.map((update) => (
+  updatesWithContent.map(({ entry, Content }) => (
     <div class="update">
-      <h3>{update.data.title}</h3>
+      <h3>{entry.data.title}</h3>
       <div class="update-content">
-        <update.Content components={globalMdxComponents}/>
+        <Content components={globalMdxComponents}/>
       </div>
     </div>
   ))

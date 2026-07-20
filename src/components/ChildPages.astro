@@ -2,11 +2,11 @@
 import LinkCard from './LinkCard.astro';
 import CardGrid from './CardGrid.astro';
 
-import { getAllCollections } from '../js/Collections';
+import { getAllRoutes } from '../js/Collections';
 
 const { excludes=[] } = Astro.props;
 
-const allCollections = await getAllCollections();
+const allRoutes = await getAllRoutes();
 
 // e.g. the file at <collection root>/electronics/circuit-design/index.mdx produces the slug "electronics/circuit-design"
 // Will be undefined if homepage (root index.mdx)
@@ -50,21 +50,20 @@ function checkIfChild(parentSlug: string | undefined, potentialChildSlug: string
 } 
 
 let childPages: any = [];
-for (const collectionPage of allCollections) {
+for (const route of allRoutes) {
   // The index.mdx file at the root of the collection is a special case, it returns
   // the slug "index" which is not a child of any other page, so just exclude it here
   // otherwise it will appear to be a child page of the homepage
-  if (collectionPage.slug === 'index') {
+  if (route.slug === 'index') {
     continue;
   }
 
-  // console.log('Checking slug:', collectionPage.slug);
   let isChild = false;
   try {
-    isChild = checkIfChild(currPageSlug, collectionPage.slug);
+    isChild = checkIfChild(currPageSlug, route.slug);
   }
   catch (e) {
-    console.log('Error occurred while calling checkIfChild(). currPageSlug:', currPageSlug, 'collectionPage', collectionPage);
+    console.log('Error occurred while calling checkIfChild(). currPageSlug:', currPageSlug, 'route', route);
     throw e;
   }
   if (!isChild) {
@@ -72,21 +71,19 @@ for (const collectionPage of allCollections) {
   }
 
   // Make sure the child page passes the exclude filter
-  const collectionPageSlugParts = collectionPage.slug.split('/');
-  // console.log('exclude:', excludes);
-  // console.log('collectionPageSlugParts:', collectionPageSlugParts);
-  if (excludes.includes(collectionPageSlugParts[collectionPageSlugParts.length - 1])) {
+  const slugParts = route.slug.split('/');
+  if (excludes.includes(slugParts[slugParts.length - 1])) {
     continue;
   }
-  childPages.push(collectionPage);
+  childPages.push(route);
 }
 
 // Sort chronologically (oldest first) in the updates section, alphabetically elsewhere
 const isUpdatesSection = currPageSlug?.startsWith('updates');
 if (isUpdatesSection) {
-  childPages.sort((a: any, b: any) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+  childPages.sort((a: any, b: any) => new Date(a.entry.data.date).getTime() - new Date(b.entry.data.date).getTime());
 } else {
-  childPages.sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
+  childPages.sort((a: any, b: any) => a.entry.data.title.localeCompare(b.entry.data.title));
 }
 
 // console.log(Astro.params); // slug: electronics/circuit-design
@@ -97,10 +94,10 @@ if (isUpdatesSection) {
   {
     childPages.map((childPage: any) => (
       <LinkCard
-        title={childPage.data.title}
+        title={childPage.entry.data.title}
         href={'/' + childPage.slug + '/'}
-        description={childPage.data.description}
-        image={childPage.data.image}  
+        description={childPage.entry.data.description}
+        image={childPage.entry.data.image}
       />
     ))
   }

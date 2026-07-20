@@ -1,25 +1,4 @@
-export function getRoutablePages(pagesCollection: any[]) {
-  /**
-   * Filter out all pages that are not routable. A page is not routable if it's slug includes "/_".
-   * 
-   * @param pagesCollection The list of pages to filter. Each item should be in the format as returned by await getCollection().
-   * @returns A list of pages that are routable, in the same format as the input except with the non-routable pages removed.
-   */
-  let routablePages = [];
-  for (const page of pagesCollection) {
-    // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore
-    // (we use this to indicate the file is a partial)
-    if (page.slug.includes('/_')) {
-      continue;
-    }
-
-    // if (page.slug === 'index') {
-    //   page.slug = '/';
-    // }
-    routablePages.push(page);
-  }
-  return routablePages;
-}
+import type { PageRoute } from './Collections';
 
 /**
  * Represents a page in the hierarchical page structure.
@@ -43,7 +22,7 @@ class PageNode {
   }
 }
 
-export function getPageHierarchy(pagesCollection: any[]): PageNode {
+export function getPageHierarchy(routes: PageRoute[]): PageNode {
   // This structure is constructed below
   let pageNodes: PageNode = new PageNode('root', undefined, null);
 
@@ -54,15 +33,15 @@ export function getPageHierarchy(pagesCollection: any[]): PageNode {
     'test',
   ];
 
-  for (const collectionPage of pagesCollection) {
+  for (const route of routes) {
     // Root page in collection is index.mdx, we don't want to include it in the sidebar
-    if (collectionPage.slug === 'index') {
-      pageNodes.fileData = collectionPage.data;
+    if (route.slug === 'index') {
+      pageNodes.fileData = route.entry.data;
       continue;
     }
 
     // Split the path into an array of directories and the file name
-    const pathParts = collectionPage.slug.split('/');
+    const pathParts = route.slug.split('/');
     let currentNode = pageNodes;
     let currentSlug = '/';
     for (let i = 0; i < pathParts.length; i++) {
@@ -88,7 +67,7 @@ export function getPageHierarchy(pagesCollection: any[]): PageNode {
         if (i === pathParts.length - 1) {
           // This is a leaf node
           newNode = new PageNode(pathPart, currentSlug, currentNode);
-          newNode.fileData = collectionPage.data;
+          newNode.fileData = route.entry.data;
         } else {
           newNode = new PageNode(pathPart, currentSlug, currentNode);
         }
@@ -101,7 +80,7 @@ export function getPageHierarchy(pagesCollection: any[]): PageNode {
           // This will happen if we hit a branch index page after we have already processed
           // a child node
           // Add a slug so we know there is a page here
-          foundChildNode.fileData = collectionPage.data;
+          foundChildNode.fileData = route.entry.data;
         } else {
           // console.log(`Node with label ${pathPart} found in ${currentNode}.`);
           currentNode = foundChildNode;
@@ -125,7 +104,7 @@ export function getPageHierarchy(pagesCollection: any[]): PageNode {
  * @param hierarchy The root of the page hierarchy.
  * @returns The found PageNode or undefined if not found.
  */
-export function findPageNodeBySlug(slug: string, hierarchy: PageNode): PageNode | undefined {
+export function findPageNodeBySlug(slug: string | undefined, hierarchy: PageNode): PageNode | undefined {
 	if (!slug) return undefined;
 
 	const pathParts = slug.split('/').filter(part => part !== '');

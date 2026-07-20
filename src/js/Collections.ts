@@ -1,68 +1,63 @@
-import { getCollection, render } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 /**
- * Compat shim for the Astro 6+ content layer: entries no longer carry a `slug`
- * property or a `.render()` method (removed with the legacy collections API).
- * Downstream code (PageHierarchy, ChildPages, RecentUpdates, [...slug].astro)
- * still uses both, so re-attach them here in one place. The glob loader's
- * default id uses the same slug computation as the legacy API, so `id` is
- * identical to the old `slug`. Edits entries in-place and returns the array.
+ * A routable page: a content collection entry together with the site-relative
+ * slug it is served at. Slugs have no leading or trailing slash, e.g.
+ * "electronics/circuit-design". The site's root index page has the slug
+ * "index" (mapped to the root route in [...slug].astro).
  */
-function addLegacySlugAndRender(entries: any[]): any[] {
-  for (const entry of entries) {
-    entry.slug = entry.id;
-    entry.render = () => render(entry);
-  }
-  return entries;
+export interface PageRoute {
+  slug: string;
+  entry: CollectionEntry<'pages'> | CollectionEntry<'updates'>;
 }
 
 /**
- * Fixes the slugs of the updates collection. Edits them in-place.
- * @param updatesCollection The list of updates pages (collection).
+ * Returns a route for every entry in the pages collection. Page entries are
+ * served at their collection id, e.g. the entry for
+ * src/content/pages/electronics/index.mdx has id "electronics" and is served
+ * at /electronics/.
  */
-export function correctUpdatesSlugs(updatesCollection: any[]) {
-  for (let update of updatesCollection) {
-    if (update.slug === 'index') {
-      update.slug = 'updates';
-    } else {
-      update.slug = 'updates/' + update.slug;
-    }
-  }
+export async function getPagesRoutes(): Promise<PageRoute[]> {
+  const pages = await getCollection('pages');
+  return pages.map((entry) => ({ slug: entry.id, entry }));
 }
 
-export async function getAllCollections(): Promise<any[]> {
-  let pagesCollection = addLegacySlugAndRender(await getCollection('pages'));
-
-  // All pages in the updates collection will have a slug prefixed with "updates/"
-  let updatesCollection = await getUpdatesCollection();
-
-  // Merge the updates collection into the pages collection
-  const combinedCollection = (pagesCollection as any).concat(updatesCollection);
-
-  return combinedCollection;
-}
-
-export async function getUpdatesCollection(): Promise<any[]> {
-  // All pages in the updates collection will have a slug prefixed with "updates/"
-  let updatesCollection = addLegacySlugAndRender(await getCollection('updates'));
-
-  // Filter out draft pages if in production with import.meta.env.PROD
+/**
+ * Returns a route for every entry in the updates collection. Updates pages
+ * are served under /updates/, so the slug is the entry id prefixed with
+ * "updates/" (the collection's own root index page maps to "updates" itself).
+ * Draft pages are excluded in production builds but included in dev so they
+ * can be previewed.
+ */
+export async function getUpdatesRoutes(): Promise<PageRoute[]> {
+  let updates = await getCollection('updates');
   if (import.meta.env.PROD) {
-    updatesCollection = updatesCollection.filter((page) => page.data.draft === false);
+    updates = updates.filter((entry) => entry.data.draft === false);
   }
-  correctUpdatesSlugs(updatesCollection);
-  return updatesCollection;
+  return updates.map((entry) => ({
+    slug: entry.id === 'index' ? 'updates' : `updates/${entry.id}`,
+    entry,
+  }));
 }
 
 /**
- * Returns all updates pages which are suitable for displaying on the homepage. Excludes
- * any pages in the updates collection which are either:
- * - Drafts (only excluded in production builds; drafts ARE shown when running the dev
- *   server, so they can be previewed on the homepage before publishing)
- * - Index pages for each year (i.e. type !== 'updates')
- * @returns A list of updates pages which are suitable for displaying on the homepage.
+ * Returns the routes for every routable page on the site (the pages and
+ * updates collections combined).
  */
-export async function getValidUpdatesPages(): Promise<any[]> {
-  let updatesCollection = await getUpdatesCollection();
-  return updatesCollection.filter((page) => (page.data.type === 'updates') && (import.meta.env.DEV || page.data.draft === false));
+export async function getAllRoutes(): Promise<PageRoute[]> {
+  return [...(await getPagesRoutes()), ...(await getUpdatesRoutes())];
+}
+
+/**
+ * Returns all updates entries which are suitable for displaying on the
+ * homepage. Excludes any entries in the updates collection which are either:
+ * - Drafts (only excluded in production builds; drafts ARE shown when running
+ *   the dev server, so they can be previewed on the homepage before publishing)
+ * - Index pages for each year (i.e. type !== 'updates')
+ */
+export async function getValidUpdatesPages(): Promise<CollectionEntry<'updates'>[]> {
+  const updates = await getCollection('updates');
+  return updates.filter(
+    (entry) => entry.data.type === 'updates' && (import.meta.env.DEV || entry.data.draft === false),
+  );
 }
