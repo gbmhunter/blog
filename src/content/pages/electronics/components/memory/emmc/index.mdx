@@ -76,6 +76,26 @@ Adapter boards that carry a BGA eMMC and break it out to an SD-card edge or a he
 - **Raw NAND** is _unmanaged_ — the host processor must run a flash translation layer (FTL) and do its own ECC and wear-levelling in software (e.g. via UBI/UBIFS on Linux). eMMC moves all of that into the package.
 - **UFS (Universal Flash Storage)** is the modern successor to eMMC. Instead of a parallel bus it uses a high-speed serial link (M-PHY) that is full-duplex and supports command queuing natively, reaching much higher throughput. UFS has largely replaced eMMC in high-end phones, while eMMC remains popular in cost-sensitive and embedded designs.
 
+## Reliability and Industrial Use
+
+Because eMMC use [managed NAND memory](/electronics/components/memory/flash/), it inherits all of NAND flash's fundamental wear-out mechanisms. These are the same concerns that people have with using SD cards in industrial applications:
+
+- **Limited program/erase (P/E) endurance**: each cell can only be erased and rewritten a finite number of times before it wears out. The limit depends heavily on the cell type — [SLC](/electronics/components/memory/sd-cards/#multi-level-cells-mlcs) lasts far longer than MLC, which lasts far longer than TLC.
+- **Finite data retention**: a written cell slowly leaks its stored charge over time. Retention gets worse at high temperature and as the cell accumulates wear, so a heavily-used device holds data for a much shorter time than a fresh one.
+- **Read/write disturb and unexpected-power-loss corruption**: also NAND-level effects common to all managed-NAND storage.
+
+Just like with an SD card, the on-package controller can mitigate some of these issues with techniques such as wear-levelling, ECC, and bad-block management.
+
+Saying that, eMMC is more attractive for industrial and embedded designs due to it's **robustness and supply-chain control** (when compared to SD cards):
+
+- **Soldered-down BGA**: no friction connector to corrode, wear or vibrate loose. Removable card contacts are a genuine field-failure mode that eMMC eliminates, giving it much better shock and vibration resistance.
+- **A known, specified part**: you solder a specific vendor part number with a published datasheet stating endurance, temperature range and (sometimes) power-loss protection. Commodity SD cards are notorious for silent BOM changes, relabelled parts and undocumented controllers.
+- **Industrial-grade options**: as with SD cards, eMMC is available in [pSLC](/electronics/components/memory/sd-cards/#pseudo-single-level-cell-pslc) mode and with wide-temperature ratings, trading capacity for greatly improved endurance and retention over consumer TLC. A good example is ATP Electronics' _E700Pi_ series, an eMMC 5.1 (HS400) part in a 153-ball FBGA that runs 3D NAND in pseudo-SLC mode across 8–64 GB and a $-40$ to $+85\unit{^\circ C}$ industrial temperature range. ATP quotes 2–3× the endurance of a standard eMMC for it.[^atp-emmc-product-brief] The tell-tale sign of pSLC is the reduced usable capacity — because only one bit is stored per cell, the same die yields roughly a third of the density it would as 3D TLC.
+
+So eMMC is generally considered *more* suitable than a consumer SD card for industrial use, but that comes from mechanical reliability and knowing exactly what part you have. Those you mitigate the same way in both: choose SLC/pSLC, over-provision, use industrial-temperature parts, and minimise unnecessary writes.
+
+One metric used to measure reliability is _TBW_ (terabytes written). This is an indication of how many terabytes of data can be written to the device before it is expected to fail.
+
 ## Common Uses
 
 eMMC is extremely common in cost-sensitive and space-constrained embedded systems: older and mid-range smartphones and tablets, single-board computers, automotive infotainment, and IoT devices. For example, the [BeagleBone](/programming/microcontrollers/beaglebone/) uses on-board eMMC pre-loaded with a Linux image, so the board can boot without an SD card inserted.
@@ -86,7 +106,13 @@ eMMC is extremely common in cost-sensitive and space-constrained embedded system
 
 The Raspberry Pi Compute Module 5 (CM5) uses eMMC for its main non-volatile storage. The CM5 comes in a number of variants with either 0, 16, 32 or 64 GB of eMMC (the 0 GB version is called the CM5Lite).[^raspberry-pi-compute-module-5] The photo below shows a Samsung Electronics KLMAG1JETD 16 GB eMMC 5.1 IC on the bottom side of a CM5 board:
 
-<Image src={import('./_assets/photo-of-emmc-on-rpi-cm5.webp')} width="600px">Photo highlighting the eMMC on the bottom-side of a Raspberry Pi Compute Module 5 (CM5). This particular IC is the Samsung Electronics KLMAG1JETD, which is a 16 GB eMMC 5.1 IC. It is capable of ~$400\unit{MB/s}$.</Image>
+<Image src={import('./_assets/photo-of-emmc-on-rpi-cm5.webp')} width="600px">Photo highlighting the eMMC on the bottom-side of a Raspberry Pi Compute Module 5 (CM5). This particular IC is the Samsung Electronics KLMAG1JETD, which is a 16 GB eMMC 5.1 IC. It is cap+able of ~$400\unit{MB/s}$.</Image>
+
+### ATP E700Pi
+
+The ATP E700Pi is a range of industrial-grade eMMC 5.1 (HS400) devices. They use "3D pseudo SLC" and come in a range of sizes from 8 GB to 64 GB.[^atp-emmc-product-brief] The max. TBW is 1320 TB (compared to 296 TB for their commercial-grade E700Pc with pSLC and 824 TB for their non-pSLC E600Si).[^atp-industrial-emmc] They are packaged in a 153-ball BGA.
+
+<Image src={import('./_assets/atp-emmc-5.1-bga-photo.webp')} width="600px">Photo of an ATP 128 GB eMMC 5.1 IC in a 153-ball BGA package.[^atp-emmc-product-brief]</Image>
 
 {/* ======================================================================== */}
 {/* REFERENCES */}
@@ -96,3 +122,5 @@ The Raspberry Pi Compute Module 5 (CM5) uses eMMC for its main non-volatile stor
 [^bpm-micro-mastering-emmc]: Scott Bronstad (2017, Aug 3). _Mastering eMMC Device Programming_ [white paper]. BPM Microsystems. Retrieved 2026-07-17, from https://www.bpmmicro.com/mastering-emmc-device-programming/.
 [^raspberry-pi-compute-module-5]: Raspberry Pi. _Raspberry Pi Compute Module 5_ [product page]. Retrieved 2026-07-17, from https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032.
 [^raspberry-pi-cm5-datasheet]: Raspberry Pi (2026, Jun 8). _Raspberry Pi Compute Module 5 Datasheet_ [datasheet]. Retrieved 2026-07-17, from https://pip-assets.raspberrypi.com/categories/944-raspberry-pi-compute-module-5/documents/RP-008180-DS-7-cm5-datasheet.pdf.
+[^atp-industrial-emmc]: ATP Electronics. _Industrial e.MMC_ [product page]. Retrieved 2026-07-19, from https://www.atpinc.com/products/industrial-managed-nand-emmc.
+[^atp-emmc-product-brief]: ATP Electronics (2020, Jul 31). _ATP e.MMC v5.1 Embedded Flash Storage Solution_ [product brief]. Retrieved 2026-07-19, from https://www.atpinc.com/products/industrial-managed-nand-emmc.
