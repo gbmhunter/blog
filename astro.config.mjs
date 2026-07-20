@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import astroExpressiveCode from 'astro-expressive-code';
 import preact from "@astrojs/preact";
@@ -71,34 +72,34 @@ export default defineConfig({
     },
   },
   markdown: {
-    // NOTE (Astro 6): top-level markdown.remarkPlugins/rehypePlugins are
-    // deprecated in favor of `processor: unified({...})`, BUT @astrojs/mdx 5.x
-    // (bundled by Starlight 0.39) only inherits plugins from the top-level
-    // options — moving them into a unified() processor silently drops
-    // remark-math/rehype-katex from every .mdx page (acorn then chokes on raw
-    // `$...\unit{}...$` as a JSX expression). Keep the deprecated form until
-    // the Astro 7 / mdx 6 upgrade handles `processor` properly.
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [
-      [
-        rehypeKatex,
-        {
-          displayMode: false,
-          strict: false,
-          // See https://katex.org/docs/options.html for how macros (or other options)
-          // work
-          // support eqref
-          trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
-          macros: {
-            "\\b": "\\mathbf{#1}",
-            "\\bhat": "{\\hat{\\mathbf{#1}}}",
-            "\\eqref": "\\href{###1}{(\\text{#1})}",
-            "\\ref": "\\href{###1}{\\text{#1}}",
-            "\\label": "\\htmlId{#1}{}",
-            "\\unit": "\\,\\mathrm{#1}",
+    // Astro 7 removed the top-level markdown.remarkPlugins/rehypePlugins
+    // options (the default markdown parser is now the Rust-based Sätteri).
+    // Passing a unified() processor opts back into the remark/rehype pipeline,
+    // which this site needs for remark-math + rehype-katex. @astrojs/mdx 7
+    // inherits the plugins from this processor for all .mdx pages.
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [
+        [
+          rehypeKatex,
+          {
+            displayMode: false,
+            strict: false,
+            // See https://katex.org/docs/options.html for how macros (or other options)
+            // work
+            // support eqref
+            trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+            macros: {
+              "\\b": "\\mathbf{#1}",
+              "\\bhat": "{\\hat{\\mathbf{#1}}}",
+              "\\eqref": "\\href{###1}{(\\text{#1})}",
+              "\\ref": "\\href{###1}{\\text{#1}}",
+              "\\label": "\\htmlId{#1}{}",
+              "\\unit": "\\,\\mathrm{#1}",
+            },
           },
-        },
+        ],
       ],
-    ],
+    }),
   },
 });
