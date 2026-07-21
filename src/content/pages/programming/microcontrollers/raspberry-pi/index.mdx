@@ -12,6 +12,10 @@ The Raspberry Pi is a family of popular single-board computers (SBCs) originally
 
 <Image src={import('./_assets/raspberry-pi-5-photo.webp')} width="500px">A photo of the Raspberry Pi 5.</Image>
 
+## Child Pages
+
+<ChildPages />
+
 ## Cases
 
 The Raspberry Pi 5 has an official case which contains a small heatsink and fan for active cooling of the CPU. The case is available in red/white or black. It snaps together easily and provides access to all the common features.
@@ -21,6 +25,18 @@ The Raspberry Pi 5 has an official case which contains a small heatsink and fan 
 In Sep 2025, a new M.2 hat called the "M.2 HAT+ Compact" was released which is compatible with the official enclosure. This hat is a more compact version of the original M.2 hat, which supports 2230-format (30mm long) M.2 PCI express cards.[^rpi-m2-hat-compact-on-sale-now] This hat is great for installing NVMe drives which offer better performance and reliability for the boot file system than the SD card slot or a USB thumb drive.
 
 <Image src={import('./_assets/raspberry-pi-m.2-hat-plus-compact-bare-and-in-enclosure.webp')} width="900px">Photos of the official Raspberry Pi "M.2 HAT+ Compact" hat. Left is the bare hat, right is the hat in the official enclosure.[^the-pi-hut-m2-hat-plus-compact]</Image>
+
+## Raspberry Pi 5
+
+Here is my quick buy shopping list for the Raspberry Pi 5. The links are to the New Zealand Element14 store, so you might have to change the country as needed. The 5A power supply is great for providing extra power for peripherals. The adapter cable is better (in my opinion) than the rigid adapters as it is less likely to break the micro HDMI port or get in the way.
+
+| Item | Quantity | Element14 Part Number | Link |
+| --- | --- | --- | --- |
+| Raspberry Pi 5 8GB | 1 | 4256000 | https://nz.element14.com/raspberry-pi/rpi5-8gb-single/rpi-5-board-2-4ghz-8gb-arm-cortex/dp/4256000
+| MicroSDXC Card, A2-Class, 64 GB | 1 | 4550989 | https://nz.element14.com/raspberry-pi/pi-os-64gb/microsdxc-card-64gb-rpi-4-5-board/dp/4550989
+| Power supply, 5.1V, 5A, USB-C | 1 | 4263037 | https://nz.element14.com/raspberry-pi/sc1150/power-supply-usb-c-5-1v-5a-white/dp/4263037 
+| Raspberry Pi 5 Model B Case | 1 | 4263047 | https://nz.element14.com/raspberry-pi/sc1159/case-raspberry-pi-5-model-b-abs/dp/4263047
+| HDMI mini to regular adapter cable | 1 | 3107416 | https://nz.element14.com/raspberry-pi/hdmi-adapter-cable/micro-hdmi-to-std-f-hdmi-adaptor/dp/3107416
 
 ## Quick Setup
 
@@ -209,6 +225,30 @@ Raspberry Pi Connect is a remote control tool for the Raspberry Pi that allows y
 <Image src={import('./_assets/raspberry-pi-connect-screen-share.webp')} width="800px">A screenshot of the Raspberry Pi Connect screen share feature.</Image>
 
 If you only want terminal access, SSH from a local terminal is usually a better option than Raspberry Pi Connect because the native terminal experience is better than using a web browser terminal. But Raspberry Pi Connect is still a great tool for quick terminal access (as it doesn't require you to remember any credentials except your login to Raspberry Pi Connect).
+
+## Zoho Unattended Access
+
+Zoho Unattended Access supports remote access to Raspberry Pi devices from a web browser.
+
+If you navigate to Deployment -> Manage Devices -> +Add, you can then select "Raspberry" and it will give you a custom download link that looks similar to this:
+
+```sh
+wget "https://assist.zoho.com/api/v2/install_urs?type=2&encapiKey=...
+```
+
+Once that is downloaded onto the Raspberry Pi, you can run it with:
+
+```sh
+sudo dpkg -i zohoassist_1.0.0.1.deb
+```
+
+Because the download is custom to your Zoho account, no sign-in is required once the package is installed.
+
+<Aside type="note">
+Zoho Unattended Access only supports the X11 backend. If you are using Wayland, you will see the device online but Unattended Access will just hang when you attempt to connect to it. You can switch to X11 by running `sudo raspi-config` and then selecting Advanced Options -> Wayland -> X11. Restart the Raspberry Pi and now Unattended Access should work.
+</Aside>
+
+<Image src={import('./_assets/raspberry-pi-login-via-zoho-unattended-access.webp')} width="800px">A screenshot of logging into a Raspberry Pi via Zoho Unattended Access.</Image>
 
 ## Useful Packages To Install
 

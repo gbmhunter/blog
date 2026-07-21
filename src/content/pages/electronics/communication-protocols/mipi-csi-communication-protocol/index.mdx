@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2020-01-20
 description: Info on the MIPI CSI communication protocol.
 image: ./_assets/cover-image.webp
-lastUpdated: 2020-01-20
+lastUpdated: 2026-07-21
 tags: [electronics, communication protocols, MIPI Alliance, MIPI, CSI, CSI-2, CSI-3, interfaces, D-PHY, C-PHY, OSI]
 title: MIPI CSI Communication Protocol
 type: page
@@ -15,18 +15,55 @@ The CSI communication protocol defines an physical, electrical and logical inter
 
 The specification documents of the MIPI communication protocol are only available to paying members of the MIPI Alliance[^mipi-csi-3-specs]. The official MIPI site is at [https://www.mipi.org/](https://www.mipi.org/).
 
+MIPI also defines the MIPI DSI (Display Serial Interface) protocol, which is similar but different in that it used to connect processors to displays instead of cameras.[^spinel-mipi-csi-vs-mipi-dsi]
+
 ## Versions
 
 ### MIPI CSI-1
 
+The MIPI CSI-1 specification was released in 2004. It is the camera _serial_ interface -- a camera _parallel_ interface was released at the same time.[^mipi-current-specifications]
+
+It was quickly superseded by the MIPI CSI-2 specification which was released in 2005.
+
 ### MIPI CSI-2
+
+The MIPI CSI-2 v1.0 specification was released in 2005. It is still being updated, with the v4.2 release in Dec 2025. It uses either D-PHY or C-PHY for the physical layer.
+
+Below is a table summarizing the major versions of the MIPI CSI-2 specification:
+
+| Version | Release Date | Comments |
+|---------|--------------|---------|
+| v1.0    | 2005   | Initial release. |
+| v2.0    | Apr 2017 | Added support for RAW-16 and RAW-20 colour depth. Increased the number of virtual channels from 4 to 32. Introduced latency reduction and transport efficiency (LRTE). Added differential pulse-code modulation (DPCM) compression. Added scrambling to lower power spectral density.[^spinel-mipi-csi-vs-mipi-dsi] |
+| v3.0    | Sep 2019 | Added Unified Serial Link (USL), Smart Region of Interest (SROI), End-of-Transmission Short Packet (EoTp) and RAW-24 colour depth. |
+| v4.2    | Dec 2025 | |
+
+### D-PHY vs C-PHY
+
+D-PHY uses differential signalling and is the most common PHY. Vendors produce D-PHY IP with speeds of up to 6.5 Gbps per lane, and with a total of 4 lanes this gives a total bandwidth of 26 Gbps.[^arasan-mipi-c-phy-d-phy-combo-ip]
+
+C-PHY uses 3 phase encoding in where each lane has three wires. Vendors produce C-PHY IP with speeds of up to 6 Gsps (giga-**symbols** per second) per trio. Each symbol encodes ≈2.28 bits, so gives an effective bit rate of 13.68 Gbps (giga-**bits** per second) per lane. There are up to three lanes, so the total bandwidth of ≈41 Gbps.[^arasan-mipi-c-phy-d-phy-combo-ip]
 
 ### MIPI CSI-3
 
+MIPI CSI-3 has never been widely adopted, and CSI-2 still remains the most common MIPI camera interface.
+
 > A basic CSI-3 v1.1 link configuration using four forward lanes and one reverse lane (10 total wires) can support up to 14.88 Gbps (usable bit rate, including 8B10B and UniPro overhead) in the forward direction and typically supports 1 Mbps or more in the reverse direction[^mipi-csi-3-specs].
+
+| Version | Release Date | Comments |
+|---------|--------------|---------|
+| v1.1    | Mar 2014 |  |
 
 ## Physical Layers
 
 The MIPI CSI-2 v1.0 protocol can use either D-PHY or C-PHY as the physical layer. Both D-PHY and C-PHY are also standards set by the MIPI Alliance.
 
-[^mipi-csi-3-specs]: [https://www.mipi.org/specifications/csi-3](https://www.mipi.org/specifications/csi-3)
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^mipi-csi-3-specs]: MIPI Alliance (2021, Jan 21 snapshot). _MIPI Camera Serial Interface 3 (MIPI CSI-3)_ [specification page]. Retrieved 2026-07-21, from https://web.archive.org/web/20210121205209/https://www.mipi.org/specifications/csi-3. Archived copy; the original page at mipi.org has since been removed.
+[^wikipedia-camera-serial-interface]: Wikipedia (2026, Feb 23). _Camera Serial Interface_ [wiki]. Retrieved 2026-07-21, from https://en.wikipedia.org/wiki/Camera_Serial_Interface.
+[^mipi-current-specifications]: MIPI Alliance. _Current Specifications_ [website]. Retrieved 2026-07-21, from https://www.mipi.org/current-specifications.
+[^spinel-mipi-csi-vs-mipi-dsi]: Spinel Electronics. _MIPI CSI vs MIPI DSI: Key Differences and Choosing the Right Interface for Your Camera_. Retrieved 2026-07-21, from https://www.spinelelectronics.com/mipi-csi-vs-mipi-dsi/.
+[^arasan-mipi-c-phy-d-phy-combo-ip]: Arasan Chip Systems. _MIPI C-PHY v2.0 + D-PHY v2.5 Combo IP Core_ [product page]. Retrieved 2026-07-21, from https://www.arasan.com/product/mipi-c-phy/.

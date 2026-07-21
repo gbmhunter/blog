@@ -10,10 +10,128 @@ type: page
 
 <WarningIsNotes />
 
-Cameras are devices that capture images/video and convert them into an analogue or digital signal.
+Cameras are devices that capture images/video and convert them into an analogue or digital signal. At the heart of a camera is an image sensor, which in today's cameras is usually a CMOS (complementary metal-oxide-semiconductor) sensor. The image sensor is made up of an array of pixels, which are light-sensitive elements that convert light into an electrical signal.
+
+This image sensor is usually paired with a lens which focuses light onto the sensor. There are a number of different camera and lens types available for embedded systems.
+
+## Sensor Size (Optical Format)
+
+The sensor size (a.k.a. optical format) is the physical size of the image sensor in a camera. It is usually measured as the diagonal of the sensor in either a weird fraction of an inch (e.g. 1/2.3") or directly in millimetres (e.g. 6.3 mm).
+
+The 1/2.3" format is a legacy convention from the 1950s vacuum-tube video cameras (vidicons). A "1-inch" tube had a glass tube diameter of 1 inch (25.4 mm) in diameter, but the usable image area was only about 2/3 of that, approx. 16 mm (on the diagonal). Solid-state sensors replaced tubes, but manufacturers kept the same naming convention, quoting the size of a hypothetical tube that would have the same image area.
+
+As a general rule-of-thumb:
+
+$$
+\begin{align*}
+\text{sensor diagonal} \approx \frac{2}{3} \cdot \text{quoted format}
+\end{align*}
+$$
+
+<Aside type="example">
+The IMX477 has a quoted sensor size of 1/2.3". Using the rule-of-thumb, we can calculate the approximate sensor diagonal as:
+
+$$
+\begin{align*}
+\text{sensor diagonal} &\approx \frac{2}{3} \cdot \frac{1}{2.3} \cdot 25.4\unit{mm} \\
+                       &\approx 7.4\unit{mm}
+\end{align*}
+$$
+
+The quoted size in millimetres is 7.86 mm, which is close to our approximation (remember: the 2/3 factor is a rough approximation).
+</Aside>
+
+Sensor size is important because:
+
+- **Light gathering**: A bigger sensor (at the same resolution) has bigger pixels, which can gather more light and produce better images in low-light conditions (and give better dynamic range).
+- **Lens compatibility**: The len's image circle must be at least as big as the sensor so that you do not get vignetting (dark corners).
+- **Field of view**: For a given lens focal length, a bigger sensor will give a wider field of view.
+
+To give some examples:
+
+- Samsung Galaxy S25 Wide (main) camera: 1/1.56"[^gsmarena-samsung-galaxy-s25-review-camera]
+- Samsung Galaxy S25 Telephoto camera: 1/3.94"[^gsmarena-samsung-galaxy-s25-review-camera]
 
 ## IP Cameras
 
 IP cameras are cameras that are connected to a network and can be accessed via a IP address. Many of them support PoE, allowing a single cable to both power the camera and provide a network connection.
 
 ONVIF (Open Network Video Interface Forum) is an popular standard that IP cameras can support.
+
+## MIPI CSI-2 Modules
+
+MIPI CSI-2 is the most common standard for connecting cameras to processors in mobile and embedded devices — see the [MIPI CSI Communication Protocol page](/electronics/communication-protocols/mipi-csi-communication-protocol/) for more info on how the protocol works.
+
+### IMX296
+
+The IMX296 is a 1.6 megapixel image sensor from Sony with a global shutter. The global shutter makes it suitable for capturing fast moving object without the motion blur that can occur with rolling shutters.[^arducam-1-58mp-imx296]
+
+| Feature | Specification |
+| --- | --- |
+| Resolution | 1440 x 1080 |
+| Pixel Size | 3.45 um x 3.45 um |
+| Sensor Size | 1/2.9" (6.3 mm diagonal) |
+| Interface | MIPI CSI-2 |
+| Shutter Type | Global Shutter |
+| Frame Rate | 1440x1080 @ 60 fps |
+| Output Format | RAW10 |
+
+### IMX477
+
+The IMX477 is a 12.3 megapixel CMOS image sensor from Sony. It is in the Raspberry Pi High Quality Camera and the Arducam IMX477 module.[^arducam-12mp-imx477]
+
+The pixel size is 1.55 um x 1.55 um which allows for good low-light performance. The sensor array is 4056 x 3040 pixels.
+
+| Feature | Specification |
+| --- | --- |
+| Resolution | 4056 x 3040 (12 MP) |
+| Pixel Size | 1.55 um x 1.55 um |
+| Sensor Size | 1/2.3" |
+| Interface | MIPI CSI-2 |
+| Shutter Type | Rolling Shutter |
+| Video Modes | 1080p @ 30 fps, 720p @ 60 fps, 640x480 @ 60/90 fps |
+| Output Format | RAW12 |
+
+## Lenses
+
+A lens is an optical device that focuses light onto the image sensor. The lens determines the field of view, depth of field, and overall image quality.
+
+What does a lens do? Consider a tip of a pencil. It scatters light in all directions. The whole cone of those rays enters the lens aperture. Light rays from the pencil tip hit the top, bottom and central parts of the lens. The lens then bends all rays from that one source point so they reconverge at a single point on the image plane.
+
+For a thin lens, the equation is:
+
+$$
+\begin{align*}
+\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}
+\end{align*}
+$$
+
+Where:
+
+- $d_o$ is the distance from the object to the lens.
+- $d_i$ is the distance from the lens to where the image forms.
+
+A pinhole camera avoids the problem of sorting a cone of light rays from every object and instead only allows a single ray from each object to pass through the pinhole. This makes it sharp and in focus for any distance, at the expense of being very dim. A lens allows more light to enter the camera (it allows a cone of light from every object), but it requires focusing to ensure that the image is sharp.
+
+### Focal Length
+
+The _focal length_ is the distance from the lens to the image sensor when a subject at infinity is in focus. It is usually measured in millimetres (mm). A shorter focal length gives a wider field of view, while a longer focal length gives a narrower field of view.
+
+### Mounts
+
+There are two common lens mounts for embedded cameras:[^commonlands-lens-mounts-101]
+
+- **C-mount**: A 1-inch diameter, 32 threads per inch lens mount. The flange height (distance from the top of the flange to the sensors image plane) is 17.526 mm.
+- **CS-mount**: Has the same 1-inch diameter and 32 threads per inch thread as the C-mount, but with a shorter flange height of 12.526 mm. A C-mount lens might work on a CS mount camera, but it doesn't normally work the other way around (a CS-mount lens on a C-mount camera won't focus).[^commonlands-lens-mounts-101]
+- **M12-mount**: A small lens mount that has a M12 x 0.5 thead (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lens must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^arducam-1-58mp-imx296]: Arducam. _1.58MP IMX296_ [documentation]. Arducam Wiki. Retrieved 2026-07-20, from https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/Global-Shutter/1.58MP-IMX296/.
+[^arducam-12mp-imx477]: Arducam. _12MP IMX477_ [documentation]. Arducam Wiki. Retrieved 2026-07-20, from https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/12MP-IMX477/.
+[^gsmarena-samsung-galaxy-s25-review-camera]: GSMArena Team (2025, Feb 5). _Samsung Galaxy S25 review: Camera_. GSMArena. Retrieved 2026-07-21, from https://www.gsmarena.com/samsung_galaxy_s25-review-2794p5.php.
+[^commonlands-lens-mounts-101]: Commonlands Optics. _Types of Camera Lens Mounts - C-Mount, CS-Mount, and M12 Mount (S-Mount)_. Retrieved 2026-07-21, from https://commonlands.com/pages/lens-mounts-101.
+[^commonlands-what-is-an-m12-lens]: Commonlands Optics. _What Is an M12 Lens? S-Mount Definition, M12 x 0.5 Thread, and Selection Guide_. Retrieved 2026-07-21, from https://commonlands.com/blogs/technical/what-is-an-m12-lens.
