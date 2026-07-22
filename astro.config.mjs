@@ -5,6 +5,7 @@ import astroExpressiveCode from 'astro-expressive-code';
 import preact from "@astrojs/preact";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeFootnoteComma from "./src/js/rehypeFootnoteComma.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -99,6 +100,7 @@ export default defineConfig({
             },
           },
         ],
+        rehypeFootnoteComma,
       ],
     }),
   },
