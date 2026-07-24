@@ -1,0 +1,110 @@
+import { parseValueWithPrefix } from 'src/js/metric-prefix.js';
+
+// Sensor presets for popular embedded camera sensors. Sensor dimensions are
+// derived from pixel size × active resolution (this matches the quoted
+// diagonals, e.g. IMX477: 1.55 µm × 4056 × 3040 → 7.86 mm diagonal).
+export const PRESETS = [
+  { label: 'Custom' },
+  { label: 'Sony IMX219 (Pi Camera v2)', resH: 3280, resV: 2464, pixelUm: 1.12 },
+  { label: 'Sony IMX296 (Pi Global Shutter Camera)', resH: 1440, resV: 1080, pixelUm: 3.45 },
+  { label: 'Sony IMX477 (Pi HQ Camera)', resH: 4056, resV: 3040, pixelUm: 1.55 },
+  { label: 'Sony IMX708 (Pi Camera v3)', resH: 4608, resV: 2592, pixelUm: 1.4 },
+  { label: 'OmniVision OV5647 (Pi Camera v1)', resH: 2592, resV: 1944, pixelUm: 1.4 },
+];
+
+export function presetSensorFields(preset) {
+  const w = (preset.resH * preset.pixelUm) / 1000;
+  const h = (preset.resV * preset.pixelUm) / 1000;
+  return {
+    sensorW: w.toFixed(3),
+    sensorH: h.toFixed(3),
+    resH: String(preset.resH),
+    resV: String(preset.resV),
+  };
+}
+
+// Lens presets from the Arducam M12 lens set (SKU LK005), a common lens kit
+// for embedded cameras. EFL/F-number/format from the kit's spec table.
+// `warn` flags wide-angle/fisheye lenses whose real FoV is considerably wider
+// than the rectilinear thin-lens model predicts (barrel distortion).
+export const LENS_PRESETS = [
+  { label: 'Custom' },
+  { label: 'Arducam LN001 — 16 mm f/2.0 telephoto', focal: 16, model: 'M2516ZH01' },
+  { label: 'Arducam LN065 — 12 mm f/2.0 telephoto', focal: 12, model: 'M2512ZH03' },
+  { label: 'Arducam LN002 — 8 mm f/2.0', focal: 8, model: 'M2508ZH02' },
+  { label: 'Arducam LN003 — 6 mm f/2.0', focal: 6, model: 'M2506ZH04' },
+  { label: 'Arducam LN011 — 4 mm f/2.8', focal: 4, model: 'M2504ZH05S' },
+  { label: 'Arducam LN012 — 3.6 mm f/3.0', focal: 3.6, model: 'M25360H06S' },
+  { label: 'Arducam LN013 — 2.8 mm f/2.8 wide', focal: 2.8, model: 'M27280M07S' },
+  { label: 'Arducam LN005 — 2.1 mm f/2.0 wide', focal: 2.1, model: 'M27210H08', warn: true },
+  { label: 'Arducam LN055 — 1.95 mm f/2.0 ultra-wide', focal: 1.95, model: 'M27195H15', warn: true },
+  { label: 'Arducam LN007 — 1.7 mm f/2.0 fisheye', focal: 1.7, model: 'M25170H12', warn: true },
+];
+
+// All these inputs are plain positive numbers (the unit is shown as a fixed
+// suffix or a unit dropdown, so no unit stripping is needed here).
+export const parsePositive = (t) => parseValueWithPrefix(t, { units: [] });
+
+export const DISTANCE_UNITS = [
+  { label: 'mm', multiplier: 1 },
+  { label: 'cm', multiplier: 10 },
+  { label: 'm', multiplier: 1000 },
+];
+
+const DEG_PER_RAD = 180 / Math.PI;
+
+/**
+ * Compute the field-of-view numbers for a sensor + lens + working distance.
+ *
+ * All lengths are in mm, resolutions in pixels. Uses the thin-lens/pinhole
+ * model: an object plane at distance d_o from the lens maps onto the sensor
+ * with magnification m = f / (d_o − f), so the scene width covered is
+ * w_fov = w_sensor · (d_o − f) / f. Angular FoV is the infinity-focus value
+ * 2·atan(w_sensor / 2f).
+ *
+ * @param solveFor 'fovWidth' (focal known) or 'focal' (required FoV width known).
+ * @returns an object of results, or { error } if the geometry is impossible.
+ */
+export function compute({ solveFor, sensorW, sensorH, resH, focal, fovWidth, distance }) {
+  let f = focal;
+  let wFov = fovWidth;
+
+  if (solveFor === 'focal') {
+    // From w_fov = w_s (d − f) / f  →  f = w_s · d / (w_fov + w_s)
+    f = (sensorW * distance) / (wFov + sensorW);
+  } else {
+    if (distance <= f) {
+      return { error: 'Working distance must be greater than the focal length.' };
+    }
+    wFov = (sensorW * (distance - f)) / f;
+  }
+
+  const hFov = (sensorH * (distance - f)) / f;
+  const sensorDiag = Math.hypot(sensorW, sensorH);
+
+  return {
+    error: null,
+    focal: f,
+    fovWidth: wFov,
+    fovHeight: hFov,
+    hFovDeg: 2 * Math.atan(sensorW / (2 * f)) * DEG_PER_RAD,
+    vFovDeg: 2 * Math.atan(sensorH / (2 * f)) * DEG_PER_RAD,
+    dFovDeg: 2 * Math.atan(sensorDiag / (2 * f)) * DEG_PER_RAD,
+    sensorDiag,
+    pixelUm: (sensorW / resH) * 1000,
+    mmPerPx: wFov / resH,
+    pxPerMm: resH / wFov,
+  };
+}
+
+// Format a length in mm, auto-scaling to µm or m when appropriate.
+export function formatLen(mm) {
+  if (!Number.isFinite(mm)) return '—';
+  if (mm >= 1000) return `${(mm / 1000).toPrecision(4)} m`;
+  if (mm < 0.1) return `${(mm * 1000).toPrecision(4)} µm`;
+  return `${mm.toPrecision(4)} mm`;
+}
+
+export const formatDeg = (deg) => `${deg.toFixed(1)}°`;
+export const formatUm = (um) => `${um.toPrecision(3)} µm`;
+export const formatPxPerMm = (v) => `${v.toPrecision(4)} px/mm`;

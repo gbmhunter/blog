@@ -8,6 +8,8 @@ title: Cameras
 type: page
 ---
 
+import CameraFov from 'src/components/tools/camera-fov/CameraFov.jsx';
+
 <WarningIsNotes />
 
 Cameras are devices that capture images/video and convert them into an analogue or digital signal. At the heart of a camera is an image sensor, which in today's cameras is usually a CMOS (complementary metal-oxide-semiconductor) sensor. The image sensor is made up of an array of pixels, which are light-sensitive elements that convert light into an electrical signal.
@@ -144,13 +146,83 @@ A pinhole camera avoids the problem of sorting a cone of light rays from every o
 
 The _focal length_ is the distance from the lens to the image sensor when a subject at infinity is in focus. It is usually measured in millimetres (mm). A shorter focal length gives a wider field of view, while a longer focal length gives a narrower field of view.
 
+_Effective focal length_ (EFL) is the optical focal length of the whole lens assembly. This is the distance from the lens's rear principal plane to the focal point. The principal plane is a theoretical plane that can sit anywhere (even inside or in front of the glass).
+
+_Back focal length_ (BFL) is the distance from the rear surface of the lens to the image plane. This tells you how much clearance exists between the back of the lens and the sensor. This space is where IR filters, cover glass and other optical elements are placed. For M12, which has no standard flange height, this also tells you how tall your lens holder needs to be.
+
+For example, the the M12 Arducam LN001 telephoto lens, the EFL is 16 mm but the BFL is only 7.1 mm. The optics makes the principal plane sit out the front of the lens, and the whole assembly is shorter than the focal length.
+
+### Field of View
+
+The _field of view_ (FoV) is how much of the scene the camera captures. It depends on both the focal length of the lens and the size of the sensor. The diagram below shows the geometry.
+
+<Image src={import('./_assets/lens-field-of-view-diagram.webp')} width="800px">The field of view geometry of a camera under the thin-lens model. The sensor sits approximately one focal length behind the lens, and the chief rays through the lens centre define the angular field of view and the size of the scene captured at the object plane.</Image>
+
+<Aside type="note">
+**What are chief rays?**
+
+A chief ray is a ray of light from a point on the object plane that passes through the centre of the lens. A chief ray has two important properties:
+
+1. **It passes through the lens centre without any refraction**: For a thin lens, a ray through the centre hits both surfaces where they are essentially parallel, so it does not bend. This means we don't have to worry about refraction angles.
+2. **It defines the field of view**: Each point on the object sends a whole cone of light rays into the lens, but where that point lands on the sensor is located by its chief ray. So the chief ray from the outermost point on the object plane that still lands on the sensor's edge sets the boundary of what the camera can see, and hence defines the field of view.
+</Aside>
+
+
+Under the thin-lens model, the angular field of view is:
+
+$$
+\begin{align*}
+\theta = 2 \arctan \left( \frac{s}{2f} \right)
+\end{align*}
+$$
+
+and the size of the scene captured at a working distance $d_o$ from the lens is:
+
+$$
+\begin{align*}
+s_{fov} = s \cdot \frac{d_o - f}{f}
+\end{align*}
+$$
+
+Where:
+
+- $\theta$ is the angular field of view in radians.
+- $s_{fov}$ is the size of the scene captured at the working distance, in mm.
+- $s$ is a dimension of the sensor's active pixel array, in mm.
+- $f$ is the focal length of the lens, in mm.
+- $d_o$ is the working distance from the lens to the object, in mm.
+
+The equations work for any of the three sensor dimensions — width, height or diagonal. For example, if you substitute in the sensor width $s_h$ you get the horizontal angular field of view $\theta_h$ (and the width of the captured scene); substitute the sensor height $s_v$ or diagonal $s_d$ and you get the vertical ($\theta_v$) or diagonal ($\theta_d$) field of view instead.
+
+For working distances much larger than the focal length this simplifies to the familiar $s_{fov} \approx s \cdot \frac{d_o}{f}$.
+
+These equations only hold for low-distortion (rectilinear) lenses. Wide-angle and fisheye lenses have strong barrel distortion which "squeezes" a wider scene onto the sensor, so their real field of view is considerably wider than the focal length predicts.
+
+### Lens Field of View Calculator
+
+A common design task is working out what focal length lens you need so that a camera sees an object of a certain size at a certain distance, and how much detail (mm per pixel) you get on that object. The calculator below solves this using the field of view equations above.
+
+The lens preset dropdown is populated with the 10 lenses from the Arducam M12 lens set (SKU LK005), a popular lens kit for embedded cameras covering focal lengths from a 16 mm telephoto down to a 1.7 mm fisheye.[^arducam-m12-lens-set]
+
+<CameraFov client:load />
+
 ### Mounts
 
-There are two common lens mounts for embedded cameras:[^commonlands-lens-mounts-101]
+Lens mounts hold the lens in the correct place in-front of the image sensor. The image sensor is typically mounted on a circuit board with one side of the mount, and the lens has a mating piece which screws or slides on. There are a few common lens mounts used for embedded cameras.
 
-- **C-mount**: A 1-inch diameter, 32 threads per inch lens mount. The flange height (distance from the top of the flange to the sensors image plane) is 17.526 mm.
-- **CS-mount**: Has the same 1-inch diameter and 32 threads per inch thread as the C-mount, but with a shorter flange height of 12.526 mm. A C-mount lens might work on a CS mount camera, but it doesn't normally work the other way around (a CS-mount lens on a C-mount camera won't focus).[^commonlands-lens-mounts-101]
-- **M12-mount**: A small lens mount that has a M12 x 0.5 thead (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lens must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
+#### C-mount
+
+A 1-inch diameter, 32 threads per inch lens mount. The flange height (distance from the top of the flange to the sensors image plane) is 17.526 mm.[^wikipedia-c-mount]
+
+<Image src={import('./_assets/c-mount-lens-photo.webp')} width="300px">A photo of a C-mount lens.[^wikipedia-c-mount]</Image>
+
+#### CS-mount
+
+Has the same 1-inch diameter and 32 threads per inch thread as the C-mount, but with a shorter flange height of 12.526 mm. A C-mount lens might work on a CS mount camera, but it doesn't normally work the other way around (a CS-mount lens on a C-mount camera won't focus).[^commonlands-lens-mounts-101]
+
+#### M12-mount
+
+A small lens mount that has a M12 x 0.5 thead (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lens must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
 
 
 {/* ============================================================================================ */}
@@ -159,7 +231,9 @@ There are two common lens mounts for embedded cameras:[^commonlands-lens-mounts-
 
 [^arducam-1-58mp-imx296]: Arducam. _1.58MP IMX296_ [documentation]. Arducam Wiki. Retrieved 2026-07-20, from https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/Global-Shutter/1.58MP-IMX296/.
 [^arducam-12mp-imx477]: Arducam. _12MP IMX477_ [documentation]. Arducam Wiki. Retrieved 2026-07-20, from https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/12MP-IMX477/.
+[^arducam-m12-lens-set]: Arducam. _Arducam M12 Lens Set, Arducam Lens for USB Camera(1/2.7" 1/2.8" 1/2.9"), Telephoto, Macro, Wide Angle, Fisheye Lens Kit (20°- 180°) with M12 Lens Holder and Cleaning Cloth, Optical All-in-One_ [product page]. Retrieved 2026-07-23, from https://www.arducam.com/arducam-m12-lens-set-arducam-lens-for-usb-camera1-2-7-1-2-8-1-2-9-telephoto-macro-wide-angle-fisheye-lens-kit-20-180-with-m12-lens-holder-and-cleaning-cloth-optical.html.
 [^gsmarena-samsung-galaxy-s25-review-camera]: GSMArena Team (2025, Feb 5). _Samsung Galaxy S25 review: Camera_. GSMArena. Retrieved 2026-07-21, from https://www.gsmarena.com/samsung_galaxy_s25-review-2794p5.php.
 [^commonlands-lens-mounts-101]: Commonlands Optics. _Types of Camera Lens Mounts - C-Mount, CS-Mount, and M12 Mount (S-Mount)_. Retrieved 2026-07-21, from https://commonlands.com/pages/lens-mounts-101.
 [^commonlands-what-is-an-m12-lens]: Commonlands Optics. _What Is an M12 Lens? S-Mount Definition, M12 x 0.5 Thread, and Selection Guide_. Retrieved 2026-07-21, from https://commonlands.com/blogs/technical/what-is-an-m12-lens.
 [^sony-imx477-aack-flyer]: Sony Semiconductor Solutions (2018, Dec 12). _IMX477-AACK - Diagonal 7.857 mm (Type 1/2.3) 12.3 Mega-Pixel CMOS Image Sensor with Square Pixel for Color Cameras_ [product flyer]. Retrieved 2026-07-22, from https://www.sony-semicon.com/files/62/pdf/p-13_IMX477-AACK_Flyer.pdf.
+[^wikipedia-c-mount]: Wikipedia (2025, Jul 25). _C mount_ [wiki]. Retrieved 2026-07-24, from https://en.wikipedia.org/wiki/C_mount.

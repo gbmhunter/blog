@@ -1,0 +1,33 @@
+@import url('../_shared/calc-form.css');
+
+/* Wider label column than the shared default (labels like "Pixel size" and
+   "Px density" need the room). */
+.camera-fov .calc-form__row {
+  grid-template-columns: 6rem 1fr;
+}
+
+/* Radio rows: 1.5rem radio + 0.6rem gap + 3.9rem label = 6rem, so the input
+   column starts at the same x position as on the non-radio rows. */
+.camera-fov .calc-form__row--radio {
+  grid-template-columns: 1.5rem 3.9rem 1fr;
+}
+
+@container (min-width: 36rem) {
+  .camera-fov .calc-form__row {
+    grid-template-columns: 6rem minmax(0, 18rem) minmax(0, 1fr);
+  }
+  .camera-fov .calc-form__row--radio {
+    grid-template-columns: 1.5rem 3.9rem minmax(0, 18rem) minmax(0, 1fr);
+  }
+}
+
+.camera-fov__section {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sl-color-gray-2);
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  padding-bottom: 0.15rem;
+  margin-top: 0.6rem;
+}

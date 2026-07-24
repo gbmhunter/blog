@@ -59,6 +59,10 @@ The MIPI CSI-2 protocol can use either D-PHY or C-PHY as the physical layer. D-P
 | M-PHY | CSI-3[^mipi-csi-3-specs], UniPro, UFS storage[^mipi-m-phy], DigRF | M-PHY outlived CSI-3's failure because JEDEC's UFS (the flash storage in most modern phones) runs on UniPro over M-PHY.[^mipi-m-phy] |
 | A-PHY | CSI-2 and DSI-2 (tunnelled via protocol adaptation layers, PALs)[^mipi-a-phy] | Long-reach (up to 15 m) asymmetric link for automotive (ADAS, autonomous driving, infotainment).[^mipi-a-phy] Carries cameras/displays over a single cable, competing with GMSL and FPD-Link. |
 
+<Aside type="note">
+The PHY layers have their own versioning and specifications.
+</Aside>
+
 ### D-PHY
 
 D-PHY uses differential signalling and is the most common PHY.
@@ -82,13 +86,17 @@ C-PHY has the following characteristics:
 
 - **Lane structure**: 3 wires per lane (a lane is called a _trio_).
 - **Clocking**: There are no dedicated clock wires, the clock is embedded in the data.
-- **Signalling**: C-PHY uses 3-phase encoding. Each of the 3 wires can be at one of three voltage levels (low, mid, or high). Only the states where all three wires are not at the same level are valid, giving 6 valid states. Data is sent in the transitions between the valid states. At every symbol time, the 3 wires must change state. From any original state there are 5 possible new states, so each transition carries a maximum of $\log_2(5) \approx 2.32$ bits of information. The official spec maps 16 bits onto 7 symbol transitions, giving $\frac{16}{7} \approx 2.28$ bits per symbol.[^wiley-implementing-mipi-c-phy] In practice, this means the encoder takes in 16-bit words, and outputs 7 symbols (each symbol would be internally represented by 3 bits before reaching the analogue driver circuitry) which are then sent on the 3 wires.
+- **Signalling**: C-PHY uses 3-phase encoding. Each of the 3 wires can be at one of three voltage levels (low, mid, or high). Only the states where all three wires are not at the same level are valid, giving 6 valid states. Data is sent in the transitions between the valid states. At every unit interval (UI, which corresponds to the rate symbols are sent), the 3 wires must change state. From any original state there are 5 possible new states, so each transition carries a maximum of $\log_2(5) \approx 2.32$ bits of information. The official spec maps 16 bits onto 7 symbol transitions, giving $\frac{16}{7} \approx 2.28$ bits per symbol.[^wiley-implementing-mipi-c-phy] In practice, this means the encoder takes in 16-bit words, and outputs 7 symbols (each symbol would be internally represented by 3 bits before reaching the analogue driver circuitry) which are then sent on the 3 wires.
 
 The schematic below shows a MIPI C-PHY transmitter and receiver. You can see that the receiver uses three differential receivers, one connected across each pair of wires in the trio (A-B, B-C and C-A).[^wiley-implementing-mipi-c-phy]
 
 <Image src={import('./_assets/c-phy-tx-and-rx-driver-schematic.webp')} width="600px">A schematic showing the core fundamentals of a MIPI C-PHY transmitter and receiver. You can appreciate the uniqueness of this encoding scheme![^wiley-implementing-mipi-c-phy]</Image>
 
-The C-PHY specification supports symbol rates of up to 6 Gsps (giga-**symbols** per second) per trio. Each symbol encodes ≈2.28 bits, giving an effective bit rate of ≈13.7 Gbps (giga-**bits** per second) per trio. With up to three trios, the total bandwidth is ≈41 Gbps.[^mipi-c-phy][^arasan-mipi-c-phy-d-phy-combo-ip] Newer versions of the spec also define an 18-wirestate mode encoding 3.556 bits per symbol at symbol rates of up to 5 Gsps, raising the three-trio total to ≈53 Gbps.[^mipi-c-phy]
+The C-PHY specification supports symbol rates of up to 6 Gsps (giga**symbols** per second) per trio. Each symbol encodes ≈2.28 bits, giving an effective bit rate of ≈13.7 Gbps (giga**bits** per second) per trio. With up to three trios, the total bandwidth is ≈41 Gbps.[^mipi-c-phy][^arasan-mipi-c-phy-d-phy-combo-ip] Newer versions of the spec also define an 18-wirestate mode encoding 3.556 bits per symbol at symbol rates of up to 5 Gsps, raising the three-trio total to ≈53 Gbps.[^mipi-c-phy]
+
+The different versions and what was supported in each is summarized in the table below (as of June 2026).[^mipi-c-phy]
+
+<Image src={import('./_assets/mipi-c-phy-version-history-table.webp')} width="1000px">A table showing the history of the MIPI C-PHY specification versions and when specific features were added. Snapshot captured June 2026.[^mipi-c-phy]</Image>
 
 ### MIPI A-PHY
 
