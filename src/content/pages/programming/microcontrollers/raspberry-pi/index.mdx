@@ -38,6 +38,22 @@ Here is my quick buy shopping list for the Raspberry Pi 5. The links are to the 
 | Raspberry Pi 5 Model B Case | 1 | 4263047 | https://nz.element14.com/raspberry-pi/sc1159/case-raspberry-pi-5-model-b-abs/dp/4263047
 | HDMI mini to regular adapter cable | 1 | 3107416 | https://nz.element14.com/raspberry-pi/hdmi-adapter-cable/micro-hdmi-to-std-f-hdmi-adaptor/dp/3107416
 
+
+The official Raspberry Pi 5 power supply (shown below) is a great PSU not just for the Raspberry Pi but for powering all sorts of high power devices. It supports the following voltages and currents:
+
+- 5.1V, 5A
+- 9V, 3A
+- 12V, 2.25A
+- 15V, 1.8A
+
+<Image src={import('./_assets/raspberry-pi-27w-usb-c-power-supply-au.webp')} width="400px">The official Raspberry Pi 5 power supply (27W, USB-C, AU/NZ plug).</Image>
+
+## SD Cards
+
+The de-factory non-voltaile memory for the Raspberry Pi (to store the file system) is a microSD card. Although any reputable brand with good speed ratings should work, Raspberry Pi themselves makes a range of microSD cards as shown below.
+
+<Image src={import('./_assets/raspberry-pi-64gb-branded-sd-card-photo.webp')} width="400px">A photo of a Raspberry Pi branded 64GB microSDXC card.</Image>
+
 ## Quick Setup
 
 ### Raspberry Pi Imager
@@ -45,6 +61,8 @@ Here is my quick buy shopping list for the Raspberry Pi 5. The links are to the 
 The Raspberry Pi Imager is a desktop GUI tool that allows you to easily write operating system images from a Raspberry Pi to an SD card. It runs on Windows, macOS and Linux. As of December 2025 it is the recommended way to write OS images to an SD card and is at version 2.0.2.
 
 <Image src={import('./_assets/raspberry-pi-imager-v2.0.0-write-complete.webp')} width="600px">A screenshot of the Raspberry Pi Imager v2.0.0 after successfully writing an OS image to an SD card.</Image>
+
+One of the nice things about this imager is that it lets you configure a WiFi network and enable SSH and bake that into the image. If you are wanting a headless setup this means you don't even need to do the awkward first boot setup with a monitor and keyboard. 
 
 ### Older Setup Methods
 

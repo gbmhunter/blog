@@ -1,0 +1,70 @@
+---
+authors: [gbmhunter]
+date: 2026-07-28
+description: Info on using cameras with the Raspberry Pi, including the rpicam command-line apps and the picamera2 Python library.
+lastUpdated: 2026-07-28
+tags: [programming, microcontrollers, Raspberry Pi, omxplayer, mp3, sound, Raspberry Pi Connect, cases, enclosures]
+title: RaspberryPi Cameras
+type: page
+---
+
+You cannot hot plug cameras into the Raspberry Pi. So once plugged in, reset the Raspberry Pi. Then run:
+
+```bash
+rpicam-hello --list-cameras
+```
+
+You should see something like this:
+
+```text
+Available cameras
+-----------------
+0 : imx296 [1456x1088 10-bit RGGB] (/base/axi/pcie@1000120000/rp1/i2c@88000/imx296@1a)
+    Modes: 'SRGGB10_CSI2P' : 1456x1088 [60.38 fps - (0, 0)/1456x1088 crop]
+```
+
+You can use `rpicam-still` to capture an image:
+
+```bash
+rpicam-still -o /tmp/test.jpg --immediate
+```
+
+You should see something like this:
+
+```text
+[0:21:09.622128465] [1796]  INFO Camera camera_manager.cpp:340 libcamera v0.7.1+rpt20260609
+[0:21:09.634457526] [1799]  INFO RPI pisp.cpp:720 libpisp version v1.6.0 29-06-2026 (16:17:40)
+[0:21:09.647616997] [1799]  INFO IPAProxy ipa_proxy.cpp:184 Using tuning file /usr/share/libcamera/ipa/rpi/pisp/imx296.json
+[0:21:09.657829621] [1799]  INFO Camera camera_manager.cpp:223 Adding camera '/base/axi/pcie@1000120000/rp1/i2c@88000/imx296@1a' for pipeline handler rpi/pisp
+[0:21:09.657858936] [1799]  INFO RPI pisp.cpp:1181 Registered camera /base/axi/pcie@1000120000/rp1/i2c@88000/imx296@1a to CFE device /dev/media3 and ISP device /dev/media0 using PiSP variant BCM2712_D0
+WARNING: Capture will not make use of temporal denoise
+         Consider using the --zsl option for best results, for example:
+         rpicam-still --zsl -o /tmp/test.jpg
+Made X/EGL preview window
+Made DRM preview window
+Preview window unavailable
+[0:21:09.887340797] [1799]  WARN V4L2 v4l2_pixelformat.cpp:346 Unsupported V4L2 pixel format Nc30
+[0:21:09.887370260] [1799]  WARN V4L2 v4l2_pixelformat.cpp:346 Unsupported V4L2 pixel format Nc12
+Mode selection for 1456:1088:12:P
+    SRGGB10_CSI2P,1456x1088/0 - Score: 1000
+Stream configuration adjusted
+[0:21:09.887555243] [1796]  INFO Camera camera.cpp:1216 configuring streams: (0) 1456x1088-YUV420/sYCC (1) 1456x1088-BGGR_PISP_COMP1/RAW
+[0:21:09.887669188] [1799]  INFO RPI pisp.cpp:1485 Sensor: /base/axi/pcie@1000120000/rp1/i2c@88000/imx296@1a - Selected sensor format: 1456x1088-SBGGR10_1X10/RAW - Selected CFE format: 1456x1088-PC1B/RAW
+Still capture image received
+```
+
+## picamera2
+
+picamera2 is a Python library that provides access to Raspberry Pi cameras. It is a Python wrapper around libcamera.[^raspberry-pi-picamera2-manual]
+
+## AI Hats
+
+Raspberry Pi manufacturers AI hats which can be used to boost the performance of inference on the Raspberry Pi. I was running a basic object detection model on the bare Raspberry Pi 5 and got about 3.4 fps (frames per second). Without an active heatsink this also caused the Raspberry Pi to hit its thermal ceiling (approx. 84°C, hurt to touch!) and throttle the CPU .
+
+<Image src={import('./_assets/rpi-ai-hat-plus-hailo-13-tops-what-in-the-box.webp')} width="400px">A photo of what you get in the Raspberry Pi AI Hat + (the 13 TOPs version) box.</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^raspberry-pi-picamera2-manual]: Raspberry Pi Ltd (2026, Jun 30). _The Picamera2 Library - A libcamera-based Python library for Raspberry Pi cameras_ [pdf]. Retrieved 2026-07-28, from https://pip-assets.raspberrypi.com/categories/652-raspberry-pi-camera-module-2/documents/RP-008156-DS-3-picamera2-manual.pdf.
