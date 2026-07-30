@@ -63,6 +63,27 @@ Raspberry Pi manufacturers AI hats which can be used to boost the performance of
 
 <Image src={import('./_assets/rpi-ai-hat-plus-hailo-13-tops-what-in-the-box.webp')} width="400px">A photo of what you get in the Raspberry Pi AI Hat + (the 13 TOPs version) box.</Image>
 
+After connected it to the Raspberry Pi using the FPC cable to the PCIe connector, you should be able to enumate the device using `lspci`:
+
+```bash
+lspci
+```
+
+And get something like this:
+
+```text
+0001:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
+0001:01:00.0 Co-processor: Hailo Technologies Ltd. Hailo-8 AI Processor (rev 01)
+0002:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
+0002:01:00.0 Ethernet controller: Raspberry Pi Ltd RP1 PCIe 2.0 South Bridge
+```
+
+The Hailo-8 uses HEF files (`.hef` -- Hailo Executable Format) to run inference. They contain optimized layers and weights for run efficient inference on the Hailo-8. Hailo provides a [Model Zoo](https://github.com/hailo-ai/hailo_model_zoo) with pre-trained models.
+
+## Machine Learning Models
+
+The YOLO yolov8n (n for nano) model is a good starting point for object detection on the Raspberry Pi. I was able to achieve about 3.5 fps on the Raspberry Pi 5 without the AI hat, and about 30 fps with the AI hat+ (13 TOPS).
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
