@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2025-07-08
 description: Cameras are devices that capture images/video and convert them into an analogue or digital signal.
-lastUpdated: 2025-07-08
+lastUpdated: 2026-08-03
 tags: [sensors, cameras]
 title: Cameras
 type: page
@@ -12,7 +12,7 @@ import CameraFov from 'src/components/tools/camera-fov/CameraFov.jsx';
 
 <WarningIsNotes />
 
-Cameras are devices that capture images/video and convert them into an analogue or digital signal. At the heart of a camera is an image sensor, which in today's cameras is usually a CMOS (complementary metal-oxide-semiconductor) sensor. The image sensor is made up of an array of pixels, which are light-sensitive elements that convert light into an electrical signal.
+Cameras are devices that capture images/video and convert them into an analogue or digital signal. At the heart of a camera is an [image sensor](/electronics/components/sensors/), which in today's cameras is usually a CMOS (complementary metal-oxide-semiconductor) sensor. The image sensor is made up of an array of pixels, which are light-sensitive elements that convert light into an electrical signal.
 
 This image sensor is usually paired with a lens which focuses light onto the sensor. There are a number of different camera and lens types available for embedded systems.
 
@@ -22,7 +22,7 @@ This image sensor is usually paired with a lens which focuses light onto the sen
 
 The sensor size (a.k.a. optical format) is the physical size of the image sensor in a camera. It is usually measured as the diagonal of the sensor in either a weird fraction of an inch (e.g. 1/2.3") or directly in millimetres (e.g. 6.3 mm).
 
-The 1/2.3" format is a legacy convention from the 1950s vacuum-tube video cameras (vidicons). A "1-inch" tube had a glass tube diameter of 1 inch (25.4 mm) in diameter, but the usable image area was only about 2/3 of that, approx. 16 mm (on the diagonal). Solid-state sensors replaced tubes, but manufacturers kept the same naming convention, quoting the size of a hypothetical tube that would have the same image area.
+The 1/2.3" format is a legacy convention from the 1950s vacuum-tube video cameras (vidicons). A "1-inch" tube had a glass tube diameter of 1 inch (25.4 mm), but the usable image area was only about 2/3 of that, approx. 16 mm (on the diagonal). Solid-state sensors replaced tubes, but manufacturers kept the same naming convention, quoting the size of a hypothetical tube that would have the same image area.
 
 As a general rule-of-thumb:
 
@@ -42,13 +42,13 @@ $$
 \end{align*}
 $$
 
-The quoted size in millimetres is 7.86 mm, which is close to our approximation (remember: the 2/3 factor is a rough approximation).
+The quoted size in millimetres is 7.857 mm, which is close to our approximation (remember: the 2/3 factor is a rough approximation).
 </Aside>
 
 Sensor size is important because:
 
 - **Light gathering**: A bigger sensor (at the same resolution) has bigger pixels, which can gather more light and produce better images in low-light conditions (and give better dynamic range).
-- **Lens compatibility**: The len's image circle must be at least as big as the sensor so that you do not get vignetting (dark corners).
+- **Lens compatibility**: The lens's image circle must be at least as big as the sensor so that you do not get vignetting (dark corners).
 - **Field of view**: For a given lens focal length, a bigger sensor will give a wider field of view.
 
 To give some examples:
@@ -68,9 +68,9 @@ Closely related to back-illumination, stacked sensors is taking the BSI concept 
 
 ## IP Cameras
 
-IP cameras are cameras that are connected to a network and can be accessed via a IP address. Many of them support PoE, allowing a single cable to both power the camera and provide a network connection.
+IP cameras are cameras that are connected to a network and can be accessed via an IP address. Many of them support [PoE](/electronics/communication-protocols/ethernet-protocol/), allowing a single cable to both power the camera and provide a network connection.
 
-ONVIF (Open Network Video Interface Forum) is an popular standard that IP cameras can support.
+ONVIF (Open Network Video Interface Forum) is a popular standard that IP cameras can support.
 
 ## Camera Sensors
 
@@ -81,29 +81,31 @@ Some popular camera sensor manufacturers:
 
 ### IMX296
 
-The IMX296 is a 1.6 megapixel image sensor from Sony with a global shutter. The global shutter makes it suitable for capturing fast moving object without the motion blur that can occur with rolling shutters.[^arducam-1-58mp-imx296] Arducam sells a camera module containing the IMX296 with an M12 lens mount, designed for the Raspberry Pi.[^arducam-imx296-global-shutter-camera-module-m12]
+The IMX296 is a 1.6 megapixel image sensor from Sony with a global shutter. The global shutter makes it suitable for capturing fast-moving objects without the motion blur that can occur with rolling shutters.[^arducam-1-58mp-imx296] Arducam sells a camera module containing the IMX296 with an M12 lens mount, designed for the Raspberry Pi.[^arducam-imx296-global-shutter-camera-module-m12]
 
 | Feature | Specification |
 | --- | --- |
 | Resolution | 1440 x 1080 |
-| Pixel Size | 3.45 um x 3.45 um |
+| Pixel Size | 3.45 µm x 3.45 µm |
 | Sensor Size | 1/2.9" (6.3 mm diagonal) |
 | Interface | MIPI CSI-2 |
 | Shutter Type | Global Shutter |
 | Frame Rate | 1440x1080 @ 60 fps |
 | Output Format | RAW10 |
 
+Note that 6.3 mm is Sony's quoted optical diagonal for the Type 1/2.9 format — the active pixel array itself is 1440 x 1080 x 3.45 µm = 4.97 mm x 3.73 mm, giving a 6.21 mm diagonal.
+
 ### IMX477
 
-The IMX477 is a 12.3 megapixel CMOS image sensor from Sony. It is a backside illuminated stacked image sensor with a square pixel array. It has a electronic shutter with variable integration time. It is in the Raspberry Pi High Quality Camera and the Arducam IMX477 module.[^arducam-12mp-imx477]
+The IMX477 is a 12.3 megapixel CMOS image sensor from Sony. It is a backside illuminated stacked image sensor with a square pixel array. It has an electronic shutter with variable integration time. It is in the Raspberry Pi High Quality Camera and the Arducam IMX477 module.[^arducam-12mp-imx477]
 
-The pixel size is 1.55 um x 1.55 um which allows for good low-light performance. The sensor array is 4056 x 3040 pixels.
+The pixel size is 1.55 µm x 1.55 µm which allows for good low-light performance. The sensor array is 4056 x 3040 pixels.
 
 | Feature | Specification |
 | --- | --- |
 | Resolution | 4056 x 3040 (12 MP) |
-| Pixel Size | 1.55 um x 1.55 um |
-| Sensor Size | 1/2.3" (7.853 mm diagonal) |
+| Pixel Size | 1.55 µm x 1.55 µm |
+| Sensor Size | 1/2.3" (7.857 mm diagonal) |
 | Interface | MIPI CSI-2, D-PHY spec. v1.2 compliant |
 | Shutter Type | Rolling Shutter |
 | Video Modes | 1080p @ 30 fps, 720p @ 60 fps, 640x480 @ 60/90 fps |
@@ -123,9 +125,9 @@ Some popular camera module manufacturers (they take a "raw" camera sensor and pa
 
 ### Arducam IMX296 Camera Module
 
-The Arducam IMX296 camera module is a small camera module that includes the global shutter Sony IMX296 image sensor, a M12 lens mount, and a 15-to-22 pin FPC connector for MIPI CSI-2. It also comes with a 45° (HVOF) M12 lens (this can be swapped out as needed).[^arducam-imx296-global-shutter-camera-module-m12]
+The Arducam IMX296 camera module is a small camera module that includes the global shutter Sony IMX296 image sensor, an M12 lens mount, and a 15-to-22 pin FPC connector for MIPI CSI-2. It also comes with a 45° (HFOV) M12 lens (this can be swapped out as needed).[^arducam-imx296-global-shutter-camera-module-m12]
 
-<Image src={import('./_assets/arducam-imx-296-camera-module-photo-front-and-back.webp')} width="800px">A photo of the Arducam IMX296 camera module, front and back. The module includes the Sony IMX296 image sensor, a M12 lens mount, and a 15-to-22 pin FPC connector for MIPI CSI-2.</Image>
+<Image src={import('./_assets/arducam-imx-296-camera-module-photo-front-and-back.webp')} width="800px">A photo of the Arducam IMX296 camera module, front and back. The module includes the Sony IMX296 image sensor, an M12 lens mount, and a 15-to-22 pin FPC connector for MIPI CSI-2.</Image>
 
 ## Lenses
 
@@ -156,7 +158,7 @@ _Effective focal length_ (EFL) is the optical focal length of the whole lens ass
 
 _Back focal length_ (BFL) is the distance from the rear surface of the lens to the image plane. This tells you how much clearance exists between the back of the lens and the sensor. This space is where IR filters, cover glass and other optical elements are placed. For M12, which has no standard flange height, this also tells you how tall your lens holder needs to be.
 
-For example, the the M12 Arducam LN001 telephoto lens, the EFL is 16 mm but the BFL is only 7.1 mm. The optics makes the principal plane sit out the front of the lens, and the whole assembly is shorter than the focal length.
+For example, for the M12 Arducam LN001 telephoto lens, the EFL is 16 mm but the BFL is only 7.1 mm. The optics make the principal plane sit out the front of the lens, and the whole assembly is shorter than the focal length.
 
 ### Field of View
 
@@ -172,7 +174,6 @@ A chief ray is a ray of light from a point on the object plane that passes throu
 1. **It passes through the lens centre without any refraction**: For a thin lens, a ray through the centre hits both surfaces where they are essentially parallel, so it does not bend. This means we don't have to worry about refraction angles.
 2. **It defines the field of view**: Each point on the object sends a whole cone of light rays into the lens, but where that point lands on the sensor is located by its chief ray. So the chief ray from the outermost point on the object plane that still lands on the sensor's edge sets the boundary of what the camera can see, and hence defines the field of view.
 </Aside>
-
 
 Under the thin-lens model, the angular field of view is:
 
@@ -204,6 +205,10 @@ For working distances much larger than the focal length this simplifies to the f
 
 These equations only hold for low-distortion (rectilinear) lenses. Wide-angle and fisheye lenses have strong barrel distortion which "squeezes" a wider scene onto the sensor, so their real field of view is considerably wider than the focal length predicts.
 
+### Depth of Field
+
+The depth of field (DoF) is the distance between the nearest and farthest objects in a scene that appear acceptably sharp in an image. It depends on the focal length of the lens, the aperture size, and the distance to the subject. An easy way to remember the relationship with aperture is to remember that **a pinhole camera has infinite depth of field**. Obviously a pinhole camera has a very small aperture because it's just a "pinhole". So smaller aperture = more depth of field. A larger aperture = less depth of field. This also makes sense intuitively — a larger aperture lets in more light, but because it lets in light from more angles, the range of distances that are in focus is smaller.
+
 ### Lens Field of View Calculator
 
 A common design task is working out what focal length lens you need so that a camera sees an object of a certain size at a certain distance, and how much detail (mm per pixel) you get on that object. The calculator below solves this using the field of view equations above.
@@ -228,7 +233,7 @@ Has the same 1-inch diameter and 32 threads per inch thread as the C-mount, but 
 
 #### M12-mount
 
-A small lens mount that has a M12 x 0.5 thead (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lens must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
+A small lens mount that has an M12 x 0.5 thread (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lenses must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
 
 
 {/* ============================================================================================ */}
