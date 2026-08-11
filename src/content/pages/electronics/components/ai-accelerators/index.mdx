@@ -45,11 +45,19 @@ It is designed to be connected to a host processor via the PCIe link as shown be
 
 <Image src={import('./_assets/hailo-8l-typical-usage-block-diagram-with-host-processor.webp')} width="500px">Typical usage block diagram showing the Hailo-8L connected to a host processor via its PCIe link.[^hailo-hailo-8l-datasheet]</Image>
 
+The Hailo-8L module is supported in Linux via the hailo-all package. On systems with `apt`, use:
+
+```bash
+sudo apt install -y hailo-all
+```
+
 ### Hailo-8L M.2 Module
 
 The Hailo-8L is available as a M.2 module, which is a small form-factor board that contains the Hailo-8L chip and supporting components. The module is designed to be plugged into a host processor via a M.2 connector and it's PCIe lanes.
 
 The manufacturer part number is `HM21LB1C2LAE`.
+
+<Image src={import('./_assets/hailo-8l-hm21lb1c2lae-m.2-card.webp')} width="1000px">Photo of the front and back sides of the Hailo-8L M.2 module.</Image>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

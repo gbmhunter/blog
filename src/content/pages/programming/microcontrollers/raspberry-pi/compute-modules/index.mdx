@@ -8,3 +8,115 @@ title: RaspberryPi Compute Modules
 type: page
 ---
 
+<Image src={import('./_assets/raspberry-pi-cm5-photo-front-and-back.webp')} width="800px">Photo of the front and back of the Raspberry Pi Compute Module 5 (CM5). This particular variant was the CM5116032 - 16 GB RAM, 32 GB eMMC.</Image>
+
+## CM5 MINIMA
+
+The CM5 MINIMA is a compact carrier board for the Compute Module 5 (CM5) by Seeed Studio[^seeed-studio-cm5-minima]. It measures 61 x 61 mm. It contains:
+
+- USB-C power delivery
+- Gigabit Ethernet
+- HDMI port
+- M.2 M key slot with 2230 and 2242 size support
+- CSI/DSI connector
+- LIS3DH STM32 accelerometer
+- I2C connector
+- SPI connector
+- Fan connector
+- Status LEDs
+- nRPI boot switch
+
+<Image src={import('./_assets/cm5-minima-photo-front-and-back.webp')} width="900px">Photo of the front and back of the Seeed Studio CM5 MINIMA carrier board. The CM5 goes on the bottom side of the carrier and pushed into the two high-density board-to-board connectors. The CM5 is retained with two screws that can be seen on the right-hand side of the bottom image (only 2 of the four possible screw mounts on the CM5 are used by the MINIMA).</Image>
+
+### Installing the OS
+
+The CM5 provides a nRPI_BOOT net over the high-density connectors. This is designed to be controlled from the carrier board. When set to the "on" position, it allows the CM5 to appear as a mass-storage device (not by default -- drivers also need to be installed, see below) when connected to a host computer via USB. This allows you to flash the OS onto the CM5's eMMC storage using the Raspberry Pi Imager or other tools.
+
+On Windows download the latest version of rpiboot from the [GitHub releases page](https://github.com/raspberrypi/usbboot/releases) (the repo is called `usbboot` but the program is called `rpiboot`).
+
+<Image src={import('./_assets/rpi-boot-install-on-windows.webp')} width="400px">Installing rpiboot on Windows.</Image>
+
+Once it's installed, add `C:\Program Files (x86)\Raspberry Pi` to your PATH so you can run `rpiboot` from the command line.
+
+<Aside type="note">
+For some reason the Windows install instructions did not work for me. I got a device popping up in Device Manager that looked like this:
+
+<Image src={import('./_assets/bcm2712d0-boot-showing-up-in-windows-devices-not-working.webp')} width="400px">BCM2712D0 Boot showing up in Windows devices but not working.</Image>
+
+I had to also run the following from an elevated command prompt to get the drivers installed (run this once you've installed rpiboot):
+
+```powershell
+cd "C:\Program Files (x86)\Raspberry Pi\redist"
+.\wdi-simple.exe --vid 0x0A5C --pid 0x2712 --type 0 --name "BCM2712D0 Boot"
+```
+
+Even then, I still could not get `rpiboot` working on Windows (this was in August 2026). I had to switch to Linux to get it working.
+</Aside>
+
+To install on Linux:
+
+```bash
+sudo apt install rpiboot
+Installing:
+  rpiboot
+
+Summary:
+  Upgrading: 0, Installing: 1, Removing: 0, Not Upgrading: 163
+  Download size: 25.9 MB
+  Space needed: 37.3 MB / 49.1 GB available
+
+Get:1 http://archive.raspberrypi.com/debian trixie/main arm64 rpiboot arm64 20260603~182203 [25.9 MB]
+Fetched 25.9 MB in 8s (3,139 kB/s)
+Selecting previously unselected package rpiboot.
+(Reading database ... 121030 files and directories currently installed.)
+Preparing to unpack .../rpiboot_20260603~182203_arm64.deb ...
+Unpacking rpiboot (20260603~182203) ...
+Setting up rpiboot (20260603~182203) ...
+```
+
+Then connect your CM5 to your computer. On the MINIMA, connect the port labelled USB-PD to your computer, not the port labelled USB2.0.
+
+To run (prefix with `sudo` on Linux):
+
+```shell
+rpiboot
+```
+
+You should get output similar to the following:
+
+```text
+RPIBOOT: build-date 2026/06/03 pkg-version 20260603~182203
+
+Please fit the EMMC_DISABLE / nRPIBOOT jumper before connecting the power and USB cables to the target device.
+If the device fails to connect then please see https://rpltd.co/rpiboot for debugging tips.
+
+Waiting for BCM2835/6/7/2711/2712...
+
+Directory not specified - trying default /usr/share/rpiboot/mass-storage-gadget64/
+Sending bootcode.bin
+Successful read 4 bytes
+Waiting for BCM2835/6/7/2711/2712...
+
+Second stage boot server
+File read: mcb.bin
+File read: memsys00.bin
+File read: memsys01.bin
+File read: rp1c0fw1.bin
+File read: memsys02.bin
+File read: rp1c0fw2.bin
+File read: memsys03.bin
+File read: bootmain
+Second stage boot server done
+```
+
+## Thermal Management
+
+The Raspberry Pi CM5 has an official passive heatsink that can be attached to the top of the CM5.
+
+<Image src={import('./_assets/raspberry-pi-cm5-passive-heatsink-cooler.webp')} width="400px">Photo of the official passive heatsink for the Raspberry Pi Compute Module 5 (CM5).</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^seeed-studio-cm5-minima]: Seeed Studio. _CM5 MINIMA - Compact Carrier Board for Raspberry Pi Compute Module 5, M.2 Hailo AI/SSD, CSI/DSI, Gigabit Ethernet, HDMI, USB-C PD_ [product page]. Retrieved 2026-08-10, from https://www.seeedstudio.com/CM5-MINIMA-p-6485.html.

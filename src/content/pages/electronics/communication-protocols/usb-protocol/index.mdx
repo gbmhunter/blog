@@ -305,6 +305,60 @@ Thunderbolt 3 controllers are capable of sending DisplayPort data over USB C als
 
 Interestingly enough, the USB trident symbol is not trademarked. This means that manufacturers can put this onto products without having to undergo any USB certification.
 
+## Windows Enumeration
+
+The following PowerShell script will watch for USB device arrivals/removals in real time. Run it with `./watch-usb.ps1`, then plug in USB devices. It will print a green line for a device enumerated, and a yellow line for a device removed.
+
+```powershell
+# watch-usb.ps1
+#
+# Watches for USB device arrivals/removals in real time. Run it, then plug in USB devices.
+#
+#   [+] green  = device enumerated
+#   [-] yellow = device disappeared
+#   nothing    = no enumeration at all (dead USB / no D+ pull-up / bad GND)
+#
+# A device named "Unknown USB Device (Device Descriptor Request Failed)" means
+# the host saw the pull-up but the descriptor transfer failed -- typical of a
+# damaged data or ground pin.
+#
+# Usage: .\watch-usb.ps1
+
+Register-WmiEvent -Query "SELECT * FROM __InstanceCreationEvent WITHIN 1 WHERE TargetInstance ISA 'Win32_PnPEntity'" -SourceIdentifier USBAdd -Action {
+    $d = $Event.SourceEventArgs.NewEvent.TargetInstance
+    if ($d.PNPDeviceID -like 'USB\*') {
+        Write-Host ("[+] {0}  |  {1}" -f $d.Name, $d.PNPDeviceID) -ForegroundColor Green
+    }
+} | Out-Null
+
+Register-WmiEvent -Query "SELECT * FROM __InstanceDeletionEvent WITHIN 1 WHERE TargetInstance ISA 'Win32_PnPEntity'" -SourceIdentifier USBDel -Action {
+    $d = $Event.SourceEventArgs.NewEvent.TargetInstance
+    if ($d.PNPDeviceID -like 'USB\*') {
+        Write-Host ("[-] {0}  |  {1}" -f $d.Name, $d.PNPDeviceID) -ForegroundColor Yellow
+    }
+} | Out-Null
+
+Write-Host "Watching USB. Plug the board in now. Ctrl+C to stop."
+
+try {
+    while ($true) { Start-Sleep -Seconds 1 }
+}
+finally {
+    Unregister-Event -SourceIdentifier USBAdd -ErrorAction SilentlyContinue
+    Unregister-Event -SourceIdentifier USBDel -ErrorAction SilentlyContinue
+}
+```
+
+You should see output like this (this logs were captured when plugging in and out FTDI devices):
+
+```text
+Watching USB. Plug the board in now. Ctrl+C to stop.
+[-] USB Serial Converter  |  USB\VID_0403&PID_6001\BK00835Y
+[+] USB Serial Converter  |  USB\VID_0403&PID_6001\BK00835Y
+[-] USB Serial Converter  |  USB\VID_0403&PID_6001\BK00835Y
+[+] USB Serial Converter  |  USB\VID_0403&PID_6001\B400F13Z
+```
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}

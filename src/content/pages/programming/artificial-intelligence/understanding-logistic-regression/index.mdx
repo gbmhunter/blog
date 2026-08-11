@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2020-02-21
 description: What is logistic regression, and how does it work?
-lastUpdated: 2020-03-21
+lastUpdated: 2026-08-06
 tags: [programming, artificial intelligence, logistic regression, logit regression, probability, odds, precision, recall, harmonic mean, f1 score, support, classification]
 title: Understanding Logistic Regression
 type: page
@@ -189,23 +189,14 @@ print(classification_report(y_test, predictions))
 
 <Image src={import('./_assets/logistic-regression-iris-classification-report.png')} width="500px">The classification report for our logistic regression model.</Image>
 
-For someone new to categorization, these terms in the classification report can be confusing. This is what they mean[^scikit-classification-report]:
+For someone new to categorization, these terms in the classification report can be confusing. Briefly[^scikit-classification-report]:
 
-* The _precision_ is how well the classifier is at labelling an instance positive when it was actually positive. It can be thought of as: "For all instances labelled positive, what percentage of them are actually correct?
+- The _precision_ is, of all the instances labelled positive, what percentage really were positive.
+- The _recall_ is, of all the instances that really were positive, what percentage the classifier managed to find.
+- The _f1-score_ is the [harmonic mean](/mathematics/statistics/the-three-classical-pythagorean-means/) of the precision and recall, combining both into a single number between 0 and 1.
+- The _support_ is the number of actual occurrences of a class in a specific dataset.
 
-    $$
-    precision = \frac{true\,positive}{true\,positive + false\,positive}
-    $$
-
-* The _recall_ is the ability for a classifier to find all true positives. It can be though of as: "For all instances that where actually positive, what percentage were labelled correctly?"
-
-    $$
-    recall = \frac{true\,positive}{true\,positive + false\,negative}
-    $$
-
-* The _f1-score_ is the [harmonic mean](/mathematics/statistics/the-three-classical-pythagorean-means/) of the precision and recall. Personally I find this the most difficult metric to understand intuitively. It is a score which incorporates both the _precision_ and _recall_, and varies between 0 and 1.
-
-* The _support_ is the number of actual occurrences of a class in a specific dataset.
+See [Classification Metrics](/programming/artificial-intelligence/classification-metrics/) for the equations behind these, why accuracy on its own is misleading, and how precision and recall trade off against each other.
 
 And let's print the accuracy score:
 
