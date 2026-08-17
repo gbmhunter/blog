@@ -1,0 +1,266 @@
+@import url('../_shared/calc-form.css');
+
+/* `.calc-form` already supplies the outer border, padding, background and
+   `container-type: inline-size`, so every @container query below is measured
+   against the widget's own width — not the viewport. */
+
+/* ---- Mode switch ---- */
+.cm__modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.cm__mode {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.cm__mode input {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* ---- Scenario-mode rows ---- */
+/* The shared `.calc-form__row` label column is 5rem, which is sized for the
+   short symbolic labels most calculators use (R, C, V_F). This widget's
+   scenario labels are prose ("...of which how many were correct?"), so at 5rem
+   every one of them wraps and the long one runs to four lines. Widened here
+   rather than in `_shared/calc-form.css` so the other calculators keep the
+   tighter gutter.
+
+   Both widths have to be restated: `.cm .calc-form__row` outranks the shared
+   `.calc-form__row` rules on specificity, so without the @container override
+   below the base two-column layout would also win at wide sizes and the help
+   text would lose its own column. */
+.cm .calc-form__row {
+  grid-template-columns: 8rem minmax(0, 1fr);
+  /* The shared rule top-aligns (`align-items: start`), which is fine when every
+     cell is one line tall. Here the label and help text wrap to two lines while
+     the input stays at one, so the input hung off the top of its row. Centre
+     everything against the tallest cell instead. */
+  align-items: center;
+}
+
+@container (min-width: 36rem) {
+  .cm .calc-form__row {
+    /* Input column trimmed from the shared 18rem to 10rem: these fields hold
+       plain counts, so the extra width was only being spent to stop the help
+       column from being squeezed by the wider label gutter. */
+    grid-template-columns: 11rem minmax(0, 10rem) minmax(0, 1fr);
+  }
+}
+
+/* ---- The 2x2 matrix ---- */
+/* Laid out to match the confusion-matrix figure earlier on the page:
+   predicted class across the top, actual class down the side. */
+.cm__grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.4rem;
+  align-items: start;
+  margin-bottom: 0.9rem;
+}
+
+.cm__head {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-2);
+  line-height: 1.2;
+}
+
+.cm__head--col {
+  text-align: center;
+  align-self: end;
+  padding-bottom: 0.15rem;
+}
+
+.cm__head--row {
+  align-self: center;
+  text-align: right;
+  padding-right: 0.2rem;
+  /* Both row labels are the same length — let them stay on one line so they
+     don't wrap inconsistently and knock the two rows out of alignment. */
+  white-space: nowrap;
+}
+
+.cm__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.3rem;
+  background: var(--sl-color-bg);
+}
+
+/* The diagonal — the two cells where the classifier got it right. */
+.cm__cell--right {
+  background: var(--sl-color-accent-low);
+  border-color: color-mix(in srgb, var(--sl-color-accent) 45%, transparent);
+}
+
+.cm__tag {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-gray-2);
+}
+
+.cm__cell--right .cm__tag {
+  color: var(--sl-color-text);
+}
+
+/* ---- Derived counts (scenario mode) ---- */
+.cm__derived {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.8rem;
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px dashed var(--sl-color-gray-4);
+  border-radius: 0.3rem;
+  font-size: 0.82rem;
+}
+
+.cm__derived-label {
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+}
+
+.cm__derived-item {
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+}
+
+.cm__derived-error {
+  color: var(--sl-color-accent-high);
+}
+
+/* ---- Beta control ---- */
+.cm__beta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.9rem 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--sl-color-gray-5);
+}
+
+.cm__beta-label {
+  font-weight: 600;
+  min-width: 1.2rem;
+}
+
+.cm__beta input[type='range'] {
+  flex: 1;
+  min-width: 8rem;
+  max-width: 16rem;
+}
+
+.cm__beta-num {
+  box-sizing: border-box;
+  width: 4.5rem;
+  height: 1.8rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-family: var(--__sl-font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+}
+
+.cm__beta-presets {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.cm__chip {
+  appearance: none;
+  border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.78rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.cm__chip:hover {
+  border-color: var(--sl-color-gray-4);
+}
+
+.cm__chip--active {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+}
+
+/* ---- Notices ---- */
+.cm__notice {
+  font-size: 0.82rem;
+  color: var(--sl-color-accent-high);
+  margin-bottom: 0.6rem;
+}
+
+/* ---- Metric readouts ---- */
+/* `minmax(0, 1fr)` rather than bare `1fr` — the long formula captions have a
+   wide min-content width and would otherwise make the columns uneven. */
+.cm__metrics {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.45rem 1rem;
+}
+
+@container (min-width: 34rem) {
+  .cm__metrics {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.cm__metric {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem;
+  gap: 0.5rem;
+  align-items: center;
+  /* Top-align within the grid row. Without this, a metric carrying a long
+     warning (accuracy) stretches its row and vertically centres whichever
+     metric sits beside it, leaving it floating in space. */
+  align-self: start;
+}
+
+.cm__metric-label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cm__metric-name {
+  font-weight: 600;
+  color: var(--sl-color-text);
+  font-size: 0.88rem;
+}
+
+.cm__metric-sub {
+  font-size: 0.72rem;
+  color: var(--sl-color-gray-2);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.cm__metric--muted .cm__metric-name {
+  font-weight: 400;
+  color: var(--sl-color-gray-2);
+}
+
+/* Warnings drop below the label + value pair and span the whole metric. */
+.cm__metric-warning {
+  grid-column: 1 / -1;
+}

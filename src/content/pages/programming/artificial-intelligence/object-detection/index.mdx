@@ -1,0 +1,104 @@
+---
+authors: [gbmhunter]
+date: 2026-08-12
+description: An introduction to object detection - bounding boxes, IoU, non-maximum suppression, mAP, and the model families (YOLO, SSD, Faster R-CNN) used to do it.
+lastUpdated: 2026-08-12
+tags: [programming, artificial intelligence, machine learning, object detection, bounding box, IoU, intersection over union, non-maximum suppression, NMS, mAP, YOLO, SSD, Faster R-CNN, computer vision, image classification, segmentation]
+title: Object Detection
+type: page
+---
+
+<WarningIsNotes />
+
+_Object detection_ is the task of finding **what** objects are in an image and **where** they are. It sits between plain image classification (which only answers "what") and segmentation (which answers "where" down to the individual pixel).
+
+## Detection vs. Classification vs. Segmentation
+
+- **Image classification**: one label for the whole image ("this is a cat"). No location information.
+- **Object localization**: one label plus one bounding box, assuming a single dominant object.
+- **Object detection**: any number of labelled bounding boxes, one per object instance.
+- **Semantic segmentation**: a class label for every pixel, but instances of the same class are not separated.
+- **Instance segmentation**: a per-pixel mask for every individual object instance.
+
+## Bounding Boxes
+
+A bounding box is the axis-aligned rectangle that encloses an object. It is usually stored either as corner coordinates $(x_1, y_1, x_2, y_2)$ or as a centre plus size $(x_c, y_c, w, h)$. Many training formats (including YOLO's) normalise these to the range $0$ to $1$ by dividing by the image width and height, which makes the labels independent of the image resolution.
+
+Each detection also carries:
+
+- A **class label** (or a probability distribution over classes).
+- A **confidence score**, roughly "how sure the model is that this box contains this object".
+
+## Intersection over Union (IoU)
+
+To decide whether a predicted box matches a ground-truth box, we need a measure of overlap. The standard one is called _intersection over union_ (IoU):
+
+$$
+\begin{align*}
+\text{IoU} = \frac{\text{area of overlap}}{\text{area of union}}
+\end{align*}
+$$
+
+IoU is $0$ for boxes that don't touch and $1$ for a perfect match. A prediction is normally counted as a true positive if its IoU with a ground-truth box of the same class exceeds some threshold (0.5 is the classic choice).
+
+## Non-Maximum Suppression (NMS)
+
+Detectors typically emit many overlapping boxes for the same object. _Non-maximum suppression_ prunes these down:
+
+1. Discard all boxes whose confidence is below a threshold.
+1. Take the highest-confidence box remaining and keep it.
+1. Discard every other box whose IoU with the kept box exceeds the NMS threshold (they are assumed to be duplicates of the same object).
+1. Repeat until no boxes are left.
+
+Notably some detectors like YOLO26 do not use NMS at all, it is _natively end-to-end_ by default, with its one-to-one head emitting a single prediction per object. An alternative one-to-many head is available for when accuracy matters more than speed, and that one does still require NMS post-processing.[^ultralytics-yolo26]
+
+
+## Measuring Performance
+
+Detection reuses the precision and recall ideas from [classification metrics](/programming/artificial-intelligence/classification-metrics/), but a "correct" prediction now also requires sufficient IoU with the ground truth.
+
+- **Precision-recall curve**: sweep the confidence threshold and plot precision against recall.
+- **Average precision (AP)**: the area under that curve, for a single class.
+- **mean average precision (mAP)**: the AP averaged over all classes. Written as `mAP@0.5` when using a fixed IoU threshold of 0.5, or `mAP@0.5:0.95` when averaged over IoU thresholds from 0.5 to 0.95 in steps of 0.05 (the COCO convention).
+
+<Aside type="tip">
+In object detection, TN (true negatives) do not exist. There is no concept as a true negative because this is where the model correctly predicted no object. Where? The detector is not making a single decision per image, so the number of boxes that correctly contain nothing is essentially infinite.
+
+For this reason, certain metrics like accuracy are unusable (it needs the TN in both the numerator and denominator). Precision, recall and mAP all still work fine as they do not rely you knowing the TN count.
+</Aside>
+
+## Model Families
+
+TODO: Flesh out each of these.
+
+### Two-Stage Detectors
+
+R-CNN, Fast R-CNN, Faster R-CNN. A region-proposal stage first suggests candidate regions, then a second stage classifies and refines each one. Generally more accurate, but slower.
+
+### One-Stage Detectors
+
+YOLO, SSD, RetinaNet. Predict boxes and classes directly from the feature map in a single forward pass. Much faster, and now competitive on accuracy — the usual choice for edge and real-time work.
+
+### Transformer-Based Detectors
+
+DETR and successors. Treat detection as a set-prediction problem and remove the need for hand-designed anchors and NMS.
+
+## YOLO
+
+TODO: Move to its own child page once this grows. Cover version history, the Ultralytics tooling, model sizes (n/s/m/l/x), and training/export workflow.
+
+## Datasets
+
+TODO: COCO, Pascal VOC, Open Images. Label formats (YOLO `.txt`, COCO JSON, Pascal VOC XML) and how to convert between them.
+
+## Running Detection on the Edge
+
+Real-time detection on an embedded device usually means quantizing the model to INT8 and running it on dedicated hardware rather than the host CPU — see [AI accelerators](/electronics/components/ai-accelerators/) for the hardware side (e.g. the Hailo-8L).
+
+TODO: Cover the export path (PyTorch → ONNX → vendor format), the accuracy cost of quantization, and calibration datasets.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ultralytics-yolo26]: Ultralytics (2025, Sep 25). _Ultralytics YOLO26_. Retrieved 2026-08-12, from https://docs.ultralytics.com/models/yolo26/.

@@ -71,6 +71,31 @@ export default defineConfig({
       // module". Listing it here optimizes it at startup and avoids that race.
       include: ['@formkit/auto-animate'],
     },
+    resolve: {
+      alias: {
+        // Send React's JSX runtime to Preact's.
+        //
+        // Nothing here imports React — this exists for Vite's dependency
+        // *scanner*. @astrojs/preact transforms JSX with a Babel plugin, but
+        // the scanner runs its own JSX transform over the source without that
+        // plugin and falls back to the default automatic runtime, emitting an
+        // import of `react/jsx-dev-runtime` for the .jsx widgets. React isn't
+        // installed, so the scan dies with "Failed to run dependency scan.
+        // Skipping dependency pre-bundling." — which aborts pre-bundling for
+        // the whole project and is what makes lazily-discovered deps blow up
+        // with 504 "Outdated Optimize Dep" (see the `include` note above).
+        //
+        // The scanner's JSX import source is not configurable: `optimizeDeps.
+        // esbuildOptions` is ignored (Vite optimizes with Rolldown now),
+        // `optimizeDeps.rolldownOptions.jsx` is rejected outright ("Invalid
+        // key: Expected never"), and a top-level `oxc.jsx` is accepted but the
+        // scanner does not consult it. Making the phantom specifier resolve is
+        // the remaining lever. It is also semantically right: the JSX in those
+        // files really is Preact's, only mislabelled by the scanner.
+        'react/jsx-dev-runtime': 'preact/jsx-dev-runtime',
+        'react/jsx-runtime': 'preact/jsx-runtime',
+      },
+    },
   },
   markdown: {
     // Astro 7 removed the top-level markdown.remarkPlugins/rehypePlugins

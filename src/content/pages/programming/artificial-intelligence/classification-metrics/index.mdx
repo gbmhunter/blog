@@ -8,6 +8,8 @@ title: Classification Metrics
 type: page
 ---
 
+import ConfusionMatrix from 'src/components/tools/confusion-matrix/ConfusionMatrix.jsx';
+
 <WarningIsNotes />
 
 Once you have trained a classifier, you need some way of describing how good it is. The obvious first attempt is _accuracy_, which is the percentage of predictions that were correct. But on its own this is a poor measure, and on some problems it is actively misleading! _Precision_ and _recall_ split that single number into two, and between them they describe the two different ways a classifier can be wrong.
@@ -30,6 +32,12 @@ The naming trips people up constantly. Read the two words in order: the second w
 </Aside>
 
 The whole confusion matrix is worth looking at directly. Collapsing it into a single number always throws information away, and which information you can afford to lose depends entirely on the problem.
+
+<Aside type="tip">
+In object detection, TN (true negatives) do not exist. There is no concept as a true negative because this is where the model correctly predicted no object. Where? The detector is not making a single decision per image, so the number of boxes that correctly contain nothing is essentially infinite.
+
+For this reason, certain metrics like accuracy are unusable (it needs the TN in both the numerator and denominator). Precision, recall and mAP all still work fine as they do not rely you knowing the TN count.
+</Aside>
 
 ## Accuracy
 
@@ -144,14 +152,24 @@ $$
 \text{recall} = \frac{60}{60 + 40} = \frac{60}{100} = 0.60
 $$
 
-So of the boards we pulled off the line, 75% really were faulty (25% of the operator's inspection time is wasted), and we are catching only 60% of the defects — 40 bad boards a batch are still shipping. The F1 score is:
+So from the boards that came off the line, 75% really were faulty (25% of the operator's inspection time is wasted), and we are catching only 60% of the defects — 40 bad boards per batch are still shipping. The F1 score is:
 
 $$
 F_1 = 2 \cdot \frac{0.75 \cdot 0.60}{0.75 + 0.60} = \frac{0.9}{1.35} = 0.667
 $$
 
-Note how far apart 0.994 and 0.667 are. Both are "correct"; the accuracy figure is just measuring something you do not care about, because it is dominated by the 9,880 good boards the model trivially got right.
+Notice how far apart 0.994 and 0.667 are. Both are "correct" in their own right; the accuracy figure is just measuring something you do not care about, because it is dominated by the 9,880 good boards the model trivially got right.
 </Aside>
+
+## Confusion Matrix Calculator
+
+The calculator below calculates various classification metrics from the four confusion matrix counts (TP, FP, FN, TN). It starts pre-seeded with the PCB example from above.
+
+If instead of the confusion matrix counts you have counts of how many samples there were, how many were actually positive, how many the model flagged and how many of those flags were right — switch to _Enter scenario_ and enter the data in that form.
+
+<ConfusionMatrix client:load />
+
+If the classes are imbalanced (e.g. the number of true positives is much smaller than the number of true negatives), the accuracy statistic shows a warning highlighting that it is not a good measure of performance.
 
 ## More Than Two Classes
 

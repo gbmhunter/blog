@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "npx astro dev",
-    "dev:bg": "npx astro dev --background",
+    "dev:bg": "node scripts/dev-bg.mjs",
     "start": "npx astro dev",
     "build": "npx astro check && npx astro build",
     "preview": "npx astro preview",

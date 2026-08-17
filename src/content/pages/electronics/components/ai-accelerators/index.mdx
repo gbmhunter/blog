@@ -24,7 +24,9 @@ If the activation function were
 
 The most computationally intensive part of running a neural network are the weighted-sum calculations. These can be easily done with matrix multiplications. An AI accelerator has dedicated hardware that is optimised for these matrix operations.
 
-## Hailo-8L
+## Hailo
+
+Hailo accelerators run compiled Hailo Exexcutable Format (HEF) files. These files contain the quantized network, hardware allocation, scheduling and optional HailoRT post-processing.[^ultralytics-hailo-export-for-yolo-models]
 
 The Hailo-8L is an entry-level AI accelerator from Hailo, delivering up to 13 TOPS. It is widely used in edge-AI and computer-vision applications (for example, on the Raspberry Pi AI Kit). It is designed to run neural networks.
 
@@ -65,3 +67,4 @@ The manufacturer part number is `HM21LB1C2LAE`.
 
 [^hailo-hailo-8l-datasheet]: Hailo (2026, Apr). _Hailo-8L Datasheet_ [datasheet]. Retrieved 2026-06-08, from https://hailo.ai/hailo-files/hailo-8l-industrial-datasheet-en/.
 [^hailo-hailo-8l-entry-level-ai-accelerator]: Hailo. _Hailo-8L Entry-Level AI Accelerator_ [product page]. Retrieved 2026-06-08, from https://hailo.ai/products/ai-accelerators/hailo-8l-ai-accelerator-for-ai-light-applications/.
+[^ultralytics-hailo-export-for-yolo-models]: Ultralytics. _Hailo Export for Ultralytics YOLO Models_. Retrieved 2026-08-12, from https://docs.ultralytics.com/integrations/hailo/.
