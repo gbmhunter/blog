@@ -1,15 +1,17 @@
 ---
 name: reference
-description: Add a formatted citation reference to the bottom of the current blog page. Use this skill whenever the user says "reference <url>", "add a reference for <url>", "cite <url>", or pastes a URL and asks for it to be added as a reference/citation. The skill fetches the URL, extracts metadata, and inserts a correctly formatted footnote reference into the current .mdx file.
+description: Build a formatted citation reference for a blog page. Use this skill whenever the user says "reference <url>", "add a reference for <url>", "cite <url>", or pastes a URL and asks for it to be added as a reference/citation. The skill fetches the URL, extracts metadata, and outputs a correctly formatted footnote reference line for the user to paste into the .mdx file themselves.
 ---
 
 # Reference Skill
 
-When the user provides a URL and asks to add it as a reference, follow these steps:
+When the user provides a URL and asks for a reference, follow these steps.
 
-## Step 1: Identify the target file
+**The output of this skill is a reference line in the chat, nothing more.** The user always inserts it into the `.mdx` file themselves — see Step 6.
 
-Look at the conversation context to determine which `.mdx` file is currently being edited. It will usually be obvious from recent Read/Edit tool calls. If it's genuinely unclear, ask the user.
+## Step 1: Identify the target page
+
+Look at the conversation context to work out which `.mdx` page the reference is for. It will usually be obvious from recent Read/Edit tool calls or the file open in the IDE. This is only needed for the duplicate-key check in Step 4 — if it's genuinely unclear, skip the check rather than asking.
 
 ## Step 2: Fetch the URL
 
@@ -97,30 +99,19 @@ Rules:
 [^tonymacx86-tp-link-ub400-not-recognized]: tonymacx86 (2022, Oct 25). _Tp-Link UB400 not being recognized_ [forum post]. Retrieved 2025-02-05, from https://www.tonymacx86.com/threads/tp-link-ub400-not-being-recognized.322815/.
 ```
 
-## Step 6: Insert the reference into the file
+## Step 6: Output the reference line — do not insert it
 
-Read the target file. Find the references section at the bottom — it looks like:
-
-```
-{/* ============================================================================================ */}
-{/* REFERENCES */}
-{/* ============================================================================================ */}
-
-[^existing-ref]: ...
-```
-
-Append the new reference line after the last existing `[^...]` line. If there is no references section yet, add one at the very end of the file:
+**Never edit the `.mdx` file.** Print the finished reference line in the chat, in a fenced code block so it is easy to copy:
 
 ```
-
-{/* ============================================================================================ */}
-{/* REFERENCES */}
-{/* ============================================================================================ */}
-
-[^reference-key]: ...
+[^reference-key]: Author (year, Mon day). _Title_ [type]. Publisher. Retrieved YYYY-MM-DD, from https://url.
 ```
 
-Use the Edit tool to make the insertion. After editing, confirm to the user what was added, showing the formatted reference line.
+The user inserts it into the page themselves. Do not use Edit/Write on the target page, do not offer to insert it, and do not ask where it should go.
+
+Add a brief note only if the fetch turned up something the user would want to know (e.g. the page redirected, the listing had no date, the product was not what the URL suggested). Otherwise the code block plus a one-line summary is the whole response.
+
+**Never remind the user to insert or cite the reference.** They know the footnote has to be referenced from the body text to render — pointing out that it is not yet cited, or suggesting where to cite it, is unwanted.
 
 ## Edge cases
 
@@ -132,6 +123,6 @@ Use the Edit tool to make the insertion. After editing, confirm to the user what
   [^fujifilm-prescale-llw-instruction-manual]: Fujifilm (2017). _Prescale LLW Instruction Manual_ [instruction manual]. Retrieved 2026-04-20, on file with author.
   ```
 
-- **Duplicate key**: If the same key already exists in the file, append `-2` (or `-3`, etc.) to make it unique.
+- **Duplicate key**: If the target page is known and the same key already exists in it, append `-2` (or `-3`, etc.) to make it unique. Grep the page to check; if the target page is unknown, skip this.
 - **Wikipedia pages**: The author is always "Wikipedia", the date is the page's last edited date (shown in the footer), and the type is `[wiki]`.
 - **GitHub repos**: Author is the repo owner username, title is `owner/repo-name`, type is `[GitHub repository]`, no publication date.

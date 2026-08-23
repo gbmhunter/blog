@@ -1,0 +1,50 @@
+---
+authors: [gbmhunter]
+date: 2026-08-18
+description: PWM ICs are integrated circuits dedicated to generating a pulse width modulated signal without the need for a microcontroller.
+lastUpdated: 2026-08-18
+tags: [electronics, components, PWM, pulse width modulation, ICs, oscillators, timers, TimerBlox, Analog Devices]
+title: PWM ICs
+type: page
+---
+
+<WarningIsNotes />
+
+_PWM ICs_ (also called PWM generators or PWM controllers) are integrated circuits dedicated to generating a [pulse width modulated](/electronics/circuit-design/pulse-width-modulation-pwm/) signal in hardware, without the need for a [microcontroller](/programming/microcontrollers/) and firmware. Typically the frequency is set with an external resistor (or resistor/capacitor network) and the duty cycle is set by either an analogue control voltage or a digital interface such as [I2C](/electronics/communication-protocols/i2c-communication-protocol/).
+
+## Why Use a Dedicated PWM IC?
+
+Why use a dedicated PWM IC instead of a microcontroller? There are several reasons:
+
+- No firmware, and therefore no firmware to certify/maintain.
+- The duty cycle can be driven directly from an analogue signal (e.g. straight from a sensor or [op-amp](/electronics/components/op-amps/)), with no [ADC](/electronics/components/analogue-to-digital-converters-adcs/) in between. This also means it can be faster to respond.
+- Guaranteed behaviour at power-up and on brown-out — smaller start-up time before the output is valid (a dedicated hardware oscillator spins up and stabilizes much faster than a MCU takes to boot).
+- Frees up an MCU timer peripheral, or removes the MCU entirely from a simple design.
+- Low part count and small board area.
+
+Saying that, a microcontroller is often the better choice if you already need the MCU for other reasons, or need flexibility and or fine-grained control over the PWM signal.
+
+## Example ICs
+
+### LTC6992
+
+The _LTC6992_ is a voltage-controlled PWM generator from Analog Devices (originally Linear Technology). It is part of their _TimerBlox_ family of silicon timing devices (this family also contains things such as voltage-controlled oscillators, one-shots and delay ICs)[^analog-devices-ltc6992-ds].
+
+<Image src={import('./_assets/ltc6992-pwm-generator-ic-typical-application-and-waveform.webp')} width="800px">Typical application circuit and waveform for the LTC6992 PWM generator IC.[^analog-devices-ltc6992-ds]</Image>
+
+The PWM frequency is controlled by a single external resistor, $R_{SET}$. The duty cycle is controlled by an 0-1 V analogue voltage applied to the MOD pin. Four versions of the LTC6992 exist, each with a slightly different duty-cycle range:[^analog-devices-ltc6992-ds]
+
+| Device Name | Duty Cycle Range |
+|-------------|------------------|
+| LTC6992-1 | 0% to 100% |
+| LTC6992-2 | 5% to 95% |
+| LTC6992-3 | 0% to 95% |
+| LTC6992-4 | 5% to 100% |
+
+
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^analog-devices-ltc6992-ds]: Analog Devices. _LTC6992-1/LTC6992-2/LTC6992-3/LTC6992-4 - TimerBlox: Voltage Controlled Pulse Width Modulator (PWM)_ [datasheet]. Retrieved 2026-08-18, from https://www.analog.com/media/en/technical-documentation/data-sheets/LTC6992-1-6992-2-6992-3-6992-4.pdf.

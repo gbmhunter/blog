@@ -56,6 +56,13 @@ To give some examples:
 - Samsung Galaxy S25 Wide (main) camera: 1/1.56"[^gsmarena-samsung-galaxy-s25-review-camera]
 - Samsung Galaxy S25 Telephoto camera: 1/3.94"[^gsmarena-samsung-galaxy-s25-review-camera]
 
+### Rolling vs Global Shutter
+
+CMOS image sensors can either have a rolling or global shutter.
+
+- **Rolling shutter**: Each row of pixels is exposed to light one at a time. The values of these pixels are then read one line time later. This is the most common type of shutter in CMOS sensors, and is fine for still images or slow-moving objects. But if the object is moving quickly, it can cause distortion in the image (e.g. a fast-moving propeller can look like a bent spiral).
+- **Global shutter**: All pixels are exposed to light at the same time. Then all the pixels transfer their charge to an light-shielded in-pixel storage cell. These stored values are then read out one line at a time just like with a rolling shutter. This allows for capturing fast-moving objects without distortion, but it is more complex and expensive to implement (it needs the light-shielded in-pixel storage cell).
+
 ### Front-side vs Back-side Illumination
 
 CMOS image sensors can be either front-illuminated or back-illuminated. Front-illuminated sensors (FSI) are the traditional design in which light enters the sensor from the front. But in standard chip fabrication processes, the metal layers and transistors that connect to each pixel are built _on top_ of the silicon substrate, which blocks some of the light from reaching the photodiodes.
@@ -85,7 +92,7 @@ The IMX296 is a 1.6 megapixel image sensor from Sony with a global shutter. The 
 
 | Feature | Specification |
 | --- | --- |
-| Resolution | 1440 x 1080 |
+| Resolution | 1440 (H) x 1080 (V) |
 | Pixel Size | 3.45 µm x 3.45 µm |
 | Sensor Size | 1/2.9" (6.3 mm diagonal) |
 | Interface | MIPI CSI-2 |
@@ -95,6 +102,10 @@ The IMX296 is a 1.6 megapixel image sensor from Sony with a global shutter. The 
 
 Note that 6.3 mm is Sony's quoted optical diagonal for the Type 1/2.9 format — the active pixel array itself is 1440 x 1080 x 3.45 µm = 4.97 mm x 3.73 mm, giving a 6.21 mm diagonal.
 
+### IMX298
+
+
+
 ### IMX477
 
 The IMX477 is a 12.3 megapixel CMOS image sensor from Sony. It is a backside illuminated stacked image sensor with a square pixel array. It has an electronic shutter with variable integration time. It is in the Raspberry Pi High Quality Camera and the Arducam IMX477 module.[^arducam-12mp-imx477]
@@ -103,7 +114,7 @@ The pixel size is 1.55 µm x 1.55 µm which allows for good low-light performanc
 
 | Feature | Specification |
 | --- | --- |
-| Resolution | 4056 x 3040 (12 MP) |
+| Resolution | 4056 (H) x 3040 (V) (12 MP) |
 | Pixel Size | 1.55 µm x 1.55 µm |
 | Sensor Size | 1/2.3" (7.857 mm diagonal) |
 | Interface | MIPI CSI-2, D-PHY spec. v1.2 compliant |
@@ -112,6 +123,53 @@ The pixel size is 1.55 µm x 1.55 µm which allows for good low-light performanc
 | Output Format | RAW12 |
 
 The MIPI CSI-2 interface supports 2 or 4 data lanes, with a max. of 2.1 Gbps per lane. It is D-PHY spec. v1.2 compliant, and supports 8/10/12-bit RAW output formats.[^sony-imx477-aack-flyer]
+
+The `picamera2` driver supports the following modes for the IMX477:
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Size</th>
+      <th rowspan="2">MP</th>
+      <th rowspan="2">Field of View</th>
+      <th rowspan="2">Binning</th>
+      <th colspan="3">Max. FPS</th>
+    </tr>
+    <tr>
+      <th>8-bit</th>
+      <th>10-bit</th>
+      <th>12-bit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>  <td>1332x990</td>   <td>1.3</td>   <td>43% (crop 2664x1980)</td>  <td>2x</td>      <td>147.9</td>  <td>120.5</td>  <td>101.7</td>  </tr>
+    <tr>  <td>2028x1080</td>  <td>2.2</td>   <td>71% (crop 4056x2160)</td>  <td>2x</td>      <td>92.3</td>   <td>74.7</td>   <td>62.8</td>   </tr>
+    <tr>  <td>2028x1520</td>  <td>3.1</td>   <td>full</td>                  <td>2x</td>      <td>66.4</td>   <td>53.8</td>   <td>45.2</td>   </tr>
+    <tr>  <td>4056x2160</td>  <td>8.8</td>   <td>71% (crop 4056x2160)</td>  <td>native</td>  <td>24.3</td>   <td>19.6</td>   <td>16.4</td>   </tr>
+    <tr>  <td>4056x3040</td>  <td>12.3</td>  <td>full</td>                  <td>native</td>  <td>17.4</td>   <td>14.0</td>   <td>11.7</td>   </tr>
+  </tbody>
+</table>
+
+The default AE curve is:
+
+```text
+shutter [100, 10000, 30000, 50000, 66666]
+gain    [1.0,   1.5,   2.0,   4.0,  16.0]
+```
+
+### IMX519
+
+The IMX519 is a 16 megapixel CMOS image sensor from Sony.
+
+| Feature | Specification |
+| --- | --- |
+| Resolution | 4656 (H) x 3496 (V) (16 MP) |
+| Pixel Size | 1.22 µm x 1.22 µm |
+| Sensor Size | 1/2.53" (??? mm diagonal) |
+| Interface | - |
+| Shutter Type | Rolling Shutter |
+| Video Modes | 1080p @ 30 fps, 720p @ 60 fps |
+| Output Format | RAW8/10, COMP8 |
 
 ## Camera Modules
 
@@ -154,11 +212,43 @@ A pinhole camera avoids the problem of sorting a cone of light rays from every o
 
 The _focal length_ is the distance from the lens to the image sensor when a subject at infinity is in focus. It is usually measured in millimetres (mm). A shorter focal length gives a wider field of view, while a longer focal length gives a narrower field of view.
 
+<Image src={import('./_assets/witrue-m12-25mm-35mm-50mm-lens-photo.webp')} width="800px">A photo of three Witrue M12 lenses with focal lengths of 25 mm, 35 mm and 50 mm.[^aliexpress-witrue-hd-lens-5mp-m12]</Image>
+
 _Effective focal length_ (EFL) is the optical focal length of the whole lens assembly. This is the distance from the lens's rear principal plane to the focal point. The principal plane is a theoretical plane that can sit anywhere (even inside or in front of the glass).
 
-_Back focal length_ (BFL) is the distance from the rear surface of the lens to the image plane. This tells you how much clearance exists between the back of the lens and the sensor. This space is where IR filters, cover glass and other optical elements are placed. For M12, which has no standard flange height, this also tells you how tall your lens holder needs to be.
+_Back focal length_ (BFL) is the distance from the rearest most surface of the lens to the image plane. This space is where IR filters, cover glass and other optical elements are placed. Note however this is generally not the same as the clearance from the rear-most mechnical part of the lens assembly to the image plane. That is the MBF (see below).
 
-For example, for the M12 Arducam LN001 telephoto lens, the EFL is 16 mm but the BFL is only 7.1 mm. The optics make the principal plane sit out the front of the lens, and the whole assembly is shorter than the focal length.
+_Minimum back focus_ (MBF) is the distance from the rear-most mechanical part of the lens assembly to the image plane. For C-mount and CS-mount, this is standardized at 17.526 mm and 12.526 mm respectively, so you can use any lens of that mount type and it will focus correctly. For M12, which has no standard flange height, this also tells you how tall your lens holder needs to be.
+
+### Aperture and f-number
+
+The f-number $N$ is defined as:
+
+$$
+\begin{align*}
+N = \frac{f}{D}
+\end{align*}
+$$
+
+where:
+
+- $N$ is the f-number (dimensionless).
+- $f$ is the focal length of the lens, in mm.
+- $D$ is the diameter of the entrance pupil, in mm.
+
+When lenses are sold, the f-number is usually specified in the form f/2.8, where the "2.8" is the f-number ($N$). The reason it looks like a fraction is because it is — it's a re-arrangement of the above equation to solve for $D$:
+
+$$
+\begin{align*}
+D = \frac{f}{N}
+\end{align*}
+$$
+
+The most confusing part about all this is that for a given focal length, a larger f-number means a smaller aperture (less light).
+
+One of the the reasons the f-number is used rather than just specifing the aperture diameter $D$ is that the same f-number gives you the same brightness no matter what the focal length is. This also makes intuitive sense as a larger focal length means the lens is magnifying a smaller area of the scene onto the same sensor area, so it needs a bigger aperature to keep the level of illuminance constant.
+
+Most M12 lense have a fixed aperture (i.e. no adjustable ring to change the aperture size).
 
 ### Field of View
 
@@ -235,6 +325,21 @@ Has the same 1-inch diameter and 32 threads per inch thread as the C-mount, but 
 
 A small lens mount that has an M12 x 0.5 thread (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lenses must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
 
+Below is a photo of a 100 mm long focal length M12 lens. 100 mm is getting very long for a M12, and the lens itself gets physically long also!
+
+<Image src={import('./_assets/treeye-100mm-m12-lens-photo.webp')} width="300px">A photo of a Treeye 100 mm M12 lens.[^commonlands-what-is-an-m12-lens]</Image>
+
+### Suppliers
+
+TREEYE is on AliExpress and sells a range of M12 lens with focal lengths from approx. 1 mm to 100 mm.
+
+Witrue is another AliExpress store with a range of M12 lenses.
+
+[cnAICO (aico-lens.com)](https://aico-lens.com/) is a Chinese company that makes a range of lenses for embedded cameras.
+
+<Image src={import('./_assets/cnaico-product-offerings-aug-2026.webp')} width="800px">A screenshot of cnAICO's product offerings from Aug 2026.</Image>
+
+Commonlands Optics is a US company that sells lenses. As expected, as of Aug 2026 they are priced higher than the Chinese suppliers. They provide good quality documentation with their parts.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -249,3 +354,5 @@ A small lens mount that has an M12 x 0.5 thread (12 mm nominal diameter and 0.5 
 [^sony-imx477-aack-flyer]: Sony Semiconductor Solutions (2018, Dec 12). _IMX477-AACK - Diagonal 7.857 mm (Type 1/2.3) 12.3 Mega-Pixel CMOS Image Sensor with Square Pixel for Color Cameras_ [product flyer]. Retrieved 2026-07-22, from https://www.sony-semicon.com/files/62/pdf/p-13_IMX477-AACK_Flyer.pdf.
 [^wikipedia-c-mount]: Wikipedia (2025, Jul 25). _C mount_ [wiki]. Retrieved 2026-07-24, from https://en.wikipedia.org/wiki/C_mount.
 [^arducam-imx296-global-shutter-camera-module-m12]: Arducam. _1.58MP IMX296 Color Global Shutter Camera Module with M12 Lens for Raspberry Pi_ [product page]. Retrieved 2026-07-28, from https://www.arducam.com/1-58mp-imx296-color-global-shutter-camera-module-with-m12-lens-for-raspberry-pi.html.
+[^aliexpress-witrue-hd-lens-5mp-m12]: Witrue. _Witrue HD Lens 5MP M12 25MM 35MM 50MM Low Distortion for Surveillance Security Cameras_ [product page]. AliExpress. Retrieved 2026-08-18, from https://www.aliexpress.com/item/1005007800829731.html.
+[^aliexpress-treeye-4k-12mp-100mm-m12-lens]: TREEYE. _4K 12MP 100mm Lens HD 1/1.7" M12 Lens 650nm IR Filter Long Distance View Telephoto Lens CCTV Camera Action Camera Drones Lens_ [product page]. AliExpress. Retrieved 2026-08-18, from https://www.aliexpress.com/item/1005009664648105.html.

@@ -28,6 +28,8 @@ The CM5 MINIMA is a compact carrier board for the Compute Module 5 (CM5) by Seee
 
 <Image src={import('./_assets/cm5-minima-photo-front-and-back.webp')} width="900px">Photo of the front and back of the Seeed Studio CM5 MINIMA carrier board. The CM5 goes on the bottom side of the carrier and pushed into the two high-density board-to-board connectors. The CM5 is retained with two screws that can be seen on the right-hand side of the bottom image (only 2 of the four possible screw mounts on the CM5 are used by the MINIMA).</Image>
 
+The CM5 MINIMA is powered from the USB Type C port labelled "USB-PD". When plugged into the official 27 W Rapsberry Pi power supply, it does not negogiate any higher voltage — it uses the default 5.1 V. The other USB Type C port is labelled "USB2.0" and is a standard USB 2.0 port that can be used for connecting peripherals with the RaspberryPi CM5 acting as the host. Note that when you bootload the OS, you must connect the computer to the CM5 via the "USB-PD" port, not the "USB2.0" port.
+
 ### Installing the OS
 
 The CM5 provides a nRPI_BOOT net over the high-density connectors. This is designed to be controlled from the carrier board. When set to the "on" position, it allows the CM5 to appear as a mass-storage device (not by default -- drivers also need to be installed, see below) when connected to a host computer via USB. This allows you to flash the OS onto the CM5's eMMC storage using the Raspberry Pi Imager or other tools.
