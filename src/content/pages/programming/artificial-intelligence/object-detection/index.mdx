@@ -67,6 +67,18 @@ In object detection, TN (true negatives) do not exist. There is no concept as a 
 For this reason, certain metrics like accuracy are unusable (it needs the TN in both the numerator and denominator). Precision, recall and mAP all still work fine as they do not rely you knowing the TN count.
 </Aside>
 
+## Stride
+
+Stride is the step size in pixels that a convolutional layer or detection head moves across the image. It determines the ratio between the input image size and the output feature map.
+
+$$
+\begin{align*}
+\text{Feature Map Size} = \frac{\text{Input Image Size}}{\text{Stride}}
+\end{align*}
+$$
+
+For example, if you had an input image of 640x640 pixels and a stride of 8 pixels, the output feature map would have a size of 80x80 grid cells.
+
 ## Model Families
 
 TODO: Flesh out each of these.
@@ -85,7 +97,31 @@ DETR and successors. Treat detection as a set-prediction problem and remove the 
 
 ## YOLO
 
-TODO: Move to its own child page once this grows. Cover version history, the Ultralytics tooling, model sizes (n/s/m/l/x), and training/export workflow.
+### Training
+
+YOLO models take a `scale` parameter. It can be either provided as a single float in the range $[0, 1]$ or a 2-tuple of floats. When training, if a single float is provided, jinput images are randomly resized from $1 - \text{scale}$ to $1 + \text{scale}$ of the original size. If a 2-tuple is provided, the first value is the minimum scale and the second is the maximum scale. This is to make sure the model learns to detect the same object at different scales. The default is `scale=0.5`, which means the model will see images from 50% to 150% of the original size.[^ultralytics-model-training-with-yolo]
+
+<Aside type="tip">
+There are a range of similar parameters for adjusting the image in different ways: `degrees`, `translate`, `shear`, `perspective`.[^ultralytics-model-training-with-yolo]
+</Aside>
+
+Everytime training does another epoch, the images in the training data are shuffled. A "brief" training run is considered to be about 50 Epochs or less.[^ultralytics-model-training-with-yolo] To determine the "quality" of a model, there is a `fitness()` function which weights P, R, mAP50 and mAP50-95 to give a single number. For a long time these weights were:
+
+```python
+w = [0.0, 0.0, 0.1, 0.9]
+```
+
+Which means the default metric was 10% mAP50 and 90% mAP50-95. They have been changed to:
+
+```python
+w = [0.0, 0.0, 0.0, 1.0]
+```
+
+Which means now only mAP50-95 is used to determine which model is best.
+
+Training can be done on a single CPU, GPU or multiple GPUs (note that on Windows, multi-GPU training is not supported).[^ultralytics-model-training-with-yolo] Other more specific hardware like Huawei Ascend NPUs and Apple Silicon MPS are also supported.
+
+YOLO26 uses a "MuSGD Optimizer" that combines SGD updates with Muon-style orthongonalized updates.[^ultralytics-model-training-with-yolo]
 
 ## Datasets
 
@@ -102,3 +138,4 @@ TODO: Cover the export path (PyTorch → ONNX → vendor format), the accuracy c
 {/* ============================================================================================ */}
 
 [^ultralytics-yolo26]: Ultralytics (2025, Sep 25). _Ultralytics YOLO26_. Retrieved 2026-08-12, from https://docs.ultralytics.com/models/yolo26/.
+[^ultralytics-model-training-with-yolo]: Ultralytics (2026, Aug 22). _Model Training with Ultralytics YOLO_. Retrieved 2026-08-26, from https://docs.ultralytics.com/modes/train/.

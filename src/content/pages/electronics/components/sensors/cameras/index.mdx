@@ -102,10 +102,6 @@ The IMX296 is a 1.6 megapixel image sensor from Sony with a global shutter. The 
 
 Note that 6.3 mm is Sony's quoted optical diagonal for the Type 1/2.9 format — the active pixel array itself is 1440 x 1080 x 3.45 µm = 4.97 mm x 3.73 mm, giving a 6.21 mm diagonal.
 
-### IMX298
-
-
-
 ### IMX477
 
 The IMX477 is a 12.3 megapixel CMOS image sensor from Sony. It is a backside illuminated stacked image sensor with a square pixel array. It has an electronic shutter with variable integration time. It is in the Raspberry Pi High Quality Camera and the Arducam IMX477 module.[^arducam-12mp-imx477]
@@ -157,6 +153,24 @@ shutter [100, 10000, 30000, 50000, 66666]
 gain    [1.0,   1.5,   2.0,   4.0,  16.0]
 ```
 
+### IMX500
+
+The IMX500 is a 12.3 megapixel CMOS image sensor from Sony with an integrated AI processing unit. Along with the image sensor, it also has a DSP and ≅8MB SRAM (to be shared between it's firmware, model weights and working memory) for running neural networks.[^hackster-raspberry-pi-ai-eye-hands-on-ai-camera-module] As of August 2026, the IMX500 supports 4 of the 7 Ultraanalytics tasks (detect, segment, classify and prose). It supports the YOLOv8 and YOLO11 models, but does not support YOLO26. It supports maximum image sizes of 640x640 pixels for inference.
+
+| Feature | Specification |
+| --- | --- |
+| Resolution | 4056 (H) x 3040 (V) (12.3 MP) |
+| Pixel Size | 1.22 µm x 1.22 µm |
+| Sensor Size | 1/2.3" (7.857 mm diagonal) |
+| Interface | - |
+| Shutter Type | Rolling Shutter |
+| Video Modes | Full @ 60 fps, 4056x2288 (4K) @ 60 fps, 1080p @ 240 fps |
+| Output Format | Bayer RAW, YUV/RGB |
+
+<Image src={import('./_assets/imx500-ic-shown-on-fingertip.webp')} width="300px">A photo of the IMX500 camera sensor IC on a fingertip.</Image>
+
+The IMX500 supports a mode in where only the detection data from the inference in outputted, rather than the image. This reduces the bandwidth and processing requirements for the host processor.
+
 ### IMX519
 
 The IMX519 is a 16 megapixel CMOS image sensor from Sony.
@@ -186,6 +200,22 @@ Some popular camera module manufacturers (they take a "raw" camera sensor and pa
 The Arducam IMX296 camera module is a small camera module that includes the global shutter Sony IMX296 image sensor, an M12 lens mount, and a 15-to-22 pin FPC connector for MIPI CSI-2. It also comes with a 45° (HFOV) M12 lens (this can be swapped out as needed).[^arducam-imx296-global-shutter-camera-module-m12]
 
 <Image src={import('./_assets/arducam-imx-296-camera-module-photo-front-and-back.webp')} width="800px">A photo of the Arducam IMX296 camera module, front and back. The module includes the Sony IMX296 image sensor, an M12 lens mount, and a 15-to-22 pin FPC connector for MIPI CSI-2.</Image>
+
+### Arducam IMX477 Camera Module
+
+SKU: B0240E
+
+The Arducam IMX477 camera module with C/CS mount bundles the Sony IMX477 image sensor with a C/CS mount lens holder and MIPI CS-2 interface.[^arducam-12-3mp-imx477-camera-module]
+
+### Arducam IMX500 AI Camera Module
+
+The Arducam IMX500 features a Sony IMX500 image sensor with an integrated AI processing unit.
+
+<Image src={import('./_assets/arducam-imx500-site-photo.webp')} width="300px">A photo of the Arducam IMX500 AI camera module.[^arducam-imx500-ai-mipi-camera-module]</Image>
+
+### Arducam IMX519 Camera Module
+
+The lens holder screws are 18 mm apart (hole center to hole center).
 
 ### Nanoleaf 4D Screen Mirror Camera
 
@@ -362,3 +392,7 @@ Commonlands Optics is a US company that sells lenses. As expected, as of Aug 202
 [^arducam-imx296-global-shutter-camera-module-m12]: Arducam. _1.58MP IMX296 Color Global Shutter Camera Module with M12 Lens for Raspberry Pi_ [product page]. Retrieved 2026-07-28, from https://www.arducam.com/1-58mp-imx296-color-global-shutter-camera-module-with-m12-lens-for-raspberry-pi.html.
 [^aliexpress-witrue-hd-lens-5mp-m12]: Witrue. _Witrue HD Lens 5MP M12 25MM 35MM 50MM Low Distortion for Surveillance Security Cameras_ [product page]. AliExpress. Retrieved 2026-08-18, from https://www.aliexpress.com/item/1005007800829731.html.
 [^aliexpress-treeye-4k-12mp-100mm-m12-lens]: TREEYE. _4K 12MP 100mm Lens HD 1/1.7" M12 Lens 650nm IR Filter Long Distance View Telephoto Lens CCTV Camera Action Camera Drones Lens_ [product page]. AliExpress. Retrieved 2026-08-18, from https://www.aliexpress.com/item/1005009664648105.html.
+[^arducam-12-3mp-imx477-camera-module]: Arducam. _Arducam 12.3MP IMX477 Camera Module w/ C/CS-Lens Mount and Tripod Adapter for Raspberry Pi_ [product page]. Retrieved 2026-08-25, from https://www.arducam.com/arducam-12-3mp-imx477-camera-module-w-c-cs-lens-mount-and-tripod-adapter-for-raspberry-pi.html.
+[^arducam-imx500-ai-mipi-camera-module]: Arducam. _Arducam IMX500 AI MIPI Camera Module for Raspberry Pi_ [product page]. Retrieved 2026-08-25, from https://www.arducam.com/arducam-imx500-ai-mipi-camera-module-for-raspberry-pi.html.
+[^hackster-raspberry-pi-ai-eye-hands-on-ai-camera-module]: Gareth Halfacree (2024, Sep 30). _Raspberry Pi's AI Eye: Hands-On with the Raspberry Pi AI Camera Module_. Hackster.io. Retrieved 2026-08-25, from https://www.hackster.io/news/raspberry-pi-s-ai-eye-hands-on-with-the-raspberry-pi-ai-camera-module-383fb34afcf7.
+[^sony-imx500-intelligent-vision-sensor]: Sony Semiconductor Solutions. _IMX500 - The world's first Intelligent Vision Sensor_ [product page]. AITRIOS. Retrieved 2026-08-25, from https://www.aitrios.sony-semicon.com/edge-ai-devices/imx500.
