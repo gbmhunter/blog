@@ -1,17 +1,17 @@
 ---
 name: reference
-description: Build a formatted citation reference for a blog page. Use this skill whenever the user says "reference <url>", "add a reference for <url>", "cite <url>", or pastes a URL and asks for it to be added as a reference/citation. The skill fetches the URL, extracts metadata, and outputs a correctly formatted footnote reference line for the user to paste into the .mdx file themselves.
+description: Build a formatted citation reference for a blog page and insert it into that page's references section. Use this skill whenever the user says "reference <url>", "add a reference for <url>", "cite <url>", or pastes a URL and asks for it to be added as a reference/citation. The skill fetches the URL, extracts metadata, formats a footnote reference line, and appends it to the references block of the active .mdx file (the user adds the in-text citation themselves).
 ---
 
 # Reference Skill
 
 When the user provides a URL and asks for a reference, follow these steps.
 
-**The output of this skill is a reference line in the chat, nothing more.** The user always inserts it into the `.mdx` file themselves — see Step 6.
+**Whenever you are asked to ref a URL, the finished reference always gets inserted into the references section at the bottom of the active `.mdx` file** (when there is one) — see Step 6. Never cite it anywhere else in the markdown; the user does that themselves.
 
 ## Step 1: Identify the target page
 
-Look at the conversation context to work out which `.mdx` page the reference is for. It will usually be obvious from recent Read/Edit tool calls or the file open in the IDE. This is only needed for the duplicate-key check in Step 4 — if it's genuinely unclear, skip the check rather than asking.
+Look at the conversation context to work out which `.mdx` page the reference is for. It will usually be obvious from the file open in the IDE, or from recent Read/Edit tool calls. This page is where the reference gets inserted (Step 6), and it's also what the duplicate-key check in Step 4 runs against. If it's genuinely unclear which page is active, skip the insert and just print the reference line — don't ask.
 
 ## Step 2: Fetch the URL
 
@@ -99,19 +99,36 @@ Rules:
 [^tonymacx86-tp-link-ub400-not-recognized]: tonymacx86 (2022, Oct 25). _Tp-Link UB400 not being recognized_ [forum post]. Retrieved 2025-02-05, from https://www.tonymacx86.com/threads/tp-link-ub400-not-being-recognized.322815/.
 ```
 
-## Step 6: Output the reference line — do not insert it
+## Step 6: Insert the reference into the active page
 
-**Never edit the `.mdx` file.** Print the finished reference line in the chat, in a fenced code block so it is easy to copy:
+If a target `.mdx` page was identified in Step 1, **insert the finished reference line into that page's references section** — the block at the bottom of the file marked by the `{/* REFERENCES */}` comment banner:
+
+```
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^existing-key]: ...
+[^new-key]: Author (year, Mon day). _Title_ [type]. Publisher. Retrieved YYYY-MM-DD, from https://url.
+```
+
+Rules for the insert:
+
+- Append the new line at the **end** of the existing footnote list. Do not re-sort or otherwise touch the existing references.
+- If the page has no references section yet, add the three-line comment banner (blank line above and below it) at the bottom of the file, then the reference line.
+- **Only ever edit the references section.** Never add a `[^key]` citation marker to the body text, never reword body prose to work the reference in, and never suggest where it should be cited — the user cites it themselves.
+
+Then print the inserted line in the chat, in a fenced code block, and say which page it went into:
 
 ```
 [^reference-key]: Author (year, Mon day). _Title_ [type]. Publisher. Retrieved YYYY-MM-DD, from https://url.
 ```
 
-The user inserts it into the page themselves. Do not use Edit/Write on the target page, do not offer to insert it, and do not ask where it should go.
+If **no** target page is active (Step 1 came up empty), don't go hunting for one — just print the reference line in a fenced code block and leave it at that.
 
 Add a brief note only if the fetch turned up something the user would want to know (e.g. the page redirected, the listing had no date, the product was not what the URL suggested). Otherwise the code block plus a one-line summary is the whole response.
 
-**Never remind the user to insert or cite the reference.** They know the footnote has to be referenced from the body text to render — pointing out that it is not yet cited, or suggesting where to cite it, is unwanted.
+**Never remind the user to cite the reference.** They know the footnote has to be referenced from the body text to render — pointing out that it is not yet cited, or suggesting where to cite it, is unwanted.
 
 ## Edge cases
 
@@ -123,6 +140,6 @@ Add a brief note only if the fetch turned up something the user would want to kn
   [^fujifilm-prescale-llw-instruction-manual]: Fujifilm (2017). _Prescale LLW Instruction Manual_ [instruction manual]. Retrieved 2026-04-20, on file with author.
   ```
 
-- **Duplicate key**: If the target page is known and the same key already exists in it, append `-2` (or `-3`, etc.) to make it unique. Grep the page to check; if the target page is unknown, skip this.
+- **Duplicate key**: Before inserting, grep the target page for the key. If it already exists, append `-2` (or `-3`, etc.) to make it unique. If the target page is unknown, skip this check.
 - **Wikipedia pages**: The author is always "Wikipedia", the date is the page's last edited date (shown in the footer), and the type is `[wiki]`.
 - **GitHub repos**: Author is the repo owner username, title is `owner/repo-name`, type is `[GitHub repository]`, no publication date.
