@@ -32,3 +32,6 @@ __pycache__/
 build/
 
 .claude/settings.local.json
+
+# Wrangler local state (simulated R2/KV/D1 - can be hundreds of MB)
+.wrangler/
