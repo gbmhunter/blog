@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers config for deploying the static Astro build.
+  // The site has no server-side code, so there is no "main" entry point --
+  // this Worker only serves the pre-rendered files in dist/.
+  "name": "blog",
+  "compatibility_date": "2026-08-27",
+  "assets": {
+    "directory": "./dist",
+    // Serve Astro's generated 404.html for unmatched paths instead of a bare
+    // "not found" response.
+    "not_found_handling": "404-page"
+  }
+}
