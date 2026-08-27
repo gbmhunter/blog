@@ -1,0 +1,9 @@
+# Cloudflare reads this file from the root of the deployed assets directory.
+# It is treated as configuration and is not served as a public file.
+
+# Astro fingerprints these filenames with a content hash, so a new build
+# produces a new URL. That makes them safe to cache indefinitely -- without
+# this, the default is max-age=0, must-revalidate and every visitor
+# re-validates every asset on every page load.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
