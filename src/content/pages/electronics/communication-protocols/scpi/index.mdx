@@ -1,0 +1,105 @@
+---
+authors: [gbmhunter]
+date: 2026-08-31
+description: Command syntax, common commands, the measurement model and transports of SCPI, the standard command language for test and measurement instruments.
+lastUpdated: 2026-08-31
+tags: [electronics, communication protocols, SCPI, Standard Commands for Programmable Instruments, IEEE 488.2, GPIB, test and measurement, instrument control, VISA, USBTMC, LXI]
+title: SCPI (Standard Commands for Programmable Instruments)
+type: page
+---
+
+<WarningIsNotes />
+
+**SCPI** (_Standard Commands for Programmable Instruments_, pronounced "skippy") is a ASCII command language for controlling test and measurement instruments. This includes tools like oscilloscopes, power supplies, signal generators, e.t.c.
+
+## IEEE 488.2
+
+SCPI is a layer on top of [IEEE 488.2](/electronics/communication-protocols/ieee-488-gpib/), not a replacement for it. The split is:
+
+- **IEEE 488.2** defines the message syntax, the data formats, the status reporting model, and a set of mandatory _common commands_ (the ones beginning with `*`, such as `*IDN?` and `*RST`). It doesn't define what each instrument measures.
+- **SCPI** adds the hierarchical, instrument-class-specific command tree on top of IEEE 488.2. These are the commands to specifically configure and read data from a specific class of instrument, e.g. an oscilloscope.
+
+IEEE 488.2 is itself a layer above IEEE 488.1 (which defines the physical GPIB bus). SCPI then inherits 488.2's syntax but *not* the transport defines in IEEE 488.1. This is why SCPI can work on many different physical layers, not just GPIB.
+
+## Transports
+
+SCPI does not specify a specific physical layer. It can work over transports such as:
+
+- **GPIB** ([IEEE 488.1](/electronics/communication-protocols/ieee-488-gpib/)): This was the original transport.
+- **[RS-232](/electronics/communication-protocols/rs-232-protocol/)**, [RS-422](/electronics/communication-protocols/rs-422-protocol/) and [RS-485](/electronics/communication-protocols/rs-485-protocol/).
+- **[USB](/electronics/communication-protocols/usb-protocol/)**: Via the USBTMC (USB Test and Measurement Class) device class.
+- **[Ethernet](/electronics/communication-protocols/ethernet-protocol/)**: Via VXI-11, HiSLIP, or a raw TCP socket (commonly port 5025).
+
+### VXI-11
+
+VXI-11 is a RPC (remote procedure call) TCP protocol for controlling electronics instruments. It is one of the transports that can be used by SCPI. It was published in 1995 by the VXIbus Consortium.[^wireshark-vxi-11] It uses the Open Network Computing (ONC) RPC protocol.[^tektronix-what-is-the-vxi-11-server]
+
+The HiSLIP protocol specified by the IVI Foundation is designed to supersede VXI-11.[^wikipedia-high-speed-lan-instrument-protocol]
+
+## Command Syntax
+
+Commands are plain ASCII text arranged in a colon-separated hierarchy, mirroring the instrument's functional block diagram:
+
+```text
+MEASure:VOLTage:DC?
+SOURce:VOLTage 5.0
+```
+
+The main rules:
+
+- **Queries end in `?`** and return a response. Commands without `?` set something and return nothing.
+- **Commands have a long and a short form.** Documentation writes them in mixed case, and the uppercase portion is the short form. The `MEASure` command accepts either `MEAS` or `MEASURE`. Commands are case-insensitive, so `meas` or `measure` also work.
+- **A leading colon returns to the root** of the command tree.
+- **A semicolon separates multiple commands** in one message, staying at the current level of the tree. Use `;:` to separate commands and return to the root.
+- **Numeric suffixes select a channel or instance**, e.g. `SOURce1:VOLTage` versus `SOURce2:VOLTage`. A missing suffix means 1.
+- **Optional nodes are shown in square brackets** in documentation. `[SOURce:]VOLTage` means the `SOURce:` prefix may be omitted.
+
+## Common Commands
+
+These come from IEEE 488.2 rather than SCPI itself, always begin with `*`, and sit outside the command hierarchy. There are thirteen mandatory ones.[^wikipedia-scpi] The most frequently used:
+
+| Command | Purpose |
+| --- | --- |
+| `*IDN?` | Identify the instrument. Returns four comma-separated fields: manufacturer, model, serial number, firmware revision. |
+| `*RST` | Reset the instrument to its default state. |
+| `*CLS` | Clear the status registers and the error queue. |
+| `*OPC` | Set the operation-complete bit when pending operations finish. |
+| `*OPC?` | Return `1` once pending operations finish — the usual way to block until an instrument is ready. |
+| `*WAI` | Wait for pending operations to complete before executing further commands. |
+| `*TST?` | Run the instrument's self-test and return the result. |
+
+`*IDN?` is usually the first thing you'll want to send to an instrument to see if the link is working.
+
+## The Measurement Model
+
+SCPI defines a few different ways to take a measurement, from simple one-shot "do everything" commands to more complex multi-step sequences. The main forms are:
+
+- **`MEASure?`** is the one-shot convenience form. It configures the instrument, triggers it, and returns the reading in a single command.
+- **`CONFigure`** sets the instrument up for a measurement without taking one.
+- **`READ?`** triggers and returns a reading.
+- **`INITiate`** arms the trigger system, and **`FETCh?`** returns the data from the last acquisition without re-triggering.
+
+## Error Handling
+
+Instruments maintain an error queue, read one entry at a time with:
+
+```text
+SYSTem:ERRor?
+```
+
+The response is a numeric code and a description, e.g. `-113,"Undefined header"`. An empty queue returns `0,"No error"`. Reading an entry removes it, so polling until you get `0` drains the queue.
+
+## History
+
+The SCPI standard was first published in 1990. 
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^wikipedia-scpi]: Wikipedia (2026, Aug 30). _Standard Commands for Programmable Instruments_ [wiki]. Retrieved 2026-08-31, from https://en.wikipedia.org/wiki/Standard_Commands_for_Programmable_Instruments.
+[^ivi-foundation-the-scpi-standard]: IVI Foundation. _The SCPI Standard_ [website]. Retrieved 2026-08-31, from https://www.ivifoundation.org/About-IVI/scpi.html.
+[^scpi-consortium-scpi-1999-syntax-and-style]: SCPI Consortium (1999, May). _Standard Commands for Programmable Instruments (SCPI) Volume 1: Syntax and Style, Version 1999.0_ [specification]. Retrieved 2026-08-31, from https://www.ivifoundation.org/downloads/SCPI/scpi-99.pdf.
+[^wireshark-vxi-11]: Wireshark (2020, Aug 11). _VXI 11_ [wiki]. Retrieved 2026-09-02, from https://wiki.wireshark.org/VXI-11.
+[^tektronix-what-is-the-vxi-11-server]: Tektronix. _What is the VXI-11 server?_ [FAQ]. Retrieved 2026-09-02, from https://www.tek.com/en/support/faqs/what-vxi-11-server.
+[^wikipedia-high-speed-lan-instrument-protocol]: Wikipedia (2026, Jun 26). _High Speed LAN Instrument Protocol_ [wiki]. Retrieved 2026-09-02, from https://en.wikipedia.org/wiki/High_Speed_LAN_Instrument_Protocol.

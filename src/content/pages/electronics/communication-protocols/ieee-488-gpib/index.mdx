@@ -52,6 +52,8 @@ In the late 1960's, Hewlett-Packard developed the _HP Interface Bus (HP-IB)_ to 
 
 In 1975 IEEE standardized the GPIB as _Standard Digital Interface For Programmable Instrumentation (IEEE 488)_. In 1987 IEEE released _488.2_ as _Standard Codes, Formats, Protocols, and Common Commands_ which specified basic device-independent syntax and messages. 
 
+488.2 standardised the syntax and a set of common commands, but not the commands that actually drive a measurement — those were still manufacturer-specific. [SCPI](/electronics/communication-protocols/scpi/) was released in 1990 to close that gap, layering a standard instrument-class command tree on top of 488.2. Unlike 488.2, SCPI does not mandate a transport, and today it is used over USB, Ethernet and RS-232 far more often than over GPIB itself.
+
 Although initially designed for connecting instrumentation to computers, in 1977 HP also used the GPIB bus inside it's Commodore PET range of personal computers to connect peripherals[^wikipedia-ieee-488]. However this was quickly replaced with faster buses such as SCSI.
 
 <Image src={import('./_assets/gpib-ieee-488-keithley-daq.jpg')} width="400">Photo of the Keithley DAQ6510 Data Acquisition And Logging module which uses the IEEE-488 (GPIB) bus.</Image>

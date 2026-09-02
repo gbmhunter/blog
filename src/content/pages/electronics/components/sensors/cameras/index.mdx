@@ -333,11 +333,57 @@ These equations only hold for low-distortion (rectilinear) lenses. Wide-angle an
 
 ### Depth of Field
 
-The depth of field (DoF) is the distance between the nearest and farthest objects in a scene that appear acceptably sharp in an image. It depends on the focal length of the lens, the aperture size, and the distance to the subject. An easy way to remember the relationship with aperture is to remember that **a pinhole camera has infinite depth of field**. Obviously a pinhole camera has a very small aperture because it's just a "pinhole". So smaller aperture = more depth of field. A larger aperture = less depth of field. This also makes sense intuitively — a larger aperture lets in more light, but because it lets in light from more angles, the range of distances that are in focus is smaller.
+The depth of field (DoF) is the distance between the nearest and farthest objects in a scene that appear acceptably sharp in an image. It depends on the focal length of the lens, the aperture size, and the distance to the subject.
+
+An easy way to remember the relationship with aperture is to remember that **a pinhole camera has infinite depth of field**. Obviously a pinhole camera has a very small aperture because it's just a "pinhole". So smaller aperture = more depth of field. A larger aperture = less depth of field. This also makes sense intuitively — a larger aperture lets in more light, but because it lets in light from more angles, the range of distances that are in focus is smaller.
+
+It's important to rember that only one object plane is ever *perfectly* in focus. Everything else that is closer or further away from the lens turns into a small circle of blur on the sensor. The depth of field is just the range of distances over which that blur circle stays acceptable small enough. "Small enough" is the _circle of confusion_ $c$ — the biggest blur disc you are still willing to call a point.
+
+<Aside type="tip">
+Because it's about what amount of blur is acceptable, depth of field is a choice, not a property of the lens.
+</Aside>
+
+For machine vision the sensible choice is describe $c$ as a number of pixels (or pixel pitch), because blur discs on the same size as a single pixel cannot really be seen. One pixel pitch is the aggressive choice; two pixel pitches is the more common one (you need two pixels to resolve a feature anyway). For photography the traditional choice is the sensor diagonal divided by 1500, which comes from what the human eye can resolve in a print viewed at arm's length.
+
+This is a good place to introduce the concept of the _hyperfocal distance_ $H$. This is a special working distance in which the far limit of depth of field is at infinity and the near limit is at $H/2$. This working distance (the hyperfocal distance) gives you the maximum depth of field for a given lens, aperature and acceptable circle of confusion. The hyperfocal distance is given by the equation: 
+
+$$
+\begin{align*}
+H = \frac{f^2}{N c} + f
+\end{align*}
+$$
+
+where:
+- $H$ is the hyperfocal distance, in mm.
+- $c$ is the circle of confusion, in mm.
+- $N$ is the f-number of the lens (dimensionless).
+- $f$ is the focal length of the lens, in mm.
+
+The hyperfocal distance is only one special working distance. You can also calculate the near and far limits of depth of field for any working distance $d_o$ using the following equations:
+
+$$
+\begin{align*}
+d_{near} &= \frac{d_o (H - f)}{H + d_o - 2f} \\[1em]
+d_{far} &= \frac{d_o (H - f)}{H - d_o}
+\end{align*}
+$$
+
+where:
+
+- $d_o$ is the working distance from the lens to the object, in mm.
+- everything else is as defined above.
+
+Note that once $d_o \geq H$ the denominator of $d_{far}$ goes to zero and then negative. This is the far limit going to infinity and is to be expected. Also note that the depth of field is not centred on the object plane: it always extends further behind the object than in front of it. You may have heard the saying: "one third in front, two thirds behind", this is a rough approximation for medium distance. Up close the the ratio approachs 1 (same depth of field in front as behind), and far away the far limit approaches infinity.
+
+<Aside type="caution">
+These equations only model *geometric* blur, and so they get optimistic as you decrease the aperture. Diffraction at the aperture spreads even a perfectly focused point into an Airy disc of diameter $d_{airy} = 2.44 \lambda N$, which for green light ($\lambda = 550\unit{nm}$) is $2.7\unit{\mu m}$ across at f/2.0 but $10.7\unit{\mu m}$ at f/8.
+
+On a sensor with $1.55\unit{\mu m}$ pixels like the IMX477, that is already wider than a pixel at f/2.0. Increasing the f-number (making the aperture smaller) past about f/4 you are getting depth of field that the sensor cannot resolve, at the cost of softening the whole image.
+</Aside>
 
 ### Lens Field of View Calculator
 
-A common design task is working out what focal length lens you need so that a camera sees an object of a certain size at a certain distance, and how much detail (mm per pixel) you get on that object. The calculator below solves this using the field of view equations above.
+A common design task is working out what focal length lens you need so that a camera sees an object of a certain size at a certain distance, how much detail (mm per pixel) you get on that object, and how much slop you have in the working distance before it goes soft. The calculator below solves this using the field of view and depth of field equations above.
 
 The lens preset dropdown is populated with the 10 lenses from the Arducam M12 lens set (SKU LK005), a popular lens kit for embedded cameras covering focal lengths from a 16 mm telephoto down to a 1.7 mm fisheye.[^arducam-m12-lens-set]
 

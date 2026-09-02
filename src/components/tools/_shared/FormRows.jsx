@@ -77,8 +77,14 @@ export function UnitInputRow({ label, value, onInput, unit, onUnitChange, units,
   );
 }
 
-export function OutputRow({ label, value, format, error, help, warning }) {
+// `allowInfinite` opts a row into rendering ±Infinity through `format` (for
+// quantities that legitimately run to infinity, e.g. a far depth-of-field
+// limit at the hyperfocal distance). Without it, infinities render as —.
+export function OutputRow({ label, value, format, error, help, warning, allowInfinite }) {
   const showWarning = !error && warning;
+  const hasValue = allowInfinite
+    ? typeof value === 'number' && !Number.isNaN(value)
+    : Number.isFinite(value);
   return (
     <div class="calc-form__row">
       <span class="calc-form__label">{label}</span>
@@ -86,7 +92,7 @@ export function OutputRow({ label, value, format, error, help, warning }) {
         <div class={showWarning ? 'calc-form__output calc-form__output--warning' : 'calc-form__output'}>
           {error ? (
             <span class="calc-form__output-error">{error}</span>
-          ) : Number.isFinite(value) ? (
+          ) : hasValue ? (
             <span class="calc-form__output-value">{format(value)}</span>
           ) : (
             <span class="calc-form__output-empty">—</span>
