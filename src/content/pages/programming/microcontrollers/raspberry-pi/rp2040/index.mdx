@@ -9,17 +9,17 @@ type: page
 
 The _RP2040_ is a 32-bit 133MHz dual-core ARM Cortex-M0+ microcontroller designed by Raspberry Pi Ltd. It was announced on Jan 21st, 2021 as is the first microcontroller designed by Raspberry Pi Ltd, with the intention of being a cheaper, real-time, hardware orientated computing platform to provide alongside the more powerful RaspberryPi. One distinguishing feature of the RP2040 compared to other microcontrollers is the **unique Programmable I/O (PIO) subsystem**.
 
-<Image src={import('./rp2040-package-photo.png')} width="400px">Photo of the RP2040 IC in it's 56-pin 7x7mm QFN package[^bib-rpi-rp2040-product-page].</Image>
+<Image src={import('./_assets/rp2040-package-photo.png')} width="400px">Photo of the RP2040 IC in it's 56-pin 7x7mm QFN package[^rpi-rp2040-product-page].</Image>
 
 The datasheet for the RP2040 can be found at https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf.
 
 The RP2040 is not a family of microcontrollers (as typical with other vendors), it is a single 56pin, 7x7mm [QFN component](/pcb-design/component-packages/qfn-component-package/) with a 0.4mm pitch.
 
-<Image src={import('./rp2040-qfn-56-pinout.png')} width="600px">Pinout for the RP2040 microcontroller, which is in a QFN-56-7x7 package[^bib-rpi-rp2040-ds].</Image>
+<Image src={import('./_assets/rp2040-qfn-56-pinout.png')} width="600px">Pinout for the RP2040 microcontroller, which is in a QFN-56-7x7 package[^rpi-rp2040-ds].</Image>
 
 ## Features
 
-The RP2040 contains the following[^bib-rpi-rp2040-ds]:
+The RP2040 contains the following[^rpi-rp2040-ds]:
 
 * Dual ARM Cortex-M0+ @ 133MHz
 * 264kB on-chip SRAM in six independent banks
@@ -38,7 +38,7 @@ The RP2040 contains the following[^bib-rpi-rp2040-ds]:
     * [USB 1.1 controller](/electronics/communication-protocols/usb-protocol/) and PHY, with host and device support
     * 8 PIO state machines
 
-<Image src={import('./rp2040-system-overview.png')} width="700px">A system overview (functional block diagram) of the RP2040 microcontroller[^bib-rpi-rp2040-hardware-design].</Image>
+<Image src={import('./_assets/rp2040-system-overview.png')} width="700px">A system overview (functional block diagram) of the RP2040 microcontroller[^rpi-rp2040-hardware-design].</Image>
 
 For needed peripherals that are not listed above, rather than having to bit-bang them, the 8 PIO state machines allow you to create custom hardware logic to perform these tasks.
 
@@ -50,9 +50,9 @@ Dividing the SRAM into 6 banks, with dedicated AHB buses, allows bus masters to 
 
 ## Raspberry Pi Pico SDK
 
-The _Raspberry Pi Pico SDK_ is a collection of C headers, C libraries and a CMake build system for compiling bare metal applications for RP2040-based devices[^bib-rpi-pico-sdk]. It can be used to build applications for the Raspberry Pi Pico, but is generalized to work with all board designs (even though the name suggests otherwise).
+The _Raspberry Pi Pico SDK_ is a collection of C headers, C libraries and a CMake build system for compiling bare metal applications for RP2040-based devices[^rpi-pico-sdk]. It can be used to build applications for the Raspberry Pi Pico, but is generalized to work with all board designs (even though the name suggests otherwise).
 
-The following C code shows how to print `Hello, world!` to a UART using the SDK[^bib-rpi-pico-sdk-uart-example]:
+The following C code shows how to print `Hello, world!` to a UART using the SDK[^rpi-pico-sdk-uart-example]:
 
 ```c
 int main() {
@@ -68,10 +68,23 @@ int main() {
 }
 ```
 
-## References
+## Raspberry Pi Pico
 
-[^bib-rpi-rp2040-ds]: Raspberry Pi Ltd. _RP2040 Datasheet: A microcontroller by Raspberry Pi._. Retrieved 2022-06-07, from https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf.
-[^bib-rpi-rp2040-hardware-design]: Raspberry Pi Ltd. _Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products_. Retrieved 2022-06-07, from https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf.
-[^bib-rpi-rp2040-product-page]: Raspberry Pi Ltd. _RP2040 (product page)_. Retrieved 2022-06-07, from https://www.raspberrypi.com/products/rp2040/.
-[^bib-rpi-pico-sdk]: Raspberry Pi Ltd. _Raspberry Pi Pico SDK_. Retrieved 2022-06-07, from https://raspberrypi.github.io/pico-sdk-doxygen/.
-[^bib-rpi-pico-sdk-uart-example]: Raspberry Pi Ltd. _Raspberry Pi Pico SDK: UART Example_. Retrieved 2022-06-07, from https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__uart.html#uart_example.
+The Raspberry Pi Pico is a small, low-cost development board that uses the RP2040 microcontroller.
+
+<Image src={import('./_assets/rpi-pico-h-photo-front-and-back.webp')} width="500px">Front and back photos of the Raspberry Pi Pico H development board.</Image>
+
+The pinout is shown below:
+
+<Image src={import('./_assets/rpi-pico-pinout-dot-gadgetoid.webp')} width="600px">Pinout for the Raspberry Pi Pico development board (screenshot from [pico.pinout.xyz](https://pico.pinout.xyz/), maintained by Gadgetoid).[^pico-pinout-raspberry-pi-pico-gpio-pinout]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^rpi-rp2040-ds]: Raspberry Pi Ltd. _RP2040 Datasheet: A microcontroller by Raspberry Pi._. Retrieved 2022-06-07, from https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf.
+[^rpi-rp2040-hardware-design]: Raspberry Pi Ltd. _Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products_. Retrieved 2022-06-07, from https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf.
+[^rpi-rp2040-product-page]: Raspberry Pi Ltd. _RP2040 (product page)_. Retrieved 2022-06-07, from https://www.raspberrypi.com/products/rp2040/.
+[^rpi-pico-sdk]: Raspberry Pi Ltd. _Raspberry Pi Pico SDK_. Retrieved 2022-06-07, from https://raspberrypi.github.io/pico-sdk-doxygen/.
+[^rpi-pico-sdk-uart-example]: Raspberry Pi Ltd. _Raspberry Pi Pico SDK: UART Example_. Retrieved 2022-06-07, from https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__uart.html#uart_example.
+[^pico-pinout-raspberry-pi-pico-gpio-pinout]: Gadgetoid. _Raspberry Pi Pico GPIO Pinout_ [website]. Retrieved 2026-09-09, from https://pico.pinout.xyz/#i=siup.

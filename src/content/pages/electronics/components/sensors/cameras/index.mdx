@@ -117,6 +117,7 @@ The pixel size is 1.55 µm x 1.55 µm which allows for good low-light performanc
 | Shutter Type | Rolling Shutter |
 | Video Modes | 1080p @ 30 fps, 720p @ 60 fps, 640x480 @ 60/90 fps |
 | Output Format | RAW12 |
+| Min. exposure time | 74 µs |
 
 The MIPI CSI-2 interface supports 2 or 4 data lanes, with a max. of 2.1 Gbps per lane. It is D-PHY spec. v1.2 compliant, and supports 8/10/12-bit RAW output formats.[^sony-imx477-aack-flyer]
 
@@ -185,6 +186,8 @@ The IMX519 is a 16 megapixel CMOS image sensor from Sony.
 | Video Modes | 1080p @ 30 fps, 720p @ 60 fps |
 | Output Format | RAW8/10, COMP8 |
 
+<Image src={import('./_assets/imx519-sensor-photo-from-arducam-module.webp')} width="400px">A photo of the IMX519 camera sensor from an Arducam module. I'm not sure if the plastic shroud surrounding the sensing element is part of the IMX519 sensor IC or the Arducam module.</Image>
+
 ## Camera Modules
 
 MIPI CSI-2 is the most common standard for connecting cameras to processors in mobile and embedded devices — see the [MIPI CSI Communication Protocol page](/electronics/communication-protocols/mipi-csi-communication-protocol/) for more info on how the protocol works.
@@ -214,6 +217,8 @@ The Arducam IMX500 features a Sony IMX500 image sensor with an integrated AI pro
 <Image src={import('./_assets/arducam-imx500-site-photo.webp')} width="300px">A photo of the Arducam IMX500 AI camera module.[^arducam-imx500-ai-mipi-camera-module]</Image>
 
 ### Arducam IMX519 Camera Module
+
+<Image src={import('./_assets/arducam-imx519-photos-front-and-back.webp')} width="800px">A photo of the Arducam IMX519 camera module (front and back). The module includes the Sony IMX519 image sensor, an M12 lens mount, and a 120° M12 lens pre-installed (some variants have an auto-focus lens instead).</Image>
 
 The lens holder screws are 18 mm apart (hole center to hole center).
 
@@ -389,6 +394,10 @@ The lens preset dropdown is populated with the 10 lenses from the Arducam M12 le
 
 <CameraFov client:load />
 
+### Lens Shading Tables
+
+<Image src={import('./_assets/example-of-lens-shading-tables-being-incorrectly-applied-corners-are-magneta.webp')} width="800px">An example of lens shading tables being incorrectly applied (the camera shipped with a wide-angle (120°) lens which needed it and the lens was replaced by a narrow 20° lens without changing the lens shading tables), causing the corners to be magenta.</Image>
+
 ### Mounts
 
 Lens mounts hold the lens in the correct place in-front of the image sensor. The image sensor is typically mounted on a circuit board with one side of the mount, and the lens has a mating piece which screws or slides on. There are a few common lens mounts used for embedded cameras.
@@ -405,11 +414,15 @@ Has the same 1-inch diameter and 32 threads per inch thread as the C-mount, but 
 
 #### M12-mount
 
-A small lens mount that has an M12 x 0.5 thread (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lenses must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens]
+M12 lenses have a small lens mount witjh a M12 x 0.5 thread (12 mm nominal diameter and 0.5 mm thread pitch). Unlike C and CS-mount, it does not have a standardized flange height. Because of this, M12 lenses must be screwed in and out until they are in focus (and then sometimes secured with a screw or glue). It is smaller and lighter (≈10 grams) than the CS/C-mount and used when space and weight constraints are important. It is also known as an S-mount.[^commonlands-what-is-an-m12-lens] M12 lenses normally have fixed apertures and focal lenghts (i.e. no adjustment rings). The only thing that is usually adjustable is the focus, set by screwing the lens in or out of the mount.
 
 Below is a photo of a 100 mm long focal length M12 lens. 100 mm is getting very long for a M12, and the lens itself gets physically long also!
 
 <Image src={import('./_assets/treeye-100mm-m12-lens-photo.webp')} width="300px">A photo of a Treeye 100 mm M12 lens.[^commonlands-what-is-an-m12-lens]</Image>
+
+Lens holders for M12 lenses are available in a range of heights. The image below shows a typical one made from metal. This one came with an embedded IR filter, which is the blue looking piece of glass that I removed from the holder itself. The IR filter was stuck in the inside of the holder against the flange which goes from the square base (where the sensor goes) to the circular M12 section. This particular holder has a screw spacing of 20 mm.
+
+<Image src={import('./_assets/m12-lens-holder-at-its-ir-filter-removed.webp')} width="600px">A photo of an M12 lens holder with its IR filter removed.</Image>
 
 ### Suppliers
 

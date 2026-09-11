@@ -55,6 +55,30 @@ Pervasive Displays is a Taiwan based electrophoretic display manufacturer. One o
 
 <Image src={import('./_assets/pervasive-displays-product-offerings.webp')} width="700px">A screenshot of Pervasive Displays product offerings.[^pervasive-displays-products]</Image>
 
+DigiKey and Mouser Electronics are distributors of Pervasive Displays products.
+
+<Image src={import('./_assets/pervasive-12-inch-epd-screen-photo-front-and-back.webp')} width="700px">A photo of the Pervasive Display E2B98KS063 12" monochrome electrophoretic display (front and back photos).</Image>
+
+Pervasive Display uses iTC (internal timing controller) and eTC (external timing controller) terminology to describe their displays.
+
+The 12" Pervasive Display E2B98KS063 stores per-batch waveforms on it's 128-byte OTP (one-time programmable) memory.
+
+Both the 9.7" and 12" displays are dual chip, the screens have a master and slave driver IC. This means they also have two FPC cables to connect to.
+
+Pervasive provides Arduino-based firmware drivers for their screens:[^github-pervasive-displays]
+
+- Pervasive_Wide_Small: For 0.97" to 4.37" monochrome displays.
+- Pervasive_Wide_Medium: For 3.4" to 7.4" monochrome displays.
+- Pervasive_Wide_Large: For their 9.7" and 12" iTC monochrome displays.
+- Pervasive_BWRY_Small: For 1.52" to 4.37" Spectra 4/BWRY/four colour screens.
+- Pervasive_BWRY_Medium: For 5.8" and 7.4" Spectra 4/BWRY/four colour screens.
+- Pervasive_BWRY_Large: For their 9.7" Spectra 4/BWRY/four colour screens.
+- Pervasive_Touch_Small: For small monochrome touch screens.
+
+These drivers support the EXT3, EXT3.1, EXT3.2 and EXT4 extension boards.[^pervasive-displays-driver-object]
+
+Pervasive Displays also provides an extension board for quick prototyping with their screens. It contains an adapter board to bring together the connectors (if it has two, like the 9.7" and 12" displays) on the screen and power management circuitry. The EXT3-1 has a 8 Mbit SPI flash memory.
+
 #### Waveshare
 
 Waveshare is a general purpose electronics hardware company that has a range of electrophoretic displays.
@@ -69,7 +93,7 @@ They have a black-and-white "BS" series that has special low temperature ratings
 
 DKE screens are sold on Alibaba.com.
 
-### Good Display
+#### Good Display
 
 Good Display (_Dalian Good Display Co., Ltd._) is a Chinese company that produces a range of electrophoretic displays. Their product range includes black-and-white, 4-colour (they call this multi-color), full-colour (Spectra 6) and small flexible electrophoretic displays.[^good-display-black-and-white-epaper]
 
@@ -80,6 +104,16 @@ MpicoSys produces timing controllers to drive electrophoretic displays. They hav
 - **TCM:** First generation. It appears this line has been discontinued.
 - **TCM2:** Compatible with 7.8", 9.7", 11.3", 13.3", 28", 31,2", and 42" Eink displays.
 - **TCM3:** Newest generation. Compatible with 13,3" and 28" Eink displays.
+
+#### e-Paper Innovation (E-PI)
+
+e-Paper Innovation (E-PI) make a range of flexible, plastic (no glass) electrophoertic displays. As of August 2026, their online shop shows a range from about 1" to 31".
+
+#### Unisystem
+
+Unisystem is a manufacturer and distributer of displays based in Poland. They are a distributer of E-ink displays. They were founded in 1995.[^unisystem-about-us]
+
+<Image src={import('./_assets/unisystem-electrophoretic-display-selection-sep-2026.webp')} width="700px">A screenshot of Unisystem's electrophoretic display selection in September 2026.[^unisystem-e-paper-displays]</Image>
 
 ### Electrophoretic Display Lighting
 
@@ -127,18 +161,26 @@ Solar panels can also be placed behind all of the colour layers. If the colour l
 
 #### Iris Optronics Co.
 
-Iris Optronics Co. is a Taiwanese company that manufacturers ChLCDs. They have the following products:
+Iris Optronics Co. is a Taiwanese company that manufacturers ChLCDs. They specialise in colour ChLCDs, although they do offer "monochrome" in the form of green/black. They have the following products:
 
 - Full Color ChLCD: A full-colour ChLCD display in 10 inch, 13.3 inch and 31.5 inch sizes.[^iris-optronics-full-color-chlcd]
 - Infinity Display: A colour ChLCD with a solar panel behind it, available in 13.3 and 31.5 inch sizes.
 - Ming Display: A full-colour ChLCD with LED based illumination for night viewing.
 - ecosticker: A full-colour 10-inch ChLCD display.
 
+Update rates of their screens can be typically around 8 seconds at room temperature, increasing to around a 1 minute at $-20^\circ C$.
+
 Iris Optronics acquired colour reflective ChLCD patents from Fujitsu in 2016.[^iris-optronics-company-introduction]
 
 #### AUO Display
 
 AUO Display manufacturers the HiRaso family of ChLCDs.
+
+#### Anders Electronics
+
+Anders Electronics makes a range of ChLCDs (they also make a range of screens using other technologies such as TFT, OLED, and electrophoretic). As of September 2026 they only have three ChLCD products listed on their website, all of which are larger sized screens (13.3", 28.3" and 31.5").[^anders-electronics-zero-power-displays]
+
+<Image src={import('./_assets/anders-ch-lcd-product-offerings-september-2026.webp')} width="600px">A screenshot of Anders Electronics ChLCD product offerings in September 2026.[^anders-electronics-zero-power-displays]</Image>
 
 ## Zenithal Bistable Displays (ZBDs)
 
@@ -202,3 +244,9 @@ ZBD is rather unique in that there seems to be only the one supplier, New Vision
 [^dke-products]: DKE. _DKE e-Paper Display Manufacturer_ [product page]. Retrieved 2026-06-22, from https://dke.top/products/.
 [^pervasive-displays-wide-temperature]: Pervasive Displays (2024, Aug 14). _Wide Temperature E-Paper Displays: 5 Key Business Advantages_. Retrieved 2026-06-22, from https://www.pervasivedisplays.com/wide-temperature-e-ink/.
 [^good-display-black-and-white-epaper]: Good Display (2020, Apr 27). _Black & White ePaper_ [product page]. Retrieved 2026-06-22, from https://www.good-display.com/product/6/.
+[^anders-electronics-zero-power-displays]: Anders Electronics. _Zero Power Displays_ [product page]. Retrieved 2026-09-03, from https://www.andersdx.com/zero-power-displays/?48[]=CH-LCD#products.
+[^e-paper-innovation-shop]: e-Paper Innovation. _Shop_ [product page]. Retrieved 2026-09-03, from https://www.e-pi.com/shopp/.
+[^unisystem-about-us]: Unisystem. _About us – Industrial Display Manufacturer_ [website]. Retrieved 2026-09-07, from https://unisystem.com/about-us.
+[^unisystem-e-paper-displays]: Unisystem. _E-paper displays_ [product page]. Retrieved 2026-09-07, from https://unisystem.com/catalog/displays-e-paper.
+[^github-pervasive-displays]: Pervasive Displays. _PervasiveDisplays_ [GitHub organisation]. GitHub. Retrieved 2026-09-09, from https://github.com/PervasiveDisplays.
+[^pervasive-displays-driver-object]: Pervasive Displays. _Knowledge Base - Driver object_ [documentation]. Retrieved 2026-09-09, from https://docs.pervasivedisplays.com/knowledge/Software/Volume2/Chapter4/Section1.html.

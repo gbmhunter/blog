@@ -89,6 +89,41 @@ SYSTem:ERRor?
 
 The response is a numeric code and a description, e.g. `-113,"Undefined header"`. An empty queue returns `0,"No error"`. Reading an entry removes it, so polling until you get `0` drains the queue.
 
+## The Wider Ecosystem
+
+SCPI does not really exist in isolation, and is usually part of a "stack" for performing instrument control.
+
+### VISA
+
+VISA (Virtual Instrument Software Architecture) uses resource strings to address specific instruments. Here are some examples:
+
+```text
+TCPIP0::192.168.1.5::inst0::INSTR
+USB0::0x0957::INSTR
+```
+
+
+VISA was initially standardised by VXIplug&play Alliance which is no longer active. It is now maintained by the IVI Foundation.[^wikipedia-virtual-instrument-software-architecture]
+
+Once you have used VISA to connect to an instrument, you can send SCPI commands over that connection. PyVISA is a popular Python library for controlling instruments via VISA. Here is an example of how it is used:
+
+```python
+import pyvisa
+
+# Create a resource manager
+rm = pyvisa.ResourceManager()
+
+# Open a connection to the instrument (e.g., USB, GPIB, or TCP/IP). This example
+# uses USB
+instrument = rm.open_resource("USB0::0x0957::0x0607::MY450001::0::INSTR")
+
+# Send an identification query and print the response (this is standard SCPI)
+print(instrument.query("*IDN?"))
+
+# Close the session
+instrument.close()
+```
+
 ## History
 
 The SCPI standard was first published in 1990. 
@@ -103,3 +138,4 @@ The SCPI standard was first published in 1990.
 [^wireshark-vxi-11]: Wireshark (2020, Aug 11). _VXI 11_ [wiki]. Retrieved 2026-09-02, from https://wiki.wireshark.org/VXI-11.
 [^tektronix-what-is-the-vxi-11-server]: Tektronix. _What is the VXI-11 server?_ [FAQ]. Retrieved 2026-09-02, from https://www.tek.com/en/support/faqs/what-vxi-11-server.
 [^wikipedia-high-speed-lan-instrument-protocol]: Wikipedia (2026, Jun 26). _High Speed LAN Instrument Protocol_ [wiki]. Retrieved 2026-09-02, from https://en.wikipedia.org/wiki/High_Speed_LAN_Instrument_Protocol.
+[^wikipedia-virtual-instrument-software-architecture]: Wikipedia (2026, Jan 29). _Virtual instrument software architecture_ [wiki]. Retrieved 2026-09-03, from https://en.wikipedia.org/wiki/Virtual_instrument_software_architecture.

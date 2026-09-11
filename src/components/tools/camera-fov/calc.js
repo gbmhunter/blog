@@ -78,6 +78,12 @@ const DEG_PER_RAD = 180 / Math.PI;
 const WAVELENGTH_UM = 0.55;
 export const airyDiscUm = (fNumber) => 2.44 * WAVELENGTH_UM * fNumber;
 
+// The inverse: the f-number at which the Airy disc grows to the size of the
+// circle of confusion. Past this, diffraction rather than geometry sets the
+// blur, so further stopping down buys depth of field the sensor cannot resolve.
+// Depends only on the CoC — the focal length and working distance drop out.
+export const diffractionLimitFNumber = (cocUm) => cocUm / (2.44 * WAVELENGTH_UM);
+
 /**
  * Compute the field-of-view numbers for a sensor + lens + working distance.
  *
@@ -164,3 +170,4 @@ export const formatLenInf = (mm) => (mm === Infinity ? '∞' : formatLen(mm));
 export const formatDeg = (deg) => `${deg.toFixed(1)}°`;
 export const formatUm = (um) => `${um.toPrecision(3)} µm`;
 export const formatPxPerMm = (v) => `${v.toPrecision(4)} px/mm`;
+export const formatFNumber = (n) => `f/${n.toFixed(1)}`;

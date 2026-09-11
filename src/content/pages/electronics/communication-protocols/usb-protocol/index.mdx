@@ -113,6 +113,32 @@ OTG systems present unique power supply challenges to the hardware designer. OTG
 
 OTG hosts running off a LiPo battery supply can use a 1.5X inductor-less charge pump to provide power for Vbus. They typically are limited to providing 100mA to the peripheral.
 
+## Link Controllers and PHYs
+
+USB hardware is typically split into two parts: the link controller and the PHY. For full speed USB (12 Mbit/s), most microcontrollers contain both the link controller and PHY (e.g. the STM32G4). In this case you connect D+/D- from the connector straight into the MCU pins. For faster speeds, e.g. high-speed at 480 Mbit/s, things begin to change, and some microcontrollers only contain the link controller, and require an external PHY to work at high speed. An example of this is the STM32H743.
+
+### Interface
+
+UTMI (USB 2.0 Transceiver Macrocell Interface) published in 1999 was the original interface between the USB link controller and PHY.[^eetimes-partitioning-hi-speed-usb-systems] The original interface required between 22 and 26 pins (8-bit interface required 22 running at 60 MHz, 16-bit interface required 26 running at 30MHz). UTMI+ added more features and the pin count grew significantly, with 35 pins needed for OTG and 54 pins to support host and OTG functions.[^eetimes-partitioning-hi-speed-usb-systems]
+
+The large pin count of UTMI+ prompted the industry to develop and adopt ULPI (UTMI+ Low Pin Interface). It reduced the pin count that could be up in the 50's down to 12, regardless of the number of USB features utilized. Revision 1.1 of the ULPI specification was released in 2004.[^ulpi-utmi-low-pin-interface-specification]
+
+The signals on the ULPI interface are:[^ulpi-utmi-low-pin-interface-specification]
+
+| Name | Direction (relative to PHY) | Description |
+| --- | --- | --- |
+| CLK | I/O | Clock. Driven by the PHY in output clock mode, or by the link controller in input clock mode. |
+| DATA[7:0] | I/O | 8-bit bidirectional data bus. Driven to `0x00` by the link controller when the bus is idle. A 4-bit double-edge mode is also supported. |
+| DIR | Output | Direction. Driven by the PHY. High when the PHY is transmitting data to the link controller. Low when the link controller is transmitting data to the PHY. Also used as flow control, the PHY asserts DIR when it can't accept data. |
+| STP | Input | Stop. Driven by the link controller. Asserted for one clock cycle to indicate the end of a transfer. Also used by the link controller to abort a receive, which forces the PHY to de-assert DIR and hand back the bus. |
+| NXT | Output | Next. Driven by the PHY. During transmit it means the PHY accepted the current byte. During receive it means a new byte is available. |
+
+<Image src={import('./_assets/ulpi-link-controller-to-phy-interface.webp')} width="800px">A diagram showing the ULPI interface between a USB link controller and an external high-speed PHY. The 12 signals include a 8-bit bidirectional data bus plus CLK, DIR, NXT and STP. DIR and NXT are driven by the PHY and STP by the link controller. The 60 MHz clock is normally sourced by the PHY (output clock mode), although the link controller can supply it instead (input clock mode).</Image>
+
+ULPI was introduced as an almost completely transparent "wrapper" around UTMI, and so in many cases both the link controller and PHY still "speak" UTMI in their internal logic, but this is converted to and from ULPI before sending to the other device. It's transparent enough that it preserves the original packet timing. However, it not a requirement that a device uses UTMI + a ULPI wrapper, and some link controllers and PHYs may use ULPI directly.[^ulpi-utmi-low-pin-interface-specification] One thing ULPI does not support is the 16-bit UTMI+ data bus.
+
+<Image src={import('./_assets/ulpi-utmi-wrapper-architecture.webp')} width="1000px">A diagram showing ULPI implemented as wrappers around existing UTMI+ cores, in both the link controller and the PHY. The wrapper reduces the many pin count UTMI+ interface down to the 12 ULPI signals. Slow UTMI+ signals are not sent along individual wires at all. Instead they live in a register map inside the PHY, which the link controller reads and writes to them over the data bus.</Image>
+
 ## Hardware
 
 ### Decoupling
@@ -368,3 +394,5 @@ Watching USB. Plug the board in now. Ctrl+C to stop.
 [^wikipedia-thunderbolt-interface]: Wikipedia (2025, July 16). _Thunderbolt (interface)_ [wiki]. Retrieved 2025-07-28, from https://en.wikipedia.org/wiki/Thunderbolt_(interface).
 [^dell-guide-to-display-port-over-usb-c]: Dell. _Support Home > Knowledge Base Article > Guide to DisplayPort over USB-C_ [documentation]. Retrieved 2025-07-28, from https://www.dell.com/support/kbdoc/en-nz/000141328/displayport-over-usb-type-c.
 [^gct-usb-3.0-type-c-connectors]: GCT. _GCT USB 3.0 Type C Connectors_ [article]. Retrieved 2025-12-03, from https://nz.mouser.com/new/gct/gct-usb-3-0-type-c-connectors/.
+[^ulpi-utmi-low-pin-interface-specification]: Shaun Reemeyer (2004, Oct 20). _UTMI+ Low Pin Interface (ULPI) Specification, Revision 1.1_ [specification]. Retrieved 2026-09-08, from https://cdn.sparkfun.com/assets/4/3/e/3/2/ULPI_v1_1.pdf.
+[^eetimes-partitioning-hi-speed-usb-systems]: Jim Meiss (2006, May 10). _Partitioning hi-speed USB systems_. EE Times. Retrieved 2026-09-08, from https://www.eetimes.com/partitioning-hi-speed-usb-systems/.

@@ -1,0 +1,43 @@
+<mxfile host="Electron">
+  <diagram name="ULPI wrappers" id="ulpi-wrappers">
+    <mxGraphModel dx="2934" dy="1201" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1640" pageHeight="500" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="linkbox" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;strokeWidth=2;fontSize=18;fontStyle=1;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=top;spacingTop=8;container=1;collapsible=0;" value="Link Controller (MCU / SoC)" vertex="1">
+          <mxGeometry height="300" width="460" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="utmi-link-core" parent="linkbox" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f4a742;strokeColor=#333333;strokeWidth=2;fontSize=17;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;" value="&lt;b&gt;UTMI+&lt;br&gt;Link Core&lt;/b&gt;" vertex="1">
+          <mxGeometry height="150" width="160" x="20" y="93.26315789473685" as="geometry" />
+        </mxCell>
+        <mxCell id="ulpi-link-wrap" parent="linkbox" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#93c5fd;strokeColor=#1e3a5f;strokeWidth=2;fontSize=17;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;" value="&lt;b&gt;ULPI Link&lt;br&gt;Wrapper&lt;/b&gt;" vertex="1">
+          <mxGeometry height="150" width="120" x="320" y="93.26315789473685" as="geometry" />
+        </mxCell>
+        <mxCell id="phybox" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;strokeWidth=2;fontSize=18;fontStyle=1;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=top;spacingTop=8;container=1;collapsible=0;" value="ULPI Transceiver (PHY)" vertex="1">
+          <mxGeometry height="300" width="460" x="668" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ulpi-phy-wrap" parent="phybox" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#93c5fd;strokeColor=#1e3a5f;strokeWidth=2;fontSize=17;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;" value="&lt;b&gt;ULPI PHY&lt;br&gt;Wrapper&lt;/b&gt;" vertex="1">
+          <mxGeometry height="150" width="120" x="20" y="93.26315789473685" as="geometry" />
+        </mxCell>
+        <mxCell id="utmi-phy-core" parent="phybox" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f4a742;strokeColor=#333333;strokeWidth=2;fontSize=17;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;" value="&lt;b&gt;UTMI+&lt;br&gt;PHY Core&lt;/b&gt;" vertex="1">
+          <mxGeometry height="150" width="160" x="280" y="93.26315789473685" as="geometry" />
+        </mxCell>
+        <mxCell id="usb" parent="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#e5e7eb;strokeColor=#666666;strokeWidth=2;fontSize=16;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;" value="&lt;b&gt;USB&lt;/b&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="1208" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="e-utmi-link" edge="1" parent="1" source="utmi-link-core" style="html=1;rounded=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=2.5;fontSize=16;fontColor=#1a7fc7;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;labelBackgroundColor=#f5f5f5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ulpi-link-wrap" value="&lt;b&gt;UTMI+&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;up to 54 signals&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-ulpi" edge="1" parent="1" source="ulpi-link-wrap" style="html=1;rounded=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=3.5;fontSize=18;fontColor=#1a7fc7;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ulpi-phy-wrap" value="&lt;b&gt;ULPI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;CLK&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;DATA[7:0]&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;DIR&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;NXT&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;STP&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-utmi-phy" edge="1" parent="1" source="ulpi-phy-wrap" style="html=1;rounded=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=2.5;fontSize=16;fontColor=#1a7fc7;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=middle;labelBackgroundColor=#f5f5f5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="utmi-phy-core" value="&lt;b&gt;UTMI+&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;up to 54 signals&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-usb" edge="1" parent="1" source="utmi-phy-core" style="html=1;rounded=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=2.5;fontSize=14;fontStyle=1;fontColor=#1a7fc7;fontFamily=Arial,Helvetica,sans-serif;verticalAlign=bottom;labelBackgroundColor=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="usb" value="D+ / D−">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

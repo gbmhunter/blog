@@ -1,8 +1,8 @@
 import { useState } from 'preact/hooks';
 import {
   PRESETS, LENS_PRESETS, presetSensorFields, parsePositive, compute,
-  DISTANCE_UNITS, COC_BASES, COC_CUSTOM, COC_PIXEL_2, resolveCocUm, airyDiscUm,
-  formatLen, formatLenInf, formatDeg, formatUm, formatPxPerMm,
+  DISTANCE_UNITS, COC_BASES, COC_CUSTOM, COC_PIXEL_2, resolveCocUm, airyDiscUm, diffractionLimitFNumber,
+  formatLen, formatLenInf, formatDeg, formatUm, formatPxPerMm, formatFNumber,
 } from './calc.js';
 import { InputRow, OutputRow, SelectRow, UnitInputRow } from '../_shared/FormRows.jsx';
 import './styles.css';
@@ -100,6 +100,7 @@ export default function CameraFov() {
   // Once the Airy disc is wider than the circle of confusion, diffraction —
   // which the geometric DoF model ignores — is the thing limiting sharpness.
   const airyUm = airyDiscUm(fNumber.value);
+  const nLimit = diffractionLimitFNumber(cocUm);
   const diffractionWarning = Number.isFinite(airyUm) && Number.isFinite(cocUm) && airyUm > cocUm
     ? `Diffraction-limited: at f/${fNumber.value} the Airy disc is ${formatUm(airyUm)} across, `
       + `wider than the ${formatUm(cocUm)} circle of confusion. The whole image is softer than `
@@ -247,6 +248,8 @@ export default function CameraFov() {
           <OutputRow label="CoC" value={cocUm} format={formatUm}
             help="The circle of confusion derived from the sensor and the basis above. Switch the basis to Custom to enter your own." />
         )}
+        <OutputRow label="Max f/#" value={nLimit} format={formatFNumber}
+          help="The f-number at which the Airy disc grows to the size of the circle of confusion. Reduce the aperature further than this (increase the f-number) and diffraction sets the blur, extra depth of field is not resolvable. Derived from the CoC, it does not change with focal length or working distance." />
         <OutputRow label="Near" value={r.error ? NaN : r.dofNear} format={formatLen}
           help="The nearest distance from the lens that is still acceptably sharp." />
         <OutputRow label="Far" value={r.error ? NaN : r.dofFar} format={formatLenInf} allowInfinite

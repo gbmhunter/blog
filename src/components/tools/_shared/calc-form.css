@@ -91,6 +91,10 @@
   .calc-form__row--radio {
     grid-template-columns: 1.5rem 3rem minmax(0, 18rem) minmax(0, 1fr);
   }
+  /* Centred, which self-adjusts: help short enough to fit the 2rem control
+     band sits centred against the label and input, while help taller than the
+     band becomes the row's tallest item, so centring fills the row and the
+     text starts at the top and grows downward. */
   .calc-form__help {
     grid-column: auto;
     align-self: center;
@@ -110,7 +114,11 @@
 }
 
 .calc-form__label {
-  align-self: center;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 2rem;
   font-weight: 600;
   color: var(--sl-color-text);
   text-align: right;
