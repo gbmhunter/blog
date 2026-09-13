@@ -2,27 +2,27 @@
 authors: [gbmhunter]
 date: 2020-06-19
 description: Info about the STM32 range of microcontrollers.
-lastUpdated: 2026-06-09
-tags: [programming, microcontrollers, STM32, STM32F0, Cortex-M0, ARM, STM32CubeIDE, Nucleo, STM32WLEx, LoRa, LoRaWAN, ST-LINK/V2, virtual COM ports, VCPs, LoRaWAN, STLINK-V3, STLINK-V3SET, isolation]
+lastUpdated: 2026-09-13
+tags: [programming, microcontrollers, STM32, STM32F0, STM32F1, STM32G0, STM32G4, STM32N6, Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4F, Cortex-M55, ARM, STM32CubeIDE, Nucleo, STM32WLEx, LoRa, LoRaWAN, ST-LINK/V2, virtual COM ports, VCPs, STLINK-V3, STLINK-V3SET, isolation]
 title: STM32 Microcontrollers
 type: page
 ---
 
 <WarningIsNotes />
 
-`STM32` is a family of 32-bit, ARM Cortex-M microcontrollers manufactured by ST Microelectronics. 
+`STM32` is a family of 32-bit, ARM Cortex-M microcontrollers manufactured by STMicroelectronics.
 
-All `STM32` micros are supported by ST's own [STM32CubeIDE](/programming/integrated-development-environments-ides/stm32cubeide).
+All `STM32` micros are supported by ST's own [STM32CubeIDE](/programming/integrated-development-environments-ides/stm32cubeide/).
 
 ## Development Kits
 
-A very popular range of development kits using the STM32 microcontrollers is the STM32 _NUCLEO_. These boards feature a STM32 microcontroller, integrated programmer with UART, and both Arduino and Morpho-style header pins (Morpho is ST's proprietary header arrangement which provides greater connectivity than the industry-standard Arduino arrangement).
+A very popular range of development kits using the STM32 microcontrollers is the STM32 _NUCLEO_. These boards feature an STM32 microcontroller, integrated programmer with [UART](/electronics/communication-protocols/uart-communication-protocol/), and both Arduino and Morpho-style header pins (Morpho is ST's proprietary header arrangement which provides greater connectivity than the industry-standard Arduino arrangement).
 
-A Windows machine is required to update the firmware on the Nucleo programmer/debugger IC (the IC which emulates an ST-Link).
+The firmware on the Nucleo's on-board programmer/debugger IC (the IC which emulates an ST-LINK) can be updated with STM32CubeProgrammer or the standalone STLinkUpgrade tool, both of which run on Windows, Linux and macOS.
 
 ## Programmers
 
-To get an in-depth overview of all the ST programmers by ST themselves, see https://www.st.com/resource/en/technical_note/dm00290229-overview-of-stlink-derivatives-stmicroelectronics.pdf.
+To get an in-depth overview of all the ST programmers by ST themselves, see the technical note [TN1235: Overview of ST-LINK derivatives](https://www.st.com/resource/en/technical_note/dm00290229-overview-of-stlink-derivatives-stmicroelectronics.pdf).
 
 ### ST-LINK/V1
 
@@ -38,21 +38,23 @@ The _ST-LINK/V2-ISOL_ is similar in functionality to the ST-LINK/V2 but with add
 
 ### STLINK-V3
 
-Designed to supersede the ST-LINK/V2 family of programmers. Comes in three flavours:
+Designed to supersede the ST-LINK/V2 family of programmers. It originally came in three flavours:
 
-* **STLINK-V3SET**: The "standard" programmer that comes with an enclosure. The main module board is the MB1441. Optional adapter boards can be attached to it for extra functionality[^st-um2448-stlink-v3set].
-* **STLINK-V3MINI**: A miniature form of the programming, that comes as a bare PCB. Much cheaper than the STLINK-V3SET.
-* **STLINK-V3MODS**: A programmer on a castellated-edged PCB module, designed to be soldered onto a PCB containing the microcontroller to be programmed.
+- **STLINK-V3SET**: The "standard" programmer that comes with an enclosure. The main module board is the MB1441. Optional adapter boards can be attached to it for extra functionality.[^st-um2448-stlink-v3set]
+- **STLINK-V3MINI**: A miniature form of the programmer that comes as a bare PCB. Much cheaper than the STLINK-V3SET.
+- **STLINK-V3MODS**: A programmer on a castellated-edged PCB module, designed to be soldered onto a PCB containing the microcontroller to be programmed.
+
+ST has since added the STLINK-V3MINIE (which replaces the STLINK-V3MINI) and the STLINK-V3PWR (which adds a programmable power supply and power measurement).
 
 All have 1 or more virtual comm ports (VCPs) and mass-storage device emulation for drag-and-drop flash programming.
 
-<Image src={import('./_assets/stlink-v3set-st-microelectronics-programmer-photo.png')} width="500">A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND.</Image>
+<Image src={import('./_assets/stlink-v3set-st-microelectronics-programmer-photo.png')} width="500px">A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND.</Image>
 
 **STDC14 Connector**
 
 The `STDC14` pinout/connector was introduced in STLINK-V3. This is a 14-pin 2x7 1.27mm pitch header-style connector. The middle 10-pins copy the standard 10-pin ARM Cortex programming connector. 2 on one end add UART TX/RX, and the other two on the other end are reserved.
 
-The pinout for the STDC14 connector is shown the below table[^st-um2448-stlink-v3set]:
+The pinout for the STDC14 connector is shown in the table below.[^st-um2448-stlink-v3set]
 
 <table>
   <thead>
@@ -69,34 +71,34 @@ The pinout for the STDC14 connector is shown the below table[^st-um2448-stlink-v
   </tbody>
 </table>
 
-The [TagConnect TC2070-IDC-050 or TC2070-IDC-NL-050 cables](https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3) can be used with the STLINK-V3 and it's STDC14 connector to provide connector-less pogo-pin style programming[^tagconnect-stlink-v3].
+The [TagConnect](/electronics/components/connectors/pogo-pins/) [TC2070-IDC-050 or TC2070-IDC-NL-050 cables](https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3) can be used with the STLINK-V3 and its STDC14 connector to provide connector-less pogo-pin style programming.[^tagconnect-stlink-v3]
 
 ### NUCLEO Development Kits
 
-Given the costlier nature of the ST-LINK compared to the NUCLEO development kits, it makes economic sense just to by the NUCLEO development kits and use them as standalone programmers (the kits provide header pins which breakout the programming pins, so you can route it to an off-board micro). You also get the added benefit of having a extremely useful built-in UART (which emulates a COM port when the on-board programmer is plugged into a computer via USB cable), which for example, can be used as a debug UART. The standard programmers don't have this!
+Given the costlier nature of the ST-LINK compared to the NUCLEO development kits, it makes economic sense just to buy the NUCLEO development kits and use them as standalone programmers (the kits provide header pins which break out the programming pins, so you can route it to an off-board micro). You also get the added benefit of having an extremely useful built-in UART (which emulates a COM port when the on-board programmer is plugged into a computer via USB cable), which for example, can be used as a debug UART. The ST-LINK/V2 doesn't have this (although the STLINK-V3 family does).
 
 ## STM32F0
 
 The `STM32F0` is a family of "general purpose" STM32 microcontrollers. The family uses a 48MHz ARM Cortex-M0 CPU architecture.
 
-Low-power modes:
+[Low-power modes](/electronics/low-power-design/):
 
-* Sleep mode: Only the CPU is stopped. All peripherals continue to operate and can wake-up the CPU.
-* Stop mode: A mode designed to put everything into a low-power state but retain the content of SRAM and the registers.
-* Standby mode: The lowest-power mode. Everything is stopped and SRAM/register content is lost, except for the registers in the RTC domain and standby circuitry
+- Sleep mode: Only the CPU is stopped. All peripherals continue to operate and can wake-up the CPU.
+- Stop mode: A mode designed to put everything into a low-power state but retain the content of SRAM and the registers.
+- Standby mode: The lowest-power mode. Everything is stopped and SRAM/register content is lost, except for the registers in the RTC domain and standby circuitry.
 
 GPIO capabilities:
 
 GPIO can be configured as one of the following outputs:
 
-* Push-pull
-* Open-drain
+- Push-pull
+- Open-drain
 
 Or as the following inputs:
 
-* High-impedance
-* Pull-up
-* Pull-down
+- High-impedance
+- Pull-up
+- Pull-down
 
 Reference schematic for the STM32F030 (just power, clock and programming):
 
@@ -104,37 +106,61 @@ Reference schematic for the STM32F030 (just power, clock and programming):
 
 ## STM32F1
 
-The `STM32F1` is a family of "general purpose" STM32 microcontrollers. The family uses a ARM Cortex-M3 CPU architecture.
+The `STM32F1` is a family of "general purpose" STM32 microcontrollers. The family uses an [ARM Cortex-M3](/programming/cpu-architectures/arm-cortex-m3/) CPU architecture.
 
 Some things to note:
 
-- All GPIO pins with the same integer last digit across each port (e.g. `PA1`, `PB1`, `PC1`, ...) are connected to the same interrupt, and only one pin may be connected to the interrupt at any one time. Be careful when routing signals to your GPIO pins!
-- Peripherals are divided into two APB buses. All peripherals connected to `APB1` run at half the main clock frequency, and peripherals connected to `APB2` run at the main clock frequency.
+- All GPIO pins with the same integer last digit across each port (e.g. `PA1`, `PB1`, `PC1`, ...) are connected to the same external interrupt (EXTI) line, and only one pin may be connected to the interrupt at any one time. Be careful when routing signals to your GPIO pins! (This applies to all STM32 families, not just the STM32F1.)
+- Peripherals are divided into two APB buses. `APB1` is limited to a maximum of 36MHz, so when running at the maximum 72MHz system clock the peripherals connected to `APB1` run at half the main clock frequency, whilst peripherals connected to `APB2` can run at the full main clock frequency. Both bus prescalers are configurable.
 
 To develop with STM32F1 microcontrollers you will need two PDFs, the specific "datasheet" for the exact microcontroller you are using, and the more general and much bigger [reference manual](https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf).
 
 ## STM32G
 
-The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family either uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline) for the `G0` or the Cortex-M4F for the `G4`[^wp-stm32].
+The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family either uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ implements the same Armv6-M instruction set as the M0, but adds optional features such as an MPU and vector table relocation, and has a two-stage pipeline instead of the M0's three-stage pipeline) for the `G0` or the Cortex-M4F for the `G4`[^wp-stm32].
 
 ### STM32G0
 
-* STM32G0x0: _Value line_. Cheapest STM32G0 microcontrollers, with an entry-level set of analogue peripherals.
-* STM32G0x1: More analogue features than the STM32G0x0.
+- STM32G0x0: _Value line_. Cheapest STM32G0 microcontrollers, with an entry-level set of analogue peripherals.
+- STM32G0x1: More analogue features than the STM32G0x0.
 
 ### STM32G4
 
 Family of mixed-signal microcontrollers, which include both DSP and FPU instructions. This family uses the ARM Cortex-M4F CPU architecture. This is further sub-divided into the following sub-families:
 
-* STM32G4x1: _Access line:_ General-purpose microcontrollers with entry-level set of analogue peripherals.
-* STM32G4x3: _Performance line:_ General-purpose microcontrollers with the maximum number of analogue peripherals.
-* STM32G4x4: _Hi-resolution line:_ Features a high-resolution timer and complex waveform builder plus event handler for digital power conversion.
+- STM32G4x1: _Access line:_ General-purpose microcontrollers with entry-level set of analogue peripherals.
+- STM32G4x3: _Performance line:_ General-purpose microcontrollers with the maximum number of analogue peripherals.
+- STM32G4x4: _Hi-resolution line:_ Features a high-resolution timer and complex waveform builder plus event handler for digital power conversion.
+
+## STM32H7
+
+The STM32H7 is a family of high-performance STM32 microcontrollers. They run on a 32-bit Arm Cortex-M7 core at clock speeds up to 600 MHz. Embedded flash memory is available on some models from sizes of 64 kB to 2 MB.[^st-stm32h7-series] Pin counts vary from 64 to 240 pins.
+
+the STM32H7 family is further sub-divided into the following lines:[^st-stm32h7-series]
+
+- Bootflash single-core lines (STM32H7R3/7S3, STM32H7R7/7S7): 600 MHz core with cost-optimzed 64 kB of bootflash and full external memory support.
+- Dual-core lines (STM32H747/757, STM32H745/755): 480 Mhz and 240 MHz cores with up to 2 MB of flash and 1 MB of RAM.
+- Single-core lines (STM32H723/733, STM32H725/735, STM32H743/753, STM32H742, STM32H7A3/7B3): 550 MHz cores or low-power 280 MHz cores with 34 uA (typ.) in STOP mode.
+- Value lines (STM32H750, STM32H7B0, STM32H730): The cost-effective lines with 128 kB of flash and up to 1 MB of RAM.
+
+### STM32H743/753 Design Guide
+
+The STM32H742xI/G and STM32H743xI/G devices include internal flash memory of up to 2 Mbytes and up to 1 Mbyte of RAM (including 192 Kbytes of TCM RAM, up to 864 Kbytes of user SRAM and 4 Kbytes of backup SRAM), 
+
+`VCAP` pins require 2.2 uF X5R/X7R ceramic capacitors to GND.
+
+The MCU contains two USB peripherals, `OTG_HS1` and `OTG_HS2`:
+
+- `OTG_HS1`: Full-speed and high-speed. Has a ULPI (UTMI+ Low Pin Interface) for high-speed operation (requires an external PHY).
+- `OTHG_HS2`: Full-speed only.
+
+Both peripherals have an internal PHY for full-speed operation (e.g. D+ and D- lines connected directly to the MCU). Both can take on host, peripheral and OTG roles. They require a dedicarted 48 MHz clock generarted by a PLL connected to the HSE oscillator.
 
 ## STM32N6
 
-STM32N6 is a series of STM32 MCUs with dedicated hardware for running edge AI. They feature an Arm Cortex-M55 running at 800 MHz and a NPU (neural processing unit) running at 1 GHz and capable of 0.6 TOPS (tera operations per second). The NPU is the ST Neural-ART accelerator.[^st-stm32n6-series]
+STM32N6 is a series of STM32 MCUs with dedicated hardware for running edge AI. They feature an ARM Cortex-M55 running at 800 MHz and a NPU (neural processing unit) running at 1 GHz and capable of 0.6 TOPS (tera operations per second). The NPU is the ST Neural-ART accelerator.[^st-stm32n6-series]
 
-The STM32N6 directly supports image processing pipelines with a built-in MIPI CSI-2 interface and H264 hardware encoder.[^st-stm32n6-series] It has a hexa-SPI and FMC bus for fast communication with external memory.
+The STM32N6 directly supports image processing pipelines with a built-in [MIPI CSI-2](/electronics/communication-protocols/mipi-csi-communication-protocol/) interface and H264 hardware encoder.[^st-stm32n6-series] It has a hexadeca-SPI (XSPI) and FMC bus for fast communication with external memory.
 
 The STM32N6 is further sub-divided into the following "lines":
 
@@ -145,21 +171,23 @@ Within these two lines some have HW cryptography units while others do not.
 
 There are two primary development kits for the STM32N6. The comprehensive STM32N6570-DK contains a camera, LCD screen and touch panel, USB, Ethernet, microphone and 1 Gbit SPI flash memory. It features the STM32N657X0H3Q MCU.
 
-The other dev kit is the NUCLEO-N657X0-Q which is structured like STs other Nucleo dev. kits. It contains the STM32N657X0 MCU and provides a great way to test out the STM32N6 series of MCUs. It includes features such as: user buttons and LEDs, Ethernet, MIPI20 connector, M.2 key A serial memory connector and a CAN FD header.[^st-nucleo-n657x0-q] Unlike STM32N6570-DK, it does not come with a camera and LCD touch screen.
+The other dev kit is the NUCLEO-N657X0-Q which is structured like ST's other Nucleo dev kits. It contains the STM32N657X0 MCU and provides a great way to test out the STM32N6 series of MCUs. It includes features such as: user buttons and LEDs, Ethernet, MIPI20 connector, M.2 key A serial memory connector and a [CAN FD](/electronics/communication-protocols/can-protocol/) header.[^st-nucleo-n657x0-q] Unlike STM32N6570-DK, it does not come with a camera and LCD touch screen.
 
-<Image src={import('./_assets/nucleo-n657x0-q-dev-board-photo.webp')} width="300px">A photo of the NUCLEO-N657X0-Q dev. board featuring a STM32N6 MCU.[^st-nucleo-n657x0-q]</Image>
+<Image src={import('./_assets/nucleo-n657x0-q-dev-board-photo.webp')} width="300px">A photo of the NUCLEO-N657X0-Q dev board featuring an STM32N6 MCU.[^st-nucleo-n657x0-q]</Image>
 
 ## STM32WLEx
 
-The `STM32WLEx` is a family of "SoC" microcontrollers featuring a `STM32L4` coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).
+The `STM32WLEx` is a family of "SoC" microcontrollers featuring an `STM32L4`-class ARM Cortex-M4 core coupled with a sub-GHz wireless radio (derived from the Semtech SX126x) in the same physical IC. The radio supports LoRa, (G)FSK, (G)MSK and BPSK modulation, and ST provides a [LoRaWAN](/electronics/communication-protocols/sub-ghz-ism-bands/) stack that runs on top of it.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
-[^st-swim]:  ST Microelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
-[^wp-stm32]:  Wikipedia (last edited 2021, Aug 31). _STM32_. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
-[^st-um2448-stlink-v3set]: ST Microelectronics (2021, Dec). _UM2448 User manual: STLINK-V3SET debugger/programmer for STM8 and STM32_. Retrieved 2022-08-09, from https://www.st.com/en/development-tools/stlink-v3set.html#documentation.
-[^tagconnect-stlink-v3]: TagConnect. _Tag-Connect Solutions for Debuggers & Programmers: ST-Link-V3 Cable Selection_. Retrieved 2022-08-09, from https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3.
+[^st-swim]: STMicroelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_ [user manual]. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
+[^wp-stm32]: Wikipedia (2021, Aug 31). _STM32_ [wiki]. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
+[^st-um2448-stlink-v3set]: STMicroelectronics (2021, Dec). _UM2448 User manual: STLINK-V3SET debugger/programmer for STM8 and STM32_ [user manual]. Retrieved 2022-08-09, from https://www.st.com/en/development-tools/stlink-v3set.html#documentation.
+[^tagconnect-stlink-v3]: TagConnect. _Tag-Connect Solutions for Debuggers & Programmers: ST-Link-V3 Cable Selection_ [website]. Retrieved 2022-08-09, from https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3.
 [^st-stm32n6-series]: STMicroelectronics. _STM32N6 Series_ [product page]. Retrieved 2026-06-09, from https://www.st.com/en/microcontrollers-microprocessors/stm32n6-series.html.
 [^st-nucleo-n657x0-q]: STMicroelectronics. _NUCLEO-N657X0-Q - STM32 Nucleo-144 development board with STM32N657X0 MCU, SMPS, supports Arduino, and ST morpho connectivity_ [product page]. Retrieved 2026-06-09, from https://www.st.com/en/evaluation-tools/nucleo-n657x0-q.html.
+[^st-stm32h7-series]: STMicroelectronics. _STM32H7 Series - Arm Cortex-M7 and Cortex-M4 MCUs_ [product page]. Retrieved 2026-09-13, from https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html.
+[^st-stm32h743-datasheet]: STMicroelectronics (2026, Jan). _DS12110: STM32H742xI/G STM32H743xI/G - 32-bit Arm Cortex-M7 480MHz MCUs, up to 2MB flash, up to 1MB RAM, 46 com. and analog interfaces_ [datasheet]. Retrieved 2026-09-13, from https://www.st.com/resource/en/datasheet/stm32h743zi.pdf.
