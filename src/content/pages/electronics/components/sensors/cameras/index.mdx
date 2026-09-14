@@ -398,6 +398,10 @@ The lens preset dropdown is populated with the 10 lenses from the Arducam M12 le
 
 <Image src={import('./_assets/example-of-lens-shading-tables-being-incorrectly-applied-corners-are-magneta.webp')} width="800px">An example of lens shading tables being incorrectly applied (the camera shipped with a wide-angle (120°) lens which needed it and the lens was replaced by a narrow 20° lens without changing the lens shading tables), causing the corners to be magenta.</Image>
 
+The image below shows the effect of flat-field correction. The image on the left shows an arbitrary camera and lens system (with no predefined lens shading tables) taking a photo of an out-of-focus piece of white paper (the paper is only about 30cm away, and the focus is much further away). The paper is illuminated from daylight behind the paper and a bright light source in front of the paper. The image on the right is the same piece of paper after flat-field correction has been applied (flat-field correction was applied at two different colour temperatures, one with just daylight and one with daylight + a bright light). 
+
+<Image src={import('./_assets/white-paper-before-and-after-flat-field-correction.webp')} width="800px">A photo of a white piece of paper taken with an arbitrary camera and lens system, before and after flat-field correction. The left image clearly shows issues with the image becoming more magneta dominant at the edges, while the right image shows the corrected image with the magenta gone, and relatively equaul brightness across the image.</Image>
+
 ### Mounts
 
 Lens mounts hold the lens in the correct place in-front of the image sensor. The image sensor is typically mounted on a circuit board with one side of the mount, and the lens has a mating piece which screws or slides on. There are a few common lens mounts used for embedded cameras.

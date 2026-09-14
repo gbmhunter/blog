@@ -78,6 +78,18 @@ One example of an isolated amplifier IC is the Texas Instruments AMC3330. A typi
 
 By nature of the measurement being isolated, it is not ground referenced and thus on the MCU side there is a differential signal. You could either connect one side to GND if you want to use a single ADC pin (and you were sure the signal only went in one direction), or use a differential ADC input.
 
+## High-speed ADCs
+
+High-speed ADCs could be roughly considered as ADCs with a sample rate of 1 MSPS or higher (there is no strict definition). Above this sample rate the price starts to increase significantly and the ADCs are usually stand-alone ICs rather than built into a microcontroller.
+
+### Examples
+
+#### Texas Instruments ADS9224R
+
+The Texas Instruments ADS9224R is a 16-bit, 3 MSPS, dual-channel SAR ADC.
+
+<Image src={import('./_assets/texas-instruments-ads9224r-16bit-3msps-dual-channel-sar-adc-internal-arch-block-diagram.webp')} width="800px">The internal architecture block diagram of the Texas Instruments ADS9224R 16-bit, 3 MSPS, dual-channel SAR ADC.[^ti-ads92x4r-dual-low-latency-sar-adc-ds]</Image>
+
 ## Examples
 
 ### Texas Instruments ADS8866IDRCR
@@ -120,3 +132,4 @@ Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the ana
 [^infineon-aurix-tricore-tc33xext-aa-mcu-ds]: Infineon (2021, Mar). _AURIX TriCore TC33xEXT AA MCU Family Datasheet_ [datasheet]. Retrieved 2024-03-26, from https://www.infineon.com/dgdl/Infineon-TC33xEXT_AA-step_DataSheet-DataSheet-v01_01-EN.pdf?fileId=8ac78c8c82ce566401833cdf75272dba.
 [^ti-amc3330-isolated-amplifier-ds]: Texas Instruments (2024, Aug). _AMC3330 Precision, ±1V Input, Reinforced Isolated Amplifier With Integrated DC/DC Converter_ [datasheet]. Retrieved 2025-06-10, from https://www.ti.com/lit/ds/symlink/amc3330.pdf.
 [^ti-ads1299-product-page]: Texas Instruments. _ADS1299: Low-Noise, 8-Channel, 24-Bit Analog-to-Digital Converter for Biopotential Measurements_ [product page]. Retrieved 2026-05-29, from https://www.ti.com/product/ads1299.
+[^ti-ads92x4r-dual-low-latency-sar-adc-ds]: Texas Instruments (2019, Jun). _ADS92x4R Dual, Low-Latency, Simultaneous-Sampling SAR ADC_ [datasheet]. Retrieved 2026-09-14, from https://www.ti.com/lit/ds/symlink/ads9224r.pdf.
