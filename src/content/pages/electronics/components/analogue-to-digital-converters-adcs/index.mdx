@@ -84,11 +84,16 @@ High-speed ADCs could be roughly considered as ADCs with a sample rate of 1 MSPS
 
 ### Examples
 
-#### Texas Instruments ADS9224R
+#### Texas Instruments ADS92x4R
 
-The Texas Instruments ADS9224R is a 16-bit, 3 MSPS, dual-channel SAR ADC.
+The Texas Instruments ADS92x4R is a family (family of two) 16-bit, 3 MSPS, dual-channel SAR ADC. Both channels sample at the same time ("simultaneous sampling").
 
-<Image src={import('./_assets/texas-instruments-ads9224r-16bit-3msps-dual-channel-sar-adc-internal-arch-block-diagram.webp')} width="800px">The internal architecture block diagram of the Texas Instruments ADS9224R 16-bit, 3 MSPS, dual-channel SAR ADC.[^ti-ads92x4r-dual-low-latency-sar-adc-ds]</Image>
+The two parts in the family are:
+
+- **ADS9224R**: 16 bits, 3 MSPS, 333 ns latency
+- **ADS9234R**: 14 bits, 3.5 MSPS, 285 ns latency
+
+<Image src={import('./_assets/texas-instruments-ads9224r-16bit-3msps-dual-channel-sar-adc-internal-arch-block-diagram.webp')} width="500px">The internal architecture block diagram of the Texas Instruments ADS9224R 16-bit, 3 MSPS, dual-channel SAR ADC.[^ti-ads92x4r-dual-low-latency-sar-adc-ds]</Image>
 
 ## Examples
 

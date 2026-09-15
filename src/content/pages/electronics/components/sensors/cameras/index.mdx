@@ -402,6 +402,14 @@ The image below shows the effect of flat-field correction. The image on the left
 
 <Image src={import('./_assets/white-paper-before-and-after-flat-field-correction.webp')} width="800px">A photo of a white piece of paper taken with an arbitrary camera and lens system, before and after flat-field correction. The left image clearly shows issues with the image becoming more magneta dominant at the edges, while the right image shows the corrected image with the magenta gone, and relatively equaul brightness across the image.</Image>
 
+### Maze Artefacts
+
+Maze artefacts can occur when there is an imbalance in the two green sensors in a 2x2 Bayer pattern. The maze artifact will be typically seen over uniform colour areas of an image such as the sky, as shown in the image below.
+
+<Image src={import('./_assets/maze-artefact-due-to-green-imbalance.webp')} width="800px">A photo showing maze artefacts due to an imbalance in the two green sensors in a 2x2 Bayer pattern.</Image>
+
+The two green photosites pick up different amounts of leakage light from their neighbouring red and blue photosites. This can be fixed by adjusting the green equalization stage in the ISP. Green equalization occurs before demosicing and so it can look at the difference in the individual photosites and adjust the signal as needed.
+
 ### Mounts
 
 Lens mounts hold the lens in the correct place in-front of the image sensor. The image sensor is typically mounted on a circuit board with one side of the mount, and the lens has a mating piece which screws or slides on. There are a few common lens mounts used for embedded cameras.
