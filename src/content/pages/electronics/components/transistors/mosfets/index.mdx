@@ -211,16 +211,9 @@ Some MOSFETs designed for switching loads support logic-level inputs (e.g. $+3.3
 
 <Image src={import('./_assets/dmn61d8l-7-mosfet-internal-schematic.png')} width="600px">Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated[^dinc-dmn61d8l-ds].</Image>
 
-### Isolated Gate Drives
+### Gate Drives
 
-One problem with MOSFETS (well, with any switched semiconductor) is dealing with the gate drive when either:
-
-- A) The source voltage is not constant or at a point where the gate-source voltage for turn-on is not easy to achieve
-- B) The MOSFET is dealing with large voltages and so electrical isolation between the load and the drive circuitry is desired/required (normally by law)
-
-In these cases, the gate drive has to be **isolated**.
-
-[IRF - Application Note AN-937 - Gate Drive Characteristics And Requirements for HEXFET Power MOSFETs](http://www.irf.com/technical-info/appnotes/an-937.pdf) is a great article on isolated gate drive techniques.
+Driving the gate of a MOSFET fast enough (and, for high-side switches, at the right voltage relative to a moving source node) usually calls for a dedicated _gate driver_ IC. Isolated gate drives are needed when the MOSFET is switching large voltages and electrical isolation between the load and the drive circuitry is required. See the [Gate Drivers page](/electronics/components/gate-drivers/) for more info.
 
 ### Amplifiers
 

@@ -1,0 +1,45 @@
+---
+authors: [gbmhunter]
+date: 2026-09-17
+description: Gate drivers are ICs which take a logic-level input and drive the gate of a power MOSFET, IGBT or GaN/SiC transistor with the current and voltage it needs to switch quickly.
+lastUpdated: 2026-09-17
+tags: [electronics, components, gate drivers, MOSFETs, IGBTs, GaN, SiC, half-bridge, bootstrap, isolation, dead-time]
+title: Gate Drivers
+type: page
+---
+
+<WarningIsNotes />
+
+A _gate driver_ is an IC that sits between a logic-level control signal (e.g. a PWM output from a microcontroller) and the gate of a power switch such as a [MOSFET](/electronics/components/transistors/mosfets/), [IGBT](/electronics/components/transistors/insulated-gate-bipolar-transistors-igbts/) or GaN/SiC transistor. It provides the large peak currents needed to charge and discharge the gate capacitance quickly, and (depending on the topology) shifts the drive voltage up to a floating high-side source node (or isolates it from the control ground altogether).
+
+## Topologies
+
+### Low-side Gate Drivers
+
+The drivers will typically accept a wide range of voltage for the `VDD` pin (the pin the gate will be driven to when going HIGH). They will decouple the logic-level signals from this such that a 3.3V logic-level input will still be considered HIGH when `VDD` is say 12V.
+
+## Part Recommendations
+
+### Texas Instruments UCC2751x
+
+The Texas Instruments UCC2751x is a family of single-channel, high-speed, low-side gate drivers. It is capable of 4 A peak when both sourcing and sinking current to the gate. They are available in SON-6 and SOT-23-5 packages.[^ti-ucc27517-datasheet]
+
+| Parameter | Value |
+|-----------|-------|
+| VDD | 4.5V to 18V |
+| Ipeak source/sink | 4A/4A or 4A/8A |
+| Propagation delay | 13 ns (typ.) |
+
+<Image src={import('./_assets/ti-ucc2751x-gate-driver-typical-application-diagram.webp')} width="700px">A typical application diagram for the Texas Instruments UCC2751x gate driver family. Note how you can use it in a inverting or non-inverting configuration depending on what pin you wire your logic-level control signal to.[^ti-ucc27517-datasheet]</Image>
+
+`VDD` can be anywhere from 4.5V to 18V, and the logic inputs support both TTL and CMOS levels. The propagation delay is typically 13 ns.
+
+## External Resources
+
+- [IRF - Application Note AN-937 - Gate Drive Characteristics And Requirements for HEXFET Power MOSFETs](http://www.irf.com/technical-info/appnotes/an-937.pdf) is a great article on gate drive (including isolated gate drive) techniques.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ti-ucc27517-datasheet]: Texas Instruments (2014, Dec). _UCC27516, UCC27517: Single-Channel, High-Speed, Low-Side Gate Driver (With 4-A Peak Source and 4-A Peak Sink)_ [datasheet]. Retrieved 2026-09-17, from https://www.ti.com/lit/ds/symlink/ucc27517.pdf.

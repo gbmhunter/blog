@@ -41,13 +41,45 @@ The optimal `VCOM` differs slightly from panel to panel (due to variations in th
 
 The IT8951 AM type EPD Timing Controller (TCON) is a popular timing controller IC for electrophoretic displays. It comes in a 128-pin [QFP package](/pcb-design/component-packages/qfp-component-package/).[^ite-it8951] It works with large EPDs up to 2048x2048.[^gitlab-zephray-glider] The TCON is responsible for converting the framebuffer into clocked gate and source driver waveforms expected by the gate and source drivers. It compensates for temperature by applying waveform LUTs based on a temperature sensor near the screen.
 
-### Manufacturers
+### EPD Display Manufacturers
+
+#### DKE
+
+DKE was founded in 2005 and is a Chinese company that specialises in electrophoretic displays. As of June 2026 they produce a range of black-and-white, 4-colour and full-colour displays in sizes from 0.97 inch to 31.5 inches.[^dke-products] Most if not all of their electrophoretic displays appear to come bundled with the driver circuitry, with their FPC connector requiring SPI from a microcontroller and some passives for a small section of external power circuitry.
+
+They have a black-and-white "BS" series that has special low temperature ratings down to $-25^{\circ}C$.
+
+DKE screens are sold on Alibaba.com.
+
+#### e-Paper Innovation (E-PI)
+
+e-Paper Innovation (E-PI) make a range of flexible, plastic (no glass) electrophoertic displays. As of August 2026, their online shop shows a range from about 1" to 31".
 
 #### E Ink 
 
 E Ink is a brand of electrophoretic display made by the E Ink Corporation. The founders of E Ink Corporation developed the electrophoretic display technology while working at the MIT media lab. E Ink Corporation was founded in 1997 and commercialized this technology.[^wikipedia-e-ink] E Ink is a commonplace term that is sometimes used to refer to any electrophoretic display.
 
 The E Ink Corporation has displays such as a the E Ink Carta, E Ink Spectra, E Ink Kaleido.[^wikipedia-e-ink]
+
+#### Good Display
+
+Good Display (_Dalian Good Display Co., Ltd._) is a Chinese company that produces a range of electrophoretic displays. Their product range includes black-and-white, 4-colour (they call this multi-color), full-colour (Spectra 6) and small flexible electrophoretic displays.[^good-display-black-and-white-epaper]
+
+#### MpicoSys
+
+MpicoSys produces timing controllers to drive electrophoretic displays. They have three generations of controllers:
+
+- **TCM:** First generation. It appears this line has been discontinued.
+- **TCM2:** Compatible with 7.8", 9.7", 11.3", 13.3", 28", 31,2", and 42" Eink displays.
+- **TCM3:** Newest generation. Compatible with 13,3" and 28" Eink displays.
+
+### OKRA Technologies
+
+OKRA Technologies is a company headquartered in China that manufactures a range of electrophoretic displays. They offer:
+
+- Black and white EPD displays, from 1.5" to 31.2" in size. This range also includes some with front lights.[^okra-technologies-black-white-epaper]
+- Tri-colour and four-colour EPD displays
+- Full-colour EPD displays including the Spectra 6, Kaleido, and ACeP (Advanced Color ePaper).
 
 #### Pervasive Displays
 
@@ -79,41 +111,17 @@ These drivers support the EXT3, EXT3.1, EXT3.2 and EXT4 extension boards.[^perva
 
 Pervasive Displays also provides an extension board for quick prototyping with their screens. It contains an adapter board to bring together the connectors (if it has two, like the 9.7" and 12" displays) on the screen and power management circuitry. The EXT3-1 has a 8 Mbit SPI flash memory.
 
-#### Waveshare
-
-Waveshare is a general purpose electronics hardware company that has a range of electrophoretic displays.
-
-<Image src={import('./_assets/waveshare-e-paper-product-offerings.webp')} width="700px">A screenshot of Waveshare's electrophoretic display product offerings.[^waveshare-epaper]</Image>
-
-#### DKE
-
-DKE was founded in 2005 and is a Chinese company that specialises in electrophoretic displays. As of June 2026 they produce a range of black-and-white, 4-colour and full-colour displays in sizes from 0.97 inch to 31.5 inches.[^dke-products] Most if not all of their electrophoretic displays appear to come bundled with the driver circuitry, with their FPC connector requiring SPI from a microcontroller and some passives for a small section of external power circuitry.
-
-They have a black-and-white "BS" series that has special low temperature ratings down to $-25^{\circ}C$.
-
-DKE screens are sold on Alibaba.com.
-
-#### Good Display
-
-Good Display (_Dalian Good Display Co., Ltd._) is a Chinese company that produces a range of electrophoretic displays. Their product range includes black-and-white, 4-colour (they call this multi-color), full-colour (Spectra 6) and small flexible electrophoretic displays.[^good-display-black-and-white-epaper]
-
-#### MpicoSys
-
-MpicoSys produces timing controllers to drive electrophoretic displays. They have three generations of controllers:
-
-- **TCM:** First generation. It appears this line has been discontinued.
-- **TCM2:** Compatible with 7.8", 9.7", 11.3", 13.3", 28", 31,2", and 42" Eink displays.
-- **TCM3:** Newest generation. Compatible with 13,3" and 28" Eink displays.
-
-#### e-Paper Innovation (E-PI)
-
-e-Paper Innovation (E-PI) make a range of flexible, plastic (no glass) electrophoertic displays. As of August 2026, their online shop shows a range from about 1" to 31".
-
 #### Unisystem
 
 Unisystem is a manufacturer and distributer of displays based in Poland. They are a distributer of E-ink displays. They were founded in 1995.[^unisystem-about-us]
 
 <Image src={import('./_assets/unisystem-electrophoretic-display-selection-sep-2026.webp')} width="700px">A screenshot of Unisystem's electrophoretic display selection in September 2026.[^unisystem-e-paper-displays]</Image>
+
+#### Waveshare
+
+Waveshare is a general purpose electronics hardware company that has a range of electrophoretic displays.
+
+<Image src={import('./_assets/waveshare-e-paper-product-offerings.webp')} width="700px">A screenshot of Waveshare's electrophoretic display product offerings.[^waveshare-epaper]</Image>
 
 ### Electrophoretic Display Lighting
 
@@ -218,6 +226,12 @@ The technology was invented at the UK Defence Evaluation and Research Agency (DE
 
 ZBD is rather unique in that there seems to be only the one supplier, New Vision Display (NVD). This could be considered a risk when considering using ZBDs for long-term products.
 
+## Memory-In-Pixel Displays
+
+Memory-in-pixel (MIP) displays are a LCD display technology which embeds a small memory cell into each pixel. This memory cell stores the pixel state, so that the display does not need continuous refreshing to maintain the image (a standard LCD or LED screen requires constant refreshing done typically at 30 or 60Hz — if you don't do this the pixels fade to black/white/garbage after a second or two). The displays also use a reflective technology so that they do not need to emit their own light. Both of these combined result in very little power consumption when the image is not changing. Many smart watches use MIP displays to reduce power consumption.
+
+As of September 2026, Anders sells 4 MIP displays from sizes 1.26" to 4.4".[^anders-electronics-memory-in-pixel-displays]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -250,3 +264,5 @@ ZBD is rather unique in that there seems to be only the one supplier, New Vision
 [^unisystem-e-paper-displays]: Unisystem. _E-paper displays_ [product page]. Retrieved 2026-09-07, from https://unisystem.com/catalog/displays-e-paper.
 [^github-pervasive-displays]: Pervasive Displays. _PervasiveDisplays_ [GitHub organisation]. GitHub. Retrieved 2026-09-09, from https://github.com/PervasiveDisplays.
 [^pervasive-displays-driver-object]: Pervasive Displays. _Knowledge Base - Driver object_ [documentation]. Retrieved 2026-09-09, from https://docs.pervasivedisplays.com/knowledge/Software/Volume2/Chapter4/Section1.html.
+[^okra-technologies-black-white-epaper]: Shanghai OKRA Technologies. _Black&White ePaper_ [product page]. Retrieved 2026-09-17, from https://www.okratechnologies.com/blackwhiteepaperdisplay.html.
+[^anders-electronics-memory-in-pixel-displays]: Anders Electronics. _Memory in Pixel Displays_ [product page]. Retrieved 2026-09-17, from https://www.andersdx.com/memory-in-pixel-displays/.

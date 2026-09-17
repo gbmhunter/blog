@@ -158,6 +158,22 @@ The MCU contains two USB peripherals, `OTG_HS1` and `OTG_HS2`:
 
 Both peripherals have an internal PHY for full-speed operation (e.g. D+ and D- lines connected directly to the MCU). Both can take on host, peripheral and OTG roles. They require a dedicarted 48 MHz clock generarted by a PLL connected to the HSE oscillator.
 
+Boot modes: The boot address is detemined by both the `BOOT` pin and the `BOOT_ADDx` option bytes. Together, this allows any boot memory address from 0x0000 0000 to 0x3FFF FFFF to be used.[^st-stm32h743-datasheet]
+
+The STM32H743/753 has a built-in ROM bootloader that can reprogram the flash memory via USART, FDCAN, I2C, SPI, and USB (FS only, not HS).[^st-stm32h743-datasheet]
+
+Power supplies:[^st-stm32h743-datasheet]
+
+| Supply | Voltage Range | Description |
+|--------|---------------|------------|
+| $V_{DD}$ | 1.62 to 3.6V | I/O supply voltage |
+| $V_{DDLDO}$ | 1.62 to 3.6V | I/O supply voltage for the internal LDO regulator provided $V_{CORE}$ |
+| $V_{DDA}$ | 1.62 to 3.6V | Analog supply voltage for the `ADC`, `DAC`, `COMP` and `OPAMP` peripherals. |
+| $V_{DD33USB} | | |
+| $V_{DD50USB}$ | | |
+| $V_{BAT}$ | 1.2 to 3.6V | Power supply for $V_{SW}$ when $V_{DD}$ is not present. |
+| $V_{CAP}$ | 1.0, 1.1, 1.2, or 1.35 V | $V_{CORE}$ supply voltage. Exact voltage depends on voltage scaling. | 
+
 ## STM32N6
 
 STM32N6 is a series of STM32 MCUs with dedicated hardware for running edge AI. They feature an ARM Cortex-M55 running at 800 MHz and a NPU (neural processing unit) running at 1 GHz and capable of 0.6 TOPS (tera operations per second). The NPU is the ST Neural-ART accelerator.[^st-stm32n6-series]
