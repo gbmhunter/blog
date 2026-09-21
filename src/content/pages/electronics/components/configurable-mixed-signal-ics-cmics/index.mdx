@@ -1,0 +1,46 @@
+---
+authors: [gbmhunter]
+date: 2026-09-19
+description: Configurable mixed-signal ICs (CMICs) such as the Renesas GreenPAK family combine a small non-volatile programmable logic matrix with analogue blocks, replacing a handful of discrete glue components with a single IC.
+lastUpdated: 2026-09-19
+tags: [electronics, components, CMICs, configurable mixed-signal ICs, GreenPAK, Renesas, Silego, Dialog, programmable logic, SLG46826G, glue logic, power sequencing]
+title: Configurable Mixed-Signal ICs (CMICs)
+type: page
+---
+
+<WarningIsNotes />
+
+A _configurable mixed-signal IC_ (CMIC) is a small programmable device combining a digital logic matrix (look-up tables, flip-flops, counters and delays) with analogue blocks such as comparators, DACs and voltage references. They are aimed at replacing a cluster of discrete glue logic, timing and supervisory components with a single small IC. They are either one-time programmable (OTP) or many-times programmable (MTP).
+
+Unlike [FPGAs](/electronics/components/fpgas/), CMICs store their configuration in on-chip non-volatile memory, so they come up configured at power-on without an external configuration memory or boot sequence, and they typically run from a single supply rail. They are also smaller and cheaper than FPGAs, but are not as flexible or capable of implementing complex digital logic.
+
+## Part Recommendations
+
+Renesas appears to have a majority share of the CMIC market with their GreenPAK and HVPAK 
+families.
+
+### Renesas GreenPAK Family
+
+Renesas produces a family of CMICs under the GreenPAK brand. GreenPAK was originaly developed by Silego in 2010. Silego was acquired by Dialog Semiconductor in 2017, and then Dialog was acquired by Renesas in 2021.[^wikipedia-greenpak]
+
+For example, the SLG46826G has 17 GPIOs, 4 ACMPs (analogue comparators: two high speed/high power and two low power/low speed), is programmable via I2C and supports two independent power rails (firs
+t one between 2.3-5.5 V, second one between 1.71-5.5 V). It comes in a TSSOP-20 0.65mm pitch package.[^renesas-slg46826g-part-details]
+
+<Image src={import('./_assets/renesas-slg46826-greenpak-block-diagram.webp')} width="700px">Block diagram of the Renesas SLG46826 GreenPAK CMIC.[^renesas-slg46826g-part-details]</Image>
+
+Renesas provides the free Go Configure software for designing, emulating and programming GreenPAK devices.[^renesas-greenpak-programmable-mixed-signal-products]
+
+### Renesas HVPAK Family
+
+HVPAK expands on the idea of the GreenPAK family by adding higher voltage and current I/O and half/H-bridges for motor control (the examples show DC motors, stepper motors and solenoids). HVPAK has supports voltages up to 26.4V and current up to 3A per output. Unlike the GreenPAK family which has many-time programmable memory, the HVPAK family can only be programmed once.[^renesas-hvpak]
+
+All of the HVPAK devices starts with the part number prefix SLG471. The same software as used for GreenPAK devices can be used to configure/program the HVPAK devices.[^renesas-hvpak]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^renesas-slg46826g-part-details]: Renesas. _SLG46826G GreenPAK Programmable Mixed-Signal IC_ [product page]. Retrieved 2026-09-19, from https://www.renesas.com/en/products/slg46826/part-details/slg46826g.
+[^wikipedia-greenpak]: Wikipedia (2026, Feb 20). _GreenPAK_ [wiki]. Retrieved 2026-09-19, from https://en.wikipedia.org/wiki/GreenPAK.
+[^renesas-greenpak-programmable-mixed-signal-products]: Renesas. _GreenPAK: Programmable Mixed-Signal Products_ [product page]. Retrieved 2026-09-19, from https://www.renesas.com/en/products/programmable-logic/greenpak-programmable-mixed-signal-products.
+[^renesas-hvpak]: Renesas. _HVPAK: High Voltage Programmable Mixed-Signal Matrix_ [product page]. Retrieved 2026-09-20, from https://www.renesas.com/en/products/programmable-logic/hvpak.

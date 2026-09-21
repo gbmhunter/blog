@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid meet">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .wire { fill: none; stroke: rgb(52,101,164); stroke-width: 2.7; stroke-linecap: round; stroke-linejoin: round; }
+    .sym-fill { fill: rgb(52,101,164); stroke: rgb(52,101,164); stroke-width: 2.7; stroke-linejoin: round; }
+    .junction { fill: rgb(52,101,164); }
+    .ic-box { fill: none; stroke: #888; stroke-width: 2; stroke-dasharray: 10 6; }
+    .barrier { fill: none; stroke: #c0392b; stroke-width: 2.5; stroke-dasharray: 14 8; }
+    .ref { font-size: 22px; font-weight: bold; fill: rgb(52,101,164); }
+    .label { font-size: 20px; fill: #333; }
+    .label-c { font-size: 20px; fill: #333; text-anchor: middle; }
+    .title { font-size: 22px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .barrier-label { font-size: 20px; font-weight: bold; fill: #c0392b; text-anchor: middle; }
+    .note { font-size: 18px; fill: #666; font-style: italic; }
+    .pin { font-size: 20px; font-weight: bold; fill: #333; }
+  </style>
+  <defs>
+    <marker id="light-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="rgb(52,101,164)"/>
+    </marker>
+  </defs>
+
+  <!-- Side titles -->
+  <text x="200" y="40" class="title">Control side</text>
+  <text x="820" y="40" class="title">Power side (isolated)</text>
+
+  <!-- Isolation barrier -->
+  <line x1="410" y1="140" x2="410" y2="600" class="barrier"/>
+  <text x="410" y="625" class="barrier-label">Isolation barrier</text>
+
+  <!-- Photovoltaic gate driver IC outline -->
+  <rect x="250" y="120" width="330" height="310" rx="8" class="ic-box"/>
+  <text x="415" y="105" class="label-c">Photovoltaic gate driver (e.g. VOM1271, APV1122)</text>
+  <text x="570" y="452" class="label-c" font-weight="bold">U1</text>
+
+  <!-- ===== Control side ===== -->
+  <!-- Logic input terminal -->
+  <circle cx="60" cy="200" r="6" class="wire"/>
+  <text x="20" y="160" class="pin">PWM in</text>
+  <text x="20" y="182" class="label">(3.3 V logic)</text>
+  <line x1="66" y1="200" x2="110" y2="200" class="wire"/>
+
+  <!-- R1: LED current-limit resistor (horizontal, american zig-zag) -->
+  <path d="M110,200 L120,200 L127,185 L141,215 L155,185 L169,215 L183,185 L197,215 L204,200 L214,200" class="wire"/>
+  <text x="150" y="172" class="ref" text-anchor="middle">R1</text>
+  <text x="162" y="246" class="label-c">LED current limit</text>
+  <line x1="214" y1="200" x2="310" y2="200" class="wire"/>
+
+  <!-- D1: LED (vertical, anode top, cathode bottom) -->
+  <line x1="310" y1="200" x2="310" y2="230" class="wire"/>
+  <path d="M290,230 L330,230 L310,262 Z" class="sym-fill"/>
+  <line x1="290" y1="262" x2="330" y2="262" class="wire"/>
+  <line x1="310" y1="262" x2="310" y2="330" class="wire"/>
+  <text x="282" y="222" class="ref" text-anchor="end">D1</text>
+  <!-- LED emission arrows crossing the gap to the PV cell -->
+  <line x1="342" y1="232" x2="478" y2="232" class="wire" stroke-width="2" marker-end="url(#light-arrow)"/>
+  <line x1="342" y1="256" x2="478" y2="256" class="wire" stroke-width="2" marker-end="url(#light-arrow)"/>
+  <text x="410" y="222" class="note" text-anchor="middle">light</text>
+
+  <!-- Logic ground -->
+  <line x1="310" y1="330" x2="310" y2="350" class="wire"/>
+  <path d="M310,350 L310,360 M290,360 L330,360 L310,388 Z" class="wire"/>
+  <text x="310" y="458" class="label-c">GND (logic)</text>
+
+  <!-- ===== Photovoltaic cell stack (inside IC) ===== -->
+  <!-- + terminal top, − terminal bottom; two cells drawn as long-thin / short-thick plates -->
+  <line x1="510" y1="200" x2="510" y2="222" class="wire"/>
+  <g class="wire">
+    <line x1="484" y1="222" x2="536" y2="222"/>
+    <line x1="498" y1="232" x2="522" y2="232" stroke-width="6"/>
+    <line x1="484" y1="246" x2="536" y2="246"/>
+    <line x1="498" y1="256" x2="522" y2="256" stroke-width="6"/>
+    <line x1="484" y1="270" x2="536" y2="270"/>
+    <line x1="498" y1="280" x2="522" y2="280" stroke-width="6"/>
+  </g>
+  <line x1="510" y1="280" x2="510" y2="330" class="wire"/>
+  <text x="548" y="228" class="pin">+</text>
+  <text x="548" y="290" class="pin">−</text>
+    <text x="495" y="382" class="label-c">PV cell stack</text>
+  <text x="495" y="404" class="note" text-anchor="middle">(open-circuit ≈ 8 V)</text>
+
+  <!-- ===== Power side ===== -->
+  <!-- +V output (gate drive) -->
+  <line x1="510" y1="200" x2="720" y2="200" class="wire"/>
+  <text x="600" y="190" class="label-c">V+</text>
+  <!-- -V output (returns to MOSFET source) -->
+  <line x1="510" y1="330" x2="720" y2="330" class="wire"/>
+  <text x="600" y="356" class="label-c">V−</text>
+
+  <!-- R2: gate discharge / turn-off resistor across the PV output -->
+  <circle cx="650" cy="200" r="5" class="junction"/>
+  <circle cx="650" cy="330" r="5" class="junction"/>
+  <path d="M650,200 L650,222 L635,229 L665,243 L635,257 L665,271 L635,285 L665,299 L650,306 L650,330" class="wire"/>
+  <text x="668" y="252" class="ref">R2</text>
+  <text x="668" y="312" class="note">turn-off</text>
+
+  <!-- Gate wire: V+ to gate -->
+  <line x1="720" y1="200" x2="720" y2="280" class="wire"/>
+  <line x1="720" y1="280" x2="780" y2="280" class="wire"/>
+
+  <!-- Q1: N-channel enhancement-mode MOSFET (library-style) -->
+  <line x1="780" y1="240" x2="780" y2="320" class="wire"/>
+  <g class="wire" stroke-width="3.2">
+    <line x1="800" y1="240" x2="800" y2="262"/>
+    <line x1="800" y1="269" x2="800" y2="291"/>
+    <line x1="800" y1="298" x2="800" y2="320"/>
+  </g>
+  <!-- drain -->
+  <path d="M800,251 L840,251 L840,150" class="wire"/>
+  <!-- source -->
+  <path d="M800,309 L840,309 L840,400" class="wire"/>
+  <!-- body connection with arrow pointing into channel (N-channel) -->
+  <line x1="812" y1="280" x2="840" y2="280" class="wire"/>
+  <path d="M800,280 L816,272 L816,288 Z" class="sym-fill"/>
+  <circle cx="840" cy="280" r="5" class="junction"/>
+  <circle cx="840" cy="309" r="5" class="junction"/>
+  <text x="880" y="270" class="ref">Q1</text>
+  <text x="880" y="294" class="label">N-ch MOSFET</text>
+  <text x="880" y="316" class="label">(high-side)</text>
+  <text x="850" y="196" class="label">D</text>
+  <text x="850" y="352" class="label">S</text>
+  <text x="746" y="272" class="label">G</text>
+
+  <!-- V− back to MOSFET source -->
+  <line x1="720" y1="330" x2="720" y2="400" class="wire"/>
+  <line x1="720" y1="400" x2="840" y2="400" class="wire"/>
+  <circle cx="840" cy="400" r="5" class="junction"/>
+
+  <!-- Bus rail -->
+  <line x1="840" y1="150" x2="840" y2="120" class="wire"/>
+  <line x1="805" y1="120" x2="875" y2="120" class="wire"/>
+  <text x="840" y="105" class="pin" text-anchor="middle">+V<tspan dy="6" font-size="15">BUS</tspan><tspan dy="-6"> (e.g. 48 V)</tspan></text>
+
+  <!-- Load -->
+  <line x1="840" y1="400" x2="840" y2="440" class="wire"/>
+  <rect x="805" y="440" width="70" height="90" class="wire"/>
+  <text x="840" y="492" class="ref" text-anchor="middle" font-weight="normal">LOAD</text>
+  <line x1="840" y1="530" x2="840" y2="560" class="wire"/>
+
+  <!-- Power ground -->
+  <path d="M840,560 L840,570 M820,570 L860,570 L840,598 Z" class="wire"/>
+  <text x="840" y="622" class="label-c">GND (power)</text>
+
+  <!-- VGS annotation -->
+  <text x="1010" y="470" class="label-c">V<tspan dy="5" font-size="15">GS</tspan><tspan dy="-5"> = V+ − V− is always</tspan></text>
+  <text x="1010" y="494" class="label-c">referenced to the source,</text>
+  <text x="1010" y="518" class="label-c">whatever V<tspan dy="5" font-size="15">BUS</tspan><tspan dy="-5"> is doing.</tspan></text>
+</svg>

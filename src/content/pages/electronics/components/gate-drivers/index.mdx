@@ -12,11 +12,25 @@ type: page
 
 A _gate driver_ is an IC that sits between a logic-level control signal (e.g. a PWM output from a microcontroller) and the gate of a power switch such as a [MOSFET](/electronics/components/transistors/mosfets/), [IGBT](/electronics/components/transistors/insulated-gate-bipolar-transistors-igbts/) or GaN/SiC transistor. It provides the large peak currents needed to charge and discharge the gate capacitance quickly, and (depending on the topology) shifts the drive voltage up to a floating high-side source node (or isolates it from the control ground altogether).
 
+<Aside type="note">
+Gate drivers are used for all insulated-gate transistors, including power MOSFETs, IGBTs, SiC MOSFETs and GaN HEMTs They are NOT used for bipolar junction transistors (BJTs) since they don't have a significant capacitance on the base and have different driving requirements.
+</Aside>
+
 ## Topologies
 
 ### Low-side Gate Drivers
 
 The drivers will typically accept a wide range of voltage for the `VDD` pin (the pin the gate will be driven to when going HIGH). They will decouple the logic-level signals from this such that a 3.3V logic-level input will still be considered HIGH when `VDD` is say 12V.
+
+### Photovoltaic Gate Drivers
+
+Photovoltaic gate drivers used the light energy from an LED to charge a small photovoltaic cell to provide an isolate gate drive voltage. The LED and photovoltaic cell are typically packaged together in a single small IC package (e.g. SOP-4).
+
+They are great for driving MOSFETs across an isolation barrier, without the need for a separate isolated power supply (all the energy comes from the LED).
+
+Because of their isolation, they are a great choice from driving high-side MOSFETs (and back-to-back MOSFETs). This is because you can tie the -ve output to the source of the MOSFET and get a guaranteed positive gate-source voltage on the +ve output no matter what the source voltage is doing.
+
+<Image src={import('./_assets/photovoltaic-gate-driver-high-side-schematic.svg')} width="900px">A photovoltaic gate driver driving a high-side N-channel MOSFET. The logic-side LED current is set by R1. Light from the LED charges the photovoltaic cell stack on the isolated side, whose output is connected directly across the gate and source of Q1. R2 (integrated in some parts) discharges the gate when the LED turns off.</Image>
 
 ## Part Recommendations
 
