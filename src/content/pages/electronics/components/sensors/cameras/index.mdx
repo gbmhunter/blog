@@ -222,6 +222,14 @@ The Arducam IMX500 features a Sony IMX500 image sensor with an integrated AI pro
 
 The lens holder screws are 18 mm apart (hole center to hole center).
 
+### Arducam 1/1.32" 64MP Auto Focus Camera Module
+
+The Arducam 1/1.32" 64MP auto focus camera module that contains the OwlSight OV64A40 64MP image sensor with a resolution of 9248 × 6944 pixels. 
+
+<Image src={import('./_assets/arducam-64mp-auto-focus-module-pics-front-back-side.webp')} width="900px">Front, back and side photos of the Arducam 1/1.32" 64MP auto focus camera module.</Image>
+
+It is assigned I2C address 0x36. It features the DW9807 DAC from Dongwoon Anatech, which is specifically designed for driving voice coil motors (VCM) for auto-focus.
+
 ### Nanoleaf 4D Screen Mirror Camera
 
 Just to give you an example of a camera module used in a consumer product, below are photos of the camera used in the Nanoleaf 4D screen mirror. I couldn't find any further specs on the camera based on the markings, except that `720p` most likely means it is a 1280x720 pixel camera. The lens thread appears to be M12.
@@ -437,6 +445,14 @@ Below is a photo of a 100 mm long focal length M12 lens. 100 mm is getting very 
 Lens holders for M12 lenses are available in a range of heights. The image below shows a typical one made from metal. This one came with an embedded IR filter, which is the blue looking piece of glass that I removed from the holder itself. The IR filter was stuck in the inside of the holder against the flange which goes from the square base (where the sensor goes) to the circular M12 section. This particular holder has a screw spacing of 20 mm.
 
 <Image src={import('./_assets/m12-lens-holder-at-its-ir-filter-removed.webp')} width="600px">A photo of an M12 lens holder with its IR filter removed.</Image>
+
+### IR Filters
+
+If your lens, lens holder or camera sensor doesn't already come with an IR filter and you want one, you can purchase IR filters separately and add them somewhere in the optical path.
+
+<Image src={import('./_assets/photo-of-11-12.5-14mm-ir-filter-glass-for-camera-lenses.webp')} width="600px">A photo of 11, 12.5 and 14 mm IR filter glass squares for use with camera lenses. Glass was from Treeye (AliExpress supplier).</Image>
+
+The glass above looks teal in colour due to the antiglare coating they add to the glass. If you remove incident light from the side of the glass you are viewing from (i.e. stops any ability for light to reflect) the teal colour disappears and the glass appears transparent. This will also be true when mounted in a lens holder (lens holders try and block all light so that the only light comes in from the lens aperture and through the glass).
 
 ### Suppliers
 

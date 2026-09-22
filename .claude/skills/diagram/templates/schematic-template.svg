@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     width="W" height="H" viewBox="0 0 W H" preserveAspectRatio="xMidYMid meet" color="#3465a4">
+  <!-- Grid: 10 px. Symbols come from libraries/symbols.svg via <use>; run
+       `python libraries/embed_symbols.py <this file>` after adding/removing symbols. -->
+  <sodipodi:namedview id="namedview" showgrid="true" inkscape:document-units="px"
+      inkscape:snap-global="true" inkscape:snap-grids="true"
+      inkscape:snap-bbox="true" inkscape:bbox-nodes="true" inkscape:snap-bbox-edge-midpoints="false" inkscape:snap-bbox-midpoints="false"
+      inkscape:snap-nodes="true" inkscape:snap-others="false" inkscape:snap-smooth-nodes="false" inkscape:snap-midpoints="false"
+      inkscape:object-paths="false" inkscape:object-nodes="false">
+    <inkscape:grid type="xygrid" id="grid" spacingx="10" spacingy="10" empspacing="5" originx="0" originy="0" visible="true" enabled="true" snapvisiblegridlinesonly="false"/>
+  </sodipodi:namedview>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .wire { fill: none; stroke: #3465a4; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .junction { fill: #3465a4; }
+    .ref { font-size: 22px; font-weight: bold; fill: #3465a4; }
+    .label { font-size: 20px; fill: #333; }
+    .label-c { font-size: 20px; fill: #333; text-anchor: middle; }
+    .title { font-size: 22px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .note { font-size: 18px; fill: #666; font-style: italic; }
+    .pin { font-size: 20px; font-weight: bold; fill: #333; }
+    .box { fill: none; stroke: #888; stroke-width: 2; stroke-dasharray: 10 6; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#3465a4"/>
+    </marker>
+  </defs>
+
+  <g inkscape:groupmode="layer" inkscape:label="Symbols" id="layer-symbols">
+    <!-- <use id="R1" xlink:href="#resistor-american" href="#resistor-american" transform="translate(110,210) rotate(-90)"/> -->
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="Wires" id="layer-wires">
+    <!-- <path d="M x1,y1 L x2,y2 ..." class="wire"/>  <use id="J1" xlink:href="#junction" href="#junction" transform="translate(x,y)"/> -->
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="Annotations" id="layer-annotations">
+    <!-- <text x="" y="" class="ref" xml:space="preserve">R1</text> -->
+  </g>
+</svg>

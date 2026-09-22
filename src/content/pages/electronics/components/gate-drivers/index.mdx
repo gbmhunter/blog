@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2026-09-17
 description: Gate drivers are ICs which take a logic-level input and drive the gate of a power MOSFET, IGBT or GaN/SiC transistor with the current and voltage it needs to switch quickly.
-lastUpdated: 2026-09-17
+lastUpdated: 2026-09-22
 tags: [electronics, components, gate drivers, MOSFETs, IGBTs, GaN, SiC, half-bridge, bootstrap, isolation, dead-time]
 title: Gate Drivers
 type: page
@@ -10,27 +10,31 @@ type: page
 
 <WarningIsNotes />
 
-A _gate driver_ is an IC that sits between a logic-level control signal (e.g. a PWM output from a microcontroller) and the gate of a power switch such as a [MOSFET](/electronics/components/transistors/mosfets/), [IGBT](/electronics/components/transistors/insulated-gate-bipolar-transistors-igbts/) or GaN/SiC transistor. It provides the large peak currents needed to charge and discharge the gate capacitance quickly, and (depending on the topology) shifts the drive voltage up to a floating high-side source node (or isolates it from the control ground altogether).
+A _gate driver_ is an IC that sits between a logic-level control signal (e.g. a [PWM](/electronics/circuit-design/pulse-width-modulation-pwm/) output from a microcontroller) and the gate of a power switch such as a [MOSFET](/electronics/components/transistors/mosfets/), [IGBT](/electronics/components/transistors/insulated-gate-bipolar-transistors-igbts/) or GaN/SiC transistor. It provides the large peak currents needed to charge and discharge the gate capacitance quickly, and (depending on the topology) shifts the drive voltage up to a floating high-side source node (or isolates it from the control ground altogether).
 
 <Aside type="note">
-Gate drivers are used for all insulated-gate transistors, including power MOSFETs, IGBTs, SiC MOSFETs and GaN HEMTs They are NOT used for bipolar junction transistors (BJTs) since they don't have a significant capacitance on the base and have different driving requirements.
+Gate drivers are used for all insulated-gate transistors, including power MOSFETs, IGBTs, SiC MOSFETs and GaN HEMTs. They are NOT used for bipolar junction transistors (BJTs), since a BJT is a current-controlled device that needs continuous base current while on, which is a different driving problem altogether.
 </Aside>
 
 ## Topologies
 
 ### Low-side Gate Drivers
 
-The drivers will typically accept a wide range of voltage for the `VDD` pin (the pin the gate will be driven to when going HIGH). They will decouple the logic-level signals from this such that a 3.3V logic-level input will still be considered HIGH when `VDD` is say 12V.
+The drivers will typically accept a wide range of voltage for the `VDD` pin (the pin the gate will be driven to when going HIGH). They will decouple the logic-level signals from this such that a $3.3\unit{V}$ logic-level input will still be considered HIGH when `VDD` is say $12\unit{V}$.
 
 ### Photovoltaic Gate Drivers
 
-Photovoltaic gate drivers used the light energy from an LED to charge a small photovoltaic cell to provide an isolate gate drive voltage. The LED and photovoltaic cell are typically packaged together in a single small IC package (e.g. SOP-4).
+Photovoltaic gate drivers use the light energy from an LED to charge a small [photovoltaic cell](/electronics/components/solar-cells/) to provide an isolated gate drive voltage. The LED and photovoltaic cell are typically packaged together in a single small IC package (e.g. SOP-4).
 
-They are great for driving MOSFETs across an isolation barrier, without the need for a separate isolated power supply (all the energy comes from the LED).
+They are great for driving MOSFETs across an [isolation barrier](/electronics/components/optocouplers/) at low switching speeds, without the need for a separate isolated power supply (all the energy comes from the LED). The trade-off is speed: the photovoltaic cell only sources tens of microamps at most, so charging the gate takes anywhere from microseconds to milliseconds depending on the MOSFET's gate charge. This makes them suited to static or slow switching (e.g. load disconnects, battery isolation), not PWM at tens of kHz.
 
-Because of their isolation, they are a great choice from driving high-side MOSFETs (and back-to-back MOSFETs). This is because you can tie the -ve output to the source of the MOSFET and get a guaranteed positive gate-source voltage on the +ve output no matter what the source voltage is doing.
+Because of their isolation, they are a great choice for driving [high-side MOSFETs](/electronics/circuit-design/load-switches/) (and back-to-back MOSFETs) that don't require high switching speeds. This is because you can tie the V− output to the source of the MOSFET and get a guaranteed positive gate-source voltage on the V+ output no matter what the source voltage is doing. The schematic below illustrates this. Driving a high-side N-channel MOSFET with a ground-referenced logic signal (e.g. $3.3\unit{V}$) would not work. The MOSFET would turn on initially, but as soon as the load voltage rises at the source of the MOSFET, the gate-source voltage collapses and the MOSFET would sit in a partially-on state (acting as a source follower, with the source settling at roughly the gate voltage minus $V_{GS(th)}$). Driving the gate with $V_{BUS}$ ($+48\unit{V}$) is also not an option: you would get the same problem as the source rises towards $V_{BUS}$. Also, MOSFET gate-source voltages are typically limited to $\pm20\unit{V}$ (abs. max.), so this would blow up the MOSFET when the source is low (i.e. at startup).
 
-<Image src={import('./_assets/photovoltaic-gate-driver-high-side-schematic.svg')} width="900px">A photovoltaic gate driver driving a high-side N-channel MOSFET. The logic-side LED current is set by R1. Light from the LED charges the photovoltaic cell stack on the isolated side, whose output is connected directly across the gate and source of Q1. R2 (integrated in some parts) discharges the gate when the LED turns off.</Image>
+<Image src={import('./_assets/photovoltaic-gate-driver-high-side-schematic.svg')} width="900px">An example photovoltaic gate driver driving a high-side N-channel MOSFET. The logic-side LED current is set by R1. Light from the LED charges the photovoltaic cell stack on the isolated side, whose output is connected directly across the gate and source of Q1. R2 (integrated in some parts, or even replaced with a "fast discharge" circuit) discharges the gate when the LED turns off.</Image>
+
+An alternative to a photovoltaic gate driver for high-side N-channel MOSFETs is a bootstrap gate driver. This uses a bootstrap capacitor and diode: the capacitor is charged from the driver's supply while the switch node (the MOSFET's source) is low, and then "rides up" with the source to power the floating high-side driver stage. Bootstrap drivers are the normal choice for hard-switched half-bridges at tens of kHz to MHz (e.g. buck converters and motor drives), where the capacitor is refreshed every cycle. The catch is that the switch node has to be pulled low periodically to recharge the capacitor, so a bootstrap driver cannot hold a high-side MOSFET on indefinitely. A photovoltaic gate driver has no such time limit (it can hold the MOSFET on forever), which is the main reason to choose one for slow or static switching.
+
+Another alternative is to just use a P-channel MOSFET for the high-side switch. This is a simple solution and can be driven from voltages within $0\unit{V}$ to $V_{BUS}$ (although an N-channel MOSFET is usually needed to pull the P-channel gate down if you want to use a logic-level control signal). The downside is that P-channel MOSFETs have higher on-resistance and lower current ratings than N-channel MOSFETs (for the equivalent price and physical size), so they are not as efficient for high-current applications.
 
 ## Part Recommendations
 
@@ -40,17 +44,17 @@ The Texas Instruments UCC2751x is a family of single-channel, high-speed, low-si
 
 | Parameter | Value |
 |-----------|-------|
-| VDD | 4.5V to 18V |
-| Ipeak source/sink | 4A/4A or 4A/8A |
+| VDD | 4.5 V to 18 V |
+| Ipeak source/sink | 4 A/4 A |
 | Propagation delay | 13 ns (typ.) |
 
-<Image src={import('./_assets/ti-ucc2751x-gate-driver-typical-application-diagram.webp')} width="700px">A typical application diagram for the Texas Instruments UCC2751x gate driver family. Note how you can use it in a inverting or non-inverting configuration depending on what pin you wire your logic-level control signal to.[^ti-ucc27517-datasheet]</Image>
+<Image src={import('./_assets/ti-ucc2751x-gate-driver-typical-application-diagram.webp')} width="700px">A typical application diagram for the Texas Instruments UCC2751x gate driver family. Note how you can use it in an inverting or non-inverting configuration depending on what pin you wire your logic-level control signal to.[^ti-ucc27517-datasheet]</Image>
 
-`VDD` can be anywhere from 4.5V to 18V, and the logic inputs support both TTL and CMOS levels. The propagation delay is typically 13 ns.
+The logic inputs support both TTL and CMOS levels, independent of `VDD`.
 
 ## External Resources
 
-- [IRF - Application Note AN-937 - Gate Drive Characteristics And Requirements for HEXFET Power MOSFETs](http://www.irf.com/technical-info/appnotes/an-937.pdf) is a great article on gate drive (including isolated gate drive) techniques.
+- [International Rectifier (now Infineon) - Application Note AN-937 - Gate Drive Characteristics And Requirements for HEXFET Power MOSFETs](https://www.alldatasheet.com/datasheet-pdf/pdf/113420/etc1/an-937.html) is a great article on gate drive (including isolated gate drive) techniques.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}

@@ -1,13 +1,776 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid meet">
-  <style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1200"
+   height="600"
+   viewBox="0 0 1200 600"
+   preserveAspectRatio="xMidYMid"
+   color="#3465a4"
+   version="1.1"
+   id="svg74"
+   sodipodi:docname="photovoltaic-gate-driver-high-side-schematic.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="symbols">
+    <!-- GENERATED from libraries/symbols.svg by embed_symbols.py; do not hand-edit -->
+    <style
+       id="style1">
+      .sw { stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .sw-thick { stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      text { font-family: Arial, Helvetica, sans-serif; }
+    </style>
+    <symbol
+       id="batt-many-cell"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="60"
+         height="130"
+         fill="none"
+         stroke="none"
+         id="rect1" />
+      <path
+         d="M 20,45 V 9.95"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path1" />
+      <path
+         d="M 20,65 V 55.06"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path2" />
+      <path
+         d="M 40,45 H 0"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path3" />
+      <path
+         d="M 40,65.01 H 0"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path4" />
+      <path
+         d="M 30,55 H 10"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path5" />
+      <path
+         d="M 30,75 H 10"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path6" />
+      <path
+         d="m 20,75 v 34.95"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path7" />
+      <text
+         x="28.379999"
+         y="37.610001"
+         font-size="14.11px"
+         fill="currentColor"
+         id="text7">+</text>
+      <text
+         x="30.15"
+         y="87.610001"
+         font-size="14.11px"
+         fill="currentColor"
+         id="text8">-</text>
+    </symbol>
+    <symbol
+       id="diode-led"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="70"
+         height="110"
+         fill="none"
+         stroke="none"
+         id="rect8" />
+      <path
+         d="m 20,0.02 v 80"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path8" />
+      <path
+         d="M 5,55.02 H 35 20 l -15,-25 h 30 l -15,25"
+         fill="currentColor"
+         stroke="currentColor"
+         class="sw"
+         id="path9" />
+      <path
+         d="M 42.55,42.51 50,40.02 47.52,47.47 Z"
+         fill="currentColor"
+         stroke="none"
+         id="path10" />
+      <path
+         d="m 40,50.02 c 0,0 3.24,-3.23 6.03,-6.02"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path11" />
+      <path
+         d="M 42.55,32.51 50,30.02 47.52,37.47 Z"
+         fill="currentColor"
+         stroke="none"
+         id="path12" />
+      <path
+         d="m 40,40.02 c 0,0 3.24,-3.23 6.03,-6.02"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path13" />
+    </symbol>
+    <symbol
+       id="gnd-signal"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="60"
+         height="60"
+         fill="none"
+         stroke="none"
+         id="rect13" />
+      <path
+         d="M 20,0 V 15 H 35 L 20,36.33 5,15 h 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path14" />
+    </symbol>
+    <symbol
+       id="junction"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="20"
+         height="20"
+         fill="none"
+         stroke="none"
+         id="rect14" />
+      <circle
+         cx="0"
+         cy="0"
+         r="4.5"
+         fill="currentColor"
+         stroke="none"
+         id="circle14" />
+    </symbol>
+    <symbol
+       id="load"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="80"
+         height="100"
+         fill="none"
+         stroke="none"
+         id="rect15" />
+      <path
+         d="M 30,0 V 30"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path15" />
+      <path
+         d="M 5,30 H 55 V 50 H 5 Z"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path16" />
+      <path
+         d="M 30,50 V 80"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path17" />
+      <text
+         x="10.65"
+         y="45.049999"
+         font-size="14.11px"
+         fill="currentColor"
+         id="text17">LOAD</text>
+    </symbol>
+    <symbol
+       id="resistor-american"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="40"
+         height="120"
+         fill="none"
+         stroke="none"
+         id="rect17" />
+      <path
+         d="M 10,0 V 20 L 0,25 20,35 0,45 20,55 0,65 20,75 10,80 v 20"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path18" />
+    </symbol>
+    <symbol
+       id="terminal-center"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="40"
+         height="40"
+         fill="none"
+         stroke="none"
+         id="rect18" />
+      <path
+         d="M 15,9.99 A 5,4.99 0 0 1 10,14.98 5,4.99 0 0 1 5,9.99 5,4.99 0 0 1 10,5 5,4.99 0 0 1 15,9.99 Z"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path19" />
+    </symbol>
+    <symbol
+       id="tran-mos-enh-n"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="110"
+         height="120"
+         fill="none"
+         stroke="none"
+         id="rect19" />
+      <path
+         d="M 10,75 H 30"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path20" />
+      <path
+         d="m 40,50 10,5 V 45 Z"
+         fill="currentColor"
+         stroke="none"
+         id="path21" />
+      <path
+         d="m 40,50 10,-5 v 10 z m 4.02,0 4.18,2.09 v -4.18 z"
+         fill="currentColor"
+         stroke="none"
+         id="path22" />
+      <path
+         d="M 75,75 V 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path23" />
+      <path
+         d="m 67.5,45 h 15 -7.5 l -7.5,12.5 h 15 L 75,45"
+         fill="currentColor"
+         stroke="currentColor"
+         class="sw"
+         id="path24" />
+      <path
+         d="M 30,75 V 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path25" />
+      <path
+         d="m 40,17.5 v 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path26" />
+      <path
+         d="m 40,67.5 v 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path27" />
+      <path
+         d="m 40,42.5 v 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path28" />
+      <path
+         d="M 40,25 H 60 V 0"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path29" />
+      <path
+         d="m 40,75 h 20 v 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path30" />
+      <path
+         d="M 40,50 H 60 V 75"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path31" />
+      <path
+         d="M 60,25 H 75"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path32" />
+      <path
+         d="M 60,75 H 75"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path33" />
+    </symbol>
+    <symbol
+       id="v-rail"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="60"
+         height="50"
+         fill="none"
+         stroke="none"
+         id="rect33" />
+      <path
+         d="M 10,10 H 40"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path34" />
+      <path
+         d="M 25,10 V 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path35" />
+    </symbol>
+  </defs>
+  <defs
+     id="defs70">
+    <rect
+       x="670"
+       y="370"
+       width="100"
+       height="50"
+       id="rect40" />
+    <!-- GENERATED from libraries/symbols.svg by embed_symbols.py; do not hand-edit -->
+    <style
+       id="style35">
+      .sw { stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .sw-thick { stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      text { font-family: Arial, Helvetica, sans-serif; }
+    </style>
+    <symbol
+       id="symbol43"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="60"
+         height="130"
+         fill="none"
+         stroke="none"
+         id="rect35" />
+      <path
+         d="M 20,45 V 9.95"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path36" />
+      <path
+         d="M 20,65 V 55.06"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path37" />
+      <path
+         d="M 40,45 H 0"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path38" />
+      <path
+         d="M 40,65.01 H 0"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path39" />
+      <path
+         d="M 30,55 H 10"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path40" />
+      <path
+         d="M 30,75 H 10"
+         fill="none"
+         stroke="currentColor"
+         class="sw-thick"
+         id="path41" />
+      <path
+         d="m 20,75 v 34.95"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path42" />
+      <text
+         x="28.379999"
+         y="37.610001"
+         font-size="14.11px"
+         fill="currentColor"
+         id="text42">+</text>
+      <text
+         x="30.15"
+         y="87.610001"
+         font-size="14.11px"
+         fill="currentColor"
+         id="text43">-</text>
+    </symbol>
+    <symbol
+       id="symbol48"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="70"
+         height="110"
+         fill="none"
+         stroke="none"
+         id="rect43" />
+      <path
+         d="m 20,0.02 v 80"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path43" />
+      <path
+         d="M 5,55.02 H 35 20 l -15,-25 h 30 l -15,25"
+         fill="currentColor"
+         stroke="currentColor"
+         class="sw"
+         id="path44" />
+      <path
+         d="M 42.55,42.51 50,40.02 47.52,47.47 Z"
+         fill="currentColor"
+         stroke="none"
+         id="path45" />
+      <path
+         d="m 40,50.02 c 0,0 3.24,-3.23 6.03,-6.02"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path46" />
+      <path
+         d="M 42.55,32.51 50,30.02 47.52,37.47 Z"
+         fill="currentColor"
+         stroke="none"
+         id="path47" />
+      <path
+         d="m 40,40.02 c 0,0 3.24,-3.23 6.03,-6.02"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path48" />
+    </symbol>
+    <symbol
+       id="symbol49"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="60"
+         height="60"
+         fill="none"
+         stroke="none"
+         id="rect48" />
+      <path
+         d="M 20,0 V 15 H 35 L 20,36.33 5,15 h 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path49" />
+    </symbol>
+    <symbol
+       id="symbol52"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="80"
+         height="100"
+         fill="none"
+         stroke="none"
+         id="rect49" />
+      <path
+         d="M 30,0 V 30"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path50" />
+      <path
+         d="M 5,30 H 55 V 50 H 5 Z"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path51" />
+      <path
+         d="M 30,50 V 80"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path52" />
+      <text
+         x="10.65"
+         y="45.049999"
+         font-size="14.11px"
+         fill="currentColor"
+         id="text52">LOAD</text>
+    </symbol>
+    <symbol
+       id="symbol53"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="40"
+         height="120"
+         fill="none"
+         stroke="none"
+         id="rect52" />
+      <path
+         d="M 10,0 V 20 L 0,25 20,35 0,45 20,55 0,65 20,75 10,80 v 20"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path53" />
+    </symbol>
+    <symbol
+       id="symbol54"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="40"
+         height="40"
+         fill="none"
+         stroke="none"
+         id="rect53" />
+      <path
+         d="M 15,9.99 A 5,4.99 0 0 1 10,14.98 5,4.99 0 0 1 5,9.99 5,4.99 0 0 1 10,5 5,4.99 0 0 1 15,9.99 Z"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path54" />
+    </symbol>
+    <symbol
+       id="symbol68"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="110"
+         height="120"
+         fill="none"
+         stroke="none"
+         id="rect54" />
+      <path
+         d="M 10,75 H 30"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path55" />
+      <path
+         d="m 40,50 10,5 V 45 Z"
+         fill="currentColor"
+         stroke="none"
+         id="path56" />
+      <path
+         d="m 40,50 10,-5 v 10 z m 4.02,0 4.18,2.09 v -4.18 z"
+         fill="currentColor"
+         stroke="none"
+         id="path57" />
+      <path
+         d="M 75,75 V 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path58" />
+      <path
+         d="m 67.5,45 h 15 -7.5 l -7.5,12.5 h 15 L 75,45"
+         fill="currentColor"
+         stroke="currentColor"
+         class="sw"
+         id="path59" />
+      <path
+         d="M 30,75 V 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path60" />
+      <path
+         d="m 40,17.5 v 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path61" />
+      <path
+         d="m 40,67.5 v 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path62" />
+      <path
+         d="m 40,42.5 v 15"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path63" />
+      <path
+         d="M 40,25 H 60 V 0"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path64" />
+      <path
+         d="m 40,75 h 20 v 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path65" />
+      <path
+         d="M 40,50 H 60 V 75"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path66" />
+      <path
+         d="M 60,25 H 75"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path67" />
+      <path
+         d="M 60,75 H 75"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path68" />
+    </symbol>
+    <symbol
+       id="symbol70"
+       overflow="visible">
+      <rect
+         class="snapbox"
+         x="-10"
+         y="-10"
+         width="60"
+         height="50"
+         fill="none"
+         stroke="none"
+         id="rect68" />
+      <path
+         d="M 10,10 H 40"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path69" />
+      <path
+         d="M 25,10 V 25"
+         fill="none"
+         stroke="currentColor"
+         class="sw"
+         id="path70" />
+    </symbol>
+  </defs>
+  <!-- Grid: 10 px. Symbols come from libraries/symbols.svg via <use>; run
+       `python libraries/embed_symbols.py <this file>` after adding/removing symbols. -->
+  <sodipodi:namedview
+     id="namedview"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:snap-global="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="false"
+     inkscape:snap-bbox-midpoints="false"
+     inkscape:snap-nodes="true"
+     inkscape:snap-others="false"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:snap-midpoints="false"
+     inkscape:object-paths="false"
+     inkscape:object-nodes="false"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.6446825"
+     inkscape:cx="422.68869"
+     inkscape:cy="601.07107"
+     inkscape:window-width="3440"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer-annotations">
+    <inkscape:grid
+       type="xygrid"
+       id="grid"
+       spacingx="10"
+       spacingy="10"
+       empspacing="5"
+       originx="0"
+       originy="0"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="false"
+       units="px" />
+  </sodipodi:namedview>
+  <style
+     id="style70">
     text { font-family: Arial, Helvetica, sans-serif; }
-    .wire { fill: none; stroke: rgb(52,101,164); stroke-width: 2.7; stroke-linecap: round; stroke-linejoin: round; }
-    .sym-fill { fill: rgb(52,101,164); stroke: rgb(52,101,164); stroke-width: 2.7; stroke-linejoin: round; }
-    .junction { fill: rgb(52,101,164); }
+    .wire { fill: none; stroke: #3465a4; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .junction { fill: #3465a4; }
     .ic-box { fill: none; stroke: #888; stroke-width: 2; stroke-dasharray: 10 6; }
     .barrier { fill: none; stroke: #c0392b; stroke-width: 2.5; stroke-dasharray: 14 8; }
-    .ref { font-size: 22px; font-weight: bold; fill: rgb(52,101,164); }
+    .ref { font-size: 22px; font-weight: bold; fill: #3465a4; }
     .label { font-size: 20px; fill: #333; }
     .label-c { font-size: 20px; fill: #333; text-anchor: middle; }
     .title { font-size: 22px; font-weight: bold; fill: #333; text-anchor: middle; }
@@ -15,135 +778,382 @@
     .note { font-size: 18px; fill: #666; font-style: italic; }
     .pin { font-size: 20px; font-weight: bold; fill: #333; }
   </style>
-  <defs>
-    <marker id="light-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M 0 0 L 12 6 L 0 12 z" fill="rgb(52,101,164)"/>
+  <defs
+     id="defs36">
+    <marker
+       id="light-arrow"
+       viewBox="0 0 12 12"
+       refX="11"
+       refY="6"
+       markerWidth="7"
+       markerHeight="7"
+       orient="auto">
+      <path
+         d="M 0,0 12,6 0,12 Z"
+         fill="#3465a4"
+         id="path71" />
     </marker>
   </defs>
-
-  <!-- Side titles -->
-  <text x="200" y="40" class="title">Control side</text>
-  <text x="820" y="40" class="title">Power side (isolated)</text>
-
-  <!-- Isolation barrier -->
-  <line x1="410" y1="140" x2="410" y2="600" class="barrier"/>
-  <text x="410" y="625" class="barrier-label">Isolation barrier</text>
-
-  <!-- Photovoltaic gate driver IC outline -->
-  <rect x="250" y="120" width="330" height="310" rx="8" class="ic-box"/>
-  <text x="415" y="105" class="label-c">Photovoltaic gate driver (e.g. VOM1271, APV1122)</text>
-  <text x="570" y="452" class="label-c" font-weight="bold">U1</text>
-
-  <!-- ===== Control side ===== -->
-  <!-- Logic input terminal -->
-  <circle cx="60" cy="200" r="6" class="wire"/>
-  <text x="20" y="160" class="pin">PWM in</text>
-  <text x="20" y="182" class="label">(3.3 V logic)</text>
-  <line x1="66" y1="200" x2="110" y2="200" class="wire"/>
-
-  <!-- R1: LED current-limit resistor (horizontal, american zig-zag) -->
-  <path d="M110,200 L120,200 L127,185 L141,215 L155,185 L169,215 L183,185 L197,215 L204,200 L214,200" class="wire"/>
-  <text x="150" y="172" class="ref" text-anchor="middle">R1</text>
-  <text x="162" y="246" class="label-c">LED current limit</text>
-  <line x1="214" y1="200" x2="310" y2="200" class="wire"/>
-
-  <!-- D1: LED (vertical, anode top, cathode bottom) -->
-  <line x1="310" y1="200" x2="310" y2="230" class="wire"/>
-  <path d="M290,230 L330,230 L310,262 Z" class="sym-fill"/>
-  <line x1="290" y1="262" x2="330" y2="262" class="wire"/>
-  <line x1="310" y1="262" x2="310" y2="330" class="wire"/>
-  <text x="282" y="222" class="ref" text-anchor="end">D1</text>
-  <!-- LED emission arrows crossing the gap to the PV cell -->
-  <line x1="342" y1="232" x2="478" y2="232" class="wire" stroke-width="2" marker-end="url(#light-arrow)"/>
-  <line x1="342" y1="256" x2="478" y2="256" class="wire" stroke-width="2" marker-end="url(#light-arrow)"/>
-  <text x="410" y="222" class="note" text-anchor="middle">light</text>
-
-  <!-- Logic ground -->
-  <line x1="310" y1="330" x2="310" y2="350" class="wire"/>
-  <path d="M310,350 L310,360 M290,360 L330,360 L310,388 Z" class="wire"/>
-  <text x="310" y="458" class="label-c">GND (logic)</text>
-
-  <!-- ===== Photovoltaic cell stack (inside IC) ===== -->
-  <!-- + terminal top, − terminal bottom; two cells drawn as long-thin / short-thick plates -->
-  <line x1="510" y1="200" x2="510" y2="222" class="wire"/>
-  <g class="wire">
-    <line x1="484" y1="222" x2="536" y2="222"/>
-    <line x1="498" y1="232" x2="522" y2="232" stroke-width="6"/>
-    <line x1="484" y1="246" x2="536" y2="246"/>
-    <line x1="498" y1="256" x2="522" y2="256" stroke-width="6"/>
-    <line x1="484" y1="270" x2="536" y2="270"/>
-    <line x1="498" y1="280" x2="522" y2="280" stroke-width="6"/>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Symbols"
+     id="layer-symbols">
+    <use
+       id="J1"
+       xlink:href="#terminal-center"
+       href="#terminal-center"
+       transform="translate(50,190)" />
+    <use
+       id="R1"
+       xlink:href="#resistor-american"
+       href="#resistor-american"
+       transform="rotate(-90,160,50)" />
+    <use
+       id="D1"
+       xlink:href="#diode-led"
+       href="#diode-led"
+       transform="translate(290,200)" />
+    <use
+       id="GND1"
+       xlink:href="#gnd-signal"
+       href="#gnd-signal"
+       transform="translate(290,320)" />
+    <use
+       id="PV1"
+       xlink:href="#batt-many-cell"
+       href="#batt-many-cell"
+       transform="translate(490,190)" />
+    <use
+       id="R2"
+       xlink:href="#resistor-american"
+       href="#resistor-american"
+       transform="translate(640,200)" />
+    <use
+       id="Q1"
+       xlink:href="#tran-mos-enh-n"
+       href="#tran-mos-enh-n"
+       transform="translate(770,200)" />
+    <use
+       id="VBUS"
+       xlink:href="#v-rail"
+       href="#v-rail"
+       transform="translate(805,140)" />
+    <use
+       id="LOAD1"
+       xlink:href="#load"
+       href="#load"
+       transform="translate(800,380)" />
+    <use
+       id="GND2"
+       xlink:href="#gnd-signal"
+       href="#gnd-signal"
+       transform="translate(810,480)" />
   </g>
-  <line x1="510" y1="280" x2="510" y2="330" class="wire"/>
-  <text x="548" y="228" class="pin">+</text>
-  <text x="548" y="290" class="pin">−</text>
-    <text x="495" y="382" class="label-c">PV cell stack</text>
-  <text x="495" y="404" class="note" text-anchor="middle">(open-circuit ≈ 8 V)</text>
-
-  <!-- ===== Power side ===== -->
-  <!-- +V output (gate drive) -->
-  <line x1="510" y1="200" x2="720" y2="200" class="wire"/>
-  <text x="600" y="190" class="label-c">V+</text>
-  <!-- -V output (returns to MOSFET source) -->
-  <line x1="510" y1="330" x2="720" y2="330" class="wire"/>
-  <text x="600" y="356" class="label-c">V−</text>
-
-  <!-- R2: gate discharge / turn-off resistor across the PV output -->
-  <circle cx="650" cy="200" r="5" class="junction"/>
-  <circle cx="650" cy="330" r="5" class="junction"/>
-  <path d="M650,200 L650,222 L635,229 L665,243 L635,257 L665,271 L635,285 L665,299 L650,306 L650,330" class="wire"/>
-  <text x="668" y="252" class="ref">R2</text>
-  <text x="668" y="312" class="note">turn-off</text>
-
-  <!-- Gate wire: V+ to gate -->
-  <line x1="720" y1="200" x2="720" y2="280" class="wire"/>
-  <line x1="720" y1="280" x2="780" y2="280" class="wire"/>
-
-  <!-- Q1: N-channel enhancement-mode MOSFET (library-style) -->
-  <line x1="780" y1="240" x2="780" y2="320" class="wire"/>
-  <g class="wire" stroke-width="3.2">
-    <line x1="800" y1="240" x2="800" y2="262"/>
-    <line x1="800" y1="269" x2="800" y2="291"/>
-    <line x1="800" y1="298" x2="800" y2="320"/>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Wires"
+     id="layer-wires">
+    <path
+       d="m 65,200 h 45"
+       class="wire"
+       id="polyline36" />
+    <path
+       d="M 210,200 H 310"
+       class="wire"
+       id="polyline37" />
+    <path
+       d="m 310,280 v 40"
+       class="wire"
+       id="polyline38" />
+    <path
+       d="m 510,220 v -20 h 210 v 75 h 60"
+       class="wire"
+       id="polyline39" />
+    <path
+       d="m 510,299.95 h 210 l 40,0.05 h 70"
+       class="wire"
+       id="polyline40"
+       sodipodi:nodetypes="cccc" />
+    <path
+       d="m 830,300 v 80"
+       class="wire"
+       id="polyline41" />
+    <path
+       d="m 830,165 v 35"
+       class="wire"
+       id="polyline42" />
+    <path
+       d="m 830,460 v 20"
+       class="wire"
+       id="polyline43" />
+    <use
+       id="JN1"
+       xlink:href="#junction"
+       href="#junction"
+       transform="translate(650,200)" />
+    <use
+       id="JN2"
+       xlink:href="#junction"
+       href="#junction"
+       transform="translate(650,300)" />
+    <use
+       id="JN3"
+       xlink:href="#junction"
+       href="#junction"
+       transform="translate(830,300)" />
+    <!-- light from the LED to the PV stack -->
+    <path
+       d="M 358,230 H 480"
+       class="wire"
+       marker-end="url(#light-arrow)"
+       id="line45" />
+    <path
+       d="M 358,250 H 480"
+       class="wire"
+       marker-end="url(#light-arrow)"
+       id="line46" />
   </g>
-  <!-- drain -->
-  <path d="M800,251 L840,251 L840,150" class="wire"/>
-  <!-- source -->
-  <path d="M800,309 L840,309 L840,400" class="wire"/>
-  <!-- body connection with arrow pointing into channel (N-channel) -->
-  <line x1="812" y1="280" x2="840" y2="280" class="wire"/>
-  <path d="M800,280 L816,272 L816,288 Z" class="sym-fill"/>
-  <circle cx="840" cy="280" r="5" class="junction"/>
-  <circle cx="840" cy="309" r="5" class="junction"/>
-  <text x="880" y="270" class="ref">Q1</text>
-  <text x="880" y="294" class="label">N-ch MOSFET</text>
-  <text x="880" y="316" class="label">(high-side)</text>
-  <text x="850" y="196" class="label">D</text>
-  <text x="850" y="352" class="label">S</text>
-  <text x="746" y="272" class="label">G</text>
-
-  <!-- V− back to MOSFET source -->
-  <line x1="720" y1="330" x2="720" y2="400" class="wire"/>
-  <line x1="720" y1="400" x2="840" y2="400" class="wire"/>
-  <circle cx="840" cy="400" r="5" class="junction"/>
-
-  <!-- Bus rail -->
-  <line x1="840" y1="150" x2="840" y2="120" class="wire"/>
-  <line x1="805" y1="120" x2="875" y2="120" class="wire"/>
-  <text x="840" y="105" class="pin" text-anchor="middle">+V<tspan dy="6" font-size="15">BUS</tspan><tspan dy="-6"> (e.g. 48 V)</tspan></text>
-
-  <!-- Load -->
-  <line x1="840" y1="400" x2="840" y2="440" class="wire"/>
-  <rect x="805" y="440" width="70" height="90" class="wire"/>
-  <text x="840" y="492" class="ref" text-anchor="middle" font-weight="normal">LOAD</text>
-  <line x1="840" y1="530" x2="840" y2="560" class="wire"/>
-
-  <!-- Power ground -->
-  <path d="M840,560 L840,570 M820,570 L860,570 L840,598 Z" class="wire"/>
-  <text x="840" y="622" class="label-c">GND (power)</text>
-
-  <!-- VGS annotation -->
-  <text x="1010" y="470" class="label-c">V<tspan dy="5" font-size="15">GS</tspan><tspan dy="-5"> = V+ − V− is always</tspan></text>
-  <text x="1010" y="494" class="label-c">referenced to the source,</text>
-  <text x="1010" y="518" class="label-c">whatever V<tspan dy="5" font-size="15">BUS</tspan><tspan dy="-5"> is doing.</tspan></text>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Annotations"
+     id="layer-annotations">
+    <text
+       x="200"
+       y="40"
+       class="title"
+       id="text46">Control side</text>
+    <text
+       x="820"
+       y="40"
+       class="title"
+       id="text47">Power side (isolated)</text>
+    <path
+       d="M 410,140 V 460"
+       class="barrier"
+       id="line47" />
+    <text
+       x="410"
+       y="480"
+       class="barrier-label"
+       id="text48">Isolation barrier</text>
+    <rect
+       x="250"
+       y="120"
+       width="330"
+       height="290"
+       rx="8"
+       class="ic-box"
+       id="rect72" />
+    <text
+       x="415"
+       y="105"
+       class="label-c"
+       id="text49">Photovoltaic gate driver (e.g. VOM1271, APV1122)</text>
+    <text
+       x="570"
+       y="432"
+       class="label-c"
+       font-weight="bold"
+       id="text50">U1</text>
+    <text
+       x="20"
+       y="160"
+       class="pin"
+       style="white-space:pre;inline-size:120px;display:inline"
+       xml:space="preserve"
+       id="text2"><tspan
+         x="20"
+         y="160"
+         id="tspan21">PWM in
+</tspan><tspan
+         x="20"
+         y="185"
+         id="tspan23"><tspan
+           style="font-weight:normal"
+           id="tspan22">(3.3 V logic)</tspan></tspan></text>
+    <text
+       x="160"
+       y="180"
+       class="ref"
+       text-anchor="middle"
+       id="text53">R1</text>
+    <text
+       x="160"
+       y="240"
+       class="label-c"
+       id="text54"
+       style="fill:#666666;fill-opacity:1">LED current limit</text>
+    <text
+       x="285"
+       y="222"
+       class="ref"
+       text-anchor="end"
+       id="text55">D1</text>
+    <text
+       x="410"
+       y="222"
+       class="note"
+       text-anchor="middle"
+       id="text56">light</text>
+    <text
+       x="310"
+       y="380"
+       class="label-c"
+       id="text57">GND (logic)</text>
+    <text
+       x="495"
+       y="345"
+       class="label-c"
+       style="white-space:pre;inline-size:180px;display:inline"
+       xml:space="preserve"
+       id="text4"><tspan
+         x="495"
+         y="345"
+         id="tspan24">PV cell stack
+</tspan><tspan
+         x="495"
+         y="370.00001"
+         id="tspan26"><tspan
+           style="font-style:italic;font-size:18px;fill:#666666"
+           id="tspan25">(open-circuit ≈ 8 V)</tspan></tspan></text>
+    <text
+       x="600"
+       y="190"
+       class="label-c"
+       id="text60">V+</text>
+    <text
+       x="600"
+       y="326"
+       class="label-c"
+       id="text61">V−</text>
+    <text
+       x="668"
+       y="250"
+       class="ref"
+       id="text62">R2</text>
+    <text
+       x="880"
+       y="250"
+       class="ref"
+       style="white-space:pre;inline-size:160px;display:inline"
+       xml:space="preserve"
+       id="text9"><tspan
+         x="880"
+         y="250"
+         id="tspan27">Q1
+</tspan><tspan
+         x="880"
+         y="277.50001"
+         id="tspan29"><tspan
+   style="font-weight:normal;font-size:20px;fill:#333333"
+   id="tspan28">N-ch MOSFET</tspan>
+</tspan><tspan
+         x="880"
+         y="305.00001"
+         id="tspan31"><tspan
+           style="font-weight:normal;font-size:20px;fill:#333333"
+           id="tspan30">(high-side)</tspan></tspan></text>
+    <text
+       x="840"
+       y="190"
+       class="label"
+       id="text67">D</text>
+    <text
+       x="840"
+       y="325"
+       class="label"
+       id="text68">S</text>
+    <text
+       x="746"
+       y="267"
+       class="label"
+       id="text69">G</text>
+    <text
+       x="830"
+       y="130"
+       class="pin"
+       text-anchor="middle"
+       id="text70">+V<tspan
+   baseline-shift="sub"
+   font-size="15px"
+   id="tspan9">BUS</tspan> (e.g. 48 V)</text>
+    <text
+       x="830"
+       y="545"
+       class="label-c"
+       id="text71">GND (power)</text>
+    <g
+       id="g37">
+      <text
+         x="1010"
+         y="440"
+         class="label-c"
+         style="white-space:pre;inline-size:240px;display:inline"
+         xml:space="preserve"
+         id="text14"
+         transform="translate(-10,-40)"><tspan
+           x="1010"
+           y="440"
+           id="tspan34">VGS = V<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan32">+</tspan> − V<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan33">−</tspan> . We get a<tspan
+   y="440"
+   id="tspan35"> </tspan></tspan><tspan
+           x="1010"
+           y="465.00001"
+           id="tspan36">good gate drive, no matter<tspan
+   y="465.00001"
+   id="tspan37"> </tspan></tspan><tspan
+           x="1010"
+           y="490.00001"
+           id="tspan38">what voltage the source is<tspan
+   y="490.00001"
+   id="tspan49"> </tspan></tspan><tspan
+           x="1010"
+           y="515.00001"
+           id="tspan50">relative to GND.</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.3;stroke-dasharray:none;stroke-opacity:1"
+       d="m 20,250 v -40 h 20 v 40 h 20 v -40"
+       id="path73" />
+    <text
+       x="310"
+       y="380"
+       class="label-c"
+       id="text73">GND (logic)</text>
+    <text
+       x="708.49609"
+       y="365.79102"
+       class="label-c"
+       id="text42-9"
+       style="font-size:20px;font-family:Arial, Helvetica, sans-serif;text-anchor:middle;white-space:pre;inline-size:143.008;display:inline;fill:#666666;fill-opacity:1"
+       xml:space="preserve"
+       transform="translate(11.503906,-35.791016)"><tspan
+         x="708.49609"
+         y="365.79102"
+         id="tspan51">R2 for turn-off.<tspan
+   y="365.79102"
+   id="tspan52"> </tspan></tspan><tspan
+         x="708.49609"
+         y="390.79103"
+         id="tspan53">Note some gate<tspan
+   y="390.79103"
+   id="tspan54"> </tspan></tspan><tspan
+         x="708.49609"
+         y="415.79103"
+         id="tspan55">drivers already<tspan
+   y="415.79103"
+   id="tspan56"> </tspan></tspan><tspan
+         x="708.49609"
+         y="440.79103"
+         id="tspan57">contain the<tspan
+   y="440.79103"
+   id="tspan58"> </tspan></tspan><tspan
+         x="708.49609"
+         y="465.79103"
+         id="tspan59">turn-off circuitry.</tspan></text>
+  </g>
 </svg>
