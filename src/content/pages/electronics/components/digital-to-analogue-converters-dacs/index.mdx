@@ -184,7 +184,7 @@ Another way to reduce the glitch energy is to add an external track/hold amplifi
 
 ## Voice Coil Motor (VCM) DACs
 
-Some DACs are specifically designed to drive voice coil motors (VCMs) for auto-focus in camera modules. One feature they have that most DACs don't is high current sinking capabilities, typically in the tens or hundreds of milliamps. This is so they can drive the autofocus motor directly.
+Some DACs are specifically designed to drive voice coil motors (VCMs) for auto-focus in camera modules. One feature they have that most DACs don't is high current sinking capabilities, typically in the tens or hundreds of milliamps. This is so they can drive the autofocus motor directly. Based on a few internal block diagrams I could find most use a low-side MOSFET and current sensing resistor feeding back to an op-amp to control the gate voltage (classic and easy way to do a simple current sink).
 
 <Image src={import('./_assets/aimtron-at5510-10-bit-dac-for-vcm-driver-internal-block-diagram.webp')} width="600px">The internal block diagram of the Aimtron AT5510 10-bit DAC designed for driving VCMs.[^aimtron-at5510-10-bit-i2c-dac-for-vcm-driver]</Image>
 
