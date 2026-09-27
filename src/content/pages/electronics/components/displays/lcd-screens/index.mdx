@@ -37,7 +37,16 @@ The image below shows what a reverse-mounted LCD screen will look like from the 
 
 ## TFT LCD Screens
 
-A TFT screen is a form of LCD which uses thin-film technology.
+A TFT screen is a form of LCD which uses thin-film technology. There are a number of different subtypes:
+
+- Standard: A standard TFT screen.
+- IPS: IPS (in-plane switching) is a form of TFT screen which gives better viewing angles and colour reproduction.
+
+### IPS TFT Screens
+
+IPS (in-plane switching) is a form of TFT screen (it still uses thin-film transistors) which gives better viewing angles and colour reproduction. In standard TFT screens, the liquid crystals align vetically when a voltage is applied. In a IPS panel, the crystal rotate horizontally instead. This allows for a more consistent light transmission, given better viewing angles and colours. You may have seen a standard TFT screen, which appears to change colours, wash out, dissappear or even invert the colours when viewing from off-axis.[^newhaven-display-tft-vs-ips-is-there-a-difference]
+
+The main disadvantage is that IPS panels typically require more backlighting for the same luminance. This can be a downside for battery or other power-constrained devices. They are also more expensive than regular TFT screens.[^newhaven-display-tft-vs-ips-is-there-a-difference]
 
 In 2013, FTDI released the EVE chip, which is a combined graphics/sound/touch screen processor designed for embedded applications which can be run from an 8-bit microcontroller. It supports QVGA and WQVGA resolution TFT displays with 24-bit true colour support, 256k internal object memory, and up to 2,000 objects. It communicates with the microcontroller via an [I2C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/) interface. It is available in a [QFN-48 package](/pcb-design/component-packages/qfn-component-package/).
 
@@ -64,3 +73,4 @@ EastRising is a China based manufacturer of a range of TFT LCD displays. [buydis
 {/* ============================================================================================ */}
 
 [^winstar-tft-lcd-display-modules]: Winstar Display Co., Ltd. _TFT LCD Display Modules_ [product page]. Retrieved 2026-09-23, from https://www.winstar.com.tw/products/tft-lcd.html.
+[^newhaven-display-tft-vs-ips-is-there-a-difference]: Newhaven Display. _TFT vs IPS: Is There a Difference?_. Retrieved 2026-09-24, from https://newhavendisplay.com/blog/tft-vs-ips-is-there-a-difference/.
