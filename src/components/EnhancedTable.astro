@@ -19,30 +19,83 @@ const {
   searchable = true
 } = Astro.props as Props;
 
-// CSV parsing function
+/**
+ * CSV parser following RFC 4180. Handles:
+ *   - Quoted fields: "foo, bar" keeps the comma as part of the value.
+ *   - Escaped quotes inside a quoted field: "" produces a literal ".
+ *   - Newlines inside quoted fields.
+ *   - CRLF or LF line endings.
+ * Unquoted fields are trimmed; quoted fields are kept verbatim so that
+ * intentional leading/trailing whitespace survives.
+ */
 function parseCSV(csvText: string): { [key: string]: string }[] {
   if (!csvText || typeof csvText !== 'string') {
     console.warn('EnhancedTable: CSV text is empty or not a string');
     return [];
   }
 
-  const lines = csvText.trim().split('\n').filter(line => line.trim());
-  if (lines.length < 2) {
-    console.warn('EnhancedTable: CSV must have at least 2 lines (header + data)');
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let field = '';
+  let inQuotes = false;   // currently between quote marks
+  let fieldWasQuoted = false; // this field used quotes, so don't trim it
+  let i = 0;
+
+  const endField = () => {
+    row.push(fieldWasQuoted ? field : field.trim());
+    field = '';
+    fieldWasQuoted = false;
+  };
+  const endRow = () => {
+    endField();
+    // Skip blank lines (a row of entirely empty fields)
+    if (row.some(value => value !== '')) rows.push(row);
+    row = [];
+  };
+
+  while (i < csvText.length) {
+    const char = csvText[i];
+
+    if (inQuotes) {
+      if (char === '"') {
+        if (csvText[i + 1] === '"') { field += '"'; i += 2; continue; } // escaped quote
+        inQuotes = false; i++; continue;
+      }
+      field += char; i++; continue;
+    }
+
+    if (char === '"') { inQuotes = true; fieldWasQuoted = true; i++; continue; }
+    if (char === ',') { endField(); i++; continue; }
+    if (char === '\r') { i++; continue; }
+    if (char === '\n') { endRow(); i++; continue; }
+
+    field += char; i++;
+  }
+  endRow(); // flush whatever is left over
+
+  if (rows.length < 2) {
+    console.warn('EnhancedTable: CSV must have at least 2 rows (header + data)');
     return [];
   }
 
-  // Parse headers
-  const headers = lines[0].split(',').map(h => h.trim());
+  // A trailing comma on each line is legal CSV but produces an extra, empty
+  // column. Drop trailing columns that have no header AND no data in any row.
+  let numCols = Math.max(...rows.map(r => r.length));
+  while (
+    numCols > 0 &&
+    (rows[0][numCols - 1] ?? '') === '' &&
+    rows.slice(1).every(r => (r[numCols - 1] ?? '') === '')
+  ) {
+    numCols--;
+  }
 
-  // Parse data rows
-  return lines.slice(1).map(line => {
-    const values = line.split(',').map(v => v.trim());
-    const row: { [key: string]: string } = {};
+  const headers = rows[0].slice(0, numCols);
+  return rows.slice(1).map(values => {
+    const rowObj: { [key: string]: string } = {};
     headers.forEach((header, index) => {
-      row[header] = values[index] || '';
+      rowObj[header] = values[index] ?? '';
     });
-    return row;
+    return rowObj;
   });
 }
 

@@ -42,21 +42,36 @@ A TFT screen is a form of LCD which uses thin-film technology. There are a numbe
 - Standard: A standard TFT screen.
 - IPS: IPS (in-plane switching) is a form of TFT screen which gives better viewing angles and colour reproduction.
 
+The screen can be:
+
+- Transmissive: Contains a backlight. This light is passed through the active layer of the display and frequencies are filtered out on their way through. Works well in dark or indoor lighting conditions, but becomes unreadable in bright sunlight.
+- Transflective: Contains a backlight, but also has a reflective layer which reflects ambient light back at the viewer. This allows the screen to be readable in bright sunlight, but also allows it to be used in low-light conditions. Possibly not as good as a pure transmissive screen in low-light conditions.
+
 ### IPS TFT Screens
 
 IPS (in-plane switching) is a form of TFT screen (it still uses thin-film transistors) which gives better viewing angles and colour reproduction. In standard TFT screens, the liquid crystals align vetically when a voltage is applied. In a IPS panel, the crystal rotate horizontally instead. This allows for a more consistent light transmission, given better viewing angles and colours. You may have seen a standard TFT screen, which appears to change colours, wash out, dissappear or even invert the colours when viewing from off-axis.[^newhaven-display-tft-vs-ips-is-there-a-difference]
 
 The main disadvantage is that IPS panels typically require more backlighting for the same luminance. This can be a downside for battery or other power-constrained devices. They are also more expensive than regular TFT screens.[^newhaven-display-tft-vs-ips-is-there-a-difference]
 
+### FTDI EVE Chip
+
 In 2013, FTDI released the EVE chip, which is a combined graphics/sound/touch screen processor designed for embedded applications which can be run from an 8-bit microcontroller. It supports QVGA and WQVGA resolution TFT displays with 24-bit true colour support, 256k internal object memory, and up to 2,000 objects. It communicates with the microcontroller via an [I2C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/) interface. It is available in a [QFN-48 package](/pcb-design/component-packages/qfn-component-package/).
 
 More on [EVE on the FTDI website](http://www.ftdichip.com/EVE.htm).
 
-### Software
+### TFT Software
 
 MikroElektronika makes a software/firmware package called Visual TFT (see their website). It's designed to help develop user interfaces for TFT LCD screens, especially those controlled microcontrollers. It offers a computer based design environment which then creates code compatible with MikroElektronica's compilers. This is one let-down with the software, as it does not support industry standard compilers such as GCC. The Visual TFT program supports the FTDI EVE chip.
 
-### Manufacturers
+### TFT Screen Manufacturers
+
+#### DisplayModule
+
+It appears that DisplayModule resells Startek TFT displays.
+
+#### Crystalfontz
+
+Crystalfontz is a US based manufacturer/distributer of TFT displays (they sell LCD, TFT LCD and OLED displays). They also have useful FPC cable breakout boards for development and prototyping.[^crystalfontz-lcds-oleds-epaper-tft-displays]
 
 #### Winstar Display Co., Ltd
 
@@ -68,9 +83,19 @@ EastRising is a China based manufacturer of a range of TFT LCD displays. [buydis
 
 <Image src={import('./_assets/east-rising-buy-display-logo.webp')} width="200px">The EastRising Technology Co. logo.</Image>
 
+#### Startek Electronic Technology Co., Ltd
+
+Startek Electronic Technology Co., Ltd is a large China based manufacturer of TFT displays. Based on screen specifications, Startek appears to be the underlying manufacturer for a number of resellers including DisplayModule and Crystalfontz.
+
+They appear to operate under at least two web domains, startek-lcd.com and lcdlcd.com.
+
+<Image src={import('./_assets/startek-logo.webp')} width="200px">The Startek logo.[^top-electronics-startek]</Image>
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^winstar-tft-lcd-display-modules]: Winstar Display Co., Ltd. _TFT LCD Display Modules_ [product page]. Retrieved 2026-09-23, from https://www.winstar.com.tw/products/tft-lcd.html.
 [^newhaven-display-tft-vs-ips-is-there-a-difference]: Newhaven Display. _TFT vs IPS: Is There a Difference?_. Retrieved 2026-09-24, from https://newhavendisplay.com/blog/tft-vs-ips-is-there-a-difference/.
+[^crystalfontz-lcds-oleds-epaper-tft-displays]: Crystalfontz America Inc. _Crystalfontz LCDs, OLEDs, ePaper & TFT Displays_ [website]. Retrieved 2026-09-28, from https://www.crystalfontz.com/.
+[^top-electronics-startek]: TOP-electronics. _Startek_ [website]. Retrieved 2026-09-28, from https://www.top-electronics.com/en/startek.

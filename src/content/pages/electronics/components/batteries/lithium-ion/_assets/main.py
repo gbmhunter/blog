@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "matplotlib>=3.8",
+#   "numpy>=1.26",
+# ]
+# ///
 """
 Lithium-ion battery self-discharge plot.
 

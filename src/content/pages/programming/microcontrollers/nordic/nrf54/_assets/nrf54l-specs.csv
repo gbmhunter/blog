@@ -1,0 +1,5 @@
+SoC Part Number,RAM,NVM (RRAM),USB,Packages,"Price (USD, DigiKey, 1000)",Comments
+nRF54L05,96 kB,0.5 MB,No,"QFN-40 (QDAA), QFN-48 (QFAA), QFN-52 (QGAA)",$2.51 (QFN-48),"The cheapest, smaller memory option in the nRF54 family (also lowest sleep current)."
+nRF54L10,192 kB,1 MB,No,"QFN-40 (QDAA), QFN-48 (QFAA), QFN-52 (QGAA)",$2.69 (QFN-48),-
+nRF54L15,256 kB,1.5 MB,No,QFN-48 (QFAA),$2.89 (QFN-48),One of the first nRF54 devices to be released. Good availability.
+nRF54LM20A,512 kB,2 MB,Yes,QFN-52 (QGAA),$3.56 (QFN-52),-

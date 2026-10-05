@@ -1,0 +1,48 @@
+---
+authors: [gbmhunter]
+date: 2026-09-28
+description: Battery charger ICs safely charge a rechargeable battery from a power source such as USB, wall adapter or solar panel.
+lastUpdated: 2026-09-28
+tags: [battery chargers, charger ICs, narrow voltage DC chargers, NVDC]
+title: Battery Chargers
+type: page
+---
+
+<WarningIsNotes />
+
+A _battery charger IC_ takes power from an input source (e.g. USB, a wall adapter, or a solar panel) and uses it to safely charge a rechargeable battery.
+
+Some battery chargers support the [USB PD (Power Delivery) protocol](/electronics/communication-protocols/usb-protocol/usb-charging-and-power-delivery/), allowing the charger to negotiate a higher voltage and/or current from the USB PD power source.
+
+Some [power management ICs (PMICs)](/electronics/components/power-management-ics/) include a battery charger. Indeed, all battery chargers perform some rudimentary power management, so the line between the two can be blurred.
+
+## Narrow Voltage DC (NVDC) Chargers
+
+Narrow voltage DC (NVDC) chargers are chargers which provide a regulated system voltage (typically called $V_{SYS}$) to the system from the power source while also charging the battery. This is beneficial because, if the battery is low, the system voltage does not have to wait for the battery to charge up, allowing things like MCUs to boot up and run immediately. The NVDC charger will independently charge the battery at the same time.
+
+They typically dynamically route the input power, first to the system load, and then any remaining power to the battery for charging. When plugged in, if the system load exceeds what the input power source can provide, some NVDC chargers will start also drawing power from the battery (i.e. draw from both power input and battery) to provide the system load.
+
+## Manufacturers
+
+Texas Instruments (TI) manufacture many battery chargers ICs in the `BQ24xxx` and `BQ25xxx` families. I could not find a good distinction between the reason for the different numbers, apart from it appearing to be somewhat chronological (most newer ICs are in the `BQ25xxx` family). The `BQ` is also used for similar ICs: `BQ27` is used for fuel gauges, and `BQ76` for multi-cell battery monitors.
+
+Renesas manufacture many battery charger ICs in the `ISL92xx` and `ISL95xx` families. The reason they start with `ISL` is that they were originally made by Intersil, which was acquired by Renesas in 2017.[^all-about-circuits-renesas-power-modules-pmbus]
+
+## Example ICs
+
+### Microschip MCP73831/2
+
+The Microchip MCP73831/2 could quite possibly be one of the most basic and common charger ICs out there. It comes in either a SOT-23-5 or DFN-8 package, and requires one external resistor to set the charge current to a single Lithium-ion cell.[^microchip-mcp73831-product-page]
+
+<Image src={import('./_assets/microchip-mcp73831-battery-charger-sot-23-5-photo.webp')} width="200px">A photo of the Microchip MCP73831 battery charger IC in a SOT-23-5 package.[^microchip-mcp73831-product-page]</Image>
+
+The typical application circuit for the MCP73831 is shown below. A single resistor between `PROG` and `VSS` sets the charge current from 15 mA to 500 mA.
+
+<Image src={import('./_assets/microchip-mcp73831-battery-charger-typical-application-diagram.webp')} width="400px">The typical application circuit for the Microchip MCP73831 battery charger IC.[^microchip-mcp73831-product-page]</Image>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^all-about-circuits-renesas-power-modules-pmbus]: Kate Smith (2019, Mar 27). _New Renesas Power Modules Claim Highest Density at 10A and 15A, Leverage New Packaging and PMBus_. All About Circuits. Retrieved 2026-09-28, from https://www.allaboutcircuits.com/news/renesas-apec-2019-new-pmbus-modules-highest-density-10a-15a-pmbus/.
+[^microchip-mcp73831-product-page]: Microchip Technology Inc. _MCP73831: Single-Cell Li-Ion/Li-Polymer Charge Management Controller_ [product page]. Retrieved 2026-09-28, from https://www.microchip.com/en-us/product/mcp73831.

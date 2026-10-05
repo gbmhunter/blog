@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2025-02-11
 description: Info on various compliance related matters and standards for embedded systems, involving electronics and firmware.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-07-15
-tags: [compliance, IEC 61058-1, IEC 62368-1, standards, IEC 60730-2-7, timers, switches]
+lastUpdated: 2026-09-29
+tags: [compliance, IEC 61058-1, IEC 62368-1, standards, IEC 60730-2-7, timers, switches, IEC 62133-2, lithium batteries]
 title: Compliance and Standards
 type: page
 ---
@@ -104,6 +104,15 @@ Some of the general mechanisms defined are:[^applus-laboratories-en-18031-unders
 * **General Equipment Capabilities (GEC)**: Up-to-date software and hardware with no publicly known exploitable vulnerabilities and limit exposure services via related network interfaces as well as configuration of optional services, exposure of physical interface only when needed.
 * **Cryptography (CRY)**: Best practice cryptography.
 
+## IEC 62133-2: Lithium Battery Safety
+
+IEC 62133-2 is a safety standard for [lithium-ion](/electronics/components/batteries/lithium-ion/) and lithium-polymer batteries. From the title:
+
+> Secondary cells and batteries containing alkaline or other non-acid electrolytes – Safety requirements for portable sealed secondary cells, and for batteries made from them, for use in portable applications – Part 2: Lithium systems[^iec-iec-62133-2-2017]
+
+The IEC 62133 family is for _portable sealed_ secondary cells, and splits by chemistry: Part 1 covers nickel systems (NiCd, NiMH, which use an alkaline electrolyte)[^iec-iec-62133-1-2017] and Part 2 covers lithium systems. [Lead-acid](/electronics/components/batteries/lead-acid/) batteries contain an acidic electrolyte and are deliberately excluded. Also excluded are industrial and stationary lithium batteries, which fall under IEC 62619 instead.
+
+Until 2017 there was a single IEC 62133 covering both chemistries. The 2017 release split it into Part 1 and Part 2, and also added [coin cell](/electronics/components/batteries/coin-cells/) requirements.[^iec-iec-62133-2-2017] This is why the title still carries the broad "alkaline or other non-acid electrolytes" wording inherited from the combined standard. This safety standard mentions IEC 61960, which is the matching performance standard for lithium batteries.
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
@@ -113,3 +122,5 @@ Some of the general mechanisms defined are:[^applus-laboratories-en-18031-unders
 [^iec-iec-60730-2-7-2015]: IEC. _IEC 60730-2-7:2015 - Automatic electrical controls - Part 2-7: Particular requirements for timers and time switches_ [product page]. Retrieved 2025-02-27, from https://webstore.iec.ch/en/publication/21938.
 [^nemko-cybersecurity-en-18031]: Geir Hørthe (2025, Feb 2). _Cybersecurity in Europe - EN 18031 is now a harmonized standard_ [blog post]. Nemko. Retrieved 2025-07-15, from https://www.nemko.com/blog/cybersecurity-in-europe-en-18031-is-now-a-harmonized-standard.
 [^applus-laboratories-en-18031-understanding-standard]: Applus Laboratories (2024, Dec). _EN 18031: Understanding Standard Common security requirements for radio equipment: Parts 1, 2, and 3_ [pdf]. Retrieved 2025-07-15, from https://www.appluslaboratories.com/en/dam/jcr:0e9f8aaf-1b68-400f-aee5-b86a7895a630/EN18031_Understanding_Standard_NCM.pdf.
+[^iec-iec-62133-2-2017]: IEC (2017, Feb). _IEC 62133-2:2017 - Secondary cells and batteries containing alkaline or other non-acid electrolytes - Safety requirements for portable sealed secondary cells, and for batteries made from them, for use in portable applications - Part 2: Lithium systems_ [pdf]. Retrieved 2026-09-29, from https://webstore.iec.ch/en/iec_catalog/product/preview/?id=L3B1Yi9wZGYvcHJldmlldy9pbmZvX2llYzYyMTMzLTJ7ZWQxLjB9Yi5wZGY=.
+[^iec-iec-62133-1-2017]: IEC (2017, Feb). _IEC 62133-1:2017 - Secondary cells and batteries containing alkaline or other non-acid electrolytes - Safety requirements for portable sealed secondary cells, and for batteries made from them, for use in portable applications - Part 1: Nickel systems_ [pdf]. Retrieved 2026-09-29, from https://webstore.iec.ch/en/iec_catalog/product/preview/?id=L3B1Yi9wZGYvcHJldmlldy9pbmZvX2llYzYyMTMzLTF7ZWQxLjB9Yi5wZGY=.
