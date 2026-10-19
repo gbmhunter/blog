@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: Light-emitting diodes (LEDs) are basic active electronic components which when provided with voltage and current emit light using a diode. This page covers schematic symbols, equations, types, forward voltages, design hints and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-08
+lastUpdated: 2026-10-16
 tags: [LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle, Worldsemi, RGB, Zynq, PCO, photocatalytic oxidation, PCO, germicidal, UVC]
 title: Light-emitting Diodes (LEDs)
 type: page
@@ -17,9 +17,9 @@ _Light-emitting diodes_ (LEDs) are basic active (non-linear) electronic componen
 
 ## Schematic Symbol
 
-The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives off light. The schematic symbol for a LED is shown in <IRef iref="fig-led-diode-schematic-symbol"/>. As with a normal diode, the anode is on the left, and the cathode on the right.
+The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives off light. The schematic symbol for a LED is shown below. As with a normal diode, the anode is on the left, and the cathode on the right.
 
-<Image iref="fig-led-diode-schematic-symbol" src={import('./_assets/led-diode-schematic-symbol.webp')} width="300">Schematic symbol for an LED (light emitting diode).</Image>
+<Image src={import('./_assets/led-diode-schematic-symbol.webp')} width="300px">Schematic symbol for an LED (light emitting diode).</Image>
 
 <Aside type="caution">
 It's worth pointing out that the LED's schematic symbol looks very similar to a [photodiodes](/electronics/components/diodes/photodiodes/), except the "light arrows" on a photodiode's symbol point inwards.
@@ -33,8 +33,8 @@ _Parameters are sorted alphabetically._
 
 ### Dominant Wavelength
 
-* Symbol: $\lambda_{dom}$
-* Units (typical): $\mathrm{nm}$
+- Symbol: $\lambda_{dom}$
+- Units (typical): $\mathrm{nm}$
 
 This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the [peak wavelength](#peak-wavelength). Normally measured in nanometres ($nm$).
 
@@ -44,28 +44,28 @@ This will be used as a shorthand for either _radiometric flux_, _spectral flux_ 
 
 ### Forward Current
 
-* Symbol: $I_F$
-* Units (typical): $\mathrm{mA}$
+- Symbol: $I_F$
+- Units (typical): $\mathrm{mA}$
 
 This is the maximum forward current the LED can continuously be driven at. For small indicator LEDs, the maximum forward current is typically 20-30mA. Normally an indicator LED with a max. forward current of 20mA would be driven at less than the max., somewhere between 2-10mA. 
 
 ### Forward Surge Current
 
-* Symbol: $I_{FM}$
-* Units (typical): $\mathrm{mA}$
+- Symbol: $I_{FM}$
+- Units (typical): $\mathrm{mA}$
  
 Normally rated at a fixed temperature, duty cycle, and pulse length.
 
 ### Forward Voltage
 
-* Symbol: $V_F$
-* Units (typical): $\mathrm{V}$
+- Symbol: $V_F$
+- Units (typical): $\mathrm{V}$
 
 Rated at a fixed forward current.
 
-LED forward voltages for common LED colours are listed in <IRef iref="tbl-led-forward-voltages"/>. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photons with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
+LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photons with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
 
-<table data-iref="tbl-led-forward-voltages">
+<table>
   <thead>
     <tr>
       <th>Colour</th>
@@ -108,9 +108,9 @@ You can calculate the approximate forward voltage of a LED just based on the wav
 The basic relationship between the speed of light $c$, frequency $f$ and wavelength $\lambda$ is:
 
 $$
-\begin{align}
-c = f\lambda \\
-\end{align}
+\begin{align*}
+c = f\lambda
+\end{align*}
 $$
 
 <p class="centered">where:<br/>
@@ -121,17 +121,17 @@ $\lambda$ is the wavelength, in $\mathrm{m}$<br/></p>
 Re-arranging for frequency gives:
 
 $$
-\begin{align}
-f = \frac{c}{\lambda} \htmlId{eqn-f-c-lambda}{} \\
-\end{align}
+\begin{align*}
+f = \frac{c}{\lambda}
+\end{align*}
 $$
 
 The energy of a photon is given by the Planck-Einstein equation:
 
 $$
-\begin{align}
-E = hf \htmlId{eqn-plank-einstein}{} \\
-\end{align}
+\begin{align*}
+E = hf
+\end{align*}
 $$
 
 <p class="centered">where:<br/>
@@ -139,37 +139,37 @@ $E$ is the energy of the photon, in $\mathrm{J}$<br/>
 $h$ is the Planck constant, $6.626 \times 10^{-34}\unit{J\,Hz^{-1}}$<br/>
 $f$ is the frequency, in $\mathrm{Hz}$<br/></p>
 
-Combining <IRef iref="eqn-f-c-lambda" /> and <IRef iref="eqn-plank-einstein" /> gives:
+Combining these two equations gives:
 
 $$
-\begin{align}
+\begin{align*}
 E = \frac{hc}{\lambda}
-\end{align}
+\end{align*}
 $$
 
 This gives the energy in Joules. To convert to $\mathrm{eV}$, divide by the elementary charge $e$ ($1.602 \times 10^{-19}\unit{C}$). This means that $1\unit{eV} = 1.602 \times 10^{-19}\unit{J}$. This energy in $\mathrm{eV}$ happens to be similar to the required forward voltage (it's not a coincidence). So our equation becomes:
 
 $$
-\begin{align}
+\begin{align*}
 E_{eV} = \frac{hc}{\lambda e}
-\end{align}
+\end{align*}
 $$
 
 We can combine the $h$ (Planck's constant, $6.626 \times 10^{-34}\unit{J\,Hz^{-1}}$), $c$ (speed of light, $3 \times 10^8\unit{m\,s^{-1}}$) and $e$ (elementary charge, $1.602 \times 10^{-19}\unit{C}$) into a single constant, which is $1.241 \times 10^{-6}\unit{eV\,m}$ (or $1241\unit{eV\,nm}$). Let's round this to $1240\unit{eV\,nm}$ for convenience. So the equation simply becomes:
 
 $$
-\begin{align}
+\begin{align*}
 V_F = \frac{1240\unit{eV\,nm}}{\lambda_{[\mathrm{nm}]}}
-\end{align}
+\end{align*}
 $$
 
 For example, a red LED with a wavelength of 660 nm has a forward voltage of approximately:
 
 $$
-\begin{align}
-V_F &= \frac{1240\unit{eV\,nm}}{660\unit{nm}} \nonumber \\
+\begin{align*}
+V_F &= \frac{1240\unit{eV\,nm}}{660\unit{nm}} \\
     &= 1.88\unit{V}
-\end{align}
+\end{align*}
 $$
 
 Red LEDs usually have a forward voltage of around $1.8-2.2\unit{V}$, so this agrees well!
@@ -178,57 +178,57 @@ Red LEDs usually have a forward voltage of around $1.8-2.2\unit{V}$, so this agr
 
 ### Irradiance
 
-* Symbol: $E$
-* Units (typical): $\mathrm{mW/m^2}$
+- Symbol: $E$
+- Units (typical): $\mathrm{mW/m^2}$
 
 Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol $E$ as $I$ is already used for radiant intensity. It is a radiometric quantity.
 
 ### Peak Wavelength
 
-* Symbol: $\lambda_{peak}$
-* Units (typical): $\mathrm{nm}$
+- Symbol: $\lambda_{peak}$
+- Units (typical): $\mathrm{nm}$
 
 The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the [dominant wavelength](#dominant-wavelength).
 
 ### Photon Flux
 
-* Symbol: $\phi_p$
-* Units (typical): $\mathrm{umol/s}$
+- Symbol: $\phi_p$
+- Units (typical): $\mathrm{umol/s}$
 
 The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the _radiometric flux_ is given.
 
 ### Photosynthetic Flux
 
-* Symbol: $PPF$
-* Units (typical): $\mathrm{umol/s}$
+- Symbol: $PPF$
+- Units (typical): $\mathrm{umol/s}$
 
 Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700 nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. high-pressure sodium lamps). Typical values range from 100-200 umol/s.
 
 ### Radiation Pattern
 
-* Symbol: n/a
-* Units (typical): Relative intensity (0-1)
+- Symbol: n/a
+- Units (typical): Relative intensity (0-1)
 
 The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.
 
 ### Radiant Flux
 
-* Symbol: $\phi_e$
-* Units (typical): Watts, $\mathrm{mW}$
+- Symbol: $\phi_e$
+- Units (typical): Watts, $\mathrm{mW}$
 
 The _radiant flux_ (also called the _radiant power_) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.
 
 ### Reverse Voltage
 
-* Symbol: $V_R$
-* Units (typical): Volts, $\mathrm{V}$
+- Symbol: $V_R$
+- Units (typical): Volts, $\mathrm{V}$
 
 The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.
 
 ### View Angle
 
-* Symbol: $2\theta_{\frac{1}{2}}$
-* Units (typical): Degrees, $^{\circ}$
+- Symbol: $2\theta_{\frac{1}{2}}$
+- Units (typical): Degrees, $^{\circ}$
 
 The _viewing angle_ (a.k.a. _view angle_) is the total angle that the LED light output encompasses before the light radiance drops down to 50% of its peak. This should be less than 180° as most LEDs emit light off a planar surface. The smaller this value the more focused the LED is. Some LEDs come packaged with a lens to focus the light. It is called $2\theta_{\frac{1}{2}}$ because $\theta_{\frac{1}{2}}$ is the angle measured from the center to where the radiance falls to half the peak, thus the total angle is twice this. It is assumed that the view angle is the same for any cross-sectional plane of the LED, for most LEDs this is true as their radiation pattern is rotationally symmetric (around the axis pointing forwards).
 
@@ -239,9 +239,9 @@ Another definition of this is the angle until the light radiance drops down to 5
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
 $$
-\begin{align}
+\begin{align*}
 R = \frac{V_{dd} - V_{led,f}}{I_{led}}
-\end{align}
+\end{align*}
 $$
 
 <p class="centered">where:<br/>
@@ -258,13 +258,13 @@ Use the calculator below to work out the series resistor needed to drive an LED 
 
 ## Reverse Mounting
 
-Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use light guides (since the light guides can be mounted up against flat PCB).
+Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use [light pipes](/electronics/components/light-pipes/) (since the light pipes can be mounted up against flat PCB).
 
 <Aside type="caution">
 Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
 </Aside>
 
-<Image src={import('./_assets/osram-ls-p47k-reverse-mount-led-photo.png')} width="450">An Osram reverse-mount LED (P47K series).</Image>
+<Image src={import('./_assets/osram-ls-p47k-reverse-mount-led-photo.png')} width="450px">An Osram reverse-mount LED (P47K series).</Image>
 
 ## Multiplexing
 
@@ -273,9 +273,9 @@ Multiplexing is a way of connecting LED's in an arrangement so that it minimises
 Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
 
 $$
-\begin{align}
+\begin{align*}
 y = (\frac{x}{2})^2
-\end{align}
+\end{align*}
 $$
 
 <p class="centered">where:<br/>
@@ -289,9 +289,9 @@ Charlieplexing is a more efficient (in terms of number of drive signals used) wa
 The following equation is given linking the number of pins used and the number of LEDs:
 
 $$
-\begin{align}
+\begin{align*}
 y = x^2 - x
-\end{align}
+\end{align*}
 $$
 
 ## ESD
@@ -304,9 +304,9 @@ The susceptibility for LEDs to ESD is low enough that no extra ESD protection me
 
 A little known fact about LEDs is that they can be used for light detection. Although not as sensitive as purpose-built photo-diodes, with a few external components, can be interfaced with a microcontroller and be used to detect variations in the light level.
 
-The schematic in <IRef iref="fig-led-connected-to-micro-for-light-detection-schematic" /> shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
+The schematic below shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
 
-<Image iref="fig-led-connected-to-micro-for-light-detection-schematic" src={import('./_assets/led-connected-to-micro-for-light-detection-schematic.png')} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
+<Image src={import('./_assets/led-connected-to-micro-for-light-detection-schematic.png')} width="500px">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
 
 The photocurrent of an LED is about 10-100 times smaller than that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.
 
@@ -320,17 +320,17 @@ You can get RGB LEDs which already have the control and drive circuitry (e.g. th
 
 One popular example, the Worldsemi WS2811, uses its own custom communications protocol running at 800kHz.
 
-<Image src={import('./_assets/ws2811-rgb-led-front-and-back-photo.png')} width="500">The WS2811, a popular RGB LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.</Image>
+<Image src={import('./_assets/ws2811-rgb-led-front-and-back-photo.png')} width="500px">The WS2811, a popular RGB LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.</Image>
 
 Overview of Worldsemi's RGB LED product offering:
 
-* WS2811: LED driver IC, no built-in LEDs.
-* WS2812: Combined RGB LED and driver IC.
-* WS2812b: Upgraded version of the WS2812. This includes added reverse polarity protection, higher brightness and colour uniformity, better pinout (a drop from six pins in the WS2812 to only four pins in the WS2812b), better heat dissipation (lower junction to case thermal resistance)[^worldsemi-ws2812-vs-ws2812b].
+- WS2811: LED driver IC, no built-in LEDs.
+- WS2812: Combined RGB LED and driver IC.
+- WS2812b: Upgraded version of the WS2812. This includes added reverse polarity protection, higher brightness and colour uniformity, better pinout (a drop from six pins in the WS2812 to only four pins in the WS2812b), better heat dissipation (lower junction to case thermal resistance)[^worldsemi-ws2812-vs-ws2812b].
 
-The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for communication. <IRef iref="fig-ws2812b-typical-application-schematic" /> shows an example application schematic showing how they can daisy-chained together. Microcontroller SPI peripherals running at 16x the WS28xx bit rate can be used to generate the data stream.
+The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for communication. The schematic below shows an example application showing how they can be daisy-chained together. Microcontroller SPI peripherals running at 16x the WS28xx bit rate can be used to generate the data stream.
 
-<Image iref="fig-ws2812b-typical-application-schematic" src={import('./_assets/ws2812b-typical-application-schematic.webp')} width="900px">Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together.</Image>
+<Image src={import('./_assets/ws2812b-typical-application-schematic.webp')} width="900px">Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together.</Image>
 
 For information on how a MCU SPI peripheral can be used to send data to a WS2812 LED, see the [SPI Communication Protocol page](/electronics/communication-protocols/spi-communication-protocol/#ws2812-rgb-leds).
 
@@ -338,23 +338,23 @@ For information on how a MCU SPI peripheral can be used to send data to a WS2812
 
 UV LEDs are used for applications such as:
 
-* UV curing (UVA: 365-405nm)
-* 3D printing/additive manufacturing
-* Disinfection and sterilization (UVC: 220-280nm)
-* Photocatalytic oxidation (PCO) (which is related to sterilization)
-* Fluorescence
+- UV curing (UVA: 365-405nm)
+- 3D printing/additive manufacturing
+- Disinfection and sterilization (UVC: 220-280nm)
+- Photocatalytic oxidation (PCO) (which is related to sterilization)
+- Fluorescence
 
-UVC light is especially effective at killing bacteria and viruses (germicidal effect). <IRef iref="fig-germicidal-effectiveness-of-uv-light-graph" /> shows the germicidal effectiveness of UV light vs. its wavelength.
+UVC light is especially effective at killing bacteria and viruses (germicidal effect). The graph below shows the germicidal effectiveness of UV light vs. its wavelength.
 
-<Image iref="fig-germicidal-effectiveness-of-uv-light-graph" src={import('./_assets/germicidal-effectiveness-of-uv-light-graph.webp')} width="600px">The germicidal effectiveness of UV light vs. wavelength. Note how it is highest in the UVC range and peaks around 260-270nm.[^gryko-impact-time-temperature-uvc-leds]</Image>
+<Image src={import('./_assets/germicidal-effectiveness-of-uv-light-graph.webp')} width="600px">The germicidal effectiveness of UV light vs. wavelength. Note how it is highest in the UVC range and peaks around 260-270nm.[^gryko-impact-time-temperature-uvc-leds]</Image>
 
 The germicidal effectiveness is normally quantified in terms of a [log reduction](https://en.wikipedia.org/wiki/Log_reduction). The log reduction is the common logarithm (i.e. base 10 logarithm) of the ratio of the number of microbes before and after the UV light is applied. For example 1 log reduction would be a 90% reduction in the number of microbes and a 2 log reduction would be a 99% reduction in the number of microbes.[^wikipedia-log-reduction]
 
 The dose of UV light required is usually specified as $mWcm^{-2}$. The dose is rather complicated to calculate as it depends on a large number of factors including the microbe type, UV wavelength, humidity, irradiation time and other factors. However, roughly speaking, doses between 2-10mW/cm2 can give a 1 log reduction for a large number of microbes.[^american-air-and-water-uv-irradiation-dosage-table]
 
-UV LEDs are used in photocatalytic oxidation (PCO) systems. This is where the UV light is shined onto a photocatalytic substrate, typically titanium dioxide (TiO2). The TiO2 generates free radicals (OH hydroxyl radicals) which are able to perform oxidation reactions. Titanium oxide PCO has a energy band gap centered around 360nm, which is in the middle of the UV-A range.[^sanuvox-about-pco] <IRef iref="fig-photocatalytic-oxidation-diagram" /> shows a diagram of the process.
+UV LEDs are used in photocatalytic oxidation (PCO) systems. This is where the UV light is shined onto a photocatalytic substrate, typically titanium dioxide (TiO2). The TiO2 generates free radicals (OH hydroxyl radicals) which are able to perform oxidation reactions. Titanium oxide PCO has a energy band gap centered around 360nm, which is in the middle of the UV-A range.[^sanuvox-about-pco] The diagram below shows the process.
 
-<Image iref="fig-photocatalytic-oxidation-diagram" src={import('./_assets/photocatalytic-oxidation-diagram.webp')} width="800px">A diagram showing the photocatalytic oxidation process.[^philips-indoor-air-purification-and-disinfection]</Image>
+<Image src={import('./_assets/photocatalytic-oxidation-diagram.webp')} width="800px">A diagram showing the photocatalytic oxidation process.[^philips-indoor-air-purification-and-disinfection]</Image>
 
 Interestingly, PCO with TiO2 can also be used to oxidize ethylene gas (C2H4) into CO2 and water. This has the benefit of preventing fruit from ripening to quickly (ethylene gas plays an important role in this, so destroying it slows it down).[^elsevier-efficacy-photocatalysis-removal-of-ethylene]
  
@@ -374,7 +374,7 @@ The [PCA9634 8-Channel 25mA I2C LED Controller by NXP](http://www.nxp.com/produc
 
 ## Lens Shapes
 
-LEDs come with a variety of lens shapes. The major thing that the len shapes influences is the **radiant intensity or radiation pattern of the light**. Some lens shapes focus the light around a small angle (e.g. 10°), while others spread the light over nearly 180°.
+LEDs come with a variety of lens shapes. The major thing that the lens shape influences is the **radiant intensity or radiation pattern of the light**. Some lens shapes focus the light around a small angle (e.g. 10°), while others spread the light over nearly 180°.
 
 Most standard LEDs used on circuit boards are either encapsulated or hemispherical.
 
@@ -386,7 +386,7 @@ Laser diodes are LEDs which emits 'lasered' light using a similar method to stan
 
 Some laser diodes have integrated switching FETs and capacitors for high-speed, high-power applications (such as laser range finding).
 
-<Image src={import('./_assets/laser-diode-with-integrated-fet-and-cap.png')} width="500">A laser diode with an integrated FET and capacitor for high-speed, high-power switching.</Image>
+<Image src={import('./_assets/laser-diode-with-integrated-fet-and-cap.png')} width="500px">A laser diode with an integrated FET and capacitor for high-speed, high-power switching.</Image>
 
 ## Pulse-Width Extending
 
@@ -394,9 +394,9 @@ A common use for an LED is to connect it to a digital output pin of a microcontr
 
 The problem with this is that the length of time that the output pin is active for can be a really short amount of time, e.g. microseconds or even nanoseconds. It the events are rare enough, this may make it impossible to see the LED flicker.
 
-One way to fix this with hardware to to use a simple pulse-width extender circuit as shown in <IRef iref="fig-led-pulse-extending-circuit-schematic-annotated-rc-mosfet" />.
+One way to fix this with hardware is to use a simple pulse-width extender circuit, as shown below.
 
-<Image iref="fig-led-pulse-extending-circuit-schematic-annotated-rc-mosfet" src={import('./_assets/led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png')} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
+<Image src={import('./_assets/led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png')} width="650px">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
@@ -406,7 +406,7 @@ LEDs are usually given with two different quantifiers regarding their wavelength
 
 Most LEDs emit a **narrow spectrum of light** (as opposed to filament-style bulbs, which emit a broad spectrum of light). The **spectral shape is approximately Gaussian** (a.k.a. the normal distribution).
 
-<Image src={import('./_assets/green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png')} width="650">A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.</Image>
+<Image src={import('./_assets/green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png')} width="650px">A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.</Image>
 
 The peak wavelength is the wavelength at the peak of the spectral density curve. The dominant wavelength is a _colorimetric_ quantity that describes the perceived colour of the LED with respect to the human eye. The human eye essentially sees a weighted average of all the wavelengths emitted by the LED, and perceives a single colour based on this averaging.
 
@@ -419,9 +419,9 @@ Many grow lights (lights that provide a "fake sun" for plants to trigger photosy
 The Planck-Einstein equation gives a direct relationship between the frequency of a photon and its energy[^wp-planck-relation]:
 
 $$
-\begin{align}
+\begin{align*}
 E &= hf \\
-\end{align}
+\end{align*}
 $$
 
 <p class="centered">where:<br/>
@@ -432,9 +432,9 @@ $f$ is the frequency of the photon, in $Hz$<br/></p>
 Of course you can use $c = f\lambda$ to write this in terms of the wavelength instead of frequency:
 
 $$
-\begin{align}
+\begin{align*}
 E &= h\frac{c}{\lambda} \\
-\end{align}
+\end{align*}
 $$
 
 <p class="centered">where:<br/>
@@ -445,43 +445,43 @@ Knowing this, you can convert an energy from $mW$ into a number of photons. One 
 So number of photons per second per meter squared, based on the irradiance $Irr$ (I'm not using $E$ here for irradiance as that will get confused with the energy $E$ in the Planck-Einstein equation) is:
 
 $$
-\begin{align}
+\begin{align*}
 photons/s/m2 &= \frac{{Irr}_{[W/m2]}\lambda_{peak}}{hc} \\
-\end{align}
+\end{align*}
 $$
 
 We now need to convert from number of photos to number of moles, which we can use Avogadro constant $N_A = 6.022 \times 10^{23}$ for.
 
 $$
-\begin{align}
+\begin{align*}
 PAR_{[mols/s/m2]} &= \frac{{Irr}_{[W/m2]}\lambda_{peak}}{hcN_A} \\
-\end{align}
+\end{align*}
 $$
 
 That is the basic equation done. But if we want to be lazy and not convert to SI units before punching the numbers in, we can compensate for this in the equation:
 
 $$
-\begin{align}
-PAR_{[mols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1 \times 10^4}{1 \times 10^6} \nonumber \\
-PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1 \times 10^4 \times 1 \times 10^6}{1 \times 10^6} \nonumber \\
-PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \times 10^4 \nonumber \\
-\end{align}
+\begin{align*}
+PAR_{[mols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1 \times 10^4}{1 \times 10^6} \\
+PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \frac{1 \times 10^4 \times 1 \times 10^6}{1 \times 10^6} \\
+PAR_{[umols/s/m2]} &= \frac{{Irr}_{[uW/cm2]}\lambda_{peak}}{hcN_A} \times 10^4 \\
+\end{align*}
 $$
 
 $h$ (the Planck constant), $c$ (the speed of light in a vacuum), and $N_A$ (the Avogadro constant) are all constants, so we can simplify them with the $1e4$ to:
 
 $$
-\begin{align}
+\begin{align*}
 PAR_{[umols/s/m2]} &= 83593 \cdot {Irr}_{[uW/cm2]}\lambda_{peak} \\
-\end{align}
+\end{align*}
 $$
 
 Since we're trying to make it easy, let's put $\lambda_{peak}$ in units of $nm$ instead of $m$ also:
 
 $$
-\begin{align}
+\begin{align*}
 PAR_{[umols/s/m2]} &= 8.36 \times 10^{-5} \cdot {Irr}_{[uW/cm2]} \cdot \lambda_{peak[nm]} \\
-\end{align}
+\end{align*}
 $$
 
 <Aside type="caution">
@@ -500,9 +500,9 @@ Because of their simplicity, they are often a fall-back mechanism if there is no
 1. If the microcontroller is in a low-power mode, and the serial port and LCD are turned off.
 1. During an error condition such a segmentation fault. In certain errors you cannot rely on the firmware to work correctly (memory could be corrupted). Attempting to indicate this error to the user using the serial port of LCD may fail due to the driver code being corrupted. There is a much higher chance that writing to a single register to turn the LED on will work.
 
-One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic code that runs on startup that loads the FSBL. To indicate an error, it toggles a pin high and low. It is designed so that you can connect an LED to this pin and see the error code. The waveform of the LED error code output by the Zynq 7000 BootROM is shown in <IRef iref="fig-zynq-7000-bootrom-led-error-code-waveform" />.
+One example of this is the Zynq 7000 SoC's BootROM. The BootROM is the basic code that runs on startup that loads the FSBL. To indicate an error, it toggles a pin high and low. It is designed so that you can connect an LED to this pin and see the error code. The waveform of the LED error code output by the Zynq 7000 BootROM is shown below.
 
-<Image iref="fig-zynq-7000-bootrom-led-error-code-waveform" src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
+<Image src={import('./_assets/zynq-7000-bootrom-led-error-code-waveform.webp')} width="800px">The waveform of the LED error code output by the Zynq 7000 BootROM[^amd-zynq-7000-trm].</Image>
 
 ## LED Chemistries
 
@@ -526,15 +526,15 @@ The most powerful white LEDs are made by coating a blue LED with a phosphor whic
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 and 0402 chip packages.
 
-<Image src={import('./_assets/0603-led-up-close.jpg')} width="700">A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).</Image>
+<Image src={import('./_assets/0603-led-up-close.jpg')} width="700px">A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).</Image>
 
 ## Lifetime And Reliability
 
 The expected lifetime and reliability is not typically given on standard-issue LED datasheets, mainly due to:
 
-* Typical LEDs last so long that lifetime of any product they are used in is determined by other factors
-* It is expensive and time-consuming to measure LED reliability
-* Lifetime and reliability information is considered somewhat confidential
+- Typical LEDs last so long that lifetime of any product they are used in is determined by other factors
+- It is expensive and time-consuming to measure LED reliability
+- Lifetime and reliability information is considered somewhat confidential
 
 However, some LED manufacturers to give lifetime and reliability information. This is typically done for higher power, specific purpose LEDs such as powerful illumination LEDs (think streetlights, car headlights) or agricultural growing lights. The lifetime is typically expressed as a curve of _power maintenance_ over time (in terms of hours the LED has been on for). Power maintenance is how powerful the LED is (in terms of light output power) compared to when it was new. Typical single-value lifetimes can be described as the number of hours until the LED light output power reduces to 70 or 50% of its initial output power (a 70 or 50% power maintenance).
 

@@ -1,0 +1,41 @@
+---
+authors: [gbmhunter]
+date: 2026-10-16
+description: Light pipes (a.k.a. light guides) carry light from an LED on a PCB to the outside of an enclosure, so that status indicators can be seen without mounting the LED at the panel itself.
+lastUpdated: 2026-10-16
+tags: [light pipes, light guides, LEDs, indicators, enclosures, front panels]
+title: Light Pipes
+type: page
+---
+
+<WarningIsNotes />
+
+_Light pipes_ (also called _light guides_) are clear plastic parts that carry light from an [LED](/electronics/components/diodes/light-emitting-diodes-leds/) on a PCB to the outside of an [enclosure](/electronics/components/enclosures/). They let you place status LEDs anywhere on the PCB, while still having the light appear at a convenient spot for the user to see. They are an alternative to panel-mounted LEDs, which require a cable and/or connector to connect the panel mounted LED to the PCB.
+
+## How They Work
+
+They work by utlizing the principle of total internal reflection, in the same way fibre optic cables do. The light from the LED enters the solid light pipe at one end, and is reflected along the length of the pipe until it exits at the other end. The light pipe can be straight or bent.
+
+## Design Considerations
+
+- Aligning the LED with the entry face (and the gap between them).
+- Choosing the LED: top-firing, side-firing and [reverse-mount](/electronics/components/diodes/light-emitting-diodes-leds/#reverse-mounting) LEDs.
+- Light loss and brightness at the exit face.
+- Crosstalk (light bleed) between adjacent pipes in multi-way arrays: Light pipes with opaque shrouds can go a long way to prevent this.
+- Exit face finish (flat, domed, diffused).
+
+## Manufacturers
+
+### Bivar
+
+SF1 is their flexible light pipe system series. 
+
+LC is another flexible light pipe series. Examples include the `LC-2.0` (2" long) and `LC-3.0` (3" long) light pipes. The display end of the light pipe is low-profile and easily push-fitted into a small circle cut from the panel.
+
+<Image src={import('./_assets/bivar-lc-series-light-pipe-photo.webp')} width="400px">A photo of the Bivar LC series flexible light pipe. The light-carrying core is covered by a black PVC jacket (to prevent light leakage), and the exit end has a clear lens.</Image>
+
+To hold the light pipe next to a SMD LED, you need a holder from Bivar. The `SMFLP` is a vertical holder that works with the LC series of light pipes.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}

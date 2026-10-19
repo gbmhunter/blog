@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2011-09-05
 description: Wire-to-board (WTB) connectors are a very common type of electrical connector that attach free wires and cables to a PCB, to provide both electrical connections and mechanical support.
 image: ./_assets/cover-image.webp
-lastUpdated: 2025-04-02
-tags: [electronics, connectors, electronic components, WTB, wire-to-board, JST, ACH, TE Connectivity, Molex, MTA-100, CST-100]
+lastUpdated: 2026-10-12
+tags: [electronics, connectors, electronic components, WTB, wire-to-board, Dupont, JST, ACH, TE Connectivity, Molex, MTA-100, CST-100, jumper wires]
 title: Wire-to-Board (WTB) Connectors
 type: page
 ---
@@ -20,6 +20,20 @@ WTB connectors get rid of all the problems with soldering wires directly onto a 
 Trying the find a good, reasonably-priced WTB connector on a electronic supplier's website can be near-impossible. There are so many varieties, shapes, lead pitches, bad datasheets, and different manufacturer's making nearly identical products. Also, to top it all of, you need to usually find more than one item to make a connector work (e.g. if you buy a connector you must also find the matching receptacle and crimp pins). And most suppliers don't do a good job and making the related parts obvious.
 
 ## Examples
+
+### Jumper Wires
+
+Jumper wires (a.k.a. DuPont connectors) are a very common type of WTB connector. The connector family lives on as products such as Amphenol FCI's Mini-PV range, and you will rarely find "Dupont" in a manufacturer's part name. They are a 2.54 mm (0.1") crimp housing, most commonly single-way, which mates with standard [pin headers](/electronics/components/connectors/headers/). Multi-way (1xN) and dual-row (2xN) housings are also available from the same family. They are very cheap to make, versatile, flexible to route and small, thus very popular for prototyping and hobbyist electronics. They are not that common for production electronics as they easily disconnect under small amounts of force or vibration, and it starts to become tedious to connect many of these up when a multi-pin connector would suit much better.
+
+<Image src={import('./_assets/dupont-cables-selection.webp')} width="800px">A selection of Dupont cables. The 3 on the left are 100 mm long male-to-male, male-to-female and female-to-female cables. The middle and right columns are the same genders but in 200 mm and 300 mm lengths respectively. Each bundle contains 40 wires, which is a standard way Eastern manufacturers provide them.</Image>
+
+Jumper wires can also be used for wire-to-wire connections, but again, this is only recommended for quick prototyping and not for production electronics.
+
+<Aside type="tip">
+The DuPont name comes from Berg Electronics, which originally created them in the 1950's. In 1972, Berg was acquired by DuPont. There is evidence the Berg name was kept after the acquisition, but "Division of DuPont" or similar was added to branding.[^matt-millman-why-do-we-call-these-dupont-connectors] In 1998, the connector division of DuPont was acquired by FCI and given back its original name of Berg Electronics Corporation.[^upi-hicks-muse-acquires-dupont-connector-systems] In 2016, FCI was acquired by Amphenol Corporation. Amphenol continues to make these under the name "Mini-PV Basics". [^michael-schoeffler-how-to-crimp-dupont-mini-pv-connectors] They are now also manufactured by a number of other companies.
+</Aside>
+
+I have seen them used in commercial drones where weight reduction and a low profile were very important. To help combat the disconnection problem, strain relief was provided very close to the connectors. This works because any tug on the cable is taken by the strain relief rather than the friction-fit contact.
 
 ### JST PH/SH Family
 
@@ -89,3 +103,6 @@ _MTA-100 connectors_ are a family of wire-to-board and wire-to-wire connectors. 
 [^jst-ach-conn-ds]: JST. _ACH Connector - Disconnectable Crimp style connectors_ [datasheet]. Retrieved 2025-04-02, from https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2226/ACH_1.2Pitch_DisconnectableCrimp.pdf.
 [^rs-online-jst-ach-2-way-product]: RS. _Connectors / PCB Connectors & Wire Housings / Wire Housings & Plugs / JST, ACH Female Connector Housing, 1.2mm Pitch, 2 Way, 1 Row_ [product page]. Retrieved 2025-04-02, from https://nz.rs-online.com/web/p/wire-housings-plugs/1755471.
 [^taoglas-fxr-4040-52-0075x-b-dg-nfc-antenna]: Taoglas. _NFC Flex Antenna (40*40*0.355 mm) with Reverse Ferrite Layer 75mm Twisted Pair 28AWG Cable and ACH(F) Connector - FXR.4040.52.0075X.B.dg_ [product page]. Retrieved 2025-04-02, from https://www.taoglas.com/product/nfc-flex-antenna-40400-355-mm-with-reverse-ferrite-layer-75mm-twisted-pair-28awg-cable-and-achf-connector/.
+[^michael-schoeffler-how-to-crimp-dupont-mini-pv-connectors]: Michael Schoeffler (2017, Nov 2). _Tutorial: How to crimp DuPont/Mini-PV connectors [Engineer PA-09 connector pliers]_. Retrieved 2026-10-12, from https://www.mschoeffler.de/2017/11/02/tutorial-how-to-crimp-dupontmini-pv-connectors-engineer-pa-09-connector-pliers/.
+[^upi-hicks-muse-acquires-dupont-connector-systems]: UPI (1993, Mar 2). _Hicks, Muse completes acquisition of DuPont's connector systems_ [news article]. UPI Archives. Retrieved 2026-10-12, from https://www.upi.com/Archives/1993/03/02/Hicks-Muse-completes-acquisition-of-DuPonts-connector-systems/4271731048400/.
+[^matt-millman-why-do-we-call-these-dupont-connectors]: Matt Millman (2021, Mar 22). _Why do we call these "DuPont" connectors?_. Matt's Tech Pages. Retrieved 2026-10-13, from https://www.mattmillman.com/why-do-we-call-these-dupont-connectors/.
