@@ -1,0 +1,41 @@
+---
+authors: [gbmhunter]
+date: 2026-10-21
+description: LoRa is a long-range, low-power wireless modulation technique by Semtech based on chirp spread spectrum, and LoRaWAN is the networking protocol built on top of it.
+lastUpdated: 2026-10-21
+tags: [communication protocol, LoRa, LoRaWAN, Semtech, chirp spread spectrum, CSS, sub-GHz, IoT, LPWAN]
+title: LoRa
+type: page
+---
+
+One of the key properties about LoRa that gives it such a long range is that it uses a modulation technique called chirp spread spectrum (CSS). This allows the signal to work with a negative signal-to-noise ratio (SNR).[^semtech-sx1276-ds]
+
+| Spreading factor | Minimum SNR to demodulate | Rough bit rate (125 kHz) |
+| ---------------- | ------------------------- | ------------------------ |
+| SF7              | -7.5 dB                   | about 5.5 kbps           |
+| SF12             | -20 dB                    | about 0.3 kbps           |
+
+Each increase in spreading factor roughly halves the data rate at the benefit of being able to demodulate a signal that is 2.5 dB lower in SNR.
+
+## Spreading Factor
+
+The spreading factor (SF) sets how many bits each LoRa symbol carries. Each LoRa symbol is a single chirp the sweeps across the entire channel bandwidth. A chirp is divided into 2^SF chips, and one chip is sent per hertz of bandwidth per second. SF7 hs 128 chips, while SF12 has 4096 chips.
+
+Data is encoded in where the chirp starts in frequency. For example, let's say the channel spans 1 to 2kHz, and you send 2 bits per symbol (`00`, `01`, `10`, or `11`). This gives 4 possible starting frequencies, evenly spaced across the channel. Every symbol still sweeps through the entire channel and lasts the same amount of time. When the chirp reaches the top of the channel, it wraps around to the bottom and continues sweeping up until it gets back to its starting frequency:
+
+- `00` starts at 1kHz and sweeps up to 2kHz.
+- `01` starts at 1.25kHz, sweeps up to 2kHz, then wraps to 1kHz and sweeps up to 1.25kHz.
+- `10` starts at 1.5kHz, sweeps up to 2kHz, then wraps to 1kHz and sweeps up to 1.5kHz.
+- `11` starts at 1.75kHz, sweeps up to 2kHz, then wraps to 1kHz and sweeps up to 1.75kHz.
+
+These four symbols are plotted below.
+
+<Image src={import('./_assets/lora-chirp-symbols-frequency-vs-time.svg')} width="900px">Frequency vs. time for the four symbols of a simplified 2-bit-per-symbol chirp scheme on a 1-2kHz channel. The dot marks the starting frequency, which carries the data. Each symbol sweeps the full channel, wrapping from the top back to the bottom (dotted line), and all symbols last the same time $T$.</Image>
+
+In real LoRa there are $2^{SF}$ possible starting frequencies rather than 4 (e.g. 128 for SF7), so each symbol carries SF bits.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^semtech-sx1276-ds]: Semtech (2015, Mar). _SX1276/77/78/79 - 137 MHz to 1020 MHz Low Power Long Range Transceiver (Rev. 4)_ [datasheet]. Retrieved 2026-10-21, from https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf.

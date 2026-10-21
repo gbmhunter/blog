@@ -15,10 +15,10 @@ _Fuel gauge ICs_ (also called _gas gauges_, _coulomb counters_ or _battery state
 It is worth being clear about what a fuel gauge IC is **not**:
 
 - It is **not** a charger. Charging (and regulation) is the job of a [power management IC (PMIC)](/electronics/components/power-management-ics/).
-- It is **not** a protection device. Over-charge, over-discharge and over-current protection is the job of a [protection circuit module (PCM)](/electronics/components/power-management-ics/pcms/).
+- It is **not** always a protection device. Sometimes fuel-gauges also come with over-charge, over-discharge and over-current protection. However, sometimes this is the job of a separate [protection circuit module (PCM)](/electronics/components/power-management-ics/pcms/).
 - It is **not** a mains power meter. Isolated measurement of AC mains power is the job of a [power monitor IC](/electronics/components/power-monitor-ics/).
 
-A fuel gauge just measures the battery and reports its state. In a complete battery management system (BMS) it sits alongside the charger and protection circuitry.
+A fuel gauge measures the battery and reports its state. In a complete battery management system (BMS) it sits alongside the charger and protection circuitry.
 
 ## Why Fuel Gauging Is Hard
 
@@ -128,6 +128,15 @@ This is very accurate over the short term, but it has two weaknesses: it accumul
 
 The most accurate ICs combine OCV lookup, coulomb counting and a model of the cell's internal impedance, and they continuously learn the cell's full-charge capacity as it ages. TI's _Impedance Track™_ and Analog Devices/Maxim's _ModelGauge m5_ are examples. These typically require a learning/optimisation cycle and a configuration profile matched to the specific cell, but they track SoC accurately across load, temperature and the life of the battery.
 
+### Compensated End-of-Discharge Voltage (CEDV)
+
+Compensated End-of-Discharge Voltage (CEDV) is a name Texas Instruments uses for a coulomb-counting gauge that recalibrates itself whenever the cell voltage crosses an end-of-discharge (EDV) threshold. There are three of these thresholds (EDV2, EDV1 and EDV0), and each is compensated for load current, temperature and cell age.[^ti-bq4050-trm] It is used by ICs such as the [BQ4050](#texas-instruments-bq4050).[^ti-bq4050-ds]
+
+- The gauge keeps a remaining capacity counter that rises during charging and falls during discharge (including self-discharge). Each threshold crossing recalibrates this remaining capacity counter.[^ti-bq4050-trm]
+- The gauge also keeps track of the full-charge capacity (FCC) of the pack. This is relearned after a qualified discharge which requires things such as staying above a minimum temperature and below a maximum current.[^ti-bq4050-trm]
+
+One limitation of this method is that it requires a deep discharge (down to the EDV2 threshold) to relearn the FCC. This may not happen often or at all in some applications, and so the FCC becomes inaccurate as the cells age. The [impedance tracking](#impedance-tracking--hybrid-models) method does not have this limitation, as it can learn the FCC from partial discharges.
+
 ## Examples
 
 ### TI BQ27441-G1
@@ -156,6 +165,14 @@ It supports the following Lithium chemistries:[^adi-max17055-ds]
 
 <Image src={import('./_assets/max17055-fuel-gauge-ic-internal-block-diagram.webp')} width="600px">Internal block diagram of the MAX17055 fuel gauge IC. It feeds battery voltage, temperature and current measurements into a model/algorithm (called the ModelGauge m5 EZ) to accurately predict the battery SoC.[^adi-max17055-ds]</Image>
 
+### Texas Instruments BQ4050
+
+The TI BQ4050 is a 1-4 cell CEDV battery fuel gauge IC.
+
+<Image src={import('./_assets/ti-bq4050-simplified-schematic.webp')} width="700px">The simplified schematic for the TI BQ4050 in a 3-cell pack. As well as gauging, it offers protection features and drives the charge (CHG), discharge (DSG) and pre-charge (PCHG) FETs and a fuse. It talks to the host over SMBus.[^ti-bq4050-ds]</Image>
+
+In 2017 Texas Instruments released the BQ40Z50-R2 which is recommended for new designs. It is feature compatible but not pin compatible. The BQ40Z50-R2 features "Turbo Mode 2.0".[^ti-bq40z50-r2-product-page]
+
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
@@ -163,3 +180,6 @@ It supports the following Lithium chemistries:[^adi-max17055-ds]
 [^ti-bq27441-ds]: Texas Instruments (2017, Dec). _bq27441-G1 System-Side Impedance Track™ Fuel Gauge_ [datasheet]. Retrieved 2026-06-24, from https://www.ti.com/lit/ds/symlink/bq27441-g1.pdf.
 [^adi-max17048-ds]: Analog Devices. _MAX17048/MAX17049 3µA 1-Cell/2-Cell Fuel Gauge with ModelGauge_ [datasheet]. Retrieved 2026-06-24, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf.
 [^adi-max17055-ds]: Analog Devices (2017, Jan). _MAX17055 7µA 1-Cell Fuel Gauge with ModelGauge m5 EZ_ [datasheet]. Retrieved 2026-06-24, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17055.pdf.
+[^ti-bq4050-ds]: Texas Instruments (2017, Oct). _bq4050 CEDV Gas Gauge and Protection Solution for 1-Series to 4-Series Cell Li-Ion Battery Packs_ [datasheet]. Retrieved 2026-10-20, from https://www.ti.com/lit/ds/symlink/bq4050.pdf.
+[^ti-bq40z50-r2-product-page]: Texas Instruments. _BQ40Z50-R2 - 1-4 series Li-ion battery pack manager supporting Turbo Mode 2.0_ [product page]. Retrieved 2026-10-20, from https://www.ti.com/product/BQ40Z50-R2.
+[^ti-bq4050-trm]: Texas Instruments (2022, Oct). _BQ4050 Technical Reference Manual (Rev. A)_ [technical reference manual]. Retrieved 2026-10-20, from https://www.ti.com/lit/pdf/sluuaq3.

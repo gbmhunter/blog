@@ -3,8 +3,8 @@ authors: [gbmhunter]
 date: 2012-02-10
 description: OLED screens use miniature organic LEDs to display a pixel based picture. This page covers resolutions, physical sizes, communication methods, driver ICs, and more.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-17
-tags: [OLED, screen, resolution, pixel, I2C, communication, driver ICs, Solomon, charge pump]
+lastUpdated: 2026-10-20
+tags: [OLED, screen, resolution, pixel, I2C, communication, driver ICs, Solomon, charge pump, burn in]
 title: OLED Screens
 type: page
 ---
@@ -20,6 +20,21 @@ The lifespan of a monochromatic OLED depends largely on the emitted colour. Here
 - White = 10,000 hours
 - Blue = 15,000 hours
 - Yellow = 50,000 hours
+
+### Burn In
+
+OLED displays suffer from permanent burn-in. Each pixel emits its own light. When displaying a static image for a long time, the pixels that are on will degrade faster than the pixels that are off (degradation is a function of how bright and for how long each pixel is on for). This causes uneven wear of the pixels, and results in faint "ghost images" of the static content being visible when the display is showing other content.[^viewsonic-oled-burn-in]
+
+Ways to reduce burn in include:
+
+- Turning down the brightness of the display.
+- Turn off the display when not in use.
+- Periodically shifting the image slightly.
+- Adding a dynamic "screen saver" to the display which removes static content from any one pixel.
+
+<Aside type="note">
+LCD based display technologies do not suffer from permanent burn in as the pixels themselves do not emit light (it's either a backlight or reflected light that is being modulated by the pixels). They can show temporary image retention from charge build-up, but this usually fades with time.
+</Aside>
 
 ## Resolutions/Physical Size
 
@@ -131,3 +146,4 @@ Distributors of OLED screens include:
 
 [^github-sparkfun-sparkfun-qwiic-oled-arduino-library]: GitHub. _sparkfun/SparkFun_Qwiic_OLED_Arduino_Library_ [code]. Retrieved 2025-07-31, from https://github.com/sparkfun/SparkFun_Qwiic_OLED_Arduino_Library.
 [^vishay-oled-graphic]: Vishay Intertechnology, Inc. _OLED Graphic_ [product page]. Retrieved 2026-09-29, from https://www.vishay.com/en/displays/oled-graphic/.
+[^viewsonic-oled-burn-in]: Patrick Rocha (2026, Jan 15). _OLED Burn-In: What It Is, Why It Happens, and How to Stop It_. ViewSonic Library. Retrieved 2026-10-20, from https://www.viewsonic.com/library/gaming/oled-burn-in-what-it-is-why-it-happens-and-how-to-stop-it/.

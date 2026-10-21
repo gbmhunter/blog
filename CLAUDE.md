@@ -48,6 +48,7 @@ For tightly-bound products, prefer juxtaposition with no operator at all (e.g. `
 - On Windows, `git mv` on a content directory can fail with "Permission denied" while the dev server's file watcher or the IDE holds a handle. Workaround: `Move-Item` in PowerShell, then `git add -A` (git still detects the rename).
 - Adding references: ST (st.com) datasheets block WebFetch and Microchip download links often redirect to an HTML stub. Fall back to a mirror (reichelt CDN, Mouser, alldatasheet) or the Chrome plugin, and never fabricate datasheet figures.
 - Commits: never add `Co-Authored-By` or other AI-attribution trailers.
+- When I refer to a file by name without a full path (e.g. "add image1.webp to this page"), look for it in my Downloads directory (`C:\Users\geoff_betasolutions\Downloads`) first.
 
 # References
 
