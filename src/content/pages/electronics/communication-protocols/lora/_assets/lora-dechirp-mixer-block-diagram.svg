@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     width="1440" height="450" viewBox="0 0 1440 450" preserveAspectRatio="xMidYMid meet" color="#3465a4">
+  <!-- Grid: 10 px. LoRa de-chirping shown as a mixer: received chirp x reference down-chirp = constant tone, then FFT -> single peak. -->
+  <sodipodi:namedview id="namedview" showgrid="true" inkscape:document-units="px"
+      inkscape:snap-global="true" inkscape:snap-grids="true"
+      inkscape:snap-bbox="true" inkscape:bbox-nodes="true" inkscape:snap-bbox-edge-midpoints="false" inkscape:snap-bbox-midpoints="false"
+      inkscape:snap-nodes="true" inkscape:snap-others="false" inkscape:snap-smooth-nodes="false" inkscape:snap-midpoints="false"
+      inkscape:object-paths="false" inkscape:object-nodes="false">
+    <inkscape:grid type="xygrid" id="grid" spacingx="10" spacingy="10" empspacing="5" originx="0" originy="0" visible="true" enabled="true" snapvisiblegridlinesonly="false"/>
+  </sodipodi:namedview>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .wire { fill: none; stroke: #3465a4; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .label { font-size: 22px; font-weight: bold; fill: #333; }
+    .title { font-size: 22px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .note { font-size: 18px; fill: #666; font-style: italic; }
+    .axis-label { font-size: 16px; fill: #666; font-style: italic; }
+    .inset { fill: #f9fafb; stroke: #888; stroke-width: 1.5; }
+    .axis { fill: none; stroke: #888; stroke-width: 1.5; }
+    .chirp { fill: none; stroke: #c60e00; stroke-width: 3; stroke-linecap: round; }
+    .ref-chirp { fill: none; stroke: #6b7280; stroke-width: 3; stroke-linecap: round; }
+    .wrap { fill: none; stroke: #c60e00; stroke-width: 1.5; stroke-dasharray: 3 4; }
+    .block { fill: #f4a742; stroke: #333; stroke-width: 2; }
+    .block-label { font-size: 26px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .mixer { fill: #fff; stroke: #333; stroke-width: 2.5; }
+    .mixer-x { fill: none; stroke: #333; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#3465a4"/>
+    </marker>
+  </defs>
+
+  <g inkscape:groupmode="layer" inkscape:label="Blocks" id="layer-blocks">
+    <!-- 1. Received chirp (symbol k): starts a quarter of the way up, sweeps up, wraps. -->
+    <rect class="inset" x="40" y="60" width="200" height="140" rx="6"/>
+    <path class="axis" d="M 60,80 L 60,180 L 220,180"/>
+    <path class="chirp" d="M 60,155 L 180,80"/>
+    <path class="wrap" d="M 180,80 L 180,180"/>
+    <path class="chirp" d="M 180,180 L 220,155"/>
+
+    <!-- Mixer (multiplier). -->
+    <circle class="mixer" cx="480" cy="130" r="30"/>
+    <path class="mixer-x" d="M 460,110 L 500,150 M 460,150 L 500,110"/>
+
+    <!-- 2. Reference down-chirp (mirror image of the base up-chirp). -->
+    <rect class="inset" x="380" y="250" width="200" height="140" rx="6"/>
+    <path class="axis" d="M 400,270 L 400,370 L 560,370"/>
+    <path class="ref-chirp" d="M 420,280 L 540,355"/>
+
+    <!-- 3. De-chirped signal: constant tone. -->
+    <rect class="inset" x="620" y="60" width="200" height="140" rx="6"/>
+    <path class="axis" d="M 640,80 L 640,180 L 800,180"/>
+    <path class="chirp" d="M 640,155 L 800,155"/>
+
+    <!-- FFT block. -->
+    <rect class="block" x="880" y="100" width="120" height="60" rx="12"/>
+
+    <!-- 4. FFT output: single peak in bin k. -->
+    <rect class="inset" x="1060" y="60" width="200" height="140" rx="6"/>
+    <path class="axis" d="M 1080,80 L 1080,180 L 1240,180"/>
+    <rect x="1124" y="90" width="12" height="90" fill="#c60e00"/>
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="Wires" id="layer-wires">
+    <path class="wire" d="M 240,130 L 448,130" marker-end="url(#arrow)"/>
+    <path class="wire" d="M 480,250 L 480,162" marker-end="url(#arrow)"/>
+    <path class="wire" d="M 510,130 L 618,130" marker-end="url(#arrow)"/>
+    <path class="wire" d="M 820,130 L 878,130" marker-end="url(#arrow)"/>
+    <path class="wire" d="M 1000,130 L 1058,130" marker-end="url(#arrow)"/>
+    <path class="wire" d="M 1260,130 L 1318,130" marker-end="url(#arrow)"/>
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="Annotations" id="layer-annotations">
+    <text x="140" y="45" class="title" xml:space="preserve">Received chirp</text>
+    <text x="140" y="225" class="note" text-anchor="middle" xml:space="preserve">symbol k</text>
+    <text x="66" y="92" class="axis-label" xml:space="preserve">f</text>
+    <text x="220" y="173" class="axis-label" text-anchor="end" xml:space="preserve">t</text>
+
+    <text x="480" y="420" class="title" xml:space="preserve">Reference down-chirp</text>
+    <text x="406" y="282" class="axis-label" xml:space="preserve">f</text>
+    <text x="560" y="363" class="axis-label" text-anchor="end" xml:space="preserve">t</text>
+
+    <text x="720" y="45" class="title" xml:space="preserve">Constant tone</text>
+    <text x="720" y="225" class="note" text-anchor="middle" xml:space="preserve">f = k · BW / 2<tspan baseline-shift="super" font-size="13">SF</tspan></text>
+    <text x="646" y="92" class="axis-label" xml:space="preserve">f</text>
+    <text x="800" y="173" class="axis-label" text-anchor="end" xml:space="preserve">t</text>
+
+    <text x="940" y="139" class="block-label" xml:space="preserve">FFT</text>
+
+    <text x="1160" y="45" class="title" xml:space="preserve">Single peak</text>
+    <text x="1130" y="225" class="note" text-anchor="middle" xml:space="preserve">bin k</text>
+    <text x="1086" y="92" class="axis-label" xml:space="preserve">|X|</text>
+    <text x="1240" y="173" class="axis-label" text-anchor="end" xml:space="preserve">bin</text>
+
+    <text x="1330" y="137" class="label" xml:space="preserve">Symbol k</text>
+  </g>
+</svg>

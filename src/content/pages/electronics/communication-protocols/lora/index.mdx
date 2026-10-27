@@ -2,26 +2,64 @@
 authors: [gbmhunter]
 date: 2026-10-21
 description: LoRa is a long-range, low-power wireless modulation technique by Semtech based on chirp spread spectrum, and LoRaWAN is the networking protocol built on top of it.
-lastUpdated: 2026-10-21
+lastUpdated: 2026-10-27
 tags: [communication protocol, LoRa, LoRaWAN, Semtech, chirp spread spectrum, CSS, sub-GHz, IoT, LPWAN]
 title: LoRa
 type: page
 ---
 
-One of the key properties about LoRa that gives it such a long range is that it uses a modulation technique called chirp spread spectrum (CSS). This allows the signal to work with a negative signal-to-noise ratio (SNR).[^semtech-sx1276-ds]
+<WarningIsNotes />
+
+_LoRa_ (short for _long range_) is a low-power wireless modulation technique developed by Semtech, typically used in the sub-GHz ISM bands. _LoRaWAN_ is the networking protocol built on top of it.
+
+LoRa achieves its long range by trading data rate for sensitivity. It uses a modulation technique called chirp spread spectrum (CSS), which spreads the signal energy over the entire channel bandwidth. The receiver collapses the signal back to a narrow peak using [de-chirping](#de-chirping). This allows the receiver to demodulate signals with a negative signal-to-noise ratio (SNR).[^semtech-sx1276-ds][^semtech-an1200-22-lora-modulation-basics]
 
 | Spreading factor | Minimum SNR to demodulate | Rough bit rate (125 kHz) |
 | ---------------- | ------------------------- | ------------------------ |
-| SF7              | -7.5 dB                   | about 5.5 kbps           |
+| SF7              | -7.5 dB                   | about 5.5 kbps[^semtech-an1200-22-lora-modulation-basics] |
 | SF12             | -20 dB                    | about 0.3 kbps           |
 
-Each increase in spreading factor roughly halves the data rate at the benefit of being able to demodulate a signal that is 2.5 dB lower in SNR.
+Each increase in spreading factor roughly halves the data rate in exchange for being able to demodulate a signal that is 2.5 dB lower in SNR.
+
+## Frequency Band Use
+
+LoRa is usually used in the sub-GHz [ISM bands](/electronics/communication-protocols/sub-ghz-ism-bands/), but which band depends on the region of operation. Most of the time it operates in the 850-950 MHz range (most countries have an ISM band there).[^wikipedia-lora] LoRa itself is just the modulation, and can be used on any frequency the radio supports (e.g. Semtech's SX1280 runs LoRa in the 2.4 GHz band). LoRaWAN defines a _regional parameter plan_ for each region, which sets the frequencies, channels and transmit power limits to use. The main plans are shown in the table below.[^lora-alliance-rp002-1-0-3-regional-parameters]
+
+| Plan  | Frequency range                 | Example regions |
+| ----- | ------------------------------- | --------------- |
+| EU868 | 863-870 MHz                     | Europe (some countries extend this to 873 MHz). |
+| EU433 | 433.05-434.79 MHz               | Europe and many other countries, although EU868 is more common. |
+| US915 | 902-928 MHz                     | North America, including the US and Canada. |
+| AU915 | 915-928 MHz                     | Australia, New Zealand and much of South America (e.g. Argentina, Brazil, Chile and Uruguay). |
+| AS923 | 915-928 MHz (varies by country) | Much of Asia, as well as Australia and New Zealand. See the variants below. |
+| KR920 | 920.9-923.3 MHz                 | South Korea, which has its own plan distinct from the AS923 used in most of Asia. |
+| IN865 | 865-867 MHz                     | India. |
+| CN470 | 470-510 MHz                     | China. |
+| CN779 | 779-787 MHz                     | China (older plan). |
+| RU864 | 864-870 MHz                     | Russia. |
+
+AS923 has regional variants, which use the same channel plan shifted to different frequencies within 915-928 MHz to suit each country's rules:[^lora-alliance-rp002-1-0-3-regional-parameters]
+
+- AS923-1: Japan and Singapore.
+- AS923-2: Vietnam.
+- AS923-3: The Philippines.
+- AS923-4: Israel.
+
+Australia and New Zealand allow both AU915 and AS923-1. Glyn recommends AS923 for both countries.[^glyn-store-lora]
+
+## Chirps
+
+LoRa uses chirps to encode data. A [chirp](/programming/signal-processing/chirps/) is a signal whose frequency increases or decreases over time. LoRa encodes the data in each chirp's starting frequency. Each chirp sweeps across the entire channel bandwidth. Each chirp begins at its start frequency, and once it reaches the top of the channel, it wraps back to the bottom and continues sweeping up until it reaches the start frequency again.
+
+<Aside type="tip">
+You don't need a fancy method like chirp spread spectrum to recover signals from below the noise floor. A simple tone would also be recoverable with enough integration on the receiver (with integration, the signal amplitude grows with the number of samples $N$, whilst the noise only grows with $\sqrt{N}$). However, this only works if the tone's frequency stays stable over the whole integration time. CSS has benefits such as tolerance of frequency offset from crystals, reducing the effects of narrowband interference and multipath fading, and allowing multiple transmissions to share a channel.
+</Aside>
 
 ## Spreading Factor
 
-The spreading factor (SF) sets how many bits each LoRa symbol carries. Each LoRa symbol is a single chirp the sweeps across the entire channel bandwidth. A chirp is divided into 2^SF chips, and one chip is sent per hertz of bandwidth per second. SF7 hs 128 chips, while SF12 has 4096 chips.
+The spreading factor (SF) sets how many bits each LoRa symbol carries. Each LoRa symbol is a single chirp that sweeps across the entire channel bandwidth. A chirp is divided into $2^{SF}$ chips. The chip rate equals the bandwidth, so each chip lasts $1/BW$. SF7 has 128 chips, while SF12 has 4096 chips.
 
-Data is encoded in where the chirp starts in frequency. For example, let's say the channel spans 1 to 2kHz, and you send 2 bits per symbol (`00`, `01`, `10`, or `11`). This gives 4 possible starting frequencies, evenly spaced across the channel. Every symbol still sweeps through the entire channel and lasts the same amount of time. When the chirp reaches the top of the channel, it wraps around to the bottom and continues sweeping up until it gets back to its starting frequency:
+Data is encoded in where the chirp starts in frequency. For example, let's say the channel spans 1 to 2kHz, and you send 2 bits per symbol (`00`, `01`, `10`, or `11`). This gives 4 possible starting frequencies, evenly spaced across the channel. Every symbol still sweeps through the entire channel and lasts the same amount of time.
 
 - `00` starts at 1kHz and sweeps up to 2kHz.
 - `01` starts at 1.25kHz, sweeps up to 2kHz, then wraps to 1kHz and sweeps up to 1.25kHz.
@@ -30,12 +68,53 @@ Data is encoded in where the chirp starts in frequency. For example, let's say t
 
 These four symbols are plotted below.
 
-<Image src={import('./_assets/lora-chirp-symbols-frequency-vs-time.svg')} width="900px">Frequency vs. time for the four symbols of a simplified 2-bit-per-symbol chirp scheme on a 1-2kHz channel. The dot marks the starting frequency, which carries the data. Each symbol sweeps the full channel, wrapping from the top back to the bottom (dotted line), and all symbols last the same time $T$.</Image>
+<Image src={import('./_assets/lora-chirp-symbols-frequency-vs-time.svg')} width="900px">Frequency vs. time for the four symbols of a simplified 2-bit-per-symbol chirp scheme on a 1-2kHz channel. The dot marks the starting frequency, which carries the data. Each symbol sweeps the full channel, wrapping from the top back to the bottom (dotted line), and all symbols last the same time $T_s$.</Image>
+
+For our example, $SF = 2$ and $BW = 1\unit{kHz}$. This gives a symbol time $T_s$ of $4\unit{ms}$:
+
+$$
+\begin{align*}
+T_s &= \frac{2^{SF}}{BW} \\
+&= \frac{2^2}{1\unit{kHz}} \\
+&= \frac{4}{1000\unit{Hz}} \\
+&= 4\unit{ms}
+\end{align*}
+$$
+
+<Aside type="tip">
+One interesting note is that once you choose the SF and bandwidth, the symbol time is fixed. You can't just decide you want to chirp faster to send symbols faster. This follows from the fact that "one chip is sent per second per Hz of bandwidth".[^semtech-sx1276-ds] Physically, this is because the receiver's FFT can only distinguish tones that are at least $1/T_s$ apart, so a shorter symbol could not carry as many distinguishable symbols.
+</Aside>
 
 In real LoRa there are $2^{SF}$ possible starting frequencies rather than 4 (e.g. 128 for SF7), so each symbol carries SF bits.
+
+## De-chirping
+
+To work out which symbol was sent, the receiver _de-chirps_ the incoming signal by comparing it against a reference chirp, the plain up-chirp used for symbol `00`. Mathematically, it does this by multiplying the received signal by the mirror image of the reference (a down-chirp), which subtracts the reference chirp's frequency from the received frequency. Because the received chirp and the reference sweep at exactly the same rate, the sweep cancels out, leaving a constant tone whose frequency is the gap between the two chirps (which is the starting position!). You can think of it like tuning a radio whose dial sweeps at the same rate as the chirp: relative to the moving dial, the signal stands still. The receiver then takes an FFT of the de-chirped signal. All the symbol's energy lands in a single FFT bin, and the bin with the most energy is the symbol.
+
+The diagram below shows this process as a mixer (multiplier, standard RF transmitter terminology) followed by an FFT.
+
+<Image src={import('./_assets/lora-dechirp-mixer-block-diagram.svg')} width="900px">A block diagram of LoRa de-chirping. The received chirp is multiplied by a reference down-chirp, which cancels the sweep and leaves a constant tone whose frequency depends on the symbol value $k$. An FFT then turns this tone into a single peak in bin $k$.</Image>
+
+These three stages are shown below for the four symbols of the 2-bit example.
+
+<Image src={import('./_assets/lora-dechirp-stages.svg')} width="900px">The three stages of demodulating each symbol. Row 1: the received chirp (red) and the receiver's reference chirp (grey), which is the plain up-chirp of symbol `00`. The receiver multiplies the received signal by the mirror image (a down-chirp) of this reference. Row 2: after de-chirping, each symbol becomes a constant tone, with a frequency set by the symbol value. (The wrapped part of the chirp produces a negative frequency, which aliases to the same tone when sampled at a rate equal to the bandwidth.) Row 3: the FFT of the de-chirped signal, which has all of its energy in the bin matching the symbol.</Image>
+
+De-chirping is how the receiver recovers signals below the noise floor. The signal's energy is spread over the whole symbol, and de-chirping concentrates it into one FFT bin. The noise doesn't match the reference chirp, so it stays spread across all $2^{SF}$ bins. The plot below shows a single simulated symbol received at -15 dB SNR. Before de-chirping, the spectrum looks like pure noise. After de-chirping, the transmitted symbol only just stands out for SF7 (which is below its -7.5 dB demodulation limit), but stands over 100 times above the noise floor for SF12. The more bins there are (i.e. the higher the SF), the more the symbol stands out above the noise.
+
+<Image src={import('./_assets/lora-dechirp-in-noise.svg')} width="900px">A simulated LoRa symbol received at -15 dB SNR, for SF7 (top) and SF12 (bottom). Left: the spectrum of the received signal before de-chirping. Right: the FFT after de-chirping, with the transmitted symbol's bin marked.</Image>
+
+<Aside type="tip">
+LoRa is not the only technology that receives signals below the noise floor. [GPS](/electronics/components/gnss-gps-modules/) does too, but using direct-sequence spread spectrum (DSSS) rather than chirps. Each satellite multiplies its 50 bps navigation data by a pseudo-random code (the C/A code) that is 1023 chips long, sent at $1.023\unit{Mchips/s}$, so it repeats every $1\unit{ms}$. By the time it reaches the ground, the signal is about $-130\unit{dBm}$, roughly $20\unit{dB}$ _below_ the thermal noise in its $2\unit{MHz}$ bandwidth. Each data bit is held for 20 code periods ($20\unit{ms}$), and only changes at a code boundary, so the receiver always correlates over a constant bit.
+
+The receiver multiplies the incoming signal by its own copy of each satellite's code (_correlating_ or _de-spreading_ it), which is the DSSS equivalent of de-chirping. When the codes line up, the satellite's energy collapses back into a narrowband signal, while the noise (and the other satellites, which use different codes) stays spread out.
+</Aside>
 
 {/* ============================================================================================ */}
 {/* REFERENCES */}
 {/* ============================================================================================ */}
 
 [^semtech-sx1276-ds]: Semtech (2015, Mar). _SX1276/77/78/79 - 137 MHz to 1020 MHz Low Power Long Range Transceiver (Rev. 4)_ [datasheet]. Retrieved 2026-10-21, from https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf.
+[^semtech-an1200-22-lora-modulation-basics]: Semtech (2015, May). _AN1200.22: LoRa Modulation Basics (Rev. 2)_ [application note]. Retrieved 2026-10-22, from http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf.
+[^wikipedia-lora]: Wikipedia (2026, Oct 7). _LoRa_ [wiki]. Retrieved 2026-10-27, from https://en.wikipedia.org/wiki/LoRa.
+[^glyn-store-lora]: Glyn Store. _LoRa_ [product page]. Retrieved 2026-10-27, from https://glynstore.com/lora/.
+[^lora-alliance-rp002-1-0-3-regional-parameters]: LoRa Alliance (2021, May 5). _RP002-1.0.3 LoRaWAN Regional Parameters_ [specification]. Retrieved 2026-10-27, from https://lora-alliance.org/wp-content/uploads/2021/05/RP002-1.0.3-FINAL-1.pdf.
