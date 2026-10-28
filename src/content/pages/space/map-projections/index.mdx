@@ -10,7 +10,7 @@ title: Map Projections
 
 The Mercator projection is one of the **most common map projections in existence**. The primary reason for it's success is that it plots any course of constant bearing (angle w.r.t to North, a.k.a a _rhumb line_) as a straight line, which was extremely useful for ship navigation in the early days of it's existence.
 
-The Mercator map was created in-full firstly by _Gerhard Kremer_, who went by the trade name of _Gerhard Mercator_. He created the map in 1569, and named it _Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendata_[^wikipedia].
+The Mercator map was created in-full firstly by _Gerhard Kremer_, who went by the trade name of _Gerhard Mercator_. He created the map in 1569, and named it _Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendata_.[^wikipedia-mercator-projection]
 
 ## Web Mercator Projection
 
@@ -18,7 +18,7 @@ The Web Mercator projection is a slight variant of the standard Mercator project
 
 ### WKT
 
-[^spatialreference.org]
+The WKT for the Web Mercator projection (EPSG:3857) is shown below.[^spatialreference-epsg-3857]
 
 ```text
 PROJCS["WGS 84 / Pseudo-Mercator",
@@ -51,7 +51,7 @@ Like the Mercator projection, the Transverse Mercator projection is a cylindrica
 
 ### WKT
 
-[^spatialreference.org]
+An example WKT for a Transverse Mercator projection is shown below.[^spatialreference-org]
 
 ```text
 PROJCS["NMMM",
@@ -69,7 +69,10 @@ PROJCS["NMMM",
     UNIT["Meter",1.0]]
 ```
 
-## References
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
 
-[^wikipedia]: [https://en.wikipedia.org/wiki/Mercator_projection](https://en.wikipedia.org/wiki/Mercator_projection)
-[^spatialreference.org] [https://spatialreference.org/](https://spatialreference.org/)
+[^wikipedia-mercator-projection]: Wikipedia. _Mercator projection_ [wiki]. Retrieved 2026-10-29, from https://en.wikipedia.org/wiki/Mercator_projection.
+[^spatialreference-epsg-3857]: Spatial Reference. _EPSG:3857 WGS 84 / Pseudo-Mercator_ [website]. Retrieved 2026-10-29, from https://spatialreference.org/ref/epsg/3857/.
+[^spatialreference-org]: Spatial Reference. _spatialreference.org_ [website]. Retrieved 2026-10-29, from https://spatialreference.org/.

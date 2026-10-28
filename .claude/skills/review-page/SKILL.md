@@ -95,11 +95,19 @@ Every footnote definition at the bottom of the page must follow:
 - Date after the author in `(year, Mon day)` form when known; omit gracefully when unknown.
 - The `[type]` tag (e.g. `[datasheet]`, `[forum post]`, `[wiki]`) when applicable.
 
+The footnote definitions must sit under the `REFERENCES` comment banner, NOT under a `## References` markdown heading (flag any `## References` heading and replace it with the banner):
+
+```
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+```
+
 Also check:
 
 - **Unused definitions** — every `[^key]:` at the bottom must be cited somewhere in the body.
 - **Undefined citations** — every `[^key]` in the body must have a definition.
-- **Inline citation placement** — an inline `[^key]` reference must come *after* the full stop at the end of the sentence, not before it. E.g. `This sentence is referenced.[^my-ref]`, not `This sentence is referenced[^my-ref].`
+- **Inline citation placement** — an inline `[^key]` reference must come *after* the full stop at the end of the sentence, not before it. E.g. `This sentence is referenced.[^my-ref]`, not `This sentence is referenced[^my-ref].` This applies to image captions too (`Image from Xilinx.[^ref]</Image>`). Detect violations with the regex `\[\^[^]]+\]\.`.
 
 ### Frontmatter and structure
 
@@ -120,5 +128,6 @@ State explicitly which numerical results you verified. End by offering to apply 
 
 ## Step 4: If asked to apply fixes
 
-- Apply everything found, bump `lastUpdated`, then re-grep for the mechanical issues (old-style units, `*` in math, missing px, `it's`, etc.) to confirm nothing was missed.
+- Apply everything found, bump `lastUpdated`, then re-grep for the mechanical issues (old-style units, `*` in math, missing px, `it's`, citations before the full stop, etc.) to confirm nothing was missed.
+- Any **new content you write** while applying fixes (new sections, new citations, rewritten captions) must follow the same house rules the review checks for — in particular, place new `[^key]` citations *after* the sentence's full stop. Re-check your own additions, not just the original text.
 - Do NOT run a full `astro build` to verify — it is slow. Content-only changes need no build; at most use `astro check` or the dev server.

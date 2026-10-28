@@ -1,44 +1,51 @@
 ---
 authors: [gbmhunter]
 date: 2015-03-24
-lastUpdated: 2024-04-23
+description: WLCSP (Wafer-Level Chip-Scale Package) is a very small SMD component package where the package is the same size as the die, with solder bumps on the underside arranged like a BGA.
+lastUpdated: 2026-10-29
 tags: [component packages, PCB design, WLCSP, LCSPW, BGA]
 title: WLCSP Component Package
 type: page
 ---
 
-Wafer-level Chip-scale Package (WLCSP) is a very small SMD component package typically used for housing ICs. The WLCSP package can either be rectangular or square in shape.
+Wafer-Level Chip-Scale Package (WLCSP) is a very small SMD component package typically used for housing ICs. The WLCSP package can either be rectangular or square in shape.
 
-The pin numbering follows the standard [BGA](/pcb-design/component-packages/bga-component-package) convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, etc.
+The pin numbering follows the standard [BGA](/pcb-design/component-packages/bga-component-package/) convention: the rows are labelled with letters (A, B, C, ...) and the columns with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, etc.
 
-The rows of bumps maybe aligned in a grid or offset, again like BGA.
+The rows of bumps may be aligned in a grid or offset, again like BGA.
 
-As of March 2015, WLCSP offers the smallest possible footprint of any component package for a particular die ((https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf)).
+WLCSP is a true chip-scale packaging technology and offers the smallest possible footprint of any component package for a particular die.[^onsemi-an-5075-wlcsp]
 
 ## Synonyms
 
-* LCSPW: W has changed position.
+- LCSPW: W has changed position.
 
 ## Dimensions
 
-The pin count is typically between 4 and 144, and the pitch is typically between 0.3 and 0.5mm.
+The pin count is typically between 4 and 144 (2 × 2 to 12 × 12 bump arrays), and the pitch is typically between 0.3 and 0.5mm.[^onsemi-an-5075-wlcsp]
 
 ## Photosensitivity
 
-Unusually, **the WLCSP package is sensitive to high-intensity, long wavelength light**. This was due to the photoelectric effect, where the light hitting the top and sides of the semiconductor-based package causes current to flow in the die and can disrupt proper operation.
+Unusually, **the WLCSP package is sensitive to high-intensity, long wavelength light**. Because there is no opaque mould compound around the die, light hitting the exposed silicon generates electron-hole pairs in the die (the same effect a photodiode relies on). The resulting photocurrent can disrupt proper operation of the IC.
 
-WLCSP packages can come with a backside laminate (BSL) which blocks light from disrupting the IC. Fairchild Semiconductor explain that having a BSL is not significant for board-level reliability.
+WLCSP packages can come with a backside laminate (BSL) which protects the die from chipping during handling and from light penetrating the back side.[^onsemi-an-5075-wlcsp] Not all WLCSP products feature a BSL. Fairchild Semiconductor (now part of onsemi) explain that having a BSL is not significant for board-level reliability.
 
-<Image src={import('./_assets/paragraph-on-backside-laminate-for-wlcsp-package-farchild-an-5075.png')} width="517px">Paragraph on backside laminate (BSL) for WLCSP component packages. Image from https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf.</Image>
+<Image src={import('./_assets/paragraph-on-backside-laminate-for-wlcsp-package-farchild-an-5075.png')} width="517px">Paragraph on backside laminate (BSL) for WLCSP component packages. Image from an earlier Fairchild Semiconductor revision of AN-5075.[^onsemi-an-5075-wlcsp]</Image>
 
 I encountered this issue first hand with a combined battery charger/linear regulator IC whose regulated output would collapse if I shone a strong 500W halogen at the PCB from about 1m away. Placing a bit of blue-tack over the IC fixed the issue.
 
-## RaspberryPi 2 Bug
+## Raspberry Pi 2 Bug
 
-The photosensitivity of the WLCSP package manifested itself as a bug on the RaspberryPi 2. The regulator that provided power to the RaspberryPi 2 core was in a WLCSP package, and when exposed to a high-intensity, long wavelength light (like a xenon camera flash), the RaspberryPi 2 would reset.
+The photosensitivity of the WLCSP package manifested itself as a bug on the Raspberry Pi 2. The regulator that provided power to the Raspberry Pi 2 core was in a WLCSP package, and when exposed to a high-intensity, long wavelength light (like a xenon camera flash), the Raspberry Pi 2 would reset.
 
-The current caused by "normal" camera flashes do not seem to be able to permanently damage the chip.
+The current caused by "normal" camera flashes does not seem to be able to permanently damage the chip.
 
 ## Similar To
 
-* [BGA](/pcb-design/component-packages/bga-component-package)
+- [BGA](/pcb-design/component-packages/bga-component-package/)
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^onsemi-an-5075-wlcsp]: onsemi (2018, Oct). _AN-5075/D: Wafer-Level Chip-Scale Package (WLCSP) (Rev. 2)_ [application note]. Retrieved 2026-10-29, from https://www.onsemi.com/pub/collateral/an-5075.pdf.
