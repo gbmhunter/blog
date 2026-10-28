@@ -1,0 +1,105 @@
+---
+authors: [gbmhunter]
+date: 2026-10-28
+description: Keypads are arrays of buttons used for user input, typically wired in a matrix and scanned by a microcontroller.
+lastUpdated: 2026-10-28
+tags: [electronics, components, keypads, buttons, switches, matrix, user input]
+title: Keypads
+type: page
+---
+
+<WarningIsNotes />
+
+_Keypads_ are arrays of buttons used for user input, such as the numeric keypads found on security panels and phones. They are typically wired as a matrix of rows and columns and scanned by a microcontroller.
+
+## Types
+
+### Membrane Keypads
+
+<Image src={import('./_assets/adafruit-419-membrane-keypad-12key-photo.webp')} width="300px">Photo of the Adafruit 419, a 12-key (3x4) membrane keypad.[^digikey-adafruit-419]</Image>
+
+Membrane keypads are thin keypads made of a flexible material. FPCs (flexible printed circuits) are usually the preferred way to connect them to a PCB (they happen to be nice and thin also!). They are relatively cheap to manufacture and easy to customize, but they are typically not as durable as other types of keypads. The keys becoming worn and feeling funny to press or becoming unresponsive are common failure modes for membrane keypads.
+
+<Image src={import('./_assets/membrane-keypad-stackup.svg')} width="700px">Exploded view of a typical membrane keypad stackup. Pressing a key pushes the shorting pad on the underside of the upper circuit through the hole in the spacer, connecting the row and column traces on the lower circuit.</Image>
+
+### Silicone Keypads
+
+<Image src={import('./_assets/silicone-keypad-luen-fung-photo.webp')} width="300px">Photo of a silicone keypad made by Luen Fung.</Image>
+
+Silicone keypads are keypads made out of silicone rubber. The silicone forms the keys, and electrical contact is done via a number of methods, including:
+
+- **Conductive rubber pills**: Conductive rubber pills on the underside of the keys short traces on a PCB when pressed.
+- **Metal domes**: Metal domes on a PCB provide a tactile click when pressed and short the traces on the PCB.
+- **Tactile switches**: Low profile tactile pushbutton switches can be soldered onto a PCB and placed under the keypad. The switch gives the tactile click and lets you set the actuation force and travel distance. This setup is convenient for rapid prototyping as you can use the keypad as soon as the PCBA is done by just pressing the tactile switches, without having to wait for the silicone keypad moulding to be done.
+- **Membrane**: A membrane keypad underneath the silicone can be a convenient alternative to the above options to provide the electrical contacts.
+
+Some silicone keypad manufacturers will just manufacture the silicone mat, leaving you to work out the electrical bits yourself. Others will also offer metal dome/PCB assembly or membrane assembly, so you get a complete keypad assembly.
+
+The silicone mat involves making a mould, so there is generally a non-recurring engineering (NRE) cost for the mould. As of 2026, Chinese suppliers quote around US\$500–2000 for a 12-key numeric keypad mould. The unit cost of the mat is usually less than US\$1 each in 1,000–10,000 quantities.
+
+The tops of the keys can be printed with text and symbols. There are a number of different methods to do this:
+
+- **Pad printing**: The image is etched onto a metal plate and then filled with a silicone-based ink. A silicone rubber pad is pressed onto the plate to pick up the ink, and then pressed onto the top of the key to transfer the ink.
+- **Silk screen printing**: Using the same technique as designators on PCBs, a screen is made for each colour and the ink is pushed through the screen onto the silicone. This method supports a large amount of colours and is very economical for large jobs.[^luen-fung-laser-etching-vs-screen-printing]
+- **Laser etching**: The silicone is first moulded with a translucent or white base colour and then coated with an opaque layer of paint (usually black). A laser then selectively burns away areas of the paint to expose the base colour underneath. This method supports backlighting.[^nelson-miller-laser-etching-silicone-rubber-keypads][^luen-fung-laser-etching-vs-screen-printing] You are limited with what colours you can use and not suitable for backlighting.
+
+## Debouncing
+
+See the [Debouncing page](/electronics/circuit-design/debouncing/) for more information.
+
+## Manufacturers
+
+### Grayhill
+
+Grayhill manufactures complete keypad assemblies that are designed to be integrated into a product and/or mounted to a panel.
+
+<Image src={import('./_assets/grayhill-keypad-product-range-from-website.webp')} width="400px">The range of keypad series sold by Grayhill.[^grayhill-keypads]</Image>
+
+The below photo shows you the top and bottom sides of the Grayhill 84AB1-102 keypad. A standard 2.54mm (0.1") pitch header protrudes from the back side and could either be soldered onto a PCB or connected to a [ribbon cable](/electronics/components/connectors/idc-connectors/).
+
+<Image src={import('./_assets/grayhill-84-series-12key-84ab1-102-keypad-photo-top-and-bottom.webp')} width="400px">Photo of the top and bottom of the Grayhill 84AB1-102, a 12-key keypad from their 84 series. The PCB with snap dome contacts and the pin headers can be seen on the bottom.[^digikey-grayhill-84ab1-102]</Image>
+
+Below is a screenshot from the datasheet of the Grayhill 83 series 3x4 keypad:
+
+<Image src={import('./_assets/grayhill-83-series-3x4-keypad-dimensions.webp')} width="700px">Dimensions of the Grayhill 83 series 3x4 keypad.[^grayhill-83-series-datasheet]</Image>
+
+Series 96 is their cheapest range for 3x4 and 4x4 keypads. It uses conductive rubber for the electrical contact.[^grayhill-96-series-datasheet]
+
+### Storm Interface
+
+Like Grayhill, Storm Interface manufactures complete keypad assemblies. They are stocked by distributors such as DigiKey and Element14.
+
+### JRPanel
+
+JRPanel manufactures custom membrane keypads. They offer fast online quoting and turn around times (quoted at 48 hours on their front page).
+
+<Image src={import('./_assets/jrpanel-logo.webp')} width="150px">The JRPanel logo.[^jrpanel-homepage]</Image>
+
+### Hongju Silicone
+
+Hongju manufacturers custom silicone keypads.
+
+### Niceone Tech
+
+- Webite: https://www.niceone-keypad.com/
+
+Niceone is a subsidiary of Nicke-tech and based in Dongguan, China.[^niceone-keypad-homepage]
+
+## Further Reading
+
+- [Switches](/electronics/components/switches/)
+- [Capacitive touch sensing](/electronics/circuit-design/capacitive-sensing/touch/)
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^grayhill-keypads]: Grayhill. _Keypads_ [product page]. Retrieved 2026-10-28, from https://www.grayhill.com/products/keypads.
+[^grayhill-83-series-datasheet]: Grayhill (2023, Nov 19). _Series 83 - Unsealed, .500" Centers_ [datasheet]. Retrieved 2026-10-28, from https://grayhill.com/wp-content/uploads/media/83-datasheet.pdf.
+[^grayhill-96-series-datasheet]: Grayhill (2024, Jan 19). _Series 96 - Conductive Rubber_ [datasheet]. Retrieved 2026-10-28, from https://grayhill.com/wp-content/uploads/media/96-datasheet.pdf.
+[^digikey-grayhill-84ab1-102]: DigiKey. _84AB1-102 Grayhill Inc. | Keypad Switches_ [product page]. Retrieved 2026-10-28, from https://www.digikey.co.nz/en/products/detail/grayhill-inc/84AB1-102/2679964.
+[^digikey-adafruit-419]: DigiKey. _419 Adafruit Industries LLC | Keypad Switches_ [product page]. Retrieved 2026-10-28, from https://www.digikey.co.nz/en/products/detail/adafruit-industries-llc/419/5353596.
+[^jrpanel-homepage]: JRPanel. _Membrane Switch Panels & Graphic Overlay Manufacturer_ [website]. Retrieved 2026-10-28, from https://www.jrpanel.com/.
+[^niceone-keypad-homepage]: Niceone Tech. _Custom Membrane Switch & Keyboard - Membrane Switch Design Experts_ [website]. Retrieved 2026-10-28, from https://www.niceone-keypad.com/.
+[^nelson-miller-laser-etching-silicone-rubber-keypads]: Nelson Miller Group (2016, Feb 3). _How Laser Etching is Performed on Silicone-Rubber Keypads_. Retrieved 2026-10-28, from https://nelsonmillergroup.com/how-laser-etching-is-performed-on-silicone-rubber-keypads/.
+[^luen-fung-laser-etching-vs-screen-printing]: LeoLam (2025, Jul 29). _Laser Etching vs. Screen Printing on Silicone Keypads: Which Is Better?_. Luen Fung Silicone Rubber Mfg., Co. Retrieved 2026-10-28, from https://www.silicone.com.hk/en/silicone-keypad-laser-etching-silkscreen-printing/.

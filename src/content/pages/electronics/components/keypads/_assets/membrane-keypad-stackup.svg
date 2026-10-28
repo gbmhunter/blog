@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     width="1130" height="920" viewBox="0 0 1130 920" preserveAspectRatio="xMidYMid meet">
+  <!-- Exploded view of a typical membrane keypad stackup. Generated in isometric plane
+       coordinates: each layer group uses matrix() to project its flat (u,v) drawing. -->
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .name { font-size: 22px; font-weight: bold; fill: #1e3a5f; }
+    .desc { font-size: 17px; fill: #555; }
+    .leader { fill: none; stroke: #1e3a5f; stroke-width: 1.5; }
+    .dot { fill: #1e3a5f; }
+  </style>
+  <defs>
+    <mask id="spacer-holes" maskUnits="userSpaceOnUse" x="-10" y="-10" width="380" height="300"><rect x="-10" y="-10" width="380" height="300" fill="white"/><circle cx="110" cy="50" r="21" fill="black"/><circle cx="190" cy="50" r="21" fill="black"/><circle cx="270" cy="50" r="21" fill="black"/><circle cx="110" cy="100" r="21" fill="black"/><circle cx="190" cy="100" r="21" fill="black"/><circle cx="270" cy="100" r="21" fill="black"/><circle cx="110" cy="150" r="21" fill="black"/><circle cx="190" cy="150" r="21" fill="black"/><circle cx="270" cy="150" r="21" fill="black"/><circle cx="110" cy="200" r="21" fill="black"/><circle cx="190" cy="200" r="21" fill="black"/><circle cx="270" cy="200" r="21" fill="black"/><rect x="110" y="46" width="210" height="8" fill="black"/><rect x="110" y="96" width="210" height="8" fill="black"/><rect x="110" y="146" width="210" height="8" fill="black"/><rect x="110" y="196" width="210" height="8" fill="black"/><rect x="316" y="50" width="8" height="150" fill="black"/></mask>
+  </defs>
+  <g inkscape:groupmode="layer" inkscape:label="Rear adhesive" id="layer-rear-adhesive">
+  <g transform="matrix(0.894 -0.447 0.894 0.447 160 754)"><path d="M0,0 H360 V280 H0 Z" fill="#c9ac5a"/></g>
+  <g id="rear-adhesive" transform="matrix(0.894 -0.447 0.894 0.447 160 750)">
+    <path d="M0,0 H360 V280 H0 Z" fill="#f1dc9a"/>
+  </g>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="Lower circuit" id="layer-lower-circuit">
+  <g transform="matrix(0.894 -0.447 0.894 0.447 160 645)"><path d="M0,0 H360 V280 H0 V170 H-230 V90 H0 Z" fill="#24598c"/></g>
+  <g id="lower-circuit" transform="matrix(0.894 -0.447 0.894 0.447 160 640)">
+    <path d="M0,0 H360 V280 H0 V170 H-230 V90 H0 Z" fill="#3b82c4"/>
+    <path d="M270,74 H50 V100 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M110,66 V74" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M190,66 V74" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,66 V74" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,124 H40 V110 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M110,116 V124" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M190,116 V124" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,116 V124" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,174 H30 V120 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M110,166 V174" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M190,166 V174" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,166 V174" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,224 H20 V130 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M110,216 V224" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M190,216 V224" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M270,216 V224" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M84,50 V235 H15 V140 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M94,50 H84" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M94,100 H84" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M94,150 H84" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M94,200 H84" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M164,50 V245 H10 V150 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M174,50 H164" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M174,100 H164" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M174,150 H164" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M174,200 H164" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M244,50 V255 H5 V160 H-218" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M254,50 H244" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M254,100 H244" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M254,150 H244" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M254,200 H244" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="78" y="70" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M84,68 V80" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="78" y="120" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M84,118 V130" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="78" y="170" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M84,168 V180" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="78" y="220" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M84,218 V230" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="158" y="70" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M164,68 V80" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="158" y="120" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M164,118 V130" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="158" y="170" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M164,168 V180" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="158" y="220" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M164,218 V230" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="238" y="70" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M244,68 V80" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="238" y="120" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M244,118 V130" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="238" y="170" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M244,168 V180" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="238" y="220" width="12" height="8" rx="1.5" fill="#bfe3ff" opacity="0.9"/>
+    <path d="M244,218 V230" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="50" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M98.8,41 H116.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M101.3,47 H123.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M96.3,53 H118.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M103.8,59 H121.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="50" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M178.8,41 H196.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M181.3,47 H203.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M176.3,53 H198.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M183.8,59 H201.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="50" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M258.8,41 H276.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M261.3,47 H283.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M256.3,53 H278.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M263.8,59 H281.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="100" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M98.8,91 H116.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M101.3,97 H123.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M96.3,103 H118.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M103.8,109 H121.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="100" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M178.8,91 H196.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M181.3,97 H203.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M176.3,103 H198.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M183.8,109 H201.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="100" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M258.8,91 H276.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M261.3,97 H283.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M256.3,103 H278.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M263.8,109 H281.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="150" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M98.8,141 H116.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M101.3,147 H123.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M96.3,153 H118.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M103.8,159 H121.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="150" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M178.8,141 H196.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M181.3,147 H203.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M176.3,153 H198.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M183.8,159 H201.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="150" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M258.8,141 H276.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M261.3,147 H283.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M256.3,153 H278.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M263.8,159 H281.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="200" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M98.8,191 H116.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M101.3,197 H123.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M96.3,203 H118.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M103.8,209 H121.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="200" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M178.8,191 H196.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M181.3,197 H203.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M176.3,203 H198.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M183.8,209 H201.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="200" r="16" fill="#2f6fac" stroke="#e3e8ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M258.8,191 H276.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M261.3,197 H283.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M256.3,203 H278.7" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <path d="M263.8,209 H281.2" fill="none" stroke="#e3e8ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <rect x="-226" y="96.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+    <rect x="-226" y="106.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+    <rect x="-226" y="116.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+    <rect x="-226" y="126.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+    <rect x="-226" y="136.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+    <rect x="-226" y="146.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+    <rect x="-226" y="156.5" width="26" height="7" rx="1" fill="#e3e8ee"/>
+  </g>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="Spacer" id="layer-spacer">
+  <g transform="matrix(0.894 -0.447 0.894 0.447 160 535)"><path d="M0,0 H360 V280 H0 Z" fill="#b8721c" mask="url(#spacer-holes)"/></g>
+  <g id="spacer" transform="matrix(0.894 -0.447 0.894 0.447 160 530)">
+    <path d="M0,0 H360 V280 H0 Z" fill="#f4a742" mask="url(#spacer-holes)"/>
+  </g>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="Upper circuit" id="layer-upper-circuit">
+  <g transform="matrix(0.894 -0.447 0.894 0.447 160 425)"><path d="M0,0 H360 V280 H0 Z" fill="#24598c"/></g>
+  <g id="upper-circuit" transform="matrix(0.894 -0.447 0.894 0.447 160 420)">
+    <path d="M0,0 H360 V280 H0 Z" fill="#3b82c4"/>
+    <circle cx="110" cy="50" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="50" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="50" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="100" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="100" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="100" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="150" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="150" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="150" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="110" cy="200" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="190" cy="200" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <circle cx="270" cy="200" r="15" fill="#d5dbe2" stroke="#9aa4af" stroke-width="1" vector-effect="non-scaling-stroke"/>
+  </g>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="Overlay adhesive" id="layer-overlay-adhesive">
+  <g transform="matrix(0.894 -0.447 0.894 0.447 160 314)"><path d="M0,0 H360 V280 H0 Z" fill="#c9ac5a"/></g>
+  <g id="overlay-adhesive" transform="matrix(0.894 -0.447 0.894 0.447 160 310)">
+    <path d="M0,0 H360 V280 H0 Z" fill="#f1dc9a"/>
+  </g>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="Graphic overlay" id="layer-graphic-overlay">
+  <g transform="matrix(0.894 -0.447 0.894 0.447 160 206)"><path d="M0,0 H360 V280 H0 Z" fill="#15181c"/></g>
+  <g id="overlay" transform="matrix(0.894 -0.447 0.894 0.447 160 200)">
+    <path d="M0,0 H360 V280 H0 Z" fill="#2b2f36"/>
+    <rect x="12" y="12" width="336" height="256" rx="10" fill="none" stroke="#5c6470" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+    <circle cx="300" cy="243" r="6" fill="#4ade80"/>
+    <rect x="79.0" y="30.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="110" y="58" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">1</text>
+    <rect x="159.0" y="30.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="190" y="58" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">2</text>
+    <rect x="239.0" y="30.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="270" y="58" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">3</text>
+    <rect x="79.0" y="80.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="110" y="108" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">4</text>
+    <rect x="159.0" y="80.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="190" y="108" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">5</text>
+    <rect x="239.0" y="80.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="270" y="108" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">6</text>
+    <rect x="79.0" y="130.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="110" y="158" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">7</text>
+    <rect x="159.0" y="130.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="190" y="158" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">8</text>
+    <rect x="239.0" y="130.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="270" y="158" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">9</text>
+    <rect x="79.0" y="180.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="110" y="208" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">*</text>
+    <rect x="159.0" y="180.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="190" y="208" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">0</text>
+    <rect x="239.0" y="180.0" width="62" height="40" rx="9" fill="#3a404a" stroke="#e5e7eb" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    <text x="270" y="208" font-size="23" font-weight="bold" fill="#f3f4f6" text-anchor="middle">#</text>
+  </g>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="Annotations" id="layer-annotations">
+  <path d="M740.2,166.2 H786" class="leader"/>
+  <circle cx="740.2" cy="166.2" r="4" class="dot"/>
+  <text x="800" y="162.2" class="name" xml:space="preserve">Graphic overlay</text>
+  <text x="800" y="185.2" class="desc" xml:space="preserve">Printed polyester or polycarbonate</text>
+  <path d="M740.2,276.2 H786" class="leader"/>
+  <circle cx="740.2" cy="276.2" r="4" class="dot"/>
+  <text x="800" y="272.2" class="name" xml:space="preserve">Overlay adhesive</text>
+  <text x="800" y="295.2" class="desc" xml:space="preserve">Bonds the overlay to the circuit</text>
+  <path d="M740.2,386.2 H786" class="leader"/>
+  <circle cx="740.2" cy="386.2" r="4" class="dot"/>
+  <text x="800" y="382.2" class="name" xml:space="preserve">Upper circuit</text>
+  <text x="800" y="405.2" class="desc" xml:space="preserve">Conductive shorting pads on underside</text>
+  <path d="M740.2,496.2 H786" class="leader"/>
+  <circle cx="740.2" cy="496.2" r="4" class="dot"/>
+  <text x="800" y="492.2" class="name" xml:space="preserve">Spacer</text>
+  <text x="800" y="515.2" class="desc" xml:space="preserve">Holes let the circuits touch when pressed</text>
+  <path d="M740.2,606.2 H786" class="leader"/>
+  <circle cx="740.2" cy="606.2" r="4" class="dot"/>
+  <text x="800" y="602.2" class="name" xml:space="preserve">Lower circuit</text>
+  <text x="800" y="625.2" class="desc" xml:space="preserve">Silver traces and contact pads</text>
+  <path d="M740.2,716.2 H786" class="leader"/>
+  <circle cx="740.2" cy="716.2" r="4" class="dot"/>
+  <text x="800" y="712.2" class="name" xml:space="preserve">Rear adhesive</text>
+  <text x="800" y="735.2" class="desc" xml:space="preserve">Mounts the keypad to the product</text>
+  <path d="M142.1,808.9 V850.9" class="leader"/>
+  <circle cx="142.1" cy="808.9" r="4" class="dot"/>
+  <text x="132.1" y="876.9" class="name" xml:space="preserve">Flexible tail</text>
+  <text x="132.1" y="899.9" class="desc" xml:space="preserve">Plugs into an FPC connector</text>
+  </g>
+</svg>
