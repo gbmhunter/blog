@@ -1,0 +1,48 @@
+---
+authors: [gbmhunter]
+date: 2026-10-29
+description: Digital isolators pass digital signals across a galvanic isolation barrier using capacitive or magnetic coupling, allowing much higher data rates than optical isolatorsye. Includes info on why optical isolators are slow and example parts such as the TI ISO7762.
+lastUpdated: 2026-10-29
+tags: [electronics, components, digital isolators, isolators, galvanic isolation, capacitive isolation, magnetic isolation, CMTI, ISO7762]
+title: Digital Isolators
+type: page
+---
+
+Digital isolators are isolation ICs specifically designed to pass digital signals across a galvanic isolation barrier. They differ from [optical isolators](/electronics/components/optocouplers/) in that they use capacitive or magnetic coupling instead of light to pass the signal across the isolation barrier. This allows them to operate at much higher speeds than optical isolators, e.g. up to 100 Mbps or more.
+
+Digital isolators need a separate supply and ground on each side of the isolation barrier. The supply for the isolated side must itself be isolated (e.g. from an [isolated DC/DC converter](/electronics/components/power-regulators/isolated-switch-mode-power-supplies/)), otherwise the isolation is bypassed. Because each side runs from its own supply, digital isolators can also perform level translation, e.g. the ISO776x supports 2.25 V to 5.5 V on either side.[^ti-iso776x-six-channel-digital-isolators] However, if you don't need isolation, a dedicated [voltage-level translator](/electronics/components/voltage-level-translation/) is a better choice. The pinout for a typical digital isolator IC is shown below (in this case the ISO7760, which has all six channels in the same direction).
+
+<Image src={import('./_assets/iso7760-pinout.webp')} width="350px">The pinout of the ISO7760 six-channel digital isolator, with all six channels in the forward direction. Side 1 (pins 1-8) has its own supply and ground (VCC1, GND1), as does side 2 (pins 9-16, VCC2, GND2). Image from Texas Instruments.[^ti-iso776x-six-channel-digital-isolators]</Image>
+
+<Aside type="note">
+Why are optical isolators so much slower? They use an LED on the input side and a [phototransistor](/electronics/components/sensors/phototransistors/) on the output side. The light hitting the base of the phototransistor produces only a small photocurrent (µA to tens of µA). The base-collector junction of the phototransistor is made large to capture as much light as possible, but this also gives it a large capacitance. Charging a large capacitance with a small current takes a long time. For example, the onsemi 4N35 has turn-on and turn-off times of around 10 µs, resulting in a maximum frequency of around 50 kHz.[^onsemi-4n35-general-purpose-phototransistor-optocouplers] And this is a best case, as these times are measured with a 100 Ω load resistor. With the larger pull-up resistors typically used for logic-level outputs, it is even slower.
+
+Some optical isolators replace the phototransistor with a faster [photodiode](/electronics/components/diodes/photodiodes/) and a built-in amplifier and logic output. These are faster, but still not as fast as digital isolators. For example, the onsemi 6N137 [photodiode-based optocoupler](/electronics/components/optocouplers/#photodiode-optocouplers) has a speed of 10 Mbps.[^onsemi-6n137-high-speed-logic-gate-output-optocoupler]
+</Aside>
+
+Ever wondered what a digital isolator looks like on the inside? The [X-ray](/electronics/manufacturing/x-ray-inspection/) image below shows an ISO7762DWR ([SOIC-16 wide-body package](/pcb-design/component-packages/soic-component-package/)) soldered to a PCB. You can clearly see the two separate internal lead frames and the isolation barrier in the middle.
+
+<Image src={import('./_assets/iso7762dwr-xray-showing-isolation-barrier.webp')} width="500px">An X-ray image of an ISO7762DWR soldered to a PCB. The left lead frame is side 1 and the right lead frame is side 2. The gap between them down the middle of the package is the isolation barrier.</Image>
+
+## Examples
+
+### Texas Instruments ISO77xx
+
+The ISO77xx family of digital isolators from Texas Instruments is based on capacitive silicon dioxide (SiO₂) isolation technology.[^ti-iso776x-six-channel-digital-isolators]
+
+The two numbers after the `ISO77` prefix describe the total number of channels and the number in the reverse direction, respectively. For example, the `ISO7762` has six channels total, with two channels in the reverse direction (so four in the forward direction).[^ti-iso776x-six-channel-digital-isolators] There is not much difference between the forward and reverse directions except for pin naming (forward is from side 1 to side 2, reverse is from side 2 to side 1). The letters `A` to `F` in the pin names (e.g. `INA`, `OUTA`) identify the channels, not the sides.
+
+An `F` suffix after the `ISO77xx` indicates the outputs default low instead of high (when input power or signal is lost).[^ti-iso776x-six-channel-digital-isolators]
+
+<Aside type="note">
+It appears that the `ISO64xx` family supersedes the `ISO77xx` family with pin-to-pin compatibility. For example, TI lists the ISO6462 as a newer pin-for-pin alternative to the ISO7762.[^ti-iso7762-product-page]
+</Aside>
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^ti-iso776x-six-channel-digital-isolators]: Texas Instruments (2024, Jan). _ISO776x High-speed, robust EMC, reinforced six-channel digital isolators (Rev. H)_ [datasheet]. Retrieved 2026-10-29, from https://www.ti.com/lit/ds/symlink/iso7762.pdf.
+[^onsemi-4n35-general-purpose-phototransistor-optocouplers]: onsemi (2022, Sep). _4N35: 6-Pin General Purpose Phototransistor Optocouplers (Rev. P0)_ [datasheet]. Retrieved 2026-10-29, from https://www.onsemi.com/download/data-sheet/pdf/4n35-d.pdf.
+[^onsemi-6n137-high-speed-logic-gate-output-optocoupler]: onsemi. _6N137: 8-Pin DIP 10 Mbit/s Single-Channel High Speed Logic Gate Output Optocoupler_ [product page]. Retrieved 2026-10-29, from https://www.onsemi.com/products/standard-products/optocouplers/photo-buffers/6n137.
+[^ti-iso7762-product-page]: Texas Instruments. _ISO7762: Reinforced 6-channel, 4/2, digital isolator_ [product page]. Retrieved 2026-10-29, from https://www.ti.com/product/ISO7762.

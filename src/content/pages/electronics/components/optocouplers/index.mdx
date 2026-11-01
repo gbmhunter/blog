@@ -3,7 +3,7 @@ authors: [gbmhunter]
 date: 2015-11-02
 description: Transistor output optocouplers, schematic symbols, phototriac output optocouplers, component packages and more info on optical isolators.
 image: ./_assets/cover-image.webp
-lastUpdated: 2026-06-17
+lastUpdated: 2026-10-29
 tags: [optical isolators, phototriacs, schematic symbols, component packages, opto-isolators, optocouplers]
 title: Optical Isolators
 type: page
@@ -73,6 +73,28 @@ Another purpose of the base pin connection is to **improve noise immunity**. By 
 
 - [Mouser: Transistor Output Optocouplers](https://www.mouser.com/c/optoelectronics/optocouplers-photocouplers/transistor-output-optocouplers/)
 
+## Photodiode Optocouplers
+
+Rather than use phototransistors for the receiver, some optocouplers use a photodiode and an amplifier. Photodiodes respond faster than phototransistors and therefore allow for faster transmission speeds. The downside of a photodiode is that it outputs far less current, so an amplifier is needed to boost the signal.
+
+<Aside type="note">
+But wait, isn't a photodiode + transistor just the same thing as a phototransistor? How does it make it faster? The key is that in a phototransistor, the large light-collecting junction _is_ the collector-base junction, so its capacitance sits across the output voltage swing and is multiplied by the Miller effect. With a separate photodiode, that capacitance sees an almost constant voltage, and the transistor can be made small with little capacitance of its own. Hewlett-Packard state that separating the photodiode bias and output transistor collector connections increases the speed up to a hundred times that of a conventional phototransistor optocoupler, by reducing the base-collector capacitance.[^hp-single-channel-high-speed-optocouplers]
+</Aside>
+
+Some photodiode optocouplers just drive a single transistor (e.g. the 6N135/6N136), others drive a high-gain amplifier and logic gate output (e.g. the 6N137, a.k.a. a _logic gate output optocoupler_), and some add a Schmitt trigger for a clean digital output.
+
+### Examples
+
+#### 6N13x Series
+
+The 6N13x series started as Hewlett-Packard parts.[^hp-single-channel-high-speed-optocouplers] The `6N` prefix comes from the JEDEC registered-device numbering scheme (1N for diodes, 2N for transistors, 4N/6N for optocouplers).
+
+- `6N135`: Photodiode drives an open-collector transistor at speeds up to 1 Mbps. Has a minimum CTR of 7% at $I_F = 16\unit{mA}$.[^hp-single-channel-high-speed-optocouplers]
+- `6N136`: Similar to the `6N135`, but with a higher minimum CTR of 19% at $I_F = 16\unit{mA}$.[^hp-single-channel-high-speed-optocouplers]
+- `6N137`: A logic gate output optocoupler containing a photodiode, amplifier and logic output, rated at 10 Mbps.[^onsemi-6n137-high-speed-logic-gate-output-optocoupler] The onsemi version is now obsolete.
+
+As of 2026 these parts are still sold by Broadcom, with other manufacturers making compatible parts.[^broadcom-6n135-product-page]
+
 ## Phototriac Output Optocouplers
 
 _Phototriac output optocouplers_ (a.k.a. _triac couplers_) are like phototransistor optocouplers, except they have a [triac](/electronics/components/triacs/) instead of a transistor on the output. The triac's gate is controlled by the incoming light source. Phototriac optocouplers are used to switch on and off an AC load in an isolated manner.
@@ -102,3 +124,6 @@ Some of the common packages used for optical isolation components are:
 [^eevblog-purpose-of-base-in-optocoupler]: EEVblog. _Purpose of the base on the opto-transistor in an opto-coupler_ [forum question]. Retrieved 2024-09-25, from https://www.eevblog.com/forum/beginners/purpose-of-the-base-on-the-opto-transistor-in-an-opto-coupler/.
 [^edaboard-floating-base-pin-of-optocoupler]: EDAboard. _Floating base pin of optocoupler output transistor?_ [forum question]. Retrieved 2024-09-25, from https://www.edaboard.com/threads/floating-base-pin-of-optocoupler-output-transistor.402208/.
 [^stack-exchange-optocoupler-with-base-lead]: Anindo Ghosh (2012, Nov 8). _Optocoupler with base lead_ [question]. StackExchange. Retrieved 2024-09-25, from https://electronics.stackexchange.com/questions/48462/optocoupler-with-phototransistor-base-lead.
+[^hp-single-channel-high-speed-optocouplers]: Hewlett-Packard (1996). _Single Channel, High Speed Optocouplers - Technical Data (5965-3605E)_ [datasheet]. Retrieved 2026-10-29, from https://datasheet.octopart.com/HCPL-0501-500-Avago-datasheet-82465.pdf.
+[^onsemi-6n137-high-speed-logic-gate-output-optocoupler]: onsemi. _6N137: 8-Pin DIP 10 Mbit/s Single-Channel High Speed Logic Gate Output Optocoupler_ [product page]. Retrieved 2026-10-29, from https://www.onsemi.com/products/standard-products/optocouplers/photo-buffers/6n137.
+[^broadcom-6n135-product-page]: Broadcom. _6N135_ [product page]. Retrieved 2026-10-29, from https://www.broadcom.com/products/optocouplers/industrial-plastic/digital-optocouplers/1mbd/6n135.
