@@ -2,7 +2,7 @@
 authors: [gbmhunter]
 date: 2026-11-02
 description: Quick-connect terminals (a.k.a. Faston, spade, push-on or Lucar connectors) are flat tab and receptacle terminals used to make quick, removable wire connections. Info on tab sizes, insulated vs. uninsulated receptacles, PCB-mount tabs, naming and standards.
-lastUpdated: 2026-11-02
+lastUpdated: 2026-11-03
 tags: [electronics, connectors, electronic components, quick-connect, quick-disconnect, Faston, spade connectors, blade connectors, push-on terminals, Lucar, tabs, receptacles, crimps, TE Connectivity]
 title: Quick-Connect Terminals
 type: page
@@ -10,10 +10,39 @@ type: page
 
 <WarningIsNotes />
 
+Quick-connect terminals (a.k.a. Faston, spade, push-on or Lucar connectors) are flat tab and receptacle terminals used to make quick, removable wire connections. They are often used in automotive, appliance and industrial applications. They can handle up to about 20 - 30 A of current in their largest sizes.
+
+<Image src={import('./_assets/insulated-quick-connect-receptacle-and-tab-yellow.webp')} width="400px">A pair of insulated quick-connect terminals with yellow sleeves, a female receptacle (left) and a male tab (right).[^baomain-insulated-quick-disconnects-12-10-awg]</Image>
+
+They can be used to make wire-to-board and wire-to-wire connections. I have discovered sometimes the insertion force of quick-connect terminals can be quite high and difficult to insert/remove by hand. I do wonder however if this was due to a mismatch of manufacturers and/or subtle changes in blade sizes.
+
+- Molex: Called Quick-disconnect connectors.[^molex-quick-disconnect-connectors]
+- TE Connectivity: Called Faston connectors (trademarked name).[^wikipedia-faston-terminal]
+
+## Insulation
+
+Quick-connect terminals can either be insulated or uninsulated. 
+
+## Tab Widths
+
+Out of all the available tab widths, 2.8, 4.8 and 6.3 mm appear to be the most common sizes.
+
+- 2.8 mm
+- 4.8 mm
+- 6.3 mm
+
 ## Crimpers
 
-I've never had great success with the non-ratcheting crimpers, and only recommend the ratcheting types!
+I've never had great success with the non-ratcheting crimpers (cheaper design), and only recommend the ratcheting types!
 
 ### SN-02C
 
 The SN-02C is a generic name for an insulated ratcheting quick-connect terminal crimper. It is suitable for wire from about 0.25 to 2.5 mm² (24 to 13 AWG). As of 2026, cheap ones are available on AliExpress for about USD\$10-20.
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^molex-quick-disconnect-connectors]: Molex. _Quick-Disconnect Connectors_ [product page]. Retrieved 2026-11-02, from https://www.molex.com/en-us/products/connectors/solderless-terminals/quick-disconnect-connectors.
+[^wikipedia-faston-terminal]: Wikipedia (2026, Jan 2). _FASTON terminal_ [wiki]. Retrieved 2026-11-02, from https://en.wikipedia.org/wiki/FASTON_terminal.
+[^baomain-insulated-quick-disconnects-12-10-awg]: Baomain. _Baomain Male & Female Quick disconnects Vinyl Fully Insulated Spade Wire Connector Electrical Crimp Terminal 12-10 AWG 6.3mm Yellow 100 Pack_ [product page]. Amazon UK. Retrieved 2026-11-03, from https://www.amazon.co.uk/dp/B01G83SD06.
