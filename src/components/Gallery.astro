@@ -1,0 +1,169 @@
+---
+/**
+ * A responsive grid of captioned image tiles, for introducing the variants of a component at the start
+ * of a section. Children should be <GalleryItem> elements.
+ *
+ * Props:
+ *   caption  - optional caption shown under the whole gallery.
+ *   minWidth - minimum tile width before the grid drops a column (default '180px').
+ *
+ * Clicking a tile opens a lightbox (<dialog>) with the full-size image and its caption. Arrow keys move
+ * between images, Esc closes. Without JS, the tile is a plain link to the full-size image.
+ */
+const { caption, minWidth = '180px' } = Astro.props;
+---
+
+<div class="gallery figure">
+  <div class="gallery-grid">
+    <slot />
+  </div>
+  <figcaption class="gallery-caption">{caption}</figcaption>
+</div>
+
+<style define:vars={{ minWidth }}>
+  .gallery {
+    margin: 1.5rem 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--minWidth), 100%), 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-caption {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--caption-text-color);
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+</style>
+
+<style is:global>
+  .gallery-lightbox {
+    border: none;
+    padding: 0;
+    background: transparent;
+    /* Centre explicitly, as site CSS resets the default dialog positioning */
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    max-width: 92vw;
+    max-height: 92vh;
+    overflow: visible;
+  }
+
+  .gallery-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .gallery-lightbox-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .gallery-lightbox img {
+    width: min(800px, 90vw);
+    height: auto;
+    object-fit: contain;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    max-width: 90vw;
+    max-height: 78vh;
+    background: #fff;
+    border-radius: 6px;
+  }
+
+  .gallery-lightbox-caption {
+    color: #eee;
+    font-style: italic;
+    text-align: center;
+    max-width: 80ch;
+  }
+
+  .gallery-lightbox-caption a {
+    color: #9cf;
+  }
+
+  .gallery-lightbox button {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .gallery-lightbox button:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .gallery-lightbox .gl-close { top: 1rem; right: 1rem; }
+  .gallery-lightbox .gl-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+  .gallery-lightbox .gl-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+</style>
+
+<script>
+  // One shared lightbox for every gallery on the page.
+  let dialog: HTMLDialogElement | null = null;
+  let items: HTMLElement[] = [];
+  let index = 0;
+
+  function ensureDialog() {
+    if (dialog) return dialog;
+    dialog = document.createElement('dialog');
+    dialog.className = 'gallery-lightbox';
+    dialog.innerHTML = `
+      <div class="gallery-lightbox-inner">
+        <img alt="" />
+        <div class="gallery-lightbox-caption"></div>
+      </div>
+      <button class="gl-prev" aria-label="Previous image">&#8249;</button>
+      <button class="gl-next" aria-label="Next image">&#8250;</button>
+      <button class="gl-close" aria-label="Close">&times;</button>`;
+    document.body.appendChild(dialog);
+    dialog.querySelector('.gl-close')!.addEventListener('click', () => dialog!.close());
+    dialog.querySelector('.gl-prev')!.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('.gl-next')!.addEventListener('click', () => show(index + 1));
+    // Click on the backdrop (outside the content) closes.
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog!.close(); });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+    return dialog;
+  }
+
+  function show(i: number) {
+    const d = ensureDialog();
+    index = (i + items.length) % items.length;
+    const item = items[index];
+    const link = item.querySelector<HTMLAnchorElement>('.gallery-item-link')!;
+    d.querySelector('img')!.src = link.dataset.full || link.href;
+    d.querySelector('.gallery-lightbox-caption')!.innerHTML =
+      item.querySelector('.gallery-item-caption')?.innerHTML ?? '';
+    const multi = items.length > 1;
+    d.querySelectorAll<HTMLElement>('.gl-prev, .gl-next').forEach((b) => (b.hidden = !multi));
+    if (!d.open) d.showModal();
+  }
+
+  document.querySelectorAll<HTMLElement>('.gallery').forEach((gallery) => {
+    const galleryItems = Array.from(gallery.querySelectorAll<HTMLElement>('.gallery-item'));
+    galleryItems.forEach((item, i) => {
+      item.querySelector('.gallery-item-link')!.addEventListener('click', (e) => {
+        e.preventDefault();
+        items = galleryItems;
+        show(i);
+      });
+    });
+  });
+</script>

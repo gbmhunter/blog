@@ -2,33 +2,33 @@
 authors: [gbmhunter]
 date: 2014-12-02
 description: Inertial Measurement Units (IMUs) are devices that combine accelerometers, gyroscopes and sometimes magnetometers together as a single device. These days they are usually made with MEMS technology and are housed in tiny SMD packages.
-lastUpdated: 2024-08-16
-tags: [sensors, IMU, accelerometers, gyroscopes, magnetometers]
+lastUpdated: 2026-11-05
+tags: [sensors, IMU, accelerometers, gyroscopes, magnetometers, redundancy, Segway]
 title: Inertial Measurement Units (IMUs)
 type: page
 ---
 
 The IMU can either consist of 3 separate chips mounted onto a small piece of PCB, or a single system-on-chip that integrated all of the components into one package.
 
-They normally combine accelerometers. gyroscopes and sometimes magnetometers together as a single device (monolithic package). Devices with accelerometers and magnetometers are usually called 6-axis devices, while ones that also have magnetometers are called 9-axis devices.
+They normally combine [accelerometers](/electronics/components/sensors/accelerometers/), gyroscopes and sometimes magnetometers together as a single device (monolithic package). Devices with accelerometers and gyroscopes are usually called 6-axis devices, while ones that also have magnetometers are called 9-axis devices.
 
-The can include digital motion processors (DMPs). This offloads some of the processing required by the host microcontroller. They can also provide additional features such as motion gesture recognition. They do not normally include more advanced processing tasks such as an **attitude and heading reference system** (AHRS). This normally has to be provided by the host microcontroller.
+They can include digital motion processors (DMPs). This offloads some of the processing required by the host microcontroller. They can also provide additional features such as motion gesture recognition. They do not normally include more advanced processing tasks such as an **attitude and heading reference system** (AHRS). This normally has to be provided by the host microcontroller.
 
-The accelerometers usually exploit the Coriolis effect and a capacitor sensor to measure the angular rate in a axis.
+The gyroscopes usually exploit the Coriolis effect and capacitive sensing to measure the angular rate about an axis.
 
 Some IMUs negate the temperature drift by measuring their own temperature and performing self-compensation for these errors.
 
 ## Performance
 
-The performance of IMU is normally expressed as a full-scale range and resolution for each sensor. The resolution might be specified in terms of the number of bits of the ADC. A "_Sensitivity Scale Factor_" might also provided, which is the full-scale range divided by the resolution. Sensitivity is usually specified at 100Hz and per lowest significant bit (LSB).
+The performance of IMU is normally expressed as a full-scale range and resolution for each sensor. The resolution might be specified in terms of the number of bits of the ADC. A "_Sensitivity Scale Factor_" might also be provided, which is the full-scale range divided by the resolution. Sensitivity is usually specified per least significant bit (LSB).
 
 ## Navigation
 
-IMUs calculate their current position based on data from it's last known position(s), and they suffer from locational errors which accumulate over time. This is called **dead reckoning**. GPS does not have this problem.
+An IMU does not measure position directly. It outputs angular rates and accelerations, which the host integrates to estimate its current position from its last known position. This is called **dead reckoning**, and the errors accumulate over time. GPS does not have this problem.
 
 ## Communication
 
-SPI is preferable over I2C when high data throughput's are required.
+SPI is preferable over I2C when high data throughputs are required.
 
 ## GPS
 
@@ -42,186 +42,75 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 ## Packages
 
-A big advantage of an IMU is the reduced PCB footprint due the the combination of multiple sensors into a single package. These are sometimes called system-in-packages (SIPs). 3x3x1mm package.
+A big advantage of an IMU is the reduced PCB footprint due to the combination of multiple sensors into a single package. These are sometimes called system-in-packages (SIPs). Packages as small as 3 × 3 × 1 mm are common (e.g. the MPU-9250 below).
 
 ## Examples
 
 ### MPU-9250
 
-<table>
-<tbody >
-<tr >
-<td >Manufacturer</td>
-<td >IvenSense</td>
-</tr>
-<tr >
-<td >Part Number</td>
-<td >MPU-9250</td>
-</tr>
-<tr >
-<td >Supply Voltage</td>
-<td >2.4-3.6V</td>
-</tr>
-<tr >
-<td >Gyroscope Full-scale Range</td>
+| Parameter | Value |
+| --- | --- |
+| Manufacturer | InvenSense |
+| Part Number | MPU-9250 |
+| Supply Voltage | 2.4–3.6 V |
+| Gyroscope Full-scale Range | ±250°/s, ±500°/s, ±1000°/s, ±2000°/s[^invensense-mpu-9250-ds] |
+| Gyroscope Sensitivity (max) | 7.63 m°/s/LSB (131 LSB/(°/s))[^invensense-mpu-9250-ds] |
+| Gyroscope Accuracy | ±3% |
+| Accelerometer Full-scale Range | ±2g, ±4g, ±8g, ±16g |
+| Accelerometer Sensitivity (max) | 61 µg/LSB (16,384 LSB/g)[^invensense-mpu-9250-ds] |
+| Accelerometer Accuracy (initial) | ±3% |
+| Magnetometer Full-scale Range | ±4800 µT |
+| Magnetometer Sensitivity | 600 nT/LSB[^invensense-mpu-9250-ds] |
+| Magnetometer Accuracy (initial calibration accuracy) | ±300 µT (±500 LSB)[^invensense-mpu-9250-ds] |
+| Communication Interfaces | I2C, SPI |
+| Package | QFN-24, 3 × 3 × 1 mm, 0.4 mm pitch, exposed pad (see comments below) |
+| Price (as of Dec 2014) | US\$12.70 (1) |
 
-<td >±250º/s, ±500º/s, ±1000º/s, ±200º/s</td>
-</tr>
-<tr >
-
-<td >Gyroscope Sensitivity (max)</td>
-
-<td >7.63mº/LSB</td>
-</tr>
-<tr >
-
-<td >Gyroscope Accuracy</td>
-
-<td >±3%</td>
-</tr>
-<tr >
-
-<td >Accelerometer Full-scale Range</td>
-
-<td >±2g, ±4g, ±8g, ±16g</td>
-</tr>
-<tr >
-
-<td >Accelerometer Sensitivity (max)</td>
-
-<td >30.5ug/LSB</td>
-</tr>
-<tr >
-
-<td >Accelerometer Accuracy (initial)</td>
-
-<td >±3%</td>
-</tr>
-<tr >
-
-<td >Magnetometer Full-scale Range</td>
-
-<td >±4800uT</td>
-</tr>
-<tr >
-
-<td >Magnetometer Sensitivity</td>
-
-<td >600nT/LSB</td>
-</tr>
-<tr >
-
-<td >Magnetometer Accuracy (initial calibration accuracy)</td>
-
-<td >±300uT</td>
-</tr>
-<tr >
-
-<td >Communication Interfaces</td>
-
-<td >I2C, SPI</td>
-</tr>
-<tr >
-
-<td >Package</td>
-
-<td >QFN-24 3x3x1mm P0.40 Pad (see comments below)</td>
-</tr>
-<tr >
-
-<td >Price (as of Dec 2014)</td>
-
-<td >US\$12.70 (1)</td>
-</tr>
-</tbody>
-</table>
-
-It has an on-board digital motion processor (DMP). Note that although the QFN package this IMU comes in has a exposed pad on the bottom, InvenSense recommend that you **do not connect it** to anything to reduce the amount of stress put on the sensitive MEMS device.
+It has an on-board digital motion processor (DMP). Note that although the QFN package this IMU comes in has an exposed pad on the bottom, InvenSense recommend that you **do not connect it** to anything to reduce the amount of stress put on the sensitive MEMS device.
 
 ### LSM9DS1
 
-<table>
-<tbody >
-<tr >
-<td >Manufacturer</td>
-<td >ST</td>
-</tr>
-<tr >
-<td >Part Number</td>
-<td >LSM9DS1</td>
-</tr>
-<tr >
-<td >Supply Voltage</td>
-<td >1.9-3.6V</td>
-</tr>
-<tr >
-<td >Gyroscope Full-scale Range</td>
-<td >±245º/s, ±500º/s, ±2000º/s</td>
-</tr>
-<tr >
-<td >Gyroscope Sensitivity (max)</td>
-<td >7.48mº/LSB</td>
-</tr>
-<tr >
-<td >Gyroscope Accuracy</td>
-<td >±%</td>
-</tr>
-<tr >
-<td >Accelerometer Full-scale Range</td>
-<td >±2g, ±4g, ±8g</td>
-</tr>
-<tr >
-<td >Accelerometer Sensitivity (max)</td>
-<td >61.0ug/LSB</td>
-</tr>
-<tr >
-<td >Accelerometer Accuracy (initial)</td>
-<td >±%</td>
-</tr>
-<tr >
-<td >Magnetometer Full-scale Range</td>
-<td >±400uT, ±800uT, ±1200uT,±1600uT</td>
-</tr>
-<tr >
-<td >Magnetometer Sensitivity</td>
-<td >12.2nT/LSB</td>
-</tr>
-<tr >
-<td >Magnetometer Accuracy (initial calibration accuracy)</td>
-<td >±uT</td>
-</tr>
-<tr >
-<td >Communication Interfaces</td>
-<td >I2C, SPI</td>
-</tr>
-<tr >
-<td >Package</td>
-<td >LGA-24L (3.5x3.0x1.0mm)</td>
-</tr>
-<tr >
-<td >Price (as of Dec 2014)</td>
-<td >US\$8.35 (1)</td>
-</tr>
-</tbody>
-</table>
+| Parameter | Value |
+| --- | --- |
+| Manufacturer | ST |
+| Part Number | LSM9DS1 |
+| Supply Voltage | 1.9–3.6 V |
+| Gyroscope Full-scale Range | ±245°/s, ±500°/s, ±2000°/s[^st-lsm9ds1-ds] |
+| Gyroscope Sensitivity (max) | 8.75 m°/s/LSB (at ±245°/s)[^st-lsm9ds1-ds] |
+| Gyroscope Zero-rate Level (typ.) | ±30°/s (at ±2000°/s)[^st-lsm9ds1-ds] |
+| Accelerometer Full-scale Range | ±2g, ±4g, ±8g, ±16g[^st-lsm9ds1-ds] |
+| Accelerometer Sensitivity (max) | 61 µg/LSB (at ±2g)[^st-lsm9ds1-ds] |
+| Accelerometer Zero-g Level (typ.) | ±90 mg (at ±8g)[^st-lsm9ds1-ds] |
+| Magnetometer Full-scale Range | ±400 µT, ±800 µT, ±1200 µT, ±1600 µT[^st-lsm9ds1-ds] |
+| Magnetometer Sensitivity | 14 nT/LSB (0.14 mgauss/LSB, at ±400 µT)[^st-lsm9ds1-ds] |
+| Magnetometer Zero-gauss Level (typ.) | ±100 µT (±1 gauss)[^st-lsm9ds1-ds] |
+| Communication Interfaces | I2C, SPI |
+| Package | LGA-24L, 3.5 × 3.0 × 1.0 mm |
+| Price (as of Dec 2014) | US\$8.35 (1) |
 
 The LSM9DS1 is part of the iNEMO family.
 
 ### ST ASM330LHB
 
-The STMicroelectronics ASM330LHB is a 6-axis IMU designed for ASIL-B automotive applications. It comes in a [LGA-14 package](/pcb-design/component-packages/lga-component-package/) and contains a 3-axis accelerometer and 3-axis gyroscope[^st-asm330lhb-imu-ds].
+The STMicroelectronics ASM330LHB is a 6-axis IMU designed for ASIL-B automotive applications. It comes in a [LGA-14 package](/pcb-design/component-packages/lga-component-package/) and contains a 3-axis accelerometer and 3-axis gyroscope.[^st-asm330lhb-imu-ds]
 
-It supports the [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [MIPI I3C](/electronics/communication-protocols/i3c-communication-protocol/) and [SPI](/electronics/communication-protocols/spi-communication-protocol/) communication interfaces for commuincation to a MCU[^st-asm330lhb-imu-ds].
+It supports the [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [MIPI I3C](/electronics/communication-protocols/i3c-communication-protocol/) and [SPI](/electronics/communication-protocols/spi-communication-protocol/) communication interfaces for communication to a MCU.[^st-asm330lhb-imu-ds]
 
-<Image src={import('./_assets/st-asm330lhb-lga-14l-package-photo.webp')} width="300px">The ST ASM330LHB 6-axis IMU in a LGA-14 package[^st-asm330lhb-imu-ds].</Image>
+<Image src={import('./_assets/st-asm330lhb-lga-14l-package-photo.webp')} width="300px">The ST ASM330LHB 6-axis IMU in a LGA-14 package.[^st-asm330lhb-imu-ds]</Image>
 
-One differentiating feature of the ASM330LHB is that it has been designed to meet ASIL-B automotive safety requirements. Two ASM330LHB's (for redundancy) can be used together with ST's "Safety Engine" firmware module to achieve ASIL-B [^st-asm330lhb-asil-b-safety-manual]. The image below shows the high-level architecture proposed by ST:
+One differentiating feature of the ASM330LHB is that it has been designed to meet ASIL-B automotive safety requirements. Two ASM330LHBs (for redundancy) can be used together with ST's "Safety Engine" firmware module to achieve ASIL-B.[^st-asm330lhb-asil-b-safety-manual] The image below shows the high-level architecture proposed by ST:
 
-<Image src={import('./_assets/st-asm330lhb-seooc-asil-b-diagram.webp')} width="800px">Diagram showing how 2 ASM330LHB's can be used together with ST's "Safety Engine" firmware module to achieve ASIL-B[^st-asm330lhb-asil-b-safety-manual].</Image>
+<Image src={import('./_assets/st-asm330lhb-seooc-asil-b-diagram.webp')} width="800px">Diagram showing how 2 ASM330LHBs can be used together with ST's "Safety Engine" firmware module to achieve ASIL-B.[^st-asm330lhb-asil-b-safety-manual]</Image>
+
+### Segway Balance Sensor Assembly
+
+The Segway PT (released in 2001) uses a "Balance Sensor Assembly" designed by Silicon Sensing, built from multiple single-axis VSG3-based MEMS gyroscopes. Segway required the PT to keep balancing even if a component failed. To achieve this, the design has triple redundancy in the pitch axis and double redundancy in the roll and yaw axes.[^segway-nz-silicon-sensing-gyroscope] This is why the sensor boards are mounted at a number of different angles, rather than just three boards at right angles to one another. When this was designed, I suspect integrated 3-axis MEMS gyroscopes were not readily available, so multiple discrete single-axis sensors were needed.
+
+<Image src={import('./_assets/redundant-imu-sensor-block-19457-00003-photo.webp')} width="800px">A "Balance Sensor Assembly" from a Segway PT, containing multiple single-axis Silicon Sensing VSG3-based MEMS gyroscopes mounted at different angles in a yellow plastic frame.[^segway-nz-silicon-sensing-gyroscope]</Image>
 
 ### Others
 
-Analog devices makes high-end military grade IMUs.
+Analog Devices makes high-end military grade IMUs.
 
 ST makes the iNEMO family of IMU modules.
 
@@ -231,5 +120,12 @@ ST and InvenSense are the dominant manufacturers of the chips used on the [Spark
 
 The cheapest 9-axis IMU I have found on the internet ANYWHERE is the [GY-85 sold by DealExtreme](http://www.dx.com/p/gy-85-6dof-9dof-imu-sensor-module-for-arduino-148436), which as of Dec 2014 is US\$9.49 (1).
 
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
 [^st-asm330lhb-imu-ds]: STMicroelectronics (2023 Nov). _High-accuracy 6-axis inertial measurement unit (IMU) for ASIL B automotive applications_. Retrieved 2024-08-16, from https://www.st.com/resource/en/datasheet/asm330lhb.pdf.
 [^st-asm330lhb-asil-b-safety-manual]: STMicroelectronics (2023, Feb). _AN5691 - Application Note - ASM330LHBxx_ASILB_library safety manual_. Retrieved 2024-08-16, from https://www.st.com/resource/en/application_note/an5691-asm330lhbxxasilblibrary-safety-manual-stmicroelectronics.pdf.
+[^segway-nz-silicon-sensing-gyroscope]: Philip Bendall (2012, Jan 30). _Segway gyroscope: Silicon Sensing keeps PT in balance [UPDATED - twice!]_. Segway New Zealand. Retrieved 2026-11-05, from https://www.segway.co.nz/blogs/blog/segway-gyroscope-silicon-sensing-keeps-pt-in-balance.
+[^invensense-mpu-9250-ds]: InvenSense (2014, Jan 17). _MPU-9250 Product Specification (PS-MPU-9250A-01, Rev. 1.0)_ [datasheet]. Retrieved 2026-11-05, from https://cdn.sparkfun.com/assets/learn_tutorials/5/5/0/MPU9250REV1.0.pdf.
+[^st-lsm9ds1-ds]: STMicroelectronics. _LSM9DS1 - iNEMO inertial module: 3D accelerometer, 3D gyroscope, 3D magnetometer (DocID025715 Rev 2)_ [datasheet]. Retrieved 2026-11-05, from https://cdn.sparkfun.com/assets/learn_tutorials/3/7/3/LSM9DS1_Datasheet.pdf.

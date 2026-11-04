@@ -6,6 +6,8 @@ import Aside from 'src/components/Aside.astro';
 import ChildPages from 'src/components/ChildPages.astro';
 import CircuitJs from 'src/components/CircuitJs.astro';
 import EnhancedTable from 'src/components/EnhancedTable.astro';
+import Gallery from 'src/components/Gallery.astro';
+import GalleryItem from 'src/components/GalleryItem.astro';
 import Image from 'src/components/Image.astro';
 import IRef from 'src/components/IRef.astro';
 import Table from 'src/components/Table.astro';
@@ -19,6 +21,8 @@ export function getGlobalMdxComponents() {
     ChildPages: ChildPages,
     CircuitJs: CircuitJs,
     EnhancedTable: EnhancedTable,
+    Gallery: Gallery,
+    GalleryItem: GalleryItem,
     Image: Image,
     IRef: IRef,
     Table: Table,
