@@ -302,6 +302,36 @@ When in autodetection mode, the MAX14630 monitors the voltages on the `DM` and `
 
 <Image src={import('./_assets/max14630-usb-charger-adapter-emulator-typical-operating-circuit.webp')} width="800px">Typical operating circuit for the Analog Devices MAX14630 as a USB charger adapter emulator.[^analog-devices-max14630-usb-charger-adapter-emulator-ds]</Image>
 
+### Standalone Sink Controller with the TPS25730(A)
+
+The Texas Instruments `TPS25730(A)` is a standalone USB Type C PD3.1 sink controller. The `TPS25730A` is a drop-in replacement for the `TPS25730` with upgraded sink path functionality. The `TPS25730(A)` supports PD up to 20V and 5A with an internal power path switch. It has pins for resistor strapping to set the PD parameters, so it can operate as a standalone controller with no MCU support required. However, a I2C interface is also provided to allow an MCU to control the device if desired.[^ti-tps25730-usb-pd-controller-ds]
+
+There are two variants in this family:
+
+- **TPS25730AD**: As an internal switch (FETs) to control the VBUS power path. The internal power path is rated for 7 A continuous with 16–19 mΩ of resistance.
+- **TPS25730AS**: Requires external FETs to control the VBUS power path.
+
+The TPS25730A is similar but offers moisture detection.
+
+The image below shows the internal functional block diagram of the TPS25730D.
+
+<Image src={import('./_assets/tps25730d-internal-functional-block-diagram.webp')} width="800px">Internal functional block diagram of the TPS25730D USB PD sink controller.[^ti-tps25730-usb-pd-controller-ds]</Image>
+
+#### Dead Battery Operation
+
+The TPS25730A supports dead battery operation. In this case, when USB power is applied, it uses an internal 3.3 V regulator to power its own logic rails. A connected MCU can clear the "dead-battery flag" over I2C to switch it's 3.3 V logic over to the VIN_3V3 (which would typically be provided from the battery in a battery powered application) rather than it's internal regulator.
+
+### Resistor Strapping
+
+The TPS25730A has four ADC input pins (`ADCIN1-4`) which can be used to set the PD contract voltage and current. The voltages are sampled at start-up by the internal ADC (along with the digital value of `PD5VMAX`) to determine the PD contract. There are 8 decoded values for each pin set by voltages equally spaced between 0 V and LDO_3V3 (inclusive).
+
+- ADCIN1: Sets the minimum PD contract voltage.
+- ADCIN2: Sets the maximum PD contract voltage.
+- ADCIN3: Sets the operating current.
+- ADCIN4: Sets the maximum current.
+
+The `PD5VMAX` pin can be used to force the maximum PD contract voltage to 5V. Tie it to `LDO_3V3` is enable it, or `GND` to disable it.
+
 ## Connectors
 
 Some USB Type-C connectors do not have all 24 pins available, but just enough to perform charging (basic or PD).
@@ -341,3 +371,4 @@ Having VBUS, the CC lines and GND gives you all the leads you need to perform ei
 [^molex-2171750001-type-c-6-plus-18-dummy-connector-ds]: Molex. _TYPE C 6 PIN TOP MOUNT SMT - Product Customer Drawing_ [mechanical drawing]. Retrieved 2023-08-02, from https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/217/217175/2171750001_sd.pdf.
 [^st-stusb4700-usb-pd-controller-ds]: STMicroelectronics (2023, Aug). _STUSB4700 - Stand-alone autonomous USB PD controller with short-to-VBUS protections_ [datasheet]. Retrieved 2025-07-22, from https://www.st.com/content/ccc/resource/technical/document/datasheet/group3/4a/1f/85/85/57/7d/41/b7/DM00356577/files/DM00356577.pdf/jcr:content/translations/en.DM00356577.pdf.
 [^analog-devices-max14630-usb-charger-adapter-emulator-ds]: Analog Devices (2013, Mar). _MAX14630/MAX14632 USB Charger Adapter Emulators_ [datasheet]. Retrieved 2025-07-22, from https://www.analog.com/media/en/technical-documentation/data-sheets/MAX14630-MAX14632.pdf.
+[^ti-tps25730-usb-pd-controller-ds]: Texas Instruments (2023, Oct). _TPS25730 USB Type-C and USB PD Controller with Integrated Power Switches Optimized for Power Applications (SLVSGP9)_ [datasheet]. Retrieved 2026-11-05, from https://www.ti.com/lit/ds/symlink/tps25730.pdf.
