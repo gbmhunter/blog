@@ -347,6 +347,7 @@ Synergy Electronics Ltd, NZ supplier of the GT Sonic range.
 
 - MEMS Oscillators: [Ultrasonic cleaners can cause permanent damage or long-term reliability issues to the MEMS resonator](/electronics/components/oscillators/#mems-oscillators) inside a MEMS oscillator.
 - [Crystal Resonators (XTALs)](/electronics/components/crystals/): The ultrasonic bath could excite a XTAL into a resonant frequency (or harmonic) that causes damage. 32.768kHz crystals are especially sensitive since they operate at about the same frequency as an ultrasonic bath uses for its cleaning action. MHz XTALs are far less sensitive.
+- Relays: Some relays are specifically designed to be immersed in water, but if they don't say that, assume that the relay is NOT safe to clean in an ultrasonic bath. The cleaning solution can work its way onto the mechanical contacts and get trapped there. It can either cause immediate conduction when in the off-state, or slow corrosion of the contacts over time. I have experienced products that failed after about 8 months due to corrosion from the relays being cleaned in an ultrasonic bath.
 
 ## Soldering Irons And Stations
 
@@ -356,6 +357,12 @@ Synergy Electronics Ltd, NZ supplier of the GT Sonic range.
 - Stable temperature control under different loads
 
 For all but the lightest of work you will want to choose a _soldering station_ instead of a _soldering iron_. The station provides a holder for the iron, keeping it in a safe place while you do other work (so you don't burn yourself!). It also allows a lighter and higher power iron, as most of the electronics can now be located in the freestanding control unit rather than in the handheld iron.
+
+JBC designed the initial T245 (general purpose), T210 (precision work) and T115 (micro-soldering) soldering handles. These are friction lock (requires no threaded nut, collar or locking sleeve like other designs) which makes changing tips really quick and easy. The heater is in the tip which makes heating up from room temperature only take a few seconds, and makes it very responsive to thermal loads. These handle designs have since been cloned by a number of Chinese manufacturers including Sugon, Geeboon and Aixun. The result is a JDC-format ecosystem where both clone tips and genuine JBC tips will fit both JBC and clone stations. I like them because they are quick-change and there are a lot of options available.
+
+T245 handles are compatible with C245 tips and likewise for the other handles. Presumably `T` stands for "tool" and `C` stands for "cartridge". HZY is a known good quality "clone" manufacturer of JBC-style tips. As of 2026, HZY tips sold for about US\$3-4 each on AliExpress.
+
+Hakko's T12/T15 range of cartridges also went through a similar cloning boom, with cheap T12 compatible stations available from Chinese manufacurers.
 
 ### Brands
 
@@ -404,6 +411,12 @@ Single port. 95W. 550°C max temp. For use with the WTP90 soldering iron, which 
 - Dual port
 - 75W x2
 - 450°C max temp
+
+#### Sugon T21
+
+The Sugon T21 is a relatively cheap 120W soldering station. It is compatible with T115, T210 and T245 handles. The T210 is the most common, general purpose handle. The station supports temperatures from 100°C to 450°C.
+
+As of 2026 it is available from AliExpress for approx. US\$115 with the T210 handle and 3 tips option. For US\$155 you can get the 3 handle and 9 tip option.
 
 ### Preheating Stations
 

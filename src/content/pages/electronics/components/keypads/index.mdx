@@ -16,11 +16,13 @@ _Keypads_ are arrays of buttons used for user input, such as the numeric keypads
 
 ### Membrane Keypads
 
-<Image src={import('./_assets/adafruit-419-membrane-keypad-12key-photo.webp')} width="300px">Photo of the Adafruit 419, a 12-key (3x4) membrane keypad.[^digikey-adafruit-419]</Image>
+<Image src={import('./_assets/adafruit-419-membrane-keypad-front-and-back-photo.webp')} width="500px">The front (left) and back (right) of the Adafruit 419, a 12-key (3x4) membrane keypad.</Image>
 
 Membrane keypads are thin keypads made of a flexible material. FPCs (flexible printed circuits) are usually the preferred way to connect them to a PCB (they happen to be nice and thin also!). They are relatively cheap to manufacture and easy to customize, but they are typically not as durable as other types of keypads. The keys becoming worn and feeling funny to press or becoming unresponsive are common failure modes for membrane keypads.
 
 <Image src={import('./_assets/membrane-keypad-stackup.svg')} width="700px">Exploded view of a typical membrane keypad stackup. Pressing a key pushes the shorting pad on the underside of the upper circuit through the hole in the spacer, connecting the row and column traces on the lower circuit.</Image>
+
+The Adafruit 419 shown above has an adhesive backing for sticking the keypad to a panel. The flexible tail ends in a 7-pin 2.54mm pitch female connector, one pin for each of the 3 columns and 4 rows.
 
 ### Silicone Keypads
 
@@ -42,6 +44,14 @@ The tops of the keys can be printed with text and symbols. There are a number of
 - **Pad printing**: The image is etched onto a metal plate and then filled with a silicone-based ink. A silicone rubber pad is pressed onto the plate to pick up the ink, and then pressed onto the top of the key to transfer the ink.
 - **Silk screen printing**: Using the same technique as designators on PCBs, a screen is made for each colour and the ink is pushed through the screen onto the silicone. This method supports a large amount of colours and is very economical for large jobs.[^luen-fung-laser-etching-vs-screen-printing]
 - **Laser etching**: The silicone is first moulded with a translucent or white base colour and then coated with an opaque layer of paint (usually black). A laser then selectively burns away areas of the paint to expose the base colour underneath. This method supports backlighting.[^nelson-miller-laser-etching-silicone-rubber-keypads][^luen-fung-laser-etching-vs-screen-printing] You are limited with what colours you can use and not suitable for backlighting.
+
+### Tactile Switch Keypads
+
+A simple way to build a keypad is to solder a grid of [tactile switches](/electronics/components/switches/#tactile-switches) onto a PCB and place a hard plastic keycap on top of each one. Tactile switch manufacturers sell off-the-shelf keycaps that clip onto their switches, so for low volumes you can avoid custom moulding entirely. Custom keycaps (like the ones shown below) still need a mould, but the tactile switches handle the electrical contact and the tactile feel, so the caps can be simple.
+
+The photo below shows a calculator-style keypad sold as an add-on for the M5Stack dev kit. The side view shows each hard plastic key sitting directly on top of an SMD tactile switch soldered to the PCB. The keycaps are not bonded to the tactile switches, instead they can move a little and are held in place by the surrounding plastic frame.
+
+<Image src={import('./_assets/m5stack-calculator-keypad-front-and-side-photo.webp')} width="1000px">The front (left) and side (right) of the M5Stack calculator keypad. The side view shows the tactile switches under the individual plastic keys.</Image>
 
 ## Debouncing
 
@@ -68,6 +78,10 @@ Series 96 is their cheapest range for 3x4 and 4x4 keypads. It uses conductive ru
 ### Storm Interface
 
 Like Grayhill, Storm Interface manufactures complete keypad assemblies. They are stocked by distributors such as DigiKey and Element14.
+
+The photo below shows the front and back of the Storm Interface 7203-12TW203, a 12-key "telephone style" keypad from their 720 TFX-i series. The back has four threaded studs for panel mounting and a connector for the electrical interface.
+
+<Image src={import('./_assets/storm-interface-7203-12tw203-keypad-front-and-back-photo.webp')} width="600px">The front (left) and back (right) of the Storm Interface 7203-12TW203 keypad.</Image>
 
 ### JRPanel
 
