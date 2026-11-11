@@ -1,0 +1,57 @@
+---
+authors: [gbmhunter]
+date: 2026-11-11
+lastUpdated: 2026-11-11
+tags: [component packages, PCB design, PowerPAK, PowerPAK 1212-8, MOSFETs, Vishay]
+title: PowerPAK 1212-8 Component Package
+type: page
+---
+
+The _PowerPAK 1212-8_ is a small leadless power package from Vishay, commonly used for MOSFETs. It comes in Single and Dual variants.
+
+It uses the same packaging technology as the larger [PowerPAK SO-8 package](/pcb-design/component-packages/powerpak-so8-component-package/).[^vishay-si7101dn-ds]
+
+## PowerPAK 1212-8 Single
+
+This uses the industry standard pinout of pins 1-3 for the source, pin 4 for the gate, and pins 5-8 for the drain.
+
+<Image src={import('./_assets/powerpak-1212-8-single-photo-top-and-bottom-with-mosfet-pinout.webp')} width="600px">Top and bottom views of the PowerPAK 1212-8 Single package, showing the MOSFET pinout. The drain pins 5-8 are connected to the large exposed pad on the underside.[^vishay-si7101dn-ds]</Image>
+
+### Thermal Resistance
+
+Junction to case thermal resistance is quoted at $R_{\theta JC} = 2.4^\circ C/W$.[^vishay-si7101dn-ds]
+
+### Dimensions
+
+The Single and Dual variants share the same package outline, and only differ in the thermal pad(s) on the underside. The body is 3.30 x 3.30 mm (nominal) with a height of 1.04 mm (nominal) and a pin pitch of 0.65 mm.[^vishay-sisa14dn-ds]
+
+<Image src={import('./_assets/powerpak-1212-8-single-dual-dimensions.webp')} width="800px">Package dimensions for the PowerPAK 1212-8, covering both the Single and Dual variants.[^vishay-sisa14dn-ds]</Image>
+
+### Recommended Footprint
+
+The image below shows Vishay's recommended minimum pads for the PowerPAK 1212-8 Single. Dimensions are in inches, with millimetres in brackets.
+
+<Image src={import('./_assets/powerpak-1212-8-single-recommended-footprint.webp')} width="600px">Recommended minimum pads (footprint) for the PowerPAK 1212-8 Single package.[^vishay-si7101dn-ds]</Image>
+
+## PowerPAK 1212-8 Dual
+
+### Thermal Resistance
+
+Junction to case thermal resistance is quoted at $R_{\theta JC} = 5.5^\circ C/W$.[^vishay-si7101dn-ds]
+
+### Dimensions
+
+See the dimensions above, as they share the same outline except for the thermal pad(s) on the underside.
+
+## Similar To
+
+- [LFPAK33](/pcb-design/component-packages/lfpak-component-package/#lfpak33): The PowerPAK 1212-8 Single can be soldered onto a common footprint shared with the LFPAK33 and other similar packages.[^nxp-power-mosfet-selection-guide]
+- [PowerPAK SO-8](/pcb-design/component-packages/powerpak-so8-component-package/): The larger sibling in Vishay's PowerPAK family. Uses the same packaging technology.[^vishay-si7101dn-ds]
+
+{/* ============================================================================================ */}
+{/* REFERENCES */}
+{/* ============================================================================================ */}
+
+[^vishay-sisa14dn-ds]: Vishay Siliconix (2018, Aug 20). _SiSA14DN - N-Channel 30 V (D-S) MOSFET_ [datasheet]. Retrieved 2026-11-11, from https://www.vishay.com/docs/63252/sisa14dn.pdf.
+[^vishay-si7101dn-ds]: Vishay Siliconix (2013, Apr 15). _Si7101DN - P-Channel 30 V (D-S) MOSFET_ [datasheet]. Retrieved 2026-11-11, from https://www.vishay.com/docs/63232/si7101dn.pdf.
+[^nxp-power-mosfet-selection-guide]: NXP (2013, Jan). _Power MOSFET Selection Guide_. Retrieved 2026-11-11, from https://www.nxp.com/docs/en/product-selector-guide/75017590.pdf.
