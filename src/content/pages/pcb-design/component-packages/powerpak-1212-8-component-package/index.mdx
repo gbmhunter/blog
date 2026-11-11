@@ -11,6 +11,10 @@ The _PowerPAK 1212-8_ is a small leadless power package from Vishay, commonly us
 
 It uses the same packaging technology as the larger [PowerPAK SO-8 package](/pcb-design/component-packages/powerpak-so8-component-package/).[^vishay-si7101dn-ds]
 
+## Variants
+
+- PowerPAK 1212-8W Single: The `W` stands for "wettable" flanks, which aids optical inspection especially in automotive applications.[^vishay-sq7414cenw-ds]
+
 ## PowerPAK 1212-8 Single
 
 This uses the industry standard pinout of pins 1-3 for the source, pin 4 for the gate, and pins 5-8 for the drain.
@@ -43,6 +47,22 @@ Junction to case thermal resistance is quoted at $R_{\theta JC} = 5.5^\circ C/W$
 
 See the dimensions above, as they share the same outline except for the thermal pad(s) on the underside.
 
+## PowerPAK 1212-8W Single
+
+The PowerPAK 1212-8W Single is the same as the standard Single variant, except the flanks of the package are "wettable" to aid optical inspection. This is especially useful in automotive applications.[^vishay-sq7414cenw-ds]
+
+<Image src={import('./_assets/powerpak-1212-8w-single-photo-top-and-bottom.webp')} width="600px">Top and bottom views of the PowerPAK 1212-8W Single package, showing the MOSFET pinout. Note the notches in the ends of the pins, which form the wettable flanks.[^vishay-sq7414cenw-ds]</Image>
+
+### Dimensions
+
+The dimensions are shown below and are the same as the standard PowerPAK 1212-8, except for an additional A2 dimension (0–0.13 mm) on the pins.[^vishay-sq7414cenw-ds]
+
+<Image src={import('./_assets/powerpak-1212-8w-dimensions.webp')} width="800px">Package dimensions for the PowerPAK 1212-8W.[^vishay-sq7414cenw-ds]</Image>
+
+### Recommended Footprint
+
+The recommended minimum pads for the PowerPAK 1212-8W Single are exactly the same as the standard Single variant as shown above.[^vishay-sq7414cenw-ds]
+
 ## Similar To
 
 - [LFPAK33](/pcb-design/component-packages/lfpak-component-package/#lfpak33): The PowerPAK 1212-8 Single can be soldered onto a common footprint shared with the LFPAK33 and other similar packages.[^nxp-power-mosfet-selection-guide]
@@ -54,4 +74,5 @@ See the dimensions above, as they share the same outline except for the thermal 
 
 [^vishay-sisa14dn-ds]: Vishay Siliconix (2018, Aug 20). _SiSA14DN - N-Channel 30 V (D-S) MOSFET_ [datasheet]. Retrieved 2026-11-11, from https://www.vishay.com/docs/63252/sisa14dn.pdf.
 [^vishay-si7101dn-ds]: Vishay Siliconix (2013, Apr 15). _Si7101DN - P-Channel 30 V (D-S) MOSFET_ [datasheet]. Retrieved 2026-11-11, from https://www.vishay.com/docs/63232/si7101dn.pdf.
+[^vishay-sq7414cenw-ds]: Vishay Siliconix (2017, Nov 13). _SQ7414CENW - Automotive N-Channel 60 V (D-S) 175 °C MOSFET_ [datasheet]. Retrieved 2026-11-11, from https://www.vishay.com/docs/75674/sq7414cenw.pdf.
 [^nxp-power-mosfet-selection-guide]: NXP (2013, Jan). _Power MOSFET Selection Guide_. Retrieved 2026-11-11, from https://www.nxp.com/docs/en/product-selector-guide/75017590.pdf.
